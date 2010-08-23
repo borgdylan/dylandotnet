@@ -1,0 +1,31 @@
+class public auto ansi Module1
+
+method public static void main(var args as string[])
+
+Console::WriteLine("dylan.NET Compiler v. 11.1 for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
+Console::WriteLine("                           and Novell Mono v. 2.6.7")
+Console::WriteLine("Copyright (C) Dylan Borg 2010")
+if args[l] < 1 then
+Console::WriteLine("Usage: dnc <path>")
+else
+
+//try
+
+var p as string = args[0]
+var lx as Lexer = new Lexer()
+var pstmts as StmtSet = lx::Analyze(p)
+var ps as Parser = new Parser()
+var ppstmts as StmtSet = ps::Parse(pstmts)
+//catch ex as Exception
+
+//var exstr as string = ex::ToString()
+//Console::WriteLine(exstr)
+//Console::ReadKey()
+
+//end try
+
+end if
+
+end method
+
+end class

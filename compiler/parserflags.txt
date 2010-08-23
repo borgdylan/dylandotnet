@@ -1,0 +1,13 @@
+class public auto ansi beforefieldinit ParserFlags
+
+field public static boolean IfFlag
+field public static boolean CmtFlag
+field public static boolean NoOptFlag
+
+method public static void ctor0()
+IfFlag = false
+CmtFlag = false
+NoOptFlag = false
+end method
+
+end class

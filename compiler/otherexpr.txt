@@ -1,0 +1,7 @@
+class public auto ansi AritExpr extends Expr
+
+end class
+
+class public auto ansi LogicExpr extends Expr
+
+end class

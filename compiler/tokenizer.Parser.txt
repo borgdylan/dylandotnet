@@ -1,0 +1,49 @@
+//The Parser for the dylan.NET language
+//A Component of the NEW dylan.NET Compiler
+//compile with dylan.NET v.9.9 or later
+
+#refasm mscorlib.dll
+#refasm System.dll
+#refasm System.Core.dll
+#refasm System.Data.dll
+#refasm System.Data.DataSetExtensions.dll
+#refasm System.Xml.dll 
+#refasm System.Xml.Linq.dll
+#refasm System.Configuration.dll
+#refasm Microsoft.VisualBasic.dll
+#refasm E:\Code\dylannet\compiler\tokenizer.AST.dll
+#refasm E:\Code\dylannet\compiler\tokenizer.Lexer.dll
+#refasm E:\Code\dylannet\compiler\dnu.dll
+
+import Microsoft.VisualBasic
+import System
+import System.Collections
+import System.Collections.Generic
+import System.Data
+import System.Diagnostics
+import System.Linq
+import System.Xml
+import System.Xml.Linq
+import dnu
+import tokenizer.Lexer
+import tokenizer.AST
+import tokenizer.AST.Tokens
+import tokenizer.AST.Exprs
+import tokenizer.AST.Stmts
+import tokenizer.AST.Tokens.Ops
+import tokenizer.AST.Tokens.TypeToks
+import tokenizer.AST.Tokens.Literals
+import tokenizer.AST.Tokens.Attributes
+import tokenizer.AST.Tokens.Chars
+
+locimport tokenizer.Parser
+
+assembly tokenizer.Parser dll
+ver 11.1.2.0
+
+namespace tokenizer.Parser
+#include E:\Code\dylannet\compiler\parserflags.txt
+#include E:\Code\dylannet\compiler\tokenoptimizer.txt
+#include E:\Code\dylannet\compiler\stmtoptimizer.txt
+#include E:\Code\dylannet\compiler\parser.txt
+end namespace

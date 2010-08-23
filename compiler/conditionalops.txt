@@ -1,0 +1,35 @@
+class public auto ansi ConditionalOp extends Op
+
+end class
+
+// =
+// ==
+class public auto ansi EqOp extends ConditionalOp
+
+end class
+
+// <>
+// !=
+class public auto ansi NeqOp extends ConditionalOp
+
+end class
+
+// >
+class public auto ansi GtOp extends ConditionalOp
+
+end class
+
+// <
+class public auto ansi LtOp extends ConditionalOp
+
+end class
+
+// >=
+class public auto ansi GeOp extends ConditionalOp
+
+end class
+
+// <=
+class public auto ansi LeOp extends ConditionalOp
+
+end class

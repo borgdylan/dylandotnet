@@ -1,0 +1,80 @@
+class public auto ansi TypeTok extends Token
+
+field public boolean IsArray
+field public boolean IsByRef
+field public Type RefTyp
+field public string OrdOp
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+IsArray = false
+IsByRef = false
+RefTyp = null
+OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+IsArray = false
+IsByRef = false
+RefTyp = null
+OrdOp = ""
+end method
+
+end class
+
+class public auto ansi StringTok extends TypeTok
+
+end class
+
+class public auto ansi IntegerTok extends TypeTok
+
+end class
+
+class public auto ansi DoubleTok extends TypeTok
+
+end class
+
+class public auto ansi BooleanTok extends TypeTok
+
+end class
+
+class public auto ansi CharTok extends TypeTok
+
+end class
+
+class public auto ansi DecimalTok extends TypeTok
+
+end class
+
+class public auto ansi LongTok extends TypeTok
+
+end class
+
+class public auto ansi SByteTok extends TypeTok
+
+end class
+
+class public auto ansi ShortTok extends TypeTok
+
+end class
+
+class public auto ansi SingleTok extends TypeTok
+
+end class
+
+class public auto ansi ObjectTok extends TypeTok
+
+end class
+
+class public auto ansi VoidTok extends TypeTok
+
+end class
+
+class public auto ansi MeTok extends TypeTok
+
+end class

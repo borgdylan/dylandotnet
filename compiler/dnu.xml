@@ -1,0 +1,47 @@
+﻿<doc>
+  <assembly>
+    <name>dnu</name>
+  </assembly>
+  <members>
+    <member name="T:dnu.Constants">
+      <summary>The Constants Class of the dylan.NET Utils</summary>
+    </member>
+    <member name="F:dnu.Constants.quot">
+      <summary>The quotation mark Constant</summary>
+    </member>
+    <member name="F:dnu.Constants.cr">
+      <summary>The Carriage Return Constant</summary>
+    </member>
+    <member name="F:dnu.Constants.lf">
+      <summary>The Line Feed Constant</summary>
+    </member>
+    <member name="F:dnu.Constants.crlf">
+      <summary>The Carriage Return Line Feed Constant</summary>
+    </member>
+    <member name="F:dnu.Constants.pi">
+      <summary>The PI Constant</summary>
+    </member>
+    <member name="F:dnu.Constants.e">
+      <summary>The E Constant</summary>
+    </member>
+    <member name="F:dnu.Constants.t">
+      <summary>The True Constant</summary>
+    </member>
+    <member name="F:dnu.Constants.f">
+      <summary>The False Constant</summary>
+    </member>
+    <member name="M:dnu.Constants.#cctor">
+      <summary>Initializes all the constants</summary>
+    </member>
+    <member name="T:dnu.ParseUtils">
+      <summary>The ParseUtils Class of the dylan.NET Utils</summary>
+    </member>
+    <member name="M:dnu.ParseUtils.addelem(System.String[],System.String)">
+      <summary>Adds a string element to an array of string.</summary>
+      <remarks>This method is only for serving this class. Check for a public version in the ArrayUtils class.</remarks>
+      <returns>An array of string with the input element added.</returns>
+      <param name="srcarr">The source string array.</param>
+      <param name="eltoadd">The string element to add.</param>
+    </member>
+  </members>
+</doc>

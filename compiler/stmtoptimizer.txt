@@ -1,0 +1,79 @@
+class public auto ansi StmtOptimizer
+
+method public Stmt checkRefasm(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype RefasmTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var refasms as RefasmStmt = new RefasmStmt()
+refasms::Line = stm::Line
+refasms::Tokens = stm::Tokens
+refasms::AsmPath = stm::Tokens[1]
+return refasms
+end method
+
+method public Stmt Optimize(var stm as Stmt)
+
+Console::WriteLine(stm::Line)
+
+var i as integer = -1
+var len as integer = stm::Tokens[l]
+var to as TokenOptimizer = null
+var tmpstm as Stmt = null
+var compb as boolean = false
+len--
+
+ParserFlags::IfFlag = false
+ParserFlags::CmtFlag = false
+ParserFlags::NoOptFlag = false
+
+label loop
+label cont
+label fin
+
+if len < 0 then
+goto cont
+end if
+
+place loop
+
+i++
+
+if ParserFlags::CmtFlag = true then
+goto cont
+end if
+
+
+if ParserFlags::NoOptFlag = true then
+goto cont
+end if
+
+to = new TokenOptimizer()
+stm::Tokens[i] = to::Optimize(stm::Tokens[i])
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+if stm::Tokens[l] = 0 then
+goto fin
+end if
+
+tmpstm = checkRefasm(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+else
+goto fin
+end if
+
+place fin
+
+return stm
+end method
+
+end class

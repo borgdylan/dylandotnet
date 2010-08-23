@@ -1,0 +1,38 @@
+//The Lexer for the dylan.NET tokenizer
+//A Component of the NEW dylan.NET Compiler
+//compile with dylan.NET v.9.9 or later
+
+#refasm mscorlib.dll
+#refasm System.dll
+#refasm System.Core.dll
+#refasm System.Data.dll
+#refasm System.Data.DataSetExtensions.dll
+#refasm System.Xml.dll 
+#refasm System.Xml.Linq.dll
+#refasm System.Configuration.dll
+#refasm Microsoft.VisualBasic.dll
+#refasm E:\Code\dylannet\compiler\tokenizer.AST.dll
+#refasm E:\Code\dylannet\compiler\dnu.dll
+
+import Microsoft.VisualBasic
+import System
+import System.Collections
+import System.Collections.Generic
+import System.Data
+import System.Diagnostics
+import System.Linq
+import System.Xml
+import System.Xml.Linq
+import dnu
+import tokenizer.AST.Tokens
+import tokenizer.AST.Stmts
+
+locimport tokenizer.Lexer
+
+assembly tokenizer.Lexer dll
+ver 11.1.2.0
+
+namespace tokenizer.Lexer
+#include E:\Code\dylannet\compiler\line.txt
+#include E:\Code\dylannet\compiler\lexer.txt
+end namespace
