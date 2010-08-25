@@ -11,6 +11,110 @@ refasms::AsmPath = stm::Tokens[1]
 return refasms
 end method
 
+method public Stmt checkImport(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype ImportTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var imps as ImportStmt = new ImportStmt()
+imps::Line = stm::Line
+imps::Tokens = stm::Tokens
+imps::NS = stm::Tokens[1]
+return imps
+end method
+
+method public Stmt checkAssign(var stm as Stmt, var b as boolean&)
+var tok as Token = null
+var typ as System.Type = gettype AssignOp
+var asss as AssignStmt = new AssignStmt()
+var c as boolean = false
+var re as Expr = new Expr()
+var le as Expr = new Expr()
+var i as integer = -1
+var len as integer = stm::Tokens[l] - 1
+var assind as integer = 0
+
+label loop
+label cont
+
+place loop
+
+i++
+
+tok = stm::Tokens[i]
+c = typ::IsInstanceOfType($objecct$tok)
+
+if c = true then
+assind = i
+goto cont
+end if
+
+if i = len then
+goto cont
+else 
+goto loop
+end if
+
+place cont
+
+if assind <> 0 then
+
+i = -1
+len = assind - 1
+
+label loop2
+label cont2
+
+place loop2
+
+i++
+
+le::AddToken(stm::Tokens[i])
+
+if i = len then
+goto cont2
+else
+goto loop2
+end if
+
+place cont2
+
+
+i = assind
+len = stm::Tokens[l] - 1
+
+label loop3
+label cont3
+
+place loop3
+
+i++
+
+re::AddToken(stm::Tokens[i])
+
+if i = len then
+goto cont3
+else
+goto loop3
+end if
+
+place cont3
+
+asss::Line = stm::Line
+asss::Tokens = stm::Tokens
+asss::LExp = le
+asss::RExp = re
+
+valinref|b = true
+return asss
+
+else
+valinref|b = false
+return stm
+
+end if
+
+end method
+
 method public Stmt Optimize(var stm as Stmt)
 
 Console::WriteLine(stm::Line)
@@ -59,6 +163,20 @@ end if
 place cont
 
 if stm::Tokens[l] = 0 then
+goto fin
+end if
+
+tmpstm = checkImport(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkAssign(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
 goto fin
 end if
 
