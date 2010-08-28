@@ -2,9 +2,8 @@
   <ItemGroup>
     <CodeFiles Include="E:\Code\dylannet\compiler\tokenizer.Parser.txt" /> 
     <CodeFiles Include="E:\Code\dylannet\compiler\parser.txt" />
-    <CodeFiles Include="E:\Code\dylannet\compiler\stmtoptmizer.txt" /> 
-    <CodeFiles Include="E:\Code\dylannet\compiler\tokenoptmizer.txt" />
-    <CodeFiles Include="E:\Code\dylannet\compiler\tokenoptmizer.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\stmtoptimizer.txt" /> 
+    <CodeFiles Include="E:\Code\dylannet\compiler\tokenoptimizer.txt" />
     <CodeFiles Include="E:\Code\dylannet\compiler\parserflags.txt" /> 
   </ItemGroup>
   <ItemGroup>

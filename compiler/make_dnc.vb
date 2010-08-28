@@ -87,7 +87,7 @@ Dim mainparam00 As ParameterBuilder = main.DefineParameter(0, ParameterAttribute
 Dim mainparam01 As ParameterBuilder = main.DefineParameter(1, ParameterAttributes.None, "args")
 mainIL.MarkSequencePoint(doc2, 5, 1, 5, 100)
 Dim typ1(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.1 for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
+mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.1.2 for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
 Typ = GetType(System.String)
 ReDim Preserve typ1(UBound(typ1) + 1)
 typ1(UBound(typ1)) = Typ

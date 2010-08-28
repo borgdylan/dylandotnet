@@ -5,9 +5,11 @@ var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype RefasmTok
 valinref|b = typ::IsInstanceOfType($object$tok)
 var refasms as RefasmStmt = new RefasmStmt()
+if valinref|b = true then
 refasms::Line = stm::Line
 refasms::Tokens = stm::Tokens
 refasms::AsmPath = stm::Tokens[1]
+end if
 return refasms
 end method
 
@@ -16,10 +18,104 @@ var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype ImportTok
 valinref|b = typ::IsInstanceOfType($object$tok)
 var imps as ImportStmt = new ImportStmt()
+if valinref|b = true then
 imps::Line = stm::Line
 imps::Tokens = stm::Tokens
 imps::NS = stm::Tokens[1]
+end if
 return imps
+end method
+
+method public Stmt checkLocimport(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype LocimportTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var limps as LocimportStmt = new LocimportStmt()
+if valinref|b = true then
+limps::Line = stm::Line
+limps::Tokens = stm::Tokens
+limps::NS = stm::Tokens[1]
+end if
+return limps
+end method
+
+method public Stmt checkAssembly(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype AssemblyTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var asms as AssemblyStmt = new AssemblyStmt()
+if valinref|b = true then
+asms::Line = stm::Line
+asms::Tokens = stm::Tokens
+asms::AsmName = stm::Tokens[1]
+asms::Mode = stm::Tokens[2]
+end if
+return asms
+end method
+
+method public Stmt checkVarAs(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype VarTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var vars as VarStmt = new VarStmt()
+
+if valinref|b = true then
+vars::Tokens = stm::Tokens
+vars::Line = stm::Line
+vars::VarName = stm::Tokens[1]
+
+var tok2 as Token = stm::Tokens[3]
+var typ2 as System.Type = gettype TypeTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+if b2 <> true then
+var t as Token = stm::Tokens[3]
+var tt as TypeTok = new TypeTok()
+tt::Line = t::Line
+tt::Value = t::Value
+vars::VarTyp = tt
+else
+vars::VarTyp = stm::Tokens[3]
+end if
+
+end if
+return vars
+end method
+
+method public Stmt AssOpt(var stm as Stmt)
+
+var asss as AssignStmt = stm
+var le as Expr = asss::LExp
+var tok as Token = le::Tokens[0]
+var typ as System.Type = gettype VarTok
+var b as boolean = typ::IsInstanceOfType($object$tok)
+var vass as VarAsgnStmt = new VarAsgnStmt()
+if b = true then
+vass::Tokens = asss::Tokens
+vass::Line = asss::Line
+vass::VarName = le::Tokens[1]
+
+var tok2 as Token = le::Tokens[3]
+var typ2 as System.Type = gettype TypeTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+if b2 <> true then
+var t as Token = le::Tokens[3]
+var tt as TypeTok = new TypeTok()
+tt::Line = t::Line
+tt::Value = t::Value
+vass::VarTyp = tt
+else
+vass::VarTyp = le::Tokens[3]
+end if
+
+vass::RExpr = asss::RExp
+
+return vass
+else
+return stm
+end if
+
 end method
 
 method public Stmt checkAssign(var stm as Stmt, var b as boolean&)
@@ -105,6 +201,9 @@ asss::LExp = le
 asss::RExp = re
 
 valinref|b = true
+
+asss = AssOpt(asss)
+
 return asss
 
 else
@@ -173,7 +272,28 @@ stm = tmpstm
 goto fin
 end if
 
+tmpstm = checkLocimport(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkAssembly(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
 tmpstm = checkAssign(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkVarAs(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm
