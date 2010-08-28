@@ -13,9 +13,7 @@ D:\E\Dylan's portal\Dylan's docs\MS VS2008\dylan.NET Compiler\dylan.NET Compiler
 D:\E\Dylan's portal\Dylan's docs\MS VS2008\dylan.NET Compiler\dylan.NET Compiler\obj\Debug\dylan.NET_Compiler.pdb
 D:\E\Dylan's portal\Dylan's docs\MS VS2008\dylan.NET Compiler\dylan.NET Compiler\bin\Debug\dylan.NET_Compiler.Contracts.dll
 D:\E\Dylan's portal\Dylan's docs\MS VS2008\dylan.NET Compiler\dylan.NET Compiler\bin\Debug\dylan.NET_Compiler.Contracts.pdb
-E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Debug\dylan.NET_Compiler.exe
-E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Debug\dylan.NET_Compiler.xml
-E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Debug\dylan.NET_Compiler.pdb
+E:\VS\dylan.NET Compiler\dylan.NET Compiler\bin\Debug\dylan.NET_Compiler.exe.config
 E:\VS\dylan.NET Compiler\dylan.NET Compiler\bin\Debug\dylan.NET_Compiler.exe.manifest
 E:\VS\dylan.NET Compiler\dylan.NET Compiler\bin\Debug\dylan.NET_Compiler.application
 E:\VS\dylan.NET Compiler\dylan.NET Compiler\bin\Debug\dylan.NET_Compiler.exe
@@ -26,4 +24,6 @@ E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Debug\dylan.NET_Compiler.Resourc
 E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Debug\dylan.NET Compiler.vbproj.GenerateResource.Cache
 E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Debug\dylan.NET_Compiler.exe.manifest
 E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Debug\dylan.NET_Compiler.application
-E:\VS\dylan.NET Compiler\dylan.NET Compiler\bin\Debug\dylan.NET_Compiler.exe.config
+E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Debug\dylan.NET_Compiler.exe
+E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Debug\dylan.NET_Compiler.xml
+E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Debug\dylan.NET_Compiler.pdb

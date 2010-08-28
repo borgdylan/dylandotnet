@@ -2726,7 +2726,7 @@ fin:
                 Else
                 Console.WriteLine(WriteErrInfo("Wrong variable declaration at:" & code))
                 End If
-        ElseIf code Like "* = *" = True And code Like "*""* = *""*" = False Then 'And code Like "if*" = False Then
+        ElseIf code Like "* = *" = True And StringParser(code, "=").Length >= 2 Then 'And code Like "if*" = False Then
             'TODO: var assignment
 
             AssignVal(code)
@@ -3538,7 +3538,7 @@ fin:
                 End If
             End If
 
-        ElseIf expr Like "* + *" Or expr Like "* - *" Or expr Like "* [*] *" Or expr Like "* / *" Or expr Like "* % *" And expr Like """*""" = False Then
+        ElseIf expr Like "* + *" Or expr Like "* - *" Or expr Like "* [*] *" Or expr Like "* / *" Or expr Like "* % *" And expr Like "*""*""*" = False Then
 
             Dim symarr() As String = StringParser(expr, " ")
             symarr = StringParser(RPNPreProc(symarr), " ")
@@ -3567,45 +3567,6 @@ fin:
                 ElseIf s = "%" Then
 
                     Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.[Rem])" & vbCrLf
-
-                Else
-
-                    LoadVal(s)
-
-                End If
-
-            Next
-
-        ElseIf expr Like "* and *" Or expr Like "* nand *" Or expr Like "* xor *" Or expr Like "* or *" Or expr Like "* nor *" And expr Like """*""" = False Then
-
-            Dim symarr() As String = StringParser(expr, " ")
-            Dim rpn As String = ConvToRPNLogic(symarr)
-
-            Dim rpnarr() As String = StringParser(rpn, " ")
-
-            For Each s As String In rpnarr
-
-                If s = "and" Then
-
-                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.And)" & vbCrLf
-
-                ElseIf s = "nand" Then
-
-                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.And)" & vbCrLf
-                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.Not)" & vbCrLf
-
-                ElseIf s = "xor" Then
-
-                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.Xor)" & vbCrLf
-
-                ElseIf s = "or" Then
-
-                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.Or)" & vbCrLf
-
-                ElseIf s = "nor" Then
-
-                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.Or)" & vbCrLf
-                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.Not)" & vbCrLf
 
                 Else
 
@@ -3747,6 +3708,47 @@ fin:
 
                 End If
             End If
+
+        ElseIf expr Like "* and *" Or expr Like "* nand *" Or expr Like "* xor *" Or expr Like "* or *" Or expr Like "* nor *" And expr Like "*""*""*" = False Then
+            '        And expr Like "*""* and *""*" = False And expr Like "*""* nand *""*" = False And expr Like "*""* xor *""*" = False And expr Like "*""* or *""*" = False And expr Like "*""* nor *""*" = False Then
+
+            Dim symarr() As String = StringParser(expr, " ")
+            Dim rpn As String = ConvToRPNLogic(symarr)
+
+            Dim rpnarr() As String = StringParser(rpn, " ")
+
+            For Each s As String In rpnarr
+
+                If s = "and" Then
+
+                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.And)" & vbCrLf
+
+                ElseIf s = "nand" Then
+
+                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.And)" & vbCrLf
+                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.Not)" & vbCrLf
+
+                ElseIf s = "xor" Then
+
+                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.Xor)" & vbCrLf
+
+                ElseIf s = "or" Then
+
+                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.Or)" & vbCrLf
+
+                ElseIf s = "nor" Then
+
+                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.Or)" & vbCrLf
+                    Gen.rtb.Text = Gen.rtb.Text & Gen.CurMet & "IL.Emit(OpCodes.Not)" & vbCrLf
+
+                Else
+
+                    LoadVal(s)
+
+                End If
+
+            Next
+
 
 
         ElseIf expr Like "$*$#*" Or expr Like "$*$-#*" Or expr Like "$*$+#*" Then
