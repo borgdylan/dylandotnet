@@ -53,6 +53,74 @@ end if
 return asms
 end method
 
+method public Stmt checkClass(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype ClassTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var clss as ClassStmt = new ClassStmt()
+var att as Attributes.Attribute = null
+if valinref|b = true then
+
+clss::Line = stm::Line
+clss::Tokens = stm::Tokens
+
+label loop
+label cont
+
+var i as integer = 0
+var len as integer = stm::Tokens[l] - 1
+var bl as boolean = false
+
+place loop
+
+i++
+tok = stm::Tokens[i]
+typ = gettype Attributes.Attribute
+bl = typ::IsInstanceOfType($object$tok)
+
+if bl = true then
+att = tok
+clss::AddAttr(att)
+else
+
+var tok2 as Token = stm::Tokens[i]
+var typ2 as System.Type = gettype ExtendsTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+if b2 = true then
+i++
+tok2 = stm::Tokens[i]
+typ2 = gettype TypeTok
+b2 = typ2::IsInstanceOfType($object$tok2)
+
+if b2 <> true then
+var t as Token = stm::Tokens[i]
+var tt as TypeTok = new TypeTok()
+tt::Line = t::Line
+tt::Value = t::Value
+clss::InhClass = tt
+else
+clss::InhClass = stm::Tokens[i]
+end if
+else
+clss::ClassName = stm::Tokens[i]
+end if
+
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+end if
+
+return clss
+end method
+
 method public Stmt checkVarAs(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype VarTok
@@ -280,6 +348,13 @@ goto fin
 end if
 
 tmpstm = checkAssembly(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkClass(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm

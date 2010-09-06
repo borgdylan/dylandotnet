@@ -421,9 +421,9 @@ comp = String::Compare(tok::Value, "extends")
 
 if comp = 0 then
 var exttk as ExtendsTok = new ExtendsTok()
-extk::Line = tok::Line
-extk::Value = tok::Value
-tok = extk
+exttk::Line = tok::Line
+exttk::Value = tok::Value
+tok = exttk
 goto fin
 end if
 
@@ -639,7 +639,6 @@ tok = shtok
 goto fin
 end if
 
-
 comp = String::Compare(tok::Value, "long")
 
 if comp = 0 then
@@ -651,6 +650,16 @@ tok = lngtok
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "object")
+
+if comp = 0 then
+var objtok as ObjectTok = new ObjectTok()
+objtok::Line = tok::Line
+objtok::Value = tok::Value
+objtok::RefTyp = gettype object
+tok = objtok
+goto fin
+end if
 
 compb = dnu.ParseUtils::LikeOP(tok::Value, "//*")
 
@@ -923,8 +932,11 @@ end if
 
 
 compb = dnu.ParseUtils::LikeOP(tok::Value, "[a-zA-Z]*")
+orflg = compb
+compb = dnu.ParseUtils::LikeOP(tok::Value, "_*[a-zA-Z]*")
+orflg = orflg or compb
 
-if compb = true then
+if orflg = true then
 var idt as Ident = new Ident()
 idt::Line = tok::Line
 idt::Value = tok::Value
