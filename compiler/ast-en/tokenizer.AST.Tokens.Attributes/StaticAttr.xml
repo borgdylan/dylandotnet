@@ -1,0 +1,29 @@
+<Type Name="StaticAttr" FullName="tokenizer.AST.Tokens.Attributes.StaticAttr">
+  <TypeSignature Language="C#" Value="public class StaticAttr : tokenizer.AST.Tokens.Attributes.Attribute" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+    <AssemblyVersion>11.1.2.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>tokenizer.AST.Tokens.Attributes.Attribute</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public StaticAttr ();" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

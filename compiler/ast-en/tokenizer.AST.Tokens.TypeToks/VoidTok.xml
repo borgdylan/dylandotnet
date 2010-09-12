@@ -1,0 +1,29 @@
+<Type Name="VoidTok" FullName="tokenizer.AST.Tokens.TypeToks.VoidTok">
+  <TypeSignature Language="C#" Value="public class VoidTok : tokenizer.AST.Tokens.TypeToks.TypeTok" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+    <AssemblyVersion>11.1.2.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>tokenizer.AST.Tokens.TypeToks.TypeTok</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public VoidTok ();" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

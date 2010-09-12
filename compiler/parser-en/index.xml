@@ -1,0 +1,34 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="tokenizer.Parser" Version="11.1.2.0">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("tokenizer.Parser")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.1.2.0")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyProduct("tokenizer.Parser")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("tokenizer.Parser")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>To be added.</Remarks>
+  <Copyright>To be added.</Copyright>
+  <Types>
+    <Namespace Name="tokenizer.Parser">
+      <Type Name="Parser" Kind="Class" />
+      <Type Name="ParserFlags" Kind="Class" />
+      <Type Name="StmtOptimizer" Kind="Class" />
+      <Type Name="TokenOptimizer" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>tokenizer.Parser</Title>
+</Overview>

@@ -1,0 +1,48 @@
+<Type Name="Parser" FullName="tokenizer.Parser.Parser">
+  <TypeSignature Language="C#" Value="public class Parser" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.Parser</AssemblyName>
+    <AssemblyVersion>11.1.2.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Parser ();" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Parse">
+      <MemberSignature Language="C#" Value="public tokenizer.AST.Stmts.StmtSet Parse (tokenizer.AST.Stmts.StmtSet stms);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>tokenizer.AST.Stmts.StmtSet</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stms" Type="tokenizer.AST.Stmts.StmtSet" />
+      </Parameters>
+      <Docs>
+        <param name="stms">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

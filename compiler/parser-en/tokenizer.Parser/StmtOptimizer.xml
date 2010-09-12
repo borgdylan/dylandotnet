@@ -1,0 +1,214 @@
+<Type Name="StmtOptimizer" FullName="tokenizer.Parser.StmtOptimizer">
+  <TypeSignature Language="C#" Value="public class StmtOptimizer" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.Parser</AssemblyName>
+    <AssemblyVersion>11.1.2.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public StmtOptimizer ();" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AssOpt">
+      <MemberSignature Language="C#" Value="public tokenizer.AST.Stmts.Stmt AssOpt (tokenizer.AST.Stmts.Stmt stm);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="tokenizer.AST.Stmts.Stmt" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="checkAssembly">
+      <MemberSignature Language="C#" Value="public tokenizer.AST.Stmts.Stmt checkAssembly (tokenizer.AST.Stmts.Stmt stm, ref bool b);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="b" Type="System.Boolean&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="checkAssign">
+      <MemberSignature Language="C#" Value="public tokenizer.AST.Stmts.Stmt checkAssign (tokenizer.AST.Stmts.Stmt stm, ref bool b);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="b" Type="System.Boolean&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="checkClass">
+      <MemberSignature Language="C#" Value="public tokenizer.AST.Stmts.Stmt checkClass (tokenizer.AST.Stmts.Stmt stm, ref bool b);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="b" Type="System.Boolean&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="checkImport">
+      <MemberSignature Language="C#" Value="public tokenizer.AST.Stmts.Stmt checkImport (tokenizer.AST.Stmts.Stmt stm, ref bool b);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="b" Type="System.Boolean&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="checkLocimport">
+      <MemberSignature Language="C#" Value="public tokenizer.AST.Stmts.Stmt checkLocimport (tokenizer.AST.Stmts.Stmt stm, ref bool b);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="b" Type="System.Boolean&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="checkRefasm">
+      <MemberSignature Language="C#" Value="public tokenizer.AST.Stmts.Stmt checkRefasm (tokenizer.AST.Stmts.Stmt stm, ref bool b);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="b" Type="System.Boolean&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="checkVarAs">
+      <MemberSignature Language="C#" Value="public tokenizer.AST.Stmts.Stmt checkVarAs (tokenizer.AST.Stmts.Stmt stm, ref bool b);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="b" Type="System.Boolean&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Optimize">
+      <MemberSignature Language="C#" Value="public tokenizer.AST.Stmts.Stmt Optimize (tokenizer.AST.Stmts.Stmt stm);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.1.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="tokenizer.AST.Stmts.Stmt" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
