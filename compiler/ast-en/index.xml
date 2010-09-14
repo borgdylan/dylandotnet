@@ -20,8 +20,8 @@
       </Attributes>
     </Assembly>
   </Assemblies>
-  <Remarks>To be added.</Remarks>
-  <Copyright>To be added.</Copyright>
+  <Remarks>This is the first assembly of the dylan.NET compiler suite. It holds the entire AST component set that is used in the syntax of dylan.NET.</Remarks>
+  <Copyright>Copyright (C) Dylan Borg 2010.</Copyright>
   <Types>
     <Namespace Name="tokenizer.AST.Exprs">
       <Type Name="AritExpr" Kind="Class" />

@@ -1,6 +1,20 @@
-﻿<doc>
-  <assembly>
-    <name>dnc</name>
-  </assembly>
-  <members></members>
+<doc>
+    <assembly>
+        <name>dnc</name>
+    </assembly>
+    <members>
+        <member name="T:dylan.NET.Compiler.Module1">
+            <summary>The main module of the compiler.</summary>
+            <remarks>This class houses the main method of the compiler.</remarks>
+        </member>
+        <member name="C:dylan.NET.Compiler.Module1">
+            <summary>Constructs the main module.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Compiler.Module1.main(System.String[])">
+            <param name="args">An array of string with the arguments. Currently only 1 element is required. i.e. the path to the main file specifying other files etc. Further elements in the array will be left uninterpreted.</param>
+            <summary>Starts the whole compilation process i.e. this bootstraps the process of lexer, parser, codegen.</summary>
+            <remarks>If invoking programmatically please do not use Process.Start() but reference dnc.exe and invoke dnc.main(string[]) directly. If using the console type 'dnc [path]'.</remarks>
+        </member>
+    </members>
 </doc>

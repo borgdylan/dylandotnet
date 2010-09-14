@@ -1,6 +1,6 @@
 <Namespace Name="tokenizer.AST.Tokens">
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Holds all the Tokens defined in dylan.NET.</summary>
+    <remarks>If xstending the compiler, please define further tokens in this namespace.</remarks>
   </Docs>
 </Namespace>

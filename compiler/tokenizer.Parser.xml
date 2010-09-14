@@ -1,6 +1,124 @@
-﻿<doc>
-  <assembly>
-    <name>tokenizer.Parser</name>
-  </assembly>
-  <members></members>
+<doc>
+    <assembly>
+        <name>tokenizer.Parser</name>
+    </assembly>
+    <members>
+        <member name="T:tokenizer.Parser.Parser">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:tokenizer.Parser.Parser">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:tokenizer.Parser.Parser.Parse(tokenizer.AST.Stmts.StmtSet)">
+            <param name="stms">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:tokenizer.Parser.ParserFlags">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:tokenizer.Parser.ParserFlags">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:tokenizer.Parser.ParserFlags.CmtFlag">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:tokenizer.Parser.ParserFlags.IfFlag">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:tokenizer.Parser.ParserFlags.NoOptFlag">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:tokenizer.Parser.StmtOptimizer">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:tokenizer.Parser.StmtOptimizer">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:tokenizer.Parser.StmtOptimizer.AssOpt(tokenizer.AST.Stmts.Stmt)">
+            <param name="stm">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:tokenizer.Parser.StmtOptimizer.checkAssembly(tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:tokenizer.Parser.StmtOptimizer.checkAssign(tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:tokenizer.Parser.StmtOptimizer.checkClass(tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:tokenizer.Parser.StmtOptimizer.checkImport(tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:tokenizer.Parser.StmtOptimizer.checkLocimport(tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:tokenizer.Parser.StmtOptimizer.checkRefasm(tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:tokenizer.Parser.StmtOptimizer.checkVarAs(tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:tokenizer.Parser.StmtOptimizer.Optimize(tokenizer.AST.Stmts.Stmt)">
+            <param name="stm">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:tokenizer.Parser.TokenOptimizer">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:tokenizer.Parser.TokenOptimizer">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:tokenizer.Parser.TokenOptimizer.Optimize(tokenizer.AST.Tokens.Token)">
+            <param name="tok">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+    </members>
 </doc>

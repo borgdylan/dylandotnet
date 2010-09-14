@@ -9,8 +9,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a set of statements in the dylan.NET language.</summary>
+    <remarks>Nothing enforces an 'StmtSet' i.e. a statement set to contain a whole file's worth of statements. This type is for moving statments around in one convenient package. This class is mainly for infrastructure use by the compiler components.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -21,8 +21,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Constructs a statement set ('StmtSet').</summary>
+        <remarks>No remarks.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddStmt">
@@ -38,9 +38,9 @@
         <Parameter Name="stmttoadd" Type="tokenizer.AST.Stmts.Stmt" />
       </Parameters>
       <Docs>
-        <param name="stmttoadd">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="stmttoadd">The 'Stmt' object to add to the statement set.</param>
+        <summary>Adds another statement to the list of statements inside 'Stmts'.</summary>
+        <remarks>Mainly used by infrastructure.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Stmts">
@@ -53,8 +53,8 @@
         <ReturnType>tokenizer.AST.Stmts.Stmt[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The list of statements that this statement set encapsulates.</summary>
+        <remarks>This array is what mainly gets passed around between compiler components. Therfore the compiler may be changed to pass this instead of the whole class.</remarks>
       </Docs>
     </Member>
   </Members>

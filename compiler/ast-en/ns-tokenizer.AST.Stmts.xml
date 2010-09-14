@@ -1,6 +1,6 @@
 <Namespace Name="tokenizer.AST.Stmts">
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Holds all dylan.NET starements defined.</summary>
+    <remarks>If extending the compiler with more statements please put them in this namespace as well.</remarks>
   </Docs>
 </Namespace>
