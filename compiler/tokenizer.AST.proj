@@ -1,0 +1,63 @@
+﻿<Project ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CodeFiles Include="E:\Code\dylannet\compiler\tokenizer.AST.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\token.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\expr.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\literals.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\op.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\aritops.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\logicalops.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\ident.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\typetoks.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\attributes.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\conditionalops.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\stmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\otherkeywords.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\comment.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\chars.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\methods.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\newarrexpr.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\newexpr.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\castclassexpr.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\gettypeexpr.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\ptrexpr.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\otherexpr.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\dependstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\stdasmstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\singstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\debugstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\makeasmstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\refasmstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\newresstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\importstmts.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\asmstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\verstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\includestmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\xmldocstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\nsstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\classstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\enumstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\propstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\metstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\fieldstmt.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\exceptionstmts.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\labelstmts.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\conditionalexpr.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\ifstmts.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\varstmts.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\otherstmts.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <MainFile Include="E:\Code\dylannet\compiler\tokenizer.AST.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <OutputFiles Include="E:\Code\dylannet\compiler\tokenizer.AST.dll" />
+    <OutputFiles Include="E:\Code\dylannet\compiler\tokenizer.AST.pdb" />
+    <OutputFiles Include="E:\Code\dylannet\compiler\tokenizer.AST.xml" />
+  </ItemGroup>
+  <Target Name="Default" Inputs="@(CodeFiles)" Outputs="@(OutputFiles)">
+    <Message Text="Calling the compiler..." />
+    <Message Text="Building AST..." />
+   <Exec Command="dylan.NET_Compiler @(MainFile)" />
+  </Target>
+</Project>

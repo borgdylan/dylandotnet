@@ -1,0 +1,16 @@
+class public auto ansi IfStmt extends Stmt
+
+field public ConditionalExpr CondExpr
+
+method public void ctor0()
+me::ctor()
+me::Tokens = newarr Token 0
+me::Line = 0
+CondExpr = new ConditionalExpr()
+end method
+
+end class
+
+class public auto ansi ElseStmt extends Stmt
+
+end class

@@ -1,0 +1,31 @@
+class public auto ansi LogicalOp extends Op
+
+end class
+
+class public auto ansi AndOp extends LogicalOp
+
+end class
+
+class public auto ansi OrOp extends LogicalOp
+
+end class
+
+class public auto ansi NandOp extends LogicalOp
+
+end class
+
+class public auto ansi NorOp extends LogicalOp
+
+end class
+
+class public auto ansi XorOp extends LogicalOp
+
+end class
+
+class public auto ansi NotOp extends LogicalOp
+
+end class
+
+class public auto ansi NegOp extends LogicalOp
+
+end class

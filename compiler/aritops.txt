@@ -1,0 +1,39 @@
+class public auto ansi AritOp extends Op
+
+end class
+
+// +
+class public auto ansi AddOp extends AritOp
+
+end class
+
+// *
+class public auto ansi MulOp extends AritOp
+
+end class
+
+// -
+class public auto ansi SubOp extends AritOp
+
+end class
+
+
+// /
+class public auto ansi DivOp extends AritOp
+
+end class
+
+// %
+class public auto ansi ModOp extends AritOp
+
+end class
+
+// ++
+class public auto ansi IncOp extends AritOp
+
+end class
+
+// --
+class public auto ansi DecOp extends AritOp
+
+end class

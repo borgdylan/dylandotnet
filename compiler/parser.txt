@@ -1,0 +1,29 @@
+class public auto ansi Parser
+
+method public StmtSet Parse(var stms as StmtSet)
+var i as integer = -1
+var so as StmtOptimizer = null
+var len as integer = stms::Stmts[l]
+len--
+
+label loop
+label cont
+
+place loop
+
+i++
+so = new StmtOptimizer()
+stms::Stmts[i] = so::Optimize(stms::Stmts[i])
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+return stms
+end method
+
+end class

@@ -1,0 +1,8 @@
+class public auto ansi Op extends Token
+
+end class
+
+
+class public auto ansi AssignOp extends Op
+
+end class

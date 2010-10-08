@@ -1,0 +1,13 @@
+// #debug Opt
+class public auto ansi DebugStmt extends Stmt
+
+field public SwitchTok Opt
+
+method public void ctor0()
+me::ctor()
+me::Tokens = newarr Token 0
+me::Line = 0
+Opt = new SwitchTok()
+end method
+
+end class

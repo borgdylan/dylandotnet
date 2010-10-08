@@ -1,0 +1,418 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+dylan.NET_Compiler
+</name>
+</assembly>
+<members>
+<member name="F:dylan.NET_Compiler.Parser.VarName">
+	<summary>
+  Holds the last declared variable
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Parser.CurTyp">
+	<summary>
+ Holds the type name for the last loaded parameter
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Parser.typind">
+	<summary>
+ Holds the index of the last parameter array made
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Parser.elsepass">
+	<summary>
+ holds true if the else block in an if construct has been seen
+ </summary>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.DeclVar(System.String,System.String)">
+	<summary>
+ Declares a variable
+ </summary>
+	<param name="code">the code containing a variable declaration</param>
+	<param name="locarg">enter "loc" for a local variable or "arg" if the variable declared is an argument</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.StFld(System.String,System.String)">
+	<summary>
+ Store the current value on the stack to a field
+ </summary>
+	<param name="fldname">the field's full name</param>
+	<param name="val">The value to store</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.LdFld(System.String)">
+	<summary>
+ Loads a field onto the stack
+ </summary>
+	<param name="fldname">the field's full name</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.StLocFld(System.String,System.String)">
+	<summary>
+ Store the value on the stack to a local field
+ </summary>
+	<param name="name">the field name</param>
+	<param name="val">The value to store</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.LdLocFld(System.String)">
+	<summary>
+ Load a local field onto the stack
+ </summary>
+	<param name="name">the field name</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.LdExtFld(System.String)">
+	<summary>
+ Loads the value of a field that is external to the current class onto the stack
+ </summary>
+	<param name="name">the field name</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.StExtFld(System.String,System.String)">
+	<summary>
+ Stores the value on the stack to a field that is external to the current class
+ </summary>
+	<param name="name">the field name</param>
+	<param name="val">The value to store</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.AssignVal(System.String)">
+	<summary>
+ Assign a value to a variable
+ </summary>
+	<param name="code">a variable assignment</param>
+	<remarks>"loc" variables only</remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.CallLocMet(System.String)">
+	<summary>
+ Calls a method declared in the current class
+ </summary>
+	<param name="code">a method call</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.CallMet(System.String)">
+	<summary>
+ Calls a method found inside the .NET Framework
+ </summary>
+	<param name="code">a method call</param>
+	<remarks>not for use with a method declared locally. use CallLocMet instead.</remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.ProcessLine(System.String)">
+	<summary>
+ The main parser method
+ </summary>
+	<param name="code">the line of dylan.NEt code</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.StringParser(System.String,System.String)">
+	<summary>
+ The parsing function for 1 delimeter
+ </summary>
+	<param name="StringToParse">the string to parse</param>
+	<param name="DelimeterChar">the delimeter</param>
+	<returns>an array of string</returns>
+	<remarks>this function is string aware</remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.StringParser2ds(System.String,System.String,System.String)">
+	<summary>
+ The parsing function for 2 delimeters
+ </summary>
+	<param name="StringToParse">the string to parse</param>
+	<param name="DelimeterChar">the first delimeter</param>
+	<param name="DelimeterChar2">the second delimeter</param>
+	<returns>an array of string</returns>
+	<remarks>this function is string aware</remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.CallCtor(System.String)">
+	<summary>
+ Calls the constructor for a class inside .NET
+ </summary>
+	<param name="code">the method call</param>
+	<remarks>used only when instantiation is needed. this method used newobj and not call as .ctor is called.</remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.LoadVal(System.String)">
+	<summary>
+ Loads a value on the stack
+ </summary>
+	<param name="expr">the expression holding a fumction call, a variable name, a string literal, or a number.</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Parser.LoadArr(System.String,System.String)">
+	<summary>
+ Loads an array on the stack
+ </summary>
+	<param name="length">the length of the array</param>
+	<param name="type">the type of the elements</param>
+	<remarks></remarks>
+</member><member name="T:dylan.NET_Compiler.Parser">
+	<summary>
+ The parser module
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.tables.vars">
+	<summary>
+ The variable symbol table
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.tables.labels">
+	<summary>
+ The label symbol table
+ </summary>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.tables.GetTyp(System.String)">
+	<summary>
+ Get the full type name from the short name
+ </summary>
+	<param name="type">the type name</param>
+	<returns>the full name</returns>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.tables.GetMetAttrs(System.String)">
+	<summary>
+ Gets the full method attribute from the short version
+ </summary>
+	<param name="attr">the short name of the attribute</param>
+	<returns>the full name of the attribute</returns>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.tables.GetPropAttrs(System.String)">
+	<summary>
+ Gets the full method attribute from the short version
+ </summary>
+	<param name="attr">the short name of the attribute</param>
+	<returns>the full name of the attribute</returns>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.tables.GetTypAttrs(System.String)">
+	<summary>
+ Gets the full type attribute from the short version
+ </summary>
+	<param name="attr">the short name of the attribute</param>
+	<returns>the full name of the attribute</returns>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.tables.GetFieldAttrs(System.String)">
+	<summary>
+ Gets the full type attribute from the short version
+ </summary>
+	<param name="attr">the short name of the attribute</param>
+	<returns>the full name of the attribute</returns>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.tables.GetOP(System.String)">
+	<summary>
+ gets the operator name for use in if functions
+ </summary>
+	<param name="op">the operator</param>
+	<returns>Ceq, Clt or Cgt which are MSIL instructions</returns>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.tables.MakeGetType(System.String)">
+	<summary>
+ Produces a GetType statement 
+ </summary>
+	<param name="TypeName">The full type name</param>
+	<returns>a gettype statment</returns>
+	<remarks></remarks>
+</member><member name="T:dylan.NET_Compiler.tables">
+	<summary>
+ Holds the symbol tables and conversions
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.rtb">
+	<summary>
+ The richtextbox containg the VB reflection code.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.rtbmain">
+	<summary>
+ The richtextbox containg the main method reflection code.
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.CurObj">
+	<summary>
+ The current class
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.CurMet">
+	<summary>
+ The current method
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.CurNS">
+	<summary>
+ The current namespace
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.DefNS">
+	<summary>
+ the default namespace for the assembly
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.asmName">
+	<summary>
+ The assembly name
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.locind">
+	<summary>
+ The local var index
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.argind">
+	<summary>
+ the argument index
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.da">
+	<summary>
+ The destination address fro the VB reflection code
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.ifind">
+	<summary>
+ The index of if functions
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.tind">
+	<summary>
+ The index of try catch stmts
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.lind">
+	<summary>
+ The label index
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.asmtyp">
+	<summary>
+ the type of assembly
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Gen.varind">
+	<summary>
+ Variable declaration index
+ </summary>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.Begin">
+	<summary>
+ begins the codegen
+ </summary>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.SaveDoc">
+	<summary>
+ Saves the xml documentation
+ </summary>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.Save">
+	<summary>
+ Saves the reflection code
+ </summary>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.MakeAsm(System.String,System.String)">
+	<summary>
+ Makes the assembly
+ </summary>
+	<param name="name">the assembly name</param>
+	<param name="type">the assembly typr(exe or dll)</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.DeclMethod(System.String,System.String,System.String,System.String,System.String,System.String[])">
+	<summary>
+ declares a method
+ </summary>
+	<param name="name">the method name</param>
+	<param name="attributes">the method attributes</param>
+	<param name="returntype">the return type</param>
+	<param name="parameters">the parametres</param>
+	<param name="paraminfo">the parameter definitions block</param>
+	<param name="IsStatic">if the method is static or not (answer yes or no)</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.DeclFld(System.String,System.String,System.String,System.String,System.String)">
+	<summary>
+ declares a field
+ </summary>
+	<param name="name">the method name</param>
+	<param name="attributes">the method attributes</param>
+	<param name="type">the type</param>
+	<param name="IsStatic">if the method is static or not (answer yes or no)</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.DeclareVar(System.String,System.String,System.String,System.String)">
+	<summary>
+ declares a variable
+ </summary>
+	<param name="name">the name</param>
+	<param name="type">the type</param>
+	<param name="locarg">"loc" or "arg"</param>
+	<param name="isarray">if the vraiable is an array (answer yes or no)</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.DeclLabel(System.String)">
+	<summary>
+ declares a label
+ </summary>
+	<param name="name">the label's name</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.PlaceLabel(System.String)">
+	<summary>
+ places the label
+ </summary>
+	<param name="name">the name</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.BranchToLabel(System.String)">
+	<summary>
+ brances to a label
+ </summary>
+	<param name="name">the name</param>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.EndMethod">
+	<summary>
+ end a method
+ </summary>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.EmitConvU">
+	<summary>
+ Emits the OpCodes.Conv_U opcode
+ </summary>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.EmitConvI4">
+	<summary>
+ Emits the OpCodes.Conv_I4 opcode
+ </summary>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Gen.EndAsm">
+	<summary>
+ ends the assembly
+ </summary>
+	<remarks></remarks>
+</member><member name="T:dylan.NET_Compiler.Gen">
+	<summary>
+ The codegen module
+ </summary>
+	<remarks></remarks>
+</member><member name="P:dylan.NET_Compiler.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:dylan.NET_Compiler.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:dylan.NET_Compiler.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="F:dylan.NET_Compiler.Module1.rtb">
+	<summary>
+ Holds the source code
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Module1.address">
+	<summary>
+ Holds the source code's address
+ </summary>
+	<remarks></remarks>
+</member><member name="F:dylan.NET_Compiler.Module1.lineno">
+	<summary>
+Holds the current line number
+ </summary>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Module1.Main(System.String[])">
+	<summary>
+ Begins the compilation process
+ </summary>
+	<remarks></remarks>
+</member><member name="M:dylan.NET_Compiler.Module1.ProcessProg">
+	<summary>
+ Process the code by handing line by line to the parser, then compiles the code
+ </summary>
+	<remarks></remarks>
+</member><member name="T:dylan.NET_Compiler.Module1">
+	<summary>
+ The main module for the compiler.
+ </summary>
+	<remarks></remarks>
+</member>
+</members>
+</doc>
