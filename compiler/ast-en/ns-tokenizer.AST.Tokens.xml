@@ -1,6 +1,0 @@
-<Namespace Name="tokenizer.AST.Tokens">
-  <Docs>
-    <summary>Holds all the Tokens defined in dylan.NET.</summary>
-    <remarks>If xstending the compiler, please define further tokens in this namespace.</remarks>
-  </Docs>
-</Namespace>
