@@ -1,0 +1,20 @@
+﻿<Project ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<ItemGroup>
+<CodeFiles Include="E:\Code\dylannet\dnu\dnu.txt" />
+<CodeFiles Include="E:\Code\dylannet\dnu\consts.txt" />
+<CodeFiles Include="E:\Code\dylannet\dnu\xmlu.txt" />
+<CodeFiles Include="E:\Code\dylannet\dnu\parseu.txt" />
+</ItemGroup>
+<ItemGroup>
+<MainFile  Include="E:\Code\dylannet\dnu\dnu.txt" />
+</ItemGroup>
+<ItemGroup>
+<OutputFiles  Include="E:\Code\dylannet\dnu\dnu.dll" />
+<OutputFiles  Include="E:\Code\dylannet\dnu\dnu.pdb" />
+<OutputFiles  Include="E:\Code\dylannet\dnu\dnu.xml" />
+</ItemGroup>
+<Target Name="Default" Inputs="@(CodeFiles)" Outputs="@(OutputFiles)">
+<Message Text="Calling the compiler..." />
+<Exec Command="dylan.NET_Compiler @(MainFile)" />
+</Target>
+</Project>

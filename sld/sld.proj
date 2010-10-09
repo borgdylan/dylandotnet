@@ -1,0 +1,22 @@
+<Project ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CodeFiles Include="E:\Code\dylannet\sld\sld.txt" />
+    <CodeFiles Include="E:\Code\dylannet\sld\sqlconn.txt" />
+    <CodeFiles Include="E:\Code\dylannet\sld\namerdr.txt" />
+    <CodeFiles Include="E:\Code\dylannet\sld\cntsrdr.txt" />
+    <CodeFiles Include="E:\Code\dylannet\sld\examresrdr.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <MainFile Include="E:\Code\dylannet\sld\sld.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <OutputFiles Include="E:\Code\dylannet\sld\sld.dll" />
+    <OutputFiles Include="E:\Code\dylannet\sld\sld.pdb" />
+    <OutputFiles Include="E:\Code\dylannet\sld\sld.xml" />
+  </ItemGroup>
+  <Target Name="Default" Inputs="@(CodeFiles)" Outputs="@(OutputFiles)">
+    <Message Text="Calling the compiler..." />
+    <Message Text="Building sld.dll..." />
+    <Exec Command="dylan.NET_Compiler @(MainFile)" />
+  </Target>
+</Project>

@@ -1,0 +1,41 @@
+#refasm mscorlib.dll
+#refasm System.dll
+#refasm System.Core.dll
+#refasm System.Data.dll
+#refasm System.Data.DataSetExtensions.dll
+#refasm System.Xml.dll
+#refasm System.Xml.Linq.dll
+#refasm System.Configuration.dll
+#refasm Microsoft.VisualBasic.dll
+#refasm E:\Code\dylannet\sld\dnu.dll
+#refasm E:\Code\dylannet\sld\System.Data.SQLite.dll
+#refasm E:\Code\dylannet\sld\Mono.Data.Sqlite.dll
+
+import Microsoft.VisualBasic
+import System
+import System.IO
+import System.Collections
+import System.Collections.Generic
+import System.Data
+import Mono.Data.Sqlite
+import System.Diagnostics
+import System.Linq
+import System.Xml
+import System.Xml.Linq
+import dylan.NET.Utils
+import dylan.NET
+
+locimport dylan.NET.SQLiteData
+
+//SQlite interop library
+//compile with dylan.NET 9.9 or later
+//uses System.Data.SQLite
+assembly sld dll
+ver 1.1.0.0
+
+namespace dylan.NET.SQLiteData
+#include E:\Code\dylannet\sld\sqlconn.txt
+#include E:\Code\dylannet\sld\namerdr.txt
+#include E:\Code\dylannet\sld\cntsrdr.txt
+#include E:\Code\dylannet\sld\examresrdr.txt
+end namespace

@@ -1,0 +1,181 @@
+class public auto ansi beforefieldinit SQLConnection
+
+field public static SqliteConnection SQLCon
+field public static SqliteCommand SQLCmd
+field public static SqliteDataReader SQLRdr
+field public static SqliteTransaction SQLTrans
+field public static DataTable DTable
+field public static DataRow[] Rows
+field public static DataColumn[] Columns
+field public static integer AffectedRecs
+field public static integer FldCount
+field public static integer RwCount
+field public static integer ColCount
+
+method public static void ctor0()
+SQLCon = null
+SQLCmd = null
+SQLRdr = null
+SQLTrans = null
+DTable = null
+Rows = null
+Columns = null
+AffectedRecs = 0
+FldCount = 0
+ColCount = 0
+RwCount = 0
+end method
+
+method public static void CreateDB(var addr as string)
+var stream as FileStream = File::Create(addr)
+stream::Dispose()
+end method
+
+method public static void InitCon(var constr as string)
+SQLCon = new SqliteConnection(constr)
+SQLCon::Open()
+end method
+
+method public static void EndCon()
+SQLCon::Close()
+SQLCon::Dispose()
+SQLCon = null
+end method
+
+method public static void BeginTrans()
+SQLTrans = SQLCon::BeginTransaction()
+end method
+
+method public static void RollBackTrans()
+SQLTrans::Rollback()
+end method
+
+method public static void CommitTrans()
+SQLTrans::Commit()
+end method
+
+method public static void EndTrans()
+SQLTrans::Dispose()
+SQLTrans = null
+end method
+
+method public static void PrepCmd(var cmdtext as string)
+if SQLTrans = null then
+SQLCmd = new SqliteCommand(cmdtext, SQLCon)
+else
+SQLCmd = new SqliteCommand(cmdtext, SQLCon, SQLTrans)
+end if
+end method
+
+method public static void ExecRdr()
+SQLRdr = SQLCmd::ExecuteReader()
+AffectedRecs = SQLRdr::get_RecordsAffected()
+FldCount = SQLRdr::get_FieldCount()
+end method
+
+method public static void ProcessRdr()
+DTable = new DataTable()
+DTable::Load(SQLRdr)
+var cnt as integer = 0
+var rws as DataRowCollection = DTable::get_Rows()
+cnt = rws::get_Count()
+RwCount = cnt
+Rows = newarr DataRow cnt
+rws::CopyTo(Rows, 0)
+var clms as DataColumnCollection = DTable::get_Columns()
+cnt = clms::get_Count()
+ColCount = cnt
+Columns = newarr DataColumn cnt
+clms::CopyTo(Columns, 0)
+end method
+
+method public static void ExecQuery()
+ExecRdr()
+ProcessRdr()
+end method
+
+method public static void ExecNonQuery()
+AffectedRecs = SQLCmd::ExecuteNonQuery()
+end method
+
+method public static DataTable get_Table()
+return DTable
+end method
+
+method public static integer get_AffectedRecords()
+return AffectedRecs
+end method
+
+method public static integer get_RowCount()
+return RwCount
+end method
+
+method public static integer get_ColumnCount()
+return ColCount
+end method
+
+method public static DataRow[] get_RowArray()
+return Rows
+end method
+
+method public static DataColumn[] get_ColumnArray()
+return Columns
+end method
+
+method public static DataRow get_Row(var ind as integer)
+return Rows[ind]
+end method
+
+method public static DataColumn get_Column(var ind as integer)
+return Columns[ind]
+end method
+
+method public static object[] get_RowItems(var rowind as integer)
+var row as DataRow = get_Row(rowind)
+var arr as object[] = row::get_ItemArray()
+return arr
+end method
+
+method public static object get_RowItem(var rowind as integer, var itemind as integer)
+var row as DataRow = get_Row(rowind)
+var o as object = row::get_Item(itemind)
+return o
+end method
+
+method public static sbyte get_RowItemInt8(var rowind as integer, var itemind as integer)
+var o as object = get_RowItem(rowind,itemind)
+return $sbyte$o
+end method
+
+method public static short get_RowItemInt16(var rowind as integer, var itemind as integer)
+var o as object = get_RowItem(rowind,itemind)
+return $short$o
+end method
+
+method public static integer get_RowItemInt32(var rowind as integer, var itemind as integer)
+var o as object = get_RowItem(rowind,itemind)
+return $integer$o
+end method
+
+method public static long get_RowItemInt64(var rowind as integer, var itemind as integer)
+var o as object = get_RowItem(rowind,itemind)
+return $long$o
+end method
+
+method public static single get_RowItemFloat32(var rowind as integer, var itemind as integer)
+var o as object = get_RowItem(rowind,itemind)
+return $single$o
+end method
+
+method public static double get_RowItemFloat64(var rowind as integer, var itemind as integer)
+var o as object = get_RowItem(rowind,itemind)
+return $double$o
+end method
+
+method public static string get_RowItemString(var rowind as integer, var itemind as integer)
+var o as object = get_RowItem(rowind,itemind)
+return $string$o
+end method
+
+
+end class
