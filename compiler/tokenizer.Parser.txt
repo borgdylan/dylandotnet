@@ -46,6 +46,7 @@ ver 11.1.3.0
 namespace dylan.NET.Tokenizer.Parser
 #include E:\Code\dylannet\compiler\parserflags.txt
 #include E:\Code\dylannet\compiler\tokenoptimizer.txt
+#include E:\Code\dylannet\compiler\exproptimizer.txt
 #include E:\Code\dylannet\compiler\stmtoptimizer.txt
 #include E:\Code\dylannet\compiler\parser.txt
 end namespace

@@ -1,0 +1,32 @@
+class public auto ansi ExprOptimizer
+
+method public Expr checkVarAs(var stm as Expr, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype VarTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var vars as VarExpr = new VarExpr()
+
+if valinref|b = true then
+vars::Tokens = stm::Tokens
+vars::Line = stm::Line
+vars::VarName = stm::Tokens[1]
+
+var tok2 as Token = stm::Tokens[3]
+var typ2 as System.Type = gettype TypeTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+if b2 <> true then
+var t as Token = stm::Tokens[3]
+var tt as TypeTok = new TypeTok()
+tt::Line = t::Line
+tt::Value = t::Value
+vars::VarTyp = tt
+else
+vars::VarTyp = stm::Tokens[3]
+end if
+
+end if
+return vars
+end method
+
+end class

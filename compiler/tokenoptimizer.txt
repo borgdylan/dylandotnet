@@ -271,7 +271,7 @@ tok = lspar
 goto fin
 end if
 
-comp = String::Compare(tok::Value, "[")
+comp = String::Compare(tok::Value, "]")
 
 if comp = 0 then
 var rspar as RSParen = new RSParen()

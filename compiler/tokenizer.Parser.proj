@@ -4,6 +4,7 @@
     <CodeFiles Include="E:\Code\dylannet\compiler\parser.txt" />
     <CodeFiles Include="E:\Code\dylannet\compiler\stmtoptimizer.txt" /> 
     <CodeFiles Include="E:\Code\dylannet\compiler\tokenoptimizer.txt" />
+    <CodeFiles Include="E:\Code\dylannet\compiler\exproptimizer.txt" />
     <CodeFiles Include="E:\Code\dylannet\compiler\parserflags.txt" /> 
   </ItemGroup>
   <ItemGroup>
