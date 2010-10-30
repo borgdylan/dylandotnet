@@ -154,6 +154,8 @@ End If
 mainIL.MarkSequencePoint(doc2, 10, 1, 10, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(fa0)
+mainIL.MarkSequencePoint(doc2, 12, 1, 12, 100)
+Dim try0 As System.Reflection.Emit.Label = mainIL.BeginExceptionBlock()
 mainIL.MarkSequencePoint(doc2, 14, 1, 14, 100)
 Dim locbldr0 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
 locbldr0.SetLocalSymInfo("p")
@@ -205,10 +207,47 @@ typ6(UBound(typ6)) = Typ
 mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Parse", typ6))
 Typ = Typ03.GetMethod("Parse", typ6).ReturnType
 mainIL.Emit(OpCodes.Stloc, 4)
-mainIL.MarkSequencePoint(doc2, 27, 1, 27, 100)
+mainIL.MarkSequencePoint(doc2, 20, 1, 20, 100)
+Dim locbldr5 As LocalBuilder = mainIL.DeclareLocal(GetType(Exception))
+locbldr5.SetLocalSymInfo("ex")
+mainIL.BeginCatchBlock(GetType(Exception))
+mainIL.Emit(OpCodes.Stloc,5)
+mainIL.MarkSequencePoint(doc2, 22, 1, 22, 100)
+Dim locbldr6 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
+locbldr6.SetLocalSymInfo("exstr")
+mainIL.Emit(OpCodes.Ldloc, 5)
+Typ = GetType(Exception)
+Typ03 = Typ
+mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("ToString", Type.EmptyTypes))
+Typ = Typ03.GetMethod("ToString", Type.EmptyTypes).ReturnType
+mainIL.Emit(OpCodes.Stloc, 6)
+mainIL.MarkSequencePoint(doc2, 23, 1, 23, 100)
+Dim typ8(-1) As Type
+mainIL.Emit(OpCodes.Ldloc, 6)
+Typ = GetType(System.String)
+ReDim Preserve typ8(UBound(typ8) + 1)
+typ8(UBound(typ8)) = Typ
+mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ8))
+Typ = GetType(Console).GetMethod("WriteLine", typ8).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+mainIL.Emit(OpCodes.Pop)
+End If
+mainIL.MarkSequencePoint(doc2, 24, 1, 24, 100)
+mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("ReadKey", Type.EmptyTypes))
+Typ = GetType(Console).GetMethod("ReadKey", Type.EmptyTypes).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+mainIL.Emit(OpCodes.Pop)
+End If
+mainIL.MarkSequencePoint(doc2, 26, 1, 26, 100)
+mainIL.EndExceptionBlock()
+mainIL.MarkSequencePoint(doc2, 28, 1, 28, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(cont0)
-mainIL.MarkSequencePoint(doc2, 29, 1, 29, 100)
+mainIL.MarkSequencePoint(doc2, 30, 1, 30, 100)
 mainIL.Emit(OpCodes.Ret)
 Module1.CreateType()
 asm.SetEntryPoint(main)

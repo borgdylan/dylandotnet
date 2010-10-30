@@ -9,20 +9,21 @@ if args[l] < 1 then
 Console::WriteLine("Usage: dnc <path>")
 else
 
-//try
+try
 
 var p as string = args[0]
 var lx as Lexer = new Lexer()
 var pstmts as StmtSet = lx::Analyze(p)
 var ps as Parser = new Parser()
 var ppstmts as StmtSet = ps::Parse(pstmts)
-//catch ex as Exception
 
-//var exstr as string = ex::ToString()
-//Console::WriteLine(exstr)
-//Console::ReadKey()
+catch ex as Exception
 
-//end try
+var exstr as string = ex::ToString()
+Console::WriteLine(exstr)
+Console::ReadKey()
+
+end try
 
 end if
 

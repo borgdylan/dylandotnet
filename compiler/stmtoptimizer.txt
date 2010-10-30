@@ -159,6 +159,85 @@ end if
 return clss
 end method
 
+method public Stmt checkMethod(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype MethodTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var mtss as MethodStmt = new MethodStmt()
+var att as Attributes.Attribute = new Attributes.Attribute()
+var mn as Ident = new Ident()
+
+if valinref|b = true then
+
+mtss::Line = stm::Line
+mtss::Tokens = stm::Tokens
+
+label loop
+label cont
+label jumpl
+label jumpm
+
+var i as integer = 0
+var len as integer = stm::Tokens[l] - 1
+var bl as boolean = false
+
+place loop
+
+i++
+tok = stm::Tokens[i]
+typ = gettype Attributes.Attribute
+bl = typ::IsInstanceOfType($object$tok)
+
+if bl = true then
+att = tok
+mtss::AddAttr(att)
+else
+i--
+goto jumpl
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+place jumpl
+
+i++
+
+var tok2 as Token = stm::Tokens[i]
+var typ2 as System.Type
+var b2 as boolean
+
+typ2 = gettype TypeTok
+b2 = typ2::IsInstanceOfType($object$tok2)
+
+if b2 <> true then
+var t as Token = stm::Tokens[i]
+var tt as TypeTok = new TypeTok()
+tt::Line = t::Line
+tt::Value = t::Value
+mtss::RetTyp = tt
+else
+mtss::RetTyp = stm::Tokens[i]
+end if
+
+i++
+
+tok2 = stm::Tokens[i]
+typ2 = gettype Ident
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+mtss::MethodName = tok2
+end if
+
+end if
+return mtss
+end method
+
 method public Stmt checkVarAs(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype VarTok
@@ -400,6 +479,13 @@ goto fin
 end if
 
 tmpstm = checkClass(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkMethod(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm
