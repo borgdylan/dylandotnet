@@ -32,7 +32,7 @@ import dylan.NET.Tokenizer.AST.Stmts
 import dylan.NET.Tokenizer.Parser
 
 assembly dnc exe
-ver 11.1.3.0
+ver 11.2.2.0
 
 namespace dylan.NET.Compiler
 #include E:\Code\dylannet\compiler\Mod1.txt

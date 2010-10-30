@@ -33,7 +33,7 @@ locimport dylan.NET.Tokenizer.AST.Tokens.Attributes
 locimport dylan.NET.Tokenizer.AST.Tokens.Chars
 
 assembly tokenizer.AST dll
-ver 11.1.3.0
+ver 11.2.2.0
 
 namespace dylan.NET.Tokenizer.AST.Tokens
 #include E:\Code\dylannet\compiler\token.txt
