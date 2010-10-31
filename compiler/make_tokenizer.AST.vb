@@ -4904,6 +4904,11 @@ Dim EndPropStmt As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Stmts" 
 EndPropStmt.CreateType()
 End Sub
 
+Sub CommentStmt()
+Dim CommentStmt As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Stmts" & "." & "CommentStmt", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Stmts.Stmt"))
+CommentStmt.CreateType()
+End Sub
+
 Sub Main()
 
 asmName = New AssemblyName("tokenizer.AST")
@@ -5160,6 +5165,7 @@ EndNSStmt()
 EndXmlDocStmt()
 EndTryStmt()
 EndPropStmt()
+CommentStmt()
 Dim vaType As Type = GetType(AssemblyFileVersionAttribute)
 Dim vaCtor As ConstructorInfo = vaType.GetConstructor(New Type() { GetType(String) })
 Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.2.0"})

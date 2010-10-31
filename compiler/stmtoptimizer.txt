@@ -39,6 +39,62 @@ end if
 return limps
 end method
 
+method public Stmt checkCmt(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype CommentTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var cmts as CommentStmt = new CommentStmt()
+if valinref|b = true then
+cmts::Line = stm::Line
+cmts::Tokens = stm::Tokens
+end if
+return cmts
+end method
+
+method public Stmt checkEndMtd(var stm as Stmt, var b as boolean&)
+if stm::Tokens[l] >= 2 then
+
+var tok1 as Token = stm::Tokens[0]
+var typ1 as System.Type = gettype EndTok
+var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+
+var tok2 as Token = stm::Tokens[1]
+var typ2 as System.Type = gettype MethodTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+valinref|b = b1 and b2
+
+var ems as EndMethodStmt = new EndMethodStmt()
+if valinref|b = true then
+ems::Line = stm::Line
+ems::Tokens = stm::Tokens
+end if
+end if
+return ems
+end method
+
+method public Stmt checkEndCls(var stm as Stmt, var b as boolean&)
+if stm::Tokens[l] >= 2 then
+
+var tok1 as Token = stm::Tokens[0]
+var typ1 as System.Type = gettype EndTok
+var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+
+var tok2 as Token = stm::Tokens[1]
+var typ2 as System.Type = gettype ClassTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+valinref|b = b1 and b2
+
+var ecs as EndClassStmt = new EndClassStmt()
+if valinref|b = true then
+ecs::Line = stm::Line
+ecs::Tokens = stm::Tokens
+end if
+end if
+return ecs
+end method
+
 method public Stmt checkAssembly(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype AssemblyTok
@@ -517,6 +573,13 @@ if stm::Tokens[l] = 0 then
 goto fin
 end if
 
+tmpstm = checkCmt(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
 tmpstm = checkImport(stm, ref|compb)
 
 if compb = true then
@@ -567,6 +630,20 @@ goto fin
 end if
 
 tmpstm = checkVarAs(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkEndMtd(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkEndCls(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm
