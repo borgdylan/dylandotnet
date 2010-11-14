@@ -52,6 +52,19 @@ end method
 
 end class
 
+class public auto ansi MethodCallStmt extends Stmt
+
+field public MethodCallTok MethodToken
+
+method public void ctor0()
+me::ctor()
+me::Tokens = newarr Token 0
+me::Line = 0
+MethodToken = new MethodCallTok()
+end method
+
+end class
+
 class public auto ansi EndMethodStmt extends Stmt
 
 end class

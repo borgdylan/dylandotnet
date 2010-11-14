@@ -361,6 +361,113 @@ end if
 return mtss
 end method
 
+method public Stmt checkMethodCall(var stm as Stmt, var b as boolean&)
+
+if stm::Tokens[l] > 2 then
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype Ident
+var tokb as Token = stm::Tokens[1]
+var typb as System.Type = gettype LParen
+var ba as boolean = typ::IsInstanceOfType($object$tok)
+var bb as boolean = typb::IsInstanceOfType($object$tokb)
+
+valinref|b = ba and bb
+
+var mtcss as MethodCallStmt = new MethodCallStmt()
+var mn as MethodNameTok = new MethodNameTok()
+var mct as MethodCallTok = new MethodCallTok()
+var idt as Ident = null
+var exp as Expr = new Expr()
+var lvl as integer = 1
+var d as boolean = true
+var i as integer = 1
+
+if valinref|b = true then
+
+mtcss::Line = stm::Line
+mtcss::Tokens = stm::Tokens
+
+idt = stm::Tokens[0]
+mn::Line = idt::Line
+mn::Value = idt::Value
+
+var tok2 as Token = stm::Tokens[i]
+var typ2 as System.Type
+var b2 as boolean
+var len as integer = stm::Tokens[l]
+
+label loop2
+label cont2
+label fin
+
+place loop2
+
+//get parameters
+i++
+
+tok2 = stm::Tokens[i]
+typ2 = gettype RParen
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+lvl--
+if lvl = 0 then
+d = false
+mct::AddParam(exp)
+goto cont2
+else
+d = true
+goto fin
+end if
+goto fin
+end if
+
+tok2 = stm::Tokens[i]
+typ2 = gettype LParen
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+lvl++
+d = true
+goto fin
+end if
+
+tok2 = stm::Tokens[i]
+typ2 = gettype Comma
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+if lvl = 1 then
+d = false
+mct::AddParam(exp)
+exp = new Expr()
+goto fin
+else
+d = true
+goto fin
+end if
+end if
+
+place fin
+
+if d = true then
+exp::AddToken(stm::Tokens[i])
+end if
+
+if i = len then
+goto cont2
+else
+goto loop2
+end if
+
+place cont2
+
+mct::Name = mn
+mtcss::MethodToken = mct
+
+end if
+
+end if
+return mtcss
+end method
+
 method public Stmt checkVarAs(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype VarTok
@@ -616,6 +723,13 @@ goto fin
 end if
 
 tmpstm = checkMethod(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkMethodCall(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm
