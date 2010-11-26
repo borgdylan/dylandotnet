@@ -244,9 +244,10 @@ Module Parser
 
         Dim virt As Boolean = False
 
-
-        If isstatic.Value = "no" Then
-            virt = True
+        If isarr = "no" Then
+            If isstatic.Value = "no" Then
+                virt = True
+            End If
         End If
 
         If virt = True Then

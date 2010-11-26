@@ -5,7 +5,8 @@ method public StmtSet Analyze(var path as string)
 var stmts as StmtSet = new StmtSet()
 var curstmt as Stmt = null
 var curln as Line = null
-var fs as string = FileIO.FileSystem::ReadAllText(path)
+//var fs as string = File::ReadAllText(path)
+var sr as StreamReader = new StreamReader(path)
 var crflag as boolean = false
 var lfflag as boolean = false
 var andflg as boolean = false
@@ -13,25 +14,30 @@ var orflg as boolean = false
 var buf as string = ""
 var curline as integer = 0
 
-var len as integer = fs::get_Length()
-var i as integer = -1
+//var len as integer = fs::get_Length()
+var n as integer = 0
+//var i as integer = -1
 var ch as string = ""
+var chr as char = 'a'
 var comp as integer = 0
 
-len--
+//len--
 
 label loop
 label cont
 
-if len < 0 then
+n = sr::Peek()
+
+if n < 0 then
 goto cont
 end if
 
 place loop
 
-i++
+n = sr::Read()
 
-ch = $string$fs::get_Chars(i)
+chr = $char$n
+ch = $string$chr
 comp = String::Compare(ch, Utils.Constants::cr)
 
 if comp = 0 then
@@ -64,7 +70,9 @@ lfflag = false
 end if
 end if
 
-if i = len then
+n = sr::Peek()
+
+if n = -1 then
 curline++
 Console::WriteLine(buf)
 curstmt = new Stmt()

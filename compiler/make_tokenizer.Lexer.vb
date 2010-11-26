@@ -5,6 +5,7 @@ Imports dylan.NET
 Imports System.Linq
 Imports System.Collections.Generic
 Imports System.Collections
+Imports System.IO
 Imports Microsoft.VisualBasic
 Imports System.Xml
 Imports System.Xml.Linq
@@ -2446,92 +2447,91 @@ Dim locbldr18 As LocalBuilder = AnalyzeIL.DeclareLocal(asm.GetType("dylan.NET.To
 locbldr18.SetLocalSymInfo("curln")
 AnalyzeIL.Emit(OpCodes.Ldnull)
 AnalyzeIL.Emit(OpCodes.Stloc, 2)
-AnalyzeIL.MarkSequencePoint(doc3, 8, 1, 8, 100)
-Dim locbldr19 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.String))
-locbldr19.SetLocalSymInfo("fs")
+AnalyzeIL.MarkSequencePoint(doc3, 9, 1, 9, 100)
+Dim locbldr19 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(StreamReader))
+locbldr19.SetLocalSymInfo("sr")
 Dim typ1(-1) As Type
 AnalyzeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(System.String)
 ReDim Preserve typ1(UBound(typ1) + 1)
 typ1(UBound(typ1)) = Typ
-AnalyzeIL.Emit(OpCodes.Call, GetType(FileIO.FileSystem).GetMethod("ReadAllText", typ1))
-Typ = GetType(FileIO.FileSystem).GetMethod("ReadAllText", typ1).ReturnType
+AnalyzeIL.Emit(OpCodes.Newobj, GetType(StreamReader).GetConstructor(typ1))
 AnalyzeIL.Emit(OpCodes.Stloc, 3)
-AnalyzeIL.MarkSequencePoint(doc3, 9, 1, 9, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 10, 1, 10, 100)
 Dim locbldr20 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.Boolean))
 locbldr20.SetLocalSymInfo("crflag")
 AnalyzeIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Stloc, 4)
-AnalyzeIL.MarkSequencePoint(doc3, 10, 1, 10, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 11, 1, 11, 100)
 Dim locbldr21 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.Boolean))
 locbldr21.SetLocalSymInfo("lfflag")
 AnalyzeIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Stloc, 5)
-AnalyzeIL.MarkSequencePoint(doc3, 11, 1, 11, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 12, 1, 12, 100)
 Dim locbldr22 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.Boolean))
 locbldr22.SetLocalSymInfo("andflg")
 AnalyzeIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Stloc, 6)
-AnalyzeIL.MarkSequencePoint(doc3, 12, 1, 12, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 13, 1, 13, 100)
 Dim locbldr23 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.Boolean))
 locbldr23.SetLocalSymInfo("orflg")
 AnalyzeIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Stloc, 7)
-AnalyzeIL.MarkSequencePoint(doc3, 13, 1, 13, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 14, 1, 14, 100)
 Dim locbldr24 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.String))
 locbldr24.SetLocalSymInfo("buf")
 AnalyzeIL.Emit(OpCodes.Ldstr, "")
 Typ = GetType(System.String)
 AnalyzeIL.Emit(OpCodes.Stloc, 8)
-AnalyzeIL.MarkSequencePoint(doc3, 14, 1, 14, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 15, 1, 15, 100)
 Dim locbldr25 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.Int32))
 locbldr25.SetLocalSymInfo("curline")
 AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(0))
 Typ = GetType(System.Int32)
 AnalyzeIL.Emit(OpCodes.Stloc, 9)
-AnalyzeIL.MarkSequencePoint(doc3, 16, 1, 16, 100)
-Dim locbldr26 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.Int32))
-locbldr26.SetLocalSymInfo("len")
-AnalyzeIL.Emit(OpCodes.Ldloc, 3)
-Typ = GetType(System.String)
-Typ03 = Typ
-AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("get_Length", Type.EmptyTypes))
-Typ = Typ03.GetMethod("get_Length", Type.EmptyTypes).ReturnType
-AnalyzeIL.Emit(OpCodes.Stloc, 10)
-AnalyzeIL.MarkSequencePoint(doc3, 17, 1, 17, 100)
-Dim locbldr27 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.Int32))
-locbldr27.SetLocalSymInfo("i")
-AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(-1))
-Typ = GetType(System.Int32)
-AnalyzeIL.Emit(OpCodes.Stloc, 11)
 AnalyzeIL.MarkSequencePoint(doc3, 18, 1, 18, 100)
-Dim locbldr28 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.String))
-locbldr28.SetLocalSymInfo("ch")
+Dim locbldr26 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.Int32))
+locbldr26.SetLocalSymInfo("n")
+AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(0))
+Typ = GetType(System.Int32)
+AnalyzeIL.Emit(OpCodes.Stloc, 10)
+AnalyzeIL.MarkSequencePoint(doc3, 20, 1, 20, 100)
+Dim locbldr27 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.String))
+locbldr27.SetLocalSymInfo("ch")
 AnalyzeIL.Emit(OpCodes.Ldstr, "")
 Typ = GetType(System.String)
+AnalyzeIL.Emit(OpCodes.Stloc, 11)
+AnalyzeIL.MarkSequencePoint(doc3, 21, 1, 21, 100)
+Dim locbldr28 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.Char))
+locbldr28.SetLocalSymInfo("chr")
+AnalyzeIL.Emit(OpCodes.Ldstr, "a")
+Typ = GetType(System.String)
+Dim typ2 As Type() = {Typ}
+AnalyzeIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToChar", typ2))
+Typ = GetType(System.Convert).GetMethod("ToChar", typ2).ReturnType
 AnalyzeIL.Emit(OpCodes.Stloc, 12)
-AnalyzeIL.MarkSequencePoint(doc3, 19, 1, 19, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 22, 1, 22, 100)
 Dim locbldr29 As LocalBuilder = AnalyzeIL.DeclareLocal(GetType(System.Int32))
 locbldr29.SetLocalSymInfo("comp")
 AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(0))
 Typ = GetType(System.Int32)
 AnalyzeIL.Emit(OpCodes.Stloc, 13)
-AnalyzeIL.MarkSequencePoint(doc3, 21, 1, 21, 100)
-AnalyzeIL.Emit(OpCodes.Ldloc, 10)
-Typ = GetType(System.Int32)
-AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(1))
-Typ = GetType(System.Int32)
-AnalyzeIL.Emit(OpCodes.Sub)
-AnalyzeIL.Emit(OpCodes.Stloc, 10)
-AnalyzeIL.MarkSequencePoint(doc3, 23, 1, 23, 100)
-Dim label0 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
-AnalyzeIL.MarkSequencePoint(doc3, 24, 1, 24, 100)
-Dim label1 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
 AnalyzeIL.MarkSequencePoint(doc3, 26, 1, 26, 100)
+Dim label0 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
+AnalyzeIL.MarkSequencePoint(doc3, 27, 1, 27, 100)
+Dim label1 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
+AnalyzeIL.MarkSequencePoint(doc3, 29, 1, 29, 100)
+AnalyzeIL.Emit(OpCodes.Ldloc, 3)
+Typ = GetType(StreamReader)
+Typ03 = Typ
+AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Peek", Type.EmptyTypes))
+Typ = Typ03.GetMethod("Peek", Type.EmptyTypes).ReturnType
+AnalyzeIL.Emit(OpCodes.Stloc, 10)
+AnalyzeIL.MarkSequencePoint(doc3, 31, 1, 31, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 10)
 Typ = GetType(System.Int32)
 AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(0))
@@ -2542,51 +2542,50 @@ Dim cont52 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
 AnalyzeIL.Emit(OpCodes.Blt, tru52)
 AnalyzeIL.Emit(OpCodes.Br, fa52)
 AnalyzeIL.MarkLabel(tru52)
-AnalyzeIL.MarkSequencePoint(doc3, 27, 1, 27, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 32, 1, 32, 100)
 AnalyzeIL.Emit(OpCodes.Br, label1)
-AnalyzeIL.MarkSequencePoint(doc3, 28, 1, 28, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 33, 1, 33, 100)
 AnalyzeIL.Emit(OpCodes.Br, cont52)
 AnalyzeIL.MarkLabel(fa52)
 AnalyzeIL.Emit(OpCodes.Br, cont52)
 AnalyzeIL.MarkLabel(cont52)
-AnalyzeIL.MarkSequencePoint(doc3, 30, 1, 30, 100)
-AnalyzeIL.MarkLabel(label0)
-AnalyzeIL.MarkSequencePoint(doc3, 32, 1, 32, 100)
-AnalyzeIL.Emit(OpCodes.Ldloc, 11)
-Typ = GetType(System.Int32)
-AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(1))
-Typ = GetType(System.Int32)
-AnalyzeIL.Emit(OpCodes.Add)
-AnalyzeIL.Emit(OpCodes.Stloc, 11)
-AnalyzeIL.MarkSequencePoint(doc3, 34, 1, 34, 100)
-Dim typ3(-1) As Type
-AnalyzeIL.Emit(OpCodes.Ldloc, 3)
-Typ = GetType(System.String)
-Typ03 = Typ
-AnalyzeIL.Emit(OpCodes.Ldloc, 11)
-Typ = GetType(System.Int32)
-ReDim Preserve typ3(UBound(typ3) + 1)
-typ3(UBound(typ3)) = Typ
-AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("get_Chars", typ3))
-Typ = Typ03.GetMethod("get_Chars", typ3).ReturnType
-Dim typ4 As Type() = {Typ}
-AnalyzeIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToString", typ4))
-Typ = GetType(System.Convert).GetMethod("ToString", typ4).ReturnType
-AnalyzeIL.Emit(OpCodes.Stloc, 12)
 AnalyzeIL.MarkSequencePoint(doc3, 35, 1, 35, 100)
-Dim typ5(-1) As Type
+AnalyzeIL.MarkLabel(label0)
+AnalyzeIL.MarkSequencePoint(doc3, 37, 1, 37, 100)
+AnalyzeIL.Emit(OpCodes.Ldloc, 3)
+Typ = GetType(StreamReader)
+Typ03 = Typ
+AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Read", Type.EmptyTypes))
+Typ = Typ03.GetMethod("Read", Type.EmptyTypes).ReturnType
+AnalyzeIL.Emit(OpCodes.Stloc, 10)
+AnalyzeIL.MarkSequencePoint(doc3, 39, 1, 39, 100)
+AnalyzeIL.Emit(OpCodes.Ldloc, 10)
+Typ = GetType(System.Int32)
+Dim typ5 As Type() = {Typ}
+AnalyzeIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToChar", typ5))
+Typ = GetType(System.Convert).GetMethod("ToChar", typ5).ReturnType
+AnalyzeIL.Emit(OpCodes.Stloc, 12)
+AnalyzeIL.MarkSequencePoint(doc3, 40, 1, 40, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 12)
+Typ = GetType(System.Char)
+Dim typ6 As Type() = {Typ}
+AnalyzeIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToString", typ6))
+Typ = GetType(System.Convert).GetMethod("ToString", typ6).ReturnType
+AnalyzeIL.Emit(OpCodes.Stloc, 11)
+AnalyzeIL.MarkSequencePoint(doc3, 41, 1, 41, 100)
+Dim typ7(-1) As Type
+AnalyzeIL.Emit(OpCodes.Ldloc, 11)
 Typ = GetType(System.String)
-ReDim Preserve typ5(UBound(typ5) + 1)
-typ5(UBound(typ5)) = Typ
+ReDim Preserve typ7(UBound(typ7) + 1)
+typ7(UBound(typ7)) = Typ
 AnalyzeIL.Emit(OpCodes.Ldsfld, GetType(Utils.Constants).GetField("cr"))
 Typ = GetType(Utils.Constants).GetField("cr").FieldType
-ReDim Preserve typ5(UBound(typ5) + 1)
-typ5(UBound(typ5)) = Typ
-AnalyzeIL.Emit(OpCodes.Call, GetType(String).GetMethod("Compare", typ5))
-Typ = GetType(String).GetMethod("Compare", typ5).ReturnType
+ReDim Preserve typ7(UBound(typ7) + 1)
+typ7(UBound(typ7)) = Typ
+AnalyzeIL.Emit(OpCodes.Call, GetType(String).GetMethod("Compare", typ7))
+Typ = GetType(String).GetMethod("Compare", typ7).ReturnType
 AnalyzeIL.Emit(OpCodes.Stloc, 13)
-AnalyzeIL.MarkSequencePoint(doc3, 37, 1, 37, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 43, 1, 43, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 13)
 Typ = GetType(System.Int32)
 AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(0))
@@ -2597,29 +2596,29 @@ Dim cont53 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
 AnalyzeIL.Emit(OpCodes.Beq, tru53)
 AnalyzeIL.Emit(OpCodes.Br, fa53)
 AnalyzeIL.MarkLabel(tru53)
-AnalyzeIL.MarkSequencePoint(doc3, 38, 1, 38, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 44, 1, 44, 100)
 AnalyzeIL.Emit(OpCodes.Ldc_I4, 1)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Stloc, 4)
-AnalyzeIL.MarkSequencePoint(doc3, 39, 1, 39, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 45, 1, 45, 100)
 AnalyzeIL.Emit(OpCodes.Br, cont53)
 AnalyzeIL.MarkLabel(fa53)
 AnalyzeIL.Emit(OpCodes.Br, cont53)
 AnalyzeIL.MarkLabel(cont53)
-AnalyzeIL.MarkSequencePoint(doc3, 41, 1, 41, 100)
-Dim typ6(-1) As Type
-AnalyzeIL.Emit(OpCodes.Ldloc, 12)
+AnalyzeIL.MarkSequencePoint(doc3, 47, 1, 47, 100)
+Dim typ8(-1) As Type
+AnalyzeIL.Emit(OpCodes.Ldloc, 11)
 Typ = GetType(System.String)
-ReDim Preserve typ6(UBound(typ6) + 1)
-typ6(UBound(typ6)) = Typ
+ReDim Preserve typ8(UBound(typ8) + 1)
+typ8(UBound(typ8)) = Typ
 AnalyzeIL.Emit(OpCodes.Ldsfld, GetType(Utils.Constants).GetField("lf"))
 Typ = GetType(Utils.Constants).GetField("lf").FieldType
-ReDim Preserve typ6(UBound(typ6) + 1)
-typ6(UBound(typ6)) = Typ
-AnalyzeIL.Emit(OpCodes.Call, GetType(String).GetMethod("Compare", typ6))
-Typ = GetType(String).GetMethod("Compare", typ6).ReturnType
+ReDim Preserve typ8(UBound(typ8) + 1)
+typ8(UBound(typ8)) = Typ
+AnalyzeIL.Emit(OpCodes.Call, GetType(String).GetMethod("Compare", typ8))
+Typ = GetType(String).GetMethod("Compare", typ8).ReturnType
 AnalyzeIL.Emit(OpCodes.Stloc, 13)
-AnalyzeIL.MarkSequencePoint(doc3, 43, 1, 43, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 49, 1, 49, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 13)
 Typ = GetType(System.Int32)
 AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(0))
@@ -2630,30 +2629,30 @@ Dim cont54 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
 AnalyzeIL.Emit(OpCodes.Beq, tru54)
 AnalyzeIL.Emit(OpCodes.Br, fa54)
 AnalyzeIL.MarkLabel(tru54)
-AnalyzeIL.MarkSequencePoint(doc3, 44, 1, 44, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 50, 1, 50, 100)
 AnalyzeIL.Emit(OpCodes.Ldc_I4, 1)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Stloc, 5)
-AnalyzeIL.MarkSequencePoint(doc3, 45, 1, 45, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 51, 1, 51, 100)
 AnalyzeIL.Emit(OpCodes.Br, cont54)
 AnalyzeIL.MarkLabel(fa54)
 AnalyzeIL.Emit(OpCodes.Br, cont54)
 AnalyzeIL.MarkLabel(cont54)
-AnalyzeIL.MarkSequencePoint(doc3, 47, 1, 47, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 53, 1, 53, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 4)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Ldloc, 5)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.And)
 AnalyzeIL.Emit(OpCodes.Stloc, 6)
-AnalyzeIL.MarkSequencePoint(doc3, 48, 1, 48, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 54, 1, 54, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 4)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Ldloc, 5)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Or)
 AnalyzeIL.Emit(OpCodes.Stloc, 7)
-AnalyzeIL.MarkSequencePoint(doc3, 50, 1, 50, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 56, 1, 56, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 7)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Ldc_I4, 0)
@@ -2664,23 +2663,23 @@ Dim cont55 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
 AnalyzeIL.Emit(OpCodes.Beq, tru55)
 AnalyzeIL.Emit(OpCodes.Br, fa55)
 AnalyzeIL.MarkLabel(tru55)
-AnalyzeIL.MarkSequencePoint(doc3, 51, 1, 51, 100)
-Dim typ7(-1) As Type
+AnalyzeIL.MarkSequencePoint(doc3, 57, 1, 57, 100)
+Dim typ9(-1) As Type
 AnalyzeIL.Emit(OpCodes.Ldloc, 8)
 Typ = GetType(System.String)
-ReDim Preserve typ7(UBound(typ7) + 1)
-typ7(UBound(typ7)) = Typ
-AnalyzeIL.Emit(OpCodes.Ldloc, 12)
+ReDim Preserve typ9(UBound(typ9) + 1)
+typ9(UBound(typ9)) = Typ
+AnalyzeIL.Emit(OpCodes.Ldloc, 11)
 Typ = GetType(System.String)
-ReDim Preserve typ7(UBound(typ7) + 1)
-typ7(UBound(typ7)) = Typ
-AnalyzeIL.Emit(OpCodes.Call, GetType(String).GetMethod("Concat", typ7))
-Typ = GetType(String).GetMethod("Concat", typ7).ReturnType
+ReDim Preserve typ9(UBound(typ9) + 1)
+typ9(UBound(typ9)) = Typ
+AnalyzeIL.Emit(OpCodes.Call, GetType(String).GetMethod("Concat", typ9))
+Typ = GetType(String).GetMethod("Concat", typ9).ReturnType
 AnalyzeIL.Emit(OpCodes.Stloc, 8)
-AnalyzeIL.MarkSequencePoint(doc3, 52, 1, 52, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 58, 1, 58, 100)
 AnalyzeIL.Emit(OpCodes.Br, cont55)
 AnalyzeIL.MarkLabel(fa55)
-AnalyzeIL.MarkSequencePoint(doc3, 53, 1, 53, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 59, 1, 59, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 5)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Ldc_I4, 1)
@@ -2691,94 +2690,101 @@ Dim cont56 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
 AnalyzeIL.Emit(OpCodes.Beq, tru56)
 AnalyzeIL.Emit(OpCodes.Br, fa56)
 AnalyzeIL.MarkLabel(tru56)
-AnalyzeIL.MarkSequencePoint(doc3, 54, 1, 54, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 60, 1, 60, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 9)
 Typ = GetType(System.Int32)
 AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 AnalyzeIL.Emit(OpCodes.Add)
 AnalyzeIL.Emit(OpCodes.Stloc, 9)
-AnalyzeIL.MarkSequencePoint(doc3, 55, 1, 55, 100)
-Dim typ8(-1) As Type
+AnalyzeIL.MarkSequencePoint(doc3, 61, 1, 61, 100)
+Dim typ10(-1) As Type
 AnalyzeIL.Emit(OpCodes.Ldloc, 8)
 Typ = GetType(System.String)
-ReDim Preserve typ8(UBound(typ8) + 1)
-typ8(UBound(typ8)) = Typ
-AnalyzeIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ8))
-Typ = GetType(Console).GetMethod("WriteLine", typ8).ReturnType
+ReDim Preserve typ10(UBound(typ10) + 1)
+typ10(UBound(typ10)) = Typ
+AnalyzeIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ10))
+Typ = GetType(Console).GetMethod("WriteLine", typ10).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 AnalyzeIL.Emit(OpCodes.Pop)
 End If
-AnalyzeIL.MarkSequencePoint(doc3, 56, 1, 56, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 62, 1, 62, 100)
 AnalyzeIL.Emit(OpCodes.Newobj, GetType(Stmt).GetConstructor(Type.EmptyTypes))
 AnalyzeIL.Emit(OpCodes.Stloc, 1)
-AnalyzeIL.MarkSequencePoint(doc3, 57, 1, 57, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 63, 1, 63, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(Stmt)
 AnalyzeIL.Emit(OpCodes.Ldloc, 9)
 Typ = GetType(System.Int32)
 AnalyzeIL.Emit(OpCodes.Stfld, GetType(Stmt).GetField("Line"))
-AnalyzeIL.MarkSequencePoint(doc3, 58, 1, 58, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 64, 1, 64, 100)
 AnalyzeIL.Emit(OpCodes.Newobj, asm.GetType("dylan.NET.Tokenizer.Lexer.Line").GetConstructor(Type.EmptyTypes))
 AnalyzeIL.Emit(OpCodes.Stloc, 2)
-AnalyzeIL.MarkSequencePoint(doc3, 59, 1, 59, 100)
-Dim typ9(-1) As Type
+AnalyzeIL.MarkSequencePoint(doc3, 65, 1, 65, 100)
+Dim typ11(-1) As Type
 AnalyzeIL.Emit(OpCodes.Ldloc, 2)
 Typ = asm.GetType("dylan.NET.Tokenizer.Lexer.Line")
 Typ03 = Typ
 AnalyzeIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ9(UBound(typ9) + 1)
-typ9(UBound(typ9)) = Typ
+ReDim Preserve typ11(UBound(typ11) + 1)
+typ11(UBound(typ11)) = Typ
 AnalyzeIL.Emit(OpCodes.Ldloc, 8)
 Typ = GetType(System.String)
-ReDim Preserve typ9(UBound(typ9) + 1)
-typ9(UBound(typ9)) = Typ
-AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Analyze", typ9))
-Typ = Typ03.GetMethod("Analyze", typ9).ReturnType
+ReDim Preserve typ11(UBound(typ11) + 1)
+typ11(UBound(typ11)) = Typ
+AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Analyze", typ11))
+Typ = Typ03.GetMethod("Analyze", typ11).ReturnType
 AnalyzeIL.Emit(OpCodes.Stloc, 1)
-AnalyzeIL.MarkSequencePoint(doc3, 60, 1, 60, 100)
-Dim typ10(-1) As Type
+AnalyzeIL.MarkSequencePoint(doc3, 66, 1, 66, 100)
+Dim typ12(-1) As Type
 AnalyzeIL.Emit(OpCodes.Ldloc, 0)
 Typ = GetType(StmtSet)
 Typ03 = Typ
 AnalyzeIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ10(UBound(typ10) + 1)
-typ10(UBound(typ10)) = Typ
-AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("AddStmt", typ10))
-Typ = Typ03.GetMethod("AddStmt", typ10).ReturnType
+ReDim Preserve typ12(UBound(typ12) + 1)
+typ12(UBound(typ12)) = Typ
+AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("AddStmt", typ12))
+Typ = Typ03.GetMethod("AddStmt", typ12).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 AnalyzeIL.Emit(OpCodes.Pop)
 End If
-AnalyzeIL.MarkSequencePoint(doc3, 61, 1, 61, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 67, 1, 67, 100)
 AnalyzeIL.Emit(OpCodes.Ldstr, "")
 Typ = GetType(System.String)
 AnalyzeIL.Emit(OpCodes.Stloc, 8)
-AnalyzeIL.MarkSequencePoint(doc3, 62, 1, 62, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 68, 1, 68, 100)
 AnalyzeIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Stloc, 4)
-AnalyzeIL.MarkSequencePoint(doc3, 63, 1, 63, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 69, 1, 69, 100)
 AnalyzeIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 AnalyzeIL.Emit(OpCodes.Stloc, 5)
-AnalyzeIL.MarkSequencePoint(doc3, 64, 1, 64, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 70, 1, 70, 100)
 AnalyzeIL.Emit(OpCodes.Br, cont56)
 AnalyzeIL.MarkLabel(fa56)
 AnalyzeIL.Emit(OpCodes.Br, cont56)
 AnalyzeIL.MarkLabel(cont56)
-AnalyzeIL.MarkSequencePoint(doc3, 65, 1, 65, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 71, 1, 71, 100)
 AnalyzeIL.Emit(OpCodes.Br, cont55)
 AnalyzeIL.MarkLabel(cont55)
-AnalyzeIL.MarkSequencePoint(doc3, 67, 1, 67, 100)
-AnalyzeIL.Emit(OpCodes.Ldloc, 11)
-Typ = GetType(System.Int32)
+AnalyzeIL.MarkSequencePoint(doc3, 73, 1, 73, 100)
+AnalyzeIL.Emit(OpCodes.Ldloc, 3)
+Typ = GetType(StreamReader)
+Typ03 = Typ
+AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Peek", Type.EmptyTypes))
+Typ = Typ03.GetMethod("Peek", Type.EmptyTypes).ReturnType
+AnalyzeIL.Emit(OpCodes.Stloc, 10)
+AnalyzeIL.MarkSequencePoint(doc3, 75, 1, 75, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 10)
+Typ = GetType(System.Int32)
+AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(-1))
 Typ = GetType(System.Int32)
 Dim fa57 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
 Dim tru57 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
@@ -2786,86 +2792,86 @@ Dim cont57 As System.Reflection.Emit.Label = AnalyzeIL.DefineLabel()
 AnalyzeIL.Emit(OpCodes.Beq, tru57)
 AnalyzeIL.Emit(OpCodes.Br, fa57)
 AnalyzeIL.MarkLabel(tru57)
-AnalyzeIL.MarkSequencePoint(doc3, 68, 1, 68, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 76, 1, 76, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 9)
 Typ = GetType(System.Int32)
 AnalyzeIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 AnalyzeIL.Emit(OpCodes.Add)
 AnalyzeIL.Emit(OpCodes.Stloc, 9)
-AnalyzeIL.MarkSequencePoint(doc3, 69, 1, 69, 100)
-Dim typ11(-1) As Type
+AnalyzeIL.MarkSequencePoint(doc3, 77, 1, 77, 100)
+Dim typ14(-1) As Type
 AnalyzeIL.Emit(OpCodes.Ldloc, 8)
 Typ = GetType(System.String)
-ReDim Preserve typ11(UBound(typ11) + 1)
-typ11(UBound(typ11)) = Typ
-AnalyzeIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ11))
-Typ = GetType(Console).GetMethod("WriteLine", typ11).ReturnType
+ReDim Preserve typ14(UBound(typ14) + 1)
+typ14(UBound(typ14)) = Typ
+AnalyzeIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ14))
+Typ = GetType(Console).GetMethod("WriteLine", typ14).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 AnalyzeIL.Emit(OpCodes.Pop)
 End If
-AnalyzeIL.MarkSequencePoint(doc3, 70, 1, 70, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 78, 1, 78, 100)
 AnalyzeIL.Emit(OpCodes.Newobj, GetType(Stmt).GetConstructor(Type.EmptyTypes))
 AnalyzeIL.Emit(OpCodes.Stloc, 1)
-AnalyzeIL.MarkSequencePoint(doc3, 71, 1, 71, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 79, 1, 79, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(Stmt)
 AnalyzeIL.Emit(OpCodes.Ldloc, 9)
 Typ = GetType(System.Int32)
 AnalyzeIL.Emit(OpCodes.Stfld, GetType(Stmt).GetField("Line"))
-AnalyzeIL.MarkSequencePoint(doc3, 72, 1, 72, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 80, 1, 80, 100)
 AnalyzeIL.Emit(OpCodes.Newobj, asm.GetType("dylan.NET.Tokenizer.Lexer.Line").GetConstructor(Type.EmptyTypes))
 AnalyzeIL.Emit(OpCodes.Stloc, 2)
-AnalyzeIL.MarkSequencePoint(doc3, 73, 1, 73, 100)
-Dim typ12(-1) As Type
+AnalyzeIL.MarkSequencePoint(doc3, 81, 1, 81, 100)
+Dim typ15(-1) As Type
 AnalyzeIL.Emit(OpCodes.Ldloc, 2)
 Typ = asm.GetType("dylan.NET.Tokenizer.Lexer.Line")
 Typ03 = Typ
 AnalyzeIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ12(UBound(typ12) + 1)
-typ12(UBound(typ12)) = Typ
+ReDim Preserve typ15(UBound(typ15) + 1)
+typ15(UBound(typ15)) = Typ
 AnalyzeIL.Emit(OpCodes.Ldloc, 8)
 Typ = GetType(System.String)
-ReDim Preserve typ12(UBound(typ12) + 1)
-typ12(UBound(typ12)) = Typ
-AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Analyze", typ12))
-Typ = Typ03.GetMethod("Analyze", typ12).ReturnType
+ReDim Preserve typ15(UBound(typ15) + 1)
+typ15(UBound(typ15)) = Typ
+AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Analyze", typ15))
+Typ = Typ03.GetMethod("Analyze", typ15).ReturnType
 AnalyzeIL.Emit(OpCodes.Stloc, 1)
-AnalyzeIL.MarkSequencePoint(doc3, 74, 1, 74, 100)
-Dim typ13(-1) As Type
+AnalyzeIL.MarkSequencePoint(doc3, 82, 1, 82, 100)
+Dim typ16(-1) As Type
 AnalyzeIL.Emit(OpCodes.Ldloc, 0)
 Typ = GetType(StmtSet)
 Typ03 = Typ
 AnalyzeIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ13(UBound(typ13) + 1)
-typ13(UBound(typ13)) = Typ
-AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("AddStmt", typ13))
-Typ = Typ03.GetMethod("AddStmt", typ13).ReturnType
+ReDim Preserve typ16(UBound(typ16) + 1)
+typ16(UBound(typ16)) = Typ
+AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("AddStmt", typ16))
+Typ = Typ03.GetMethod("AddStmt", typ16).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 AnalyzeIL.Emit(OpCodes.Pop)
 End If
-AnalyzeIL.MarkSequencePoint(doc3, 75, 1, 75, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 83, 1, 83, 100)
 AnalyzeIL.Emit(OpCodes.Br, label1)
-AnalyzeIL.MarkSequencePoint(doc3, 76, 1, 76, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 84, 1, 84, 100)
 AnalyzeIL.Emit(OpCodes.Br, cont57)
 AnalyzeIL.MarkLabel(fa57)
-AnalyzeIL.MarkSequencePoint(doc3, 77, 1, 77, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 85, 1, 85, 100)
 AnalyzeIL.Emit(OpCodes.Br, label0)
-AnalyzeIL.MarkSequencePoint(doc3, 78, 1, 78, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 86, 1, 86, 100)
 AnalyzeIL.Emit(OpCodes.Br, cont57)
 AnalyzeIL.MarkLabel(cont57)
-AnalyzeIL.MarkSequencePoint(doc3, 80, 1, 80, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 88, 1, 88, 100)
 AnalyzeIL.MarkLabel(label1)
-AnalyzeIL.MarkSequencePoint(doc3, 82, 1, 82, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 90, 1, 90, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 0)
 Typ = GetType(StmtSet)
-AnalyzeIL.MarkSequencePoint(doc3, 83, 1, 83, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 91, 1, 91, 100)
 AnalyzeIL.Emit(OpCodes.Ret)
 Lexer.CreateType()
 End Sub

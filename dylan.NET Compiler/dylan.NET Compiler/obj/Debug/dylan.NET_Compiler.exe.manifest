@@ -63,7 +63,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>MMmWP9OV7omTgA75fvlSO08vxBI=</dsig:DigestValue>
+        <dsig:DigestValue>z+hZZmxBgRbkkeekCqQAFAfPqM4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -82,7 +82,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>cOhyipP1fj/4I6NlFZJm7HiNaIU=</dsig:DigestValue>
+      <dsig:DigestValue>ptML24amsKMQwmoInGmQCPhpZlk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="dylan.NET_Compiler.xml" size="15812">
