@@ -3,11 +3,33 @@ class public auto ansi beforefieldinit ParserFlags
 field public static boolean IfFlag
 field public static boolean CmtFlag
 field public static boolean NoOptFlag
+field public static boolean DecFlag
+field public static boolean IncFlag
+field public static boolean NegFlag
+field public static boolean NotFlag
+field public static boolean ConvFlag
+field public static boolean ArrFlag
+field public static integer ArrSlot
+field public static boolean RefFlag
+field public static boolean ValinrefFlag
+field public static TypeTok ConvTyp
+field public static string OrdOp
 
 method public static void ctor0()
 IfFlag = false
 CmtFlag = false
 NoOptFlag = false
+DecFlag = false
+IncFlag = false
+NegFlag = false
+NotFlag = false
+ConvFlag = false
+ArrFlag = false
+ArrSlot = -1
+RefFlag = false
+ValinrefFlag = false
+ConvTyp = new TypeTok()
+OrdOp = ""
 end method
 
 end class
