@@ -49,6 +49,47 @@ Tokens = destarr
 
 end method
 
+method public void RemToken(var ind as integer)
+
+var len as integer = Tokens[l]
+var destl as integer = len - 1
+var stopel as integer = destl
+var i as integer = -1
+var j as integer = -1
+
+var destarr as Token[] = newarr Token destl
+
+label loop
+label cont
+
+place loop
+
+i++
+
+if len > 0 then
+
+if i <> ind then
+j++
+destarr[j] = Tokens[i]
+end if
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+Tokens = destarr
+
+end method
 
 
 end class

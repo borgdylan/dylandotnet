@@ -525,6 +525,8 @@ vass::VarTyp = le::Tokens[3]
 end if
 
 vass::RExpr = asss::RExp
+var eop as ExprOptimizer = new ExprOptimizer()
+vass::RExpr = eop::Optimize(vass::RExpr)
 
 return vass
 else

@@ -29,4 +29,27 @@ end if
 return vars
 end method
 
+method public Expr Optimize(var exp as Expr)
+
+var len as integer = exp::Tokens[l] - 1
+var i as integer = -1
+
+label loop
+label cont
+
+place loop
+
+i++
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+return exp
+end method
+
 end class
