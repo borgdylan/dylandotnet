@@ -13,6 +13,7 @@ field public static boolean ValinrefFlag
 field public static TypeTok ConvTyp
 field public static string OrdOp
 field public static boolean isChanged
+field public static boolean DurConvFlag
 
 method public static void ctor0()
 IfFlag = false
@@ -28,6 +29,7 @@ ValinrefFlag = false
 ConvTyp = null
 OrdOp = ""
 isChanged = false
+DurConvFlag = false
 end method
 
 method public static void SetUnaryFalse()
@@ -41,6 +43,7 @@ ValinrefFlag = false
 ConvTyp = null
 OrdOp = ""
 isChanged = false
+DurConvFlag = false
 end method
 
 method public static Ident UpdateIdent(var id as Ident)
