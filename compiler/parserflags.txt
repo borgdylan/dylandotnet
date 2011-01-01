@@ -14,6 +14,7 @@ field public static TypeTok ConvTyp
 field public static string OrdOp
 field public static boolean isChanged
 field public static boolean DurConvFlag
+field public static boolean IdentFlag
 
 method public static void ctor0()
 IfFlag = false
@@ -30,6 +31,7 @@ ConvTyp = null
 OrdOp = ""
 isChanged = false
 DurConvFlag = false
+IdentFlag = false
 end method
 
 method public static void SetUnaryFalse()
