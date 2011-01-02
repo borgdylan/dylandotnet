@@ -87,6 +87,8 @@ end if
 
 place cont
 
+sr::Close()
+
 return stmts
 end method
 

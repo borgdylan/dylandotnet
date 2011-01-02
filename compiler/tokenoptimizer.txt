@@ -672,6 +672,33 @@ ParserFlags::CmtFlag = true
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "true")
+if comp = 0 then
+compb = true
+end if
+orflg = compb
+comp = String::Compare(tok::Value, "false")
+if comp = 0 then
+compb = true
+end if
+orflg = orflg or compb
+
+if compb = true then
+var boolit as BooleanLiteral = new BooleanLiteral()
+boolit::Line = tok::Line
+boolit::Value = tok::Value
+comp = String::Compare(tok::Value, "true")
+if comp = 0 then
+boolit::BoolVal = true
+end if
+comp = String::Compare(tok::Value, "false")
+if comp = 0 then
+boolit::BoolVal = false
+end if
+tok = boolit
+goto fin
+end if
+
 compb = Utils.ParseUtils::LikeOP(tok::Value, "'*'")
 
 if compb = true then
@@ -686,6 +713,7 @@ chrlit::CharVal = $char$chrlit::Value
 tok = chrlit
 goto fin
 end if
+
 
 tmpstr = String::Concat(Utils.Constants::quot,"*",Utils.Constants::quot)
 compb = Utils.ParseUtils::LikeOP(tok::Value, tmpstr)

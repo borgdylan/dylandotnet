@@ -7,7 +7,7 @@ field public static boolean NegFlag
 field public static boolean NotFlag
 field public static boolean ConvFlag
 field public static boolean ArrFlag
-field public static Token ArrSlot
+field public static Expr ArrSlot
 field public static boolean RefFlag
 field public static boolean ValinrefFlag
 field public static TypeTok ConvTyp
@@ -56,6 +56,37 @@ id::IsArr = ArrFlag
 id::ArrLoc = ArrSlot
 id::IsRef = RefFlag
 id::IsValInRef = ValinrefFlag
+id::TTok = ConvTyp
+id::OrdOp = OrdOp
+return id
+end method
+
+method public static CharLiteral UpdateCharLit(var id as CharLiteral)
+id::Conv = ConvFlag
+id::TTok = ConvTyp
+id::OrdOp = OrdOp
+return id
+end method
+
+method public static StringLiteral UpdateStringLit(var id as StringLiteral)
+id::Conv = ConvFlag
+id::TTok = ConvTyp
+id::OrdOp = OrdOp
+return id
+end method
+
+method public static BooleanLiteral UpdateBoolLit(var id as BooleanLiteral)
+id::DoNot = NotFlag
+id::Conv = ConvFlag
+id::TTok = ConvTyp
+id::OrdOp = OrdOp
+return id
+end method
+
+method public static NumberLiteral UpdateNumLit(var id as NumberLiteral)
+id::DoNeg = NegFlag
+id::DoNot = NotFlag
+id::Conv = ConvFlag
 id::TTok = ConvTyp
 id::OrdOp = OrdOp
 return id

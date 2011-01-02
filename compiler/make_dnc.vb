@@ -87,7 +87,7 @@ Dim mainparam00 As ParameterBuilder = main.DefineParameter(0, ParameterAttribute
 Dim mainparam01 As ParameterBuilder = main.DefineParameter(1, ParameterAttributes.None, "args")
 mainIL.MarkSequencePoint(doc2, 5, 1, 5, 100)
 Dim typ1(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.2 for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
+mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.3 for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
 Typ = GetType(System.String)
 ReDim Preserve typ1(UBound(typ1) + 1)
 typ1(UBound(typ1)) = Typ
@@ -100,7 +100,7 @@ mainIL.Emit(OpCodes.Pop)
 End If
 mainIL.MarkSequencePoint(doc2, 6, 1, 6, 100)
 Dim typ2(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "                           and Novell Mono v. 2.6.7")
+mainIL.Emit(OpCodes.Ldstr, "                           and Novell Mono v. 2.6.7 /v. 2.8.1")
 Typ = GetType(System.String)
 ReDim Preserve typ2(UBound(typ2) + 1)
 typ2(UBound(typ2)) = Typ
@@ -261,7 +261,7 @@ End Sub
 Sub Main()
 
 asmName = New AssemblyName("dnc")
-asmName.Version = New System.Version(11, 2, 2, 0)
+asmName.Version = New System.Version(11, 2, 3, 0)
 asm  = AppDomain.CurrentDomain.DefineDynamicAssembly(asmName, AssemblyBuilderAccess.Save, CStr("E:\Code\dylannet\compiler\"))
 mdl = asm.DefineDynamicModule(asmName.Name & ".exe" , asmName.Name & ".exe", True)
 resw = mdl.DefineResource("dnc.resources" ,  "Description")
@@ -278,7 +278,7 @@ asm.SetCustomAttribute(daBuilder)
 Module1()
 Dim vaType As Type = GetType(AssemblyFileVersionAttribute)
 Dim vaCtor As ConstructorInfo = vaType.GetConstructor(New Type() { GetType(String) })
-Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.2.0"})
+Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.3.0"})
 asm.SetCustomAttribute(vaBuilder)
 
 Dim paType As Type = GetType(AssemblyProductAttribute)

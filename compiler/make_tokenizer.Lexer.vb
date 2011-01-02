@@ -2869,9 +2869,20 @@ AnalyzeIL.MarkLabel(cont57)
 AnalyzeIL.MarkSequencePoint(doc3, 88, 1, 88, 100)
 AnalyzeIL.MarkLabel(label1)
 AnalyzeIL.MarkSequencePoint(doc3, 90, 1, 90, 100)
+AnalyzeIL.Emit(OpCodes.Ldloc, 3)
+Typ = GetType(StreamReader)
+Typ03 = Typ
+AnalyzeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Close", Type.EmptyTypes))
+Typ = Typ03.GetMethod("Close", Type.EmptyTypes).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+AnalyzeIL.Emit(OpCodes.Pop)
+End If
+AnalyzeIL.MarkSequencePoint(doc3, 92, 1, 92, 100)
 AnalyzeIL.Emit(OpCodes.Ldloc, 0)
 Typ = GetType(StmtSet)
-AnalyzeIL.MarkSequencePoint(doc3, 91, 1, 91, 100)
+AnalyzeIL.MarkSequencePoint(doc3, 93, 1, 93, 100)
 AnalyzeIL.Emit(OpCodes.Ret)
 Lexer.CreateType()
 End Sub
@@ -2879,7 +2890,7 @@ End Sub
 Sub Main()
 
 asmName = New AssemblyName("tokenizer.Lexer")
-asmName.Version = New System.Version(11, 2, 2, 0)
+asmName.Version = New System.Version(11, 2, 3, 0)
 asm  = AppDomain.CurrentDomain.DefineDynamicAssembly(asmName, AssemblyBuilderAccess.Save, CStr("E:\Code\dylannet\compiler\"))
 mdl = asm.DefineDynamicModule(asmName.Name & ".dll" , asmName.Name & ".dll", True)
 resw = mdl.DefineResource("tokenizer.Lexer.resources" ,  "Description")
@@ -2898,7 +2909,7 @@ Line()
 Lexer()
 Dim vaType As Type = GetType(AssemblyFileVersionAttribute)
 Dim vaCtor As ConstructorInfo = vaType.GetConstructor(New Type() { GetType(String) })
-Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.2.0"})
+Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.3.0"})
 asm.SetCustomAttribute(vaBuilder)
 
 Dim paType As Type = GetType(AssemblyProductAttribute)

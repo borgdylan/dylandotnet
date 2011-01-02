@@ -53,7 +53,7 @@ method public Expr procMethodCall(var stm as Expr, var i as integer)
 var mn as MethodNameTok = new MethodNameTok()
 var mct as MethodCallTok = new MethodCallTok()
 var idt as Ident = null
-var exp as Expr = new Expr()
+var ep2 as Expr = new Expr()
 var lvl as integer = 1
 var d as boolean = true
 var j as integer = 0
@@ -89,7 +89,7 @@ if b2 = true then
 lvl--
 if lvl = 0 then
 d = false
-mct::AddParam(exp)
+mct::AddParam(ep2)
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
 i--
@@ -119,8 +119,8 @@ b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
 if lvl = 1 then
 d = false
-mct::AddParam(exp)
-exp = new Expr()
+mct::AddParam(ep2)
+ep2 = new Expr()
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
 i--
@@ -129,12 +129,15 @@ else
 d = true
 goto fin
 end if
+else
+d = true
+goto fin
 end if
 
 place fin
 
 if d = true then
-exp::AddToken(stm::Tokens[i])
+ep2::AddToken(stm::Tokens[i])
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
 i--
@@ -221,6 +224,58 @@ ParserFlags::IdentFlag = true
 if ParserFlags::isChanged = true then
 var id1 as Ident = exp::Tokens[i]
 exp::Tokens[i] = ParserFlags::UpdateIdent(id1)
+ParserFlags::SetUnaryFalse()
+j = i
+end if
+goto fin
+end if
+
+typ = gettype CharLiteral
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+if ParserFlags::isChanged = true then
+var cl1 as CharLiteral = exp::Tokens[i]
+exp::Tokens[i] = ParserFlags::UpdateCharLit(cl1)
+ParserFlags::SetUnaryFalse()
+j = i
+end if
+goto fin
+end if
+
+typ = gettype StringLiteral
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+if ParserFlags::isChanged = true then
+var sl1 as StringLiteral = exp::Tokens[i]
+exp::Tokens[i] = ParserFlags::UpdateStringLit(sl1)
+ParserFlags::SetUnaryFalse()
+j = i
+end if
+goto fin
+end if
+
+typ = gettype BooleanLiteral
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+if ParserFlags::isChanged = true then
+var bl1 as BooleanLiteral = exp::Tokens[i]
+exp::Tokens[i] = ParserFlags::UpdateBoolLit(bl1)
+ParserFlags::SetUnaryFalse()
+j = i
+end if
+goto fin
+end if
+
+typ = gettype NumberLiteral
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+if ParserFlags::isChanged = true then
+var nl1 as NumberLiteral = exp::Tokens[i]
+exp::Tokens[i] = ParserFlags::UpdateNumLit(nl1)
 ParserFlags::SetUnaryFalse()
 j = i
 end if

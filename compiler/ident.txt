@@ -7,7 +7,7 @@ field public boolean IsValInRefInst
 field public boolean Conv
 field public TypeTok TTok
 field public boolean IsArr
-field public Token ArrLoc
+field public Expr ArrLoc
 field public boolean DoNeg
 field public boolean DoNot
 field public string OrdOp
@@ -23,7 +23,7 @@ IsValInRef = false
 Conv = false
 TTok = new TypeTok()
 IsArr = false
-ArrLoc = new Token()
+ArrLoc = new Expr()
 DoNeg = false
 DoNot = false
 OrdOp = ""
@@ -40,7 +40,7 @@ IsValInRef = false
 Conv = false
 TTok = new TypeTok()
 IsArr = false
-ArrLoc = new Token()
+ArrLoc = new Expr()
 DoNeg = false
 DoNot = false
 OrdOp = ""

@@ -395,6 +395,7 @@ var tok2 as Token = stm::Tokens[i]
 var typ2 as System.Type
 var b2 as boolean
 var len as integer = stm::Tokens[l]
+var eopt as ExprOptimizer = new ExprOptimizer()
 
 label loop2
 label cont2
@@ -412,6 +413,7 @@ if b2 = true then
 lvl--
 if lvl = 0 then
 d = false
+exp = eopt::Optimize(exp)
 mct::AddParam(exp)
 goto cont2
 else
@@ -436,6 +438,7 @@ b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
 if lvl = 1 then
 d = false
+exp = eopt::Optimize(exp)
 mct::AddParam(exp)
 exp = new Expr()
 goto fin
@@ -443,6 +446,9 @@ else
 d = true
 goto fin
 end if
+else
+d = true
+goto fin
 end if
 
 place fin
@@ -611,6 +617,9 @@ goto loop3
 end if
 
 place cont3
+
+var eop as ExprOptimizer = new ExprOptimizer()
+re = eop::Optimize(re)
 
 asss::Line = stm::Line
 asss::Tokens = stm::Tokens
