@@ -42,9 +42,14 @@ import dylan.NET.Tokenizer.AST.Tokens.Attributes
 import dylan.NET.Tokenizer.AST.Tokens.Chars
 import dylan.NET.Tokenizer.Parser
 
+locimport dylan.NET.Tokenizer.CodeGen
+
 assembly tokenizer.CodeGen dll
 ver 11.2.3.0
 
 namespace dylan.NET.Tokenizer.CodeGen
 #include E:\Code\dylannet\compiler\instructionhelper.txt
+#include E:\Code\dylannet\compiler\importer.txt
+#include E:\Code\dylannet\compiler\stmtreader.txt
+#include E:\Code\dylannet\compiler\codegenerator.txt
 end namespace

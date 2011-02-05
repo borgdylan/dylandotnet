@@ -1,6 +1,6 @@
 class public auto ansi InstructionHelper
 
-method public boolean compStr(var s1 as string, var s2 as string)
+method public static boolean compStr(var s1 as string, var s2 as string)
 var num as integer = String::Compare(s1,s2)
 if num = 0 then
 return true
@@ -531,7 +531,7 @@ end if
 
 b = compStr(code, "ldind.i8")
 if b = true then
-return OpCodes::Ldelem_I8
+return OpCodes::Ldind_I8
 goto fin
 end if
 
@@ -543,7 +543,7 @@ end if
 
 b = compStr(code, "ldind.r8")
 if b = true then
-return OpCodes::Ldelem_R8
+return OpCodes::Ldind_R8
 goto fin
 end if
 
@@ -591,7 +591,7 @@ end if
 
 b = compStr(code, "ldloc.1")
 if b = true then
-return OpCodes::Ldarg_1
+return OpCodes::Ldloc_1
 goto fin
 end if
 
@@ -752,6 +752,192 @@ end if
 b = compStr(code, "starg")
 if b = true then
 return OpCodes::Starg
+goto fin
+end if
+
+b = compStr(code, "stelem")
+if b = true then
+return OpCodes::Stelem
+goto fin
+end if
+
+b = compStr(code, "stelem.i")
+if b = true then
+return OpCodes::Stelem_I
+goto fin
+end if
+
+b = compStr(code, "stelem.i1")
+if b = true then
+return OpCodes::Stelem_I1
+goto fin
+end if
+
+b = compStr(code, "stelem.i2")
+if b = true then
+return OpCodes::Stelem_I2
+goto fin
+end if
+
+b = compStr(code, "stelem.i4")
+if b = true then
+return OpCodes::Stelem_I4
+goto fin
+end if
+
+b = compStr(code, "stelem.i8")
+if b = true then
+return OpCodes::Stelem_I8
+goto fin
+end if
+
+b = compStr(code, "stelem.r4")
+if b = true then
+return OpCodes::Stelem_R4
+goto fin
+end if
+
+b = compStr(code, "stelem.r8")
+if b = true then
+return OpCodes::Stelem_R8
+goto fin
+end if
+
+b = compStr(code, "stelem.ref")
+if b = true then
+return OpCodes::Stelem_Ref
+goto fin
+end if
+
+b = compStr(code, "stfld")
+if b = true then
+return OpCodes::Stfld
+goto fin
+end if
+
+b = compStr(code, "stind.i")
+if b = true then
+return OpCodes::Stind_I
+goto fin
+end if
+
+b = compStr(code, "stind.i1")
+if b = true then
+return OpCodes::Ldind_I1
+goto fin
+end if
+
+b = compStr(code, "stind.i2")
+if b = true then
+return OpCodes::Stind_I2
+goto fin
+end if
+
+b = compStr(code, "stind.i4")
+if b = true then
+return OpCodes::Stind_I4
+goto fin
+end if
+
+b = compStr(code, "stind.i8")
+if b = true then
+return OpCodes::Stind_I8
+goto fin
+end if
+
+b = compStr(code, "stind.r4")
+if b = true then
+return OpCodes::Stind_R4
+goto fin
+end if
+
+b = compStr(code, "stind.r8")
+if b = true then
+return OpCodes::Stelem_R8
+goto fin
+end if
+
+b = compStr(code, "stind.ref")
+if b = true then
+return OpCodes::Stind_Ref
+goto fin
+end if
+
+b = compStr(code, "stloc")
+if b = true then
+return OpCodes::Stloc
+goto fin
+end if
+
+b = compStr(code, "stloc.0")
+if b = true then
+return OpCodes::Stloc_0
+goto fin
+end if
+
+b = compStr(code, "stloc.1")
+if b = true then
+return OpCodes::Stloc_1
+goto fin
+end if
+
+b = compStr(code, "stloc.2")
+if b = true then
+return OpCodes::Stloc_2
+goto fin
+end if
+
+b = compStr(code, "stloc.3")
+if b = true then
+return OpCodes::Stloc_3
+goto fin
+end if
+
+b = compStr(code, "stobj")
+if b = true then
+return OpCodes::Stobj
+goto fin
+end if
+
+b = compStr(code, "stsfld")
+if b = true then
+return OpCodes::Stsfld
+goto fin
+end if
+
+b = compStr(code, "sub")
+if b = true then
+return OpCodes::Sub
+goto fin
+end if
+
+b = compStr(code, "sub.ovf")
+if b = true then
+return OpCodes::Sub_Ovf
+goto fin
+end if
+
+b = compStr(code, "throw")
+if b = true then
+return OpCodes::Throw
+goto fin
+end if
+
+b = compStr(code, "unbox")
+if b = true then
+return OpCodes::Unbox
+goto fin
+end if
+
+b = compStr(code, "unbox.any")
+if b = true then
+return OpCodes::Unbox_Any
+goto fin
+end if
+
+b = compStr(code, "xor")
+if b = true then
+return OpCodes::Xor
 goto fin
 end if
 

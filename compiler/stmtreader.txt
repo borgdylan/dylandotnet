@@ -1,0 +1,37 @@
+class public auto ansi StmtReader
+
+method public void Read(var stm as Stmt)
+
+var typ as System.Type
+var b as boolean = false
+
+label fin
+
+typ = gettype RefasmStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var rastm as RefasmStmt = stm
+var ap as Token = rastm::AsmPath
+
+var tmpstr as string = String::Concat(Utils.Constants::quot,"*",Utils.Constants::quot)
+var compb as boolean = Utils.ParseUtils::LikeOP(ap::Value, tmpstr)
+
+if compb = true then
+tmpstr = ap::Value
+var tmpchrarr as char[] = newarr char 1
+tmpchrarr[0] = $char$Utils.Constants::quot
+tmpstr = tmpstr::Trim(tmpchrarr)
+ap::Value = tmpstr
+end if
+
+var asm as Assembly = Assembly::LoadFrom(ap::Value)
+Importer::AddAsm(asm)
+goto fin
+end if
+
+place fin
+
+end method
+
+end class

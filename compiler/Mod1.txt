@@ -16,6 +16,8 @@ var lx as Lexer = new Lexer()
 var pstmts as StmtSet = lx::Analyze(p)
 var ps as Parser = new Parser()
 var ppstmts as StmtSet = ps::Parse(pstmts)
+var cg as CodeGenerator = new CodeGenerator()
+cg::EmitMSIL(ppstmts)
 
 catch ex as Exception
 

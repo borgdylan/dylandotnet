@@ -1,4 +1,5 @@
-﻿Imports dylan.NET.Tokenizer.Parser
+﻿Imports dylan.NET.Tokenizer.CodeGen
+Imports dylan.NET.Tokenizer.Parser
 Imports dylan.NET.Tokenizer.AST.Stmts
 Imports dylan.NET.Tokenizer.Lexer
 Imports dylan.NET.Utils
@@ -207,34 +208,55 @@ typ6(UBound(typ6)) = Typ
 mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Parse", typ6))
 Typ = Typ03.GetMethod("Parse", typ6).ReturnType
 mainIL.Emit(OpCodes.Stloc, 4)
+mainIL.MarkSequencePoint(doc2, 19, 1, 19, 100)
+Dim locbldr5 As LocalBuilder = mainIL.DeclareLocal(GetType(CodeGenerator))
+locbldr5.SetLocalSymInfo("cg")
+mainIL.Emit(OpCodes.Newobj, GetType(CodeGenerator).GetConstructor(Type.EmptyTypes))
+mainIL.Emit(OpCodes.Stloc, 5)
 mainIL.MarkSequencePoint(doc2, 20, 1, 20, 100)
-Dim locbldr5 As LocalBuilder = mainIL.DeclareLocal(GetType(Exception))
-locbldr5.SetLocalSymInfo("ex")
-mainIL.BeginCatchBlock(GetType(Exception))
-mainIL.Emit(OpCodes.Stloc,5)
-mainIL.MarkSequencePoint(doc2, 22, 1, 22, 100)
-Dim locbldr6 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
-locbldr6.SetLocalSymInfo("exstr")
+Dim typ7(-1) As Type
 mainIL.Emit(OpCodes.Ldloc, 5)
-Typ = GetType(Exception)
+Typ = GetType(CodeGenerator)
 Typ03 = Typ
-mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("ToString", Type.EmptyTypes))
-Typ = Typ03.GetMethod("ToString", Type.EmptyTypes).ReturnType
-mainIL.Emit(OpCodes.Stloc, 6)
-mainIL.MarkSequencePoint(doc2, 23, 1, 23, 100)
-Dim typ8(-1) As Type
-mainIL.Emit(OpCodes.Ldloc, 6)
-Typ = GetType(System.String)
-ReDim Preserve typ8(UBound(typ8) + 1)
-typ8(UBound(typ8)) = Typ
-mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ8))
-Typ = GetType(Console).GetMethod("WriteLine", typ8).ReturnType
+mainIL.Emit(OpCodes.Ldloc, 4)
+Typ = GetType(StmtSet)
+ReDim Preserve typ7(UBound(typ7) + 1)
+typ7(UBound(typ7)) = Typ
+mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("EmitMSIL", typ7))
+Typ = Typ03.GetMethod("EmitMSIL", typ7).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 mainIL.Emit(OpCodes.Pop)
 End If
+mainIL.MarkSequencePoint(doc2, 22, 1, 22, 100)
+Dim locbldr6 As LocalBuilder = mainIL.DeclareLocal(GetType(Exception))
+locbldr6.SetLocalSymInfo("ex")
+mainIL.BeginCatchBlock(GetType(Exception))
+mainIL.Emit(OpCodes.Stloc,6)
 mainIL.MarkSequencePoint(doc2, 24, 1, 24, 100)
+Dim locbldr7 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
+locbldr7.SetLocalSymInfo("exstr")
+mainIL.Emit(OpCodes.Ldloc, 6)
+Typ = GetType(Exception)
+Typ03 = Typ
+mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("ToString", Type.EmptyTypes))
+Typ = Typ03.GetMethod("ToString", Type.EmptyTypes).ReturnType
+mainIL.Emit(OpCodes.Stloc, 7)
+mainIL.MarkSequencePoint(doc2, 25, 1, 25, 100)
+Dim typ9(-1) As Type
+mainIL.Emit(OpCodes.Ldloc, 7)
+Typ = GetType(System.String)
+ReDim Preserve typ9(UBound(typ9) + 1)
+typ9(UBound(typ9)) = Typ
+mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ9))
+Typ = GetType(Console).GetMethod("WriteLine", typ9).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+mainIL.Emit(OpCodes.Pop)
+End If
+mainIL.MarkSequencePoint(doc2, 26, 1, 26, 100)
 mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("ReadKey", Type.EmptyTypes))
 Typ = GetType(Console).GetMethod("ReadKey", Type.EmptyTypes).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
@@ -242,12 +264,12 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 mainIL.Emit(OpCodes.Pop)
 End If
-mainIL.MarkSequencePoint(doc2, 26, 1, 26, 100)
-mainIL.EndExceptionBlock()
 mainIL.MarkSequencePoint(doc2, 28, 1, 28, 100)
+mainIL.EndExceptionBlock()
+mainIL.MarkSequencePoint(doc2, 30, 1, 30, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(cont0)
-mainIL.MarkSequencePoint(doc2, 30, 1, 30, 100)
+mainIL.MarkSequencePoint(doc2, 32, 1, 32, 100)
 mainIL.Emit(OpCodes.Ret)
 Module1.CreateType()
 asm.SetEntryPoint(main)

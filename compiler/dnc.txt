@@ -15,6 +15,7 @@
 #refasm E:\Code\dylannet\compiler\tokenizer.AST.dll
 #refasm E:\Code\dylannet\compiler\tokenizer.Lexer.dll
 #refasm E:\Code\dylannet\compiler\tokenizer.Parser.dll
+#refasm E:\Code\dylannet\compiler\tokenizer.CodeGen.dll
 #refasm E:\Code\dylannet\compiler\dnu.dll
 
 import Microsoft.VisualBasic
@@ -30,6 +31,7 @@ import dylan.NET.Utils
 import dylan.NET.Tokenizer.Lexer
 import dylan.NET.Tokenizer.AST.Stmts
 import dylan.NET.Tokenizer.Parser
+import dylan.NET.Tokenizer.CodeGen
 
 assembly dnc exe
 ver 11.2.3.0

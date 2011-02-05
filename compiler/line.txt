@@ -297,7 +297,20 @@ goto fin
 end if
 end if
 
-comp = String::Compare(cc, " ")
+var tabchr as char = $char$9
+comp = String::Compare(cc, $string$tabchr)
+
+if comp = 0 then
+valinref|sca = false
+ob = true
+goto fin
+else
+valinref|sca = false
+ob = false
+end if
+
+var spchr as char = $char$32
+comp = String::Compare(cc, $string$spchr)
 
 if comp = 0 then
 valinref|sca = false
