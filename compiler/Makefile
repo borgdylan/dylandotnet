@@ -1,4 +1,4 @@
-all:
+all: compile
 	echo "Hello from the dylan.NET Makefile"
 
 ast:
@@ -12,4 +12,4 @@ codegen:
 comp:
 	dylan.NET_Compiler E:\Code\dylannet\compiler\dnc.txt
 	
-compile: comp codegen parser lexer ast
+compile: ast lexer parser codegen comp

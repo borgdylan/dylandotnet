@@ -1,0 +1,159 @@
+class public auto ansi Loader
+
+field public static boolean FldLitFlag
+field public static object FldLitVal
+field public static boolean EnumLitFlag
+field public static System.Type EnumLitTyp
+field public static System.Type FldLitTyp
+
+method public static void ctor0()
+FldLitFlag = false
+FldLitVal = null
+EnumLitFlag = false
+FldLitTyp = null
+end method
+
+method public static System.Type LoadClass(var name as string) 
+
+var typ as System.Type = null
+var i as integer = -1
+var len as integer = Importer::Asms[l] - 1
+var curasm as Assembly = null
+var j as integer = -1
+var len2 as integer = Importer::Imps[l] - 1
+var curns as string = ""
+var tmpstr as string = ""
+var nest as boolean = false
+
+label loop
+label cont
+label fin
+label loop2
+label cont2
+
+var na as string[] = ParseUtils::StringParser(name,"\")
+name = na[0]
+if na[l] > 1 then
+nest = true
+end if
+
+place loop
+i++
+
+curasm = Importer::Asms[i]
+
+typ = curasm::GetType(name)
+if typ = null then
+else
+if nest = true then
+typ = typ::GetNestedType(na[1])
+end if
+goto fin
+end if
+
+place loop2
+j++
+
+curns = Importer::Imps[j]
+
+tmpstr = String::Concat(curns, ".", name)
+typ = curasm::GetType(tmpstr)
+if typ = null then
+else
+if nest = true then
+typ = typ::GetNestedType(na[1])
+end if
+goto fin
+end if
+
+if j = len2 then
+j = -1
+goto cont2
+else
+goto loop2
+end if
+
+place cont2
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+place fin
+
+return typ
+
+end method
+
+method public static MethodInfo LoadMethod(var typ as System.Type, var name as string, var typs as System.Type[])
+
+var temptyp as System.Type = null
+var ints as System.Type[] = null
+var i as integer = -1
+var len as integer = null
+var mtdinfo as MethodInfo = null
+
+mtdinfo = typ::GetMethod(name,typs)
+
+if mtdinfo = null then
+ints = typ::GetInterfaces()
+len = ints[l] - 1
+
+label loop
+label cont
+label fin
+
+place loop
+
+i++
+
+temptyp = ints[i]
+mtdinfo = temptyp::GetMethod(name,typs)
+
+if mtdinfo = null then
+else
+goto fin
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+place fin
+
+end if
+
+return mtdinfo
+
+end method
+
+method public static FieldInfo LoadField(var typ as System.Type, var name as string)
+
+var temptyp as System.Type = null
+var fldinfo as FIeldInfo = null
+
+fldinfo = typ::GetField(name)
+
+if fldinfo <> null then
+FldLitFlag = fldinfo::get_IsLiteral()
+EnumLitFlag = typ::get_IsEnum()
+var nullref as object = null
+FldLitVal = fldinfo::GetValue(nullref)
+var obj as object = FldLitVal
+FldLitTyp = obj::GetType()
+if EnumLitFlag = true then
+EnumLitTyp = System.Enum::GetUnderlyingType(typ)
+end if
+end if
+
+return fldinfo
+
+end method
+
+end class

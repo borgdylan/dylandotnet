@@ -30,6 +30,51 @@ Importer::AddAsm(asm)
 goto fin
 end if
 
+typ = gettype ImportStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var istm as ImportStmt = stm
+var ina as Token = istm::NS
+
+tmpstr = String::Concat(Utils.Constants::quot,"*",Utils.Constants::quot)
+compb = Utils.ParseUtils::LikeOP(ina::Value, tmpstr)
+
+if compb = true then
+tmpstr = ina::Value
+tmpchrarr = newarr char 1
+tmpchrarr[0] = $char$Utils.Constants::quot
+tmpstr = tmpstr::Trim(tmpchrarr)
+ina::Value = tmpstr
+end if
+
+Importer::AddImp(ina::Value)
+goto fin
+end if
+
+typ = gettype LocimportStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var listm as LocimportStmt = stm
+var lina as Token = listm::NS
+
+tmpstr = String::Concat(Utils.Constants::quot,"*",Utils.Constants::quot)
+compb = Utils.ParseUtils::LikeOP(lina::Value, tmpstr)
+
+if compb = true then
+tmpstr = lina::Value
+tmpchrarr = newarr char 1
+tmpchrarr[0] = $char$Utils.Constants::quot
+tmpstr = tmpstr::Trim(tmpchrarr)
+lina::Value = tmpstr
+end if
+
+Importer::AddLocImp(lina::Value)
+goto fin
+end if
+
+
 place fin
 
 end method

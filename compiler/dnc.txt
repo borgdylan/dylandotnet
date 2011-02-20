@@ -20,6 +20,7 @@
 
 import Microsoft.VisualBasic
 import System
+import System.Reflection
 import System.Collections
 import System.Collections.Generic
 import System.Data
@@ -34,7 +35,7 @@ import dylan.NET.Tokenizer.Parser
 import dylan.NET.Tokenizer.CodeGen
 
 assembly dnc exe
-ver 11.2.3.0
+ver 11.2.4.0
 
 namespace dylan.NET.Compiler
 #include E:\Code\dylannet\compiler\Mod1.txt

@@ -1,0 +1,18 @@
+class public auto ansi AsmFactory
+
+field public static boolean DebugFlg
+
+field public static AssemblyName AsmNameStr
+field public static AssemblyBuilder AsmB
+field public static System.Type Type01
+field public static System.Type Type02
+field public static System.Type Type03
+field public static System.Type Type04
+field public static ModuleBuilder MdlB
+field public static ISymbolDocumentWriter DocWriter
+
+method public static void ctor0()
+DebugFlg = false
+end method
+
+end class
