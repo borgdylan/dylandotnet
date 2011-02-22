@@ -10,9 +10,15 @@ field public static System.Type Type03
 field public static System.Type Type04
 field public static ModuleBuilder MdlB
 field public static ISymbolDocumentWriter DocWriter
+field public static string CurnNS
+field public static string DfltNS
+field public static string AsmMode
 
 method public static void ctor0()
 DebugFlg = false
+CurnNS = ""
+DfltNS = ""
+AsmMode = ""
 end method
 
 end class

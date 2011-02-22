@@ -8,6 +8,8 @@ field public boolean Conv
 field public TypeTok TTok
 field public boolean IsArr
 field public Expr ArrLoc
+field public boolean MembIsArr
+field public Expr MembArrLoc
 field public boolean DoNeg
 field public boolean DoNot
 field public string OrdOp
@@ -24,6 +26,8 @@ Conv = false
 TTok = new TypeTok()
 IsArr = false
 ArrLoc = new Expr()
+MembIsArr = false
+MembArrLoc = new Expr()
 DoNeg = false
 DoNot = false
 OrdOp = ""
@@ -41,6 +45,8 @@ Conv = false
 TTok = new TypeTok()
 IsArr = false
 ArrLoc = new Expr()
+MembIsArr = false
+MembArrLoc = new Expr()
 DoNeg = false
 DoNot = false
 OrdOp = ""

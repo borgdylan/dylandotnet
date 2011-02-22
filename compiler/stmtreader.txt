@@ -74,6 +74,51 @@ Importer::AddLocImp(lina::Value)
 goto fin
 end if
 
+typ = gettype AssemblyStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+
+var asms as AssemblyStmt = stm
+var asmn as Ident = asms::AsmName
+AsmFactory::AsmNameStr = new AssemblyName(asmn::Value)
+var asmm as Token = asms::Mode
+AsmFactory::AsmMode = asmm::Value
+goto fin
+
+end if
+
+typ = gettype VerStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var asmv as VerStmt = stm
+var vns as IntLiteral[] = asmv::VersionNos
+var vne as IntLiteral
+var vernos as integer[] = newarr integer 4
+vne = vns[0]
+vernos[0] = vne::NumVal
+vne = vns[1]
+vernos[1] = vne::NumVal
+vne = vns[2]
+vernos[2] = vne::NumVal
+vne = vns[3]
+vernos[3] = vne::NumVal
+var asmver as Version = new Version(vernos[0], vernos[1], vernos[2], vernos[3])
+var asmnm as AssemblyName = AsmFactory::AsmNameStr
+asmnm::set_Version(asmver)
+AsmFactory::AsmNameStr = asmnm
+var cad as AppDomain = AppDomain::get_CurrentDomain()
+var aasv as AssemblyBuilderAccess = 2
+var curd as string = Directory::GetCurrentDirectory()
+AsmFactory::AsmB = cad::DefineDynamicAssembly(asmnm, aasv, curd)
+var asmnme as string = asmnm::get_Name()
+asmnme = String::Concat(asmnme, ".", AsmFactory::AsmMode)
+var ab as AssemblyBuilder = AsmFactory::AsmB
+AsmFactory::MdlB = ab::DefineDynamicModule(asmnme, asmnme, AsmFactory::DebugFlg)
+goto fin
+end if
+
 
 place fin
 
