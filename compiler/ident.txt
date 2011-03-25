@@ -8,11 +8,11 @@ field public boolean Conv
 field public TypeTok TTok
 field public boolean IsArr
 field public Expr ArrLoc
-field public boolean MembIsArr
-field public Expr MembArrLoc
 field public boolean DoNeg
 field public boolean DoNot
 field public string OrdOp
+field public boolean MemberAccessFlg
+field public Token MemberToAccess
 
 method public void ctor0()
 me::ctor()
@@ -26,11 +26,11 @@ Conv = false
 TTok = new TypeTok()
 IsArr = false
 ArrLoc = new Expr()
-MembIsArr = false
-MembArrLoc = new Expr()
 DoNeg = false
 DoNot = false
 OrdOp = ""
+MemberAccessFlg = false
+MemberToAccess = new Token()
 end method
 
 method public void ctor1(var value as string)
@@ -45,11 +45,11 @@ Conv = false
 TTok = new TypeTok()
 IsArr = false
 ArrLoc = new Expr()
-MembIsArr = false
-MembArrLoc = new Expr()
 DoNeg = false
 DoNot = false
 OrdOp = ""
+MemberAccessFlg = false
+MemberToAccess = new Token()
 end method
 
 end class

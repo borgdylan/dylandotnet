@@ -13,12 +13,15 @@ field public static ISymbolDocumentWriter DocWriter
 field public static string CurnNS
 field public static string DfltNS
 field public static string AsmMode
+field public static TypeBuilder CurnTypB
+field public static TypeBuilder[] CurnTypList
 
 method public static void ctor0()
 DebugFlg = false
 CurnNS = ""
 DfltNS = ""
 AsmMode = ""
+CurnTypList = newarr TypeBuilder 0
 end method
 
 end class

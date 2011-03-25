@@ -344,6 +344,16 @@ ParserFlags::NoOptFlag = true
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "#debug")
+
+if comp = 0 then
+var dgtk as DebugTok = new DebugTok()
+dgtk::Line = tok::Line
+dgtk::Value = tok::Value
+tok = dgtk
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "import")
 
 if comp = 0 then
@@ -384,6 +394,26 @@ vertk::Line = tok::Line
 vertk::Value = tok::Value
 tok = vertk
 ParserFlags::NoOptFlag = true
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "on")
+
+if comp = 0 then
+var ontk as OnTok = new OnTok()
+ontk::Line = tok::Line
+ontk::Value = tok::Value
+tok = ontk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "off")
+
+if comp = 0 then
+var oftk as OffTok = new OffTok()
+oftk::Line = tok::Line
+oftk::Value = tok::Value
+tok = oftk
 goto fin
 end if
 

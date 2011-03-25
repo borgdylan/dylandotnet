@@ -84,6 +84,8 @@ var asmn as Ident = asms::AsmName
 AsmFactory::AsmNameStr = new AssemblyName(asmn::Value)
 var asmm as Token = asms::Mode
 AsmFactory::AsmMode = asmm::Value
+AsmFactory::DfltNS = asmn::Value
+AsmFactory::CurnNS = asmn::Value
 goto fin
 
 end if
@@ -116,6 +118,15 @@ var asmnme as string = asmnm::get_Name()
 asmnme = String::Concat(asmnme, ".", AsmFactory::AsmMode)
 var ab as AssemblyBuilder = AsmFactory::AsmB
 AsmFactory::MdlB = ab::DefineDynamicModule(asmnme, asmnme, AsmFactory::DebugFlg)
+goto fin
+end if
+
+typ = gettype DebugStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var dbgs as DebugStmt = stm
+AsmFactory::DebugFlg = dbgs::Flg
 goto fin
 end if
 

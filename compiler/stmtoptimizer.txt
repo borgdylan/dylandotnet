@@ -13,6 +13,21 @@ end if
 return refasms
 end method
 
+method public Stmt checkDebug(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype DebugTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var dbgs as DebugStmt = new DebugStmt()
+if valinref|b = true then
+dbgs::Line = stm::Line
+dbgs::Tokens = stm::Tokens
+dbgs::Opt = stm::Tokens[1]
+dbgs::setFlg()
+end if
+return dbgs
+end method
+
+
 method public Stmt checkImport(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype ImportTok
@@ -772,6 +787,15 @@ tmpstm = checkEndCls(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkDebug(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+else
 goto fin
 end if
 
