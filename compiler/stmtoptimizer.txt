@@ -795,16 +795,12 @@ tmpstm = checkDebug(stm, ref|compb)
 if compb = true then
 stm = tmpstm
 goto fin
-else
-goto fin
 end if
 
 tmpstm = checkRefasm(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm
-goto fin
-else
 goto fin
 end if
 
