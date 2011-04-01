@@ -118,6 +118,7 @@ var asmnme as string = asmnm::get_Name()
 asmnme = String::Concat(asmnme, ".", AsmFactory::AsmMode)
 var ab as AssemblyBuilder = AsmFactory::AsmB
 AsmFactory::MdlB = ab::DefineDynamicModule(asmnme, asmnme, AsmFactory::DebugFlg)
+AsmFactory::AsmFile = asmnme
 goto fin
 end if
 
@@ -130,6 +131,45 @@ AsmFactory::DebugFlg = dbgs::Flg
 goto fin
 end if
 
+typ = gettype ClassStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var clss as ClassStmt = stm
+
+var attrs as Attributes.Attribute[] = clss::Attrs
+var ta as TypeAttributes = Helpers::ProcessClassAttrs(attrs)
+var clssnam as Ident = clss::ClassName
+var clsnamstr as string = clssnam::Value
+var inhclstok as TypeTok = clss::InhClass
+var inhtyp as System.Type = null
+var reft as System.Type  = inhclstok::RefTyp
+var cmp as integer = String::Compare(inhclstok::Value, "")
+
+if reft = null then
+if cmp = 0 then
+inhtyp = gettype object
+else
+inhtyp = Loader::LoadClass(inhclstok::Value)
+end if
+else
+inhtyp = reft 
+end if
+
+var mdlbld as ModuleBuilder = AsmFactory::MdlB
+clsnamstr = String::Concat(AsmFactory::CurnNS, ".", clsnamstr)
+AsmFactory::CurnTypB = mdlbld::DefineType(clsnamstr, ta, inhtyp)
+
+goto fin
+end if
+
+typ = gettype EndClassStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+AsmFactory::CreateTyp()
+goto fin
+end if
 
 place fin
 

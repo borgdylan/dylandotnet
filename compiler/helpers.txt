@@ -1,0 +1,81 @@
+class public auto ansi Helpers
+
+method public static TypeAttributes ProcessClassAttrs(var attrs as Attributes.Attribute[])
+var ta as TypeAttributes
+var temp as TypeAttributes
+
+label loop
+label cont
+label fin
+
+var len as integer = attrs[l] - 1
+var i as integer = -1
+var b as boolean = false
+var typ as System.Type
+var curattr as Attributes.Attribute = null
+var fir as boolean = true
+
+place loop
+
+i++
+
+curattr = attrs[i]
+
+typ = gettype Attributes.PublicAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 1
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.AutoLayoutAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 0
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.AnsiClassAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 0
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+place fin
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+
+place cont
+
+
+return ta
+end method
+
+end class

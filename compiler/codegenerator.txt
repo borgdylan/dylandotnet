@@ -28,6 +28,10 @@ sr::Read(stm)
 end if
 
 if i = len then
+
+var ab as AssemblyBuilder = AsmFactory::AsmB
+ab::Save(AsmFactory::AsmFile)
+
 goto cont
 else
 goto loop
