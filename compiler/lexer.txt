@@ -58,7 +58,7 @@ buf = String::Concat(buf, ch)
 else
 if lfflag = true then
 curline++
-Console::WriteLine(buf)
+//Console::WriteLine(buf)
 curstmt = new Stmt()
 curstmt::Line = curline
 curln = new Line()
@@ -74,7 +74,7 @@ n = sr::Peek()
 
 if n = -1 then
 curline++
-Console::WriteLine(buf)
+//Console::WriteLine(buf)
 curstmt = new Stmt()
 curstmt::Line = curline
 curln = new Line()

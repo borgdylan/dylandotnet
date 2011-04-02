@@ -9,30 +9,36 @@ if args[l] < 1 then
 Console::WriteLine("Usage: dnc <path>")
 else
 
-try
+//try
 
 var p as string = args[0]
 var lx as Lexer = new Lexer()
+Console::Write("Now Lexing: ")
+Console::Write(p)
 var pstmts as StmtSet = lx::Analyze(p)
+Console::WriteLine("...Done.")
 var ps as Parser = new Parser()
+Console::Write("Now Parsing: ")
+Console::Write(p)
 var ppstmts as StmtSet = ps::Parse(pstmts)
+Console::WriteLine("...Done.")
 var cg as CodeGenerator = new CodeGenerator()
 cg::EmitMSIL(ppstmts)
 
-var typs as System.Type[] = newarr System.Type 2
-typs[0] = gettype string
-typs[1] = gettype string
-var t1 as System.Type = Loader::LoadClass("String")
-var t1s as string = t1::ToString()
-Console::WriteLine(t1s)
-var m1 as MethodInfo = Loader::LoadMethod(t1,"Concat",typs)
-var m1s as string = m1::ToString()
-Console::WriteLine(m1s)
-if m1 <> null then
-var t4 as System.Type = Loader::MemberTyp
-var t4s as string = t4::ToString()
-Console::WriteLine(t4s)
-end if
+//var typs as System.Type[] = newarr System.Type 2
+//typs[0] = gettype string
+//typs[1] = gettype string
+//var t1 as System.Type = Loader::LoadClass("String")
+//var t1s as string = t1::ToString()
+//Console::WriteLine(t1s)
+//var m1 as MethodInfo = Loader::LoadMethod(t1,"Concat",typs)
+//var m1s as string = m1::ToString()
+//Console::WriteLine(m1s)
+//if m1 <> null then
+//var t4 as System.Type = Loader::MemberTyp
+//var t4s as string = t4::ToString()
+//Console::WriteLine(t4s)
+//end if
 //var f1 as FieldInfo = Loader::LoadField(t1,"Literal")
 //var f1s as string = f1::ToString()
 //Console::WriteLine(f1s)
@@ -48,13 +54,13 @@ end if
 //end if
 //end if
 
-catch ex as Exception
+//catch ex as Exception
 
-var exstr as string = ex::ToString()
-Console::WriteLine(exstr)
-Console::ReadKey()
+//var exstr as string = ex::ToString()
+//Console::WriteLine(exstr)
+//Console::ReadKey()
 
-end try
+//end try
 
 end if
 

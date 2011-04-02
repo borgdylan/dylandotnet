@@ -60,16 +60,30 @@ end if
 comp = String::Compare(cc, "[")
 
 if comp = 0 then
+comp = String::Compare(lc, "]")
+if comp = 0 then
+valinref|sca = true
+valinref|scla = false
+ob = true
+goto fin
+else
 valinref|sca = true
 ob = true
+end if
 goto fin
 end if
 
 comp = String::Compare(cc, "]")
 
 if comp = 0 then
+comp = String::Compare(PrevChar, "[")
+if comp = 0 then
+ob = false
+valinref|sca = true
+else
 valinref|sca = true
 ob = true
+end if
 goto fin
 end if
 

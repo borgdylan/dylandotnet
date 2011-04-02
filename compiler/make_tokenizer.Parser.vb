@@ -8509,6 +8509,10 @@ OptimizeIL.Emit(OpCodes.Beq, tru110)
 OptimizeIL.Emit(OpCodes.Br, fa110)
 OptimizeIL.MarkLabel(tru110)
 OptimizeIL.MarkSequencePoint(doc4, 290, 1, 290, 100)
+OptimizeIL.Emit(OpCodes.Ldc_I4, 0)
+Typ = GetType(System.Boolean)
+OptimizeIL.Emit(OpCodes.Stsfld, asm.GetType("dylan.NET.Tokenizer.Parser.ParserFlags").GetField("IdentFlag"))
+OptimizeIL.MarkSequencePoint(doc4, 291, 1, 291, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
 Dim typ47(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
@@ -8522,14 +8526,14 @@ typ47(UBound(typ47)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, procMethodCall)
 Typ = procMethodCall.ReturnType
 OptimizeIL.Emit(OpCodes.Starg, 1)
-OptimizeIL.MarkSequencePoint(doc4, 291, 1, 291, 100)
+OptimizeIL.MarkSequencePoint(doc4, 292, 1, 292, 100)
 OptimizeIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Sub)
 OptimizeIL.Emit(OpCodes.Stloc, 1)
-OptimizeIL.MarkSequencePoint(doc4, 292, 1, 292, 100)
+OptimizeIL.MarkSequencePoint(doc4, 293, 1, 293, 100)
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Expr)
 OptimizeIL.Emit(OpCodes.Ldfld, GetType(Expr).GetField("Tokens"))
@@ -8541,7 +8545,7 @@ OptimizeIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Sub)
 OptimizeIL.Emit(OpCodes.Stloc, 0)
-OptimizeIL.MarkSequencePoint(doc4, 294, 1, 294, 100)
+OptimizeIL.MarkSequencePoint(doc4, 295, 1, 295, 100)
 Dim locbldr118 As LocalBuilder = OptimizeIL.DeclareLocal(GetType(MethodCallTok))
 locbldr118.SetLocalSymInfo("mct")
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
@@ -8556,7 +8560,7 @@ Typ = Typ02
 OptimizeIL.Emit(OpCodes.Ldelem, Typ.GetElementType())
 Typ = Typ.GetElementType()
 OptimizeIL.Emit(OpCodes.Stloc, 13)
-OptimizeIL.MarkSequencePoint(doc4, 295, 1, 295, 100)
+OptimizeIL.MarkSequencePoint(doc4, 296, 1, 296, 100)
 Dim locbldr119 As LocalBuilder = OptimizeIL.DeclareLocal(GetType(Expr).MakeArrayType())
 locbldr119.SetLocalSymInfo("prs")
 OptimizeIL.Emit(OpCodes.Ldloc, 13)
@@ -8564,7 +8568,7 @@ Typ = GetType(MethodCallTok)
 OptimizeIL.Emit(OpCodes.Ldfld, GetType(MethodCallTok).GetField("Params"))
 Typ = GetType(MethodCallTok).GetField("Params").FieldType
 OptimizeIL.Emit(OpCodes.Stloc, 14)
-OptimizeIL.MarkSequencePoint(doc4, 296, 1, 296, 100)
+OptimizeIL.MarkSequencePoint(doc4, 297, 1, 297, 100)
 Dim locbldr120 As LocalBuilder = OptimizeIL.DeclareLocal(GetType(System.Int32))
 locbldr120.SetLocalSymInfo("ln2")
 OptimizeIL.Emit(OpCodes.Ldloc, 14)
@@ -8576,17 +8580,17 @@ OptimizeIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Sub)
 OptimizeIL.Emit(OpCodes.Stloc, 15)
-OptimizeIL.MarkSequencePoint(doc4, 298, 1, 298, 100)
+OptimizeIL.MarkSequencePoint(doc4, 299, 1, 299, 100)
 Dim locbldr121 As LocalBuilder = OptimizeIL.DeclareLocal(GetType(System.Int32))
 locbldr121.SetLocalSymInfo("i2")
 OptimizeIL.Emit(OpCodes.Ldc_I4, CInt(-1))
 Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Stloc, 16)
-OptimizeIL.MarkSequencePoint(doc4, 299, 1, 299, 100)
-Dim label6 As System.Reflection.Emit.Label = OptimizeIL.DefineLabel()
 OptimizeIL.MarkSequencePoint(doc4, 300, 1, 300, 100)
+Dim label6 As System.Reflection.Emit.Label = OptimizeIL.DefineLabel()
+OptimizeIL.MarkSequencePoint(doc4, 301, 1, 301, 100)
 Dim label7 As System.Reflection.Emit.Label = OptimizeIL.DefineLabel()
-OptimizeIL.MarkSequencePoint(doc4, 302, 1, 302, 100)
+OptimizeIL.MarkSequencePoint(doc4, 303, 1, 303, 100)
 OptimizeIL.Emit(OpCodes.Ldloc, 15)
 Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Ldc_I4, CInt(0))
@@ -8597,23 +8601,23 @@ Dim cont111 As System.Reflection.Emit.Label = OptimizeIL.DefineLabel()
 OptimizeIL.Emit(OpCodes.Blt, tru111)
 OptimizeIL.Emit(OpCodes.Br, fa111)
 OptimizeIL.MarkLabel(tru111)
-OptimizeIL.MarkSequencePoint(doc4, 303, 1, 303, 100)
-OptimizeIL.Emit(OpCodes.Br, label7)
 OptimizeIL.MarkSequencePoint(doc4, 304, 1, 304, 100)
+OptimizeIL.Emit(OpCodes.Br, label7)
+OptimizeIL.MarkSequencePoint(doc4, 305, 1, 305, 100)
 OptimizeIL.Emit(OpCodes.Br, cont111)
 OptimizeIL.MarkLabel(fa111)
 OptimizeIL.Emit(OpCodes.Br, cont111)
 OptimizeIL.MarkLabel(cont111)
-OptimizeIL.MarkSequencePoint(doc4, 306, 1, 306, 100)
-OptimizeIL.MarkLabel(label6)
 OptimizeIL.MarkSequencePoint(doc4, 307, 1, 307, 100)
+OptimizeIL.MarkLabel(label6)
+OptimizeIL.MarkSequencePoint(doc4, 308, 1, 308, 100)
 OptimizeIL.Emit(OpCodes.Ldloc, 16)
 Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Add)
 OptimizeIL.Emit(OpCodes.Stloc, 16)
-OptimizeIL.MarkSequencePoint(doc4, 308, 1, 308, 100)
+OptimizeIL.MarkSequencePoint(doc4, 309, 1, 309, 100)
 OptimizeIL.Emit(OpCodes.Ldloc, 14)
 Typ = GetType(Expr).MakeArrayType()
 Typ02 = Typ
@@ -8637,7 +8641,7 @@ typ48(UBound(typ48)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, Optimize)
 Typ = Optimize.ReturnType
 OptimizeIL.Emit(OpCodes.Stelem, GetType(Expr).MakeArrayType().GetElementType())
-OptimizeIL.MarkSequencePoint(doc4, 310, 1, 310, 100)
+OptimizeIL.MarkSequencePoint(doc4, 311, 1, 311, 100)
 OptimizeIL.Emit(OpCodes.Ldloc, 16)
 Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Ldloc, 15)
@@ -8648,31 +8652,31 @@ Dim cont112 As System.Reflection.Emit.Label = OptimizeIL.DefineLabel()
 OptimizeIL.Emit(OpCodes.Beq, tru112)
 OptimizeIL.Emit(OpCodes.Br, fa112)
 OptimizeIL.MarkLabel(tru112)
-OptimizeIL.MarkSequencePoint(doc4, 311, 1, 311, 100)
-OptimizeIL.Emit(OpCodes.Br, label7)
 OptimizeIL.MarkSequencePoint(doc4, 312, 1, 312, 100)
+OptimizeIL.Emit(OpCodes.Br, label7)
+OptimizeIL.MarkSequencePoint(doc4, 313, 1, 313, 100)
 OptimizeIL.Emit(OpCodes.Br, cont112)
 OptimizeIL.MarkLabel(fa112)
-OptimizeIL.MarkSequencePoint(doc4, 313, 1, 313, 100)
-OptimizeIL.Emit(OpCodes.Br, label6)
 OptimizeIL.MarkSequencePoint(doc4, 314, 1, 314, 100)
+OptimizeIL.Emit(OpCodes.Br, label6)
+OptimizeIL.MarkSequencePoint(doc4, 315, 1, 315, 100)
 OptimizeIL.Emit(OpCodes.Br, cont112)
 OptimizeIL.MarkLabel(cont112)
-OptimizeIL.MarkSequencePoint(doc4, 316, 1, 316, 100)
+OptimizeIL.MarkSequencePoint(doc4, 317, 1, 317, 100)
 OptimizeIL.MarkLabel(label7)
-OptimizeIL.MarkSequencePoint(doc4, 318, 1, 318, 100)
+OptimizeIL.MarkSequencePoint(doc4, 319, 1, 319, 100)
 OptimizeIL.Emit(OpCodes.Br, cont110)
 OptimizeIL.MarkLabel(fa110)
 OptimizeIL.Emit(OpCodes.Br, cont110)
 OptimizeIL.MarkLabel(cont110)
-OptimizeIL.MarkSequencePoint(doc4, 319, 1, 319, 100)
-OptimizeIL.Emit(OpCodes.Br, label5)
 OptimizeIL.MarkSequencePoint(doc4, 320, 1, 320, 100)
+OptimizeIL.Emit(OpCodes.Br, label5)
+OptimizeIL.MarkSequencePoint(doc4, 321, 1, 321, 100)
 OptimizeIL.Emit(OpCodes.Br, cont109)
 OptimizeIL.MarkLabel(fa109)
 OptimizeIL.Emit(OpCodes.Br, cont109)
 OptimizeIL.MarkLabel(cont109)
-OptimizeIL.MarkSequencePoint(doc4, 322, 1, 322, 100)
+OptimizeIL.MarkSequencePoint(doc4, 323, 1, 323, 100)
 OptimizeIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Ldloc, 2)
@@ -8683,18 +8687,18 @@ Dim cont113 As System.Reflection.Emit.Label = OptimizeIL.DefineLabel()
 OptimizeIL.Emit(OpCodes.Bgt, tru113)
 OptimizeIL.Emit(OpCodes.Br, fa113)
 OptimizeIL.MarkLabel(tru113)
-OptimizeIL.MarkSequencePoint(doc4, 323, 1, 323, 100)
+OptimizeIL.MarkSequencePoint(doc4, 324, 1, 324, 100)
 OptimizeIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 OptimizeIL.Emit(OpCodes.Stsfld, asm.GetType("dylan.NET.Tokenizer.Parser.ParserFlags").GetField("IdentFlag"))
-OptimizeIL.MarkSequencePoint(doc4, 324, 1, 324, 100)
+OptimizeIL.MarkSequencePoint(doc4, 325, 1, 325, 100)
 OptimizeIL.Emit(OpCodes.Br, cont113)
 OptimizeIL.MarkLabel(fa113)
 OptimizeIL.Emit(OpCodes.Br, cont113)
 OptimizeIL.MarkLabel(cont113)
-OptimizeIL.MarkSequencePoint(doc4, 326, 1, 326, 100)
+OptimizeIL.MarkSequencePoint(doc4, 327, 1, 327, 100)
 OptimizeIL.MarkLabel(label5)
-OptimizeIL.MarkSequencePoint(doc4, 328, 1, 328, 100)
+OptimizeIL.MarkSequencePoint(doc4, 329, 1, 329, 100)
 OptimizeIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Ldloc, 0)
@@ -8705,22 +8709,22 @@ Dim cont114 As System.Reflection.Emit.Label = OptimizeIL.DefineLabel()
 OptimizeIL.Emit(OpCodes.Beq, tru114)
 OptimizeIL.Emit(OpCodes.Br, fa114)
 OptimizeIL.MarkLabel(tru114)
-OptimizeIL.MarkSequencePoint(doc4, 329, 1, 329, 100)
-OptimizeIL.Emit(OpCodes.Br, label4)
 OptimizeIL.MarkSequencePoint(doc4, 330, 1, 330, 100)
+OptimizeIL.Emit(OpCodes.Br, label4)
+OptimizeIL.MarkSequencePoint(doc4, 331, 1, 331, 100)
 OptimizeIL.Emit(OpCodes.Br, cont114)
 OptimizeIL.MarkLabel(fa114)
-OptimizeIL.MarkSequencePoint(doc4, 331, 1, 331, 100)
-OptimizeIL.Emit(OpCodes.Br, label3)
 OptimizeIL.MarkSequencePoint(doc4, 332, 1, 332, 100)
+OptimizeIL.Emit(OpCodes.Br, label3)
+OptimizeIL.MarkSequencePoint(doc4, 333, 1, 333, 100)
 OptimizeIL.Emit(OpCodes.Br, cont114)
 OptimizeIL.MarkLabel(cont114)
-OptimizeIL.MarkSequencePoint(doc4, 334, 1, 334, 100)
+OptimizeIL.MarkSequencePoint(doc4, 335, 1, 335, 100)
 OptimizeIL.MarkLabel(label4)
-OptimizeIL.MarkSequencePoint(doc4, 336, 1, 336, 100)
+OptimizeIL.MarkSequencePoint(doc4, 337, 1, 337, 100)
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Expr)
-OptimizeIL.MarkSequencePoint(doc4, 337, 1, 337, 100)
+OptimizeIL.MarkSequencePoint(doc4, 338, 1, 338, 100)
 OptimizeIL.Emit(OpCodes.Ret)
 ExprOptimizer.CreateType()
 End Sub
@@ -12964,21 +12968,6 @@ Dim Optimize As MethodBuilder = StmtOptimizer.DefineMethod("Optimize", MethodAtt
 Dim OptimizeIL As ILGenerator = Optimize.GetILGenerator()
 Dim Optimizeparam00 As ParameterBuilder = Optimize.DefineParameter(0, ParameterAttributes.RetVal, "")
 Dim Optimizeparam01 As ParameterBuilder = Optimize.DefineParameter(1, ParameterAttributes.None, "stm")
-OptimizeIL.MarkSequencePoint(doc5, 660, 1, 660, 100)
-Dim typ109(-1) As Type
-OptimizeIL.Emit(OpCodes.Ldarg, 1)
-Typ = GetType(Stmt)
-OptimizeIL.Emit(OpCodes.Ldfld, GetType(Stmt).GetField("Line"))
-Typ = GetType(Stmt).GetField("Line").FieldType
-ReDim Preserve typ109(UBound(typ109) + 1)
-typ109(UBound(typ109)) = Typ
-OptimizeIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ109))
-Typ = GetType(Console).GetMethod("WriteLine", typ109).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-OptimizeIL.Emit(OpCodes.Pop)
-End If
 OptimizeIL.MarkSequencePoint(doc5, 662, 1, 662, 100)
 Dim locbldr239 As LocalBuilder = OptimizeIL.DeclareLocal(GetType(System.Int32))
 locbldr239.SetLocalSymInfo("i")
@@ -13114,7 +13103,7 @@ Typ = GetType(System.Int32)
 OptimizeIL.Emit(OpCodes.Conv_U)
 Typ = Typ02
 Typ02 = Typ
-Dim typ110(-1) As Type
+Dim typ109(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldloc, 2)
 Typ = asm.GetType("dylan.NET.Tokenizer.Parser.TokenOptimizer")
 Typ03 = Typ
@@ -13129,10 +13118,10 @@ OptimizeIL.Emit(OpCodes.Conv_U)
 Typ = Typ02
 OptimizeIL.Emit(OpCodes.Ldelem, Typ.GetElementType())
 Typ = Typ.GetElementType()
-ReDim Preserve typ110(UBound(typ110) + 1)
-typ110(UBound(typ110)) = Typ
-OptimizeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Optimize", typ110))
-Typ = Typ03.GetMethod("Optimize", typ110).ReturnType
+ReDim Preserve typ109(UBound(typ109) + 1)
+typ109(UBound(typ109)) = Typ
+OptimizeIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Optimize", typ109))
+Typ = Typ03.GetMethod("Optimize", typ109).ReturnType
 Typ = Typ02
 OptimizeIL.Emit(OpCodes.Stelem, Typ.GetElementType())
 OptimizeIL.MarkSequencePoint(doc5, 697, 1, 697, 100)
@@ -13183,15 +13172,15 @@ OptimizeIL.Emit(OpCodes.Br, cont167)
 OptimizeIL.MarkLabel(cont167)
 OptimizeIL.MarkSequencePoint(doc5, 709, 1, 709, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ111(-1) As Type
+Dim typ110(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ111(UBound(typ111) + 1)
-typ111(UBound(typ111)) = Typ
+ReDim Preserve typ110(UBound(typ110) + 1)
+typ110(UBound(typ110)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ111(UBound(typ111) + 1)
-typ111(UBound(typ111)) = Typ
+ReDim Preserve typ110(UBound(typ110) + 1)
+typ110(UBound(typ110)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkCmt)
 Typ = checkCmt.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13219,15 +13208,15 @@ OptimizeIL.Emit(OpCodes.Br, cont168)
 OptimizeIL.MarkLabel(cont168)
 OptimizeIL.MarkSequencePoint(doc5, 716, 1, 716, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ112(-1) As Type
+Dim typ111(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ112(UBound(typ112) + 1)
-typ112(UBound(typ112)) = Typ
+ReDim Preserve typ111(UBound(typ111) + 1)
+typ111(UBound(typ111)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ112(UBound(typ112) + 1)
-typ112(UBound(typ112)) = Typ
+ReDim Preserve typ111(UBound(typ111) + 1)
+typ111(UBound(typ111)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkImport)
 Typ = checkImport.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13255,15 +13244,15 @@ OptimizeIL.Emit(OpCodes.Br, cont169)
 OptimizeIL.MarkLabel(cont169)
 OptimizeIL.MarkSequencePoint(doc5, 723, 1, 723, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ113(-1) As Type
+Dim typ112(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ113(UBound(typ113) + 1)
-typ113(UBound(typ113)) = Typ
+ReDim Preserve typ112(UBound(typ112) + 1)
+typ112(UBound(typ112)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ113(UBound(typ113) + 1)
-typ113(UBound(typ113)) = Typ
+ReDim Preserve typ112(UBound(typ112) + 1)
+typ112(UBound(typ112)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkLocimport)
 Typ = checkLocimport.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13291,15 +13280,15 @@ OptimizeIL.Emit(OpCodes.Br, cont170)
 OptimizeIL.MarkLabel(cont170)
 OptimizeIL.MarkSequencePoint(doc5, 730, 1, 730, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ114(-1) As Type
+Dim typ113(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ114(UBound(typ114) + 1)
-typ114(UBound(typ114)) = Typ
+ReDim Preserve typ113(UBound(typ113) + 1)
+typ113(UBound(typ113)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ114(UBound(typ114) + 1)
-typ114(UBound(typ114)) = Typ
+ReDim Preserve typ113(UBound(typ113) + 1)
+typ113(UBound(typ113)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkAssembly)
 Typ = checkAssembly.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13327,15 +13316,15 @@ OptimizeIL.Emit(OpCodes.Br, cont171)
 OptimizeIL.MarkLabel(cont171)
 OptimizeIL.MarkSequencePoint(doc5, 737, 1, 737, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ115(-1) As Type
+Dim typ114(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ115(UBound(typ115) + 1)
-typ115(UBound(typ115)) = Typ
+ReDim Preserve typ114(UBound(typ114) + 1)
+typ114(UBound(typ114)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ115(UBound(typ115) + 1)
-typ115(UBound(typ115)) = Typ
+ReDim Preserve typ114(UBound(typ114) + 1)
+typ114(UBound(typ114)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkVer)
 Typ = checkVer.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13363,15 +13352,15 @@ OptimizeIL.Emit(OpCodes.Br, cont172)
 OptimizeIL.MarkLabel(cont172)
 OptimizeIL.MarkSequencePoint(doc5, 744, 1, 744, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ116(-1) As Type
+Dim typ115(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ116(UBound(typ116) + 1)
-typ116(UBound(typ116)) = Typ
+ReDim Preserve typ115(UBound(typ115) + 1)
+typ115(UBound(typ115)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ116(UBound(typ116) + 1)
-typ116(UBound(typ116)) = Typ
+ReDim Preserve typ115(UBound(typ115) + 1)
+typ115(UBound(typ115)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkClass)
 Typ = checkClass.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13399,15 +13388,15 @@ OptimizeIL.Emit(OpCodes.Br, cont173)
 OptimizeIL.MarkLabel(cont173)
 OptimizeIL.MarkSequencePoint(doc5, 751, 1, 751, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ117(-1) As Type
+Dim typ116(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ117(UBound(typ117) + 1)
-typ117(UBound(typ117)) = Typ
+ReDim Preserve typ116(UBound(typ116) + 1)
+typ116(UBound(typ116)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ117(UBound(typ117) + 1)
-typ117(UBound(typ117)) = Typ
+ReDim Preserve typ116(UBound(typ116) + 1)
+typ116(UBound(typ116)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkMethod)
 Typ = checkMethod.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13435,15 +13424,15 @@ OptimizeIL.Emit(OpCodes.Br, cont174)
 OptimizeIL.MarkLabel(cont174)
 OptimizeIL.MarkSequencePoint(doc5, 758, 1, 758, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ118(-1) As Type
+Dim typ117(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ118(UBound(typ118) + 1)
-typ118(UBound(typ118)) = Typ
+ReDim Preserve typ117(UBound(typ117) + 1)
+typ117(UBound(typ117)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ118(UBound(typ118) + 1)
-typ118(UBound(typ118)) = Typ
+ReDim Preserve typ117(UBound(typ117) + 1)
+typ117(UBound(typ117)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkMethodCall)
 Typ = checkMethodCall.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13471,15 +13460,15 @@ OptimizeIL.Emit(OpCodes.Br, cont175)
 OptimizeIL.MarkLabel(cont175)
 OptimizeIL.MarkSequencePoint(doc5, 765, 1, 765, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ119(-1) As Type
+Dim typ118(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ119(UBound(typ119) + 1)
-typ119(UBound(typ119)) = Typ
+ReDim Preserve typ118(UBound(typ118) + 1)
+typ118(UBound(typ118)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ119(UBound(typ119) + 1)
-typ119(UBound(typ119)) = Typ
+ReDim Preserve typ118(UBound(typ118) + 1)
+typ118(UBound(typ118)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkAssign)
 Typ = checkAssign.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13507,15 +13496,15 @@ OptimizeIL.Emit(OpCodes.Br, cont176)
 OptimizeIL.MarkLabel(cont176)
 OptimizeIL.MarkSequencePoint(doc5, 772, 1, 772, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ120(-1) As Type
+Dim typ119(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ120(UBound(typ120) + 1)
-typ120(UBound(typ120)) = Typ
+ReDim Preserve typ119(UBound(typ119) + 1)
+typ119(UBound(typ119)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ120(UBound(typ120) + 1)
-typ120(UBound(typ120)) = Typ
+ReDim Preserve typ119(UBound(typ119) + 1)
+typ119(UBound(typ119)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkVarAs)
 Typ = checkVarAs.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13543,15 +13532,15 @@ OptimizeIL.Emit(OpCodes.Br, cont177)
 OptimizeIL.MarkLabel(cont177)
 OptimizeIL.MarkSequencePoint(doc5, 779, 1, 779, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ121(-1) As Type
+Dim typ120(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ121(UBound(typ121) + 1)
-typ121(UBound(typ121)) = Typ
+ReDim Preserve typ120(UBound(typ120) + 1)
+typ120(UBound(typ120)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ121(UBound(typ121) + 1)
-typ121(UBound(typ121)) = Typ
+ReDim Preserve typ120(UBound(typ120) + 1)
+typ120(UBound(typ120)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkEndMtd)
 Typ = checkEndMtd.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13579,15 +13568,15 @@ OptimizeIL.Emit(OpCodes.Br, cont178)
 OptimizeIL.MarkLabel(cont178)
 OptimizeIL.MarkSequencePoint(doc5, 786, 1, 786, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ122(-1) As Type
+Dim typ121(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ122(UBound(typ122) + 1)
-typ122(UBound(typ122)) = Typ
+ReDim Preserve typ121(UBound(typ121) + 1)
+typ121(UBound(typ121)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ122(UBound(typ122) + 1)
-typ122(UBound(typ122)) = Typ
+ReDim Preserve typ121(UBound(typ121) + 1)
+typ121(UBound(typ121)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkEndCls)
 Typ = checkEndCls.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13615,15 +13604,15 @@ OptimizeIL.Emit(OpCodes.Br, cont179)
 OptimizeIL.MarkLabel(cont179)
 OptimizeIL.MarkSequencePoint(doc5, 793, 1, 793, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ123(-1) As Type
+Dim typ122(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ123(UBound(typ123) + 1)
-typ123(UBound(typ123)) = Typ
+ReDim Preserve typ122(UBound(typ122) + 1)
+typ122(UBound(typ122)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ123(UBound(typ123) + 1)
-typ123(UBound(typ123)) = Typ
+ReDim Preserve typ122(UBound(typ122) + 1)
+typ122(UBound(typ122)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkDebug)
 Typ = checkDebug.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)
@@ -13651,15 +13640,15 @@ OptimizeIL.Emit(OpCodes.Br, cont180)
 OptimizeIL.MarkLabel(cont180)
 OptimizeIL.MarkSequencePoint(doc5, 800, 1, 800, 100)
 OptimizeIL.Emit(OpCodes.Ldarg_0)
-Dim typ124(-1) As Type
+Dim typ123(-1) As Type
 OptimizeIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
-ReDim Preserve typ124(UBound(typ124) + 1)
-typ124(UBound(typ124)) = Typ
+ReDim Preserve typ123(UBound(typ123) + 1)
+typ123(UBound(typ123)) = Typ
 OptimizeIL.Emit(OpCodes.Ldloca, 4)
 Typ = GetType(System.Boolean).MakeByRefType()
-ReDim Preserve typ124(UBound(typ124) + 1)
-typ124(UBound(typ124)) = Typ
+ReDim Preserve typ123(UBound(typ123) + 1)
+typ123(UBound(typ123)) = Typ
 OptimizeIL.Emit(OpCodes.Callvirt, checkRefasm)
 Typ = checkRefasm.ReturnType
 OptimizeIL.Emit(OpCodes.Stloc, 3)

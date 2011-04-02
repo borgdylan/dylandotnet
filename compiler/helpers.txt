@@ -25,7 +25,11 @@ typ = gettype Attributes.PublicAttr
 b = typ::IsInstanceOfType($object$curattr)
 
 if b = true then
+if AsmFactory::isNested = false then
 temp = 1
+else
+temp = 2
+end if
 if fir = true then
 fir = fir nand fir
 ta = temp

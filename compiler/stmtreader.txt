@@ -26,6 +26,8 @@ ap::Value = tmpstr
 end if
 
 var asm as Assembly = Assembly::LoadFrom(ap::Value)
+Console::Write("Referencing Assembly: ")
+Console::WriteLine(ap::Value)
 Importer::AddAsm(asm)
 goto fin
 end if
@@ -47,6 +49,9 @@ tmpchrarr[0] = $char$Utils.Constants::quot
 tmpstr = tmpstr::Trim(tmpchrarr)
 ina::Value = tmpstr
 end if
+
+Console::Write("Importing Namespace: ")
+Console::WriteLine(ina::Value)
 
 Importer::AddImp(ina::Value)
 goto fin
@@ -70,6 +75,9 @@ tmpstr = tmpstr::Trim(tmpchrarr)
 lina::Value = tmpstr
 end if
 
+Console::Write("Importing Namespace: ")
+Console::WriteLine(lina::Value)
+
 Importer::AddLocImp(lina::Value)
 goto fin
 end if
@@ -86,6 +94,10 @@ var asmm as Token = asms::Mode
 AsmFactory::AsmMode = asmm::Value
 AsmFactory::DfltNS = asmn::Value
 AsmFactory::CurnNS = asmn::Value
+
+Console::Write("Beginning Assembly: ")
+Console::WriteLine(asmn::Value)
+
 goto fin
 
 end if
@@ -137,6 +149,14 @@ b = typ::IsInstanceOfType($object$stm)
 if b = true then
 var clss as ClassStmt = stm
 
+if AsmFactory::inClass = true then
+AsmFactory::isNested = true
+end if
+
+if AsmFactory::isNested = false then
+AsmFactory::inClass = true
+end if
+
 var attrs as Attributes.Attribute[] = clss::Attrs
 var ta as TypeAttributes = Helpers::ProcessClassAttrs(attrs)
 var clssnam as Ident = clss::ClassName
@@ -156,9 +176,21 @@ else
 inhtyp = reft 
 end if
 
+
+if AsmFactory::isNested = false then
 var mdlbld as ModuleBuilder = AsmFactory::MdlB
 clsnamstr = String::Concat(AsmFactory::CurnNS, ".", clsnamstr)
 AsmFactory::CurnTypB = mdlbld::DefineType(clsnamstr, ta, inhtyp)
+
+Console::Write("Adding Class: ")
+Console::WriteLine(clsnamstr)
+else
+AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
+var ctb2 as TypeBuilder = AsmFactory::CurnTypB2
+Console::Write("Adding Nested Class: ")
+Console::WriteLine(clsnamstr)
+AsmFactory::CurnTypB = ctb2::DefineNestedType(clsnamstr, ta, inhtyp)
+end if
 
 goto fin
 end if
@@ -168,6 +200,13 @@ b = typ::IsInstanceOfType($object$stm)
 
 if b = true then
 AsmFactory::CreateTyp()
+if AsmFactory::isNested = false then
+AsmFactory::inClass = false
+end if
+if AsmFactory::isNested = true then
+AsmFactory::CurnTypB = AsmFactory::CurnTypB2
+AsmFactory::isNested = false
+end if
 goto fin
 end if
 

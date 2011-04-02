@@ -156,8 +156,6 @@ End If
 mainIL.MarkSequencePoint(doc2, 10, 1, 10, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(fa0)
-mainIL.MarkSequencePoint(doc2, 12, 1, 12, 100)
-Dim try0 As System.Reflection.Emit.Label = mainIL.BeginExceptionBlock()
 mainIL.MarkSequencePoint(doc2, 14, 1, 14, 100)
 Dim locbldr0 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
 locbldr0.SetLocalSymInfo("p")
@@ -177,116 +175,106 @@ locbldr1.SetLocalSymInfo("lx")
 mainIL.Emit(OpCodes.Newobj, GetType(Lexer).GetConstructor(Type.EmptyTypes))
 mainIL.Emit(OpCodes.Stloc, 1)
 mainIL.MarkSequencePoint(doc2, 16, 1, 16, 100)
+Dim typ5(-1) As Type
+mainIL.Emit(OpCodes.Ldstr, "Now Lexing: ")
+Typ = GetType(System.String)
+ReDim Preserve typ5(UBound(typ5) + 1)
+typ5(UBound(typ5)) = Typ
+mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("Write", typ5))
+Typ = GetType(Console).GetMethod("Write", typ5).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+mainIL.Emit(OpCodes.Pop)
+End If
+mainIL.MarkSequencePoint(doc2, 17, 1, 17, 100)
+Dim typ6(-1) As Type
+mainIL.Emit(OpCodes.Ldloc, 0)
+Typ = GetType(System.String)
+ReDim Preserve typ6(UBound(typ6) + 1)
+typ6(UBound(typ6)) = Typ
+mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("Write", typ6))
+Typ = GetType(Console).GetMethod("Write", typ6).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+mainIL.Emit(OpCodes.Pop)
+End If
+mainIL.MarkSequencePoint(doc2, 18, 1, 18, 100)
 Dim locbldr2 As LocalBuilder = mainIL.DeclareLocal(GetType(StmtSet))
 locbldr2.SetLocalSymInfo("pstmts")
-Dim typ5(-1) As Type
+Dim typ7(-1) As Type
 mainIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(Lexer)
 Typ03 = Typ
 mainIL.Emit(OpCodes.Ldloc, 0)
 Typ = GetType(System.String)
-ReDim Preserve typ5(UBound(typ5) + 1)
-typ5(UBound(typ5)) = Typ
-mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Analyze", typ5))
-Typ = Typ03.GetMethod("Analyze", typ5).ReturnType
+ReDim Preserve typ7(UBound(typ7) + 1)
+typ7(UBound(typ7)) = Typ
+mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Analyze", typ7))
+Typ = Typ03.GetMethod("Analyze", typ7).ReturnType
 mainIL.Emit(OpCodes.Stloc, 2)
-mainIL.MarkSequencePoint(doc2, 17, 1, 17, 100)
+mainIL.MarkSequencePoint(doc2, 19, 1, 19, 100)
+Dim typ8(-1) As Type
+mainIL.Emit(OpCodes.Ldstr, "...Done.")
+Typ = GetType(System.String)
+ReDim Preserve typ8(UBound(typ8) + 1)
+typ8(UBound(typ8)) = Typ
+mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ8))
+Typ = GetType(Console).GetMethod("WriteLine", typ8).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+mainIL.Emit(OpCodes.Pop)
+End If
+mainIL.MarkSequencePoint(doc2, 20, 1, 20, 100)
 Dim locbldr3 As LocalBuilder = mainIL.DeclareLocal(GetType(Parser))
 locbldr3.SetLocalSymInfo("ps")
 mainIL.Emit(OpCodes.Newobj, GetType(Parser).GetConstructor(Type.EmptyTypes))
 mainIL.Emit(OpCodes.Stloc, 3)
-mainIL.MarkSequencePoint(doc2, 18, 1, 18, 100)
-Dim locbldr4 As LocalBuilder = mainIL.DeclareLocal(GetType(StmtSet))
-locbldr4.SetLocalSymInfo("ppstmts")
-Dim typ6(-1) As Type
-mainIL.Emit(OpCodes.Ldloc, 3)
-Typ = GetType(Parser)
-Typ03 = Typ
-mainIL.Emit(OpCodes.Ldloc, 2)
-Typ = GetType(StmtSet)
-ReDim Preserve typ6(UBound(typ6) + 1)
-typ6(UBound(typ6)) = Typ
-mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Parse", typ6))
-Typ = Typ03.GetMethod("Parse", typ6).ReturnType
-mainIL.Emit(OpCodes.Stloc, 4)
-mainIL.MarkSequencePoint(doc2, 19, 1, 19, 100)
-Dim locbldr5 As LocalBuilder = mainIL.DeclareLocal(GetType(CodeGenerator))
-locbldr5.SetLocalSymInfo("cg")
-mainIL.Emit(OpCodes.Newobj, GetType(CodeGenerator).GetConstructor(Type.EmptyTypes))
-mainIL.Emit(OpCodes.Stloc, 5)
-mainIL.MarkSequencePoint(doc2, 20, 1, 20, 100)
-Dim typ7(-1) As Type
-mainIL.Emit(OpCodes.Ldloc, 5)
-Typ = GetType(CodeGenerator)
-Typ03 = Typ
-mainIL.Emit(OpCodes.Ldloc, 4)
-Typ = GetType(StmtSet)
-ReDim Preserve typ7(UBound(typ7) + 1)
-typ7(UBound(typ7)) = Typ
-mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("EmitMSIL", typ7))
-Typ = Typ03.GetMethod("EmitMSIL", typ7).ReturnType
+mainIL.MarkSequencePoint(doc2, 21, 1, 21, 100)
+Dim typ9(-1) As Type
+mainIL.Emit(OpCodes.Ldstr, "Now Parsing: ")
+Typ = GetType(System.String)
+ReDim Preserve typ9(UBound(typ9) + 1)
+typ9(UBound(typ9)) = Typ
+mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("Write", typ9))
+Typ = GetType(Console).GetMethod("Write", typ9).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 mainIL.Emit(OpCodes.Pop)
 End If
 mainIL.MarkSequencePoint(doc2, 22, 1, 22, 100)
-Dim locbldr6 As LocalBuilder = mainIL.DeclareLocal(GetType(System.Type).MakeArrayType())
-locbldr6.SetLocalSymInfo("typs")
-mainIL.Emit(OpCodes.Ldc_I4, CInt(2))
-Typ = GetType(System.Int32)
-mainIL.Emit(OpCodes.Conv_U)
-mainIL.Emit(OpCodes.Newarr, GetType(System.Type))
-mainIL.Emit(OpCodes.Stloc, 6)
-mainIL.MarkSequencePoint(doc2, 23, 1, 23, 100)
-mainIL.Emit(OpCodes.Ldloc, 6)
-Typ = GetType(System.Type).MakeArrayType()
-Typ02 = Typ
-mainIL.Emit(OpCodes.Ldc_I4, CInt(0))
-Typ = GetType(System.Int32)
-mainIL.Emit(OpCodes.Conv_U)
-Typ = Typ02
-mainIL.Emit(OpCodes.Ldtoken, GetType(System.String))
-Dim typ8 As Type() = {GetType(System.RuntimeTypeHandle)}
-mainIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ8))
-Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ8).ReturnType
-mainIL.Emit(OpCodes.Stelem, GetType(System.Type).MakeArrayType().GetElementType())
-mainIL.MarkSequencePoint(doc2, 24, 1, 24, 100)
-mainIL.Emit(OpCodes.Ldloc, 6)
-Typ = GetType(System.Type).MakeArrayType()
-Typ02 = Typ
-mainIL.Emit(OpCodes.Ldc_I4, CInt(1))
-Typ = GetType(System.Int32)
-mainIL.Emit(OpCodes.Conv_U)
-Typ = Typ02
-mainIL.Emit(OpCodes.Ldtoken, GetType(System.String))
-Dim typ9 As Type() = {GetType(System.RuntimeTypeHandle)}
-mainIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ9))
-Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ9).ReturnType
-mainIL.Emit(OpCodes.Stelem, GetType(System.Type).MakeArrayType().GetElementType())
-mainIL.MarkSequencePoint(doc2, 25, 1, 25, 100)
-Dim locbldr7 As LocalBuilder = mainIL.DeclareLocal(GetType(System.Type))
-locbldr7.SetLocalSymInfo("t1")
 Dim typ10(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "String")
+mainIL.Emit(OpCodes.Ldloc, 0)
 Typ = GetType(System.String)
 ReDim Preserve typ10(UBound(typ10) + 1)
 typ10(UBound(typ10)) = Typ
-mainIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ10))
-Typ = GetType(Loader).GetMethod("LoadClass", typ10).ReturnType
-mainIL.Emit(OpCodes.Stloc, 7)
-mainIL.MarkSequencePoint(doc2, 26, 1, 26, 100)
-Dim locbldr8 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
-locbldr8.SetLocalSymInfo("t1s")
-mainIL.Emit(OpCodes.Ldloc, 7)
-Typ = GetType(System.Type)
+mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("Write", typ10))
+Typ = GetType(Console).GetMethod("Write", typ10).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+mainIL.Emit(OpCodes.Pop)
+End If
+mainIL.MarkSequencePoint(doc2, 23, 1, 23, 100)
+Dim locbldr4 As LocalBuilder = mainIL.DeclareLocal(GetType(StmtSet))
+locbldr4.SetLocalSymInfo("ppstmts")
+Dim typ11(-1) As Type
+mainIL.Emit(OpCodes.Ldloc, 3)
+Typ = GetType(Parser)
 Typ03 = Typ
-mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("ToString", Type.EmptyTypes))
-Typ = Typ03.GetMethod("ToString", Type.EmptyTypes).ReturnType
-mainIL.Emit(OpCodes.Stloc, 8)
-mainIL.MarkSequencePoint(doc2, 27, 1, 27, 100)
+mainIL.Emit(OpCodes.Ldloc, 2)
+Typ = GetType(StmtSet)
+ReDim Preserve typ11(UBound(typ11) + 1)
+typ11(UBound(typ11)) = Typ
+mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Parse", typ11))
+Typ = Typ03.GetMethod("Parse", typ11).ReturnType
+mainIL.Emit(OpCodes.Stloc, 4)
+mainIL.MarkSequencePoint(doc2, 24, 1, 24, 100)
 Dim typ12(-1) As Type
-mainIL.Emit(OpCodes.Ldloc, 8)
+mainIL.Emit(OpCodes.Ldstr, "...Done.")
 Typ = GetType(System.String)
 ReDim Preserve typ12(UBound(typ12) + 1)
 typ12(UBound(typ12)) = Typ
@@ -297,131 +285,31 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 mainIL.Emit(OpCodes.Pop)
 End If
-mainIL.MarkSequencePoint(doc2, 28, 1, 28, 100)
-Dim locbldr9 As LocalBuilder = mainIL.DeclareLocal(GetType(MethodInfo))
-locbldr9.SetLocalSymInfo("m1")
+mainIL.MarkSequencePoint(doc2, 25, 1, 25, 100)
+Dim locbldr5 As LocalBuilder = mainIL.DeclareLocal(GetType(CodeGenerator))
+locbldr5.SetLocalSymInfo("cg")
+mainIL.Emit(OpCodes.Newobj, GetType(CodeGenerator).GetConstructor(Type.EmptyTypes))
+mainIL.Emit(OpCodes.Stloc, 5)
+mainIL.MarkSequencePoint(doc2, 26, 1, 26, 100)
 Dim typ13(-1) As Type
-mainIL.Emit(OpCodes.Ldloc, 7)
-Typ = GetType(System.Type)
+mainIL.Emit(OpCodes.Ldloc, 5)
+Typ = GetType(CodeGenerator)
+Typ03 = Typ
+mainIL.Emit(OpCodes.Ldloc, 4)
+Typ = GetType(StmtSet)
 ReDim Preserve typ13(UBound(typ13) + 1)
 typ13(UBound(typ13)) = Typ
-mainIL.Emit(OpCodes.Ldstr, "Concat")
-Typ = GetType(System.String)
-ReDim Preserve typ13(UBound(typ13) + 1)
-typ13(UBound(typ13)) = Typ
-mainIL.Emit(OpCodes.Ldloc, 6)
-Typ = GetType(System.Type).MakeArrayType()
-ReDim Preserve typ13(UBound(typ13) + 1)
-typ13(UBound(typ13)) = Typ
-mainIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadMethod", typ13))
-Typ = GetType(Loader).GetMethod("LoadMethod", typ13).ReturnType
-mainIL.Emit(OpCodes.Stloc, 9)
-mainIL.MarkSequencePoint(doc2, 29, 1, 29, 100)
-Dim locbldr10 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
-locbldr10.SetLocalSymInfo("m1s")
-mainIL.Emit(OpCodes.Ldloc, 9)
-Typ = GetType(MethodInfo)
-Typ03 = Typ
-mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("ToString", Type.EmptyTypes))
-Typ = Typ03.GetMethod("ToString", Type.EmptyTypes).ReturnType
-mainIL.Emit(OpCodes.Stloc, 10)
-mainIL.MarkSequencePoint(doc2, 30, 1, 30, 100)
-Dim typ15(-1) As Type
-mainIL.Emit(OpCodes.Ldloc, 10)
-Typ = GetType(System.String)
-ReDim Preserve typ15(UBound(typ15) + 1)
-typ15(UBound(typ15)) = Typ
-mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ15))
-Typ = GetType(Console).GetMethod("WriteLine", typ15).ReturnType
+mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("EmitMSIL", typ13))
+Typ = Typ03.GetMethod("EmitMSIL", typ13).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 mainIL.Emit(OpCodes.Pop)
 End If
-mainIL.MarkSequencePoint(doc2, 31, 1, 31, 100)
-mainIL.Emit(OpCodes.Ldloc, 9)
-Typ = GetType(MethodInfo)
-mainIL.Emit(OpCodes.Ldnull)
-Dim fa1 As System.Reflection.Emit.Label = mainIL.DefineLabel()
-Dim tru1 As System.Reflection.Emit.Label = mainIL.DefineLabel()
-Dim cont1 As System.Reflection.Emit.Label = mainIL.DefineLabel()
-mainIL.Emit(OpCodes.Beq, fa1)
-mainIL.Emit(OpCodes.Br, tru1)
-mainIL.MarkLabel(tru1)
-mainIL.MarkSequencePoint(doc2, 32, 1, 32, 100)
-Dim locbldr11 As LocalBuilder = mainIL.DeclareLocal(GetType(System.Type))
-locbldr11.SetLocalSymInfo("t4")
-mainIL.Emit(OpCodes.Ldsfld, GetType(Loader).GetField("MemberTyp"))
-Typ = GetType(Loader).GetField("MemberTyp").FieldType
-mainIL.Emit(OpCodes.Stloc, 11)
-mainIL.MarkSequencePoint(doc2, 33, 1, 33, 100)
-Dim locbldr12 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
-locbldr12.SetLocalSymInfo("t4s")
-mainIL.Emit(OpCodes.Ldloc, 11)
-Typ = GetType(System.Type)
-Typ03 = Typ
-mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("ToString", Type.EmptyTypes))
-Typ = Typ03.GetMethod("ToString", Type.EmptyTypes).ReturnType
-mainIL.Emit(OpCodes.Stloc, 12)
-mainIL.MarkSequencePoint(doc2, 34, 1, 34, 100)
-Dim typ17(-1) As Type
-mainIL.Emit(OpCodes.Ldloc, 12)
-Typ = GetType(System.String)
-ReDim Preserve typ17(UBound(typ17) + 1)
-typ17(UBound(typ17)) = Typ
-mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ17))
-Typ = GetType(Console).GetMethod("WriteLine", typ17).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-mainIL.Emit(OpCodes.Pop)
-End If
-mainIL.MarkSequencePoint(doc2, 35, 1, 35, 100)
-mainIL.Emit(OpCodes.Br, cont1)
-mainIL.MarkLabel(fa1)
-mainIL.Emit(OpCodes.Br, cont1)
-mainIL.MarkLabel(cont1)
-mainIL.MarkSequencePoint(doc2, 51, 1, 51, 100)
-Dim locbldr13 As LocalBuilder = mainIL.DeclareLocal(GetType(Exception))
-locbldr13.SetLocalSymInfo("ex")
-mainIL.BeginCatchBlock(GetType(Exception))
-mainIL.Emit(OpCodes.Stloc,13)
-mainIL.MarkSequencePoint(doc2, 53, 1, 53, 100)
-Dim locbldr14 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
-locbldr14.SetLocalSymInfo("exstr")
-mainIL.Emit(OpCodes.Ldloc, 13)
-Typ = GetType(Exception)
-Typ03 = Typ
-mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("ToString", Type.EmptyTypes))
-Typ = Typ03.GetMethod("ToString", Type.EmptyTypes).ReturnType
-mainIL.Emit(OpCodes.Stloc, 14)
-mainIL.MarkSequencePoint(doc2, 54, 1, 54, 100)
-Dim typ19(-1) As Type
-mainIL.Emit(OpCodes.Ldloc, 14)
-Typ = GetType(System.String)
-ReDim Preserve typ19(UBound(typ19) + 1)
-typ19(UBound(typ19)) = Typ
-mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ19))
-Typ = GetType(Console).GetMethod("WriteLine", typ19).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-mainIL.Emit(OpCodes.Pop)
-End If
-mainIL.MarkSequencePoint(doc2, 55, 1, 55, 100)
-mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("ReadKey", Type.EmptyTypes))
-Typ = GetType(Console).GetMethod("ReadKey", Type.EmptyTypes).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-mainIL.Emit(OpCodes.Pop)
-End If
-mainIL.MarkSequencePoint(doc2, 57, 1, 57, 100)
-mainIL.EndExceptionBlock()
-mainIL.MarkSequencePoint(doc2, 59, 1, 59, 100)
+mainIL.MarkSequencePoint(doc2, 65, 1, 65, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(cont0)
-mainIL.MarkSequencePoint(doc2, 61, 1, 61, 100)
+mainIL.MarkSequencePoint(doc2, 67, 1, 67, 100)
 mainIL.Emit(OpCodes.Ret)
 Module1.CreateType()
 asm.SetEntryPoint(main)

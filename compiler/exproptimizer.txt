@@ -287,6 +287,7 @@ b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
 if ParserFlags::IdentFlag = true then
+ParserFlags::IdentFlag = false
 exp = procMethodCall(exp, i)
 i--
 len = exp::Tokens[l] - 1

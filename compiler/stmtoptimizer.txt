@@ -657,7 +657,7 @@ end method
 
 method public Stmt Optimize(var stm as Stmt)
 
-Console::WriteLine(stm::Line)
+//Console::WriteLine(stm::Line)
 
 var i as integer = -1
 var len as integer = stm::Tokens[l]
