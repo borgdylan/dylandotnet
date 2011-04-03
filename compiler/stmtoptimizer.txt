@@ -230,7 +230,79 @@ end if
 return clss
 end method
 
+method public Stmt checkField(var stm as Stmt, var b as boolean&)
+
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype FieldTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var flss as FieldStmt = new FieldStmt()
+var att as Attributes.Attribute = null
+
+if valinref|b = true then
+
+var tempexp as Expr = new Expr()
+tempexp::Tokens = stm::Tokens
+var eop as ExprOptimizer = new ExprOptimizer()
+ParserFlags::ProcessTTokOnly = true
+tempexp = eop::Optimize(tempexp)
+ParserFlags::ProcessTTokOnly = false
+stm::Tokens = tempexp::Tokens
+
+flss::Line = stm::Line
+flss::Tokens = stm::Tokens
+
+label loop
+label cont
+
+var i as integer = 0
+var len as integer = stm::Tokens[l] - 3
+var bl as boolean = false
+
+place loop
+
+i++
+tok = stm::Tokens[i]
+typ = gettype Attributes.Attribute
+bl = typ::IsInstanceOfType($object$tok)
+
+if bl = true then
+att = tok
+flss::AddAttr(att)
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+i++
+var tok2 as Token = stm::Tokens[i]
+var typ2 as System.Type = gettype TypeTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+if b2 <> true then
+var t as Token = stm::Tokens[i]
+var tt as TypeTok = new TypeTok()
+tt::Line = t::Line
+tt::Value = t::Value
+flss::FieldTyp = tt
+else
+flss::FieldTyp = stm::Tokens[i]
+end if
+
+i++
+flss::FieldName = stm::Tokens[i]
+
+end if
+
+return flss
+end method
+
 method public Stmt checkMethod(var stm as Stmt, var b as boolean&)
+
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype MethodTok
 valinref|b = typ::IsInstanceOfType($object$tok)
@@ -241,6 +313,14 @@ var exp as Expr = null
 var d as boolean = false
 
 if valinref|b = true then
+
+var tempexp as Expr = new Expr()
+tempexp::Tokens = stm::Tokens
+var eop as ExprOptimizer = new ExprOptimizer()
+ParserFlags::ProcessTTokOnly = true
+tempexp = eop::Optimize(tempexp)
+ParserFlags::ProcessTTokOnly = false
+stm::Tokens = tempexp::Tokens
 
 mtss::Line = stm::Line
 mtss::Tokens = stm::Tokens
@@ -497,6 +577,11 @@ var vars as VarStmt = new VarStmt()
 
 if valinref|b = true then
 vars::Tokens = stm::Tokens
+var tempexp as Expr = new Expr()
+tempexp::Tokens = vars::Tokens
+var eop as ExprOptimizer = new ExprOptimizer()
+tempexp = eop::Optimize(tempexp)
+vars::Tokens = tempexp::Tokens
 vars::Line = stm::Line
 vars::VarName = stm::Tokens[1]
 
@@ -635,6 +720,7 @@ place cont3
 
 var eop as ExprOptimizer = new ExprOptimizer()
 re = eop::Optimize(re)
+le = eop::Optimize(le)
 
 asss::Line = stm::Line
 asss::Tokens = stm::Tokens
@@ -742,6 +828,13 @@ goto fin
 end if
 
 tmpstm = checkClass(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkField(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm

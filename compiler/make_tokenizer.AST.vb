@@ -2938,6 +2938,11 @@ Dim LSParen As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.Char
 LSParen.CreateType()
 End Sub
 
+Sub LRSParen()
+Dim LRSParen As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.Chars" & "." & "LRSParen", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.Chars.Character"))
+LRSParen.CreateType()
+End Sub
+
 Sub RAParen()
 Dim RAParen As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.Chars" & "." & "RAParen", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.Chars.Character"))
 RAParen.CreateType()
@@ -2981,6 +2986,11 @@ End Sub
 Sub Pipe()
 Dim Pipe As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.Chars" & "." & "Pipe", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.Chars.Character"))
 Pipe.CreateType()
+End Sub
+
+Sub Ampersand()
+Dim Ampersand As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.Chars" & "." & "Ampersand", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.Chars.Character"))
+Ampersand.CreateType()
 End Sub
 
 Sub DollarSign()
@@ -5579,7 +5589,7 @@ End Sub
 Sub Main()
 
 asmName = New AssemblyName("tokenizer.AST")
-asmName.Version = New System.Version(11, 2, 4, 0)
+asmName.Version = New System.Version(11, 2, 5, 0)
 asm  = AppDomain.CurrentDomain.DefineDynamicAssembly(asmName, AssemblyBuilderAccess.Save, CStr("E:\Code\dylannet\compiler\"))
 mdl = asm.DefineDynamicModule(asmName.Name & ".dll" , asmName.Name & ".dll", True)
 resw = mdl.DefineResource("tokenizer.AST.resources" ,  "Description")
@@ -5769,6 +5779,7 @@ MethodCallTok()
 Character()
 RSParen()
 LSParen()
+LRSParen()
 RAParen()
 LAParen()
 RParen()
@@ -5778,6 +5789,7 @@ CrLf()
 Cr()
 Lf()
 Pipe()
+Ampersand()
 DollarSign()
 NewarrExpr()
 NewExpr()
@@ -5837,7 +5849,7 @@ EndPropStmt()
 CommentStmt()
 Dim vaType As Type = GetType(AssemblyFileVersionAttribute)
 Dim vaCtor As ConstructorInfo = vaType.GetConstructor(New Type() { GetType(String) })
-Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.4.0"})
+Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.5.0"})
 asm.SetCustomAttribute(vaBuilder)
 
 Dim paType As Type = GetType(AssemblyProductAttribute)

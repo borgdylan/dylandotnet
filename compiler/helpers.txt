@@ -82,4 +82,213 @@ place cont
 return ta
 end method
 
+method public static MethodAttributes ProcessMethodAttrs(var attrs as Attributes.Attribute[])
+var ta as MethodAttributes
+var temp as MethodAttributes
+
+label loop
+label cont
+label fin
+
+var len as integer = attrs[l] - 1
+var i as integer = -1
+var b as boolean = false
+var typ as System.Type
+var curattr as Attributes.Attribute = null
+var fir as boolean = true
+
+place loop
+
+i++
+
+curattr = attrs[i]
+
+typ = gettype Attributes.PublicAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 6
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.StaticAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 16
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+place fin
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+
+place cont
+
+
+return ta
+end method
+
+
+method public static FieldAttributes ProcessFieldAttrs(var attrs as Attributes.Attribute[])
+var ta as FieldAttributes
+var temp as FieldAttributes
+
+label loop
+label cont
+label fin
+
+var len as integer = attrs[l] - 1
+var i as integer = -1
+var b as boolean = false
+var typ as System.Type
+var curattr as Attributes.Attribute = null
+var fir as boolean = true
+
+place loop
+
+i++
+
+curattr = attrs[i]
+
+typ = gettype Attributes.PublicAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 6
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.StaticAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 16
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+place fin
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+
+place cont
+
+
+return ta
+end method
+
+
+method public static void ProcessParams(var ps as Expr[])
+
+var len as integer = ps[l] - 1
+var i as integer = -1
+var curp as VarExpr = null
+var typtok as TypeTok
+var nam as Ident
+var typ as System.Type = null
+var reft as System.Type
+
+
+label loop
+label cont
+
+place loop
+
+i++
+
+curp = ps[i]
+typtok = curp::VarTyp
+reft = typtok::RefTyp
+
+if reft = null then
+Loader::MakeArr = typtok::IsArray
+Loader::MakeRef = typtok::IsByRef
+typ = Loader::LoadClass(typtok::Value)
+else
+Loader::MakeArr = typtok::IsArray
+Loader::MakeRef = typtok::IsByRef
+typ = Loader::ProcessType(reft) 
+end if
+
+if typ <> null then
+AsmFactory::AddTyp(typ)
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+end method
+
+method public static void PostProcessParams(var ps as Expr[])
+
+var len as integer = ps[l] - 1
+var i as integer = -1
+var curp as VarExpr = null
+var nam as Ident
+
+label loop
+label cont
+
+place loop
+
+i++
+
+curp = ps[i]
+
+var mb as MethodBuilder = ILEmitter::Met
+var non as ParameterAttributes = 0
+nam = curp::VarName
+var ind as integer = i + 1
+mb::DefineParameter(ind, non, nam::Value)
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+end method
+
 end class
+

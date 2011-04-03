@@ -195,6 +195,40 @@ end if
 goto fin
 end if
 
+typ = gettype FieldStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var flss as FieldStmt = stm
+
+var fattrs as Attributes.Attribute[] = flss::Attrs
+var fa as FieldAttributes = Helpers::ProcessFieldAttrs(fattrs)
+var flssnam as Ident = flss::FieldName
+var flsnamstr as string = flssnam::Value
+var ftyptok as TypeTok = flss::FieldTyp
+var ftyp as System.Type = null
+var reft3 as System.Type  = ftyptok::RefTyp
+
+if reft3 = null then
+Loader::MakeArr = ftyptok::IsArray
+Loader::MakeRef = ftyptok::IsByRef
+ftyp = Loader::LoadClass(ftyptok::Value)
+else
+Loader::MakeArr = ftyptok::IsArray
+Loader::MakeRef = ftyptok::IsByRef
+ftyp = Loader::ProcessType(reft3) 
+end if
+
+var typb2 as TypeBuilder = AsmFactory::CurnTypB
+AsmFactory::CurnFldB = typb2::DefineField(flsnamstr, ftyp, fa)
+
+Console::Write("Adding Field: ")
+Console::WriteLine(flsnamstr)
+
+goto fin
+end if
+
+
 typ = gettype EndClassStmt
 b = typ::IsInstanceOfType($object$stm)
 
@@ -209,6 +243,67 @@ AsmFactory::isNested = false
 end if
 goto fin
 end if
+
+typ = gettype MethodStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var mtss as MethodStmt = stm
+
+
+var mattrs as Attributes.Attribute[] = mtss::Attrs
+var ma as MethodAttributes = Helpers::ProcessMethodAttrs(mattrs)
+var mtssnam as Ident = mtss::MethodName
+var mtssnamstr as string = mtssnam::Value
+var paramarr as Expr[] = mtss::Params
+var paramlen as integer = paramarr[l]
+var rettyptok as TypeTok = mtss::RetTyp
+var rettyp as System.Type = null
+reft  = rettyptok::RefTyp
+cmp = String::Compare(rettyptok::Value, "")
+
+if reft = null then
+if cmp = 0 then
+else
+Loader::MakeArr = rettyptok::IsArray
+Loader::MakeRef = rettyptok::IsByRef
+rettyp = Loader::LoadClass(rettyptok::Value)
+end if
+else
+Loader::MakeArr = rettyptok::IsArray
+Loader::MakeRef = rettyptok::IsByRef
+rettyp = Loader::ProcessType(reft) 
+end if
+
+AsmFactory::TypArr = newarr System.Type 0
+
+if paramlen = 0 then
+else
+Helpers::ProcessParams(paramarr)
+end if
+
+var typb as TypeBuilder = AsmFactory::CurnTypB
+AsmFactory::CurnMetB = typb::DefineMethod(mtssnamstr, ma, rettyp, AsmFactory::TypArr)
+AsmFactory::InitMtd()
+Console::Write("Adding Method: ")
+Console::WriteLine(mtssnamstr)
+
+if paramlen = 0 then
+else
+Helpers::PostProcessParams(paramarr)
+end if
+
+goto fin
+end if
+
+typ = gettype EndMethodStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+ILEmitter::EmitRet()
+goto fin
+end if
+
 
 place fin
 

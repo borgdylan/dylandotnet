@@ -183,6 +183,58 @@ var typ as System.Type
 var b as boolean
 var str as string
 
+typ = gettype LRSParen
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+typ = gettype TypeTok
+exp::RemToken(i)
+i--
+len = exp::Tokens[l] - 1
+tok = exp::Tokens[i]
+b = typ::IsInstanceOfType($object$tok)
+
+if b <> true then
+var tk as Token = exp::Tokens[i]
+var ttk as TypeTok = new TypeTok()
+ttk::Line = tk::Line
+ttk::Value = tk::Value
+ttk::IsArray = true
+else
+ttk = exp::Tokens[i]
+ttk::IsArray = true
+end if
+exp::Tokens[i] = ttk
+goto fin
+end if
+
+typ = gettype Ampersand
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+typ = gettype TypeTok
+exp::RemToken(i)
+i--
+len = exp::Tokens[l] - 1
+tok = exp::Tokens[i]
+b = typ::IsInstanceOfType($object$tok)
+
+if b <> true then
+var tk2 as Token = exp::Tokens[i]
+var ttk2 as TypeTok = new TypeTok()
+ttk2::Line = tk2::Line
+ttk2::Value = tk2::Value
+ttk2::IsByRef = true
+else
+ttk2 = exp::Tokens[i]
+ttk2::IsByRef = true
+end if
+exp::Tokens[i] = ttk2
+goto fin
+end if
+
+if ParserFlags::ProcessTTokOnly = false then
+
 typ = gettype DollarSign
 b = typ::IsInstanceOfType($object$tok)
 
@@ -212,6 +264,7 @@ ParserFlags::ConvTyp = tt1
 exp::RemToken(i)
 i--
 len = exp::Tokens[l] - 1
+else
 end if
 goto fin
 end if
@@ -282,6 +335,7 @@ end if
 goto fin
 end if
 
+
 typ = gettype LParen
 b = typ::IsInstanceOfType($object$tok)
 
@@ -322,6 +376,8 @@ end if
 
 if i > j then
 ParserFlags::IdentFlag = false
+end if
+
 end if
 
 place fin

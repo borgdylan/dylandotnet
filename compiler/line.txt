@@ -154,6 +154,14 @@ ob = true
 goto fin
 end if
 
+comp = String::Compare(cc, "&")
+
+if comp = 0 then
+valinref|sca = true
+ob = true
+goto fin
+end if
+
 comp = String::Compare(cc, "~")
 
 if comp = 0 then

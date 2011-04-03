@@ -12,6 +12,11 @@ class public auto ansi LSParen extends Character
 
 end class
 
+// []
+class public auto ansi LRSParen extends Character
+
+end class
+
 // >
 class public auto ansi RAParen extends Character
 
@@ -53,6 +58,11 @@ end class
 
 // |
 class public auto ansi Pipe extends Character
+
+end class
+
+// &
+class public auto ansi Ampersand extends Character
 
 end class
 

@@ -261,6 +261,26 @@ tok = rpar
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "[]")
+
+if comp = 0 then
+var lrspar as LRSParen = new LRSParen()
+lrspar::Line = tok::Line
+lrspar::Value = tok::Value
+tok = lrspar
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "&")
+
+if comp = 0 then
+var ampsig as Ampersand = new Ampersand()
+ampsig::Line = tok::Line
+ampsig::Value = tok::Value
+tok = ampsig
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "[")
 
 if comp = 0 then
@@ -434,6 +454,16 @@ var dltk as DllTok = new DllTok()
 dltk::Line = tok::Line
 dltk::Value = tok::Value
 tok = dltk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "field")
+
+if comp = 0 then
+var fltk as FieldTok = new FieldTok()
+fltk::Line = tok::Line
+fltk::Value = tok::Value
+tok = fltk
 goto fin
 end if
 

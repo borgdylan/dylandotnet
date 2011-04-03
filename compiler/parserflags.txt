@@ -13,6 +13,7 @@ field public static boolean ValinrefFlag
 field public static TypeTok ConvTyp
 field public static string OrdOp
 field public static boolean isChanged
+field public static boolean ProcessTTokOnly
 field public static boolean DurConvFlag
 field public static boolean IdentFlag
 
@@ -32,6 +33,7 @@ OrdOp = ""
 isChanged = false
 DurConvFlag = false
 IdentFlag = false
+ProcessTTokOnly = false
 end method
 
 method public static void SetUnaryFalse()
