@@ -85,11 +85,10 @@ ReDim Preserve typ0(UBound(typ0) + 1)
 typ0(UBound(typ0)) = GetType(System.String).MakeArrayType()
 Dim main As MethodBuilder = Module1.DefineMethod("main", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ0)
 Dim mainIL As ILGenerator = main.GetILGenerator()
-Dim mainparam00 As ParameterBuilder = main.DefineParameter(0, ParameterAttributes.RetVal, "")
 Dim mainparam01 As ParameterBuilder = main.DefineParameter(1, ParameterAttributes.None, "args")
 mainIL.MarkSequencePoint(doc2, 5, 1, 5, 100)
 Dim typ1(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.4 for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
+mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.5 for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
 Typ = GetType(System.String)
 ReDim Preserve typ1(UBound(typ1) + 1)
 typ1(UBound(typ1)) = Typ
@@ -299,6 +298,10 @@ mainIL.Emit(OpCodes.Ldloc, 4)
 Typ = GetType(StmtSet)
 ReDim Preserve typ13(UBound(typ13) + 1)
 typ13(UBound(typ13)) = Typ
+mainIL.Emit(OpCodes.Ldloc, 0)
+Typ = GetType(System.String)
+ReDim Preserve typ13(UBound(typ13) + 1)
+typ13(UBound(typ13)) = Typ
 mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("EmitMSIL", typ13))
 Typ = Typ03.GetMethod("EmitMSIL", typ13).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
@@ -306,6 +309,17 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 mainIL.Emit(OpCodes.Pop)
 End If
+mainIL.MarkSequencePoint(doc2, 31, 1, 31, 100)
+Dim locbldr6 As LocalBuilder = mainIL.DeclareLocal(GetType(System.Type))
+locbldr6.SetLocalSymInfo("t1")
+Dim typ14(-1) As Type
+mainIL.Emit(OpCodes.Ldstr, "Type1\NestedType2")
+Typ = GetType(System.String)
+ReDim Preserve typ14(UBound(typ14) + 1)
+typ14(UBound(typ14)) = Typ
+mainIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ14))
+Typ = GetType(Loader).GetMethod("LoadClass", typ14).ReturnType
+mainIL.Emit(OpCodes.Stloc, 6)
 mainIL.MarkSequencePoint(doc2, 65, 1, 65, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(cont0)

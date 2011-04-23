@@ -300,3 +300,122 @@ me::DoNeg = false
 end method
 
 end class
+
+class public auto ansi UIntLiteral extends NumberLiteral
+
+field public System.UInt32 NumVal
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+NumVal = Convert::ToUInt32(0i)
+me::Conv = false
+me::TTok = new TypeTok()
+me::OrdOp = ""
+me::DoNot = false
+me::DoNeg = false
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+NumVal = Convert::ToUInt32(0i)
+me::Conv = false
+me::TTok = new TypeTok()
+me::OrdOp = ""
+me::DoNot = false
+me::DoNeg = false
+end method
+
+end class
+class public auto ansi ByteLiteral extends NumberLiteral
+
+field public System.Byte NumVal
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+NumVal = Convert::ToByte(0b)
+me::Conv = false
+me::TTok = new TypeTok()
+me::OrdOp = ""
+me::DoNot = false
+me::DoNeg = false
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+NumVal = Convert::ToByte(0b)
+me::Conv = false
+me::TTok = new TypeTok()
+me::OrdOp = ""
+me::DoNot = false
+me::DoNeg = false
+end method
+
+end class
+
+class public auto ansi UShortLiteral extends NumberLiteral
+
+field public SYstem.UInt16 NumVal
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+NumVal = Convert::ToUInt16(0s)
+me::Conv = false
+me::TTok = new TypeTok()
+me::OrdOp = ""
+me::DoNot = false
+me::DoNeg = false
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+NumVal = Convert::ToUInt16(0s)
+me::Conv = false
+me::TTok = new TypeTok()
+me::OrdOp = ""
+me::DoNot = false
+me::DoNeg = false
+end method
+
+end class
+
+class public auto ansi ULongLiteral extends NumberLiteral
+
+field public System.UInt64 NumVal
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+NumVal = Convert::ToUInt64(0l)
+me::Conv = false
+me::TTok = new TypeTok()
+me::OrdOp = ""
+me::DoNot = false
+me::DoNeg = false
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+NumVal = Convert::ToUInt64(0l)
+me::Conv = false
+me::TTok = new TypeTok()
+me::OrdOp = ""
+me::DoNot = false
+me::DoNeg = false
+end method
+
+end class

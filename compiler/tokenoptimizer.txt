@@ -548,6 +548,16 @@ tok = pubattr
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "initonly")
+
+if comp = 0 then
+var initoattr as InitOnlyAttr = new InitOnlyAttr()
+initoattr::Line = tok::Line
+initoattr::Value = tok::Value
+tok = initoattr
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "static")
 
 if comp = 0 then
@@ -617,6 +627,17 @@ voidtok::Line = tok::Line
 voidtok::Value = tok::Value
 voidtok::RefTyp = gettype void
 tok = voidtok
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "decimal")
+
+if comp = 0 then
+var decitok as DecimalTok = new DecimalTok()
+decitok::Line = tok::Line
+decitok::Value = tok::Value
+decitok::RefTyp = gettype decimal
+tok = decitok
 goto fin
 end if
 

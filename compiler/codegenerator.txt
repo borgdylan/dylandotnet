@@ -1,6 +1,6 @@
 class public auto ansi CodeGenerator
 
-method public void EmitMSIL(var stmts as StmtSet)
+method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
 
 var i as integer = -1
 var len as integer = stmts::Stmts[l] - 1
@@ -23,7 +23,7 @@ if b = true then
 else
 
 var sr as StmtReader = new StmtReader()
-sr::Read(stm)
+sr::Read(stm, fpath)
 
 end if
 

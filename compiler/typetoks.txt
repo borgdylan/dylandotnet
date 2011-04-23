@@ -78,3 +78,19 @@ end class
 class public auto ansi MeTok extends TypeTok
 
 end class
+
+class public auto ansi UIntegerTok extends TypeTok
+
+end class
+
+class public auto ansi ULongTok extends TypeTok
+
+end class
+
+class public auto ansi ByteTok extends TypeTok
+
+end class
+
+class public auto ansi UShortTok extends TypeTok
+
+end class
