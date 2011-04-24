@@ -2,6 +2,10 @@
 //A Component of the NEW dylan.NET Compiler
 //compile with dylan.NET v.9.9 or later
 
+//Copyright (C) 2011 Dylan Borg borgdylan@hotmail.com
+//This code is FREE software under the GNU GPLv2 license. See the COPYING file. 
+
+
 #refasm mscorlib.dll
 #refasm System.dll
 #refasm System.Core.dll
