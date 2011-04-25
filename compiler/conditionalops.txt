@@ -6,30 +6,60 @@ end class
 // ==
 class public auto ansi EqOp extends ConditionalOp
 
+method public void ctor0()
+me::ctor()
+me::PrecNo = 8
+end method
+
 end class
 
 // <>
 // !=
 class public auto ansi NeqOp extends ConditionalOp
 
+method public void ctor0()
+me::ctor()
+me::PrecNo = 8
+end method
+
 end class
 
 // >
 class public auto ansi GtOp extends ConditionalOp
+
+method public void ctor0()
+me::ctor()
+me::PrecNo = 9
+end method
 
 end class
 
 // <
 class public auto ansi LtOp extends ConditionalOp
 
+method public void ctor0()
+me::ctor()
+me::PrecNo = 9
+end method
+
 end class
 
 // >=
 class public auto ansi GeOp extends ConditionalOp
 
+method public void ctor0()
+me::ctor()
+me::PrecNo = 9
+end method
+
 end class
 
 // <=
 class public auto ansi LeOp extends ConditionalOp
+
+method public void ctor0()
+me::ctor()
+me::PrecNo = 9
+end method
 
 end class

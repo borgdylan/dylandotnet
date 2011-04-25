@@ -7,6 +7,7 @@ me::ctor()
 me::Tokens = newarr Token 0
 me::Line = 0
 MetToCall = new MethodCallTok()
+me::ResultTyp = null
 end method
 
 end class

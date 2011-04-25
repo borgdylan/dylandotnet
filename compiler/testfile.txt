@@ -21,3 +21,4 @@ q = 4l
 e = 3.142f
 and or nand nor xor
 a[]
+< < > > <= >= != = == << >> <>

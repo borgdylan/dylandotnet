@@ -70,6 +70,27 @@ tok = deop
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "<<")
+
+if comp = 0 then
+var shilop as ShlOp = new ShlOp()
+shilop::Line = tok::Line
+shilop::Value = tok::Value
+tok = shilop
+goto fin
+end if
+
+comp = String::Compare(tok::Value, ">>")
+
+if comp = 0 then
+var shirop as ShrOp = new ShrOp()
+shirop::Line = tok::Line
+shirop::Value = tok::Value
+tok = shirop
+goto fin
+end if
+
+
 comp = String::Compare(tok::Value, "=")
 
 if comp = 0 then

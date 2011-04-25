@@ -2,11 +2,13 @@ class public auto ansi Expr
 
 field public Token[] Tokens
 field public integer Line
+field public System.Type ResultTyp
 
 method public void ctor0()
 me::ctor()
 Tokens = newarr Token 0
 Line = 0
+ResultTyp = null
 end method
 
 method public void AddToken(var toktoadd as Token)

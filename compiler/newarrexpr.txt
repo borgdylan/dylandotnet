@@ -9,6 +9,7 @@ me::Tokens = newarr Token 0
 me::Line = 0
 ArrayType = new TypeTok()
 ArrayLen = new Token()
+me::ResultTyp = null
 end method
 
 

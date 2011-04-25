@@ -232,6 +232,17 @@ valinref|scla = false
 ob = true
 goto fin
 else
+comp = String::Compare(PrevChar, "<")
+if comp = 0 then
+ob = false
+else
+comp = String::Compare(lc, "<")
+if comp = 0 then
+valinref|sca = true
+valinref|scla = false
+ob = true
+goto fin
+else
 comp = String::Compare(lc, ">")
 if comp = 0 then
 valinref|sca = true
@@ -242,6 +253,8 @@ else
 valinref|sca = true
 ob = true
 goto fin
+end if
+end if
 end if
 end if
 end if
@@ -256,7 +269,20 @@ comp = String::Compare(PrevChar, "<")
 if comp = 0 then
 ob = false
 else
+comp = String::Compare(PrevChar, ">")
+if comp = 0 then
+ob = false
+else
+comp = String::Compare(lc, ">")
+if comp = 0 then
+valinref|sca = true
+valinref|scla = false
 ob = true
+goto fin
+else
+ob = true
+end if
+end if
 end if
 goto fin
 else
