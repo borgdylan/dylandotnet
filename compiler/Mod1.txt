@@ -2,15 +2,15 @@ class public auto ansi Module1
 
 method public static void main(var args as string[])
 
-Console::WriteLine("dylan.NET Compiler v. 11.2.5 for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
-Console::WriteLine("                           and Novell Mono v. 2.6.7 /v. 2.10")
+Console::WriteLine("dylan.NET Compiler v. 11.2.7 Alpha for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
+Console::WriteLine("                           and Novell Mono v. 2.6.7/v. 2.8/v. 2.10")
 Console::WriteLine("This compiler is FREE software under the GNU GPLv2 license.")
 Console::WriteLine("Copyright (C) 2011 Dylan Borg")
 if args[l] < 1 then
 Console::WriteLine("Usage: dnc <path>")
 else
 
-//try
+try
 
 var p as string = args[0]
 var lx as Lexer = new Lexer()
@@ -29,7 +29,7 @@ cg::EmitMSIL(ppstmts, p)
 //var typs as System.Type[] = newarr System.Type 2
 //typs[0] = gettype string
 //typs[1] = gettype string
-var t1 as System.Type = Loader::LoadClass("Type1\NestedType2")
+//var t1 as System.Type = Loader::LoadClass("Type1\NestedType2")
 //var t1s as string = t1::ToString()
 //Console::WriteLine(t1s)
 //var m1 as MethodInfo = Loader::LoadMethod(t1,"Concat",typs)
@@ -55,13 +55,39 @@ var t1 as System.Type = Loader::LoadClass("Type1\NestedType2")
 //end if
 //end if
 
-//catch ex as Exception
+//var tt4 as TypeTok = new TypeTok("MethodInfo")
+//var t4 as System.Type = Helpers::CommitEvalTTok(tt4)
+//var t4s as string = t4::ToString()
+//Console::WriteLine(t4s)
+//var tt5 as GenericTypeTok = new GenericTypeTok("IEnumerable")
+//var tt6 as TypeTok = new TypeTok("XElement")
+//var ttarr as TypeTok[] = newarr TypeTok 1
+//ttarr[0] = tt6
+//tt5::Params = ttarr
+//var t5 as System.Type = Helpers::CommitEvalTTok(tt5)
+//var t5s as string = t5::ToString()
+//Console::WriteLine(t5s)
+//var tt7 as GenericTypeTok = new GenericTypeTok("IList")
+//ttarr[0] = tt6
+//tt7::Params = ttarr
+//var t7 as System.Type = Helpers::CommitEvalTTok(tt7)
+//var t7s as string = t5::ToString()
+//ttarr = newarr TypeTok 2
+//ttarr[0] = new TypeTok("String")
+//ttarr[1] = new TypeTok("String")
+//var tt8 as GenericTypeTok = new GenericTypeTok("IDictionary")
+//tt8::Params = ttarr
+//var t8 as System.Type = Helpers::CommitEvalTTok(tt8)
+//var t8s as string = t8::ToString()
+//Console::WriteLine(t8s)
 
-//var exstr as string = ex::ToString()
-//Console::WriteLine(exstr)
-//Console::ReadKey()
+catch ex as Exception
 
-//end try
+var exstr as string = ex::ToString()
+Console::WriteLine(exstr)
+Console::ReadKey()
+
+end try
 
 end if
 

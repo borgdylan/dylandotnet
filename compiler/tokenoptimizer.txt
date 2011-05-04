@@ -673,6 +673,29 @@ tok = inttok
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "intptr")
+
+if comp = 0 then
+var intptok as IntPtrTok = new IntPtrTok()
+intptok::Line = tok::Line
+intptok::Value = tok::Value
+intptok::RefTyp = gettype IntPtr
+tok = intptok
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "uinteger")
+
+if comp = 0 then
+var uinttok as UIntegerTok = new UIntegerTok()
+uinttok::Line = tok::Line
+uinttok::Value = tok::Value
+uinttok::RefTyp = gettype UInt32
+tok = uinttok
+goto fin
+end if
+
+
 comp = String::Compare(tok::Value, "double")
 
 if comp = 0 then
@@ -945,6 +968,57 @@ flit2::NumVal = $single$flit2::Value
 tok = flit2
 goto fin
 end if
+
+compb = Utils.ParseUtils::LikeOP(tok::Value, "#*")
+orflg = compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "+#*")
+orflg = orflg or compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "-#*")
+orflg = orflg or compb
+tmpstr = tok::Value
+compb = tmpstr::EndsWith("ui")
+orflg = orflg and compb
+
+if orflg = true then
+var uilit2 as UIntLiteral = new UIntLiteral()
+uilit2::Line = tok::Line
+tmpstr = tok::Value
+tmpchrarr = newarr char 1
+tmpchrarr[0] = 'i'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+tmpchrarr[0] = 'u'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+uilit2::Value = tmpstr
+uilit2::NumVal = Convert::ToUInt32(uilit2::Value)
+tok = uilit2
+goto fin
+end if
+
+compb = Utils.ParseUtils::LikeOP(tok::Value, "#*")
+orflg = compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "+#*")
+orflg = orflg or compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "-#*")
+orflg = orflg or compb
+tmpstr = tok::Value
+compb = tmpstr::EndsWith("ip")
+orflg = orflg and compb
+
+if orflg = true then
+var iplit2 as IntPtrLiteral = new IntPtrLiteral()
+iplit2::Line = tok::Line
+tmpstr = tok::Value
+tmpchrarr = newarr char 1
+tmpchrarr[0] = 'p'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+tmpchrarr[0] = 'i'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+iplit2::Value = tmpstr
+iplit2::NumVal = new IntPtr($integer$iplit2::Value)
+tok = iplit2
+goto fin
+end if
+
 
 compb = Utils.ParseUtils::LikeOP(tok::Value, "#*")
 orflg = compb

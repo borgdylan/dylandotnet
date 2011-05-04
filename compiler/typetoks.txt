@@ -27,6 +27,75 @@ end method
 
 end class
 
+class public auto ansi GenericTypeTok extends TypeTok
+
+field public TypeTok[] Params
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = null
+me::OrdOp = ""
+Params = newarr TypeTok 0
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = null
+me::OrdOp = ""
+Params = newarr TypeTok 0
+end method
+
+method public static void AddParam(var param as TypeTok)
+
+var len as integer = Params[l]
+var destl as integer = len + 1
+var stopel as integer = len - 1
+var i as integer = -1
+
+var destarr as TypeTok[] = newarr TypeTok destl
+
+label loop
+label cont
+
+place loop
+
+i++
+
+if len > 0 then
+
+destarr[i] = Params[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+destarr[len] = param
+
+Params = destarr
+
+end method
+
+end class
+
+
 class public auto ansi StringTok extends TypeTok
 
 end class
@@ -92,5 +161,9 @@ class public auto ansi ByteTok extends TypeTok
 end class
 
 class public auto ansi UShortTok extends TypeTok
+
+end class
+
+class public auto ansi IntPtrTok extends TypeTok
 
 end class

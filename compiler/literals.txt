@@ -419,3 +419,33 @@ me::DoNeg = false
 end method
 
 end class
+
+class public auto ansi IntPtrLiteral extends NumberLiteral
+
+field public IntPtr NumVal
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+NumVal = new IntPtr(0)
+me::Conv = false
+me::TTok = new TypeTok()
+me::OrdOp = ""
+me::DoNot = false
+me::DoNeg = false
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+NumVal = new IntPtr(0)
+me::Conv = false
+me::TTok = new TypeTok()
+me::OrdOp = ""
+me::DoNot = false
+me::DoNeg = false
+end method
+
+end class

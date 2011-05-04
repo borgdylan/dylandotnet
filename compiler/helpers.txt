@@ -242,6 +242,91 @@ return ta
 end method
 
 
+
+// note that this method returns void and leaves a result in AsmFactory::Type01
+method public static void EvalTTok(var tt as TypeTok)
+
+var tarr as System.Type[]
+var typ as System.Type
+var temptyp as System.Type
+var gtt as GenericTypeTok
+var pttoks as TypeTok[] = newarr TypeTok 0
+var curpttok as TypeTok = new TypeToK()
+var i as integer = -1
+var len as integer = 0
+var n as integer = 0
+var tstr as string = " "
+
+var ttyp as System.Type = gettype GenericTypeTok
+var b as boolean = ttyp::IsInstanceOfType($object$tt)
+
+label cont
+label loop
+
+if b <> false then
+
+gtt = tt
+pttoks = gtt::Params
+n = pttoks[l]
+len = n - 1
+
+tarr = AsmFactory::TypArr
+AsmFactory::TypArr = newarr System.Type 0
+
+Loader::MakeArr = gtt::IsArray
+Loader::MakeRef = gtt::IsByRef
+tstr = String::Concat(gtt::Value, "`", $string$n)
+typ = Loader::LoadClass(tstr)
+
+place loop
+
+i++
+
+curpttok = pttoks[i]
+EvalTTok(curpttok)
+temptyp = AsmFactory::Type01
+AsmFactory::AddTyp(temptyp)
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+//typ = typ::GetGenericTypeDefinition()
+typ = typ::MakeGenericType(AsmFactory::TypArr)
+AsmFactory::TypArr = tarr
+
+else
+
+label fin2
+
+if tt::RefTyp = null then
+Loader::MakeArr = tt::IsArray
+Loader::MakeRef = tt::IsByRef
+typ = Loader::LoadClass(tt::Value)
+goto fin2
+end if
+
+Loader::MakeArr = tt::IsArray
+Loader::MakeRef = tt::IsByRef
+typ = Loader::ProcessType(tt::RefTyp) 
+
+place fin2
+
+end if
+
+AsmFactory::Type01 = typ
+
+end method
+
+method public static System.Type CommitEvalTTok(var tt as TypeTok)
+EvalTTok(tt)
+return AsmFactory::Type01
+end method
+
 method public static void ProcessParams(var ps as Expr[])
 
 var len as integer = ps[l] - 1
@@ -250,7 +335,7 @@ var curp as VarExpr = null
 var typtok as TypeTok
 var nam as Ident
 var typ as System.Type = null
-var reft as System.Type
+//var reft as System.Type
 
 
 label loop
@@ -262,17 +347,19 @@ i++
 
 curp = ps[i]
 typtok = curp::VarTyp
-reft = typtok::RefTyp
+//reft = typtok::RefTyp
 
-if reft = null then
-Loader::MakeArr = typtok::IsArray
-Loader::MakeRef = typtok::IsByRef
-typ = Loader::LoadClass(typtok::Value)
-else
-Loader::MakeArr = typtok::IsArray
-Loader::MakeRef = typtok::IsByRef
-typ = Loader::ProcessType(reft) 
-end if
+//if reft = null then
+//Loader::MakeArr = typtok::IsArray
+//Loader::MakeRef = typtok::IsByRef
+//typ = Loader::LoadClass(typtok::Value)
+//else
+//Loader::MakeArr = typtok::IsArray
+//Loader::MakeRef = typtok::IsByRef
+//typ = Loader::ProcessType(reft) 
+//end if
+
+typ = CommitEvalTTok(typtok)
 
 if typ <> null then
 AsmFactory::AddTyp(typ)
@@ -315,17 +402,19 @@ var ind as integer = i + 1
 mb::DefineParameter(ind, non, nam::Value)
 
 typtok = curp::VarTyp
-reft = typtok::RefTyp
+//reft = typtok::RefTyp
 
-if reft = null then
-Loader::MakeArr = typtok::IsArray
-Loader::MakeRef = typtok::IsByRef
-typ = Loader::LoadClass(typtok::Value)
-else
-Loader::MakeArr = typtok::IsArray
-Loader::MakeRef = typtok::IsByRef
-typ = Loader::ProcessType(reft) 
-end if
+//if reft = null then
+//Loader::MakeArr = typtok::IsArray
+//Loader::MakeRef = typtok::IsByRef
+//typ = Loader::LoadClass(typtok::Value)
+//else
+//Loader::MakeArr = typtok::IsArray
+//Loader::MakeRef = typtok::IsByRef
+//typ = Loader::ProcessType(reft) 
+//end if
+
+typ = CommitEvalTTok(typtok)
 
 ILEmitter::ArgInd = ILEmitter::ArgInd + 1
 SymTable::AddVar(nam::Value, false, ILEmitter::ArgInd, typ)
@@ -348,7 +437,7 @@ var curp as VarExpr = null
 var nam as Ident
 var typtok as TypeTok
 var typ as System.Type = null
-var reft as System.Type
+//var reft as System.Type
 
 label loop
 label cont
@@ -366,17 +455,19 @@ var ind as integer = i + 1
 cb::DefineParameter(ind, non, nam::Value)
 
 typtok = curp::VarTyp
-reft = typtok::RefTyp
+//reft = typtok::RefTyp
 
-if reft = null then
-Loader::MakeArr = typtok::IsArray
-Loader::MakeRef = typtok::IsByRef
-typ = Loader::LoadClass(typtok::Value)
-else
-Loader::MakeArr = typtok::IsArray
-Loader::MakeRef = typtok::IsByRef
-typ = Loader::ProcessType(reft) 
-end if
+//if reft = null then
+//Loader::MakeArr = typtok::IsArray
+//Loader::MakeRef = typtok::IsByRef
+//typ = Loader::LoadClass(typtok::Value)
+//else
+//Loader::MakeArr = typtok::IsArray
+//Loader::MakeRef = typtok::IsByRef
+//typ = Loader::ProcessType(reft) 
+//end if
+
+typ = CommitEvalTTok(typtok)
 
 ILEmitter::ArgInd = ILEmitter::ArgInd + 1
 SymTable::AddVar(nam::Value, false, ILEmitter::ArgInd, typ)
@@ -390,6 +481,7 @@ end if
 place cont
 
 end method
+
 
 end class
 

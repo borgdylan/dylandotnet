@@ -1,5 +1,6 @@
 ﻿Imports dylan.NET.Tokenizer.CodeGen
 Imports dylan.NET.Tokenizer.Parser
+Imports dylan.NET.Tokenizer.AST.Tokens.TypeToks
 Imports dylan.NET.Tokenizer.AST.Stmts
 Imports dylan.NET.Tokenizer.Lexer
 Imports dylan.NET.Reflection
@@ -88,7 +89,7 @@ Dim mainIL As ILGenerator = main.GetILGenerator()
 Dim mainparam01 As ParameterBuilder = main.DefineParameter(1, ParameterAttributes.None, "args")
 mainIL.MarkSequencePoint(doc2, 5, 1, 5, 100)
 Dim typ1(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.5 for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
+mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.7 Alpha for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
 Typ = GetType(System.String)
 ReDim Preserve typ1(UBound(typ1) + 1)
 typ1(UBound(typ1)) = Typ
@@ -101,7 +102,7 @@ mainIL.Emit(OpCodes.Pop)
 End If
 mainIL.MarkSequencePoint(doc2, 6, 1, 6, 100)
 Dim typ2(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "                           and Novell Mono v. 2.6.7 /v. 2.10")
+mainIL.Emit(OpCodes.Ldstr, "                           and Novell Mono v. 2.6.7/v. 2.8/v. 2.10")
 Typ = GetType(System.String)
 ReDim Preserve typ2(UBound(typ2) + 1)
 typ2(UBound(typ2)) = Typ
@@ -168,6 +169,8 @@ End If
 mainIL.MarkSequencePoint(doc2, 11, 1, 11, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(fa0)
+mainIL.MarkSequencePoint(doc2, 13, 1, 13, 100)
+Dim try0 As System.Reflection.Emit.Label = mainIL.BeginExceptionBlock()
 mainIL.MarkSequencePoint(doc2, 15, 1, 15, 100)
 Dim locbldr0 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
 locbldr0.SetLocalSymInfo("p")
@@ -322,21 +325,47 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 mainIL.Emit(OpCodes.Pop)
 End If
-mainIL.MarkSequencePoint(doc2, 32, 1, 32, 100)
-Dim locbldr6 As LocalBuilder = mainIL.DeclareLocal(GetType(System.Type))
-locbldr6.SetLocalSymInfo("t1")
-Dim typ15(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "Type1\NestedType2")
+mainIL.MarkSequencePoint(doc2, 84, 1, 84, 100)
+Dim locbldr6 As LocalBuilder = mainIL.DeclareLocal(GetType(Exception))
+locbldr6.SetLocalSymInfo("ex")
+mainIL.BeginCatchBlock(GetType(Exception))
+mainIL.Emit(OpCodes.Stloc,6)
+mainIL.MarkSequencePoint(doc2, 86, 1, 86, 100)
+Dim locbldr7 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
+locbldr7.SetLocalSymInfo("exstr")
+mainIL.Emit(OpCodes.Ldloc, 6)
+Typ = GetType(Exception)
+Typ03 = Typ
+mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("ToString", Type.EmptyTypes))
+Typ = Typ03.GetMethod("ToString", Type.EmptyTypes).ReturnType
+mainIL.Emit(OpCodes.Stloc, 7)
+mainIL.MarkSequencePoint(doc2, 87, 1, 87, 100)
+Dim typ16(-1) As Type
+mainIL.Emit(OpCodes.Ldloc, 7)
 Typ = GetType(System.String)
-ReDim Preserve typ15(UBound(typ15) + 1)
-typ15(UBound(typ15)) = Typ
-mainIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ15))
-Typ = GetType(Loader).GetMethod("LoadClass", typ15).ReturnType
-mainIL.Emit(OpCodes.Stloc, 6)
-mainIL.MarkSequencePoint(doc2, 66, 1, 66, 100)
+ReDim Preserve typ16(UBound(typ16) + 1)
+typ16(UBound(typ16)) = Typ
+mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ16))
+Typ = GetType(Console).GetMethod("WriteLine", typ16).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+mainIL.Emit(OpCodes.Pop)
+End If
+mainIL.MarkSequencePoint(doc2, 88, 1, 88, 100)
+mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("ReadKey", Type.EmptyTypes))
+Typ = GetType(Console).GetMethod("ReadKey", Type.EmptyTypes).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+mainIL.Emit(OpCodes.Pop)
+End If
+mainIL.MarkSequencePoint(doc2, 90, 1, 90, 100)
+mainIL.EndExceptionBlock()
+mainIL.MarkSequencePoint(doc2, 92, 1, 92, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(cont0)
-mainIL.MarkSequencePoint(doc2, 68, 1, 68, 100)
+mainIL.MarkSequencePoint(doc2, 94, 1, 94, 100)
 mainIL.Emit(OpCodes.Ret)
 Module1.CreateType()
 asm.SetEntryPoint(main)

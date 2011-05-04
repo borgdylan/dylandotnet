@@ -2785,13 +2785,378 @@ ProcessFieldAttrsIL.MarkSequencePoint(doc7, 242, 1, 242, 100)
 ProcessFieldAttrsIL.Emit(OpCodes.Ret)
 Dim typ21(-1) As Type
 ReDim Preserve typ21(UBound(typ21) + 1)
-typ21(UBound(typ21)) = GetType(Expr).MakeArrayType()
-Dim ProcessParams As MethodBuilder = Helpers.DefineMethod("ProcessParams", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ21)
+typ21(UBound(typ21)) = GetType(TypeTok)
+Dim EvalTTok As MethodBuilder = Helpers.DefineMethod("EvalTTok", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ21)
+Dim EvalTTokIL As ILGenerator = EvalTTok.GetILGenerator()
+Dim EvalTTokparam01 As ParameterBuilder = EvalTTok.DefineParameter(1, ParameterAttributes.None, "tt")
+EvalTTokIL.MarkSequencePoint(doc7, 249, 1, 249, 100)
+Dim locbldr66 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(System.Type).MakeArrayType())
+locbldr66.SetLocalSymInfo("tarr")
+EvalTTokIL.MarkSequencePoint(doc7, 250, 1, 250, 100)
+Dim locbldr67 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(System.Type))
+locbldr67.SetLocalSymInfo("typ")
+EvalTTokIL.MarkSequencePoint(doc7, 251, 1, 251, 100)
+Dim locbldr68 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(System.Type))
+locbldr68.SetLocalSymInfo("temptyp")
+EvalTTokIL.MarkSequencePoint(doc7, 252, 1, 252, 100)
+Dim locbldr69 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(GenericTypeTok))
+locbldr69.SetLocalSymInfo("gtt")
+EvalTTokIL.MarkSequencePoint(doc7, 253, 1, 253, 100)
+Dim locbldr70 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(TypeTok).MakeArrayType())
+locbldr70.SetLocalSymInfo("pttoks")
+EvalTTokIL.Emit(OpCodes.Ldc_I4, CInt(0))
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Conv_U)
+EvalTTokIL.Emit(OpCodes.Newarr, GetType(TypeTok))
+EvalTTokIL.Emit(OpCodes.Stloc, 4)
+EvalTTokIL.MarkSequencePoint(doc7, 254, 1, 254, 100)
+Dim locbldr71 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(TypeTok))
+locbldr71.SetLocalSymInfo("curpttok")
+EvalTTokIL.Emit(OpCodes.Newobj, GetType(TypeToK).GetConstructor(Type.EmptyTypes))
+EvalTTokIL.Emit(OpCodes.Stloc, 5)
+EvalTTokIL.MarkSequencePoint(doc7, 255, 1, 255, 100)
+Dim locbldr72 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(System.Int32))
+locbldr72.SetLocalSymInfo("i")
+EvalTTokIL.Emit(OpCodes.Ldc_I4, CInt(-1))
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Stloc, 6)
+EvalTTokIL.MarkSequencePoint(doc7, 256, 1, 256, 100)
+Dim locbldr73 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(System.Int32))
+locbldr73.SetLocalSymInfo("len")
+EvalTTokIL.Emit(OpCodes.Ldc_I4, CInt(0))
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Stloc, 7)
+EvalTTokIL.MarkSequencePoint(doc7, 257, 1, 257, 100)
+Dim locbldr74 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(System.Int32))
+locbldr74.SetLocalSymInfo("n")
+EvalTTokIL.Emit(OpCodes.Ldc_I4, CInt(0))
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Stloc, 8)
+EvalTTokIL.MarkSequencePoint(doc7, 258, 1, 258, 100)
+Dim locbldr75 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(System.String))
+locbldr75.SetLocalSymInfo("tstr")
+EvalTTokIL.Emit(OpCodes.Ldstr, " ")
+Typ = GetType(System.String)
+EvalTTokIL.Emit(OpCodes.Stloc, 9)
+EvalTTokIL.MarkSequencePoint(doc7, 260, 1, 260, 100)
+Dim locbldr76 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(System.Type))
+locbldr76.SetLocalSymInfo("ttyp")
+EvalTTokIL.Emit(OpCodes.Ldtoken, GetType(GenericTypeTok))
+Dim typ22 As Type() = {GetType(System.RuntimeTypeHandle)}
+EvalTTokIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ22))
+Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ22).ReturnType
+EvalTTokIL.Emit(OpCodes.Stloc, 10)
+EvalTTokIL.MarkSequencePoint(doc7, 261, 1, 261, 100)
+Dim locbldr77 As LocalBuilder = EvalTTokIL.DeclareLocal(GetType(System.Boolean))
+locbldr77.SetLocalSymInfo("b")
+Dim typ23(-1) As Type
+EvalTTokIL.Emit(OpCodes.Ldloc, 10)
+Typ = GetType(System.Type)
+Typ03 = Typ
+EvalTTokIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(TypeTok)
+EvalTTokIL.Emit(OpCodes.Box,Typ)
+Typ = GetType(System.Object)
+ReDim Preserve typ23(UBound(typ23) + 1)
+typ23(UBound(typ23)) = Typ
+EvalTTokIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("IsInstanceOfType", typ23))
+Typ = Typ03.GetMethod("IsInstanceOfType", typ23).ReturnType
+EvalTTokIL.Emit(OpCodes.Stloc, 11)
+EvalTTokIL.MarkSequencePoint(doc7, 263, 1, 263, 100)
+Dim label9 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+EvalTTokIL.MarkSequencePoint(doc7, 264, 1, 264, 100)
+Dim label10 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+EvalTTokIL.MarkSequencePoint(doc7, 266, 1, 266, 100)
+EvalTTokIL.Emit(OpCodes.Ldloc, 11)
+Typ = GetType(System.Boolean)
+EvalTTokIL.Emit(OpCodes.Ldc_I4, 0)
+Typ = GetType(System.Boolean)
+Dim fa43 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+Dim tru43 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+Dim cont43 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+EvalTTokIL.Emit(OpCodes.Beq, fa43)
+EvalTTokIL.Emit(OpCodes.Br, tru43)
+EvalTTokIL.MarkLabel(tru43)
+EvalTTokIL.MarkSequencePoint(doc7, 268, 1, 268, 100)
+EvalTTokIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(TypeTok)
+EvalTTokIL.Emit(OpCodes.Stloc, 3)
+EvalTTokIL.MarkSequencePoint(doc7, 269, 1, 269, 100)
+EvalTTokIL.Emit(OpCodes.Ldloc, 3)
+Typ = GetType(GenericTypeTok)
+EvalTTokIL.Emit(OpCodes.Ldfld, GetType(GenericTypeTok).GetField("Params"))
+Typ = GetType(GenericTypeTok).GetField("Params").FieldType
+EvalTTokIL.Emit(OpCodes.Stloc, 4)
+EvalTTokIL.MarkSequencePoint(doc7, 270, 1, 270, 100)
+EvalTTokIL.Emit(OpCodes.Ldloc, 4)
+Typ = GetType(TypeTok).MakeArrayType()
+EvalTTokIL.Emit(OpCodes.Ldlen)
+EvalTTokIL.Emit(OpCodes.Conv_I4)
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Stloc, 8)
+EvalTTokIL.MarkSequencePoint(doc7, 271, 1, 271, 100)
+EvalTTokIL.Emit(OpCodes.Ldloc, 8)
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Ldc_I4, CInt(1))
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Sub)
+EvalTTokIL.Emit(OpCodes.Stloc, 7)
+EvalTTokIL.MarkSequencePoint(doc7, 273, 1, 273, 100)
+EvalTTokIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
+Typ = GetType(AsmFactory).GetField("TypArr").FieldType
+EvalTTokIL.Emit(OpCodes.Stloc, 0)
+EvalTTokIL.MarkSequencePoint(doc7, 274, 1, 274, 100)
+EvalTTokIL.Emit(OpCodes.Ldc_I4, CInt(0))
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Conv_U)
+EvalTTokIL.Emit(OpCodes.Newarr, GetType(System.Type))
+EvalTTokIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("TypArr"))
+EvalTTokIL.MarkSequencePoint(doc7, 276, 1, 276, 100)
+EvalTTokIL.Emit(OpCodes.Ldloc, 3)
+Typ = GetType(GenericTypeTok)
+EvalTTokIL.Emit(OpCodes.Ldfld, GetType(GenericTypeTok).GetField("IsArray"))
+Typ = GetType(GenericTypeTok).GetField("IsArray").FieldType
+EvalTTokIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
+EvalTTokIL.MarkSequencePoint(doc7, 277, 1, 277, 100)
+EvalTTokIL.Emit(OpCodes.Ldloc, 3)
+Typ = GetType(GenericTypeTok)
+EvalTTokIL.Emit(OpCodes.Ldfld, GetType(GenericTypeTok).GetField("IsByRef"))
+Typ = GetType(GenericTypeTok).GetField("IsByRef").FieldType
+EvalTTokIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
+EvalTTokIL.MarkSequencePoint(doc7, 278, 1, 278, 100)
+Dim typ24(-1) As Type
+EvalTTokIL.Emit(OpCodes.Ldloc, 3)
+Typ = GetType(GenericTypeTok)
+EvalTTokIL.Emit(OpCodes.Ldfld, GetType(GenericTypeTok).GetField("Value"))
+Typ = GetType(GenericTypeTok).GetField("Value").FieldType
+ReDim Preserve typ24(UBound(typ24) + 1)
+typ24(UBound(typ24)) = Typ
+EvalTTokIL.Emit(OpCodes.Ldstr, "`")
+Typ = GetType(System.String)
+ReDim Preserve typ24(UBound(typ24) + 1)
+typ24(UBound(typ24)) = Typ
+EvalTTokIL.Emit(OpCodes.Ldloc, 8)
+Typ = GetType(System.Int32)
+Dim typ25 As Type() = {Typ}
+EvalTTokIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToString", typ25))
+Typ = GetType(System.Convert).GetMethod("ToString", typ25).ReturnType
+ReDim Preserve typ24(UBound(typ24) + 1)
+typ24(UBound(typ24)) = Typ
+EvalTTokIL.Emit(OpCodes.Call, GetType(String).GetMethod("Concat", typ24))
+Typ = GetType(String).GetMethod("Concat", typ24).ReturnType
+EvalTTokIL.Emit(OpCodes.Stloc, 9)
+EvalTTokIL.MarkSequencePoint(doc7, 279, 1, 279, 100)
+Dim typ26(-1) As Type
+EvalTTokIL.Emit(OpCodes.Ldloc, 9)
+Typ = GetType(System.String)
+ReDim Preserve typ26(UBound(typ26) + 1)
+typ26(UBound(typ26)) = Typ
+EvalTTokIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ26))
+Typ = GetType(Loader).GetMethod("LoadClass", typ26).ReturnType
+EvalTTokIL.Emit(OpCodes.Stloc, 1)
+EvalTTokIL.MarkSequencePoint(doc7, 281, 1, 281, 100)
+EvalTTokIL.MarkLabel(label10)
+EvalTTokIL.MarkSequencePoint(doc7, 283, 1, 283, 100)
+EvalTTokIL.Emit(OpCodes.Ldloc, 6)
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Ldc_I4, CInt(1))
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Add)
+EvalTTokIL.Emit(OpCodes.Stloc, 6)
+EvalTTokIL.MarkSequencePoint(doc7, 285, 1, 285, 100)
+EvalTTokIL.Emit(OpCodes.Ldloc, 4)
+Typ = GetType(TypeTok).MakeArrayType()
+Typ02 = Typ
+EvalTTokIL.Emit(OpCodes.Ldloc, 6)
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Conv_U)
+Typ = Typ02
+EvalTTokIL.Emit(OpCodes.Ldelem, GetType(TypeTok).MakeArrayType().GetElementType())
+Typ = GetType(TypeTok).MakeArrayType().GetElementType()
+EvalTTokIL.Emit(OpCodes.Stloc, 5)
+EvalTTokIL.MarkSequencePoint(doc7, 286, 1, 286, 100)
+Dim typ27(-1) As Type
+EvalTTokIL.Emit(OpCodes.Ldloc, 5)
+Typ = GetType(TypeTok)
+ReDim Preserve typ27(UBound(typ27) + 1)
+typ27(UBound(typ27)) = Typ
+EvalTTokIL.Emit(OpCodes.Call, EvalTTok)
+Typ = EvalTTok.ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+EvalTTokIL.Emit(OpCodes.Pop)
+End If
+EvalTTokIL.MarkSequencePoint(doc7, 287, 1, 287, 100)
+EvalTTokIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("Type01"))
+Typ = GetType(AsmFactory).GetField("Type01").FieldType
+EvalTTokIL.Emit(OpCodes.Stloc, 2)
+EvalTTokIL.MarkSequencePoint(doc7, 288, 1, 288, 100)
+Dim typ28(-1) As Type
+EvalTTokIL.Emit(OpCodes.Ldloc, 2)
+Typ = GetType(System.Type)
+ReDim Preserve typ28(UBound(typ28) + 1)
+typ28(UBound(typ28)) = Typ
+EvalTTokIL.Emit(OpCodes.Call, GetType(AsmFactory).GetMethod("AddTyp", typ28))
+Typ = GetType(AsmFactory).GetMethod("AddTyp", typ28).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+EvalTTokIL.Emit(OpCodes.Pop)
+End If
+EvalTTokIL.MarkSequencePoint(doc7, 290, 1, 290, 100)
+EvalTTokIL.Emit(OpCodes.Ldloc, 6)
+Typ = GetType(System.Int32)
+EvalTTokIL.Emit(OpCodes.Ldloc, 7)
+Typ = GetType(System.Int32)
+Dim fa44 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+Dim tru44 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+Dim cont44 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+EvalTTokIL.Emit(OpCodes.Beq, tru44)
+EvalTTokIL.Emit(OpCodes.Br, fa44)
+EvalTTokIL.MarkLabel(tru44)
+EvalTTokIL.MarkSequencePoint(doc7, 291, 1, 291, 100)
+EvalTTokIL.Emit(OpCodes.Br, label9)
+EvalTTokIL.MarkSequencePoint(doc7, 292, 1, 292, 100)
+EvalTTokIL.Emit(OpCodes.Br, cont44)
+EvalTTokIL.MarkLabel(fa44)
+EvalTTokIL.MarkSequencePoint(doc7, 293, 1, 293, 100)
+EvalTTokIL.Emit(OpCodes.Br, label10)
+EvalTTokIL.MarkSequencePoint(doc7, 294, 1, 294, 100)
+EvalTTokIL.Emit(OpCodes.Br, cont44)
+EvalTTokIL.MarkLabel(cont44)
+EvalTTokIL.MarkSequencePoint(doc7, 296, 1, 296, 100)
+EvalTTokIL.MarkLabel(label9)
+EvalTTokIL.MarkSequencePoint(doc7, 299, 1, 299, 100)
+Dim typ29(-1) As Type
+EvalTTokIL.Emit(OpCodes.Ldloc, 1)
+Typ = GetType(System.Type)
+Typ03 = Typ
+EvalTTokIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
+Typ = GetType(AsmFactory).GetField("TypArr").FieldType
+ReDim Preserve typ29(UBound(typ29) + 1)
+typ29(UBound(typ29)) = Typ
+EvalTTokIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("MakeGenericType", typ29))
+Typ = Typ03.GetMethod("MakeGenericType", typ29).ReturnType
+EvalTTokIL.Emit(OpCodes.Stloc, 1)
+EvalTTokIL.MarkSequencePoint(doc7, 300, 1, 300, 100)
+EvalTTokIL.Emit(OpCodes.Ldloc, 0)
+Typ = GetType(System.Type).MakeArrayType()
+EvalTTokIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("TypArr"))
+EvalTTokIL.MarkSequencePoint(doc7, 302, 1, 302, 100)
+EvalTTokIL.Emit(OpCodes.Br, cont43)
+EvalTTokIL.MarkLabel(fa43)
+EvalTTokIL.MarkSequencePoint(doc7, 304, 1, 304, 100)
+Dim label11 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+EvalTTokIL.MarkSequencePoint(doc7, 306, 1, 306, 100)
+EvalTTokIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(TypeTok)
+EvalTTokIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("RefTyp"))
+Typ = GetType(TypeTok).GetField("RefTyp").FieldType
+EvalTTokIL.Emit(OpCodes.Ldnull)
+Dim fa45 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+Dim tru45 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+Dim cont45 As System.Reflection.Emit.Label = EvalTTokIL.DefineLabel()
+EvalTTokIL.Emit(OpCodes.Beq, tru45)
+EvalTTokIL.Emit(OpCodes.Br, fa45)
+EvalTTokIL.MarkLabel(tru45)
+EvalTTokIL.MarkSequencePoint(doc7, 307, 1, 307, 100)
+EvalTTokIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(TypeTok)
+EvalTTokIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
+Typ = GetType(TypeTok).GetField("IsArray").FieldType
+EvalTTokIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
+EvalTTokIL.MarkSequencePoint(doc7, 308, 1, 308, 100)
+EvalTTokIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(TypeTok)
+EvalTTokIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
+Typ = GetType(TypeTok).GetField("IsByRef").FieldType
+EvalTTokIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
+EvalTTokIL.MarkSequencePoint(doc7, 309, 1, 309, 100)
+Dim typ30(-1) As Type
+EvalTTokIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(TypeTok)
+EvalTTokIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("Value"))
+Typ = GetType(TypeTok).GetField("Value").FieldType
+ReDim Preserve typ30(UBound(typ30) + 1)
+typ30(UBound(typ30)) = Typ
+EvalTTokIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ30))
+Typ = GetType(Loader).GetMethod("LoadClass", typ30).ReturnType
+EvalTTokIL.Emit(OpCodes.Stloc, 1)
+EvalTTokIL.MarkSequencePoint(doc7, 310, 1, 310, 100)
+EvalTTokIL.Emit(OpCodes.Br, label11)
+EvalTTokIL.MarkSequencePoint(doc7, 311, 1, 311, 100)
+EvalTTokIL.Emit(OpCodes.Br, cont45)
+EvalTTokIL.MarkLabel(fa45)
+EvalTTokIL.Emit(OpCodes.Br, cont45)
+EvalTTokIL.MarkLabel(cont45)
+EvalTTokIL.MarkSequencePoint(doc7, 313, 1, 313, 100)
+EvalTTokIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(TypeTok)
+EvalTTokIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
+Typ = GetType(TypeTok).GetField("IsArray").FieldType
+EvalTTokIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
+EvalTTokIL.MarkSequencePoint(doc7, 314, 1, 314, 100)
+EvalTTokIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(TypeTok)
+EvalTTokIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
+Typ = GetType(TypeTok).GetField("IsByRef").FieldType
+EvalTTokIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
+EvalTTokIL.MarkSequencePoint(doc7, 315, 1, 315, 100)
+Dim typ31(-1) As Type
+EvalTTokIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(TypeTok)
+EvalTTokIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("RefTyp"))
+Typ = GetType(TypeTok).GetField("RefTyp").FieldType
+ReDim Preserve typ31(UBound(typ31) + 1)
+typ31(UBound(typ31)) = Typ
+EvalTTokIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("ProcessType", typ31))
+Typ = GetType(Loader).GetMethod("ProcessType", typ31).ReturnType
+EvalTTokIL.Emit(OpCodes.Stloc, 1)
+EvalTTokIL.MarkSequencePoint(doc7, 317, 1, 317, 100)
+EvalTTokIL.MarkLabel(label11)
+EvalTTokIL.MarkSequencePoint(doc7, 319, 1, 319, 100)
+EvalTTokIL.Emit(OpCodes.Br, cont43)
+EvalTTokIL.MarkLabel(cont43)
+EvalTTokIL.MarkSequencePoint(doc7, 321, 1, 321, 100)
+EvalTTokIL.Emit(OpCodes.Ldloc, 1)
+Typ = GetType(System.Type)
+EvalTTokIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("Type01"))
+EvalTTokIL.MarkSequencePoint(doc7, 323, 1, 323, 100)
+EvalTTokIL.Emit(OpCodes.Ret)
+Dim typ32(-1) As Type
+ReDim Preserve typ32(UBound(typ32) + 1)
+typ32(UBound(typ32)) = GetType(TypeTok)
+Dim CommitEvalTTok As MethodBuilder = Helpers.DefineMethod("CommitEvalTTok", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Type), typ32)
+Dim CommitEvalTTokIL As ILGenerator = CommitEvalTTok.GetILGenerator()
+Dim CommitEvalTTokparam01 As ParameterBuilder = CommitEvalTTok.DefineParameter(1, ParameterAttributes.None, "tt")
+CommitEvalTTokIL.MarkSequencePoint(doc7, 326, 1, 326, 100)
+Dim typ33(-1) As Type
+CommitEvalTTokIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(TypeTok)
+ReDim Preserve typ33(UBound(typ33) + 1)
+typ33(UBound(typ33)) = Typ
+CommitEvalTTokIL.Emit(OpCodes.Call, EvalTTok)
+Typ = EvalTTok.ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+CommitEvalTTokIL.Emit(OpCodes.Pop)
+End If
+CommitEvalTTokIL.MarkSequencePoint(doc7, 327, 1, 327, 100)
+CommitEvalTTokIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("Type01"))
+Typ = GetType(AsmFactory).GetField("Type01").FieldType
+CommitEvalTTokIL.MarkSequencePoint(doc7, 328, 1, 328, 100)
+CommitEvalTTokIL.Emit(OpCodes.Ret)
+Dim typ34(-1) As Type
+ReDim Preserve typ34(UBound(typ34) + 1)
+typ34(UBound(typ34)) = GetType(Expr).MakeArrayType()
+Dim ProcessParams As MethodBuilder = Helpers.DefineMethod("ProcessParams", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ34)
 Dim ProcessParamsIL As ILGenerator = ProcessParams.GetILGenerator()
 Dim ProcessParamsparam01 As ParameterBuilder = ProcessParams.DefineParameter(1, ParameterAttributes.None, "ps")
-ProcessParamsIL.MarkSequencePoint(doc7, 247, 1, 247, 100)
-Dim locbldr66 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(System.Int32))
-locbldr66.SetLocalSymInfo("len")
+ProcessParamsIL.MarkSequencePoint(doc7, 332, 1, 332, 100)
+Dim locbldr78 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(System.Int32))
+locbldr78.SetLocalSymInfo("len")
 ProcessParamsIL.Emit(OpCodes.Ldarg, 0)
 Typ = GetType(Expr).MakeArrayType()
 ProcessParamsIL.Emit(OpCodes.Ldlen)
@@ -2801,45 +3166,42 @@ ProcessParamsIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 ProcessParamsIL.Emit(OpCodes.Sub)
 ProcessParamsIL.Emit(OpCodes.Stloc, 0)
-ProcessParamsIL.MarkSequencePoint(doc7, 248, 1, 248, 100)
-Dim locbldr67 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(System.Int32))
-locbldr67.SetLocalSymInfo("i")
+ProcessParamsIL.MarkSequencePoint(doc7, 333, 1, 333, 100)
+Dim locbldr79 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(System.Int32))
+locbldr79.SetLocalSymInfo("i")
 ProcessParamsIL.Emit(OpCodes.Ldc_I4, CInt(-1))
 Typ = GetType(System.Int32)
 ProcessParamsIL.Emit(OpCodes.Stloc, 1)
-ProcessParamsIL.MarkSequencePoint(doc7, 249, 1, 249, 100)
-Dim locbldr68 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(VarExpr))
-locbldr68.SetLocalSymInfo("curp")
+ProcessParamsIL.MarkSequencePoint(doc7, 334, 1, 334, 100)
+Dim locbldr80 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(VarExpr))
+locbldr80.SetLocalSymInfo("curp")
 ProcessParamsIL.Emit(OpCodes.Ldnull)
 ProcessParamsIL.Emit(OpCodes.Stloc, 2)
-ProcessParamsIL.MarkSequencePoint(doc7, 250, 1, 250, 100)
-Dim locbldr69 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(TypeTok))
-locbldr69.SetLocalSymInfo("typtok")
-ProcessParamsIL.MarkSequencePoint(doc7, 251, 1, 251, 100)
-Dim locbldr70 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(Ident))
-locbldr70.SetLocalSymInfo("nam")
-ProcessParamsIL.MarkSequencePoint(doc7, 252, 1, 252, 100)
-Dim locbldr71 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(System.Type))
-locbldr71.SetLocalSymInfo("typ")
+ProcessParamsIL.MarkSequencePoint(doc7, 335, 1, 335, 100)
+Dim locbldr81 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(TypeTok))
+locbldr81.SetLocalSymInfo("typtok")
+ProcessParamsIL.MarkSequencePoint(doc7, 336, 1, 336, 100)
+Dim locbldr82 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(Ident))
+locbldr82.SetLocalSymInfo("nam")
+ProcessParamsIL.MarkSequencePoint(doc7, 337, 1, 337, 100)
+Dim locbldr83 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(System.Type))
+locbldr83.SetLocalSymInfo("typ")
 ProcessParamsIL.Emit(OpCodes.Ldnull)
 ProcessParamsIL.Emit(OpCodes.Stloc, 5)
-ProcessParamsIL.MarkSequencePoint(doc7, 253, 1, 253, 100)
-Dim locbldr72 As LocalBuilder = ProcessParamsIL.DeclareLocal(GetType(System.Type))
-locbldr72.SetLocalSymInfo("reft")
-ProcessParamsIL.MarkSequencePoint(doc7, 256, 1, 256, 100)
-Dim label9 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
-ProcessParamsIL.MarkSequencePoint(doc7, 257, 1, 257, 100)
-Dim label10 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
-ProcessParamsIL.MarkSequencePoint(doc7, 259, 1, 259, 100)
-ProcessParamsIL.MarkLabel(label9)
-ProcessParamsIL.MarkSequencePoint(doc7, 261, 1, 261, 100)
+ProcessParamsIL.MarkSequencePoint(doc7, 341, 1, 341, 100)
+Dim label12 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
+ProcessParamsIL.MarkSequencePoint(doc7, 342, 1, 342, 100)
+Dim label13 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
+ProcessParamsIL.MarkSequencePoint(doc7, 344, 1, 344, 100)
+ProcessParamsIL.MarkLabel(label12)
+ProcessParamsIL.MarkSequencePoint(doc7, 346, 1, 346, 100)
 ProcessParamsIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
 ProcessParamsIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 ProcessParamsIL.Emit(OpCodes.Add)
 ProcessParamsIL.Emit(OpCodes.Stloc, 1)
-ProcessParamsIL.MarkSequencePoint(doc7, 263, 1, 263, 100)
+ProcessParamsIL.MarkSequencePoint(doc7, 348, 1, 348, 100)
 ProcessParamsIL.Emit(OpCodes.Ldarg, 0)
 Typ = GetType(Expr).MakeArrayType()
 Typ02 = Typ
@@ -2850,140 +3212,83 @@ Typ = Typ02
 ProcessParamsIL.Emit(OpCodes.Ldelem, GetType(Expr).MakeArrayType().GetElementType())
 Typ = GetType(Expr).MakeArrayType().GetElementType()
 ProcessParamsIL.Emit(OpCodes.Stloc, 2)
-ProcessParamsIL.MarkSequencePoint(doc7, 264, 1, 264, 100)
+ProcessParamsIL.MarkSequencePoint(doc7, 349, 1, 349, 100)
 ProcessParamsIL.Emit(OpCodes.Ldloc, 2)
 Typ = GetType(VarExpr)
 ProcessParamsIL.Emit(OpCodes.Ldfld, GetType(VarExpr).GetField("VarTyp"))
 Typ = GetType(VarExpr).GetField("VarTyp").FieldType
 ProcessParamsIL.Emit(OpCodes.Stloc, 3)
-ProcessParamsIL.MarkSequencePoint(doc7, 265, 1, 265, 100)
+ProcessParamsIL.MarkSequencePoint(doc7, 362, 1, 362, 100)
+Dim typ35(-1) As Type
 ProcessParamsIL.Emit(OpCodes.Ldloc, 3)
 Typ = GetType(TypeTok)
-ProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("RefTyp"))
-Typ = GetType(TypeTok).GetField("RefTyp").FieldType
-ProcessParamsIL.Emit(OpCodes.Stloc, 6)
-ProcessParamsIL.MarkSequencePoint(doc7, 267, 1, 267, 100)
-ProcessParamsIL.Emit(OpCodes.Ldloc, 6)
-Typ = GetType(System.Type)
-ProcessParamsIL.Emit(OpCodes.Ldnull)
-Dim fa43 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
-Dim tru43 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
-Dim cont43 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
-ProcessParamsIL.Emit(OpCodes.Beq, tru43)
-ProcessParamsIL.Emit(OpCodes.Br, fa43)
-ProcessParamsIL.MarkLabel(tru43)
-ProcessParamsIL.MarkSequencePoint(doc7, 268, 1, 268, 100)
-ProcessParamsIL.Emit(OpCodes.Ldloc, 3)
-Typ = GetType(TypeTok)
-ProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-ProcessParamsIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-ProcessParamsIL.MarkSequencePoint(doc7, 269, 1, 269, 100)
-ProcessParamsIL.Emit(OpCodes.Ldloc, 3)
-Typ = GetType(TypeTok)
-ProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-ProcessParamsIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-ProcessParamsIL.MarkSequencePoint(doc7, 270, 1, 270, 100)
-Dim typ22(-1) As Type
-ProcessParamsIL.Emit(OpCodes.Ldloc, 3)
-Typ = GetType(TypeTok)
-ProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("Value"))
-Typ = GetType(TypeTok).GetField("Value").FieldType
-ReDim Preserve typ22(UBound(typ22) + 1)
-typ22(UBound(typ22)) = Typ
-ProcessParamsIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ22))
-Typ = GetType(Loader).GetMethod("LoadClass", typ22).ReturnType
+ReDim Preserve typ35(UBound(typ35) + 1)
+typ35(UBound(typ35)) = Typ
+ProcessParamsIL.Emit(OpCodes.Call, CommitEvalTTok)
+Typ = CommitEvalTTok.ReturnType
 ProcessParamsIL.Emit(OpCodes.Stloc, 5)
-ProcessParamsIL.MarkSequencePoint(doc7, 271, 1, 271, 100)
-ProcessParamsIL.Emit(OpCodes.Br, cont43)
-ProcessParamsIL.MarkLabel(fa43)
-ProcessParamsIL.MarkSequencePoint(doc7, 272, 1, 272, 100)
-ProcessParamsIL.Emit(OpCodes.Ldloc, 3)
-Typ = GetType(TypeTok)
-ProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-ProcessParamsIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-ProcessParamsIL.MarkSequencePoint(doc7, 273, 1, 273, 100)
-ProcessParamsIL.Emit(OpCodes.Ldloc, 3)
-Typ = GetType(TypeTok)
-ProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-ProcessParamsIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-ProcessParamsIL.MarkSequencePoint(doc7, 274, 1, 274, 100)
-Dim typ23(-1) As Type
-ProcessParamsIL.Emit(OpCodes.Ldloc, 6)
-Typ = GetType(System.Type)
-ReDim Preserve typ23(UBound(typ23) + 1)
-typ23(UBound(typ23)) = Typ
-ProcessParamsIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("ProcessType", typ23))
-Typ = GetType(Loader).GetMethod("ProcessType", typ23).ReturnType
-ProcessParamsIL.Emit(OpCodes.Stloc, 5)
-ProcessParamsIL.MarkSequencePoint(doc7, 275, 1, 275, 100)
-ProcessParamsIL.Emit(OpCodes.Br, cont43)
-ProcessParamsIL.MarkLabel(cont43)
-ProcessParamsIL.MarkSequencePoint(doc7, 277, 1, 277, 100)
+ProcessParamsIL.MarkSequencePoint(doc7, 364, 1, 364, 100)
 ProcessParamsIL.Emit(OpCodes.Ldloc, 5)
 Typ = GetType(System.Type)
 ProcessParamsIL.Emit(OpCodes.Ldnull)
-Dim fa44 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
-Dim tru44 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
-Dim cont44 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
-ProcessParamsIL.Emit(OpCodes.Beq, fa44)
-ProcessParamsIL.Emit(OpCodes.Br, tru44)
-ProcessParamsIL.MarkLabel(tru44)
-ProcessParamsIL.MarkSequencePoint(doc7, 278, 1, 278, 100)
-Dim typ24(-1) As Type
+Dim fa46 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
+Dim tru46 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
+Dim cont46 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
+ProcessParamsIL.Emit(OpCodes.Beq, fa46)
+ProcessParamsIL.Emit(OpCodes.Br, tru46)
+ProcessParamsIL.MarkLabel(tru46)
+ProcessParamsIL.MarkSequencePoint(doc7, 365, 1, 365, 100)
+Dim typ36(-1) As Type
 ProcessParamsIL.Emit(OpCodes.Ldloc, 5)
 Typ = GetType(System.Type)
-ReDim Preserve typ24(UBound(typ24) + 1)
-typ24(UBound(typ24)) = Typ
-ProcessParamsIL.Emit(OpCodes.Call, GetType(AsmFactory).GetMethod("AddTyp", typ24))
-Typ = GetType(AsmFactory).GetMethod("AddTyp", typ24).ReturnType
+ReDim Preserve typ36(UBound(typ36) + 1)
+typ36(UBound(typ36)) = Typ
+ProcessParamsIL.Emit(OpCodes.Call, GetType(AsmFactory).GetMethod("AddTyp", typ36))
+Typ = GetType(AsmFactory).GetMethod("AddTyp", typ36).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 ProcessParamsIL.Emit(OpCodes.Pop)
 End If
-ProcessParamsIL.MarkSequencePoint(doc7, 279, 1, 279, 100)
-ProcessParamsIL.Emit(OpCodes.Br, cont44)
-ProcessParamsIL.MarkLabel(fa44)
-ProcessParamsIL.Emit(OpCodes.Br, cont44)
-ProcessParamsIL.MarkLabel(cont44)
-ProcessParamsIL.MarkSequencePoint(doc7, 281, 1, 281, 100)
+ProcessParamsIL.MarkSequencePoint(doc7, 366, 1, 366, 100)
+ProcessParamsIL.Emit(OpCodes.Br, cont46)
+ProcessParamsIL.MarkLabel(fa46)
+ProcessParamsIL.Emit(OpCodes.Br, cont46)
+ProcessParamsIL.MarkLabel(cont46)
+ProcessParamsIL.MarkSequencePoint(doc7, 368, 1, 368, 100)
 ProcessParamsIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
 ProcessParamsIL.Emit(OpCodes.Ldloc, 0)
 Typ = GetType(System.Int32)
-Dim fa45 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
-Dim tru45 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
-Dim cont45 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
-ProcessParamsIL.Emit(OpCodes.Beq, tru45)
-ProcessParamsIL.Emit(OpCodes.Br, fa45)
-ProcessParamsIL.MarkLabel(tru45)
-ProcessParamsIL.MarkSequencePoint(doc7, 282, 1, 282, 100)
-ProcessParamsIL.Emit(OpCodes.Br, label10)
-ProcessParamsIL.MarkSequencePoint(doc7, 283, 1, 283, 100)
-ProcessParamsIL.Emit(OpCodes.Br, cont45)
-ProcessParamsIL.MarkLabel(fa45)
-ProcessParamsIL.MarkSequencePoint(doc7, 284, 1, 284, 100)
-ProcessParamsIL.Emit(OpCodes.Br, label9)
-ProcessParamsIL.MarkSequencePoint(doc7, 285, 1, 285, 100)
-ProcessParamsIL.Emit(OpCodes.Br, cont45)
-ProcessParamsIL.MarkLabel(cont45)
-ProcessParamsIL.MarkSequencePoint(doc7, 287, 1, 287, 100)
-ProcessParamsIL.MarkLabel(label10)
-ProcessParamsIL.MarkSequencePoint(doc7, 289, 1, 289, 100)
+Dim fa47 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
+Dim tru47 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
+Dim cont47 As System.Reflection.Emit.Label = ProcessParamsIL.DefineLabel()
+ProcessParamsIL.Emit(OpCodes.Beq, tru47)
+ProcessParamsIL.Emit(OpCodes.Br, fa47)
+ProcessParamsIL.MarkLabel(tru47)
+ProcessParamsIL.MarkSequencePoint(doc7, 369, 1, 369, 100)
+ProcessParamsIL.Emit(OpCodes.Br, label13)
+ProcessParamsIL.MarkSequencePoint(doc7, 370, 1, 370, 100)
+ProcessParamsIL.Emit(OpCodes.Br, cont47)
+ProcessParamsIL.MarkLabel(fa47)
+ProcessParamsIL.MarkSequencePoint(doc7, 371, 1, 371, 100)
+ProcessParamsIL.Emit(OpCodes.Br, label12)
+ProcessParamsIL.MarkSequencePoint(doc7, 372, 1, 372, 100)
+ProcessParamsIL.Emit(OpCodes.Br, cont47)
+ProcessParamsIL.MarkLabel(cont47)
+ProcessParamsIL.MarkSequencePoint(doc7, 374, 1, 374, 100)
+ProcessParamsIL.MarkLabel(label13)
+ProcessParamsIL.MarkSequencePoint(doc7, 376, 1, 376, 100)
 ProcessParamsIL.Emit(OpCodes.Ret)
-Dim typ25(-1) As Type
-ReDim Preserve typ25(UBound(typ25) + 1)
-typ25(UBound(typ25)) = GetType(Expr).MakeArrayType()
-Dim PostProcessParams As MethodBuilder = Helpers.DefineMethod("PostProcessParams", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ25)
+Dim typ37(-1) As Type
+ReDim Preserve typ37(UBound(typ37) + 1)
+typ37(UBound(typ37)) = GetType(Expr).MakeArrayType()
+Dim PostProcessParams As MethodBuilder = Helpers.DefineMethod("PostProcessParams", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ37)
 Dim PostProcessParamsIL As ILGenerator = PostProcessParams.GetILGenerator()
 Dim PostProcessParamsparam01 As ParameterBuilder = PostProcessParams.DefineParameter(1, ParameterAttributes.None, "ps")
-PostProcessParamsIL.MarkSequencePoint(doc7, 293, 1, 293, 100)
-Dim locbldr73 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(System.Int32))
-locbldr73.SetLocalSymInfo("len")
+PostProcessParamsIL.MarkSequencePoint(doc7, 380, 1, 380, 100)
+Dim locbldr84 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(System.Int32))
+locbldr84.SetLocalSymInfo("len")
 PostProcessParamsIL.Emit(OpCodes.Ldarg, 0)
 Typ = GetType(Expr).MakeArrayType()
 PostProcessParamsIL.Emit(OpCodes.Ldlen)
@@ -2993,45 +3298,45 @@ PostProcessParamsIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 PostProcessParamsIL.Emit(OpCodes.Sub)
 PostProcessParamsIL.Emit(OpCodes.Stloc, 0)
-PostProcessParamsIL.MarkSequencePoint(doc7, 294, 1, 294, 100)
-Dim locbldr74 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(System.Int32))
-locbldr74.SetLocalSymInfo("i")
+PostProcessParamsIL.MarkSequencePoint(doc7, 381, 1, 381, 100)
+Dim locbldr85 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(System.Int32))
+locbldr85.SetLocalSymInfo("i")
 PostProcessParamsIL.Emit(OpCodes.Ldc_I4, CInt(-1))
 Typ = GetType(System.Int32)
 PostProcessParamsIL.Emit(OpCodes.Stloc, 1)
-PostProcessParamsIL.MarkSequencePoint(doc7, 295, 1, 295, 100)
-Dim locbldr75 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(VarExpr))
-locbldr75.SetLocalSymInfo("curp")
+PostProcessParamsIL.MarkSequencePoint(doc7, 382, 1, 382, 100)
+Dim locbldr86 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(VarExpr))
+locbldr86.SetLocalSymInfo("curp")
 PostProcessParamsIL.Emit(OpCodes.Ldnull)
 PostProcessParamsIL.Emit(OpCodes.Stloc, 2)
-PostProcessParamsIL.MarkSequencePoint(doc7, 296, 1, 296, 100)
-Dim locbldr76 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(Ident))
-locbldr76.SetLocalSymInfo("nam")
-PostProcessParamsIL.MarkSequencePoint(doc7, 297, 1, 297, 100)
-Dim locbldr77 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(TypeTok))
-locbldr77.SetLocalSymInfo("typtok")
-PostProcessParamsIL.MarkSequencePoint(doc7, 298, 1, 298, 100)
-Dim locbldr78 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(System.Type))
-locbldr78.SetLocalSymInfo("typ")
+PostProcessParamsIL.MarkSequencePoint(doc7, 383, 1, 383, 100)
+Dim locbldr87 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(Ident))
+locbldr87.SetLocalSymInfo("nam")
+PostProcessParamsIL.MarkSequencePoint(doc7, 384, 1, 384, 100)
+Dim locbldr88 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(TypeTok))
+locbldr88.SetLocalSymInfo("typtok")
+PostProcessParamsIL.MarkSequencePoint(doc7, 385, 1, 385, 100)
+Dim locbldr89 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(System.Type))
+locbldr89.SetLocalSymInfo("typ")
 PostProcessParamsIL.Emit(OpCodes.Ldnull)
 PostProcessParamsIL.Emit(OpCodes.Stloc, 5)
-PostProcessParamsIL.MarkSequencePoint(doc7, 299, 1, 299, 100)
-Dim locbldr79 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(System.Type))
-locbldr79.SetLocalSymInfo("reft")
-PostProcessParamsIL.MarkSequencePoint(doc7, 302, 1, 302, 100)
-Dim label11 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
-PostProcessParamsIL.MarkSequencePoint(doc7, 303, 1, 303, 100)
-Dim label12 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
-PostProcessParamsIL.MarkSequencePoint(doc7, 305, 1, 305, 100)
-PostProcessParamsIL.MarkLabel(label11)
-PostProcessParamsIL.MarkSequencePoint(doc7, 307, 1, 307, 100)
+PostProcessParamsIL.MarkSequencePoint(doc7, 386, 1, 386, 100)
+Dim locbldr90 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(System.Type))
+locbldr90.SetLocalSymInfo("reft")
+PostProcessParamsIL.MarkSequencePoint(doc7, 389, 1, 389, 100)
+Dim label14 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
+PostProcessParamsIL.MarkSequencePoint(doc7, 390, 1, 390, 100)
+Dim label15 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
+PostProcessParamsIL.MarkSequencePoint(doc7, 392, 1, 392, 100)
+PostProcessParamsIL.MarkLabel(label14)
+PostProcessParamsIL.MarkSequencePoint(doc7, 394, 1, 394, 100)
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
 PostProcessParamsIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 PostProcessParamsIL.Emit(OpCodes.Add)
 PostProcessParamsIL.Emit(OpCodes.Stloc, 1)
-PostProcessParamsIL.MarkSequencePoint(doc7, 309, 1, 309, 100)
+PostProcessParamsIL.MarkSequencePoint(doc7, 396, 1, 396, 100)
 PostProcessParamsIL.Emit(OpCodes.Ldarg, 0)
 Typ = GetType(Expr).MakeArrayType()
 Typ02 = Typ
@@ -3042,199 +3347,142 @@ Typ = Typ02
 PostProcessParamsIL.Emit(OpCodes.Ldelem, GetType(Expr).MakeArrayType().GetElementType())
 Typ = GetType(Expr).MakeArrayType().GetElementType()
 PostProcessParamsIL.Emit(OpCodes.Stloc, 2)
-PostProcessParamsIL.MarkSequencePoint(doc7, 311, 1, 311, 100)
-Dim locbldr80 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(MethodBuilder))
-locbldr80.SetLocalSymInfo("mb")
+PostProcessParamsIL.MarkSequencePoint(doc7, 398, 1, 398, 100)
+Dim locbldr91 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(MethodBuilder))
+locbldr91.SetLocalSymInfo("mb")
 PostProcessParamsIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("Met"))
 Typ = GetType(ILEmitter).GetField("Met").FieldType
 PostProcessParamsIL.Emit(OpCodes.Stloc, 7)
-PostProcessParamsIL.MarkSequencePoint(doc7, 312, 1, 312, 100)
-Dim locbldr81 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(ParameterAttributes))
-locbldr81.SetLocalSymInfo("non")
+PostProcessParamsIL.MarkSequencePoint(doc7, 399, 1, 399, 100)
+Dim locbldr92 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(ParameterAttributes))
+locbldr92.SetLocalSymInfo("non")
 PostProcessParamsIL.Emit(OpCodes.Ldc_I4, CInt(0))
 Typ = GetType(System.Int32)
 PostProcessParamsIL.Emit(OpCodes.Stloc, 8)
-PostProcessParamsIL.MarkSequencePoint(doc7, 313, 1, 313, 100)
+PostProcessParamsIL.MarkSequencePoint(doc7, 400, 1, 400, 100)
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 2)
 Typ = GetType(VarExpr)
 PostProcessParamsIL.Emit(OpCodes.Ldfld, GetType(VarExpr).GetField("VarName"))
 Typ = GetType(VarExpr).GetField("VarName").FieldType
 PostProcessParamsIL.Emit(OpCodes.Stloc, 3)
-PostProcessParamsIL.MarkSequencePoint(doc7, 314, 1, 314, 100)
-Dim locbldr82 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(System.Int32))
-locbldr82.SetLocalSymInfo("ind")
+PostProcessParamsIL.MarkSequencePoint(doc7, 401, 1, 401, 100)
+Dim locbldr93 As LocalBuilder = PostProcessParamsIL.DeclareLocal(GetType(System.Int32))
+locbldr93.SetLocalSymInfo("ind")
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
 PostProcessParamsIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 PostProcessParamsIL.Emit(OpCodes.Add)
 PostProcessParamsIL.Emit(OpCodes.Stloc, 9)
-PostProcessParamsIL.MarkSequencePoint(doc7, 315, 1, 315, 100)
-Dim typ26(-1) As Type
+PostProcessParamsIL.MarkSequencePoint(doc7, 402, 1, 402, 100)
+Dim typ38(-1) As Type
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 7)
 Typ = GetType(MethodBuilder)
 Typ03 = Typ
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 9)
 Typ = GetType(System.Int32)
-ReDim Preserve typ26(UBound(typ26) + 1)
-typ26(UBound(typ26)) = Typ
+ReDim Preserve typ38(UBound(typ38) + 1)
+typ38(UBound(typ38)) = Typ
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 8)
 Typ = GetType(ParameterAttributes)
-ReDim Preserve typ26(UBound(typ26) + 1)
-typ26(UBound(typ26)) = Typ
+ReDim Preserve typ38(UBound(typ38) + 1)
+typ38(UBound(typ38)) = Typ
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 3)
 Typ = GetType(Ident)
 PostProcessParamsIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
 Typ = GetType(Ident).GetField("Value").FieldType
-ReDim Preserve typ26(UBound(typ26) + 1)
-typ26(UBound(typ26)) = Typ
-PostProcessParamsIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineParameter", typ26))
-Typ = Typ03.GetMethod("DefineParameter", typ26).ReturnType
+ReDim Preserve typ38(UBound(typ38) + 1)
+typ38(UBound(typ38)) = Typ
+PostProcessParamsIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineParameter", typ38))
+Typ = Typ03.GetMethod("DefineParameter", typ38).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 PostProcessParamsIL.Emit(OpCodes.Pop)
 End If
-PostProcessParamsIL.MarkSequencePoint(doc7, 317, 1, 317, 100)
+PostProcessParamsIL.MarkSequencePoint(doc7, 404, 1, 404, 100)
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 2)
 Typ = GetType(VarExpr)
 PostProcessParamsIL.Emit(OpCodes.Ldfld, GetType(VarExpr).GetField("VarTyp"))
 Typ = GetType(VarExpr).GetField("VarTyp").FieldType
 PostProcessParamsIL.Emit(OpCodes.Stloc, 4)
-PostProcessParamsIL.MarkSequencePoint(doc7, 318, 1, 318, 100)
+PostProcessParamsIL.MarkSequencePoint(doc7, 417, 1, 417, 100)
+Dim typ39(-1) As Type
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 4)
 Typ = GetType(TypeTok)
-PostProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("RefTyp"))
-Typ = GetType(TypeTok).GetField("RefTyp").FieldType
-PostProcessParamsIL.Emit(OpCodes.Stloc, 6)
-PostProcessParamsIL.MarkSequencePoint(doc7, 320, 1, 320, 100)
-PostProcessParamsIL.Emit(OpCodes.Ldloc, 6)
-Typ = GetType(System.Type)
-PostProcessParamsIL.Emit(OpCodes.Ldnull)
-Dim fa46 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
-Dim tru46 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
-Dim cont46 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
-PostProcessParamsIL.Emit(OpCodes.Beq, tru46)
-PostProcessParamsIL.Emit(OpCodes.Br, fa46)
-PostProcessParamsIL.MarkLabel(tru46)
-PostProcessParamsIL.MarkSequencePoint(doc7, 321, 1, 321, 100)
-PostProcessParamsIL.Emit(OpCodes.Ldloc, 4)
-Typ = GetType(TypeTok)
-PostProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-PostProcessParamsIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-PostProcessParamsIL.MarkSequencePoint(doc7, 322, 1, 322, 100)
-PostProcessParamsIL.Emit(OpCodes.Ldloc, 4)
-Typ = GetType(TypeTok)
-PostProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-PostProcessParamsIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-PostProcessParamsIL.MarkSequencePoint(doc7, 323, 1, 323, 100)
-Dim typ27(-1) As Type
-PostProcessParamsIL.Emit(OpCodes.Ldloc, 4)
-Typ = GetType(TypeTok)
-PostProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("Value"))
-Typ = GetType(TypeTok).GetField("Value").FieldType
-ReDim Preserve typ27(UBound(typ27) + 1)
-typ27(UBound(typ27)) = Typ
-PostProcessParamsIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ27))
-Typ = GetType(Loader).GetMethod("LoadClass", typ27).ReturnType
+ReDim Preserve typ39(UBound(typ39) + 1)
+typ39(UBound(typ39)) = Typ
+PostProcessParamsIL.Emit(OpCodes.Call, CommitEvalTTok)
+Typ = CommitEvalTTok.ReturnType
 PostProcessParamsIL.Emit(OpCodes.Stloc, 5)
-PostProcessParamsIL.MarkSequencePoint(doc7, 324, 1, 324, 100)
-PostProcessParamsIL.Emit(OpCodes.Br, cont46)
-PostProcessParamsIL.MarkLabel(fa46)
-PostProcessParamsIL.MarkSequencePoint(doc7, 325, 1, 325, 100)
-PostProcessParamsIL.Emit(OpCodes.Ldloc, 4)
-Typ = GetType(TypeTok)
-PostProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-PostProcessParamsIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-PostProcessParamsIL.MarkSequencePoint(doc7, 326, 1, 326, 100)
-PostProcessParamsIL.Emit(OpCodes.Ldloc, 4)
-Typ = GetType(TypeTok)
-PostProcessParamsIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-PostProcessParamsIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-PostProcessParamsIL.MarkSequencePoint(doc7, 327, 1, 327, 100)
-Dim typ28(-1) As Type
-PostProcessParamsIL.Emit(OpCodes.Ldloc, 6)
-Typ = GetType(System.Type)
-ReDim Preserve typ28(UBound(typ28) + 1)
-typ28(UBound(typ28)) = Typ
-PostProcessParamsIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("ProcessType", typ28))
-Typ = GetType(Loader).GetMethod("ProcessType", typ28).ReturnType
-PostProcessParamsIL.Emit(OpCodes.Stloc, 5)
-PostProcessParamsIL.MarkSequencePoint(doc7, 328, 1, 328, 100)
-PostProcessParamsIL.Emit(OpCodes.Br, cont46)
-PostProcessParamsIL.MarkLabel(cont46)
-PostProcessParamsIL.MarkSequencePoint(doc7, 330, 1, 330, 100)
+PostProcessParamsIL.MarkSequencePoint(doc7, 419, 1, 419, 100)
 PostProcessParamsIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("ArgInd"))
 Typ = GetType(ILEmitter).GetField("ArgInd").FieldType
 PostProcessParamsIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 PostProcessParamsIL.Emit(OpCodes.Add)
 PostProcessParamsIL.Emit(OpCodes.Stsfld, GetType(ILEmitter).GetField("ArgInd"))
-PostProcessParamsIL.MarkSequencePoint(doc7, 331, 1, 331, 100)
-Dim typ29(-1) As Type
+PostProcessParamsIL.MarkSequencePoint(doc7, 420, 1, 420, 100)
+Dim typ40(-1) As Type
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 3)
 Typ = GetType(Ident)
 PostProcessParamsIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
 Typ = GetType(Ident).GetField("Value").FieldType
-ReDim Preserve typ29(UBound(typ29) + 1)
-typ29(UBound(typ29)) = Typ
+ReDim Preserve typ40(UBound(typ40) + 1)
+typ40(UBound(typ40)) = Typ
 PostProcessParamsIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
-ReDim Preserve typ29(UBound(typ29) + 1)
-typ29(UBound(typ29)) = Typ
+ReDim Preserve typ40(UBound(typ40) + 1)
+typ40(UBound(typ40)) = Typ
 PostProcessParamsIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("ArgInd"))
 Typ = GetType(ILEmitter).GetField("ArgInd").FieldType
-ReDim Preserve typ29(UBound(typ29) + 1)
-typ29(UBound(typ29)) = Typ
+ReDim Preserve typ40(UBound(typ40) + 1)
+typ40(UBound(typ40)) = Typ
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 5)
 Typ = GetType(System.Type)
-ReDim Preserve typ29(UBound(typ29) + 1)
-typ29(UBound(typ29)) = Typ
-PostProcessParamsIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ29))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ29).ReturnType
+ReDim Preserve typ40(UBound(typ40) + 1)
+typ40(UBound(typ40)) = Typ
+PostProcessParamsIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ40))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ40).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 PostProcessParamsIL.Emit(OpCodes.Pop)
 End If
-PostProcessParamsIL.MarkSequencePoint(doc7, 333, 1, 333, 100)
+PostProcessParamsIL.MarkSequencePoint(doc7, 422, 1, 422, 100)
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
 PostProcessParamsIL.Emit(OpCodes.Ldloc, 0)
 Typ = GetType(System.Int32)
-Dim fa47 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
-Dim tru47 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
-Dim cont47 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
-PostProcessParamsIL.Emit(OpCodes.Beq, tru47)
-PostProcessParamsIL.Emit(OpCodes.Br, fa47)
-PostProcessParamsIL.MarkLabel(tru47)
-PostProcessParamsIL.MarkSequencePoint(doc7, 334, 1, 334, 100)
-PostProcessParamsIL.Emit(OpCodes.Br, label12)
-PostProcessParamsIL.MarkSequencePoint(doc7, 335, 1, 335, 100)
-PostProcessParamsIL.Emit(OpCodes.Br, cont47)
-PostProcessParamsIL.MarkLabel(fa47)
-PostProcessParamsIL.MarkSequencePoint(doc7, 336, 1, 336, 100)
-PostProcessParamsIL.Emit(OpCodes.Br, label11)
-PostProcessParamsIL.MarkSequencePoint(doc7, 337, 1, 337, 100)
-PostProcessParamsIL.Emit(OpCodes.Br, cont47)
-PostProcessParamsIL.MarkLabel(cont47)
-PostProcessParamsIL.MarkSequencePoint(doc7, 339, 1, 339, 100)
-PostProcessParamsIL.MarkLabel(label12)
-PostProcessParamsIL.MarkSequencePoint(doc7, 341, 1, 341, 100)
+Dim fa48 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
+Dim tru48 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
+Dim cont48 As System.Reflection.Emit.Label = PostProcessParamsIL.DefineLabel()
+PostProcessParamsIL.Emit(OpCodes.Beq, tru48)
+PostProcessParamsIL.Emit(OpCodes.Br, fa48)
+PostProcessParamsIL.MarkLabel(tru48)
+PostProcessParamsIL.MarkSequencePoint(doc7, 423, 1, 423, 100)
+PostProcessParamsIL.Emit(OpCodes.Br, label15)
+PostProcessParamsIL.MarkSequencePoint(doc7, 424, 1, 424, 100)
+PostProcessParamsIL.Emit(OpCodes.Br, cont48)
+PostProcessParamsIL.MarkLabel(fa48)
+PostProcessParamsIL.MarkSequencePoint(doc7, 425, 1, 425, 100)
+PostProcessParamsIL.Emit(OpCodes.Br, label14)
+PostProcessParamsIL.MarkSequencePoint(doc7, 426, 1, 426, 100)
+PostProcessParamsIL.Emit(OpCodes.Br, cont48)
+PostProcessParamsIL.MarkLabel(cont48)
+PostProcessParamsIL.MarkSequencePoint(doc7, 428, 1, 428, 100)
+PostProcessParamsIL.MarkLabel(label15)
+PostProcessParamsIL.MarkSequencePoint(doc7, 430, 1, 430, 100)
 PostProcessParamsIL.Emit(OpCodes.Ret)
-Dim typ30(-1) As Type
-ReDim Preserve typ30(UBound(typ30) + 1)
-typ30(UBound(typ30)) = GetType(Expr).MakeArrayType()
-Dim PostProcessParamsConstr As MethodBuilder = Helpers.DefineMethod("PostProcessParamsConstr", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ30)
+Dim typ41(-1) As Type
+ReDim Preserve typ41(UBound(typ41) + 1)
+typ41(UBound(typ41)) = GetType(Expr).MakeArrayType()
+Dim PostProcessParamsConstr As MethodBuilder = Helpers.DefineMethod("PostProcessParamsConstr", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ41)
 Dim PostProcessParamsConstrIL As ILGenerator = PostProcessParamsConstr.GetILGenerator()
 Dim PostProcessParamsConstrparam01 As ParameterBuilder = PostProcessParamsConstr.DefineParameter(1, ParameterAttributes.None, "ps")
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 345, 1, 345, 100)
-Dim locbldr83 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(System.Int32))
-locbldr83.SetLocalSymInfo("len")
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 434, 1, 434, 100)
+Dim locbldr94 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(System.Int32))
+locbldr94.SetLocalSymInfo("len")
 PostProcessParamsConstrIL.Emit(OpCodes.Ldarg, 0)
 Typ = GetType(Expr).MakeArrayType()
 PostProcessParamsConstrIL.Emit(OpCodes.Ldlen)
@@ -3244,45 +3492,42 @@ PostProcessParamsConstrIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 PostProcessParamsConstrIL.Emit(OpCodes.Sub)
 PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 0)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 346, 1, 346, 100)
-Dim locbldr84 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(System.Int32))
-locbldr84.SetLocalSymInfo("i")
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 435, 1, 435, 100)
+Dim locbldr95 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(System.Int32))
+locbldr95.SetLocalSymInfo("i")
 PostProcessParamsConstrIL.Emit(OpCodes.Ldc_I4, CInt(-1))
 Typ = GetType(System.Int32)
 PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 1)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 347, 1, 347, 100)
-Dim locbldr85 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(VarExpr))
-locbldr85.SetLocalSymInfo("curp")
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 436, 1, 436, 100)
+Dim locbldr96 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(VarExpr))
+locbldr96.SetLocalSymInfo("curp")
 PostProcessParamsConstrIL.Emit(OpCodes.Ldnull)
 PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 2)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 348, 1, 348, 100)
-Dim locbldr86 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(Ident))
-locbldr86.SetLocalSymInfo("nam")
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 349, 1, 349, 100)
-Dim locbldr87 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(TypeTok))
-locbldr87.SetLocalSymInfo("typtok")
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 350, 1, 350, 100)
-Dim locbldr88 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(System.Type))
-locbldr88.SetLocalSymInfo("typ")
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 437, 1, 437, 100)
+Dim locbldr97 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(Ident))
+locbldr97.SetLocalSymInfo("nam")
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 438, 1, 438, 100)
+Dim locbldr98 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(TypeTok))
+locbldr98.SetLocalSymInfo("typtok")
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 439, 1, 439, 100)
+Dim locbldr99 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(System.Type))
+locbldr99.SetLocalSymInfo("typ")
 PostProcessParamsConstrIL.Emit(OpCodes.Ldnull)
 PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 5)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 351, 1, 351, 100)
-Dim locbldr89 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(System.Type))
-locbldr89.SetLocalSymInfo("reft")
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 353, 1, 353, 100)
-Dim label13 As System.Reflection.Emit.Label = PostProcessParamsConstrIL.DefineLabel()
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 354, 1, 354, 100)
-Dim label14 As System.Reflection.Emit.Label = PostProcessParamsConstrIL.DefineLabel()
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 356, 1, 356, 100)
-PostProcessParamsConstrIL.MarkLabel(label13)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 358, 1, 358, 100)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 442, 1, 442, 100)
+Dim label16 As System.Reflection.Emit.Label = PostProcessParamsConstrIL.DefineLabel()
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 443, 1, 443, 100)
+Dim label17 As System.Reflection.Emit.Label = PostProcessParamsConstrIL.DefineLabel()
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 445, 1, 445, 100)
+PostProcessParamsConstrIL.MarkLabel(label16)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 447, 1, 447, 100)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 PostProcessParamsConstrIL.Emit(OpCodes.Add)
 PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 1)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 360, 1, 360, 100)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 449, 1, 449, 100)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldarg, 0)
 Typ = GetType(Expr).MakeArrayType()
 Typ02 = Typ
@@ -3293,166 +3538,109 @@ Typ = Typ02
 PostProcessParamsConstrIL.Emit(OpCodes.Ldelem, GetType(Expr).MakeArrayType().GetElementType())
 Typ = GetType(Expr).MakeArrayType().GetElementType()
 PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 2)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 362, 1, 362, 100)
-Dim locbldr90 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(ConstructorBuilder))
-locbldr90.SetLocalSymInfo("cb")
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 451, 1, 451, 100)
+Dim locbldr100 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(ConstructorBuilder))
+locbldr100.SetLocalSymInfo("cb")
 PostProcessParamsConstrIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("Constr"))
 Typ = GetType(ILEmitter).GetField("Constr").FieldType
-PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 7)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 363, 1, 363, 100)
-Dim locbldr91 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(ParameterAttributes))
-locbldr91.SetLocalSymInfo("non")
+PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 6)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 452, 1, 452, 100)
+Dim locbldr101 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(ParameterAttributes))
+locbldr101.SetLocalSymInfo("non")
 PostProcessParamsConstrIL.Emit(OpCodes.Ldc_I4, CInt(0))
 Typ = GetType(System.Int32)
-PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 8)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 364, 1, 364, 100)
+PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 7)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 453, 1, 453, 100)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 2)
 Typ = GetType(VarExpr)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldfld, GetType(VarExpr).GetField("VarName"))
 Typ = GetType(VarExpr).GetField("VarName").FieldType
 PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 3)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 365, 1, 365, 100)
-Dim locbldr92 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(System.Int32))
-locbldr92.SetLocalSymInfo("ind")
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 454, 1, 454, 100)
+Dim locbldr102 As LocalBuilder = PostProcessParamsConstrIL.DeclareLocal(GetType(System.Int32))
+locbldr102.SetLocalSymInfo("ind")
 PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 PostProcessParamsConstrIL.Emit(OpCodes.Add)
-PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 9)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 366, 1, 366, 100)
-Dim typ31(-1) As Type
-PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 7)
+PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 8)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 455, 1, 455, 100)
+Dim typ42(-1) As Type
+PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 6)
 Typ = GetType(ConstructorBuilder)
 Typ03 = Typ
-PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 9)
-Typ = GetType(System.Int32)
-ReDim Preserve typ31(UBound(typ31) + 1)
-typ31(UBound(typ31)) = Typ
 PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 8)
+Typ = GetType(System.Int32)
+ReDim Preserve typ42(UBound(typ42) + 1)
+typ42(UBound(typ42)) = Typ
+PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 7)
 Typ = GetType(ParameterAttributes)
-ReDim Preserve typ31(UBound(typ31) + 1)
-typ31(UBound(typ31)) = Typ
+ReDim Preserve typ42(UBound(typ42) + 1)
+typ42(UBound(typ42)) = Typ
 PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 3)
 Typ = GetType(Ident)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
 Typ = GetType(Ident).GetField("Value").FieldType
-ReDim Preserve typ31(UBound(typ31) + 1)
-typ31(UBound(typ31)) = Typ
-PostProcessParamsConstrIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineParameter", typ31))
-Typ = Typ03.GetMethod("DefineParameter", typ31).ReturnType
+ReDim Preserve typ42(UBound(typ42) + 1)
+typ42(UBound(typ42)) = Typ
+PostProcessParamsConstrIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineParameter", typ42))
+Typ = Typ03.GetMethod("DefineParameter", typ42).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 PostProcessParamsConstrIL.Emit(OpCodes.Pop)
 End If
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 368, 1, 368, 100)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 457, 1, 457, 100)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 2)
 Typ = GetType(VarExpr)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldfld, GetType(VarExpr).GetField("VarTyp"))
 Typ = GetType(VarExpr).GetField("VarTyp").FieldType
 PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 4)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 369, 1, 369, 100)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 470, 1, 470, 100)
+Dim typ43(-1) As Type
 PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 4)
 Typ = GetType(TypeTok)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("RefTyp"))
-Typ = GetType(TypeTok).GetField("RefTyp").FieldType
-PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 6)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 371, 1, 371, 100)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 6)
-Typ = GetType(System.Type)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldnull)
-Dim fa48 As System.Reflection.Emit.Label = PostProcessParamsConstrIL.DefineLabel()
-Dim tru48 As System.Reflection.Emit.Label = PostProcessParamsConstrIL.DefineLabel()
-Dim cont48 As System.Reflection.Emit.Label = PostProcessParamsConstrIL.DefineLabel()
-PostProcessParamsConstrIL.Emit(OpCodes.Beq, tru48)
-PostProcessParamsConstrIL.Emit(OpCodes.Br, fa48)
-PostProcessParamsConstrIL.MarkLabel(tru48)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 372, 1, 372, 100)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 4)
-Typ = GetType(TypeTok)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-PostProcessParamsConstrIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 373, 1, 373, 100)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 4)
-Typ = GetType(TypeTok)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-PostProcessParamsConstrIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 374, 1, 374, 100)
-Dim typ32(-1) As Type
-PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 4)
-Typ = GetType(TypeTok)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("Value"))
-Typ = GetType(TypeTok).GetField("Value").FieldType
-ReDim Preserve typ32(UBound(typ32) + 1)
-typ32(UBound(typ32)) = Typ
-PostProcessParamsConstrIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ32))
-Typ = GetType(Loader).GetMethod("LoadClass", typ32).ReturnType
+ReDim Preserve typ43(UBound(typ43) + 1)
+typ43(UBound(typ43)) = Typ
+PostProcessParamsConstrIL.Emit(OpCodes.Call, CommitEvalTTok)
+Typ = CommitEvalTTok.ReturnType
 PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 5)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 375, 1, 375, 100)
-PostProcessParamsConstrIL.Emit(OpCodes.Br, cont48)
-PostProcessParamsConstrIL.MarkLabel(fa48)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 376, 1, 376, 100)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 4)
-Typ = GetType(TypeTok)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-PostProcessParamsConstrIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 377, 1, 377, 100)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 4)
-Typ = GetType(TypeTok)
-PostProcessParamsConstrIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-PostProcessParamsConstrIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 378, 1, 378, 100)
-Dim typ33(-1) As Type
-PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 6)
-Typ = GetType(System.Type)
-ReDim Preserve typ33(UBound(typ33) + 1)
-typ33(UBound(typ33)) = Typ
-PostProcessParamsConstrIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("ProcessType", typ33))
-Typ = GetType(Loader).GetMethod("ProcessType", typ33).ReturnType
-PostProcessParamsConstrIL.Emit(OpCodes.Stloc, 5)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 379, 1, 379, 100)
-PostProcessParamsConstrIL.Emit(OpCodes.Br, cont48)
-PostProcessParamsConstrIL.MarkLabel(cont48)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 381, 1, 381, 100)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 472, 1, 472, 100)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("ArgInd"))
 Typ = GetType(ILEmitter).GetField("ArgInd").FieldType
 PostProcessParamsConstrIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 PostProcessParamsConstrIL.Emit(OpCodes.Add)
 PostProcessParamsConstrIL.Emit(OpCodes.Stsfld, GetType(ILEmitter).GetField("ArgInd"))
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 382, 1, 382, 100)
-Dim typ34(-1) As Type
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 473, 1, 473, 100)
+Dim typ44(-1) As Type
 PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 3)
 Typ = GetType(Ident)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
 Typ = GetType(Ident).GetField("Value").FieldType
-ReDim Preserve typ34(UBound(typ34) + 1)
-typ34(UBound(typ34)) = Typ
+ReDim Preserve typ44(UBound(typ44) + 1)
+typ44(UBound(typ44)) = Typ
 PostProcessParamsConstrIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
-ReDim Preserve typ34(UBound(typ34) + 1)
-typ34(UBound(typ34)) = Typ
+ReDim Preserve typ44(UBound(typ44) + 1)
+typ44(UBound(typ44)) = Typ
 PostProcessParamsConstrIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("ArgInd"))
 Typ = GetType(ILEmitter).GetField("ArgInd").FieldType
-ReDim Preserve typ34(UBound(typ34) + 1)
-typ34(UBound(typ34)) = Typ
+ReDim Preserve typ44(UBound(typ44) + 1)
+typ44(UBound(typ44)) = Typ
 PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 5)
 Typ = GetType(System.Type)
-ReDim Preserve typ34(UBound(typ34) + 1)
-typ34(UBound(typ34)) = Typ
-PostProcessParamsConstrIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ34))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ34).ReturnType
+ReDim Preserve typ44(UBound(typ44) + 1)
+typ44(UBound(typ44)) = Typ
+PostProcessParamsConstrIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ44))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ44).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 PostProcessParamsConstrIL.Emit(OpCodes.Pop)
 End If
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 384, 1, 384, 100)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 475, 1, 475, 100)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
 PostProcessParamsConstrIL.Emit(OpCodes.Ldloc, 0)
@@ -3463,19 +3651,19 @@ Dim cont49 As System.Reflection.Emit.Label = PostProcessParamsConstrIL.DefineLab
 PostProcessParamsConstrIL.Emit(OpCodes.Beq, tru49)
 PostProcessParamsConstrIL.Emit(OpCodes.Br, fa49)
 PostProcessParamsConstrIL.MarkLabel(tru49)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 385, 1, 385, 100)
-PostProcessParamsConstrIL.Emit(OpCodes.Br, label14)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 386, 1, 386, 100)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 476, 1, 476, 100)
+PostProcessParamsConstrIL.Emit(OpCodes.Br, label17)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 477, 1, 477, 100)
 PostProcessParamsConstrIL.Emit(OpCodes.Br, cont49)
 PostProcessParamsConstrIL.MarkLabel(fa49)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 387, 1, 387, 100)
-PostProcessParamsConstrIL.Emit(OpCodes.Br, label13)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 388, 1, 388, 100)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 478, 1, 478, 100)
+PostProcessParamsConstrIL.Emit(OpCodes.Br, label16)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 479, 1, 479, 100)
 PostProcessParamsConstrIL.Emit(OpCodes.Br, cont49)
 PostProcessParamsConstrIL.MarkLabel(cont49)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 390, 1, 390, 100)
-PostProcessParamsConstrIL.MarkLabel(label14)
-PostProcessParamsConstrIL.MarkSequencePoint(doc7, 392, 1, 392, 100)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 481, 1, 481, 100)
+PostProcessParamsConstrIL.MarkLabel(label17)
+PostProcessParamsConstrIL.MarkSequencePoint(doc7, 483, 1, 483, 100)
 PostProcessParamsConstrIL.Emit(OpCodes.Ret)
 Helpers.CreateType()
 End Sub
@@ -3495,11 +3683,11 @@ Dim ReadIL As ILGenerator = Read.GetILGenerator()
 Dim Readparam01 As ParameterBuilder = Read.DefineParameter(1, ParameterAttributes.None, "stm")
 Dim Readparam02 As ParameterBuilder = Read.DefineParameter(2, ParameterAttributes.None, "fpath")
 ReadIL.MarkSequencePoint(doc8, 5, 1, 5, 100)
-Dim locbldr93 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
-locbldr93.SetLocalSymInfo("typ")
+Dim locbldr103 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
+locbldr103.SetLocalSymInfo("typ")
 ReadIL.MarkSequencePoint(doc8, 6, 1, 6, 100)
-Dim locbldr94 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Boolean))
-locbldr94.SetLocalSymInfo("b")
+Dim locbldr104 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Boolean))
+locbldr104.SetLocalSymInfo("b")
 ReadIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 ReadIL.Emit(OpCodes.Stloc, 1)
@@ -3537,22 +3725,22 @@ ReadIL.Emit(OpCodes.Beq, tru50)
 ReadIL.Emit(OpCodes.Br, fa50)
 ReadIL.MarkLabel(tru50)
 ReadIL.MarkSequencePoint(doc8, 14, 1, 14, 100)
-Dim locbldr95 As LocalBuilder = ReadIL.DeclareLocal(GetType(RefasmStmt))
-locbldr95.SetLocalSymInfo("rastm")
+Dim locbldr105 As LocalBuilder = ReadIL.DeclareLocal(GetType(RefasmStmt))
+locbldr105.SetLocalSymInfo("rastm")
 ReadIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
 ReadIL.Emit(OpCodes.Stloc, 2)
 ReadIL.MarkSequencePoint(doc8, 15, 1, 15, 100)
-Dim locbldr96 As LocalBuilder = ReadIL.DeclareLocal(GetType(Token))
-locbldr96.SetLocalSymInfo("ap")
+Dim locbldr106 As LocalBuilder = ReadIL.DeclareLocal(GetType(Token))
+locbldr106.SetLocalSymInfo("ap")
 ReadIL.Emit(OpCodes.Ldloc, 2)
 Typ = GetType(RefasmStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(RefasmStmt).GetField("AsmPath"))
 Typ = GetType(RefasmStmt).GetField("AsmPath").FieldType
 ReadIL.Emit(OpCodes.Stloc, 3)
 ReadIL.MarkSequencePoint(doc8, 17, 1, 17, 100)
-Dim locbldr97 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
-locbldr97.SetLocalSymInfo("tmpstr")
+Dim locbldr107 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
+locbldr107.SetLocalSymInfo("tmpstr")
 Dim typ3(-1) As Type
 ReadIL.Emit(OpCodes.Ldsfld, GetType(Utils.Constants).GetField("quot"))
 Typ = GetType(Utils.Constants).GetField("quot").FieldType
@@ -3570,8 +3758,8 @@ ReadIL.Emit(OpCodes.Call, GetType(String).GetMethod("Concat", typ3))
 Typ = GetType(String).GetMethod("Concat", typ3).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 4)
 ReadIL.MarkSequencePoint(doc8, 18, 1, 18, 100)
-Dim locbldr98 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Boolean))
-locbldr98.SetLocalSymInfo("compb")
+Dim locbldr108 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Boolean))
+locbldr108.SetLocalSymInfo("compb")
 Dim typ4(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 3)
 Typ = GetType(Token)
@@ -3604,8 +3792,8 @@ ReadIL.Emit(OpCodes.Ldfld, GetType(Token).GetField("Value"))
 Typ = GetType(Token).GetField("Value").FieldType
 ReadIL.Emit(OpCodes.Stloc, 4)
 ReadIL.MarkSequencePoint(doc8, 22, 1, 22, 100)
-Dim locbldr99 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Char).MakeArrayType())
-locbldr99.SetLocalSymInfo("tmpchrarr")
+Dim locbldr109 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Char).MakeArrayType())
+locbldr109.SetLocalSymInfo("tmpchrarr")
 ReadIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 ReadIL.Emit(OpCodes.Conv_U)
@@ -3649,8 +3837,8 @@ ReadIL.MarkLabel(fa51)
 ReadIL.Emit(OpCodes.Br, cont51)
 ReadIL.MarkLabel(cont51)
 ReadIL.MarkSequencePoint(doc8, 28, 1, 28, 100)
-Dim locbldr100 As LocalBuilder = ReadIL.DeclareLocal(GetType(Assembly))
-locbldr100.SetLocalSymInfo("asm")
+Dim locbldr110 As LocalBuilder = ReadIL.DeclareLocal(GetType(Assembly))
+locbldr110.SetLocalSymInfo("asm")
 Dim typ7(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 3)
 Typ = GetType(Token)
@@ -3741,14 +3929,14 @@ ReadIL.Emit(OpCodes.Beq, tru52)
 ReadIL.Emit(OpCodes.Br, fa52)
 ReadIL.MarkLabel(tru52)
 ReadIL.MarkSequencePoint(doc8, 39, 1, 39, 100)
-Dim locbldr101 As LocalBuilder = ReadIL.DeclareLocal(GetType(ImportStmt))
-locbldr101.SetLocalSymInfo("istm")
+Dim locbldr111 As LocalBuilder = ReadIL.DeclareLocal(GetType(ImportStmt))
+locbldr111.SetLocalSymInfo("istm")
 ReadIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
 ReadIL.Emit(OpCodes.Stloc, 8)
 ReadIL.MarkSequencePoint(doc8, 40, 1, 40, 100)
-Dim locbldr102 As LocalBuilder = ReadIL.DeclareLocal(GetType(Token))
-locbldr102.SetLocalSymInfo("ina")
+Dim locbldr112 As LocalBuilder = ReadIL.DeclareLocal(GetType(Token))
+locbldr112.SetLocalSymInfo("ina")
 ReadIL.Emit(OpCodes.Ldloc, 8)
 Typ = GetType(ImportStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(ImportStmt).GetField("NS"))
@@ -3928,14 +4116,14 @@ ReadIL.Emit(OpCodes.Beq, tru54)
 ReadIL.Emit(OpCodes.Br, fa54)
 ReadIL.MarkLabel(tru54)
 ReadIL.MarkSequencePoint(doc8, 64, 1, 64, 100)
-Dim locbldr103 As LocalBuilder = ReadIL.DeclareLocal(GetType(LocimportStmt))
-locbldr103.SetLocalSymInfo("listm")
+Dim locbldr113 As LocalBuilder = ReadIL.DeclareLocal(GetType(LocimportStmt))
+locbldr113.SetLocalSymInfo("listm")
 ReadIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
 ReadIL.Emit(OpCodes.Stloc, 10)
 ReadIL.MarkSequencePoint(doc8, 65, 1, 65, 100)
-Dim locbldr104 As LocalBuilder = ReadIL.DeclareLocal(GetType(Token))
-locbldr104.SetLocalSymInfo("lina")
+Dim locbldr114 As LocalBuilder = ReadIL.DeclareLocal(GetType(Token))
+locbldr114.SetLocalSymInfo("lina")
 ReadIL.Emit(OpCodes.Ldloc, 10)
 Typ = GetType(LocimportStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(LocimportStmt).GetField("NS"))
@@ -4115,14 +4303,14 @@ ReadIL.Emit(OpCodes.Beq, tru56)
 ReadIL.Emit(OpCodes.Br, fa56)
 ReadIL.MarkLabel(tru56)
 ReadIL.MarkSequencePoint(doc8, 90, 1, 90, 100)
-Dim locbldr105 As LocalBuilder = ReadIL.DeclareLocal(GetType(AssemblyStmt))
-locbldr105.SetLocalSymInfo("asms")
+Dim locbldr115 As LocalBuilder = ReadIL.DeclareLocal(GetType(AssemblyStmt))
+locbldr115.SetLocalSymInfo("asms")
 ReadIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
 ReadIL.Emit(OpCodes.Stloc, 12)
 ReadIL.MarkSequencePoint(doc8, 91, 1, 91, 100)
-Dim locbldr106 As LocalBuilder = ReadIL.DeclareLocal(GetType(Ident))
-locbldr106.SetLocalSymInfo("asmn")
+Dim locbldr116 As LocalBuilder = ReadIL.DeclareLocal(GetType(Ident))
+locbldr116.SetLocalSymInfo("asmn")
 ReadIL.Emit(OpCodes.Ldloc, 12)
 Typ = GetType(AssemblyStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(AssemblyStmt).GetField("AsmName"))
@@ -4139,8 +4327,8 @@ typ31(UBound(typ31)) = Typ
 ReadIL.Emit(OpCodes.Newobj, GetType(AssemblyName).GetConstructor(typ31))
 ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("AsmNameStr"))
 ReadIL.MarkSequencePoint(doc8, 93, 1, 93, 100)
-Dim locbldr107 As LocalBuilder = ReadIL.DeclareLocal(GetType(Token))
-locbldr107.SetLocalSymInfo("asmm")
+Dim locbldr117 As LocalBuilder = ReadIL.DeclareLocal(GetType(Token))
+locbldr117.SetLocalSymInfo("asmm")
 ReadIL.Emit(OpCodes.Ldloc, 12)
 Typ = GetType(AssemblyStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(AssemblyStmt).GetField("Mode"))
@@ -4231,25 +4419,25 @@ ReadIL.Emit(OpCodes.Beq, tru57)
 ReadIL.Emit(OpCodes.Br, fa57)
 ReadIL.MarkLabel(tru57)
 ReadIL.MarkSequencePoint(doc8, 109, 1, 109, 100)
-Dim locbldr108 As LocalBuilder = ReadIL.DeclareLocal(GetType(VerStmt))
-locbldr108.SetLocalSymInfo("asmv")
+Dim locbldr118 As LocalBuilder = ReadIL.DeclareLocal(GetType(VerStmt))
+locbldr118.SetLocalSymInfo("asmv")
 ReadIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
 ReadIL.Emit(OpCodes.Stloc, 15)
 ReadIL.MarkSequencePoint(doc8, 110, 1, 110, 100)
-Dim locbldr109 As LocalBuilder = ReadIL.DeclareLocal(GetType(IntLiteral).MakeArrayType())
-locbldr109.SetLocalSymInfo("vns")
+Dim locbldr119 As LocalBuilder = ReadIL.DeclareLocal(GetType(IntLiteral).MakeArrayType())
+locbldr119.SetLocalSymInfo("vns")
 ReadIL.Emit(OpCodes.Ldloc, 15)
 Typ = GetType(VerStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(VerStmt).GetField("VersionNos"))
 Typ = GetType(VerStmt).GetField("VersionNos").FieldType
 ReadIL.Emit(OpCodes.Stloc, 16)
 ReadIL.MarkSequencePoint(doc8, 111, 1, 111, 100)
-Dim locbldr110 As LocalBuilder = ReadIL.DeclareLocal(GetType(IntLiteral))
-locbldr110.SetLocalSymInfo("vne")
+Dim locbldr120 As LocalBuilder = ReadIL.DeclareLocal(GetType(IntLiteral))
+locbldr120.SetLocalSymInfo("vne")
 ReadIL.MarkSequencePoint(doc8, 112, 1, 112, 100)
-Dim locbldr111 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Int32).MakeArrayType())
-locbldr111.SetLocalSymInfo("vernos")
+Dim locbldr121 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Int32).MakeArrayType())
+locbldr121.SetLocalSymInfo("vernos")
 ReadIL.Emit(OpCodes.Ldc_I4, CInt(4))
 Typ = GetType(System.Int32)
 ReadIL.Emit(OpCodes.Conv_U)
@@ -4352,8 +4540,8 @@ ReadIL.Emit(OpCodes.Ldfld, GetType(IntLiteral).GetField("NumVal"))
 Typ = GetType(IntLiteral).GetField("NumVal").FieldType
 ReadIL.Emit(OpCodes.Stelem, GetType(System.Int32).MakeArrayType().GetElementType())
 ReadIL.MarkSequencePoint(doc8, 121, 1, 121, 100)
-Dim locbldr112 As LocalBuilder = ReadIL.DeclareLocal(GetType(Version))
-locbldr112.SetLocalSymInfo("asmver")
+Dim locbldr122 As LocalBuilder = ReadIL.DeclareLocal(GetType(Version))
+locbldr122.SetLocalSymInfo("asmver")
 Dim typ36(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 18)
 Typ = GetType(System.Int32).MakeArrayType()
@@ -4402,8 +4590,8 @@ typ36(UBound(typ36)) = Typ
 ReadIL.Emit(OpCodes.Newobj, GetType(Version).GetConstructor(typ36))
 ReadIL.Emit(OpCodes.Stloc, 19)
 ReadIL.MarkSequencePoint(doc8, 122, 1, 122, 100)
-Dim locbldr113 As LocalBuilder = ReadIL.DeclareLocal(GetType(AssemblyName))
-locbldr113.SetLocalSymInfo("asmnm")
+Dim locbldr123 As LocalBuilder = ReadIL.DeclareLocal(GetType(AssemblyName))
+locbldr123.SetLocalSymInfo("asmnm")
 ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("AsmNameStr"))
 Typ = GetType(AsmFactory).GetField("AsmNameStr").FieldType
 ReadIL.Emit(OpCodes.Stloc, 20)
@@ -4428,20 +4616,20 @@ ReadIL.Emit(OpCodes.Ldloc, 20)
 Typ = GetType(AssemblyName)
 ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("AsmNameStr"))
 ReadIL.MarkSequencePoint(doc8, 125, 1, 125, 100)
-Dim locbldr114 As LocalBuilder = ReadIL.DeclareLocal(GetType(AppDomain))
-locbldr114.SetLocalSymInfo("cad")
+Dim locbldr124 As LocalBuilder = ReadIL.DeclareLocal(GetType(AppDomain))
+locbldr124.SetLocalSymInfo("cad")
 ReadIL.Emit(OpCodes.Call, GetType(AppDomain).GetMethod("get_CurrentDomain", Type.EmptyTypes))
 Typ = GetType(AppDomain).GetMethod("get_CurrentDomain", Type.EmptyTypes).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 21)
 ReadIL.MarkSequencePoint(doc8, 126, 1, 126, 100)
-Dim locbldr115 As LocalBuilder = ReadIL.DeclareLocal(GetType(AssemblyBuilderAccess))
-locbldr115.SetLocalSymInfo("aasv")
+Dim locbldr125 As LocalBuilder = ReadIL.DeclareLocal(GetType(AssemblyBuilderAccess))
+locbldr125.SetLocalSymInfo("aasv")
 ReadIL.Emit(OpCodes.Ldc_I4, CInt(2))
 Typ = GetType(System.Int32)
 ReadIL.Emit(OpCodes.Stloc, 22)
 ReadIL.MarkSequencePoint(doc8, 127, 1, 127, 100)
-Dim locbldr116 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
-locbldr116.SetLocalSymInfo("curd")
+Dim locbldr126 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
+locbldr126.SetLocalSymInfo("curd")
 ReadIL.Emit(OpCodes.Call, GetType(Directory).GetMethod("GetCurrentDirectory", Type.EmptyTypes))
 Typ = GetType(Directory).GetMethod("GetCurrentDirectory", Type.EmptyTypes).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 23)
@@ -4466,8 +4654,8 @@ ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineDynamicAssembly", typ38))
 Typ = Typ03.GetMethod("DefineDynamicAssembly", typ38).ReturnType
 ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("AsmB"))
 ReadIL.MarkSequencePoint(doc8, 129, 1, 129, 100)
-Dim locbldr117 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
-locbldr117.SetLocalSymInfo("asmnme")
+Dim locbldr127 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
+locbldr127.SetLocalSymInfo("asmnme")
 ReadIL.Emit(OpCodes.Ldloc, 20)
 Typ = GetType(AssemblyName)
 Typ03 = Typ
@@ -4492,8 +4680,8 @@ ReadIL.Emit(OpCodes.Call, GetType(String).GetMethod("Concat", typ40))
 Typ = GetType(String).GetMethod("Concat", typ40).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 24)
 ReadIL.MarkSequencePoint(doc8, 131, 1, 131, 100)
-Dim locbldr118 As LocalBuilder = ReadIL.DeclareLocal(GetType(AssemblyBuilder))
-locbldr118.SetLocalSymInfo("ab")
+Dim locbldr128 As LocalBuilder = ReadIL.DeclareLocal(GetType(AssemblyBuilder))
+locbldr128.SetLocalSymInfo("ab")
 ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("AsmB"))
 Typ = GetType(AsmFactory).GetField("AsmB").FieldType
 ReadIL.Emit(OpCodes.Stloc, 25)
@@ -4529,8 +4717,8 @@ ReadIL.Emit(OpCodes.Beq, tru58)
 ReadIL.Emit(OpCodes.Br, fa58)
 ReadIL.MarkLabel(tru58)
 ReadIL.MarkSequencePoint(doc8, 136, 1, 136, 100)
-Dim locbldr119 As LocalBuilder = ReadIL.DeclareLocal(GetType(ModuleBuilder))
-locbldr119.SetLocalSymInfo("mdlbldbg")
+Dim locbldr129 As LocalBuilder = ReadIL.DeclareLocal(GetType(ModuleBuilder))
+locbldr129.SetLocalSymInfo("mdlbldbg")
 ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("MdlB"))
 Typ = GetType(AsmFactory).GetField("MdlB").FieldType
 ReadIL.Emit(OpCodes.Stloc, 26)
@@ -4575,16 +4763,16 @@ ReadIL.Emit(OpCodes.Beq, tru59)
 ReadIL.Emit(OpCodes.Br, fa59)
 ReadIL.MarkLabel(tru59)
 ReadIL.MarkSequencePoint(doc8, 142, 1, 142, 100)
-Dim locbldr120 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
-locbldr120.SetLocalSymInfo("dtyp")
+Dim locbldr130 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
+locbldr130.SetLocalSymInfo("dtyp")
 ReadIL.Emit(OpCodes.Ldtoken, GetType(DebuggableAttribute))
 Dim typ43 As Type() = {GetType(System.RuntimeTypeHandle)}
 ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ43))
 Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ43).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 27)
 ReadIL.MarkSequencePoint(doc8, 143, 1, 143, 100)
-Dim locbldr121 As LocalBuilder = ReadIL.DeclareLocal(GetType(DebuggableAttribute.DebuggingModes))
-locbldr121.SetLocalSymInfo("debugattr")
+Dim locbldr131 As LocalBuilder = ReadIL.DeclareLocal(GetType(DebuggableAttribute.DebuggingModes))
+locbldr131.SetLocalSymInfo("debugattr")
 ReadIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 ReadIL.Emit(OpCodes.Ldc_I4, CInt(256))
@@ -4592,24 +4780,24 @@ Typ = GetType(System.Int32)
 ReadIL.Emit(OpCodes.Or)
 ReadIL.Emit(OpCodes.Stloc, 28)
 ReadIL.MarkSequencePoint(doc8, 144, 1, 144, 100)
-Dim locbldr122 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Object))
-locbldr122.SetLocalSymInfo("oattr")
+Dim locbldr132 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Object))
+locbldr132.SetLocalSymInfo("oattr")
 ReadIL.Emit(OpCodes.Ldloc, 28)
 Typ = GetType(DebuggableAttribute.DebuggingModes)
 ReadIL.Emit(OpCodes.Box,Typ)
 Typ = GetType(System.Object)
 ReadIL.Emit(OpCodes.Stloc, 29)
 ReadIL.MarkSequencePoint(doc8, 145, 1, 145, 100)
-Dim locbldr123 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
-locbldr123.SetLocalSymInfo("dattyp")
+Dim locbldr133 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
+locbldr133.SetLocalSymInfo("dattyp")
 ReadIL.Emit(OpCodes.Ldtoken, GetType(DebuggableAttribute.DebuggingModes))
 Dim typ44 As Type() = {GetType(System.RuntimeTypeHandle)}
 ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ44))
 Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ44).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 30)
 ReadIL.MarkSequencePoint(doc8, 146, 1, 146, 100)
-Dim locbldr124 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type).MakeArrayType())
-locbldr124.SetLocalSymInfo("tarr")
+Dim locbldr134 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type).MakeArrayType())
+locbldr134.SetLocalSymInfo("tarr")
 ReadIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 ReadIL.Emit(OpCodes.Conv_U)
@@ -4627,8 +4815,8 @@ ReadIL.Emit(OpCodes.Ldloc, 30)
 Typ = GetType(System.Type)
 ReadIL.Emit(OpCodes.Stelem, GetType(System.Type).MakeArrayType().GetElementType())
 ReadIL.MarkSequencePoint(doc8, 148, 1, 148, 100)
-Dim locbldr125 As LocalBuilder = ReadIL.DeclareLocal(GetType(ConstructorInfo))
-locbldr125.SetLocalSymInfo("dctor")
+Dim locbldr135 As LocalBuilder = ReadIL.DeclareLocal(GetType(ConstructorInfo))
+locbldr135.SetLocalSymInfo("dctor")
 Dim typ45(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 27)
 Typ = GetType(System.Type)
@@ -4641,8 +4829,8 @@ ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("GetConstructor", typ45))
 Typ = Typ03.GetMethod("GetConstructor", typ45).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 32)
 ReadIL.MarkSequencePoint(doc8, 149, 1, 149, 100)
-Dim locbldr126 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Object).MakeArrayType())
-locbldr126.SetLocalSymInfo("oarr")
+Dim locbldr136 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Object).MakeArrayType())
+locbldr136.SetLocalSymInfo("oarr")
 ReadIL.Emit(OpCodes.Ldc_I4, CInt(1))
 Typ = GetType(System.Int32)
 ReadIL.Emit(OpCodes.Conv_U)
@@ -4660,8 +4848,8 @@ ReadIL.Emit(OpCodes.Ldloc, 29)
 Typ = GetType(System.Object)
 ReadIL.Emit(OpCodes.Stelem, GetType(System.Object).MakeArrayType().GetElementType())
 ReadIL.MarkSequencePoint(doc8, 151, 1, 151, 100)
-Dim locbldr127 As LocalBuilder = ReadIL.DeclareLocal(GetType(CustomAttributeBuilder))
-locbldr127.SetLocalSymInfo("dbuilder")
+Dim locbldr137 As LocalBuilder = ReadIL.DeclareLocal(GetType(CustomAttributeBuilder))
+locbldr137.SetLocalSymInfo("dbuilder")
 Dim typ46(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 32)
 Typ = GetType(ConstructorInfo)
@@ -4750,8 +4938,8 @@ ReadIL.Emit(OpCodes.Beq, tru60)
 ReadIL.Emit(OpCodes.Br, fa60)
 ReadIL.MarkLabel(tru60)
 ReadIL.MarkSequencePoint(doc8, 165, 1, 165, 100)
-Dim locbldr128 As LocalBuilder = ReadIL.DeclareLocal(GetType(DebugStmt))
-locbldr128.SetLocalSymInfo("dbgs")
+Dim locbldr138 As LocalBuilder = ReadIL.DeclareLocal(GetType(DebugStmt))
+locbldr138.SetLocalSymInfo("dbgs")
 ReadIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
 ReadIL.Emit(OpCodes.Stloc, 35)
@@ -4800,8 +4988,8 @@ ReadIL.Emit(OpCodes.Beq, tru61)
 ReadIL.Emit(OpCodes.Br, fa61)
 ReadIL.MarkLabel(tru61)
 ReadIL.MarkSequencePoint(doc8, 174, 1, 174, 100)
-Dim locbldr129 As LocalBuilder = ReadIL.DeclareLocal(GetType(ClassStmt))
-locbldr129.SetLocalSymInfo("clss")
+Dim locbldr139 As LocalBuilder = ReadIL.DeclareLocal(GetType(ClassStmt))
+locbldr139.SetLocalSymInfo("clss")
 ReadIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
 ReadIL.Emit(OpCodes.Stloc, 36)
@@ -4846,16 +5034,16 @@ ReadIL.MarkLabel(fa63)
 ReadIL.Emit(OpCodes.Br, cont63)
 ReadIL.MarkLabel(cont63)
 ReadIL.MarkSequencePoint(doc8, 184, 1, 184, 100)
-Dim locbldr130 As LocalBuilder = ReadIL.DeclareLocal(GetType(Attributes.Attribute).MakeArrayType())
-locbldr130.SetLocalSymInfo("attrs")
+Dim locbldr140 As LocalBuilder = ReadIL.DeclareLocal(GetType(Attributes.Attribute).MakeArrayType())
+locbldr140.SetLocalSymInfo("attrs")
 ReadIL.Emit(OpCodes.Ldloc, 36)
 Typ = GetType(ClassStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(ClassStmt).GetField("Attrs"))
 Typ = GetType(ClassStmt).GetField("Attrs").FieldType
 ReadIL.Emit(OpCodes.Stloc, 37)
 ReadIL.MarkSequencePoint(doc8, 185, 1, 185, 100)
-Dim locbldr131 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeAttributes))
-locbldr131.SetLocalSymInfo("ta")
+Dim locbldr141 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeAttributes))
+locbldr141.SetLocalSymInfo("ta")
 Dim typ53(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 37)
 Typ = GetType(Attributes.Attribute).MakeArrayType()
@@ -4865,45 +5053,45 @@ ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").Get
 Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("ProcessClassAttrs", typ53).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 38)
 ReadIL.MarkSequencePoint(doc8, 186, 1, 186, 100)
-Dim locbldr132 As LocalBuilder = ReadIL.DeclareLocal(GetType(Ident))
-locbldr132.SetLocalSymInfo("clssnam")
+Dim locbldr142 As LocalBuilder = ReadIL.DeclareLocal(GetType(Ident))
+locbldr142.SetLocalSymInfo("clssnam")
 ReadIL.Emit(OpCodes.Ldloc, 36)
 Typ = GetType(ClassStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(ClassStmt).GetField("ClassName"))
 Typ = GetType(ClassStmt).GetField("ClassName").FieldType
 ReadIL.Emit(OpCodes.Stloc, 39)
 ReadIL.MarkSequencePoint(doc8, 187, 1, 187, 100)
-Dim locbldr133 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
-locbldr133.SetLocalSymInfo("clsnamstr")
+Dim locbldr143 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
+locbldr143.SetLocalSymInfo("clsnamstr")
 ReadIL.Emit(OpCodes.Ldloc, 39)
 Typ = GetType(Ident)
 ReadIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
 Typ = GetType(Ident).GetField("Value").FieldType
 ReadIL.Emit(OpCodes.Stloc, 40)
 ReadIL.MarkSequencePoint(doc8, 188, 1, 188, 100)
-Dim locbldr134 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeTok))
-locbldr134.SetLocalSymInfo("inhclstok")
+Dim locbldr144 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeTok))
+locbldr144.SetLocalSymInfo("inhclstok")
 ReadIL.Emit(OpCodes.Ldloc, 36)
 Typ = GetType(ClassStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(ClassStmt).GetField("InhClass"))
 Typ = GetType(ClassStmt).GetField("InhClass").FieldType
 ReadIL.Emit(OpCodes.Stloc, 41)
 ReadIL.MarkSequencePoint(doc8, 189, 1, 189, 100)
-Dim locbldr135 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
-locbldr135.SetLocalSymInfo("inhtyp")
+Dim locbldr145 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
+locbldr145.SetLocalSymInfo("inhtyp")
 ReadIL.Emit(OpCodes.Ldnull)
 ReadIL.Emit(OpCodes.Stloc, 42)
 ReadIL.MarkSequencePoint(doc8, 190, 1, 190, 100)
-Dim locbldr136 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
-locbldr136.SetLocalSymInfo("reft")
+Dim locbldr146 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
+locbldr146.SetLocalSymInfo("reft")
 ReadIL.Emit(OpCodes.Ldloc, 41)
 Typ = GetType(TypeTok)
 ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("RefTyp"))
 Typ = GetType(TypeTok).GetField("RefTyp").FieldType
 ReadIL.Emit(OpCodes.Stloc, 43)
 ReadIL.MarkSequencePoint(doc8, 191, 1, 191, 100)
-Dim locbldr137 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Int32))
-locbldr137.SetLocalSymInfo("cmp")
+Dim locbldr147 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Int32))
+locbldr147.SetLocalSymInfo("cmp")
 Dim typ54(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 41)
 Typ = GetType(TypeTok)
@@ -4952,12 +5140,10 @@ ReadIL.MarkSequencePoint(doc8, 197, 1, 197, 100)
 Dim typ56(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 41)
 Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("Value"))
-Typ = GetType(TypeTok).GetField("Value").FieldType
 ReDim Preserve typ56(UBound(typ56) + 1)
 typ56(UBound(typ56)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ56))
-Typ = GetType(Loader).GetMethod("LoadClass", typ56).ReturnType
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("CommitEvalTTok", typ56))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("CommitEvalTTok", typ56).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 42)
 ReadIL.MarkSequencePoint(doc8, 198, 1, 198, 100)
 ReadIL.Emit(OpCodes.Br, cont65)
@@ -4984,8 +5170,8 @@ ReadIL.Emit(OpCodes.Beq, tru66)
 ReadIL.Emit(OpCodes.Br, fa66)
 ReadIL.MarkLabel(tru66)
 ReadIL.MarkSequencePoint(doc8, 205, 1, 205, 100)
-Dim locbldr138 As LocalBuilder = ReadIL.DeclareLocal(GetType(ModuleBuilder))
-locbldr138.SetLocalSymInfo("mdlbld")
+Dim locbldr148 As LocalBuilder = ReadIL.DeclareLocal(GetType(ModuleBuilder))
+locbldr148.SetLocalSymInfo("mdlbld")
 ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("MdlB"))
 Typ = GetType(AsmFactory).GetField("MdlB").FieldType
 ReadIL.Emit(OpCodes.Stloc, 45)
@@ -5060,8 +5246,8 @@ ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnTypB"))
 Typ = GetType(AsmFactory).GetField("CurnTypB").FieldType
 ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("CurnTypB2"))
 ReadIL.MarkSequencePoint(doc8, 213, 1, 213, 100)
-Dim locbldr139 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeBuilder))
-locbldr139.SetLocalSymInfo("ctb2")
+Dim locbldr149 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeBuilder))
+locbldr149.SetLocalSymInfo("ctb2")
 ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnTypB2"))
 Typ = GetType(AsmFactory).GetField("CurnTypB2").FieldType
 ReadIL.Emit(OpCodes.Stloc, 46)
@@ -5153,22 +5339,22 @@ ReadIL.Emit(OpCodes.Beq, tru67)
 ReadIL.Emit(OpCodes.Br, fa67)
 ReadIL.MarkLabel(tru67)
 ReadIL.MarkSequencePoint(doc8, 226, 1, 226, 100)
-Dim locbldr140 As LocalBuilder = ReadIL.DeclareLocal(GetType(FieldStmt))
-locbldr140.SetLocalSymInfo("flss")
+Dim locbldr150 As LocalBuilder = ReadIL.DeclareLocal(GetType(FieldStmt))
+locbldr150.SetLocalSymInfo("flss")
 ReadIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
 ReadIL.Emit(OpCodes.Stloc, 47)
 ReadIL.MarkSequencePoint(doc8, 228, 1, 228, 100)
-Dim locbldr141 As LocalBuilder = ReadIL.DeclareLocal(GetType(Attributes.Attribute).MakeArrayType())
-locbldr141.SetLocalSymInfo("fattrs")
+Dim locbldr151 As LocalBuilder = ReadIL.DeclareLocal(GetType(Attributes.Attribute).MakeArrayType())
+locbldr151.SetLocalSymInfo("fattrs")
 ReadIL.Emit(OpCodes.Ldloc, 47)
 Typ = GetType(FieldStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(FieldStmt).GetField("Attrs"))
 Typ = GetType(FieldStmt).GetField("Attrs").FieldType
 ReadIL.Emit(OpCodes.Stloc, 48)
 ReadIL.MarkSequencePoint(doc8, 229, 1, 229, 100)
-Dim locbldr142 As LocalBuilder = ReadIL.DeclareLocal(GetType(FieldAttributes))
-locbldr142.SetLocalSymInfo("fa")
+Dim locbldr152 As LocalBuilder = ReadIL.DeclareLocal(GetType(FieldAttributes))
+locbldr152.SetLocalSymInfo("fa")
 Dim typ66(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 48)
 Typ = GetType(Attributes.Attribute).MakeArrayType()
@@ -5178,113 +5364,82 @@ ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").Get
 Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("ProcessFieldAttrs", typ66).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 49)
 ReadIL.MarkSequencePoint(doc8, 230, 1, 230, 100)
-Dim locbldr143 As LocalBuilder = ReadIL.DeclareLocal(GetType(Ident))
-locbldr143.SetLocalSymInfo("flssnam")
+Dim locbldr153 As LocalBuilder = ReadIL.DeclareLocal(GetType(Ident))
+locbldr153.SetLocalSymInfo("flssnam")
 ReadIL.Emit(OpCodes.Ldloc, 47)
 Typ = GetType(FieldStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(FieldStmt).GetField("FieldName"))
 Typ = GetType(FieldStmt).GetField("FieldName").FieldType
 ReadIL.Emit(OpCodes.Stloc, 50)
 ReadIL.MarkSequencePoint(doc8, 231, 1, 231, 100)
-Dim locbldr144 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
-locbldr144.SetLocalSymInfo("flsnamstr")
+Dim locbldr154 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
+locbldr154.SetLocalSymInfo("flsnamstr")
 ReadIL.Emit(OpCodes.Ldloc, 50)
 Typ = GetType(Ident)
 ReadIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
 Typ = GetType(Ident).GetField("Value").FieldType
 ReadIL.Emit(OpCodes.Stloc, 51)
 ReadIL.MarkSequencePoint(doc8, 232, 1, 232, 100)
-Dim locbldr145 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeTok))
-locbldr145.SetLocalSymInfo("ftyptok")
+Dim locbldr155 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeTok))
+locbldr155.SetLocalSymInfo("ftyptok")
 ReadIL.Emit(OpCodes.Ldloc, 47)
 Typ = GetType(FieldStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(FieldStmt).GetField("FieldTyp"))
 Typ = GetType(FieldStmt).GetField("FieldTyp").FieldType
 ReadIL.Emit(OpCodes.Stloc, 52)
 ReadIL.MarkSequencePoint(doc8, 233, 1, 233, 100)
-Dim locbldr146 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
-locbldr146.SetLocalSymInfo("ftyp")
+Dim locbldr156 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
+locbldr156.SetLocalSymInfo("ftyp")
 ReadIL.Emit(OpCodes.Ldnull)
 ReadIL.Emit(OpCodes.Stloc, 53)
-ReadIL.MarkSequencePoint(doc8, 234, 1, 234, 100)
-Dim locbldr147 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
-locbldr147.SetLocalSymInfo("reft3")
+ReadIL.MarkSequencePoint(doc8, 246, 1, 246, 100)
+Dim typ67(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 52)
 Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("RefTyp"))
-Typ = GetType(TypeTok).GetField("RefTyp").FieldType
+ReDim Preserve typ67(UBound(typ67) + 1)
+typ67(UBound(typ67)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("CommitEvalTTok", typ67))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("CommitEvalTTok", typ67).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 53)
+ReadIL.MarkSequencePoint(doc8, 248, 1, 248, 100)
+Dim locbldr157 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeBuilder))
+locbldr157.SetLocalSymInfo("typb2")
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnTypB"))
+Typ = GetType(AsmFactory).GetField("CurnTypB").FieldType
 ReadIL.Emit(OpCodes.Stloc, 54)
-ReadIL.MarkSequencePoint(doc8, 236, 1, 236, 100)
+ReadIL.MarkSequencePoint(doc8, 249, 1, 249, 100)
+Dim typ68(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 54)
+Typ = GetType(TypeBuilder)
+Typ03 = Typ
+ReadIL.Emit(OpCodes.Ldloc, 51)
+Typ = GetType(System.String)
+ReDim Preserve typ68(UBound(typ68) + 1)
+typ68(UBound(typ68)) = Typ
+ReadIL.Emit(OpCodes.Ldloc, 53)
 Typ = GetType(System.Type)
-ReadIL.Emit(OpCodes.Ldnull)
+ReDim Preserve typ68(UBound(typ68) + 1)
+typ68(UBound(typ68)) = Typ
+ReadIL.Emit(OpCodes.Ldloc, 49)
+Typ = GetType(FieldAttributes)
+ReDim Preserve typ68(UBound(typ68) + 1)
+typ68(UBound(typ68)) = Typ
+ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineField", typ68))
+Typ = Typ03.GetMethod("DefineField", typ68).ReturnType
+ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("CurnFldB"))
+ReadIL.MarkSequencePoint(doc8, 251, 1, 251, 100)
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("isNested"))
+Typ = GetType(AsmFactory).GetField("isNested").FieldType
+ReadIL.Emit(OpCodes.Ldc_I4, 0)
+Typ = GetType(System.Boolean)
 Dim fa68 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 Dim tru68 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 Dim cont68 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 ReadIL.Emit(OpCodes.Beq, tru68)
 ReadIL.Emit(OpCodes.Br, fa68)
 ReadIL.MarkLabel(tru68)
-ReadIL.MarkSequencePoint(doc8, 237, 1, 237, 100)
-ReadIL.Emit(OpCodes.Ldloc, 52)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-ReadIL.MarkSequencePoint(doc8, 238, 1, 238, 100)
-ReadIL.Emit(OpCodes.Ldloc, 52)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-ReadIL.MarkSequencePoint(doc8, 239, 1, 239, 100)
-Dim typ67(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 52)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("Value"))
-Typ = GetType(TypeTok).GetField("Value").FieldType
-ReDim Preserve typ67(UBound(typ67) + 1)
-typ67(UBound(typ67)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ67))
-Typ = GetType(Loader).GetMethod("LoadClass", typ67).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 53)
-ReadIL.MarkSequencePoint(doc8, 240, 1, 240, 100)
-ReadIL.Emit(OpCodes.Br, cont68)
-ReadIL.MarkLabel(fa68)
-ReadIL.MarkSequencePoint(doc8, 241, 1, 241, 100)
-ReadIL.Emit(OpCodes.Ldloc, 52)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-ReadIL.MarkSequencePoint(doc8, 242, 1, 242, 100)
-ReadIL.Emit(OpCodes.Ldloc, 52)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-ReadIL.MarkSequencePoint(doc8, 243, 1, 243, 100)
-Dim typ68(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 54)
-Typ = GetType(System.Type)
-ReDim Preserve typ68(UBound(typ68) + 1)
-typ68(UBound(typ68)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("ProcessType", typ68))
-Typ = GetType(Loader).GetMethod("ProcessType", typ68).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 53)
-ReadIL.MarkSequencePoint(doc8, 244, 1, 244, 100)
-ReadIL.Emit(OpCodes.Br, cont68)
-ReadIL.MarkLabel(cont68)
-ReadIL.MarkSequencePoint(doc8, 246, 1, 246, 100)
-Dim locbldr148 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeBuilder))
-locbldr148.SetLocalSymInfo("typb2")
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnTypB"))
-Typ = GetType(AsmFactory).GetField("CurnTypB").FieldType
-ReadIL.Emit(OpCodes.Stloc, 55)
-ReadIL.MarkSequencePoint(doc8, 247, 1, 247, 100)
+ReadIL.MarkSequencePoint(doc8, 252, 1, 252, 100)
 Dim typ69(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 55)
-Typ = GetType(TypeBuilder)
-Typ03 = Typ
 ReadIL.Emit(OpCodes.Ldloc, 51)
 Typ = GetType(System.String)
 ReDim Preserve typ69(UBound(typ69) + 1)
@@ -5293,25 +5448,21 @@ ReadIL.Emit(OpCodes.Ldloc, 53)
 Typ = GetType(System.Type)
 ReDim Preserve typ69(UBound(typ69) + 1)
 typ69(UBound(typ69)) = Typ
-ReadIL.Emit(OpCodes.Ldloc, 49)
-Typ = GetType(FieldAttributes)
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnFldB"))
+Typ = GetType(AsmFactory).GetField("CurnFldB").FieldType
 ReDim Preserve typ69(UBound(typ69) + 1)
 typ69(UBound(typ69)) = Typ
-ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineField", typ69))
-Typ = Typ03.GetMethod("DefineField", typ69).ReturnType
-ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("CurnFldB"))
-ReadIL.MarkSequencePoint(doc8, 249, 1, 249, 100)
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("isNested"))
-Typ = GetType(AsmFactory).GetField("isNested").FieldType
-ReadIL.Emit(OpCodes.Ldc_I4, 0)
-Typ = GetType(System.Boolean)
-Dim fa69 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru69 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont69 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru69)
-ReadIL.Emit(OpCodes.Br, fa69)
-ReadIL.MarkLabel(tru69)
-ReadIL.MarkSequencePoint(doc8, 250, 1, 250, 100)
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddFld", typ69))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddFld", typ69).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 253, 1, 253, 100)
+ReadIL.Emit(OpCodes.Br, cont68)
+ReadIL.MarkLabel(fa68)
+ReadIL.MarkSequencePoint(doc8, 254, 1, 254, 100)
 Dim typ70(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 51)
 Typ = GetType(System.String)
@@ -5325,81 +5476,57 @@ ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnFldB"))
 Typ = GetType(AsmFactory).GetField("CurnFldB").FieldType
 ReDim Preserve typ70(UBound(typ70) + 1)
 typ70(UBound(typ70)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddFld", typ70))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddFld", typ70).ReturnType
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedFld", typ70))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedFld", typ70).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 251, 1, 251, 100)
-ReadIL.Emit(OpCodes.Br, cont69)
-ReadIL.MarkLabel(fa69)
-ReadIL.MarkSequencePoint(doc8, 252, 1, 252, 100)
-Dim typ71(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 51)
-Typ = GetType(System.String)
-ReDim Preserve typ71(UBound(typ71) + 1)
-typ71(UBound(typ71)) = Typ
-ReadIL.Emit(OpCodes.Ldloc, 53)
-Typ = GetType(System.Type)
-ReDim Preserve typ71(UBound(typ71) + 1)
-typ71(UBound(typ71)) = Typ
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnFldB"))
-Typ = GetType(AsmFactory).GetField("CurnFldB").FieldType
-ReDim Preserve typ71(UBound(typ71) + 1)
-typ71(UBound(typ71)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedFld", typ71))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedFld", typ71).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 253, 1, 253, 100)
-ReadIL.Emit(OpCodes.Br, cont69)
-ReadIL.MarkLabel(cont69)
 ReadIL.MarkSequencePoint(doc8, 255, 1, 255, 100)
-Dim typ72(-1) As Type
+ReadIL.Emit(OpCodes.Br, cont68)
+ReadIL.MarkLabel(cont68)
+ReadIL.MarkSequencePoint(doc8, 257, 1, 257, 100)
+Dim typ71(-1) As Type
 ReadIL.Emit(OpCodes.Ldstr, "Adding Field: ")
 Typ = GetType(System.String)
-ReDim Preserve typ72(UBound(typ72) + 1)
-typ72(UBound(typ72)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("Write", typ72))
-Typ = GetType(Console).GetMethod("Write", typ72).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 256, 1, 256, 100)
-Dim typ73(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 51)
-Typ = GetType(System.String)
-ReDim Preserve typ73(UBound(typ73) + 1)
-typ73(UBound(typ73)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ73))
-Typ = GetType(Console).GetMethod("WriteLine", typ73).ReturnType
+ReDim Preserve typ71(UBound(typ71) + 1)
+typ71(UBound(typ71)) = Typ
+ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("Write", typ71))
+Typ = GetType(Console).GetMethod("Write", typ71).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
 ReadIL.MarkSequencePoint(doc8, 258, 1, 258, 100)
+Dim typ72(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 51)
+Typ = GetType(System.String)
+ReDim Preserve typ72(UBound(typ72) + 1)
+typ72(UBound(typ72)) = Typ
+ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ72))
+Typ = GetType(Console).GetMethod("WriteLine", typ72).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 260, 1, 260, 100)
 ReadIL.Emit(OpCodes.Br, label0)
-ReadIL.MarkSequencePoint(doc8, 259, 1, 259, 100)
+ReadIL.MarkSequencePoint(doc8, 261, 1, 261, 100)
 ReadIL.Emit(OpCodes.Br, cont67)
 ReadIL.MarkLabel(fa67)
 ReadIL.Emit(OpCodes.Br, cont67)
 ReadIL.MarkLabel(cont67)
-ReadIL.MarkSequencePoint(doc8, 262, 1, 262, 100)
+ReadIL.MarkSequencePoint(doc8, 264, 1, 264, 100)
 ReadIL.Emit(OpCodes.Ldtoken, GetType(EndClassStmt))
-Dim typ74 As Type() = {GetType(System.RuntimeTypeHandle)}
-ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ74))
-Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ74).ReturnType
+Dim typ73 As Type() = {GetType(System.RuntimeTypeHandle)}
+ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ73))
+Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ73).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 0)
-ReadIL.MarkSequencePoint(doc8, 263, 1, 263, 100)
-Dim typ75(-1) As Type
+ReadIL.MarkSequencePoint(doc8, 265, 1, 265, 100)
+Dim typ74(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 0)
 Typ = GetType(System.Type)
 Typ03 = Typ
@@ -5407,23 +5534,23 @@ ReadIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
 ReadIL.Emit(OpCodes.Box,Typ)
 Typ = GetType(System.Object)
-ReDim Preserve typ75(UBound(typ75) + 1)
-typ75(UBound(typ75)) = Typ
-ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("IsInstanceOfType", typ75))
-Typ = Typ03.GetMethod("IsInstanceOfType", typ75).ReturnType
+ReDim Preserve typ74(UBound(typ74) + 1)
+typ74(UBound(typ74)) = Typ
+ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("IsInstanceOfType", typ74))
+Typ = Typ03.GetMethod("IsInstanceOfType", typ74).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 1)
-ReadIL.MarkSequencePoint(doc8, 265, 1, 265, 100)
+ReadIL.MarkSequencePoint(doc8, 267, 1, 267, 100)
 ReadIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Boolean)
 ReadIL.Emit(OpCodes.Ldc_I4, 1)
 Typ = GetType(System.Boolean)
-Dim fa70 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru70 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont70 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru70)
-ReadIL.Emit(OpCodes.Br, fa70)
-ReadIL.MarkLabel(tru70)
-ReadIL.MarkSequencePoint(doc8, 266, 1, 266, 100)
+Dim fa69 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim tru69 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim cont69 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+ReadIL.Emit(OpCodes.Beq, tru69)
+ReadIL.Emit(OpCodes.Br, fa69)
+ReadIL.MarkLabel(tru69)
+ReadIL.MarkSequencePoint(doc8, 268, 1, 268, 100)
 ReadIL.Emit(OpCodes.Call, GetType(AsmFactory).GetMethod("CreateTyp", Type.EmptyTypes))
 Typ = GetType(AsmFactory).GetMethod("CreateTyp", Type.EmptyTypes).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
@@ -5431,22 +5558,22 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 267, 1, 267, 100)
+ReadIL.MarkSequencePoint(doc8, 269, 1, 269, 100)
 ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("isNested"))
 Typ = GetType(AsmFactory).GetField("isNested").FieldType
 ReadIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
-Dim fa71 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru71 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont71 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru71)
-ReadIL.Emit(OpCodes.Br, fa71)
-ReadIL.MarkLabel(tru71)
-ReadIL.MarkSequencePoint(doc8, 268, 1, 268, 100)
+Dim fa70 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim tru70 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim cont70 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+ReadIL.Emit(OpCodes.Beq, tru70)
+ReadIL.Emit(OpCodes.Br, fa70)
+ReadIL.MarkLabel(tru70)
+ReadIL.MarkSequencePoint(doc8, 270, 1, 270, 100)
 ReadIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("inClass"))
-ReadIL.MarkSequencePoint(doc8, 269, 1, 269, 100)
+ReadIL.MarkSequencePoint(doc8, 271, 1, 271, 100)
 ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetMet", Type.EmptyTypes))
 Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetMet", Type.EmptyTypes).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
@@ -5454,7 +5581,7 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 270, 1, 270, 100)
+ReadIL.MarkSequencePoint(doc8, 272, 1, 272, 100)
 ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetCtor", Type.EmptyTypes))
 Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetCtor", Type.EmptyTypes).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
@@ -5462,7 +5589,7 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 271, 1, 271, 100)
+ReadIL.MarkSequencePoint(doc8, 273, 1, 273, 100)
 ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetFld", Type.EmptyTypes))
 Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetFld", Type.EmptyTypes).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
@@ -5470,14 +5597,89 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 272, 1, 272, 100)
+ReadIL.MarkSequencePoint(doc8, 274, 1, 274, 100)
+ReadIL.Emit(OpCodes.Br, cont70)
+ReadIL.MarkLabel(fa70)
+ReadIL.Emit(OpCodes.Br, cont70)
+ReadIL.MarkLabel(cont70)
+ReadIL.MarkSequencePoint(doc8, 275, 1, 275, 100)
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("isNested"))
+Typ = GetType(AsmFactory).GetField("isNested").FieldType
+ReadIL.Emit(OpCodes.Ldc_I4, 1)
+Typ = GetType(System.Boolean)
+Dim fa71 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim tru71 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim cont71 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+ReadIL.Emit(OpCodes.Beq, tru71)
+ReadIL.Emit(OpCodes.Br, fa71)
+ReadIL.MarkLabel(tru71)
+ReadIL.MarkSequencePoint(doc8, 276, 1, 276, 100)
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnTypB2"))
+Typ = GetType(AsmFactory).GetField("CurnTypB2").FieldType
+ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("CurnTypB"))
+ReadIL.MarkSequencePoint(doc8, 277, 1, 277, 100)
+ReadIL.Emit(OpCodes.Ldc_I4, 0)
+Typ = GetType(System.Boolean)
+ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("isNested"))
+ReadIL.MarkSequencePoint(doc8, 278, 1, 278, 100)
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedMet", Type.EmptyTypes))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedMet", Type.EmptyTypes).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 279, 1, 279, 100)
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedCtor", Type.EmptyTypes))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedCtor", Type.EmptyTypes).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 280, 1, 280, 100)
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedFld", Type.EmptyTypes))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedFld", Type.EmptyTypes).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 281, 1, 281, 100)
 ReadIL.Emit(OpCodes.Br, cont71)
 ReadIL.MarkLabel(fa71)
 ReadIL.Emit(OpCodes.Br, cont71)
 ReadIL.MarkLabel(cont71)
-ReadIL.MarkSequencePoint(doc8, 273, 1, 273, 100)
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("isNested"))
-Typ = GetType(AsmFactory).GetField("isNested").FieldType
+ReadIL.MarkSequencePoint(doc8, 282, 1, 282, 100)
+ReadIL.Emit(OpCodes.Br, label0)
+ReadIL.MarkSequencePoint(doc8, 283, 1, 283, 100)
+ReadIL.Emit(OpCodes.Br, cont69)
+ReadIL.MarkLabel(fa69)
+ReadIL.Emit(OpCodes.Br, cont69)
+ReadIL.MarkLabel(cont69)
+ReadIL.MarkSequencePoint(doc8, 285, 1, 285, 100)
+ReadIL.Emit(OpCodes.Ldtoken, GetType(MethodStmt))
+Dim typ75 As Type() = {GetType(System.RuntimeTypeHandle)}
+ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ75))
+Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ75).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 0)
+ReadIL.MarkSequencePoint(doc8, 286, 1, 286, 100)
+Dim typ76(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 0)
+Typ = GetType(System.Type)
+Typ03 = Typ
+ReadIL.Emit(OpCodes.Ldarg, 1)
+Typ = GetType(Stmt)
+ReadIL.Emit(OpCodes.Box,Typ)
+Typ = GetType(System.Object)
+ReDim Preserve typ76(UBound(typ76) + 1)
+typ76(UBound(typ76)) = Typ
+ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("IsInstanceOfType", typ76))
+Typ = Typ03.GetMethod("IsInstanceOfType", typ76).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 1)
+ReadIL.MarkSequencePoint(doc8, 288, 1, 288, 100)
+ReadIL.Emit(OpCodes.Ldloc, 1)
+Typ = GetType(System.Boolean)
 ReadIL.Emit(OpCodes.Ldc_I4, 1)
 Typ = GetType(System.Boolean)
 Dim fa72 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
@@ -5486,92 +5688,17 @@ Dim cont72 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 ReadIL.Emit(OpCodes.Beq, tru72)
 ReadIL.Emit(OpCodes.Br, fa72)
 ReadIL.MarkLabel(tru72)
-ReadIL.MarkSequencePoint(doc8, 274, 1, 274, 100)
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnTypB2"))
-Typ = GetType(AsmFactory).GetField("CurnTypB2").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("CurnTypB"))
-ReadIL.MarkSequencePoint(doc8, 275, 1, 275, 100)
-ReadIL.Emit(OpCodes.Ldc_I4, 0)
-Typ = GetType(System.Boolean)
-ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("isNested"))
-ReadIL.MarkSequencePoint(doc8, 276, 1, 276, 100)
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedMet", Type.EmptyTypes))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedMet", Type.EmptyTypes).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 277, 1, 277, 100)
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedCtor", Type.EmptyTypes))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedCtor", Type.EmptyTypes).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 278, 1, 278, 100)
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedFld", Type.EmptyTypes))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetNestedFld", Type.EmptyTypes).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 279, 1, 279, 100)
-ReadIL.Emit(OpCodes.Br, cont72)
-ReadIL.MarkLabel(fa72)
-ReadIL.Emit(OpCodes.Br, cont72)
-ReadIL.MarkLabel(cont72)
-ReadIL.MarkSequencePoint(doc8, 280, 1, 280, 100)
-ReadIL.Emit(OpCodes.Br, label0)
-ReadIL.MarkSequencePoint(doc8, 281, 1, 281, 100)
-ReadIL.Emit(OpCodes.Br, cont70)
-ReadIL.MarkLabel(fa70)
-ReadIL.Emit(OpCodes.Br, cont70)
-ReadIL.MarkLabel(cont70)
-ReadIL.MarkSequencePoint(doc8, 283, 1, 283, 100)
-ReadIL.Emit(OpCodes.Ldtoken, GetType(MethodStmt))
-Dim typ76 As Type() = {GetType(System.RuntimeTypeHandle)}
-ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ76))
-Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ76).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 0)
-ReadIL.MarkSequencePoint(doc8, 284, 1, 284, 100)
-Dim typ77(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 0)
-Typ = GetType(System.Type)
-Typ03 = Typ
-ReadIL.Emit(OpCodes.Ldarg, 1)
-Typ = GetType(Stmt)
-ReadIL.Emit(OpCodes.Box,Typ)
-Typ = GetType(System.Object)
-ReDim Preserve typ77(UBound(typ77) + 1)
-typ77(UBound(typ77)) = Typ
-ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("IsInstanceOfType", typ77))
-Typ = Typ03.GetMethod("IsInstanceOfType", typ77).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 1)
-ReadIL.MarkSequencePoint(doc8, 286, 1, 286, 100)
-ReadIL.Emit(OpCodes.Ldloc, 1)
-Typ = GetType(System.Boolean)
-ReadIL.Emit(OpCodes.Ldc_I4, 1)
-Typ = GetType(System.Boolean)
-Dim fa73 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru73 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont73 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru73)
-ReadIL.Emit(OpCodes.Br, fa73)
-ReadIL.MarkLabel(tru73)
-ReadIL.MarkSequencePoint(doc8, 287, 1, 287, 100)
-Dim locbldr149 As LocalBuilder = ReadIL.DeclareLocal(GetType(MethodStmt))
-locbldr149.SetLocalSymInfo("mtss")
-ReadIL.Emit(OpCodes.Ldarg, 1)
-Typ = GetType(Stmt)
-ReadIL.Emit(OpCodes.Stloc, 56)
 ReadIL.MarkSequencePoint(doc8, 289, 1, 289, 100)
+Dim locbldr158 As LocalBuilder = ReadIL.DeclareLocal(GetType(MethodStmt))
+locbldr158.SetLocalSymInfo("mtss")
+ReadIL.Emit(OpCodes.Ldarg, 1)
+Typ = GetType(Stmt)
+ReadIL.Emit(OpCodes.Stloc, 55)
+ReadIL.MarkSequencePoint(doc8, 291, 1, 291, 100)
 ReadIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 ReadIL.Emit(OpCodes.Stsfld, GetType(ILEmitter).GetField("StaticFlg"))
-ReadIL.MarkSequencePoint(doc8, 290, 1, 290, 100)
+ReadIL.MarkSequencePoint(doc8, 292, 1, 292, 100)
 ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetVar", Type.EmptyTypes))
 Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("ResetVar", Type.EmptyTypes).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
@@ -5579,262 +5706,173 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 291, 1, 291, 100)
-Dim locbldr150 As LocalBuilder = ReadIL.DeclareLocal(GetType(Attributes.Attribute).MakeArrayType())
-locbldr150.SetLocalSymInfo("mattrs")
-ReadIL.Emit(OpCodes.Ldloc, 56)
+ReadIL.MarkSequencePoint(doc8, 293, 1, 293, 100)
+Dim locbldr159 As LocalBuilder = ReadIL.DeclareLocal(GetType(Attributes.Attribute).MakeArrayType())
+locbldr159.SetLocalSymInfo("mattrs")
+ReadIL.Emit(OpCodes.Ldloc, 55)
 Typ = GetType(MethodStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(MethodStmt).GetField("Attrs"))
 Typ = GetType(MethodStmt).GetField("Attrs").FieldType
-ReadIL.Emit(OpCodes.Stloc, 57)
-ReadIL.MarkSequencePoint(doc8, 292, 1, 292, 100)
-Dim locbldr151 As LocalBuilder = ReadIL.DeclareLocal(GetType(MethodAttributes))
-locbldr151.SetLocalSymInfo("ma")
-Dim typ78(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 57)
-Typ = GetType(Attributes.Attribute).MakeArrayType()
-ReDim Preserve typ78(UBound(typ78) + 1)
-typ78(UBound(typ78)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("ProcessMethodAttrs", typ78))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("ProcessMethodAttrs", typ78).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 58)
-ReadIL.MarkSequencePoint(doc8, 293, 1, 293, 100)
-Dim locbldr152 As LocalBuilder = ReadIL.DeclareLocal(GetType(Ident))
-locbldr152.SetLocalSymInfo("mtssnam")
+ReadIL.Emit(OpCodes.Stloc, 56)
+ReadIL.MarkSequencePoint(doc8, 294, 1, 294, 100)
+Dim locbldr160 As LocalBuilder = ReadIL.DeclareLocal(GetType(MethodAttributes))
+locbldr160.SetLocalSymInfo("ma")
+Dim typ77(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 56)
+Typ = GetType(Attributes.Attribute).MakeArrayType()
+ReDim Preserve typ77(UBound(typ77) + 1)
+typ77(UBound(typ77)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("ProcessMethodAttrs", typ77))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("ProcessMethodAttrs", typ77).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 57)
+ReadIL.MarkSequencePoint(doc8, 295, 1, 295, 100)
+Dim locbldr161 As LocalBuilder = ReadIL.DeclareLocal(GetType(Ident))
+locbldr161.SetLocalSymInfo("mtssnam")
+ReadIL.Emit(OpCodes.Ldloc, 55)
 Typ = GetType(MethodStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(MethodStmt).GetField("MethodName"))
 Typ = GetType(MethodStmt).GetField("MethodName").FieldType
-ReadIL.Emit(OpCodes.Stloc, 59)
-ReadIL.MarkSequencePoint(doc8, 294, 1, 294, 100)
-Dim locbldr153 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
-locbldr153.SetLocalSymInfo("mtssnamstr")
-ReadIL.Emit(OpCodes.Ldloc, 59)
+ReadIL.Emit(OpCodes.Stloc, 58)
+ReadIL.MarkSequencePoint(doc8, 296, 1, 296, 100)
+Dim locbldr162 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.String))
+locbldr162.SetLocalSymInfo("mtssnamstr")
+ReadIL.Emit(OpCodes.Ldloc, 58)
 Typ = GetType(Ident)
 ReadIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
 Typ = GetType(Ident).GetField("Value").FieldType
-ReadIL.Emit(OpCodes.Stloc, 60)
-ReadIL.MarkSequencePoint(doc8, 295, 1, 295, 100)
-Dim locbldr154 As LocalBuilder = ReadIL.DeclareLocal(GetType(Expr).MakeArrayType())
-locbldr154.SetLocalSymInfo("paramarr")
-ReadIL.Emit(OpCodes.Ldloc, 56)
+ReadIL.Emit(OpCodes.Stloc, 59)
+ReadIL.MarkSequencePoint(doc8, 297, 1, 297, 100)
+Dim locbldr163 As LocalBuilder = ReadIL.DeclareLocal(GetType(Expr).MakeArrayType())
+locbldr163.SetLocalSymInfo("paramarr")
+ReadIL.Emit(OpCodes.Ldloc, 55)
 Typ = GetType(MethodStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(MethodStmt).GetField("Params"))
 Typ = GetType(MethodStmt).GetField("Params").FieldType
-ReadIL.Emit(OpCodes.Stloc, 61)
-ReadIL.MarkSequencePoint(doc8, 296, 1, 296, 100)
-Dim locbldr155 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Int32))
-locbldr155.SetLocalSymInfo("paramlen")
-ReadIL.Emit(OpCodes.Ldloc, 61)
+ReadIL.Emit(OpCodes.Stloc, 60)
+ReadIL.MarkSequencePoint(doc8, 298, 1, 298, 100)
+Dim locbldr164 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Int32))
+locbldr164.SetLocalSymInfo("paramlen")
+ReadIL.Emit(OpCodes.Ldloc, 60)
 Typ = GetType(Expr).MakeArrayType()
 ReadIL.Emit(OpCodes.Ldlen)
 ReadIL.Emit(OpCodes.Conv_I4)
 Typ = GetType(System.Int32)
-ReadIL.Emit(OpCodes.Stloc, 62)
-ReadIL.MarkSequencePoint(doc8, 297, 1, 297, 100)
-Dim locbldr156 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeTok))
-locbldr156.SetLocalSymInfo("rettyptok")
-ReadIL.Emit(OpCodes.Ldloc, 56)
+ReadIL.Emit(OpCodes.Stloc, 61)
+ReadIL.MarkSequencePoint(doc8, 299, 1, 299, 100)
+Dim locbldr165 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeTok))
+locbldr165.SetLocalSymInfo("rettyptok")
+ReadIL.Emit(OpCodes.Ldloc, 55)
 Typ = GetType(MethodStmt)
 ReadIL.Emit(OpCodes.Ldfld, GetType(MethodStmt).GetField("RetTyp"))
 Typ = GetType(MethodStmt).GetField("RetTyp").FieldType
-ReadIL.Emit(OpCodes.Stloc, 63)
-ReadIL.MarkSequencePoint(doc8, 298, 1, 298, 100)
-Dim locbldr157 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
-locbldr157.SetLocalSymInfo("rettyp")
-ReadIL.Emit(OpCodes.Ldnull)
-ReadIL.Emit(OpCodes.Stloc, 64)
-ReadIL.MarkSequencePoint(doc8, 299, 1, 299, 100)
-ReadIL.Emit(OpCodes.Ldloc, 63)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("RefTyp"))
-Typ = GetType(TypeTok).GetField("RefTyp").FieldType
-ReadIL.Emit(OpCodes.Stloc, 43)
+ReadIL.Emit(OpCodes.Stloc, 62)
 ReadIL.MarkSequencePoint(doc8, 300, 1, 300, 100)
-Dim typ79(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 63)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("Value"))
-Typ = GetType(TypeTok).GetField("Value").FieldType
-ReDim Preserve typ79(UBound(typ79) + 1)
-typ79(UBound(typ79)) = Typ
-ReadIL.Emit(OpCodes.Ldstr, "")
-Typ = GetType(System.String)
-ReDim Preserve typ79(UBound(typ79) + 1)
-typ79(UBound(typ79)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(String).GetMethod("Compare", typ79))
-Typ = GetType(String).GetMethod("Compare", typ79).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 44)
-ReadIL.MarkSequencePoint(doc8, 302, 1, 302, 100)
-ReadIL.Emit(OpCodes.Ldloc, 43)
-Typ = GetType(System.Type)
+Dim locbldr166 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
+locbldr166.SetLocalSymInfo("rettyp")
 ReadIL.Emit(OpCodes.Ldnull)
+ReadIL.Emit(OpCodes.Stloc, 63)
+ReadIL.MarkSequencePoint(doc8, 317, 1, 317, 100)
+Dim typ78(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 62)
+Typ = GetType(TypeTok)
+ReDim Preserve typ78(UBound(typ78) + 1)
+typ78(UBound(typ78)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("CommitEvalTTok", typ78))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("CommitEvalTTok", typ78).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 63)
+ReadIL.MarkSequencePoint(doc8, 319, 1, 319, 100)
+ReadIL.Emit(OpCodes.Ldc_I4, CInt(0))
+Typ = GetType(System.Int32)
+ReadIL.Emit(OpCodes.Conv_U)
+ReadIL.Emit(OpCodes.Newarr, GetType(System.Type))
+ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("TypArr"))
+ReadIL.MarkSequencePoint(doc8, 321, 1, 321, 100)
+ReadIL.Emit(OpCodes.Ldloc, 61)
+Typ = GetType(System.Int32)
+ReadIL.Emit(OpCodes.Ldc_I4, CInt(0))
+Typ = GetType(System.Int32)
+Dim fa73 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim tru73 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim cont73 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+ReadIL.Emit(OpCodes.Beq, tru73)
+ReadIL.Emit(OpCodes.Br, fa73)
+ReadIL.MarkLabel(tru73)
+ReadIL.MarkSequencePoint(doc8, 322, 1, 322, 100)
+ReadIL.Emit(OpCodes.Br, cont73)
+ReadIL.MarkLabel(fa73)
+ReadIL.MarkSequencePoint(doc8, 323, 1, 323, 100)
+Dim typ79(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 60)
+Typ = GetType(Expr).MakeArrayType()
+ReDim Preserve typ79(UBound(typ79) + 1)
+typ79(UBound(typ79)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("ProcessParams", typ79))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("ProcessParams", typ79).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 324, 1, 324, 100)
+ReadIL.Emit(OpCodes.Br, cont73)
+ReadIL.MarkLabel(cont73)
+ReadIL.MarkSequencePoint(doc8, 327, 1, 327, 100)
+Dim locbldr167 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeBuilder))
+locbldr167.SetLocalSymInfo("typb")
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnTypB"))
+Typ = GetType(AsmFactory).GetField("CurnTypB").FieldType
+ReadIL.Emit(OpCodes.Stloc, 64)
+ReadIL.MarkSequencePoint(doc8, 328, 1, 328, 100)
+Dim locbldr168 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Boolean))
+locbldr168.SetLocalSymInfo("isconstr")
+Dim typ80(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 59)
+Typ = GetType(System.String)
+ReDim Preserve typ80(UBound(typ80) + 1)
+typ80(UBound(typ80)) = Typ
+ReadIL.Emit(OpCodes.Ldstr, "ctor*")
+Typ = GetType(System.String)
+ReDim Preserve typ80(UBound(typ80) + 1)
+typ80(UBound(typ80)) = Typ
+ReadIL.Emit(OpCodes.Call, GetType(ParseUtils).GetMethod("LikeOP", typ80))
+Typ = GetType(ParseUtils).GetMethod("LikeOP", typ80).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 65)
+ReadIL.MarkSequencePoint(doc8, 329, 1, 329, 100)
+ReadIL.Emit(OpCodes.Ldloc, 65)
+Typ = GetType(System.Boolean)
+ReadIL.Emit(OpCodes.Ldc_I4, 0)
+Typ = GetType(System.Boolean)
 Dim fa74 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 Dim tru74 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 Dim cont74 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 ReadIL.Emit(OpCodes.Beq, tru74)
 ReadIL.Emit(OpCodes.Br, fa74)
 ReadIL.MarkLabel(tru74)
-ReadIL.MarkSequencePoint(doc8, 303, 1, 303, 100)
-ReadIL.Emit(OpCodes.Ldloc, 44)
-Typ = GetType(System.Int32)
-ReadIL.Emit(OpCodes.Ldc_I4, CInt(0))
-Typ = GetType(System.Int32)
-Dim fa75 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru75 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont75 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru75)
-ReadIL.Emit(OpCodes.Br, fa75)
-ReadIL.MarkLabel(tru75)
-ReadIL.MarkSequencePoint(doc8, 304, 1, 304, 100)
-ReadIL.Emit(OpCodes.Br, cont75)
-ReadIL.MarkLabel(fa75)
-ReadIL.MarkSequencePoint(doc8, 305, 1, 305, 100)
-ReadIL.Emit(OpCodes.Ldloc, 63)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-ReadIL.MarkSequencePoint(doc8, 306, 1, 306, 100)
-ReadIL.Emit(OpCodes.Ldloc, 63)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-ReadIL.MarkSequencePoint(doc8, 307, 1, 307, 100)
-Dim typ80(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 63)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("Value"))
-Typ = GetType(TypeTok).GetField("Value").FieldType
-ReDim Preserve typ80(UBound(typ80) + 1)
-typ80(UBound(typ80)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ80))
-Typ = GetType(Loader).GetMethod("LoadClass", typ80).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 64)
-ReadIL.MarkSequencePoint(doc8, 308, 1, 308, 100)
-ReadIL.Emit(OpCodes.Br, cont75)
-ReadIL.MarkLabel(cont75)
-ReadIL.MarkSequencePoint(doc8, 309, 1, 309, 100)
-ReadIL.Emit(OpCodes.Br, cont74)
-ReadIL.MarkLabel(fa74)
-ReadIL.MarkSequencePoint(doc8, 310, 1, 310, 100)
-ReadIL.Emit(OpCodes.Ldloc, 63)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-ReadIL.MarkSequencePoint(doc8, 311, 1, 311, 100)
-ReadIL.Emit(OpCodes.Ldloc, 63)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-ReadIL.MarkSequencePoint(doc8, 312, 1, 312, 100)
+ReadIL.MarkSequencePoint(doc8, 330, 1, 330, 100)
 Dim typ81(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 43)
+ReadIL.Emit(OpCodes.Ldloc, 64)
+Typ = GetType(TypeBuilder)
+Typ03 = Typ
+ReadIL.Emit(OpCodes.Ldloc, 59)
+Typ = GetType(System.String)
+ReDim Preserve typ81(UBound(typ81) + 1)
+typ81(UBound(typ81)) = Typ
+ReadIL.Emit(OpCodes.Ldloc, 57)
+Typ = GetType(MethodAttributes)
+ReDim Preserve typ81(UBound(typ81) + 1)
+typ81(UBound(typ81)) = Typ
+ReadIL.Emit(OpCodes.Ldloc, 63)
 Typ = GetType(System.Type)
 ReDim Preserve typ81(UBound(typ81) + 1)
 typ81(UBound(typ81)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("ProcessType", typ81))
-Typ = GetType(Loader).GetMethod("ProcessType", typ81).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 64)
-ReadIL.MarkSequencePoint(doc8, 313, 1, 313, 100)
-ReadIL.Emit(OpCodes.Br, cont74)
-ReadIL.MarkLabel(cont74)
-ReadIL.MarkSequencePoint(doc8, 315, 1, 315, 100)
-ReadIL.Emit(OpCodes.Ldc_I4, CInt(0))
-Typ = GetType(System.Int32)
-ReadIL.Emit(OpCodes.Conv_U)
-ReadIL.Emit(OpCodes.Newarr, GetType(System.Type))
-ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("TypArr"))
-ReadIL.MarkSequencePoint(doc8, 317, 1, 317, 100)
-ReadIL.Emit(OpCodes.Ldloc, 62)
-Typ = GetType(System.Int32)
-ReadIL.Emit(OpCodes.Ldc_I4, CInt(0))
-Typ = GetType(System.Int32)
-Dim fa76 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru76 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont76 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru76)
-ReadIL.Emit(OpCodes.Br, fa76)
-ReadIL.MarkLabel(tru76)
-ReadIL.MarkSequencePoint(doc8, 318, 1, 318, 100)
-ReadIL.Emit(OpCodes.Br, cont76)
-ReadIL.MarkLabel(fa76)
-ReadIL.MarkSequencePoint(doc8, 319, 1, 319, 100)
-Dim typ82(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 61)
-Typ = GetType(Expr).MakeArrayType()
-ReDim Preserve typ82(UBound(typ82) + 1)
-typ82(UBound(typ82)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("ProcessParams", typ82))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("ProcessParams", typ82).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 320, 1, 320, 100)
-ReadIL.Emit(OpCodes.Br, cont76)
-ReadIL.MarkLabel(cont76)
-ReadIL.MarkSequencePoint(doc8, 323, 1, 323, 100)
-Dim locbldr158 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeBuilder))
-locbldr158.SetLocalSymInfo("typb")
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnTypB"))
-Typ = GetType(AsmFactory).GetField("CurnTypB").FieldType
-ReadIL.Emit(OpCodes.Stloc, 65)
-ReadIL.MarkSequencePoint(doc8, 324, 1, 324, 100)
-Dim locbldr159 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Boolean))
-locbldr159.SetLocalSymInfo("isconstr")
-Dim typ83(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 60)
-Typ = GetType(System.String)
-ReDim Preserve typ83(UBound(typ83) + 1)
-typ83(UBound(typ83)) = Typ
-ReadIL.Emit(OpCodes.Ldstr, "ctor*")
-Typ = GetType(System.String)
-ReDim Preserve typ83(UBound(typ83) + 1)
-typ83(UBound(typ83)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(ParseUtils).GetMethod("LikeOP", typ83))
-Typ = GetType(ParseUtils).GetMethod("LikeOP", typ83).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 66)
-ReadIL.MarkSequencePoint(doc8, 325, 1, 325, 100)
-ReadIL.Emit(OpCodes.Ldloc, 66)
-Typ = GetType(System.Boolean)
-ReadIL.Emit(OpCodes.Ldc_I4, 0)
-Typ = GetType(System.Boolean)
-Dim fa77 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru77 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont77 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru77)
-ReadIL.Emit(OpCodes.Br, fa77)
-ReadIL.MarkLabel(tru77)
-ReadIL.MarkSequencePoint(doc8, 326, 1, 326, 100)
-Dim typ84(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 65)
-Typ = GetType(TypeBuilder)
-Typ03 = Typ
-ReadIL.Emit(OpCodes.Ldloc, 60)
-Typ = GetType(System.String)
-ReDim Preserve typ84(UBound(typ84) + 1)
-typ84(UBound(typ84)) = Typ
-ReadIL.Emit(OpCodes.Ldloc, 58)
-Typ = GetType(MethodAttributes)
-ReDim Preserve typ84(UBound(typ84) + 1)
-typ84(UBound(typ84)) = Typ
-ReadIL.Emit(OpCodes.Ldloc, 64)
-Typ = GetType(System.Type)
-ReDim Preserve typ84(UBound(typ84) + 1)
-typ84(UBound(typ84)) = Typ
 ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
 Typ = GetType(AsmFactory).GetField("TypArr").FieldType
-ReDim Preserve typ84(UBound(typ84) + 1)
-typ84(UBound(typ84)) = Typ
-ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineMethod", typ84))
-Typ = Typ03.GetMethod("DefineMethod", typ84).ReturnType
+ReDim Preserve typ81(UBound(typ81) + 1)
+typ81(UBound(typ81)) = Typ
+ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineMethod", typ81))
+Typ = Typ03.GetMethod("DefineMethod", typ81).ReturnType
 ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("CurnMetB"))
-ReadIL.MarkSequencePoint(doc8, 327, 1, 327, 100)
+ReadIL.MarkSequencePoint(doc8, 331, 1, 331, 100)
 ReadIL.Emit(OpCodes.Call, GetType(AsmFactory).GetMethod("InitMtd", Type.EmptyTypes))
 Typ = GetType(AsmFactory).GetMethod("InitMtd", Type.EmptyTypes).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
@@ -5842,35 +5880,241 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 328, 1, 328, 100)
-Dim typ85(-1) As Type
+ReadIL.MarkSequencePoint(doc8, 332, 1, 332, 100)
+Dim typ82(-1) As Type
 ReadIL.Emit(OpCodes.Ldstr, "Adding Method: ")
+Typ = GetType(System.String)
+ReDim Preserve typ82(UBound(typ82) + 1)
+typ82(UBound(typ82)) = Typ
+ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("Write", typ82))
+Typ = GetType(Console).GetMethod("Write", typ82).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 333, 1, 333, 100)
+Dim typ83(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 59)
+Typ = GetType(System.String)
+ReDim Preserve typ83(UBound(typ83) + 1)
+typ83(UBound(typ83)) = Typ
+ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ83))
+Typ = GetType(Console).GetMethod("WriteLine", typ83).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 335, 1, 335, 100)
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("isNested"))
+Typ = GetType(AsmFactory).GetField("isNested").FieldType
+ReadIL.Emit(OpCodes.Ldc_I4, 0)
+Typ = GetType(System.Boolean)
+Dim fa75 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim tru75 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim cont75 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+ReadIL.Emit(OpCodes.Beq, tru75)
+ReadIL.Emit(OpCodes.Br, fa75)
+ReadIL.MarkLabel(tru75)
+ReadIL.MarkSequencePoint(doc8, 336, 1, 336, 100)
+Dim typ84(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 59)
+Typ = GetType(System.String)
+ReDim Preserve typ84(UBound(typ84) + 1)
+typ84(UBound(typ84)) = Typ
+ReadIL.Emit(OpCodes.Ldloc, 63)
+Typ = GetType(System.Type)
+ReDim Preserve typ84(UBound(typ84) + 1)
+typ84(UBound(typ84)) = Typ
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
+Typ = GetType(AsmFactory).GetField("TypArr").FieldType
+ReDim Preserve typ84(UBound(typ84) + 1)
+typ84(UBound(typ84)) = Typ
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnMetB"))
+Typ = GetType(AsmFactory).GetField("CurnMetB").FieldType
+ReDim Preserve typ84(UBound(typ84) + 1)
+typ84(UBound(typ84)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddMet", typ84))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddMet", typ84).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 337, 1, 337, 100)
+ReadIL.Emit(OpCodes.Br, cont75)
+ReadIL.MarkLabel(fa75)
+ReadIL.MarkSequencePoint(doc8, 338, 1, 338, 100)
+Dim typ85(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 59)
 Typ = GetType(System.String)
 ReDim Preserve typ85(UBound(typ85) + 1)
 typ85(UBound(typ85)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("Write", typ85))
-Typ = GetType(Console).GetMethod("Write", typ85).ReturnType
+ReadIL.Emit(OpCodes.Ldloc, 63)
+Typ = GetType(System.Type)
+ReDim Preserve typ85(UBound(typ85) + 1)
+typ85(UBound(typ85)) = Typ
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
+Typ = GetType(AsmFactory).GetField("TypArr").FieldType
+ReDim Preserve typ85(UBound(typ85) + 1)
+typ85(UBound(typ85)) = Typ
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnMetB"))
+Typ = GetType(AsmFactory).GetField("CurnMetB").FieldType
+ReDim Preserve typ85(UBound(typ85) + 1)
+typ85(UBound(typ85)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedMet", typ85))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedMet", typ85).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 329, 1, 329, 100)
+ReadIL.MarkSequencePoint(doc8, 339, 1, 339, 100)
+ReadIL.Emit(OpCodes.Br, cont75)
+ReadIL.MarkLabel(cont75)
+ReadIL.MarkSequencePoint(doc8, 341, 1, 341, 100)
+ReadIL.Emit(OpCodes.Br, cont74)
+ReadIL.MarkLabel(fa74)
+ReadIL.MarkSequencePoint(doc8, 342, 1, 342, 100)
+Dim locbldr169 As LocalBuilder = ReadIL.DeclareLocal(GetType(CallingConventions))
+locbldr169.SetLocalSymInfo("stdcallconv")
+ReadIL.Emit(OpCodes.Ldc_I4, CInt(1))
+Typ = GetType(System.Int32)
+ReadIL.Emit(OpCodes.Stloc, 66)
+ReadIL.MarkSequencePoint(doc8, 343, 1, 343, 100)
 Dim typ86(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 60)
-Typ = GetType(System.String)
+ReadIL.Emit(OpCodes.Ldloc, 64)
+Typ = GetType(TypeBuilder)
+Typ03 = Typ
+ReadIL.Emit(OpCodes.Ldloc, 57)
+Typ = GetType(MethodAttributes)
 ReDim Preserve typ86(UBound(typ86) + 1)
 typ86(UBound(typ86)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ86))
-Typ = GetType(Console).GetMethod("WriteLine", typ86).ReturnType
+ReadIL.Emit(OpCodes.Ldloc, 66)
+Typ = GetType(CallingConventions)
+ReDim Preserve typ86(UBound(typ86) + 1)
+typ86(UBound(typ86)) = Typ
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
+Typ = GetType(AsmFactory).GetField("TypArr").FieldType
+ReDim Preserve typ86(UBound(typ86) + 1)
+typ86(UBound(typ86)) = Typ
+ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineConstructor", typ86))
+Typ = Typ03.GetMethod("DefineConstructor", typ86).ReturnType
+ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("CurnConB"))
+ReadIL.MarkSequencePoint(doc8, 344, 1, 344, 100)
+ReadIL.Emit(OpCodes.Call, GetType(AsmFactory).GetMethod("InitConstr", Type.EmptyTypes))
+Typ = GetType(AsmFactory).GetMethod("InitConstr", Type.EmptyTypes).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 331, 1, 331, 100)
+ReadIL.MarkSequencePoint(doc8, 346, 1, 346, 100)
 ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("isNested"))
 Typ = GetType(AsmFactory).GetField("isNested").FieldType
+ReadIL.Emit(OpCodes.Ldc_I4, 0)
+Typ = GetType(System.Boolean)
+Dim fa76 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim tru76 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim cont76 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+ReadIL.Emit(OpCodes.Beq, tru76)
+ReadIL.Emit(OpCodes.Br, fa76)
+ReadIL.MarkLabel(tru76)
+ReadIL.MarkSequencePoint(doc8, 347, 1, 347, 100)
+Dim typ87(-1) As Type
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
+Typ = GetType(AsmFactory).GetField("TypArr").FieldType
+ReDim Preserve typ87(UBound(typ87) + 1)
+typ87(UBound(typ87)) = Typ
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnConB"))
+Typ = GetType(AsmFactory).GetField("CurnConB").FieldType
+ReDim Preserve typ87(UBound(typ87) + 1)
+typ87(UBound(typ87)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddCtor", typ87))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddCtor", typ87).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 348, 1, 348, 100)
+ReadIL.Emit(OpCodes.Br, cont76)
+ReadIL.MarkLabel(fa76)
+ReadIL.MarkSequencePoint(doc8, 349, 1, 349, 100)
+Dim typ88(-1) As Type
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
+Typ = GetType(AsmFactory).GetField("TypArr").FieldType
+ReDim Preserve typ88(UBound(typ88) + 1)
+typ88(UBound(typ88)) = Typ
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnConB"))
+Typ = GetType(AsmFactory).GetField("CurnConB").FieldType
+ReDim Preserve typ88(UBound(typ88) + 1)
+typ88(UBound(typ88)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedCtor", typ88))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedCtor", typ88).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 350, 1, 350, 100)
+ReadIL.Emit(OpCodes.Br, cont76)
+ReadIL.MarkLabel(cont76)
+ReadIL.MarkSequencePoint(doc8, 353, 1, 353, 100)
+Dim typ89(-1) As Type
+ReadIL.Emit(OpCodes.Ldstr, "Adding Constructor: ")
+Typ = GetType(System.String)
+ReDim Preserve typ89(UBound(typ89) + 1)
+typ89(UBound(typ89)) = Typ
+ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("Write", typ89))
+Typ = GetType(Console).GetMethod("Write", typ89).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 354, 1, 354, 100)
+Dim typ90(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 59)
+Typ = GetType(System.String)
+ReDim Preserve typ90(UBound(typ90) + 1)
+typ90(UBound(typ90)) = Typ
+ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ90))
+Typ = GetType(Console).GetMethod("WriteLine", typ90).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 355, 1, 355, 100)
+ReadIL.Emit(OpCodes.Br, cont74)
+ReadIL.MarkLabel(cont74)
+ReadIL.MarkSequencePoint(doc8, 358, 1, 358, 100)
+ReadIL.Emit(OpCodes.Ldc_I4, 1)
+Typ = GetType(System.Boolean)
+ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("InMethodFlg"))
+ReadIL.MarkSequencePoint(doc8, 359, 1, 359, 100)
+ReadIL.Emit(OpCodes.Ldloc, 59)
+Typ = GetType(System.String)
+ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("CurnMetName"))
+ReadIL.MarkSequencePoint(doc8, 361, 1, 361, 100)
+ReadIL.Emit(OpCodes.Ldloc, 61)
+Typ = GetType(System.Int32)
+ReadIL.Emit(OpCodes.Ldc_I4, CInt(0))
+Typ = GetType(System.Int32)
+Dim fa77 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim tru77 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+Dim cont77 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
+ReadIL.Emit(OpCodes.Beq, tru77)
+ReadIL.Emit(OpCodes.Br, fa77)
+ReadIL.MarkLabel(tru77)
+ReadIL.MarkSequencePoint(doc8, 362, 1, 362, 100)
+ReadIL.Emit(OpCodes.Br, cont77)
+ReadIL.MarkLabel(fa77)
+ReadIL.MarkSequencePoint(doc8, 363, 1, 363, 100)
+ReadIL.Emit(OpCodes.Ldloc, 65)
+Typ = GetType(System.Boolean)
 ReadIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 Dim fa78 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
@@ -5879,103 +6123,72 @@ Dim cont78 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 ReadIL.Emit(OpCodes.Beq, tru78)
 ReadIL.Emit(OpCodes.Br, fa78)
 ReadIL.MarkLabel(tru78)
-ReadIL.MarkSequencePoint(doc8, 332, 1, 332, 100)
-Dim typ87(-1) As Type
+ReadIL.MarkSequencePoint(doc8, 364, 1, 364, 100)
+Dim typ91(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 60)
-Typ = GetType(System.String)
-ReDim Preserve typ87(UBound(typ87) + 1)
-typ87(UBound(typ87)) = Typ
-ReadIL.Emit(OpCodes.Ldloc, 64)
-Typ = GetType(System.Type)
-ReDim Preserve typ87(UBound(typ87) + 1)
-typ87(UBound(typ87)) = Typ
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
-Typ = GetType(AsmFactory).GetField("TypArr").FieldType
-ReDim Preserve typ87(UBound(typ87) + 1)
-typ87(UBound(typ87)) = Typ
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnMetB"))
-Typ = GetType(AsmFactory).GetField("CurnMetB").FieldType
-ReDim Preserve typ87(UBound(typ87) + 1)
-typ87(UBound(typ87)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddMet", typ87))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddMet", typ87).ReturnType
+Typ = GetType(Expr).MakeArrayType()
+ReDim Preserve typ91(UBound(typ91) + 1)
+typ91(UBound(typ91)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("PostProcessParams", typ91))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("PostProcessParams", typ91).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 333, 1, 333, 100)
+ReadIL.MarkSequencePoint(doc8, 365, 1, 365, 100)
 ReadIL.Emit(OpCodes.Br, cont78)
 ReadIL.MarkLabel(fa78)
-ReadIL.MarkSequencePoint(doc8, 334, 1, 334, 100)
-Dim typ88(-1) As Type
+ReadIL.MarkSequencePoint(doc8, 366, 1, 366, 100)
+Dim typ92(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 60)
-Typ = GetType(System.String)
-ReDim Preserve typ88(UBound(typ88) + 1)
-typ88(UBound(typ88)) = Typ
-ReadIL.Emit(OpCodes.Ldloc, 64)
-Typ = GetType(System.Type)
-ReDim Preserve typ88(UBound(typ88) + 1)
-typ88(UBound(typ88)) = Typ
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
-Typ = GetType(AsmFactory).GetField("TypArr").FieldType
-ReDim Preserve typ88(UBound(typ88) + 1)
-typ88(UBound(typ88)) = Typ
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnMetB"))
-Typ = GetType(AsmFactory).GetField("CurnMetB").FieldType
-ReDim Preserve typ88(UBound(typ88) + 1)
-typ88(UBound(typ88)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedMet", typ88))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedMet", typ88).ReturnType
+Typ = GetType(Expr).MakeArrayType()
+ReDim Preserve typ92(UBound(typ92) + 1)
+typ92(UBound(typ92)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("PostProcessParamsConstr", typ92))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("PostProcessParamsConstr", typ92).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 335, 1, 335, 100)
+ReadIL.MarkSequencePoint(doc8, 367, 1, 367, 100)
 ReadIL.Emit(OpCodes.Br, cont78)
 ReadIL.MarkLabel(cont78)
-ReadIL.MarkSequencePoint(doc8, 337, 1, 337, 100)
+ReadIL.MarkSequencePoint(doc8, 368, 1, 368, 100)
 ReadIL.Emit(OpCodes.Br, cont77)
-ReadIL.MarkLabel(fa77)
-ReadIL.MarkSequencePoint(doc8, 338, 1, 338, 100)
-Dim locbldr160 As LocalBuilder = ReadIL.DeclareLocal(GetType(CallingConventions))
-locbldr160.SetLocalSymInfo("stdcallconv")
-ReadIL.Emit(OpCodes.Ldc_I4, CInt(1))
-Typ = GetType(System.Int32)
-ReadIL.Emit(OpCodes.Stloc, 67)
-ReadIL.MarkSequencePoint(doc8, 339, 1, 339, 100)
-Dim typ89(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 65)
-Typ = GetType(TypeBuilder)
+ReadIL.MarkLabel(cont77)
+ReadIL.MarkSequencePoint(doc8, 370, 1, 370, 100)
+ReadIL.Emit(OpCodes.Br, label0)
+ReadIL.MarkSequencePoint(doc8, 371, 1, 371, 100)
+ReadIL.Emit(OpCodes.Br, cont72)
+ReadIL.MarkLabel(fa72)
+ReadIL.Emit(OpCodes.Br, cont72)
+ReadIL.MarkLabel(cont72)
+ReadIL.MarkSequencePoint(doc8, 373, 1, 373, 100)
+ReadIL.Emit(OpCodes.Ldtoken, GetType(EndMethodStmt))
+Dim typ93 As Type() = {GetType(System.RuntimeTypeHandle)}
+ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ93))
+Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ93).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 0)
+ReadIL.MarkSequencePoint(doc8, 374, 1, 374, 100)
+Dim typ94(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 0)
+Typ = GetType(System.Type)
 Typ03 = Typ
-ReadIL.Emit(OpCodes.Ldloc, 58)
-Typ = GetType(MethodAttributes)
-ReDim Preserve typ89(UBound(typ89) + 1)
-typ89(UBound(typ89)) = Typ
-ReadIL.Emit(OpCodes.Ldloc, 67)
-Typ = GetType(CallingConventions)
-ReDim Preserve typ89(UBound(typ89) + 1)
-typ89(UBound(typ89)) = Typ
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
-Typ = GetType(AsmFactory).GetField("TypArr").FieldType
-ReDim Preserve typ89(UBound(typ89) + 1)
-typ89(UBound(typ89)) = Typ
-ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineConstructor", typ89))
-Typ = Typ03.GetMethod("DefineConstructor", typ89).ReturnType
-ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("CurnConB"))
-ReadIL.MarkSequencePoint(doc8, 340, 1, 340, 100)
-ReadIL.Emit(OpCodes.Call, GetType(AsmFactory).GetMethod("InitConstr", Type.EmptyTypes))
-Typ = GetType(AsmFactory).GetMethod("InitConstr", Type.EmptyTypes).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 342, 1, 342, 100)
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("isNested"))
-Typ = GetType(AsmFactory).GetField("isNested").FieldType
-ReadIL.Emit(OpCodes.Ldc_I4, 0)
+ReadIL.Emit(OpCodes.Ldarg, 1)
+Typ = GetType(Stmt)
+ReadIL.Emit(OpCodes.Box,Typ)
+Typ = GetType(System.Object)
+ReDim Preserve typ94(UBound(typ94) + 1)
+typ94(UBound(typ94)) = Typ
+ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("IsInstanceOfType", typ94))
+Typ = Typ03.GetMethod("IsInstanceOfType", typ94).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 1)
+ReadIL.MarkSequencePoint(doc8, 376, 1, 376, 100)
+ReadIL.Emit(OpCodes.Ldloc, 1)
+Typ = GetType(System.Boolean)
+ReadIL.Emit(OpCodes.Ldc_I4, 1)
 Typ = GetType(System.Boolean)
 Dim fa79 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 Dim tru79 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
@@ -5983,85 +6196,54 @@ Dim cont79 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 ReadIL.Emit(OpCodes.Beq, tru79)
 ReadIL.Emit(OpCodes.Br, fa79)
 ReadIL.MarkLabel(tru79)
-ReadIL.MarkSequencePoint(doc8, 343, 1, 343, 100)
-Dim typ90(-1) As Type
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
-Typ = GetType(AsmFactory).GetField("TypArr").FieldType
-ReDim Preserve typ90(UBound(typ90) + 1)
-typ90(UBound(typ90)) = Typ
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnConB"))
-Typ = GetType(AsmFactory).GetField("CurnConB").FieldType
-ReDim Preserve typ90(UBound(typ90) + 1)
-typ90(UBound(typ90)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddCtor", typ90))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddCtor", typ90).ReturnType
+ReadIL.MarkSequencePoint(doc8, 377, 1, 377, 100)
+ReadIL.Emit(OpCodes.Call, GetType(ILEmitter).GetMethod("EmitRet", Type.EmptyTypes))
+Typ = GetType(ILEmitter).GetMethod("EmitRet", Type.EmptyTypes).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 344, 1, 344, 100)
-ReadIL.Emit(OpCodes.Br, cont79)
-ReadIL.MarkLabel(fa79)
-ReadIL.MarkSequencePoint(doc8, 345, 1, 345, 100)
-Dim typ91(-1) As Type
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("TypArr"))
-Typ = GetType(AsmFactory).GetField("TypArr").FieldType
-ReDim Preserve typ91(UBound(typ91) + 1)
-typ91(UBound(typ91)) = Typ
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnConB"))
-Typ = GetType(AsmFactory).GetField("CurnConB").FieldType
-ReDim Preserve typ91(UBound(typ91) + 1)
-typ91(UBound(typ91)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedCtor", typ91))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddNestedCtor", typ91).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 346, 1, 346, 100)
-ReadIL.Emit(OpCodes.Br, cont79)
-ReadIL.MarkLabel(cont79)
-ReadIL.MarkSequencePoint(doc8, 349, 1, 349, 100)
-Dim typ92(-1) As Type
-ReadIL.Emit(OpCodes.Ldstr, "Adding Constructor: ")
-Typ = GetType(System.String)
-ReDim Preserve typ92(UBound(typ92) + 1)
-typ92(UBound(typ92)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("Write", typ92))
-Typ = GetType(Console).GetMethod("Write", typ92).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 350, 1, 350, 100)
-Dim typ93(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 60)
-Typ = GetType(System.String)
-ReDim Preserve typ93(UBound(typ93) + 1)
-typ93(UBound(typ93)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ93))
-Typ = GetType(Console).GetMethod("WriteLine", typ93).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 351, 1, 351, 100)
-ReadIL.Emit(OpCodes.Br, cont77)
-ReadIL.MarkLabel(cont77)
-ReadIL.MarkSequencePoint(doc8, 354, 1, 354, 100)
-ReadIL.Emit(OpCodes.Ldc_I4, 1)
+ReadIL.MarkSequencePoint(doc8, 378, 1, 378, 100)
+ReadIL.Emit(OpCodes.Ldc_I4, 0)
 Typ = GetType(System.Boolean)
 ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("InMethodFlg"))
-ReadIL.MarkSequencePoint(doc8, 355, 1, 355, 100)
-ReadIL.Emit(OpCodes.Ldloc, 60)
+ReadIL.MarkSequencePoint(doc8, 379, 1, 379, 100)
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("AsmB"))
+Typ = GetType(AsmFactory).GetField("AsmB").FieldType
+ReadIL.Emit(OpCodes.Stloc, 25)
+ReadIL.MarkSequencePoint(doc8, 380, 1, 380, 100)
+Dim locbldr170 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Int32))
+locbldr170.SetLocalSymInfo("mnamcomp")
+Dim typ95(-1) As Type
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnMetName"))
+Typ = GetType(AsmFactory).GetField("CurnMetName").FieldType
+ReDim Preserve typ95(UBound(typ95) + 1)
+typ95(UBound(typ95)) = Typ
+ReadIL.Emit(OpCodes.Ldstr, "main")
 Typ = GetType(System.String)
-ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("CurnMetName"))
-ReadIL.MarkSequencePoint(doc8, 357, 1, 357, 100)
-ReadIL.Emit(OpCodes.Ldloc, 62)
+ReDim Preserve typ95(UBound(typ95) + 1)
+typ95(UBound(typ95)) = Typ
+ReadIL.Emit(OpCodes.Call, GetType(String).GetMethod("Compare", typ95))
+Typ = GetType(String).GetMethod("Compare", typ95).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 67)
+ReadIL.MarkSequencePoint(doc8, 381, 1, 381, 100)
+Dim locbldr171 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Int32))
+locbldr171.SetLocalSymInfo("amodecomp")
+Dim typ96(-1) As Type
+ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("AsmMode"))
+Typ = GetType(AsmFactory).GetField("AsmMode").FieldType
+ReDim Preserve typ96(UBound(typ96) + 1)
+typ96(UBound(typ96)) = Typ
+ReadIL.Emit(OpCodes.Ldstr, "exe")
+Typ = GetType(System.String)
+ReDim Preserve typ96(UBound(typ96) + 1)
+typ96(UBound(typ96)) = Typ
+ReadIL.Emit(OpCodes.Call, GetType(String).GetMethod("Compare", typ96))
+Typ = GetType(String).GetMethod("Compare", typ96).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 68)
+ReadIL.MarkSequencePoint(doc8, 382, 1, 382, 100)
+ReadIL.Emit(OpCodes.Ldloc, 67)
 Typ = GetType(System.Int32)
 ReadIL.Emit(OpCodes.Ldc_I4, CInt(0))
 Typ = GetType(System.Int32)
@@ -6071,70 +6253,69 @@ Dim cont80 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 ReadIL.Emit(OpCodes.Beq, tru80)
 ReadIL.Emit(OpCodes.Br, fa80)
 ReadIL.MarkLabel(tru80)
-ReadIL.MarkSequencePoint(doc8, 358, 1, 358, 100)
-ReadIL.Emit(OpCodes.Br, cont80)
-ReadIL.MarkLabel(fa80)
-ReadIL.MarkSequencePoint(doc8, 359, 1, 359, 100)
-ReadIL.Emit(OpCodes.Ldloc, 66)
-Typ = GetType(System.Boolean)
-ReadIL.Emit(OpCodes.Ldc_I4, 0)
-Typ = GetType(System.Boolean)
+ReadIL.MarkSequencePoint(doc8, 383, 1, 383, 100)
+ReadIL.Emit(OpCodes.Ldloc, 68)
+Typ = GetType(System.Int32)
+ReadIL.Emit(OpCodes.Ldc_I4, CInt(0))
+Typ = GetType(System.Int32)
 Dim fa81 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 Dim tru81 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 Dim cont81 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 ReadIL.Emit(OpCodes.Beq, tru81)
 ReadIL.Emit(OpCodes.Br, fa81)
 ReadIL.MarkLabel(tru81)
-ReadIL.MarkSequencePoint(doc8, 360, 1, 360, 100)
-Dim typ94(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 61)
-Typ = GetType(Expr).MakeArrayType()
-ReDim Preserve typ94(UBound(typ94) + 1)
-typ94(UBound(typ94)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("PostProcessParams", typ94))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("PostProcessParams", typ94).ReturnType
+ReadIL.MarkSequencePoint(doc8, 384, 1, 384, 100)
+Dim typ97(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 25)
+Typ = GetType(AssemblyBuilder)
+Typ03 = Typ
+ReadIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("Met"))
+Typ = GetType(ILEmitter).GetField("Met").FieldType
+ReDim Preserve typ97(UBound(typ97) + 1)
+typ97(UBound(typ97)) = Typ
+ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("SetEntryPoint", typ97))
+Typ = Typ03.GetMethod("SetEntryPoint", typ97).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 361, 1, 361, 100)
+ReadIL.MarkSequencePoint(doc8, 385, 1, 385, 100)
 ReadIL.Emit(OpCodes.Br, cont81)
 ReadIL.MarkLabel(fa81)
-ReadIL.MarkSequencePoint(doc8, 362, 1, 362, 100)
-Dim typ95(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 61)
-Typ = GetType(Expr).MakeArrayType()
-ReDim Preserve typ95(UBound(typ95) + 1)
-typ95(UBound(typ95)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("PostProcessParamsConstr", typ95))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("PostProcessParamsConstr", typ95).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 363, 1, 363, 100)
 ReadIL.Emit(OpCodes.Br, cont81)
 ReadIL.MarkLabel(cont81)
-ReadIL.MarkSequencePoint(doc8, 364, 1, 364, 100)
+ReadIL.MarkSequencePoint(doc8, 386, 1, 386, 100)
+ReadIL.Emit(OpCodes.Br, cont80)
+ReadIL.MarkLabel(fa80)
 ReadIL.Emit(OpCodes.Br, cont80)
 ReadIL.MarkLabel(cont80)
-ReadIL.MarkSequencePoint(doc8, 366, 1, 366, 100)
+ReadIL.MarkSequencePoint(doc8, 387, 1, 387, 100)
 ReadIL.Emit(OpCodes.Br, label0)
-ReadIL.MarkSequencePoint(doc8, 367, 1, 367, 100)
-ReadIL.Emit(OpCodes.Br, cont73)
-ReadIL.MarkLabel(fa73)
-ReadIL.Emit(OpCodes.Br, cont73)
-ReadIL.MarkLabel(cont73)
-ReadIL.MarkSequencePoint(doc8, 369, 1, 369, 100)
-ReadIL.Emit(OpCodes.Ldtoken, GetType(EndMethodStmt))
-Dim typ96 As Type() = {GetType(System.RuntimeTypeHandle)}
-ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ96))
-Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ96).ReturnType
+ReadIL.MarkSequencePoint(doc8, 388, 1, 388, 100)
+ReadIL.Emit(OpCodes.Br, cont79)
+ReadIL.MarkLabel(fa79)
+ReadIL.Emit(OpCodes.Br, cont79)
+ReadIL.MarkLabel(cont79)
+ReadIL.MarkSequencePoint(doc8, 390, 1, 390, 100)
+Dim locbldr172 As LocalBuilder = ReadIL.DeclareLocal(GetType(Ident))
+locbldr172.SetLocalSymInfo("vnam")
+ReadIL.MarkSequencePoint(doc8, 391, 1, 391, 100)
+Dim locbldr173 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeTok))
+locbldr173.SetLocalSymInfo("vtyptok")
+ReadIL.MarkSequencePoint(doc8, 392, 1, 392, 100)
+Dim locbldr174 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
+locbldr174.SetLocalSymInfo("vtyp")
+ReadIL.Emit(OpCodes.Ldnull)
+ReadIL.Emit(OpCodes.Stloc, 71)
+ReadIL.MarkSequencePoint(doc8, 395, 1, 395, 100)
+ReadIL.Emit(OpCodes.Ldtoken, GetType(VarStmt))
+Dim typ98 As Type() = {GetType(System.RuntimeTypeHandle)}
+ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ98))
+Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ98).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 0)
-ReadIL.MarkSequencePoint(doc8, 370, 1, 370, 100)
-Dim typ97(-1) As Type
+ReadIL.MarkSequencePoint(doc8, 396, 1, 396, 100)
+Dim typ99(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 0)
 Typ = GetType(System.Type)
 Typ03 = Typ
@@ -6142,12 +6323,12 @@ ReadIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(Stmt)
 ReadIL.Emit(OpCodes.Box,Typ)
 Typ = GetType(System.Object)
-ReDim Preserve typ97(UBound(typ97) + 1)
-typ97(UBound(typ97)) = Typ
-ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("IsInstanceOfType", typ97))
-Typ = Typ03.GetMethod("IsInstanceOfType", typ97).ReturnType
+ReDim Preserve typ99(UBound(typ99) + 1)
+typ99(UBound(typ99)) = Typ
+ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("IsInstanceOfType", typ99))
+Typ = Typ03.GetMethod("IsInstanceOfType", typ99).ReturnType
 ReadIL.Emit(OpCodes.Stloc, 1)
-ReadIL.MarkSequencePoint(doc8, 372, 1, 372, 100)
+ReadIL.MarkSequencePoint(doc8, 398, 1, 398, 100)
 ReadIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Boolean)
 ReadIL.Emit(OpCodes.Ldc_I4, 1)
@@ -6158,474 +6339,214 @@ Dim cont82 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 ReadIL.Emit(OpCodes.Beq, tru82)
 ReadIL.Emit(OpCodes.Br, fa82)
 ReadIL.MarkLabel(tru82)
-ReadIL.MarkSequencePoint(doc8, 373, 1, 373, 100)
-ReadIL.Emit(OpCodes.Call, GetType(ILEmitter).GetMethod("EmitRet", Type.EmptyTypes))
-Typ = GetType(ILEmitter).GetMethod("EmitRet", Type.EmptyTypes).ReturnType
+ReadIL.MarkSequencePoint(doc8, 399, 1, 399, 100)
+Dim locbldr175 As LocalBuilder = ReadIL.DeclareLocal(GetType(VarStmt))
+locbldr175.SetLocalSymInfo("curv")
+ReadIL.Emit(OpCodes.Ldarg, 1)
+Typ = GetType(Stmt)
+ReadIL.Emit(OpCodes.Stloc, 72)
+ReadIL.MarkSequencePoint(doc8, 400, 1, 400, 100)
+ReadIL.Emit(OpCodes.Ldloc, 72)
+Typ = GetType(VarStmt)
+ReadIL.Emit(OpCodes.Ldfld, GetType(VarStmt).GetField("VarName"))
+Typ = GetType(VarStmt).GetField("VarName").FieldType
+ReadIL.Emit(OpCodes.Stloc, 69)
+ReadIL.MarkSequencePoint(doc8, 402, 1, 402, 100)
+ReadIL.Emit(OpCodes.Ldloc, 72)
+Typ = GetType(VarStmt)
+ReadIL.Emit(OpCodes.Ldfld, GetType(VarStmt).GetField("VarTyp"))
+Typ = GetType(VarStmt).GetField("VarTyp").FieldType
+ReadIL.Emit(OpCodes.Stloc, 70)
+ReadIL.MarkSequencePoint(doc8, 415, 1, 415, 100)
+Dim typ100(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 70)
+Typ = GetType(TypeTok)
+ReDim Preserve typ100(UBound(typ100) + 1)
+typ100(UBound(typ100)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("CommitEvalTTok", typ100))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("CommitEvalTTok", typ100).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 71)
+ReadIL.MarkSequencePoint(doc8, 417, 1, 417, 100)
+Dim typ101(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 69)
+Typ = GetType(Ident)
+ReadIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
+Typ = GetType(Ident).GetField("Value").FieldType
+ReDim Preserve typ101(UBound(typ101) + 1)
+typ101(UBound(typ101)) = Typ
+ReadIL.Emit(OpCodes.Ldloc, 71)
+Typ = GetType(System.Type)
+ReDim Preserve typ101(UBound(typ101) + 1)
+typ101(UBound(typ101)) = Typ
+ReadIL.Emit(OpCodes.Call, GetType(ILEmitter).GetMethod("DeclVar", typ101))
+Typ = GetType(ILEmitter).GetMethod("DeclVar", typ101).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 374, 1, 374, 100)
-ReadIL.Emit(OpCodes.Ldc_I4, 0)
+ReadIL.MarkSequencePoint(doc8, 418, 1, 418, 100)
+ReadIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("LocInd"))
+Typ = GetType(ILEmitter).GetField("LocInd").FieldType
+ReadIL.Emit(OpCodes.Ldc_I4, CInt(1))
+Typ = GetType(System.Int32)
+ReadIL.Emit(OpCodes.Add)
+ReadIL.Emit(OpCodes.Stsfld, GetType(ILEmitter).GetField("LocInd"))
+ReadIL.MarkSequencePoint(doc8, 419, 1, 419, 100)
+Dim typ102(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 69)
+Typ = GetType(Ident)
+ReadIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
+Typ = GetType(Ident).GetField("Value").FieldType
+ReDim Preserve typ102(UBound(typ102) + 1)
+typ102(UBound(typ102)) = Typ
+ReadIL.Emit(OpCodes.Ldc_I4, 1)
 Typ = GetType(System.Boolean)
-ReadIL.Emit(OpCodes.Stsfld, GetType(AsmFactory).GetField("InMethodFlg"))
-ReadIL.MarkSequencePoint(doc8, 375, 1, 375, 100)
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("AsmB"))
-Typ = GetType(AsmFactory).GetField("AsmB").FieldType
-ReadIL.Emit(OpCodes.Stloc, 25)
-ReadIL.MarkSequencePoint(doc8, 376, 1, 376, 100)
-Dim locbldr161 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Int32))
-locbldr161.SetLocalSymInfo("mnamcomp")
-Dim typ98(-1) As Type
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("CurnMetName"))
-Typ = GetType(AsmFactory).GetField("CurnMetName").FieldType
-ReDim Preserve typ98(UBound(typ98) + 1)
-typ98(UBound(typ98)) = Typ
-ReadIL.Emit(OpCodes.Ldstr, "main")
-Typ = GetType(System.String)
-ReDim Preserve typ98(UBound(typ98) + 1)
-typ98(UBound(typ98)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(String).GetMethod("Compare", typ98))
-Typ = GetType(String).GetMethod("Compare", typ98).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 68)
-ReadIL.MarkSequencePoint(doc8, 377, 1, 377, 100)
-Dim locbldr162 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Int32))
-locbldr162.SetLocalSymInfo("amodecomp")
-Dim typ99(-1) As Type
-ReadIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("AsmMode"))
-Typ = GetType(AsmFactory).GetField("AsmMode").FieldType
-ReDim Preserve typ99(UBound(typ99) + 1)
-typ99(UBound(typ99)) = Typ
-ReadIL.Emit(OpCodes.Ldstr, "exe")
-Typ = GetType(System.String)
-ReDim Preserve typ99(UBound(typ99) + 1)
-typ99(UBound(typ99)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(String).GetMethod("Compare", typ99))
-Typ = GetType(String).GetMethod("Compare", typ99).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 69)
-ReadIL.MarkSequencePoint(doc8, 378, 1, 378, 100)
-ReadIL.Emit(OpCodes.Ldloc, 68)
-Typ = GetType(System.Int32)
-ReadIL.Emit(OpCodes.Ldc_I4, CInt(0))
-Typ = GetType(System.Int32)
+ReDim Preserve typ102(UBound(typ102) + 1)
+typ102(UBound(typ102)) = Typ
+ReadIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("LocInd"))
+Typ = GetType(ILEmitter).GetField("LocInd").FieldType
+ReDim Preserve typ102(UBound(typ102) + 1)
+typ102(UBound(typ102)) = Typ
+ReadIL.Emit(OpCodes.Ldloc, 71)
+Typ = GetType(System.Type)
+ReDim Preserve typ102(UBound(typ102) + 1)
+typ102(UBound(typ102)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ102))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ102).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 421, 1, 421, 100)
+ReadIL.Emit(OpCodes.Br, label0)
+ReadIL.MarkSequencePoint(doc8, 422, 1, 422, 100)
+ReadIL.Emit(OpCodes.Br, cont82)
+ReadIL.MarkLabel(fa82)
+ReadIL.Emit(OpCodes.Br, cont82)
+ReadIL.MarkLabel(cont82)
+ReadIL.MarkSequencePoint(doc8, 424, 1, 424, 100)
+ReadIL.Emit(OpCodes.Ldtoken, GetType(VarAsgnStmt))
+Dim typ103 As Type() = {GetType(System.RuntimeTypeHandle)}
+ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ103))
+Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ103).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 0)
+ReadIL.MarkSequencePoint(doc8, 425, 1, 425, 100)
+Dim typ104(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 0)
+Typ = GetType(System.Type)
+Typ03 = Typ
+ReadIL.Emit(OpCodes.Ldarg, 1)
+Typ = GetType(Stmt)
+ReadIL.Emit(OpCodes.Box,Typ)
+Typ = GetType(System.Object)
+ReDim Preserve typ104(UBound(typ104) + 1)
+typ104(UBound(typ104)) = Typ
+ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("IsInstanceOfType", typ104))
+Typ = Typ03.GetMethod("IsInstanceOfType", typ104).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 1)
+ReadIL.MarkSequencePoint(doc8, 427, 1, 427, 100)
+ReadIL.Emit(OpCodes.Ldloc, 1)
+Typ = GetType(System.Boolean)
+ReadIL.Emit(OpCodes.Ldc_I4, 1)
+Typ = GetType(System.Boolean)
 Dim fa83 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 Dim tru83 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 Dim cont83 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
 ReadIL.Emit(OpCodes.Beq, tru83)
 ReadIL.Emit(OpCodes.Br, fa83)
 ReadIL.MarkLabel(tru83)
-ReadIL.MarkSequencePoint(doc8, 379, 1, 379, 100)
+ReadIL.MarkSequencePoint(doc8, 428, 1, 428, 100)
+Dim locbldr176 As LocalBuilder = ReadIL.DeclareLocal(GetType(VarAsgnStmt))
+locbldr176.SetLocalSymInfo("curva")
+ReadIL.Emit(OpCodes.Ldarg, 1)
+Typ = GetType(Stmt)
+ReadIL.Emit(OpCodes.Stloc, 73)
+ReadIL.MarkSequencePoint(doc8, 429, 1, 429, 100)
+ReadIL.Emit(OpCodes.Ldloc, 73)
+Typ = GetType(VarAsgnStmt)
+ReadIL.Emit(OpCodes.Ldfld, GetType(VarAsgnStmt).GetField("VarName"))
+Typ = GetType(VarAsgnStmt).GetField("VarName").FieldType
+ReadIL.Emit(OpCodes.Stloc, 69)
+ReadIL.MarkSequencePoint(doc8, 431, 1, 431, 100)
+ReadIL.Emit(OpCodes.Ldloc, 73)
+Typ = GetType(VarAsgnStmt)
+ReadIL.Emit(OpCodes.Ldfld, GetType(VarAsgnStmt).GetField("VarTyp"))
+Typ = GetType(VarAsgnStmt).GetField("VarTyp").FieldType
+ReadIL.Emit(OpCodes.Stloc, 70)
+ReadIL.MarkSequencePoint(doc8, 444, 1, 444, 100)
+Dim typ105(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 70)
+Typ = GetType(TypeTok)
+ReDim Preserve typ105(UBound(typ105) + 1)
+typ105(UBound(typ105)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("CommitEvalTTok", typ105))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.Helpers").GetMethod("CommitEvalTTok", typ105).ReturnType
+ReadIL.Emit(OpCodes.Stloc, 71)
+ReadIL.MarkSequencePoint(doc8, 446, 1, 446, 100)
+Dim typ106(-1) As Type
 ReadIL.Emit(OpCodes.Ldloc, 69)
-Typ = GetType(System.Int32)
-ReadIL.Emit(OpCodes.Ldc_I4, CInt(0))
-Typ = GetType(System.Int32)
-Dim fa84 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru84 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont84 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru84)
-ReadIL.Emit(OpCodes.Br, fa84)
-ReadIL.MarkLabel(tru84)
-ReadIL.MarkSequencePoint(doc8, 380, 1, 380, 100)
-Dim typ100(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 25)
-Typ = GetType(AssemblyBuilder)
-Typ03 = Typ
-ReadIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("Met"))
-Typ = GetType(ILEmitter).GetField("Met").FieldType
-ReDim Preserve typ100(UBound(typ100) + 1)
-typ100(UBound(typ100)) = Typ
-ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("SetEntryPoint", typ100))
-Typ = Typ03.GetMethod("SetEntryPoint", typ100).ReturnType
+Typ = GetType(Ident)
+ReadIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
+Typ = GetType(Ident).GetField("Value").FieldType
+ReDim Preserve typ106(UBound(typ106) + 1)
+typ106(UBound(typ106)) = Typ
+ReadIL.Emit(OpCodes.Ldloc, 71)
+Typ = GetType(System.Type)
+ReDim Preserve typ106(UBound(typ106) + 1)
+typ106(UBound(typ106)) = Typ
+ReadIL.Emit(OpCodes.Call, GetType(ILEmitter).GetMethod("DeclVar", typ106))
+Typ = GetType(ILEmitter).GetMethod("DeclVar", typ106).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 ReadIL.Emit(OpCodes.Pop)
 End If
-ReadIL.MarkSequencePoint(doc8, 381, 1, 381, 100)
-ReadIL.Emit(OpCodes.Br, cont84)
-ReadIL.MarkLabel(fa84)
-ReadIL.Emit(OpCodes.Br, cont84)
-ReadIL.MarkLabel(cont84)
-ReadIL.MarkSequencePoint(doc8, 382, 1, 382, 100)
+ReadIL.MarkSequencePoint(doc8, 447, 1, 447, 100)
+ReadIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("LocInd"))
+Typ = GetType(ILEmitter).GetField("LocInd").FieldType
+ReadIL.Emit(OpCodes.Ldc_I4, CInt(1))
+Typ = GetType(System.Int32)
+ReadIL.Emit(OpCodes.Add)
+ReadIL.Emit(OpCodes.Stsfld, GetType(ILEmitter).GetField("LocInd"))
+ReadIL.MarkSequencePoint(doc8, 448, 1, 448, 100)
+Dim typ107(-1) As Type
+ReadIL.Emit(OpCodes.Ldloc, 69)
+Typ = GetType(Ident)
+ReadIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
+Typ = GetType(Ident).GetField("Value").FieldType
+ReDim Preserve typ107(UBound(typ107) + 1)
+typ107(UBound(typ107)) = Typ
+ReadIL.Emit(OpCodes.Ldc_I4, 1)
+Typ = GetType(System.Boolean)
+ReDim Preserve typ107(UBound(typ107) + 1)
+typ107(UBound(typ107)) = Typ
+ReadIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("LocInd"))
+Typ = GetType(ILEmitter).GetField("LocInd").FieldType
+ReDim Preserve typ107(UBound(typ107) + 1)
+typ107(UBound(typ107)) = Typ
+ReadIL.Emit(OpCodes.Ldloc, 71)
+Typ = GetType(System.Type)
+ReDim Preserve typ107(UBound(typ107) + 1)
+typ107(UBound(typ107)) = Typ
+ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ107))
+Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ107).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+ReadIL.Emit(OpCodes.Pop)
+End If
+ReadIL.MarkSequencePoint(doc8, 450, 1, 450, 100)
+ReadIL.Emit(OpCodes.Br, label0)
+ReadIL.MarkSequencePoint(doc8, 451, 1, 451, 100)
 ReadIL.Emit(OpCodes.Br, cont83)
 ReadIL.MarkLabel(fa83)
 ReadIL.Emit(OpCodes.Br, cont83)
 ReadIL.MarkLabel(cont83)
-ReadIL.MarkSequencePoint(doc8, 383, 1, 383, 100)
-ReadIL.Emit(OpCodes.Br, label0)
-ReadIL.MarkSequencePoint(doc8, 384, 1, 384, 100)
-ReadIL.Emit(OpCodes.Br, cont82)
-ReadIL.MarkLabel(fa82)
-ReadIL.Emit(OpCodes.Br, cont82)
-ReadIL.MarkLabel(cont82)
-ReadIL.MarkSequencePoint(doc8, 386, 1, 386, 100)
-Dim locbldr163 As LocalBuilder = ReadIL.DeclareLocal(GetType(Ident))
-locbldr163.SetLocalSymInfo("vnam")
-ReadIL.MarkSequencePoint(doc8, 387, 1, 387, 100)
-Dim locbldr164 As LocalBuilder = ReadIL.DeclareLocal(GetType(TypeTok))
-locbldr164.SetLocalSymInfo("vtyptok")
-ReadIL.MarkSequencePoint(doc8, 388, 1, 388, 100)
-Dim locbldr165 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
-locbldr165.SetLocalSymInfo("vtyp")
-ReadIL.Emit(OpCodes.Ldnull)
-ReadIL.Emit(OpCodes.Stloc, 72)
-ReadIL.MarkSequencePoint(doc8, 389, 1, 389, 100)
-Dim locbldr166 As LocalBuilder = ReadIL.DeclareLocal(GetType(System.Type))
-locbldr166.SetLocalSymInfo("vreft")
-ReadIL.MarkSequencePoint(doc8, 391, 1, 391, 100)
-ReadIL.Emit(OpCodes.Ldtoken, GetType(VarStmt))
-Dim typ101 As Type() = {GetType(System.RuntimeTypeHandle)}
-ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ101))
-Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ101).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 0)
-ReadIL.MarkSequencePoint(doc8, 392, 1, 392, 100)
-Dim typ102(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 0)
-Typ = GetType(System.Type)
-Typ03 = Typ
-ReadIL.Emit(OpCodes.Ldarg, 1)
-Typ = GetType(Stmt)
-ReadIL.Emit(OpCodes.Box,Typ)
-Typ = GetType(System.Object)
-ReDim Preserve typ102(UBound(typ102) + 1)
-typ102(UBound(typ102)) = Typ
-ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("IsInstanceOfType", typ102))
-Typ = Typ03.GetMethod("IsInstanceOfType", typ102).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 1)
-ReadIL.MarkSequencePoint(doc8, 394, 1, 394, 100)
-ReadIL.Emit(OpCodes.Ldloc, 1)
-Typ = GetType(System.Boolean)
-ReadIL.Emit(OpCodes.Ldc_I4, 1)
-Typ = GetType(System.Boolean)
-Dim fa85 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru85 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont85 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru85)
-ReadIL.Emit(OpCodes.Br, fa85)
-ReadIL.MarkLabel(tru85)
-ReadIL.MarkSequencePoint(doc8, 395, 1, 395, 100)
-Dim locbldr167 As LocalBuilder = ReadIL.DeclareLocal(GetType(VarStmt))
-locbldr167.SetLocalSymInfo("curv")
-ReadIL.Emit(OpCodes.Ldarg, 1)
-Typ = GetType(Stmt)
-ReadIL.Emit(OpCodes.Stloc, 74)
-ReadIL.MarkSequencePoint(doc8, 396, 1, 396, 100)
-ReadIL.Emit(OpCodes.Ldloc, 74)
-Typ = GetType(VarStmt)
-ReadIL.Emit(OpCodes.Ldfld, GetType(VarStmt).GetField("VarName"))
-Typ = GetType(VarStmt).GetField("VarName").FieldType
-ReadIL.Emit(OpCodes.Stloc, 70)
-ReadIL.MarkSequencePoint(doc8, 398, 1, 398, 100)
-ReadIL.Emit(OpCodes.Ldloc, 74)
-Typ = GetType(VarStmt)
-ReadIL.Emit(OpCodes.Ldfld, GetType(VarStmt).GetField("VarTyp"))
-Typ = GetType(VarStmt).GetField("VarTyp").FieldType
-ReadIL.Emit(OpCodes.Stloc, 71)
-ReadIL.MarkSequencePoint(doc8, 399, 1, 399, 100)
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("RefTyp"))
-Typ = GetType(TypeTok).GetField("RefTyp").FieldType
-ReadIL.Emit(OpCodes.Stloc, 73)
-ReadIL.MarkSequencePoint(doc8, 401, 1, 401, 100)
-ReadIL.Emit(OpCodes.Ldloc, 73)
-Typ = GetType(System.Type)
-ReadIL.Emit(OpCodes.Ldnull)
-Dim fa86 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru86 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont86 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru86)
-ReadIL.Emit(OpCodes.Br, fa86)
-ReadIL.MarkLabel(tru86)
-ReadIL.MarkSequencePoint(doc8, 402, 1, 402, 100)
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-ReadIL.MarkSequencePoint(doc8, 403, 1, 403, 100)
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-ReadIL.MarkSequencePoint(doc8, 404, 1, 404, 100)
-Dim typ103(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("Value"))
-Typ = GetType(TypeTok).GetField("Value").FieldType
-ReDim Preserve typ103(UBound(typ103) + 1)
-typ103(UBound(typ103)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ103))
-Typ = GetType(Loader).GetMethod("LoadClass", typ103).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 72)
-ReadIL.MarkSequencePoint(doc8, 405, 1, 405, 100)
-ReadIL.Emit(OpCodes.Br, cont86)
-ReadIL.MarkLabel(fa86)
-ReadIL.MarkSequencePoint(doc8, 406, 1, 406, 100)
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-ReadIL.MarkSequencePoint(doc8, 407, 1, 407, 100)
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-ReadIL.MarkSequencePoint(doc8, 408, 1, 408, 100)
-Dim typ104(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 73)
-Typ = GetType(System.Type)
-ReDim Preserve typ104(UBound(typ104) + 1)
-typ104(UBound(typ104)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("ProcessType", typ104))
-Typ = GetType(Loader).GetMethod("ProcessType", typ104).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 72)
-ReadIL.MarkSequencePoint(doc8, 409, 1, 409, 100)
-ReadIL.Emit(OpCodes.Br, cont86)
-ReadIL.MarkLabel(cont86)
-ReadIL.MarkSequencePoint(doc8, 411, 1, 411, 100)
-Dim typ105(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 70)
-Typ = GetType(Ident)
-ReadIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
-Typ = GetType(Ident).GetField("Value").FieldType
-ReDim Preserve typ105(UBound(typ105) + 1)
-typ105(UBound(typ105)) = Typ
-ReadIL.Emit(OpCodes.Ldloc, 72)
-Typ = GetType(System.Type)
-ReDim Preserve typ105(UBound(typ105) + 1)
-typ105(UBound(typ105)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(ILEmitter).GetMethod("DeclVar", typ105))
-Typ = GetType(ILEmitter).GetMethod("DeclVar", typ105).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 412, 1, 412, 100)
-ReadIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("LocInd"))
-Typ = GetType(ILEmitter).GetField("LocInd").FieldType
-ReadIL.Emit(OpCodes.Ldc_I4, CInt(1))
-Typ = GetType(System.Int32)
-ReadIL.Emit(OpCodes.Add)
-ReadIL.Emit(OpCodes.Stsfld, GetType(ILEmitter).GetField("LocInd"))
-ReadIL.MarkSequencePoint(doc8, 413, 1, 413, 100)
-Dim typ106(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 70)
-Typ = GetType(Ident)
-ReadIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
-Typ = GetType(Ident).GetField("Value").FieldType
-ReDim Preserve typ106(UBound(typ106) + 1)
-typ106(UBound(typ106)) = Typ
-ReadIL.Emit(OpCodes.Ldc_I4, 1)
-Typ = GetType(System.Boolean)
-ReDim Preserve typ106(UBound(typ106) + 1)
-typ106(UBound(typ106)) = Typ
-ReadIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("LocInd"))
-Typ = GetType(ILEmitter).GetField("LocInd").FieldType
-ReDim Preserve typ106(UBound(typ106) + 1)
-typ106(UBound(typ106)) = Typ
-ReadIL.Emit(OpCodes.Ldloc, 72)
-Typ = GetType(System.Type)
-ReDim Preserve typ106(UBound(typ106) + 1)
-typ106(UBound(typ106)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ106))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ106).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 415, 1, 415, 100)
-ReadIL.Emit(OpCodes.Br, label0)
-ReadIL.MarkSequencePoint(doc8, 416, 1, 416, 100)
-ReadIL.Emit(OpCodes.Br, cont85)
-ReadIL.MarkLabel(fa85)
-ReadIL.Emit(OpCodes.Br, cont85)
-ReadIL.MarkLabel(cont85)
-ReadIL.MarkSequencePoint(doc8, 418, 1, 418, 100)
-ReadIL.Emit(OpCodes.Ldtoken, GetType(VarAsgnStmt))
-Dim typ107 As Type() = {GetType(System.RuntimeTypeHandle)}
-ReadIL.Emit(OpCodes.Call, GetType(System.Type).GetMethod("GetTypeFromHandle", typ107))
-Typ = GetType(System.Type).GetMethod("GetTypeFromHandle", typ107).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 0)
-ReadIL.MarkSequencePoint(doc8, 419, 1, 419, 100)
-Dim typ108(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 0)
-Typ = GetType(System.Type)
-Typ03 = Typ
-ReadIL.Emit(OpCodes.Ldarg, 1)
-Typ = GetType(Stmt)
-ReadIL.Emit(OpCodes.Box,Typ)
-Typ = GetType(System.Object)
-ReDim Preserve typ108(UBound(typ108) + 1)
-typ108(UBound(typ108)) = Typ
-ReadIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("IsInstanceOfType", typ108))
-Typ = Typ03.GetMethod("IsInstanceOfType", typ108).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 1)
-ReadIL.MarkSequencePoint(doc8, 421, 1, 421, 100)
-ReadIL.Emit(OpCodes.Ldloc, 1)
-Typ = GetType(System.Boolean)
-ReadIL.Emit(OpCodes.Ldc_I4, 1)
-Typ = GetType(System.Boolean)
-Dim fa87 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru87 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont87 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru87)
-ReadIL.Emit(OpCodes.Br, fa87)
-ReadIL.MarkLabel(tru87)
-ReadIL.MarkSequencePoint(doc8, 422, 1, 422, 100)
-Dim locbldr168 As LocalBuilder = ReadIL.DeclareLocal(GetType(VarAsgnStmt))
-locbldr168.SetLocalSymInfo("curva")
-ReadIL.Emit(OpCodes.Ldarg, 1)
-Typ = GetType(Stmt)
-ReadIL.Emit(OpCodes.Stloc, 75)
-ReadIL.MarkSequencePoint(doc8, 423, 1, 423, 100)
-ReadIL.Emit(OpCodes.Ldloc, 75)
-Typ = GetType(VarAsgnStmt)
-ReadIL.Emit(OpCodes.Ldfld, GetType(VarAsgnStmt).GetField("VarName"))
-Typ = GetType(VarAsgnStmt).GetField("VarName").FieldType
-ReadIL.Emit(OpCodes.Stloc, 70)
-ReadIL.MarkSequencePoint(doc8, 425, 1, 425, 100)
-ReadIL.Emit(OpCodes.Ldloc, 75)
-Typ = GetType(VarAsgnStmt)
-ReadIL.Emit(OpCodes.Ldfld, GetType(VarAsgnStmt).GetField("VarTyp"))
-Typ = GetType(VarAsgnStmt).GetField("VarTyp").FieldType
-ReadIL.Emit(OpCodes.Stloc, 71)
-ReadIL.MarkSequencePoint(doc8, 426, 1, 426, 100)
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("RefTyp"))
-Typ = GetType(TypeTok).GetField("RefTyp").FieldType
-ReadIL.Emit(OpCodes.Stloc, 73)
-ReadIL.MarkSequencePoint(doc8, 428, 1, 428, 100)
-ReadIL.Emit(OpCodes.Ldloc, 73)
-Typ = GetType(System.Type)
-ReadIL.Emit(OpCodes.Ldnull)
-Dim fa88 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim tru88 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-Dim cont88 As System.Reflection.Emit.Label = ReadIL.DefineLabel()
-ReadIL.Emit(OpCodes.Beq, tru88)
-ReadIL.Emit(OpCodes.Br, fa88)
-ReadIL.MarkLabel(tru88)
-ReadIL.MarkSequencePoint(doc8, 429, 1, 429, 100)
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-ReadIL.MarkSequencePoint(doc8, 430, 1, 430, 100)
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-ReadIL.MarkSequencePoint(doc8, 431, 1, 431, 100)
-Dim typ109(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("Value"))
-Typ = GetType(TypeTok).GetField("Value").FieldType
-ReDim Preserve typ109(UBound(typ109) + 1)
-typ109(UBound(typ109)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("LoadClass", typ109))
-Typ = GetType(Loader).GetMethod("LoadClass", typ109).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 72)
-ReadIL.MarkSequencePoint(doc8, 432, 1, 432, 100)
-ReadIL.Emit(OpCodes.Br, cont88)
-ReadIL.MarkLabel(fa88)
-ReadIL.MarkSequencePoint(doc8, 433, 1, 433, 100)
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsArray"))
-Typ = GetType(TypeTok).GetField("IsArray").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeArr"))
-ReadIL.MarkSequencePoint(doc8, 434, 1, 434, 100)
-ReadIL.Emit(OpCodes.Ldloc, 71)
-Typ = GetType(TypeTok)
-ReadIL.Emit(OpCodes.Ldfld, GetType(TypeTok).GetField("IsByRef"))
-Typ = GetType(TypeTok).GetField("IsByRef").FieldType
-ReadIL.Emit(OpCodes.Stsfld, GetType(Loader).GetField("MakeRef"))
-ReadIL.MarkSequencePoint(doc8, 435, 1, 435, 100)
-Dim typ110(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 73)
-Typ = GetType(System.Type)
-ReDim Preserve typ110(UBound(typ110) + 1)
-typ110(UBound(typ110)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(Loader).GetMethod("ProcessType", typ110))
-Typ = GetType(Loader).GetMethod("ProcessType", typ110).ReturnType
-ReadIL.Emit(OpCodes.Stloc, 72)
-ReadIL.MarkSequencePoint(doc8, 436, 1, 436, 100)
-ReadIL.Emit(OpCodes.Br, cont88)
-ReadIL.MarkLabel(cont88)
-ReadIL.MarkSequencePoint(doc8, 438, 1, 438, 100)
-Dim typ111(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 70)
-Typ = GetType(Ident)
-ReadIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
-Typ = GetType(Ident).GetField("Value").FieldType
-ReDim Preserve typ111(UBound(typ111) + 1)
-typ111(UBound(typ111)) = Typ
-ReadIL.Emit(OpCodes.Ldloc, 72)
-Typ = GetType(System.Type)
-ReDim Preserve typ111(UBound(typ111) + 1)
-typ111(UBound(typ111)) = Typ
-ReadIL.Emit(OpCodes.Call, GetType(ILEmitter).GetMethod("DeclVar", typ111))
-Typ = GetType(ILEmitter).GetMethod("DeclVar", typ111).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 439, 1, 439, 100)
-ReadIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("LocInd"))
-Typ = GetType(ILEmitter).GetField("LocInd").FieldType
-ReadIL.Emit(OpCodes.Ldc_I4, CInt(1))
-Typ = GetType(System.Int32)
-ReadIL.Emit(OpCodes.Add)
-ReadIL.Emit(OpCodes.Stsfld, GetType(ILEmitter).GetField("LocInd"))
-ReadIL.MarkSequencePoint(doc8, 440, 1, 440, 100)
-Dim typ112(-1) As Type
-ReadIL.Emit(OpCodes.Ldloc, 70)
-Typ = GetType(Ident)
-ReadIL.Emit(OpCodes.Ldfld, GetType(Ident).GetField("Value"))
-Typ = GetType(Ident).GetField("Value").FieldType
-ReDim Preserve typ112(UBound(typ112) + 1)
-typ112(UBound(typ112)) = Typ
-ReadIL.Emit(OpCodes.Ldc_I4, 1)
-Typ = GetType(System.Boolean)
-ReDim Preserve typ112(UBound(typ112) + 1)
-typ112(UBound(typ112)) = Typ
-ReadIL.Emit(OpCodes.Ldsfld, GetType(ILEmitter).GetField("LocInd"))
-Typ = GetType(ILEmitter).GetField("LocInd").FieldType
-ReDim Preserve typ112(UBound(typ112) + 1)
-typ112(UBound(typ112)) = Typ
-ReadIL.Emit(OpCodes.Ldloc, 72)
-Typ = GetType(System.Type)
-ReDim Preserve typ112(UBound(typ112) + 1)
-typ112(UBound(typ112)) = Typ
-ReadIL.Emit(OpCodes.Call, asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ112))
-Typ = asm.GetType("dylan.NET.Tokenizer.CodeGen.SymTable").GetMethod("AddVar", typ112).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-ReadIL.Emit(OpCodes.Pop)
-End If
-ReadIL.MarkSequencePoint(doc8, 442, 1, 442, 100)
-ReadIL.Emit(OpCodes.Br, label0)
-ReadIL.MarkSequencePoint(doc8, 443, 1, 443, 100)
-ReadIL.Emit(OpCodes.Br, cont87)
-ReadIL.MarkLabel(fa87)
-ReadIL.Emit(OpCodes.Br, cont87)
-ReadIL.MarkLabel(cont87)
-ReadIL.MarkSequencePoint(doc8, 446, 1, 446, 100)
+ReadIL.MarkSequencePoint(doc8, 454, 1, 454, 100)
 ReadIL.MarkLabel(label0)
-ReadIL.MarkSequencePoint(doc8, 448, 1, 448, 100)
+ReadIL.MarkSequencePoint(doc8, 456, 1, 456, 100)
 ReadIL.Emit(OpCodes.Ret)
 StmtReader.CreateType()
 End Sub
@@ -6645,14 +6566,14 @@ Dim EmitMSILIL As ILGenerator = EmitMSIL.GetILGenerator()
 Dim EmitMSILparam01 As ParameterBuilder = EmitMSIL.DefineParameter(1, ParameterAttributes.None, "stmts")
 Dim EmitMSILparam02 As ParameterBuilder = EmitMSIL.DefineParameter(2, ParameterAttributes.None, "fpath")
 EmitMSILIL.MarkSequencePoint(doc9, 5, 1, 5, 100)
-Dim locbldr169 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(System.Int32))
-locbldr169.SetLocalSymInfo("i")
+Dim locbldr177 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(System.Int32))
+locbldr177.SetLocalSymInfo("i")
 EmitMSILIL.Emit(OpCodes.Ldc_I4, CInt(-1))
 Typ = GetType(System.Int32)
 EmitMSILIL.Emit(OpCodes.Stloc, 0)
 EmitMSILIL.MarkSequencePoint(doc9, 6, 1, 6, 100)
-Dim locbldr170 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(System.Int32))
-locbldr170.SetLocalSymInfo("len")
+Dim locbldr178 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(System.Int32))
+locbldr178.SetLocalSymInfo("len")
 EmitMSILIL.Emit(OpCodes.Ldarg, 1)
 Typ = GetType(StmtSet)
 EmitMSILIL.Emit(OpCodes.Ldfld, GetType(StmtSet).GetField("Stmts"))
@@ -6665,16 +6586,16 @@ Typ = GetType(System.Int32)
 EmitMSILIL.Emit(OpCodes.Sub)
 EmitMSILIL.Emit(OpCodes.Stloc, 1)
 EmitMSILIL.MarkSequencePoint(doc9, 7, 1, 7, 100)
-Dim locbldr171 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(Stmt))
-locbldr171.SetLocalSymInfo("stm")
+Dim locbldr179 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(Stmt))
+locbldr179.SetLocalSymInfo("stm")
 EmitMSILIL.Emit(OpCodes.Ldnull)
 EmitMSILIL.Emit(OpCodes.Stloc, 2)
 EmitMSILIL.MarkSequencePoint(doc9, 8, 1, 8, 100)
-Dim locbldr172 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(System.Type))
-locbldr172.SetLocalSymInfo("typ")
+Dim locbldr180 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(System.Type))
+locbldr180.SetLocalSymInfo("typ")
 EmitMSILIL.MarkSequencePoint(doc9, 9, 1, 9, 100)
-Dim locbldr173 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(System.Boolean))
-locbldr173.SetLocalSymInfo("b")
+Dim locbldr181 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(System.Boolean))
+locbldr181.SetLocalSymInfo("b")
 EmitMSILIL.MarkSequencePoint(doc9, 11, 1, 11, 100)
 Dim label0 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
 EmitMSILIL.MarkSequencePoint(doc9, 12, 1, 12, 100)
@@ -6726,18 +6647,18 @@ EmitMSILIL.Emit(OpCodes.Ldloc, 4)
 Typ = GetType(System.Boolean)
 EmitMSILIL.Emit(OpCodes.Ldc_I4, 1)
 Typ = GetType(System.Boolean)
-Dim fa89 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
-Dim tru89 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
-Dim cont89 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
-EmitMSILIL.Emit(OpCodes.Beq, tru89)
-EmitMSILIL.Emit(OpCodes.Br, fa89)
-EmitMSILIL.MarkLabel(tru89)
+Dim fa84 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
+Dim tru84 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
+Dim cont84 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
+EmitMSILIL.Emit(OpCodes.Beq, tru84)
+EmitMSILIL.Emit(OpCodes.Br, fa84)
+EmitMSILIL.MarkLabel(tru84)
 EmitMSILIL.MarkSequencePoint(doc9, 23, 1, 23, 100)
-EmitMSILIL.Emit(OpCodes.Br, cont89)
-EmitMSILIL.MarkLabel(fa89)
+EmitMSILIL.Emit(OpCodes.Br, cont84)
+EmitMSILIL.MarkLabel(fa84)
 EmitMSILIL.MarkSequencePoint(doc9, 25, 1, 25, 100)
-Dim locbldr174 As LocalBuilder = EmitMSILIL.DeclareLocal(asm.GetType("dylan.NET.Tokenizer.CodeGen.StmtReader"))
-locbldr174.SetLocalSymInfo("sr")
+Dim locbldr182 As LocalBuilder = EmitMSILIL.DeclareLocal(asm.GetType("dylan.NET.Tokenizer.CodeGen.StmtReader"))
+locbldr182.SetLocalSymInfo("sr")
 EmitMSILIL.Emit(OpCodes.Newobj, asm.GetType("dylan.NET.Tokenizer.CodeGen.StmtReader").GetConstructor(Type.EmptyTypes))
 EmitMSILIL.Emit(OpCodes.Stloc, 5)
 EmitMSILIL.MarkSequencePoint(doc9, 26, 1, 26, 100)
@@ -6761,22 +6682,22 @@ Else
 EmitMSILIL.Emit(OpCodes.Pop)
 End If
 EmitMSILIL.MarkSequencePoint(doc9, 28, 1, 28, 100)
-EmitMSILIL.Emit(OpCodes.Br, cont89)
-EmitMSILIL.MarkLabel(cont89)
+EmitMSILIL.Emit(OpCodes.Br, cont84)
+EmitMSILIL.MarkLabel(cont84)
 EmitMSILIL.MarkSequencePoint(doc9, 30, 1, 30, 100)
 EmitMSILIL.Emit(OpCodes.Ldloc, 0)
 Typ = GetType(System.Int32)
 EmitMSILIL.Emit(OpCodes.Ldloc, 1)
 Typ = GetType(System.Int32)
-Dim fa90 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
-Dim tru90 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
-Dim cont90 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
-EmitMSILIL.Emit(OpCodes.Beq, tru90)
-EmitMSILIL.Emit(OpCodes.Br, fa90)
-EmitMSILIL.MarkLabel(tru90)
+Dim fa85 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
+Dim tru85 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
+Dim cont85 As System.Reflection.Emit.Label = EmitMSILIL.DefineLabel()
+EmitMSILIL.Emit(OpCodes.Beq, tru85)
+EmitMSILIL.Emit(OpCodes.Br, fa85)
+EmitMSILIL.MarkLabel(tru85)
 EmitMSILIL.MarkSequencePoint(doc9, 32, 1, 32, 100)
-Dim locbldr175 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(AssemblyBuilder))
-locbldr175.SetLocalSymInfo("ab")
+Dim locbldr183 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(AssemblyBuilder))
+locbldr183.SetLocalSymInfo("ab")
 EmitMSILIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("AsmB"))
 Typ = GetType(AsmFactory).GetField("AsmB").FieldType
 EmitMSILIL.Emit(OpCodes.Stloc, 6)
@@ -6799,13 +6720,13 @@ End If
 EmitMSILIL.MarkSequencePoint(doc9, 35, 1, 35, 100)
 EmitMSILIL.Emit(OpCodes.Br, label1)
 EmitMSILIL.MarkSequencePoint(doc9, 36, 1, 36, 100)
-EmitMSILIL.Emit(OpCodes.Br, cont90)
-EmitMSILIL.MarkLabel(fa90)
+EmitMSILIL.Emit(OpCodes.Br, cont85)
+EmitMSILIL.MarkLabel(fa85)
 EmitMSILIL.MarkSequencePoint(doc9, 37, 1, 37, 100)
 EmitMSILIL.Emit(OpCodes.Br, label0)
 EmitMSILIL.MarkSequencePoint(doc9, 38, 1, 38, 100)
-EmitMSILIL.Emit(OpCodes.Br, cont90)
-EmitMSILIL.MarkLabel(cont90)
+EmitMSILIL.Emit(OpCodes.Br, cont85)
+EmitMSILIL.MarkLabel(cont85)
 EmitMSILIL.MarkSequencePoint(doc9, 40, 1, 40, 100)
 EmitMSILIL.MarkLabel(label1)
 EmitMSILIL.MarkSequencePoint(doc9, 42, 1, 42, 100)
