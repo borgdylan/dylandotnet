@@ -451,10 +451,10 @@ end if
 comp = String::Compare(tok::Value, "off")
 
 if comp = 0 then
-var oftk as OffTok = new OffTok()
-oftk::Line = tok::Line
-oftk::Value = tok::Value
-tok = oftk
+var offtk as OffTok = new OffTok()
+offtk::Line = tok::Line
+offtk::Value = tok::Value
+tok = offtk
 goto fin
 end if
 
@@ -548,6 +548,15 @@ tok = astk
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "of")
+
+if comp = 0 then
+var oftk as OfTok = new OfTok()
+oftk::Line = tok::Line
+oftk::Value = tok::Value
+tok = oftk
+goto fin
+end if
 
 comp = String::Compare(tok::Value, "private")
 
@@ -752,6 +761,16 @@ tok = sbytok
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "byte")
+
+if comp = 0 then
+var byttok as ByteTok = new ByteTok()
+byttok::Line = tok::Line
+byttok::Value = tok::Value
+byttok::RefTyp = gettype System.Byte
+tok = byttok
+goto fin
+end if
 
 comp = String::Compare(tok::Value, "short")
 
@@ -761,6 +780,17 @@ shtok::Line = tok::Line
 shtok::Value = tok::Value
 shtok::RefTyp = gettype short
 tok = shtok
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "ushort")
+
+if comp = 0 then
+var ushtok as UShortTok = new UShortTok()
+ushtok::Line = tok::Line
+ushtok::Value = tok::Value
+ushtok::RefTyp = gettype UInt16
+tok = ushtok
 goto fin
 end if
 
@@ -774,6 +804,18 @@ lngtok::RefTyp = gettype long
 tok = lngtok
 goto fin
 end if
+
+comp = String::Compare(tok::Value, "ulong")
+
+if comp = 0 then
+var ulngtok as ULongTok = new ULongTok()
+ulngtok::Line = tok::Line
+ulngtok::Value = tok::Value
+ulngtok::RefTyp = gettype UInt64
+tok = ulngtok
+goto fin
+end if
+
 
 comp = String::Compare(tok::Value, "object")
 
@@ -1051,6 +1093,32 @@ orflg = orflg or compb
 compb = Utils.ParseUtils::LikeOP(tok::Value, "-#*")
 orflg = orflg or compb
 tmpstr = tok::Value
+compb = tmpstr::EndsWith("ul")
+orflg = orflg and compb
+
+if orflg = true then
+var ullit as ULongLiteral = new ULongLiteral()
+ullit::Line = tok::Line
+tmpstr = tok::Value
+tmpchrarr = newarr char 1
+tmpchrarr[0] = 'l'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+tmpchrarr[0] = 'u'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+ullit::Value = tmpstr
+ullit::NumVal = Convert::ToUInt64(ullit::Value)
+tok = ullit
+goto fin
+end if
+
+
+compb = Utils.ParseUtils::LikeOP(tok::Value, "#*")
+orflg = compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "+#*")
+orflg = orflg or compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "-#*")
+orflg = orflg or compb
+tmpstr = tok::Value
 compb = tmpstr::EndsWith("l")
 orflg = orflg and compb
 
@@ -1074,6 +1142,31 @@ orflg = orflg or compb
 compb = Utils.ParseUtils::LikeOP(tok::Value, "-#*")
 orflg = orflg or compb
 tmpstr = tok::Value
+compb = tmpstr::EndsWith("us")
+orflg = orflg and compb
+
+if orflg = true then
+var uslit as UShortLiteral = new UShortLiteral()
+uslit::Line = tok::Line
+tmpstr = tok::Value
+tmpchrarr = newarr char 1
+tmpchrarr[0] = 's'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+tmpchrarr[0] = 'u'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+uslit::Value = tmpstr
+uslit::NumVal = Convert::ToUInt16(uslit::Value)
+tok = uslit
+goto fin
+end if
+
+compb = Utils.ParseUtils::LikeOP(tok::Value, "#*")
+orflg = compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "+#*")
+orflg = orflg or compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "-#*")
+orflg = orflg or compb
+tmpstr = tok::Value
 compb = tmpstr::EndsWith("s")
 orflg = orflg and compb
 
@@ -1087,6 +1180,31 @@ tmpstr = tmpstr::TrimEnd(tmpchrarr)
 slit::Value = tmpstr
 slit::NumVal = $short$slit::Value
 tok = slit
+goto fin
+end if
+
+compb = Utils.ParseUtils::LikeOP(tok::Value, "#*")
+orflg = compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "+#*")
+orflg = orflg or compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "-#*")
+orflg = orflg or compb
+tmpstr = tok::Value
+compb = tmpstr::EndsWith("ub")
+orflg = orflg and compb
+
+if orflg = true then
+var ublit as ByteLiteral = new ByteLiteral()
+ublit::Line = tok::Line
+tmpstr = tok::Value
+tmpchrarr = newarr char 1
+tmpchrarr[0] = 'b'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+tmpchrarr[0] = 'u'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+ublit::Value = tmpstr
+ublit::NumVal = Convert::ToByte(ublit::Value)
+tok = ublit
 goto fin
 end if
 

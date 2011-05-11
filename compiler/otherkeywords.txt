@@ -38,6 +38,10 @@ class public auto ansi OnTok extends SwitchTok
 
 end class
 
+class public auto ansi OfTok extends Token
+
+end class
+
 class public auto ansi OffTok extends SwitchTok
 
 end class

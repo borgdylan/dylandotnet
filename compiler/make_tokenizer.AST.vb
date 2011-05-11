@@ -3589,6 +3589,11 @@ Dim OnTok As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens" & "."
 OnTok.CreateType()
 End Sub
 
+Sub OfTok()
+Dim OfTok As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens" & "." & "OfTok", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.Token"))
+OfTok.CreateType()
+End Sub
+
 Sub OffTok()
 Dim OffTok As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens" & "." & "OffTok", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.SwitchTok"))
 OffTok.CreateType()
@@ -6818,6 +6823,7 @@ DependTok()
 StdasmTok()
 SwitchTok()
 OnTok()
+OfTok()
 OffTok()
 SingTok()
 DebugTok()
