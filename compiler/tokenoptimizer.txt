@@ -1257,6 +1257,8 @@ compb = Utils.ParseUtils::LikeOP(tok::Value, "[a-zA-Z]*")
 orflg = compb
 compb = Utils.ParseUtils::LikeOP(tok::Value, "_*[a-zA-Z]*")
 orflg = orflg or compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "::*[a-zA-Z]*")
+orflg = orflg or compb
 
 if orflg = true then
 var idt as Ident = new Ident()

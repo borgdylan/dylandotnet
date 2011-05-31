@@ -45,6 +45,10 @@ end if
 
 place cont
 
+if len = 0 then
+Line = toktoadd::Line
+end if
+
 destarr[len] = toktoadd
 
 Tokens = destarr

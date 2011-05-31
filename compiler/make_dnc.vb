@@ -102,7 +102,7 @@ mainIL.Emit(OpCodes.Pop)
 End If
 mainIL.MarkSequencePoint(doc2, 6, 1, 6, 100)
 Dim typ2(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "                           and Novell Mono v. 2.6.7/v. 2.8/v. 2.10")
+mainIL.Emit(OpCodes.Ldstr, "                           and Xamarin Mono v. 2.6.7/v. 2.8/v. 2.10")
 Typ = GetType(System.String)
 ReDim Preserve typ2(UBound(typ2) + 1)
 typ2(UBound(typ2)) = Typ
@@ -115,7 +115,7 @@ mainIL.Emit(OpCodes.Pop)
 End If
 mainIL.MarkSequencePoint(doc2, 7, 1, 7, 100)
 Dim typ3(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "This compiler is FREE software under the GNU GPLv2 license.")
+mainIL.Emit(OpCodes.Ldstr, "This compiler is FREE and OPEN SOURCE software under the GNU GPLv2 license.")
 Typ = GetType(System.String)
 ReDim Preserve typ3(UBound(typ3) + 1)
 typ3(UBound(typ3)) = Typ
@@ -169,8 +169,6 @@ End If
 mainIL.MarkSequencePoint(doc2, 11, 1, 11, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(fa0)
-mainIL.MarkSequencePoint(doc2, 13, 1, 13, 100)
-Dim try0 As System.Reflection.Emit.Label = mainIL.BeginExceptionBlock()
 mainIL.MarkSequencePoint(doc2, 15, 1, 15, 100)
 Dim locbldr0 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
 locbldr0.SetLocalSymInfo("p")
@@ -325,43 +323,6 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 mainIL.Emit(OpCodes.Pop)
 End If
-mainIL.MarkSequencePoint(doc2, 84, 1, 84, 100)
-Dim locbldr6 As LocalBuilder = mainIL.DeclareLocal(GetType(Exception))
-locbldr6.SetLocalSymInfo("ex")
-mainIL.BeginCatchBlock(GetType(Exception))
-mainIL.Emit(OpCodes.Stloc,6)
-mainIL.MarkSequencePoint(doc2, 86, 1, 86, 100)
-Dim locbldr7 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
-locbldr7.SetLocalSymInfo("exstr")
-mainIL.Emit(OpCodes.Ldloc, 6)
-Typ = GetType(Exception)
-Typ03 = Typ
-mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("ToString", Type.EmptyTypes))
-Typ = Typ03.GetMethod("ToString", Type.EmptyTypes).ReturnType
-mainIL.Emit(OpCodes.Stloc, 7)
-mainIL.MarkSequencePoint(doc2, 87, 1, 87, 100)
-Dim typ16(-1) As Type
-mainIL.Emit(OpCodes.Ldloc, 7)
-Typ = GetType(System.String)
-ReDim Preserve typ16(UBound(typ16) + 1)
-typ16(UBound(typ16)) = Typ
-mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ16))
-Typ = GetType(Console).GetMethod("WriteLine", typ16).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-mainIL.Emit(OpCodes.Pop)
-End If
-mainIL.MarkSequencePoint(doc2, 88, 1, 88, 100)
-mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("ReadKey", Type.EmptyTypes))
-Typ = GetType(Console).GetMethod("ReadKey", Type.EmptyTypes).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-mainIL.Emit(OpCodes.Pop)
-End If
-mainIL.MarkSequencePoint(doc2, 90, 1, 90, 100)
-mainIL.EndExceptionBlock()
 mainIL.MarkSequencePoint(doc2, 92, 1, 92, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(cont0)

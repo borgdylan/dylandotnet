@@ -89,7 +89,9 @@ if b2 = true then
 lvl--
 if lvl = 0 then
 d = false
+if ep2::Tokens[l] <> 0 then
 mct::AddParam(ep2)
+end if
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
 i--
@@ -119,7 +121,9 @@ b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
 if lvl = 1 then
 d = false
+if ep2::Tokens[l] <> 0 then
 mct::AddParam(ep2)
+end if
 ep2 = new Expr()
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
@@ -152,7 +156,197 @@ end if
 place cont2
 
 mct::Name = mn
+mct::Line = mn::Line
 stm::Tokens[j] = mct
+
+return stm
+
+end method
+
+method public Expr procIdentArrayAccess(var stm as Expr, var i as integer)
+
+var idt as Ident = null
+var ep2 as Expr = new Expr()
+var lvl as integer = 1
+var d as boolean = true
+var j as integer = 0
+
+i--
+idt = stm::Tokens[i]
+j = i
+i++
+
+var tok2 as Token = stm::Tokens[i]
+var typ2 as System.Type
+var b2 as boolean
+var len as integer = stm::Tokens[l] - 1
+
+stm::RemToken(i)
+len = stm::Tokens[l] - 1
+i--
+
+label loop2
+label cont2
+label fin
+
+place loop2
+
+//get parameters
+i++
+
+tok2 = stm::Tokens[i]
+typ2 = gettype RSParen
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+lvl--
+if lvl = 0 then
+d = false
+//mct::AddParam(ep2)
+stm::RemToken(i)
+len = stm::Tokens[l] - 1
+i--
+goto cont2
+else
+d = true
+goto fin
+end if
+goto fin
+end if
+
+tok2 = stm::Tokens[i]
+typ2 = gettype LSParen
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+lvl++
+d = true
+goto fin
+end if
+
+tok2 = stm::Tokens[i]
+typ2 = gettype Comma
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+else
+d = true
+goto fin
+end if
+
+place fin
+
+if d = true then
+ep2::AddToken(stm::Tokens[i])
+stm::RemToken(i)
+len = stm::Tokens[l] - 1
+i--
+end if
+
+if i = len then
+goto cont2
+else
+goto loop2
+end if
+
+place cont2
+
+idt::ArrLoc = ep2
+idt::IsArr = true
+stm::Tokens[j] = idt
+
+return stm
+
+end method
+
+method public Expr procMtdArrayAccess(var stm as Expr, var i as integer)
+
+var mtd as MethodCallTok = null
+var idt as MethodNameTok = null
+var ep2 as Expr = new Expr()
+var lvl as integer = 1
+var d as boolean = true
+var j as integer = 0
+
+i--
+mtd = stm::Tokens[i]
+idt = mtd::Name
+j = i
+i++
+
+var tok2 as Token = stm::Tokens[i]
+var typ2 as System.Type
+var b2 as boolean
+var len as integer = stm::Tokens[l] - 1
+
+stm::RemToken(i)
+len = stm::Tokens[l] - 1
+i--
+
+label loop2
+label cont2
+label fin
+
+place loop2
+
+//get parameters
+i++
+
+tok2 = stm::Tokens[i]
+typ2 = gettype RSParen
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+lvl--
+if lvl = 0 then
+d = false
+//mct::AddParam(ep2)
+stm::RemToken(i)
+len = stm::Tokens[l] - 1
+i--
+goto cont2
+else
+d = true
+goto fin
+end if
+goto fin
+end if
+
+tok2 = stm::Tokens[i]
+typ2 = gettype LSParen
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+lvl++
+d = true
+goto fin
+end if
+
+tok2 = stm::Tokens[i]
+typ2 = gettype Comma
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+else
+d = true
+goto fin
+end if
+
+place fin
+
+if d = true then
+ep2::AddToken(stm::Tokens[i])
+stm::RemToken(i)
+len = stm::Tokens[l] - 1
+i--
+end if
+
+if i = len then
+goto cont2
+else
+goto loop2
+end if
+
+place cont2
+
+idt::ArrLoc = ep2
+idt::IsArr = true
+mtd::Name = idt
+stm::Tokens[j] = mtd
 
 return stm
 
@@ -163,6 +357,7 @@ method public Expr Optimize(var exp as Expr)
 var len as integer = exp::Tokens[l] - 1
 var i as integer = -1
 var j as integer = -1
+var identtrnoff as boolean = false
 
 label loop
 label cont
@@ -342,6 +537,7 @@ b = typ::IsInstanceOfType($object$tok)
 if b = true then
 if ParserFlags::IdentFlag = true then
 ParserFlags::IdentFlag = false
+ParserFlags::MetCallFlag = true
 exp = procMethodCall(exp, i)
 i--
 len = exp::Tokens[l] - 1
@@ -371,12 +567,55 @@ end if
 place cont2
 
 end if
+
+goto fin
+end if
+
+//if i > j then
+//ParserFlags::IdentFlag = false
+//end if
+
+//-------------------------------------------------------------------------------------
+typ = gettype LSParen
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+if ParserFlags::IdentFlag = true then
+ParserFlags::IdentFlag = false
+exp = procIdentArrayAccess(exp, i)
+i--
+len = exp::Tokens[l] - 1
+
+var aidt as Ident = exp::Tokens[i]
+var arriloc as Expr = aidt::ArrLoc
+arriloc = Optimize(arriloc)
+
+else
+
+if ParserFlags::MetCallFlag = true then
+ParserFlags::MetCallFlag = false
+exp = procMtdArrayAccess(exp, i)
+i--
+len = exp::Tokens[l] - 1
+
+var amtd as MethodCallTok = exp::Tokens[i]
+var amtdn as MethodNameTok = amtd::Name
+arriloc = amtdn::ArrLoc
+arriloc = Optimize(arriloc)
+
+end if
+
+end if
 goto fin
 end if
 
 if i > j then
+ParserFlags::MetCallFlag = false
 ParserFlags::IdentFlag = false
 end if
+
+//-------------------------------------------------------------------------------------
+
 
 end if
 

@@ -6696,40 +6696,64 @@ EmitMSILIL.Emit(OpCodes.Beq, tru85)
 EmitMSILIL.Emit(OpCodes.Br, fa85)
 EmitMSILIL.MarkLabel(tru85)
 EmitMSILIL.MarkSequencePoint(doc9, 32, 1, 32, 100)
+Dim typ4(-1) As Type
+EmitMSILIL.Emit(OpCodes.Ldstr, "Writing Assembly to disk...")
+Typ = GetType(System.String)
+ReDim Preserve typ4(UBound(typ4) + 1)
+typ4(UBound(typ4)) = Typ
+EmitMSILIL.Emit(OpCodes.Call, GetType(Console).GetMethod("WriteLine", typ4))
+Typ = GetType(Console).GetMethod("WriteLine", typ4).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+EmitMSILIL.Emit(OpCodes.Pop)
+End If
+EmitMSILIL.MarkSequencePoint(doc9, 33, 1, 33, 100)
 Dim locbldr183 As LocalBuilder = EmitMSILIL.DeclareLocal(GetType(AssemblyBuilder))
 locbldr183.SetLocalSymInfo("ab")
 EmitMSILIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("AsmB"))
 Typ = GetType(AsmFactory).GetField("AsmB").FieldType
 EmitMSILIL.Emit(OpCodes.Stloc, 6)
-EmitMSILIL.MarkSequencePoint(doc9, 33, 1, 33, 100)
-Dim typ4(-1) As Type
+EmitMSILIL.MarkSequencePoint(doc9, 34, 1, 34, 100)
 EmitMSILIL.Emit(OpCodes.Ldloc, 6)
 Typ = GetType(AssemblyBuilder)
 Typ03 = Typ
-EmitMSILIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("AsmFile"))
-Typ = GetType(AsmFactory).GetField("AsmFile").FieldType
-ReDim Preserve typ4(UBound(typ4) + 1)
-typ4(UBound(typ4)) = Typ
-EmitMSILIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Save", typ4))
-Typ = Typ03.GetMethod("Save", typ4).ReturnType
+EmitMSILIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("DefineVersionInfoResource", Type.EmptyTypes))
+Typ = Typ03.GetMethod("DefineVersionInfoResource", Type.EmptyTypes).ReturnType
 If Typ.ToString() = GetType(System.Void).ToString() Then
 
 Else
 EmitMSILIL.Emit(OpCodes.Pop)
 End If
 EmitMSILIL.MarkSequencePoint(doc9, 35, 1, 35, 100)
-EmitMSILIL.Emit(OpCodes.Br, label1)
-EmitMSILIL.MarkSequencePoint(doc9, 36, 1, 36, 100)
-EmitMSILIL.Emit(OpCodes.Br, cont85)
-EmitMSILIL.MarkLabel(fa85)
+Dim typ6(-1) As Type
+EmitMSILIL.Emit(OpCodes.Ldloc, 6)
+Typ = GetType(AssemblyBuilder)
+Typ03 = Typ
+EmitMSILIL.Emit(OpCodes.Ldsfld, GetType(AsmFactory).GetField("AsmFile"))
+Typ = GetType(AsmFactory).GetField("AsmFile").FieldType
+ReDim Preserve typ6(UBound(typ6) + 1)
+typ6(UBound(typ6)) = Typ
+EmitMSILIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Save", typ6))
+Typ = Typ03.GetMethod("Save", typ6).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+EmitMSILIL.Emit(OpCodes.Pop)
+End If
 EmitMSILIL.MarkSequencePoint(doc9, 37, 1, 37, 100)
-EmitMSILIL.Emit(OpCodes.Br, label0)
+EmitMSILIL.Emit(OpCodes.Br, label1)
 EmitMSILIL.MarkSequencePoint(doc9, 38, 1, 38, 100)
 EmitMSILIL.Emit(OpCodes.Br, cont85)
-EmitMSILIL.MarkLabel(cont85)
+EmitMSILIL.MarkLabel(fa85)
+EmitMSILIL.MarkSequencePoint(doc9, 39, 1, 39, 100)
+EmitMSILIL.Emit(OpCodes.Br, label0)
 EmitMSILIL.MarkSequencePoint(doc9, 40, 1, 40, 100)
-EmitMSILIL.MarkLabel(label1)
+EmitMSILIL.Emit(OpCodes.Br, cont85)
+EmitMSILIL.MarkLabel(cont85)
 EmitMSILIL.MarkSequencePoint(doc9, 42, 1, 42, 100)
+EmitMSILIL.MarkLabel(label1)
+EmitMSILIL.MarkSequencePoint(doc9, 44, 1, 44, 100)
 EmitMSILIL.Emit(OpCodes.Ret)
 CodeGenerator.CreateType()
 End Sub

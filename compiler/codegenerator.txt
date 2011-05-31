@@ -29,7 +29,9 @@ end if
 
 if i = len then
 
+Console::WriteLine("Writing Assembly to disk...")
 var ab as AssemblyBuilder = AsmFactory::AsmB
+ab::DefineVersionInfoResource()
 ab::Save(AsmFactory::AsmFile)
 
 goto cont

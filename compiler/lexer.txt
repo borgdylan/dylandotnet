@@ -13,6 +13,7 @@ var andflg as boolean = false
 var orflg as boolean = false
 var buf as string = ""
 var curline as integer = 0
+var curstmtlen as integer = -1
 
 //var len as integer = fs::get_Length()
 var n as integer = 0
@@ -63,7 +64,12 @@ curstmt = new Stmt()
 curstmt::Line = curline
 curln = new Line()
 curstmt = curln::Analyze(curstmt, buf)
+curstmtlen = curstmt::Tokens[l]
+
+if curstmtlen <> 0 then
 stmts::AddStmt(curstmt)
+end if
+
 buf = ""
 crflag = false
 lfflag = false
@@ -79,7 +85,12 @@ curstmt = new Stmt()
 curstmt::Line = curline
 curln = new Line()
 curstmt = curln::Analyze(curstmt, buf)
+curstmtlen = curstmt::Tokens[l]
+
+if curstmtlen <> 0 then
 stmts::AddStmt(curstmt)
+end if
+
 goto cont
 else
 goto loop

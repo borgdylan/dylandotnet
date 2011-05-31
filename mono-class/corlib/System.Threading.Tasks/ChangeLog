@@ -1,0 +1,158 @@
+2011-01-04  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	Use proper pattern for executing synchronous Task
+
+2010-12-17  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	Backport ParallelFx changes from master in System.Threading.Tasks
+
+2010-08-27  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	Move the predicate call under launched.TrySet protection in Task's
+	ContinueWithCore
+
+	Sometimes the predicate was also called multiple time generating
+	exception that weren't caught by the general Task handler and thus
+	swallowed by the runtime causing Thread shutdown and ultimately
+	deadlocks.
+
+2010-08-27  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	Change the way continuation delegates are stored and processed in
+	Task. Fix random the random hangs.
+
+2010-08-24  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	Use Interlocked.Read (long) call directly in CyclicDeque.
+
+	Since the call is also implemented as a simple long load operation
+	in the runtime when on x86-64 there is no need to do the
+	differentiation in managed code.
+
+2010-08-18  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	Fix cancellation tracking and reporting in Task.
+
+2010-08-17  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	Avoid waiting in an endless loop in ThreadWorker.
+
+	In some rare case where a ThreadWorker have taken more than one
+	item (and thus there are items to steal) another ThreadWorker that
+	hadn't seen this extra work would go to sleep indefinitely and
+	cause deadlock if the first Task executed was depending on another
+	Task to be launched.
+
+2010-08-13  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	Move NET_4_0 define checks at the right position under the licence
+	text
+
+2010-08-03  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	Use kernel-event in ThreadWorker and Scheduler to sync new arrival
+	of work to do.
+
+	Instead of shutting down the thread when there is no more work to
+	do, each ThreadWorker will now block on an EventWaitHandler and be
+	awoken later by Scheduler.
+
+2010-07-07  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* Parallel.cs: Fix Parallel.Invoke to use all data supplied in
+	ParallelOptions
+	* ParallelOptions.cs: Use CancellationToken.None for initialization
+
+2010-04-15  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* Future.cs:
+	* Task.cs:
+	* TaskCanceledException.cs:
+	* TaskContinuationOptions.cs:
+	* TaskCreationOptions.cs:
+	* TaskFactory.cs:
+	* TaskScheduler.cs:
+	* TaskStatus.cs: Add BOOTSTRAP_NET_4_0 define
+
+2010-03-02  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* Task.cs: If we add a continuation when the Task is already finished
+	forces its schedule as a Task instead of executing on the calling thread.
+	* TaskFactory.cs: Add ContinueWhenAny implementation when returning Task
+
+2010-02-24 Rodrigo Kumpera  <rkumpera@novell.com>
+
+	* TaskContinuationOptions.cs: Use RC values.
+
+	* TaskCreationOptions.cs: Ditto.
+
+2010-02-23  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* Task.cs: Fix for continuation processing not happening
+	in case of Faulted or Canceled.
+
+2010-02-02  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* Task.cs: Fix autocomplete mistake (s/Exception/exception/).
+	Let continuation processing happens at the right moment when
+	task has child.
+
+2010-02-02  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* Future.cs:
+	* Parallel.cs:
+	* ParallelLoopState.cs:
+	* Task.cs:
+	* TaskCompletionSource.cs:
+	* TaskContinuationOptions.cs:
+	* TaskCreationOptions.cs:
+	* TaskFactory.cs:
+	* TaskScheduler.cs:
+	* UnobservedTaskExceptionEventArgs.cs: Port to .NET 4 beta 2 API
+	* SimpleConcurrentBag.cs: Add a simpler implementation of ConcurrentBag
+	for use with parallel loops as ConcurrentBag was moved to System
+
+2009-08-19  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* Task.cs: Refactor Wait methods.
+
+2009-08-11  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* Future.cs: Add static to Factory property
+
+2009-08-11  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* Task.cs: Make WaitAny uses general continuation
+	framework.
+
+2009-08-11  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* TaskFactory.cs: Fix methods signature.
+
+2009-08-05  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* Future.cs: Fix for Future, when using TaskCompletionSource
+	don't try to run Wait before returning value
+
+2009-07-31  Jérémie Laval  <jeremie.laval@gmail.com>
+
+        * Task.cs:
+        * Future.cs:
+        * TaskFactory.cs:
+        * TaskCanceledException.cs:
+        * TaskSchedulerException.cs:
+        * Internal/SchedulerProxy.cs: Make System.Threading.Tasks API fully 4.0 b1 compliant.
+
+	* TaskCompletionSource.cs: Add TaskCompletionSource class
+
+2009-07-27  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* Future.cs:
+	* Task.cs:
+	* TaskCanceledException.cs:
+	* TaskContinuationOptions.cs:
+	* TaskCreationOptions.cs:
+	* TaskFactory.cs:
+	* TaskScheduler.cs:
+	* TaskSchedulerException.cs:
+	* TaskStatus.cs: Added ParallelFx files for System.Threading.Tasks namespace

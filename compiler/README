@@ -1,0 +1,34 @@
+LIBRARIES - LISTS AND LICENSES - FOR BOTH DYLAN.NET(SOURCE INCLUDED) AND MONO LIBRARIES(SOURCES FROM www.mono-project.com) PRESENT AS SOURCE AND/OR BINARY
+
+This software ie. the dylan.NET compiler and all the libraries whose dylan.NET sources are present here are all under the GNU GPLv2 as written in the COPYING file. All .dll libraries that are not built by the dylan.NET compilation process are from the Mono Project and are  under the MIT/X11 license as explained in the mono sources and in the mono-class directory in these sources.
+If you are reading this from a tarball, you will not find the mono library sources. Go to launchpad.net/dylandotnet and check out the full code repository and look in the the mono-class directory for the sources.
+
+List of compiled libraries(GNU GPL v2):
+dnr.dll
+tokenizer.AST.dll
+tokenizer.Lexer.dll
+tokenizer.Parser.dll
+tokenizer.CodeGen.dll
+dnc.exe
+dnu.dll(sources in a higher directory)
+
+List of Mono libraries required to build dylan.NET(MIT/X11):
+Microsoft.VisualBasic.dll
+mscorlib.dll
+System.Configuration.dll
+System.dll
+System.Core.dll
+System.Data.dll
+System.DataSetExtensions.dll
+System.Xml.dll
+System.Xml.Linq.dll
+
+Not all of the latter are actually required to build the system but all of them are included here in the sources to facilitate further additions that use them by someone other than me and to help programmers wanting to use dylan.NET with the core set of libraries. These were originally obtained from a  monocharge tarball and their license and sources is enclosed in the mono-class directory.
+
+COMPILING DYLAN.NET
+
+The compiler and the tokenizer libraries will soon be compilable under linux with DFSG compliant tools. A system that uses autotools by GNU is being constructed to help everyone compile the system as well as package it for the wanted linux distro. A directory with pre-made debian packaging info wwill be given to help make the packages. One can also specify different dh_make files or use cdbs instead. A PPA for ubuntu named ppa:borgdylan/ppa contains stable builds of dylandotnet ready for testing. If anyone wants to make packages for other systems may contact me on borgdylan@hotmail.com to tell me(one can make packages and not tell me...it is in your freedoms but telling me brings me joy) and then make the packaging. I shall maintain the packaging for debian and ubuntu. Any help is welcome with packaging,compiling,testing and even writing dylan.NET.
+
+RE/DISTRIBUTING DYLAN.NET
+
+The sources are present on launchpad.net/dylandotnet and are there for all to get at no fee. All may modify and distribute them according to the license that covers the dylan.NET code written for the compiler i.e. according to the GPL version 2. The Mono libraries however are under the MIT/X11. All the licenses contained in the repositories are to be redistributed with the code. If you make changes to the compiler, add yourself as one of the authors in the AUTHORS file and add any libraries included that you write in the lists above and also mention the license you chose for them. Include this license if it is not already present. This is required for legal purposes. This system is open source and free i.e. no money is needed to buy it and so all distributers are implored to keeep it free for everyone to enjoy for the times to come.

@@ -1,0 +1,80 @@
+2010-12-17  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	Backport ParallelFx changes from master in
+	System.Linq.Parallel.QueryNodes
+
+2010-08-26  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	[PLinq] Add Cancellation checks even deeper. Introduce merge
+	token.
+
+	Merge token are simply the combined cancellation source of user
+	(i.e. token supplied with PLinq operator WithCancellation) and
+	internal tokens (supplied with WithImplementerToken).
+
+2010-08-26  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	[PLinq] Implement SelectMany ordered mode
+
+2010-08-26  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	[PLinq] Include Cancellation checks deeper in the pipeline
+	processing
+
+2010-08-24  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	[PLinq] Implement GroupBy operator
+
+2010-08-24  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	[PLinq] Turn Wrap into an extension method
+
+2010-08-24  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	[PLinq] Really add QueryJoinNode
+
+2010-08-20  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	[PLinq] Add implementation of Take/TakeWhile operators (including
+	corresponding query node and unit tests)
+
+2010-08-19  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	[PLinq] Replace calls to ToArray by ToList in query nodes to avoid
+	the unnecessary copying and double array creation
+
+2010-08-18  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	[PLinq] Reflect directory hierarchy change on namespace names
+
+2010-08-17  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	[PLinq] Move NET_4_0 define check under licence text
+
+2010-04-15  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* QueryBaseNode.cs:
+	* QueryCastNode.cs:
+	* QueryChildNode.cs:
+	* QueryConcatNode.cs:
+	* QueryDefaultEmptyNode.cs:
+	* QueryGroupByNode.cs:
+	* QueryMuxNode.cs:
+	* QueryOptionNode.cs:
+	* QueryOrderByNode.cs:
+	* QueryOrderGuardNode.cs:
+	* QueryOrderedStreamNode.cs:
+	* QueryReverseNode.cs:
+	* QuerySelectManyNode.cs:
+	* QuerySelectNode.cs:
+	* QuerySetNode.cs:
+	* QueryStartNode.cs:
+	* QueryStreamNode.cs:
+	* QueryWhereNode.cs:
+	* QueryZipNode.cs:
+	* WrapHelper.cs: Initial check-in of PLinq
+
+2010-04-15  Jérémie Laval  <jeremie.laval@gmail.com>
+
+	* SetInclusion.cs: Initial check-in of PLinq (enum)
+

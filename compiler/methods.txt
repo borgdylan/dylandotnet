@@ -57,6 +57,10 @@ end if
 
 place cont
 
+if len = 0 then
+me::Line = paramtoadd::Line
+end if
+
 destarr[len] = paramtoadd
 
 Params = destarr

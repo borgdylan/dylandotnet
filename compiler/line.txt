@@ -41,6 +41,22 @@ orflg = InStr or InChar
 
 if orflg = false then
 
+//----------------------------------
+comp = String::Compare(cc, ":")
+if comp = 0 then
+comp = String::Compare(PrevChar, Utils.Constants::quot)
+if comp = 0 then
+if orflg = false then
+ob = true
+valinref|scla = false
+valinref|sca = true
+goto fin
+end if
+end if
+end if
+//----------------------------------
+
+
 comp = String::Compare(cc, "(")
 
 if comp = 0 then

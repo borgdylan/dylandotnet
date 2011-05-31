@@ -16,6 +16,7 @@ field public static boolean isChanged
 field public static boolean ProcessTTokOnly
 field public static boolean DurConvFlag
 field public static boolean IdentFlag
+field public static boolean MetCallFlag
 
 method public static void ctor0()
 IfFlag = false
@@ -33,6 +34,7 @@ OrdOp = ""
 isChanged = false
 DurConvFlag = false
 IdentFlag = false
+MetCallFlag = false
 ProcessTTokOnly = false
 end method
 
