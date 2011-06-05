@@ -4,7 +4,7 @@
   <description asmv2:publisher="Dylan Borg" asmv2:product="dylan.NET compiler" asmv2:supportUrl="http://launchpad.net/dylandotnet/" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="dnc" version="11.2.3.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="dnc" version="11.2.7.1" language="neutral" processorArchitecture="msil" />
     <commandLine file="dnc.exe" parameters="" />
   </entryPoint>
   <co.v1:useManifestForTrust xmlns="urn:schemas-microsoft-com:asm.v1" />

@@ -1,9 +1,9 @@
-LIBRARIES - LISTS AND LICENSES - FOR BOTH DYLAN.NET(SOURCE INCLUDED) AND MONO LIBRARIES(SOURCES FROM www.mono-project.com) PRESENT AS SOURCE AND/OR BINARY
+LIBRARIES - LISTS AND LICENSES - FOR BOTH DYLAN.NET(SOURCE INCLUDED) AND MONO LIBRARIES(SOURCES FROM www.mono-project.com OR GIT/BZR repositories) PRESENT AS SOURCE AND/OR BINARY
 
-This software ie. the dylan.NET compiler and all the libraries whose dylan.NET sources are present here are all under the GNU GPLv2 as written in the COPYING file. All .dll libraries that are not built by the dylan.NET compilation process are from the Mono Project and are  under the MIT/X11 license as explained in the mono sources and in the mono-class directory in these sources.
+This software ie. the dylan.NET compiler and all the libraries whose dylan.NET sources are present here are all under the GNU LGPLv3 as written in the COPYING file. All .dll libraries that are not built by the dylan.NET compilation process are from the Mono Project and are  under the MIT/X11 license as explained in the mono sources and in the mono-class directory in these sources.
 If you are reading this from a tarball, you will not find the mono library sources. Go to launchpad.net/dylandotnet and check out the full code repository and look in the the mono-class directory for the sources.
 
-List of compiled libraries(GNU GPL v2):
+List of compiled libraries(GNU LGPL v3):
 dnr.dll
 tokenizer.AST.dll
 tokenizer.Lexer.dll
@@ -31,4 +31,4 @@ The compiler and the tokenizer libraries will soon be compilable under linux wit
 
 RE/DISTRIBUTING DYLAN.NET
 
-The sources are present on launchpad.net/dylandotnet and are there for all to get at no fee. All may modify and distribute them according to the license that covers the dylan.NET code written for the compiler i.e. according to the GPL version 2. The Mono libraries however are under the MIT/X11. All the licenses contained in the repositories are to be redistributed with the code. If you make changes to the compiler, add yourself as one of the authors in the AUTHORS file and add any libraries included that you write in the lists above and also mention the license you chose for them. Include this license if it is not already present. This is required for legal purposes. This system is open source and free i.e. no money is needed to buy it and so all distributers are implored to keeep it free for everyone to enjoy for the times to come.
+The sources are present on launchpad.net/dylandotnet and are there for all to get at no fee. All may modify and distribute them according to the license that covers the dylan.NET code written for the compiler i.e. according to the LGPL version 3. The Mono libraries however are under the MIT/X11. All the licenses contained in the repositories are to be redistributed with the code. If you make changes to the compiler, add yourself as one of the authors in the AUTHORS file and add any libraries included that you write in the lists above and also mention the license you chose for them. Include this license if it is not already present. This is required for legal purposes. This system is open source and free i.e. no money is needed to buy it and so all distributers are requested to keep it free for everyone to enjoy for the times to come.
