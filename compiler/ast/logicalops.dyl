@@ -15,6 +15,8 @@ class public auto ansi AndOp extends LogicalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 7
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -24,6 +26,8 @@ class public auto ansi OrOp extends LogicalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 5
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -33,6 +37,8 @@ class public auto ansi NandOp extends LogicalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 7
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -42,6 +48,8 @@ class public auto ansi NorOp extends LogicalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 5
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -51,6 +59,8 @@ class public auto ansi XorOp extends LogicalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 6
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -60,6 +70,8 @@ class public auto ansi NotOp extends LogicalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 13
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -69,6 +81,8 @@ class public auto ansi NegOp extends LogicalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 13
+me::LChild = null
+me::RChild = null
 end method
 
 end class

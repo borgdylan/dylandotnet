@@ -9,10 +9,14 @@
 class public auto ansi Op extends Token
 
 field public integer PrecNo
+field public Token LChild
+field public Token RChild
 
 method public void ctor0()
 me::ctor()
 PrecNo = 0
+LChild = null
+RChild = null
 end method
 
 end class
@@ -23,6 +27,8 @@ class public auto ansi AssignOp extends Op
 method public void ctor0()
 me::ctor()
 me::PrecNo = 1
+me::LChild = null
+me::RChild = null
 end method
 
 end class

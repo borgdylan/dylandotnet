@@ -64,6 +64,8 @@ namespace dylan.NET.Tokenizer.CodeGen
 #include E:\Code\dylannet\compiler\codegen\ctoritem.dyl
 #include E:\Code\dylannet\compiler\codegen\symtable.dyl
 #include E:\Code\dylannet\compiler\codegen\helpers.dyl
+#include E:\Code\dylannet\compiler\codegen\opstack.dyl
+#include E:\Code\dylannet\compiler\codegen\eval.dyl
 #include E:\Code\dylannet\compiler\codegen\stmtreader.dyl
 #include E:\Code\dylannet\compiler\codegen\codegenerator.dyl
 end namespace

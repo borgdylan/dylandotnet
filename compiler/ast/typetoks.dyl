@@ -106,49 +106,289 @@ end class
 
 class public auto ansi StringTok extends TypeTok
 
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype string
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype string
+me::OrdOp = ""
+end method
+
 end class
 
 class public auto ansi IntegerTok extends TypeTok
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype integer
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype integer
+me::OrdOp = ""
+end method
 
 end class
 
 class public auto ansi DoubleTok extends TypeTok
 
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype double
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype double
+me::OrdOp = ""
+end method
+
 end class
 
 class public auto ansi BooleanTok extends TypeTok
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype boolean
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype boolean
+me::OrdOp = ""
+end method
 
 end class
 
 class public auto ansi CharTok extends TypeTok
 
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype char
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype char
+me::OrdOp = ""
+end method
+
 end class
 
 class public auto ansi DecimalTok extends TypeTok
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype decimal
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype decimal
+me::OrdOp = ""
+end method
 
 end class
 
 class public auto ansi LongTok extends TypeTok
 
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype long
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype long
+me::OrdOp = ""
+end method
+
 end class
 
 class public auto ansi SByteTok extends TypeTok
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype sbyte
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype sbyte
+me::OrdOp = ""
+end method
 
 end class
 
 class public auto ansi ShortTok extends TypeTok
 
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype short
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype short
+me::OrdOp = ""
+end method
+
 end class
 
 class public auto ansi SingleTok extends TypeTok
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype single
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype single
+me::OrdOp = ""
+end method
 
 end class
 
 class public auto ansi ObjectTok extends TypeTok
 
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype object
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype object
+me::OrdOp = ""
+end method
+
 end class
 
 class public auto ansi VoidTok extends TypeTok
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype void
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype void
+me::OrdOp = ""
+end method
 
 end class
 
@@ -158,20 +398,120 @@ end class
 
 class public auto ansi UIntegerTok extends TypeTok
 
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype UInt32
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype UInt32
+me::OrdOp = ""
+end method
+
 end class
 
 class public auto ansi ULongTok extends TypeTok
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype UInt64
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype UInt64
+me::OrdOp = ""
+end method
 
 end class
 
 class public auto ansi ByteTok extends TypeTok
 
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype Byte
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype Byte
+me::OrdOp = ""
+end method
+
 end class
 
 class public auto ansi UShortTok extends TypeTok
 
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype UInt16
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype UInt16
+me::OrdOp = ""
+end method
+
 end class
 
 class public auto ansi IntPtrTok extends TypeTok
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype IntPtr
+me::OrdOp = ""
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+me::IsArray = false
+me::IsByRef = false
+me::RefTyp = gettype IntPtr
+me::OrdOp = ""
+end method
 
 end class

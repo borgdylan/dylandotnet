@@ -15,6 +15,8 @@ class public auto ansi AddOp extends AritOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 11
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -25,6 +27,8 @@ class public auto ansi MulOp extends AritOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 12
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -35,6 +39,8 @@ class public auto ansi SubOp extends AritOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 11
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -46,6 +52,8 @@ class public auto ansi DivOp extends AritOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 12
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -56,6 +64,8 @@ class public auto ansi ModOp extends AritOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 12
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -66,6 +76,8 @@ class public auto ansi IncOp extends AritOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 13
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -76,6 +88,8 @@ class public auto ansi DecOp extends AritOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 13
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -86,6 +100,8 @@ class public auto ansi ShlOp extends AritOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 10
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -96,6 +112,8 @@ class public auto ansi ShrOp extends AritOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 10
+me::LChild = null
+me::RChild = null
 end method
 
 end class

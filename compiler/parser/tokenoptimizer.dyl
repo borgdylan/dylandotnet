@@ -136,6 +136,16 @@ tok = eqop
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "like")
+
+if comp = 0 then
+var lkeop as LikeOp = new LikeOp()
+lkeop::Line = tok::Line
+lkeop::Value = tok::Value
+tok = lkeop
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "!")
 
 if comp = 0 then
@@ -164,6 +174,16 @@ var neqop as NeqOp = new NeqOp()
 neqop::Line = tok::Line
 neqop::Value = tok::Value
 tok = neqop
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "!like")
+
+if comp = 0 then
+var nlkeop as NLikeOp = new NLikeOp()
+nlkeop::Line = tok::Line
+nlkeop::Value = tok::Value
+tok = nlkeop
 goto fin
 end if
 

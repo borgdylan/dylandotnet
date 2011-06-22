@@ -398,6 +398,7 @@ end if
 var vnam as Ident
 var vtyptok as TypeTok
 var vtyp as System.Type = null
+var eval as Evaluator = null
 //var vreft as System.Type
 
 typ = gettype VarStmt
@@ -454,10 +455,22 @@ vtyp = Helpers::CommitEvalTTok(vtyptok)
 ILEmitter::DeclVar(vnam::Value, vtyp)
 ILEmitter::LocInd = ILEmitter::LocInd + 1
 SymTable::AddVar(vnam::Value, true, ILEmitter::LocInd, vtyp)
+eval = new Evaluator()
+eval::Evaluate(curva::RExpr)
 
 goto fin
 end if
 
+typ = gettype AssignStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var asgnstm as AssignStmt = stm
+eval = new Evaluator()
+eval::Evaluate(asgnstm::RExp)
+
+goto fin
+end if
 
 place fin
 

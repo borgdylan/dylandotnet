@@ -17,9 +17,24 @@ class public auto ansi EqOp extends ConditionalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 8
+me::LChild = null
+me::RChild = null
 end method
 
 end class
+
+// like
+class public auto ansi LikeOp extends ConditionalOp
+
+method public void ctor0()
+me::ctor()
+me::PrecNo = 8
+me::LChild = null
+me::RChild = null
+end method
+
+end class
+
 
 // <>
 // !=
@@ -28,9 +43,24 @@ class public auto ansi NeqOp extends ConditionalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 8
+me::LChild = null
+me::RChild = null
 end method
 
 end class
+
+// !like
+class public auto ansi NLikeOp extends ConditionalOp
+
+method public void ctor0()
+me::ctor()
+me::PrecNo = 8
+me::LChild = null
+me::RChild = null
+end method
+
+end class
+
 
 // >
 class public auto ansi GtOp extends ConditionalOp
@@ -38,6 +68,8 @@ class public auto ansi GtOp extends ConditionalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 9
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -48,6 +80,8 @@ class public auto ansi LtOp extends ConditionalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 9
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -58,6 +92,8 @@ class public auto ansi GeOp extends ConditionalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 9
+me::LChild = null
+me::RChild = null
 end method
 
 end class
@@ -68,6 +104,8 @@ class public auto ansi LeOp extends ConditionalOp
 method public void ctor0()
 me::ctor()
 me::PrecNo = 9
+me::LChild = null
+me::RChild = null
 end method
 
 end class
