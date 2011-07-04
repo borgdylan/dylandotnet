@@ -562,9 +562,9 @@ typ = gettype LParen
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
+b = ParserFlags::MetCallFlag or ParserFlags::StringFlag or ParserFlags::IdentFlag
 if ParserFlags::IdentFlag = true then
 ParserFlags::IdentFlag = false
-b = ParserFlags::MetCallFlag or ParserFlags::StringFlag
 if b = true then
 mcbool = true
 end if
