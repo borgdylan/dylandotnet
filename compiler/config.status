@@ -442,7 +442,7 @@ ac_pwd='/media/MOBEXTHDD/Code/dylannet/compiler'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/bin/mkdir -p'
-AWK='mawk'
+AWK='gawk'
 test -n "$AWK" || AWK=awk
 # The default lists apply if the user does not specify any file.
 ac_need_defaults=:
@@ -596,6 +596,7 @@ cat >>"$tmp/subs1.awk" <<\_ACAWK &&
 S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
 S["DYLANDOTNET"]="/usr/bin/dylandotnet"
+S["MONO"]="/usr/bin/mono"
 S["PKG_CONFIG"]="/usr/bin/pkg-config"
 S["MAINT"]="#"
 S["MAINTAINER_MODE_FALSE"]=""
@@ -605,7 +606,7 @@ S["am__tar"]="${AMTAR} chof - \"$$tardir\""
 S["AMTAR"]="${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run tar"
 S["am__leading_dot"]="."
 S["SET_MAKE"]=""
-S["AWK"]="mawk"
+S["AWK"]="gawk"
 S["mkdir_p"]="/bin/mkdir -p"
 S["MKDIR_P"]="/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"

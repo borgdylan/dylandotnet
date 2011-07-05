@@ -15,13 +15,18 @@ if test "x$PKG_CONFIG" = "xno"; then
 	AC_MSG_ERROR([You need to install pkg-config])
 fi
 
+dnl mono
+AC_PATH_PROG(MONO, mono, no)
+if test "x$MONO" = "xno"; then
+	AC_MSG_ERROR([You need to install the mono runtime])
+fi
+
 dnl dylandotnet
 AC_PATH_PROG(DYLANDOTNET, dylandotnet, no)
 
 if test "x$DYLANDOTNET" = "xno"; then
 	AC_MSG_WARN([dylan.NET compiler is not installed...This build system has one built-in.])
 fi
-
 
 AC_OUTPUT([
 Makefile

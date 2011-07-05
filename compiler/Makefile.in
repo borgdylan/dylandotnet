@@ -84,6 +84,7 @@ LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MKDIR_P = @MKDIR_P@
+MONO = @MONO@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -148,7 +149,7 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = *.txt
+EXTRA_DIST = *.dyl /ast/*.dyl /lexer/*.dyl /parser/*.dyl /codegen/*.dyl
 CLEANFILES = 
 all: all-am
 
@@ -459,11 +460,11 @@ uninstall-am:
 #tokenizer.AST.txt tokenizer.Lexer.txt tokenizer.Parser.txt tokenizer.CodeGen.txt dnc.txt
 
 dylandotnet:
-	mono ./dnc.exe tokenizer.AST.txt
-	mono ./dnc.exe tokenizer.Lexer.txt
-	mono ./dnc.exe tokenizer.Parser.txt
-	mono ./dnc.exe tokenizer.CodeGen.txt
-	mono ./dnc.exe dnc.txt
+	mono ./dnc.exe tokenizer.AST.dyl
+	mono ./dnc.exe tokenizer.Lexer.dyl
+	mono ./dnc.exe tokenizer.Parser.dyl
+	mono ./dnc.exe tokenizer.CodeGen.dyl
+	mono ./dnc.exe dnc.dyl
 
 all: dylandotnet
 

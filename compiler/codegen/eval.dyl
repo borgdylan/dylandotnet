@@ -6,11 +6,12 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Evaluator
+class public auto ansi beforefieldinit Evaluator
 
 field public OpStack Stack
 
 method public void ctor0()
+me::ctor()
 Stack = null
 end method
 
@@ -57,6 +58,11 @@ var typ as System.Type = gettype LParen
 return typ::IsInstanceOfType($object$tok)
 end method
 
+method public boolean isOp(var tok as Token)
+var typ as System.Type = gettype Op
+return typ::IsInstanceOfType($object$tok)
+end method
+
 method public Expr ConvToRPN(var exp as Expr)
 
 Stack = new OpStack()
@@ -83,8 +89,7 @@ i++
 
 tok = exp::Tokens[i]
 
-typ = gettype Op
-orflg = typ::IsInstanceOfType($object$tok)
+orflg = isOp(tok)
 b = isLParen(tok)
 orflg = orflg or b
 typ = gettype RParen
@@ -96,8 +101,7 @@ exp2::AddToken(tok)
 goto fin
 end if
 
-typ = gettype Op
-b = typ::IsInstanceOfType($object$tok)
+b = isOp(tok)
 
 if b = true then
 int1 = Stack::getLength()
@@ -222,9 +226,7 @@ i++
 
 tok = exp::Tokens[i]
 
-
-typ = gettype Op
-b = typ::IsInstanceOfType($object$tok)
+b = isOp(tok)
 
 if b = true then
 if i >= 2 then
@@ -261,6 +263,32 @@ return tokf
 
 end method
 
+method public void ASTEmit(var tok as Token, var emt as boolean)
+
+var isop as boolean = isOp(tok)
+var optok as Op
+var rc as Token
+var lc as Token
+
+if isop = true then
+
+optok = tok
+rc = optok::RChild
+lc = optok::LChild
+if emt = false then
+ASTEmit(lc, false)
+ASTEmit(rc, false)
+else
+ASTEmit(lc, true)
+ASTEmit(rc, true)
+end if
+
+else
+
+end if
+
+end method
+
 method public void Evaluate(var exp as Expr)
 
 var len as integer = exp::Tokens[l]
@@ -276,31 +304,8 @@ end if
 end if
 
 var asttok as Token = ConvToAST(rpnexp)
-
-var i as integer = -1
-len = rpnexp::Tokens[l] - 1
-var tok as Token = null
-var b as boolean = false
-var typ as System.Type = null
-
-label cont
-label loop
-
-if len < 0 then
-goto cont
-end if
-
-place loop
-
-i++
-
-if i = len then
-goto cont
-else
-goto loop
-end if
-
-place cont
+ASTEmit(asttok, false)
+ASTEmit(asttok, true)
 
 end method
 
