@@ -1,0 +1,14 @@
+Source: dylandotnet
+Section: cli-mono
+Priority: optional
+Maintainer: Dylan Borg <borgdylan@hotmail.com>
+Build-Depends: debhelper (>= 7.0.50~), cli-common-dev, devscripts, mono-gmcs, libmono-corlib2.0-cil , mono-devel, mono-runtime, gawk, autotools-dev
+Standards-Version: 3.9.1
+Homepage: http://launchpad.net/dylandotnet
+
+Package: dylandotnet
+Architecture: all
+Depends: ${misc:Depends}, libmono-corlib2.0-cil, mono-devel, libmono-microsoft-visualbasic8.0-cil, cli-common, mono-runtime
+Recommends: mono-utils
+Description: This is the dylan.NET compiler to be run on the Mono framework.
+ This is another compiler for the Mono runtime targeting dylan.NET.

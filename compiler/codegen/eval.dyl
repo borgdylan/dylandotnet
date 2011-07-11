@@ -269,6 +269,11 @@ var isop as boolean = isOp(tok)
 var optok as Op
 var rc as Token
 var lc as Token
+var typ as System.Type
+var b as boolean = false
+var tt as TypeTok
+
+label fin
 
 if isop = true then
 
@@ -284,6 +289,27 @@ ASTEmit(rc, true)
 end if
 
 else
+
+typ = gettype Literal
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+var lit as Literal = tok
+if lit::Conv = false then
+tt = lit::LitTyp
+AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+goto fin
+else
+tt = lit::TTok
+AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+goto fin
+end if
+
+
+end if
+
+
+place fin
 
 end if
 

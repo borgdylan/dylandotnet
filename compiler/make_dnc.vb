@@ -89,7 +89,7 @@ Dim mainIL As ILGenerator = main.GetILGenerator()
 Dim mainparam01 As ParameterBuilder = main.DefineParameter(1, ParameterAttributes.None, "args")
 mainIL.MarkSequencePoint(doc2, 13, 1, 13, 100)
 Dim typ1(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.7.1 Alpha for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
+mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.7.2 Alpha for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
 Typ = GetType(System.String)
 ReDim Preserve typ1(UBound(typ1) + 1)
 typ1(UBound(typ1)) = Typ
@@ -155,7 +155,7 @@ mainIL.Emit(OpCodes.Br, fa0)
 mainIL.MarkLabel(tru0)
 mainIL.MarkSequencePoint(doc2, 18, 1, 18, 100)
 Dim typ5(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "Usage: dnc <path>")
+mainIL.Emit(OpCodes.Ldstr, "Usage: dylandotnet <file-name>")
 Typ = GetType(System.String)
 ReDim Preserve typ5(UBound(typ5) + 1)
 typ5(UBound(typ5)) = Typ
@@ -340,7 +340,7 @@ End Sub
 Sub Main()
 
 asmName = New AssemblyName("dnc")
-asmName.Version = New System.Version(11, 2, 7, 1)
+asmName.Version = New System.Version(11, 2, 7, 2)
 asm  = AppDomain.CurrentDomain.DefineDynamicAssembly(asmName, AssemblyBuilderAccess.Save, CStr("E:\Code\dylannet\compiler\"))
 mdl = asm.DefineDynamicModule(asmName.Name & ".exe" , asmName.Name & ".exe", True)
 resw = mdl.DefineResource("dnc.resources" ,  "Description")
@@ -357,7 +357,7 @@ asm.SetCustomAttribute(daBuilder)
 Module1()
 Dim vaType As Type = GetType(AssemblyFileVersionAttribute)
 Dim vaCtor As ConstructorInfo = vaType.GetConstructor(New Type() { GetType(String) })
-Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.7.1"})
+Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.7.2"})
 asm.SetCustomAttribute(vaBuilder)
 
 Dim paType As Type = GetType(AssemblyProductAttribute)

@@ -149,7 +149,8 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = *.dyl /ast/*.dyl /lexer/*.dyl /parser/*.dyl /codegen/*.dyl
+
+#EXTRA_DIST = *.dyl /ast/*.dyl /lexer/*.dyl /parser/*.dyl /codegen/*.dyl
 CLEANFILES = 
 all: all-am
 
@@ -346,10 +347,8 @@ check-am: all-am
 check: check-am
 all-am: Makefile
 installdirs:
-install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
-uninstall: uninstall-am
 
 install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
@@ -376,9 +375,6 @@ clean: clean-am
 
 clean-am: clean-generic mostlyclean-am
 
-distclean: distclean-am
-	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
-	-rm -f Makefile
 distclean-am: clean-am distclean-generic
 
 dvi: dvi-am
@@ -466,7 +462,51 @@ dylandotnet:
 	mono ./dnc.exe tokenizer.CodeGen.dyl
 	mono ./dnc.exe dnc.dyl
 
-all: dylandotnet
+prodscript:
+	sed -e "s|\@libdir\@|$(libdir)|g"               \
+	-e "s|\@PACKAGE\@|$(PACKAGE)|g" dylandotnet.in > dylandotnet
+
+installman:
+	$(install_sh_PROGRAM) dylandotnet.1 $(DESTDIR)$(mandir)/man1/dylandotnet.1
+
+install: prodscript installman
+	$(install_sh_PROGRAM) dylandotnet $(DESTDIR)$(bindir)/dylandotnet
+	chmod a+x $(DESTDIR)$(bindir)/dylandotnet
+	$(install_sh_PROGRAM) Microsoft.VisualBasic.dll $(DESTDIR)$(libdir)/$(PACKAGE)/Microsoft.VisualBasic.dll
+	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/Microsoft.VisualBasic.dll
+	$(install_sh_PROGRAM) dnu.dll $(DESTDIR)$(libdir)/$(PACKAGE)/dnu.dll
+	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/dnu.dll
+	$(install_sh_PROGRAM) dnr.dll $(DESTDIR)$(libdir)/$(PACKAGE)/dnr.dll
+	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/dnr.dll
+	$(install_sh_PROGRAM) tokenizer.AST.dll $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.AST.dll
+	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.AST.dll
+	$(install_sh_PROGRAM) tokenizer.Lexer.dll $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.Lexer.dll
+	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.Lexer.dll
+	$(install_sh_PROGRAM) tokenizer.Parser.dll $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.Parser.dll
+	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.Parser.dll
+	$(install_sh_PROGRAM) tokenizer.CodeGen.dll $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.CodeGen.dll
+	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.CodeGen.dll
+	$(install_sh_PROGRAM) dnc.exe $(DESTDIR)$(libdir)/$(PACKAGE)/dnc.exe
+	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/dnc.exe
+
+uninstallman:
+	rm $(DESTDIR)$(mandir)/man1/dylandotnet.1
+
+uninstall: uninstallman
+	rm -f $(DESTDIR)$(bindir)/dylandotnet
+	rm -r -f $(DESTDIR)$(libdir)/$(PACKAGE)
+
+distclean:
+	rm -f Makefile
+
+tarball:
+	mkdir -p ./../$(distdir)
+	cp -r * ./../$(distdir)
+	tar -czf ./../$(distdir).tar.gz ./../$(distdir)
+	rm -f -r ./../$(distdir)
+
+all:
+	echo "Hello World"
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

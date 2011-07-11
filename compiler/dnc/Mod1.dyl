@@ -10,12 +10,12 @@ class public auto ansi Module1
 
 method public static void main(var args as string[])
 
-Console::WriteLine("dylan.NET Compiler v. 11.2.7.1 Alpha for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
+Console::WriteLine("dylan.NET Compiler v. 11.2.7.2 Alpha for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
 Console::WriteLine("                           and Xamarin Mono v. 2.6.7/v. 2.8/v. 2.10")
 Console::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 Console::WriteLine("Copyright (C) 2011 Dylan Borg")
 if args[l] < 1 then
-Console::WriteLine("Usage: dnc <path>")
+Console::WriteLine("Usage: dylandotnet <file-name>")
 else
 
 //try

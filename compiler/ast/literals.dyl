@@ -7,12 +7,33 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi Literal extends Token
+
+field public TypeTok LitTyp
+field public boolean Conv
+field public TypeTok TTok
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+LitTyp = null
+Conv = false
+TTok = null
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+LitTyp = null
+Conv = false
+TTok = null
+end method
+
 end class
 
 class public auto ansi StringLiteral extends Literal
 
-field public boolean Conv
-field public TypeTok TTok
 field public string OrdOp
 field public boolean MemberAccessFlg
 field public Token MemberToAccess
@@ -21,8 +42,9 @@ method public void ctor0()
 me::ctor()
 me::Value = ""
 me::Line = 0
-Conv = false
-TTok = new StringTok()
+me::Conv = false
+me::LitTyp = new StringTok()
+me::TTok = null
 OrdOp = ""
 MemberAccessFlg = false
 MemberToAccess = new Token()
@@ -32,8 +54,9 @@ method public void ctor1(var value as string)
 me::ctor()
 me::Value = value
 me::Line = 0
-Conv = false
-TTok = new StringTok()
+me::Conv = false
+me::LitTyp = new StringTok()
+me::TTok = null
 OrdOp = ""
 MemberAccessFlg = false
 MemberToAccess = new Token()
@@ -43,8 +66,6 @@ end class
 
 class public auto ansi CharLiteral extends Literal
 
-field public boolean Conv
-field public TypeTok TTok
 field public char CharVal
 field public string OrdOp
 
@@ -53,8 +74,9 @@ me::ctor()
 me::Value = ""
 me::Line = 0
 CharVal = 'a'
-Conv = false
-TTok = new CharTok()
+me::Conv = false
+me::LitTyp = new CharTok()
+me::TTok = null
 OrdOp = ""
 end method
 
@@ -63,8 +85,9 @@ me::ctor()
 me::Value = value
 me::Line = 0
 CharVal = 'a'
-Conv = false
-TTok = new CharTok()
+me::Conv = false
+me::LitTyp = new CharTok()
+me::TTok = null
 OrdOp = ""
 end method
 
@@ -72,8 +95,6 @@ end class
 
 class public auto ansi BooleanLiteral extends Literal
 
-field public boolean Conv
-field public TypeTok TTok
 field public boolean BoolVal
 field public string OrdOp
 field public boolean DoNot
@@ -83,8 +104,9 @@ me::ctor()
 me::Value = ""
 me::Line = 0
 BoolVal = false
-Conv = false
-TTok = new BooleanTok()
+me::Conv = false
+me::LitTyp = new BooleanTok()
+me::TTok = null
 OrdOp = ""
 DoNot = false
 end method
@@ -94,8 +116,9 @@ me::ctor()
 me::Value = value
 me::Line = 0
 BoolVal = false
-Conv = false
-TTok = new BooleanTok()
+me::Conv = false
+me::LitTyp = new BooleanTok()
+me::TTok = null
 OrdOp = ""
 DoNot = false
 end method
@@ -105,8 +128,6 @@ end class
 
 class public auto ansi NumberLiteral extends Literal
 
-field public boolean Conv
-field public TypeTok TTok
 field public string OrdOp
 field public boolean DoNot
 field public boolean DoNeg
@@ -115,8 +136,9 @@ method public void ctor0()
 me::ctor()
 me::Value = ""
 me::Line = 0
-Conv = false
-TTok = new TypeTok()
+me::Conv = false
+me::LitTyp = null
+me::TTok = null
 OrdOp = ""
 DoNot = false
 DoNeg = false
@@ -126,8 +148,9 @@ method public void ctor1(var value as string)
 me::ctor()
 me::Value = value
 me::Line = 0
-Conv = false
-TTok = new TypeTok()
+me::Conv = false
+me::LitTyp = null
+me::TTok = null
 OrdOp = ""
 DoNot = false
 DoNeg = false
@@ -145,7 +168,8 @@ me::Value = ""
 me::Line = 0
 NumVal = 0i
 me::Conv = false
-me::TTok = new IntegerTok()
+me::LitTyp = new IntegerTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -157,7 +181,8 @@ me::Value = value
 me::Line = 0
 NumVal = 0i
 me::Conv = false
-me::TTok = new IntegerTok()
+me::LitTyp = new IntegerTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -175,7 +200,8 @@ me::Value = ""
 me::Line = 0
 NumVal = 0d
 me::Conv = false
-me::TTok = new DoubleTok()
+me::LitTyp = new DoubleTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -187,7 +213,8 @@ me::Value = value
 me::Line = 0
 NumVal = 0d
 me::Conv = false
-me::TTok = new DoubleTok()
+me::LitTyp = new DoubleTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -205,7 +232,8 @@ me::Value = ""
 me::Line = 0
 NumVal = 0b
 me::Conv = false
-me::TTok = new SByteTok()
+me::LitTyp = new SByteTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -217,7 +245,8 @@ me::Value = value
 me::Line = 0
 NumVal = 0b
 me::Conv = false
-me::TTok = new SByteTok()
+me::LitTyp = new SByteTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -235,7 +264,8 @@ me::Value = ""
 me::Line = 0
 NumVal = 0s
 me::Conv = false
-me::TTok = new ShortTok()
+me::LitTyp = new ShortTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -247,7 +277,8 @@ me::Value = value
 me::Line = 0
 NumVal = 0s
 me::Conv = false
-me::TTok = new ShortTok()
+me::LitTyp = new ShortTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -265,7 +296,8 @@ me::Value = ""
 me::Line = 0
 NumVal = 0l
 me::Conv = false
-me::TTok = new LongTok()
+me::LitTyp = new LongTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -277,7 +309,8 @@ me::Value = value
 me::Line = 0
 NumVal = 0l
 me::Conv = false
-me::TTok = new LongTok()
+me::LitTyp = new LongTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -295,7 +328,8 @@ me::Value = ""
 me::Line = 0
 NumVal = 0f
 me::Conv = false
-me::TTok = new SingleTok()
+me::LitTyp = new SingleTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -307,7 +341,8 @@ me::Value = value
 me::Line = 0
 NumVal = 0f
 me::Conv = false
-me::TTok = new SingleTok()
+me::LitTyp = new SingleTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -325,7 +360,8 @@ me::Value = ""
 me::Line = 0
 NumVal = Convert::ToUInt32(0i)
 me::Conv = false
-me::TTok = new UIntegerTok()
+me::LitTyp = new UIntegerTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -337,7 +373,8 @@ me::Value = value
 me::Line = 0
 NumVal = Convert::ToUInt32(0i)
 me::Conv = false
-me::TTok = new UIntegerTok()
+me::LitTyp = new UIntegerTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -354,7 +391,8 @@ me::Value = ""
 me::Line = 0
 NumVal = Convert::ToByte(0b)
 me::Conv = false
-me::TTok = new ByteTok()
+me::LitTyp = new ByteTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -366,7 +404,8 @@ me::Value = value
 me::Line = 0
 NumVal = Convert::ToByte(0b)
 me::Conv = false
-me::TTok = new ByteTok()
+me::LitTyp = new ByteTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -384,7 +423,8 @@ me::Value = ""
 me::Line = 0
 NumVal = Convert::ToUInt16(0s)
 me::Conv = false
-me::TTok = new UShortTok()
+me::LitTyp = new UShortTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -396,7 +436,8 @@ me::Value = value
 me::Line = 0
 NumVal = Convert::ToUInt16(0s)
 me::Conv = false
-me::TTok = new UShortTok()
+me::LitTyp = new UShortTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -414,7 +455,8 @@ me::Value = ""
 me::Line = 0
 NumVal = Convert::ToUInt64(0l)
 me::Conv = false
-me::TTok = new ULongTok()
+me::LitTyp = new ULongTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -426,7 +468,8 @@ me::Value = value
 me::Line = 0
 NumVal = Convert::ToUInt64(0l)
 me::Conv = false
-me::TTok = new ULongTok()
+me::LitTyp = new ULongTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -444,7 +487,8 @@ me::Value = ""
 me::Line = 0
 NumVal = new IntPtr(0)
 me::Conv = false
-me::TTok = new IntPtrTok()
+me::LitTyp = new IntPtrTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false
@@ -456,7 +500,8 @@ me::Value = value
 me::Line = 0
 NumVal = new IntPtr(0)
 me::Conv = false
-me::TTok = new IntPtrTok()
+me::LitTyp = new IntPtrTok()
+me::TTok = null
 me::OrdOp = ""
 me::DoNot = false
 me::DoNeg = false

@@ -18928,7 +18928,7 @@ End Sub
 Sub Main()
 
 asmName = New AssemblyName("tokenizer.Parser")
-asmName.Version = New System.Version(11, 2, 7, 1)
+asmName.Version = New System.Version(11, 2, 7, 2)
 asm  = AppDomain.CurrentDomain.DefineDynamicAssembly(asmName, AssemblyBuilderAccess.Save, CStr("E:\Code\dylannet\compiler\"))
 mdl = asm.DefineDynamicModule(asmName.Name & ".dll" , asmName.Name & ".dll", True)
 resw = mdl.DefineResource("tokenizer.Parser.resources" ,  "Description")
@@ -18953,7 +18953,7 @@ StmtOptimizer()
 Parser()
 Dim vaType As Type = GetType(AssemblyFileVersionAttribute)
 Dim vaCtor As ConstructorInfo = vaType.GetConstructor(New Type() { GetType(String) })
-Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.7.1"})
+Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.7.2"})
 asm.SetCustomAttribute(vaBuilder)
 
 Dim paType As Type = GetType(AssemblyProductAttribute)

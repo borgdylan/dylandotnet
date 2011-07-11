@@ -352,4 +352,37 @@ NestedCtorLst = destarr
 
 end method
 
+method public static VarItem FindVar(var nam as string)
+
+var len as integer = VarLst[l] - 1
+var i as integer = -1
+var vr as VarItem = null
+var rvr as VarItem = null
+var comp as integer = 0
+
+label cont
+label loop
+
+place loop
+
+i++
+
+vr = VarLst[i]
+comp = String::Compare(nam, vr::Name)
+if comp = 0 then
+rvr = vr
+goto cont
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+return rvr
+end method
+
 end class
