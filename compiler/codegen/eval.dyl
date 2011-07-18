@@ -290,6 +290,26 @@ end if
 
 else
 
+typ = gettype StringLiteral
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+var slit as StringLiteral = tok
+if slit::Conv = false then
+tt = slit::LitTyp
+AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+if slit::MemberAccessFlg = true then
+ASMFactory::ChainFlg = true
+ASTEmit(slit::MemberToAccess, emt)
+end if
+goto fin
+else
+tt = slit::TTok
+AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+goto fin
+end if
+end if
+
 typ = gettype Literal
 b = typ::IsInstanceOfType($object$tok)
 
@@ -304,8 +324,81 @@ tt = lit::TTok
 AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
 goto fin
 end if
+end if
 
+typ = gettype MethodCallTok
+b = typ::IsInstanceOfType($object$tok)
 
+if b = true then
+var mcparenttyp as System.Type
+var mctok as MethodCallTok = tok
+var mntok as MethodNameTok = mctok::Name
+var mnstr as string = ""
+var mnstrarr as string[]
+var mcparams as Expr[]
+var typarr1 as System.Type[] = newarr System.Type 0
+var typarr2 as System.Type[]
+var paramlen as integer
+var i as integer = -1
+var curexpr as Expr
+var rpnparam as Expr
+var astparam as Token
+var mcmetinf as MethodInfo
+
+if mntok::Conv = false then
+mnstr = mntok::Value
+mnstrarr = ParseUtils::StringParser(mnstr, ":")
+
+if AsmFactory::ChainFlg = true then
+AsmFactory::ChainFlg = false
+mcparenttyp = AsmFactory::Type02
+mcparams = mctok::Params
+paramlen = mcparams[l] - 1
+
+label loop
+label cont
+
+place loop
+
+i++
+curexpr = mcparams[i]
+
+if curexpr::Tokens[l] = 1 then
+rpnparam = curexpr
+else
+if curexpr::Tokens[l] >= 3 then
+rpnparam = ConvToRPN(curexpr)
+end if
+end if
+
+astparam = ConvToAST(rpnparam)
+ASTEmit(astparam, emt)
+
+typarr2 = AsmFactory::TypArr
+AsmFactory::TypArr = typarr1
+AsmFactory::AddTyp(AsmFactory::Type02)
+typarr1 = AsmFactory::TypArr
+AsmFactory::TypArr = typarr2
+
+if i = paramlen then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[0], typarr1)
+AsmFactory::Type02 = mcmetinf::get_ReturnType()
+
+else
+end if
+goto fin
+else
+tt = mntok::TTok
+AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+goto fin
+end if
 end if
 
 
