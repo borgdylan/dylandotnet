@@ -1,0 +1,31 @@
+<Type Name="Character" FullName="dylan.NET.Tokenizer.AST.Tokens.Chars.Character">
+  <TypeSignature Language="C#" Value="public class Character : dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Character extends dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+    <AssemblyVersion>11.2.7.2</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a character.</summary>
+    <remarks>All characters in the AST must inherit from this class.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Character ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Cosntructs a new Character.</summary>
+        <remarks>You might prefer using one of the subclasses of this class. This class only is useful for detecting characters in general.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

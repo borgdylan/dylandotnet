@@ -17,7 +17,14 @@ prodscript:
 installman:
 	$(install_sh_PROGRAM) dylandotnet.1 $(DESTDIR)$(mandir)/man1/dylandotnet.1
 
-install: prodscript installman
+installdoc:
+	cp -r ./doc/ast-html ast-html
+	tar -czf ast.tar.gz ast-html
+	$(install_sh_PROGRAM) ast.tar.gz $(DESTDIR)$(docdir)/ast.tar.gz
+	rm -f ast.tar.gz
+	rm -f -r ast-html
+	
+install: prodscript installman installdoc
 	$(install_sh_PROGRAM) dylandotnet $(DESTDIR)$(bindir)/dylandotnet
 	chmod a+x $(DESTDIR)$(bindir)/dylandotnet
 	$(install_sh_PROGRAM) Microsoft.VisualBasic.dll $(DESTDIR)$(libdir)/$(PACKAGE)/Microsoft.VisualBasic.dll
@@ -40,7 +47,10 @@ install: prodscript installman
 uninstallman:
 	rm $(DESTDIR)$(mandir)/man1/dylandotnet.1
 
-uninstall: uninstallman
+uninstalldoc:
+	rm -f -r $(docdir)
+
+uninstall: uninstallman uninstalldoc
 	rm -f $(DESTDIR)$(bindir)/dylandotnet
 	rm -r -f $(DESTDIR)$(libdir)/$(PACKAGE)
 	

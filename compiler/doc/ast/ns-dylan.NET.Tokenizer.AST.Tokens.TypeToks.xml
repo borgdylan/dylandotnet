@@ -1,0 +1,6 @@
+<Namespace Name="dylan.NET.Tokenizer.AST.Tokens.TypeToks">
+  <Docs>
+    <summary>Holds all type token classes.</summary>
+    <remarks>Any further type tokens must be placed in this namespace.</remarks>
+  </Docs>
+</Namespace>

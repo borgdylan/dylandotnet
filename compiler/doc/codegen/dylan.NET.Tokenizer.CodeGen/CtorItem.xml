@@ -1,0 +1,79 @@
+<Type Name="CtorItem" FullName="dylan.NET.Tokenizer.CodeGen.CtorItem">
+  <TypeSignature Language="C#" Value="public class CtorItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi CtorItem extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.CodeGen</AssemblyName>
+    <AssemblyVersion>11.2.7.2</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CtorItem ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CtorItem (Type[] ptyps, System.Reflection.Emit.ConstructorBuilder bld);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class System.Type[] ptyps, class System.Reflection.Emit.ConstructorBuilder bld) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="ptyps" Type="System.Type[]" />
+        <Parameter Name="bld" Type="System.Reflection.Emit.ConstructorBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ptyps">To be added.</param>
+        <param name="bld">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CtorBldr">
+      <MemberSignature Language="C#" Value="public System.Reflection.Emit.ConstructorBuilder CtorBldr;" />
+      <MemberSignature Language="ILAsm" Value=".field public class System.Reflection.Emit.ConstructorBuilder CtorBldr" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Reflection.Emit.ConstructorBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParamTyps">
+      <MemberSignature Language="C#" Value="public Type[] ParamTyps;" />
+      <MemberSignature Language="ILAsm" Value=".field public class System.Type[] ParamTyps" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Type[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

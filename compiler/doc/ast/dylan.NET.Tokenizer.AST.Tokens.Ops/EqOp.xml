@@ -1,0 +1,31 @@
+<Type Name="EqOp" FullName="dylan.NET.Tokenizer.AST.Tokens.Ops.EqOp">
+  <TypeSignature Language="C#" Value="public class EqOp : dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi EqOp extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+    <AssemblyVersion>11.2.7.2</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents an equality '==' operator.</summary>
+    <remarks>Checks if its operands are equal in value.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public EqOp ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new EqOp.</summary>
+        <remarks>Also sets PrecNo accordingly.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

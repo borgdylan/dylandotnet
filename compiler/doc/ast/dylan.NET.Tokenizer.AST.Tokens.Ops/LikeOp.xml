@@ -1,0 +1,31 @@
+<Type Name="LikeOp" FullName="dylan.NET.Tokenizer.AST.Tokens.Ops.LikeOp">
+  <TypeSignature Language="C#" Value="public class LikeOp : dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi LikeOp extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+    <AssemblyVersion>11.2.7.2</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a VB.NET Like 'like' operator.</summary>
+    <remarks>Checks if the string LChild conforms to the pattern string RCHild. The VB.NET runtime is required.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LikeOp ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new LikeOp.</summary>
+        <remarks>Also sets PrecNo accordingly.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

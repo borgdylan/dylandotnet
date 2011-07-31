@@ -1,0 +1,31 @@
+<Type Name="MethodNameTok" FullName="dylan.NET.Tokenizer.AST.Tokens.MethodNameTok">
+  <TypeSignature Language="C#" Value="public class MethodNameTok : dylan.NET.Tokenizer.AST.Tokens.Ident" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi MethodNameTok extends dylan.NET.Tokenizer.AST.Tokens.Ident" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+    <AssemblyVersion>11.2.7.2</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ident</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a method name i.e. the full string of characters before the '('.</summary>
+    <remarks>This class inherits Ident and hence allows nearly all identifier operations like chaining and conversions to be made in the same way.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MethodNameTok ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new MethodNameTok.</summary>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

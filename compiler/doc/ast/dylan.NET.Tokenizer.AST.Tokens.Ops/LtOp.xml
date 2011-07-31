@@ -1,0 +1,31 @@
+<Type Name="LtOp" FullName="dylan.NET.Tokenizer.AST.Tokens.Ops.LtOp">
+  <TypeSignature Language="C#" Value="public class LtOp : dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi LtOp extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+    <AssemblyVersion>11.2.7.2</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a less than '&lt;' operator.</summary>
+    <remarks>Checks if LChild is less than RChild.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LtOp ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Cosntructs a new LtOp.</summary>
+        <remarks>Also sets PrecNo accordingly.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,6 @@
+<Namespace Name="dylan.NET.Tokenizer.AST.Tokens">
+  <Docs>
+    <summary>These are the AST Tokens that cannot be placed in the other namespaces.</summary>
+    <remarks>For other AST Tokens check the other namespaces.</remarks>
+  </Docs>
+</Namespace>

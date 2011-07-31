@@ -1,0 +1,40 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="tokenizer.CodeGen" Version="11.2.7.2">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("tokenizer.CodeGen")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.2")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyProduct("tokenizer.CodeGen")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("tokenizer.CodeGen")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>To be added.</Remarks>
+  <Copyright>To be added.</Copyright>
+  <Types>
+    <Namespace Name="dylan.NET.Tokenizer.CodeGen">
+      <Type Name="CodeGenerator" Kind="Class" />
+      <Type Name="CtorItem" Kind="Class" />
+      <Type Name="Evaluator" Kind="Class" />
+      <Type Name="FieldItem" Kind="Class" />
+      <Type Name="Helpers" Kind="Class" />
+      <Type Name="MethodItem" Kind="Class" />
+      <Type Name="OpStack" Kind="Class" />
+      <Type Name="StmtReader" Kind="Class" />
+      <Type Name="SymTable" Kind="Class" />
+      <Type Name="VarItem" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>tokenizer.CodeGen</Title>
+</Overview>

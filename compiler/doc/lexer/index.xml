@@ -1,0 +1,32 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="tokenizer.Lexer" Version="11.2.7.2">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("tokenizer.Lexer")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.2")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyProduct("tokenizer.Lexer")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("tokenizer.Lexer")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>To be added.</Remarks>
+  <Copyright>To be added.</Copyright>
+  <Types>
+    <Namespace Name="dylan.NET.Tokenizer.Lexer">
+      <Type Name="Lexer" Kind="Class" />
+      <Type Name="Line" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>tokenizer.Lexer</Title>
+</Overview>
