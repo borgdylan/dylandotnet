@@ -24,7 +24,12 @@ installdoc:
 	rm -f ast.tar.gz
 	rm -f -r ast-html
 	
-install: prodscript installman installdoc
+installlog:
+	cp ChangeLog log.txt
+	gzip --best -f log.txt
+	$(install_sh_PROGRAM) log.txt.gz $(DESTDIR)$(docdir)/changelog.gz
+	
+install: prodscript installman installdoc installlog
 	$(install_sh_PROGRAM) dylandotnet $(DESTDIR)$(bindir)/dylandotnet
 	chmod a+x $(DESTDIR)$(bindir)/dylandotnet
 	$(install_sh_PROGRAM) Microsoft.VisualBasic.dll $(DESTDIR)$(libdir)/$(PACKAGE)/Microsoft.VisualBasic.dll

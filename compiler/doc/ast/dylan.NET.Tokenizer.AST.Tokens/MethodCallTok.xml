@@ -4,6 +4,7 @@
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
     <AssemblyVersion>11.2.7.2</AssemblyVersion>
+    <AssemblyVersion>11.2.7.3</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
@@ -20,11 +21,13 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>Constructs a new MethodCallTok.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -33,6 +36,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
@@ -40,7 +44,8 @@
       <Docs>
         <param name="value">This parameter is not usable in this class so use the other constructor.</param>
         <summary>Constructs a new MethodCallTok.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddParam">
@@ -49,6 +54,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -68,6 +74,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.MethodNameTok</ReturnType>
@@ -83,6 +90,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr[]</ReturnType>

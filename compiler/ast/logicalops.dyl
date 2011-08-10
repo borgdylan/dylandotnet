@@ -65,6 +65,17 @@ end method
 
 end class
 
+class public auto ansi XnorOp extends LogicalOp
+
+method public void ctor0()
+me::ctor()
+me::PrecNo = 6
+me::LChild = null
+me::RChild = null
+end method
+
+end class
+
 class public auto ansi NotOp extends LogicalOp
 
 method public void ctor0()

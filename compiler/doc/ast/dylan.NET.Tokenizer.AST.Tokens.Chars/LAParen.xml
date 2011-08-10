@@ -4,6 +4,7 @@
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
     <AssemblyVersion>11.2.7.2</AssemblyVersion>
+    <AssemblyVersion>11.2.7.3</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Chars.Character</BaseTypeName>
@@ -20,11 +21,13 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>Constructs a new LAParen.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

@@ -269,6 +269,10 @@ var isop as boolean = isOp(tok)
 var optok as Op
 var rc as Token
 var lc as Token
+var lcint as integer
+var rcint as integer
+var lctyp as System.Type
+var rctyp as System.Type
 var typ as System.Type
 var b as boolean = false
 var tt as TypeTok
@@ -283,7 +287,29 @@ optok = tok
 rc = optok::RChild
 lc = optok::LChild
 ASTEmit(lc, emt)
+lctyp = AsmFactory::Type02
 ASTEmit(rc, emt)
+rctyp = AsmFactory::Type02
+
+b = lctyp::Equals(rctyp)
+if b = true then
+
+typ = gettype ConditionalOp
+b = typ::IsInstanceOfType($object$optok)
+
+if b = true then
+AsmFactory::Type02 = gettype boolean
+else
+AsmFactory::Type02 = lctyp
+end if
+
+if emt = true then
+Helpers::EmitOp(optok, true)
+end if
+else
+lcint = Helpers::getCodeFromType(lctyp)
+rcint = Helpers::getCodeFromType(rctyp)
+end if
 
 else
 
@@ -295,6 +321,11 @@ var slit as StringLiteral = tok
 if slit::Conv = false then
 tt = slit::LitTyp
 AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+
+if emt = true then
+Helpers::EmitLiteral(slit)
+end if
+
 if slit::MemberAccessFlg = true then
 ASMFactory::ChainFlg = true
 ASTEmit(slit::MemberToAccess, emt)
@@ -303,7 +334,16 @@ goto fin
 else
 tt = slit::TTok
 AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+
+if emt = true then
+Helpers::EmitLiteral(slit)
+end if
+
+if slit::MemberAccessFlg = true then
+ASMFactory::ChainFlg = true
+ASTEmit(slit::MemberToAccess, emt)
 goto fin
+end if
 end if
 end if
 
@@ -315,10 +355,20 @@ var lit as Literal = tok
 if lit::Conv = false then
 tt = lit::LitTyp
 AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+
+if emt = true then
+Helpers::EmitLiteral(lit)
+end if
+
 goto fin
 else
 tt = lit::TTok
 AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+
+if emt = true then
+Helpers::EmitLiteral(lit)
+end if
+
 goto fin
 end if
 end if
@@ -343,6 +393,10 @@ idtnam = idt::Value
 vr = SymTable::FindVar(idtnam)
 if vr <> null then
 AsmFactory::Type02 = vr::VarTyp
+
+if emt = true then
+Helpers::EmitLocLd(vr::Index, vr::LocArg)
+end if
 
 //begin array check
 
@@ -495,6 +549,11 @@ end if
 mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], typarr1)
 AsmFactory::Type02 = mcmetinf::get_ReturnType()
 
+if mntok::MemberAccessFlg = true then
+ASMFactory::ChainFlg = true
+ASTEmit(mntok::MemberToAccess, emt)
+end if
+
 else
 
 //not chaining no conv
@@ -575,6 +634,11 @@ place cont4
 mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], typarr1)
 AsmFactory::Type02 = mcmetinf::get_ReturnType()
 
+if mntok::MemberAccessFlg = true then
+ASMFactory::ChainFlg = true
+ASTEmit(mntok::MemberToAccess, emt)
+end if
+
 else
 i = 0
 end if
@@ -612,6 +676,67 @@ end if
 var asttok as Token = ConvToAST(rpnexp)
 ASTEmit(asttok, false)
 ASTEmit(asttok, true)
+
+end method
+
+method public void StoreEmit(var idt as Ident)
+
+var idtnam as string
+var vr as VarItem
+var idtb1 as boolean = false
+var idtcomp as integer = 0
+var idttyp as System.Type
+var arrlocexpr as Expr
+var idtarrloc as Ident
+var tok as Token
+var typ as System.Type
+var b as boolean
+
+idtnam = idt::Value
+vr = SymTable::FindVar(idtnam)
+if vr <> null then
+//AsmFactory::Type02 = vr::VarTyp
+
+Helpers::EmitLocSt(vr::Index, vr::LocArg)
+
+//begin array check
+
+//if idt::IsArr = true then
+//idttyp = AsmFactory::Type02
+
+//arrlocexpr = idt::ArrLoc
+//if arrlocexpr::Tokens[l] = 1 then
+//idtb1 = true
+//else
+//idtb1 = false
+//end if
+
+//if idtb1 = true then
+//tok = arrlocexpr::Tokens[0]
+//typ = gettype Ident
+//idtb1 = typ::IsInstanceOfType($object$tok)
+//if idtb1 = true then
+//idtarrloc = tok
+//idtcomp = String::Compare(idtarrloc::Value , "l")
+//if idtcomp <> 0 then
+//idtb1 = false
+//else
+//idtb1 = true
+//end if
+//end if
+//end if
+
+//if idtb1 = false then
+//idttyp = idttyp::GetElementType()
+//AsmFactory::Type02 = idttyp
+//else
+//AsmFactory::Type02 = gettype integer
+//end if
+
+//end if
+//end array check
+
+end if
 
 end method
 

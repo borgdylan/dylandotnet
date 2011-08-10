@@ -581,10 +581,24 @@ cod = 164
 goto fin
 end if
 
+typ2 = gettype single
+b = typ::Equals(typ2)
+if b = true then
+cod = 232
+goto fin
+end if
+
+typ2 = gettype double
+b = typ::Equals(typ2)
+if b = true then
+cod = 264
+goto fin
+end if
+
 typ2 = gettype string
 b = typ::Equals(typ2)
 if b = true then
-cod = 170
+cod = 270
 goto fin
 end if
 
@@ -657,7 +671,17 @@ typ2 = gettype long
 goto fin
 end if
 
-if cod = 170 then
+if cod = 232 then
+typ2 = gettype single
+goto fin
+end if
+
+if cod = 264 then
+typ2 = gettype double
+goto fin
+end if
+
+if cod = 270 then
 typ2 = gettype string
 goto fin
 end if
@@ -665,6 +689,226 @@ end if
 place fin
 return typ2
 end method
+
+method public static void EmitLiteral(var lit as Literal)
+
+label fin
+var typ as System.Type
+var b as boolean
+
+typ = gettype StringLiteral
+b = typ::IsInstanceOfType($object$lit)
+
+if b = true then
+var slit as StringLiteral = lit
+ILEmitter::EmitLdstr(slit::Value)
+goto fin
+end if
+
+typ = gettype SByteLiteral
+b = typ::IsInstanceOfType($object$lit)
+
+if b = true then
+var sblit as SByteLiteral = lit
+ILEmitter::EmitLdcI1(sblit::NumVal)
+goto fin
+end if
+
+typ = gettype ShortLiteral
+b = typ::IsInstanceOfType($object$lit)
+
+if b = true then
+var shlit as ShortLiteral = lit
+ILEmitter::EmitLdcI2(shlit::NumVal)
+goto fin
+end if
+
+typ = gettype IntLiteral
+b = typ::IsInstanceOfType($object$lit)
+
+if b = true then
+var ilit as IntLiteral = lit
+ILEmitter::EmitLdcI4(ilit::NumVal)
+goto fin
+end if
+
+typ = gettype LongLiteral
+b = typ::IsInstanceOfType($object$lit)
+
+if b = true then
+var llit as LongLiteral = lit
+ILEmitter::EmitLdcI8(llit::NumVal)
+goto fin
+end if
+
+typ = gettype FloatLiteral
+b = typ::IsInstanceOfType($object$lit)
+
+if b = true then
+var flit as FloatLiteral = lit
+ILEmitter::EmitLdcR4(flit::NumVal)
+goto fin
+end if
+
+typ = gettype DoubleLiteral
+b = typ::IsInstanceOfType($object$lit)
+
+if b = true then
+var dlit as DoubleLiteral = lit
+ILEmitter::EmitLdcR8(dlit::NumVal)
+goto fin
+end if
+
+typ = gettype BooleanLiteral
+b = typ::IsInstanceOfType($object$lit)
+
+if b = true then
+var bllit as BooleanLiteral = lit
+ILEmitter::EmitLdcBool(bllit::BoolVal)
+goto fin
+end if
+
+typ = gettype CharLiteral
+b = typ::IsInstanceOfType($object$lit)
+
+if b = true then
+var clit as CharLiteral = lit
+ILEmitter::EmitLdcChar(clit::CharVal)
+goto fin
+end if
+
+
+place fin
+
+end method
+
+method public static void EmitOp(var op as Op, var s as boolean)
+
+label fin
+var typ as System.Type
+var b as boolean
+
+typ = gettype AddOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitAdd(s)
+goto fin
+end if
+
+typ = gettype MulOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitMul(s)
+goto fin
+end if
+
+typ = gettype SubOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitSub(s)
+goto fin
+end if
+
+typ = gettype DivOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitDiv(s)
+goto fin
+end if
+
+typ = gettype OrOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitOr()
+goto fin
+end if
+
+typ = gettype AndOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitAnd()
+goto fin
+end if
+
+typ = gettype OrOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitOr()
+goto fin
+end if
+
+typ = gettype XorOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitXor()
+goto fin
+end if
+
+typ = gettype NandOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitNand()
+goto fin
+end if
+
+typ = gettype NorOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitNor()
+goto fin
+end if
+
+typ = gettype XnorOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitXnor()
+goto fin
+end if
+
+typ = gettype EqOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitCeq()
+goto fin
+end if
+
+typ = gettype NeqOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+ILEmitter::EmitCneq()
+goto fin
+end if
+
+place fin
+end method
+
+method public static void EmitLocLd(var ind as integer, var locarg as boolean)
+if locarg = true then
+ILEmitter::EmitLdloc(ind)
+else
+end if
+end method
+
+method public static void EmitLocSt(var ind as integer, var locarg as boolean)
+if locarg = true then
+ILEmitter::EmitStloc(ind)
+else
+end if
+end method
+
 
 end class
 

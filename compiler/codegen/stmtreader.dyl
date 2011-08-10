@@ -457,6 +457,7 @@ ILEmitter::LocInd = ILEmitter::LocInd + 1
 SymTable::AddVar(vnam::Value, true, ILEmitter::LocInd, vtyp)
 eval = new Evaluator()
 eval::Evaluate(curva::RExpr)
+eval::StoreEmit(vnam)
 
 goto fin
 end if
@@ -468,7 +469,21 @@ if b = true then
 var asgnstm as AssignStmt = stm
 eval = new Evaluator()
 eval::Evaluate(asgnstm::RExp)
+var asgnstmle as Expr = asgnstm::LExp
+vnam = asgnstmle::Tokens[0]
+eval::StoreEmit(vnam)
+goto fin
+end if
 
+typ = gettype MethodCallStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var mcstmt as MethodCallStmt = stm
+var mcstmtexp as Expr = new Expr()
+mcstmtexp::AddToken(mcstmt::MethodToken)
+eval = new Evaluator()
+eval::Evaluate(mcstmtexp)
 goto fin
 end if
 

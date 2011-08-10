@@ -12,9 +12,9 @@
 export DH_VERBOSE=1
 export DH_OPTIONS=-v
 
-build:
-	sh ./configure prefix=/usr
-	make
+#build:
+#	sh ./configure prefix=/usr
+#	make
 
 %:
 	dh $@

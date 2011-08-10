@@ -289,6 +289,15 @@ tok = xorop
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "xnor")
+
+if comp = 0 then
+var xnorop as XnorOp = new XnorOp()
+xnorop::Line = tok::Line
+xnorop::Value = tok::Value
+tok = xnorop
+goto fin
+end if
 
 comp = String::Compare(tok::Value, "(")
 
