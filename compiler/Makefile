@@ -68,7 +68,7 @@ AUTOHEADER = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run auto
 AUTOMAKE = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.7.3\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.7.3\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.7.3\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.7.4\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.7.4\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.7.4\"
 DYLANDOTNET = /usr/bin/dylandotnet
 ECHO_C = 
 ECHO_N = -n
@@ -88,16 +88,16 @@ MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.7.3
+PACKAGE_STRING = dylandotnet 11.2.7.4
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.7.3
+PACKAGE_VERSION = 11.2.7.4
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.7.3
+VERSION = 11.2.7.4
 abs_builddir = /media/MOBEXTHDD/Code/dylannet/compiler
 abs_srcdir = /media/MOBEXTHDD/Code/dylannet/compiler
 abs_top_builddir = /media/MOBEXTHDD/Code/dylannet/compiler
@@ -476,7 +476,12 @@ installdoc:
 	rm -f ast.tar.gz
 	rm -f -r ast-html
 
-install: prodscript installman installdoc
+installlog:
+	cp ChangeLog log.txt
+	gzip --best -f log.txt
+	$(install_sh_PROGRAM) log.txt.gz $(DESTDIR)$(docdir)/changelog.gz
+
+install: prodscript installman installdoc installlog
 	$(install_sh_PROGRAM) dylandotnet $(DESTDIR)$(bindir)/dylandotnet
 	chmod a+x $(DESTDIR)$(bindir)/dylandotnet
 	$(install_sh_PROGRAM) Microsoft.VisualBasic.dll $(DESTDIR)$(libdir)/$(PACKAGE)/Microsoft.VisualBasic.dll

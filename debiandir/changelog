@@ -1,3 +1,10 @@
+dylandotnet (11.2.7.3-0test1) natty; urgency=low
+
+  * Adding partial ast documentation.
+  * Fixing changelog errors pointed by lintian.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 31 Jul 2011 19:12:38 +0200
+
 dylandotnet (11.2.7.2-0test1) natty; urgency=low
 
   * Fixing more errors pointed by lintian.
@@ -19,7 +26,7 @@ dylandotnet (11.2.7.1-0test2) natty; urgency=low
 
  -- Dylan Borg <borgdylan@hotmail.com>  Thu, 7 Jul 2011 7:04:08 +0200
  
- dylandotnet (11.2.7.1-3) unstable; urgency=low
+dylandotnet (11.2.7.1-3) unstable; urgency=low
 
   * (Closes:626078)
 
@@ -43,13 +50,13 @@ dylandotnet (11.2.7-0test2) natty; urgency=low
 
  -- Dylan Borg <borgdylan@hotmail.com>  Sat, 30 Apr 2011 9:04:57 +0200
  
- dylandotnet (11.2.6-0ubuntu2) natty; urgency=low closes(LP: #771917)
+dylandotnet (11.2.6-0ubuntu2) natty; urgency=low closes(LP: #771917)
 
   * dylan.NET 11.2.5. The Code Generation 2 Blueprint as described in launchpad.net/dylandotnet has now been commenced. Functionality is similar to that of previous package. This is still not ready for fully compiling dylan.NET files.
 
  -- Dylan Borg <borgdylan@hotmail.com>  Thu, 28 Apr 2011 12:59:37 +0200
  
- dylandotnet (11.2.6-2) unstable; urgency=low
+dylandotnet (11.2.6-2) unstable; urgency=low
 
   * dylan.NET 11.2.5. The Code Generation 2 Blueprint as described in launchpad.net/dylandotnet has now been commenced. Functionality is similar to that of previous package. This is still not ready for fully compiling dylan.NET files.
 
