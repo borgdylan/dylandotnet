@@ -77,6 +77,10 @@ id::OrdOp = OrdOp
 return id
 end method
 
+method public static NullLiteral UpdateNullLit(var id as NullLiteral)
+return id
+end method
+
 method public static CharLiteral UpdateCharLit(var id as CharLiteral)
 id::Conv = ConvFlag
 id::TTok = ConvTyp

@@ -32,6 +32,32 @@ end method
 
 end class
 
+class public auto ansi NullLiteral extends Literal
+
+field public object NullVal
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+NullVal = null
+me::Conv = false
+me::LitTyp = new ObjectTok()
+me::TTok = null
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+NullVal = null
+me::Conv = false
+me::LitTyp = new ObjectTok()
+me::TTok = null
+end method
+
+end class
+
 class public auto ansi StringLiteral extends Literal
 
 field public string OrdOp

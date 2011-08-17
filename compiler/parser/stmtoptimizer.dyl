@@ -517,7 +517,9 @@ lvl--
 if lvl = 0 then
 d = false
 exp = eopt::Optimize(exp)
+if exp::Tokens[l] > 0 then
 mct::AddParam(exp)
+end if
 goto cont2
 else
 d = true
@@ -542,7 +544,9 @@ if b2 = true then
 if lvl = 1 then
 d = false
 exp = eopt::Optimize(exp)
+if exp::Tokens[l] > 0 then
 mct::AddParam(exp)
+end if
 exp = new Expr()
 goto fin
 else

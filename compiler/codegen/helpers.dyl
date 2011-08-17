@@ -777,6 +777,13 @@ ILEmitter::EmitLdcChar(clit::CharVal)
 goto fin
 end if
 
+typ = gettype NullLiteral
+b = typ::IsInstanceOfType($object$lit)
+
+if b = true then
+ILEmitter::EmitLdnull()
+goto fin
+end if
 
 place fin
 
@@ -909,6 +916,66 @@ else
 end if
 end method
 
+method public static void EmitConv(var source as System.Type, var sink as System.Type)
+
+var typ as System.Type
+var convc as System.Type = gettype System.Convert
+var b as boolean = false
+var m1 as MethodInfo
+var arr as System.Type[] = newarr System.Type 1
+
+
+label fin
+
+typ = gettype IntPtr
+b = source::Equals(typ)
+
+if b = true then
+m1 = typ::GetMethod("ToInt64", System.Type::EmptyTypes)
+ILEmitter::EmitCallvirt(m1)
+source = gettype long
+end if
+
+typ = gettype string
+b = sink::Equals(typ)
+
+if b = true then
+arr[0] = source
+m1 = convc::GetMethod("ToString", arr)
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+typ = gettype double
+b = sink::Equals(typ)
+
+if b = true then
+arr[0] = source
+m1 = convc::GetMethod("ToDouble", arr)
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+place fin
+
+end method
+
+method public static void EmitMetCall(var met as MethodInfo, var stat as boolean)
+if stat = true then
+ILEmitter::EmitCall(met)
+else
+ILEmitter::EmitCallvirt(met)
+end if
+if AsmFactory::PopFlg = true then
+var rt as System.Type = met::get_ReturnType()
+var vt as System.Type = gettype void
+var b as boolean = rt::Equals(vt)
+if b = true then
+else
+ILEmitter::EmitPop()
+end if
+end if
+end method
 
 end class
 

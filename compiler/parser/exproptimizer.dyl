@@ -97,7 +97,7 @@ if b2 = true then
 lvl--
 if lvl = 0 then
 d = false
-if ep2::Tokens[l] <> 0 then
+if ep2::Tokens[l] > 0 then
 mct::AddParam(ep2)
 end if
 stm::RemToken(i)
@@ -129,7 +129,7 @@ b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
 if lvl = 1 then
 d = false
-if ep2::Tokens[l] <> 0 then
+if ep2::Tokens[l] > 0 then
 mct::AddParam(ep2)
 end if
 ep2 = new Expr()
@@ -511,6 +511,19 @@ if b = true then
 if ParserFlags::isChanged = true then
 var cl1 as CharLiteral = exp::Tokens[i]
 exp::Tokens[i] = ParserFlags::UpdateCharLit(cl1)
+ParserFlags::SetUnaryFalse()
+j = i
+end if
+goto fin
+end if
+
+typ = gettype NullLiteral
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+if ParserFlags::isChanged = true then
+var nul1 as NullLiteral = exp::Tokens[i]
+exp::Tokens[i] = ParserFlags::UpdateNullLit(nul1)
 ParserFlags::SetUnaryFalse()
 j = i
 end if

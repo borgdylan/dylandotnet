@@ -1,14 +1,12 @@
-<Type Name="IntPtrLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral">
-  <TypeSignature Language="C#" Value="public class IntPtrLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi IntPtrLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral" />
+<Type Name="NullLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral">
+  <TypeSignature Language="C#" Value="public class NullLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi NullLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
-    <AssemblyVersion>11.2.7.2</AssemblyVersion>
-    <AssemblyVersion>11.2.7.3</AssemblyVersion>
     <AssemblyVersion>11.2.7.4</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.Literal</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -17,12 +15,10 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public IntPtrLiteral ();" />
+      <MemberSignature Language="C#" Value="public NullLiteral ();" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
@@ -32,12 +28,10 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public IntPtrLiteral (string value);" />
+      <MemberSignature Language="C#" Value="public NullLiteral (string value);" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string value) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
@@ -49,17 +43,15 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NumVal">
-      <MemberSignature Language="C#" Value="public IntPtr NumVal;" />
-      <MemberSignature Language="ILAsm" Value=".field public native int NumVal" />
+    <Member MemberName="NullVal">
+      <MemberSignature Language="C#" Value="public object NullVal;" />
+      <MemberSignature Language="ILAsm" Value=".field public object NullVal" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.IntPtr</ReturnType>
+        <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

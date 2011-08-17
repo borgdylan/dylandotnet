@@ -26,10 +26,6 @@ class public auto ansi PtrTok extends Token
 
 end class
 
-class public auto ansi NullTok extends Token
-
-end class
-
 class public auto ansi DependTok extends Token
 
 end class

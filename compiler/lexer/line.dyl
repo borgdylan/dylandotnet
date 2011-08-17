@@ -20,6 +20,24 @@ InStr = false
 InChar = false
 end method
 
+method public boolean isDigit(var c as char)
+
+var cn as integer = $integer$c
+var zn as integer = $integer$'0'
+var nn as integer = $integer$'9'
+
+var res as boolean = false
+
+if cn >= zn then
+if cn <= nn then
+res = true
+end if
+end if
+
+return res
+
+end method
+
 method public boolean isSep(var cc as string, var lc as string, var sca as boolean&, var scla as boolean&)
 
 var comp as integer = 0

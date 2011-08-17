@@ -481,7 +481,9 @@ b = typ::IsInstanceOfType($object$stm)
 if b = true then
 var mcstmt as MethodCallStmt = stm
 var mcstmtexp as Expr = new Expr()
-mcstmtexp::AddToken(mcstmt::MethodToken)
+var mcstmttok as MethodCallTok = mcstmt::MethodToken
+mcstmttok::PopFlg = true
+mcstmtexp::AddToken(mcstmttok)
 eval = new Evaluator()
 eval::Evaluate(mcstmtexp)
 goto fin

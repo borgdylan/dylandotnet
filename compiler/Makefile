@@ -69,7 +69,7 @@ AUTOMAKE = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run automa
 AWK = gawk
 CYGPATH_W = echo
 DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.7.4\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.7.4\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.7.4\"
-DYLANDOTNET = /usr/bin/dylandotnet
+DYLANDOTNET = /usr/local/bin/dylandotnet
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 

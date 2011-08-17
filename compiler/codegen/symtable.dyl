@@ -363,6 +363,10 @@ var comp as integer = 0
 label cont
 label loop
 
+if VarLst[l] = 0 then
+goto cont
+end if
+
 place loop
 
 i++

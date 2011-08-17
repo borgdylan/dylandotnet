@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.7.3">
+    <Assembly Name="tokenizer.AST" Version="11.2.7.4">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("tokenizer.AST")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.3")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.4")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("tokenizer.AST")</AttributeName>
@@ -194,6 +194,7 @@
       <Type Name="IntPtrLiteral" Kind="Class" />
       <Type Name="Literal" Kind="Class" />
       <Type Name="LongLiteral" Kind="Class" />
+      <Type Name="NullLiteral" Kind="Class" />
       <Type Name="NumberLiteral" Kind="Class" />
       <Type Name="SByteLiteral" Kind="Class" />
       <Type Name="ShortLiteral" Kind="Class" />

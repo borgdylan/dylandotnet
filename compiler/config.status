@@ -595,7 +595,7 @@ echo 'BEGIN {' >"$tmp/subs1.awk" &&
 cat >>"$tmp/subs1.awk" <<\_ACAWK &&
 S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
-S["DYLANDOTNET"]="/usr/bin/dylandotnet"
+S["DYLANDOTNET"]="/usr/local/bin/dylandotnet"
 S["MONO"]="/usr/bin/mono"
 S["PKG_CONFIG"]="/usr/bin/pkg-config"
 S["MAINT"]="#"

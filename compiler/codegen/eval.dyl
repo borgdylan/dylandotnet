@@ -384,11 +384,15 @@ var idtcomp as integer = 0
 var idttyp as System.Type
 var arrlocexpr as Expr
 var idtarrloc as Ident
-
+var src1 as System.Type
+var snk1 as System.Type
 
 if b = true then
 idt = tok
+
 if idt::Conv = false then
+//no conv
+
 idtnam = idt::Value
 vr = SymTable::FindVar(idtnam)
 if vr <> null then
@@ -439,8 +443,73 @@ end if
 end if
 goto fin
 else
+
+//yes conv
+
+if emt = true then
+
+idtnam = idt::Value
+vr = SymTable::FindVar(idtnam)
+if vr <> null then
+AsmFactory::Type02 = vr::VarTyp
+
+if emt = true then
+Helpers::EmitLocLd(vr::Index, vr::LocArg)
+end if
+
+//begin array check
+
+if idt::IsArr = true then
+idttyp = AsmFactory::Type02
+
+arrlocexpr = idt::ArrLoc
+if arrlocexpr::Tokens[l] = 1 then
+idtb1 = true
+else
+idtb1 = false
+end if
+
+if idtb1 = true then
+tok = arrlocexpr::Tokens[0]
+typ = gettype Ident
+idtb1 = typ::IsInstanceOfType($object$tok)
+if idtb1 = true then
+idtarrloc = tok
+idtcomp = String::Compare(idtarrloc::Value , "l")
+if idtcomp <> 0 then
+idtb1 = false
+else
+idtb1 = true
+end if
+end if
+end if
+
+if idtb1 = false then
+idttyp = idttyp::GetElementType()
+AsmFactory::Type02 = idttyp
+else
+AsmFactory::Type02 = gettype integer
+end if
+
+end if
+//end array check
+
+end if
+
+if emt = true then
+src1 = AsmFactory::Type02
+end if
+
 tt = idt::TTok
 AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+
+if emt = true then
+snk1 = AsmFactory::Type02
+Helpers::EmitConv(src1, snk1)
+end if
+
+end if
+
 goto fin
 end if
 end if
@@ -464,6 +533,7 @@ var astparam as Token
 var mcmetinf as MethodInfo
 var mcfldinf as FieldInfo
 var mcvr as VarItem
+var mcisstatic as boolean = false
 
 mnstr = mntok::Value
 mnstrarr = ParseUtils::StringParser(mnstr, ":")
@@ -613,8 +683,10 @@ mcvr = SymTable::FindVar(mnstrarr[i])
 
 if vr <> null then
 mcparenttyp = mcvr::VarTyp
+mcisstatic = false
 else
 mcparenttyp = Loader::LoadClass(mnstrarr[i])
+mcisstatic = true
 end if
 
 else
@@ -633,6 +705,12 @@ place cont4
 
 mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], typarr1)
 AsmFactory::Type02 = mcmetinf::get_ReturnType()
+
+if emt = true then
+AsmFactory::PopFlg = mctok::PopFlg
+Helpers::EmitMetCall(mcmetinf, mcisstatic)
+AsmFactory::PopFlg = false
+end if
 
 if mntok::MemberAccessFlg = true then
 ASMFactory::ChainFlg = true

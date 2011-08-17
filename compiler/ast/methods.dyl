@@ -14,12 +14,14 @@ class public auto ansi MethodCallTok extends Token
 
 field public MethodNameTok Name
 field public Expr[] Params
+field public boolean PopFlg
 
 method public void ctor0()
 me::ctor()
 me::Value = ""
 me::Line = 0
 Name = new MethodNameTok()
+PopFlg = false
 Params = newarr Expr 0
 end method
 
@@ -28,6 +30,7 @@ me::ctor()
 me::Value = value
 me::Line = 0
 Name = new MethodNameTok()
+PopFlg = false
 Params = newarr Expr 0
 end method
 

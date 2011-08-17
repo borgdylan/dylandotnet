@@ -876,6 +876,16 @@ ParserFlags::CmtFlag = true
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "null")
+
+if comp = 0 then
+var nulllit as NullLiteral = new NullLiteral()
+nulllit::Line = tok::Line
+nulllit::Value = tok::Value
+tok = nulllit
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "true")
 if comp = 0 then
 compb = true
@@ -1010,7 +1020,6 @@ orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("d")
 orflg = orflg and compb
-
 
 if orflg = true then
 var dlit3 as DoubleLiteral = new DoubleLiteral()

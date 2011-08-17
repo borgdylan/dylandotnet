@@ -5,6 +5,7 @@
     <AssemblyName>tokenizer.AST</AssemblyName>
     <AssemblyVersion>11.2.7.2</AssemblyVersion>
     <AssemblyVersion>11.2.7.3</AssemblyVersion>
+    <AssemblyVersion>11.2.7.4</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
@@ -22,6 +23,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -37,6 +39,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
@@ -55,6 +58,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -75,6 +79,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.MethodNameTok</ReturnType>
@@ -91,6 +96,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr[]</ReturnType>
@@ -98,6 +104,21 @@
       <Docs>
         <summary>The array of parameter expressions to be passed to the method.</summary>
         <remarks>The result type of each parameter in conjunction with the method name leads to the resolution of a MethodInfo instance.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopFlg">
+      <MemberSignature Language="C#" Value="public bool PopFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool PopFlg" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.4</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>
