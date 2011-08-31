@@ -6,6 +6,7 @@
     <AssemblyVersion>11.2.7.2</AssemblyVersion>
     <AssemblyVersion>11.2.7.3</AssemblyVersion>
     <AssemblyVersion>11.2.7.4</AssemblyVersion>
+    <AssemblyVersion>11.2.7.5</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -24,6 +25,7 @@
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -39,6 +41,7 @@
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -60,6 +63,7 @@
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -77,6 +81,7 @@
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -98,6 +103,7 @@
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -115,6 +121,7 @@
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token[]</ReturnType>

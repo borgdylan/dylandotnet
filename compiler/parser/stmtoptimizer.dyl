@@ -21,6 +21,108 @@ end if
 return refasms
 end method
 
+method public Stmt checkIf(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype IfTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var ifs as IfStmt = new IfStmt()
+var exp as Expr = new Expr()
+
+if valinref|b = true then
+
+ifs::Line = stm::Line
+ifs::Tokens = stm::Tokens
+
+var i as integer = 0
+var len as integer = stm::Tokens[l] - 1
+var b2 as boolean
+
+label cont
+label loop
+
+place loop
+
+i++
+
+tok = stm::Tokens[i]
+typ = gettype ThenTok
+b2 = typ::IsInstanceOfType($object$tok)
+
+
+if b2 = true then
+goto cont
+else
+exp::AddToken(tok)
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+var eop as ExprOptimizer = new ExprOptimizer()
+exp = eop::Optimize(exp)
+ifs::Exp = exp
+
+end if
+
+return ifs
+end method
+
+method public Stmt checkElseIf(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype ElseIfTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var ifs as ElseIfStmt = new ElseIfStmt()
+var exp as Expr = new Expr()
+
+if valinref|b = true then
+
+ifs::Line = stm::Line
+ifs::Tokens = stm::Tokens
+
+var i as integer = 0
+var len as integer = stm::Tokens[l] - 1
+var b2 as boolean
+
+label cont
+label loop
+
+place loop
+
+i++
+
+tok = stm::Tokens[i]
+typ = gettype ThenTok
+b2 = typ::IsInstanceOfType($object$tok)
+
+
+if b2 = true then
+goto cont
+else
+exp::AddToken(tok)
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+var eop as ExprOptimizer = new ExprOptimizer()
+exp = eop::Optimize(exp)
+ifs::Exp = exp
+
+end if
+
+return ifs
+end method
+
 method public Stmt checkDebug(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype DebugTok
@@ -73,6 +175,47 @@ cmts::Tokens = stm::Tokens
 end if
 return cmts
 end method
+
+method public Stmt checkElse(var stm as Stmt, var b as boolean&)
+if stm::Tokens[l] < 2 then
+
+var tok1 as Token = stm::Tokens[0]
+var typ1 as System.Type = gettype ElseTok
+var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+
+valinref|b = b1
+
+var els as ElseStmt = new ElseStmt()
+if valinref|b = true then
+els::Line = stm::Line
+els::Tokens = stm::Tokens
+end if
+end if
+return els
+end method
+
+method public Stmt checkEndIf(var stm as Stmt, var b as boolean&)
+if stm::Tokens[l] >= 2 then
+
+var tok1 as Token = stm::Tokens[0]
+var typ1 as System.Type = gettype EndTok
+var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+
+var tok2 as Token = stm::Tokens[1]
+var typ2 as System.Type = gettype IfTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+valinref|b = b1 and b2
+
+var eifs as EndIfStmt = new EndIfStmt()
+if valinref|b = true then
+eifs::Line = stm::Line
+eifs::Tokens = stm::Tokens
+end if
+end if
+return eifs
+end method
+
 
 method public Stmt checkEndMtd(var stm as Stmt, var b as boolean&)
 if stm::Tokens[l] >= 2 then
@@ -903,6 +1046,34 @@ goto fin
 end if
 
 tmpstm = checkRefasm(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkIf(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkElseIf(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkElse(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkEndIf(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm

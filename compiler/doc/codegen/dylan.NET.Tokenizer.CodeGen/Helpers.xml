@@ -1,9 +1,10 @@
 <Type Name="Helpers" FullName="dylan.NET.Tokenizer.CodeGen.Helpers">
   <TypeSignature Language="C#" Value="public class Helpers" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi Helpers extends System.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Helpers extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
     <AssemblyVersion>11.2.7.2</AssemblyVersion>
+    <AssemblyVersion>11.2.7.5</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -14,6 +15,19 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName=".cctor">
+      <MemberSignature Language="C#" Value="public Helpers ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static specialname rtspecialname void .cctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public Helpers ();" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
@@ -33,6 +47,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -47,12 +62,137 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitConv">
+      <MemberSignature Language="C#" Value="public static void EmitConv (Type source, Type sink);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConv(class System.Type source, class System.Type sink) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source" Type="System.Type" />
+        <Parameter Name="sink" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="source">To be added.</param>
+        <param name="sink">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitLiteral">
+      <MemberSignature Language="C#" Value="public static void EmitLiteral (dylan.NET.Tokenizer.AST.Tokens.Literals.Literal lit);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitLiteral(class dylan.NET.Tokenizer.AST.Tokens.Literals.Literal lit) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lit" Type="dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
+      </Parameters>
+      <Docs>
+        <param name="lit">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitLocLd">
+      <MemberSignature Language="C#" Value="public static void EmitLocLd (int ind, bool locarg);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitLocLd(int32 ind, bool locarg) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ind" Type="System.Int32" />
+        <Parameter Name="locarg" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="ind">To be added.</param>
+        <param name="locarg">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitLocSt">
+      <MemberSignature Language="C#" Value="public static void EmitLocSt (int ind, bool locarg);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitLocSt(int32 ind, bool locarg) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ind" Type="System.Int32" />
+        <Parameter Name="locarg" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="ind">To be added.</param>
+        <param name="locarg">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitMetCall">
+      <MemberSignature Language="C#" Value="public static void EmitMetCall (System.Reflection.MethodInfo met, bool stat);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitMetCall(class System.Reflection.MethodInfo met, bool stat) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="met" Type="System.Reflection.MethodInfo" />
+        <Parameter Name="stat" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="met">To be added.</param>
+        <param name="stat">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitOp">
+      <MemberSignature Language="C#" Value="public static void EmitOp (dylan.NET.Tokenizer.AST.Tokens.Ops.Op op, bool s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitOp(class dylan.NET.Tokenizer.AST.Tokens.Ops.Op op, bool s) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="op" Type="dylan.NET.Tokenizer.AST.Tokens.Ops.Op" />
+        <Parameter Name="s" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="op">To be added.</param>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EvalTTok">
       <MemberSignature Language="C#" Value="public static void EvalTTok (dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok tt);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EvalTTok(class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok tt) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -72,6 +212,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -92,6 +233,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -112,6 +254,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -131,6 +274,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -150,6 +294,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.TypeAttributes</ReturnType>
@@ -170,6 +315,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.FieldAttributes</ReturnType>
@@ -190,6 +336,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.MethodAttributes</ReturnType>
@@ -210,6 +357,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -219,6 +367,21 @@
       </Parameters>
       <Docs>
         <param name="ps">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StringFlg">
+      <MemberSignature Language="C#" Value="public static bool StringFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool StringFlg" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

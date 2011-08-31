@@ -15,6 +15,7 @@ field public static MethodItem[] MetLst
 field public static MethodItem[] NestedMetLst
 field public static CtorItem[] CtorLst
 field public static CtorItem[] NestedCtorLst
+field public static IfItem[] IfLst
 
 method public static void ctor0()
 VarLst = newarr VarItem 0
@@ -24,6 +25,11 @@ MetLst = newarr MethodItem 0
 NestedMetLst = newarr MethodItem 0
 CtorLst = newarr CtorItem 0
 NestedCtorLst = newarr CtorItem 0
+IfLst = newarr IfItem 0
+end method
+
+method public static void ResetIf()
+IfLst = newarr IfItem 0
 end method
 
 method public static void ResetVar()
@@ -350,6 +356,118 @@ destarr[len] = vr
 
 NestedCtorLst = destarr
 
+end method
+
+method public static void AddIf()
+
+var endl as Emit.Label = ILEmitter::DefineLbl()
+var nbl as Emit.Label = ILEmitter::DefineLbl()
+var vr as IfItem = new IfItem(endl, nbl)
+
+var len as integer = IfLst[l]
+var destl as integer = len + 1
+var stopel as integer = len - 1
+var i as integer = -1
+
+var destarr as IfItem[] = newarr IfItem destl
+
+label loop
+label cont
+
+place loop
+
+i++
+
+if len > 0 then
+
+destarr[i] = IfLst[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+destarr[len] = vr
+
+IfLst = destarr
+
+end method
+
+method public static void PopIf()
+
+var len as integer = IfLst[l]
+var destl as integer = len - 1
+var stopel as integer = len - 2
+var i as integer = -1
+
+var destarr as IfItem[] = newarr IfItem destl
+
+label loop
+label cont
+
+place loop
+
+i++
+
+if stopel >= 0 then
+
+destarr[i] = IfLst[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+IfLst = destarr
+
+end method
+
+method public static Emit.Label ReadIfEndLbl()
+var lastel as integer = IfLst[l] - 1
+var ifi as IfItem = IfLst[lastel]
+return ifi::EndLabel
+end method
+
+method public static Emit.Label ReadIfNxtBlkLbl()
+var lastel as integer = IfLst[l] - 1
+var ifi as IfItem = IfLst[lastel]
+return ifi::NextBlkLabel
+end method
+
+method public static boolean ReadIfElsePass()
+var lastel as integer = IfLst[l] - 1
+var ifi as IfItem = IfLst[lastel]
+return ifi::ElsePass
+end method
+
+method public static void SetIfElsePass()
+var lastel as integer = IfLst[l] - 1
+var ifi as IfItem = IfLst[lastel]
+ifi::ElsePass = true
+end method
+
+method public static void SetIfNxtBlkLbl()
+var lastel as integer = IfLst[l] - 1
+var ifi as IfItem = IfLst[lastel]
+ifi::NextBlkLabel = ILEmitter::DefineLbl()
 end method
 
 method public static VarItem FindVar(var nam as string)

@@ -400,6 +400,27 @@ ParserFlags::IfFlag = true
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "elseif")
+
+if comp = 0 then
+var eliftk as ElseIfTok = new ElseIfTok()
+eliftk::Line = tok::Line
+eliftk::Value = tok::Value
+tok = eliftk
+ParserFlags::IfFlag = true
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "else")
+
+if comp = 0 then
+var elsetk as ElseTok = new ElseTok()
+elsetk::Line = tok::Line
+elsetk::Value = tok::Value
+tok = elsetk
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "then")
 
 if comp = 0 then

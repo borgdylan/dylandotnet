@@ -1,3 +1,27 @@
+commit b06229ae8c24ac063b2f2ec51c746b7f0ab61c0e
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Wed Aug 17 20:09:43 2011 +0200
+
+    Committing latest dylan.NET code to GIT and BZR. Adding NullLiteral to AST. Adding parser support for the word null to be used as a literal of type object signifiying a null referernce. Adding ldnull capable dnr library. Fixing bug where method loading without defined variables launches an exception. Adding .NET's VB runtime instead of the Mono one which has some like operator bugs at the moment. Bumping up assembly version to 11.2.7.4.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 891fd5d0f3af20cacc38374a4c052ccc311d3336
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Wed Aug 10 21:31:20 2011 +0200
+
+    Commiting latest dylan.NET to GIT and BZR. Updating version numbers on makefile. Adding xnor operator.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit d98c18dc95c141b876b0567505c792112a448ae6
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Wed Aug 10 21:15:23 2011 +0200
+
+    Adding latest dylan.NET code to GIT and BZR. Also check latest dnr code. Adding emmision of certain constants, strings and variable store/load instructions. Also enabling some of the operators.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 71ee2c9e53536e9fd20327900d4bdf79f8302c29
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Sun Jul 31 18:58:41 2011 +0200

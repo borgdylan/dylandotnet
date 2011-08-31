@@ -68,7 +68,7 @@ AUTOHEADER = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run auto
 AUTOMAKE = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.7.4\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.7.4\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.7.4\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.7.5\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.7.5\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.7.5\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 ECHO_C = 
 ECHO_N = -n
@@ -88,16 +88,16 @@ MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.7.4
+PACKAGE_STRING = dylandotnet 11.2.7.5
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.7.4
+PACKAGE_VERSION = 11.2.7.5
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.7.4
+VERSION = 11.2.7.5
 abs_builddir = /media/MOBEXTHDD/Code/dylannet/compiler
 abs_srcdir = /media/MOBEXTHDD/Code/dylannet/compiler
 abs_top_builddir = /media/MOBEXTHDD/Code/dylannet/compiler
@@ -477,8 +477,6 @@ installdoc:
 	rm -f -r ast-html
 
 installlog:
-	cp ChangeLog log.txt
-	gzip --best -f log.txt
 	$(install_sh_PROGRAM) log.txt.gz $(DESTDIR)$(docdir)/changelog.gz
 
 install: prodscript installman installdoc installlog
@@ -512,9 +510,11 @@ uninstall: uninstallman uninstalldoc
 	rm -r -f $(DESTDIR)$(libdir)/$(PACKAGE)
 
 distclean:
-	rm -f Makefile
 
 tarball:
+	rm -f config.status
+	rm -f config.log
+	rm -f Makefile
 	mkdir -p ./../$(distdir)
 	cp -r * ./../$(distdir)
 	tar -czf ./../$(distdir).tar.gz ./../$(distdir)

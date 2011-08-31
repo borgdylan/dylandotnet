@@ -5,14 +5,15 @@
     <AssemblyName>tokenizer.AST</AssemblyName>
     <AssemblyVersion>11.2.7.3</AssemblyVersion>
     <AssemblyVersion>11.2.7.4</AssemblyVersion>
+    <AssemblyVersion>11.2.7.5</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ops.LogicalOp</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a bitwise xnor 'xnor' operator.</summary>
+    <remarks>Does a bitwise exclusive or on the operands then negates the result.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -22,11 +23,12 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Constructs a new XnorOp.</summary>
+        <remarks>Also sets PrecNo accordingly.</remarks>
       </Docs>
     </Member>
   </Members>

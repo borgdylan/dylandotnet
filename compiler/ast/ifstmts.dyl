@@ -8,17 +8,34 @@
 
 class public auto ansi IfStmt extends Stmt
 
-field public ConditionalExpr CondExpr
+field public Expr Exp
 
 method public void ctor0()
 me::ctor()
 me::Tokens = newarr Token 0
 me::Line = 0
-CondExpr = new ConditionalExpr()
+Exp = new Expr()
+end method
+
+end class
+
+class public auto ansi ElseIfStmt extends Stmt
+
+field public Expr Exp
+
+method public void ctor0()
+me::ctor()
+me::Tokens = newarr Token 0
+me::Line = 0
+Exp = new Expr()
 end method
 
 end class
 
 class public auto ansi ElseStmt extends Stmt
+
+end class
+
+class public auto ansi EndIfStmt extends Stmt
 
 end class

@@ -6,14 +6,15 @@
     <AssemblyVersion>11.2.7.2</AssemblyVersion>
     <AssemblyVersion>11.2.7.3</AssemblyVersion>
     <AssemblyVersion>11.2.7.4</AssemblyVersion>
+    <AssemblyVersion>11.2.7.5</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a dylan.NET literal.</summary>
+    <remarks>All literals are to inherit this class to make sure they are properly processed.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -24,11 +25,13 @@
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Constructs a new Literal.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -39,14 +42,16 @@
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">The string to assign to the Value field.</param>
+        <summary>Constructs a new Literal.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Conv">
@@ -57,13 +62,14 @@
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Holds a flag indicating whether a conversion is to be made or not.</summary>
+        <remarks>Set this if a conversion is required. Also give a value to TTok to indicate the destination type.</remarks>
       </Docs>
     </Member>
     <Member MemberName="LitTyp">
@@ -74,13 +80,14 @@
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Holds a TypeTok indicating the type of literal represented. The RefTyp field of the TypeTok is useful during code generation.</summary>
+        <remarks>This vaue is automatically assigned by the constructor of inheriting classes. Please do not change it.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TTok">
@@ -91,13 +98,14 @@
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Holds a TypeTok indicating the type to convert to.</summary>
+        <remarks>For the value of this field to have effects the Conv field is to be set true.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -291,6 +291,12 @@ lctyp = AsmFactory::Type02
 ASTEmit(rc, emt)
 rctyp = AsmFactory::Type02
 
+if emt = true then
+typ = gettype string
+b = lctyp::Equals(typ)
+Helpers::StringFlg = b
+end if
+
 b = lctyp::Equals(rctyp)
 if b = true then
 
@@ -305,7 +311,9 @@ end if
 
 if emt = true then
 Helpers::EmitOp(optok, true)
+Helpers::StringFlg = false
 end if
+
 else
 lcint = Helpers::getCodeFromType(lctyp)
 rcint = Helpers::getCodeFromType(rctyp)
@@ -313,12 +321,16 @@ end if
 
 else
 
+var src1 as System.Type
+var snk1 as System.Type
+
 typ = gettype StringLiteral
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
 var slit as StringLiteral = tok
 if slit::Conv = false then
+//no conv
 tt = slit::LitTyp
 AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
 
@@ -330,9 +342,12 @@ if slit::MemberAccessFlg = true then
 ASMFactory::ChainFlg = true
 ASTEmit(slit::MemberToAccess, emt)
 end if
+
 goto fin
+
 else
-tt = slit::TTok
+//yes conv
+tt = slit::LitTyp
 AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
 
 if emt = true then
@@ -342,8 +357,22 @@ end if
 if slit::MemberAccessFlg = true then
 ASMFactory::ChainFlg = true
 ASTEmit(slit::MemberToAccess, emt)
-goto fin
 end if
+
+if emt = true then
+src1 = AsmFactory::Type02
+end if
+
+tt = slit::TTok
+AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+
+if emt = true then
+snk1 = AsmFactory::Type02
+Helpers::EmitConv(src1, snk1)
+end if
+
+
+goto fin
 end if
 end if
 
@@ -353,6 +382,7 @@ b = typ::IsInstanceOfType($object$tok)
 if b = true then
 var lit as Literal = tok
 if lit::Conv = false then
+//no conv
 tt = lit::LitTyp
 AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
 
@@ -361,13 +391,29 @@ Helpers::EmitLiteral(lit)
 end if
 
 goto fin
+
 else
-tt = lit::TTok
-AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+//yes conv
 
 if emt = true then
 Helpers::EmitLiteral(lit)
 end if
+
+tt = lit::LitTyp
+AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+
+if emt = true then
+src1 = AsmFactory::Type02
+end if
+
+tt = lit::TTok
+AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+
+if emt = true then
+snk1 = AsmFactory::Type02
+Helpers::EmitConv(src1, snk1)
+end if
+
 
 goto fin
 end if
@@ -384,8 +430,6 @@ var idtcomp as integer = 0
 var idttyp as System.Type
 var arrlocexpr as Expr
 var idtarrloc as Ident
-var src1 as System.Type
-var snk1 as System.Type
 
 if b = true then
 idt = tok
@@ -725,8 +769,114 @@ end if
 end if
 goto fin
 else
+
+//not chaining yes conv
+i = -1
+
+label loop5
+label cont5
+
+if mcparams[l] = 0 then
+typarr1 = System.Type::EmptyTypes
+goto cont5
+end if
+
+place loop5
+
+i++
+curexpr = mcparams[i]
+
+if curexpr::Tokens[l] = 1 then
+rpnparam = curexpr
+else
+if curexpr::Tokens[l] >= 3 then
+rpnparam = ConvToRPN(curexpr)
+end if
+end if
+
+astparam = ConvToAST(rpnparam)
+ASTEmit(astparam, emt)
+
+typarr2 = AsmFactory::TypArr
+AsmFactory::TypArr = typarr1
+AsmFactory::AddTyp(AsmFactory::Type02)
+typarr1 = AsmFactory::TypArr
+AsmFactory::TypArr = typarr2
+
+if i = paramlen then
+goto cont5
+else
+goto loop5
+end if
+
+place cont5
+
+if mnstrarr[l] >= 2 then
+
+i = -1
+len = mnstrarr[l] - 2
+
+label loop6
+label cont6
+
+place loop6
+i++
+
+if i = 0 then
+mcvr = SymTable::FindVar(mnstrarr[i])
+
+if vr <> null then
+mcparenttyp = mcvr::VarTyp
+mcisstatic = false
+else
+mcparenttyp = Loader::LoadClass(mnstrarr[i])
+mcisstatic = true
+end if
+
+else
+mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
+mcparenttyp = mcfldinf::get_FieldType()
+end if
+
+if i = len then
+i++
+goto cont6
+else
+goto loop6
+end if 
+
+place cont6
+
+mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], typarr1)
+AsmFactory::Type02 = mcmetinf::get_ReturnType()
+
+if emt = true then
+AsmFactory::PopFlg = mctok::PopFlg
+Helpers::EmitMetCall(mcmetinf, mcisstatic)
+AsmFactory::PopFlg = false
+end if
+
+if mntok::MemberAccessFlg = true then
+ASMFactory::ChainFlg = true
+ASTEmit(mntok::MemberToAccess, emt)
+end if
+
+else
+i = 0
+end if
+
+if emt = true then
+src1 = AsmFactory::Type02
+end if
+
 tt = mntok::TTok
 AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+
+if emt = true then
+snk1 = AsmFactory::Type02
+Helpers::EmitConv(src1, snk1)
+end if
+
 goto fin
 end if
 end if

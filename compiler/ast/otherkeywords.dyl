@@ -174,6 +174,10 @@ class public auto ansi IfTok extends Token
 
 end class
 
+class public auto ansi ElseIfTok extends Token
+
+end class
+
 class public auto ansi ThenTok extends Token
 
 end class

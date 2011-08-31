@@ -4,14 +4,15 @@
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
     <AssemblyVersion>11.2.7.4</AssemblyVersion>
+    <AssemblyVersion>11.2.7.5</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.Literal</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents the 'null' keyword in the form of a literal of type object.</summary>
+    <remarks>This literal always evaluates to a null reference.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -20,11 +21,12 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Constructs a new NullLiteral.</summary>
+        <remarks>Also sets LitTyp to an ObjectTok instance.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -33,14 +35,15 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">The value to give to the 'Value' field which in this case is not useful.</param>
+        <summary>Constructs a new NullLiteral.</summary>
+        <remarks>Also sets LitTyp to an ObjectTok instance.</remarks>
       </Docs>
     </Member>
     <Member MemberName="NullVal">
@@ -49,13 +52,14 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Holds a null reference.</summary>
+        <remarks>The code generator will not use this null reference. Instead it will load one using the 'ldnull' opcode.</remarks>
       </Docs>
     </Member>
   </Members>

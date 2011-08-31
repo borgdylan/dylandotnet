@@ -12,7 +12,7 @@
   <Interfaces />
   <Docs>
     <summary>Represents the 'null' keyword.</summary>
-    <remarks>Evaluated to a null pointer by the code generator.</remarks>
+    <remarks>This class is deprecated and as from 11.2.7.4 is no longer available in the AST. Use the NullLiteral class instead.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

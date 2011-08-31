@@ -1,3 +1,19 @@
+dylandotnet (11.2.7.4-5) unstable; urgency=low
+
+  * Changing debian directory for mentors upload
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Mon, 22 Aug 2011 13:32:01 +0200
+
+dylandotnet (11.2.7.4-1) natty; urgency=low
+
+  * The compiler now partially works
+  * Adding support for some operator and constant load emmision
+  * Adding support for method call emission(static only for now)
+  * Adding support for the 'null' keyword
+  * Bumping up version to 11.2.7.4
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Wed, 17 Aug 2011 20:41:45 +0200
+
 dylandotnet (11.2.7.3-0test1) natty; urgency=low
 
   * Adding partial ast documentation.

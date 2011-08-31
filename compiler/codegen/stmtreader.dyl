@@ -297,7 +297,10 @@ if b = true then
 var mtss as MethodStmt = stm
 
 ILEmitter::StaticFlg = false
+
 SymTable::ResetVar()
+SymTable::ResetIf()
+
 var mattrs as Attributes.Attribute[] = mtss::Attrs
 var ma as MethodAttributes = Helpers::ProcessMethodAttrs(mattrs)
 var mtssnam as Ident = mtss::MethodName
@@ -488,6 +491,78 @@ eval = new Evaluator()
 eval::Evaluate(mcstmtexp)
 goto fin
 end if
+
+var ifendl as Emit.Label
+var ifnbl as Emit.Label
+
+typ = gettype IfStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var ifstm as IfStmt = stm
+SymTable::AddIf()
+var ifexp as Expr = ifstm::Exp
+eval = new Evaluator()
+eval::Evaluate(ifexp)
+
+ifnbl = SymTable::ReadIfNxtBlkLbl()
+ILEmitter::EmitBrfalse(ifnbl)
+
+goto fin
+end if
+
+typ = gettype ElseIfStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+
+ifendl = SymTable::ReadIfEndLbl()
+ILEmitter::EmitBr(ifendl)
+ifnbl = SymTable::ReadIfNxtBlkLbl()
+ILEmitter::MarkLbl(ifnbl)
+SymTable::SetIfNxtBlkLbl()
+
+var elifstm as ElseIfStmt = stm
+var elifexp as Expr = elifstm::Exp
+eval = new Evaluator()
+eval::Evaluate(elifexp)
+
+ifnbl = SymTable::ReadIfNxtBlkLbl()
+ILEmitter::EmitBrfalse(ifnbl)
+
+goto fin
+end if
+
+typ = gettype ElseStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+ifendl = SymTable::ReadIfEndLbl()
+ILEmitter::EmitBr(ifendl)
+ifnbl = SymTable::ReadIfNxtBlkLbl()
+ILEmitter::MarkLbl(ifnbl)
+SymTable::SetIfElsePass()
+goto fin
+end if
+
+typ = gettype EndIfStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+
+b = SymTable::ReadIfElsePass()
+
+if b = false then
+ifnbl = SymTable::ReadIfNxtBlkLbl()
+ILEmitter::MarkLbl(ifnbl)
+end if
+
+ifendl = SymTable::ReadIfEndLbl()
+ILEmitter::MarkLbl(ifendl)
+SymTable::PopIf()
+goto fin
+end if
+
 
 place fin
 

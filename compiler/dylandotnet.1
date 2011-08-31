@@ -1,6 +1,6 @@
 .\"Created with GNOME Manpages Editor Wizard
 .\"http://sourceforge.net/projects/gmanedit2
-.TH dylandotnet 1 "July 8, 2011" "" "dylan.NET"
+.TH dylandotnet 1 "August 31, 2011" "11.2.7.5" "dylan.NET"
 
 .SH NAME
 dylandotnet \- A program for compiling dylan.NET source code into Mono compatible bytecode.
@@ -26,9 +26,46 @@ The file name of the file having the assembly definition and #include directives
 .B dylandotnet
 in the form : "dylandotnet file-name.dyl" ;where file-name.dyl is the file mentioned before. The extension can be anything you want but .dyl will identify the file as being dylan.NET source.
 
+.SH FILES
+.PP
+This is the list of the most important files installed by the dylan.NET Makefile or Package whichever one was used for the install. Before these paths one should add /usr/ or /usr/local/ whichever prefix was chosen in the Makefile. In package installation cases the prefix is /usr/ .
 
-.SH VERSIONS
-11.2.7.1
+.B
+.IP bin/dylandotnet
+The dylan.NET executable script which when invoked in the terminal executes the compiler on the mono runtime.
+.B
+.IP lib/dylandonet/dnc.exe
+The main dylan.NET program is what is executed by the script. This reads in the command line arguments and launches the compiler phases in sequence.
+.B
+.IP lib/dylandonet/dnu.dll
+The dylan.NET utilities library housing some common functions for dylan.NET based code.
+.B
+.IP lib/dylandonet/dnr.dll
+The dylan.NET reflection and reflection emit library used by the code generation phase of the compiler.
+.B
+.IP lib/dylandonet/tokenizer.AST.dll
+The dylan.NET AST components library which houses all the AST parts used by the lexer and parser in order to represent inputted source code in a structure.
+.B
+.IP lib/dylandonet/tokenizer.Lexer.dll
+The dylan.NET lexer library which has functions for reading a source code file and turning it in tokens and statements.
+.B
+.IP lib/dylandonet/tokenizer.Parser.dll
+The dylan.NET parser library which has optimizers that can further refine the data output by the lexer library. The output is what is needed for code generation.
+.B
+.IP lib/dylandonet/tokenizer.CodeGen.dll
+The dylan.NET code generation library which contains functions for processing the AST structure and from it make MSIL bytecode whith the help of dnr.dll.
+.B
+.IP share/doc/dylandonet/changelog.gz
+This gzip archive contains the GIT changelog for dylan.NET. The file that is isnide is called log.txt.
+.B
+.IP share/doc/dylandonet/ast.tar.gz
+This tarball has inside it the API documentationf for the AST library. Other such tarballs with documentation will be added in the future.
+.B
+.IP share/man/man1/dylandonet.1
+This is this very man page for dylan.NET.
+
+.SH VERSION
+11.2.7.5
 
 .SH "SEE ALSO"
 See also http://launchpad.net/dylandotnet

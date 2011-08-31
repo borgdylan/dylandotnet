@@ -25,8 +25,6 @@ installdoc:
 	rm -f -r ast-html
 	
 installlog:
-	cp ChangeLog log.txt
-	gzip --best -f log.txt
 	$(install_sh_PROGRAM) log.txt.gz $(DESTDIR)$(docdir)/changelog.gz
 	
 install: prodscript installman installdoc installlog
@@ -60,9 +58,11 @@ uninstall: uninstallman uninstalldoc
 	rm -r -f $(DESTDIR)$(libdir)/$(PACKAGE)
 	
 distclean:
-	rm -f Makefile
 	
 tarball:
+	rm -f config.status
+	rm -f config.log
+	rm -f Makefile
 	mkdir -p ./../$(distdir)
 	cp -r * ./../$(distdir)
 	tar -czf ./../$(distdir).tar.gz ./../$(distdir)

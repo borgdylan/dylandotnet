@@ -77,9 +77,6 @@ class public auto ansi EndMethodStmt extends Stmt
 
 end class
 
-class public auto ansi EndIfStmt extends Stmt
-
-end class
 
 class public auto ansi EndEnumStmt extends Stmt
 

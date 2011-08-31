@@ -10,7 +10,7 @@ class public auto ansi Module1
 
 method public static void main(var args as string[])
 
-Console::WriteLine("dylan.NET Compiler v. 11.2.7.4 Alpha for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
+Console::WriteLine("dylan.NET Compiler v. 11.2.7.5 Alpha for Microsoft (R) .NET Framework (R) v. 3.5 SP1")
 Console::WriteLine("                           and Xamarin Mono v. 2.6.7/v. 2.10.x")
 Console::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 Console::WriteLine("Copyright (C) 2011 Dylan Borg")
@@ -18,7 +18,7 @@ if args[l] < 1 then
 Console::WriteLine("Usage: dylandotnet <file-name>")
 else
 
-//try
+try
 
 var p as string = args[0]
 var lx as Lexer = new Lexer()
@@ -89,13 +89,13 @@ cg::EmitMSIL(ppstmts, p)
 //var t8s as string = t8::ToString()
 //Console::WriteLine(t8s)
 
-//catch ex as Exception
+catch ex as Exception
 
-//var exstr as string = ex::ToString()
-//Console::WriteLine(exstr)
-//Console::ReadKey()
+var exstr as string = ex::ToString()
+Console::WriteLine(exstr)
+Console::ReadKey()
 
-//end try
+end try
 
 end if
 

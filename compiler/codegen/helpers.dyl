@@ -6,7 +6,13 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Helpers
+class public auto ansi beforefieldinit Helpers
+
+field public static boolean StringFlg
+
+method public static void ctor0()
+StringFlg = false
+end method
 
 method public static TypeAttributes ProcessClassAttrs(var attrs as Attributes.Attribute[])
 var ta as TypeAttributes
@@ -799,7 +805,11 @@ typ = gettype AddOp
 b = typ::IsInstanceOfType($object$op)
 
 if b = true then
+if StringFlg = true then
+ILEmitter::EmitStrAdd()
+else
 ILEmitter::EmitAdd(s)
+end if
 goto fin
 end if
 
@@ -887,7 +897,11 @@ typ = gettype EqOp
 b = typ::IsInstanceOfType($object$op)
 
 if b = true then
+if StringFlg = true then
+ILEmitter::EmitStrCeq()
+else
 ILEmitter::EmitCeq()
+end if
 goto fin
 end if
 
@@ -895,7 +909,12 @@ typ = gettype NeqOp
 b = typ::IsInstanceOfType($object$op)
 
 if b = true then
+
+if StringFlg = true then
+ILEmitter::EmitStrCneq()
+else
 ILEmitter::EmitCneq()
+end if
 goto fin
 end if
 
@@ -946,6 +965,27 @@ ILEmitter::EmitCall(m1)
 goto fin
 end if
 
+typ = gettype char
+b = sink::Equals(typ)
+
+if b = true then
+arr[0] = source
+m1 = convc::GetMethod("ToChar", arr)
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+
+typ = gettype decimal
+b = sink::Equals(typ)
+
+if b = true then
+arr[0] = source
+m1 = convc::GetMethod("ToDecimal", arr)
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
 typ = gettype double
 b = sink::Equals(typ)
 
@@ -955,6 +995,67 @@ m1 = convc::GetMethod("ToDouble", arr)
 ILEmitter::EmitCall(m1)
 goto fin
 end if
+
+typ = gettype single
+b = sink::Equals(typ)
+
+if b = true then
+arr[0] = source
+m1 = convc::GetMethod("ToSingle", arr)
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+typ = gettype long
+b = sink::Equals(typ)
+
+if b = true then
+arr[0] = source
+m1 = convc::GetMethod("ToInt64", arr)
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+typ = gettype integer
+b = sink::Equals(typ)
+
+if b = true then
+arr[0] = source
+m1 = convc::GetMethod("ToInt32", arr)
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+typ = gettype short
+b = sink::Equals(typ)
+
+if b = true then
+arr[0] = source
+m1 = convc::GetMethod("ToInt16", arr)
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+typ = gettype sbyte
+b = sink::Equals(typ)
+
+if b = true then
+arr[0] = source
+m1 = convc::GetMethod("ToSByte", arr)
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+typ = gettype boolean
+b = sink::Equals(typ)
+
+if b = true then
+arr[0] = source
+m1 = convc::GetMethod("ToBoolean", arr)
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
 
 place fin
 

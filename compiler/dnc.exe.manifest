@@ -1,34 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
-  <asmv1:assemblyIdentity name="dnc.exe" version="11.2.7.2" publicKeyToken="65306ddd4b769779" language="neutral" processorArchitecture="msil" type="win32" />
-  <description asmv2:publisher="Dylan Borg" asmv2:product="dylan.NET compiler" asmv2:supportUrl="http://launchpad.net/dylandotnet/" xmlns="urn:schemas-microsoft-com:asm.v1" />
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asmv1:assemblyIdentity name="dnc.exe" version="11.2.7.5" publicKeyToken="65306ddd4b769779" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="dnc" version="11.2.7.2" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="dnc" version="11.2.7.5" language="neutral" processorArchitecture="msil" />
     <commandLine file="dnc.exe" parameters="" />
   </entryPoint>
-  <co.v1:useManifestForTrust xmlns="urn:schemas-microsoft-com:asm.v1" />
   <trustInfo>
     <security>
       <applicationRequestMinimum>
         <PermissionSet class="System.Security.PermissionSet" version="1" Unrestricted="true" ID="Custom" SameSite="site" />
         <defaultAssemblyRequest permissionSetReference="Custom" />
       </applicationRequestMinimum>
-      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
-        <!--
-          UAC Manifest Options
-          If you want to change the Windows User Account Control level replace the 
-          requestedExecutionLevel node with one of the following.
-
-        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
-        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
-        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
-
-         If you want to utilize File and Registry Virtualization for backward 
-         compatibility then delete the requestedExecutionLevel node.
-    -->
-        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
-      </requestedPrivileges>
     </security>
   </trustInfo>
   <dependency>
@@ -44,72 +27,72 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="dnc.exe" size="4608">
-      <assemblyIdentity name="dnc" version="11.2.3.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="dnc.exe" size="5120">
+      <assemblyIdentity name="dnc" version="11.2.7.4" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>VR6Y22rNKRoehFz0ChZjDJ73mWc=</dsig:DigestValue>
+        <dsig:DigestValue>ct28WMT36mPui7NHQd9jSSYgKAk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="dnu.dll" size="10240">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="dnu.dll" size="9216">
       <assemblyIdentity name="dnu" version="1.1.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>9oNbTSolIzMjqApD+5+d5ODzvU4=</dsig:DigestValue>
+        <dsig:DigestValue>9DJuxNtEUbQArqJKSracr5eWpww=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="tokenizer.AST.dll" size="36864">
-      <assemblyIdentity name="tokenizer.AST" version="11.2.3.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="tokenizer.AST.dll" size="45056">
+      <assemblyIdentity name="tokenizer.AST" version="11.2.7.5" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>j7hOfiEEX7xAyh/vywUFdZIf2l0=</dsig:DigestValue>
+        <dsig:DigestValue>lPFhmESMQcLTuCfvHLdpZA+fJZs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="tokenizer.Lexer.dll" size="10240">
-      <assemblyIdentity name="tokenizer.Lexer" version="11.2.3.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="tokenizer.Lexer.dll" size="12288">
+      <assemblyIdentity name="tokenizer.Lexer" version="11.2.7.5" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ZuQbNHNnWoYTnLjJBprAOABwWr4=</dsig:DigestValue>
+        <dsig:DigestValue>wE6/s7Bq28V1gVrlLsWVJY3LSho=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="tokenizer.Parser.dll" size="49152">
-      <assemblyIdentity name="tokenizer.Parser" version="11.2.3.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="tokenizer.Parser.dll" size="65536">
+      <assemblyIdentity name="tokenizer.Parser" version="11.2.7.5" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>+GDc9xC5soajbIvTXuNxwFpaTwI=</dsig:DigestValue>
+        <dsig:DigestValue>LVunYNjc/unUR1Ru6HOlOkeZV90=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="dnc.pdb" size="15872" group="DefaultGroup" optional="true" writeableType="applicationData">
+  <file name="dnc.pdb" size="11776" group="DefaultGroup" optional="true" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>ydbZRvbXNV10KnNyHUKhIb2kDwE=</dsig:DigestValue>
+      <dsig:DigestValue>86hZBB1JCC+I2UQyiFImdG2uP/g=</dsig:DigestValue>
     </hash>
   </file>
   <file name="dnc.xml" size="90" group="DefaultGroup" optional="true" writeableType="applicationData">
@@ -121,13 +104,13 @@
       <dsig:DigestValue>kqBkRG1oI1Z9OzTXSqJR8R3Iozo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="dnu.pdb" size="30208" group="DefaultGroup" optional="true" writeableType="applicationData">
+  <file name="dnu.pdb" size="28160" group="DefaultGroup" optional="true" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>9U8rk1TckSsSzopteTRcUnZnq60=</dsig:DigestValue>
+      <dsig:DigestValue>2vCOj3hwArqEcGSxzN5Sx81jjcw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="dnu.xml" size="90" group="DefaultGroup" optional="true" writeableType="applicationData">
@@ -139,13 +122,13 @@
       <dsig:DigestValue>7s9apFlBgCA5y0gih1rE0St5Bgo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="tokenizer.AST.pdb" size="175616" group="DefaultGroup" optional="true" writeableType="applicationData">
+  <file name="tokenizer.AST.pdb" size="153088" group="DefaultGroup" optional="true" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>LfcfBlIrmrXfW1Je+04tvvHCPLs=</dsig:DigestValue>
+      <dsig:DigestValue>WtcMVbTD7c2yV9/qKnSmeR4vnJU=</dsig:DigestValue>
     </hash>
   </file>
   <file name="tokenizer.AST.xml" size="100" group="DefaultGroup" optional="true" writeableType="applicationData">
@@ -157,13 +140,13 @@
       <dsig:DigestValue>2mMOnUSEV17vJP9L+kRZ1btu7Uc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="tokenizer.Lexer.pdb" size="24064" group="DefaultGroup" optional="true" writeableType="applicationData">
+  <file name="tokenizer.Lexer.pdb" size="22016" group="DefaultGroup" optional="true" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>s6JwMA9ftFkwJBmtFnvWRcUVWQ0=</dsig:DigestValue>
+      <dsig:DigestValue>DojDy+Y8pfN1SWeVMmxg0QC9uwM=</dsig:DigestValue>
     </hash>
   </file>
   <file name="tokenizer.Lexer.xml" size="102" group="DefaultGroup" optional="true" writeableType="applicationData">
@@ -175,13 +158,13 @@
       <dsig:DigestValue>sYkFyozy5bapcGZ3Y5AEj3luE1Y=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="tokenizer.Parser.pdb" size="56832" group="DefaultGroup" optional="true" writeableType="applicationData">
+  <file name="tokenizer.Parser.pdb" size="67072" group="DefaultGroup" optional="true" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>iL6Of+yWrsMBQKVyBJwdMeOukk0=</dsig:DigestValue>
+      <dsig:DigestValue>yKky0ctX0gECRevSnG4AHgkBu0k=</dsig:DigestValue>
     </hash>
   </file>
   <file name="tokenizer.Parser.xml" size="103" group="DefaultGroup" optional="true" writeableType="applicationData">
@@ -193,5 +176,4 @@
       <dsig:DigestValue>S2Z2SYWXCwK9CgPIyMFnKSvjPQ4=</dsig:DigestValue>
     </hash>
   </file>
-  <publisherIdentity name="CN=PC\Dylan" issuerKeyHash="fa0dcbe4c121f92d6e60de3897c370e3c6dbaa2f" />
 </asmv1:assembly>

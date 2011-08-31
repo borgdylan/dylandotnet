@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.7.4">
+    <Assembly Name="tokenizer.AST" Version="11.2.7.5">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("tokenizer.AST")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.4")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.5")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("tokenizer.AST")</AttributeName>
@@ -44,6 +44,7 @@
       <Type Name="DebugStmt" Kind="Class" />
       <Type Name="DecStmt" Kind="Class" />
       <Type Name="DependStmt" Kind="Class" />
+      <Type Name="ElseIfStmt" Kind="Class" />
       <Type Name="ElseStmt" Kind="Class" />
       <Type Name="EndClassStmt" Kind="Class" />
       <Type Name="EndEnumStmt" Kind="Class" />
@@ -96,6 +97,7 @@
       <Type Name="DebugTok" Kind="Class" />
       <Type Name="DependTok" Kind="Class" />
       <Type Name="DllTok" Kind="Class" />
+      <Type Name="ElseIfTok" Kind="Class" />
       <Type Name="ElseTok" Kind="Class" />
       <Type Name="EndTok" Kind="Class" />
       <Type Name="EnumTok" Kind="Class" />
