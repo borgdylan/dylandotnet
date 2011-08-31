@@ -1,3 +1,11 @@
+commit 5d771673344db62556a0169ceda8a6a9c4ea89b9
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Wed Aug 31 15:14:53 2011 +0200
+
+    Updating dylan.NET GIT and BZR. Adding complete support for if statements complete with elseif support. Adding support for concatenation of string literals using '+' and comparison of the latter using '==' or '=' the last being legal only in an if statement. Adding more conversion target types and enabling conversion on all tokens that should support it. Adding remova of Makefile,config.status and config.log on tarball make. Updating assemblies and man page to 11.2.7.5
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit b06229ae8c24ac063b2f2ec51c746b7f0ab61c0e
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Wed Aug 17 20:09:43 2011 +0200
