@@ -1,3 +1,26 @@
+dylandotnet (11.2.7.6-1) natty; urgency=low
+
+  * Adding support for new and gettype expressions.
+  * Updating conversion subsystem.
+  * Adding operator overloading.
+  * Adding like, notlike, %, >, <, >_, <= operators.
+  * Updating man page.
+  * Adding -V and -h command line options
+  * Changing pattern matching in paresr to use Regex instead of the VB.NET Like operator.
+  * Updating assembly versions to 11.2.7.6
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Wed, 21 Sep 2011 10:21:52 +0200
+
+dylandotnet (11.2.7.5-1) natty; urgency=low
+
+  * Adding support for if statements.
+  * Updating conversion subsystem.
+  * Updating AST docs.
+  * Updating man page.
+  * Updating assembly versions to 11.2.7.5.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Wed, 31 Aug 2011 15:42:52 +0200
+
 dylandotnet (11.2.7.4-5) unstable; urgency=low
 
   * Changing debian directory for mentors upload

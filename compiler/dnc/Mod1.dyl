@@ -15,12 +15,118 @@ Console::WriteLine("                           and Xamarin Mono v. 2.6.7/v. 2.10
 Console::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 Console::WriteLine("Copyright (C) 2011 Dylan Borg")
 if args[l] < 1 then
-Console::WriteLine("Usage: dylandotnet <file-name>")
+Console::WriteLine("Usage: dylandotnet [options] <file-name>")
 else
 
-try
+//try
 
-var p as string = args[0]
+var p as string = ""
+
+var len as integer = args[l] - 1
+var i as integer = -1
+var comp as integer = 0
+var curarg as string = ""
+var tmpstr as string = ""
+var temptyp as System.Type
+var asm as Assembly
+
+
+label loop
+label cont
+label fin
+label ext
+
+place loop
+
+i++
+
+curarg = args[i]
+
+comp = String::Compare(curarg, "-V")
+if comp = 0 then
+
+Console::WriteLine()
+Console::WriteLine("dylan.NET Version Info:")
+
+asm = Assembly::GetExecutingAssembly()
+tmpstr = asm::ToString()
+Console::WriteLine(tmpstr)
+
+temptyp = gettype Loader
+asm = Assembly::GetAssembly(temptyp)
+tmpstr = asm::ToString()
+Console::WriteLine(tmpstr)
+
+temptyp = gettype XmlUtils
+asm = Assembly::GetAssembly(temptyp)
+tmpstr = asm::ToString()
+Console::WriteLine(tmpstr)
+
+temptyp = gettype CodeGenerator
+asm = Assembly::GetAssembly(temptyp)
+tmpstr = asm::ToString()
+Console::WriteLine(tmpstr)
+
+temptyp = gettype Parser
+asm = Assembly::GetAssembly(temptyp)
+tmpstr = asm::ToString()
+Console::WriteLine(tmpstr)
+
+temptyp = gettype Lexer
+asm = Assembly::GetAssembly(temptyp)
+tmpstr = asm::ToString()
+Console::WriteLine(tmpstr)
+
+temptyp = gettype StmtSet
+asm = Assembly::GetAssembly(temptyp)
+tmpstr = asm::ToString()
+Console::WriteLine(tmpstr)
+
+Console::WriteLine()
+Console::WriteLine("Runtime & OS Version Info:")
+
+temptyp = gettype string
+asm = Assembly::GetAssembly(temptyp)
+tmpstr = asm::ToString()
+Console::WriteLine(tmpstr)
+
+var runver as Version = Environment::get_Version()
+var runverstr as string = runver::ToString()
+
+Console::Write("Runtime Version: ")
+Console::WriteLine(runverstr)
+
+var os as OperatingSystem = Environment::get_OSVersion()
+var osverstr as string = os::ToString()
+
+Console::Write("OS: ")
+Console::WriteLine(osverstr)
+
+goto ext
+end if
+
+comp = String::Compare(curarg, "-h")
+if comp = 0 then
+Console::WriteLine()
+Console::WriteLine("Usage: dylandotnet [options] <file-name>")
+Console::WriteLine("Options:")
+Console::WriteLine("   -V : View Version Nrs. for all dylan.NET assemblies")
+Console::WriteLine("   -h : View this help message")
+goto ext
+end if
+
+p = args[i]
+
+place fin
+
+if i >= len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
 var lx as Lexer = new Lexer()
 Console::Write("Now Lexing: ")
 Console::Write(p)
@@ -34,6 +140,9 @@ Console::WriteLine("...Done.")
 var cg as CodeGenerator = new CodeGenerator()
 cg::EmitMSIL(ppstmts, p)
 
+//var dect as System.Type = gettype decimal
+//var ops as MethodInfo[] = Loader::LoadSpecMtds(dect)
+//var addo as MethodInfo = Loader::LoadBinOp(dect, "op_Addition", dect, dect)
 //var typs as System.Type[] = newarr System.Type 2
 //typs[0] = gettype string
 //typs[1] = gettype string
@@ -89,15 +198,17 @@ cg::EmitMSIL(ppstmts, p)
 //var t8s as string = t8::ToString()
 //Console::WriteLine(t8s)
 
-catch ex as Exception
+//catch ex as Exception
 
-var exstr as string = ex::ToString()
-Console::WriteLine(exstr)
-Console::ReadKey()
+//var exstr as string = ex::ToString()
+//Console::WriteLine(exstr)
+//Console::ReadKey()
 
-end try
+//end try
 
 end if
+
+place ext
 
 end method
 

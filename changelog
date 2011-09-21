@@ -1,3 +1,11 @@
+commit d8c7dcb461c1e6e9367bba67f52d48cc313d13ca
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Wed Aug 31 15:24:14 2011 +0200
+
+    Updating changelogs and adding new 11.2.7.5 tarball...uscan can now be used.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 5d771673344db62556a0169ceda8a6a9c4ea89b9
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Wed Aug 31 15:14:53 2011 +0200

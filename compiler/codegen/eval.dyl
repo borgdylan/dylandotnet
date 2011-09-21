@@ -299,6 +299,12 @@ end if
 
 b = lctyp::Equals(rctyp)
 if b = true then
+Helpers::OpCodeSuppFlg = lctyp::get_IsPrimitive()
+else
+Helpers::OpCodeSuppFlg = false
+end if
+
+//if b = true then
 
 typ = gettype ConditionalOp
 b = typ::IsInstanceOfType($object$optok)
@@ -310,14 +316,17 @@ AsmFactory::Type02 = lctyp
 end if
 
 if emt = true then
+Helpers::LeftOp = lctyp
+Helpers::RightOp = rctyp
 Helpers::EmitOp(optok, true)
 Helpers::StringFlg = false
+Helpers::OpCodeSuppFlg = false
 end if
 
-else
-lcint = Helpers::getCodeFromType(lctyp)
-rcint = Helpers::getCodeFromType(rctyp)
-end if
+//else
+//lcint = Helpers::getCodeFromType(lctyp)
+//rcint = Helpers::getCodeFromType(rctyp)
+//end if
 
 else
 
@@ -563,6 +572,7 @@ b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
 var mcparenttyp as System.Type
+var nctyp as System.Type
 var mctok as MethodCallTok = tok
 var mntok as MethodNameTok = mctok::Name
 var mnstr as string = ""
@@ -575,6 +585,7 @@ var curexpr as Expr
 var rpnparam as Expr
 var astparam as Token
 var mcmetinf as MethodInfo
+var ncctorinf as ConstructorInfo
 var mcfldinf as FieldInfo
 var mcvr as VarItem
 var mcisstatic as boolean = false
@@ -879,6 +890,101 @@ end if
 
 goto fin
 end if
+end if
+
+typ = gettype NewCallTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+
+var nctok as NewCallTok = tok
+tt = nctok::Name
+nctyp = Helpers::CommitEvalTTok(tt)
+mcparams = nctok::Params
+paramlen = mcparams[l] - 1
+
+label ncloop
+label nccont
+
+if mcparams[l] = 0 then
+typarr1 = System.Type::EmptyTypes
+goto nccont
+else
+typarr1 = newarr System.Type 0
+end if
+
+i = -1
+
+place ncloop
+
+i++
+curexpr = mcparams[i]
+
+if curexpr::Tokens[l] = 1 then
+rpnparam = curexpr
+else
+if curexpr::Tokens[l] >= 3 then
+rpnparam = ConvToRPN(curexpr)
+end if
+end if
+
+astparam = ConvToAST(rpnparam)
+ASTEmit(astparam, emt)
+
+typarr2 = AsmFactory::TypArr
+AsmFactory::TypArr = typarr1
+AsmFactory::AddTyp(AsmFactory::Type02)
+typarr1 = AsmFactory::TypArr
+AsmFactory::TypArr = typarr2
+
+if i = paramlen then
+goto nccont
+else
+goto ncloop
+end if
+
+place nccont
+
+ncctorinf = nctyp::GetConstructor(typarr1)
+
+if emt = true then
+ILEmitter::EmitNewobj(ncctorinf)
+end if
+
+AsmFactory::Type02 = nctyp
+goto fin
+end if
+
+typ = gettype GettypeCallTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+
+if emt = true then
+
+var gtctok as GettypeCallTok = tok
+tt = gtctok::Name
+typ = Helpers::CommitEvalTTok(tt)
+ILEmitter::EmitLdtoken(typ)
+
+typarr1 = newarr System.Type 0
+
+typarr2 = AsmFactory::TypArr
+AsmFactory::TypArr = typarr1
+typ = gettype System.RuntimeTypeHandle
+AsmFactory::AddTyp(typ)
+typarr1 = AsmFactory::TypArr
+AsmFactory::TypArr = typarr2
+
+typ = gettype System.Type
+mcmetinf = typ::GetMethod("GetTypeFromHandle", typarr1)
+ILEmitter::EmitCall(mcmetinf)
+
+end if
+
+AsmFactory::Type02 = gettype System.Type
+
+goto fin
 end if
 
 place fin

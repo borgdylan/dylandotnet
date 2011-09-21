@@ -23,16 +23,17 @@ import Microsoft.VisualBasic.FileIO
 import System.Xml.XPath
 import System.Windows.Forms
 import System.Runtime.InteropServices
+import System.Text.RegularExpressions
 
 locimport dylan.NET.Utils
 locimport dylan.NET
 
 assembly dnu dll
-ver 1.1.0.0
+ver 11.2.7.5
 
 namespace dylan.NET.Utils
-#include E:\Code\dylannet\dnu\consts.txt
-#include E:\Code\dylannet\dnu\xmlu.txt
-#include E:\Code\dylannet\dnu\parseu.txt
-#include E:\Code\dylannet\dnu\winapi.txt
+#include E:\Code\dylannet\dnu\dnu\consts.dyl
+#include E:\Code\dylannet\dnu\dnu\xmlu.dyl
+#include E:\Code\dylannet\dnu\dnu\parseu.dyl
+// #include E:\Code\dylannet\dnu\dnu\winapi.txt
 end namespace

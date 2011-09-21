@@ -80,3 +80,91 @@ end method
 
 
 end class
+
+class public auto ansi NewCallTok extends Token
+
+field public TypeTok Name
+field public Expr[] Params
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+Name = new TypeTok()
+Params = newarr Expr 0
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+Name = new TypeTok()
+Params = newarr Expr 0
+end method
+
+method public void AddParam(var paramtoadd as Expr)
+
+var len as integer = Params[l]
+var destl as integer = len + 1
+var stopel as integer = len - 1
+var i as integer = -1
+
+var destarr as Expr[] = newarr Expr destl
+
+label loop
+label cont
+
+place loop
+
+i = i + 1
+
+if len > 0 then
+
+destarr[i] = Params[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+if len = 0 then
+me::Line = paramtoadd::Line
+end if
+
+destarr[len] = paramtoadd
+
+Params = destarr
+
+end method
+
+
+end class
+
+class public auto ansi GettypeCallTok extends Token
+
+field public TypeTok Name
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+Name = new TypeTok()
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+Name = new TypeTok()
+end method
+
+end class

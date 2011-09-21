@@ -262,8 +262,7 @@ end method
 
 method public static boolean LikeOP(var str as string, var pattern as string)
 
-var binmet as CompareMethod = 0
-var likefunc as boolean = LikeOperator::LikeString(str, pattern, binmet)
+var likefunc as boolean = Regex::IsMatch(str, pattern)
 
 return likefunc
 

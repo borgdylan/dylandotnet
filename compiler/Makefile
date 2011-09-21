@@ -69,7 +69,7 @@ AUTOMAKE = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run automa
 AWK = gawk
 CYGPATH_W = echo
 DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.7.5\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.7.5\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.7.5\"
-DYLANDOTNET = /usr/local/bin/dylandotnet
+DYLANDOTNET = /usr/bin/dylandotnet
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
@@ -482,8 +482,6 @@ installlog:
 install: prodscript installman installdoc installlog
 	$(install_sh_PROGRAM) dylandotnet $(DESTDIR)$(bindir)/dylandotnet
 	chmod a+x $(DESTDIR)$(bindir)/dylandotnet
-	$(install_sh_PROGRAM) Microsoft.VisualBasic.dll $(DESTDIR)$(libdir)/$(PACKAGE)/Microsoft.VisualBasic.dll
-	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/Microsoft.VisualBasic.dll
 	$(install_sh_PROGRAM) dnu.dll $(DESTDIR)$(libdir)/$(PACKAGE)/dnu.dll
 	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/dnu.dll
 	$(install_sh_PROGRAM) dnr.dll $(DESTDIR)$(libdir)/$(PACKAGE)/dnr.dll

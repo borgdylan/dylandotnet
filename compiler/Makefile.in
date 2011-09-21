@@ -482,8 +482,6 @@ installlog:
 install: prodscript installman installdoc installlog
 	$(install_sh_PROGRAM) dylandotnet $(DESTDIR)$(bindir)/dylandotnet
 	chmod a+x $(DESTDIR)$(bindir)/dylandotnet
-	$(install_sh_PROGRAM) Microsoft.VisualBasic.dll $(DESTDIR)$(libdir)/$(PACKAGE)/Microsoft.VisualBasic.dll
-	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/Microsoft.VisualBasic.dll
 	$(install_sh_PROGRAM) dnu.dll $(DESTDIR)$(libdir)/$(PACKAGE)/dnu.dll
 	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/dnu.dll
 	$(install_sh_PROGRAM) dnr.dll $(DESTDIR)$(libdir)/$(PACKAGE)/dnr.dll

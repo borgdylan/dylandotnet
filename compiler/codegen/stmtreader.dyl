@@ -15,6 +15,12 @@ var b as boolean = false
 
 label fin
 
+if AsmFactory::DebugFlg = true then
+if AsmFactory::InMethodFlg = true then
+ILEmitter::MarkDbgPt(stm::Line)
+end if
+end if
+
 typ = gettype RefasmStmt
 b = typ::IsInstanceOfType($object$stm)
 
@@ -336,7 +342,7 @@ end if
 
 
 var typb as TypeBuilder = AsmFactory::CurnTypB
-var isconstr as boolean = ParseUtils::LikeOP(mtssnamstr, "ctor*")
+var isconstr as boolean = ParseUtils::LikeOP(mtssnamstr, "^ctor(.)*$")
 if isconstr = false then
 AsmFactory::CurnMetB = typb::DefineMethod(mtssnamstr, ma, rettyp, AsmFactory::TypArr)
 AsmFactory::InitMtd()

@@ -9,9 +9,15 @@
 class public auto ansi beforefieldinit Helpers
 
 field public static boolean StringFlg
+field public static boolean OpCodeSuppFlg
+field public static System.Type LeftOp
+field public static System.Type RightOp
 
 method public static void ctor0()
 StringFlg = false
+OpCodeSuppFlg = false
+LeftOp = null
+RightOp = null
 end method
 
 method public static TypeAttributes ProcessClassAttrs(var attrs as Attributes.Attribute[])
@@ -800,15 +806,24 @@ method public static void EmitOp(var op as Op, var s as boolean)
 label fin
 var typ as System.Type
 var b as boolean
+var mtd as MethodInfo = null
 
 typ = gettype AddOp
 b = typ::IsInstanceOfType($object$op)
 
 if b = true then
+mtd = Loader::LoadBinOp(LeftOp, "op_Addition", LeftOp, RightOp)
+if mtd <> null then
+ILEmitter::EmitCall(mtd)
+AsmFactory::Type02 = mtd::get_ReturnType()
+else
 if StringFlg = true then
 ILEmitter::EmitStrAdd()
 else
+if OpCodeSuppFlg = true then
 ILEmitter::EmitAdd(s)
+end if
+end if
 end if
 goto fin
 end if
@@ -817,7 +832,15 @@ typ = gettype MulOp
 b = typ::IsInstanceOfType($object$op)
 
 if b = true then
+mtd = Loader::LoadBinOp(LeftOp, "op_Multiply", LeftOp, RightOp)
+if mtd <> null then
+ILEmitter::EmitCall(mtd)
+AsmFactory::Type02 = mtd::get_ReturnType()
+else
+if OpCodeSuppFlg = true then
 ILEmitter::EmitMul(s)
+end if
+end if
 goto fin
 end if
 
@@ -825,7 +848,15 @@ typ = gettype SubOp
 b = typ::IsInstanceOfType($object$op)
 
 if b = true then
+mtd = Loader::LoadBinOp(LeftOp, "op_Subtraction", LeftOp, RightOp)
+if mtd <> null then
+ILEmitter::EmitCall(mtd)
+AsmFactory::Type02 = mtd::get_ReturnType()
+else
+if OpCodeSuppFlg = true then
 ILEmitter::EmitSub(s)
+end if
+end if
 goto fin
 end if
 
@@ -833,7 +864,31 @@ typ = gettype DivOp
 b = typ::IsInstanceOfType($object$op)
 
 if b = true then
+mtd = Loader::LoadBinOp(LeftOp, "op_Division", LeftOp, RightOp)
+if mtd <> null then
+ILEmitter::EmitCall(mtd)
+AsmFactory::Type02 = mtd::get_ReturnType()
+else
+if OpCodeSuppFlg = true then
 ILEmitter::EmitDiv(s)
+end if
+end if
+goto fin
+end if
+
+typ = gettype ModOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+mtd = Loader::LoadBinOp(LeftOp, "op_Modulus", LeftOp, RightOp)
+if mtd <> null then
+ILEmitter::EmitCall(mtd)
+AsmFactory::Type02 = mtd::get_ReturnType()
+else
+if OpCodeSuppFlg = true then
+ILEmitter::EmitRem(s)
+end if
+end if
 goto fin
 end if
 
@@ -893,14 +948,84 @@ ILEmitter::EmitXnor()
 goto fin
 end if
 
+typ = gettype GtOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+mtd = Loader::LoadBinOp(LeftOp, "op_GreaterThan", LeftOp, RightOp)
+if mtd <> null then
+ILEmitter::EmitCall(mtd)
+AsmFactory::Type02 = mtd::get_ReturnType()
+else
+if OpCodeSuppFlg = true then
+ILEmitter::EmitCgt(s)
+end if
+end if
+goto fin
+end if
+
+typ = gettype LtOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+mtd = Loader::LoadBinOp(LeftOp, "op_LessThan", LeftOp, RightOp)
+if mtd <> null then
+ILEmitter::EmitCall(mtd)
+AsmFactory::Type02 = mtd::get_ReturnType()
+else
+if OpCodeSuppFlg = true then
+ILEmitter::EmitClt(s)
+end if
+end if
+goto fin
+end if
+
+typ = gettype GeOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+mtd = Loader::LoadBinOp(LeftOp, "op_GreaterThanOrEqual", LeftOp, RightOp)
+if mtd <> null then
+ILEmitter::EmitCall(mtd)
+AsmFactory::Type02 = mtd::get_ReturnType()
+else
+if OpCodeSuppFlg = true then
+ILEmitter::EmitCge(s)
+end if
+end if
+goto fin
+end if
+
+typ = gettype LeOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+mtd = Loader::LoadBinOp(LeftOp, "op_LessThanOrEqual", LeftOp, RightOp)
+if mtd <> null then
+ILEmitter::EmitCall(mtd)
+AsmFactory::Type02 = mtd::get_ReturnType()
+else
+if OpCodeSuppFlg = true then
+ILEmitter::EmitCle(s)
+end if
+end if
+goto fin
+end if
+
 typ = gettype EqOp
 b = typ::IsInstanceOfType($object$op)
 
 if b = true then
+mtd = Loader::LoadBinOp(LeftOp, "op_Equality", LeftOp, RightOp)
+if mtd <> null then
+ILEmitter::EmitCall(mtd)
+AsmFactory::Type02 = mtd::get_ReturnType()
+else
 if StringFlg = true then
 ILEmitter::EmitStrCeq()
 else
 ILEmitter::EmitCeq()
+end if
 end if
 goto fin
 end if
@@ -909,11 +1034,37 @@ typ = gettype NeqOp
 b = typ::IsInstanceOfType($object$op)
 
 if b = true then
-
+mtd = Loader::LoadBinOp(LeftOp, "op_Inequality", LeftOp, RightOp)
+if mtd <> null then
+ILEmitter::EmitCall(mtd)
+AsmFactory::Type02 = mtd::get_ReturnType()
+else
 if StringFlg = true then
 ILEmitter::EmitStrCneq()
 else
 ILEmitter::EmitCneq()
+end if
+end if
+goto fin
+end if
+
+typ = gettype LikeOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+if StringFlg = true then
+ILEmitter::EmitLike()
+end if
+goto fin
+end if
+
+typ = gettype NLikeOp
+b = typ::IsInstanceOfType($object$op)
+
+if b = true then
+
+if StringFlg = true then
+ILEmitter::EmitNLike()
 end if
 goto fin
 end if
@@ -940,11 +1091,48 @@ method public static void EmitConv(var source as System.Type, var sink as System
 var typ as System.Type
 var convc as System.Type = gettype System.Convert
 var b as boolean = false
+var b2 as boolean = false
 var m1 as MethodInfo
 var arr as System.Type[] = newarr System.Type 1
 
-
 label fin
+
+
+b = source::get_IsPrimitive()
+b2 = sink::get_IsPrimitive()
+b = b and b2
+
+//begin conv overload block
+
+if b = false then
+
+m1 = Loader::LoadConvOp(sink, "op_Implicit", source, sink)
+if m1 <> null then
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+m1 = Loader::LoadConvOp(sink, "op_Explicit", source, sink)
+if m1 <> null then
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+m1 = Loader::LoadConvOp(source, "op_Implicit", source, sink)
+if m1 <> null then
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+m1 = Loader::LoadConvOp(source, "op_Explicit", source, sink)
+if m1 <> null then
+ILEmitter::EmitCall(m1)
+goto fin
+end if
+
+end if
+
+//end conv overload block
 
 typ = gettype IntPtr
 b = source::Equals(typ)

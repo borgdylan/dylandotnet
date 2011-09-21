@@ -171,6 +171,118 @@ return stm
 
 end method
 
+method public Expr procNewCall(var stm as Expr, var i as integer)
+
+var nct as NewCallTok = new NewCallTok()
+var tt as TypeTok
+var ep2 as Expr = new Expr()
+var lvl as integer = 1
+var d as boolean = true
+var j as integer = 0
+
+tt = stm::Tokens[i]
+nct::Name = tt
+j = i
+i++
+
+var tok2 as Token = stm::Tokens[i]
+var typ2 as System.Type
+var b2 as boolean
+var len as integer = stm::Tokens[l] - 1
+
+stm::RemToken(i)
+len = stm::Tokens[l] - 1
+i--
+
+label loop2
+label cont2
+label fin
+
+place loop2
+
+//get parameters
+i++
+
+tok2 = stm::Tokens[i]
+typ2 = gettype RParen
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+lvl--
+if lvl = 0 then
+d = false
+if ep2::Tokens[l] > 0 then
+nct::AddParam(ep2)
+end if
+stm::RemToken(i)
+len = stm::Tokens[l] - 1
+i--
+goto cont2
+else
+d = true
+goto fin
+end if
+goto fin
+end if
+
+tok2 = stm::Tokens[i]
+typ2 = gettype LParen
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+lvl++
+d = true
+//stm::RemToken(i)
+len = stm::Tokens[l] - 1
+//i--
+goto fin
+end if
+
+tok2 = stm::Tokens[i]
+typ2 = gettype Comma
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+if lvl = 1 then
+d = false
+if ep2::Tokens[l] > 0 then
+nct::AddParam(ep2)
+end if
+ep2 = new Expr()
+stm::RemToken(i)
+len = stm::Tokens[l] - 1
+i--
+goto fin
+else
+d = true
+goto fin
+end if
+else
+d = true
+goto fin
+end if
+
+place fin
+
+if d = true then
+ep2::AddToken(stm::Tokens[i])
+stm::RemToken(i)
+len = stm::Tokens[l] - 1
+i--
+end if
+
+if i = len then
+goto cont2
+else
+goto loop2
+end if
+
+place cont2
+
+nct::Line = tt::Line
+stm::Tokens[j] = nct
+
+return stm
+
+end method
+
 method public Expr procIdentArrayAccess(var stm as Expr, var i as integer)
 
 var idt as Ident = null
@@ -371,6 +483,10 @@ var mcflgc as boolean = false
 var iflgc as boolean = false
 var sflgc as boolean = false
 var mctok as Token = null
+var nctok as Token = null
+var ncttok as TypeTok = null
+var gtctok as Token = null
+var gtcttok as TypeTok = null
 var mctok2 as Token = null
 var mcident as Ident = null
 var mcmetcall as MethodCallTok = null
@@ -567,6 +683,85 @@ exp::Tokens[i] = ParserFlags::UpdateNumLit(nl1)
 ParserFlags::SetUnaryFalse()
 j = i
 end if
+goto fin
+end if
+
+typ = gettype NewTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+
+exp::RemToken(i)
+len--
+
+nctok = exp::Tokens[i]
+
+typ = gettype TypeTok
+b = typ::IsInstanceOfType($object$nctok)
+
+if b <> true then
+ncttok = new TypeTok()
+ncttok::Line = nctok::Line
+ncttok::Value = nctok::Value
+exp::Tokens[i] = ncttok
+end if
+
+exp = procNewCall(exp, i)
+len = exp::Tokens[l] - 1
+
+var nctoken as NewCallTok = exp::Tokens[i]
+var ncprs as Expr[] = nctoken::Params
+var ncln2 as integer = ncprs[l] - 1
+
+var nci2 as integer = -1
+label ncloop2
+label nccont2
+
+if ncln2 < 0 then
+goto nccont2
+end if
+
+place ncloop2
+nci2++
+ncprs[nci2] = Optimize(ncprs[nci2])
+
+if nci2 = ncln2 then
+goto nccont2
+else
+goto ncloop2
+end if
+
+place nccont2
+
+nctoken::Params = ncprs
+
+goto fin
+end if
+
+typ = gettype GettypeTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+
+exp::RemToken(i)
+len--
+
+gtctok = exp::Tokens[i]
+
+typ = gettype TypeTok
+b = typ::IsInstanceOfType($object$gtctok)
+
+if b <> true then
+gtcttok = new TypeTok()
+gtcttok::Line = gtctok::Line
+gtcttok::Value = gtctok::Value
+exp::Tokens[i] = gtcttok
+end if
+
+var gtctoken as GettypeCallTok = new GettypeCallTok
+gtctoken::Name = exp::Tokens[i]
+exp::Tokens[i] = gtctoken
+
 goto fin
 end if
 
