@@ -1,0 +1,173 @@
+<Type Name="Importer" FullName="dylan.NET.Reflection.Importer">
+  <TypeSignature Language="C#" Value="public class Importer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Importer extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dnr</AssemblyName>
+    <AssemblyVersion>11.2.7.3</AssemblyVersion>
+    <AssemblyVersion>11.2.7.5</AssemblyVersion>
+    <AssemblyVersion>11.2.7.6</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".cctor">
+      <MemberSignature Language="C#" Value="public Importer ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static specialname rtspecialname void .cctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddAsm">
+      <MemberSignature Language="C#" Value="public static void AddAsm (System.Reflection.Assembly asm);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddAsm(class System.Reflection.Assembly asm) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="asm" Type="System.Reflection.Assembly" />
+      </Parameters>
+      <Docs>
+        <param name="asm">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="addelem">
+      <MemberSignature Language="C#" Value="public static string[] addelem (string[] srcarr, string eltoadd);" />
+      <MemberSignature Language="ILAsm" Value=".method public static string[] addelem(string[] srcarr, string eltoadd) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="srcarr" Type="System.String[]" />
+        <Parameter Name="eltoadd" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="srcarr">To be added.</param>
+        <param name="eltoadd">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddImp">
+      <MemberSignature Language="C#" Value="public static void AddImp (string imp);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddImp(string imp) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="imp" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="imp">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddLocImp">
+      <MemberSignature Language="C#" Value="public static void AddLocImp (string imp);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddLocImp(string imp) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="imp" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="imp">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Asms">
+      <MemberSignature Language="C#" Value="public static System.Reflection.Assembly[] Asms;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.Assembly[] Asms" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Reflection.Assembly[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Imps">
+      <MemberSignature Language="C#" Value="public static string[] Imps;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string[] Imps" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocImps">
+      <MemberSignature Language="C#" Value="public static string[] LocImps;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string[] LocImps" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

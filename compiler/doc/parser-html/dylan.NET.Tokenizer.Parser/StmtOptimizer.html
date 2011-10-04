@@ -1,0 +1,1261 @@
+<html>
+  <head>
+    <title>dylan.NET.Tokenizer.Parser.StmtOptimizer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">tokenizer.Parser</a> : <a href="index.html">dylan.NET.Tokenizer.Parser Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.Parser.StmtOptimizer">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.Parser.StmtOptimizer:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.Parser.StmtOptimizer:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.Parser.StmtOptimizer:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:dylan.NET.Tokenizer.Parser.StmtOptimizer">StmtOptimizer  Class</h1>
+    <p class="Summary" id="T:dylan.NET.Tokenizer.Parser.StmtOptimizer:Summary">
+      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+    </p>
+    <div id="T:dylan.NET.Tokenizer.Parser.StmtOptimizer:Signature">
+      <h2>Syntax</h2>
+      <div class="Signature">public class  <b>StmtOptimizer</b></div>
+    </div>
+    <div class="Remarks" id="T:dylan.NET.Tokenizer.Parser.StmtOptimizer:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:dylan.NET.Tokenizer.Parser.StmtOptimizer:Docs:Remarks">
+        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:dylan.NET.Tokenizer.Parser.StmtOptimizer:Docs:Version Information">
+        <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h2 class="Section">Public Constructors</h2>
+        <div class="SectionBox" id="Public Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:dylan.NET.Tokenizer.Parser.StmtOptimizer">StmtOptimizer</a>
+                    </b>()</div>
+                </td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.AssOpt(dylan.NET.Tokenizer.AST.Stmts.Stmt)">AssOpt</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssembly(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkAssembly</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssign(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkAssign</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkClass(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkClass</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkCmt(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkCmt</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkDebug(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkDebug</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElse(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkElse</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElseIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkElseIf</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndCls(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkEndCls</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkEndIf</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndMtd(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkEndMtd</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkField(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkField</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkIf</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkImport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkImport</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkLocimport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkLocimport</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethod(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkMethod</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethodCall(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkMethodCall</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkRefasm(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkRefasm</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVarAs(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkVarAs</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVer(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkVer</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.Parser.StmtOptimizer.Optimize(dylan.NET.Tokenizer.AST.Stmts.Stmt)">Optimize</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a>)<nobr> : <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:dylan.NET.Tokenizer.Parser.StmtOptimizer:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="C:dylan.NET.Tokenizer.Parser.StmtOptimizer">StmtOptimizer Constructor</h3>
+        <blockquote id="C:dylan.NET.Tokenizer.Parser.StmtOptimizer:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>StmtOptimizer</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:dylan.NET.Tokenizer.Parser.StmtOptimizer:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:dylan.NET.Tokenizer.Parser.StmtOptimizer:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.AssOpt(dylan.NET.Tokenizer.AST.Stmts.Stmt)">AssOpt Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.AssOpt(dylan.NET.Tokenizer.AST.Stmts.Stmt):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>AssOpt</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.AssOpt(dylan.NET.Tokenizer.AST.Stmts.Stmt):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.AssOpt(dylan.NET.Tokenizer.AST.Stmts.Stmt):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.AssOpt(dylan.NET.Tokenizer.AST.Stmts.Stmt):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.AssOpt(dylan.NET.Tokenizer.AST.Stmts.Stmt):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssembly(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkAssembly Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssembly(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkAssembly</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssembly(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssembly(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssembly(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssembly(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssign(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkAssign Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssign(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkAssign</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssign(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssign(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssign(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkAssign(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkClass(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkClass Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkClass(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkClass</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkClass(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkClass(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkClass(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkClass(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkCmt(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkCmt Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkCmt(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkCmt</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkCmt(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkCmt(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkCmt(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkCmt(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkDebug(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkDebug Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkDebug(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkDebug</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkDebug(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkDebug(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkDebug(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkDebug(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElse(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkElse Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElse(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkElse</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElse(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElse(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElse(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElse(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElseIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkElseIf Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElseIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkElseIf</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElseIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElseIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElseIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkElseIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndCls(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkEndCls Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndCls(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkEndCls</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndCls(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndCls(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndCls(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndCls(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkEndIf Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkEndIf</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndMtd(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkEndMtd Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndMtd(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkEndMtd</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndMtd(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndMtd(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndMtd(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndMtd(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkField(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkField Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkField(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkField</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkField(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkField(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkField(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkField(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkIf Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkIf</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkIf(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkImport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkImport Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkImport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkImport</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkImport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkImport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkImport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkImport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkLocimport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkLocimport Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkLocimport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkLocimport</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkLocimport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkLocimport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkLocimport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkLocimport(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethod(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkMethod Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethod(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkMethod</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethod(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethod(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethod(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethod(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethodCall(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkMethodCall Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethodCall(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkMethodCall</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethodCall(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethodCall(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethodCall(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkMethodCall(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkRefasm(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkRefasm Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkRefasm(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkRefasm</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkRefasm(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkRefasm(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkRefasm(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkRefasm(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVarAs(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkVarAs Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVarAs(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkVarAs</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVarAs(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVarAs(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVarAs(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVarAs(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVer(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">checkVer Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVer(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>checkVer</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <i>ref</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVer(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVer(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVer(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkVer(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.Optimize(dylan.NET.Tokenizer.AST.Stmts.Stmt)">Optimize Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.Optimize(dylan.NET.Tokenizer.AST.Stmts.Stmt):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> <b>Optimize</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.Optimize(dylan.NET.Tokenizer.AST.Stmts.Stmt):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.Optimize(dylan.NET.Tokenizer.AST.Stmts.Stmt):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.Optimize(dylan.NET.Tokenizer.AST.Stmts.Stmt):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.Optimize(dylan.NET.Tokenizer.AST.Stmts.Stmt):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.Parser<br /><b>Assembly: </b>tokenizer.Parser (in tokenizer.Parser.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

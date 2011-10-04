@@ -2,9 +2,9 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([dylandotnet], [11.2.7.5], [borgdylan@hotmail.com])
+AC_INIT([dylandotnet], [11.2.7.6], [borgdylan@hotmail.com])
 AC_CANONICAL_SYSTEM
-AM_INIT_AUTOMAKE(dylandotnet, 11.2.7.5)
+AM_INIT_AUTOMAKE(dylandotnet, 11.2.7.6)
 AM_MAINTAINER_MODE
 
 AC_PROG_INSTALL
@@ -25,8 +25,16 @@ dnl dylandotnet
 AC_PATH_PROG(DYLANDOTNET, dylandotnet, no)
 
 if test "x$DYLANDOTNET" = "xno"; then
-	AC_MSG_WARN([dylan.NET compiler is not installed...This build system has one built-in.])
+	AC_MSG_WARN([dylan.NET compiler for CLI 2.0 is not installed...This build system has one built-in.])
 fi
+
+dnl dylandotnet4
+AC_PATH_PROG(DYLANDOTNET4, dylandotnet4, no)
+
+if test "x$DYLANDOTNET4" = "xno"; then
+	AC_MSG_WARN([dylan.NET compiler for CLI 4.0 is not installed...This build system has one built-in.])
+fi
+
 
 AC_OUTPUT([
 Makefile

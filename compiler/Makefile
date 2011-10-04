@@ -68,8 +68,9 @@ AUTOHEADER = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run auto
 AUTOMAKE = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.7.5\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.7.5\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.7.5\"
-DYLANDOTNET = /usr/bin/dylandotnet
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.7.6\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.7.6\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.7.6\"
+DYLANDOTNET = /usr/local/bin/dylandotnet
+DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
@@ -88,16 +89,16 @@ MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.7.5
+PACKAGE_STRING = dylandotnet 11.2.7.6
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.7.5
+PACKAGE_VERSION = 11.2.7.6
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.7.5
+VERSION = 11.2.7.6
 abs_builddir = /media/MOBEXTHDD/Code/dylannet/compiler
 abs_srcdir = /media/MOBEXTHDD/Code/dylannet/compiler
 abs_top_builddir = /media/MOBEXTHDD/Code/dylannet/compiler
@@ -463,49 +464,108 @@ dylandotnet:
 	mono ./dnc.exe dnc.dyl
 
 prodscript:
-	sed -e "s|\@libdir\@|$(libdir)|g"               \
-	-e "s|\@PACKAGE\@|$(PACKAGE)|g" dylandotnet.in > dylandotnet
+	sed -e "s|\@libdir\@|$(libdir)|g" dylandotnet.in > dylandotnet
+	sed -e "s|\@libdir\@|$(libdir)|g" dylandotnet4.in > dylandotnet4
 
 installman:
 	$(install_sh_PROGRAM) dylandotnet.1 $(DESTDIR)$(mandir)/man1/dylandotnet.1
+	$(install_sh_PROGRAM) dylandotnet4.1 $(DESTDIR)$(mandir)/man1/dylandotnet4.1
 
 installdoc:
 	cp -r ./doc/ast-html ast-html
 	tar -czf ast.tar.gz ast-html
-	$(install_sh_PROGRAM) ast.tar.gz $(DESTDIR)$(docdir)/ast.tar.gz
+	$(install_sh_PROGRAM) ast.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/ast.tar.gz
 	rm -f ast.tar.gz
 	rm -f -r ast-html
 
+	cp -r ./doc/lexer-html lexer-html
+	tar -czf lexer.tar.gz lexer-html
+	$(install_sh_PROGRAM) lexer.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/lexer.tar.gz
+	rm -f lexer.tar.gz
+	rm -f -r lexer-html
+
+	cp -r ./doc/parser-html parser-html
+	tar -czf parser.tar.gz parser-html
+	$(install_sh_PROGRAM) parser.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/parser.tar.gz
+	rm -f parser.tar.gz
+	rm -f -r parser-html
+
+	cp -r ./doc/codegen-html codegen-html
+	tar -czf codegen.tar.gz codegen-html
+	$(install_sh_PROGRAM) codegen.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/codegen.tar.gz
+	rm -f codegen.tar.gz
+	rm -f -r codegen-html
+
+	cp -r ./doc/dnc-html dnc-html
+	tar -czf dnc.tar.gz dnc-html
+	$(install_sh_PROGRAM) dnc.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/dnc.tar.gz
+	rm -f dnc.tar.gz
+	rm -f -r dnc-html
+
+	cp -r ./doc/dnu-html dnu-html
+	tar -czf dnu.tar.gz dnu-html
+	$(install_sh_PROGRAM) dnu.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/dnu.tar.gz
+	rm -f dnu.tar.gz
+	rm -f -r dnu-html
+
+	cp -r ./doc/dnr-html dnr-html
+	tar -czf dnr.tar.gz dnr-html
+	$(install_sh_PROGRAM) dnr.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/dnr.tar.gz
+	rm -f dnr.tar.gz
+	rm -f -r dnr-html
+
 installlog:
-	$(install_sh_PROGRAM) log.txt.gz $(DESTDIR)$(docdir)/changelog.gz
+	gzip --best -c ChangeLog > changelog.gz
+	$(install_sh_PROGRAM) changelog.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/changelog.gz
+	rm -f changelog.gz
 
 install: prodscript installman installdoc installlog
 	$(install_sh_PROGRAM) dylandotnet $(DESTDIR)$(bindir)/dylandotnet
 	chmod a+x $(DESTDIR)$(bindir)/dylandotnet
-	$(install_sh_PROGRAM) dnu.dll $(DESTDIR)$(libdir)/$(PACKAGE)/dnu.dll
-	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/dnu.dll
-	$(install_sh_PROGRAM) dnr.dll $(DESTDIR)$(libdir)/$(PACKAGE)/dnr.dll
-	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/dnr.dll
-	$(install_sh_PROGRAM) tokenizer.AST.dll $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.AST.dll
-	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.AST.dll
-	$(install_sh_PROGRAM) tokenizer.Lexer.dll $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.Lexer.dll
-	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.Lexer.dll
-	$(install_sh_PROGRAM) tokenizer.Parser.dll $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.Parser.dll
-	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.Parser.dll
-	$(install_sh_PROGRAM) tokenizer.CodeGen.dll $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.CodeGen.dll
-	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/tokenizer.CodeGen.dll
-	$(install_sh_PROGRAM) dnc.exe $(DESTDIR)$(libdir)/$(PACKAGE)/dnc.exe
-	chmod -x $(DESTDIR)$(libdir)/$(PACKAGE)/dnc.exe
+	$(install_sh_PROGRAM) 2.0/dnu.dll $(DESTDIR)$(libdir)/dylandotnet/dnu.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/dnu.dll
+	$(install_sh_PROGRAM) 2.0/dnr.dll $(DESTDIR)$(libdir)/dylandotnet/dnr.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/dnr.dll
+	$(install_sh_PROGRAM) 2.0/tokenizer.AST.dll $(DESTDIR)$(libdir)/dylandotnet/tokenizer.AST.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/tokenizer.AST.dll
+	$(install_sh_PROGRAM) 2.0/tokenizer.Lexer.dll $(DESTDIR)$(libdir)/dylandotnet/tokenizer.Lexer.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/tokenizer.Lexer.dll
+	$(install_sh_PROGRAM) 2.0/tokenizer.Parser.dll $(DESTDIR)$(libdir)/dylandotnet/tokenizer.Parser.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/tokenizer.Parser.dll
+	$(install_sh_PROGRAM) 2.0/tokenizer.CodeGen.dll $(DESTDIR)$(libdir)/dylandotnet/tokenizer.CodeGen.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/tokenizer.CodeGen.dll
+	$(install_sh_PROGRAM) 2.0/dnc.exe $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
+
+	$(install_sh_PROGRAM) dylandotnet4 $(DESTDIR)$(bindir)/dylandotnet4
+	chmod a+x $(DESTDIR)$(bindir)/dylandotnet4
+	$(install_sh_PROGRAM) 4.0/dnu.dll $(DESTDIR)$(libdir)/dylandotnet4/dnu.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/dnu.dll
+	$(install_sh_PROGRAM) 4.0/dnr.dll $(DESTDIR)$(libdir)/dylandotnet4/dnr.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/dnr.dll
+	$(install_sh_PROGRAM) 4.0/tokenizer.AST.dll $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.AST.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.AST.dll
+	$(install_sh_PROGRAM) 4.0/tokenizer.Lexer.dll $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.Lexer.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.Lexer.dll
+	$(install_sh_PROGRAM) 4.0/tokenizer.Parser.dll $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.Parser.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.Parser.dll
+	$(install_sh_PROGRAM) 4.0/tokenizer.CodeGen.dll $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.CodeGen.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.CodeGen.dll
+	$(install_sh_PROGRAM) 4.0/dnc.exe $(DESTDIR)$(libdir)/dylandotnet4/dnc.exe
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/dnc.exe
 
 uninstallman:
 	rm $(DESTDIR)$(mandir)/man1/dylandotnet.1
+	rm $(DESTDIR)$(mandir)/man1/dylandotnet4.1
 
 uninstalldoc:
-	rm -f -r $(docdir)
+	rm -f -r $(prefix)/share/doc/dylandotnet-doc
 
 uninstall: uninstallman uninstalldoc
 	rm -f $(DESTDIR)$(bindir)/dylandotnet
-	rm -r -f $(DESTDIR)$(libdir)/$(PACKAGE)
+	rm -r -f $(DESTDIR)$(libdir)/dylandotnet
+	rm -f $(DESTDIR)$(bindir)/dylandotnet4
+	rm -r -f $(DESTDIR)$(libdir)/dylandotnet4
 
 distclean:
 

@@ -1,0 +1,92 @@
+.\"Created with GNOME Manpages Editor Wizard
+.\"http://sourceforge.net/projects/gmanedit2
+.TH dylandotnet 1 "October 3, 2011" "11.2.7.6" "dylan.NET"
+
+.SH NAME
+dylandotnet, dylandotnet4 \- A program for compiling dylan.NET source code into Mono compatible bytecode.
+
+.SH SYNOPSIS
+.B dylandotnet
+.RI [-h|-V|file-name]
+.br
+.B dylandotnet4
+.RI [-h|-V|file-name]
+.br
+
+.SH DESCRIPTION
+This manual page explains the
+.B dylandotnet
+program.
+.PP
+The programs
+.B dylandotnet
+and
+.B dylandotnet4
+are for compiling dylan.NET code into CLI bytecode executable and/or loadable by the mono runtime. They compile code for CLI 2.0 and CLI 4.0 respectively.
+
+.SH OPTIONS
+Only one of the following options may be passed at one time. -V and -h will not affect compilation and should not be issued with the file-name. In the explanations below
+.B dylandotnet
+can also be substituted by
+.B dylandotnet4
+if the dylandotnet4 package was installed or if the installation was done from source.
+
+.B
+.IP file-name
+The file name of the file having the assembly definition and #include directives that include all the other source files.
+in the form : "dylandotnet file-name.dyl" ;where file-name.dyl is the file mentioned before. The extension can be anything you want but .dyl will identify the file as being dylan.NET source.
+.B
+.IP -V
+This option aborts compilation and instead displays the version numbers of all the dylan.NET libraries installed that make up the compiler itself. The version of the CLR and the Operating System are also displayed. This output when diverted to a file by using 'dylandotnet -V > versioninfo.txt' may be used as part of bug reports or as part of buildlogs.
+.B
+.IP -h
+This option aborts compilation and instead displays a short listing of the options available. If you have read all of this man page you will not need to consult the output of -h. The command is issued like this 'dylandotnet -h'.
+
+.SH FILES
+.PP
+This is the list of the most important files installed by the dylan.NET Makefile or Package whichever one was used for the install. Before these paths one should add /usr/ or /usr/local/ whichever prefix was chosen in the Makefile. In package installation cases the prefix is /usr/ . In the paths below
+.B dylandotnet
+can also be substituted by
+.B dylandotnet4
+if the dylandotnet4 package was installed or if the installation was done from source.
+
+
+.B
+.IP bin/dylandotnet
+The dylan.NET executable script which when invoked in the terminal executes the compiler on the mono runtime.
+.B
+.IP lib/dylandonet/dnc.exe
+The main dylan.NET program is what is executed by the script. This reads in the command line arguments and launches the compiler phases in sequence.
+.B
+.IP lib/dylandonet/dnu.dll
+The dylan.NET utilities library housing some common functions for dylan.NET based code.
+.B
+.IP lib/dylandonet/dnr.dll
+The dylan.NET reflection and reflection emit library used by the code generation phase of the compiler.
+.B
+.IP lib/dylandonet/tokenizer.AST.dll
+The dylan.NET AST components library which houses all the AST parts used by the lexer and parser in order to represent inputted source code in a structure.
+.B
+.IP lib/dylandonet/tokenizer.Lexer.dll
+The dylan.NET lexer library which has functions for reading a source code file and turning it in tokens and statements.
+.B
+.IP lib/dylandonet/tokenizer.Parser.dll
+The dylan.NET parser library which has optimizers that can further refine the data output by the lexer library. The output is what is needed for code generation.
+.B
+.IP lib/dylandonet/tokenizer.CodeGen.dll
+The dylan.NET code generation library which contains functions for processing the AST structure and from it make MSIL bytecode whith the help of dnr.dll.
+.B
+.IP share/doc/dylandonet/changelog.gz
+This gzip archive contains the GIT changelog for dylan.NET. The file that is inside is called ChangeLog.
+.B
+.IP share/doc/dylandonet-doc/ast.tar.gz
+This tarball has inside it the API documentation for the AST library. Other such tarballs with documentation will be added in the future.
+.B
+.IP share/man/man1/dylandonet.1
+This is this very man page for dylan.NET.
+
+.SH VERSION
+11.2.7.6
+
+.SH "SEE ALSO"
+See also http://launchpad.net/dylandotnet

@@ -1,0 +1,959 @@
+<html>
+  <head>
+    <title>dylan.NET.Reflection.Loader</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">dnr</a> : <a href="index.html">dylan.NET.Reflection Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Reflection.Loader">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.Loader:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.Loader:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.Loader:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:dylan.NET.Reflection.Loader">Loader  Class</h1>
+    <p class="Summary" id="T:dylan.NET.Reflection.Loader:Summary">
+      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+    </p>
+    <div id="T:dylan.NET.Reflection.Loader:Signature">
+      <h2>Syntax</h2>
+      <div class="Signature">public class  <b>Loader</b></div>
+    </div>
+    <div class="Remarks" id="T:dylan.NET.Reflection.Loader:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:dylan.NET.Reflection.Loader:Docs:Remarks">
+        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:dylan.NET.Reflection.Loader:Docs:Version Information">
+        <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h2 class="Section">Public Constructors</h2>
+        <div class="SectionBox" id="Public Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:dylan.NET.Reflection.Loader">Loader</a>
+                    </b>()</div>
+                </td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Fields</h2>
+        <div class="SectionBox" id="Public Fields">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Loader.EnumLitFlag">EnumLitFlag</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Loader.EnumLitTyp">EnumLitTyp</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Loader.FldLitFlag">FldLitFlag</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Loader.FldLitTyp">FldLitTyp</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Loader.FldLitVal">FldLitVal</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Loader.MakeArr">MakeArr</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Loader.MakeRef">MakeRef</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Loader.MemberTyp">MemberTyp</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Loader.addelemmtdinfo(System.Reflection.MethodInfo[],System.Reflection.MethodInfo)">addelemmtdinfo</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a>[], <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a>[]</nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Loader.CompareParamsToTyps(System.Reflection.ParameterInfo[],System.Type[])">CompareParamsToTyps</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.ParameterInfo">System.Reflection.ParameterInfo</a>[], <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[])<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Loader.LoadBinOp(System.Type,System.String,System.Type,System.Type)">LoadBinOp</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Loader.LoadClass(System.String)">LoadClass</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Loader.LoadConvOp(System.Type,System.String,System.Type,System.Type)">LoadConvOp</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Loader.LoadField(System.Type,System.String)">LoadField</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.FieldInfo">System.Reflection.FieldInfo</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Loader.LoadMethod(System.Type,System.String,System.Type[])">LoadMethod</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[])<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Loader.LoadSpecMtds(System.Type)">LoadSpecMtds</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a>[]</nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Loader.ProcessType(System.Type)">ProcessType</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:dylan.NET.Reflection.Loader:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="C:dylan.NET.Reflection.Loader">Loader Constructor</h3>
+        <blockquote id="C:dylan.NET.Reflection.Loader:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>Loader</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:dylan.NET.Reflection.Loader:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:dylan.NET.Reflection.Loader:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Loader.addelemmtdinfo(System.Reflection.MethodInfo[],System.Reflection.MethodInfo)">addelemmtdinfo Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Loader.addelemmtdinfo(System.Reflection.MethodInfo[],System.Reflection.MethodInfo):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a>[] <b>addelemmtdinfo</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a>[] srcarr, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a> eltoadd)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.addelemmtdinfo(System.Reflection.MethodInfo[],System.Reflection.MethodInfo):Parameters">
+            <dl>
+              <dt>
+                <i>srcarr</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>eltoadd</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.addelemmtdinfo(System.Reflection.MethodInfo[],System.Reflection.MethodInfo):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.addelemmtdinfo(System.Reflection.MethodInfo[],System.Reflection.MethodInfo):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.addelemmtdinfo(System.Reflection.MethodInfo[],System.Reflection.MethodInfo):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Loader.CompareParamsToTyps(System.Reflection.ParameterInfo[],System.Type[])">CompareParamsToTyps Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Loader.CompareParamsToTyps(System.Reflection.ParameterInfo[],System.Type[]):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>CompareParamsToTyps</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.ParameterInfo">System.Reflection.ParameterInfo</a>[] t1, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[] t2)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.CompareParamsToTyps(System.Reflection.ParameterInfo[],System.Type[]):Parameters">
+            <dl>
+              <dt>
+                <i>t1</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>t2</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.CompareParamsToTyps(System.Reflection.ParameterInfo[],System.Type[]):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.CompareParamsToTyps(System.Reflection.ParameterInfo[],System.Type[]):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.CompareParamsToTyps(System.Reflection.ParameterInfo[],System.Type[]):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Loader.EnumLitFlag">EnumLitFlag Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Loader.EnumLitFlag:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>EnumLitFlag</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.EnumLitFlag:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.EnumLitFlag:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Loader.EnumLitTyp">EnumLitTyp Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Loader.EnumLitTyp:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> <b>EnumLitTyp</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.EnumLitTyp:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.EnumLitTyp:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Loader.FldLitFlag">FldLitFlag Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Loader.FldLitFlag:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>FldLitFlag</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.FldLitFlag:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.FldLitFlag:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Loader.FldLitTyp">FldLitTyp Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Loader.FldLitTyp:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> <b>FldLitTyp</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.FldLitTyp:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.FldLitTyp:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Loader.FldLitVal">FldLitVal Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Loader.FldLitVal:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> <b>FldLitVal</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.FldLitVal:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.FldLitVal:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Loader.LoadBinOp(System.Type,System.String,System.Type,System.Type)">LoadBinOp Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Loader.LoadBinOp(System.Type,System.String,System.Type,System.Type):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a> <b>LoadBinOp</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> name, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typa, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typb)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadBinOp(System.Type,System.String,System.Type,System.Type):Parameters">
+            <dl>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>name</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>typa</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>typb</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadBinOp(System.Type,System.String,System.Type,System.Type):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadBinOp(System.Type,System.String,System.Type,System.Type):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadBinOp(System.Type,System.String,System.Type,System.Type):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Loader.LoadClass(System.String)">LoadClass Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Loader.LoadClass(System.String):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> <b>LoadClass</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> name)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadClass(System.String):Parameters">
+            <dl>
+              <dt>
+                <i>name</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadClass(System.String):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadClass(System.String):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadClass(System.String):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Loader.LoadConvOp(System.Type,System.String,System.Type,System.Type)">LoadConvOp Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Loader.LoadConvOp(System.Type,System.String,System.Type,System.Type):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a> <b>LoadConvOp</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> name, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> src, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> snk)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadConvOp(System.Type,System.String,System.Type,System.Type):Parameters">
+            <dl>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>name</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>src</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>snk</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadConvOp(System.Type,System.String,System.Type,System.Type):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadConvOp(System.Type,System.String,System.Type,System.Type):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadConvOp(System.Type,System.String,System.Type,System.Type):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Loader.LoadField(System.Type,System.String)">LoadField Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Loader.LoadField(System.Type,System.String):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.FieldInfo">System.Reflection.FieldInfo</a> <b>LoadField</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> name)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadField(System.Type,System.String):Parameters">
+            <dl>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>name</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadField(System.Type,System.String):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadField(System.Type,System.String):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadField(System.Type,System.String):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Loader.LoadMethod(System.Type,System.String,System.Type[])">LoadMethod Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Loader.LoadMethod(System.Type,System.String,System.Type[]):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a> <b>LoadMethod</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> name, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[] typs)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadMethod(System.Type,System.String,System.Type[]):Parameters">
+            <dl>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>name</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>typs</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadMethod(System.Type,System.String,System.Type[]):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadMethod(System.Type,System.String,System.Type[]):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadMethod(System.Type,System.String,System.Type[]):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Loader.LoadSpecMtds(System.Type)">LoadSpecMtds Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Loader.LoadSpecMtds(System.Type):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a>[] <b>LoadSpecMtds</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadSpecMtds(System.Type):Parameters">
+            <dl>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.LoadSpecMtds(System.Type):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadSpecMtds(System.Type):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.LoadSpecMtds(System.Type):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Loader.MakeArr">MakeArr Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Loader.MakeArr:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>MakeArr</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.MakeArr:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.MakeArr:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Loader.MakeRef">MakeRef Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Loader.MakeRef:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>MakeRef</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.MakeRef:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.MakeRef:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Loader.MemberTyp">MemberTyp Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Loader.MemberTyp:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> <b>MemberTyp</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.MemberTyp:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Loader.MemberTyp:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Loader.ProcessType(System.Type)">ProcessType Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Loader.ProcessType(System.Type):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> <b>ProcessType</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.ProcessType(System.Type):Parameters">
+            <dl>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Loader.ProcessType(System.Type):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.ProcessType(System.Type):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Loader.ProcessType(System.Type):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

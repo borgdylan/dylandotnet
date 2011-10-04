@@ -676,6 +676,16 @@ tok = statattr
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "specialname")
+
+if comp = 0 then
+var spnattr as SpecialNameAttr = new SpecialNameAttr()
+spnattr::Line = tok::Line
+spnattr::Value = tok::Value
+tok = spnattr
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "auto")
 
 if comp = 0 then

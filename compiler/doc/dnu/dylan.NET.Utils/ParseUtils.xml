@@ -1,0 +1,134 @@
+<Type Name="ParseUtils" FullName="dylan.NET.Utils.ParseUtils">
+  <TypeSignature Language="C#" Value="public class ParseUtils" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ParseUtils extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dnu</AssemblyName>
+    <AssemblyVersion>11.2.7.6</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".cctor">
+      <MemberSignature Language="C#" Value="public ParseUtils ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static specialname rtspecialname void .cctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LikeOP">
+      <MemberSignature Language="C#" Value="public static bool LikeOP (string str, string pattern);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool LikeOP(string str, string pattern) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="pattern" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="pattern">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RetPrec">
+      <MemberSignature Language="C#" Value="public static int RetPrec (string chr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static int32 RetPrec(string chr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="chr" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="chr">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="stack">
+      <MemberSignature Language="C#" Value="public static string[] stack;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string[] stack" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StringParser">
+      <MemberSignature Language="C#" Value="public static string[] StringParser (string StringToParse, string DelimeterChar);" />
+      <MemberSignature Language="ILAsm" Value=".method public static string[] StringParser(string StringToParse, string DelimeterChar) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="StringToParse" Type="System.String" />
+        <Parameter Name="DelimeterChar" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="StringToParse">To be added.</param>
+        <param name="DelimeterChar">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StringParser2ds">
+      <MemberSignature Language="C#" Value="public static string[] StringParser2ds (string StringToParse, string DelimeterChar, string DelimeterChar2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static string[] StringParser2ds(string StringToParse, string DelimeterChar, string DelimeterChar2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="StringToParse" Type="System.String" />
+        <Parameter Name="DelimeterChar" Type="System.String" />
+        <Parameter Name="DelimeterChar2" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="StringToParse">To be added.</param>
+        <param name="DelimeterChar">To be added.</param>
+        <param name="DelimeterChar2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

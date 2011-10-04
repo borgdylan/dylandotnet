@@ -9,10 +9,12 @@
 class public auto ansi beforefieldinit Evaluator
 
 field public OpStack Stack
+field public Token InstToken
 
 method public void ctor0()
 me::ctor()
 Stack = null
+InstToken = new Token()
 end method
 
 method public integer RetPrec(var tok as Token)
@@ -266,18 +268,20 @@ end method
 method public void ASTEmit(var tok as Token, var emt as boolean)
 
 var isop as boolean = isOp(tok)
-var optok as Op
-var rc as Token
-var lc as Token
-var lcint as integer
-var rcint as integer
-var lctyp as System.Type
-var rctyp as System.Type
+var optok as Op = new Op()
+var rc as Token = new Token()
+var lc as Token = new Token()
+var lcint as integer = 0
+var rcint as integer = 0
+var lctyp as System.Type = null
+var rctyp as System.Type = null
 var typ as System.Type
 var b as boolean = false
-var tt as TypeTok
+var tt as TypeTok = null
 var i as integer = -1
+var j as integer = 0
 var len as integer = 0
+var instflg as boolean = false
 
 label fin
 
@@ -433,121 +437,105 @@ b = typ::IsInstanceOfType($object$tok)
 
 var idtnam as string
 var vr as VarItem
+var fldr as FieldItem
+var idtfldinf as FieldInfo
 var idtb1 as boolean = false
+var idtb2 as boolean = false
 var idt as Ident
 var idtcomp as integer = 0
 var idttyp as System.Type
+var idtisstatic as boolean = false
 var arrlocexpr as Expr
 var idtarrloc as Ident
+var idtnamarr as string[]
+
 
 if b = true then
 idt = tok
-
-if idt::Conv = false then
-//no conv
-
 idtnam = idt::Value
-vr = SymTable::FindVar(idtnam)
-if vr <> null then
-AsmFactory::Type02 = vr::VarTyp
+idtnamarr = ParseUtils::StringParser(idtnam, ":")
+i = -1
+len = idtnamarr[l] - 1
 
+idtcomp = String::Compare(idtnamarr[0], "me")
+if idtcomp = 0 then
+i++
+idtb1 = true
+end if
+
+label loop3
+label cont3
+label idtfin
+
+place loop3
+i++
+
+if idtb2 = false then
+
+if idtb1 = false then
+vr = SymTable::FindVar(idtnamarr[i])
+if vr <> null then
 if emt = true then
 Helpers::EmitLocLd(vr::Index, vr::LocArg)
 end if
-
-//begin array check
-
-if idt::IsArr = true then
-idttyp = AsmFactory::Type02
-
-arrlocexpr = idt::ArrLoc
-if arrlocexpr::Tokens[l] = 1 then
-idtb1 = true
-else
-idtb1 = false
-end if
-
-if idtb1 = true then
-tok = arrlocexpr::Tokens[0]
-typ = gettype Ident
-idtb1 = typ::IsInstanceOfType($object$tok)
-if idtb1 = true then
-idtarrloc = tok
-idtcomp = String::Compare(idtarrloc::Value , "l")
-if idtcomp <> 0 then
-idtb1 = false
-else
-idtb1 = true
-end if
-end if
-end if
-
-if idtb1 = false then
-idttyp = idttyp::GetElementType()
-AsmFactory::Type02 = idttyp
-else
-AsmFactory::Type02 = gettype integer
-end if
-
-end if
-//end array check
-
-
-end if
-goto fin
-else
-
-//yes conv
-
-if emt = true then
-
-idtnam = idt::Value
-vr = SymTable::FindVar(idtnam)
-if vr <> null then
 AsmFactory::Type02 = vr::VarTyp
+typ = vr::VarTyp
+goto idtfin
+end if
+end if
 
+typ = Loader::LoadClass(idtnamarr[i])
+idtisstatic = true
+
+else
+
+idtfldinf = Loader::LoadField(typ, idtnamarr[i])
+AsmFactory::Type02 = Loader::MemberTyp
+typ = Loader::MemberTyp
 if emt = true then
-Helpers::EmitLocLd(vr::Index, vr::LocArg)
-end if
 
-//begin array check
-
-if idt::IsArr = true then
-idttyp = AsmFactory::Type02
-
-arrlocexpr = idt::ArrLoc
-if arrlocexpr::Tokens[l] = 1 then
-idtb1 = true
+if Loader::FldLitFlag = false then
+Helpers::EmitFldLd(idtfldinf, idtisstatic)
 else
-idtb1 = false
-end if
 
-if idtb1 = true then
-tok = arrlocexpr::Tokens[0]
-typ = gettype Ident
-idtb1 = typ::IsInstanceOfType($object$tok)
-if idtb1 = true then
-idtarrloc = tok
-idtcomp = String::Compare(idtarrloc::Value , "l")
-if idtcomp <> 0 then
-idtb1 = false
+var constlit as ConstLiteral = new ConstLiteral()
+constlit::ConstVal = Loader::FldLitVal
+constlit::ExtTyp = Loader::FldLitTyp
+if Loader::EnumLitFlag = true then
+constlit::IntTyp = Loader::EnumLitTyp
 else
-idtb1 = true
-end if
-end if
+constlit::IntTyp = Loader::FldLitTyp
 end if
 
-if idtb1 = false then
-idttyp = idttyp::GetElementType()
-AsmFactory::Type02 = idttyp
+var constl as Literal = Helpers::ProcessConst(constlit)
+Helpers::EmitLiteral(constl)
+AsmFactory::Type02 = Loader::FldLitTyp
+typ = Loader::FldLitTyp
+
+end if
+
+end if
+
+if idtisstatic = true then
+idtisstatic = false
+end if
+
+end if
+
+place idtfin
+
+idtb2 = true
+
+if i = len then
+goto cont3
 else
-AsmFactory::Type02 = gettype integer
+goto loop3
 end if
 
-end if
-//end array check
+place cont3
 
-end if
+
+if idt::Conv = true then
 
 if emt = true then
 src1 = AsmFactory::Type02
@@ -565,18 +553,18 @@ end if
 
 goto fin
 end if
-end if
 
 typ = gettype MethodCallTok
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
 var mcparenttyp as System.Type
+var mnstrarr as string[]
+var mcmetinf as MethodInfo
 var nctyp as System.Type
 var mctok as MethodCallTok = tok
 var mntok as MethodNameTok = mctok::Name
 var mnstr as string = ""
-var mnstrarr as string[]
 var mcparams as Expr[]
 var typarr1 as System.Type[] = newarr System.Type 0
 var typarr2 as System.Type[]
@@ -584,7 +572,6 @@ var paramlen as integer
 var curexpr as Expr
 var rpnparam as Expr
 var astparam as Token
-var mcmetinf as MethodInfo
 var ncctorinf as ConstructorInfo
 var mcfldinf as FieldInfo
 var mcvr as VarItem
@@ -594,198 +581,170 @@ mnstr = mntok::Value
 mnstrarr = ParseUtils::StringParser(mnstr, ":")
 mcparams = mctok::Params
 paramlen = mcparams[l] - 1
+idtb1 = false
+idtb2 = false
 
-
-if mntok::Conv = false then
-
-if AsmFactory::ChainFlg = true then
+//if AsmFactory::ChainFlg = true then
 //yes chaining no conv
 
-AsmFactory::ChainFlg = false
-mcparenttyp = AsmFactory::Type02
+//AsmFactory::ChainFlg = false
+//mcparenttyp = AsmFactory::Type02
+
+//i = -1
+
+//label loop
+//label cont
+
+//if mcparams[l] = 0 then
+//typarr1 = System.Type::EmptyTypes
+//goto cont
+//end if
+
+//place loop
+
+//i++
+//curexpr = mcparams[i]
+
+//if curexpr::Tokens[l] = 1 then
+//rpnparam = curexpr
+//else
+//if curexpr::Tokens[l] >= 3 then
+//rpnparam = ConvToRPN(curexpr)
+//end if
+//end if
+
+//astparam = ConvToAST(rpnparam)
+//ASTEmit(astparam, emt)
+
+//typarr2 = AsmFactory::TypArr
+//AsmFactory::TypArr = typarr1
+//AsmFactory::AddTyp(AsmFactory::Type02)
+//typarr1 = AsmFactory::TypArr
+//AsmFactory::TypArr = typarr2
+
+//if i = paramlen then
+//goto cont
+//else
+//goto loop
+//end if
+
+//place cont
+
+//if mnstrarr[l] >= 2 then
+
+//i = -1
+//len = mnstrarr[l] - 2
+
+//label loop2
+//label cont2
+
+//place loop2
+//i++
+
+//mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
+//mcparenttyp = mcfldinf::get_FieldType()
+
+//if i = len then
+//i++
+//goto cont2
+//else
+//goto loop2
+//end if 
+
+//place cont2
+
+//else
+//i = 0
+//end if
+
+//mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], typarr1)
+//AsmFactory::Type02 = mcmetinf::get_ReturnType()
+
+//if mntok::MemberAccessFlg = true then
+//ASMFactory::ChainFlg = true
+//ASTEmit(mntok::MemberToAccess, emt)
+//end if
+
+mcparenttyp = null
+mcmetinf = null
+mcfldinf = null
 
 i = -1
-
-label loop
-label cont
-
-if mcparams[l] = 0 then
-typarr1 = System.Type::EmptyTypes
-goto cont
-end if
-
-place loop
-
-i++
-curexpr = mcparams[i]
-
-if curexpr::Tokens[l] = 1 then
-rpnparam = curexpr
-else
-if curexpr::Tokens[l] >= 3 then
-rpnparam = ConvToRPN(curexpr)
-end if
-end if
-
-astparam = ConvToAST(rpnparam)
-ASTEmit(astparam, emt)
-
-typarr2 = AsmFactory::TypArr
-AsmFactory::TypArr = typarr1
-AsmFactory::AddTyp(AsmFactory::Type02)
-typarr1 = AsmFactory::TypArr
-AsmFactory::TypArr = typarr2
-
-if i = paramlen then
-goto cont
-else
-goto loop
-end if
-
-place cont
-
-if mnstrarr[l] >= 2 then
-
-i = -1
+var tstr as string
+mnstrarr = ParseUtils::StringParser(mnstr, ":")
 len = mnstrarr[l] - 2
 
-label loop2
-label cont2
+idtcomp = String::Compare(mnstrarr[0], "me")
+if idtcomp = 0 then
+i++
+idtb1 = true
+end if
 
-place loop2
+label loop7
+label cont7
+label metfin
+
+
+if mnstrarr[l] < 2 then
+goto cont7
+end if
+
+place loop7
 i++
 
-mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
-mcparenttyp = mcfldinf::get_FieldType()
+if idtb2 = false then
 
-if i = len then
-i++
-goto cont2
-else
-goto loop2
-end if 
-
-place cont2
-
-else
-i = 0
-end if
-
-mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], typarr1)
-AsmFactory::Type02 = mcmetinf::get_ReturnType()
-
-if mntok::MemberAccessFlg = true then
-ASMFactory::ChainFlg = true
-ASTEmit(mntok::MemberToAccess, emt)
-end if
-
-else
-
-//not chaining no conv
-i = -1
-
-label loop3
-label cont3
-
-if mcparams[l] = 0 then
-typarr1 = System.Type::EmptyTypes
-goto cont3
-end if
-
-place loop3
-
-i++
-curexpr = mcparams[i]
-
-if curexpr::Tokens[l] = 1 then
-rpnparam = curexpr
-else
-if curexpr::Tokens[l] >= 3 then
-rpnparam = ConvToRPN(curexpr)
-end if
-end if
-
-astparam = ConvToAST(rpnparam)
-ASTEmit(astparam, emt)
-
-typarr2 = AsmFactory::TypArr
-AsmFactory::TypArr = typarr1
-AsmFactory::AddTyp(AsmFactory::Type02)
-typarr1 = AsmFactory::TypArr
-AsmFactory::TypArr = typarr2
-
-if i = paramlen then
-goto cont3
-else
-goto loop3
-end if
-
-place cont3
-
-if mnstrarr[l] >= 2 then
-
-i = -1
-len = mnstrarr[l] - 2
-
-label loop4
-label cont4
-
-place loop4
-i++
-
-if i = 0 then
+if idtb1 = false then
 mcvr = SymTable::FindVar(mnstrarr[i])
-
-if vr <> null then
+if mcvr <> null then
+if emt = true then
+Helpers::EmitLocLd(mcvr::Index, mcvr::LocArg)
+end if
+AsmFactory::Type02 = mcvr::VarTyp
 mcparenttyp = mcvr::VarTyp
-mcisstatic = false
-else
+goto metfin
+end if
+end if
+
 mcparenttyp = Loader::LoadClass(mnstrarr[i])
 mcisstatic = true
-end if
 
 else
+
 mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
-mcparenttyp = mcfldinf::get_FieldType()
-end if
-
-if i = len then
-i++
-goto cont4
-else
-goto loop4
-end if 
-
-place cont4
-
-mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], typarr1)
-AsmFactory::Type02 = mcmetinf::get_ReturnType()
+AsmFactory::Type02 = Loader::MemberTyp
+mcparenttyp = Loader::MemberTyp
 
 if emt = true then
-AsmFactory::PopFlg = mctok::PopFlg
-Helpers::EmitMetCall(mcmetinf, mcisstatic)
-AsmFactory::PopFlg = false
+Helpers::EmitFldLd(mcfldinf, mcisstatic)
 end if
 
-if mntok::MemberAccessFlg = true then
-ASMFactory::ChainFlg = true
-ASTEmit(mntok::MemberToAccess, emt)
+if mcisstatic = true then
+mcisstatic = false
 end if
 
+end if
+
+place metfin
+
+idtb2 = true
+
+if i = len then
+goto cont7
 else
-i = 0
+goto loop7
 end if
 
+place cont7
 
-end if
-goto fin
-else
+j = i
+AsmFactory::Type03 = AsmFactory::Type02
 
-//not chaining yes conv
-i = -1
 
 label loop5
 label cont5
+
+i = -1
 
 if mcparams[l] = 0 then
 typarr1 = System.Type::EmptyTypes
@@ -822,44 +781,13 @@ end if
 
 place cont5
 
-if mnstrarr[l] >= 2 then
+AsmFactory::Type02 = AsmFactory::Type03
+i = j
 
-i = -1
-len = mnstrarr[l] - 2
-
-label loop6
-label cont6
-
-place loop6
 i++
-
-if i = 0 then
-mcvr = SymTable::FindVar(mnstrarr[i])
-
-if vr <> null then
-mcparenttyp = mcvr::VarTyp
-mcisstatic = false
-else
-mcparenttyp = Loader::LoadClass(mnstrarr[i])
-mcisstatic = true
-end if
-
-else
-mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
-mcparenttyp = mcfldinf::get_FieldType()
-end if
-
-if i = len then
-i++
-goto cont6
-else
-goto loop6
-end if 
-
-place cont6
 
 mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], typarr1)
-AsmFactory::Type02 = mcmetinf::get_ReturnType()
+AsmFactory::Type02 = Loader::MemberTyp
 
 if emt = true then
 AsmFactory::PopFlg = mctok::PopFlg
@@ -872,9 +800,8 @@ ASMFactory::ChainFlg = true
 ASTEmit(mntok::MemberToAccess, emt)
 end if
 
-else
-i = 0
-end if
+
+if mntok::Conv = true then
 
 if emt = true then
 src1 = AsmFactory::Type02
@@ -888,8 +815,10 @@ snk1 = AsmFactory::Type02
 Helpers::EmitConv(src1, snk1)
 end if
 
-goto fin
 end if
+
+goto fin
+
 end if
 
 typ = gettype NewCallTok

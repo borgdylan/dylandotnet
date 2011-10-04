@@ -507,4 +507,42 @@ place cont
 return rvr
 end method
 
+method public static FieldItem FindFld(var nam as string)
+
+var len as integer = FldLst[l] - 1
+var i as integer = -1
+var fld as FieldItem = null
+var rfld as FieldItem = null
+var comp as integer = 0
+
+label cont
+label loop
+
+if FldLst[l] = 0 then
+goto cont
+end if
+
+place loop
+
+i++
+
+fld = FldLst[i]
+comp = String::Compare(nam, fld::Name)
+if comp = 0 then
+rfld = fld
+goto cont
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+return rfld
+end method
+
+
 end class

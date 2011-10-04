@@ -152,6 +152,20 @@ end if
 goto fin
 end if
 
+typ = gettype Attributes.SpecialNameAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 2048
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
 place fin
 
 if i = len then
@@ -275,6 +289,7 @@ var curpttok as TypeTok = new TypeToK()
 var i as integer = -1
 var len as integer = 0
 var n as integer = 0
+var comp as integer = 0
 var tstr as string = " "
 
 var ttyp as System.Type = gettype GenericTypeTok
@@ -326,7 +341,12 @@ label fin2
 if tt::RefTyp = null then
 Loader::MakeArr = tt::IsArray
 Loader::MakeRef = tt::IsByRef
+comp = String::Compare(AsmFactory::CurnTypName, tt::Value)
+if comp = 0 then
+typ = AsmFactory::CurnTypB
+else
 typ = Loader::LoadClass(tt::Value)
+end if
 goto fin2
 end if
 
@@ -801,6 +821,111 @@ place fin
 
 end method
 
+method public static Literal ProcessConst(var lit as ConstLiteral)
+
+label fin
+var typ as System.Type
+var inttyp as System.Type = lit::IntTyp
+var obj as object = lit::ConstVal
+var b as boolean
+
+typ = gettype string
+b = typ::Equals(inttyp)
+
+if b = true then
+var slit as StringLiteral = new StringLiteral()
+slit::Value = $string$obj
+return slit
+goto fin
+end if
+
+typ = gettype sbyte
+b = typ::Equals(inttyp)
+
+if b = true then
+var sblit as SByteLiteral = new SByteLiteral()
+sblit::NumVal = $sbyte$obj
+return sblit
+goto fin
+end if
+
+typ = gettype short
+b = typ::Equals(inttyp)
+
+if b = true then
+var shlit as ShortLiteral = new ShortLiteral()
+shlit::NumVal = $short$obj
+return shlit
+goto fin
+end if
+
+typ = gettype integer
+b = typ::Equals(inttyp)
+
+if b = true then
+var ilit as IntLiteral = new IntLiteral()
+ilit::NumVal = $integer$obj
+return ilit
+goto fin
+end if
+
+typ = gettype long
+b = typ::Equals(inttyp)
+
+if b = true then
+var llit as LongLiteral = new LongLiteral()
+llit::NumVal = $long$obj
+return llit
+goto fin
+end if
+
+typ = gettype single
+b = typ::Equals(inttyp)
+
+if b = true then
+var flit as FloatLiteral = new FloatLiteral()
+flit::NumVal = $single$obj
+return flit
+goto fin
+end if
+
+typ = gettype double
+b = typ::Equals(inttyp)
+
+if b = true then
+var dlit as DoubleLiteral = new DoubleLiteral()
+dlit::NumVal = $double$obj
+return dlit
+goto fin
+end if
+
+typ = gettype boolean
+b = typ::Equals(inttyp)
+
+if b = true then
+var bllit as BooleanLiteral = new BooleanLiteral()
+bllit::BoolVal = $boolean$obj
+return bllit
+goto fin
+end if
+
+typ = gettype char
+b = typ::Equals(inttyp)
+
+if b = true then
+var clit as CharLiteral = new CharLiteral()
+clit::CharVal = $char$obj
+return clit
+goto fin
+end if
+
+return null
+
+place fin
+
+end method
+
+
 method public static void EmitOp(var op as Op, var s as boolean)
 
 label fin
@@ -1076,6 +1201,7 @@ method public static void EmitLocLd(var ind as integer, var locarg as boolean)
 if locarg = true then
 ILEmitter::EmitLdloc(ind)
 else
+ILEmitter::EmitLdarg(ind)
 end if
 end method
 
@@ -1083,6 +1209,7 @@ method public static void EmitLocSt(var ind as integer, var locarg as boolean)
 if locarg = true then
 ILEmitter::EmitStloc(ind)
 else
+ILEmitter::EmitStarg(ind)
 end if
 end method
 
@@ -1263,6 +1390,22 @@ if b = true then
 else
 ILEmitter::EmitPop()
 end if
+end if
+end method
+
+method public static void EmitFldLd(var fld as FieldInfo, var stat as boolean)
+if stat = true then
+ILEmitter::EmitLdsfld(fld)
+else
+ILEmitter::EmitLdfld(fld)
+end if
+end method
+
+method public static void EmitFldSt(var fld as FieldInfo, var stat as boolean)
+if stat = true then
+ILEmitter::EmitStsfld(fld)
+else
+ILEmitter::EmitStfld(fld)
 end if
 end method
 

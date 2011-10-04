@@ -5,6 +5,7 @@
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
     <AssemblyVersion>11.2.7.2</AssemblyVersion>
     <AssemblyVersion>11.2.7.5</AssemblyVersion>
+    <AssemblyVersion>11.2.7.6</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -22,6 +23,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -36,6 +38,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -58,6 +61,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -79,6 +83,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -100,6 +105,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -113,6 +119,21 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="InstToken">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token InstToken;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Token InstToken" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="isLParen">
       <MemberSignature Language="C#" Value="public bool isLParen (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
       <MemberSignature Language="ILAsm" Value=".method public instance bool isLParen(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
@@ -120,6 +141,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -141,6 +163,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -162,6 +185,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -183,6 +207,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.CodeGen.OpStack</ReturnType>
@@ -198,6 +223,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

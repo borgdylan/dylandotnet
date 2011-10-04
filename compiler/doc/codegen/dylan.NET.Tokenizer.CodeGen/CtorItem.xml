@@ -5,6 +5,7 @@
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
     <AssemblyVersion>11.2.7.2</AssemblyVersion>
     <AssemblyVersion>11.2.7.5</AssemblyVersion>
+    <AssemblyVersion>11.2.7.6</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -22,6 +23,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -36,6 +38,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="ptyps" Type="System.Type[]" />
@@ -55,6 +58,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.ConstructorBuilder</ReturnType>
@@ -71,6 +75,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type[]</ReturnType>

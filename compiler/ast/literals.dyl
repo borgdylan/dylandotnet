@@ -58,6 +58,38 @@ end method
 
 end class
 
+class public auto ansi ConstLiteral extends Literal
+
+field public object ConstVal
+field public System.Type ExtTyp
+field public System.Type IntTyp
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+ConstVal = null
+me::Conv = false
+me::LitTyp = new ObjectTok()
+me::TTok = null
+ExtTyp = null
+IntTyp = null
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+ConstVal = null
+me::Conv = false
+me::LitTyp = new ObjectTok()
+me::TTok = null
+ExtTyp = null
+IntTyp = null
+end method
+
+end class
+
 class public auto ansi StringLiteral extends Literal
 
 field public string OrdOp

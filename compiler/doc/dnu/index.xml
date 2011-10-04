@@ -1,0 +1,33 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="dnu" Version="11.2.7.6">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("dnu")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.6")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyProduct("dnu")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("dnu")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>To be added.</Remarks>
+  <Copyright>To be added.</Copyright>
+  <Types>
+    <Namespace Name="dylan.NET.Utils">
+      <Type Name="Constants" Kind="Class" />
+      <Type Name="ParseUtils" Kind="Class" />
+      <Type Name="XmlUtils" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>dnu</Title>
+</Overview>

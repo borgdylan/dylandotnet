@@ -1,0 +1,1334 @@
+<html>
+  <head>
+    <title>dylan.NET.Tokenizer.CodeGen.SymTable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">tokenizer.CodeGen</a> : <a href="index.html">dylan.NET.Tokenizer.CodeGen Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.CodeGen.SymTable">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.CodeGen.SymTable:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.CodeGen.SymTable:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.CodeGen.SymTable:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:dylan.NET.Tokenizer.CodeGen.SymTable">SymTable  Class</h1>
+    <p class="Summary" id="T:dylan.NET.Tokenizer.CodeGen.SymTable:Summary">
+      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+    </p>
+    <div id="T:dylan.NET.Tokenizer.CodeGen.SymTable:Signature">
+      <h2>Syntax</h2>
+      <div class="Signature">public class  <b>SymTable</b></div>
+    </div>
+    <div class="Remarks" id="T:dylan.NET.Tokenizer.CodeGen.SymTable:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:dylan.NET.Tokenizer.CodeGen.SymTable:Docs:Remarks">
+        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:dylan.NET.Tokenizer.CodeGen.SymTable:Docs:Version Information">
+        <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h2 class="Section">Public Constructors</h2>
+        <div class="SectionBox" id="Public Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:dylan.NET.Tokenizer.CodeGen.SymTable">SymTable</a>
+                    </b>()</div>
+                </td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Fields</h2>
+        <div class="SectionBox" id="Public Fields">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Tokenizer.CodeGen.SymTable.CtorLst">CtorLst</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Tokenizer.CodeGen/CtorItem.html">CtorItem</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Tokenizer.CodeGen.SymTable.FldLst">FldLst</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Tokenizer.CodeGen/FieldItem.html">FieldItem</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Tokenizer.CodeGen.SymTable.IfLst">IfLst</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Tokenizer.CodeGen/IfItem.html">IfItem</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Tokenizer.CodeGen.SymTable.MetLst">MetLst</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Tokenizer.CodeGen/MethodItem.html">MethodItem</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedCtorLst">NestedCtorLst</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Tokenizer.CodeGen/CtorItem.html">CtorItem</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedFldLst">NestedFldLst</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Tokenizer.CodeGen/FieldItem.html">FieldItem</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedMetLst">NestedMetLst</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Tokenizer.CodeGen/MethodItem.html">MethodItem</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Tokenizer.CodeGen.SymTable.VarLst">VarLst</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Tokenizer.CodeGen/VarItem.html">VarItem</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.AddCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder)">AddCtor</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[], <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ConstructorBuilder">System.Reflection.Emit.ConstructorBuilder</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder)">AddFld</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.FieldBuilder">System.Reflection.Emit.FieldBuilder</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.AddIf">AddIf</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.AddMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder)">AddMet</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[], <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.MethodBuilder">System.Reflection.Emit.MethodBuilder</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder)">AddNestedCtor</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[], <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ConstructorBuilder">System.Reflection.Emit.ConstructorBuilder</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder)">AddNestedFld</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.FieldBuilder">System.Reflection.Emit.FieldBuilder</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder)">AddNestedMet</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[], <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.MethodBuilder">System.Reflection.Emit.MethodBuilder</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.AddVar(System.String,System.Boolean,System.Int32,System.Type)">AddVar</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.FindFld(System.String)">FindFld</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<nobr> : <a href="../dylan.NET.Tokenizer.CodeGen/FieldItem.html">FieldItem</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.FindVar(System.String)">FindVar</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<nobr> : <a href="../dylan.NET.Tokenizer.CodeGen/VarItem.html">VarItem</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.PopIf">PopIf</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfElsePass">ReadIfElsePass</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfEndLbl">ReadIfEndLbl</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfNxtBlkLbl">ReadIfNxtBlkLbl</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetCtor">ResetCtor</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetFld">ResetFld</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetIf">ResetIf</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetMet">ResetMet</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedCtor">ResetNestedCtor</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedFld">ResetNestedFld</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedMet">ResetNestedMet</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetVar">ResetVar</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfElsePass">SetIfElsePass</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfNxtBlkLbl">SetIfNxtBlkLbl</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:dylan.NET.Tokenizer.CodeGen.SymTable:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="C:dylan.NET.Tokenizer.CodeGen.SymTable">SymTable Constructor</h3>
+        <blockquote id="C:dylan.NET.Tokenizer.CodeGen.SymTable:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>SymTable</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:dylan.NET.Tokenizer.CodeGen.SymTable:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:dylan.NET.Tokenizer.CodeGen.SymTable:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder)">AddCtor Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddCtor</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[] ptyps, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ConstructorBuilder">System.Reflection.Emit.ConstructorBuilder</a> met)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder):Parameters">
+            <dl>
+              <dt>
+                <i>ptyps</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>met</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder)">AddFld Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddFld</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> nme, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.FieldBuilder">System.Reflection.Emit.FieldBuilder</a> fld)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder):Parameters">
+            <dl>
+              <dt>
+                <i>nme</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>fld</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddIf">AddIf Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddIf:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddIf</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddIf:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddIf:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder)">AddMet Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddMet</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> nme, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[] ptyps, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.MethodBuilder">System.Reflection.Emit.MethodBuilder</a> met)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder):Parameters">
+            <dl>
+              <dt>
+                <i>nme</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>ptyps</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>met</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder)">AddNestedCtor Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddNestedCtor</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[] ptyps, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ConstructorBuilder">System.Reflection.Emit.ConstructorBuilder</a> met)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder):Parameters">
+            <dl>
+              <dt>
+                <i>ptyps</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>met</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder)">AddNestedFld Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddNestedFld</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> nme, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.FieldBuilder">System.Reflection.Emit.FieldBuilder</a> fld)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder):Parameters">
+            <dl>
+              <dt>
+                <i>nme</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>fld</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder)">AddNestedMet Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddNestedMet</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> nme, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[] ptyps, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.MethodBuilder">System.Reflection.Emit.MethodBuilder</a> met)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder):Parameters">
+            <dl>
+              <dt>
+                <i>nme</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>ptyps</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>met</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddVar(System.String,System.Boolean,System.Int32,System.Type)">AddVar Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddVar(System.String,System.Boolean,System.Int32,System.Type):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddVar</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> nme, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> la, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> ind, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddVar(System.String,System.Boolean,System.Int32,System.Type):Parameters">
+            <dl>
+              <dt>
+                <i>nme</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>la</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>ind</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddVar(System.String,System.Boolean,System.Int32,System.Type):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddVar(System.String,System.Boolean,System.Int32,System.Type):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Tokenizer.CodeGen.SymTable.CtorLst">CtorLst Field</h3>
+        <blockquote id="F:dylan.NET.Tokenizer.CodeGen.SymTable.CtorLst:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Tokenizer.CodeGen/CtorItem.html">CtorItem</a>[] <b>CtorLst</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.CtorLst:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.CtorLst:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindFld(System.String)">FindFld Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindFld(System.String):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Tokenizer.CodeGen/FieldItem.html">FieldItem</a> <b>FindFld</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> nam)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindFld(System.String):Parameters">
+            <dl>
+              <dt>
+                <i>nam</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindFld(System.String):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindFld(System.String):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindFld(System.String):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindVar(System.String)">FindVar Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindVar(System.String):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Tokenizer.CodeGen/VarItem.html">VarItem</a> <b>FindVar</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> nam)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindVar(System.String):Parameters">
+            <dl>
+              <dt>
+                <i>nam</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindVar(System.String):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindVar(System.String):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindVar(System.String):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Tokenizer.CodeGen.SymTable.FldLst">FldLst Field</h3>
+        <blockquote id="F:dylan.NET.Tokenizer.CodeGen.SymTable.FldLst:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Tokenizer.CodeGen/FieldItem.html">FieldItem</a>[] <b>FldLst</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.FldLst:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.FldLst:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Tokenizer.CodeGen.SymTable.IfLst">IfLst Field</h3>
+        <blockquote id="F:dylan.NET.Tokenizer.CodeGen.SymTable.IfLst:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Tokenizer.CodeGen/IfItem.html">IfItem</a>[] <b>IfLst</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.IfLst:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.IfLst:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Tokenizer.CodeGen.SymTable.MetLst">MetLst Field</h3>
+        <blockquote id="F:dylan.NET.Tokenizer.CodeGen.SymTable.MetLst:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Tokenizer.CodeGen/MethodItem.html">MethodItem</a>[] <b>MetLst</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.MetLst:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.MetLst:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedCtorLst">NestedCtorLst Field</h3>
+        <blockquote id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedCtorLst:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Tokenizer.CodeGen/CtorItem.html">CtorItem</a>[] <b>NestedCtorLst</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedCtorLst:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedCtorLst:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedFldLst">NestedFldLst Field</h3>
+        <blockquote id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedFldLst:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Tokenizer.CodeGen/FieldItem.html">FieldItem</a>[] <b>NestedFldLst</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedFldLst:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedFldLst:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedMetLst">NestedMetLst Field</h3>
+        <blockquote id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedMetLst:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Tokenizer.CodeGen/MethodItem.html">MethodItem</a>[] <b>NestedMetLst</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedMetLst:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedMetLst:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopIf">PopIf Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopIf:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>PopIf</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopIf:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopIf:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfElsePass">ReadIfElsePass Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfElsePass:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>ReadIfElsePass</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfElsePass:Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfElsePass:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfElsePass:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfEndLbl">ReadIfEndLbl Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfEndLbl:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a> <b>ReadIfEndLbl</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfEndLbl:Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfEndLbl:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfEndLbl:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfNxtBlkLbl">ReadIfNxtBlkLbl Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfNxtBlkLbl:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a> <b>ReadIfNxtBlkLbl</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfNxtBlkLbl:Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfNxtBlkLbl:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfNxtBlkLbl:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetCtor">ResetCtor Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetCtor:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ResetCtor</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetCtor:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetCtor:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetFld">ResetFld Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetFld:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ResetFld</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetFld:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetFld:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetIf">ResetIf Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetIf:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ResetIf</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetIf:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetIf:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetMet">ResetMet Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetMet:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ResetMet</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetMet:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetMet:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedCtor">ResetNestedCtor Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedCtor:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ResetNestedCtor</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedCtor:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedCtor:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedFld">ResetNestedFld Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedFld:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ResetNestedFld</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedFld:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedFld:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedMet">ResetNestedMet Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedMet:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ResetNestedMet</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedMet:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedMet:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetVar">ResetVar Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetVar:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ResetVar</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetVar:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetVar:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfElsePass">SetIfElsePass Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfElsePass:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>SetIfElsePass</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfElsePass:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfElsePass:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfNxtBlkLbl">SetIfNxtBlkLbl Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfNxtBlkLbl:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>SetIfNxtBlkLbl</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfNxtBlkLbl:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfNxtBlkLbl:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Tokenizer.CodeGen.SymTable.VarLst">VarLst Field</h3>
+        <blockquote id="F:dylan.NET.Tokenizer.CodeGen.SymTable.VarLst:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Tokenizer.CodeGen/VarItem.html">VarItem</a>[] <b>VarLst</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.VarLst:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.CodeGen.SymTable.VarLst:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

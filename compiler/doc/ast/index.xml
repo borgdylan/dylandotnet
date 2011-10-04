@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.7.5">
+    <Assembly Name="tokenizer.AST" Version="11.2.7.6">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("tokenizer.AST")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.5")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.6")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("tokenizer.AST")</AttributeName>
@@ -106,6 +106,7 @@
       <Type Name="FieldTok" Kind="Class" />
       <Type Name="FinallyTok" Kind="Class" />
       <Type Name="GetTok" Kind="Class" />
+      <Type Name="GettypeCallTok" Kind="Class" />
       <Type Name="GettypeTok" Kind="Class" />
       <Type Name="GotoTok" Kind="Class" />
       <Type Name="Ident" Kind="Class" />
@@ -122,6 +123,7 @@
       <Type Name="MethodTok" Kind="Class" />
       <Type Name="NamespaceTok" Kind="Class" />
       <Type Name="NewarrTok" Kind="Class" />
+      <Type Name="NewCallTok" Kind="Class" />
       <Type Name="NewresTok" Kind="Class" />
       <Type Name="NewTok" Kind="Class" />
       <Type Name="NullTok" Kind="Class" />
@@ -190,6 +192,7 @@
       <Type Name="BooleanLiteral" Kind="Class" />
       <Type Name="ByteLiteral" Kind="Class" />
       <Type Name="CharLiteral" Kind="Class" />
+      <Type Name="ConstLiteral" Kind="Class" />
       <Type Name="DoubleLiteral" Kind="Class" />
       <Type Name="FloatLiteral" Kind="Class" />
       <Type Name="IntLiteral" Kind="Class" />

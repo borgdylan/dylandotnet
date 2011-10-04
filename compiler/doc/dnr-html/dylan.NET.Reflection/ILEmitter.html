@@ -1,0 +1,2375 @@
+<html>
+  <head>
+    <title>dylan.NET.Reflection.ILEmitter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">dnr</a> : <a href="index.html">dylan.NET.Reflection Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Reflection.ILEmitter">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.ILEmitter:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.ILEmitter:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.ILEmitter:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:dylan.NET.Reflection.ILEmitter">ILEmitter  Class</h1>
+    <p class="Summary" id="T:dylan.NET.Reflection.ILEmitter:Summary">
+      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+    </p>
+    <div id="T:dylan.NET.Reflection.ILEmitter:Signature">
+      <h2>Syntax</h2>
+      <div class="Signature">public class  <b>ILEmitter</b></div>
+    </div>
+    <div class="Remarks" id="T:dylan.NET.Reflection.ILEmitter:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:dylan.NET.Reflection.ILEmitter:Docs:Remarks">
+        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:dylan.NET.Reflection.ILEmitter:Docs:Version Information">
+        <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h2 class="Section">Public Constructors</h2>
+        <div class="SectionBox" id="Public Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:dylan.NET.Reflection.ILEmitter">ILEmitter</a>
+                    </b>()</div>
+                </td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Fields</h2>
+        <div class="SectionBox" id="Public Fields">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.ILEmitter.ArgInd">ArgInd</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.ILEmitter.Constr">Constr</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ConstructorBuilder">System.Reflection.Emit.ConstructorBuilder</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.ILEmitter.DebugFlg">DebugFlg</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.ILEmitter.DocWriter">DocWriter</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Diagnostics.SymbolStore.ISymbolDocumentWriter">System.Diagnostics.SymbolStore.ISymbolDocumentWriter</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.ILEmitter.ILGen">ILGen</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ILGenerator">System.Reflection.Emit.ILGenerator</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.ILEmitter.LocInd">LocInd</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.ILEmitter.Met">Met</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.MethodBuilder">System.Reflection.Emit.MethodBuilder</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.ILEmitter.StaticFlg">StaticFlg</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.DeclVar(System.String,System.Type)">DeclVar</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.DefineLbl">DefineLbl</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitAdd(System.Boolean)">EmitAdd</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitAnd">EmitAnd</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitBr(System.Reflection.Emit.Label)">EmitBr</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitBrfalse(System.Reflection.Emit.Label)">EmitBrfalse</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitBrtrue(System.Reflection.Emit.Label)">EmitBrtrue</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitCall(System.Reflection.MethodInfo)">EmitCall</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitCallvirt(System.Reflection.MethodInfo)">EmitCallvirt</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitCeq">EmitCeq</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitCge(System.Boolean)">EmitCge</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitCgt(System.Boolean)">EmitCgt</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitCle(System.Boolean)">EmitCle</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitClt(System.Boolean)">EmitClt</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitCneq">EmitCneq</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitDiv(System.Boolean)">EmitDiv</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdarg(System.Int32)">EmitLdarg</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdcBool(System.Boolean)">EmitLdcBool</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdcChar(System.Char)">EmitLdcChar</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Char">char</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdcI1(System.SByte)">EmitLdcI1</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.SByte">sbyte</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdcI2(System.Int16)">EmitLdcI2</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int16">short</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdcI4(System.Int32)">EmitLdcI4</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdcI8(System.Int64)">EmitLdcI8</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int64">long</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdcR4(System.Single)">EmitLdcR4</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Single">float</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdcR8(System.Double)">EmitLdcR8</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Double">double</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdfld(System.Reflection.FieldInfo)">EmitLdfld</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.FieldInfo">System.Reflection.FieldInfo</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdloc(System.Int32)">EmitLdloc</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdnull">EmitLdnull</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdsfld(System.Reflection.FieldInfo)">EmitLdsfld</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.FieldInfo">System.Reflection.FieldInfo</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdstr(System.String)">EmitLdstr</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLdtoken(System.Type)">EmitLdtoken</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitLike">EmitLike</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitMul(System.Boolean)">EmitMul</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitNand">EmitNand</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitNeg">EmitNeg</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitNewobj(System.Reflection.ConstructorInfo)">EmitNewobj</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.ConstructorInfo">System.Reflection.ConstructorInfo</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitNLike">EmitNLike</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitNor">EmitNor</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitNot">EmitNot</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitOr">EmitOr</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitPop">EmitPop</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitRem(System.Boolean)">EmitRem</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitRet">EmitRet</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitShl">EmitShl</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitShr(System.Boolean)">EmitShr</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitStarg(System.Int32)">EmitStarg</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitStfld(System.Reflection.FieldInfo)">EmitStfld</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.FieldInfo">System.Reflection.FieldInfo</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitStloc(System.Int32)">EmitStloc</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitStrAdd">EmitStrAdd</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitStrCeq">EmitStrCeq</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitStrCneq">EmitStrCneq</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitStsfld(System.Reflection.FieldInfo)">EmitStsfld</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.FieldInfo">System.Reflection.FieldInfo</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitSub(System.Boolean)">EmitSub</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitXnor">EmitXnor</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitXor">EmitXor</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.MarkDbgPt(System.Int32)">MarkDbgPt</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.MarkLbl(System.Reflection.Emit.Label)">MarkLbl</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:dylan.NET.Reflection.ILEmitter:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="C:dylan.NET.Reflection.ILEmitter">ILEmitter Constructor</h3>
+        <blockquote id="C:dylan.NET.Reflection.ILEmitter:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>ILEmitter</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:dylan.NET.Reflection.ILEmitter:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:dylan.NET.Reflection.ILEmitter:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.ILEmitter.ArgInd">ArgInd Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.ILEmitter.ArgInd:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>ArgInd</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.ArgInd:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.ArgInd:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.ILEmitter.Constr">Constr Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.ILEmitter.Constr:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ConstructorBuilder">System.Reflection.Emit.ConstructorBuilder</a> <b>Constr</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.Constr:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.Constr:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.ILEmitter.DebugFlg">DebugFlg Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.ILEmitter.DebugFlg:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>DebugFlg</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.DebugFlg:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.DebugFlg:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.DeclVar(System.String,System.Type)">DeclVar Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.DeclVar(System.String,System.Type):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>DeclVar</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> name, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.DeclVar(System.String,System.Type):Parameters">
+            <dl>
+              <dt>
+                <i>name</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.DeclVar(System.String,System.Type):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.DeclVar(System.String,System.Type):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.DefineLbl">DefineLbl Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.DefineLbl:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a> <b>DefineLbl</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.DefineLbl:Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.DefineLbl:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.DefineLbl:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.ILEmitter.DocWriter">DocWriter Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.ILEmitter.DocWriter:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Diagnostics.SymbolStore.ISymbolDocumentWriter">System.Diagnostics.SymbolStore.ISymbolDocumentWriter</a> <b>DocWriter</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.DocWriter:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.DocWriter:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitAdd(System.Boolean)">EmitAdd Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitAdd(System.Boolean):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitAdd</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitAdd(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>s</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitAdd(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitAdd(System.Boolean):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitAnd">EmitAnd Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitAnd:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitAnd</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitAnd:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitAnd:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitBr(System.Reflection.Emit.Label)">EmitBr Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitBr(System.Reflection.Emit.Label):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitBr</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a> lbl)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBr(System.Reflection.Emit.Label):Parameters">
+            <dl>
+              <dt>
+                <i>lbl</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBr(System.Reflection.Emit.Label):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBr(System.Reflection.Emit.Label):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitBrfalse(System.Reflection.Emit.Label)">EmitBrfalse Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitBrfalse(System.Reflection.Emit.Label):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitBrfalse</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a> lbl)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBrfalse(System.Reflection.Emit.Label):Parameters">
+            <dl>
+              <dt>
+                <i>lbl</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBrfalse(System.Reflection.Emit.Label):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBrfalse(System.Reflection.Emit.Label):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitBrtrue(System.Reflection.Emit.Label)">EmitBrtrue Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitBrtrue(System.Reflection.Emit.Label):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitBrtrue</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a> lbl)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBrtrue(System.Reflection.Emit.Label):Parameters">
+            <dl>
+              <dt>
+                <i>lbl</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBrtrue(System.Reflection.Emit.Label):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBrtrue(System.Reflection.Emit.Label):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitCall(System.Reflection.MethodInfo)">EmitCall Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCall(System.Reflection.MethodInfo):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCall</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a> met)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCall(System.Reflection.MethodInfo):Parameters">
+            <dl>
+              <dt>
+                <i>met</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCall(System.Reflection.MethodInfo):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCall(System.Reflection.MethodInfo):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitCallvirt(System.Reflection.MethodInfo)">EmitCallvirt Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCallvirt(System.Reflection.MethodInfo):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCallvirt</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.MethodInfo">System.Reflection.MethodInfo</a> met)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCallvirt(System.Reflection.MethodInfo):Parameters">
+            <dl>
+              <dt>
+                <i>met</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCallvirt(System.Reflection.MethodInfo):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCallvirt(System.Reflection.MethodInfo):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitCeq">EmitCeq Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCeq:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCeq</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCeq:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCeq:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitCge(System.Boolean)">EmitCge Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCge(System.Boolean):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCge</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCge(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>s</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCge(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCge(System.Boolean):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitCgt(System.Boolean)">EmitCgt Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCgt(System.Boolean):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCgt</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCgt(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>s</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCgt(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCgt(System.Boolean):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitCle(System.Boolean)">EmitCle Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCle(System.Boolean):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCle</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCle(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>s</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCle(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCle(System.Boolean):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitClt(System.Boolean)">EmitClt Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitClt(System.Boolean):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitClt</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitClt(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>s</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitClt(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitClt(System.Boolean):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitCneq">EmitCneq Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCneq:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCneq</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCneq:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCneq:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitDiv(System.Boolean)">EmitDiv Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitDiv(System.Boolean):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitDiv</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitDiv(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>s</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitDiv(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitDiv(System.Boolean):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdarg(System.Int32)">EmitLdarg Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdarg(System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdarg</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdarg(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>num</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdarg(System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdarg(System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdcBool(System.Boolean)">EmitLdcBool Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcBool(System.Boolean):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcBool</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcBool(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>b</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcBool(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcBool(System.Boolean):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdcChar(System.Char)">EmitLdcChar Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcChar(System.Char):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcChar</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Char">char</a> c)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcChar(System.Char):Parameters">
+            <dl>
+              <dt>
+                <i>c</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcChar(System.Char):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcChar(System.Char):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI1(System.SByte)">EmitLdcI1 Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI1(System.SByte):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI1</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.SByte">sbyte</a> n)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI1(System.SByte):Parameters">
+            <dl>
+              <dt>
+                <i>n</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI1(System.SByte):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI1(System.SByte):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI2(System.Int16)">EmitLdcI2 Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI2(System.Int16):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI2</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int16">short</a> n)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI2(System.Int16):Parameters">
+            <dl>
+              <dt>
+                <i>n</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI2(System.Int16):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI2(System.Int16):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI4(System.Int32)">EmitLdcI4 Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI4(System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI4</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI4(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>num</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI4(System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI4(System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI8(System.Int64)">EmitLdcI8 Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI8(System.Int64):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int64">long</a> n)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI8(System.Int64):Parameters">
+            <dl>
+              <dt>
+                <i>n</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI8(System.Int64):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI8(System.Int64):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR4(System.Single)">EmitLdcR4 Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR4(System.Single):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcR4</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Single">float</a> num)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR4(System.Single):Parameters">
+            <dl>
+              <dt>
+                <i>num</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR4(System.Single):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR4(System.Single):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR8(System.Double)">EmitLdcR8 Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR8(System.Double):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcR8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Double">double</a> num)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR8(System.Double):Parameters">
+            <dl>
+              <dt>
+                <i>num</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR8(System.Double):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR8(System.Double):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdfld(System.Reflection.FieldInfo)">EmitLdfld Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdfld(System.Reflection.FieldInfo):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdfld</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.FieldInfo">System.Reflection.FieldInfo</a> fld)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdfld(System.Reflection.FieldInfo):Parameters">
+            <dl>
+              <dt>
+                <i>fld</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdfld(System.Reflection.FieldInfo):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdfld(System.Reflection.FieldInfo):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdloc(System.Int32)">EmitLdloc Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdloc(System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdloc</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdloc(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>num</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdloc(System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdloc(System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdnull">EmitLdnull Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdnull:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdnull</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdnull:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdnull:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdsfld(System.Reflection.FieldInfo)">EmitLdsfld Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdsfld(System.Reflection.FieldInfo):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdsfld</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.FieldInfo">System.Reflection.FieldInfo</a> fld)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdsfld(System.Reflection.FieldInfo):Parameters">
+            <dl>
+              <dt>
+                <i>fld</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdsfld(System.Reflection.FieldInfo):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdsfld(System.Reflection.FieldInfo):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdstr(System.String)">EmitLdstr Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdstr(System.String):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdstr</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> str)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdstr(System.String):Parameters">
+            <dl>
+              <dt>
+                <i>str</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdstr(System.String):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdstr(System.String):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLdtoken(System.Type)">EmitLdtoken Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdtoken(System.Type):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdtoken</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> t)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdtoken(System.Type):Parameters">
+            <dl>
+              <dt>
+                <i>t</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdtoken(System.Type):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdtoken(System.Type):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitLike">EmitLike Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLike:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLike</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLike:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLike:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitMul(System.Boolean)">EmitMul Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitMul(System.Boolean):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitMul</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitMul(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>s</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitMul(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitMul(System.Boolean):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitNand">EmitNand Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNand:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNand</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNand:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNand:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitNeg">EmitNeg Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNeg:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNeg</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNeg:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNeg:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitNewobj(System.Reflection.ConstructorInfo)">EmitNewobj Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNewobj(System.Reflection.ConstructorInfo):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNewobj</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.ConstructorInfo">System.Reflection.ConstructorInfo</a> c)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNewobj(System.Reflection.ConstructorInfo):Parameters">
+            <dl>
+              <dt>
+                <i>c</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNewobj(System.Reflection.ConstructorInfo):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNewobj(System.Reflection.ConstructorInfo):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitNLike">EmitNLike Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNLike:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNLike</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNLike:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNLike:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitNor">EmitNor Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNor:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNor</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNor:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNor:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitNot">EmitNot Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNot:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNot</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNot:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNot:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitOr">EmitOr Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitOr:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitOr</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitOr:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitOr:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitPop">EmitPop Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitPop:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitPop</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitPop:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitPop:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitRem(System.Boolean)">EmitRem Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitRem(System.Boolean):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitRem</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitRem(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>s</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitRem(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitRem(System.Boolean):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitRet">EmitRet Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitRet:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitRet</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitRet:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitRet:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitShl">EmitShl Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitShl:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitShl</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitShl:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitShl:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitShr(System.Boolean)">EmitShr Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitShr(System.Boolean):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitShr</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitShr(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>s</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitShr(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitShr(System.Boolean):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitStarg(System.Int32)">EmitStarg Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStarg(System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStarg</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStarg(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>num</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStarg(System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStarg(System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitStfld(System.Reflection.FieldInfo)">EmitStfld Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStfld(System.Reflection.FieldInfo):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStfld</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.FieldInfo">System.Reflection.FieldInfo</a> fld)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStfld(System.Reflection.FieldInfo):Parameters">
+            <dl>
+              <dt>
+                <i>fld</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStfld(System.Reflection.FieldInfo):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStfld(System.Reflection.FieldInfo):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitStloc(System.Int32)">EmitStloc Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStloc(System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStloc</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStloc(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>num</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStloc(System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStloc(System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitStrAdd">EmitStrAdd Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStrAdd:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStrAdd</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStrAdd:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStrAdd:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitStrCeq">EmitStrCeq Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStrCeq:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStrCeq</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStrCeq:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStrCeq:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitStrCneq">EmitStrCneq Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStrCneq:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStrCneq</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStrCneq:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStrCneq:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitStsfld(System.Reflection.FieldInfo)">EmitStsfld Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStsfld(System.Reflection.FieldInfo):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStsfld</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.FieldInfo">System.Reflection.FieldInfo</a> fld)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStsfld(System.Reflection.FieldInfo):Parameters">
+            <dl>
+              <dt>
+                <i>fld</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStsfld(System.Reflection.FieldInfo):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStsfld(System.Reflection.FieldInfo):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitSub(System.Boolean)">EmitSub Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitSub(System.Boolean):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitSub</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitSub(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>s</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitSub(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitSub(System.Boolean):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitXnor">EmitXnor Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitXnor:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitXnor</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitXnor:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitXnor:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitXor">EmitXor Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitXor:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitXor</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitXor:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitXor:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.ILEmitter.ILGen">ILGen Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.ILEmitter.ILGen:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ILGenerator">System.Reflection.Emit.ILGenerator</a> <b>ILGen</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.ILGen:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.ILGen:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.ILEmitter.LocInd">LocInd Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.ILEmitter.LocInd:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>LocInd</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.LocInd:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.LocInd:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.MarkDbgPt(System.Int32)">MarkDbgPt Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.MarkDbgPt(System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>MarkDbgPt</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> line)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.MarkDbgPt(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>line</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.MarkDbgPt(System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.MarkDbgPt(System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.MarkLbl(System.Reflection.Emit.Label)">MarkLbl Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.MarkLbl(System.Reflection.Emit.Label):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>MarkLbl</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.Label">System.Reflection.Emit.Label</a> lbl)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.MarkLbl(System.Reflection.Emit.Label):Parameters">
+            <dl>
+              <dt>
+                <i>lbl</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.MarkLbl(System.Reflection.Emit.Label):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.MarkLbl(System.Reflection.Emit.Label):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.ILEmitter.Met">Met Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.ILEmitter.Met:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.MethodBuilder">System.Reflection.Emit.MethodBuilder</a> <b>Met</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.Met:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.Met:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.ILEmitter.StaticFlg">StaticFlg Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.ILEmitter.StaticFlg:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>StaticFlg</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.StaticFlg:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.StaticFlg:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

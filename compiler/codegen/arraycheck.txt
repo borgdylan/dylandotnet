@@ -1,0 +1,36 @@
+//begin array check
+
+if idt::IsArr = true then
+idttyp = AsmFactory::Type02
+
+arrlocexpr = idt::ArrLoc
+if arrlocexpr::Tokens[l] = 1 then
+idtb1 = true
+else
+idtb1 = false
+end if
+
+if idtb1 = true then
+tok = arrlocexpr::Tokens[0]
+typ = gettype Ident
+idtb1 = typ::IsInstanceOfType($object$tok)
+if idtb1 = true then
+idtarrloc = tok
+idtcomp = String::Compare(idtarrloc::Value , "l")
+if idtcomp <> 0 then
+idtb1 = false
+else
+idtb1 = true
+end if
+end if
+end if
+
+if idtb1 = false then
+idttyp = idttyp::GetElementType()
+AsmFactory::Type02 = idttyp
+else
+AsmFactory::Type02 = gettype integer
+end if
+
+end if
+//end array check

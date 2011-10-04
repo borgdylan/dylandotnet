@@ -1,0 +1,1372 @@
+<html>
+  <head>
+    <title>dylan.NET.Reflection.AsmFactory</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">dnr</a> : <a href="index.html">dylan.NET.Reflection Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Reflection.AsmFactory">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.AsmFactory:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.AsmFactory:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.AsmFactory:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:dylan.NET.Reflection.AsmFactory">AsmFactory  Class</h1>
+    <p class="Summary" id="T:dylan.NET.Reflection.AsmFactory:Summary">
+      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+    </p>
+    <div id="T:dylan.NET.Reflection.AsmFactory:Signature">
+      <h2>Syntax</h2>
+      <div class="Signature">public class  <b>AsmFactory</b></div>
+    </div>
+    <div class="Remarks" id="T:dylan.NET.Reflection.AsmFactory:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:dylan.NET.Reflection.AsmFactory:Docs:Remarks">
+        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:dylan.NET.Reflection.AsmFactory:Docs:Version Information">
+        <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h2 class="Section">Public Constructors</h2>
+        <div class="SectionBox" id="Public Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:dylan.NET.Reflection.AsmFactory">AsmFactory</a>
+                    </b>()</div>
+                </td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Fields</h2>
+        <div class="SectionBox" id="Public Fields">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.AsmB">AsmB</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.AssemblyBuilder">System.Reflection.Emit.AssemblyBuilder</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.AsmFile">AsmFile</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.AsmMode">AsmMode</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.AsmNameStr">AsmNameStr</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.AssemblyName">System.Reflection.AssemblyName</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.ChainFlg">ChainFlg</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.CurnConB">CurnConB</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ConstructorBuilder">System.Reflection.Emit.ConstructorBuilder</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.CurnFldB">CurnFldB</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.FieldBuilder">System.Reflection.Emit.FieldBuilder</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.CurnILGen">CurnILGen</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ILGenerator">System.Reflection.Emit.ILGenerator</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.CurnMetB">CurnMetB</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.MethodBuilder">System.Reflection.Emit.MethodBuilder</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.CurnMetName">CurnMetName</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.CurnNS">CurnNS</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.CurnTypB">CurnTypB</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.TypeBuilder">System.Reflection.Emit.TypeBuilder</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.CurnTypB2">CurnTypB2</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.TypeBuilder">System.Reflection.Emit.TypeBuilder</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.CurnTypList">CurnTypList</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.TypeBuilder">System.Reflection.Emit.TypeBuilder</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.CurnTypName">CurnTypName</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.DebugFlg">DebugFlg</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.DfltNS">DfltNS</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.DocWriter">DocWriter</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Diagnostics.SymbolStore.ISymbolDocumentWriter">System.Diagnostics.SymbolStore.ISymbolDocumentWriter</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.GenParamNames">GenParamNames</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.GenParamTyps">GenParamTyps</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.GenericTypeParameterBuilder">System.Reflection.Emit.GenericTypeParameterBuilder</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.inClass">inClass</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.InMethodFlg">InMethodFlg</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.isNested">isNested</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.MdlB">MdlB</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ModuleBuilder">System.Reflection.Emit.ModuleBuilder</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.PopFlg">PopFlg</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.TypArr">TypArr</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.Type01">Type01</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.Type02">Type02</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.Type03">Type03</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.AsmFactory.Type04">Type04</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.AsmFactory.AddGenParamName(System.String)">AddGenParamName</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.AsmFactory.AddTyp(System.Type)">AddTyp</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.AsmFactory.AddTypB(System.Reflection.Emit.TypeBuilder)">AddTypB</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.TypeBuilder">System.Reflection.Emit.TypeBuilder</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.AsmFactory.CreateTyp">CreateTyp</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.AsmFactory.InitConstr">InitConstr</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.AsmFactory.InitMtd">InitMtd</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:dylan.NET.Reflection.AsmFactory:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="C:dylan.NET.Reflection.AsmFactory">AsmFactory Constructor</h3>
+        <blockquote id="C:dylan.NET.Reflection.AsmFactory:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>AsmFactory</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:dylan.NET.Reflection.AsmFactory:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:dylan.NET.Reflection.AsmFactory:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.AsmFactory.AddGenParamName(System.String)">AddGenParamName Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.AsmFactory.AddGenParamName(System.String):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddGenParamName</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> nam)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.AsmFactory.AddGenParamName(System.String):Parameters">
+            <dl>
+              <dt>
+                <i>nam</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.AddGenParamName(System.String):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.AddGenParamName(System.String):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.AsmFactory.AddTyp(System.Type)">AddTyp Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.AsmFactory.AddTyp(System.Type):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddTyp</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> typ)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.AsmFactory.AddTyp(System.Type):Parameters">
+            <dl>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.AddTyp(System.Type):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.AddTyp(System.Type):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.AsmFactory.AddTypB(System.Reflection.Emit.TypeBuilder)">AddTypB Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.AsmFactory.AddTypB(System.Reflection.Emit.TypeBuilder):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddTypB</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.TypeBuilder">System.Reflection.Emit.TypeBuilder</a> typ)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.AsmFactory.AddTypB(System.Reflection.Emit.TypeBuilder):Parameters">
+            <dl>
+              <dt>
+                <i>typ</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.AddTypB(System.Reflection.Emit.TypeBuilder):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.AddTypB(System.Reflection.Emit.TypeBuilder):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.AsmB">AsmB Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.AsmB:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.AssemblyBuilder">System.Reflection.Emit.AssemblyBuilder</a> <b>AsmB</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.AsmB:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.AsmB:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.AsmFile">AsmFile Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.AsmFile:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>AsmFile</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.AsmFile:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.AsmFile:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.AsmMode">AsmMode Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.AsmMode:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>AsmMode</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.AsmMode:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.AsmMode:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.AsmNameStr">AsmNameStr Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.AsmNameStr:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.AssemblyName">System.Reflection.AssemblyName</a> <b>AsmNameStr</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.AsmNameStr:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.AsmNameStr:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.ChainFlg">ChainFlg Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.ChainFlg:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>ChainFlg</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.ChainFlg:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.ChainFlg:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.AsmFactory.CreateTyp">CreateTyp Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.AsmFactory.CreateTyp:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>CreateTyp</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.CreateTyp:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.CreateTyp:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.CurnConB">CurnConB Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.CurnConB:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ConstructorBuilder">System.Reflection.Emit.ConstructorBuilder</a> <b>CurnConB</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnConB:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnConB:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.CurnFldB">CurnFldB Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.CurnFldB:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.FieldBuilder">System.Reflection.Emit.FieldBuilder</a> <b>CurnFldB</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnFldB:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnFldB:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.CurnILGen">CurnILGen Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.CurnILGen:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ILGenerator">System.Reflection.Emit.ILGenerator</a> <b>CurnILGen</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnILGen:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnILGen:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.CurnMetB">CurnMetB Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.CurnMetB:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.MethodBuilder">System.Reflection.Emit.MethodBuilder</a> <b>CurnMetB</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnMetB:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnMetB:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.CurnMetName">CurnMetName Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.CurnMetName:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>CurnMetName</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnMetName:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnMetName:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.CurnNS">CurnNS Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.CurnNS:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>CurnNS</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnNS:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnNS:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.CurnTypB">CurnTypB Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.CurnTypB:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.TypeBuilder">System.Reflection.Emit.TypeBuilder</a> <b>CurnTypB</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnTypB:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnTypB:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.CurnTypB2">CurnTypB2 Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.CurnTypB2:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.TypeBuilder">System.Reflection.Emit.TypeBuilder</a> <b>CurnTypB2</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnTypB2:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnTypB2:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.CurnTypList">CurnTypList Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.CurnTypList:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.TypeBuilder">System.Reflection.Emit.TypeBuilder</a>[] <b>CurnTypList</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnTypList:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnTypList:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.CurnTypName">CurnTypName Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.CurnTypName:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>CurnTypName</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnTypName:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.CurnTypName:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.DebugFlg">DebugFlg Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.DebugFlg:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>DebugFlg</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.DebugFlg:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.DebugFlg:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.DfltNS">DfltNS Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.DfltNS:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>DfltNS</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.DfltNS:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.DfltNS:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.DocWriter">DocWriter Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.DocWriter:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Diagnostics.SymbolStore.ISymbolDocumentWriter">System.Diagnostics.SymbolStore.ISymbolDocumentWriter</a> <b>DocWriter</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.DocWriter:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.DocWriter:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.GenParamNames">GenParamNames Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.GenParamNames:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[] <b>GenParamNames</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.GenParamNames:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.GenParamNames:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.GenParamTyps">GenParamTyps Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.GenParamTyps:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.GenericTypeParameterBuilder">System.Reflection.Emit.GenericTypeParameterBuilder</a>[] <b>GenParamTyps</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.GenParamTyps:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.GenParamTyps:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.inClass">inClass Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.inClass:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>inClass</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.inClass:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.inClass:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.AsmFactory.InitConstr">InitConstr Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.AsmFactory.InitConstr:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>InitConstr</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.InitConstr:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.InitConstr:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.AsmFactory.InitMtd">InitMtd Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.AsmFactory.InitMtd:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>InitMtd</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.InitMtd:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.AsmFactory.InitMtd:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.InMethodFlg">InMethodFlg Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.InMethodFlg:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>InMethodFlg</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.InMethodFlg:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.InMethodFlg:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.isNested">isNested Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.isNested:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>isNested</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.isNested:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.isNested:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.MdlB">MdlB Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.MdlB:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Reflection.Emit.ModuleBuilder">System.Reflection.Emit.ModuleBuilder</a> <b>MdlB</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.MdlB:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.MdlB:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.PopFlg">PopFlg Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.PopFlg:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>PopFlg</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.PopFlg:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.PopFlg:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.TypArr">TypArr Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.TypArr:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a>[] <b>TypArr</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.TypArr:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.TypArr:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.Type01">Type01 Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.Type01:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> <b>Type01</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.Type01:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.Type01:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.Type02">Type02 Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.Type02:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> <b>Type02</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.Type02:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.Type02:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.Type03">Type03 Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.Type03:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> <b>Type03</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.Type03:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.Type03:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.AsmFactory.Type04">Type04 Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.AsmFactory.Type04:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Type">Type</a> <b>Type04</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.Type04:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.AsmFactory.Type04:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)<br /><b>Assembly Versions: </b>11.2.7.3, 11.2.7.5, 11.2.7.6</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

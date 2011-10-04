@@ -1,12 +1,15 @@
 .\"Created with GNOME Manpages Editor Wizard
 .\"http://sourceforge.net/projects/gmanedit2
-.TH dylandotnet 1 "September 21, 2011" "11.2.7.5" "dylan.NET"
+.TH dylandotnet 1 "October 3, 2011" "11.2.7.6" "dylan.NET"
 
 .SH NAME
-dylandotnet \- A program for compiling dylan.NET source code into Mono compatible bytecode.
+dylandotnet, dylandotnet4 \- A program for compiling dylan.NET source code into Mono compatible bytecode.
 
 .SH SYNOPSIS
 .B dylandotnet
+.RI [-h|-V|file-name]
+.br
+.B dylandotnet4
 .RI [-h|-V|file-name]
 .br
 
@@ -15,12 +18,19 @@ This manual page explains the
 .B dylandotnet
 program.
 .PP
-The program
+The programs
 .B dylandotnet
-is for compiling dylan.NET code into CLI bytecode executable and/or loadable by the mono runtime.
+and
+.B dylandotnet4
+are for compiling dylan.NET code into CLI bytecode executable and/or loadable by the mono runtime. They compile code for CLI 2.0 and CLI 4.0 respectively.
 
 .SH OPTIONS
-Only one of the following options may be passed at one time. -V and -h will not affect compilation and should not be issued with the file-name.
+Only one of the following options may be passed at one time. -V and -h will not affect compilation and should not be issued with the file-name. In the explanations below
+.B dylandotnet
+can also be substituted by
+.B dylandotnet4
+if the dylandotnet4 package was installed or if the installation was done from source.
+
 .B
 .IP file-name
 The file name of the file having the assembly definition and #include directives that include all the other source files.
@@ -34,7 +44,12 @@ This option aborts compilation and instead displays a short listing of the optio
 
 .SH FILES
 .PP
-This is the list of the most important files installed by the dylan.NET Makefile or Package whichever one was used for the install. Before these paths one should add /usr/ or /usr/local/ whichever prefix was chosen in the Makefile. In package installation cases the prefix is /usr/ .
+This is the list of the most important files installed by the dylan.NET Makefile or Package whichever one was used for the install. Before these paths one should add /usr/ or /usr/local/ whichever prefix was chosen in the Makefile. In package installation cases the prefix is /usr/ . In the paths below
+.B dylandotnet
+can also be substituted by
+.B dylandotnet4
+if the dylandotnet4 package was installed or if the installation was done from source.
+
 
 .B
 .IP bin/dylandotnet
@@ -61,17 +76,17 @@ The dylan.NET parser library which has optimizers that can further refine the da
 .IP lib/dylandonet/tokenizer.CodeGen.dll
 The dylan.NET code generation library which contains functions for processing the AST structure and from it make MSIL bytecode whith the help of dnr.dll.
 .B
-.IP share/doc/dylandonet/changelog.gz
-This gzip archive contains the GIT changelog for dylan.NET. The file that is isnide is called log.txt.
+.IP share/doc/dylandonet-doc/changelog.gz
+This gzip archive contains the GIT changelog for dylan.NET. The file that is inside is called ChangeLog.
 .B
-.IP share/doc/dylandonet/ast.tar.gz
-This tarball has inside it the API documentationf for the AST library. Other such tarballs with documentation will be added in the future.
+.IP share/doc/dylandonet-doc/ast.tar.gz
+This tarball has inside it the API documentation for the AST library. Other such tarballs with documentation will be added in the future.
 .B
 .IP share/man/man1/dylandonet.1
 This is this very man page for dylan.NET.
 
 .SH VERSION
-11.2.7.5
+11.2.7.6
 
 .SH "SEE ALSO"
 See also http://launchpad.net/dylandotnet

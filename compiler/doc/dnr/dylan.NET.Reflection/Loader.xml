@@ -1,0 +1,386 @@
+<Type Name="Loader" FullName="dylan.NET.Reflection.Loader">
+  <TypeSignature Language="C#" Value="public class Loader" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Loader extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dnr</AssemblyName>
+    <AssemblyVersion>11.2.7.3</AssemblyVersion>
+    <AssemblyVersion>11.2.7.5</AssemblyVersion>
+    <AssemblyVersion>11.2.7.6</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".cctor">
+      <MemberSignature Language="C#" Value="public Loader ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static specialname rtspecialname void .cctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="addelemmtdinfo">
+      <MemberSignature Language="C#" Value="public static System.Reflection.MethodInfo[] addelemmtdinfo (System.Reflection.MethodInfo[] srcarr, System.Reflection.MethodInfo eltoadd);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Reflection.MethodInfo[] addelemmtdinfo(class System.Reflection.MethodInfo[] srcarr, class System.Reflection.MethodInfo eltoadd) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Reflection.MethodInfo[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="srcarr" Type="System.Reflection.MethodInfo[]" />
+        <Parameter Name="eltoadd" Type="System.Reflection.MethodInfo" />
+      </Parameters>
+      <Docs>
+        <param name="srcarr">To be added.</param>
+        <param name="eltoadd">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CompareParamsToTyps">
+      <MemberSignature Language="C#" Value="public static bool CompareParamsToTyps (System.Reflection.ParameterInfo[] t1, Type[] t2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool CompareParamsToTyps(class System.Reflection.ParameterInfo[] t1, class System.Type[] t2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t1" Type="System.Reflection.ParameterInfo[]" />
+        <Parameter Name="t2" Type="System.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="t1">To be added.</param>
+        <param name="t2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumLitFlag">
+      <MemberSignature Language="C#" Value="public static bool EnumLitFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool EnumLitFlag" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumLitTyp">
+      <MemberSignature Language="C#" Value="public static Type EnumLitTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class System.Type EnumLitTyp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FldLitFlag">
+      <MemberSignature Language="C#" Value="public static bool FldLitFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool FldLitFlag" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FldLitTyp">
+      <MemberSignature Language="C#" Value="public static Type FldLitTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class System.Type FldLitTyp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FldLitVal">
+      <MemberSignature Language="C#" Value="public static object FldLitVal;" />
+      <MemberSignature Language="ILAsm" Value=".field public static object FldLitVal" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadBinOp">
+      <MemberSignature Language="C#" Value="public static System.Reflection.MethodInfo LoadBinOp (Type typ, string name, Type typa, Type typb);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Reflection.MethodInfo LoadBinOp(class System.Type typ, string name, class System.Type typa, class System.Type typb) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="typa" Type="System.Type" />
+        <Parameter Name="typb" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="typa">To be added.</param>
+        <param name="typb">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadClass">
+      <MemberSignature Language="C#" Value="public static Type LoadClass (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Type LoadClass(string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Type</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadConvOp">
+      <MemberSignature Language="C#" Value="public static System.Reflection.MethodInfo LoadConvOp (Type typ, string name, Type src, Type snk);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Reflection.MethodInfo LoadConvOp(class System.Type typ, string name, class System.Type src, class System.Type snk) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="src" Type="System.Type" />
+        <Parameter Name="snk" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="src">To be added.</param>
+        <param name="snk">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadField">
+      <MemberSignature Language="C#" Value="public static System.Reflection.FieldInfo LoadField (Type typ, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Reflection.FieldInfo LoadField(class System.Type typ, string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Reflection.FieldInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadMethod">
+      <MemberSignature Language="C#" Value="public static System.Reflection.MethodInfo LoadMethod (Type typ, string name, Type[] typs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Reflection.MethodInfo LoadMethod(class System.Type typ, string name, class System.Type[] typs) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="typs" Type="System.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="typs">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadSpecMtds">
+      <MemberSignature Language="C#" Value="public static System.Reflection.MethodInfo[] LoadSpecMtds (Type typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Reflection.MethodInfo[] LoadSpecMtds(class System.Type typ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Reflection.MethodInfo[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeArr">
+      <MemberSignature Language="C#" Value="public static bool MakeArr;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool MakeArr" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeRef">
+      <MemberSignature Language="C#" Value="public static bool MakeRef;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool MakeRef" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MemberTyp">
+      <MemberSignature Language="C#" Value="public static Type MemberTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class System.Type MemberTyp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProcessType">
+      <MemberSignature Language="C#" Value="public static Type ProcessType (Type typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Type ProcessType(class System.Type typ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Type</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

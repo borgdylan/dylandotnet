@@ -1,0 +1,36 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="dnr" Version="11.2.7.6">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("dnr")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.6")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyProduct("dnr")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("dnr")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>To be added.</Remarks>
+  <Copyright>To be added.</Copyright>
+  <Types>
+    <Namespace Name="dylan.NET.Reflection">
+      <Type Name="AsmFactory" Kind="Class" />
+      <Type Name="ConsolePrinter" Kind="Class" />
+      <Type Name="ILEmitter" Kind="Class" />
+      <Type Name="Importer" Kind="Class" />
+      <Type Name="InstructionHelper" Kind="Class" />
+      <Type Name="Loader" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>dnr</Title>
+</Overview>

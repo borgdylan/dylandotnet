@@ -148,6 +148,8 @@ AsmFactory::MdlB = ab::DefineDynamicModule(asmnme, asmnme, AsmFactory::DebugFlg)
 
 if AsmFactory::DebugFlg = true then
 var mdlbldbg as ModuleBuilder = AsmFactory::MdlB
+fpath = Path::GetFullPath(fpath)
+Console::WriteLine(fpath)
 AsmFactory::DocWriter = mdlbldbg::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
 end if
 
@@ -217,6 +219,7 @@ end if
 
 if AsmFactory::isNested = false then
 var mdlbld as ModuleBuilder = AsmFactory::MdlB
+AsmFactory::CurnTypName = clsnamstr
 clsnamstr = String::Concat(AsmFactory::CurnNS, ".", clsnamstr)
 AsmFactory::CurnTypB = mdlbld::DefineType(clsnamstr, ta, inhtyp)
 
@@ -227,6 +230,7 @@ AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
 var ctb2 as TypeBuilder = AsmFactory::CurnTypB2
 Console::Write("Adding Nested Class: ")
 Console::WriteLine(clsnamstr)
+AsmFactory::CurnTypName = clsnamstr
 AsmFactory::CurnTypB = ctb2::DefineNestedType(clsnamstr, ta, inhtyp)
 end if
 
