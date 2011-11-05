@@ -1,3 +1,11 @@
+commit 377a3321e0d901cc8f8846565f05434bf27d1f0d
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sat Nov 5 18:29:24 2011 +0100
+
+    Committing latest dylan.NET source code to GIT and BZR, Adding method chaining, field chaining support. Adding abilty to use current class as type for members and variables. Allowing instantiation of the current class in its own methods. Adding support for return support which actually returns at the point of the statement. Fixing method chain detection regex. Updating docs and man pages. Allowing constructors to be identified by class name not just ctor. This is dylan.NET 11.2.7.7.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 53da92e5742099b3dc7534c88e378a1538a4af84
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Tue Oct 4 20:27:03 2011 +0200

@@ -13,7 +13,9 @@ dylandotnet (11.2.7.7-1) oneiric; urgency=low
   * Adding support for using variables etc that hold valuetypes.
   * Bumping up assembly versions to 11.2.7.7
   * Updating man pages.
-  
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sat, 05 Nov 2011 18:42:14 +0100
+ 
 dylandotnet (11.2.7.6-3) oneiric; urgency=low
 
   * Adding support for new and gettype expressions.
