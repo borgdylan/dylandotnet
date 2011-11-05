@@ -2,9 +2,9 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([dylandotnet], [11.2.7.6], [borgdylan@hotmail.com])
+AC_INIT([dylandotnet], [11.2.7.7], [borgdylan@hotmail.com])
 AC_CANONICAL_SYSTEM
-AM_INIT_AUTOMAKE(dylandotnet, 11.2.7.6)
+AM_INIT_AUTOMAKE(dylandotnet, 11.2.7.7)
 AM_MAINTAINER_MODE
 
 AC_PROG_INSTALL

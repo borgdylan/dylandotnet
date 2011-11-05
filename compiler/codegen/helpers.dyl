@@ -919,6 +919,16 @@ return clit
 goto fin
 end if
 
+typ = gettype object
+b = typ::Equals(inttyp)
+
+if b = true then
+var nlit as NullLiteral = new NullLiteral()
+return nlit
+goto fin
+end if
+
+
 return null
 
 place fin
@@ -1198,10 +1208,28 @@ place fin
 end method
 
 method public static void EmitLocLd(var ind as integer, var locarg as boolean)
+if AsmFactory::AddrFlg = false then
 if locarg = true then
 ILEmitter::EmitLdloc(ind)
 else
 ILEmitter::EmitLdarg(ind)
+end if
+else
+var typ as System.Type = gettype ValueType
+var b as boolean = typ::IsAssignableFrom(AsmFactory::Type04)
+if b = false then
+if locarg = true then
+ILEmitter::EmitLdloc(ind)
+else
+ILEmitter::EmitLdarg(ind)
+end if
+else
+if locarg = true then
+ILEmitter::EmitLdloca(ind)
+else
+ILEmitter::EmitLdarga(ind)
+end if
+end if
 end if
 end method
 
@@ -1394,10 +1422,28 @@ end if
 end method
 
 method public static void EmitFldLd(var fld as FieldInfo, var stat as boolean)
+if AsmFactory::AddrFlg = false then
 if stat = true then
 ILEmitter::EmitLdsfld(fld)
 else
 ILEmitter::EmitLdfld(fld)
+end if
+else
+var typ as System.Type = gettype ValueType
+var b as boolean = typ::IsAssignableFrom(AsmFactory::Type04)
+if b = false then
+if stat = true then
+ILEmitter::EmitLdsfld(fld)
+else
+ILEmitter::EmitLdfld(fld)
+end if
+else
+if stat = true then
+ILEmitter::EmitLdsflda(fld)
+else
+ILEmitter::EmitLdflda(fld)
+end if
+end if
 end if
 end method
 
@@ -1408,6 +1454,61 @@ else
 ILEmitter::EmitStfld(fld)
 end if
 end method
+
+method public static ConstructorInfo GetLocCtor(var t as System.Type, var typs as System.Type[])
+
+var ctorinf as ConstructorInfo
+var ctori as CtorItem
+var b as boolean = t::Equals(AsmFactory::CurnTypB)
+if b = true then
+ctori = SymTable::FindCtor(typs)
+ctorinf = ctori::CtorBldr
+//if ctorinf = null then
+
+//end if
+else
+ctorinf = Loader::LoadCtor(t, typs)
+end if
+
+return ctorinf
+
+end method
+
+method public static FieldInfo GetLocFld(var nam as string)
+
+var fldinf as FieldInfo = null
+var fldi as FieldItem
+
+fldi = SymTable::FindFld(nam)
+
+if fldi <> null then
+fldinf = fldi::FieldBldr
+else
+fldinf = Loader::LoadField(AsmFactory::CurnInhTyp, nam)
+end if
+
+return fldinf
+
+end method
+
+method public static FieldInfo GetLocMet(var nam as string, var typs as System.Type[])
+
+var metinf as MethodInfo = null
+var meti as MethodItem
+
+meti = SymTable::FindMet(nam, typs)
+
+if meti <> null then
+metinf = meti::MethodBldr
+else
+metinf = Loader::LoadMethod(AsmFactory::CurnInhTyp, nam, typs)
+end if
+
+return metinf
+
+end method
+
+
 
 end class
 

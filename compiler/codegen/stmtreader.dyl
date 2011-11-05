@@ -12,8 +12,11 @@ method public void Read(var stm as Stmt, var fpath as string)
 
 var typ as System.Type
 var b as boolean = false
+var tmpstr as string
 
 label fin
+
+AsmFactory::ChainFlg = false
 
 if AsmFactory::DebugFlg = true then
 if AsmFactory::InMethodFlg = true then
@@ -28,7 +31,8 @@ if b = true then
 var rastm as RefasmStmt = stm
 var ap as Token = rastm::AsmPath
 
-var tmpstr as string = String::Concat(Utils.Constants::quot,"*",Utils.Constants::quot)
+tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*",Utils.Constants::quot)
+tmpstr = String::Concat(tmpstr, "$")
 var compb as boolean = Utils.ParseUtils::LikeOP(ap::Value, tmpstr)
 
 if compb = true then
@@ -53,7 +57,8 @@ if b = true then
 var istm as ImportStmt = stm
 var ina as Token = istm::NS
 
-tmpstr = String::Concat(Utils.Constants::quot,"*",Utils.Constants::quot)
+tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*",Utils.Constants::quot)
+tmpstr = String::Concat(tmpstr, "$")
 compb = Utils.ParseUtils::LikeOP(ina::Value, tmpstr)
 
 if compb = true then
@@ -77,8 +82,8 @@ b = typ::IsInstanceOfType($object$stm)
 if b = true then
 var listm as LocimportStmt = stm
 var lina as Token = listm::NS
-
-tmpstr = String::Concat(Utils.Constants::quot,"*",Utils.Constants::quot)
+tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*",Utils.Constants::quot)
+tmpstr = String::Concat(tmpstr, "$")
 compb = Utils.ParseUtils::LikeOP(lina::Value, tmpstr)
 
 if compb = true then
@@ -216,6 +221,8 @@ else
 inhtyp = reft 
 end if
 
+AsmFactory::CurnInhTyp = inhtyp
+
 
 if AsmFactory::isNested = false then
 var mdlbld as ModuleBuilder = AsmFactory::MdlB
@@ -346,7 +353,13 @@ end if
 
 
 var typb as TypeBuilder = AsmFactory::CurnTypB
-var isconstr as boolean = ParseUtils::LikeOP(mtssnamstr, "^ctor(.)*$")
+var isconstr as boolean = ParseUtils::LikeOP(mtssnamstr, "^ctor\d*$")
+b = isconstr
+cmp = String::Compare(mtssnamstr, AsmFactory::CurnTypName)
+if cmp = 0 then
+isconstr = true
+end if
+isconstr = b or isconstr
 if isconstr = false then
 AsmFactory::CurnMetB = typb::DefineMethod(mtssnamstr, ma, rettyp, AsmFactory::TypArr)
 AsmFactory::InitMtd()
@@ -414,6 +427,22 @@ var vtyp as System.Type = null
 var eval as Evaluator = null
 //var vreft as System.Type
 
+typ = gettype ReturnStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+
+var retstmt as ReturnStmt = stm
+
+if retstmt::RExp <> null then
+eval = new Evaluator()
+eval::Evaluate(retstmt::RExp)
+end if
+
+ILEmitter::EmitRet()
+
+end if
+
 typ = gettype VarStmt
 b = typ::IsInstanceOfType($object$stm)
 
@@ -469,8 +498,7 @@ ILEmitter::DeclVar(vnam::Value, vtyp)
 ILEmitter::LocInd = ILEmitter::LocInd + 1
 SymTable::AddVar(vnam::Value, true, ILEmitter::LocInd, vtyp)
 eval = new Evaluator()
-eval::Evaluate(curva::RExpr)
-eval::StoreEmit(vnam)
+eval::StoreEmit(vnam, curva::RExpr)
 
 goto fin
 end if
@@ -481,10 +509,12 @@ b = typ::IsInstanceOfType($object$stm)
 if b = true then
 var asgnstm as AssignStmt = stm
 eval = new Evaluator()
-eval::Evaluate(asgnstm::RExp)
 var asgnstmle as Expr = asgnstm::LExp
-vnam = asgnstmle::Tokens[0]
-eval::StoreEmit(vnam)
+var asgnstmletok as Token = asgnstmle::Tokens[0]
+//if asgnstmletok = null then
+//b = b
+//end if
+eval::StoreEmit(asgnstmletok, asgnstm::RExp)
 goto fin
 end if
 

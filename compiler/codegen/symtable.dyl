@@ -16,6 +16,7 @@ field public static MethodItem[] NestedMetLst
 field public static CtorItem[] CtorLst
 field public static CtorItem[] NestedCtorLst
 field public static IfItem[] IfLst
+field public static TypeArr[] TypLst
 
 method public static void ctor0()
 VarLst = newarr VarItem 0
@@ -26,6 +27,7 @@ NestedMetLst = newarr MethodItem 0
 CtorLst = newarr CtorItem 0
 NestedCtorLst = newarr CtorItem 0
 IfLst = newarr IfItem 0
+TypLst = newarr TypeArr 0
 end method
 
 method public static void ResetIf()
@@ -101,6 +103,103 @@ destarr[len] = vr
 VarLst = destarr
 
 end method
+
+method public static void AddTypArr(var arr as System.Type[])
+
+var vr as TypeArr = new TypeArr()
+vr::Arr = arr
+
+var len as integer = TypLst[l]
+var destl as integer = len + 1
+var stopel as integer = len - 1
+var i as integer = -1
+
+var destarr as TypeArr[] = newarr TypeArr destl
+
+label loop
+label cont
+
+place loop
+
+i++
+
+if len > 0 then
+
+destarr[i] = TypLst[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+destarr[len] = vr
+
+TypLst = destarr
+
+end method
+
+method public static System.Type[] PopTypArr()
+
+var a as System.Type[] = null
+var b as TypeArr = null
+var len as integer = TypLst[l]
+var destl as integer = len - 1
+var stopel as integer = len - 1
+var i as integer = 0
+var j as integer
+
+var destarr as TypeArr[] = newarr TypeArr destl
+
+label loop
+label cont
+
+place loop
+
+i++
+
+if destl > 0 then
+
+
+if len > 0 then
+
+j = i - 1
+destarr[j] = TypLst[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+end if
+
+
+place cont
+
+b = TypLst[0]
+a = b::Arr
+
+TypLst = destarr
+
+return a
+
+end method
+
 
 method public static void AddFld(var nme as string, var typ as System.Type, var fld as FieldBuilder)
 
@@ -544,5 +643,129 @@ place cont
 return rfld
 end method
 
+method public static boolean CmpTyps(var arra as System.Type[], var arrb as System.Type[])
+
+var b as boolean = true
+
+if arra[l] = arrb[l] then
+
+label loop
+label cont
+
+
+if arra[l] = 0 then
+goto cont
+end if
+
+var i as integer = -1
+var len as integer = arra[l] - 1
+var ta as System.Type
+var tb as System.Type
+
+place loop
+i++
+
+ta = arra[i]
+tb = arrb[i]
+
+b = ta::IsAssignableFrom(tb)
+if b = false then
+goto cont
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+else
+b = false
+end if
+
+return b
+
+end method
+
+method public static MethodItem FindMet(var nam as string, var params as System.Type[])
+
+var len as integer = MetLst[l] - 1
+var i as integer = -1
+var met as MethodItem = null
+var rmet as MethodItem = null
+var comp as integer = 0
+var b as boolean
+
+label cont
+label loop
+
+if MetLst[l] = 0 then
+goto cont
+end if
+
+place loop
+
+i++
+
+met = MetLst[i]
+comp = String::Compare(nam, met::Name)
+if comp = 0 then
+b = CmpTyps(met::ParamTyps, params)
+if b = true then
+rmet = met
+goto cont
+end if
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+return rmet
+end method
+
+method public static CtorItem FindCtor(var params as System.Type[])
+
+var len as integer = CtorLst[l] - 1
+var i as integer = -1
+var met as CtorItem = null
+var rmet as CtorItem = null
+var comp as integer = 0
+var b as boolean
+
+label cont
+label loop
+
+if CtorLst[l] = 0 then
+goto cont
+end if
+
+place loop
+
+i++
+
+met = CtorLst[i]
+b = CmpTyps(met::ParamTyps, params)
+if b = true then
+rmet = met
+goto cont
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+return rmet
+end method
 
 end class

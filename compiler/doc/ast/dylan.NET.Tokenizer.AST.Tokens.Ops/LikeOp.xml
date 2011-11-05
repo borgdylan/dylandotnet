@@ -8,14 +8,15 @@
     <AssemblyVersion>11.2.7.4</AssemblyVersion>
     <AssemblyVersion>11.2.7.5</AssemblyVersion>
     <AssemblyVersion>11.2.7.6</AssemblyVersion>
+    <AssemblyVersion>11.2.7.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Represents a VB.NET Like 'like' operator.</summary>
-    <remarks>Checks if the string LChild conforms to the pattern string RCHild. The VB.NET runtime is required.</remarks>
+    <summary>Represents a Regex Matching 'like' operator.</summary>
+    <remarks>Checks if the string LChild conforms to the pattern string RCHild. The library System.dll is required for its Regex components. Regex is being used instead of the VB Like operator as of 11.2.7.6.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +29,7 @@
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>

@@ -8,14 +8,15 @@
     <AssemblyVersion>11.2.7.4</AssemblyVersion>
     <AssemblyVersion>11.2.7.5</AssemblyVersion>
     <AssemblyVersion>11.2.7.6</AssemblyVersion>
+    <AssemblyVersion>11.2.7.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents the 'public' attribute.</summary>
+    <remarks>Renders all members it is applied to fully accessible from every method in every class.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,11 +29,13 @@
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Constructs a new PublicAttr.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

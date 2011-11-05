@@ -1,6 +1,6 @@
 <Namespace Name="dylan.NET.Tokenizer.AST.Tokens.Attributes">
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Contains all the dylan.NET types,method,field and property attributes.</summary>
+    <remarks>All attributes must be placed in this namespace.</remarks>
   </Docs>
 </Namespace>

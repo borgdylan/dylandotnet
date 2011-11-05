@@ -8,14 +8,15 @@
     <AssemblyVersion>11.2.7.4</AssemblyVersion>
     <AssemblyVersion>11.2.7.5</AssemblyVersion>
     <AssemblyVersion>11.2.7.6</AssemblyVersion>
+    <AssemblyVersion>11.2.7.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Represents a negated VB.NET Like '!like' operator.</summary>
-    <remarks>Checks if the string LChild is non-conformant to the pattern string RChild. The VB.NET runtime is required.</remarks>
+    <summary>Represents a negated Regex Matching '!like' operator.</summary>
+    <remarks>Checks if the string LChild is non-conformant to the pattern string RChild. The ibrary System.dll is required for its Regex components. REgex has been used instead of the VB like operator since 11.2.7.6.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +29,7 @@
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>

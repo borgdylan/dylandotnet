@@ -42,7 +42,7 @@ locimport dylan.NET.Tokenizer.AST.Tokens.Attributes
 locimport dylan.NET.Tokenizer.AST.Tokens.Chars
 
 assembly tokenizer.AST dll
-ver 11.2.7.6
+ver 11.2.7.7
 
 namespace dylan.NET.Tokenizer.AST.Tokens
 #include E:\Code\dylannet\compiler\ast\token.dyl
@@ -110,6 +110,7 @@ namespace dylan.NET.Tokenizer.AST.Stmts
 #include E:\Code\dylannet\compiler\ast\stdasmstmt.dyl
 #include E:\Code\dylannet\compiler\ast\singstmt.dyl
 #include E:\Code\dylannet\compiler\ast\debugstmt.dyl
+#include E:\Code\dylannet\compiler\ast\scopestmt.dyl
 #include E:\Code\dylannet\compiler\ast\makeasmstmt.dyl
 #include E:\Code\dylannet\compiler\ast\refasmstmt.dyl
 #include E:\Code\dylannet\compiler\ast\newresstmt.dyl

@@ -473,6 +473,16 @@ tok = dgtk
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "#scope")
+
+if comp = 0 then
+var scptk as ScopeTok = new ScopeTok()
+scptk::Line = tok::Line
+scptk::Value = tok::Value
+tok = scptk
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "import")
 
 if comp = 0 then
@@ -603,6 +613,16 @@ var entk as EndTok = new EndTok()
 entk::Line = tok::Line
 entk::Value = tok::Value
 tok = entk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "return")
+
+if comp = 0 then
+var rettk as ReturnTok = new ReturnTok()
+rettk::Line = tok::Line
+rettk::Value = tok::Value
+tok = rettk
 goto fin
 end if
 

@@ -8,14 +8,15 @@
     <AssemblyVersion>11.2.7.4</AssemblyVersion>
     <AssemblyVersion>11.2.7.5</AssemblyVersion>
     <AssemblyVersion>11.2.7.6</AssemblyVersion>
+    <AssemblyVersion>11.2.7.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.Literal</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a dylan.NET number literal.</summary>
+    <remarks>All numeric iteral classes should inherit from this class.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,11 +29,13 @@
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Constructs a new NumberLiteral.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -45,14 +48,16 @@
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">This parameter is of no use in this case.</param>
+        <summary>Constructs a new NumberLiteral.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DoNeg">
@@ -65,13 +70,14 @@
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Determines if a two's complement negation should be applied to the literal after loading.</summary>
+        <remarks>This is usually applied using the neg opcode.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DoNot">
@@ -84,12 +90,13 @@
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Determines if a bitwise not should be applied on the literal after loading.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -103,13 +110,15 @@
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Contains the order in which unary operations are to be done on the literal.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

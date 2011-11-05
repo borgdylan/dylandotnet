@@ -8,14 +8,15 @@
     <AssemblyVersion>11.2.7.4</AssemblyVersion>
     <AssemblyVersion>11.2.7.5</AssemblyVersion>
     <AssemblyVersion>11.2.7.6</AssemblyVersion>
+    <AssemblyVersion>11.2.7.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents an sbyte (int8) literal.</summary>
+    <remarks>Such literals have a 'b' suffix.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,11 +29,13 @@
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Constructs an SByteLiteral.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -45,14 +48,16 @@
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">This parameter is of no use in this case.</param>
+        <summary>Constructs a new SByteLiteral.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="NumVal">
@@ -65,13 +70,14 @@
         <AssemblyVersion>11.2.7.4</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.SByte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The numeric value of the literal.</summary>
+        <remarks>It is loaded using the ldc.i4 set of opcodes followed by a conv.i1.</remarks>
       </Docs>
     </Member>
   </Members>

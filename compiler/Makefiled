@@ -11,5 +11,7 @@ codegen:
 	dylan.NET_Compiler E:\Code\dylannet\compiler\tokenizer.CodeGen.dyl
 comp:
 	dylan.NET_Compiler E:\Code\dylannet\compiler\dnc.dyl
+dnu:
+	dylan.NET_Compiler E:\Code\dylannet\compiler\dnu.dyl
 	
 compile: ast lexer parser codegen comp

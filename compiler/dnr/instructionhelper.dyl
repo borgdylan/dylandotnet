@@ -279,8 +279,6 @@ return OpCodes::Dup
 goto fin
 end if
 
-
-
 b = compStr(code, "isinst")
 if b = true then
 return OpCodes::Isinst
@@ -296,6 +294,18 @@ end if
 b = compStr(code, "ldarga")
 if b = true then
 return OpCodes::Ldarga
+goto fin
+end if
+
+b = compStr(code, "ldarg.s")
+if b = true then
+return OpCodes::Ldarg_S
+goto fin
+end if
+
+b = compStr(code, "ldarga.s")
+if b = true then
+return OpCodes::Ldarga_S
 goto fin
 end if
 
@@ -596,6 +606,12 @@ end if
 b = compStr(code, "ldloca")
 if b = true then
 return OpCodes::Ldloca
+goto fin
+end if
+
+b = compStr(code, "ldloca.s")
+if b = true then
+return OpCodes::Ldloca_S
 goto fin
 end if
 

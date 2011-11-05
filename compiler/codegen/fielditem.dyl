@@ -11,12 +11,14 @@ class public auto ansi FieldItem
 field public string Name
 field public System.Type FieldTyp
 field public FieldBuilder FieldBldr
+field public Literal LitVal
 
 method public void ctor0()
 me::ctor()
 Name = ""
 FieldTyp = null
 FieldBldr = null
+LitVal = null
 end method
 
 method public void ctor1(var nme as string, var typ as System.Type, var bld as FieldBuilder)
@@ -24,6 +26,7 @@ me::ctor()
 Name = nme
 FieldTyp = typ
 FieldBldr = bld
+LitVal = null
 end method
 
 end class

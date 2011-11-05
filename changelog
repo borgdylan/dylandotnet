@@ -1,3 +1,19 @@
+commit 53da92e5742099b3dc7534c88e378a1538a4af84
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Tue Oct 4 20:27:03 2011 +0200
+
+    Committing latest dylan.NET sources. This is dylan.NET 11.2.7.6!!! Adding field and method calls with field chanining inside the name for static and instance possibiities. Enabling loads of enum members and constants as if they were static fields. Local field loads are still to be supported in the next release. Adding CLI 4.0 version of the assemblies and thus also updated makefile to install these as well. Moved dnu inside main dnu directory so it can make part of tarballs. Inclusding a copy of the dnr sources in the main directory too for similar reasons. Adding monodoc documentation stubs for all the dylan.NET libraries as well as forcing the makefile to install all such documentation in tarball format.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 22a6778510f6d2ea1f1c12ffe61d49fba15b632b
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Wed Sep 21 10:35:50 2011 +0200
+
+    Committing latest dylan.NET code to GIT and BZR. Adding support for gettype and new expressions. Adding operator overloading. Adding more binary operators include the like operator(uses regex). Switching the pattern matching system in the parser to regex. Updating makefile and manpage. Adding new dnu.dll sources.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit d8c7dcb461c1e6e9367bba67f52d48cc313d13ca
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Wed Aug 31 15:24:14 2011 +0200

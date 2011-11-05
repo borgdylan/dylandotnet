@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dnr" Version="11.2.7.6">
+    <Assembly Name="dnr" Version="11.2.7.7">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("dnr")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.6")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.7")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("dnr")</AttributeName>
@@ -20,8 +20,8 @@
       </Attributes>
     </Assembly>
   </Assemblies>
-  <Remarks>To be added.</Remarks>
-  <Copyright>To be added.</Copyright>
+  <Remarks>This library contains the reflection and reflection-emit parts of dylan.NET. This library also has uses when seperate from the other compiler parts.</Remarks>
+  <Copyright>Copyright (C) Dylan Borg 2011. The dnr.dll library is licensed under the LGPLv3 license.</Copyright>
   <Types>
     <Namespace Name="dylan.NET.Reflection">
       <Type Name="AsmFactory" Kind="Class" />

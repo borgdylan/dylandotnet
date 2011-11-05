@@ -143,7 +143,11 @@ var mtdinfo as MethodInfo = null
 mtdinfo = typ::GetMethod(name,typs)
 
 if mtdinfo = null then
+
 ints = typ::GetInterfaces()
+
+if ints <> null then
+if ints[l] > 0 then
 len = ints[l] - 1
 
 label loop
@@ -172,12 +176,30 @@ place cont
 place fin
 
 end if
+end if
+
+end if
 
 if mtdinfo <> null then
 MemberTyp = mtdinfo::get_ReturnType()
 end if
 
 return mtdinfo
+
+end method
+
+method public static ConstructorInfo LoadCtor(var typ as System.Type, var typs as System.Type[])
+
+var nullbind as Binder = null
+var parammodifs as ParameterModifier[] = newarr ParameterModifier 0
+var bindflgs as BindingFlags = 4 or 8 or 16 or 32
+var ctorinf as ConstructorInfo = typ::GetConstructor(bindflgs, nullbind, typs, parammodifs)
+
+if ctorinf <> null then
+MemberTyp = typ
+end if
+
+return ctorinf
 
 end method
 

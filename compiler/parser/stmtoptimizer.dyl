@@ -137,6 +137,19 @@ end if
 return dbgs
 end method
 
+method public Stmt checkScope(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype ScopeTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var scps as ScopeStmt = new ScopeStmt()
+if valinref|b = true then
+scps::Line = stm::Line
+scps::Tokens = stm::Tokens
+scps::Opt = stm::Tokens[1]
+scps::setFlg()
+end if
+return scps
+end method
 
 method public Stmt checkImport(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
@@ -162,6 +175,60 @@ limps::Tokens = stm::Tokens
 limps::NS = stm::Tokens[1]
 end if
 return limps
+end method
+
+method public Stmt checkReturn(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype ReturnTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var rets as ReturnStmt = new ReturnStmt()
+if valinref|b = true then
+
+rets::Line = stm::Line
+rets::Tokens = stm::Tokens
+
+label fin
+label loop
+label cont
+
+var i as integer = 0
+var len as integer = stm::Tokens[l] - 1
+var exp as Expr = null
+
+if stm::Tokens[l] = 1 then
+rets::RExp = null
+goto fin
+end if
+
+if stm::Tokens[l] >= 2 then
+
+exp = new Expr()
+
+place loop
+
+i++
+
+exp::AddToken(stm::Tokens[i])
+
+if i = len then
+goto cont
+else
+goto loop
+end if 
+
+place cont
+
+var eopt as ExprOptimizer = new ExprOptimizer()
+exp = eopt::Optimize(exp)
+rets::RExp = exp
+
+end if
+
+place fin
+
+end if
+
+return rets
 end method
 
 method public Stmt checkCmt(var stm as Stmt, var b as boolean&)
@@ -1024,6 +1091,13 @@ stm = tmpstm
 goto fin
 end if
 
+tmpstm = checkReturn(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
 tmpstm = checkEndMtd(stm, ref|compb)
 
 if compb = true then
@@ -1039,6 +1113,13 @@ goto fin
 end if
 
 tmpstm = checkDebug(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkScope(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm

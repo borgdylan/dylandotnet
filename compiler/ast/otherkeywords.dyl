@@ -54,6 +54,10 @@ class public auto ansi SingTok extends Token
 
 end class
 
+class public auto ansi ScopeTok extends Token
+
+end class
+
 class public auto ansi DebugTok extends Token
 
 end class

@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.CodeGen" Version="11.2.7.6">
+    <Assembly Name="tokenizer.CodeGen" Version="11.2.7.7">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("tokenizer.CodeGen")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.6")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.7")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("tokenizer.CodeGen")</AttributeName>
@@ -34,6 +34,7 @@
       <Type Name="OpStack" Kind="Class" />
       <Type Name="StmtReader" Kind="Class" />
       <Type Name="SymTable" Kind="Class" />
+      <Type Name="TypeArr" Kind="Class" />
       <Type Name="VarItem" Kind="Class" />
     </Namespace>
   </Types>

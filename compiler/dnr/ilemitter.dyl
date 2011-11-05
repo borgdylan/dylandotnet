@@ -95,6 +95,40 @@ end if
 place fin
 end method
 
+method public static void EmitLdloca(var num as integer)
+var op as OpCode
+var b1 as boolean = false
+var b2 as boolean = false
+var n8 as System.Byte
+var n16 as short
+
+label fin
+
+if num >= 0 then
+b1 = true
+end if
+if num <= 255 then
+b2 = true
+end if
+b2 = b1 and b2
+
+if b2 = true then
+op = InstructionHelper::getOPCode("ldloca.s")
+n8 = Convert::ToByte(num)
+ILGen::Emit(op, n8)
+goto fin
+end if
+
+if b1 = true then
+op = InstructionHelper::getOPCode("ldloca")
+n16 = $short$num
+ILGen::Emit(op, n16)
+goto fin
+end if
+
+place fin
+end method
+
 method public static void EmitLdarg(var num as integer)
 var op as OpCode
 var b1 as boolean = false
@@ -153,6 +187,39 @@ end if
 place fin
 end method
 
+method public static void EmitLdarga(var num as integer)
+var op as OpCode
+var b1 as boolean = false
+var b2 as boolean = false
+var n8 as System.Byte
+var n16 as short
+
+label fin
+
+if num >= 0 then
+b1 = true
+end if
+if num <= 255 then
+b2 = true
+end if
+b2 = b1 and b2
+
+if b2 = true then
+op = InstructionHelper::getOPCode("ldarga.s")
+n8 = Convert::ToByte(num)
+ILGen::Emit(op, n8)
+goto fin
+end if
+
+if b1 = true then
+op = InstructionHelper::getOPCode("ldarga")
+n16 = $short$num
+ILGen::Emit(op, n16)
+goto fin
+end if
+
+place fin
+end method
 
 method public static void EmitStloc(var num as integer)
 var op as OpCode
@@ -731,6 +798,11 @@ var cvop as OpCode = InstructionHelper::getOPCode("callvirt")
 ILGen::Emit(cvop, met)
 end method
 
+method public static void EmitCallCtor(var met as ConstructorInfo)
+var cop as OpCode = InstructionHelper::getOPCode("call")
+ILGen::Emit(cop, met)
+end method
+
 method public static void EmitCall(var met as MethodInfo)
 var cop as OpCode = InstructionHelper::getOPCode("call")
 ILGen::Emit(cop, met)
@@ -743,6 +815,16 @@ end method
 
 method public static void EmitLdsfld(var fld as FieldInfo)
 var lsop as OpCode = InstructionHelper::getOPCode("ldsfld")
+ILGen::Emit(lsop, fld)
+end method
+
+method public static void EmitLdflda(var fld as FieldInfo)
+var lop as OpCode = InstructionHelper::getOPCode("ldflda")
+ILGen::Emit(lop, fld)
+end method
+
+method public static void EmitLdsflda(var fld as FieldInfo)
+var lsop as OpCode = InstructionHelper::getOPCode("ldsflda")
 ILGen::Emit(lsop, fld)
 end method
 

@@ -12,6 +12,7 @@ field public static boolean DebugFlg
 field public static boolean InMethodFlg
 field public static boolean ChainFlg
 field public static boolean PopFlg
+field public static boolean AddrFlg
 field public static AssemblyName AsmNameStr
 field public static AssemblyBuilder AsmB
 field public static System.Type Type01
@@ -30,6 +31,7 @@ field public static MethodBuilder CurnMetB
 field public static ConstructorBuilder CurnConB
 field public static FieldBuilder CurnFldB
 field public static ILGenerator CurnILGen
+field public static System.Type CurnInhTyp
 field public static TypeBuilder CurnTypB
 field public static TypeBuilder CurnTypB2
 field public static TypeBuilder[] CurnTypList
@@ -43,6 +45,7 @@ method public static void ctor0()
 DebugFlg = false
 ChainFlg = false
 PopFlg = false
+AddrFlg = false
 InMethodFlg = false
 CurnNS = ""
 DfltNS = ""

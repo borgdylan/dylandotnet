@@ -6,14 +6,15 @@
     <AssemblyVersion>11.2.7.3</AssemblyVersion>
     <AssemblyVersion>11.2.7.5</AssemblyVersion>
     <AssemblyVersion>11.2.7.6</AssemblyVersion>
+    <AssemblyVersion>11.2.7.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>This class contains the infrastructure to return an OpCode instance given an opcode's name.</summary>
+    <remarks>Use this class whenever you need an OpCOde isntance.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -24,11 +25,13 @@
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Constructs a new InstructionHelper".</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="compStr">
@@ -39,6 +42,7 @@
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -48,11 +52,11 @@
         <Parameter Name="s2" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="s1">To be added.</param>
-        <param name="s2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="s1">The first string.</param>
+        <param name="s2">The second string.</param>
+        <summary>Compares 2 strings.</summary>
+        <returns>True if the strings are equal else returns False.</returns>
+        <remarks>This is mostly used as infrastructure for the getOPCode method.</remarks>
       </Docs>
     </Member>
     <Member MemberName="getOPCode">
@@ -63,6 +67,7 @@
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.OpCode</ReturnType>
@@ -71,10 +76,10 @@
         <Parameter Name="code" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="code">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="code">The opcode name as it use in the 'ILAsm' language e.g. ldc.i4, ldnull, newobj etc..</param>
+        <summary>Fetches the OpCode instance corresponding to the opcode name supplied.</summary>
+        <returns>An OpCode instance.</returns>
+        <remarks>See the source code for this method to determin if the opcode you want is supoported.</remarks>
       </Docs>
     </Member>
   </Members>

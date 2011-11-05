@@ -1,15 +1,36 @@
-dylandotnet (11.2.7.6-1) natty; urgency=low
+dylandotnet (11.2.7.7-1) oneiric; urgency=low
+
+  * Adding method chaining support(with field chains) on load end.
+  * Adding field chaining support on store end.
+  * Adding support for using variables,arguments,fields etc of the current type.
+  * Adding support for using methods and fields delared in the current type.
+  * Adding support for making instances of the current type.
+  * Adding support for calling the base class's constructor using me::ctor().
+  * Adding support for naming the constructor like the class.
+  * Adding return statement support.
+  * Adding initial class inheritance support.
+  * Fixing Regex strings for chaining detection.
+  * Adding support for using variables etc that hold valuetypes.
+  * Bumping up assembly versions to 11.2.7.7
+  * Updating man pages.
+  
+dylandotnet (11.2.7.6-3) oneiric; urgency=low
 
   * Adding support for new and gettype expressions.
   * Updating conversion subsystem.
   * Adding operator overloading.
   * Adding like, notlike, %, >, <, >_, <= operators.
   * Updating man page.
-  * Adding -V and -h command line options
-  * Changing pattern matching in paresr to use Regex instead of the VB.NET Like operator.
+  * Adding -V and -h command line options..
+  * Changing pattern matching in parser to use Regex.
   * Updating assembly versions to 11.2.7.6
+  * Adding ability for field loads including constants.
+  * Adding ability of instance method calls.
+  * Adding CLI 4.0 assemblies.
+  * Updating Makefile.
+  * Adding all documentation in monodoc format.
 
- -- Dylan Borg <borgdylan@hotmail.com>  Wed, 21 Sep 2011 10:21:52 +0200
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 04 Oct 2011 20:45:14 +0200
 
 dylandotnet (11.2.7.5-1) natty; urgency=low
 

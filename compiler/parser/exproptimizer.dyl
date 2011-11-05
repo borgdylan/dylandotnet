@@ -917,7 +917,7 @@ exp::RemToken(mcint)
 exp::Tokens[i] = mcident
 end if
 str = mcident::Value
-b = ParseUtils::LikeOP(str, "::*")
+b = ParseUtils::LikeOP(str, "^::(.)*$")
 if b = true then
 ParserFlags::IdentFlag = true
 end if
@@ -943,7 +943,7 @@ mcmetcall::Name = mcmetname
 exp::Tokens[i] = mcmetcall
 end if
 str = mcmetname::Value
-b = ParseUtils::LikeOP(str, "::*")
+b = ParseUtils::LikeOP(str, "^::(.)*$")
 if b = true then
 ParserFlags::MetCallFlag = true
 end if
