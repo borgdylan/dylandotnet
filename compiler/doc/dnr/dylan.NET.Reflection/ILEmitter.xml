@@ -7,6 +7,7 @@
     <AssemblyVersion>11.2.7.5</AssemblyVersion>
     <AssemblyVersion>11.2.7.6</AssemblyVersion>
     <AssemblyVersion>11.2.7.7</AssemblyVersion>
+    <AssemblyVersion>11.2.7.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -27,6 +28,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -44,6 +46,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -63,6 +66,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.ConstructorBuilder</ReturnType>
@@ -82,6 +86,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -100,6 +105,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -124,6 +130,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.Label</ReturnType>
@@ -144,6 +151,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.SymbolStore.ISymbolDocumentWriter</ReturnType>
@@ -162,6 +170,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -185,6 +194,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -204,6 +214,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -226,6 +237,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -248,6 +260,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -271,6 +284,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -291,6 +305,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -313,6 +328,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -336,6 +352,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -356,6 +373,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -379,6 +397,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -402,6 +421,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -425,6 +445,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -448,6 +469,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -468,6 +490,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -489,6 +512,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -508,6 +532,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -530,6 +555,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -540,7 +566,8 @@
       <Docs>
         <param name="b">The boolean value to emit a load for.</param>
         <summary>Emits 'ldc.i4.1' or 'ldc.i4.0' for true or false respectively.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitLdcChar">
@@ -552,6 +579,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -562,7 +590,8 @@
       <Docs>
         <param name="c">The character to emit a load for.</param>
         <summary>Emits one of the variants of 'ldc.i4' opcode using the numerical unicode value of the character as the integer loaded.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitLdcI1">
@@ -574,6 +603,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -584,7 +614,8 @@
       <Docs>
         <param name="n">The int8 number to emit a load for.</param>
         <summary>Emits one of the variants of 'ldc.i4' followed by a 'conv.i1'.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitLdcI2">
@@ -596,6 +627,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -606,7 +638,8 @@
       <Docs>
         <param name="n">The int16 number to emit a load for.</param>
         <summary>Emits one of the variants of 'ldc.i4' followed by a 'conv.i2'.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitLdcI4">
@@ -618,6 +651,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -628,7 +662,8 @@
       <Docs>
         <param name="num">The int32 number to emit a load for.</param>
         <summary>Emits one of the variants of the 'ldc.i4' opcode.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitLdcI8">
@@ -640,6 +675,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -650,7 +686,8 @@
       <Docs>
         <param name="n">The int64 number to emit a load for.</param>
         <summary>Emits one of the variants of 'ldc.i4' followed by a 'conv.i8' or an 'ldc.i8' accordingly.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitLdcR4">
@@ -662,6 +699,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -672,7 +710,8 @@
       <Docs>
         <param name="num">The float32 number to emit a load for.</param>
         <summary>Emits the 'ldc.r4' opcode.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitLdcR8">
@@ -684,6 +723,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -694,7 +734,8 @@
       <Docs>
         <param name="num">The float64 number to emit a load for.</param>
         <summary>Emits the 'ldc.r8' opcode.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitLdfld">
@@ -704,6 +745,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -723,6 +765,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -745,6 +788,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -764,6 +808,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -785,6 +830,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -802,6 +848,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -821,6 +868,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -843,6 +891,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -864,6 +913,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -886,6 +936,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -905,6 +956,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -927,6 +979,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -946,6 +999,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -964,6 +1018,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -986,6 +1041,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1005,6 +1061,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1024,6 +1081,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1043,6 +1101,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1061,6 +1120,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1079,6 +1139,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1101,6 +1162,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1120,6 +1182,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1139,6 +1202,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1159,6 +1223,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1179,6 +1244,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1201,6 +1267,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1223,6 +1290,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1242,6 +1310,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1261,6 +1330,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1278,6 +1348,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1300,6 +1371,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1322,6 +1394,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1341,6 +1414,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1360,6 +1434,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.ILGenerator</ReturnType>
@@ -1378,6 +1453,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -1395,6 +1471,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1416,6 +1493,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1438,6 +1516,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.MethodBuilder</ReturnType>
@@ -1456,6 +1535,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

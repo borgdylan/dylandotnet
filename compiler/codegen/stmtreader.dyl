@@ -44,8 +44,8 @@ ap::Value = tmpstr
 end if
 
 var asm as Assembly = Assembly::LoadFrom(ap::Value)
-Console::Write("Referencing Assembly: ")
-Console::WriteLine(ap::Value)
+StreamUtils::Write("Referencing Assembly: ")
+StreamUtils::WriteLine(ap::Value)
 Importer::AddAsm(asm)
 goto fin
 end if
@@ -69,8 +69,8 @@ tmpstr = tmpstr::Trim(tmpchrarr)
 ina::Value = tmpstr
 end if
 
-Console::Write("Importing Namespace: ")
-Console::WriteLine(ina::Value)
+StreamUtils::Write("Importing Namespace: ")
+StreamUtils::WriteLine(ina::Value)
 
 Importer::AddImp(ina::Value)
 goto fin
@@ -94,8 +94,8 @@ tmpstr = tmpstr::Trim(tmpchrarr)
 lina::Value = tmpstr
 end if
 
-Console::Write("Importing Namespace: ")
-Console::WriteLine(lina::Value)
+StreamUtils::Write("Importing Namespace: ")
+StreamUtils::WriteLine(lina::Value)
 
 Importer::AddLocImp(lina::Value)
 goto fin
@@ -114,8 +114,8 @@ AsmFactory::AsmMode = asmm::Value
 AsmFactory::DfltNS = asmn::Value
 AsmFactory::CurnNS = asmn::Value
 
-Console::Write("Beginning Assembly: ")
-Console::WriteLine(asmn::Value)
+StreamUtils::Write("Beginning Assembly: ")
+StreamUtils::WriteLine(asmn::Value)
 
 goto fin
 
@@ -154,7 +154,7 @@ AsmFactory::MdlB = ab::DefineDynamicModule(asmnme, asmnme, AsmFactory::DebugFlg)
 if AsmFactory::DebugFlg = true then
 var mdlbldbg as ModuleBuilder = AsmFactory::MdlB
 fpath = Path::GetFullPath(fpath)
-Console::WriteLine(fpath)
+//Console::WriteLine(fpath)
 AsmFactory::DocWriter = mdlbldbg::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
 end if
 
@@ -230,13 +230,13 @@ AsmFactory::CurnTypName = clsnamstr
 clsnamstr = String::Concat(AsmFactory::CurnNS, ".", clsnamstr)
 AsmFactory::CurnTypB = mdlbld::DefineType(clsnamstr, ta, inhtyp)
 
-Console::Write("Adding Class: ")
-Console::WriteLine(clsnamstr)
+StreamUtils::Write("Adding Class: ")
+StreamUtils::WriteLine(clsnamstr)
 else
 AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
 var ctb2 as TypeBuilder = AsmFactory::CurnTypB2
-Console::Write("Adding Nested Class: ")
-Console::WriteLine(clsnamstr)
+StreamUtils::Write("Adding Nested Class: ")
+StreamUtils::WriteLine(clsnamstr)
 AsmFactory::CurnTypName = clsnamstr
 AsmFactory::CurnTypB = ctb2::DefineNestedType(clsnamstr, ta, inhtyp)
 end if
@@ -279,8 +279,8 @@ else
 SymTable::AddNestedFld(flsnamstr, ftyp, AsmFactory::CurnFldB)
 end if
 
-Console::Write("Adding Field: ")
-Console::WriteLine(flsnamstr)
+StreamUtils::Write("Adding Field: ")
+StreamUtils::WriteLine(flsnamstr)
 
 goto fin
 end if
@@ -363,8 +363,8 @@ isconstr = b or isconstr
 if isconstr = false then
 AsmFactory::CurnMetB = typb::DefineMethod(mtssnamstr, ma, rettyp, AsmFactory::TypArr)
 AsmFactory::InitMtd()
-Console::Write("Adding Method: ")
-Console::WriteLine(mtssnamstr)
+StreamUtils::Write("Adding Method: ")
+StreamUtils::WriteLine(mtssnamstr)
 
 if AsmFactory::isNested = false then
 SymTable::AddMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
@@ -384,8 +384,8 @@ SymTable::AddNestedCtor(AsmFactory::TypArr, AsmFactory::CurnConB)
 end if
 
 
-Console::Write("Adding Constructor: ")
-Console::WriteLine(mtssnamstr)
+StreamUtils::Write("Adding Constructor: ")
+StreamUtils::WriteLine(mtssnamstr)
 end if
 
 

@@ -3,33 +3,33 @@
   .ver 4:0:0:0
   .publickeytoken = (B7 7A 5C 56 19 34 E0 89 ) // .z\V.4..
 }
-.assembly extern dnr
-{
-  .ver 11:2:7:7
-}
 .assembly extern dnu
 {
-  .ver 11:2:7:7
+  .ver 11:2:7:8
+}
+.assembly extern dnr
+{
+  .ver 11:2:7:8
 }
 .assembly extern tokenizer.CodeGen
 {
-  .ver 11:2:7:7
+  .ver 11:2:7:8
 }
 .assembly extern tokenizer.Parser
 {
-  .ver 11:2:7:7
+  .ver 11:2:7:8
 }
 .assembly extern tokenizer.Lexer
 {
-  .ver 11:2:7:7
+  .ver 11:2:7:8
 }
 .assembly extern tokenizer.AST
 {
-  .ver 11:2:7:7
+  .ver 11:2:7:8
 }
 .assembly 'dnc'
 {
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 37 00 00 ) // ...11.2.7.7..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 38 00 00 ) // ...11.2.7.8..
 
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
@@ -40,10 +40,10 @@
   .custom instance void class [mscorlib]System.Reflection.AssemblyDescriptionAttribute::'.ctor'(string) =  (01 00 03 64 6E 63 00 00 ) // ...dnc..
 
   .hash algorithm 0x00008004
-  .ver  11:2:7:7
+  .ver  11:2:7:8
 }
 
-.module dnc.exe // GUID = {8816E5F5-05E2-4161-B042-1334B1E1516D}
+.module dnc.exe // GUID = {CFD1D09B-52A1-49B1-9382-CFF360BB021D}
 
 
 .namespace dylan.NET.Compiler
@@ -60,8 +60,8 @@
 
         // Method begins at RVA 0x2050
 	.entrypoint
-	// Code size 1186 (0x4a2)
-	.maxstack 14
+	// Code size 1260 (0x4ec)
+	.maxstack 16
 	.locals init (
 		string	V_0,
 		int32	V_1,
@@ -79,536 +79,570 @@
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet	V_13,
 		class [tokenizer.Parser]dylan.NET.Tokenizer.Parser.Parser	V_14,
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet	V_15,
-		class [tokenizer.CodeGen]dylan.NET.Tokenizer.CodeGen.CodeGenerator	V_16)
-	IL_0000:  ldstr "dylan.NET Compiler v. 11.2.7.6 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0"
-	IL_0005:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_000a:  ldstr "                           and Xamarin Mono v. 2.6.7/v. 2.10.x"
-	IL_000f:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0014:  ldstr "This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license."
-	IL_0019:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_001e:  ldstr "Copyright (C) 2011 Dylan Borg"
-	IL_0023:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0028:  ldarg 0
-
-	IL_002c:  nop 
-	IL_002d:  nop 
-	IL_002e:  ldlen 
-	IL_002f:  conv.i4 
-	IL_0030:  ldc.i4 1
-	IL_0035:  blt IL_003f
-
-	IL_003a:  br IL_004e
-
-	IL_003f:  ldstr "Usage: dylandotnet [options] <file-name>"
-	IL_0044:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0049:  br IL_04a1
-
-	IL_004e:  ldstr ""
-	IL_0053:  stloc 0
-
-	IL_0057:  nop 
-	IL_0058:  nop 
-	IL_0059:  ldarg 0
-
-	IL_005d:  nop 
-	IL_005e:  nop 
-	IL_005f:  ldlen 
-	IL_0060:  conv.i4 
-	IL_0061:  ldc.i4 1
-	IL_0066:  sub 
-	IL_0067:  stloc 1
-
-	IL_006b:  nop 
-	IL_006c:  nop 
-	IL_006d:  ldc.i4 -1
-	IL_0072:  stloc 2
-
-	IL_0076:  nop 
-	IL_0077:  nop 
-	IL_0078:  ldc.i4 0
-	IL_007d:  stloc 3
-
-	IL_0081:  nop 
-	IL_0082:  nop 
-	IL_0083:  ldstr ""
-	IL_0088:  stloc 4
-
-	IL_008c:  nop 
-	IL_008d:  nop 
-	IL_008e:  ldstr ""
-	IL_0093:  stloc 5
-
-	IL_0097:  nop 
-	IL_0098:  nop 
-	IL_0099:  ldloc 2
-
-	IL_009d:  nop 
-	IL_009e:  nop 
-	IL_009f:  ldc.i4 1
-	IL_00a4:  add 
-	IL_00a5:  stloc 2
-
-	IL_00a9:  nop 
-	IL_00aa:  nop 
-	IL_00ab:  ldarg 0
-
-	IL_00af:  nop 
-	IL_00b0:  nop 
-	IL_00b1:  ldloc 2
-
-	IL_00b5:  nop 
-	IL_00b6:  nop 
-	IL_00b7:  conv.u 
-	IL_00b8:  ldelem [mscorlib]System.String
-	IL_00bd:  stloc 4
-
-	IL_00c1:  nop 
-	IL_00c2:  nop 
-	IL_00c3:  ldloc 4
-
-	IL_00c7:  nop 
-	IL_00c8:  nop 
-	IL_00c9:  ldstr "-V"
-	IL_00ce:  call int32 string::Compare(string, string)
-	IL_00d3:  stloc 3
-
-	IL_00d7:  nop 
-	IL_00d8:  nop 
-	IL_00d9:  ldloc 3
-
-	IL_00dd:  nop 
-	IL_00de:  nop 
-	IL_00df:  ldc.i4 0
-	IL_00e4:  beq IL_00ee
-
-	IL_00e9:  br IL_034a
-
-	IL_00ee:  call void class [mscorlib]System.Console::WriteLine()
-	IL_00f3:  ldstr "dylan.NET Version Info:"
-	IL_00f8:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_00fd:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetExecutingAssembly()
-	IL_0102:  stloc 7
-
-	IL_0106:  nop 
-	IL_0107:  nop 
-	IL_0108:  ldloc 7
-
-	IL_010c:  nop 
-	IL_010d:  nop 
-	IL_010e:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
-	IL_0113:  stloc 5
-
-	IL_0117:  nop 
-	IL_0118:  nop 
-	IL_0119:  ldloc 5
-
-	IL_011d:  nop 
-	IL_011e:  nop 
-	IL_011f:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0124:  ldtoken [dnr]dylan.NET.Reflection.Loader
-	IL_0129:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_012e:  stloc 6
-
-	IL_0132:  nop 
-	IL_0133:  nop 
-	IL_0134:  ldloc 6
-
-	IL_0138:  nop 
-	IL_0139:  nop 
-	IL_013a:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
-	IL_013f:  stloc 7
-
-	IL_0143:  nop 
-	IL_0144:  nop 
-	IL_0145:  ldloc 7
-
-	IL_0149:  nop 
-	IL_014a:  nop 
-	IL_014b:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
-	IL_0150:  stloc 5
-
-	IL_0154:  nop 
-	IL_0155:  nop 
-	IL_0156:  ldloc 5
-
-	IL_015a:  nop 
-	IL_015b:  nop 
-	IL_015c:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0161:  ldtoken [dnu]dylan.NET.Utils.XmlUtils
-	IL_0166:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_016b:  stloc 6
-
-	IL_016f:  nop 
-	IL_0170:  nop 
-	IL_0171:  ldloc 6
-
-	IL_0175:  nop 
-	IL_0176:  nop 
-	IL_0177:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
-	IL_017c:  stloc 7
-
-	IL_0180:  nop 
-	IL_0181:  nop 
-	IL_0182:  ldloc 7
-
-	IL_0186:  nop 
-	IL_0187:  nop 
-	IL_0188:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
-	IL_018d:  stloc 5
-
-	IL_0191:  nop 
-	IL_0192:  nop 
-	IL_0193:  ldloc 5
-
-	IL_0197:  nop 
-	IL_0198:  nop 
-	IL_0199:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_019e:  ldtoken [tokenizer.CodeGen]dylan.NET.Tokenizer.CodeGen.CodeGenerator
-	IL_01a3:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_01a8:  stloc 6
-
-	IL_01ac:  nop 
-	IL_01ad:  nop 
-	IL_01ae:  ldloc 6
-
-	IL_01b2:  nop 
-	IL_01b3:  nop 
-	IL_01b4:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
-	IL_01b9:  stloc 7
-
-	IL_01bd:  nop 
-	IL_01be:  nop 
-	IL_01bf:  ldloc 7
-
-	IL_01c3:  nop 
-	IL_01c4:  nop 
-	IL_01c5:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
-	IL_01ca:  stloc 5
-
-	IL_01ce:  nop 
-	IL_01cf:  nop 
-	IL_01d0:  ldloc 5
-
-	IL_01d4:  nop 
-	IL_01d5:  nop 
-	IL_01d6:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_01db:  ldtoken [tokenizer.Parser]dylan.NET.Tokenizer.Parser.Parser
-	IL_01e0:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_01e5:  stloc 6
-
-	IL_01e9:  nop 
-	IL_01ea:  nop 
-	IL_01eb:  ldloc 6
-
-	IL_01ef:  nop 
-	IL_01f0:  nop 
-	IL_01f1:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
-	IL_01f6:  stloc 7
-
-	IL_01fa:  nop 
-	IL_01fb:  nop 
-	IL_01fc:  ldloc 7
-
-	IL_0200:  nop 
-	IL_0201:  nop 
-	IL_0202:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
-	IL_0207:  stloc 5
-
-	IL_020b:  nop 
-	IL_020c:  nop 
-	IL_020d:  ldloc 5
-
-	IL_0211:  nop 
-	IL_0212:  nop 
-	IL_0213:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0218:  ldtoken [tokenizer.Lexer]dylan.NET.Tokenizer.Lexer.Lexer
-	IL_021d:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0222:  stloc 6
-
-	IL_0226:  nop 
-	IL_0227:  nop 
-	IL_0228:  ldloc 6
-
-	IL_022c:  nop 
-	IL_022d:  nop 
-	IL_022e:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
-	IL_0233:  stloc 7
-
-	IL_0237:  nop 
-	IL_0238:  nop 
-	IL_0239:  ldloc 7
-
-	IL_023d:  nop 
-	IL_023e:  nop 
-	IL_023f:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
-	IL_0244:  stloc 5
-
-	IL_0248:  nop 
-	IL_0249:  nop 
-	IL_024a:  ldloc 5
-
-	IL_024e:  nop 
-	IL_024f:  nop 
-	IL_0250:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0255:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet
-	IL_025a:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_025f:  stloc 6
-
-	IL_0263:  nop 
-	IL_0264:  nop 
-	IL_0265:  ldloc 6
-
-	IL_0269:  nop 
-	IL_026a:  nop 
-	IL_026b:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
-	IL_0270:  stloc 7
-
-	IL_0274:  nop 
-	IL_0275:  nop 
-	IL_0276:  ldloc 7
-
-	IL_027a:  nop 
-	IL_027b:  nop 
-	IL_027c:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
-	IL_0281:  stloc 5
-
-	IL_0285:  nop 
-	IL_0286:  nop 
-	IL_0287:  ldloc 5
-
-	IL_028b:  nop 
-	IL_028c:  nop 
-	IL_028d:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0292:  call void class [mscorlib]System.Console::WriteLine()
-	IL_0297:  ldstr "Runtime & OS Version Info:"
-	IL_029c:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_02a1:  ldtoken [mscorlib]System.String
-	IL_02a6:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_02ab:  stloc 6
-
-	IL_02af:  nop 
-	IL_02b0:  nop 
-	IL_02b1:  ldloc 6
-
-	IL_02b5:  nop 
-	IL_02b6:  nop 
-	IL_02b7:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
-	IL_02bc:  stloc 7
-
-	IL_02c0:  nop 
-	IL_02c1:  nop 
-	IL_02c2:  ldloc 7
-
-	IL_02c6:  nop 
-	IL_02c7:  nop 
-	IL_02c8:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
-	IL_02cd:  stloc 5
-
-	IL_02d1:  nop 
-	IL_02d2:  nop 
-	IL_02d3:  ldloc 5
-
-	IL_02d7:  nop 
-	IL_02d8:  nop 
-	IL_02d9:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_02de:  call class [mscorlib]System.Version class [mscorlib]System.Environment::get_Version()
-	IL_02e3:  stloc 8
-
-	IL_02e7:  nop 
-	IL_02e8:  nop 
-	IL_02e9:  ldloc 8
-
-	IL_02ed:  nop 
-	IL_02ee:  nop 
-	IL_02ef:  callvirt instance string class [mscorlib]System.Version::ToString()
-	IL_02f4:  stloc 9
-
-	IL_02f8:  nop 
-	IL_02f9:  nop 
-	IL_02fa:  ldstr "Runtime Version: "
-	IL_02ff:  call void class [mscorlib]System.Console::Write(string)
-	IL_0304:  ldloc 9
-
-	IL_0308:  nop 
-	IL_0309:  nop 
-	IL_030a:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_030f:  call class [mscorlib]System.OperatingSystem class [mscorlib]System.Environment::get_OSVersion()
-	IL_0314:  stloc 10
-
-	IL_0318:  nop 
-	IL_0319:  nop 
-	IL_031a:  ldloc 10
-
-	IL_031e:  nop 
-	IL_031f:  nop 
-	IL_0320:  callvirt instance string class [mscorlib]System.OperatingSystem::ToString()
-	IL_0325:  stloc 11
-
-	IL_0329:  nop 
-	IL_032a:  nop 
-	IL_032b:  ldstr "OS: "
-	IL_0330:  call void class [mscorlib]System.Console::Write(string)
-	IL_0335:  ldloc 11
-
-	IL_0339:  nop 
-	IL_033a:  nop 
-	IL_033b:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0340:  br IL_04a1
-
-	IL_0345:  br IL_034f
-
-	IL_034a:  br IL_034f
-
-	IL_034f:  ldloc 4
-
-	IL_0353:  nop 
-	IL_0354:  nop 
-	IL_0355:  ldstr "-h"
-	IL_035a:  call int32 string::Compare(string, string)
-	IL_035f:  stloc 3
-
-	IL_0363:  nop 
-	IL_0364:  nop 
-	IL_0365:  ldloc 3
-
-	IL_0369:  nop 
-	IL_036a:  nop 
-	IL_036b:  ldc.i4 0
-	IL_0370:  beq IL_037a
-
-	IL_0375:  br IL_03b1
-
-	IL_037a:  call void class [mscorlib]System.Console::WriteLine()
-	IL_037f:  ldstr "Usage: dylandotnet [options] <file-name>"
-	IL_0384:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0389:  ldstr "Options:"
-	IL_038e:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0393:  ldstr "   -V : View Version Nrs. for all dylan.NET assemblies"
-	IL_0398:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_039d:  ldstr "   -h : View this help message"
-	IL_03a2:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_03a7:  br IL_04a1
-
-	IL_03ac:  br IL_03b6
-
-	IL_03b1:  br IL_03b6
-
-	IL_03b6:  ldarg 0
-
-	IL_03ba:  nop 
-	IL_03bb:  nop 
-	IL_03bc:  ldloc 2
-
-	IL_03c0:  nop 
-	IL_03c1:  nop 
-	IL_03c2:  conv.u 
-	IL_03c3:  ldelem [mscorlib]System.String
-	IL_03c8:  stloc 0
-
-	IL_03cc:  nop 
-	IL_03cd:  nop 
-	IL_03ce:  ldloc 2
-
-	IL_03d2:  nop 
-	IL_03d3:  nop 
-	IL_03d4:  ldloc 1
-
-	IL_03d8:  nop 
-	IL_03d9:  nop 
-	IL_03da:  bge IL_03e4
-
-	IL_03df:  br IL_03ee
-
-	IL_03e4:  br IL_03f8
-
-	IL_03e9:  br IL_03f8
-
-	IL_03ee:  br IL_0099
-
-	IL_03f3:  br IL_03f8
-
-	IL_03f8:  newobj instance void class [tokenizer.Lexer]dylan.NET.Tokenizer.Lexer.Lexer::'.ctor'()
-	IL_03fd:  stloc 12
-
-	IL_0401:  nop 
-	IL_0402:  nop 
-	IL_0403:  ldstr "Now Lexing: "
-	IL_0408:  call void class [mscorlib]System.Console::Write(string)
-	IL_040d:  ldloc 0
-
-	IL_0411:  nop 
-	IL_0412:  nop 
-	IL_0413:  call void class [mscorlib]System.Console::Write(string)
-	IL_0418:  ldloc 12
-
-	IL_041c:  nop 
-	IL_041d:  nop 
-	IL_041e:  ldloc 0
-
-	IL_0422:  nop 
-	IL_0423:  nop 
-	IL_0424:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet class [tokenizer.Lexer]dylan.NET.Tokenizer.Lexer.Lexer::Analyze(string)
-	IL_0429:  stloc 13
-
-	IL_042d:  nop 
-	IL_042e:  nop 
-	IL_042f:  ldstr "...Done."
-	IL_0434:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_0439:  newobj instance void class [tokenizer.Parser]dylan.NET.Tokenizer.Parser.Parser::'.ctor'()
-	IL_043e:  stloc 14
-
-	IL_0442:  nop 
-	IL_0443:  nop 
-	IL_0444:  ldstr "Now Parsing: "
-	IL_0449:  call void class [mscorlib]System.Console::Write(string)
-	IL_044e:  ldloc 0
-
-	IL_0452:  nop 
-	IL_0453:  nop 
-	IL_0454:  call void class [mscorlib]System.Console::Write(string)
-	IL_0459:  ldloc 14
-
-	IL_045d:  nop 
-	IL_045e:  nop 
-	IL_045f:  ldloc 13
-
-	IL_0463:  nop 
-	IL_0464:  nop 
-	IL_0465:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet class [tokenizer.Parser]dylan.NET.Tokenizer.Parser.Parser::Parse(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet)
-	IL_046a:  stloc 15
-
-	IL_046e:  nop 
-	IL_046f:  nop 
-	IL_0470:  ldstr "...Done."
-	IL_0475:  call void class [mscorlib]System.Console::WriteLine(string)
-	IL_047a:  newobj instance void class [tokenizer.CodeGen]dylan.NET.Tokenizer.CodeGen.CodeGenerator::'.ctor'()
-	IL_047f:  stloc 16
-
-	IL_0483:  nop 
-	IL_0484:  nop 
-	IL_0485:  ldloc 16
-
-	IL_0489:  nop 
-	IL_048a:  nop 
-	IL_048b:  ldloc 15
-
-	IL_048f:  nop 
-	IL_0490:  nop 
-	IL_0491:  ldloc 0
-
-	IL_0495:  nop 
-	IL_0496:  nop 
-	IL_0497:  callvirt instance void class [tokenizer.CodeGen]dylan.NET.Tokenizer.CodeGen.CodeGenerator::EmitMSIL(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet, string)
-	IL_049c:  br IL_04a1
-
-	IL_04a1:  ret 
+		class [tokenizer.CodeGen]dylan.NET.Tokenizer.CodeGen.CodeGenerator	V_16,
+		class [mscorlib]System.Exception	V_17,
+		string	V_18)
+	IL_0000:  ldsfld class [mscorlib]System.IO.Stream [dnu]dylan.NET.Utils.StreamUtils::Stdout
+	IL_0005:  call void class [dnu]dylan.NET.Utils.StreamUtils::InitOutS(class [mscorlib]System.IO.Stream)
+	IL_000a:  ldstr "dylan.NET Compiler v. 11.2.7.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0"
+	IL_000f:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	IL_0014:  ldstr "                           and Xamarin Mono v. 2.6.7/v. 2.10.x"
+	IL_0019:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	IL_001e:  ldstr "This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license."
+	IL_0023:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	IL_0028:  ldstr "Copyright (C) 2011 Dylan Borg"
+	IL_002d:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	IL_0032:  ldarg 0
+
+	IL_0036:  nop 
+	IL_0037:  nop 
+	IL_0038:  ldlen 
+	IL_0039:  conv.i4 
+	IL_003a:  ldc.i4 1
+	IL_003f:  blt IL_0049
+
+	IL_0044:  br IL_0058
+
+	IL_0049:  ldstr "Usage: dylandotnet [options] <file-name>"
+	IL_004e:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	IL_0053:  br IL_04e6
+
+	.try { // 0
+	  IL_0058:  ldstr ""
+	  IL_005d:  stloc 0
+
+	  IL_0061:  nop 
+	  IL_0062:  nop 
+	  IL_0063:  ldarg 0
+
+	  IL_0067:  nop 
+	  IL_0068:  nop 
+	  IL_0069:  ldlen 
+	  IL_006a:  conv.i4 
+	  IL_006b:  ldc.i4 1
+	  IL_0070:  sub 
+	  IL_0071:  stloc 1
+
+	  IL_0075:  nop 
+	  IL_0076:  nop 
+	  IL_0077:  ldc.i4 -1
+	  IL_007c:  stloc 2
+
+	  IL_0080:  nop 
+	  IL_0081:  nop 
+	  IL_0082:  ldc.i4 0
+	  IL_0087:  stloc 3
+
+	  IL_008b:  nop 
+	  IL_008c:  nop 
+	  IL_008d:  ldstr ""
+	  IL_0092:  stloc 4
+
+	  IL_0096:  nop 
+	  IL_0097:  nop 
+	  IL_0098:  ldstr ""
+	  IL_009d:  stloc 5
+
+	  IL_00a1:  nop 
+	  IL_00a2:  nop 
+	  IL_00a3:  ldloc 2
+
+	  IL_00a7:  nop 
+	  IL_00a8:  nop 
+	  IL_00a9:  ldc.i4 1
+	  IL_00ae:  add 
+	  IL_00af:  stloc 2
+
+	  IL_00b3:  nop 
+	  IL_00b4:  nop 
+	  IL_00b5:  ldarg 0
+
+	  IL_00b9:  nop 
+	  IL_00ba:  nop 
+	  IL_00bb:  ldloc 2
+
+	  IL_00bf:  nop 
+	  IL_00c0:  nop 
+	  IL_00c1:  conv.u 
+	  IL_00c2:  ldelem [mscorlib]System.String
+	  IL_00c7:  stloc 4
+
+	  IL_00cb:  nop 
+	  IL_00cc:  nop 
+	  IL_00cd:  ldloc 4
+
+	  IL_00d1:  nop 
+	  IL_00d2:  nop 
+	  IL_00d3:  ldstr "-V"
+	  IL_00d8:  call int32 string::Compare(string, string)
+	  IL_00dd:  stloc 3
+
+	  IL_00e1:  nop 
+	  IL_00e2:  nop 
+	  IL_00e3:  ldloc 3
+
+	  IL_00e7:  nop 
+	  IL_00e8:  nop 
+	  IL_00e9:  ldc.i4 0
+	  IL_00ee:  beq IL_00f8
+
+	  IL_00f3:  br IL_035e
+
+	  IL_00f8:  ldstr ""
+	  IL_00fd:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_0102:  ldstr "dylan.NET Version Info:"
+	  IL_0107:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_010c:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetExecutingAssembly()
+	  IL_0111:  stloc 7
+
+	  IL_0115:  nop 
+	  IL_0116:  nop 
+	  IL_0117:  ldloc 7
+
+	  IL_011b:  nop 
+	  IL_011c:  nop 
+	  IL_011d:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
+	  IL_0122:  stloc 5
+
+	  IL_0126:  nop 
+	  IL_0127:  nop 
+	  IL_0128:  ldloc 5
+
+	  IL_012c:  nop 
+	  IL_012d:  nop 
+	  IL_012e:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_0133:  ldtoken [dnr]dylan.NET.Reflection.Loader
+	  IL_0138:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	  IL_013d:  stloc 6
+
+	  IL_0141:  nop 
+	  IL_0142:  nop 
+	  IL_0143:  ldloc 6
+
+	  IL_0147:  nop 
+	  IL_0148:  nop 
+	  IL_0149:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
+	  IL_014e:  stloc 7
+
+	  IL_0152:  nop 
+	  IL_0153:  nop 
+	  IL_0154:  ldloc 7
+
+	  IL_0158:  nop 
+	  IL_0159:  nop 
+	  IL_015a:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
+	  IL_015f:  stloc 5
+
+	  IL_0163:  nop 
+	  IL_0164:  nop 
+	  IL_0165:  ldloc 5
+
+	  IL_0169:  nop 
+	  IL_016a:  nop 
+	  IL_016b:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_0170:  ldtoken [dnu]dylan.NET.Utils.XmlUtils
+	  IL_0175:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	  IL_017a:  stloc 6
+
+	  IL_017e:  nop 
+	  IL_017f:  nop 
+	  IL_0180:  ldloc 6
+
+	  IL_0184:  nop 
+	  IL_0185:  nop 
+	  IL_0186:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
+	  IL_018b:  stloc 7
+
+	  IL_018f:  nop 
+	  IL_0190:  nop 
+	  IL_0191:  ldloc 7
+
+	  IL_0195:  nop 
+	  IL_0196:  nop 
+	  IL_0197:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
+	  IL_019c:  stloc 5
+
+	  IL_01a0:  nop 
+	  IL_01a1:  nop 
+	  IL_01a2:  ldloc 5
+
+	  IL_01a6:  nop 
+	  IL_01a7:  nop 
+	  IL_01a8:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_01ad:  ldtoken [tokenizer.CodeGen]dylan.NET.Tokenizer.CodeGen.CodeGenerator
+	  IL_01b2:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	  IL_01b7:  stloc 6
+
+	  IL_01bb:  nop 
+	  IL_01bc:  nop 
+	  IL_01bd:  ldloc 6
+
+	  IL_01c1:  nop 
+	  IL_01c2:  nop 
+	  IL_01c3:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
+	  IL_01c8:  stloc 7
+
+	  IL_01cc:  nop 
+	  IL_01cd:  nop 
+	  IL_01ce:  ldloc 7
+
+	  IL_01d2:  nop 
+	  IL_01d3:  nop 
+	  IL_01d4:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
+	  IL_01d9:  stloc 5
+
+	  IL_01dd:  nop 
+	  IL_01de:  nop 
+	  IL_01df:  ldloc 5
+
+	  IL_01e3:  nop 
+	  IL_01e4:  nop 
+	  IL_01e5:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_01ea:  ldtoken [tokenizer.Parser]dylan.NET.Tokenizer.Parser.Parser
+	  IL_01ef:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	  IL_01f4:  stloc 6
+
+	  IL_01f8:  nop 
+	  IL_01f9:  nop 
+	  IL_01fa:  ldloc 6
+
+	  IL_01fe:  nop 
+	  IL_01ff:  nop 
+	  IL_0200:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
+	  IL_0205:  stloc 7
+
+	  IL_0209:  nop 
+	  IL_020a:  nop 
+	  IL_020b:  ldloc 7
+
+	  IL_020f:  nop 
+	  IL_0210:  nop 
+	  IL_0211:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
+	  IL_0216:  stloc 5
+
+	  IL_021a:  nop 
+	  IL_021b:  nop 
+	  IL_021c:  ldloc 5
+
+	  IL_0220:  nop 
+	  IL_0221:  nop 
+	  IL_0222:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_0227:  ldtoken [tokenizer.Lexer]dylan.NET.Tokenizer.Lexer.Lexer
+	  IL_022c:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	  IL_0231:  stloc 6
+
+	  IL_0235:  nop 
+	  IL_0236:  nop 
+	  IL_0237:  ldloc 6
+
+	  IL_023b:  nop 
+	  IL_023c:  nop 
+	  IL_023d:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
+	  IL_0242:  stloc 7
+
+	  IL_0246:  nop 
+	  IL_0247:  nop 
+	  IL_0248:  ldloc 7
+
+	  IL_024c:  nop 
+	  IL_024d:  nop 
+	  IL_024e:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
+	  IL_0253:  stloc 5
+
+	  IL_0257:  nop 
+	  IL_0258:  nop 
+	  IL_0259:  ldloc 5
+
+	  IL_025d:  nop 
+	  IL_025e:  nop 
+	  IL_025f:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_0264:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet
+	  IL_0269:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	  IL_026e:  stloc 6
+
+	  IL_0272:  nop 
+	  IL_0273:  nop 
+	  IL_0274:  ldloc 6
+
+	  IL_0278:  nop 
+	  IL_0279:  nop 
+	  IL_027a:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
+	  IL_027f:  stloc 7
+
+	  IL_0283:  nop 
+	  IL_0284:  nop 
+	  IL_0285:  ldloc 7
+
+	  IL_0289:  nop 
+	  IL_028a:  nop 
+	  IL_028b:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
+	  IL_0290:  stloc 5
+
+	  IL_0294:  nop 
+	  IL_0295:  nop 
+	  IL_0296:  ldloc 5
+
+	  IL_029a:  nop 
+	  IL_029b:  nop 
+	  IL_029c:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_02a1:  ldstr ""
+	  IL_02a6:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_02ab:  ldstr "Runtime & OS Version Info:"
+	  IL_02b0:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_02b5:  ldtoken [mscorlib]System.String
+	  IL_02ba:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	  IL_02bf:  stloc 6
+
+	  IL_02c3:  nop 
+	  IL_02c4:  nop 
+	  IL_02c5:  ldloc 6
+
+	  IL_02c9:  nop 
+	  IL_02ca:  nop 
+	  IL_02cb:  call class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Reflection.Assembly::GetAssembly(class [mscorlib]System.Type)
+	  IL_02d0:  stloc 7
+
+	  IL_02d4:  nop 
+	  IL_02d5:  nop 
+	  IL_02d6:  ldloc 7
+
+	  IL_02da:  nop 
+	  IL_02db:  nop 
+	  IL_02dc:  callvirt instance string class [mscorlib]System.Reflection.Assembly::ToString()
+	  IL_02e1:  stloc 5
+
+	  IL_02e5:  nop 
+	  IL_02e6:  nop 
+	  IL_02e7:  ldloc 5
+
+	  IL_02eb:  nop 
+	  IL_02ec:  nop 
+	  IL_02ed:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_02f2:  call class [mscorlib]System.Version class [mscorlib]System.Environment::get_Version()
+	  IL_02f7:  stloc 8
+
+	  IL_02fb:  nop 
+	  IL_02fc:  nop 
+	  IL_02fd:  ldloc 8
+
+	  IL_0301:  nop 
+	  IL_0302:  nop 
+	  IL_0303:  callvirt instance string class [mscorlib]System.Version::ToString()
+	  IL_0308:  stloc 9
+
+	  IL_030c:  nop 
+	  IL_030d:  nop 
+	  IL_030e:  ldstr "Runtime Version: "
+	  IL_0313:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
+	  IL_0318:  ldloc 9
+
+	  IL_031c:  nop 
+	  IL_031d:  nop 
+	  IL_031e:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_0323:  call class [mscorlib]System.OperatingSystem class [mscorlib]System.Environment::get_OSVersion()
+	  IL_0328:  stloc 10
+
+	  IL_032c:  nop 
+	  IL_032d:  nop 
+	  IL_032e:  ldloc 10
+
+	  IL_0332:  nop 
+	  IL_0333:  nop 
+	  IL_0334:  callvirt instance string class [mscorlib]System.OperatingSystem::ToString()
+	  IL_0339:  stloc 11
+
+	  IL_033d:  nop 
+	  IL_033e:  nop 
+	  IL_033f:  ldstr "OS: "
+	  IL_0344:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
+	  IL_0349:  ldloc 11
+
+	  IL_034d:  nop 
+	  IL_034e:  nop 
+	  IL_034f:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_0354:  br IL_04e6
+
+	  IL_0359:  br IL_0363
+
+	  IL_035e:  br IL_0363
+
+	  IL_0363:  ldloc 4
+
+	  IL_0367:  nop 
+	  IL_0368:  nop 
+	  IL_0369:  ldstr "-h"
+	  IL_036e:  call int32 string::Compare(string, string)
+	  IL_0373:  stloc 3
+
+	  IL_0377:  nop 
+	  IL_0378:  nop 
+	  IL_0379:  ldloc 3
+
+	  IL_037d:  nop 
+	  IL_037e:  nop 
+	  IL_037f:  ldc.i4 0
+	  IL_0384:  beq IL_038e
+
+	  IL_0389:  br IL_03ca
+
+	  IL_038e:  ldstr ""
+	  IL_0393:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_0398:  ldstr "Usage: dylandotnet [options] <file-name>"
+	  IL_039d:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_03a2:  ldstr "Options:"
+	  IL_03a7:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_03ac:  ldstr "   -V : View Version Nrs. for all dylan.NET assemblies"
+	  IL_03b1:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_03b6:  ldstr "   -h : View this help message"
+	  IL_03bb:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_03c0:  br IL_04e6
+
+	  IL_03c5:  br IL_03cf
+
+	  IL_03ca:  br IL_03cf
+
+	  IL_03cf:  ldarg 0
+
+	  IL_03d3:  nop 
+	  IL_03d4:  nop 
+	  IL_03d5:  ldloc 2
+
+	  IL_03d9:  nop 
+	  IL_03da:  nop 
+	  IL_03db:  conv.u 
+	  IL_03dc:  ldelem [mscorlib]System.String
+	  IL_03e1:  stloc 0
+
+	  IL_03e5:  nop 
+	  IL_03e6:  nop 
+	  IL_03e7:  ldloc 2
+
+	  IL_03eb:  nop 
+	  IL_03ec:  nop 
+	  IL_03ed:  ldloc 1
+
+	  IL_03f1:  nop 
+	  IL_03f2:  nop 
+	  IL_03f3:  bge IL_03fd
+
+	  IL_03f8:  br IL_0407
+
+	  IL_03fd:  br IL_0411
+
+	  IL_0402:  br IL_0411
+
+	  IL_0407:  br IL_00a3
+
+	  IL_040c:  br IL_0411
+
+	  IL_0411:  newobj instance void class [tokenizer.Lexer]dylan.NET.Tokenizer.Lexer.Lexer::'.ctor'()
+	  IL_0416:  stloc 12
+
+	  IL_041a:  nop 
+	  IL_041b:  nop 
+	  IL_041c:  ldstr "Now Lexing: "
+	  IL_0421:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
+	  IL_0426:  ldloc 0
+
+	  IL_042a:  nop 
+	  IL_042b:  nop 
+	  IL_042c:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
+	  IL_0431:  ldloc 12
+
+	  IL_0435:  nop 
+	  IL_0436:  nop 
+	  IL_0437:  ldloc 0
+
+	  IL_043b:  nop 
+	  IL_043c:  nop 
+	  IL_043d:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet class [tokenizer.Lexer]dylan.NET.Tokenizer.Lexer.Lexer::Analyze(string)
+	  IL_0442:  stloc 13
+
+	  IL_0446:  nop 
+	  IL_0447:  nop 
+	  IL_0448:  ldstr "...Done."
+	  IL_044d:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_0452:  newobj instance void class [tokenizer.Parser]dylan.NET.Tokenizer.Parser.Parser::'.ctor'()
+	  IL_0457:  stloc 14
+
+	  IL_045b:  nop 
+	  IL_045c:  nop 
+	  IL_045d:  ldstr "Now Parsing: "
+	  IL_0462:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
+	  IL_0467:  ldloc 0
+
+	  IL_046b:  nop 
+	  IL_046c:  nop 
+	  IL_046d:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
+	  IL_0472:  ldloc 14
+
+	  IL_0476:  nop 
+	  IL_0477:  nop 
+	  IL_0478:  ldloc 13
+
+	  IL_047c:  nop 
+	  IL_047d:  nop 
+	  IL_047e:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet class [tokenizer.Parser]dylan.NET.Tokenizer.Parser.Parser::Parse(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet)
+	  IL_0483:  stloc 15
+
+	  IL_0487:  nop 
+	  IL_0488:  nop 
+	  IL_0489:  ldstr "...Done."
+	  IL_048e:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_0493:  newobj instance void class [tokenizer.CodeGen]dylan.NET.Tokenizer.CodeGen.CodeGenerator::'.ctor'()
+	  IL_0498:  stloc 16
+
+	  IL_049c:  nop 
+	  IL_049d:  nop 
+	  IL_049e:  ldloc 16
+
+	  IL_04a2:  nop 
+	  IL_04a3:  nop 
+	  IL_04a4:  ldloc 15
+
+	  IL_04a8:  nop 
+	  IL_04a9:  nop 
+	  IL_04aa:  ldloc 0
+
+	  IL_04ae:  nop 
+	  IL_04af:  nop 
+	  IL_04b0:  callvirt instance void class [tokenizer.CodeGen]dylan.NET.Tokenizer.CodeGen.CodeGenerator::EmitMSIL(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet, string)
+	  IL_04b5:  leave IL_04e1
+
+	} // end .try 0
+	catch class [mscorlib]System.Exception { // 0
+	  IL_04ba:  stloc 17
+
+	  IL_04be:  nop 
+	  IL_04bf:  nop 
+	  IL_04c0:  ldloc 17
+
+	  IL_04c4:  nop 
+	  IL_04c5:  nop 
+	  IL_04c6:  callvirt instance string class [mscorlib]System.Exception::ToString()
+	  IL_04cb:  stloc 18
+
+	  IL_04cf:  nop 
+	  IL_04d0:  nop 
+	  IL_04d1:  ldloc 18
+
+	  IL_04d5:  nop 
+	  IL_04d6:  nop 
+	  IL_04d7:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	  IL_04dc:  leave IL_04e1
+
+	} // end handler 0
+	IL_04e1:  br IL_04e6
+
+	IL_04e6:  call void class [dnu]dylan.NET.Utils.StreamUtils::CloseOutS()
+	IL_04eb:  ret 
     } // end of method Module1::main
 
     // method line 2
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x2500
+        // Method begins at RVA 0x2564
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 

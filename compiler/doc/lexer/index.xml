@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.Lexer" Version="11.2.7.7">
+    <Assembly Name="tokenizer.Lexer" Version="11.2.7.8">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("tokenizer.Lexer")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.7")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.8")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("tokenizer.Lexer")</AttributeName>

@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dnu" Version="11.2.7.7">
+    <Assembly Name="dnu" Version="11.2.7.8">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("dnu")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.7")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.8")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("dnu")</AttributeName>
@@ -25,7 +25,9 @@
   <Types>
     <Namespace Name="dylan.NET.Utils">
       <Type Name="Constants" Kind="Class" />
+      <Type Name="Keyboard" Kind="Class" />
       <Type Name="ParseUtils" Kind="Class" />
+      <Type Name="StreamUtils" Kind="Class" />
       <Type Name="XmlUtils" Kind="Class" />
     </Namespace>
   </Types>

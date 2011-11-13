@@ -7,6 +7,7 @@ Imports Microsoft.VisualBasic.CompilerServices
 Imports System.Linq
 Imports System.Collections.Generic
 Imports System.Collections
+Imports System.IO
 Imports Microsoft.VisualBasic
 Imports System.Xml
 Imports System.Xml.Linq
@@ -2206,10 +2207,423 @@ RetPrecIL.Emit(OpCodes.Ret)
 ParseUtils.CreateType()
 End Sub
 
+
+Dim doc5 As ISymbolDocumentWriter
+
+Sub Keyboard()
+Dim Keyboard As TypeBuilder = mdl.DefineType("dylan.NET.Utils" & "." & "Keyboard", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, GetType(System.Object))
+Dim ReadString As MethodBuilder = Keyboard.DefineMethod("ReadString", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.String), Type.EmptyTypes)
+Dim ReadStringIL As ILGenerator = ReadString.GetILGenerator()
+ReadStringIL.MarkSequencePoint(doc5, 4, 1, 4, 100)
+ReadStringIL.Emit(OpCodes.Call, GetType(Console).GetMethod("ReadLine", Type.EmptyTypes))
+Typ = GetType(Console).GetMethod("ReadLine", Type.EmptyTypes).ReturnType
+ReadStringIL.MarkSequencePoint(doc5, 5, 1, 5, 100)
+ReadStringIL.Emit(OpCodes.Ret)
+Dim ReadInteger As MethodBuilder = Keyboard.DefineMethod("ReadInteger", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Int32), Type.EmptyTypes)
+Dim ReadIntegerIL As ILGenerator = ReadInteger.GetILGenerator()
+ReadIntegerIL.MarkSequencePoint(doc5, 8, 1, 8, 100)
+ReadIntegerIL.Emit(OpCodes.Call, ReadString)
+Typ = ReadString.ReturnType
+Dim typ0 As Type() = {Typ}
+ReadIntegerIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToInt32", typ0))
+Typ = GetType(System.Convert).GetMethod("ToInt32", typ0).ReturnType
+ReadIntegerIL.MarkSequencePoint(doc5, 9, 1, 9, 100)
+ReadIntegerIL.Emit(OpCodes.Ret)
+Dim ReadSbyte As MethodBuilder = Keyboard.DefineMethod("ReadSbyte", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.SByte), Type.EmptyTypes)
+Dim ReadSbyteIL As ILGenerator = ReadSbyte.GetILGenerator()
+ReadSbyteIL.MarkSequencePoint(doc5, 12, 1, 12, 100)
+ReadSbyteIL.Emit(OpCodes.Call, ReadString)
+Typ = ReadString.ReturnType
+Dim typ1 As Type() = {Typ}
+ReadSbyteIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToSByte", typ1))
+Typ = GetType(System.Convert).GetMethod("ToSByte", typ1).ReturnType
+ReadSbyteIL.MarkSequencePoint(doc5, 13, 1, 13, 100)
+ReadSbyteIL.Emit(OpCodes.Ret)
+Dim ReadShort As MethodBuilder = Keyboard.DefineMethod("ReadShort", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Int16), Type.EmptyTypes)
+Dim ReadShortIL As ILGenerator = ReadShort.GetILGenerator()
+ReadShortIL.MarkSequencePoint(doc5, 16, 1, 16, 100)
+ReadShortIL.Emit(OpCodes.Call, ReadString)
+Typ = ReadString.ReturnType
+Dim typ2 As Type() = {Typ}
+ReadShortIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToInt16", typ2))
+Typ = GetType(System.Convert).GetMethod("ToInt16", typ2).ReturnType
+ReadShortIL.MarkSequencePoint(doc5, 17, 1, 17, 100)
+ReadShortIL.Emit(OpCodes.Ret)
+Dim ReadLong As MethodBuilder = Keyboard.DefineMethod("ReadLong", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Int64), Type.EmptyTypes)
+Dim ReadLongIL As ILGenerator = ReadLong.GetILGenerator()
+ReadLongIL.MarkSequencePoint(doc5, 20, 1, 20, 100)
+ReadLongIL.Emit(OpCodes.Call, ReadString)
+Typ = ReadString.ReturnType
+Dim typ3 As Type() = {Typ}
+ReadLongIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToInt64", typ3))
+Typ = GetType(System.Convert).GetMethod("ToInt64", typ3).ReturnType
+ReadLongIL.MarkSequencePoint(doc5, 21, 1, 21, 100)
+ReadLongIL.Emit(OpCodes.Ret)
+Dim ReadSingle As MethodBuilder = Keyboard.DefineMethod("ReadSingle", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Single), Type.EmptyTypes)
+Dim ReadSingleIL As ILGenerator = ReadSingle.GetILGenerator()
+ReadSingleIL.MarkSequencePoint(doc5, 24, 1, 24, 100)
+ReadSingleIL.Emit(OpCodes.Call, ReadString)
+Typ = ReadString.ReturnType
+Dim typ4 As Type() = {Typ}
+ReadSingleIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToSingle", typ4))
+Typ = GetType(System.Convert).GetMethod("ToSingle", typ4).ReturnType
+ReadSingleIL.MarkSequencePoint(doc5, 25, 1, 25, 100)
+ReadSingleIL.Emit(OpCodes.Ret)
+Dim ReadDouble As MethodBuilder = Keyboard.DefineMethod("ReadDouble", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Double), Type.EmptyTypes)
+Dim ReadDoubleIL As ILGenerator = ReadDouble.GetILGenerator()
+ReadDoubleIL.MarkSequencePoint(doc5, 28, 1, 28, 100)
+ReadDoubleIL.Emit(OpCodes.Call, ReadString)
+Typ = ReadString.ReturnType
+Dim typ5 As Type() = {Typ}
+ReadDoubleIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToDouble", typ5))
+Typ = GetType(System.Convert).GetMethod("ToDouble", typ5).ReturnType
+ReadDoubleIL.MarkSequencePoint(doc5, 29, 1, 29, 100)
+ReadDoubleIL.Emit(OpCodes.Ret)
+Dim ReadChar As MethodBuilder = Keyboard.DefineMethod("ReadChar", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Char), Type.EmptyTypes)
+Dim ReadCharIL As ILGenerator = ReadChar.GetILGenerator()
+ReadCharIL.MarkSequencePoint(doc5, 32, 1, 32, 100)
+ReadCharIL.Emit(OpCodes.Call, ReadString)
+Typ = ReadString.ReturnType
+Dim typ6 As Type() = {Typ}
+ReadCharIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToChar", typ6))
+Typ = GetType(System.Convert).GetMethod("ToChar", typ6).ReturnType
+ReadCharIL.MarkSequencePoint(doc5, 33, 1, 33, 100)
+ReadCharIL.Emit(OpCodes.Ret)
+Dim ReadBoolean As MethodBuilder = Keyboard.DefineMethod("ReadBoolean", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Boolean), Type.EmptyTypes)
+Dim ReadBooleanIL As ILGenerator = ReadBoolean.GetILGenerator()
+ReadBooleanIL.MarkSequencePoint(doc5, 36, 1, 36, 100)
+ReadBooleanIL.Emit(OpCodes.Call, ReadString)
+Typ = ReadString.ReturnType
+Dim typ7 As Type() = {Typ}
+ReadBooleanIL.Emit(OpCodes.Call, GetType(System.Convert).GetMethod("ToBoolean", typ7))
+Typ = GetType(System.Convert).GetMethod("ToBoolean", typ7).ReturnType
+ReadBooleanIL.MarkSequencePoint(doc5, 37, 1, 37, 100)
+ReadBooleanIL.Emit(OpCodes.Ret)
+Keyboard.CreateType()
+End Sub
+
+
+Dim doc6 As ISymbolDocumentWriter
+
+Sub StreamUtils()
+Dim StreamUtils As TypeBuilder = mdl.DefineType("dylan.NET.Utils" & "." & "StreamUtils", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass Or TypeAttributes.BeforeFieldInit, GetType(System.Object))
+Dim Stdin As FieldBuilder = StreamUtils.DefineField("Stdin", GetType(Stream), FieldAttributes.Public Or FieldAttributes.Static)
+Dim Stdout As FieldBuilder = StreamUtils.DefineField("Stdout", GetType(Stream), FieldAttributes.Public Or FieldAttributes.Static)
+Dim Stderr As FieldBuilder = StreamUtils.DefineField("Stderr", GetType(Stream), FieldAttributes.Public Or FieldAttributes.Static)
+Dim InS As FieldBuilder = StreamUtils.DefineField("InS", GetType(StreamReader), FieldAttributes.Public Or FieldAttributes.Static)
+Dim OutS As FieldBuilder = StreamUtils.DefineField("OutS", GetType(StreamWriter), FieldAttributes.Public Or FieldAttributes.Static)
+Dim ctor0 As ConstructorBuilder = StreamUtils.DefineConstructor(MethodAttributes.Public Or MethodAttributes.Static,CallingConventions.Standard , Type.EmptyTypes)
+Dim ctor0IL As ILGenerator = ctor0.GetILGenerator()
+ctor0IL.MarkSequencePoint(doc6, 11, 1, 11, 100)
+ctor0IL.Emit(OpCodes.Call, GetType(Console).GetMethod("OpenStandardInput", Type.EmptyTypes))
+Typ = GetType(Console).GetMethod("OpenStandardInput", Type.EmptyTypes).ReturnType
+ctor0IL.Emit(OpCodes.Stsfld, Stdin)
+ctor0IL.MarkSequencePoint(doc6, 12, 1, 12, 100)
+ctor0IL.Emit(OpCodes.Call, GetType(Console).GetMethod("OpenStandardError", Type.EmptyTypes))
+Typ = GetType(Console).GetMethod("OpenStandardError", Type.EmptyTypes).ReturnType
+ctor0IL.Emit(OpCodes.Stsfld, Stderr)
+ctor0IL.MarkSequencePoint(doc6, 13, 1, 13, 100)
+ctor0IL.Emit(OpCodes.Call, GetType(Console).GetMethod("OpenStandardOutput", Type.EmptyTypes))
+Typ = GetType(Console).GetMethod("OpenStandardOutput", Type.EmptyTypes).ReturnType
+ctor0IL.Emit(OpCodes.Stsfld, Stdout)
+ctor0IL.MarkSequencePoint(doc6, 14, 1, 14, 100)
+ctor0IL.Emit(OpCodes.Ldnull)
+ctor0IL.Emit(OpCodes.Stsfld, InS)
+ctor0IL.MarkSequencePoint(doc6, 15, 1, 15, 100)
+ctor0IL.Emit(OpCodes.Ldnull)
+ctor0IL.Emit(OpCodes.Stsfld, OutS)
+ctor0IL.MarkSequencePoint(doc6, 16, 1, 16, 100)
+ctor0IL.Emit(OpCodes.Ret)
+Dim typ0(-1) As Type
+ReDim Preserve typ0(UBound(typ0) + 1)
+typ0(UBound(typ0)) = GetType(Stream)
+Dim InitInS As MethodBuilder = StreamUtils.DefineMethod("InitInS", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ0)
+Dim InitInSIL As ILGenerator = InitInS.GetILGenerator()
+Dim InitInSparam01 As ParameterBuilder = InitInS.DefineParameter(1, ParameterAttributes.None, "s")
+InitInSIL.MarkSequencePoint(doc6, 19, 1, 19, 100)
+InitInSIL.Emit(OpCodes.Ldsfld, InS)
+Typ = InS.FieldType
+InitInSIL.Emit(OpCodes.Ldnull)
+Dim fa39 As System.Reflection.Emit.Label = InitInSIL.DefineLabel()
+Dim tru39 As System.Reflection.Emit.Label = InitInSIL.DefineLabel()
+Dim cont39 As System.Reflection.Emit.Label = InitInSIL.DefineLabel()
+InitInSIL.Emit(OpCodes.Beq, fa39)
+InitInSIL.Emit(OpCodes.Br, tru39)
+InitInSIL.MarkLabel(tru39)
+InitInSIL.MarkSequencePoint(doc6, 20, 1, 20, 100)
+InitInSIL.Emit(OpCodes.Ldsfld, InS)
+Typ = InS.FieldType
+Typ03 = Typ
+InitInSIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Close", Type.EmptyTypes))
+Typ = Typ03.GetMethod("Close", Type.EmptyTypes).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+InitInSIL.Emit(OpCodes.Pop)
+End If
+InitInSIL.MarkSequencePoint(doc6, 21, 1, 21, 100)
+InitInSIL.Emit(OpCodes.Br, cont39)
+InitInSIL.MarkLabel(fa39)
+InitInSIL.Emit(OpCodes.Br, cont39)
+InitInSIL.MarkLabel(cont39)
+InitInSIL.MarkSequencePoint(doc6, 22, 1, 22, 100)
+Dim typ2(-1) As Type
+InitInSIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(Stream)
+ReDim Preserve typ2(UBound(typ2) + 1)
+typ2(UBound(typ2)) = Typ
+InitInSIL.Emit(OpCodes.Newobj, GetType(StreamReader).GetConstructor(typ2))
+InitInSIL.Emit(OpCodes.Stsfld, InS)
+InitInSIL.MarkSequencePoint(doc6, 23, 1, 23, 100)
+InitInSIL.Emit(OpCodes.Ret)
+Dim typ3(-1) As Type
+ReDim Preserve typ3(UBound(typ3) + 1)
+typ3(UBound(typ3)) = GetType(Stream)
+Dim InitOutS As MethodBuilder = StreamUtils.DefineMethod("InitOutS", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ3)
+Dim InitOutSIL As ILGenerator = InitOutS.GetILGenerator()
+Dim InitOutSparam01 As ParameterBuilder = InitOutS.DefineParameter(1, ParameterAttributes.None, "s")
+InitOutSIL.MarkSequencePoint(doc6, 26, 1, 26, 100)
+InitOutSIL.Emit(OpCodes.Ldsfld, OutS)
+Typ = OutS.FieldType
+InitOutSIL.Emit(OpCodes.Ldnull)
+Dim fa40 As System.Reflection.Emit.Label = InitOutSIL.DefineLabel()
+Dim tru40 As System.Reflection.Emit.Label = InitOutSIL.DefineLabel()
+Dim cont40 As System.Reflection.Emit.Label = InitOutSIL.DefineLabel()
+InitOutSIL.Emit(OpCodes.Beq, fa40)
+InitOutSIL.Emit(OpCodes.Br, tru40)
+InitOutSIL.MarkLabel(tru40)
+InitOutSIL.MarkSequencePoint(doc6, 27, 1, 27, 100)
+InitOutSIL.Emit(OpCodes.Ldsfld, OutS)
+Typ = OutS.FieldType
+Typ03 = Typ
+InitOutSIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Close", Type.EmptyTypes))
+Typ = Typ03.GetMethod("Close", Type.EmptyTypes).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+InitOutSIL.Emit(OpCodes.Pop)
+End If
+InitOutSIL.MarkSequencePoint(doc6, 28, 1, 28, 100)
+InitOutSIL.Emit(OpCodes.Br, cont40)
+InitOutSIL.MarkLabel(fa40)
+InitOutSIL.Emit(OpCodes.Br, cont40)
+InitOutSIL.MarkLabel(cont40)
+InitOutSIL.MarkSequencePoint(doc6, 29, 1, 29, 100)
+Dim typ5(-1) As Type
+InitOutSIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(Stream)
+ReDim Preserve typ5(UBound(typ5) + 1)
+typ5(UBound(typ5)) = Typ
+InitOutSIL.Emit(OpCodes.Newobj, GetType(StreamWriter).GetConstructor(typ5))
+InitOutSIL.Emit(OpCodes.Stsfld, OutS)
+InitOutSIL.MarkSequencePoint(doc6, 30, 1, 30, 100)
+InitOutSIL.Emit(OpCodes.Ret)
+Dim InitInOutSWithStd As MethodBuilder = StreamUtils.DefineMethod("InitInOutSWithStd", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), Type.EmptyTypes)
+Dim InitInOutSWithStdIL As ILGenerator = InitInOutSWithStd.GetILGenerator()
+InitInOutSWithStdIL.MarkSequencePoint(doc6, 33, 1, 33, 100)
+Dim typ6(-1) As Type
+InitInOutSWithStdIL.Emit(OpCodes.Ldsfld, Stdin)
+Typ = Stdin.FieldType
+ReDim Preserve typ6(UBound(typ6) + 1)
+typ6(UBound(typ6)) = Typ
+InitInOutSWithStdIL.Emit(OpCodes.Call, InitInS)
+Typ = InitInS.ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+InitInOutSWithStdIL.Emit(OpCodes.Pop)
+End If
+InitInOutSWithStdIL.MarkSequencePoint(doc6, 34, 1, 34, 100)
+Dim typ7(-1) As Type
+InitInOutSWithStdIL.Emit(OpCodes.Ldsfld, Stdout)
+Typ = Stdout.FieldType
+ReDim Preserve typ7(UBound(typ7) + 1)
+typ7(UBound(typ7)) = Typ
+InitInOutSWithStdIL.Emit(OpCodes.Call, InitOutS)
+Typ = InitOutS.ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+InitInOutSWithStdIL.Emit(OpCodes.Pop)
+End If
+InitInOutSWithStdIL.MarkSequencePoint(doc6, 35, 1, 35, 100)
+InitInOutSWithStdIL.Emit(OpCodes.Ret)
+Dim CloseInS As MethodBuilder = StreamUtils.DefineMethod("CloseInS", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), Type.EmptyTypes)
+Dim CloseInSIL As ILGenerator = CloseInS.GetILGenerator()
+CloseInSIL.MarkSequencePoint(doc6, 38, 1, 38, 100)
+CloseInSIL.Emit(OpCodes.Ldsfld, InS)
+Typ = InS.FieldType
+CloseInSIL.Emit(OpCodes.Ldnull)
+Dim fa41 As System.Reflection.Emit.Label = CloseInSIL.DefineLabel()
+Dim tru41 As System.Reflection.Emit.Label = CloseInSIL.DefineLabel()
+Dim cont41 As System.Reflection.Emit.Label = CloseInSIL.DefineLabel()
+CloseInSIL.Emit(OpCodes.Beq, fa41)
+CloseInSIL.Emit(OpCodes.Br, tru41)
+CloseInSIL.MarkLabel(tru41)
+CloseInSIL.MarkSequencePoint(doc6, 39, 1, 39, 100)
+CloseInSIL.Emit(OpCodes.Ldsfld, InS)
+Typ = InS.FieldType
+Typ03 = Typ
+CloseInSIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Close", Type.EmptyTypes))
+Typ = Typ03.GetMethod("Close", Type.EmptyTypes).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+CloseInSIL.Emit(OpCodes.Pop)
+End If
+CloseInSIL.MarkSequencePoint(doc6, 40, 1, 40, 100)
+CloseInSIL.Emit(OpCodes.Br, cont41)
+CloseInSIL.MarkLabel(fa41)
+CloseInSIL.Emit(OpCodes.Br, cont41)
+CloseInSIL.MarkLabel(cont41)
+CloseInSIL.MarkSequencePoint(doc6, 41, 1, 41, 100)
+CloseInSIL.Emit(OpCodes.Ret)
+Dim CloseOutS As MethodBuilder = StreamUtils.DefineMethod("CloseOutS", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), Type.EmptyTypes)
+Dim CloseOutSIL As ILGenerator = CloseOutS.GetILGenerator()
+CloseOutSIL.MarkSequencePoint(doc6, 44, 1, 44, 100)
+CloseOutSIL.Emit(OpCodes.Ldsfld, OutS)
+Typ = OutS.FieldType
+CloseOutSIL.Emit(OpCodes.Ldnull)
+Dim fa42 As System.Reflection.Emit.Label = CloseOutSIL.DefineLabel()
+Dim tru42 As System.Reflection.Emit.Label = CloseOutSIL.DefineLabel()
+Dim cont42 As System.Reflection.Emit.Label = CloseOutSIL.DefineLabel()
+CloseOutSIL.Emit(OpCodes.Beq, fa42)
+CloseOutSIL.Emit(OpCodes.Br, tru42)
+CloseOutSIL.MarkLabel(tru42)
+CloseOutSIL.MarkSequencePoint(doc6, 45, 1, 45, 100)
+CloseOutSIL.Emit(OpCodes.Ldsfld, OutS)
+Typ = OutS.FieldType
+Typ03 = Typ
+CloseOutSIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Close", Type.EmptyTypes))
+Typ = Typ03.GetMethod("Close", Type.EmptyTypes).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+CloseOutSIL.Emit(OpCodes.Pop)
+End If
+CloseOutSIL.MarkSequencePoint(doc6, 46, 1, 46, 100)
+CloseOutSIL.Emit(OpCodes.Br, cont42)
+CloseOutSIL.MarkLabel(fa42)
+CloseOutSIL.Emit(OpCodes.Br, cont42)
+CloseOutSIL.MarkLabel(cont42)
+CloseOutSIL.MarkSequencePoint(doc6, 47, 1, 47, 100)
+CloseOutSIL.Emit(OpCodes.Ret)
+Dim ReadLine As MethodBuilder = StreamUtils.DefineMethod("ReadLine", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.String), Type.EmptyTypes)
+Dim ReadLineIL As ILGenerator = ReadLine.GetILGenerator()
+ReadLineIL.MarkSequencePoint(doc6, 50, 1, 50, 100)
+ReadLineIL.Emit(OpCodes.Ldsfld, InS)
+Typ = InS.FieldType
+ReadLineIL.Emit(OpCodes.Ldnull)
+Dim fa43 As System.Reflection.Emit.Label = ReadLineIL.DefineLabel()
+Dim tru43 As System.Reflection.Emit.Label = ReadLineIL.DefineLabel()
+Dim cont43 As System.Reflection.Emit.Label = ReadLineIL.DefineLabel()
+ReadLineIL.Emit(OpCodes.Beq, fa43)
+ReadLineIL.Emit(OpCodes.Br, tru43)
+ReadLineIL.MarkLabel(tru43)
+ReadLineIL.MarkSequencePoint(doc6, 51, 1, 51, 100)
+ReadLineIL.Emit(OpCodes.Ldsfld, InS)
+Typ = InS.FieldType
+Typ03 = Typ
+ReadLineIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("ReadLine", Type.EmptyTypes))
+Typ = Typ03.GetMethod("ReadLine", Type.EmptyTypes).ReturnType
+ReadLineIL.MarkSequencePoint(doc6, 52, 1, 52, 100)
+ReadLineIL.Emit(OpCodes.Br, cont43)
+ReadLineIL.MarkLabel(fa43)
+ReadLineIL.MarkSequencePoint(doc6, 53, 1, 53, 100)
+ReadLineIL.Emit(OpCodes.Ldstr, "")
+Typ = GetType(System.String)
+ReadLineIL.MarkSequencePoint(doc6, 54, 1, 54, 100)
+ReadLineIL.Emit(OpCodes.Br, cont43)
+ReadLineIL.MarkLabel(cont43)
+ReadLineIL.MarkSequencePoint(doc6, 55, 1, 55, 100)
+ReadLineIL.Emit(OpCodes.Ret)
+Dim typ11(-1) As Type
+ReDim Preserve typ11(UBound(typ11) + 1)
+typ11(UBound(typ11)) = GetType(System.String)
+Dim WriteLine As MethodBuilder = StreamUtils.DefineMethod("WriteLine", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ11)
+Dim WriteLineIL As ILGenerator = WriteLine.GetILGenerator()
+Dim WriteLineparam01 As ParameterBuilder = WriteLine.DefineParameter(1, ParameterAttributes.None, "str")
+WriteLineIL.MarkSequencePoint(doc6, 58, 1, 58, 100)
+WriteLineIL.Emit(OpCodes.Ldsfld, OutS)
+Typ = OutS.FieldType
+WriteLineIL.Emit(OpCodes.Ldnull)
+Dim fa44 As System.Reflection.Emit.Label = WriteLineIL.DefineLabel()
+Dim tru44 As System.Reflection.Emit.Label = WriteLineIL.DefineLabel()
+Dim cont44 As System.Reflection.Emit.Label = WriteLineIL.DefineLabel()
+WriteLineIL.Emit(OpCodes.Beq, fa44)
+WriteLineIL.Emit(OpCodes.Br, tru44)
+WriteLineIL.MarkLabel(tru44)
+WriteLineIL.MarkSequencePoint(doc6, 59, 1, 59, 100)
+Dim typ12(-1) As Type
+WriteLineIL.Emit(OpCodes.Ldsfld, OutS)
+Typ = OutS.FieldType
+Typ03 = Typ
+WriteLineIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(System.String)
+ReDim Preserve typ12(UBound(typ12) + 1)
+typ12(UBound(typ12)) = Typ
+WriteLineIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("WriteLine", typ12))
+Typ = Typ03.GetMethod("WriteLine", typ12).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+WriteLineIL.Emit(OpCodes.Pop)
+End If
+WriteLineIL.MarkSequencePoint(doc6, 60, 1, 60, 100)
+WriteLineIL.Emit(OpCodes.Br, cont44)
+WriteLineIL.MarkLabel(fa44)
+WriteLineIL.MarkSequencePoint(doc6, 61, 1, 61, 100)
+WriteLineIL.Emit(OpCodes.Br, cont44)
+WriteLineIL.MarkLabel(cont44)
+WriteLineIL.MarkSequencePoint(doc6, 62, 1, 62, 100)
+WriteLineIL.Emit(OpCodes.Ret)
+Dim typ13(-1) As Type
+ReDim Preserve typ13(UBound(typ13) + 1)
+typ13(UBound(typ13)) = GetType(System.String)
+Dim Write As MethodBuilder = StreamUtils.DefineMethod("Write", MethodAttributes.Public Or MethodAttributes.Static, GetType(System.Void), typ13)
+Dim WriteIL As ILGenerator = Write.GetILGenerator()
+Dim Writeparam01 As ParameterBuilder = Write.DefineParameter(1, ParameterAttributes.None, "str")
+WriteIL.MarkSequencePoint(doc6, 65, 1, 65, 100)
+WriteIL.Emit(OpCodes.Ldsfld, OutS)
+Typ = OutS.FieldType
+WriteIL.Emit(OpCodes.Ldnull)
+Dim fa45 As System.Reflection.Emit.Label = WriteIL.DefineLabel()
+Dim tru45 As System.Reflection.Emit.Label = WriteIL.DefineLabel()
+Dim cont45 As System.Reflection.Emit.Label = WriteIL.DefineLabel()
+WriteIL.Emit(OpCodes.Beq, fa45)
+WriteIL.Emit(OpCodes.Br, tru45)
+WriteIL.MarkLabel(tru45)
+WriteIL.MarkSequencePoint(doc6, 66, 1, 66, 100)
+Dim typ14(-1) As Type
+WriteIL.Emit(OpCodes.Ldsfld, OutS)
+Typ = OutS.FieldType
+Typ03 = Typ
+WriteIL.Emit(OpCodes.Ldarg, 0)
+Typ = GetType(System.String)
+ReDim Preserve typ14(UBound(typ14) + 1)
+typ14(UBound(typ14)) = Typ
+WriteIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("Write", typ14))
+Typ = Typ03.GetMethod("Write", typ14).ReturnType
+If Typ.ToString() = GetType(System.Void).ToString() Then
+
+Else
+WriteIL.Emit(OpCodes.Pop)
+End If
+WriteIL.MarkSequencePoint(doc6, 67, 1, 67, 100)
+WriteIL.Emit(OpCodes.Br, cont45)
+WriteIL.MarkLabel(fa45)
+WriteIL.MarkSequencePoint(doc6, 68, 1, 68, 100)
+WriteIL.Emit(OpCodes.Br, cont45)
+WriteIL.MarkLabel(cont45)
+WriteIL.MarkSequencePoint(doc6, 69, 1, 69, 100)
+WriteIL.Emit(OpCodes.Ret)
+StreamUtils.CreateType()
+End Sub
+
 Sub Main()
 
 asmName = New AssemblyName("dnu")
-asmName.Version = New System.Version(11, 2, 7, 7)
+asmName.Version = New System.Version(11, 2, 7, 8)
 asm  = AppDomain.CurrentDomain.DefineDynamicAssembly(asmName, AssemblyBuilderAccess.Save, CStr("E:\Code\dylannet\compiler\"))
 mdl = asm.DefineDynamicModule(asmName.Name & ".dll" , asmName.Name & ".dll", True)
 resw = mdl.DefineResource("dnu.resources" ,  "Description")
@@ -2217,6 +2631,8 @@ doc = mdl.DefineDocument("E:\Code\dylannet\compiler\dnu.dyl", Guid.Empty, Guid.E
 doc2 = mdl.DefineDocument("E:\Code\dylannet\compiler\dnu\consts.dyl", Guid.Empty, Guid.Empty, Guid.Empty)
 doc3 = mdl.DefineDocument("E:\Code\dylannet\compiler\dnu\xmlu.dyl", Guid.Empty, Guid.Empty, Guid.Empty)
 doc4 = mdl.DefineDocument("E:\Code\dylannet\compiler\dnu\parseu.dyl", Guid.Empty, Guid.Empty, Guid.Empty)
+doc5 = mdl.DefineDocument("E:\Code\dylannet\compiler\dnu\keyboard.dyl", Guid.Empty, Guid.Empty, Guid.Empty)
+doc6 = mdl.DefineDocument("E:\Code\dylannet\compiler\dnu\streamu.dyl", Guid.Empty, Guid.Empty, Guid.Empty)
 addstr("dnu")
 addasm(asm)
 Dim daType As Type = GetType(DebuggableAttribute)
@@ -2228,9 +2644,11 @@ asm.SetCustomAttribute(daBuilder)
 Constants()
 XmlUtils()
 ParseUtils()
+Keyboard()
+StreamUtils()
 Dim vaType As Type = GetType(AssemblyFileVersionAttribute)
 Dim vaCtor As ConstructorInfo = vaType.GetConstructor(New Type() { GetType(String) })
-Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.7.7"})
+Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.7.8"})
 asm.SetCustomAttribute(vaBuilder)
 
 Dim paType As Type = GetType(AssemblyProductAttribute)

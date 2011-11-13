@@ -793,6 +793,12 @@ return OpCodes::Starg
 goto fin
 end if
 
+b = compStr(code, "starg.s")
+if b = true then
+return OpCodes::Starg_S
+goto fin
+end if
+
 b = compStr(code, "stelem")
 if b = true then
 return OpCodes::Stelem

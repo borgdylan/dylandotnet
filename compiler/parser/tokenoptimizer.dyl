@@ -706,6 +706,16 @@ tok = spnattr
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "virtual")
+
+if comp = 0 then
+var virtattr as VirtualAttr = new VirtualAttr()
+virtattr::Line = tok::Line
+virtattr::Value = tok::Value
+tok = virtattr
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "auto")
 
 if comp = 0 then

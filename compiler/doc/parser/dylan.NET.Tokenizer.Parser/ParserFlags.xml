@@ -7,6 +7,7 @@
     <AssemblyVersion>11.2.7.5</AssemblyVersion>
     <AssemblyVersion>11.2.7.6</AssemblyVersion>
     <AssemblyVersion>11.2.7.7</AssemblyVersion>
+    <AssemblyVersion>11.2.7.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -26,6 +27,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -42,6 +44,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -60,6 +63,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -78,6 +82,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -96,6 +101,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -114,6 +120,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
@@ -132,6 +139,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -150,6 +158,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -168,6 +177,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -186,6 +196,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -204,6 +215,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -222,6 +234,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -240,6 +253,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -258,6 +272,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -276,6 +291,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -294,6 +310,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -312,6 +329,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -330,6 +348,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -348,6 +367,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -367,6 +387,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -385,6 +406,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral</ReturnType>
@@ -408,6 +430,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral</ReturnType>
@@ -431,6 +454,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Ident</ReturnType>
@@ -453,6 +477,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral</ReturnType>
@@ -476,6 +501,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</ReturnType>
@@ -499,6 +525,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral</ReturnType>
@@ -522,6 +549,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

@@ -9,6 +9,7 @@
     <AssemblyVersion>11.2.7.5</AssemblyVersion>
     <AssemblyVersion>11.2.7.6</AssemblyVersion>
     <AssemblyVersion>11.2.7.7</AssemblyVersion>
+    <AssemblyVersion>11.2.7.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
@@ -30,6 +31,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -49,6 +51,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
@@ -71,6 +74,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -95,6 +99,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.MethodNameTok</ReturnType>
@@ -115,6 +120,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr[]</ReturnType>
@@ -133,6 +139,7 @@
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

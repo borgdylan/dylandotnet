@@ -166,6 +166,21 @@ end if
 goto fin
 end if
 
+
+typ = gettype Attributes.VirtualAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 64
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
 place fin
 
 if i = len then

@@ -10,15 +10,17 @@ class public auto ansi Module1
 
 method public static void main(var args as string[])
 
-Console::WriteLine("dylan.NET Compiler v. 11.2.7.6 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
-Console::WriteLine("                           and Xamarin Mono v. 2.6.7/v. 2.10.x")
-Console::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-Console::WriteLine("Copyright (C) 2011 Dylan Borg")
+StreamUtils::InitOutS(StreamUtils::Stdout) 
+
+StreamUtils::WriteLine("dylan.NET Compiler v. 11.2.7.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
+StreamUtils::WriteLine("                           and Xamarin Mono v. 2.6.7/v. 2.10.x")
+StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
+StreamUtils::WriteLine("Copyright (C) 2011 Dylan Borg")
 if args[l] < 1 then
-Console::WriteLine("Usage: dylandotnet [options] <file-name>")
+StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 else
 
-//try
+try
 
 var p as string = ""
 
@@ -45,73 +47,73 @@ curarg = args[i]
 comp = String::Compare(curarg, "-V")
 if comp = 0 then
 
-Console::WriteLine()
-Console::WriteLine("dylan.NET Version Info:")
+StreamUtils::WriteLine("")
+StreamUtils::WriteLine("dylan.NET Version Info:")
 
 asm = Assembly::GetExecutingAssembly()
 tmpstr = asm::ToString()
-Console::WriteLine(tmpstr)
+StreamUtils::WriteLine(tmpstr)
 
 temptyp = gettype Loader
 asm = Assembly::GetAssembly(temptyp)
 tmpstr = asm::ToString()
-Console::WriteLine(tmpstr)
+StreamUtils::WriteLine(tmpstr)
 
 temptyp = gettype XmlUtils
 asm = Assembly::GetAssembly(temptyp)
 tmpstr = asm::ToString()
-Console::WriteLine(tmpstr)
+StreamUtils::WriteLine(tmpstr)
 
 temptyp = gettype CodeGenerator
 asm = Assembly::GetAssembly(temptyp)
 tmpstr = asm::ToString()
-Console::WriteLine(tmpstr)
+StreamUtils::WriteLine(tmpstr)
 
 temptyp = gettype Parser
 asm = Assembly::GetAssembly(temptyp)
 tmpstr = asm::ToString()
-Console::WriteLine(tmpstr)
+StreamUtils::WriteLine(tmpstr)
 
 temptyp = gettype Lexer
 asm = Assembly::GetAssembly(temptyp)
 tmpstr = asm::ToString()
-Console::WriteLine(tmpstr)
+StreamUtils::WriteLine(tmpstr)
 
 temptyp = gettype StmtSet
 asm = Assembly::GetAssembly(temptyp)
 tmpstr = asm::ToString()
-Console::WriteLine(tmpstr)
+StreamUtils::WriteLine(tmpstr)
 
-Console::WriteLine()
-Console::WriteLine("Runtime & OS Version Info:")
+StreamUtils::WriteLine("")
+StreamUtils::WriteLine("Runtime & OS Version Info:")
 
 temptyp = gettype string
 asm = Assembly::GetAssembly(temptyp)
 tmpstr = asm::ToString()
-Console::WriteLine(tmpstr)
+StreamUtils::WriteLine(tmpstr)
 
 var runver as Version = Environment::get_Version()
 var runverstr as string = runver::ToString()
 
-Console::Write("Runtime Version: ")
-Console::WriteLine(runverstr)
+StreamUtils::Write("Runtime Version: ")
+StreamUtils::WriteLine(runverstr)
 
 var os as OperatingSystem = Environment::get_OSVersion()
 var osverstr as string = os::ToString()
 
-Console::Write("OS: ")
-Console::WriteLine(osverstr)
+StreamUtils::Write("OS: ")
+StreamUtils::WriteLine(osverstr)
 
 goto ext
 end if
 
 comp = String::Compare(curarg, "-h")
 if comp = 0 then
-Console::WriteLine()
-Console::WriteLine("Usage: dylandotnet [options] <file-name>")
-Console::WriteLine("Options:")
-Console::WriteLine("   -V : View Version Nrs. for all dylan.NET assemblies")
-Console::WriteLine("   -h : View this help message")
+StreamUtils::WriteLine("")
+StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
+StreamUtils::WriteLine("Options:")
+StreamUtils::WriteLine("   -V : View Version Nrs. for all dylan.NET assemblies")
+StreamUtils::WriteLine("   -h : View this help message")
 goto ext
 end if
 
@@ -128,15 +130,15 @@ end if
 place cont
 
 var lx as Lexer = new Lexer()
-Console::Write("Now Lexing: ")
-Console::Write(p)
+StreamUtils::Write("Now Lexing: ")
+StreamUtils::Write(p)
 var pstmts as StmtSet = lx::Analyze(p)
-Console::WriteLine("...Done.")
+StreamUtils::WriteLine("...Done.")
 var ps as Parser = new Parser()
-Console::Write("Now Parsing: ")
-Console::Write(p)
+StreamUtils::Write("Now Parsing: ")
+StreamUtils::Write(p)
 var ppstmts as StmtSet = ps::Parse(pstmts)
-Console::WriteLine("...Done.")
+StreamUtils::WriteLine("...Done.")
 var cg as CodeGenerator = new CodeGenerator()
 cg::EmitMSIL(ppstmts, p)
 
@@ -198,17 +200,19 @@ cg::EmitMSIL(ppstmts, p)
 //var t8s as string = t8::ToString()
 //Console::WriteLine(t8s)
 
-//catch ex as Exception
+catch ex as Exception
 
-//var exstr as string = ex::ToString()
-//Console::WriteLine(exstr)
+var exstr as string = ex::ToString()
+StreamUtils::WriteLine(exstr)
 //Console::ReadKey()
 
-//end try
+end try
 
 end if
 
 place ext
+
+StreamUtils::CloseOutS()
 
 end method
 

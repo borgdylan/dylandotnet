@@ -17,7 +17,7 @@
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 37 00 00 ) // ...11.2.7.7..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 38 00 00 ) // ...11.2.7.8..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (01 00 03 64 6E 75 00 00 ) // ...dnu..
 
@@ -26,10 +26,10 @@
   .custom instance void class [mscorlib]System.Reflection.AssemblyDescriptionAttribute::'.ctor'(string) =  (01 00 03 64 6E 75 00 00 ) // ...dnu..
 
   .hash algorithm 0x00008004
-  .ver  11:2:7:7
+  .ver  11:2:7:8
 }
 
-.module dnu.dll // GUID = {2CF05175-72D3-440F-BFFA-A189695C47CD}
+.module dnu.dll // GUID = {712DEFBE-FE8E-4531-AAF1-AF7C71017812}
 
 
 .namespace dylan.NET.Utils
@@ -1997,5 +1997,356 @@
     } // end of method ParseUtils::RetPrec
 
   } // end of class dylan.NET.Utils.ParseUtils
+}
+
+.namespace dylan.NET.Utils
+{
+  .class public auto ansi Keyboard
+  	extends [mscorlib]System.Object
+  {
+
+    // method line 20
+    .method public static 
+           default string ReadString ()  cil managed 
+    {
+        // Method begins at RVA 0x2f48
+	// Code size 6 (0x6)
+	.maxstack 1
+	IL_0000:  call string class [mscorlib]System.Console::ReadLine()
+	IL_0005:  ret 
+    } // end of method Keyboard::ReadString
+
+    // method line 21
+    .method public static 
+           default int32 ReadInteger ()  cil managed 
+    {
+        // Method begins at RVA 0x2f5c
+	// Code size 11 (0xb)
+	.maxstack 1
+	IL_0000:  call string class dylan.NET.Utils.Keyboard::ReadString()
+	IL_0005:  call int32 class [mscorlib]System.Convert::ToInt32(string)
+	IL_000a:  ret 
+    } // end of method Keyboard::ReadInteger
+
+    // method line 22
+    .method public static 
+           default int8 ReadSbyte ()  cil managed 
+    {
+        // Method begins at RVA 0x2f74
+	// Code size 11 (0xb)
+	.maxstack 1
+	IL_0000:  call string class dylan.NET.Utils.Keyboard::ReadString()
+	IL_0005:  call int8 class [mscorlib]System.Convert::ToSByte(string)
+	IL_000a:  ret 
+    } // end of method Keyboard::ReadSbyte
+
+    // method line 23
+    .method public static 
+           default int16 ReadShort ()  cil managed 
+    {
+        // Method begins at RVA 0x2f8c
+	// Code size 11 (0xb)
+	.maxstack 1
+	IL_0000:  call string class dylan.NET.Utils.Keyboard::ReadString()
+	IL_0005:  call int16 class [mscorlib]System.Convert::ToInt16(string)
+	IL_000a:  ret 
+    } // end of method Keyboard::ReadShort
+
+    // method line 24
+    .method public static 
+           default int64 ReadLong ()  cil managed 
+    {
+        // Method begins at RVA 0x2fa4
+	// Code size 11 (0xb)
+	.maxstack 1
+	IL_0000:  call string class dylan.NET.Utils.Keyboard::ReadString()
+	IL_0005:  call int64 class [mscorlib]System.Convert::ToInt64(string)
+	IL_000a:  ret 
+    } // end of method Keyboard::ReadLong
+
+    // method line 25
+    .method public static 
+           default float32 ReadSingle ()  cil managed 
+    {
+        // Method begins at RVA 0x2fbc
+	// Code size 11 (0xb)
+	.maxstack 1
+	IL_0000:  call string class dylan.NET.Utils.Keyboard::ReadString()
+	IL_0005:  call float32 class [mscorlib]System.Convert::ToSingle(string)
+	IL_000a:  ret 
+    } // end of method Keyboard::ReadSingle
+
+    // method line 26
+    .method public static 
+           default float64 ReadDouble ()  cil managed 
+    {
+        // Method begins at RVA 0x2fd4
+	// Code size 11 (0xb)
+	.maxstack 1
+	IL_0000:  call string class dylan.NET.Utils.Keyboard::ReadString()
+	IL_0005:  call float64 class [mscorlib]System.Convert::ToDouble(string)
+	IL_000a:  ret 
+    } // end of method Keyboard::ReadDouble
+
+    // method line 27
+    .method public static 
+           default char ReadChar ()  cil managed 
+    {
+        // Method begins at RVA 0x2fec
+	// Code size 11 (0xb)
+	.maxstack 1
+	IL_0000:  call string class dylan.NET.Utils.Keyboard::ReadString()
+	IL_0005:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_000a:  ret 
+    } // end of method Keyboard::ReadChar
+
+    // method line 28
+    .method public static 
+           default bool ReadBoolean ()  cil managed 
+    {
+        // Method begins at RVA 0x3004
+	// Code size 11 (0xb)
+	.maxstack 1
+	IL_0000:  call string class dylan.NET.Utils.Keyboard::ReadString()
+	IL_0005:  call bool class [mscorlib]System.Convert::ToBoolean(string)
+	IL_000a:  ret 
+    } // end of method Keyboard::ReadBoolean
+
+    // method line 29
+    .method public specialname rtspecialname 
+           instance default void '.ctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x301c
+	// Code size 7 (0x7)
+	.maxstack 2
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void object::'.ctor'()
+	IL_0006:  ret 
+    } // end of method Keyboard::.ctor
+
+  } // end of class dylan.NET.Utils.Keyboard
+}
+
+.namespace dylan.NET.Utils
+{
+  .class public auto ansi beforefieldinit StreamUtils
+  	extends [mscorlib]System.Object
+  {
+    .field  public static  class [mscorlib]System.IO.Stream Stdin
+    .field  public static  class [mscorlib]System.IO.Stream Stdout
+    .field  public static  class [mscorlib]System.IO.Stream Stderr
+    .field  public static  class [mscorlib]System.IO.StreamReader InS
+    .field  public static  class [mscorlib]System.IO.StreamWriter OutS
+
+    // method line 30
+    .method public static specialname rtspecialname 
+           default void '.cctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x3030
+	// Code size 43 (0x2b)
+	.maxstack 1
+	IL_0000:  call class [mscorlib]System.IO.Stream class [mscorlib]System.Console::OpenStandardInput()
+	IL_0005:  stsfld class [mscorlib]System.IO.Stream dylan.NET.Utils.StreamUtils::Stdin
+	IL_000a:  call class [mscorlib]System.IO.Stream class [mscorlib]System.Console::OpenStandardError()
+	IL_000f:  stsfld class [mscorlib]System.IO.Stream dylan.NET.Utils.StreamUtils::Stderr
+	IL_0014:  call class [mscorlib]System.IO.Stream class [mscorlib]System.Console::OpenStandardOutput()
+	IL_0019:  stsfld class [mscorlib]System.IO.Stream dylan.NET.Utils.StreamUtils::Stdout
+	IL_001e:  ldnull 
+	IL_001f:  stsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
+	IL_0024:  ldnull 
+	IL_0025:  stsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_002a:  ret 
+    } // end of method StreamUtils::.cctor
+
+    // method line 31
+    .method public static 
+           default void InitInS (class [mscorlib]System.IO.Stream s)  cil managed 
+    {
+        // Method begins at RVA 0x3068
+	// Code size 53 (0x35)
+	.maxstack 5
+	IL_0000:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
+	IL_0005:  ldnull 
+	IL_0006:  beq IL_001f
+
+	IL_000b:  br IL_0010
+
+	IL_0010:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
+	IL_0015:  callvirt instance void class [mscorlib]System.IO.StreamReader::Close()
+	IL_001a:  br IL_0024
+
+	IL_001f:  br IL_0024
+
+	IL_0024:  ldarg 0
+
+	IL_0028:  nop 
+	IL_0029:  nop 
+	IL_002a:  newobj instance void class [mscorlib]System.IO.StreamReader::'.ctor'(class [mscorlib]System.IO.Stream)
+	IL_002f:  stsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
+	IL_0034:  ret 
+    } // end of method StreamUtils::InitInS
+
+    // method line 32
+    .method public static 
+           default void InitOutS (class [mscorlib]System.IO.Stream s)  cil managed 
+    {
+        // Method begins at RVA 0x30ac
+	// Code size 53 (0x35)
+	.maxstack 5
+	IL_0000:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0005:  ldnull 
+	IL_0006:  beq IL_001f
+
+	IL_000b:  br IL_0010
+
+	IL_0010:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0015:  callvirt instance void class [mscorlib]System.IO.StreamWriter::Close()
+	IL_001a:  br IL_0024
+
+	IL_001f:  br IL_0024
+
+	IL_0024:  ldarg 0
+
+	IL_0028:  nop 
+	IL_0029:  nop 
+	IL_002a:  newobj instance void class [mscorlib]System.IO.StreamWriter::'.ctor'(class [mscorlib]System.IO.Stream)
+	IL_002f:  stsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0034:  ret 
+    } // end of method StreamUtils::InitOutS
+
+    // method line 33
+    .method public static 
+           default void InitInOutSWithStd ()  cil managed 
+    {
+        // Method begins at RVA 0x30f0
+	// Code size 21 (0x15)
+	.maxstack 1
+	IL_0000:  ldsfld class [mscorlib]System.IO.Stream dylan.NET.Utils.StreamUtils::Stdin
+	IL_0005:  call void class dylan.NET.Utils.StreamUtils::InitInS(class [mscorlib]System.IO.Stream)
+	IL_000a:  ldsfld class [mscorlib]System.IO.Stream dylan.NET.Utils.StreamUtils::Stdout
+	IL_000f:  call void class dylan.NET.Utils.StreamUtils::InitOutS(class [mscorlib]System.IO.Stream)
+	IL_0014:  ret 
+    } // end of method StreamUtils::InitInOutSWithStd
+
+    // method line 34
+    .method public static 
+           default void CloseInS ()  cil managed 
+    {
+        // Method begins at RVA 0x3114
+	// Code size 37 (0x25)
+	.maxstack 3
+	IL_0000:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
+	IL_0005:  ldnull 
+	IL_0006:  beq IL_001f
+
+	IL_000b:  br IL_0010
+
+	IL_0010:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
+	IL_0015:  callvirt instance void class [mscorlib]System.IO.StreamReader::Close()
+	IL_001a:  br IL_0024
+
+	IL_001f:  br IL_0024
+
+	IL_0024:  ret 
+    } // end of method StreamUtils::CloseInS
+
+    // method line 35
+    .method public static 
+           default void CloseOutS ()  cil managed 
+    {
+        // Method begins at RVA 0x3148
+	// Code size 37 (0x25)
+	.maxstack 3
+	IL_0000:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0005:  ldnull 
+	IL_0006:  beq IL_001f
+
+	IL_000b:  br IL_0010
+
+	IL_0010:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0015:  callvirt instance void class [mscorlib]System.IO.StreamWriter::Close()
+	IL_001a:  br IL_0024
+
+	IL_001f:  br IL_0024
+
+	IL_0024:  ret 
+    } // end of method StreamUtils::CloseOutS
+
+    // method line 36
+    .method public static 
+           default string ReadLine ()  cil managed 
+    {
+        // Method begins at RVA 0x317c
+	// Code size 42 (0x2a)
+	.maxstack 4
+	IL_0000:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
+	IL_0005:  ldnull 
+	IL_0006:  beq IL_001f
+
+	IL_000b:  br IL_0010
+
+	IL_0010:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
+	IL_0015:  callvirt instance string class [mscorlib]System.IO.StreamReader::ReadLine()
+	IL_001a:  br IL_0029
+
+	IL_001f:  ldstr ""
+	IL_0024:  br IL_0029
+
+	IL_0029:  ret 
+    } // end of method StreamUtils::ReadLine
+
+    // method line 37
+    .method public static 
+           default void WriteLine (string str)  cil managed 
+    {
+        // Method begins at RVA 0x31b4
+	// Code size 43 (0x2b)
+	.maxstack 4
+	IL_0000:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0005:  ldnull 
+	IL_0006:  beq IL_0025
+
+	IL_000b:  br IL_0010
+
+	IL_0010:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0015:  ldarg 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  callvirt instance void class [mscorlib]System.IO.TextWriter::WriteLine(string)
+	IL_0020:  br IL_002a
+
+	IL_0025:  br IL_002a
+
+	IL_002a:  ret 
+    } // end of method StreamUtils::WriteLine
+
+    // method line 38
+    .method public static 
+           default void Write (string str)  cil managed 
+    {
+        // Method begins at RVA 0x31ec
+	// Code size 43 (0x2b)
+	.maxstack 4
+	IL_0000:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0005:  ldnull 
+	IL_0006:  beq IL_0025
+
+	IL_000b:  br IL_0010
+
+	IL_0010:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0015:  ldarg 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  callvirt instance void class [mscorlib]System.IO.StreamWriter::Write(string)
+	IL_0020:  br IL_002a
+
+	IL_0025:  br IL_002a
+
+	IL_002a:  ret 
+    } // end of method StreamUtils::Write
+
+  } // end of class dylan.NET.Utils.StreamUtils
 }
 

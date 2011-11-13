@@ -1,6 +1,3 @@
-#refasm mscorlib.dll
-#refasm System.dll
-#refasm System.Core.dll
 //The utility library for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
 //compile with dylan.NET v.9.9 or later
@@ -13,6 +10,9 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
+#refasm mscorlib.dll
+#refasm System.dll
+#refasm System.Core.dll
 #refasm System.Data.dll
 #refasm System.Data.DataSetExtensions.dll
 #refasm System.Xml.dll
@@ -23,6 +23,7 @@
 
 import Microsoft.VisualBasic
 import System
+import System.IO
 import System.Collections
 import System.Collections.Generic
 import System.Data
@@ -41,11 +42,13 @@ locimport dylan.NET.Utils
 locimport dylan.NET
 
 assembly dnu dll
-ver 11.2.7.7
+ver 11.2.7.8
 
 namespace dylan.NET.Utils
 #include E:\Code\dylannet\compiler\dnu\consts.dyl
 #include E:\Code\dylannet\compiler\dnu\xmlu.dyl
 #include E:\Code\dylannet\compiler\dnu\parseu.dyl
+#include E:\Code\dylannet\compiler\dnu\keyboard.dyl
+#include E:\Code\dylannet\compiler\dnu\streamu.dyl
 // #include E:\Code\dylannet\compiler\dnu\winapi.txt
 end namespace

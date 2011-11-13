@@ -289,30 +289,6 @@ var n16 as short
 
 label fin
 
-if num = 0 then
-op = InstructionHelper::getOPCode("starg.0")
-ILGen::Emit(op)
-goto fin
-end if
-
-if num = 1 then
-op = InstructionHelper::getOPCode("starg.1")
-ILGen::Emit(op)
-goto fin
-end if
-
-if num = 2 then
-op = InstructionHelper::getOPCode("starg.2")
-ILGen::Emit(op)
-goto fin
-end if
-
-if num = 3 then
-op = InstructionHelper::getOPCode("starg.3")
-ILGen::Emit(op)
-goto fin
-end if
-
 if num >= 0 then
 b1 = true
 end if
