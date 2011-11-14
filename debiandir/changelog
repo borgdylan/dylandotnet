@@ -1,3 +1,13 @@
+dylandotnet (11.2.7.8-1) oneiric; urgency=low
+
+  * Fixing dnr starg bug.
+  * Adding StreamUtils and Keyboard classes to dnr.dll.
+  * Enforcing StreamUtils use in dnc and codegen.
+  * Bumping up assembly versions to 11.2.7.8
+  * Updating man pages.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 03 Nov 2011 18:15:14 +0100
+
 dylandotnet (11.2.7.7-1) oneiric; urgency=low
 
   * Adding method chaining support(with field chains) on load end.
