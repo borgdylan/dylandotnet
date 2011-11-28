@@ -1,3 +1,19 @@
+commit cd67e95a9055e3e0e887732109833250bcefdedd
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sun Nov 13 17:32:46 2011 +0100
+
+    Committing latest dylan.NET code to GIT and BZR. Adding StreamUtils and Keyboard classes to dnu. Fixing starg bugs in dnr. Forcing all console outputs to use StreamUtils. Updating manpages and docs.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit e463e2a9c7c2883c3c581a6094ba35c49a86aef8
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sat Nov 5 19:13:00 2011 +0100
+
+    Commiting latest debs and tarballs for 11.2.7.7. Also putting updated debian directory in debiandir.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 377a3321e0d901cc8f8846565f05434bf27d1f0d
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Sat Nov 5 18:29:24 2011 +0100
