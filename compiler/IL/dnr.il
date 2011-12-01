@@ -10,13 +10,13 @@
 }
 .assembly extern dnu
 {
-  .ver 11:2:7:8
+  .ver 11:2:7:9
 }
 .assembly 'dnr'
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 38 00 00 ) // ...11.2.7.8..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 39 00 00 ) // ...11.2.7.9..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (01 00 03 64 6E 72 00 00 ) // ...dnr..
 
@@ -25,10 +25,10 @@
   .custom instance void class [mscorlib]System.Reflection.AssemblyDescriptionAttribute::'.ctor'(string) =  (01 00 03 64 6E 72 00 00 ) // ...dnr..
 
   .hash algorithm 0x00008004
-  .ver  11:2:7:8
+  .ver  11:2:7:9
 }
 
-.module dnr.dll // GUID = {CAFA94D8-13E5-48B2-BFF6-42358E244C2A}
+.module dnr.dll // GUID = {C6759CDA-9283-4A56-8FA5-C9DC22C9A874}
 
 
 .namespace dylan.NET.Reflection
@@ -82,8 +82,8 @@
            default valuetype [mscorlib]System.Reflection.Emit.OpCode getOPCode (string code)  cil managed 
     {
         // Method begins at RVA 0x20a0
-	// Code size 10160 (0x27b0)
-	.maxstack 484
+	// Code size 10286 (0x282e)
+	.maxstack 490
 	.locals init (
 		bool	V_0)
 	IL_0000:  ldc.i4 0
@@ -111,7 +111,7 @@
 	IL_0031:  br IL_0045
 
 	IL_0036:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Add
-	IL_003b:  br IL_27af
+	IL_003b:  br IL_282d
 
 	IL_0040:  br IL_004a
 
@@ -137,7 +137,7 @@
 	IL_0070:  br IL_0084
 
 	IL_0075:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Add_Ovf
-	IL_007a:  br IL_27af
+	IL_007a:  br IL_282d
 
 	IL_007f:  br IL_0089
 
@@ -163,7 +163,7 @@
 	IL_00af:  br IL_00c3
 
 	IL_00b4:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::And
-	IL_00b9:  br IL_27af
+	IL_00b9:  br IL_282d
 
 	IL_00be:  br IL_00c8
 
@@ -189,7 +189,7 @@
 	IL_00ee:  br IL_0102
 
 	IL_00f3:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Beq
-	IL_00f8:  br IL_27af
+	IL_00f8:  br IL_282d
 
 	IL_00fd:  br IL_0107
 
@@ -215,7 +215,7 @@
 	IL_012d:  br IL_0141
 
 	IL_0132:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Bge
-	IL_0137:  br IL_27af
+	IL_0137:  br IL_282d
 
 	IL_013c:  br IL_0146
 
@@ -241,7 +241,7 @@
 	IL_016c:  br IL_0180
 
 	IL_0171:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Bgt
-	IL_0176:  br IL_27af
+	IL_0176:  br IL_282d
 
 	IL_017b:  br IL_0185
 
@@ -267,7 +267,7 @@
 	IL_01ab:  br IL_01bf
 
 	IL_01b0:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ble
-	IL_01b5:  br IL_27af
+	IL_01b5:  br IL_282d
 
 	IL_01ba:  br IL_01c4
 
@@ -293,7 +293,7 @@
 	IL_01ea:  br IL_01fe
 
 	IL_01ef:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Blt
-	IL_01f4:  br IL_27af
+	IL_01f4:  br IL_282d
 
 	IL_01f9:  br IL_0203
 
@@ -319,7 +319,7 @@
 	IL_0229:  br IL_023d
 
 	IL_022e:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Box
-	IL_0233:  br IL_27af
+	IL_0233:  br IL_282d
 
 	IL_0238:  br IL_0242
 
@@ -345,7 +345,7 @@
 	IL_0268:  br IL_027c
 
 	IL_026d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Br
-	IL_0272:  br IL_27af
+	IL_0272:  br IL_282d
 
 	IL_0277:  br IL_0281
 
@@ -371,7 +371,7 @@
 	IL_02a7:  br IL_02bb
 
 	IL_02ac:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Break
-	IL_02b1:  br IL_27af
+	IL_02b1:  br IL_282d
 
 	IL_02b6:  br IL_02c0
 
@@ -397,7 +397,7 @@
 	IL_02e6:  br IL_02fa
 
 	IL_02eb:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Brfalse
-	IL_02f0:  br IL_27af
+	IL_02f0:  br IL_282d
 
 	IL_02f5:  br IL_02ff
 
@@ -423,7 +423,7 @@
 	IL_0325:  br IL_0339
 
 	IL_032a:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Brtrue
-	IL_032f:  br IL_27af
+	IL_032f:  br IL_282d
 
 	IL_0334:  br IL_033e
 
@@ -449,7 +449,7 @@
 	IL_0364:  br IL_0378
 
 	IL_0369:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Call
-	IL_036e:  br IL_27af
+	IL_036e:  br IL_282d
 
 	IL_0373:  br IL_037d
 
@@ -475,7 +475,7 @@
 	IL_03a3:  br IL_03b7
 
 	IL_03a8:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Callvirt
-	IL_03ad:  br IL_27af
+	IL_03ad:  br IL_282d
 
 	IL_03b2:  br IL_03bc
 
@@ -501,7 +501,7 @@
 	IL_03e2:  br IL_03f6
 
 	IL_03e7:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Castclass
-	IL_03ec:  br IL_27af
+	IL_03ec:  br IL_282d
 
 	IL_03f1:  br IL_03fb
 
@@ -527,7 +527,7 @@
 	IL_0421:  br IL_0435
 
 	IL_0426:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ceq
-	IL_042b:  br IL_27af
+	IL_042b:  br IL_282d
 
 	IL_0430:  br IL_043a
 
@@ -553,7 +553,7 @@
 	IL_0460:  br IL_0474
 
 	IL_0465:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Clt
-	IL_046a:  br IL_27af
+	IL_046a:  br IL_282d
 
 	IL_046f:  br IL_0479
 
@@ -579,7 +579,7 @@
 	IL_049f:  br IL_04b3
 
 	IL_04a4:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Cgt
-	IL_04a9:  br IL_27af
+	IL_04a9:  br IL_282d
 
 	IL_04ae:  br IL_04b8
 
@@ -589,7 +589,7 @@
 
 	IL_04bc:  nop 
 	IL_04bd:  nop 
-	IL_04be:  ldstr "conv.i"
+	IL_04be:  ldstr "constrained."
 	IL_04c3:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_04c8:  stloc 0
 
@@ -604,8 +604,8 @@
 
 	IL_04de:  br IL_04f2
 
-	IL_04e3:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_I
-	IL_04e8:  br IL_27af
+	IL_04e3:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Constrained
+	IL_04e8:  br IL_282d
 
 	IL_04ed:  br IL_04f7
 
@@ -615,7 +615,7 @@
 
 	IL_04fb:  nop 
 	IL_04fc:  nop 
-	IL_04fd:  ldstr "conv.i1"
+	IL_04fd:  ldstr "conv.i"
 	IL_0502:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0507:  stloc 0
 
@@ -630,8 +630,8 @@
 
 	IL_051d:  br IL_0531
 
-	IL_0522:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_I1
-	IL_0527:  br IL_27af
+	IL_0522:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_I
+	IL_0527:  br IL_282d
 
 	IL_052c:  br IL_0536
 
@@ -641,7 +641,7 @@
 
 	IL_053a:  nop 
 	IL_053b:  nop 
-	IL_053c:  ldstr "conv.i2"
+	IL_053c:  ldstr "conv.i1"
 	IL_0541:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0546:  stloc 0
 
@@ -656,8 +656,8 @@
 
 	IL_055c:  br IL_0570
 
-	IL_0561:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_I2
-	IL_0566:  br IL_27af
+	IL_0561:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_I1
+	IL_0566:  br IL_282d
 
 	IL_056b:  br IL_0575
 
@@ -667,7 +667,7 @@
 
 	IL_0579:  nop 
 	IL_057a:  nop 
-	IL_057b:  ldstr "conv.i4"
+	IL_057b:  ldstr "conv.i2"
 	IL_0580:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0585:  stloc 0
 
@@ -682,8 +682,8 @@
 
 	IL_059b:  br IL_05af
 
-	IL_05a0:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_I4
-	IL_05a5:  br IL_27af
+	IL_05a0:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_I2
+	IL_05a5:  br IL_282d
 
 	IL_05aa:  br IL_05b4
 
@@ -693,7 +693,7 @@
 
 	IL_05b8:  nop 
 	IL_05b9:  nop 
-	IL_05ba:  ldstr "conv.i8"
+	IL_05ba:  ldstr "conv.i4"
 	IL_05bf:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_05c4:  stloc 0
 
@@ -708,8 +708,8 @@
 
 	IL_05da:  br IL_05ee
 
-	IL_05df:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_I8
-	IL_05e4:  br IL_27af
+	IL_05df:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_I4
+	IL_05e4:  br IL_282d
 
 	IL_05e9:  br IL_05f3
 
@@ -719,7 +719,7 @@
 
 	IL_05f7:  nop 
 	IL_05f8:  nop 
-	IL_05f9:  ldstr "conv.u"
+	IL_05f9:  ldstr "conv.i8"
 	IL_05fe:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0603:  stloc 0
 
@@ -734,8 +734,8 @@
 
 	IL_0619:  br IL_062d
 
-	IL_061e:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_U
-	IL_0623:  br IL_27af
+	IL_061e:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_I8
+	IL_0623:  br IL_282d
 
 	IL_0628:  br IL_0632
 
@@ -745,7 +745,7 @@
 
 	IL_0636:  nop 
 	IL_0637:  nop 
-	IL_0638:  ldstr "conv.u1"
+	IL_0638:  ldstr "conv.u"
 	IL_063d:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0642:  stloc 0
 
@@ -760,8 +760,8 @@
 
 	IL_0658:  br IL_066c
 
-	IL_065d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_U1
-	IL_0662:  br IL_27af
+	IL_065d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_U
+	IL_0662:  br IL_282d
 
 	IL_0667:  br IL_0671
 
@@ -771,7 +771,7 @@
 
 	IL_0675:  nop 
 	IL_0676:  nop 
-	IL_0677:  ldstr "conv.u2"
+	IL_0677:  ldstr "conv.u1"
 	IL_067c:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0681:  stloc 0
 
@@ -786,8 +786,8 @@
 
 	IL_0697:  br IL_06ab
 
-	IL_069c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_U2
-	IL_06a1:  br IL_27af
+	IL_069c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_U1
+	IL_06a1:  br IL_282d
 
 	IL_06a6:  br IL_06b0
 
@@ -797,7 +797,7 @@
 
 	IL_06b4:  nop 
 	IL_06b5:  nop 
-	IL_06b6:  ldstr "conv.u4"
+	IL_06b6:  ldstr "conv.u2"
 	IL_06bb:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_06c0:  stloc 0
 
@@ -812,8 +812,8 @@
 
 	IL_06d6:  br IL_06ea
 
-	IL_06db:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_U4
-	IL_06e0:  br IL_27af
+	IL_06db:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_U2
+	IL_06e0:  br IL_282d
 
 	IL_06e5:  br IL_06ef
 
@@ -823,7 +823,7 @@
 
 	IL_06f3:  nop 
 	IL_06f4:  nop 
-	IL_06f5:  ldstr "conv.u8"
+	IL_06f5:  ldstr "conv.u4"
 	IL_06fa:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_06ff:  stloc 0
 
@@ -838,8 +838,8 @@
 
 	IL_0715:  br IL_0729
 
-	IL_071a:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_U8
-	IL_071f:  br IL_27af
+	IL_071a:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_U4
+	IL_071f:  br IL_282d
 
 	IL_0724:  br IL_072e
 
@@ -849,7 +849,7 @@
 
 	IL_0732:  nop 
 	IL_0733:  nop 
-	IL_0734:  ldstr "conv.ovf.i"
+	IL_0734:  ldstr "conv.u8"
 	IL_0739:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_073e:  stloc 0
 
@@ -864,8 +864,8 @@
 
 	IL_0754:  br IL_0768
 
-	IL_0759:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_I
-	IL_075e:  br IL_27af
+	IL_0759:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_U8
+	IL_075e:  br IL_282d
 
 	IL_0763:  br IL_076d
 
@@ -875,7 +875,7 @@
 
 	IL_0771:  nop 
 	IL_0772:  nop 
-	IL_0773:  ldstr "conv.ovf.i1"
+	IL_0773:  ldstr "conv.ovf.i"
 	IL_0778:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_077d:  stloc 0
 
@@ -890,8 +890,8 @@
 
 	IL_0793:  br IL_07a7
 
-	IL_0798:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_I1
-	IL_079d:  br IL_27af
+	IL_0798:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_I
+	IL_079d:  br IL_282d
 
 	IL_07a2:  br IL_07ac
 
@@ -901,7 +901,7 @@
 
 	IL_07b0:  nop 
 	IL_07b1:  nop 
-	IL_07b2:  ldstr "conv.ovf.i2"
+	IL_07b2:  ldstr "conv.ovf.i1"
 	IL_07b7:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_07bc:  stloc 0
 
@@ -916,8 +916,8 @@
 
 	IL_07d2:  br IL_07e6
 
-	IL_07d7:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_I2
-	IL_07dc:  br IL_27af
+	IL_07d7:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_I1
+	IL_07dc:  br IL_282d
 
 	IL_07e1:  br IL_07eb
 
@@ -927,7 +927,7 @@
 
 	IL_07ef:  nop 
 	IL_07f0:  nop 
-	IL_07f1:  ldstr "conv.ovf.i4"
+	IL_07f1:  ldstr "conv.ovf.i2"
 	IL_07f6:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_07fb:  stloc 0
 
@@ -942,8 +942,8 @@
 
 	IL_0811:  br IL_0825
 
-	IL_0816:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_I4
-	IL_081b:  br IL_27af
+	IL_0816:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_I2
+	IL_081b:  br IL_282d
 
 	IL_0820:  br IL_082a
 
@@ -953,7 +953,7 @@
 
 	IL_082e:  nop 
 	IL_082f:  nop 
-	IL_0830:  ldstr "conv.ovf.i8"
+	IL_0830:  ldstr "conv.ovf.i4"
 	IL_0835:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_083a:  stloc 0
 
@@ -968,8 +968,8 @@
 
 	IL_0850:  br IL_0864
 
-	IL_0855:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_I8
-	IL_085a:  br IL_27af
+	IL_0855:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_I4
+	IL_085a:  br IL_282d
 
 	IL_085f:  br IL_0869
 
@@ -979,7 +979,7 @@
 
 	IL_086d:  nop 
 	IL_086e:  nop 
-	IL_086f:  ldstr "conv.ovf.u"
+	IL_086f:  ldstr "conv.ovf.i8"
 	IL_0874:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0879:  stloc 0
 
@@ -994,8 +994,8 @@
 
 	IL_088f:  br IL_08a3
 
-	IL_0894:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_U
-	IL_0899:  br IL_27af
+	IL_0894:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_I8
+	IL_0899:  br IL_282d
 
 	IL_089e:  br IL_08a8
 
@@ -1005,7 +1005,7 @@
 
 	IL_08ac:  nop 
 	IL_08ad:  nop 
-	IL_08ae:  ldstr "conv.ovf.u1"
+	IL_08ae:  ldstr "conv.ovf.u"
 	IL_08b3:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_08b8:  stloc 0
 
@@ -1020,8 +1020,8 @@
 
 	IL_08ce:  br IL_08e2
 
-	IL_08d3:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_U1
-	IL_08d8:  br IL_27af
+	IL_08d3:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_U
+	IL_08d8:  br IL_282d
 
 	IL_08dd:  br IL_08e7
 
@@ -1031,7 +1031,7 @@
 
 	IL_08eb:  nop 
 	IL_08ec:  nop 
-	IL_08ed:  ldstr "conv.ovf.u2"
+	IL_08ed:  ldstr "conv.ovf.u1"
 	IL_08f2:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_08f7:  stloc 0
 
@@ -1046,8 +1046,8 @@
 
 	IL_090d:  br IL_0921
 
-	IL_0912:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_U2
-	IL_0917:  br IL_27af
+	IL_0912:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_U1
+	IL_0917:  br IL_282d
 
 	IL_091c:  br IL_0926
 
@@ -1057,7 +1057,7 @@
 
 	IL_092a:  nop 
 	IL_092b:  nop 
-	IL_092c:  ldstr "conv.ovf.u4"
+	IL_092c:  ldstr "conv.ovf.u2"
 	IL_0931:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0936:  stloc 0
 
@@ -1072,8 +1072,8 @@
 
 	IL_094c:  br IL_0960
 
-	IL_0951:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_U4
-	IL_0956:  br IL_27af
+	IL_0951:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_U2
+	IL_0956:  br IL_282d
 
 	IL_095b:  br IL_0965
 
@@ -1083,7 +1083,7 @@
 
 	IL_0969:  nop 
 	IL_096a:  nop 
-	IL_096b:  ldstr "conv.ovf.u8"
+	IL_096b:  ldstr "conv.ovf.u4"
 	IL_0970:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0975:  stloc 0
 
@@ -1098,8 +1098,8 @@
 
 	IL_098b:  br IL_099f
 
-	IL_0990:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_U8
-	IL_0995:  br IL_27af
+	IL_0990:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_U4
+	IL_0995:  br IL_282d
 
 	IL_099a:  br IL_09a4
 
@@ -1109,7 +1109,7 @@
 
 	IL_09a8:  nop 
 	IL_09a9:  nop 
-	IL_09aa:  ldstr "conv.r4"
+	IL_09aa:  ldstr "conv.ovf.u8"
 	IL_09af:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_09b4:  stloc 0
 
@@ -1124,8 +1124,8 @@
 
 	IL_09ca:  br IL_09de
 
-	IL_09cf:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_R4
-	IL_09d4:  br IL_27af
+	IL_09cf:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_Ovf_U8
+	IL_09d4:  br IL_282d
 
 	IL_09d9:  br IL_09e3
 
@@ -1135,7 +1135,7 @@
 
 	IL_09e7:  nop 
 	IL_09e8:  nop 
-	IL_09e9:  ldstr "conv.r8"
+	IL_09e9:  ldstr "conv.r4"
 	IL_09ee:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_09f3:  stloc 0
 
@@ -1150,8 +1150,8 @@
 
 	IL_0a09:  br IL_0a1d
 
-	IL_0a0e:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_R8
-	IL_0a13:  br IL_27af
+	IL_0a0e:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_R4
+	IL_0a13:  br IL_282d
 
 	IL_0a18:  br IL_0a22
 
@@ -1161,7 +1161,7 @@
 
 	IL_0a26:  nop 
 	IL_0a27:  nop 
-	IL_0a28:  ldstr "div"
+	IL_0a28:  ldstr "conv.r8"
 	IL_0a2d:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0a32:  stloc 0
 
@@ -1176,8 +1176,8 @@
 
 	IL_0a48:  br IL_0a5c
 
-	IL_0a4d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Div
-	IL_0a52:  br IL_27af
+	IL_0a4d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Conv_R8
+	IL_0a52:  br IL_282d
 
 	IL_0a57:  br IL_0a61
 
@@ -1187,7 +1187,7 @@
 
 	IL_0a65:  nop 
 	IL_0a66:  nop 
-	IL_0a67:  ldstr "dup"
+	IL_0a67:  ldstr "div"
 	IL_0a6c:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0a71:  stloc 0
 
@@ -1202,8 +1202,8 @@
 
 	IL_0a87:  br IL_0a9b
 
-	IL_0a8c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Dup
-	IL_0a91:  br IL_27af
+	IL_0a8c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Div
+	IL_0a91:  br IL_282d
 
 	IL_0a96:  br IL_0aa0
 
@@ -1213,7 +1213,7 @@
 
 	IL_0aa4:  nop 
 	IL_0aa5:  nop 
-	IL_0aa6:  ldstr "isinst"
+	IL_0aa6:  ldstr "dup"
 	IL_0aab:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0ab0:  stloc 0
 
@@ -1228,8 +1228,8 @@
 
 	IL_0ac6:  br IL_0ada
 
-	IL_0acb:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Isinst
-	IL_0ad0:  br IL_27af
+	IL_0acb:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Dup
+	IL_0ad0:  br IL_282d
 
 	IL_0ad5:  br IL_0adf
 
@@ -1239,7 +1239,7 @@
 
 	IL_0ae3:  nop 
 	IL_0ae4:  nop 
-	IL_0ae5:  ldstr "ldarg"
+	IL_0ae5:  ldstr "isinst"
 	IL_0aea:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0aef:  stloc 0
 
@@ -1254,8 +1254,8 @@
 
 	IL_0b05:  br IL_0b19
 
-	IL_0b0a:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg
-	IL_0b0f:  br IL_27af
+	IL_0b0a:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Isinst
+	IL_0b0f:  br IL_282d
 
 	IL_0b14:  br IL_0b1e
 
@@ -1265,7 +1265,7 @@
 
 	IL_0b22:  nop 
 	IL_0b23:  nop 
-	IL_0b24:  ldstr "ldarga"
+	IL_0b24:  ldstr "ldarg"
 	IL_0b29:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0b2e:  stloc 0
 
@@ -1280,8 +1280,8 @@
 
 	IL_0b44:  br IL_0b58
 
-	IL_0b49:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarga
-	IL_0b4e:  br IL_27af
+	IL_0b49:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg
+	IL_0b4e:  br IL_282d
 
 	IL_0b53:  br IL_0b5d
 
@@ -1291,7 +1291,7 @@
 
 	IL_0b61:  nop 
 	IL_0b62:  nop 
-	IL_0b63:  ldstr "ldarg.s"
+	IL_0b63:  ldstr "ldarga"
 	IL_0b68:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0b6d:  stloc 0
 
@@ -1306,8 +1306,8 @@
 
 	IL_0b83:  br IL_0b97
 
-	IL_0b88:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg_S
-	IL_0b8d:  br IL_27af
+	IL_0b88:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarga
+	IL_0b8d:  br IL_282d
 
 	IL_0b92:  br IL_0b9c
 
@@ -1317,7 +1317,7 @@
 
 	IL_0ba0:  nop 
 	IL_0ba1:  nop 
-	IL_0ba2:  ldstr "ldarga.s"
+	IL_0ba2:  ldstr "ldarg.s"
 	IL_0ba7:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0bac:  stloc 0
 
@@ -1332,8 +1332,8 @@
 
 	IL_0bc2:  br IL_0bd6
 
-	IL_0bc7:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarga_S
-	IL_0bcc:  br IL_27af
+	IL_0bc7:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg_S
+	IL_0bcc:  br IL_282d
 
 	IL_0bd1:  br IL_0bdb
 
@@ -1343,7 +1343,7 @@
 
 	IL_0bdf:  nop 
 	IL_0be0:  nop 
-	IL_0be1:  ldstr "ldarg.0"
+	IL_0be1:  ldstr "ldarga.s"
 	IL_0be6:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0beb:  stloc 0
 
@@ -1358,8 +1358,8 @@
 
 	IL_0c01:  br IL_0c15
 
-	IL_0c06:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg_0
-	IL_0c0b:  br IL_27af
+	IL_0c06:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarga_S
+	IL_0c0b:  br IL_282d
 
 	IL_0c10:  br IL_0c1a
 
@@ -1369,7 +1369,7 @@
 
 	IL_0c1e:  nop 
 	IL_0c1f:  nop 
-	IL_0c20:  ldstr "ldarg.1"
+	IL_0c20:  ldstr "ldarg.0"
 	IL_0c25:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0c2a:  stloc 0
 
@@ -1384,8 +1384,8 @@
 
 	IL_0c40:  br IL_0c54
 
-	IL_0c45:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg_1
-	IL_0c4a:  br IL_27af
+	IL_0c45:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg_0
+	IL_0c4a:  br IL_282d
 
 	IL_0c4f:  br IL_0c59
 
@@ -1395,7 +1395,7 @@
 
 	IL_0c5d:  nop 
 	IL_0c5e:  nop 
-	IL_0c5f:  ldstr "ldarg.2"
+	IL_0c5f:  ldstr "ldarg.1"
 	IL_0c64:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0c69:  stloc 0
 
@@ -1410,8 +1410,8 @@
 
 	IL_0c7f:  br IL_0c93
 
-	IL_0c84:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg_2
-	IL_0c89:  br IL_27af
+	IL_0c84:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg_1
+	IL_0c89:  br IL_282d
 
 	IL_0c8e:  br IL_0c98
 
@@ -1421,7 +1421,7 @@
 
 	IL_0c9c:  nop 
 	IL_0c9d:  nop 
-	IL_0c9e:  ldstr "ldarg.3"
+	IL_0c9e:  ldstr "ldarg.2"
 	IL_0ca3:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0ca8:  stloc 0
 
@@ -1436,8 +1436,8 @@
 
 	IL_0cbe:  br IL_0cd2
 
-	IL_0cc3:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg_3
-	IL_0cc8:  br IL_27af
+	IL_0cc3:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg_2
+	IL_0cc8:  br IL_282d
 
 	IL_0ccd:  br IL_0cd7
 
@@ -1447,7 +1447,7 @@
 
 	IL_0cdb:  nop 
 	IL_0cdc:  nop 
-	IL_0cdd:  ldstr "ldc.i4"
+	IL_0cdd:  ldstr "ldarg.3"
 	IL_0ce2:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0ce7:  stloc 0
 
@@ -1462,8 +1462,8 @@
 
 	IL_0cfd:  br IL_0d11
 
-	IL_0d02:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4
-	IL_0d07:  br IL_27af
+	IL_0d02:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldarg_3
+	IL_0d07:  br IL_282d
 
 	IL_0d0c:  br IL_0d16
 
@@ -1473,7 +1473,7 @@
 
 	IL_0d1a:  nop 
 	IL_0d1b:  nop 
-	IL_0d1c:  ldstr "ldc.i4.0"
+	IL_0d1c:  ldstr "ldc.i4"
 	IL_0d21:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0d26:  stloc 0
 
@@ -1488,8 +1488,8 @@
 
 	IL_0d3c:  br IL_0d50
 
-	IL_0d41:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_0
-	IL_0d46:  br IL_27af
+	IL_0d41:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4
+	IL_0d46:  br IL_282d
 
 	IL_0d4b:  br IL_0d55
 
@@ -1499,7 +1499,7 @@
 
 	IL_0d59:  nop 
 	IL_0d5a:  nop 
-	IL_0d5b:  ldstr "ldc.i4.1"
+	IL_0d5b:  ldstr "ldc.i4.0"
 	IL_0d60:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0d65:  stloc 0
 
@@ -1514,8 +1514,8 @@
 
 	IL_0d7b:  br IL_0d8f
 
-	IL_0d80:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_1
-	IL_0d85:  br IL_27af
+	IL_0d80:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_0
+	IL_0d85:  br IL_282d
 
 	IL_0d8a:  br IL_0d94
 
@@ -1525,7 +1525,7 @@
 
 	IL_0d98:  nop 
 	IL_0d99:  nop 
-	IL_0d9a:  ldstr "ldc.i4.2"
+	IL_0d9a:  ldstr "ldc.i4.1"
 	IL_0d9f:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0da4:  stloc 0
 
@@ -1540,8 +1540,8 @@
 
 	IL_0dba:  br IL_0dce
 
-	IL_0dbf:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_2
-	IL_0dc4:  br IL_27af
+	IL_0dbf:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_1
+	IL_0dc4:  br IL_282d
 
 	IL_0dc9:  br IL_0dd3
 
@@ -1551,7 +1551,7 @@
 
 	IL_0dd7:  nop 
 	IL_0dd8:  nop 
-	IL_0dd9:  ldstr "ldc.i4.3"
+	IL_0dd9:  ldstr "ldc.i4.2"
 	IL_0dde:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0de3:  stloc 0
 
@@ -1566,8 +1566,8 @@
 
 	IL_0df9:  br IL_0e0d
 
-	IL_0dfe:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_3
-	IL_0e03:  br IL_27af
+	IL_0dfe:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_2
+	IL_0e03:  br IL_282d
 
 	IL_0e08:  br IL_0e12
 
@@ -1577,7 +1577,7 @@
 
 	IL_0e16:  nop 
 	IL_0e17:  nop 
-	IL_0e18:  ldstr "ldc.i4.4"
+	IL_0e18:  ldstr "ldc.i4.3"
 	IL_0e1d:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0e22:  stloc 0
 
@@ -1592,8 +1592,8 @@
 
 	IL_0e38:  br IL_0e4c
 
-	IL_0e3d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_4
-	IL_0e42:  br IL_27af
+	IL_0e3d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_3
+	IL_0e42:  br IL_282d
 
 	IL_0e47:  br IL_0e51
 
@@ -1603,7 +1603,7 @@
 
 	IL_0e55:  nop 
 	IL_0e56:  nop 
-	IL_0e57:  ldstr "ldc.i4.5"
+	IL_0e57:  ldstr "ldc.i4.4"
 	IL_0e5c:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0e61:  stloc 0
 
@@ -1618,8 +1618,8 @@
 
 	IL_0e77:  br IL_0e8b
 
-	IL_0e7c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_5
-	IL_0e81:  br IL_27af
+	IL_0e7c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_4
+	IL_0e81:  br IL_282d
 
 	IL_0e86:  br IL_0e90
 
@@ -1629,7 +1629,7 @@
 
 	IL_0e94:  nop 
 	IL_0e95:  nop 
-	IL_0e96:  ldstr "ldc.i4.6"
+	IL_0e96:  ldstr "ldc.i4.5"
 	IL_0e9b:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0ea0:  stloc 0
 
@@ -1644,8 +1644,8 @@
 
 	IL_0eb6:  br IL_0eca
 
-	IL_0ebb:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_6
-	IL_0ec0:  br IL_27af
+	IL_0ebb:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_5
+	IL_0ec0:  br IL_282d
 
 	IL_0ec5:  br IL_0ecf
 
@@ -1655,7 +1655,7 @@
 
 	IL_0ed3:  nop 
 	IL_0ed4:  nop 
-	IL_0ed5:  ldstr "ldc.i4.7"
+	IL_0ed5:  ldstr "ldc.i4.6"
 	IL_0eda:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0edf:  stloc 0
 
@@ -1670,8 +1670,8 @@
 
 	IL_0ef5:  br IL_0f09
 
-	IL_0efa:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_7
-	IL_0eff:  br IL_27af
+	IL_0efa:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_6
+	IL_0eff:  br IL_282d
 
 	IL_0f04:  br IL_0f0e
 
@@ -1681,7 +1681,7 @@
 
 	IL_0f12:  nop 
 	IL_0f13:  nop 
-	IL_0f14:  ldstr "ldc.i4.8"
+	IL_0f14:  ldstr "ldc.i4.7"
 	IL_0f19:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0f1e:  stloc 0
 
@@ -1696,8 +1696,8 @@
 
 	IL_0f34:  br IL_0f48
 
-	IL_0f39:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_8
-	IL_0f3e:  br IL_27af
+	IL_0f39:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_7
+	IL_0f3e:  br IL_282d
 
 	IL_0f43:  br IL_0f4d
 
@@ -1707,7 +1707,7 @@
 
 	IL_0f51:  nop 
 	IL_0f52:  nop 
-	IL_0f53:  ldstr "ldc.i4.m1"
+	IL_0f53:  ldstr "ldc.i4.8"
 	IL_0f58:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0f5d:  stloc 0
 
@@ -1722,8 +1722,8 @@
 
 	IL_0f73:  br IL_0f87
 
-	IL_0f78:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_M1
-	IL_0f7d:  br IL_27af
+	IL_0f78:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_8
+	IL_0f7d:  br IL_282d
 
 	IL_0f82:  br IL_0f8c
 
@@ -1733,7 +1733,7 @@
 
 	IL_0f90:  nop 
 	IL_0f91:  nop 
-	IL_0f92:  ldstr "ldc.i4.s"
+	IL_0f92:  ldstr "ldc.i4.m1"
 	IL_0f97:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0f9c:  stloc 0
 
@@ -1748,8 +1748,8 @@
 
 	IL_0fb2:  br IL_0fc6
 
-	IL_0fb7:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_S
-	IL_0fbc:  br IL_27af
+	IL_0fb7:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_M1
+	IL_0fbc:  br IL_282d
 
 	IL_0fc1:  br IL_0fcb
 
@@ -1759,7 +1759,7 @@
 
 	IL_0fcf:  nop 
 	IL_0fd0:  nop 
-	IL_0fd1:  ldstr "ldc.i8"
+	IL_0fd1:  ldstr "ldc.i4.s"
 	IL_0fd6:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_0fdb:  stloc 0
 
@@ -1774,8 +1774,8 @@
 
 	IL_0ff1:  br IL_1005
 
-	IL_0ff6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I8
-	IL_0ffb:  br IL_27af
+	IL_0ff6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I4_S
+	IL_0ffb:  br IL_282d
 
 	IL_1000:  br IL_100a
 
@@ -1785,7 +1785,7 @@
 
 	IL_100e:  nop 
 	IL_100f:  nop 
-	IL_1010:  ldstr "ldc.r4"
+	IL_1010:  ldstr "ldc.i8"
 	IL_1015:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_101a:  stloc 0
 
@@ -1800,8 +1800,8 @@
 
 	IL_1030:  br IL_1044
 
-	IL_1035:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_R4
-	IL_103a:  br IL_27af
+	IL_1035:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_I8
+	IL_103a:  br IL_282d
 
 	IL_103f:  br IL_1049
 
@@ -1811,7 +1811,7 @@
 
 	IL_104d:  nop 
 	IL_104e:  nop 
-	IL_104f:  ldstr "ldc.r8"
+	IL_104f:  ldstr "ldc.r4"
 	IL_1054:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1059:  stloc 0
 
@@ -1826,8 +1826,8 @@
 
 	IL_106f:  br IL_1083
 
-	IL_1074:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_R8
-	IL_1079:  br IL_27af
+	IL_1074:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_R4
+	IL_1079:  br IL_282d
 
 	IL_107e:  br IL_1088
 
@@ -1853,7 +1853,7 @@
 	IL_10ae:  br IL_10c2
 
 	IL_10b3:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_R8
-	IL_10b8:  br IL_27af
+	IL_10b8:  br IL_282d
 
 	IL_10bd:  br IL_10c7
 
@@ -1863,7 +1863,7 @@
 
 	IL_10cb:  nop 
 	IL_10cc:  nop 
-	IL_10cd:  ldstr "ldelem"
+	IL_10cd:  ldstr "ldc.r8"
 	IL_10d2:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_10d7:  stloc 0
 
@@ -1878,8 +1878,8 @@
 
 	IL_10ed:  br IL_1101
 
-	IL_10f2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem
-	IL_10f7:  br IL_27af
+	IL_10f2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldc_R8
+	IL_10f7:  br IL_282d
 
 	IL_10fc:  br IL_1106
 
@@ -1889,7 +1889,7 @@
 
 	IL_110a:  nop 
 	IL_110b:  nop 
-	IL_110c:  ldstr "ldelem.i"
+	IL_110c:  ldstr "ldelem"
 	IL_1111:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1116:  stloc 0
 
@@ -1904,8 +1904,8 @@
 
 	IL_112c:  br IL_1140
 
-	IL_1131:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_I
-	IL_1136:  br IL_27af
+	IL_1131:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem
+	IL_1136:  br IL_282d
 
 	IL_113b:  br IL_1145
 
@@ -1915,7 +1915,7 @@
 
 	IL_1149:  nop 
 	IL_114a:  nop 
-	IL_114b:  ldstr "ldelem.i1"
+	IL_114b:  ldstr "ldelem.i"
 	IL_1150:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1155:  stloc 0
 
@@ -1930,8 +1930,8 @@
 
 	IL_116b:  br IL_117f
 
-	IL_1170:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_I1
-	IL_1175:  br IL_27af
+	IL_1170:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_I
+	IL_1175:  br IL_282d
 
 	IL_117a:  br IL_1184
 
@@ -1941,7 +1941,7 @@
 
 	IL_1188:  nop 
 	IL_1189:  nop 
-	IL_118a:  ldstr "ldelem.i2"
+	IL_118a:  ldstr "ldelem.i1"
 	IL_118f:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1194:  stloc 0
 
@@ -1956,8 +1956,8 @@
 
 	IL_11aa:  br IL_11be
 
-	IL_11af:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_I2
-	IL_11b4:  br IL_27af
+	IL_11af:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_I1
+	IL_11b4:  br IL_282d
 
 	IL_11b9:  br IL_11c3
 
@@ -1967,7 +1967,7 @@
 
 	IL_11c7:  nop 
 	IL_11c8:  nop 
-	IL_11c9:  ldstr "ldelem.i4"
+	IL_11c9:  ldstr "ldelem.i2"
 	IL_11ce:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_11d3:  stloc 0
 
@@ -1982,8 +1982,8 @@
 
 	IL_11e9:  br IL_11fd
 
-	IL_11ee:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_I4
-	IL_11f3:  br IL_27af
+	IL_11ee:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_I2
+	IL_11f3:  br IL_282d
 
 	IL_11f8:  br IL_1202
 
@@ -1993,7 +1993,7 @@
 
 	IL_1206:  nop 
 	IL_1207:  nop 
-	IL_1208:  ldstr "ldelem.i8"
+	IL_1208:  ldstr "ldelem.i4"
 	IL_120d:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1212:  stloc 0
 
@@ -2008,8 +2008,8 @@
 
 	IL_1228:  br IL_123c
 
-	IL_122d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_I8
-	IL_1232:  br IL_27af
+	IL_122d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_I4
+	IL_1232:  br IL_282d
 
 	IL_1237:  br IL_1241
 
@@ -2019,7 +2019,7 @@
 
 	IL_1245:  nop 
 	IL_1246:  nop 
-	IL_1247:  ldstr "ldelem.r4"
+	IL_1247:  ldstr "ldelem.i8"
 	IL_124c:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1251:  stloc 0
 
@@ -2034,8 +2034,8 @@
 
 	IL_1267:  br IL_127b
 
-	IL_126c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_R4
-	IL_1271:  br IL_27af
+	IL_126c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_I8
+	IL_1271:  br IL_282d
 
 	IL_1276:  br IL_1280
 
@@ -2045,7 +2045,7 @@
 
 	IL_1284:  nop 
 	IL_1285:  nop 
-	IL_1286:  ldstr "ldelem.r8"
+	IL_1286:  ldstr "ldelem.r4"
 	IL_128b:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1290:  stloc 0
 
@@ -2060,8 +2060,8 @@
 
 	IL_12a6:  br IL_12ba
 
-	IL_12ab:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_R8
-	IL_12b0:  br IL_27af
+	IL_12ab:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_R4
+	IL_12b0:  br IL_282d
 
 	IL_12b5:  br IL_12bf
 
@@ -2071,7 +2071,7 @@
 
 	IL_12c3:  nop 
 	IL_12c4:  nop 
-	IL_12c5:  ldstr "ldelem.u1"
+	IL_12c5:  ldstr "ldelem.r8"
 	IL_12ca:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_12cf:  stloc 0
 
@@ -2086,8 +2086,8 @@
 
 	IL_12e5:  br IL_12f9
 
-	IL_12ea:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_U1
-	IL_12ef:  br IL_27af
+	IL_12ea:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_R8
+	IL_12ef:  br IL_282d
 
 	IL_12f4:  br IL_12fe
 
@@ -2097,7 +2097,7 @@
 
 	IL_1302:  nop 
 	IL_1303:  nop 
-	IL_1304:  ldstr "ldelem.u2"
+	IL_1304:  ldstr "ldelem.u1"
 	IL_1309:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_130e:  stloc 0
 
@@ -2112,8 +2112,8 @@
 
 	IL_1324:  br IL_1338
 
-	IL_1329:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_U2
-	IL_132e:  br IL_27af
+	IL_1329:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_U1
+	IL_132e:  br IL_282d
 
 	IL_1333:  br IL_133d
 
@@ -2123,7 +2123,7 @@
 
 	IL_1341:  nop 
 	IL_1342:  nop 
-	IL_1343:  ldstr "ldelem.u4"
+	IL_1343:  ldstr "ldelem.u2"
 	IL_1348:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_134d:  stloc 0
 
@@ -2138,8 +2138,8 @@
 
 	IL_1363:  br IL_1377
 
-	IL_1368:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_U4
-	IL_136d:  br IL_27af
+	IL_1368:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_U2
+	IL_136d:  br IL_282d
 
 	IL_1372:  br IL_137c
 
@@ -2149,7 +2149,7 @@
 
 	IL_1380:  nop 
 	IL_1381:  nop 
-	IL_1382:  ldstr "ldelem.ref"
+	IL_1382:  ldstr "ldelem.u4"
 	IL_1387:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_138c:  stloc 0
 
@@ -2164,8 +2164,8 @@
 
 	IL_13a2:  br IL_13b6
 
-	IL_13a7:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_Ref
-	IL_13ac:  br IL_27af
+	IL_13a7:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_U4
+	IL_13ac:  br IL_282d
 
 	IL_13b1:  br IL_13bb
 
@@ -2175,7 +2175,7 @@
 
 	IL_13bf:  nop 
 	IL_13c0:  nop 
-	IL_13c1:  ldstr "ldelema"
+	IL_13c1:  ldstr "ldelem.ref"
 	IL_13c6:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_13cb:  stloc 0
 
@@ -2190,8 +2190,8 @@
 
 	IL_13e1:  br IL_13f5
 
-	IL_13e6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelema
-	IL_13eb:  br IL_27af
+	IL_13e6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelem_Ref
+	IL_13eb:  br IL_282d
 
 	IL_13f0:  br IL_13fa
 
@@ -2201,7 +2201,7 @@
 
 	IL_13fe:  nop 
 	IL_13ff:  nop 
-	IL_1400:  ldstr "ldfld"
+	IL_1400:  ldstr "ldelema"
 	IL_1405:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_140a:  stloc 0
 
@@ -2216,8 +2216,8 @@
 
 	IL_1420:  br IL_1434
 
-	IL_1425:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldfld
-	IL_142a:  br IL_27af
+	IL_1425:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldelema
+	IL_142a:  br IL_282d
 
 	IL_142f:  br IL_1439
 
@@ -2227,7 +2227,7 @@
 
 	IL_143d:  nop 
 	IL_143e:  nop 
-	IL_143f:  ldstr "ldflda"
+	IL_143f:  ldstr "ldfld"
 	IL_1444:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1449:  stloc 0
 
@@ -2242,8 +2242,8 @@
 
 	IL_145f:  br IL_1473
 
-	IL_1464:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldflda
-	IL_1469:  br IL_27af
+	IL_1464:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldfld
+	IL_1469:  br IL_282d
 
 	IL_146e:  br IL_1478
 
@@ -2253,7 +2253,7 @@
 
 	IL_147c:  nop 
 	IL_147d:  nop 
-	IL_147e:  ldstr "ldftn"
+	IL_147e:  ldstr "ldflda"
 	IL_1483:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1488:  stloc 0
 
@@ -2268,8 +2268,8 @@
 
 	IL_149e:  br IL_14b2
 
-	IL_14a3:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldftn
-	IL_14a8:  br IL_27af
+	IL_14a3:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldflda
+	IL_14a8:  br IL_282d
 
 	IL_14ad:  br IL_14b7
 
@@ -2279,7 +2279,7 @@
 
 	IL_14bb:  nop 
 	IL_14bc:  nop 
-	IL_14bd:  ldstr "ldind.i"
+	IL_14bd:  ldstr "ldftn"
 	IL_14c2:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_14c7:  stloc 0
 
@@ -2294,8 +2294,8 @@
 
 	IL_14dd:  br IL_14f1
 
-	IL_14e2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I
-	IL_14e7:  br IL_27af
+	IL_14e2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldftn
+	IL_14e7:  br IL_282d
 
 	IL_14ec:  br IL_14f6
 
@@ -2305,7 +2305,7 @@
 
 	IL_14fa:  nop 
 	IL_14fb:  nop 
-	IL_14fc:  ldstr "ldind.i1"
+	IL_14fc:  ldstr "ldind.i"
 	IL_1501:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1506:  stloc 0
 
@@ -2320,8 +2320,8 @@
 
 	IL_151c:  br IL_1530
 
-	IL_1521:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I1
-	IL_1526:  br IL_27af
+	IL_1521:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I
+	IL_1526:  br IL_282d
 
 	IL_152b:  br IL_1535
 
@@ -2331,7 +2331,7 @@
 
 	IL_1539:  nop 
 	IL_153a:  nop 
-	IL_153b:  ldstr "ldind.i2"
+	IL_153b:  ldstr "ldind.i1"
 	IL_1540:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1545:  stloc 0
 
@@ -2346,8 +2346,8 @@
 
 	IL_155b:  br IL_156f
 
-	IL_1560:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I2
-	IL_1565:  br IL_27af
+	IL_1560:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I1
+	IL_1565:  br IL_282d
 
 	IL_156a:  br IL_1574
 
@@ -2357,7 +2357,7 @@
 
 	IL_1578:  nop 
 	IL_1579:  nop 
-	IL_157a:  ldstr "ldind.i4"
+	IL_157a:  ldstr "ldind.i2"
 	IL_157f:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1584:  stloc 0
 
@@ -2372,8 +2372,8 @@
 
 	IL_159a:  br IL_15ae
 
-	IL_159f:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I4
-	IL_15a4:  br IL_27af
+	IL_159f:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I2
+	IL_15a4:  br IL_282d
 
 	IL_15a9:  br IL_15b3
 
@@ -2383,7 +2383,7 @@
 
 	IL_15b7:  nop 
 	IL_15b8:  nop 
-	IL_15b9:  ldstr "ldind.i8"
+	IL_15b9:  ldstr "ldind.i4"
 	IL_15be:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_15c3:  stloc 0
 
@@ -2398,8 +2398,8 @@
 
 	IL_15d9:  br IL_15ed
 
-	IL_15de:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I8
-	IL_15e3:  br IL_27af
+	IL_15de:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I4
+	IL_15e3:  br IL_282d
 
 	IL_15e8:  br IL_15f2
 
@@ -2409,7 +2409,7 @@
 
 	IL_15f6:  nop 
 	IL_15f7:  nop 
-	IL_15f8:  ldstr "ldind.r4"
+	IL_15f8:  ldstr "ldind.i8"
 	IL_15fd:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1602:  stloc 0
 
@@ -2424,8 +2424,8 @@
 
 	IL_1618:  br IL_162c
 
-	IL_161d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_R4
-	IL_1622:  br IL_27af
+	IL_161d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I8
+	IL_1622:  br IL_282d
 
 	IL_1627:  br IL_1631
 
@@ -2435,7 +2435,7 @@
 
 	IL_1635:  nop 
 	IL_1636:  nop 
-	IL_1637:  ldstr "ldind.r8"
+	IL_1637:  ldstr "ldind.r4"
 	IL_163c:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1641:  stloc 0
 
@@ -2450,8 +2450,8 @@
 
 	IL_1657:  br IL_166b
 
-	IL_165c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_R8
-	IL_1661:  br IL_27af
+	IL_165c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_R4
+	IL_1661:  br IL_282d
 
 	IL_1666:  br IL_1670
 
@@ -2461,7 +2461,7 @@
 
 	IL_1674:  nop 
 	IL_1675:  nop 
-	IL_1676:  ldstr "ldind.u1"
+	IL_1676:  ldstr "ldind.r8"
 	IL_167b:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1680:  stloc 0
 
@@ -2476,8 +2476,8 @@
 
 	IL_1696:  br IL_16aa
 
-	IL_169b:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_U1
-	IL_16a0:  br IL_27af
+	IL_169b:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_R8
+	IL_16a0:  br IL_282d
 
 	IL_16a5:  br IL_16af
 
@@ -2487,7 +2487,7 @@
 
 	IL_16b3:  nop 
 	IL_16b4:  nop 
-	IL_16b5:  ldstr "ldind.u2"
+	IL_16b5:  ldstr "ldind.u1"
 	IL_16ba:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_16bf:  stloc 0
 
@@ -2502,8 +2502,8 @@
 
 	IL_16d5:  br IL_16e9
 
-	IL_16da:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_U2
-	IL_16df:  br IL_27af
+	IL_16da:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_U1
+	IL_16df:  br IL_282d
 
 	IL_16e4:  br IL_16ee
 
@@ -2513,7 +2513,7 @@
 
 	IL_16f2:  nop 
 	IL_16f3:  nop 
-	IL_16f4:  ldstr "ldind.u4"
+	IL_16f4:  ldstr "ldind.u2"
 	IL_16f9:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_16fe:  stloc 0
 
@@ -2528,8 +2528,8 @@
 
 	IL_1714:  br IL_1728
 
-	IL_1719:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_U4
-	IL_171e:  br IL_27af
+	IL_1719:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_U2
+	IL_171e:  br IL_282d
 
 	IL_1723:  br IL_172d
 
@@ -2539,7 +2539,7 @@
 
 	IL_1731:  nop 
 	IL_1732:  nop 
-	IL_1733:  ldstr "ldind.ref"
+	IL_1733:  ldstr "ldind.u4"
 	IL_1738:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_173d:  stloc 0
 
@@ -2554,8 +2554,8 @@
 
 	IL_1753:  br IL_1767
 
-	IL_1758:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_Ref
-	IL_175d:  br IL_27af
+	IL_1758:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_U4
+	IL_175d:  br IL_282d
 
 	IL_1762:  br IL_176c
 
@@ -2565,7 +2565,7 @@
 
 	IL_1770:  nop 
 	IL_1771:  nop 
-	IL_1772:  ldstr "ldloc"
+	IL_1772:  ldstr "ldind.ref"
 	IL_1777:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_177c:  stloc 0
 
@@ -2580,8 +2580,8 @@
 
 	IL_1792:  br IL_17a6
 
-	IL_1797:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc
-	IL_179c:  br IL_27af
+	IL_1797:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_Ref
+	IL_179c:  br IL_282d
 
 	IL_17a1:  br IL_17ab
 
@@ -2591,7 +2591,7 @@
 
 	IL_17af:  nop 
 	IL_17b0:  nop 
-	IL_17b1:  ldstr "ldloc.s"
+	IL_17b1:  ldstr "ldloc"
 	IL_17b6:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_17bb:  stloc 0
 
@@ -2606,8 +2606,8 @@
 
 	IL_17d1:  br IL_17e5
 
-	IL_17d6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc_S
-	IL_17db:  br IL_27af
+	IL_17d6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc
+	IL_17db:  br IL_282d
 
 	IL_17e0:  br IL_17ea
 
@@ -2617,7 +2617,7 @@
 
 	IL_17ee:  nop 
 	IL_17ef:  nop 
-	IL_17f0:  ldstr "ldloca"
+	IL_17f0:  ldstr "ldloc.s"
 	IL_17f5:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_17fa:  stloc 0
 
@@ -2632,8 +2632,8 @@
 
 	IL_1810:  br IL_1824
 
-	IL_1815:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloca
-	IL_181a:  br IL_27af
+	IL_1815:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc_S
+	IL_181a:  br IL_282d
 
 	IL_181f:  br IL_1829
 
@@ -2643,7 +2643,7 @@
 
 	IL_182d:  nop 
 	IL_182e:  nop 
-	IL_182f:  ldstr "ldloca.s"
+	IL_182f:  ldstr "ldloca"
 	IL_1834:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1839:  stloc 0
 
@@ -2658,8 +2658,8 @@
 
 	IL_184f:  br IL_1863
 
-	IL_1854:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloca_S
-	IL_1859:  br IL_27af
+	IL_1854:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloca
+	IL_1859:  br IL_282d
 
 	IL_185e:  br IL_1868
 
@@ -2669,7 +2669,7 @@
 
 	IL_186c:  nop 
 	IL_186d:  nop 
-	IL_186e:  ldstr "ldloc.0"
+	IL_186e:  ldstr "ldloca.s"
 	IL_1873:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1878:  stloc 0
 
@@ -2684,8 +2684,8 @@
 
 	IL_188e:  br IL_18a2
 
-	IL_1893:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc_0
-	IL_1898:  br IL_27af
+	IL_1893:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloca_S
+	IL_1898:  br IL_282d
 
 	IL_189d:  br IL_18a7
 
@@ -2695,7 +2695,7 @@
 
 	IL_18ab:  nop 
 	IL_18ac:  nop 
-	IL_18ad:  ldstr "ldloc.1"
+	IL_18ad:  ldstr "ldloc.0"
 	IL_18b2:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_18b7:  stloc 0
 
@@ -2710,8 +2710,8 @@
 
 	IL_18cd:  br IL_18e1
 
-	IL_18d2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc_1
-	IL_18d7:  br IL_27af
+	IL_18d2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc_0
+	IL_18d7:  br IL_282d
 
 	IL_18dc:  br IL_18e6
 
@@ -2721,7 +2721,7 @@
 
 	IL_18ea:  nop 
 	IL_18eb:  nop 
-	IL_18ec:  ldstr "ldloc.2"
+	IL_18ec:  ldstr "ldloc.1"
 	IL_18f1:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_18f6:  stloc 0
 
@@ -2736,8 +2736,8 @@
 
 	IL_190c:  br IL_1920
 
-	IL_1911:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc_2
-	IL_1916:  br IL_27af
+	IL_1911:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc_1
+	IL_1916:  br IL_282d
 
 	IL_191b:  br IL_1925
 
@@ -2747,7 +2747,7 @@
 
 	IL_1929:  nop 
 	IL_192a:  nop 
-	IL_192b:  ldstr "ldloc.3"
+	IL_192b:  ldstr "ldloc.2"
 	IL_1930:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1935:  stloc 0
 
@@ -2762,8 +2762,8 @@
 
 	IL_194b:  br IL_195f
 
-	IL_1950:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc_3
-	IL_1955:  br IL_27af
+	IL_1950:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc_2
+	IL_1955:  br IL_282d
 
 	IL_195a:  br IL_1964
 
@@ -2773,7 +2773,7 @@
 
 	IL_1968:  nop 
 	IL_1969:  nop 
-	IL_196a:  ldstr "ldnull"
+	IL_196a:  ldstr "ldloc.3"
 	IL_196f:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1974:  stloc 0
 
@@ -2788,8 +2788,8 @@
 
 	IL_198a:  br IL_199e
 
-	IL_198f:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldnull
-	IL_1994:  br IL_27af
+	IL_198f:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldloc_3
+	IL_1994:  br IL_282d
 
 	IL_1999:  br IL_19a3
 
@@ -2799,7 +2799,7 @@
 
 	IL_19a7:  nop 
 	IL_19a8:  nop 
-	IL_19a9:  ldstr "ldobj"
+	IL_19a9:  ldstr "ldnull"
 	IL_19ae:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_19b3:  stloc 0
 
@@ -2814,8 +2814,8 @@
 
 	IL_19c9:  br IL_19dd
 
-	IL_19ce:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldobj
-	IL_19d3:  br IL_27af
+	IL_19ce:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldnull
+	IL_19d3:  br IL_282d
 
 	IL_19d8:  br IL_19e2
 
@@ -2825,7 +2825,7 @@
 
 	IL_19e6:  nop 
 	IL_19e7:  nop 
-	IL_19e8:  ldstr "ldsfld"
+	IL_19e8:  ldstr "ldobj"
 	IL_19ed:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_19f2:  stloc 0
 
@@ -2840,8 +2840,8 @@
 
 	IL_1a08:  br IL_1a1c
 
-	IL_1a0d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldsfld
-	IL_1a12:  br IL_27af
+	IL_1a0d:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldobj
+	IL_1a12:  br IL_282d
 
 	IL_1a17:  br IL_1a21
 
@@ -2851,7 +2851,7 @@
 
 	IL_1a25:  nop 
 	IL_1a26:  nop 
-	IL_1a27:  ldstr "ldsflda"
+	IL_1a27:  ldstr "ldsfld"
 	IL_1a2c:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1a31:  stloc 0
 
@@ -2866,8 +2866,8 @@
 
 	IL_1a47:  br IL_1a5b
 
-	IL_1a4c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldsflda
-	IL_1a51:  br IL_27af
+	IL_1a4c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldsfld
+	IL_1a51:  br IL_282d
 
 	IL_1a56:  br IL_1a60
 
@@ -2877,7 +2877,7 @@
 
 	IL_1a64:  nop 
 	IL_1a65:  nop 
-	IL_1a66:  ldstr "ldstr"
+	IL_1a66:  ldstr "ldsflda"
 	IL_1a6b:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1a70:  stloc 0
 
@@ -2892,8 +2892,8 @@
 
 	IL_1a86:  br IL_1a9a
 
-	IL_1a8b:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldstr
-	IL_1a90:  br IL_27af
+	IL_1a8b:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldsflda
+	IL_1a90:  br IL_282d
 
 	IL_1a95:  br IL_1a9f
 
@@ -2903,7 +2903,7 @@
 
 	IL_1aa3:  nop 
 	IL_1aa4:  nop 
-	IL_1aa5:  ldstr "ldtoken"
+	IL_1aa5:  ldstr "ldstr"
 	IL_1aaa:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1aaf:  stloc 0
 
@@ -2918,8 +2918,8 @@
 
 	IL_1ac5:  br IL_1ad9
 
-	IL_1aca:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldtoken
-	IL_1acf:  br IL_27af
+	IL_1aca:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldstr
+	IL_1acf:  br IL_282d
 
 	IL_1ad4:  br IL_1ade
 
@@ -2929,7 +2929,7 @@
 
 	IL_1ae2:  nop 
 	IL_1ae3:  nop 
-	IL_1ae4:  ldstr "ldvirtftn"
+	IL_1ae4:  ldstr "ldtoken"
 	IL_1ae9:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1aee:  stloc 0
 
@@ -2944,8 +2944,8 @@
 
 	IL_1b04:  br IL_1b18
 
-	IL_1b09:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldvirtftn
-	IL_1b0e:  br IL_27af
+	IL_1b09:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldtoken
+	IL_1b0e:  br IL_282d
 
 	IL_1b13:  br IL_1b1d
 
@@ -2955,7 +2955,7 @@
 
 	IL_1b21:  nop 
 	IL_1b22:  nop 
-	IL_1b23:  ldstr "leave"
+	IL_1b23:  ldstr "ldvirtftn"
 	IL_1b28:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1b2d:  stloc 0
 
@@ -2970,8 +2970,8 @@
 
 	IL_1b43:  br IL_1b57
 
-	IL_1b48:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Leave
-	IL_1b4d:  br IL_27af
+	IL_1b48:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldvirtftn
+	IL_1b4d:  br IL_282d
 
 	IL_1b52:  br IL_1b5c
 
@@ -2981,7 +2981,7 @@
 
 	IL_1b60:  nop 
 	IL_1b61:  nop 
-	IL_1b62:  ldstr "mul"
+	IL_1b62:  ldstr "ldftn"
 	IL_1b67:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1b6c:  stloc 0
 
@@ -2996,8 +2996,8 @@
 
 	IL_1b82:  br IL_1b96
 
-	IL_1b87:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Mul
-	IL_1b8c:  br IL_27af
+	IL_1b87:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldftn
+	IL_1b8c:  br IL_282d
 
 	IL_1b91:  br IL_1b9b
 
@@ -3007,7 +3007,7 @@
 
 	IL_1b9f:  nop 
 	IL_1ba0:  nop 
-	IL_1ba1:  ldstr "mul.ovf"
+	IL_1ba1:  ldstr "leave"
 	IL_1ba6:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1bab:  stloc 0
 
@@ -3022,8 +3022,8 @@
 
 	IL_1bc1:  br IL_1bd5
 
-	IL_1bc6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Mul_Ovf
-	IL_1bcb:  br IL_27af
+	IL_1bc6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Leave
+	IL_1bcb:  br IL_282d
 
 	IL_1bd0:  br IL_1bda
 
@@ -3033,7 +3033,7 @@
 
 	IL_1bde:  nop 
 	IL_1bdf:  nop 
-	IL_1be0:  ldstr "neg"
+	IL_1be0:  ldstr "mul"
 	IL_1be5:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1bea:  stloc 0
 
@@ -3048,8 +3048,8 @@
 
 	IL_1c00:  br IL_1c14
 
-	IL_1c05:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Neg
-	IL_1c0a:  br IL_27af
+	IL_1c05:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Mul
+	IL_1c0a:  br IL_282d
 
 	IL_1c0f:  br IL_1c19
 
@@ -3059,7 +3059,7 @@
 
 	IL_1c1d:  nop 
 	IL_1c1e:  nop 
-	IL_1c1f:  ldstr "newarr"
+	IL_1c1f:  ldstr "mul.ovf"
 	IL_1c24:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1c29:  stloc 0
 
@@ -3074,8 +3074,8 @@
 
 	IL_1c3f:  br IL_1c53
 
-	IL_1c44:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Newarr
-	IL_1c49:  br IL_27af
+	IL_1c44:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Mul_Ovf
+	IL_1c49:  br IL_282d
 
 	IL_1c4e:  br IL_1c58
 
@@ -3085,7 +3085,7 @@
 
 	IL_1c5c:  nop 
 	IL_1c5d:  nop 
-	IL_1c5e:  ldstr "newobj"
+	IL_1c5e:  ldstr "neg"
 	IL_1c63:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1c68:  stloc 0
 
@@ -3100,8 +3100,8 @@
 
 	IL_1c7e:  br IL_1c92
 
-	IL_1c83:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Newobj
-	IL_1c88:  br IL_27af
+	IL_1c83:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Neg
+	IL_1c88:  br IL_282d
 
 	IL_1c8d:  br IL_1c97
 
@@ -3111,7 +3111,7 @@
 
 	IL_1c9b:  nop 
 	IL_1c9c:  nop 
-	IL_1c9d:  ldstr "nop"
+	IL_1c9d:  ldstr "newarr"
 	IL_1ca2:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1ca7:  stloc 0
 
@@ -3126,8 +3126,8 @@
 
 	IL_1cbd:  br IL_1cd1
 
-	IL_1cc2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Nop
-	IL_1cc7:  br IL_27af
+	IL_1cc2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Newarr
+	IL_1cc7:  br IL_282d
 
 	IL_1ccc:  br IL_1cd6
 
@@ -3137,7 +3137,7 @@
 
 	IL_1cda:  nop 
 	IL_1cdb:  nop 
-	IL_1cdc:  ldstr "not"
+	IL_1cdc:  ldstr "newobj"
 	IL_1ce1:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1ce6:  stloc 0
 
@@ -3152,8 +3152,8 @@
 
 	IL_1cfc:  br IL_1d10
 
-	IL_1d01:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Not
-	IL_1d06:  br IL_27af
+	IL_1d01:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Newobj
+	IL_1d06:  br IL_282d
 
 	IL_1d0b:  br IL_1d15
 
@@ -3163,7 +3163,7 @@
 
 	IL_1d19:  nop 
 	IL_1d1a:  nop 
-	IL_1d1b:  ldstr "or"
+	IL_1d1b:  ldstr "nop"
 	IL_1d20:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1d25:  stloc 0
 
@@ -3178,8 +3178,8 @@
 
 	IL_1d3b:  br IL_1d4f
 
-	IL_1d40:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Or
-	IL_1d45:  br IL_27af
+	IL_1d40:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Nop
+	IL_1d45:  br IL_282d
 
 	IL_1d4a:  br IL_1d54
 
@@ -3189,7 +3189,7 @@
 
 	IL_1d58:  nop 
 	IL_1d59:  nop 
-	IL_1d5a:  ldstr "pop"
+	IL_1d5a:  ldstr "not"
 	IL_1d5f:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1d64:  stloc 0
 
@@ -3204,8 +3204,8 @@
 
 	IL_1d7a:  br IL_1d8e
 
-	IL_1d7f:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Pop
-	IL_1d84:  br IL_27af
+	IL_1d7f:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Not
+	IL_1d84:  br IL_282d
 
 	IL_1d89:  br IL_1d93
 
@@ -3215,7 +3215,7 @@
 
 	IL_1d97:  nop 
 	IL_1d98:  nop 
-	IL_1d99:  ldstr "rem"
+	IL_1d99:  ldstr "or"
 	IL_1d9e:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1da3:  stloc 0
 
@@ -3230,8 +3230,8 @@
 
 	IL_1db9:  br IL_1dcd
 
-	IL_1dbe:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Rem
-	IL_1dc3:  br IL_27af
+	IL_1dbe:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Or
+	IL_1dc3:  br IL_282d
 
 	IL_1dc8:  br IL_1dd2
 
@@ -3241,7 +3241,7 @@
 
 	IL_1dd6:  nop 
 	IL_1dd7:  nop 
-	IL_1dd8:  ldstr "rem.un"
+	IL_1dd8:  ldstr "pop"
 	IL_1ddd:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1de2:  stloc 0
 
@@ -3256,8 +3256,8 @@
 
 	IL_1df8:  br IL_1e0c
 
-	IL_1dfd:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Rem_Un
-	IL_1e02:  br IL_27af
+	IL_1dfd:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Pop
+	IL_1e02:  br IL_282d
 
 	IL_1e07:  br IL_1e11
 
@@ -3267,7 +3267,7 @@
 
 	IL_1e15:  nop 
 	IL_1e16:  nop 
-	IL_1e17:  ldstr "ret"
+	IL_1e17:  ldstr "rem"
 	IL_1e1c:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1e21:  stloc 0
 
@@ -3282,8 +3282,8 @@
 
 	IL_1e37:  br IL_1e4b
 
-	IL_1e3c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ret
-	IL_1e41:  br IL_27af
+	IL_1e3c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Rem
+	IL_1e41:  br IL_282d
 
 	IL_1e46:  br IL_1e50
 
@@ -3293,7 +3293,7 @@
 
 	IL_1e54:  nop 
 	IL_1e55:  nop 
-	IL_1e56:  ldstr "rethrow"
+	IL_1e56:  ldstr "rem.un"
 	IL_1e5b:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1e60:  stloc 0
 
@@ -3308,8 +3308,8 @@
 
 	IL_1e76:  br IL_1e8a
 
-	IL_1e7b:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Rethrow
-	IL_1e80:  br IL_27af
+	IL_1e7b:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Rem_Un
+	IL_1e80:  br IL_282d
 
 	IL_1e85:  br IL_1e8f
 
@@ -3319,7 +3319,7 @@
 
 	IL_1e93:  nop 
 	IL_1e94:  nop 
-	IL_1e95:  ldstr "shl"
+	IL_1e95:  ldstr "ret"
 	IL_1e9a:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1e9f:  stloc 0
 
@@ -3334,8 +3334,8 @@
 
 	IL_1eb5:  br IL_1ec9
 
-	IL_1eba:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Shl
-	IL_1ebf:  br IL_27af
+	IL_1eba:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ret
+	IL_1ebf:  br IL_282d
 
 	IL_1ec4:  br IL_1ece
 
@@ -3345,7 +3345,7 @@
 
 	IL_1ed2:  nop 
 	IL_1ed3:  nop 
-	IL_1ed4:  ldstr "shr"
+	IL_1ed4:  ldstr "rethrow"
 	IL_1ed9:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1ede:  stloc 0
 
@@ -3360,8 +3360,8 @@
 
 	IL_1ef4:  br IL_1f08
 
-	IL_1ef9:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Shr
-	IL_1efe:  br IL_27af
+	IL_1ef9:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Rethrow
+	IL_1efe:  br IL_282d
 
 	IL_1f03:  br IL_1f0d
 
@@ -3371,7 +3371,7 @@
 
 	IL_1f11:  nop 
 	IL_1f12:  nop 
-	IL_1f13:  ldstr "sizeof"
+	IL_1f13:  ldstr "shl"
 	IL_1f18:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1f1d:  stloc 0
 
@@ -3386,8 +3386,8 @@
 
 	IL_1f33:  br IL_1f47
 
-	IL_1f38:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Sizeof
-	IL_1f3d:  br IL_27af
+	IL_1f38:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Shl
+	IL_1f3d:  br IL_282d
 
 	IL_1f42:  br IL_1f4c
 
@@ -3397,7 +3397,7 @@
 
 	IL_1f50:  nop 
 	IL_1f51:  nop 
-	IL_1f52:  ldstr "starg"
+	IL_1f52:  ldstr "shr"
 	IL_1f57:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1f5c:  stloc 0
 
@@ -3412,8 +3412,8 @@
 
 	IL_1f72:  br IL_1f86
 
-	IL_1f77:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Starg
-	IL_1f7c:  br IL_27af
+	IL_1f77:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Shr
+	IL_1f7c:  br IL_282d
 
 	IL_1f81:  br IL_1f8b
 
@@ -3423,7 +3423,7 @@
 
 	IL_1f8f:  nop 
 	IL_1f90:  nop 
-	IL_1f91:  ldstr "starg.s"
+	IL_1f91:  ldstr "sizeof"
 	IL_1f96:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1f9b:  stloc 0
 
@@ -3438,8 +3438,8 @@
 
 	IL_1fb1:  br IL_1fc5
 
-	IL_1fb6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Starg_S
-	IL_1fbb:  br IL_27af
+	IL_1fb6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Sizeof
+	IL_1fbb:  br IL_282d
 
 	IL_1fc0:  br IL_1fca
 
@@ -3449,7 +3449,7 @@
 
 	IL_1fce:  nop 
 	IL_1fcf:  nop 
-	IL_1fd0:  ldstr "stelem"
+	IL_1fd0:  ldstr "starg"
 	IL_1fd5:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_1fda:  stloc 0
 
@@ -3464,8 +3464,8 @@
 
 	IL_1ff0:  br IL_2004
 
-	IL_1ff5:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem
-	IL_1ffa:  br IL_27af
+	IL_1ff5:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Starg
+	IL_1ffa:  br IL_282d
 
 	IL_1fff:  br IL_2009
 
@@ -3475,7 +3475,7 @@
 
 	IL_200d:  nop 
 	IL_200e:  nop 
-	IL_200f:  ldstr "stelem.i"
+	IL_200f:  ldstr "starg.s"
 	IL_2014:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2019:  stloc 0
 
@@ -3490,8 +3490,8 @@
 
 	IL_202f:  br IL_2043
 
-	IL_2034:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_I
-	IL_2039:  br IL_27af
+	IL_2034:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Starg_S
+	IL_2039:  br IL_282d
 
 	IL_203e:  br IL_2048
 
@@ -3501,7 +3501,7 @@
 
 	IL_204c:  nop 
 	IL_204d:  nop 
-	IL_204e:  ldstr "stelem.i1"
+	IL_204e:  ldstr "stelem"
 	IL_2053:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2058:  stloc 0
 
@@ -3516,8 +3516,8 @@
 
 	IL_206e:  br IL_2082
 
-	IL_2073:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_I1
-	IL_2078:  br IL_27af
+	IL_2073:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem
+	IL_2078:  br IL_282d
 
 	IL_207d:  br IL_2087
 
@@ -3527,7 +3527,7 @@
 
 	IL_208b:  nop 
 	IL_208c:  nop 
-	IL_208d:  ldstr "stelem.i2"
+	IL_208d:  ldstr "stelem.i"
 	IL_2092:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2097:  stloc 0
 
@@ -3542,8 +3542,8 @@
 
 	IL_20ad:  br IL_20c1
 
-	IL_20b2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_I2
-	IL_20b7:  br IL_27af
+	IL_20b2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_I
+	IL_20b7:  br IL_282d
 
 	IL_20bc:  br IL_20c6
 
@@ -3553,7 +3553,7 @@
 
 	IL_20ca:  nop 
 	IL_20cb:  nop 
-	IL_20cc:  ldstr "stelem.i4"
+	IL_20cc:  ldstr "stelem.i1"
 	IL_20d1:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_20d6:  stloc 0
 
@@ -3568,8 +3568,8 @@
 
 	IL_20ec:  br IL_2100
 
-	IL_20f1:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_I4
-	IL_20f6:  br IL_27af
+	IL_20f1:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_I1
+	IL_20f6:  br IL_282d
 
 	IL_20fb:  br IL_2105
 
@@ -3579,7 +3579,7 @@
 
 	IL_2109:  nop 
 	IL_210a:  nop 
-	IL_210b:  ldstr "stelem.i8"
+	IL_210b:  ldstr "stelem.i2"
 	IL_2110:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2115:  stloc 0
 
@@ -3594,8 +3594,8 @@
 
 	IL_212b:  br IL_213f
 
-	IL_2130:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_I8
-	IL_2135:  br IL_27af
+	IL_2130:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_I2
+	IL_2135:  br IL_282d
 
 	IL_213a:  br IL_2144
 
@@ -3605,7 +3605,7 @@
 
 	IL_2148:  nop 
 	IL_2149:  nop 
-	IL_214a:  ldstr "stelem.r4"
+	IL_214a:  ldstr "stelem.i4"
 	IL_214f:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2154:  stloc 0
 
@@ -3620,8 +3620,8 @@
 
 	IL_216a:  br IL_217e
 
-	IL_216f:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_R4
-	IL_2174:  br IL_27af
+	IL_216f:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_I4
+	IL_2174:  br IL_282d
 
 	IL_2179:  br IL_2183
 
@@ -3631,7 +3631,7 @@
 
 	IL_2187:  nop 
 	IL_2188:  nop 
-	IL_2189:  ldstr "stelem.r8"
+	IL_2189:  ldstr "stelem.i8"
 	IL_218e:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2193:  stloc 0
 
@@ -3646,8 +3646,8 @@
 
 	IL_21a9:  br IL_21bd
 
-	IL_21ae:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_R8
-	IL_21b3:  br IL_27af
+	IL_21ae:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_I8
+	IL_21b3:  br IL_282d
 
 	IL_21b8:  br IL_21c2
 
@@ -3657,7 +3657,7 @@
 
 	IL_21c6:  nop 
 	IL_21c7:  nop 
-	IL_21c8:  ldstr "stelem.ref"
+	IL_21c8:  ldstr "stelem.r4"
 	IL_21cd:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_21d2:  stloc 0
 
@@ -3672,8 +3672,8 @@
 
 	IL_21e8:  br IL_21fc
 
-	IL_21ed:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_Ref
-	IL_21f2:  br IL_27af
+	IL_21ed:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_R4
+	IL_21f2:  br IL_282d
 
 	IL_21f7:  br IL_2201
 
@@ -3683,7 +3683,7 @@
 
 	IL_2205:  nop 
 	IL_2206:  nop 
-	IL_2207:  ldstr "stfld"
+	IL_2207:  ldstr "stelem.r8"
 	IL_220c:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2211:  stloc 0
 
@@ -3698,8 +3698,8 @@
 
 	IL_2227:  br IL_223b
 
-	IL_222c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stfld
-	IL_2231:  br IL_27af
+	IL_222c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_R8
+	IL_2231:  br IL_282d
 
 	IL_2236:  br IL_2240
 
@@ -3709,7 +3709,7 @@
 
 	IL_2244:  nop 
 	IL_2245:  nop 
-	IL_2246:  ldstr "stind.i"
+	IL_2246:  ldstr "stelem.ref"
 	IL_224b:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2250:  stloc 0
 
@@ -3724,8 +3724,8 @@
 
 	IL_2266:  br IL_227a
 
-	IL_226b:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_I
-	IL_2270:  br IL_27af
+	IL_226b:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_Ref
+	IL_2270:  br IL_282d
 
 	IL_2275:  br IL_227f
 
@@ -3735,7 +3735,7 @@
 
 	IL_2283:  nop 
 	IL_2284:  nop 
-	IL_2285:  ldstr "stind.i1"
+	IL_2285:  ldstr "stfld"
 	IL_228a:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_228f:  stloc 0
 
@@ -3750,8 +3750,8 @@
 
 	IL_22a5:  br IL_22b9
 
-	IL_22aa:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I1
-	IL_22af:  br IL_27af
+	IL_22aa:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stfld
+	IL_22af:  br IL_282d
 
 	IL_22b4:  br IL_22be
 
@@ -3761,7 +3761,7 @@
 
 	IL_22c2:  nop 
 	IL_22c3:  nop 
-	IL_22c4:  ldstr "stind.i2"
+	IL_22c4:  ldstr "stind.i"
 	IL_22c9:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_22ce:  stloc 0
 
@@ -3776,8 +3776,8 @@
 
 	IL_22e4:  br IL_22f8
 
-	IL_22e9:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_I2
-	IL_22ee:  br IL_27af
+	IL_22e9:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_I
+	IL_22ee:  br IL_282d
 
 	IL_22f3:  br IL_22fd
 
@@ -3787,7 +3787,7 @@
 
 	IL_2301:  nop 
 	IL_2302:  nop 
-	IL_2303:  ldstr "stind.i4"
+	IL_2303:  ldstr "stind.i1"
 	IL_2308:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_230d:  stloc 0
 
@@ -3802,8 +3802,8 @@
 
 	IL_2323:  br IL_2337
 
-	IL_2328:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_I4
-	IL_232d:  br IL_27af
+	IL_2328:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Ldind_I1
+	IL_232d:  br IL_282d
 
 	IL_2332:  br IL_233c
 
@@ -3813,7 +3813,7 @@
 
 	IL_2340:  nop 
 	IL_2341:  nop 
-	IL_2342:  ldstr "stind.i8"
+	IL_2342:  ldstr "stind.i2"
 	IL_2347:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_234c:  stloc 0
 
@@ -3828,8 +3828,8 @@
 
 	IL_2362:  br IL_2376
 
-	IL_2367:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_I8
-	IL_236c:  br IL_27af
+	IL_2367:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_I2
+	IL_236c:  br IL_282d
 
 	IL_2371:  br IL_237b
 
@@ -3839,7 +3839,7 @@
 
 	IL_237f:  nop 
 	IL_2380:  nop 
-	IL_2381:  ldstr "stind.r4"
+	IL_2381:  ldstr "stind.i4"
 	IL_2386:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_238b:  stloc 0
 
@@ -3854,8 +3854,8 @@
 
 	IL_23a1:  br IL_23b5
 
-	IL_23a6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_R4
-	IL_23ab:  br IL_27af
+	IL_23a6:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_I4
+	IL_23ab:  br IL_282d
 
 	IL_23b0:  br IL_23ba
 
@@ -3865,7 +3865,7 @@
 
 	IL_23be:  nop 
 	IL_23bf:  nop 
-	IL_23c0:  ldstr "stind.r8"
+	IL_23c0:  ldstr "stind.i8"
 	IL_23c5:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_23ca:  stloc 0
 
@@ -3880,8 +3880,8 @@
 
 	IL_23e0:  br IL_23f4
 
-	IL_23e5:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_R8
-	IL_23ea:  br IL_27af
+	IL_23e5:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_I8
+	IL_23ea:  br IL_282d
 
 	IL_23ef:  br IL_23f9
 
@@ -3891,7 +3891,7 @@
 
 	IL_23fd:  nop 
 	IL_23fe:  nop 
-	IL_23ff:  ldstr "stind.ref"
+	IL_23ff:  ldstr "stind.r4"
 	IL_2404:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2409:  stloc 0
 
@@ -3906,8 +3906,8 @@
 
 	IL_241f:  br IL_2433
 
-	IL_2424:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_Ref
-	IL_2429:  br IL_27af
+	IL_2424:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_R4
+	IL_2429:  br IL_282d
 
 	IL_242e:  br IL_2438
 
@@ -3917,7 +3917,7 @@
 
 	IL_243c:  nop 
 	IL_243d:  nop 
-	IL_243e:  ldstr "stloc"
+	IL_243e:  ldstr "stind.r8"
 	IL_2443:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2448:  stloc 0
 
@@ -3932,8 +3932,8 @@
 
 	IL_245e:  br IL_2472
 
-	IL_2463:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc
-	IL_2468:  br IL_27af
+	IL_2463:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stelem_R8
+	IL_2468:  br IL_282d
 
 	IL_246d:  br IL_2477
 
@@ -3943,7 +3943,7 @@
 
 	IL_247b:  nop 
 	IL_247c:  nop 
-	IL_247d:  ldstr "stloc.s"
+	IL_247d:  ldstr "stind.ref"
 	IL_2482:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2487:  stloc 0
 
@@ -3958,8 +3958,8 @@
 
 	IL_249d:  br IL_24b1
 
-	IL_24a2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc_S
-	IL_24a7:  br IL_27af
+	IL_24a2:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stind_Ref
+	IL_24a7:  br IL_282d
 
 	IL_24ac:  br IL_24b6
 
@@ -3969,7 +3969,7 @@
 
 	IL_24ba:  nop 
 	IL_24bb:  nop 
-	IL_24bc:  ldstr "stloc.0"
+	IL_24bc:  ldstr "stloc"
 	IL_24c1:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_24c6:  stloc 0
 
@@ -3984,8 +3984,8 @@
 
 	IL_24dc:  br IL_24f0
 
-	IL_24e1:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc_0
-	IL_24e6:  br IL_27af
+	IL_24e1:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc
+	IL_24e6:  br IL_282d
 
 	IL_24eb:  br IL_24f5
 
@@ -3995,7 +3995,7 @@
 
 	IL_24f9:  nop 
 	IL_24fa:  nop 
-	IL_24fb:  ldstr "stloc.1"
+	IL_24fb:  ldstr "stloc.s"
 	IL_2500:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2505:  stloc 0
 
@@ -4010,8 +4010,8 @@
 
 	IL_251b:  br IL_252f
 
-	IL_2520:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc_1
-	IL_2525:  br IL_27af
+	IL_2520:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc_S
+	IL_2525:  br IL_282d
 
 	IL_252a:  br IL_2534
 
@@ -4021,7 +4021,7 @@
 
 	IL_2538:  nop 
 	IL_2539:  nop 
-	IL_253a:  ldstr "stloc.2"
+	IL_253a:  ldstr "stloc.0"
 	IL_253f:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2544:  stloc 0
 
@@ -4036,8 +4036,8 @@
 
 	IL_255a:  br IL_256e
 
-	IL_255f:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc_2
-	IL_2564:  br IL_27af
+	IL_255f:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc_0
+	IL_2564:  br IL_282d
 
 	IL_2569:  br IL_2573
 
@@ -4047,7 +4047,7 @@
 
 	IL_2577:  nop 
 	IL_2578:  nop 
-	IL_2579:  ldstr "stloc.3"
+	IL_2579:  ldstr "stloc.1"
 	IL_257e:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2583:  stloc 0
 
@@ -4062,8 +4062,8 @@
 
 	IL_2599:  br IL_25ad
 
-	IL_259e:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc_3
-	IL_25a3:  br IL_27af
+	IL_259e:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc_1
+	IL_25a3:  br IL_282d
 
 	IL_25a8:  br IL_25b2
 
@@ -4073,7 +4073,7 @@
 
 	IL_25b6:  nop 
 	IL_25b7:  nop 
-	IL_25b8:  ldstr "stobj"
+	IL_25b8:  ldstr "stloc.2"
 	IL_25bd:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_25c2:  stloc 0
 
@@ -4088,8 +4088,8 @@
 
 	IL_25d8:  br IL_25ec
 
-	IL_25dd:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stobj
-	IL_25e2:  br IL_27af
+	IL_25dd:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc_2
+	IL_25e2:  br IL_282d
 
 	IL_25e7:  br IL_25f1
 
@@ -4099,7 +4099,7 @@
 
 	IL_25f5:  nop 
 	IL_25f6:  nop 
-	IL_25f7:  ldstr "stsfld"
+	IL_25f7:  ldstr "stloc.3"
 	IL_25fc:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2601:  stloc 0
 
@@ -4114,8 +4114,8 @@
 
 	IL_2617:  br IL_262b
 
-	IL_261c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stsfld
-	IL_2621:  br IL_27af
+	IL_261c:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stloc_3
+	IL_2621:  br IL_282d
 
 	IL_2626:  br IL_2630
 
@@ -4125,7 +4125,7 @@
 
 	IL_2634:  nop 
 	IL_2635:  nop 
-	IL_2636:  ldstr "sub"
+	IL_2636:  ldstr "stobj"
 	IL_263b:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_2640:  stloc 0
 
@@ -4140,8 +4140,8 @@
 
 	IL_2656:  br IL_266a
 
-	IL_265b:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Sub
-	IL_2660:  br IL_27af
+	IL_265b:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stobj
+	IL_2660:  br IL_282d
 
 	IL_2665:  br IL_266f
 
@@ -4151,7 +4151,7 @@
 
 	IL_2673:  nop 
 	IL_2674:  nop 
-	IL_2675:  ldstr "sub.ovf"
+	IL_2675:  ldstr "stsfld"
 	IL_267a:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_267f:  stloc 0
 
@@ -4166,8 +4166,8 @@
 
 	IL_2695:  br IL_26a9
 
-	IL_269a:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Sub_Ovf
-	IL_269f:  br IL_27af
+	IL_269a:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Stsfld
+	IL_269f:  br IL_282d
 
 	IL_26a4:  br IL_26ae
 
@@ -4177,7 +4177,7 @@
 
 	IL_26b2:  nop 
 	IL_26b3:  nop 
-	IL_26b4:  ldstr "throw"
+	IL_26b4:  ldstr "sub"
 	IL_26b9:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_26be:  stloc 0
 
@@ -4192,8 +4192,8 @@
 
 	IL_26d4:  br IL_26e8
 
-	IL_26d9:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Throw
-	IL_26de:  br IL_27af
+	IL_26d9:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Sub
+	IL_26de:  br IL_282d
 
 	IL_26e3:  br IL_26ed
 
@@ -4203,7 +4203,7 @@
 
 	IL_26f1:  nop 
 	IL_26f2:  nop 
-	IL_26f3:  ldstr "unbox"
+	IL_26f3:  ldstr "sub.ovf"
 	IL_26f8:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_26fd:  stloc 0
 
@@ -4218,8 +4218,8 @@
 
 	IL_2713:  br IL_2727
 
-	IL_2718:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Unbox
-	IL_271d:  br IL_27af
+	IL_2718:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Sub_Ovf
+	IL_271d:  br IL_282d
 
 	IL_2722:  br IL_272c
 
@@ -4229,7 +4229,7 @@
 
 	IL_2730:  nop 
 	IL_2731:  nop 
-	IL_2732:  ldstr "unbox.any"
+	IL_2732:  ldstr "throw"
 	IL_2737:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_273c:  stloc 0
 
@@ -4244,8 +4244,8 @@
 
 	IL_2752:  br IL_2766
 
-	IL_2757:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Unbox_Any
-	IL_275c:  br IL_27af
+	IL_2757:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Throw
+	IL_275c:  br IL_282d
 
 	IL_2761:  br IL_276b
 
@@ -4255,7 +4255,7 @@
 
 	IL_276f:  nop 
 	IL_2770:  nop 
-	IL_2771:  ldstr "xor"
+	IL_2771:  ldstr "unbox"
 	IL_2776:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
 	IL_277b:  stloc 0
 
@@ -4270,22 +4270,74 @@
 
 	IL_2791:  br IL_27a5
 
-	IL_2796:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Xor
-	IL_279b:  br IL_27af
+	IL_2796:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Unbox
+	IL_279b:  br IL_282d
 
 	IL_27a0:  br IL_27aa
 
 	IL_27a5:  br IL_27aa
 
-	IL_27aa:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Nop
-	IL_27af:  ret 
+	IL_27aa:  ldarg 0
+
+	IL_27ae:  nop 
+	IL_27af:  nop 
+	IL_27b0:  ldstr "unbox.any"
+	IL_27b5:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
+	IL_27ba:  stloc 0
+
+	IL_27be:  nop 
+	IL_27bf:  nop 
+	IL_27c0:  ldloc 0
+
+	IL_27c4:  nop 
+	IL_27c5:  nop 
+	IL_27c6:  ldc.i4 1
+	IL_27cb:  beq IL_27d5
+
+	IL_27d0:  br IL_27e4
+
+	IL_27d5:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Unbox_Any
+	IL_27da:  br IL_282d
+
+	IL_27df:  br IL_27e9
+
+	IL_27e4:  br IL_27e9
+
+	IL_27e9:  ldarg 0
+
+	IL_27ed:  nop 
+	IL_27ee:  nop 
+	IL_27ef:  ldstr "xor"
+	IL_27f4:  call bool class dylan.NET.Reflection.InstructionHelper::compStr(string, string)
+	IL_27f9:  stloc 0
+
+	IL_27fd:  nop 
+	IL_27fe:  nop 
+	IL_27ff:  ldloc 0
+
+	IL_2803:  nop 
+	IL_2804:  nop 
+	IL_2805:  ldc.i4 1
+	IL_280a:  beq IL_2814
+
+	IL_280f:  br IL_2823
+
+	IL_2814:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Xor
+	IL_2819:  br IL_282d
+
+	IL_281e:  br IL_2828
+
+	IL_2823:  br IL_2828
+
+	IL_2828:  ldsfld valuetype [mscorlib]System.Reflection.Emit.OpCode [mscorlib]System.Reflection.Emit.OpCodes::Nop
+	IL_282d:  ret 
     } // end of method InstructionHelper::getOPCode
 
     // method line 3
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x485c
+        // Method begins at RVA 0x48dc
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4314,7 +4366,7 @@
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4870
+        // Method begins at RVA 0x48f0
 	// Code size 59 (0x3b)
 	.maxstack 1
 	IL_0000:  ldnull 
@@ -4338,7 +4390,7 @@
     .method public static 
            default void EmitRet ()  cil managed 
     {
-        // Method begins at RVA 0x48b8
+        // Method begins at RVA 0x4938
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -4362,7 +4414,7 @@
     .method public static 
            default void EmitPop ()  cil managed 
     {
-        // Method begins at RVA 0x48e8
+        // Method begins at RVA 0x4968
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -4384,9 +4436,121 @@
 
     // method line 7
     .method public static 
+           default void EmitBox (class [mscorlib]System.Type t)  cil managed 
+    {
+        // Method begins at RVA 0x4998
+	// Code size 39 (0x27)
+	.maxstack 3
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0)
+	IL_0000:  ldstr "box"
+	IL_0005:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_000a:  stloc 0
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0015:  ldloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  ldarg 0
+
+	IL_001f:  nop 
+	IL_0020:  nop 
+	IL_0021:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Type)
+	IL_0026:  ret 
+    } // end of method ILEmitter::EmitBox
+
+    // method line 8
+    .method public static 
+           default void EmitUnbox (class [mscorlib]System.Type t)  cil managed 
+    {
+        // Method begins at RVA 0x49cc
+	// Code size 39 (0x27)
+	.maxstack 3
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0)
+	IL_0000:  ldstr "unbox"
+	IL_0005:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_000a:  stloc 0
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0015:  ldloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  ldarg 0
+
+	IL_001f:  nop 
+	IL_0020:  nop 
+	IL_0021:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Type)
+	IL_0026:  ret 
+    } // end of method ILEmitter::EmitUnbox
+
+    // method line 9
+    .method public static 
+           default void EmitUnboxAny (class [mscorlib]System.Type t)  cil managed 
+    {
+        // Method begins at RVA 0x4a00
+	// Code size 39 (0x27)
+	.maxstack 3
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0)
+	IL_0000:  ldstr "unbox.any"
+	IL_0005:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_000a:  stloc 0
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0015:  ldloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  ldarg 0
+
+	IL_001f:  nop 
+	IL_0020:  nop 
+	IL_0021:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Type)
+	IL_0026:  ret 
+    } // end of method ILEmitter::EmitUnboxAny
+
+    // method line 10
+    .method public static 
+           default void EmitConstrained (class [mscorlib]System.Type t)  cil managed 
+    {
+        // Method begins at RVA 0x4a34
+	// Code size 39 (0x27)
+	.maxstack 3
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0)
+	IL_0000:  ldstr "constrained."
+	IL_0005:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_000a:  stloc 0
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0015:  ldloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  ldarg 0
+
+	IL_001f:  nop 
+	IL_0020:  nop 
+	IL_0021:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Type)
+	IL_0026:  ret 
+    } // end of method ILEmitter::EmitConstrained
+
+    // method line 11
+    .method public static 
            default void EmitLdloc (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x4918
+        // Method begins at RVA 0x4a68
 	// Code size 580 (0x244)
 	.maxstack 32
 	.locals init (
@@ -4645,11 +4809,11 @@
 	IL_0243:  ret 
     } // end of method ILEmitter::EmitLdloc
 
-    // method line 8
+    // method line 12
     .method public static 
            default void EmitLdloca (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x4b68
+        // Method begins at RVA 0x4cb8
 	// Code size 308 (0x134)
 	.maxstack 16
 	.locals init (
@@ -4800,11 +4964,11 @@
 	IL_0133:  ret 
     } // end of method ILEmitter::EmitLdloca
 
-    // method line 9
+    // method line 13
     .method public static 
            default void EmitLdarg (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x4ca8
+        // Method begins at RVA 0x4df8
 	// Code size 580 (0x244)
 	.maxstack 32
 	.locals init (
@@ -5063,11 +5227,11 @@
 	IL_0243:  ret 
     } // end of method ILEmitter::EmitLdarg
 
-    // method line 10
+    // method line 14
     .method public static 
            default void EmitLdarga (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x4ef8
+        // Method begins at RVA 0x5048
 	// Code size 308 (0x134)
 	.maxstack 16
 	.locals init (
@@ -5218,11 +5382,11 @@
 	IL_0133:  ret 
     } // end of method ILEmitter::EmitLdarga
 
-    // method line 11
+    // method line 15
     .method public static 
            default void EmitStloc (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x5038
+        // Method begins at RVA 0x5188
 	// Code size 580 (0x244)
 	.maxstack 32
 	.locals init (
@@ -5481,11 +5645,11 @@
 	IL_0243:  ret 
     } // end of method ILEmitter::EmitStloc
 
-    // method line 12
+    // method line 16
     .method public static 
            default void EmitStarg (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x5288
+        // Method begins at RVA 0x53d8
 	// Code size 308 (0x134)
 	.maxstack 16
 	.locals init (
@@ -5636,11 +5800,11 @@
 	IL_0133:  ret 
     } // end of method ILEmitter::EmitStarg
 
-    // method line 13
+    // method line 17
     .method public static 
            default void EmitStfld (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x53c8
+        // Method begins at RVA 0x5518
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -5664,11 +5828,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitStfld
 
-    // method line 14
+    // method line 18
     .method public static 
            default void EmitStsfld (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x53fc
+        // Method begins at RVA 0x554c
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -5692,11 +5856,1023 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitStsfld
 
-    // method line 15
+    // method line 19
+    .method public static 
+           default void EmitStelem (class [mscorlib]System.Type typ)  cil managed 
+    {
+        // Method begins at RVA 0x5580
+	// Code size 981 (0x3d5)
+	.maxstack 37
+	.locals init (
+		class [mscorlib]System.Type	V_0,
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_1,
+		bool	V_2)
+	IL_0000:  ldc.i4 0
+	IL_0005:  stloc 2
+
+	IL_0009:  nop 
+	IL_000a:  nop 
+	IL_000b:  ldtoken [mscorlib]System.IntPtr
+	IL_0010:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0015:  stloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  ldloc 0
+
+	IL_001f:  nop 
+	IL_0020:  nop 
+	IL_0021:  ldarg 0
+
+	IL_0025:  nop 
+	IL_0026:  nop 
+	IL_0027:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_002c:  stloc 2
+
+	IL_0030:  nop 
+	IL_0031:  nop 
+	IL_0032:  ldloc 2
+
+	IL_0036:  nop 
+	IL_0037:  nop 
+	IL_0038:  ldc.i4 1
+	IL_003d:  beq IL_0047
+
+	IL_0042:  br IL_0071
+
+	IL_0047:  ldstr "stelem.i"
+	IL_004c:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0051:  stloc 1
+
+	IL_0055:  nop 
+	IL_0056:  nop 
+	IL_0057:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_005c:  ldloc 1
+
+	IL_0060:  nop 
+	IL_0061:  nop 
+	IL_0062:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_0067:  br IL_03d4
+
+	IL_006c:  br IL_0076
+
+	IL_0071:  br IL_0076
+
+	IL_0076:  ldtoken [mscorlib]System.SByte
+	IL_007b:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0080:  stloc 0
+
+	IL_0084:  nop 
+	IL_0085:  nop 
+	IL_0086:  ldloc 0
+
+	IL_008a:  nop 
+	IL_008b:  nop 
+	IL_008c:  ldarg 0
+
+	IL_0090:  nop 
+	IL_0091:  nop 
+	IL_0092:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_0097:  stloc 2
+
+	IL_009b:  nop 
+	IL_009c:  nop 
+	IL_009d:  ldloc 2
+
+	IL_00a1:  nop 
+	IL_00a2:  nop 
+	IL_00a3:  ldc.i4 1
+	IL_00a8:  beq IL_00b2
+
+	IL_00ad:  br IL_00dc
+
+	IL_00b2:  ldstr "stelem.i1"
+	IL_00b7:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_00bc:  stloc 1
+
+	IL_00c0:  nop 
+	IL_00c1:  nop 
+	IL_00c2:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_00c7:  ldloc 1
+
+	IL_00cb:  nop 
+	IL_00cc:  nop 
+	IL_00cd:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_00d2:  br IL_03d4
+
+	IL_00d7:  br IL_00e1
+
+	IL_00dc:  br IL_00e1
+
+	IL_00e1:  ldtoken [mscorlib]System.Int16
+	IL_00e6:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_00eb:  stloc 0
+
+	IL_00ef:  nop 
+	IL_00f0:  nop 
+	IL_00f1:  ldloc 0
+
+	IL_00f5:  nop 
+	IL_00f6:  nop 
+	IL_00f7:  ldarg 0
+
+	IL_00fb:  nop 
+	IL_00fc:  nop 
+	IL_00fd:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_0102:  stloc 2
+
+	IL_0106:  nop 
+	IL_0107:  nop 
+	IL_0108:  ldloc 2
+
+	IL_010c:  nop 
+	IL_010d:  nop 
+	IL_010e:  ldc.i4 1
+	IL_0113:  beq IL_011d
+
+	IL_0118:  br IL_0147
+
+	IL_011d:  ldstr "stelem.i2"
+	IL_0122:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0127:  stloc 1
+
+	IL_012b:  nop 
+	IL_012c:  nop 
+	IL_012d:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0132:  ldloc 1
+
+	IL_0136:  nop 
+	IL_0137:  nop 
+	IL_0138:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_013d:  br IL_03d4
+
+	IL_0142:  br IL_014c
+
+	IL_0147:  br IL_014c
+
+	IL_014c:  ldtoken [mscorlib]System.Int32
+	IL_0151:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0156:  stloc 0
+
+	IL_015a:  nop 
+	IL_015b:  nop 
+	IL_015c:  ldloc 0
+
+	IL_0160:  nop 
+	IL_0161:  nop 
+	IL_0162:  ldarg 0
+
+	IL_0166:  nop 
+	IL_0167:  nop 
+	IL_0168:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_016d:  stloc 2
+
+	IL_0171:  nop 
+	IL_0172:  nop 
+	IL_0173:  ldloc 2
+
+	IL_0177:  nop 
+	IL_0178:  nop 
+	IL_0179:  ldc.i4 1
+	IL_017e:  beq IL_0188
+
+	IL_0183:  br IL_01b2
+
+	IL_0188:  ldstr "stelem.i4"
+	IL_018d:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0192:  stloc 1
+
+	IL_0196:  nop 
+	IL_0197:  nop 
+	IL_0198:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_019d:  ldloc 1
+
+	IL_01a1:  nop 
+	IL_01a2:  nop 
+	IL_01a3:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_01a8:  br IL_03d4
+
+	IL_01ad:  br IL_01b7
+
+	IL_01b2:  br IL_01b7
+
+	IL_01b7:  ldtoken [mscorlib]System.Int64
+	IL_01bc:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_01c1:  stloc 0
+
+	IL_01c5:  nop 
+	IL_01c6:  nop 
+	IL_01c7:  ldloc 0
+
+	IL_01cb:  nop 
+	IL_01cc:  nop 
+	IL_01cd:  ldarg 0
+
+	IL_01d1:  nop 
+	IL_01d2:  nop 
+	IL_01d3:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_01d8:  stloc 2
+
+	IL_01dc:  nop 
+	IL_01dd:  nop 
+	IL_01de:  ldloc 2
+
+	IL_01e2:  nop 
+	IL_01e3:  nop 
+	IL_01e4:  ldc.i4 1
+	IL_01e9:  beq IL_01f3
+
+	IL_01ee:  br IL_021d
+
+	IL_01f3:  ldstr "stelem.i8"
+	IL_01f8:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_01fd:  stloc 1
+
+	IL_0201:  nop 
+	IL_0202:  nop 
+	IL_0203:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0208:  ldloc 1
+
+	IL_020c:  nop 
+	IL_020d:  nop 
+	IL_020e:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_0213:  br IL_03d4
+
+	IL_0218:  br IL_0222
+
+	IL_021d:  br IL_0222
+
+	IL_0222:  ldtoken [mscorlib]System.Single
+	IL_0227:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_022c:  stloc 0
+
+	IL_0230:  nop 
+	IL_0231:  nop 
+	IL_0232:  ldloc 0
+
+	IL_0236:  nop 
+	IL_0237:  nop 
+	IL_0238:  ldarg 0
+
+	IL_023c:  nop 
+	IL_023d:  nop 
+	IL_023e:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_0243:  stloc 2
+
+	IL_0247:  nop 
+	IL_0248:  nop 
+	IL_0249:  ldloc 2
+
+	IL_024d:  nop 
+	IL_024e:  nop 
+	IL_024f:  ldc.i4 1
+	IL_0254:  beq IL_025e
+
+	IL_0259:  br IL_0288
+
+	IL_025e:  ldstr "stelem.r4"
+	IL_0263:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0268:  stloc 1
+
+	IL_026c:  nop 
+	IL_026d:  nop 
+	IL_026e:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0273:  ldloc 1
+
+	IL_0277:  nop 
+	IL_0278:  nop 
+	IL_0279:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_027e:  br IL_03d4
+
+	IL_0283:  br IL_028d
+
+	IL_0288:  br IL_028d
+
+	IL_028d:  ldtoken [mscorlib]System.Double
+	IL_0292:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0297:  stloc 0
+
+	IL_029b:  nop 
+	IL_029c:  nop 
+	IL_029d:  ldloc 0
+
+	IL_02a1:  nop 
+	IL_02a2:  nop 
+	IL_02a3:  ldarg 0
+
+	IL_02a7:  nop 
+	IL_02a8:  nop 
+	IL_02a9:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_02ae:  stloc 2
+
+	IL_02b2:  nop 
+	IL_02b3:  nop 
+	IL_02b4:  ldloc 2
+
+	IL_02b8:  nop 
+	IL_02b9:  nop 
+	IL_02ba:  ldc.i4 1
+	IL_02bf:  beq IL_02c9
+
+	IL_02c4:  br IL_02f3
+
+	IL_02c9:  ldstr "stelem.r8"
+	IL_02ce:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_02d3:  stloc 1
+
+	IL_02d7:  nop 
+	IL_02d8:  nop 
+	IL_02d9:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_02de:  ldloc 1
+
+	IL_02e2:  nop 
+	IL_02e3:  nop 
+	IL_02e4:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_02e9:  br IL_03d4
+
+	IL_02ee:  br IL_02f8
+
+	IL_02f3:  br IL_02f8
+
+	IL_02f8:  ldtoken [mscorlib]System.ValueType
+	IL_02fd:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0302:  stloc 0
+
+	IL_0306:  nop 
+	IL_0307:  nop 
+	IL_0308:  ldloc 0
+
+	IL_030c:  nop 
+	IL_030d:  nop 
+	IL_030e:  ldarg 0
+
+	IL_0312:  nop 
+	IL_0313:  nop 
+	IL_0314:  callvirt instance bool class [mscorlib]System.Type::IsAssignableFrom(class [mscorlib]System.Type)
+	IL_0319:  stloc 2
+
+	IL_031d:  nop 
+	IL_031e:  nop 
+	IL_031f:  ldloc 2
+
+	IL_0323:  nop 
+	IL_0324:  nop 
+	IL_0325:  ldc.i4 1
+	IL_032a:  beq IL_0334
+
+	IL_032f:  br IL_0364
+
+	IL_0334:  ldstr "stelem"
+	IL_0339:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_033e:  stloc 1
+
+	IL_0342:  nop 
+	IL_0343:  nop 
+	IL_0344:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0349:  ldloc 1
+
+	IL_034d:  nop 
+	IL_034e:  nop 
+	IL_034f:  ldarg 0
+
+	IL_0353:  nop 
+	IL_0354:  nop 
+	IL_0355:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Type)
+	IL_035a:  br IL_03d4
+
+	IL_035f:  br IL_0369
+
+	IL_0364:  br IL_0369
+
+	IL_0369:  ldtoken [mscorlib]System.Object
+	IL_036e:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0373:  stloc 0
+
+	IL_0377:  nop 
+	IL_0378:  nop 
+	IL_0379:  ldloc 0
+
+	IL_037d:  nop 
+	IL_037e:  nop 
+	IL_037f:  ldarg 0
+
+	IL_0383:  nop 
+	IL_0384:  nop 
+	IL_0385:  callvirt instance bool class [mscorlib]System.Type::IsAssignableFrom(class [mscorlib]System.Type)
+	IL_038a:  stloc 2
+
+	IL_038e:  nop 
+	IL_038f:  nop 
+	IL_0390:  ldloc 2
+
+	IL_0394:  nop 
+	IL_0395:  nop 
+	IL_0396:  ldc.i4 1
+	IL_039b:  beq IL_03a5
+
+	IL_03a0:  br IL_03cf
+
+	IL_03a5:  ldstr "stelem.ref"
+	IL_03aa:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_03af:  stloc 1
+
+	IL_03b3:  nop 
+	IL_03b4:  nop 
+	IL_03b5:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_03ba:  ldloc 1
+
+	IL_03be:  nop 
+	IL_03bf:  nop 
+	IL_03c0:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_03c5:  br IL_03d4
+
+	IL_03ca:  br IL_03d4
+
+	IL_03cf:  br IL_03d4
+
+	IL_03d4:  ret 
+    } // end of method ILEmitter::EmitStelem
+
+    // method line 20
+    .method public static 
+           default void EmitLdelem (class [mscorlib]System.Type typ)  cil managed 
+    {
+        // Method begins at RVA 0x5964
+	// Code size 1302 (0x516)
+	.maxstack 49
+	.locals init (
+		class [mscorlib]System.Type	V_0,
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_1,
+		bool	V_2)
+	IL_0000:  ldc.i4 0
+	IL_0005:  stloc 2
+
+	IL_0009:  nop 
+	IL_000a:  nop 
+	IL_000b:  ldtoken [mscorlib]System.IntPtr
+	IL_0010:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0015:  stloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  ldloc 0
+
+	IL_001f:  nop 
+	IL_0020:  nop 
+	IL_0021:  ldarg 0
+
+	IL_0025:  nop 
+	IL_0026:  nop 
+	IL_0027:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_002c:  stloc 2
+
+	IL_0030:  nop 
+	IL_0031:  nop 
+	IL_0032:  ldloc 2
+
+	IL_0036:  nop 
+	IL_0037:  nop 
+	IL_0038:  ldc.i4 1
+	IL_003d:  beq IL_0047
+
+	IL_0042:  br IL_0071
+
+	IL_0047:  ldstr "ldelem.i"
+	IL_004c:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0051:  stloc 1
+
+	IL_0055:  nop 
+	IL_0056:  nop 
+	IL_0057:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_005c:  ldloc 1
+
+	IL_0060:  nop 
+	IL_0061:  nop 
+	IL_0062:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_0067:  br IL_0515
+
+	IL_006c:  br IL_0076
+
+	IL_0071:  br IL_0076
+
+	IL_0076:  ldtoken [mscorlib]System.SByte
+	IL_007b:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0080:  stloc 0
+
+	IL_0084:  nop 
+	IL_0085:  nop 
+	IL_0086:  ldloc 0
+
+	IL_008a:  nop 
+	IL_008b:  nop 
+	IL_008c:  ldarg 0
+
+	IL_0090:  nop 
+	IL_0091:  nop 
+	IL_0092:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_0097:  stloc 2
+
+	IL_009b:  nop 
+	IL_009c:  nop 
+	IL_009d:  ldloc 2
+
+	IL_00a1:  nop 
+	IL_00a2:  nop 
+	IL_00a3:  ldc.i4 1
+	IL_00a8:  beq IL_00b2
+
+	IL_00ad:  br IL_00dc
+
+	IL_00b2:  ldstr "ldelem.i1"
+	IL_00b7:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_00bc:  stloc 1
+
+	IL_00c0:  nop 
+	IL_00c1:  nop 
+	IL_00c2:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_00c7:  ldloc 1
+
+	IL_00cb:  nop 
+	IL_00cc:  nop 
+	IL_00cd:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_00d2:  br IL_0515
+
+	IL_00d7:  br IL_00e1
+
+	IL_00dc:  br IL_00e1
+
+	IL_00e1:  ldtoken [mscorlib]System.Int16
+	IL_00e6:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_00eb:  stloc 0
+
+	IL_00ef:  nop 
+	IL_00f0:  nop 
+	IL_00f1:  ldloc 0
+
+	IL_00f5:  nop 
+	IL_00f6:  nop 
+	IL_00f7:  ldarg 0
+
+	IL_00fb:  nop 
+	IL_00fc:  nop 
+	IL_00fd:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_0102:  stloc 2
+
+	IL_0106:  nop 
+	IL_0107:  nop 
+	IL_0108:  ldloc 2
+
+	IL_010c:  nop 
+	IL_010d:  nop 
+	IL_010e:  ldc.i4 1
+	IL_0113:  beq IL_011d
+
+	IL_0118:  br IL_0147
+
+	IL_011d:  ldstr "ldelem.i2"
+	IL_0122:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0127:  stloc 1
+
+	IL_012b:  nop 
+	IL_012c:  nop 
+	IL_012d:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0132:  ldloc 1
+
+	IL_0136:  nop 
+	IL_0137:  nop 
+	IL_0138:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_013d:  br IL_0515
+
+	IL_0142:  br IL_014c
+
+	IL_0147:  br IL_014c
+
+	IL_014c:  ldtoken [mscorlib]System.Int32
+	IL_0151:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0156:  stloc 0
+
+	IL_015a:  nop 
+	IL_015b:  nop 
+	IL_015c:  ldloc 0
+
+	IL_0160:  nop 
+	IL_0161:  nop 
+	IL_0162:  ldarg 0
+
+	IL_0166:  nop 
+	IL_0167:  nop 
+	IL_0168:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_016d:  stloc 2
+
+	IL_0171:  nop 
+	IL_0172:  nop 
+	IL_0173:  ldloc 2
+
+	IL_0177:  nop 
+	IL_0178:  nop 
+	IL_0179:  ldc.i4 1
+	IL_017e:  beq IL_0188
+
+	IL_0183:  br IL_01b2
+
+	IL_0188:  ldstr "ldelem.i4"
+	IL_018d:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0192:  stloc 1
+
+	IL_0196:  nop 
+	IL_0197:  nop 
+	IL_0198:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_019d:  ldloc 1
+
+	IL_01a1:  nop 
+	IL_01a2:  nop 
+	IL_01a3:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_01a8:  br IL_0515
+
+	IL_01ad:  br IL_01b7
+
+	IL_01b2:  br IL_01b7
+
+	IL_01b7:  ldtoken [mscorlib]System.Byte
+	IL_01bc:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_01c1:  stloc 0
+
+	IL_01c5:  nop 
+	IL_01c6:  nop 
+	IL_01c7:  ldloc 0
+
+	IL_01cb:  nop 
+	IL_01cc:  nop 
+	IL_01cd:  ldarg 0
+
+	IL_01d1:  nop 
+	IL_01d2:  nop 
+	IL_01d3:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_01d8:  stloc 2
+
+	IL_01dc:  nop 
+	IL_01dd:  nop 
+	IL_01de:  ldloc 2
+
+	IL_01e2:  nop 
+	IL_01e3:  nop 
+	IL_01e4:  ldc.i4 1
+	IL_01e9:  beq IL_01f3
+
+	IL_01ee:  br IL_021d
+
+	IL_01f3:  ldstr "ldelem.u1"
+	IL_01f8:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_01fd:  stloc 1
+
+	IL_0201:  nop 
+	IL_0202:  nop 
+	IL_0203:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0208:  ldloc 1
+
+	IL_020c:  nop 
+	IL_020d:  nop 
+	IL_020e:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_0213:  br IL_0515
+
+	IL_0218:  br IL_0222
+
+	IL_021d:  br IL_0222
+
+	IL_0222:  ldtoken [mscorlib]System.UInt16
+	IL_0227:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_022c:  stloc 0
+
+	IL_0230:  nop 
+	IL_0231:  nop 
+	IL_0232:  ldloc 0
+
+	IL_0236:  nop 
+	IL_0237:  nop 
+	IL_0238:  ldarg 0
+
+	IL_023c:  nop 
+	IL_023d:  nop 
+	IL_023e:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_0243:  stloc 2
+
+	IL_0247:  nop 
+	IL_0248:  nop 
+	IL_0249:  ldloc 2
+
+	IL_024d:  nop 
+	IL_024e:  nop 
+	IL_024f:  ldc.i4 1
+	IL_0254:  beq IL_025e
+
+	IL_0259:  br IL_0288
+
+	IL_025e:  ldstr "ldelem.u2"
+	IL_0263:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0268:  stloc 1
+
+	IL_026c:  nop 
+	IL_026d:  nop 
+	IL_026e:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0273:  ldloc 1
+
+	IL_0277:  nop 
+	IL_0278:  nop 
+	IL_0279:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_027e:  br IL_0515
+
+	IL_0283:  br IL_028d
+
+	IL_0288:  br IL_028d
+
+	IL_028d:  ldtoken [mscorlib]System.UInt32
+	IL_0292:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0297:  stloc 0
+
+	IL_029b:  nop 
+	IL_029c:  nop 
+	IL_029d:  ldloc 0
+
+	IL_02a1:  nop 
+	IL_02a2:  nop 
+	IL_02a3:  ldarg 0
+
+	IL_02a7:  nop 
+	IL_02a8:  nop 
+	IL_02a9:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_02ae:  stloc 2
+
+	IL_02b2:  nop 
+	IL_02b3:  nop 
+	IL_02b4:  ldloc 2
+
+	IL_02b8:  nop 
+	IL_02b9:  nop 
+	IL_02ba:  ldc.i4 1
+	IL_02bf:  beq IL_02c9
+
+	IL_02c4:  br IL_02f3
+
+	IL_02c9:  ldstr "ldelem.u4"
+	IL_02ce:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_02d3:  stloc 1
+
+	IL_02d7:  nop 
+	IL_02d8:  nop 
+	IL_02d9:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_02de:  ldloc 1
+
+	IL_02e2:  nop 
+	IL_02e3:  nop 
+	IL_02e4:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_02e9:  br IL_0515
+
+	IL_02ee:  br IL_02f8
+
+	IL_02f3:  br IL_02f8
+
+	IL_02f8:  ldtoken [mscorlib]System.Int64
+	IL_02fd:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0302:  stloc 0
+
+	IL_0306:  nop 
+	IL_0307:  nop 
+	IL_0308:  ldloc 0
+
+	IL_030c:  nop 
+	IL_030d:  nop 
+	IL_030e:  ldarg 0
+
+	IL_0312:  nop 
+	IL_0313:  nop 
+	IL_0314:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_0319:  stloc 2
+
+	IL_031d:  nop 
+	IL_031e:  nop 
+	IL_031f:  ldloc 2
+
+	IL_0323:  nop 
+	IL_0324:  nop 
+	IL_0325:  ldc.i4 1
+	IL_032a:  beq IL_0334
+
+	IL_032f:  br IL_035e
+
+	IL_0334:  ldstr "ldelem.i8"
+	IL_0339:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_033e:  stloc 1
+
+	IL_0342:  nop 
+	IL_0343:  nop 
+	IL_0344:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0349:  ldloc 1
+
+	IL_034d:  nop 
+	IL_034e:  nop 
+	IL_034f:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_0354:  br IL_0515
+
+	IL_0359:  br IL_0363
+
+	IL_035e:  br IL_0363
+
+	IL_0363:  ldtoken [mscorlib]System.Single
+	IL_0368:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_036d:  stloc 0
+
+	IL_0371:  nop 
+	IL_0372:  nop 
+	IL_0373:  ldloc 0
+
+	IL_0377:  nop 
+	IL_0378:  nop 
+	IL_0379:  ldarg 0
+
+	IL_037d:  nop 
+	IL_037e:  nop 
+	IL_037f:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_0384:  stloc 2
+
+	IL_0388:  nop 
+	IL_0389:  nop 
+	IL_038a:  ldloc 2
+
+	IL_038e:  nop 
+	IL_038f:  nop 
+	IL_0390:  ldc.i4 1
+	IL_0395:  beq IL_039f
+
+	IL_039a:  br IL_03c9
+
+	IL_039f:  ldstr "ldelem.r4"
+	IL_03a4:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_03a9:  stloc 1
+
+	IL_03ad:  nop 
+	IL_03ae:  nop 
+	IL_03af:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_03b4:  ldloc 1
+
+	IL_03b8:  nop 
+	IL_03b9:  nop 
+	IL_03ba:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_03bf:  br IL_0515
+
+	IL_03c4:  br IL_03ce
+
+	IL_03c9:  br IL_03ce
+
+	IL_03ce:  ldtoken [mscorlib]System.Double
+	IL_03d3:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_03d8:  stloc 0
+
+	IL_03dc:  nop 
+	IL_03dd:  nop 
+	IL_03de:  ldloc 0
+
+	IL_03e2:  nop 
+	IL_03e3:  nop 
+	IL_03e4:  ldarg 0
+
+	IL_03e8:  nop 
+	IL_03e9:  nop 
+	IL_03ea:  callvirt instance bool class [mscorlib]System.Type::Equals(class [mscorlib]System.Type)
+	IL_03ef:  stloc 2
+
+	IL_03f3:  nop 
+	IL_03f4:  nop 
+	IL_03f5:  ldloc 2
+
+	IL_03f9:  nop 
+	IL_03fa:  nop 
+	IL_03fb:  ldc.i4 1
+	IL_0400:  beq IL_040a
+
+	IL_0405:  br IL_0434
+
+	IL_040a:  ldstr "ldelem.r8"
+	IL_040f:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0414:  stloc 1
+
+	IL_0418:  nop 
+	IL_0419:  nop 
+	IL_041a:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_041f:  ldloc 1
+
+	IL_0423:  nop 
+	IL_0424:  nop 
+	IL_0425:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_042a:  br IL_0515
+
+	IL_042f:  br IL_0439
+
+	IL_0434:  br IL_0439
+
+	IL_0439:  ldtoken [mscorlib]System.ValueType
+	IL_043e:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0443:  stloc 0
+
+	IL_0447:  nop 
+	IL_0448:  nop 
+	IL_0449:  ldloc 0
+
+	IL_044d:  nop 
+	IL_044e:  nop 
+	IL_044f:  ldarg 0
+
+	IL_0453:  nop 
+	IL_0454:  nop 
+	IL_0455:  callvirt instance bool class [mscorlib]System.Type::IsAssignableFrom(class [mscorlib]System.Type)
+	IL_045a:  stloc 2
+
+	IL_045e:  nop 
+	IL_045f:  nop 
+	IL_0460:  ldloc 2
+
+	IL_0464:  nop 
+	IL_0465:  nop 
+	IL_0466:  ldc.i4 1
+	IL_046b:  beq IL_0475
+
+	IL_0470:  br IL_04a5
+
+	IL_0475:  ldstr "ldelem"
+	IL_047a:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_047f:  stloc 1
+
+	IL_0483:  nop 
+	IL_0484:  nop 
+	IL_0485:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_048a:  ldloc 1
+
+	IL_048e:  nop 
+	IL_048f:  nop 
+	IL_0490:  ldarg 0
+
+	IL_0494:  nop 
+	IL_0495:  nop 
+	IL_0496:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Type)
+	IL_049b:  br IL_0515
+
+	IL_04a0:  br IL_04aa
+
+	IL_04a5:  br IL_04aa
+
+	IL_04aa:  ldtoken [mscorlib]System.Object
+	IL_04af:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_04b4:  stloc 0
+
+	IL_04b8:  nop 
+	IL_04b9:  nop 
+	IL_04ba:  ldloc 0
+
+	IL_04be:  nop 
+	IL_04bf:  nop 
+	IL_04c0:  ldarg 0
+
+	IL_04c4:  nop 
+	IL_04c5:  nop 
+	IL_04c6:  callvirt instance bool class [mscorlib]System.Type::IsAssignableFrom(class [mscorlib]System.Type)
+	IL_04cb:  stloc 2
+
+	IL_04cf:  nop 
+	IL_04d0:  nop 
+	IL_04d1:  ldloc 2
+
+	IL_04d5:  nop 
+	IL_04d6:  nop 
+	IL_04d7:  ldc.i4 1
+	IL_04dc:  beq IL_04e6
+
+	IL_04e1:  br IL_0510
+
+	IL_04e6:  ldstr "ldelem.ref"
+	IL_04eb:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_04f0:  stloc 1
+
+	IL_04f4:  nop 
+	IL_04f5:  nop 
+	IL_04f6:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_04fb:  ldloc 1
+
+	IL_04ff:  nop 
+	IL_0500:  nop 
+	IL_0501:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_0506:  br IL_0515
+
+	IL_050b:  br IL_0515
+
+	IL_0510:  br IL_0515
+
+	IL_0515:  ret 
+    } // end of method ILEmitter::EmitLdelem
+
+    // method line 21
     .method public static 
            default void EmitLdcI8 (int64 n)  cil managed 
     {
-        // Method begins at RVA 0x5430
+        // Method begins at RVA 0x5e88
 	// Code size 1340 (0x53c)
 	.maxstack 54
 	.locals init (
@@ -6226,11 +7402,11 @@
 	IL_053b:  ret 
     } // end of method ILEmitter::EmitLdcI8
 
-    // method line 16
+    // method line 22
     .method public static 
            default void EmitLdcI4 (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x5978
+        // Method begins at RVA 0x63d0
 	// Code size 724 (0x2d4)
 	.maxstack 43
 	.locals init (
@@ -6526,11 +7702,11 @@
 	IL_02d3:  ret 
     } // end of method ILEmitter::EmitLdcI4
 
-    // method line 17
+    // method line 23
     .method public static 
            default void EmitLdcI2 (int16 n)  cil managed 
     {
-        // Method begins at RVA 0x5c58
+        // Method begins at RVA 0x66b0
 	// Code size 1093 (0x445)
 	.maxstack 43
 	.locals init (
@@ -6968,11 +8144,11 @@
 	IL_0444:  ret 
     } // end of method ILEmitter::EmitLdcI2
 
-    // method line 18
+    // method line 24
     .method public static 
            default void EmitLdcI1 (int8 n)  cil managed 
     {
-        // Method begins at RVA 0x60ac
+        // Method begins at RVA 0x6b04
 	// Code size 1093 (0x445)
 	.maxstack 43
 	.locals init (
@@ -7410,11 +8586,11 @@
 	IL_0444:  ret 
     } // end of method ILEmitter::EmitLdcI1
 
-    // method line 19
+    // method line 25
     .method public static 
            default void EmitCallvirt (class [mscorlib]System.Reflection.MethodInfo met)  cil managed 
     {
-        // Method begins at RVA 0x6500
+        // Method begins at RVA 0x6f58
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -7438,11 +8614,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitCallvirt
 
-    // method line 20
+    // method line 26
     .method public static 
            default void EmitCallCtor (class [mscorlib]System.Reflection.ConstructorInfo met)  cil managed 
     {
-        // Method begins at RVA 0x6534
+        // Method begins at RVA 0x6f8c
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -7466,11 +8642,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitCallCtor
 
-    // method line 21
+    // method line 27
     .method public static 
            default void EmitCall (class [mscorlib]System.Reflection.MethodInfo met)  cil managed 
     {
-        // Method begins at RVA 0x6568
+        // Method begins at RVA 0x6fc0
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -7494,11 +8670,67 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitCall
 
-    // method line 22
+    // method line 28
+    .method public static 
+           default void EmitLdftn (class [mscorlib]System.Reflection.MethodInfo met)  cil managed 
+    {
+        // Method begins at RVA 0x6ff4
+	// Code size 39 (0x27)
+	.maxstack 3
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0)
+	IL_0000:  ldstr "ldftn"
+	IL_0005:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_000a:  stloc 0
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0015:  ldloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  ldarg 0
+
+	IL_001f:  nop 
+	IL_0020:  nop 
+	IL_0021:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Reflection.MethodInfo)
+	IL_0026:  ret 
+    } // end of method ILEmitter::EmitLdftn
+
+    // method line 29
+    .method public static 
+           default void EmitLdvirtftn (class [mscorlib]System.Reflection.MethodInfo met)  cil managed 
+    {
+        // Method begins at RVA 0x7028
+	// Code size 39 (0x27)
+	.maxstack 3
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0)
+	IL_0000:  ldstr "ldvirtftn"
+	IL_0005:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_000a:  stloc 0
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0015:  ldloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  ldarg 0
+
+	IL_001f:  nop 
+	IL_0020:  nop 
+	IL_0021:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Reflection.MethodInfo)
+	IL_0026:  ret 
+    } // end of method ILEmitter::EmitLdvirtftn
+
+    // method line 30
     .method public static 
            default void EmitLdfld (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x659c
+        // Method begins at RVA 0x705c
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -7522,11 +8754,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdfld
 
-    // method line 23
+    // method line 31
     .method public static 
            default void EmitLdsfld (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x65d0
+        // Method begins at RVA 0x7090
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -7550,11 +8782,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdsfld
 
-    // method line 24
+    // method line 32
     .method public static 
            default void EmitLdflda (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x6604
+        // Method begins at RVA 0x70c4
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -7578,11 +8810,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdflda
 
-    // method line 25
+    // method line 33
     .method public static 
            default void EmitLdsflda (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x6638
+        // Method begins at RVA 0x70f8
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -7606,11 +8838,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdsflda
 
-    // method line 26
+    // method line 34
     .method public static 
            default void EmitLdstr (string str)  cil managed 
     {
-        // Method begins at RVA 0x666c
+        // Method begins at RVA 0x712c
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -7634,11 +8866,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdstr
 
-    // method line 27
+    // method line 35
     .method public static 
            default void EmitAdd (bool s)  cil managed 
     {
-        // Method begins at RVA 0x66a0
+        // Method begins at RVA 0x7160
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -7683,11 +8915,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitAdd
 
-    // method line 28
+    // method line 36
     .method public static 
            default void EmitDiv (bool s)  cil managed 
     {
-        // Method begins at RVA 0x670c
+        // Method begins at RVA 0x71cc
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -7732,11 +8964,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitDiv
 
-    // method line 29
+    // method line 37
     .method public static 
            default void EmitMul (bool s)  cil managed 
     {
-        // Method begins at RVA 0x6778
+        // Method begins at RVA 0x7238
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -7781,11 +9013,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitMul
 
-    // method line 30
+    // method line 38
     .method public static 
            default void EmitSub (bool s)  cil managed 
     {
-        // Method begins at RVA 0x67e4
+        // Method begins at RVA 0x72a4
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -7830,11 +9062,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitSub
 
-    // method line 31
+    // method line 39
     .method public static 
            default void EmitRem (bool s)  cil managed 
     {
-        // Method begins at RVA 0x6850
+        // Method begins at RVA 0x7310
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -7879,11 +9111,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitRem
 
-    // method line 32
+    // method line 40
     .method public static 
            default void EmitShl ()  cil managed 
     {
-        // Method begins at RVA 0x68bc
+        // Method begins at RVA 0x737c
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -7903,11 +9135,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitShl
 
-    // method line 33
+    // method line 41
     .method public static 
            default void EmitShr (bool s)  cil managed 
     {
-        // Method begins at RVA 0x68ec
+        // Method begins at RVA 0x73ac
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -7952,11 +9184,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitShr
 
-    // method line 34
+    // method line 42
     .method public static 
            default void EmitAnd ()  cil managed 
     {
-        // Method begins at RVA 0x6958
+        // Method begins at RVA 0x7418
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -7976,11 +9208,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitAnd
 
-    // method line 35
+    // method line 43
     .method public static 
            default void EmitOr ()  cil managed 
     {
-        // Method begins at RVA 0x6988
+        // Method begins at RVA 0x7448
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -8000,11 +9232,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitOr
 
-    // method line 36
+    // method line 44
     .method public static 
            default void EmitXor ()  cil managed 
     {
-        // Method begins at RVA 0x69b8
+        // Method begins at RVA 0x7478
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -8024,11 +9256,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitXor
 
-    // method line 37
+    // method line 45
     .method public static 
            default void EmitNot ()  cil managed 
     {
-        // Method begins at RVA 0x69e8
+        // Method begins at RVA 0x74a8
 	// Code size 65 (0x41)
 	.maxstack 2
 	.locals init (
@@ -8060,11 +9292,11 @@
 	IL_0040:  ret 
     } // end of method ILEmitter::EmitNot
 
-    // method line 38
+    // method line 46
     .method public static 
            default void EmitNeg ()  cil managed 
     {
-        // Method begins at RVA 0x6a38
+        // Method begins at RVA 0x74f8
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -8084,11 +9316,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitNeg
 
-    // method line 39
+    // method line 47
     .method public static 
            default void EmitNand ()  cil managed 
     {
-        // Method begins at RVA 0x6a68
+        // Method begins at RVA 0x7528
 	// Code size 97 (0x61)
 	.maxstack 2
 	.locals init (
@@ -8132,11 +9364,11 @@
 	IL_0060:  ret 
     } // end of method ILEmitter::EmitNand
 
-    // method line 40
+    // method line 48
     .method public static 
            default void EmitNor ()  cil managed 
     {
-        // Method begins at RVA 0x6ad8
+        // Method begins at RVA 0x7598
 	// Code size 97 (0x61)
 	.maxstack 2
 	.locals init (
@@ -8180,11 +9412,11 @@
 	IL_0060:  ret 
     } // end of method ILEmitter::EmitNor
 
-    // method line 41
+    // method line 49
     .method public static 
            default void EmitXnor ()  cil managed 
     {
-        // Method begins at RVA 0x6b48
+        // Method begins at RVA 0x7608
 	// Code size 65 (0x41)
 	.maxstack 2
 	.locals init (
@@ -8216,11 +9448,11 @@
 	IL_0040:  ret 
     } // end of method ILEmitter::EmitXnor
 
-    // method line 42
+    // method line 50
     .method public static 
            default void EmitCeq ()  cil managed 
     {
-        // Method begins at RVA 0x6b98
+        // Method begins at RVA 0x7658
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -8240,11 +9472,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitCeq
 
-    // method line 43
+    // method line 51
     .method public static 
            default void EmitCneq ()  cil managed 
     {
-        // Method begins at RVA 0x6bc8
+        // Method begins at RVA 0x7688
 	// Code size 97 (0x61)
 	.maxstack 2
 	.locals init (
@@ -8288,11 +9520,11 @@
 	IL_0060:  ret 
     } // end of method ILEmitter::EmitCneq
 
-    // method line 44
+    // method line 52
     .method public static 
            default void EmitCgt (bool s)  cil managed 
     {
-        // Method begins at RVA 0x6c38
+        // Method begins at RVA 0x76f8
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -8337,11 +9569,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitCgt
 
-    // method line 45
+    // method line 53
     .method public static 
            default void EmitClt (bool s)  cil managed 
     {
-        // Method begins at RVA 0x6ca4
+        // Method begins at RVA 0x7764
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -8386,11 +9618,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitClt
 
-    // method line 46
+    // method line 54
     .method public static 
            default void EmitCle (bool s)  cil managed 
     {
-        // Method begins at RVA 0x6d10
+        // Method begins at RVA 0x77d0
 	// Code size 160 (0xa0)
 	.maxstack 8
 	.locals init (
@@ -8459,11 +9691,11 @@
 	IL_009f:  ret 
     } // end of method ILEmitter::EmitCle
 
-    // method line 47
+    // method line 55
     .method public static 
            default void EmitCge (bool s)  cil managed 
     {
-        // Method begins at RVA 0x6dbc
+        // Method begins at RVA 0x787c
 	// Code size 160 (0xa0)
 	.maxstack 8
 	.locals init (
@@ -8532,11 +9764,11 @@
 	IL_009f:  ret 
     } // end of method ILEmitter::EmitCge
 
-    // method line 48
+    // method line 56
     .method public static 
            default void EmitLike ()  cil managed 
     {
-        // Method begins at RVA 0x6e68
+        // Method begins at RVA 0x7928
 	// Code size 154 (0x9a)
 	.maxstack 9
 	.locals init (
@@ -8608,11 +9840,11 @@
 	IL_0099:  ret 
     } // end of method ILEmitter::EmitLike
 
-    // method line 49
+    // method line 57
     .method public static 
            default void EmitNLike ()  cil managed 
     {
-        // Method begins at RVA 0x6f10
+        // Method begins at RVA 0x79d0
 	// Code size 218 (0xda)
 	.maxstack 9
 	.locals init (
@@ -8708,11 +9940,11 @@
 	IL_00d9:  ret 
     } // end of method ILEmitter::EmitNLike
 
-    // method line 50
+    // method line 58
     .method public static 
            default void EmitStrCeq ()  cil managed 
     {
-        // Method begins at RVA 0x6ff8
+        // Method begins at RVA 0x7ab8
 	// Code size 218 (0xda)
 	.maxstack 9
 	.locals init (
@@ -8808,11 +10040,11 @@
 	IL_00d9:  ret 
     } // end of method ILEmitter::EmitStrCeq
 
-    // method line 51
+    // method line 59
     .method public static 
            default void EmitStrCneq ()  cil managed 
     {
-        // Method begins at RVA 0x70e0
+        // Method begins at RVA 0x7ba0
 	// Code size 282 (0x11a)
 	.maxstack 9
 	.locals init (
@@ -8932,11 +10164,11 @@
 	IL_0119:  ret 
     } // end of method ILEmitter::EmitStrCneq
 
-    // method line 52
+    // method line 60
     .method public static 
            default void EmitStrAdd ()  cil managed 
     {
-        // Method begins at RVA 0x7208
+        // Method begins at RVA 0x7cc8
 	// Code size 154 (0x9a)
 	.maxstack 9
 	.locals init (
@@ -9008,11 +10240,11 @@
 	IL_0099:  ret 
     } // end of method ILEmitter::EmitStrAdd
 
-    // method line 53
+    // method line 61
     .method public static 
            default void EmitLdcR4 (float32 num)  cil managed 
     {
-        // Method begins at RVA 0x72b0
+        // Method begins at RVA 0x7d70
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -9036,11 +10268,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdcR4
 
-    // method line 54
+    // method line 62
     .method public static 
            default void EmitLdcR8 (float64 num)  cil managed 
     {
-        // Method begins at RVA 0x72e4
+        // Method begins at RVA 0x7da4
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -9064,11 +10296,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdcR8
 
-    // method line 55
+    // method line 63
     .method public static 
            default void EmitLdcBool (bool b)  cil managed 
     {
-        // Method begins at RVA 0x7318
+        // Method begins at RVA 0x7dd8
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -9113,11 +10345,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitLdcBool
 
-    // method line 56
+    // method line 64
     .method public static 
            default void EmitLdcChar (char c)  cil managed 
     {
-        // Method begins at RVA 0x7384
+        // Method begins at RVA 0x7e44
 	// Code size 44 (0x2c)
 	.maxstack 3
 	.locals init (
@@ -9142,11 +10374,11 @@
 	IL_002b:  ret 
     } // end of method ILEmitter::EmitLdcChar
 
-    // method line 57
+    // method line 65
     .method public static 
            default void EmitLdnull ()  cil managed 
     {
-        // Method begins at RVA 0x73bc
+        // Method begins at RVA 0x7e7c
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -9166,11 +10398,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitLdnull
 
-    // method line 58
+    // method line 66
     .method public static 
            default void EmitNewobj (class [mscorlib]System.Reflection.ConstructorInfo c)  cil managed 
     {
-        // Method begins at RVA 0x73ec
+        // Method begins at RVA 0x7eac
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -9194,11 +10426,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitNewobj
 
-    // method line 59
+    // method line 67
     .method public static 
            default void EmitBr (valuetype [mscorlib]System.Reflection.Emit.Label lbl)  cil managed 
     {
-        // Method begins at RVA 0x7420
+        // Method begins at RVA 0x7ee0
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -9222,11 +10454,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitBr
 
-    // method line 60
+    // method line 68
     .method public static 
            default void EmitBrfalse (valuetype [mscorlib]System.Reflection.Emit.Label lbl)  cil managed 
     {
-        // Method begins at RVA 0x7454
+        // Method begins at RVA 0x7f14
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -9250,11 +10482,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitBrfalse
 
-    // method line 61
+    // method line 69
     .method public static 
            default void EmitBrtrue (valuetype [mscorlib]System.Reflection.Emit.Label lbl)  cil managed 
     {
-        // Method begins at RVA 0x7488
+        // Method begins at RVA 0x7f48
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -9278,11 +10510,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitBrtrue
 
-    // method line 62
+    // method line 70
     .method public static 
            default void EmitLdtoken (class [mscorlib]System.Type t)  cil managed 
     {
-        // Method begins at RVA 0x74bc
+        // Method begins at RVA 0x7f7c
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -9306,11 +10538,117 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdtoken
 
-    // method line 63
+    // method line 71
+    .method public static 
+           default void EmitConvU ()  cil managed 
+    {
+        // Method begins at RVA 0x7fb0
+	// Code size 33 (0x21)
+	.maxstack 2
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0)
+	IL_0000:  ldstr "conv.u"
+	IL_0005:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_000a:  stloc 0
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0015:  ldloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_0020:  ret 
+    } // end of method ILEmitter::EmitConvU
+
+    // method line 72
+    .method public static 
+           default void EmitConvI ()  cil managed 
+    {
+        // Method begins at RVA 0x7fe0
+	// Code size 33 (0x21)
+	.maxstack 2
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0)
+	IL_0000:  ldstr "conv.i"
+	IL_0005:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_000a:  stloc 0
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0015:  ldloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_0020:  ret 
+    } // end of method ILEmitter::EmitConvI
+
+    // method line 73
+    .method public static 
+           default void EmitConvI4 ()  cil managed 
+    {
+        // Method begins at RVA 0x8010
+	// Code size 33 (0x21)
+	.maxstack 2
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0)
+	IL_0000:  ldstr "conv.i4"
+	IL_0005:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_000a:  stloc 0
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0015:  ldloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_0020:  ret 
+    } // end of method ILEmitter::EmitConvI4
+
+    // method line 74
+    .method public static 
+           default void EmitNewarr (class [mscorlib]System.Type t)  cil managed 
+    {
+        // Method begins at RVA 0x8040
+	// Code size 55 (0x37)
+	.maxstack 3
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0)
+	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0005:  ldloc 0
+
+	IL_0009:  nop 
+	IL_000a:  nop 
+	IL_000b:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_0010:  ldstr "newarr"
+	IL_0015:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_001a:  stloc 0
+
+	IL_001e:  nop 
+	IL_001f:  nop 
+	IL_0020:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0025:  ldloc 0
+
+	IL_0029:  nop 
+	IL_002a:  nop 
+	IL_002b:  ldarg 0
+
+	IL_002f:  nop 
+	IL_0030:  nop 
+	IL_0031:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Type)
+	IL_0036:  ret 
+    } // end of method ILEmitter::EmitNewarr
+
+    // method line 75
     .method public static 
            default void DeclVar (string name, class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x74f0
+        // Method begins at RVA 0x8084
 	// Code size 70 (0x46)
 	.maxstack 4
 	.locals init (
@@ -9347,11 +10685,11 @@
 	IL_0045:  ret 
     } // end of method ILEmitter::DeclVar
 
-    // method line 64
+    // method line 76
     .method public static 
            default valuetype [mscorlib]System.Reflection.Emit.Label DefineLbl ()  cil managed 
     {
-        // Method begins at RVA 0x7544
+        // Method begins at RVA 0x80d8
 	// Code size 11 (0xb)
 	.maxstack 1
 	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
@@ -9359,11 +10697,11 @@
 	IL_000a:  ret 
     } // end of method ILEmitter::DefineLbl
 
-    // method line 65
+    // method line 77
     .method public static 
            default void MarkLbl (valuetype [mscorlib]System.Reflection.Emit.Label lbl)  cil managed 
     {
-        // Method begins at RVA 0x755c
+        // Method begins at RVA 0x80f0
 	// Code size 17 (0x11)
 	.maxstack 2
 	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
@@ -9375,11 +10713,11 @@
 	IL_0010:  ret 
     } // end of method ILEmitter::MarkLbl
 
-    // method line 66
+    // method line 78
     .method public static 
            default void MarkDbgPt (int32 line)  cil managed 
     {
-        // Method begins at RVA 0x757c
+        // Method begins at RVA 0x8110
 	// Code size 38 (0x26)
 	.maxstack 6
 	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
@@ -9417,6 +10755,7 @@
     .field  public static  class [mscorlib]System.Type Type02
     .field  public static  class [mscorlib]System.Type Type03
     .field  public static  class [mscorlib]System.Type Type04
+    .field  public static  class [mscorlib]System.Type Type05
     .field  public static  class [mscorlib]System.Reflection.Emit.ModuleBuilder MdlB
     .field  public static  class [mscorlib]System.Diagnostics.SymbolStore.ISymbolDocumentWriter DocWriter
     .field  public static  string CurnNS
@@ -9439,11 +10778,11 @@
     .field  public static  string[] GenParamNames
     .field  public static  class [mscorlib]System.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
 
-    // method line 67
+    // method line 79
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0x75b0
+        // Method begins at RVA 0x8144
 	// Code size 175 (0xaf)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -9487,11 +10826,11 @@
 	IL_00ae:  ret 
     } // end of method AsmFactory::.cctor
 
-    // method line 68
+    // method line 80
     .method public static 
            default void CreateTyp ()  cil managed 
     {
-        // Method begins at RVA 0x766c
+        // Method begins at RVA 0x8200
 	// Code size 12 (0xc)
 	.maxstack 1
 	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder dylan.NET.Reflection.AsmFactory::CurnTypB
@@ -9500,11 +10839,11 @@
 	IL_000b:  ret 
     } // end of method AsmFactory::CreateTyp
 
-    // method line 69
+    // method line 81
     .method public static 
            default void InitMtd ()  cil managed 
     {
-        // Method begins at RVA 0x7684
+        // Method begins at RVA 0x8218
 	// Code size 154 (0x9a)
 	.maxstack 6
 	.locals init (
@@ -9553,11 +10892,11 @@
 	IL_0099:  ret 
     } // end of method AsmFactory::InitMtd
 
-    // method line 70
+    // method line 82
     .method public static 
            default void InitConstr ()  cil managed 
     {
-        // Method begins at RVA 0x772c
+        // Method begins at RVA 0x82c0
 	// Code size 116 (0x74)
 	.maxstack 4
 	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder dylan.NET.Reflection.AsmFactory::CurnConB
@@ -9590,11 +10929,11 @@
 	IL_0073:  ret 
     } // end of method AsmFactory::InitConstr
 
-    // method line 71
+    // method line 83
     .method public static 
            default void AddTypB (class [mscorlib]System.Reflection.Emit.TypeBuilder typ)  cil managed 
     {
-        // Method begins at RVA 0x77ac
+        // Method begins at RVA 0x8340
 	// Code size 276 (0x114)
 	.maxstack 14
 	.locals init (
@@ -9742,11 +11081,11 @@
 	IL_0113:  ret 
     } // end of method AsmFactory::AddTypB
 
-    // method line 72
+    // method line 84
     .method public static 
            default void AddTyp (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x78cc
+        // Method begins at RVA 0x8460
 	// Code size 276 (0x114)
 	.maxstack 14
 	.locals init (
@@ -9894,11 +11233,11 @@
 	IL_0113:  ret 
     } // end of method AsmFactory::AddTyp
 
-    // method line 73
+    // method line 85
     .method public static 
            default void AddGenParamName (string nam)  cil managed 
     {
-        // Method begins at RVA 0x79ec
+        // Method begins at RVA 0x8580
 	// Code size 276 (0x114)
 	.maxstack 14
 	.locals init (
@@ -10058,11 +11397,11 @@
     .field  public static  string[] Imps
     .field  public static  string[] LocImps
 
-    // method line 74
+    // method line 86
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0x7b0c
+        // Method begins at RVA 0x86a0
 	// Code size 33 (0x21)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -10076,11 +11415,11 @@
 	IL_0020:  ret 
     } // end of method Importer::.cctor
 
-    // method line 75
+    // method line 87
     .method public static 
            default void AddAsm (class [mscorlib]System.Reflection.Assembly asm)  cil managed 
     {
-        // Method begins at RVA 0x7b3c
+        // Method begins at RVA 0x86d0
 	// Code size 276 (0x114)
 	.maxstack 14
 	.locals init (
@@ -10228,11 +11567,11 @@
 	IL_0113:  ret 
     } // end of method Importer::AddAsm
 
-    // method line 76
+    // method line 88
     .method public static 
            default string[] addelem (string[] srcarr, string eltoadd)  cil managed 
     {
-        // Method begins at RVA 0x7c5c
+        // Method begins at RVA 0x87f0
 	// Code size 273 (0x111)
 	.maxstack 14
 	.locals init (
@@ -10385,11 +11724,11 @@
 	IL_0110:  ret 
     } // end of method Importer::addelem
 
-    // method line 77
+    // method line 89
     .method public static 
            default void AddImp (string imp)  cil managed 
     {
-        // Method begins at RVA 0x7d7c
+        // Method begins at RVA 0x8910
 	// Code size 22 (0x16)
 	.maxstack 2
 	IL_0000:  ldsfld string[] dylan.NET.Reflection.Importer::Imps
@@ -10402,11 +11741,11 @@
 	IL_0015:  ret 
     } // end of method Importer::AddImp
 
-    // method line 78
+    // method line 90
     .method public static 
            default void AddLocImp (string imp)  cil managed 
     {
-        // Method begins at RVA 0x7da0
+        // Method begins at RVA 0x8934
 	// Code size 22 (0x16)
 	.maxstack 2
 	IL_0000:  ldsfld string[] dylan.NET.Reflection.Importer::Imps
@@ -10436,11 +11775,11 @@
     .field  public static  bool MakeArr
     .field  public static  bool MakeRef
 
-    // method line 79
+    // method line 91
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0x7dc4
+        // Method begins at RVA 0x8958
 	// Code size 59 (0x3b)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -10460,11 +11799,11 @@
 	IL_003a:  ret 
     } // end of method Loader::.cctor
 
-    // method line 80
+    // method line 92
     .method public static 
            default class [mscorlib]System.Type LoadClass (string name)  cil managed 
     {
-        // Method begins at RVA 0x7e0c
+        // Method begins at RVA 0x89a0
 	// Code size 826 (0x33a)
 	.maxstack 34
 	.locals init (
@@ -10863,11 +12202,11 @@
 	IL_0339:  ret 
     } // end of method Loader::LoadClass
 
-    // method line 81
+    // method line 93
     .method public static 
            default class [mscorlib]System.Type ProcessType (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x8154
+        // Method begins at RVA 0x8ce8
 	// Code size 121 (0x79)
 	.maxstack 7
 	IL_0000:  ldsfld bool dylan.NET.Reflection.Loader::MakeArr
@@ -10919,11 +12258,11 @@
 	IL_0078:  ret 
     } // end of method Loader::ProcessType
 
-    // method line 82
+    // method line 94
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo LoadMethod (class [mscorlib]System.Type typ, string name, class [mscorlib]System.Type[] typs)  cil managed 
     {
-        // Method begins at RVA 0x81dc
+        // Method begins at RVA 0x8d70
 	// Code size 391 (0x187)
 	.maxstack 16
 	.locals init (
@@ -11138,13 +12477,13 @@
 	IL_0186:  ret 
     } // end of method Loader::LoadMethod
 
-    // method line 83
+    // method line 95
     .method public static 
            default class [mscorlib]System.Reflection.ConstructorInfo LoadCtor (class [mscorlib]System.Type typ, class [mscorlib]System.Type[] typs)  cil managed 
     {
-        // Method begins at RVA 0x8370
-	// Code size 139 (0x8b)
-	.maxstack 7
+        // Method begins at RVA 0x8f04
+	// Code size 121 (0x79)
+	.maxstack 4
 	.locals init (
 		class [mscorlib]System.Reflection.Binder	V_0,
 		valuetype [mscorlib]System.Reflection.ParameterModifier[]	V_1,
@@ -11177,57 +12516,45 @@
 
 	IL_0039:  nop 
 	IL_003a:  nop 
-	IL_003b:  ldloc 2
+	IL_003b:  ldarg 1
 
 	IL_003f:  nop 
 	IL_0040:  nop 
-	IL_0041:  ldloc 0
+	IL_0041:  callvirt instance class [mscorlib]System.Reflection.ConstructorInfo class [mscorlib]System.Type::GetConstructor(class [mscorlib]System.Type[])
+	IL_0046:  stloc 3
 
-	IL_0045:  nop 
-	IL_0046:  nop 
-	IL_0047:  ldarg 1
-
+	IL_004a:  nop 
 	IL_004b:  nop 
-	IL_004c:  nop 
-	IL_004d:  ldloc 1
+	IL_004c:  ldloc 3
 
+	IL_0050:  nop 
 	IL_0051:  nop 
-	IL_0052:  nop 
-	IL_0053:  callvirt instance class [mscorlib]System.Reflection.ConstructorInfo class [mscorlib]System.Type::GetConstructor(valuetype [mscorlib]System.Reflection.BindingFlags, class [mscorlib]System.Reflection.Binder, class [mscorlib]System.Type[], valuetype [mscorlib]System.Reflection.ParameterModifier[])
-	IL_0058:  stloc 3
+	IL_0052:  ldnull 
+	IL_0053:  beq IL_006d
 
-	IL_005c:  nop 
-	IL_005d:  nop 
-	IL_005e:  ldloc 3
+	IL_0058:  br IL_005d
 
+	IL_005d:  ldarg 0
+
+	IL_0061:  nop 
 	IL_0062:  nop 
-	IL_0063:  nop 
-	IL_0064:  ldnull 
-	IL_0065:  beq IL_007f
+	IL_0063:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::MemberTyp
+	IL_0068:  br IL_0072
 
-	IL_006a:  br IL_006f
+	IL_006d:  br IL_0072
 
-	IL_006f:  ldarg 0
+	IL_0072:  ldloc 3
 
-	IL_0073:  nop 
-	IL_0074:  nop 
-	IL_0075:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::MemberTyp
-	IL_007a:  br IL_0084
-
-	IL_007f:  br IL_0084
-
-	IL_0084:  ldloc 3
-
-	IL_0088:  nop 
-	IL_0089:  nop 
-	IL_008a:  ret 
+	IL_0076:  nop 
+	IL_0077:  nop 
+	IL_0078:  ret 
     } // end of method Loader::LoadCtor
 
-    // method line 84
+    // method line 96
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo[] addelemmtdinfo (class [mscorlib]System.Reflection.MethodInfo[] srcarr, class [mscorlib]System.Reflection.MethodInfo eltoadd)  cil managed 
     {
-        // Method begins at RVA 0x8408
+        // Method begins at RVA 0x8f8c
 	// Code size 273 (0x111)
 	.maxstack 14
 	.locals init (
@@ -11380,11 +12707,11 @@
 	IL_0110:  ret 
     } // end of method Loader::addelemmtdinfo
 
-    // method line 85
+    // method line 97
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo[] LoadSpecMtds (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x8528
+        // Method begins at RVA 0x90ac
 	// Code size 278 (0x116)
 	.maxstack 9
 	.locals init (
@@ -11538,11 +12865,11 @@
 	IL_0115:  ret 
     } // end of method Loader::LoadSpecMtds
 
-    // method line 86
+    // method line 98
     .method public static 
            default bool CompareParamsToTyps (class [mscorlib]System.Reflection.ParameterInfo[] t1, class [mscorlib]System.Type[] t2)  cil managed 
     {
-        // Method begins at RVA 0x864c
+        // Method begins at RVA 0x91d0
 	// Code size 302 (0x12e)
 	.maxstack 9
 	.locals init (
@@ -11712,11 +13039,11 @@
 	IL_012d:  ret 
     } // end of method Loader::CompareParamsToTyps
 
-    // method line 87
+    // method line 99
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo LoadBinOp (class [mscorlib]System.Type typ, string name, class [mscorlib]System.Type typa, class [mscorlib]System.Type typb)  cil managed 
     {
-        // Method begins at RVA 0x8788
+        // Method begins at RVA 0x930c
 	// Code size 425 (0x1a9)
 	.maxstack 17
 	.locals init (
@@ -11947,11 +13274,11 @@
 	IL_01a8:  ret 
     } // end of method Loader::LoadBinOp
 
-    // method line 88
+    // method line 100
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo LoadConvOp (class [mscorlib]System.Type typ, string name, class [mscorlib]System.Type src, class [mscorlib]System.Type snk)  cil managed 
     {
-        // Method begins at RVA 0x8940
+        // Method begins at RVA 0x94c4
 	// Code size 480 (0x1e0)
 	.maxstack 17
 	.locals init (
@@ -12212,11 +13539,11 @@
 	IL_01df:  ret 
     } // end of method Loader::LoadConvOp
 
-    // method line 89
+    // method line 101
     .method public static 
            default class [mscorlib]System.Reflection.FieldInfo LoadField (class [mscorlib]System.Type typ, string name)  cil managed 
     {
-        // Method begins at RVA 0x8b2c
+        // Method begins at RVA 0x96b0
 	// Code size 251 (0xfb)
 	.maxstack 10
 	.locals init (
@@ -12347,11 +13674,11 @@
   {
     .field  public static  class [mscorlib]System.IO.StringWriter SW
 
-    // method line 90
+    // method line 102
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0x8c34
+        // Method begins at RVA 0x97b8
 	// Code size 7 (0x7)
 	.maxstack 1
 	IL_0000:  ldnull 
@@ -12359,11 +13686,11 @@
 	IL_0006:  ret 
     } // end of method ConsolePrinter::.cctor
 
-    // method line 91
+    // method line 103
     .method public static 
            default void PrintString ()  cil managed 
     {
-        // Method begins at RVA 0x8c48
+        // Method begins at RVA 0x97cc
 	// Code size 28 (0x1c)
 	.maxstack 1
 	.locals init (
@@ -12382,11 +13709,11 @@
 	IL_001b:  ret 
     } // end of method ConsolePrinter::PrintString
 
-    // method line 92
+    // method line 104
     .method public static 
            default void WriteClass (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x8c70
+        // Method begins at RVA 0x97f4
 	// Code size 800 (0x320)
 	.maxstack 48
 	.locals init (

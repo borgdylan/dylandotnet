@@ -123,6 +123,46 @@ end if
 return ifs
 end method
 
+method public Stmt checkLabel(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype LabelTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var lbls as LabelStmt = new LabelStmt()
+if valinref|b = true then
+lbls::Line = stm::Line
+lbls::Tokens = stm::Tokens
+lbls::LabelName = stm::Tokens[1]
+end if
+return lbls
+end method
+
+method public Stmt checkPlace(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype PlaceTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var lbls as PlaceStmt = new PlaceStmt()
+if valinref|b = true then
+lbls::Line = stm::Line
+lbls::Tokens = stm::Tokens
+lbls::LabelName = stm::Tokens[1]
+end if
+return lbls
+end method
+
+method public Stmt checkGoto(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype GotoTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var lbls as GotoStmt = new GotoStmt()
+if valinref|b = true then
+lbls::Line = stm::Line
+lbls::Tokens = stm::Tokens
+lbls::LabelName = stm::Tokens[1]
+end if
+return lbls
+end method
+
+
 method public Stmt checkDebug(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype DebugTok
@@ -1127,6 +1167,27 @@ goto fin
 end if
 
 tmpstm = checkRefasm(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkLabel(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkPlace(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkGoto(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm

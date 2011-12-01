@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.7.8">
+    <Assembly Name="tokenizer.AST" Version="11.2.7.9">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("tokenizer.AST")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.8")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.7.9")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("tokenizer.AST")</AttributeName>
@@ -122,7 +122,9 @@
       <Type Name="MethodCallTok" Kind="Class" />
       <Type Name="MethodNameTok" Kind="Class" />
       <Type Name="MethodTok" Kind="Class" />
+      <Type Name="MeTok" Kind="Class" />
       <Type Name="NamespaceTok" Kind="Class" />
+      <Type Name="NewarrCallTok" Kind="Class" />
       <Type Name="NewarrTok" Kind="Class" />
       <Type Name="NewCallTok" Kind="Class" />
       <Type Name="NewresTok" Kind="Class" />
@@ -133,6 +135,7 @@
       <Type Name="OnTok" Kind="Class" />
       <Type Name="PlaceTok" Kind="Class" />
       <Type Name="PropertyTok" Kind="Class" />
+      <Type Name="PtrCallTok" Kind="Class" />
       <Type Name="PtrTok" Kind="Class" />
       <Type Name="RefasmTok" Kind="Class" />
       <Type Name="ReturnTok" Kind="Class" />

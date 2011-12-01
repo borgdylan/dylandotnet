@@ -16,6 +16,7 @@ field public static MethodItem[] NestedMetLst
 field public static CtorItem[] CtorLst
 field public static CtorItem[] NestedCtorLst
 field public static IfItem[] IfLst
+field public static LabelItem[] LblLst
 field public static TypeArr[] TypLst
 
 method public static void ctor0()
@@ -27,11 +28,16 @@ NestedMetLst = newarr MethodItem 0
 CtorLst = newarr CtorItem 0
 NestedCtorLst = newarr CtorItem 0
 IfLst = newarr IfItem 0
+LblLst = newarr LabelItem 0
 TypLst = newarr TypeArr 0
 end method
 
 method public static void ResetIf()
 IfLst = newarr IfItem 0
+end method
+
+method public static void ResetLbl()
+LblLst = newarr LabelItem 0
 end method
 
 method public static void ResetVar()
@@ -569,6 +575,50 @@ var ifi as IfItem = IfLst[lastel]
 ifi::NextBlkLabel = ILEmitter::DefineLbl()
 end method
 
+method public static void AddLbl(var nam as string)
+
+var lbl as Emit.Label = ILEmitter::DefineLbl()
+var vr as LabelItem = new LabelItem(nam, lbl)
+
+var len as integer = LblLst[l]
+var destl as integer = len + 1
+var stopel as integer = len - 1
+var i as integer = -1
+
+var destarr as LabelItem[] = newarr LabelItem destl
+
+label loop
+label cont
+
+place loop
+
+i++
+
+if len > 0 then
+
+destarr[i] = LblLst[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+destarr[len] = vr
+
+LblLst = destarr
+
+end method
+
+
 method public static VarItem FindVar(var nam as string)
 
 var len as integer = VarLst[l] - 1
@@ -590,6 +640,43 @@ i++
 
 vr = VarLst[i]
 comp = String::Compare(nam, vr::Name)
+if comp = 0 then
+rvr = vr
+goto cont
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+return rvr
+end method
+
+method public static LabelItem FindLbl(var nam as string)
+
+var len as integer = LblLst[l] - 1
+var i as integer = -1
+var vr as LabelItem = null
+var rvr as LabelItem = null
+var comp as integer = 0
+
+label cont
+label loop
+
+if LblLst[l] = 0 then
+goto cont
+end if
+
+place loop
+
+i++
+
+vr = LblLst[i]
+comp = String::Compare(nam, vr::LblName)
 if comp = 0 then
 rvr = vr
 goto cont
@@ -729,6 +816,45 @@ place cont
 
 return rmet
 end method
+
+method public static MethodItem FindMetNoParams(var nam as string)
+
+var len as integer = MetLst[l] - 1
+var i as integer = -1
+var met as MethodItem = null
+var rmet as MethodItem = null
+var comp as integer = 0
+var b as boolean
+
+label cont
+label loop
+
+if MetLst[l] = 0 then
+goto cont
+end if
+
+place loop
+
+i++
+
+met = MetLst[i]
+comp = String::Compare(nam, met::Name)
+if comp = 0 then
+rmet = met
+goto cont
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+return rmet
+end method
+
 
 method public static CtorItem FindCtor(var params as System.Type[])
 

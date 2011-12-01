@@ -40,7 +40,7 @@ import dylan.NET.Utils
 locimport dylan.NET.Reflection
 
 assembly dnr dll
-ver 11.2.7.8
+ver 11.2.7.9
 
 namespace dylan.NET.Reflection
 #include E:\Code\dylannet\dnr\dnr\instructionhelper.dyl

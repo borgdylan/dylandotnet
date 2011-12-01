@@ -17,7 +17,7 @@
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 38 00 00 ) // ...11.2.7.8..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 39 00 00 ) // ...11.2.7.9..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (01 00 03 64 6E 75 00 00 ) // ...dnu..
 
@@ -26,10 +26,10 @@
   .custom instance void class [mscorlib]System.Reflection.AssemblyDescriptionAttribute::'.ctor'(string) =  (01 00 03 64 6E 75 00 00 ) // ...dnu..
 
   .hash algorithm 0x00008004
-  .ver  11:2:7:8
+  .ver  11:2:7:9
 }
 
-.module dnu.dll // GUID = {712DEFBE-FE8E-4531-AAF1-AF7C71017812}
+.module dnu.dll // GUID = {543B942D-D70B-4E3E-BF08-E174328A62CE}
 
 
 .namespace dylan.NET.Utils
@@ -2137,13 +2137,14 @@
     .field  public static  class [mscorlib]System.IO.Stream Stderr
     .field  public static  class [mscorlib]System.IO.StreamReader InS
     .field  public static  class [mscorlib]System.IO.StreamWriter OutS
+    .field  public static  bool UseConsole
 
     // method line 30
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
         // Method begins at RVA 0x3030
-	// Code size 43 (0x2b)
+	// Code size 53 (0x35)
 	.maxstack 1
 	IL_0000:  call class [mscorlib]System.IO.Stream class [mscorlib]System.Console::OpenStandardInput()
 	IL_0005:  stsfld class [mscorlib]System.IO.Stream dylan.NET.Utils.StreamUtils::Stdin
@@ -2155,14 +2156,16 @@
 	IL_001f:  stsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
 	IL_0024:  ldnull 
 	IL_0025:  stsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
-	IL_002a:  ret 
+	IL_002a:  ldc.i4 1
+	IL_002f:  stsfld bool dylan.NET.Utils.StreamUtils::UseConsole
+	IL_0034:  ret 
     } // end of method StreamUtils::.cctor
 
     // method line 31
     .method public static 
            default void InitInS (class [mscorlib]System.IO.Stream s)  cil managed 
     {
-        // Method begins at RVA 0x3068
+        // Method begins at RVA 0x3074
 	// Code size 53 (0x35)
 	.maxstack 5
 	IL_0000:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
@@ -2190,7 +2193,7 @@
     .method public static 
            default void InitOutS (class [mscorlib]System.IO.Stream s)  cil managed 
     {
-        // Method begins at RVA 0x30ac
+        // Method begins at RVA 0x30b8
 	// Code size 53 (0x35)
 	.maxstack 5
 	IL_0000:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
@@ -2218,7 +2221,7 @@
     .method public static 
            default void InitInOutSWithStd ()  cil managed 
     {
-        // Method begins at RVA 0x30f0
+        // Method begins at RVA 0x30fc
 	// Code size 21 (0x15)
 	.maxstack 1
 	IL_0000:  ldsfld class [mscorlib]System.IO.Stream dylan.NET.Utils.StreamUtils::Stdin
@@ -2232,7 +2235,7 @@
     .method public static 
            default void CloseInS ()  cil managed 
     {
-        // Method begins at RVA 0x3114
+        // Method begins at RVA 0x3120
 	// Code size 37 (0x25)
 	.maxstack 3
 	IL_0000:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
@@ -2254,7 +2257,7 @@
     .method public static 
            default void CloseOutS ()  cil managed 
     {
-        // Method begins at RVA 0x3148
+        // Method begins at RVA 0x3154
 	// Code size 37 (0x25)
 	.maxstack 3
 	IL_0000:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
@@ -2276,75 +2279,116 @@
     .method public static 
            default string ReadLine ()  cil managed 
     {
-        // Method begins at RVA 0x317c
-	// Code size 42 (0x2a)
-	.maxstack 4
-	IL_0000:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
-	IL_0005:  ldnull 
-	IL_0006:  beq IL_001f
+        // Method begins at RVA 0x3188
+	// Code size 77 (0x4d)
+	.maxstack 7
+	IL_0000:  ldsfld bool dylan.NET.Utils.StreamUtils::UseConsole
+	IL_0005:  ldc.i4 0
+	IL_000a:  beq IL_0014
 
-	IL_000b:  br IL_0010
+	IL_000f:  br IL_0042
 
-	IL_0010:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
-	IL_0015:  callvirt instance string class [mscorlib]System.IO.StreamReader::ReadLine()
-	IL_001a:  br IL_0029
+	IL_0014:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
+	IL_0019:  ldnull 
+	IL_001a:  beq IL_0033
 
-	IL_001f:  ldstr ""
-	IL_0024:  br IL_0029
+	IL_001f:  br IL_0024
 
-	IL_0029:  ret 
+	IL_0024:  ldsfld class [mscorlib]System.IO.StreamReader dylan.NET.Utils.StreamUtils::InS
+	IL_0029:  callvirt instance string class [mscorlib]System.IO.StreamReader::ReadLine()
+	IL_002e:  br IL_003d
+
+	IL_0033:  ldstr ""
+	IL_0038:  br IL_003d
+
+	IL_003d:  br IL_004c
+
+	IL_0042:  call string class [mscorlib]System.Console::ReadLine()
+	IL_0047:  br IL_004c
+
+	IL_004c:  ret 
     } // end of method StreamUtils::ReadLine
 
     // method line 37
     .method public static 
            default void WriteLine (string str)  cil managed 
     {
-        // Method begins at RVA 0x31b4
-	// Code size 43 (0x2b)
-	.maxstack 4
-	IL_0000:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
-	IL_0005:  ldnull 
-	IL_0006:  beq IL_0025
+        // Method begins at RVA 0x31e4
+	// Code size 84 (0x54)
+	.maxstack 7
+	IL_0000:  ldsfld bool dylan.NET.Utils.StreamUtils::UseConsole
+	IL_0005:  ldc.i4 0
+	IL_000a:  beq IL_0014
 
-	IL_000b:  br IL_0010
+	IL_000f:  br IL_0043
 
-	IL_0010:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
-	IL_0015:  ldarg 0
+	IL_0014:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0019:  ldnull 
+	IL_001a:  beq IL_0039
 
-	IL_0019:  nop 
-	IL_001a:  nop 
-	IL_001b:  callvirt instance void class [mscorlib]System.IO.TextWriter::WriteLine(string)
-	IL_0020:  br IL_002a
+	IL_001f:  br IL_0024
 
-	IL_0025:  br IL_002a
+	IL_0024:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0029:  ldarg 0
 
-	IL_002a:  ret 
+	IL_002d:  nop 
+	IL_002e:  nop 
+	IL_002f:  callvirt instance void class [mscorlib]System.IO.TextWriter::WriteLine(string)
+	IL_0034:  br IL_003e
+
+	IL_0039:  br IL_003e
+
+	IL_003e:  br IL_0053
+
+	IL_0043:  ldarg 0
+
+	IL_0047:  nop 
+	IL_0048:  nop 
+	IL_0049:  call void class [mscorlib]System.Console::WriteLine(string)
+	IL_004e:  br IL_0053
+
+	IL_0053:  ret 
     } // end of method StreamUtils::WriteLine
 
     // method line 38
     .method public static 
            default void Write (string str)  cil managed 
     {
-        // Method begins at RVA 0x31ec
-	// Code size 43 (0x2b)
-	.maxstack 4
-	IL_0000:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
-	IL_0005:  ldnull 
-	IL_0006:  beq IL_0025
+        // Method begins at RVA 0x3244
+	// Code size 84 (0x54)
+	.maxstack 7
+	IL_0000:  ldsfld bool dylan.NET.Utils.StreamUtils::UseConsole
+	IL_0005:  ldc.i4 0
+	IL_000a:  beq IL_0014
 
-	IL_000b:  br IL_0010
+	IL_000f:  br IL_0043
 
-	IL_0010:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
-	IL_0015:  ldarg 0
+	IL_0014:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0019:  ldnull 
+	IL_001a:  beq IL_0039
 
-	IL_0019:  nop 
-	IL_001a:  nop 
-	IL_001b:  callvirt instance void class [mscorlib]System.IO.StreamWriter::Write(string)
-	IL_0020:  br IL_002a
+	IL_001f:  br IL_0024
 
-	IL_0025:  br IL_002a
+	IL_0024:  ldsfld class [mscorlib]System.IO.StreamWriter dylan.NET.Utils.StreamUtils::OutS
+	IL_0029:  ldarg 0
 
-	IL_002a:  ret 
+	IL_002d:  nop 
+	IL_002e:  nop 
+	IL_002f:  callvirt instance void class [mscorlib]System.IO.StreamWriter::Write(string)
+	IL_0034:  br IL_003e
+
+	IL_0039:  br IL_003e
+
+	IL_003e:  br IL_0053
+
+	IL_0043:  ldarg 0
+
+	IL_0047:  nop 
+	IL_0048:  nop 
+	IL_0049:  call void class [mscorlib]System.Console::Write(string)
+	IL_004e:  br IL_0053
+
+	IL_0053:  ret 
     } // end of method StreamUtils::Write
 
   } // end of class dylan.NET.Utils.StreamUtils

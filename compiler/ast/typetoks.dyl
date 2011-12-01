@@ -392,10 +392,6 @@ end method
 
 end class
 
-class public auto ansi MeTok extends TypeTok
-
-end class
-
 class public auto ansi UIntegerTok extends TypeTok
 
 method public void ctor0()

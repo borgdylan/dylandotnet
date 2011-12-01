@@ -7,7 +7,7 @@
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 38 00 00 ) // ...11.2.7.8..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 39 00 00 ) // ...11.2.7.9..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (
 		01 00 0D 74 6F 6B 65 6E 69 7A 65 72 2E 41 53 54   // ...tokenizer.AST
@@ -22,10 +22,10 @@
 		00 00                                           ) // ..
 
   .hash algorithm 0x00008004
-  .ver  11:2:7:8
+  .ver  11:2:7:9
 }
 
-.module tokenizer.AST.dll // GUID = {349DD4DB-4C50-4018-BAB3-FF313EFEFFC9}
+.module tokenizer.AST.dll // GUID = {42EB1893-5B8A-4BCA-B9B0-4F00B81C184C}
 
 
 .namespace dylan.NET.Tokenizer.AST.Tokens
@@ -2646,7 +2646,7 @@
 
 .namespace dylan.NET.Tokenizer.AST.Tokens.TypeToks
 {
-  .class public auto ansi MeTok
+  .class public auto ansi UIntegerTok
   	extends dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
   {
 
@@ -2655,27 +2655,6 @@
            instance default void '.ctor' ()  cil managed 
     {
         // Method begins at RVA 0x34b4
-	// Code size 7 (0x7)
-	.maxstack 2
-	IL_0000:  ldarg.0 
-	IL_0001:  call instance void class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
-	IL_0006:  ret 
-    } // end of method MeTok::.ctor
-
-  } // end of class dylan.NET.Tokenizer.AST.Tokens.TypeToks.MeTok
-}
-
-.namespace dylan.NET.Tokenizer.AST.Tokens.TypeToks
-{
-  .class public auto ansi UIntegerTok
-  	extends dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
-  {
-
-    // method line 61
-    .method public specialname rtspecialname 
-           instance default void '.ctor' ()  cil managed 
-    {
-        // Method begins at RVA 0x34c8
 	// Code size 78 (0x4e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -2702,11 +2681,11 @@
 	IL_004d:  ret 
     } // end of method UIntegerTok::.ctor
 
-    // method line 62
+    // method line 61
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x3524
+        // Method begins at RVA 0x3510
 	// Code size 79 (0x4f)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -2745,11 +2724,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
   {
 
-    // method line 63
+    // method line 62
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3580
+        // Method begins at RVA 0x356c
 	// Code size 78 (0x4e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -2776,11 +2755,11 @@
 	IL_004d:  ret 
     } // end of method ULongTok::.ctor
 
-    // method line 64
+    // method line 63
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x35dc
+        // Method begins at RVA 0x35c8
 	// Code size 79 (0x4f)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -2819,11 +2798,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
   {
 
-    // method line 65
+    // method line 64
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3638
+        // Method begins at RVA 0x3624
 	// Code size 78 (0x4e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -2850,11 +2829,11 @@
 	IL_004d:  ret 
     } // end of method ByteTok::.ctor
 
-    // method line 66
+    // method line 65
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x3694
+        // Method begins at RVA 0x3680
 	// Code size 79 (0x4f)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -2893,11 +2872,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
   {
 
-    // method line 67
+    // method line 66
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x36f0
+        // Method begins at RVA 0x36dc
 	// Code size 78 (0x4e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -2924,11 +2903,11 @@
 	IL_004d:  ret 
     } // end of method UShortTok::.ctor
 
-    // method line 68
+    // method line 67
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x374c
+        // Method begins at RVA 0x3738
 	// Code size 79 (0x4f)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -2967,11 +2946,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
   {
 
-    // method line 69
+    // method line 68
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x37a8
+        // Method begins at RVA 0x3794
 	// Code size 78 (0x4e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -2998,11 +2977,11 @@
 	IL_004d:  ret 
     } // end of method IntPtrTok::.ctor
 
-    // method line 70
+    // method line 69
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x3804
+        // Method begins at RVA 0x37f0
 	// Code size 79 (0x4f)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3044,11 +3023,11 @@
     .field  public  bool Conv
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok
 
-    // method line 71
+    // method line 70
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3860
+        // Method begins at RVA 0x384c
 	// Code size 54 (0x36)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3071,11 +3050,11 @@
 	IL_0035:  ret 
     } // end of method Literal::.ctor
 
-    // method line 72
+    // method line 71
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x38a4
+        // Method begins at RVA 0x3890
 	// Code size 55 (0x37)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3111,11 +3090,11 @@
   {
     .field  public  object NullVal
 
-    // method line 73
+    // method line 72
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x38e8
+        // Method begins at RVA 0x38d4
 	// Code size 65 (0x41)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3141,11 +3120,11 @@
 	IL_0040:  ret 
     } // end of method NullLiteral::.ctor
 
-    // method line 74
+    // method line 73
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x3938
+        // Method begins at RVA 0x3924
 	// Code size 66 (0x42)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3186,11 +3165,11 @@
     .field  public  class [mscorlib]System.Type ExtTyp
     .field  public  class [mscorlib]System.Type IntTyp
 
-    // method line 75
+    // method line 74
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3988
+        // Method begins at RVA 0x3974
 	// Code size 79 (0x4f)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3222,11 +3201,11 @@
 	IL_004e:  ret 
     } // end of method ConstLiteral::.ctor
 
-    // method line 76
+    // method line 75
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x39e4
+        // Method begins at RVA 0x39d0
 	// Code size 80 (0x50)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3273,11 +3252,11 @@
     .field  public  bool MemberAccessFlg
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token MemberToAccess
 
-    // method line 77
+    // method line 76
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3a40
+        // Method begins at RVA 0x3a2c
 	// Code size 91 (0x5b)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3309,11 +3288,11 @@
 	IL_005a:  ret 
     } // end of method StringLiteral::.ctor
 
-    // method line 78
+    // method line 77
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x3aa8
+        // Method begins at RVA 0x3a94
 	// Code size 92 (0x5c)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3359,11 +3338,11 @@
     .field  public  char CharVal
     .field  public  string OrdOp
 
-    // method line 79
+    // method line 78
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3b10
+        // Method begins at RVA 0x3afc
 	// Code size 85 (0x55)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3393,11 +3372,11 @@
 	IL_0054:  ret 
     } // end of method CharLiteral::.ctor
 
-    // method line 80
+    // method line 79
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x3b74
+        // Method begins at RVA 0x3b60
 	// Code size 86 (0x56)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3442,11 +3421,11 @@
     .field  public  string OrdOp
     .field  public  bool DoNot
 
-    // method line 81
+    // method line 80
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3bd8
+        // Method begins at RVA 0x3bc4
 	// Code size 91 (0x5b)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3478,11 +3457,11 @@
 	IL_005a:  ret 
     } // end of method BooleanLiteral::.ctor
 
-    // method line 82
+    // method line 81
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x3c40
+        // Method begins at RVA 0x3c2c
 	// Code size 92 (0x5c)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3529,11 +3508,11 @@
     .field  public  bool DoNot
     .field  public  bool DoNeg
 
-    // method line 83
+    // method line 82
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3ca8
+        // Method begins at RVA 0x3c94
 	// Code size 87 (0x57)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3565,11 +3544,11 @@
 	IL_0056:  ret 
     } // end of method NumberLiteral::.ctor
 
-    // method line 84
+    // method line 83
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x3d0c
+        // Method begins at RVA 0x3cf8
 	// Code size 88 (0x58)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3614,11 +3593,11 @@
   {
     .field  public  int32 NumVal
 
-    // method line 85
+    // method line 84
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3d70
+        // Method begins at RVA 0x3d5c
 	// Code size 102 (0x66)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3653,11 +3632,11 @@
 	IL_0065:  ret 
     } // end of method IntLiteral::.ctor
 
-    // method line 86
+    // method line 85
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x3de4
+        // Method begins at RVA 0x3dd0
 	// Code size 103 (0x67)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3705,11 +3684,11 @@
   {
     .field  public  float64 NumVal
 
-    // method line 87
+    // method line 86
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3e58
+        // Method begins at RVA 0x3e44
 	// Code size 106 (0x6a)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3744,11 +3723,11 @@
 	IL_0069:  ret 
     } // end of method DoubleLiteral::.ctor
 
-    // method line 88
+    // method line 87
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x3ed0
+        // Method begins at RVA 0x3ebc
 	// Code size 107 (0x6b)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3796,11 +3775,11 @@
   {
     .field  public  int8 NumVal
 
-    // method line 89
+    // method line 88
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3f48
+        // Method begins at RVA 0x3f34
 	// Code size 99 (0x63)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3835,11 +3814,11 @@
 	IL_0062:  ret 
     } // end of method SByteLiteral::.ctor
 
-    // method line 90
+    // method line 89
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x3fb8
+        // Method begins at RVA 0x3fa4
 	// Code size 100 (0x64)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3887,11 +3866,11 @@
   {
     .field  public  int16 NumVal
 
-    // method line 91
+    // method line 90
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4028
+        // Method begins at RVA 0x4014
 	// Code size 102 (0x66)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3926,11 +3905,11 @@
 	IL_0065:  ret 
     } // end of method ShortLiteral::.ctor
 
-    // method line 92
+    // method line 91
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x409c
+        // Method begins at RVA 0x4088
 	// Code size 103 (0x67)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -3978,11 +3957,11 @@
   {
     .field  public  int64 NumVal
 
-    // method line 93
+    // method line 92
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4110
+        // Method begins at RVA 0x40fc
 	// Code size 106 (0x6a)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4017,11 +3996,11 @@
 	IL_0069:  ret 
     } // end of method LongLiteral::.ctor
 
-    // method line 94
+    // method line 93
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x4188
+        // Method begins at RVA 0x4174
 	// Code size 107 (0x6b)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4069,11 +4048,11 @@
   {
     .field  public  float32 NumVal
 
-    // method line 95
+    // method line 94
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4200
+        // Method begins at RVA 0x41ec
 	// Code size 102 (0x66)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4108,11 +4087,11 @@
 	IL_0065:  ret 
     } // end of method FloatLiteral::.ctor
 
-    // method line 96
+    // method line 95
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x4274
+        // Method begins at RVA 0x4260
 	// Code size 103 (0x67)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4160,11 +4139,11 @@
   {
     .field  public  unsigned int32 NumVal
 
-    // method line 97
+    // method line 96
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x42e8
+        // Method begins at RVA 0x42d4
 	// Code size 107 (0x6b)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4200,11 +4179,11 @@
 	IL_006a:  ret 
     } // end of method UIntLiteral::.ctor
 
-    // method line 98
+    // method line 97
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x4360
+        // Method begins at RVA 0x434c
 	// Code size 108 (0x6c)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4253,11 +4232,11 @@
   {
     .field  public  unsigned int8 NumVal
 
-    // method line 99
+    // method line 98
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x43d8
+        // Method begins at RVA 0x43c4
 	// Code size 104 (0x68)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4293,11 +4272,11 @@
 	IL_0067:  ret 
     } // end of method ByteLiteral::.ctor
 
-    // method line 100
+    // method line 99
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x444c
+        // Method begins at RVA 0x4438
 	// Code size 105 (0x69)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4346,11 +4325,11 @@
   {
     .field  public  unsigned int16 NumVal
 
-    // method line 101
+    // method line 100
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x44c4
+        // Method begins at RVA 0x44b0
 	// Code size 107 (0x6b)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4386,11 +4365,11 @@
 	IL_006a:  ret 
     } // end of method UShortLiteral::.ctor
 
-    // method line 102
+    // method line 101
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x453c
+        // Method begins at RVA 0x4528
 	// Code size 108 (0x6c)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4439,11 +4418,11 @@
   {
     .field  public  unsigned int64 NumVal
 
-    // method line 103
+    // method line 102
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x45b4
+        // Method begins at RVA 0x45a0
 	// Code size 111 (0x6f)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4479,11 +4458,11 @@
 	IL_006e:  ret 
     } // end of method ULongLiteral::.ctor
 
-    // method line 104
+    // method line 103
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x4630
+        // Method begins at RVA 0x461c
 	// Code size 112 (0x70)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4532,11 +4511,11 @@
   {
     .field  public  native int NumVal
 
-    // method line 105
+    // method line 104
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x46ac
+        // Method begins at RVA 0x4698
 	// Code size 107 (0x6b)
 	.maxstack 5
 	IL_0000:  ldarg.0 
@@ -4572,11 +4551,11 @@
 	IL_006a:  ret 
     } // end of method IntPtrLiteral::.ctor
 
-    // method line 106
+    // method line 105
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x4724
+        // Method begins at RVA 0x4710
 	// Code size 108 (0x6c)
 	.maxstack 5
 	IL_0000:  ldarg.0 
@@ -4637,11 +4616,11 @@
     .field  public  bool MemberAccessFlg
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token MemberToAccess
 
-    // method line 107
+    // method line 106
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x479c
+        // Method begins at RVA 0x4788
 	// Code size 172 (0xac)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4694,11 +4673,11 @@
 	IL_00ab:  ret 
     } // end of method Ident::.ctor
 
-    // method line 108
+    // method line 107
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x4854
+        // Method begins at RVA 0x4840
 	// Code size 173 (0xad)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -4763,11 +4742,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 109
+    // method line 108
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4910
+        // Method begins at RVA 0x48fc
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4784,11 +4763,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 110
+    // method line 109
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4924
+        // Method begins at RVA 0x4910
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4805,11 +4784,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 111
+    // method line 110
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4938
+        // Method begins at RVA 0x4924
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4826,11 +4805,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 112
+    // method line 111
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x494c
+        // Method begins at RVA 0x4938
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4847,11 +4826,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 113
+    // method line 112
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4960
+        // Method begins at RVA 0x494c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4868,11 +4847,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 114
+    // method line 113
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4974
+        // Method begins at RVA 0x4960
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4889,11 +4868,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 115
+    // method line 114
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4988
+        // Method begins at RVA 0x4974
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4910,11 +4889,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 116
+    // method line 115
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x499c
+        // Method begins at RVA 0x4988
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4931,11 +4910,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 117
+    // method line 116
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x49b0
+        // Method begins at RVA 0x499c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4952,11 +4931,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 118
+    // method line 117
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x49c4
+        // Method begins at RVA 0x49b0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4973,11 +4952,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 119
+    // method line 118
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x49d8
+        // Method begins at RVA 0x49c4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -4994,11 +4973,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 120
+    // method line 119
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x49ec
+        // Method begins at RVA 0x49d8
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5015,11 +4994,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 121
+    // method line 120
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4a00
+        // Method begins at RVA 0x49ec
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5036,11 +5015,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 122
+    // method line 121
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4a14
+        // Method begins at RVA 0x4a00
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5057,11 +5036,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 123
+    // method line 122
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4a28
+        // Method begins at RVA 0x4a14
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5078,11 +5057,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 124
+    // method line 123
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4a3c
+        // Method begins at RVA 0x4a28
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5099,11 +5078,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 125
+    // method line 124
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4a50
+        // Method begins at RVA 0x4a3c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5120,11 +5099,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 126
+    // method line 125
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4a64
+        // Method begins at RVA 0x4a50
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5141,11 +5120,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 127
+    // method line 126
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4a78
+        // Method begins at RVA 0x4a64
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5162,11 +5141,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 128
+    // method line 127
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4a8c
+        // Method begins at RVA 0x4a78
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5183,11 +5162,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 129
+    // method line 128
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4aa0
+        // Method begins at RVA 0x4a8c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5204,11 +5183,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
   {
 
-    // method line 130
+    // method line 129
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4ab4
+        // Method begins at RVA 0x4aa0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5225,11 +5204,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Ops.Op
   {
 
-    // method line 131
+    // method line 130
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4ac8
+        // Method begins at RVA 0x4ab4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5246,11 +5225,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp
   {
 
-    // method line 132
+    // method line 131
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4adc
+        // Method begins at RVA 0x4ac8
 	// Code size 32 (0x20)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -5276,11 +5255,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp
   {
 
-    // method line 133
+    // method line 132
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4b08
+        // Method begins at RVA 0x4af4
 	// Code size 32 (0x20)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -5306,11 +5285,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp
   {
 
-    // method line 134
+    // method line 133
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4b34
+        // Method begins at RVA 0x4b20
 	// Code size 32 (0x20)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -5336,11 +5315,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp
   {
 
-    // method line 135
+    // method line 134
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4b60
+        // Method begins at RVA 0x4b4c
 	// Code size 32 (0x20)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -5366,11 +5345,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp
   {
 
-    // method line 136
+    // method line 135
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4b8c
+        // Method begins at RVA 0x4b78
 	// Code size 32 (0x20)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -5396,11 +5375,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp
   {
 
-    // method line 137
+    // method line 136
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4bb8
+        // Method begins at RVA 0x4ba4
 	// Code size 32 (0x20)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -5426,11 +5405,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp
   {
 
-    // method line 138
+    // method line 137
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4be4
+        // Method begins at RVA 0x4bd0
 	// Code size 32 (0x20)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -5456,11 +5435,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp
   {
 
-    // method line 139
+    // method line 138
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4c10
+        // Method begins at RVA 0x4bfc
 	// Code size 32 (0x20)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -5486,11 +5465,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 140
+    // method line 139
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4c3c
+        // Method begins at RVA 0x4c28
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5507,11 +5486,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 141
+    // method line 140
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4c50
+        // Method begins at RVA 0x4c3c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5528,11 +5507,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 142
+    // method line 141
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4c64
+        // Method begins at RVA 0x4c50
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5549,11 +5528,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 143
+    // method line 142
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4c78
+        // Method begins at RVA 0x4c64
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5570,11 +5549,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 144
+    // method line 143
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4c8c
+        // Method begins at RVA 0x4c78
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5591,11 +5570,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 145
+    // method line 144
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4ca0
+        // Method begins at RVA 0x4c8c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5612,11 +5591,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 146
+    // method line 145
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4cb4
+        // Method begins at RVA 0x4ca0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5633,11 +5612,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 147
+    // method line 146
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4cc8
+        // Method begins at RVA 0x4cb4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5654,11 +5633,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.SwitchTok
   {
 
-    // method line 148
+    // method line 147
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4cdc
+        // Method begins at RVA 0x4cc8
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5675,11 +5654,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 149
+    // method line 148
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4cf0
+        // Method begins at RVA 0x4cdc
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5696,11 +5675,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.SwitchTok
   {
 
-    // method line 150
+    // method line 149
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4d04
+        // Method begins at RVA 0x4cf0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5717,11 +5696,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 151
+    // method line 150
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4d18
+        // Method begins at RVA 0x4d04
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5738,11 +5717,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 152
+    // method line 151
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4d2c
+        // Method begins at RVA 0x4d18
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5759,11 +5738,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 153
+    // method line 152
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4d40
+        // Method begins at RVA 0x4d2c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5780,11 +5759,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 154
+    // method line 153
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4d54
+        // Method begins at RVA 0x4d40
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5801,11 +5780,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 155
+    // method line 154
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4d68
+        // Method begins at RVA 0x4d54
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5822,11 +5801,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 156
+    // method line 155
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4d7c
+        // Method begins at RVA 0x4d68
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5843,11 +5822,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 157
+    // method line 156
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4d90
+        // Method begins at RVA 0x4d7c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5864,11 +5843,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 158
+    // method line 157
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4da4
+        // Method begins at RVA 0x4d90
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5885,11 +5864,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 159
+    // method line 158
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4db8
+        // Method begins at RVA 0x4da4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5906,11 +5885,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 160
+    // method line 159
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4dcc
+        // Method begins at RVA 0x4db8
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5927,11 +5906,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 161
+    // method line 160
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4de0
+        // Method begins at RVA 0x4dcc
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5948,11 +5927,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 162
+    // method line 161
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4df4
+        // Method begins at RVA 0x4de0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5969,11 +5948,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 163
+    // method line 162
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4e08
+        // Method begins at RVA 0x4df4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -5990,11 +5969,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 164
+    // method line 163
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4e1c
+        // Method begins at RVA 0x4e08
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6011,11 +5990,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 165
+    // method line 164
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4e30
+        // Method begins at RVA 0x4e1c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6032,11 +6011,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 166
+    // method line 165
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4e44
+        // Method begins at RVA 0x4e30
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6053,11 +6032,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 167
+    // method line 166
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4e58
+        // Method begins at RVA 0x4e44
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6074,11 +6053,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 168
+    // method line 167
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4e6c
+        // Method begins at RVA 0x4e58
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6095,11 +6074,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 169
+    // method line 168
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4e80
+        // Method begins at RVA 0x4e6c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6116,11 +6095,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 170
+    // method line 169
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4e94
+        // Method begins at RVA 0x4e80
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6137,11 +6116,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 171
+    // method line 170
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4ea8
+        // Method begins at RVA 0x4e94
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6158,11 +6137,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 172
+    // method line 171
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4ebc
+        // Method begins at RVA 0x4ea8
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6179,11 +6158,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 173
+    // method line 172
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4ed0
+        // Method begins at RVA 0x4ebc
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6200,11 +6179,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 174
+    // method line 173
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4ee4
+        // Method begins at RVA 0x4ed0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6221,11 +6200,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 175
+    // method line 174
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4ef8
+        // Method begins at RVA 0x4ee4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6242,11 +6221,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 176
+    // method line 175
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4f0c
+        // Method begins at RVA 0x4ef8
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6263,11 +6242,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 177
+    // method line 176
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4f20
+        // Method begins at RVA 0x4f0c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6284,11 +6263,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 178
+    // method line 177
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4f34
+        // Method begins at RVA 0x4f20
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6305,11 +6284,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 179
+    // method line 178
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4f48
+        // Method begins at RVA 0x4f34
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6326,11 +6305,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 180
+    // method line 179
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4f5c
+        // Method begins at RVA 0x4f48
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6347,11 +6326,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 181
+    // method line 180
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4f70
+        // Method begins at RVA 0x4f5c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6368,11 +6347,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 182
+    // method line 181
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4f84
+        // Method begins at RVA 0x4f70
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6389,11 +6368,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 183
+    // method line 182
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4f98
+        // Method begins at RVA 0x4f84
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6410,11 +6389,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 184
+    // method line 183
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4fac
+        // Method begins at RVA 0x4f98
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6431,11 +6410,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 185
+    // method line 184
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4fc0
+        // Method begins at RVA 0x4fac
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6452,11 +6431,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 186
+    // method line 185
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4fd4
+        // Method begins at RVA 0x4fc0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6473,11 +6452,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 187
+    // method line 186
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4fe8
+        // Method begins at RVA 0x4fd4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6494,11 +6473,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 188
+    // method line 187
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x4ffc
+        // Method begins at RVA 0x4fe8
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6515,11 +6494,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
-    // method line 189
+    // method line 188
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5010
+        // Method begins at RVA 0x4ffc
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -6536,6 +6515,27 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
 
+    // method line 189
+    .method public specialname rtspecialname 
+           instance default void '.ctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x5010
+	// Code size 7 (0x7)
+	.maxstack 2
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void class dylan.NET.Tokenizer.AST.Tokens.Token::'.ctor'()
+	IL_0006:  ret 
+    } // end of method EndTok::.ctor
+
+  } // end of class dylan.NET.Tokenizer.AST.Tokens.EndTok
+}
+
+.namespace dylan.NET.Tokenizer.AST.Tokens
+{
+  .class public auto ansi MeTok
+  	extends dylan.NET.Tokenizer.AST.Tokens.Token
+  {
+
     // method line 190
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
@@ -6546,9 +6546,9 @@
 	IL_0000:  ldarg.0 
 	IL_0001:  call instance void class dylan.NET.Tokenizer.AST.Tokens.Token::'.ctor'()
 	IL_0006:  ret 
-    } // end of method EndTok::.ctor
+    } // end of method MeTok::.ctor
 
-  } // end of class dylan.NET.Tokenizer.AST.Tokens.EndTok
+  } // end of class dylan.NET.Tokenizer.AST.Tokens.MeTok
 }
 
 .namespace dylan.NET.Tokenizer.AST.Tokens
@@ -7137,17 +7137,134 @@
   } // end of class dylan.NET.Tokenizer.AST.Tokens.GettypeCallTok
 }
 
-.namespace dylan.NET.Tokenizer.AST.Tokens.Chars
+.namespace dylan.NET.Tokenizer.AST.Tokens
 {
-  .class public auto ansi Character
+  .class public auto ansi PtrCallTok
   	extends dylan.NET.Tokenizer.AST.Tokens.Token
   {
+    .field  public  class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok MetToCall
 
     // method line 201
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
         // Method begins at RVA 0x54a8
+	// Code size 40 (0x28)
+	.maxstack 4
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void class dylan.NET.Tokenizer.AST.Tokens.Token::'.ctor'()
+	IL_0006:  ldarg.0 
+	IL_0007:  ldstr ""
+	IL_000c:  stfld string dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_0011:  ldarg.0 
+	IL_0012:  ldc.i4 0
+	IL_0017:  stfld int32 dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_001c:  ldarg.0 
+	IL_001d:  newobj instance void class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok::'.ctor'()
+	IL_0022:  stfld class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok dylan.NET.Tokenizer.AST.Tokens.PtrCallTok::MetToCall
+	IL_0027:  ret 
+    } // end of method PtrCallTok::.ctor
+
+    // method line 202
+    .method public specialname rtspecialname 
+           instance default void '.ctor' (string 'value')  cil managed 
+    {
+        // Method begins at RVA 0x54dc
+	// Code size 41 (0x29)
+	.maxstack 4
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void class dylan.NET.Tokenizer.AST.Tokens.Token::'.ctor'()
+	IL_0006:  ldarg.0 
+	IL_0007:  ldarg 1
+
+	IL_000b:  nop 
+	IL_000c:  nop 
+	IL_000d:  stfld string dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_0012:  ldarg.0 
+	IL_0013:  ldc.i4 0
+	IL_0018:  stfld int32 dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_001d:  ldarg.0 
+	IL_001e:  newobj instance void class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok::'.ctor'()
+	IL_0023:  stfld class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok dylan.NET.Tokenizer.AST.Tokens.PtrCallTok::MetToCall
+	IL_0028:  ret 
+    } // end of method PtrCallTok::.ctor
+
+  } // end of class dylan.NET.Tokenizer.AST.Tokens.PtrCallTok
+}
+
+.namespace dylan.NET.Tokenizer.AST.Tokens
+{
+  .class public auto ansi NewarrCallTok
+  	extends dylan.NET.Tokenizer.AST.Tokens.Token
+  {
+    .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ArrayType
+    .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr ArrayLen
+
+    // method line 203
+    .method public specialname rtspecialname 
+           instance default void '.ctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x5514
+	// Code size 51 (0x33)
+	.maxstack 4
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void class dylan.NET.Tokenizer.AST.Tokens.Token::'.ctor'()
+	IL_0006:  ldarg.0 
+	IL_0007:  ldc.i4 0
+	IL_000c:  stfld int32 dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_0011:  ldarg.0 
+	IL_0012:  ldstr ""
+	IL_0017:  stfld string dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_001c:  ldarg.0 
+	IL_001d:  newobj instance void class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
+	IL_0022:  stfld class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok dylan.NET.Tokenizer.AST.Tokens.NewarrCallTok::ArrayType
+	IL_0027:  ldarg.0 
+	IL_0028:  newobj instance void class dylan.NET.Tokenizer.AST.Exprs.Expr::'.ctor'()
+	IL_002d:  stfld class dylan.NET.Tokenizer.AST.Exprs.Expr dylan.NET.Tokenizer.AST.Tokens.NewarrCallTok::ArrayLen
+	IL_0032:  ret 
+    } // end of method NewarrCallTok::.ctor
+
+    // method line 204
+    .method public specialname rtspecialname 
+           instance default void '.ctor' (string 'value')  cil managed 
+    {
+        // Method begins at RVA 0x5554
+	// Code size 52 (0x34)
+	.maxstack 4
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void class dylan.NET.Tokenizer.AST.Tokens.Token::'.ctor'()
+	IL_0006:  ldarg.0 
+	IL_0007:  ldc.i4 0
+	IL_000c:  stfld int32 dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_0011:  ldarg.0 
+	IL_0012:  ldarg 1
+
+	IL_0016:  nop 
+	IL_0017:  nop 
+	IL_0018:  stfld string dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_001d:  ldarg.0 
+	IL_001e:  newobj instance void class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
+	IL_0023:  stfld class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok dylan.NET.Tokenizer.AST.Tokens.NewarrCallTok::ArrayType
+	IL_0028:  ldarg.0 
+	IL_0029:  newobj instance void class dylan.NET.Tokenizer.AST.Exprs.Expr::'.ctor'()
+	IL_002e:  stfld class dylan.NET.Tokenizer.AST.Exprs.Expr dylan.NET.Tokenizer.AST.Tokens.NewarrCallTok::ArrayLen
+	IL_0033:  ret 
+    } // end of method NewarrCallTok::.ctor
+
+  } // end of class dylan.NET.Tokenizer.AST.Tokens.NewarrCallTok
+}
+
+.namespace dylan.NET.Tokenizer.AST.Tokens.Chars
+{
+  .class public auto ansi Character
+  	extends dylan.NET.Tokenizer.AST.Tokens.Token
+  {
+
+    // method line 205
+    .method public specialname rtspecialname 
+           instance default void '.ctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x5594
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7164,11 +7281,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 202
+    // method line 206
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x54bc
+        // Method begins at RVA 0x55a8
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7185,11 +7302,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 203
+    // method line 207
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x54d0
+        // Method begins at RVA 0x55bc
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7206,11 +7323,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 204
+    // method line 208
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x54e4
+        // Method begins at RVA 0x55d0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7227,11 +7344,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 205
+    // method line 209
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x54f8
+        // Method begins at RVA 0x55e4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7248,11 +7365,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 206
+    // method line 210
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x550c
+        // Method begins at RVA 0x55f8
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7269,11 +7386,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 207
+    // method line 211
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5520
+        // Method begins at RVA 0x560c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7290,11 +7407,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 208
+    // method line 212
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5534
+        // Method begins at RVA 0x5620
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7311,11 +7428,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 209
+    // method line 213
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5548
+        // Method begins at RVA 0x5634
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7332,11 +7449,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 210
+    // method line 214
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x555c
+        // Method begins at RVA 0x5648
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7353,11 +7470,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 211
+    // method line 215
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5570
+        // Method begins at RVA 0x565c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7374,11 +7491,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 212
+    // method line 216
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5584
+        // Method begins at RVA 0x5670
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7395,11 +7512,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 213
+    // method line 217
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5598
+        // Method begins at RVA 0x5684
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7416,11 +7533,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 214
+    // method line 218
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x55ac
+        // Method begins at RVA 0x5698
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7437,11 +7554,11 @@
   	extends dylan.NET.Tokenizer.AST.Tokens.Chars.Character
   {
 
-    // method line 215
+    // method line 219
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x55c0
+        // Method begins at RVA 0x56ac
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7460,11 +7577,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ArrayType
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token ArrayLen
 
-    // method line 216
+    // method line 220
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x55d4
+        // Method begins at RVA 0x56c0
 	// Code size 64 (0x40)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7499,11 +7616,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok MetToCall
 
-    // method line 217
+    // method line 221
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5620
+        // Method begins at RVA 0x570c
 	// Code size 53 (0x35)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7536,11 +7653,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token Obj
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok DestType
 
-    // method line 218
+    // method line 222
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5664
+        // Method begins at RVA 0x5750
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7572,11 +7689,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TypeToGet
 
-    // method line 219
+    // method line 223
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x56ac
+        // Method begins at RVA 0x5798
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7605,11 +7722,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok MetToCall
 
-    // method line 220
+    // method line 224
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x56e8
+        // Method begins at RVA 0x57d4
 	// Code size 53 (0x35)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7640,11 +7757,11 @@
   	extends dylan.NET.Tokenizer.AST.Exprs.Expr
   {
 
-    // method line 221
+    // method line 225
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x572c
+        // Method begins at RVA 0x5818
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7661,11 +7778,11 @@
   	extends dylan.NET.Tokenizer.AST.Exprs.Expr
   {
 
-    // method line 222
+    // method line 226
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5740
+        // Method begins at RVA 0x582c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7684,11 +7801,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok VarTyp
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident VarName
 
-    // method line 223
+    // method line 227
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5754
+        // Method begins at RVA 0x5840
 	// Code size 64 (0x40)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7725,11 +7842,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr RtExpr
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp CondOP
 
-    // method line 224
+    // method line 228
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x57a0
+        // Method begins at RVA 0x588c
 	// Code size 68 (0x44)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7764,11 +7881,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token Path
 
-    // method line 225
+    // method line 229
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x57f0
+        // Method begins at RVA 0x58dc
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7797,11 +7914,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.SwitchTok Opt
 
-    // method line 226
+    // method line 230
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x582c
+        // Method begins at RVA 0x5918
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7829,11 +7946,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 227
+    // method line 231
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5868
+        // Method begins at RVA 0x5954
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7852,11 +7969,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.SwitchTok Opt
     .field  public  bool Flg
 
-    // method line 228
+    // method line 232
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x587c
+        // Method begins at RVA 0x5968
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7878,11 +7995,11 @@
 	IL_0038:  ret 
     } // end of method DebugStmt::.ctor
 
-    // method line 229
+    // method line 233
     .method public 
            instance default void setFlg ()  cil managed 
     {
-        // Method begins at RVA 0x58c4
+        // Method begins at RVA 0x59b0
 	// Code size 194 (0xc2)
 	.maxstack 8
 	.locals init (
@@ -7979,11 +8096,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.SwitchTok Opt
     .field  public  bool Flg
 
-    // method line 230
+    // method line 234
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5994
+        // Method begins at RVA 0x5a80
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8005,11 +8122,11 @@
 	IL_0038:  ret 
     } // end of method ScopeStmt::.ctor
 
-    // method line 231
+    // method line 235
     .method public 
            instance default void setFlg ()  cil managed 
     {
-        // Method begins at RVA 0x59dc
+        // Method begins at RVA 0x5ac8
 	// Code size 194 (0xc2)
 	.maxstack 8
 	.locals init (
@@ -8105,11 +8222,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.SwitchTok Opt
 
-    // method line 232
+    // method line 236
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5aac
+        // Method begins at RVA 0x5b98
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8138,11 +8255,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token AsmPath
 
-    // method line 233
+    // method line 237
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5ae8
+        // Method begins at RVA 0x5bd4
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8172,11 +8289,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token Path
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token ResType
 
-    // method line 234
+    // method line 238
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5b24
+        // Method begins at RVA 0x5c10
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8208,11 +8325,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token NS
 
-    // method line 235
+    // method line 239
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5b6c
+        // Method begins at RVA 0x5c58
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8241,11 +8358,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token NS
 
-    // method line 236
+    // method line 240
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5ba8
+        // Method begins at RVA 0x5c94
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8275,11 +8392,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token Mode
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident AsmName
 
-    // method line 237
+    // method line 241
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5be4
+        // Method begins at RVA 0x5cd0
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8311,11 +8428,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral[] VersionNos
 
-    // method line 238
+    // method line 242
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5c2c
+        // Method begins at RVA 0x5d18
 	// Code size 52 (0x34)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8346,11 +8463,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token Path
 
-    // method line 239
+    // method line 243
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5c6c
+        // Method begins at RVA 0x5d58
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8380,11 +8497,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token NodeType
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token NodePath
 
-    // method line 240
+    // method line 244
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5ca8
+        // Method begins at RVA 0x5d94
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8416,11 +8533,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token NS
 
-    // method line 241
+    // method line 245
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5cf0
+        // Method begins at RVA 0x5ddc
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8451,11 +8568,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident ClassName
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok InhClass
 
-    // method line 242
+    // method line 246
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5d2c
+        // Method begins at RVA 0x5e18
 	// Code size 74 (0x4a)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8482,11 +8599,11 @@
 	IL_0049:  ret 
     } // end of method ClassStmt::.ctor
 
-    // method line 243
+    // method line 247
     .method public 
            instance default void AddAttr (class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd)  cil managed 
     {
-        // Method begins at RVA 0x5d84
+        // Method begins at RVA 0x5e70
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -8649,11 +8766,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident EnumName
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok EnumTyp
 
-    // method line 244
+    // method line 248
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5ea8
+        // Method begins at RVA 0x5f94
 	// Code size 74 (0x4a)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8680,11 +8797,11 @@
 	IL_0049:  ret 
     } // end of method EnumStmt::.ctor
 
-    // method line 245
+    // method line 249
     .method public 
            instance default void AddAttr (class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd)  cil managed 
     {
-        // Method begins at RVA 0x5f00
+        // Method begins at RVA 0x5fec
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -8846,11 +8963,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr RExp
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident LitName
 
-    // method line 246
+    // method line 250
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6024
+        // Method begins at RVA 0x6110
 	// Code size 51 (0x33)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8881,11 +8998,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] Attrs
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident PropertyName
 
-    // method line 247
+    // method line 251
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6064
+        // Method begins at RVA 0x6150
 	// Code size 63 (0x3f)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8909,11 +9026,11 @@
 	IL_003e:  ret 
     } // end of method PropertyStmt::.ctor
 
-    // method line 248
+    // method line 252
     .method public 
            instance default void AddAttr (class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd)  cil managed 
     {
-        // Method begins at RVA 0x60b0
+        // Method begins at RVA 0x619c
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -9074,11 +9191,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok Setter
 
-    // method line 249
+    // method line 253
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x61d4
+        // Method begins at RVA 0x62c0
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9107,11 +9224,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok Getter
 
-    // method line 250
+    // method line 254
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6210
+        // Method begins at RVA 0x62fc
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9143,11 +9260,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok RetTyp
     .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr[] Params
 
-    // method line 251
+    // method line 255
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x624c
+        // Method begins at RVA 0x6338
 	// Code size 91 (0x5b)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9179,11 +9296,11 @@
 	IL_005a:  ret 
     } // end of method MethodStmt::.ctor
 
-    // method line 252
+    // method line 256
     .method public 
            instance default void AddAttr (class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd)  cil managed 
     {
-        // Method begins at RVA 0x62b4
+        // Method begins at RVA 0x63a0
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -9334,11 +9451,11 @@
 	IL_0116:  ret 
     } // end of method MethodStmt::AddAttr
 
-    // method line 253
+    // method line 257
     .method public 
            instance default void AddParam (class dylan.NET.Tokenizer.AST.Exprs.Expr paramtoadd)  cil managed 
     {
-        // Method begins at RVA 0x63d8
+        // Method begins at RVA 0x64c4
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -9501,11 +9618,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident FieldName
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok FieldTyp
 
-    // method line 254
+    // method line 258
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x64fc
+        // Method begins at RVA 0x65e8
 	// Code size 74 (0x4a)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9532,11 +9649,11 @@
 	IL_0049:  ret 
     } // end of method FieldStmt::.ctor
 
-    // method line 255
+    // method line 259
     .method public 
            instance default void AddAttr (class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd)  cil managed 
     {
-        // Method begins at RVA 0x6554
+        // Method begins at RVA 0x6640
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -9696,11 +9813,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 256
+    // method line 260
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6678
+        // Method begins at RVA 0x6764
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -9719,11 +9836,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident ExName
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ExTyp
 
-    // method line 257
+    // method line 261
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x668c
+        // Method begins at RVA 0x6778
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9754,11 +9871,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 258
+    // method line 262
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x66d4
+        // Method begins at RVA 0x67c0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -9776,11 +9893,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr RExp
 
-    // method line 259
+    // method line 263
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x66e8
+        // Method begins at RVA 0x67d4
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9809,11 +9926,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident LabelName
 
-    // method line 260
+    // method line 264
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6724
+        // Method begins at RVA 0x6810
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9842,11 +9959,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident LabelName
 
-    // method line 261
+    // method line 265
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6760
+        // Method begins at RVA 0x684c
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9875,11 +9992,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident LabelName
 
-    // method line 262
+    // method line 266
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x679c
+        // Method begins at RVA 0x6888
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9908,11 +10025,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr Exp
 
-    // method line 263
+    // method line 267
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x67d8
+        // Method begins at RVA 0x68c4
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9941,11 +10058,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr Exp
 
-    // method line 264
+    // method line 268
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6814
+        // Method begins at RVA 0x6900
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9973,11 +10090,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 265
+    // method line 269
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6850
+        // Method begins at RVA 0x693c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -9994,11 +10111,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 266
+    // method line 270
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6864
+        // Method begins at RVA 0x6950
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10017,11 +10134,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok VarTyp
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident VarName
 
-    // method line 267
+    // method line 271
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6878
+        // Method begins at RVA 0x6964
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10055,11 +10172,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident VarName
     .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr RExpr
 
-    // method line 268
+    // method line 272
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x68c0
+        // Method begins at RVA 0x69ac
 	// Code size 68 (0x44)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10095,11 +10212,11 @@
     .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr LExp
     .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr RExp
 
-    // method line 269
+    // method line 273
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6910
+        // Method begins at RVA 0x69fc
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10131,11 +10248,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident NumVar
 
-    // method line 270
+    // method line 274
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6958
+        // Method begins at RVA 0x6a44
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10164,11 +10281,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.Ident NumVar
 
-    // method line 271
+    // method line 275
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6994
+        // Method begins at RVA 0x6a80
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10197,11 +10314,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr RExp
 
-    // method line 272
+    // method line 276
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x69d0
+        // Method begins at RVA 0x6abc
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10230,11 +10347,11 @@
   {
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok MethodToken
 
-    // method line 273
+    // method line 277
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6a0c
+        // Method begins at RVA 0x6af8
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10262,11 +10379,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 274
+    // method line 278
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6a48
+        // Method begins at RVA 0x6b34
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10283,11 +10400,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 275
+    // method line 279
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6a5c
+        // Method begins at RVA 0x6b48
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10304,11 +10421,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 276
+    // method line 280
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6a70
+        // Method begins at RVA 0x6b5c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10325,11 +10442,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 277
+    // method line 281
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6a84
+        // Method begins at RVA 0x6b70
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10346,11 +10463,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 278
+    // method line 282
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6a98
+        // Method begins at RVA 0x6b84
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10367,11 +10484,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 279
+    // method line 283
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6aac
+        // Method begins at RVA 0x6b98
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10388,11 +10505,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 280
+    // method line 284
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6ac0
+        // Method begins at RVA 0x6bac
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10409,11 +10526,11 @@
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
 
-    // method line 281
+    // method line 285
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6ad4
+        // Method begins at RVA 0x6bc0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 

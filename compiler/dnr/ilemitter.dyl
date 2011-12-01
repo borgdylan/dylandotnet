@@ -37,6 +37,26 @@ var op as OpCode = InstructionHelper::getOPCode("pop")
 ILGen::Emit(op)
 end method
 
+method public static void EmitBox(var t as System.Type)
+var op as OpCode = InstructionHelper::getOPCode("box")
+ILGen::Emit(op, t)
+end method
+
+method public static void EmitUnbox(var t as System.Type)
+var op as OpCode = InstructionHelper::getOPCode("unbox")
+ILGen::Emit(op, t)
+end method
+
+method public static void EmitUnboxAny(var t as System.Type)
+var op as OpCode = InstructionHelper::getOPCode("unbox.any")
+ILGen::Emit(op, t)
+end method
+
+method public static void EmitConstrained(var t as System.Type)
+var op as OpCode = InstructionHelper::getOPCode("constrained.")
+ILGen::Emit(op, t)
+end method
+
 method public static void EmitLdloc(var num as integer)
 var op as OpCode
 var b1 as boolean = false
@@ -323,6 +343,202 @@ method public static void EmitStsfld(var fld as FieldInfo)
 var lsop as OpCode = InstructionHelper::getOPCode("stsfld")
 ILGen::Emit(lsop, fld)
 end method
+
+method public static void EmitStelem(var typ as System.Type)
+
+var t1 as System.Type
+var op as OpCode
+var b as boolean = false
+
+label fin
+
+t1 = gettype IntPtr
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("stelem.i")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype sbyte
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("stelem.i1")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype short
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("stelem.i2")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype integer
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("stelem.i4")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype long
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("stelem.i8")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype single
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("stelem.r4")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype double
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("stelem.r8")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype ValueType
+b = t1::IsAssignableFrom(typ)
+if b = true then
+op = InstructionHelper::getOPCode("stelem")
+ILGen::Emit(op, typ)
+goto fin
+end if
+
+t1 = gettype object
+b = t1::IsAssignableFrom(typ)
+if b = true then
+op = InstructionHelper::getOPCode("stelem.ref")
+ILGen::Emit(op)
+goto fin
+end if
+
+
+place fin
+
+end method
+
+method public static void EmitLdelem(var typ as System.Type)
+
+var t1 as System.Type
+var op as OpCode
+var b as boolean = false
+
+label fin
+
+t1 = gettype IntPtr
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem.i")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype sbyte
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem.i1")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype short
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem.i2")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype integer
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem.i4")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype Byte
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem.u1")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype UInt16
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem.u2")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype UInt32
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem.u4")
+ILGen::Emit(op)
+goto fin
+end if
+
+
+t1 = gettype long
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem.i8")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype single
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem.r4")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype double
+b = t1::Equals(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem.r8")
+ILGen::Emit(op)
+goto fin
+end if
+
+t1 = gettype ValueType
+b = t1::IsAssignableFrom(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem")
+ILGen::Emit(op, typ)
+goto fin
+end if
+
+t1 = gettype object
+b = t1::IsAssignableFrom(typ)
+if b = true then
+op = InstructionHelper::getOPCode("ldelem.ref")
+ILGen::Emit(op)
+goto fin
+end if
+
+
+place fin
+
+end method
+
 
 method public static void EmitLdcI8(var n as long)
 var op as OpCode
@@ -784,6 +1000,16 @@ var cop as OpCode = InstructionHelper::getOPCode("call")
 ILGen::Emit(cop, met)
 end method
 
+method public static void EmitLdftn(var met as MethodInfo)
+var op as OpCode = InstructionHelper::getOPCode("ldftn")
+ILGen::Emit(op, met)
+end method
+
+method public static void EmitLdvirtftn(var met as MethodInfo)
+var op as OpCode = InstructionHelper::getOPCode("ldvirtftn")
+ILGen::Emit(op, met)
+end method
+
 method public static void EmitLdfld(var fld as FieldInfo)
 var lop as OpCode = InstructionHelper::getOPCode("ldfld")
 ILGen::Emit(lop, fld)
@@ -1145,6 +1371,32 @@ var op as OpCode
 op = InstructionHelper::getOPCode("ldtoken")
 ILGen::Emit(op, t)
 end method
+
+method public static void EmitConvU()
+var op as OpCode
+op = InstructionHelper::getOPCode("conv.u")
+ILGen::Emit(op)
+end method
+
+method public static void EmitConvI()
+var op as OpCode
+op = InstructionHelper::getOPCode("conv.i")
+ILGen::Emit(op)
+end method
+
+method public static void EmitConvI4()
+var op as OpCode
+op = InstructionHelper::getOPCode("conv.i4")
+ILGen::Emit(op)
+end method
+
+method public static void EmitNewarr(var t as System.Type)
+var op as OpCode
+ILGen::Emit(op)
+op = InstructionHelper::getOPCode("newarr")
+ILGen::Emit(op, t)
+end method
+
 
 method public static void DeclVar(var name as string, var typ as System.Type)
 var lb as LocalBuilder = ILGen::DeclareLocal(typ)

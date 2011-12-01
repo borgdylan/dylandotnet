@@ -389,6 +389,36 @@ tok = ds
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "label")
+
+if comp = 0 then
+var lbltk as LabelTok = new LabelTok()
+lbltk::Line = tok::Line
+lbltk::Value = tok::Value
+tok = lbltk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "place")
+
+if comp = 0 then
+var plctk as PlaceTok = new PlaceTok()
+plctk::Line = tok::Line
+plctk::Value = tok::Value
+tok = plctk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "goto")
+
+if comp = 0 then
+var gtotk as GotoTok = new GotoTok()
+gtotk::Line = tok::Line
+gtotk::Value = tok::Value
+tok = gtotk
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "if")
 
 if comp = 0 then
@@ -441,6 +471,37 @@ newtk::Value = tok::Value
 tok = newtk
 goto fin
 end if
+
+comp = String::Compare(tok::Value, "newarr")
+
+if comp = 0 then
+var newatk as NewarrTok = new NewarrTok()
+newatk::Line = tok::Line
+newatk::Value = tok::Value
+tok = newatk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "me")
+
+if comp = 0 then
+var metk as MeTok = new MeTok()
+metk::Line = tok::Line
+metk::Value = tok::Value
+tok = metk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "ptr")
+
+if comp = 0 then
+var ptrtk as PtrTok = new PtrTok()
+ptrtk::Line = tok::Line
+ptrtk::Value = tok::Value
+tok = ptrtk
+goto fin
+end if
+
 
 comp = String::Compare(tok::Value, "gettype")
 
@@ -705,6 +766,17 @@ spnattr::Value = tok::Value
 tok = spnattr
 goto fin
 end if
+
+comp = String::Compare(tok::Value, "hidebysig")
+
+if comp = 0 then
+var hbsattr as HideBySigAttr = new HideBySigAttr()
+hbsattr::Line = tok::Line
+hbsattr::Value = tok::Value
+tok = hbsattr
+goto fin
+end if
+
 
 comp = String::Compare(tok::Value, "virtual")
 

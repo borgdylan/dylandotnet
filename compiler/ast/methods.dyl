@@ -168,3 +168,47 @@ Name = new TypeTok()
 end method
 
 end class
+
+class public auto ansi PtrCallTok extends Token
+
+field public MethodNameTok MetToCall
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+MetToCall = new MethodNameTok()
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+MetToCall = new MethodNameTok()
+end method
+
+end class
+
+class public auto ansi NewarrCallTok extends Token
+
+field public TypeTok ArrayType
+field public Expr ArrayLen
+
+method public void ctor0()
+me::ctor()
+me::Line = 0
+me::Value = ""
+ArrayType = new TypeTok()
+ArrayLen = new Expr()
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Line = 0
+me::Value = value
+ArrayType = new TypeTok()
+ArrayLen = new Expr()
+end method
+
+end class
+

@@ -193,7 +193,8 @@ method public static ConstructorInfo LoadCtor(var typ as System.Type, var typs a
 var nullbind as Binder = null
 var parammodifs as ParameterModifier[] = newarr ParameterModifier 0
 var bindflgs as BindingFlags = 4 or 8 or 16 or 32
-var ctorinf as ConstructorInfo = typ::GetConstructor(bindflgs, nullbind, typs, parammodifs)
+//var ctorinf as ConstructorInfo = typ::GetConstructor(bindflgs, nullbind, typs, parammodifs)
+var ctorinf as ConstructorInfo = typ::GetConstructor(typs)
 
 if ctorinf <> null then
 MemberTyp = typ

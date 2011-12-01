@@ -181,6 +181,21 @@ end if
 goto fin
 end if
 
+typ = gettype Attributes.HideBySigAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 128
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+
 place fin
 
 if i = len then
@@ -1276,6 +1291,9 @@ b = b and b2
 
 if b = false then
 
+b = sink::Equals(AsmFactory::CurnTypB)
+
+if b = false then
 m1 = Loader::LoadConvOp(sink, "op_Implicit", source, sink)
 if m1 <> null then
 ILEmitter::EmitCall(m1)
@@ -1287,7 +1305,11 @@ if m1 <> null then
 ILEmitter::EmitCall(m1)
 goto fin
 end if
+end if
 
+b = source::Equals(AsmFactory::CurnTypB)
+
+if b = false then
 m1 = Loader::LoadConvOp(source, "op_Implicit", source, sink)
 if m1 <> null then
 ILEmitter::EmitCall(m1)
@@ -1299,10 +1321,33 @@ if m1 <> null then
 ILEmitter::EmitCall(m1)
 goto fin
 end if
+end if
 
 end if
 
 //end conv overload block
+
+typ = gettype object
+b = sink::Equals(typ)
+
+if b = true then
+typ = gettype ValueType
+b = typ::IsAssignableFrom(source)
+if b = true then
+ILEmitter::EmitBox(source)
+else
+end if
+goto fin
+end if
+
+typ = gettype object
+b = source::Equals(typ)
+
+if b = true then
+ILEmitter::EmitUnboxAny(sink)
+goto fin
+end if
+
 
 typ = gettype IntPtr
 b = source::Equals(typ)
@@ -1420,21 +1465,46 @@ place fin
 end method
 
 method public static void EmitMetCall(var met as MethodInfo, var stat as boolean)
+var b as boolean
+
 if stat = true then
 ILEmitter::EmitCall(met)
 else
+var typ as System.Type = gettype ValueType
+b = typ::IsAssignableFrom(AsmFactory::Type05)
+
+if b = true then
+b = met::get_IsVirtual()
+if b = true then
+//ILEmitter::EmitConstrained(AsmFactory::Type05)
+end if
+end if
+if b = false then
 ILEmitter::EmitCallvirt(met)
+else
+ILEmitter::EmitCall(met)
+end if
+
 end if
 if AsmFactory::PopFlg = true then
 var rt as System.Type = met::get_ReturnType()
 var vt as System.Type = gettype void
-var b as boolean = rt::Equals(vt)
+b = rt::Equals(vt)
 if b = true then
 else
 ILEmitter::EmitPop()
 end if
 end if
 end method
+
+method public static void EmitPtrLd(var met as MethodInfo, var stat as boolean)
+if stat = true then
+ILEmitter::EmitLdftn(met)
+else
+ILEmitter::EmitLdvirtftn(met)
+end if
+end method
+
 
 method public static void EmitFldLd(var fld as FieldInfo, var stat as boolean)
 if AsmFactory::AddrFlg = false then
@@ -1506,7 +1576,7 @@ return fldinf
 
 end method
 
-method public static FieldInfo GetLocMet(var nam as string, var typs as System.Type[])
+method public static MethodInfo GetLocMet(var nam as string, var typs as System.Type[])
 
 var metinf as MethodInfo = null
 var meti as MethodItem
@@ -1523,7 +1593,35 @@ return metinf
 
 end method
 
+method public static MethodInfo GetLocMetNoParams(var nam as string)
 
+var metinf as MethodInfo = null
+var meti as MethodItem
+
+meti = SymTable::FindMetNoParams(nam)
+
+if meti <> null then
+metinf = meti::MethodBldr
+end if
+
+return metinf
+
+end method
+
+method public static Emit.Label GetLbl(var nam as string)
+
+var lbl as Emit.Label
+var lbli as LabelItem
+
+lbli = SymTable::FindLbl(nam)
+
+if lbli <> null then
+lbl = lbli::Lbl
+end if
+
+return lbl
+
+end method
 
 end class
 

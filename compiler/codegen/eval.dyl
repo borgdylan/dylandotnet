@@ -621,6 +621,7 @@ var mcfldinf as FieldInfo
 var mcvr as VarItem
 var mcisstatic as boolean = false
 var mectorflg as boolean = false
+var mcrestrord as integer = 2
 
 mnstr = mntok::Value
 mnstrarr = ParseUtils::StringParser(mnstr, ":")
@@ -647,6 +648,7 @@ idtcomp = String::Compare(mnstrarr[0], "me")
 if idtcomp = 0 then
 i++
 idtb1 = true
+mcrestrord = 3
 end if
 
 label loop7
@@ -663,7 +665,7 @@ mcisstatic = false
 end if
 
 idtcomp = mnstrarr[l]
-if idtcomp >= 2 then
+if idtcomp >= mcrestrord then
 
 AsmFactory::AddrFlg = true
 
@@ -855,6 +857,8 @@ end if
 AsmFactory::Type02 = AsmFactory::Type03
 i = j
 
+AsmFactory::Type05 = mcparenttyp
+
 if mectorflg = false then
 
 if idtb2 = true then
@@ -1016,6 +1020,66 @@ AsmFactory::Type02 = gettype System.Type
 goto fin
 end if
 
+typ = gettype MeTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+
+if emt = true then
+ILEmitter::EmitLdarg(0)
+end if
+
+AsmFactory::Type02 = AsmFactory::CurnTypB
+
+goto fin
+end if
+
+typ = gettype NewarrCallTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+
+
+var newactok as NewarrCallTok = tok
+curexpr = newactok::ArrayLen
+tt = newactok::ArrayType
+typ = Helpers::CommitEvalTTok(tt)
+
+if emt = true then
+curexpr = ConvToRPN(curexpr)
+tok = ConvToAST(curexpr)
+ASTEmit(tok, emt)
+ILEmitter::EmitConvI()
+ILEmitter::EmitNewarr(typ)
+end if
+
+AsmFactory::Type02 = typ::MakeArrayType()
+
+goto fin
+end if
+
+
+typ = gettype PtrCallTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+
+if emt = true then
+
+var ptrctok as PtrCallTok = tok
+mntok = ptrctok::MetToCall
+mcmetinf = Helpers::GetLocMetNoParams(mntok::Value)
+
+mcisstatic = mcmetinf::get_IsStatic()
+if mcisstatic = false then
+ILEmitter::EmitLdarg(0)
+end if
+Helpers::EmitPtrLd(mcmetinf, mcisstatic)
+end if
+AsmFactory::Type02 = gettype IntPtr
+goto fin
+end if
+
 place fin
 
 end if
@@ -1061,6 +1125,7 @@ var idtarrloc as Ident
 var tok as Token
 var typ as System.Type
 var b as boolean
+var restrord as integer = 2
 
 i = -1
 idtnamarr = ParseUtils::StringParser(idtnam, ":")
@@ -1070,6 +1135,7 @@ idtcomp = String::Compare(idtnamarr[0], "me")
 if idtcomp = 0 then
 i++
 idtb1 = true
+restrord = 3
 end if
 
 label loop7
@@ -1085,7 +1151,7 @@ label idtfin
 //end if
 
 idtcomp = idtnamarr[l]
-if idtcomp >= 2 then
+if idtcomp >= restrord then
 //---------
 
 AsmFactory::AddrFlg = true

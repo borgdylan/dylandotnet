@@ -19,6 +19,7 @@ field public static System.Type Type01
 field public static System.Type Type02
 field public static System.Type Type03
 field public static System.Type Type04
+field public static System.Type Type05
 field public static ModuleBuilder MdlB
 field public static ISymbolDocumentWriter DocWriter
 field public static string CurnNS

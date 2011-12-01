@@ -317,6 +317,7 @@ ILEmitter::StaticFlg = false
 
 SymTable::ResetVar()
 SymTable::ResetIf()
+SymTable::ResetLbl()
 
 var mattrs as Attributes.Attribute[] = mtss::Attrs
 var ma as MethodAttributes = Helpers::ProcessMethodAttrs(mattrs)
@@ -534,6 +535,7 @@ end if
 
 var ifendl as Emit.Label
 var ifnbl as Emit.Label
+var genlbl as Emit.Label
 
 typ = gettype IfStmt
 b = typ::IsInstanceOfType($object$stm)
@@ -603,6 +605,39 @@ SymTable::PopIf()
 goto fin
 end if
 
+var lblidt as Ident
+
+typ = gettype LabelStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var lblstm as LabelStmt = stm
+lblidt = lblstm::LabelName
+SymTable::AddLbl(lblidt::Value)
+goto fin
+end if
+
+typ = gettype PlaceStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var plcstm as PlaceStmt = stm
+lblidt = plcstm::LabelName
+genlbl = Helpers::GetLbl(lblidt::Value)
+ILEmitter::MarkLbl(genlbl)
+goto fin
+end if
+
+typ = gettype GotoStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var gtostm as GotoStmt = stm
+lblidt = gtostm::LabelName
+genlbl = Helpers::GetLbl(lblidt::Value)
+ILEmitter::EmitBr(genlbl)
+goto fin
+end if
 
 place fin
 

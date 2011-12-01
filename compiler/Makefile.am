@@ -1,5 +1,6 @@
-#EXTRA_DIST = *.dyl /ast/*.dyl /lexer/*.dyl /parser/*.dyl /codegen/*.dyl
+EXTRA_DIST = 
 CLEANFILES = 
+SUBDIRS = . tests
 
 #tokenizer.AST.txt tokenizer.Lexer.txt tokenizer.Parser.txt tokenizer.CodeGen.txt dnc.txt
 
@@ -11,62 +12,19 @@ dylandotnet:
 	mono ./dnc.exe dnc.dyl
 	
 prodscript:
-	sed -e "s|\@libdir\@|$(libdir)|g" dylandotnet.in > dylandotnet
-	sed -e "s|\@libdir\@|$(libdir)|g" dylandotnet4.in > dylandotnet4
+	sed -e "s|\@libdir\@|$(libdir)|g" \
+	    -e "s|\@MONO\@|$(MONO)|g" dylandotnet.in > dylandotnet
+	sed -e "s|\@libdir\@|$(libdir)|g" \
+	    -e "s|\@MONO\@|$(MONO)|g" dylandotnet4.in > dylandotnet4
 
 installman:
 	$(install_sh_PROGRAM) dylandotnet.1 $(DESTDIR)$(mandir)/man1/dylandotnet.1
 	$(install_sh_PROGRAM) dylandotnet4.1 $(DESTDIR)$(mandir)/man1/dylandotnet4.1
-
-installdoc:
-	cp -r ./doc/ast-html ast-html
-	tar -czf ast.tar.gz ast-html
-	$(install_sh_PROGRAM) ast.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/ast.tar.gz
-	rm -f ast.tar.gz
-	rm -f -r ast-html
+		
+install: installman
 	
-	cp -r ./doc/lexer-html lexer-html
-	tar -czf lexer.tar.gz lexer-html
-	$(install_sh_PROGRAM) lexer.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/lexer.tar.gz
-	rm -f lexer.tar.gz
-	rm -f -r lexer-html
-	
-	cp -r ./doc/parser-html parser-html
-	tar -czf parser.tar.gz parser-html
-	$(install_sh_PROGRAM) parser.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/parser.tar.gz
-	rm -f parser.tar.gz
-	rm -f -r parser-html
-	
-	cp -r ./doc/codegen-html codegen-html
-	tar -czf codegen.tar.gz codegen-html
-	$(install_sh_PROGRAM) codegen.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/codegen.tar.gz
-	rm -f codegen.tar.gz
-	rm -f -r codegen-html
-	
-	cp -r ./doc/dnc-html dnc-html
-	tar -czf dnc.tar.gz dnc-html
-	$(install_sh_PROGRAM) dnc.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/dnc.tar.gz
-	rm -f dnc.tar.gz
-	rm -f -r dnc-html
-	
-	cp -r ./doc/dnu-html dnu-html
-	tar -czf dnu.tar.gz dnu-html
-	$(install_sh_PROGRAM) dnu.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/dnu.tar.gz
-	rm -f dnu.tar.gz
-	rm -f -r dnu-html
-	
-	cp -r ./doc/dnr-html dnr-html
-	tar -czf dnr.tar.gz dnr-html
-	$(install_sh_PROGRAM) dnr.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/dnr.tar.gz
-	rm -f dnr.tar.gz
-	rm -f -r dnr-html
-	
-installlog:
-	gzip --best -c ChangeLog > changelog.gz
-	$(install_sh_PROGRAM) changelog.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/changelog.gz
-	rm -f changelog.gz
-	
-install: prodscript installman installdoc installlog
+	cp ChangeLog doc/ChangeLog	
+		
 	$(install_sh_PROGRAM) dylandotnet $(DESTDIR)$(bindir)/dylandotnet
 	chmod a+x $(DESTDIR)$(bindir)/dylandotnet
 	$(install_sh_PROGRAM) 2.0/dnu.dll $(DESTDIR)$(libdir)/dylandotnet/dnu.dll
@@ -101,30 +59,39 @@ install: prodscript installman installdoc installlog
 	$(install_sh_PROGRAM) 4.0/dnc.exe $(DESTDIR)$(libdir)/dylandotnet4/dnc.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/dnc.exe
 	
+	$(MAKE) -C tests install
+	$(MAKE) -C doc install
+	
 uninstallman:
 	rm $(DESTDIR)$(mandir)/man1/dylandotnet.1
 	rm $(DESTDIR)$(mandir)/man1/dylandotnet4.1
 
-uninstalldoc:
-	rm -f -r $(prefix)/share/doc/dylandotnet-doc
-
-uninstall: uninstallman uninstalldoc
+uninstall: uninstallman
 	rm -f $(DESTDIR)$(bindir)/dylandotnet
 	rm -r -f $(DESTDIR)$(libdir)/dylandotnet
 	rm -f $(DESTDIR)$(bindir)/dylandotnet4
 	rm -r -f $(DESTDIR)$(libdir)/dylandotnet4
 	
-distclean:
+	$(MAKE) -C doc uninstall
 	
-tarball:
+distclean:
+	$(MAKE) -C tests distclean
+	$(MAKE) -C doc distclean
+	rm -f Makefile
 	rm -f config.status
 	rm -f config.log
-	rm -f Makefile
+	
+tarball: distclean
 	mkdir -p ./../$(distdir)
 	cp -r * ./../$(distdir)
 	tar -czf ./../$(distdir).tar.gz ./../$(distdir)
 	rm -f -r ./../$(distdir)
 
-all:
+all: prodscript
 	echo "Hello World"
-
+	$(MAKE) -C tests all
+	$(MAKE) -C doc all
+	
+testc:
+	$(MAKE) -C tests testc
+	$(MAKE) -C doc testc

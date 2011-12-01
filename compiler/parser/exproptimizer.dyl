@@ -487,6 +487,11 @@ var nctok as Token = null
 var ncttok as TypeTok = null
 var gtctok as Token = null
 var gtcttok as TypeTok = null
+var ptrctok as Token = null
+var ptrmntok as MethodNameTok = null
+var newavtok as Token = null
+var newaexpr as Expr = null
+var newattok as TypeTok = null
 var mctok2 as Token = null
 var mcident as Ident = null
 var mcmetcall as MethodCallTok = null
@@ -606,6 +611,7 @@ typ = gettype Ident
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
+if ParserFlags::DurConvFlag = false then
 b = ParserFlags::MetCallFlag or ParserFlags::IdentFlag or ParserFlags::StringFlag
 if b = true then
 mcbool = true
@@ -616,6 +622,18 @@ var id1 as Ident = exp::Tokens[i]
 exp::Tokens[i] = ParserFlags::UpdateIdent(id1)
 ParserFlags::SetUnaryFalse()
 j = i
+end if
+else
+
+var tt2 as Ident = exp::Tokens[i]
+var tt3 as TypeTok = new TypeTok()
+tt3::Line = tt2::Line
+tt3::Value = tt2::Value
+ParserFlags::ConvTyp = tt3
+exp::RemToken(i)
+i--
+len = exp::Tokens[l] - 1
+
 end if
 goto fin
 end if
@@ -758,9 +776,90 @@ gtcttok::Value = gtctok::Value
 exp::Tokens[i] = gtcttok
 end if
 
-var gtctoken as GettypeCallTok = new GettypeCallTok
+var gtctoken as GettypeCallTok = new GettypeCallTok()
 gtctoken::Name = exp::Tokens[i]
 exp::Tokens[i] = gtctoken
+
+goto fin
+end if
+
+
+typ = gettype NewarrTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+
+exp::RemToken(i)
+len--
+
+tok = exp::Tokens[i]
+
+exp::RemToken(i)
+len--
+
+typ = gettype TypeTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b <> true then
+newattok = new TypeTok()
+newattok::Line = tok::Line
+newattok::Value = tok::Value
+else
+newattok = tok
+end if
+
+newavtok = exp::Tokens[i]
+
+var newarrtoken as NewarrCallTok = new NewarrCallTok()
+newarrtoken::ArrayType = newattok
+newaexpr = new Expr()
+newaexpr::AddToken(newavtok)
+newarrtoken::ArrayLen = newaexpr
+
+exp::Tokens[i] = newarrtoken
+
+goto fin
+end if
+
+
+typ = gettype PtrTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+
+exp::RemToken(i)
+len--
+
+ptrmntok = new MethodNameTok()
+ptrmntok = IdentToMNTok(exp::Tokens[i] , ptrmntok)
+
+var ptrctoken as PtrCallTok = new PtrCallTok()
+ptrctoken::MetToCall = ptrmntok
+exp::Tokens[i] = ptrctoken
+
+//outer check for (
+i++
+if i <= len then
+tok = exp::Tokens[i]
+typ = gettype LParen
+b = typ::IsInstanceOfType($object$tok)
+if b = true then
+exp::RemToken(i)
+len--
+//inner check for )
+//-----------------
+if i <= len then
+tok = exp::Tokens[i]
+typ = gettype RParen
+b = typ::IsInstanceOfType($object$tok)
+if b = true then
+exp::RemToken(i)
+len--
+end if
+end if
+//-----------------
+end if
+end if
 
 goto fin
 end if

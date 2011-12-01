@@ -5,17 +5,17 @@
 }
 .assembly extern tokenizer.AST
 {
-  .ver 11:2:7:8
+  .ver 11:2:7:9
 }
 .assembly extern dnu
 {
-  .ver 11:2:7:8
+  .ver 11:2:7:9
 }
 .assembly 'tokenizer.Parser'
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 38 00 00 ) // ...11.2.7.8..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 39 00 00 ) // ...11.2.7.9..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (
 		01 00 10 74 6F 6B 65 6E 69 7A 65 72 2E 50 61 72   // ...tokenizer.Par
@@ -30,10 +30,10 @@
 		73 65 72 00 00                                  ) // ser..
 
   .hash algorithm 0x00008004
-  .ver  11:2:7:8
+  .ver  11:2:7:9
 }
 
-.module tokenizer.Parser.dll // GUID = {568A483E-CD9A-408B-8B1A-70CFFE5DDC96}
+.module tokenizer.Parser.dll // GUID = {C4EC85F1-2AAD-47E0-89AA-79E808979677}
 
 
 .namespace dylan.NET.Tokenizer.Parser
@@ -383,8 +383,8 @@
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token Optimize (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token tok)  cil managed 
     {
         // Method begins at RVA 0x2380
-	// Code size 19560 (0x4c68)
-	.maxstack 520
+	// Code size 20470 (0x4ff6)
+	.maxstack 548
 	.locals init (
 		int32	V_0,
 		bool	V_1,
@@ -428,80 +428,87 @@
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.Pipe	V_39,
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.Comma	V_40,
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.DollarSign	V_41,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.IfTok	V_42,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ElseIfTok	V_43,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ElseTok	V_44,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ThenTok	V_45,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewTok	V_46,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeTok	V_47,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.RefasmTok	V_48,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.DebugTok	V_49,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ScopeTok	V_50,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ImportTok	V_51,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.LocimportTok	V_52,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.AssemblyTok	V_53,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.VerTok	V_54,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OnTok	V_55,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OffTok	V_56,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ExeTok	V_57,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.DllTok	V_58,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.FieldTok	V_59,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ClassTok	V_60,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ExtendsTok	V_61,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodTok	V_62,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.EndTok	V_63,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ReturnTok	V_64,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.VarTok	V_65,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.AsTok	V_66,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OfTok	V_67,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.PrivateAttr	V_68,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.PublicAttr	V_69,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.InitOnlyAttr	V_70,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.StaticAttr	V_71,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.SpecialNameAttr	V_72,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.VirtualAttr	V_73,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoLayoutAttr	V_74,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoClassAttr	V_75,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AnsiClassAttr	V_76,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.BeforeFieldInitAttr	V_77,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.StringTok	V_78,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.VoidTok	V_79,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.DecimalTok	V_80,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntegerTok	V_81,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntPtrTok	V_82,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.UIntegerTok	V_83,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.DoubleTok	V_84,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.BooleanTok	V_85,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.CharTok	V_86,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.SingleTok	V_87,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.SByteTok	V_88,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ByteTok	V_89,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ShortTok	V_90,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.UShortTok	V_91,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.LongTok	V_92,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ULongTok	V_93,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ObjectTok	V_94,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.CommentTok	V_95,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral	V_96,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral	V_97,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral	V_98,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral	V_99,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral	V_100,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral	V_101,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral	V_102,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral	V_103,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral	V_104,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral	V_105,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral	V_106,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral	V_107,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral	V_108,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.LongLiteral	V_109,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral	V_110,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ShortLiteral	V_111,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral	V_112,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral	V_113,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.LabelTok	V_42,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.PlaceTok	V_43,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GotoTok	V_44,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.IfTok	V_45,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ElseIfTok	V_46,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ElseTok	V_47,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ThenTok	V_48,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewTok	V_49,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewarrTok	V_50,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MeTok	V_51,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.PtrTok	V_52,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeTok	V_53,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.RefasmTok	V_54,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.DebugTok	V_55,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ScopeTok	V_56,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ImportTok	V_57,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.LocimportTok	V_58,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.AssemblyTok	V_59,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.VerTok	V_60,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OnTok	V_61,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OffTok	V_62,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ExeTok	V_63,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.DllTok	V_64,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.FieldTok	V_65,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ClassTok	V_66,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ExtendsTok	V_67,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodTok	V_68,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.EndTok	V_69,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ReturnTok	V_70,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.VarTok	V_71,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.AsTok	V_72,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OfTok	V_73,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.PrivateAttr	V_74,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.PublicAttr	V_75,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.InitOnlyAttr	V_76,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.StaticAttr	V_77,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.SpecialNameAttr	V_78,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.HideBySigAttr	V_79,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.VirtualAttr	V_80,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoLayoutAttr	V_81,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoClassAttr	V_82,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AnsiClassAttr	V_83,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.BeforeFieldInitAttr	V_84,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.StringTok	V_85,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.VoidTok	V_86,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.DecimalTok	V_87,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntegerTok	V_88,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntPtrTok	V_89,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.UIntegerTok	V_90,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.DoubleTok	V_91,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.BooleanTok	V_92,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.CharTok	V_93,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.SingleTok	V_94,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.SByteTok	V_95,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ByteTok	V_96,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ShortTok	V_97,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.UShortTok	V_98,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.LongTok	V_99,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ULongTok	V_100,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ObjectTok	V_101,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.CommentTok	V_102,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral	V_103,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral	V_104,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral	V_105,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral	V_106,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral	V_107,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral	V_108,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral	V_109,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral	V_110,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral	V_111,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral	V_112,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral	V_113,
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral	V_114,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident	V_115)
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral	V_115,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.LongLiteral	V_116,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral	V_117,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ShortLiteral	V_118,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral	V_119,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral	V_120,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral	V_121,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident	V_122)
 	IL_0000:  ldc.i4 0
 	IL_0005:  stloc 0
 
@@ -582,7 +589,7 @@
 
 	IL_00ae:  nop 
 	IL_00af:  nop 
-	IL_00b0:  br IL_4c61
+	IL_00b0:  br IL_4fef
 
 	IL_00b5:  br IL_00bf
 
@@ -641,7 +648,7 @@
 
 	IL_0130:  nop 
 	IL_0131:  nop 
-	IL_0132:  br IL_4c61
+	IL_0132:  br IL_4fef
 
 	IL_0137:  br IL_0141
 
@@ -700,7 +707,7 @@
 
 	IL_01b2:  nop 
 	IL_01b3:  nop 
-	IL_01b4:  br IL_4c61
+	IL_01b4:  br IL_4fef
 
 	IL_01b9:  br IL_01c3
 
@@ -759,7 +766,7 @@
 
 	IL_0234:  nop 
 	IL_0235:  nop 
-	IL_0236:  br IL_4c61
+	IL_0236:  br IL_4fef
 
 	IL_023b:  br IL_0245
 
@@ -818,7 +825,7 @@
 
 	IL_02b6:  nop 
 	IL_02b7:  nop 
-	IL_02b8:  br IL_4c61
+	IL_02b8:  br IL_4fef
 
 	IL_02bd:  br IL_02c7
 
@@ -877,7 +884,7 @@
 
 	IL_0338:  nop 
 	IL_0339:  nop 
-	IL_033a:  br IL_4c61
+	IL_033a:  br IL_4fef
 
 	IL_033f:  br IL_0349
 
@@ -936,7 +943,7 @@
 
 	IL_03ba:  nop 
 	IL_03bb:  nop 
-	IL_03bc:  br IL_4c61
+	IL_03bc:  br IL_4fef
 
 	IL_03c1:  br IL_03cb
 
@@ -995,7 +1002,7 @@
 
 	IL_043c:  nop 
 	IL_043d:  nop 
-	IL_043e:  br IL_4c61
+	IL_043e:  br IL_4fef
 
 	IL_0443:  br IL_044d
 
@@ -1097,7 +1104,7 @@
 	IL_051b:  nop 
 	IL_051c:  br IL_0521
 
-	IL_0521:  br IL_4c61
+	IL_0521:  br IL_4fef
 
 	IL_0526:  br IL_0530
 
@@ -1156,7 +1163,7 @@
 
 	IL_05a1:  nop 
 	IL_05a2:  nop 
-	IL_05a3:  br IL_4c61
+	IL_05a3:  br IL_4fef
 
 	IL_05a8:  br IL_05b2
 
@@ -1215,7 +1222,7 @@
 
 	IL_0623:  nop 
 	IL_0624:  nop 
-	IL_0625:  br IL_4c61
+	IL_0625:  br IL_4fef
 
 	IL_062a:  br IL_0634
 
@@ -1274,7 +1281,7 @@
 
 	IL_06a5:  nop 
 	IL_06a6:  nop 
-	IL_06a7:  br IL_4c61
+	IL_06a7:  br IL_4fef
 
 	IL_06ac:  br IL_06b6
 
@@ -1333,7 +1340,7 @@
 
 	IL_0727:  nop 
 	IL_0728:  nop 
-	IL_0729:  br IL_4c61
+	IL_0729:  br IL_4fef
 
 	IL_072e:  br IL_0738
 
@@ -1392,7 +1399,7 @@
 
 	IL_07a9:  nop 
 	IL_07aa:  nop 
-	IL_07ab:  br IL_4c61
+	IL_07ab:  br IL_4fef
 
 	IL_07b0:  br IL_07ba
 
@@ -1451,7 +1458,7 @@
 
 	IL_082b:  nop 
 	IL_082c:  nop 
-	IL_082d:  br IL_4c61
+	IL_082d:  br IL_4fef
 
 	IL_0832:  br IL_083c
 
@@ -1510,7 +1517,7 @@
 
 	IL_08ad:  nop 
 	IL_08ae:  nop 
-	IL_08af:  br IL_4c61
+	IL_08af:  br IL_4fef
 
 	IL_08b4:  br IL_08be
 
@@ -1569,7 +1576,7 @@
 
 	IL_092f:  nop 
 	IL_0930:  nop 
-	IL_0931:  br IL_4c61
+	IL_0931:  br IL_4fef
 
 	IL_0936:  br IL_0940
 
@@ -1628,7 +1635,7 @@
 
 	IL_09b1:  nop 
 	IL_09b2:  nop 
-	IL_09b3:  br IL_4c61
+	IL_09b3:  br IL_4fef
 
 	IL_09b8:  br IL_09c2
 
@@ -1687,7 +1694,7 @@
 
 	IL_0a33:  nop 
 	IL_0a34:  nop 
-	IL_0a35:  br IL_4c61
+	IL_0a35:  br IL_4fef
 
 	IL_0a3a:  br IL_0a44
 
@@ -1746,7 +1753,7 @@
 
 	IL_0ab5:  nop 
 	IL_0ab6:  nop 
-	IL_0ab7:  br IL_4c61
+	IL_0ab7:  br IL_4fef
 
 	IL_0abc:  br IL_0ac6
 
@@ -1805,7 +1812,7 @@
 
 	IL_0b37:  nop 
 	IL_0b38:  nop 
-	IL_0b39:  br IL_4c61
+	IL_0b39:  br IL_4fef
 
 	IL_0b3e:  br IL_0b48
 
@@ -1864,7 +1871,7 @@
 
 	IL_0bb9:  nop 
 	IL_0bba:  nop 
-	IL_0bbb:  br IL_4c61
+	IL_0bbb:  br IL_4fef
 
 	IL_0bc0:  br IL_0bca
 
@@ -1923,7 +1930,7 @@
 
 	IL_0c3b:  nop 
 	IL_0c3c:  nop 
-	IL_0c3d:  br IL_4c61
+	IL_0c3d:  br IL_4fef
 
 	IL_0c42:  br IL_0c4c
 
@@ -1982,7 +1989,7 @@
 
 	IL_0cbd:  nop 
 	IL_0cbe:  nop 
-	IL_0cbf:  br IL_4c61
+	IL_0cbf:  br IL_4fef
 
 	IL_0cc4:  br IL_0cce
 
@@ -2041,7 +2048,7 @@
 
 	IL_0d3f:  nop 
 	IL_0d40:  nop 
-	IL_0d41:  br IL_4c61
+	IL_0d41:  br IL_4fef
 
 	IL_0d46:  br IL_0d50
 
@@ -2100,7 +2107,7 @@
 
 	IL_0dc1:  nop 
 	IL_0dc2:  nop 
-	IL_0dc3:  br IL_4c61
+	IL_0dc3:  br IL_4fef
 
 	IL_0dc8:  br IL_0dd2
 
@@ -2159,7 +2166,7 @@
 
 	IL_0e43:  nop 
 	IL_0e44:  nop 
-	IL_0e45:  br IL_4c61
+	IL_0e45:  br IL_4fef
 
 	IL_0e4a:  br IL_0e54
 
@@ -2218,7 +2225,7 @@
 
 	IL_0ec5:  nop 
 	IL_0ec6:  nop 
-	IL_0ec7:  br IL_4c61
+	IL_0ec7:  br IL_4fef
 
 	IL_0ecc:  br IL_0ed6
 
@@ -2277,7 +2284,7 @@
 
 	IL_0f47:  nop 
 	IL_0f48:  nop 
-	IL_0f49:  br IL_4c61
+	IL_0f49:  br IL_4fef
 
 	IL_0f4e:  br IL_0f58
 
@@ -2336,7 +2343,7 @@
 
 	IL_0fc9:  nop 
 	IL_0fca:  nop 
-	IL_0fcb:  br IL_4c61
+	IL_0fcb:  br IL_4fef
 
 	IL_0fd0:  br IL_0fda
 
@@ -2395,7 +2402,7 @@
 
 	IL_104b:  nop 
 	IL_104c:  nop 
-	IL_104d:  br IL_4c61
+	IL_104d:  br IL_4fef
 
 	IL_1052:  br IL_105c
 
@@ -2454,7 +2461,7 @@
 
 	IL_10cd:  nop 
 	IL_10ce:  nop 
-	IL_10cf:  br IL_4c61
+	IL_10cf:  br IL_4fef
 
 	IL_10d4:  br IL_10de
 
@@ -2513,7 +2520,7 @@
 
 	IL_114f:  nop 
 	IL_1150:  nop 
-	IL_1151:  br IL_4c61
+	IL_1151:  br IL_4fef
 
 	IL_1156:  br IL_1160
 
@@ -2572,7 +2579,7 @@
 
 	IL_11d1:  nop 
 	IL_11d2:  nop 
-	IL_11d3:  br IL_4c61
+	IL_11d3:  br IL_4fef
 
 	IL_11d8:  br IL_11e2
 
@@ -2631,7 +2638,7 @@
 
 	IL_1253:  nop 
 	IL_1254:  nop 
-	IL_1255:  br IL_4c61
+	IL_1255:  br IL_4fef
 
 	IL_125a:  br IL_1264
 
@@ -2690,7 +2697,7 @@
 
 	IL_12d5:  nop 
 	IL_12d6:  nop 
-	IL_12d7:  br IL_4c61
+	IL_12d7:  br IL_4fef
 
 	IL_12dc:  br IL_12e6
 
@@ -2701,7 +2708,7 @@
 	IL_12ea:  nop 
 	IL_12eb:  nop 
 	IL_12ec:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_12f1:  ldstr "if"
+	IL_12f1:  ldstr "label"
 	IL_12f6:  call int32 string::Compare(string, string)
 	IL_12fb:  stloc 0
 
@@ -2714,9 +2721,9 @@
 	IL_1307:  ldc.i4 0
 	IL_130c:  beq IL_1316
 
-	IL_1311:  br IL_136d
+	IL_1311:  br IL_1363
 
-	IL_1316:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.IfTok::'.ctor'()
+	IL_1316:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.LabelTok::'.ctor'()
 	IL_131b:  stloc 42
 
 	IL_131f:  nop 
@@ -2749,1083 +2756,1083 @@
 
 	IL_1357:  nop 
 	IL_1358:  nop 
-	IL_1359:  ldc.i4 1
-	IL_135e:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IfFlag
-	IL_1363:  br IL_4c61
+	IL_1359:  br IL_4fef
 
-	IL_1368:  br IL_1372
+	IL_135e:  br IL_1368
 
-	IL_136d:  br IL_1372
+	IL_1363:  br IL_1368
 
-	IL_1372:  ldarg 1
+	IL_1368:  ldarg 1
 
-	IL_1376:  nop 
-	IL_1377:  nop 
-	IL_1378:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_137d:  ldstr "elseif"
-	IL_1382:  call int32 string::Compare(string, string)
-	IL_1387:  stloc 0
+	IL_136c:  nop 
+	IL_136d:  nop 
+	IL_136e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1373:  ldstr "place"
+	IL_1378:  call int32 string::Compare(string, string)
+	IL_137d:  stloc 0
 
-	IL_138b:  nop 
-	IL_138c:  nop 
-	IL_138d:  ldloc 0
+	IL_1381:  nop 
+	IL_1382:  nop 
+	IL_1383:  ldloc 0
 
-	IL_1391:  nop 
-	IL_1392:  nop 
-	IL_1393:  ldc.i4 0
-	IL_1398:  beq IL_13a2
+	IL_1387:  nop 
+	IL_1388:  nop 
+	IL_1389:  ldc.i4 0
+	IL_138e:  beq IL_1398
 
-	IL_139d:  br IL_13f9
+	IL_1393:  br IL_13e5
 
-	IL_13a2:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ElseIfTok::'.ctor'()
-	IL_13a7:  stloc 43
+	IL_1398:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.PlaceTok::'.ctor'()
+	IL_139d:  stloc 43
 
-	IL_13ab:  nop 
-	IL_13ac:  nop 
-	IL_13ad:  ldloc 43
+	IL_13a1:  nop 
+	IL_13a2:  nop 
+	IL_13a3:  ldloc 43
 
-	IL_13b1:  nop 
-	IL_13b2:  nop 
-	IL_13b3:  ldarg 1
+	IL_13a7:  nop 
+	IL_13a8:  nop 
+	IL_13a9:  ldarg 1
 
-	IL_13b7:  nop 
-	IL_13b8:  nop 
-	IL_13b9:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_13be:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_13c3:  ldloc 43
+	IL_13ad:  nop 
+	IL_13ae:  nop 
+	IL_13af:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_13b4:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_13b9:  ldloc 43
 
-	IL_13c7:  nop 
-	IL_13c8:  nop 
-	IL_13c9:  ldarg 1
+	IL_13bd:  nop 
+	IL_13be:  nop 
+	IL_13bf:  ldarg 1
 
-	IL_13cd:  nop 
-	IL_13ce:  nop 
-	IL_13cf:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_13d4:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_13d9:  ldloc 43
+	IL_13c3:  nop 
+	IL_13c4:  nop 
+	IL_13c5:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_13ca:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_13cf:  ldloc 43
 
-	IL_13dd:  nop 
-	IL_13de:  nop 
-	IL_13df:  starg 1
+	IL_13d3:  nop 
+	IL_13d4:  nop 
+	IL_13d5:  starg 1
 
-	IL_13e3:  nop 
-	IL_13e4:  nop 
-	IL_13e5:  ldc.i4 1
-	IL_13ea:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IfFlag
-	IL_13ef:  br IL_4c61
+	IL_13d9:  nop 
+	IL_13da:  nop 
+	IL_13db:  br IL_4fef
 
-	IL_13f4:  br IL_13fe
+	IL_13e0:  br IL_13ea
 
-	IL_13f9:  br IL_13fe
+	IL_13e5:  br IL_13ea
 
-	IL_13fe:  ldarg 1
+	IL_13ea:  ldarg 1
 
-	IL_1402:  nop 
+	IL_13ee:  nop 
+	IL_13ef:  nop 
+	IL_13f0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_13f5:  ldstr "goto"
+	IL_13fa:  call int32 string::Compare(string, string)
+	IL_13ff:  stloc 0
+
 	IL_1403:  nop 
-	IL_1404:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1409:  ldstr "else"
-	IL_140e:  call int32 string::Compare(string, string)
-	IL_1413:  stloc 0
+	IL_1404:  nop 
+	IL_1405:  ldloc 0
 
-	IL_1417:  nop 
-	IL_1418:  nop 
-	IL_1419:  ldloc 0
+	IL_1409:  nop 
+	IL_140a:  nop 
+	IL_140b:  ldc.i4 0
+	IL_1410:  beq IL_141a
 
-	IL_141d:  nop 
-	IL_141e:  nop 
-	IL_141f:  ldc.i4 0
-	IL_1424:  beq IL_142e
+	IL_1415:  br IL_1467
 
-	IL_1429:  br IL_147b
+	IL_141a:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GotoTok::'.ctor'()
+	IL_141f:  stloc 44
 
-	IL_142e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ElseTok::'.ctor'()
-	IL_1433:  stloc 44
+	IL_1423:  nop 
+	IL_1424:  nop 
+	IL_1425:  ldloc 44
 
-	IL_1437:  nop 
-	IL_1438:  nop 
-	IL_1439:  ldloc 44
+	IL_1429:  nop 
+	IL_142a:  nop 
+	IL_142b:  ldarg 1
 
-	IL_143d:  nop 
-	IL_143e:  nop 
-	IL_143f:  ldarg 1
+	IL_142f:  nop 
+	IL_1430:  nop 
+	IL_1431:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1436:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_143b:  ldloc 44
 
-	IL_1443:  nop 
-	IL_1444:  nop 
-	IL_1445:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_144a:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_144f:  ldloc 44
+	IL_143f:  nop 
+	IL_1440:  nop 
+	IL_1441:  ldarg 1
 
-	IL_1453:  nop 
-	IL_1454:  nop 
-	IL_1455:  ldarg 1
+	IL_1445:  nop 
+	IL_1446:  nop 
+	IL_1447:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_144c:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1451:  ldloc 44
 
-	IL_1459:  nop 
-	IL_145a:  nop 
-	IL_145b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1460:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1465:  ldloc 44
+	IL_1455:  nop 
+	IL_1456:  nop 
+	IL_1457:  starg 1
 
-	IL_1469:  nop 
-	IL_146a:  nop 
-	IL_146b:  starg 1
+	IL_145b:  nop 
+	IL_145c:  nop 
+	IL_145d:  br IL_4fef
 
-	IL_146f:  nop 
+	IL_1462:  br IL_146c
+
+	IL_1467:  br IL_146c
+
+	IL_146c:  ldarg 1
+
 	IL_1470:  nop 
-	IL_1471:  br IL_4c61
+	IL_1471:  nop 
+	IL_1472:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1477:  ldstr "if"
+	IL_147c:  call int32 string::Compare(string, string)
+	IL_1481:  stloc 0
 
-	IL_1476:  br IL_1480
-
-	IL_147b:  br IL_1480
-
-	IL_1480:  ldarg 1
-
-	IL_1484:  nop 
 	IL_1485:  nop 
-	IL_1486:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_148b:  ldstr "then"
-	IL_1490:  call int32 string::Compare(string, string)
-	IL_1495:  stloc 0
+	IL_1486:  nop 
+	IL_1487:  ldloc 0
 
-	IL_1499:  nop 
-	IL_149a:  nop 
-	IL_149b:  ldloc 0
+	IL_148b:  nop 
+	IL_148c:  nop 
+	IL_148d:  ldc.i4 0
+	IL_1492:  beq IL_149c
 
-	IL_149f:  nop 
-	IL_14a0:  nop 
-	IL_14a1:  ldc.i4 0
-	IL_14a6:  beq IL_14b0
+	IL_1497:  br IL_14f3
 
-	IL_14ab:  br IL_1507
+	IL_149c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.IfTok::'.ctor'()
+	IL_14a1:  stloc 45
 
-	IL_14b0:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ThenTok::'.ctor'()
-	IL_14b5:  stloc 45
+	IL_14a5:  nop 
+	IL_14a6:  nop 
+	IL_14a7:  ldloc 45
 
-	IL_14b9:  nop 
-	IL_14ba:  nop 
-	IL_14bb:  ldloc 45
+	IL_14ab:  nop 
+	IL_14ac:  nop 
+	IL_14ad:  ldarg 1
 
-	IL_14bf:  nop 
-	IL_14c0:  nop 
-	IL_14c1:  ldarg 1
+	IL_14b1:  nop 
+	IL_14b2:  nop 
+	IL_14b3:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_14b8:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_14bd:  ldloc 45
 
-	IL_14c5:  nop 
-	IL_14c6:  nop 
-	IL_14c7:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_14cc:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_14d1:  ldloc 45
+	IL_14c1:  nop 
+	IL_14c2:  nop 
+	IL_14c3:  ldarg 1
 
-	IL_14d5:  nop 
-	IL_14d6:  nop 
-	IL_14d7:  ldarg 1
+	IL_14c7:  nop 
+	IL_14c8:  nop 
+	IL_14c9:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_14ce:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_14d3:  ldloc 45
 
-	IL_14db:  nop 
-	IL_14dc:  nop 
-	IL_14dd:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_14e2:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_14e7:  ldloc 45
+	IL_14d7:  nop 
+	IL_14d8:  nop 
+	IL_14d9:  starg 1
 
-	IL_14eb:  nop 
-	IL_14ec:  nop 
-	IL_14ed:  starg 1
+	IL_14dd:  nop 
+	IL_14de:  nop 
+	IL_14df:  ldc.i4 1
+	IL_14e4:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IfFlag
+	IL_14e9:  br IL_4fef
 
-	IL_14f1:  nop 
-	IL_14f2:  nop 
-	IL_14f3:  ldc.i4 0
-	IL_14f8:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IfFlag
-	IL_14fd:  br IL_4c61
+	IL_14ee:  br IL_14f8
 
-	IL_1502:  br IL_150c
+	IL_14f3:  br IL_14f8
 
-	IL_1507:  br IL_150c
+	IL_14f8:  ldarg 1
 
-	IL_150c:  ldarg 1
+	IL_14fc:  nop 
+	IL_14fd:  nop 
+	IL_14fe:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1503:  ldstr "elseif"
+	IL_1508:  call int32 string::Compare(string, string)
+	IL_150d:  stloc 0
 
-	IL_1510:  nop 
 	IL_1511:  nop 
-	IL_1512:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1517:  ldstr "new"
-	IL_151c:  call int32 string::Compare(string, string)
-	IL_1521:  stloc 0
-
-	IL_1525:  nop 
-	IL_1526:  nop 
-	IL_1527:  ldloc 0
-
-	IL_152b:  nop 
-	IL_152c:  nop 
-	IL_152d:  ldc.i4 0
-	IL_1532:  beq IL_153c
-
-	IL_1537:  br IL_1589
+	IL_1512:  nop 
+	IL_1513:  ldloc 0
+
+	IL_1517:  nop 
+	IL_1518:  nop 
+	IL_1519:  ldc.i4 0
+	IL_151e:  beq IL_1528
+
+	IL_1523:  br IL_157f
+
+	IL_1528:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ElseIfTok::'.ctor'()
+	IL_152d:  stloc 46
 
-	IL_153c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewTok::'.ctor'()
-	IL_1541:  stloc 46
+	IL_1531:  nop 
+	IL_1532:  nop 
+	IL_1533:  ldloc 46
 
-	IL_1545:  nop 
-	IL_1546:  nop 
-	IL_1547:  ldloc 46
-
-	IL_154b:  nop 
-	IL_154c:  nop 
-	IL_154d:  ldarg 1
-
-	IL_1551:  nop 
-	IL_1552:  nop 
-	IL_1553:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1558:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_155d:  ldloc 46
+	IL_1537:  nop 
+	IL_1538:  nop 
+	IL_1539:  ldarg 1
 
-	IL_1561:  nop 
-	IL_1562:  nop 
-	IL_1563:  ldarg 1
+	IL_153d:  nop 
+	IL_153e:  nop 
+	IL_153f:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1544:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1549:  ldloc 46
+
+	IL_154d:  nop 
+	IL_154e:  nop 
+	IL_154f:  ldarg 1
 
-	IL_1567:  nop 
-	IL_1568:  nop 
-	IL_1569:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_156e:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1573:  ldloc 46
+	IL_1553:  nop 
+	IL_1554:  nop 
+	IL_1555:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_155a:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_155f:  ldloc 46
 
-	IL_1577:  nop 
-	IL_1578:  nop 
-	IL_1579:  starg 1
+	IL_1563:  nop 
+	IL_1564:  nop 
+	IL_1565:  starg 1
 
-	IL_157d:  nop 
-	IL_157e:  nop 
-	IL_157f:  br IL_4c61
-
-	IL_1584:  br IL_158e
+	IL_1569:  nop 
+	IL_156a:  nop 
+	IL_156b:  ldc.i4 1
+	IL_1570:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IfFlag
+	IL_1575:  br IL_4fef
+
+	IL_157a:  br IL_1584
 
-	IL_1589:  br IL_158e
-
-	IL_158e:  ldarg 1
+	IL_157f:  br IL_1584
+
+	IL_1584:  ldarg 1
 
-	IL_1592:  nop 
-	IL_1593:  nop 
-	IL_1594:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1599:  ldstr "gettype"
-	IL_159e:  call int32 string::Compare(string, string)
-	IL_15a3:  stloc 0
-
-	IL_15a7:  nop 
-	IL_15a8:  nop 
-	IL_15a9:  ldloc 0
-
-	IL_15ad:  nop 
-	IL_15ae:  nop 
-	IL_15af:  ldc.i4 0
-	IL_15b4:  beq IL_15be
-
-	IL_15b9:  br IL_160b
-
-	IL_15be:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeTok::'.ctor'()
-	IL_15c3:  stloc 47
+	IL_1588:  nop 
+	IL_1589:  nop 
+	IL_158a:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_158f:  ldstr "else"
+	IL_1594:  call int32 string::Compare(string, string)
+	IL_1599:  stloc 0
+
+	IL_159d:  nop 
+	IL_159e:  nop 
+	IL_159f:  ldloc 0
+
+	IL_15a3:  nop 
+	IL_15a4:  nop 
+	IL_15a5:  ldc.i4 0
+	IL_15aa:  beq IL_15b4
+
+	IL_15af:  br IL_1601
+
+	IL_15b4:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ElseTok::'.ctor'()
+	IL_15b9:  stloc 47
 
-	IL_15c7:  nop 
-	IL_15c8:  nop 
-	IL_15c9:  ldloc 47
-
-	IL_15cd:  nop 
-	IL_15ce:  nop 
-	IL_15cf:  ldarg 1
-
-	IL_15d3:  nop 
-	IL_15d4:  nop 
-	IL_15d5:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_15da:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_15df:  ldloc 47
-
-	IL_15e3:  nop 
-	IL_15e4:  nop 
-	IL_15e5:  ldarg 1
+	IL_15bd:  nop 
+	IL_15be:  nop 
+	IL_15bf:  ldloc 47
+
+	IL_15c3:  nop 
+	IL_15c4:  nop 
+	IL_15c5:  ldarg 1
+
+	IL_15c9:  nop 
+	IL_15ca:  nop 
+	IL_15cb:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_15d0:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_15d5:  ldloc 47
+
+	IL_15d9:  nop 
+	IL_15da:  nop 
+	IL_15db:  ldarg 1
 
-	IL_15e9:  nop 
-	IL_15ea:  nop 
-	IL_15eb:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_15f0:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_15f5:  ldloc 47
+	IL_15df:  nop 
+	IL_15e0:  nop 
+	IL_15e1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_15e6:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_15eb:  ldloc 47
+
+	IL_15ef:  nop 
+	IL_15f0:  nop 
+	IL_15f1:  starg 1
 
-	IL_15f9:  nop 
-	IL_15fa:  nop 
-	IL_15fb:  starg 1
+	IL_15f5:  nop 
+	IL_15f6:  nop 
+	IL_15f7:  br IL_4fef
 
-	IL_15ff:  nop 
-	IL_1600:  nop 
-	IL_1601:  br IL_4c61
+	IL_15fc:  br IL_1606
 
-	IL_1606:  br IL_1610
+	IL_1601:  br IL_1606
 
-	IL_160b:  br IL_1610
+	IL_1606:  ldarg 1
 
-	IL_1610:  ldarg 1
+	IL_160a:  nop 
+	IL_160b:  nop 
+	IL_160c:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1611:  ldstr "then"
+	IL_1616:  call int32 string::Compare(string, string)
+	IL_161b:  stloc 0
 
-	IL_1614:  nop 
-	IL_1615:  nop 
-	IL_1616:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_161b:  ldstr "#refasm"
-	IL_1620:  call int32 string::Compare(string, string)
-	IL_1625:  stloc 0
+	IL_161f:  nop 
+	IL_1620:  nop 
+	IL_1621:  ldloc 0
 
-	IL_1629:  nop 
-	IL_162a:  nop 
-	IL_162b:  ldloc 0
+	IL_1625:  nop 
+	IL_1626:  nop 
+	IL_1627:  ldc.i4 0
+	IL_162c:  beq IL_1636
 
-	IL_162f:  nop 
-	IL_1630:  nop 
-	IL_1631:  ldc.i4 0
-	IL_1636:  beq IL_1640
+	IL_1631:  br IL_168d
 
-	IL_163b:  br IL_1697
+	IL_1636:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ThenTok::'.ctor'()
+	IL_163b:  stloc 48
 
-	IL_1640:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.RefasmTok::'.ctor'()
-	IL_1645:  stloc 48
+	IL_163f:  nop 
+	IL_1640:  nop 
+	IL_1641:  ldloc 48
 
-	IL_1649:  nop 
-	IL_164a:  nop 
-	IL_164b:  ldloc 48
+	IL_1645:  nop 
+	IL_1646:  nop 
+	IL_1647:  ldarg 1
 
-	IL_164f:  nop 
-	IL_1650:  nop 
-	IL_1651:  ldarg 1
+	IL_164b:  nop 
+	IL_164c:  nop 
+	IL_164d:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1652:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1657:  ldloc 48
 
-	IL_1655:  nop 
-	IL_1656:  nop 
-	IL_1657:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_165c:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1661:  ldloc 48
+	IL_165b:  nop 
+	IL_165c:  nop 
+	IL_165d:  ldarg 1
 
-	IL_1665:  nop 
-	IL_1666:  nop 
-	IL_1667:  ldarg 1
+	IL_1661:  nop 
+	IL_1662:  nop 
+	IL_1663:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1668:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_166d:  ldloc 48
 
-	IL_166b:  nop 
-	IL_166c:  nop 
-	IL_166d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1672:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1677:  ldloc 48
+	IL_1671:  nop 
+	IL_1672:  nop 
+	IL_1673:  starg 1
 
-	IL_167b:  nop 
-	IL_167c:  nop 
-	IL_167d:  starg 1
+	IL_1677:  nop 
+	IL_1678:  nop 
+	IL_1679:  ldc.i4 0
+	IL_167e:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IfFlag
+	IL_1683:  br IL_4fef
 
-	IL_1681:  nop 
-	IL_1682:  nop 
-	IL_1683:  ldc.i4 1
-	IL_1688:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::NoOptFlag
-	IL_168d:  br IL_4c61
+	IL_1688:  br IL_1692
 
-	IL_1692:  br IL_169c
+	IL_168d:  br IL_1692
 
-	IL_1697:  br IL_169c
+	IL_1692:  ldarg 1
 
-	IL_169c:  ldarg 1
+	IL_1696:  nop 
+	IL_1697:  nop 
+	IL_1698:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_169d:  ldstr "new"
+	IL_16a2:  call int32 string::Compare(string, string)
+	IL_16a7:  stloc 0
 
-	IL_16a0:  nop 
-	IL_16a1:  nop 
-	IL_16a2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_16a7:  ldstr "#debug"
-	IL_16ac:  call int32 string::Compare(string, string)
-	IL_16b1:  stloc 0
+	IL_16ab:  nop 
+	IL_16ac:  nop 
+	IL_16ad:  ldloc 0
 
-	IL_16b5:  nop 
-	IL_16b6:  nop 
-	IL_16b7:  ldloc 0
+	IL_16b1:  nop 
+	IL_16b2:  nop 
+	IL_16b3:  ldc.i4 0
+	IL_16b8:  beq IL_16c2
 
-	IL_16bb:  nop 
-	IL_16bc:  nop 
-	IL_16bd:  ldc.i4 0
-	IL_16c2:  beq IL_16cc
+	IL_16bd:  br IL_170f
 
-	IL_16c7:  br IL_1719
+	IL_16c2:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewTok::'.ctor'()
+	IL_16c7:  stloc 49
 
-	IL_16cc:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.DebugTok::'.ctor'()
-	IL_16d1:  stloc 49
+	IL_16cb:  nop 
+	IL_16cc:  nop 
+	IL_16cd:  ldloc 49
 
-	IL_16d5:  nop 
-	IL_16d6:  nop 
-	IL_16d7:  ldloc 49
+	IL_16d1:  nop 
+	IL_16d2:  nop 
+	IL_16d3:  ldarg 1
 
-	IL_16db:  nop 
-	IL_16dc:  nop 
-	IL_16dd:  ldarg 1
+	IL_16d7:  nop 
+	IL_16d8:  nop 
+	IL_16d9:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_16de:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_16e3:  ldloc 49
 
-	IL_16e1:  nop 
-	IL_16e2:  nop 
-	IL_16e3:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_16e8:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_16ed:  ldloc 49
+	IL_16e7:  nop 
+	IL_16e8:  nop 
+	IL_16e9:  ldarg 1
 
-	IL_16f1:  nop 
-	IL_16f2:  nop 
-	IL_16f3:  ldarg 1
+	IL_16ed:  nop 
+	IL_16ee:  nop 
+	IL_16ef:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_16f4:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_16f9:  ldloc 49
 
-	IL_16f7:  nop 
-	IL_16f8:  nop 
-	IL_16f9:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_16fe:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1703:  ldloc 49
+	IL_16fd:  nop 
+	IL_16fe:  nop 
+	IL_16ff:  starg 1
 
-	IL_1707:  nop 
-	IL_1708:  nop 
-	IL_1709:  starg 1
+	IL_1703:  nop 
+	IL_1704:  nop 
+	IL_1705:  br IL_4fef
 
-	IL_170d:  nop 
-	IL_170e:  nop 
-	IL_170f:  br IL_4c61
+	IL_170a:  br IL_1714
 
-	IL_1714:  br IL_171e
+	IL_170f:  br IL_1714
 
-	IL_1719:  br IL_171e
+	IL_1714:  ldarg 1
 
-	IL_171e:  ldarg 1
+	IL_1718:  nop 
+	IL_1719:  nop 
+	IL_171a:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_171f:  ldstr "newarr"
+	IL_1724:  call int32 string::Compare(string, string)
+	IL_1729:  stloc 0
 
-	IL_1722:  nop 
-	IL_1723:  nop 
-	IL_1724:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1729:  ldstr "#scope"
-	IL_172e:  call int32 string::Compare(string, string)
-	IL_1733:  stloc 0
+	IL_172d:  nop 
+	IL_172e:  nop 
+	IL_172f:  ldloc 0
 
-	IL_1737:  nop 
-	IL_1738:  nop 
-	IL_1739:  ldloc 0
+	IL_1733:  nop 
+	IL_1734:  nop 
+	IL_1735:  ldc.i4 0
+	IL_173a:  beq IL_1744
 
-	IL_173d:  nop 
-	IL_173e:  nop 
-	IL_173f:  ldc.i4 0
-	IL_1744:  beq IL_174e
+	IL_173f:  br IL_1791
 
-	IL_1749:  br IL_179b
+	IL_1744:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewarrTok::'.ctor'()
+	IL_1749:  stloc 50
 
-	IL_174e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ScopeTok::'.ctor'()
-	IL_1753:  stloc 50
+	IL_174d:  nop 
+	IL_174e:  nop 
+	IL_174f:  ldloc 50
 
-	IL_1757:  nop 
-	IL_1758:  nop 
-	IL_1759:  ldloc 50
+	IL_1753:  nop 
+	IL_1754:  nop 
+	IL_1755:  ldarg 1
 
-	IL_175d:  nop 
-	IL_175e:  nop 
-	IL_175f:  ldarg 1
+	IL_1759:  nop 
+	IL_175a:  nop 
+	IL_175b:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1760:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1765:  ldloc 50
 
-	IL_1763:  nop 
-	IL_1764:  nop 
-	IL_1765:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_176a:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_176f:  ldloc 50
+	IL_1769:  nop 
+	IL_176a:  nop 
+	IL_176b:  ldarg 1
 
-	IL_1773:  nop 
-	IL_1774:  nop 
-	IL_1775:  ldarg 1
+	IL_176f:  nop 
+	IL_1770:  nop 
+	IL_1771:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1776:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_177b:  ldloc 50
 
-	IL_1779:  nop 
-	IL_177a:  nop 
-	IL_177b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1780:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1785:  ldloc 50
+	IL_177f:  nop 
+	IL_1780:  nop 
+	IL_1781:  starg 1
 
-	IL_1789:  nop 
-	IL_178a:  nop 
-	IL_178b:  starg 1
+	IL_1785:  nop 
+	IL_1786:  nop 
+	IL_1787:  br IL_4fef
 
-	IL_178f:  nop 
-	IL_1790:  nop 
-	IL_1791:  br IL_4c61
+	IL_178c:  br IL_1796
 
-	IL_1796:  br IL_17a0
+	IL_1791:  br IL_1796
 
-	IL_179b:  br IL_17a0
+	IL_1796:  ldarg 1
 
-	IL_17a0:  ldarg 1
+	IL_179a:  nop 
+	IL_179b:  nop 
+	IL_179c:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_17a1:  ldstr "me"
+	IL_17a6:  call int32 string::Compare(string, string)
+	IL_17ab:  stloc 0
 
-	IL_17a4:  nop 
-	IL_17a5:  nop 
-	IL_17a6:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_17ab:  ldstr "import"
-	IL_17b0:  call int32 string::Compare(string, string)
-	IL_17b5:  stloc 0
+	IL_17af:  nop 
+	IL_17b0:  nop 
+	IL_17b1:  ldloc 0
 
-	IL_17b9:  nop 
-	IL_17ba:  nop 
-	IL_17bb:  ldloc 0
+	IL_17b5:  nop 
+	IL_17b6:  nop 
+	IL_17b7:  ldc.i4 0
+	IL_17bc:  beq IL_17c6
 
-	IL_17bf:  nop 
-	IL_17c0:  nop 
-	IL_17c1:  ldc.i4 0
-	IL_17c6:  beq IL_17d0
+	IL_17c1:  br IL_1813
 
-	IL_17cb:  br IL_1827
+	IL_17c6:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MeTok::'.ctor'()
+	IL_17cb:  stloc 51
 
-	IL_17d0:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ImportTok::'.ctor'()
-	IL_17d5:  stloc 51
+	IL_17cf:  nop 
+	IL_17d0:  nop 
+	IL_17d1:  ldloc 51
 
-	IL_17d9:  nop 
-	IL_17da:  nop 
-	IL_17db:  ldloc 51
+	IL_17d5:  nop 
+	IL_17d6:  nop 
+	IL_17d7:  ldarg 1
 
-	IL_17df:  nop 
-	IL_17e0:  nop 
-	IL_17e1:  ldarg 1
+	IL_17db:  nop 
+	IL_17dc:  nop 
+	IL_17dd:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_17e2:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_17e7:  ldloc 51
 
-	IL_17e5:  nop 
-	IL_17e6:  nop 
-	IL_17e7:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_17ec:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_17f1:  ldloc 51
+	IL_17eb:  nop 
+	IL_17ec:  nop 
+	IL_17ed:  ldarg 1
 
-	IL_17f5:  nop 
-	IL_17f6:  nop 
-	IL_17f7:  ldarg 1
+	IL_17f1:  nop 
+	IL_17f2:  nop 
+	IL_17f3:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_17f8:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_17fd:  ldloc 51
 
-	IL_17fb:  nop 
-	IL_17fc:  nop 
-	IL_17fd:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1802:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1807:  ldloc 51
+	IL_1801:  nop 
+	IL_1802:  nop 
+	IL_1803:  starg 1
 
-	IL_180b:  nop 
-	IL_180c:  nop 
-	IL_180d:  starg 1
+	IL_1807:  nop 
+	IL_1808:  nop 
+	IL_1809:  br IL_4fef
 
-	IL_1811:  nop 
-	IL_1812:  nop 
-	IL_1813:  ldc.i4 1
-	IL_1818:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::NoOptFlag
-	IL_181d:  br IL_4c61
+	IL_180e:  br IL_1818
 
-	IL_1822:  br IL_182c
+	IL_1813:  br IL_1818
 
-	IL_1827:  br IL_182c
+	IL_1818:  ldarg 1
 
-	IL_182c:  ldarg 1
+	IL_181c:  nop 
+	IL_181d:  nop 
+	IL_181e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1823:  ldstr "ptr"
+	IL_1828:  call int32 string::Compare(string, string)
+	IL_182d:  stloc 0
 
-	IL_1830:  nop 
 	IL_1831:  nop 
-	IL_1832:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1837:  ldstr "locimport"
-	IL_183c:  call int32 string::Compare(string, string)
-	IL_1841:  stloc 0
+	IL_1832:  nop 
+	IL_1833:  ldloc 0
 
-	IL_1845:  nop 
-	IL_1846:  nop 
-	IL_1847:  ldloc 0
+	IL_1837:  nop 
+	IL_1838:  nop 
+	IL_1839:  ldc.i4 0
+	IL_183e:  beq IL_1848
 
-	IL_184b:  nop 
-	IL_184c:  nop 
-	IL_184d:  ldc.i4 0
-	IL_1852:  beq IL_185c
+	IL_1843:  br IL_1895
 
-	IL_1857:  br IL_18b3
+	IL_1848:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.PtrTok::'.ctor'()
+	IL_184d:  stloc 52
 
-	IL_185c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.LocimportTok::'.ctor'()
-	IL_1861:  stloc 52
+	IL_1851:  nop 
+	IL_1852:  nop 
+	IL_1853:  ldloc 52
 
-	IL_1865:  nop 
-	IL_1866:  nop 
-	IL_1867:  ldloc 52
+	IL_1857:  nop 
+	IL_1858:  nop 
+	IL_1859:  ldarg 1
 
-	IL_186b:  nop 
-	IL_186c:  nop 
-	IL_186d:  ldarg 1
+	IL_185d:  nop 
+	IL_185e:  nop 
+	IL_185f:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1864:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1869:  ldloc 52
 
-	IL_1871:  nop 
-	IL_1872:  nop 
-	IL_1873:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1878:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_187d:  ldloc 52
+	IL_186d:  nop 
+	IL_186e:  nop 
+	IL_186f:  ldarg 1
 
-	IL_1881:  nop 
-	IL_1882:  nop 
-	IL_1883:  ldarg 1
+	IL_1873:  nop 
+	IL_1874:  nop 
+	IL_1875:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_187a:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_187f:  ldloc 52
 
-	IL_1887:  nop 
-	IL_1888:  nop 
-	IL_1889:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_188e:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1893:  ldloc 52
+	IL_1883:  nop 
+	IL_1884:  nop 
+	IL_1885:  starg 1
 
-	IL_1897:  nop 
-	IL_1898:  nop 
-	IL_1899:  starg 1
+	IL_1889:  nop 
+	IL_188a:  nop 
+	IL_188b:  br IL_4fef
 
-	IL_189d:  nop 
+	IL_1890:  br IL_189a
+
+	IL_1895:  br IL_189a
+
+	IL_189a:  ldarg 1
+
 	IL_189e:  nop 
-	IL_189f:  ldc.i4 1
-	IL_18a4:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::NoOptFlag
-	IL_18a9:  br IL_4c61
+	IL_189f:  nop 
+	IL_18a0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_18a5:  ldstr "gettype"
+	IL_18aa:  call int32 string::Compare(string, string)
+	IL_18af:  stloc 0
 
-	IL_18ae:  br IL_18b8
+	IL_18b3:  nop 
+	IL_18b4:  nop 
+	IL_18b5:  ldloc 0
 
-	IL_18b3:  br IL_18b8
+	IL_18b9:  nop 
+	IL_18ba:  nop 
+	IL_18bb:  ldc.i4 0
+	IL_18c0:  beq IL_18ca
 
-	IL_18b8:  ldarg 1
+	IL_18c5:  br IL_1917
 
-	IL_18bc:  nop 
-	IL_18bd:  nop 
-	IL_18be:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_18c3:  ldstr "assembly"
-	IL_18c8:  call int32 string::Compare(string, string)
-	IL_18cd:  stloc 0
+	IL_18ca:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeTok::'.ctor'()
+	IL_18cf:  stloc 53
 
-	IL_18d1:  nop 
-	IL_18d2:  nop 
-	IL_18d3:  ldloc 0
+	IL_18d3:  nop 
+	IL_18d4:  nop 
+	IL_18d5:  ldloc 53
 
-	IL_18d7:  nop 
-	IL_18d8:  nop 
-	IL_18d9:  ldc.i4 0
-	IL_18de:  beq IL_18e8
+	IL_18d9:  nop 
+	IL_18da:  nop 
+	IL_18db:  ldarg 1
 
-	IL_18e3:  br IL_1935
+	IL_18df:  nop 
+	IL_18e0:  nop 
+	IL_18e1:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_18e6:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_18eb:  ldloc 53
 
-	IL_18e8:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.AssemblyTok::'.ctor'()
-	IL_18ed:  stloc 53
+	IL_18ef:  nop 
+	IL_18f0:  nop 
+	IL_18f1:  ldarg 1
 
-	IL_18f1:  nop 
-	IL_18f2:  nop 
-	IL_18f3:  ldloc 53
+	IL_18f5:  nop 
+	IL_18f6:  nop 
+	IL_18f7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_18fc:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1901:  ldloc 53
 
-	IL_18f7:  nop 
-	IL_18f8:  nop 
-	IL_18f9:  ldarg 1
+	IL_1905:  nop 
+	IL_1906:  nop 
+	IL_1907:  starg 1
 
-	IL_18fd:  nop 
-	IL_18fe:  nop 
-	IL_18ff:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1904:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1909:  ldloc 53
+	IL_190b:  nop 
+	IL_190c:  nop 
+	IL_190d:  br IL_4fef
 
-	IL_190d:  nop 
-	IL_190e:  nop 
-	IL_190f:  ldarg 1
+	IL_1912:  br IL_191c
 
-	IL_1913:  nop 
-	IL_1914:  nop 
-	IL_1915:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_191a:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_191f:  ldloc 53
+	IL_1917:  br IL_191c
 
-	IL_1923:  nop 
-	IL_1924:  nop 
-	IL_1925:  starg 1
+	IL_191c:  ldarg 1
 
-	IL_1929:  nop 
-	IL_192a:  nop 
-	IL_192b:  br IL_4c61
+	IL_1920:  nop 
+	IL_1921:  nop 
+	IL_1922:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1927:  ldstr "#refasm"
+	IL_192c:  call int32 string::Compare(string, string)
+	IL_1931:  stloc 0
 
-	IL_1930:  br IL_193a
+	IL_1935:  nop 
+	IL_1936:  nop 
+	IL_1937:  ldloc 0
 
-	IL_1935:  br IL_193a
+	IL_193b:  nop 
+	IL_193c:  nop 
+	IL_193d:  ldc.i4 0
+	IL_1942:  beq IL_194c
 
-	IL_193a:  ldarg 1
+	IL_1947:  br IL_19a3
 
-	IL_193e:  nop 
-	IL_193f:  nop 
-	IL_1940:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1945:  ldstr "ver"
-	IL_194a:  call int32 string::Compare(string, string)
-	IL_194f:  stloc 0
+	IL_194c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.RefasmTok::'.ctor'()
+	IL_1951:  stloc 54
 
-	IL_1953:  nop 
-	IL_1954:  nop 
-	IL_1955:  ldloc 0
+	IL_1955:  nop 
+	IL_1956:  nop 
+	IL_1957:  ldloc 54
 
-	IL_1959:  nop 
-	IL_195a:  nop 
-	IL_195b:  ldc.i4 0
-	IL_1960:  beq IL_196a
+	IL_195b:  nop 
+	IL_195c:  nop 
+	IL_195d:  ldarg 1
 
-	IL_1965:  br IL_19c1
+	IL_1961:  nop 
+	IL_1962:  nop 
+	IL_1963:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1968:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_196d:  ldloc 54
 
-	IL_196a:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.VerTok::'.ctor'()
-	IL_196f:  stloc 54
+	IL_1971:  nop 
+	IL_1972:  nop 
+	IL_1973:  ldarg 1
 
-	IL_1973:  nop 
-	IL_1974:  nop 
-	IL_1975:  ldloc 54
+	IL_1977:  nop 
+	IL_1978:  nop 
+	IL_1979:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_197e:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1983:  ldloc 54
 
-	IL_1979:  nop 
-	IL_197a:  nop 
-	IL_197b:  ldarg 1
+	IL_1987:  nop 
+	IL_1988:  nop 
+	IL_1989:  starg 1
 
-	IL_197f:  nop 
-	IL_1980:  nop 
-	IL_1981:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1986:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_198b:  ldloc 54
+	IL_198d:  nop 
+	IL_198e:  nop 
+	IL_198f:  ldc.i4 1
+	IL_1994:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::NoOptFlag
+	IL_1999:  br IL_4fef
 
-	IL_198f:  nop 
-	IL_1990:  nop 
-	IL_1991:  ldarg 1
+	IL_199e:  br IL_19a8
 
-	IL_1995:  nop 
-	IL_1996:  nop 
-	IL_1997:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_199c:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_19a1:  ldloc 54
+	IL_19a3:  br IL_19a8
 
-	IL_19a5:  nop 
-	IL_19a6:  nop 
-	IL_19a7:  starg 1
+	IL_19a8:  ldarg 1
 
-	IL_19ab:  nop 
 	IL_19ac:  nop 
-	IL_19ad:  ldc.i4 1
-	IL_19b2:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::NoOptFlag
-	IL_19b7:  br IL_4c61
+	IL_19ad:  nop 
+	IL_19ae:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_19b3:  ldstr "#debug"
+	IL_19b8:  call int32 string::Compare(string, string)
+	IL_19bd:  stloc 0
 
-	IL_19bc:  br IL_19c6
+	IL_19c1:  nop 
+	IL_19c2:  nop 
+	IL_19c3:  ldloc 0
 
-	IL_19c1:  br IL_19c6
+	IL_19c7:  nop 
+	IL_19c8:  nop 
+	IL_19c9:  ldc.i4 0
+	IL_19ce:  beq IL_19d8
 
-	IL_19c6:  ldarg 1
+	IL_19d3:  br IL_1a25
 
-	IL_19ca:  nop 
-	IL_19cb:  nop 
-	IL_19cc:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_19d1:  ldstr "on"
-	IL_19d6:  call int32 string::Compare(string, string)
-	IL_19db:  stloc 0
+	IL_19d8:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.DebugTok::'.ctor'()
+	IL_19dd:  stloc 55
 
-	IL_19df:  nop 
-	IL_19e0:  nop 
-	IL_19e1:  ldloc 0
+	IL_19e1:  nop 
+	IL_19e2:  nop 
+	IL_19e3:  ldloc 55
 
-	IL_19e5:  nop 
-	IL_19e6:  nop 
-	IL_19e7:  ldc.i4 0
-	IL_19ec:  beq IL_19f6
+	IL_19e7:  nop 
+	IL_19e8:  nop 
+	IL_19e9:  ldarg 1
 
-	IL_19f1:  br IL_1a43
+	IL_19ed:  nop 
+	IL_19ee:  nop 
+	IL_19ef:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_19f4:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_19f9:  ldloc 55
 
-	IL_19f6:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OnTok::'.ctor'()
-	IL_19fb:  stloc 55
+	IL_19fd:  nop 
+	IL_19fe:  nop 
+	IL_19ff:  ldarg 1
 
-	IL_19ff:  nop 
-	IL_1a00:  nop 
-	IL_1a01:  ldloc 55
+	IL_1a03:  nop 
+	IL_1a04:  nop 
+	IL_1a05:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1a0a:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1a0f:  ldloc 55
 
-	IL_1a05:  nop 
-	IL_1a06:  nop 
-	IL_1a07:  ldarg 1
+	IL_1a13:  nop 
+	IL_1a14:  nop 
+	IL_1a15:  starg 1
 
-	IL_1a0b:  nop 
-	IL_1a0c:  nop 
-	IL_1a0d:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1a12:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1a17:  ldloc 55
+	IL_1a19:  nop 
+	IL_1a1a:  nop 
+	IL_1a1b:  br IL_4fef
 
-	IL_1a1b:  nop 
-	IL_1a1c:  nop 
-	IL_1a1d:  ldarg 1
+	IL_1a20:  br IL_1a2a
 
-	IL_1a21:  nop 
-	IL_1a22:  nop 
-	IL_1a23:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1a28:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1a2d:  ldloc 55
+	IL_1a25:  br IL_1a2a
 
-	IL_1a31:  nop 
-	IL_1a32:  nop 
-	IL_1a33:  starg 1
+	IL_1a2a:  ldarg 1
 
-	IL_1a37:  nop 
-	IL_1a38:  nop 
-	IL_1a39:  br IL_4c61
+	IL_1a2e:  nop 
+	IL_1a2f:  nop 
+	IL_1a30:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1a35:  ldstr "#scope"
+	IL_1a3a:  call int32 string::Compare(string, string)
+	IL_1a3f:  stloc 0
 
-	IL_1a3e:  br IL_1a48
+	IL_1a43:  nop 
+	IL_1a44:  nop 
+	IL_1a45:  ldloc 0
 
-	IL_1a43:  br IL_1a48
+	IL_1a49:  nop 
+	IL_1a4a:  nop 
+	IL_1a4b:  ldc.i4 0
+	IL_1a50:  beq IL_1a5a
 
-	IL_1a48:  ldarg 1
+	IL_1a55:  br IL_1aa7
 
-	IL_1a4c:  nop 
-	IL_1a4d:  nop 
-	IL_1a4e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1a53:  ldstr "off"
-	IL_1a58:  call int32 string::Compare(string, string)
-	IL_1a5d:  stloc 0
+	IL_1a5a:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ScopeTok::'.ctor'()
+	IL_1a5f:  stloc 56
 
-	IL_1a61:  nop 
-	IL_1a62:  nop 
-	IL_1a63:  ldloc 0
+	IL_1a63:  nop 
+	IL_1a64:  nop 
+	IL_1a65:  ldloc 56
 
-	IL_1a67:  nop 
-	IL_1a68:  nop 
-	IL_1a69:  ldc.i4 0
-	IL_1a6e:  beq IL_1a78
+	IL_1a69:  nop 
+	IL_1a6a:  nop 
+	IL_1a6b:  ldarg 1
 
-	IL_1a73:  br IL_1ac5
+	IL_1a6f:  nop 
+	IL_1a70:  nop 
+	IL_1a71:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1a76:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1a7b:  ldloc 56
 
-	IL_1a78:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OffTok::'.ctor'()
-	IL_1a7d:  stloc 56
+	IL_1a7f:  nop 
+	IL_1a80:  nop 
+	IL_1a81:  ldarg 1
 
-	IL_1a81:  nop 
-	IL_1a82:  nop 
-	IL_1a83:  ldloc 56
+	IL_1a85:  nop 
+	IL_1a86:  nop 
+	IL_1a87:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1a8c:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1a91:  ldloc 56
 
-	IL_1a87:  nop 
-	IL_1a88:  nop 
-	IL_1a89:  ldarg 1
+	IL_1a95:  nop 
+	IL_1a96:  nop 
+	IL_1a97:  starg 1
 
-	IL_1a8d:  nop 
-	IL_1a8e:  nop 
-	IL_1a8f:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1a94:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1a99:  ldloc 56
+	IL_1a9b:  nop 
+	IL_1a9c:  nop 
+	IL_1a9d:  br IL_4fef
 
-	IL_1a9d:  nop 
-	IL_1a9e:  nop 
-	IL_1a9f:  ldarg 1
+	IL_1aa2:  br IL_1aac
 
-	IL_1aa3:  nop 
-	IL_1aa4:  nop 
-	IL_1aa5:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1aaa:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1aaf:  ldloc 56
+	IL_1aa7:  br IL_1aac
 
-	IL_1ab3:  nop 
-	IL_1ab4:  nop 
-	IL_1ab5:  starg 1
+	IL_1aac:  ldarg 1
 
-	IL_1ab9:  nop 
-	IL_1aba:  nop 
-	IL_1abb:  br IL_4c61
+	IL_1ab0:  nop 
+	IL_1ab1:  nop 
+	IL_1ab2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1ab7:  ldstr "import"
+	IL_1abc:  call int32 string::Compare(string, string)
+	IL_1ac1:  stloc 0
 
-	IL_1ac0:  br IL_1aca
+	IL_1ac5:  nop 
+	IL_1ac6:  nop 
+	IL_1ac7:  ldloc 0
 
-	IL_1ac5:  br IL_1aca
+	IL_1acb:  nop 
+	IL_1acc:  nop 
+	IL_1acd:  ldc.i4 0
+	IL_1ad2:  beq IL_1adc
 
-	IL_1aca:  ldarg 1
+	IL_1ad7:  br IL_1b33
 
-	IL_1ace:  nop 
-	IL_1acf:  nop 
-	IL_1ad0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1ad5:  ldstr "exe"
-	IL_1ada:  call int32 string::Compare(string, string)
-	IL_1adf:  stloc 0
+	IL_1adc:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ImportTok::'.ctor'()
+	IL_1ae1:  stloc 57
 
-	IL_1ae3:  nop 
-	IL_1ae4:  nop 
-	IL_1ae5:  ldloc 0
+	IL_1ae5:  nop 
+	IL_1ae6:  nop 
+	IL_1ae7:  ldloc 57
 
-	IL_1ae9:  nop 
-	IL_1aea:  nop 
-	IL_1aeb:  ldc.i4 0
-	IL_1af0:  beq IL_1afa
+	IL_1aeb:  nop 
+	IL_1aec:  nop 
+	IL_1aed:  ldarg 1
 
-	IL_1af5:  br IL_1b47
+	IL_1af1:  nop 
+	IL_1af2:  nop 
+	IL_1af3:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1af8:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1afd:  ldloc 57
 
-	IL_1afa:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ExeTok::'.ctor'()
-	IL_1aff:  stloc 57
+	IL_1b01:  nop 
+	IL_1b02:  nop 
+	IL_1b03:  ldarg 1
 
-	IL_1b03:  nop 
-	IL_1b04:  nop 
-	IL_1b05:  ldloc 57
+	IL_1b07:  nop 
+	IL_1b08:  nop 
+	IL_1b09:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1b0e:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1b13:  ldloc 57
 
-	IL_1b09:  nop 
-	IL_1b0a:  nop 
-	IL_1b0b:  ldarg 1
+	IL_1b17:  nop 
+	IL_1b18:  nop 
+	IL_1b19:  starg 1
 
-	IL_1b0f:  nop 
-	IL_1b10:  nop 
-	IL_1b11:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1b16:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1b1b:  ldloc 57
+	IL_1b1d:  nop 
+	IL_1b1e:  nop 
+	IL_1b1f:  ldc.i4 1
+	IL_1b24:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::NoOptFlag
+	IL_1b29:  br IL_4fef
 
-	IL_1b1f:  nop 
-	IL_1b20:  nop 
-	IL_1b21:  ldarg 1
+	IL_1b2e:  br IL_1b38
 
-	IL_1b25:  nop 
-	IL_1b26:  nop 
-	IL_1b27:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1b2c:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1b31:  ldloc 57
+	IL_1b33:  br IL_1b38
 
-	IL_1b35:  nop 
-	IL_1b36:  nop 
-	IL_1b37:  starg 1
+	IL_1b38:  ldarg 1
 
-	IL_1b3b:  nop 
 	IL_1b3c:  nop 
-	IL_1b3d:  br IL_4c61
+	IL_1b3d:  nop 
+	IL_1b3e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1b43:  ldstr "locimport"
+	IL_1b48:  call int32 string::Compare(string, string)
+	IL_1b4d:  stloc 0
 
-	IL_1b42:  br IL_1b4c
-
-	IL_1b47:  br IL_1b4c
-
-	IL_1b4c:  ldarg 1
-
-	IL_1b50:  nop 
 	IL_1b51:  nop 
-	IL_1b52:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1b57:  ldstr "dll"
-	IL_1b5c:  call int32 string::Compare(string, string)
-	IL_1b61:  stloc 0
+	IL_1b52:  nop 
+	IL_1b53:  ldloc 0
 
-	IL_1b65:  nop 
-	IL_1b66:  nop 
-	IL_1b67:  ldloc 0
+	IL_1b57:  nop 
+	IL_1b58:  nop 
+	IL_1b59:  ldc.i4 0
+	IL_1b5e:  beq IL_1b68
 
-	IL_1b6b:  nop 
-	IL_1b6c:  nop 
-	IL_1b6d:  ldc.i4 0
-	IL_1b72:  beq IL_1b7c
+	IL_1b63:  br IL_1bbf
 
-	IL_1b77:  br IL_1bc9
+	IL_1b68:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.LocimportTok::'.ctor'()
+	IL_1b6d:  stloc 58
 
-	IL_1b7c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.DllTok::'.ctor'()
-	IL_1b81:  stloc 58
+	IL_1b71:  nop 
+	IL_1b72:  nop 
+	IL_1b73:  ldloc 58
 
-	IL_1b85:  nop 
-	IL_1b86:  nop 
-	IL_1b87:  ldloc 58
+	IL_1b77:  nop 
+	IL_1b78:  nop 
+	IL_1b79:  ldarg 1
 
-	IL_1b8b:  nop 
-	IL_1b8c:  nop 
-	IL_1b8d:  ldarg 1
+	IL_1b7d:  nop 
+	IL_1b7e:  nop 
+	IL_1b7f:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1b84:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1b89:  ldloc 58
 
-	IL_1b91:  nop 
-	IL_1b92:  nop 
-	IL_1b93:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1b98:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1b9d:  ldloc 58
+	IL_1b8d:  nop 
+	IL_1b8e:  nop 
+	IL_1b8f:  ldarg 1
 
-	IL_1ba1:  nop 
-	IL_1ba2:  nop 
-	IL_1ba3:  ldarg 1
+	IL_1b93:  nop 
+	IL_1b94:  nop 
+	IL_1b95:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1b9a:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1b9f:  ldloc 58
 
-	IL_1ba7:  nop 
-	IL_1ba8:  nop 
-	IL_1ba9:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1bae:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1bb3:  ldloc 58
+	IL_1ba3:  nop 
+	IL_1ba4:  nop 
+	IL_1ba5:  starg 1
 
-	IL_1bb7:  nop 
-	IL_1bb8:  nop 
-	IL_1bb9:  starg 1
+	IL_1ba9:  nop 
+	IL_1baa:  nop 
+	IL_1bab:  ldc.i4 1
+	IL_1bb0:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::NoOptFlag
+	IL_1bb5:  br IL_4fef
 
-	IL_1bbd:  nop 
-	IL_1bbe:  nop 
-	IL_1bbf:  br IL_4c61
+	IL_1bba:  br IL_1bc4
 
-	IL_1bc4:  br IL_1bce
+	IL_1bbf:  br IL_1bc4
 
-	IL_1bc9:  br IL_1bce
+	IL_1bc4:  ldarg 1
 
-	IL_1bce:  ldarg 1
+	IL_1bc8:  nop 
+	IL_1bc9:  nop 
+	IL_1bca:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1bcf:  ldstr "assembly"
+	IL_1bd4:  call int32 string::Compare(string, string)
+	IL_1bd9:  stloc 0
 
-	IL_1bd2:  nop 
-	IL_1bd3:  nop 
-	IL_1bd4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1bd9:  ldstr "field"
-	IL_1bde:  call int32 string::Compare(string, string)
-	IL_1be3:  stloc 0
+	IL_1bdd:  nop 
+	IL_1bde:  nop 
+	IL_1bdf:  ldloc 0
 
-	IL_1be7:  nop 
-	IL_1be8:  nop 
-	IL_1be9:  ldloc 0
+	IL_1be3:  nop 
+	IL_1be4:  nop 
+	IL_1be5:  ldc.i4 0
+	IL_1bea:  beq IL_1bf4
 
-	IL_1bed:  nop 
-	IL_1bee:  nop 
-	IL_1bef:  ldc.i4 0
-	IL_1bf4:  beq IL_1bfe
+	IL_1bef:  br IL_1c41
 
-	IL_1bf9:  br IL_1c4b
+	IL_1bf4:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.AssemblyTok::'.ctor'()
+	IL_1bf9:  stloc 59
 
-	IL_1bfe:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.FieldTok::'.ctor'()
-	IL_1c03:  stloc 59
+	IL_1bfd:  nop 
+	IL_1bfe:  nop 
+	IL_1bff:  ldloc 59
 
-	IL_1c07:  nop 
-	IL_1c08:  nop 
-	IL_1c09:  ldloc 59
+	IL_1c03:  nop 
+	IL_1c04:  nop 
+	IL_1c05:  ldarg 1
 
-	IL_1c0d:  nop 
-	IL_1c0e:  nop 
-	IL_1c0f:  ldarg 1
+	IL_1c09:  nop 
+	IL_1c0a:  nop 
+	IL_1c0b:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1c10:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1c15:  ldloc 59
 
-	IL_1c13:  nop 
-	IL_1c14:  nop 
-	IL_1c15:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1c1a:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1c1f:  ldloc 59
+	IL_1c19:  nop 
+	IL_1c1a:  nop 
+	IL_1c1b:  ldarg 1
 
-	IL_1c23:  nop 
-	IL_1c24:  nop 
-	IL_1c25:  ldarg 1
+	IL_1c1f:  nop 
+	IL_1c20:  nop 
+	IL_1c21:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1c26:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1c2b:  ldloc 59
 
-	IL_1c29:  nop 
-	IL_1c2a:  nop 
-	IL_1c2b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1c30:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1c35:  ldloc 59
+	IL_1c2f:  nop 
+	IL_1c30:  nop 
+	IL_1c31:  starg 1
 
-	IL_1c39:  nop 
-	IL_1c3a:  nop 
-	IL_1c3b:  starg 1
+	IL_1c35:  nop 
+	IL_1c36:  nop 
+	IL_1c37:  br IL_4fef
 
-	IL_1c3f:  nop 
-	IL_1c40:  nop 
-	IL_1c41:  br IL_4c61
+	IL_1c3c:  br IL_1c46
 
-	IL_1c46:  br IL_1c50
+	IL_1c41:  br IL_1c46
 
-	IL_1c4b:  br IL_1c50
+	IL_1c46:  ldarg 1
 
-	IL_1c50:  ldarg 1
+	IL_1c4a:  nop 
+	IL_1c4b:  nop 
+	IL_1c4c:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1c51:  ldstr "ver"
+	IL_1c56:  call int32 string::Compare(string, string)
+	IL_1c5b:  stloc 0
 
-	IL_1c54:  nop 
-	IL_1c55:  nop 
-	IL_1c56:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1c5b:  ldstr "class"
-	IL_1c60:  call int32 string::Compare(string, string)
-	IL_1c65:  stloc 0
+	IL_1c5f:  nop 
+	IL_1c60:  nop 
+	IL_1c61:  ldloc 0
 
-	IL_1c69:  nop 
-	IL_1c6a:  nop 
-	IL_1c6b:  ldloc 0
+	IL_1c65:  nop 
+	IL_1c66:  nop 
+	IL_1c67:  ldc.i4 0
+	IL_1c6c:  beq IL_1c76
 
-	IL_1c6f:  nop 
-	IL_1c70:  nop 
-	IL_1c71:  ldc.i4 0
-	IL_1c76:  beq IL_1c80
+	IL_1c71:  br IL_1ccd
 
-	IL_1c7b:  br IL_1ccd
+	IL_1c76:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.VerTok::'.ctor'()
+	IL_1c7b:  stloc 60
 
-	IL_1c80:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ClassTok::'.ctor'()
-	IL_1c85:  stloc 60
+	IL_1c7f:  nop 
+	IL_1c80:  nop 
+	IL_1c81:  ldloc 60
 
-	IL_1c89:  nop 
-	IL_1c8a:  nop 
-	IL_1c8b:  ldloc 60
+	IL_1c85:  nop 
+	IL_1c86:  nop 
+	IL_1c87:  ldarg 1
 
-	IL_1c8f:  nop 
-	IL_1c90:  nop 
-	IL_1c91:  ldarg 1
+	IL_1c8b:  nop 
+	IL_1c8c:  nop 
+	IL_1c8d:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1c92:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_1c97:  ldloc 60
 
-	IL_1c95:  nop 
-	IL_1c96:  nop 
-	IL_1c97:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1c9c:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_1ca1:  ldloc 60
+	IL_1c9b:  nop 
+	IL_1c9c:  nop 
+	IL_1c9d:  ldarg 1
 
-	IL_1ca5:  nop 
-	IL_1ca6:  nop 
-	IL_1ca7:  ldarg 1
+	IL_1ca1:  nop 
+	IL_1ca2:  nop 
+	IL_1ca3:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1ca8:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1cad:  ldloc 60
 
-	IL_1cab:  nop 
-	IL_1cac:  nop 
-	IL_1cad:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1cb2:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1cb7:  ldloc 60
+	IL_1cb1:  nop 
+	IL_1cb2:  nop 
+	IL_1cb3:  starg 1
 
-	IL_1cbb:  nop 
-	IL_1cbc:  nop 
-	IL_1cbd:  starg 1
-
-	IL_1cc1:  nop 
-	IL_1cc2:  nop 
-	IL_1cc3:  br IL_4c61
+	IL_1cb7:  nop 
+	IL_1cb8:  nop 
+	IL_1cb9:  ldc.i4 1
+	IL_1cbe:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::NoOptFlag
+	IL_1cc3:  br IL_4fef
 
 	IL_1cc8:  br IL_1cd2
 
@@ -3836,7 +3843,7 @@
 	IL_1cd6:  nop 
 	IL_1cd7:  nop 
 	IL_1cd8:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1cdd:  ldstr "extends"
+	IL_1cdd:  ldstr "on"
 	IL_1ce2:  call int32 string::Compare(string, string)
 	IL_1ce7:  stloc 0
 
@@ -3851,7 +3858,7 @@
 
 	IL_1cfd:  br IL_1d4f
 
-	IL_1d02:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ExtendsTok::'.ctor'()
+	IL_1d02:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OnTok::'.ctor'()
 	IL_1d07:  stloc 61
 
 	IL_1d0b:  nop 
@@ -3884,7 +3891,7 @@
 
 	IL_1d43:  nop 
 	IL_1d44:  nop 
-	IL_1d45:  br IL_4c61
+	IL_1d45:  br IL_4fef
 
 	IL_1d4a:  br IL_1d54
 
@@ -3895,7 +3902,7 @@
 	IL_1d58:  nop 
 	IL_1d59:  nop 
 	IL_1d5a:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1d5f:  ldstr "method"
+	IL_1d5f:  ldstr "off"
 	IL_1d64:  call int32 string::Compare(string, string)
 	IL_1d69:  stloc 0
 
@@ -3910,7 +3917,7 @@
 
 	IL_1d7f:  br IL_1dd1
 
-	IL_1d84:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodTok::'.ctor'()
+	IL_1d84:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OffTok::'.ctor'()
 	IL_1d89:  stloc 62
 
 	IL_1d8d:  nop 
@@ -3943,7 +3950,7 @@
 
 	IL_1dc5:  nop 
 	IL_1dc6:  nop 
-	IL_1dc7:  br IL_4c61
+	IL_1dc7:  br IL_4fef
 
 	IL_1dcc:  br IL_1dd6
 
@@ -3954,7 +3961,7 @@
 	IL_1dda:  nop 
 	IL_1ddb:  nop 
 	IL_1ddc:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1de1:  ldstr "end"
+	IL_1de1:  ldstr "exe"
 	IL_1de6:  call int32 string::Compare(string, string)
 	IL_1deb:  stloc 0
 
@@ -3969,7 +3976,7 @@
 
 	IL_1e01:  br IL_1e53
 
-	IL_1e06:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.EndTok::'.ctor'()
+	IL_1e06:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ExeTok::'.ctor'()
 	IL_1e0b:  stloc 63
 
 	IL_1e0f:  nop 
@@ -4002,7 +4009,7 @@
 
 	IL_1e47:  nop 
 	IL_1e48:  nop 
-	IL_1e49:  br IL_4c61
+	IL_1e49:  br IL_4fef
 
 	IL_1e4e:  br IL_1e58
 
@@ -4013,7 +4020,7 @@
 	IL_1e5c:  nop 
 	IL_1e5d:  nop 
 	IL_1e5e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1e63:  ldstr "return"
+	IL_1e63:  ldstr "dll"
 	IL_1e68:  call int32 string::Compare(string, string)
 	IL_1e6d:  stloc 0
 
@@ -4028,7 +4035,7 @@
 
 	IL_1e83:  br IL_1ed5
 
-	IL_1e88:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ReturnTok::'.ctor'()
+	IL_1e88:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.DllTok::'.ctor'()
 	IL_1e8d:  stloc 64
 
 	IL_1e91:  nop 
@@ -4061,7 +4068,7 @@
 
 	IL_1ec9:  nop 
 	IL_1eca:  nop 
-	IL_1ecb:  br IL_4c61
+	IL_1ecb:  br IL_4fef
 
 	IL_1ed0:  br IL_1eda
 
@@ -4072,7 +4079,7 @@
 	IL_1ede:  nop 
 	IL_1edf:  nop 
 	IL_1ee0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1ee5:  ldstr "var"
+	IL_1ee5:  ldstr "field"
 	IL_1eea:  call int32 string::Compare(string, string)
 	IL_1eef:  stloc 0
 
@@ -4087,7 +4094,7 @@
 
 	IL_1f05:  br IL_1f57
 
-	IL_1f0a:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.VarTok::'.ctor'()
+	IL_1f0a:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.FieldTok::'.ctor'()
 	IL_1f0f:  stloc 65
 
 	IL_1f13:  nop 
@@ -4120,7 +4127,7 @@
 
 	IL_1f4b:  nop 
 	IL_1f4c:  nop 
-	IL_1f4d:  br IL_4c61
+	IL_1f4d:  br IL_4fef
 
 	IL_1f52:  br IL_1f5c
 
@@ -4131,7 +4138,7 @@
 	IL_1f60:  nop 
 	IL_1f61:  nop 
 	IL_1f62:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1f67:  ldstr "as"
+	IL_1f67:  ldstr "class"
 	IL_1f6c:  call int32 string::Compare(string, string)
 	IL_1f71:  stloc 0
 
@@ -4146,7 +4153,7 @@
 
 	IL_1f87:  br IL_1fd9
 
-	IL_1f8c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.AsTok::'.ctor'()
+	IL_1f8c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ClassTok::'.ctor'()
 	IL_1f91:  stloc 66
 
 	IL_1f95:  nop 
@@ -4179,7 +4186,7 @@
 
 	IL_1fcd:  nop 
 	IL_1fce:  nop 
-	IL_1fcf:  br IL_4c61
+	IL_1fcf:  br IL_4fef
 
 	IL_1fd4:  br IL_1fde
 
@@ -4190,7 +4197,7 @@
 	IL_1fe2:  nop 
 	IL_1fe3:  nop 
 	IL_1fe4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1fe9:  ldstr "of"
+	IL_1fe9:  ldstr "extends"
 	IL_1fee:  call int32 string::Compare(string, string)
 	IL_1ff3:  stloc 0
 
@@ -4205,7 +4212,7 @@
 
 	IL_2009:  br IL_205b
 
-	IL_200e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OfTok::'.ctor'()
+	IL_200e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ExtendsTok::'.ctor'()
 	IL_2013:  stloc 67
 
 	IL_2017:  nop 
@@ -4238,7 +4245,7 @@
 
 	IL_204f:  nop 
 	IL_2050:  nop 
-	IL_2051:  br IL_4c61
+	IL_2051:  br IL_4fef
 
 	IL_2056:  br IL_2060
 
@@ -4249,7 +4256,7 @@
 	IL_2064:  nop 
 	IL_2065:  nop 
 	IL_2066:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_206b:  ldstr "private"
+	IL_206b:  ldstr "method"
 	IL_2070:  call int32 string::Compare(string, string)
 	IL_2075:  stloc 0
 
@@ -4264,7 +4271,7 @@
 
 	IL_208b:  br IL_20dd
 
-	IL_2090:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.PrivateAttr::'.ctor'()
+	IL_2090:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodTok::'.ctor'()
 	IL_2095:  stloc 68
 
 	IL_2099:  nop 
@@ -4297,7 +4304,7 @@
 
 	IL_20d1:  nop 
 	IL_20d2:  nop 
-	IL_20d3:  br IL_4c61
+	IL_20d3:  br IL_4fef
 
 	IL_20d8:  br IL_20e2
 
@@ -4308,7 +4315,7 @@
 	IL_20e6:  nop 
 	IL_20e7:  nop 
 	IL_20e8:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_20ed:  ldstr "public"
+	IL_20ed:  ldstr "end"
 	IL_20f2:  call int32 string::Compare(string, string)
 	IL_20f7:  stloc 0
 
@@ -4323,7 +4330,7 @@
 
 	IL_210d:  br IL_215f
 
-	IL_2112:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.PublicAttr::'.ctor'()
+	IL_2112:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.EndTok::'.ctor'()
 	IL_2117:  stloc 69
 
 	IL_211b:  nop 
@@ -4356,7 +4363,7 @@
 
 	IL_2153:  nop 
 	IL_2154:  nop 
-	IL_2155:  br IL_4c61
+	IL_2155:  br IL_4fef
 
 	IL_215a:  br IL_2164
 
@@ -4367,7 +4374,7 @@
 	IL_2168:  nop 
 	IL_2169:  nop 
 	IL_216a:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_216f:  ldstr "initonly"
+	IL_216f:  ldstr "return"
 	IL_2174:  call int32 string::Compare(string, string)
 	IL_2179:  stloc 0
 
@@ -4382,7 +4389,7 @@
 
 	IL_218f:  br IL_21e1
 
-	IL_2194:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.InitOnlyAttr::'.ctor'()
+	IL_2194:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.ReturnTok::'.ctor'()
 	IL_2199:  stloc 70
 
 	IL_219d:  nop 
@@ -4415,7 +4422,7 @@
 
 	IL_21d5:  nop 
 	IL_21d6:  nop 
-	IL_21d7:  br IL_4c61
+	IL_21d7:  br IL_4fef
 
 	IL_21dc:  br IL_21e6
 
@@ -4426,7 +4433,7 @@
 	IL_21ea:  nop 
 	IL_21eb:  nop 
 	IL_21ec:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_21f1:  ldstr "static"
+	IL_21f1:  ldstr "var"
 	IL_21f6:  call int32 string::Compare(string, string)
 	IL_21fb:  stloc 0
 
@@ -4441,7 +4448,7 @@
 
 	IL_2211:  br IL_2263
 
-	IL_2216:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.StaticAttr::'.ctor'()
+	IL_2216:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.VarTok::'.ctor'()
 	IL_221b:  stloc 71
 
 	IL_221f:  nop 
@@ -4474,7 +4481,7 @@
 
 	IL_2257:  nop 
 	IL_2258:  nop 
-	IL_2259:  br IL_4c61
+	IL_2259:  br IL_4fef
 
 	IL_225e:  br IL_2268
 
@@ -4485,7 +4492,7 @@
 	IL_226c:  nop 
 	IL_226d:  nop 
 	IL_226e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2273:  ldstr "specialname"
+	IL_2273:  ldstr "as"
 	IL_2278:  call int32 string::Compare(string, string)
 	IL_227d:  stloc 0
 
@@ -4500,7 +4507,7 @@
 
 	IL_2293:  br IL_22e5
 
-	IL_2298:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.SpecialNameAttr::'.ctor'()
+	IL_2298:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.AsTok::'.ctor'()
 	IL_229d:  stloc 72
 
 	IL_22a1:  nop 
@@ -4533,7 +4540,7 @@
 
 	IL_22d9:  nop 
 	IL_22da:  nop 
-	IL_22db:  br IL_4c61
+	IL_22db:  br IL_4fef
 
 	IL_22e0:  br IL_22ea
 
@@ -4544,7 +4551,7 @@
 	IL_22ee:  nop 
 	IL_22ef:  nop 
 	IL_22f0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_22f5:  ldstr "virtual"
+	IL_22f5:  ldstr "of"
 	IL_22fa:  call int32 string::Compare(string, string)
 	IL_22ff:  stloc 0
 
@@ -4559,7 +4566,7 @@
 
 	IL_2315:  br IL_2367
 
-	IL_231a:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.VirtualAttr::'.ctor'()
+	IL_231a:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.OfTok::'.ctor'()
 	IL_231f:  stloc 73
 
 	IL_2323:  nop 
@@ -4592,7 +4599,7 @@
 
 	IL_235b:  nop 
 	IL_235c:  nop 
-	IL_235d:  br IL_4c61
+	IL_235d:  br IL_4fef
 
 	IL_2362:  br IL_236c
 
@@ -4603,7 +4610,7 @@
 	IL_2370:  nop 
 	IL_2371:  nop 
 	IL_2372:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2377:  ldstr "auto"
+	IL_2377:  ldstr "private"
 	IL_237c:  call int32 string::Compare(string, string)
 	IL_2381:  stloc 0
 
@@ -4618,7 +4625,7 @@
 
 	IL_2397:  br IL_23e9
 
-	IL_239c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoLayoutAttr::'.ctor'()
+	IL_239c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.PrivateAttr::'.ctor'()
 	IL_23a1:  stloc 74
 
 	IL_23a5:  nop 
@@ -4651,7 +4658,7 @@
 
 	IL_23dd:  nop 
 	IL_23de:  nop 
-	IL_23df:  br IL_4c61
+	IL_23df:  br IL_4fef
 
 	IL_23e4:  br IL_23ee
 
@@ -4662,7 +4669,7 @@
 	IL_23f2:  nop 
 	IL_23f3:  nop 
 	IL_23f4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_23f9:  ldstr "autochar"
+	IL_23f9:  ldstr "public"
 	IL_23fe:  call int32 string::Compare(string, string)
 	IL_2403:  stloc 0
 
@@ -4677,7 +4684,7 @@
 
 	IL_2419:  br IL_246b
 
-	IL_241e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoClassAttr::'.ctor'()
+	IL_241e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.PublicAttr::'.ctor'()
 	IL_2423:  stloc 75
 
 	IL_2427:  nop 
@@ -4710,7 +4717,7 @@
 
 	IL_245f:  nop 
 	IL_2460:  nop 
-	IL_2461:  br IL_4c61
+	IL_2461:  br IL_4fef
 
 	IL_2466:  br IL_2470
 
@@ -4721,7 +4728,7 @@
 	IL_2474:  nop 
 	IL_2475:  nop 
 	IL_2476:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_247b:  ldstr "ansi"
+	IL_247b:  ldstr "initonly"
 	IL_2480:  call int32 string::Compare(string, string)
 	IL_2485:  stloc 0
 
@@ -4736,7 +4743,7 @@
 
 	IL_249b:  br IL_24ed
 
-	IL_24a0:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AnsiClassAttr::'.ctor'()
+	IL_24a0:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.InitOnlyAttr::'.ctor'()
 	IL_24a5:  stloc 76
 
 	IL_24a9:  nop 
@@ -4769,7 +4776,7 @@
 
 	IL_24e1:  nop 
 	IL_24e2:  nop 
-	IL_24e3:  br IL_4c61
+	IL_24e3:  br IL_4fef
 
 	IL_24e8:  br IL_24f2
 
@@ -4780,7 +4787,7 @@
 	IL_24f6:  nop 
 	IL_24f7:  nop 
 	IL_24f8:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_24fd:  ldstr "beforefieldinit"
+	IL_24fd:  ldstr "static"
 	IL_2502:  call int32 string::Compare(string, string)
 	IL_2507:  stloc 0
 
@@ -4795,7 +4802,7 @@
 
 	IL_251d:  br IL_256f
 
-	IL_2522:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.BeforeFieldInitAttr::'.ctor'()
+	IL_2522:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.StaticAttr::'.ctor'()
 	IL_2527:  stloc 77
 
 	IL_252b:  nop 
@@ -4828,7 +4835,7 @@
 
 	IL_2563:  nop 
 	IL_2564:  nop 
-	IL_2565:  br IL_4c61
+	IL_2565:  br IL_4fef
 
 	IL_256a:  br IL_2574
 
@@ -4839,7 +4846,7 @@
 	IL_2578:  nop 
 	IL_2579:  nop 
 	IL_257a:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_257f:  ldstr "string"
+	IL_257f:  ldstr "specialname"
 	IL_2584:  call int32 string::Compare(string, string)
 	IL_2589:  stloc 0
 
@@ -4852,9 +4859,9 @@
 	IL_2595:  ldc.i4 0
 	IL_259a:  beq IL_25a4
 
-	IL_259f:  br IL_2606
+	IL_259f:  br IL_25f1
 
-	IL_25a4:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.StringTok::'.ctor'()
+	IL_25a4:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.SpecialNameAttr::'.ctor'()
 	IL_25a9:  stloc 78
 
 	IL_25ad:  nop 
@@ -4883,4652 +4890,5065 @@
 
 	IL_25df:  nop 
 	IL_25e0:  nop 
-	IL_25e1:  ldtoken [mscorlib]System.String
-	IL_25e6:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_25eb:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_25f0:  ldloc 78
+	IL_25e1:  starg 1
 
-	IL_25f4:  nop 
-	IL_25f5:  nop 
-	IL_25f6:  starg 1
+	IL_25e5:  nop 
+	IL_25e6:  nop 
+	IL_25e7:  br IL_4fef
+
+	IL_25ec:  br IL_25f6
+
+	IL_25f1:  br IL_25f6
+
+	IL_25f6:  ldarg 1
 
 	IL_25fa:  nop 
 	IL_25fb:  nop 
-	IL_25fc:  br IL_4c61
-
-	IL_2601:  br IL_260b
-
-	IL_2606:  br IL_260b
-
-	IL_260b:  ldarg 1
+	IL_25fc:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2601:  ldstr "hidebysig"
+	IL_2606:  call int32 string::Compare(string, string)
+	IL_260b:  stloc 0
 
 	IL_260f:  nop 
 	IL_2610:  nop 
-	IL_2611:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2616:  ldstr "void"
-	IL_261b:  call int32 string::Compare(string, string)
-	IL_2620:  stloc 0
+	IL_2611:  ldloc 0
 
-	IL_2624:  nop 
-	IL_2625:  nop 
-	IL_2626:  ldloc 0
+	IL_2615:  nop 
+	IL_2616:  nop 
+	IL_2617:  ldc.i4 0
+	IL_261c:  beq IL_2626
 
-	IL_262a:  nop 
-	IL_262b:  nop 
-	IL_262c:  ldc.i4 0
-	IL_2631:  beq IL_263b
+	IL_2621:  br IL_2673
 
-	IL_2636:  br IL_269d
+	IL_2626:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.HideBySigAttr::'.ctor'()
+	IL_262b:  stloc 79
 
-	IL_263b:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.VoidTok::'.ctor'()
-	IL_2640:  stloc 79
+	IL_262f:  nop 
+	IL_2630:  nop 
+	IL_2631:  ldloc 79
 
-	IL_2644:  nop 
-	IL_2645:  nop 
-	IL_2646:  ldloc 79
+	IL_2635:  nop 
+	IL_2636:  nop 
+	IL_2637:  ldarg 1
 
-	IL_264a:  nop 
+	IL_263b:  nop 
+	IL_263c:  nop 
+	IL_263d:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2642:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2647:  ldloc 79
+
 	IL_264b:  nop 
-	IL_264c:  ldarg 1
+	IL_264c:  nop 
+	IL_264d:  ldarg 1
 
-	IL_2650:  nop 
 	IL_2651:  nop 
-	IL_2652:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2657:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_265c:  ldloc 79
+	IL_2652:  nop 
+	IL_2653:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2658:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_265d:  ldloc 79
 
-	IL_2660:  nop 
 	IL_2661:  nop 
-	IL_2662:  ldarg 1
+	IL_2662:  nop 
+	IL_2663:  starg 1
 
-	IL_2666:  nop 
 	IL_2667:  nop 
-	IL_2668:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_266d:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2672:  ldloc 79
+	IL_2668:  nop 
+	IL_2669:  br IL_4fef
 
-	IL_2676:  nop 
-	IL_2677:  nop 
-	IL_2678:  ldtoken [mscorlib]System.Void
-	IL_267d:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2682:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_2687:  ldloc 79
+	IL_266e:  br IL_2678
 
-	IL_268b:  nop 
-	IL_268c:  nop 
-	IL_268d:  starg 1
+	IL_2673:  br IL_2678
+
+	IL_2678:  ldarg 1
+
+	IL_267c:  nop 
+	IL_267d:  nop 
+	IL_267e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2683:  ldstr "virtual"
+	IL_2688:  call int32 string::Compare(string, string)
+	IL_268d:  stloc 0
 
 	IL_2691:  nop 
 	IL_2692:  nop 
-	IL_2693:  br IL_4c61
+	IL_2693:  ldloc 0
 
-	IL_2698:  br IL_26a2
+	IL_2697:  nop 
+	IL_2698:  nop 
+	IL_2699:  ldc.i4 0
+	IL_269e:  beq IL_26a8
 
-	IL_269d:  br IL_26a2
+	IL_26a3:  br IL_26f5
 
-	IL_26a2:  ldarg 1
+	IL_26a8:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.VirtualAttr::'.ctor'()
+	IL_26ad:  stloc 80
 
-	IL_26a6:  nop 
-	IL_26a7:  nop 
-	IL_26a8:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_26ad:  ldstr "decimal"
-	IL_26b2:  call int32 string::Compare(string, string)
-	IL_26b7:  stloc 0
+	IL_26b1:  nop 
+	IL_26b2:  nop 
+	IL_26b3:  ldloc 80
 
-	IL_26bb:  nop 
-	IL_26bc:  nop 
-	IL_26bd:  ldloc 0
+	IL_26b7:  nop 
+	IL_26b8:  nop 
+	IL_26b9:  ldarg 1
 
-	IL_26c1:  nop 
-	IL_26c2:  nop 
-	IL_26c3:  ldc.i4 0
-	IL_26c8:  beq IL_26d2
+	IL_26bd:  nop 
+	IL_26be:  nop 
+	IL_26bf:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_26c4:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_26c9:  ldloc 80
 
-	IL_26cd:  br IL_2734
+	IL_26cd:  nop 
+	IL_26ce:  nop 
+	IL_26cf:  ldarg 1
 
-	IL_26d2:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.DecimalTok::'.ctor'()
-	IL_26d7:  stloc 80
+	IL_26d3:  nop 
+	IL_26d4:  nop 
+	IL_26d5:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_26da:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_26df:  ldloc 80
 
-	IL_26db:  nop 
-	IL_26dc:  nop 
-	IL_26dd:  ldloc 80
+	IL_26e3:  nop 
+	IL_26e4:  nop 
+	IL_26e5:  starg 1
 
-	IL_26e1:  nop 
-	IL_26e2:  nop 
-	IL_26e3:  ldarg 1
+	IL_26e9:  nop 
+	IL_26ea:  nop 
+	IL_26eb:  br IL_4fef
 
-	IL_26e7:  nop 
-	IL_26e8:  nop 
-	IL_26e9:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_26ee:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_26f3:  ldloc 80
+	IL_26f0:  br IL_26fa
 
-	IL_26f7:  nop 
-	IL_26f8:  nop 
-	IL_26f9:  ldarg 1
+	IL_26f5:  br IL_26fa
 
-	IL_26fd:  nop 
+	IL_26fa:  ldarg 1
+
 	IL_26fe:  nop 
-	IL_26ff:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2704:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2709:  ldloc 80
+	IL_26ff:  nop 
+	IL_2700:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2705:  ldstr "auto"
+	IL_270a:  call int32 string::Compare(string, string)
+	IL_270f:  stloc 0
 
-	IL_270d:  nop 
-	IL_270e:  nop 
-	IL_270f:  ldtoken [mscorlib]System.Decimal
-	IL_2714:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2719:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_271e:  ldloc 80
+	IL_2713:  nop 
+	IL_2714:  nop 
+	IL_2715:  ldloc 0
 
-	IL_2722:  nop 
-	IL_2723:  nop 
-	IL_2724:  starg 1
+	IL_2719:  nop 
+	IL_271a:  nop 
+	IL_271b:  ldc.i4 0
+	IL_2720:  beq IL_272a
 
-	IL_2728:  nop 
-	IL_2729:  nop 
-	IL_272a:  br IL_4c61
+	IL_2725:  br IL_2777
 
-	IL_272f:  br IL_2739
+	IL_272a:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoLayoutAttr::'.ctor'()
+	IL_272f:  stloc 81
 
-	IL_2734:  br IL_2739
+	IL_2733:  nop 
+	IL_2734:  nop 
+	IL_2735:  ldloc 81
 
-	IL_2739:  ldarg 1
+	IL_2739:  nop 
+	IL_273a:  nop 
+	IL_273b:  ldarg 1
 
-	IL_273d:  nop 
-	IL_273e:  nop 
-	IL_273f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2744:  ldstr "integer"
-	IL_2749:  call int32 string::Compare(string, string)
-	IL_274e:  stloc 0
+	IL_273f:  nop 
+	IL_2740:  nop 
+	IL_2741:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2746:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_274b:  ldloc 81
 
-	IL_2752:  nop 
-	IL_2753:  nop 
-	IL_2754:  ldloc 0
+	IL_274f:  nop 
+	IL_2750:  nop 
+	IL_2751:  ldarg 1
 
-	IL_2758:  nop 
-	IL_2759:  nop 
-	IL_275a:  ldc.i4 0
-	IL_275f:  beq IL_2769
+	IL_2755:  nop 
+	IL_2756:  nop 
+	IL_2757:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_275c:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2761:  ldloc 81
 
-	IL_2764:  br IL_27cb
+	IL_2765:  nop 
+	IL_2766:  nop 
+	IL_2767:  starg 1
 
-	IL_2769:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntegerTok::'.ctor'()
-	IL_276e:  stloc 81
+	IL_276b:  nop 
+	IL_276c:  nop 
+	IL_276d:  br IL_4fef
 
-	IL_2772:  nop 
-	IL_2773:  nop 
-	IL_2774:  ldloc 81
+	IL_2772:  br IL_277c
 
-	IL_2778:  nop 
-	IL_2779:  nop 
-	IL_277a:  ldarg 1
+	IL_2777:  br IL_277c
 
-	IL_277e:  nop 
-	IL_277f:  nop 
-	IL_2780:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2785:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_278a:  ldloc 81
+	IL_277c:  ldarg 1
 
-	IL_278e:  nop 
-	IL_278f:  nop 
-	IL_2790:  ldarg 1
+	IL_2780:  nop 
+	IL_2781:  nop 
+	IL_2782:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2787:  ldstr "autochar"
+	IL_278c:  call int32 string::Compare(string, string)
+	IL_2791:  stloc 0
 
-	IL_2794:  nop 
 	IL_2795:  nop 
-	IL_2796:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_279b:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_27a0:  ldloc 81
+	IL_2796:  nop 
+	IL_2797:  ldloc 0
 
-	IL_27a4:  nop 
-	IL_27a5:  nop 
-	IL_27a6:  ldtoken [mscorlib]System.Int32
-	IL_27ab:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_27b0:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_27b5:  ldloc 81
+	IL_279b:  nop 
+	IL_279c:  nop 
+	IL_279d:  ldc.i4 0
+	IL_27a2:  beq IL_27ac
 
-	IL_27b9:  nop 
-	IL_27ba:  nop 
-	IL_27bb:  starg 1
+	IL_27a7:  br IL_27f9
 
-	IL_27bf:  nop 
-	IL_27c0:  nop 
-	IL_27c1:  br IL_4c61
+	IL_27ac:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoClassAttr::'.ctor'()
+	IL_27b1:  stloc 82
 
-	IL_27c6:  br IL_27d0
+	IL_27b5:  nop 
+	IL_27b6:  nop 
+	IL_27b7:  ldloc 82
 
-	IL_27cb:  br IL_27d0
+	IL_27bb:  nop 
+	IL_27bc:  nop 
+	IL_27bd:  ldarg 1
 
-	IL_27d0:  ldarg 1
+	IL_27c1:  nop 
+	IL_27c2:  nop 
+	IL_27c3:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_27c8:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_27cd:  ldloc 82
 
-	IL_27d4:  nop 
-	IL_27d5:  nop 
-	IL_27d6:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_27db:  ldstr "intptr"
-	IL_27e0:  call int32 string::Compare(string, string)
-	IL_27e5:  stloc 0
+	IL_27d1:  nop 
+	IL_27d2:  nop 
+	IL_27d3:  ldarg 1
 
-	IL_27e9:  nop 
-	IL_27ea:  nop 
-	IL_27eb:  ldloc 0
+	IL_27d7:  nop 
+	IL_27d8:  nop 
+	IL_27d9:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_27de:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_27e3:  ldloc 82
 
-	IL_27ef:  nop 
-	IL_27f0:  nop 
-	IL_27f1:  ldc.i4 0
-	IL_27f6:  beq IL_2800
+	IL_27e7:  nop 
+	IL_27e8:  nop 
+	IL_27e9:  starg 1
 
-	IL_27fb:  br IL_2862
+	IL_27ed:  nop 
+	IL_27ee:  nop 
+	IL_27ef:  br IL_4fef
 
-	IL_2800:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntPtrTok::'.ctor'()
-	IL_2805:  stloc 82
+	IL_27f4:  br IL_27fe
 
-	IL_2809:  nop 
-	IL_280a:  nop 
-	IL_280b:  ldloc 82
+	IL_27f9:  br IL_27fe
 
-	IL_280f:  nop 
-	IL_2810:  nop 
-	IL_2811:  ldarg 1
+	IL_27fe:  ldarg 1
 
-	IL_2815:  nop 
-	IL_2816:  nop 
-	IL_2817:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_281c:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2821:  ldloc 82
+	IL_2802:  nop 
+	IL_2803:  nop 
+	IL_2804:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2809:  ldstr "ansi"
+	IL_280e:  call int32 string::Compare(string, string)
+	IL_2813:  stloc 0
 
-	IL_2825:  nop 
-	IL_2826:  nop 
-	IL_2827:  ldarg 1
+	IL_2817:  nop 
+	IL_2818:  nop 
+	IL_2819:  ldloc 0
 
-	IL_282b:  nop 
-	IL_282c:  nop 
-	IL_282d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2832:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2837:  ldloc 82
+	IL_281d:  nop 
+	IL_281e:  nop 
+	IL_281f:  ldc.i4 0
+	IL_2824:  beq IL_282e
 
-	IL_283b:  nop 
-	IL_283c:  nop 
-	IL_283d:  ldtoken [mscorlib]System.IntPtr
-	IL_2842:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2847:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_284c:  ldloc 82
+	IL_2829:  br IL_287b
 
-	IL_2850:  nop 
-	IL_2851:  nop 
-	IL_2852:  starg 1
+	IL_282e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.AnsiClassAttr::'.ctor'()
+	IL_2833:  stloc 83
 
-	IL_2856:  nop 
-	IL_2857:  nop 
-	IL_2858:  br IL_4c61
+	IL_2837:  nop 
+	IL_2838:  nop 
+	IL_2839:  ldloc 83
 
-	IL_285d:  br IL_2867
+	IL_283d:  nop 
+	IL_283e:  nop 
+	IL_283f:  ldarg 1
 
-	IL_2862:  br IL_2867
+	IL_2843:  nop 
+	IL_2844:  nop 
+	IL_2845:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_284a:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_284f:  ldloc 83
 
-	IL_2867:  ldarg 1
+	IL_2853:  nop 
+	IL_2854:  nop 
+	IL_2855:  ldarg 1
 
-	IL_286b:  nop 
-	IL_286c:  nop 
-	IL_286d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2872:  ldstr "uinteger"
-	IL_2877:  call int32 string::Compare(string, string)
-	IL_287c:  stloc 0
+	IL_2859:  nop 
+	IL_285a:  nop 
+	IL_285b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2860:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2865:  ldloc 83
 
-	IL_2880:  nop 
-	IL_2881:  nop 
-	IL_2882:  ldloc 0
+	IL_2869:  nop 
+	IL_286a:  nop 
+	IL_286b:  starg 1
 
-	IL_2886:  nop 
-	IL_2887:  nop 
-	IL_2888:  ldc.i4 0
-	IL_288d:  beq IL_2897
+	IL_286f:  nop 
+	IL_2870:  nop 
+	IL_2871:  br IL_4fef
 
-	IL_2892:  br IL_28f9
+	IL_2876:  br IL_2880
 
-	IL_2897:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.UIntegerTok::'.ctor'()
-	IL_289c:  stloc 83
+	IL_287b:  br IL_2880
 
+	IL_2880:  ldarg 1
+
+	IL_2884:  nop 
+	IL_2885:  nop 
+	IL_2886:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_288b:  ldstr "beforefieldinit"
+	IL_2890:  call int32 string::Compare(string, string)
+	IL_2895:  stloc 0
+
+	IL_2899:  nop 
+	IL_289a:  nop 
+	IL_289b:  ldloc 0
+
+	IL_289f:  nop 
 	IL_28a0:  nop 
-	IL_28a1:  nop 
-	IL_28a2:  ldloc 83
-
-	IL_28a6:  nop 
-	IL_28a7:  nop 
-	IL_28a8:  ldarg 1
-
-	IL_28ac:  nop 
-	IL_28ad:  nop 
-	IL_28ae:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_28b3:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_28b8:  ldloc 83
-
-	IL_28bc:  nop 
-	IL_28bd:  nop 
-	IL_28be:  ldarg 1
-
-	IL_28c2:  nop 
-	IL_28c3:  nop 
-	IL_28c4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_28c9:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_28ce:  ldloc 83
-
-	IL_28d2:  nop 
-	IL_28d3:  nop 
-	IL_28d4:  ldtoken [mscorlib]System.UInt32
-	IL_28d9:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_28de:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_28e3:  ldloc 83
-
-	IL_28e7:  nop 
-	IL_28e8:  nop 
-	IL_28e9:  starg 1
-
-	IL_28ed:  nop 
-	IL_28ee:  nop 
-	IL_28ef:  br IL_4c61
-
-	IL_28f4:  br IL_28fe
-
-	IL_28f9:  br IL_28fe
-
-	IL_28fe:  ldarg 1
-
-	IL_2902:  nop 
-	IL_2903:  nop 
-	IL_2904:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2909:  ldstr "double"
-	IL_290e:  call int32 string::Compare(string, string)
-	IL_2913:  stloc 0
-
-	IL_2917:  nop 
-	IL_2918:  nop 
-	IL_2919:  ldloc 0
-
-	IL_291d:  nop 
-	IL_291e:  nop 
-	IL_291f:  ldc.i4 0
-	IL_2924:  beq IL_292e
-
-	IL_2929:  br IL_2990
-
-	IL_292e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.DoubleTok::'.ctor'()
-	IL_2933:  stloc 84
-
-	IL_2937:  nop 
-	IL_2938:  nop 
-	IL_2939:  ldloc 84
-
-	IL_293d:  nop 
-	IL_293e:  nop 
-	IL_293f:  ldarg 1
-
-	IL_2943:  nop 
-	IL_2944:  nop 
-	IL_2945:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_294a:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_294f:  ldloc 84
-
-	IL_2953:  nop 
-	IL_2954:  nop 
-	IL_2955:  ldarg 1
-
-	IL_2959:  nop 
-	IL_295a:  nop 
-	IL_295b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2960:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2965:  ldloc 84
-
-	IL_2969:  nop 
-	IL_296a:  nop 
-	IL_296b:  ldtoken [mscorlib]System.Double
-	IL_2970:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2975:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_297a:  ldloc 84
-
-	IL_297e:  nop 
-	IL_297f:  nop 
-	IL_2980:  starg 1
-
-	IL_2984:  nop 
-	IL_2985:  nop 
-	IL_2986:  br IL_4c61
+	IL_28a1:  ldc.i4 0
+	IL_28a6:  beq IL_28b0
+
+	IL_28ab:  br IL_28fd
+
+	IL_28b0:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.BeforeFieldInitAttr::'.ctor'()
+	IL_28b5:  stloc 84
+
+	IL_28b9:  nop 
+	IL_28ba:  nop 
+	IL_28bb:  ldloc 84
 
-	IL_298b:  br IL_2995
+	IL_28bf:  nop 
+	IL_28c0:  nop 
+	IL_28c1:  ldarg 1
 
-	IL_2990:  br IL_2995
+	IL_28c5:  nop 
+	IL_28c6:  nop 
+	IL_28c7:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_28cc:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_28d1:  ldloc 84
+
+	IL_28d5:  nop 
+	IL_28d6:  nop 
+	IL_28d7:  ldarg 1
+
+	IL_28db:  nop 
+	IL_28dc:  nop 
+	IL_28dd:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_28e2:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_28e7:  ldloc 84
 
-	IL_2995:  ldarg 1
-
-	IL_2999:  nop 
-	IL_299a:  nop 
-	IL_299b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_29a0:  ldstr "boolean"
-	IL_29a5:  call int32 string::Compare(string, string)
-	IL_29aa:  stloc 0
+	IL_28eb:  nop 
+	IL_28ec:  nop 
+	IL_28ed:  starg 1
 
-	IL_29ae:  nop 
-	IL_29af:  nop 
-	IL_29b0:  ldloc 0
-
-	IL_29b4:  nop 
-	IL_29b5:  nop 
-	IL_29b6:  ldc.i4 0
-	IL_29bb:  beq IL_29c5
-
-	IL_29c0:  br IL_2a27
-
-	IL_29c5:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.BooleanTok::'.ctor'()
-	IL_29ca:  stloc 85
-
-	IL_29ce:  nop 
-	IL_29cf:  nop 
-	IL_29d0:  ldloc 85
-
-	IL_29d4:  nop 
-	IL_29d5:  nop 
-	IL_29d6:  ldarg 1
-
-	IL_29da:  nop 
-	IL_29db:  nop 
-	IL_29dc:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_29e1:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_29e6:  ldloc 85
+	IL_28f1:  nop 
+	IL_28f2:  nop 
+	IL_28f3:  br IL_4fef
 
-	IL_29ea:  nop 
-	IL_29eb:  nop 
-	IL_29ec:  ldarg 1
-
-	IL_29f0:  nop 
-	IL_29f1:  nop 
-	IL_29f2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_29f7:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_29fc:  ldloc 85
-
-	IL_2a00:  nop 
-	IL_2a01:  nop 
-	IL_2a02:  ldtoken [mscorlib]System.Boolean
-	IL_2a07:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2a0c:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_2a11:  ldloc 85
-
-	IL_2a15:  nop 
-	IL_2a16:  nop 
-	IL_2a17:  starg 1
-
-	IL_2a1b:  nop 
-	IL_2a1c:  nop 
-	IL_2a1d:  br IL_4c61
-
-	IL_2a22:  br IL_2a2c
+	IL_28f8:  br IL_2902
 
-	IL_2a27:  br IL_2a2c
-
-	IL_2a2c:  ldarg 1
-
-	IL_2a30:  nop 
-	IL_2a31:  nop 
-	IL_2a32:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2a37:  ldstr "char"
-	IL_2a3c:  call int32 string::Compare(string, string)
-	IL_2a41:  stloc 0
-
-	IL_2a45:  nop 
-	IL_2a46:  nop 
-	IL_2a47:  ldloc 0
-
-	IL_2a4b:  nop 
-	IL_2a4c:  nop 
-	IL_2a4d:  ldc.i4 0
-	IL_2a52:  beq IL_2a5c
-
-	IL_2a57:  br IL_2abe
-
-	IL_2a5c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.CharTok::'.ctor'()
-	IL_2a61:  stloc 86
-
-	IL_2a65:  nop 
-	IL_2a66:  nop 
-	IL_2a67:  ldloc 86
-
-	IL_2a6b:  nop 
-	IL_2a6c:  nop 
-	IL_2a6d:  ldarg 1
-
-	IL_2a71:  nop 
-	IL_2a72:  nop 
-	IL_2a73:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2a78:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2a7d:  ldloc 86
-
-	IL_2a81:  nop 
-	IL_2a82:  nop 
-	IL_2a83:  ldarg 1
-
-	IL_2a87:  nop 
-	IL_2a88:  nop 
-	IL_2a89:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2a8e:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2a93:  ldloc 86
-
-	IL_2a97:  nop 
-	IL_2a98:  nop 
-	IL_2a99:  ldtoken [mscorlib]System.Char
-	IL_2a9e:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2aa3:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_2aa8:  ldloc 86
-
-	IL_2aac:  nop 
-	IL_2aad:  nop 
-	IL_2aae:  starg 1
-
-	IL_2ab2:  nop 
-	IL_2ab3:  nop 
-	IL_2ab4:  br IL_4c61
-
-	IL_2ab9:  br IL_2ac3
-
-	IL_2abe:  br IL_2ac3
-
-	IL_2ac3:  ldarg 1
-
-	IL_2ac7:  nop 
-	IL_2ac8:  nop 
-	IL_2ac9:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2ace:  ldstr "single"
-	IL_2ad3:  call int32 string::Compare(string, string)
-	IL_2ad8:  stloc 0
-
-	IL_2adc:  nop 
-	IL_2add:  nop 
-	IL_2ade:  ldloc 0
-
-	IL_2ae2:  nop 
-	IL_2ae3:  nop 
-	IL_2ae4:  ldc.i4 0
-	IL_2ae9:  beq IL_2af3
-
-	IL_2aee:  br IL_2b55
-
-	IL_2af3:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.SingleTok::'.ctor'()
-	IL_2af8:  stloc 87
-
-	IL_2afc:  nop 
-	IL_2afd:  nop 
-	IL_2afe:  ldloc 87
-
-	IL_2b02:  nop 
-	IL_2b03:  nop 
-	IL_2b04:  ldarg 1
-
-	IL_2b08:  nop 
-	IL_2b09:  nop 
-	IL_2b0a:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2b0f:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2b14:  ldloc 87
-
-	IL_2b18:  nop 
-	IL_2b19:  nop 
-	IL_2b1a:  ldarg 1
-
-	IL_2b1e:  nop 
-	IL_2b1f:  nop 
-	IL_2b20:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2b25:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2b2a:  ldloc 87
-
-	IL_2b2e:  nop 
-	IL_2b2f:  nop 
-	IL_2b30:  ldtoken [mscorlib]System.Single
-	IL_2b35:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2b3a:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_2b3f:  ldloc 87
-
-	IL_2b43:  nop 
-	IL_2b44:  nop 
-	IL_2b45:  starg 1
-
-	IL_2b49:  nop 
-	IL_2b4a:  nop 
-	IL_2b4b:  br IL_4c61
-
-	IL_2b50:  br IL_2b5a
-
-	IL_2b55:  br IL_2b5a
-
-	IL_2b5a:  ldarg 1
-
-	IL_2b5e:  nop 
-	IL_2b5f:  nop 
-	IL_2b60:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2b65:  ldstr "sbyte"
-	IL_2b6a:  call int32 string::Compare(string, string)
-	IL_2b6f:  stloc 0
-
-	IL_2b73:  nop 
-	IL_2b74:  nop 
-	IL_2b75:  ldloc 0
-
-	IL_2b79:  nop 
-	IL_2b7a:  nop 
-	IL_2b7b:  ldc.i4 0
-	IL_2b80:  beq IL_2b8a
-
-	IL_2b85:  br IL_2bec
-
-	IL_2b8a:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.SByteTok::'.ctor'()
-	IL_2b8f:  stloc 88
-
-	IL_2b93:  nop 
-	IL_2b94:  nop 
-	IL_2b95:  ldloc 88
-
-	IL_2b99:  nop 
-	IL_2b9a:  nop 
-	IL_2b9b:  ldarg 1
-
-	IL_2b9f:  nop 
-	IL_2ba0:  nop 
-	IL_2ba1:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2ba6:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2bab:  ldloc 88
-
-	IL_2baf:  nop 
-	IL_2bb0:  nop 
-	IL_2bb1:  ldarg 1
-
-	IL_2bb5:  nop 
-	IL_2bb6:  nop 
-	IL_2bb7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2bbc:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2bc1:  ldloc 88
-
-	IL_2bc5:  nop 
-	IL_2bc6:  nop 
-	IL_2bc7:  ldtoken [mscorlib]System.SByte
-	IL_2bcc:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2bd1:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_2bd6:  ldloc 88
-
-	IL_2bda:  nop 
-	IL_2bdb:  nop 
-	IL_2bdc:  starg 1
-
-	IL_2be0:  nop 
-	IL_2be1:  nop 
-	IL_2be2:  br IL_4c61
-
-	IL_2be7:  br IL_2bf1
-
-	IL_2bec:  br IL_2bf1
-
-	IL_2bf1:  ldarg 1
-
-	IL_2bf5:  nop 
-	IL_2bf6:  nop 
-	IL_2bf7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2bfc:  ldstr "byte"
-	IL_2c01:  call int32 string::Compare(string, string)
-	IL_2c06:  stloc 0
-
-	IL_2c0a:  nop 
-	IL_2c0b:  nop 
-	IL_2c0c:  ldloc 0
-
-	IL_2c10:  nop 
-	IL_2c11:  nop 
-	IL_2c12:  ldc.i4 0
-	IL_2c17:  beq IL_2c21
-
-	IL_2c1c:  br IL_2c83
-
-	IL_2c21:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ByteTok::'.ctor'()
-	IL_2c26:  stloc 89
-
-	IL_2c2a:  nop 
-	IL_2c2b:  nop 
-	IL_2c2c:  ldloc 89
-
-	IL_2c30:  nop 
-	IL_2c31:  nop 
-	IL_2c32:  ldarg 1
-
-	IL_2c36:  nop 
-	IL_2c37:  nop 
-	IL_2c38:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2c3d:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2c42:  ldloc 89
-
-	IL_2c46:  nop 
-	IL_2c47:  nop 
-	IL_2c48:  ldarg 1
-
-	IL_2c4c:  nop 
-	IL_2c4d:  nop 
-	IL_2c4e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2c53:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2c58:  ldloc 89
-
-	IL_2c5c:  nop 
-	IL_2c5d:  nop 
-	IL_2c5e:  ldtoken [mscorlib]System.Byte
-	IL_2c63:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2c68:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_2c6d:  ldloc 89
-
-	IL_2c71:  nop 
-	IL_2c72:  nop 
-	IL_2c73:  starg 1
-
-	IL_2c77:  nop 
-	IL_2c78:  nop 
-	IL_2c79:  br IL_4c61
-
-	IL_2c7e:  br IL_2c88
-
-	IL_2c83:  br IL_2c88
-
-	IL_2c88:  ldarg 1
-
-	IL_2c8c:  nop 
-	IL_2c8d:  nop 
-	IL_2c8e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2c93:  ldstr "short"
-	IL_2c98:  call int32 string::Compare(string, string)
-	IL_2c9d:  stloc 0
-
-	IL_2ca1:  nop 
-	IL_2ca2:  nop 
-	IL_2ca3:  ldloc 0
-
-	IL_2ca7:  nop 
-	IL_2ca8:  nop 
-	IL_2ca9:  ldc.i4 0
-	IL_2cae:  beq IL_2cb8
-
-	IL_2cb3:  br IL_2d1a
-
-	IL_2cb8:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ShortTok::'.ctor'()
-	IL_2cbd:  stloc 90
-
-	IL_2cc1:  nop 
-	IL_2cc2:  nop 
-	IL_2cc3:  ldloc 90
-
-	IL_2cc7:  nop 
-	IL_2cc8:  nop 
-	IL_2cc9:  ldarg 1
-
-	IL_2ccd:  nop 
-	IL_2cce:  nop 
-	IL_2ccf:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2cd4:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2cd9:  ldloc 90
-
-	IL_2cdd:  nop 
-	IL_2cde:  nop 
-	IL_2cdf:  ldarg 1
-
-	IL_2ce3:  nop 
-	IL_2ce4:  nop 
-	IL_2ce5:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2cea:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2cef:  ldloc 90
-
-	IL_2cf3:  nop 
-	IL_2cf4:  nop 
-	IL_2cf5:  ldtoken [mscorlib]System.Int16
-	IL_2cfa:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2cff:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_2d04:  ldloc 90
-
-	IL_2d08:  nop 
-	IL_2d09:  nop 
-	IL_2d0a:  starg 1
-
-	IL_2d0e:  nop 
-	IL_2d0f:  nop 
-	IL_2d10:  br IL_4c61
-
-	IL_2d15:  br IL_2d1f
-
-	IL_2d1a:  br IL_2d1f
-
-	IL_2d1f:  ldarg 1
-
-	IL_2d23:  nop 
-	IL_2d24:  nop 
-	IL_2d25:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2d2a:  ldstr "ushort"
-	IL_2d2f:  call int32 string::Compare(string, string)
-	IL_2d34:  stloc 0
-
-	IL_2d38:  nop 
-	IL_2d39:  nop 
-	IL_2d3a:  ldloc 0
-
-	IL_2d3e:  nop 
-	IL_2d3f:  nop 
-	IL_2d40:  ldc.i4 0
-	IL_2d45:  beq IL_2d4f
-
-	IL_2d4a:  br IL_2db1
-
-	IL_2d4f:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.UShortTok::'.ctor'()
-	IL_2d54:  stloc 91
-
-	IL_2d58:  nop 
-	IL_2d59:  nop 
-	IL_2d5a:  ldloc 91
-
-	IL_2d5e:  nop 
-	IL_2d5f:  nop 
-	IL_2d60:  ldarg 1
-
-	IL_2d64:  nop 
-	IL_2d65:  nop 
-	IL_2d66:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2d6b:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2d70:  ldloc 91
-
-	IL_2d74:  nop 
-	IL_2d75:  nop 
-	IL_2d76:  ldarg 1
-
-	IL_2d7a:  nop 
-	IL_2d7b:  nop 
-	IL_2d7c:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2d81:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2d86:  ldloc 91
-
-	IL_2d8a:  nop 
-	IL_2d8b:  nop 
-	IL_2d8c:  ldtoken [mscorlib]System.UInt16
-	IL_2d91:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2d96:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_2d9b:  ldloc 91
-
-	IL_2d9f:  nop 
-	IL_2da0:  nop 
-	IL_2da1:  starg 1
-
-	IL_2da5:  nop 
-	IL_2da6:  nop 
-	IL_2da7:  br IL_4c61
-
-	IL_2dac:  br IL_2db6
-
-	IL_2db1:  br IL_2db6
-
-	IL_2db6:  ldarg 1
-
-	IL_2dba:  nop 
-	IL_2dbb:  nop 
-	IL_2dbc:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2dc1:  ldstr "long"
-	IL_2dc6:  call int32 string::Compare(string, string)
-	IL_2dcb:  stloc 0
-
-	IL_2dcf:  nop 
-	IL_2dd0:  nop 
-	IL_2dd1:  ldloc 0
-
-	IL_2dd5:  nop 
-	IL_2dd6:  nop 
-	IL_2dd7:  ldc.i4 0
-	IL_2ddc:  beq IL_2de6
-
-	IL_2de1:  br IL_2e48
-
-	IL_2de6:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.LongTok::'.ctor'()
-	IL_2deb:  stloc 92
-
-	IL_2def:  nop 
-	IL_2df0:  nop 
-	IL_2df1:  ldloc 92
-
-	IL_2df5:  nop 
-	IL_2df6:  nop 
-	IL_2df7:  ldarg 1
-
-	IL_2dfb:  nop 
-	IL_2dfc:  nop 
-	IL_2dfd:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2e02:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2e07:  ldloc 92
-
-	IL_2e0b:  nop 
-	IL_2e0c:  nop 
-	IL_2e0d:  ldarg 1
-
-	IL_2e11:  nop 
-	IL_2e12:  nop 
-	IL_2e13:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2e18:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2e1d:  ldloc 92
-
-	IL_2e21:  nop 
-	IL_2e22:  nop 
-	IL_2e23:  ldtoken [mscorlib]System.Int64
-	IL_2e28:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2e2d:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_2e32:  ldloc 92
-
-	IL_2e36:  nop 
-	IL_2e37:  nop 
-	IL_2e38:  starg 1
-
-	IL_2e3c:  nop 
-	IL_2e3d:  nop 
-	IL_2e3e:  br IL_4c61
-
-	IL_2e43:  br IL_2e4d
-
-	IL_2e48:  br IL_2e4d
-
-	IL_2e4d:  ldarg 1
-
-	IL_2e51:  nop 
-	IL_2e52:  nop 
-	IL_2e53:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2e58:  ldstr "ulong"
-	IL_2e5d:  call int32 string::Compare(string, string)
-	IL_2e62:  stloc 0
-
-	IL_2e66:  nop 
-	IL_2e67:  nop 
-	IL_2e68:  ldloc 0
-
-	IL_2e6c:  nop 
-	IL_2e6d:  nop 
-	IL_2e6e:  ldc.i4 0
-	IL_2e73:  beq IL_2e7d
-
-	IL_2e78:  br IL_2edf
-
-	IL_2e7d:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ULongTok::'.ctor'()
-	IL_2e82:  stloc 93
-
-	IL_2e86:  nop 
-	IL_2e87:  nop 
-	IL_2e88:  ldloc 93
-
-	IL_2e8c:  nop 
-	IL_2e8d:  nop 
-	IL_2e8e:  ldarg 1
-
-	IL_2e92:  nop 
-	IL_2e93:  nop 
-	IL_2e94:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2e99:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2e9e:  ldloc 93
-
-	IL_2ea2:  nop 
-	IL_2ea3:  nop 
-	IL_2ea4:  ldarg 1
-
-	IL_2ea8:  nop 
-	IL_2ea9:  nop 
-	IL_2eaa:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2eaf:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2eb4:  ldloc 93
-
-	IL_2eb8:  nop 
-	IL_2eb9:  nop 
-	IL_2eba:  ldtoken [mscorlib]System.UInt64
-	IL_2ebf:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2ec4:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_2ec9:  ldloc 93
-
-	IL_2ecd:  nop 
-	IL_2ece:  nop 
-	IL_2ecf:  starg 1
-
-	IL_2ed3:  nop 
-	IL_2ed4:  nop 
-	IL_2ed5:  br IL_4c61
-
-	IL_2eda:  br IL_2ee4
-
-	IL_2edf:  br IL_2ee4
-
-	IL_2ee4:  ldarg 1
-
-	IL_2ee8:  nop 
-	IL_2ee9:  nop 
-	IL_2eea:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2eef:  ldstr "object"
-	IL_2ef4:  call int32 string::Compare(string, string)
-	IL_2ef9:  stloc 0
-
-	IL_2efd:  nop 
-	IL_2efe:  nop 
-	IL_2eff:  ldloc 0
-
-	IL_2f03:  nop 
-	IL_2f04:  nop 
-	IL_2f05:  ldc.i4 0
-	IL_2f0a:  beq IL_2f14
-
-	IL_2f0f:  br IL_2f76
-
-	IL_2f14:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ObjectTok::'.ctor'()
-	IL_2f19:  stloc 94
-
-	IL_2f1d:  nop 
-	IL_2f1e:  nop 
-	IL_2f1f:  ldloc 94
-
-	IL_2f23:  nop 
-	IL_2f24:  nop 
-	IL_2f25:  ldarg 1
-
-	IL_2f29:  nop 
-	IL_2f2a:  nop 
-	IL_2f2b:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2f30:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2f35:  ldloc 94
-
-	IL_2f39:  nop 
-	IL_2f3a:  nop 
-	IL_2f3b:  ldarg 1
-
-	IL_2f3f:  nop 
-	IL_2f40:  nop 
-	IL_2f41:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2f46:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2f4b:  ldloc 94
-
-	IL_2f4f:  nop 
-	IL_2f50:  nop 
-	IL_2f51:  ldtoken [mscorlib]System.Object
-	IL_2f56:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2f5b:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
-	IL_2f60:  ldloc 94
-
-	IL_2f64:  nop 
-	IL_2f65:  nop 
-	IL_2f66:  starg 1
-
-	IL_2f6a:  nop 
-	IL_2f6b:  nop 
-	IL_2f6c:  br IL_4c61
-
-	IL_2f71:  br IL_2f7b
-
-	IL_2f76:  br IL_2f7b
-
-	IL_2f7b:  ldarg 1
-
-	IL_2f7f:  nop 
-	IL_2f80:  nop 
-	IL_2f81:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2f86:  ldstr "^//(.)*$"
-	IL_2f8b:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_2f90:  stloc 1
-
-	IL_2f94:  nop 
-	IL_2f95:  nop 
-	IL_2f96:  ldloc 1
-
-	IL_2f9a:  nop 
-	IL_2f9b:  nop 
-	IL_2f9c:  ldc.i4 1
-	IL_2fa1:  beq IL_2fab
-
-	IL_2fa6:  br IL_3002
-
-	IL_2fab:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.CommentTok::'.ctor'()
-	IL_2fb0:  stloc 95
-
-	IL_2fb4:  nop 
-	IL_2fb5:  nop 
-	IL_2fb6:  ldloc 95
-
-	IL_2fba:  nop 
-	IL_2fbb:  nop 
-	IL_2fbc:  ldarg 1
-
-	IL_2fc0:  nop 
-	IL_2fc1:  nop 
-	IL_2fc2:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2fc7:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_2fcc:  ldloc 95
-
-	IL_2fd0:  nop 
-	IL_2fd1:  nop 
-	IL_2fd2:  ldarg 1
-
-	IL_2fd6:  nop 
-	IL_2fd7:  nop 
-	IL_2fd8:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2fdd:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2fe2:  ldloc 95
-
-	IL_2fe6:  nop 
-	IL_2fe7:  nop 
-	IL_2fe8:  starg 1
-
-	IL_2fec:  nop 
-	IL_2fed:  nop 
-	IL_2fee:  ldc.i4 1
-	IL_2ff3:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::CmtFlag
-	IL_2ff8:  br IL_4c61
-
-	IL_2ffd:  br IL_3007
-
-	IL_3002:  br IL_3007
-
-	IL_3007:  ldarg 1
-
-	IL_300b:  nop 
-	IL_300c:  nop 
-	IL_300d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3012:  ldstr "null"
-	IL_3017:  call int32 string::Compare(string, string)
-	IL_301c:  stloc 0
-
-	IL_3020:  nop 
-	IL_3021:  nop 
-	IL_3022:  ldloc 0
-
-	IL_3026:  nop 
-	IL_3027:  nop 
-	IL_3028:  ldc.i4 0
-	IL_302d:  beq IL_3037
-
-	IL_3032:  br IL_3084
-
-	IL_3037:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral::'.ctor'()
-	IL_303c:  stloc 96
-
-	IL_3040:  nop 
-	IL_3041:  nop 
-	IL_3042:  ldloc 96
-
-	IL_3046:  nop 
-	IL_3047:  nop 
-	IL_3048:  ldarg 1
-
-	IL_304c:  nop 
-	IL_304d:  nop 
-	IL_304e:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3053:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3058:  ldloc 96
+	IL_28fd:  br IL_2902
 
+	IL_2902:  ldarg 1
+
+	IL_2906:  nop 
+	IL_2907:  nop 
+	IL_2908:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_290d:  ldstr "string"
+	IL_2912:  call int32 string::Compare(string, string)
+	IL_2917:  stloc 0
+
+	IL_291b:  nop 
+	IL_291c:  nop 
+	IL_291d:  ldloc 0
+
+	IL_2921:  nop 
+	IL_2922:  nop 
+	IL_2923:  ldc.i4 0
+	IL_2928:  beq IL_2932
+
+	IL_292d:  br IL_2994
+
+	IL_2932:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.StringTok::'.ctor'()
+	IL_2937:  stloc 85
+
+	IL_293b:  nop 
+	IL_293c:  nop 
+	IL_293d:  ldloc 85
+
+	IL_2941:  nop 
+	IL_2942:  nop 
+	IL_2943:  ldarg 1
+
+	IL_2947:  nop 
+	IL_2948:  nop 
+	IL_2949:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_294e:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2953:  ldloc 85
+
+	IL_2957:  nop 
+	IL_2958:  nop 
+	IL_2959:  ldarg 1
+
+	IL_295d:  nop 
+	IL_295e:  nop 
+	IL_295f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2964:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2969:  ldloc 85
+
+	IL_296d:  nop 
+	IL_296e:  nop 
+	IL_296f:  ldtoken [mscorlib]System.String
+	IL_2974:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2979:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_297e:  ldloc 85
+
+	IL_2982:  nop 
+	IL_2983:  nop 
+	IL_2984:  starg 1
+
+	IL_2988:  nop 
+	IL_2989:  nop 
+	IL_298a:  br IL_4fef
+
+	IL_298f:  br IL_2999
+
+	IL_2994:  br IL_2999
+
+	IL_2999:  ldarg 1
+
+	IL_299d:  nop 
+	IL_299e:  nop 
+	IL_299f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_29a4:  ldstr "void"
+	IL_29a9:  call int32 string::Compare(string, string)
+	IL_29ae:  stloc 0
+
+	IL_29b2:  nop 
+	IL_29b3:  nop 
+	IL_29b4:  ldloc 0
+
+	IL_29b8:  nop 
+	IL_29b9:  nop 
+	IL_29ba:  ldc.i4 0
+	IL_29bf:  beq IL_29c9
+
+	IL_29c4:  br IL_2a2b
+
+	IL_29c9:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.VoidTok::'.ctor'()
+	IL_29ce:  stloc 86
+
+	IL_29d2:  nop 
+	IL_29d3:  nop 
+	IL_29d4:  ldloc 86
+
+	IL_29d8:  nop 
+	IL_29d9:  nop 
+	IL_29da:  ldarg 1
+
+	IL_29de:  nop 
+	IL_29df:  nop 
+	IL_29e0:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_29e5:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_29ea:  ldloc 86
+
+	IL_29ee:  nop 
+	IL_29ef:  nop 
+	IL_29f0:  ldarg 1
+
+	IL_29f4:  nop 
+	IL_29f5:  nop 
+	IL_29f6:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_29fb:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2a00:  ldloc 86
+
+	IL_2a04:  nop 
+	IL_2a05:  nop 
+	IL_2a06:  ldtoken [mscorlib]System.Void
+	IL_2a0b:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2a10:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_2a15:  ldloc 86
+
+	IL_2a19:  nop 
+	IL_2a1a:  nop 
+	IL_2a1b:  starg 1
+
+	IL_2a1f:  nop 
+	IL_2a20:  nop 
+	IL_2a21:  br IL_4fef
+
+	IL_2a26:  br IL_2a30
+
+	IL_2a2b:  br IL_2a30
+
+	IL_2a30:  ldarg 1
+
+	IL_2a34:  nop 
+	IL_2a35:  nop 
+	IL_2a36:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2a3b:  ldstr "decimal"
+	IL_2a40:  call int32 string::Compare(string, string)
+	IL_2a45:  stloc 0
+
+	IL_2a49:  nop 
+	IL_2a4a:  nop 
+	IL_2a4b:  ldloc 0
+
+	IL_2a4f:  nop 
+	IL_2a50:  nop 
+	IL_2a51:  ldc.i4 0
+	IL_2a56:  beq IL_2a60
+
+	IL_2a5b:  br IL_2ac2
+
+	IL_2a60:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.DecimalTok::'.ctor'()
+	IL_2a65:  stloc 87
+
+	IL_2a69:  nop 
+	IL_2a6a:  nop 
+	IL_2a6b:  ldloc 87
+
+	IL_2a6f:  nop 
+	IL_2a70:  nop 
+	IL_2a71:  ldarg 1
+
+	IL_2a75:  nop 
+	IL_2a76:  nop 
+	IL_2a77:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2a7c:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2a81:  ldloc 87
+
+	IL_2a85:  nop 
+	IL_2a86:  nop 
+	IL_2a87:  ldarg 1
+
+	IL_2a8b:  nop 
+	IL_2a8c:  nop 
+	IL_2a8d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2a92:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2a97:  ldloc 87
+
+	IL_2a9b:  nop 
+	IL_2a9c:  nop 
+	IL_2a9d:  ldtoken [mscorlib]System.Decimal
+	IL_2aa2:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2aa7:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_2aac:  ldloc 87
+
+	IL_2ab0:  nop 
+	IL_2ab1:  nop 
+	IL_2ab2:  starg 1
+
+	IL_2ab6:  nop 
+	IL_2ab7:  nop 
+	IL_2ab8:  br IL_4fef
+
+	IL_2abd:  br IL_2ac7
+
+	IL_2ac2:  br IL_2ac7
+
+	IL_2ac7:  ldarg 1
+
+	IL_2acb:  nop 
+	IL_2acc:  nop 
+	IL_2acd:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2ad2:  ldstr "integer"
+	IL_2ad7:  call int32 string::Compare(string, string)
+	IL_2adc:  stloc 0
+
+	IL_2ae0:  nop 
+	IL_2ae1:  nop 
+	IL_2ae2:  ldloc 0
+
+	IL_2ae6:  nop 
+	IL_2ae7:  nop 
+	IL_2ae8:  ldc.i4 0
+	IL_2aed:  beq IL_2af7
+
+	IL_2af2:  br IL_2b59
+
+	IL_2af7:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntegerTok::'.ctor'()
+	IL_2afc:  stloc 88
+
+	IL_2b00:  nop 
+	IL_2b01:  nop 
+	IL_2b02:  ldloc 88
+
+	IL_2b06:  nop 
+	IL_2b07:  nop 
+	IL_2b08:  ldarg 1
+
+	IL_2b0c:  nop 
+	IL_2b0d:  nop 
+	IL_2b0e:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2b13:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2b18:  ldloc 88
+
+	IL_2b1c:  nop 
+	IL_2b1d:  nop 
+	IL_2b1e:  ldarg 1
+
+	IL_2b22:  nop 
+	IL_2b23:  nop 
+	IL_2b24:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2b29:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2b2e:  ldloc 88
+
+	IL_2b32:  nop 
+	IL_2b33:  nop 
+	IL_2b34:  ldtoken [mscorlib]System.Int32
+	IL_2b39:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2b3e:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_2b43:  ldloc 88
+
+	IL_2b47:  nop 
+	IL_2b48:  nop 
+	IL_2b49:  starg 1
+
+	IL_2b4d:  nop 
+	IL_2b4e:  nop 
+	IL_2b4f:  br IL_4fef
+
+	IL_2b54:  br IL_2b5e
+
+	IL_2b59:  br IL_2b5e
+
+	IL_2b5e:  ldarg 1
+
+	IL_2b62:  nop 
+	IL_2b63:  nop 
+	IL_2b64:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2b69:  ldstr "intptr"
+	IL_2b6e:  call int32 string::Compare(string, string)
+	IL_2b73:  stloc 0
+
+	IL_2b77:  nop 
+	IL_2b78:  nop 
+	IL_2b79:  ldloc 0
+
+	IL_2b7d:  nop 
+	IL_2b7e:  nop 
+	IL_2b7f:  ldc.i4 0
+	IL_2b84:  beq IL_2b8e
+
+	IL_2b89:  br IL_2bf0
+
+	IL_2b8e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntPtrTok::'.ctor'()
+	IL_2b93:  stloc 89
+
+	IL_2b97:  nop 
+	IL_2b98:  nop 
+	IL_2b99:  ldloc 89
+
+	IL_2b9d:  nop 
+	IL_2b9e:  nop 
+	IL_2b9f:  ldarg 1
+
+	IL_2ba3:  nop 
+	IL_2ba4:  nop 
+	IL_2ba5:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2baa:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2baf:  ldloc 89
+
+	IL_2bb3:  nop 
+	IL_2bb4:  nop 
+	IL_2bb5:  ldarg 1
+
+	IL_2bb9:  nop 
+	IL_2bba:  nop 
+	IL_2bbb:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2bc0:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2bc5:  ldloc 89
+
+	IL_2bc9:  nop 
+	IL_2bca:  nop 
+	IL_2bcb:  ldtoken [mscorlib]System.IntPtr
+	IL_2bd0:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2bd5:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_2bda:  ldloc 89
+
+	IL_2bde:  nop 
+	IL_2bdf:  nop 
+	IL_2be0:  starg 1
+
+	IL_2be4:  nop 
+	IL_2be5:  nop 
+	IL_2be6:  br IL_4fef
+
+	IL_2beb:  br IL_2bf5
+
+	IL_2bf0:  br IL_2bf5
+
+	IL_2bf5:  ldarg 1
+
+	IL_2bf9:  nop 
+	IL_2bfa:  nop 
+	IL_2bfb:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2c00:  ldstr "uinteger"
+	IL_2c05:  call int32 string::Compare(string, string)
+	IL_2c0a:  stloc 0
+
+	IL_2c0e:  nop 
+	IL_2c0f:  nop 
+	IL_2c10:  ldloc 0
+
+	IL_2c14:  nop 
+	IL_2c15:  nop 
+	IL_2c16:  ldc.i4 0
+	IL_2c1b:  beq IL_2c25
+
+	IL_2c20:  br IL_2c87
+
+	IL_2c25:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.UIntegerTok::'.ctor'()
+	IL_2c2a:  stloc 90
+
+	IL_2c2e:  nop 
+	IL_2c2f:  nop 
+	IL_2c30:  ldloc 90
+
+	IL_2c34:  nop 
+	IL_2c35:  nop 
+	IL_2c36:  ldarg 1
+
+	IL_2c3a:  nop 
+	IL_2c3b:  nop 
+	IL_2c3c:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2c41:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2c46:  ldloc 90
+
+	IL_2c4a:  nop 
+	IL_2c4b:  nop 
+	IL_2c4c:  ldarg 1
+
+	IL_2c50:  nop 
+	IL_2c51:  nop 
+	IL_2c52:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2c57:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2c5c:  ldloc 90
+
+	IL_2c60:  nop 
+	IL_2c61:  nop 
+	IL_2c62:  ldtoken [mscorlib]System.UInt32
+	IL_2c67:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2c6c:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_2c71:  ldloc 90
+
+	IL_2c75:  nop 
+	IL_2c76:  nop 
+	IL_2c77:  starg 1
+
+	IL_2c7b:  nop 
+	IL_2c7c:  nop 
+	IL_2c7d:  br IL_4fef
+
+	IL_2c82:  br IL_2c8c
+
+	IL_2c87:  br IL_2c8c
+
+	IL_2c8c:  ldarg 1
+
+	IL_2c90:  nop 
+	IL_2c91:  nop 
+	IL_2c92:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2c97:  ldstr "double"
+	IL_2c9c:  call int32 string::Compare(string, string)
+	IL_2ca1:  stloc 0
+
+	IL_2ca5:  nop 
+	IL_2ca6:  nop 
+	IL_2ca7:  ldloc 0
+
+	IL_2cab:  nop 
+	IL_2cac:  nop 
+	IL_2cad:  ldc.i4 0
+	IL_2cb2:  beq IL_2cbc
+
+	IL_2cb7:  br IL_2d1e
+
+	IL_2cbc:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.DoubleTok::'.ctor'()
+	IL_2cc1:  stloc 91
+
+	IL_2cc5:  nop 
+	IL_2cc6:  nop 
+	IL_2cc7:  ldloc 91
+
+	IL_2ccb:  nop 
+	IL_2ccc:  nop 
+	IL_2ccd:  ldarg 1
+
+	IL_2cd1:  nop 
+	IL_2cd2:  nop 
+	IL_2cd3:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2cd8:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2cdd:  ldloc 91
+
+	IL_2ce1:  nop 
+	IL_2ce2:  nop 
+	IL_2ce3:  ldarg 1
+
+	IL_2ce7:  nop 
+	IL_2ce8:  nop 
+	IL_2ce9:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2cee:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2cf3:  ldloc 91
+
+	IL_2cf7:  nop 
+	IL_2cf8:  nop 
+	IL_2cf9:  ldtoken [mscorlib]System.Double
+	IL_2cfe:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2d03:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_2d08:  ldloc 91
+
+	IL_2d0c:  nop 
+	IL_2d0d:  nop 
+	IL_2d0e:  starg 1
+
+	IL_2d12:  nop 
+	IL_2d13:  nop 
+	IL_2d14:  br IL_4fef
+
+	IL_2d19:  br IL_2d23
+
+	IL_2d1e:  br IL_2d23
+
+	IL_2d23:  ldarg 1
+
+	IL_2d27:  nop 
+	IL_2d28:  nop 
+	IL_2d29:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2d2e:  ldstr "boolean"
+	IL_2d33:  call int32 string::Compare(string, string)
+	IL_2d38:  stloc 0
+
+	IL_2d3c:  nop 
+	IL_2d3d:  nop 
+	IL_2d3e:  ldloc 0
+
+	IL_2d42:  nop 
+	IL_2d43:  nop 
+	IL_2d44:  ldc.i4 0
+	IL_2d49:  beq IL_2d53
+
+	IL_2d4e:  br IL_2db5
+
+	IL_2d53:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.BooleanTok::'.ctor'()
+	IL_2d58:  stloc 92
+
+	IL_2d5c:  nop 
+	IL_2d5d:  nop 
+	IL_2d5e:  ldloc 92
+
+	IL_2d62:  nop 
+	IL_2d63:  nop 
+	IL_2d64:  ldarg 1
+
+	IL_2d68:  nop 
+	IL_2d69:  nop 
+	IL_2d6a:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2d6f:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2d74:  ldloc 92
+
+	IL_2d78:  nop 
+	IL_2d79:  nop 
+	IL_2d7a:  ldarg 1
+
+	IL_2d7e:  nop 
+	IL_2d7f:  nop 
+	IL_2d80:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2d85:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2d8a:  ldloc 92
+
+	IL_2d8e:  nop 
+	IL_2d8f:  nop 
+	IL_2d90:  ldtoken [mscorlib]System.Boolean
+	IL_2d95:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2d9a:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_2d9f:  ldloc 92
+
+	IL_2da3:  nop 
+	IL_2da4:  nop 
+	IL_2da5:  starg 1
+
+	IL_2da9:  nop 
+	IL_2daa:  nop 
+	IL_2dab:  br IL_4fef
+
+	IL_2db0:  br IL_2dba
+
+	IL_2db5:  br IL_2dba
+
+	IL_2dba:  ldarg 1
+
+	IL_2dbe:  nop 
+	IL_2dbf:  nop 
+	IL_2dc0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2dc5:  ldstr "char"
+	IL_2dca:  call int32 string::Compare(string, string)
+	IL_2dcf:  stloc 0
+
+	IL_2dd3:  nop 
+	IL_2dd4:  nop 
+	IL_2dd5:  ldloc 0
+
+	IL_2dd9:  nop 
+	IL_2dda:  nop 
+	IL_2ddb:  ldc.i4 0
+	IL_2de0:  beq IL_2dea
+
+	IL_2de5:  br IL_2e4c
+
+	IL_2dea:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.CharTok::'.ctor'()
+	IL_2def:  stloc 93
+
+	IL_2df3:  nop 
+	IL_2df4:  nop 
+	IL_2df5:  ldloc 93
+
+	IL_2df9:  nop 
+	IL_2dfa:  nop 
+	IL_2dfb:  ldarg 1
+
+	IL_2dff:  nop 
+	IL_2e00:  nop 
+	IL_2e01:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2e06:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2e0b:  ldloc 93
+
+	IL_2e0f:  nop 
+	IL_2e10:  nop 
+	IL_2e11:  ldarg 1
+
+	IL_2e15:  nop 
+	IL_2e16:  nop 
+	IL_2e17:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2e1c:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2e21:  ldloc 93
+
+	IL_2e25:  nop 
+	IL_2e26:  nop 
+	IL_2e27:  ldtoken [mscorlib]System.Char
+	IL_2e2c:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2e31:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_2e36:  ldloc 93
+
+	IL_2e3a:  nop 
+	IL_2e3b:  nop 
+	IL_2e3c:  starg 1
+
+	IL_2e40:  nop 
+	IL_2e41:  nop 
+	IL_2e42:  br IL_4fef
+
+	IL_2e47:  br IL_2e51
+
+	IL_2e4c:  br IL_2e51
+
+	IL_2e51:  ldarg 1
+
+	IL_2e55:  nop 
+	IL_2e56:  nop 
+	IL_2e57:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2e5c:  ldstr "single"
+	IL_2e61:  call int32 string::Compare(string, string)
+	IL_2e66:  stloc 0
+
+	IL_2e6a:  nop 
+	IL_2e6b:  nop 
+	IL_2e6c:  ldloc 0
+
+	IL_2e70:  nop 
+	IL_2e71:  nop 
+	IL_2e72:  ldc.i4 0
+	IL_2e77:  beq IL_2e81
+
+	IL_2e7c:  br IL_2ee3
+
+	IL_2e81:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.SingleTok::'.ctor'()
+	IL_2e86:  stloc 94
+
+	IL_2e8a:  nop 
+	IL_2e8b:  nop 
+	IL_2e8c:  ldloc 94
+
+	IL_2e90:  nop 
+	IL_2e91:  nop 
+	IL_2e92:  ldarg 1
+
+	IL_2e96:  nop 
+	IL_2e97:  nop 
+	IL_2e98:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2e9d:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2ea2:  ldloc 94
+
+	IL_2ea6:  nop 
+	IL_2ea7:  nop 
+	IL_2ea8:  ldarg 1
+
+	IL_2eac:  nop 
+	IL_2ead:  nop 
+	IL_2eae:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2eb3:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2eb8:  ldloc 94
+
+	IL_2ebc:  nop 
+	IL_2ebd:  nop 
+	IL_2ebe:  ldtoken [mscorlib]System.Single
+	IL_2ec3:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2ec8:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_2ecd:  ldloc 94
+
+	IL_2ed1:  nop 
+	IL_2ed2:  nop 
+	IL_2ed3:  starg 1
+
+	IL_2ed7:  nop 
+	IL_2ed8:  nop 
+	IL_2ed9:  br IL_4fef
+
+	IL_2ede:  br IL_2ee8
+
+	IL_2ee3:  br IL_2ee8
+
+	IL_2ee8:  ldarg 1
+
+	IL_2eec:  nop 
+	IL_2eed:  nop 
+	IL_2eee:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2ef3:  ldstr "sbyte"
+	IL_2ef8:  call int32 string::Compare(string, string)
+	IL_2efd:  stloc 0
+
+	IL_2f01:  nop 
+	IL_2f02:  nop 
+	IL_2f03:  ldloc 0
+
+	IL_2f07:  nop 
+	IL_2f08:  nop 
+	IL_2f09:  ldc.i4 0
+	IL_2f0e:  beq IL_2f18
+
+	IL_2f13:  br IL_2f7a
+
+	IL_2f18:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.SByteTok::'.ctor'()
+	IL_2f1d:  stloc 95
+
+	IL_2f21:  nop 
+	IL_2f22:  nop 
+	IL_2f23:  ldloc 95
+
+	IL_2f27:  nop 
+	IL_2f28:  nop 
+	IL_2f29:  ldarg 1
+
+	IL_2f2d:  nop 
+	IL_2f2e:  nop 
+	IL_2f2f:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2f34:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2f39:  ldloc 95
+
+	IL_2f3d:  nop 
+	IL_2f3e:  nop 
+	IL_2f3f:  ldarg 1
+
+	IL_2f43:  nop 
+	IL_2f44:  nop 
+	IL_2f45:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2f4a:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2f4f:  ldloc 95
+
+	IL_2f53:  nop 
+	IL_2f54:  nop 
+	IL_2f55:  ldtoken [mscorlib]System.SByte
+	IL_2f5a:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2f5f:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_2f64:  ldloc 95
+
+	IL_2f68:  nop 
+	IL_2f69:  nop 
+	IL_2f6a:  starg 1
+
+	IL_2f6e:  nop 
+	IL_2f6f:  nop 
+	IL_2f70:  br IL_4fef
+
+	IL_2f75:  br IL_2f7f
+
+	IL_2f7a:  br IL_2f7f
+
+	IL_2f7f:  ldarg 1
+
+	IL_2f83:  nop 
+	IL_2f84:  nop 
+	IL_2f85:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2f8a:  ldstr "byte"
+	IL_2f8f:  call int32 string::Compare(string, string)
+	IL_2f94:  stloc 0
+
+	IL_2f98:  nop 
+	IL_2f99:  nop 
+	IL_2f9a:  ldloc 0
+
+	IL_2f9e:  nop 
+	IL_2f9f:  nop 
+	IL_2fa0:  ldc.i4 0
+	IL_2fa5:  beq IL_2faf
+
+	IL_2faa:  br IL_3011
+
+	IL_2faf:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ByteTok::'.ctor'()
+	IL_2fb4:  stloc 96
+
+	IL_2fb8:  nop 
+	IL_2fb9:  nop 
+	IL_2fba:  ldloc 96
+
+	IL_2fbe:  nop 
+	IL_2fbf:  nop 
+	IL_2fc0:  ldarg 1
+
+	IL_2fc4:  nop 
+	IL_2fc5:  nop 
+	IL_2fc6:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2fcb:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_2fd0:  ldloc 96
+
+	IL_2fd4:  nop 
+	IL_2fd5:  nop 
+	IL_2fd6:  ldarg 1
+
+	IL_2fda:  nop 
+	IL_2fdb:  nop 
+	IL_2fdc:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2fe1:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2fe6:  ldloc 96
+
+	IL_2fea:  nop 
+	IL_2feb:  nop 
+	IL_2fec:  ldtoken [mscorlib]System.Byte
+	IL_2ff1:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2ff6:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_2ffb:  ldloc 96
+
+	IL_2fff:  nop 
+	IL_3000:  nop 
+	IL_3001:  starg 1
+
+	IL_3005:  nop 
+	IL_3006:  nop 
+	IL_3007:  br IL_4fef
+
+	IL_300c:  br IL_3016
+
+	IL_3011:  br IL_3016
+
+	IL_3016:  ldarg 1
+
+	IL_301a:  nop 
+	IL_301b:  nop 
+	IL_301c:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3021:  ldstr "short"
+	IL_3026:  call int32 string::Compare(string, string)
+	IL_302b:  stloc 0
+
+	IL_302f:  nop 
+	IL_3030:  nop 
+	IL_3031:  ldloc 0
+
+	IL_3035:  nop 
+	IL_3036:  nop 
+	IL_3037:  ldc.i4 0
+	IL_303c:  beq IL_3046
+
+	IL_3041:  br IL_30a8
+
+	IL_3046:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ShortTok::'.ctor'()
+	IL_304b:  stloc 97
+
+	IL_304f:  nop 
+	IL_3050:  nop 
+	IL_3051:  ldloc 97
+
+	IL_3055:  nop 
+	IL_3056:  nop 
+	IL_3057:  ldarg 1
+
+	IL_305b:  nop 
 	IL_305c:  nop 
-	IL_305d:  nop 
-	IL_305e:  ldarg 1
+	IL_305d:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3062:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3067:  ldloc 97
 
-	IL_3062:  nop 
-	IL_3063:  nop 
-	IL_3064:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3069:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_306e:  ldloc 96
+	IL_306b:  nop 
+	IL_306c:  nop 
+	IL_306d:  ldarg 1
 
+	IL_3071:  nop 
 	IL_3072:  nop 
-	IL_3073:  nop 
-	IL_3074:  starg 1
+	IL_3073:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3078:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_307d:  ldloc 97
 
-	IL_3078:  nop 
-	IL_3079:  nop 
-	IL_307a:  br IL_4c61
+	IL_3081:  nop 
+	IL_3082:  nop 
+	IL_3083:  ldtoken [mscorlib]System.Int16
+	IL_3088:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_308d:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_3092:  ldloc 97
 
-	IL_307f:  br IL_3089
+	IL_3096:  nop 
+	IL_3097:  nop 
+	IL_3098:  starg 1
 
-	IL_3084:  br IL_3089
+	IL_309c:  nop 
+	IL_309d:  nop 
+	IL_309e:  br IL_4fef
 
-	IL_3089:  ldarg 1
+	IL_30a3:  br IL_30ad
 
-	IL_308d:  nop 
-	IL_308e:  nop 
-	IL_308f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3094:  ldstr "true"
-	IL_3099:  call int32 string::Compare(string, string)
-	IL_309e:  stloc 0
+	IL_30a8:  br IL_30ad
 
-	IL_30a2:  nop 
-	IL_30a3:  nop 
-	IL_30a4:  ldloc 0
+	IL_30ad:  ldarg 1
 
-	IL_30a8:  nop 
-	IL_30a9:  nop 
-	IL_30aa:  ldc.i4 0
-	IL_30af:  beq IL_30b9
+	IL_30b1:  nop 
+	IL_30b2:  nop 
+	IL_30b3:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_30b8:  ldstr "ushort"
+	IL_30bd:  call int32 string::Compare(string, string)
+	IL_30c2:  stloc 0
 
-	IL_30b4:  br IL_30c9
+	IL_30c6:  nop 
+	IL_30c7:  nop 
+	IL_30c8:  ldloc 0
 
-	IL_30b9:  ldc.i4 1
-	IL_30be:  stloc 1
+	IL_30cc:  nop 
+	IL_30cd:  nop 
+	IL_30ce:  ldc.i4 0
+	IL_30d3:  beq IL_30dd
 
-	IL_30c2:  nop 
-	IL_30c3:  nop 
-	IL_30c4:  br IL_30ce
+	IL_30d8:  br IL_313f
 
-	IL_30c9:  br IL_30ce
+	IL_30dd:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.UShortTok::'.ctor'()
+	IL_30e2:  stloc 98
 
-	IL_30ce:  ldloc 1
+	IL_30e6:  nop 
+	IL_30e7:  nop 
+	IL_30e8:  ldloc 98
 
-	IL_30d2:  nop 
-	IL_30d3:  nop 
-	IL_30d4:  stloc 4
+	IL_30ec:  nop 
+	IL_30ed:  nop 
+	IL_30ee:  ldarg 1
 
-	IL_30d8:  nop 
-	IL_30d9:  nop 
-	IL_30da:  ldarg 1
-
-	IL_30de:  nop 
-	IL_30df:  nop 
-	IL_30e0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_30e5:  ldstr "false"
-	IL_30ea:  call int32 string::Compare(string, string)
-	IL_30ef:  stloc 0
-
+	IL_30f2:  nop 
 	IL_30f3:  nop 
-	IL_30f4:  nop 
-	IL_30f5:  ldloc 0
+	IL_30f4:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_30f9:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_30fe:  ldloc 98
 
-	IL_30f9:  nop 
-	IL_30fa:  nop 
-	IL_30fb:  ldc.i4 0
-	IL_3100:  beq IL_310a
+	IL_3102:  nop 
+	IL_3103:  nop 
+	IL_3104:  ldarg 1
 
-	IL_3105:  br IL_311a
+	IL_3108:  nop 
+	IL_3109:  nop 
+	IL_310a:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_310f:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3114:  ldloc 98
 
-	IL_310a:  ldc.i4 1
-	IL_310f:  stloc 1
+	IL_3118:  nop 
+	IL_3119:  nop 
+	IL_311a:  ldtoken [mscorlib]System.UInt16
+	IL_311f:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_3124:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_3129:  ldloc 98
 
-	IL_3113:  nop 
-	IL_3114:  nop 
-	IL_3115:  br IL_311f
+	IL_312d:  nop 
+	IL_312e:  nop 
+	IL_312f:  starg 1
 
-	IL_311a:  br IL_311f
+	IL_3133:  nop 
+	IL_3134:  nop 
+	IL_3135:  br IL_4fef
 
-	IL_311f:  ldloc 4
+	IL_313a:  br IL_3144
 
-	IL_3123:  nop 
-	IL_3124:  nop 
-	IL_3125:  ldloc 1
+	IL_313f:  br IL_3144
 
-	IL_3129:  nop 
-	IL_312a:  nop 
-	IL_312b:  or 
-	IL_312c:  stloc 4
+	IL_3144:  ldarg 1
 
-	IL_3130:  nop 
-	IL_3131:  nop 
-	IL_3132:  ldloc 1
+	IL_3148:  nop 
+	IL_3149:  nop 
+	IL_314a:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_314f:  ldstr "long"
+	IL_3154:  call int32 string::Compare(string, string)
+	IL_3159:  stloc 0
 
-	IL_3136:  nop 
-	IL_3137:  nop 
-	IL_3138:  ldc.i4 1
-	IL_313d:  beq IL_3147
-
-	IL_3142:  br IL_3228
-
-	IL_3147:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral::'.ctor'()
-	IL_314c:  stloc 97
-
-	IL_3150:  nop 
-	IL_3151:  nop 
-	IL_3152:  ldloc 97
-
-	IL_3156:  nop 
-	IL_3157:  nop 
-	IL_3158:  ldarg 1
-
-	IL_315c:  nop 
 	IL_315d:  nop 
-	IL_315e:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3163:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3168:  ldloc 97
+	IL_315e:  nop 
+	IL_315f:  ldloc 0
 
-	IL_316c:  nop 
-	IL_316d:  nop 
-	IL_316e:  ldarg 1
+	IL_3163:  nop 
+	IL_3164:  nop 
+	IL_3165:  ldc.i4 0
+	IL_316a:  beq IL_3174
 
-	IL_3172:  nop 
-	IL_3173:  nop 
-	IL_3174:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3179:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_317e:  ldarg 1
+	IL_316f:  br IL_31d6
 
-	IL_3182:  nop 
+	IL_3174:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.LongTok::'.ctor'()
+	IL_3179:  stloc 99
+
+	IL_317d:  nop 
+	IL_317e:  nop 
+	IL_317f:  ldloc 99
+
 	IL_3183:  nop 
-	IL_3184:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3189:  ldstr "true"
-	IL_318e:  call int32 string::Compare(string, string)
-	IL_3193:  stloc 0
+	IL_3184:  nop 
+	IL_3185:  ldarg 1
 
-	IL_3197:  nop 
-	IL_3198:  nop 
-	IL_3199:  ldloc 0
+	IL_3189:  nop 
+	IL_318a:  nop 
+	IL_318b:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3190:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3195:  ldloc 99
 
-	IL_319d:  nop 
-	IL_319e:  nop 
-	IL_319f:  ldc.i4 0
-	IL_31a4:  beq IL_31ae
+	IL_3199:  nop 
+	IL_319a:  nop 
+	IL_319b:  ldarg 1
 
-	IL_31a9:  br IL_31c3
+	IL_319f:  nop 
+	IL_31a0:  nop 
+	IL_31a1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_31a6:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_31ab:  ldloc 99
 
-	IL_31ae:  ldloc 97
+	IL_31af:  nop 
+	IL_31b0:  nop 
+	IL_31b1:  ldtoken [mscorlib]System.Int64
+	IL_31b6:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_31bb:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_31c0:  ldloc 99
 
-	IL_31b2:  nop 
-	IL_31b3:  nop 
-	IL_31b4:  ldc.i4 1
-	IL_31b9:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral::BoolVal
-	IL_31be:  br IL_31c8
+	IL_31c4:  nop 
+	IL_31c5:  nop 
+	IL_31c6:  starg 1
 
-	IL_31c3:  br IL_31c8
+	IL_31ca:  nop 
+	IL_31cb:  nop 
+	IL_31cc:  br IL_4fef
 
-	IL_31c8:  ldarg 1
+	IL_31d1:  br IL_31db
 
-	IL_31cc:  nop 
-	IL_31cd:  nop 
-	IL_31ce:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_31d3:  ldstr "false"
-	IL_31d8:  call int32 string::Compare(string, string)
-	IL_31dd:  stloc 0
+	IL_31d6:  br IL_31db
 
-	IL_31e1:  nop 
-	IL_31e2:  nop 
-	IL_31e3:  ldloc 0
+	IL_31db:  ldarg 1
 
-	IL_31e7:  nop 
-	IL_31e8:  nop 
-	IL_31e9:  ldc.i4 0
-	IL_31ee:  beq IL_31f8
+	IL_31df:  nop 
+	IL_31e0:  nop 
+	IL_31e1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_31e6:  ldstr "ulong"
+	IL_31eb:  call int32 string::Compare(string, string)
+	IL_31f0:  stloc 0
 
-	IL_31f3:  br IL_320d
+	IL_31f4:  nop 
+	IL_31f5:  nop 
+	IL_31f6:  ldloc 0
 
-	IL_31f8:  ldloc 97
+	IL_31fa:  nop 
+	IL_31fb:  nop 
+	IL_31fc:  ldc.i4 0
+	IL_3201:  beq IL_320b
 
-	IL_31fc:  nop 
-	IL_31fd:  nop 
-	IL_31fe:  ldc.i4 0
-	IL_3203:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral::BoolVal
-	IL_3208:  br IL_3212
+	IL_3206:  br IL_326d
 
-	IL_320d:  br IL_3212
+	IL_320b:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ULongTok::'.ctor'()
+	IL_3210:  stloc 100
 
-	IL_3212:  ldloc 97
+	IL_3214:  nop 
+	IL_3215:  nop 
+	IL_3216:  ldloc 100
 
-	IL_3216:  nop 
-	IL_3217:  nop 
-	IL_3218:  starg 1
+	IL_321a:  nop 
+	IL_321b:  nop 
+	IL_321c:  ldarg 1
 
-	IL_321c:  nop 
-	IL_321d:  nop 
-	IL_321e:  br IL_4c61
+	IL_3220:  nop 
+	IL_3221:  nop 
+	IL_3222:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3227:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_322c:  ldloc 100
 
-	IL_3223:  br IL_322d
-
-	IL_3228:  br IL_322d
-
-	IL_322d:  ldarg 1
-
+	IL_3230:  nop 
 	IL_3231:  nop 
-	IL_3232:  nop 
-	IL_3233:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3238:  ldstr "^'(.)*'$"
-	IL_323d:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3242:  stloc 1
+	IL_3232:  ldarg 1
+
+	IL_3236:  nop 
+	IL_3237:  nop 
+	IL_3238:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_323d:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3242:  ldloc 100
 
 	IL_3246:  nop 
 	IL_3247:  nop 
-	IL_3248:  ldloc 1
+	IL_3248:  ldtoken [mscorlib]System.UInt64
+	IL_324d:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_3252:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_3257:  ldloc 100
 
-	IL_324c:  nop 
-	IL_324d:  nop 
-	IL_324e:  ldc.i4 1
-	IL_3253:  beq IL_325d
+	IL_325b:  nop 
+	IL_325c:  nop 
+	IL_325d:  starg 1
 
-	IL_3258:  br IL_3314
+	IL_3261:  nop 
+	IL_3262:  nop 
+	IL_3263:  br IL_4fef
 
-	IL_325d:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral::'.ctor'()
-	IL_3262:  stloc 98
+	IL_3268:  br IL_3272
 
-	IL_3266:  nop 
-	IL_3267:  nop 
-	IL_3268:  ldloc 98
+	IL_326d:  br IL_3272
 
-	IL_326c:  nop 
-	IL_326d:  nop 
-	IL_326e:  ldarg 1
+	IL_3272:  ldarg 1
 
-	IL_3272:  nop 
-	IL_3273:  nop 
-	IL_3274:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3279:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_327e:  ldarg 1
+	IL_3276:  nop 
+	IL_3277:  nop 
+	IL_3278:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_327d:  ldstr "object"
+	IL_3282:  call int32 string::Compare(string, string)
+	IL_3287:  stloc 0
 
-	IL_3282:  nop 
-	IL_3283:  nop 
-	IL_3284:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3289:  stloc 2
+	IL_328b:  nop 
+	IL_328c:  nop 
+	IL_328d:  ldloc 0
 
-	IL_328d:  nop 
-	IL_328e:  nop 
-	IL_328f:  ldc.i4 1
-	IL_3294:  conv.u 
-	IL_3295:  newarr [mscorlib]System.Char
-	IL_329a:  stloc 3
+	IL_3291:  nop 
+	IL_3292:  nop 
+	IL_3293:  ldc.i4 0
+	IL_3298:  beq IL_32a2
 
-	IL_329e:  nop 
-	IL_329f:  nop 
-	IL_32a0:  ldloc 3
+	IL_329d:  br IL_3304
 
-	IL_32a4:  nop 
-	IL_32a5:  nop 
-	IL_32a6:  ldc.i4 0
-	IL_32ab:  conv.u 
-	IL_32ac:  ldstr "'"
-	IL_32b1:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_32b6:  stelem [mscorlib]System.Char
-	IL_32bb:  ldloc 2
+	IL_32a2:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.ObjectTok::'.ctor'()
+	IL_32a7:  stloc 101
 
-	IL_32bf:  nop 
-	IL_32c0:  nop 
-	IL_32c1:  ldloc 3
+	IL_32ab:  nop 
+	IL_32ac:  nop 
+	IL_32ad:  ldloc 101
 
-	IL_32c5:  nop 
-	IL_32c6:  nop 
-	IL_32c7:  callvirt instance string string::Trim(char[])
-	IL_32cc:  stloc 2
+	IL_32b1:  nop 
+	IL_32b2:  nop 
+	IL_32b3:  ldarg 1
 
-	IL_32d0:  nop 
-	IL_32d1:  nop 
-	IL_32d2:  ldloc 98
+	IL_32b7:  nop 
+	IL_32b8:  nop 
+	IL_32b9:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_32be:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_32c3:  ldloc 101
 
-	IL_32d6:  nop 
-	IL_32d7:  nop 
-	IL_32d8:  ldloc 2
+	IL_32c7:  nop 
+	IL_32c8:  nop 
+	IL_32c9:  ldarg 1
 
-	IL_32dc:  nop 
+	IL_32cd:  nop 
+	IL_32ce:  nop 
+	IL_32cf:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_32d4:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_32d9:  ldloc 101
+
 	IL_32dd:  nop 
-	IL_32de:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_32e3:  ldloc 98
+	IL_32de:  nop 
+	IL_32df:  ldtoken [mscorlib]System.Object
+	IL_32e4:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_32e9:  stfld class [mscorlib]System.Type [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::RefTyp
+	IL_32ee:  ldloc 101
 
-	IL_32e7:  nop 
-	IL_32e8:  nop 
-	IL_32e9:  ldloc 98
+	IL_32f2:  nop 
+	IL_32f3:  nop 
+	IL_32f4:  starg 1
 
-	IL_32ed:  nop 
-	IL_32ee:  nop 
-	IL_32ef:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_32f4:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_32f9:  stfld char [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral::CharVal
-	IL_32fe:  ldloc 98
+	IL_32f8:  nop 
+	IL_32f9:  nop 
+	IL_32fa:  br IL_4fef
 
-	IL_3302:  nop 
-	IL_3303:  nop 
-	IL_3304:  starg 1
+	IL_32ff:  br IL_3309
 
-	IL_3308:  nop 
-	IL_3309:  nop 
-	IL_330a:  br IL_4c61
+	IL_3304:  br IL_3309
 
-	IL_330f:  br IL_3319
+	IL_3309:  ldarg 1
 
-	IL_3314:  br IL_3319
+	IL_330d:  nop 
+	IL_330e:  nop 
+	IL_330f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3314:  ldstr "^//(.)*$"
+	IL_3319:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_331e:  stloc 1
 
-	IL_3319:  ldstr "^"
-	IL_331e:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
-	IL_3323:  ldstr "(.)*"
-	IL_3328:  call string string::Concat(string, string, string)
-	IL_332d:  stloc 2
+	IL_3322:  nop 
+	IL_3323:  nop 
+	IL_3324:  ldloc 1
 
-	IL_3331:  nop 
-	IL_3332:  nop 
-	IL_3333:  ldloc 2
+	IL_3328:  nop 
+	IL_3329:  nop 
+	IL_332a:  ldc.i4 1
+	IL_332f:  beq IL_3339
 
-	IL_3337:  nop 
-	IL_3338:  nop 
-	IL_3339:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
-	IL_333e:  ldstr "$"
-	IL_3343:  call string string::Concat(string, string, string)
-	IL_3348:  stloc 2
+	IL_3334:  br IL_3390
 
-	IL_334c:  nop 
-	IL_334d:  nop 
-	IL_334e:  ldarg 1
+	IL_3339:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.CommentTok::'.ctor'()
+	IL_333e:  stloc 102
 
-	IL_3352:  nop 
-	IL_3353:  nop 
-	IL_3354:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3359:  ldloc 2
+	IL_3342:  nop 
+	IL_3343:  nop 
+	IL_3344:  ldloc 102
 
-	IL_335d:  nop 
+	IL_3348:  nop 
+	IL_3349:  nop 
+	IL_334a:  ldarg 1
+
+	IL_334e:  nop 
+	IL_334f:  nop 
+	IL_3350:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3355:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_335a:  ldloc 102
+
 	IL_335e:  nop 
-	IL_335f:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3364:  stloc 1
+	IL_335f:  nop 
+	IL_3360:  ldarg 1
 
-	IL_3368:  nop 
-	IL_3369:  nop 
-	IL_336a:  ldloc 1
+	IL_3364:  nop 
+	IL_3365:  nop 
+	IL_3366:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_336b:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3370:  ldloc 102
 
-	IL_336e:  nop 
-	IL_336f:  nop 
-	IL_3370:  ldc.i4 1
-	IL_3375:  beq IL_337f
+	IL_3374:  nop 
+	IL_3375:  nop 
+	IL_3376:  starg 1
 
-	IL_337a:  br IL_341b
+	IL_337a:  nop 
+	IL_337b:  nop 
+	IL_337c:  ldc.i4 1
+	IL_3381:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::CmtFlag
+	IL_3386:  br IL_4fef
 
-	IL_337f:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral::'.ctor'()
-	IL_3384:  stloc 99
+	IL_338b:  br IL_3395
 
-	IL_3388:  nop 
-	IL_3389:  nop 
-	IL_338a:  ldloc 99
+	IL_3390:  br IL_3395
 
-	IL_338e:  nop 
-	IL_338f:  nop 
-	IL_3390:  ldarg 1
+	IL_3395:  ldarg 1
 
-	IL_3394:  nop 
-	IL_3395:  nop 
-	IL_3396:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_339b:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_33a0:  ldarg 1
+	IL_3399:  nop 
+	IL_339a:  nop 
+	IL_339b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_33a0:  ldstr "null"
+	IL_33a5:  call int32 string::Compare(string, string)
+	IL_33aa:  stloc 0
 
-	IL_33a4:  nop 
-	IL_33a5:  nop 
-	IL_33a6:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_33ab:  stloc 2
-
+	IL_33ae:  nop 
 	IL_33af:  nop 
-	IL_33b0:  nop 
-	IL_33b1:  ldc.i4 1
-	IL_33b6:  conv.u 
-	IL_33b7:  newarr [mscorlib]System.Char
-	IL_33bc:  stloc 3
+	IL_33b0:  ldloc 0
 
-	IL_33c0:  nop 
-	IL_33c1:  nop 
-	IL_33c2:  ldloc 3
+	IL_33b4:  nop 
+	IL_33b5:  nop 
+	IL_33b6:  ldc.i4 0
+	IL_33bb:  beq IL_33c5
 
-	IL_33c6:  nop 
-	IL_33c7:  nop 
-	IL_33c8:  ldc.i4 0
-	IL_33cd:  conv.u 
-	IL_33ce:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
-	IL_33d3:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_33d8:  stelem [mscorlib]System.Char
-	IL_33dd:  ldloc 2
+	IL_33c0:  br IL_3412
 
-	IL_33e1:  nop 
-	IL_33e2:  nop 
-	IL_33e3:  ldloc 3
+	IL_33c5:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral::'.ctor'()
+	IL_33ca:  stloc 103
 
-	IL_33e7:  nop 
-	IL_33e8:  nop 
-	IL_33e9:  callvirt instance string string::Trim(char[])
-	IL_33ee:  stloc 2
+	IL_33ce:  nop 
+	IL_33cf:  nop 
+	IL_33d0:  ldloc 103
 
-	IL_33f2:  nop 
-	IL_33f3:  nop 
-	IL_33f4:  ldloc 99
+	IL_33d4:  nop 
+	IL_33d5:  nop 
+	IL_33d6:  ldarg 1
 
-	IL_33f8:  nop 
-	IL_33f9:  nop 
-	IL_33fa:  ldloc 2
+	IL_33da:  nop 
+	IL_33db:  nop 
+	IL_33dc:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_33e1:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_33e6:  ldloc 103
 
-	IL_33fe:  nop 
-	IL_33ff:  nop 
-	IL_3400:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3405:  ldloc 99
+	IL_33ea:  nop 
+	IL_33eb:  nop 
+	IL_33ec:  ldarg 1
 
-	IL_3409:  nop 
-	IL_340a:  nop 
-	IL_340b:  starg 1
+	IL_33f0:  nop 
+	IL_33f1:  nop 
+	IL_33f2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_33f7:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_33fc:  ldloc 103
 
-	IL_340f:  nop 
-	IL_3410:  nop 
-	IL_3411:  br IL_4c61
+	IL_3400:  nop 
+	IL_3401:  nop 
+	IL_3402:  starg 1
 
-	IL_3416:  br IL_3420
+	IL_3406:  nop 
+	IL_3407:  nop 
+	IL_3408:  br IL_4fef
 
-	IL_341b:  br IL_3420
+	IL_340d:  br IL_3417
 
-	IL_3420:  ldarg 1
+	IL_3412:  br IL_3417
 
-	IL_3424:  nop 
-	IL_3425:  nop 
-	IL_3426:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_342b:  ldstr "^(\\d)+\\.(\\d)+(.)*$"
-	IL_3430:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3435:  stloc 1
+	IL_3417:  ldarg 1
 
-	IL_3439:  nop 
-	IL_343a:  nop 
-	IL_343b:  ldloc 1
+	IL_341b:  nop 
+	IL_341c:  nop 
+	IL_341d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3422:  ldstr "true"
+	IL_3427:  call int32 string::Compare(string, string)
+	IL_342c:  stloc 0
 
-	IL_343f:  nop 
-	IL_3440:  nop 
-	IL_3441:  stloc 4
+	IL_3430:  nop 
+	IL_3431:  nop 
+	IL_3432:  ldloc 0
 
-	IL_3445:  nop 
-	IL_3446:  nop 
-	IL_3447:  ldarg 1
+	IL_3436:  nop 
+	IL_3437:  nop 
+	IL_3438:  ldc.i4 0
+	IL_343d:  beq IL_3447
 
-	IL_344b:  nop 
-	IL_344c:  nop 
-	IL_344d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3452:  ldstr "^\\+(\\d)+\\.(\\d)+(.)*$"
-	IL_3457:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_345c:  stloc 1
+	IL_3442:  br IL_3457
+
+	IL_3447:  ldc.i4 1
+	IL_344c:  stloc 1
+
+	IL_3450:  nop 
+	IL_3451:  nop 
+	IL_3452:  br IL_345c
+
+	IL_3457:  br IL_345c
+
+	IL_345c:  ldloc 1
 
 	IL_3460:  nop 
 	IL_3461:  nop 
-	IL_3462:  ldloc 4
+	IL_3462:  stloc 4
 
 	IL_3466:  nop 
 	IL_3467:  nop 
-	IL_3468:  ldloc 1
+	IL_3468:  ldarg 1
 
 	IL_346c:  nop 
 	IL_346d:  nop 
-	IL_346e:  or 
-	IL_346f:  stloc 4
+	IL_346e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3473:  ldstr "false"
+	IL_3478:  call int32 string::Compare(string, string)
+	IL_347d:  stloc 0
 
-	IL_3473:  nop 
-	IL_3474:  nop 
-	IL_3475:  ldarg 1
+	IL_3481:  nop 
+	IL_3482:  nop 
+	IL_3483:  ldloc 0
 
-	IL_3479:  nop 
-	IL_347a:  nop 
-	IL_347b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3480:  ldstr "^-(\\d)+\\.(\\d)+(.)*$"
-	IL_3485:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_348a:  stloc 1
+	IL_3487:  nop 
+	IL_3488:  nop 
+	IL_3489:  ldc.i4 0
+	IL_348e:  beq IL_3498
 
-	IL_348e:  nop 
-	IL_348f:  nop 
-	IL_3490:  ldloc 4
+	IL_3493:  br IL_34a8
 
-	IL_3494:  nop 
-	IL_3495:  nop 
-	IL_3496:  ldloc 1
-
-	IL_349a:  nop 
-	IL_349b:  nop 
-	IL_349c:  or 
-	IL_349d:  stloc 4
+	IL_3498:  ldc.i4 1
+	IL_349d:  stloc 1
 
 	IL_34a1:  nop 
 	IL_34a2:  nop 
-	IL_34a3:  ldarg 1
+	IL_34a3:  br IL_34ad
 
-	IL_34a7:  nop 
-	IL_34a8:  nop 
-	IL_34a9:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_34ae:  stloc 2
+	IL_34a8:  br IL_34ad
 
+	IL_34ad:  ldloc 4
+
+	IL_34b1:  nop 
 	IL_34b2:  nop 
-	IL_34b3:  nop 
-	IL_34b4:  ldloc 2
+	IL_34b3:  ldloc 1
 
+	IL_34b7:  nop 
 	IL_34b8:  nop 
-	IL_34b9:  nop 
-	IL_34ba:  ldstr "d"
-	IL_34bf:  callvirt instance bool string::EndsWith(string)
-	IL_34c4:  stloc 1
+	IL_34b9:  or 
+	IL_34ba:  stloc 4
 
-	IL_34c8:  nop 
-	IL_34c9:  nop 
-	IL_34ca:  ldloc 4
+	IL_34be:  nop 
+	IL_34bf:  nop 
+	IL_34c0:  ldloc 1
 
-	IL_34ce:  nop 
-	IL_34cf:  nop 
-	IL_34d0:  ldloc 1
+	IL_34c4:  nop 
+	IL_34c5:  nop 
+	IL_34c6:  ldc.i4 1
+	IL_34cb:  beq IL_34d5
 
-	IL_34d4:  nop 
-	IL_34d5:  nop 
-	IL_34d6:  and 
-	IL_34d7:  stloc 4
+	IL_34d0:  br IL_35b6
 
-	IL_34db:  nop 
-	IL_34dc:  nop 
-	IL_34dd:  ldloc 4
+	IL_34d5:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral::'.ctor'()
+	IL_34da:  stloc 104
 
-	IL_34e1:  nop 
-	IL_34e2:  nop 
-	IL_34e3:  ldc.i4 1
-	IL_34e8:  beq IL_34f2
+	IL_34de:  nop 
+	IL_34df:  nop 
+	IL_34e0:  ldloc 104
 
-	IL_34ed:  br IL_35a9
+	IL_34e4:  nop 
+	IL_34e5:  nop 
+	IL_34e6:  ldarg 1
 
-	IL_34f2:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::'.ctor'()
-	IL_34f7:  stloc 100
+	IL_34ea:  nop 
+	IL_34eb:  nop 
+	IL_34ec:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_34f1:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_34f6:  ldloc 104
 
+	IL_34fa:  nop 
 	IL_34fb:  nop 
-	IL_34fc:  nop 
-	IL_34fd:  ldloc 100
+	IL_34fc:  ldarg 1
 
+	IL_3500:  nop 
 	IL_3501:  nop 
-	IL_3502:  nop 
-	IL_3503:  ldarg 1
+	IL_3502:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3507:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_350c:  ldarg 1
 
-	IL_3507:  nop 
-	IL_3508:  nop 
-	IL_3509:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_350e:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3513:  ldarg 1
+	IL_3510:  nop 
+	IL_3511:  nop 
+	IL_3512:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3517:  ldstr "true"
+	IL_351c:  call int32 string::Compare(string, string)
+	IL_3521:  stloc 0
 
-	IL_3517:  nop 
-	IL_3518:  nop 
-	IL_3519:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_351e:  stloc 2
+	IL_3525:  nop 
+	IL_3526:  nop 
+	IL_3527:  ldloc 0
 
-	IL_3522:  nop 
-	IL_3523:  nop 
-	IL_3524:  ldc.i4 1
-	IL_3529:  conv.u 
-	IL_352a:  newarr [mscorlib]System.Char
-	IL_352f:  stloc 3
+	IL_352b:  nop 
+	IL_352c:  nop 
+	IL_352d:  ldc.i4 0
+	IL_3532:  beq IL_353c
 
-	IL_3533:  nop 
-	IL_3534:  nop 
-	IL_3535:  ldloc 3
+	IL_3537:  br IL_3551
 
-	IL_3539:  nop 
-	IL_353a:  nop 
-	IL_353b:  ldc.i4 0
-	IL_3540:  conv.u 
-	IL_3541:  ldstr "d"
-	IL_3546:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_354b:  stelem [mscorlib]System.Char
-	IL_3550:  ldloc 2
+	IL_353c:  ldloc 104
 
-	IL_3554:  nop 
-	IL_3555:  nop 
-	IL_3556:  ldloc 3
+	IL_3540:  nop 
+	IL_3541:  nop 
+	IL_3542:  ldc.i4 1
+	IL_3547:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral::BoolVal
+	IL_354c:  br IL_3556
+
+	IL_3551:  br IL_3556
+
+	IL_3556:  ldarg 1
 
 	IL_355a:  nop 
 	IL_355b:  nop 
-	IL_355c:  callvirt instance string string::TrimEnd(char[])
-	IL_3561:  stloc 2
+	IL_355c:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3561:  ldstr "false"
+	IL_3566:  call int32 string::Compare(string, string)
+	IL_356b:  stloc 0
 
-	IL_3565:  nop 
-	IL_3566:  nop 
-	IL_3567:  ldloc 100
+	IL_356f:  nop 
+	IL_3570:  nop 
+	IL_3571:  ldloc 0
 
-	IL_356b:  nop 
-	IL_356c:  nop 
-	IL_356d:  ldloc 2
+	IL_3575:  nop 
+	IL_3576:  nop 
+	IL_3577:  ldc.i4 0
+	IL_357c:  beq IL_3586
 
-	IL_3571:  nop 
-	IL_3572:  nop 
-	IL_3573:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3578:  ldloc 100
+	IL_3581:  br IL_359b
 
-	IL_357c:  nop 
-	IL_357d:  nop 
-	IL_357e:  ldloc 100
+	IL_3586:  ldloc 104
 
-	IL_3582:  nop 
-	IL_3583:  nop 
-	IL_3584:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3589:  call float64 class [mscorlib]System.Convert::ToDouble(string)
-	IL_358e:  stfld float64 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::NumVal
-	IL_3593:  ldloc 100
+	IL_358a:  nop 
+	IL_358b:  nop 
+	IL_358c:  ldc.i4 0
+	IL_3591:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral::BoolVal
+	IL_3596:  br IL_35a0
 
-	IL_3597:  nop 
-	IL_3598:  nop 
-	IL_3599:  starg 1
+	IL_359b:  br IL_35a0
 
-	IL_359d:  nop 
-	IL_359e:  nop 
-	IL_359f:  br IL_4c61
+	IL_35a0:  ldloc 104
 
-	IL_35a4:  br IL_35ae
+	IL_35a4:  nop 
+	IL_35a5:  nop 
+	IL_35a6:  starg 1
 
-	IL_35a9:  br IL_35ae
+	IL_35aa:  nop 
+	IL_35ab:  nop 
+	IL_35ac:  br IL_4fef
 
-	IL_35ae:  ldarg 1
+	IL_35b1:  br IL_35bb
 
-	IL_35b2:  nop 
-	IL_35b3:  nop 
-	IL_35b4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_35b9:  ldstr "^(\\d)+\\.(\\d)+(.)*$"
-	IL_35be:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_35c3:  stloc 1
+	IL_35b6:  br IL_35bb
 
-	IL_35c7:  nop 
-	IL_35c8:  nop 
-	IL_35c9:  ldloc 1
+	IL_35bb:  ldarg 1
 
-	IL_35cd:  nop 
-	IL_35ce:  nop 
-	IL_35cf:  stloc 4
+	IL_35bf:  nop 
+	IL_35c0:  nop 
+	IL_35c1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_35c6:  ldstr "^'(.)*'$"
+	IL_35cb:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_35d0:  stloc 1
 
-	IL_35d3:  nop 
 	IL_35d4:  nop 
-	IL_35d5:  ldarg 1
+	IL_35d5:  nop 
+	IL_35d6:  ldloc 1
 
-	IL_35d9:  nop 
 	IL_35da:  nop 
-	IL_35db:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_35e0:  ldstr "^\\+(\\d)+\\.(\\d)+(.)*$"
-	IL_35e5:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_35ea:  stloc 1
+	IL_35db:  nop 
+	IL_35dc:  ldc.i4 1
+	IL_35e1:  beq IL_35eb
 
-	IL_35ee:  nop 
-	IL_35ef:  nop 
-	IL_35f0:  ldloc 4
+	IL_35e6:  br IL_36a2
+
+	IL_35eb:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral::'.ctor'()
+	IL_35f0:  stloc 105
 
 	IL_35f4:  nop 
 	IL_35f5:  nop 
-	IL_35f6:  ldloc 1
+	IL_35f6:  ldloc 105
 
 	IL_35fa:  nop 
 	IL_35fb:  nop 
-	IL_35fc:  or 
-	IL_35fd:  stloc 4
+	IL_35fc:  ldarg 1
 
+	IL_3600:  nop 
 	IL_3601:  nop 
-	IL_3602:  nop 
-	IL_3603:  ldarg 1
+	IL_3602:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3607:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_360c:  ldarg 1
 
-	IL_3607:  nop 
-	IL_3608:  nop 
-	IL_3609:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_360e:  ldstr "^-(\\d)+\\.(\\d)+(.)*$"
-	IL_3613:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3618:  stloc 1
+	IL_3610:  nop 
+	IL_3611:  nop 
+	IL_3612:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3617:  stloc 2
 
+	IL_361b:  nop 
 	IL_361c:  nop 
-	IL_361d:  nop 
-	IL_361e:  ldloc 4
+	IL_361d:  ldc.i4 1
+	IL_3622:  conv.u 
+	IL_3623:  newarr [mscorlib]System.Char
+	IL_3628:  stloc 3
 
-	IL_3622:  nop 
-	IL_3623:  nop 
-	IL_3624:  ldloc 1
+	IL_362c:  nop 
+	IL_362d:  nop 
+	IL_362e:  ldloc 3
 
-	IL_3628:  nop 
-	IL_3629:  nop 
-	IL_362a:  or 
-	IL_362b:  stloc 4
+	IL_3632:  nop 
+	IL_3633:  nop 
+	IL_3634:  ldc.i4 0
+	IL_3639:  conv.u 
+	IL_363a:  ldstr "'"
+	IL_363f:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_3644:  stelem [mscorlib]System.Char
+	IL_3649:  ldloc 2
 
-	IL_362f:  nop 
-	IL_3630:  nop 
-	IL_3631:  ldarg 1
+	IL_364d:  nop 
+	IL_364e:  nop 
+	IL_364f:  ldloc 3
 
-	IL_3635:  nop 
-	IL_3636:  nop 
-	IL_3637:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_363c:  stloc 2
+	IL_3653:  nop 
+	IL_3654:  nop 
+	IL_3655:  callvirt instance string string::Trim(char[])
+	IL_365a:  stloc 2
 
-	IL_3640:  nop 
-	IL_3641:  nop 
-	IL_3642:  ldloc 2
+	IL_365e:  nop 
+	IL_365f:  nop 
+	IL_3660:  ldloc 105
 
-	IL_3646:  nop 
-	IL_3647:  nop 
-	IL_3648:  ldstr "f"
-	IL_364d:  callvirt instance bool string::EndsWith(string)
-	IL_3652:  stloc 1
+	IL_3664:  nop 
+	IL_3665:  nop 
+	IL_3666:  ldloc 2
 
-	IL_3656:  nop 
-	IL_3657:  nop 
-	IL_3658:  ldloc 4
-
-	IL_365c:  nop 
-	IL_365d:  nop 
-	IL_365e:  ldloc 1
-
-	IL_3662:  nop 
-	IL_3663:  nop 
-	IL_3664:  and 
-	IL_3665:  stloc 4
-
-	IL_3669:  nop 
 	IL_366a:  nop 
-	IL_366b:  ldloc 4
+	IL_366b:  nop 
+	IL_366c:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3671:  ldloc 105
 
-	IL_366f:  nop 
-	IL_3670:  nop 
-	IL_3671:  ldc.i4 1
-	IL_3676:  beq IL_3680
+	IL_3675:  nop 
+	IL_3676:  nop 
+	IL_3677:  ldloc 105
 
-	IL_367b:  br IL_3737
+	IL_367b:  nop 
+	IL_367c:  nop 
+	IL_367d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3682:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_3687:  stfld char [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral::CharVal
+	IL_368c:  ldloc 105
 
-	IL_3680:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral::'.ctor'()
-	IL_3685:  stloc 101
-
-	IL_3689:  nop 
-	IL_368a:  nop 
-	IL_368b:  ldloc 101
-
-	IL_368f:  nop 
 	IL_3690:  nop 
-	IL_3691:  ldarg 1
+	IL_3691:  nop 
+	IL_3692:  starg 1
 
-	IL_3695:  nop 
 	IL_3696:  nop 
-	IL_3697:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_369c:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_36a1:  ldarg 1
+	IL_3697:  nop 
+	IL_3698:  br IL_4fef
 
-	IL_36a5:  nop 
-	IL_36a6:  nop 
-	IL_36a7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_36ac:  stloc 2
+	IL_369d:  br IL_36a7
 
-	IL_36b0:  nop 
-	IL_36b1:  nop 
-	IL_36b2:  ldc.i4 1
-	IL_36b7:  conv.u 
-	IL_36b8:  newarr [mscorlib]System.Char
-	IL_36bd:  stloc 3
+	IL_36a2:  br IL_36a7
 
-	IL_36c1:  nop 
-	IL_36c2:  nop 
-	IL_36c3:  ldloc 3
+	IL_36a7:  ldstr "^"
+	IL_36ac:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
+	IL_36b1:  ldstr "(.)*"
+	IL_36b6:  call string string::Concat(string, string, string)
+	IL_36bb:  stloc 2
 
-	IL_36c7:  nop 
-	IL_36c8:  nop 
-	IL_36c9:  ldc.i4 0
-	IL_36ce:  conv.u 
-	IL_36cf:  ldstr "f"
-	IL_36d4:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_36d9:  stelem [mscorlib]System.Char
-	IL_36de:  ldloc 2
+	IL_36bf:  nop 
+	IL_36c0:  nop 
+	IL_36c1:  ldloc 2
 
-	IL_36e2:  nop 
-	IL_36e3:  nop 
-	IL_36e4:  ldloc 3
+	IL_36c5:  nop 
+	IL_36c6:  nop 
+	IL_36c7:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
+	IL_36cc:  ldstr "$"
+	IL_36d1:  call string string::Concat(string, string, string)
+	IL_36d6:  stloc 2
 
-	IL_36e8:  nop 
-	IL_36e9:  nop 
-	IL_36ea:  callvirt instance string string::TrimEnd(char[])
-	IL_36ef:  stloc 2
+	IL_36da:  nop 
+	IL_36db:  nop 
+	IL_36dc:  ldarg 1
 
-	IL_36f3:  nop 
-	IL_36f4:  nop 
-	IL_36f5:  ldloc 101
+	IL_36e0:  nop 
+	IL_36e1:  nop 
+	IL_36e2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_36e7:  ldloc 2
 
-	IL_36f9:  nop 
-	IL_36fa:  nop 
-	IL_36fb:  ldloc 2
+	IL_36eb:  nop 
+	IL_36ec:  nop 
+	IL_36ed:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_36f2:  stloc 1
 
-	IL_36ff:  nop 
-	IL_3700:  nop 
-	IL_3701:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3706:  ldloc 101
+	IL_36f6:  nop 
+	IL_36f7:  nop 
+	IL_36f8:  ldloc 1
 
-	IL_370a:  nop 
-	IL_370b:  nop 
-	IL_370c:  ldloc 101
+	IL_36fc:  nop 
+	IL_36fd:  nop 
+	IL_36fe:  ldc.i4 1
+	IL_3703:  beq IL_370d
 
-	IL_3710:  nop 
-	IL_3711:  nop 
-	IL_3712:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3717:  call float32 class [mscorlib]System.Convert::ToSingle(string)
-	IL_371c:  stfld float32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral::NumVal
-	IL_3721:  ldloc 101
+	IL_3708:  br IL_37a9
 
-	IL_3725:  nop 
-	IL_3726:  nop 
-	IL_3727:  starg 1
+	IL_370d:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral::'.ctor'()
+	IL_3712:  stloc 106
 
-	IL_372b:  nop 
-	IL_372c:  nop 
-	IL_372d:  br IL_4c61
+	IL_3716:  nop 
+	IL_3717:  nop 
+	IL_3718:  ldloc 106
 
-	IL_3732:  br IL_373c
+	IL_371c:  nop 
+	IL_371d:  nop 
+	IL_371e:  ldarg 1
 
-	IL_3737:  br IL_373c
+	IL_3722:  nop 
+	IL_3723:  nop 
+	IL_3724:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3729:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_372e:  ldarg 1
 
-	IL_373c:  ldarg 1
+	IL_3732:  nop 
+	IL_3733:  nop 
+	IL_3734:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3739:  stloc 2
 
-	IL_3740:  nop 
-	IL_3741:  nop 
-	IL_3742:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3747:  ldstr "^(\\d)+\\.(\\d)+(.)*$"
-	IL_374c:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3751:  stloc 1
+	IL_373d:  nop 
+	IL_373e:  nop 
+	IL_373f:  ldc.i4 1
+	IL_3744:  conv.u 
+	IL_3745:  newarr [mscorlib]System.Char
+	IL_374a:  stloc 3
 
+	IL_374e:  nop 
+	IL_374f:  nop 
+	IL_3750:  ldloc 3
+
+	IL_3754:  nop 
 	IL_3755:  nop 
-	IL_3756:  nop 
-	IL_3757:  ldloc 1
+	IL_3756:  ldc.i4 0
+	IL_375b:  conv.u 
+	IL_375c:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
+	IL_3761:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_3766:  stelem [mscorlib]System.Char
+	IL_376b:  ldloc 2
 
-	IL_375b:  nop 
-	IL_375c:  nop 
-	IL_375d:  stloc 4
+	IL_376f:  nop 
+	IL_3770:  nop 
+	IL_3771:  ldloc 3
 
-	IL_3761:  nop 
-	IL_3762:  nop 
-	IL_3763:  ldarg 1
+	IL_3775:  nop 
+	IL_3776:  nop 
+	IL_3777:  callvirt instance string string::Trim(char[])
+	IL_377c:  stloc 2
 
-	IL_3767:  nop 
-	IL_3768:  nop 
-	IL_3769:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_376e:  ldstr "^\\+(\\d)+\\.(\\d)+(.)*$"
-	IL_3773:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3778:  stloc 1
+	IL_3780:  nop 
+	IL_3781:  nop 
+	IL_3782:  ldloc 106
 
-	IL_377c:  nop 
-	IL_377d:  nop 
-	IL_377e:  ldloc 4
+	IL_3786:  nop 
+	IL_3787:  nop 
+	IL_3788:  ldloc 2
 
-	IL_3782:  nop 
-	IL_3783:  nop 
-	IL_3784:  ldloc 1
+	IL_378c:  nop 
+	IL_378d:  nop 
+	IL_378e:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3793:  ldloc 106
 
-	IL_3788:  nop 
-	IL_3789:  nop 
-	IL_378a:  or 
-	IL_378b:  stloc 4
+	IL_3797:  nop 
+	IL_3798:  nop 
+	IL_3799:  starg 1
 
-	IL_378f:  nop 
-	IL_3790:  nop 
-	IL_3791:  ldarg 1
+	IL_379d:  nop 
+	IL_379e:  nop 
+	IL_379f:  br IL_4fef
 
-	IL_3795:  nop 
-	IL_3796:  nop 
-	IL_3797:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_379c:  ldstr "^-(\\d)+\\.(\\d)+(.)*$"
-	IL_37a1:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_37a6:  stloc 1
+	IL_37a4:  br IL_37ae
 
-	IL_37aa:  nop 
-	IL_37ab:  nop 
-	IL_37ac:  ldloc 4
+	IL_37a9:  br IL_37ae
 
-	IL_37b0:  nop 
-	IL_37b1:  nop 
-	IL_37b2:  ldloc 1
+	IL_37ae:  ldarg 1
 
-	IL_37b6:  nop 
-	IL_37b7:  nop 
-	IL_37b8:  or 
-	IL_37b9:  stloc 4
+	IL_37b2:  nop 
+	IL_37b3:  nop 
+	IL_37b4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_37b9:  ldstr "^(\\d)+\\.(\\d)+(.)*$"
+	IL_37be:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_37c3:  stloc 1
 
-	IL_37bd:  nop 
-	IL_37be:  nop 
-	IL_37bf:  ldloc 4
+	IL_37c7:  nop 
+	IL_37c8:  nop 
+	IL_37c9:  ldloc 1
 
-	IL_37c3:  nop 
-	IL_37c4:  nop 
-	IL_37c5:  ldc.i4 1
-	IL_37ca:  beq IL_37d4
+	IL_37cd:  nop 
+	IL_37ce:  nop 
+	IL_37cf:  stloc 4
 
-	IL_37cf:  br IL_3848
+	IL_37d3:  nop 
+	IL_37d4:  nop 
+	IL_37d5:  ldarg 1
 
-	IL_37d4:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::'.ctor'()
-	IL_37d9:  stloc 102
+	IL_37d9:  nop 
+	IL_37da:  nop 
+	IL_37db:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_37e0:  ldstr "^\\+(\\d)+\\.(\\d)+(.)*$"
+	IL_37e5:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_37ea:  stloc 1
 
-	IL_37dd:  nop 
-	IL_37de:  nop 
-	IL_37df:  ldloc 102
+	IL_37ee:  nop 
+	IL_37ef:  nop 
+	IL_37f0:  ldloc 4
 
-	IL_37e3:  nop 
-	IL_37e4:  nop 
-	IL_37e5:  ldarg 1
+	IL_37f4:  nop 
+	IL_37f5:  nop 
+	IL_37f6:  ldloc 1
 
-	IL_37e9:  nop 
-	IL_37ea:  nop 
-	IL_37eb:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_37f0:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_37f5:  ldarg 1
-
-	IL_37f9:  nop 
 	IL_37fa:  nop 
-	IL_37fb:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3800:  stloc 2
+	IL_37fb:  nop 
+	IL_37fc:  or 
+	IL_37fd:  stloc 4
 
-	IL_3804:  nop 
-	IL_3805:  nop 
-	IL_3806:  ldloc 102
+	IL_3801:  nop 
+	IL_3802:  nop 
+	IL_3803:  ldarg 1
 
-	IL_380a:  nop 
-	IL_380b:  nop 
-	IL_380c:  ldloc 2
+	IL_3807:  nop 
+	IL_3808:  nop 
+	IL_3809:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_380e:  ldstr "^-(\\d)+\\.(\\d)+(.)*$"
+	IL_3813:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3818:  stloc 1
 
-	IL_3810:  nop 
-	IL_3811:  nop 
-	IL_3812:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3817:  ldloc 102
-
-	IL_381b:  nop 
 	IL_381c:  nop 
-	IL_381d:  ldloc 102
+	IL_381d:  nop 
+	IL_381e:  ldloc 4
 
-	IL_3821:  nop 
 	IL_3822:  nop 
-	IL_3823:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3828:  call float64 class [mscorlib]System.Convert::ToDouble(string)
-	IL_382d:  stfld float64 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::NumVal
-	IL_3832:  ldloc 102
+	IL_3823:  nop 
+	IL_3824:  ldloc 1
 
+	IL_3828:  nop 
+	IL_3829:  nop 
+	IL_382a:  or 
+	IL_382b:  stloc 4
+
+	IL_382f:  nop 
+	IL_3830:  nop 
+	IL_3831:  ldarg 1
+
+	IL_3835:  nop 
 	IL_3836:  nop 
-	IL_3837:  nop 
-	IL_3838:  starg 1
+	IL_3837:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_383c:  stloc 2
 
-	IL_383c:  nop 
-	IL_383d:  nop 
-	IL_383e:  br IL_4c61
+	IL_3840:  nop 
+	IL_3841:  nop 
+	IL_3842:  ldloc 2
 
-	IL_3843:  br IL_384d
+	IL_3846:  nop 
+	IL_3847:  nop 
+	IL_3848:  ldstr "d"
+	IL_384d:  callvirt instance bool string::EndsWith(string)
+	IL_3852:  stloc 1
 
-	IL_3848:  br IL_384d
+	IL_3856:  nop 
+	IL_3857:  nop 
+	IL_3858:  ldloc 4
 
-	IL_384d:  ldarg 1
+	IL_385c:  nop 
+	IL_385d:  nop 
+	IL_385e:  ldloc 1
 
-	IL_3851:  nop 
-	IL_3852:  nop 
-	IL_3853:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3858:  ldstr "^(\\d)+(.)*$"
-	IL_385d:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3862:  stloc 1
+	IL_3862:  nop 
+	IL_3863:  nop 
+	IL_3864:  and 
+	IL_3865:  stloc 4
 
-	IL_3866:  nop 
-	IL_3867:  nop 
-	IL_3868:  ldloc 1
+	IL_3869:  nop 
+	IL_386a:  nop 
+	IL_386b:  ldloc 4
 
-	IL_386c:  nop 
-	IL_386d:  nop 
-	IL_386e:  stloc 4
+	IL_386f:  nop 
+	IL_3870:  nop 
+	IL_3871:  ldc.i4 1
+	IL_3876:  beq IL_3880
 
-	IL_3872:  nop 
-	IL_3873:  nop 
-	IL_3874:  ldarg 1
+	IL_387b:  br IL_3937
 
-	IL_3878:  nop 
-	IL_3879:  nop 
-	IL_387a:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_387f:  ldstr "^\\+(\\d)+(.)*$"
-	IL_3884:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3889:  stloc 1
+	IL_3880:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::'.ctor'()
+	IL_3885:  stloc 107
 
-	IL_388d:  nop 
-	IL_388e:  nop 
-	IL_388f:  ldloc 4
+	IL_3889:  nop 
+	IL_388a:  nop 
+	IL_388b:  ldloc 107
 
-	IL_3893:  nop 
-	IL_3894:  nop 
-	IL_3895:  ldloc 1
+	IL_388f:  nop 
+	IL_3890:  nop 
+	IL_3891:  ldarg 1
 
-	IL_3899:  nop 
-	IL_389a:  nop 
-	IL_389b:  or 
-	IL_389c:  stloc 4
+	IL_3895:  nop 
+	IL_3896:  nop 
+	IL_3897:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_389c:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_38a1:  ldarg 1
 
-	IL_38a0:  nop 
-	IL_38a1:  nop 
-	IL_38a2:  ldarg 1
-
+	IL_38a5:  nop 
 	IL_38a6:  nop 
-	IL_38a7:  nop 
-	IL_38a8:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_38ad:  ldstr "^-(\\d)+(.)*$"
-	IL_38b2:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_38b7:  stloc 1
+	IL_38a7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_38ac:  stloc 2
 
-	IL_38bb:  nop 
-	IL_38bc:  nop 
-	IL_38bd:  ldloc 4
+	IL_38b0:  nop 
+	IL_38b1:  nop 
+	IL_38b2:  ldc.i4 1
+	IL_38b7:  conv.u 
+	IL_38b8:  newarr [mscorlib]System.Char
+	IL_38bd:  stloc 3
 
 	IL_38c1:  nop 
 	IL_38c2:  nop 
-	IL_38c3:  ldloc 1
+	IL_38c3:  ldloc 3
 
 	IL_38c7:  nop 
 	IL_38c8:  nop 
-	IL_38c9:  or 
-	IL_38ca:  stloc 4
+	IL_38c9:  ldc.i4 0
+	IL_38ce:  conv.u 
+	IL_38cf:  ldstr "d"
+	IL_38d4:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_38d9:  stelem [mscorlib]System.Char
+	IL_38de:  ldloc 2
 
-	IL_38ce:  nop 
-	IL_38cf:  nop 
-	IL_38d0:  ldarg 1
+	IL_38e2:  nop 
+	IL_38e3:  nop 
+	IL_38e4:  ldloc 3
 
-	IL_38d4:  nop 
-	IL_38d5:  nop 
-	IL_38d6:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_38db:  stloc 2
+	IL_38e8:  nop 
+	IL_38e9:  nop 
+	IL_38ea:  callvirt instance string string::TrimEnd(char[])
+	IL_38ef:  stloc 2
 
-	IL_38df:  nop 
-	IL_38e0:  nop 
-	IL_38e1:  ldloc 2
+	IL_38f3:  nop 
+	IL_38f4:  nop 
+	IL_38f5:  ldloc 107
 
-	IL_38e5:  nop 
-	IL_38e6:  nop 
-	IL_38e7:  ldstr "d"
-	IL_38ec:  callvirt instance bool string::EndsWith(string)
-	IL_38f1:  stloc 1
+	IL_38f9:  nop 
+	IL_38fa:  nop 
+	IL_38fb:  ldloc 2
 
-	IL_38f5:  nop 
-	IL_38f6:  nop 
-	IL_38f7:  ldloc 4
+	IL_38ff:  nop 
+	IL_3900:  nop 
+	IL_3901:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3906:  ldloc 107
 
-	IL_38fb:  nop 
-	IL_38fc:  nop 
-	IL_38fd:  ldloc 1
+	IL_390a:  nop 
+	IL_390b:  nop 
+	IL_390c:  ldloc 107
 
-	IL_3901:  nop 
-	IL_3902:  nop 
-	IL_3903:  and 
-	IL_3904:  stloc 4
+	IL_3910:  nop 
+	IL_3911:  nop 
+	IL_3912:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3917:  call float64 class [mscorlib]System.Convert::ToDouble(string)
+	IL_391c:  stfld float64 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::NumVal
+	IL_3921:  ldloc 107
 
-	IL_3908:  nop 
-	IL_3909:  nop 
-	IL_390a:  ldloc 4
+	IL_3925:  nop 
+	IL_3926:  nop 
+	IL_3927:  starg 1
 
-	IL_390e:  nop 
-	IL_390f:  nop 
-	IL_3910:  ldc.i4 1
-	IL_3915:  beq IL_391f
+	IL_392b:  nop 
+	IL_392c:  nop 
+	IL_392d:  br IL_4fef
 
-	IL_391a:  br IL_39d6
+	IL_3932:  br IL_393c
 
-	IL_391f:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::'.ctor'()
-	IL_3924:  stloc 103
+	IL_3937:  br IL_393c
 
-	IL_3928:  nop 
-	IL_3929:  nop 
-	IL_392a:  ldloc 103
+	IL_393c:  ldarg 1
 
-	IL_392e:  nop 
-	IL_392f:  nop 
-	IL_3930:  ldarg 1
+	IL_3940:  nop 
+	IL_3941:  nop 
+	IL_3942:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3947:  ldstr "^(\\d)+\\.(\\d)+(.)*$"
+	IL_394c:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3951:  stloc 1
 
-	IL_3934:  nop 
-	IL_3935:  nop 
-	IL_3936:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_393b:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3940:  ldarg 1
+	IL_3955:  nop 
+	IL_3956:  nop 
+	IL_3957:  ldloc 1
 
-	IL_3944:  nop 
-	IL_3945:  nop 
-	IL_3946:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_394b:  stloc 2
+	IL_395b:  nop 
+	IL_395c:  nop 
+	IL_395d:  stloc 4
 
-	IL_394f:  nop 
-	IL_3950:  nop 
-	IL_3951:  ldc.i4 1
-	IL_3956:  conv.u 
-	IL_3957:  newarr [mscorlib]System.Char
-	IL_395c:  stloc 3
-
-	IL_3960:  nop 
 	IL_3961:  nop 
-	IL_3962:  ldloc 3
+	IL_3962:  nop 
+	IL_3963:  ldarg 1
 
-	IL_3966:  nop 
 	IL_3967:  nop 
-	IL_3968:  ldc.i4 0
-	IL_396d:  conv.u 
-	IL_396e:  ldstr "d"
-	IL_3973:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_3978:  stelem [mscorlib]System.Char
-	IL_397d:  ldloc 2
+	IL_3968:  nop 
+	IL_3969:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_396e:  ldstr "^\\+(\\d)+\\.(\\d)+(.)*$"
+	IL_3973:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3978:  stloc 1
 
-	IL_3981:  nop 
+	IL_397c:  nop 
+	IL_397d:  nop 
+	IL_397e:  ldloc 4
+
 	IL_3982:  nop 
-	IL_3983:  ldloc 3
+	IL_3983:  nop 
+	IL_3984:  ldloc 1
 
-	IL_3987:  nop 
 	IL_3988:  nop 
-	IL_3989:  callvirt instance string string::TrimEnd(char[])
-	IL_398e:  stloc 2
+	IL_3989:  nop 
+	IL_398a:  or 
+	IL_398b:  stloc 4
 
-	IL_3992:  nop 
-	IL_3993:  nop 
-	IL_3994:  ldloc 103
+	IL_398f:  nop 
+	IL_3990:  nop 
+	IL_3991:  ldarg 1
 
-	IL_3998:  nop 
-	IL_3999:  nop 
-	IL_399a:  ldloc 2
+	IL_3995:  nop 
+	IL_3996:  nop 
+	IL_3997:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_399c:  ldstr "^-(\\d)+\\.(\\d)+(.)*$"
+	IL_39a1:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_39a6:  stloc 1
 
-	IL_399e:  nop 
-	IL_399f:  nop 
-	IL_39a0:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_39a5:  ldloc 103
-
-	IL_39a9:  nop 
 	IL_39aa:  nop 
-	IL_39ab:  ldloc 103
+	IL_39ab:  nop 
+	IL_39ac:  ldloc 4
 
-	IL_39af:  nop 
 	IL_39b0:  nop 
-	IL_39b1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_39b6:  call float64 class [mscorlib]System.Convert::ToDouble(string)
-	IL_39bb:  stfld float64 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::NumVal
-	IL_39c0:  ldloc 103
+	IL_39b1:  nop 
+	IL_39b2:  ldloc 1
 
+	IL_39b6:  nop 
+	IL_39b7:  nop 
+	IL_39b8:  or 
+	IL_39b9:  stloc 4
+
+	IL_39bd:  nop 
+	IL_39be:  nop 
+	IL_39bf:  ldarg 1
+
+	IL_39c3:  nop 
 	IL_39c4:  nop 
-	IL_39c5:  nop 
-	IL_39c6:  starg 1
+	IL_39c5:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_39ca:  stloc 2
 
-	IL_39ca:  nop 
-	IL_39cb:  nop 
-	IL_39cc:  br IL_4c61
+	IL_39ce:  nop 
+	IL_39cf:  nop 
+	IL_39d0:  ldloc 2
 
-	IL_39d1:  br IL_39db
+	IL_39d4:  nop 
+	IL_39d5:  nop 
+	IL_39d6:  ldstr "f"
+	IL_39db:  callvirt instance bool string::EndsWith(string)
+	IL_39e0:  stloc 1
 
-	IL_39d6:  br IL_39db
+	IL_39e4:  nop 
+	IL_39e5:  nop 
+	IL_39e6:  ldloc 4
 
-	IL_39db:  ldarg 1
+	IL_39ea:  nop 
+	IL_39eb:  nop 
+	IL_39ec:  ldloc 1
 
-	IL_39df:  nop 
-	IL_39e0:  nop 
-	IL_39e1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_39e6:  ldstr "^(\\d)+(.)*$"
-	IL_39eb:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_39f0:  stloc 1
+	IL_39f0:  nop 
+	IL_39f1:  nop 
+	IL_39f2:  and 
+	IL_39f3:  stloc 4
 
-	IL_39f4:  nop 
-	IL_39f5:  nop 
-	IL_39f6:  ldloc 1
+	IL_39f7:  nop 
+	IL_39f8:  nop 
+	IL_39f9:  ldloc 4
 
-	IL_39fa:  nop 
-	IL_39fb:  nop 
-	IL_39fc:  stloc 4
+	IL_39fd:  nop 
+	IL_39fe:  nop 
+	IL_39ff:  ldc.i4 1
+	IL_3a04:  beq IL_3a0e
 
-	IL_3a00:  nop 
-	IL_3a01:  nop 
-	IL_3a02:  ldarg 1
+	IL_3a09:  br IL_3ac5
 
-	IL_3a06:  nop 
-	IL_3a07:  nop 
-	IL_3a08:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3a0d:  ldstr "^\\+(\\d)+(.)*$"
-	IL_3a12:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3a17:  stloc 1
+	IL_3a0e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral::'.ctor'()
+	IL_3a13:  stloc 108
 
-	IL_3a1b:  nop 
-	IL_3a1c:  nop 
-	IL_3a1d:  ldloc 4
+	IL_3a17:  nop 
+	IL_3a18:  nop 
+	IL_3a19:  ldloc 108
 
-	IL_3a21:  nop 
-	IL_3a22:  nop 
-	IL_3a23:  ldloc 1
+	IL_3a1d:  nop 
+	IL_3a1e:  nop 
+	IL_3a1f:  ldarg 1
 
-	IL_3a27:  nop 
-	IL_3a28:  nop 
-	IL_3a29:  or 
-	IL_3a2a:  stloc 4
+	IL_3a23:  nop 
+	IL_3a24:  nop 
+	IL_3a25:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3a2a:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3a2f:  ldarg 1
 
-	IL_3a2e:  nop 
-	IL_3a2f:  nop 
-	IL_3a30:  ldarg 1
-
+	IL_3a33:  nop 
 	IL_3a34:  nop 
-	IL_3a35:  nop 
-	IL_3a36:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3a3b:  ldstr "^-(\\d)+(.)*$"
-	IL_3a40:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3a45:  stloc 1
+	IL_3a35:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3a3a:  stloc 2
 
-	IL_3a49:  nop 
-	IL_3a4a:  nop 
-	IL_3a4b:  ldloc 4
+	IL_3a3e:  nop 
+	IL_3a3f:  nop 
+	IL_3a40:  ldc.i4 1
+	IL_3a45:  conv.u 
+	IL_3a46:  newarr [mscorlib]System.Char
+	IL_3a4b:  stloc 3
 
 	IL_3a4f:  nop 
 	IL_3a50:  nop 
-	IL_3a51:  ldloc 1
+	IL_3a51:  ldloc 3
 
 	IL_3a55:  nop 
 	IL_3a56:  nop 
-	IL_3a57:  or 
-	IL_3a58:  stloc 4
+	IL_3a57:  ldc.i4 0
+	IL_3a5c:  conv.u 
+	IL_3a5d:  ldstr "f"
+	IL_3a62:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_3a67:  stelem [mscorlib]System.Char
+	IL_3a6c:  ldloc 2
 
-	IL_3a5c:  nop 
-	IL_3a5d:  nop 
-	IL_3a5e:  ldarg 1
+	IL_3a70:  nop 
+	IL_3a71:  nop 
+	IL_3a72:  ldloc 3
 
-	IL_3a62:  nop 
-	IL_3a63:  nop 
-	IL_3a64:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3a69:  stloc 2
+	IL_3a76:  nop 
+	IL_3a77:  nop 
+	IL_3a78:  callvirt instance string string::TrimEnd(char[])
+	IL_3a7d:  stloc 2
 
-	IL_3a6d:  nop 
-	IL_3a6e:  nop 
-	IL_3a6f:  ldloc 2
+	IL_3a81:  nop 
+	IL_3a82:  nop 
+	IL_3a83:  ldloc 108
 
-	IL_3a73:  nop 
-	IL_3a74:  nop 
-	IL_3a75:  ldstr "f"
-	IL_3a7a:  callvirt instance bool string::EndsWith(string)
-	IL_3a7f:  stloc 1
+	IL_3a87:  nop 
+	IL_3a88:  nop 
+	IL_3a89:  ldloc 2
 
-	IL_3a83:  nop 
-	IL_3a84:  nop 
-	IL_3a85:  ldloc 4
+	IL_3a8d:  nop 
+	IL_3a8e:  nop 
+	IL_3a8f:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3a94:  ldloc 108
 
-	IL_3a89:  nop 
-	IL_3a8a:  nop 
-	IL_3a8b:  ldloc 1
+	IL_3a98:  nop 
+	IL_3a99:  nop 
+	IL_3a9a:  ldloc 108
 
-	IL_3a8f:  nop 
-	IL_3a90:  nop 
-	IL_3a91:  and 
-	IL_3a92:  stloc 4
+	IL_3a9e:  nop 
+	IL_3a9f:  nop 
+	IL_3aa0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3aa5:  call float32 class [mscorlib]System.Convert::ToSingle(string)
+	IL_3aaa:  stfld float32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral::NumVal
+	IL_3aaf:  ldloc 108
 
-	IL_3a96:  nop 
-	IL_3a97:  nop 
-	IL_3a98:  ldloc 4
+	IL_3ab3:  nop 
+	IL_3ab4:  nop 
+	IL_3ab5:  starg 1
 
-	IL_3a9c:  nop 
-	IL_3a9d:  nop 
-	IL_3a9e:  ldc.i4 1
-	IL_3aa3:  beq IL_3aad
+	IL_3ab9:  nop 
+	IL_3aba:  nop 
+	IL_3abb:  br IL_4fef
 
-	IL_3aa8:  br IL_3b64
+	IL_3ac0:  br IL_3aca
 
-	IL_3aad:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral::'.ctor'()
-	IL_3ab2:  stloc 104
+	IL_3ac5:  br IL_3aca
 
-	IL_3ab6:  nop 
-	IL_3ab7:  nop 
-	IL_3ab8:  ldloc 104
+	IL_3aca:  ldarg 1
 
-	IL_3abc:  nop 
-	IL_3abd:  nop 
-	IL_3abe:  ldarg 1
+	IL_3ace:  nop 
+	IL_3acf:  nop 
+	IL_3ad0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3ad5:  ldstr "^(\\d)+\\.(\\d)+(.)*$"
+	IL_3ada:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3adf:  stloc 1
 
-	IL_3ac2:  nop 
-	IL_3ac3:  nop 
-	IL_3ac4:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3ac9:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3ace:  ldarg 1
+	IL_3ae3:  nop 
+	IL_3ae4:  nop 
+	IL_3ae5:  ldloc 1
 
-	IL_3ad2:  nop 
-	IL_3ad3:  nop 
-	IL_3ad4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3ad9:  stloc 2
+	IL_3ae9:  nop 
+	IL_3aea:  nop 
+	IL_3aeb:  stloc 4
 
-	IL_3add:  nop 
-	IL_3ade:  nop 
-	IL_3adf:  ldc.i4 1
-	IL_3ae4:  conv.u 
-	IL_3ae5:  newarr [mscorlib]System.Char
-	IL_3aea:  stloc 3
-
-	IL_3aee:  nop 
 	IL_3aef:  nop 
-	IL_3af0:  ldloc 3
+	IL_3af0:  nop 
+	IL_3af1:  ldarg 1
 
-	IL_3af4:  nop 
 	IL_3af5:  nop 
-	IL_3af6:  ldc.i4 0
-	IL_3afb:  conv.u 
-	IL_3afc:  ldstr "f"
-	IL_3b01:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_3b06:  stelem [mscorlib]System.Char
-	IL_3b0b:  ldloc 2
+	IL_3af6:  nop 
+	IL_3af7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3afc:  ldstr "^\\+(\\d)+\\.(\\d)+(.)*$"
+	IL_3b01:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3b06:  stloc 1
 
-	IL_3b0f:  nop 
+	IL_3b0a:  nop 
+	IL_3b0b:  nop 
+	IL_3b0c:  ldloc 4
+
 	IL_3b10:  nop 
-	IL_3b11:  ldloc 3
+	IL_3b11:  nop 
+	IL_3b12:  ldloc 1
 
-	IL_3b15:  nop 
 	IL_3b16:  nop 
-	IL_3b17:  callvirt instance string string::TrimEnd(char[])
-	IL_3b1c:  stloc 2
+	IL_3b17:  nop 
+	IL_3b18:  or 
+	IL_3b19:  stloc 4
 
-	IL_3b20:  nop 
-	IL_3b21:  nop 
-	IL_3b22:  ldloc 104
+	IL_3b1d:  nop 
+	IL_3b1e:  nop 
+	IL_3b1f:  ldarg 1
 
-	IL_3b26:  nop 
-	IL_3b27:  nop 
-	IL_3b28:  ldloc 2
+	IL_3b23:  nop 
+	IL_3b24:  nop 
+	IL_3b25:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3b2a:  ldstr "^-(\\d)+\\.(\\d)+(.)*$"
+	IL_3b2f:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3b34:  stloc 1
 
-	IL_3b2c:  nop 
-	IL_3b2d:  nop 
-	IL_3b2e:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3b33:  ldloc 104
-
-	IL_3b37:  nop 
 	IL_3b38:  nop 
-	IL_3b39:  ldloc 104
+	IL_3b39:  nop 
+	IL_3b3a:  ldloc 4
 
-	IL_3b3d:  nop 
 	IL_3b3e:  nop 
-	IL_3b3f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3b44:  call float32 class [mscorlib]System.Convert::ToSingle(string)
-	IL_3b49:  stfld float32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral::NumVal
-	IL_3b4e:  ldloc 104
+	IL_3b3f:  nop 
+	IL_3b40:  ldloc 1
 
+	IL_3b44:  nop 
+	IL_3b45:  nop 
+	IL_3b46:  or 
+	IL_3b47:  stloc 4
+
+	IL_3b4b:  nop 
+	IL_3b4c:  nop 
+	IL_3b4d:  ldloc 4
+
+	IL_3b51:  nop 
 	IL_3b52:  nop 
-	IL_3b53:  nop 
-	IL_3b54:  starg 1
+	IL_3b53:  ldc.i4 1
+	IL_3b58:  beq IL_3b62
 
-	IL_3b58:  nop 
-	IL_3b59:  nop 
-	IL_3b5a:  br IL_4c61
+	IL_3b5d:  br IL_3bd6
 
-	IL_3b5f:  br IL_3b69
+	IL_3b62:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::'.ctor'()
+	IL_3b67:  stloc 109
 
-	IL_3b64:  br IL_3b69
+	IL_3b6b:  nop 
+	IL_3b6c:  nop 
+	IL_3b6d:  ldloc 109
 
-	IL_3b69:  ldarg 1
+	IL_3b71:  nop 
+	IL_3b72:  nop 
+	IL_3b73:  ldarg 1
 
-	IL_3b6d:  nop 
-	IL_3b6e:  nop 
-	IL_3b6f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3b74:  ldstr "^(\\d)+(.)*$"
-	IL_3b79:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3b7e:  stloc 1
+	IL_3b77:  nop 
+	IL_3b78:  nop 
+	IL_3b79:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3b7e:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3b83:  ldarg 1
 
-	IL_3b82:  nop 
-	IL_3b83:  nop 
-	IL_3b84:  ldloc 1
-
+	IL_3b87:  nop 
 	IL_3b88:  nop 
-	IL_3b89:  nop 
-	IL_3b8a:  stloc 4
+	IL_3b89:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3b8e:  stloc 2
 
-	IL_3b8e:  nop 
-	IL_3b8f:  nop 
-	IL_3b90:  ldarg 1
+	IL_3b92:  nop 
+	IL_3b93:  nop 
+	IL_3b94:  ldloc 109
 
-	IL_3b94:  nop 
-	IL_3b95:  nop 
-	IL_3b96:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3b9b:  ldstr "^\\+(\\d)+(.)*$"
-	IL_3ba0:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3ba5:  stloc 1
+	IL_3b98:  nop 
+	IL_3b99:  nop 
+	IL_3b9a:  ldloc 2
+
+	IL_3b9e:  nop 
+	IL_3b9f:  nop 
+	IL_3ba0:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3ba5:  ldloc 109
 
 	IL_3ba9:  nop 
 	IL_3baa:  nop 
-	IL_3bab:  ldloc 4
+	IL_3bab:  ldloc 109
 
 	IL_3baf:  nop 
 	IL_3bb0:  nop 
-	IL_3bb1:  ldloc 1
+	IL_3bb1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3bb6:  call float64 class [mscorlib]System.Convert::ToDouble(string)
+	IL_3bbb:  stfld float64 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::NumVal
+	IL_3bc0:  ldloc 109
 
-	IL_3bb5:  nop 
-	IL_3bb6:  nop 
-	IL_3bb7:  or 
-	IL_3bb8:  stloc 4
+	IL_3bc4:  nop 
+	IL_3bc5:  nop 
+	IL_3bc6:  starg 1
 
-	IL_3bbc:  nop 
-	IL_3bbd:  nop 
-	IL_3bbe:  ldarg 1
+	IL_3bca:  nop 
+	IL_3bcb:  nop 
+	IL_3bcc:  br IL_4fef
 
-	IL_3bc2:  nop 
-	IL_3bc3:  nop 
-	IL_3bc4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3bc9:  ldstr "^-(\\d)+(.)*$"
-	IL_3bce:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3bd3:  stloc 1
+	IL_3bd1:  br IL_3bdb
 
-	IL_3bd7:  nop 
-	IL_3bd8:  nop 
-	IL_3bd9:  ldloc 4
+	IL_3bd6:  br IL_3bdb
 
-	IL_3bdd:  nop 
-	IL_3bde:  nop 
-	IL_3bdf:  ldloc 1
+	IL_3bdb:  ldarg 1
 
-	IL_3be3:  nop 
-	IL_3be4:  nop 
-	IL_3be5:  or 
-	IL_3be6:  stloc 4
+	IL_3bdf:  nop 
+	IL_3be0:  nop 
+	IL_3be1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3be6:  ldstr "^(\\d)+(.)*$"
+	IL_3beb:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3bf0:  stloc 1
 
-	IL_3bea:  nop 
-	IL_3beb:  nop 
-	IL_3bec:  ldarg 1
+	IL_3bf4:  nop 
+	IL_3bf5:  nop 
+	IL_3bf6:  ldloc 1
 
-	IL_3bf0:  nop 
-	IL_3bf1:  nop 
-	IL_3bf2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3bf7:  stloc 2
-
+	IL_3bfa:  nop 
 	IL_3bfb:  nop 
-	IL_3bfc:  nop 
-	IL_3bfd:  ldloc 2
+	IL_3bfc:  stloc 4
 
+	IL_3c00:  nop 
 	IL_3c01:  nop 
-	IL_3c02:  nop 
-	IL_3c03:  ldstr "ui"
-	IL_3c08:  callvirt instance bool string::EndsWith(string)
-	IL_3c0d:  stloc 1
+	IL_3c02:  ldarg 1
 
-	IL_3c11:  nop 
-	IL_3c12:  nop 
-	IL_3c13:  ldloc 4
+	IL_3c06:  nop 
+	IL_3c07:  nop 
+	IL_3c08:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3c0d:  ldstr "^\\+(\\d)+(.)*$"
+	IL_3c12:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3c17:  stloc 1
 
-	IL_3c17:  nop 
-	IL_3c18:  nop 
-	IL_3c19:  ldloc 1
+	IL_3c1b:  nop 
+	IL_3c1c:  nop 
+	IL_3c1d:  ldloc 4
 
-	IL_3c1d:  nop 
-	IL_3c1e:  nop 
-	IL_3c1f:  and 
-	IL_3c20:  stloc 4
+	IL_3c21:  nop 
+	IL_3c22:  nop 
+	IL_3c23:  ldloc 1
 
-	IL_3c24:  nop 
-	IL_3c25:  nop 
-	IL_3c26:  ldloc 4
+	IL_3c27:  nop 
+	IL_3c28:  nop 
+	IL_3c29:  or 
+	IL_3c2a:  stloc 4
 
-	IL_3c2a:  nop 
-	IL_3c2b:  nop 
-	IL_3c2c:  ldc.i4 1
-	IL_3c31:  beq IL_3c3b
+	IL_3c2e:  nop 
+	IL_3c2f:  nop 
+	IL_3c30:  ldarg 1
 
-	IL_3c36:  br IL_3d24
+	IL_3c34:  nop 
+	IL_3c35:  nop 
+	IL_3c36:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3c3b:  ldstr "^-(\\d)+(.)*$"
+	IL_3c40:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3c45:  stloc 1
 
-	IL_3c3b:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral::'.ctor'()
-	IL_3c40:  stloc 105
-
-	IL_3c44:  nop 
-	IL_3c45:  nop 
-	IL_3c46:  ldloc 105
-
+	IL_3c49:  nop 
 	IL_3c4a:  nop 
-	IL_3c4b:  nop 
-	IL_3c4c:  ldarg 1
+	IL_3c4b:  ldloc 4
 
+	IL_3c4f:  nop 
 	IL_3c50:  nop 
-	IL_3c51:  nop 
-	IL_3c52:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3c57:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3c5c:  ldarg 1
+	IL_3c51:  ldloc 1
 
-	IL_3c60:  nop 
-	IL_3c61:  nop 
-	IL_3c62:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3c67:  stloc 2
+	IL_3c55:  nop 
+	IL_3c56:  nop 
+	IL_3c57:  or 
+	IL_3c58:  stloc 4
 
-	IL_3c6b:  nop 
-	IL_3c6c:  nop 
-	IL_3c6d:  ldc.i4 1
-	IL_3c72:  conv.u 
-	IL_3c73:  newarr [mscorlib]System.Char
-	IL_3c78:  stloc 3
+	IL_3c5c:  nop 
+	IL_3c5d:  nop 
+	IL_3c5e:  ldarg 1
 
-	IL_3c7c:  nop 
-	IL_3c7d:  nop 
-	IL_3c7e:  ldloc 3
+	IL_3c62:  nop 
+	IL_3c63:  nop 
+	IL_3c64:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3c69:  stloc 2
 
-	IL_3c82:  nop 
+	IL_3c6d:  nop 
+	IL_3c6e:  nop 
+	IL_3c6f:  ldloc 2
+
+	IL_3c73:  nop 
+	IL_3c74:  nop 
+	IL_3c75:  ldstr "d"
+	IL_3c7a:  callvirt instance bool string::EndsWith(string)
+	IL_3c7f:  stloc 1
+
 	IL_3c83:  nop 
-	IL_3c84:  ldc.i4 0
-	IL_3c89:  conv.u 
-	IL_3c8a:  ldstr "i"
-	IL_3c8f:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_3c94:  stelem [mscorlib]System.Char
-	IL_3c99:  ldloc 2
+	IL_3c84:  nop 
+	IL_3c85:  ldloc 4
 
+	IL_3c89:  nop 
+	IL_3c8a:  nop 
+	IL_3c8b:  ldloc 1
+
+	IL_3c8f:  nop 
+	IL_3c90:  nop 
+	IL_3c91:  and 
+	IL_3c92:  stloc 4
+
+	IL_3c96:  nop 
+	IL_3c97:  nop 
+	IL_3c98:  ldloc 4
+
+	IL_3c9c:  nop 
 	IL_3c9d:  nop 
-	IL_3c9e:  nop 
-	IL_3c9f:  ldloc 3
+	IL_3c9e:  ldc.i4 1
+	IL_3ca3:  beq IL_3cad
 
-	IL_3ca3:  nop 
-	IL_3ca4:  nop 
-	IL_3ca5:  callvirt instance string string::TrimEnd(char[])
-	IL_3caa:  stloc 2
+	IL_3ca8:  br IL_3d64
 
-	IL_3cae:  nop 
-	IL_3caf:  nop 
-	IL_3cb0:  ldloc 3
+	IL_3cad:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::'.ctor'()
+	IL_3cb2:  stloc 110
 
-	IL_3cb4:  nop 
-	IL_3cb5:  nop 
-	IL_3cb6:  ldc.i4 0
-	IL_3cbb:  conv.u 
-	IL_3cbc:  ldstr "u"
-	IL_3cc1:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_3cc6:  stelem [mscorlib]System.Char
-	IL_3ccb:  ldloc 2
+	IL_3cb6:  nop 
+	IL_3cb7:  nop 
+	IL_3cb8:  ldloc 110
 
-	IL_3ccf:  nop 
-	IL_3cd0:  nop 
-	IL_3cd1:  ldloc 3
+	IL_3cbc:  nop 
+	IL_3cbd:  nop 
+	IL_3cbe:  ldarg 1
 
-	IL_3cd5:  nop 
-	IL_3cd6:  nop 
-	IL_3cd7:  callvirt instance string string::TrimEnd(char[])
-	IL_3cdc:  stloc 2
+	IL_3cc2:  nop 
+	IL_3cc3:  nop 
+	IL_3cc4:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3cc9:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3cce:  ldarg 1
 
-	IL_3ce0:  nop 
-	IL_3ce1:  nop 
-	IL_3ce2:  ldloc 105
+	IL_3cd2:  nop 
+	IL_3cd3:  nop 
+	IL_3cd4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3cd9:  stloc 2
 
-	IL_3ce6:  nop 
-	IL_3ce7:  nop 
-	IL_3ce8:  ldloc 2
+	IL_3cdd:  nop 
+	IL_3cde:  nop 
+	IL_3cdf:  ldc.i4 1
+	IL_3ce4:  conv.u 
+	IL_3ce5:  newarr [mscorlib]System.Char
+	IL_3cea:  stloc 3
 
-	IL_3cec:  nop 
-	IL_3ced:  nop 
-	IL_3cee:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3cf3:  ldloc 105
+	IL_3cee:  nop 
+	IL_3cef:  nop 
+	IL_3cf0:  ldloc 3
 
-	IL_3cf7:  nop 
-	IL_3cf8:  nop 
-	IL_3cf9:  ldloc 105
+	IL_3cf4:  nop 
+	IL_3cf5:  nop 
+	IL_3cf6:  ldc.i4 0
+	IL_3cfb:  conv.u 
+	IL_3cfc:  ldstr "d"
+	IL_3d01:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_3d06:  stelem [mscorlib]System.Char
+	IL_3d0b:  ldloc 2
 
-	IL_3cfd:  nop 
-	IL_3cfe:  nop 
-	IL_3cff:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3d04:  call unsigned int32 class [mscorlib]System.Convert::ToUInt32(string)
-	IL_3d09:  stfld unsigned int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral::NumVal
-	IL_3d0e:  ldloc 105
+	IL_3d0f:  nop 
+	IL_3d10:  nop 
+	IL_3d11:  ldloc 3
 
-	IL_3d12:  nop 
-	IL_3d13:  nop 
-	IL_3d14:  starg 1
+	IL_3d15:  nop 
+	IL_3d16:  nop 
+	IL_3d17:  callvirt instance string string::TrimEnd(char[])
+	IL_3d1c:  stloc 2
 
-	IL_3d18:  nop 
-	IL_3d19:  nop 
-	IL_3d1a:  br IL_4c61
+	IL_3d20:  nop 
+	IL_3d21:  nop 
+	IL_3d22:  ldloc 110
 
-	IL_3d1f:  br IL_3d29
+	IL_3d26:  nop 
+	IL_3d27:  nop 
+	IL_3d28:  ldloc 2
 
-	IL_3d24:  br IL_3d29
-
-	IL_3d29:  ldarg 1
-
+	IL_3d2c:  nop 
 	IL_3d2d:  nop 
-	IL_3d2e:  nop 
-	IL_3d2f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3d34:  ldstr "^(\\d)+(.)*$"
-	IL_3d39:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3d3e:  stloc 1
+	IL_3d2e:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3d33:  ldloc 110
 
-	IL_3d42:  nop 
-	IL_3d43:  nop 
-	IL_3d44:  ldloc 1
+	IL_3d37:  nop 
+	IL_3d38:  nop 
+	IL_3d39:  ldloc 110
 
-	IL_3d48:  nop 
-	IL_3d49:  nop 
-	IL_3d4a:  stloc 4
+	IL_3d3d:  nop 
+	IL_3d3e:  nop 
+	IL_3d3f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3d44:  call float64 class [mscorlib]System.Convert::ToDouble(string)
+	IL_3d49:  stfld float64 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral::NumVal
+	IL_3d4e:  ldloc 110
 
-	IL_3d4e:  nop 
-	IL_3d4f:  nop 
-	IL_3d50:  ldarg 1
+	IL_3d52:  nop 
+	IL_3d53:  nop 
+	IL_3d54:  starg 1
 
-	IL_3d54:  nop 
-	IL_3d55:  nop 
-	IL_3d56:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3d5b:  ldstr "^\\+(\\d)+(.)*$"
-	IL_3d60:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3d65:  stloc 1
+	IL_3d58:  nop 
+	IL_3d59:  nop 
+	IL_3d5a:  br IL_4fef
 
-	IL_3d69:  nop 
-	IL_3d6a:  nop 
-	IL_3d6b:  ldloc 4
+	IL_3d5f:  br IL_3d69
 
-	IL_3d6f:  nop 
-	IL_3d70:  nop 
-	IL_3d71:  ldloc 1
+	IL_3d64:  br IL_3d69
 
-	IL_3d75:  nop 
-	IL_3d76:  nop 
-	IL_3d77:  or 
-	IL_3d78:  stloc 4
+	IL_3d69:  ldarg 1
 
-	IL_3d7c:  nop 
-	IL_3d7d:  nop 
-	IL_3d7e:  ldarg 1
+	IL_3d6d:  nop 
+	IL_3d6e:  nop 
+	IL_3d6f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3d74:  ldstr "^(\\d)+(.)*$"
+	IL_3d79:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3d7e:  stloc 1
 
 	IL_3d82:  nop 
 	IL_3d83:  nop 
-	IL_3d84:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3d89:  ldstr "^-(\\d)+(.)*$"
-	IL_3d8e:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3d93:  stloc 1
+	IL_3d84:  ldloc 1
 
-	IL_3d97:  nop 
-	IL_3d98:  nop 
-	IL_3d99:  ldloc 4
+	IL_3d88:  nop 
+	IL_3d89:  nop 
+	IL_3d8a:  stloc 4
 
-	IL_3d9d:  nop 
-	IL_3d9e:  nop 
-	IL_3d9f:  ldloc 1
+	IL_3d8e:  nop 
+	IL_3d8f:  nop 
+	IL_3d90:  ldarg 1
 
-	IL_3da3:  nop 
-	IL_3da4:  nop 
-	IL_3da5:  or 
-	IL_3da6:  stloc 4
+	IL_3d94:  nop 
+	IL_3d95:  nop 
+	IL_3d96:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3d9b:  ldstr "^\\+(\\d)+(.)*$"
+	IL_3da0:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3da5:  stloc 1
 
+	IL_3da9:  nop 
 	IL_3daa:  nop 
-	IL_3dab:  nop 
-	IL_3dac:  ldarg 1
+	IL_3dab:  ldloc 4
 
+	IL_3daf:  nop 
 	IL_3db0:  nop 
-	IL_3db1:  nop 
-	IL_3db2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3db7:  stloc 2
+	IL_3db1:  ldloc 1
 
-	IL_3dbb:  nop 
+	IL_3db5:  nop 
+	IL_3db6:  nop 
+	IL_3db7:  or 
+	IL_3db8:  stloc 4
+
 	IL_3dbc:  nop 
-	IL_3dbd:  ldloc 2
+	IL_3dbd:  nop 
+	IL_3dbe:  ldarg 1
 
-	IL_3dc1:  nop 
 	IL_3dc2:  nop 
-	IL_3dc3:  ldstr "ip"
-	IL_3dc8:  callvirt instance bool string::EndsWith(string)
-	IL_3dcd:  stloc 1
-
-	IL_3dd1:  nop 
-	IL_3dd2:  nop 
-	IL_3dd3:  ldloc 4
+	IL_3dc3:  nop 
+	IL_3dc4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3dc9:  ldstr "^-(\\d)+(.)*$"
+	IL_3dce:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3dd3:  stloc 1
 
 	IL_3dd7:  nop 
 	IL_3dd8:  nop 
-	IL_3dd9:  ldloc 1
+	IL_3dd9:  ldloc 4
 
 	IL_3ddd:  nop 
 	IL_3dde:  nop 
-	IL_3ddf:  and 
-	IL_3de0:  stloc 4
+	IL_3ddf:  ldloc 1
 
+	IL_3de3:  nop 
 	IL_3de4:  nop 
-	IL_3de5:  nop 
-	IL_3de6:  ldloc 4
+	IL_3de5:  or 
+	IL_3de6:  stloc 4
 
 	IL_3dea:  nop 
 	IL_3deb:  nop 
-	IL_3dec:  ldc.i4 1
-	IL_3df1:  beq IL_3dfb
+	IL_3dec:  ldarg 1
 
-	IL_3df6:  br IL_3ee9
+	IL_3df0:  nop 
+	IL_3df1:  nop 
+	IL_3df2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3df7:  stloc 2
 
-	IL_3dfb:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral::'.ctor'()
-	IL_3e00:  stloc 106
+	IL_3dfb:  nop 
+	IL_3dfc:  nop 
+	IL_3dfd:  ldloc 2
 
-	IL_3e04:  nop 
-	IL_3e05:  nop 
-	IL_3e06:  ldloc 106
+	IL_3e01:  nop 
+	IL_3e02:  nop 
+	IL_3e03:  ldstr "f"
+	IL_3e08:  callvirt instance bool string::EndsWith(string)
+	IL_3e0d:  stloc 1
 
-	IL_3e0a:  nop 
-	IL_3e0b:  nop 
-	IL_3e0c:  ldarg 1
-
-	IL_3e10:  nop 
 	IL_3e11:  nop 
-	IL_3e12:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3e17:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3e1c:  ldarg 1
+	IL_3e12:  nop 
+	IL_3e13:  ldloc 4
 
-	IL_3e20:  nop 
-	IL_3e21:  nop 
-	IL_3e22:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3e27:  stloc 2
+	IL_3e17:  nop 
+	IL_3e18:  nop 
+	IL_3e19:  ldloc 1
 
+	IL_3e1d:  nop 
+	IL_3e1e:  nop 
+	IL_3e1f:  and 
+	IL_3e20:  stloc 4
+
+	IL_3e24:  nop 
+	IL_3e25:  nop 
+	IL_3e26:  ldloc 4
+
+	IL_3e2a:  nop 
 	IL_3e2b:  nop 
-	IL_3e2c:  nop 
-	IL_3e2d:  ldc.i4 1
-	IL_3e32:  conv.u 
-	IL_3e33:  newarr [mscorlib]System.Char
-	IL_3e38:  stloc 3
-
-	IL_3e3c:  nop 
-	IL_3e3d:  nop 
-	IL_3e3e:  ldloc 3
-
-	IL_3e42:  nop 
-	IL_3e43:  nop 
-	IL_3e44:  ldc.i4 0
-	IL_3e49:  conv.u 
-	IL_3e4a:  ldstr "p"
-	IL_3e4f:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_3e54:  stelem [mscorlib]System.Char
-	IL_3e59:  ldloc 2
-
-	IL_3e5d:  nop 
-	IL_3e5e:  nop 
-	IL_3e5f:  ldloc 3
-
-	IL_3e63:  nop 
-	IL_3e64:  nop 
-	IL_3e65:  callvirt instance string string::TrimEnd(char[])
-	IL_3e6a:  stloc 2
-
-	IL_3e6e:  nop 
-	IL_3e6f:  nop 
-	IL_3e70:  ldloc 3
-
-	IL_3e74:  nop 
-	IL_3e75:  nop 
-	IL_3e76:  ldc.i4 0
-	IL_3e7b:  conv.u 
-	IL_3e7c:  ldstr "i"
-	IL_3e81:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_3e86:  stelem [mscorlib]System.Char
-	IL_3e8b:  ldloc 2
-
-	IL_3e8f:  nop 
-	IL_3e90:  nop 
-	IL_3e91:  ldloc 3
-
-	IL_3e95:  nop 
-	IL_3e96:  nop 
-	IL_3e97:  callvirt instance string string::TrimEnd(char[])
-	IL_3e9c:  stloc 2
-
-	IL_3ea0:  nop 
-	IL_3ea1:  nop 
-	IL_3ea2:  ldloc 106
-
-	IL_3ea6:  nop 
-	IL_3ea7:  nop 
-	IL_3ea8:  ldloc 2
-
-	IL_3eac:  nop 
-	IL_3ead:  nop 
-	IL_3eae:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3eb3:  ldloc 106
-
-	IL_3eb7:  nop 
-	IL_3eb8:  nop 
-	IL_3eb9:  ldloc 106
-
-	IL_3ebd:  nop 
-	IL_3ebe:  nop 
-	IL_3ebf:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3ec4:  call int32 class [mscorlib]System.Convert::ToInt32(string)
-	IL_3ec9:  newobj instance void native int::'.ctor'(int32)
-	IL_3ece:  stfld native int [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral::NumVal
-	IL_3ed3:  ldloc 106
-
-	IL_3ed7:  nop 
-	IL_3ed8:  nop 
-	IL_3ed9:  starg 1
-
-	IL_3edd:  nop 
-	IL_3ede:  nop 
-	IL_3edf:  br IL_4c61
-
-	IL_3ee4:  br IL_3eee
-
-	IL_3ee9:  br IL_3eee
-
-	IL_3eee:  ldarg 1
-
-	IL_3ef2:  nop 
-	IL_3ef3:  nop 
-	IL_3ef4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3ef9:  ldstr "^(\\d)+(.)*$"
-	IL_3efe:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3f03:  stloc 1
-
-	IL_3f07:  nop 
-	IL_3f08:  nop 
-	IL_3f09:  ldloc 1
-
-	IL_3f0d:  nop 
-	IL_3f0e:  nop 
-	IL_3f0f:  stloc 4
-
-	IL_3f13:  nop 
-	IL_3f14:  nop 
-	IL_3f15:  ldarg 1
-
-	IL_3f19:  nop 
-	IL_3f1a:  nop 
-	IL_3f1b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3f20:  ldstr "^\\+(\\d)+(.)*$"
-	IL_3f25:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3f2a:  stloc 1
-
-	IL_3f2e:  nop 
-	IL_3f2f:  nop 
-	IL_3f30:  ldloc 4
-
-	IL_3f34:  nop 
-	IL_3f35:  nop 
-	IL_3f36:  ldloc 1
-
-	IL_3f3a:  nop 
-	IL_3f3b:  nop 
-	IL_3f3c:  or 
-	IL_3f3d:  stloc 4
-
-	IL_3f41:  nop 
-	IL_3f42:  nop 
-	IL_3f43:  ldarg 1
-
-	IL_3f47:  nop 
-	IL_3f48:  nop 
-	IL_3f49:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3f4e:  ldstr "^-(\\d)+(.)*$"
-	IL_3f53:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_3f58:  stloc 1
-
-	IL_3f5c:  nop 
-	IL_3f5d:  nop 
-	IL_3f5e:  ldloc 4
-
-	IL_3f62:  nop 
-	IL_3f63:  nop 
-	IL_3f64:  ldloc 1
-
-	IL_3f68:  nop 
-	IL_3f69:  nop 
-	IL_3f6a:  or 
-	IL_3f6b:  stloc 4
-
-	IL_3f6f:  nop 
-	IL_3f70:  nop 
-	IL_3f71:  ldarg 1
-
-	IL_3f75:  nop 
-	IL_3f76:  nop 
-	IL_3f77:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3f7c:  stloc 2
-
-	IL_3f80:  nop 
-	IL_3f81:  nop 
-	IL_3f82:  ldloc 2
-
-	IL_3f86:  nop 
-	IL_3f87:  nop 
-	IL_3f88:  ldstr "i"
-	IL_3f8d:  callvirt instance bool string::EndsWith(string)
-	IL_3f92:  stloc 1
-
-	IL_3f96:  nop 
-	IL_3f97:  nop 
-	IL_3f98:  ldloc 4
-
-	IL_3f9c:  nop 
-	IL_3f9d:  nop 
-	IL_3f9e:  ldloc 1
-
-	IL_3fa2:  nop 
-	IL_3fa3:  nop 
-	IL_3fa4:  and 
-	IL_3fa5:  stloc 4
-
-	IL_3fa9:  nop 
-	IL_3faa:  nop 
-	IL_3fab:  ldloc 4
-
-	IL_3faf:  nop 
-	IL_3fb0:  nop 
-	IL_3fb1:  ldc.i4 1
-	IL_3fb6:  beq IL_3fc0
-
-	IL_3fbb:  br IL_4077
-
-	IL_3fc0:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral::'.ctor'()
-	IL_3fc5:  stloc 107
-
-	IL_3fc9:  nop 
-	IL_3fca:  nop 
-	IL_3fcb:  ldloc 107
-
-	IL_3fcf:  nop 
-	IL_3fd0:  nop 
-	IL_3fd1:  ldarg 1
-
-	IL_3fd5:  nop 
-	IL_3fd6:  nop 
-	IL_3fd7:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3fdc:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_3fe1:  ldarg 1
-
-	IL_3fe5:  nop 
-	IL_3fe6:  nop 
-	IL_3fe7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_3fec:  stloc 2
-
-	IL_3ff0:  nop 
-	IL_3ff1:  nop 
-	IL_3ff2:  ldc.i4 1
-	IL_3ff7:  conv.u 
-	IL_3ff8:  newarr [mscorlib]System.Char
-	IL_3ffd:  stloc 3
-
-	IL_4001:  nop 
-	IL_4002:  nop 
-	IL_4003:  ldloc 3
-
-	IL_4007:  nop 
-	IL_4008:  nop 
-	IL_4009:  ldc.i4 0
-	IL_400e:  conv.u 
-	IL_400f:  ldstr "i"
-	IL_4014:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_4019:  stelem [mscorlib]System.Char
-	IL_401e:  ldloc 2
-
-	IL_4022:  nop 
-	IL_4023:  nop 
-	IL_4024:  ldloc 3
-
-	IL_4028:  nop 
-	IL_4029:  nop 
-	IL_402a:  callvirt instance string string::TrimEnd(char[])
-	IL_402f:  stloc 2
-
-	IL_4033:  nop 
-	IL_4034:  nop 
-	IL_4035:  ldloc 107
-
-	IL_4039:  nop 
-	IL_403a:  nop 
-	IL_403b:  ldloc 2
-
-	IL_403f:  nop 
-	IL_4040:  nop 
-	IL_4041:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4046:  ldloc 107
-
-	IL_404a:  nop 
-	IL_404b:  nop 
-	IL_404c:  ldloc 107
-
-	IL_4050:  nop 
-	IL_4051:  nop 
-	IL_4052:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4057:  call int32 class [mscorlib]System.Convert::ToInt32(string)
-	IL_405c:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral::NumVal
-	IL_4061:  ldloc 107
-
-	IL_4065:  nop 
-	IL_4066:  nop 
-	IL_4067:  starg 1
-
-	IL_406b:  nop 
-	IL_406c:  nop 
-	IL_406d:  br IL_4c61
-
-	IL_4072:  br IL_407c
-
-	IL_4077:  br IL_407c
-
-	IL_407c:  ldarg 1
-
-	IL_4080:  nop 
-	IL_4081:  nop 
-	IL_4082:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4087:  ldstr "^(\\d)+(.)*$"
-	IL_408c:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4091:  stloc 1
-
-	IL_4095:  nop 
-	IL_4096:  nop 
-	IL_4097:  ldloc 1
-
-	IL_409b:  nop 
-	IL_409c:  nop 
-	IL_409d:  stloc 4
-
+	IL_3e2c:  ldc.i4 1
+	IL_3e31:  beq IL_3e3b
+
+	IL_3e36:  br IL_3ef2
+
+	IL_3e3b:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral::'.ctor'()
+	IL_3e40:  stloc 111
+
+	IL_3e44:  nop 
+	IL_3e45:  nop 
+	IL_3e46:  ldloc 111
+
+	IL_3e4a:  nop 
+	IL_3e4b:  nop 
+	IL_3e4c:  ldarg 1
+
+	IL_3e50:  nop 
+	IL_3e51:  nop 
+	IL_3e52:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3e57:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3e5c:  ldarg 1
+
+	IL_3e60:  nop 
+	IL_3e61:  nop 
+	IL_3e62:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3e67:  stloc 2
+
+	IL_3e6b:  nop 
+	IL_3e6c:  nop 
+	IL_3e6d:  ldc.i4 1
+	IL_3e72:  conv.u 
+	IL_3e73:  newarr [mscorlib]System.Char
+	IL_3e78:  stloc 3
+
+	IL_3e7c:  nop 
+	IL_3e7d:  nop 
+	IL_3e7e:  ldloc 3
+
+	IL_3e82:  nop 
+	IL_3e83:  nop 
+	IL_3e84:  ldc.i4 0
+	IL_3e89:  conv.u 
+	IL_3e8a:  ldstr "f"
+	IL_3e8f:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_3e94:  stelem [mscorlib]System.Char
+	IL_3e99:  ldloc 2
+
+	IL_3e9d:  nop 
+	IL_3e9e:  nop 
+	IL_3e9f:  ldloc 3
+
+	IL_3ea3:  nop 
+	IL_3ea4:  nop 
+	IL_3ea5:  callvirt instance string string::TrimEnd(char[])
+	IL_3eaa:  stloc 2
+
+	IL_3eae:  nop 
+	IL_3eaf:  nop 
+	IL_3eb0:  ldloc 111
+
+	IL_3eb4:  nop 
+	IL_3eb5:  nop 
+	IL_3eb6:  ldloc 2
+
+	IL_3eba:  nop 
+	IL_3ebb:  nop 
+	IL_3ebc:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3ec1:  ldloc 111
+
+	IL_3ec5:  nop 
+	IL_3ec6:  nop 
+	IL_3ec7:  ldloc 111
+
+	IL_3ecb:  nop 
+	IL_3ecc:  nop 
+	IL_3ecd:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3ed2:  call float32 class [mscorlib]System.Convert::ToSingle(string)
+	IL_3ed7:  stfld float32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral::NumVal
+	IL_3edc:  ldloc 111
+
+	IL_3ee0:  nop 
+	IL_3ee1:  nop 
+	IL_3ee2:  starg 1
+
+	IL_3ee6:  nop 
+	IL_3ee7:  nop 
+	IL_3ee8:  br IL_4fef
+
+	IL_3eed:  br IL_3ef7
+
+	IL_3ef2:  br IL_3ef7
+
+	IL_3ef7:  ldarg 1
+
+	IL_3efb:  nop 
+	IL_3efc:  nop 
+	IL_3efd:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3f02:  ldstr "^(\\d)+(.)*$"
+	IL_3f07:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3f0c:  stloc 1
+
+	IL_3f10:  nop 
+	IL_3f11:  nop 
+	IL_3f12:  ldloc 1
+
+	IL_3f16:  nop 
+	IL_3f17:  nop 
+	IL_3f18:  stloc 4
+
+	IL_3f1c:  nop 
+	IL_3f1d:  nop 
+	IL_3f1e:  ldarg 1
+
+	IL_3f22:  nop 
+	IL_3f23:  nop 
+	IL_3f24:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3f29:  ldstr "^\\+(\\d)+(.)*$"
+	IL_3f2e:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3f33:  stloc 1
+
+	IL_3f37:  nop 
+	IL_3f38:  nop 
+	IL_3f39:  ldloc 4
+
+	IL_3f3d:  nop 
+	IL_3f3e:  nop 
+	IL_3f3f:  ldloc 1
+
+	IL_3f43:  nop 
+	IL_3f44:  nop 
+	IL_3f45:  or 
+	IL_3f46:  stloc 4
+
+	IL_3f4a:  nop 
+	IL_3f4b:  nop 
+	IL_3f4c:  ldarg 1
+
+	IL_3f50:  nop 
+	IL_3f51:  nop 
+	IL_3f52:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3f57:  ldstr "^-(\\d)+(.)*$"
+	IL_3f5c:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_3f61:  stloc 1
+
+	IL_3f65:  nop 
+	IL_3f66:  nop 
+	IL_3f67:  ldloc 4
+
+	IL_3f6b:  nop 
+	IL_3f6c:  nop 
+	IL_3f6d:  ldloc 1
+
+	IL_3f71:  nop 
+	IL_3f72:  nop 
+	IL_3f73:  or 
+	IL_3f74:  stloc 4
+
+	IL_3f78:  nop 
+	IL_3f79:  nop 
+	IL_3f7a:  ldarg 1
+
+	IL_3f7e:  nop 
+	IL_3f7f:  nop 
+	IL_3f80:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3f85:  stloc 2
+
+	IL_3f89:  nop 
+	IL_3f8a:  nop 
+	IL_3f8b:  ldloc 2
+
+	IL_3f8f:  nop 
+	IL_3f90:  nop 
+	IL_3f91:  ldstr "ui"
+	IL_3f96:  callvirt instance bool string::EndsWith(string)
+	IL_3f9b:  stloc 1
+
+	IL_3f9f:  nop 
+	IL_3fa0:  nop 
+	IL_3fa1:  ldloc 4
+
+	IL_3fa5:  nop 
+	IL_3fa6:  nop 
+	IL_3fa7:  ldloc 1
+
+	IL_3fab:  nop 
+	IL_3fac:  nop 
+	IL_3fad:  and 
+	IL_3fae:  stloc 4
+
+	IL_3fb2:  nop 
+	IL_3fb3:  nop 
+	IL_3fb4:  ldloc 4
+
+	IL_3fb8:  nop 
+	IL_3fb9:  nop 
+	IL_3fba:  ldc.i4 1
+	IL_3fbf:  beq IL_3fc9
+
+	IL_3fc4:  br IL_40b2
+
+	IL_3fc9:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral::'.ctor'()
+	IL_3fce:  stloc 112
+
+	IL_3fd2:  nop 
+	IL_3fd3:  nop 
+	IL_3fd4:  ldloc 112
+
+	IL_3fd8:  nop 
+	IL_3fd9:  nop 
+	IL_3fda:  ldarg 1
+
+	IL_3fde:  nop 
+	IL_3fdf:  nop 
+	IL_3fe0:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3fe5:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_3fea:  ldarg 1
+
+	IL_3fee:  nop 
+	IL_3fef:  nop 
+	IL_3ff0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_3ff5:  stloc 2
+
+	IL_3ff9:  nop 
+	IL_3ffa:  nop 
+	IL_3ffb:  ldc.i4 1
+	IL_4000:  conv.u 
+	IL_4001:  newarr [mscorlib]System.Char
+	IL_4006:  stloc 3
+
+	IL_400a:  nop 
+	IL_400b:  nop 
+	IL_400c:  ldloc 3
+
+	IL_4010:  nop 
+	IL_4011:  nop 
+	IL_4012:  ldc.i4 0
+	IL_4017:  conv.u 
+	IL_4018:  ldstr "i"
+	IL_401d:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_4022:  stelem [mscorlib]System.Char
+	IL_4027:  ldloc 2
+
+	IL_402b:  nop 
+	IL_402c:  nop 
+	IL_402d:  ldloc 3
+
+	IL_4031:  nop 
+	IL_4032:  nop 
+	IL_4033:  callvirt instance string string::TrimEnd(char[])
+	IL_4038:  stloc 2
+
+	IL_403c:  nop 
+	IL_403d:  nop 
+	IL_403e:  ldloc 3
+
+	IL_4042:  nop 
+	IL_4043:  nop 
+	IL_4044:  ldc.i4 0
+	IL_4049:  conv.u 
+	IL_404a:  ldstr "u"
+	IL_404f:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_4054:  stelem [mscorlib]System.Char
+	IL_4059:  ldloc 2
+
+	IL_405d:  nop 
+	IL_405e:  nop 
+	IL_405f:  ldloc 3
+
+	IL_4063:  nop 
+	IL_4064:  nop 
+	IL_4065:  callvirt instance string string::TrimEnd(char[])
+	IL_406a:  stloc 2
+
+	IL_406e:  nop 
+	IL_406f:  nop 
+	IL_4070:  ldloc 112
+
+	IL_4074:  nop 
+	IL_4075:  nop 
+	IL_4076:  ldloc 2
+
+	IL_407a:  nop 
+	IL_407b:  nop 
+	IL_407c:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4081:  ldloc 112
+
+	IL_4085:  nop 
+	IL_4086:  nop 
+	IL_4087:  ldloc 112
+
+	IL_408b:  nop 
+	IL_408c:  nop 
+	IL_408d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4092:  call unsigned int32 class [mscorlib]System.Convert::ToUInt32(string)
+	IL_4097:  stfld unsigned int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral::NumVal
+	IL_409c:  ldloc 112
+
+	IL_40a0:  nop 
 	IL_40a1:  nop 
-	IL_40a2:  nop 
-	IL_40a3:  ldarg 1
+	IL_40a2:  starg 1
 
+	IL_40a6:  nop 
 	IL_40a7:  nop 
-	IL_40a8:  nop 
-	IL_40a9:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_40ae:  ldstr "^\\+(\\d)+(.)*$"
-	IL_40b3:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_40b8:  stloc 1
+	IL_40a8:  br IL_4fef
 
+	IL_40ad:  br IL_40b7
+
+	IL_40b2:  br IL_40b7
+
+	IL_40b7:  ldarg 1
+
+	IL_40bb:  nop 
 	IL_40bc:  nop 
-	IL_40bd:  nop 
-	IL_40be:  ldloc 4
+	IL_40bd:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_40c2:  ldstr "^(\\d)+(.)*$"
+	IL_40c7:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_40cc:  stloc 1
 
-	IL_40c2:  nop 
-	IL_40c3:  nop 
-	IL_40c4:  ldloc 1
-
-	IL_40c8:  nop 
-	IL_40c9:  nop 
-	IL_40ca:  or 
-	IL_40cb:  stloc 4
-
-	IL_40cf:  nop 
 	IL_40d0:  nop 
-	IL_40d1:  ldarg 1
+	IL_40d1:  nop 
+	IL_40d2:  ldloc 1
 
-	IL_40d5:  nop 
 	IL_40d6:  nop 
-	IL_40d7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_40dc:  ldstr "^-(\\d)+(.)*$"
-	IL_40e1:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_40e6:  stloc 1
+	IL_40d7:  nop 
+	IL_40d8:  stloc 4
 
-	IL_40ea:  nop 
-	IL_40eb:  nop 
-	IL_40ec:  ldloc 4
+	IL_40dc:  nop 
+	IL_40dd:  nop 
+	IL_40de:  ldarg 1
 
-	IL_40f0:  nop 
-	IL_40f1:  nop 
-	IL_40f2:  ldloc 1
+	IL_40e2:  nop 
+	IL_40e3:  nop 
+	IL_40e4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_40e9:  ldstr "^\\+(\\d)+(.)*$"
+	IL_40ee:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_40f3:  stloc 1
 
-	IL_40f6:  nop 
 	IL_40f7:  nop 
-	IL_40f8:  or 
-	IL_40f9:  stloc 4
+	IL_40f8:  nop 
+	IL_40f9:  ldloc 4
 
 	IL_40fd:  nop 
 	IL_40fe:  nop 
-	IL_40ff:  ldarg 1
+	IL_40ff:  ldloc 1
 
 	IL_4103:  nop 
 	IL_4104:  nop 
-	IL_4105:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_410a:  stloc 2
+	IL_4105:  or 
+	IL_4106:  stloc 4
 
-	IL_410e:  nop 
-	IL_410f:  nop 
-	IL_4110:  ldloc 2
+	IL_410a:  nop 
+	IL_410b:  nop 
+	IL_410c:  ldarg 1
 
-	IL_4114:  nop 
-	IL_4115:  nop 
-	IL_4116:  ldstr "ul"
-	IL_411b:  callvirt instance bool string::EndsWith(string)
-	IL_4120:  stloc 1
+	IL_4110:  nop 
+	IL_4111:  nop 
+	IL_4112:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4117:  ldstr "^-(\\d)+(.)*$"
+	IL_411c:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4121:  stloc 1
 
-	IL_4124:  nop 
 	IL_4125:  nop 
-	IL_4126:  ldloc 4
+	IL_4126:  nop 
+	IL_4127:  ldloc 4
 
-	IL_412a:  nop 
 	IL_412b:  nop 
-	IL_412c:  ldloc 1
+	IL_412c:  nop 
+	IL_412d:  ldloc 1
 
-	IL_4130:  nop 
 	IL_4131:  nop 
-	IL_4132:  and 
-	IL_4133:  stloc 4
+	IL_4132:  nop 
+	IL_4133:  or 
+	IL_4134:  stloc 4
 
-	IL_4137:  nop 
 	IL_4138:  nop 
-	IL_4139:  ldloc 4
+	IL_4139:  nop 
+	IL_413a:  ldarg 1
 
-	IL_413d:  nop 
 	IL_413e:  nop 
-	IL_413f:  ldc.i4 1
-	IL_4144:  beq IL_414e
+	IL_413f:  nop 
+	IL_4140:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4145:  stloc 2
 
-	IL_4149:  br IL_4237
+	IL_4149:  nop 
+	IL_414a:  nop 
+	IL_414b:  ldloc 2
 
-	IL_414e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral::'.ctor'()
-	IL_4153:  stloc 108
+	IL_414f:  nop 
+	IL_4150:  nop 
+	IL_4151:  ldstr "ip"
+	IL_4156:  callvirt instance bool string::EndsWith(string)
+	IL_415b:  stloc 1
 
-	IL_4157:  nop 
-	IL_4158:  nop 
-	IL_4159:  ldloc 108
+	IL_415f:  nop 
+	IL_4160:  nop 
+	IL_4161:  ldloc 4
 
-	IL_415d:  nop 
-	IL_415e:  nop 
-	IL_415f:  ldarg 1
+	IL_4165:  nop 
+	IL_4166:  nop 
+	IL_4167:  ldloc 1
 
-	IL_4163:  nop 
-	IL_4164:  nop 
-	IL_4165:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_416a:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_416f:  ldarg 1
+	IL_416b:  nop 
+	IL_416c:  nop 
+	IL_416d:  and 
+	IL_416e:  stloc 4
 
+	IL_4172:  nop 
 	IL_4173:  nop 
-	IL_4174:  nop 
-	IL_4175:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_417a:  stloc 2
+	IL_4174:  ldloc 4
 
-	IL_417e:  nop 
-	IL_417f:  nop 
-	IL_4180:  ldc.i4 1
-	IL_4185:  conv.u 
-	IL_4186:  newarr [mscorlib]System.Char
-	IL_418b:  stloc 3
+	IL_4178:  nop 
+	IL_4179:  nop 
+	IL_417a:  ldc.i4 1
+	IL_417f:  beq IL_4189
 
-	IL_418f:  nop 
-	IL_4190:  nop 
-	IL_4191:  ldloc 3
+	IL_4184:  br IL_4277
 
-	IL_4195:  nop 
-	IL_4196:  nop 
-	IL_4197:  ldc.i4 0
-	IL_419c:  conv.u 
-	IL_419d:  ldstr "l"
-	IL_41a2:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_41a7:  stelem [mscorlib]System.Char
-	IL_41ac:  ldloc 2
+	IL_4189:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral::'.ctor'()
+	IL_418e:  stloc 113
 
-	IL_41b0:  nop 
-	IL_41b1:  nop 
-	IL_41b2:  ldloc 3
+	IL_4192:  nop 
+	IL_4193:  nop 
+	IL_4194:  ldloc 113
 
-	IL_41b6:  nop 
-	IL_41b7:  nop 
-	IL_41b8:  callvirt instance string string::TrimEnd(char[])
-	IL_41bd:  stloc 2
+	IL_4198:  nop 
+	IL_4199:  nop 
+	IL_419a:  ldarg 1
 
-	IL_41c1:  nop 
-	IL_41c2:  nop 
-	IL_41c3:  ldloc 3
+	IL_419e:  nop 
+	IL_419f:  nop 
+	IL_41a0:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_41a5:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_41aa:  ldarg 1
 
-	IL_41c7:  nop 
-	IL_41c8:  nop 
-	IL_41c9:  ldc.i4 0
-	IL_41ce:  conv.u 
-	IL_41cf:  ldstr "u"
-	IL_41d4:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_41d9:  stelem [mscorlib]System.Char
-	IL_41de:  ldloc 2
+	IL_41ae:  nop 
+	IL_41af:  nop 
+	IL_41b0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_41b5:  stloc 2
 
-	IL_41e2:  nop 
-	IL_41e3:  nop 
-	IL_41e4:  ldloc 3
+	IL_41b9:  nop 
+	IL_41ba:  nop 
+	IL_41bb:  ldc.i4 1
+	IL_41c0:  conv.u 
+	IL_41c1:  newarr [mscorlib]System.Char
+	IL_41c6:  stloc 3
 
-	IL_41e8:  nop 
-	IL_41e9:  nop 
-	IL_41ea:  callvirt instance string string::TrimEnd(char[])
-	IL_41ef:  stloc 2
+	IL_41ca:  nop 
+	IL_41cb:  nop 
+	IL_41cc:  ldloc 3
 
-	IL_41f3:  nop 
-	IL_41f4:  nop 
-	IL_41f5:  ldloc 108
+	IL_41d0:  nop 
+	IL_41d1:  nop 
+	IL_41d2:  ldc.i4 0
+	IL_41d7:  conv.u 
+	IL_41d8:  ldstr "p"
+	IL_41dd:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_41e2:  stelem [mscorlib]System.Char
+	IL_41e7:  ldloc 2
 
-	IL_41f9:  nop 
-	IL_41fa:  nop 
-	IL_41fb:  ldloc 2
+	IL_41eb:  nop 
+	IL_41ec:  nop 
+	IL_41ed:  ldloc 3
 
-	IL_41ff:  nop 
-	IL_4200:  nop 
-	IL_4201:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4206:  ldloc 108
+	IL_41f1:  nop 
+	IL_41f2:  nop 
+	IL_41f3:  callvirt instance string string::TrimEnd(char[])
+	IL_41f8:  stloc 2
 
-	IL_420a:  nop 
-	IL_420b:  nop 
-	IL_420c:  ldloc 108
+	IL_41fc:  nop 
+	IL_41fd:  nop 
+	IL_41fe:  ldloc 3
 
-	IL_4210:  nop 
-	IL_4211:  nop 
-	IL_4212:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4217:  call unsigned int64 class [mscorlib]System.Convert::ToUInt64(string)
-	IL_421c:  stfld unsigned int64 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral::NumVal
-	IL_4221:  ldloc 108
+	IL_4202:  nop 
+	IL_4203:  nop 
+	IL_4204:  ldc.i4 0
+	IL_4209:  conv.u 
+	IL_420a:  ldstr "i"
+	IL_420f:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_4214:  stelem [mscorlib]System.Char
+	IL_4219:  ldloc 2
 
-	IL_4225:  nop 
-	IL_4226:  nop 
-	IL_4227:  starg 1
+	IL_421d:  nop 
+	IL_421e:  nop 
+	IL_421f:  ldloc 3
 
-	IL_422b:  nop 
-	IL_422c:  nop 
-	IL_422d:  br IL_4c61
+	IL_4223:  nop 
+	IL_4224:  nop 
+	IL_4225:  callvirt instance string string::TrimEnd(char[])
+	IL_422a:  stloc 2
 
-	IL_4232:  br IL_423c
+	IL_422e:  nop 
+	IL_422f:  nop 
+	IL_4230:  ldloc 113
 
-	IL_4237:  br IL_423c
+	IL_4234:  nop 
+	IL_4235:  nop 
+	IL_4236:  ldloc 2
 
-	IL_423c:  ldarg 1
+	IL_423a:  nop 
+	IL_423b:  nop 
+	IL_423c:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4241:  ldloc 113
 
-	IL_4240:  nop 
-	IL_4241:  nop 
-	IL_4242:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4247:  ldstr "^(\\d)+(.)*$"
-	IL_424c:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4251:  stloc 1
+	IL_4245:  nop 
+	IL_4246:  nop 
+	IL_4247:  ldloc 113
 
-	IL_4255:  nop 
-	IL_4256:  nop 
-	IL_4257:  ldloc 1
+	IL_424b:  nop 
+	IL_424c:  nop 
+	IL_424d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4252:  call int32 class [mscorlib]System.Convert::ToInt32(string)
+	IL_4257:  newobj instance void native int::'.ctor'(int32)
+	IL_425c:  stfld native int [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral::NumVal
+	IL_4261:  ldloc 113
 
-	IL_425b:  nop 
-	IL_425c:  nop 
-	IL_425d:  stloc 4
+	IL_4265:  nop 
+	IL_4266:  nop 
+	IL_4267:  starg 1
 
-	IL_4261:  nop 
-	IL_4262:  nop 
-	IL_4263:  ldarg 1
+	IL_426b:  nop 
+	IL_426c:  nop 
+	IL_426d:  br IL_4fef
 
-	IL_4267:  nop 
-	IL_4268:  nop 
-	IL_4269:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_426e:  ldstr "^\\+(\\d)+(.)*$"
-	IL_4273:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4278:  stloc 1
+	IL_4272:  br IL_427c
 
-	IL_427c:  nop 
-	IL_427d:  nop 
-	IL_427e:  ldloc 4
+	IL_4277:  br IL_427c
 
-	IL_4282:  nop 
-	IL_4283:  nop 
-	IL_4284:  ldloc 1
+	IL_427c:  ldarg 1
 
-	IL_4288:  nop 
-	IL_4289:  nop 
-	IL_428a:  or 
-	IL_428b:  stloc 4
-
-	IL_428f:  nop 
-	IL_4290:  nop 
-	IL_4291:  ldarg 1
+	IL_4280:  nop 
+	IL_4281:  nop 
+	IL_4282:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4287:  ldstr "^(\\d)+(.)*$"
+	IL_428c:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4291:  stloc 1
 
 	IL_4295:  nop 
 	IL_4296:  nop 
-	IL_4297:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_429c:  ldstr "^-(\\d)+(.)*$"
-	IL_42a1:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_42a6:  stloc 1
+	IL_4297:  ldloc 1
 
-	IL_42aa:  nop 
-	IL_42ab:  nop 
-	IL_42ac:  ldloc 4
+	IL_429b:  nop 
+	IL_429c:  nop 
+	IL_429d:  stloc 4
 
-	IL_42b0:  nop 
-	IL_42b1:  nop 
-	IL_42b2:  ldloc 1
+	IL_42a1:  nop 
+	IL_42a2:  nop 
+	IL_42a3:  ldarg 1
 
-	IL_42b6:  nop 
-	IL_42b7:  nop 
-	IL_42b8:  or 
-	IL_42b9:  stloc 4
+	IL_42a7:  nop 
+	IL_42a8:  nop 
+	IL_42a9:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_42ae:  ldstr "^\\+(\\d)+(.)*$"
+	IL_42b3:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_42b8:  stloc 1
 
+	IL_42bc:  nop 
 	IL_42bd:  nop 
-	IL_42be:  nop 
-	IL_42bf:  ldarg 1
+	IL_42be:  ldloc 4
 
+	IL_42c2:  nop 
 	IL_42c3:  nop 
-	IL_42c4:  nop 
-	IL_42c5:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_42ca:  stloc 2
+	IL_42c4:  ldloc 1
 
-	IL_42ce:  nop 
+	IL_42c8:  nop 
+	IL_42c9:  nop 
+	IL_42ca:  or 
+	IL_42cb:  stloc 4
+
 	IL_42cf:  nop 
-	IL_42d0:  ldloc 2
+	IL_42d0:  nop 
+	IL_42d1:  ldarg 1
 
-	IL_42d4:  nop 
 	IL_42d5:  nop 
-	IL_42d6:  ldstr "l"
-	IL_42db:  callvirt instance bool string::EndsWith(string)
-	IL_42e0:  stloc 1
-
-	IL_42e4:  nop 
-	IL_42e5:  nop 
-	IL_42e6:  ldloc 4
+	IL_42d6:  nop 
+	IL_42d7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_42dc:  ldstr "^-(\\d)+(.)*$"
+	IL_42e1:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_42e6:  stloc 1
 
 	IL_42ea:  nop 
 	IL_42eb:  nop 
-	IL_42ec:  ldloc 1
+	IL_42ec:  ldloc 4
 
 	IL_42f0:  nop 
 	IL_42f1:  nop 
-	IL_42f2:  and 
-	IL_42f3:  stloc 4
+	IL_42f2:  ldloc 1
 
+	IL_42f6:  nop 
 	IL_42f7:  nop 
-	IL_42f8:  nop 
-	IL_42f9:  ldloc 4
+	IL_42f8:  or 
+	IL_42f9:  stloc 4
 
 	IL_42fd:  nop 
 	IL_42fe:  nop 
-	IL_42ff:  ldc.i4 1
-	IL_4304:  beq IL_430e
+	IL_42ff:  ldarg 1
 
-	IL_4309:  br IL_43c5
+	IL_4303:  nop 
+	IL_4304:  nop 
+	IL_4305:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_430a:  stloc 2
 
-	IL_430e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.LongLiteral::'.ctor'()
-	IL_4313:  stloc 109
+	IL_430e:  nop 
+	IL_430f:  nop 
+	IL_4310:  ldloc 2
 
-	IL_4317:  nop 
-	IL_4318:  nop 
-	IL_4319:  ldloc 109
+	IL_4314:  nop 
+	IL_4315:  nop 
+	IL_4316:  ldstr "i"
+	IL_431b:  callvirt instance bool string::EndsWith(string)
+	IL_4320:  stloc 1
 
-	IL_431d:  nop 
-	IL_431e:  nop 
-	IL_431f:  ldarg 1
-
-	IL_4323:  nop 
 	IL_4324:  nop 
-	IL_4325:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_432a:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_432f:  ldarg 1
+	IL_4325:  nop 
+	IL_4326:  ldloc 4
 
-	IL_4333:  nop 
-	IL_4334:  nop 
-	IL_4335:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_433a:  stloc 2
+	IL_432a:  nop 
+	IL_432b:  nop 
+	IL_432c:  ldloc 1
 
+	IL_4330:  nop 
+	IL_4331:  nop 
+	IL_4332:  and 
+	IL_4333:  stloc 4
+
+	IL_4337:  nop 
+	IL_4338:  nop 
+	IL_4339:  ldloc 4
+
+	IL_433d:  nop 
 	IL_433e:  nop 
-	IL_433f:  nop 
-	IL_4340:  ldc.i4 1
-	IL_4345:  conv.u 
-	IL_4346:  newarr [mscorlib]System.Char
-	IL_434b:  stloc 3
+	IL_433f:  ldc.i4 1
+	IL_4344:  beq IL_434e
 
-	IL_434f:  nop 
-	IL_4350:  nop 
-	IL_4351:  ldloc 3
+	IL_4349:  br IL_4405
 
-	IL_4355:  nop 
-	IL_4356:  nop 
-	IL_4357:  ldc.i4 0
-	IL_435c:  conv.u 
-	IL_435d:  ldstr "l"
-	IL_4362:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_4367:  stelem [mscorlib]System.Char
-	IL_436c:  ldloc 2
+	IL_434e:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral::'.ctor'()
+	IL_4353:  stloc 114
 
-	IL_4370:  nop 
-	IL_4371:  nop 
-	IL_4372:  ldloc 3
+	IL_4357:  nop 
+	IL_4358:  nop 
+	IL_4359:  ldloc 114
 
-	IL_4376:  nop 
-	IL_4377:  nop 
-	IL_4378:  callvirt instance string string::TrimEnd(char[])
-	IL_437d:  stloc 2
+	IL_435d:  nop 
+	IL_435e:  nop 
+	IL_435f:  ldarg 1
 
-	IL_4381:  nop 
-	IL_4382:  nop 
-	IL_4383:  ldloc 109
+	IL_4363:  nop 
+	IL_4364:  nop 
+	IL_4365:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_436a:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_436f:  ldarg 1
 
-	IL_4387:  nop 
-	IL_4388:  nop 
-	IL_4389:  ldloc 2
+	IL_4373:  nop 
+	IL_4374:  nop 
+	IL_4375:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_437a:  stloc 2
 
-	IL_438d:  nop 
-	IL_438e:  nop 
-	IL_438f:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4394:  ldloc 109
+	IL_437e:  nop 
+	IL_437f:  nop 
+	IL_4380:  ldc.i4 1
+	IL_4385:  conv.u 
+	IL_4386:  newarr [mscorlib]System.Char
+	IL_438b:  stloc 3
 
-	IL_4398:  nop 
-	IL_4399:  nop 
-	IL_439a:  ldloc 109
+	IL_438f:  nop 
+	IL_4390:  nop 
+	IL_4391:  ldloc 3
 
-	IL_439e:  nop 
-	IL_439f:  nop 
-	IL_43a0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_43a5:  call int64 class [mscorlib]System.Convert::ToInt64(string)
-	IL_43aa:  stfld int64 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.LongLiteral::NumVal
-	IL_43af:  ldloc 109
+	IL_4395:  nop 
+	IL_4396:  nop 
+	IL_4397:  ldc.i4 0
+	IL_439c:  conv.u 
+	IL_439d:  ldstr "i"
+	IL_43a2:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_43a7:  stelem [mscorlib]System.Char
+	IL_43ac:  ldloc 2
 
-	IL_43b3:  nop 
-	IL_43b4:  nop 
-	IL_43b5:  starg 1
+	IL_43b0:  nop 
+	IL_43b1:  nop 
+	IL_43b2:  ldloc 3
 
-	IL_43b9:  nop 
-	IL_43ba:  nop 
-	IL_43bb:  br IL_4c61
+	IL_43b6:  nop 
+	IL_43b7:  nop 
+	IL_43b8:  callvirt instance string string::TrimEnd(char[])
+	IL_43bd:  stloc 2
 
-	IL_43c0:  br IL_43ca
+	IL_43c1:  nop 
+	IL_43c2:  nop 
+	IL_43c3:  ldloc 114
 
-	IL_43c5:  br IL_43ca
+	IL_43c7:  nop 
+	IL_43c8:  nop 
+	IL_43c9:  ldloc 2
 
-	IL_43ca:  ldarg 1
-
+	IL_43cd:  nop 
 	IL_43ce:  nop 
-	IL_43cf:  nop 
-	IL_43d0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_43d5:  ldstr "^(\\d)+(.)*$"
-	IL_43da:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_43df:  stloc 1
+	IL_43cf:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_43d4:  ldloc 114
 
-	IL_43e3:  nop 
-	IL_43e4:  nop 
-	IL_43e5:  ldloc 1
+	IL_43d8:  nop 
+	IL_43d9:  nop 
+	IL_43da:  ldloc 114
 
-	IL_43e9:  nop 
-	IL_43ea:  nop 
-	IL_43eb:  stloc 4
+	IL_43de:  nop 
+	IL_43df:  nop 
+	IL_43e0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_43e5:  call int32 class [mscorlib]System.Convert::ToInt32(string)
+	IL_43ea:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral::NumVal
+	IL_43ef:  ldloc 114
 
-	IL_43ef:  nop 
-	IL_43f0:  nop 
-	IL_43f1:  ldarg 1
+	IL_43f3:  nop 
+	IL_43f4:  nop 
+	IL_43f5:  starg 1
 
-	IL_43f5:  nop 
-	IL_43f6:  nop 
-	IL_43f7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_43fc:  ldstr "^\\+(\\d)+(.)*$"
-	IL_4401:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4406:  stloc 1
+	IL_43f9:  nop 
+	IL_43fa:  nop 
+	IL_43fb:  br IL_4fef
 
-	IL_440a:  nop 
-	IL_440b:  nop 
-	IL_440c:  ldloc 4
+	IL_4400:  br IL_440a
 
-	IL_4410:  nop 
-	IL_4411:  nop 
-	IL_4412:  ldloc 1
+	IL_4405:  br IL_440a
 
-	IL_4416:  nop 
-	IL_4417:  nop 
-	IL_4418:  or 
-	IL_4419:  stloc 4
+	IL_440a:  ldarg 1
 
-	IL_441d:  nop 
-	IL_441e:  nop 
-	IL_441f:  ldarg 1
+	IL_440e:  nop 
+	IL_440f:  nop 
+	IL_4410:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4415:  ldstr "^(\\d)+(.)*$"
+	IL_441a:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_441f:  stloc 1
 
 	IL_4423:  nop 
 	IL_4424:  nop 
-	IL_4425:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_442a:  ldstr "^-(\\d)+(.)*$"
-	IL_442f:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4434:  stloc 1
+	IL_4425:  ldloc 1
 
-	IL_4438:  nop 
-	IL_4439:  nop 
-	IL_443a:  ldloc 4
+	IL_4429:  nop 
+	IL_442a:  nop 
+	IL_442b:  stloc 4
 
-	IL_443e:  nop 
-	IL_443f:  nop 
-	IL_4440:  ldloc 1
+	IL_442f:  nop 
+	IL_4430:  nop 
+	IL_4431:  ldarg 1
 
-	IL_4444:  nop 
-	IL_4445:  nop 
-	IL_4446:  or 
-	IL_4447:  stloc 4
+	IL_4435:  nop 
+	IL_4436:  nop 
+	IL_4437:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_443c:  ldstr "^\\+(\\d)+(.)*$"
+	IL_4441:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4446:  stloc 1
 
+	IL_444a:  nop 
 	IL_444b:  nop 
-	IL_444c:  nop 
-	IL_444d:  ldarg 1
+	IL_444c:  ldloc 4
 
+	IL_4450:  nop 
 	IL_4451:  nop 
-	IL_4452:  nop 
-	IL_4453:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4458:  stloc 2
+	IL_4452:  ldloc 1
 
-	IL_445c:  nop 
+	IL_4456:  nop 
+	IL_4457:  nop 
+	IL_4458:  or 
+	IL_4459:  stloc 4
+
 	IL_445d:  nop 
-	IL_445e:  ldloc 2
+	IL_445e:  nop 
+	IL_445f:  ldarg 1
 
-	IL_4462:  nop 
 	IL_4463:  nop 
-	IL_4464:  ldstr "us"
-	IL_4469:  callvirt instance bool string::EndsWith(string)
-	IL_446e:  stloc 1
-
-	IL_4472:  nop 
-	IL_4473:  nop 
-	IL_4474:  ldloc 4
+	IL_4464:  nop 
+	IL_4465:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_446a:  ldstr "^-(\\d)+(.)*$"
+	IL_446f:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4474:  stloc 1
 
 	IL_4478:  nop 
 	IL_4479:  nop 
-	IL_447a:  ldloc 1
+	IL_447a:  ldloc 4
 
 	IL_447e:  nop 
 	IL_447f:  nop 
-	IL_4480:  and 
-	IL_4481:  stloc 4
+	IL_4480:  ldloc 1
 
+	IL_4484:  nop 
 	IL_4485:  nop 
-	IL_4486:  nop 
-	IL_4487:  ldloc 4
+	IL_4486:  or 
+	IL_4487:  stloc 4
 
 	IL_448b:  nop 
 	IL_448c:  nop 
-	IL_448d:  ldc.i4 1
-	IL_4492:  beq IL_449c
+	IL_448d:  ldarg 1
 
-	IL_4497:  br IL_4585
+	IL_4491:  nop 
+	IL_4492:  nop 
+	IL_4493:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4498:  stloc 2
 
-	IL_449c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral::'.ctor'()
-	IL_44a1:  stloc 110
+	IL_449c:  nop 
+	IL_449d:  nop 
+	IL_449e:  ldloc 2
 
-	IL_44a5:  nop 
-	IL_44a6:  nop 
-	IL_44a7:  ldloc 110
+	IL_44a2:  nop 
+	IL_44a3:  nop 
+	IL_44a4:  ldstr "ul"
+	IL_44a9:  callvirt instance bool string::EndsWith(string)
+	IL_44ae:  stloc 1
 
-	IL_44ab:  nop 
-	IL_44ac:  nop 
-	IL_44ad:  ldarg 1
-
-	IL_44b1:  nop 
 	IL_44b2:  nop 
-	IL_44b3:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_44b8:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_44bd:  ldarg 1
+	IL_44b3:  nop 
+	IL_44b4:  ldloc 4
 
-	IL_44c1:  nop 
-	IL_44c2:  nop 
-	IL_44c3:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_44c8:  stloc 2
+	IL_44b8:  nop 
+	IL_44b9:  nop 
+	IL_44ba:  ldloc 1
 
+	IL_44be:  nop 
+	IL_44bf:  nop 
+	IL_44c0:  and 
+	IL_44c1:  stloc 4
+
+	IL_44c5:  nop 
+	IL_44c6:  nop 
+	IL_44c7:  ldloc 4
+
+	IL_44cb:  nop 
 	IL_44cc:  nop 
-	IL_44cd:  nop 
-	IL_44ce:  ldc.i4 1
-	IL_44d3:  conv.u 
-	IL_44d4:  newarr [mscorlib]System.Char
-	IL_44d9:  stloc 3
+	IL_44cd:  ldc.i4 1
+	IL_44d2:  beq IL_44dc
 
-	IL_44dd:  nop 
-	IL_44de:  nop 
-	IL_44df:  ldloc 3
+	IL_44d7:  br IL_45c5
 
-	IL_44e3:  nop 
-	IL_44e4:  nop 
-	IL_44e5:  ldc.i4 0
-	IL_44ea:  conv.u 
-	IL_44eb:  ldstr "s"
-	IL_44f0:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_44f5:  stelem [mscorlib]System.Char
-	IL_44fa:  ldloc 2
+	IL_44dc:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral::'.ctor'()
+	IL_44e1:  stloc 115
 
-	IL_44fe:  nop 
-	IL_44ff:  nop 
-	IL_4500:  ldloc 3
+	IL_44e5:  nop 
+	IL_44e6:  nop 
+	IL_44e7:  ldloc 115
 
-	IL_4504:  nop 
-	IL_4505:  nop 
-	IL_4506:  callvirt instance string string::TrimEnd(char[])
-	IL_450b:  stloc 2
+	IL_44eb:  nop 
+	IL_44ec:  nop 
+	IL_44ed:  ldarg 1
 
-	IL_450f:  nop 
-	IL_4510:  nop 
-	IL_4511:  ldloc 3
+	IL_44f1:  nop 
+	IL_44f2:  nop 
+	IL_44f3:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_44f8:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_44fd:  ldarg 1
 
-	IL_4515:  nop 
-	IL_4516:  nop 
-	IL_4517:  ldc.i4 0
-	IL_451c:  conv.u 
-	IL_451d:  ldstr "u"
-	IL_4522:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_4527:  stelem [mscorlib]System.Char
-	IL_452c:  ldloc 2
+	IL_4501:  nop 
+	IL_4502:  nop 
+	IL_4503:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4508:  stloc 2
 
-	IL_4530:  nop 
-	IL_4531:  nop 
-	IL_4532:  ldloc 3
+	IL_450c:  nop 
+	IL_450d:  nop 
+	IL_450e:  ldc.i4 1
+	IL_4513:  conv.u 
+	IL_4514:  newarr [mscorlib]System.Char
+	IL_4519:  stloc 3
 
-	IL_4536:  nop 
-	IL_4537:  nop 
-	IL_4538:  callvirt instance string string::TrimEnd(char[])
-	IL_453d:  stloc 2
+	IL_451d:  nop 
+	IL_451e:  nop 
+	IL_451f:  ldloc 3
 
-	IL_4541:  nop 
-	IL_4542:  nop 
-	IL_4543:  ldloc 110
+	IL_4523:  nop 
+	IL_4524:  nop 
+	IL_4525:  ldc.i4 0
+	IL_452a:  conv.u 
+	IL_452b:  ldstr "l"
+	IL_4530:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_4535:  stelem [mscorlib]System.Char
+	IL_453a:  ldloc 2
 
-	IL_4547:  nop 
-	IL_4548:  nop 
-	IL_4549:  ldloc 2
+	IL_453e:  nop 
+	IL_453f:  nop 
+	IL_4540:  ldloc 3
 
-	IL_454d:  nop 
-	IL_454e:  nop 
-	IL_454f:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4554:  ldloc 110
+	IL_4544:  nop 
+	IL_4545:  nop 
+	IL_4546:  callvirt instance string string::TrimEnd(char[])
+	IL_454b:  stloc 2
 
-	IL_4558:  nop 
-	IL_4559:  nop 
-	IL_455a:  ldloc 110
+	IL_454f:  nop 
+	IL_4550:  nop 
+	IL_4551:  ldloc 3
 
-	IL_455e:  nop 
-	IL_455f:  nop 
-	IL_4560:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4565:  call unsigned int16 class [mscorlib]System.Convert::ToUInt16(string)
-	IL_456a:  stfld unsigned int16 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral::NumVal
-	IL_456f:  ldloc 110
+	IL_4555:  nop 
+	IL_4556:  nop 
+	IL_4557:  ldc.i4 0
+	IL_455c:  conv.u 
+	IL_455d:  ldstr "u"
+	IL_4562:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_4567:  stelem [mscorlib]System.Char
+	IL_456c:  ldloc 2
 
-	IL_4573:  nop 
-	IL_4574:  nop 
-	IL_4575:  starg 1
+	IL_4570:  nop 
+	IL_4571:  nop 
+	IL_4572:  ldloc 3
 
-	IL_4579:  nop 
-	IL_457a:  nop 
-	IL_457b:  br IL_4c61
+	IL_4576:  nop 
+	IL_4577:  nop 
+	IL_4578:  callvirt instance string string::TrimEnd(char[])
+	IL_457d:  stloc 2
 
-	IL_4580:  br IL_458a
+	IL_4581:  nop 
+	IL_4582:  nop 
+	IL_4583:  ldloc 115
 
-	IL_4585:  br IL_458a
+	IL_4587:  nop 
+	IL_4588:  nop 
+	IL_4589:  ldloc 2
 
-	IL_458a:  ldarg 1
-
+	IL_458d:  nop 
 	IL_458e:  nop 
-	IL_458f:  nop 
-	IL_4590:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4595:  ldstr "^(\\d)+(.)*$"
-	IL_459a:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_459f:  stloc 1
+	IL_458f:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4594:  ldloc 115
 
-	IL_45a3:  nop 
-	IL_45a4:  nop 
-	IL_45a5:  ldloc 1
+	IL_4598:  nop 
+	IL_4599:  nop 
+	IL_459a:  ldloc 115
 
-	IL_45a9:  nop 
-	IL_45aa:  nop 
-	IL_45ab:  stloc 4
+	IL_459e:  nop 
+	IL_459f:  nop 
+	IL_45a0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_45a5:  call unsigned int64 class [mscorlib]System.Convert::ToUInt64(string)
+	IL_45aa:  stfld unsigned int64 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral::NumVal
+	IL_45af:  ldloc 115
 
-	IL_45af:  nop 
-	IL_45b0:  nop 
-	IL_45b1:  ldarg 1
+	IL_45b3:  nop 
+	IL_45b4:  nop 
+	IL_45b5:  starg 1
 
-	IL_45b5:  nop 
-	IL_45b6:  nop 
-	IL_45b7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_45bc:  ldstr "^\\+(\\d)+(.)*$"
-	IL_45c1:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_45c6:  stloc 1
+	IL_45b9:  nop 
+	IL_45ba:  nop 
+	IL_45bb:  br IL_4fef
 
-	IL_45ca:  nop 
-	IL_45cb:  nop 
-	IL_45cc:  ldloc 4
+	IL_45c0:  br IL_45ca
 
-	IL_45d0:  nop 
-	IL_45d1:  nop 
-	IL_45d2:  ldloc 1
+	IL_45c5:  br IL_45ca
 
-	IL_45d6:  nop 
-	IL_45d7:  nop 
-	IL_45d8:  or 
-	IL_45d9:  stloc 4
+	IL_45ca:  ldarg 1
 
-	IL_45dd:  nop 
-	IL_45de:  nop 
-	IL_45df:  ldarg 1
+	IL_45ce:  nop 
+	IL_45cf:  nop 
+	IL_45d0:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_45d5:  ldstr "^(\\d)+(.)*$"
+	IL_45da:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_45df:  stloc 1
 
 	IL_45e3:  nop 
 	IL_45e4:  nop 
-	IL_45e5:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_45ea:  ldstr "^-(\\d)+(.)*$"
-	IL_45ef:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_45f4:  stloc 1
+	IL_45e5:  ldloc 1
 
-	IL_45f8:  nop 
-	IL_45f9:  nop 
-	IL_45fa:  ldloc 4
+	IL_45e9:  nop 
+	IL_45ea:  nop 
+	IL_45eb:  stloc 4
 
-	IL_45fe:  nop 
-	IL_45ff:  nop 
-	IL_4600:  ldloc 1
+	IL_45ef:  nop 
+	IL_45f0:  nop 
+	IL_45f1:  ldarg 1
 
-	IL_4604:  nop 
-	IL_4605:  nop 
-	IL_4606:  or 
-	IL_4607:  stloc 4
+	IL_45f5:  nop 
+	IL_45f6:  nop 
+	IL_45f7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_45fc:  ldstr "^\\+(\\d)+(.)*$"
+	IL_4601:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4606:  stloc 1
 
+	IL_460a:  nop 
 	IL_460b:  nop 
-	IL_460c:  nop 
-	IL_460d:  ldarg 1
+	IL_460c:  ldloc 4
 
+	IL_4610:  nop 
 	IL_4611:  nop 
-	IL_4612:  nop 
-	IL_4613:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4618:  stloc 2
+	IL_4612:  ldloc 1
 
-	IL_461c:  nop 
+	IL_4616:  nop 
+	IL_4617:  nop 
+	IL_4618:  or 
+	IL_4619:  stloc 4
+
 	IL_461d:  nop 
-	IL_461e:  ldloc 2
+	IL_461e:  nop 
+	IL_461f:  ldarg 1
 
-	IL_4622:  nop 
 	IL_4623:  nop 
-	IL_4624:  ldstr "s"
-	IL_4629:  callvirt instance bool string::EndsWith(string)
-	IL_462e:  stloc 1
-
-	IL_4632:  nop 
-	IL_4633:  nop 
-	IL_4634:  ldloc 4
+	IL_4624:  nop 
+	IL_4625:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_462a:  ldstr "^-(\\d)+(.)*$"
+	IL_462f:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4634:  stloc 1
 
 	IL_4638:  nop 
 	IL_4639:  nop 
-	IL_463a:  ldloc 1
+	IL_463a:  ldloc 4
 
 	IL_463e:  nop 
 	IL_463f:  nop 
-	IL_4640:  and 
-	IL_4641:  stloc 4
+	IL_4640:  ldloc 1
 
+	IL_4644:  nop 
 	IL_4645:  nop 
-	IL_4646:  nop 
-	IL_4647:  ldloc 4
+	IL_4646:  or 
+	IL_4647:  stloc 4
 
 	IL_464b:  nop 
 	IL_464c:  nop 
-	IL_464d:  ldc.i4 1
-	IL_4652:  beq IL_465c
+	IL_464d:  ldarg 1
 
-	IL_4657:  br IL_4713
+	IL_4651:  nop 
+	IL_4652:  nop 
+	IL_4653:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4658:  stloc 2
 
-	IL_465c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ShortLiteral::'.ctor'()
-	IL_4661:  stloc 111
+	IL_465c:  nop 
+	IL_465d:  nop 
+	IL_465e:  ldloc 2
 
-	IL_4665:  nop 
-	IL_4666:  nop 
-	IL_4667:  ldloc 111
+	IL_4662:  nop 
+	IL_4663:  nop 
+	IL_4664:  ldstr "l"
+	IL_4669:  callvirt instance bool string::EndsWith(string)
+	IL_466e:  stloc 1
 
-	IL_466b:  nop 
-	IL_466c:  nop 
-	IL_466d:  ldarg 1
-
-	IL_4671:  nop 
 	IL_4672:  nop 
-	IL_4673:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_4678:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_467d:  ldarg 1
+	IL_4673:  nop 
+	IL_4674:  ldloc 4
 
-	IL_4681:  nop 
-	IL_4682:  nop 
-	IL_4683:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4688:  stloc 2
+	IL_4678:  nop 
+	IL_4679:  nop 
+	IL_467a:  ldloc 1
 
+	IL_467e:  nop 
+	IL_467f:  nop 
+	IL_4680:  and 
+	IL_4681:  stloc 4
+
+	IL_4685:  nop 
+	IL_4686:  nop 
+	IL_4687:  ldloc 4
+
+	IL_468b:  nop 
 	IL_468c:  nop 
-	IL_468d:  nop 
-	IL_468e:  ldc.i4 1
-	IL_4693:  conv.u 
-	IL_4694:  newarr [mscorlib]System.Char
-	IL_4699:  stloc 3
+	IL_468d:  ldc.i4 1
+	IL_4692:  beq IL_469c
 
-	IL_469d:  nop 
-	IL_469e:  nop 
-	IL_469f:  ldloc 3
+	IL_4697:  br IL_4753
 
-	IL_46a3:  nop 
-	IL_46a4:  nop 
-	IL_46a5:  ldc.i4 0
-	IL_46aa:  conv.u 
-	IL_46ab:  ldstr "s"
-	IL_46b0:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_46b5:  stelem [mscorlib]System.Char
-	IL_46ba:  ldloc 2
+	IL_469c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.LongLiteral::'.ctor'()
+	IL_46a1:  stloc 116
 
-	IL_46be:  nop 
-	IL_46bf:  nop 
-	IL_46c0:  ldloc 3
+	IL_46a5:  nop 
+	IL_46a6:  nop 
+	IL_46a7:  ldloc 116
 
-	IL_46c4:  nop 
-	IL_46c5:  nop 
-	IL_46c6:  callvirt instance string string::TrimEnd(char[])
-	IL_46cb:  stloc 2
+	IL_46ab:  nop 
+	IL_46ac:  nop 
+	IL_46ad:  ldarg 1
 
-	IL_46cf:  nop 
-	IL_46d0:  nop 
-	IL_46d1:  ldloc 111
+	IL_46b1:  nop 
+	IL_46b2:  nop 
+	IL_46b3:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_46b8:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_46bd:  ldarg 1
 
-	IL_46d5:  nop 
-	IL_46d6:  nop 
-	IL_46d7:  ldloc 2
+	IL_46c1:  nop 
+	IL_46c2:  nop 
+	IL_46c3:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_46c8:  stloc 2
 
-	IL_46db:  nop 
-	IL_46dc:  nop 
-	IL_46dd:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_46e2:  ldloc 111
+	IL_46cc:  nop 
+	IL_46cd:  nop 
+	IL_46ce:  ldc.i4 1
+	IL_46d3:  conv.u 
+	IL_46d4:  newarr [mscorlib]System.Char
+	IL_46d9:  stloc 3
 
-	IL_46e6:  nop 
-	IL_46e7:  nop 
-	IL_46e8:  ldloc 111
+	IL_46dd:  nop 
+	IL_46de:  nop 
+	IL_46df:  ldloc 3
 
-	IL_46ec:  nop 
-	IL_46ed:  nop 
-	IL_46ee:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_46f3:  call int16 class [mscorlib]System.Convert::ToInt16(string)
-	IL_46f8:  stfld int16 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ShortLiteral::NumVal
-	IL_46fd:  ldloc 111
+	IL_46e3:  nop 
+	IL_46e4:  nop 
+	IL_46e5:  ldc.i4 0
+	IL_46ea:  conv.u 
+	IL_46eb:  ldstr "l"
+	IL_46f0:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_46f5:  stelem [mscorlib]System.Char
+	IL_46fa:  ldloc 2
 
-	IL_4701:  nop 
-	IL_4702:  nop 
-	IL_4703:  starg 1
+	IL_46fe:  nop 
+	IL_46ff:  nop 
+	IL_4700:  ldloc 3
 
-	IL_4707:  nop 
-	IL_4708:  nop 
-	IL_4709:  br IL_4c61
+	IL_4704:  nop 
+	IL_4705:  nop 
+	IL_4706:  callvirt instance string string::TrimEnd(char[])
+	IL_470b:  stloc 2
 
-	IL_470e:  br IL_4718
+	IL_470f:  nop 
+	IL_4710:  nop 
+	IL_4711:  ldloc 116
 
-	IL_4713:  br IL_4718
+	IL_4715:  nop 
+	IL_4716:  nop 
+	IL_4717:  ldloc 2
 
-	IL_4718:  ldarg 1
-
+	IL_471b:  nop 
 	IL_471c:  nop 
-	IL_471d:  nop 
-	IL_471e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4723:  ldstr "^(\\d)+(.)*$"
-	IL_4728:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_472d:  stloc 1
+	IL_471d:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4722:  ldloc 116
 
-	IL_4731:  nop 
-	IL_4732:  nop 
-	IL_4733:  ldloc 1
+	IL_4726:  nop 
+	IL_4727:  nop 
+	IL_4728:  ldloc 116
 
-	IL_4737:  nop 
-	IL_4738:  nop 
-	IL_4739:  stloc 4
+	IL_472c:  nop 
+	IL_472d:  nop 
+	IL_472e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4733:  call int64 class [mscorlib]System.Convert::ToInt64(string)
+	IL_4738:  stfld int64 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.LongLiteral::NumVal
+	IL_473d:  ldloc 116
 
-	IL_473d:  nop 
-	IL_473e:  nop 
-	IL_473f:  ldarg 1
+	IL_4741:  nop 
+	IL_4742:  nop 
+	IL_4743:  starg 1
 
-	IL_4743:  nop 
-	IL_4744:  nop 
-	IL_4745:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_474a:  ldstr "^\\+(\\d)+(.)*$"
-	IL_474f:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4754:  stloc 1
+	IL_4747:  nop 
+	IL_4748:  nop 
+	IL_4749:  br IL_4fef
 
-	IL_4758:  nop 
-	IL_4759:  nop 
-	IL_475a:  ldloc 4
+	IL_474e:  br IL_4758
 
-	IL_475e:  nop 
-	IL_475f:  nop 
-	IL_4760:  ldloc 1
+	IL_4753:  br IL_4758
 
-	IL_4764:  nop 
-	IL_4765:  nop 
-	IL_4766:  or 
-	IL_4767:  stloc 4
+	IL_4758:  ldarg 1
 
-	IL_476b:  nop 
-	IL_476c:  nop 
-	IL_476d:  ldarg 1
+	IL_475c:  nop 
+	IL_475d:  nop 
+	IL_475e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4763:  ldstr "^(\\d)+(.)*$"
+	IL_4768:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_476d:  stloc 1
 
 	IL_4771:  nop 
 	IL_4772:  nop 
-	IL_4773:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4778:  ldstr "^-(\\d)+(.)*$"
-	IL_477d:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4782:  stloc 1
+	IL_4773:  ldloc 1
 
-	IL_4786:  nop 
-	IL_4787:  nop 
-	IL_4788:  ldloc 4
+	IL_4777:  nop 
+	IL_4778:  nop 
+	IL_4779:  stloc 4
 
-	IL_478c:  nop 
-	IL_478d:  nop 
-	IL_478e:  ldloc 1
+	IL_477d:  nop 
+	IL_477e:  nop 
+	IL_477f:  ldarg 1
 
-	IL_4792:  nop 
-	IL_4793:  nop 
-	IL_4794:  or 
-	IL_4795:  stloc 4
+	IL_4783:  nop 
+	IL_4784:  nop 
+	IL_4785:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_478a:  ldstr "^\\+(\\d)+(.)*$"
+	IL_478f:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4794:  stloc 1
 
+	IL_4798:  nop 
 	IL_4799:  nop 
-	IL_479a:  nop 
-	IL_479b:  ldarg 1
+	IL_479a:  ldloc 4
 
+	IL_479e:  nop 
 	IL_479f:  nop 
-	IL_47a0:  nop 
-	IL_47a1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_47a6:  stloc 2
+	IL_47a0:  ldloc 1
 
-	IL_47aa:  nop 
+	IL_47a4:  nop 
+	IL_47a5:  nop 
+	IL_47a6:  or 
+	IL_47a7:  stloc 4
+
 	IL_47ab:  nop 
-	IL_47ac:  ldloc 2
+	IL_47ac:  nop 
+	IL_47ad:  ldarg 1
 
-	IL_47b0:  nop 
 	IL_47b1:  nop 
-	IL_47b2:  ldstr "ub"
-	IL_47b7:  callvirt instance bool string::EndsWith(string)
-	IL_47bc:  stloc 1
-
-	IL_47c0:  nop 
-	IL_47c1:  nop 
-	IL_47c2:  ldloc 4
+	IL_47b2:  nop 
+	IL_47b3:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_47b8:  ldstr "^-(\\d)+(.)*$"
+	IL_47bd:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_47c2:  stloc 1
 
 	IL_47c6:  nop 
 	IL_47c7:  nop 
-	IL_47c8:  ldloc 1
+	IL_47c8:  ldloc 4
 
 	IL_47cc:  nop 
 	IL_47cd:  nop 
-	IL_47ce:  and 
-	IL_47cf:  stloc 4
+	IL_47ce:  ldloc 1
 
+	IL_47d2:  nop 
 	IL_47d3:  nop 
-	IL_47d4:  nop 
-	IL_47d5:  ldloc 4
+	IL_47d4:  or 
+	IL_47d5:  stloc 4
 
 	IL_47d9:  nop 
 	IL_47da:  nop 
-	IL_47db:  ldc.i4 1
-	IL_47e0:  beq IL_47ea
+	IL_47db:  ldarg 1
 
-	IL_47e5:  br IL_48d3
+	IL_47df:  nop 
+	IL_47e0:  nop 
+	IL_47e1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_47e6:  stloc 2
 
-	IL_47ea:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral::'.ctor'()
-	IL_47ef:  stloc 112
+	IL_47ea:  nop 
+	IL_47eb:  nop 
+	IL_47ec:  ldloc 2
 
-	IL_47f3:  nop 
-	IL_47f4:  nop 
-	IL_47f5:  ldloc 112
+	IL_47f0:  nop 
+	IL_47f1:  nop 
+	IL_47f2:  ldstr "us"
+	IL_47f7:  callvirt instance bool string::EndsWith(string)
+	IL_47fc:  stloc 1
 
-	IL_47f9:  nop 
-	IL_47fa:  nop 
-	IL_47fb:  ldarg 1
-
-	IL_47ff:  nop 
 	IL_4800:  nop 
-	IL_4801:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_4806:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_480b:  ldarg 1
+	IL_4801:  nop 
+	IL_4802:  ldloc 4
 
-	IL_480f:  nop 
-	IL_4810:  nop 
-	IL_4811:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4816:  stloc 2
+	IL_4806:  nop 
+	IL_4807:  nop 
+	IL_4808:  ldloc 1
 
+	IL_480c:  nop 
+	IL_480d:  nop 
+	IL_480e:  and 
+	IL_480f:  stloc 4
+
+	IL_4813:  nop 
+	IL_4814:  nop 
+	IL_4815:  ldloc 4
+
+	IL_4819:  nop 
 	IL_481a:  nop 
-	IL_481b:  nop 
-	IL_481c:  ldc.i4 1
-	IL_4821:  conv.u 
-	IL_4822:  newarr [mscorlib]System.Char
-	IL_4827:  stloc 3
+	IL_481b:  ldc.i4 1
+	IL_4820:  beq IL_482a
 
-	IL_482b:  nop 
-	IL_482c:  nop 
-	IL_482d:  ldloc 3
+	IL_4825:  br IL_4913
 
-	IL_4831:  nop 
-	IL_4832:  nop 
-	IL_4833:  ldc.i4 0
-	IL_4838:  conv.u 
-	IL_4839:  ldstr "b"
-	IL_483e:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_4843:  stelem [mscorlib]System.Char
-	IL_4848:  ldloc 2
+	IL_482a:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral::'.ctor'()
+	IL_482f:  stloc 117
 
-	IL_484c:  nop 
-	IL_484d:  nop 
-	IL_484e:  ldloc 3
+	IL_4833:  nop 
+	IL_4834:  nop 
+	IL_4835:  ldloc 117
 
-	IL_4852:  nop 
-	IL_4853:  nop 
-	IL_4854:  callvirt instance string string::TrimEnd(char[])
-	IL_4859:  stloc 2
+	IL_4839:  nop 
+	IL_483a:  nop 
+	IL_483b:  ldarg 1
 
-	IL_485d:  nop 
-	IL_485e:  nop 
-	IL_485f:  ldloc 3
+	IL_483f:  nop 
+	IL_4840:  nop 
+	IL_4841:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_4846:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_484b:  ldarg 1
 
-	IL_4863:  nop 
-	IL_4864:  nop 
-	IL_4865:  ldc.i4 0
-	IL_486a:  conv.u 
-	IL_486b:  ldstr "u"
-	IL_4870:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_4875:  stelem [mscorlib]System.Char
-	IL_487a:  ldloc 2
+	IL_484f:  nop 
+	IL_4850:  nop 
+	IL_4851:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4856:  stloc 2
 
-	IL_487e:  nop 
-	IL_487f:  nop 
-	IL_4880:  ldloc 3
+	IL_485a:  nop 
+	IL_485b:  nop 
+	IL_485c:  ldc.i4 1
+	IL_4861:  conv.u 
+	IL_4862:  newarr [mscorlib]System.Char
+	IL_4867:  stloc 3
 
-	IL_4884:  nop 
-	IL_4885:  nop 
-	IL_4886:  callvirt instance string string::TrimEnd(char[])
-	IL_488b:  stloc 2
+	IL_486b:  nop 
+	IL_486c:  nop 
+	IL_486d:  ldloc 3
 
-	IL_488f:  nop 
-	IL_4890:  nop 
-	IL_4891:  ldloc 112
+	IL_4871:  nop 
+	IL_4872:  nop 
+	IL_4873:  ldc.i4 0
+	IL_4878:  conv.u 
+	IL_4879:  ldstr "s"
+	IL_487e:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_4883:  stelem [mscorlib]System.Char
+	IL_4888:  ldloc 2
 
-	IL_4895:  nop 
-	IL_4896:  nop 
-	IL_4897:  ldloc 2
+	IL_488c:  nop 
+	IL_488d:  nop 
+	IL_488e:  ldloc 3
 
-	IL_489b:  nop 
-	IL_489c:  nop 
-	IL_489d:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_48a2:  ldloc 112
+	IL_4892:  nop 
+	IL_4893:  nop 
+	IL_4894:  callvirt instance string string::TrimEnd(char[])
+	IL_4899:  stloc 2
 
-	IL_48a6:  nop 
-	IL_48a7:  nop 
-	IL_48a8:  ldloc 112
+	IL_489d:  nop 
+	IL_489e:  nop 
+	IL_489f:  ldloc 3
 
-	IL_48ac:  nop 
-	IL_48ad:  nop 
-	IL_48ae:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_48b3:  call unsigned int8 class [mscorlib]System.Convert::ToByte(string)
-	IL_48b8:  stfld unsigned int8 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral::NumVal
-	IL_48bd:  ldloc 112
+	IL_48a3:  nop 
+	IL_48a4:  nop 
+	IL_48a5:  ldc.i4 0
+	IL_48aa:  conv.u 
+	IL_48ab:  ldstr "u"
+	IL_48b0:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_48b5:  stelem [mscorlib]System.Char
+	IL_48ba:  ldloc 2
 
-	IL_48c1:  nop 
-	IL_48c2:  nop 
-	IL_48c3:  starg 1
+	IL_48be:  nop 
+	IL_48bf:  nop 
+	IL_48c0:  ldloc 3
 
-	IL_48c7:  nop 
-	IL_48c8:  nop 
-	IL_48c9:  br IL_4c61
+	IL_48c4:  nop 
+	IL_48c5:  nop 
+	IL_48c6:  callvirt instance string string::TrimEnd(char[])
+	IL_48cb:  stloc 2
 
-	IL_48ce:  br IL_48d8
+	IL_48cf:  nop 
+	IL_48d0:  nop 
+	IL_48d1:  ldloc 117
 
-	IL_48d3:  br IL_48d8
+	IL_48d5:  nop 
+	IL_48d6:  nop 
+	IL_48d7:  ldloc 2
 
-	IL_48d8:  ldarg 1
-
+	IL_48db:  nop 
 	IL_48dc:  nop 
-	IL_48dd:  nop 
-	IL_48de:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_48e3:  ldstr "^(\\d)+(.)*$"
-	IL_48e8:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_48ed:  stloc 1
+	IL_48dd:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_48e2:  ldloc 117
 
-	IL_48f1:  nop 
-	IL_48f2:  nop 
-	IL_48f3:  ldloc 1
+	IL_48e6:  nop 
+	IL_48e7:  nop 
+	IL_48e8:  ldloc 117
 
-	IL_48f7:  nop 
-	IL_48f8:  nop 
-	IL_48f9:  stloc 4
+	IL_48ec:  nop 
+	IL_48ed:  nop 
+	IL_48ee:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_48f3:  call unsigned int16 class [mscorlib]System.Convert::ToUInt16(string)
+	IL_48f8:  stfld unsigned int16 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral::NumVal
+	IL_48fd:  ldloc 117
 
-	IL_48fd:  nop 
-	IL_48fe:  nop 
-	IL_48ff:  ldarg 1
+	IL_4901:  nop 
+	IL_4902:  nop 
+	IL_4903:  starg 1
 
-	IL_4903:  nop 
-	IL_4904:  nop 
-	IL_4905:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_490a:  ldstr "^\\+(\\d)+(.)*$"
-	IL_490f:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4914:  stloc 1
+	IL_4907:  nop 
+	IL_4908:  nop 
+	IL_4909:  br IL_4fef
 
-	IL_4918:  nop 
-	IL_4919:  nop 
-	IL_491a:  ldloc 4
+	IL_490e:  br IL_4918
 
-	IL_491e:  nop 
-	IL_491f:  nop 
-	IL_4920:  ldloc 1
+	IL_4913:  br IL_4918
 
-	IL_4924:  nop 
-	IL_4925:  nop 
-	IL_4926:  or 
-	IL_4927:  stloc 4
+	IL_4918:  ldarg 1
 
-	IL_492b:  nop 
-	IL_492c:  nop 
-	IL_492d:  ldarg 1
+	IL_491c:  nop 
+	IL_491d:  nop 
+	IL_491e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4923:  ldstr "^(\\d)+(.)*$"
+	IL_4928:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_492d:  stloc 1
 
 	IL_4931:  nop 
 	IL_4932:  nop 
-	IL_4933:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4938:  ldstr "^-(\\d)+(.)*$"
-	IL_493d:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4942:  stloc 1
+	IL_4933:  ldloc 1
 
-	IL_4946:  nop 
-	IL_4947:  nop 
-	IL_4948:  ldloc 4
+	IL_4937:  nop 
+	IL_4938:  nop 
+	IL_4939:  stloc 4
 
-	IL_494c:  nop 
-	IL_494d:  nop 
-	IL_494e:  ldloc 1
+	IL_493d:  nop 
+	IL_493e:  nop 
+	IL_493f:  ldarg 1
 
-	IL_4952:  nop 
-	IL_4953:  nop 
-	IL_4954:  or 
-	IL_4955:  stloc 4
+	IL_4943:  nop 
+	IL_4944:  nop 
+	IL_4945:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_494a:  ldstr "^\\+(\\d)+(.)*$"
+	IL_494f:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4954:  stloc 1
 
+	IL_4958:  nop 
 	IL_4959:  nop 
-	IL_495a:  nop 
-	IL_495b:  ldarg 1
+	IL_495a:  ldloc 4
 
+	IL_495e:  nop 
 	IL_495f:  nop 
-	IL_4960:  nop 
-	IL_4961:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4966:  stloc 2
+	IL_4960:  ldloc 1
 
-	IL_496a:  nop 
+	IL_4964:  nop 
+	IL_4965:  nop 
+	IL_4966:  or 
+	IL_4967:  stloc 4
+
 	IL_496b:  nop 
-	IL_496c:  ldloc 2
+	IL_496c:  nop 
+	IL_496d:  ldarg 1
 
-	IL_4970:  nop 
 	IL_4971:  nop 
-	IL_4972:  ldstr "b"
-	IL_4977:  callvirt instance bool string::EndsWith(string)
-	IL_497c:  stloc 1
-
-	IL_4980:  nop 
-	IL_4981:  nop 
-	IL_4982:  ldloc 4
+	IL_4972:  nop 
+	IL_4973:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4978:  ldstr "^-(\\d)+(.)*$"
+	IL_497d:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4982:  stloc 1
 
 	IL_4986:  nop 
 	IL_4987:  nop 
-	IL_4988:  ldloc 1
+	IL_4988:  ldloc 4
 
 	IL_498c:  nop 
 	IL_498d:  nop 
-	IL_498e:  and 
-	IL_498f:  stloc 4
+	IL_498e:  ldloc 1
 
+	IL_4992:  nop 
 	IL_4993:  nop 
-	IL_4994:  nop 
-	IL_4995:  ldloc 4
+	IL_4994:  or 
+	IL_4995:  stloc 4
 
 	IL_4999:  nop 
 	IL_499a:  nop 
-	IL_499b:  ldc.i4 1
-	IL_49a0:  beq IL_49aa
+	IL_499b:  ldarg 1
 
-	IL_49a5:  br IL_4a61
+	IL_499f:  nop 
+	IL_49a0:  nop 
+	IL_49a1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_49a6:  stloc 2
 
-	IL_49aa:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral::'.ctor'()
-	IL_49af:  stloc 113
+	IL_49aa:  nop 
+	IL_49ab:  nop 
+	IL_49ac:  ldloc 2
 
-	IL_49b3:  nop 
-	IL_49b4:  nop 
-	IL_49b5:  ldloc 113
+	IL_49b0:  nop 
+	IL_49b1:  nop 
+	IL_49b2:  ldstr "s"
+	IL_49b7:  callvirt instance bool string::EndsWith(string)
+	IL_49bc:  stloc 1
 
-	IL_49b9:  nop 
-	IL_49ba:  nop 
-	IL_49bb:  ldarg 1
-
-	IL_49bf:  nop 
 	IL_49c0:  nop 
-	IL_49c1:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_49c6:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_49cb:  ldarg 1
+	IL_49c1:  nop 
+	IL_49c2:  ldloc 4
 
-	IL_49cf:  nop 
-	IL_49d0:  nop 
-	IL_49d1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_49d6:  stloc 2
+	IL_49c6:  nop 
+	IL_49c7:  nop 
+	IL_49c8:  ldloc 1
 
+	IL_49cc:  nop 
+	IL_49cd:  nop 
+	IL_49ce:  and 
+	IL_49cf:  stloc 4
+
+	IL_49d3:  nop 
+	IL_49d4:  nop 
+	IL_49d5:  ldloc 4
+
+	IL_49d9:  nop 
 	IL_49da:  nop 
-	IL_49db:  nop 
-	IL_49dc:  ldc.i4 1
-	IL_49e1:  conv.u 
-	IL_49e2:  newarr [mscorlib]System.Char
-	IL_49e7:  stloc 3
+	IL_49db:  ldc.i4 1
+	IL_49e0:  beq IL_49ea
 
-	IL_49eb:  nop 
-	IL_49ec:  nop 
-	IL_49ed:  ldloc 3
+	IL_49e5:  br IL_4aa1
 
-	IL_49f1:  nop 
-	IL_49f2:  nop 
-	IL_49f3:  ldc.i4 0
-	IL_49f8:  conv.u 
-	IL_49f9:  ldstr "b"
-	IL_49fe:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_4a03:  stelem [mscorlib]System.Char
-	IL_4a08:  ldloc 2
+	IL_49ea:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ShortLiteral::'.ctor'()
+	IL_49ef:  stloc 118
 
-	IL_4a0c:  nop 
-	IL_4a0d:  nop 
-	IL_4a0e:  ldloc 3
+	IL_49f3:  nop 
+	IL_49f4:  nop 
+	IL_49f5:  ldloc 118
 
-	IL_4a12:  nop 
-	IL_4a13:  nop 
-	IL_4a14:  callvirt instance string string::TrimEnd(char[])
-	IL_4a19:  stloc 2
+	IL_49f9:  nop 
+	IL_49fa:  nop 
+	IL_49fb:  ldarg 1
 
-	IL_4a1d:  nop 
-	IL_4a1e:  nop 
-	IL_4a1f:  ldloc 113
+	IL_49ff:  nop 
+	IL_4a00:  nop 
+	IL_4a01:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_4a06:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_4a0b:  ldarg 1
 
-	IL_4a23:  nop 
-	IL_4a24:  nop 
-	IL_4a25:  ldloc 2
+	IL_4a0f:  nop 
+	IL_4a10:  nop 
+	IL_4a11:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4a16:  stloc 2
 
-	IL_4a29:  nop 
-	IL_4a2a:  nop 
-	IL_4a2b:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4a30:  ldloc 113
+	IL_4a1a:  nop 
+	IL_4a1b:  nop 
+	IL_4a1c:  ldc.i4 1
+	IL_4a21:  conv.u 
+	IL_4a22:  newarr [mscorlib]System.Char
+	IL_4a27:  stloc 3
 
-	IL_4a34:  nop 
-	IL_4a35:  nop 
-	IL_4a36:  ldloc 113
+	IL_4a2b:  nop 
+	IL_4a2c:  nop 
+	IL_4a2d:  ldloc 3
 
-	IL_4a3a:  nop 
-	IL_4a3b:  nop 
-	IL_4a3c:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4a41:  call int8 class [mscorlib]System.Convert::ToSByte(string)
-	IL_4a46:  stfld int8 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral::NumVal
-	IL_4a4b:  ldloc 113
+	IL_4a31:  nop 
+	IL_4a32:  nop 
+	IL_4a33:  ldc.i4 0
+	IL_4a38:  conv.u 
+	IL_4a39:  ldstr "s"
+	IL_4a3e:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_4a43:  stelem [mscorlib]System.Char
+	IL_4a48:  ldloc 2
 
-	IL_4a4f:  nop 
-	IL_4a50:  nop 
-	IL_4a51:  starg 1
+	IL_4a4c:  nop 
+	IL_4a4d:  nop 
+	IL_4a4e:  ldloc 3
 
-	IL_4a55:  nop 
-	IL_4a56:  nop 
-	IL_4a57:  br IL_4c61
+	IL_4a52:  nop 
+	IL_4a53:  nop 
+	IL_4a54:  callvirt instance string string::TrimEnd(char[])
+	IL_4a59:  stloc 2
 
-	IL_4a5c:  br IL_4a66
+	IL_4a5d:  nop 
+	IL_4a5e:  nop 
+	IL_4a5f:  ldloc 118
 
-	IL_4a61:  br IL_4a66
+	IL_4a63:  nop 
+	IL_4a64:  nop 
+	IL_4a65:  ldloc 2
 
-	IL_4a66:  ldarg 1
-
+	IL_4a69:  nop 
 	IL_4a6a:  nop 
-	IL_4a6b:  nop 
-	IL_4a6c:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4a71:  ldstr "^(\\d)+(.)*$"
-	IL_4a76:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4a7b:  stloc 1
+	IL_4a6b:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4a70:  ldloc 118
 
-	IL_4a7f:  nop 
-	IL_4a80:  nop 
-	IL_4a81:  ldloc 1
+	IL_4a74:  nop 
+	IL_4a75:  nop 
+	IL_4a76:  ldloc 118
 
-	IL_4a85:  nop 
-	IL_4a86:  nop 
-	IL_4a87:  stloc 4
+	IL_4a7a:  nop 
+	IL_4a7b:  nop 
+	IL_4a7c:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4a81:  call int16 class [mscorlib]System.Convert::ToInt16(string)
+	IL_4a86:  stfld int16 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ShortLiteral::NumVal
+	IL_4a8b:  ldloc 118
 
-	IL_4a8b:  nop 
-	IL_4a8c:  nop 
-	IL_4a8d:  ldarg 1
+	IL_4a8f:  nop 
+	IL_4a90:  nop 
+	IL_4a91:  starg 1
 
-	IL_4a91:  nop 
-	IL_4a92:  nop 
-	IL_4a93:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4a98:  ldstr "^\\+(\\d)+(.)*$"
-	IL_4a9d:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4aa2:  stloc 1
+	IL_4a95:  nop 
+	IL_4a96:  nop 
+	IL_4a97:  br IL_4fef
 
-	IL_4aa6:  nop 
-	IL_4aa7:  nop 
-	IL_4aa8:  ldloc 4
+	IL_4a9c:  br IL_4aa6
 
-	IL_4aac:  nop 
-	IL_4aad:  nop 
-	IL_4aae:  ldloc 1
+	IL_4aa1:  br IL_4aa6
 
-	IL_4ab2:  nop 
-	IL_4ab3:  nop 
-	IL_4ab4:  or 
-	IL_4ab5:  stloc 4
+	IL_4aa6:  ldarg 1
 
-	IL_4ab9:  nop 
-	IL_4aba:  nop 
-	IL_4abb:  ldarg 1
+	IL_4aaa:  nop 
+	IL_4aab:  nop 
+	IL_4aac:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4ab1:  ldstr "^(\\d)+(.)*$"
+	IL_4ab6:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4abb:  stloc 1
 
 	IL_4abf:  nop 
 	IL_4ac0:  nop 
-	IL_4ac1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4ac6:  ldstr "^-(\\d)+(.)*$"
-	IL_4acb:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4ad0:  stloc 1
+	IL_4ac1:  ldloc 1
 
-	IL_4ad4:  nop 
-	IL_4ad5:  nop 
-	IL_4ad6:  ldloc 4
+	IL_4ac5:  nop 
+	IL_4ac6:  nop 
+	IL_4ac7:  stloc 4
 
-	IL_4ada:  nop 
-	IL_4adb:  nop 
-	IL_4adc:  ldloc 1
+	IL_4acb:  nop 
+	IL_4acc:  nop 
+	IL_4acd:  ldarg 1
 
-	IL_4ae0:  nop 
-	IL_4ae1:  nop 
-	IL_4ae2:  or 
-	IL_4ae3:  stloc 4
+	IL_4ad1:  nop 
+	IL_4ad2:  nop 
+	IL_4ad3:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4ad8:  ldstr "^\\+(\\d)+(.)*$"
+	IL_4add:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4ae2:  stloc 1
 
+	IL_4ae6:  nop 
 	IL_4ae7:  nop 
-	IL_4ae8:  nop 
-	IL_4ae9:  ldloc 4
+	IL_4ae8:  ldloc 4
 
+	IL_4aec:  nop 
 	IL_4aed:  nop 
-	IL_4aee:  nop 
-	IL_4aef:  ldc.i4 1
-	IL_4af4:  beq IL_4afe
+	IL_4aee:  ldloc 1
 
-	IL_4af9:  br IL_4b72
+	IL_4af2:  nop 
+	IL_4af3:  nop 
+	IL_4af4:  or 
+	IL_4af5:  stloc 4
 
-	IL_4afe:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral::'.ctor'()
-	IL_4b03:  stloc 114
+	IL_4af9:  nop 
+	IL_4afa:  nop 
+	IL_4afb:  ldarg 1
 
-	IL_4b07:  nop 
-	IL_4b08:  nop 
-	IL_4b09:  ldloc 114
+	IL_4aff:  nop 
+	IL_4b00:  nop 
+	IL_4b01:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4b06:  ldstr "^-(\\d)+(.)*$"
+	IL_4b0b:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4b10:  stloc 1
 
-	IL_4b0d:  nop 
-	IL_4b0e:  nop 
-	IL_4b0f:  ldarg 1
-
-	IL_4b13:  nop 
 	IL_4b14:  nop 
-	IL_4b15:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_4b1a:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_4b1f:  ldarg 1
+	IL_4b15:  nop 
+	IL_4b16:  ldloc 4
 
-	IL_4b23:  nop 
-	IL_4b24:  nop 
-	IL_4b25:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4b2a:  stloc 2
+	IL_4b1a:  nop 
+	IL_4b1b:  nop 
+	IL_4b1c:  ldloc 1
 
+	IL_4b20:  nop 
+	IL_4b21:  nop 
+	IL_4b22:  or 
+	IL_4b23:  stloc 4
+
+	IL_4b27:  nop 
+	IL_4b28:  nop 
+	IL_4b29:  ldarg 1
+
+	IL_4b2d:  nop 
 	IL_4b2e:  nop 
-	IL_4b2f:  nop 
-	IL_4b30:  ldloc 114
+	IL_4b2f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4b34:  stloc 2
 
-	IL_4b34:  nop 
-	IL_4b35:  nop 
-	IL_4b36:  ldloc 2
+	IL_4b38:  nop 
+	IL_4b39:  nop 
+	IL_4b3a:  ldloc 2
 
-	IL_4b3a:  nop 
-	IL_4b3b:  nop 
-	IL_4b3c:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4b41:  ldloc 114
+	IL_4b3e:  nop 
+	IL_4b3f:  nop 
+	IL_4b40:  ldstr "ub"
+	IL_4b45:  callvirt instance bool string::EndsWith(string)
+	IL_4b4a:  stloc 1
 
-	IL_4b45:  nop 
-	IL_4b46:  nop 
-	IL_4b47:  ldloc 114
+	IL_4b4e:  nop 
+	IL_4b4f:  nop 
+	IL_4b50:  ldloc 4
 
-	IL_4b4b:  nop 
-	IL_4b4c:  nop 
-	IL_4b4d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4b52:  call int32 class [mscorlib]System.Convert::ToInt32(string)
-	IL_4b57:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral::NumVal
-	IL_4b5c:  ldloc 114
+	IL_4b54:  nop 
+	IL_4b55:  nop 
+	IL_4b56:  ldloc 1
 
-	IL_4b60:  nop 
+	IL_4b5a:  nop 
+	IL_4b5b:  nop 
+	IL_4b5c:  and 
+	IL_4b5d:  stloc 4
+
 	IL_4b61:  nop 
-	IL_4b62:  starg 1
+	IL_4b62:  nop 
+	IL_4b63:  ldloc 4
 
-	IL_4b66:  nop 
 	IL_4b67:  nop 
-	IL_4b68:  br IL_4c61
+	IL_4b68:  nop 
+	IL_4b69:  ldc.i4 1
+	IL_4b6e:  beq IL_4b78
 
-	IL_4b6d:  br IL_4b77
+	IL_4b73:  br IL_4c61
 
-	IL_4b72:  br IL_4b77
+	IL_4b78:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral::'.ctor'()
+	IL_4b7d:  stloc 119
 
-	IL_4b77:  ldarg 1
+	IL_4b81:  nop 
+	IL_4b82:  nop 
+	IL_4b83:  ldloc 119
 
-	IL_4b7b:  nop 
-	IL_4b7c:  nop 
-	IL_4b7d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4b82:  ldstr "^([a-zA-Z])+(.)*$"
-	IL_4b87:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4b8c:  stloc 1
+	IL_4b87:  nop 
+	IL_4b88:  nop 
+	IL_4b89:  ldarg 1
 
-	IL_4b90:  nop 
-	IL_4b91:  nop 
-	IL_4b92:  ldloc 1
+	IL_4b8d:  nop 
+	IL_4b8e:  nop 
+	IL_4b8f:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_4b94:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_4b99:  ldarg 1
 
-	IL_4b96:  nop 
-	IL_4b97:  nop 
-	IL_4b98:  stloc 4
-
-	IL_4b9c:  nop 
 	IL_4b9d:  nop 
-	IL_4b9e:  ldarg 1
+	IL_4b9e:  nop 
+	IL_4b9f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4ba4:  stloc 2
 
-	IL_4ba2:  nop 
-	IL_4ba3:  nop 
-	IL_4ba4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4ba9:  ldstr "^_(.)*([a-zA-Z])+(.)*$"
-	IL_4bae:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4bb3:  stloc 1
+	IL_4ba8:  nop 
+	IL_4ba9:  nop 
+	IL_4baa:  ldc.i4 1
+	IL_4baf:  conv.u 
+	IL_4bb0:  newarr [mscorlib]System.Char
+	IL_4bb5:  stloc 3
 
-	IL_4bb7:  nop 
-	IL_4bb8:  nop 
-	IL_4bb9:  ldloc 4
+	IL_4bb9:  nop 
+	IL_4bba:  nop 
+	IL_4bbb:  ldloc 3
 
-	IL_4bbd:  nop 
-	IL_4bbe:  nop 
-	IL_4bbf:  ldloc 1
+	IL_4bbf:  nop 
+	IL_4bc0:  nop 
+	IL_4bc1:  ldc.i4 0
+	IL_4bc6:  conv.u 
+	IL_4bc7:  ldstr "b"
+	IL_4bcc:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_4bd1:  stelem [mscorlib]System.Char
+	IL_4bd6:  ldloc 2
 
-	IL_4bc3:  nop 
-	IL_4bc4:  nop 
-	IL_4bc5:  or 
-	IL_4bc6:  stloc 4
+	IL_4bda:  nop 
+	IL_4bdb:  nop 
+	IL_4bdc:  ldloc 3
 
-	IL_4bca:  nop 
-	IL_4bcb:  nop 
-	IL_4bcc:  ldarg 1
-
-	IL_4bd0:  nop 
-	IL_4bd1:  nop 
-	IL_4bd2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4bd7:  ldstr "^::(.)*([a-zA-Z])+(.)*$"
-	IL_4bdc:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_4be1:  stloc 1
-
-	IL_4be5:  nop 
-	IL_4be6:  nop 
-	IL_4be7:  ldloc 4
+	IL_4be0:  nop 
+	IL_4be1:  nop 
+	IL_4be2:  callvirt instance string string::TrimEnd(char[])
+	IL_4be7:  stloc 2
 
 	IL_4beb:  nop 
 	IL_4bec:  nop 
-	IL_4bed:  ldloc 1
+	IL_4bed:  ldloc 3
 
 	IL_4bf1:  nop 
 	IL_4bf2:  nop 
-	IL_4bf3:  or 
-	IL_4bf4:  stloc 4
+	IL_4bf3:  ldc.i4 0
+	IL_4bf8:  conv.u 
+	IL_4bf9:  ldstr "u"
+	IL_4bfe:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_4c03:  stelem [mscorlib]System.Char
+	IL_4c08:  ldloc 2
 
-	IL_4bf8:  nop 
-	IL_4bf9:  nop 
-	IL_4bfa:  ldloc 4
+	IL_4c0c:  nop 
+	IL_4c0d:  nop 
+	IL_4c0e:  ldloc 3
 
-	IL_4bfe:  nop 
-	IL_4bff:  nop 
-	IL_4c00:  ldc.i4 1
-	IL_4c05:  beq IL_4c0f
+	IL_4c12:  nop 
+	IL_4c13:  nop 
+	IL_4c14:  callvirt instance string string::TrimEnd(char[])
+	IL_4c19:  stloc 2
 
-	IL_4c0a:  br IL_4c5c
-
-	IL_4c0f:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::'.ctor'()
-	IL_4c14:  stloc 115
-
-	IL_4c18:  nop 
-	IL_4c19:  nop 
-	IL_4c1a:  ldloc 115
-
+	IL_4c1d:  nop 
 	IL_4c1e:  nop 
-	IL_4c1f:  nop 
-	IL_4c20:  ldarg 1
+	IL_4c1f:  ldloc 119
 
+	IL_4c23:  nop 
 	IL_4c24:  nop 
-	IL_4c25:  nop 
-	IL_4c26:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_4c2b:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_4c30:  ldloc 115
+	IL_4c25:  ldloc 2
+
+	IL_4c29:  nop 
+	IL_4c2a:  nop 
+	IL_4c2b:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4c30:  ldloc 119
 
 	IL_4c34:  nop 
 	IL_4c35:  nop 
-	IL_4c36:  ldarg 1
+	IL_4c36:  ldloc 119
 
 	IL_4c3a:  nop 
 	IL_4c3b:  nop 
 	IL_4c3c:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4c41:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_4c46:  ldloc 115
+	IL_4c41:  call unsigned int8 class [mscorlib]System.Convert::ToByte(string)
+	IL_4c46:  stfld unsigned int8 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral::NumVal
+	IL_4c4b:  ldloc 119
 
-	IL_4c4a:  nop 
-	IL_4c4b:  nop 
-	IL_4c4c:  starg 1
-
+	IL_4c4f:  nop 
 	IL_4c50:  nop 
-	IL_4c51:  nop 
-	IL_4c52:  br IL_4c61
+	IL_4c51:  starg 1
 
-	IL_4c57:  br IL_4c61
+	IL_4c55:  nop 
+	IL_4c56:  nop 
+	IL_4c57:  br IL_4fef
 
-	IL_4c5c:  br IL_4c61
+	IL_4c5c:  br IL_4c66
 
-	IL_4c61:  ldarg 1
+	IL_4c61:  br IL_4c66
 
-	IL_4c65:  nop 
-	IL_4c66:  nop 
-	IL_4c67:  ret 
+	IL_4c66:  ldarg 1
+
+	IL_4c6a:  nop 
+	IL_4c6b:  nop 
+	IL_4c6c:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4c71:  ldstr "^(\\d)+(.)*$"
+	IL_4c76:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4c7b:  stloc 1
+
+	IL_4c7f:  nop 
+	IL_4c80:  nop 
+	IL_4c81:  ldloc 1
+
+	IL_4c85:  nop 
+	IL_4c86:  nop 
+	IL_4c87:  stloc 4
+
+	IL_4c8b:  nop 
+	IL_4c8c:  nop 
+	IL_4c8d:  ldarg 1
+
+	IL_4c91:  nop 
+	IL_4c92:  nop 
+	IL_4c93:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4c98:  ldstr "^\\+(\\d)+(.)*$"
+	IL_4c9d:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4ca2:  stloc 1
+
+	IL_4ca6:  nop 
+	IL_4ca7:  nop 
+	IL_4ca8:  ldloc 4
+
+	IL_4cac:  nop 
+	IL_4cad:  nop 
+	IL_4cae:  ldloc 1
+
+	IL_4cb2:  nop 
+	IL_4cb3:  nop 
+	IL_4cb4:  or 
+	IL_4cb5:  stloc 4
+
+	IL_4cb9:  nop 
+	IL_4cba:  nop 
+	IL_4cbb:  ldarg 1
+
+	IL_4cbf:  nop 
+	IL_4cc0:  nop 
+	IL_4cc1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4cc6:  ldstr "^-(\\d)+(.)*$"
+	IL_4ccb:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4cd0:  stloc 1
+
+	IL_4cd4:  nop 
+	IL_4cd5:  nop 
+	IL_4cd6:  ldloc 4
+
+	IL_4cda:  nop 
+	IL_4cdb:  nop 
+	IL_4cdc:  ldloc 1
+
+	IL_4ce0:  nop 
+	IL_4ce1:  nop 
+	IL_4ce2:  or 
+	IL_4ce3:  stloc 4
+
+	IL_4ce7:  nop 
+	IL_4ce8:  nop 
+	IL_4ce9:  ldarg 1
+
+	IL_4ced:  nop 
+	IL_4cee:  nop 
+	IL_4cef:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4cf4:  stloc 2
+
+	IL_4cf8:  nop 
+	IL_4cf9:  nop 
+	IL_4cfa:  ldloc 2
+
+	IL_4cfe:  nop 
+	IL_4cff:  nop 
+	IL_4d00:  ldstr "b"
+	IL_4d05:  callvirt instance bool string::EndsWith(string)
+	IL_4d0a:  stloc 1
+
+	IL_4d0e:  nop 
+	IL_4d0f:  nop 
+	IL_4d10:  ldloc 4
+
+	IL_4d14:  nop 
+	IL_4d15:  nop 
+	IL_4d16:  ldloc 1
+
+	IL_4d1a:  nop 
+	IL_4d1b:  nop 
+	IL_4d1c:  and 
+	IL_4d1d:  stloc 4
+
+	IL_4d21:  nop 
+	IL_4d22:  nop 
+	IL_4d23:  ldloc 4
+
+	IL_4d27:  nop 
+	IL_4d28:  nop 
+	IL_4d29:  ldc.i4 1
+	IL_4d2e:  beq IL_4d38
+
+	IL_4d33:  br IL_4def
+
+	IL_4d38:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral::'.ctor'()
+	IL_4d3d:  stloc 120
+
+	IL_4d41:  nop 
+	IL_4d42:  nop 
+	IL_4d43:  ldloc 120
+
+	IL_4d47:  nop 
+	IL_4d48:  nop 
+	IL_4d49:  ldarg 1
+
+	IL_4d4d:  nop 
+	IL_4d4e:  nop 
+	IL_4d4f:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_4d54:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_4d59:  ldarg 1
+
+	IL_4d5d:  nop 
+	IL_4d5e:  nop 
+	IL_4d5f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4d64:  stloc 2
+
+	IL_4d68:  nop 
+	IL_4d69:  nop 
+	IL_4d6a:  ldc.i4 1
+	IL_4d6f:  conv.u 
+	IL_4d70:  newarr [mscorlib]System.Char
+	IL_4d75:  stloc 3
+
+	IL_4d79:  nop 
+	IL_4d7a:  nop 
+	IL_4d7b:  ldloc 3
+
+	IL_4d7f:  nop 
+	IL_4d80:  nop 
+	IL_4d81:  ldc.i4 0
+	IL_4d86:  conv.u 
+	IL_4d87:  ldstr "b"
+	IL_4d8c:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_4d91:  stelem [mscorlib]System.Char
+	IL_4d96:  ldloc 2
+
+	IL_4d9a:  nop 
+	IL_4d9b:  nop 
+	IL_4d9c:  ldloc 3
+
+	IL_4da0:  nop 
+	IL_4da1:  nop 
+	IL_4da2:  callvirt instance string string::TrimEnd(char[])
+	IL_4da7:  stloc 2
+
+	IL_4dab:  nop 
+	IL_4dac:  nop 
+	IL_4dad:  ldloc 120
+
+	IL_4db1:  nop 
+	IL_4db2:  nop 
+	IL_4db3:  ldloc 2
+
+	IL_4db7:  nop 
+	IL_4db8:  nop 
+	IL_4db9:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4dbe:  ldloc 120
+
+	IL_4dc2:  nop 
+	IL_4dc3:  nop 
+	IL_4dc4:  ldloc 120
+
+	IL_4dc8:  nop 
+	IL_4dc9:  nop 
+	IL_4dca:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4dcf:  call int8 class [mscorlib]System.Convert::ToSByte(string)
+	IL_4dd4:  stfld int8 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral::NumVal
+	IL_4dd9:  ldloc 120
+
+	IL_4ddd:  nop 
+	IL_4dde:  nop 
+	IL_4ddf:  starg 1
+
+	IL_4de3:  nop 
+	IL_4de4:  nop 
+	IL_4de5:  br IL_4fef
+
+	IL_4dea:  br IL_4df4
+
+	IL_4def:  br IL_4df4
+
+	IL_4df4:  ldarg 1
+
+	IL_4df8:  nop 
+	IL_4df9:  nop 
+	IL_4dfa:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4dff:  ldstr "^(\\d)+(.)*$"
+	IL_4e04:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4e09:  stloc 1
+
+	IL_4e0d:  nop 
+	IL_4e0e:  nop 
+	IL_4e0f:  ldloc 1
+
+	IL_4e13:  nop 
+	IL_4e14:  nop 
+	IL_4e15:  stloc 4
+
+	IL_4e19:  nop 
+	IL_4e1a:  nop 
+	IL_4e1b:  ldarg 1
+
+	IL_4e1f:  nop 
+	IL_4e20:  nop 
+	IL_4e21:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4e26:  ldstr "^\\+(\\d)+(.)*$"
+	IL_4e2b:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4e30:  stloc 1
+
+	IL_4e34:  nop 
+	IL_4e35:  nop 
+	IL_4e36:  ldloc 4
+
+	IL_4e3a:  nop 
+	IL_4e3b:  nop 
+	IL_4e3c:  ldloc 1
+
+	IL_4e40:  nop 
+	IL_4e41:  nop 
+	IL_4e42:  or 
+	IL_4e43:  stloc 4
+
+	IL_4e47:  nop 
+	IL_4e48:  nop 
+	IL_4e49:  ldarg 1
+
+	IL_4e4d:  nop 
+	IL_4e4e:  nop 
+	IL_4e4f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4e54:  ldstr "^-(\\d)+(.)*$"
+	IL_4e59:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4e5e:  stloc 1
+
+	IL_4e62:  nop 
+	IL_4e63:  nop 
+	IL_4e64:  ldloc 4
+
+	IL_4e68:  nop 
+	IL_4e69:  nop 
+	IL_4e6a:  ldloc 1
+
+	IL_4e6e:  nop 
+	IL_4e6f:  nop 
+	IL_4e70:  or 
+	IL_4e71:  stloc 4
+
+	IL_4e75:  nop 
+	IL_4e76:  nop 
+	IL_4e77:  ldloc 4
+
+	IL_4e7b:  nop 
+	IL_4e7c:  nop 
+	IL_4e7d:  ldc.i4 1
+	IL_4e82:  beq IL_4e8c
+
+	IL_4e87:  br IL_4f00
+
+	IL_4e8c:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral::'.ctor'()
+	IL_4e91:  stloc 121
+
+	IL_4e95:  nop 
+	IL_4e96:  nop 
+	IL_4e97:  ldloc 121
+
+	IL_4e9b:  nop 
+	IL_4e9c:  nop 
+	IL_4e9d:  ldarg 1
+
+	IL_4ea1:  nop 
+	IL_4ea2:  nop 
+	IL_4ea3:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_4ea8:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_4ead:  ldarg 1
+
+	IL_4eb1:  nop 
+	IL_4eb2:  nop 
+	IL_4eb3:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4eb8:  stloc 2
+
+	IL_4ebc:  nop 
+	IL_4ebd:  nop 
+	IL_4ebe:  ldloc 121
+
+	IL_4ec2:  nop 
+	IL_4ec3:  nop 
+	IL_4ec4:  ldloc 2
+
+	IL_4ec8:  nop 
+	IL_4ec9:  nop 
+	IL_4eca:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4ecf:  ldloc 121
+
+	IL_4ed3:  nop 
+	IL_4ed4:  nop 
+	IL_4ed5:  ldloc 121
+
+	IL_4ed9:  nop 
+	IL_4eda:  nop 
+	IL_4edb:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4ee0:  call int32 class [mscorlib]System.Convert::ToInt32(string)
+	IL_4ee5:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral::NumVal
+	IL_4eea:  ldloc 121
+
+	IL_4eee:  nop 
+	IL_4eef:  nop 
+	IL_4ef0:  starg 1
+
+	IL_4ef4:  nop 
+	IL_4ef5:  nop 
+	IL_4ef6:  br IL_4fef
+
+	IL_4efb:  br IL_4f05
+
+	IL_4f00:  br IL_4f05
+
+	IL_4f05:  ldarg 1
+
+	IL_4f09:  nop 
+	IL_4f0a:  nop 
+	IL_4f0b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4f10:  ldstr "^([a-zA-Z])+(.)*$"
+	IL_4f15:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4f1a:  stloc 1
+
+	IL_4f1e:  nop 
+	IL_4f1f:  nop 
+	IL_4f20:  ldloc 1
+
+	IL_4f24:  nop 
+	IL_4f25:  nop 
+	IL_4f26:  stloc 4
+
+	IL_4f2a:  nop 
+	IL_4f2b:  nop 
+	IL_4f2c:  ldarg 1
+
+	IL_4f30:  nop 
+	IL_4f31:  nop 
+	IL_4f32:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4f37:  ldstr "^_(.)*([a-zA-Z])+(.)*$"
+	IL_4f3c:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4f41:  stloc 1
+
+	IL_4f45:  nop 
+	IL_4f46:  nop 
+	IL_4f47:  ldloc 4
+
+	IL_4f4b:  nop 
+	IL_4f4c:  nop 
+	IL_4f4d:  ldloc 1
+
+	IL_4f51:  nop 
+	IL_4f52:  nop 
+	IL_4f53:  or 
+	IL_4f54:  stloc 4
+
+	IL_4f58:  nop 
+	IL_4f59:  nop 
+	IL_4f5a:  ldarg 1
+
+	IL_4f5e:  nop 
+	IL_4f5f:  nop 
+	IL_4f60:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4f65:  ldstr "^::(.)*([a-zA-Z])+(.)*$"
+	IL_4f6a:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_4f6f:  stloc 1
+
+	IL_4f73:  nop 
+	IL_4f74:  nop 
+	IL_4f75:  ldloc 4
+
+	IL_4f79:  nop 
+	IL_4f7a:  nop 
+	IL_4f7b:  ldloc 1
+
+	IL_4f7f:  nop 
+	IL_4f80:  nop 
+	IL_4f81:  or 
+	IL_4f82:  stloc 4
+
+	IL_4f86:  nop 
+	IL_4f87:  nop 
+	IL_4f88:  ldloc 4
+
+	IL_4f8c:  nop 
+	IL_4f8d:  nop 
+	IL_4f8e:  ldc.i4 1
+	IL_4f93:  beq IL_4f9d
+
+	IL_4f98:  br IL_4fea
+
+	IL_4f9d:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::'.ctor'()
+	IL_4fa2:  stloc 122
+
+	IL_4fa6:  nop 
+	IL_4fa7:  nop 
+	IL_4fa8:  ldloc 122
+
+	IL_4fac:  nop 
+	IL_4fad:  nop 
+	IL_4fae:  ldarg 1
+
+	IL_4fb2:  nop 
+	IL_4fb3:  nop 
+	IL_4fb4:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_4fb9:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_4fbe:  ldloc 122
+
+	IL_4fc2:  nop 
+	IL_4fc3:  nop 
+	IL_4fc4:  ldarg 1
+
+	IL_4fc8:  nop 
+	IL_4fc9:  nop 
+	IL_4fca:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4fcf:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_4fd4:  ldloc 122
+
+	IL_4fd8:  nop 
+	IL_4fd9:  nop 
+	IL_4fda:  starg 1
+
+	IL_4fde:  nop 
+	IL_4fdf:  nop 
+	IL_4fe0:  br IL_4fef
+
+	IL_4fe5:  br IL_4fef
+
+	IL_4fea:  br IL_4fef
+
+	IL_4fef:  ldarg 1
+
+	IL_4ff3:  nop 
+	IL_4ff4:  nop 
+	IL_4ff5:  ret 
     } // end of method TokenOptimizer::Optimize
 
     // method line 10
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6ff4
+        // Method begins at RVA 0x7384
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -9549,7 +9969,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr checkVarAs (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0x7008
+        // Method begins at RVA 0x7398
 	// Code size 444 (0x1bc)
 	.maxstack 12
 	.locals init (
@@ -9761,7 +10181,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok IdentToMNTok (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident idt, class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok mnt)  cil managed 
     {
-        // Method begins at RVA 0x71d0
+        // Method begins at RVA 0x7560
 	// Code size 293 (0x125)
 	.maxstack 2
 	IL_0000:  ldarg 2
@@ -9905,7 +10325,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr procMethodCall (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr stm, int32 i)  cil managed 
     {
-        // Method begins at RVA 0x7304
+        // Method begins at RVA 0x7694
 	// Code size 1325 (0x52d)
 	.maxstack 39
 	.locals init (
@@ -10574,7 +10994,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr procNewCall (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr stm, int32 i)  cil managed 
     {
-        // Method begins at RVA 0x7840
+        // Method begins at RVA 0x7bd0
 	// Code size 1265 (0x4f1)
 	.maxstack 38
 	.locals init (
@@ -11208,7 +11628,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr procIdentArrayAccess (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr stm, int32 i)  cil managed 
     {
-        // Method begins at RVA 0x7d40
+        // Method begins at RVA 0x80d0
 	// Code size 1004 (0x3ec)
 	.maxstack 25
 	.locals init (
@@ -11720,7 +12140,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr procMtdArrayAccess (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr stm, int32 i)  cil managed 
     {
-        // Method begins at RVA 0x8138
+        // Method begins at RVA 0x84c8
 	// Code size 1045 (0x415)
 	.maxstack 25
 	.locals init (
@@ -12256,9 +12676,9 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr Optimize (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr exp)  cil managed 
     {
-        // Method begins at RVA 0x855c
-	// Code size 6371 (0x18e3)
-	.maxstack 189
+        // Method begins at RVA 0x88ec
+	// Code size 7627 (0x1dcb)
+	.maxstack 218
 	.locals init (
 		int32	V_0,
 		int32	V_1,
@@ -12274,39 +12694,48 @@
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_11,
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok	V_12,
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_13,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident	V_14,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok	V_15,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok	V_16,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral	V_17,
-		int32	V_18,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_19,
-		class [mscorlib]System.Type	V_20,
-		bool	V_21,
-		string	V_22,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_23,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok	V_24,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_25,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok	V_26,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok	V_27,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident	V_28,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral	V_29,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral	V_30,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral	V_31,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral	V_32,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral	V_33,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewCallTok	V_34,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[]	V_35,
-		int32	V_36,
-		int32	V_37,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeCallTok	V_38,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok	V_39,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[]	V_40,
-		int32	V_41,
-		int32	V_42,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident	V_43,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr	V_44,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok	V_45,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok	V_46)
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok	V_14,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_15,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr	V_16,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok	V_17,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_18,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident	V_19,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok	V_20,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok	V_21,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral	V_22,
+		int32	V_23,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_24,
+		class [mscorlib]System.Type	V_25,
+		bool	V_26,
+		string	V_27,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_28,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok	V_29,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_30,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok	V_31,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok	V_32,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident	V_33,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident	V_34,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok	V_35,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral	V_36,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral	V_37,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral	V_38,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral	V_39,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral	V_40,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewCallTok	V_41,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[]	V_42,
+		int32	V_43,
+		int32	V_44,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeCallTok	V_45,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewarrCallTok	V_46,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.PtrCallTok	V_47,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok	V_48,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[]	V_49,
+		int32	V_50,
+		int32	V_51,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident	V_52,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr	V_53,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok	V_54,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok	V_55)
 	IL_0000:  ldarg 1
 
 	IL_0004:  nop 
@@ -12405,108 +12834,114 @@
 
 	IL_00aa:  nop 
 	IL_00ab:  nop 
-	IL_00ac:  ldc.i4 0
-	IL_00b1:  stloc 18
+	IL_00ac:  ldnull 
+	IL_00ad:  stloc 18
 
-	IL_00b5:  nop 
-	IL_00b6:  nop 
-	IL_00b7:  ldloc 0
+	IL_00b1:  nop 
+	IL_00b2:  nop 
+	IL_00b3:  ldnull 
+	IL_00b4:  stloc 19
 
-	IL_00bb:  nop 
-	IL_00bc:  nop 
-	IL_00bd:  ldc.i4 0
-	IL_00c2:  blt IL_00cc
+	IL_00b8:  nop 
+	IL_00b9:  nop 
+	IL_00ba:  ldnull 
+	IL_00bb:  stloc 20
 
-	IL_00c7:  br IL_00d6
+	IL_00bf:  nop 
+	IL_00c0:  nop 
+	IL_00c1:  ldnull 
+	IL_00c2:  stloc 21
 
-	IL_00cc:  br IL_1820
+	IL_00c6:  nop 
+	IL_00c7:  nop 
+	IL_00c8:  ldnull 
+	IL_00c9:  stloc 22
 
-	IL_00d1:  br IL_00db
+	IL_00cd:  nop 
+	IL_00ce:  nop 
+	IL_00cf:  ldc.i4 0
+	IL_00d4:  stloc 23
 
-	IL_00d6:  br IL_00db
+	IL_00d8:  nop 
+	IL_00d9:  nop 
+	IL_00da:  ldloc 0
 
-	IL_00db:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetChainFlag
+	IL_00de:  nop 
+	IL_00df:  nop 
 	IL_00e0:  ldc.i4 0
-	IL_00e5:  beq IL_00ef
+	IL_00e5:  blt IL_00ef
 
-	IL_00ea:  br IL_13a7
+	IL_00ea:  br IL_00f9
 
-	IL_00ef:  ldloc 1
+	IL_00ef:  br IL_1d08
 
-	IL_00f3:  nop 
-	IL_00f4:  nop 
-	IL_00f5:  ldc.i4 1
-	IL_00fa:  add 
-	IL_00fb:  stloc 1
+	IL_00f4:  br IL_00fe
 
-	IL_00ff:  nop 
-	IL_0100:  nop 
-	IL_0101:  ldarg 1
+	IL_00f9:  br IL_00fe
 
-	IL_0105:  nop 
-	IL_0106:  nop 
-	IL_0107:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_010c:  ldloc 1
+	IL_00fe:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetChainFlag
+	IL_0103:  ldc.i4 0
+	IL_0108:  beq IL_0112
 
-	IL_0110:  nop 
-	IL_0111:  nop 
-	IL_0112:  conv.u 
-	IL_0113:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0118:  stloc 19
+	IL_010d:  br IL_188f
 
-	IL_011c:  nop 
-	IL_011d:  nop 
-	IL_011e:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.LRSParen
-	IL_0123:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0128:  stloc 20
+	IL_0112:  ldloc 1
 
-	IL_012c:  nop 
-	IL_012d:  nop 
-	IL_012e:  ldloc 20
+	IL_0116:  nop 
+	IL_0117:  nop 
+	IL_0118:  ldc.i4 1
+	IL_011d:  add 
+	IL_011e:  stloc 1
 
-	IL_0132:  nop 
+	IL_0122:  nop 
+	IL_0123:  nop 
+	IL_0124:  ldarg 1
+
+	IL_0128:  nop 
+	IL_0129:  nop 
+	IL_012a:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_012f:  ldloc 1
+
 	IL_0133:  nop 
-	IL_0134:  ldloc 19
+	IL_0134:  nop 
+	IL_0135:  conv.u 
+	IL_0136:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_013b:  stloc 24
 
-	IL_0138:  nop 
-	IL_0139:  nop 
-	IL_013a:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_013f:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_0144:  stloc 21
+	IL_013f:  nop 
+	IL_0140:  nop 
+	IL_0141:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.LRSParen
+	IL_0146:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_014b:  stloc 25
 
-	IL_0148:  nop 
-	IL_0149:  nop 
-	IL_014a:  ldloc 21
-
-	IL_014e:  nop 
 	IL_014f:  nop 
-	IL_0150:  ldc.i4 1
-	IL_0155:  beq IL_015f
+	IL_0150:  nop 
+	IL_0151:  ldloc 25
 
-	IL_015a:  br IL_02bb
+	IL_0155:  nop 
+	IL_0156:  nop 
+	IL_0157:  ldloc 24
 
-	IL_015f:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
-	IL_0164:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0169:  stloc 20
+	IL_015b:  nop 
+	IL_015c:  nop 
+	IL_015d:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0162:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0167:  stloc 26
 
-	IL_016d:  nop 
-	IL_016e:  nop 
-	IL_016f:  ldarg 1
+	IL_016b:  nop 
+	IL_016c:  nop 
+	IL_016d:  ldloc 26
 
-	IL_0173:  nop 
-	IL_0174:  nop 
-	IL_0175:  ldloc 1
+	IL_0171:  nop 
+	IL_0172:  nop 
+	IL_0173:  ldc.i4 1
+	IL_0178:  beq IL_0182
 
-	IL_0179:  nop 
-	IL_017a:  nop 
-	IL_017b:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
-	IL_0180:  ldloc 1
+	IL_017d:  br IL_02de
 
-	IL_0184:  nop 
-	IL_0185:  nop 
-	IL_0186:  ldc.i4 1
-	IL_018b:  sub 
-	IL_018c:  stloc 1
+	IL_0182:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
+	IL_0187:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_018c:  stloc 25
 
 	IL_0190:  nop 
 	IL_0191:  nop 
@@ -12514,196 +12949,196 @@
 
 	IL_0196:  nop 
 	IL_0197:  nop 
-	IL_0198:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_019d:  ldlen 
-	IL_019e:  conv.i4 
-	IL_019f:  ldc.i4 1
-	IL_01a4:  sub 
-	IL_01a5:  stloc 0
+	IL_0198:  ldloc 1
 
-	IL_01a9:  nop 
-	IL_01aa:  nop 
-	IL_01ab:  ldarg 1
+	IL_019c:  nop 
+	IL_019d:  nop 
+	IL_019e:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_01a3:  ldloc 1
 
-	IL_01af:  nop 
-	IL_01b0:  nop 
-	IL_01b1:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_01b6:  ldloc 1
+	IL_01a7:  nop 
+	IL_01a8:  nop 
+	IL_01a9:  ldc.i4 1
+	IL_01ae:  sub 
+	IL_01af:  stloc 1
 
+	IL_01b3:  nop 
+	IL_01b4:  nop 
+	IL_01b5:  ldarg 1
+
+	IL_01b9:  nop 
 	IL_01ba:  nop 
-	IL_01bb:  nop 
-	IL_01bc:  conv.u 
-	IL_01bd:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_01c2:  stloc 19
-
-	IL_01c6:  nop 
-	IL_01c7:  nop 
-	IL_01c8:  ldloc 20
+	IL_01bb:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_01c0:  ldlen 
+	IL_01c1:  conv.i4 
+	IL_01c2:  ldc.i4 1
+	IL_01c7:  sub 
+	IL_01c8:  stloc 0
 
 	IL_01cc:  nop 
 	IL_01cd:  nop 
-	IL_01ce:  ldloc 19
+	IL_01ce:  ldarg 1
 
 	IL_01d2:  nop 
 	IL_01d3:  nop 
-	IL_01d4:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_01d9:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_01de:  stloc 21
+	IL_01d4:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_01d9:  ldloc 1
 
-	IL_01e2:  nop 
-	IL_01e3:  nop 
-	IL_01e4:  ldloc 21
+	IL_01dd:  nop 
+	IL_01de:  nop 
+	IL_01df:  conv.u 
+	IL_01e0:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_01e5:  stloc 24
 
-	IL_01e8:  nop 
 	IL_01e9:  nop 
-	IL_01ea:  ldc.i4 1
-	IL_01ef:  beq IL_0262
+	IL_01ea:  nop 
+	IL_01eb:  ldloc 25
 
-	IL_01f4:  br IL_01f9
+	IL_01ef:  nop 
+	IL_01f0:  nop 
+	IL_01f1:  ldloc 24
 
-	IL_01f9:  ldarg 1
+	IL_01f5:  nop 
+	IL_01f6:  nop 
+	IL_01f7:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_01fc:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0201:  stloc 26
 
-	IL_01fd:  nop 
-	IL_01fe:  nop 
-	IL_01ff:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0204:  ldloc 1
+	IL_0205:  nop 
+	IL_0206:  nop 
+	IL_0207:  ldloc 26
 
-	IL_0208:  nop 
-	IL_0209:  nop 
-	IL_020a:  conv.u 
-	IL_020b:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0210:  stloc 23
+	IL_020b:  nop 
+	IL_020c:  nop 
+	IL_020d:  ldc.i4 1
+	IL_0212:  beq IL_0285
 
-	IL_0214:  nop 
-	IL_0215:  nop 
-	IL_0216:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
-	IL_021b:  stloc 24
+	IL_0217:  br IL_021c
 
-	IL_021f:  nop 
+	IL_021c:  ldarg 1
+
 	IL_0220:  nop 
-	IL_0221:  ldloc 24
-
-	IL_0225:  nop 
-	IL_0226:  nop 
-	IL_0227:  ldloc 23
+	IL_0221:  nop 
+	IL_0222:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0227:  ldloc 1
 
 	IL_022b:  nop 
 	IL_022c:  nop 
-	IL_022d:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_0232:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_0237:  ldloc 24
+	IL_022d:  conv.u 
+	IL_022e:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0233:  stloc 28
 
-	IL_023b:  nop 
-	IL_023c:  nop 
-	IL_023d:  ldloc 23
+	IL_0237:  nop 
+	IL_0238:  nop 
+	IL_0239:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
+	IL_023e:  stloc 29
 
-	IL_0241:  nop 
 	IL_0242:  nop 
-	IL_0243:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_0248:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_024d:  ldloc 24
+	IL_0243:  nop 
+	IL_0244:  ldloc 29
 
-	IL_0251:  nop 
-	IL_0252:  nop 
-	IL_0253:  ldc.i4 1
-	IL_0258:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::IsArray
-	IL_025d:  br IL_0294
+	IL_0248:  nop 
+	IL_0249:  nop 
+	IL_024a:  ldloc 28
 
-	IL_0262:  ldarg 1
+	IL_024e:  nop 
+	IL_024f:  nop 
+	IL_0250:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_0255:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_025a:  ldloc 29
 
-	IL_0266:  nop 
-	IL_0267:  nop 
-	IL_0268:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_026d:  ldloc 1
+	IL_025e:  nop 
+	IL_025f:  nop 
+	IL_0260:  ldloc 28
 
-	IL_0271:  nop 
-	IL_0272:  nop 
-	IL_0273:  conv.u 
-	IL_0274:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0279:  stloc 24
+	IL_0264:  nop 
+	IL_0265:  nop 
+	IL_0266:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_026b:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_0270:  ldloc 29
 
-	IL_027d:  nop 
-	IL_027e:  nop 
-	IL_027f:  ldloc 24
+	IL_0274:  nop 
+	IL_0275:  nop 
+	IL_0276:  ldc.i4 1
+	IL_027b:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::IsArray
+	IL_0280:  br IL_02b7
 
-	IL_0283:  nop 
-	IL_0284:  nop 
-	IL_0285:  ldc.i4 1
-	IL_028a:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::IsArray
-	IL_028f:  br IL_0294
+	IL_0285:  ldarg 1
 
-	IL_0294:  ldarg 1
+	IL_0289:  nop 
+	IL_028a:  nop 
+	IL_028b:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0290:  ldloc 1
 
-	IL_0298:  nop 
-	IL_0299:  nop 
-	IL_029a:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_029f:  ldloc 1
+	IL_0294:  nop 
+	IL_0295:  nop 
+	IL_0296:  conv.u 
+	IL_0297:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_029c:  stloc 29
 
-	IL_02a3:  nop 
-	IL_02a4:  nop 
-	IL_02a5:  conv.u 
-	IL_02a6:  ldloc 24
+	IL_02a0:  nop 
+	IL_02a1:  nop 
+	IL_02a2:  ldloc 29
 
-	IL_02aa:  nop 
-	IL_02ab:  nop 
-	IL_02ac:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_02b1:  br IL_1378
+	IL_02a6:  nop 
+	IL_02a7:  nop 
+	IL_02a8:  ldc.i4 1
+	IL_02ad:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::IsArray
+	IL_02b2:  br IL_02b7
 
-	IL_02b6:  br IL_02c0
+	IL_02b7:  ldarg 1
 
-	IL_02bb:  br IL_02c0
+	IL_02bb:  nop 
+	IL_02bc:  nop 
+	IL_02bd:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_02c2:  ldloc 1
 
-	IL_02c0:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.Ampersand
-	IL_02c5:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_02ca:  stloc 20
+	IL_02c6:  nop 
+	IL_02c7:  nop 
+	IL_02c8:  conv.u 
+	IL_02c9:  ldloc 29
 
+	IL_02cd:  nop 
 	IL_02ce:  nop 
-	IL_02cf:  nop 
-	IL_02d0:  ldloc 20
+	IL_02cf:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_02d4:  br IL_1860
 
-	IL_02d4:  nop 
-	IL_02d5:  nop 
-	IL_02d6:  ldloc 19
+	IL_02d9:  br IL_02e3
 
-	IL_02da:  nop 
-	IL_02db:  nop 
-	IL_02dc:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_02e1:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_02e6:  stloc 21
+	IL_02de:  br IL_02e3
 
-	IL_02ea:  nop 
-	IL_02eb:  nop 
-	IL_02ec:  ldloc 21
+	IL_02e3:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.Ampersand
+	IL_02e8:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_02ed:  stloc 25
 
-	IL_02f0:  nop 
 	IL_02f1:  nop 
-	IL_02f2:  ldc.i4 1
-	IL_02f7:  beq IL_0301
+	IL_02f2:  nop 
+	IL_02f3:  ldloc 25
 
-	IL_02fc:  br IL_045d
+	IL_02f7:  nop 
+	IL_02f8:  nop 
+	IL_02f9:  ldloc 24
 
-	IL_0301:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
-	IL_0306:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_030b:  stloc 20
+	IL_02fd:  nop 
+	IL_02fe:  nop 
+	IL_02ff:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0304:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0309:  stloc 26
 
-	IL_030f:  nop 
-	IL_0310:  nop 
-	IL_0311:  ldarg 1
+	IL_030d:  nop 
+	IL_030e:  nop 
+	IL_030f:  ldloc 26
 
-	IL_0315:  nop 
-	IL_0316:  nop 
-	IL_0317:  ldloc 1
+	IL_0313:  nop 
+	IL_0314:  nop 
+	IL_0315:  ldc.i4 1
+	IL_031a:  beq IL_0324
 
-	IL_031b:  nop 
-	IL_031c:  nop 
-	IL_031d:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
-	IL_0322:  ldloc 1
+	IL_031f:  br IL_0480
 
-	IL_0326:  nop 
-	IL_0327:  nop 
-	IL_0328:  ldc.i4 1
-	IL_032d:  sub 
-	IL_032e:  stloc 1
+	IL_0324:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
+	IL_0329:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_032e:  stloc 25
 
 	IL_0332:  nop 
 	IL_0333:  nop 
@@ -12711,2461 +13146,2504 @@
 
 	IL_0338:  nop 
 	IL_0339:  nop 
-	IL_033a:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_033f:  ldlen 
-	IL_0340:  conv.i4 
-	IL_0341:  ldc.i4 1
-	IL_0346:  sub 
-	IL_0347:  stloc 0
+	IL_033a:  ldloc 1
 
-	IL_034b:  nop 
-	IL_034c:  nop 
-	IL_034d:  ldarg 1
+	IL_033e:  nop 
+	IL_033f:  nop 
+	IL_0340:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_0345:  ldloc 1
 
-	IL_0351:  nop 
-	IL_0352:  nop 
-	IL_0353:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0358:  ldloc 1
+	IL_0349:  nop 
+	IL_034a:  nop 
+	IL_034b:  ldc.i4 1
+	IL_0350:  sub 
+	IL_0351:  stloc 1
 
+	IL_0355:  nop 
+	IL_0356:  nop 
+	IL_0357:  ldarg 1
+
+	IL_035b:  nop 
 	IL_035c:  nop 
-	IL_035d:  nop 
-	IL_035e:  conv.u 
-	IL_035f:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0364:  stloc 19
-
-	IL_0368:  nop 
-	IL_0369:  nop 
-	IL_036a:  ldloc 20
+	IL_035d:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0362:  ldlen 
+	IL_0363:  conv.i4 
+	IL_0364:  ldc.i4 1
+	IL_0369:  sub 
+	IL_036a:  stloc 0
 
 	IL_036e:  nop 
 	IL_036f:  nop 
-	IL_0370:  ldloc 19
+	IL_0370:  ldarg 1
 
 	IL_0374:  nop 
 	IL_0375:  nop 
-	IL_0376:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_037b:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_0380:  stloc 21
+	IL_0376:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_037b:  ldloc 1
 
-	IL_0384:  nop 
-	IL_0385:  nop 
-	IL_0386:  ldloc 21
+	IL_037f:  nop 
+	IL_0380:  nop 
+	IL_0381:  conv.u 
+	IL_0382:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0387:  stloc 24
 
-	IL_038a:  nop 
 	IL_038b:  nop 
-	IL_038c:  ldc.i4 1
-	IL_0391:  beq IL_0404
+	IL_038c:  nop 
+	IL_038d:  ldloc 25
 
-	IL_0396:  br IL_039b
+	IL_0391:  nop 
+	IL_0392:  nop 
+	IL_0393:  ldloc 24
 
-	IL_039b:  ldarg 1
+	IL_0397:  nop 
+	IL_0398:  nop 
+	IL_0399:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_039e:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_03a3:  stloc 26
 
-	IL_039f:  nop 
-	IL_03a0:  nop 
-	IL_03a1:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_03a6:  ldloc 1
+	IL_03a7:  nop 
+	IL_03a8:  nop 
+	IL_03a9:  ldloc 26
 
-	IL_03aa:  nop 
-	IL_03ab:  nop 
-	IL_03ac:  conv.u 
-	IL_03ad:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_03b2:  stloc 25
+	IL_03ad:  nop 
+	IL_03ae:  nop 
+	IL_03af:  ldc.i4 1
+	IL_03b4:  beq IL_0427
 
-	IL_03b6:  nop 
-	IL_03b7:  nop 
-	IL_03b8:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
-	IL_03bd:  stloc 26
+	IL_03b9:  br IL_03be
 
-	IL_03c1:  nop 
+	IL_03be:  ldarg 1
+
 	IL_03c2:  nop 
-	IL_03c3:  ldloc 26
-
-	IL_03c7:  nop 
-	IL_03c8:  nop 
-	IL_03c9:  ldloc 25
+	IL_03c3:  nop 
+	IL_03c4:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_03c9:  ldloc 1
 
 	IL_03cd:  nop 
 	IL_03ce:  nop 
-	IL_03cf:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_03d4:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_03d9:  ldloc 26
+	IL_03cf:  conv.u 
+	IL_03d0:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_03d5:  stloc 30
 
-	IL_03dd:  nop 
-	IL_03de:  nop 
-	IL_03df:  ldloc 25
+	IL_03d9:  nop 
+	IL_03da:  nop 
+	IL_03db:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
+	IL_03e0:  stloc 31
 
-	IL_03e3:  nop 
 	IL_03e4:  nop 
-	IL_03e5:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_03ea:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_03ef:  ldloc 26
+	IL_03e5:  nop 
+	IL_03e6:  ldloc 31
 
-	IL_03f3:  nop 
-	IL_03f4:  nop 
-	IL_03f5:  ldc.i4 1
-	IL_03fa:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::IsByRef
-	IL_03ff:  br IL_0436
+	IL_03ea:  nop 
+	IL_03eb:  nop 
+	IL_03ec:  ldloc 30
 
-	IL_0404:  ldarg 1
+	IL_03f0:  nop 
+	IL_03f1:  nop 
+	IL_03f2:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_03f7:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_03fc:  ldloc 31
 
-	IL_0408:  nop 
-	IL_0409:  nop 
-	IL_040a:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_040f:  ldloc 1
+	IL_0400:  nop 
+	IL_0401:  nop 
+	IL_0402:  ldloc 30
 
-	IL_0413:  nop 
-	IL_0414:  nop 
-	IL_0415:  conv.u 
-	IL_0416:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_041b:  stloc 26
+	IL_0406:  nop 
+	IL_0407:  nop 
+	IL_0408:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_040d:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_0412:  ldloc 31
 
-	IL_041f:  nop 
-	IL_0420:  nop 
-	IL_0421:  ldloc 26
+	IL_0416:  nop 
+	IL_0417:  nop 
+	IL_0418:  ldc.i4 1
+	IL_041d:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::IsByRef
+	IL_0422:  br IL_0459
 
-	IL_0425:  nop 
-	IL_0426:  nop 
-	IL_0427:  ldc.i4 1
-	IL_042c:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::IsByRef
-	IL_0431:  br IL_0436
+	IL_0427:  ldarg 1
 
-	IL_0436:  ldarg 1
+	IL_042b:  nop 
+	IL_042c:  nop 
+	IL_042d:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0432:  ldloc 1
 
-	IL_043a:  nop 
-	IL_043b:  nop 
-	IL_043c:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0441:  ldloc 1
+	IL_0436:  nop 
+	IL_0437:  nop 
+	IL_0438:  conv.u 
+	IL_0439:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_043e:  stloc 31
 
-	IL_0445:  nop 
-	IL_0446:  nop 
-	IL_0447:  conv.u 
-	IL_0448:  ldloc 26
+	IL_0442:  nop 
+	IL_0443:  nop 
+	IL_0444:  ldloc 31
 
-	IL_044c:  nop 
-	IL_044d:  nop 
-	IL_044e:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0453:  br IL_1378
+	IL_0448:  nop 
+	IL_0449:  nop 
+	IL_044a:  ldc.i4 1
+	IL_044f:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::IsByRef
+	IL_0454:  br IL_0459
 
-	IL_0458:  br IL_0462
+	IL_0459:  ldarg 1
 
-	IL_045d:  br IL_0462
+	IL_045d:  nop 
+	IL_045e:  nop 
+	IL_045f:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0464:  ldloc 1
 
-	IL_0462:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::ProcessTTokOnly
-	IL_0467:  ldc.i4 0
-	IL_046c:  beq IL_0476
+	IL_0468:  nop 
+	IL_0469:  nop 
+	IL_046a:  conv.u 
+	IL_046b:  ldloc 31
 
-	IL_0471:  br IL_1373
+	IL_046f:  nop 
+	IL_0470:  nop 
+	IL_0471:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0476:  br IL_1860
 
-	IL_0476:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.DollarSign
-	IL_047b:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0480:  stloc 20
+	IL_047b:  br IL_0485
 
-	IL_0484:  nop 
-	IL_0485:  nop 
-	IL_0486:  ldloc 20
+	IL_0480:  br IL_0485
 
-	IL_048a:  nop 
-	IL_048b:  nop 
-	IL_048c:  ldloc 19
+	IL_0485:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::ProcessTTokOnly
+	IL_048a:  ldc.i4 0
+	IL_048f:  beq IL_0499
 
-	IL_0490:  nop 
-	IL_0491:  nop 
-	IL_0492:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0497:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_049c:  stloc 21
+	IL_0494:  br IL_185b
 
-	IL_04a0:  nop 
-	IL_04a1:  nop 
-	IL_04a2:  ldloc 21
+	IL_0499:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.DollarSign
+	IL_049e:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_04a3:  stloc 25
 
-	IL_04a6:  nop 
 	IL_04a7:  nop 
-	IL_04a8:  ldc.i4 1
-	IL_04ad:  beq IL_04b7
+	IL_04a8:  nop 
+	IL_04a9:  ldloc 25
 
-	IL_04b2:  br IL_057b
+	IL_04ad:  nop 
+	IL_04ae:  nop 
+	IL_04af:  ldloc 24
 
-	IL_04b7:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::DurConvFlag
-	IL_04bc:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::DurConvFlag
-	IL_04c1:  or 
-	IL_04c2:  not 
-	IL_04c3:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::DurConvFlag
-	IL_04c8:  ldc.i4 1
-	IL_04cd:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
-	IL_04d2:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::DurConvFlag
-	IL_04d7:  ldc.i4 0
-	IL_04dc:  beq IL_0530
+	IL_04b3:  nop 
+	IL_04b4:  nop 
+	IL_04b5:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_04ba:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_04bf:  stloc 26
 
-	IL_04e1:  br IL_04e6
+	IL_04c3:  nop 
+	IL_04c4:  nop 
+	IL_04c5:  ldloc 26
 
-	IL_04e6:  ldc.i4 1
-	IL_04eb:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::ConvFlag
-	IL_04f0:  ldstr "conv "
-	IL_04f5:  ldsfld string dylan.NET.Tokenizer.Parser.ParserFlags::OrdOp
-	IL_04fa:  call string string::Concat(string, string)
-	IL_04ff:  stsfld string dylan.NET.Tokenizer.Parser.ParserFlags::OrdOp
-	IL_0504:  ldsfld string dylan.NET.Tokenizer.Parser.ParserFlags::OrdOp
-	IL_0509:  stloc 22
+	IL_04c9:  nop 
+	IL_04ca:  nop 
+	IL_04cb:  ldc.i4 1
+	IL_04d0:  beq IL_04da
 
-	IL_050d:  nop 
-	IL_050e:  nop 
-	IL_050f:  ldloc 22
+	IL_04d5:  br IL_059e
 
-	IL_0513:  nop 
-	IL_0514:  nop 
-	IL_0515:  callvirt instance string string::Trim()
-	IL_051a:  stloc 22
+	IL_04da:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::DurConvFlag
+	IL_04df:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::DurConvFlag
+	IL_04e4:  or 
+	IL_04e5:  not 
+	IL_04e6:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::DurConvFlag
+	IL_04eb:  ldc.i4 1
+	IL_04f0:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
+	IL_04f5:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::DurConvFlag
+	IL_04fa:  ldc.i4 0
+	IL_04ff:  beq IL_0553
 
-	IL_051e:  nop 
-	IL_051f:  nop 
-	IL_0520:  ldloc 22
+	IL_0504:  br IL_0509
 
-	IL_0524:  nop 
-	IL_0525:  nop 
-	IL_0526:  stsfld string dylan.NET.Tokenizer.Parser.ParserFlags::OrdOp
-	IL_052b:  br IL_0535
+	IL_0509:  ldc.i4 1
+	IL_050e:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::ConvFlag
+	IL_0513:  ldstr "conv "
+	IL_0518:  ldsfld string dylan.NET.Tokenizer.Parser.ParserFlags::OrdOp
+	IL_051d:  call string string::Concat(string, string)
+	IL_0522:  stsfld string dylan.NET.Tokenizer.Parser.ParserFlags::OrdOp
+	IL_0527:  ldsfld string dylan.NET.Tokenizer.Parser.ParserFlags::OrdOp
+	IL_052c:  stloc 27
 
-	IL_0530:  br IL_0535
+	IL_0530:  nop 
+	IL_0531:  nop 
+	IL_0532:  ldloc 27
 
-	IL_0535:  ldarg 1
+	IL_0536:  nop 
+	IL_0537:  nop 
+	IL_0538:  callvirt instance string string::Trim()
+	IL_053d:  stloc 27
 
-	IL_0539:  nop 
-	IL_053a:  nop 
-	IL_053b:  ldloc 1
+	IL_0541:  nop 
+	IL_0542:  nop 
+	IL_0543:  ldloc 27
 
-	IL_053f:  nop 
-	IL_0540:  nop 
-	IL_0541:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
-	IL_0546:  ldloc 1
+	IL_0547:  nop 
+	IL_0548:  nop 
+	IL_0549:  stsfld string dylan.NET.Tokenizer.Parser.ParserFlags::OrdOp
+	IL_054e:  br IL_0558
 
-	IL_054a:  nop 
-	IL_054b:  nop 
-	IL_054c:  ldc.i4 1
-	IL_0551:  sub 
-	IL_0552:  stloc 1
+	IL_0553:  br IL_0558
 
-	IL_0556:  nop 
-	IL_0557:  nop 
 	IL_0558:  ldarg 1
 
 	IL_055c:  nop 
 	IL_055d:  nop 
-	IL_055e:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0563:  ldlen 
-	IL_0564:  conv.i4 
-	IL_0565:  ldc.i4 1
-	IL_056a:  sub 
-	IL_056b:  stloc 0
+	IL_055e:  ldloc 1
 
-	IL_056f:  nop 
-	IL_0570:  nop 
-	IL_0571:  br IL_1378
+	IL_0562:  nop 
+	IL_0563:  nop 
+	IL_0564:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_0569:  ldloc 1
 
-	IL_0576:  br IL_0580
+	IL_056d:  nop 
+	IL_056e:  nop 
+	IL_056f:  ldc.i4 1
+	IL_0574:  sub 
+	IL_0575:  stloc 1
 
-	IL_057b:  br IL_0580
+	IL_0579:  nop 
+	IL_057a:  nop 
+	IL_057b:  ldarg 1
 
-	IL_0580:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
-	IL_0585:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_058a:  stloc 20
+	IL_057f:  nop 
+	IL_0580:  nop 
+	IL_0581:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0586:  ldlen 
+	IL_0587:  conv.i4 
+	IL_0588:  ldc.i4 1
+	IL_058d:  sub 
+	IL_058e:  stloc 0
 
-	IL_058e:  nop 
-	IL_058f:  nop 
-	IL_0590:  ldloc 20
+	IL_0592:  nop 
+	IL_0593:  nop 
+	IL_0594:  br IL_1860
 
-	IL_0594:  nop 
-	IL_0595:  nop 
-	IL_0596:  ldloc 19
+	IL_0599:  br IL_05a3
 
-	IL_059a:  nop 
-	IL_059b:  nop 
-	IL_059c:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_05a1:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_05a6:  stloc 21
+	IL_059e:  br IL_05a3
 
-	IL_05aa:  nop 
-	IL_05ab:  nop 
-	IL_05ac:  ldloc 21
+	IL_05a3:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
+	IL_05a8:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_05ad:  stloc 25
 
-	IL_05b0:  nop 
 	IL_05b1:  nop 
-	IL_05b2:  ldc.i4 1
-	IL_05b7:  beq IL_05c1
+	IL_05b2:  nop 
+	IL_05b3:  ldloc 25
 
-	IL_05bc:  br IL_064d
+	IL_05b7:  nop 
+	IL_05b8:  nop 
+	IL_05b9:  ldloc 24
 
-	IL_05c1:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::DurConvFlag
-	IL_05c6:  ldc.i4 0
-	IL_05cb:  beq IL_063e
+	IL_05bd:  nop 
+	IL_05be:  nop 
+	IL_05bf:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_05c4:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_05c9:  stloc 26
 
-	IL_05d0:  br IL_05d5
+	IL_05cd:  nop 
+	IL_05ce:  nop 
+	IL_05cf:  ldloc 26
 
-	IL_05d5:  ldarg 1
+	IL_05d3:  nop 
+	IL_05d4:  nop 
+	IL_05d5:  ldc.i4 1
+	IL_05da:  beq IL_05e4
 
-	IL_05d9:  nop 
-	IL_05da:  nop 
-	IL_05db:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_05e0:  ldloc 1
+	IL_05df:  br IL_0670
 
-	IL_05e4:  nop 
-	IL_05e5:  nop 
-	IL_05e6:  conv.u 
-	IL_05e7:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_05ec:  stloc 27
+	IL_05e4:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::DurConvFlag
+	IL_05e9:  ldc.i4 0
+	IL_05ee:  beq IL_0661
 
-	IL_05f0:  nop 
-	IL_05f1:  nop 
-	IL_05f2:  ldloc 27
+	IL_05f3:  br IL_05f8
 
-	IL_05f6:  nop 
-	IL_05f7:  nop 
-	IL_05f8:  stsfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok dylan.NET.Tokenizer.Parser.ParserFlags::ConvTyp
-	IL_05fd:  ldarg 1
+	IL_05f8:  ldarg 1
 
-	IL_0601:  nop 
-	IL_0602:  nop 
+	IL_05fc:  nop 
+	IL_05fd:  nop 
+	IL_05fe:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
 	IL_0603:  ldloc 1
 
 	IL_0607:  nop 
 	IL_0608:  nop 
-	IL_0609:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
-	IL_060e:  ldloc 1
+	IL_0609:  conv.u 
+	IL_060a:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_060f:  stloc 32
 
-	IL_0612:  nop 
 	IL_0613:  nop 
-	IL_0614:  ldc.i4 1
-	IL_0619:  sub 
-	IL_061a:  stloc 1
+	IL_0614:  nop 
+	IL_0615:  ldloc 32
 
-	IL_061e:  nop 
-	IL_061f:  nop 
+	IL_0619:  nop 
+	IL_061a:  nop 
+	IL_061b:  stsfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok dylan.NET.Tokenizer.Parser.ParserFlags::ConvTyp
 	IL_0620:  ldarg 1
 
 	IL_0624:  nop 
 	IL_0625:  nop 
-	IL_0626:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_062b:  ldlen 
-	IL_062c:  conv.i4 
-	IL_062d:  ldc.i4 1
-	IL_0632:  sub 
-	IL_0633:  stloc 0
+	IL_0626:  ldloc 1
 
-	IL_0637:  nop 
-	IL_0638:  nop 
-	IL_0639:  br IL_0643
+	IL_062a:  nop 
+	IL_062b:  nop 
+	IL_062c:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_0631:  ldloc 1
 
-	IL_063e:  br IL_0643
+	IL_0635:  nop 
+	IL_0636:  nop 
+	IL_0637:  ldc.i4 1
+	IL_063c:  sub 
+	IL_063d:  stloc 1
 
-	IL_0643:  br IL_1378
+	IL_0641:  nop 
+	IL_0642:  nop 
+	IL_0643:  ldarg 1
 
-	IL_0648:  br IL_0652
+	IL_0647:  nop 
+	IL_0648:  nop 
+	IL_0649:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_064e:  ldlen 
+	IL_064f:  conv.i4 
+	IL_0650:  ldc.i4 1
+	IL_0655:  sub 
+	IL_0656:  stloc 0
 
-	IL_064d:  br IL_0652
+	IL_065a:  nop 
+	IL_065b:  nop 
+	IL_065c:  br IL_0666
 
-	IL_0652:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident
-	IL_0657:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_065c:  stloc 20
+	IL_0661:  br IL_0666
 
-	IL_0660:  nop 
-	IL_0661:  nop 
-	IL_0662:  ldloc 20
+	IL_0666:  br IL_1860
 
-	IL_0666:  nop 
-	IL_0667:  nop 
-	IL_0668:  ldloc 19
+	IL_066b:  br IL_0675
 
-	IL_066c:  nop 
-	IL_066d:  nop 
-	IL_066e:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0673:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_0678:  stloc 21
+	IL_0670:  br IL_0675
 
-	IL_067c:  nop 
-	IL_067d:  nop 
-	IL_067e:  ldloc 21
+	IL_0675:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident
+	IL_067a:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_067f:  stloc 25
 
-	IL_0682:  nop 
 	IL_0683:  nop 
-	IL_0684:  ldc.i4 1
-	IL_0689:  beq IL_0693
+	IL_0684:  nop 
+	IL_0685:  ldloc 25
 
-	IL_068e:  br IL_0756
+	IL_0689:  nop 
+	IL_068a:  nop 
+	IL_068b:  ldloc 24
 
-	IL_0693:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_0698:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_069d:  or 
-	IL_069e:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_06a3:  or 
-	IL_06a4:  stloc 21
+	IL_068f:  nop 
+	IL_0690:  nop 
+	IL_0691:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0696:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_069b:  stloc 26
 
-	IL_06a8:  nop 
-	IL_06a9:  nop 
-	IL_06aa:  ldloc 21
+	IL_069f:  nop 
+	IL_06a0:  nop 
+	IL_06a1:  ldloc 26
 
-	IL_06ae:  nop 
-	IL_06af:  nop 
-	IL_06b0:  ldc.i4 1
-	IL_06b5:  beq IL_06bf
+	IL_06a5:  nop 
+	IL_06a6:  nop 
+	IL_06a7:  ldc.i4 1
+	IL_06ac:  beq IL_06b6
 
-	IL_06ba:  br IL_06cf
+	IL_06b1:  br IL_0832
 
-	IL_06bf:  ldc.i4 1
-	IL_06c4:  stloc 4
+	IL_06b6:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::DurConvFlag
+	IL_06bb:  ldc.i4 0
+	IL_06c0:  beq IL_06ca
 
-	IL_06c8:  nop 
-	IL_06c9:  nop 
-	IL_06ca:  br IL_06d4
+	IL_06c5:  br IL_0788
 
-	IL_06cf:  br IL_06d4
+	IL_06ca:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_06cf:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_06d4:  or 
+	IL_06d5:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_06da:  or 
+	IL_06db:  stloc 26
 
-	IL_06d4:  ldc.i4 1
-	IL_06d9:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_06de:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
-	IL_06e3:  ldc.i4 1
-	IL_06e8:  beq IL_06f2
+	IL_06df:  nop 
+	IL_06e0:  nop 
+	IL_06e1:  ldloc 26
 
-	IL_06ed:  br IL_0747
+	IL_06e5:  nop 
+	IL_06e6:  nop 
+	IL_06e7:  ldc.i4 1
+	IL_06ec:  beq IL_06f6
 
-	IL_06f2:  ldarg 1
+	IL_06f1:  br IL_0706
 
-	IL_06f6:  nop 
-	IL_06f7:  nop 
-	IL_06f8:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_06fd:  ldloc 1
+	IL_06f6:  ldc.i4 1
+	IL_06fb:  stloc 4
 
-	IL_0701:  nop 
-	IL_0702:  nop 
-	IL_0703:  conv.u 
-	IL_0704:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0709:  stloc 28
+	IL_06ff:  nop 
+	IL_0700:  nop 
+	IL_0701:  br IL_070b
 
-	IL_070d:  nop 
-	IL_070e:  nop 
-	IL_070f:  ldarg 1
+	IL_0706:  br IL_070b
 
-	IL_0713:  nop 
-	IL_0714:  nop 
-	IL_0715:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_071a:  ldloc 1
+	IL_070b:  ldc.i4 1
+	IL_0710:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_0715:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
+	IL_071a:  ldc.i4 1
+	IL_071f:  beq IL_0729
 
-	IL_071e:  nop 
-	IL_071f:  nop 
-	IL_0720:  conv.u 
-	IL_0721:  ldloc 28
+	IL_0724:  br IL_077e
 
-	IL_0725:  nop 
-	IL_0726:  nop 
-	IL_0727:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateIdent(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident)
-	IL_072c:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0731:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
-	IL_0736:  ldloc 1
+	IL_0729:  ldarg 1
 
-	IL_073a:  nop 
-	IL_073b:  nop 
-	IL_073c:  stloc 2
+	IL_072d:  nop 
+	IL_072e:  nop 
+	IL_072f:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0734:  ldloc 1
 
-	IL_0740:  nop 
-	IL_0741:  nop 
-	IL_0742:  br IL_074c
+	IL_0738:  nop 
+	IL_0739:  nop 
+	IL_073a:  conv.u 
+	IL_073b:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0740:  stloc 33
 
-	IL_0747:  br IL_074c
+	IL_0744:  nop 
+	IL_0745:  nop 
+	IL_0746:  ldarg 1
 
-	IL_074c:  br IL_1378
+	IL_074a:  nop 
+	IL_074b:  nop 
+	IL_074c:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0751:  ldloc 1
 
-	IL_0751:  br IL_075b
+	IL_0755:  nop 
+	IL_0756:  nop 
+	IL_0757:  conv.u 
+	IL_0758:  ldloc 33
 
-	IL_0756:  br IL_075b
+	IL_075c:  nop 
+	IL_075d:  nop 
+	IL_075e:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateIdent(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident)
+	IL_0763:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0768:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
+	IL_076d:  ldloc 1
 
-	IL_075b:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral
-	IL_0760:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0765:  stloc 20
+	IL_0771:  nop 
+	IL_0772:  nop 
+	IL_0773:  stloc 2
 
-	IL_0769:  nop 
-	IL_076a:  nop 
-	IL_076b:  ldloc 20
+	IL_0777:  nop 
+	IL_0778:  nop 
+	IL_0779:  br IL_0783
 
-	IL_076f:  nop 
-	IL_0770:  nop 
-	IL_0771:  ldloc 19
+	IL_077e:  br IL_0783
 
-	IL_0775:  nop 
-	IL_0776:  nop 
-	IL_0777:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_077c:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_0781:  stloc 21
+	IL_0783:  br IL_0828
 
-	IL_0785:  nop 
-	IL_0786:  nop 
-	IL_0787:  ldloc 21
+	IL_0788:  ldarg 1
 
-	IL_078b:  nop 
 	IL_078c:  nop 
-	IL_078d:  ldc.i4 1
-	IL_0792:  beq IL_079c
+	IL_078d:  nop 
+	IL_078e:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0793:  ldloc 1
 
-	IL_0797:  br IL_0814
+	IL_0797:  nop 
+	IL_0798:  nop 
+	IL_0799:  conv.u 
+	IL_079a:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_079f:  stloc 34
 
-	IL_079c:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
-	IL_07a1:  ldc.i4 1
-	IL_07a6:  beq IL_07b0
+	IL_07a3:  nop 
+	IL_07a4:  nop 
+	IL_07a5:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
+	IL_07aa:  stloc 35
 
-	IL_07ab:  br IL_0805
-
-	IL_07b0:  ldarg 1
+	IL_07ae:  nop 
+	IL_07af:  nop 
+	IL_07b0:  ldloc 35
 
 	IL_07b4:  nop 
 	IL_07b5:  nop 
-	IL_07b6:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_07bb:  ldloc 1
+	IL_07b6:  ldloc 34
 
-	IL_07bf:  nop 
-	IL_07c0:  nop 
-	IL_07c1:  conv.u 
-	IL_07c2:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_07c7:  stloc 29
+	IL_07ba:  nop 
+	IL_07bb:  nop 
+	IL_07bc:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_07c1:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_07c6:  ldloc 35
 
+	IL_07ca:  nop 
 	IL_07cb:  nop 
-	IL_07cc:  nop 
-	IL_07cd:  ldarg 1
+	IL_07cc:  ldloc 34
 
+	IL_07d0:  nop 
 	IL_07d1:  nop 
-	IL_07d2:  nop 
-	IL_07d3:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_07d8:  ldloc 1
+	IL_07d2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_07d7:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_07dc:  ldloc 35
 
-	IL_07dc:  nop 
-	IL_07dd:  nop 
-	IL_07de:  conv.u 
-	IL_07df:  ldloc 29
+	IL_07e0:  nop 
+	IL_07e1:  nop 
+	IL_07e2:  stsfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok dylan.NET.Tokenizer.Parser.ParserFlags::ConvTyp
+	IL_07e7:  ldarg 1
 
-	IL_07e3:  nop 
-	IL_07e4:  nop 
-	IL_07e5:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateCharLit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral)
-	IL_07ea:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_07ef:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
-	IL_07f4:  ldloc 1
+	IL_07eb:  nop 
+	IL_07ec:  nop 
+	IL_07ed:  ldloc 1
 
-	IL_07f8:  nop 
-	IL_07f9:  nop 
-	IL_07fa:  stloc 2
+	IL_07f1:  nop 
+	IL_07f2:  nop 
+	IL_07f3:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_07f8:  ldloc 1
 
-	IL_07fe:  nop 
-	IL_07ff:  nop 
-	IL_0800:  br IL_080a
+	IL_07fc:  nop 
+	IL_07fd:  nop 
+	IL_07fe:  ldc.i4 1
+	IL_0803:  sub 
+	IL_0804:  stloc 1
 
-	IL_0805:  br IL_080a
+	IL_0808:  nop 
+	IL_0809:  nop 
+	IL_080a:  ldarg 1
 
-	IL_080a:  br IL_1378
+	IL_080e:  nop 
+	IL_080f:  nop 
+	IL_0810:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0815:  ldlen 
+	IL_0816:  conv.i4 
+	IL_0817:  ldc.i4 1
+	IL_081c:  sub 
+	IL_081d:  stloc 0
 
-	IL_080f:  br IL_0819
+	IL_0821:  nop 
+	IL_0822:  nop 
+	IL_0823:  br IL_0828
 
-	IL_0814:  br IL_0819
+	IL_0828:  br IL_1860
 
-	IL_0819:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral
-	IL_081e:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0823:  stloc 20
+	IL_082d:  br IL_0837
 
-	IL_0827:  nop 
-	IL_0828:  nop 
-	IL_0829:  ldloc 20
+	IL_0832:  br IL_0837
 
-	IL_082d:  nop 
-	IL_082e:  nop 
-	IL_082f:  ldloc 19
+	IL_0837:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral
+	IL_083c:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0841:  stloc 25
 
-	IL_0833:  nop 
-	IL_0834:  nop 
-	IL_0835:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_083a:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_083f:  stloc 21
+	IL_0845:  nop 
+	IL_0846:  nop 
+	IL_0847:  ldloc 25
 
-	IL_0843:  nop 
-	IL_0844:  nop 
-	IL_0845:  ldloc 21
+	IL_084b:  nop 
+	IL_084c:  nop 
+	IL_084d:  ldloc 24
 
-	IL_0849:  nop 
-	IL_084a:  nop 
-	IL_084b:  ldc.i4 1
-	IL_0850:  beq IL_085a
+	IL_0851:  nop 
+	IL_0852:  nop 
+	IL_0853:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0858:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_085d:  stloc 26
 
-	IL_0855:  br IL_08d2
+	IL_0861:  nop 
+	IL_0862:  nop 
+	IL_0863:  ldloc 26
 
-	IL_085a:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
-	IL_085f:  ldc.i4 1
-	IL_0864:  beq IL_086e
+	IL_0867:  nop 
+	IL_0868:  nop 
+	IL_0869:  ldc.i4 1
+	IL_086e:  beq IL_0878
 
-	IL_0869:  br IL_08c3
+	IL_0873:  br IL_08f0
 
-	IL_086e:  ldarg 1
+	IL_0878:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
+	IL_087d:  ldc.i4 1
+	IL_0882:  beq IL_088c
 
-	IL_0872:  nop 
-	IL_0873:  nop 
-	IL_0874:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0879:  ldloc 1
+	IL_0887:  br IL_08e1
 
-	IL_087d:  nop 
-	IL_087e:  nop 
-	IL_087f:  conv.u 
-	IL_0880:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0885:  stloc 30
+	IL_088c:  ldarg 1
 
-	IL_0889:  nop 
-	IL_088a:  nop 
-	IL_088b:  ldarg 1
-
-	IL_088f:  nop 
 	IL_0890:  nop 
-	IL_0891:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0896:  ldloc 1
+	IL_0891:  nop 
+	IL_0892:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0897:  ldloc 1
 
-	IL_089a:  nop 
 	IL_089b:  nop 
-	IL_089c:  conv.u 
-	IL_089d:  ldloc 30
+	IL_089c:  nop 
+	IL_089d:  conv.u 
+	IL_089e:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_08a3:  stloc 36
 
-	IL_08a1:  nop 
-	IL_08a2:  nop 
-	IL_08a3:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateNullLit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral)
-	IL_08a8:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_08ad:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
-	IL_08b2:  ldloc 1
+	IL_08a7:  nop 
+	IL_08a8:  nop 
+	IL_08a9:  ldarg 1
 
-	IL_08b6:  nop 
-	IL_08b7:  nop 
-	IL_08b8:  stloc 2
+	IL_08ad:  nop 
+	IL_08ae:  nop 
+	IL_08af:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_08b4:  ldloc 1
 
-	IL_08bc:  nop 
-	IL_08bd:  nop 
-	IL_08be:  br IL_08c8
+	IL_08b8:  nop 
+	IL_08b9:  nop 
+	IL_08ba:  conv.u 
+	IL_08bb:  ldloc 36
 
-	IL_08c3:  br IL_08c8
+	IL_08bf:  nop 
+	IL_08c0:  nop 
+	IL_08c1:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateCharLit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral)
+	IL_08c6:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_08cb:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
+	IL_08d0:  ldloc 1
 
-	IL_08c8:  br IL_1378
+	IL_08d4:  nop 
+	IL_08d5:  nop 
+	IL_08d6:  stloc 2
 
-	IL_08cd:  br IL_08d7
+	IL_08da:  nop 
+	IL_08db:  nop 
+	IL_08dc:  br IL_08e6
 
-	IL_08d2:  br IL_08d7
+	IL_08e1:  br IL_08e6
 
-	IL_08d7:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral
-	IL_08dc:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_08e1:  stloc 20
+	IL_08e6:  br IL_1860
 
-	IL_08e5:  nop 
-	IL_08e6:  nop 
-	IL_08e7:  ldloc 20
+	IL_08eb:  br IL_08f5
 
-	IL_08eb:  nop 
-	IL_08ec:  nop 
-	IL_08ed:  ldloc 19
+	IL_08f0:  br IL_08f5
 
-	IL_08f1:  nop 
-	IL_08f2:  nop 
-	IL_08f3:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_08f8:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_08fd:  stloc 21
+	IL_08f5:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral
+	IL_08fa:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_08ff:  stloc 25
 
-	IL_0901:  nop 
-	IL_0902:  nop 
-	IL_0903:  ldloc 21
+	IL_0903:  nop 
+	IL_0904:  nop 
+	IL_0905:  ldloc 25
 
-	IL_0907:  nop 
-	IL_0908:  nop 
-	IL_0909:  ldc.i4 1
-	IL_090e:  beq IL_0918
+	IL_0909:  nop 
+	IL_090a:  nop 
+	IL_090b:  ldloc 24
 
-	IL_0913:  br IL_099a
+	IL_090f:  nop 
+	IL_0910:  nop 
+	IL_0911:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0916:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_091b:  stloc 26
 
-	IL_0918:  ldc.i4 1
-	IL_091d:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_0922:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
+	IL_091f:  nop 
+	IL_0920:  nop 
+	IL_0921:  ldloc 26
+
+	IL_0925:  nop 
+	IL_0926:  nop 
 	IL_0927:  ldc.i4 1
 	IL_092c:  beq IL_0936
 
-	IL_0931:  br IL_098b
+	IL_0931:  br IL_09ae
 
-	IL_0936:  ldarg 1
+	IL_0936:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
+	IL_093b:  ldc.i4 1
+	IL_0940:  beq IL_094a
 
-	IL_093a:  nop 
-	IL_093b:  nop 
-	IL_093c:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0941:  ldloc 1
+	IL_0945:  br IL_099f
 
-	IL_0945:  nop 
-	IL_0946:  nop 
-	IL_0947:  conv.u 
-	IL_0948:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_094d:  stloc 31
+	IL_094a:  ldarg 1
 
-	IL_0951:  nop 
-	IL_0952:  nop 
-	IL_0953:  ldarg 1
+	IL_094e:  nop 
+	IL_094f:  nop 
+	IL_0950:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0955:  ldloc 1
 
-	IL_0957:  nop 
-	IL_0958:  nop 
-	IL_0959:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_095e:  ldloc 1
+	IL_0959:  nop 
+	IL_095a:  nop 
+	IL_095b:  conv.u 
+	IL_095c:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0961:  stloc 37
 
-	IL_0962:  nop 
-	IL_0963:  nop 
-	IL_0964:  conv.u 
-	IL_0965:  ldloc 31
+	IL_0965:  nop 
+	IL_0966:  nop 
+	IL_0967:  ldarg 1
 
-	IL_0969:  nop 
-	IL_096a:  nop 
-	IL_096b:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateStringLit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral)
-	IL_0970:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0975:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
-	IL_097a:  ldloc 1
+	IL_096b:  nop 
+	IL_096c:  nop 
+	IL_096d:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0972:  ldloc 1
 
+	IL_0976:  nop 
+	IL_0977:  nop 
+	IL_0978:  conv.u 
+	IL_0979:  ldloc 37
+
+	IL_097d:  nop 
 	IL_097e:  nop 
-	IL_097f:  nop 
-	IL_0980:  stloc 2
+	IL_097f:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateNullLit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral)
+	IL_0984:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0989:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
+	IL_098e:  ldloc 1
 
-	IL_0984:  nop 
-	IL_0985:  nop 
-	IL_0986:  br IL_0990
+	IL_0992:  nop 
+	IL_0993:  nop 
+	IL_0994:  stloc 2
 
-	IL_098b:  br IL_0990
+	IL_0998:  nop 
+	IL_0999:  nop 
+	IL_099a:  br IL_09a4
 
-	IL_0990:  br IL_1378
+	IL_099f:  br IL_09a4
 
-	IL_0995:  br IL_099f
+	IL_09a4:  br IL_1860
 
-	IL_099a:  br IL_099f
+	IL_09a9:  br IL_09b3
 
-	IL_099f:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral
-	IL_09a4:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_09a9:  stloc 20
+	IL_09ae:  br IL_09b3
 
-	IL_09ad:  nop 
-	IL_09ae:  nop 
-	IL_09af:  ldloc 20
+	IL_09b3:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral
+	IL_09b8:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_09bd:  stloc 25
 
-	IL_09b3:  nop 
-	IL_09b4:  nop 
-	IL_09b5:  ldloc 19
+	IL_09c1:  nop 
+	IL_09c2:  nop 
+	IL_09c3:  ldloc 25
 
-	IL_09b9:  nop 
-	IL_09ba:  nop 
-	IL_09bb:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_09c0:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_09c5:  stloc 21
+	IL_09c7:  nop 
+	IL_09c8:  nop 
+	IL_09c9:  ldloc 24
 
-	IL_09c9:  nop 
-	IL_09ca:  nop 
-	IL_09cb:  ldloc 21
+	IL_09cd:  nop 
+	IL_09ce:  nop 
+	IL_09cf:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_09d4:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_09d9:  stloc 26
 
-	IL_09cf:  nop 
-	IL_09d0:  nop 
-	IL_09d1:  ldc.i4 1
-	IL_09d6:  beq IL_09e0
+	IL_09dd:  nop 
+	IL_09de:  nop 
+	IL_09df:  ldloc 26
 
-	IL_09db:  br IL_0a58
-
-	IL_09e0:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
+	IL_09e3:  nop 
+	IL_09e4:  nop 
 	IL_09e5:  ldc.i4 1
 	IL_09ea:  beq IL_09f4
 
-	IL_09ef:  br IL_0a49
+	IL_09ef:  br IL_0a76
 
-	IL_09f4:  ldarg 1
+	IL_09f4:  ldc.i4 1
+	IL_09f9:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_09fe:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
+	IL_0a03:  ldc.i4 1
+	IL_0a08:  beq IL_0a12
 
-	IL_09f8:  nop 
-	IL_09f9:  nop 
-	IL_09fa:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_09ff:  ldloc 1
+	IL_0a0d:  br IL_0a67
 
-	IL_0a03:  nop 
-	IL_0a04:  nop 
-	IL_0a05:  conv.u 
-	IL_0a06:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0a0b:  stloc 32
+	IL_0a12:  ldarg 1
 
-	IL_0a0f:  nop 
-	IL_0a10:  nop 
-	IL_0a11:  ldarg 1
-
-	IL_0a15:  nop 
 	IL_0a16:  nop 
-	IL_0a17:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0a1c:  ldloc 1
+	IL_0a17:  nop 
+	IL_0a18:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0a1d:  ldloc 1
 
-	IL_0a20:  nop 
 	IL_0a21:  nop 
-	IL_0a22:  conv.u 
-	IL_0a23:  ldloc 32
+	IL_0a22:  nop 
+	IL_0a23:  conv.u 
+	IL_0a24:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0a29:  stloc 38
 
-	IL_0a27:  nop 
-	IL_0a28:  nop 
-	IL_0a29:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateBoolLit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral)
-	IL_0a2e:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0a33:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
-	IL_0a38:  ldloc 1
+	IL_0a2d:  nop 
+	IL_0a2e:  nop 
+	IL_0a2f:  ldarg 1
 
-	IL_0a3c:  nop 
-	IL_0a3d:  nop 
-	IL_0a3e:  stloc 2
+	IL_0a33:  nop 
+	IL_0a34:  nop 
+	IL_0a35:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0a3a:  ldloc 1
 
-	IL_0a42:  nop 
-	IL_0a43:  nop 
-	IL_0a44:  br IL_0a4e
+	IL_0a3e:  nop 
+	IL_0a3f:  nop 
+	IL_0a40:  conv.u 
+	IL_0a41:  ldloc 38
 
-	IL_0a49:  br IL_0a4e
+	IL_0a45:  nop 
+	IL_0a46:  nop 
+	IL_0a47:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateStringLit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral)
+	IL_0a4c:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0a51:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
+	IL_0a56:  ldloc 1
 
-	IL_0a4e:  br IL_1378
+	IL_0a5a:  nop 
+	IL_0a5b:  nop 
+	IL_0a5c:  stloc 2
 
-	IL_0a53:  br IL_0a5d
+	IL_0a60:  nop 
+	IL_0a61:  nop 
+	IL_0a62:  br IL_0a6c
 
-	IL_0a58:  br IL_0a5d
+	IL_0a67:  br IL_0a6c
 
-	IL_0a5d:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral
-	IL_0a62:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0a67:  stloc 20
+	IL_0a6c:  br IL_1860
 
-	IL_0a6b:  nop 
-	IL_0a6c:  nop 
-	IL_0a6d:  ldloc 20
+	IL_0a71:  br IL_0a7b
 
-	IL_0a71:  nop 
-	IL_0a72:  nop 
-	IL_0a73:  ldloc 19
+	IL_0a76:  br IL_0a7b
 
-	IL_0a77:  nop 
-	IL_0a78:  nop 
-	IL_0a79:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0a7e:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_0a83:  stloc 21
+	IL_0a7b:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral
+	IL_0a80:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0a85:  stloc 25
 
-	IL_0a87:  nop 
-	IL_0a88:  nop 
-	IL_0a89:  ldloc 21
+	IL_0a89:  nop 
+	IL_0a8a:  nop 
+	IL_0a8b:  ldloc 25
 
-	IL_0a8d:  nop 
-	IL_0a8e:  nop 
-	IL_0a8f:  ldc.i4 1
-	IL_0a94:  beq IL_0a9e
+	IL_0a8f:  nop 
+	IL_0a90:  nop 
+	IL_0a91:  ldloc 24
 
-	IL_0a99:  br IL_0b16
+	IL_0a95:  nop 
+	IL_0a96:  nop 
+	IL_0a97:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0a9c:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0aa1:  stloc 26
 
-	IL_0a9e:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
-	IL_0aa3:  ldc.i4 1
-	IL_0aa8:  beq IL_0ab2
+	IL_0aa5:  nop 
+	IL_0aa6:  nop 
+	IL_0aa7:  ldloc 26
 
-	IL_0aad:  br IL_0b07
+	IL_0aab:  nop 
+	IL_0aac:  nop 
+	IL_0aad:  ldc.i4 1
+	IL_0ab2:  beq IL_0abc
 
-	IL_0ab2:  ldarg 1
+	IL_0ab7:  br IL_0b34
 
-	IL_0ab6:  nop 
-	IL_0ab7:  nop 
-	IL_0ab8:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0abd:  ldloc 1
+	IL_0abc:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
+	IL_0ac1:  ldc.i4 1
+	IL_0ac6:  beq IL_0ad0
 
-	IL_0ac1:  nop 
-	IL_0ac2:  nop 
-	IL_0ac3:  conv.u 
-	IL_0ac4:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0ac9:  stloc 33
+	IL_0acb:  br IL_0b25
 
-	IL_0acd:  nop 
-	IL_0ace:  nop 
-	IL_0acf:  ldarg 1
+	IL_0ad0:  ldarg 1
 
-	IL_0ad3:  nop 
 	IL_0ad4:  nop 
-	IL_0ad5:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0ada:  ldloc 1
+	IL_0ad5:  nop 
+	IL_0ad6:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0adb:  ldloc 1
 
-	IL_0ade:  nop 
 	IL_0adf:  nop 
-	IL_0ae0:  conv.u 
-	IL_0ae1:  ldloc 33
+	IL_0ae0:  nop 
+	IL_0ae1:  conv.u 
+	IL_0ae2:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0ae7:  stloc 39
 
-	IL_0ae5:  nop 
-	IL_0ae6:  nop 
-	IL_0ae7:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateNumLit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral)
-	IL_0aec:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0af1:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
-	IL_0af6:  ldloc 1
+	IL_0aeb:  nop 
+	IL_0aec:  nop 
+	IL_0aed:  ldarg 1
 
-	IL_0afa:  nop 
-	IL_0afb:  nop 
-	IL_0afc:  stloc 2
+	IL_0af1:  nop 
+	IL_0af2:  nop 
+	IL_0af3:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0af8:  ldloc 1
 
-	IL_0b00:  nop 
-	IL_0b01:  nop 
-	IL_0b02:  br IL_0b0c
+	IL_0afc:  nop 
+	IL_0afd:  nop 
+	IL_0afe:  conv.u 
+	IL_0aff:  ldloc 39
 
-	IL_0b07:  br IL_0b0c
+	IL_0b03:  nop 
+	IL_0b04:  nop 
+	IL_0b05:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateBoolLit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral)
+	IL_0b0a:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0b0f:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
+	IL_0b14:  ldloc 1
 
-	IL_0b0c:  br IL_1378
+	IL_0b18:  nop 
+	IL_0b19:  nop 
+	IL_0b1a:  stloc 2
 
-	IL_0b11:  br IL_0b1b
+	IL_0b1e:  nop 
+	IL_0b1f:  nop 
+	IL_0b20:  br IL_0b2a
 
-	IL_0b16:  br IL_0b1b
+	IL_0b25:  br IL_0b2a
 
-	IL_0b1b:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewTok
-	IL_0b20:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0b25:  stloc 20
+	IL_0b2a:  br IL_1860
 
-	IL_0b29:  nop 
-	IL_0b2a:  nop 
-	IL_0b2b:  ldloc 20
+	IL_0b2f:  br IL_0b39
 
-	IL_0b2f:  nop 
-	IL_0b30:  nop 
-	IL_0b31:  ldloc 19
+	IL_0b34:  br IL_0b39
 
-	IL_0b35:  nop 
-	IL_0b36:  nop 
-	IL_0b37:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0b3c:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_0b41:  stloc 21
+	IL_0b39:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral
+	IL_0b3e:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0b43:  stloc 25
 
-	IL_0b45:  nop 
-	IL_0b46:  nop 
-	IL_0b47:  ldloc 21
+	IL_0b47:  nop 
+	IL_0b48:  nop 
+	IL_0b49:  ldloc 25
 
-	IL_0b4b:  nop 
-	IL_0b4c:  nop 
-	IL_0b4d:  ldc.i4 1
-	IL_0b52:  beq IL_0b5c
+	IL_0b4d:  nop 
+	IL_0b4e:  nop 
+	IL_0b4f:  ldloc 24
 
-	IL_0b57:  br IL_0d5e
+	IL_0b53:  nop 
+	IL_0b54:  nop 
+	IL_0b55:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0b5a:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0b5f:  stloc 26
 
-	IL_0b5c:  ldarg 1
+	IL_0b63:  nop 
+	IL_0b64:  nop 
+	IL_0b65:  ldloc 26
 
-	IL_0b60:  nop 
-	IL_0b61:  nop 
-	IL_0b62:  ldloc 1
+	IL_0b69:  nop 
+	IL_0b6a:  nop 
+	IL_0b6b:  ldc.i4 1
+	IL_0b70:  beq IL_0b7a
 
-	IL_0b66:  nop 
-	IL_0b67:  nop 
-	IL_0b68:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
-	IL_0b6d:  ldloc 0
+	IL_0b75:  br IL_0bf2
 
-	IL_0b71:  nop 
-	IL_0b72:  nop 
-	IL_0b73:  ldc.i4 1
-	IL_0b78:  sub 
-	IL_0b79:  stloc 0
+	IL_0b7a:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::isChanged
+	IL_0b7f:  ldc.i4 1
+	IL_0b84:  beq IL_0b8e
 
-	IL_0b7d:  nop 
-	IL_0b7e:  nop 
-	IL_0b7f:  ldarg 1
+	IL_0b89:  br IL_0be3
 
-	IL_0b83:  nop 
-	IL_0b84:  nop 
-	IL_0b85:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0b8a:  ldloc 1
+	IL_0b8e:  ldarg 1
 
-	IL_0b8e:  nop 
-	IL_0b8f:  nop 
-	IL_0b90:  conv.u 
-	IL_0b91:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0b96:  stloc 9
+	IL_0b92:  nop 
+	IL_0b93:  nop 
+	IL_0b94:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0b99:  ldloc 1
 
-	IL_0b9a:  nop 
-	IL_0b9b:  nop 
-	IL_0b9c:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
-	IL_0ba1:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0ba6:  stloc 20
+	IL_0b9d:  nop 
+	IL_0b9e:  nop 
+	IL_0b9f:  conv.u 
+	IL_0ba0:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0ba5:  stloc 40
 
+	IL_0ba9:  nop 
 	IL_0baa:  nop 
-	IL_0bab:  nop 
-	IL_0bac:  ldloc 20
+	IL_0bab:  ldarg 1
 
+	IL_0baf:  nop 
 	IL_0bb0:  nop 
-	IL_0bb1:  nop 
-	IL_0bb2:  ldloc 9
+	IL_0bb1:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0bb6:  ldloc 1
 
-	IL_0bb6:  nop 
-	IL_0bb7:  nop 
-	IL_0bb8:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0bbd:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_0bc2:  stloc 21
+	IL_0bba:  nop 
+	IL_0bbb:  nop 
+	IL_0bbc:  conv.u 
+	IL_0bbd:  ldloc 40
 
-	IL_0bc6:  nop 
-	IL_0bc7:  nop 
-	IL_0bc8:  ldloc 21
+	IL_0bc1:  nop 
+	IL_0bc2:  nop 
+	IL_0bc3:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral class dylan.NET.Tokenizer.Parser.ParserFlags::UpdateNumLit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral)
+	IL_0bc8:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0bcd:  call void class dylan.NET.Tokenizer.Parser.ParserFlags::SetUnaryFalse()
+	IL_0bd2:  ldloc 1
 
-	IL_0bcc:  nop 
-	IL_0bcd:  nop 
-	IL_0bce:  ldc.i4 1
-	IL_0bd3:  beq IL_0c36
+	IL_0bd6:  nop 
+	IL_0bd7:  nop 
+	IL_0bd8:  stloc 2
 
-	IL_0bd8:  br IL_0bdd
+	IL_0bdc:  nop 
+	IL_0bdd:  nop 
+	IL_0bde:  br IL_0be8
 
-	IL_0bdd:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
-	IL_0be2:  stloc 10
+	IL_0be3:  br IL_0be8
 
-	IL_0be6:  nop 
-	IL_0be7:  nop 
-	IL_0be8:  ldloc 10
+	IL_0be8:  br IL_1860
 
-	IL_0bec:  nop 
-	IL_0bed:  nop 
-	IL_0bee:  ldloc 9
+	IL_0bed:  br IL_0bf7
 
-	IL_0bf2:  nop 
-	IL_0bf3:  nop 
-	IL_0bf4:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_0bf9:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_0bfe:  ldloc 10
+	IL_0bf2:  br IL_0bf7
 
-	IL_0c02:  nop 
-	IL_0c03:  nop 
-	IL_0c04:  ldloc 9
+	IL_0bf7:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewTok
+	IL_0bfc:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0c01:  stloc 25
 
-	IL_0c08:  nop 
-	IL_0c09:  nop 
-	IL_0c0a:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_0c0f:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_0c14:  ldarg 1
+	IL_0c05:  nop 
+	IL_0c06:  nop 
+	IL_0c07:  ldloc 25
 
-	IL_0c18:  nop 
-	IL_0c19:  nop 
-	IL_0c1a:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0c1f:  ldloc 1
+	IL_0c0b:  nop 
+	IL_0c0c:  nop 
+	IL_0c0d:  ldloc 24
 
-	IL_0c23:  nop 
-	IL_0c24:  nop 
-	IL_0c25:  conv.u 
-	IL_0c26:  ldloc 10
+	IL_0c11:  nop 
+	IL_0c12:  nop 
+	IL_0c13:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0c18:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0c1d:  stloc 26
 
-	IL_0c2a:  nop 
-	IL_0c2b:  nop 
-	IL_0c2c:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0c31:  br IL_0c3b
+	IL_0c21:  nop 
+	IL_0c22:  nop 
+	IL_0c23:  ldloc 26
 
-	IL_0c36:  br IL_0c3b
+	IL_0c27:  nop 
+	IL_0c28:  nop 
+	IL_0c29:  ldc.i4 1
+	IL_0c2e:  beq IL_0c38
 
-	IL_0c3b:  ldarg.0 
-	IL_0c3c:  ldarg 1
+	IL_0c33:  br IL_0e3a
 
-	IL_0c40:  nop 
-	IL_0c41:  nop 
-	IL_0c42:  ldloc 1
+	IL_0c38:  ldarg 1
 
-	IL_0c46:  nop 
-	IL_0c47:  nop 
-	IL_0c48:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::procNewCall(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr, int32)
-	IL_0c4d:  starg 1
+	IL_0c3c:  nop 
+	IL_0c3d:  nop 
+	IL_0c3e:  ldloc 1
 
-	IL_0c51:  nop 
-	IL_0c52:  nop 
-	IL_0c53:  ldarg 1
+	IL_0c42:  nop 
+	IL_0c43:  nop 
+	IL_0c44:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_0c49:  ldloc 0
 
-	IL_0c57:  nop 
-	IL_0c58:  nop 
-	IL_0c59:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0c5e:  ldlen 
-	IL_0c5f:  conv.i4 
-	IL_0c60:  ldc.i4 1
-	IL_0c65:  sub 
-	IL_0c66:  stloc 0
+	IL_0c4d:  nop 
+	IL_0c4e:  nop 
+	IL_0c4f:  ldc.i4 1
+	IL_0c54:  sub 
+	IL_0c55:  stloc 0
+
+	IL_0c59:  nop 
+	IL_0c5a:  nop 
+	IL_0c5b:  ldarg 1
+
+	IL_0c5f:  nop 
+	IL_0c60:  nop 
+	IL_0c61:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0c66:  ldloc 1
 
 	IL_0c6a:  nop 
 	IL_0c6b:  nop 
-	IL_0c6c:  ldarg 1
+	IL_0c6c:  conv.u 
+	IL_0c6d:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0c72:  stloc 9
 
-	IL_0c70:  nop 
-	IL_0c71:  nop 
-	IL_0c72:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0c77:  ldloc 1
+	IL_0c76:  nop 
+	IL_0c77:  nop 
+	IL_0c78:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
+	IL_0c7d:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0c82:  stloc 25
 
-	IL_0c7b:  nop 
-	IL_0c7c:  nop 
-	IL_0c7d:  conv.u 
-	IL_0c7e:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0c83:  stloc 34
-
+	IL_0c86:  nop 
 	IL_0c87:  nop 
-	IL_0c88:  nop 
-	IL_0c89:  ldloc 34
+	IL_0c88:  ldloc 25
 
+	IL_0c8c:  nop 
 	IL_0c8d:  nop 
-	IL_0c8e:  nop 
-	IL_0c8f:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewCallTok::Params
-	IL_0c94:  stloc 35
+	IL_0c8e:  ldloc 9
 
-	IL_0c98:  nop 
-	IL_0c99:  nop 
-	IL_0c9a:  ldloc 35
+	IL_0c92:  nop 
+	IL_0c93:  nop 
+	IL_0c94:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0c99:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0c9e:  stloc 26
 
-	IL_0c9e:  nop 
-	IL_0c9f:  nop 
-	IL_0ca0:  ldlen 
-	IL_0ca1:  conv.i4 
-	IL_0ca2:  ldc.i4 1
-	IL_0ca7:  sub 
-	IL_0ca8:  stloc 36
+	IL_0ca2:  nop 
+	IL_0ca3:  nop 
+	IL_0ca4:  ldloc 26
 
-	IL_0cac:  nop 
-	IL_0cad:  nop 
-	IL_0cae:  ldc.i4 -1
-	IL_0cb3:  stloc 37
+	IL_0ca8:  nop 
+	IL_0ca9:  nop 
+	IL_0caa:  ldc.i4 1
+	IL_0caf:  beq IL_0d12
 
-	IL_0cb7:  nop 
-	IL_0cb8:  nop 
-	IL_0cb9:  ldloc 36
+	IL_0cb4:  br IL_0cb9
 
-	IL_0cbd:  nop 
-	IL_0cbe:  nop 
-	IL_0cbf:  ldc.i4 0
-	IL_0cc4:  blt IL_0cce
+	IL_0cb9:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
+	IL_0cbe:  stloc 10
 
-	IL_0cc9:  br IL_0cd8
+	IL_0cc2:  nop 
+	IL_0cc3:  nop 
+	IL_0cc4:  ldloc 10
 
-	IL_0cce:  br IL_0d43
+	IL_0cc8:  nop 
+	IL_0cc9:  nop 
+	IL_0cca:  ldloc 9
 
-	IL_0cd3:  br IL_0cdd
+	IL_0cce:  nop 
+	IL_0ccf:  nop 
+	IL_0cd0:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_0cd5:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_0cda:  ldloc 10
 
-	IL_0cd8:  br IL_0cdd
+	IL_0cde:  nop 
+	IL_0cdf:  nop 
+	IL_0ce0:  ldloc 9
 
-	IL_0cdd:  ldloc 37
+	IL_0ce4:  nop 
+	IL_0ce5:  nop 
+	IL_0ce6:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_0ceb:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_0cf0:  ldarg 1
 
-	IL_0ce1:  nop 
-	IL_0ce2:  nop 
-	IL_0ce3:  ldc.i4 1
-	IL_0ce8:  add 
-	IL_0ce9:  stloc 37
-
-	IL_0ced:  nop 
-	IL_0cee:  nop 
-	IL_0cef:  ldloc 35
-
-	IL_0cf3:  nop 
 	IL_0cf4:  nop 
-	IL_0cf5:  ldloc 37
+	IL_0cf5:  nop 
+	IL_0cf6:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0cfb:  ldloc 1
 
-	IL_0cf9:  nop 
-	IL_0cfa:  nop 
-	IL_0cfb:  conv.u 
-	IL_0cfc:  ldarg.0 
-	IL_0cfd:  ldloc 35
+	IL_0cff:  nop 
+	IL_0d00:  nop 
+	IL_0d01:  conv.u 
+	IL_0d02:  ldloc 10
 
-	IL_0d01:  nop 
-	IL_0d02:  nop 
-	IL_0d03:  ldloc 37
-
+	IL_0d06:  nop 
 	IL_0d07:  nop 
-	IL_0d08:  nop 
-	IL_0d09:  conv.u 
-	IL_0d0a:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr
-	IL_0d0f:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::Optimize(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
-	IL_0d14:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr
-	IL_0d19:  ldloc 37
+	IL_0d08:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0d0d:  br IL_0d17
 
+	IL_0d12:  br IL_0d17
+
+	IL_0d17:  ldarg.0 
+	IL_0d18:  ldarg 1
+
+	IL_0d1c:  nop 
 	IL_0d1d:  nop 
-	IL_0d1e:  nop 
-	IL_0d1f:  ldloc 36
+	IL_0d1e:  ldloc 1
 
+	IL_0d22:  nop 
 	IL_0d23:  nop 
-	IL_0d24:  nop 
-	IL_0d25:  beq IL_0d2f
+	IL_0d24:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::procNewCall(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr, int32)
+	IL_0d29:  starg 1
 
-	IL_0d2a:  br IL_0d39
+	IL_0d2d:  nop 
+	IL_0d2e:  nop 
+	IL_0d2f:  ldarg 1
 
-	IL_0d2f:  br IL_0d43
+	IL_0d33:  nop 
+	IL_0d34:  nop 
+	IL_0d35:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0d3a:  ldlen 
+	IL_0d3b:  conv.i4 
+	IL_0d3c:  ldc.i4 1
+	IL_0d41:  sub 
+	IL_0d42:  stloc 0
 
-	IL_0d34:  br IL_0d43
-
-	IL_0d39:  br IL_0cdd
-
-	IL_0d3e:  br IL_0d43
-
-	IL_0d43:  ldloc 34
-
+	IL_0d46:  nop 
 	IL_0d47:  nop 
-	IL_0d48:  nop 
-	IL_0d49:  ldloc 35
+	IL_0d48:  ldarg 1
 
+	IL_0d4c:  nop 
 	IL_0d4d:  nop 
-	IL_0d4e:  nop 
-	IL_0d4f:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewCallTok::Params
-	IL_0d54:  br IL_1378
+	IL_0d4e:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0d53:  ldloc 1
 
-	IL_0d59:  br IL_0d63
+	IL_0d57:  nop 
+	IL_0d58:  nop 
+	IL_0d59:  conv.u 
+	IL_0d5a:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0d5f:  stloc 41
 
-	IL_0d5e:  br IL_0d63
+	IL_0d63:  nop 
+	IL_0d64:  nop 
+	IL_0d65:  ldloc 41
 
-	IL_0d63:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeTok
-	IL_0d68:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0d6d:  stloc 20
+	IL_0d69:  nop 
+	IL_0d6a:  nop 
+	IL_0d6b:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewCallTok::Params
+	IL_0d70:  stloc 42
 
-	IL_0d71:  nop 
-	IL_0d72:  nop 
-	IL_0d73:  ldloc 20
+	IL_0d74:  nop 
+	IL_0d75:  nop 
+	IL_0d76:  ldloc 42
 
-	IL_0d77:  nop 
-	IL_0d78:  nop 
-	IL_0d79:  ldloc 19
+	IL_0d7a:  nop 
+	IL_0d7b:  nop 
+	IL_0d7c:  ldlen 
+	IL_0d7d:  conv.i4 
+	IL_0d7e:  ldc.i4 1
+	IL_0d83:  sub 
+	IL_0d84:  stloc 43
 
-	IL_0d7d:  nop 
-	IL_0d7e:  nop 
-	IL_0d7f:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0d84:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_0d89:  stloc 21
-
-	IL_0d8d:  nop 
-	IL_0d8e:  nop 
-	IL_0d8f:  ldloc 21
+	IL_0d88:  nop 
+	IL_0d89:  nop 
+	IL_0d8a:  ldc.i4 -1
+	IL_0d8f:  stloc 44
 
 	IL_0d93:  nop 
 	IL_0d94:  nop 
-	IL_0d95:  ldc.i4 1
-	IL_0d9a:  beq IL_0da4
+	IL_0d95:  ldloc 43
 
-	IL_0d9f:  br IL_0ed7
+	IL_0d99:  nop 
+	IL_0d9a:  nop 
+	IL_0d9b:  ldc.i4 0
+	IL_0da0:  blt IL_0daa
 
-	IL_0da4:  ldarg 1
+	IL_0da5:  br IL_0db4
 
-	IL_0da8:  nop 
-	IL_0da9:  nop 
-	IL_0daa:  ldloc 1
+	IL_0daa:  br IL_0e1f
 
-	IL_0dae:  nop 
-	IL_0daf:  nop 
-	IL_0db0:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
-	IL_0db5:  ldloc 0
+	IL_0daf:  br IL_0db9
 
-	IL_0db9:  nop 
-	IL_0dba:  nop 
-	IL_0dbb:  ldc.i4 1
-	IL_0dc0:  sub 
-	IL_0dc1:  stloc 0
+	IL_0db4:  br IL_0db9
 
-	IL_0dc5:  nop 
-	IL_0dc6:  nop 
-	IL_0dc7:  ldarg 1
+	IL_0db9:  ldloc 44
 
-	IL_0dcb:  nop 
-	IL_0dcc:  nop 
-	IL_0dcd:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0dd2:  ldloc 1
+	IL_0dbd:  nop 
+	IL_0dbe:  nop 
+	IL_0dbf:  ldc.i4 1
+	IL_0dc4:  add 
+	IL_0dc5:  stloc 44
 
+	IL_0dc9:  nop 
+	IL_0dca:  nop 
+	IL_0dcb:  ldloc 42
+
+	IL_0dcf:  nop 
+	IL_0dd0:  nop 
+	IL_0dd1:  ldloc 44
+
+	IL_0dd5:  nop 
 	IL_0dd6:  nop 
-	IL_0dd7:  nop 
-	IL_0dd8:  conv.u 
-	IL_0dd9:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0dde:  stloc 11
+	IL_0dd7:  conv.u 
+	IL_0dd8:  ldarg.0 
+	IL_0dd9:  ldloc 42
 
-	IL_0de2:  nop 
+	IL_0ddd:  nop 
+	IL_0dde:  nop 
+	IL_0ddf:  ldloc 44
+
 	IL_0de3:  nop 
-	IL_0de4:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
-	IL_0de9:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0dee:  stloc 20
+	IL_0de4:  nop 
+	IL_0de5:  conv.u 
+	IL_0de6:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr
+	IL_0deb:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::Optimize(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_0df0:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr
+	IL_0df5:  ldloc 44
 
-	IL_0df2:  nop 
-	IL_0df3:  nop 
-	IL_0df4:  ldloc 20
-
-	IL_0df8:  nop 
 	IL_0df9:  nop 
-	IL_0dfa:  ldloc 11
+	IL_0dfa:  nop 
+	IL_0dfb:  ldloc 43
 
-	IL_0dfe:  nop 
 	IL_0dff:  nop 
-	IL_0e00:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0e05:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_0e0a:  stloc 21
+	IL_0e00:  nop 
+	IL_0e01:  beq IL_0e0b
 
-	IL_0e0e:  nop 
-	IL_0e0f:  nop 
-	IL_0e10:  ldloc 21
+	IL_0e06:  br IL_0e15
 
-	IL_0e14:  nop 
-	IL_0e15:  nop 
-	IL_0e16:  ldc.i4 1
-	IL_0e1b:  beq IL_0e7e
+	IL_0e0b:  br IL_0e1f
 
-	IL_0e20:  br IL_0e25
+	IL_0e10:  br IL_0e1f
 
-	IL_0e25:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
-	IL_0e2a:  stloc 12
+	IL_0e15:  br IL_0db9
 
-	IL_0e2e:  nop 
-	IL_0e2f:  nop 
-	IL_0e30:  ldloc 12
+	IL_0e1a:  br IL_0e1f
 
-	IL_0e34:  nop 
-	IL_0e35:  nop 
-	IL_0e36:  ldloc 11
+	IL_0e1f:  ldloc 41
 
-	IL_0e3a:  nop 
-	IL_0e3b:  nop 
-	IL_0e3c:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_0e41:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
-	IL_0e46:  ldloc 12
+	IL_0e23:  nop 
+	IL_0e24:  nop 
+	IL_0e25:  ldloc 42
 
-	IL_0e4a:  nop 
-	IL_0e4b:  nop 
-	IL_0e4c:  ldloc 11
+	IL_0e29:  nop 
+	IL_0e2a:  nop 
+	IL_0e2b:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewCallTok::Params
+	IL_0e30:  br IL_1860
 
-	IL_0e50:  nop 
-	IL_0e51:  nop 
-	IL_0e52:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_0e57:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_0e5c:  ldarg 1
+	IL_0e35:  br IL_0e3f
 
-	IL_0e60:  nop 
-	IL_0e61:  nop 
-	IL_0e62:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0e67:  ldloc 1
+	IL_0e3a:  br IL_0e3f
 
-	IL_0e6b:  nop 
-	IL_0e6c:  nop 
-	IL_0e6d:  conv.u 
-	IL_0e6e:  ldloc 12
+	IL_0e3f:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeTok
+	IL_0e44:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0e49:  stloc 25
 
-	IL_0e72:  nop 
-	IL_0e73:  nop 
-	IL_0e74:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0e79:  br IL_0e83
+	IL_0e4d:  nop 
+	IL_0e4e:  nop 
+	IL_0e4f:  ldloc 25
 
-	IL_0e7e:  br IL_0e83
+	IL_0e53:  nop 
+	IL_0e54:  nop 
+	IL_0e55:  ldloc 24
 
-	IL_0e83:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeCallTok::'.ctor'()
-	IL_0e88:  stloc 38
+	IL_0e59:  nop 
+	IL_0e5a:  nop 
+	IL_0e5b:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0e60:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0e65:  stloc 26
 
-	IL_0e8c:  nop 
-	IL_0e8d:  nop 
-	IL_0e8e:  ldloc 38
+	IL_0e69:  nop 
+	IL_0e6a:  nop 
+	IL_0e6b:  ldloc 26
 
-	IL_0e92:  nop 
-	IL_0e93:  nop 
-	IL_0e94:  ldarg 1
+	IL_0e6f:  nop 
+	IL_0e70:  nop 
+	IL_0e71:  ldc.i4 1
+	IL_0e76:  beq IL_0e80
 
-	IL_0e98:  nop 
-	IL_0e99:  nop 
-	IL_0e9a:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0e9f:  ldloc 1
+	IL_0e7b:  br IL_0fb3
 
-	IL_0ea3:  nop 
-	IL_0ea4:  nop 
-	IL_0ea5:  conv.u 
-	IL_0ea6:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0eab:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeCallTok::Name
-	IL_0eb0:  ldarg 1
+	IL_0e80:  ldarg 1
 
-	IL_0eb4:  nop 
-	IL_0eb5:  nop 
-	IL_0eb6:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0ebb:  ldloc 1
+	IL_0e84:  nop 
+	IL_0e85:  nop 
+	IL_0e86:  ldloc 1
 
+	IL_0e8a:  nop 
+	IL_0e8b:  nop 
+	IL_0e8c:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_0e91:  ldloc 0
+
+	IL_0e95:  nop 
+	IL_0e96:  nop 
+	IL_0e97:  ldc.i4 1
+	IL_0e9c:  sub 
+	IL_0e9d:  stloc 0
+
+	IL_0ea1:  nop 
+	IL_0ea2:  nop 
+	IL_0ea3:  ldarg 1
+
+	IL_0ea7:  nop 
+	IL_0ea8:  nop 
+	IL_0ea9:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0eae:  ldloc 1
+
+	IL_0eb2:  nop 
+	IL_0eb3:  nop 
+	IL_0eb4:  conv.u 
+	IL_0eb5:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0eba:  stloc 11
+
+	IL_0ebe:  nop 
 	IL_0ebf:  nop 
-	IL_0ec0:  nop 
-	IL_0ec1:  conv.u 
-	IL_0ec2:  ldloc 38
+	IL_0ec0:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
+	IL_0ec5:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0eca:  stloc 25
 
-	IL_0ec6:  nop 
-	IL_0ec7:  nop 
-	IL_0ec8:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0ecd:  br IL_1378
+	IL_0ece:  nop 
+	IL_0ecf:  nop 
+	IL_0ed0:  ldloc 25
 
-	IL_0ed2:  br IL_0edc
+	IL_0ed4:  nop 
+	IL_0ed5:  nop 
+	IL_0ed6:  ldloc 11
 
-	IL_0ed7:  br IL_0edc
-
-	IL_0edc:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.LParen
-	IL_0ee1:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0ee6:  stloc 20
+	IL_0eda:  nop 
+	IL_0edb:  nop 
+	IL_0edc:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0ee1:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0ee6:  stloc 26
 
 	IL_0eea:  nop 
 	IL_0eeb:  nop 
-	IL_0eec:  ldloc 20
+	IL_0eec:  ldloc 26
 
 	IL_0ef0:  nop 
 	IL_0ef1:  nop 
-	IL_0ef2:  ldloc 19
+	IL_0ef2:  ldc.i4 1
+	IL_0ef7:  beq IL_0f5a
 
-	IL_0ef6:  nop 
-	IL_0ef7:  nop 
-	IL_0ef8:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0efd:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_0f02:  stloc 21
+	IL_0efc:  br IL_0f01
 
-	IL_0f06:  nop 
-	IL_0f07:  nop 
-	IL_0f08:  ldloc 21
+	IL_0f01:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
+	IL_0f06:  stloc 12
 
-	IL_0f0c:  nop 
-	IL_0f0d:  nop 
-	IL_0f0e:  ldc.i4 1
-	IL_0f13:  beq IL_0f1d
+	IL_0f0a:  nop 
+	IL_0f0b:  nop 
+	IL_0f0c:  ldloc 12
 
-	IL_0f18:  br IL_1114
+	IL_0f10:  nop 
+	IL_0f11:  nop 
+	IL_0f12:  ldloc 11
 
-	IL_0f1d:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_0f22:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_0f27:  or 
-	IL_0f28:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_0f2d:  or 
-	IL_0f2e:  stloc 21
+	IL_0f16:  nop 
+	IL_0f17:  nop 
+	IL_0f18:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_0f1d:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_0f22:  ldloc 12
 
-	IL_0f32:  nop 
-	IL_0f33:  nop 
-	IL_0f34:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_0f39:  ldc.i4 1
-	IL_0f3e:  beq IL_0f48
+	IL_0f26:  nop 
+	IL_0f27:  nop 
+	IL_0f28:  ldloc 11
 
-	IL_0f43:  br IL_10e4
+	IL_0f2c:  nop 
+	IL_0f2d:  nop 
+	IL_0f2e:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_0f33:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_0f38:  ldarg 1
 
-	IL_0f48:  ldc.i4 0
-	IL_0f4d:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_0f52:  ldloc 21
+	IL_0f3c:  nop 
+	IL_0f3d:  nop 
+	IL_0f3e:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0f43:  ldloc 1
 
-	IL_0f56:  nop 
-	IL_0f57:  nop 
-	IL_0f58:  ldc.i4 1
-	IL_0f5d:  beq IL_0f67
+	IL_0f47:  nop 
+	IL_0f48:  nop 
+	IL_0f49:  conv.u 
+	IL_0f4a:  ldloc 12
 
-	IL_0f62:  br IL_0f77
+	IL_0f4e:  nop 
+	IL_0f4f:  nop 
+	IL_0f50:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0f55:  br IL_0f5f
 
-	IL_0f67:  ldc.i4 1
-	IL_0f6c:  stloc 4
+	IL_0f5a:  br IL_0f5f
 
-	IL_0f70:  nop 
-	IL_0f71:  nop 
-	IL_0f72:  br IL_0f7c
+	IL_0f5f:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeCallTok::'.ctor'()
+	IL_0f64:  stloc 45
 
-	IL_0f77:  br IL_0f7c
+	IL_0f68:  nop 
+	IL_0f69:  nop 
+	IL_0f6a:  ldloc 45
 
-	IL_0f7c:  ldc.i4 1
-	IL_0f81:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_0f86:  ldarg.0 
-	IL_0f87:  ldarg 1
+	IL_0f6e:  nop 
+	IL_0f6f:  nop 
+	IL_0f70:  ldarg 1
 
-	IL_0f8b:  nop 
-	IL_0f8c:  nop 
-	IL_0f8d:  ldloc 1
+	IL_0f74:  nop 
+	IL_0f75:  nop 
+	IL_0f76:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0f7b:  ldloc 1
 
+	IL_0f7f:  nop 
+	IL_0f80:  nop 
+	IL_0f81:  conv.u 
+	IL_0f82:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0f87:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GettypeCallTok::Name
+	IL_0f8c:  ldarg 1
+
+	IL_0f90:  nop 
 	IL_0f91:  nop 
-	IL_0f92:  nop 
-	IL_0f93:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::procMethodCall(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr, int32)
-	IL_0f98:  starg 1
+	IL_0f92:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0f97:  ldloc 1
 
+	IL_0f9b:  nop 
 	IL_0f9c:  nop 
-	IL_0f9d:  nop 
-	IL_0f9e:  ldloc 1
+	IL_0f9d:  conv.u 
+	IL_0f9e:  ldloc 45
 
 	IL_0fa2:  nop 
 	IL_0fa3:  nop 
-	IL_0fa4:  ldc.i4 1
-	IL_0fa9:  sub 
-	IL_0faa:  stloc 1
+	IL_0fa4:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0fa9:  br IL_1860
 
-	IL_0fae:  nop 
-	IL_0faf:  nop 
-	IL_0fb0:  ldarg 1
+	IL_0fae:  br IL_0fb8
 
-	IL_0fb4:  nop 
-	IL_0fb5:  nop 
-	IL_0fb6:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0fbb:  ldlen 
-	IL_0fbc:  conv.i4 
-	IL_0fbd:  ldc.i4 1
-	IL_0fc2:  sub 
-	IL_0fc3:  stloc 0
+	IL_0fb3:  br IL_0fb8
 
+	IL_0fb8:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewarrTok
+	IL_0fbd:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0fc2:  stloc 25
+
+	IL_0fc6:  nop 
 	IL_0fc7:  nop 
-	IL_0fc8:  nop 
-	IL_0fc9:  ldarg 1
+	IL_0fc8:  ldloc 25
 
+	IL_0fcc:  nop 
 	IL_0fcd:  nop 
-	IL_0fce:  nop 
-	IL_0fcf:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0fd4:  ldloc 1
+	IL_0fce:  ldloc 24
 
-	IL_0fd8:  nop 
-	IL_0fd9:  nop 
-	IL_0fda:  conv.u 
-	IL_0fdb:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0fe0:  stloc 39
+	IL_0fd2:  nop 
+	IL_0fd3:  nop 
+	IL_0fd4:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0fd9:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0fde:  stloc 26
 
-	IL_0fe4:  nop 
-	IL_0fe5:  nop 
-	IL_0fe6:  ldloc 39
+	IL_0fe2:  nop 
+	IL_0fe3:  nop 
+	IL_0fe4:  ldloc 26
 
-	IL_0fea:  nop 
-	IL_0feb:  nop 
-	IL_0fec:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::Params
-	IL_0ff1:  stloc 40
+	IL_0fe8:  nop 
+	IL_0fe9:  nop 
+	IL_0fea:  ldc.i4 1
+	IL_0fef:  beq IL_0ff9
 
-	IL_0ff5:  nop 
-	IL_0ff6:  nop 
-	IL_0ff7:  ldloc 40
+	IL_0ff4:  br IL_1177
 
-	IL_0ffb:  nop 
-	IL_0ffc:  nop 
-	IL_0ffd:  ldlen 
-	IL_0ffe:  conv.i4 
-	IL_0fff:  ldc.i4 1
-	IL_1004:  sub 
-	IL_1005:  stloc 41
+	IL_0ff9:  ldarg 1
 
-	IL_1009:  nop 
-	IL_100a:  nop 
-	IL_100b:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_1010:  stloc 5
+	IL_0ffd:  nop 
+	IL_0ffe:  nop 
+	IL_0fff:  ldloc 1
 
-	IL_1014:  nop 
-	IL_1015:  nop 
-	IL_1016:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_101b:  stloc 6
+	IL_1003:  nop 
+	IL_1004:  nop 
+	IL_1005:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_100a:  ldloc 0
 
-	IL_101f:  nop 
+	IL_100e:  nop 
+	IL_100f:  nop 
+	IL_1010:  ldc.i4 1
+	IL_1015:  sub 
+	IL_1016:  stloc 0
+
+	IL_101a:  nop 
+	IL_101b:  nop 
+	IL_101c:  ldarg 1
+
 	IL_1020:  nop 
-	IL_1021:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_1026:  stloc 7
+	IL_1021:  nop 
+	IL_1022:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1027:  ldloc 1
 
-	IL_102a:  nop 
 	IL_102b:  nop 
-	IL_102c:  ldc.i4 -1
-	IL_1031:  stloc 42
+	IL_102c:  nop 
+	IL_102d:  conv.u 
+	IL_102e:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1033:  stloc 24
 
-	IL_1035:  nop 
-	IL_1036:  nop 
-	IL_1037:  ldloc 41
+	IL_1037:  nop 
+	IL_1038:  nop 
+	IL_1039:  ldarg 1
 
-	IL_103b:  nop 
-	IL_103c:  nop 
-	IL_103d:  ldc.i4 0
-	IL_1042:  blt IL_104c
+	IL_103d:  nop 
+	IL_103e:  nop 
+	IL_103f:  ldloc 1
 
-	IL_1047:  br IL_1056
+	IL_1043:  nop 
+	IL_1044:  nop 
+	IL_1045:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_104a:  ldloc 0
 
-	IL_104c:  br IL_10df
+	IL_104e:  nop 
+	IL_104f:  nop 
+	IL_1050:  ldc.i4 1
+	IL_1055:  sub 
+	IL_1056:  stloc 0
 
-	IL_1051:  br IL_105b
+	IL_105a:  nop 
+	IL_105b:  nop 
+	IL_105c:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
+	IL_1061:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1066:  stloc 25
 
-	IL_1056:  br IL_105b
-
-	IL_105b:  ldloc 42
-
-	IL_105f:  nop 
-	IL_1060:  nop 
-	IL_1061:  ldc.i4 1
-	IL_1066:  add 
-	IL_1067:  stloc 42
-
+	IL_106a:  nop 
 	IL_106b:  nop 
-	IL_106c:  nop 
-	IL_106d:  ldc.i4 0
-	IL_1072:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_1077:  ldc.i4 0
-	IL_107c:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_1081:  ldc.i4 0
-	IL_1086:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_108b:  ldloc 40
+	IL_106c:  ldloc 25
 
-	IL_108f:  nop 
-	IL_1090:  nop 
-	IL_1091:  ldloc 42
+	IL_1070:  nop 
+	IL_1071:  nop 
+	IL_1072:  ldloc 24
 
-	IL_1095:  nop 
-	IL_1096:  nop 
-	IL_1097:  conv.u 
-	IL_1098:  ldarg.0 
-	IL_1099:  ldloc 40
+	IL_1076:  nop 
+	IL_1077:  nop 
+	IL_1078:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_107d:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1082:  stloc 26
 
-	IL_109d:  nop 
-	IL_109e:  nop 
-	IL_109f:  ldloc 42
+	IL_1086:  nop 
+	IL_1087:  nop 
+	IL_1088:  ldloc 26
 
-	IL_10a3:  nop 
-	IL_10a4:  nop 
-	IL_10a5:  conv.u 
-	IL_10a6:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr
-	IL_10ab:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::Optimize(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
-	IL_10b0:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr
-	IL_10b5:  ldloc 42
+	IL_108c:  nop 
+	IL_108d:  nop 
+	IL_108e:  ldc.i4 1
+	IL_1093:  beq IL_10d9
 
-	IL_10b9:  nop 
-	IL_10ba:  nop 
-	IL_10bb:  ldloc 41
+	IL_1098:  br IL_109d
 
-	IL_10bf:  nop 
-	IL_10c0:  nop 
-	IL_10c1:  beq IL_10cb
+	IL_109d:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok::'.ctor'()
+	IL_10a2:  stloc 17
 
-	IL_10c6:  br IL_10d5
+	IL_10a6:  nop 
+	IL_10a7:  nop 
+	IL_10a8:  ldloc 17
 
-	IL_10cb:  br IL_10df
+	IL_10ac:  nop 
+	IL_10ad:  nop 
+	IL_10ae:  ldloc 24
 
-	IL_10d0:  br IL_10df
+	IL_10b2:  nop 
+	IL_10b3:  nop 
+	IL_10b4:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_10b9:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Line
+	IL_10be:  ldloc 17
 
-	IL_10d5:  br IL_105b
+	IL_10c2:  nop 
+	IL_10c3:  nop 
+	IL_10c4:  ldloc 24
 
-	IL_10da:  br IL_10df
+	IL_10c8:  nop 
+	IL_10c9:  nop 
+	IL_10ca:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_10cf:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_10d4:  br IL_10ea
 
-	IL_10df:  br IL_10e9
+	IL_10d9:  ldloc 24
 
-	IL_10e4:  br IL_10e9
+	IL_10dd:  nop 
+	IL_10de:  nop 
+	IL_10df:  stloc 17
 
-	IL_10e9:  ldloc 5
+	IL_10e3:  nop 
+	IL_10e4:  nop 
+	IL_10e5:  br IL_10ea
 
-	IL_10ed:  nop 
+	IL_10ea:  ldarg 1
+
 	IL_10ee:  nop 
-	IL_10ef:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_10f4:  ldloc 6
+	IL_10ef:  nop 
+	IL_10f0:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_10f5:  ldloc 1
 
-	IL_10f8:  nop 
 	IL_10f9:  nop 
-	IL_10fa:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_10ff:  ldloc 7
+	IL_10fa:  nop 
+	IL_10fb:  conv.u 
+	IL_10fc:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1101:  stloc 15
 
-	IL_1103:  nop 
-	IL_1104:  nop 
-	IL_1105:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_110a:  br IL_1378
+	IL_1105:  nop 
+	IL_1106:  nop 
+	IL_1107:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewarrCallTok::'.ctor'()
+	IL_110c:  stloc 46
 
-	IL_110f:  br IL_1119
+	IL_1110:  nop 
+	IL_1111:  nop 
+	IL_1112:  ldloc 46
 
-	IL_1114:  br IL_1119
+	IL_1116:  nop 
+	IL_1117:  nop 
+	IL_1118:  ldloc 17
 
-	IL_1119:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.LSParen
-	IL_111e:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_1123:  stloc 20
+	IL_111c:  nop 
+	IL_111d:  nop 
+	IL_111e:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewarrCallTok::ArrayType
+	IL_1123:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::'.ctor'()
+	IL_1128:  stloc 16
 
-	IL_1127:  nop 
-	IL_1128:  nop 
-	IL_1129:  ldloc 20
-
+	IL_112c:  nop 
 	IL_112d:  nop 
-	IL_112e:  nop 
-	IL_112f:  ldloc 19
+	IL_112e:  ldloc 16
 
+	IL_1132:  nop 
 	IL_1133:  nop 
-	IL_1134:  nop 
-	IL_1135:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_113a:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_113f:  stloc 21
+	IL_1134:  ldloc 15
+
+	IL_1138:  nop 
+	IL_1139:  nop 
+	IL_113a:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::AddToken(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token)
+	IL_113f:  ldloc 46
 
 	IL_1143:  nop 
 	IL_1144:  nop 
-	IL_1145:  ldloc 21
+	IL_1145:  ldloc 16
 
 	IL_1149:  nop 
 	IL_114a:  nop 
-	IL_114b:  ldc.i4 1
-	IL_1150:  beq IL_115a
+	IL_114b:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.NewarrCallTok::ArrayLen
+	IL_1150:  ldarg 1
 
-	IL_1155:  br IL_132b
+	IL_1154:  nop 
+	IL_1155:  nop 
+	IL_1156:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_115b:  ldloc 1
 
-	IL_115a:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_115f:  ldc.i4 1
-	IL_1164:  beq IL_116e
+	IL_115f:  nop 
+	IL_1160:  nop 
+	IL_1161:  conv.u 
+	IL_1162:  ldloc 46
 
-	IL_1169:  br IL_1200
+	IL_1166:  nop 
+	IL_1167:  nop 
+	IL_1168:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_116d:  br IL_1860
 
-	IL_116e:  ldc.i4 0
-	IL_1173:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_1178:  ldarg.0 
-	IL_1179:  ldarg 1
+	IL_1172:  br IL_117c
 
-	IL_117d:  nop 
-	IL_117e:  nop 
-	IL_117f:  ldloc 1
+	IL_1177:  br IL_117c
 
-	IL_1183:  nop 
-	IL_1184:  nop 
-	IL_1185:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::procIdentArrayAccess(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr, int32)
-	IL_118a:  starg 1
+	IL_117c:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.PtrTok
+	IL_1181:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1186:  stloc 25
 
-	IL_118e:  nop 
-	IL_118f:  nop 
-	IL_1190:  ldloc 1
+	IL_118a:  nop 
+	IL_118b:  nop 
+	IL_118c:  ldloc 25
 
-	IL_1194:  nop 
-	IL_1195:  nop 
-	IL_1196:  ldc.i4 1
-	IL_119b:  sub 
-	IL_119c:  stloc 1
+	IL_1190:  nop 
+	IL_1191:  nop 
+	IL_1192:  ldloc 24
 
-	IL_11a0:  nop 
-	IL_11a1:  nop 
-	IL_11a2:  ldarg 1
+	IL_1196:  nop 
+	IL_1197:  nop 
+	IL_1198:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_119d:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_11a2:  stloc 26
 
 	IL_11a6:  nop 
 	IL_11a7:  nop 
-	IL_11a8:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_11ad:  ldlen 
-	IL_11ae:  conv.i4 
-	IL_11af:  ldc.i4 1
-	IL_11b4:  sub 
-	IL_11b5:  stloc 0
+	IL_11a8:  ldloc 26
 
-	IL_11b9:  nop 
-	IL_11ba:  nop 
-	IL_11bb:  ldarg 1
+	IL_11ac:  nop 
+	IL_11ad:  nop 
+	IL_11ae:  ldc.i4 1
+	IL_11b3:  beq IL_11bd
 
-	IL_11bf:  nop 
-	IL_11c0:  nop 
-	IL_11c1:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_11c6:  ldloc 1
+	IL_11b8:  br IL_13bf
 
-	IL_11ca:  nop 
-	IL_11cb:  nop 
-	IL_11cc:  conv.u 
-	IL_11cd:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_11d2:  stloc 43
+	IL_11bd:  ldarg 1
 
-	IL_11d6:  nop 
-	IL_11d7:  nop 
-	IL_11d8:  ldloc 43
+	IL_11c1:  nop 
+	IL_11c2:  nop 
+	IL_11c3:  ldloc 1
 
-	IL_11dc:  nop 
-	IL_11dd:  nop 
-	IL_11de:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::ArrLoc
-	IL_11e3:  stloc 44
+	IL_11c7:  nop 
+	IL_11c8:  nop 
+	IL_11c9:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_11ce:  ldloc 0
 
-	IL_11e7:  nop 
-	IL_11e8:  nop 
-	IL_11e9:  ldarg.0 
-	IL_11ea:  ldloc 44
+	IL_11d2:  nop 
+	IL_11d3:  nop 
+	IL_11d4:  ldc.i4 1
+	IL_11d9:  sub 
+	IL_11da:  stloc 0
 
-	IL_11ee:  nop 
-	IL_11ef:  nop 
-	IL_11f0:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::Optimize(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
-	IL_11f5:  stloc 44
+	IL_11de:  nop 
+	IL_11df:  nop 
+	IL_11e0:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok::'.ctor'()
+	IL_11e5:  stloc 14
 
-	IL_11f9:  nop 
-	IL_11fa:  nop 
-	IL_11fb:  br IL_1321
+	IL_11e9:  nop 
+	IL_11ea:  nop 
+	IL_11eb:  ldarg.0 
+	IL_11ec:  ldarg 1
 
-	IL_1200:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_1205:  ldc.i4 1
-	IL_120a:  beq IL_1214
+	IL_11f0:  nop 
+	IL_11f1:  nop 
+	IL_11f2:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_11f7:  ldloc 1
 
-	IL_120f:  br IL_1317
+	IL_11fb:  nop 
+	IL_11fc:  nop 
+	IL_11fd:  conv.u 
+	IL_11fe:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1203:  ldloc 14
 
-	IL_1214:  ldc.i4 0
-	IL_1219:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_121e:  ldarg.0 
-	IL_121f:  ldarg 1
+	IL_1207:  nop 
+	IL_1208:  nop 
+	IL_1209:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok class dylan.NET.Tokenizer.Parser.ExprOptimizer::IdentToMNTok(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident, class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok)
+	IL_120e:  stloc 14
+
+	IL_1212:  nop 
+	IL_1213:  nop 
+	IL_1214:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.PtrCallTok::'.ctor'()
+	IL_1219:  stloc 47
+
+	IL_121d:  nop 
+	IL_121e:  nop 
+	IL_121f:  ldloc 47
 
 	IL_1223:  nop 
 	IL_1224:  nop 
-	IL_1225:  ldloc 1
+	IL_1225:  ldloc 14
 
 	IL_1229:  nop 
 	IL_122a:  nop 
-	IL_122b:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::procMtdArrayAccess(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr, int32)
-	IL_1230:  starg 1
+	IL_122b:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.PtrCallTok::MetToCall
+	IL_1230:  ldarg 1
 
 	IL_1234:  nop 
 	IL_1235:  nop 
-	IL_1236:  ldloc 1
+	IL_1236:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_123b:  ldloc 1
 
-	IL_123a:  nop 
-	IL_123b:  nop 
-	IL_123c:  ldc.i4 1
-	IL_1241:  sub 
-	IL_1242:  stloc 1
+	IL_123f:  nop 
+	IL_1240:  nop 
+	IL_1241:  conv.u 
+	IL_1242:  ldloc 47
 
 	IL_1246:  nop 
 	IL_1247:  nop 
-	IL_1248:  ldarg 1
+	IL_1248:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_124d:  ldloc 1
 
-	IL_124c:  nop 
-	IL_124d:  nop 
-	IL_124e:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_1253:  ldlen 
-	IL_1254:  conv.i4 
-	IL_1255:  ldc.i4 1
-	IL_125a:  sub 
-	IL_125b:  stloc 0
+	IL_1251:  nop 
+	IL_1252:  nop 
+	IL_1253:  ldc.i4 1
+	IL_1258:  add 
+	IL_1259:  stloc 1
 
-	IL_125f:  nop 
-	IL_1260:  nop 
-	IL_1261:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_1266:  stloc 5
+	IL_125d:  nop 
+	IL_125e:  nop 
+	IL_125f:  ldloc 1
 
+	IL_1263:  nop 
+	IL_1264:  nop 
+	IL_1265:  ldloc 0
+
+	IL_1269:  nop 
 	IL_126a:  nop 
-	IL_126b:  nop 
-	IL_126c:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_1271:  stloc 6
+	IL_126b:  ble IL_1275
 
-	IL_1275:  nop 
-	IL_1276:  nop 
-	IL_1277:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_127c:  stloc 7
+	IL_1270:  br IL_13b0
 
-	IL_1280:  nop 
-	IL_1281:  nop 
-	IL_1282:  ldarg 1
+	IL_1275:  ldarg 1
 
-	IL_1286:  nop 
-	IL_1287:  nop 
-	IL_1288:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_128d:  ldloc 1
+	IL_1279:  nop 
+	IL_127a:  nop 
+	IL_127b:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1280:  ldloc 1
 
+	IL_1284:  nop 
+	IL_1285:  nop 
+	IL_1286:  conv.u 
+	IL_1287:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_128c:  stloc 24
+
+	IL_1290:  nop 
 	IL_1291:  nop 
-	IL_1292:  nop 
-	IL_1293:  conv.u 
-	IL_1294:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_1299:  stloc 45
+	IL_1292:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.LParen
+	IL_1297:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_129c:  stloc 25
 
-	IL_129d:  nop 
-	IL_129e:  nop 
-	IL_129f:  ldloc 45
+	IL_12a0:  nop 
+	IL_12a1:  nop 
+	IL_12a2:  ldloc 25
 
-	IL_12a3:  nop 
-	IL_12a4:  nop 
-	IL_12a5:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::Name
-	IL_12aa:  stloc 46
+	IL_12a6:  nop 
+	IL_12a7:  nop 
+	IL_12a8:  ldloc 24
 
-	IL_12ae:  nop 
-	IL_12af:  nop 
-	IL_12b0:  ldloc 46
+	IL_12ac:  nop 
+	IL_12ad:  nop 
+	IL_12ae:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_12b3:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_12b8:  stloc 26
 
-	IL_12b4:  nop 
-	IL_12b5:  nop 
-	IL_12b6:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::ArrLoc
-	IL_12bb:  stloc 44
+	IL_12bc:  nop 
+	IL_12bd:  nop 
+	IL_12be:  ldloc 26
 
-	IL_12bf:  nop 
-	IL_12c0:  nop 
-	IL_12c1:  ldc.i4 0
-	IL_12c6:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_12cb:  ldc.i4 0
-	IL_12d0:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_12d5:  ldc.i4 0
-	IL_12da:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_12df:  ldarg.0 
-	IL_12e0:  ldloc 44
+	IL_12c2:  nop 
+	IL_12c3:  nop 
+	IL_12c4:  ldc.i4 1
+	IL_12c9:  beq IL_12d3
 
-	IL_12e4:  nop 
-	IL_12e5:  nop 
-	IL_12e6:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::Optimize(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
-	IL_12eb:  stloc 44
+	IL_12ce:  br IL_13a6
 
-	IL_12ef:  nop 
-	IL_12f0:  nop 
-	IL_12f1:  ldloc 5
+	IL_12d3:  ldarg 1
 
+	IL_12d7:  nop 
+	IL_12d8:  nop 
+	IL_12d9:  ldloc 1
+
+	IL_12dd:  nop 
+	IL_12de:  nop 
+	IL_12df:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_12e4:  ldloc 0
+
+	IL_12e8:  nop 
+	IL_12e9:  nop 
+	IL_12ea:  ldc.i4 1
+	IL_12ef:  sub 
+	IL_12f0:  stloc 0
+
+	IL_12f4:  nop 
 	IL_12f5:  nop 
-	IL_12f6:  nop 
-	IL_12f7:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_12fc:  ldloc 6
+	IL_12f6:  ldloc 1
+
+	IL_12fa:  nop 
+	IL_12fb:  nop 
+	IL_12fc:  ldloc 0
 
 	IL_1300:  nop 
 	IL_1301:  nop 
-	IL_1302:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_1307:  ldloc 7
+	IL_1302:  ble IL_130c
 
-	IL_130b:  nop 
-	IL_130c:  nop 
-	IL_130d:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_1312:  br IL_131c
+	IL_1307:  br IL_139c
 
-	IL_1317:  br IL_131c
+	IL_130c:  ldarg 1
 
-	IL_131c:  br IL_1321
+	IL_1310:  nop 
+	IL_1311:  nop 
+	IL_1312:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1317:  ldloc 1
 
-	IL_1321:  br IL_1378
+	IL_131b:  nop 
+	IL_131c:  nop 
+	IL_131d:  conv.u 
+	IL_131e:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1323:  stloc 24
 
-	IL_1326:  br IL_1330
+	IL_1327:  nop 
+	IL_1328:  nop 
+	IL_1329:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.RParen
+	IL_132e:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1333:  stloc 25
 
-	IL_132b:  br IL_1330
+	IL_1337:  nop 
+	IL_1338:  nop 
+	IL_1339:  ldloc 25
 
-	IL_1330:  ldloc 1
+	IL_133d:  nop 
+	IL_133e:  nop 
+	IL_133f:  ldloc 24
 
-	IL_1334:  nop 
-	IL_1335:  nop 
-	IL_1336:  ldloc 2
+	IL_1343:  nop 
+	IL_1344:  nop 
+	IL_1345:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_134a:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_134f:  stloc 26
 
-	IL_133a:  nop 
-	IL_133b:  nop 
-	IL_133c:  bgt IL_1346
+	IL_1353:  nop 
+	IL_1354:  nop 
+	IL_1355:  ldloc 26
 
-	IL_1341:  br IL_1369
+	IL_1359:  nop 
+	IL_135a:  nop 
+	IL_135b:  ldc.i4 1
+	IL_1360:  beq IL_136a
 
-	IL_1346:  ldc.i4 0
-	IL_134b:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_1350:  ldc.i4 0
-	IL_1355:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_135a:  ldc.i4 0
-	IL_135f:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_1364:  br IL_136e
+	IL_1365:  br IL_1392
 
-	IL_1369:  br IL_136e
+	IL_136a:  ldarg 1
 
-	IL_136e:  br IL_1378
+	IL_136e:  nop 
+	IL_136f:  nop 
+	IL_1370:  ldloc 1
 
-	IL_1373:  br IL_1378
+	IL_1374:  nop 
+	IL_1375:  nop 
+	IL_1376:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_137b:  ldloc 0
 
-	IL_1378:  ldloc 1
+	IL_137f:  nop 
+	IL_1380:  nop 
+	IL_1381:  ldc.i4 1
+	IL_1386:  sub 
+	IL_1387:  stloc 0
 
-	IL_137c:  nop 
-	IL_137d:  nop 
-	IL_137e:  ldloc 0
+	IL_138b:  nop 
+	IL_138c:  nop 
+	IL_138d:  br IL_1397
 
-	IL_1382:  nop 
-	IL_1383:  nop 
-	IL_1384:  bge IL_138e
+	IL_1392:  br IL_1397
 
-	IL_1389:  br IL_1398
+	IL_1397:  br IL_13a1
 
-	IL_138e:  br IL_1820
+	IL_139c:  br IL_13a1
 
-	IL_1393:  br IL_13a2
+	IL_13a1:  br IL_13ab
 
-	IL_1398:  br IL_00db
+	IL_13a6:  br IL_13ab
 
-	IL_139d:  br IL_13a2
+	IL_13ab:  br IL_13b5
 
-	IL_13a2:  br IL_1820
+	IL_13b0:  br IL_13b5
 
-	IL_13a7:  ldloc 1
+	IL_13b5:  br IL_1860
 
-	IL_13ab:  nop 
-	IL_13ac:  nop 
-	IL_13ad:  ldc.i4 1
-	IL_13b2:  sub 
-	IL_13b3:  stloc 1
+	IL_13ba:  br IL_13c4
 
-	IL_13b7:  nop 
-	IL_13b8:  nop 
-	IL_13b9:  ldarg 1
+	IL_13bf:  br IL_13c4
 
-	IL_13bd:  nop 
-	IL_13be:  nop 
-	IL_13bf:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_13c4:  ldloc 1
+	IL_13c4:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.LParen
+	IL_13c9:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_13ce:  stloc 25
 
-	IL_13c8:  nop 
-	IL_13c9:  nop 
-	IL_13ca:  conv.u 
-	IL_13cb:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_13d0:  stloc 8
+	IL_13d2:  nop 
+	IL_13d3:  nop 
+	IL_13d4:  ldloc 25
 
-	IL_13d4:  nop 
-	IL_13d5:  nop 
-	IL_13d6:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident
-	IL_13db:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_13e0:  stloc 20
+	IL_13d8:  nop 
+	IL_13d9:  nop 
+	IL_13da:  ldloc 24
 
-	IL_13e4:  nop 
-	IL_13e5:  nop 
-	IL_13e6:  ldloc 20
+	IL_13de:  nop 
+	IL_13df:  nop 
+	IL_13e0:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_13e5:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_13ea:  stloc 26
 
-	IL_13ea:  nop 
-	IL_13eb:  nop 
-	IL_13ec:  ldloc 8
+	IL_13ee:  nop 
+	IL_13ef:  nop 
+	IL_13f0:  ldloc 26
 
-	IL_13f0:  nop 
-	IL_13f1:  nop 
-	IL_13f2:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_13f7:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_13fc:  stloc 21
+	IL_13f4:  nop 
+	IL_13f5:  nop 
+	IL_13f6:  ldc.i4 1
+	IL_13fb:  beq IL_1405
 
-	IL_1400:  nop 
-	IL_1401:  nop 
-	IL_1402:  ldloc 21
+	IL_1400:  br IL_15fc
 
-	IL_1406:  nop 
-	IL_1407:  nop 
-	IL_1408:  ldc.i4 1
-	IL_140d:  beq IL_1417
+	IL_1405:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_140a:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_140f:  or 
+	IL_1410:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1415:  or 
+	IL_1416:  stloc 26
 
-	IL_1412:  br IL_153f
-
-	IL_1417:  ldloc 8
-
+	IL_141a:  nop 
 	IL_141b:  nop 
-	IL_141c:  nop 
-	IL_141d:  stloc 14
+	IL_141c:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1421:  ldc.i4 1
+	IL_1426:  beq IL_1430
 
-	IL_1421:  nop 
-	IL_1422:  nop 
-	IL_1423:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_1428:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_142d:  or 
-	IL_142e:  stloc 21
+	IL_142b:  br IL_15cc
 
-	IL_1432:  nop 
-	IL_1433:  nop 
-	IL_1434:  ldloc 21
+	IL_1430:  ldc.i4 0
+	IL_1435:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_143a:  ldloc 26
 
-	IL_1438:  nop 
-	IL_1439:  nop 
-	IL_143a:  ldc.i4 1
-	IL_143f:  beq IL_1449
+	IL_143e:  nop 
+	IL_143f:  nop 
+	IL_1440:  ldc.i4 1
+	IL_1445:  beq IL_144f
 
-	IL_1444:  br IL_14e0
+	IL_144a:  br IL_145f
 
-	IL_1449:  ldc.i4 0
-	IL_144e:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_1453:  ldc.i4 0
-	IL_1458:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_145d:  ldloc 1
+	IL_144f:  ldc.i4 1
+	IL_1454:  stloc 4
 
-	IL_1461:  nop 
-	IL_1462:  nop 
-	IL_1463:  ldc.i4 1
-	IL_1468:  add 
-	IL_1469:  stloc 18
+	IL_1458:  nop 
+	IL_1459:  nop 
+	IL_145a:  br IL_1464
 
-	IL_146d:  nop 
-	IL_146e:  nop 
+	IL_145f:  br IL_1464
+
+	IL_1464:  ldc.i4 1
+	IL_1469:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_146e:  ldarg.0 
 	IL_146f:  ldarg 1
 
 	IL_1473:  nop 
 	IL_1474:  nop 
-	IL_1475:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_147a:  ldloc 18
+	IL_1475:  ldloc 1
 
-	IL_147e:  nop 
-	IL_147f:  nop 
-	IL_1480:  conv.u 
-	IL_1481:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_1486:  stloc 13
+	IL_1479:  nop 
+	IL_147a:  nop 
+	IL_147b:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::procMethodCall(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr, int32)
+	IL_1480:  starg 1
+
+	IL_1484:  nop 
+	IL_1485:  nop 
+	IL_1486:  ldloc 1
 
 	IL_148a:  nop 
 	IL_148b:  nop 
-	IL_148c:  ldloc 14
+	IL_148c:  ldc.i4 1
+	IL_1491:  sub 
+	IL_1492:  stloc 1
 
-	IL_1490:  nop 
-	IL_1491:  nop 
-	IL_1492:  ldc.i4 1
-	IL_1497:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::MemberAccessFlg
-	IL_149c:  ldloc 14
+	IL_1496:  nop 
+	IL_1497:  nop 
+	IL_1498:  ldarg 1
 
-	IL_14a0:  nop 
-	IL_14a1:  nop 
-	IL_14a2:  ldloc 13
+	IL_149c:  nop 
+	IL_149d:  nop 
+	IL_149e:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_14a3:  ldlen 
+	IL_14a4:  conv.i4 
+	IL_14a5:  ldc.i4 1
+	IL_14aa:  sub 
+	IL_14ab:  stloc 0
 
-	IL_14a6:  nop 
-	IL_14a7:  nop 
-	IL_14a8:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::MemberToAccess
-	IL_14ad:  ldarg 1
+	IL_14af:  nop 
+	IL_14b0:  nop 
+	IL_14b1:  ldarg 1
 
-	IL_14b1:  nop 
-	IL_14b2:  nop 
-	IL_14b3:  ldloc 18
+	IL_14b5:  nop 
+	IL_14b6:  nop 
+	IL_14b7:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_14bc:  ldloc 1
 
-	IL_14b7:  nop 
-	IL_14b8:  nop 
-	IL_14b9:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
-	IL_14be:  ldarg 1
+	IL_14c0:  nop 
+	IL_14c1:  nop 
+	IL_14c2:  conv.u 
+	IL_14c3:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_14c8:  stloc 48
 
-	IL_14c2:  nop 
-	IL_14c3:  nop 
-	IL_14c4:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_14c9:  ldloc 1
-
+	IL_14cc:  nop 
 	IL_14cd:  nop 
-	IL_14ce:  nop 
-	IL_14cf:  conv.u 
-	IL_14d0:  ldloc 14
+	IL_14ce:  ldloc 48
 
-	IL_14d4:  nop 
-	IL_14d5:  nop 
-	IL_14d6:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_14db:  br IL_14e5
+	IL_14d2:  nop 
+	IL_14d3:  nop 
+	IL_14d4:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::Params
+	IL_14d9:  stloc 49
 
-	IL_14e0:  br IL_14e5
+	IL_14dd:  nop 
+	IL_14de:  nop 
+	IL_14df:  ldloc 49
 
-	IL_14e5:  ldloc 14
+	IL_14e3:  nop 
+	IL_14e4:  nop 
+	IL_14e5:  ldlen 
+	IL_14e6:  conv.i4 
+	IL_14e7:  ldc.i4 1
+	IL_14ec:  sub 
+	IL_14ed:  stloc 50
 
-	IL_14e9:  nop 
-	IL_14ea:  nop 
-	IL_14eb:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_14f0:  stloc 22
+	IL_14f1:  nop 
+	IL_14f2:  nop 
+	IL_14f3:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_14f8:  stloc 5
 
-	IL_14f4:  nop 
-	IL_14f5:  nop 
-	IL_14f6:  ldloc 22
+	IL_14fc:  nop 
+	IL_14fd:  nop 
+	IL_14fe:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1503:  stloc 6
 
-	IL_14fa:  nop 
-	IL_14fb:  nop 
-	IL_14fc:  ldstr "^::(.)*$"
-	IL_1501:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_1506:  stloc 21
+	IL_1507:  nop 
+	IL_1508:  nop 
+	IL_1509:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_150e:  stloc 7
 
-	IL_150a:  nop 
-	IL_150b:  nop 
-	IL_150c:  ldloc 21
+	IL_1512:  nop 
+	IL_1513:  nop 
+	IL_1514:  ldc.i4 -1
+	IL_1519:  stloc 51
 
-	IL_1510:  nop 
-	IL_1511:  nop 
-	IL_1512:  ldc.i4 1
-	IL_1517:  beq IL_1521
+	IL_151d:  nop 
+	IL_151e:  nop 
+	IL_151f:  ldloc 50
 
-	IL_151c:  br IL_1530
+	IL_1523:  nop 
+	IL_1524:  nop 
+	IL_1525:  ldc.i4 0
+	IL_152a:  blt IL_1534
 
-	IL_1521:  ldc.i4 1
-	IL_1526:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_152b:  br IL_1535
+	IL_152f:  br IL_153e
 
-	IL_1530:  br IL_1535
+	IL_1534:  br IL_15c7
 
-	IL_1535:  br IL_17f2
+	IL_1539:  br IL_1543
 
-	IL_153a:  br IL_1544
+	IL_153e:  br IL_1543
 
-	IL_153f:  br IL_1544
+	IL_1543:  ldloc 51
 
-	IL_1544:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok
-	IL_1549:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_154e:  stloc 20
+	IL_1547:  nop 
+	IL_1548:  nop 
+	IL_1549:  ldc.i4 1
+	IL_154e:  add 
+	IL_154f:  stloc 51
 
-	IL_1552:  nop 
 	IL_1553:  nop 
-	IL_1554:  ldloc 20
+	IL_1554:  nop 
+	IL_1555:  ldc.i4 0
+	IL_155a:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_155f:  ldc.i4 0
+	IL_1564:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1569:  ldc.i4 0
+	IL_156e:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_1573:  ldloc 49
 
-	IL_1558:  nop 
-	IL_1559:  nop 
-	IL_155a:  ldloc 8
+	IL_1577:  nop 
+	IL_1578:  nop 
+	IL_1579:  ldloc 51
 
-	IL_155e:  nop 
-	IL_155f:  nop 
-	IL_1560:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_1565:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_156a:  stloc 21
+	IL_157d:  nop 
+	IL_157e:  nop 
+	IL_157f:  conv.u 
+	IL_1580:  ldarg.0 
+	IL_1581:  ldloc 49
 
-	IL_156e:  nop 
-	IL_156f:  nop 
-	IL_1570:  ldloc 21
+	IL_1585:  nop 
+	IL_1586:  nop 
+	IL_1587:  ldloc 51
 
-	IL_1574:  nop 
-	IL_1575:  nop 
-	IL_1576:  ldc.i4 1
-	IL_157b:  beq IL_1585
+	IL_158b:  nop 
+	IL_158c:  nop 
+	IL_158d:  conv.u 
+	IL_158e:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr
+	IL_1593:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::Optimize(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_1598:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr
+	IL_159d:  ldloc 51
 
-	IL_1580:  br IL_16cf
-
-	IL_1585:  ldloc 8
-
-	IL_1589:  nop 
-	IL_158a:  nop 
-	IL_158b:  stloc 15
-
-	IL_158f:  nop 
-	IL_1590:  nop 
-	IL_1591:  ldloc 15
-
-	IL_1595:  nop 
-	IL_1596:  nop 
-	IL_1597:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::Name
-	IL_159c:  stloc 16
-
-	IL_15a0:  nop 
 	IL_15a1:  nop 
-	IL_15a2:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_15a7:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_15ac:  or 
-	IL_15ad:  stloc 21
+	IL_15a2:  nop 
+	IL_15a3:  ldloc 50
 
-	IL_15b1:  nop 
-	IL_15b2:  nop 
-	IL_15b3:  ldloc 21
+	IL_15a7:  nop 
+	IL_15a8:  nop 
+	IL_15a9:  beq IL_15b3
 
-	IL_15b7:  nop 
-	IL_15b8:  nop 
-	IL_15b9:  ldc.i4 1
-	IL_15be:  beq IL_15c8
+	IL_15ae:  br IL_15bd
 
-	IL_15c3:  br IL_1670
+	IL_15b3:  br IL_15c7
 
-	IL_15c8:  ldc.i4 0
-	IL_15cd:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_15d2:  ldc.i4 0
-	IL_15d7:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_15dc:  ldloc 1
+	IL_15b8:  br IL_15c7
+
+	IL_15bd:  br IL_1543
+
+	IL_15c2:  br IL_15c7
+
+	IL_15c7:  br IL_15d1
+
+	IL_15cc:  br IL_15d1
+
+	IL_15d1:  ldloc 5
+
+	IL_15d5:  nop 
+	IL_15d6:  nop 
+	IL_15d7:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_15dc:  ldloc 6
 
 	IL_15e0:  nop 
 	IL_15e1:  nop 
-	IL_15e2:  ldc.i4 1
-	IL_15e7:  add 
-	IL_15e8:  stloc 18
+	IL_15e2:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_15e7:  ldloc 7
 
+	IL_15eb:  nop 
 	IL_15ec:  nop 
-	IL_15ed:  nop 
-	IL_15ee:  ldarg 1
+	IL_15ed:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_15f2:  br IL_1860
 
-	IL_15f2:  nop 
-	IL_15f3:  nop 
-	IL_15f4:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_15f9:  ldloc 18
+	IL_15f7:  br IL_1601
 
-	IL_15fd:  nop 
-	IL_15fe:  nop 
-	IL_15ff:  conv.u 
-	IL_1600:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_1605:  stloc 13
+	IL_15fc:  br IL_1601
 
-	IL_1609:  nop 
-	IL_160a:  nop 
-	IL_160b:  ldloc 16
+	IL_1601:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.LSParen
+	IL_1606:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_160b:  stloc 25
 
 	IL_160f:  nop 
 	IL_1610:  nop 
-	IL_1611:  ldc.i4 1
-	IL_1616:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::MemberAccessFlg
-	IL_161b:  ldloc 16
+	IL_1611:  ldloc 25
 
-	IL_161f:  nop 
-	IL_1620:  nop 
-	IL_1621:  ldloc 13
+	IL_1615:  nop 
+	IL_1616:  nop 
+	IL_1617:  ldloc 24
 
-	IL_1625:  nop 
-	IL_1626:  nop 
-	IL_1627:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::MemberToAccess
-	IL_162c:  ldarg 1
+	IL_161b:  nop 
+	IL_161c:  nop 
+	IL_161d:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1622:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1627:  stloc 26
 
-	IL_1630:  nop 
+	IL_162b:  nop 
+	IL_162c:  nop 
+	IL_162d:  ldloc 26
+
 	IL_1631:  nop 
-	IL_1632:  ldloc 18
+	IL_1632:  nop 
+	IL_1633:  ldc.i4 1
+	IL_1638:  beq IL_1642
 
-	IL_1636:  nop 
-	IL_1637:  nop 
-	IL_1638:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
-	IL_163d:  ldloc 15
+	IL_163d:  br IL_1813
 
-	IL_1641:  nop 
-	IL_1642:  nop 
-	IL_1643:  ldloc 16
+	IL_1642:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1647:  ldc.i4 1
+	IL_164c:  beq IL_1656
 
-	IL_1647:  nop 
-	IL_1648:  nop 
-	IL_1649:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::Name
-	IL_164e:  ldarg 1
+	IL_1651:  br IL_16e8
 
-	IL_1652:  nop 
-	IL_1653:  nop 
-	IL_1654:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_1659:  ldloc 1
+	IL_1656:  ldc.i4 0
+	IL_165b:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1660:  ldarg.0 
+	IL_1661:  ldarg 1
 
-	IL_165d:  nop 
-	IL_165e:  nop 
-	IL_165f:  conv.u 
-	IL_1660:  ldloc 15
-
-	IL_1664:  nop 
 	IL_1665:  nop 
-	IL_1666:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_166b:  br IL_1675
+	IL_1666:  nop 
+	IL_1667:  ldloc 1
 
-	IL_1670:  br IL_1675
+	IL_166b:  nop 
+	IL_166c:  nop 
+	IL_166d:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::procIdentArrayAccess(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr, int32)
+	IL_1672:  starg 1
 
-	IL_1675:  ldloc 16
+	IL_1676:  nop 
+	IL_1677:  nop 
+	IL_1678:  ldloc 1
 
-	IL_1679:  nop 
-	IL_167a:  nop 
-	IL_167b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1680:  stloc 22
+	IL_167c:  nop 
+	IL_167d:  nop 
+	IL_167e:  ldc.i4 1
+	IL_1683:  sub 
+	IL_1684:  stloc 1
 
-	IL_1684:  nop 
-	IL_1685:  nop 
-	IL_1686:  ldloc 22
+	IL_1688:  nop 
+	IL_1689:  nop 
+	IL_168a:  ldarg 1
 
-	IL_168a:  nop 
-	IL_168b:  nop 
-	IL_168c:  ldstr "^::(.)*$"
-	IL_1691:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_1696:  stloc 21
+	IL_168e:  nop 
+	IL_168f:  nop 
+	IL_1690:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1695:  ldlen 
+	IL_1696:  conv.i4 
+	IL_1697:  ldc.i4 1
+	IL_169c:  sub 
+	IL_169d:  stloc 0
 
-	IL_169a:  nop 
-	IL_169b:  nop 
-	IL_169c:  ldloc 21
-
-	IL_16a0:  nop 
 	IL_16a1:  nop 
-	IL_16a2:  ldc.i4 1
-	IL_16a7:  beq IL_16b1
+	IL_16a2:  nop 
+	IL_16a3:  ldarg 1
 
-	IL_16ac:  br IL_16c0
+	IL_16a7:  nop 
+	IL_16a8:  nop 
+	IL_16a9:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_16ae:  ldloc 1
 
-	IL_16b1:  ldc.i4 1
-	IL_16b6:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_16bb:  br IL_16c5
+	IL_16b2:  nop 
+	IL_16b3:  nop 
+	IL_16b4:  conv.u 
+	IL_16b5:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_16ba:  stloc 52
 
-	IL_16c0:  br IL_16c5
+	IL_16be:  nop 
+	IL_16bf:  nop 
+	IL_16c0:  ldloc 52
 
-	IL_16c5:  br IL_17f2
+	IL_16c4:  nop 
+	IL_16c5:  nop 
+	IL_16c6:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::ArrLoc
+	IL_16cb:  stloc 53
 
-	IL_16ca:  br IL_16d4
+	IL_16cf:  nop 
+	IL_16d0:  nop 
+	IL_16d1:  ldarg.0 
+	IL_16d2:  ldloc 53
 
-	IL_16cf:  br IL_16d4
+	IL_16d6:  nop 
+	IL_16d7:  nop 
+	IL_16d8:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::Optimize(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_16dd:  stloc 53
 
-	IL_16d4:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral
-	IL_16d9:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_16de:  stloc 20
-
+	IL_16e1:  nop 
 	IL_16e2:  nop 
-	IL_16e3:  nop 
-	IL_16e4:  ldloc 20
+	IL_16e3:  br IL_1809
 
-	IL_16e8:  nop 
-	IL_16e9:  nop 
-	IL_16ea:  ldloc 8
+	IL_16e8:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_16ed:  ldc.i4 1
+	IL_16f2:  beq IL_16fc
 
-	IL_16ee:  nop 
-	IL_16ef:  nop 
-	IL_16f0:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_16f5:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_16fa:  stloc 21
+	IL_16f7:  br IL_17ff
 
-	IL_16fe:  nop 
-	IL_16ff:  nop 
-	IL_1700:  ldloc 21
+	IL_16fc:  ldc.i4 0
+	IL_1701:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_1706:  ldarg.0 
+	IL_1707:  ldarg 1
 
-	IL_1704:  nop 
-	IL_1705:  nop 
-	IL_1706:  ldc.i4 1
-	IL_170b:  beq IL_1715
+	IL_170b:  nop 
+	IL_170c:  nop 
+	IL_170d:  ldloc 1
 
-	IL_1710:  br IL_17ed
+	IL_1711:  nop 
+	IL_1712:  nop 
+	IL_1713:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::procMtdArrayAccess(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr, int32)
+	IL_1718:  starg 1
 
-	IL_1715:  ldloc 8
+	IL_171c:  nop 
+	IL_171d:  nop 
+	IL_171e:  ldloc 1
 
-	IL_1719:  nop 
-	IL_171a:  nop 
-	IL_171b:  stloc 17
+	IL_1722:  nop 
+	IL_1723:  nop 
+	IL_1724:  ldc.i4 1
+	IL_1729:  sub 
+	IL_172a:  stloc 1
 
-	IL_171f:  nop 
-	IL_1720:  nop 
-	IL_1721:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_1726:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_172b:  or 
-	IL_172c:  stloc 21
+	IL_172e:  nop 
+	IL_172f:  nop 
+	IL_1730:  ldarg 1
 
-	IL_1730:  nop 
-	IL_1731:  nop 
-	IL_1732:  ldloc 21
+	IL_1734:  nop 
+	IL_1735:  nop 
+	IL_1736:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_173b:  ldlen 
+	IL_173c:  conv.i4 
+	IL_173d:  ldc.i4 1
+	IL_1742:  sub 
+	IL_1743:  stloc 0
 
-	IL_1736:  nop 
-	IL_1737:  nop 
-	IL_1738:  ldc.i4 1
-	IL_173d:  beq IL_1747
+	IL_1747:  nop 
+	IL_1748:  nop 
+	IL_1749:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_174e:  stloc 5
 
-	IL_1742:  br IL_17de
+	IL_1752:  nop 
+	IL_1753:  nop 
+	IL_1754:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1759:  stloc 6
 
-	IL_1747:  ldc.i4 0
-	IL_174c:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_1751:  ldc.i4 0
-	IL_1756:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_175b:  ldloc 1
+	IL_175d:  nop 
+	IL_175e:  nop 
+	IL_175f:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_1764:  stloc 7
 
-	IL_175f:  nop 
-	IL_1760:  nop 
-	IL_1761:  ldc.i4 1
-	IL_1766:  add 
-	IL_1767:  stloc 18
+	IL_1768:  nop 
+	IL_1769:  nop 
+	IL_176a:  ldarg 1
 
-	IL_176b:  nop 
-	IL_176c:  nop 
-	IL_176d:  ldarg 1
+	IL_176e:  nop 
+	IL_176f:  nop 
+	IL_1770:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1775:  ldloc 1
 
-	IL_1771:  nop 
-	IL_1772:  nop 
-	IL_1773:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_1778:  ldloc 18
+	IL_1779:  nop 
+	IL_177a:  nop 
+	IL_177b:  conv.u 
+	IL_177c:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1781:  stloc 54
 
-	IL_177c:  nop 
-	IL_177d:  nop 
-	IL_177e:  conv.u 
-	IL_177f:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_1784:  stloc 13
+	IL_1785:  nop 
+	IL_1786:  nop 
+	IL_1787:  ldloc 54
 
-	IL_1788:  nop 
-	IL_1789:  nop 
-	IL_178a:  ldloc 17
+	IL_178b:  nop 
+	IL_178c:  nop 
+	IL_178d:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::Name
+	IL_1792:  stloc 55
 
-	IL_178e:  nop 
-	IL_178f:  nop 
-	IL_1790:  ldc.i4 1
-	IL_1795:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral::MemberAccessFlg
-	IL_179a:  ldloc 17
+	IL_1796:  nop 
+	IL_1797:  nop 
+	IL_1798:  ldloc 55
 
-	IL_179e:  nop 
-	IL_179f:  nop 
-	IL_17a0:  ldloc 13
+	IL_179c:  nop 
+	IL_179d:  nop 
+	IL_179e:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::ArrLoc
+	IL_17a3:  stloc 53
 
-	IL_17a4:  nop 
-	IL_17a5:  nop 
-	IL_17a6:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral::MemberToAccess
-	IL_17ab:  ldarg 1
+	IL_17a7:  nop 
+	IL_17a8:  nop 
+	IL_17a9:  ldc.i4 0
+	IL_17ae:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_17b3:  ldc.i4 0
+	IL_17b8:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_17bd:  ldc.i4 0
+	IL_17c2:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_17c7:  ldarg.0 
+	IL_17c8:  ldloc 53
 
-	IL_17af:  nop 
-	IL_17b0:  nop 
-	IL_17b1:  ldloc 18
-
-	IL_17b5:  nop 
-	IL_17b6:  nop 
-	IL_17b7:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
-	IL_17bc:  ldarg 1
-
-	IL_17c0:  nop 
-	IL_17c1:  nop 
-	IL_17c2:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_17c7:  ldloc 1
-
-	IL_17cb:  nop 
 	IL_17cc:  nop 
-	IL_17cd:  conv.u 
-	IL_17ce:  ldloc 17
+	IL_17cd:  nop 
+	IL_17ce:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::Optimize(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_17d3:  stloc 53
 
-	IL_17d2:  nop 
-	IL_17d3:  nop 
-	IL_17d4:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_17d9:  br IL_17e3
+	IL_17d7:  nop 
+	IL_17d8:  nop 
+	IL_17d9:  ldloc 5
 
-	IL_17de:  br IL_17e3
+	IL_17dd:  nop 
+	IL_17de:  nop 
+	IL_17df:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_17e4:  ldloc 6
 
-	IL_17e3:  br IL_17f2
+	IL_17e8:  nop 
+	IL_17e9:  nop 
+	IL_17ea:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_17ef:  ldloc 7
 
-	IL_17e8:  br IL_17f2
+	IL_17f3:  nop 
+	IL_17f4:  nop 
+	IL_17f5:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_17fa:  br IL_1804
 
-	IL_17ed:  br IL_17f2
+	IL_17ff:  br IL_1804
 
-	IL_17f2:  ldloc 1
+	IL_1804:  br IL_1809
 
-	IL_17f6:  nop 
-	IL_17f7:  nop 
-	IL_17f8:  ldc.i4 0
-	IL_17fd:  ble IL_1807
+	IL_1809:  br IL_1860
 
-	IL_1802:  br IL_1811
+	IL_180e:  br IL_1818
 
-	IL_1807:  br IL_1820
+	IL_1813:  br IL_1818
 
-	IL_180c:  br IL_181b
+	IL_1818:  ldloc 1
 
-	IL_1811:  br IL_00db
+	IL_181c:  nop 
+	IL_181d:  nop 
+	IL_181e:  ldloc 2
 
-	IL_1816:  br IL_181b
+	IL_1822:  nop 
+	IL_1823:  nop 
+	IL_1824:  bgt IL_182e
 
-	IL_181b:  br IL_1820
+	IL_1829:  br IL_1851
 
-	IL_1820:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetChainFlag
-	IL_1825:  ldc.i4 0
-	IL_182a:  beq IL_1834
+	IL_182e:  ldc.i4 0
+	IL_1833:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_1838:  ldc.i4 0
+	IL_183d:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1842:  ldc.i4 0
+	IL_1847:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_184c:  br IL_1856
 
-	IL_182f:  br IL_18af
+	IL_1851:  br IL_1856
 
-	IL_1834:  ldloc 4
+	IL_1856:  br IL_1860
 
-	IL_1838:  nop 
-	IL_1839:  nop 
-	IL_183a:  ldc.i4 1
-	IL_183f:  beq IL_1849
+	IL_185b:  br IL_1860
 
-	IL_1844:  br IL_18a5
-
-	IL_1849:  ldc.i4 1
-	IL_184e:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetChainFlag
-	IL_1853:  ldarg 1
-
-	IL_1857:  nop 
-	IL_1858:  nop 
-	IL_1859:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_185e:  ldlen 
-	IL_185f:  conv.i4 
-	IL_1860:  stloc 0
+	IL_1860:  ldloc 1
 
 	IL_1864:  nop 
 	IL_1865:  nop 
@@ -15173,51 +15651,620 @@
 
 	IL_186a:  nop 
 	IL_186b:  nop 
-	IL_186c:  stloc 1
+	IL_186c:  bge IL_1876
 
-	IL_1870:  nop 
-	IL_1871:  nop 
-	IL_1872:  ldc.i4 0
-	IL_1877:  stloc 4
+	IL_1871:  br IL_1880
 
-	IL_187b:  nop 
-	IL_187c:  nop 
-	IL_187d:  ldc.i4 0
-	IL_1882:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_1887:  ldc.i4 0
-	IL_188c:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_1891:  ldc.i4 0
-	IL_1896:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_189b:  br IL_00db
+	IL_1876:  br IL_1d08
 
-	IL_18a0:  br IL_18aa
+	IL_187b:  br IL_188a
 
-	IL_18a5:  br IL_18aa
+	IL_1880:  br IL_00fe
 
-	IL_18aa:  br IL_18be
+	IL_1885:  br IL_188a
 
-	IL_18af:  ldc.i4 0
-	IL_18b4:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetChainFlag
-	IL_18b9:  br IL_18be
+	IL_188a:  br IL_1d08
 
-	IL_18be:  ldc.i4 0
-	IL_18c3:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
-	IL_18c8:  ldc.i4 0
-	IL_18cd:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
-	IL_18d2:  ldc.i4 0
-	IL_18d7:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
-	IL_18dc:  ldarg 1
+	IL_188f:  ldloc 1
 
-	IL_18e0:  nop 
-	IL_18e1:  nop 
-	IL_18e2:  ret 
+	IL_1893:  nop 
+	IL_1894:  nop 
+	IL_1895:  ldc.i4 1
+	IL_189a:  sub 
+	IL_189b:  stloc 1
+
+	IL_189f:  nop 
+	IL_18a0:  nop 
+	IL_18a1:  ldarg 1
+
+	IL_18a5:  nop 
+	IL_18a6:  nop 
+	IL_18a7:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_18ac:  ldloc 1
+
+	IL_18b0:  nop 
+	IL_18b1:  nop 
+	IL_18b2:  conv.u 
+	IL_18b3:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_18b8:  stloc 8
+
+	IL_18bc:  nop 
+	IL_18bd:  nop 
+	IL_18be:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident
+	IL_18c3:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_18c8:  stloc 25
+
+	IL_18cc:  nop 
+	IL_18cd:  nop 
+	IL_18ce:  ldloc 25
+
+	IL_18d2:  nop 
+	IL_18d3:  nop 
+	IL_18d4:  ldloc 8
+
+	IL_18d8:  nop 
+	IL_18d9:  nop 
+	IL_18da:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_18df:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_18e4:  stloc 26
+
+	IL_18e8:  nop 
+	IL_18e9:  nop 
+	IL_18ea:  ldloc 26
+
+	IL_18ee:  nop 
+	IL_18ef:  nop 
+	IL_18f0:  ldc.i4 1
+	IL_18f5:  beq IL_18ff
+
+	IL_18fa:  br IL_1a27
+
+	IL_18ff:  ldloc 8
+
+	IL_1903:  nop 
+	IL_1904:  nop 
+	IL_1905:  stloc 19
+
+	IL_1909:  nop 
+	IL_190a:  nop 
+	IL_190b:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_1910:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1915:  or 
+	IL_1916:  stloc 26
+
+	IL_191a:  nop 
+	IL_191b:  nop 
+	IL_191c:  ldloc 26
+
+	IL_1920:  nop 
+	IL_1921:  nop 
+	IL_1922:  ldc.i4 1
+	IL_1927:  beq IL_1931
+
+	IL_192c:  br IL_19c8
+
+	IL_1931:  ldc.i4 0
+	IL_1936:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_193b:  ldc.i4 0
+	IL_1940:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1945:  ldloc 1
+
+	IL_1949:  nop 
+	IL_194a:  nop 
+	IL_194b:  ldc.i4 1
+	IL_1950:  add 
+	IL_1951:  stloc 23
+
+	IL_1955:  nop 
+	IL_1956:  nop 
+	IL_1957:  ldarg 1
+
+	IL_195b:  nop 
+	IL_195c:  nop 
+	IL_195d:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1962:  ldloc 23
+
+	IL_1966:  nop 
+	IL_1967:  nop 
+	IL_1968:  conv.u 
+	IL_1969:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_196e:  stloc 18
+
+	IL_1972:  nop 
+	IL_1973:  nop 
+	IL_1974:  ldloc 19
+
+	IL_1978:  nop 
+	IL_1979:  nop 
+	IL_197a:  ldc.i4 1
+	IL_197f:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::MemberAccessFlg
+	IL_1984:  ldloc 19
+
+	IL_1988:  nop 
+	IL_1989:  nop 
+	IL_198a:  ldloc 18
+
+	IL_198e:  nop 
+	IL_198f:  nop 
+	IL_1990:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::MemberToAccess
+	IL_1995:  ldarg 1
+
+	IL_1999:  nop 
+	IL_199a:  nop 
+	IL_199b:  ldloc 23
+
+	IL_199f:  nop 
+	IL_19a0:  nop 
+	IL_19a1:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_19a6:  ldarg 1
+
+	IL_19aa:  nop 
+	IL_19ab:  nop 
+	IL_19ac:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_19b1:  ldloc 1
+
+	IL_19b5:  nop 
+	IL_19b6:  nop 
+	IL_19b7:  conv.u 
+	IL_19b8:  ldloc 19
+
+	IL_19bc:  nop 
+	IL_19bd:  nop 
+	IL_19be:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_19c3:  br IL_19cd
+
+	IL_19c8:  br IL_19cd
+
+	IL_19cd:  ldloc 19
+
+	IL_19d1:  nop 
+	IL_19d2:  nop 
+	IL_19d3:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_19d8:  stloc 27
+
+	IL_19dc:  nop 
+	IL_19dd:  nop 
+	IL_19de:  ldloc 27
+
+	IL_19e2:  nop 
+	IL_19e3:  nop 
+	IL_19e4:  ldstr "^::(.)*$"
+	IL_19e9:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_19ee:  stloc 26
+
+	IL_19f2:  nop 
+	IL_19f3:  nop 
+	IL_19f4:  ldloc 26
+
+	IL_19f8:  nop 
+	IL_19f9:  nop 
+	IL_19fa:  ldc.i4 1
+	IL_19ff:  beq IL_1a09
+
+	IL_1a04:  br IL_1a18
+
+	IL_1a09:  ldc.i4 1
+	IL_1a0e:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1a13:  br IL_1a1d
+
+	IL_1a18:  br IL_1a1d
+
+	IL_1a1d:  br IL_1cda
+
+	IL_1a22:  br IL_1a2c
+
+	IL_1a27:  br IL_1a2c
+
+	IL_1a2c:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok
+	IL_1a31:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1a36:  stloc 25
+
+	IL_1a3a:  nop 
+	IL_1a3b:  nop 
+	IL_1a3c:  ldloc 25
+
+	IL_1a40:  nop 
+	IL_1a41:  nop 
+	IL_1a42:  ldloc 8
+
+	IL_1a46:  nop 
+	IL_1a47:  nop 
+	IL_1a48:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1a4d:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1a52:  stloc 26
+
+	IL_1a56:  nop 
+	IL_1a57:  nop 
+	IL_1a58:  ldloc 26
+
+	IL_1a5c:  nop 
+	IL_1a5d:  nop 
+	IL_1a5e:  ldc.i4 1
+	IL_1a63:  beq IL_1a6d
+
+	IL_1a68:  br IL_1bb7
+
+	IL_1a6d:  ldloc 8
+
+	IL_1a71:  nop 
+	IL_1a72:  nop 
+	IL_1a73:  stloc 20
+
+	IL_1a77:  nop 
+	IL_1a78:  nop 
+	IL_1a79:  ldloc 20
+
+	IL_1a7d:  nop 
+	IL_1a7e:  nop 
+	IL_1a7f:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::Name
+	IL_1a84:  stloc 21
+
+	IL_1a88:  nop 
+	IL_1a89:  nop 
+	IL_1a8a:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_1a8f:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1a94:  or 
+	IL_1a95:  stloc 26
+
+	IL_1a99:  nop 
+	IL_1a9a:  nop 
+	IL_1a9b:  ldloc 26
+
+	IL_1a9f:  nop 
+	IL_1aa0:  nop 
+	IL_1aa1:  ldc.i4 1
+	IL_1aa6:  beq IL_1ab0
+
+	IL_1aab:  br IL_1b58
+
+	IL_1ab0:  ldc.i4 0
+	IL_1ab5:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_1aba:  ldc.i4 0
+	IL_1abf:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1ac4:  ldloc 1
+
+	IL_1ac8:  nop 
+	IL_1ac9:  nop 
+	IL_1aca:  ldc.i4 1
+	IL_1acf:  add 
+	IL_1ad0:  stloc 23
+
+	IL_1ad4:  nop 
+	IL_1ad5:  nop 
+	IL_1ad6:  ldarg 1
+
+	IL_1ada:  nop 
+	IL_1adb:  nop 
+	IL_1adc:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1ae1:  ldloc 23
+
+	IL_1ae5:  nop 
+	IL_1ae6:  nop 
+	IL_1ae7:  conv.u 
+	IL_1ae8:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1aed:  stloc 18
+
+	IL_1af1:  nop 
+	IL_1af2:  nop 
+	IL_1af3:  ldloc 21
+
+	IL_1af7:  nop 
+	IL_1af8:  nop 
+	IL_1af9:  ldc.i4 1
+	IL_1afe:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::MemberAccessFlg
+	IL_1b03:  ldloc 21
+
+	IL_1b07:  nop 
+	IL_1b08:  nop 
+	IL_1b09:  ldloc 18
+
+	IL_1b0d:  nop 
+	IL_1b0e:  nop 
+	IL_1b0f:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident::MemberToAccess
+	IL_1b14:  ldarg 1
+
+	IL_1b18:  nop 
+	IL_1b19:  nop 
+	IL_1b1a:  ldloc 23
+
+	IL_1b1e:  nop 
+	IL_1b1f:  nop 
+	IL_1b20:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_1b25:  ldloc 20
+
+	IL_1b29:  nop 
+	IL_1b2a:  nop 
+	IL_1b2b:  ldloc 21
+
+	IL_1b2f:  nop 
+	IL_1b30:  nop 
+	IL_1b31:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodNameTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::Name
+	IL_1b36:  ldarg 1
+
+	IL_1b3a:  nop 
+	IL_1b3b:  nop 
+	IL_1b3c:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1b41:  ldloc 1
+
+	IL_1b45:  nop 
+	IL_1b46:  nop 
+	IL_1b47:  conv.u 
+	IL_1b48:  ldloc 20
+
+	IL_1b4c:  nop 
+	IL_1b4d:  nop 
+	IL_1b4e:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1b53:  br IL_1b5d
+
+	IL_1b58:  br IL_1b5d
+
+	IL_1b5d:  ldloc 21
+
+	IL_1b61:  nop 
+	IL_1b62:  nop 
+	IL_1b63:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1b68:  stloc 27
+
+	IL_1b6c:  nop 
+	IL_1b6d:  nop 
+	IL_1b6e:  ldloc 27
+
+	IL_1b72:  nop 
+	IL_1b73:  nop 
+	IL_1b74:  ldstr "^::(.)*$"
+	IL_1b79:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_1b7e:  stloc 26
+
+	IL_1b82:  nop 
+	IL_1b83:  nop 
+	IL_1b84:  ldloc 26
+
+	IL_1b88:  nop 
+	IL_1b89:  nop 
+	IL_1b8a:  ldc.i4 1
+	IL_1b8f:  beq IL_1b99
+
+	IL_1b94:  br IL_1ba8
+
+	IL_1b99:  ldc.i4 1
+	IL_1b9e:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_1ba3:  br IL_1bad
+
+	IL_1ba8:  br IL_1bad
+
+	IL_1bad:  br IL_1cda
+
+	IL_1bb2:  br IL_1bbc
+
+	IL_1bb7:  br IL_1bbc
+
+	IL_1bbc:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral
+	IL_1bc1:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1bc6:  stloc 25
+
+	IL_1bca:  nop 
+	IL_1bcb:  nop 
+	IL_1bcc:  ldloc 25
+
+	IL_1bd0:  nop 
+	IL_1bd1:  nop 
+	IL_1bd2:  ldloc 8
+
+	IL_1bd6:  nop 
+	IL_1bd7:  nop 
+	IL_1bd8:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1bdd:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1be2:  stloc 26
+
+	IL_1be6:  nop 
+	IL_1be7:  nop 
+	IL_1be8:  ldloc 26
+
+	IL_1bec:  nop 
+	IL_1bed:  nop 
+	IL_1bee:  ldc.i4 1
+	IL_1bf3:  beq IL_1bfd
+
+	IL_1bf8:  br IL_1cd5
+
+	IL_1bfd:  ldloc 8
+
+	IL_1c01:  nop 
+	IL_1c02:  nop 
+	IL_1c03:  stloc 22
+
+	IL_1c07:  nop 
+	IL_1c08:  nop 
+	IL_1c09:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_1c0e:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1c13:  or 
+	IL_1c14:  stloc 26
+
+	IL_1c18:  nop 
+	IL_1c19:  nop 
+	IL_1c1a:  ldloc 26
+
+	IL_1c1e:  nop 
+	IL_1c1f:  nop 
+	IL_1c20:  ldc.i4 1
+	IL_1c25:  beq IL_1c2f
+
+	IL_1c2a:  br IL_1cc6
+
+	IL_1c2f:  ldc.i4 0
+	IL_1c34:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_1c39:  ldc.i4 0
+	IL_1c3e:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1c43:  ldloc 1
+
+	IL_1c47:  nop 
+	IL_1c48:  nop 
+	IL_1c49:  ldc.i4 1
+	IL_1c4e:  add 
+	IL_1c4f:  stloc 23
+
+	IL_1c53:  nop 
+	IL_1c54:  nop 
+	IL_1c55:  ldarg 1
+
+	IL_1c59:  nop 
+	IL_1c5a:  nop 
+	IL_1c5b:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1c60:  ldloc 23
+
+	IL_1c64:  nop 
+	IL_1c65:  nop 
+	IL_1c66:  conv.u 
+	IL_1c67:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1c6c:  stloc 18
+
+	IL_1c70:  nop 
+	IL_1c71:  nop 
+	IL_1c72:  ldloc 22
+
+	IL_1c76:  nop 
+	IL_1c77:  nop 
+	IL_1c78:  ldc.i4 1
+	IL_1c7d:  stfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral::MemberAccessFlg
+	IL_1c82:  ldloc 22
+
+	IL_1c86:  nop 
+	IL_1c87:  nop 
+	IL_1c88:  ldloc 18
+
+	IL_1c8c:  nop 
+	IL_1c8d:  nop 
+	IL_1c8e:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral::MemberToAccess
+	IL_1c93:  ldarg 1
+
+	IL_1c97:  nop 
+	IL_1c98:  nop 
+	IL_1c99:  ldloc 23
+
+	IL_1c9d:  nop 
+	IL_1c9e:  nop 
+	IL_1c9f:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::RemToken(int32)
+	IL_1ca4:  ldarg 1
+
+	IL_1ca8:  nop 
+	IL_1ca9:  nop 
+	IL_1caa:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1caf:  ldloc 1
+
+	IL_1cb3:  nop 
+	IL_1cb4:  nop 
+	IL_1cb5:  conv.u 
+	IL_1cb6:  ldloc 22
+
+	IL_1cba:  nop 
+	IL_1cbb:  nop 
+	IL_1cbc:  stelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1cc1:  br IL_1ccb
+
+	IL_1cc6:  br IL_1ccb
+
+	IL_1ccb:  br IL_1cda
+
+	IL_1cd0:  br IL_1cda
+
+	IL_1cd5:  br IL_1cda
+
+	IL_1cda:  ldloc 1
+
+	IL_1cde:  nop 
+	IL_1cdf:  nop 
+	IL_1ce0:  ldc.i4 0
+	IL_1ce5:  ble IL_1cef
+
+	IL_1cea:  br IL_1cf9
+
+	IL_1cef:  br IL_1d08
+
+	IL_1cf4:  br IL_1d03
+
+	IL_1cf9:  br IL_00fe
+
+	IL_1cfe:  br IL_1d03
+
+	IL_1d03:  br IL_1d08
+
+	IL_1d08:  ldsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetChainFlag
+	IL_1d0d:  ldc.i4 0
+	IL_1d12:  beq IL_1d1c
+
+	IL_1d17:  br IL_1d97
+
+	IL_1d1c:  ldloc 4
+
+	IL_1d20:  nop 
+	IL_1d21:  nop 
+	IL_1d22:  ldc.i4 1
+	IL_1d27:  beq IL_1d31
+
+	IL_1d2c:  br IL_1d8d
+
+	IL_1d31:  ldc.i4 1
+	IL_1d36:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetChainFlag
+	IL_1d3b:  ldarg 1
+
+	IL_1d3f:  nop 
+	IL_1d40:  nop 
+	IL_1d41:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1d46:  ldlen 
+	IL_1d47:  conv.i4 
+	IL_1d48:  stloc 0
+
+	IL_1d4c:  nop 
+	IL_1d4d:  nop 
+	IL_1d4e:  ldloc 0
+
+	IL_1d52:  nop 
+	IL_1d53:  nop 
+	IL_1d54:  stloc 1
+
+	IL_1d58:  nop 
+	IL_1d59:  nop 
+	IL_1d5a:  ldc.i4 0
+	IL_1d5f:  stloc 4
+
+	IL_1d63:  nop 
+	IL_1d64:  nop 
+	IL_1d65:  ldc.i4 0
+	IL_1d6a:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_1d6f:  ldc.i4 0
+	IL_1d74:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1d79:  ldc.i4 0
+	IL_1d7e:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_1d83:  br IL_00fe
+
+	IL_1d88:  br IL_1d92
+
+	IL_1d8d:  br IL_1d92
+
+	IL_1d92:  br IL_1da6
+
+	IL_1d97:  ldc.i4 0
+	IL_1d9c:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetChainFlag
+	IL_1da1:  br IL_1da6
+
+	IL_1da6:  ldc.i4 0
+	IL_1dab:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::MetCallFlag
+	IL_1db0:  ldc.i4 0
+	IL_1db5:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::IdentFlag
+	IL_1dba:  ldc.i4 0
+	IL_1dbf:  stsfld bool dylan.NET.Tokenizer.Parser.ParserFlags::StringFlag
+	IL_1dc4:  ldarg 1
+
+	IL_1dc8:  nop 
+	IL_1dc9:  nop 
+	IL_1dca:  ret 
     } // end of method ExprOptimizer::Optimize
 
     // method line 18
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x9e4c
+        // Method begins at RVA 0xa6c4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -15238,7 +16285,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkRefasm (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0x9e60
+        // Method begins at RVA 0xa6d8
 	// Code size 208 (0xd0)
 	.maxstack 7
 	.locals init (
@@ -15341,7 +16388,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkIf (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0x9f3c
+        // Method begins at RVA 0xa7b4
 	// Code size 459 (0x1cb)
 	.maxstack 12
 	.locals init (
@@ -15575,7 +16622,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkElseIf (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xa114
+        // Method begins at RVA 0xa98c
 	// Code size 459 (0x1cb)
 	.maxstack 12
 	.locals init (
@@ -15807,9 +16854,318 @@
 
     // method line 22
     .method public 
+           instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkLabel (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
+    {
+        // Method begins at RVA 0xab64
+	// Code size 208 (0xd0)
+	.maxstack 7
+	.locals init (
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_0,
+		class [mscorlib]System.Type	V_1,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.LabelStmt	V_2)
+	IL_0000:  ldarg 1
+
+	IL_0004:  nop 
+	IL_0005:  nop 
+	IL_0006:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_000b:  ldc.i4 0
+	IL_0010:  conv.u 
+	IL_0011:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0016:  stloc 0
+
+	IL_001a:  nop 
+	IL_001b:  nop 
+	IL_001c:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.LabelTok
+	IL_0021:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0026:  stloc 1
+
+	IL_002a:  nop 
+	IL_002b:  nop 
+	IL_002c:  ldarg 2
+
+	IL_0030:  nop 
+	IL_0031:  nop 
+	IL_0032:  ldloc 1
+
+	IL_0036:  nop 
+	IL_0037:  nop 
+	IL_0038:  ldloc 0
+
+	IL_003c:  nop 
+	IL_003d:  nop 
+	IL_003e:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0043:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0048:  stobj [mscorlib]System.Boolean
+	IL_004d:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.LabelStmt::'.ctor'()
+	IL_0052:  stloc 2
+
+	IL_0056:  nop 
+	IL_0057:  nop 
+	IL_0058:  ldarg 2
+
+	IL_005c:  nop 
+	IL_005d:  nop 
+	IL_005e:  ldobj [mscorlib]System.Boolean
+	IL_0063:  ldc.i4 1
+	IL_0068:  beq IL_0072
+
+	IL_006d:  br IL_00c4
+
+	IL_0072:  ldloc 2
+
+	IL_0076:  nop 
+	IL_0077:  nop 
+	IL_0078:  ldarg 1
+
+	IL_007c:  nop 
+	IL_007d:  nop 
+	IL_007e:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
+	IL_0083:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
+	IL_0088:  ldloc 2
+
+	IL_008c:  nop 
+	IL_008d:  nop 
+	IL_008e:  ldarg 1
+
+	IL_0092:  nop 
+	IL_0093:  nop 
+	IL_0094:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_0099:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_009e:  ldloc 2
+
+	IL_00a2:  nop 
+	IL_00a3:  nop 
+	IL_00a4:  ldarg 1
+
+	IL_00a8:  nop 
+	IL_00a9:  nop 
+	IL_00aa:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_00af:  ldc.i4 1
+	IL_00b4:  conv.u 
+	IL_00b5:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_00ba:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.LabelStmt::LabelName
+	IL_00bf:  br IL_00c9
+
+	IL_00c4:  br IL_00c9
+
+	IL_00c9:  ldloc 2
+
+	IL_00cd:  nop 
+	IL_00ce:  nop 
+	IL_00cf:  ret 
+    } // end of method StmtOptimizer::checkLabel
+
+    // method line 23
+    .method public 
+           instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkPlace (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
+    {
+        // Method begins at RVA 0xac40
+	// Code size 208 (0xd0)
+	.maxstack 7
+	.locals init (
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_0,
+		class [mscorlib]System.Type	V_1,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.PlaceStmt	V_2)
+	IL_0000:  ldarg 1
+
+	IL_0004:  nop 
+	IL_0005:  nop 
+	IL_0006:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_000b:  ldc.i4 0
+	IL_0010:  conv.u 
+	IL_0011:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0016:  stloc 0
+
+	IL_001a:  nop 
+	IL_001b:  nop 
+	IL_001c:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.PlaceTok
+	IL_0021:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0026:  stloc 1
+
+	IL_002a:  nop 
+	IL_002b:  nop 
+	IL_002c:  ldarg 2
+
+	IL_0030:  nop 
+	IL_0031:  nop 
+	IL_0032:  ldloc 1
+
+	IL_0036:  nop 
+	IL_0037:  nop 
+	IL_0038:  ldloc 0
+
+	IL_003c:  nop 
+	IL_003d:  nop 
+	IL_003e:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0043:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0048:  stobj [mscorlib]System.Boolean
+	IL_004d:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.PlaceStmt::'.ctor'()
+	IL_0052:  stloc 2
+
+	IL_0056:  nop 
+	IL_0057:  nop 
+	IL_0058:  ldarg 2
+
+	IL_005c:  nop 
+	IL_005d:  nop 
+	IL_005e:  ldobj [mscorlib]System.Boolean
+	IL_0063:  ldc.i4 1
+	IL_0068:  beq IL_0072
+
+	IL_006d:  br IL_00c4
+
+	IL_0072:  ldloc 2
+
+	IL_0076:  nop 
+	IL_0077:  nop 
+	IL_0078:  ldarg 1
+
+	IL_007c:  nop 
+	IL_007d:  nop 
+	IL_007e:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
+	IL_0083:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
+	IL_0088:  ldloc 2
+
+	IL_008c:  nop 
+	IL_008d:  nop 
+	IL_008e:  ldarg 1
+
+	IL_0092:  nop 
+	IL_0093:  nop 
+	IL_0094:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_0099:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_009e:  ldloc 2
+
+	IL_00a2:  nop 
+	IL_00a3:  nop 
+	IL_00a4:  ldarg 1
+
+	IL_00a8:  nop 
+	IL_00a9:  nop 
+	IL_00aa:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_00af:  ldc.i4 1
+	IL_00b4:  conv.u 
+	IL_00b5:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_00ba:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.PlaceStmt::LabelName
+	IL_00bf:  br IL_00c9
+
+	IL_00c4:  br IL_00c9
+
+	IL_00c9:  ldloc 2
+
+	IL_00cd:  nop 
+	IL_00ce:  nop 
+	IL_00cf:  ret 
+    } // end of method StmtOptimizer::checkPlace
+
+    // method line 24
+    .method public 
+           instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkGoto (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
+    {
+        // Method begins at RVA 0xad1c
+	// Code size 208 (0xd0)
+	.maxstack 7
+	.locals init (
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_0,
+		class [mscorlib]System.Type	V_1,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.GotoStmt	V_2)
+	IL_0000:  ldarg 1
+
+	IL_0004:  nop 
+	IL_0005:  nop 
+	IL_0006:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_000b:  ldc.i4 0
+	IL_0010:  conv.u 
+	IL_0011:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0016:  stloc 0
+
+	IL_001a:  nop 
+	IL_001b:  nop 
+	IL_001c:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.GotoTok
+	IL_0021:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0026:  stloc 1
+
+	IL_002a:  nop 
+	IL_002b:  nop 
+	IL_002c:  ldarg 2
+
+	IL_0030:  nop 
+	IL_0031:  nop 
+	IL_0032:  ldloc 1
+
+	IL_0036:  nop 
+	IL_0037:  nop 
+	IL_0038:  ldloc 0
+
+	IL_003c:  nop 
+	IL_003d:  nop 
+	IL_003e:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0043:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_0048:  stobj [mscorlib]System.Boolean
+	IL_004d:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.GotoStmt::'.ctor'()
+	IL_0052:  stloc 2
+
+	IL_0056:  nop 
+	IL_0057:  nop 
+	IL_0058:  ldarg 2
+
+	IL_005c:  nop 
+	IL_005d:  nop 
+	IL_005e:  ldobj [mscorlib]System.Boolean
+	IL_0063:  ldc.i4 1
+	IL_0068:  beq IL_0072
+
+	IL_006d:  br IL_00c4
+
+	IL_0072:  ldloc 2
+
+	IL_0076:  nop 
+	IL_0077:  nop 
+	IL_0078:  ldarg 1
+
+	IL_007c:  nop 
+	IL_007d:  nop 
+	IL_007e:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
+	IL_0083:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
+	IL_0088:  ldloc 2
+
+	IL_008c:  nop 
+	IL_008d:  nop 
+	IL_008e:  ldarg 1
+
+	IL_0092:  nop 
+	IL_0093:  nop 
+	IL_0094:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_0099:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_009e:  ldloc 2
+
+	IL_00a2:  nop 
+	IL_00a3:  nop 
+	IL_00a4:  ldarg 1
+
+	IL_00a8:  nop 
+	IL_00a9:  nop 
+	IL_00aa:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_00af:  ldc.i4 1
+	IL_00b4:  conv.u 
+	IL_00b5:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_00ba:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.GotoStmt::LabelName
+	IL_00bf:  br IL_00c9
+
+	IL_00c4:  br IL_00c9
+
+	IL_00c9:  ldloc 2
+
+	IL_00cd:  nop 
+	IL_00ce:  nop 
+	IL_00cf:  ret 
+    } // end of method StmtOptimizer::checkGoto
+
+    // method line 25
+    .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkDebug (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xa2ec
+        // Method begins at RVA 0xadf8
 	// Code size 219 (0xdb)
 	.maxstack 7
 	.locals init (
@@ -15913,11 +17269,11 @@
 	IL_00da:  ret 
     } // end of method StmtOptimizer::checkDebug
 
-    // method line 23
+    // method line 26
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkScope (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xa3d4
+        // Method begins at RVA 0xaee0
 	// Code size 219 (0xdb)
 	.maxstack 7
 	.locals init (
@@ -16021,11 +17377,11 @@
 	IL_00da:  ret 
     } // end of method StmtOptimizer::checkScope
 
-    // method line 24
+    // method line 27
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkImport (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xa4bc
+        // Method begins at RVA 0xafc8
 	// Code size 208 (0xd0)
 	.maxstack 7
 	.locals init (
@@ -16124,11 +17480,11 @@
 	IL_00cf:  ret 
     } // end of method StmtOptimizer::checkImport
 
-    // method line 25
+    // method line 28
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkLocimport (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xa598
+        // Method begins at RVA 0xb0a4
 	// Code size 208 (0xd0)
 	.maxstack 7
 	.locals init (
@@ -16227,11 +17583,11 @@
 	IL_00cf:  ret 
     } // end of method StmtOptimizer::checkLocimport
 
-    // method line 26
+    // method line 29
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkReturn (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xa674
+        // Method begins at RVA 0xb180
 	// Code size 467 (0x1d3)
 	.maxstack 15
 	.locals init (
@@ -16462,11 +17818,11 @@
 	IL_01d2:  ret 
     } // end of method StmtOptimizer::checkReturn
 
-    // method line 27
+    // method line 30
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkCmt (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xa854
+        // Method begins at RVA 0xb360
 	// Code size 175 (0xaf)
 	.maxstack 6
 	.locals init (
@@ -16552,11 +17908,11 @@
 	IL_00ae:  ret 
     } // end of method StmtOptimizer::checkCmt
 
-    // method line 28
+    // method line 31
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkElse (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xa910
+        // Method begins at RVA 0xb41c
 	// Code size 225 (0xe1)
 	.maxstack 7
 	.locals init (
@@ -16667,11 +18023,11 @@
 	IL_00e0:  ret 
     } // end of method StmtOptimizer::checkElse
 
-    // method line 29
+    // method line 32
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkEndIf (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xaa00
+        // Method begins at RVA 0xb50c
 	// Code size 304 (0x130)
 	.maxstack 8
 	.locals init (
@@ -16822,11 +18178,11 @@
 	IL_012f:  ret 
     } // end of method StmtOptimizer::checkEndIf
 
-    // method line 30
+    // method line 33
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkEndMtd (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xab3c
+        // Method begins at RVA 0xb648
 	// Code size 304 (0x130)
 	.maxstack 8
 	.locals init (
@@ -16977,11 +18333,11 @@
 	IL_012f:  ret 
     } // end of method StmtOptimizer::checkEndMtd
 
-    // method line 31
+    // method line 34
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkEndCls (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xac78
+        // Method begins at RVA 0xb784
 	// Code size 304 (0x130)
 	.maxstack 8
 	.locals init (
@@ -17132,11 +18488,11 @@
 	IL_012f:  ret 
     } // end of method StmtOptimizer::checkEndCls
 
-    // method line 32
+    // method line 35
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkAssembly (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xadb4
+        // Method begins at RVA 0xb8c0
 	// Code size 241 (0xf1)
 	.maxstack 7
 	.locals init (
@@ -17248,11 +18604,11 @@
 	IL_00f0:  ret 
     } // end of method StmtOptimizer::checkAssembly
 
-    // method line 33
+    // method line 36
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkVer (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xaeb4
+        // Method begins at RVA 0xb9c0
 	// Code size 848 (0x350)
 	.maxstack 30
 	.locals init (
@@ -17633,11 +18989,11 @@
 	IL_034f:  ret 
     } // end of method StmtOptimizer::checkVer
 
-    // method line 34
+    // method line 37
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkClass (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xb210
+        // Method begins at RVA 0xbd1c
 	// Code size 817 (0x331)
 	.maxstack 22
 	.locals init (
@@ -18042,11 +19398,11 @@
 	IL_0330:  ret 
     } // end of method StmtOptimizer::checkClass
 
-    // method line 35
+    // method line 38
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkField (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xb550
+        // Method begins at RVA 0xc05c
 	// Code size 840 (0x348)
 	.maxstack 20
 	.locals init (
@@ -18462,11 +19818,11 @@
 	IL_0347:  ret 
     } // end of method StmtOptimizer::checkField
 
-    // method line 36
+    // method line 39
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkMethod (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xb8a4
+        // Method begins at RVA 0xc3b0
 	// Code size 1798 (0x706)
 	.maxstack 53
 	.locals init (
@@ -19339,11 +20695,11 @@
 	IL_0705:  ret 
     } // end of method StmtOptimizer::checkMethod
 
-    // method line 37
+    // method line 40
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkMethodCall (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xbfb8
+        // Method begins at RVA 0xcac4
 	// Code size 1345 (0x541)
 	.maxstack 39
 	.locals init (
@@ -19996,11 +21352,11 @@
 	IL_0540:  ret 
     } // end of method StmtOptimizer::checkMethodCall
 
-    // method line 38
+    // method line 41
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkVarAs (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xc508
+        // Method begins at RVA 0xd014
 	// Code size 533 (0x215)
 	.maxstack 12
 	.locals init (
@@ -20253,11 +21609,11 @@
 	IL_0214:  ret 
     } // end of method StmtOptimizer::checkVarAs
 
-    // method line 39
+    // method line 42
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt AssOpt (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm)  cil managed 
     {
-        // Method begins at RVA 0xc72c
+        // Method begins at RVA 0xd238
 	// Code size 535 (0x217)
 	.maxstack 14
 	.locals init (
@@ -20518,11 +21874,11 @@
 	IL_0216:  ret 
     } // end of method StmtOptimizer::AssOpt
 
-    // method line 40
+    // method line 43
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkAssign (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xc950
+        // Method begins at RVA 0xd45c
 	// Code size 757 (0x2f5)
 	.maxstack 17
 	.locals init (
@@ -20914,13 +22270,13 @@
 	IL_02f4:  ret 
     } // end of method StmtOptimizer::checkAssign
 
-    // method line 41
+    // method line 44
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt Optimize (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm)  cil managed 
     {
-        // Method begins at RVA 0xcc54
-	// Code size 1899 (0x76b)
-	.maxstack 98
+        // Method begins at RVA 0xd760
+	// Code size 2115 (0x843)
+	.maxstack 110
 	.locals init (
 		int32	V_0,
 		int32	V_1,
@@ -21087,7 +22443,7 @@
 
 	IL_0168:  br IL_0177
 
-	IL_016d:  br IL_0764
+	IL_016d:  br IL_083c
 
 	IL_0172:  br IL_017c
 
@@ -21124,7 +22480,7 @@
 
 	IL_01b3:  nop 
 	IL_01b4:  nop 
-	IL_01b5:  br IL_0764
+	IL_01b5:  br IL_083c
 
 	IL_01ba:  br IL_01c4
 
@@ -21161,7 +22517,7 @@
 
 	IL_01fb:  nop 
 	IL_01fc:  nop 
-	IL_01fd:  br IL_0764
+	IL_01fd:  br IL_083c
 
 	IL_0202:  br IL_020c
 
@@ -21198,7 +22554,7 @@
 
 	IL_0243:  nop 
 	IL_0244:  nop 
-	IL_0245:  br IL_0764
+	IL_0245:  br IL_083c
 
 	IL_024a:  br IL_0254
 
@@ -21235,7 +22591,7 @@
 
 	IL_028b:  nop 
 	IL_028c:  nop 
-	IL_028d:  br IL_0764
+	IL_028d:  br IL_083c
 
 	IL_0292:  br IL_029c
 
@@ -21272,7 +22628,7 @@
 
 	IL_02d3:  nop 
 	IL_02d4:  nop 
-	IL_02d5:  br IL_0764
+	IL_02d5:  br IL_083c
 
 	IL_02da:  br IL_02e4
 
@@ -21309,7 +22665,7 @@
 
 	IL_031b:  nop 
 	IL_031c:  nop 
-	IL_031d:  br IL_0764
+	IL_031d:  br IL_083c
 
 	IL_0322:  br IL_032c
 
@@ -21346,7 +22702,7 @@
 
 	IL_0363:  nop 
 	IL_0364:  nop 
-	IL_0365:  br IL_0764
+	IL_0365:  br IL_083c
 
 	IL_036a:  br IL_0374
 
@@ -21383,7 +22739,7 @@
 
 	IL_03ab:  nop 
 	IL_03ac:  nop 
-	IL_03ad:  br IL_0764
+	IL_03ad:  br IL_083c
 
 	IL_03b2:  br IL_03bc
 
@@ -21420,7 +22776,7 @@
 
 	IL_03f3:  nop 
 	IL_03f4:  nop 
-	IL_03f5:  br IL_0764
+	IL_03f5:  br IL_083c
 
 	IL_03fa:  br IL_0404
 
@@ -21457,7 +22813,7 @@
 
 	IL_043b:  nop 
 	IL_043c:  nop 
-	IL_043d:  br IL_0764
+	IL_043d:  br IL_083c
 
 	IL_0442:  br IL_044c
 
@@ -21494,7 +22850,7 @@
 
 	IL_0483:  nop 
 	IL_0484:  nop 
-	IL_0485:  br IL_0764
+	IL_0485:  br IL_083c
 
 	IL_048a:  br IL_0494
 
@@ -21531,7 +22887,7 @@
 
 	IL_04cb:  nop 
 	IL_04cc:  nop 
-	IL_04cd:  br IL_0764
+	IL_04cd:  br IL_083c
 
 	IL_04d2:  br IL_04dc
 
@@ -21568,7 +22924,7 @@
 
 	IL_0513:  nop 
 	IL_0514:  nop 
-	IL_0515:  br IL_0764
+	IL_0515:  br IL_083c
 
 	IL_051a:  br IL_0524
 
@@ -21605,7 +22961,7 @@
 
 	IL_055b:  nop 
 	IL_055c:  nop 
-	IL_055d:  br IL_0764
+	IL_055d:  br IL_083c
 
 	IL_0562:  br IL_056c
 
@@ -21642,7 +22998,7 @@
 
 	IL_05a3:  nop 
 	IL_05a4:  nop 
-	IL_05a5:  br IL_0764
+	IL_05a5:  br IL_083c
 
 	IL_05aa:  br IL_05b4
 
@@ -21679,7 +23035,7 @@
 
 	IL_05eb:  nop 
 	IL_05ec:  nop 
-	IL_05ed:  br IL_0764
+	IL_05ed:  br IL_083c
 
 	IL_05f2:  br IL_05fc
 
@@ -21716,7 +23072,7 @@
 
 	IL_0633:  nop 
 	IL_0634:  nop 
-	IL_0635:  br IL_0764
+	IL_0635:  br IL_083c
 
 	IL_063a:  br IL_0644
 
@@ -21731,7 +23087,7 @@
 
 	IL_064f:  nop 
 	IL_0650:  nop 
-	IL_0651:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0651:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkLabel(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_0656:  stloc 3
 
 	IL_065a:  nop 
@@ -21753,7 +23109,7 @@
 
 	IL_067b:  nop 
 	IL_067c:  nop 
-	IL_067d:  br IL_0764
+	IL_067d:  br IL_083c
 
 	IL_0682:  br IL_068c
 
@@ -21768,7 +23124,7 @@
 
 	IL_0697:  nop 
 	IL_0698:  nop 
-	IL_0699:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkElseIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0699:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkPlace(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_069e:  stloc 3
 
 	IL_06a2:  nop 
@@ -21790,7 +23146,7 @@
 
 	IL_06c3:  nop 
 	IL_06c4:  nop 
-	IL_06c5:  br IL_0764
+	IL_06c5:  br IL_083c
 
 	IL_06ca:  br IL_06d4
 
@@ -21805,7 +23161,7 @@
 
 	IL_06df:  nop 
 	IL_06e0:  nop 
-	IL_06e1:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkElse(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_06e1:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkGoto(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_06e6:  stloc 3
 
 	IL_06ea:  nop 
@@ -21827,7 +23183,7 @@
 
 	IL_070b:  nop 
 	IL_070c:  nop 
-	IL_070d:  br IL_0764
+	IL_070d:  br IL_083c
 
 	IL_0712:  br IL_071c
 
@@ -21842,7 +23198,7 @@
 
 	IL_0727:  nop 
 	IL_0728:  nop 
-	IL_0729:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkEndIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0729:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_072e:  stloc 3
 
 	IL_0732:  nop 
@@ -21864,24 +23220,135 @@
 
 	IL_0753:  nop 
 	IL_0754:  nop 
-	IL_0755:  br IL_0764
+	IL_0755:  br IL_083c
 
 	IL_075a:  br IL_0764
 
 	IL_075f:  br IL_0764
 
-	IL_0764:  ldarg 1
+	IL_0764:  ldarg.0 
+	IL_0765:  ldarg 1
 
-	IL_0768:  nop 
 	IL_0769:  nop 
-	IL_076a:  ret 
+	IL_076a:  nop 
+	IL_076b:  ldloca 4
+
+	IL_076f:  nop 
+	IL_0770:  nop 
+	IL_0771:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkElseIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0776:  stloc 3
+
+	IL_077a:  nop 
+	IL_077b:  nop 
+	IL_077c:  ldloc 4
+
+	IL_0780:  nop 
+	IL_0781:  nop 
+	IL_0782:  ldc.i4 1
+	IL_0787:  beq IL_0791
+
+	IL_078c:  br IL_07a7
+
+	IL_0791:  ldloc 3
+
+	IL_0795:  nop 
+	IL_0796:  nop 
+	IL_0797:  starg 1
+
+	IL_079b:  nop 
+	IL_079c:  nop 
+	IL_079d:  br IL_083c
+
+	IL_07a2:  br IL_07ac
+
+	IL_07a7:  br IL_07ac
+
+	IL_07ac:  ldarg.0 
+	IL_07ad:  ldarg 1
+
+	IL_07b1:  nop 
+	IL_07b2:  nop 
+	IL_07b3:  ldloca 4
+
+	IL_07b7:  nop 
+	IL_07b8:  nop 
+	IL_07b9:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkElse(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_07be:  stloc 3
+
+	IL_07c2:  nop 
+	IL_07c3:  nop 
+	IL_07c4:  ldloc 4
+
+	IL_07c8:  nop 
+	IL_07c9:  nop 
+	IL_07ca:  ldc.i4 1
+	IL_07cf:  beq IL_07d9
+
+	IL_07d4:  br IL_07ef
+
+	IL_07d9:  ldloc 3
+
+	IL_07dd:  nop 
+	IL_07de:  nop 
+	IL_07df:  starg 1
+
+	IL_07e3:  nop 
+	IL_07e4:  nop 
+	IL_07e5:  br IL_083c
+
+	IL_07ea:  br IL_07f4
+
+	IL_07ef:  br IL_07f4
+
+	IL_07f4:  ldarg.0 
+	IL_07f5:  ldarg 1
+
+	IL_07f9:  nop 
+	IL_07fa:  nop 
+	IL_07fb:  ldloca 4
+
+	IL_07ff:  nop 
+	IL_0800:  nop 
+	IL_0801:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkEndIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0806:  stloc 3
+
+	IL_080a:  nop 
+	IL_080b:  nop 
+	IL_080c:  ldloc 4
+
+	IL_0810:  nop 
+	IL_0811:  nop 
+	IL_0812:  ldc.i4 1
+	IL_0817:  beq IL_0821
+
+	IL_081c:  br IL_0837
+
+	IL_0821:  ldloc 3
+
+	IL_0825:  nop 
+	IL_0826:  nop 
+	IL_0827:  starg 1
+
+	IL_082b:  nop 
+	IL_082c:  nop 
+	IL_082d:  br IL_083c
+
+	IL_0832:  br IL_083c
+
+	IL_0837:  br IL_083c
+
+	IL_083c:  ldarg 1
+
+	IL_0840:  nop 
+	IL_0841:  nop 
+	IL_0842:  ret 
     } // end of method StmtOptimizer::Optimize
 
-    // method line 42
+    // method line 45
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0xd3cc
+        // Method begins at RVA 0xdfb0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -21898,11 +23365,11 @@
   	extends [mscorlib]System.Object
   {
 
-    // method line 43
+    // method line 46
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet Parse (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet stms)  cil managed 
     {
-        // Method begins at RVA 0xd3e0
+        // Method begins at RVA 0xdfc4
 	// Code size 190 (0xbe)
 	.maxstack 6
 	.locals init (
@@ -22009,11 +23476,11 @@
 	IL_00bd:  ret 
     } // end of method Parser::Parse
 
-    // method line 44
+    // method line 47
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0xd4ac
+        // Method begins at RVA 0xe090
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 

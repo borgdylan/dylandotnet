@@ -1,0 +1,1 @@
+Hello World. This file has been opened automatically by openfile.exe.This has been done relatively as this file is in the same directory as openfile.exe

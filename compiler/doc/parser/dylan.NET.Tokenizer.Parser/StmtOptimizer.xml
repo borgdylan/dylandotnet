@@ -8,6 +8,7 @@
     <AssemblyVersion>11.2.7.6</AssemblyVersion>
     <AssemblyVersion>11.2.7.7</AssemblyVersion>
     <AssemblyVersion>11.2.7.8</AssemblyVersion>
+    <AssemblyVersion>11.2.7.9</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -28,6 +29,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -45,6 +47,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -69,6 +72,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -95,6 +99,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -121,6 +126,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -147,6 +153,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -173,6 +180,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -198,6 +206,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -223,6 +232,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -249,6 +259,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -274,6 +285,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -300,6 +312,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -326,6 +339,29 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="b" Type="System.Boolean&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="checkGoto">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.Stmt checkGoto (dylan.NET.Tokenizer.AST.Stmts.Stmt stm, ref bool b);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Stmts.Stmt checkGoto(class dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool b) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -351,6 +387,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -377,6 +414,29 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="b" Type="System.Boolean&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="checkLabel">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.Stmt checkLabel (dylan.NET.Tokenizer.AST.Stmts.Stmt stm, ref bool b);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Stmts.Stmt checkLabel(class dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool b) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -403,6 +463,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -429,6 +490,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -455,6 +517,29 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="b" Type="System.Boolean&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="checkPlace">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.Stmt checkPlace (dylan.NET.Tokenizer.AST.Stmts.Stmt stm, ref bool b);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Stmts.Stmt checkPlace(class dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool b) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -481,6 +566,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -504,6 +590,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -527,6 +614,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -553,6 +641,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -579,6 +668,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
@@ -605,6 +695,7 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>

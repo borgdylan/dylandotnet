@@ -136,6 +136,12 @@ return OpCodes::Cgt
 goto fin
 end if
 
+b = compStr(code, "constrained.")
+if b = true then
+return OpCodes::Constrained
+goto fin
+end if
+
 b = compStr(code, "conv.i")
 if b = true then
 return OpCodes::Conv_I
@@ -680,6 +686,13 @@ if b = true then
 return OpCodes::Ldvirtftn
 goto fin
 end if
+
+b = compStr(code, "ldftn")
+if b = true then
+return OpCodes::Ldftn
+goto fin
+end if
+
 
 b = compStr(code, "leave")
 if b = true then

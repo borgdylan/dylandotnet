@@ -209,3 +209,7 @@ end class
 class public auto ansi EndTok extends Token
 
 end class
+
+class public auto ansi MeTok extends Token
+
+end class
