@@ -1,3 +1,34 @@
+commit 51791a217971f6132a64c1c5d938a16318fc2af0
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Thu Dec 1 16:14:49 2011 +0100
+
+    Commiting latest dylan.NET code to GIT and BZR. This is dylan.NET 11.2.7.9. Fixing me prefix bug. Adding ability to use me as a keyword for loading the thi9s pointer as an instance of the current class. Adding ptr expression for getting pointer to a local method(useful in event handling). Adding support for boxing and unboxing thru the use of the conversion syntax. Adding proper way for call handling in case of virtual method call on valuetypes. Adding initial support for array creation. Fixed some bugs and added some attributes. Updating man pages and makefiles. Adding test programs.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit ab50013fcba6cd5cd0f16f92cb421d497c3dab27
+Merge: deecb9b 5d5288f
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Nov 28 18:53:23 2011 +0100
+
+    Merge branch 'master' of gitorious.org:dylandotnet/dylandotnet
+
+commit deecb9ba9dc70c3bd0d98678c617370e136339e7
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Nov 28 18:50:25 2011 +0100
+
+    Comiting latest dylan.NET tarballs and .deb packages. This is dylan.NET 11.2.7.8 .
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 5d5288f960473918cb2ac88b788e8b3eefa38929
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Nov 14 16:35:04 2011 +0100
+
+    Commiting latest dylan.NET tarballs and .deb packages. This is dylan.NET 11.2.7.8
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit cd67e95a9055e3e0e887732109833250bcefdedd
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Sun Nov 13 17:32:46 2011 +0100

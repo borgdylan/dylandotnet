@@ -1,3 +1,17 @@
+dylandotnet (11.2.7.9-2) oneiric; urgency=low
+
+  * Fixing me prefix bug.
+  * Adding support for this pointer passing via me keyword.
+  * Adding way for local method pointer load via ptr expression.
+  * Adding boxing and unboxing.
+  * Adding code for virtual method calls on valuetypes.
+  * Initial support for array making.
+  * Updating debian directory.
+  * Updating makefiles and man pages.
+  * Adding set of test programs.0
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Thu, 01 Dec 2011 17:00:14 +0100
+
 dylandotnet (11.2.7.8-1) oneiric; urgency=low
 
   * Fixing dnr starg bug.
