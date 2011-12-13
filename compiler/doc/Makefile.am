@@ -1,3 +1,5 @@
+.PHONY: all
+
 all:
 	mdoc update -o ast ../tokenizer.AST.dll
 	mdoc update -o lexer ../tokenizer.Lexer.dll
@@ -56,3 +58,4 @@ distclean:
 
 testc:
 	echo 'hello'
+

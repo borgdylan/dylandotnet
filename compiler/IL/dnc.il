@@ -5,31 +5,31 @@
 }
 .assembly extern dnu
 {
-  .ver 11:2:7:9
+  .ver 11:2:8:1
 }
 .assembly extern dnr
 {
-  .ver 11:2:7:9
+  .ver 11:2:8:1
 }
 .assembly extern tokenizer.CodeGen
 {
-  .ver 11:2:7:9
+  .ver 11:2:8:1
 }
 .assembly extern tokenizer.Parser
 {
-  .ver 11:2:7:9
+  .ver 11:2:8:1
 }
 .assembly extern tokenizer.Lexer
 {
-  .ver 11:2:7:9
+  .ver 11:2:8:1
 }
 .assembly extern tokenizer.AST
 {
-  .ver 11:2:7:9
+  .ver 11:2:8:1
 }
 .assembly 'dnc'
 {
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 39 00 00 ) // ...11.2.7.9..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 31 00 00 ) // ...11.2.8.1..
 
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
@@ -40,10 +40,10 @@
   .custom instance void class [mscorlib]System.Reflection.AssemblyDescriptionAttribute::'.ctor'(string) =  (01 00 03 64 6E 63 00 00 ) // ...dnc..
 
   .hash algorithm 0x00008004
-  .ver  11:2:7:9
+  .ver  11:2:8:1
 }
 
-.module dnc.exe // GUID = {DCF37CEA-97C0-48DC-BEA9-981A0D5DB7DC}
+.module dnc.exe // GUID = {00B2F9B6-1278-45F6-A71C-5AF44DF2BEB2}
 
 
 .namespace dylan.NET.Compiler
@@ -82,7 +82,7 @@
 		class [tokenizer.CodeGen]dylan.NET.Tokenizer.CodeGen.CodeGenerator	V_16)
 	IL_0000:  ldsfld class [mscorlib]System.IO.Stream [dnu]dylan.NET.Utils.StreamUtils::Stdout
 	IL_0005:  call void class [dnu]dylan.NET.Utils.StreamUtils::InitOutS(class [mscorlib]System.IO.Stream)
-	IL_000a:  ldstr "dylan.NET Compiler v. 11.2.7.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0"
+	IL_000a:  ldstr "dylan.NET Compiler v. 11.2.8.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0"
 	IL_000f:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
 	IL_0014:  ldstr "                           and Xamarin Mono v. 2.6.7/v. 2.10.x"
 	IL_0019:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)

@@ -9,12 +9,14 @@
 class public auto ansi beforefieldinit Helpers
 
 field public static boolean StringFlg
+field public static boolean DelegateFlg
 field public static boolean OpCodeSuppFlg
 field public static System.Type LeftOp
 field public static System.Type RightOp
 
 method public static void ctor0()
 StringFlg = false
+DelegateFlg = false
 OpCodeSuppFlg = false
 LeftOp = null
 RightOp = null
@@ -985,8 +987,12 @@ else
 if StringFlg = true then
 ILEmitter::EmitStrAdd()
 else
+if DelegateFlg = true then
+ILEmitter::EmitDelegateAdd()
+else
 if OpCodeSuppFlg = true then
 ILEmitter::EmitAdd(s)
+end if
 end if
 end if
 end if
@@ -1018,8 +1024,12 @@ if mtd <> null then
 ILEmitter::EmitCall(mtd)
 AsmFactory::Type02 = mtd::get_ReturnType()
 else
+if DelegateFlg = true then
+ILEmitter::EmitDelegateSub()
+else
 if OpCodeSuppFlg = true then
 ILEmitter::EmitSub(s)
+end if
 end if
 end if
 goto fin
@@ -1621,6 +1631,29 @@ end if
 
 return lbl
 
+end method
+
+method public static string StripDelMtdName(var t as Token)
+
+var typ as System.Type = gettype Ident
+var b as boolean = typ::IsInstanceOfType($object$t)
+var ans as string = ""
+
+if b = true then
+var idt as Ident = t
+ans = idt::Value
+end if
+
+typ = gettype MethodCallTok
+b = typ::IsInstanceOfType($object$t)
+
+if b = true then
+var mct as MethodCallTok = t
+var mn as MethodNameTok = mct::Name
+ans = mn::Value
+end if
+
+return ans
 end method
 
 end class

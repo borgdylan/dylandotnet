@@ -174,14 +174,17 @@ end method
 method public Expr procNewCall(var stm as Expr, var i as integer)
 
 var nct as NewCallTok = new NewCallTok()
+var nact as NewarrCallTok = new NewarrCallTok()
 var tt as TypeTok
 var ep2 as Expr = new Expr()
 var lvl as integer = 1
 var d as boolean = true
 var j as integer = 0
+var ltyp as System.Type
+var rtyp as System.Type
+var nab as boolean = false
 
 tt = stm::Tokens[i]
-nct::Name = tt
 j = i
 i++
 
@@ -189,6 +192,23 @@ var tok2 as Token = stm::Tokens[i]
 var typ2 as System.Type
 var b2 as boolean
 var len as integer = stm::Tokens[l] - 1
+
+typ2 = gettype LParen
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+ltyp = gettype LParen
+rtyp = gettype RParen
+else
+nab = true
+ltyp = gettype LSParen
+rtyp = gettype RSParen
+end if
+
+if nab = false then
+nct::Name = tt
+else
+nact::ArrayType = tt
+end if
 
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
@@ -204,14 +224,18 @@ place loop2
 i++
 
 tok2 = stm::Tokens[i]
-typ2 = gettype RParen
+typ2 = rtyp
 b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
 lvl--
 if lvl = 0 then
 d = false
 if ep2::Tokens[l] > 0 then
+if nab = false then
 nct::AddParam(ep2)
+else
+nact::ArrayLen = ep2
+end if
 end if
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
@@ -225,7 +249,7 @@ goto fin
 end if
 
 tok2 = stm::Tokens[i]
-typ2 = gettype LParen
+typ2 = ltyp
 b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
 lvl++
@@ -243,7 +267,9 @@ if b2 = true then
 if lvl = 1 then
 d = false
 if ep2::Tokens[l] > 0 then
+if nab = false then
 nct::AddParam(ep2)
+end if
 end if
 ep2 = new Expr()
 stm::RemToken(i)
@@ -276,8 +302,13 @@ end if
 
 place cont2
 
+if nab = false then
 nct::Line = tt::Line
 stm::Tokens[j] = nct
+else
+nact::Line = tt::Line
+stm::Tokens[j] = nact
+end if
 
 return stm
 
@@ -727,6 +758,11 @@ end if
 exp = procNewCall(exp, i)
 len = exp::Tokens[l] - 1
 
+typ = gettype NewCallTok
+b = typ::IsInstanceOfType($object$exp::Tokens[i])
+
+if b = true then
+//if output is newcall
 var nctoken as NewCallTok = exp::Tokens[i]
 var ncprs as Expr[] = nctoken::Params
 var ncln2 as integer = ncprs[l] - 1
@@ -752,6 +788,14 @@ end if
 place nccont2
 
 nctoken::Params = ncprs
+
+else
+//if output is newarrcall
+
+var nactoken as NewarrCallTok = exp::Tokens[i]
+nactoken::ArrayLen = Optimize(nactoken::ArrayLen)
+
+end if
 
 goto fin
 end if

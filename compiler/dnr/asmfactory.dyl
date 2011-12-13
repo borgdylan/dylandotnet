@@ -94,6 +94,19 @@ ILEmitter::ArgInd = 0
 end if
 end method
 
+method public static void InitDelConstr()
+var non as ParameterAttributes = 0
+CurnConB::DefineParameter(1, non, "obj")
+CurnConB::DefineParameter(2, non, "ptr")
+var ruman as MethodImplAttributes = 3 or 0
+CurnConB::SetImplementationFlags(ruman)
+end method
+
+method public static void InitDelMet()
+ILEmitter::Met = CurnMetB
+var ruman as MethodImplAttributes = 3 or 0
+CurnMetB::SetImplementationFlags(ruman)
+end method
 
 method public static void AddTypB(var typ as TypeBuilder)
 

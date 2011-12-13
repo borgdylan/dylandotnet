@@ -12,7 +12,7 @@ method public static void main(var args as string[])
 
 StreamUtils::InitOutS(StreamUtils::Stdout) 
 
-StreamUtils::WriteLine("dylan.NET Compiler v. 11.2.7.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
+StreamUtils::WriteLine("dylan.NET Compiler v. 11.2.8.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
 StreamUtils::WriteLine("                           and Xamarin Mono v. 2.6.7/v. 2.10.x")
 StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 StreamUtils::WriteLine("Copyright (C) 2011 Dylan Borg")

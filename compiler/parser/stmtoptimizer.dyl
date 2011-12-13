@@ -714,6 +714,162 @@ end if
 return mtss
 end method
 
+method public Stmt checkDelegate(var stm as Stmt, var b as boolean&)
+
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype DelegateTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var dels as DelegateStmt = new DelegateStmt()
+var att as Attributes.Attribute = new Attributes.Attribute()
+var deln as Ident = new Ident()
+var exp as Expr = null
+var d as boolean = false
+
+if valinref|b = true then
+
+var tempexp as Expr = new Expr()
+tempexp::Tokens = stm::Tokens
+var eop as ExprOptimizer = new ExprOptimizer()
+ParserFlags::ProcessTTokOnly = true
+tempexp = eop::Optimize(tempexp)
+ParserFlags::ProcessTTokOnly = false
+stm::Tokens = tempexp::Tokens
+
+dels::Line = stm::Line
+dels::Tokens = stm::Tokens
+
+label loop
+label cont
+label jumpl
+
+var i as integer = 0
+var len as integer = stm::Tokens[l] - 1
+var bl as boolean = false
+
+//loop to get attributes
+place loop
+
+i++
+tok = stm::Tokens[i]
+typ = gettype Attributes.Attribute
+bl = typ::IsInstanceOfType($object$tok)
+
+if bl = true then
+att = tok
+dels::AddAttr(att)
+else
+i--
+goto jumpl
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+place jumpl
+
+//get return type and name
+i++
+
+var tok2 as Token = stm::Tokens[i]
+var typ2 as System.Type
+var b2 as boolean
+
+typ2 = gettype TypeTok
+b2 = typ2::IsInstanceOfType($object$tok2)
+
+if b2 <> true then
+var t as Token = stm::Tokens[i]
+var tt as TypeTok = new TypeTok()
+tt::Line = t::Line
+tt::Value = t::Value
+dels::RetTyp = tt
+else
+dels::RetTyp = stm::Tokens[i]
+end if
+
+i++
+
+tok2 = stm::Tokens[i]
+typ2 = gettype Ident
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+dels::DelegateName = tok2
+end if
+
+label loop2
+label cont2
+
+i++
+tok2 = stm::Tokens[i]
+typ2 = gettype LParen
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+
+place loop2
+
+//get parameters
+i++
+
+tok2 = stm::Tokens[i]
+typ2 = gettype RParen
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+if d = true then
+var eopt2 as ExprOptimizer = new ExprOptimizer()
+exp = eopt2::checkVarAs(exp,ref|bl)
+if bl = true then
+dels::AddParam(exp)
+end if
+end if
+d = false
+goto cont2
+end if
+
+tok2 = stm::Tokens[i]
+typ2 = gettype VarTok
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+d = true
+exp = new Expr()
+end if
+
+tok2 = stm::Tokens[i]
+typ2 = gettype Comma
+b2 = typ2::IsInstanceOfType($object$tok2)
+if b2 = true then
+var eopt1 as ExprOptimizer = new ExprOptimizer()
+exp = eopt1::checkVarAs(exp,ref|bl)
+if bl = true then
+dels::AddParam(exp)
+end if
+d = false
+end if
+
+if d = true then
+exp::AddToken(stm::Tokens[i])
+end if
+
+
+if i = len then
+goto cont2
+else
+goto loop2
+end if
+
+place cont2
+
+end if
+
+end if
+return dels
+end method
+
+
 method public Stmt checkMethodCall(var stm as Stmt, var b as boolean&)
 
 if stm::Tokens[l] > 2 then
@@ -1090,6 +1246,13 @@ goto fin
 end if
 
 tmpstm = checkClass(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkDelegate(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm

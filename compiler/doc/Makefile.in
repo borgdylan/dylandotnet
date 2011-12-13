@@ -308,6 +308,8 @@ uninstall-am:
 	maintainer-clean maintainer-clean-generic mostlyclean \
 	mostlyclean-generic pdf pdf-am ps ps-am uninstall uninstall-am
 
+.PHONY: all
+
 all:
 	mdoc update -o ast ../tokenizer.AST.dll
 	mdoc update -o lexer ../tokenizer.Lexer.dll

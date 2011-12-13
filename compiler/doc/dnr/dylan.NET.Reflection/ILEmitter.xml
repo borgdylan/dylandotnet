@@ -8,6 +8,8 @@
     <AssemblyVersion>11.2.7.6</AssemblyVersion>
     <AssemblyVersion>11.2.7.7</AssemblyVersion>
     <AssemblyVersion>11.2.7.8</AssemblyVersion>
+    <AssemblyVersion>11.2.7.9</AssemblyVersion>
+    <AssemblyVersion>11.2.8.1</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -29,6 +31,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -47,6 +51,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -67,6 +73,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.ConstructorBuilder</ReturnType>
@@ -87,6 +95,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -106,6 +116,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -131,6 +143,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.Label</ReturnType>
@@ -152,6 +166,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.SymbolStore.ISymbolDocumentWriter</ReturnType>
@@ -171,6 +187,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -195,6 +213,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -206,6 +226,26 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitBox">
+      <MemberSignature Language="C#" Value="public static void EmitBox (Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitBox(class System.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitBr">
       <MemberSignature Language="C#" Value="public static void EmitBr (System.Reflection.Emit.Label lbl);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitBr(valuetype System.Reflection.Emit.Label lbl) cil managed" />
@@ -215,6 +255,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -238,6 +280,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -261,6 +305,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -285,6 +331,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -306,6 +354,8 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -329,6 +379,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -353,6 +405,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -374,6 +428,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -398,6 +454,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -422,6 +480,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -446,6 +506,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -470,6 +532,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -479,6 +543,109 @@
         <summary>Emits a sequence of 'ceq', 'ldc.i4.0' and 'ceq'.</summary>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConstrained">
+      <MemberSignature Language="C#" Value="public static void EmitConstrained (Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConstrained(class System.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvI">
+      <MemberSignature Language="C#" Value="public static void EmitConvI ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvI() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvI4">
+      <MemberSignature Language="C#" Value="public static void EmitConvI4 ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvI4() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvU">
+      <MemberSignature Language="C#" Value="public static void EmitConvU ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvU() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitDelegateAdd">
+      <MemberSignature Language="C#" Value="public static void EmitDelegateAdd ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitDelegateAdd() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitDelegateSub">
+      <MemberSignature Language="C#" Value="public static void EmitDelegateSub ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitDelegateSub() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitDiv">
@@ -491,6 +658,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -505,6 +674,22 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitDup">
+      <MemberSignature Language="C#" Value="public static void EmitDup ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitDup() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitLdarg">
       <MemberSignature Language="C#" Value="public static void EmitLdarg (int num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdarg(int32 num) cil managed" />
@@ -513,6 +698,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -533,6 +720,8 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -556,6 +745,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -580,6 +771,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -604,6 +797,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -628,6 +823,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -652,6 +849,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -676,6 +875,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -700,6 +901,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -724,6 +927,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -738,6 +943,26 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitLdelem">
+      <MemberSignature Language="C#" Value="public static void EmitLdelem (Type typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitLdelem(class System.Type typ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitLdfld">
       <MemberSignature Language="C#" Value="public static void EmitLdfld (System.Reflection.FieldInfo fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdfld(class System.Reflection.FieldInfo fld) cil managed" />
@@ -746,6 +971,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -766,6 +993,8 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -775,6 +1004,26 @@
       </Parameters>
       <Docs>
         <param name="fld">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitLdftn">
+      <MemberSignature Language="C#" Value="public static void EmitLdftn (System.Reflection.MethodInfo met);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitLdftn(class System.Reflection.MethodInfo met) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="met" Type="System.Reflection.MethodInfo" />
+      </Parameters>
+      <Docs>
+        <param name="met">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -789,6 +1038,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -809,6 +1060,8 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -831,6 +1084,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -849,6 +1104,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -869,6 +1126,8 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -892,6 +1151,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -914,6 +1175,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -923,6 +1186,26 @@
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitLdvirtftn">
+      <MemberSignature Language="C#" Value="public static void EmitLdvirtftn (System.Reflection.MethodInfo met);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitLdvirtftn(class System.Reflection.MethodInfo met) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="met" Type="System.Reflection.MethodInfo" />
+      </Parameters>
+      <Docs>
+        <param name="met">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -937,6 +1220,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -957,6 +1242,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -980,6 +1267,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1000,12 +1289,34 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitNewarr">
+      <MemberSignature Language="C#" Value="public static void EmitNewarr (Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitNewarr(class System.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1019,6 +1330,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1042,6 +1355,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1062,6 +1377,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1082,6 +1399,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1102,6 +1421,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1121,6 +1442,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1140,6 +1463,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1163,6 +1488,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1183,6 +1510,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1203,6 +1532,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1224,6 +1555,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1237,6 +1570,26 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitStelem">
+      <MemberSignature Language="C#" Value="public static void EmitStelem (Type typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitStelem(class System.Type typ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitStfld">
       <MemberSignature Language="C#" Value="public static void EmitStfld (System.Reflection.FieldInfo fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitStfld(class System.Reflection.FieldInfo fld) cil managed" />
@@ -1245,6 +1598,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1268,6 +1623,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1291,6 +1648,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1311,6 +1670,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1331,6 +1692,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1349,6 +1712,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1372,6 +1737,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1381,6 +1748,46 @@
       </Parameters>
       <Docs>
         <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitUnbox">
+      <MemberSignature Language="C#" Value="public static void EmitUnbox (Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitUnbox(class System.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitUnboxAny">
+      <MemberSignature Language="C#" Value="public static void EmitUnboxAny (Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitUnboxAny(class System.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1395,6 +1802,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1415,6 +1824,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1435,6 +1846,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.ILGenerator</ReturnType>
@@ -1454,6 +1867,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -1472,6 +1887,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1494,6 +1911,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1517,6 +1936,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.MethodBuilder</ReturnType>
@@ -1536,6 +1957,8 @@
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

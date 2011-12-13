@@ -41,7 +41,7 @@ import dylan.NET.Tokenizer.AST.Stmts
 locimport dylan.NET.Tokenizer.Lexer
 
 assembly tokenizer.Lexer dll
-ver 11.2.7.9
+ver 11.2.8.1
 
 namespace dylan.NET.Tokenizer.Lexer
 #include E:\Code\dylannet\compiler\lexer\line.dyl

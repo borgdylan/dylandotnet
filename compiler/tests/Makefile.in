@@ -237,8 +237,6 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-clean: clean-am
-
 clean-am: clean-generic mostlyclean-am
 
 distclean-am: clean-am distclean-generic
@@ -314,6 +312,8 @@ uninstall-am:
 	mostlyclean-generic pdf pdf-am ps ps-am uninstall uninstall-am
 
 
+.PHONY: all
+
 all:
 	$(MONO) ../2.0/dnc.exe arit.dyl
 	$(MONO) ../2.0/dnc.exe conv.dyl
@@ -326,16 +326,20 @@ all:
 	$(MONO) ../2.0/dnc.exe openfile.dyl
 	$(MONO) ../2.0/dnc.exe Person.dyl
 	$(MONO) ../2.0/dnc.exe PersonProg.dyl
+	$(MONO) ../2.0/dnc.exe boxobj.dyl
+	$(MONO) ../2.0/dnc.exe xmllib.dyl
 
 install:
 	tar -czf tests.tar.gz *
 	$(install_sh_PROGRAM) tests.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/tests.tar.gz
 	rm -f tests.tar.gz
 
-distclean:
+clean:
 	rm -f *.exe
 	rm -f *.mdb
 	rm -f *.dll
+
+distclean:
 	rm -f Makefile	
 
 testc:

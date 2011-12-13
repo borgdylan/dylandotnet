@@ -103,7 +103,7 @@ mainIL.Emit(OpCodes.Pop)
 End If
 mainIL.MarkSequencePoint(doc2, 15, 1, 15, 100)
 Dim typ2(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.7.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
+mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.8.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
 Typ = GetType(System.String)
 ReDim Preserve typ2(UBound(typ2) + 1)
 typ2(UBound(typ2)) = Typ
@@ -993,7 +993,7 @@ End Sub
 Sub Main()
 
 asmName = New AssemblyName("dnc")
-asmName.Version = New System.Version(11, 2, 7, 9)
+asmName.Version = New System.Version(11, 2, 8, 1)
 asm  = AppDomain.CurrentDomain.DefineDynamicAssembly(asmName, AssemblyBuilderAccess.Save, CStr("E:\Code\dylannet\compiler\"))
 mdl = asm.DefineDynamicModule(asmName.Name & ".exe" , asmName.Name & ".exe", True)
 resw = mdl.DefineResource("dnc.resources" ,  "Description")
@@ -1010,7 +1010,7 @@ asm.SetCustomAttribute(daBuilder)
 Module1()
 Dim vaType As Type = GetType(AssemblyFileVersionAttribute)
 Dim vaCtor As ConstructorInfo = vaType.GetConstructor(New Type() { GetType(String) })
-Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.7.9"})
+Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.8.1"})
 asm.SetCustomAttribute(vaBuilder)
 
 Dim paType As Type = GetType(AssemblyProductAttribute)

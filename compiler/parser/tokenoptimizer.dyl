@@ -647,6 +647,16 @@ tok = cltk
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "delegate")
+
+if comp = 0 then
+var deltk as DelegateTok = new DelegateTok()
+deltk::Line = tok::Line
+deltk::Value = tok::Value
+tok = deltk
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "extends")
 
 if comp = 0 then

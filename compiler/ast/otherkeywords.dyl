@@ -130,6 +130,14 @@ class public auto ansi FieldTok extends Token
 
 end class
 
+class public auto ansi DelegateTok extends Token
+
+end class
+
+class public auto ansi StructTok extends Token
+
+end class
+
 class public auto ansi PropertyTok extends Token
 
 end class

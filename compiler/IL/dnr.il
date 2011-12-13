@@ -10,13 +10,13 @@
 }
 .assembly extern dnu
 {
-  .ver 11:2:7:9
+  .ver 11:2:8:1
 }
 .assembly 'dnr'
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 37 2E 39 00 00 ) // ...11.2.7.9..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 31 00 00 ) // ...11.2.8.1..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (01 00 03 64 6E 72 00 00 ) // ...dnr..
 
@@ -25,10 +25,10 @@
   .custom instance void class [mscorlib]System.Reflection.AssemblyDescriptionAttribute::'.ctor'(string) =  (01 00 03 64 6E 72 00 00 ) // ...dnr..
 
   .hash algorithm 0x00008004
-  .ver  11:2:7:9
+  .ver  11:2:8:1
 }
 
-.module dnr.dll // GUID = {C6759CDA-9283-4A56-8FA5-C9DC22C9A874}
+.module dnr.dll // GUID = {B83D4833-D1AE-4D9E-9E14-A6145B161506}
 
 
 .namespace dylan.NET.Reflection
@@ -4412,9 +4412,33 @@
 
     // method line 6
     .method public static 
-           default void EmitPop ()  cil managed 
+           default void EmitDup ()  cil managed 
     {
         // Method begins at RVA 0x4968
+	// Code size 33 (0x21)
+	.maxstack 2
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0)
+	IL_0000:  ldstr "dup"
+	IL_0005:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_000a:  stloc 0
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0015:  ldloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode)
+	IL_0020:  ret 
+    } // end of method ILEmitter::EmitDup
+
+    // method line 7
+    .method public static 
+           default void EmitPop ()  cil managed 
+    {
+        // Method begins at RVA 0x4998
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -4434,11 +4458,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitPop
 
-    // method line 7
+    // method line 8
     .method public static 
            default void EmitBox (class [mscorlib]System.Type t)  cil managed 
     {
-        // Method begins at RVA 0x4998
+        // Method begins at RVA 0x49c8
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -4462,11 +4486,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitBox
 
-    // method line 8
+    // method line 9
     .method public static 
            default void EmitUnbox (class [mscorlib]System.Type t)  cil managed 
     {
-        // Method begins at RVA 0x49cc
+        // Method begins at RVA 0x49fc
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -4490,11 +4514,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitUnbox
 
-    // method line 9
+    // method line 10
     .method public static 
            default void EmitUnboxAny (class [mscorlib]System.Type t)  cil managed 
     {
-        // Method begins at RVA 0x4a00
+        // Method begins at RVA 0x4a30
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -4518,11 +4542,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitUnboxAny
 
-    // method line 10
+    // method line 11
     .method public static 
            default void EmitConstrained (class [mscorlib]System.Type t)  cil managed 
     {
-        // Method begins at RVA 0x4a34
+        // Method begins at RVA 0x4a64
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -4546,11 +4570,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitConstrained
 
-    // method line 11
+    // method line 12
     .method public static 
            default void EmitLdloc (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x4a68
+        // Method begins at RVA 0x4a98
 	// Code size 580 (0x244)
 	.maxstack 32
 	.locals init (
@@ -4809,11 +4833,11 @@
 	IL_0243:  ret 
     } // end of method ILEmitter::EmitLdloc
 
-    // method line 12
+    // method line 13
     .method public static 
            default void EmitLdloca (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x4cb8
+        // Method begins at RVA 0x4ce8
 	// Code size 308 (0x134)
 	.maxstack 16
 	.locals init (
@@ -4964,11 +4988,11 @@
 	IL_0133:  ret 
     } // end of method ILEmitter::EmitLdloca
 
-    // method line 13
+    // method line 14
     .method public static 
            default void EmitLdarg (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x4df8
+        // Method begins at RVA 0x4e28
 	// Code size 580 (0x244)
 	.maxstack 32
 	.locals init (
@@ -5227,11 +5251,11 @@
 	IL_0243:  ret 
     } // end of method ILEmitter::EmitLdarg
 
-    // method line 14
+    // method line 15
     .method public static 
            default void EmitLdarga (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x5048
+        // Method begins at RVA 0x5078
 	// Code size 308 (0x134)
 	.maxstack 16
 	.locals init (
@@ -5382,11 +5406,11 @@
 	IL_0133:  ret 
     } // end of method ILEmitter::EmitLdarga
 
-    // method line 15
+    // method line 16
     .method public static 
            default void EmitStloc (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x5188
+        // Method begins at RVA 0x51b8
 	// Code size 580 (0x244)
 	.maxstack 32
 	.locals init (
@@ -5645,11 +5669,11 @@
 	IL_0243:  ret 
     } // end of method ILEmitter::EmitStloc
 
-    // method line 16
+    // method line 17
     .method public static 
            default void EmitStarg (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x53d8
+        // Method begins at RVA 0x5408
 	// Code size 308 (0x134)
 	.maxstack 16
 	.locals init (
@@ -5800,11 +5824,11 @@
 	IL_0133:  ret 
     } // end of method ILEmitter::EmitStarg
 
-    // method line 17
+    // method line 18
     .method public static 
            default void EmitStfld (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x5518
+        // Method begins at RVA 0x5548
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -5828,11 +5852,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitStfld
 
-    // method line 18
+    // method line 19
     .method public static 
            default void EmitStsfld (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x554c
+        // Method begins at RVA 0x557c
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -5856,11 +5880,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitStsfld
 
-    // method line 19
+    // method line 20
     .method public static 
            default void EmitStelem (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x5580
+        // Method begins at RVA 0x55b0
 	// Code size 981 (0x3d5)
 	.maxstack 37
 	.locals init (
@@ -6293,11 +6317,11 @@
 	IL_03d4:  ret 
     } // end of method ILEmitter::EmitStelem
 
-    // method line 20
+    // method line 21
     .method public static 
            default void EmitLdelem (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x5964
+        // Method begins at RVA 0x5994
 	// Code size 1302 (0x516)
 	.maxstack 49
 	.locals init (
@@ -6868,11 +6892,11 @@
 	IL_0515:  ret 
     } // end of method ILEmitter::EmitLdelem
 
-    // method line 21
+    // method line 22
     .method public static 
            default void EmitLdcI8 (int64 n)  cil managed 
     {
-        // Method begins at RVA 0x5e88
+        // Method begins at RVA 0x5eb8
 	// Code size 1340 (0x53c)
 	.maxstack 54
 	.locals init (
@@ -7402,11 +7426,11 @@
 	IL_053b:  ret 
     } // end of method ILEmitter::EmitLdcI8
 
-    // method line 22
+    // method line 23
     .method public static 
            default void EmitLdcI4 (int32 num)  cil managed 
     {
-        // Method begins at RVA 0x63d0
+        // Method begins at RVA 0x6400
 	// Code size 724 (0x2d4)
 	.maxstack 43
 	.locals init (
@@ -7702,11 +7726,11 @@
 	IL_02d3:  ret 
     } // end of method ILEmitter::EmitLdcI4
 
-    // method line 23
+    // method line 24
     .method public static 
            default void EmitLdcI2 (int16 n)  cil managed 
     {
-        // Method begins at RVA 0x66b0
+        // Method begins at RVA 0x66e0
 	// Code size 1093 (0x445)
 	.maxstack 43
 	.locals init (
@@ -8144,11 +8168,11 @@
 	IL_0444:  ret 
     } // end of method ILEmitter::EmitLdcI2
 
-    // method line 24
+    // method line 25
     .method public static 
            default void EmitLdcI1 (int8 n)  cil managed 
     {
-        // Method begins at RVA 0x6b04
+        // Method begins at RVA 0x6b34
 	// Code size 1093 (0x445)
 	.maxstack 43
 	.locals init (
@@ -8586,11 +8610,11 @@
 	IL_0444:  ret 
     } // end of method ILEmitter::EmitLdcI1
 
-    // method line 25
+    // method line 26
     .method public static 
            default void EmitCallvirt (class [mscorlib]System.Reflection.MethodInfo met)  cil managed 
     {
-        // Method begins at RVA 0x6f58
+        // Method begins at RVA 0x6f88
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -8614,11 +8638,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitCallvirt
 
-    // method line 26
+    // method line 27
     .method public static 
            default void EmitCallCtor (class [mscorlib]System.Reflection.ConstructorInfo met)  cil managed 
     {
-        // Method begins at RVA 0x6f8c
+        // Method begins at RVA 0x6fbc
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -8642,11 +8666,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitCallCtor
 
-    // method line 27
+    // method line 28
     .method public static 
            default void EmitCall (class [mscorlib]System.Reflection.MethodInfo met)  cil managed 
     {
-        // Method begins at RVA 0x6fc0
+        // Method begins at RVA 0x6ff0
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -8670,11 +8694,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitCall
 
-    // method line 28
+    // method line 29
     .method public static 
            default void EmitLdftn (class [mscorlib]System.Reflection.MethodInfo met)  cil managed 
     {
-        // Method begins at RVA 0x6ff4
+        // Method begins at RVA 0x7024
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -8698,11 +8722,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdftn
 
-    // method line 29
+    // method line 30
     .method public static 
            default void EmitLdvirtftn (class [mscorlib]System.Reflection.MethodInfo met)  cil managed 
     {
-        // Method begins at RVA 0x7028
+        // Method begins at RVA 0x7058
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -8726,11 +8750,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdvirtftn
 
-    // method line 30
+    // method line 31
     .method public static 
            default void EmitLdfld (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x705c
+        // Method begins at RVA 0x708c
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -8754,11 +8778,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdfld
 
-    // method line 31
+    // method line 32
     .method public static 
            default void EmitLdsfld (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x7090
+        // Method begins at RVA 0x70c0
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -8782,11 +8806,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdsfld
 
-    // method line 32
+    // method line 33
     .method public static 
            default void EmitLdflda (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x70c4
+        // Method begins at RVA 0x70f4
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -8810,11 +8834,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdflda
 
-    // method line 33
+    // method line 34
     .method public static 
            default void EmitLdsflda (class [mscorlib]System.Reflection.FieldInfo fld)  cil managed 
     {
-        // Method begins at RVA 0x70f8
+        // Method begins at RVA 0x7128
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -8838,11 +8862,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdsflda
 
-    // method line 34
+    // method line 35
     .method public static 
            default void EmitLdstr (string str)  cil managed 
     {
-        // Method begins at RVA 0x712c
+        // Method begins at RVA 0x715c
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -8866,11 +8890,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdstr
 
-    // method line 35
+    // method line 36
     .method public static 
            default void EmitAdd (bool s)  cil managed 
     {
-        // Method begins at RVA 0x7160
+        // Method begins at RVA 0x7190
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -8915,11 +8939,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitAdd
 
-    // method line 36
+    // method line 37
     .method public static 
            default void EmitDiv (bool s)  cil managed 
     {
-        // Method begins at RVA 0x71cc
+        // Method begins at RVA 0x71fc
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -8964,11 +8988,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitDiv
 
-    // method line 37
+    // method line 38
     .method public static 
            default void EmitMul (bool s)  cil managed 
     {
-        // Method begins at RVA 0x7238
+        // Method begins at RVA 0x7268
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -9013,11 +9037,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitMul
 
-    // method line 38
+    // method line 39
     .method public static 
            default void EmitSub (bool s)  cil managed 
     {
-        // Method begins at RVA 0x72a4
+        // Method begins at RVA 0x72d4
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -9062,11 +9086,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitSub
 
-    // method line 39
+    // method line 40
     .method public static 
            default void EmitRem (bool s)  cil managed 
     {
-        // Method begins at RVA 0x7310
+        // Method begins at RVA 0x7340
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -9111,11 +9135,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitRem
 
-    // method line 40
+    // method line 41
     .method public static 
            default void EmitShl ()  cil managed 
     {
-        // Method begins at RVA 0x737c
+        // Method begins at RVA 0x73ac
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -9135,11 +9159,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitShl
 
-    // method line 41
+    // method line 42
     .method public static 
            default void EmitShr (bool s)  cil managed 
     {
-        // Method begins at RVA 0x73ac
+        // Method begins at RVA 0x73dc
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -9184,11 +9208,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitShr
 
-    // method line 42
+    // method line 43
     .method public static 
            default void EmitAnd ()  cil managed 
     {
-        // Method begins at RVA 0x7418
+        // Method begins at RVA 0x7448
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -9208,11 +9232,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitAnd
 
-    // method line 43
+    // method line 44
     .method public static 
            default void EmitOr ()  cil managed 
     {
-        // Method begins at RVA 0x7448
+        // Method begins at RVA 0x7478
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -9232,11 +9256,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitOr
 
-    // method line 44
+    // method line 45
     .method public static 
            default void EmitXor ()  cil managed 
     {
-        // Method begins at RVA 0x7478
+        // Method begins at RVA 0x74a8
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -9256,11 +9280,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitXor
 
-    // method line 45
+    // method line 46
     .method public static 
            default void EmitNot ()  cil managed 
     {
-        // Method begins at RVA 0x74a8
+        // Method begins at RVA 0x74d8
 	// Code size 65 (0x41)
 	.maxstack 2
 	.locals init (
@@ -9292,11 +9316,11 @@
 	IL_0040:  ret 
     } // end of method ILEmitter::EmitNot
 
-    // method line 46
+    // method line 47
     .method public static 
            default void EmitNeg ()  cil managed 
     {
-        // Method begins at RVA 0x74f8
+        // Method begins at RVA 0x7528
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -9316,11 +9340,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitNeg
 
-    // method line 47
+    // method line 48
     .method public static 
            default void EmitNand ()  cil managed 
     {
-        // Method begins at RVA 0x7528
+        // Method begins at RVA 0x7558
 	// Code size 97 (0x61)
 	.maxstack 2
 	.locals init (
@@ -9364,11 +9388,11 @@
 	IL_0060:  ret 
     } // end of method ILEmitter::EmitNand
 
-    // method line 48
+    // method line 49
     .method public static 
            default void EmitNor ()  cil managed 
     {
-        // Method begins at RVA 0x7598
+        // Method begins at RVA 0x75c8
 	// Code size 97 (0x61)
 	.maxstack 2
 	.locals init (
@@ -9412,11 +9436,11 @@
 	IL_0060:  ret 
     } // end of method ILEmitter::EmitNor
 
-    // method line 49
+    // method line 50
     .method public static 
            default void EmitXnor ()  cil managed 
     {
-        // Method begins at RVA 0x7608
+        // Method begins at RVA 0x7638
 	// Code size 65 (0x41)
 	.maxstack 2
 	.locals init (
@@ -9448,11 +9472,11 @@
 	IL_0040:  ret 
     } // end of method ILEmitter::EmitXnor
 
-    // method line 50
+    // method line 51
     .method public static 
            default void EmitCeq ()  cil managed 
     {
-        // Method begins at RVA 0x7658
+        // Method begins at RVA 0x7688
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -9472,11 +9496,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitCeq
 
-    // method line 51
+    // method line 52
     .method public static 
            default void EmitCneq ()  cil managed 
     {
-        // Method begins at RVA 0x7688
+        // Method begins at RVA 0x76b8
 	// Code size 97 (0x61)
 	.maxstack 2
 	.locals init (
@@ -9520,11 +9544,11 @@
 	IL_0060:  ret 
     } // end of method ILEmitter::EmitCneq
 
-    // method line 52
+    // method line 53
     .method public static 
            default void EmitCgt (bool s)  cil managed 
     {
-        // Method begins at RVA 0x76f8
+        // Method begins at RVA 0x7728
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -9569,11 +9593,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitCgt
 
-    // method line 53
+    // method line 54
     .method public static 
            default void EmitClt (bool s)  cil managed 
     {
-        // Method begins at RVA 0x7764
+        // Method begins at RVA 0x7794
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -9618,11 +9642,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitClt
 
-    // method line 54
+    // method line 55
     .method public static 
            default void EmitCle (bool s)  cil managed 
     {
-        // Method begins at RVA 0x77d0
+        // Method begins at RVA 0x7800
 	// Code size 160 (0xa0)
 	.maxstack 8
 	.locals init (
@@ -9691,11 +9715,11 @@
 	IL_009f:  ret 
     } // end of method ILEmitter::EmitCle
 
-    // method line 55
+    // method line 56
     .method public static 
            default void EmitCge (bool s)  cil managed 
     {
-        // Method begins at RVA 0x787c
+        // Method begins at RVA 0x78ac
 	// Code size 160 (0xa0)
 	.maxstack 8
 	.locals init (
@@ -9764,11 +9788,11 @@
 	IL_009f:  ret 
     } // end of method ILEmitter::EmitCge
 
-    // method line 56
+    // method line 57
     .method public static 
            default void EmitLike ()  cil managed 
     {
-        // Method begins at RVA 0x7928
+        // Method begins at RVA 0x7958
 	// Code size 154 (0x9a)
 	.maxstack 9
 	.locals init (
@@ -9840,11 +9864,11 @@
 	IL_0099:  ret 
     } // end of method ILEmitter::EmitLike
 
-    // method line 57
+    // method line 58
     .method public static 
            default void EmitNLike ()  cil managed 
     {
-        // Method begins at RVA 0x79d0
+        // Method begins at RVA 0x7a00
 	// Code size 218 (0xda)
 	.maxstack 9
 	.locals init (
@@ -9940,11 +9964,11 @@
 	IL_00d9:  ret 
     } // end of method ILEmitter::EmitNLike
 
-    // method line 58
+    // method line 59
     .method public static 
            default void EmitStrCeq ()  cil managed 
     {
-        // Method begins at RVA 0x7ab8
+        // Method begins at RVA 0x7ae8
 	// Code size 218 (0xda)
 	.maxstack 9
 	.locals init (
@@ -10040,11 +10064,11 @@
 	IL_00d9:  ret 
     } // end of method ILEmitter::EmitStrCeq
 
-    // method line 59
+    // method line 60
     .method public static 
            default void EmitStrCneq ()  cil managed 
     {
-        // Method begins at RVA 0x7ba0
+        // Method begins at RVA 0x7bd0
 	// Code size 282 (0x11a)
 	.maxstack 9
 	.locals init (
@@ -10164,12 +10188,12 @@
 	IL_0119:  ret 
     } // end of method ILEmitter::EmitStrCneq
 
-    // method line 60
+    // method line 61
     .method public static 
            default void EmitStrAdd ()  cil managed 
     {
-        // Method begins at RVA 0x7cc8
-	// Code size 154 (0x9a)
+        // Method begins at RVA 0x7cf8
+	// Code size 146 (0x92)
 	.maxstack 9
 	.locals init (
 		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0,
@@ -10195,56 +10219,220 @@
 	IL_0026:  nop 
 	IL_0027:  ldc.i4 0
 	IL_002c:  conv.u 
-	IL_002d:  ldtoken [mscorlib]System.String
-	IL_0032:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0037:  stelem [mscorlib]System.Type
-	IL_003c:  ldloc 2
+	IL_002d:  ldloc 1
 
-	IL_0040:  nop 
-	IL_0041:  nop 
-	IL_0042:  ldc.i4 1
-	IL_0047:  conv.u 
-	IL_0048:  ldtoken [mscorlib]System.String
-	IL_004d:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_0052:  stelem [mscorlib]System.Type
-	IL_0057:  ldloc 1
+	IL_0031:  nop 
+	IL_0032:  nop 
+	IL_0033:  stelem [mscorlib]System.Type
+	IL_0038:  ldloc 2
 
-	IL_005b:  nop 
-	IL_005c:  nop 
-	IL_005d:  ldstr "Concat"
-	IL_0062:  ldloc 2
+	IL_003c:  nop 
+	IL_003d:  nop 
+	IL_003e:  ldc.i4 1
+	IL_0043:  conv.u 
+	IL_0044:  ldloc 1
 
-	IL_0066:  nop 
-	IL_0067:  nop 
-	IL_0068:  callvirt instance class [mscorlib]System.Reflection.MethodInfo class [mscorlib]System.Type::GetMethod(string, class [mscorlib]System.Type[])
-	IL_006d:  stloc 3
+	IL_0048:  nop 
+	IL_0049:  nop 
+	IL_004a:  stelem [mscorlib]System.Type
+	IL_004f:  ldloc 1
 
-	IL_0071:  nop 
-	IL_0072:  nop 
-	IL_0073:  ldstr "call"
-	IL_0078:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
-	IL_007d:  stloc 0
+	IL_0053:  nop 
+	IL_0054:  nop 
+	IL_0055:  ldstr "Concat"
+	IL_005a:  ldloc 2
 
-	IL_0081:  nop 
-	IL_0082:  nop 
-	IL_0083:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
-	IL_0088:  ldloc 0
+	IL_005e:  nop 
+	IL_005f:  nop 
+	IL_0060:  callvirt instance class [mscorlib]System.Reflection.MethodInfo class [mscorlib]System.Type::GetMethod(string, class [mscorlib]System.Type[])
+	IL_0065:  stloc 3
 
-	IL_008c:  nop 
-	IL_008d:  nop 
-	IL_008e:  ldloc 3
+	IL_0069:  nop 
+	IL_006a:  nop 
+	IL_006b:  ldstr "call"
+	IL_0070:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0075:  stloc 0
 
-	IL_0092:  nop 
-	IL_0093:  nop 
-	IL_0094:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Reflection.MethodInfo)
-	IL_0099:  ret 
+	IL_0079:  nop 
+	IL_007a:  nop 
+	IL_007b:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0080:  ldloc 0
+
+	IL_0084:  nop 
+	IL_0085:  nop 
+	IL_0086:  ldloc 3
+
+	IL_008a:  nop 
+	IL_008b:  nop 
+	IL_008c:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Reflection.MethodInfo)
+	IL_0091:  ret 
     } // end of method ILEmitter::EmitStrAdd
 
-    // method line 61
+    // method line 62
+    .method public static 
+           default void EmitDelegateAdd ()  cil managed 
+    {
+        // Method begins at RVA 0x7d98
+	// Code size 146 (0x92)
+	.maxstack 9
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0,
+		class [mscorlib]System.Type	V_1,
+		class [mscorlib]System.Type[]	V_2,
+		class [mscorlib]System.Reflection.MethodInfo	V_3)
+	IL_0000:  ldtoken [mscorlib]System.Delegate
+	IL_0005:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_000a:  stloc 1
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldc.i4 2
+	IL_0015:  conv.u 
+	IL_0016:  newarr [mscorlib]System.Type
+	IL_001b:  stloc 2
+
+	IL_001f:  nop 
+	IL_0020:  nop 
+	IL_0021:  ldloc 2
+
+	IL_0025:  nop 
+	IL_0026:  nop 
+	IL_0027:  ldc.i4 0
+	IL_002c:  conv.u 
+	IL_002d:  ldloc 1
+
+	IL_0031:  nop 
+	IL_0032:  nop 
+	IL_0033:  stelem [mscorlib]System.Type
+	IL_0038:  ldloc 2
+
+	IL_003c:  nop 
+	IL_003d:  nop 
+	IL_003e:  ldc.i4 1
+	IL_0043:  conv.u 
+	IL_0044:  ldloc 1
+
+	IL_0048:  nop 
+	IL_0049:  nop 
+	IL_004a:  stelem [mscorlib]System.Type
+	IL_004f:  ldloc 1
+
+	IL_0053:  nop 
+	IL_0054:  nop 
+	IL_0055:  ldstr "Combine"
+	IL_005a:  ldloc 2
+
+	IL_005e:  nop 
+	IL_005f:  nop 
+	IL_0060:  callvirt instance class [mscorlib]System.Reflection.MethodInfo class [mscorlib]System.Type::GetMethod(string, class [mscorlib]System.Type[])
+	IL_0065:  stloc 3
+
+	IL_0069:  nop 
+	IL_006a:  nop 
+	IL_006b:  ldstr "call"
+	IL_0070:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0075:  stloc 0
+
+	IL_0079:  nop 
+	IL_007a:  nop 
+	IL_007b:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0080:  ldloc 0
+
+	IL_0084:  nop 
+	IL_0085:  nop 
+	IL_0086:  ldloc 3
+
+	IL_008a:  nop 
+	IL_008b:  nop 
+	IL_008c:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Reflection.MethodInfo)
+	IL_0091:  ret 
+    } // end of method ILEmitter::EmitDelegateAdd
+
+    // method line 63
+    .method public static 
+           default void EmitDelegateSub ()  cil managed 
+    {
+        // Method begins at RVA 0x7e38
+	// Code size 146 (0x92)
+	.maxstack 9
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.OpCode	V_0,
+		class [mscorlib]System.Type	V_1,
+		class [mscorlib]System.Type[]	V_2,
+		class [mscorlib]System.Reflection.MethodInfo	V_3)
+	IL_0000:  ldtoken [mscorlib]System.Delegate
+	IL_0005:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_000a:  stloc 1
+
+	IL_000e:  nop 
+	IL_000f:  nop 
+	IL_0010:  ldc.i4 2
+	IL_0015:  conv.u 
+	IL_0016:  newarr [mscorlib]System.Type
+	IL_001b:  stloc 2
+
+	IL_001f:  nop 
+	IL_0020:  nop 
+	IL_0021:  ldloc 2
+
+	IL_0025:  nop 
+	IL_0026:  nop 
+	IL_0027:  ldc.i4 0
+	IL_002c:  conv.u 
+	IL_002d:  ldloc 1
+
+	IL_0031:  nop 
+	IL_0032:  nop 
+	IL_0033:  stelem [mscorlib]System.Type
+	IL_0038:  ldloc 2
+
+	IL_003c:  nop 
+	IL_003d:  nop 
+	IL_003e:  ldc.i4 1
+	IL_0043:  conv.u 
+	IL_0044:  ldloc 1
+
+	IL_0048:  nop 
+	IL_0049:  nop 
+	IL_004a:  stelem [mscorlib]System.Type
+	IL_004f:  ldloc 1
+
+	IL_0053:  nop 
+	IL_0054:  nop 
+	IL_0055:  ldstr "Remove"
+	IL_005a:  ldloc 2
+
+	IL_005e:  nop 
+	IL_005f:  nop 
+	IL_0060:  callvirt instance class [mscorlib]System.Reflection.MethodInfo class [mscorlib]System.Type::GetMethod(string, class [mscorlib]System.Type[])
+	IL_0065:  stloc 3
+
+	IL_0069:  nop 
+	IL_006a:  nop 
+	IL_006b:  ldstr "call"
+	IL_0070:  call valuetype [mscorlib]System.Reflection.Emit.OpCode class dylan.NET.Reflection.InstructionHelper::getOPCode(string)
+	IL_0075:  stloc 0
+
+	IL_0079:  nop 
+	IL_007a:  nop 
+	IL_007b:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
+	IL_0080:  ldloc 0
+
+	IL_0084:  nop 
+	IL_0085:  nop 
+	IL_0086:  ldloc 3
+
+	IL_008a:  nop 
+	IL_008b:  nop 
+	IL_008c:  callvirt instance void class [mscorlib]System.Reflection.Emit.ILGenerator::Emit(valuetype [mscorlib]System.Reflection.Emit.OpCode, class [mscorlib]System.Reflection.MethodInfo)
+	IL_0091:  ret 
+    } // end of method ILEmitter::EmitDelegateSub
+
+    // method line 64
     .method public static 
            default void EmitLdcR4 (float32 num)  cil managed 
     {
-        // Method begins at RVA 0x7d70
+        // Method begins at RVA 0x7ed8
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -10268,11 +10456,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdcR4
 
-    // method line 62
+    // method line 65
     .method public static 
            default void EmitLdcR8 (float64 num)  cil managed 
     {
-        // Method begins at RVA 0x7da4
+        // Method begins at RVA 0x7f0c
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -10296,11 +10484,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdcR8
 
-    // method line 63
+    // method line 66
     .method public static 
            default void EmitLdcBool (bool b)  cil managed 
     {
-        // Method begins at RVA 0x7dd8
+        // Method begins at RVA 0x7f40
 	// Code size 96 (0x60)
 	.maxstack 6
 	.locals init (
@@ -10345,11 +10533,11 @@
 	IL_005f:  ret 
     } // end of method ILEmitter::EmitLdcBool
 
-    // method line 64
+    // method line 67
     .method public static 
            default void EmitLdcChar (char c)  cil managed 
     {
-        // Method begins at RVA 0x7e44
+        // Method begins at RVA 0x7fac
 	// Code size 44 (0x2c)
 	.maxstack 3
 	.locals init (
@@ -10374,11 +10562,11 @@
 	IL_002b:  ret 
     } // end of method ILEmitter::EmitLdcChar
 
-    // method line 65
+    // method line 68
     .method public static 
            default void EmitLdnull ()  cil managed 
     {
-        // Method begins at RVA 0x7e7c
+        // Method begins at RVA 0x7fe4
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -10398,11 +10586,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitLdnull
 
-    // method line 66
+    // method line 69
     .method public static 
            default void EmitNewobj (class [mscorlib]System.Reflection.ConstructorInfo c)  cil managed 
     {
-        // Method begins at RVA 0x7eac
+        // Method begins at RVA 0x8014
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -10426,11 +10614,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitNewobj
 
-    // method line 67
+    // method line 70
     .method public static 
            default void EmitBr (valuetype [mscorlib]System.Reflection.Emit.Label lbl)  cil managed 
     {
-        // Method begins at RVA 0x7ee0
+        // Method begins at RVA 0x8048
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -10454,11 +10642,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitBr
 
-    // method line 68
+    // method line 71
     .method public static 
            default void EmitBrfalse (valuetype [mscorlib]System.Reflection.Emit.Label lbl)  cil managed 
     {
-        // Method begins at RVA 0x7f14
+        // Method begins at RVA 0x807c
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -10482,11 +10670,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitBrfalse
 
-    // method line 69
+    // method line 72
     .method public static 
            default void EmitBrtrue (valuetype [mscorlib]System.Reflection.Emit.Label lbl)  cil managed 
     {
-        // Method begins at RVA 0x7f48
+        // Method begins at RVA 0x80b0
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -10510,11 +10698,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitBrtrue
 
-    // method line 70
+    // method line 73
     .method public static 
            default void EmitLdtoken (class [mscorlib]System.Type t)  cil managed 
     {
-        // Method begins at RVA 0x7f7c
+        // Method begins at RVA 0x80e4
 	// Code size 39 (0x27)
 	.maxstack 3
 	.locals init (
@@ -10538,11 +10726,11 @@
 	IL_0026:  ret 
     } // end of method ILEmitter::EmitLdtoken
 
-    // method line 71
+    // method line 74
     .method public static 
            default void EmitConvU ()  cil managed 
     {
-        // Method begins at RVA 0x7fb0
+        // Method begins at RVA 0x8118
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -10562,11 +10750,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitConvU
 
-    // method line 72
+    // method line 75
     .method public static 
            default void EmitConvI ()  cil managed 
     {
-        // Method begins at RVA 0x7fe0
+        // Method begins at RVA 0x8148
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -10586,11 +10774,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitConvI
 
-    // method line 73
+    // method line 76
     .method public static 
            default void EmitConvI4 ()  cil managed 
     {
-        // Method begins at RVA 0x8010
+        // Method begins at RVA 0x8178
 	// Code size 33 (0x21)
 	.maxstack 2
 	.locals init (
@@ -10610,11 +10798,11 @@
 	IL_0020:  ret 
     } // end of method ILEmitter::EmitConvI4
 
-    // method line 74
+    // method line 77
     .method public static 
            default void EmitNewarr (class [mscorlib]System.Type t)  cil managed 
     {
-        // Method begins at RVA 0x8040
+        // Method begins at RVA 0x81a8
 	// Code size 55 (0x37)
 	.maxstack 3
 	.locals init (
@@ -10644,11 +10832,11 @@
 	IL_0036:  ret 
     } // end of method ILEmitter::EmitNewarr
 
-    // method line 75
+    // method line 78
     .method public static 
            default void DeclVar (string name, class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x8084
+        // Method begins at RVA 0x81ec
 	// Code size 70 (0x46)
 	.maxstack 4
 	.locals init (
@@ -10685,11 +10873,11 @@
 	IL_0045:  ret 
     } // end of method ILEmitter::DeclVar
 
-    // method line 76
+    // method line 79
     .method public static 
            default valuetype [mscorlib]System.Reflection.Emit.Label DefineLbl ()  cil managed 
     {
-        // Method begins at RVA 0x80d8
+        // Method begins at RVA 0x8240
 	// Code size 11 (0xb)
 	.maxstack 1
 	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
@@ -10697,11 +10885,11 @@
 	IL_000a:  ret 
     } // end of method ILEmitter::DefineLbl
 
-    // method line 77
+    // method line 80
     .method public static 
            default void MarkLbl (valuetype [mscorlib]System.Reflection.Emit.Label lbl)  cil managed 
     {
-        // Method begins at RVA 0x80f0
+        // Method begins at RVA 0x8258
 	// Code size 17 (0x11)
 	.maxstack 2
 	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
@@ -10713,11 +10901,11 @@
 	IL_0010:  ret 
     } // end of method ILEmitter::MarkLbl
 
-    // method line 78
+    // method line 81
     .method public static 
            default void MarkDbgPt (int32 line)  cil managed 
     {
-        // Method begins at RVA 0x8110
+        // Method begins at RVA 0x8278
 	// Code size 38 (0x26)
 	.maxstack 6
 	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.ILGenerator dylan.NET.Reflection.ILEmitter::ILGen
@@ -10778,11 +10966,11 @@
     .field  public static  string[] GenParamNames
     .field  public static  class [mscorlib]System.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
 
-    // method line 79
+    // method line 82
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0x8144
+        // Method begins at RVA 0x82ac
 	// Code size 175 (0xaf)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -10826,11 +11014,11 @@
 	IL_00ae:  ret 
     } // end of method AsmFactory::.cctor
 
-    // method line 80
+    // method line 83
     .method public static 
            default void CreateTyp ()  cil managed 
     {
-        // Method begins at RVA 0x8200
+        // Method begins at RVA 0x8368
 	// Code size 12 (0xc)
 	.maxstack 1
 	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder dylan.NET.Reflection.AsmFactory::CurnTypB
@@ -10839,11 +11027,11 @@
 	IL_000b:  ret 
     } // end of method AsmFactory::CreateTyp
 
-    // method line 81
+    // method line 84
     .method public static 
            default void InitMtd ()  cil managed 
     {
-        // Method begins at RVA 0x8218
+        // Method begins at RVA 0x8380
 	// Code size 154 (0x9a)
 	.maxstack 6
 	.locals init (
@@ -10892,11 +11080,11 @@
 	IL_0099:  ret 
     } // end of method AsmFactory::InitMtd
 
-    // method line 82
+    // method line 85
     .method public static 
            default void InitConstr ()  cil managed 
     {
-        // Method begins at RVA 0x82c0
+        // Method begins at RVA 0x8428
 	// Code size 116 (0x74)
 	.maxstack 4
 	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder dylan.NET.Reflection.AsmFactory::CurnConB
@@ -10929,11 +11117,87 @@
 	IL_0073:  ret 
     } // end of method AsmFactory::InitConstr
 
-    // method line 83
+    // method line 86
+    .method public static 
+           default void InitDelConstr ()  cil managed 
+    {
+        // Method begins at RVA 0x84a8
+	// Code size 99 (0x63)
+	.maxstack 4
+	.locals init (
+		valuetype [mscorlib]System.Reflection.ParameterAttributes	V_0,
+		valuetype [mscorlib]System.Reflection.MethodImplAttributes	V_1)
+	IL_0000:  ldc.i4 0
+	IL_0005:  stloc 0
+
+	IL_0009:  nop 
+	IL_000a:  nop 
+	IL_000b:  ldsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder dylan.NET.Reflection.AsmFactory::CurnConB
+	IL_0010:  ldc.i4 1
+	IL_0015:  ldloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  ldstr "obj"
+	IL_0020:  callvirt instance class [mscorlib]System.Reflection.Emit.ParameterBuilder class [mscorlib]System.Reflection.Emit.ConstructorBuilder::DefineParameter(int32, valuetype [mscorlib]System.Reflection.ParameterAttributes, string)
+	IL_0025:  pop 
+	IL_0026:  ldsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder dylan.NET.Reflection.AsmFactory::CurnConB
+	IL_002b:  ldc.i4 2
+	IL_0030:  ldloc 0
+
+	IL_0034:  nop 
+	IL_0035:  nop 
+	IL_0036:  ldstr "ptr"
+	IL_003b:  callvirt instance class [mscorlib]System.Reflection.Emit.ParameterBuilder class [mscorlib]System.Reflection.Emit.ConstructorBuilder::DefineParameter(int32, valuetype [mscorlib]System.Reflection.ParameterAttributes, string)
+	IL_0040:  pop 
+	IL_0041:  ldc.i4 3
+	IL_0046:  ldc.i4 0
+	IL_004b:  or 
+	IL_004c:  stloc 1
+
+	IL_0050:  nop 
+	IL_0051:  nop 
+	IL_0052:  ldsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder dylan.NET.Reflection.AsmFactory::CurnConB
+	IL_0057:  ldloc 1
+
+	IL_005b:  nop 
+	IL_005c:  nop 
+	IL_005d:  callvirt instance void class [mscorlib]System.Reflection.Emit.ConstructorBuilder::SetImplementationFlags(valuetype [mscorlib]System.Reflection.MethodImplAttributes)
+	IL_0062:  ret 
+    } // end of method AsmFactory::InitDelConstr
+
+    // method line 87
+    .method public static 
+           default void InitDelMet ()  cil managed 
+    {
+        // Method begins at RVA 0x8518
+	// Code size 44 (0x2c)
+	.maxstack 2
+	.locals init (
+		valuetype [mscorlib]System.Reflection.MethodImplAttributes	V_0)
+	IL_0000:  ldsfld class [mscorlib]System.Reflection.Emit.MethodBuilder dylan.NET.Reflection.AsmFactory::CurnMetB
+	IL_0005:  stsfld class [mscorlib]System.Reflection.Emit.MethodBuilder dylan.NET.Reflection.ILEmitter::Met
+	IL_000a:  ldc.i4 3
+	IL_000f:  ldc.i4 0
+	IL_0014:  or 
+	IL_0015:  stloc 0
+
+	IL_0019:  nop 
+	IL_001a:  nop 
+	IL_001b:  ldsfld class [mscorlib]System.Reflection.Emit.MethodBuilder dylan.NET.Reflection.AsmFactory::CurnMetB
+	IL_0020:  ldloc 0
+
+	IL_0024:  nop 
+	IL_0025:  nop 
+	IL_0026:  callvirt instance void class [mscorlib]System.Reflection.Emit.MethodBuilder::SetImplementationFlags(valuetype [mscorlib]System.Reflection.MethodImplAttributes)
+	IL_002b:  ret 
+    } // end of method AsmFactory::InitDelMet
+
+    // method line 88
     .method public static 
            default void AddTypB (class [mscorlib]System.Reflection.Emit.TypeBuilder typ)  cil managed 
     {
-        // Method begins at RVA 0x8340
+        // Method begins at RVA 0x8550
 	// Code size 276 (0x114)
 	.maxstack 14
 	.locals init (
@@ -11081,11 +11345,11 @@
 	IL_0113:  ret 
     } // end of method AsmFactory::AddTypB
 
-    // method line 84
+    // method line 89
     .method public static 
            default void AddTyp (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x8460
+        // Method begins at RVA 0x8670
 	// Code size 276 (0x114)
 	.maxstack 14
 	.locals init (
@@ -11233,11 +11497,11 @@
 	IL_0113:  ret 
     } // end of method AsmFactory::AddTyp
 
-    // method line 85
+    // method line 90
     .method public static 
            default void AddGenParamName (string nam)  cil managed 
     {
-        // Method begins at RVA 0x8580
+        // Method begins at RVA 0x8790
 	// Code size 276 (0x114)
 	.maxstack 14
 	.locals init (
@@ -11397,11 +11661,11 @@
     .field  public static  string[] Imps
     .field  public static  string[] LocImps
 
-    // method line 86
+    // method line 91
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0x86a0
+        // Method begins at RVA 0x88b0
 	// Code size 33 (0x21)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -11415,11 +11679,11 @@
 	IL_0020:  ret 
     } // end of method Importer::.cctor
 
-    // method line 87
+    // method line 92
     .method public static 
            default void AddAsm (class [mscorlib]System.Reflection.Assembly asm)  cil managed 
     {
-        // Method begins at RVA 0x86d0
+        // Method begins at RVA 0x88e0
 	// Code size 276 (0x114)
 	.maxstack 14
 	.locals init (
@@ -11567,11 +11831,11 @@
 	IL_0113:  ret 
     } // end of method Importer::AddAsm
 
-    // method line 88
+    // method line 93
     .method public static 
            default string[] addelem (string[] srcarr, string eltoadd)  cil managed 
     {
-        // Method begins at RVA 0x87f0
+        // Method begins at RVA 0x8a00
 	// Code size 273 (0x111)
 	.maxstack 14
 	.locals init (
@@ -11724,11 +11988,11 @@
 	IL_0110:  ret 
     } // end of method Importer::addelem
 
-    // method line 89
+    // method line 94
     .method public static 
            default void AddImp (string imp)  cil managed 
     {
-        // Method begins at RVA 0x8910
+        // Method begins at RVA 0x8b20
 	// Code size 22 (0x16)
 	.maxstack 2
 	IL_0000:  ldsfld string[] dylan.NET.Reflection.Importer::Imps
@@ -11741,11 +12005,11 @@
 	IL_0015:  ret 
     } // end of method Importer::AddImp
 
-    // method line 90
+    // method line 95
     .method public static 
            default void AddLocImp (string imp)  cil managed 
     {
-        // Method begins at RVA 0x8934
+        // Method begins at RVA 0x8b44
 	// Code size 22 (0x16)
 	.maxstack 2
 	IL_0000:  ldsfld string[] dylan.NET.Reflection.Importer::Imps
@@ -11775,11 +12039,11 @@
     .field  public static  bool MakeArr
     .field  public static  bool MakeRef
 
-    // method line 91
+    // method line 96
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0x8958
+        // Method begins at RVA 0x8b68
 	// Code size 59 (0x3b)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -11799,11 +12063,11 @@
 	IL_003a:  ret 
     } // end of method Loader::.cctor
 
-    // method line 92
+    // method line 97
     .method public static 
            default class [mscorlib]System.Type LoadClass (string name)  cil managed 
     {
-        // Method begins at RVA 0x89a0
+        // Method begins at RVA 0x8bb0
 	// Code size 826 (0x33a)
 	.maxstack 34
 	.locals init (
@@ -12202,11 +12466,11 @@
 	IL_0339:  ret 
     } // end of method Loader::LoadClass
 
-    // method line 93
+    // method line 98
     .method public static 
            default class [mscorlib]System.Type ProcessType (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x8ce8
+        // Method begins at RVA 0x8ef8
 	// Code size 121 (0x79)
 	.maxstack 7
 	IL_0000:  ldsfld bool dylan.NET.Reflection.Loader::MakeArr
@@ -12258,11 +12522,391 @@
 	IL_0078:  ret 
     } // end of method Loader::ProcessType
 
-    // method line 94
+    // method line 99
+    .method public static 
+           default class [mscorlib]System.Type[] ParamsToTyps (class [mscorlib]System.Reflection.ParameterInfo[] t)  cil managed 
+    {
+        // Method begins at RVA 0x8f80
+	// Code size 193 (0xc1)
+	.maxstack 6
+	.locals init (
+		int32	V_0,
+		class [mscorlib]System.Type[]	V_1,
+		class [mscorlib]System.Reflection.ParameterInfo	V_2,
+		class [mscorlib]System.Type	V_3,
+		int32	V_4,
+		int32	V_5)
+	IL_0000:  ldarg 0
+
+	IL_0004:  nop 
+	IL_0005:  nop 
+	IL_0006:  ldlen 
+	IL_0007:  conv.i4 
+	IL_0008:  stloc 0
+
+	IL_000c:  nop 
+	IL_000d:  nop 
+	IL_000e:  ldloc 0
+
+	IL_0012:  nop 
+	IL_0013:  nop 
+	IL_0014:  conv.u 
+	IL_0015:  newarr [mscorlib]System.Type
+	IL_001a:  stloc 1
+
+	IL_001e:  nop 
+	IL_001f:  nop 
+	IL_0020:  ldc.i4 -1
+	IL_0025:  stloc 4
+
+	IL_0029:  nop 
+	IL_002a:  nop 
+	IL_002b:  ldloc 0
+
+	IL_002f:  nop 
+	IL_0030:  nop 
+	IL_0031:  ldc.i4 1
+	IL_0036:  sub 
+	IL_0037:  stloc 5
+
+	IL_003b:  nop 
+	IL_003c:  nop 
+	IL_003d:  ldloc 4
+
+	IL_0041:  nop 
+	IL_0042:  nop 
+	IL_0043:  ldc.i4 1
+	IL_0048:  add 
+	IL_0049:  stloc 4
+
+	IL_004d:  nop 
+	IL_004e:  nop 
+	IL_004f:  ldarg 0
+
+	IL_0053:  nop 
+	IL_0054:  nop 
+	IL_0055:  ldloc 4
+
+	IL_0059:  nop 
+	IL_005a:  nop 
+	IL_005b:  conv.u 
+	IL_005c:  ldelem [mscorlib]System.Reflection.ParameterInfo
+	IL_0061:  stloc 2
+
+	IL_0065:  nop 
+	IL_0066:  nop 
+	IL_0067:  ldloc 2
+
+	IL_006b:  nop 
+	IL_006c:  nop 
+	IL_006d:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Reflection.ParameterInfo::get_ParameterType()
+	IL_0072:  stloc 3
+
+	IL_0076:  nop 
+	IL_0077:  nop 
+	IL_0078:  ldloc 1
+
+	IL_007c:  nop 
+	IL_007d:  nop 
+	IL_007e:  ldloc 4
+
+	IL_0082:  nop 
+	IL_0083:  nop 
+	IL_0084:  conv.u 
+	IL_0085:  ldloc 3
+
+	IL_0089:  nop 
+	IL_008a:  nop 
+	IL_008b:  stelem [mscorlib]System.Type
+	IL_0090:  ldloc 4
+
+	IL_0094:  nop 
+	IL_0095:  nop 
+	IL_0096:  ldloc 5
+
+	IL_009a:  nop 
+	IL_009b:  nop 
+	IL_009c:  beq IL_00a6
+
+	IL_00a1:  br IL_00b0
+
+	IL_00a6:  br IL_00ba
+
+	IL_00ab:  br IL_00ba
+
+	IL_00b0:  br IL_003d
+
+	IL_00b5:  br IL_00ba
+
+	IL_00ba:  ldloc 1
+
+	IL_00be:  nop 
+	IL_00bf:  nop 
+	IL_00c0:  ret 
+    } // end of method Loader::ParamsToTyps
+
+    // method line 100
+    .method public static 
+           default class [mscorlib]System.Reflection.MethodInfo LoadMethodWithoutParams (class [mscorlib]System.Type typ, string name)  cil managed 
+    {
+        // Method begins at RVA 0x9050
+	// Code size 379 (0x17b)
+	.maxstack 14
+	.locals init (
+		class [mscorlib]System.Type	V_0,
+		class [mscorlib]System.Type[]	V_1,
+		int32	V_2,
+		int32	V_3,
+		class [mscorlib]System.Reflection.MethodInfo	V_4)
+	IL_0000:  ldnull 
+	IL_0001:  stloc 0
+
+	IL_0005:  nop 
+	IL_0006:  nop 
+	IL_0007:  ldnull 
+	IL_0008:  stloc 1
+
+	IL_000c:  nop 
+	IL_000d:  nop 
+	IL_000e:  ldc.i4 -1
+	IL_0013:  stloc 2
+
+	IL_0017:  nop 
+	IL_0018:  nop 
+	IL_0019:  ldc.i4 0
+	IL_001e:  stloc 3
+
+	IL_0022:  nop 
+	IL_0023:  nop 
+	IL_0024:  ldnull 
+	IL_0025:  stloc 4
+
+	IL_0029:  nop 
+	IL_002a:  nop 
+	IL_002b:  ldarg 0
+
+	IL_002f:  nop 
+	IL_0030:  nop 
+	IL_0031:  ldarg 1
+
+	IL_0035:  nop 
+	IL_0036:  nop 
+	IL_0037:  callvirt instance class [mscorlib]System.Reflection.MethodInfo class [mscorlib]System.Type::GetMethod(string)
+	IL_003c:  stloc 4
+
+	IL_0040:  nop 
+	IL_0041:  nop 
+	IL_0042:  ldloc 4
+
+	IL_0046:  nop 
+	IL_0047:  nop 
+	IL_0048:  ldnull 
+	IL_0049:  beq IL_0053
+
+	IL_004e:  br IL_0144
+
+	IL_0053:  ldarg 0
+
+	IL_0057:  nop 
+	IL_0058:  nop 
+	IL_0059:  callvirt instance class [mscorlib]System.Type[] class [mscorlib]System.Type::GetInterfaces()
+	IL_005e:  stloc 1
+
+	IL_0062:  nop 
+	IL_0063:  nop 
+	IL_0064:  ldloc 1
+
+	IL_0068:  nop 
+	IL_0069:  nop 
+	IL_006a:  ldnull 
+	IL_006b:  beq IL_013a
+
+	IL_0070:  br IL_0075
+
+	IL_0075:  ldloc 1
+
+	IL_0079:  nop 
+	IL_007a:  nop 
+	IL_007b:  ldlen 
+	IL_007c:  conv.i4 
+	IL_007d:  ldc.i4 0
+	IL_0082:  bgt IL_008c
+
+	IL_0087:  br IL_0130
+
+	IL_008c:  ldloc 1
+
+	IL_0090:  nop 
+	IL_0091:  nop 
+	IL_0092:  ldlen 
+	IL_0093:  conv.i4 
+	IL_0094:  ldc.i4 1
+	IL_0099:  sub 
+	IL_009a:  stloc 3
+
+	IL_009e:  nop 
+	IL_009f:  nop 
+	IL_00a0:  ldloc 2
+
+	IL_00a4:  nop 
+	IL_00a5:  nop 
+	IL_00a6:  ldc.i4 1
+	IL_00ab:  add 
+	IL_00ac:  stloc 2
+
+	IL_00b0:  nop 
+	IL_00b1:  nop 
+	IL_00b2:  ldloc 1
+
+	IL_00b6:  nop 
+	IL_00b7:  nop 
+	IL_00b8:  ldloc 2
+
+	IL_00bc:  nop 
+	IL_00bd:  nop 
+	IL_00be:  conv.u 
+	IL_00bf:  ldelem [mscorlib]System.Type
+	IL_00c4:  stloc 0
+
+	IL_00c8:  nop 
+	IL_00c9:  nop 
+	IL_00ca:  ldloc 0
+
+	IL_00ce:  nop 
+	IL_00cf:  nop 
+	IL_00d0:  ldarg 1
+
+	IL_00d4:  nop 
+	IL_00d5:  nop 
+	IL_00d6:  callvirt instance class [mscorlib]System.Reflection.MethodInfo class [mscorlib]System.Type::GetMethod(string)
+	IL_00db:  stloc 4
+
+	IL_00df:  nop 
+	IL_00e0:  nop 
+	IL_00e1:  ldloc 4
+
+	IL_00e5:  nop 
+	IL_00e6:  nop 
+	IL_00e7:  ldnull 
+	IL_00e8:  beq IL_00f2
+
+	IL_00ed:  br IL_00f7
+
+	IL_00f2:  br IL_0101
+
+	IL_00f7:  br IL_012b
+
+	IL_00fc:  br IL_0101
+
+	IL_0101:  ldloc 2
+
+	IL_0105:  nop 
+	IL_0106:  nop 
+	IL_0107:  ldloc 3
+
+	IL_010b:  nop 
+	IL_010c:  nop 
+	IL_010d:  beq IL_0117
+
+	IL_0112:  br IL_0121
+
+	IL_0117:  br IL_012b
+
+	IL_011c:  br IL_012b
+
+	IL_0121:  br IL_00a0
+
+	IL_0126:  br IL_012b
+
+	IL_012b:  br IL_0135
+
+	IL_0130:  br IL_0135
+
+	IL_0135:  br IL_013f
+
+	IL_013a:  br IL_013f
+
+	IL_013f:  br IL_0149
+
+	IL_0144:  br IL_0149
+
+	IL_0149:  ldloc 4
+
+	IL_014d:  nop 
+	IL_014e:  nop 
+	IL_014f:  ldnull 
+	IL_0150:  beq IL_016f
+
+	IL_0155:  br IL_015a
+
+	IL_015a:  ldloc 4
+
+	IL_015e:  nop 
+	IL_015f:  nop 
+	IL_0160:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Reflection.MethodInfo::get_ReturnType()
+	IL_0165:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::MemberTyp
+	IL_016a:  br IL_0174
+
+	IL_016f:  br IL_0174
+
+	IL_0174:  ldloc 4
+
+	IL_0178:  nop 
+	IL_0179:  nop 
+	IL_017a:  ret 
+    } // end of method Loader::LoadMethodWithoutParams
+
+    // method line 101
+    .method public static 
+           default class [mscorlib]System.Type[] GetDelegateInvokeParams (class [mscorlib]System.Type typ)  cil managed 
+    {
+        // Method begins at RVA 0x91d8
+	// Code size 63 (0x3f)
+	.maxstack 2
+	.locals init (
+		class [mscorlib]System.Reflection.MethodInfo	V_0,
+		class [mscorlib]System.Reflection.ParameterInfo[]	V_1,
+		class [mscorlib]System.Type[]	V_2)
+	IL_0000:  ldarg 0
+
+	IL_0004:  nop 
+	IL_0005:  nop 
+	IL_0006:  ldstr "Invoke"
+	IL_000b:  call class [mscorlib]System.Reflection.MethodInfo class dylan.NET.Reflection.Loader::LoadMethodWithoutParams(class [mscorlib]System.Type, string)
+	IL_0010:  stloc 0
+
+	IL_0014:  nop 
+	IL_0015:  nop 
+	IL_0016:  ldloc 0
+
+	IL_001a:  nop 
+	IL_001b:  nop 
+	IL_001c:  callvirt instance class [mscorlib]System.Reflection.ParameterInfo[] class [mscorlib]System.Reflection.MethodBase::GetParameters()
+	IL_0021:  stloc 1
+
+	IL_0025:  nop 
+	IL_0026:  nop 
+	IL_0027:  ldloc 1
+
+	IL_002b:  nop 
+	IL_002c:  nop 
+	IL_002d:  call class [mscorlib]System.Type[] class dylan.NET.Reflection.Loader::ParamsToTyps(class [mscorlib]System.Reflection.ParameterInfo[])
+	IL_0032:  stloc 2
+
+	IL_0036:  nop 
+	IL_0037:  nop 
+	IL_0038:  ldloc 2
+
+	IL_003c:  nop 
+	IL_003d:  nop 
+	IL_003e:  ret 
+    } // end of method Loader::GetDelegateInvokeParams
+
+    // method line 102
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo LoadMethod (class [mscorlib]System.Type typ, string name, class [mscorlib]System.Type[] typs)  cil managed 
     {
-        // Method begins at RVA 0x8d70
+        // Method begins at RVA 0x9224
 	// Code size 391 (0x187)
 	.maxstack 16
 	.locals init (
@@ -12477,11 +13121,11 @@
 	IL_0186:  ret 
     } // end of method Loader::LoadMethod
 
-    // method line 95
+    // method line 103
     .method public static 
            default class [mscorlib]System.Reflection.ConstructorInfo LoadCtor (class [mscorlib]System.Type typ, class [mscorlib]System.Type[] typs)  cil managed 
     {
-        // Method begins at RVA 0x8f04
+        // Method begins at RVA 0x93b8
 	// Code size 121 (0x79)
 	.maxstack 4
 	.locals init (
@@ -12550,11 +13194,11 @@
 	IL_0078:  ret 
     } // end of method Loader::LoadCtor
 
-    // method line 96
+    // method line 104
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo[] addelemmtdinfo (class [mscorlib]System.Reflection.MethodInfo[] srcarr, class [mscorlib]System.Reflection.MethodInfo eltoadd)  cil managed 
     {
-        // Method begins at RVA 0x8f8c
+        // Method begins at RVA 0x9440
 	// Code size 273 (0x111)
 	.maxstack 14
 	.locals init (
@@ -12707,11 +13351,11 @@
 	IL_0110:  ret 
     } // end of method Loader::addelemmtdinfo
 
-    // method line 97
+    // method line 105
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo[] LoadSpecMtds (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x90ac
+        // Method begins at RVA 0x9560
 	// Code size 278 (0x116)
 	.maxstack 9
 	.locals init (
@@ -12865,11 +13509,11 @@
 	IL_0115:  ret 
     } // end of method Loader::LoadSpecMtds
 
-    // method line 98
+    // method line 106
     .method public static 
            default bool CompareParamsToTyps (class [mscorlib]System.Reflection.ParameterInfo[] t1, class [mscorlib]System.Type[] t2)  cil managed 
     {
-        // Method begins at RVA 0x91d0
+        // Method begins at RVA 0x9684
 	// Code size 302 (0x12e)
 	.maxstack 9
 	.locals init (
@@ -13039,11 +13683,11 @@
 	IL_012d:  ret 
     } // end of method Loader::CompareParamsToTyps
 
-    // method line 99
+    // method line 107
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo LoadBinOp (class [mscorlib]System.Type typ, string name, class [mscorlib]System.Type typa, class [mscorlib]System.Type typb)  cil managed 
     {
-        // Method begins at RVA 0x930c
+        // Method begins at RVA 0x97c0
 	// Code size 425 (0x1a9)
 	.maxstack 17
 	.locals init (
@@ -13274,11 +13918,11 @@
 	IL_01a8:  ret 
     } // end of method Loader::LoadBinOp
 
-    // method line 100
+    // method line 108
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo LoadConvOp (class [mscorlib]System.Type typ, string name, class [mscorlib]System.Type src, class [mscorlib]System.Type snk)  cil managed 
     {
-        // Method begins at RVA 0x94c4
+        // Method begins at RVA 0x9978
 	// Code size 480 (0x1e0)
 	.maxstack 17
 	.locals init (
@@ -13539,11 +14183,11 @@
 	IL_01df:  ret 
     } // end of method Loader::LoadConvOp
 
-    // method line 101
+    // method line 109
     .method public static 
            default class [mscorlib]System.Reflection.FieldInfo LoadField (class [mscorlib]System.Type typ, string name)  cil managed 
     {
-        // Method begins at RVA 0x96b0
+        // Method begins at RVA 0x9b64
 	// Code size 251 (0xfb)
 	.maxstack 10
 	.locals init (
@@ -13674,11 +14318,11 @@
   {
     .field  public static  class [mscorlib]System.IO.StringWriter SW
 
-    // method line 102
+    // method line 110
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0x97b8
+        // Method begins at RVA 0x9c6c
 	// Code size 7 (0x7)
 	.maxstack 1
 	IL_0000:  ldnull 
@@ -13686,11 +14330,11 @@
 	IL_0006:  ret 
     } // end of method ConsolePrinter::.cctor
 
-    // method line 103
+    // method line 111
     .method public static 
            default void PrintString ()  cil managed 
     {
-        // Method begins at RVA 0x97cc
+        // Method begins at RVA 0x9c80
 	// Code size 28 (0x1c)
 	.maxstack 1
 	.locals init (
@@ -13709,11 +14353,11 @@
 	IL_001b:  ret 
     } // end of method ConsolePrinter::PrintString
 
-    // method line 104
+    // method line 112
     .method public static 
            default void WriteClass (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x97f4
+        // Method begins at RVA 0x9ca8
 	// Code size 800 (0x320)
 	.maxstack 48
 	.locals init (

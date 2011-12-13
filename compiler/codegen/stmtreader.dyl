@@ -244,6 +244,99 @@ end if
 goto fin
 end if
 
+typ = gettype DelegateStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var dels as DelegateStmt = stm
+
+if AsmFactory::inClass = true then
+AsmFactory::isNested = true
+end if
+
+if AsmFactory::isNested = false then
+AsmFactory::inClass = true
+end if
+
+var dattrs as Attributes.Attribute[] = dels::Attrs
+var dta as TypeAttributes = Helpers::ProcessClassAttrs(dattrs)
+dta = dta or 0 or 256 or 131072
+var delsnam as Ident = dels::DelegateName
+var delsnamstr as string = delsnam::Value
+var dinhtyp as System.Type = gettype MulticastDelegate
+AsmFactory::CurnInhTyp = dinhtyp
+
+if AsmFactory::isNested = false then
+mdlbld = AsmFactory::MdlB
+AsmFactory::CurnTypName = delsnamstr
+delsnamstr = String::Concat(AsmFactory::CurnNS, ".", delsnamstr)
+AsmFactory::CurnTypB = mdlbld::DefineType(delsnamstr, dta, dinhtyp)
+
+StreamUtils::Write("Adding Delegate: ")
+StreamUtils::WriteLine(delsnamstr)
+else
+AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
+ctb2 = AsmFactory::CurnTypB2
+StreamUtils::Write("Adding Nested Delegate: ")
+StreamUtils::WriteLine(delsnamstr)
+AsmFactory::CurnTypName = delsnamstr
+AsmFactory::CurnTypB = ctb2::DefineNestedType(delsnamstr, dta, dinhtyp)
+end if
+
+SymTable::ResetVar()
+SymTable::ResetIf()
+SymTable::ResetLbl()
+
+var dtypb as TypeBuilder = AsmFactory::CurnTypB
+var dema as MethodAttributes = 128 or 6
+var dmanamstr as string = ""
+var drettt as TypeTok = dels::RetTyp
+var drett as System.Type = gettype void
+
+var dtarr as System.Type[] = newarr System.Type 2
+dtarr[0] = gettype object
+dtarr[1] = gettype IntPtr
+
+var stdcc as CallingConventions = 1
+AsmFactory::CurnConB = dtypb::DefineConstructor(dema, stdcc, dtarr)
+AsmFactory::InitDelConstr()
+
+drett = Helpers::CommitEvalTTok(drettt)
+AsmFactory::TypArr = newarr System.Type 0
+var dparr as Expr[] = dels::Params
+var dparrl as integer = dparr[l]
+dema = 128 or 6 or 256 or 64
+if dparrl = 0 then
+dtarr = System.Type::EmptyTypes
+else
+Helpers::ProcessParams(dparr)
+dtarr = AsmFactory::TypArr
+end if
+
+AsmFactory::CurnMetB = dtypb::DefineMethod("Invoke", dema, drett, AsmFactory::TypArr)
+AsmFactory::InitDelMet()
+Helpers::PostProcessParams(dparr)
+
+AsmFactory::CreateTyp()
+if AsmFactory::isNested = false then
+AsmFactory::inClass = false
+SymTable::ResetMet()
+SymTable::ResetCtor()
+SymTable::ResetFld()
+end if
+if AsmFactory::isNested = true then
+AsmFactory::CurnTypB = AsmFactory::CurnTypB2
+AsmFactory::isNested = false
+SymTable::ResetNestedMet()
+SymTable::ResetNestedCtor()
+SymTable::ResetNestedFld()
+end if
+
+
+goto fin
+end if
+
+
 typ = gettype FieldStmt
 b = typ::IsInstanceOfType($object$stm)
 
@@ -279,7 +372,7 @@ else
 SymTable::AddNestedFld(flsnamstr, ftyp, AsmFactory::CurnFldB)
 end if
 
-StreamUtils::Write("Adding Field: ")
+StreamUtils::Write("	Adding Field: ")
 StreamUtils::WriteLine(flsnamstr)
 
 goto fin
@@ -364,7 +457,7 @@ isconstr = b or isconstr
 if isconstr = false then
 AsmFactory::CurnMetB = typb::DefineMethod(mtssnamstr, ma, rettyp, AsmFactory::TypArr)
 AsmFactory::InitMtd()
-StreamUtils::Write("Adding Method: ")
+StreamUtils::Write("	Adding Method: ")
 StreamUtils::WriteLine(mtssnamstr)
 
 if AsmFactory::isNested = false then
@@ -385,7 +478,7 @@ SymTable::AddNestedCtor(AsmFactory::TypArr, AsmFactory::CurnConB)
 end if
 
 
-StreamUtils::Write("Adding Constructor: ")
+StreamUtils::Write("	Adding Constructor: ")
 StreamUtils::WriteLine(mtssnamstr)
 end if
 

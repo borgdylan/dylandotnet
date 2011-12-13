@@ -42,7 +42,7 @@ locimport dylan.NET.Tokenizer.AST.Tokens.Attributes
 locimport dylan.NET.Tokenizer.AST.Tokens.Chars
 
 assembly tokenizer.AST dll
-ver 11.2.7.9
+ver 11.2.8.1
 
 namespace dylan.NET.Tokenizer.AST.Tokens
 #include E:\Code\dylannet\compiler\ast\token.dyl
@@ -121,6 +121,7 @@ namespace dylan.NET.Tokenizer.AST.Stmts
 #include E:\Code\dylannet\compiler\ast\xmldocstmt.dyl
 #include E:\Code\dylannet\compiler\ast\nsstmt.dyl
 #include E:\Code\dylannet\compiler\ast\classstmt.dyl
+#include E:\Code\dylannet\compiler\ast\delegatestmt.dyl
 #include E:\Code\dylannet\compiler\ast\enumstmt.dyl
 #include E:\Code\dylannet\compiler\ast\propstmt.dyl
 #include E:\Code\dylannet\compiler\ast\metstmt.dyl

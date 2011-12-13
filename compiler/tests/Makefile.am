@@ -2,6 +2,7 @@
 #if test -e "*.mdb"; then rm -f *.mdb ; fi
 #if test -e "*.dll"; then rm -f *.dll ; fi
 
+.PHONY: all
 
 all:
 	$(MONO) ../2.0/dnc.exe arit.dyl
@@ -15,17 +16,20 @@ all:
 	$(MONO) ../2.0/dnc.exe openfile.dyl
 	$(MONO) ../2.0/dnc.exe Person.dyl
 	$(MONO) ../2.0/dnc.exe PersonProg.dyl
+	$(MONO) ../2.0/dnc.exe boxobj.dyl
+	$(MONO) ../2.0/dnc.exe xmllib.dyl
 
 install:
 	tar -czf tests.tar.gz *
 	$(install_sh_PROGRAM) tests.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/tests.tar.gz
 	rm -f tests.tar.gz
 
-	
-distclean:
+clean:
 	rm -f *.exe
 	rm -f *.mdb
 	rm -f *.dll
+	
+distclean:
 	rm -f Makefile	
 
 testc:

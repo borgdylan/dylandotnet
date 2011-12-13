@@ -282,6 +282,8 @@ var i as integer = -1
 var j as integer = 0
 var len as integer = 0
 var instflg as boolean = false
+var tl1 as TypeArr[]
+var tl2 as TypeArr[]
 
 label fin
 
@@ -299,6 +301,15 @@ if emt = true then
 typ = gettype string
 b = lctyp::Equals(typ)
 Helpers::StringFlg = b
+end if
+
+if emt = true then
+typ = gettype System.Delegate
+b = lctyp::Equals(rctyp)
+if b = true then
+b = lctyp::IsSubclassOf(typ)
+Helpers::DelegateFlg = b
+end if
 end if
 
 b = lctyp::Equals(rctyp)
@@ -925,19 +936,33 @@ goto fin
 
 end if
 
+//constructor call section
 typ = gettype NewCallTok
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
 
 var nctok as NewCallTok = tok
+var delparamarr as System.Type[]
+var delmtdnam as string
 tt = nctok::Name
 nctyp = Helpers::CommitEvalTTok(tt)
 mcparams = nctok::Params
 paramlen = mcparams[l] - 1
+var delcreate as boolean = false
 
 label ncloop
 label nccont
+
+typ = gettype MulticastDelegate
+b = nctyp::IsSubclassOf(typ)
+if b = true then
+delcreate = true
+delparamarr = Loader::GetDelegateInvokeParams(nctyp)
+curexpr = mcparams[0]
+delmtdnam = Helpers::StripDelMtdName(curexpr::Tokens[0])
+goto nccont
+end if
 
 if mcparams[l] = 0 then
 typarr1 = System.Type::EmptyTypes
@@ -978,6 +1003,196 @@ end if
 
 place nccont
 
+if delcreate = true then
+typarr1 = newarr System.Type 2
+typarr1[0] = gettype object
+typarr1[1] = gettype IntPtr
+
+//delegate pointer loading section
+
+mnstrarr = ParseUtils::StringParser(delmtdnam, ":")
+idtb1 = false
+idtb2 = false
+
+mcrestrord = 2
+mcparenttyp = null
+mcmetinf = null
+mcfldinf = null
+
+i = -1
+len = mnstrarr[l] - 2
+
+idtcomp = String::Compare(mnstrarr[0], "me")
+if idtcomp = 0 then
+i++
+idtb1 = true
+mcrestrord = 3
+end if
+
+label loopdel
+label contdel
+label delfin
+
+idtcomp = mnstrarr[l]
+if idtcomp >= mcrestrord then
+
+AsmFactory::AddrFlg = true
+
+place loopdel
+i++
+
+if idtb2 = false then
+
+if idtb1 = false then
+mcvr = SymTable::FindVar(mnstrarr[i])
+if mcvr <> null then
+if emt = true then
+AsmFactory::Type04 = mcvr::VarTyp
+Helpers::EmitLocLd(mcvr::Index, mcvr::LocArg)
+end if
+AsmFactory::Type02 = mcvr::VarTyp
+mcparenttyp = mcvr::VarTyp
+goto delfin
+else
+
+mcfldinf = Helpers::GetLocFld(mnstrarr[i])
+
+if mcfldinf <> null then
+idtisstatic = mcfldinf::get_IsStatic()
+if idtisstatic = false then
+if emt = true then
+ILEmitter::EmitLdarg(0)
+end if
+end if
+if emt = true then
+AsmFactory::Type04 = mcfldinf::get_FieldType()
+Helpers::EmitFldLd(mcfldinf, idtisstatic)
+end if
+AsmFactory::Type02 = mcfldinf::get_FieldType()
+mcparenttyp = mcfldinf::get_FieldType()
+goto delfin
+end if
+
+end if
+
+else
+
+mcfldinf = Helpers::GetLocFld(mnstrarr[i])
+
+if mcfldinf <> null then
+idtisstatic = mcfldinf::get_IsStatic()
+if idtisstatic = false then
+if emt = true then
+ILEmitter::EmitLdarg(0)
+end if
+end if
+if emt = true then
+AsmFactory::Type04 = mcfldinf::get_FieldType()
+Helpers::EmitFldLd(mcfldinf, idtisstatic)
+end if
+AsmFactory::Type02 = mcfldinf::get_FieldType()
+mcparenttyp = mcfldinf::get_FieldType()
+goto delfin
+end if
+
+end if
+
+mcparenttyp = Loader::LoadClass(mnstrarr[i])
+mcisstatic = true
+
+else
+
+b = mcparenttyp::Equals(AsmFactory::CurnTypB)
+
+if b = false then
+mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
+AsmFactory::Type02 = Loader::MemberTyp
+AsmFactory::Type04 = Loader::MemberTyp
+mcparenttyp = Loader::MemberTyp
+else
+mcfldinf = Helpers::GetLocFld(mnstrarr[i])
+AsmFactory::Type02 = mcfldinf::get_FieldType()
+AsmFactory::Type04 = mcfldinf::get_FieldType()
+mcparenttyp = mcfldinf::get_FieldType()
+end if
+
+if emt = true then
+Helpers::EmitFldLd(mcfldinf, mcisstatic)
+end if
+
+if mcisstatic = true then
+mcisstatic = false
+end if
+
+end if
+
+place delfin
+
+idtb2 = true
+
+if i = len then
+goto contdel
+else
+goto loopdel
+end if
+
+place contdel
+
+AsmFactory::AddrFlg = false
+
+end if
+
+i++
+//instance load for local methods of current isntance
+
+if idtb2 = false then
+if emt = true then
+mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
+mcisstatic = mcmetinf::get_IsStatic()
+if mcisstatic = false then
+ILEmitter::EmitLdarg(0)
+end if
+end if
+end if
+
+//----------------------------------------------------------
+
+if idtb2 = true then
+
+b = mcparenttyp::Equals(AsmFactory::CurnTypB)
+
+if b = false then
+mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], delparamarr)
+//AsmFactory::Type02 = Loader::MemberTyp
+else
+mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
+//AsmFactory::Type02 = mcmetinf::get_ReturnType()
+mcisstatic = mcmetinf::get_IsStatic()
+end if
+
+else
+
+mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
+//AsmFactory::Type02 = mcmetinf::get_ReturnType()
+mcisstatic = mcmetinf::get_IsStatic()
+
+end if
+
+if emt = true then
+if mcisstatic = true then
+ILEmitter::EmitLdnull()
+else
+ILEmitter::EmitDup()
+end if
+Helpers::EmitPtrLd(mcmetinf,mcisstatic)
+end if
+
+
+//delegate pointer loading section
+
+
+end if
+
 ncctorinf = Helpers::GetLocCtor(nctyp, typarr1)
 
 if emt = true then
@@ -994,6 +1209,8 @@ b = typ::IsInstanceOfType($object$tok)
 if b = true then
 
 if emt = true then
+
+//gettype section
 
 var gtctok as GettypeCallTok = tok
 tt = gtctok::Name
@@ -1034,6 +1251,8 @@ AsmFactory::Type02 = AsmFactory::CurnTypB
 goto fin
 end if
 
+//array creation section
+
 typ = gettype NewarrCallTok
 b = typ::IsInstanceOfType($object$tok)
 
@@ -1045,10 +1264,11 @@ curexpr = newactok::ArrayLen
 tt = newactok::ArrayType
 typ = Helpers::CommitEvalTTok(tt)
 
-if emt = true then
 curexpr = ConvToRPN(curexpr)
 tok = ConvToAST(curexpr)
 ASTEmit(tok, emt)
+
+if emt = true then
 ILEmitter::EmitConvI()
 ILEmitter::EmitNewarr(typ)
 end if
