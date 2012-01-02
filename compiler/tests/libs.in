@@ -1,0 +1,3 @@
+#refasm "@MSCORLIB@"
+#refasm "@SYSXMLLINQ@"
+

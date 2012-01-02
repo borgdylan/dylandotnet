@@ -46,14 +46,14 @@ CONFIG_CLEAN_VPATH_FILES =
 SOURCES =
 DIST_SOURCES =
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run aclocal-1.11
-AMTAR = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run tar
-AUTOCONF = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run autoconf
-AUTOHEADER = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run autoheader
-AUTOMAKE = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run automake-1.11
+ACLOCAL = ${SHELL} /var/www/Code/dylannet/compiler/missing --run aclocal-1.11
+AMTAR = ${SHELL} /var/www/Code/dylannet/compiler/missing --run tar
+AUTOCONF = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoconf
+AUTOHEADER = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoheader
+AUTOMAKE = ${SHELL} /var/www/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.7.9\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.7.9\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.7.9\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.8.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.8.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.8.1\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
@@ -68,26 +68,26 @@ LIBOBJS =
 LIBS = 
 LTLIBOBJS = 
 MAINT = #
-MAKEINFO = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run makeinfo
+MAKEINFO = ${SHELL} /var/www/Code/dylannet/compiler/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.7.9
+PACKAGE_STRING = dylandotnet 11.2.8.1
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.7.9
+PACKAGE_VERSION = 11.2.8.1
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.7.9
-abs_builddir = /media/MOBEXTHDD/Code/dylannet/compiler/doc
-abs_srcdir = /media/MOBEXTHDD/Code/dylannet/compiler/doc
-abs_top_builddir = /media/MOBEXTHDD/Code/dylannet/compiler
-abs_top_srcdir = /media/MOBEXTHDD/Code/dylannet/compiler
+VERSION = 11.2.8.1
+abs_builddir = /var/www/Code/dylannet/compiler/doc
+abs_srcdir = /var/www/Code/dylannet/compiler/doc
+abs_top_builddir = /var/www/Code/dylannet/compiler
+abs_top_srcdir = /var/www/Code/dylannet/compiler
 am__leading_dot = .
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
@@ -111,7 +111,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/install-sh
+install_sh = ${SHELL} /var/www/Code/dylannet/compiler/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -307,6 +307,8 @@ uninstall-am:
 	install-strip installcheck installcheck-am installdirs \
 	maintainer-clean maintainer-clean-generic mostlyclean \
 	mostlyclean-generic pdf pdf-am ps ps-am uninstall uninstall-am
+
+.PHONY: all
 
 all:
 	mdoc update -o ast ../tokenizer.AST.dll

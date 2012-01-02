@@ -50,14 +50,14 @@ CONFIG_CLEAN_VPATH_FILES =
 SOURCES =
 DIST_SOURCES =
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run aclocal-1.11
-AMTAR = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run tar
-AUTOCONF = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run autoconf
-AUTOHEADER = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run autoheader
-AUTOMAKE = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run automake-1.11
+ACLOCAL = ${SHELL} /var/www/Code/dylannet/compiler/missing --run aclocal-1.11
+AMTAR = ${SHELL} /var/www/Code/dylannet/compiler/missing --run tar
+AUTOCONF = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoconf
+AUTOHEADER = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoheader
+AUTOMAKE = ${SHELL} /var/www/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.7.9\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.7.9\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.7.9\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.8.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.8.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.8.1\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
@@ -72,26 +72,26 @@ LIBOBJS =
 LIBS = 
 LTLIBOBJS = 
 MAINT = #
-MAKEINFO = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/missing --run makeinfo
+MAKEINFO = ${SHELL} /var/www/Code/dylannet/compiler/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.7.9
+PACKAGE_STRING = dylandotnet 11.2.8.1
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.7.9
+PACKAGE_VERSION = 11.2.8.1
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.7.9
-abs_builddir = /media/MOBEXTHDD/Code/dylannet/compiler/tests
-abs_srcdir = /media/MOBEXTHDD/Code/dylannet/compiler/tests
-abs_top_builddir = /media/MOBEXTHDD/Code/dylannet/compiler
-abs_top_srcdir = /media/MOBEXTHDD/Code/dylannet/compiler
+VERSION = 11.2.8.1
+abs_builddir = /var/www/Code/dylannet/compiler/tests
+abs_srcdir = /var/www/Code/dylannet/compiler/tests
+abs_top_builddir = /var/www/Code/dylannet/compiler
+abs_top_srcdir = /var/www/Code/dylannet/compiler
 am__leading_dot = .
 am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
@@ -115,7 +115,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /media/MOBEXTHDD/Code/dylannet/compiler/install-sh
+install_sh = ${SHELL} /var/www/Code/dylannet/compiler/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -139,6 +139,8 @@ target_vendor = pc
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
+MSCORLIB = `cat mscorlibl`
+SYSXMLLINQ = `cat sysxmllinql`
 all: all-am
 
 .SUFFIXES:
@@ -237,8 +239,6 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
-clean: clean-am
-
 clean-am: clean-generic mostlyclean-am
 
 distclean-am: clean-am distclean-generic
@@ -314,29 +314,84 @@ uninstall-am:
 	mostlyclean-generic pdf pdf-am ps ps-am uninstall uninstall-am
 
 
-all:
+.PHONY: all
+
+preprep:
+
+	if [[ $(host) =~ .*-apple-darwin.* ]] ; then \
+		readlink -e -n $(MONO) > monol; \
+		dirname `cat monol` > monol; \
+		readlink -n `cat monol` > monol; \
+		dirname `cat monol` > monol; \
+		echo -n `cat monol`/../lib/mono/2.0/mscorlib.dll > mscorlibl; \
+		echo -n `cat monol`/../lib/mono/2.0/System.Xml.Linq.dll > sysxmllinql; \
+	else \
+		readlink -e -n $(MONO) > monol; \
+		dirname `cat monol` > monol; \
+		echo -n `cat monol`/../lib/mono/2.0/mscorlib.dll > mscorlibl; \
+		readlink -e -n `cat mscorlibl` > mscorlibl;\
+		echo -n `cat monol`/../lib/mono/2.0/System.Xml.Linq.dll > sysxmllinql; \
+		readlink -e -n `cat sysxmllinql` > sysxmllinql; \
+	fi
+
+	rm -f monol
+
+	sed -e "s|\@MSCORLIB\@|$(MSCORLIB)|g" \
+	    -e "s|\@SYSXMLLINQ\@|$(SYSXMLLINQ)|g" libs.in > libs
+
+all: preprep
+	cp libs arit.dyl
+	cat arit.dyl.in | tee -a arit.dyl
 	$(MONO) ../2.0/dnc.exe arit.dyl
+	cp libs conv.dyl
+	cat conv.dyl.in | tee -a conv.dyl
 	$(MONO) ../2.0/dnc.exe conv.dyl
+	cp libs ctorfield.dyl
+	cat ctorfield.dyl.in | tee -a ctorfield.dyl
 	$(MONO) ../2.0/dnc.exe ctorfield.dyl
+	cp libs helloworld.dyl
+	cat helloworld.dyl.in | tee -a helloworld.dyl
 	$(MONO) ../2.0/dnc.exe helloworld.dyl
+	cp libs logicop.dyl
+	cat logicop.dyl.in | tee -a logicop.dyl
 	$(MONO) ../2.0/dnc.exe logicop.dyl
+	cp libs mathematics.dyl
+	cat mathematics.dyl.in | tee -a mathematics.dyl
 	$(MONO) ../2.0/dnc.exe mathematics.dyl
+	cp libs mathstest.dyl
+	cat mathstest.dyl.in | tee -a mathstest.dyl
 	$(MONO) ../2.0/dnc.exe mathstest.dyl
+	cp libs numloops.dyl
+	cat numloops.dyl.in | tee -a numloops.dyl
 	$(MONO) ../2.0/dnc.exe numloops.dyl
+	cp libs openfile.dyl
+	cat openfile.dyl.in | tee -a openfile.dyl
 	$(MONO) ../2.0/dnc.exe openfile.dyl
+	cp libs Person.dyl
+	cat Person.dyl.in | tee -a Person.dyl
 	$(MONO) ../2.0/dnc.exe Person.dyl
+	cp libs PersonProg.dyl
+	cat PersonProg.dyl.in | tee -a PersonProg.dyl
 	$(MONO) ../2.0/dnc.exe PersonProg.dyl
+	cp libs boxobj.dyl
+	cat boxobj.dyl.in | tee -a boxobj.dyl
+	$(MONO) ../2.0/dnc.exe boxobj.dyl
+	cp libs xmllib.dyl
+	cat xmllib.dyl.in | tee -a xmllib.dyl
+	$(MONO) ../2.0/dnc.exe xmllib.dyl
 
 install:
 	tar -czf tests.tar.gz *
 	$(install_sh_PROGRAM) tests.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/tests.tar.gz
 	rm -f tests.tar.gz
 
-distclean:
+clean:
 	rm -f *.exe
 	rm -f *.mdb
 	rm -f *.dll
-	rm -f Makefile	
+
+distclean:
+	rm -f Makefile
 
 testc:
 	echo 'hello'

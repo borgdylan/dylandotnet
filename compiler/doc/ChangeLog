@@ -1,3 +1,19 @@
+commit 0a5646e1f2be02766818d4cf061a7500c110f33a
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Tue Dec 13 22:38:21 2011 +0100
+
+    Committing latest dylan.NET code to GIT and BZR. Adding support for delegate creation, delegation of methods and delegate combine/remove using +/- operator overloads. Finishing new array creation syntax. Updating man pages and makefiles. Adding more tests.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 80fa06b7dedcc53af5793339fbe44daf690270c5
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Thu Dec 1 18:08:01 2011 +0100
+
+    Adding tarballs and debs for dylan.NET 112.7.9. Adding dependence of monodoc-base in control file.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 51791a217971f6132a64c1c5d938a16318fc2af0
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Thu Dec 1 16:14:49 2011 +0100

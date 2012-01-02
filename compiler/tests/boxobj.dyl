@@ -1,11 +1,13 @@
 #refasm "/usr/lib/mono/2.0/mscorlib.dll"
+#refasm "/usr/lib/mono/gac/System.Xml.Linq/3.5.0.0__b77a5c561934e089/System.Xml.Linq.dll"
+
 
 import System
 
 #debug on
 
 assembly boxobj exe
-ver 1.2.0.0
+ver 1.3.0.0
 
 class public auto ansi Module1
 
@@ -24,7 +26,8 @@ class public auto ansi Module1
 		var obj3 as object = $object$numobj
 		Console::WriteLine($integer$obj3)
 		Console::WriteLine(obj3)
-
+	
+		Console::WriteLine(Environment::get_StackTrace())
 		Console::ReadKey()
 
 	end method
