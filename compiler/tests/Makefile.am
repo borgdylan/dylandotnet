@@ -10,12 +10,9 @@ SYSXMLLINQ = `cat sysxmllinql`
 preprep:
 	
 	if [[ $(host) =~ .*-apple-darwin.* ]] ; then \
-		readlink -n $(MONO) > monol; \
-		dirname `cat monol` > monol; \
-		readlink -n `cat monol` > monol; \
-		dirname `cat monol` > monol; \
-		echo -n `cat monol`/../lib/mono/2.0/mscorlib.dll > mscorlibl; \
-		echo -n `cat monol`/../lib/mono/2.0/System.Xml.Linq.dll > sysxmllinql; \
+		readlink $(MONO) > monol; \
+		echo -n "/Library/Frameworks/Mono.framework/Versions/Current/lib/mono/2.0/mscorlib.dll" > mscorlibl; \
+		echo -n "/Library/Frameworks/Mono.framework/Versions/Current/lib/mono/2.0/System.Xml.Linq.dll" > sysxmllinql; \
 	else \
 		readlink -e -n $(MONO) > monol; \
 		dirname `cat monol` > monol; \
