@@ -10,7 +10,7 @@ SYSXMLLINQ = `cat sysxmllinql`
 preprep:
 	
 	if [[ $(host) =~ .*-apple-darwin.* ]] ; then \
-		readlink -e -n $(MONO) > monol; \
+		readlink -n $(MONO) > monol; \
 		dirname `cat monol` > monol; \
 		readlink -n `cat monol` > monol; \
 		dirname `cat monol` > monol; \
