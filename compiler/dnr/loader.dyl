@@ -132,6 +132,108 @@ MakeRef = false
 return typ
 end method
 
+method public static System.Type[] ParamsToTyps(var t as ParameterInfo[])
+
+var arrlen as integer = t[l]
+var arr as System.Type[] = newarr System.Type arrlen
+var p as ParameterInfo
+var ta as System.Type
+
+var i as integer = -1
+var len as integer = arrlen - 1
+
+label loop
+label cont
+
+if arrlen = 0 then
+arr = System.Type::EmptyTypes
+goto cont
+end if
+
+place loop
+
+i++
+
+p = t[i]
+ta = p::get_ParameterType()
+arr[i] = ta
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+return arr
+end method
+
+method public static MethodInfo LoadMethodWithoutParams(var typ as System.Type, var name as string)
+
+var temptyp as System.Type = null
+var ints as System.Type[] = null
+var i as integer = -1
+var len as integer = 0
+var mtdinfo as MethodInfo = null
+
+mtdinfo = typ::GetMethod(name)
+
+if mtdinfo = null then
+
+ints = typ::GetInterfaces()
+
+if ints <> null then
+if ints[l] > 0 then
+len = ints[l] - 1
+
+label loop
+label cont
+label fin
+
+place loop
+
+i++
+
+temptyp = ints[i]
+mtdinfo = temptyp::GetMethod(name)
+
+if mtdinfo = null then
+else
+goto fin
+end if
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+place fin
+
+end if
+end if
+
+end if
+
+if mtdinfo <> null then
+MemberTyp = mtdinfo::get_ReturnType()
+end if
+
+return mtdinfo
+
+end method
+
+method public static System.Type[] GetDelegateInvokeParams(var typ as System.Type)
+
+var inv as MethodInfo = LoadMethodWithoutParams(typ, "Invoke")
+var ps as ParameterInfo[] = inv::GetParameters()
+var ts as System.Type[] = ParamsToTyps(ps)
+
+return ts
+end method
+
 method public static MethodInfo LoadMethod(var typ as System.Type, var name as string, var typs as System.Type[])
 
 var temptyp as System.Type = null
@@ -299,6 +401,11 @@ var len as integer = t1[l] - 1
 
 label loop
 label cont
+
+if t1[l] = 0 then
+ans = true
+goto cont
+end if
 
 place loop
 

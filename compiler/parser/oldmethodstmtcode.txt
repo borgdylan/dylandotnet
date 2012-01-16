@@ -1,0 +1,94 @@
+//var mn as MethodNameTok = new MethodNameTok()
+//var mct as MethodCallTok = new MethodCallTok()
+//var idt as Ident = null
+//var exp as Expr = new Expr()
+//var lvl as integer = 1
+//var d as boolean = true
+//var i as integer = 1
+
+//-------------------------------------------------------------------------
+
+//idt = stm::Tokens[0]
+//mn::Line = idt::Line
+//mn::Value = idt::Value
+
+//var tok2 as Token = stm::Tokens[i]
+//var typ2 as System.Type
+//var b2 as boolean
+//var len as integer = stm::Tokens[l]
+//var eopt as ExprOptimizer = new ExprOptimizer()
+
+//label loop2
+//label cont2
+//label fin
+
+//place loop2
+
+////get parameters
+//i++
+
+//tok2 = stm::Tokens[i]
+//typ2 = gettype RParen
+//b2 = typ2::IsInstanceOfType($object$tok2)
+//if b2 = true then
+//lvl--
+//if lvl = 0 then
+//d = false
+//exp = eopt::Optimize(exp)
+//if exp::Tokens[l] > 0 then
+//mct::AddParam(exp)
+//end if
+//goto cont2
+//else
+//d = true
+//goto fin
+//end if
+//goto fin
+//end if
+
+//tok2 = stm::Tokens[i]
+//typ2 = gettype LParen
+//b2 = typ2::IsInstanceOfType($object$tok2)
+//if b2 = true then
+//lvl++
+//d = true
+//goto fin
+//end if
+
+//tok2 = stm::Tokens[i]
+//typ2 = gettype Comma
+//b2 = typ2::IsInstanceOfType($object$tok2)
+//if b2 = true then
+//if lvl = 1 then
+//d = false
+//exp = eopt::Optimize(exp)
+//if exp::Tokens[l] > 0 then
+//mct::AddParam(exp)
+//end if
+//exp = new Expr()
+//goto fin
+//else
+//d = true
+//goto fin
+//end if
+//else
+//d = true
+//goto fin
+//end if
+
+//place fin
+
+//if d = true then
+//exp::AddToken(stm::Tokens[i])
+//end if
+
+//if i = len then
+//goto cont2
+//else
+//goto loop2
+//end if
+
+//place cont2
+
+//mct::Name = mn
+//mtcss::MethodToken = mct

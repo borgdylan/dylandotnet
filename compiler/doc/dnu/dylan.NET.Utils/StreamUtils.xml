@@ -6,6 +6,7 @@
     <AssemblyVersion>11.2.7.8</AssemblyVersion>
     <AssemblyVersion>11.2.7.9</AssemblyVersion>
     <AssemblyVersion>11.2.8.1</AssemblyVersion>
+    <AssemblyVersion>11.2.8.2</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -24,6 +25,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -39,6 +41,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -57,6 +60,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -75,6 +79,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -93,6 +98,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -114,6 +120,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -135,6 +142,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IO.StreamReader</ReturnType>
@@ -152,6 +160,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IO.StreamWriter</ReturnType>
@@ -169,6 +178,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -188,6 +198,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IO.Stream</ReturnType>
@@ -205,6 +216,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IO.Stream</ReturnType>
@@ -222,6 +234,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IO.Stream</ReturnType>
@@ -238,6 +251,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -255,6 +269,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -268,6 +283,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="WriteError">
+      <MemberSignature Language="C#" Value="public static void WriteError (int line, string file, string msg);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void WriteError(int32 line, string file, string msg) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="line" Type="System.Int32" />
+        <Parameter Name="file" Type="System.String" />
+        <Parameter Name="msg" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="line">To be added.</param>
+        <param name="file">To be added.</param>
+        <param name="msg">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="WriteLine">
       <MemberSignature Language="C#" Value="public static void WriteLine (string str);" />
       <MemberSignature Language="ILAsm" Value=".method public static void WriteLine(string str) cil managed" />
@@ -276,6 +314,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -285,6 +324,29 @@
       </Parameters>
       <Docs>
         <param name="str">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteWarn">
+      <MemberSignature Language="C#" Value="public static void WriteWarn (int line, string file, string msg);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void WriteWarn(int32 line, string file, string msg) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="line" Type="System.Int32" />
+        <Parameter Name="file" Type="System.String" />
+        <Parameter Name="msg" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="line">To be added.</param>
+        <param name="file">To be added.</param>
+        <param name="msg">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

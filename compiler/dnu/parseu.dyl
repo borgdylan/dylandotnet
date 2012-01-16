@@ -351,4 +351,47 @@ end if
 place fin
 end method
 
+method public static string ProcessMSYSPath(var p as string)
+
+var os as OperatingSystem = Environment::get_OSVersion()
+var platf as PlatformID = os::get_Platform()
+var winnt as PlatformID = 2
+var b as boolean = false
+var arr as string[]
+var str as string
+var num as integer = 0
+
+if platf = winnt then
+
+b = p::Contains("/")
+
+if b = true then
+
+p = p::Replace('/','\')
+
+b = File::Exists(p)
+
+if b = false then
+
+arr = StringParser(p, "\")
+
+str = arr[0]
+num = str::get_Length()
+
+if num = 1 then
+str = String::Concat(str,":")
+arr[0] = str
+end if
+
+p = String::Join("\",arr)
+
+end if
+
+end if
+
+end if
+
+return p
+end method
+
 end class

@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.8.1">
+    <Assembly Name="tokenizer.AST" Version="11.2.8.2">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("tokenizer.AST")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.1")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.2")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("tokenizer.AST")</AttributeName>
@@ -76,6 +76,7 @@
       <Type Name="PropertySetStmt" Kind="Class" />
       <Type Name="PropertyStmt" Kind="Class" />
       <Type Name="RefasmStmt" Kind="Class" />
+      <Type Name="RefstdasmStmt" Kind="Class" />
       <Type Name="ReturnStmt" Kind="Class" />
       <Type Name="ScopeStmt" Kind="Class" />
       <Type Name="SingStmt" Kind="Class" />
@@ -140,6 +141,7 @@
       <Type Name="PtrCallTok" Kind="Class" />
       <Type Name="PtrTok" Kind="Class" />
       <Type Name="RefasmTok" Kind="Class" />
+      <Type Name="RefstdasmTok" Kind="Class" />
       <Type Name="ReturnTok" Kind="Class" />
       <Type Name="ScopeTok" Kind="Class" />
       <Type Name="SetTok" Kind="Class" />

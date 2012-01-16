@@ -15,6 +15,18 @@ var len as integer = stmts::Stmts[l] - 1
 var stm as Stmt = null
 var typ as System.Type
 var b as boolean
+var tmpstr as string = ""
+
+ILEmitter::CurSrcFile = fpath
+ILEmitter::AddSrcFile(fpath)
+
+if ILEmitter::DocWriters[l] > 0 then
+var mdlbldbg as ModuleBuilder = AsmFactory::MdlB
+fpath = Path::GetFullPath(fpath)
+var docw as ISymbolDocumentWriter = mdlbldbg::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
+ILEmitter::DocWriter = docw
+ILEmitter::AddDocWriter(docw)
+end if
 
 label loop
 label cont
@@ -28,6 +40,35 @@ typ = gettype IncludeStmt
 b = typ::IsInstanceOfType($object$stm)
 
 if b = true then
+
+var inclustm as IncludeStmt = stm
+var p as Token = inclustm::Path
+
+tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*",Utils.Constants::quot)
+tmpstr = String::Concat(tmpstr, "$")
+var compb as boolean = Utils.ParseUtils::LikeOP(p::Value, tmpstr)
+
+if compb = true then
+tmpstr = p::Value
+var tmpchrarr as char[] = newarr char 1
+tmpchrarr[0] = $char$Utils.Constants::quot
+tmpstr = tmpstr::Trim(tmpchrarr)
+p::Value = tmpstr
+end if
+
+p::Value = ParseUtils::ProcessMSYSPath(p::Value)
+var lx as Lexer = new Lexer()
+StreamUtils::Write("Now Lexing: ")
+StreamUtils::Write(p::Value)
+var pstmts as StmtSet = lx::Analyze(p::Value)
+StreamUtils::WriteLine("...Done.")
+var ps as Parser = new Parser()
+StreamUtils::Write("Now Parsing: ")
+StreamUtils::Write(p::Value)
+var ppstmts as StmtSet = ps::Parse(pstmts)
+StreamUtils::WriteLine("...Done.")
+EmitMSIL(ppstmts, p::Value)
+
 else
 
 var sr as StmtReader = new StmtReader()
@@ -36,6 +77,29 @@ sr::Read(stm, fpath)
 end if
 
 if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+ILEmitter::PopSrcFile()
+i = ILEmitter::SrcFiles[l] - 1
+if i >= 0 then
+ILEmitter::CurSrcFile = ILEmitter::SrcFiles[i]
+end if
+
+i = ILEmitter::DocWriters[l] - 1
+if i >= 0 then
+ILEmitter::PopDocWriter()
+i = ILEmitter::DocWriters[l] - 1
+if i >= 0 then
+ILEmitter::DocWriter = ILEmitter::DocWriters[i]
+end if
+end if
+
+if ILEmitter::SrcFiles[l] = 0 then
 
 StreamUtils::Write("Writing Assembly to Disk")
 var ab as AssemblyBuilder = AsmFactory::AsmB
@@ -43,12 +107,7 @@ ab::DefineVersionInfoResource()
 ab::Save(AsmFactory::AsmFile)
 StreamUtils::WriteLine("...Done.")
 
-goto cont
-else
-goto loop
 end if
-
-place cont
 
 end method
 

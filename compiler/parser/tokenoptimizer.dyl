@@ -492,6 +492,16 @@ tok = metk
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "namespace")
+
+if comp = 0 then
+var nstk as NamespaceTok = new NamespaceTok()
+nstk::Line = tok::Line
+nstk::Value = tok::Value
+tok = nstk
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "ptr")
 
 if comp = 0 then
@@ -524,6 +534,17 @@ ParserFlags::NoOptFlag = true
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "#refstdasm")
+
+if comp = 0 then
+var rsatk as RefstdasmTok = new RefstdasmTok()
+rsatk::Line = tok::Line
+rsatk::Value = tok::Value
+tok = rsatk
+ParserFlags::NoOptFlag = true
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "#debug")
 
 if comp = 0 then
@@ -531,6 +552,16 @@ var dgtk as DebugTok = new DebugTok()
 dgtk::Line = tok::Line
 dgtk::Value = tok::Value
 tok = dgtk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "#include")
+
+if comp = 0 then
+var inclutk as IncludeTok = new IncludeTok()
+inclutk::Line = tok::Line
+inclutk::Value = tok::Value
+tok = inclutk
 goto fin
 end if
 

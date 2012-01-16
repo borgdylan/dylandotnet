@@ -21,6 +21,33 @@ end if
 return refasms
 end method
 
+method public Stmt checkRefstdasm(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype RefstdasmTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var refsasms as RefstdasmStmt = new RefstdasmStmt()
+if valinref|b = true then
+refsasms::Line = stm::Line
+refsasms::Tokens = stm::Tokens
+refsasms::AsmPath = stm::Tokens[1]
+end if
+return refsasms
+end method
+
+method public Stmt checkInclude(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype IncludeTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var inclus as IncludeStmt = new IncludeStmt()
+if valinref|b = true then
+inclus::Line = stm::Line
+inclus::Tokens = stm::Tokens
+inclus::Path = stm::Tokens[1]
+end if
+return inclus
+end method
+
+
 method public Stmt checkIf(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype IfTok
@@ -204,6 +231,19 @@ end if
 return imps
 end method
 
+method public Stmt checkNS(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype NamespaceTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var nss as NSStmt = new NSStmt()
+if valinref|b = true then
+nss::Line = stm::Line
+nss::Tokens = stm::Tokens
+nss::NS = stm::Tokens[1]
+end if
+return nss
+end method
+
 method public Stmt checkLocimport(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype LocimportTok
@@ -345,6 +385,29 @@ end if
 end if
 return ems
 end method
+
+method public Stmt checkEndNS(var stm as Stmt, var b as boolean&)
+if stm::Tokens[l] >= 2 then
+
+var tok1 as Token = stm::Tokens[0]
+var typ1 as System.Type = gettype EndTok
+var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+
+var tok2 as Token = stm::Tokens[1]
+var typ2 as System.Type = gettype NamespaceTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+valinref|b = b1 and b2
+
+var ens as EndNSStmt = new EndNSStmt()
+if valinref|b = true then
+ens::Line = stm::Line
+ens::Tokens = stm::Tokens
+end if
+end if
+return ens
+end method
+
 
 method public Stmt checkEndCls(var stm as Stmt, var b as boolean&)
 if stm::Tokens[l] >= 2 then
@@ -883,103 +946,18 @@ var bb as boolean = typb::IsInstanceOfType($object$tokb)
 valinref|b = ba and bb
 
 var mtcss as MethodCallStmt = new MethodCallStmt()
-var mn as MethodNameTok = new MethodNameTok()
-var mct as MethodCallTok = new MethodCallTok()
-var idt as Ident = null
-var exp as Expr = new Expr()
-var lvl as integer = 1
-var d as boolean = true
-var i as integer = 1
 
 if valinref|b = true then
 
 mtcss::Line = stm::Line
 mtcss::Tokens = stm::Tokens
 
-idt = stm::Tokens[0]
-mn::Line = idt::Line
-mn::Value = idt::Value
-
-var tok2 as Token = stm::Tokens[i]
-var typ2 as System.Type
-var b2 as boolean
-var len as integer = stm::Tokens[l]
 var eopt as ExprOptimizer = new ExprOptimizer()
-
-label loop2
-label cont2
-label fin
-
-place loop2
-
-//get parameters
-i++
-
-tok2 = stm::Tokens[i]
-typ2 = gettype RParen
-b2 = typ2::IsInstanceOfType($object$tok2)
-if b2 = true then
-lvl--
-if lvl = 0 then
-d = false
+var exp as Expr = new Expr()
+exp::Line = stm::Line
+exp::Tokens = stm::Tokens
 exp = eopt::Optimize(exp)
-if exp::Tokens[l] > 0 then
-mct::AddParam(exp)
-end if
-goto cont2
-else
-d = true
-goto fin
-end if
-goto fin
-end if
-
-tok2 = stm::Tokens[i]
-typ2 = gettype LParen
-b2 = typ2::IsInstanceOfType($object$tok2)
-if b2 = true then
-lvl++
-d = true
-goto fin
-end if
-
-tok2 = stm::Tokens[i]
-typ2 = gettype Comma
-b2 = typ2::IsInstanceOfType($object$tok2)
-if b2 = true then
-if lvl = 1 then
-d = false
-exp = eopt::Optimize(exp)
-if exp::Tokens[l] > 0 then
-mct::AddParam(exp)
-end if
-exp = new Expr()
-goto fin
-else
-d = true
-goto fin
-end if
-else
-d = true
-goto fin
-end if
-
-place fin
-
-if d = true then
-exp::AddToken(stm::Tokens[i])
-end if
-
-if i = len then
-goto cont2
-else
-goto loop2
-end if
-
-place cont2
-
-mct::Name = mn
-mtcss::MethodToken = mct
+mtcss::MethodToken = exp::Tokens[0]
 
 end if
 
@@ -1245,6 +1223,13 @@ stm = tmpstm
 goto fin
 end if
 
+tmpstm = checkNS(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
 tmpstm = checkClass(stm, ref|compb)
 
 if compb = true then
@@ -1308,6 +1293,13 @@ stm = tmpstm
 goto fin
 end if
 
+tmpstm = checkEndNS(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
 tmpstm = checkEndCls(stm, ref|compb)
 
 if compb = true then
@@ -1329,7 +1321,21 @@ stm = tmpstm
 goto fin
 end if
 
+tmpstm = checkInclude(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
 tmpstm = checkRefasm(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkRefstdasm(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm

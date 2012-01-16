@@ -70,7 +70,6 @@ CurnMetB::DefineParameter(0, rv, "")
 CurnILGen = CurnMetB::GetILGenerator()
 ILEmitter::Met = CurnMetB
 ILEmitter::ILGen = CurnILGen
-ILEmitter::DocWriter = DocWriter
 ILEmitter::DebugFlg = DebugFlg
 ILEmitter::LocInd = -1
 if ILEmitter::StaticFlg = true then
@@ -84,7 +83,6 @@ method public static void InitConstr()
 CurnILGen = CurnConB::GetILGenerator()
 ILEmitter::Constr = CurnConB
 ILEmitter::ILGen = CurnILGen
-ILEmitter::DocWriter = DocWriter
 ILEmitter::DebugFlg = DebugFlg
 ILEmitter::LocInd = -1
 if ILEmitter::StaticFlg = true then

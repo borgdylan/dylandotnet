@@ -10,6 +10,7 @@
     <AssemblyVersion>11.2.7.8</AssemblyVersion>
     <AssemblyVersion>11.2.7.9</AssemblyVersion>
     <AssemblyVersion>11.2.8.1</AssemblyVersion>
+    <AssemblyVersion>11.2.8.2</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -17,7 +18,7 @@
   <Interfaces />
   <Docs>
     <summary>This class contains the infrastructure to return an OpCode instance given an opcode's name.</summary>
-    <remarks>Use this class whenever you need an OpCOde isntance.</remarks>
+    <remarks>Use this class whenever you need an OpCode instance.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -32,6 +33,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -52,6 +54,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -80,6 +83,7 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.OpCode</ReturnType>
@@ -88,10 +92,10 @@
         <Parameter Name="code" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="code">The opcode name as it use in the 'ILAsm' language e.g. ldc.i4, ldnull, newobj etc..</param>
+        <param name="code">The opcode name as it is used in the 'ILAsm' language e.g. ldc.i4, ldnull, newobj etc..</param>
         <summary>Fetches the OpCode instance corresponding to the opcode name supplied.</summary>
         <returns>An OpCode instance.</returns>
-        <remarks>See the source code for this method to determin if the opcode you want is supoported.</remarks>
+        <remarks>See the source code for this method to determine if the opcode you want is supported.</remarks>
       </Docs>
     </Member>
   </Members>

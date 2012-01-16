@@ -1,3 +1,29 @@
+dylandotnet (11.2.8.2-1) oneiric; urgency=low
+
+  * Adding some error detection for when specified classes/variables are inexistent.
+  * Adding support for the #include statement.
+  * Adding support for the #refstdasm statement.
+  * Adding support for downcasting/upcasting (extends boxing system).
+  * Adding support for MSYS generated URIs on Windows.
+  * Adding support for method chaining on method calls that are not after assignment.
+  * Fixing zero parameter delegation bug.
+  * Updating Makefiles and man pages.
+  * Updating debian/control.
+  * Bumping up version to 11.2.8.2
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Mon, 16 Jan 2012 12:15:37 +0100
+ 
+dylandotnet (11.2.8.1-1) oneiric; urgency=low
+
+  * Adding support for making delegates.
+  * Adding better syntax for delegation which supports more cases than ptr.
+  * Finished support for array making but not store/load.
+  * Updating makefiles and man pages.
+  * Adding more test programs.
+  * Bumping up version to 11.2.8.1
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Thu, 13 Dec 2011 22:57:34 +0100
+
 dylandotnet (11.2.7.9-2) oneiric; urgency=low
 
   * Fixing me prefix bug.
@@ -8,7 +34,7 @@ dylandotnet (11.2.7.9-2) oneiric; urgency=low
   * Initial support for array making.
   * Updating debian directory.
   * Updating makefiles and man pages.
-  * Adding set of test programs.0
+  * Adding set of test programs.
   
  -- Dylan Borg <borgdylan@hotmail.com>  Thu, 01 Dec 2011 17:00:14 +0100
 

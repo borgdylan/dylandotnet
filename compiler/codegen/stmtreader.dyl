@@ -13,10 +13,14 @@ method public void Read(var stm as Stmt, var fpath as string)
 var typ as System.Type
 var b as boolean = false
 var tmpstr as string
+var errstr as string
 
 label fin
 
 AsmFactory::ChainFlg = false
+
+ILEmitter::LineNr = stm::Line
+ILEmitter::CurSrcFile = fpath
 
 if AsmFactory::DebugFlg = true then
 if AsmFactory::InMethodFlg = true then
@@ -43,7 +47,39 @@ tmpstr = tmpstr::Trim(tmpchrarr)
 ap::Value = tmpstr
 end if
 
+ap::Value = ParseUtils::ProcessMSYSPath(ap::Value)
+
 var asm as Assembly = Assembly::LoadFrom(ap::Value)
+StreamUtils::Write("Referencing Assembly: ")
+StreamUtils::WriteLine(ap::Value)
+Importer::AddAsm(asm)
+goto fin
+end if
+
+typ = gettype RefstdasmStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var rsastm as RefstdasmStmt = stm
+ap = rsastm::AsmPath
+
+tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*",Utils.Constants::quot)
+tmpstr = String::Concat(tmpstr, "$")
+compb = Utils.ParseUtils::LikeOP(ap::Value, tmpstr)
+
+if compb = true then
+tmpstr = ap::Value
+tmpchrarr = newarr char 1
+tmpchrarr[0] = $char$Utils.Constants::quot
+tmpstr = tmpstr::Trim(tmpchrarr)
+ap::Value = tmpstr
+end if
+
+ap::Value = ParseUtils::ProcessMSYSPath(ap::Value)
+tmpstr = RuntimeEnvironment::GetRuntimeDirectory()
+ap::Value = Path::Combine(tmpstr, ap::Value)
+
+asm  = Assembly::LoadFrom(ap::Value)
 StreamUtils::Write("Referencing Assembly: ")
 StreamUtils::WriteLine(ap::Value)
 Importer::AddAsm(asm)
@@ -155,7 +191,9 @@ if AsmFactory::DebugFlg = true then
 var mdlbldbg as ModuleBuilder = AsmFactory::MdlB
 fpath = Path::GetFullPath(fpath)
 //Console::WriteLine(fpath)
-AsmFactory::DocWriter = mdlbldbg::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
+var docw as ISymbolDocumentWriter = mdlbldbg::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
+ILEmitter::DocWriter = docw
+ILEmitter::AddDocWriter(docw)
 end if
 
 // --------------------------------------------------------------------------------------------------------
@@ -220,6 +258,12 @@ end if
 else
 inhtyp = reft 
 end if
+
+if inhtyp = null then
+errstr = String::Concat("Base Class '", inhclstok::Value, "' is not defined.")
+StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
+end if
+
 
 AsmFactory::CurnInhTyp = inhtyp
 
@@ -362,6 +406,12 @@ var ftyp as System.Type = null
 //end if
 
 ftyp = Helpers::CommitEvalTTok(ftyptok)
+
+if ftyp = null then
+errstr = String::Concat("Class '", ftyptok::Value, "' is not defined.")
+StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
+end if
+
 
 var typb2 as TypeBuilder = AsmFactory::CurnTypB
 AsmFactory::CurnFldB = typb2::DefineField(flsnamstr, ftyp, fa)
@@ -559,6 +609,12 @@ vtyptok = curv::VarTyp
 
 vtyp = Helpers::CommitEvalTTok(vtyptok)
 
+if vtyp = null then
+errstr = String::Concat("Class '", vtyptok::Value, "' is not defined.")
+StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
+end if
+
+
 ILEmitter::DeclVar(vnam::Value, vtyp)
 ILEmitter::LocInd = ILEmitter::LocInd + 1
 SymTable::AddVar(vnam::Value, true, ILEmitter::LocInd, vtyp)
@@ -588,6 +644,11 @@ vtyptok = curva::VarTyp
 
 vtyp = Helpers::CommitEvalTTok(vtyptok)
 
+if vtyp = null then
+errstr = String::Concat("Class '", vtyptok::Value, "' is not defined.")
+StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
+end if
+
 ILEmitter::DeclVar(vnam::Value, vtyp)
 ILEmitter::LocInd = ILEmitter::LocInd + 1
 SymTable::AddVar(vnam::Value, true, ILEmitter::LocInd, vtyp)
@@ -596,6 +657,27 @@ eval::StoreEmit(vnam, curva::RExpr)
 
 goto fin
 end if
+
+typ = gettype NSStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+
+var nss as NSStmt = stm
+var nssns as Token = nss::NS
+AsmFactory::CurnNS = nssns::Value
+
+goto fin
+end if
+
+typ = gettype EndNSStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+AsmFactory::CurnNS = AsmFactory::DfltNS
+goto fin
+end if
+
 
 typ = gettype AssignStmt
 b = typ::IsInstanceOfType($object$stm)
@@ -619,7 +701,7 @@ if b = true then
 var mcstmt as MethodCallStmt = stm
 var mcstmtexp as Expr = new Expr()
 var mcstmttok as MethodCallTok = mcstmt::MethodToken
-mcstmttok::PopFlg = true
+mcstmttok = Helpers::SetPopFlg(mcstmttok)
 mcstmtexp::AddToken(mcstmttok)
 eval = new Evaluator()
 eval::Evaluate(mcstmtexp)

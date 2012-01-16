@@ -1,5 +1,4 @@
-#refasm "/usr/lib/mono/2.0/mscorlib.dll"
-#refasm "/usr/lib/mono/gac/System.Xml.Linq/3.5.0.0__b77a5c561934e089/System.Xml.Linq.dll"
+#refstdasm "mscorlib.dll"
 
 //Field and Constructor test
 import System

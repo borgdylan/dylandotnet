@@ -70,6 +70,10 @@ class public auto ansi RefasmTok extends Token
 
 end class
 
+class public auto ansi RefstdasmTok extends Token
+
+end class
+
 class public auto ansi NewresTok extends Token
 
 end class

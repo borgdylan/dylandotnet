@@ -40,12 +40,14 @@ end method
 method public static void CloseInS()
 if InS <> null then
 InS::Close()
+InS = null
 end if
 end method
 
 method public static void CloseOutS()
 if OutS <> null then
 OutS::Close()
+OutS = null
 end if
 end method
 
@@ -83,5 +85,23 @@ Console::Write(str)
 end if
 end method
 
+method public static void WriteWarn(var line as integer, var file as string, var msg as string)
+
+var str as string = String::Concat("WARNING: " , msg, " at line ", $string$line)
+str = String::Concat(str, " in file: " , file)
+WriteLine(str)
+
+end method
+
+method public static void WriteError(var line as integer, var file as string, var msg as string)
+
+var str as string = String::Concat("ERROR: " , msg, " at line ", $string$line)
+str = String::Concat(str, " in file: " , file)
+WriteLine(str)
+CloseInS()
+CloseOutS()
+Environment::Exit(1)
+
+end method
 
 end class

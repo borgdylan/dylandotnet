@@ -18,3 +18,16 @@ AsmPath = new Token()
 end method
 
 end class
+
+class public auto ansi RefstdasmStmt extends Stmt
+
+field public Token AsmPath
+
+method public void ctor0()
+me::ctor()
+me::Tokens = newarr Token 0
+me::Line = 0
+AsmPath = new Token()
+end method
+
+end class

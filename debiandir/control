@@ -2,11 +2,12 @@ Source: dylandotnet
 Section: cli-mono
 Priority: optional
 Maintainer: Dylan Borg <borgdylan@hotmail.com>
-Build-Depends: debhelper (>= 7.0.50~), cli-common-dev, devscripts, libmono-corlib2.0-cil, libmono-system2.0-cil, mono-devel, mono-runtime, gawk, autotools-dev, monodoc-base
+Build-Depends: debhelper (>= 7.0.50~), cli-common-dev (>= 0.7), devscripts, libmono-corlib2.0-cil, libmono-system2.0-cil, mono-devel, mono-runtime, gawk, autotools-dev, monodoc-base
 Standards-Version: 3.9.2
 Homepage: http://launchpad.net/dylandotnet
 Vcs-Git: git://gitorious.org/dylandotnet/dylandotnet.git
-Vcs-Browser: http://www.gitorious.org/dylandotnet/dylandotnet/trees/master
+Vcs-Bzr: lp:dylandotnet
+Vcs-Browser: http://bazaar.launchpad.net/~borgdylan/dylandotnet/dylandotnet/files
 
 Package: dylandotnet-doc
 Section: doc
@@ -20,7 +21,7 @@ Description: This is the dylan.NET documentation.
 Package: dylandotnet
 Section: cli-mono
 Architecture: all
-Depends: ${misc:Depends}, libmono-corlib2.0-cil, libmono-system2.0-cil, mono-devel, cli-common, mono-runtime
+Depends: ${misc:Depends}, ${cli:Depends}, libmono-corlib2.0-cil, libmono-system2.0-cil, mono-devel, cli-common, mono-runtime
 Recommends: mono-utils, monodoc-base,  dylandotnet-doc
 Description: This is the dylan.NET compiler for CLI 2.0.
  This is another compiler for the Mono runtime targeting dylan.NET.

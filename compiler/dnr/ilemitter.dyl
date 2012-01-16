@@ -16,6 +16,10 @@ field public static boolean StaticFlg
 field public static boolean DebugFlg
 field public static integer LocInd
 field public static integer ArgInd
+field public static integer LineNr
+field public static string CurSrcFile
+field public static string[] SrcFiles
+field public static ISymbolDocumentWriter[] DocWriters
 
 method public static void ctor0()
 Met = null
@@ -25,10 +29,174 @@ StaticFlg = false
 DebugFlg = false
 LocInd = 0
 ArgInd = 0
+LineNr = 0
+CurSrcFile = ""
+SrcFiles = newarr string 0
+DocWriters = newarr ISymbolDocumentWriter 0
 end method
+
+method public static void AddSrcFile(var srcf as string)
+
+var len as integer = SrcFiles[l]
+var destl as integer = len + 1
+var stopel as integer = len - 1
+var i as integer = -1
+
+var destarr as string[] = newarr string destl
+
+label loop
+label cont
+
+place loop
+
+i = i + 1
+
+if len > 0 then
+
+destarr[i] = SrcFiles[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+destarr[len] = srcf
+SrcFiles = destarr
+
+end method
+
+method public static void PopSrcFile()
+
+var len as integer = SrcFiles[l]
+var destl as integer = len - 1
+var stopel as integer = len - 2
+var i as integer = -1
+
+var destarr as string[] = newarr string destl
+
+label loop
+label cont
+
+place loop
+
+i = i + 1
+
+if destl > 0 then
+
+destarr[i] = SrcFiles[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+SrcFiles = destarr
+
+end method
+
+method public static void AddDocWriter(var srcf as ISymbolDocumentWriter)
+
+var len as integer = DocWriters[l]
+var destl as integer = len + 1
+var stopel as integer = len - 1
+var i as integer = -1
+
+var destarr as string[] = newarr ISymbolDocumentWriter destl
+
+label loop
+label cont
+
+place loop
+
+i = i + 1
+
+if len > 0 then
+
+destarr[i] = DocWriters[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+destarr[len] = srcf
+DocWriters = destarr
+
+end method
+
+method public static void PopDocWriter()
+
+var len as integer = DocWriters[l]
+var destl as integer = len - 1
+var stopel as integer = len - 2
+var i as integer = -1
+
+var destarr as string[] = newarr ISymbolDocumentWriter destl
+
+label loop
+label cont
+
+place loop
+
+i = i + 1
+
+if destl > 0 then
+
+destarr[i] = DocWriters[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+DocWriters = destarr
+
+end method
+
 
 method public static void EmitRet()
 var op as OpCode = InstructionHelper::getOPCode("ret")
+ILGen::Emit(op)
+end method
+
+method public static void EmitDup()
+var op as OpCode = InstructionHelper::getOPCode("dup")
 ILGen::Emit(op)
 end method
 
@@ -50,6 +218,29 @@ end method
 method public static void EmitUnboxAny(var t as System.Type)
 var op as OpCode = InstructionHelper::getOPCode("unbox.any")
 ILGen::Emit(op, t)
+end method
+
+method public static void EmitCastclass(var t as System.Type)
+var op as OpCode = InstructionHelper::getOPCode("castclass")
+ILGen::Emit(op, t)
+end method
+
+method public static void EmitIsinst(var t as System.Type)
+var op as OpCode = InstructionHelper::getOPCode("isinst")
+ILGen::Emit(op, t)
+end method
+
+method public static void EmitIs(var t as System.Type)
+var op as OpCode = InstructionHelper::getOPCode("isinst")
+ILGen::Emit(op, t)
+op = InstructionHelper::getOPCode("ldnull")
+ILGen::Emit(op)
+op = InstructionHelper::getOPCode("ceq")
+ILGen::Emit(op)
+op = InstructionHelper::getOPCode("ldc.i4.0")
+ILGen::Emit(op)
+op = InstructionHelper::getOPCode("ceq")
+ILGen::Emit(op)
 end method
 
 method public static void EmitConstrained(var t as System.Type)
@@ -1300,9 +1491,31 @@ method public static void EmitStrAdd()
 var op as OpCode
 var strtyp as System.Type = gettype string
 var params as system.Type[] = newarr System.Type 2
-params[0] = gettype string
-params[1] = gettype string
+params[0] = strtyp
+params[1] = strtyp
 var met as MethodInfo = strtyp::GetMethod("Concat",params)
+op = InstructionHelper::getOPCode("call")
+ILGen::Emit(op, met)
+end method
+
+method public static void EmitDelegateAdd()
+var op as OpCode
+var deltyp as System.Type = gettype System.Delegate
+var params as system.Type[] = newarr System.Type 2
+params[0] = deltyp
+params[1] = deltyp
+var met as MethodInfo = deltyp::GetMethod("Combine",params)
+op = InstructionHelper::getOPCode("call")
+ILGen::Emit(op, met)
+end method
+
+method public static void EmitDelegateSub()
+var op as OpCode
+var deltyp as System.Type = gettype System.Delegate
+var params as system.Type[] = newarr System.Type 2
+params[0] = deltyp
+params[1] = deltyp
+var met as MethodInfo = deltyp::GetMethod("Remove",params)
 op = InstructionHelper::getOPCode("call")
 ILGen::Emit(op, met)
 end method

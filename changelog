@@ -1,3 +1,59 @@
+commit 9d57f567ac59ccb9f43cd3bb7e9ed7f154560a8d
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 2 23:46:44 2012 +0100
+
+    Fixing another error in MAC OS/X part of tests build script
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 07931b8ff70fb234eb5d96b494eea8e0ecd3a2f5
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 2 23:36:52 2012 +0100
+
+    Fixing another error in MAC OS/X part of tests build script
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 69f66e9d3f11db09dfb63740934924fce1fa06a6
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 2 23:20:01 2012 +0100
+
+    Fixing another error in MAC OS/X part of tests build script
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit b29ff9b70ee10ccfb39fe6d1e8eec9b9fd4a30e2
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 2 23:15:39 2012 +0100
+
+    Fixing another error in MAC OS/X part of tests build script
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 04264700e270e02cd6a82712e992fc1bd34229ed
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 2 22:49:07 2012 +0100
+
+    Commiting emergency fix for tests Makefile . Updating library finding script for MAC OS/X based systems.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 9fcb6f9b0634f1e87a2a0b9210e0b67bb1e9af74
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Fri Dec 23 13:52:57 2011 +0100
+
+    fixing 0byte tarball problem by uncompressing and recompressing
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit c938bcbb261a7b4606e340a8a47a63b7e381fc9c
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Fri Dec 23 13:41:59 2011 +0100
+
+    Commiting tarballs and debs for v. 11.2.8.1. Packages already available from PPA.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 0a5646e1f2be02766818d4cf061a7500c110f33a
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Tue Dec 13 22:38:21 2011 +0100

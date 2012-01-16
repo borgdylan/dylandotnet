@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="GENERATOR" content="LyX 2.0.0" />
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<title>The dylan.NET Manual v.11.2.2</title>
+
+<!-- Text Class Preamble -->
+<style type="text/css">
+div.toc {
+margin: 2em 0em;
+border-style: solid;
+border-width: 2px 0px;
+padding: 1em 0em;
+}
+div.tochead { font-size: x-large; font-weight: bold; }
+div.lyxtoc-0 {
+margin: 2em 0em 0em 0em;
+font-size: xx-large;
+font-weight: bold;
+}
+div.lyxtoc-1 {
+margin: 1em 0em 0em 0em;
+font-size: x-large;
+font-weight: bold;
+}
+div.lyxtoc-2 {
+margin: 0em 0em 0em 1em;
+font-size: large;
+font-weight: normal;
+}
+div.lyxtoc-3 { margin: 0em 0em 0em 0.5em; font-size: medium; }
+div.lyxtoc-4 { margin: 0em 0em 0em 0.5em; }
+div.lyxtoc-5 { margin: 0em 0em 0em 0.5em; }
+div.lyxtoc-6 { margin: 0em 0em 0em 0.5em; }
+a.tocentry {
+text-decoration: none;
+color: black;
+}
+a.tocentry:visited { color: black; }
+a.tocarrow {
+font-weight: bold;
+text-decoration: none;
+color: #909090;
+}
+a.tocarrow:visited { color: #C0C0C0; }
+</style>
+
+<!-- Preamble Snippets -->
+
+<!-- Layout-provided Styles -->
+<style type='text/css'>
+h1.title {
+font-family: sans-serif;
+font-weight: bold;
+font-size: x-large;
+margin-bottom: 1ex;
+text-align: center;
+
+}
+h2.section {
+font-family: sans-serif;
+font-weight: bold;
+font-size: x-large;
+margin-top: 1.3ex;
+margin-bottom: 0.7ex;
+text-align: left;
+
+}
+h3.subsection {
+font-family: sans-serif;
+font-weight: bold;
+font-size: large;
+margin-top: 0.9ex;
+margin-bottom: 0.5ex;
+text-align: left;
+
+}
+div.standard {
+text-indent: 2em;
+margin-bottom: 2ex;
+}
+div.plain_layout {
+text-align: left;
+
+}
+dl.description dt { font-weight: bold; }
+h4.subsubsection {
+font-family: sans-serif;
+font-weight: bold;
+font-size: medium;
+margin-top: 0.7ex;
+margin-bottom: 0.4ex;
+text-align: left;
+
+}
+div.chapter {
+text-align: left;
+
+}
+span.foot_label {
+vertical-align: super;
+font-size: smaller;
+font-weight: bold;
+text-decoration: underline;
+}
+div.foot {
+display: inline;
+font-size: small;
+font-weight: medium;
+font-family: serif;
+font-variant: normal;
+font-style: normal;
+}
+div.foot_inner { display: none; }
+div.foot:hover div.foot_inner {
+display: block;
+border: 1px double black;
+margin: 0em 1em;
+padding: 1em;
+}
+</style>
+</head>
+<body>
+<h1 class="title"><a id='magicparlabel-3' />
+The dylan.NET Manual v.11.2.2</h1>
+<h2 class="section"><span class="section_label">1</span> <a id='magicparlabel-137' />
+The Compiler</h2>
+<h3 class="subsection"><span class="subsection_label">1.1</span> <a id='magicparlabel-5' />
+Introduction</h3>
+<div class="standard"><a id='magicparlabel-6' />
+This chapter of the manual will speak about the inner workings of the new dylan.NET compiler. For the language syntax look further down this manual. The need for a chapter like this has risen becuase of the new API nature of dylan.NET i.e. now dylan.NET is split in class libraries each doing a step that transforms a basic form of representation into a more complex form. The compiler's work is just that, converting source code written with a basic text editor into an AST, then into MSIL/CIL that is compatible with .NET 3.5 SP1 or higher and Novell Mono 2.6.7 or higher. Since Mono is the least common denominator between the two frameworks, its libraries shall be used in building the compiler. Mono is also cross-paltform (i.e. works on Windows, Linux and Macintosh OS/X), hence the need to be compatible with it. Go to the Mono website <div class="foot"><span class="foot_label">1</span><div class="foot_inner"><div class="plain_layout"><a id='magicparlabel-10' />
+http://www.mono-project.com contains info about Mono as well as downloads for Windows, Mac and Linux.</div>
+</div></div> for more info.</div>
+<h3 class="subsection"><span class="subsection_label">1.2</span> <a id='magicparlabel-11' />
+The dylan.NET API</h3>
+<div class="standard"><a id='magicparlabel-12' />
+The API is split into 4 libraries. These are (a * means that the library is incomplete or not available yet):</div>
+
+<dl class='description'><dt class="description_label">tokenizer.AST.dll</dt>
+<dd class="description_item"><a id='magicparlabel-13' />
+ Contains all the AST components such as Tokens, Expression, Statements etc. defined in the dylan.NET language. The other libraries make heavy use of this library.</dd>
+<dt class="description_label">tokenizer.Lexer.dll</dt>
+<dd class="description_item"><a id='magicparlabel-14' />
+ Contains the Lexer components that can turn a dylan.NET file into statements and tokens.</dd>
+<dt class="description_label">tokenizer.Parser.dll</dt>
+<dd class="description_item"><a id='magicparlabel-15' />
+ Contains the Parser components responsible for the optimization of statements. It can recognize the type of statements and tokens.</dd>
+<dt class="description_label">tokenizer.CodeGen.dll*</dt>
+<dd class="description_item"><a id='magicparlabel-16' />
+ Contains the components that turn the AST into MSIL/CIL code. (Still to be written.) </dd>
+</dl>
+<div class="standard"><a id='magicparlabel-17' />
+The version number for all assemblies should match for a given dylan.NET distro. The program <strong>dnc.exe</strong> wraps the 4 libraries and is the main compiler executable. It also is an example for the use of the libraries. The libraries and their sources are available from Gitorious. <div class="foot"><span class="foot_label">2</span><div class="foot_inner"><div class="plain_layout"><a id='magicparlabel-21' />
+http://gitorious.org/dylandotnet/dylandotnet has the latest sources inside the git repo.</div>
+</div></div></div>
+<h4 class="subsubsection"><span class="subsubsection_label"></span> <a id='magicparlabel-22' />
+AST </h4>
+
+<dl class='description'><dt class="description_label">The</dt>
+<dd class="description_item"><a id='magicparlabel-979' />
+ AST or as I call it, the festival of inheritance contains all dylan.NET language components. The root namespace is dylan.NET.Tokenizer.AST. All classes derive from one of the following classes:</dd>
+<dt class="description_label">Token</dt>
+<dd class="description_item"><a id='magicparlabel-24' />
+ A standard dylan.NET token comprising an identifier, literal, operator etc. All tokens inherit from this class.</dd>
+<dt class="description_label">Expr</dt>
+<dd class="description_item"><a id='magicparlabel-25' />
+ A standard dylan.NET expression from which all expressions are derived.</dd>
+<dt class="description_label">Stmt</dt>
+<dd class="description_item"><a id='magicparlabel-26' />
+ A standard statement from which all other statements are derived. These can be collected in an <strong>StmtSet</strong>.</dd>
+</dl>
+<h4 class="subsubsection"><span class="subsubsection_label"></span> <a id='magicparlabel-27' />
+Lexer</h4>
+<div class="standard"><a id='magicparlabel-28' />
+The Lexer is what takes all text source files, splits them into lines drom which it makes statements and then splits each line into tokens which it puts inside the corresponding statement. It then store the set of statements into a statement set for handing over to the Parser. The dylan.NET lexer is generally string and character aware i.e. it will not split the token stream when inside a character (eg. 'c') or when inside a string (e.g. &ldquo;This is a string&rdquo;). The spaces in the string used before will not be used to split the string into tokens as the lexer knows that it is a string literal. The lexer also has an ingenious system for recognizing operators that are multi-character such as ++,&gt;=,!=,&ndash;, etc. The root namespace is dylan.NET.Tokenizer.Lexer.</div>
+<h4 class="subsubsection"><span class="subsubsection_label"></span> <a id='magicparlabel-29' />
+Parser</h4>
+<div class="standard"><a id='magicparlabel-30' />
+The Parser is what takes the <strong>StmtSet</strong> made by the Lexer and transforms it into the specific statements containing specific tokens. etc. The decision is done based on the textual value of the tokens inside the statements. For example a token whose <strong>Value</strong> field says &ldquo;object&rdquo; gets converted into an <strong>ObjectTok</strong> which inherits the class <strong>TypeTok </strong>&nbsp;which in turn inherits <strong>Token</strong>. The casting from one type to another is done in a specific fashion and not using the default .NET casting system which is not able to do all the casts needed. During these casts the <strong>new</strong> operator is used a extensively to instantiate the new optimized token, statements etc. and then assignments are used to transfer the information inside the old class into the new class. The root namespace is dylan.NET.Tokenizer.Parser.</div>
+<h4 class="subsubsection"><span class="subsubsection_label"></span> <a id='magicparlabel-31' />
+CodeGen</h4>
+<div class="standard"><a id='magicparlabel-32' />
+More on this after the library is actually written. The root namespace shall be dylan.NET.Tokenizer.CodeGen.</div>
+
+<div class="chapter"><a id='magicparlabel-33' />
+Other Libraries</div>
+<h3 class="subsection"><span class="subsection_label">1.3</span> <a id='magicparlabel-34' />
+Introduction</h3>
+<div class="standard"><a id='magicparlabel-35' />
+Like other programming languages dylan.NET defines its own specific libraries. The main utility library is <strong>dnu.dll</strong> which contains certain functions helping the dylan.NET programmer. Since the new compiler is written in dylan.NET itself i.e. it is self-hosting it makes use of dnu.dll. This means it has to be built before the compiler if rebuilding the toolset from source. All these libraries below are written in dylan.NET demonstrating that dylan.NET can make great libraries like C# can!</div>
+<h3 class="subsection"><span class="subsection_label">1.4</span> <a id='magicparlabel-36' />
+dnu - dylan.NET Utility</h3>
+<div class="standard"><a id='magicparlabel-37' />
+This library provides certain constants such as pi,crlf,cr,lf,e etc. One may say, &ldquo;But .NET already has all that stuff&rdquo;. Yes it is true. But for now dylan.NET cannot create nor access literal fields which means the .NET ones are useless. That is why dnu defines readonly field versions of these constants. In the future this class may get deprecated when compile time constants may be created and used from dylan.NET. It is also useful to know that certain functions in dnu might be original ones and can be needed from C# or VB.NET. The root namespace is dylan.NET.Utils.</div>
+<h3 class="subsection"><span class="subsection_label">1.5</span> <a id='magicparlabel-38' />
+sld - SQLite Data</h3>
+<div class="standard"><a id='magicparlabel-39' />
+This library provides an easy way to use SQLite database connections. New datatypes storable in SQL databases can be defined and used as file-formats. The main external data formats for dylan.NET are the SQLite database and the XML file. For XML .NET gives us the required abstractions but for SQLite it does not so we need wrapper libraries such as <strong>Mono.Data.Sqlite.dll</strong> and a library to abstract the wrapper such as <strong>sld.dll</strong>.</div>
+<h3 class="subsection"><span class="subsection_label">1.6</span> <a id='magicparlabel-40' />
+Others...</h3>
+<div class="standard"><a id='magicparlabel-41' />
+Other libraries written in dylan.NET specifically for dylan.NET may rise in the future giving a helping hand to those who wish to invest in dylan.NET. Note that dylan.NET made libraries are generally cross-platform through Novell Mono. If a native library is required, the dylan.NET library is only portable to the OSes for which a nativee library exists. For example, sld is only portable to Windows and Linux that is why XML will be used inside the CodeGen module.</div>
+<h2 class="section"><span class="section_label">2</span> <a id='magicparlabel-129' />
+The Language</h2>
+<h3 class="subsection"><span class="subsection_label">2.1</span> <a id='magicparlabel-43' />
+Introduction</h3>
+<div class="standard"><a id='magicparlabel-44' />
+Finally here it is, the dylan.NET language manual pages.</div>
+</body>
+</html>

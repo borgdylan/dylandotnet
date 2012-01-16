@@ -37,6 +37,7 @@ import System.Xml
 import System.Xml.Linq
 import System.Reflection
 import System.Reflection.Emit
+import System.Runtime.InteropServices
 import dylan.NET
 import dylan.NET.Utils
 import dylan.NET.Reflection
@@ -55,7 +56,7 @@ import dylan.NET.Tokenizer.Parser
 locimport dylan.NET.Tokenizer.CodeGen
 
 assembly tokenizer.CodeGen dll
-ver 11.2.8.1
+ver 11.2.8.2
 
 namespace dylan.NET.Tokenizer.CodeGen
 #include E:\Code\dylannet\compiler\codegen\varitem.dyl

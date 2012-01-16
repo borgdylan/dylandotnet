@@ -401,6 +401,7 @@ end method
 
 method public static void ProcessParams(var ps as Expr[])
 
+var errstr as string
 var len as integer = ps[l] - 1
 var i as integer = -1
 var curp as VarExpr = null
@@ -432,6 +433,12 @@ typtok = curp::VarTyp
 //end if
 
 typ = CommitEvalTTok(typtok)
+
+if typ = null then
+errstr = String::Concat("Class '", typtok::Value, "' is not defined.")
+StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
+end if
+
 
 if typ <> null then
 AsmFactory::AddTyp(typ)
@@ -552,206 +559,6 @@ end if
 
 place cont
 
-end method
-
-method public static integer getCodeFromType(var typ as System.Type)
-var cod as integer = 0
-var b as boolean = false
-var typ2 as System.Type
-
-label fin
-
-typ2 = gettype boolean
-b = typ::Equals(typ2)
-if b = true then
-cod = 101
-goto fin
-end if
-
-typ2 = gettype Byte
-b = typ::Equals(typ2)
-if b = true then
-cod = 8
-goto fin
-end if
-
-typ2 = gettype UInt16
-b = typ::Equals(typ2)
-if b = true then
-cod = 16
-goto fin
-end if
-
-typ2 = gettype UInt32
-b = typ::Equals(typ2)
-if b = true then
-cod = 32
-goto fin
-end if
-
-typ2 = gettype UIntPtr
-b = typ::Equals(typ2)
-if b = true then
-cod = 40
-goto fin
-end if
-
-typ2 = gettype UInt64
-b = typ::Equals(typ2)
-if b = true then
-cod = 64
-goto fin
-end if
-
-typ2 = gettype sbyte
-b = typ::Equals(typ2)
-if b = true then
-cod = 108
-goto fin
-end if
-
-typ2 = gettype short
-b = typ::Equals(typ2)
-if b = true then
-cod = 116
-goto fin
-end if
-
-typ2 = gettype integer
-b = typ::Equals(typ2)
-if b = true then
-cod = 132
-goto fin
-end if
-
-typ2 = gettype IntPtr
-b = typ::Equals(typ2)
-if b = true then
-cod = 140
-goto fin
-end if
-
-typ2 = gettype char
-b = typ::Equals(typ2)
-if b = true then
-cod = 150
-goto fin
-end if
-
-typ2 = gettype long
-b = typ::Equals(typ2)
-if b = true then
-cod = 164
-goto fin
-end if
-
-typ2 = gettype single
-b = typ::Equals(typ2)
-if b = true then
-cod = 232
-goto fin
-end if
-
-typ2 = gettype double
-b = typ::Equals(typ2)
-if b = true then
-cod = 264
-goto fin
-end if
-
-typ2 = gettype string
-b = typ::Equals(typ2)
-if b = true then
-cod = 270
-goto fin
-end if
-
-place fin
-return cod
-end method
-
-method public static System.Type getTypeFromCode(var cod as integer)
-var typ2 as System.Type = gettype object
-
-label fin
-
-if cod = 101 then
-typ2 = gettype boolean
-goto fin
-end if
-
-if cod = 8 then
-typ2 = gettype Byte
-goto fin
-end if
-
-if cod = 16 then
-typ2 = gettype UInt16
-goto fin
-end if
-
-if cod = 32 then
-typ2 = gettype UInt32
-goto fin
-end if
-
-if cod = 40 then
-typ2 = gettype UIntPtr
-goto fin
-end if
-
-if cod = 64 then
-typ2 = gettype UInt64
-goto fin
-end if
-
-if cod = 108 then
-typ2 = gettype sbyte
-goto fin
-end if
-
-if cod = 116 then
-typ2 = gettype short
-goto fin
-end if
-
-if cod = 132 then
-typ2 = gettype integer
-goto fin
-end if
-
-if cod = 140 then
-typ2 = gettype IntPtr
-goto fin
-end if
-
-if cod = 150 then
-typ2 = gettype char
-goto fin
-end if
-
-if cod = 164 then
-typ2 = gettype long
-goto fin
-end if
-
-if cod = 232 then
-typ2 = gettype single
-goto fin
-end if
-
-if cod = 264 then
-typ2 = gettype double
-goto fin
-end if
-
-if cod = 270 then
-typ2 = gettype string
-goto fin
-end if
-
-place fin
-return typ2
 end method
 
 method public static void EmitLiteral(var lit as Literal)
@@ -1292,6 +1099,11 @@ var arr as System.Type[] = newarr System.Type 1
 
 label fin
 
+b = source::Equals(sink)
+if b = true then
+goto fin
+end if
+
 
 b = source::get_IsPrimitive()
 b2 = sink::get_IsPrimitive()
@@ -1345,19 +1157,45 @@ typ = gettype ValueType
 b = typ::IsAssignableFrom(source)
 if b = true then
 ILEmitter::EmitBox(source)
-else
-end if
 goto fin
+else
+goto fin
+end if
 end if
 
 typ = gettype object
 b = source::Equals(typ)
 
 if b = true then
+typ = gettype ValueType
+b = typ::IsAssignableFrom(sink)
+if b = true then
 ILEmitter::EmitUnboxAny(sink)
+goto fin
+else
+end if
+end if
+
+typ = gettype ValueType
+b = typ::IsAssignableFrom(sink)
+b2 = typ::IsAssignableFrom(source)
+b = b or b2
+
+if b = false then
+
+b = sink::IsAssignableFrom(source)
+if b = true then
 goto fin
 end if
 
+b = source::IsAssignableFrom(sink)
+if b = true then
+ILEmitter::EmitCastclass(sink)
+goto fin
+end if
+
+else
+end if
 
 typ = gettype IntPtr
 b = source::Equals(typ)
@@ -1374,8 +1212,11 @@ b = sink::Equals(typ)
 if b = true then
 arr[0] = source
 m1 = convc::GetMethod("ToString", arr)
+if m1 = null then
+else
 ILEmitter::EmitCall(m1)
 goto fin
+end if
 end if
 
 typ = gettype char
@@ -1384,10 +1225,12 @@ b = sink::Equals(typ)
 if b = true then
 arr[0] = source
 m1 = convc::GetMethod("ToChar", arr)
+if m1 = null then
+else
 ILEmitter::EmitCall(m1)
 goto fin
 end if
-
+end if
 
 typ = gettype decimal
 b = sink::Equals(typ)
@@ -1395,8 +1238,11 @@ b = sink::Equals(typ)
 if b = true then
 arr[0] = source
 m1 = convc::GetMethod("ToDecimal", arr)
+if m1 = null then
+else
 ILEmitter::EmitCall(m1)
 goto fin
+end if
 end if
 
 typ = gettype double
@@ -1405,8 +1251,11 @@ b = sink::Equals(typ)
 if b = true then
 arr[0] = source
 m1 = convc::GetMethod("ToDouble", arr)
+if m1 = null then
+else
 ILEmitter::EmitCall(m1)
 goto fin
+end if
 end if
 
 typ = gettype single
@@ -1415,8 +1264,11 @@ b = sink::Equals(typ)
 if b = true then
 arr[0] = source
 m1 = convc::GetMethod("ToSingle", arr)
+if m1 = null then
+else
 ILEmitter::EmitCall(m1)
 goto fin
+end if
 end if
 
 typ = gettype long
@@ -1425,8 +1277,11 @@ b = sink::Equals(typ)
 if b = true then
 arr[0] = source
 m1 = convc::GetMethod("ToInt64", arr)
+if m1 = null then
+else
 ILEmitter::EmitCall(m1)
 goto fin
+end if
 end if
 
 typ = gettype integer
@@ -1435,8 +1290,11 @@ b = sink::Equals(typ)
 if b = true then
 arr[0] = source
 m1 = convc::GetMethod("ToInt32", arr)
+if m1 = null then
+else
 ILEmitter::EmitCall(m1)
 goto fin
+end if
 end if
 
 typ = gettype short
@@ -1445,8 +1303,11 @@ b = sink::Equals(typ)
 if b = true then
 arr[0] = source
 m1 = convc::GetMethod("ToInt16", arr)
+if m1 = null then
+else
 ILEmitter::EmitCall(m1)
 goto fin
+end if
 end if
 
 typ = gettype sbyte
@@ -1455,8 +1316,11 @@ b = sink::Equals(typ)
 if b = true then
 arr[0] = source
 m1 = convc::GetMethod("ToSByte", arr)
+if m1 = null then
+else
 ILEmitter::EmitCall(m1)
 goto fin
+end if
 end if
 
 typ = gettype boolean
@@ -1465,10 +1329,12 @@ b = sink::Equals(typ)
 if b = true then
 arr[0] = source
 m1 = convc::GetMethod("ToBoolean", arr)
+if m1 = null then
+else
 ILEmitter::EmitCall(m1)
 goto fin
 end if
-
+end if
 
 place fin
 
@@ -1655,6 +1521,49 @@ end if
 
 return ans
 end method
+
+method public static Token SetPopFlg(var t as Token)
+
+var t2 as Token = t
+
+label loop
+label cont
+
+place loop
+
+var typ as System.Type
+// = gettype Ident
+var b as boolean
+// = typ::IsInstanceOfType($object$t)
+//var ans as string = ""
+
+//if b = true then
+//var idt as Ident = t
+//ans = idt::Value
+//end if
+
+typ = gettype MethodCallTok
+b = typ::IsInstanceOfType($object$t2)
+
+if b = true then
+var mct as MethodCallTok = t2
+var mn as MethodNameTok = mct::Name
+
+if mn::MemberAccessFlg = false then
+mct::PopFlg = true
+goto cont
+else
+t2 = mn::MemberToAccess
+goto loop
+end if
+
+end if
+
+place cont
+
+return t
+end method
+
 
 end class
 

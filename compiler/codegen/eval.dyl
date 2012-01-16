@@ -284,6 +284,7 @@ var len as integer = 0
 var instflg as boolean = false
 var tl1 as TypeArr[]
 var tl2 as TypeArr[]
+var errstr as string
 
 label fin
 
@@ -524,6 +525,11 @@ end if
 typ = Loader::LoadClass(idtnamarr[i])
 idtisstatic = true
 
+if typ = null then
+errstr = String::Concat("Variable or Class '", idtnamarr[i], "' is not defined.")
+StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
+end if
+
 else
 
 b = typ::Equals(AsmFactory::CurnTypB)
@@ -744,6 +750,12 @@ end if
 
 mcparenttyp = Loader::LoadClass(mnstrarr[i])
 mcisstatic = true
+
+if mcparenttyp = null then
+errstr = String::Concat("Variable or Class '", mnstrarr[i], "' is not defined.")
+StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
+end if
+
 
 else
 
@@ -1099,6 +1111,12 @@ end if
 
 mcparenttyp = Loader::LoadClass(mnstrarr[i])
 mcisstatic = true
+
+if mcparenttyp = null then
+errstr = String::Concat("Variable or Class '", mnstrarr[i], "' is not defined.")
+StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
+end if
+
 
 else
 
