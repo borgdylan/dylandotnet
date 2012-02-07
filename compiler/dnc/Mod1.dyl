@@ -1,4 +1,4 @@
-//    dnc.exe dylan.NET.Compiler Copyright (C) 2011 Dylan Borg <borgdylan@hotmail.com>
+//    dnc.exe dylan.NET.Compiler Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -10,12 +10,12 @@ class public auto ansi Module1
 
 method public static void main(var args as string[])
 
-StreamUtils::InitOutS(StreamUtils::Stdout) 
+//StreamUtils::InitOutS(StreamUtils::Stdout) 
 
-StreamUtils::WriteLine("dylan.NET Compiler v. 11.2.8.2 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
+StreamUtils::WriteLine("dylan.NET Compiler v. 11.2.8.3 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
 StreamUtils::WriteLine("                           and Xamarin Mono v. 2.6.7/v. 2.10.x")
 StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-StreamUtils::WriteLine("Copyright (C) 2011 Dylan Borg")
+StreamUtils::WriteLine("Copyright (C) 2012 Dylan Borg")
 if args[l] < 1 then
 StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 else
@@ -212,7 +212,7 @@ end if
 
 place ext
 
-StreamUtils::CloseOutS()
+//StreamUtils::CloseOutS()
 
 end method
 

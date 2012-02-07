@@ -2,7 +2,7 @@
 //A Component of the NEW dylan.NET Compiler
 //compile with dylan.NET v.9.9 or later
 
-//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2011 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -48,7 +48,7 @@ import dylan.NET.Tokenizer.AST.Tokens.Chars
 locimport dylan.NET.Tokenizer.Parser
 
 assembly tokenizer.Parser dll
-ver 11.2.8.2
+ver 11.2.8.3
 
 namespace dylan.NET.Tokenizer.Parser
 #include E:\Code\dylannet\compiler\parser\parserflags.dyl

@@ -1,3 +1,16 @@
+dylandotnet (11.2.8.3-1) precise; urgency=low
+
+  * Adding dylandotnet-dev package.
+  * Adding support for array length getting.
+  * Adding support for array store/load.
+  * Fixing some minor bugs.
+  * Updating Makefiles and man pages.
+  * Updating debian/control.
+  * Bumping up version to 11.2.8.3
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 07 Feb 2012 16:26:37 +0100
+
+
 dylandotnet (11.2.8.2-1) oneiric; urgency=low
 
   * Adding some error detection for when specified classes/variables are inexistent.

@@ -1,4 +1,4 @@
-//    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2011 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -15,6 +15,7 @@ class public auto ansi MethodCallTok extends Token
 field public MethodNameTok Name
 field public Expr[] Params
 field public boolean PopFlg
+field public System.Type[] TypArr
 
 method public void ctor0()
 me::ctor()
@@ -23,6 +24,7 @@ me::Line = 0
 Name = new MethodNameTok()
 PopFlg = false
 Params = newarr Expr 0
+TypArr = System.Type::EmptyTypes
 end method
 
 method public void ctor1(var value as string)
@@ -32,6 +34,7 @@ me::Line = 0
 Name = new MethodNameTok()
 PopFlg = false
 Params = newarr Expr 0
+TypArr = System.Type::EmptyTypes
 end method
 
 method public void AddParam(var paramtoadd as Expr)

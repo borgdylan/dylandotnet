@@ -1,6 +1,8 @@
 prodscript:
 	sed -e "s|\@libdir\@|$(libdir)|g" \
 	    -e "s|\@MONO\@|$(MONO)|g" dylandotnet.in > dylandotnet
+	sed -e "s|\@prefix\@|$(prefix)|g" \
+	    -e "s|\@version\@|$(PACKAGE_VERSION)|g" dylandotnet.pc.in > dylandotnet.pc
 
 install: prodscript 
 	$(install_sh_PROGRAM) dylandotnet $(DESTDIR)$(bindir)/dylandotnet
@@ -20,9 +22,18 @@ install: prodscript
 	$(install_sh_PROGRAM) dnc.exe $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
 	
+	if [[ $(host) =~ .*-apple-darwin.* ]] ; then \
+		$(install_sh_PROGRAM) dylandotnet.pc /Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig/dylandotnet.pc; \
+		chmod -x /Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig/dylandotnet.pc; \
+	else \
+		$(install_sh_PROGRAM) dylandotnet.pc $(DESTDIR)$(libdir)/pkgconfig/dylandotnet.pc; \
+		chmod -x $(DESTDIR)$(libdir)/pkgconfig/dylandotnet.pc; \
+	fi
+	
 uninstall:
 	rm -f $(DESTDIR)$(bindir)/dylandotnet
 	rm -r -f $(DESTDIR)$(libdir)/dylandotnet
+	rm -f $(DESTDIR)$(libdir)/pkgconfig/dylandotnet.pc
 	
 distclean:
 	rm -f Makefile	

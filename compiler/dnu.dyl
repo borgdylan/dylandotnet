@@ -2,7 +2,7 @@
 //A Component of the NEW dylan.NET Compiler
 //compile with dylan.NET v.9.9 or later
 
-//    dnu.dll dylan.NET.Utils Copyright (C) 2011 Dylan Borg <borgdylan@hotmail.com>
+//    dnu.dll dylan.NET.Utils Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -42,7 +42,7 @@ locimport dylan.NET.Utils
 locimport dylan.NET
 
 assembly dnu dll
-ver 11.2.8.2
+ver 11.2.8.3
 
 namespace dylan.NET.Utils
 #include E:\Code\dylannet\compiler\dnu\consts.dyl

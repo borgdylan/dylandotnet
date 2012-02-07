@@ -1,3 +1,12 @@
+commit 913d5e5de2451914711f04fca7e689de771ad5a6
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 16 12:44:56 2012 +0100
+
+    Commiting latest dylan.NET code to GIT and BZR. Adding some error detection for inexistent class.
+    /variables. Adding #include and #refstdasm statements. Adding downcasting/upcasting support for reference. Adding support for MSYS generated URIson Windows. Adding support for method chaining on method calls that do not occur after an '='. Fixing zero parameter delegation bug. Updating makefiles and debian directory. This is dylan.NET 11.2.8.2.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 9d57f567ac59ccb9f43cd3bb7e9ed7f154560a8d
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Mon Jan 2 23:46:44 2012 +0100

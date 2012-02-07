@@ -1,4 +1,4 @@
-//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2011 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -932,18 +932,17 @@ end if
 return dels
 end method
 
-
 method public Stmt checkMethodCall(var stm as Stmt, var b as boolean&)
 
 if stm::Tokens[l] > 2 then
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype Ident
-var tokb as Token = stm::Tokens[1]
-var typb as System.Type = gettype LParen
+//var tokb as Token = stm::Tokens[1]
+//var typb as System.Type = gettype LParen
 var ba as boolean = typ::IsInstanceOfType($object$tok)
-var bb as boolean = typb::IsInstanceOfType($object$tokb)
+//var bb as boolean = typb::IsInstanceOfType($object$tokb)
 
-valinref|b = ba and bb
+valinref|b = ba
 
 var mtcss as MethodCallStmt = new MethodCallStmt()
 
@@ -1258,13 +1257,6 @@ stm = tmpstm
 goto fin
 end if
 
-tmpstm = checkMethodCall(stm, ref|compb)
-
-if compb = true then
-stm = tmpstm
-goto fin
-end if
-
 tmpstm = checkAssign(stm, ref|compb)
 
 if compb = true then
@@ -1390,6 +1382,14 @@ if compb = true then
 stm = tmpstm
 goto fin
 end if
+
+tmpstm = checkMethodCall(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
 
 place fin
 

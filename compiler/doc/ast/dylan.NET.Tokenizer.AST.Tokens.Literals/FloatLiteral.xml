@@ -13,6 +13,7 @@
     <AssemblyVersion>11.2.7.9</AssemblyVersion>
     <AssemblyVersion>11.2.8.1</AssemblyVersion>
     <AssemblyVersion>11.2.8.2</AssemblyVersion>
+    <AssemblyVersion>11.2.8.3</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
@@ -38,6 +39,7 @@
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
         <AssemblyVersion>11.2.8.2</AssemblyVersion>
+        <AssemblyVersion>11.2.8.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -61,6 +63,7 @@
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
         <AssemblyVersion>11.2.8.2</AssemblyVersion>
+        <AssemblyVersion>11.2.8.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
@@ -87,6 +90,7 @@
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
         <AssemblyVersion>11.2.8.2</AssemblyVersion>
+        <AssemblyVersion>11.2.8.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>

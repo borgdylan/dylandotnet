@@ -1,4 +1,4 @@
-//    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2011 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -62,13 +62,13 @@ end class
 
 class public auto ansi MethodCallStmt extends Stmt
 
-field public MethodCallTok MethodToken
+field public Token MethodToken
 
 method public void ctor0()
 me::ctor()
 me::Tokens = newarr Token 0
 me::Line = 0
-MethodToken = new MethodCallTok()
+MethodToken = new Token()
 end method
 
 end class

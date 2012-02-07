@@ -1,0 +1,69 @@
+<doc>
+    <assembly>
+        <name>tokenizer.Lexer</name>
+    </assembly>
+    <members>
+        <member name="T:dylan.NET.Tokenizer.Lexer.Lexer">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.Lexer.Lexer">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Lexer.Lexer.Analyze(System.String)">
+            <param name="path">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Lexer.Lexer.AnalyzeString(System.String)">
+            <param name="str">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.Lexer.Line">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.Lexer.Line">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Lexer.Line.Analyze(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.String)">
+            <param name="stm">To be added.</param>
+            <param name="str">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.Lexer.Line.InChar">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.Lexer.Line.InStr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Lexer.Line.isDigit(System.Char)">
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Lexer.Line.isSep(System.String,System.String,System.Boolean@,System.Boolean@)">
+            <param name="cc">To be added.</param>
+            <param name="lc">To be added.</param>
+            <param name="sca">To be added.</param>
+            <param name="scla">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.Lexer.Line.PrevChar">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+    </members>
+</doc>

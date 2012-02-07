@@ -1,4 +1,4 @@
-//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2011 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -320,7 +320,6 @@ else
 Helpers::OpCodeSuppFlg = false
 end if
 
-//if b = true then
 
 typ = gettype ConditionalOp
 b = typ::IsInstanceOfType($object$optok)
@@ -338,11 +337,6 @@ Helpers::EmitOp(optok, true)
 Helpers::StringFlg = false
 Helpers::OpCodeSuppFlg = false
 end if
-
-//else
-//lcint = Helpers::getCodeFromType(lctyp)
-//rcint = Helpers::getCodeFromType(rctyp)
-//end if
 
 else
 
@@ -591,6 +585,45 @@ end if
 
 place cont3
 
+//array handling code
+//-----------------------------------------
+if idt::IsArr = true then
+
+b = Helpers::CheckIfArrLen(idt::ArrLoc)
+if b = true then
+
+if emt = true then
+ILEmitter::EmitLdlen()
+ILEmitter::EmitConvI4()
+end if
+AsmFactory::Type02 = gettype integer
+
+else
+
+typ = AsmFactory::Type02
+idt::ArrLoc = ConvToRPN(idt::ArrLoc)
+tok = ConvToAST(idt::ArrLoc)
+ASTEmit(tok, emt)
+
+typ = typ::GetElementType()
+if emt = true then
+ILEmitter::EmitConvI()
+
+if idt::MemberAccessFlg = true then
+AsmFactory::AddrFlg = true
+AsmFactory::Type04 = typ
+end if
+
+Helpers::EmitElemLd(typ)
+end if
+AsmFactory::Type02 = typ
+AsmFactory::AddrFlg = false
+
+end if
+
+end if
+//-----------------------------------------
+
 if idt::MemberAccessFlg = true then
 AsmFactory::ChainFlg = true
 ASTEmit(idt::MemberToAccess, emt)
@@ -814,8 +847,7 @@ if mectorflg = false then
 
 if idtb2 = false then
 if emt = true then
-var typarrstruct as TypeArr = SymTable::TypLst[0]
-typarr1 = typarrstruct::Arr
+typarr1 = mctok::TypArr
 mcmetinf = Helpers::GetLocMet(mnstrarr[i], typarr1)
 mcisstatic = mcmetinf::get_IsStatic()
 if mcisstatic = false then
@@ -872,9 +904,7 @@ end if
 place cont5
 
 if emt = false then
-SymTable::AddTypArr(typarr1)
-else
-SymTable::PopTypArr()
+mctok::TypArr = typarr1
 end if
 
 AsmFactory::Type02 = AsmFactory::Type03
@@ -911,6 +941,46 @@ Helpers::EmitMetCall(mcmetinf, mcisstatic)
 AsmFactory::PopFlg = false
 end if
 
+if mctok::PopFlg = false then
+//array handling code
+//-----------------------------------------
+if mntok::IsArr = true then
+
+b = Helpers::CheckIfArrLen(mntok::ArrLoc)
+if b = true then
+
+if emt = true then
+ILEmitter::EmitLdlen()
+ILEmitter::EmitConvI4()
+end if
+AsmFactory::Type02 = gettype integer
+
+else
+
+mcparenttyp = AsmFactory::Type02
+mntok::ArrLoc = ConvToRPN(mntok::ArrLoc)
+tok = ConvToAST(mntok::ArrLoc)
+ASTEmit(tok, emt)
+
+mcparenttyp = mcparenttyp::GetElementType()
+if emt = true then
+ILEmitter::EmitConvI()
+
+if mntok::MemberAccessFlg = true then
+AsmFactory::AddrFlg = true
+AsmFactory::Type04 = mcparenttyp
+end if
+
+Helpers::EmitElemLd(typ)
+end if
+AsmFactory::Type02 = mcparenttyp
+AsmFactory::AddrFlg = false
+
+end if
+
+end if
+//-----------------------------------------
+end if
 
 if mntok::MemberAccessFlg = true then
 AsmFactory::ChainFlg = true
@@ -1360,7 +1430,6 @@ var idttyp as System.Type
 var fldinf as FieldInfo
 var arrlocexpr as Expr
 var idtarrloc as Ident
-var tok as Token
 var typ as System.Type
 var b as boolean
 var restrord as integer = 2
@@ -1387,6 +1456,11 @@ label idtfin
 //idtb2 = true
 //idtisstatic = false
 //end if
+
+if idt::IsArr = true then
+restrord--
+len++
+end if
 
 idtcomp = idtnamarr[l]
 if idtcomp >= restrord then
@@ -1483,6 +1557,14 @@ AsmFactory::AddrFlg = false
 //----------
 end if
 
+//skip this ptr load for array cases
+label arrtpj
+
+if idt::IsArr = true then
+goto arrtpj
+end if
+
+
 //this pointer load in case of instance local field store
 
 i++
@@ -1521,6 +1603,18 @@ end if
 end if
 end if
 
+place arrtpj
+
+//in case of array store load index
+//-------------------------------------------
+if idt::IsArr = true then
+
+Evaluate(idt::ArrLoc)
+ILEmitter::EmitConvI()
+
+end if
+//--------------------------------------------
+
 //--------------------------------------------------------------
 //loading of value to store
 
@@ -1528,6 +1622,14 @@ Evaluate(exp)
 typ = AsmFactory::Type02
 
 //--------------------------------------------------------------
+
+label arrlpj
+
+if idt::IsArr = true then
+idttyp = idttyp::GetElementType()
+ILEmitter::EmitStelem(idttyp)
+goto arrlpj
+end if
 
 if idtb2 = false then
 
@@ -1569,6 +1671,8 @@ Helpers::EmitFldSt(fldinf, idtisstatic)
 end if
 
 end if
+
+place arrlpj
 
 end method
 

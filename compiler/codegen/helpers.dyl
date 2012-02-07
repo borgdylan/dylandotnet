@@ -1,4 +1,4 @@
-//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2011 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -376,6 +376,14 @@ Loader::MakeRef = tt::IsByRef
 comp = String::Compare(AsmFactory::CurnTypName, tt::Value)
 if comp = 0 then
 typ = AsmFactory::CurnTypB
+if tt::IsArray = true then
+typ = typ::MakeArrayType()
+end if
+if tt::IsByRef = true then
+typ = typ::MakeByRefType()
+end if
+Loader::MakeArr = false
+Loader::MakeRef = false
 else
 typ = Loader::LoadClass(tt::Value)
 end if
@@ -1080,6 +1088,21 @@ end if
 end if
 end method
 
+method public static void EmitElemLd(var t as System.Type)
+if AsmFactory::AddrFlg = false then
+ILEmitter::EmitLdelem(t)
+else
+var typ as System.Type = gettype ValueType
+var b as boolean = typ::IsAssignableFrom(AsmFactory::Type04)
+if b = false then
+ILEmitter::EmitLdelem(t)
+else
+ILEmitter::EmitLdelema(t)
+end if
+end if
+end method
+
+
 method public static void EmitLocSt(var ind as integer, var locarg as boolean)
 if locarg = true then
 ILEmitter::EmitStloc(ind)
@@ -1525,6 +1548,7 @@ end method
 method public static Token SetPopFlg(var t as Token)
 
 var t2 as Token = t
+var t3 as MethodCallTok = null
 
 label loop
 label cont
@@ -1532,15 +1556,7 @@ label cont
 place loop
 
 var typ as System.Type
-// = gettype Ident
 var b as boolean
-// = typ::IsInstanceOfType($object$t)
-//var ans as string = ""
-
-//if b = true then
-//var idt as Ident = t
-//ans = idt::Value
-//end if
 
 typ = gettype MethodCallTok
 b = typ::IsInstanceOfType($object$t2)
@@ -1549,8 +1565,8 @@ if b = true then
 var mct as MethodCallTok = t2
 var mn as MethodNameTok = mct::Name
 
+t3 = mct
 if mn::MemberAccessFlg = false then
-mct::PopFlg = true
 goto cont
 else
 t2 = mn::MemberToAccess
@@ -1559,11 +1575,65 @@ end if
 
 end if
 
+typ = gettype Ident
+b = typ::IsInstanceOfType($object$t2)
+
+if b = true then
+var idt as Ident = t2
+
+if idt::MemberAccessFlg = false then
+goto cont
+else
+t2 = idt::MemberToAccess
+goto loop
+end if
+
+end if
+
 place cont
 
+if t3 <> null then
+t3::PopFlg = true
+mn = t3::Name
+mn::MemberAccessFlg = false
+end if
+
+if t3 <> null then
 return t
+else
+return null
+end if
+
 end method
 
+method public static boolean CheckIfArrLen(var ind as Expr)
+
+var tok as Token
+var typ as System.Type
+var b as boolean
+var b2 as boolean
+var comp as integer
+
+if ind::Tokens[l] = 1 then
+
+tok = ind::Tokens[0]
+typ = gettype Ident
+
+b = typ::IsInstanceOfType($object$tok)
+if b = true then
+comp = String::Compare(tok::Value , "l")
+if comp <> 0 then
+b2 = false
+else
+b2 = true
+end if
+end if
+
+end if
+
+return b2
+
+end method
 
 end class
 

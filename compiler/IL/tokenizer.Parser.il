@@ -5,17 +5,17 @@
 }
 .assembly extern tokenizer.AST
 {
-  .ver 11:2:8:2
+  .ver 11:2:8:3
 }
 .assembly extern dnu
 {
-  .ver 11:2:8:2
+  .ver 11:2:8:3
 }
 .assembly 'tokenizer.Parser'
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 32 00 00 ) // ...11.2.8.2..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 33 00 00 ) // ...11.2.8.3..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (
 		01 00 10 74 6F 6B 65 6E 69 7A 65 72 2E 50 61 72   // ...tokenizer.Par
@@ -30,10 +30,10 @@
 		73 65 72 00 00                                  ) // ser..
 
   .hash algorithm 0x00008004
-  .ver  11:2:8:2
+  .ver  11:2:8:3
 }
 
-.module tokenizer.Parser.dll // GUID = {E315BD1E-DC32-43FA-AF6A-8DE9E4777700}
+.module tokenizer.Parser.dll // GUID = {A4E27FD2-FC82-4688-A2D4-DCFB8B728778}
 
 
 .namespace dylan.NET.Tokenizer.Parser
@@ -22526,18 +22526,15 @@
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkMethodCall (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
         // Method begins at RVA 0xd9c0
-	// Code size 426 (0x1aa)
-	.maxstack 9
+	// Code size 347 (0x15b)
+	.maxstack 8
 	.locals init (
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_0,
 		class [mscorlib]System.Type	V_1,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token	V_2,
-		class [mscorlib]System.Type	V_3,
-		bool	V_4,
-		bool	V_5,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt	V_6,
-		class dylan.NET.Tokenizer.Parser.ExprOptimizer	V_7,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr	V_8)
+		bool	V_2,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt	V_3,
+		class dylan.NET.Tokenizer.Parser.ExprOptimizer	V_4,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr	V_5)
 	IL_0000:  ldarg 1
 
 	IL_0004:  nop 
@@ -22548,7 +22545,7 @@
 	IL_000d:  ldc.i4 2
 	IL_0012:  bgt IL_001c
 
-	IL_0017:  br IL_019e
+	IL_0017:  br IL_014f
 
 	IL_001c:  ldarg 1
 
@@ -22568,177 +22565,140 @@
 
 	IL_0046:  nop 
 	IL_0047:  nop 
-	IL_0048:  ldarg 1
+	IL_0048:  ldloc 1
 
 	IL_004c:  nop 
 	IL_004d:  nop 
-	IL_004e:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
-	IL_0053:  ldc.i4 1
-	IL_0058:  conv.u 
-	IL_0059:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_004e:  ldloc 0
+
+	IL_0052:  nop 
+	IL_0053:  nop 
+	IL_0054:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_0059:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
 	IL_005e:  stloc 2
 
 	IL_0062:  nop 
 	IL_0063:  nop 
-	IL_0064:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Chars.LParen
-	IL_0069:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_006e:  stloc 3
+	IL_0064:  ldarg 2
 
-	IL_0072:  nop 
-	IL_0073:  nop 
-	IL_0074:  ldloc 1
+	IL_0068:  nop 
+	IL_0069:  nop 
+	IL_006a:  ldloc 2
 
-	IL_0078:  nop 
-	IL_0079:  nop 
-	IL_007a:  ldloc 0
+	IL_006e:  nop 
+	IL_006f:  nop 
+	IL_0070:  stobj [mscorlib]System.Boolean
+	IL_0075:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt::'.ctor'()
+	IL_007a:  stloc 3
 
 	IL_007e:  nop 
 	IL_007f:  nop 
-	IL_0080:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_0085:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_008a:  stloc 4
+	IL_0080:  ldarg 2
 
-	IL_008e:  nop 
-	IL_008f:  nop 
-	IL_0090:  ldloc 3
+	IL_0084:  nop 
+	IL_0085:  nop 
+	IL_0086:  ldobj [mscorlib]System.Boolean
+	IL_008b:  ldc.i4 1
+	IL_0090:  beq IL_009a
 
-	IL_0094:  nop 
-	IL_0095:  nop 
-	IL_0096:  ldloc 2
+	IL_0095:  br IL_0145
 
-	IL_009a:  nop 
-	IL_009b:  nop 
-	IL_009c:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_00a1:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_00a6:  stloc 5
+	IL_009a:  ldloc 3
 
-	IL_00aa:  nop 
-	IL_00ab:  nop 
-	IL_00ac:  ldarg 2
+	IL_009e:  nop 
+	IL_009f:  nop 
+	IL_00a0:  ldarg 1
 
-	IL_00b0:  nop 
-	IL_00b1:  nop 
-	IL_00b2:  ldloc 4
+	IL_00a4:  nop 
+	IL_00a5:  nop 
+	IL_00a6:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
+	IL_00ab:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
+	IL_00b0:  ldloc 3
 
-	IL_00b6:  nop 
-	IL_00b7:  nop 
-	IL_00b8:  ldloc 5
+	IL_00b4:  nop 
+	IL_00b5:  nop 
+	IL_00b6:  ldarg 1
 
-	IL_00bc:  nop 
-	IL_00bd:  nop 
-	IL_00be:  and 
-	IL_00bf:  stobj [mscorlib]System.Boolean
-	IL_00c4:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt::'.ctor'()
-	IL_00c9:  stloc 6
+	IL_00ba:  nop 
+	IL_00bb:  nop 
+	IL_00bc:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_00c1:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_00c6:  newobj instance void class dylan.NET.Tokenizer.Parser.ExprOptimizer::'.ctor'()
+	IL_00cb:  stloc 4
 
-	IL_00cd:  nop 
-	IL_00ce:  nop 
-	IL_00cf:  ldarg 2
+	IL_00cf:  nop 
+	IL_00d0:  nop 
+	IL_00d1:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::'.ctor'()
+	IL_00d6:  stloc 5
 
-	IL_00d3:  nop 
-	IL_00d4:  nop 
-	IL_00d5:  ldobj [mscorlib]System.Boolean
-	IL_00da:  ldc.i4 1
-	IL_00df:  beq IL_00e9
+	IL_00da:  nop 
+	IL_00db:  nop 
+	IL_00dc:  ldloc 5
 
-	IL_00e4:  br IL_0194
+	IL_00e0:  nop 
+	IL_00e1:  nop 
+	IL_00e2:  ldarg 1
 
-	IL_00e9:  ldloc 6
+	IL_00e6:  nop 
+	IL_00e7:  nop 
+	IL_00e8:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
+	IL_00ed:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Line
+	IL_00f2:  ldloc 5
 
-	IL_00ed:  nop 
-	IL_00ee:  nop 
-	IL_00ef:  ldarg 1
+	IL_00f6:  nop 
+	IL_00f7:  nop 
+	IL_00f8:  ldarg 1
 
-	IL_00f3:  nop 
-	IL_00f4:  nop 
-	IL_00f5:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
-	IL_00fa:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
-	IL_00ff:  ldloc 6
+	IL_00fc:  nop 
+	IL_00fd:  nop 
+	IL_00fe:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
+	IL_0103:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0108:  ldloc 4
 
-	IL_0103:  nop 
-	IL_0104:  nop 
-	IL_0105:  ldarg 1
+	IL_010c:  nop 
+	IL_010d:  nop 
+	IL_010e:  ldloc 5
 
-	IL_0109:  nop 
-	IL_010a:  nop 
-	IL_010b:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
-	IL_0110:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
-	IL_0115:  newobj instance void class dylan.NET.Tokenizer.Parser.ExprOptimizer::'.ctor'()
-	IL_011a:  stloc 7
+	IL_0112:  nop 
+	IL_0113:  nop 
+	IL_0114:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::Optimize(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_0119:  stloc 5
 
+	IL_011d:  nop 
 	IL_011e:  nop 
-	IL_011f:  nop 
-	IL_0120:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::'.ctor'()
-	IL_0125:  stloc 8
+	IL_011f:  ldloc 3
+
+	IL_0123:  nop 
+	IL_0124:  nop 
+	IL_0125:  ldloc 5
 
 	IL_0129:  nop 
 	IL_012a:  nop 
-	IL_012b:  ldloc 8
+	IL_012b:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_0130:  ldc.i4 0
+	IL_0135:  conv.u 
+	IL_0136:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_013b:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt::MethodToken
+	IL_0140:  br IL_014a
 
-	IL_012f:  nop 
-	IL_0130:  nop 
-	IL_0131:  ldarg 1
+	IL_0145:  br IL_014a
 
-	IL_0135:  nop 
-	IL_0136:  nop 
-	IL_0137:  ldfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
-	IL_013c:  stfld int32 [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Line
-	IL_0141:  ldloc 8
+	IL_014a:  br IL_0154
 
-	IL_0145:  nop 
-	IL_0146:  nop 
-	IL_0147:  ldarg 1
+	IL_014f:  br IL_0154
 
-	IL_014b:  nop 
-	IL_014c:  nop 
-	IL_014d:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt::Tokens
-	IL_0152:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_0157:  ldloc 7
+	IL_0154:  ldloc 3
 
-	IL_015b:  nop 
-	IL_015c:  nop 
-	IL_015d:  ldloc 8
-
-	IL_0161:  nop 
-	IL_0162:  nop 
-	IL_0163:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr class dylan.NET.Tokenizer.Parser.ExprOptimizer::Optimize(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
-	IL_0168:  stloc 8
-
-	IL_016c:  nop 
-	IL_016d:  nop 
-	IL_016e:  ldloc 6
-
-	IL_0172:  nop 
-	IL_0173:  nop 
-	IL_0174:  ldloc 8
-
-	IL_0178:  nop 
-	IL_0179:  nop 
-	IL_017a:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_017f:  ldc.i4 0
-	IL_0184:  conv.u 
-	IL_0185:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_018a:  stfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.MethodCallTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt::MethodToken
-	IL_018f:  br IL_0199
-
-	IL_0194:  br IL_0199
-
-	IL_0199:  br IL_01a3
-
-	IL_019e:  br IL_01a3
-
-	IL_01a3:  ldloc 6
-
-	IL_01a7:  nop 
-	IL_01a8:  nop 
-	IL_01a9:  ret 
+	IL_0158:  nop 
+	IL_0159:  nop 
+	IL_015a:  ret 
     } // end of method StmtOptimizer::checkMethodCall
 
     // method line 46
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkVarAs (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xdb78
+        // Method begins at RVA 0xdb28
 	// Code size 533 (0x215)
 	.maxstack 12
 	.locals init (
@@ -22995,7 +22955,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt AssOpt (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm)  cil managed 
     {
-        // Method begins at RVA 0xdd9c
+        // Method begins at RVA 0xdd4c
 	// Code size 535 (0x217)
 	.maxstack 14
 	.locals init (
@@ -23260,7 +23220,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt checkAssign (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, bool& b)  cil managed 
     {
-        // Method begins at RVA 0xdfc0
+        // Method begins at RVA 0xdf70
 	// Code size 757 (0x2f5)
 	.maxstack 17
 	.locals init (
@@ -23656,7 +23616,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt Optimize (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm)  cil managed 
     {
-        // Method begins at RVA 0xe2c4
+        // Method begins at RVA 0xe274
 	// Code size 2475 (0x9ab)
 	.maxstack 130
 	.locals init (
@@ -24210,7 +24170,7 @@
 
 	IL_0457:  nop 
 	IL_0458:  nop 
-	IL_0459:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkMethodCall(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0459:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkAssign(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_045e:  stloc 3
 
 	IL_0462:  nop 
@@ -24247,7 +24207,7 @@
 
 	IL_049f:  nop 
 	IL_04a0:  nop 
-	IL_04a1:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkAssign(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_04a1:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkVarAs(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_04a6:  stloc 3
 
 	IL_04aa:  nop 
@@ -24284,7 +24244,7 @@
 
 	IL_04e7:  nop 
 	IL_04e8:  nop 
-	IL_04e9:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkVarAs(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_04e9:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkReturn(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_04ee:  stloc 3
 
 	IL_04f2:  nop 
@@ -24321,7 +24281,7 @@
 
 	IL_052f:  nop 
 	IL_0530:  nop 
-	IL_0531:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkReturn(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0531:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkEndMtd(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_0536:  stloc 3
 
 	IL_053a:  nop 
@@ -24358,7 +24318,7 @@
 
 	IL_0577:  nop 
 	IL_0578:  nop 
-	IL_0579:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkEndMtd(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0579:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkEndNS(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_057e:  stloc 3
 
 	IL_0582:  nop 
@@ -24395,7 +24355,7 @@
 
 	IL_05bf:  nop 
 	IL_05c0:  nop 
-	IL_05c1:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkEndNS(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_05c1:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkEndCls(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_05c6:  stloc 3
 
 	IL_05ca:  nop 
@@ -24432,7 +24392,7 @@
 
 	IL_0607:  nop 
 	IL_0608:  nop 
-	IL_0609:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkEndCls(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0609:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkDebug(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_060e:  stloc 3
 
 	IL_0612:  nop 
@@ -24469,7 +24429,7 @@
 
 	IL_064f:  nop 
 	IL_0650:  nop 
-	IL_0651:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkDebug(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0651:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkScope(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_0656:  stloc 3
 
 	IL_065a:  nop 
@@ -24506,7 +24466,7 @@
 
 	IL_0697:  nop 
 	IL_0698:  nop 
-	IL_0699:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkScope(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0699:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkInclude(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_069e:  stloc 3
 
 	IL_06a2:  nop 
@@ -24543,7 +24503,7 @@
 
 	IL_06df:  nop 
 	IL_06e0:  nop 
-	IL_06e1:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkInclude(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_06e1:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkRefasm(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_06e6:  stloc 3
 
 	IL_06ea:  nop 
@@ -24580,7 +24540,7 @@
 
 	IL_0727:  nop 
 	IL_0728:  nop 
-	IL_0729:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkRefasm(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0729:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkRefstdasm(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_072e:  stloc 3
 
 	IL_0732:  nop 
@@ -24617,7 +24577,7 @@
 
 	IL_076f:  nop 
 	IL_0770:  nop 
-	IL_0771:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkRefstdasm(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0771:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkLabel(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_0776:  stloc 3
 
 	IL_077a:  nop 
@@ -24654,7 +24614,7 @@
 
 	IL_07b7:  nop 
 	IL_07b8:  nop 
-	IL_07b9:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkLabel(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_07b9:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkPlace(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_07be:  stloc 3
 
 	IL_07c2:  nop 
@@ -24691,7 +24651,7 @@
 
 	IL_07ff:  nop 
 	IL_0800:  nop 
-	IL_0801:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkPlace(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0801:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkGoto(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_0806:  stloc 3
 
 	IL_080a:  nop 
@@ -24728,7 +24688,7 @@
 
 	IL_0847:  nop 
 	IL_0848:  nop 
-	IL_0849:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkGoto(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0849:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_084e:  stloc 3
 
 	IL_0852:  nop 
@@ -24765,7 +24725,7 @@
 
 	IL_088f:  nop 
 	IL_0890:  nop 
-	IL_0891:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0891:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkElseIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_0896:  stloc 3
 
 	IL_089a:  nop 
@@ -24802,7 +24762,7 @@
 
 	IL_08d7:  nop 
 	IL_08d8:  nop 
-	IL_08d9:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkElseIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_08d9:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkElse(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_08de:  stloc 3
 
 	IL_08e2:  nop 
@@ -24839,7 +24799,7 @@
 
 	IL_091f:  nop 
 	IL_0920:  nop 
-	IL_0921:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkElse(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0921:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkEndIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_0926:  stloc 3
 
 	IL_092a:  nop 
@@ -24876,7 +24836,7 @@
 
 	IL_0967:  nop 
 	IL_0968:  nop 
-	IL_0969:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkEndIf(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
+	IL_0969:  callvirt instance class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt class dylan.NET.Tokenizer.Parser.StmtOptimizer::checkMethodCall(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt, [out] bool&)
 	IL_096e:  stloc 3
 
 	IL_0972:  nop 
@@ -24915,7 +24875,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0xec7c
+        // Method begins at RVA 0xec2c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -24936,7 +24896,7 @@
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet Parse (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet stms)  cil managed 
     {
-        // Method begins at RVA 0xec90
+        // Method begins at RVA 0xec40
 	// Code size 190 (0xbe)
 	.maxstack 6
 	.locals init (
@@ -25047,7 +25007,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0xed5c
+        // Method begins at RVA 0xed0c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 

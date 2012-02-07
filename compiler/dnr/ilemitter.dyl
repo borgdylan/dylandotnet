@@ -1,4 +1,4 @@
-//    dnr.dll dylan.NET.Reflection Copyright (C) 2011 Dylan Borg <borgdylan@hotmail.com>
+//    dnr.dll dylan.NET.Reflection Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -202,6 +202,11 @@ end method
 
 method public static void EmitPop()
 var op as OpCode = InstructionHelper::getOPCode("pop")
+ILGen::Emit(op)
+end method
+
+method public static void EmitLdlen()
+var op as OpCode = InstructionHelper::getOPCode("ldlen")
 ILGen::Emit(op)
 end method
 
@@ -728,6 +733,12 @@ end if
 
 place fin
 
+end method
+
+method public static void EmitLdelema(var typ as System.Type)
+var op as OpCode
+op = InstructionHelper::getOPCode("ldelema")
+ILGen::Emit(op, typ)
 end method
 
 

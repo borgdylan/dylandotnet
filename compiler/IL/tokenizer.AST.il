@@ -7,7 +7,7 @@
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 32 00 00 ) // ...11.2.8.2..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 33 00 00 ) // ...11.2.8.3..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (
 		01 00 0D 74 6F 6B 65 6E 69 7A 65 72 2E 41 53 54   // ...tokenizer.AST
@@ -22,10 +22,10 @@
 		00 00                                           ) // ..
 
   .hash algorithm 0x00008004
-  .ver  11:2:8:2
+  .ver  11:2:8:3
 }
 
-.module tokenizer.AST.dll // GUID = {37EA611A-F021-4300-9709-3C28F3FFB5DB}
+.module tokenizer.AST.dll // GUID = {01D54D2E-110E-4A8F-BCED-1C13F67DE84D}
 
 
 .namespace dylan.NET.Tokenizer.AST.Tokens
@@ -6664,13 +6664,14 @@
     .field  public  class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok Name
     .field  public  class dylan.NET.Tokenizer.AST.Exprs.Expr[] Params
     .field  public  bool PopFlg
+    .field  public  class [mscorlib]System.Type[] TypArr
 
     // method line 196
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
         // Method begins at RVA 0x509c
-	// Code size 68 (0x44)
+	// Code size 79 (0x4f)
 	.maxstack 4
 	IL_0000:  ldarg.0 
 	IL_0001:  call instance void class dylan.NET.Tokenizer.AST.Tokens.Token::'.ctor'()
@@ -6691,15 +6692,18 @@
 	IL_0038:  conv.u 
 	IL_0039:  newarr dylan.NET.Tokenizer.AST.Exprs.Expr
 	IL_003e:  stfld class dylan.NET.Tokenizer.AST.Exprs.Expr[] dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::Params
-	IL_0043:  ret 
+	IL_0043:  ldarg.0 
+	IL_0044:  ldsfld class [mscorlib]System.Type[] [mscorlib]System.Type::EmptyTypes
+	IL_0049:  stfld class [mscorlib]System.Type[] dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::TypArr
+	IL_004e:  ret 
     } // end of method MethodCallTok::.ctor
 
     // method line 197
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x50ec
-	// Code size 69 (0x45)
+        // Method begins at RVA 0x50f8
+	// Code size 80 (0x50)
 	.maxstack 4
 	IL_0000:  ldarg.0 
 	IL_0001:  call instance void class dylan.NET.Tokenizer.AST.Tokens.Token::'.ctor'()
@@ -6723,14 +6727,17 @@
 	IL_0039:  conv.u 
 	IL_003a:  newarr dylan.NET.Tokenizer.AST.Exprs.Expr
 	IL_003f:  stfld class dylan.NET.Tokenizer.AST.Exprs.Expr[] dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::Params
-	IL_0044:  ret 
+	IL_0044:  ldarg.0 
+	IL_0045:  ldsfld class [mscorlib]System.Type[] [mscorlib]System.Type::EmptyTypes
+	IL_004a:  stfld class [mscorlib]System.Type[] dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::TypArr
+	IL_004f:  ret 
     } // end of method MethodCallTok::.ctor
 
     // method line 198
     .method public 
            instance default void AddParam (class dylan.NET.Tokenizer.AST.Exprs.Expr paramtoadd)  cil managed 
     {
-        // Method begins at RVA 0x5140
+        // Method begins at RVA 0x5154
 	// Code size 327 (0x147)
 	.maxstack 19
 	.locals init (
@@ -6916,7 +6923,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5294
+        // Method begins at RVA 0x52a8
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -6942,7 +6949,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x52dc
+        // Method begins at RVA 0x52f0
 	// Code size 58 (0x3a)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -6971,7 +6978,7 @@
     .method public 
            instance default void AddParam (class dylan.NET.Tokenizer.AST.Exprs.Expr paramtoadd)  cil managed 
     {
-        // Method begins at RVA 0x5324
+        // Method begins at RVA 0x5338
 	// Code size 327 (0x147)
 	.maxstack 19
 	.locals init (
@@ -7156,7 +7163,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5478
+        // Method begins at RVA 0x548c
 	// Code size 40 (0x28)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7177,7 +7184,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x54ac
+        // Method begins at RVA 0x54c0
 	// Code size 41 (0x29)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7211,7 +7218,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x54e4
+        // Method begins at RVA 0x54f8
 	// Code size 40 (0x28)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7232,7 +7239,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x5518
+        // Method begins at RVA 0x552c
 	// Code size 41 (0x29)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7267,7 +7274,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5550
+        // Method begins at RVA 0x5564
 	// Code size 51 (0x33)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7291,7 +7298,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' (string 'value')  cil managed 
     {
-        // Method begins at RVA 0x5590
+        // Method begins at RVA 0x55a4
 	// Code size 52 (0x34)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7327,7 +7334,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x55d0
+        // Method begins at RVA 0x55e4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7348,7 +7355,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x55e4
+        // Method begins at RVA 0x55f8
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7369,7 +7376,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x55f8
+        // Method begins at RVA 0x560c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7390,7 +7397,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x560c
+        // Method begins at RVA 0x5620
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7411,7 +7418,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5620
+        // Method begins at RVA 0x5634
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7432,7 +7439,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5634
+        // Method begins at RVA 0x5648
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7453,7 +7460,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5648
+        // Method begins at RVA 0x565c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7474,7 +7481,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x565c
+        // Method begins at RVA 0x5670
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7495,7 +7502,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5670
+        // Method begins at RVA 0x5684
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7516,7 +7523,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5684
+        // Method begins at RVA 0x5698
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7537,7 +7544,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5698
+        // Method begins at RVA 0x56ac
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7558,7 +7565,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x56ac
+        // Method begins at RVA 0x56c0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7579,7 +7586,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x56c0
+        // Method begins at RVA 0x56d4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7600,7 +7607,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x56d4
+        // Method begins at RVA 0x56e8
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7621,7 +7628,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x56e8
+        // Method begins at RVA 0x56fc
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7644,7 +7651,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x56fc
+        // Method begins at RVA 0x5710
 	// Code size 64 (0x40)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7683,7 +7690,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5748
+        // Method begins at RVA 0x575c
 	// Code size 53 (0x35)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7720,7 +7727,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x578c
+        // Method begins at RVA 0x57a0
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7756,7 +7763,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x57d4
+        // Method begins at RVA 0x57e8
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7789,7 +7796,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5810
+        // Method begins at RVA 0x5824
 	// Code size 53 (0x35)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7824,7 +7831,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5854
+        // Method begins at RVA 0x5868
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7845,7 +7852,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5868
+        // Method begins at RVA 0x587c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -7868,7 +7875,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x587c
+        // Method begins at RVA 0x5890
 	// Code size 64 (0x40)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7909,7 +7916,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x58c8
+        // Method begins at RVA 0x58dc
 	// Code size 68 (0x44)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7948,7 +7955,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5918
+        // Method begins at RVA 0x592c
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -7981,7 +7988,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5954
+        // Method begins at RVA 0x5968
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8013,7 +8020,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5990
+        // Method begins at RVA 0x59a4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -8036,7 +8043,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x59a4
+        // Method begins at RVA 0x59b8
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8062,7 +8069,7 @@
     .method public 
            instance default void setFlg ()  cil managed 
     {
-        // Method begins at RVA 0x59ec
+        // Method begins at RVA 0x5a00
 	// Code size 194 (0xc2)
 	.maxstack 8
 	.locals init (
@@ -8163,7 +8170,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5abc
+        // Method begins at RVA 0x5ad0
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8189,7 +8196,7 @@
     .method public 
            instance default void setFlg ()  cil managed 
     {
-        // Method begins at RVA 0x5b04
+        // Method begins at RVA 0x5b18
 	// Code size 194 (0xc2)
 	.maxstack 8
 	.locals init (
@@ -8289,7 +8296,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5bd4
+        // Method begins at RVA 0x5be8
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8322,7 +8329,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5c10
+        // Method begins at RVA 0x5c24
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8355,7 +8362,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5c4c
+        // Method begins at RVA 0x5c60
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8389,7 +8396,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5c88
+        // Method begins at RVA 0x5c9c
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8425,7 +8432,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5cd0
+        // Method begins at RVA 0x5ce4
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8458,7 +8465,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5d0c
+        // Method begins at RVA 0x5d20
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8492,7 +8499,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5d48
+        // Method begins at RVA 0x5d5c
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8528,7 +8535,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5d90
+        // Method begins at RVA 0x5da4
 	// Code size 52 (0x34)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8563,7 +8570,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5dd0
+        // Method begins at RVA 0x5de4
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8597,7 +8604,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5e0c
+        // Method begins at RVA 0x5e20
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8633,7 +8640,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5e54
+        // Method begins at RVA 0x5e68
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8668,7 +8675,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x5e90
+        // Method begins at RVA 0x5ea4
 	// Code size 74 (0x4a)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8699,7 +8706,7 @@
     .method public 
            instance default void AddAttr (class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd)  cil managed 
     {
-        // Method begins at RVA 0x5ee8
+        // Method begins at RVA 0x5efc
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -8867,7 +8874,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x600c
+        // Method begins at RVA 0x6020
 	// Code size 91 (0x5b)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -8903,7 +8910,7 @@
     .method public 
            instance default void AddAttr (class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd)  cil managed 
     {
-        // Method begins at RVA 0x6074
+        // Method begins at RVA 0x6088
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -9058,7 +9065,7 @@
     .method public 
            instance default void AddParam (class dylan.NET.Tokenizer.AST.Exprs.Expr paramtoadd)  cil managed 
     {
-        // Method begins at RVA 0x6198
+        // Method begins at RVA 0x61ac
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -9225,7 +9232,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x62bc
+        // Method begins at RVA 0x62d0
 	// Code size 74 (0x4a)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9256,7 +9263,7 @@
     .method public 
            instance default void AddAttr (class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd)  cil managed 
     {
-        // Method begins at RVA 0x6314
+        // Method begins at RVA 0x6328
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -9422,7 +9429,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6438
+        // Method begins at RVA 0x644c
 	// Code size 51 (0x33)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9457,7 +9464,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6478
+        // Method begins at RVA 0x648c
 	// Code size 63 (0x3f)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9485,7 +9492,7 @@
     .method public 
            instance default void AddAttr (class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd)  cil managed 
     {
-        // Method begins at RVA 0x64c4
+        // Method begins at RVA 0x64d8
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -9650,7 +9657,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x65e8
+        // Method begins at RVA 0x65fc
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9683,7 +9690,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6624
+        // Method begins at RVA 0x6638
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9719,7 +9726,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6660
+        // Method begins at RVA 0x6674
 	// Code size 91 (0x5b)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -9755,7 +9762,7 @@
     .method public 
            instance default void AddAttr (class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd)  cil managed 
     {
-        // Method begins at RVA 0x66c8
+        // Method begins at RVA 0x66dc
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -9910,7 +9917,7 @@
     .method public 
            instance default void AddParam (class dylan.NET.Tokenizer.AST.Exprs.Expr paramtoadd)  cil managed 
     {
-        // Method begins at RVA 0x67ec
+        // Method begins at RVA 0x6800
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -10077,7 +10084,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6910
+        // Method begins at RVA 0x6924
 	// Code size 74 (0x4a)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10108,7 +10115,7 @@
     .method public 
            instance default void AddAttr (class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd)  cil managed 
     {
-        // Method begins at RVA 0x6968
+        // Method begins at RVA 0x697c
 	// Code size 279 (0x117)
 	.maxstack 15
 	.locals init (
@@ -10272,7 +10279,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6a8c
+        // Method begins at RVA 0x6aa0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10295,7 +10302,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6aa0
+        // Method begins at RVA 0x6ab4
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10330,7 +10337,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6ae8
+        // Method begins at RVA 0x6afc
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10352,7 +10359,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6afc
+        // Method begins at RVA 0x6b10
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10385,7 +10392,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6b38
+        // Method begins at RVA 0x6b4c
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10418,7 +10425,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6b74
+        // Method begins at RVA 0x6b88
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10451,7 +10458,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6bb0
+        // Method begins at RVA 0x6bc4
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10484,7 +10491,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6bec
+        // Method begins at RVA 0x6c00
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10517,7 +10524,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6c28
+        // Method begins at RVA 0x6c3c
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10549,7 +10556,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6c64
+        // Method begins at RVA 0x6c78
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10570,7 +10577,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6c78
+        // Method begins at RVA 0x6c8c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10593,7 +10600,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6c8c
+        // Method begins at RVA 0x6ca0
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10631,7 +10638,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6cd4
+        // Method begins at RVA 0x6ce8
 	// Code size 68 (0x44)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10671,7 +10678,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6d24
+        // Method begins at RVA 0x6d38
 	// Code size 57 (0x39)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10707,7 +10714,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6d6c
+        // Method begins at RVA 0x6d80
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10740,7 +10747,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6da8
+        // Method begins at RVA 0x6dbc
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10773,7 +10780,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6de4
+        // Method begins at RVA 0x6df8
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10800,13 +10807,13 @@
   .class public auto ansi MethodCallStmt
   	extends dylan.NET.Tokenizer.AST.Stmts.Stmt
   {
-    .field  public  class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok MethodToken
+    .field  public  class dylan.NET.Tokenizer.AST.Tokens.Token MethodToken
 
     // method line 284
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6e20
+        // Method begins at RVA 0x6e34
 	// Code size 46 (0x2e)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -10820,8 +10827,8 @@
 	IL_0018:  ldc.i4 0
 	IL_001d:  stfld int32 dylan.NET.Tokenizer.AST.Stmts.Stmt::Line
 	IL_0022:  ldarg.0 
-	IL_0023:  newobj instance void class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok::'.ctor'()
-	IL_0028:  stfld class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt::MethodToken
+	IL_0023:  newobj instance void class dylan.NET.Tokenizer.AST.Tokens.Token::'.ctor'()
+	IL_0028:  stfld class dylan.NET.Tokenizer.AST.Tokens.Token dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt::MethodToken
 	IL_002d:  ret 
     } // end of method MethodCallStmt::.ctor
 
@@ -10838,7 +10845,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6e5c
+        // Method begins at RVA 0x6e70
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10859,7 +10866,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6e70
+        // Method begins at RVA 0x6e84
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10880,7 +10887,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6e84
+        // Method begins at RVA 0x6e98
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10901,7 +10908,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6e98
+        // Method begins at RVA 0x6eac
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10922,7 +10929,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6eac
+        // Method begins at RVA 0x6ec0
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10943,7 +10950,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6ec0
+        // Method begins at RVA 0x6ed4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10964,7 +10971,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6ed4
+        // Method begins at RVA 0x6ee8
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -10985,7 +10992,7 @@
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x6ee8
+        // Method begins at RVA 0x6efc
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 

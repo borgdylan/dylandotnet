@@ -1,4 +1,4 @@
-//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2011 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -700,11 +700,13 @@ b = typ::IsInstanceOfType($object$stm)
 if b = true then
 var mcstmt as MethodCallStmt = stm
 var mcstmtexp as Expr = new Expr()
-var mcstmttok as MethodCallTok = mcstmt::MethodToken
+var mcstmttok as Token = mcstmt::MethodToken
 mcstmttok = Helpers::SetPopFlg(mcstmttok)
+if mcstmttok <> null then
 mcstmtexp::AddToken(mcstmttok)
 eval = new Evaluator()
 eval::Evaluate(mcstmtexp)
+end if
 goto fin
 end if
 

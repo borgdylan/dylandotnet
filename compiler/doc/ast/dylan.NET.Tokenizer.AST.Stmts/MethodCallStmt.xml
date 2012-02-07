@@ -13,6 +13,7 @@
     <AssemblyVersion>11.2.7.9</AssemblyVersion>
     <AssemblyVersion>11.2.8.1</AssemblyVersion>
     <AssemblyVersion>11.2.8.2</AssemblyVersion>
+    <AssemblyVersion>11.2.8.3</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
@@ -38,6 +39,7 @@
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
         <AssemblyVersion>11.2.8.2</AssemblyVersion>
+        <AssemblyVersion>11.2.8.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -46,8 +48,8 @@
       </Docs>
     </Member>
     <Member MemberName="MethodToken">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.MethodCallTok MethodToken;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok MethodToken" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token MethodToken;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Token MethodToken" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -60,9 +62,10 @@
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
         <AssemblyVersion>11.2.8.2</AssemblyVersion>
+        <AssemblyVersion>11.2.8.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.MethodCallTok</ReturnType>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
