@@ -5,29 +5,29 @@
 }
 .assembly extern tokenizer.AST
 {
-  .ver 11:2:8:3
+  .ver 11:2:8:4
 }
 .assembly extern dnr
 {
-  .ver 11:2:8:3
+  .ver 11:2:8:4
 }
 .assembly extern dnu
 {
-  .ver 11:2:8:3
+  .ver 11:2:8:4
 }
 .assembly extern tokenizer.Lexer
 {
-  .ver 11:2:8:3
+  .ver 11:2:8:4
 }
 .assembly extern tokenizer.Parser
 {
-  .ver 11:2:8:3
+  .ver 11:2:8:4
 }
 .assembly 'tokenizer.CodeGen'
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 33 00 00 ) // ...11.2.8.3..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 34 00 00 ) // ...11.2.8.4..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (
 		01 00 11 74 6F 6B 65 6E 69 7A 65 72 2E 43 6F 64   // ...tokenizer.Cod
@@ -42,9 +42,10 @@
 		65 47 65 6E 00 00                               ) // eGen..
 
   .hash algorithm 0x00008004
-  .ver  11:2:8:3
+  .ver  11:2:8:4
 }
-.module tokenizer.CodeGen.dll // GUID = {77F06E1D-1F56-4BAD-9D25-146EAB57AB93}
+
+.module tokenizer.CodeGen.dll // GUID = {0265CFB1-4DEB-468F-BF08-A3AB9D3B0C79}
 
 
 .namespace dylan.NET.Tokenizer.CodeGen

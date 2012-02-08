@@ -1,3 +1,76 @@
+commit df71eafd5f37bb22fb792e86ae2dc32824cf67b3
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Tue Feb 7 18:22:42 2012 +0100
+
+    Commiting the latest version dylan.NET. This is dylan.NET version 11.2.8.3!!! Adding array length getting as well as load/store of elements. Fixing some minor bugs in local method calls. Adding dev programs pc2dylandotnet and pc2curdir. Updating debiandir with latest debian packaging. Updating makefiles and manpages. Adding .pc files for the compiler in dylandotnet.pc and dylandotnet4.pc.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 913d5e5de2451914711f04fca7e689de771ad5a6
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 16 12:44:56 2012 +0100
+
+    Commiting latest dylan.NET code to GIT and BZR. Adding some error detection for inexistent class.
+    /variables. Adding #include and #refstdasm statements. Adding downcasting/upcasting support for reference. Adding support for MSYS generated URIson Windows. Adding support for method chaining on method calls that do not occur after an '='. Fixing zero parameter delegation bug. Updating makefiles and debian directory. This is dylan.NET 11.2.8.2.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 9d57f567ac59ccb9f43cd3bb7e9ed7f154560a8d
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 2 23:46:44 2012 +0100
+
+    Fixing another error in MAC OS/X part of tests build script
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 07931b8ff70fb234eb5d96b494eea8e0ecd3a2f5
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 2 23:36:52 2012 +0100
+
+    Fixing another error in MAC OS/X part of tests build script
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 69f66e9d3f11db09dfb63740934924fce1fa06a6
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 2 23:20:01 2012 +0100
+
+    Fixing another error in MAC OS/X part of tests build script
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit b29ff9b70ee10ccfb39fe6d1e8eec9b9fd4a30e2
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 2 23:15:39 2012 +0100
+
+    Fixing another error in MAC OS/X part of tests build script
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 04264700e270e02cd6a82712e992fc1bd34229ed
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jan 2 22:49:07 2012 +0100
+
+    Commiting emergency fix for tests Makefile . Updating library finding script for MAC OS/X based systems.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 9fcb6f9b0634f1e87a2a0b9210e0b67bb1e9af74
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Fri Dec 23 13:52:57 2011 +0100
+
+    fixing 0byte tarball problem by uncompressing and recompressing
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit c938bcbb261a7b4606e340a8a47a63b7e381fc9c
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Fri Dec 23 13:41:59 2011 +0100
+
+    Commiting tarballs and debs for v. 11.2.8.1. Packages already available from PPA.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 0a5646e1f2be02766818d4cf061a7500c110f33a
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Tue Dec 13 22:38:21 2011 +0100

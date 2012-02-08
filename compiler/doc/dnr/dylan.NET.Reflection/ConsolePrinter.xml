@@ -10,7 +10,6 @@
     <AssemblyVersion>11.2.7.8</AssemblyVersion>
     <AssemblyVersion>11.2.7.9</AssemblyVersion>
     <AssemblyVersion>11.2.8.1</AssemblyVersion>
-    <AssemblyVersion>11.2.8.3</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -33,7 +32,6 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -53,7 +51,6 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -76,7 +73,6 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IO.StringWriter</ReturnType>
@@ -98,7 +94,6 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

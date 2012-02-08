@@ -1,3 +1,11 @@
+commit df71eafd5f37bb22fb792e86ae2dc32824cf67b3
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Tue Feb 7 18:22:42 2012 +0100
+
+    Commiting the latest version dylan.NET. This is dylan.NET version 11.2.8.3!!! Adding array length getting as well as load/store of elements. Fixing some minor bugs in local method calls. Adding dev programs pc2dylandotnet and pc2curdir. Updating debiandir with latest debian packaging. Updating makefiles and manpages. Adding .pc files for the compiler in dylandotnet.pc and dylandotnet4.pc.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 913d5e5de2451914711f04fca7e689de771ad5a6
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Mon Jan 16 12:44:56 2012 +0100

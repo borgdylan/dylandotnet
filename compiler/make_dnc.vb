@@ -90,7 +90,7 @@ Dim mainIL As ILGenerator = main.GetILGenerator()
 Dim mainparam01 As ParameterBuilder = main.DefineParameter(1, ParameterAttributes.None, "args")
 mainIL.MarkSequencePoint(doc2, 15, 1, 15, 100)
 Dim typ1(-1) As Type
-mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.8.3 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
+mainIL.Emit(OpCodes.Ldstr, "dylan.NET Compiler v. 11.2.8.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
 Typ = GetType(System.String)
 ReDim Preserve typ1(UBound(typ1) + 1)
 typ1(UBound(typ1)) = Typ
@@ -170,8 +170,6 @@ End If
 mainIL.MarkSequencePoint(doc2, 21, 1, 21, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(fa0)
-mainIL.MarkSequencePoint(doc2, 23, 1, 23, 100)
-Dim try0 As System.Reflection.Emit.Label = mainIL.BeginExceptionBlock()
 mainIL.MarkSequencePoint(doc2, 25, 1, 25, 100)
 Dim locbldr0 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
 locbldr0.SetLocalSymInfo("p")
@@ -955,43 +953,6 @@ If Typ.ToString() = GetType(System.Void).ToString() Then
 Else
 mainIL.Emit(OpCodes.Pop)
 End If
-mainIL.MarkSequencePoint(doc2, 203, 1, 203, 100)
-Dim locbldr17 As LocalBuilder = mainIL.DeclareLocal(GetType(Exception))
-locbldr17.SetLocalSymInfo("ex")
-mainIL.BeginCatchBlock(GetType(Exception))
-mainIL.Emit(OpCodes.Stloc,17)
-mainIL.MarkSequencePoint(doc2, 205, 1, 205, 100)
-Dim locbldr18 As LocalBuilder = mainIL.DeclareLocal(GetType(System.String))
-locbldr18.SetLocalSymInfo("exstr")
-mainIL.Emit(OpCodes.Ldloc, 17)
-Typ = GetType(Exception)
-Typ03 = Typ
-mainIL.Emit(OpCodes.Callvirt, Typ03.GetMethod("ToString", Type.EmptyTypes))
-Typ = Typ03.GetMethod("ToString", Type.EmptyTypes).ReturnType
-mainIL.Emit(OpCodes.Stloc, 18)
-mainIL.MarkSequencePoint(doc2, 206, 1, 206, 100)
-Dim typ63(-1) As Type
-mainIL.Emit(OpCodes.Ldloc, 18)
-Typ = GetType(System.String)
-ReDim Preserve typ63(UBound(typ63) + 1)
-typ63(UBound(typ63)) = Typ
-mainIL.Emit(OpCodes.Call, GetType(StreamUtils).GetMethod("WriteLine", typ63))
-Typ = GetType(StreamUtils).GetMethod("WriteLine", typ63).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-mainIL.Emit(OpCodes.Pop)
-End If
-mainIL.MarkSequencePoint(doc2, 207, 1, 207, 100)
-mainIL.Emit(OpCodes.Call, GetType(Console).GetMethod("ReadKey", Type.EmptyTypes))
-Typ = GetType(Console).GetMethod("ReadKey", Type.EmptyTypes).ReturnType
-If Typ.ToString() = GetType(System.Void).ToString() Then
-
-Else
-mainIL.Emit(OpCodes.Pop)
-End If
-mainIL.MarkSequencePoint(doc2, 209, 1, 209, 100)
-mainIL.EndExceptionBlock()
 mainIL.MarkSequencePoint(doc2, 211, 1, 211, 100)
 mainIL.Emit(OpCodes.Br, cont0)
 mainIL.MarkLabel(cont0)
@@ -1011,7 +972,7 @@ End Sub
 Sub Main()
 
 asmName = New AssemblyName("dnc")
-asmName.Version = New System.Version(11, 2, 8, 3)
+asmName.Version = New System.Version(11, 2, 8, 4)
 asm  = AppDomain.CurrentDomain.DefineDynamicAssembly(asmName, AssemblyBuilderAccess.Save, CStr("E:\Code\dylannet\compiler\"))
 mdl = asm.DefineDynamicModule(asmName.Name & ".exe" , asmName.Name & ".exe", True)
 resw = mdl.DefineResource("dnc.resources" ,  "Description")
@@ -1028,7 +989,7 @@ asm.SetCustomAttribute(daBuilder)
 Module1()
 Dim vaType As Type = GetType(AssemblyFileVersionAttribute)
 Dim vaCtor As ConstructorInfo = vaType.GetConstructor(New Type() { GetType(String) })
-Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.8.3"})
+Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.8.4"})
 asm.SetCustomAttribute(vaBuilder)
 
 Dim paType As Type = GetType(AssemblyProductAttribute)

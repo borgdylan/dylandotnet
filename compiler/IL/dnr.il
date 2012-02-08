@@ -10,13 +10,13 @@
 }
 .assembly extern dnu
 {
-  .ver 11:2:8:3
+  .ver 11:2:8:4
 }
 .assembly 'dnr'
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 33 00 00 ) // ...11.2.8.3..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 34 00 00 ) // ...11.2.8.4..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (01 00 03 64 6E 72 00 00 ) // ...dnr..
 
@@ -25,10 +25,10 @@
   .custom instance void class [mscorlib]System.Reflection.AssemblyDescriptionAttribute::'.ctor'(string) =  (01 00 03 64 6E 72 00 00 ) // ...dnr..
 
   .hash algorithm 0x00008004
-  .ver  11:2:8:3
+  .ver  11:2:8:4
 }
 
-.module dnr.dll // GUID = {DE9EAD6B-EE53-4077-898A-B235B28A8FEE}
+.module dnr.dll // GUID = {FB3F680A-EDB9-451D-A3E3-1D40D68242B4}
 
 
 .namespace dylan.NET.Reflection

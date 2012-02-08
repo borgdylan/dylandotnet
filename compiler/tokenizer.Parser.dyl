@@ -48,7 +48,7 @@ import dylan.NET.Tokenizer.AST.Tokens.Chars
 locimport dylan.NET.Tokenizer.Parser
 
 assembly tokenizer.Parser dll
-ver 11.2.8.3
+ver 11.2.8.4
 
 namespace dylan.NET.Tokenizer.Parser
 #include E:\Code\dylannet\compiler\parser\parserflags.dyl

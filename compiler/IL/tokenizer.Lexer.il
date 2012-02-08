@@ -5,17 +5,17 @@
 }
 .assembly extern dnu
 {
-  .ver 11:2:8:3
+  .ver 11:2:8:4
 }
 .assembly extern tokenizer.AST
 {
-  .ver 11:2:8:3
+  .ver 11:2:8:4
 }
 .assembly 'tokenizer.Lexer'
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 33 00 00 ) // ...11.2.8.3..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 34 00 00 ) // ...11.2.8.4..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (
 		01 00 0F 74 6F 6B 65 6E 69 7A 65 72 2E 4C 65 78   // ...tokenizer.Lex
@@ -30,10 +30,10 @@
 		65 72 00 00                                     ) // er..
 
   .hash algorithm 0x00008004
-  .ver  11:2:8:3
+  .ver  11:2:8:4
 }
 
-.module tokenizer.Lexer.dll // GUID = {7B55914B-5451-4CFF-A6C6-D093CDD14F52}
+.module tokenizer.Lexer.dll // GUID = {3AD22044-5570-4317-BA28-00A4CCD4BB3C}
 
 
 .namespace dylan.NET.Tokenizer.Lexer

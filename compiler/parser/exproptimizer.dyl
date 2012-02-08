@@ -983,6 +983,9 @@ var aidt as Ident = exp::Tokens[i]
 var arriloc as Expr = aidt::ArrLoc
 arriloc = Optimize(arriloc)
 
+ParserFlags::IdentFlag = true
+j = i
+
 else
 
 if ParserFlags::MetCallFlag = true then
@@ -1007,6 +1010,8 @@ ParserFlags::MetCallFlag = mcflgc
 ParserFlags::IdentFlag = iflgc
 ParserFlags::StringFlag = sflgc
 
+ParserFlags::MetCallFlag = true
+j = i
 end if
 
 end if

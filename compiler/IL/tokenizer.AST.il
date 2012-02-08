@@ -7,7 +7,7 @@
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 33 00 00 ) // ...11.2.8.3..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 34 00 00 ) // ...11.2.8.4..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (
 		01 00 0D 74 6F 6B 65 6E 69 7A 65 72 2E 41 53 54   // ...tokenizer.AST
@@ -22,10 +22,10 @@
 		00 00                                           ) // ..
 
   .hash algorithm 0x00008004
-  .ver  11:2:8:3
+  .ver  11:2:8:4
 }
 
-.module tokenizer.AST.dll // GUID = {01D54D2E-110E-4A8F-BCED-1C13F67DE84D}
+.module tokenizer.AST.dll // GUID = {3AC5235F-A153-43A3-BDC0-4FE918FBA7D3}
 
 
 .namespace dylan.NET.Tokenizer.AST.Tokens

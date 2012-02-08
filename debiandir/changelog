@@ -1,3 +1,12 @@
+dylandotnet (11.2.8.4-1) precise; urgency=low
+
+  * Fixing a chaining bug in the parser.
+  * Updating man pages.
+  * Bumping up version to 11.2.8.4
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 08 Feb 2012 13:56:11 +0100
+
+
 dylandotnet (11.2.8.3-1) precise; urgency=low
 
   * Adding dylandotnet-dev package.

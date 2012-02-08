@@ -56,7 +56,7 @@ import dylan.NET.Tokenizer.Parser
 locimport dylan.NET.Tokenizer.CodeGen
 
 assembly tokenizer.CodeGen dll
-ver 11.2.8.3
+ver 11.2.8.4
 
 namespace dylan.NET.Tokenizer.CodeGen
 #include E:\Code\dylannet\compiler\codegen\varitem.dyl

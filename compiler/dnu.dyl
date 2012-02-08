@@ -42,7 +42,7 @@ locimport dylan.NET.Utils
 locimport dylan.NET
 
 assembly dnu dll
-ver 11.2.8.3
+ver 11.2.8.4
 
 namespace dylan.NET.Utils
 #include E:\Code\dylannet\compiler\dnu\consts.dyl
