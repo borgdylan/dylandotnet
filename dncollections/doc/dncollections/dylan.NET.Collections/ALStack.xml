@@ -1,0 +1,145 @@
+<Type Name="ALStack" FullName="dylan.NET.Collections.ALStack">
+  <TypeSignature Language="C#" Value="public class ALStack : dylan.NET.Collections.ALList" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ALStack extends dylan.NET.Collections.ALList" />
+  <AssemblyInfo>
+    <AssemblyName>dncollections</AssemblyName>
+    <AssemblyVersion>11.2.8.4</AssemblyVersion>
+    <AssemblyVersion>11.2.8.5</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Collections.ALList</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ALStack ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Peek">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item Peek ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Collections.Item Peek() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PeekValue">
+      <MemberSignature Language="C#" Value="public object PeekValue ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance object PeekValue() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Pop">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item Pop ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Collections.Item Pop() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopValue">
+      <MemberSignature Language="C#" Value="public object PopValue ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance object PopValue() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Push">
+      <MemberSignature Language="C#" Value="public void Push (dylan.NET.Collections.Item ite);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void Push(class dylan.NET.Collections.Item ite) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ite" Type="dylan.NET.Collections.Item" />
+      </Parameters>
+      <Docs>
+        <param name="ite">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PushValue">
+      <MemberSignature Language="C#" Value="public void PushValue (object o);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void PushValue(object o) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="o" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="o">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

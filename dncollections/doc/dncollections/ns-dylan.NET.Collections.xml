@@ -1,0 +1,6 @@
+<Namespace Name="dylan.NET.Collections">
+  <Docs>
+    <summary>This namespace contains the List, Stack and Queue collections.</summary>
+    <remarks>This namespace contains the List, Stack and Queue collections.</remarks>
+  </Docs>
+</Namespace>

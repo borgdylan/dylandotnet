@@ -1,0 +1,24 @@
+<Type Name="SearchDelegate" FullName="dylan.NET.Collections.SearchDelegate">
+  <TypeSignature Language="C#" Value="public delegate bool SearchDelegate(object o);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto sealed SearchDelegate extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>dncollections</AssemblyName>
+    <AssemblyVersion>11.2.8.4</AssemblyVersion>
+    <AssemblyVersion>11.2.8.5</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="o" Type="System.Object" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Boolean</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="o">The object to check for conformance to certain conditions.</param>
+    <summary>A way to supply a method that returns yes or no according to conformance of object to a condition.</summary>
+    <returns>True is the object conforms or False if otherwise.</returns>
+    <remarks>Useful in searches where True signifies that the item should be returned as the result of the search.</remarks>
+  </Docs>
+</Type>
