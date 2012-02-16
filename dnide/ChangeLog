@@ -1,0 +1,18 @@
+2012-02-12 Dylan Borg <borgdylan@hotmail.com>
+
+	*Adding support for file save as/close
+	*Adding support for new buffer making.
+	*Adding support for compiling source code.
+	*Adding support for loading all #include d files.
+	*Adding About Dialog.
+
+2012-01-29 Dylan Borg <borgdylan@hotmail.com>
+
+	*Adding support for file open/save
+	*Adding support for multiple files in mutiple GTK buffers
+	*Adding support for buffer choosing via combo box
+
+2012-01-26 Dylan Borg <borgdylan@hotmail.com>
+
+	*Starting the dylan.NET IDE by using dylan.NET for CLI 4.0 v. 11.2.8.2.
+	*Opting for gtk-sharp 2.0 as widget toolkit.

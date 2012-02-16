@@ -1,0 +1,32 @@
+Source: dylandotnet-collections
+Section: cli-mono
+Priority: optional
+Maintainer: Dylan Borg <borgdylan@hotmail.com>
+Build-Depends: debhelper (>= 7.0.50~), cli-common-dev (>= 0.7), devscripts, libmono-corlib2.0-cil, libmono-corlib4.0-cil (>= 2.10.1), mono-devel (>= 2.10.1), mono-runtime (>= 2.10.1), gawk, autotools-dev, monodoc-base, dylandotnet (>= 11.2.8.4), dylandotnet4 (>= 11.2.8.4)
+Standards-Version: 3.9.2
+Homepage: http://launchpad.net/dylandotnet
+Vcs-Git: git://gitorious.org/dylandotnet/dylandotnet.git
+Vcs-Bzr: lp:dylandotnet
+Vcs-Browser: http://bazaar.launchpad.net/~borgdylan/dylandotnet/dylandotnet/files
+
+Package: dylandotnet-collections-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}
+Enhances: libdylandotnet-collections2.0-cil, libdylandotnet-collections4.0-cil
+Description: This is the dylan.NET Collections documentation.
+ This is the dylan.NET Collections documentation in tar.gz format.
+
+Package: libdylandotnet-collections2.0-cil
+Architecture: all
+Depends: ${misc:Depends}, ${cli:Depends}, libmono-corlib2.0-cil, mono-devel, cli-common, mono-runtime
+Recommends: dylandotnet-collections-doc
+Description: This is the dylan.NET Collections library for CLI 2.0.
+ This is a collections library for mono written in dylan.NET.
+ 
+Package: libdylandotnet-collections4.0-cil
+Architecture: all
+Depends: ${misc:Depends}, libmono-corlib4.0-cil (>= 2.10.1), mono-devel (>= 2.10.1) , cli-common, mono-runtime (>= 2.10.1)
+Recommends: dylandotnet-collections-doc
+Description: This is the dylan.NET Collections library for CLI 4.0.
+ This is a collections library for mono written in dylan.NET.

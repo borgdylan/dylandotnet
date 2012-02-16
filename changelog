@@ -1,3 +1,19 @@
+commit 6f2355911c60aacda2d661184c886fda00a60ea2
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sat Feb 11 18:40:13 2012 +0100
+
+    Adding the dylandotnet-collections library source code,tarballs,and deb files. These are equal to dylan.NET Collections 11.2.8.5.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 54a09eef82a9a6bed264a995390c0e387b9f5a71
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Wed Feb 8 22:13:30 2012 +0100
+
+    Commiting latest dylan.NET code to GIT and BZR. Fixing a bug in the parser that did not detect a chaining case. This is dylan.NET 11.2.8.4.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit df71eafd5f37bb22fb792e86ae2dc32824cf67b3
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Tue Feb 7 18:22:42 2012 +0100

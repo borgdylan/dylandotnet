@@ -36,7 +36,7 @@ Description: This is the dylan.NET compiler for CLI 2.0.
  
 Package: dylandotnet4
 Architecture: all
-Depends: ${misc:Depends}, libmono-corlib4.0-cil (>= 2.10.1), libmono-system4.0-cil (>= 2.10.1), libmono-system-xml-linq4.0-cil (>= 2.10.1), mono-devel (>= 2.10.1) , cli-common, mono-runtime (>= 2.10.1)
+Depends: ${misc:Depends}, ${cli:Depends}, libmono-corlib4.0-cil (>= 2.10.1), libmono-system4.0-cil (>= 2.10.1), libmono-system-xml-linq4.0-cil (>= 2.10.1), mono-devel (>= 2.10.1) , cli-common, mono-runtime (>= 2.10.1)
 Recommends: mono-utils, monodoc-base, dylandotnet-doc, dylandotnet-dev
 Description: This is the dylan.NET compiler for CLI 4.0.
  This is another compiler for the Mono runtime (CLI4) targeting dylan.NET.
