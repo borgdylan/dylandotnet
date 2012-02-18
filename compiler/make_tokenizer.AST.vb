@@ -5292,6 +5292,11 @@ Dim PrivateAttr As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.
 PrivateAttr.CreateType()
 End Sub
 
+Sub FamilyAttr()
+Dim FamilyAttr As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.Attributes" & "." & "FamilyAttr", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute"))
+FamilyAttr.CreateType()
+End Sub
+
 Sub PublicAttr()
 Dim PublicAttr As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.Attributes" & "." & "PublicAttr", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute"))
 PublicAttr.CreateType()
@@ -5367,9 +5372,24 @@ Dim LiteralAttr As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.
 LiteralAttr.CreateType()
 End Sub
 
+Sub FinalAttr()
+Dim FinalAttr As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.Attributes" & "." & "FinalAttr", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute"))
+FinalAttr.CreateType()
+End Sub
+
 Sub AssemblyAttr()
 Dim AssemblyAttr As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.Attributes" & "." & "AssemblyAttr", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute"))
 AssemblyAttr.CreateType()
+End Sub
+
+Sub FamANDAssemAttr()
+Dim FamANDAssemAttr As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.Attributes" & "." & "FamANDAssemAttr", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute"))
+FamANDAssemAttr.CreateType()
+End Sub
+
+Sub FamORAssemAttr()
+Dim FamORAssemAttr As TypeBuilder = mdl.DefineType("dylan.NET.Tokenizer.AST.Tokens.Attributes" & "." & "FamORAssemAttr", TypeAttributes.Public Or TypeAttributes.AutoLayout Or TypeAttributes.AnsiClass, asm.GetType("dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute"))
+FamORAssemAttr.CreateType()
 End Sub
 
 Sub SequentialLayoutAttr()
@@ -9766,7 +9786,7 @@ End Sub
 Sub Main()
 
 asmName = New AssemblyName("tokenizer.AST")
-asmName.Version = New System.Version(11, 2, 8, 4)
+asmName.Version = New System.Version(11, 2, 8, 5)
 asm  = AppDomain.CurrentDomain.DefineDynamicAssembly(asmName, AssemblyBuilderAccess.Save, CStr("E:\Code\dylannet\compiler\"))
 mdl = asm.DefineDynamicModule(asmName.Name & ".dll" , asmName.Name & ".dll", True)
 resw = mdl.DefineResource("tokenizer.AST.resources" ,  "Description")
@@ -9893,6 +9913,7 @@ Attribute()
 HideBySigAttr()
 SpecialNameAttr()
 PrivateAttr()
+FamilyAttr()
 PublicAttr()
 StaticAttr()
 VirtualAttr()
@@ -9908,7 +9929,10 @@ SealedAttr()
 InterfaceAttr()
 InitOnlyAttr()
 LiteralAttr()
+FinalAttr()
 AssemblyAttr()
+FamANDAssemAttr()
+FamORAssemAttr()
 SequentialLayoutAttr()
 AutoLayoutAttr()
 ConditionalOp()
@@ -10059,7 +10083,7 @@ EndPropStmt()
 CommentStmt()
 Dim vaType As Type = GetType(AssemblyFileVersionAttribute)
 Dim vaCtor As ConstructorInfo = vaType.GetConstructor(New Type() { GetType(String) })
-Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.8.4"})
+Dim vaBuilder As CustomAttributeBuilder = New CustomAttributeBuilder(vaCtor, New Object() {"11.2.8.5"})
 asm.SetCustomAttribute(vaBuilder)
 
 Dim paType As Type = GetType(AssemblyProductAttribute)

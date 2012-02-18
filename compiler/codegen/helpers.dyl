@@ -61,6 +61,24 @@ end if
 goto fin
 end if
 
+typ = gettype Attributes.PrivateAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+if AsmFactory::isNested = false then
+temp = 0
+else
+temp = 3
+end if
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
 typ = gettype Attributes.AutoLayoutAttr
 b = typ::IsInstanceOfType($object$curattr)
 
@@ -88,6 +106,21 @@ ta = temp or ta
 end if
 goto fin
 end if
+
+typ = gettype Attributes.SealedAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 256
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
 
 place fin
 
@@ -197,6 +230,90 @@ end if
 goto fin
 end if
 
+typ = gettype Attributes.PrivateAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 1
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.FamilyAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 4
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.FinalAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 32
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.AssemblyAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 3
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.FamORAssemAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 5
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.FamANDAssemAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 2
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
 
 place fin
 
@@ -282,6 +399,63 @@ b = typ::IsInstanceOfType($object$curattr)
 
 if b = true then
 temp = 1
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.FamilyAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 4
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+
+typ = gettype Attributes.AssemblyAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 3
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.FamORAssemAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 5
+if fir = true then
+fir = fir nand fir
+ta = temp
+else
+ta = temp or ta
+end if
+goto fin
+end if
+
+typ = gettype Attributes.FamANDAssemAttr
+b = typ::IsInstanceOfType($object$curattr)
+
+if b = true then
+temp = 2
 if fir = true then
 fir = fir nand fir
 ta = temp
@@ -1468,7 +1642,9 @@ fldi = SymTable::FindFld(nam)
 if fldi <> null then
 fldinf = fldi::FieldBldr
 else
+Loader::ProtectedFlag = true
 fldinf = Loader::LoadField(AsmFactory::CurnInhTyp, nam)
+Loader::ProtectedFlag = false
 end if
 
 return fldinf
@@ -1485,7 +1661,9 @@ meti = SymTable::FindMet(nam, typs)
 if meti <> null then
 metinf = meti::MethodBldr
 else
+Loader::ProtectedFlag = true
 metinf = Loader::LoadMethod(AsmFactory::CurnInhTyp, nam, typs)
+Loader::ProtectedFlag = false
 end if
 
 return metinf

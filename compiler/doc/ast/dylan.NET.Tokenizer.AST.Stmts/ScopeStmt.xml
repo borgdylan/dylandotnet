@@ -10,6 +10,7 @@
     <AssemblyVersion>11.2.8.2</AssemblyVersion>
     <AssemblyVersion>11.2.8.3</AssemblyVersion>
     <AssemblyVersion>11.2.8.4</AssemblyVersion>
+    <AssemblyVersion>11.2.8.5</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
@@ -32,6 +33,7 @@
         <AssemblyVersion>11.2.8.2</AssemblyVersion>
         <AssemblyVersion>11.2.8.3</AssemblyVersion>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -51,6 +53,7 @@
         <AssemblyVersion>11.2.8.2</AssemblyVersion>
         <AssemblyVersion>11.2.8.3</AssemblyVersion>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -72,6 +75,7 @@
         <AssemblyVersion>11.2.8.2</AssemblyVersion>
         <AssemblyVersion>11.2.8.3</AssemblyVersion>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.SwitchTok</ReturnType>
@@ -93,6 +97,7 @@
         <AssemblyVersion>11.2.8.2</AssemblyVersion>
         <AssemblyVersion>11.2.8.3</AssemblyVersion>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

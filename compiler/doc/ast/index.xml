@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.8.4">
+    <Assembly Name="tokenizer.AST" Version="11.2.8.5">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("tokenizer.AST")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.4")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.5")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("tokenizer.AST")</AttributeName>
@@ -165,6 +165,10 @@
       <Type Name="AutoClassAttr" Kind="Class" />
       <Type Name="AutoLayoutAttr" Kind="Class" />
       <Type Name="BeforeFieldInitAttr" Kind="Class" />
+      <Type Name="FamANDAssemAttr" Kind="Class" />
+      <Type Name="FamilyAttr" Kind="Class" />
+      <Type Name="FamORAssemAttr" Kind="Class" />
+      <Type Name="FinalAttr" Kind="Class" />
       <Type Name="HasDefaultAttr" Kind="Class" />
       <Type Name="HideBySigAttr" Kind="Class" />
       <Type Name="InitOnlyAttr" Kind="Class" />

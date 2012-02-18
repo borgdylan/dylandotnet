@@ -25,6 +25,11 @@ class public auto ansi PrivateAttr extends Attribute
 
 end class
 
+// family
+class public auto ansi FamilyAttr extends Attribute
+
+end class
+
 // public
 class public auto ansi PublicAttr extends Attribute
 
@@ -100,10 +105,27 @@ class public auto ansi LiteralAttr extends Attribute
 
 end class
 
+// final
+class public auto ansi FinalAttr extends Attribute
+
+end class
+
+
 // assembly
 class public auto ansi AssemblyAttr extends Attribute
 
 end class
+
+// famandassem
+class public auto ansi FamANDAssemAttr extends Attribute
+
+end class
+
+// famorassem
+class public auto ansi FamORAssemAttr extends Attribute
+
+end class
+
 
 // sequential
 class public auto ansi SequentialLayoutAttr extends Attribute

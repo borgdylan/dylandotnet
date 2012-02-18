@@ -260,10 +260,18 @@ inhtyp = reft
 end if
 
 if inhtyp = null then
-errstr = String::Concat("Base Class '", inhclstok::Value, "' is not defined.")
+errstr = String::Concat("Base Class '", inhclstok::Value, "' is not defined or is not accessible.")
 StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
 end if
 
+if inhtyp <> null then
+b = inhtyp::get_IsSealed()
+if b = true then
+inhtyp = null
+errstr = String::Concat("Base Class '", inhclstok::Value, "' is not inheritable.")
+StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
+end if
+end if
 
 AsmFactory::CurnInhTyp = inhtyp
 
@@ -665,6 +673,19 @@ if b = true then
 
 var nss as NSStmt = stm
 var nssns as Token = nss::NS
+
+tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*",Utils.Constants::quot)
+tmpstr = String::Concat(tmpstr, "$")
+compb = Utils.ParseUtils::LikeOP(nssns::Value, tmpstr)
+
+if compb = true then
+tmpstr = nssns::Value
+tmpchrarr = newarr char 1
+tmpchrarr[0] = $char$Utils.Constants::quot
+tmpstr = tmpstr::Trim(tmpchrarr)
+nssns::Value = tmpstr
+end if
+
 AsmFactory::CurnNS = nssns::Value
 
 goto fin

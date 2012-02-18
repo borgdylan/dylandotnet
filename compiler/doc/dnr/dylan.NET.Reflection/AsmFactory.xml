@@ -10,6 +10,8 @@
     <AssemblyVersion>11.2.7.8</AssemblyVersion>
     <AssemblyVersion>11.2.7.9</AssemblyVersion>
     <AssemblyVersion>11.2.8.1</AssemblyVersion>
+    <AssemblyVersion>11.2.8.4</AssemblyVersion>
+    <AssemblyVersion>11.2.8.5</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -17,7 +19,8 @@
   <Interfaces />
   <Docs>
     <summary>Holds the resources used during assembly making.</summary>
-    <remarks></remarks>
+    <remarks>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".cctor">
@@ -32,11 +35,14 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>Initialises this class.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddGenParamName">
@@ -51,6 +57,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -73,13 +81,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Set this to allow automatic valuetype pointer load during field chaining.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddTyp">
@@ -94,6 +105,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -104,7 +117,8 @@
       <Docs>
         <param name="typ">The Type instance to add to the AsmFactory TypArr array.</param>
         <summary>Adds a Type instance to the TypArr array.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddTypB">
@@ -119,6 +133,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -129,7 +145,8 @@
       <Docs>
         <param name="typ">The TypeBuilder to add.</param>
         <summary>Add a TypeBuilder to the list of type builders.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AsmB">
@@ -144,13 +161,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.AssemblyBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the AssemblyBuilder for the assembly under construction.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AsmFile">
@@ -165,13 +185,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the name of the assembly under construction.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AsmMode">
@@ -186,13 +209,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the mode i.e. 'exe' or 'dll' of the assembly under construction.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AsmNameStr">
@@ -207,13 +233,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.AssemblyName</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the AssemblyName for the assembly under construction.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ChainFlg">
@@ -228,13 +257,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>When set indicates that a method chain beyond field chaining boundaries is in progress.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CreateTyp">
@@ -249,6 +281,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -271,13 +305,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.ConstructorBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current ConstructorBuilder.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurnFldB">
@@ -292,13 +329,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.FieldBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current FieldBuilder.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurnILGen">
@@ -313,13 +353,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.ILGenerator</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Hold the ILGenerator for the current method or constructor.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurnInhTyp">
@@ -331,13 +374,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds a Type instance representing the base class for the class under construction.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurnMetB">
@@ -352,13 +398,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.MethodBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current MethodBuilder.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurnMetName">
@@ -373,13 +422,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the name of the method under cosntruction.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurnNS">
@@ -394,13 +446,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current namespace.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurnTypB">
@@ -415,13 +470,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.TypeBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current TypeBuilder.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurnTypB2">
@@ -436,13 +494,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.TypeBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds a second TypeBuilder temporarily.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurnTypList">
@@ -457,13 +518,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.TypeBuilder[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the list of TypeBuilders.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurnTypName">
@@ -476,13 +540,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the name of the class under construction.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DebugFlg">
@@ -497,13 +564,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>If set indicates that debug information is required else its hould be unset.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DfltNS">
@@ -518,13 +588,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the default name space for an assembly usually its name.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DocWriter">
@@ -539,13 +612,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.SymbolStore.ISymbolDocumentWriter</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current symbol writer.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GenParamNames">
@@ -560,6 +636,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
@@ -581,6 +659,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.GenericTypeParameterBuilder[]</ReturnType>
@@ -602,13 +682,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>If set indicates that a class is still being constructed.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitConstr">
@@ -623,6 +706,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -630,7 +715,8 @@
       <Parameters />
       <Docs>
         <summary>Initialises AsmFactory and ILEmitter to work with a new ConstructorBuilder.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitDelConstr">
@@ -640,6 +726,8 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -647,7 +735,8 @@
       <Parameters />
       <Docs>
         <summary>Initialises AsmFactory to work with a new Delegate's ConstructorBuilder.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitDelMet">
@@ -657,6 +746,8 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -664,7 +755,8 @@
       <Parameters />
       <Docs>
         <summary>Initialises AsmFactory to work with a new Delegate's MethodBuilder.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitMtd">
@@ -679,6 +771,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -701,13 +795,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>If set indicates that a method is under construction.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="isNested">
@@ -722,13 +819,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Indicates that the current type under construction is a nested class if set.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="MdlB">
@@ -743,13 +843,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.ModuleBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current ModuleBuilder.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="PopFlg">
@@ -763,13 +866,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>If set indicates that the next method call should be followed by a 'pop'</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="TypArr">
@@ -784,13 +890,16 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds an array of Type.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Type01">
@@ -805,6 +914,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -826,6 +937,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -847,6 +960,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -868,6 +983,8 @@
         <AssemblyVersion>11.2.7.8</AssemblyVersion>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -884,6 +1001,8 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
         <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>

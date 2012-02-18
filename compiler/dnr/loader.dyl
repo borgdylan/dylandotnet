@@ -9,6 +9,7 @@
 class public auto ansi beforefieldinit Loader
 
 field public static boolean FldLitFlag
+field public static boolean ProtectedFlag
 field public static object FldLitVal
 field public static boolean EnumLitFlag
 field public static System.Type EnumLitTyp
@@ -18,6 +19,7 @@ field public static boolean MakeArr
 field public static boolean MakeRef
 
 method public static void ctor0()
+ProtectedFlag = false
 FldLitFlag = false
 FldLitVal = null
 EnumLitFlag = false
@@ -38,6 +40,7 @@ var len2 as integer = Importer::Imps[l] - 1
 var curns as string = ""
 var tmpstr as string = ""
 var nest as boolean = false
+var asmb as AssemblyBuilder
 
 label loop
 label cont
@@ -60,6 +63,19 @@ i++
 
 curasm = Importer::Asms[i]
 
+if curasm = AsmFactory::AsmB then
+asmb = curasm
+typ = asmb::GetType(name,false,false)
+if typ = null then
+else
+if nest = true then
+typ = typ::GetNestedType(na[1])
+end if
+goto fin
+end if
+
+else
+
 typ = curasm::GetType(name)
 if typ = null then
 else
@@ -69,12 +85,28 @@ end if
 goto fin
 end if
 
+end if
+
 place loop2
 j++
 
 curns = Importer::Imps[j]
 
 tmpstr = String::Concat(curns, ".", name)
+
+if curasm = AsmFactory::AsmB then
+asmb = curasm
+typ = asmb::GetType(tmpstr,false,false)
+if typ = null then
+else
+if nest = true then
+typ = typ::GetNestedType(na[1])
+end if
+goto fin
+end if
+
+else
+
 typ = curasm::GetType(tmpstr)
 if typ = null then
 else
@@ -82,6 +114,8 @@ if nest = true then
 typ = typ::GetNestedType(na[1])
 end if
 goto fin
+end if
+
 end if
 
 if j = len2 then
@@ -286,6 +320,58 @@ if mtdinfo <> null then
 MemberTyp = mtdinfo::get_ReturnType()
 end if
 
+var nullbind as Binder = null
+var parammodifs as ParameterModifier[] = newarr ParameterModifier 0
+var bindflgs as BindingFlags = 4 or 8 or 16 or 32
+
+if mtdinfo = null then
+
+mtdinfo = typ::GetMethod(name,bindflgs, nullbind, typs, parammodifs)
+
+if mtdinfo <> null then
+var b as boolean = false
+b = mtdinfo::get_IsPrivate()
+
+//filter out private members
+if b = false then
+
+var havinternal as boolean
+var asm as Assembly = typ::get_Assembly()
+var asmn as AssemblyName = asm::GetName()
+havinternal = AssemblyName::ReferenceMatchesDefinition(AsmFactory::AsmNameStr, asmn)
+var orflg as boolean = ProtectedFlag or havinternal
+var andflg as boolean = ProtectedFlag and havinternal
+
+b = mtdinfo::get_IsFamilyAndAssembly()
+b = b and andflg
+if b = false then
+b = mtdinfo::get_IsFamilyOrAssembly()
+b = b and orflg
+if b = false then
+b = mtdinfo::get_IsFamily()
+b = b and ProtectedFlag
+if b = false then
+b = mtdinfo::get_IsAssembly()
+b = b and havinternal
+if b = false then
+mtdinfo = null
+end if
+end if
+end if
+end if
+else
+mtdinfo = null
+//filter out private members
+end if
+
+end if
+
+if mtdinfo <> null then
+MemberTyp = mtdinfo::get_ReturnType()
+end if
+
+end if
+
 return mtdinfo
 
 end method
@@ -295,11 +381,60 @@ method public static ConstructorInfo LoadCtor(var typ as System.Type, var typs a
 var nullbind as Binder = null
 var parammodifs as ParameterModifier[] = newarr ParameterModifier 0
 var bindflgs as BindingFlags = 4 or 8 or 16 or 32
-//var ctorinf as ConstructorInfo = typ::GetConstructor(bindflgs, nullbind, typs, parammodifs)
 var ctorinf as ConstructorInfo = typ::GetConstructor(typs)
 
 if ctorinf <> null then
 MemberTyp = typ
+end if
+
+if ctorinf = null then
+
+
+ctorinf = typ::GetConstructor(bindflgs, nullbind, typs, parammodifs)
+
+if ctorinf <> null then
+var b as boolean = false
+b = ctorinf::get_IsPrivate()
+
+//filter out private members
+if b = false then
+
+var havinternal as boolean
+var asm as Assembly = typ::get_Assembly()
+var asmn as AssemblyName = asm::GetName()
+havinternal = AssemblyName::ReferenceMatchesDefinition(AsmFactory::AsmNameStr, asmn)
+var orflg as boolean = ProtectedFlag or havinternal
+var andflg as boolean = ProtectedFlag and havinternal
+
+b = ctorinf::get_IsFamilyAndAssembly()
+b = b and andflg
+if b = false then
+b = ctorinf::get_IsFamilyOrAssembly()
+b = b and orflg
+if b = false then
+b = ctorinf::get_IsFamily()
+b = b and ProtectedFlag
+if b = false then
+b = ctorinf::get_IsAssembly()
+b = b and havinternal
+if b = false then
+ctorinf = null
+end if
+end if
+end if
+end if
+else
+ctorinf = null
+//filter out private members
+end if
+
+end if
+
+if ctorinf <> null then
+MemberTyp = typ
+end if
+
+
 end if
 
 return ctorinf
@@ -567,6 +702,50 @@ var temptyp as System.Type = null
 var fldinfo as FieldInfo = null
 
 fldinfo = typ::GetField(name)
+var bindflgs as BindingFlags = 4 or 8 or 16 or 32
+
+if fldinfo = null then
+fldinfo = typ::GetField(name,bindflgs)
+
+if fldinfo <> null then
+
+var b as boolean = false
+b = fldinfo::get_IsPrivate()
+
+//filter out private members
+if b = false then
+
+var havinternal as boolean
+var asm as Assembly = typ::get_Assembly()
+var asmn as AssemblyName = asm::GetName()
+havinternal = AssemblyName::ReferenceMatchesDefinition(AsmFactory::AsmNameStr, asmn)
+var orflg as boolean = ProtectedFlag or havinternal
+var andflg as boolean = ProtectedFlag and havinternal
+
+b = fldinfo::get_IsFamilyAndAssembly()
+b = b and andflg
+if b = false then
+b = fldinfo::get_IsFamilyOrAssembly()
+b = b and orflg
+if b = false then
+b = fldinfo::get_IsFamily()
+b = b and ProtectedFlag
+if b = false then
+b = fldinfo::get_IsAssembly()
+b = b and havinternal
+if b = false then
+fldinfo = null
+end if
+end if
+end if
+end if
+else
+fldinfo = null
+//filter out private members
+end if
+
+end if
+end if
 
 if fldinfo <> null then
 MemberTyp = fldinfo::get_FieldType()
@@ -582,6 +761,7 @@ if EnumLitFlag = true then
 EnumLitTyp = System.Enum::GetUnderlyingType(typ)
 end if
 end if
+
 
 return fldinfo
 

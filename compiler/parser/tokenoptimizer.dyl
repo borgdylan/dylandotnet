@@ -597,6 +597,8 @@ ParserFlags::NoOptFlag = true
 goto fin
 end if
 
+if ParserFlags::AssemFlg = true then
+
 comp = String::Compare(tok::Value, "assembly")
 
 if comp = 0 then
@@ -604,7 +606,10 @@ var asmtk as AssemblyTok = new AssemblyTok()
 asmtk::Line = tok::Line
 asmtk::Value = tok::Value
 tok = asmtk
+ParserFlags::AssemFlg = false
 goto fin
+end if
+
 end if
 
 comp = String::Compare(tok::Value, "ver")
@@ -808,6 +813,26 @@ tok = spnattr
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "sealed")
+
+if comp = 0 then
+var sealattr as SealedAttr = new SealedAttr()
+sealattr::Line = tok::Line
+sealattr::Value = tok::Value
+tok = sealattr
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "final")
+
+if comp = 0 then
+var finaattr as FinalAttr = new FinalAttr()
+finaattr::Line = tok::Line
+finaattr::Value = tok::Value
+tok = finaattr
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "hidebysig")
 
 if comp = 0 then
@@ -818,6 +843,45 @@ tok = hbsattr
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "family")
+
+if comp = 0 then
+var famattr as FamilyAttr = new FamilyAttr()
+famattr::Line = tok::Line
+famattr::Value = tok::Value
+tok = famattr
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "famorassem")
+
+if comp = 0 then
+var famoaattr as FamORAssemAttr = new FamORAssemAttr()
+famoaattr::Line = tok::Line
+famoaattr::Value = tok::Value
+tok = famoaattr
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "famandassem")
+
+if comp = 0 then
+var famaaattr as FamANDAssemAttr = new FamANDAssemAttr()
+famaaattr::Line = tok::Line
+famaaattr::Value = tok::Value
+tok = famaaattr
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "assembly")
+
+if comp = 0 then
+var asmattr as AssemblyAttr = new AssemblyAttr()
+asmattr::Line = tok::Line
+asmattr::Value = tok::Value
+tok = asmattr
+goto fin
+end if
 
 comp = String::Compare(tok::Value, "virtual")
 

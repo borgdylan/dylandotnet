@@ -990,7 +990,9 @@ end if
 else
 
 mcparenttyp = AsmFactory::CurnInhTyp
+Loader::ProtectedFlag = true
 ncctorinf = Loader::LoadCtor(mcparenttyp, typarr1)
+Loader::ProtectedFlag = false
 
 if emt = true then
 ILEmitter::EmitCallCtor(ncctorinf)

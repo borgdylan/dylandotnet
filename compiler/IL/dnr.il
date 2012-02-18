@@ -10,13 +10,13 @@
 }
 .assembly extern dnu
 {
-  .ver 11:2:8:4
+  .ver 11:2:8:5
 }
 .assembly 'dnr'
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 34 00 00 ) // ...11.2.8.4..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 35 00 00 ) // ...11.2.8.5..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (01 00 03 64 6E 72 00 00 ) // ...dnr..
 
@@ -25,10 +25,10 @@
   .custom instance void class [mscorlib]System.Reflection.AssemblyDescriptionAttribute::'.ctor'(string) =  (01 00 03 64 6E 72 00 00 ) // ...dnr..
 
   .hash algorithm 0x00008004
-  .ver  11:2:8:4
+  .ver  11:2:8:5
 }
 
-.module dnr.dll // GUID = {FB3F680A-EDB9-451D-A3E3-1D40D68242B4}
+.module dnr.dll // GUID = {F432366C-2B5C-4AEE-9797-E3EBA965617B}
 
 
 .namespace dylan.NET.Reflection
@@ -12833,6 +12833,7 @@
   	extends [mscorlib]System.Object
   {
     .field  public static  bool FldLitFlag
+    .field  public static  bool ProtectedFlag
     .field  public static  object FldLitVal
     .field  public static  bool EnumLitFlag
     .field  public static  class [mscorlib]System.Type EnumLitTyp
@@ -12846,32 +12847,34 @@
            default void '.cctor' ()  cil managed 
     {
         // Method begins at RVA 0x9198
-	// Code size 59 (0x3b)
+	// Code size 69 (0x45)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
-	IL_0005:  stsfld bool dylan.NET.Reflection.Loader::FldLitFlag
-	IL_000a:  ldnull 
-	IL_000b:  stsfld object dylan.NET.Reflection.Loader::FldLitVal
-	IL_0010:  ldc.i4 0
-	IL_0015:  stsfld bool dylan.NET.Reflection.Loader::EnumLitFlag
-	IL_001a:  ldnull 
-	IL_001b:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::FldLitTyp
-	IL_0020:  ldnull 
-	IL_0021:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::MemberTyp
-	IL_0026:  ldc.i4 0
-	IL_002b:  stsfld bool dylan.NET.Reflection.Loader::MakeArr
+	IL_0005:  stsfld bool dylan.NET.Reflection.Loader::ProtectedFlag
+	IL_000a:  ldc.i4 0
+	IL_000f:  stsfld bool dylan.NET.Reflection.Loader::FldLitFlag
+	IL_0014:  ldnull 
+	IL_0015:  stsfld object dylan.NET.Reflection.Loader::FldLitVal
+	IL_001a:  ldc.i4 0
+	IL_001f:  stsfld bool dylan.NET.Reflection.Loader::EnumLitFlag
+	IL_0024:  ldnull 
+	IL_0025:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::FldLitTyp
+	IL_002a:  ldnull 
+	IL_002b:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::MemberTyp
 	IL_0030:  ldc.i4 0
-	IL_0035:  stsfld bool dylan.NET.Reflection.Loader::MakeRef
-	IL_003a:  ret 
+	IL_0035:  stsfld bool dylan.NET.Reflection.Loader::MakeArr
+	IL_003a:  ldc.i4 0
+	IL_003f:  stsfld bool dylan.NET.Reflection.Loader::MakeRef
+	IL_0044:  ret 
     } // end of method Loader::.cctor
 
     // method line 106
     .method public static 
            default class [mscorlib]System.Type LoadClass (string name)  cil managed 
     {
-        // Method begins at RVA 0x91e0
-	// Code size 826 (0x33a)
-	.maxstack 34
+        // Method begins at RVA 0x91ec
+	// Code size 1172 (0x494)
+	.maxstack 56
 	.locals init (
 		class [mscorlib]System.Type	V_0,
 		int32	V_1,
@@ -12882,7 +12885,8 @@
 		string	V_6,
 		string	V_7,
 		bool	V_8,
-		string[]	V_9)
+		class [mscorlib]System.Reflection.Emit.AssemblyBuilder	V_9,
+		string[]	V_10)
 	IL_0000:  ldnull 
 	IL_0001:  stloc 0
 
@@ -12942,11 +12946,11 @@
 	IL_0070:  nop 
 	IL_0071:  ldstr "\\"
 	IL_0076:  call string[] class [dnu]dylan.NET.Utils.ParseUtils::StringParser(string, string)
-	IL_007b:  stloc 9
+	IL_007b:  stloc 10
 
 	IL_007f:  nop 
 	IL_0080:  nop 
-	IL_0081:  ldloc 9
+	IL_0081:  ldloc 10
 
 	IL_0085:  nop 
 	IL_0086:  nop 
@@ -12957,7 +12961,7 @@
 
 	IL_0096:  nop 
 	IL_0097:  nop 
-	IL_0098:  ldloc 9
+	IL_0098:  ldloc 10
 
 	IL_009c:  nop 
 	IL_009d:  nop 
@@ -12985,7 +12989,7 @@
 
 	IL_00d5:  br IL_00e4
 
-	IL_00da:  br IL_02a6
+	IL_00da:  br IL_0400
 
 	IL_00df:  br IL_00e9
 
@@ -13016,235 +13020,238 @@
 
 	IL_0116:  nop 
 	IL_0117:  nop 
-	IL_0118:  ldarg 0
+	IL_0118:  ldsfld class [mscorlib]System.Reflection.Emit.AssemblyBuilder dylan.NET.Reflection.AsmFactory::AsmB
+	IL_011d:  beq IL_0127
 
-	IL_011c:  nop 
-	IL_011d:  nop 
-	IL_011e:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Reflection.Assembly::GetType(string)
-	IL_0123:  stloc 0
+	IL_0122:  br IL_01ba
 
-	IL_0127:  nop 
-	IL_0128:  nop 
-	IL_0129:  ldloc 0
+	IL_0127:  ldloc 3
 
-	IL_012d:  nop 
-	IL_012e:  nop 
-	IL_012f:  ldnull 
-	IL_0130:  beq IL_013a
+	IL_012b:  nop 
+	IL_012c:  nop 
+	IL_012d:  stloc 9
 
-	IL_0135:  br IL_013f
+	IL_0131:  nop 
+	IL_0132:  nop 
+	IL_0133:  ldloc 9
 
-	IL_013a:  br IL_018a
+	IL_0137:  nop 
+	IL_0138:  nop 
+	IL_0139:  ldarg 0
 
-	IL_013f:  ldloc 8
+	IL_013d:  nop 
+	IL_013e:  nop 
+	IL_013f:  ldc.i4 0
+	IL_0144:  ldc.i4 0
+	IL_0149:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Reflection.Assembly::GetType(string, bool, bool)
+	IL_014e:  stloc 0
 
-	IL_0143:  nop 
-	IL_0144:  nop 
-	IL_0145:  ldc.i4 1
-	IL_014a:  beq IL_0154
-
-	IL_014f:  br IL_017b
-
+	IL_0152:  nop 
+	IL_0153:  nop 
 	IL_0154:  ldloc 0
 
 	IL_0158:  nop 
 	IL_0159:  nop 
-	IL_015a:  ldloc 9
+	IL_015a:  ldnull 
+	IL_015b:  beq IL_0165
 
-	IL_015e:  nop 
-	IL_015f:  nop 
-	IL_0160:  ldc.i4 1
-	IL_0165:  conv.u 
-	IL_0166:  ldelem [mscorlib]System.String
-	IL_016b:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Type::GetNestedType(string)
-	IL_0170:  stloc 0
+	IL_0160:  br IL_016a
 
-	IL_0174:  nop 
-	IL_0175:  nop 
-	IL_0176:  br IL_0180
+	IL_0165:  br IL_01b5
 
-	IL_017b:  br IL_0180
+	IL_016a:  ldloc 8
 
-	IL_0180:  br IL_02a6
+	IL_016e:  nop 
+	IL_016f:  nop 
+	IL_0170:  ldc.i4 1
+	IL_0175:  beq IL_017f
 
-	IL_0185:  br IL_018a
+	IL_017a:  br IL_01a6
 
-	IL_018a:  ldloc 4
+	IL_017f:  ldloc 0
 
-	IL_018e:  nop 
-	IL_018f:  nop 
-	IL_0190:  ldc.i4 1
-	IL_0195:  add 
-	IL_0196:  stloc 4
+	IL_0183:  nop 
+	IL_0184:  nop 
+	IL_0185:  ldloc 10
 
-	IL_019a:  nop 
-	IL_019b:  nop 
-	IL_019c:  ldsfld string[] dylan.NET.Reflection.Importer::Imps
-	IL_01a1:  ldloc 4
+	IL_0189:  nop 
+	IL_018a:  nop 
+	IL_018b:  ldc.i4 1
+	IL_0190:  conv.u 
+	IL_0191:  ldelem [mscorlib]System.String
+	IL_0196:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Type::GetNestedType(string)
+	IL_019b:  stloc 0
 
-	IL_01a5:  nop 
-	IL_01a6:  nop 
-	IL_01a7:  conv.u 
-	IL_01a8:  ldelem [mscorlib]System.String
-	IL_01ad:  stloc 6
+	IL_019f:  nop 
+	IL_01a0:  nop 
+	IL_01a1:  br IL_01ab
 
-	IL_01b1:  nop 
-	IL_01b2:  nop 
-	IL_01b3:  ldloc 6
+	IL_01a6:  br IL_01ab
 
-	IL_01b7:  nop 
-	IL_01b8:  nop 
-	IL_01b9:  ldstr "."
-	IL_01be:  ldarg 0
+	IL_01ab:  br IL_0400
 
-	IL_01c2:  nop 
-	IL_01c3:  nop 
-	IL_01c4:  call string string::Concat(string, string, string)
-	IL_01c9:  stloc 7
+	IL_01b0:  br IL_01b5
 
-	IL_01cd:  nop 
-	IL_01ce:  nop 
-	IL_01cf:  ldloc 3
+	IL_01b5:  br IL_0237
 
-	IL_01d3:  nop 
-	IL_01d4:  nop 
-	IL_01d5:  ldloc 7
+	IL_01ba:  ldloc 3
 
-	IL_01d9:  nop 
-	IL_01da:  nop 
-	IL_01db:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Reflection.Assembly::GetType(string)
-	IL_01e0:  stloc 0
+	IL_01be:  nop 
+	IL_01bf:  nop 
+	IL_01c0:  ldarg 0
 
-	IL_01e4:  nop 
-	IL_01e5:  nop 
-	IL_01e6:  ldloc 0
+	IL_01c4:  nop 
+	IL_01c5:  nop 
+	IL_01c6:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Reflection.Assembly::GetType(string)
+	IL_01cb:  stloc 0
 
-	IL_01ea:  nop 
+	IL_01cf:  nop 
+	IL_01d0:  nop 
+	IL_01d1:  ldloc 0
+
+	IL_01d5:  nop 
+	IL_01d6:  nop 
+	IL_01d7:  ldnull 
+	IL_01d8:  beq IL_01e2
+
+	IL_01dd:  br IL_01e7
+
+	IL_01e2:  br IL_0232
+
+	IL_01e7:  ldloc 8
+
 	IL_01eb:  nop 
-	IL_01ec:  ldnull 
-	IL_01ed:  beq IL_01f7
+	IL_01ec:  nop 
+	IL_01ed:  ldc.i4 1
+	IL_01f2:  beq IL_01fc
 
-	IL_01f2:  br IL_01fc
+	IL_01f7:  br IL_0223
 
-	IL_01f7:  br IL_0247
-
-	IL_01fc:  ldloc 8
+	IL_01fc:  ldloc 0
 
 	IL_0200:  nop 
 	IL_0201:  nop 
-	IL_0202:  ldc.i4 1
-	IL_0207:  beq IL_0211
+	IL_0202:  ldloc 10
 
-	IL_020c:  br IL_0238
+	IL_0206:  nop 
+	IL_0207:  nop 
+	IL_0208:  ldc.i4 1
+	IL_020d:  conv.u 
+	IL_020e:  ldelem [mscorlib]System.String
+	IL_0213:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Type::GetNestedType(string)
+	IL_0218:  stloc 0
 
-	IL_0211:  ldloc 0
-
-	IL_0215:  nop 
-	IL_0216:  nop 
-	IL_0217:  ldloc 9
-
-	IL_021b:  nop 
 	IL_021c:  nop 
-	IL_021d:  ldc.i4 1
-	IL_0222:  conv.u 
-	IL_0223:  ldelem [mscorlib]System.String
-	IL_0228:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Type::GetNestedType(string)
-	IL_022d:  stloc 0
+	IL_021d:  nop 
+	IL_021e:  br IL_0228
 
-	IL_0231:  nop 
-	IL_0232:  nop 
-	IL_0233:  br IL_023d
+	IL_0223:  br IL_0228
 
-	IL_0238:  br IL_023d
+	IL_0228:  br IL_0400
 
-	IL_023d:  br IL_02a6
+	IL_022d:  br IL_0232
 
-	IL_0242:  br IL_0247
+	IL_0232:  br IL_0237
 
-	IL_0247:  ldloc 4
+	IL_0237:  ldloc 4
 
-	IL_024b:  nop 
-	IL_024c:  nop 
-	IL_024d:  ldloc 5
+	IL_023b:  nop 
+	IL_023c:  nop 
+	IL_023d:  ldc.i4 1
+	IL_0242:  add 
+	IL_0243:  stloc 4
 
-	IL_0251:  nop 
+	IL_0247:  nop 
+	IL_0248:  nop 
+	IL_0249:  ldsfld string[] dylan.NET.Reflection.Importer::Imps
+	IL_024e:  ldloc 4
+
 	IL_0252:  nop 
-	IL_0253:  beq IL_025d
+	IL_0253:  nop 
+	IL_0254:  conv.u 
+	IL_0255:  ldelem [mscorlib]System.String
+	IL_025a:  stloc 6
 
-	IL_0258:  br IL_0272
+	IL_025e:  nop 
+	IL_025f:  nop 
+	IL_0260:  ldloc 6
 
-	IL_025d:  ldc.i4 -1
-	IL_0262:  stloc 4
+	IL_0264:  nop 
+	IL_0265:  nop 
+	IL_0266:  ldstr "."
+	IL_026b:  ldarg 0
 
-	IL_0266:  nop 
-	IL_0267:  nop 
-	IL_0268:  br IL_027c
+	IL_026f:  nop 
+	IL_0270:  nop 
+	IL_0271:  call string string::Concat(string, string, string)
+	IL_0276:  stloc 7
 
-	IL_026d:  br IL_027c
-
-	IL_0272:  br IL_018a
-
-	IL_0277:  br IL_027c
-
-	IL_027c:  ldloc 1
+	IL_027a:  nop 
+	IL_027b:  nop 
+	IL_027c:  ldloc 3
 
 	IL_0280:  nop 
 	IL_0281:  nop 
-	IL_0282:  ldloc 2
+	IL_0282:  ldsfld class [mscorlib]System.Reflection.Emit.AssemblyBuilder dylan.NET.Reflection.AsmFactory::AsmB
+	IL_0287:  beq IL_0291
 
-	IL_0286:  nop 
-	IL_0287:  nop 
-	IL_0288:  beq IL_0292
+	IL_028c:  br IL_0324
 
-	IL_028d:  br IL_029c
+	IL_0291:  ldloc 3
 
-	IL_0292:  br IL_02a6
+	IL_0295:  nop 
+	IL_0296:  nop 
+	IL_0297:  stloc 9
 
-	IL_0297:  br IL_02a6
+	IL_029b:  nop 
+	IL_029c:  nop 
+	IL_029d:  ldloc 9
 
-	IL_029c:  br IL_00e9
+	IL_02a1:  nop 
+	IL_02a2:  nop 
+	IL_02a3:  ldloc 7
 
-	IL_02a1:  br IL_02a6
+	IL_02a7:  nop 
+	IL_02a8:  nop 
+	IL_02a9:  ldc.i4 0
+	IL_02ae:  ldc.i4 0
+	IL_02b3:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Reflection.Assembly::GetType(string, bool, bool)
+	IL_02b8:  stloc 0
 
-	IL_02a6:  ldloc 0
+	IL_02bc:  nop 
+	IL_02bd:  nop 
+	IL_02be:  ldloc 0
 
-	IL_02aa:  nop 
-	IL_02ab:  nop 
-	IL_02ac:  ldnull 
-	IL_02ad:  beq IL_031a
+	IL_02c2:  nop 
+	IL_02c3:  nop 
+	IL_02c4:  ldnull 
+	IL_02c5:  beq IL_02cf
 
-	IL_02b2:  br IL_02b7
+	IL_02ca:  br IL_02d4
 
-	IL_02b7:  ldsfld bool dylan.NET.Reflection.Loader::MakeArr
-	IL_02bc:  ldc.i4 1
-	IL_02c1:  beq IL_02cb
+	IL_02cf:  br IL_031f
 
-	IL_02c6:  br IL_02e1
+	IL_02d4:  ldloc 8
 
-	IL_02cb:  ldloc 0
+	IL_02d8:  nop 
+	IL_02d9:  nop 
+	IL_02da:  ldc.i4 1
+	IL_02df:  beq IL_02e9
 
-	IL_02cf:  nop 
-	IL_02d0:  nop 
-	IL_02d1:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Type::MakeArrayType()
-	IL_02d6:  stloc 0
+	IL_02e4:  br IL_0310
 
-	IL_02da:  nop 
-	IL_02db:  nop 
-	IL_02dc:  br IL_02e6
+	IL_02e9:  ldloc 0
 
-	IL_02e1:  br IL_02e6
+	IL_02ed:  nop 
+	IL_02ee:  nop 
+	IL_02ef:  ldloc 10
 
-	IL_02e6:  ldsfld bool dylan.NET.Reflection.Loader::MakeRef
-	IL_02eb:  ldc.i4 1
-	IL_02f0:  beq IL_02fa
-
-	IL_02f5:  br IL_0310
-
-	IL_02fa:  ldloc 0
-
-	IL_02fe:  nop 
-	IL_02ff:  nop 
-	IL_0300:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Type::MakeByRefType()
+	IL_02f3:  nop 
+	IL_02f4:  nop 
+	IL_02f5:  ldc.i4 1
+	IL_02fa:  conv.u 
+	IL_02fb:  ldelem [mscorlib]System.String
+	IL_0300:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Type::GetNestedType(string)
 	IL_0305:  stloc 0
 
 	IL_0309:  nop 
@@ -13253,26 +13260,183 @@
 
 	IL_0310:  br IL_0315
 
-	IL_0315:  br IL_031f
+	IL_0315:  br IL_0400
 
 	IL_031a:  br IL_031f
 
-	IL_031f:  ldc.i4 0
-	IL_0324:  stsfld bool dylan.NET.Reflection.Loader::MakeArr
-	IL_0329:  ldc.i4 0
-	IL_032e:  stsfld bool dylan.NET.Reflection.Loader::MakeRef
-	IL_0333:  ldloc 0
+	IL_031f:  br IL_03a1
 
-	IL_0337:  nop 
-	IL_0338:  nop 
-	IL_0339:  ret 
+	IL_0324:  ldloc 3
+
+	IL_0328:  nop 
+	IL_0329:  nop 
+	IL_032a:  ldloc 7
+
+	IL_032e:  nop 
+	IL_032f:  nop 
+	IL_0330:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Reflection.Assembly::GetType(string)
+	IL_0335:  stloc 0
+
+	IL_0339:  nop 
+	IL_033a:  nop 
+	IL_033b:  ldloc 0
+
+	IL_033f:  nop 
+	IL_0340:  nop 
+	IL_0341:  ldnull 
+	IL_0342:  beq IL_034c
+
+	IL_0347:  br IL_0351
+
+	IL_034c:  br IL_039c
+
+	IL_0351:  ldloc 8
+
+	IL_0355:  nop 
+	IL_0356:  nop 
+	IL_0357:  ldc.i4 1
+	IL_035c:  beq IL_0366
+
+	IL_0361:  br IL_038d
+
+	IL_0366:  ldloc 0
+
+	IL_036a:  nop 
+	IL_036b:  nop 
+	IL_036c:  ldloc 10
+
+	IL_0370:  nop 
+	IL_0371:  nop 
+	IL_0372:  ldc.i4 1
+	IL_0377:  conv.u 
+	IL_0378:  ldelem [mscorlib]System.String
+	IL_037d:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Type::GetNestedType(string)
+	IL_0382:  stloc 0
+
+	IL_0386:  nop 
+	IL_0387:  nop 
+	IL_0388:  br IL_0392
+
+	IL_038d:  br IL_0392
+
+	IL_0392:  br IL_0400
+
+	IL_0397:  br IL_039c
+
+	IL_039c:  br IL_03a1
+
+	IL_03a1:  ldloc 4
+
+	IL_03a5:  nop 
+	IL_03a6:  nop 
+	IL_03a7:  ldloc 5
+
+	IL_03ab:  nop 
+	IL_03ac:  nop 
+	IL_03ad:  beq IL_03b7
+
+	IL_03b2:  br IL_03cc
+
+	IL_03b7:  ldc.i4 -1
+	IL_03bc:  stloc 4
+
+	IL_03c0:  nop 
+	IL_03c1:  nop 
+	IL_03c2:  br IL_03d6
+
+	IL_03c7:  br IL_03d6
+
+	IL_03cc:  br IL_0237
+
+	IL_03d1:  br IL_03d6
+
+	IL_03d6:  ldloc 1
+
+	IL_03da:  nop 
+	IL_03db:  nop 
+	IL_03dc:  ldloc 2
+
+	IL_03e0:  nop 
+	IL_03e1:  nop 
+	IL_03e2:  beq IL_03ec
+
+	IL_03e7:  br IL_03f6
+
+	IL_03ec:  br IL_0400
+
+	IL_03f1:  br IL_0400
+
+	IL_03f6:  br IL_00e9
+
+	IL_03fb:  br IL_0400
+
+	IL_0400:  ldloc 0
+
+	IL_0404:  nop 
+	IL_0405:  nop 
+	IL_0406:  ldnull 
+	IL_0407:  beq IL_0474
+
+	IL_040c:  br IL_0411
+
+	IL_0411:  ldsfld bool dylan.NET.Reflection.Loader::MakeArr
+	IL_0416:  ldc.i4 1
+	IL_041b:  beq IL_0425
+
+	IL_0420:  br IL_043b
+
+	IL_0425:  ldloc 0
+
+	IL_0429:  nop 
+	IL_042a:  nop 
+	IL_042b:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Type::MakeArrayType()
+	IL_0430:  stloc 0
+
+	IL_0434:  nop 
+	IL_0435:  nop 
+	IL_0436:  br IL_0440
+
+	IL_043b:  br IL_0440
+
+	IL_0440:  ldsfld bool dylan.NET.Reflection.Loader::MakeRef
+	IL_0445:  ldc.i4 1
+	IL_044a:  beq IL_0454
+
+	IL_044f:  br IL_046a
+
+	IL_0454:  ldloc 0
+
+	IL_0458:  nop 
+	IL_0459:  nop 
+	IL_045a:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Type::MakeByRefType()
+	IL_045f:  stloc 0
+
+	IL_0463:  nop 
+	IL_0464:  nop 
+	IL_0465:  br IL_046f
+
+	IL_046a:  br IL_046f
+
+	IL_046f:  br IL_0479
+
+	IL_0474:  br IL_0479
+
+	IL_0479:  ldc.i4 0
+	IL_047e:  stsfld bool dylan.NET.Reflection.Loader::MakeArr
+	IL_0483:  ldc.i4 0
+	IL_0488:  stsfld bool dylan.NET.Reflection.Loader::MakeRef
+	IL_048d:  ldloc 0
+
+	IL_0491:  nop 
+	IL_0492:  nop 
+	IL_0493:  ret 
     } // end of method Loader::LoadClass
 
     // method line 107
     .method public static 
            default class [mscorlib]System.Type ProcessType (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x9528
+        // Method begins at RVA 0x968c
 	// Code size 121 (0x79)
 	.maxstack 7
 	IL_0000:  ldsfld bool dylan.NET.Reflection.Loader::MakeArr
@@ -13328,7 +13492,7 @@
     .method public static 
            default class [mscorlib]System.Type[] ParamsToTyps (class [mscorlib]System.Reflection.ParameterInfo[] t)  cil managed 
     {
-        // Method begins at RVA 0x95b0
+        // Method begins at RVA 0x9714
 	// Code size 240 (0xf0)
 	.maxstack 9
 	.locals init (
@@ -13471,7 +13635,7 @@
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo LoadMethodWithoutParams (class [mscorlib]System.Type typ, string name)  cil managed 
     {
-        // Method begins at RVA 0x96ac
+        // Method begins at RVA 0x9810
 	// Code size 379 (0x17b)
 	.maxstack 14
 	.locals init (
@@ -13682,7 +13846,7 @@
     .method public static 
            default class [mscorlib]System.Type[] GetDelegateInvokeParams (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x9834
+        // Method begins at RVA 0x9998
 	// Code size 63 (0x3f)
 	.maxstack 2
 	.locals init (
@@ -13728,15 +13892,24 @@
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo LoadMethod (class [mscorlib]System.Type typ, string name, class [mscorlib]System.Type[] typs)  cil managed 
     {
-        // Method begins at RVA 0x9880
-	// Code size 391 (0x187)
-	.maxstack 16
+        // Method begins at RVA 0x99e4
+	// Code size 1020 (0x3fc)
+	.maxstack 39
 	.locals init (
 		class [mscorlib]System.Type	V_0,
 		class [mscorlib]System.Type[]	V_1,
 		int32	V_2,
 		int32	V_3,
-		class [mscorlib]System.Reflection.MethodInfo	V_4)
+		class [mscorlib]System.Reflection.MethodInfo	V_4,
+		class [mscorlib]System.Reflection.Binder	V_5,
+		valuetype [mscorlib]System.Reflection.ParameterModifier[]	V_6,
+		valuetype [mscorlib]System.Reflection.BindingFlags	V_7,
+		bool	V_8,
+		bool	V_9,
+		class [mscorlib]System.Reflection.Assembly	V_10,
+		class [mscorlib]System.Reflection.AssemblyName	V_11,
+		bool	V_12,
+		bool	V_13)
 	IL_0000:  ldnull 
 	IL_0001:  stloc 0
 
@@ -13936,25 +14109,350 @@
 
 	IL_017b:  br IL_0180
 
-	IL_0180:  ldloc 4
+	IL_0180:  ldnull 
+	IL_0181:  stloc 5
 
-	IL_0184:  nop 
 	IL_0185:  nop 
-	IL_0186:  ret 
+	IL_0186:  nop 
+	IL_0187:  ldc.i4 0
+	IL_018c:  conv.u 
+	IL_018d:  newarr [mscorlib]System.Reflection.ParameterModifier
+	IL_0192:  stloc 6
+
+	IL_0196:  nop 
+	IL_0197:  nop 
+	IL_0198:  ldc.i4 4
+	IL_019d:  ldc.i4 8
+	IL_01a2:  or 
+	IL_01a3:  ldc.i4 16
+	IL_01a8:  or 
+	IL_01a9:  ldc.i4 32
+	IL_01ae:  or 
+	IL_01af:  stloc 7
+
+	IL_01b3:  nop 
+	IL_01b4:  nop 
+	IL_01b5:  ldloc 4
+
+	IL_01b9:  nop 
+	IL_01ba:  nop 
+	IL_01bb:  ldnull 
+	IL_01bc:  beq IL_01c6
+
+	IL_01c1:  br IL_03f0
+
+	IL_01c6:  ldarg 0
+
+	IL_01ca:  nop 
+	IL_01cb:  nop 
+	IL_01cc:  ldarg 1
+
+	IL_01d0:  nop 
+	IL_01d1:  nop 
+	IL_01d2:  ldloc 7
+
+	IL_01d6:  nop 
+	IL_01d7:  nop 
+	IL_01d8:  ldloc 5
+
+	IL_01dc:  nop 
+	IL_01dd:  nop 
+	IL_01de:  ldarg 2
+
+	IL_01e2:  nop 
+	IL_01e3:  nop 
+	IL_01e4:  ldloc 6
+
+	IL_01e8:  nop 
+	IL_01e9:  nop 
+	IL_01ea:  callvirt instance class [mscorlib]System.Reflection.MethodInfo class [mscorlib]System.Type::GetMethod(string, valuetype [mscorlib]System.Reflection.BindingFlags, class [mscorlib]System.Reflection.Binder, class [mscorlib]System.Type[], valuetype [mscorlib]System.Reflection.ParameterModifier[])
+	IL_01ef:  stloc 4
+
+	IL_01f3:  nop 
+	IL_01f4:  nop 
+	IL_01f5:  ldloc 4
+
+	IL_01f9:  nop 
+	IL_01fa:  nop 
+	IL_01fb:  ldnull 
+	IL_01fc:  beq IL_03bb
+
+	IL_0201:  br IL_0206
+
+	IL_0206:  ldc.i4 0
+	IL_020b:  stloc 8
+
+	IL_020f:  nop 
+	IL_0210:  nop 
+	IL_0211:  ldloc 4
+
+	IL_0215:  nop 
+	IL_0216:  nop 
+	IL_0217:  callvirt instance bool class [mscorlib]System.Reflection.MethodBase::get_IsPrivate()
+	IL_021c:  stloc 8
+
+	IL_0220:  nop 
+	IL_0221:  nop 
+	IL_0222:  ldloc 8
+
+	IL_0226:  nop 
+	IL_0227:  nop 
+	IL_0228:  ldc.i4 0
+	IL_022d:  beq IL_0237
+
+	IL_0232:  br IL_03aa
+
+	IL_0237:  ldarg 0
+
+	IL_023b:  nop 
+	IL_023c:  nop 
+	IL_023d:  callvirt instance class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Type::get_Assembly()
+	IL_0242:  stloc 10
+
+	IL_0246:  nop 
+	IL_0247:  nop 
+	IL_0248:  ldloc 10
+
+	IL_024c:  nop 
+	IL_024d:  nop 
+	IL_024e:  callvirt instance class [mscorlib]System.Reflection.AssemblyName class [mscorlib]System.Reflection.Assembly::GetName()
+	IL_0253:  stloc 11
+
+	IL_0257:  nop 
+	IL_0258:  nop 
+	IL_0259:  ldsfld class [mscorlib]System.Reflection.AssemblyName dylan.NET.Reflection.AsmFactory::AsmNameStr
+	IL_025e:  ldloc 11
+
+	IL_0262:  nop 
+	IL_0263:  nop 
+	IL_0264:  call bool class [mscorlib]System.Reflection.AssemblyName::ReferenceMatchesDefinition(class [mscorlib]System.Reflection.AssemblyName, class [mscorlib]System.Reflection.AssemblyName)
+	IL_0269:  stloc 9
+
+	IL_026d:  nop 
+	IL_026e:  nop 
+	IL_026f:  ldsfld bool dylan.NET.Reflection.Loader::ProtectedFlag
+	IL_0274:  ldloc 9
+
+	IL_0278:  nop 
+	IL_0279:  nop 
+	IL_027a:  or 
+	IL_027b:  stloc 12
+
+	IL_027f:  nop 
+	IL_0280:  nop 
+	IL_0281:  ldsfld bool dylan.NET.Reflection.Loader::ProtectedFlag
+	IL_0286:  ldloc 9
+
+	IL_028a:  nop 
+	IL_028b:  nop 
+	IL_028c:  and 
+	IL_028d:  stloc 13
+
+	IL_0291:  nop 
+	IL_0292:  nop 
+	IL_0293:  ldloc 4
+
+	IL_0297:  nop 
+	IL_0298:  nop 
+	IL_0299:  callvirt instance bool class [mscorlib]System.Reflection.MethodBase::get_IsFamilyAndAssembly()
+	IL_029e:  stloc 8
+
+	IL_02a2:  nop 
+	IL_02a3:  nop 
+	IL_02a4:  ldloc 8
+
+	IL_02a8:  nop 
+	IL_02a9:  nop 
+	IL_02aa:  ldloc 13
+
+	IL_02ae:  nop 
+	IL_02af:  nop 
+	IL_02b0:  and 
+	IL_02b1:  stloc 8
+
+	IL_02b5:  nop 
+	IL_02b6:  nop 
+	IL_02b7:  ldloc 8
+
+	IL_02bb:  nop 
+	IL_02bc:  nop 
+	IL_02bd:  ldc.i4 0
+	IL_02c2:  beq IL_02cc
+
+	IL_02c7:  br IL_03a0
+
+	IL_02cc:  ldloc 4
+
+	IL_02d0:  nop 
+	IL_02d1:  nop 
+	IL_02d2:  callvirt instance bool class [mscorlib]System.Reflection.MethodBase::get_IsFamilyOrAssembly()
+	IL_02d7:  stloc 8
+
+	IL_02db:  nop 
+	IL_02dc:  nop 
+	IL_02dd:  ldloc 8
+
+	IL_02e1:  nop 
+	IL_02e2:  nop 
+	IL_02e3:  ldloc 12
+
+	IL_02e7:  nop 
+	IL_02e8:  nop 
+	IL_02e9:  and 
+	IL_02ea:  stloc 8
+
+	IL_02ee:  nop 
+	IL_02ef:  nop 
+	IL_02f0:  ldloc 8
+
+	IL_02f4:  nop 
+	IL_02f5:  nop 
+	IL_02f6:  ldc.i4 0
+	IL_02fb:  beq IL_0305
+
+	IL_0300:  br IL_0396
+
+	IL_0305:  ldloc 4
+
+	IL_0309:  nop 
+	IL_030a:  nop 
+	IL_030b:  callvirt instance bool class [mscorlib]System.Reflection.MethodBase::get_IsFamily()
+	IL_0310:  stloc 8
+
+	IL_0314:  nop 
+	IL_0315:  nop 
+	IL_0316:  ldloc 8
+
+	IL_031a:  nop 
+	IL_031b:  nop 
+	IL_031c:  ldsfld bool dylan.NET.Reflection.Loader::ProtectedFlag
+	IL_0321:  and 
+	IL_0322:  stloc 8
+
+	IL_0326:  nop 
+	IL_0327:  nop 
+	IL_0328:  ldloc 8
+
+	IL_032c:  nop 
+	IL_032d:  nop 
+	IL_032e:  ldc.i4 0
+	IL_0333:  beq IL_033d
+
+	IL_0338:  br IL_038c
+
+	IL_033d:  ldloc 4
+
+	IL_0341:  nop 
+	IL_0342:  nop 
+	IL_0343:  callvirt instance bool class [mscorlib]System.Reflection.MethodBase::get_IsAssembly()
+	IL_0348:  stloc 8
+
+	IL_034c:  nop 
+	IL_034d:  nop 
+	IL_034e:  ldloc 8
+
+	IL_0352:  nop 
+	IL_0353:  nop 
+	IL_0354:  ldloc 9
+
+	IL_0358:  nop 
+	IL_0359:  nop 
+	IL_035a:  and 
+	IL_035b:  stloc 8
+
+	IL_035f:  nop 
+	IL_0360:  nop 
+	IL_0361:  ldloc 8
+
+	IL_0365:  nop 
+	IL_0366:  nop 
+	IL_0367:  ldc.i4 0
+	IL_036c:  beq IL_0376
+
+	IL_0371:  br IL_0382
+
+	IL_0376:  ldnull 
+	IL_0377:  stloc 4
+
+	IL_037b:  nop 
+	IL_037c:  nop 
+	IL_037d:  br IL_0387
+
+	IL_0382:  br IL_0387
+
+	IL_0387:  br IL_0391
+
+	IL_038c:  br IL_0391
+
+	IL_0391:  br IL_039b
+
+	IL_0396:  br IL_039b
+
+	IL_039b:  br IL_03a5
+
+	IL_03a0:  br IL_03a5
+
+	IL_03a5:  br IL_03b6
+
+	IL_03aa:  ldnull 
+	IL_03ab:  stloc 4
+
+	IL_03af:  nop 
+	IL_03b0:  nop 
+	IL_03b1:  br IL_03b6
+
+	IL_03b6:  br IL_03c0
+
+	IL_03bb:  br IL_03c0
+
+	IL_03c0:  ldloc 4
+
+	IL_03c4:  nop 
+	IL_03c5:  nop 
+	IL_03c6:  ldnull 
+	IL_03c7:  beq IL_03e6
+
+	IL_03cc:  br IL_03d1
+
+	IL_03d1:  ldloc 4
+
+	IL_03d5:  nop 
+	IL_03d6:  nop 
+	IL_03d7:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Reflection.MethodInfo::get_ReturnType()
+	IL_03dc:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::MemberTyp
+	IL_03e1:  br IL_03eb
+
+	IL_03e6:  br IL_03eb
+
+	IL_03eb:  br IL_03f5
+
+	IL_03f0:  br IL_03f5
+
+	IL_03f5:  ldloc 4
+
+	IL_03f9:  nop 
+	IL_03fa:  nop 
+	IL_03fb:  ret 
     } // end of method Loader::LoadMethod
 
     // method line 112
     .method public static 
            default class [mscorlib]System.Reflection.ConstructorInfo LoadCtor (class [mscorlib]System.Type typ, class [mscorlib]System.Type[] typs)  cil managed 
     {
-        // Method begins at RVA 0x9a14
-	// Code size 121 (0x79)
-	.maxstack 4
+        // Method begins at RVA 0x9dec
+	// Code size 686 (0x2ae)
+	.maxstack 26
 	.locals init (
 		class [mscorlib]System.Reflection.Binder	V_0,
 		valuetype [mscorlib]System.Reflection.ParameterModifier[]	V_1,
 		valuetype [mscorlib]System.Reflection.BindingFlags	V_2,
-		class [mscorlib]System.Reflection.ConstructorInfo	V_3)
+		class [mscorlib]System.Reflection.ConstructorInfo	V_3,
+		bool	V_4,
+		bool	V_5,
+		class [mscorlib]System.Reflection.Assembly	V_6,
+		class [mscorlib]System.Reflection.AssemblyName	V_7,
+		bool	V_8,
+		bool	V_9)
 	IL_0000:  ldnull 
 	IL_0001:  stloc 0
 
@@ -14013,14 +14511,305 @@
 
 	IL_0076:  nop 
 	IL_0077:  nop 
-	IL_0078:  ret 
+	IL_0078:  ldnull 
+	IL_0079:  beq IL_0083
+
+	IL_007e:  br IL_02a2
+
+	IL_0083:  ldarg 0
+
+	IL_0087:  nop 
+	IL_0088:  nop 
+	IL_0089:  ldloc 2
+
+	IL_008d:  nop 
+	IL_008e:  nop 
+	IL_008f:  ldloc 0
+
+	IL_0093:  nop 
+	IL_0094:  nop 
+	IL_0095:  ldarg 1
+
+	IL_0099:  nop 
+	IL_009a:  nop 
+	IL_009b:  ldloc 1
+
+	IL_009f:  nop 
+	IL_00a0:  nop 
+	IL_00a1:  callvirt instance class [mscorlib]System.Reflection.ConstructorInfo class [mscorlib]System.Type::GetConstructor(valuetype [mscorlib]System.Reflection.BindingFlags, class [mscorlib]System.Reflection.Binder, class [mscorlib]System.Type[], valuetype [mscorlib]System.Reflection.ParameterModifier[])
+	IL_00a6:  stloc 3
+
+	IL_00aa:  nop 
+	IL_00ab:  nop 
+	IL_00ac:  ldloc 3
+
+	IL_00b0:  nop 
+	IL_00b1:  nop 
+	IL_00b2:  ldnull 
+	IL_00b3:  beq IL_0272
+
+	IL_00b8:  br IL_00bd
+
+	IL_00bd:  ldc.i4 0
+	IL_00c2:  stloc 4
+
+	IL_00c6:  nop 
+	IL_00c7:  nop 
+	IL_00c8:  ldloc 3
+
+	IL_00cc:  nop 
+	IL_00cd:  nop 
+	IL_00ce:  callvirt instance bool class [mscorlib]System.Reflection.MethodBase::get_IsPrivate()
+	IL_00d3:  stloc 4
+
+	IL_00d7:  nop 
+	IL_00d8:  nop 
+	IL_00d9:  ldloc 4
+
+	IL_00dd:  nop 
+	IL_00de:  nop 
+	IL_00df:  ldc.i4 0
+	IL_00e4:  beq IL_00ee
+
+	IL_00e9:  br IL_0261
+
+	IL_00ee:  ldarg 0
+
+	IL_00f2:  nop 
+	IL_00f3:  nop 
+	IL_00f4:  callvirt instance class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Type::get_Assembly()
+	IL_00f9:  stloc 6
+
+	IL_00fd:  nop 
+	IL_00fe:  nop 
+	IL_00ff:  ldloc 6
+
+	IL_0103:  nop 
+	IL_0104:  nop 
+	IL_0105:  callvirt instance class [mscorlib]System.Reflection.AssemblyName class [mscorlib]System.Reflection.Assembly::GetName()
+	IL_010a:  stloc 7
+
+	IL_010e:  nop 
+	IL_010f:  nop 
+	IL_0110:  ldsfld class [mscorlib]System.Reflection.AssemblyName dylan.NET.Reflection.AsmFactory::AsmNameStr
+	IL_0115:  ldloc 7
+
+	IL_0119:  nop 
+	IL_011a:  nop 
+	IL_011b:  call bool class [mscorlib]System.Reflection.AssemblyName::ReferenceMatchesDefinition(class [mscorlib]System.Reflection.AssemblyName, class [mscorlib]System.Reflection.AssemblyName)
+	IL_0120:  stloc 5
+
+	IL_0124:  nop 
+	IL_0125:  nop 
+	IL_0126:  ldsfld bool dylan.NET.Reflection.Loader::ProtectedFlag
+	IL_012b:  ldloc 5
+
+	IL_012f:  nop 
+	IL_0130:  nop 
+	IL_0131:  or 
+	IL_0132:  stloc 8
+
+	IL_0136:  nop 
+	IL_0137:  nop 
+	IL_0138:  ldsfld bool dylan.NET.Reflection.Loader::ProtectedFlag
+	IL_013d:  ldloc 5
+
+	IL_0141:  nop 
+	IL_0142:  nop 
+	IL_0143:  and 
+	IL_0144:  stloc 9
+
+	IL_0148:  nop 
+	IL_0149:  nop 
+	IL_014a:  ldloc 3
+
+	IL_014e:  nop 
+	IL_014f:  nop 
+	IL_0150:  callvirt instance bool class [mscorlib]System.Reflection.MethodBase::get_IsFamilyAndAssembly()
+	IL_0155:  stloc 4
+
+	IL_0159:  nop 
+	IL_015a:  nop 
+	IL_015b:  ldloc 4
+
+	IL_015f:  nop 
+	IL_0160:  nop 
+	IL_0161:  ldloc 9
+
+	IL_0165:  nop 
+	IL_0166:  nop 
+	IL_0167:  and 
+	IL_0168:  stloc 4
+
+	IL_016c:  nop 
+	IL_016d:  nop 
+	IL_016e:  ldloc 4
+
+	IL_0172:  nop 
+	IL_0173:  nop 
+	IL_0174:  ldc.i4 0
+	IL_0179:  beq IL_0183
+
+	IL_017e:  br IL_0257
+
+	IL_0183:  ldloc 3
+
+	IL_0187:  nop 
+	IL_0188:  nop 
+	IL_0189:  callvirt instance bool class [mscorlib]System.Reflection.MethodBase::get_IsFamilyOrAssembly()
+	IL_018e:  stloc 4
+
+	IL_0192:  nop 
+	IL_0193:  nop 
+	IL_0194:  ldloc 4
+
+	IL_0198:  nop 
+	IL_0199:  nop 
+	IL_019a:  ldloc 8
+
+	IL_019e:  nop 
+	IL_019f:  nop 
+	IL_01a0:  and 
+	IL_01a1:  stloc 4
+
+	IL_01a5:  nop 
+	IL_01a6:  nop 
+	IL_01a7:  ldloc 4
+
+	IL_01ab:  nop 
+	IL_01ac:  nop 
+	IL_01ad:  ldc.i4 0
+	IL_01b2:  beq IL_01bc
+
+	IL_01b7:  br IL_024d
+
+	IL_01bc:  ldloc 3
+
+	IL_01c0:  nop 
+	IL_01c1:  nop 
+	IL_01c2:  callvirt instance bool class [mscorlib]System.Reflection.MethodBase::get_IsFamily()
+	IL_01c7:  stloc 4
+
+	IL_01cb:  nop 
+	IL_01cc:  nop 
+	IL_01cd:  ldloc 4
+
+	IL_01d1:  nop 
+	IL_01d2:  nop 
+	IL_01d3:  ldsfld bool dylan.NET.Reflection.Loader::ProtectedFlag
+	IL_01d8:  and 
+	IL_01d9:  stloc 4
+
+	IL_01dd:  nop 
+	IL_01de:  nop 
+	IL_01df:  ldloc 4
+
+	IL_01e3:  nop 
+	IL_01e4:  nop 
+	IL_01e5:  ldc.i4 0
+	IL_01ea:  beq IL_01f4
+
+	IL_01ef:  br IL_0243
+
+	IL_01f4:  ldloc 3
+
+	IL_01f8:  nop 
+	IL_01f9:  nop 
+	IL_01fa:  callvirt instance bool class [mscorlib]System.Reflection.MethodBase::get_IsAssembly()
+	IL_01ff:  stloc 4
+
+	IL_0203:  nop 
+	IL_0204:  nop 
+	IL_0205:  ldloc 4
+
+	IL_0209:  nop 
+	IL_020a:  nop 
+	IL_020b:  ldloc 5
+
+	IL_020f:  nop 
+	IL_0210:  nop 
+	IL_0211:  and 
+	IL_0212:  stloc 4
+
+	IL_0216:  nop 
+	IL_0217:  nop 
+	IL_0218:  ldloc 4
+
+	IL_021c:  nop 
+	IL_021d:  nop 
+	IL_021e:  ldc.i4 0
+	IL_0223:  beq IL_022d
+
+	IL_0228:  br IL_0239
+
+	IL_022d:  ldnull 
+	IL_022e:  stloc 3
+
+	IL_0232:  nop 
+	IL_0233:  nop 
+	IL_0234:  br IL_023e
+
+	IL_0239:  br IL_023e
+
+	IL_023e:  br IL_0248
+
+	IL_0243:  br IL_0248
+
+	IL_0248:  br IL_0252
+
+	IL_024d:  br IL_0252
+
+	IL_0252:  br IL_025c
+
+	IL_0257:  br IL_025c
+
+	IL_025c:  br IL_026d
+
+	IL_0261:  ldnull 
+	IL_0262:  stloc 3
+
+	IL_0266:  nop 
+	IL_0267:  nop 
+	IL_0268:  br IL_026d
+
+	IL_026d:  br IL_0277
+
+	IL_0272:  br IL_0277
+
+	IL_0277:  ldloc 3
+
+	IL_027b:  nop 
+	IL_027c:  nop 
+	IL_027d:  ldnull 
+	IL_027e:  beq IL_0298
+
+	IL_0283:  br IL_0288
+
+	IL_0288:  ldarg 0
+
+	IL_028c:  nop 
+	IL_028d:  nop 
+	IL_028e:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::MemberTyp
+	IL_0293:  br IL_029d
+
+	IL_0298:  br IL_029d
+
+	IL_029d:  br IL_02a7
+
+	IL_02a2:  br IL_02a7
+
+	IL_02a7:  ldloc 3
+
+	IL_02ab:  nop 
+	IL_02ac:  nop 
+	IL_02ad:  ret 
     } // end of method Loader::LoadCtor
 
     // method line 113
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo[] addelemmtdinfo (class [mscorlib]System.Reflection.MethodInfo[] srcarr, class [mscorlib]System.Reflection.MethodInfo eltoadd)  cil managed 
     {
-        // Method begins at RVA 0x9a9c
+        // Method begins at RVA 0xa0a8
 	// Code size 273 (0x111)
 	.maxstack 14
 	.locals init (
@@ -14177,7 +14966,7 @@
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo[] LoadSpecMtds (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x9bbc
+        // Method begins at RVA 0xa1c8
 	// Code size 278 (0x116)
 	.maxstack 9
 	.locals init (
@@ -14335,7 +15124,7 @@
     .method public static 
            default bool CompareParamsToTyps (class [mscorlib]System.Reflection.ParameterInfo[] t1, class [mscorlib]System.Type[] t2)  cil managed 
     {
-        // Method begins at RVA 0x9ce0
+        // Method begins at RVA 0xa2ec
 	// Code size 351 (0x15f)
 	.maxstack 12
 	.locals init (
@@ -14531,7 +15320,7 @@
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo LoadBinOp (class [mscorlib]System.Type typ, string name, class [mscorlib]System.Type typa, class [mscorlib]System.Type typb)  cil managed 
     {
-        // Method begins at RVA 0x9e4c
+        // Method begins at RVA 0xa458
 	// Code size 425 (0x1a9)
 	.maxstack 17
 	.locals init (
@@ -14766,7 +15555,7 @@
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo LoadConvOp (class [mscorlib]System.Type typ, string name, class [mscorlib]System.Type src, class [mscorlib]System.Type snk)  cil managed 
     {
-        // Method begins at RVA 0xa004
+        // Method begins at RVA 0xa610
 	// Code size 480 (0x1e0)
 	.maxstack 17
 	.locals init (
@@ -15031,14 +15820,21 @@
     .method public static 
            default class [mscorlib]System.Reflection.FieldInfo LoadField (class [mscorlib]System.Type typ, string name)  cil managed 
     {
-        // Method begins at RVA 0xa1f0
-	// Code size 251 (0xfb)
-	.maxstack 10
+        // Method begins at RVA 0xa7fc
+	// Code size 795 (0x31b)
+	.maxstack 27
 	.locals init (
 		class [mscorlib]System.Type	V_0,
 		class [mscorlib]System.Reflection.FieldInfo	V_1,
-		object	V_2,
-		object	V_3)
+		valuetype [mscorlib]System.Reflection.BindingFlags	V_2,
+		bool	V_3,
+		bool	V_4,
+		class [mscorlib]System.Reflection.Assembly	V_5,
+		class [mscorlib]System.Reflection.AssemblyName	V_6,
+		bool	V_7,
+		bool	V_8,
+		object	V_9,
+		object	V_10)
 	IL_0000:  ldnull 
 	IL_0001:  stloc 0
 
@@ -15062,94 +15858,370 @@
 
 	IL_0023:  nop 
 	IL_0024:  nop 
-	IL_0025:  ldloc 1
+	IL_0025:  ldc.i4 4
+	IL_002a:  ldc.i4 8
+	IL_002f:  or 
+	IL_0030:  ldc.i4 16
+	IL_0035:  or 
+	IL_0036:  ldc.i4 32
+	IL_003b:  or 
+	IL_003c:  stloc 2
 
-	IL_0029:  nop 
-	IL_002a:  nop 
-	IL_002b:  ldnull 
-	IL_002c:  beq IL_00ef
+	IL_0040:  nop 
+	IL_0041:  nop 
+	IL_0042:  ldloc 1
 
-	IL_0031:  br IL_0036
+	IL_0046:  nop 
+	IL_0047:  nop 
+	IL_0048:  ldnull 
+	IL_0049:  beq IL_0053
 
-	IL_0036:  ldloc 1
+	IL_004e:  br IL_0240
 
-	IL_003a:  nop 
-	IL_003b:  nop 
-	IL_003c:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Reflection.FieldInfo::get_FieldType()
-	IL_0041:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::MemberTyp
-	IL_0046:  ldloc 1
+	IL_0053:  ldarg 0
 
-	IL_004a:  nop 
-	IL_004b:  nop 
-	IL_004c:  callvirt instance bool class [mscorlib]System.Reflection.FieldInfo::get_IsLiteral()
-	IL_0051:  stsfld bool dylan.NET.Reflection.Loader::FldLitFlag
-	IL_0056:  ldarg 0
+	IL_0057:  nop 
+	IL_0058:  nop 
+	IL_0059:  ldarg 1
 
-	IL_005a:  nop 
-	IL_005b:  nop 
-	IL_005c:  callvirt instance bool class [mscorlib]System.Type::get_IsEnum()
-	IL_0061:  stsfld bool dylan.NET.Reflection.Loader::EnumLitFlag
-	IL_0066:  ldnull 
-	IL_0067:  stloc 2
+	IL_005d:  nop 
+	IL_005e:  nop 
+	IL_005f:  ldloc 2
 
-	IL_006b:  nop 
-	IL_006c:  nop 
-	IL_006d:  ldsfld bool dylan.NET.Reflection.Loader::FldLitFlag
-	IL_0072:  ldc.i4 1
-	IL_0077:  beq IL_0081
+	IL_0063:  nop 
+	IL_0064:  nop 
+	IL_0065:  callvirt instance class [mscorlib]System.Reflection.FieldInfo class [mscorlib]System.Type::GetField(string, valuetype [mscorlib]System.Reflection.BindingFlags)
+	IL_006a:  stloc 1
 
-	IL_007c:  br IL_00b7
+	IL_006e:  nop 
+	IL_006f:  nop 
+	IL_0070:  ldloc 1
 
-	IL_0081:  ldloc 1
+	IL_0074:  nop 
+	IL_0075:  nop 
+	IL_0076:  ldnull 
+	IL_0077:  beq IL_0236
 
-	IL_0085:  nop 
-	IL_0086:  nop 
-	IL_0087:  ldloc 2
+	IL_007c:  br IL_0081
 
+	IL_0081:  ldc.i4 0
+	IL_0086:  stloc 3
+
+	IL_008a:  nop 
 	IL_008b:  nop 
-	IL_008c:  nop 
-	IL_008d:  callvirt instance object class [mscorlib]System.Reflection.FieldInfo::GetValue(object)
-	IL_0092:  stsfld object dylan.NET.Reflection.Loader::FldLitVal
-	IL_0097:  ldsfld object dylan.NET.Reflection.Loader::FldLitVal
-	IL_009c:  stloc 3
+	IL_008c:  ldloc 1
 
-	IL_00a0:  nop 
+	IL_0090:  nop 
+	IL_0091:  nop 
+	IL_0092:  callvirt instance bool class [mscorlib]System.Reflection.FieldInfo::get_IsPrivate()
+	IL_0097:  stloc 3
+
+	IL_009b:  nop 
+	IL_009c:  nop 
+	IL_009d:  ldloc 3
+
 	IL_00a1:  nop 
-	IL_00a2:  ldloc 3
+	IL_00a2:  nop 
+	IL_00a3:  ldc.i4 0
+	IL_00a8:  beq IL_00b2
 
-	IL_00a6:  nop 
-	IL_00a7:  nop 
-	IL_00a8:  callvirt instance class [mscorlib]System.Type object::GetType()
-	IL_00ad:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::FldLitTyp
-	IL_00b2:  br IL_00bc
+	IL_00ad:  br IL_0225
 
-	IL_00b7:  br IL_00bc
+	IL_00b2:  ldarg 0
 
-	IL_00bc:  ldsfld bool dylan.NET.Reflection.Loader::EnumLitFlag
-	IL_00c1:  ldc.i4 1
-	IL_00c6:  beq IL_00d0
+	IL_00b6:  nop 
+	IL_00b7:  nop 
+	IL_00b8:  callvirt instance class [mscorlib]System.Reflection.Assembly class [mscorlib]System.Type::get_Assembly()
+	IL_00bd:  stloc 5
 
-	IL_00cb:  br IL_00e5
+	IL_00c1:  nop 
+	IL_00c2:  nop 
+	IL_00c3:  ldloc 5
 
-	IL_00d0:  ldarg 0
+	IL_00c7:  nop 
+	IL_00c8:  nop 
+	IL_00c9:  callvirt instance class [mscorlib]System.Reflection.AssemblyName class [mscorlib]System.Reflection.Assembly::GetName()
+	IL_00ce:  stloc 6
 
-	IL_00d4:  nop 
-	IL_00d5:  nop 
-	IL_00d6:  call class [mscorlib]System.Type class [mscorlib]System.Enum::GetUnderlyingType(class [mscorlib]System.Type)
-	IL_00db:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::EnumLitTyp
-	IL_00e0:  br IL_00ea
+	IL_00d2:  nop 
+	IL_00d3:  nop 
+	IL_00d4:  ldsfld class [mscorlib]System.Reflection.AssemblyName dylan.NET.Reflection.AsmFactory::AsmNameStr
+	IL_00d9:  ldloc 6
 
-	IL_00e5:  br IL_00ea
+	IL_00dd:  nop 
+	IL_00de:  nop 
+	IL_00df:  call bool class [mscorlib]System.Reflection.AssemblyName::ReferenceMatchesDefinition(class [mscorlib]System.Reflection.AssemblyName, class [mscorlib]System.Reflection.AssemblyName)
+	IL_00e4:  stloc 4
 
-	IL_00ea:  br IL_00f4
+	IL_00e8:  nop 
+	IL_00e9:  nop 
+	IL_00ea:  ldsfld bool dylan.NET.Reflection.Loader::ProtectedFlag
+	IL_00ef:  ldloc 4
 
-	IL_00ef:  br IL_00f4
+	IL_00f3:  nop 
+	IL_00f4:  nop 
+	IL_00f5:  or 
+	IL_00f6:  stloc 7
 
-	IL_00f4:  ldloc 1
+	IL_00fa:  nop 
+	IL_00fb:  nop 
+	IL_00fc:  ldsfld bool dylan.NET.Reflection.Loader::ProtectedFlag
+	IL_0101:  ldloc 4
 
-	IL_00f8:  nop 
-	IL_00f9:  nop 
-	IL_00fa:  ret 
+	IL_0105:  nop 
+	IL_0106:  nop 
+	IL_0107:  and 
+	IL_0108:  stloc 8
+
+	IL_010c:  nop 
+	IL_010d:  nop 
+	IL_010e:  ldloc 1
+
+	IL_0112:  nop 
+	IL_0113:  nop 
+	IL_0114:  callvirt instance bool class [mscorlib]System.Reflection.FieldInfo::get_IsFamilyAndAssembly()
+	IL_0119:  stloc 3
+
+	IL_011d:  nop 
+	IL_011e:  nop 
+	IL_011f:  ldloc 3
+
+	IL_0123:  nop 
+	IL_0124:  nop 
+	IL_0125:  ldloc 8
+
+	IL_0129:  nop 
+	IL_012a:  nop 
+	IL_012b:  and 
+	IL_012c:  stloc 3
+
+	IL_0130:  nop 
+	IL_0131:  nop 
+	IL_0132:  ldloc 3
+
+	IL_0136:  nop 
+	IL_0137:  nop 
+	IL_0138:  ldc.i4 0
+	IL_013d:  beq IL_0147
+
+	IL_0142:  br IL_021b
+
+	IL_0147:  ldloc 1
+
+	IL_014b:  nop 
+	IL_014c:  nop 
+	IL_014d:  callvirt instance bool class [mscorlib]System.Reflection.FieldInfo::get_IsFamilyOrAssembly()
+	IL_0152:  stloc 3
+
+	IL_0156:  nop 
+	IL_0157:  nop 
+	IL_0158:  ldloc 3
+
+	IL_015c:  nop 
+	IL_015d:  nop 
+	IL_015e:  ldloc 7
+
+	IL_0162:  nop 
+	IL_0163:  nop 
+	IL_0164:  and 
+	IL_0165:  stloc 3
+
+	IL_0169:  nop 
+	IL_016a:  nop 
+	IL_016b:  ldloc 3
+
+	IL_016f:  nop 
+	IL_0170:  nop 
+	IL_0171:  ldc.i4 0
+	IL_0176:  beq IL_0180
+
+	IL_017b:  br IL_0211
+
+	IL_0180:  ldloc 1
+
+	IL_0184:  nop 
+	IL_0185:  nop 
+	IL_0186:  callvirt instance bool class [mscorlib]System.Reflection.FieldInfo::get_IsFamily()
+	IL_018b:  stloc 3
+
+	IL_018f:  nop 
+	IL_0190:  nop 
+	IL_0191:  ldloc 3
+
+	IL_0195:  nop 
+	IL_0196:  nop 
+	IL_0197:  ldsfld bool dylan.NET.Reflection.Loader::ProtectedFlag
+	IL_019c:  and 
+	IL_019d:  stloc 3
+
+	IL_01a1:  nop 
+	IL_01a2:  nop 
+	IL_01a3:  ldloc 3
+
+	IL_01a7:  nop 
+	IL_01a8:  nop 
+	IL_01a9:  ldc.i4 0
+	IL_01ae:  beq IL_01b8
+
+	IL_01b3:  br IL_0207
+
+	IL_01b8:  ldloc 1
+
+	IL_01bc:  nop 
+	IL_01bd:  nop 
+	IL_01be:  callvirt instance bool class [mscorlib]System.Reflection.FieldInfo::get_IsAssembly()
+	IL_01c3:  stloc 3
+
+	IL_01c7:  nop 
+	IL_01c8:  nop 
+	IL_01c9:  ldloc 3
+
+	IL_01cd:  nop 
+	IL_01ce:  nop 
+	IL_01cf:  ldloc 4
+
+	IL_01d3:  nop 
+	IL_01d4:  nop 
+	IL_01d5:  and 
+	IL_01d6:  stloc 3
+
+	IL_01da:  nop 
+	IL_01db:  nop 
+	IL_01dc:  ldloc 3
+
+	IL_01e0:  nop 
+	IL_01e1:  nop 
+	IL_01e2:  ldc.i4 0
+	IL_01e7:  beq IL_01f1
+
+	IL_01ec:  br IL_01fd
+
+	IL_01f1:  ldnull 
+	IL_01f2:  stloc 1
+
+	IL_01f6:  nop 
+	IL_01f7:  nop 
+	IL_01f8:  br IL_0202
+
+	IL_01fd:  br IL_0202
+
+	IL_0202:  br IL_020c
+
+	IL_0207:  br IL_020c
+
+	IL_020c:  br IL_0216
+
+	IL_0211:  br IL_0216
+
+	IL_0216:  br IL_0220
+
+	IL_021b:  br IL_0220
+
+	IL_0220:  br IL_0231
+
+	IL_0225:  ldnull 
+	IL_0226:  stloc 1
+
+	IL_022a:  nop 
+	IL_022b:  nop 
+	IL_022c:  br IL_0231
+
+	IL_0231:  br IL_023b
+
+	IL_0236:  br IL_023b
+
+	IL_023b:  br IL_0245
+
+	IL_0240:  br IL_0245
+
+	IL_0245:  ldloc 1
+
+	IL_0249:  nop 
+	IL_024a:  nop 
+	IL_024b:  ldnull 
+	IL_024c:  beq IL_030f
+
+	IL_0251:  br IL_0256
+
+	IL_0256:  ldloc 1
+
+	IL_025a:  nop 
+	IL_025b:  nop 
+	IL_025c:  callvirt instance class [mscorlib]System.Type class [mscorlib]System.Reflection.FieldInfo::get_FieldType()
+	IL_0261:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::MemberTyp
+	IL_0266:  ldloc 1
+
+	IL_026a:  nop 
+	IL_026b:  nop 
+	IL_026c:  callvirt instance bool class [mscorlib]System.Reflection.FieldInfo::get_IsLiteral()
+	IL_0271:  stsfld bool dylan.NET.Reflection.Loader::FldLitFlag
+	IL_0276:  ldarg 0
+
+	IL_027a:  nop 
+	IL_027b:  nop 
+	IL_027c:  callvirt instance bool class [mscorlib]System.Type::get_IsEnum()
+	IL_0281:  stsfld bool dylan.NET.Reflection.Loader::EnumLitFlag
+	IL_0286:  ldnull 
+	IL_0287:  stloc 9
+
+	IL_028b:  nop 
+	IL_028c:  nop 
+	IL_028d:  ldsfld bool dylan.NET.Reflection.Loader::FldLitFlag
+	IL_0292:  ldc.i4 1
+	IL_0297:  beq IL_02a1
+
+	IL_029c:  br IL_02d7
+
+	IL_02a1:  ldloc 1
+
+	IL_02a5:  nop 
+	IL_02a6:  nop 
+	IL_02a7:  ldloc 9
+
+	IL_02ab:  nop 
+	IL_02ac:  nop 
+	IL_02ad:  callvirt instance object class [mscorlib]System.Reflection.FieldInfo::GetValue(object)
+	IL_02b2:  stsfld object dylan.NET.Reflection.Loader::FldLitVal
+	IL_02b7:  ldsfld object dylan.NET.Reflection.Loader::FldLitVal
+	IL_02bc:  stloc 10
+
+	IL_02c0:  nop 
+	IL_02c1:  nop 
+	IL_02c2:  ldloc 10
+
+	IL_02c6:  nop 
+	IL_02c7:  nop 
+	IL_02c8:  callvirt instance class [mscorlib]System.Type object::GetType()
+	IL_02cd:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::FldLitTyp
+	IL_02d2:  br IL_02dc
+
+	IL_02d7:  br IL_02dc
+
+	IL_02dc:  ldsfld bool dylan.NET.Reflection.Loader::EnumLitFlag
+	IL_02e1:  ldc.i4 1
+	IL_02e6:  beq IL_02f0
+
+	IL_02eb:  br IL_0305
+
+	IL_02f0:  ldarg 0
+
+	IL_02f4:  nop 
+	IL_02f5:  nop 
+	IL_02f6:  call class [mscorlib]System.Type class [mscorlib]System.Enum::GetUnderlyingType(class [mscorlib]System.Type)
+	IL_02fb:  stsfld class [mscorlib]System.Type dylan.NET.Reflection.Loader::EnumLitTyp
+	IL_0300:  br IL_030a
+
+	IL_0305:  br IL_030a
+
+	IL_030a:  br IL_0314
+
+	IL_030f:  br IL_0314
+
+	IL_0314:  ldloc 1
+
+	IL_0318:  nop 
+	IL_0319:  nop 
+	IL_031a:  ret 
     } // end of method Loader::LoadField
 
   } // end of class dylan.NET.Reflection.Loader
@@ -15166,7 +16238,7 @@
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0xa2f8
+        // Method begins at RVA 0xab24
 	// Code size 7 (0x7)
 	.maxstack 1
 	IL_0000:  ldnull 
@@ -15178,7 +16250,7 @@
     .method public static 
            default void PrintString ()  cil managed 
     {
-        // Method begins at RVA 0xa30c
+        // Method begins at RVA 0xab38
 	// Code size 28 (0x1c)
 	.maxstack 1
 	.locals init (
@@ -15201,7 +16273,7 @@
     .method public static 
            default void WriteClass (class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0xa334
+        // Method begins at RVA 0xab60
 	// Code size 800 (0x320)
 	.maxstack 48
 	.locals init (

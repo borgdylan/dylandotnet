@@ -9,6 +9,7 @@
 class public auto ansi beforefieldinit ParserFlags
 
 field public static boolean IfFlag
+field public static boolean AssemFlg
 field public static boolean CmtFlag
 field public static boolean NoOptFlag
 field public static boolean NegFlag
@@ -29,6 +30,7 @@ field public static boolean MetChainFlag
 field public static boolean StringFlag
 
 method public static void ctor0()
+AssemFlg = true
 IfFlag = false
 CmtFlag = false
 NoOptFlag = false
