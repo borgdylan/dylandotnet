@@ -14,6 +14,7 @@
     <AssemblyVersion>11.2.8.3</AssemblyVersion>
     <AssemblyVersion>11.2.8.4</AssemblyVersion>
     <AssemblyVersion>11.2.8.5</AssemblyVersion>
+    <AssemblyVersion>11.2.8.6</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -40,6 +41,7 @@
         <AssemblyVersion>11.2.8.3</AssemblyVersion>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -63,6 +65,7 @@
         <AssemblyVersion>11.2.8.3</AssemblyVersion>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

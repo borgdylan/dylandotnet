@@ -77,9 +77,9 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoheader
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.8.4\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.8.4\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.8.4\"
-DYLANDOTNET = /usr/local/bin/dylandotnet
-DYLANDOTNET4 = /usr/local/bin/dylandotnet4
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.8.6\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.8.6\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.8.6\"
+DYLANDOTNET = /usr/bin/dylandotnet
+DYLANDOTNET4 = /usr/bin/dylandotnet4
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
@@ -98,16 +98,16 @@ MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.8.4
+PACKAGE_STRING = dylandotnet 11.2.8.6
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.8.4
+PACKAGE_VERSION = 11.2.8.6
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.8.4
+VERSION = 11.2.8.6
 abs_builddir = /var/www/Code/dylannet/compiler/tests
 abs_srcdir = /var/www/Code/dylannet/compiler/tests
 abs_top_builddir = /var/www/Code/dylannet/compiler
@@ -353,6 +353,12 @@ all:
 	$(MONO) ../2.0/dnc.exe PersonProg.dyl
 	$(MONO) ../2.0/dnc.exe boxobj.dyl
 	$(MONO) ../2.0/dnc.exe xmllib.dyl
+	$(MONO) ../2.0/dnc.exe arraytest.dyl
+	$(MONO) ../2.0/dnc.exe vector.dyl
+	$(MONO) ../2.0/dnc.exe threads.dyl
+	$(MONO) ../2.0/dnc.exe dylrecurse.dyl
+	$(MONO) ../2.0/dnc.exe strrecurse.dyl
+	$(MONO) ../2.0/dnc.exe protectedtests.dyl
 
 install:
 	tar -czf tests.tar.gz *

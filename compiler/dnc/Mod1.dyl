@@ -10,9 +10,7 @@ class public auto ansi Module1
 
 method public static void main(var args as string[])
 
-//StreamUtils::InitOutS(StreamUtils::Stdout) 
-
-StreamUtils::WriteLine("dylan.NET Compiler v. 11.2.8.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
+StreamUtils::WriteLine("dylan.NET Compiler v. 11.2.8.6 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0")
 StreamUtils::WriteLine("                           and Xamarin Mono v. 2.6.7/v. 2.10.x")
 StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 StreamUtils::WriteLine("Copyright (C) 2012 Dylan Borg")
@@ -211,8 +209,6 @@ cg::EmitMSIL(ppstmts, p)
 end if
 
 place ext
-
-//StreamUtils::CloseOutS()
 
 end method
 

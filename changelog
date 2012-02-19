@@ -1,3 +1,26 @@
+commit df0ca1a1b96c98b2b45e3687023f1baeefa330ab
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sat Feb 18 11:27:07 2012 +0100
+
+    Coommiting latest dylan.NET code to repos. This is v. 11.2.8.5.
+      * Adding support for namespace names enclosed in quotes.
+      * Adding support for making not inheritable and internal classes.
+      * Adding support for making internal, protected fields/methods/constructors.
+      * Adding support for consuming the above.
+      * Adding support for making non-overridable methods.
+      * Updating man pages.
+      * Bumping up version to 11.2.8.5
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit df78572b1f6af4bb90804cf6c2a5f78a5eeb69d3
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Thu Feb 16 22:55:31 2012 +0100
+
+    Commiting first code release of dylan.NET IDE (v. 11.2.8.3). Adding the debian directory of the ide and the collections library. Updating tarballs/debs.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 6f2355911c60aacda2d661184c886fda00a60ea2
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Sat Feb 11 18:40:13 2012 +0100

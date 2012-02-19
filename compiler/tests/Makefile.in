@@ -353,6 +353,12 @@ all:
 	$(MONO) ../2.0/dnc.exe PersonProg.dyl
 	$(MONO) ../2.0/dnc.exe boxobj.dyl
 	$(MONO) ../2.0/dnc.exe xmllib.dyl
+	$(MONO) ../2.0/dnc.exe arraytest.dyl
+	$(MONO) ../2.0/dnc.exe vector.dyl
+	$(MONO) ../2.0/dnc.exe threads.dyl
+	$(MONO) ../2.0/dnc.exe dylrecurse.dyl
+	$(MONO) ../2.0/dnc.exe strrecurse.dyl
+	$(MONO) ../2.0/dnc.exe protectedtests.dyl
 
 install:
 	tar -czf tests.tar.gz *

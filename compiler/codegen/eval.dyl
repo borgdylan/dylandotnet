@@ -443,8 +443,6 @@ label loop3
 label cont3
 label idtfin
 
-//b = AsmFactory::ChainFlg
-
 if AsmFactory::ChainFlg = false then
 else
 AsmFactory::ChainFlg = false
@@ -1327,16 +1325,35 @@ AsmFactory::Type02 = gettype System.Type
 goto fin
 end if
 
+//me load section
+
 typ = gettype MeTok
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
+
+var metk1 as MeTok = tok
 
 if emt = true then
 ILEmitter::EmitLdarg(0)
 end if
 
 AsmFactory::Type02 = AsmFactory::CurnTypB
+
+if metk1::Conv = true then
+if emt = true then
+src1 = AsmFactory::Type02
+end if
+
+tt = metk1::TTok
+AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
+
+if emt = true then
+snk1 = AsmFactory::Type02
+Helpers::EmitConv(src1, snk1)
+end if
+end if
+
 
 goto fin
 end if
@@ -1368,6 +1385,7 @@ AsmFactory::Type02 = typ::MakeArrayType()
 goto fin
 end if
 
+//ptr load section - obsolete
 
 typ = gettype PtrCallTok
 b = typ::IsInstanceOfType($object$tok)

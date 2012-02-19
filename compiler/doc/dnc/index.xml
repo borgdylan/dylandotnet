@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dnc" Version="11.2.8.5">
+    <Assembly Name="dnc" Version="11.2.8.6">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("dnc")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.5")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.6")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("dnc")</AttributeName>

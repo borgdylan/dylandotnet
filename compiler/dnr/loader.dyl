@@ -336,9 +336,19 @@ b = mtdinfo::get_IsPrivate()
 if b = false then
 
 var havinternal as boolean
+var vre as boolean
+var nme as boolean
 var asm as Assembly = typ::get_Assembly()
 var asmn as AssemblyName = asm::GetName()
-havinternal = AssemblyName::ReferenceMatchesDefinition(AsmFactory::AsmNameStr, asmn)
+var asmnc as AssemblyName = AsmFactory::AsmNameStr
+var v1 as Version = asmn::get_Version()
+var v2 as Version = asmnc::get_Version()
+var n1 as string = asmn::get_Name()
+var n2 as string = asmnc::get_Name()
+vre = v1::Equals(v2)
+nme = n1::Equals(n2)
+havinternal = vre and nme
+
 var orflg as boolean = ProtectedFlag or havinternal
 var andflg as boolean = ProtectedFlag and havinternal
 
@@ -400,9 +410,19 @@ b = ctorinf::get_IsPrivate()
 if b = false then
 
 var havinternal as boolean
+var vre as boolean
+var nme as boolean
 var asm as Assembly = typ::get_Assembly()
 var asmn as AssemblyName = asm::GetName()
-havinternal = AssemblyName::ReferenceMatchesDefinition(AsmFactory::AsmNameStr, asmn)
+var asmnc as AssemblyName = AsmFactory::AsmNameStr
+var v1 as Version = asmn::get_Version()
+var v2 as Version = asmnc::get_Version()
+var n1 as string = asmn::get_Name()
+var n2 as string = asmnc::get_Name()
+vre = v1::Equals(v2)
+nme = n1::Equals(n2)
+havinternal = vre and nme
+
 var orflg as boolean = ProtectedFlag or havinternal
 var andflg as boolean = ProtectedFlag and havinternal
 
@@ -716,9 +736,18 @@ b = fldinfo::get_IsPrivate()
 if b = false then
 
 var havinternal as boolean
+var vre as boolean
+var nme as boolean
 var asm as Assembly = typ::get_Assembly()
 var asmn as AssemblyName = asm::GetName()
-havinternal = AssemblyName::ReferenceMatchesDefinition(AsmFactory::AsmNameStr, asmn)
+var asmnc as AssemblyName = AsmFactory::AsmNameStr
+var v1 as Version = asmn::get_Version()
+var v2 as Version = asmnc::get_Version()
+var n1 as string = asmn::get_Name()
+var n2 as string = asmnc::get_Name()
+vre = v1::Equals(v2)
+nme = n1::Equals(n2)
+havinternal = vre and nme
 var orflg as boolean = ProtectedFlag or havinternal
 var andflg as boolean = ProtectedFlag and havinternal
 

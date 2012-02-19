@@ -80,6 +80,14 @@ return id
 end method
 
 method public static NullLiteral UpdateNullLit(var id as NullLiteral)
+id::Conv = ConvFlag
+id::TTok = ConvTyp
+return id
+end method
+
+method public static MeTok UpdateMeTok(var id as MeTok)
+id::Conv = ConvFlag
+id::TTok = ConvTyp
 return id
 end method
 

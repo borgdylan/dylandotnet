@@ -2,7 +2,7 @@ Source: dylandotnet-collections
 Section: cli-mono
 Priority: optional
 Maintainer: Dylan Borg <borgdylan@hotmail.com>
-Build-Depends: debhelper (>= 7.0.50~), cli-common-dev (>= 0.7), devscripts, libmono-corlib2.0-cil, libmono-corlib4.0-cil (>= 2.10.1), mono-devel (>= 2.10.1), mono-runtime (>= 2.10.1), gawk, autotools-dev, monodoc-base, dylandotnet (>= 11.2.8.4), dylandotnet4 (>= 11.2.8.4)
+Build-Depends: debhelper (>= 7.0.50~), cli-common-dev (>= 0.8~), devscripts, libmono-corlib2.0-cil, libmono-corlib4.0-cil (>= 2.10.1), mono-devel (>= 2.10.1), mono-runtime (>= 2.10.1), gawk, autotools-dev, monodoc-base, dylandotnet (>= 11.2.8.4), dylandotnet4 (>= 11.2.8.4)
 Standards-Version: 3.9.2
 Homepage: http://launchpad.net/dylandotnet
 Vcs-Git: git://gitorious.org/dylandotnet/dylandotnet.git

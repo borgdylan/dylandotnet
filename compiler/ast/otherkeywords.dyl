@@ -198,6 +198,18 @@ class public auto ansi ThenTok extends Token
 
 end class
 
+class public auto ansi DoTok extends Token
+
+end class
+
+class public auto ansi WhileTok extends Token
+
+end class
+
+class public auto ansi UntilTok extends Token
+
+end class
+
 class public auto ansi LiteralTok extends Token
 
 end class
@@ -223,5 +235,24 @@ class public auto ansi EndTok extends Token
 end class
 
 class public auto ansi MeTok extends Token
+
+field public boolean Conv
+field public TypeTok TTok
+
+method public void ctor0()
+me::ctor()
+me::Value = ""
+me::Line = 0
+Conv = false
+TTok = null
+end method
+
+method public void ctor1(var value as string)
+me::ctor()
+me::Value = value
+me::Line = 0
+Conv = false
+TTok = null
+end method
 
 end class

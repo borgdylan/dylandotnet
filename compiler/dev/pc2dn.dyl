@@ -18,7 +18,7 @@ import System.IO
 import System.Text
 
 assembly pc2dn exe
-ver 11.2.8.5
+ver 11.2.8.6
 
 namespace dylan.NET.PkgConfig.PC2DN
 
@@ -99,7 +99,7 @@ namespace dylan.NET.PkgConfig.PC2DN
 	
 		method public static void main(var args as string[])
 		
-			Console::WriteLine("dylan.NET Pkg-Config Helper v. 11.2.8.5 Beta")
+			Console::WriteLine("dylan.NET Pkg-Config Helper v. 11.2.8.6 Beta")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2012 Dylan Borg")
 			if args[l] < 1 then

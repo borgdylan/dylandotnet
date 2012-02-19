@@ -695,6 +695,19 @@ end if
 goto fin
 end if
 
+typ = gettype MeTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+if ParserFlags::isChanged = true then
+var metk1 as MeTok = exp::Tokens[i]
+exp::Tokens[i] = ParserFlags::UpdateMeTok(metk1)
+ParserFlags::SetUnaryFalse()
+j = i
+end if
+goto fin
+end if
+
 typ = gettype StringLiteral
 b = typ::IsInstanceOfType($object$tok)
 
