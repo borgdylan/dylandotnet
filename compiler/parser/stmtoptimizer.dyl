@@ -99,6 +99,204 @@ end if
 return ifs
 end method
 
+method public Stmt checkWhile(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype WhileTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var whis as WhileStmt = new WhileStmt()
+var exp as Expr = new Expr()
+
+if valinref|b = true then
+
+whis::Line = stm::Line
+whis::Tokens = stm::Tokens
+
+var i as integer = 0
+var len as integer = stm::Tokens[l] - 1
+
+label cont
+label loop
+
+place loop
+
+i++
+
+tok = stm::Tokens[i]
+exp::AddToken(tok)
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+var eop as ExprOptimizer = new ExprOptimizer()
+exp = eop::Optimize(exp)
+whis::Exp = exp
+
+end if
+
+return whis
+end method
+
+method public Stmt checkDoWhile(var stm as Stmt, var b as boolean&)
+
+var whis as DoWhileStmt = null
+
+if stm::Tokens[l] >= 2 then
+
+var tok1 as Token = stm::Tokens[0]
+var typ1 as System.Type = gettype DoTok
+var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+
+var tok2 as Token = stm::Tokens[1]
+var typ2 as System.Type = gettype WhileTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+valinref|b = b1 and b2
+
+whis = new DoWhileStmt()
+var exp as Expr = new Expr()
+var tok as Token
+
+if valinref|b = true then
+
+whis::Line = stm::Line
+whis::Tokens = stm::Tokens
+
+var i as integer = 1
+var len as integer = stm::Tokens[l] - 1
+
+label cont
+label loop
+
+place loop
+
+i++
+
+tok = stm::Tokens[i]
+exp::AddToken(tok)
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+var eop as ExprOptimizer = new ExprOptimizer()
+exp = eop::Optimize(exp)
+whis::Exp = exp
+
+end if
+
+end if
+
+return whis
+end method
+
+method public Stmt checkUntil(var stm as Stmt, var b as boolean&)
+var tok as Token = stm::Tokens[0]
+var typ as System.Type = gettype UntilTok
+valinref|b = typ::IsInstanceOfType($object$tok)
+var unts as UntilStmt = new UntilStmt()
+var exp as Expr = new Expr()
+
+if valinref|b = true then
+
+unts::Line = stm::Line
+unts::Tokens = stm::Tokens
+
+var i as integer = 0
+var len as integer = stm::Tokens[l] - 1
+
+label cont
+label loop
+
+place loop
+
+i++
+
+tok = stm::Tokens[i]
+exp::AddToken(tok)
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+var eop as ExprOptimizer = new ExprOptimizer()
+exp = eop::Optimize(exp)
+unts::Exp = exp
+
+end if
+
+return unts
+end method
+
+method public Stmt checkDoUntil(var stm as Stmt, var b as boolean&)
+
+var unts as DoUntilStmt = null
+
+if stm::Tokens[l] >= 2 then
+
+var tok1 as Token = stm::Tokens[0]
+var typ1 as System.Type = gettype DoTok
+var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+
+var tok2 as Token = stm::Tokens[1]
+var typ2 as System.Type = gettype UntilTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+valinref|b = b1 and b2
+
+unts = new DoUntilStmt()
+var exp as Expr = new Expr()
+
+if valinref|b = true then
+
+unts::Line = stm::Line
+unts::Tokens = stm::Tokens
+
+var i as integer = 1
+var len as integer = stm::Tokens[l] - 1
+var tok as Token
+
+label cont
+label loop
+
+place loop
+
+i++
+
+tok = stm::Tokens[i]
+exp::AddToken(tok)
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+var eop as ExprOptimizer = new ExprOptimizer()
+exp = eop::Optimize(exp)
+unts::Exp = exp
+
+end if
+
+end if
+
+return unts
+end method
+
 method public Stmt checkElseIf(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
 var typ as System.Type = gettype ElseIfTok
@@ -324,6 +522,8 @@ return cmts
 end method
 
 method public Stmt checkElse(var stm as Stmt, var b as boolean&)
+var els as ElseStmt = null
+
 if stm::Tokens[l] < 2 then
 
 var tok1 as Token = stm::Tokens[0]
@@ -332,7 +532,7 @@ var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
 
 valinref|b = b1
 
-var els as ElseStmt = new ElseStmt()
+els = new ElseStmt()
 if valinref|b = true then
 els::Line = stm::Line
 els::Tokens = stm::Tokens
@@ -341,7 +541,71 @@ end if
 return els
 end method
 
+method public Stmt checkDo(var stm as Stmt, var b as boolean&)
+var ds as DoStmt = null
+
+if stm::Tokens[l] < 2 then
+
+var tok1 as Token = stm::Tokens[0]
+var typ1 as System.Type = gettype DoTok
+var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+
+valinref|b = b1
+
+ds = new DoStmt()
+if valinref|b = true then
+ds::Line = stm::Line
+ds::Tokens = stm::Tokens
+end if
+end if
+return ds
+end method
+
+method public Stmt checkBreak(var stm as Stmt, var b as boolean&)
+var bs as BreakStmt = null
+
+if stm::Tokens[l] < 2 then
+
+var tok1 as Token = stm::Tokens[0]
+var typ1 as System.Type = gettype BreakTok
+var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+
+valinref|b = b1
+
+bs = new BreakStmt()
+if valinref|b = true then
+bs::Line = stm::Line
+bs::Tokens = stm::Tokens
+end if
+end if
+return bs
+end method
+
+method public Stmt checkContinue(var stm as Stmt, var b as boolean&)
+var cs as ContinueStmt = null
+
+if stm::Tokens[l] < 2 then
+
+var tok1 as Token = stm::Tokens[0]
+var typ1 as System.Type = gettype ContinueTok
+var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+
+valinref|b = b1
+
+cs = new ContinueStmt()
+if valinref|b = true then
+cs::Line = stm::Line
+cs::Tokens = stm::Tokens
+end if
+end if
+return cs
+end method
+
+
 method public Stmt checkEndIf(var stm as Stmt, var b as boolean&)
+
+var eifs as EndIfStmt = null
+
 if stm::Tokens[l] >= 2 then
 
 var tok1 as Token = stm::Tokens[0]
@@ -354,7 +618,7 @@ var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
 
 valinref|b = b1 and b2
 
-var eifs as EndIfStmt = new EndIfStmt()
+eifs = new EndIfStmt()
 if valinref|b = true then
 eifs::Line = stm::Line
 eifs::Tokens = stm::Tokens
@@ -365,6 +629,8 @@ end method
 
 
 method public Stmt checkEndMtd(var stm as Stmt, var b as boolean&)
+var ems as EndMethodStmt = null
+
 if stm::Tokens[l] >= 2 then
 
 var tok1 as Token = stm::Tokens[0]
@@ -377,7 +643,7 @@ var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
 
 valinref|b = b1 and b2
 
-var ems as EndMethodStmt = new EndMethodStmt()
+ems = new EndMethodStmt()
 if valinref|b = true then
 ems::Line = stm::Line
 ems::Tokens = stm::Tokens
@@ -387,6 +653,8 @@ return ems
 end method
 
 method public Stmt checkEndNS(var stm as Stmt, var b as boolean&)
+var ens as EndNSStmt = null
+
 if stm::Tokens[l] >= 2 then
 
 var tok1 as Token = stm::Tokens[0]
@@ -399,7 +667,7 @@ var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
 
 valinref|b = b1 and b2
 
-var ens as EndNSStmt = new EndNSStmt()
+ens = new EndNSStmt()
 if valinref|b = true then
 ens::Line = stm::Line
 ens::Tokens = stm::Tokens
@@ -410,6 +678,8 @@ end method
 
 
 method public Stmt checkEndCls(var stm as Stmt, var b as boolean&)
+var ecs as EndClassStmt = null
+
 if stm::Tokens[l] >= 2 then
 
 var tok1 as Token = stm::Tokens[0]
@@ -422,7 +692,7 @@ var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
 
 valinref|b = b1 and b2
 
-var ecs as EndClassStmt = new EndClassStmt()
+ecs = new EndClassStmt()
 if valinref|b = true then
 ecs::Line = stm::Line
 ecs::Tokens = stm::Tokens
@@ -430,6 +700,31 @@ end if
 end if
 return ecs
 end method
+
+method public Stmt checkEndDo(var stm as Stmt, var b as boolean&)
+var eds as EndDoStmt = null
+
+if stm::Tokens[l] >= 2 then
+
+var tok1 as Token = stm::Tokens[0]
+var typ1 as System.Type = gettype EndTok
+var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+
+var tok2 as Token = stm::Tokens[1]
+var typ2 as System.Type = gettype DoTok
+var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+
+valinref|b = b1 and b2
+
+eds = new EndDoStmt()
+if valinref|b = true then
+eds::Line = stm::Line
+eds::Tokens = stm::Tokens
+end if
+end if
+return eds
+end method
+
 
 method public Stmt checkAssembly(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
@@ -1362,6 +1657,35 @@ stm = tmpstm
 goto fin
 end if
 
+tmpstm = checkWhile(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkUntil(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkDoWhile(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkDoUntil(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+
 tmpstm = checkElseIf(stm, ref|compb)
 
 if compb = true then
@@ -1376,7 +1700,35 @@ stm = tmpstm
 goto fin
 end if
 
+tmpstm = checkDo(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkBreak(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkContinue(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
 tmpstm = checkEndIf(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkEndDo(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm

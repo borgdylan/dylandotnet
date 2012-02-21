@@ -430,6 +430,29 @@ ParserFlags::IfFlag = true
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "until")
+
+if comp = 0 then
+var untk as UntilTok = new UntilTok()
+untk::Line = tok::Line
+untk::Value = tok::Value
+tok = untk
+ParserFlags::IfFlag = true
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "while")
+
+if comp = 0 then
+var whtk as WhileTok = new WhileTok()
+whtk::Line = tok::Line
+whtk::Value = tok::Value
+tok = whtk
+ParserFlags::IfFlag = true
+goto fin
+end if
+
+
 comp = String::Compare(tok::Value, "elseif")
 
 if comp = 0 then
@@ -450,6 +473,37 @@ elsetk::Value = tok::Value
 tok = elsetk
 goto fin
 end if
+
+comp = String::Compare(tok::Value, "do")
+
+if comp = 0 then
+var dotk as DoTok = new DoTok()
+dotk::Line = tok::Line
+dotk::Value = tok::Value
+tok = dotk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "break")
+
+if comp = 0 then
+var brktk as BreakTok = new BreakTok()
+brktk::Line = tok::Line
+brktk::Value = tok::Value
+tok = brktk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "continue")
+
+if comp = 0 then
+var conttk as ContinueTok = new ContinueTok()
+conttk::Line = tok::Line
+conttk::Value = tok::Value
+tok = conttk
+goto fin
+end if
+
 
 comp = String::Compare(tok::Value, "then")
 

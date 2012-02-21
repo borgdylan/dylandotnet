@@ -1,3 +1,16 @@
+commit 458552a56ddf86c407674ccb1645659b555dfff8
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sun Feb 19 21:49:34 2012 +0100
+
+    Commiting dylan.NET 11.2.8.6 with the following changes:
+      * Adding support for conversion syntax before 'me' and 'null'.
+      * Fixing internal read permissions detection bug
+      * Updating man pages.
+      * Adding 6 more test files to cover latest features.
+      * Bumping up version to 11.2.8.6
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit df0ca1a1b96c98b2b45e3687023f1baeefa330ab
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Sat Feb 18 11:27:07 2012 +0100

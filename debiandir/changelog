@@ -1,3 +1,12 @@
+dylandotnet (11.2.8.7-1) precise; urgency=low
+
+  * Adding support for pre/post conditioned loops.
+  *Adding support for break/continue statements.
+  * Updating man pages and makefiles.
+  * Bumping up version to 11.2.8.7
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 20 Feb 2012 13:56:11 +0100
+
 dylandotnet (11.2.8.6-1) precise; urgency=low
 
   * Adding support for conversion syntax before 'me' and 'null'.
@@ -6,7 +15,7 @@ dylandotnet (11.2.8.6-1) precise; urgency=low
   * Adding 6 more test files to cover latest features.
   * Bumping up version to 11.2.8.6
   
- -- Dylan Borg <borgdylan@hotmail.com>  Tue, 08 Feb 2012 13:56:11 +0100
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 18 Feb 2012 13:56:11 +0100
 
 dylandotnet (11.2.8.5-1) precise; urgency=low
 
@@ -18,7 +27,7 @@ dylandotnet (11.2.8.5-1) precise; urgency=low
   * Updating man pages.
   * Bumping up version to 11.2.8.5
   
- -- Dylan Borg <borgdylan@hotmail.com>  Tue, 08 Feb 2012 13:56:11 +0100
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 17 Feb 2012 13:56:11 +0100
 
 dylandotnet (11.2.8.4-1) precise; urgency=low
 

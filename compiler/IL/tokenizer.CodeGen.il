@@ -5,29 +5,29 @@
 }
 .assembly extern tokenizer.AST
 {
-  .ver 11:2:8:6
+  .ver 11:2:8:7
 }
 .assembly extern dnr
 {
-  .ver 11:2:8:6
+  .ver 11:2:8:7
 }
 .assembly extern dnu
 {
-  .ver 11:2:8:6
+  .ver 11:2:8:7
 }
 .assembly extern tokenizer.Lexer
 {
-  .ver 11:2:8:6
+  .ver 11:2:8:7
 }
 .assembly extern tokenizer.Parser
 {
-  .ver 11:2:8:6
+  .ver 11:2:8:7
 }
 .assembly 'tokenizer.CodeGen'
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 36 00 00 ) // ...11.2.8.6..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 37 00 00 ) // ...11.2.8.7..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (
 		01 00 11 74 6F 6B 65 6E 69 7A 65 72 2E 43 6F 64   // ...tokenizer.Cod
@@ -42,10 +42,10 @@
 		65 47 65 6E 00 00                               ) // eGen..
 
   .hash algorithm 0x00008004
-  .ver  11:2:8:6
+  .ver  11:2:8:7
 }
 
-.module tokenizer.CodeGen.dll // GUID = {15576450-C72C-41CA-B7A2-4D331DC93C66}
+.module tokenizer.CodeGen.dll // GUID = {6C58C76A-6192-451A-ACE7-E6A561EC91D8}
 
 
 .namespace dylan.NET.Tokenizer.CodeGen
@@ -373,6 +373,53 @@
 
 .namespace dylan.NET.Tokenizer.CodeGen
 {
+  .class public auto ansi LoopItem
+  	extends [mscorlib]System.Object
+  {
+    .field  public  valuetype [mscorlib]System.Reflection.Emit.Label EndLabel
+    .field  public  valuetype [mscorlib]System.Reflection.Emit.Label StartLabel
+
+    // method line 11
+    .method public specialname rtspecialname 
+           instance default void '.ctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x226c
+	// Code size 7 (0x7)
+	.maxstack 2
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void object::'.ctor'()
+	IL_0006:  ret 
+    } // end of method LoopItem::.ctor
+
+    // method line 12
+    .method public specialname rtspecialname 
+           instance default void '.ctor' (valuetype [mscorlib]System.Reflection.Emit.Label startl, valuetype [mscorlib]System.Reflection.Emit.Label endl)  cil managed 
+    {
+        // Method begins at RVA 0x2280
+	// Code size 31 (0x1f)
+	.maxstack 4
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void object::'.ctor'()
+	IL_0006:  ldarg.0 
+	IL_0007:  ldarg 2
+
+	IL_000b:  nop 
+	IL_000c:  nop 
+	IL_000d:  stfld valuetype [mscorlib]System.Reflection.Emit.Label dylan.NET.Tokenizer.CodeGen.LoopItem::EndLabel
+	IL_0012:  ldarg.0 
+	IL_0013:  ldarg 1
+
+	IL_0017:  nop 
+	IL_0018:  nop 
+	IL_0019:  stfld valuetype [mscorlib]System.Reflection.Emit.Label dylan.NET.Tokenizer.CodeGen.LoopItem::StartLabel
+	IL_001e:  ret 
+    } // end of method LoopItem::.ctor
+
+  } // end of class dylan.NET.Tokenizer.CodeGen.LoopItem
+}
+
+.namespace dylan.NET.Tokenizer.CodeGen
+{
   .class public auto ansi IfItem
   	extends [mscorlib]System.Object
   {
@@ -380,11 +427,11 @@
     .field  public  valuetype [mscorlib]System.Reflection.Emit.Label NextBlkLabel
     .field  public  bool ElsePass
 
-    // method line 11
+    // method line 13
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x226c
+        // Method begins at RVA 0x22ac
 	// Code size 18 (0x12)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -395,11 +442,11 @@
 	IL_0011:  ret 
     } // end of method IfItem::.ctor
 
-    // method line 12
+    // method line 14
     .method public specialname rtspecialname 
            instance default void '.ctor' (valuetype [mscorlib]System.Reflection.Emit.Label endl, valuetype [mscorlib]System.Reflection.Emit.Label nbl)  cil managed 
     {
-        // Method begins at RVA 0x228c
+        // Method begins at RVA 0x22cc
 	// Code size 42 (0x2a)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -432,11 +479,11 @@
   {
     .field  public  class [mscorlib]System.Type[] Arr
 
-    // method line 13
+    // method line 15
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x22c4
+        // Method begins at RVA 0x2304
 	// Code size 24 (0x18)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -465,15 +512,16 @@
     .field  public static  class dylan.NET.Tokenizer.CodeGen.CtorItem[] CtorLst
     .field  public static  class dylan.NET.Tokenizer.CodeGen.CtorItem[] NestedCtorLst
     .field  public static  class dylan.NET.Tokenizer.CodeGen.IfItem[] IfLst
+    .field  public static  class dylan.NET.Tokenizer.CodeGen.LoopItem[] LoopLst
     .field  public static  class dylan.NET.Tokenizer.CodeGen.LabelItem[] LblLst
     .field  public static  class dylan.NET.Tokenizer.CodeGen.TypeArr[] TypLst
 
-    // method line 14
+    // method line 16
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0x22e8
-	// Code size 161 (0xa1)
+        // Method begins at RVA 0x2328
+	// Code size 177 (0xb1)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
 	IL_0005:  conv.u 
@@ -509,20 +557,24 @@
 	IL_007b:  stsfld class dylan.NET.Tokenizer.CodeGen.IfItem[] dylan.NET.Tokenizer.CodeGen.SymTable::IfLst
 	IL_0080:  ldc.i4 0
 	IL_0085:  conv.u 
-	IL_0086:  newarr dylan.NET.Tokenizer.CodeGen.LabelItem
-	IL_008b:  stsfld class dylan.NET.Tokenizer.CodeGen.LabelItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LblLst
+	IL_0086:  newarr dylan.NET.Tokenizer.CodeGen.LoopItem
+	IL_008b:  stsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
 	IL_0090:  ldc.i4 0
 	IL_0095:  conv.u 
-	IL_0096:  newarr dylan.NET.Tokenizer.CodeGen.TypeArr
-	IL_009b:  stsfld class dylan.NET.Tokenizer.CodeGen.TypeArr[] dylan.NET.Tokenizer.CodeGen.SymTable::TypLst
-	IL_00a0:  ret 
+	IL_0096:  newarr dylan.NET.Tokenizer.CodeGen.LabelItem
+	IL_009b:  stsfld class dylan.NET.Tokenizer.CodeGen.LabelItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LblLst
+	IL_00a0:  ldc.i4 0
+	IL_00a5:  conv.u 
+	IL_00a6:  newarr dylan.NET.Tokenizer.CodeGen.TypeArr
+	IL_00ab:  stsfld class dylan.NET.Tokenizer.CodeGen.TypeArr[] dylan.NET.Tokenizer.CodeGen.SymTable::TypLst
+	IL_00b0:  ret 
     } // end of method SymTable::.cctor
 
-    // method line 15
+    // method line 17
     .method public static 
            default void ResetIf ()  cil managed 
     {
-        // Method begins at RVA 0x2398
+        // Method begins at RVA 0x23e8
 	// Code size 17 (0x11)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -532,11 +584,25 @@
 	IL_0010:  ret 
     } // end of method SymTable::ResetIf
 
-    // method line 16
+    // method line 18
+    .method public static 
+           default void ResetLoop ()  cil managed 
+    {
+        // Method begins at RVA 0x2408
+	// Code size 17 (0x11)
+	.maxstack 1
+	IL_0000:  ldc.i4 0
+	IL_0005:  conv.u 
+	IL_0006:  newarr dylan.NET.Tokenizer.CodeGen.LoopItem
+	IL_000b:  stsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
+	IL_0010:  ret 
+    } // end of method SymTable::ResetLoop
+
+    // method line 19
     .method public static 
            default void ResetLbl ()  cil managed 
     {
-        // Method begins at RVA 0x23b8
+        // Method begins at RVA 0x2428
 	// Code size 17 (0x11)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -546,11 +612,11 @@
 	IL_0010:  ret 
     } // end of method SymTable::ResetLbl
 
-    // method line 17
+    // method line 20
     .method public static 
            default void ResetVar ()  cil managed 
     {
-        // Method begins at RVA 0x23d8
+        // Method begins at RVA 0x2448
 	// Code size 17 (0x11)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -560,11 +626,11 @@
 	IL_0010:  ret 
     } // end of method SymTable::ResetVar
 
-    // method line 18
+    // method line 21
     .method public static 
            default void ResetFld ()  cil managed 
     {
-        // Method begins at RVA 0x23f8
+        // Method begins at RVA 0x2468
 	// Code size 17 (0x11)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -574,11 +640,11 @@
 	IL_0010:  ret 
     } // end of method SymTable::ResetFld
 
-    // method line 19
+    // method line 22
     .method public static 
            default void ResetNestedFld ()  cil managed 
     {
-        // Method begins at RVA 0x2418
+        // Method begins at RVA 0x2488
 	// Code size 17 (0x11)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -588,11 +654,11 @@
 	IL_0010:  ret 
     } // end of method SymTable::ResetNestedFld
 
-    // method line 20
+    // method line 23
     .method public static 
            default void ResetMet ()  cil managed 
     {
-        // Method begins at RVA 0x2438
+        // Method begins at RVA 0x24a8
 	// Code size 17 (0x11)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -602,11 +668,11 @@
 	IL_0010:  ret 
     } // end of method SymTable::ResetMet
 
-    // method line 21
+    // method line 24
     .method public static 
            default void ResetNestedMet ()  cil managed 
     {
-        // Method begins at RVA 0x2458
+        // Method begins at RVA 0x24c8
 	// Code size 17 (0x11)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -616,11 +682,11 @@
 	IL_0010:  ret 
     } // end of method SymTable::ResetNestedMet
 
-    // method line 22
+    // method line 25
     .method public static 
            default void ResetCtor ()  cil managed 
     {
-        // Method begins at RVA 0x2478
+        // Method begins at RVA 0x24e8
 	// Code size 17 (0x11)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -630,11 +696,11 @@
 	IL_0010:  ret 
     } // end of method SymTable::ResetCtor
 
-    // method line 23
+    // method line 26
     .method public static 
            default void ResetNestedCtor ()  cil managed 
     {
-        // Method begins at RVA 0x2498
+        // Method begins at RVA 0x2508
 	// Code size 17 (0x11)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -644,11 +710,11 @@
 	IL_0010:  ret 
     } // end of method SymTable::ResetNestedCtor
 
-    // method line 24
+    // method line 27
     .method public static 
            default void AddVar (string nme, bool la, int32 ind, class [mscorlib]System.Type typ)  cil managed 
     {
-        // Method begins at RVA 0x24b8
+        // Method begins at RVA 0x2528
 	// Code size 311 (0x137)
 	.maxstack 17
 	.locals init (
@@ -818,11 +884,11 @@
 	IL_0136:  ret 
     } // end of method SymTable::AddVar
 
-    // method line 25
+    // method line 28
     .method public static 
            default int32 AddTypArr (class [mscorlib]System.Type[] arr)  cil managed 
     {
-        // Method begins at RVA 0x25fc
+        // Method begins at RVA 0x266c
 	// Code size 310 (0x136)
 	.maxstack 14
 	.locals init (
@@ -989,11 +1055,11 @@
 	IL_0135:  ret 
     } // end of method SymTable::AddTypArr
 
-    // method line 26
+    // method line 29
     .method public static 
            default class [mscorlib]System.Type[] PopTypArr ()  cil managed 
     {
-        // Method begins at RVA 0x2740
+        // Method begins at RVA 0x27b0
 	// Code size 360 (0x168)
 	.maxstack 14
 	.locals init (
@@ -1184,11 +1250,11 @@
 	IL_0167:  ret 
     } // end of method SymTable::PopTypArr
 
-    // method line 27
+    // method line 30
     .method public static 
            default void AddFld (string nme, class [mscorlib]System.Type typ, class [mscorlib]System.Reflection.Emit.FieldBuilder fld)  cil managed 
     {
-        // Method begins at RVA 0x28b4
+        // Method begins at RVA 0x2924
 	// Code size 305 (0x131)
 	.maxstack 16
 	.locals init (
@@ -1354,11 +1420,11 @@
 	IL_0130:  ret 
     } // end of method SymTable::AddFld
 
-    // method line 28
+    // method line 31
     .method public static 
            default void AddNestedFld (string nme, class [mscorlib]System.Type typ, class [mscorlib]System.Reflection.Emit.FieldBuilder fld)  cil managed 
     {
-        // Method begins at RVA 0x29f4
+        // Method begins at RVA 0x2a64
 	// Code size 305 (0x131)
 	.maxstack 16
 	.locals init (
@@ -1524,11 +1590,11 @@
 	IL_0130:  ret 
     } // end of method SymTable::AddNestedFld
 
-    // method line 29
+    // method line 32
     .method public static 
            default void AddMet (string nme, class [mscorlib]System.Type typ, class [mscorlib]System.Type[] ptyps, class [mscorlib]System.Reflection.Emit.MethodBuilder met)  cil managed 
     {
-        // Method begins at RVA 0x2b34
+        // Method begins at RVA 0x2ba4
 	// Code size 311 (0x137)
 	.maxstack 17
 	.locals init (
@@ -1698,11 +1764,11 @@
 	IL_0136:  ret 
     } // end of method SymTable::AddMet
 
-    // method line 30
+    // method line 33
     .method public static 
            default void AddNestedMet (string nme, class [mscorlib]System.Type typ, class [mscorlib]System.Type[] ptyps, class [mscorlib]System.Reflection.Emit.MethodBuilder met)  cil managed 
     {
-        // Method begins at RVA 0x2c78
+        // Method begins at RVA 0x2ce8
 	// Code size 311 (0x137)
 	.maxstack 17
 	.locals init (
@@ -1872,11 +1938,11 @@
 	IL_0136:  ret 
     } // end of method SymTable::AddNestedMet
 
-    // method line 31
+    // method line 34
     .method public static 
            default void AddCtor (class [mscorlib]System.Type[] ptyps, class [mscorlib]System.Reflection.Emit.ConstructorBuilder met)  cil managed 
     {
-        // Method begins at RVA 0x2dbc
+        // Method begins at RVA 0x2e2c
 	// Code size 299 (0x12b)
 	.maxstack 15
 	.locals init (
@@ -2038,11 +2104,11 @@
 	IL_012a:  ret 
     } // end of method SymTable::AddCtor
 
-    // method line 32
+    // method line 35
     .method public static 
            default void AddNestedCtor (class [mscorlib]System.Type[] ptyps, class [mscorlib]System.Reflection.Emit.ConstructorBuilder met)  cil managed 
     {
-        // Method begins at RVA 0x2ef4
+        // Method begins at RVA 0x2f64
 	// Code size 299 (0x12b)
 	.maxstack 15
 	.locals init (
@@ -2204,11 +2270,11 @@
 	IL_012a:  ret 
     } // end of method SymTable::AddNestedCtor
 
-    // method line 33
+    // method line 36
     .method public static 
            default void AddIf ()  cil managed 
     {
-        // Method begins at RVA 0x302c
+        // Method begins at RVA 0x309c
 	// Code size 321 (0x141)
 	.maxstack 15
 	.locals init (
@@ -2382,11 +2448,189 @@
 	IL_0140:  ret 
     } // end of method SymTable::AddIf
 
-    // method line 34
+    // method line 37
+    .method public static 
+           default void AddLoop ()  cil managed 
+    {
+        // Method begins at RVA 0x31ec
+	// Code size 321 (0x141)
+	.maxstack 15
+	.locals init (
+		valuetype [mscorlib]System.Reflection.Emit.Label	V_0,
+		valuetype [mscorlib]System.Reflection.Emit.Label	V_1,
+		class dylan.NET.Tokenizer.CodeGen.LoopItem	V_2,
+		int32	V_3,
+		int32	V_4,
+		int32	V_5,
+		int32	V_6,
+		class dylan.NET.Tokenizer.CodeGen.IfItem[]	V_7)
+	IL_0000:  call valuetype [mscorlib]System.Reflection.Emit.Label class [dnr]dylan.NET.Reflection.ILEmitter::DefineLbl()
+	IL_0005:  stloc 0
+
+	IL_0009:  nop 
+	IL_000a:  nop 
+	IL_000b:  call valuetype [mscorlib]System.Reflection.Emit.Label class [dnr]dylan.NET.Reflection.ILEmitter::DefineLbl()
+	IL_0010:  stloc 1
+
+	IL_0014:  nop 
+	IL_0015:  nop 
+	IL_0016:  ldloc 1
+
+	IL_001a:  nop 
+	IL_001b:  nop 
+	IL_001c:  ldloc 0
+
+	IL_0020:  nop 
+	IL_0021:  nop 
+	IL_0022:  newobj instance void class dylan.NET.Tokenizer.CodeGen.LoopItem::'.ctor'(valuetype [mscorlib]System.Reflection.Emit.Label, valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_0027:  stloc 2
+
+	IL_002b:  nop 
+	IL_002c:  nop 
+	IL_002d:  ldsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
+	IL_0032:  ldlen 
+	IL_0033:  conv.i4 
+	IL_0034:  stloc 3
+
+	IL_0038:  nop 
+	IL_0039:  nop 
+	IL_003a:  ldloc 3
+
+	IL_003e:  nop 
+	IL_003f:  nop 
+	IL_0040:  ldc.i4 1
+	IL_0045:  add 
+	IL_0046:  stloc 4
+
+	IL_004a:  nop 
+	IL_004b:  nop 
+	IL_004c:  ldloc 3
+
+	IL_0050:  nop 
+	IL_0051:  nop 
+	IL_0052:  ldc.i4 1
+	IL_0057:  sub 
+	IL_0058:  stloc 5
+
+	IL_005c:  nop 
+	IL_005d:  nop 
+	IL_005e:  ldc.i4 -1
+	IL_0063:  stloc 6
+
+	IL_0067:  nop 
+	IL_0068:  nop 
+	IL_0069:  ldloc 4
+
+	IL_006d:  nop 
+	IL_006e:  nop 
+	IL_006f:  conv.u 
+	IL_0070:  newarr dylan.NET.Tokenizer.CodeGen.LoopItem
+	IL_0075:  stloc 7
+
+	IL_0079:  nop 
+	IL_007a:  nop 
+	IL_007b:  ldloc 6
+
+	IL_007f:  nop 
+	IL_0080:  nop 
+	IL_0081:  ldc.i4 1
+	IL_0086:  add 
+	IL_0087:  stloc 6
+
+	IL_008b:  nop 
+	IL_008c:  nop 
+	IL_008d:  ldloc 3
+
+	IL_0091:  nop 
+	IL_0092:  nop 
+	IL_0093:  ldc.i4 0
+	IL_0098:  bgt IL_00a2
+
+	IL_009d:  br IL_00ca
+
+	IL_00a2:  ldloc 7
+
+	IL_00a6:  nop 
+	IL_00a7:  nop 
+	IL_00a8:  ldloc 6
+
+	IL_00ac:  nop 
+	IL_00ad:  nop 
+	IL_00ae:  conv.u 
+	IL_00af:  ldsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
+	IL_00b4:  ldloc 6
+
+	IL_00b8:  nop 
+	IL_00b9:  nop 
+	IL_00ba:  conv.u 
+	IL_00bb:  ldelem dylan.NET.Tokenizer.CodeGen.LoopItem
+	IL_00c0:  stelem dylan.NET.Tokenizer.CodeGen.IfItem
+	IL_00c5:  br IL_00cf
+
+	IL_00ca:  br IL_00cf
+
+	IL_00cf:  ldloc 6
+
+	IL_00d3:  nop 
+	IL_00d4:  nop 
+	IL_00d5:  ldloc 5
+
+	IL_00d9:  nop 
+	IL_00da:  nop 
+	IL_00db:  beq IL_00e5
+
+	IL_00e0:  br IL_00ef
+
+	IL_00e5:  br IL_011d
+
+	IL_00ea:  br IL_011d
+
+	IL_00ef:  ldloc 5
+
+	IL_00f3:  nop 
+	IL_00f4:  nop 
+	IL_00f5:  ldc.i4 -1
+	IL_00fa:  beq IL_010e
+
+	IL_00ff:  br IL_0104
+
+	IL_0104:  br IL_007b
+
+	IL_0109:  br IL_0118
+
+	IL_010e:  br IL_011d
+
+	IL_0113:  br IL_0118
+
+	IL_0118:  br IL_011d
+
+	IL_011d:  ldloc 7
+
+	IL_0121:  nop 
+	IL_0122:  nop 
+	IL_0123:  ldloc 3
+
+	IL_0127:  nop 
+	IL_0128:  nop 
+	IL_0129:  conv.u 
+	IL_012a:  ldloc 2
+
+	IL_012e:  nop 
+	IL_012f:  nop 
+	IL_0130:  stelem dylan.NET.Tokenizer.CodeGen.IfItem
+	IL_0135:  ldloc 7
+
+	IL_0139:  nop 
+	IL_013a:  nop 
+	IL_013b:  stsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
+	IL_0140:  ret 
+    } // end of method SymTable::AddLoop
+
+    // method line 38
     .method public static 
            default void PopIf ()  cil managed 
     {
-        // Method begins at RVA 0x317c
+        // Method begins at RVA 0x333c
 	// Code size 252 (0xfc)
 	.maxstack 11
 	.locals init (
@@ -2520,11 +2764,149 @@
 	IL_00fb:  ret 
     } // end of method SymTable::PopIf
 
-    // method line 35
+    // method line 39
+    .method public static 
+           default void PopLoop ()  cil managed 
+    {
+        // Method begins at RVA 0x3444
+	// Code size 252 (0xfc)
+	.maxstack 11
+	.locals init (
+		int32	V_0,
+		int32	V_1,
+		int32	V_2,
+		int32	V_3,
+		class dylan.NET.Tokenizer.CodeGen.LoopItem[]	V_4)
+	IL_0000:  ldsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
+	IL_0005:  ldlen 
+	IL_0006:  conv.i4 
+	IL_0007:  stloc 0
+
+	IL_000b:  nop 
+	IL_000c:  nop 
+	IL_000d:  ldloc 0
+
+	IL_0011:  nop 
+	IL_0012:  nop 
+	IL_0013:  ldc.i4 1
+	IL_0018:  sub 
+	IL_0019:  stloc 1
+
+	IL_001d:  nop 
+	IL_001e:  nop 
+	IL_001f:  ldloc 0
+
+	IL_0023:  nop 
+	IL_0024:  nop 
+	IL_0025:  ldc.i4 2
+	IL_002a:  sub 
+	IL_002b:  stloc 2
+
+	IL_002f:  nop 
+	IL_0030:  nop 
+	IL_0031:  ldc.i4 -1
+	IL_0036:  stloc 3
+
+	IL_003a:  nop 
+	IL_003b:  nop 
+	IL_003c:  ldloc 1
+
+	IL_0040:  nop 
+	IL_0041:  nop 
+	IL_0042:  conv.u 
+	IL_0043:  newarr dylan.NET.Tokenizer.CodeGen.LoopItem
+	IL_0048:  stloc 4
+
+	IL_004c:  nop 
+	IL_004d:  nop 
+	IL_004e:  ldloc 3
+
+	IL_0052:  nop 
+	IL_0053:  nop 
+	IL_0054:  ldc.i4 1
+	IL_0059:  add 
+	IL_005a:  stloc 3
+
+	IL_005e:  nop 
+	IL_005f:  nop 
+	IL_0060:  ldloc 2
+
+	IL_0064:  nop 
+	IL_0065:  nop 
+	IL_0066:  ldc.i4 0
+	IL_006b:  bge IL_0075
+
+	IL_0070:  br IL_009d
+
+	IL_0075:  ldloc 4
+
+	IL_0079:  nop 
+	IL_007a:  nop 
+	IL_007b:  ldloc 3
+
+	IL_007f:  nop 
+	IL_0080:  nop 
+	IL_0081:  conv.u 
+	IL_0082:  ldsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
+	IL_0087:  ldloc 3
+
+	IL_008b:  nop 
+	IL_008c:  nop 
+	IL_008d:  conv.u 
+	IL_008e:  ldelem dylan.NET.Tokenizer.CodeGen.LoopItem
+	IL_0093:  stelem dylan.NET.Tokenizer.CodeGen.LoopItem
+	IL_0098:  br IL_00a2
+
+	IL_009d:  br IL_00a2
+
+	IL_00a2:  ldloc 3
+
+	IL_00a6:  nop 
+	IL_00a7:  nop 
+	IL_00a8:  ldloc 2
+
+	IL_00ac:  nop 
+	IL_00ad:  nop 
+	IL_00ae:  beq IL_00b8
+
+	IL_00b3:  br IL_00c2
+
+	IL_00b8:  br IL_00f0
+
+	IL_00bd:  br IL_00f0
+
+	IL_00c2:  ldloc 2
+
+	IL_00c6:  nop 
+	IL_00c7:  nop 
+	IL_00c8:  ldc.i4 -1
+	IL_00cd:  beq IL_00e1
+
+	IL_00d2:  br IL_00d7
+
+	IL_00d7:  br IL_004e
+
+	IL_00dc:  br IL_00eb
+
+	IL_00e1:  br IL_00f0
+
+	IL_00e6:  br IL_00eb
+
+	IL_00eb:  br IL_00f0
+
+	IL_00f0:  ldloc 4
+
+	IL_00f4:  nop 
+	IL_00f5:  nop 
+	IL_00f6:  stsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
+	IL_00fb:  ret 
+    } // end of method SymTable::PopLoop
+
+    // method line 40
     .method public static 
            default valuetype [mscorlib]System.Reflection.Emit.Label ReadIfEndLbl ()  cil managed 
     {
-        // Method begins at RVA 0x3284
+        // Method begins at RVA 0x354c
 	// Code size 54 (0x36)
 	.maxstack 2
 	.locals init (
@@ -2558,11 +2940,11 @@
 	IL_0035:  ret 
     } // end of method SymTable::ReadIfEndLbl
 
-    // method line 36
+    // method line 41
     .method public static 
            default valuetype [mscorlib]System.Reflection.Emit.Label ReadIfNxtBlkLbl ()  cil managed 
     {
-        // Method begins at RVA 0x32c8
+        // Method begins at RVA 0x3590
 	// Code size 54 (0x36)
 	.maxstack 2
 	.locals init (
@@ -2596,11 +2978,87 @@
 	IL_0035:  ret 
     } // end of method SymTable::ReadIfNxtBlkLbl
 
-    // method line 37
+    // method line 42
+    .method public static 
+           default valuetype [mscorlib]System.Reflection.Emit.Label ReadLoopEndLbl ()  cil managed 
+    {
+        // Method begins at RVA 0x35d4
+	// Code size 54 (0x36)
+	.maxstack 2
+	.locals init (
+		int32	V_0,
+		class dylan.NET.Tokenizer.CodeGen.LoopItem	V_1)
+	IL_0000:  ldsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
+	IL_0005:  ldlen 
+	IL_0006:  conv.i4 
+	IL_0007:  ldc.i4 1
+	IL_000c:  sub 
+	IL_000d:  stloc 0
+
+	IL_0011:  nop 
+	IL_0012:  nop 
+	IL_0013:  ldsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
+	IL_0018:  ldloc 0
+
+	IL_001c:  nop 
+	IL_001d:  nop 
+	IL_001e:  conv.u 
+	IL_001f:  ldelem dylan.NET.Tokenizer.CodeGen.LoopItem
+	IL_0024:  stloc 1
+
+	IL_0028:  nop 
+	IL_0029:  nop 
+	IL_002a:  ldloc 1
+
+	IL_002e:  nop 
+	IL_002f:  nop 
+	IL_0030:  ldfld valuetype [mscorlib]System.Reflection.Emit.Label dylan.NET.Tokenizer.CodeGen.LoopItem::EndLabel
+	IL_0035:  ret 
+    } // end of method SymTable::ReadLoopEndLbl
+
+    // method line 43
+    .method public static 
+           default valuetype [mscorlib]System.Reflection.Emit.Label ReadLoopStartLbl ()  cil managed 
+    {
+        // Method begins at RVA 0x3618
+	// Code size 54 (0x36)
+	.maxstack 2
+	.locals init (
+		int32	V_0,
+		class dylan.NET.Tokenizer.CodeGen.LoopItem	V_1)
+	IL_0000:  ldsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
+	IL_0005:  ldlen 
+	IL_0006:  conv.i4 
+	IL_0007:  ldc.i4 1
+	IL_000c:  sub 
+	IL_000d:  stloc 0
+
+	IL_0011:  nop 
+	IL_0012:  nop 
+	IL_0013:  ldsfld class dylan.NET.Tokenizer.CodeGen.LoopItem[] dylan.NET.Tokenizer.CodeGen.SymTable::LoopLst
+	IL_0018:  ldloc 0
+
+	IL_001c:  nop 
+	IL_001d:  nop 
+	IL_001e:  conv.u 
+	IL_001f:  ldelem dylan.NET.Tokenizer.CodeGen.LoopItem
+	IL_0024:  stloc 1
+
+	IL_0028:  nop 
+	IL_0029:  nop 
+	IL_002a:  ldloc 1
+
+	IL_002e:  nop 
+	IL_002f:  nop 
+	IL_0030:  ldfld valuetype [mscorlib]System.Reflection.Emit.Label dylan.NET.Tokenizer.CodeGen.LoopItem::StartLabel
+	IL_0035:  ret 
+    } // end of method SymTable::ReadLoopStartLbl
+
+    // method line 44
     .method public static 
            default bool ReadIfElsePass ()  cil managed 
     {
-        // Method begins at RVA 0x330c
+        // Method begins at RVA 0x365c
 	// Code size 54 (0x36)
 	.maxstack 2
 	.locals init (
@@ -2634,11 +3092,11 @@
 	IL_0035:  ret 
     } // end of method SymTable::ReadIfElsePass
 
-    // method line 38
+    // method line 45
     .method public static 
            default void SetIfElsePass ()  cil managed 
     {
-        // Method begins at RVA 0x3350
+        // Method begins at RVA 0x36a0
 	// Code size 59 (0x3b)
 	.maxstack 2
 	.locals init (
@@ -2673,11 +3131,11 @@
 	IL_003a:  ret 
     } // end of method SymTable::SetIfElsePass
 
-    // method line 39
+    // method line 46
     .method public static 
            default void SetIfNxtBlkLbl ()  cil managed 
     {
-        // Method begins at RVA 0x3398
+        // Method begins at RVA 0x36e8
 	// Code size 59 (0x3b)
 	.maxstack 2
 	.locals init (
@@ -2712,11 +3170,11 @@
 	IL_003a:  ret 
     } // end of method SymTable::SetIfNxtBlkLbl
 
-    // method line 40
+    // method line 47
     .method public static 
            default void AddLbl (string nam)  cil managed 
     {
-        // Method begins at RVA 0x33e0
+        // Method begins at RVA 0x3730
 	// Code size 310 (0x136)
 	.maxstack 15
 	.locals init (
@@ -2884,11 +3342,11 @@
 	IL_0135:  ret 
     } // end of method SymTable::AddLbl
 
-    // method line 41
+    // method line 48
     .method public static 
            default class dylan.NET.Tokenizer.CodeGen.VarItem FindVar (string nam)  cil managed 
     {
-        // Method begins at RVA 0x3524
+        // Method begins at RVA 0x3874
 	// Code size 258 (0x102)
 	.maxstack 8
 	.locals init (
@@ -3025,11 +3483,11 @@
 	IL_0101:  ret 
     } // end of method SymTable::FindVar
 
-    // method line 42
+    // method line 49
     .method public static 
            default class dylan.NET.Tokenizer.CodeGen.LabelItem FindLbl (string nam)  cil managed 
     {
-        // Method begins at RVA 0x3634
+        // Method begins at RVA 0x3984
 	// Code size 258 (0x102)
 	.maxstack 8
 	.locals init (
@@ -3166,11 +3624,11 @@
 	IL_0101:  ret 
     } // end of method SymTable::FindLbl
 
-    // method line 43
+    // method line 50
     .method public static 
            default class dylan.NET.Tokenizer.CodeGen.FieldItem FindFld (string nam)  cil managed 
     {
-        // Method begins at RVA 0x3744
+        // Method begins at RVA 0x3a94
 	// Code size 258 (0x102)
 	.maxstack 8
 	.locals init (
@@ -3307,11 +3765,11 @@
 	IL_0101:  ret 
     } // end of method SymTable::FindFld
 
-    // method line 44
+    // method line 51
     .method public static 
            default bool CmpTyps (class [mscorlib]System.Type[] arra, class [mscorlib]System.Type[] arrb)  cil managed 
     {
-        // Method begins at RVA 0x3854
+        // Method begins at RVA 0x3ba4
 	// Code size 301 (0x12d)
 	.maxstack 10
 	.locals init (
@@ -3477,11 +3935,11 @@
 	IL_012c:  ret 
     } // end of method SymTable::CmpTyps
 
-    // method line 45
+    // method line 52
     .method public static 
            default class dylan.NET.Tokenizer.CodeGen.MethodItem FindMet (string nam, class [mscorlib]System.Type[] params)  cil managed 
     {
-        // Method begins at RVA 0x3990
+        // Method begins at RVA 0x3ce0
 	// Code size 317 (0x13d)
 	.maxstack 10
 	.locals init (
@@ -3646,11 +4104,11 @@
 	IL_013c:  ret 
     } // end of method SymTable::FindMet
 
-    // method line 46
+    // method line 53
     .method public static 
            default class dylan.NET.Tokenizer.CodeGen.MethodItem FindMetNoParams (string nam)  cil managed 
     {
-        // Method begins at RVA 0x3adc
+        // Method begins at RVA 0x3e2c
 	// Code size 258 (0x102)
 	.maxstack 8
 	.locals init (
@@ -3788,11 +4246,11 @@
 	IL_0101:  ret 
     } // end of method SymTable::FindMetNoParams
 
-    // method line 47
+    // method line 54
     .method public static 
            default class dylan.NET.Tokenizer.CodeGen.CtorItem FindCtor (class [mscorlib]System.Type[] params)  cil managed 
     {
-        // Method begins at RVA 0x3bec
+        // Method begins at RVA 0x3f3c
 	// Code size 258 (0x102)
 	.maxstack 8
 	.locals init (
@@ -3944,11 +4402,11 @@
     .field  public static  class [mscorlib]System.Type LeftOp
     .field  public static  class [mscorlib]System.Type RightOp
 
-    // method line 48
+    // method line 55
     .method public static specialname rtspecialname 
            default void '.cctor' ()  cil managed 
     {
-        // Method begins at RVA 0x3cfc
+        // Method begins at RVA 0x404c
 	// Code size 43 (0x2b)
 	.maxstack 1
 	IL_0000:  ldc.i4 0
@@ -3964,11 +4422,11 @@
 	IL_002a:  ret 
     } // end of method Helpers::.cctor
 
-    // method line 49
+    // method line 56
     .method public static 
            default valuetype [mscorlib]System.Reflection.TypeAttributes ProcessClassAttrs (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs)  cil managed 
     {
-        // Method begins at RVA 0x3d34
+        // Method begins at RVA 0x4084
 	// Code size 1098 (0x44a)
 	.maxstack 51
 	.locals init (
@@ -4533,11 +4991,11 @@
 	IL_0449:  ret 
     } // end of method Helpers::ProcessClassAttrs
 
-    // method line 50
+    // method line 57
     .method public static 
            default valuetype [mscorlib]System.Reflection.MethodAttributes ProcessMethodAttrs (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs)  cil managed 
     {
-        // Method begins at RVA 0x418c
+        // Method begins at RVA 0x44dc
 	// Code size 2064 (0x810)
 	.maxstack 91
 	.locals init (
@@ -5602,11 +6060,11 @@
 	IL_080f:  ret 
     } // end of method Helpers::ProcessMethodAttrs
 
-    // method line 51
+    // method line 58
     .method public static 
            default valuetype [mscorlib]System.Reflection.FieldAttributes ProcessFieldAttrs (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs)  cil managed 
     {
-        // Method begins at RVA 0x49a8
+        // Method begins at RVA 0x4cf8
 	// Code size 1535 (0x5ff)
 	.maxstack 67
 	.locals init (
@@ -6405,11 +6863,11 @@
 	IL_05fe:  ret 
     } // end of method Helpers::ProcessFieldAttrs
 
-    // method line 52
+    // method line 59
     .method public static 
            default void EvalTTok (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok tt)  cil managed 
     {
-        // Method begins at RVA 0x4fb4
+        // Method begins at RVA 0x5304
 	// Code size 835 (0x343)
 	.maxstack 21
 	.locals init (
@@ -6800,11 +7258,11 @@
 	IL_0342:  ret 
     } // end of method Helpers::EvalTTok
 
-    // method line 53
+    // method line 60
     .method public static 
            default class [mscorlib]System.Type CommitEvalTTok (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok tt)  cil managed 
     {
-        // Method begins at RVA 0x5304
+        // Method begins at RVA 0x5654
 	// Code size 17 (0x11)
 	.maxstack 1
 	IL_0000:  ldarg 0
@@ -6816,11 +7274,11 @@
 	IL_0010:  ret 
     } // end of method Helpers::CommitEvalTTok
 
-    // method line 54
+    // method line 61
     .method public static 
            default void ProcessParams (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] ps)  cil managed 
     {
-        // Method begins at RVA 0x5324
+        // Method begins at RVA 0x5674
 	// Code size 282 (0x11a)
 	.maxstack 10
 	.locals init (
@@ -6973,11 +7431,11 @@
 	IL_0119:  ret 
     } // end of method Helpers::ProcessParams
 
-    // method line 55
+    // method line 62
     .method public static 
            default void PostProcessParams (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] ps)  cil managed 
     {
-        // Method begins at RVA 0x544c
+        // Method begins at RVA 0x579c
 	// Code size 304 (0x130)
 	.maxstack 4
 	.locals init (
@@ -7147,11 +7605,11 @@
 	IL_012f:  ret 
     } // end of method Helpers::PostProcessParams
 
-    // method line 56
+    // method line 63
     .method public static 
            default void PostProcessParamsConstr (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] ps)  cil managed 
     {
-        // Method begins at RVA 0x5588
+        // Method begins at RVA 0x58d8
 	// Code size 304 (0x130)
 	.maxstack 4
 	.locals init (
@@ -7320,11 +7778,11 @@
 	IL_012f:  ret 
     } // end of method Helpers::PostProcessParamsConstr
 
-    // method line 57
+    // method line 64
     .method public static 
            default void EmitLiteral (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.Literal lit)  cil managed 
     {
-        // Method begins at RVA 0x56c4
+        // Method begins at RVA 0x5a14
 	// Code size 1058 (0x422)
 	.maxstack 29
 	.locals init (
@@ -7819,11 +8277,11 @@
 	IL_0421:  ret 
     } // end of method Helpers::EmitLiteral
 
-    // method line 58
+    // method line 65
     .method public static 
            default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.Literal ProcessConst (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Literals.ConstLiteral lit)  cil managed 
     {
-        // Method begins at RVA 0x5af4
+        // Method begins at RVA 0x5e44
 	// Code size 1154 (0x482)
 	.maxstack 40
 	.locals init (
@@ -8383,11 +8841,11 @@
 	IL_0481:  ret 
     } // end of method Helpers::ProcessConst
 
-    // method line 59
+    // method line 66
     .method public static 
            default void EmitOp (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ops.Op op, bool s)  cil managed 
     {
-        // Method begins at RVA 0x5f84
+        // Method begins at RVA 0x62d4
 	// Code size 3202 (0xc82)
 	.maxstack 136
 	.locals init (
@@ -9686,11 +10144,11 @@
 	IL_0c81:  ret 
     } // end of method Helpers::EmitOp
 
-    // method line 60
+    // method line 67
     .method public static 
            default void EmitLocLd (int32 ind, bool locarg)  cil managed 
     {
-        // Method begins at RVA 0x6c14
+        // Method begins at RVA 0x6f64
 	// Code size 259 (0x103)
 	.maxstack 16
 	.locals init (
@@ -9807,11 +10265,11 @@
 	IL_0102:  ret 
     } // end of method Helpers::EmitLocLd
 
-    // method line 61
+    // method line 68
     .method public static 
            default void EmitElemLd (class [mscorlib]System.Type t)  cil managed 
     {
-        // Method begins at RVA 0x6d24
+        // Method begins at RVA 0x7074
 	// Code size 133 (0x85)
 	.maxstack 7
 	.locals init (
@@ -9874,11 +10332,11 @@
 	IL_0084:  ret 
     } // end of method Helpers::EmitElemLd
 
-    // method line 62
+    // method line 69
     .method public static 
            default void EmitLocSt (int32 ind, bool locarg)  cil managed 
     {
-        // Method begins at RVA 0x6db8
+        // Method begins at RVA 0x7108
 	// Code size 54 (0x36)
 	.maxstack 4
 	IL_0000:  ldarg 1
@@ -9907,11 +10365,11 @@
 	IL_0035:  ret 
     } // end of method Helpers::EmitLocSt
 
-    // method line 63
+    // method line 70
     .method public static 
            default void EmitConv (class [mscorlib]System.Type source, class [mscorlib]System.Type sink)  cil managed 
     {
-        // Method begins at RVA 0x6dfc
+        // Method begins at RVA 0x714c
 	// Code size 2935 (0xb77)
 	.maxstack 140
 	.locals init (
@@ -11304,11 +11762,11 @@
 	IL_0b76:  ret 
     } // end of method Helpers::EmitConv
 
-    // method line 64
+    // method line 71
     .method public static 
            default void EmitMetCall (class [mscorlib]System.Reflection.MethodInfo met, bool stat)  cil managed 
     {
-        // Method begins at RVA 0x7980
+        // Method begins at RVA 0x7cd0
 	// Code size 335 (0x14f)
 	.maxstack 15
 	.locals init (
@@ -11463,11 +11921,11 @@
 	IL_014e:  ret 
     } // end of method Helpers::EmitMetCall
 
-    // method line 65
+    // method line 72
     .method public static 
            default void EmitPtrLd (class [mscorlib]System.Reflection.MethodInfo met, bool stat)  cil managed 
     {
-        // Method begins at RVA 0x7adc
+        // Method begins at RVA 0x7e2c
 	// Code size 54 (0x36)
 	.maxstack 4
 	IL_0000:  ldarg 1
@@ -11496,11 +11954,11 @@
 	IL_0035:  ret 
     } // end of method Helpers::EmitPtrLd
 
-    // method line 66
+    // method line 73
     .method public static 
            default void EmitFldLd (class [mscorlib]System.Reflection.FieldInfo fld, bool stat)  cil managed 
     {
-        // Method begins at RVA 0x7b20
+        // Method begins at RVA 0x7e70
 	// Code size 259 (0x103)
 	.maxstack 16
 	.locals init (
@@ -11617,11 +12075,11 @@
 	IL_0102:  ret 
     } // end of method Helpers::EmitFldLd
 
-    // method line 67
+    // method line 74
     .method public static 
            default void EmitFldSt (class [mscorlib]System.Reflection.FieldInfo fld, bool stat)  cil managed 
     {
-        // Method begins at RVA 0x7c30
+        // Method begins at RVA 0x7f80
 	// Code size 54 (0x36)
 	.maxstack 4
 	IL_0000:  ldarg 1
@@ -11650,11 +12108,11 @@
 	IL_0035:  ret 
     } // end of method Helpers::EmitFldSt
 
-    // method line 68
+    // method line 75
     .method public static 
            default class [mscorlib]System.Reflection.ConstructorInfo GetLocCtor (class [mscorlib]System.Type t, class [mscorlib]System.Type[] typs)  cil managed 
     {
-        // Method begins at RVA 0x7c74
+        // Method begins at RVA 0x7fc4
 	// Code size 117 (0x75)
 	.maxstack 6
 	.locals init (
@@ -11722,11 +12180,11 @@
 	IL_0074:  ret 
     } // end of method Helpers::GetLocCtor
 
-    // method line 69
+    // method line 76
     .method public static 
            default class [mscorlib]System.Reflection.FieldInfo GetLocFld (string nam)  cil managed 
     {
-        // Method begins at RVA 0x7cf8
+        // Method begins at RVA 0x8048
 	// Code size 117 (0x75)
 	.maxstack 6
 	.locals init (
@@ -11789,11 +12247,11 @@
 	IL_0074:  ret 
     } // end of method Helpers::GetLocFld
 
-    // method line 70
+    // method line 77
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo GetLocMet (string nam, class [mscorlib]System.Type[] typs)  cil managed 
     {
-        // Method begins at RVA 0x7d7c
+        // Method begins at RVA 0x80cc
 	// Code size 129 (0x81)
 	.maxstack 7
 	.locals init (
@@ -11864,11 +12322,11 @@
 	IL_0080:  ret 
     } // end of method Helpers::GetLocMet
 
-    // method line 71
+    // method line 78
     .method public static 
            default class [mscorlib]System.Reflection.MethodInfo GetLocMetNoParams (string nam)  cil managed 
     {
-        // Method begins at RVA 0x7e0c
+        // Method begins at RVA 0x815c
 	// Code size 75 (0x4b)
 	.maxstack 4
 	.locals init (
@@ -11917,11 +12375,11 @@
 	IL_004a:  ret 
     } // end of method Helpers::GetLocMetNoParams
 
-    // method line 72
+    // method line 79
     .method public static 
            default valuetype [mscorlib]System.Reflection.Emit.Label GetLbl (string nam)  cil managed 
     {
-        // Method begins at RVA 0x7e64
+        // Method begins at RVA 0x81b4
 	// Code size 68 (0x44)
 	.maxstack 4
 	.locals init (
@@ -11965,11 +12423,11 @@
 	IL_0043:  ret 
     } // end of method Helpers::GetLbl
 
-    // method line 73
+    // method line 80
     .method public static 
            default string StripDelMtdName (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token t)  cil managed 
     {
-        // Method begins at RVA 0x7eb4
+        // Method begins at RVA 0x8204
 	// Code size 243 (0xf3)
 	.maxstack 7
 	.locals init (
@@ -12100,11 +12558,11 @@
 	IL_00f2:  ret 
     } // end of method Helpers::StripDelMtdName
 
-    // method line 74
+    // method line 81
     .method public static 
            default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token SetPopFlg (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token t)  cil managed 
     {
-        // Method begins at RVA 0x7fb4
+        // Method begins at RVA 0x8304
 	// Code size 459 (0x1cb)
 	.maxstack 18
 	.locals init (
@@ -12336,11 +12794,11 @@
 	IL_01ca:  ret 
     } // end of method Helpers::SetPopFlg
 
-    // method line 75
+    // method line 82
     .method public static 
            default bool CheckIfArrLen (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr ind)  cil managed 
     {
-        // Method begins at RVA 0x818c
+        // Method begins at RVA 0x84dc
 	// Code size 228 (0xe4)
 	.maxstack 9
 	.locals init (
@@ -12461,11 +12919,11 @@
   {
     .field  public  class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr Stack
 
-    // method line 76
+    // method line 83
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x827c
+        // Method begins at RVA 0x85cc
 	// Code size 18 (0x12)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -12476,11 +12934,11 @@
 	IL_0011:  ret 
     } // end of method OpStack::.ctor
 
-    // method line 77
+    // method line 84
     .method public 
            instance default void PushOp (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token optok)  cil managed 
     {
-        // Method begins at RVA 0x829c
+        // Method begins at RVA 0x85ec
 	// Code size 18 (0x12)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -12493,11 +12951,11 @@
 	IL_0011:  ret 
     } // end of method OpStack::PushOp
 
-    // method line 78
+    // method line 85
     .method public 
            instance default void PopOp ()  cil managed 
     {
-        // Method begins at RVA 0x82bc
+        // Method begins at RVA 0x860c
 	// Code size 81 (0x51)
 	.maxstack 4
 	.locals init (
@@ -12537,11 +12995,11 @@
 	IL_0050:  ret 
     } // end of method OpStack::PopOp
 
-    // method line 79
+    // method line 86
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token TopOp ()  cil managed 
     {
-        // Method begins at RVA 0x831c
+        // Method begins at RVA 0x866c
 	// Code size 100 (0x64)
 	.maxstack 5
 	.locals init (
@@ -12593,11 +13051,11 @@
 	IL_0063:  ret 
     } // end of method OpStack::TopOp
 
-    // method line 80
+    // method line 87
     .method public 
            instance default int32 getLength ()  cil managed 
     {
-        // Method begins at RVA 0x838c
+        // Method begins at RVA 0x86dc
 	// Code size 14 (0xe)
 	.maxstack 1
 	IL_0000:  ldarg.0 
@@ -12619,11 +13077,11 @@
     .field  public  class dylan.NET.Tokenizer.CodeGen.OpStack Stack
     .field  public  class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token InstToken
 
-    // method line 81
+    // method line 88
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0x83a8
+        // Method begins at RVA 0x86f8
 	// Code size 25 (0x19)
 	.maxstack 4
 	IL_0000:  ldarg.0 
@@ -12637,11 +13095,11 @@
 	IL_0018:  ret 
     } // end of method Evaluator::.ctor
 
-    // method line 82
+    // method line 89
     .method public 
            instance default int32 RetPrec (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token tok)  cil managed 
     {
-        // Method begins at RVA 0x83d0
+        // Method begins at RVA 0x8720
 	// Code size 327 (0x147)
 	.maxstack 10
 	.locals init (
@@ -12803,11 +13261,11 @@
 	IL_0146:  ret 
     } // end of method Evaluator::RetPrec
 
-    // method line 83
+    // method line 90
     .method public 
            instance default bool isLParen (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token tok)  cil managed 
     {
-        // Method begins at RVA 0x8524
+        // Method begins at RVA 0x8874
 	// Code size 39 (0x27)
 	.maxstack 2
 	.locals init (
@@ -12831,11 +13289,11 @@
 	IL_0026:  ret 
     } // end of method Evaluator::isLParen
 
-    // method line 84
+    // method line 91
     .method public 
            instance default bool isOp (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token tok)  cil managed 
     {
-        // Method begins at RVA 0x8558
+        // Method begins at RVA 0x88a8
 	// Code size 39 (0x27)
 	.maxstack 2
 	.locals init (
@@ -12859,11 +13317,11 @@
 	IL_0026:  ret 
     } // end of method Evaluator::isOp
 
-    // method line 85
+    // method line 92
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr ConvToRPN (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr exp)  cil managed 
     {
-        // Method begins at RVA 0x858c
+        // Method begins at RVA 0x88dc
 	// Code size 1344 (0x540)
 	.maxstack 43
 	.locals init (
@@ -13500,11 +13958,11 @@
 	IL_053f:  ret 
     } // end of method Evaluator::ConvToRPN
 
-    // method line 86
+    // method line 93
     .method public 
            instance default class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr ConvToAST (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr exp)  cil managed 
     {
-        // Method begins at RVA 0x8ad8
+        // Method begins at RVA 0x8e28
 	// Code size 615 (0x267)
 	.maxstack 17
 	.locals init (
@@ -13834,11 +14292,11 @@
 	IL_0266:  ret 
     } // end of method Evaluator::ConvToAST
 
-    // method line 87
+    // method line 94
     .method public 
            instance default void ASTEmit (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token tok, bool emt)  cil managed 
     {
-        // Method begins at RVA 0x8d4c
+        // Method begins at RVA 0x909c
 	// Code size 11706 (0x2dba)
 	.maxstack 477
 	.locals init (
@@ -19145,11 +19603,11 @@
 	IL_2db9:  ret 
     } // end of method Evaluator::ASTEmit
 
-    // method line 88
+    // method line 95
     .method public 
            instance default void Evaluate (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr exp)  cil managed 
     {
-        // Method begins at RVA 0xbb14
+        // Method begins at RVA 0xbe64
 	// Code size 164 (0xa4)
 	.maxstack 10
 	.locals init (
@@ -19238,11 +19696,11 @@
 	IL_00a3:  ret 
     } // end of method Evaluator::Evaluate
 
-    // method line 89
+    // method line 96
     .method public 
            instance default void StoreEmit (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token tok, class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr exp)  cil managed 
     {
-        // Method begins at RVA 0xbbc4
+        // Method begins at RVA 0xbf14
 	// Code size 2273 (0x8e1)
 	.maxstack 95
 	.locals init (
@@ -20332,13 +20790,13 @@
   	extends [mscorlib]System.Object
   {
 
-    // method line 90
+    // method line 97
     .method public 
            instance default void Read (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt stm, string fpath)  cil managed 
     {
-        // Method begins at RVA 0xc4b4
-	// Code size 9343 (0x247f)
-	.maxstack 327
+        // Method begins at RVA 0xc804
+	// Code size 10539 (0x292b)
+	.maxstack 355
 	.locals init (
 		class [mscorlib]System.Type	V_0,
 		bool	V_1,
@@ -20445,14 +20903,21 @@
 		valuetype [mscorlib]System.Reflection.Emit.Label	V_102,
 		valuetype [mscorlib]System.Reflection.Emit.Label	V_103,
 		valuetype [mscorlib]System.Reflection.Emit.Label	V_104,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.IfStmt	V_105,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr	V_106,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ElseIfStmt	V_107,
+		valuetype [mscorlib]System.Reflection.Emit.Label	V_105,
+		valuetype [mscorlib]System.Reflection.Emit.Label	V_106,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.IfStmt	V_107,
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr	V_108,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident	V_109,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.LabelStmt	V_110,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.PlaceStmt	V_111,
-		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.GotoStmt	V_112)
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr	V_109,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.UntilStmt	V_110,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.WhileStmt	V_111,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DoUntilStmt	V_112,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DoWhileStmt	V_113,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ElseIfStmt	V_114,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr	V_115,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident	V_116,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.LabelStmt	V_117,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.PlaceStmt	V_118,
+		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.GotoStmt	V_119)
 	IL_0000:  ldc.i4 0
 	IL_0005:  stloc 1
 
@@ -20670,7 +21135,7 @@
 	IL_01fe:  nop 
 	IL_01ff:  nop 
 	IL_0200:  call void class [dnr]dylan.NET.Reflection.Importer::AddAsm(class [mscorlib]System.Reflection.Assembly)
-	IL_0205:  br IL_247e
+	IL_0205:  br IL_292a
 
 	IL_020a:  br IL_0214
 
@@ -20869,7 +21334,7 @@
 	IL_03c2:  nop 
 	IL_03c3:  nop 
 	IL_03c4:  call void class [dnr]dylan.NET.Reflection.Importer::AddAsm(class [mscorlib]System.Reflection.Assembly)
-	IL_03c9:  br IL_247e
+	IL_03c9:  br IL_292a
 
 	IL_03ce:  br IL_03d8
 
@@ -21028,7 +21493,7 @@
 	IL_052a:  nop 
 	IL_052b:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
 	IL_0530:  call void class [dnr]dylan.NET.Reflection.Importer::AddImp(string)
-	IL_0535:  br IL_247e
+	IL_0535:  br IL_292a
 
 	IL_053a:  br IL_0544
 
@@ -21187,7 +21652,7 @@
 	IL_0696:  nop 
 	IL_0697:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
 	IL_069c:  call void class [dnr]dylan.NET.Reflection.Importer::AddLocImp(string)
-	IL_06a1:  br IL_247e
+	IL_06a1:  br IL_292a
 
 	IL_06a6:  br IL_06b0
 
@@ -21281,7 +21746,7 @@
 	IL_0773:  nop 
 	IL_0774:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
 	IL_0779:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
-	IL_077e:  br IL_247e
+	IL_077e:  br IL_292a
 
 	IL_0783:  br IL_078d
 
@@ -21723,7 +22188,7 @@
 	IL_0b44:  stsfld string [dnr]dylan.NET.Reflection.AsmFactory::AsmFile
 	IL_0b49:  ldsfld class [mscorlib]System.Reflection.Emit.AssemblyBuilder [dnr]dylan.NET.Reflection.AsmFactory::AsmB
 	IL_0b4e:  call void class [dnr]dylan.NET.Reflection.Importer::AddAsm(class [mscorlib]System.Reflection.Assembly)
-	IL_0b53:  br IL_247e
+	IL_0b53:  br IL_292a
 
 	IL_0b58:  br IL_0b62
 
@@ -21772,7 +22237,7 @@
 	IL_0bb4:  nop 
 	IL_0bb5:  ldfld bool [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DebugStmt::Flg
 	IL_0bba:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::DebugFlg
-	IL_0bbf:  br IL_247e
+	IL_0bbf:  br IL_292a
 
 	IL_0bc4:  br IL_0bce
 
@@ -22147,7 +22612,7 @@
 	IL_0f0f:  stsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB
 	IL_0f14:  br IL_0f19
 
-	IL_0f19:  br IL_247e
+	IL_0f19:  br IL_292a
 
 	IL_0f1e:  br IL_0f28
 
@@ -22180,7 +22645,7 @@
 	IL_0f5a:  ldc.i4 1
 	IL_0f5f:  beq IL_0f69
 
-	IL_0f64:  br IL_1349
+	IL_0f64:  br IL_134e
 
 	IL_0f69:  ldarg 1
 
@@ -22370,2175 +22835,2721 @@
 
 	IL_111f:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetVar()
 	IL_1124:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetIf()
-	IL_1129:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetLbl()
-	IL_112e:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB
-	IL_1133:  stloc 56
+	IL_1129:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetLoop()
+	IL_112e:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetLbl()
+	IL_1133:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB
+	IL_1138:  stloc 56
 
-	IL_1137:  nop 
-	IL_1138:  nop 
-	IL_1139:  ldc.i4 128
-	IL_113e:  ldc.i4 6
-	IL_1143:  or 
-	IL_1144:  stloc 57
+	IL_113c:  nop 
+	IL_113d:  nop 
+	IL_113e:  ldc.i4 128
+	IL_1143:  ldc.i4 6
+	IL_1148:  or 
+	IL_1149:  stloc 57
 
-	IL_1148:  nop 
-	IL_1149:  nop 
-	IL_114a:  ldstr ""
-	IL_114f:  stloc 58
+	IL_114d:  nop 
+	IL_114e:  nop 
+	IL_114f:  ldstr ""
+	IL_1154:  stloc 58
 
-	IL_1153:  nop 
-	IL_1154:  nop 
-	IL_1155:  ldloc 50
-
+	IL_1158:  nop 
 	IL_1159:  nop 
-	IL_115a:  nop 
-	IL_115b:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DelegateStmt::RetTyp
-	IL_1160:  stloc 59
+	IL_115a:  ldloc 50
 
-	IL_1164:  nop 
-	IL_1165:  nop 
-	IL_1166:  ldtoken [mscorlib]System.Void
-	IL_116b:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_1170:  stloc 60
+	IL_115e:  nop 
+	IL_115f:  nop 
+	IL_1160:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DelegateStmt::RetTyp
+	IL_1165:  stloc 59
 
-	IL_1174:  nop 
-	IL_1175:  nop 
-	IL_1176:  ldc.i4 2
-	IL_117b:  conv.u 
-	IL_117c:  newarr [mscorlib]System.Type
-	IL_1181:  stloc 61
+	IL_1169:  nop 
+	IL_116a:  nop 
+	IL_116b:  ldtoken [mscorlib]System.Void
+	IL_1170:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1175:  stloc 60
 
-	IL_1185:  nop 
-	IL_1186:  nop 
-	IL_1187:  ldloc 61
+	IL_1179:  nop 
+	IL_117a:  nop 
+	IL_117b:  ldc.i4 2
+	IL_1180:  conv.u 
+	IL_1181:  newarr [mscorlib]System.Type
+	IL_1186:  stloc 61
 
+	IL_118a:  nop 
 	IL_118b:  nop 
-	IL_118c:  nop 
-	IL_118d:  ldc.i4 0
-	IL_1192:  conv.u 
-	IL_1193:  ldtoken [mscorlib]System.Object
-	IL_1198:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_119d:  stelem [mscorlib]System.Type
-	IL_11a2:  ldloc 61
+	IL_118c:  ldloc 61
 
-	IL_11a6:  nop 
-	IL_11a7:  nop 
-	IL_11a8:  ldc.i4 1
-	IL_11ad:  conv.u 
-	IL_11ae:  ldtoken [mscorlib]System.IntPtr
-	IL_11b3:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_11b8:  stelem [mscorlib]System.Type
-	IL_11bd:  ldc.i4 1
-	IL_11c2:  stloc 62
+	IL_1190:  nop 
+	IL_1191:  nop 
+	IL_1192:  ldc.i4 0
+	IL_1197:  conv.u 
+	IL_1198:  ldtoken [mscorlib]System.Object
+	IL_119d:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_11a2:  stelem [mscorlib]System.Type
+	IL_11a7:  ldloc 61
 
-	IL_11c6:  nop 
-	IL_11c7:  nop 
-	IL_11c8:  ldloc 56
+	IL_11ab:  nop 
+	IL_11ac:  nop 
+	IL_11ad:  ldc.i4 1
+	IL_11b2:  conv.u 
+	IL_11b3:  ldtoken [mscorlib]System.IntPtr
+	IL_11b8:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_11bd:  stelem [mscorlib]System.Type
+	IL_11c2:  ldc.i4 1
+	IL_11c7:  stloc 62
 
+	IL_11cb:  nop 
 	IL_11cc:  nop 
-	IL_11cd:  nop 
-	IL_11ce:  ldloc 57
+	IL_11cd:  ldloc 56
 
+	IL_11d1:  nop 
 	IL_11d2:  nop 
-	IL_11d3:  nop 
-	IL_11d4:  ldloc 62
+	IL_11d3:  ldloc 57
 
+	IL_11d7:  nop 
 	IL_11d8:  nop 
-	IL_11d9:  nop 
-	IL_11da:  ldloc 61
+	IL_11d9:  ldloc 62
 
+	IL_11dd:  nop 
 	IL_11de:  nop 
-	IL_11df:  nop 
-	IL_11e0:  callvirt instance class [mscorlib]System.Reflection.Emit.ConstructorBuilder class [mscorlib]System.Reflection.Emit.TypeBuilder::DefineConstructor(valuetype [mscorlib]System.Reflection.MethodAttributes, valuetype [mscorlib]System.Reflection.CallingConventions, class [mscorlib]System.Type[])
-	IL_11e5:  stsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnConB
-	IL_11ea:  call void class [dnr]dylan.NET.Reflection.AsmFactory::InitDelConstr()
-	IL_11ef:  ldloc 59
+	IL_11df:  ldloc 61
 
-	IL_11f3:  nop 
-	IL_11f4:  nop 
-	IL_11f5:  call class [mscorlib]System.Type class dylan.NET.Tokenizer.CodeGen.Helpers::CommitEvalTTok(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)
-	IL_11fa:  stloc 60
+	IL_11e3:  nop 
+	IL_11e4:  nop 
+	IL_11e5:  callvirt instance class [mscorlib]System.Reflection.Emit.ConstructorBuilder class [mscorlib]System.Reflection.Emit.TypeBuilder::DefineConstructor(valuetype [mscorlib]System.Reflection.MethodAttributes, valuetype [mscorlib]System.Reflection.CallingConventions, class [mscorlib]System.Type[])
+	IL_11ea:  stsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnConB
+	IL_11ef:  call void class [dnr]dylan.NET.Reflection.AsmFactory::InitDelConstr()
+	IL_11f4:  ldloc 59
 
-	IL_11fe:  nop 
-	IL_11ff:  nop 
-	IL_1200:  ldc.i4 0
-	IL_1205:  conv.u 
-	IL_1206:  newarr [mscorlib]System.Type
-	IL_120b:  stsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
-	IL_1210:  ldloc 50
+	IL_11f8:  nop 
+	IL_11f9:  nop 
+	IL_11fa:  call class [mscorlib]System.Type class dylan.NET.Tokenizer.CodeGen.Helpers::CommitEvalTTok(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)
+	IL_11ff:  stloc 60
 
-	IL_1214:  nop 
-	IL_1215:  nop 
-	IL_1216:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DelegateStmt::Params
-	IL_121b:  stloc 63
+	IL_1203:  nop 
+	IL_1204:  nop 
+	IL_1205:  ldc.i4 0
+	IL_120a:  conv.u 
+	IL_120b:  newarr [mscorlib]System.Type
+	IL_1210:  stsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
+	IL_1215:  ldloc 50
 
-	IL_121f:  nop 
-	IL_1220:  nop 
-	IL_1221:  ldloc 63
+	IL_1219:  nop 
+	IL_121a:  nop 
+	IL_121b:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DelegateStmt::Params
+	IL_1220:  stloc 63
 
+	IL_1224:  nop 
 	IL_1225:  nop 
-	IL_1226:  nop 
-	IL_1227:  ldlen 
-	IL_1228:  conv.i4 
-	IL_1229:  stloc 64
+	IL_1226:  ldloc 63
 
-	IL_122d:  nop 
-	IL_122e:  nop 
-	IL_122f:  ldc.i4 128
-	IL_1234:  ldc.i4 6
-	IL_1239:  or 
-	IL_123a:  ldc.i4 256
-	IL_123f:  or 
-	IL_1240:  ldc.i4 64
-	IL_1245:  or 
-	IL_1246:  stloc 57
+	IL_122a:  nop 
+	IL_122b:  nop 
+	IL_122c:  ldlen 
+	IL_122d:  conv.i4 
+	IL_122e:  stloc 64
 
-	IL_124a:  nop 
-	IL_124b:  nop 
-	IL_124c:  ldloc 64
+	IL_1232:  nop 
+	IL_1233:  nop 
+	IL_1234:  ldc.i4 128
+	IL_1239:  ldc.i4 6
+	IL_123e:  or 
+	IL_123f:  ldc.i4 256
+	IL_1244:  or 
+	IL_1245:  ldc.i4 64
+	IL_124a:  or 
+	IL_124b:  stloc 57
 
+	IL_124f:  nop 
 	IL_1250:  nop 
-	IL_1251:  nop 
-	IL_1252:  ldc.i4 0
-	IL_1257:  beq IL_1261
+	IL_1251:  ldloc 64
 
-	IL_125c:  br IL_1271
+	IL_1255:  nop 
+	IL_1256:  nop 
+	IL_1257:  ldc.i4 0
+	IL_125c:  beq IL_1266
 
-	IL_1261:  ldsfld class [mscorlib]System.Type[] [mscorlib]System.Type::EmptyTypes
-	IL_1266:  stloc 61
+	IL_1261:  br IL_1276
 
-	IL_126a:  nop 
-	IL_126b:  nop 
-	IL_126c:  br IL_128c
+	IL_1266:  ldsfld class [mscorlib]System.Type[] [mscorlib]System.Type::EmptyTypes
+	IL_126b:  stloc 61
 
-	IL_1271:  ldloc 63
+	IL_126f:  nop 
+	IL_1270:  nop 
+	IL_1271:  br IL_1291
 
-	IL_1275:  nop 
-	IL_1276:  nop 
-	IL_1277:  call void class dylan.NET.Tokenizer.CodeGen.Helpers::ProcessParams(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[])
-	IL_127c:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
-	IL_1281:  stloc 61
+	IL_1276:  ldloc 63
 
-	IL_1285:  nop 
-	IL_1286:  nop 
-	IL_1287:  br IL_128c
+	IL_127a:  nop 
+	IL_127b:  nop 
+	IL_127c:  call void class dylan.NET.Tokenizer.CodeGen.Helpers::ProcessParams(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[])
+	IL_1281:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
+	IL_1286:  stloc 61
 
-	IL_128c:  ldloc 56
+	IL_128a:  nop 
+	IL_128b:  nop 
+	IL_128c:  br IL_1291
 
-	IL_1290:  nop 
-	IL_1291:  nop 
-	IL_1292:  ldstr "Invoke"
-	IL_1297:  ldloc 57
+	IL_1291:  ldloc 56
 
-	IL_129b:  nop 
-	IL_129c:  nop 
-	IL_129d:  ldloc 60
+	IL_1295:  nop 
+	IL_1296:  nop 
+	IL_1297:  ldstr "Invoke"
+	IL_129c:  ldloc 57
 
+	IL_12a0:  nop 
 	IL_12a1:  nop 
-	IL_12a2:  nop 
-	IL_12a3:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
-	IL_12a8:  callvirt instance class [mscorlib]System.Reflection.Emit.MethodBuilder class [mscorlib]System.Reflection.Emit.TypeBuilder::DefineMethod(string, valuetype [mscorlib]System.Reflection.MethodAttributes, class [mscorlib]System.Type, class [mscorlib]System.Type[])
-	IL_12ad:  stsfld class [mscorlib]System.Reflection.Emit.MethodBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnMetB
-	IL_12b2:  call void class [dnr]dylan.NET.Reflection.AsmFactory::InitDelMet()
-	IL_12b7:  ldloc 63
+	IL_12a2:  ldloc 60
 
-	IL_12bb:  nop 
-	IL_12bc:  nop 
-	IL_12bd:  call void class dylan.NET.Tokenizer.CodeGen.Helpers::PostProcessParams(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[])
-	IL_12c2:  call void class [dnr]dylan.NET.Reflection.AsmFactory::CreateTyp()
-	IL_12c7:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
-	IL_12cc:  ldc.i4 0
-	IL_12d1:  beq IL_12db
+	IL_12a6:  nop 
+	IL_12a7:  nop 
+	IL_12a8:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
+	IL_12ad:  callvirt instance class [mscorlib]System.Reflection.Emit.MethodBuilder class [mscorlib]System.Reflection.Emit.TypeBuilder::DefineMethod(string, valuetype [mscorlib]System.Reflection.MethodAttributes, class [mscorlib]System.Type, class [mscorlib]System.Type[])
+	IL_12b2:  stsfld class [mscorlib]System.Reflection.Emit.MethodBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnMetB
+	IL_12b7:  call void class [dnr]dylan.NET.Reflection.AsmFactory::InitDelMet()
+	IL_12bc:  ldloc 63
 
-	IL_12d6:  br IL_12f9
+	IL_12c0:  nop 
+	IL_12c1:  nop 
+	IL_12c2:  call void class dylan.NET.Tokenizer.CodeGen.Helpers::PostProcessParams(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[])
+	IL_12c7:  call void class [dnr]dylan.NET.Reflection.AsmFactory::CreateTyp()
+	IL_12cc:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
+	IL_12d1:  ldc.i4 0
+	IL_12d6:  beq IL_12e0
 
-	IL_12db:  ldc.i4 0
-	IL_12e0:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::inClass
-	IL_12e5:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetMet()
-	IL_12ea:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetCtor()
-	IL_12ef:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetFld()
-	IL_12f4:  br IL_12fe
+	IL_12db:  br IL_12fe
 
-	IL_12f9:  br IL_12fe
+	IL_12e0:  ldc.i4 0
+	IL_12e5:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::inClass
+	IL_12ea:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetMet()
+	IL_12ef:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetCtor()
+	IL_12f4:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetFld()
+	IL_12f9:  br IL_1303
 
-	IL_12fe:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
-	IL_1303:  ldc.i4 1
-	IL_1308:  beq IL_1312
+	IL_12fe:  br IL_1303
 
-	IL_130d:  br IL_133a
+	IL_1303:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
+	IL_1308:  ldc.i4 1
+	IL_130d:  beq IL_1317
 
-	IL_1312:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB2
-	IL_1317:  stsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB
-	IL_131c:  ldc.i4 0
-	IL_1321:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
-	IL_1326:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedMet()
-	IL_132b:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedCtor()
-	IL_1330:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedFld()
-	IL_1335:  br IL_133f
+	IL_1312:  br IL_133f
 
-	IL_133a:  br IL_133f
+	IL_1317:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB2
+	IL_131c:  stsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB
+	IL_1321:  ldc.i4 0
+	IL_1326:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
+	IL_132b:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedMet()
+	IL_1330:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedCtor()
+	IL_1335:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedFld()
+	IL_133a:  br IL_1344
 
-	IL_133f:  br IL_247e
+	IL_133f:  br IL_1344
 
-	IL_1344:  br IL_134e
+	IL_1344:  br IL_292a
 
-	IL_1349:  br IL_134e
+	IL_1349:  br IL_1353
 
-	IL_134e:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.FieldStmt
-	IL_1353:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_1358:  stloc 0
+	IL_134e:  br IL_1353
 
-	IL_135c:  nop 
-	IL_135d:  nop 
-	IL_135e:  ldloc 0
+	IL_1353:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.FieldStmt
+	IL_1358:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_135d:  stloc 0
 
+	IL_1361:  nop 
 	IL_1362:  nop 
-	IL_1363:  nop 
-	IL_1364:  ldarg 1
+	IL_1363:  ldloc 0
 
+	IL_1367:  nop 
 	IL_1368:  nop 
-	IL_1369:  nop 
-	IL_136a:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_136f:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_1374:  stloc 1
+	IL_1369:  ldarg 1
 
-	IL_1378:  nop 
-	IL_1379:  nop 
-	IL_137a:  ldloc 1
+	IL_136d:  nop 
+	IL_136e:  nop 
+	IL_136f:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_1374:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1379:  stloc 1
 
+	IL_137d:  nop 
 	IL_137e:  nop 
-	IL_137f:  nop 
-	IL_1380:  ldc.i4 1
-	IL_1385:  beq IL_138f
+	IL_137f:  ldloc 1
 
-	IL_138a:  br IL_14ee
+	IL_1383:  nop 
+	IL_1384:  nop 
+	IL_1385:  ldc.i4 1
+	IL_138a:  beq IL_1394
 
-	IL_138f:  ldarg 1
+	IL_138f:  br IL_14f3
 
-	IL_1393:  nop 
-	IL_1394:  nop 
-	IL_1395:  stloc 65
+	IL_1394:  ldarg 1
 
+	IL_1398:  nop 
 	IL_1399:  nop 
-	IL_139a:  nop 
-	IL_139b:  ldloc 65
+	IL_139a:  stloc 65
 
+	IL_139e:  nop 
 	IL_139f:  nop 
-	IL_13a0:  nop 
-	IL_13a1:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.FieldStmt::Attrs
-	IL_13a6:  stloc 66
+	IL_13a0:  ldloc 65
 
-	IL_13aa:  nop 
-	IL_13ab:  nop 
-	IL_13ac:  ldloc 66
+	IL_13a4:  nop 
+	IL_13a5:  nop 
+	IL_13a6:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.FieldStmt::Attrs
+	IL_13ab:  stloc 66
 
+	IL_13af:  nop 
 	IL_13b0:  nop 
-	IL_13b1:  nop 
-	IL_13b2:  call valuetype [mscorlib]System.Reflection.FieldAttributes class dylan.NET.Tokenizer.CodeGen.Helpers::ProcessFieldAttrs(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[])
-	IL_13b7:  stloc 67
+	IL_13b1:  ldloc 66
 
-	IL_13bb:  nop 
-	IL_13bc:  nop 
-	IL_13bd:  ldloc 65
+	IL_13b5:  nop 
+	IL_13b6:  nop 
+	IL_13b7:  call valuetype [mscorlib]System.Reflection.FieldAttributes class dylan.NET.Tokenizer.CodeGen.Helpers::ProcessFieldAttrs(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[])
+	IL_13bc:  stloc 67
 
+	IL_13c0:  nop 
 	IL_13c1:  nop 
-	IL_13c2:  nop 
-	IL_13c3:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.FieldStmt::FieldName
-	IL_13c8:  stloc 68
+	IL_13c2:  ldloc 65
 
-	IL_13cc:  nop 
-	IL_13cd:  nop 
-	IL_13ce:  ldloc 68
+	IL_13c6:  nop 
+	IL_13c7:  nop 
+	IL_13c8:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.FieldStmt::FieldName
+	IL_13cd:  stloc 68
 
+	IL_13d1:  nop 
 	IL_13d2:  nop 
-	IL_13d3:  nop 
-	IL_13d4:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_13d9:  stloc 69
+	IL_13d3:  ldloc 68
 
-	IL_13dd:  nop 
-	IL_13de:  nop 
-	IL_13df:  ldloc 65
+	IL_13d7:  nop 
+	IL_13d8:  nop 
+	IL_13d9:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_13de:  stloc 69
 
+	IL_13e2:  nop 
 	IL_13e3:  nop 
-	IL_13e4:  nop 
-	IL_13e5:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.FieldStmt::FieldTyp
-	IL_13ea:  stloc 70
+	IL_13e4:  ldloc 65
 
-	IL_13ee:  nop 
-	IL_13ef:  nop 
-	IL_13f0:  ldnull 
-	IL_13f1:  stloc 71
+	IL_13e8:  nop 
+	IL_13e9:  nop 
+	IL_13ea:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.FieldStmt::FieldTyp
+	IL_13ef:  stloc 70
 
-	IL_13f5:  nop 
-	IL_13f6:  nop 
-	IL_13f7:  ldloc 70
+	IL_13f3:  nop 
+	IL_13f4:  nop 
+	IL_13f5:  ldnull 
+	IL_13f6:  stloc 71
 
+	IL_13fa:  nop 
 	IL_13fb:  nop 
-	IL_13fc:  nop 
-	IL_13fd:  call class [mscorlib]System.Type class dylan.NET.Tokenizer.CodeGen.Helpers::CommitEvalTTok(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)
-	IL_1402:  stloc 71
+	IL_13fc:  ldloc 70
 
-	IL_1406:  nop 
-	IL_1407:  nop 
-	IL_1408:  ldloc 71
+	IL_1400:  nop 
+	IL_1401:  nop 
+	IL_1402:  call class [mscorlib]System.Type class dylan.NET.Tokenizer.CodeGen.Helpers::CommitEvalTTok(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)
+	IL_1407:  stloc 71
 
+	IL_140b:  nop 
 	IL_140c:  nop 
-	IL_140d:  nop 
-	IL_140e:  ldnull 
-	IL_140f:  beq IL_1419
+	IL_140d:  ldloc 71
 
-	IL_1414:  br IL_1453
+	IL_1411:  nop 
+	IL_1412:  nop 
+	IL_1413:  ldnull 
+	IL_1414:  beq IL_141e
 
-	IL_1419:  ldstr "Class '"
-	IL_141e:  ldloc 70
+	IL_1419:  br IL_1458
 
-	IL_1422:  nop 
-	IL_1423:  nop 
-	IL_1424:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1429:  ldstr "' is not defined."
-	IL_142e:  call string string::Concat(string, string, string)
-	IL_1433:  stloc 3
+	IL_141e:  ldstr "Class '"
+	IL_1423:  ldloc 70
 
-	IL_1437:  nop 
-	IL_1438:  nop 
-	IL_1439:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LineNr
-	IL_143e:  ldsfld string [dnr]dylan.NET.Reflection.ILEmitter::CurSrcFile
-	IL_1443:  ldloc 3
+	IL_1427:  nop 
+	IL_1428:  nop 
+	IL_1429:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_142e:  ldstr "' is not defined."
+	IL_1433:  call string string::Concat(string, string, string)
+	IL_1438:  stloc 3
 
-	IL_1447:  nop 
-	IL_1448:  nop 
-	IL_1449:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteError(int32, string, string)
-	IL_144e:  br IL_1458
+	IL_143c:  nop 
+	IL_143d:  nop 
+	IL_143e:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LineNr
+	IL_1443:  ldsfld string [dnr]dylan.NET.Reflection.ILEmitter::CurSrcFile
+	IL_1448:  ldloc 3
 
-	IL_1453:  br IL_1458
+	IL_144c:  nop 
+	IL_144d:  nop 
+	IL_144e:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteError(int32, string, string)
+	IL_1453:  br IL_145d
 
-	IL_1458:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB
-	IL_145d:  stloc 72
+	IL_1458:  br IL_145d
 
-	IL_1461:  nop 
-	IL_1462:  nop 
-	IL_1463:  ldloc 72
+	IL_145d:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB
+	IL_1462:  stloc 72
 
+	IL_1466:  nop 
 	IL_1467:  nop 
-	IL_1468:  nop 
-	IL_1469:  ldloc 69
+	IL_1468:  ldloc 72
 
+	IL_146c:  nop 
 	IL_146d:  nop 
-	IL_146e:  nop 
-	IL_146f:  ldloc 71
+	IL_146e:  ldloc 69
 
+	IL_1472:  nop 
 	IL_1473:  nop 
-	IL_1474:  nop 
-	IL_1475:  ldloc 67
+	IL_1474:  ldloc 71
 
+	IL_1478:  nop 
 	IL_1479:  nop 
-	IL_147a:  nop 
-	IL_147b:  callvirt instance class [mscorlib]System.Reflection.Emit.FieldBuilder class [mscorlib]System.Reflection.Emit.TypeBuilder::DefineField(string, class [mscorlib]System.Type, valuetype [mscorlib]System.Reflection.FieldAttributes)
-	IL_1480:  stsfld class [mscorlib]System.Reflection.Emit.FieldBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnFldB
-	IL_1485:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
-	IL_148a:  ldc.i4 0
-	IL_148f:  beq IL_1499
+	IL_147a:  ldloc 67
 
-	IL_1494:  br IL_14b4
+	IL_147e:  nop 
+	IL_147f:  nop 
+	IL_1480:  callvirt instance class [mscorlib]System.Reflection.Emit.FieldBuilder class [mscorlib]System.Reflection.Emit.TypeBuilder::DefineField(string, class [mscorlib]System.Type, valuetype [mscorlib]System.Reflection.FieldAttributes)
+	IL_1485:  stsfld class [mscorlib]System.Reflection.Emit.FieldBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnFldB
+	IL_148a:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
+	IL_148f:  ldc.i4 0
+	IL_1494:  beq IL_149e
 
-	IL_1499:  ldloc 69
+	IL_1499:  br IL_14b9
 
-	IL_149d:  nop 
-	IL_149e:  nop 
-	IL_149f:  ldloc 71
+	IL_149e:  ldloc 69
 
+	IL_14a2:  nop 
 	IL_14a3:  nop 
-	IL_14a4:  nop 
-	IL_14a5:  ldsfld class [mscorlib]System.Reflection.Emit.FieldBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnFldB
-	IL_14aa:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddFld(string, class [mscorlib]System.Type, class [mscorlib]System.Reflection.Emit.FieldBuilder)
-	IL_14af:  br IL_14cf
+	IL_14a4:  ldloc 71
 
-	IL_14b4:  ldloc 69
+	IL_14a8:  nop 
+	IL_14a9:  nop 
+	IL_14aa:  ldsfld class [mscorlib]System.Reflection.Emit.FieldBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnFldB
+	IL_14af:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddFld(string, class [mscorlib]System.Type, class [mscorlib]System.Reflection.Emit.FieldBuilder)
+	IL_14b4:  br IL_14d4
 
-	IL_14b8:  nop 
-	IL_14b9:  nop 
-	IL_14ba:  ldloc 71
+	IL_14b9:  ldloc 69
 
+	IL_14bd:  nop 
 	IL_14be:  nop 
-	IL_14bf:  nop 
-	IL_14c0:  ldsfld class [mscorlib]System.Reflection.Emit.FieldBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnFldB
-	IL_14c5:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddNestedFld(string, class [mscorlib]System.Type, class [mscorlib]System.Reflection.Emit.FieldBuilder)
-	IL_14ca:  br IL_14cf
+	IL_14bf:  ldloc 71
 
-	IL_14cf:  ldstr "\tAdding Field: "
-	IL_14d4:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
-	IL_14d9:  ldloc 69
+	IL_14c3:  nop 
+	IL_14c4:  nop 
+	IL_14c5:  ldsfld class [mscorlib]System.Reflection.Emit.FieldBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnFldB
+	IL_14ca:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddNestedFld(string, class [mscorlib]System.Type, class [mscorlib]System.Reflection.Emit.FieldBuilder)
+	IL_14cf:  br IL_14d4
 
-	IL_14dd:  nop 
-	IL_14de:  nop 
-	IL_14df:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
-	IL_14e4:  br IL_247e
+	IL_14d4:  ldstr "\tAdding Field: "
+	IL_14d9:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
+	IL_14de:  ldloc 69
 
-	IL_14e9:  br IL_14f3
+	IL_14e2:  nop 
+	IL_14e3:  nop 
+	IL_14e4:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	IL_14e9:  br IL_292a
 
-	IL_14ee:  br IL_14f3
+	IL_14ee:  br IL_14f8
 
-	IL_14f3:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.EndClassStmt
-	IL_14f8:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_14fd:  stloc 0
+	IL_14f3:  br IL_14f8
 
-	IL_1501:  nop 
-	IL_1502:  nop 
-	IL_1503:  ldloc 0
+	IL_14f8:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.EndClassStmt
+	IL_14fd:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1502:  stloc 0
 
+	IL_1506:  nop 
 	IL_1507:  nop 
-	IL_1508:  nop 
-	IL_1509:  ldarg 1
+	IL_1508:  ldloc 0
 
+	IL_150c:  nop 
 	IL_150d:  nop 
-	IL_150e:  nop 
-	IL_150f:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_1514:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_1519:  stloc 1
+	IL_150e:  ldarg 1
 
-	IL_151d:  nop 
-	IL_151e:  nop 
-	IL_151f:  ldloc 1
+	IL_1512:  nop 
+	IL_1513:  nop 
+	IL_1514:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_1519:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_151e:  stloc 1
 
+	IL_1522:  nop 
 	IL_1523:  nop 
-	IL_1524:  nop 
-	IL_1525:  ldc.i4 1
-	IL_152a:  beq IL_1534
+	IL_1524:  ldloc 1
 
-	IL_152f:  br IL_15bb
+	IL_1528:  nop 
+	IL_1529:  nop 
+	IL_152a:  ldc.i4 1
+	IL_152f:  beq IL_1539
 
-	IL_1534:  call void class [dnr]dylan.NET.Reflection.AsmFactory::CreateTyp()
-	IL_1539:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
-	IL_153e:  ldc.i4 0
-	IL_1543:  beq IL_154d
+	IL_1534:  br IL_15c0
 
-	IL_1548:  br IL_156b
+	IL_1539:  call void class [dnr]dylan.NET.Reflection.AsmFactory::CreateTyp()
+	IL_153e:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
+	IL_1543:  ldc.i4 0
+	IL_1548:  beq IL_1552
 
-	IL_154d:  ldc.i4 0
-	IL_1552:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::inClass
-	IL_1557:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetMet()
-	IL_155c:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetCtor()
-	IL_1561:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetFld()
-	IL_1566:  br IL_1570
+	IL_154d:  br IL_1570
 
-	IL_156b:  br IL_1570
+	IL_1552:  ldc.i4 0
+	IL_1557:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::inClass
+	IL_155c:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetMet()
+	IL_1561:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetCtor()
+	IL_1566:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetFld()
+	IL_156b:  br IL_1575
 
-	IL_1570:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
-	IL_1575:  ldc.i4 1
-	IL_157a:  beq IL_1584
+	IL_1570:  br IL_1575
 
-	IL_157f:  br IL_15ac
+	IL_1575:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
+	IL_157a:  ldc.i4 1
+	IL_157f:  beq IL_1589
 
-	IL_1584:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB2
-	IL_1589:  stsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB
-	IL_158e:  ldc.i4 0
-	IL_1593:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
-	IL_1598:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedMet()
-	IL_159d:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedCtor()
-	IL_15a2:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedFld()
-	IL_15a7:  br IL_15b1
+	IL_1584:  br IL_15b1
 
-	IL_15ac:  br IL_15b1
+	IL_1589:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB2
+	IL_158e:  stsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB
+	IL_1593:  ldc.i4 0
+	IL_1598:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
+	IL_159d:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedMet()
+	IL_15a2:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedCtor()
+	IL_15a7:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetNestedFld()
+	IL_15ac:  br IL_15b6
 
-	IL_15b1:  br IL_247e
+	IL_15b1:  br IL_15b6
 
-	IL_15b6:  br IL_15c0
+	IL_15b6:  br IL_292a
 
-	IL_15bb:  br IL_15c0
+	IL_15bb:  br IL_15c5
 
-	IL_15c0:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodStmt
-	IL_15c5:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_15ca:  stloc 0
+	IL_15c0:  br IL_15c5
 
-	IL_15ce:  nop 
-	IL_15cf:  nop 
-	IL_15d0:  ldloc 0
+	IL_15c5:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodStmt
+	IL_15ca:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_15cf:  stloc 0
 
+	IL_15d3:  nop 
 	IL_15d4:  nop 
-	IL_15d5:  nop 
-	IL_15d6:  ldarg 1
+	IL_15d5:  ldloc 0
 
+	IL_15d9:  nop 
 	IL_15da:  nop 
-	IL_15db:  nop 
-	IL_15dc:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_15e1:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_15e6:  stloc 1
+	IL_15db:  ldarg 1
 
-	IL_15ea:  nop 
-	IL_15eb:  nop 
-	IL_15ec:  ldloc 1
+	IL_15df:  nop 
+	IL_15e0:  nop 
+	IL_15e1:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_15e6:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_15eb:  stloc 1
 
+	IL_15ef:  nop 
 	IL_15f0:  nop 
-	IL_15f1:  nop 
-	IL_15f2:  ldc.i4 1
-	IL_15f7:  beq IL_1601
+	IL_15f1:  ldloc 1
 
-	IL_15fc:  br IL_1915
+	IL_15f5:  nop 
+	IL_15f6:  nop 
+	IL_15f7:  ldc.i4 1
+	IL_15fc:  beq IL_1606
 
-	IL_1601:  ldarg 1
+	IL_1601:  br IL_191a
 
-	IL_1605:  nop 
-	IL_1606:  nop 
-	IL_1607:  stloc 73
+	IL_1606:  ldarg 1
 
+	IL_160a:  nop 
 	IL_160b:  nop 
-	IL_160c:  nop 
-	IL_160d:  ldc.i4 0
-	IL_1612:  stsfld bool [dnr]dylan.NET.Reflection.ILEmitter::StaticFlg
-	IL_1617:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetVar()
-	IL_161c:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetIf()
-	IL_1621:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetLbl()
-	IL_1626:  ldloc 73
+	IL_160c:  stloc 73
 
-	IL_162a:  nop 
-	IL_162b:  nop 
-	IL_162c:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodStmt::Attrs
-	IL_1631:  stloc 74
+	IL_1610:  nop 
+	IL_1611:  nop 
+	IL_1612:  ldc.i4 0
+	IL_1617:  stsfld bool [dnr]dylan.NET.Reflection.ILEmitter::StaticFlg
+	IL_161c:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetVar()
+	IL_1621:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetIf()
+	IL_1626:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::ResetLbl()
+	IL_162b:  ldloc 73
 
-	IL_1635:  nop 
-	IL_1636:  nop 
-	IL_1637:  ldloc 74
+	IL_162f:  nop 
+	IL_1630:  nop 
+	IL_1631:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodStmt::Attrs
+	IL_1636:  stloc 74
 
+	IL_163a:  nop 
 	IL_163b:  nop 
-	IL_163c:  nop 
-	IL_163d:  call valuetype [mscorlib]System.Reflection.MethodAttributes class dylan.NET.Tokenizer.CodeGen.Helpers::ProcessMethodAttrs(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[])
-	IL_1642:  stloc 75
+	IL_163c:  ldloc 74
 
-	IL_1646:  nop 
-	IL_1647:  nop 
-	IL_1648:  ldloc 73
+	IL_1640:  nop 
+	IL_1641:  nop 
+	IL_1642:  call valuetype [mscorlib]System.Reflection.MethodAttributes class dylan.NET.Tokenizer.CodeGen.Helpers::ProcessMethodAttrs(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[])
+	IL_1647:  stloc 75
 
+	IL_164b:  nop 
 	IL_164c:  nop 
-	IL_164d:  nop 
-	IL_164e:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodStmt::MethodName
-	IL_1653:  stloc 76
+	IL_164d:  ldloc 73
 
-	IL_1657:  nop 
-	IL_1658:  nop 
-	IL_1659:  ldloc 76
+	IL_1651:  nop 
+	IL_1652:  nop 
+	IL_1653:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodStmt::MethodName
+	IL_1658:  stloc 76
 
+	IL_165c:  nop 
 	IL_165d:  nop 
-	IL_165e:  nop 
-	IL_165f:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1664:  stloc 77
+	IL_165e:  ldloc 76
 
-	IL_1668:  nop 
-	IL_1669:  nop 
-	IL_166a:  ldloc 73
+	IL_1662:  nop 
+	IL_1663:  nop 
+	IL_1664:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1669:  stloc 77
 
+	IL_166d:  nop 
 	IL_166e:  nop 
-	IL_166f:  nop 
-	IL_1670:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodStmt::Params
-	IL_1675:  stloc 78
+	IL_166f:  ldloc 73
 
-	IL_1679:  nop 
-	IL_167a:  nop 
-	IL_167b:  ldloc 78
+	IL_1673:  nop 
+	IL_1674:  nop 
+	IL_1675:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodStmt::Params
+	IL_167a:  stloc 78
 
+	IL_167e:  nop 
 	IL_167f:  nop 
-	IL_1680:  nop 
-	IL_1681:  ldlen 
-	IL_1682:  conv.i4 
-	IL_1683:  stloc 79
+	IL_1680:  ldloc 78
 
-	IL_1687:  nop 
-	IL_1688:  nop 
-	IL_1689:  ldloc 73
+	IL_1684:  nop 
+	IL_1685:  nop 
+	IL_1686:  ldlen 
+	IL_1687:  conv.i4 
+	IL_1688:  stloc 79
 
+	IL_168c:  nop 
 	IL_168d:  nop 
-	IL_168e:  nop 
-	IL_168f:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodStmt::RetTyp
-	IL_1694:  stloc 80
+	IL_168e:  ldloc 73
 
-	IL_1698:  nop 
-	IL_1699:  nop 
-	IL_169a:  ldnull 
-	IL_169b:  stloc 81
+	IL_1692:  nop 
+	IL_1693:  nop 
+	IL_1694:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodStmt::RetTyp
+	IL_1699:  stloc 80
 
-	IL_169f:  nop 
-	IL_16a0:  nop 
-	IL_16a1:  ldloc 80
+	IL_169d:  nop 
+	IL_169e:  nop 
+	IL_169f:  ldnull 
+	IL_16a0:  stloc 81
 
+	IL_16a4:  nop 
 	IL_16a5:  nop 
-	IL_16a6:  nop 
-	IL_16a7:  call class [mscorlib]System.Type class dylan.NET.Tokenizer.CodeGen.Helpers::CommitEvalTTok(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)
-	IL_16ac:  stloc 81
+	IL_16a6:  ldloc 80
 
-	IL_16b0:  nop 
-	IL_16b1:  nop 
-	IL_16b2:  ldc.i4 0
-	IL_16b7:  conv.u 
-	IL_16b8:  newarr [mscorlib]System.Type
-	IL_16bd:  stsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
-	IL_16c2:  ldloc 79
+	IL_16aa:  nop 
+	IL_16ab:  nop 
+	IL_16ac:  call class [mscorlib]System.Type class dylan.NET.Tokenizer.CodeGen.Helpers::CommitEvalTTok(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)
+	IL_16b1:  stloc 81
 
-	IL_16c6:  nop 
-	IL_16c7:  nop 
-	IL_16c8:  ldc.i4 0
-	IL_16cd:  beq IL_16d7
+	IL_16b5:  nop 
+	IL_16b6:  nop 
+	IL_16b7:  ldc.i4 0
+	IL_16bc:  conv.u 
+	IL_16bd:  newarr [mscorlib]System.Type
+	IL_16c2:  stsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
+	IL_16c7:  ldloc 79
 
-	IL_16d2:  br IL_16dc
+	IL_16cb:  nop 
+	IL_16cc:  nop 
+	IL_16cd:  ldc.i4 0
+	IL_16d2:  beq IL_16dc
 
-	IL_16d7:  br IL_16ec
+	IL_16d7:  br IL_16e1
 
-	IL_16dc:  ldloc 78
+	IL_16dc:  br IL_16f1
 
-	IL_16e0:  nop 
-	IL_16e1:  nop 
-	IL_16e2:  call void class dylan.NET.Tokenizer.CodeGen.Helpers::ProcessParams(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[])
-	IL_16e7:  br IL_16ec
+	IL_16e1:  ldloc 78
 
-	IL_16ec:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB
-	IL_16f1:  stloc 82
+	IL_16e5:  nop 
+	IL_16e6:  nop 
+	IL_16e7:  call void class dylan.NET.Tokenizer.CodeGen.Helpers::ProcessParams(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[])
+	IL_16ec:  br IL_16f1
 
-	IL_16f5:  nop 
-	IL_16f6:  nop 
-	IL_16f7:  ldloc 77
+	IL_16f1:  ldsfld class [mscorlib]System.Reflection.Emit.TypeBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnTypB
+	IL_16f6:  stloc 82
 
+	IL_16fa:  nop 
 	IL_16fb:  nop 
-	IL_16fc:  nop 
-	IL_16fd:  ldstr "^ctor\\d*$"
-	IL_1702:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_1707:  stloc 83
+	IL_16fc:  ldloc 77
 
-	IL_170b:  nop 
-	IL_170c:  nop 
-	IL_170d:  ldloc 83
+	IL_1700:  nop 
+	IL_1701:  nop 
+	IL_1702:  ldstr "^ctor\\d*$"
+	IL_1707:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_170c:  stloc 83
 
+	IL_1710:  nop 
 	IL_1711:  nop 
-	IL_1712:  nop 
-	IL_1713:  stloc 1
+	IL_1712:  ldloc 83
 
+	IL_1716:  nop 
 	IL_1717:  nop 
-	IL_1718:  nop 
-	IL_1719:  ldloc 77
+	IL_1718:  stloc 1
 
+	IL_171c:  nop 
 	IL_171d:  nop 
-	IL_171e:  nop 
-	IL_171f:  ldsfld string [dnr]dylan.NET.Reflection.AsmFactory::CurnTypName
-	IL_1724:  call int32 string::Compare(string, string)
-	IL_1729:  stloc 47
+	IL_171e:  ldloc 77
 
-	IL_172d:  nop 
-	IL_172e:  nop 
-	IL_172f:  ldloc 47
+	IL_1722:  nop 
+	IL_1723:  nop 
+	IL_1724:  ldsfld string [dnr]dylan.NET.Reflection.AsmFactory::CurnTypName
+	IL_1729:  call int32 string::Compare(string, string)
+	IL_172e:  stloc 47
 
+	IL_1732:  nop 
 	IL_1733:  nop 
-	IL_1734:  nop 
-	IL_1735:  ldc.i4 0
-	IL_173a:  beq IL_1744
+	IL_1734:  ldloc 47
 
-	IL_173f:  br IL_1754
+	IL_1738:  nop 
+	IL_1739:  nop 
+	IL_173a:  ldc.i4 0
+	IL_173f:  beq IL_1749
 
-	IL_1744:  ldc.i4 1
-	IL_1749:  stloc 83
+	IL_1744:  br IL_1759
 
-	IL_174d:  nop 
-	IL_174e:  nop 
-	IL_174f:  br IL_1759
+	IL_1749:  ldc.i4 1
+	IL_174e:  stloc 83
 
-	IL_1754:  br IL_1759
+	IL_1752:  nop 
+	IL_1753:  nop 
+	IL_1754:  br IL_175e
 
-	IL_1759:  ldloc 1
+	IL_1759:  br IL_175e
 
-	IL_175d:  nop 
-	IL_175e:  nop 
-	IL_175f:  ldloc 83
+	IL_175e:  ldloc 1
 
+	IL_1762:  nop 
 	IL_1763:  nop 
-	IL_1764:  nop 
-	IL_1765:  or 
-	IL_1766:  stloc 83
+	IL_1764:  ldloc 83
 
-	IL_176a:  nop 
-	IL_176b:  nop 
-	IL_176c:  ldloc 83
+	IL_1768:  nop 
+	IL_1769:  nop 
+	IL_176a:  or 
+	IL_176b:  stloc 83
 
+	IL_176f:  nop 
 	IL_1770:  nop 
-	IL_1771:  nop 
-	IL_1772:  ldc.i4 0
-	IL_1777:  beq IL_1781
+	IL_1771:  ldloc 83
 
-	IL_177c:  br IL_181b
+	IL_1775:  nop 
+	IL_1776:  nop 
+	IL_1777:  ldc.i4 0
+	IL_177c:  beq IL_1786
 
-	IL_1781:  ldloc 82
+	IL_1781:  br IL_1820
 
-	IL_1785:  nop 
-	IL_1786:  nop 
-	IL_1787:  ldloc 77
+	IL_1786:  ldloc 82
 
+	IL_178a:  nop 
 	IL_178b:  nop 
-	IL_178c:  nop 
-	IL_178d:  ldloc 75
+	IL_178c:  ldloc 77
 
+	IL_1790:  nop 
 	IL_1791:  nop 
-	IL_1792:  nop 
-	IL_1793:  ldloc 81
+	IL_1792:  ldloc 75
 
+	IL_1796:  nop 
 	IL_1797:  nop 
-	IL_1798:  nop 
-	IL_1799:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
-	IL_179e:  callvirt instance class [mscorlib]System.Reflection.Emit.MethodBuilder class [mscorlib]System.Reflection.Emit.TypeBuilder::DefineMethod(string, valuetype [mscorlib]System.Reflection.MethodAttributes, class [mscorlib]System.Type, class [mscorlib]System.Type[])
-	IL_17a3:  stsfld class [mscorlib]System.Reflection.Emit.MethodBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnMetB
-	IL_17a8:  call void class [dnr]dylan.NET.Reflection.AsmFactory::InitMtd()
-	IL_17ad:  ldstr "\tAdding Method: "
-	IL_17b2:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
-	IL_17b7:  ldloc 77
+	IL_1798:  ldloc 81
 
-	IL_17bb:  nop 
-	IL_17bc:  nop 
-	IL_17bd:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
-	IL_17c2:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
-	IL_17c7:  ldc.i4 0
-	IL_17cc:  beq IL_17d6
+	IL_179c:  nop 
+	IL_179d:  nop 
+	IL_179e:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
+	IL_17a3:  callvirt instance class [mscorlib]System.Reflection.Emit.MethodBuilder class [mscorlib]System.Reflection.Emit.TypeBuilder::DefineMethod(string, valuetype [mscorlib]System.Reflection.MethodAttributes, class [mscorlib]System.Type, class [mscorlib]System.Type[])
+	IL_17a8:  stsfld class [mscorlib]System.Reflection.Emit.MethodBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnMetB
+	IL_17ad:  call void class [dnr]dylan.NET.Reflection.AsmFactory::InitMtd()
+	IL_17b2:  ldstr "\tAdding Method: "
+	IL_17b7:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
+	IL_17bc:  ldloc 77
 
-	IL_17d1:  br IL_17f6
+	IL_17c0:  nop 
+	IL_17c1:  nop 
+	IL_17c2:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	IL_17c7:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
+	IL_17cc:  ldc.i4 0
+	IL_17d1:  beq IL_17db
 
-	IL_17d6:  ldloc 77
+	IL_17d6:  br IL_17fb
 
-	IL_17da:  nop 
-	IL_17db:  nop 
-	IL_17dc:  ldloc 81
+	IL_17db:  ldloc 77
 
+	IL_17df:  nop 
 	IL_17e0:  nop 
-	IL_17e1:  nop 
-	IL_17e2:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
-	IL_17e7:  ldsfld class [mscorlib]System.Reflection.Emit.MethodBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnMetB
-	IL_17ec:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddMet(string, class [mscorlib]System.Type, class [mscorlib]System.Type[], class [mscorlib]System.Reflection.Emit.MethodBuilder)
-	IL_17f1:  br IL_1816
+	IL_17e1:  ldloc 81
 
-	IL_17f6:  ldloc 77
+	IL_17e5:  nop 
+	IL_17e6:  nop 
+	IL_17e7:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
+	IL_17ec:  ldsfld class [mscorlib]System.Reflection.Emit.MethodBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnMetB
+	IL_17f1:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddMet(string, class [mscorlib]System.Type, class [mscorlib]System.Type[], class [mscorlib]System.Reflection.Emit.MethodBuilder)
+	IL_17f6:  br IL_181b
 
-	IL_17fa:  nop 
-	IL_17fb:  nop 
-	IL_17fc:  ldloc 81
+	IL_17fb:  ldloc 77
 
+	IL_17ff:  nop 
 	IL_1800:  nop 
-	IL_1801:  nop 
-	IL_1802:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
-	IL_1807:  ldsfld class [mscorlib]System.Reflection.Emit.MethodBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnMetB
-	IL_180c:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddNestedMet(string, class [mscorlib]System.Type, class [mscorlib]System.Type[], class [mscorlib]System.Reflection.Emit.MethodBuilder)
-	IL_1811:  br IL_1816
+	IL_1801:  ldloc 81
 
-	IL_1816:  br IL_18a2
+	IL_1805:  nop 
+	IL_1806:  nop 
+	IL_1807:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
+	IL_180c:  ldsfld class [mscorlib]System.Reflection.Emit.MethodBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnMetB
+	IL_1811:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddNestedMet(string, class [mscorlib]System.Type, class [mscorlib]System.Type[], class [mscorlib]System.Reflection.Emit.MethodBuilder)
+	IL_1816:  br IL_181b
 
-	IL_181b:  ldc.i4 1
-	IL_1820:  stloc 84
+	IL_181b:  br IL_18a7
 
-	IL_1824:  nop 
-	IL_1825:  nop 
-	IL_1826:  ldloc 82
+	IL_1820:  ldc.i4 1
+	IL_1825:  stloc 84
 
+	IL_1829:  nop 
 	IL_182a:  nop 
-	IL_182b:  nop 
-	IL_182c:  ldloc 75
+	IL_182b:  ldloc 82
 
+	IL_182f:  nop 
 	IL_1830:  nop 
-	IL_1831:  nop 
-	IL_1832:  ldloc 84
+	IL_1831:  ldloc 75
 
+	IL_1835:  nop 
 	IL_1836:  nop 
-	IL_1837:  nop 
-	IL_1838:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
-	IL_183d:  callvirt instance class [mscorlib]System.Reflection.Emit.ConstructorBuilder class [mscorlib]System.Reflection.Emit.TypeBuilder::DefineConstructor(valuetype [mscorlib]System.Reflection.MethodAttributes, valuetype [mscorlib]System.Reflection.CallingConventions, class [mscorlib]System.Type[])
-	IL_1842:  stsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnConB
-	IL_1847:  call void class [dnr]dylan.NET.Reflection.AsmFactory::InitConstr()
-	IL_184c:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
-	IL_1851:  ldc.i4 0
-	IL_1856:  beq IL_1860
+	IL_1837:  ldloc 84
 
-	IL_185b:  br IL_1874
+	IL_183b:  nop 
+	IL_183c:  nop 
+	IL_183d:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
+	IL_1842:  callvirt instance class [mscorlib]System.Reflection.Emit.ConstructorBuilder class [mscorlib]System.Reflection.Emit.TypeBuilder::DefineConstructor(valuetype [mscorlib]System.Reflection.MethodAttributes, valuetype [mscorlib]System.Reflection.CallingConventions, class [mscorlib]System.Type[])
+	IL_1847:  stsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnConB
+	IL_184c:  call void class [dnr]dylan.NET.Reflection.AsmFactory::InitConstr()
+	IL_1851:  ldsfld bool [dnr]dylan.NET.Reflection.AsmFactory::isNested
+	IL_1856:  ldc.i4 0
+	IL_185b:  beq IL_1865
 
-	IL_1860:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
-	IL_1865:  ldsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnConB
-	IL_186a:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddCtor(class [mscorlib]System.Type[], class [mscorlib]System.Reflection.Emit.ConstructorBuilder)
-	IL_186f:  br IL_1888
+	IL_1860:  br IL_1879
 
-	IL_1874:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
-	IL_1879:  ldsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnConB
-	IL_187e:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddNestedCtor(class [mscorlib]System.Type[], class [mscorlib]System.Reflection.Emit.ConstructorBuilder)
-	IL_1883:  br IL_1888
+	IL_1865:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
+	IL_186a:  ldsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnConB
+	IL_186f:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddCtor(class [mscorlib]System.Type[], class [mscorlib]System.Reflection.Emit.ConstructorBuilder)
+	IL_1874:  br IL_188d
 
-	IL_1888:  ldstr "\tAdding Constructor: "
-	IL_188d:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
-	IL_1892:  ldloc 77
+	IL_1879:  ldsfld class [mscorlib]System.Type[] [dnr]dylan.NET.Reflection.AsmFactory::TypArr
+	IL_187e:  ldsfld class [mscorlib]System.Reflection.Emit.ConstructorBuilder [dnr]dylan.NET.Reflection.AsmFactory::CurnConB
+	IL_1883:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddNestedCtor(class [mscorlib]System.Type[], class [mscorlib]System.Reflection.Emit.ConstructorBuilder)
+	IL_1888:  br IL_188d
 
-	IL_1896:  nop 
-	IL_1897:  nop 
-	IL_1898:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
-	IL_189d:  br IL_18a2
+	IL_188d:  ldstr "\tAdding Constructor: "
+	IL_1892:  call void class [dnu]dylan.NET.Utils.StreamUtils::Write(string)
+	IL_1897:  ldloc 77
 
-	IL_18a2:  ldc.i4 1
-	IL_18a7:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::InMethodFlg
-	IL_18ac:  ldloc 77
+	IL_189b:  nop 
+	IL_189c:  nop 
+	IL_189d:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
+	IL_18a2:  br IL_18a7
 
-	IL_18b0:  nop 
-	IL_18b1:  nop 
-	IL_18b2:  stsfld string [dnr]dylan.NET.Reflection.AsmFactory::CurnMetName
-	IL_18b7:  ldloc 79
+	IL_18a7:  ldc.i4 1
+	IL_18ac:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::InMethodFlg
+	IL_18b1:  ldloc 77
 
-	IL_18bb:  nop 
-	IL_18bc:  nop 
-	IL_18bd:  ldc.i4 0
-	IL_18c2:  beq IL_18cc
+	IL_18b5:  nop 
+	IL_18b6:  nop 
+	IL_18b7:  stsfld string [dnr]dylan.NET.Reflection.AsmFactory::CurnMetName
+	IL_18bc:  ldloc 79
 
-	IL_18c7:  br IL_18d1
+	IL_18c0:  nop 
+	IL_18c1:  nop 
+	IL_18c2:  ldc.i4 0
+	IL_18c7:  beq IL_18d1
 
-	IL_18cc:  br IL_190b
+	IL_18cc:  br IL_18d6
 
-	IL_18d1:  ldloc 83
+	IL_18d1:  br IL_1910
 
-	IL_18d5:  nop 
-	IL_18d6:  nop 
-	IL_18d7:  ldc.i4 0
-	IL_18dc:  beq IL_18e6
+	IL_18d6:  ldloc 83
 
-	IL_18e1:  br IL_18f6
+	IL_18da:  nop 
+	IL_18db:  nop 
+	IL_18dc:  ldc.i4 0
+	IL_18e1:  beq IL_18eb
 
-	IL_18e6:  ldloc 78
+	IL_18e6:  br IL_18fb
 
-	IL_18ea:  nop 
-	IL_18eb:  nop 
-	IL_18ec:  call void class dylan.NET.Tokenizer.CodeGen.Helpers::PostProcessParams(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[])
-	IL_18f1:  br IL_1906
+	IL_18eb:  ldloc 78
 
-	IL_18f6:  ldloc 78
+	IL_18ef:  nop 
+	IL_18f0:  nop 
+	IL_18f1:  call void class dylan.NET.Tokenizer.CodeGen.Helpers::PostProcessParams(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[])
+	IL_18f6:  br IL_190b
 
-	IL_18fa:  nop 
-	IL_18fb:  nop 
-	IL_18fc:  call void class dylan.NET.Tokenizer.CodeGen.Helpers::PostProcessParamsConstr(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[])
-	IL_1901:  br IL_1906
+	IL_18fb:  ldloc 78
 
+	IL_18ff:  nop 
+	IL_1900:  nop 
+	IL_1901:  call void class dylan.NET.Tokenizer.CodeGen.Helpers::PostProcessParamsConstr(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr[])
 	IL_1906:  br IL_190b
 
-	IL_190b:  br IL_247e
+	IL_190b:  br IL_1910
 
-	IL_1910:  br IL_191a
+	IL_1910:  br IL_292a
 
-	IL_1915:  br IL_191a
+	IL_1915:  br IL_191f
 
-	IL_191a:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.EndMethodStmt
-	IL_191f:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_1924:  stloc 0
+	IL_191a:  br IL_191f
 
-	IL_1928:  nop 
-	IL_1929:  nop 
-	IL_192a:  ldloc 0
+	IL_191f:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.EndMethodStmt
+	IL_1924:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1929:  stloc 0
 
+	IL_192d:  nop 
 	IL_192e:  nop 
-	IL_192f:  nop 
-	IL_1930:  ldarg 1
+	IL_192f:  ldloc 0
 
+	IL_1933:  nop 
 	IL_1934:  nop 
-	IL_1935:  nop 
-	IL_1936:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_193b:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_1940:  stloc 1
+	IL_1935:  ldarg 1
 
-	IL_1944:  nop 
-	IL_1945:  nop 
-	IL_1946:  ldloc 1
+	IL_1939:  nop 
+	IL_193a:  nop 
+	IL_193b:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_1940:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1945:  stloc 1
 
+	IL_1949:  nop 
 	IL_194a:  nop 
-	IL_194b:  nop 
-	IL_194c:  ldc.i4 1
-	IL_1951:  beq IL_195b
+	IL_194b:  ldloc 1
 
-	IL_1956:  br IL_19f7
+	IL_194f:  nop 
+	IL_1950:  nop 
+	IL_1951:  ldc.i4 1
+	IL_1956:  beq IL_1960
 
-	IL_195b:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitRet()
-	IL_1960:  ldc.i4 0
-	IL_1965:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::InMethodFlg
-	IL_196a:  ldsfld class [mscorlib]System.Reflection.Emit.AssemblyBuilder [dnr]dylan.NET.Reflection.AsmFactory::AsmB
-	IL_196f:  stloc 27
+	IL_195b:  br IL_19fc
 
-	IL_1973:  nop 
-	IL_1974:  nop 
-	IL_1975:  ldsfld string [dnr]dylan.NET.Reflection.AsmFactory::CurnMetName
-	IL_197a:  ldstr "main"
-	IL_197f:  call int32 string::Compare(string, string)
-	IL_1984:  stloc 85
+	IL_1960:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitRet()
+	IL_1965:  ldc.i4 0
+	IL_196a:  stsfld bool [dnr]dylan.NET.Reflection.AsmFactory::InMethodFlg
+	IL_196f:  ldsfld class [mscorlib]System.Reflection.Emit.AssemblyBuilder [dnr]dylan.NET.Reflection.AsmFactory::AsmB
+	IL_1974:  stloc 27
 
-	IL_1988:  nop 
-	IL_1989:  nop 
-	IL_198a:  ldsfld string [dnr]dylan.NET.Reflection.AsmFactory::AsmMode
-	IL_198f:  ldstr "exe"
-	IL_1994:  call int32 string::Compare(string, string)
-	IL_1999:  stloc 86
+	IL_1978:  nop 
+	IL_1979:  nop 
+	IL_197a:  ldsfld string [dnr]dylan.NET.Reflection.AsmFactory::CurnMetName
+	IL_197f:  ldstr "main"
+	IL_1984:  call int32 string::Compare(string, string)
+	IL_1989:  stloc 85
 
-	IL_199d:  nop 
-	IL_199e:  nop 
-	IL_199f:  ldloc 85
+	IL_198d:  nop 
+	IL_198e:  nop 
+	IL_198f:  ldsfld string [dnr]dylan.NET.Reflection.AsmFactory::AsmMode
+	IL_1994:  ldstr "exe"
+	IL_1999:  call int32 string::Compare(string, string)
+	IL_199e:  stloc 86
 
+	IL_19a2:  nop 
 	IL_19a3:  nop 
-	IL_19a4:  nop 
-	IL_19a5:  ldc.i4 0
-	IL_19aa:  beq IL_19b4
+	IL_19a4:  ldloc 85
 
-	IL_19af:  br IL_19e8
+	IL_19a8:  nop 
+	IL_19a9:  nop 
+	IL_19aa:  ldc.i4 0
+	IL_19af:  beq IL_19b9
 
-	IL_19b4:  ldloc 86
+	IL_19b4:  br IL_19ed
 
-	IL_19b8:  nop 
-	IL_19b9:  nop 
-	IL_19ba:  ldc.i4 0
-	IL_19bf:  beq IL_19c9
+	IL_19b9:  ldloc 86
 
-	IL_19c4:  br IL_19de
+	IL_19bd:  nop 
+	IL_19be:  nop 
+	IL_19bf:  ldc.i4 0
+	IL_19c4:  beq IL_19ce
 
-	IL_19c9:  ldloc 27
+	IL_19c9:  br IL_19e3
 
-	IL_19cd:  nop 
-	IL_19ce:  nop 
-	IL_19cf:  ldsfld class [mscorlib]System.Reflection.Emit.MethodBuilder [dnr]dylan.NET.Reflection.ILEmitter::Met
-	IL_19d4:  callvirt instance void class [mscorlib]System.Reflection.Emit.AssemblyBuilder::SetEntryPoint(class [mscorlib]System.Reflection.MethodInfo)
-	IL_19d9:  br IL_19e3
+	IL_19ce:  ldloc 27
 
-	IL_19de:  br IL_19e3
+	IL_19d2:  nop 
+	IL_19d3:  nop 
+	IL_19d4:  ldsfld class [mscorlib]System.Reflection.Emit.MethodBuilder [dnr]dylan.NET.Reflection.ILEmitter::Met
+	IL_19d9:  callvirt instance void class [mscorlib]System.Reflection.Emit.AssemblyBuilder::SetEntryPoint(class [mscorlib]System.Reflection.MethodInfo)
+	IL_19de:  br IL_19e8
 
-	IL_19e3:  br IL_19ed
+	IL_19e3:  br IL_19e8
 
-	IL_19e8:  br IL_19ed
+	IL_19e8:  br IL_19f2
 
-	IL_19ed:  br IL_247e
+	IL_19ed:  br IL_19f2
 
-	IL_19f2:  br IL_19fc
+	IL_19f2:  br IL_292a
 
-	IL_19f7:  br IL_19fc
+	IL_19f7:  br IL_1a01
 
-	IL_19fc:  ldnull 
-	IL_19fd:  stloc 89
+	IL_19fc:  br IL_1a01
 
-	IL_1a01:  nop 
-	IL_1a02:  nop 
-	IL_1a03:  ldnull 
-	IL_1a04:  stloc 90
+	IL_1a01:  ldnull 
+	IL_1a02:  stloc 89
 
-	IL_1a08:  nop 
-	IL_1a09:  nop 
-	IL_1a0a:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ReturnStmt
-	IL_1a0f:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_1a14:  stloc 0
+	IL_1a06:  nop 
+	IL_1a07:  nop 
+	IL_1a08:  ldnull 
+	IL_1a09:  stloc 90
 
-	IL_1a18:  nop 
-	IL_1a19:  nop 
-	IL_1a1a:  ldloc 0
+	IL_1a0d:  nop 
+	IL_1a0e:  nop 
+	IL_1a0f:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ReturnStmt
+	IL_1a14:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1a19:  stloc 0
 
+	IL_1a1d:  nop 
 	IL_1a1e:  nop 
-	IL_1a1f:  nop 
-	IL_1a20:  ldarg 1
+	IL_1a1f:  ldloc 0
 
+	IL_1a23:  nop 
 	IL_1a24:  nop 
-	IL_1a25:  nop 
-	IL_1a26:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_1a2b:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_1a30:  stloc 1
+	IL_1a25:  ldarg 1
 
-	IL_1a34:  nop 
-	IL_1a35:  nop 
-	IL_1a36:  ldloc 1
+	IL_1a29:  nop 
+	IL_1a2a:  nop 
+	IL_1a2b:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_1a30:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1a35:  stloc 1
 
+	IL_1a39:  nop 
 	IL_1a3a:  nop 
-	IL_1a3b:  nop 
-	IL_1a3c:  ldc.i4 1
-	IL_1a41:  beq IL_1a4b
+	IL_1a3b:  ldloc 1
 
-	IL_1a46:  br IL_1aa2
+	IL_1a3f:  nop 
+	IL_1a40:  nop 
+	IL_1a41:  ldc.i4 1
+	IL_1a46:  beq IL_1a50
 
-	IL_1a4b:  ldarg 1
+	IL_1a4b:  br IL_1aa7
 
-	IL_1a4f:  nop 
-	IL_1a50:  nop 
-	IL_1a51:  stloc 91
+	IL_1a50:  ldarg 1
 
+	IL_1a54:  nop 
 	IL_1a55:  nop 
-	IL_1a56:  nop 
-	IL_1a57:  ldloc 91
+	IL_1a56:  stloc 91
 
+	IL_1a5a:  nop 
 	IL_1a5b:  nop 
-	IL_1a5c:  nop 
-	IL_1a5d:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ReturnStmt::RExp
-	IL_1a62:  ldnull 
-	IL_1a63:  beq IL_1a93
+	IL_1a5c:  ldloc 91
 
-	IL_1a68:  br IL_1a6d
+	IL_1a60:  nop 
+	IL_1a61:  nop 
+	IL_1a62:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ReturnStmt::RExp
+	IL_1a67:  ldnull 
+	IL_1a68:  beq IL_1a98
 
-	IL_1a6d:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
-	IL_1a72:  stloc 90
+	IL_1a6d:  br IL_1a72
 
-	IL_1a76:  nop 
-	IL_1a77:  nop 
-	IL_1a78:  ldloc 90
+	IL_1a72:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
+	IL_1a77:  stloc 90
 
+	IL_1a7b:  nop 
 	IL_1a7c:  nop 
-	IL_1a7d:  nop 
-	IL_1a7e:  ldloc 91
+	IL_1a7d:  ldloc 90
 
+	IL_1a81:  nop 
 	IL_1a82:  nop 
-	IL_1a83:  nop 
-	IL_1a84:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ReturnStmt::RExp
-	IL_1a89:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
-	IL_1a8e:  br IL_1a98
+	IL_1a83:  ldloc 91
 
-	IL_1a93:  br IL_1a98
+	IL_1a87:  nop 
+	IL_1a88:  nop 
+	IL_1a89:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ReturnStmt::RExp
+	IL_1a8e:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_1a93:  br IL_1a9d
 
-	IL_1a98:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitRet()
-	IL_1a9d:  br IL_1aa7
+	IL_1a98:  br IL_1a9d
 
-	IL_1aa2:  br IL_1aa7
+	IL_1a9d:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitRet()
+	IL_1aa2:  br IL_1aac
 
-	IL_1aa7:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarStmt
-	IL_1aac:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_1ab1:  stloc 0
+	IL_1aa7:  br IL_1aac
 
-	IL_1ab5:  nop 
-	IL_1ab6:  nop 
-	IL_1ab7:  ldloc 0
+	IL_1aac:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarStmt
+	IL_1ab1:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1ab6:  stloc 0
 
+	IL_1aba:  nop 
 	IL_1abb:  nop 
-	IL_1abc:  nop 
-	IL_1abd:  ldarg 1
+	IL_1abc:  ldloc 0
 
+	IL_1ac0:  nop 
 	IL_1ac1:  nop 
-	IL_1ac2:  nop 
-	IL_1ac3:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_1ac8:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_1acd:  stloc 1
+	IL_1ac2:  ldarg 1
 
-	IL_1ad1:  nop 
-	IL_1ad2:  nop 
-	IL_1ad3:  ldloc 1
+	IL_1ac6:  nop 
+	IL_1ac7:  nop 
+	IL_1ac8:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_1acd:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1ad2:  stloc 1
 
+	IL_1ad6:  nop 
 	IL_1ad7:  nop 
-	IL_1ad8:  nop 
-	IL_1ad9:  ldc.i4 1
-	IL_1ade:  beq IL_1ae8
+	IL_1ad8:  ldloc 1
 
-	IL_1ae3:  br IL_1bc7
+	IL_1adc:  nop 
+	IL_1add:  nop 
+	IL_1ade:  ldc.i4 1
+	IL_1ae3:  beq IL_1aed
 
-	IL_1ae8:  ldarg 1
+	IL_1ae8:  br IL_1bcc
 
-	IL_1aec:  nop 
-	IL_1aed:  nop 
-	IL_1aee:  stloc 92
+	IL_1aed:  ldarg 1
 
+	IL_1af1:  nop 
 	IL_1af2:  nop 
-	IL_1af3:  nop 
-	IL_1af4:  ldloc 92
+	IL_1af3:  stloc 92
 
+	IL_1af7:  nop 
 	IL_1af8:  nop 
-	IL_1af9:  nop 
-	IL_1afa:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarStmt::VarName
-	IL_1aff:  stloc 87
+	IL_1af9:  ldloc 92
 
-	IL_1b03:  nop 
-	IL_1b04:  nop 
-	IL_1b05:  ldloc 92
+	IL_1afd:  nop 
+	IL_1afe:  nop 
+	IL_1aff:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarStmt::VarName
+	IL_1b04:  stloc 87
 
+	IL_1b08:  nop 
 	IL_1b09:  nop 
-	IL_1b0a:  nop 
-	IL_1b0b:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarStmt::VarTyp
-	IL_1b10:  stloc 88
+	IL_1b0a:  ldloc 92
 
-	IL_1b14:  nop 
-	IL_1b15:  nop 
-	IL_1b16:  ldloc 88
+	IL_1b0e:  nop 
+	IL_1b0f:  nop 
+	IL_1b10:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarStmt::VarTyp
+	IL_1b15:  stloc 88
 
+	IL_1b19:  nop 
 	IL_1b1a:  nop 
-	IL_1b1b:  nop 
-	IL_1b1c:  call class [mscorlib]System.Type class dylan.NET.Tokenizer.CodeGen.Helpers::CommitEvalTTok(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)
-	IL_1b21:  stloc 89
+	IL_1b1b:  ldloc 88
 
-	IL_1b25:  nop 
-	IL_1b26:  nop 
-	IL_1b27:  ldloc 89
+	IL_1b1f:  nop 
+	IL_1b20:  nop 
+	IL_1b21:  call class [mscorlib]System.Type class dylan.NET.Tokenizer.CodeGen.Helpers::CommitEvalTTok(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)
+	IL_1b26:  stloc 89
 
+	IL_1b2a:  nop 
 	IL_1b2b:  nop 
-	IL_1b2c:  nop 
-	IL_1b2d:  ldnull 
-	IL_1b2e:  beq IL_1b38
+	IL_1b2c:  ldloc 89
 
-	IL_1b33:  br IL_1b72
+	IL_1b30:  nop 
+	IL_1b31:  nop 
+	IL_1b32:  ldnull 
+	IL_1b33:  beq IL_1b3d
 
-	IL_1b38:  ldstr "Class '"
-	IL_1b3d:  ldloc 88
+	IL_1b38:  br IL_1b77
 
-	IL_1b41:  nop 
-	IL_1b42:  nop 
-	IL_1b43:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1b48:  ldstr "' is not defined."
-	IL_1b4d:  call string string::Concat(string, string, string)
-	IL_1b52:  stloc 3
+	IL_1b3d:  ldstr "Class '"
+	IL_1b42:  ldloc 88
 
-	IL_1b56:  nop 
-	IL_1b57:  nop 
-	IL_1b58:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LineNr
-	IL_1b5d:  ldsfld string [dnr]dylan.NET.Reflection.ILEmitter::CurSrcFile
-	IL_1b62:  ldloc 3
+	IL_1b46:  nop 
+	IL_1b47:  nop 
+	IL_1b48:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1b4d:  ldstr "' is not defined."
+	IL_1b52:  call string string::Concat(string, string, string)
+	IL_1b57:  stloc 3
 
-	IL_1b66:  nop 
-	IL_1b67:  nop 
-	IL_1b68:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteError(int32, string, string)
-	IL_1b6d:  br IL_1b77
+	IL_1b5b:  nop 
+	IL_1b5c:  nop 
+	IL_1b5d:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LineNr
+	IL_1b62:  ldsfld string [dnr]dylan.NET.Reflection.ILEmitter::CurSrcFile
+	IL_1b67:  ldloc 3
 
-	IL_1b72:  br IL_1b77
+	IL_1b6b:  nop 
+	IL_1b6c:  nop 
+	IL_1b6d:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteError(int32, string, string)
+	IL_1b72:  br IL_1b7c
 
-	IL_1b77:  ldloc 87
+	IL_1b77:  br IL_1b7c
 
-	IL_1b7b:  nop 
-	IL_1b7c:  nop 
-	IL_1b7d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1b82:  ldloc 89
+	IL_1b7c:  ldloc 87
 
-	IL_1b86:  nop 
-	IL_1b87:  nop 
-	IL_1b88:  call void class [dnr]dylan.NET.Reflection.ILEmitter::DeclVar(string, class [mscorlib]System.Type)
-	IL_1b8d:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
-	IL_1b92:  ldc.i4 1
-	IL_1b97:  add 
-	IL_1b98:  stsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
-	IL_1b9d:  ldloc 87
+	IL_1b80:  nop 
+	IL_1b81:  nop 
+	IL_1b82:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1b87:  ldloc 89
 
-	IL_1ba1:  nop 
-	IL_1ba2:  nop 
-	IL_1ba3:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1ba8:  ldc.i4 1
-	IL_1bad:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
-	IL_1bb2:  ldloc 89
+	IL_1b8b:  nop 
+	IL_1b8c:  nop 
+	IL_1b8d:  call void class [dnr]dylan.NET.Reflection.ILEmitter::DeclVar(string, class [mscorlib]System.Type)
+	IL_1b92:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
+	IL_1b97:  ldc.i4 1
+	IL_1b9c:  add 
+	IL_1b9d:  stsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
+	IL_1ba2:  ldloc 87
 
-	IL_1bb6:  nop 
-	IL_1bb7:  nop 
-	IL_1bb8:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddVar(string, bool, int32, class [mscorlib]System.Type)
-	IL_1bbd:  br IL_247e
+	IL_1ba6:  nop 
+	IL_1ba7:  nop 
+	IL_1ba8:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1bad:  ldc.i4 1
+	IL_1bb2:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
+	IL_1bb7:  ldloc 89
 
-	IL_1bc2:  br IL_1bcc
+	IL_1bbb:  nop 
+	IL_1bbc:  nop 
+	IL_1bbd:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddVar(string, bool, int32, class [mscorlib]System.Type)
+	IL_1bc2:  br IL_292a
 
-	IL_1bc7:  br IL_1bcc
+	IL_1bc7:  br IL_1bd1
 
-	IL_1bcc:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarAsgnStmt
-	IL_1bd1:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_1bd6:  stloc 0
+	IL_1bcc:  br IL_1bd1
 
-	IL_1bda:  nop 
-	IL_1bdb:  nop 
-	IL_1bdc:  ldloc 0
+	IL_1bd1:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarAsgnStmt
+	IL_1bd6:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1bdb:  stloc 0
 
+	IL_1bdf:  nop 
 	IL_1be0:  nop 
-	IL_1be1:  nop 
-	IL_1be2:  ldarg 1
+	IL_1be1:  ldloc 0
 
+	IL_1be5:  nop 
 	IL_1be6:  nop 
-	IL_1be7:  nop 
-	IL_1be8:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_1bed:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_1bf2:  stloc 1
+	IL_1be7:  ldarg 1
 
-	IL_1bf6:  nop 
-	IL_1bf7:  nop 
-	IL_1bf8:  ldloc 1
+	IL_1beb:  nop 
+	IL_1bec:  nop 
+	IL_1bed:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_1bf2:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1bf7:  stloc 1
 
+	IL_1bfb:  nop 
 	IL_1bfc:  nop 
-	IL_1bfd:  nop 
-	IL_1bfe:  ldc.i4 1
-	IL_1c03:  beq IL_1c0d
+	IL_1bfd:  ldloc 1
 
-	IL_1c08:  br IL_1d13
+	IL_1c01:  nop 
+	IL_1c02:  nop 
+	IL_1c03:  ldc.i4 1
+	IL_1c08:  beq IL_1c12
 
-	IL_1c0d:  ldarg 1
+	IL_1c0d:  br IL_1d18
 
-	IL_1c11:  nop 
-	IL_1c12:  nop 
-	IL_1c13:  stloc 93
+	IL_1c12:  ldarg 1
 
+	IL_1c16:  nop 
 	IL_1c17:  nop 
-	IL_1c18:  nop 
-	IL_1c19:  ldloc 93
+	IL_1c18:  stloc 93
 
+	IL_1c1c:  nop 
 	IL_1c1d:  nop 
-	IL_1c1e:  nop 
-	IL_1c1f:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarAsgnStmt::VarName
-	IL_1c24:  stloc 87
+	IL_1c1e:  ldloc 93
 
-	IL_1c28:  nop 
-	IL_1c29:  nop 
-	IL_1c2a:  ldloc 93
+	IL_1c22:  nop 
+	IL_1c23:  nop 
+	IL_1c24:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarAsgnStmt::VarName
+	IL_1c29:  stloc 87
 
+	IL_1c2d:  nop 
 	IL_1c2e:  nop 
-	IL_1c2f:  nop 
-	IL_1c30:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarAsgnStmt::VarTyp
-	IL_1c35:  stloc 88
+	IL_1c2f:  ldloc 93
 
-	IL_1c39:  nop 
-	IL_1c3a:  nop 
-	IL_1c3b:  ldloc 88
+	IL_1c33:  nop 
+	IL_1c34:  nop 
+	IL_1c35:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarAsgnStmt::VarTyp
+	IL_1c3a:  stloc 88
 
+	IL_1c3e:  nop 
 	IL_1c3f:  nop 
-	IL_1c40:  nop 
-	IL_1c41:  call class [mscorlib]System.Type class dylan.NET.Tokenizer.CodeGen.Helpers::CommitEvalTTok(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)
-	IL_1c46:  stloc 89
+	IL_1c40:  ldloc 88
 
-	IL_1c4a:  nop 
-	IL_1c4b:  nop 
-	IL_1c4c:  ldloc 89
+	IL_1c44:  nop 
+	IL_1c45:  nop 
+	IL_1c46:  call class [mscorlib]System.Type class dylan.NET.Tokenizer.CodeGen.Helpers::CommitEvalTTok(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)
+	IL_1c4b:  stloc 89
 
+	IL_1c4f:  nop 
 	IL_1c50:  nop 
-	IL_1c51:  nop 
-	IL_1c52:  ldnull 
-	IL_1c53:  beq IL_1c5d
+	IL_1c51:  ldloc 89
 
-	IL_1c58:  br IL_1c97
+	IL_1c55:  nop 
+	IL_1c56:  nop 
+	IL_1c57:  ldnull 
+	IL_1c58:  beq IL_1c62
 
-	IL_1c5d:  ldstr "Class '"
-	IL_1c62:  ldloc 88
+	IL_1c5d:  br IL_1c9c
 
-	IL_1c66:  nop 
-	IL_1c67:  nop 
-	IL_1c68:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1c6d:  ldstr "' is not defined."
-	IL_1c72:  call string string::Concat(string, string, string)
-	IL_1c77:  stloc 3
+	IL_1c62:  ldstr "Class '"
+	IL_1c67:  ldloc 88
 
-	IL_1c7b:  nop 
-	IL_1c7c:  nop 
-	IL_1c7d:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LineNr
-	IL_1c82:  ldsfld string [dnr]dylan.NET.Reflection.ILEmitter::CurSrcFile
-	IL_1c87:  ldloc 3
+	IL_1c6b:  nop 
+	IL_1c6c:  nop 
+	IL_1c6d:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1c72:  ldstr "' is not defined."
+	IL_1c77:  call string string::Concat(string, string, string)
+	IL_1c7c:  stloc 3
 
-	IL_1c8b:  nop 
-	IL_1c8c:  nop 
-	IL_1c8d:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteError(int32, string, string)
-	IL_1c92:  br IL_1c9c
+	IL_1c80:  nop 
+	IL_1c81:  nop 
+	IL_1c82:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LineNr
+	IL_1c87:  ldsfld string [dnr]dylan.NET.Reflection.ILEmitter::CurSrcFile
+	IL_1c8c:  ldloc 3
 
-	IL_1c97:  br IL_1c9c
+	IL_1c90:  nop 
+	IL_1c91:  nop 
+	IL_1c92:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteError(int32, string, string)
+	IL_1c97:  br IL_1ca1
 
-	IL_1c9c:  ldloc 87
+	IL_1c9c:  br IL_1ca1
 
-	IL_1ca0:  nop 
-	IL_1ca1:  nop 
-	IL_1ca2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1ca7:  ldloc 89
+	IL_1ca1:  ldloc 87
 
-	IL_1cab:  nop 
-	IL_1cac:  nop 
-	IL_1cad:  call void class [dnr]dylan.NET.Reflection.ILEmitter::DeclVar(string, class [mscorlib]System.Type)
-	IL_1cb2:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
-	IL_1cb7:  ldc.i4 1
-	IL_1cbc:  add 
-	IL_1cbd:  stsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
-	IL_1cc2:  ldloc 87
+	IL_1ca5:  nop 
+	IL_1ca6:  nop 
+	IL_1ca7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1cac:  ldloc 89
 
-	IL_1cc6:  nop 
-	IL_1cc7:  nop 
-	IL_1cc8:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1ccd:  ldc.i4 1
-	IL_1cd2:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
-	IL_1cd7:  ldloc 89
+	IL_1cb0:  nop 
+	IL_1cb1:  nop 
+	IL_1cb2:  call void class [dnr]dylan.NET.Reflection.ILEmitter::DeclVar(string, class [mscorlib]System.Type)
+	IL_1cb7:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
+	IL_1cbc:  ldc.i4 1
+	IL_1cc1:  add 
+	IL_1cc2:  stsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
+	IL_1cc7:  ldloc 87
 
-	IL_1cdb:  nop 
-	IL_1cdc:  nop 
-	IL_1cdd:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddVar(string, bool, int32, class [mscorlib]System.Type)
-	IL_1ce2:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
-	IL_1ce7:  stloc 90
+	IL_1ccb:  nop 
+	IL_1ccc:  nop 
+	IL_1ccd:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1cd2:  ldc.i4 1
+	IL_1cd7:  ldsfld int32 [dnr]dylan.NET.Reflection.ILEmitter::LocInd
+	IL_1cdc:  ldloc 89
 
-	IL_1ceb:  nop 
-	IL_1cec:  nop 
-	IL_1ced:  ldloc 90
+	IL_1ce0:  nop 
+	IL_1ce1:  nop 
+	IL_1ce2:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddVar(string, bool, int32, class [mscorlib]System.Type)
+	IL_1ce7:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
+	IL_1cec:  stloc 90
 
+	IL_1cf0:  nop 
 	IL_1cf1:  nop 
-	IL_1cf2:  nop 
-	IL_1cf3:  ldloc 87
+	IL_1cf2:  ldloc 90
 
+	IL_1cf6:  nop 
 	IL_1cf7:  nop 
-	IL_1cf8:  nop 
-	IL_1cf9:  ldloc 93
+	IL_1cf8:  ldloc 87
 
+	IL_1cfc:  nop 
 	IL_1cfd:  nop 
-	IL_1cfe:  nop 
-	IL_1cff:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarAsgnStmt::RExpr
-	IL_1d04:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::StoreEmit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token, class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
-	IL_1d09:  br IL_247e
+	IL_1cfe:  ldloc 93
 
-	IL_1d0e:  br IL_1d18
+	IL_1d02:  nop 
+	IL_1d03:  nop 
+	IL_1d04:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.VarAsgnStmt::RExpr
+	IL_1d09:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::StoreEmit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token, class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_1d0e:  br IL_292a
 
-	IL_1d13:  br IL_1d18
+	IL_1d13:  br IL_1d1d
 
-	IL_1d18:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.NSStmt
-	IL_1d1d:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_1d22:  stloc 0
+	IL_1d18:  br IL_1d1d
 
-	IL_1d26:  nop 
-	IL_1d27:  nop 
-	IL_1d28:  ldloc 0
+	IL_1d1d:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.NSStmt
+	IL_1d22:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1d27:  stloc 0
 
+	IL_1d2b:  nop 
 	IL_1d2c:  nop 
-	IL_1d2d:  nop 
-	IL_1d2e:  ldarg 1
+	IL_1d2d:  ldloc 0
 
+	IL_1d31:  nop 
 	IL_1d32:  nop 
-	IL_1d33:  nop 
-	IL_1d34:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_1d39:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_1d3e:  stloc 1
+	IL_1d33:  ldarg 1
 
-	IL_1d42:  nop 
-	IL_1d43:  nop 
-	IL_1d44:  ldloc 1
+	IL_1d37:  nop 
+	IL_1d38:  nop 
+	IL_1d39:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_1d3e:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1d43:  stloc 1
 
+	IL_1d47:  nop 
 	IL_1d48:  nop 
-	IL_1d49:  nop 
-	IL_1d4a:  ldc.i4 1
-	IL_1d4f:  beq IL_1d59
+	IL_1d49:  ldloc 1
 
-	IL_1d54:  br IL_1e65
+	IL_1d4d:  nop 
+	IL_1d4e:  nop 
+	IL_1d4f:  ldc.i4 1
+	IL_1d54:  beq IL_1d5e
 
-	IL_1d59:  ldarg 1
+	IL_1d59:  br IL_1e6a
 
-	IL_1d5d:  nop 
-	IL_1d5e:  nop 
-	IL_1d5f:  stloc 94
+	IL_1d5e:  ldarg 1
 
+	IL_1d62:  nop 
 	IL_1d63:  nop 
-	IL_1d64:  nop 
-	IL_1d65:  ldloc 94
+	IL_1d64:  stloc 94
 
+	IL_1d68:  nop 
 	IL_1d69:  nop 
-	IL_1d6a:  nop 
-	IL_1d6b:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.NSStmt::NS
-	IL_1d70:  stloc 95
+	IL_1d6a:  ldloc 94
 
-	IL_1d74:  nop 
-	IL_1d75:  nop 
-	IL_1d76:  ldstr "^"
-	IL_1d7b:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
-	IL_1d80:  ldstr "(.)*"
-	IL_1d85:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
-	IL_1d8a:  call string string::Concat(string, string, string, string)
-	IL_1d8f:  stloc 2
+	IL_1d6e:  nop 
+	IL_1d6f:  nop 
+	IL_1d70:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.NSStmt::NS
+	IL_1d75:  stloc 95
 
-	IL_1d93:  nop 
-	IL_1d94:  nop 
-	IL_1d95:  ldloc 2
+	IL_1d79:  nop 
+	IL_1d7a:  nop 
+	IL_1d7b:  ldstr "^"
+	IL_1d80:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
+	IL_1d85:  ldstr "(.)*"
+	IL_1d8a:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
+	IL_1d8f:  call string string::Concat(string, string, string, string)
+	IL_1d94:  stloc 2
 
+	IL_1d98:  nop 
 	IL_1d99:  nop 
-	IL_1d9a:  nop 
-	IL_1d9b:  ldstr "$"
-	IL_1da0:  call string string::Concat(string, string)
-	IL_1da5:  stloc 2
+	IL_1d9a:  ldloc 2
 
-	IL_1da9:  nop 
-	IL_1daa:  nop 
-	IL_1dab:  ldloc 95
+	IL_1d9e:  nop 
+	IL_1d9f:  nop 
+	IL_1da0:  ldstr "$"
+	IL_1da5:  call string string::Concat(string, string)
+	IL_1daa:  stloc 2
 
+	IL_1dae:  nop 
 	IL_1daf:  nop 
-	IL_1db0:  nop 
-	IL_1db1:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1db6:  ldloc 2
+	IL_1db0:  ldloc 95
 
-	IL_1dba:  nop 
-	IL_1dbb:  nop 
-	IL_1dbc:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
-	IL_1dc1:  stloc 6
+	IL_1db4:  nop 
+	IL_1db5:  nop 
+	IL_1db6:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1dbb:  ldloc 2
 
-	IL_1dc5:  nop 
-	IL_1dc6:  nop 
-	IL_1dc7:  ldloc 6
+	IL_1dbf:  nop 
+	IL_1dc0:  nop 
+	IL_1dc1:  call bool class [dnu]dylan.NET.Utils.ParseUtils::LikeOP(string, string)
+	IL_1dc6:  stloc 6
 
+	IL_1dca:  nop 
 	IL_1dcb:  nop 
-	IL_1dcc:  nop 
-	IL_1dcd:  ldc.i4 1
-	IL_1dd2:  beq IL_1ddc
+	IL_1dcc:  ldloc 6
 
-	IL_1dd7:  br IL_1e46
+	IL_1dd0:  nop 
+	IL_1dd1:  nop 
+	IL_1dd2:  ldc.i4 1
+	IL_1dd7:  beq IL_1de1
 
-	IL_1ddc:  ldloc 95
+	IL_1ddc:  br IL_1e4b
 
-	IL_1de0:  nop 
-	IL_1de1:  nop 
-	IL_1de2:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1de7:  stloc 2
+	IL_1de1:  ldloc 95
 
-	IL_1deb:  nop 
-	IL_1dec:  nop 
-	IL_1ded:  ldc.i4 1
-	IL_1df2:  conv.u 
-	IL_1df3:  newarr [mscorlib]System.Char
-	IL_1df8:  stloc 7
+	IL_1de5:  nop 
+	IL_1de6:  nop 
+	IL_1de7:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1dec:  stloc 2
 
-	IL_1dfc:  nop 
-	IL_1dfd:  nop 
-	IL_1dfe:  ldloc 7
+	IL_1df0:  nop 
+	IL_1df1:  nop 
+	IL_1df2:  ldc.i4 1
+	IL_1df7:  conv.u 
+	IL_1df8:  newarr [mscorlib]System.Char
+	IL_1dfd:  stloc 7
 
+	IL_1e01:  nop 
 	IL_1e02:  nop 
-	IL_1e03:  nop 
-	IL_1e04:  ldc.i4 0
-	IL_1e09:  conv.u 
-	IL_1e0a:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
-	IL_1e0f:  call char class [mscorlib]System.Convert::ToChar(string)
-	IL_1e14:  stelem [mscorlib]System.Char
-	IL_1e19:  ldloc 2
+	IL_1e03:  ldloc 7
 
-	IL_1e1d:  nop 
-	IL_1e1e:  nop 
-	IL_1e1f:  ldloc 7
+	IL_1e07:  nop 
+	IL_1e08:  nop 
+	IL_1e09:  ldc.i4 0
+	IL_1e0e:  conv.u 
+	IL_1e0f:  ldsfld string [dnu]dylan.NET.Utils.Constants::quot
+	IL_1e14:  call char class [mscorlib]System.Convert::ToChar(string)
+	IL_1e19:  stelem [mscorlib]System.Char
+	IL_1e1e:  ldloc 2
 
+	IL_1e22:  nop 
 	IL_1e23:  nop 
-	IL_1e24:  nop 
-	IL_1e25:  callvirt instance string string::Trim(char[])
-	IL_1e2a:  stloc 2
+	IL_1e24:  ldloc 7
 
-	IL_1e2e:  nop 
-	IL_1e2f:  nop 
-	IL_1e30:  ldloc 95
+	IL_1e28:  nop 
+	IL_1e29:  nop 
+	IL_1e2a:  callvirt instance string string::Trim(char[])
+	IL_1e2f:  stloc 2
 
+	IL_1e33:  nop 
 	IL_1e34:  nop 
-	IL_1e35:  nop 
-	IL_1e36:  ldloc 2
+	IL_1e35:  ldloc 95
 
+	IL_1e39:  nop 
 	IL_1e3a:  nop 
-	IL_1e3b:  nop 
-	IL_1e3c:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1e41:  br IL_1e4b
+	IL_1e3b:  ldloc 2
 
-	IL_1e46:  br IL_1e4b
+	IL_1e3f:  nop 
+	IL_1e40:  nop 
+	IL_1e41:  stfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1e46:  br IL_1e50
 
-	IL_1e4b:  ldloc 95
+	IL_1e4b:  br IL_1e50
 
-	IL_1e4f:  nop 
-	IL_1e50:  nop 
-	IL_1e51:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_1e56:  stsfld string [dnr]dylan.NET.Reflection.AsmFactory::CurnNS
-	IL_1e5b:  br IL_247e
+	IL_1e50:  ldloc 95
 
-	IL_1e60:  br IL_1e6a
+	IL_1e54:  nop 
+	IL_1e55:  nop 
+	IL_1e56:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_1e5b:  stsfld string [dnr]dylan.NET.Reflection.AsmFactory::CurnNS
+	IL_1e60:  br IL_292a
 
-	IL_1e65:  br IL_1e6a
+	IL_1e65:  br IL_1e6f
 
-	IL_1e6a:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.EndNSStmt
-	IL_1e6f:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_1e74:  stloc 0
+	IL_1e6a:  br IL_1e6f
 
-	IL_1e78:  nop 
-	IL_1e79:  nop 
-	IL_1e7a:  ldloc 0
+	IL_1e6f:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.EndNSStmt
+	IL_1e74:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1e79:  stloc 0
 
+	IL_1e7d:  nop 
 	IL_1e7e:  nop 
-	IL_1e7f:  nop 
-	IL_1e80:  ldarg 1
+	IL_1e7f:  ldloc 0
 
+	IL_1e83:  nop 
 	IL_1e84:  nop 
-	IL_1e85:  nop 
-	IL_1e86:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_1e8b:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_1e90:  stloc 1
+	IL_1e85:  ldarg 1
 
-	IL_1e94:  nop 
-	IL_1e95:  nop 
-	IL_1e96:  ldloc 1
+	IL_1e89:  nop 
+	IL_1e8a:  nop 
+	IL_1e8b:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_1e90:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1e95:  stloc 1
 
+	IL_1e99:  nop 
 	IL_1e9a:  nop 
-	IL_1e9b:  nop 
-	IL_1e9c:  ldc.i4 1
-	IL_1ea1:  beq IL_1eab
+	IL_1e9b:  ldloc 1
 
-	IL_1ea6:  br IL_1ebf
+	IL_1e9f:  nop 
+	IL_1ea0:  nop 
+	IL_1ea1:  ldc.i4 1
+	IL_1ea6:  beq IL_1eb0
 
-	IL_1eab:  ldsfld string [dnr]dylan.NET.Reflection.AsmFactory::DfltNS
-	IL_1eb0:  stsfld string [dnr]dylan.NET.Reflection.AsmFactory::CurnNS
-	IL_1eb5:  br IL_247e
+	IL_1eab:  br IL_1ec4
 
-	IL_1eba:  br IL_1ec4
+	IL_1eb0:  ldsfld string [dnr]dylan.NET.Reflection.AsmFactory::DfltNS
+	IL_1eb5:  stsfld string [dnr]dylan.NET.Reflection.AsmFactory::CurnNS
+	IL_1eba:  br IL_292a
 
-	IL_1ebf:  br IL_1ec4
+	IL_1ebf:  br IL_1ec9
 
-	IL_1ec4:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.AssignStmt
-	IL_1ec9:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_1ece:  stloc 0
+	IL_1ec4:  br IL_1ec9
 
-	IL_1ed2:  nop 
-	IL_1ed3:  nop 
-	IL_1ed4:  ldloc 0
+	IL_1ec9:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.AssignStmt
+	IL_1ece:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1ed3:  stloc 0
 
+	IL_1ed7:  nop 
 	IL_1ed8:  nop 
-	IL_1ed9:  nop 
-	IL_1eda:  ldarg 1
+	IL_1ed9:  ldloc 0
 
+	IL_1edd:  nop 
 	IL_1ede:  nop 
-	IL_1edf:  nop 
-	IL_1ee0:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_1ee5:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_1eea:  stloc 1
+	IL_1edf:  ldarg 1
 
-	IL_1eee:  nop 
-	IL_1eef:  nop 
-	IL_1ef0:  ldloc 1
+	IL_1ee3:  nop 
+	IL_1ee4:  nop 
+	IL_1ee5:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_1eea:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1eef:  stloc 1
 
+	IL_1ef3:  nop 
 	IL_1ef4:  nop 
-	IL_1ef5:  nop 
-	IL_1ef6:  ldc.i4 1
-	IL_1efb:  beq IL_1f05
+	IL_1ef5:  ldloc 1
 
-	IL_1f00:  br IL_1f6f
+	IL_1ef9:  nop 
+	IL_1efa:  nop 
+	IL_1efb:  ldc.i4 1
+	IL_1f00:  beq IL_1f0a
 
-	IL_1f05:  ldarg 1
+	IL_1f05:  br IL_1f74
 
-	IL_1f09:  nop 
-	IL_1f0a:  nop 
-	IL_1f0b:  stloc 96
+	IL_1f0a:  ldarg 1
 
+	IL_1f0e:  nop 
 	IL_1f0f:  nop 
-	IL_1f10:  nop 
-	IL_1f11:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
-	IL_1f16:  stloc 90
+	IL_1f10:  stloc 96
 
-	IL_1f1a:  nop 
-	IL_1f1b:  nop 
-	IL_1f1c:  ldloc 96
+	IL_1f14:  nop 
+	IL_1f15:  nop 
+	IL_1f16:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
+	IL_1f1b:  stloc 90
 
+	IL_1f1f:  nop 
 	IL_1f20:  nop 
-	IL_1f21:  nop 
-	IL_1f22:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.AssignStmt::LExp
-	IL_1f27:  stloc 97
+	IL_1f21:  ldloc 96
 
-	IL_1f2b:  nop 
-	IL_1f2c:  nop 
-	IL_1f2d:  ldloc 97
+	IL_1f25:  nop 
+	IL_1f26:  nop 
+	IL_1f27:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.AssignStmt::LExp
+	IL_1f2c:  stloc 97
 
+	IL_1f30:  nop 
 	IL_1f31:  nop 
-	IL_1f32:  nop 
-	IL_1f33:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
-	IL_1f38:  ldc.i4 0
-	IL_1f3d:  conv.u 
-	IL_1f3e:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
-	IL_1f43:  stloc 98
+	IL_1f32:  ldloc 97
 
-	IL_1f47:  nop 
-	IL_1f48:  nop 
-	IL_1f49:  ldloc 90
+	IL_1f36:  nop 
+	IL_1f37:  nop 
+	IL_1f38:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token[] [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::Tokens
+	IL_1f3d:  ldc.i4 0
+	IL_1f42:  conv.u 
+	IL_1f43:  ldelem [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token
+	IL_1f48:  stloc 98
 
+	IL_1f4c:  nop 
 	IL_1f4d:  nop 
-	IL_1f4e:  nop 
-	IL_1f4f:  ldloc 98
+	IL_1f4e:  ldloc 90
 
+	IL_1f52:  nop 
 	IL_1f53:  nop 
-	IL_1f54:  nop 
-	IL_1f55:  ldloc 96
+	IL_1f54:  ldloc 98
 
+	IL_1f58:  nop 
 	IL_1f59:  nop 
-	IL_1f5a:  nop 
-	IL_1f5b:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.AssignStmt::RExp
-	IL_1f60:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::StoreEmit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token, class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
-	IL_1f65:  br IL_247e
+	IL_1f5a:  ldloc 96
 
-	IL_1f6a:  br IL_1f74
+	IL_1f5e:  nop 
+	IL_1f5f:  nop 
+	IL_1f60:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.AssignStmt::RExp
+	IL_1f65:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::StoreEmit(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token, class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_1f6a:  br IL_292a
 
-	IL_1f6f:  br IL_1f74
+	IL_1f6f:  br IL_1f79
 
-	IL_1f74:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt
-	IL_1f79:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_1f7e:  stloc 0
+	IL_1f74:  br IL_1f79
 
-	IL_1f82:  nop 
-	IL_1f83:  nop 
-	IL_1f84:  ldloc 0
+	IL_1f79:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt
+	IL_1f7e:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_1f83:  stloc 0
 
+	IL_1f87:  nop 
 	IL_1f88:  nop 
-	IL_1f89:  nop 
-	IL_1f8a:  ldarg 1
+	IL_1f89:  ldloc 0
 
+	IL_1f8d:  nop 
 	IL_1f8e:  nop 
-	IL_1f8f:  nop 
-	IL_1f90:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_1f95:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_1f9a:  stloc 1
+	IL_1f8f:  ldarg 1
 
-	IL_1f9e:  nop 
-	IL_1f9f:  nop 
-	IL_1fa0:  ldloc 1
+	IL_1f93:  nop 
+	IL_1f94:  nop 
+	IL_1f95:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_1f9a:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_1f9f:  stloc 1
 
+	IL_1fa3:  nop 
 	IL_1fa4:  nop 
-	IL_1fa5:  nop 
-	IL_1fa6:  ldc.i4 1
-	IL_1fab:  beq IL_1fb5
+	IL_1fa5:  ldloc 1
 
-	IL_1fb0:  br IL_2040
+	IL_1fa9:  nop 
+	IL_1faa:  nop 
+	IL_1fab:  ldc.i4 1
+	IL_1fb0:  beq IL_1fba
 
-	IL_1fb5:  ldarg 1
+	IL_1fb5:  br IL_2045
 
-	IL_1fb9:  nop 
-	IL_1fba:  nop 
-	IL_1fbb:  stloc 99
+	IL_1fba:  ldarg 1
 
+	IL_1fbe:  nop 
 	IL_1fbf:  nop 
-	IL_1fc0:  nop 
-	IL_1fc1:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::'.ctor'()
-	IL_1fc6:  stloc 100
+	IL_1fc0:  stloc 99
 
-	IL_1fca:  nop 
-	IL_1fcb:  nop 
-	IL_1fcc:  ldloc 99
+	IL_1fc4:  nop 
+	IL_1fc5:  nop 
+	IL_1fc6:  newobj instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::'.ctor'()
+	IL_1fcb:  stloc 100
 
+	IL_1fcf:  nop 
 	IL_1fd0:  nop 
-	IL_1fd1:  nop 
-	IL_1fd2:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt::MethodToken
-	IL_1fd7:  stloc 101
+	IL_1fd1:  ldloc 99
 
-	IL_1fdb:  nop 
-	IL_1fdc:  nop 
-	IL_1fdd:  ldloc 101
+	IL_1fd5:  nop 
+	IL_1fd6:  nop 
+	IL_1fd7:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.MethodCallStmt::MethodToken
+	IL_1fdc:  stloc 101
 
+	IL_1fe0:  nop 
 	IL_1fe1:  nop 
-	IL_1fe2:  nop 
-	IL_1fe3:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token class dylan.NET.Tokenizer.CodeGen.Helpers::SetPopFlg(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token)
-	IL_1fe8:  stloc 101
+	IL_1fe2:  ldloc 101
 
-	IL_1fec:  nop 
-	IL_1fed:  nop 
-	IL_1fee:  ldloc 101
+	IL_1fe6:  nop 
+	IL_1fe7:  nop 
+	IL_1fe8:  call class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token class dylan.NET.Tokenizer.CodeGen.Helpers::SetPopFlg(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token)
+	IL_1fed:  stloc 101
 
+	IL_1ff1:  nop 
 	IL_1ff2:  nop 
-	IL_1ff3:  nop 
-	IL_1ff4:  ldnull 
-	IL_1ff5:  beq IL_2031
+	IL_1ff3:  ldloc 101
 
-	IL_1ffa:  br IL_1fff
+	IL_1ff7:  nop 
+	IL_1ff8:  nop 
+	IL_1ff9:  ldnull 
+	IL_1ffa:  beq IL_2036
 
-	IL_1fff:  ldloc 100
+	IL_1fff:  br IL_2004
 
-	IL_2003:  nop 
-	IL_2004:  nop 
-	IL_2005:  ldloc 101
+	IL_2004:  ldloc 100
 
+	IL_2008:  nop 
 	IL_2009:  nop 
-	IL_200a:  nop 
-	IL_200b:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::AddToken(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token)
-	IL_2010:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
-	IL_2015:  stloc 90
+	IL_200a:  ldloc 101
 
-	IL_2019:  nop 
-	IL_201a:  nop 
-	IL_201b:  ldloc 90
+	IL_200e:  nop 
+	IL_200f:  nop 
+	IL_2010:  callvirt instance void class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr::AddToken(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token)
+	IL_2015:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
+	IL_201a:  stloc 90
 
+	IL_201e:  nop 
 	IL_201f:  nop 
-	IL_2020:  nop 
-	IL_2021:  ldloc 100
+	IL_2020:  ldloc 90
 
+	IL_2024:  nop 
 	IL_2025:  nop 
-	IL_2026:  nop 
-	IL_2027:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
-	IL_202c:  br IL_2036
+	IL_2026:  ldloc 100
 
-	IL_2031:  br IL_2036
+	IL_202a:  nop 
+	IL_202b:  nop 
+	IL_202c:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_2031:  br IL_203b
 
-	IL_2036:  br IL_247e
+	IL_2036:  br IL_203b
 
-	IL_203b:  br IL_2045
+	IL_203b:  br IL_292a
 
-	IL_2040:  br IL_2045
+	IL_2040:  br IL_204a
 
-	IL_2045:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.IfStmt
-	IL_204a:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_204f:  stloc 0
+	IL_2045:  br IL_204a
 
-	IL_2053:  nop 
-	IL_2054:  nop 
-	IL_2055:  ldloc 0
+	IL_204a:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.IfStmt
+	IL_204f:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2054:  stloc 0
 
+	IL_2058:  nop 
 	IL_2059:  nop 
-	IL_205a:  nop 
-	IL_205b:  ldarg 1
+	IL_205a:  ldloc 0
 
+	IL_205e:  nop 
 	IL_205f:  nop 
-	IL_2060:  nop 
-	IL_2061:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_2066:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_206b:  stloc 1
+	IL_2060:  ldarg 1
 
-	IL_206f:  nop 
-	IL_2070:  nop 
-	IL_2071:  ldloc 1
+	IL_2064:  nop 
+	IL_2065:  nop 
+	IL_2066:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_206b:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_2070:  stloc 1
 
+	IL_2074:  nop 
 	IL_2075:  nop 
-	IL_2076:  nop 
-	IL_2077:  ldc.i4 1
-	IL_207c:  beq IL_2086
+	IL_2076:  ldloc 1
 
-	IL_2081:  br IL_20e4
+	IL_207a:  nop 
+	IL_207b:  nop 
+	IL_207c:  ldc.i4 1
+	IL_2081:  beq IL_208b
 
-	IL_2086:  ldarg 1
+	IL_2086:  br IL_20e9
 
-	IL_208a:  nop 
-	IL_208b:  nop 
-	IL_208c:  stloc 105
+	IL_208b:  ldarg 1
 
+	IL_208f:  nop 
 	IL_2090:  nop 
-	IL_2091:  nop 
-	IL_2092:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddIf()
-	IL_2097:  ldloc 105
+	IL_2091:  stloc 107
 
-	IL_209b:  nop 
-	IL_209c:  nop 
-	IL_209d:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.IfStmt::Exp
-	IL_20a2:  stloc 106
+	IL_2095:  nop 
+	IL_2096:  nop 
+	IL_2097:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddIf()
+	IL_209c:  ldloc 107
 
-	IL_20a6:  nop 
-	IL_20a7:  nop 
-	IL_20a8:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
-	IL_20ad:  stloc 90
+	IL_20a0:  nop 
+	IL_20a1:  nop 
+	IL_20a2:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.IfStmt::Exp
+	IL_20a7:  stloc 108
 
-	IL_20b1:  nop 
-	IL_20b2:  nop 
-	IL_20b3:  ldloc 90
+	IL_20ab:  nop 
+	IL_20ac:  nop 
+	IL_20ad:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
+	IL_20b2:  stloc 90
 
+	IL_20b6:  nop 
 	IL_20b7:  nop 
-	IL_20b8:  nop 
-	IL_20b9:  ldloc 106
+	IL_20b8:  ldloc 90
 
+	IL_20bc:  nop 
 	IL_20bd:  nop 
-	IL_20be:  nop 
-	IL_20bf:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
-	IL_20c4:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfNxtBlkLbl()
-	IL_20c9:  stloc 103
+	IL_20be:  ldloc 108
 
-	IL_20cd:  nop 
-	IL_20ce:  nop 
-	IL_20cf:  ldloc 103
+	IL_20c2:  nop 
+	IL_20c3:  nop 
+	IL_20c4:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_20c9:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfNxtBlkLbl()
+	IL_20ce:  stloc 103
 
+	IL_20d2:  nop 
 	IL_20d3:  nop 
-	IL_20d4:  nop 
-	IL_20d5:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBrfalse(valuetype [mscorlib]System.Reflection.Emit.Label)
-	IL_20da:  br IL_247e
+	IL_20d4:  ldloc 103
 
-	IL_20df:  br IL_20e9
+	IL_20d8:  nop 
+	IL_20d9:  nop 
+	IL_20da:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBrfalse(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_20df:  br IL_292a
 
-	IL_20e4:  br IL_20e9
+	IL_20e4:  br IL_20ee
 
-	IL_20e9:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ElseIfStmt
-	IL_20ee:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_20f3:  stloc 0
+	IL_20e9:  br IL_20ee
 
-	IL_20f7:  nop 
-	IL_20f8:  nop 
-	IL_20f9:  ldloc 0
+	IL_20ee:  ldnull 
+	IL_20ef:  stloc 109
 
-	IL_20fd:  nop 
-	IL_20fe:  nop 
-	IL_20ff:  ldarg 1
+	IL_20f3:  nop 
+	IL_20f4:  nop 
+	IL_20f5:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DoStmt
+	IL_20fa:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_20ff:  stloc 0
 
 	IL_2103:  nop 
 	IL_2104:  nop 
-	IL_2105:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_210a:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_210f:  stloc 1
+	IL_2105:  ldloc 0
 
-	IL_2113:  nop 
-	IL_2114:  nop 
-	IL_2115:  ldloc 1
+	IL_2109:  nop 
+	IL_210a:  nop 
+	IL_210b:  ldarg 1
 
-	IL_2119:  nop 
-	IL_211a:  nop 
-	IL_211b:  ldc.i4 1
-	IL_2120:  beq IL_212a
+	IL_210f:  nop 
+	IL_2110:  nop 
+	IL_2111:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_2116:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_211b:  stloc 1
 
-	IL_2125:  br IL_21b4
+	IL_211f:  nop 
+	IL_2120:  nop 
+	IL_2121:  ldloc 1
 
-	IL_212a:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfEndLbl()
-	IL_212f:  stloc 102
+	IL_2125:  nop 
+	IL_2126:  nop 
+	IL_2127:  ldc.i4 1
+	IL_212c:  beq IL_2136
 
-	IL_2133:  nop 
-	IL_2134:  nop 
-	IL_2135:  ldloc 102
+	IL_2131:  br IL_215b
 
-	IL_2139:  nop 
-	IL_213a:  nop 
-	IL_213b:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBr(valuetype [mscorlib]System.Reflection.Emit.Label)
-	IL_2140:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfNxtBlkLbl()
-	IL_2145:  stloc 103
+	IL_2136:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddLoop()
+	IL_213b:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopStartLbl()
+	IL_2140:  stloc 105
 
-	IL_2149:  nop 
+	IL_2144:  nop 
+	IL_2145:  nop 
+	IL_2146:  ldloc 105
+
 	IL_214a:  nop 
-	IL_214b:  ldloc 103
+	IL_214b:  nop 
+	IL_214c:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_2151:  br IL_292a
 
-	IL_214f:  nop 
-	IL_2150:  nop 
-	IL_2151:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
-	IL_2156:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::SetIfNxtBlkLbl()
-	IL_215b:  ldarg 1
+	IL_2156:  br IL_2160
 
-	IL_215f:  nop 
-	IL_2160:  nop 
-	IL_2161:  stloc 107
+	IL_215b:  br IL_2160
 
-	IL_2165:  nop 
-	IL_2166:  nop 
-	IL_2167:  ldloc 107
+	IL_2160:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.BreakStmt
+	IL_2165:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_216a:  stloc 0
 
-	IL_216b:  nop 
-	IL_216c:  nop 
-	IL_216d:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ElseIfStmt::Exp
-	IL_2172:  stloc 108
+	IL_216e:  nop 
+	IL_216f:  nop 
+	IL_2170:  ldloc 0
 
-	IL_2176:  nop 
-	IL_2177:  nop 
-	IL_2178:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
-	IL_217d:  stloc 90
+	IL_2174:  nop 
+	IL_2175:  nop 
+	IL_2176:  ldarg 1
 
-	IL_2181:  nop 
-	IL_2182:  nop 
-	IL_2183:  ldloc 90
+	IL_217a:  nop 
+	IL_217b:  nop 
+	IL_217c:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_2181:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_2186:  stloc 1
 
-	IL_2187:  nop 
-	IL_2188:  nop 
-	IL_2189:  ldloc 108
+	IL_218a:  nop 
+	IL_218b:  nop 
+	IL_218c:  ldloc 1
 
-	IL_218d:  nop 
-	IL_218e:  nop 
-	IL_218f:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
-	IL_2194:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfNxtBlkLbl()
-	IL_2199:  stloc 103
+	IL_2190:  nop 
+	IL_2191:  nop 
+	IL_2192:  ldc.i4 1
+	IL_2197:  beq IL_21a1
 
-	IL_219d:  nop 
-	IL_219e:  nop 
-	IL_219f:  ldloc 103
+	IL_219c:  br IL_21c1
 
-	IL_21a3:  nop 
-	IL_21a4:  nop 
-	IL_21a5:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBrfalse(valuetype [mscorlib]System.Reflection.Emit.Label)
-	IL_21aa:  br IL_247e
+	IL_21a1:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopEndLbl()
+	IL_21a6:  stloc 104
 
-	IL_21af:  br IL_21b9
+	IL_21aa:  nop 
+	IL_21ab:  nop 
+	IL_21ac:  ldloc 104
 
-	IL_21b4:  br IL_21b9
+	IL_21b0:  nop 
+	IL_21b1:  nop 
+	IL_21b2:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBr(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_21b7:  br IL_292a
 
-	IL_21b9:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ElseStmt
-	IL_21be:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_21c3:  stloc 0
+	IL_21bc:  br IL_21c6
 
-	IL_21c7:  nop 
-	IL_21c8:  nop 
-	IL_21c9:  ldloc 0
+	IL_21c1:  br IL_21c6
 
-	IL_21cd:  nop 
-	IL_21ce:  nop 
-	IL_21cf:  ldarg 1
+	IL_21c6:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ContinueStmt
+	IL_21cb:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_21d0:  stloc 0
 
-	IL_21d3:  nop 
 	IL_21d4:  nop 
-	IL_21d5:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_21da:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_21df:  stloc 1
+	IL_21d5:  nop 
+	IL_21d6:  ldloc 0
 
-	IL_21e3:  nop 
-	IL_21e4:  nop 
-	IL_21e5:  ldloc 1
+	IL_21da:  nop 
+	IL_21db:  nop 
+	IL_21dc:  ldarg 1
 
-	IL_21e9:  nop 
-	IL_21ea:  nop 
-	IL_21eb:  ldc.i4 1
-	IL_21f0:  beq IL_21fa
+	IL_21e0:  nop 
+	IL_21e1:  nop 
+	IL_21e2:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_21e7:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_21ec:  stloc 1
 
-	IL_21f5:  br IL_2235
+	IL_21f0:  nop 
+	IL_21f1:  nop 
+	IL_21f2:  ldloc 1
 
-	IL_21fa:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfEndLbl()
-	IL_21ff:  stloc 102
+	IL_21f6:  nop 
+	IL_21f7:  nop 
+	IL_21f8:  ldc.i4 1
+	IL_21fd:  beq IL_2207
 
-	IL_2203:  nop 
-	IL_2204:  nop 
-	IL_2205:  ldloc 102
+	IL_2202:  br IL_2227
 
-	IL_2209:  nop 
-	IL_220a:  nop 
-	IL_220b:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBr(valuetype [mscorlib]System.Reflection.Emit.Label)
-	IL_2210:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfNxtBlkLbl()
-	IL_2215:  stloc 103
+	IL_2207:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopStartLbl()
+	IL_220c:  stloc 105
 
-	IL_2219:  nop 
-	IL_221a:  nop 
-	IL_221b:  ldloc 103
+	IL_2210:  nop 
+	IL_2211:  nop 
+	IL_2212:  ldloc 105
 
-	IL_221f:  nop 
-	IL_2220:  nop 
-	IL_2221:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
-	IL_2226:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::SetIfElsePass()
-	IL_222b:  br IL_247e
+	IL_2216:  nop 
+	IL_2217:  nop 
+	IL_2218:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBr(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_221d:  br IL_292a
 
-	IL_2230:  br IL_223a
+	IL_2222:  br IL_222c
 
-	IL_2235:  br IL_223a
+	IL_2227:  br IL_222c
 
-	IL_223a:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.EndIfStmt
-	IL_223f:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_2244:  stloc 0
+	IL_222c:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.UntilStmt
+	IL_2231:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2236:  stloc 0
 
-	IL_2248:  nop 
-	IL_2249:  nop 
-	IL_224a:  ldloc 0
+	IL_223a:  nop 
+	IL_223b:  nop 
+	IL_223c:  ldloc 0
 
-	IL_224e:  nop 
-	IL_224f:  nop 
-	IL_2250:  ldarg 1
+	IL_2240:  nop 
+	IL_2241:  nop 
+	IL_2242:  ldarg 1
 
-	IL_2254:  nop 
-	IL_2255:  nop 
-	IL_2256:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_225b:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_2260:  stloc 1
+	IL_2246:  nop 
+	IL_2247:  nop 
+	IL_2248:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_224d:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_2252:  stloc 1
 
-	IL_2264:  nop 
-	IL_2265:  nop 
-	IL_2266:  ldloc 1
+	IL_2256:  nop 
+	IL_2257:  nop 
+	IL_2258:  ldloc 1
 
-	IL_226a:  nop 
-	IL_226b:  nop 
-	IL_226c:  ldc.i4 1
-	IL_2271:  beq IL_227b
+	IL_225c:  nop 
+	IL_225d:  nop 
+	IL_225e:  ldc.i4 1
+	IL_2263:  beq IL_226d
 
-	IL_2276:  br IL_22e0
+	IL_2268:  br IL_22e1
 
-	IL_227b:  call bool class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfElsePass()
-	IL_2280:  stloc 1
+	IL_226d:  ldarg 1
 
-	IL_2284:  nop 
-	IL_2285:  nop 
-	IL_2286:  ldloc 1
+	IL_2271:  nop 
+	IL_2272:  nop 
+	IL_2273:  stloc 110
 
-	IL_228a:  nop 
-	IL_228b:  nop 
-	IL_228c:  ldc.i4 0
-	IL_2291:  beq IL_229b
+	IL_2277:  nop 
+	IL_2278:  nop 
+	IL_2279:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopStartLbl()
+	IL_227e:  stloc 105
 
-	IL_2296:  br IL_22b6
+	IL_2282:  nop 
+	IL_2283:  nop 
+	IL_2284:  ldloc 110
 
-	IL_229b:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfNxtBlkLbl()
-	IL_22a0:  stloc 103
+	IL_2288:  nop 
+	IL_2289:  nop 
+	IL_228a:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.UntilStmt::Exp
+	IL_228f:  stloc 109
+
+	IL_2293:  nop 
+	IL_2294:  nop 
+	IL_2295:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
+	IL_229a:  stloc 90
+
+	IL_229e:  nop 
+	IL_229f:  nop 
+	IL_22a0:  ldloc 90
 
 	IL_22a4:  nop 
 	IL_22a5:  nop 
-	IL_22a6:  ldloc 103
+	IL_22a6:  ldloc 109
 
 	IL_22aa:  nop 
 	IL_22ab:  nop 
-	IL_22ac:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
-	IL_22b1:  br IL_22bb
+	IL_22ac:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_22b1:  ldloc 105
 
-	IL_22b6:  br IL_22bb
+	IL_22b5:  nop 
+	IL_22b6:  nop 
+	IL_22b7:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBrfalse(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_22bc:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopEndLbl()
+	IL_22c1:  stloc 104
 
-	IL_22bb:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfEndLbl()
-	IL_22c0:  stloc 102
-
-	IL_22c4:  nop 
 	IL_22c5:  nop 
-	IL_22c6:  ldloc 102
+	IL_22c6:  nop 
+	IL_22c7:  ldloc 104
 
-	IL_22ca:  nop 
 	IL_22cb:  nop 
-	IL_22cc:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
-	IL_22d1:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::PopIf()
-	IL_22d6:  br IL_247e
+	IL_22cc:  nop 
+	IL_22cd:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_22d2:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::PopLoop()
+	IL_22d7:  br IL_292a
 
-	IL_22db:  br IL_22e5
+	IL_22dc:  br IL_22e6
 
-	IL_22e0:  br IL_22e5
+	IL_22e1:  br IL_22e6
 
-	IL_22e5:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.LabelStmt
-	IL_22ea:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_22ef:  stloc 0
+	IL_22e6:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.WhileStmt
+	IL_22eb:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_22f0:  stloc 0
 
-	IL_22f3:  nop 
 	IL_22f4:  nop 
-	IL_22f5:  ldloc 0
+	IL_22f5:  nop 
+	IL_22f6:  ldloc 0
 
-	IL_22f9:  nop 
 	IL_22fa:  nop 
-	IL_22fb:  ldarg 1
+	IL_22fb:  nop 
+	IL_22fc:  ldarg 1
 
-	IL_22ff:  nop 
 	IL_2300:  nop 
-	IL_2301:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_2306:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_230b:  stloc 1
+	IL_2301:  nop 
+	IL_2302:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_2307:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_230c:  stloc 1
 
-	IL_230f:  nop 
 	IL_2310:  nop 
-	IL_2311:  ldloc 1
+	IL_2311:  nop 
+	IL_2312:  ldloc 1
 
-	IL_2315:  nop 
 	IL_2316:  nop 
-	IL_2317:  ldc.i4 1
-	IL_231c:  beq IL_2326
+	IL_2317:  nop 
+	IL_2318:  ldc.i4 1
+	IL_231d:  beq IL_2327
 
-	IL_2321:  br IL_235d
+	IL_2322:  br IL_239b
 
-	IL_2326:  ldarg 1
+	IL_2327:  ldarg 1
 
-	IL_232a:  nop 
 	IL_232b:  nop 
-	IL_232c:  stloc 110
+	IL_232c:  nop 
+	IL_232d:  stloc 111
 
-	IL_2330:  nop 
 	IL_2331:  nop 
-	IL_2332:  ldloc 110
+	IL_2332:  nop 
+	IL_2333:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopStartLbl()
+	IL_2338:  stloc 105
 
-	IL_2336:  nop 
-	IL_2337:  nop 
-	IL_2338:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.LabelStmt::LabelName
-	IL_233d:  stloc 109
+	IL_233c:  nop 
+	IL_233d:  nop 
+	IL_233e:  ldloc 111
 
-	IL_2341:  nop 
 	IL_2342:  nop 
-	IL_2343:  ldloc 109
+	IL_2343:  nop 
+	IL_2344:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.WhileStmt::Exp
+	IL_2349:  stloc 109
 
-	IL_2347:  nop 
-	IL_2348:  nop 
-	IL_2349:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_234e:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddLbl(string)
-	IL_2353:  br IL_247e
+	IL_234d:  nop 
+	IL_234e:  nop 
+	IL_234f:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
+	IL_2354:  stloc 90
 
-	IL_2358:  br IL_2362
+	IL_2358:  nop 
+	IL_2359:  nop 
+	IL_235a:  ldloc 90
 
-	IL_235d:  br IL_2362
+	IL_235e:  nop 
+	IL_235f:  nop 
+	IL_2360:  ldloc 109
 
-	IL_2362:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.PlaceStmt
-	IL_2367:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_236c:  stloc 0
+	IL_2364:  nop 
+	IL_2365:  nop 
+	IL_2366:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_236b:  ldloc 105
 
+	IL_236f:  nop 
 	IL_2370:  nop 
-	IL_2371:  nop 
-	IL_2372:  ldloc 0
+	IL_2371:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBrtrue(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_2376:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopEndLbl()
+	IL_237b:  stloc 104
 
-	IL_2376:  nop 
-	IL_2377:  nop 
-	IL_2378:  ldarg 1
+	IL_237f:  nop 
+	IL_2380:  nop 
+	IL_2381:  ldloc 104
 
-	IL_237c:  nop 
-	IL_237d:  nop 
-	IL_237e:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_2383:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_2388:  stloc 1
+	IL_2385:  nop 
+	IL_2386:  nop 
+	IL_2387:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_238c:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::PopLoop()
+	IL_2391:  br IL_292a
 
-	IL_238c:  nop 
-	IL_238d:  nop 
-	IL_238e:  ldloc 1
+	IL_2396:  br IL_23a0
 
-	IL_2392:  nop 
-	IL_2393:  nop 
-	IL_2394:  ldc.i4 1
-	IL_2399:  beq IL_23a3
+	IL_239b:  br IL_23a0
 
-	IL_239e:  br IL_23eb
+	IL_23a0:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DoUntilStmt
+	IL_23a5:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_23aa:  stloc 0
 
-	IL_23a3:  ldarg 1
-
-	IL_23a7:  nop 
-	IL_23a8:  nop 
-	IL_23a9:  stloc 111
-
-	IL_23ad:  nop 
 	IL_23ae:  nop 
-	IL_23af:  ldloc 111
+	IL_23af:  nop 
+	IL_23b0:  ldloc 0
 
-	IL_23b3:  nop 
 	IL_23b4:  nop 
-	IL_23b5:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.PlaceStmt::LabelName
-	IL_23ba:  stloc 109
+	IL_23b5:  nop 
+	IL_23b6:  ldarg 1
 
-	IL_23be:  nop 
-	IL_23bf:  nop 
-	IL_23c0:  ldloc 109
+	IL_23ba:  nop 
+	IL_23bb:  nop 
+	IL_23bc:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_23c1:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_23c6:  stloc 1
 
-	IL_23c4:  nop 
-	IL_23c5:  nop 
-	IL_23c6:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_23cb:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.Helpers::GetLbl(string)
-	IL_23d0:  stloc 104
+	IL_23ca:  nop 
+	IL_23cb:  nop 
+	IL_23cc:  ldloc 1
 
-	IL_23d4:  nop 
-	IL_23d5:  nop 
-	IL_23d6:  ldloc 104
+	IL_23d0:  nop 
+	IL_23d1:  nop 
+	IL_23d2:  ldc.i4 1
+	IL_23d7:  beq IL_23e1
 
-	IL_23da:  nop 
-	IL_23db:  nop 
-	IL_23dc:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
-	IL_23e1:  br IL_247e
+	IL_23dc:  br IL_2455
 
-	IL_23e6:  br IL_23f0
+	IL_23e1:  ldarg 1
 
-	IL_23eb:  br IL_23f0
+	IL_23e5:  nop 
+	IL_23e6:  nop 
+	IL_23e7:  stloc 112
 
-	IL_23f0:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.GotoStmt
-	IL_23f5:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
-	IL_23fa:  stloc 0
+	IL_23eb:  nop 
+	IL_23ec:  nop 
+	IL_23ed:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddLoop()
+	IL_23f2:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopStartLbl()
+	IL_23f7:  stloc 105
 
-	IL_23fe:  nop 
-	IL_23ff:  nop 
-	IL_2400:  ldloc 0
+	IL_23fb:  nop 
+	IL_23fc:  nop 
+	IL_23fd:  ldloc 105
 
-	IL_2404:  nop 
-	IL_2405:  nop 
-	IL_2406:  ldarg 1
+	IL_2401:  nop 
+	IL_2402:  nop 
+	IL_2403:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_2408:  ldloc 112
 
-	IL_240a:  nop 
-	IL_240b:  nop 
-	IL_240c:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
-	IL_2411:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
-	IL_2416:  stloc 1
+	IL_240c:  nop 
+	IL_240d:  nop 
+	IL_240e:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DoUntilStmt::Exp
+	IL_2413:  stloc 109
 
-	IL_241a:  nop 
-	IL_241b:  nop 
-	IL_241c:  ldloc 1
+	IL_2417:  nop 
+	IL_2418:  nop 
+	IL_2419:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
+	IL_241e:  stloc 90
 
-	IL_2420:  nop 
-	IL_2421:  nop 
-	IL_2422:  ldc.i4 1
-	IL_2427:  beq IL_2431
+	IL_2422:  nop 
+	IL_2423:  nop 
+	IL_2424:  ldloc 90
 
-	IL_242c:  br IL_2479
+	IL_2428:  nop 
+	IL_2429:  nop 
+	IL_242a:  ldloc 109
 
-	IL_2431:  ldarg 1
+	IL_242e:  nop 
+	IL_242f:  nop 
+	IL_2430:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_2435:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopEndLbl()
+	IL_243a:  stloc 104
 
-	IL_2435:  nop 
-	IL_2436:  nop 
-	IL_2437:  stloc 112
+	IL_243e:  nop 
+	IL_243f:  nop 
+	IL_2440:  ldloc 104
 
-	IL_243b:  nop 
-	IL_243c:  nop 
-	IL_243d:  ldloc 112
+	IL_2444:  nop 
+	IL_2445:  nop 
+	IL_2446:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBrtrue(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_244b:  br IL_292a
 
-	IL_2441:  nop 
-	IL_2442:  nop 
-	IL_2443:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.GotoStmt::LabelName
-	IL_2448:  stloc 109
+	IL_2450:  br IL_245a
 
-	IL_244c:  nop 
-	IL_244d:  nop 
-	IL_244e:  ldloc 109
+	IL_2455:  br IL_245a
 
-	IL_2452:  nop 
-	IL_2453:  nop 
-	IL_2454:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
-	IL_2459:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.Helpers::GetLbl(string)
-	IL_245e:  stloc 104
-
-	IL_2462:  nop 
-	IL_2463:  nop 
-	IL_2464:  ldloc 104
+	IL_245a:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DoWhileStmt
+	IL_245f:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2464:  stloc 0
 
 	IL_2468:  nop 
 	IL_2469:  nop 
-	IL_246a:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBr(valuetype [mscorlib]System.Reflection.Emit.Label)
-	IL_246f:  br IL_247e
+	IL_246a:  ldloc 0
 
-	IL_2474:  br IL_247e
+	IL_246e:  nop 
+	IL_246f:  nop 
+	IL_2470:  ldarg 1
 
-	IL_2479:  br IL_247e
+	IL_2474:  nop 
+	IL_2475:  nop 
+	IL_2476:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_247b:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_2480:  stloc 1
 
-	IL_247e:  ret 
+	IL_2484:  nop 
+	IL_2485:  nop 
+	IL_2486:  ldloc 1
+
+	IL_248a:  nop 
+	IL_248b:  nop 
+	IL_248c:  ldc.i4 1
+	IL_2491:  beq IL_249b
+
+	IL_2496:  br IL_250f
+
+	IL_249b:  ldarg 1
+
+	IL_249f:  nop 
+	IL_24a0:  nop 
+	IL_24a1:  stloc 113
+
+	IL_24a5:  nop 
+	IL_24a6:  nop 
+	IL_24a7:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddLoop()
+	IL_24ac:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopStartLbl()
+	IL_24b1:  stloc 105
+
+	IL_24b5:  nop 
+	IL_24b6:  nop 
+	IL_24b7:  ldloc 105
+
+	IL_24bb:  nop 
+	IL_24bc:  nop 
+	IL_24bd:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_24c2:  ldloc 113
+
+	IL_24c6:  nop 
+	IL_24c7:  nop 
+	IL_24c8:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.DoWhileStmt::Exp
+	IL_24cd:  stloc 109
+
+	IL_24d1:  nop 
+	IL_24d2:  nop 
+	IL_24d3:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
+	IL_24d8:  stloc 90
+
+	IL_24dc:  nop 
+	IL_24dd:  nop 
+	IL_24de:  ldloc 90
+
+	IL_24e2:  nop 
+	IL_24e3:  nop 
+	IL_24e4:  ldloc 109
+
+	IL_24e8:  nop 
+	IL_24e9:  nop 
+	IL_24ea:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_24ef:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopEndLbl()
+	IL_24f4:  stloc 104
+
+	IL_24f8:  nop 
+	IL_24f9:  nop 
+	IL_24fa:  ldloc 104
+
+	IL_24fe:  nop 
+	IL_24ff:  nop 
+	IL_2500:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBrfalse(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_2505:  br IL_292a
+
+	IL_250a:  br IL_2514
+
+	IL_250f:  br IL_2514
+
+	IL_2514:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ElseIfStmt
+	IL_2519:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_251e:  stloc 0
+
+	IL_2522:  nop 
+	IL_2523:  nop 
+	IL_2524:  ldloc 0
+
+	IL_2528:  nop 
+	IL_2529:  nop 
+	IL_252a:  ldarg 1
+
+	IL_252e:  nop 
+	IL_252f:  nop 
+	IL_2530:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_2535:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_253a:  stloc 1
+
+	IL_253e:  nop 
+	IL_253f:  nop 
+	IL_2540:  ldloc 1
+
+	IL_2544:  nop 
+	IL_2545:  nop 
+	IL_2546:  ldc.i4 1
+	IL_254b:  beq IL_2555
+
+	IL_2550:  br IL_25df
+
+	IL_2555:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfEndLbl()
+	IL_255a:  stloc 102
+
+	IL_255e:  nop 
+	IL_255f:  nop 
+	IL_2560:  ldloc 102
+
+	IL_2564:  nop 
+	IL_2565:  nop 
+	IL_2566:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBr(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_256b:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfNxtBlkLbl()
+	IL_2570:  stloc 103
+
+	IL_2574:  nop 
+	IL_2575:  nop 
+	IL_2576:  ldloc 103
+
+	IL_257a:  nop 
+	IL_257b:  nop 
+	IL_257c:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_2581:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::SetIfNxtBlkLbl()
+	IL_2586:  ldarg 1
+
+	IL_258a:  nop 
+	IL_258b:  nop 
+	IL_258c:  stloc 114
+
+	IL_2590:  nop 
+	IL_2591:  nop 
+	IL_2592:  ldloc 114
+
+	IL_2596:  nop 
+	IL_2597:  nop 
+	IL_2598:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ElseIfStmt::Exp
+	IL_259d:  stloc 115
+
+	IL_25a1:  nop 
+	IL_25a2:  nop 
+	IL_25a3:  newobj instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::'.ctor'()
+	IL_25a8:  stloc 90
+
+	IL_25ac:  nop 
+	IL_25ad:  nop 
+	IL_25ae:  ldloc 90
+
+	IL_25b2:  nop 
+	IL_25b3:  nop 
+	IL_25b4:  ldloc 115
+
+	IL_25b8:  nop 
+	IL_25b9:  nop 
+	IL_25ba:  callvirt instance void class dylan.NET.Tokenizer.CodeGen.Evaluator::Evaluate(class [tokenizer.AST]dylan.NET.Tokenizer.AST.Exprs.Expr)
+	IL_25bf:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfNxtBlkLbl()
+	IL_25c4:  stloc 103
+
+	IL_25c8:  nop 
+	IL_25c9:  nop 
+	IL_25ca:  ldloc 103
+
+	IL_25ce:  nop 
+	IL_25cf:  nop 
+	IL_25d0:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBrfalse(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_25d5:  br IL_292a
+
+	IL_25da:  br IL_25e4
+
+	IL_25df:  br IL_25e4
+
+	IL_25e4:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.ElseStmt
+	IL_25e9:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_25ee:  stloc 0
+
+	IL_25f2:  nop 
+	IL_25f3:  nop 
+	IL_25f4:  ldloc 0
+
+	IL_25f8:  nop 
+	IL_25f9:  nop 
+	IL_25fa:  ldarg 1
+
+	IL_25fe:  nop 
+	IL_25ff:  nop 
+	IL_2600:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_2605:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_260a:  stloc 1
+
+	IL_260e:  nop 
+	IL_260f:  nop 
+	IL_2610:  ldloc 1
+
+	IL_2614:  nop 
+	IL_2615:  nop 
+	IL_2616:  ldc.i4 1
+	IL_261b:  beq IL_2625
+
+	IL_2620:  br IL_2660
+
+	IL_2625:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfEndLbl()
+	IL_262a:  stloc 102
+
+	IL_262e:  nop 
+	IL_262f:  nop 
+	IL_2630:  ldloc 102
+
+	IL_2634:  nop 
+	IL_2635:  nop 
+	IL_2636:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBr(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_263b:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfNxtBlkLbl()
+	IL_2640:  stloc 103
+
+	IL_2644:  nop 
+	IL_2645:  nop 
+	IL_2646:  ldloc 103
+
+	IL_264a:  nop 
+	IL_264b:  nop 
+	IL_264c:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_2651:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::SetIfElsePass()
+	IL_2656:  br IL_292a
+
+	IL_265b:  br IL_2665
+
+	IL_2660:  br IL_2665
+
+	IL_2665:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.EndIfStmt
+	IL_266a:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_266f:  stloc 0
+
+	IL_2673:  nop 
+	IL_2674:  nop 
+	IL_2675:  ldloc 0
+
+	IL_2679:  nop 
+	IL_267a:  nop 
+	IL_267b:  ldarg 1
+
+	IL_267f:  nop 
+	IL_2680:  nop 
+	IL_2681:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_2686:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_268b:  stloc 1
+
+	IL_268f:  nop 
+	IL_2690:  nop 
+	IL_2691:  ldloc 1
+
+	IL_2695:  nop 
+	IL_2696:  nop 
+	IL_2697:  ldc.i4 1
+	IL_269c:  beq IL_26a6
+
+	IL_26a1:  br IL_270b
+
+	IL_26a6:  call bool class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfElsePass()
+	IL_26ab:  stloc 1
+
+	IL_26af:  nop 
+	IL_26b0:  nop 
+	IL_26b1:  ldloc 1
+
+	IL_26b5:  nop 
+	IL_26b6:  nop 
+	IL_26b7:  ldc.i4 0
+	IL_26bc:  beq IL_26c6
+
+	IL_26c1:  br IL_26e1
+
+	IL_26c6:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfNxtBlkLbl()
+	IL_26cb:  stloc 103
+
+	IL_26cf:  nop 
+	IL_26d0:  nop 
+	IL_26d1:  ldloc 103
+
+	IL_26d5:  nop 
+	IL_26d6:  nop 
+	IL_26d7:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_26dc:  br IL_26e6
+
+	IL_26e1:  br IL_26e6
+
+	IL_26e6:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadIfEndLbl()
+	IL_26eb:  stloc 102
+
+	IL_26ef:  nop 
+	IL_26f0:  nop 
+	IL_26f1:  ldloc 102
+
+	IL_26f5:  nop 
+	IL_26f6:  nop 
+	IL_26f7:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_26fc:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::PopIf()
+	IL_2701:  br IL_292a
+
+	IL_2706:  br IL_2710
+
+	IL_270b:  br IL_2710
+
+	IL_2710:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.EndDoStmt
+	IL_2715:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_271a:  stloc 0
+
+	IL_271e:  nop 
+	IL_271f:  nop 
+	IL_2720:  ldloc 0
+
+	IL_2724:  nop 
+	IL_2725:  nop 
+	IL_2726:  ldarg 1
+
+	IL_272a:  nop 
+	IL_272b:  nop 
+	IL_272c:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_2731:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_2736:  stloc 1
+
+	IL_273a:  nop 
+	IL_273b:  nop 
+	IL_273c:  ldloc 1
+
+	IL_2740:  nop 
+	IL_2741:  nop 
+	IL_2742:  ldc.i4 1
+	IL_2747:  beq IL_2751
+
+	IL_274c:  br IL_278c
+
+	IL_2751:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopStartLbl()
+	IL_2756:  stloc 105
+
+	IL_275a:  nop 
+	IL_275b:  nop 
+	IL_275c:  ldloc 105
+
+	IL_2760:  nop 
+	IL_2761:  nop 
+	IL_2762:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBr(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_2767:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.SymTable::ReadLoopEndLbl()
+	IL_276c:  stloc 104
+
+	IL_2770:  nop 
+	IL_2771:  nop 
+	IL_2772:  ldloc 104
+
+	IL_2776:  nop 
+	IL_2777:  nop 
+	IL_2778:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_277d:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::PopLoop()
+	IL_2782:  br IL_292a
+
+	IL_2787:  br IL_2791
+
+	IL_278c:  br IL_2791
+
+	IL_2791:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.LabelStmt
+	IL_2796:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_279b:  stloc 0
+
+	IL_279f:  nop 
+	IL_27a0:  nop 
+	IL_27a1:  ldloc 0
+
+	IL_27a5:  nop 
+	IL_27a6:  nop 
+	IL_27a7:  ldarg 1
+
+	IL_27ab:  nop 
+	IL_27ac:  nop 
+	IL_27ad:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_27b2:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_27b7:  stloc 1
+
+	IL_27bb:  nop 
+	IL_27bc:  nop 
+	IL_27bd:  ldloc 1
+
+	IL_27c1:  nop 
+	IL_27c2:  nop 
+	IL_27c3:  ldc.i4 1
+	IL_27c8:  beq IL_27d2
+
+	IL_27cd:  br IL_2809
+
+	IL_27d2:  ldarg 1
+
+	IL_27d6:  nop 
+	IL_27d7:  nop 
+	IL_27d8:  stloc 117
+
+	IL_27dc:  nop 
+	IL_27dd:  nop 
+	IL_27de:  ldloc 117
+
+	IL_27e2:  nop 
+	IL_27e3:  nop 
+	IL_27e4:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.LabelStmt::LabelName
+	IL_27e9:  stloc 116
+
+	IL_27ed:  nop 
+	IL_27ee:  nop 
+	IL_27ef:  ldloc 116
+
+	IL_27f3:  nop 
+	IL_27f4:  nop 
+	IL_27f5:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_27fa:  call void class dylan.NET.Tokenizer.CodeGen.SymTable::AddLbl(string)
+	IL_27ff:  br IL_292a
+
+	IL_2804:  br IL_280e
+
+	IL_2809:  br IL_280e
+
+	IL_280e:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.PlaceStmt
+	IL_2813:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_2818:  stloc 0
+
+	IL_281c:  nop 
+	IL_281d:  nop 
+	IL_281e:  ldloc 0
+
+	IL_2822:  nop 
+	IL_2823:  nop 
+	IL_2824:  ldarg 1
+
+	IL_2828:  nop 
+	IL_2829:  nop 
+	IL_282a:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_282f:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_2834:  stloc 1
+
+	IL_2838:  nop 
+	IL_2839:  nop 
+	IL_283a:  ldloc 1
+
+	IL_283e:  nop 
+	IL_283f:  nop 
+	IL_2840:  ldc.i4 1
+	IL_2845:  beq IL_284f
+
+	IL_284a:  br IL_2897
+
+	IL_284f:  ldarg 1
+
+	IL_2853:  nop 
+	IL_2854:  nop 
+	IL_2855:  stloc 118
+
+	IL_2859:  nop 
+	IL_285a:  nop 
+	IL_285b:  ldloc 118
+
+	IL_285f:  nop 
+	IL_2860:  nop 
+	IL_2861:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.PlaceStmt::LabelName
+	IL_2866:  stloc 116
+
+	IL_286a:  nop 
+	IL_286b:  nop 
+	IL_286c:  ldloc 116
+
+	IL_2870:  nop 
+	IL_2871:  nop 
+	IL_2872:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2877:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.Helpers::GetLbl(string)
+	IL_287c:  stloc 106
+
+	IL_2880:  nop 
+	IL_2881:  nop 
+	IL_2882:  ldloc 106
+
+	IL_2886:  nop 
+	IL_2887:  nop 
+	IL_2888:  call void class [dnr]dylan.NET.Reflection.ILEmitter::MarkLbl(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_288d:  br IL_292a
+
+	IL_2892:  br IL_289c
+
+	IL_2897:  br IL_289c
+
+	IL_289c:  ldtoken [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.GotoStmt
+	IL_28a1:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_28a6:  stloc 0
+
+	IL_28aa:  nop 
+	IL_28ab:  nop 
+	IL_28ac:  ldloc 0
+
+	IL_28b0:  nop 
+	IL_28b1:  nop 
+	IL_28b2:  ldarg 1
+
+	IL_28b6:  nop 
+	IL_28b7:  nop 
+	IL_28b8:  box [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.Stmt
+	IL_28bd:  callvirt instance bool class [mscorlib]System.Type::IsInstanceOfType(object)
+	IL_28c2:  stloc 1
+
+	IL_28c6:  nop 
+	IL_28c7:  nop 
+	IL_28c8:  ldloc 1
+
+	IL_28cc:  nop 
+	IL_28cd:  nop 
+	IL_28ce:  ldc.i4 1
+	IL_28d3:  beq IL_28dd
+
+	IL_28d8:  br IL_2925
+
+	IL_28dd:  ldarg 1
+
+	IL_28e1:  nop 
+	IL_28e2:  nop 
+	IL_28e3:  stloc 119
+
+	IL_28e7:  nop 
+	IL_28e8:  nop 
+	IL_28e9:  ldloc 119
+
+	IL_28ed:  nop 
+	IL_28ee:  nop 
+	IL_28ef:  ldfld class [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Ident [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.GotoStmt::LabelName
+	IL_28f4:  stloc 116
+
+	IL_28f8:  nop 
+	IL_28f9:  nop 
+	IL_28fa:  ldloc 116
+
+	IL_28fe:  nop 
+	IL_28ff:  nop 
+	IL_2900:  ldfld string [tokenizer.AST]dylan.NET.Tokenizer.AST.Tokens.Token::Value
+	IL_2905:  call valuetype [mscorlib]System.Reflection.Emit.Label class dylan.NET.Tokenizer.CodeGen.Helpers::GetLbl(string)
+	IL_290a:  stloc 106
+
+	IL_290e:  nop 
+	IL_290f:  nop 
+	IL_2910:  ldloc 106
+
+	IL_2914:  nop 
+	IL_2915:  nop 
+	IL_2916:  call void class [dnr]dylan.NET.Reflection.ILEmitter::EmitBr(valuetype [mscorlib]System.Reflection.Emit.Label)
+	IL_291b:  br IL_292a
+
+	IL_2920:  br IL_292a
+
+	IL_2925:  br IL_292a
+
+	IL_292a:  ret 
     } // end of method StmtReader::Read
 
-    // method line 91
+    // method line 98
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0xe940
+        // Method begins at RVA 0xf13c
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 
@@ -24555,11 +25566,11 @@
   	extends [mscorlib]System.Object
   {
 
-    // method line 92
+    // method line 99
     .method public 
            instance default void EmitMSIL (class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet stmts, string fpath)  cil managed 
     {
-        // Method begins at RVA 0xe954
+        // Method begins at RVA 0xf150
 	// Code size 1126 (0x466)
 	.maxstack 40
 	.locals init (
@@ -25075,11 +26086,11 @@
 	IL_0465:  ret 
     } // end of method CodeGenerator::EmitMSIL
 
-    // method line 93
+    // method line 100
     .method public specialname rtspecialname 
            instance default void '.ctor' ()  cil managed 
     {
-        // Method begins at RVA 0xedc8
+        // Method begins at RVA 0xf5c4
 	// Code size 7 (0x7)
 	.maxstack 2
 	IL_0000:  ldarg.0 

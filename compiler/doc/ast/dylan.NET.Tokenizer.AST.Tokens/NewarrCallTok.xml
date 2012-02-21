@@ -10,6 +10,7 @@
     <AssemblyVersion>11.2.8.4</AssemblyVersion>
     <AssemblyVersion>11.2.8.5</AssemblyVersion>
     <AssemblyVersion>11.2.8.6</AssemblyVersion>
+    <AssemblyVersion>11.2.8.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
@@ -32,6 +33,7 @@
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
+        <AssemblyVersion>11.2.8.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -51,6 +53,7 @@
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
+        <AssemblyVersion>11.2.8.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
@@ -73,6 +76,7 @@
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
+        <AssemblyVersion>11.2.8.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -94,6 +98,7 @@
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
+        <AssemblyVersion>11.2.8.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>

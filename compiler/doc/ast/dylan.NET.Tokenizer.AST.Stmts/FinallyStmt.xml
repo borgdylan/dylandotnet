@@ -17,6 +17,7 @@
     <AssemblyVersion>11.2.8.4</AssemblyVersion>
     <AssemblyVersion>11.2.8.5</AssemblyVersion>
     <AssemblyVersion>11.2.8.6</AssemblyVersion>
+    <AssemblyVersion>11.2.8.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
@@ -46,6 +47,7 @@
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
+        <AssemblyVersion>11.2.8.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>

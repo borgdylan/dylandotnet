@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.8.6">
+    <Assembly Name="tokenizer.AST" Version="11.2.8.7">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("tokenizer.AST")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.6")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.7")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("tokenizer.AST")</AttributeName>
@@ -38,9 +38,11 @@
     <Namespace Name="dylan.NET.Tokenizer.AST.Stmts">
       <Type Name="AssemblyStmt" Kind="Class" />
       <Type Name="AssignStmt" Kind="Class" />
+      <Type Name="BreakStmt" Kind="Class" />
       <Type Name="CatchStmt" Kind="Class" />
       <Type Name="ClassStmt" Kind="Class" />
       <Type Name="CommentStmt" Kind="Class" />
+      <Type Name="ContinueStmt" Kind="Class" />
       <Type Name="DebugStmt" Kind="Class" />
       <Type Name="DecStmt" Kind="Class" />
       <Type Name="DelegateStmt" Kind="Class" />
@@ -99,10 +101,12 @@
     <Namespace Name="dylan.NET.Tokenizer.AST.Tokens">
       <Type Name="AssemblyTok" Kind="Class" />
       <Type Name="AsTok" Kind="Class" />
+      <Type Name="BreakTok" Kind="Class" />
       <Type Name="CastclassTok" Kind="Class" />
       <Type Name="CatchTok" Kind="Class" />
       <Type Name="ClassTok" Kind="Class" />
       <Type Name="CommentTok" Kind="Class" />
+      <Type Name="ContinueTok" Kind="Class" />
       <Type Name="DebugTok" Kind="Class" />
       <Type Name="DelegateTok" Kind="Class" />
       <Type Name="DependTok" Kind="Class" />

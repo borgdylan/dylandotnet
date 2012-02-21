@@ -62,6 +62,14 @@ class public auto ansi DoStmt extends Stmt
 
 end class
 
+class public auto ansi BreakStmt extends Stmt
+
+end class
+
+class public auto ansi ContinueStmt extends Stmt
+
+end class
+
 class public auto ansi EndDoStmt extends Stmt
 
 end class

@@ -1,6 +1,7 @@
+#SUBDIRS = . tests doc 2.0 4.0 dev
+
 EXTRA_DIST = 
 CLEANFILES = 
-SUBDIRS = . tests doc 2.0 4.0 dev
 
 #tokenizer.AST.txt tokenizer.Lexer.txt tokenizer.Parser.txt tokenizer.CodeGen.txt dnc.txt
 

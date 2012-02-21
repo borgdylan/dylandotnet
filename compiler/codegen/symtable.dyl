@@ -16,6 +16,7 @@ field public static MethodItem[] NestedMetLst
 field public static CtorItem[] CtorLst
 field public static CtorItem[] NestedCtorLst
 field public static IfItem[] IfLst
+field public static LoopItem[] LoopLst
 field public static LabelItem[] LblLst
 field public static TypeArr[] TypLst
 
@@ -28,12 +29,17 @@ NestedMetLst = newarr MethodItem 0
 CtorLst = newarr CtorItem 0
 NestedCtorLst = newarr CtorItem 0
 IfLst = newarr IfItem 0
+LoopLst = newarr LoopItem 0
 LblLst = newarr LabelItem 0
 TypLst = newarr TypeArr 0
 end method
 
 method public static void ResetIf()
 IfLst = newarr IfItem 0
+end method
+
+method public static void ResetLoop()
+LoopLst = newarr LoopItem 0
 end method
 
 method public static void ResetLbl()
@@ -508,6 +514,51 @@ IfLst = destarr
 
 end method
 
+method public static void AddLoop()
+
+var endl as Emit.Label = ILEmitter::DefineLbl()
+var startl as Emit.Label = ILEmitter::DefineLbl()
+var vr as LoopItem = new LoopItem(startl, endl)
+
+var len as integer = LoopLst[l]
+var destl as integer = len + 1
+var stopel as integer = len - 1
+var i as integer = -1
+
+var destarr as IfItem[] = newarr LoopItem destl
+
+label loop
+label cont
+
+place loop
+
+i++
+
+if len > 0 then
+
+destarr[i] = LoopLst[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+destarr[len] = vr
+
+LoopLst = destarr
+
+end method
+
+
 method public static void PopIf()
 
 var len as integer = IfLst[l]
@@ -546,6 +597,45 @@ IfLst = destarr
 
 end method
 
+method public static void PopLoop()
+
+var len as integer = LoopLst[l]
+var destl as integer = len - 1
+var stopel as integer = len - 2
+var i as integer = -1
+
+var destarr as LoopItem[] = newarr LoopItem destl
+
+label loop
+label cont
+
+place loop
+
+i++
+
+if stopel >= 0 then
+
+destarr[i] = LoopLst[i]
+
+end if
+
+if i = stopel then
+goto cont
+else
+if stopel <> -1 then
+goto loop
+else
+goto cont
+end if
+end if
+
+place cont
+
+LoopLst = destarr
+
+end method
+
+
 method public static Emit.Label ReadIfEndLbl()
 var lastel as integer = IfLst[l] - 1
 var ifi as IfItem = IfLst[lastel]
@@ -556,6 +646,18 @@ method public static Emit.Label ReadIfNxtBlkLbl()
 var lastel as integer = IfLst[l] - 1
 var ifi as IfItem = IfLst[lastel]
 return ifi::NextBlkLabel
+end method
+
+method public static Emit.Label ReadLoopEndLbl()
+var lastel as integer = LoopLst[l] - 1
+var ifi as LoopItem = LoopLst[lastel]
+return ifi::EndLabel
+end method
+
+method public static Emit.Label ReadLoopStartLbl()
+var lastel as integer = LoopLst[l] - 1
+var ifi as LoopItem = LoopLst[lastel]
+return ifi::StartLabel
 end method
 
 method public static boolean ReadIfElsePass()

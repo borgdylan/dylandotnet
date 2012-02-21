@@ -202,6 +202,14 @@ class public auto ansi DoTok extends Token
 
 end class
 
+class public auto ansi BreakTok extends Token
+
+end class
+
+class public auto ansi ContinueTok extends Token
+
+end class
+
 class public auto ansi WhileTok extends Token
 
 end class

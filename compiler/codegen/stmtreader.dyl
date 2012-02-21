@@ -337,6 +337,7 @@ end if
 
 SymTable::ResetVar()
 SymTable::ResetIf()
+SymTable::ResetLoop()
 SymTable::ResetLbl()
 
 var dtypb as TypeBuilder = AsmFactory::CurnTypB
@@ -733,6 +734,8 @@ end if
 
 var ifendl as Emit.Label
 var ifnbl as Emit.Label
+var lpendl as Emit.Label
+var lpstartl as Emit.Label
 var genlbl as Emit.Label
 
 typ = gettype IfStmt
@@ -750,6 +753,124 @@ ILEmitter::EmitBrfalse(ifnbl)
 
 goto fin
 end if
+
+var lpexp as Expr = null
+
+typ = gettype DoStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+SymTable::AddLoop()
+
+lpstartl = SymTable::ReadLoopStartLbl()
+ILEmitter::MarkLbl(lpstartl)
+
+goto fin
+end if
+
+typ = gettype BreakStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+
+lpendl = SymTable::ReadLoopEndLbl()
+ILEmitter::EmitBr(lpendl)
+
+goto fin
+end if
+
+typ = gettype ContinueStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+
+lpstartl = SymTable::ReadLoopStartLbl()
+ILEmitter::EmitBr(lpstartl)
+
+goto fin
+end if
+
+typ = gettype UntilStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var unstm as UntilStmt = stm
+
+lpstartl = SymTable::ReadLoopStartLbl()
+
+lpexp = unstm::Exp
+eval = new Evaluator()
+eval::Evaluate(lpexp)
+ILEmitter::EmitBrfalse(lpstartl)
+
+lpendl = SymTable::ReadLoopEndLbl()
+ILEmitter::MarkLbl(lpendl)
+SymTable::PopLoop()
+
+goto fin
+end if
+
+typ = gettype WhileStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var whstm as WhileStmt = stm
+
+lpstartl = SymTable::ReadLoopStartLbl()
+
+lpexp = whstm::Exp
+eval = new Evaluator()
+eval::Evaluate(lpexp)
+ILEmitter::EmitBrtrue(lpstartl)
+
+lpendl = SymTable::ReadLoopEndLbl()
+ILEmitter::MarkLbl(lpendl)
+SymTable::PopLoop()
+
+goto fin
+end if
+
+
+typ = gettype DoUntilStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var dustm as DoUntilStmt = stm
+SymTable::AddLoop()
+
+lpstartl = SymTable::ReadLoopStartLbl()
+ILEmitter::MarkLbl(lpstartl)
+
+lpexp = dustm::Exp
+eval = new Evaluator()
+eval::Evaluate(lpexp)
+
+lpendl = SymTable::ReadLoopEndLbl()
+ILEmitter::EmitBrtrue(lpendl)
+
+goto fin
+end if
+
+typ = gettype DoWhileStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+var dwstm as DoWhileStmt = stm
+SymTable::AddLoop()
+
+lpstartl = SymTable::ReadLoopStartLbl()
+ILEmitter::MarkLbl(lpstartl)
+
+lpexp = dwstm::Exp
+eval = new Evaluator()
+eval::Evaluate(lpexp)
+
+lpendl = SymTable::ReadLoopEndLbl()
+ILEmitter::EmitBrfalse(lpendl)
+
+goto fin
+end if
+
 
 typ = gettype ElseIfStmt
 b = typ::IsInstanceOfType($object$stm)
@@ -800,6 +921,20 @@ end if
 ifendl = SymTable::ReadIfEndLbl()
 ILEmitter::MarkLbl(ifendl)
 SymTable::PopIf()
+goto fin
+end if
+
+typ = gettype EndDoStmt
+b = typ::IsInstanceOfType($object$stm)
+
+if b = true then
+
+lpstartl = SymTable::ReadLoopStartLbl()
+ILEmitter::EmitBr(lpstartl)
+
+lpendl = SymTable::ReadLoopEndLbl()
+ILEmitter::MarkLbl(lpendl)
+SymTable::PopLoop()
 goto fin
 end if
 

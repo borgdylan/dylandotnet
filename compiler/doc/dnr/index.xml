@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dnr" Version="11.2.8.6">
+    <Assembly Name="dnr" Version="11.2.8.7">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("dnr")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.6")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.7")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("dnr")</AttributeName>

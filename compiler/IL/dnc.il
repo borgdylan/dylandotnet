@@ -5,31 +5,31 @@
 }
 .assembly extern dnu
 {
-  .ver 11:2:8:6
+  .ver 11:2:8:7
 }
 .assembly extern dnr
 {
-  .ver 11:2:8:6
+  .ver 11:2:8:7
 }
 .assembly extern tokenizer.CodeGen
 {
-  .ver 11:2:8:6
+  .ver 11:2:8:7
 }
 .assembly extern tokenizer.Parser
 {
-  .ver 11:2:8:6
+  .ver 11:2:8:7
 }
 .assembly extern tokenizer.Lexer
 {
-  .ver 11:2:8:6
+  .ver 11:2:8:7
 }
 .assembly extern tokenizer.AST
 {
-  .ver 11:2:8:6
+  .ver 11:2:8:7
 }
 .assembly 'dnc'
 {
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 36 00 00 ) // ...11.2.8.6..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 37 00 00 ) // ...11.2.8.7..
 
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
@@ -40,10 +40,10 @@
   .custom instance void class [mscorlib]System.Reflection.AssemblyDescriptionAttribute::'.ctor'(string) =  (01 00 03 64 6E 63 00 00 ) // ...dnc..
 
   .hash algorithm 0x00008004
-  .ver  11:2:8:6
+  .ver  11:2:8:7
 }
 
-.module dnc.exe // GUID = {5D340897-A099-4572-B805-2B66F290ABD9}
+.module dnc.exe // GUID = {E06B54EA-3315-4D1E-99A0-F6C32C9B6FF8}
 
 
 .namespace dylan.NET.Compiler
@@ -80,7 +80,7 @@
 		class [tokenizer.Parser]dylan.NET.Tokenizer.Parser.Parser	V_14,
 		class [tokenizer.AST]dylan.NET.Tokenizer.AST.Stmts.StmtSet	V_15,
 		class [tokenizer.CodeGen]dylan.NET.Tokenizer.CodeGen.CodeGenerator	V_16)
-	IL_0000:  ldstr "dylan.NET Compiler v. 11.2.8.6 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0"
+	IL_0000:  ldstr "dylan.NET Compiler v. 11.2.8.7 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0"
 	IL_0005:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)
 	IL_000a:  ldstr "                           and Xamarin Mono v. 2.6.7/v. 2.10.x"
 	IL_000f:  call void class [dnu]dylan.NET.Utils.StreamUtils::WriteLine(string)

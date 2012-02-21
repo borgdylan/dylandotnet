@@ -18,7 +18,7 @@ import System.IO
 import System.Text
 
 assembly pc2dn exe
-ver 11.2.8.6
+ver 11.2.8.7
 
 namespace dylan.NET.PkgConfig.PC2DN
 
