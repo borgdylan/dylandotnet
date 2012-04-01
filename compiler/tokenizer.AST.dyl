@@ -1,6 +1,6 @@
 //The AST model for the dylan.NET tokenizer
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v.9.9 or later
+//compile with dylan.NET v.11.2.8.8 or later
 
 //    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -10,125 +10,112 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-#refasm mscorlib.dll
-#refasm System.dll
-#refasm System.Core.dll
-#refasm System.Data.dll
-#refasm System.Data.DataSetExtensions.dll
-#refasm System.Xml.dll 
-#refasm System.Xml.Linq.dll
-#refasm System.Configuration.dll
-#refasm Microsoft.VisualBasic.dll
+#refstdasm "mscorlib.dll"
+#refasm "dnu.dll"
 
-import Microsoft.VisualBasic
+#debug on
+
 import System
-import System.Collections
-import System.Collections.Generic
-import System.Data
-import System.Diagnostics
-import System.Linq
-import System.Xml
-import System.Xml.Linq
-
-locimport dylan.NET.Tokenizer.AST
-locimport dylan.NET.Tokenizer.AST.Tokens
-locimport dylan.NET.Tokenizer.AST.Exprs
-locimport dylan.NET.Tokenizer.AST.Stmts
-locimport dylan.NET.Tokenizer.AST.Tokens.Ops
-locimport dylan.NET.Tokenizer.AST.Tokens.TypeToks
-locimport dylan.NET.Tokenizer.AST.Tokens.Literals
-locimport dylan.NET.Tokenizer.AST.Tokens.Attributes
-locimport dylan.NET.Tokenizer.AST.Tokens.Chars
+import dylan.NET.Utils
+import dylan.NET.Tokenizer.AST
+import dylan.NET.Tokenizer.AST.Tokens
+import dylan.NET.Tokenizer.AST.Exprs
+import dylan.NET.Tokenizer.AST.Stmts
+import dylan.NET.Tokenizer.AST.Tokens.Ops
+import dylan.NET.Tokenizer.AST.Tokens.TypeToks
+import dylan.NET.Tokenizer.AST.Tokens.Literals
+import dylan.NET.Tokenizer.AST.Tokens.Attributes
+import dylan.NET.Tokenizer.AST.Tokens.Chars
 
 assembly tokenizer.AST dll
-ver 11.2.8.7
+ver 11.2.8.9
 
 namespace dylan.NET.Tokenizer.AST.Tokens
-#include E:\Code\dylannet\compiler\ast\token.dyl
+	#include "ast/token.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Exprs
-#include E:\Code\dylannet\compiler\ast\expr.dyl
+	#include "ast/expr.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Stmts
-#include E:\Code\dylannet\compiler\ast\stmt.dyl
+	#include "ast/stmt.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens.Ops
-#include E:\Code\dylannet\compiler\ast\op.dyl
-#include E:\Code\dylannet\compiler\ast\aritops.dyl
-#include E:\Code\dylannet\compiler\ast\logicalops.dyl
+	#include "ast/op.dyl"
+	#include "ast/aritops.dyl"
+	#include "ast/logicalops.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens.TypeToks
-#include E:\Code\dylannet\compiler\ast\typetoks.dyl
+	#include "ast/typetoks.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens.Literals
-#include E:\Code\dylannet\compiler\ast\literals.dyl
+	#include "ast/literals.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens
-#include E:\Code\dylannet\compiler\ast\ident.dyl
+	#include "ast/ident.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens.Attributes
-#include E:\Code\dylannet\compiler\ast\attributes.dyl
+	#include "ast/attributes.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens.Ops
-#include E:\Code\dylannet\compiler\ast\conditionalops.dyl
+	#include "ast/conditionalops.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens
-#include E:\Code\dylannet\compiler\ast\otherkeywords.dyl
-#include E:\Code\dylannet\compiler\ast\comment.dyl
-#include E:\Code\dylannet\compiler\ast\methods.dyl
+	#include "ast/otherkeywords.dyl"
+	#include "ast/comment.dyl"
+	#include "ast/methods.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens.Chars
-#include E:\Code\dylannet\compiler\ast\chars.dyl
+	#include "ast/chars.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Exprs
-#include E:\Code\dylannet\compiler\ast\newarrexpr.dyl
-#include E:\Code\dylannet\compiler\ast\newexpr.dyl
-#include E:\Code\dylannet\compiler\ast\castclassexpr.dyl
-#include E:\Code\dylannet\compiler\ast\gettypeexpr.dyl
-#include E:\Code\dylannet\compiler\ast\ptrexpr.dyl
-#include E:\Code\dylannet\compiler\ast\otherexpr.dyl
-#include E:\Code\dylannet\compiler\ast\conditionalexpr.dyl
+	#include "ast/newarrexpr.dyl"
+	#include "ast/newexpr.dyl"
+	#include "ast/castclassexpr.dyl"
+	#include "ast/gettypeexpr.dyl"
+	#include "ast/ptrexpr.dyl"
+	#include "ast/otherexpr.dyl"
+	#include "ast/conditionalexpr.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Stmts
-#include E:\Code\dylannet\compiler\ast\dependstmt.dyl
-#include E:\Code\dylannet\compiler\ast\stdasmstmt.dyl
-#include E:\Code\dylannet\compiler\ast\singstmt.dyl
-#include E:\Code\dylannet\compiler\ast\debugstmt.dyl
-#include E:\Code\dylannet\compiler\ast\scopestmt.dyl
-#include E:\Code\dylannet\compiler\ast\makeasmstmt.dyl
-#include E:\Code\dylannet\compiler\ast\refasmstmt.dyl
-#include E:\Code\dylannet\compiler\ast\newresstmt.dyl
-#include E:\Code\dylannet\compiler\ast\importstmts.dyl
-#include E:\Code\dylannet\compiler\ast\asmstmt.dyl
-#include E:\Code\dylannet\compiler\ast\verstmt.dyl
-#include E:\Code\dylannet\compiler\ast\includestmt.dyl
-#include E:\Code\dylannet\compiler\ast\xmldocstmt.dyl
-#include E:\Code\dylannet\compiler\ast\nsstmt.dyl
-#include E:\Code\dylannet\compiler\ast\classstmt.dyl
-#include E:\Code\dylannet\compiler\ast\delegatestmt.dyl
-#include E:\Code\dylannet\compiler\ast\enumstmt.dyl
-#include E:\Code\dylannet\compiler\ast\propstmt.dyl
-#include E:\Code\dylannet\compiler\ast\metstmt.dyl
-#include E:\Code\dylannet\compiler\ast\fieldstmt.dyl
-#include E:\Code\dylannet\compiler\ast\exceptionstmts.dyl
-#include E:\Code\dylannet\compiler\ast\labelstmts.dyl
-#include E:\Code\dylannet\compiler\ast\loopstmts.dyl
-#include E:\Code\dylannet\compiler\ast\ifstmts.dyl
-#include E:\Code\dylannet\compiler\ast\varstmts.dyl
-#include E:\Code\dylannet\compiler\ast\otherstmts.dyl
+	#include "ast/dependstmt.dyl"
+	#include "ast/stdasmstmt.dyl"
+	#include "ast/singstmt.dyl"
+	#include "ast/debugstmt.dyl"
+	#include "ast/scopestmt.dyl"
+	#include "ast/makeasmstmt.dyl"
+	#include "ast/refasmstmt.dyl"
+	#include "ast/newresstmt.dyl"
+	#include "ast/importstmts.dyl"
+	#include "ast/asmstmt.dyl"
+	#include "ast/verstmt.dyl"
+	#include "ast/includestmt.dyl"
+	#include "ast/xmldocstmt.dyl"
+	#include "ast/nsstmt.dyl"
+	#include "ast/classstmt.dyl"
+	#include "ast/delegatestmt.dyl"
+	#include "ast/enumstmt.dyl"
+	#include "ast/propstmt.dyl"
+	#include "ast/metstmt.dyl"
+	#include "ast/fieldstmt.dyl"
+	#include "ast/exceptionstmts.dyl"
+	#include "ast/labelstmts.dyl"
+	#include "ast/loopstmts.dyl"
+	#include "ast/ifstmts.dyl"
+	#include "ast/varstmts.dyl"
+	#include "ast/otherstmts.dyl"
 end namespace

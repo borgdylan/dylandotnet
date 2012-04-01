@@ -1,3 +1,15 @@
+commit 97413a88fddd1e892270cb2dc0e27ff5a61ff8a1
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Tue Feb 21 11:36:46 2012 +0100
+
+    Commiting latest dylan.NET source code v.112.8.7
+      * Adding support for pre/post conditioned loops.
+      * Adding support for break/continue statements.
+      * Updating man pages and makefiles.
+      * Bumping up version to 11.2.8.7
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 458552a56ddf86c407674ccb1645659b555dfff8
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Sun Feb 19 21:49:34 2012 +0100

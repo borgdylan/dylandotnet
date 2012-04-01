@@ -8,13 +8,11 @@
 
 class public auto ansi VerStmt extends Stmt
 
-field public IntLiteral[] VersionNos
+	field public IntLiteral[] VersionNos
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-VersionNos = newarr IntLiteral 4
-end method
+	method public void ctor0()
+		me::ctor()
+		VersionNos = new IntLiteral[4]
+	end method
 
 end class

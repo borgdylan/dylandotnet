@@ -7,14 +7,6 @@ CLEANFILES =
 
 .PHONY: all
 
-dylandotnet:
-	mono ./dnc.exe tokenizer.AST.dyl
-	mono ./dnc.exe tokenizer.Lexer.dyl
-	mono ./dnc.exe tokenizer.Parser.dyl
-	mono ./dnc.exe tokenizer.CodeGen.dyl
-	mono ./dnc.exe dnc.dyl
-	
-
 installman:
 	$(install_sh_PROGRAM) dylandotnet.1 $(DESTDIR)$(mandir)/man1/dylandotnet.1
 	$(install_sh_PROGRAM) dylandotnet4.1 $(DESTDIR)$(mandir)/man1/dylandotnet4.1
@@ -62,6 +54,30 @@ tarball: distclean
 	rm -f -r ./../$(distdir)
 
 all:
+	'$(MONO)' 4.0/dnc.exe -V > buildlog4
+	'$(MONO)' 4.0/dnc.exe dnu.dyl | tee -a buildlog4
+	'$(MONO)' 4.0/dnc.exe dnr.dyl | tee -a buildlog4
+	'$(MONO)' 4.0/dnc.exe tokenizer.AST.dyl | tee -a buildlog4
+	'$(MONO)' 4.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog4
+	'$(MONO)' 4.0/dnc.exe dnc.dyl | tee -a buildlog4
+	cp dnu.dll 4.0/dnu.dll
+	cp dnr.dll 4.0/dnr.dll
+	cp tokenizer.AST.dll 4.0/tokenizer.AST.dll
+	cp tokenizer.CodeGen.dll 4.0/tokenizer.CodeGen.dll
+	cp dnc.exe 4.0/dnc.exe
+	
+	'$(MONO)' 2.0/dnc.exe -V > buildlog
+	'$(MONO)' 2.0/dnc.exe dnu.dyl | tee -a buildlog
+	'$(MONO)' 2.0/dnc.exe dnr.dyl | tee -a buildlog
+	'$(MONO)' 2.0/dnc.exe tokenizer.AST.dyl | tee -a buildlog
+	'$(MONO)' 2.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog
+	'$(MONO)' 2.0/dnc.exe dnc.dyl | tee -a buildlog
+	cp dnu.dll 2.0/dnu.dll
+	cp dnr.dll 2.0/dnr.dll
+	cp tokenizer.AST.dll 2.0/tokenizer.AST.dll
+	cp tokenizer.CodeGen.dll 2.0/tokenizer.CodeGen.dll
+	cp dnc.exe 2.0/dnc.exe
+
 	cp ChangeLog doc/ChangeLog
 	echo "Hello World"
 	$(MAKE) -C tests all

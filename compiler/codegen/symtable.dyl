@@ -8,993 +8,456 @@
 
 class public auto ansi beforefieldinit SymTable
 
-field public static VarItem[] VarLst
-field public static FieldItem[] FldLst
-field public static FieldItem[] NestedFldLst
-field public static MethodItem[] MetLst
-field public static MethodItem[] NestedMetLst
-field public static CtorItem[] CtorLst
-field public static CtorItem[] NestedCtorLst
-field public static IfItem[] IfLst
-field public static LoopItem[] LoopLst
-field public static LabelItem[] LblLst
-field public static TypeArr[] TypLst
+	field public static VarItem[] VarLst
+	field public static FieldItem[] FldLst
+	field public static FieldItem[] NestedFldLst
+	field public static MethodItem[] MetLst
+	field public static MethodItem[] NestedMetLst
+	field public static CtorItem[] CtorLst
+	field public static CtorItem[] NestedCtorLst
+	field public static IfItem[] IfLst
+	field public static LoopItem[] LoopLst
+	field public static LabelItem[] LblLst
+	field public static TypeArr[] TypLst
+	field public static boolean StoreFlg
+
+	method public static void SymTable()
+		VarLst = new VarItem[0]
+		FldLst = new FieldItem[0]
+		NestedFldLst = new FieldItem[0]
+		MetLst = new MethodItem[0]
+		NestedMetLst = new MethodItem[0]
+		CtorLst = new CtorItem[0]
+		NestedCtorLst = new CtorItem[0]
+		IfLst = new IfItem[0]
+		LoopLst = new LoopItem[0]
+		LblLst = new LabelItem[0]
+		TypLst = new TypeArr[0]
+		StoreFlg = false
+	end method
+
+	method public static void ResetIf()
+		IfLst = new IfItem[0]
+	end method
+
+	method public static void ResetLoop()
+		LoopLst = new LoopItem[0]
+	end method
+
+	method public static void ResetLbl()
+		LblLst = new LabelItem[0]
+	end method
+
+	method public static void ResetVar()
+		VarLst = new VarItem[0]
+	end method
+
+	method public static void ResetFld()
+		FldLst = new FieldItem[0]
+	end method
+
+	method public static void ResetNestedFld()
+		NestedFldLst = new FieldItem[0]
+	end method
 
-method public static void ctor0()
-VarLst = newarr VarItem 0
-FldLst = newarr FieldItem 0
-NestedFldLst = newarr FieldItem 0
-MetLst = newarr MethodItem 0
-NestedMetLst = newarr MethodItem 0
-CtorLst = newarr CtorItem 0
-NestedCtorLst = newarr CtorItem 0
-IfLst = newarr IfItem 0
-LoopLst = newarr LoopItem 0
-LblLst = newarr LabelItem 0
-TypLst = newarr TypeArr 0
-end method
+	method public static void ResetMet()
+		MetLst = new MethodItem[0]
+	end method
 
-method public static void ResetIf()
-IfLst = newarr IfItem 0
-end method
+	method public static void ResetNestedMet()
+		NestedMetLst = new MethodItem[0]
+	end method
 
-method public static void ResetLoop()
-LoopLst = newarr LoopItem 0
-end method
+	method public static void ResetCtor()
+		CtorLst = new CtorItem[0]
+	end method
 
-method public static void ResetLbl()
-LblLst = newarr LabelItem 0
-end method
+	method public static void ResetNestedCtor()
+		NestedCtorLst = new CtorItem[0]
+	end method
 
-method public static void ResetVar()
-VarLst = newarr VarItem 0
-end method
+	method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as Type, var lin as integer)
 
-method public static void ResetFld()
-FldLst = newarr FieldItem 0
-end method
+		var i as integer = -1
+		var destarr as VarItem[] = new VarItem[VarLst[l] + 1]
 
-method public static void ResetNestedFld()
-NestedFldLst = newarr FieldItem 0
-end method
+		do until i = (VarLst[l] - 1)
+			i = i + 1
+			destarr[i] = VarLst[i]
+		end do
 
-method public static void ResetMet()
-MetLst = newarr MethodItem 0
-end method
+		destarr[VarLst[l]] = new VarItem(nme, la, ind, typ, lin)
+		VarLst = destarr
 
-method public static void ResetNestedMet()
-NestedMetLst = newarr MethodItem 0
-end method
+	end method
 
-method public static void ResetCtor()
-CtorLst = newarr CtorItem 0
-end method
+	method public static integer AddTypArr(var arr as Type[])
 
-method public static void ResetNestedCtor()
-NestedCtorLst = newarr CtorItem 0
-end method
+		var vr as TypeArr = new TypeArr()
+		vr::Arr = arr
+		var i as integer = -1
+		var destarr as TypeArr[] = new TypeArr[TypLst[l] + 1]
 
-method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as System.Type)
+		do until i = (TypLst[l] - 1)
+			i = i + 1
+			destarr[i] = TypLst[i]
+		end do
 
-var vr as VarItem = new VarItem(nme, la, ind, typ)
+		destarr[TypLst[l]] = vr
+		TypLst = destarr
+		return TypLst[l] - 1
+	end method
 
-var len as integer = VarLst[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+	method public static Type[] PopTypArr()
 
-var destarr as VarItem[] = newarr VarItem destl
+		var b as TypeArr = TypLst[0]
+		var i as integer = 0
+		var j as integer
+		var destarr as TypeArr[] = new TypeArr[TypLst[l] - 1]
 
-label loop
-label cont
+		do until i >= (TypLst[l] - 1)
+			i = i + 1
+			j = i - 1
+			destarr[j] = TypLst[i]
+		end do
 
-place loop
+		TypLst = destarr
 
-i++
+		return b::Arr
 
-if len > 0 then
+	end method
 
-destarr[i] = VarLst[i]
 
-end if
+	method public static void AddFld(var nme as string, var typ as Type, var fld as FieldBuilder)
 
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
+		var i as integer = -1
+		var destarr as FieldItem[] = new FieldItem[FldLst[l] + 1]
 
-place cont
+		do until i = (FldLst[l] - 1)
+			i = i + 1
+			destarr[i] = FldLst[i]
+		end do
 
-destarr[len] = vr
+		destarr[FldLst[l]] = new FieldItem(nme, typ, fld)
+		FldLst = destarr
 
-VarLst = destarr
+	end method
 
-end method
+	method public static void AddNestedFld(var nme as string, var typ as Type, var fld as FieldBuilder)
 
-method public static integer AddTypArr(var arr as System.Type[])
+		var i as integer = -1
+		var destarr as FieldItem[] = new FieldItem[NestedFldLst[l] + 1]
 
-var vr as TypeArr = new TypeArr()
-vr::Arr = arr
+		do until i = NestedFldLst[l] - 1
+			i = i + 1
+			destarr[i] = NestedFldLst[i]
+		end do
 
-var len as integer = TypLst[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+		destarr[NestedFldLst[l]] = new FieldItem(nme, typ, fld)
+		NestedFldLst = destarr
 
-var destarr as TypeArr[] = newarr TypeArr destl
+	end method
 
-label loop
-label cont
+	method public static void AddMet(var nme as string, var typ as Type, var ptyps as Type[], var met as MethodBuilder)
 
-place loop
+		var i as integer = -1
+		var destarr as MethodItem[] = new MethodItem[MetLst[l] + 1]
 
-i++
+		do until i = (MetLst[l] - 1)
+			i = i + 1
+			destarr[i] = MetLst[i]
+		end do
 
-if len > 0 then
+		destarr[MetLst[l]] = new MethodItem(nme, typ, ptyps, met)
+		MetLst = destarr
 
-destarr[i] = TypLst[i]
+	end method
 
-end if
+	method public static void AddNestedMet(var nme as string, var typ as Type, var ptyps as Type[], var met as MethodBuilder)
 
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
+		var i as integer = -1
+		var destarr as MethodItem[] = new MethodItem[NestedMetLst[l] + 1]
 
-place cont
+		do until i = (NestedMetLst[l] - 1)
+			i = i + 1
+			destarr[i] = NestedMetLst[i]
+		end do
 
-destarr[len] = vr
+		destarr[NestedMetLst[l]] = new MethodItem(nme, typ, ptyps, met)
+		NestedMetLst = destarr
 
-TypLst = destarr
+	end method
 
-return len
-end method
+	method public static void AddCtor(var ptyps as Type[], var met as ConstructorBuilder)
 
-method public static System.Type[] PopTypArr()
+		var i as integer = -1
+		var destarr as CtorItem[] = new CtorItem[CtorLst[l] + 1]
 
-var a as System.Type[] = null
-var b as TypeArr = null
-var len as integer = TypLst[l]
-var destl as integer = len - 1
-var stopel as integer = len - 1
-var i as integer = 0
-var j as integer
+		do until i = (CtorLst[l] - 1)
+			i = i + 1
+			destarr[i] = CtorLst[i]
+		end do
 
-var destarr as TypeArr[] = newarr TypeArr destl
+		destarr[CtorLst[l]] = new CtorItem(ptyps, met)
+		CtorLst = destarr
 
-label loop
-label cont
+	end method
 
-place loop
+	method public static void AddNestedCtor(var ptyps as Type[], var met as ConstructorBuilder)
 
-i++
+		var vr as CtorItem = new CtorItem(ptyps, met)
+		var len as integer = NestedCtorLst[l]
+		var destl as integer = len + 1
+		var stopel as integer = len - 1
+		var i as integer = -1
+		var destarr as CtorItem[] = new CtorItem[destl]
 
-if destl > 0 then
+		do until i = stopel
+			i = i + 1
+			destarr[i] = NestedCtorLst[i]
+		end do
 
+		destarr[len] = vr
+		NestedCtorLst = destarr
 
-if len > 0 then
+	end method
 
-j = i - 1
-destarr[j] = TypLst[i]
+	method public static void AddIf()
 
-end if
+		var i as integer = -1
+		var destarr as IfItem[] = new IfItem[IfLst[l] + 1]
 
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
+		do until i = (IfLst[l] - 1)
+			i = i + 1
+			destarr[i] = IfLst[i]
+		end do
 
-end if
+		destarr[IfLst[l]] = new IfItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl())
+		IfLst = destarr
 
+	end method
 
-place cont
+	method public static void AddLoop()
 
-b = TypLst[0]
-a = b::Arr
+		var i as integer = -1
+		var destarr as IfItem[] = new LoopItem[LoopLst[l] + 1]
 
-TypLst = destarr
+		do until i = (LoopLst[l] - 1)
+			i = i + 1
+			destarr[i] = LoopLst[i]
+		end do
 
-return a
+		destarr[LoopLst[l]] = new LoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl())
+		LoopLst = destarr
 
-end method
+	end method
 
 
-method public static void AddFld(var nme as string, var typ as System.Type, var fld as FieldBuilder)
+	method public static void PopIf()
 
-var vr as FieldItem = new FieldItem(nme, typ, fld)
+		var i as integer = -1
+		var destarr as IfItem[] = new IfItem[IfLst[l] - 1]
 
-var len as integer = FldLst[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+		do until i >= (IfLst[l] - 2)
+			i = i + 1
+			destarr[i] = IfLst[i]
+		end do
 
-var destarr as FieldItem[] = newarr FieldItem destl
+		IfLst = destarr
 
-label loop
-label cont
+	end method
 
-place loop
+	method public static void PopLoop()
 
-i++
+		var i as integer = -1
+		var destarr as LoopItem[] = new LoopItem[LoopLst[l] - 1]
 
-if len > 0 then
+		do until i >= (LoopLst[l] - 2)
+			i = i + 1
+			destarr[i] = LoopLst[i]
+		end do
 
-destarr[i] = FldLst[i]
+		LoopLst = destarr
 
-end if
+	end method
 
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
+	method public static Emit.Label ReadIfEndLbl()
+		return IfLst[IfLst[l] - 1]::EndLabel
+	end method
 
-place cont
+	method public static Emit.Label ReadIfNxtBlkLbl()
+		return IfLst[IfLst[l] - 1]::NextBlkLabel
+	end method
 
-destarr[len] = vr
+	method public static Emit.Label ReadLoopEndLbl()
+		return LoopLst[LoopLst[l] - 1]::EndLabel
+	end method
 
-FldLst = destarr
+	method public static Emit.Label ReadLoopStartLbl()
+		return LoopLst[LoopLst[l] - 1]::StartLabel
+	end method
 
-end method
+	method public static boolean ReadIfElsePass()
+		return IfLst[IfLst[l] - 1]::ElsePass
+	end method
 
-method public static void AddNestedFld(var nme as string, var typ as System.Type, var fld as FieldBuilder)
+	method public static void SetIfElsePass()
+		var ifi as IfItem = IfLst[IfLst[l] - 1]
+		ifi::ElsePass = true
+	end method
 
-var vr as FieldItem = new FieldItem(nme, typ, fld)
+	method public static void SetIfNxtBlkLbl()
+		var ifi as IfItem = IfLst[IfLst[l] - 1]
+		ifi::NextBlkLabel = ILEmitter::DefineLbl()
+	end method
 
-var len as integer = NestedFldLst[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+	method public static void AddLbl(var nam as string)
 
-var destarr as FieldItem[] = newarr FieldItem destl
+		var i as integer = -1
+		var destarr as LabelItem[] = new LabelItem[LblLst[l] + 1]
 
-label loop
-label cont
+		do until i = (LblLst[l] - 1)
+			i = i + 1
+			destarr[i] = LblLst[i]
+		end do
 
-place loop
+		destarr[LblLst[l]] = new LabelItem(nam, ILEmitter::DefineLbl())
+		LblLst = destarr
 
-i++
+	end method
 
-if len > 0 then
 
-destarr[i] = NestedFldLst[i]
+	method public static VarItem FindVar(var nam as string)
 
-end if
+		var i as integer = -1
+		do until i = (VarLst[l] - 1)
+			i = i + 1
+			if nam = VarLst[i]::Name then
+				var vai as VarItem = VarLst[i]
+				if StoreFlg == false then
+					vai::Used = true
+				end if
+				return vai
+			end if
+		end do
 
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
+		return null
+	end method
 
-place cont
+	method public static void ResetUsed(var nam as string)
+		var i as integer = -1
+		do until i = (VarLst[l] - 1)
+			i = i + 1
+			if nam = VarLst[i]::Name then
+				var vai as VarItem = VarLst[i]
+				vai::Used = false
+			end if
+		end do
+	end method
 
-destarr[len] = vr
+	method public static void CheckUnusedVar()
+		var i as integer = -1
+		do until i = (VarLst[l] - 1)
+			i = i + 1
+			if (VarLst[i]::Used = false) and VarLst[i]::LocArg then
+				if VarLst[i]::Stored then
+					StreamUtils::WriteWarn(VarLst[i]::Line, ILEmitter::CurSrcFile, "The variable " + VarLst[i]::Name + " was initialised but then not used.")
+				else
+					StreamUtils::WriteWarn(VarLst[i]::Line, ILEmitter::CurSrcFile, "The variable " + VarLst[i]::Name + " was declared but never used.")
+				end if
+			end if
+		end do
+	end method
 
-NestedFldLst = destarr
+	method public static LabelItem FindLbl(var nam as string)
 
-end method
+		var i as integer = -1
+		do until i = (LblLst[l] - 1)
+			i = i + 1
+			if nam = LblLst[i]::LblName then
+				return LblLst[i]
+			end if
+		end do
 
+		return null
+	end method
 
-method public static void AddMet(var nme as string, var typ as System.Type, var ptyps as System.Type[], var met as MethodBuilder)
+	method public static FieldItem FindFld(var nam as string)
 
-var vr as MethodItem = new MethodItem(nme, typ, ptyps, met)
+		var i as integer = -1
+		do until i = (FldLst[l] - 1)
+			i = i + 1
+			if nam = FldLst[i]::Name then
+				return FldLst[i]
+			end if
+		end do
 
-var len as integer = MetLst[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+		return null
+	end method
 
-var destarr as MethodItem[] = newarr MethodItem destl
+	method public static boolean CmpTyps(var arra as Type[], var arrb as Type[])
 
-label loop
-label cont
+		if arra[l] = arrb[l] then
 
-place loop
+			if arra[l] = 0 then
+				return true
+			end if
 
-i++
+			var i as integer = -1
+			do until i = (arra[l] - 1)
+				i = i + 1
+				if arra[i]::IsAssignableFrom(arrb[i]) = false then
+					return false
+				end if
+			end do
 
-if len > 0 then
+		else
+			return false
+		end if
 
-destarr[i] = MetLst[i]
+		return true
 
-end if
+	end method
 
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
+	method public static MethodItem FindMet(var nam as string, var params as Type[])
 
-place cont
+		var i as integer = -1
+		do until i = (MetLst[l] - 1)
+			i = i + 1
+			if nam = MetLst[i]::Name then
+				if CmpTyps(MetLst[i]::ParamTyps, params) then
+					return MetLst[i]
+				end if
+			end if
+		end do
 
-destarr[len] = vr
+		return null
+	end method
 
-MetLst = destarr
+	method public static MethodItem FindMetNoParams(var nam as string)
 
-end method
+		var i as integer = -1
+		do until i = (MetLst[l] - 1)
+			i = i + 1
+			if nam = MetLst[i]::Name then
+				return MetLst[i]
+			end if
+		end do
 
+		return null
+	end method
 
-method public static void AddNestedMet(var nme as string, var typ as System.Type, var ptyps as System.Type[], var met as MethodBuilder)
+	method public static CtorItem FindCtor(var params as Type[])
 
-var vr as MethodItem = new MethodItem(nme, typ, ptyps, met)
+		var i as integer = -1
+		do until i = (CtorLst[l] - 1)
+			i = i + 1
+			if CmpTyps(CtorLst[i]::ParamTyps, params) then
+				return CtorLst[i]
+			end if
+		end do
 
-var len as integer = NestedMetLst[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
-
-var destarr as MethodItem[] = newarr MethodItem destl
-
-label loop
-label cont
-
-place loop
-
-i++
-
-if len > 0 then
-
-destarr[i] = NestedMetLst[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = vr
-
-NestedMetLst = destarr
-
-end method
-
-
-method public static void AddCtor(var ptyps as System.Type[], var met as ConstructorBuilder)
-
-var vr as CtorItem = new CtorItem(ptyps, met)
-
-var len as integer = CtorLst[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
-
-var destarr as CtorItem[] = newarr CtorItem destl
-
-label loop
-label cont
-
-place loop
-
-i++
-
-if len > 0 then
-
-destarr[i] = CtorLst[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = vr
-
-CtorLst = destarr
-
-end method
-
-
-method public static void AddNestedCtor(var ptyps as System.Type[], var met as ConstructorBuilder)
-
-var vr as CtorItem = new CtorItem(ptyps, met)
-
-var len as integer = NestedCtorLst[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
-
-var destarr as CtorItem[] = newarr CtorItem destl
-
-label loop
-label cont
-
-place loop
-
-i++
-
-if len > 0 then
-
-destarr[i] = NestedCtorLst[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = vr
-
-NestedCtorLst = destarr
-
-end method
-
-method public static void AddIf()
-
-var endl as Emit.Label = ILEmitter::DefineLbl()
-var nbl as Emit.Label = ILEmitter::DefineLbl()
-var vr as IfItem = new IfItem(endl, nbl)
-
-var len as integer = IfLst[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
-
-var destarr as IfItem[] = newarr IfItem destl
-
-label loop
-label cont
-
-place loop
-
-i++
-
-if len > 0 then
-
-destarr[i] = IfLst[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = vr
-
-IfLst = destarr
-
-end method
-
-method public static void AddLoop()
-
-var endl as Emit.Label = ILEmitter::DefineLbl()
-var startl as Emit.Label = ILEmitter::DefineLbl()
-var vr as LoopItem = new LoopItem(startl, endl)
-
-var len as integer = LoopLst[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
-
-var destarr as IfItem[] = newarr LoopItem destl
-
-label loop
-label cont
-
-place loop
-
-i++
-
-if len > 0 then
-
-destarr[i] = LoopLst[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = vr
-
-LoopLst = destarr
-
-end method
-
-
-method public static void PopIf()
-
-var len as integer = IfLst[l]
-var destl as integer = len - 1
-var stopel as integer = len - 2
-var i as integer = -1
-
-var destarr as IfItem[] = newarr IfItem destl
-
-label loop
-label cont
-
-place loop
-
-i++
-
-if stopel >= 0 then
-
-destarr[i] = IfLst[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-IfLst = destarr
-
-end method
-
-method public static void PopLoop()
-
-var len as integer = LoopLst[l]
-var destl as integer = len - 1
-var stopel as integer = len - 2
-var i as integer = -1
-
-var destarr as LoopItem[] = newarr LoopItem destl
-
-label loop
-label cont
-
-place loop
-
-i++
-
-if stopel >= 0 then
-
-destarr[i] = LoopLst[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-LoopLst = destarr
-
-end method
-
-
-method public static Emit.Label ReadIfEndLbl()
-var lastel as integer = IfLst[l] - 1
-var ifi as IfItem = IfLst[lastel]
-return ifi::EndLabel
-end method
-
-method public static Emit.Label ReadIfNxtBlkLbl()
-var lastel as integer = IfLst[l] - 1
-var ifi as IfItem = IfLst[lastel]
-return ifi::NextBlkLabel
-end method
-
-method public static Emit.Label ReadLoopEndLbl()
-var lastel as integer = LoopLst[l] - 1
-var ifi as LoopItem = LoopLst[lastel]
-return ifi::EndLabel
-end method
-
-method public static Emit.Label ReadLoopStartLbl()
-var lastel as integer = LoopLst[l] - 1
-var ifi as LoopItem = LoopLst[lastel]
-return ifi::StartLabel
-end method
-
-method public static boolean ReadIfElsePass()
-var lastel as integer = IfLst[l] - 1
-var ifi as IfItem = IfLst[lastel]
-return ifi::ElsePass
-end method
-
-method public static void SetIfElsePass()
-var lastel as integer = IfLst[l] - 1
-var ifi as IfItem = IfLst[lastel]
-ifi::ElsePass = true
-end method
-
-method public static void SetIfNxtBlkLbl()
-var lastel as integer = IfLst[l] - 1
-var ifi as IfItem = IfLst[lastel]
-ifi::NextBlkLabel = ILEmitter::DefineLbl()
-end method
-
-method public static void AddLbl(var nam as string)
-
-var lbl as Emit.Label = ILEmitter::DefineLbl()
-var vr as LabelItem = new LabelItem(nam, lbl)
-
-var len as integer = LblLst[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
-
-var destarr as LabelItem[] = newarr LabelItem destl
-
-label loop
-label cont
-
-place loop
-
-i++
-
-if len > 0 then
-
-destarr[i] = LblLst[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = vr
-
-LblLst = destarr
-
-end method
-
-
-method public static VarItem FindVar(var nam as string)
-
-var len as integer = VarLst[l] - 1
-var i as integer = -1
-var vr as VarItem = null
-var rvr as VarItem = null
-var comp as integer = 0
-
-label cont
-label loop
-
-if VarLst[l] = 0 then
-goto cont
-end if
-
-place loop
-
-i++
-
-vr = VarLst[i]
-comp = String::Compare(nam, vr::Name)
-if comp = 0 then
-rvr = vr
-goto cont
-end if
-
-if i = len then
-goto cont
-else
-goto loop
-end if
-
-place cont
-
-return rvr
-end method
-
-method public static LabelItem FindLbl(var nam as string)
-
-var len as integer = LblLst[l] - 1
-var i as integer = -1
-var vr as LabelItem = null
-var rvr as LabelItem = null
-var comp as integer = 0
-
-label cont
-label loop
-
-if LblLst[l] = 0 then
-goto cont
-end if
-
-place loop
-
-i++
-
-vr = LblLst[i]
-comp = String::Compare(nam, vr::LblName)
-if comp = 0 then
-rvr = vr
-goto cont
-end if
-
-if i = len then
-goto cont
-else
-goto loop
-end if
-
-place cont
-
-return rvr
-end method
-
-method public static FieldItem FindFld(var nam as string)
-
-var len as integer = FldLst[l] - 1
-var i as integer = -1
-var fld as FieldItem = null
-var rfld as FieldItem = null
-var comp as integer = 0
-
-label cont
-label loop
-
-if FldLst[l] = 0 then
-goto cont
-end if
-
-place loop
-
-i++
-
-fld = FldLst[i]
-comp = String::Compare(nam, fld::Name)
-if comp = 0 then
-rfld = fld
-goto cont
-end if
-
-if i = len then
-goto cont
-else
-goto loop
-end if
-
-place cont
-
-return rfld
-end method
-
-method public static boolean CmpTyps(var arra as System.Type[], var arrb as System.Type[])
-
-var b as boolean = true
-
-if arra[l] = arrb[l] then
-
-label loop
-label cont
-
-
-if arra[l] = 0 then
-goto cont
-end if
-
-var i as integer = -1
-var len as integer = arra[l] - 1
-var ta as System.Type
-var tb as System.Type
-
-place loop
-i++
-
-ta = arra[i]
-tb = arrb[i]
-
-b = ta::IsAssignableFrom(tb)
-if b = false then
-goto cont
-end if
-
-if i = len then
-goto cont
-else
-goto loop
-end if
-
-place cont
-
-else
-b = false
-end if
-
-return b
-
-end method
-
-method public static MethodItem FindMet(var nam as string, var params as System.Type[])
-
-var len as integer = MetLst[l] - 1
-var i as integer = -1
-var met as MethodItem = null
-var rmet as MethodItem = null
-var comp as integer = 0
-var b as boolean
-
-label cont
-label loop
-
-if MetLst[l] = 0 then
-goto cont
-end if
-
-place loop
-
-i++
-
-met = MetLst[i]
-comp = String::Compare(nam, met::Name)
-if comp = 0 then
-b = CmpTyps(met::ParamTyps, params)
-if b = true then
-rmet = met
-goto cont
-end if
-end if
-
-if i = len then
-goto cont
-else
-goto loop
-end if
-
-place cont
-
-return rmet
-end method
-
-method public static MethodItem FindMetNoParams(var nam as string)
-
-var len as integer = MetLst[l] - 1
-var i as integer = -1
-var met as MethodItem = null
-var rmet as MethodItem = null
-var comp as integer = 0
-var b as boolean
-
-label cont
-label loop
-
-if MetLst[l] = 0 then
-goto cont
-end if
-
-place loop
-
-i++
-
-met = MetLst[i]
-comp = String::Compare(nam, met::Name)
-if comp = 0 then
-rmet = met
-goto cont
-end if
-
-if i = len then
-goto cont
-else
-goto loop
-end if
-
-place cont
-
-return rmet
-end method
-
-
-method public static CtorItem FindCtor(var params as System.Type[])
-
-var len as integer = CtorLst[l] - 1
-var i as integer = -1
-var met as CtorItem = null
-var rmet as CtorItem = null
-var comp as integer = 0
-var b as boolean
-
-label cont
-label loop
-
-if CtorLst[l] = 0 then
-goto cont
-end if
-
-place loop
-
-i++
-
-met = CtorLst[i]
-b = CmpTyps(met::ParamTyps, params)
-if b = true then
-rmet = met
-goto cont
-end if
-
-if i = len then
-goto cont
-else
-goto loop
-end if
-
-place cont
-
-return rmet
-end method
+		return null
+	end method
 
 end class

@@ -5,6 +5,7 @@
     <AssemblyName>tokenizer.AST</AssemblyName>
     <AssemblyVersion>11.2.8.6</AssemblyVersion>
     <AssemblyVersion>11.2.8.7</AssemblyVersion>
+    <AssemblyVersion>11.2.8.9</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
@@ -22,6 +23,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>

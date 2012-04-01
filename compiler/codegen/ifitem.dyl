@@ -8,20 +8,20 @@
 
 class public auto ansi IfItem
 
-field public Emit.Label EndLabel
-field public Emit.Label NextBlkLabel
-field public boolean ElsePass
+	field public Emit.Label EndLabel
+	field public Emit.Label NextBlkLabel
+	field public boolean ElsePass
 
-method public void ctor0()
-me::ctor()
-ElsePass = false
-end method
+	method public void IfItem()
+		me::ctor()
+		ElsePass = false
+	end method
 
-method public void ctor1(var endl as Emit.Label, var nbl as Emit.Label)
-me::ctor()
-EndLabel = endl
-NextBlkLabel = nbl
-ElsePass = false
-end method
+	method public void IfItem(var endl as Emit.Label, var nbl as Emit.Label)
+		me::ctor()
+		EndLabel = endl
+		NextBlkLabel = nbl
+		ElsePass = false
+	end method
 
 end class

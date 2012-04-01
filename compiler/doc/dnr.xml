@@ -122,6 +122,10 @@
             <summary>If set indicates that a class is still being constructed.</summary>
             <remarks />
         </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.Init">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.AsmFactory.InitConstr">
             <summary>Initialises AsmFactory and ILEmitter to work with a new ConstructorBuilder.</summary>
             <remarks />
@@ -423,10 +427,35 @@
             <summary>Emits the 'ldc.r8' opcode.</summary>
             <remarks />
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcU1(System.Byte)">
+            <param name="n">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcU2(System.UInt16)">
+            <param name="n">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcU4(System.UInt32)">
+            <param name="n">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcU8(System.UInt64)">
+            <param name="n">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdelem(System.Type)">
             <param name="typ">The type of the array element.</param>
             <summary>Emits one of the 'ldelem' variants accordingly.</summary>
             <remarks>If the address of the location is desired use EmitLdelema instead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdelema(System.Type)">
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdfld(System.Reflection.FieldInfo)">
             <param name="fld">The instance field to load.</param>
@@ -442,6 +471,15 @@
             <param name="met">The static method to which a pointer is needed.</param>
             <summary>Emits the 'ldftn' opcode.</summary>
             <remarks>If the pointer to an instance method is needed use EmitLdvirtftn instead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdind(System.Type)">
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdlen">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdloc(System.Int32)">
             <param name="num">The index of the location to load.</param>
@@ -562,6 +600,11 @@
             <summary>Emits the 'stfld' opcode.</summary>
             <remarks>An isntance of a class must be loaded prior to this emission.</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStind(System.Type)">
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitStloc(System.Int32)">
             <param name="num">The index of the loaction to store in.</param>
             <summary>Emist one of the variants of the 'stloc' opcode.</summary>
@@ -610,6 +653,10 @@
         <member name="F:dylan.NET.Reflection.ILEmitter.ILGen">
             <summary>Holds the current IL Generator.</summary>
             <remarks>All the Emit methods use the generator held here.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.Init">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Reflection.ILEmitter.LineNr">
             <summary>To be added.</summary>
@@ -684,6 +731,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Reflection.Importer.Imps">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Importer.Init">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -841,6 +892,10 @@
             <param name="typ">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Loader.ProtectedFlag">
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
     </members>

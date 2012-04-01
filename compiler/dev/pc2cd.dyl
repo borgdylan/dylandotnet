@@ -1,6 +1,6 @@
 //The pkg-config helper for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v.11.2.8.3 or later
+//compile with dylan.NET v.11.2.8.7 or later
 
 //    pc2cd.exe dylan.NET.PkgConfig.PC2CD Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -19,7 +19,7 @@ import System.Runtime.InteropServices
 import System.Text
 
 assembly pc2cd exe
-ver 11.2.8.7
+ver 11.2.8.9
 
 namespace dylan.NET.PkgConfig.PC2CD
 
@@ -44,49 +44,38 @@ namespace dylan.NET.PkgConfig.PC2CD
 			var flags as boolean[] = new boolean[3]
 			var s as string = null
 			
-			label loop
-			label cont
-			
-			place loop
-			
-			if $char$sr::Peek() = '-' then
-				flags[0] = true
-				flags[1] = false
-				flags[2] = false
-			elseif ($char$sr::Peek() = 'r') and flags[0] then
-				flags[1] = true
-				flags[2] = false
-			elseif ($char$sr::Peek() = ':') and flags[1] then
-				flags[2] = true
-			end if
-			
-			if flags[0] and flags[1] and flags[2] then
-				sb::Append($char$sr::Read())
-				flags[0] = false
-				
-				if sb::ToString() != "-r:" then
-					s = sb::ToString()
-					if s like "^(.)*-r:$" then
-						s = s::Substring(0, s::get_Length() - 4)
-						s = s::Trim()
-					end if
-					
-					CopyFile(s)
-					
+			do
+				if $char$sr::Peek() = '-' then
+					flags[0] = true
+					flags[1] = false
+					flags[2] = false
+				elseif ($char$sr::Peek() = 'r') and flags[0] then
+					flags[1] = true
+					flags[2] = false
+				elseif ($char$sr::Peek() = ':') and flags[1] then
+					flags[2] = true
 				end if
 				
-				sb = new StringBuilder()
-			else	
-				sb::Append($char$sr::Read())
-			end if
-			
-			if sr::Peek() != -1 then
-				goto loop
-			else
-				goto cont
-			end if
-			
-			place cont
+				if flags[0] and flags[1] and flags[2] then
+					sb::Append($char$sr::Read())
+					flags[0] = false
+					
+					if sb::ToString() != "-r:" then
+						s = sb::ToString()
+						if s like "^(.)*-r:$" then
+							s = s::Substring(0, s::get_Length() - 4)
+							s = s::Trim()
+						end if
+						
+						CopyFile(s)
+						
+					end if
+					
+					sb = new StringBuilder()
+				else	
+					sb::Append($char$sr::Read())
+				end if
+			while sr::Peek() != -1
 			
 			CopyFile(sb::ToString()::Trim())
 			
@@ -97,7 +86,7 @@ namespace dylan.NET.PkgConfig.PC2CD
 	
 		method public static void main(var args as string[])
 		
-			Console::WriteLine("dylan.NET Pkg-Config Helper v. 11.2.8.7 Beta")
+			Console::WriteLine("dylan.NET Pkg-Config Helper v. 11.2.8.9 Beta")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2012 Dylan Borg")
 			if args[l] < 1 then
@@ -106,30 +95,18 @@ namespace dylan.NET.PkgConfig.PC2CD
 				var i as integer = -1
 				var len as integer = args[l] - 1
 				
-				label loop
-				label cont
-				
-				place loop
-				
-				i = i + 1
-				
-				if args[i] == "-h" then
-					Console::WriteLine("")
-					Console::WriteLine("Usage: pc2dylandotnet [options] <file-name>")
-					Console::WriteLine("Options:")
-					//Console::WriteLine("   -V : View Version Nrs. for all dylan.NET assemblies")
-					Console::WriteLine("   -h : View this help message")
-				else
-					ConvToDYL(args[i])
-				end if
-				
-				if i = len then
-					goto cont
-				else
-					goto loop
-				end if
-				
-				place cont
+				do
+					i = i + 1
+					
+					if args[i] == "-h" then
+						Console::WriteLine("")
+						Console::WriteLine("Usage: pc2dylandotnet [options] <file-name>")	
+						Console::WriteLine("Options:")
+						Console::WriteLine("   -h : View this help message")
+					else
+						ConvToDYL(args[i])
+					end if
+				until i = len
 				
 			end if
 		

@@ -8,26 +8,22 @@
 
 class public auto ansi ImportStmt extends Stmt
 
-field public Token NS
+	field public Token NS
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-NS = new Token()
-end method
+	method public void ImportStmt()
+		me::ctor()
+		NS = new Token()
+	end method
 
 end class
 
 class public auto ansi LocimportStmt extends Stmt
 
-field public Token NS
+	field public Token NS
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-NS = new Token()
-end method
+	method public void LocimportStmt()
+		me::ctor()
+		NS = new Token()
+	end method
 
 end class

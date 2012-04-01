@@ -8,103 +8,51 @@
 
 class public auto ansi Importer
 
-field public static Assembly[] Asms
-field public static string[] Imps
-field public static string[] LocImps
+	field public static Assembly[] Asms
+	field public static string[] Imps
+	field public static string[] LocImps
 
-method public static void ctor0()
-Asms = newarr Assembly 0
-Imps = newarr string 0
-//LocImps = newarr string 0
-end method
+	method public static void Init()
+		Asms = new Assembly[0]
+		Imps = new string[0]
+	end method
 
-method public static void AddAsm(var asm as Assembly)
+	method public static void Importer()
+		Init()
+	end method
 
-var len as integer = Asms[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+	method public static void AddAsm(var asm as Assembly)
+		var i as integer = -1
+		var destarr as Assembly[] = new Assembly[Asms[l] + 1]
 
-var destarr as Assembly[] = newarr Assembly destl
+		do until i = (Asms[l] - 1) 
+			i = i + 1
+			destarr[i] = Asms[i]
+		end do
 
-label loop
-label cont
+		destarr[Asms[l]] = asm
+		Asms = destarr
+	end method
 
-place loop
+	method public static string[] addelem(var srcarr as string[], var eltoadd as string)
+		var i as integer = -1
+		var destarr as string[] = new string[srcarr[l] + 1]
 
-i++
+		do until i = (srcarr[l] - 1)
+			i = i + 1
+			destarr[i] = srcarr[i]
+		end do
 
-if len > 0 then
+		destarr[srcarr[l]] = eltoadd
+		return destarr
+	end method
 
-destarr[i] = Asms[i]
+	method public static void AddImp(var imp as string)
+		Imps = addelem(Imps,imp)
+	end method
 
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = asm
-
-Asms = destarr
-
-end method
-
-method public static string[] addelem(var srcarr as string[], var eltoadd as string)
-
-var len as integer = srcarr[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
-
-var destarr as string[] = newarr string destl
-
-label loop
-label cont
-
-place loop
-
-i = i + 1
-
-if len > 0 then
-
-destarr[i] = srcarr[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = eltoadd
-
-return destarr
-
-end method
-
-method public static void AddImp(var imp as string)
-Imps = addelem(Imps,imp)
-end method
-
-method public static void AddLocImp(var imp as string)
-Imps = addelem(Imps,imp)
-end method
-
+	method public static void AddLocImp(var imp as string)
+		Imps = addelem(Imps,imp)
+	end method
 
 end class

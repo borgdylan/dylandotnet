@@ -7,5 +7,4 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi SingStmt extends Stmt
-
 end class

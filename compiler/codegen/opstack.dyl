@@ -8,38 +8,33 @@
 
 class public auto ansi OpStack
 
-field public Expr Stack
+	field public Expr Stack
 
-method public void ctor0()
-me::ctor()
-Stack = new Expr()
-end method
+	method public void OpStack()
+		me::ctor()
+		Stack = new Expr()
+	end method
 
-method public void PushOp(var optok as Token)
-Stack::AddToken(optok)
-end method
+	method public void PushOp(var optok as Token)
+		Stack::AddToken(optok)
+	end method
 
-method public void PopOp()
-if Stack::Tokens[l] = 0 then
-else
-var ind as integer = Stack::Tokens[l] - 1
-Stack::RemToken(ind)
-end if
-end method
+	method public void PopOp()
+		if Stack::Tokens[l] != 0 then
+			Stack::RemToken(Stack::Tokens[l] - 1)
+		end if
+	end method
 
-method public Token TopOp()
-if Stack::Tokens[l] = 0 then
-return null
-else
-var ind as integer = Stack::Tokens[l] - 1
-var optok as Token = Stack::Tokens[ind]
-return optok
-end if
-end method
+	method public Token TopOp()
+		if Stack::Tokens[l] = 0 then
+			return null
+		else
+			return Stack::Tokens[Stack::Tokens[l] - 1]
+		end if
+	end method
 
-method public integer getLength()
-return Stack::Tokens[l]
-end method
-
+	method public integer getLength()
+		return Stack::Tokens[l]
+	end method
 
 end class

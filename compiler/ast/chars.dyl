@@ -7,74 +7,60 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi Character extends Token
-
 end class
 
 // ]
 class public auto ansi RSParen extends Character
-
 end class
 
 // [
 class public auto ansi LSParen extends Character
-
 end class
 
 // []
 class public auto ansi LRSParen extends Character
-
 end class
 
 // >
 class public auto ansi RAParen extends Character
-
 end class
 
 // <
 class public auto ansi LAParen extends Character
-
 end class
 
 // )
 class public auto ansi RParen extends Character
-
 end class
 
 // (
 class public auto ansi LParen extends Character
-
 end class
 
 // ,
 class public auto ansi Comma extends Character
-
 end class
+
 // \r\n
 class public auto ansi CrLf extends Character
-
 end class
 
 // \r
 class public auto ansi Cr extends Character
-
 end class
 
 // \n
 class public auto ansi Lf extends Character
-
 end class
 
 // |
 class public auto ansi Pipe extends Character
-
 end class
 
 // &
 class public auto ansi Ampersand extends Character
-
 end class
 
 // $
 class public auto ansi DollarSign extends Character
-
 end class

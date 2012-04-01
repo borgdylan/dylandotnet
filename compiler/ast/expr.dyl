@@ -8,102 +8,53 @@
 
 class public auto ansi Expr
 
-field public Token[] Tokens
-field public integer Line
-field public System.Type ResultTyp
+	field public Token[] Tokens
+	field public integer Line
+	field public Type ResultTyp
 
-method public void ctor0()
-me::ctor()
-Tokens = newarr Token 0
-Line = 0
-ResultTyp = null
-end method
+	method public void Expr()
+		me::ctor()
+		Tokens = new Token[0]
+		Line = 0
+		ResultTyp = null
+	end method
 
-method public void AddToken(var toktoadd as Token)
+	method public void AddToken(var toktoadd as Token)
 
-var len as integer = Tokens[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+		var i as integer = -1
+		var destarr as Token[] = new Token[Tokens[l] + 1]
 
-var destarr as Token[] = newarr Token destl
+		do until i = (Tokens[l] - 1)
+			i = i + 1
+			destarr[i] = Tokens[i]
+		end do
 
-label loop
-label cont
+		if Tokens[l] = 0 then
+			Line = toktoadd::Line
+		end if
 
-place loop
+		destarr[Tokens[l]] = toktoadd
+		Tokens = destarr
 
-i++
+	end method
 
-if len > 0 then
+	method public void RemToken(var ind as integer)
 
-destarr[i] = Tokens[i]
+		var i as integer = -1
+		var j as integer = -1
+		var destarr as Token[] = new Token[Tokens[l] - 1]
 
-end if
+		do until i = (Tokens[l] - 1)
+			i = i + 1
+			if i != ind then
+				j = j + 1
+				destarr[j] = Tokens[i]
+			end if
+		end do
 
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
+		Tokens = destarr
 
-place cont
-
-if len = 0 then
-Line = toktoadd::Line
-end if
-
-destarr[len] = toktoadd
-
-Tokens = destarr
-
-end method
-
-method public void RemToken(var ind as integer)
-
-var len as integer = Tokens[l]
-var destl as integer = len - 1
-var stopel as integer = destl
-var i as integer = -1
-var j as integer = -1
-
-var destarr as Token[] = newarr Token destl
-
-label loop
-label cont
-
-place loop
-
-i++
-
-if len > 0 then
-
-if i <> ind then
-j++
-destarr[j] = Tokens[i]
-end if
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-Tokens = destarr
-
-end method
+	end method
 
 
 end class

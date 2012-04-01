@@ -1,13 +1,13 @@
 .\"Created with GNOME Manpages Editor Wizard
 .\"http://sourceforge.net/projects/gmanedit2
-.TH pc2curdir 1 "February 20, 2012" "11.2.8.7" "pkg-config Helpers for dylan.NET"
+.TH pc2curdir 1 "April 1, 2012" "11.2.8.9" "pkg-config Helpers for dylan.NET"
 
 .SH NAME
 pc2curdir \- A program for copying libraries referenced by Mono pkg-config files to the current directory.
 
 .SH SYNOPSIS
 .B pc2curdir
-.RI [-h|file-name]
+.RI [-h|file-names...]
 .br
 
 .SH DESCRIPTION
@@ -20,11 +20,11 @@ The program
 is for copying the files refernced by the "-r:*" style 'libs' variables in Mono pkg-config files to the current directory thereby allowing execution in the cases where the libraries refernced are not in the GAC.
 
 .SH OPTIONS
-Only one of the following options may be passed at one time. -h will print the help info yet it can be used together with the file-name for the input file in the same command.
+-h will print the help info yet it can be used together with the file-name(s) for the input file(s) in the same command.
 
 .B
-.IP file-name
-The file name of the file having the "-r:*" style references obtained by issuing "pkg-config --libs packagename > packagename.libs"
+.IP file-names
+The file name(s) of the file(s) having the "-r:*" style references obtained by issuing "pkg-config --libs packagename > packagename.libs"
 in the form : "pc2curdir file-name.libs" ;where file-name.libs is the file mentioned before. The extension can be anything you want but .libs will identify the file as being assembly references.
 .B
 .IP -h
@@ -46,7 +46,7 @@ This is this very man page for pc2curdir.
 
 
 .SH VERSION
-11.2.8.7
+11.2.8.9
 
 .SH "SEE ALSO"
 See also http://launchpad.net/dylandotnet

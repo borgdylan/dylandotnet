@@ -8,13 +8,11 @@
 
 class public auto ansi IncludeStmt extends Stmt
 
-field public Token Path
+	field public Token Path
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Path = new Token()
-end method
+	method public void IncludeStmt()
+		me::ctor()
+		Path = new Token()
+	end method
 
 end class

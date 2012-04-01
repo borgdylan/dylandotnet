@@ -8,26 +8,46 @@
 
 class public auto ansi VarItem
 
-field public string Name
-// t for loc f for arg
-field public boolean LocArg
-field public integer Index
-field public System.Type VarTyp
+	field public string Name
+	// t for loc f for arg
+	field public boolean LocArg
+	field public integer Index
+	field public Type VarTyp
+	field public boolean Used
+	field public boolean Stored
+	field public integer Line
 
-method public void ctor0()
-me::ctor()
-Name = ""
-LocArg = false
-Index = -1
-VarTyp = null
-end method
+	method public void VarItem()
+		me::ctor()
+		Name = ""
+		LocArg = false
+		Index = -1
+		VarTyp = null
+		Used = false
+		Stored = false
+		Line = 0
+	end method
 
-method public void ctor1(var nme as string, var la as boolean, var ind as integer, var typ as System.Type)
-me::ctor()
-Name = nme
-LocArg = la
-Index = ind
-VarTyp = typ
-end method
+	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as Type)
+		me::ctor()
+		Name = nme
+		LocArg = la
+		Index = ind
+		VarTyp = typ
+		Used = false
+		Stored = false
+		Line = 0
+	end method
+
+	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as Type, var line as integer)
+		me::ctor()
+		Name = nme
+		LocArg = la
+		Index = ind
+		VarTyp = typ
+		Used = false
+		Stored = false
+		Line = line
+	end method
 
 end class

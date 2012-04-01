@@ -1,27 +1,15 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.8.7">
+    <Assembly Name="tokenizer.AST" Version="11.2.8.9">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Reflection.AssemblyDescription("tokenizer.AST")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.7")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Reflection.AssemblyProduct("tokenizer.AST")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Reflection.AssemblyTitle("tokenizer.AST")</AttributeName>
         </Attribute>
       </Attributes>
     </Assembly>
   </Assemblies>
   <Remarks>This is the AST module for the dylan.NET compiler.</Remarks>
-  <Copyright>Copyright (c) Dylan Borg 2011. The library tokenizer.AST.dll is licensed under the LGPLv3.</Copyright>
+  <Copyright>Copyright (c) Dylan Borg 2012. The library tokenizer.AST.dll is licensed under the LGPLv3.</Copyright>
   <Types>
     <Namespace Name="dylan.NET.Tokenizer.AST.Exprs">
       <Type Name="AritExpr" Kind="Class" />
@@ -153,6 +141,7 @@
       <Type Name="PtrTok" Kind="Class" />
       <Type Name="RefasmTok" Kind="Class" />
       <Type Name="RefstdasmTok" Kind="Class" />
+      <Type Name="RefTok" Kind="Class" />
       <Type Name="ReturnTok" Kind="Class" />
       <Type Name="ScopeTok" Kind="Class" />
       <Type Name="SetTok" Kind="Class" />
@@ -165,6 +154,7 @@
       <Type Name="Token" Kind="Class" />
       <Type Name="TryTok" Kind="Class" />
       <Type Name="UntilTok" Kind="Class" />
+      <Type Name="ValInRefTok" Kind="Class" />
       <Type Name="VarTok" Kind="Class" />
       <Type Name="VerTok" Kind="Class" />
       <Type Name="WhileTok" Kind="Class" />
@@ -220,6 +210,7 @@
       <Type Name="ByteLiteral" Kind="Class" />
       <Type Name="CharLiteral" Kind="Class" />
       <Type Name="ConstLiteral" Kind="Class" />
+      <Type Name="DecimalLiteral" Kind="Class" />
       <Type Name="DoubleLiteral" Kind="Class" />
       <Type Name="FloatLiteral" Kind="Class" />
       <Type Name="IntLiteral" Kind="Class" />

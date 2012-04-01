@@ -1,21 +1,21 @@
 .assembly extern mscorlib
 {
-  .ver 4:0:0:0
+  .ver 2:0:0:0
   .publickeytoken = (B7 7A 5C 56 19 34 E0 89 ) // .z\V.4..
 }
 .assembly extern dnu
 {
-  .ver 11:2:8:7
+  .ver 11:2:8:9
 }
 .assembly extern tokenizer.AST
 {
-  .ver 11:2:8:7
+  .ver 11:2:8:9
 }
 .assembly 'tokenizer.Lexer'
 {
   .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 01 01 00 00 00 00 ) // ........
 
-  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 37 00 00 ) // ...11.2.8.7..
+  .custom instance void class [mscorlib]System.Reflection.AssemblyFileVersionAttribute::'.ctor'(string) =  (01 00 08 31 31 2E 32 2E 38 2E 39 00 00 ) // ...11.2.8.9..
 
   .custom instance void class [mscorlib]System.Reflection.AssemblyProductAttribute::'.ctor'(string) =  (
 		01 00 0F 74 6F 6B 65 6E 69 7A 65 72 2E 4C 65 78   // ...tokenizer.Lex
@@ -30,10 +30,12 @@
 		65 72 00 00                                     ) // er..
 
   .hash algorithm 0x00008004
-  .ver  11:2:8:7
+  .ver  11:2:8:9
 }
-
-.module tokenizer.Lexer.dll // GUID = {26275FCC-1F1D-4A2E-9740-07877689EB72}
+.mresource public 'tokenizer.Lexer.resources'
+{
+}
+.module tokenizer.Lexer.dll // GUID = {CDEA1AA7-B6F2-4B4C-8E44-EE26662E87B7}
 
 
 .namespace dylan.NET.Tokenizer.Lexer

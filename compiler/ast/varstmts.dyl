@@ -8,32 +8,28 @@
 
 class public auto ansi VarStmt extends Stmt
 
-field public TypeTok VarTyp
-field public Ident VarName
+	field public TypeTok VarTyp
+	field public Ident VarName
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-VarTyp = new TypeTok()
-VarName = new Ident()
-end method
+	method public void VarStmt()
+		me::ctor()
+		VarTyp = new TypeTok()
+		VarName = new Ident()
+	end method
 
 end class
 
 class public auto ansi VarAsgnStmt extends Stmt
 
-field public TypeTok VarTyp
-field public Ident VarName
-field public Expr RExpr
+	field public TypeTok VarTyp
+	field public Ident VarName
+	field public Expr RExpr
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-VarTyp = new TypeTok()
-VarName = new Ident()
-RExpr = new Expr()
-end method
+	method public void VarAsgnStmt()
+		me::ctor()
+		VarTyp = new TypeTok()
+		VarName = new Ident()
+		RExpr = new Expr()
+	end method
 
 end class

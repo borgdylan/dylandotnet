@@ -6,110 +6,141 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
+delegate public void ErrorWarnHandler(var line as integer, var file as string, var msg as string)
+
 class public auto ansi beforefieldinit StreamUtils
 
-field public static Stream Stdin
-field public static Stream Stdout
-field public static Stream Stderr
+	field public static Stream Stdin
+	field public static Stream Stdout
+	field public static Stream Stderr
 
-field public static StreamReader InS
-field public static StreamWriter OutS
+	field public static StreamReader InS
+	field public static StreamWriter OutS
 
-field public static boolean UseConsole
+	field public static boolean UseConsole
 
-method public static void ctor0()
-Stdin = Console::OpenStandardInput()
-Stderr = Console::OpenStandardError()
-Stdout = Console::OpenStandardOutput()
-InS = null
-OutS = null
-UseConsole = true
-end method
+	field public static ErrorWarnHandler ErrorH
+	field public static ErrorWarnHandler WarnH
 
-method public static void InitInS(var s as Stream)
-if InS <> null then
-InS::Close()
-end if
-InS = new StreamReader(s)
-end method
+	method public static void StreamUtils()
+		Stdin = Console::OpenStandardInput()
+		Stderr = Console::OpenStandardError()
+		Stdout = Console::OpenStandardOutput()
+		InS = null
+		OutS = null
+		UseConsole = true
+		ErrorH = null
+		WarnH = null
+	end method
 
-method public static void InitOutS(var s as Stream)
-if OutS <> null then
-OutS::Close()
-end if
-OutS = new StreamWriter(s)
-end method
+	method public static void InitInS(var s as Stream)
+		if InS <> null then
+			InS::Close()
+		end if
+		InS = new StreamReader(s)
+	end method
 
-method public static void InitInOutSWithStd()
-InitInS(Stdin)
-InitOutS(Stdout)
-end method
+	method public static void InitOutS(var s as Stream)
+		if OutS <> null then
+			OutS::Close()
+		end if
+			OutS = new StreamWriter(s)
+	end method
 
-method public static void CloseInS()
-if InS <> null then
-InS::Close()
-InS = null
-end if
-end method
+	method public static void InitInOutSWithStd()
+		InitInS(Stdin)
+		InitOutS(Stdout)
+	end method
 
-method public static void CloseOutS()
-if OutS <> null then
-OutS::Close()
-OutS = null
-end if
-end method
+	method public static void CloseInS()
+		if InS <> null then
+			InS::Close()
+			InS = null
+		end if
+	end method
 
-method public static string ReadLine()
-if UseConsole = false then
-if InS <> null then
-return InS::ReadLine()
-else
-return ""
-end if
-else
-return Console::ReadLine()
-end if
-end method
+	method public static void CloseOutS()
+		if OutS <> null then
+			OutS::Close()
+			OutS = null
+		end if
+	end method
 
-method public static void WriteLine(var str as string)
-if UseConsole = false then
-if OutS <> null then
-OutS::WriteLine(str)
-else
-end if
-else
-Console::WriteLine(str)
-end if
-end method
+	method public static string ReadLine()
+		if UseConsole = false then
+			if InS <> null then
+				return InS::ReadLine()
+			else
+				return ""
+			end if
+		else
+			return Console::ReadLine()
+		end if
+	end method
 
-method public static void Write(var str as string)
-if UseConsole = false then
-if OutS <> null then
-OutS::Write(str)
-else
-end if
-else
-Console::Write(str)
-end if
-end method
+	method public static void WriteLine(var str as string)
+		if UseConsole = false then
+			if OutS <> null then
+				OutS::WriteLine(str)
+			end if
+		else
+			Console::WriteLine(str)
+		end if
+	end method
 
-method public static void WriteWarn(var line as integer, var file as string, var msg as string)
+	method public static void Write(var str as string)
+		if UseConsole = false then
+			if OutS <> null then
+				OutS::Write(str)
+			end if
+		else
+			Console::Write(str)
+		end if
+	end method
 
-var str as string = String::Concat("WARNING: " , msg, " at line ", $string$line)
-str = String::Concat(str, " in file: " , file)
-WriteLine(str)
+	method public static void add_ErrorH(var eh as ErrorWarnHandler)
+		if ErrorH = null then
+			ErrorH = eh
+		else
+			ErrorH = ErrorH + eh
+		end if
+	end method
 
-end method
+	method public static void add_WarnH(var eh as ErrorWarnHandler)
+		if WarnH = null then
+			WarnH = eh
+		else
+			WarnH = WarnH + eh
+		end if
+	end method
 
-method public static void WriteError(var line as integer, var file as string, var msg as string)
+	method public static void remove_ErrorH(var eh as ErrorWarnHandler)
+		if ErrorH != null then
+			ErrorH = ErrorH - eh
+		end if
+	end method
 
-var str as string = String::Concat("ERROR: " , msg, " at line ", $string$line)
-str = String::Concat(str, " in file: " , file)
-WriteLine(str)
-CloseInS()
-CloseOutS()
-Environment::Exit(1)
+	method public static void remove_WarnH(var eh as ErrorWarnHandler)
+		if WarnH != null then
+			WarnH = WarnH - eh
+		end if
+	end method
 
-end method
+	method public static void WriteWarn(var line as integer, var file as string, var msg as string)
+		WriteLine("WARNING: " + msg + " at line " + $string$line + " in file: " + file)
+		if WarnH != null then
+			WarnH::Invoke(line,file,msg)
+		end if
+	end method
+
+	method public static void WriteError(var line as integer, var file as string, var msg as string)
+		WriteLine("ERROR: " + msg + " at line " + $string$line + " in file: " + file)
+		if ErrorH != null then
+			ErrorH::Invoke(line,file,msg)
+		end if
+		CloseInS()
+		CloseOutS()
+		Environment::Exit(1)
+	end method
 
 end class

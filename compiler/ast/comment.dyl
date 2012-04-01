@@ -8,5 +8,4 @@
 
 // //CommentTok
 class public auto ansi CommentTok extends Token
-
 end class

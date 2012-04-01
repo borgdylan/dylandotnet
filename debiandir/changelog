@@ -1,7 +1,7 @@
 dylandotnet (11.2.8.7-1) precise; urgency=low
 
   * Adding support for pre/post conditioned loops.
-  *Adding support for break/continue statements.
+  * Adding support for break/continue statements.
   * Updating man pages and makefiles.
   * Bumping up version to 11.2.8.7
   

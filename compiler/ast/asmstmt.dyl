@@ -10,15 +10,13 @@
 
 class public auto ansi AssemblyStmt extends Stmt
 
-field public Token Mode
-field public Ident AsmName
+	field public Token Mode
+	field public Ident AsmName
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Mode = new Token()
-AsmName = new Ident()
-end method
+	method public void AssemblyStmt()
+		me::ctor()
+		Mode = new Token()
+		AsmName = new Ident()
+	end method
 
 end class

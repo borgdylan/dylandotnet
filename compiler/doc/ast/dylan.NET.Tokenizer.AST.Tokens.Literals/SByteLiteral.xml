@@ -18,6 +18,7 @@
     <AssemblyVersion>11.2.8.5</AssemblyVersion>
     <AssemblyVersion>11.2.8.6</AssemblyVersion>
     <AssemblyVersion>11.2.8.7</AssemblyVersion>
+    <AssemblyVersion>11.2.8.9</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
@@ -48,12 +49,29 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>Constructs an SByteLiteral.</summary>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public SByteLiteral (sbyte value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(int8 value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="value" Type="System.SByte" />
+      </Parameters>
+      <Docs>
+        <param name="value">The sbyte value to assign to the SByteLiteral.</param>
+        <summary>Constructs a new SByteLiteral with the given value.</summary>
+        <remarks>Sets the Value and LitTyp fields accodingly.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -76,12 +94,14 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="value">This parameter is of no use in this case.</param>
+        <param name="value">
+        </param>
         <summary>Constructs a new SByteLiteral.</summary>
         <remarks>
         </remarks>
@@ -107,6 +127,7 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.SByte</ReturnType>
@@ -114,6 +135,24 @@
       <Docs>
         <summary>The numeric value of the literal.</summary>
         <remarks>It is loaded using the ldc.i4 set of opcodes followed by a conv.i1.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
+        <returns>The dylan.NET syntactic equivalent to this literal ie. NumVal + "b".</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

@@ -8,972 +8,489 @@
 
 class public auto ansi StmtReader
 
-method public void Read(var stm as Stmt, var fpath as string)
-
-var typ as System.Type
-var b as boolean = false
-var tmpstr as string
-var errstr as string
-
-label fin
-
-AsmFactory::ChainFlg = false
-
-ILEmitter::LineNr = stm::Line
-ILEmitter::CurSrcFile = fpath
-
-if AsmFactory::DebugFlg = true then
-if AsmFactory::InMethodFlg = true then
-ILEmitter::MarkDbgPt(stm::Line)
-end if
-end if
-
-typ = gettype RefasmStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var rastm as RefasmStmt = stm
-var ap as Token = rastm::AsmPath
-
-tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*",Utils.Constants::quot)
-tmpstr = String::Concat(tmpstr, "$")
-var compb as boolean = Utils.ParseUtils::LikeOP(ap::Value, tmpstr)
-
-if compb = true then
-tmpstr = ap::Value
-var tmpchrarr as char[] = newarr char 1
-tmpchrarr[0] = $char$Utils.Constants::quot
-tmpstr = tmpstr::Trim(tmpchrarr)
-ap::Value = tmpstr
-end if
-
-ap::Value = ParseUtils::ProcessMSYSPath(ap::Value)
-
-var asm as Assembly = Assembly::LoadFrom(ap::Value)
-StreamUtils::Write("Referencing Assembly: ")
-StreamUtils::WriteLine(ap::Value)
-Importer::AddAsm(asm)
-goto fin
-end if
-
-typ = gettype RefstdasmStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var rsastm as RefstdasmStmt = stm
-ap = rsastm::AsmPath
-
-tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*",Utils.Constants::quot)
-tmpstr = String::Concat(tmpstr, "$")
-compb = Utils.ParseUtils::LikeOP(ap::Value, tmpstr)
-
-if compb = true then
-tmpstr = ap::Value
-tmpchrarr = newarr char 1
-tmpchrarr[0] = $char$Utils.Constants::quot
-tmpstr = tmpstr::Trim(tmpchrarr)
-ap::Value = tmpstr
-end if
-
-ap::Value = ParseUtils::ProcessMSYSPath(ap::Value)
-tmpstr = RuntimeEnvironment::GetRuntimeDirectory()
-ap::Value = Path::Combine(tmpstr, ap::Value)
-
-asm  = Assembly::LoadFrom(ap::Value)
-StreamUtils::Write("Referencing Assembly: ")
-StreamUtils::WriteLine(ap::Value)
-Importer::AddAsm(asm)
-goto fin
-end if
-
-typ = gettype ImportStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var istm as ImportStmt = stm
-var ina as Token = istm::NS
-
-tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*",Utils.Constants::quot)
-tmpstr = String::Concat(tmpstr, "$")
-compb = Utils.ParseUtils::LikeOP(ina::Value, tmpstr)
-
-if compb = true then
-tmpstr = ina::Value
-tmpchrarr = newarr char 1
-tmpchrarr[0] = $char$Utils.Constants::quot
-tmpstr = tmpstr::Trim(tmpchrarr)
-ina::Value = tmpstr
-end if
-
-StreamUtils::Write("Importing Namespace: ")
-StreamUtils::WriteLine(ina::Value)
-
-Importer::AddImp(ina::Value)
-goto fin
-end if
-
-typ = gettype LocimportStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var listm as LocimportStmt = stm
-var lina as Token = listm::NS
-tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*",Utils.Constants::quot)
-tmpstr = String::Concat(tmpstr, "$")
-compb = Utils.ParseUtils::LikeOP(lina::Value, tmpstr)
-
-if compb = true then
-tmpstr = lina::Value
-tmpchrarr = newarr char 1
-tmpchrarr[0] = $char$Utils.Constants::quot
-tmpstr = tmpstr::Trim(tmpchrarr)
-lina::Value = tmpstr
-end if
-
-StreamUtils::Write("Importing Namespace: ")
-StreamUtils::WriteLine(lina::Value)
-
-Importer::AddLocImp(lina::Value)
-goto fin
-end if
-
-typ = gettype AssemblyStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-
-var asms as AssemblyStmt = stm
-var asmn as Ident = asms::AsmName
-AsmFactory::AsmNameStr = new AssemblyName(asmn::Value)
-var asmm as Token = asms::Mode
-AsmFactory::AsmMode = asmm::Value
-AsmFactory::DfltNS = asmn::Value
-AsmFactory::CurnNS = asmn::Value
-
-StreamUtils::Write("Beginning Assembly: ")
-StreamUtils::WriteLine(asmn::Value)
-
-goto fin
-
-end if
-
-typ = gettype VerStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var asmv as VerStmt = stm
-var vns as IntLiteral[] = asmv::VersionNos
-var vne as IntLiteral
-var vernos as integer[] = newarr integer 4
-vne = vns[0]
-vernos[0] = vne::NumVal
-vne = vns[1]
-vernos[1] = vne::NumVal
-vne = vns[2]
-vernos[2] = vne::NumVal
-vne = vns[3]
-vernos[3] = vne::NumVal
-var asmver as Version = new Version(vernos[0], vernos[1], vernos[2], vernos[3])
-var asmnm as AssemblyName = AsmFactory::AsmNameStr
-asmnm::set_Version(asmver)
-AsmFactory::AsmNameStr = asmnm
-var cad as AppDomain = AppDomain::get_CurrentDomain()
-var aasv as AssemblyBuilderAccess = 2
-var curd as string = Directory::GetCurrentDirectory()
-AsmFactory::AsmB = cad::DefineDynamicAssembly(asmnm, aasv, curd)
-var asmnme as string = asmnm::get_Name()
-asmnme = String::Concat(asmnme, ".", AsmFactory::AsmMode)
-var ab as AssemblyBuilder = AsmFactory::AsmB
-
-AsmFactory::MdlB = ab::DefineDynamicModule(asmnme, asmnme, AsmFactory::DebugFlg)
-
-if AsmFactory::DebugFlg = true then
-var mdlbldbg as ModuleBuilder = AsmFactory::MdlB
-fpath = Path::GetFullPath(fpath)
-//Console::WriteLine(fpath)
-var docw as ISymbolDocumentWriter = mdlbldbg::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
-ILEmitter::DocWriter = docw
-ILEmitter::AddDocWriter(docw)
-end if
-
-// --------------------------------------------------------------------------------------------------------
-if AsmFactory::DebugFlg = true then
-var dtyp as System.Type = gettype DebuggableAttribute
-var debugattr as DebuggableAttribute.DebuggingModes = 1 or 256
-var oattr as object = $object$debugattr
-var dattyp as System.Type = gettype DebuggableAttribute.DebuggingModes
-var tarr as System.Type[] = newarr System.Type 1
-tarr[0] = dattyp
-var dctor as ConstructorInfo = dtyp::GetConstructor(tarr)
-var oarr as object[] = newarr object 1
-oarr[0] = oattr
-var dbuilder as CustomAttributeBuilder = new CustomAttributeBuilder(dctor, oarr)
-ab::SetCustomAttribute(dbuilder)
-end if
-// --------------------------------------------------------------------------------------------------------
-
-AsmFactory::AsmFile = asmnme
-Importer::AddAsm(AsmFactory::AsmB)
-goto fin
-end if
-
-typ = gettype DebugStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var dbgs as DebugStmt = stm
-AsmFactory::DebugFlg = dbgs::Flg
-goto fin
-end if
-
-typ = gettype ClassStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var clss as ClassStmt = stm
-
-if AsmFactory::inClass = true then
-AsmFactory::isNested = true
-end if
-
-if AsmFactory::isNested = false then
-AsmFactory::inClass = true
-end if
-
-var attrs as Attributes.Attribute[] = clss::Attrs
-var ta as TypeAttributes = Helpers::ProcessClassAttrs(attrs)
-var clssnam as Ident = clss::ClassName
-var clsnamstr as string = clssnam::Value
-var inhclstok as TypeTok = clss::InhClass
-var inhtyp as System.Type = null
-var reft as System.Type  = inhclstok::RefTyp
-var cmp as integer = String::Compare(inhclstok::Value, "")
-
-if reft = null then
-if cmp = 0 then
-inhtyp = gettype object
-else
-inhtyp = Helpers::CommitEvalTTok(inhclstok)
-end if
-else
-inhtyp = reft 
-end if
-
-if inhtyp = null then
-errstr = String::Concat("Base Class '", inhclstok::Value, "' is not defined or is not accessible.")
-StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
-end if
-
-if inhtyp <> null then
-b = inhtyp::get_IsSealed()
-if b = true then
-inhtyp = null
-errstr = String::Concat("Base Class '", inhclstok::Value, "' is not inheritable.")
-StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
-end if
-end if
-
-AsmFactory::CurnInhTyp = inhtyp
-
-
-if AsmFactory::isNested = false then
-var mdlbld as ModuleBuilder = AsmFactory::MdlB
-AsmFactory::CurnTypName = clsnamstr
-clsnamstr = String::Concat(AsmFactory::CurnNS, ".", clsnamstr)
-AsmFactory::CurnTypB = mdlbld::DefineType(clsnamstr, ta, inhtyp)
-
-StreamUtils::Write("Adding Class: ")
-StreamUtils::WriteLine(clsnamstr)
-else
-AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
-var ctb2 as TypeBuilder = AsmFactory::CurnTypB2
-StreamUtils::Write("Adding Nested Class: ")
-StreamUtils::WriteLine(clsnamstr)
-AsmFactory::CurnTypName = clsnamstr
-AsmFactory::CurnTypB = ctb2::DefineNestedType(clsnamstr, ta, inhtyp)
-end if
-
-goto fin
-end if
-
-typ = gettype DelegateStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var dels as DelegateStmt = stm
-
-if AsmFactory::inClass = true then
-AsmFactory::isNested = true
-end if
-
-if AsmFactory::isNested = false then
-AsmFactory::inClass = true
-end if
-
-var dattrs as Attributes.Attribute[] = dels::Attrs
-var dta as TypeAttributes = Helpers::ProcessClassAttrs(dattrs)
-dta = dta or 0 or 256 or 131072
-var delsnam as Ident = dels::DelegateName
-var delsnamstr as string = delsnam::Value
-var dinhtyp as System.Type = gettype MulticastDelegate
-AsmFactory::CurnInhTyp = dinhtyp
-
-if AsmFactory::isNested = false then
-mdlbld = AsmFactory::MdlB
-AsmFactory::CurnTypName = delsnamstr
-delsnamstr = String::Concat(AsmFactory::CurnNS, ".", delsnamstr)
-AsmFactory::CurnTypB = mdlbld::DefineType(delsnamstr, dta, dinhtyp)
-
-StreamUtils::Write("Adding Delegate: ")
-StreamUtils::WriteLine(delsnamstr)
-else
-AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
-ctb2 = AsmFactory::CurnTypB2
-StreamUtils::Write("Adding Nested Delegate: ")
-StreamUtils::WriteLine(delsnamstr)
-AsmFactory::CurnTypName = delsnamstr
-AsmFactory::CurnTypB = ctb2::DefineNestedType(delsnamstr, dta, dinhtyp)
-end if
-
-SymTable::ResetVar()
-SymTable::ResetIf()
-SymTable::ResetLoop()
-SymTable::ResetLbl()
-
-var dtypb as TypeBuilder = AsmFactory::CurnTypB
-var dema as MethodAttributes = 128 or 6
-var dmanamstr as string = ""
-var drettt as TypeTok = dels::RetTyp
-var drett as System.Type = gettype void
-
-var dtarr as System.Type[] = newarr System.Type 2
-dtarr[0] = gettype object
-dtarr[1] = gettype IntPtr
-
-var stdcc as CallingConventions = 1
-AsmFactory::CurnConB = dtypb::DefineConstructor(dema, stdcc, dtarr)
-AsmFactory::InitDelConstr()
-
-drett = Helpers::CommitEvalTTok(drettt)
-AsmFactory::TypArr = newarr System.Type 0
-var dparr as Expr[] = dels::Params
-var dparrl as integer = dparr[l]
-dema = 128 or 6 or 256 or 64
-if dparrl = 0 then
-dtarr = System.Type::EmptyTypes
-else
-Helpers::ProcessParams(dparr)
-dtarr = AsmFactory::TypArr
-end if
-
-AsmFactory::CurnMetB = dtypb::DefineMethod("Invoke", dema, drett, AsmFactory::TypArr)
-AsmFactory::InitDelMet()
-Helpers::PostProcessParams(dparr)
-
-AsmFactory::CreateTyp()
-if AsmFactory::isNested = false then
-AsmFactory::inClass = false
-SymTable::ResetMet()
-SymTable::ResetCtor()
-SymTable::ResetFld()
-end if
-if AsmFactory::isNested = true then
-AsmFactory::CurnTypB = AsmFactory::CurnTypB2
-AsmFactory::isNested = false
-SymTable::ResetNestedMet()
-SymTable::ResetNestedCtor()
-SymTable::ResetNestedFld()
-end if
-
-
-goto fin
-end if
-
-
-typ = gettype FieldStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var flss as FieldStmt = stm
-
-var fattrs as Attributes.Attribute[] = flss::Attrs
-var fa as FieldAttributes = Helpers::ProcessFieldAttrs(fattrs)
-var flssnam as Ident = flss::FieldName
-var flsnamstr as string = flssnam::Value
-var ftyptok as TypeTok = flss::FieldTyp
-var ftyp as System.Type = null
-//var reft3 as System.Type  = ftyptok::RefTyp
-
-//if reft3 = null then
-//Loader::MakeArr = ftyptok::IsArray
-//Loader::MakeRef = ftyptok::IsByRef
-//ftyp = Loader::LoadClass(ftyptok::Value)
-//else
-//Loader::MakeArr = ftyptok::IsArray
-//Loader::MakeRef = ftyptok::IsByRef
-//ftyp = Loader::ProcessType(reft3) 
-//end if
-
-ftyp = Helpers::CommitEvalTTok(ftyptok)
-
-if ftyp = null then
-errstr = String::Concat("Class '", ftyptok::Value, "' is not defined.")
-StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
-end if
-
-
-var typb2 as TypeBuilder = AsmFactory::CurnTypB
-AsmFactory::CurnFldB = typb2::DefineField(flsnamstr, ftyp, fa)
-
-if AsmFactory::isNested = false then
-SymTable::AddFld(flsnamstr, ftyp, AsmFactory::CurnFldB)
-else
-SymTable::AddNestedFld(flsnamstr, ftyp, AsmFactory::CurnFldB)
-end if
-
-StreamUtils::Write("	Adding Field: ")
-StreamUtils::WriteLine(flsnamstr)
-
-goto fin
-end if
-
-
-typ = gettype EndClassStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-AsmFactory::CreateTyp()
-if AsmFactory::isNested = false then
-AsmFactory::inClass = false
-SymTable::ResetMet()
-SymTable::ResetCtor()
-SymTable::ResetFld()
-end if
-if AsmFactory::isNested = true then
-AsmFactory::CurnTypB = AsmFactory::CurnTypB2
-AsmFactory::isNested = false
-SymTable::ResetNestedMet()
-SymTable::ResetNestedCtor()
-SymTable::ResetNestedFld()
-end if
-goto fin
-end if
-
-typ = gettype MethodStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var mtss as MethodStmt = stm
-
-ILEmitter::StaticFlg = false
-
-SymTable::ResetVar()
-SymTable::ResetIf()
-SymTable::ResetLbl()
-
-var mattrs as Attributes.Attribute[] = mtss::Attrs
-var ma as MethodAttributes = Helpers::ProcessMethodAttrs(mattrs)
-var mtssnam as Ident = mtss::MethodName
-var mtssnamstr as string = mtssnam::Value
-var paramarr as Expr[] = mtss::Params
-var paramlen as integer = paramarr[l]
-var rettyptok as TypeTok = mtss::RetTyp
-var rettyp as System.Type = null
-//reft  = rettyptok::RefTyp
-//cmp = String::Compare(rettyptok::Value, "")
-
-//if reft = null then
-//if cmp = 0 then
-//else
-//Loader::MakeArr = rettyptok::IsArray
-//Loader::MakeRef = rettyptok::IsByRef
-//rettyp = Loader::LoadClass(rettyptok::Value)
-//end if
-//else
-//Loader::MakeArr = rettyptok::IsArray
-//Loader::MakeRef = rettyptok::IsByRef
-//rettyp = Loader::ProcessType(reft) 
-//end if
-
-rettyp = Helpers::CommitEvalTTok(rettyptok)
-
-AsmFactory::TypArr = newarr System.Type 0
-
-if paramlen = 0 then
-else
-Helpers::ProcessParams(paramarr)
-end if
-
-
-var typb as TypeBuilder = AsmFactory::CurnTypB
-var isconstr as boolean = ParseUtils::LikeOP(mtssnamstr, "^ctor\d*$")
-b = isconstr
-cmp = String::Compare(mtssnamstr, AsmFactory::CurnTypName)
-if cmp = 0 then
-isconstr = true
-end if
-isconstr = b or isconstr
-if isconstr = false then
-AsmFactory::CurnMetB = typb::DefineMethod(mtssnamstr, ma, rettyp, AsmFactory::TypArr)
-AsmFactory::InitMtd()
-StreamUtils::Write("	Adding Method: ")
-StreamUtils::WriteLine(mtssnamstr)
-
-if AsmFactory::isNested = false then
-SymTable::AddMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
-else
-SymTable::AddNestedMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
-end if
-
-else
-var stdcallconv as CallingConventions = 1
-AsmFactory::CurnConB = typb::DefineConstructor(ma, stdcallconv, AsmFactory::TypArr)
-AsmFactory::InitConstr()
-
-if AsmFactory::isNested = false then
-SymTable::AddCtor(AsmFactory::TypArr, AsmFactory::CurnConB)
-else
-SymTable::AddNestedCtor(AsmFactory::TypArr, AsmFactory::CurnConB)
-end if
-
-
-StreamUtils::Write("	Adding Constructor: ")
-StreamUtils::WriteLine(mtssnamstr)
-end if
-
-
-AsmFactory::InMethodFlg = true
-AsmFactory::CurnMetName = mtssnamstr
-
-if paramlen = 0 then
-else
-if isconstr = false then
-Helpers::PostProcessParams(paramarr)
-else
-Helpers::PostProcessParamsConstr(paramarr)
-end if
-end if
-
-goto fin
-end if
-
-typ = gettype EndMethodStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-ILEmitter::EmitRet()
-AsmFactory::InMethodFlg = false
-ab = AsmFactory::AsmB
-var mnamcomp as integer = String::Compare(AsmFactory::CurnMetName,"main")
-var amodecomp as integer = String::Compare(AsmFactory::AsmMode,"exe")
-if mnamcomp = 0 then
-if amodecomp  = 0 then
-ab::SetEntryPoint(ILEmitter::Met)
-end if
-end if
-goto fin
-end if
-
-var vnam as Ident
-var vtyptok as TypeTok
-var vtyp as System.Type = null
-var eval as Evaluator = null
-//var vreft as System.Type
-
-typ = gettype ReturnStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-
-var retstmt as ReturnStmt = stm
-
-if retstmt::RExp <> null then
-eval = new Evaluator()
-eval::Evaluate(retstmt::RExp)
-end if
-
-ILEmitter::EmitRet()
-
-end if
-
-typ = gettype VarStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var curv as VarStmt = stm
-vnam = curv::VarName
-
-vtyptok = curv::VarTyp
-//vreft = vtyptok::RefTyp
-
-//if vreft = null then
-//Loader::MakeArr = vtyptok::IsArray
-//Loader::MakeRef = vtyptok::IsByRef
-//vtyp = Loader::LoadClass(vtyptok::Value)
-//else
-//Loader::MakeArr = vtyptok::IsArray
-//Loader::MakeRef = vtyptok::IsByRef
-//vtyp = Loader::ProcessType(vreft) 
-//end if
-
-vtyp = Helpers::CommitEvalTTok(vtyptok)
-
-if vtyp = null then
-errstr = String::Concat("Class '", vtyptok::Value, "' is not defined.")
-StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
-end if
-
-
-ILEmitter::DeclVar(vnam::Value, vtyp)
-ILEmitter::LocInd = ILEmitter::LocInd + 1
-SymTable::AddVar(vnam::Value, true, ILEmitter::LocInd, vtyp)
-
-goto fin
-end if
-
-typ = gettype VarAsgnStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var curva as VarAsgnStmt = stm
-vnam = curva::VarName
-
-vtyptok = curva::VarTyp
-//vreft = vtyptok::RefTyp
-
-//if vreft = null then
-//Loader::MakeArr = vtyptok::IsArray
-//Loader::MakeRef = vtyptok::IsByRef
-//vtyp = Loader::LoadClass(vtyptok::Value)
-//else
-//Loader::MakeArr = vtyptok::IsArray
-//Loader::MakeRef = vtyptok::IsByRef
-//vtyp = Loader::ProcessType(vreft) 
-//end if
-
-vtyp = Helpers::CommitEvalTTok(vtyptok)
-
-if vtyp = null then
-errstr = String::Concat("Class '", vtyptok::Value, "' is not defined.")
-StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
-end if
-
-ILEmitter::DeclVar(vnam::Value, vtyp)
-ILEmitter::LocInd = ILEmitter::LocInd + 1
-SymTable::AddVar(vnam::Value, true, ILEmitter::LocInd, vtyp)
-eval = new Evaluator()
-eval::StoreEmit(vnam, curva::RExpr)
-
-goto fin
-end if
-
-typ = gettype NSStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-
-var nss as NSStmt = stm
-var nssns as Token = nss::NS
-
-tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*",Utils.Constants::quot)
-tmpstr = String::Concat(tmpstr, "$")
-compb = Utils.ParseUtils::LikeOP(nssns::Value, tmpstr)
-
-if compb = true then
-tmpstr = nssns::Value
-tmpchrarr = newarr char 1
-tmpchrarr[0] = $char$Utils.Constants::quot
-tmpstr = tmpstr::Trim(tmpchrarr)
-nssns::Value = tmpstr
-end if
-
-AsmFactory::CurnNS = nssns::Value
-
-goto fin
-end if
-
-typ = gettype EndNSStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-AsmFactory::CurnNS = AsmFactory::DfltNS
-goto fin
-end if
-
-
-typ = gettype AssignStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var asgnstm as AssignStmt = stm
-eval = new Evaluator()
-var asgnstmle as Expr = asgnstm::LExp
-var asgnstmletok as Token = asgnstmle::Tokens[0]
-//if asgnstmletok = null then
-//b = b
-//end if
-eval::StoreEmit(asgnstmletok, asgnstm::RExp)
-goto fin
-end if
-
-typ = gettype MethodCallStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var mcstmt as MethodCallStmt = stm
-var mcstmtexp as Expr = new Expr()
-var mcstmttok as Token = mcstmt::MethodToken
-mcstmttok = Helpers::SetPopFlg(mcstmttok)
-if mcstmttok <> null then
-mcstmtexp::AddToken(mcstmttok)
-eval = new Evaluator()
-eval::Evaluate(mcstmtexp)
-end if
-goto fin
-end if
-
-var ifendl as Emit.Label
-var ifnbl as Emit.Label
-var lpendl as Emit.Label
-var lpstartl as Emit.Label
-var genlbl as Emit.Label
-
-typ = gettype IfStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var ifstm as IfStmt = stm
-SymTable::AddIf()
-var ifexp as Expr = ifstm::Exp
-eval = new Evaluator()
-eval::Evaluate(ifexp)
-
-ifnbl = SymTable::ReadIfNxtBlkLbl()
-ILEmitter::EmitBrfalse(ifnbl)
-
-goto fin
-end if
-
-var lpexp as Expr = null
-
-typ = gettype DoStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-SymTable::AddLoop()
-
-lpstartl = SymTable::ReadLoopStartLbl()
-ILEmitter::MarkLbl(lpstartl)
-
-goto fin
-end if
-
-typ = gettype BreakStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-
-lpendl = SymTable::ReadLoopEndLbl()
-ILEmitter::EmitBr(lpendl)
-
-goto fin
-end if
-
-typ = gettype ContinueStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-
-lpstartl = SymTable::ReadLoopStartLbl()
-ILEmitter::EmitBr(lpstartl)
-
-goto fin
-end if
-
-typ = gettype UntilStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var unstm as UntilStmt = stm
-
-lpstartl = SymTable::ReadLoopStartLbl()
-
-lpexp = unstm::Exp
-eval = new Evaluator()
-eval::Evaluate(lpexp)
-ILEmitter::EmitBrfalse(lpstartl)
-
-lpendl = SymTable::ReadLoopEndLbl()
-ILEmitter::MarkLbl(lpendl)
-SymTable::PopLoop()
-
-goto fin
-end if
-
-typ = gettype WhileStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var whstm as WhileStmt = stm
-
-lpstartl = SymTable::ReadLoopStartLbl()
-
-lpexp = whstm::Exp
-eval = new Evaluator()
-eval::Evaluate(lpexp)
-ILEmitter::EmitBrtrue(lpstartl)
-
-lpendl = SymTable::ReadLoopEndLbl()
-ILEmitter::MarkLbl(lpendl)
-SymTable::PopLoop()
-
-goto fin
-end if
-
-
-typ = gettype DoUntilStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var dustm as DoUntilStmt = stm
-SymTable::AddLoop()
-
-lpstartl = SymTable::ReadLoopStartLbl()
-ILEmitter::MarkLbl(lpstartl)
-
-lpexp = dustm::Exp
-eval = new Evaluator()
-eval::Evaluate(lpexp)
-
-lpendl = SymTable::ReadLoopEndLbl()
-ILEmitter::EmitBrtrue(lpendl)
-
-goto fin
-end if
-
-typ = gettype DoWhileStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var dwstm as DoWhileStmt = stm
-SymTable::AddLoop()
-
-lpstartl = SymTable::ReadLoopStartLbl()
-ILEmitter::MarkLbl(lpstartl)
-
-lpexp = dwstm::Exp
-eval = new Evaluator()
-eval::Evaluate(lpexp)
-
-lpendl = SymTable::ReadLoopEndLbl()
-ILEmitter::EmitBrfalse(lpendl)
-
-goto fin
-end if
-
-
-typ = gettype ElseIfStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-
-ifendl = SymTable::ReadIfEndLbl()
-ILEmitter::EmitBr(ifendl)
-ifnbl = SymTable::ReadIfNxtBlkLbl()
-ILEmitter::MarkLbl(ifnbl)
-SymTable::SetIfNxtBlkLbl()
-
-var elifstm as ElseIfStmt = stm
-var elifexp as Expr = elifstm::Exp
-eval = new Evaluator()
-eval::Evaluate(elifexp)
-
-ifnbl = SymTable::ReadIfNxtBlkLbl()
-ILEmitter::EmitBrfalse(ifnbl)
-
-goto fin
-end if
-
-typ = gettype ElseStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-ifendl = SymTable::ReadIfEndLbl()
-ILEmitter::EmitBr(ifendl)
-ifnbl = SymTable::ReadIfNxtBlkLbl()
-ILEmitter::MarkLbl(ifnbl)
-SymTable::SetIfElsePass()
-goto fin
-end if
-
-typ = gettype EndIfStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-
-b = SymTable::ReadIfElsePass()
-
-if b = false then
-ifnbl = SymTable::ReadIfNxtBlkLbl()
-ILEmitter::MarkLbl(ifnbl)
-end if
-
-ifendl = SymTable::ReadIfEndLbl()
-ILEmitter::MarkLbl(ifendl)
-SymTable::PopIf()
-goto fin
-end if
-
-typ = gettype EndDoStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-
-lpstartl = SymTable::ReadLoopStartLbl()
-ILEmitter::EmitBr(lpstartl)
-
-lpendl = SymTable::ReadLoopEndLbl()
-ILEmitter::MarkLbl(lpendl)
-SymTable::PopLoop()
-goto fin
-end if
-
-var lblidt as Ident
-
-typ = gettype LabelStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var lblstm as LabelStmt = stm
-lblidt = lblstm::LabelName
-SymTable::AddLbl(lblidt::Value)
-goto fin
-end if
-
-typ = gettype PlaceStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var plcstm as PlaceStmt = stm
-lblidt = plcstm::LabelName
-genlbl = Helpers::GetLbl(lblidt::Value)
-ILEmitter::MarkLbl(genlbl)
-goto fin
-end if
-
-typ = gettype GotoStmt
-b = typ::IsInstanceOfType($object$stm)
-
-if b = true then
-var gtostm as GotoStmt = stm
-lblidt = gtostm::LabelName
-genlbl = Helpers::GetLbl(lblidt::Value)
-ILEmitter::EmitBr(genlbl)
-goto fin
-end if
-
-place fin
-
-end method
+	method public void Read(var stm as Stmt, var fpath as string)
+
+		var t as Type[] = new Type[36]
+		t[0] = gettype RefasmStmt
+		t[1] = gettype RefstdasmStmt
+		t[2] = gettype ImportStmt
+		t[3] = gettype LocimportStmt
+		t[4] = gettype AssemblyStmt
+		t[5] = gettype VerStmt
+		t[6] = gettype DebugStmt
+		t[7] = gettype ClassStmt
+		t[8] = gettype DelegateStmt
+		t[9] = gettype FieldStmt
+		t[10] = gettype EndClassStmt
+		t[11] = gettype MethodStmt
+		t[12] = gettype EndMethodStmt
+		t[13] = gettype ReturnStmt
+		t[14] = gettype VarStmt
+		t[15] = gettype VarAsgnStmt
+		t[16] = gettype NSStmt
+		t[17] = gettype EndNSStmt
+		t[18] = gettype AssignStmt
+		t[19] = gettype MethodCallStmt
+		t[20] = gettype IfStmt
+		t[21] = gettype DoStmt
+		t[22] = gettype BreakStmt
+		t[23] = gettype ContinueStmt
+		t[24] = gettype UntilStmt
+		t[25] = gettype WhileStmt
+		t[26] = gettype DoUntilStmt
+		t[27] = gettype DoWhileStmt
+		t[28] = gettype ElseIfStmt
+		t[29] = gettype ElseStmt
+		t[30] = gettype EndIfStmt
+		t[31] = gettype EndDoStmt
+		t[32] = gettype LabelStmt
+		t[33] = gettype PlaceStmt
+		t[34] = gettype GotoStmt
+		t[35] = gettype CommentStmt
+		
+		var tmpchrarr as char[]
+		var vtyp as Type = null
+		var eval as Evaluator = null
+
+		AsmFactory::ChainFlg = false
+		ILEmitter::LineNr = stm::Line
+		ILEmitter::CurSrcFile = fpath
+		SymTable::StoreFlg = false
+
+		if AsmFactory::DebugFlg then
+			if AsmFactory::InMethodFlg then
+				ILEmitter::MarkDbgPt(stm::Line)
+			end if
+		end if
+
+		if t[0]::IsInstanceOfType(stm) then
+			var rastm as RefasmStmt = $RefasmStmt$stm
+			if rastm::AsmPath::Value like  ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
+				tmpchrarr = new char[1]
+				tmpchrarr[0] = $char$Utils.Constants::quot
+				rastm::AsmPath::Value = rastm::AsmPath::Value::Trim(tmpchrarr)
+			end if
+			rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::Value)
+			StreamUtils::Write("Referencing Assembly: ")
+			StreamUtils::WriteLine(rastm::AsmPath::Value)
+			Importer::AddAsm(Assembly::LoadFrom(rastm::AsmPath::Value))
+		elseif t[1]::IsInstanceOfType(stm) then
+			var rsastm as RefstdasmStmt = $RefstdasmStmt$stm
+			if rsastm::AsmPath::Value like ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
+				tmpchrarr = new char[1]
+				tmpchrarr[0] = $char$Utils.Constants::quot
+				rsastm::AsmPath::Value = rsastm::AsmPath::Value::Trim(tmpchrarr)
+			end if
+			rsastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rsastm::AsmPath::Value)
+			rsastm::AsmPath::Value = Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), rsastm::AsmPath::Value)
+			StreamUtils::Write("Referencing Assembly: ")
+			StreamUtils::WriteLine(rsastm::AsmPath::Value)
+			Importer::AddAsm(Assembly::LoadFrom(rsastm::AsmPath::Value))
+		elseif t[2]::IsInstanceOfType(stm) then
+			var istm as ImportStmt = $ImportStmt$stm
+			if istm::NS::Value like ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
+				tmpchrarr = new char[1]
+				tmpchrarr[0] = $char$Utils.Constants::quot
+				istm::NS::Value = istm::NS::Value::Trim(tmpchrarr)
+			end if
+			StreamUtils::Write("Importing Namespace: ")
+			StreamUtils::WriteLine(istm::NS::Value)
+			Importer::AddImp(istm::NS::Value)
+		elseif t[3]::IsInstanceOfType(stm) then
+			var listm as LocimportStmt = $LocimportStmt$stm
+			if listm::NS::Value like ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
+				tmpchrarr = new char[1]
+				tmpchrarr[0] = $char$Utils.Constants::quot
+				listm::NS::Value = listm::NS::Value::Trim(tmpchrarr)
+			end if
+			StreamUtils::Write("Importing Namespace: ")
+			StreamUtils::WriteLine(listm::NS::Value)
+			Importer::AddLocImp(listm::NS::Value)
+		elseif t[4]::IsInstanceOfType(stm) then
+			var asms as AssemblyStmt = $AssemblyStmt$stm
+			AsmFactory::AsmNameStr = new AssemblyName(asms::AsmName::Value)
+			AsmFactory::AsmMode = asms::Mode::Value
+			AsmFactory::DfltNS = asms::AsmName::Value
+			AsmFactory::CurnNS = asms::AsmName::Value
+			StreamUtils::Write("Beginning Assembly: ")
+			StreamUtils::WriteLine(asms::AsmName::Value)
+		elseif t[5]::IsInstanceOfType(stm) then
+			var asmv as VerStmt = $VerStmt$stm
+			AsmFactory::AsmNameStr::set_Version(new Version(asmv::VersionNos[0]::NumVal, asmv::VersionNos[1]::NumVal, asmv::VersionNos[2]::NumVal, asmv::VersionNos[3]::NumVal))
+			var aasv as AssemblyBuilderAccess = 2
+			AsmFactory::AsmB = AppDomain::get_CurrentDomain()::DefineDynamicAssembly(AsmFactory::AsmNameStr, aasv, Directory::GetCurrentDirectory())
+			AsmFactory::MdlB = AsmFactory::AsmB::DefineDynamicModule(AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode, AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode, AsmFactory::DebugFlg)
+
+			if AsmFactory::DebugFlg then
+				fpath = Path::GetFullPath(fpath)
+				//Console::WriteLine(fpath)
+				var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
+				ILEmitter::DocWriter = docw
+				ILEmitter::AddDocWriter(docw)
+			end if
+
+			// --------------------------------------------------------------------------------------------------------
+			if AsmFactory::DebugFlg then
+				var dtyp as Type = gettype DebuggableAttribute
+				var debugattr as DebuggableAttribute\DebuggingModes = 1 or 256
+				var oattr as object = $object$debugattr
+				var dattyp as Type = gettype DebuggableAttribute\DebuggingModes
+				var tarr as Type[] = new Type[1]
+				tarr[0] = dattyp
+				var oarr as object[] = new object[1]
+				oarr[0] = oattr
+				AsmFactory::AsmB::SetCustomAttribute(new CustomAttributeBuilder(dtyp::GetConstructor(tarr), oarr))
+			end if
+			// --------------------------------------------------------------------------------------------------------
+
+			AsmFactory::AsmFile = AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode
+			Importer::AddAsm(AsmFactory::AsmB)
+		elseif t[6]::IsInstanceOfType(stm) then
+			var dbgs as DebugStmt = $DebugStmt$stm
+			AsmFactory::DebugFlg = dbgs::Flg
+		elseif t[7]::IsInstanceOfType(stm) then
+			var clss as ClassStmt = $ClassStmt$stm
+
+			if AsmFactory::inClass then
+				AsmFactory::isNested = true
+			end if
+			if AsmFactory::isNested = false then
+				AsmFactory::inClass = true
+			end if
+
+			var inhtyp as Type = null
+			var reft as Type  = clss::InhClass::RefTyp
+
+			if reft = null then
+				if clss::InhClass::Value = "" then
+					inhtyp = gettype object
+				else
+					inhtyp = Helpers::CommitEvalTTok(clss::InhClass)
+				end if
+			else
+				inhtyp = reft 
+			end if
+			if inhtyp = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Base Class '" + clss::InhClass::Value + "' is not defined or is not accessible.")
+			end if
+			if inhtyp != null then
+				if inhtyp::get_IsSealed() then
+					inhtyp = null
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::InhClass::Value + "' is not inheritable.")
+				end if
+			end if
+			AsmFactory::CurnInhTyp = inhtyp
+
+
+			if AsmFactory::isNested = false then
+				AsmFactory::CurnTypName = clss::ClassName::Value
+				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value, Helpers::ProcessClassAttrs(clss::Attrs), inhtyp)
+				StreamUtils::Write("Adding Class: ")
+				StreamUtils::WriteLine(AsmFactory::CurnNS + "." + clss::ClassName::Value)
+			else
+				AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
+				StreamUtils::Write("Adding Nested Class: ")
+				StreamUtils::WriteLine(clss::ClassName::Value)
+				AsmFactory::CurnTypName = clss::ClassName::Value
+				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value, Helpers::ProcessClassAttrs(clss::Attrs), inhtyp)
+			end if
+		elseif t[8]::IsInstanceOfType(stm) then
+			var dels as DelegateStmt = $DelegateStmt$stm
+			
+			if AsmFactory::inClass then
+				AsmFactory::isNested = true
+			end if
+			if AsmFactory::isNested = false then
+				AsmFactory::inClass = true
+			end if
+
+			var dta as TypeAttributes = Helpers::ProcessClassAttrs(dels::Attrs)
+			dta = dta or 0 or 256 or 131072
+			var dinhtyp as Type = gettype MulticastDelegate
+			AsmFactory::CurnInhTyp = dinhtyp
+
+			if AsmFactory::isNested = false then
+				AsmFactory::CurnTypName = dels::DelegateName::Value
+				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + dels::DelegateName::Value, dta, dinhtyp)
+				StreamUtils::Write("Adding Delegate: ")
+				StreamUtils::WriteLine(AsmFactory::CurnNS + "." + dels::DelegateName::Value)
+			else
+				AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
+				StreamUtils::Write("Adding Nested Delegate: ")
+				StreamUtils::WriteLine(dels::DelegateName::Value)
+				AsmFactory::CurnTypName = dels::DelegateName::Value
+				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(dels::DelegateName::Value, dta, dinhtyp)
+			end if
+
+			SymTable::ResetVar()
+			SymTable::ResetIf()
+			SymTable::ResetLoop()
+			SymTable::ResetLbl()
+
+			var dema as MethodAttributes = 128 or 6
+			var stdcc as CallingConventions = 1
+			var dtarr as Type[] = new Type[2]
+			dtarr[0] = gettype object
+			dtarr[1] = gettype IntPtr
+			
+			AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(dema, stdcc, dtarr)
+			AsmFactory::InitDelConstr()
+
+			AsmFactory::TypArr = new Type[0]
+			dema = 128 or 6 or 256 or 64
+			if dels::Params[l] = 0 then
+				dtarr = Type::EmptyTypes
+			else
+				Helpers::ProcessParams(dels::Params)
+				dtarr = AsmFactory::TypArr
+			end if
+			
+			var drettyp as Type = Helpers::CommitEvalTTok(dels::RetTyp)
+			
+			if drettyp = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + dels::RetTyp::Value + "' is not defined or is not accessible.")
+			end if
+
+			AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod("Invoke", dema, drettyp, AsmFactory::TypArr)
+			AsmFactory::InitDelMet()
+			Helpers::PostProcessParams(dels::Params)
+
+			AsmFactory::CreateTyp()
+			if AsmFactory::isNested then
+				AsmFactory::CurnTypB = AsmFactory::CurnTypB2
+				AsmFactory::isNested = false
+				SymTable::ResetNestedMet()
+				SymTable::ResetNestedCtor()
+				SymTable::ResetNestedFld()
+			else
+				AsmFactory::inClass = false
+				SymTable::ResetMet()
+				SymTable::ResetCtor()
+				SymTable::ResetFld()
+			end if
+		elseif t[9]::IsInstanceOfType(stm) then
+			
+			var flss as FieldStmt = $FieldStmt$stm
+			var ftyp as Type = Helpers::CommitEvalTTok(flss::FieldTyp)
+			
+			if ftyp = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + flss::FieldTyp::Value + "' is not defined.")
+			end if
+			
+			AsmFactory::CurnFldB = AsmFactory::CurnTypB::DefineField(flss::FieldName::Value, ftyp, Helpers::ProcessFieldAttrs(flss::Attrs))
+
+			if AsmFactory::isNested then
+				SymTable::AddNestedFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB)
+			else
+				SymTable::AddFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB)
+			end if
+
+			StreamUtils::Write("	Adding Field: ")
+			StreamUtils::WriteLine(flss::FieldName::Value)
+
+		elseif t[10]::IsInstanceOfType(stm) then
+			AsmFactory::CreateTyp()
+			if AsmFactory::isNested then
+				AsmFactory::CurnTypB = AsmFactory::CurnTypB2
+				AsmFactory::isNested = false
+				SymTable::ResetNestedMet()
+				SymTable::ResetNestedCtor()
+				SymTable::ResetNestedFld()
+			else
+				AsmFactory::inClass = false
+				SymTable::ResetMet()
+				SymTable::ResetCtor()
+				SymTable::ResetFld()
+			end if
+		elseif t[11]::IsInstanceOfType(stm) then
+			var mtss as MethodStmt = $MethodStmt$stm
+			ILEmitter::StaticFlg = false
+			SymTable::ResetVar()
+			SymTable::ResetIf()
+			SymTable::ResetLbl()
+
+			var mtssnamstr as string = mtss::MethodName::Value
+			var rettyp as Type = Helpers::CommitEvalTTok(mtss::RetTyp)
+			
+			if rettyp = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + mtss::RetTyp::Value + "' is not defined or is not accessible.")
+			end if
+
+			AsmFactory::TypArr = new Type[0]
+
+			if mtss::Params[l] != 0 then
+				Helpers::ProcessParams(mtss::Params)
+			end if
+
+			if (mtssnamstr = AsmFactory::CurnTypName) or (mtssnamstr like "^ctor\d*$") then
+				StreamUtils::Write("	Adding Constructor: ")
+				StreamUtils::WriteLine(mtssnamstr)
+				var stdcallconv as CallingConventions = 1
+				AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(Helpers::ProcessMethodAttrs(mtss::Attrs), stdcallconv, AsmFactory::TypArr)
+				AsmFactory::InitConstr()
+				if AsmFactory::isNested then
+					SymTable::AddNestedCtor(AsmFactory::TypArr, AsmFactory::CurnConB)
+				else
+					SymTable::AddCtor(AsmFactory::TypArr, AsmFactory::CurnConB)
+				end if
+				if mtss::Params[l] != 0 then
+					Helpers::PostProcessParamsConstr(mtss::Params)
+				end if
+			else
+				StreamUtils::Write("	Adding Method: ")
+				StreamUtils::WriteLine(mtssnamstr)
+				AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, Helpers::ProcessMethodAttrs(mtss::Attrs), rettyp, AsmFactory::TypArr)
+				AsmFactory::InitMtd()
+				if AsmFactory::isNested then
+					SymTable::AddNestedMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
+				else
+					SymTable::AddMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
+				end if
+				if mtss::Params[l] != 0 then
+					Helpers::PostProcessParams(mtss::Params)
+				end if
+			end if
+
+			AsmFactory::InMethodFlg = true
+			AsmFactory::CurnMetName = mtssnamstr
+		elseif t[12]::IsInstanceOfType(stm) then
+			ILEmitter::EmitRet()
+			AsmFactory::InMethodFlg = false
+			SymTable::CheckUnusedVar()
+			if AsmFactory::CurnMetName = "main" then
+				if AsmFactory::AsmMode = "exe" then
+					AsmFactory::AsmB::SetEntryPoint(ILEmitter::Met)
+				end if
+			end if
+		elseif t[13]::IsInstanceOfType(stm) then
+			var retstmt as ReturnStmt = $ReturnStmt$stm
+			if retstmt::RExp != null then
+				eval = new Evaluator()
+				eval::Evaluate(retstmt::RExp)
+			end if
+			ILEmitter::EmitRet()
+		elseif t[14]::IsInstanceOfType(stm) then
+			var curv as VarStmt = $VarStmt$stm
+			vtyp = Helpers::CommitEvalTTok(curv::VarTyp)
+			if vtyp = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curv::VarTyp::Value + "' is not defined.")
+			end if
+			ILEmitter::DeclVar(curv::VarName::Value, vtyp)
+			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			SymTable::AddVar(curv::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+		elseif t[15]::IsInstanceOfType(stm) then
+			var curva as VarAsgnStmt = $VarAsgnStmt$stm
+			vtyp = Helpers::CommitEvalTTok(curva::VarTyp)
+			if vtyp = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curva::VarTyp::Value + "' is not defined.")
+			end if
+			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
+			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+			eval = new Evaluator()
+			eval::StoreEmit(curva::VarName, curva::RExpr)
+			//SymTable::ResetUsed(curva::VarName::Value)
+		elseif t[16]::IsInstanceOfType(stm) then
+			var nss as NSStmt = $NSStmt$stm
+			if nss::NS::Value like ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
+				tmpchrarr = new char[1]
+				tmpchrarr[0] = $char$Utils.Constants::quot
+				nss::NS::Value = nss::NS::Value::Trim(tmpchrarr)
+			end if
+			AsmFactory::CurnNS = nss::NS::Value
+		elseif t[17]::IsInstanceOfType(stm) then
+			AsmFactory::CurnNS = AsmFactory::DfltNS
+		elseif t[18]::IsInstanceOfType(stm) then
+			var asgnstm as AssignStmt = $AssignStmt$stm
+			eval = new Evaluator()
+			eval::StoreEmit(asgnstm::LExp::Tokens[0], asgnstm::RExp)
+		elseif t[19]::IsInstanceOfType(stm) then
+			var mcstmt as MethodCallStmt = $MethodCallStmt$stm
+			var mcstmtexp as Expr = new Expr()
+			if Helpers::SetPopFlg(mcstmt::MethodToken) != null then
+				mcstmtexp::AddToken(mcstmt::MethodToken)
+				eval = new Evaluator()
+				eval::Evaluate(mcstmtexp)
+			else
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No variable/field loads are allowed without a destination being specified")
+			end if
+		elseif t[20]::IsInstanceOfType(stm) then
+			var ifstm as IfStmt = $IfStmt$stm
+			SymTable::AddIf()
+			eval = new Evaluator()
+			eval::Evaluate(ifstm::Exp)
+			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
+		elseif t[21]::IsInstanceOfType(stm) then
+			SymTable::AddLoop()
+			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
+		elseif t[22]::IsInstanceOfType(stm) then
+			ILEmitter::EmitBr(SymTable::ReadLoopEndLbl())
+		elseif t[23]::IsInstanceOfType(stm) then
+			ILEmitter::EmitBr(SymTable::ReadLoopStartLbl())
+		elseif t[24]::IsInstanceOfType(stm) then
+			var unstm as UntilStmt = $UntilStmt$stm
+			eval = new Evaluator()
+			eval::Evaluate(unstm::Exp)
+			ILEmitter::EmitBrfalse(SymTable::ReadLoopStartLbl())
+			ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
+			SymTable::PopLoop()
+		elseif t[25]::IsInstanceOfType(stm) then
+			var whstm as WhileStmt = $WhileStmt$stm
+			eval = new Evaluator()
+			eval::Evaluate(whstm::Exp)
+			ILEmitter::EmitBrtrue(SymTable::ReadLoopStartLbl())
+			ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
+			SymTable::PopLoop()
+		elseif t[26]::IsInstanceOfType(stm) then
+			var dustm as DoUntilStmt = $DoUntilStmt$stm
+			SymTable::AddLoop()
+			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
+			eval = new Evaluator()
+			eval::Evaluate(dustm::Exp)
+			ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
+		elseif t[27]::IsInstanceOfType(stm) then
+			var dwstm as DoWhileStmt = $DoWhileStmt$stm
+			SymTable::AddLoop()
+			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
+			eval = new Evaluator()
+			eval::Evaluate(dwstm::Exp)
+			ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
+		elseif t[28]::IsInstanceOfType(stm) then
+			ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
+			ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
+			SymTable::SetIfNxtBlkLbl()
+			var elifstm as ElseIfStmt = $ElseIfStmt$stm
+			eval = new Evaluator()
+			eval::Evaluate(elifstm::Exp)
+			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
+		elseif t[29]::IsInstanceOfType(stm) then
+			ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
+			ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
+			SymTable::SetIfElsePass()
+		elseif t[30]::IsInstanceOfType(stm) then
+			if SymTable::ReadIfElsePass() = false then
+				ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
+			end if
+			ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
+			SymTable::PopIf()
+		elseif t[31]::IsInstanceOfType(stm) then
+			ILEmitter::EmitBr(SymTable::ReadLoopStartLbl())
+			ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
+			SymTable::PopLoop()
+		elseif t[32]::IsInstanceOfType(stm) then
+			var lblstm as LabelStmt = $LabelStmt$stm
+			SymTable::AddLbl(lblstm::LabelName::Value)
+		elseif t[33]::IsInstanceOfType(stm) then
+			var plcstm as PlaceStmt = $PlaceStmt$stm
+			ILEmitter::MarkLbl(Helpers::GetLbl(plcstm::LabelName::Value))
+		elseif t[34]::IsInstanceOfType(stm) then
+			var gtostm as GotoStmt = $GotoStmt$stm
+			ILEmitter::EmitBr(Helpers::GetLbl(gtostm::LabelName::Value))
+		elseif t[35]::IsInstanceOfType(stm) then
+		else
+			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
+		end if
+		return
+	end method
 
 end class

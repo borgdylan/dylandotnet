@@ -1,0 +1,42 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnr/loader.dyl">
+    <Files>
+      <File FileName="test.dyl" Line="23" Column="1" />
+      <File FileName="dnr/loader.dyl" Line="236" Column="1" />
+      <File FileName="dnr/ilemitter.dyl" Line="626" Column="1" />
+      <File FileName="codegen/eval.dyl" Line="503" Column="1" />
+      <File FileName="codegen/helpers.dyl" Line="358" Column="9" />
+      <File FileName="codegen/symtable.dyl" Line="416" Column="9" />
+      <File FileName="codegen/stmtreader.dyl" Line="497" Column="1" />
+      <File FileName="dnu/streamu.dyl" Line="130" Column="1" />
+      <File FileName="codegen/codegenerator.dyl" Line="53" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="test" expanded="True">
+            <Node name="test.dyl" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True">
+          <Node name="test" selected="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>name</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/var/www/Code/dylannet/compiler/test.dyl" line="23" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/dnr/loader.dyl" line="215" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -8,68 +8,56 @@
 
 class public auto ansi DoWhileStmt extends Stmt
 
-field public Expr Exp
+	field public Expr Exp
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Exp = new Expr()
-end method
+	method public void DoWhileStmt()
+		me::ctor()
+		Exp = new Expr()
+	end method
 
 end class
 
 class public auto ansi DoUntilStmt extends Stmt
 
-field public Expr Exp
+	field public Expr Exp
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Exp = new Expr()
-end method
+	method public void DoUntilStmt()
+		me::ctor()
+		Exp = new Expr()
+	end method
 
 end class
 
 class public auto ansi WhileStmt extends Stmt
 
-field public Expr Exp
+	field public Expr Exp
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Exp = new Expr()
-end method
+	method public void WhileStmt()
+		me::ctor()
+		Exp = new Expr()
+	end method
 
 end class
 
 class public auto ansi UntilStmt extends Stmt
 
-field public Expr Exp
+	field public Expr Exp
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Exp = new Expr()
-end method
+	method public void UntilStmt()
+		me::ctor()
+		Exp = new Expr()
+	end method
 
 end class
 
 class public auto ansi DoStmt extends Stmt
-
 end class
 
 class public auto ansi BreakStmt extends Stmt
-
 end class
 
 class public auto ansi ContinueStmt extends Stmt
-
 end class
 
 class public auto ansi EndDoStmt extends Stmt
-
 end class

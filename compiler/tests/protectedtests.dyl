@@ -41,7 +41,7 @@ class public auto ansi ProtectedTest
 	end method
 	
 	method family void ProtMtd()
-		var ic as InternalClass
+		//var ic as InternalClass
 		//var ah as AppDomainHandle
 	end method
 	
@@ -103,6 +103,14 @@ class public auto ansi InheritingClass extends ProtectedTest
 		pt::AssemFld = 1
 		pt::FamORAssemFld = 1
 		pt::FamANDAssemFld = 1
+	end method
+
+end class
+
+class public auto ansi Program
+
+	method public static void main()
+
 	end method
 
 end class

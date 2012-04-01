@@ -9,17 +9,15 @@
 // LtExpr CondOp RtExpr
 class public auto ansi ConditionalExpr extends Expr
 
-field public Expr LtExpr
-field public Expr RtExpr
-field public ConditionalOp CondOP
+	field public Expr LtExpr
+	field public Expr RtExpr
+	field public ConditionalOp CondOP
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-LtExpr = new Expr()
-RtExpr = new Expr()
-CondOP = new ConditionalOp()
-end method
+	method public void ConditionalExpr()
+		me::ctor()
+		LtExpr = new Expr()
+		RtExpr = new Expr()
+		CondOP = new ConditionalOp()
+	end method
 
 end class

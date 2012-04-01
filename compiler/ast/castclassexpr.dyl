@@ -9,15 +9,13 @@
 // castclass Obj DestType
 class public auto ansi CastclassExpr extends Expr
 
-field public Token Obj
-field public TypeTok DestType
+	field public Token Obj
+	field public TypeTok DestType
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Obj = new Token()
-DestType = new TypeTok()
-end method
+	method public void CastclassExpr()
+		me::ctor()
+		Obj = new Token()
+		DestType = new TypeTok()
+	end method
 
 end class

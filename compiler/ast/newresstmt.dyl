@@ -8,15 +8,13 @@
 
 class public auto ansi NewresStmt extends Stmt
 
-field public Token Path
-field public Token ResType
+	field public Token Path
+	field public Token ResType
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Path = new Token()
-ResType = new Token()
-end method
+	method public void NewresStmt()
+		me::ctor()
+		Path = new Token()
+		ResType = new Token()
+	end method
 
 end class

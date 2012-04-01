@@ -7,132 +7,105 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi Attribute extends Token
-
 end class
 
 // hidebysig
-class public auto ansi HideBySigAttr extends Attribute
-
+class public auto ansi HideBySigAttr extends Attributes.Attribute
 end class
 
 // specialname
-class public auto ansi SpecialNameAttr extends Attribute
-
+class public auto ansi SpecialNameAttr extends Attributes.Attribute
 end class
 
 // private 
-class public auto ansi PrivateAttr extends Attribute
-
+class public auto ansi PrivateAttr extends Attributes.Attribute
 end class
 
 // family
-class public auto ansi FamilyAttr extends Attribute
-
+class public auto ansi FamilyAttr extends Attributes.Attribute
 end class
 
 // public
-class public auto ansi PublicAttr extends Attribute
-
+class public auto ansi PublicAttr extends Attributes.Attribute
 end class
 
 // static
-class public auto ansi StaticAttr extends Attribute
-
+class public auto ansi StaticAttr extends Attributes.Attribute
 end class
 
 // virtual
-class public auto ansi VirtualAttr extends Attribute
-
+class public auto ansi VirtualAttr extends Attributes.Attribute
 end class
 
 // abstract
-class public auto ansi AbstractAttr extends Attribute
-
+class public auto ansi AbstractAttr extends Attributes.Attribute
 end class
 
 // newslot
-class public auto ansi NewSlotAttr extends Attribute
-
+class public auto ansi NewSlotAttr extends Attributes.Attribute
 end class
 
 //pinvokeimpl
-class public auto ansi PinvokeImplAttr extends Attribute
-
+class public auto ansi PinvokeImplAttr extends Attributes.Attribute
 end class
 
 // hasdefault
-class public auto ansi HasDefaultAttr extends Attribute
-
+class public auto ansi HasDefaultAttr extends Attributes.Attribute
 end class
 
 // none
-class public auto ansi NoneAttr extends Attribute
-
+class public auto ansi NoneAttr extends Attributes.Attribute
 end class
 
 // autochar
-class public auto ansi AutoClassAttr extends Attribute
-
+class public auto ansi AutoClassAttr extends Attributes.Attribute
 end class
 
 // ansi
-class public auto ansi AnsiClassAttr extends Attribute
-
+class public auto ansi AnsiClassAttr extends Attributes.Attribute
 end class
 
 // beforefieldinit
-class public auto ansi BeforeFieldInitAttr extends Attribute
-
+class public auto ansi BeforeFieldInitAttr extends Attributes.Attribute
 end class
 
 // sealed
-class public auto ansi SealedAttr extends Attribute
-
+class public auto ansi SealedAttr extends Attributes.Attribute
 end class
 
 // interface
-class public auto ansi InterfaceAttr extends Attribute
-
+class public auto ansi InterfaceAttr extends Attributes.Attribute
 end class
 
 // initonly
-class public auto ansi InitOnlyAttr extends Attribute
-
+class public auto ansi InitOnlyAttr extends Attributes.Attribute
 end class
 
 // literal
-class public auto ansi LiteralAttr extends Attribute
-
+class public auto ansi LiteralAttr extends Attributes.Attribute
 end class
 
 // final
-class public auto ansi FinalAttr extends Attribute
-
+class public auto ansi FinalAttr extends Attributes.Attribute
 end class
 
 
 // assembly
-class public auto ansi AssemblyAttr extends Attribute
-
+class public auto ansi AssemblyAttr extends Attributes.Attribute
 end class
 
 // famandassem
-class public auto ansi FamANDAssemAttr extends Attribute
-
+class public auto ansi FamANDAssemAttr extends Attributes.Attribute
 end class
 
 // famorassem
-class public auto ansi FamORAssemAttr extends Attribute
-
+class public auto ansi FamORAssemAttr extends Attributes.Attribute
 end class
 
-
 // sequential
-class public auto ansi SequentialLayoutAttr extends Attribute
-
+class public auto ansi SequentialLayoutAttr extends Attributes.Attribute
 end class
 
 // auto
-class public auto ansi AutoLayoutAttr extends Attribute
-
+class public auto ansi AutoLayoutAttr extends Attributes.Attribute
 end class

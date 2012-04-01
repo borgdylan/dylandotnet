@@ -12,36 +12,30 @@ end class
 // +
 class public auto ansi AddOp extends AritOp
 
-method public void ctor0()
-me::ctor()
-me::PrecNo = 11
-me::LChild = null
-me::RChild = null
-end method
+	method public void AddOp()
+		me::ctor()
+		PrecNo = 11
+	end method
 
 end class
 
 // *
 class public auto ansi MulOp extends AritOp
 
-method public void ctor0()
-me::ctor()
-me::PrecNo = 12
-me::LChild = null
-me::RChild = null
-end method
+	method public void MulOp()
+		me::ctor()
+		PrecNo = 12
+	end method
 
 end class
 
 // -
 class public auto ansi SubOp extends AritOp
 
-method public void ctor0()
-me::ctor()
-me::PrecNo = 11
-me::LChild = null
-me::RChild = null
-end method
+	method public void SubOp()
+		me::ctor()
+		PrecNo = 11
+	end method
 
 end class
 
@@ -49,71 +43,59 @@ end class
 // /
 class public auto ansi DivOp extends AritOp
 
-method public void ctor0()
-me::ctor()
-me::PrecNo = 12
-me::LChild = null
-me::RChild = null
-end method
+	method public void DivOp()
+		me::ctor()
+		PrecNo = 12
+	end method
 
 end class
 
 // %
 class public auto ansi ModOp extends AritOp
 
-method public void ctor0()
-me::ctor()
-me::PrecNo = 12
-me::LChild = null
-me::RChild = null
-end method
+	method public void ModOp()
+		me::ctor()
+		PrecNo = 12
+	end method
 
 end class
 
 // ++
 class public auto ansi IncOp extends AritOp
 
-method public void ctor0()
-me::ctor()
-me::PrecNo = 13
-me::LChild = null
-me::RChild = null
-end method
+	method public void IncOp()
+		me::ctor()
+		PrecNo = 13
+	end method
 
 end class
 
 // --
 class public auto ansi DecOp extends AritOp
 
-method public void ctor0()
-me::ctor()
-me::PrecNo = 13
-me::LChild = null
-me::RChild = null
-end method
+	method public void DecOp()
+		me::ctor()
+		PrecNo = 13
+	end method
 
 end class
 
 // <<
 class public auto ansi ShlOp extends AritOp
 
-method public void ctor0()
-me::ctor()
-me::PrecNo = 10
-me::LChild = null
-me::RChild = null
-end method
+	method public void ShlOp()
+		me::ctor()
+		PrecNo = 10
+	end method
 
 end class
 
 // >>
 class public auto ansi ShrOp extends AritOp
 
-method public void ctor0()
-me::ctor()
-me::PrecNo = 10
-me::LChild = null
-me::RChild = null
-end method
+	method public void ShrOp()
+		me::ctor()
+		PrecNo = 10
+	end method
 
 end class

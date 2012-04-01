@@ -8,19 +8,23 @@
 
 class public auto ansi Token
 
-field public string Value
-field public integer Line
+	field public string Value
+	field public integer Line
 
-method public void ctor0()
-me::ctor()
-Value = ""
-Line = 0
-end method
+	method public void Token()
+		me::ctor()
+		Value = ""
+		Line = 0
+	end method
 
-method public void ctor1(var value as string)
-me::ctor()
-Value = value
-Line = 0
-end method
+	method public void Token(var value as string)
+		me::ctor()
+		Value = value
+		Line = 0
+	end method
+
+	method public hidebysig virtual string ToString()
+		return Value
+	end method
 
 end class

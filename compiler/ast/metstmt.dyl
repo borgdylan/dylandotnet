@@ -8,104 +8,49 @@
 
 class public auto ansi MethodStmt extends Stmt
 
-field public Attribute[] Attrs
-field public Ident MethodName
-field public TypeTok RetTyp
-field public Expr[] Params
-//field public string[] ParamTyps
+	field public Attributes.Attribute[] Attrs
+	field public Ident MethodName
+	field public TypeTok RetTyp
+	field public Expr[] Params
+	//field public string[] ParamTyps
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Attrs = newarr Attribute 0
-MethodName = new Ident()
-Params = newarr Expr 0
-//ParamTyps = newarr string 0
-RetTyp = new TypeTok()
-end method
+	method public void MethodStmt()
+		me::ctor()
+		Attrs = new Attributes.Attribute[0]
+		MethodName = new Ident()
+		Params = new Expr[0]
+		//ParamTyps = new string[0]
+		RetTyp = new TypeTok()
+	end method
 
-method public void AddAttr(var attrtoadd as Attribute)
+	method public void AddAttr(var attrtoadd as Attributes.Attribute)
+		
+		var i as integer = -1
+		var destarr as Attributes.Attribute[] = new Attributes.Attribute[Attrs[l] + 1]
 
-var len as integer = Attrs[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+		do until i = (Attrs[l] - 1)
+			i = i + 1
+			destarr[i] = Attrs[i]
+		end do
 
-var destarr as Attribute[] = newarr Attribute destl
+		destarr[Attrs[l]] = attrtoadd
+		Attrs = destarr
 
-label loop
-label cont
+	end method
 
-place loop
+	method public void AddParam(var paramtoadd as Expr)
 
-i++
+		var i as integer = -1
+		var destarr as Expr[] = new Expr[Params[l] + 1]
 
-if len > 0 then
+		do until i = (Params[l] - 1)
+			i = i + 1
+			destarr[i] = Params[i]
+		end do
 
-destarr[i] = Attrs[i]
+		destarr[Params[l]] = paramtoadd
+		Params = destarr
 
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = attrtoadd
-
-Attrs = destarr
-
-end method
-
-method public void AddParam(var paramtoadd as Expr)
-
-var len as integer = Params[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
-
-var destarr as Expr[] = newarr Expr destl
-
-label loop
-label cont
-
-place loop
-
-i = i + 1
-
-if len > 0 then
-
-destarr[i] = Params[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = paramtoadd
-
-Params = destarr
-
-
-end method
-
-
+	end method
 
 end class

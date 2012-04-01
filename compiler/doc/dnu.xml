@@ -43,6 +43,13 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Utils.ErrorWarnHandler">
+            <param name="line">To be added.</param>
+            <param name="file">To be added.</param>
+            <param name="msg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Utils.Keyboard">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -158,6 +165,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Utils.StreamUtils.ErrorH">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Utils.StreamUtils.InitInOutSWithStd">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -198,6 +209,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Utils.StreamUtils.UseConsole">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Utils.StreamUtils.WarnH">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

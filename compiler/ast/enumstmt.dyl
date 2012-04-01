@@ -8,73 +8,43 @@
 
 class public auto ansi EnumStmt extends Stmt
 
-field public Attribute[] Attrs
-field public Ident EnumName
-field public TypeTok EnumTyp
+	field public Attributes.Attribute[] Attrs
+	field public Ident EnumName
+	field public TypeTok EnumTyp
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Attrs = newarr Attribute 0
-EnumName = new Ident()
-EnumTyp = new TypeTok()
-end method
+	method public void EnumStmt()
+		me::ctor()
+		Attrs = new Attributes.Attribute[0]
+		EnumName = new Ident()
+		EnumTyp = new TypeTok()
+	end method
 
-method public void AddAttr(var attrtoadd as Attribute)
+	method public void AddAttr(var attrtoadd as Attributes.Attribute)
+		
+		var i as integer = -1
+		var destarr as Attributes.Attribute[] = new Attributes.Attribute[Attrs[l] + 1]
 
-var len as integer = Attrs[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+		do until i = (Attrs[l] - 1)
+			i = i + 1
+			destarr[i] = Attrs[i]
+		end do
 
-var destarr as Attribute[] = newarr Attribute destl
+		destarr[Attrs[l]] = attrtoadd
+		Attrs = destarr
 
-label loop
-label cont
-
-place loop
-
-i++
-
-if len > 0 then
-
-destarr[i] = Attrs[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = attrtoadd
-
-Attrs = destarr
-
-end method
-
+	end method
+	
 end class
-
 
 class public auto ansi LiteralStmt extends Stmt
 
-field public Expr RExp
-field public Ident LitName
+	field public Expr RExp
+	field public Ident LitName
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-RExp = new Expr()
-EnumName = new Ident()
-end method
+	method public void LiteralStmt()
+		me::ctor()
+		RExp = new Expr()
+		LitName = new Ident()
+	end method
 
 end class

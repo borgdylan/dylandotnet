@@ -3,6 +3,8 @@
 import System
 import arraytest
 
+#debug on
+
 assembly arraytest exe
 ver 2.2.0.0
 
@@ -27,24 +29,11 @@ class public auto ansi instc
 	method public void test(var paramarr as string[])
 	
 		var i as integer = -1
-	
-		label loop
-		label cont
-	
-		place loop
-	
-		i = i + 1
-	
-		Console::WriteLine(paramarr[i])
-	
-		if i = (paramarr[l] - 1) then
-			goto cont
-		else
-			goto loop
-		end if
-	
-		place cont
-	
+		do until i = (paramarr[l] - 1)
+			i = i + 1
+			Console::WriteLine(paramarr[i])
+		end do
+
 	end method
 
 end class
@@ -66,24 +55,11 @@ class public auto ansi statc
 	method public static void test(var paramarr as string[])
 
 		var i as integer = -1
-		
-		label loop
-		label cont
-		
-		place loop
-		
-		i = i + 1
-		
-		Console::WriteLine(paramarr[i])
-		
-		if i = (paramarr[l] - 1) then
-			goto cont
-		else
-			goto loop
-		end if
-		
-		place cont
-		
+		do until i = (paramarr[l] - 1)
+			i = i + 1
+			Console::WriteLine(paramarr[i])
+		end do
+
 	end method
 
 end class
@@ -99,29 +75,15 @@ class public auto ansi beforefieldinit Module1
 	method public static string[] addelem(var srcarr as string[], var eltoadd as string)
 
 		var len as integer = srcarr[l]
-		var destl as integer = len + 1
-		var stopel as integer = len - 1
 		var i as integer = -1
 	
-		var destarr as string[] = new string[destl]
+		var destarr as string[] = new string[len + 1]
 
-		label loop
-		label cont
-		
-		place loop
-		
-		i = i + 1
-	
-		destarr[i] = srcarr[i]
-	
-		if i = stopel then
-			goto cont
-		else
-			goto loop
-		end if
+		do until i = (len - 1)
+			i = i + 1
+			destarr[i] = srcarr[i]
+		end do
 
-		place cont
-		
 		destarr[len] = eltoadd
 
 		return destarr
@@ -132,24 +94,11 @@ class public auto ansi beforefieldinit Module1
 	method public static void test(var paramarr as string[])
 
 		var i as integer = -1
+		do until i = (paramarr[l] - 1)
+			i = i + 1
+			Console::WriteLine(paramarr[i])
+		end do
 		
-		label loop
-		label cont
-		
-		place loop
-		
-		i = i + 1
-
-		Console::WriteLine(paramarr[i])
-		
-		if i = (paramarr[l] - 1) then
-			goto cont
-		else
-			goto loop
-		end if
-		
-		place cont
-
 	end method
 
 	method public static void main()

@@ -216,7 +216,7 @@
       <div class="SectionBox" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral:Docs:Remarks">It is usually one of the Unicode characters.</div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral:Docs:Version Information">
-        <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7</div>
+        <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7, 11.2.8.9</div>
       <h2 class="Section" id="Members">Members</h2>
       <div class="SectionBox" id="_Members">
         <p>
@@ -248,10 +248,23 @@
                 <td>
                   <div>
                     <b>
+                      <a href="#C:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral(System.Char)">CharLiteral</a>
+                    </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Char">char</a>)</div>
+                </td>
+                <td>Constructs a new CharLiteral with the given value.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
                       <a href="#C:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral(System.String)">CharLiteral</a>
                     </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)</div>
                 </td>
-                <td>This parameter is useless in this case.</td>
+                <td>Constructs a new CharLiteral.</td>
               </tr>
             </table>
           </div>
@@ -273,7 +286,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Char">char</a>
-                  </i>. The vaue of the character literal.</td>
+                  </i>. The value of the character literal.</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -368,6 +381,31 @@
             </table>
           </div>
         </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>override </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.ToString()">ToString</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a></nobr><blockquote>Returns the dylan.NET syntax that is parsable into this literal.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>override </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../dylan.NET.Tokenizer.AST.Tokens/Token.html#M:dylan.NET.Tokenizer.AST.Tokens.Token.ToString()">ToString</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a></nobr><blockquote>Outputs the Token in terms of dylan.NET syntax. (<i>Inherited from <a href="../dylan.NET.Tokenizer.AST.Tokens/Token.html">dylan.NET.Tokenizer.AST.Tokens.Token</a>.</i>)</blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
     <div class="Members" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral:Members">
@@ -383,12 +421,33 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral:Version Information">
-            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7</div>
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral(System.Char)">CharLiteral Constructor</h3>
+        <blockquote id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral(System.Char):member">
+          <p class="Summary">Constructs a new CharLiteral with the given value.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>CharLiteral</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Char">char</a> value)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral(System.Char):Parameters">
+            <dl>
+              <dt>
+                <i>value</i>
+              </dt>
+              <dd>The char value to assign to the CharLiteral.</dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral(System.Char):Remarks">Sets the Value and LitTyp fields accodingly.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral(System.Char):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.8.9</div>
           <hr size="1" />
         </blockquote>
         <h3 id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral(System.String)">CharLiteral Constructor</h3>
         <blockquote id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral(System.String):member">
-          <p class="Summary">This parameter is useless in this case.</p>
+          <p class="Summary">Constructs a new CharLiteral.</p>
           <h2>Syntax</h2>
           <div class="Signature">public  <b>CharLiteral</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> value)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -406,19 +465,19 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral(System.String):Version Information">
-            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7</div>
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
         <h3 id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.CharVal">CharVal Field</h3>
         <blockquote id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.CharVal:member">
-          <p class="Summary">The vaue of the character literal.</p>
+          <p class="Summary">The value of the character literal.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Char">char</a> <b>CharVal</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.CharVal:Remarks">This value is loaded by the ldc.i4 set of opcodes with the number corresponding to the character as its operand.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.CharVal:Version Information">
-            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7</div>
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
         <h3 id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.OrdOp">OrdOp Field</h3>
@@ -431,7 +490,22 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.OrdOp:Version Information">
-            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7</div>
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.ToString()">ToString Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.ToString():member">
+          <p class="Summary">Returns the dylan.NET syntax that is parsable into this literal.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public override <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ToString</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.ToString():Returns">The dylan.NET syntactic equivalent to this literal ie. "'" + CharVal + "'".</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.ToString():Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral.ToString():Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.8.9</div>
           <hr size="1" />
         </blockquote>
       </div>

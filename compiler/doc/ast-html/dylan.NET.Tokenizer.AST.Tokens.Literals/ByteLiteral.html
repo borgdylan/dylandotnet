@@ -206,21 +206,17 @@
       </p>
     </div>
     <h1 class="PageTitle" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral">ByteLiteral  Class</h1>
-    <p class="Summary" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral:Summary">
-      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-    </p>
+    <p class="Summary" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral:Summary">Represents a byte (uint8) literal.</p>
     <div id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral:Signature">
       <h2>Syntax</h2>
       <div class="Signature">public class  <b>ByteLiteral</b> : <a href="../dylan.NET.Tokenizer.AST.Tokens.Literals/NumberLiteral.html">NumberLiteral</a></div>
     </div>
     <div class="Remarks" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral:Docs">
       <h2 class="Section">Remarks</h2>
-      <div class="SectionBox" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral:Docs:Remarks">
-        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-      </div>
+      <div class="SectionBox" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral:Docs:Remarks">Such literals have a 'ub' suffix.</div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral:Docs:Version Information">
-        <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7</div>
+        <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7, 11.2.8.9</div>
       <h2 class="Section" id="Members">Members</h2>
       <div class="SectionBox" id="_Members">
         <p>
@@ -242,9 +238,20 @@
                       <a href="#C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral">ByteLiteral</a>
                     </b>()</div>
                 </td>
+                <td>Constructs a ByteLiteral.</td>
+              </tr>
+              <tr valign="top">
                 <td>
-                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                  <div>
+                  </div>
                 </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral(System.Byte)">ByteLiteral</a>
+                    </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>)</div>
+                </td>
+                <td>Constructs a new ByteLiteral with the given value.</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -257,9 +264,7 @@
                       <a href="#C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral(System.String)">ByteLiteral</a>
                     </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)</div>
                 </td>
-                <td>
-                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-                </td>
+                <td>Constructs a new ByteLiteral.</td>
               </tr>
             </table>
           </div>
@@ -356,7 +361,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. The numeric value of the literal.</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -406,6 +411,31 @@
             </table>
           </div>
         </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>override </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.ToString()">ToString</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a></nobr><blockquote>Returns the dylan.NET syntax that is parsable into this literal.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>override </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../dylan.NET.Tokenizer.AST.Tokens/Token.html#M:dylan.NET.Tokenizer.AST.Tokens.Token.ToString()">ToString</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a></nobr><blockquote>Outputs the Token in terms of dylan.NET syntax. (<i>Inherited from <a href="../dylan.NET.Tokenizer.AST.Tokens/Token.html">dylan.NET.Tokenizer.AST.Tokens.Token</a>.</i>)</blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
     <div class="Members" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral:Members">
@@ -413,25 +443,41 @@
       <div class="SectionBox" id="_MemberDetails">
         <h3 id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral">ByteLiteral Constructor</h3>
         <blockquote id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Constructs a ByteLiteral.</p>
           <h2>Syntax</h2>
           <div class="Signature">public  <b>ByteLiteral</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral:Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral:Version Information">
-            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7</div>
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral(System.Byte)">ByteLiteral Constructor</h3>
+        <blockquote id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral(System.Byte):member">
+          <p class="Summary">Constructs a new ByteLiteral with the given value.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>ByteLiteral</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> value)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral(System.Byte):Parameters">
+            <dl>
+              <dt>
+                <i>value</i>
+              </dt>
+              <dd>The byte value to assign to the ByteLiteral.</dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral(System.Byte):Remarks">Sets the Value and LitTyp fields accodingly.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral(System.Byte):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.8.9</div>
           <hr size="1" />
         </blockquote>
         <h3 id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral(System.String)">ByteLiteral Constructor</h3>
         <blockquote id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral(System.String):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Constructs a new ByteLiteral.</p>
           <h2>Syntax</h2>
           <div class="Signature">public  <b>ByteLiteral</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> value)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -441,33 +487,42 @@
                 <i>value</i>
               </dt>
               <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
               </dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral(System.String):Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral(System.String):Version Information">
-            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7</div>
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
         <h3 id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.NumVal">NumVal Field</h3>
         <blockquote id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.NumVal:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">The numeric value of the literal.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> <b>NumVal</b> </div>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.NumVal:Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.NumVal:Remarks">It is loaded using the ldc.i4 set of opcodes followed by a conv.u1.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.NumVal:Version Information">
-            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7</div>
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.7.2, 11.2.7.3, 11.2.7.4, 11.2.7.5, 11.2.7.6, 11.2.7.7, 11.2.7.8, 11.2.7.9, 11.2.8.1, 11.2.8.2, 11.2.8.3, 11.2.8.4, 11.2.8.5, 11.2.8.6, 11.2.8.7, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.ToString()">ToString Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.ToString():member">
+          <p class="Summary">Returns the dylan.NET syntax that is parsable into this literal.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public override <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ToString</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.ToString():Returns">The dylan.NET syntactic equivalent to this literal ie. NumVal + "ub".</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.ToString():Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.ToString():Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)<br /><b>Assembly Versions: </b>11.2.8.9</div>
           <hr size="1" />
         </blockquote>
       </div>

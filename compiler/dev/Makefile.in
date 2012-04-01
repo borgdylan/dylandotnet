@@ -69,6 +69,7 @@ LIBS = @LIBS@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
+MDOC = @MDOC@
 MKDIR_P = @MKDIR_P@
 MONO = @MONO@
 PACKAGE = @PACKAGE@
@@ -312,8 +313,9 @@ uninstall-am:
 	mostlyclean-generic pdf pdf-am ps ps-am uninstall uninstall-am
 
 all:
-	$(MONO) ../2.0/dnc.exe pc2dn.dyl
-	$(MONO) ../2.0/dnc.exe pc2cd.dyl
+	'$(MONO)' ../2.0/dnc.exe -V > buildlog
+	'$(MONO)' ../2.0/dnc.exe pc2dn.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe pc2cd.dyl | tee -a buildlog
 
 prodscript:
 	sed -e "s|\@libdir\@|$(libdir)|g" \

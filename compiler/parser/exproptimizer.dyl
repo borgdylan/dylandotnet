@@ -623,6 +623,40 @@ len = exp::Tokens[l] - 1
 goto fin
 end if
 
+typ = gettype Pipe
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+exp::RemToken(i)
+i--
+len = exp::Tokens[l] - 1
+goto fin
+end if
+
+typ = gettype RefTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+ParserFlags::isChanged = true
+ParserFlags::RefFlag = true
+exp::RemToken(i)
+i--
+len = exp::Tokens[l] - 1
+goto fin
+end if
+
+typ = gettype ValInRefTok
+b = typ::IsInstanceOfType($object$tok)
+
+if b = true then
+ParserFlags::isChanged = true
+ParserFlags::ValinrefFlag = true
+exp::RemToken(i)
+i--
+len = exp::Tokens[l] - 1
+goto fin
+end if
+
 typ = gettype TypeTok
 b = typ::IsInstanceOfType($object$tok)
 

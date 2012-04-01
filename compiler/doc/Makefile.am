@@ -1,21 +1,29 @@
 .PHONY: all
 
 all:
-	mdoc update -o ast ../tokenizer.AST.dll
-	mdoc update -o lexer ../tokenizer.Lexer.dll
-	mdoc update -o parser ../tokenizer.Parser.dll
-	mdoc update -o codegen ../tokenizer.CodeGen.dll
-	mdoc update -o dnu ../dnu.dll
-	mdoc update -o dnr ../dnr.dll
-	mdoc update -o dnc ../dnc.exe
+	'$(MDOC)' update -o ast ../tokenizer.AST.dll
+	'$(MDOC)' update -o lexer ../tokenizer.Lexer.dll
+	'$(MDOC)' update -o parser ../tokenizer.Parser.dll
+	'$(MDOC)' update -o codegen ../tokenizer.CodeGen.dll
+	'$(MDOC)' update -o dnu ../dnu.dll
+	'$(MDOC)' update -o dnr ../dnr.dll
+	'$(MDOC)' update -o dnc ../dnc.exe
 	
-	mdoc export-html -o ast-html ast
-	mdoc export-html -o lexer-html lexer
-	mdoc export-html -o parser-html parser
-	mdoc export-html -o codegen-html codegen
-	mdoc export-html -o dnu-html dnu
-	mdoc export-html -o dnr-html dnr
-	mdoc export-html -o dnc-html dnc
+	'$(MDOC)' export-html -o ast-html ast
+	'$(MDOC)' export-html -o lexer-html lexer
+	'$(MDOC)' export-html -o parser-html parser
+	'$(MDOC)' export-html -o codegen-html codegen
+	'$(MDOC)' export-html -o dnu-html dnu
+	'$(MDOC)' export-html -o dnr-html dnr
+	'$(MDOC)' export-html -o dnc-html dnc
+	
+	'$(MDOC)' export-msxdoc -o tokenizer.AST.xml ast
+	'$(MDOC)' export-msxdoc -o tokenizer.Lexer.xml lexer
+	'$(MDOC)' export-msxdoc -o tokenizer.Parser.xml parser
+	'$(MDOC)' export-msxdoc -o tokenizer.CodeGen.xml codegen
+	'$(MDOC)' export-msxdoc -o dnu.xml dnu
+	'$(MDOC)' export-msxdoc -o dnr.xml dnr
+	'$(MDOC)' export-msxdoc -o dnc.xml dnc
 
 install:	
 	tar -czf ast.tar.gz ast-html

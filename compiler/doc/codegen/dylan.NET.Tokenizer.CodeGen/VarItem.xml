@@ -16,6 +16,7 @@
     <AssemblyVersion>11.2.8.5</AssemblyVersion>
     <AssemblyVersion>11.2.8.6</AssemblyVersion>
     <AssemblyVersion>11.2.8.7</AssemblyVersion>
+    <AssemblyVersion>11.2.8.9</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -44,6 +45,7 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -69,6 +71,7 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="nme" Type="System.String" />
@@ -81,6 +84,30 @@
         <param name="la">To be added.</param>
         <param name="ind">To be added.</param>
         <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public VarItem (string nme, bool la, int ind, Type typ, int line);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string nme, bool la, int32 ind, class System.Type typ, int32 line) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="nme" Type="System.String" />
+        <Parameter Name="la" Type="System.Boolean" />
+        <Parameter Name="ind" Type="System.Int32" />
+        <Parameter Name="typ" Type="System.Type" />
+        <Parameter Name="line" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="nme">To be added.</param>
+        <param name="la">To be added.</param>
+        <param name="ind">To be added.</param>
+        <param name="typ">To be added.</param>
+        <param name="line">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -103,6 +130,22 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Line">
+      <MemberSignature Language="C#" Value="public int Line;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Line" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -130,6 +173,7 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -157,9 +201,40 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Stored">
+      <MemberSignature Language="C#" Value="public bool Stored;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool Stored" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Used">
+      <MemberSignature Language="C#" Value="public bool Used;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool Used" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -184,6 +259,7 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>

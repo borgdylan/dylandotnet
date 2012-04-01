@@ -10,31 +10,17 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-#refasm mscorlib.dll
-#refasm System.dll
-#refasm System.Core.dll
-#refasm System.Data.dll
-#refasm System.Data.DataSetExtensions.dll
-#refasm System.Xml.dll 
-#refasm System.Xml.Linq.dll
-#refasm System.Configuration.dll
-#refasm Microsoft.VisualBasic.dll
-#refasm E:\Code\dylannet\compiler\tokenizer.AST.dll
-#refasm E:\Code\dylannet\compiler\tokenizer.Lexer.dll
-#refasm E:\Code\dylannet\compiler\tokenizer.Parser.dll
-#refasm E:\Code\dylannet\compiler\dnu.dll
-#refasm E:\Code\dylannet\compiler\dnr.dll
+#refstdasm "mscorlib.dll"
+#refasm "tokenizer.AST.dll"
+#refasm "tokenizer.Lexer.dll"
+#refasm "tokenizer.Parser.dll"
+#refasm "dnu.dll"
+#refasm "dnr.dll"
 
-import Microsoft.VisualBasic
 import System
-import System.IO
-import System.Collections
-import System.Collections.Generic
-import System.Data
 import System.Diagnostics
-import System.Linq
-import System.Xml
-import System.Xml.Linq
+import System.Diagnostics.SymbolStore
+import System.IO
 import System.Reflection
 import System.Reflection.Emit
 import System.Runtime.InteropServices
@@ -53,25 +39,27 @@ import dylan.NET.Tokenizer.AST.Tokens.Attributes
 import dylan.NET.Tokenizer.AST.Tokens.Chars
 import dylan.NET.Tokenizer.Parser
 
-locimport dylan.NET.Tokenizer.CodeGen
+import dylan.NET.Tokenizer.CodeGen
+
+#debug on
 
 assembly tokenizer.CodeGen dll
-ver 11.2.8.7
+ver 11.2.8.9
 
 namespace dylan.NET.Tokenizer.CodeGen
-#include E:\Code\dylannet\compiler\codegen\varitem.dyl
-#include E:\Code\dylannet\compiler\codegen\fielditem.dyl
-#include E:\Code\dylannet\compiler\codegen\methoditem.dyl
-#include E:\Code\dylannet\compiler\codegen\ctoritem.dyl
-#include E:\Code\dylannet\compiler\codegen\labelitem.dyl
-#include E:\Code\dylannet\compiler\codegen\loopitem.dyl
-#include E:\Code\dylannet\compiler\codegen\ifitem.dyl
-#include E:\Code\dylannet\compiler\codegen\typearr.dyl
-#include E:\Code\dylannet\compiler\codegen\symtable.dyl
-#include E:\Code\dylannet\compiler\codegen\helpers.dyl
-#include E:\Code\dylannet\compiler\codegen\constldr.dyl
-#include E:\Code\dylannet\compiler\codegen\opstack.dyl
-#include E:\Code\dylannet\compiler\codegen\eval.dyl
-#include E:\Code\dylannet\compiler\codegen\stmtreader.dyl
-#include E:\Code\dylannet\compiler\codegen\codegenerator.dyl
+	#include "codegen/varitem.dyl"
+	#include "codegen/fielditem.dyl"
+	#include "codegen/methoditem.dyl"
+	#include "codegen/ctoritem.dyl"
+	#include "codegen/labelitem.dyl"
+	#include "codegen/loopitem.dyl"
+	#include "codegen/ifitem.dyl"
+	#include "codegen/typearr.dyl"
+	#include "codegen/symtable.dyl"
+	#include "codegen/helpers.dyl"
+	#include "codegen/constldr.dyl"
+	#include "codegen/opstack.dyl"
+	#include "codegen/eval.dyl"
+	#include "codegen/stmtreader.dyl"
+	#include "codegen/codegenerator.dyl"
 end namespace

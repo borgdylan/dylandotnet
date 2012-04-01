@@ -577,6 +577,26 @@ tok = gttk
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "ref")
+
+if comp = 0 then
+var rftk as RefTok = new RefTok()
+rftk::Line = tok::Line
+rftk::Value = tok::Value
+tok = rftk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "valinref")
+
+if comp = 0 then
+var vrftk as ValInRefTok = new ValInRefTok()
+vrftk::Line = tok::Line
+vrftk::Value = tok::Value
+tok = vrftk
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "#refasm")
 
 if comp = 0 then
@@ -990,10 +1010,8 @@ end if
 comp = String::Compare(tok::Value, "string")
 
 if comp = 0 then
-var strtok as StringTok = new StringTok()
+var strtok as StringTok = new StringTok(tok::Value)
 strtok::Line = tok::Line
-strtok::Value = tok::Value
-strtok::RefTyp = gettype string
 tok = strtok
 goto fin
 end if
@@ -1001,10 +1019,8 @@ end if
 comp = String::Compare(tok::Value, "void")
 
 if comp = 0 then
-var voidtok as VoidTok = new VoidTok()
+var voidtok as VoidTok = new VoidTok(tok::Value)
 voidtok::Line = tok::Line
-voidtok::Value = tok::Value
-voidtok::RefTyp = gettype void
 tok = voidtok
 goto fin
 end if
@@ -1012,10 +1028,8 @@ end if
 comp = String::Compare(tok::Value, "decimal")
 
 if comp = 0 then
-var decitok as DecimalTok = new DecimalTok()
+var decitok as DecimalTok = new DecimalTok(tok::Value)
 decitok::Line = tok::Line
-decitok::Value = tok::Value
-decitok::RefTyp = gettype decimal
 tok = decitok
 goto fin
 end if
@@ -1023,10 +1037,8 @@ end if
 comp = String::Compare(tok::Value, "integer")
 
 if comp = 0 then
-var inttok as IntegerTok = new IntegerTok()
+var inttok as IntegerTok = new IntegerTok(tok::Value)
 inttok::Line = tok::Line
-inttok::Value = tok::Value
-inttok::RefTyp = gettype integer
 tok = inttok
 goto fin
 end if
@@ -1034,10 +1046,8 @@ end if
 comp = String::Compare(tok::Value, "intptr")
 
 if comp = 0 then
-var intptok as IntPtrTok = new IntPtrTok()
+var intptok as IntPtrTok = new IntPtrTok(tok::Value)
 intptok::Line = tok::Line
-intptok::Value = tok::Value
-intptok::RefTyp = gettype IntPtr
 tok = intptok
 goto fin
 end if
@@ -1045,10 +1055,8 @@ end if
 comp = String::Compare(tok::Value, "uinteger")
 
 if comp = 0 then
-var uinttok as UIntegerTok = new UIntegerTok()
+var uinttok as UIntegerTok = new UIntegerTok(tok::Value)
 uinttok::Line = tok::Line
-uinttok::Value = tok::Value
-uinttok::RefTyp = gettype UInt32
 tok = uinttok
 goto fin
 end if
@@ -1057,10 +1065,8 @@ end if
 comp = String::Compare(tok::Value, "double")
 
 if comp = 0 then
-var dbltok as DoubleTok = new DoubleTok()
+var dbltok as DoubleTok = new DoubleTok(tok::Value)
 dbltok::Line = tok::Line
-dbltok::Value = tok::Value
-dbltok::RefTyp = gettype double
 tok = dbltok
 goto fin
 end if
@@ -1068,10 +1074,8 @@ end if
 comp = String::Compare(tok::Value, "boolean")
 
 if comp = 0 then
-var booltok as BooleanTok = new BooleanTok()
+var booltok as BooleanTok = new BooleanTok(tok::Value)
 booltok::Line = tok::Line
-booltok::Value = tok::Value
-booltok::RefTyp = gettype boolean
 tok = booltok
 goto fin
 end if
@@ -1079,10 +1083,8 @@ end if
 comp = String::Compare(tok::Value, "char")
 
 if comp = 0 then
-var chrtok as CharTok = new CharTok()
+var chrtok as CharTok = new CharTok(tok::Value)
 chrtok::Line = tok::Line
-chrtok::Value = tok::Value
-chrtok::RefTyp = gettype char
 tok = chrtok
 goto fin
 end if
@@ -1090,10 +1092,8 @@ end if
 comp = String::Compare(tok::Value, "single")
 
 if comp = 0 then
-var sngtok as SingleTok = new SingleTok()
+var sngtok as SingleTok = new SingleTok(tok::Value)
 sngtok::Line = tok::Line
-sngtok::Value = tok::Value
-sngtok::RefTyp = gettype single
 tok = sngtok
 goto fin
 end if
@@ -1102,10 +1102,8 @@ end if
 comp = String::Compare(tok::Value, "sbyte")
 
 if comp = 0 then
-var sbytok as SByteTok = new SByteTok()
+var sbytok as SByteTok = new SByteTok(tok::Value)
 sbytok::Line = tok::Line
-sbytok::Value = tok::Value
-sbytok::RefTyp = gettype sbyte
 tok = sbytok
 goto fin
 end if
@@ -1113,10 +1111,8 @@ end if
 comp = String::Compare(tok::Value, "byte")
 
 if comp = 0 then
-var byttok as ByteTok = new ByteTok()
+var byttok as ByteTok = new ByteTok(tok::Value)
 byttok::Line = tok::Line
-byttok::Value = tok::Value
-byttok::RefTyp = gettype System.Byte
 tok = byttok
 goto fin
 end if
@@ -1124,10 +1120,8 @@ end if
 comp = String::Compare(tok::Value, "short")
 
 if comp = 0 then
-var shtok as ShortTok = new ShortTok()
+var shtok as ShortTok = new ShortTok(tok::Value)
 shtok::Line = tok::Line
-shtok::Value = tok::Value
-shtok::RefTyp = gettype short
 tok = shtok
 goto fin
 end if
@@ -1135,10 +1129,8 @@ end if
 comp = String::Compare(tok::Value, "ushort")
 
 if comp = 0 then
-var ushtok as UShortTok = new UShortTok()
+var ushtok as UShortTok = new UShortTok(tok::Value)
 ushtok::Line = tok::Line
-ushtok::Value = tok::Value
-ushtok::RefTyp = gettype UInt16
 tok = ushtok
 goto fin
 end if
@@ -1146,10 +1138,8 @@ end if
 comp = String::Compare(tok::Value, "long")
 
 if comp = 0 then
-var lngtok as LongTok = new LongTok()
+var lngtok as LongTok = new LongTok(tok::Value)
 lngtok::Line = tok::Line
-lngtok::Value = tok::Value
-lngtok::RefTyp = gettype long
 tok = lngtok
 goto fin
 end if
@@ -1157,10 +1147,8 @@ end if
 comp = String::Compare(tok::Value, "ulong")
 
 if comp = 0 then
-var ulngtok as ULongTok = new ULongTok()
+var ulngtok as ULongTok = new ULongTok(tok::Value)
 ulngtok::Line = tok::Line
-ulngtok::Value = tok::Value
-ulngtok::RefTyp = gettype UInt64
 tok = ulngtok
 goto fin
 end if
@@ -1169,10 +1157,8 @@ end if
 comp = String::Compare(tok::Value, "object")
 
 if comp = 0 then
-var objtok as ObjectTok = new ObjectTok()
+var objtok as ObjectTok = new ObjectTok(tok::Value)
 objtok::Line = tok::Line
-objtok::Value = tok::Value
-objtok::RefTyp = gettype object
 tok = objtok
 goto fin
 end if
@@ -1191,9 +1177,8 @@ end if
 comp = String::Compare(tok::Value, "null")
 
 if comp = 0 then
-var nulllit as NullLiteral = new NullLiteral()
+var nulllit as NullLiteral = new NullLiteral(tok::Value)
 nulllit::Line = tok::Line
-nulllit::Value = tok::Value
 tok = nulllit
 goto fin
 end if
@@ -1210,17 +1195,16 @@ end if
 orflg = orflg or compb
 
 if compb = true then
-var boolit as BooleanLiteral = new BooleanLiteral()
-boolit::Line = tok::Line
-boolit::Value = tok::Value
+var boolit as BooleanLiteral
 comp = String::Compare(tok::Value, "true")
 if comp = 0 then
-boolit::BoolVal = true
+boolit = new BooleanLiteral(true)
 end if
 comp = String::Compare(tok::Value, "false")
 if comp = 0 then
-boolit::BoolVal = false
+boolit = new BooleanLiteral(false)
 end if
+boolit::Line = tok::Line
 tok = boolit
 goto fin
 end if
@@ -1228,14 +1212,12 @@ end if
 compb = Utils.ParseUtils::LikeOP(tok::Value, "^'(.)*'$")
 
 if compb = true then
-var chrlit as CharLiteral = new CharLiteral()
-chrlit::Line = tok::Line
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = $char$"'"
 tmpstr = tmpstr::Trim(tmpchrarr)
-chrlit::Value = tmpstr
-chrlit::CharVal = $char$chrlit::Value
+var chrlit as CharLiteral = new CharLiteral($char$tmpstr)
+chrlit::Line = tok::Line
 tok = chrlit
 goto fin
 end if
@@ -1246,13 +1228,12 @@ tmpstr = String::Concat(tmpstr, Utils.Constants::quot,"$")
 compb = Utils.ParseUtils::LikeOP(tok::Value, tmpstr)
 
 if compb = true then
-var strlit as StringLiteral = new StringLiteral()
-strlit::Line = tok::Line
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = $char$Utils.Constants::quot
 tmpstr = tmpstr::Trim(tmpchrarr)
-strlit::Value = tmpstr
+var strlit as StringLiteral = new StringLiteral(tmpstr)
+strlit::Line = tok::Line
 tok = strlit
 goto fin
 end if
@@ -1268,18 +1249,15 @@ compb = tmpstr::EndsWith("d")
 orflg = orflg and compb
 
 if orflg = true then
-var dlit2 as DoubleLiteral = new DoubleLiteral()
-dlit2::Line = tok::Line
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = 'd'
 tmpstr = tmpstr::TrimEnd(tmpchrarr)
-dlit2::Value = tmpstr
-dlit2::NumVal = $double$dlit2::Value
+var dlit2 as DoubleLiteral = new DoubleLiteral($double$tmpstr)
+dlit2::Line = tok::Line
 tok = dlit2
 goto fin
 end if
-
 
 compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+\.(\d)+(.)*$")
 orflg = compb
@@ -1292,18 +1270,36 @@ compb = tmpstr::EndsWith("f")
 orflg = orflg and compb
 
 if orflg = true then
-var flit as FloatLiteral = new FloatLiteral()
-flit::Line = tok::Line
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = 'f'
 tmpstr = tmpstr::TrimEnd(tmpchrarr)
-flit::Value = tmpstr
-flit::NumVal = $single$flit::Value
+var flit as FloatLiteral = new FloatLiteral($single$tmpstr)
+flit::Line = tok::Line
 tok = flit
 goto fin
 end if
 
+compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+\.(\d)+(.)*$")
+orflg = compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+\.(\d)+(.)*$")
+orflg = orflg or compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+\.(\d)+(.)*$")
+orflg = orflg or compb
+tmpstr = tok::Value
+compb = tmpstr::EndsWith("m")
+orflg = orflg and compb
+
+if orflg = true then
+tmpstr = tok::Value
+tmpchrarr = newarr char 1
+tmpchrarr[0] = 'm'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+var delit as DecimalLiteral = new DecimalLiteral($decimal$tmpstr)
+delit::Line = tok::Line
+tok = delit
+goto fin
+end if
 
 compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+\.(\d)+(.)*$")
 orflg = compb
@@ -1313,18 +1309,12 @@ compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+\.(\d)+(.)*$")
 orflg = orflg or compb
 
 if orflg = true then
-var dlit as DoubleLiteral = new DoubleLiteral()
-dlit::Line = tok::Line
 tmpstr = tok::Value
-//tmpchrarr = newarr char 1
-//tmpchrarr[0] = $char$"'"
-//tmpstr = tmpstr::Trim(tmpchrarr)
-dlit::Value = tmpstr
-dlit::NumVal = $double$dlit::Value
+var dlit as DoubleLiteral = new DoubleLiteral($double$tmpstr)
+dlit::Line = tok::Line
 tok = dlit
 goto fin
 end if
-
 
 compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
 orflg = compb
@@ -1337,14 +1327,12 @@ compb = tmpstr::EndsWith("d")
 orflg = orflg and compb
 
 if orflg = true then
-var dlit3 as DoubleLiteral = new DoubleLiteral()
-dlit3::Line = tok::Line
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = 'd'
 tmpstr = tmpstr::TrimEnd(tmpchrarr)
-dlit3::Value = tmpstr
-dlit3::NumVal = $double$dlit3::Value
+var dlit3 as DoubleLiteral = new DoubleLiteral($double$tmpstr)
+dlit3::Line = tok::Line
 tok = dlit3
 goto fin
 end if
@@ -1360,15 +1348,34 @@ compb = tmpstr::EndsWith("f")
 orflg = orflg and compb
 
 if orflg = true then
-var flit2 as FloatLiteral = new FloatLiteral()
-flit2::Line = tok::Line
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = 'f'
 tmpstr = tmpstr::TrimEnd(tmpchrarr)
-flit2::Value = tmpstr
-flit2::NumVal = $single$flit2::Value
+var flit2 as FloatLiteral = new FloatLiteral($single$tmpstr)
+flit2::Line = tok::Line
 tok = flit2
+goto fin
+end if
+
+compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+orflg = compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+orflg = orflg or compb
+compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+orflg = orflg or compb
+tmpstr = tok::Value
+compb = tmpstr::EndsWith("m")
+orflg = orflg and compb
+
+if orflg = true then
+tmpstr = tok::Value
+tmpchrarr = newarr char 1
+tmpchrarr[0] = 'm'
+tmpstr = tmpstr::TrimEnd(tmpchrarr)
+var delit2 as DecimalLiteral = new DecimalLiteral($decimal$tmpstr)
+delit2::Line = tok::Line
+tok = delit2
 goto fin
 end if
 
@@ -1383,14 +1390,14 @@ compb = tmpstr::EndsWith("ui")
 orflg = orflg and compb
 
 if orflg = true then
-var uilit2 as UIntLiteral = new UIntLiteral()
-uilit2::Line = tok::Line
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = 'i'
 tmpstr = tmpstr::TrimEnd(tmpchrarr)
 tmpchrarr[0] = 'u'
 tmpstr = tmpstr::TrimEnd(tmpchrarr)
+var uilit2 as UIntLiteral = new UIntLiteral()
+uilit2::Line = tok::Line
 uilit2::Value = tmpstr
 uilit2::NumVal = Convert::ToUInt32(uilit2::Value)
 tok = uilit2
@@ -1434,14 +1441,12 @@ compb = tmpstr::EndsWith("i")
 orflg = orflg and compb
 
 if orflg = true then
-var ilit2 as IntLiteral = new IntLiteral()
-ilit2::Line = tok::Line
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = 'i'
 tmpstr = tmpstr::TrimEnd(tmpchrarr)
-ilit2::Value = tmpstr
-ilit2::NumVal = $integer$ilit2::Value
+var ilit2 as IntLiteral = new IntLiteral($integer$tmpstr)
+ilit2::Line = tok::Line
 tok = ilit2
 goto fin
 end if
@@ -1484,14 +1489,12 @@ compb = tmpstr::EndsWith("l")
 orflg = orflg and compb
 
 if orflg = true then
-var llit as LongLiteral = new LongLiteral()
-llit::Line = tok::Line
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = 'l'
 tmpstr = tmpstr::TrimEnd(tmpchrarr)
-llit::Value = tmpstr
-llit::NumVal = $long$llit::Value
+var llit as LongLiteral = new LongLiteral($long$tmpstr)
+llit::Line = tok::Line
 tok = llit
 goto fin
 end if
@@ -1532,14 +1535,12 @@ compb = tmpstr::EndsWith("s")
 orflg = orflg and compb
 
 if orflg = true then
-var slit as ShortLiteral = new ShortLiteral()
-slit::Line = tok::Line
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = 's'
 tmpstr = tmpstr::TrimEnd(tmpchrarr)
-slit::Value = tmpstr
-slit::NumVal = $short$slit::Value
+var slit as ShortLiteral = new ShortLiteral($short$tmpstr)
+slit::Line = tok::Line
 tok = slit
 goto fin
 end if
@@ -1580,14 +1581,12 @@ compb = tmpstr::EndsWith("b")
 orflg = orflg and compb
 
 if orflg = true then
-var blit as SByteLiteral = new SByteLiteral()
-blit::Line = tok::Line
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = 'b'
 tmpstr = tmpstr::TrimEnd(tmpchrarr)
-blit::Value = tmpstr
-blit::NumVal = $sbyte$blit::Value
+var blit as SByteLiteral = new SByteLiteral($sbyte$tmpstr)
+blit::Line = tok::Line
 tok = blit
 goto fin
 end if
@@ -1601,14 +1600,9 @@ orflg = orflg or compb
 
 
 if orflg = true then
-var ilit as IntLiteral = new IntLiteral()
-ilit::Line = tok::Line
 tmpstr = tok::Value
-//tmpchrarr = newarr char 1
-//tmpchrarr[0] = $char$"'"
-//tmpstr = tmpstr::Trim(tmpchrarr)
-ilit::Value = tmpstr
-ilit::NumVal = $integer$ilit::Value
+var ilit as IntLiteral = new IntLiteral($integer$tmpstr)
+ilit::Line = tok::Line
 tok = ilit
 goto fin
 end if

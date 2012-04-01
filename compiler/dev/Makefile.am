@@ -1,6 +1,7 @@
 all:
-	$(MONO) ../2.0/dnc.exe pc2dn.dyl
-	$(MONO) ../2.0/dnc.exe pc2cd.dyl
+	'$(MONO)' ../2.0/dnc.exe -V > buildlog
+	'$(MONO)' ../2.0/dnc.exe pc2dn.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe pc2cd.dyl | tee -a buildlog
 
 prodscript:
 	sed -e "s|\@libdir\@|$(libdir)|g" \

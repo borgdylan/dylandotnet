@@ -8,13 +8,11 @@
 
 class public auto ansi StdasmStmt extends Stmt
 
-field public SwitchTok Opt
+	field public SwitchTok Opt
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Opt = new SwitchTok()
-end method
+	method public void StdasmStmt()
+		me::ctor()
+		Opt = new SwitchTok()
+	end method
 
 end class

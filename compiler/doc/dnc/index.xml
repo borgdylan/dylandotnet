@@ -1,24 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dnc" Version="11.2.8.7">
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Reflection.AssemblyDescription("dnc")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("11.2.8.7")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Reflection.AssemblyProduct("dnc")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Reflection.AssemblyTitle("dnc")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Assembly>
+    <Assembly Name="dnc" Version="11.2.8.9" />
   </Assemblies>
   <Remarks>To be added.</Remarks>
   <Copyright>To be added.</Copyright>

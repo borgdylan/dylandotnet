@@ -8,25 +8,25 @@
 
 class public auto ansi MethodItem
 
-field public string Name
-field public System.Type MethodTyp
-field public System.Type[] ParamTyps
-field public MethodBuilder MethodBldr
+	field public string Name
+	field public Type MethodTyp
+	field public Type[] ParamTyps
+	field public MethodBuilder MethodBldr
 
-method public void ctor0()
-me::ctor()
-Name = ""
-MethodTyp = null
-MethodBldr = null
-ParamTyps = newarr System.Type 0
-end method
+	method public void MethodItem()
+		me::ctor()
+		Name = ""
+		MethodTyp = null
+		MethodBldr = null
+		ParamTyps = new Type[0]
+	end method
 
-method public void ctor1(var nme as string, var typ as System.Type, var ptyps as System.Type[], var bld as MethodBuilder)
-me::ctor()
-Name = nme
-MethodTyp = typ
-MethodBldr = bld
-ParamTyps = ptyps
-end method
+	method public void MethodItem(var nme as string, var typ as Type, var ptyps as Type[], var bld as MethodBuilder)
+		me::ctor()
+		Name = nme
+		MethodTyp = typ
+		MethodBldr = bld
+		ParamTyps = ptyps
+	end method
 
 end class

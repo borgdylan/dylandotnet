@@ -8,17 +8,17 @@
 
 class public auto ansi LoopItem
 
-field public Emit.Label EndLabel
-field public Emit.Label StartLabel
+	field public Emit.Label EndLabel
+	field public Emit.Label StartLabel
 
-method public void ctor0()
-me::ctor()
-end method
+	method public void LoopItem()
+		me::ctor()
+	end method
 
-method public void ctor1(var startl as Emit.Label, var endl as Emit.Label)
-me::ctor()
-EndLabel = endl
-StartLabel = startl
-end method
+	method public void LoopItem(var startl as Emit.Label, var endl as Emit.Label)
+		me::ctor()
+		EndLabel = endl
+		StartLabel = startl
+	end method
 
 end class

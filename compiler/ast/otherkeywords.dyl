@@ -7,260 +7,203 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi NewarrTok extends Token
-
 end class
 
 class public auto ansi NewTok extends Token
-
 end class
 
 class public auto ansi CastclassTok extends Token
-
 end class
 
 class public auto ansi GettypeTok extends Token
+end class
 
+class public auto ansi RefTok extends Token
+end class
+
+class public auto ansi ValInRefTok extends Token
 end class
 
 class public auto ansi PtrTok extends Token
-
 end class
 
 class public auto ansi DependTok extends Token
-
 end class
 
 class public auto ansi StdasmTok extends Token
-
 end class
 
 class public auto ansi SwitchTok extends Token
-
 end class
 
 class public auto ansi OnTok extends SwitchTok
-
 end class
 
 class public auto ansi OfTok extends Token
-
 end class
 
 class public auto ansi OffTok extends SwitchTok
-
 end class
 
 class public auto ansi SingTok extends Token
-
 end class
 
 class public auto ansi ScopeTok extends Token
-
 end class
 
 class public auto ansi DebugTok extends Token
-
 end class
 
 class public auto ansi MakeasmTok extends Token
-
 end class
 
 class public auto ansi RefasmTok extends Token
-
 end class
 
 class public auto ansi RefstdasmTok extends Token
-
 end class
 
 class public auto ansi NewresTok extends Token
-
 end class
 
 class public auto ansi ImageTok extends Token
-
 end class
 
 class public auto ansi ImportTok extends Token
-
 end class
 
 class public auto ansi LocimportTok extends Token
-
 end class
 
 class public auto ansi AssemblyTok extends Token
-
 end class
 
 class public auto ansi ExeTok extends Token
-
 end class
 
 class public auto ansi DllTok extends Token
-
 end class
 
 class public auto ansi VerTok extends Token
-
 end class
 
 class public auto ansi IncludeTok extends Token
-
 end class
 
 class public auto ansi XmldocTok extends Token
-
 end class
 
 class public auto ansi NamespaceTok extends Token
-
 end class
 
 class public auto ansi ClassTok extends Token
-
 end class
 
 class public auto ansi ExtendsTok extends Token
-
 end class
 
 class public auto ansi EnumTok extends Token
-
 end class
 
 class public auto ansi FieldTok extends Token
-
 end class
 
 class public auto ansi DelegateTok extends Token
-
 end class
 
 class public auto ansi StructTok extends Token
-
 end class
 
 class public auto ansi PropertyTok extends Token
-
 end class
 
 class public auto ansi GetTok extends Token
-
 end class
 
 class public auto ansi SetTok extends Token
-
 end class
 
 class public auto ansi MethodTok extends Token
-
 end class
 
 class public auto ansi TryTok extends Token
-
 end class
 
 class public auto ansi CatchTok extends Token
-
 end class
 
 class public auto ansi AsTok extends Token
-
 end class
 
 class public auto ansi FinallyTok extends Token
-
 end class
 
 class public auto ansi LabelTok extends Token
-
 end class
 
 class public auto ansi PlaceTok extends Token
-
 end class
 
 class public auto ansi GotoTok extends Token
-
 end class
 
 class public auto ansi IfTok extends Token
-
 end class
 
 class public auto ansi ElseIfTok extends Token
-
 end class
 
 class public auto ansi ThenTok extends Token
-
 end class
 
 class public auto ansi DoTok extends Token
-
 end class
 
 class public auto ansi BreakTok extends Token
-
 end class
 
 class public auto ansi ContinueTok extends Token
-
 end class
 
 class public auto ansi WhileTok extends Token
-
 end class
 
 class public auto ansi UntilTok extends Token
-
 end class
 
 class public auto ansi LiteralTok extends Token
-
 end class
 
 class public auto ansi VarTok extends Token
-
 end class
 
 class public auto ansi ElseTok extends Token
-
 end class
 
 class public auto ansi ReturnTok extends Token
-
 end class
 
 class public auto ansi ThrowTok extends Token
-
 end class
 
 class public auto ansi EndTok extends Token
-
 end class
 
 class public auto ansi MeTok extends Token
 
-field public boolean Conv
-field public TypeTok TTok
+	field public boolean Conv
+	field public TypeTok TTok
 
-method public void ctor0()
-me::ctor()
-me::Value = ""
-me::Line = 0
-Conv = false
-TTok = null
-end method
+	method public void MeTok()
+		me::ctor()
+		Conv = false
+		TTok = null
+	end method
 
-method public void ctor1(var value as string)
-me::ctor()
-me::Value = value
-me::Line = 0
-Conv = false
-TTok = null
-end method
+	method public void MeTok(var value as string)
+		me::ctor(value)
+		Conv = false
+		TTok = null
+	end method
 
 end class

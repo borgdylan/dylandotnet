@@ -1,6 +1,6 @@
 //The utility library for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v.9.9 or later
+//compile with dylan.NET v.11.2.8.7 or later
 
 //    dnu.dll dylan.NET.Utils Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -10,45 +10,30 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-#refasm mscorlib.dll
-#refasm System.dll
-#refasm System.Core.dll
-#refasm System.Data.dll
-#refasm System.Data.DataSetExtensions.dll
-#refasm System.Xml.dll
-#refasm System.Xml.Linq.dll
-#refasm System.Configuration.dll
-#refasm Microsoft.VisualBasic.dll
-#refasm System.Windows.Forms.dll
+#refstdasm "mscorlib.dll"
+#refstdasm "System.dll"
+#refstdasm "System.Xml.Linq.dll"
 
-import Microsoft.VisualBasic
 import System
 import System.IO
-import System.Collections
-import System.Collections.Generic
-import System.Data
-import System.Diagnostics
-import System.Linq
 import System.Xml
 import System.Xml.Linq
-import Microsoft.VisualBasic.CompilerServices
-import Microsoft.VisualBasic.FileIO
 import System.Xml.XPath
-import System.Windows.Forms
-import System.Runtime.InteropServices
 import System.Text.RegularExpressions
 
-locimport dylan.NET.Utils
-locimport dylan.NET
+import dylan.NET.Utils
+import dylan.NET
+
+#debug on
 
 assembly dnu dll
-ver 11.2.8.7
+ver 11.2.8.9
 
 namespace dylan.NET.Utils
-#include E:\Code\dylannet\compiler\dnu\consts.dyl
-#include E:\Code\dylannet\compiler\dnu\xmlu.dyl
-#include E:\Code\dylannet\compiler\dnu\parseu.dyl
-#include E:\Code\dylannet\compiler\dnu\keyboard.dyl
-#include E:\Code\dylannet\compiler\dnu\streamu.dyl
-// #include E:\Code\dylannet\compiler\dnu\winapi.txt
+	#include "dnu/consts.dyl"
+	#include "dnu/xmlu.dyl"
+	#include "dnu/parseu.dyl"
+	#include "dnu/keyboard.dyl"
+	#include "dnu/streamu.dyl"
+	//#include "dnu/winapi.txt"
 end namespace

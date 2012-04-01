@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ItemType>GenericProject</ItemType>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B8E3EEF-00E3-4633-B2BD-3D55AFD8CC6F}</ProjectGuid>
+    <ReleaseVersion>11.2.8.9</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <TextStylePolicy TabWidth="4" RemoveTrailingWhitespace="True" inheritsSet="Mono" inheritsScope="text/plain" scope="text/plain" />
+        </Policies>
+        <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="true" RelativeMakefileName="Makefile" RelativeConfigureInPath=".">
+          <BuildFilesVar />
+          <DeployFilesVar />
+          <ResourcesVar />
+          <OthersVar />
+          <GacRefVar />
+          <AsmRefVar />
+          <ProjectRefVar />
+          <MessageRegex Error="^ERROR:\s(?&lt;message&gt;.*)\sat line\s(?&lt;line&gt;\d*)\sin file:\s*(?&lt;file&gt;.*)$" Warning="^WARNING:\s(?&lt;message&gt;.*)\sat line\s(?&lt;line&gt;\d*)\sin file:\s*(?&lt;file&gt;.*)$" Name="Custom" />
+        </MonoDevelop.Autotools.MakefileInfo>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <Folder Include="ast\" />
+    <Folder Include="codegen\" />
+    <Folder Include="dev\" />
+    <Folder Include="dnr\" />
+    <Folder Include="dnu\" />
+    <Folder Include="tests\" />
+    <Folder Include="dnc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ast\aritops.dyl" />
+    <None Include="ast\asmstmt.dyl" />
+    <None Include="ast\attributes.dyl" />
+    <None Include="ast\castclassexpr.dyl" />
+    <None Include="ast\chars.dyl" />
+    <None Include="ast\classstmt.dyl" />
+    <None Include="ast\comment.dyl" />
+    <None Include="ast\conditionalexpr.dyl" />
+    <None Include="ast\conditionalops.dyl" />
+    <None Include="ast\debugstmt.dyl" />
+    <None Include="ast\delegatestmt.dyl" />
+    <None Include="ast\dependstmt.dyl" />
+    <None Include="ast\enumstmt.dyl" />
+    <None Include="ast\exceptionstmts.dyl" />
+    <None Include="ast\expr.dyl" />
+    <None Include="ast\fieldstmt.dyl" />
+    <None Include="ast\gettypeexpr.dyl" />
+    <None Include="ast\ident.dyl" />
+    <None Include="ast\ifstmts.dyl" />
+    <None Include="ast\importstmts.dyl" />
+    <None Include="ast\includestmt.dyl" />
+    <None Include="ast\labelstmts.dyl" />
+    <None Include="ast\literals.dyl" />
+    <None Include="ast\logicalops.dyl" />
+    <None Include="ast\loopstmts.dyl" />
+    <None Include="ast\makeasmstmt.dyl" />
+    <None Include="ast\methods.dyl" />
+    <None Include="ast\metstmt.dyl" />
+    <None Include="ast\newarrexpr.dyl" />
+    <None Include="ast\newexpr.dyl" />
+    <None Include="ast\newresstmt.dyl" />
+    <None Include="ast\nsstmt.dyl" />
+    <None Include="ast\op.dyl" />
+    <None Include="ast\otherexpr.dyl" />
+    <None Include="ast\otherkeywords.dyl" />
+    <None Include="ast\otherstmts.dyl" />
+    <None Include="ast\propstmt.dyl" />
+    <None Include="ast\ptrexpr.dyl" />
+    <None Include="ast\refasmstmt.dyl" />
+    <None Include="ast\scopestmt.dyl" />
+    <None Include="ast\singstmt.dyl" />
+    <None Include="ast\stdasmstmt.dyl" />
+    <None Include="ast\stmt.dyl" />
+    <None Include="ast\token.dyl" />
+    <None Include="ast\typetoks.dyl" />
+    <None Include="ast\varstmts.dyl" />
+    <None Include="ast\verstmt.dyl" />
+    <None Include="ast\xmldocstmt.dyl" />
+    <None Include="codegen\arraycheck.txt" />
+    <None Include="codegen\codegenerator.dyl" />
+    <None Include="codegen\constldr.dyl" />
+    <None Include="codegen\ctoritem.dyl" />
+    <None Include="codegen\eval.dyl" />
+    <None Include="codegen\fielditem.dyl" />
+    <None Include="codegen\helpers.dyl" />
+    <None Include="codegen\ifitem.dyl" />
+    <None Include="codegen\labelitem.dyl" />
+    <None Include="codegen\loopitem.dyl" />
+    <None Include="codegen\methoditem.dyl" />
+    <None Include="codegen\opstack.dyl" />
+    <None Include="codegen\stmtreader.dyl" />
+    <None Include="codegen\symtable.dyl" />
+    <None Include="codegen\typcodes.txt" />
+    <None Include="codegen\typearr.dyl" />
+    <None Include="codegen\varitem.dyl" />
+    <None Include="dev\pc2cd.dyl" />
+    <None Include="dev\pc2dn.dyl" />
+    <None Include="dnr\asmfactory.dyl" />
+    <None Include="dnr\consoleprinter.dyl" />
+    <None Include="dnr\ilemitter.dyl" />
+    <None Include="dnr\importer.dyl" />
+    <None Include="dnr\instructionhelper.dyl" />
+    <None Include="dnr\loader.dyl" />
+    <None Include="dnu\consts.dyl" />
+    <None Include="dnu\keyboard.dyl" />
+    <None Include="dnu\parseu.dyl" />
+    <None Include="dnu\streamu.dyl" />
+    <None Include="dnu\winapi.dyl" />
+    <None Include="dnu\xmlu.dyl" />
+    <None Include="tests\Person.dyl" />
+    <None Include="tests\PersonProg.dyl" />
+    <None Include="tests\arit.dyl" />
+    <None Include="tests\arraytest.dyl" />
+    <None Include="tests\boxobj.dyl" />
+    <None Include="tests\conv.dyl" />
+    <None Include="tests\ctorfield.dyl" />
+    <None Include="tests\dylrecurse.dyl" />
+    <None Include="tests\helloworld.dyl" />
+    <None Include="tests\logicop.dyl" />
+    <None Include="tests\mathematics.dyl" />
+    <None Include="tests\mathstest.dyl" />
+    <None Include="tests\numloops.dyl" />
+    <None Include="tests\openfile.dyl" />
+    <None Include="tests\protectedtests.dyl" />
+    <None Include="tests\strrecurse.dyl" />
+    <None Include="tests\threads.dyl" />
+    <None Include="tests\vector.dll" />
+    <None Include="tests\vector.dyl" />
+    <None Include="tests\xmllib.dyl" />
+    <None Include="dnr.dyl" />
+    <None Include="dnu.dyl" />
+    <None Include="tokenizer.AST.dyl" />
+    <None Include="tokenizer.CodeGen.dyl" />
+    <None Include="dnc.dyl" />
+    <None Include="dnc\Mod1.dyl" />
+    <None Include="dnc\testcode.txt" />
+    <None Include="Makefile.am" />
+    <None Include="dylandotnet.1" />
+    <None Include="dylandotnet4.1" />
+    <None Include="pc2curdir.1" />
+    <None Include="pc2dylandotnet.1" />
+  </ItemGroup>
+</Project>

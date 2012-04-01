@@ -77,9 +77,9 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoheader
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.8.6\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.8.6\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.8.6\"
-DYLANDOTNET = /usr/bin/dylandotnet
-DYLANDOTNET4 = /usr/bin/dylandotnet4
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.8.9\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.8.9\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.8.9\"
+DYLANDOTNET = /usr/local/bin/dylandotnet
+DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
@@ -93,21 +93,22 @@ LIBS =
 LTLIBOBJS = 
 MAINT = #
 MAKEINFO = ${SHELL} /var/www/Code/dylannet/compiler/missing --run makeinfo
+MDOC = /usr/bin/mdoc
 MKDIR_P = /bin/mkdir -p
 MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.8.6
+PACKAGE_STRING = dylandotnet 11.2.8.9
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.8.6
+PACKAGE_VERSION = 11.2.8.9
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.8.6
+VERSION = 11.2.8.9
 abs_builddir = /var/www/Code/dylannet/compiler/tests
 abs_srcdir = /var/www/Code/dylannet/compiler/tests
 abs_top_builddir = /var/www/Code/dylannet/compiler
@@ -340,25 +341,26 @@ uninstall-am:
 .PHONY: all
 
 all:
-	$(MONO) ../2.0/dnc.exe arit.dyl
-	$(MONO) ../2.0/dnc.exe conv.dyl
-	$(MONO) ../2.0/dnc.exe ctorfield.dyl
-	$(MONO) ../2.0/dnc.exe helloworld.dyl
-	$(MONO) ../2.0/dnc.exe logicop.dyl
-	$(MONO) ../2.0/dnc.exe mathematics.dyl
-	$(MONO) ../2.0/dnc.exe mathstest.dyl
-	$(MONO) ../2.0/dnc.exe numloops.dyl
-	$(MONO) ../2.0/dnc.exe openfile.dyl
-	$(MONO) ../2.0/dnc.exe Person.dyl
-	$(MONO) ../2.0/dnc.exe PersonProg.dyl
-	$(MONO) ../2.0/dnc.exe boxobj.dyl
-	$(MONO) ../2.0/dnc.exe xmllib.dyl
-	$(MONO) ../2.0/dnc.exe arraytest.dyl
-	$(MONO) ../2.0/dnc.exe vector.dyl
-	$(MONO) ../2.0/dnc.exe threads.dyl
-	$(MONO) ../2.0/dnc.exe dylrecurse.dyl
-	$(MONO) ../2.0/dnc.exe strrecurse.dyl
-	$(MONO) ../2.0/dnc.exe protectedtests.dyl
+	'$(MONO)' ../2.0/dnc.exe -V > buildlog
+	'$(MONO)' ../2.0/dnc.exe arit.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe conv.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe ctorfield.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe helloworld.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe logicop.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe mathematics.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe mathstest.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe numloops.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe openfile.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe Person.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe PersonProg.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe boxobj.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe xmllib.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe arraytest.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe vector.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe threads.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe dylrecurse.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe strrecurse.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe protectedtests.dyl | tee -a buildlog
 
 install:
 	tar -czf tests.tar.gz *

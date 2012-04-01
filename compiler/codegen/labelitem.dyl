@@ -8,18 +8,18 @@
 
 class public auto ansi LabelItem
 
-field public Emit.Label Lbl
-field public string LblName
+	field public Emit.Label Lbl
+	field public string LblName
 
-method public void ctor0()
-me::ctor()
-LblName = ""
-end method
+	method public void LabelItem()
+		me::ctor()
+		LblName = ""
+	end method
 
-method public void ctor1(var ln as string, var l as Emit.Label)
-me::ctor()
-LblName = ln
-Lbl = l
-end method
+	method public void LabelItem(var ln as string, var l as Emit.Label)
+		me::ctor()
+		LblName = ln
+		Lbl = l
+	end method
 
 end class

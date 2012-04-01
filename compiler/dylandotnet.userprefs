@@ -1,0 +1,39 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="tests/protectedtests.dyl">
+    <Files>
+      <File FileName="codegen/eval.dyl" Line="594" Column="1" />
+      <File FileName="templateproj/template.dyl" Line="40" Column="27" />
+      <File FileName="tests/protectedtests.dyl" Line="79" Column="19" />
+      <File FileName="dnr/loader.dyl" Line="421" Column="79" />
+      <File FileName="codegen/helpers.dyl" Line="941" Column="33" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="dylandotnet" expanded="True">
+            <Node name="codegen" expanded="True" />
+            <Node name="dnr" expanded="True" />
+            <Node name="dnu" expanded="True" />
+            <Node name="tests" expanded="True">
+              <Node name="protectedtests.dyl" selected="True" />
+            </Node>
+          </Node>
+          <Node name="template" expanded="True" />
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>name</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

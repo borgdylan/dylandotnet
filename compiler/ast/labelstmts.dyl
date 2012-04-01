@@ -8,39 +8,33 @@
 
 class public auto ansi LabelStmt extends Stmt
 
-field public Ident LabelName
+	field public Ident LabelName
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-LabelName = new Ident()
-end method
+	method public void LabelStmt()
+		me::ctor()
+		LabelName = new Ident()
+	end method
 
 end class
 
 class public auto ansi PlaceStmt extends Stmt
 
-field public Ident LabelName
+	field public Ident LabelName
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-LabelName = new Ident()
-end method
+	method public void PlaceStmt()
+		me::ctor()
+		LabelName = new Ident()
+	end method
 
 end class
 
 class public auto ansi GotoStmt extends Stmt
 
-field public Ident LabelName
+	field public Ident LabelName
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-LabelName = new Ident()
-end method
+	method public void GotoStmt()
+		me::ctor()
+		LabelName = new Ident()
+	end method
 
 end class

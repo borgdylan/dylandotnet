@@ -7,211 +7,138 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi MethodNameTok extends Ident
-
 end class
 
 class public auto ansi MethodCallTok extends Token
 
-field public MethodNameTok Name
-field public Expr[] Params
-field public boolean PopFlg
-field public System.Type[] TypArr
+	field public MethodNameTok Name
+	field public Expr[] Params
+	field public boolean PopFlg
+	field public Type[] TypArr
 
-method public void ctor0()
-me::ctor()
-me::Value = ""
-me::Line = 0
-Name = new MethodNameTok()
-PopFlg = false
-Params = newarr Expr 0
-TypArr = System.Type::EmptyTypes
-end method
+	method public void MethodCallTok()
+		me::ctor()
+		Name = new MethodNameTok()
+		PopFlg = false
+		Params = new Expr[0]
+		TypArr = Type::EmptyTypes
+	end method
 
-method public void ctor1(var value as string)
-me::ctor()
-me::Value = value
-me::Line = 0
-Name = new MethodNameTok()
-PopFlg = false
-Params = newarr Expr 0
-TypArr = System.Type::EmptyTypes
-end method
+	method public void MethodCallTok(var value as string)
+		me::ctor(value)
+		Name = new MethodNameTok()
+		PopFlg = false
+		Params = new Expr[0]
+		TypArr = Type::EmptyTypes
+	end method
 
-method public void AddParam(var paramtoadd as Expr)
+	method public void AddParam(var paramtoadd as Expr)
 
-var len as integer = Params[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+		var i as integer = -1
+		var destarr as Expr[] = new Expr[Params[l] + 1]
 
-var destarr as Expr[] = newarr Expr destl
+		do until i = (Params[l] - 1)
+			i = i + 1
+			destarr[i] = Params[i]
+		end do
+		
+		if Params[l] = 0 then
+			Line = paramtoadd::Line
+		end if
+		
+		destarr[Params[l]] = paramtoadd
+		Params = destarr
 
-label loop
-label cont
-
-place loop
-
-i = i + 1
-
-if len > 0 then
-
-destarr[i] = Params[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-if len = 0 then
-me::Line = paramtoadd::Line
-end if
-
-destarr[len] = paramtoadd
-
-Params = destarr
-
-end method
-
+	end method
 
 end class
 
 class public auto ansi NewCallTok extends Token
 
-field public TypeTok Name
-field public Expr[] Params
+	field public TypeTok Name
+	field public Expr[] Params
 
-method public void ctor0()
-me::ctor()
-me::Value = ""
-me::Line = 0
-Name = new TypeTok()
-Params = newarr Expr 0
-end method
+	method public void NewCallTok()
+		me::ctor()
+		Name = new TypeTok()
+		Params = new Expr[0]
+	end method
 
-method public void ctor1(var value as string)
-me::ctor()
-me::Value = value
-me::Line = 0
-Name = new TypeTok()
-Params = newarr Expr 0
-end method
+	method public void NewCallTok(var value as string)
+		me::ctor(value)
+		Name = new TypeTok()
+		Params = new Expr[0]
+	end method
 
-method public void AddParam(var paramtoadd as Expr)
+	method public void AddParam(var paramtoadd as Expr)
 
-var len as integer = Params[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+		var i as integer = -1
+		var destarr as Expr[] = new Expr[Params[l] + 1]
 
-var destarr as Expr[] = newarr Expr destl
+		do until i = (Params[l] - 1)
+			i = i + 1
+			destarr[i] = Params[i]
+		end do
+		
+		if Params[l] = 0 then
+			Line = paramtoadd::Line
+		end if
+		
+		destarr[Params[l]] = paramtoadd
+		Params = destarr
 
-label loop
-label cont
-
-place loop
-
-i = i + 1
-
-if len > 0 then
-
-destarr[i] = Params[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-if len = 0 then
-me::Line = paramtoadd::Line
-end if
-
-destarr[len] = paramtoadd
-
-Params = destarr
-
-end method
-
+	end method
 
 end class
 
 class public auto ansi GettypeCallTok extends Token
 
-field public TypeTok Name
+	field public TypeTok Name
 
-method public void ctor0()
-me::ctor()
-me::Value = ""
-me::Line = 0
-Name = new TypeTok()
-end method
+	method public void GettypeCallTok()
+		me::ctor()
+		Name = new TypeTok()
+	end method
 
-method public void ctor1(var value as string)
-me::ctor()
-me::Value = value
-me::Line = 0
-Name = new TypeTok()
-end method
+	method public void GettypeCallTok(var value as string)
+		me::ctor(value)
+		Name = new TypeTok()
+	end method
 
 end class
 
 class public auto ansi PtrCallTok extends Token
 
-field public MethodNameTok MetToCall
+	field public MethodNameTok MetToCall
 
-method public void ctor0()
-me::ctor()
-me::Value = ""
-me::Line = 0
-MetToCall = new MethodNameTok()
-end method
+	method public void PtrCallTok()
+		me::ctor()
+		MetToCall = new MethodNameTok()
+	end method
 
-method public void ctor1(var value as string)
-me::ctor()
-me::Value = value
-me::Line = 0
-MetToCall = new MethodNameTok()
-end method
+	method public void PtrCallTok(var value as string)
+		me::ctor(value)
+		MetToCall = new MethodNameTok()
+	end method
 
 end class
 
 class public auto ansi NewarrCallTok extends Token
 
-field public TypeTok ArrayType
-field public Expr ArrayLen
+	field public TypeTok ArrayType
+	field public Expr ArrayLen
 
-method public void ctor0()
-me::ctor()
-me::Line = 0
-me::Value = ""
-ArrayType = new TypeTok()
-ArrayLen = new Expr()
-end method
+	method public void NewarrCallTok()
+		me::ctor()
+		ArrayType = new TypeTok()
+		ArrayLen = new Expr()
+	end method
 
-method public void ctor1(var value as string)
-me::ctor()
-me::Line = 0
-me::Value = value
-ArrayType = new TypeTok()
-ArrayLen = new Expr()
-end method
+	method public void NewarrCallTok(var value as string)
+		me::ctor(value)
+		ArrayType = new TypeTok()
+		ArrayLen = new Expr()
+	end method
 
 end class
 

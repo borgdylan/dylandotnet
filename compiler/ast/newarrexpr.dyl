@@ -8,17 +8,13 @@
 
 class public auto ansi NewarrExpr extends Expr
 
-field public TypeTok ArrayType
-field public Token ArrayLen
+	field public TypeTok ArrayType
+	field public Token ArrayLen
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-ArrayType = new TypeTok()
-ArrayLen = new Token()
-me::ResultTyp = null
-end method
-
+	method public void NewarrExpr()
+		me::ctor()
+		ArrayType = new TypeTok()
+		ArrayLen = new Token()
+	end method
 
 end class

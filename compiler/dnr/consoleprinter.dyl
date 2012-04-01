@@ -8,87 +8,57 @@
 
 class public auto ansi beforefieldinit ConsolePrinter
 
-field public static StringWriter SW
+	field public static StringWriter SW
 
-method public static void ctor0()
-SW = null
-end method
+	method public static void ConsolePrinter()
+		SW = null
+	end method
 
-method public static void PrintString()
-var str as string = SW::ToString()
-Console::WriteLine(str)
-end method
+	method public static void PrintString()
+		var str as string = SW::ToString()
+		Console::WriteLine(str)
+	end method
 
-method public static void WriteClass(var typ as System.Type)
+	method public static void WriteClass(var typ as Type)
 
-SW = new StringWriter()
+		SW = new StringWriter()
 
-var isAbstract as boolean = typ::get_IsAbstract()
-var isAnsi as boolean = typ::get_IsAnsiClass()
-var isAutoChar as boolean = typ::get_IsAutoClass()
-var isAuto as boolean = typ::get_IsAutoLayout()
-var isEnum as boolean = typ::get_IsEnum()
-var isInterface as boolean = typ::get_IsInterface()
-var isNestedPrivate as boolean = typ::get_IsNestedPrivate()
-var isNestedPublic as boolean = typ::get_IsNestedPublic()
-var isPrivate as boolean = typ::get_IsNotPublic()
-var isPublic as boolean = typ::get_IsPublic()
-var name as string = typ::get_Name()
-var bt as System.Type = typ::get_BaseType()
-var btstr as string = bt::ToString()
+		if typ::get_IsEnum() then
+			SW::Write("enum ")
+		else
+			SW::Write("class ")
+		end if
 
-if isEnum = true then
-SW::Write("enum ")
-else
-SW::Write("class ")
-end if
+		if typ::get_IsPublic() or typ::get_IsNestedPublic()then
+			SW::Write("public ")
+		end if
 
-if isPublic = true then
-SW::Write("public ")
-end if
+		if typ::get_IsNotPublic() or typ::get_IsNestedPrivate() then
+			SW::Write("private ")
+		end if
 
-if isPrivate = true then
-SW::Write("private ")
-end if
+		if typ::get_IsAbstract() then
+			SW::Write("abstract ")
+		end if
 
-if isNestedPublic = true then
-SW::Write("public ")
-end if
+		if typ::get_IsAutoLayout() then
+			SW::Write("auto ")
+		end if
 
-if isNestedPrivate = true then
-SW::Write("private ")
-end if
+		if typ::get_IsAutoClass() then
+			SW::Write("autochar ")
+		end if
 
+		if typ::get_IsAnsiClass() then
+			SW::Write("ansi ")
+		end if
 
-if isAbstract = true then
-SW::Write("abstract ")
-end if
-
-if isAuto = true then
-SW::Write("auto ")
-end if
-
-
-if isAutoChar = true then
-SW::Write("autochar ")
-end if
-
-if isAnsi = true then
-SW::Write("ansi ")
-end if
-
-if isAutoChar = true then
-SW::Write("autochar ")
-end if
-
-if isInterface = true then
-SW::Write("interface ")
-end if
-
-SW::Write(name)
-SW::Write(" extends ")
-SW::Write(btstr)
-
-end method
+		if typ::get_IsInterface() then
+			SW::Write("interface ")
+		end if
+	
+		SW::Write(typ::get_Name() + " extends " + typ::get_BaseType()::ToString())
+	
+	end method
 
 end class

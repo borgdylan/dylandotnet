@@ -7,25 +7,20 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi AritExpr extends Expr
-
 end class
 
 class public auto ansi LogicExpr extends Expr
-
 end class
 
 class public auto ansi VarExpr extends Expr
 
-field public TypeTok VarTyp
-field public Ident VarName
+	field public TypeTok VarTyp
+	field public Ident VarName
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-me::ResultTyp = null
-VarTyp = new TypeTok()
-VarName = new Ident()
-end method
+	method public void ctor0()
+		me::ctor()
+		VarTyp = new TypeTok()
+		VarName = new Ident()
+	end method
 
 end class

@@ -17,7 +17,6 @@ class public auto ansi Module1
 		var arit as Arithmetic = new Arithmetic()
 
 		var str as string = ""
-		var num as double
 
 		Console::WriteLine("enter Num1")
 		var Num1 as double = $double$Console::ReadLine()

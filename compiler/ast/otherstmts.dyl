@@ -8,100 +8,81 @@
 
 class public auto ansi AssignStmt extends Stmt
 
-field public Expr LExp
-field public Expr RExp
+	field public Expr LExp
+	field public Expr RExp
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-LExp = new Expr()
-RExp = new Expr()
-end method
+	method public void AssignStmt()
+		me::ctor()
+		LExp = new Expr()
+		RExp = new Expr()
+	end method
 
 end class
 
 class public auto ansi IncStmt extends Stmt
 
-field public Ident NumVar
+	field public Ident NumVar
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-NumVar = new Ident()
-end method
+	method public void IncStmt()
+		me::ctor()
+		NumVar = new Ident()
+	end method
 
 end class
 
 class public auto ansi DecStmt extends Stmt
 
-field public Ident NumVar
+	field public Ident NumVar
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-NumVar = new Ident()
-end method
+	method public void DecStmt()
+		me::ctor()
+		NumVar = new Ident()
+	end method
 
 end class
 
 class public auto ansi ReturnStmt extends Stmt
 
-field public Expr RExp
+	field public Expr RExp
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-RExp = new Expr()
-end method
+	method public void ReturnStmt()
+		me::ctor()
+		RExp = new Expr()
+	end method
 
 end class
 
 class public auto ansi MethodCallStmt extends Stmt
 
-field public Token MethodToken
+	field public Token MethodToken
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-MethodToken = new Token()
-end method
+	method public void MethodCallStmt()
+		me::ctor()
+		MethodToken = new Token()
+	end method
 
 end class
 
 class public auto ansi EndMethodStmt extends Stmt
-
 end class
 
-
 class public auto ansi EndEnumStmt extends Stmt
-
 end class
 
 class public auto ansi EndClassStmt extends Stmt
-
 end class
 
 class public auto ansi EndNSStmt extends Stmt
-
 end class
 
 class public auto ansi EndXmlDocStmt extends Stmt
-
 end class
 
 class public auto ansi EndTryStmt extends Stmt
-
 end class
 
 class public auto ansi EndPropStmt extends Stmt
-
 end class
 
 class public auto ansi CommentStmt extends Stmt
-
 end class

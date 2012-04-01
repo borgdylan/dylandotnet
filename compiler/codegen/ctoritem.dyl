@@ -8,19 +8,19 @@
 
 class public auto ansi CtorItem
 
-field public System.Type[] ParamTyps
-field public ConstructorBuilder CtorBldr
+	field public Type[] ParamTyps
+	field public ConstructorBuilder CtorBldr
 
-method public void ctor0()
-me::ctor()
-CtorBldr = null
-ParamTyps = newarr System.Type 0
-end method
+	method public void CtorItem()
+		me::ctor()
+		CtorBldr = null
+		ParamTyps = new Type[0]
+	end method
 
-method public void ctor1(var ptyps as System.Type[], var bld as ConstructorBuilder)
-me::ctor()
-CtorBldr = bld
-ParamTyps = ptyps
-end method
+	method public void ctor1(var ptyps as Type[], var bld as ConstructorBuilder)
+		me::ctor()
+		CtorBldr = bld
+		ParamTyps = ptyps
+	end method
 
 end class

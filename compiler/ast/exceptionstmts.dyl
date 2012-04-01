@@ -7,37 +7,31 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi TryStmt extends Stmt
-
 end class
 
 class public auto ansi CatchStmt extends Stmt
 
-field public Ident ExName
-field public TypeTok ExTyp
+	field public Ident ExName
+	field public TypeTok ExTyp
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-ExName = new Ident()
-ExTyp = new TypeTok()
-end method
+	method public void CatchStmt()
+		me::ctor()
+		ExName = new Ident()
+		ExTyp = new TypeTok()
+	end method
 
 end class
 
 class public auto ansi FinallyStmt extends Stmt
-
 end class
 
 class public auto ansi ThrowStmt extends Stmt
 
-field public Expr RExp
+	field public Expr RExp
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-RExp = new Expr()
-end method
+	method public void ThrowStmt()
+		me::ctor()
+		RExp = new Expr()
+	end method
 
 end class

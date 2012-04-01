@@ -8,13 +8,11 @@
 
 class public auto ansi MakeasmStmt extends Stmt
 
-field public SwitchTok Opt
+	field public SwitchTok Opt
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Opt = new SwitchTok()
-end method
+	method public void MakeasmStmt()
+		me::ctor()
+		Opt = new SwitchTok()
+	end method
 
 end class

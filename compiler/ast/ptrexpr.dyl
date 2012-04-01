@@ -8,14 +8,11 @@
 
 class public auto ansi PtrExpr extends Expr
 
-field public MethodCallTok MetToCall
+	field public MethodCallTok MetToCall
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-MetToCall = new MethodCallTok()
-me::ResultTyp = null
-end method
+	method public void PtrExpr()
+		me::ctor()
+		MetToCall = new MethodCallTok()
+	end method
 
 end class

@@ -27,25 +27,26 @@
 
 	    
 all:
-	$(MONO) ../2.0/dnc.exe arit.dyl
-	$(MONO) ../2.0/dnc.exe conv.dyl
-	$(MONO) ../2.0/dnc.exe ctorfield.dyl
-	$(MONO) ../2.0/dnc.exe helloworld.dyl
-	$(MONO) ../2.0/dnc.exe logicop.dyl
-	$(MONO) ../2.0/dnc.exe mathematics.dyl
-	$(MONO) ../2.0/dnc.exe mathstest.dyl
-	$(MONO) ../2.0/dnc.exe numloops.dyl
-	$(MONO) ../2.0/dnc.exe openfile.dyl
-	$(MONO) ../2.0/dnc.exe Person.dyl
-	$(MONO) ../2.0/dnc.exe PersonProg.dyl
-	$(MONO) ../2.0/dnc.exe boxobj.dyl
-	$(MONO) ../2.0/dnc.exe xmllib.dyl
-	$(MONO) ../2.0/dnc.exe arraytest.dyl
-	$(MONO) ../2.0/dnc.exe vector.dyl
-	$(MONO) ../2.0/dnc.exe threads.dyl
-	$(MONO) ../2.0/dnc.exe dylrecurse.dyl
-	$(MONO) ../2.0/dnc.exe strrecurse.dyl
-	$(MONO) ../2.0/dnc.exe protectedtests.dyl
+	'$(MONO)' ../2.0/dnc.exe -V > buildlog
+	'$(MONO)' ../2.0/dnc.exe arit.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe conv.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe ctorfield.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe helloworld.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe logicop.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe mathematics.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe mathstest.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe numloops.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe openfile.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe Person.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe PersonProg.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe boxobj.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe xmllib.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe arraytest.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe vector.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe threads.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe dylrecurse.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe strrecurse.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe protectedtests.dyl | tee -a buildlog
 	
 install:
 	tar -czf tests.tar.gz *

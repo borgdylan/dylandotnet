@@ -8,13 +8,11 @@
 
 class public auto ansi NSStmt extends Stmt
 
-field public Token NS
+	field public Token NS
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-NS = new Token()
-end method
+	method public void NSStmt()
+		me::ctor()
+		NS = new Token()
+	end method
 
 end class

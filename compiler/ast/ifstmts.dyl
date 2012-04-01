@@ -8,34 +8,28 @@
 
 class public auto ansi IfStmt extends Stmt
 
-field public Expr Exp
+	field public Expr Exp
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Exp = new Expr()
-end method
+	method public void IfStmt()
+		me::ctor()
+		Exp = new Expr()
+	end method
 
 end class
 
 class public auto ansi ElseIfStmt extends Stmt
 
-field public Expr Exp
+	field public Expr Exp
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Exp = new Expr()
-end method
+	method public void ElseIfStmt()
+		me::ctor()
+		Exp = new Expr()
+	end method
 
 end class
 
 class public auto ansi ElseStmt extends Stmt
-
 end class
 
 class public auto ansi EndIfStmt extends Stmt
-
 end class

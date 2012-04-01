@@ -8,14 +8,11 @@
 
 class public auto ansi GettypeExpr extends Expr
 
-field public TypeTok TypeToGet
+	field public TypeTok TypeToGet
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-TypeToGet = new TypeTok()
-end method
-
+	method public void GettypeExpr()
+		me::ctor()
+		TypeToGet = new TypeTok()
+	end method
 
 end class

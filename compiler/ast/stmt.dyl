@@ -8,104 +8,54 @@
 
 class public auto ansi Stmt
 
-field public Token[] Tokens
-field public integer Line
+	field public Token[] Tokens
+	field public integer Line
 
-method public void ctor0()
-me::ctor()
-Tokens = newarr Token 0
-Line = 0
-end method
+	method public void Stmt()
+		me::ctor()
+		Tokens = new Token[0]
+		Line = 0
+	end method
 
-method public void AddToken(var toktoadd as Token)
+	method public void AddToken(var toktoadd as Token)
 
-var len as integer = Tokens[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+		var i as integer = -1
+		var destarr as Token[] = new Token[Tokens[l] + 1]
 
-var destarr as Token[] = newarr Token destl
+		do until i = (Tokens[l] - 1)
+			i = i + 1
+			destarr[i] = Tokens[i]
+		end do
 
-label loop
-label cont
+		destarr[Tokens[l]] = toktoadd
+		Tokens = destarr
 
-place loop
-
-i++
-
-if len > 0 then
-
-destarr[i] = Tokens[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = toktoadd
-
-Tokens = destarr
-
-end method
+	end method
 
 end class
 
 class public auto ansi StmtSet
 
-field public Stmt[] Stmts
+	field public Stmt[] Stmts
 
-method public void ctor0()
-me::ctor()
-Stmts = newarr Stmt 0
-end method
+	method public void StmtSet()
+		me::ctor()
+		Stmts = new Stmt[0]
+	end method
 
-method public void AddStmt(var stmttoadd as Stmt)
+	method public void AddStmt(var stmttoadd as Stmt)
+		
+		var i as integer = -1
+		var destarr as Stmt[] = new Stmt[Stmts[l] + 1]
 
-var len as integer = Stmts[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+		do until i = (Stmts[l] - 1)
+			i = i + 1
+			destarr[i] = Stmts[i]
+		end do
 
-var destarr as Stmt[] = newarr Stmt destl
+		destarr[Stmts[l]] = stmttoadd
+		Stmts = destarr
 
-label loop
-label cont
-
-place loop
-
-i++
-
-if len > 0 then
-
-destarr[i] = Stmts[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = stmttoadd
-
-Stmts = destarr
-
-end method
+	end method
 
 end class

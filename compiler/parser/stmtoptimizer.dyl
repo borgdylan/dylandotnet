@@ -1270,23 +1270,27 @@ vars::Tokens = stm::Tokens
 var tempexp as Expr = new Expr()
 tempexp::Tokens = vars::Tokens
 var eop as ExprOptimizer = new ExprOptimizer()
+//ParserFlags::ProcessTTokOnly = true
+tempexp = eop::Optimize(tempexp)
+//ParserFlags::ProcessTTokOnly = false
 tempexp = eop::Optimize(tempexp)
 vars::Tokens = tempexp::Tokens
+stm::Tokens = tempexp::Tokens
 vars::Line = stm::Line
 vars::VarName = stm::Tokens[1]
 
-var tok2 as Token = stm::Tokens[3]
+var tok2 as Token = vars::Tokens[3]
 var typ2 as System.Type = gettype TypeTok
 var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
 
 if b2 <> true then
-var t as Token = stm::Tokens[3]
+var t as Token = vars::Tokens[3]
 var tt as TypeTok = new TypeTok()
 tt::Line = t::Line
 tt::Value = t::Value
 vars::VarTyp = tt
 else
-vars::VarTyp = stm::Tokens[3]
+vars::VarTyp = vars::Tokens[3]
 end if
 
 end if

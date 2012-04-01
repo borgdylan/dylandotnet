@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ItemType>GenericProject</ItemType>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6175a8f7-dd76-445f-ad70-a9d349ac4bcc}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <TextStylePolicy TabWidth="4" RemoveTrailingWhitespace="True" inheritsSet="Mono" inheritsScope="text/plain" scope="text/plain" />
+        </Policies>
+        <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="true" RelativeMakefileName="Makefile" ExecuteTargetName="run" IsAutotoolsProject="true" RelativeConfigureInPath="..">
+          <BuildFilesVar />
+          <DeployFilesVar />
+          <ResourcesVar />
+          <OthersVar />
+          <GacRefVar />
+          <AsmRefVar />
+          <ProjectRefVar />
+          <MessageRegex Error="^ERROR:\s(?&lt;message&gt;.*)\sat line\s(?&lt;line&gt;\d*)\sin file:\s*(?&lt;file&gt;.*)$" Warning="^WARNING:\s(?&lt;message&gt;.*)\sat line\s(?&lt;line&gt;\d*)\sin file:\s*(?&lt;file&gt;.*)$" Name="Custom" />
+        </MonoDevelop.Autotools.MakefileInfo>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <None Include="template.dyl" />
+  </ItemGroup>
+</Project>

@@ -9,56 +9,29 @@
 // class Attrs ClassName extends InhClass
 class public auto ansi ClassStmt extends Stmt
 
-field public Attribute[] Attrs
-field public Ident ClassName
-field public TypeTok InhClass
+	field public Attributes.Attribute[] Attrs
+	field public Ident ClassName
+	field public TypeTok InhClass
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Attrs = newarr Attribute 0
-ClassName = new Ident()
-InhClass = new TypeTok()
-end method
+	method public void ClassStmt()
+		me::ctor()
+		Attrs = newarr Attributes.Attribute 0
+		ClassName = new Ident()
+		InhClass = new TypeTok()
+	end method
 
-method public void AddAttr(var attrtoadd as Attribute)
+	method public void AddAttr(var attrtoadd as Attributes.Attribute)
 
-var len as integer = Attrs[l]
-var destl as integer = len + 1
-var stopel as integer = len - 1
-var i as integer = -1
+		var i as integer = -1
+		var destarr as Attributes.Attribute[] = new Attributes.Attribute[Attrs[l] + 1]
 
-var destarr as Attribute[] = newarr Attribute destl
+		do until i = (Attrs[l] - 1)
+			i = i + 1
+			destarr[i] = Attrs[i]
+		end do
 
-label loop
-label cont
-
-place loop
-
-i++
-
-if len > 0 then
-
-destarr[i] = Attrs[i]
-
-end if
-
-if i = stopel then
-goto cont
-else
-if stopel <> -1 then
-goto loop
-else
-goto cont
-end if
-end if
-
-place cont
-
-destarr[len] = attrtoadd
-
-Attrs = destarr
+		destarr[Attrs[l]] = attrtoadd
+		Attrs = destarr
 
 end method
 

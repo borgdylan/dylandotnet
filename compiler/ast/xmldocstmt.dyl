@@ -8,15 +8,13 @@
 
 class public auto ansi XmlDocStmt extends Stmt
 
-field public Token NodeType
-field public Token NodePath
+	field public Token NodeType
+	field public Token NodePath
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-NodeType = new Token()
-NodePath = new Token()
-end method
+	method public void XmlDocStmt()
+		me::ctor()
+		NodeType = new Token()
+		NodePath = new Token()
+	end method
 
 end class

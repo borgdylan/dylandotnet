@@ -18,6 +18,7 @@
     <AssemblyVersion>11.2.8.5</AssemblyVersion>
     <AssemblyVersion>11.2.8.6</AssemblyVersion>
     <AssemblyVersion>11.2.8.7</AssemblyVersion>
+    <AssemblyVersion>11.2.8.9</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
@@ -48,12 +49,29 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>Constructs a new DoubeLiteral.</summary>
+        <summary>Constructs a new DoubleLiteral.</summary>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public DoubleLiteral (double value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(float64 value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="value" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="value">The double value to assign to the DoubleLiteral.</param>
+        <summary>Constructs a new DoubleLiteral with the given value.</summary>
+        <remarks>Sets the Value and LitTyp fields accodingly.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -76,13 +94,15 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="value">This parameter is of no use in this case.</param>
-        <summary>Constructs a new DoubeLiteral.</summary>
+        <param name="value">
+        </param>
+        <summary>Constructs a new DoubleLiteral.</summary>
         <remarks>
         </remarks>
       </Docs>
@@ -107,6 +127,7 @@
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
@@ -114,6 +135,24 @@
       <Docs>
         <summary>The numeric value of the literal.</summary>
         <remarks>It is loaded using the ldc.r8 opcode.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
+        <returns>The dylan.NET syntactic equivalent to this literal ie. NumVal + "d".</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

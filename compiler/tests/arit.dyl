@@ -26,8 +26,6 @@ class public auto ansi Module1
 	end method
 
 	method public static void main()
-		var temp as string
-		var ans as double
 
 		Console::WriteLine("Enter num1")
 		var num1 as double = $double$Console::ReadLine()

@@ -10,43 +10,27 @@
 // #debug Opt
 class public auto ansi DebugStmt extends Stmt
 
-field public SwitchTok Opt
-field public boolean Flg
+	field public SwitchTok Opt
+	field public boolean Flg
 
-method public void ctor0()
-me::ctor()
-me::Tokens = newarr Token 0
-me::Line = 0
-Opt = new SwitchTok()
-Flg = false
-end method
+	method public void DebugStmt()
+		me::ctor()
+		Opt = new SwitchTok()
+		Flg = false
+	end method
 
-method public void setFlg()
+	method public void setFlg()
 
-label fin
+		var t as Type[] = new Type[2]
+		t[0] = gettype OnTok
+		t[1] = gettype OffTok
 
-var typ as System.Type
-var b as boolean = false
+		if t[0]::IsInstanceOfType(Opt) then
+			Flg = true
+		elseif t[1]::IsInstanceOfType(Opt) then
+			Flg = false
+		end if
 
-typ = gettype OnTok
-b = typ::IsInstanceOfType($object$Opt)
-
-if b = true then
-Flg = true
-goto fin
-end if
-
-typ = gettype OffTok
-b = typ::IsInstanceOfType($object$Opt)
-
-if b = true then
-Flg = false
-goto fin
-end if
-
-
-place fin
-
-end method
+	end method
 
 end class

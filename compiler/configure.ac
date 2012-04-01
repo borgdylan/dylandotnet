@@ -2,9 +2,9 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([dylandotnet], [11.2.8.7], [borgdylan@hotmail.com])
+AC_INIT([dylandotnet], [11.2.8.9], [borgdylan@hotmail.com])
 AC_CANONICAL_SYSTEM
-AM_INIT_AUTOMAKE(dylandotnet, 11.2.8.7)
+AM_INIT_AUTOMAKE(dylandotnet, 11.2.8.9)
 AM_MAINTAINER_MODE
 
 AC_PROG_INSTALL
@@ -19,6 +19,12 @@ dnl mono
 AC_PATH_PROG(MONO, mono, no)
 if test "x$MONO" = "xno"; then
 	AC_MSG_ERROR([You need to install the mono runtime])
+fi
+
+dnl mdoc
+AC_PATH_PROG(MDOC, mdoc, no)
+if test "x$MDOC" = "xno"; then
+	AC_MSG_ERROR([You need to install monodoc])
 fi
 
 dnl dylandotnet
@@ -43,4 +49,5 @@ doc/Makefile
 2.0/Makefile
 4.0/Makefile
 dev/Makefile
+templateproj/Makefile
 ])
