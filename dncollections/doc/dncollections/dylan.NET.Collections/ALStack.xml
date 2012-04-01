@@ -5,6 +5,7 @@
     <AssemblyName>dncollections</AssemblyName>
     <AssemblyVersion>11.2.8.4</AssemblyVersion>
     <AssemblyVersion>11.2.8.5</AssemblyVersion>
+    <AssemblyVersion>11.2.8.9</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Collections.ALList</BaseTypeName>
@@ -22,6 +23,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -36,6 +38,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.Item</ReturnType>
@@ -54,6 +57,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
@@ -72,6 +76,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.Item</ReturnType>
@@ -90,6 +95,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
@@ -108,6 +114,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -128,6 +135,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

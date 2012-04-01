@@ -5,6 +5,7 @@
     <AssemblyName>dncollections</AssemblyName>
     <AssemblyVersion>11.2.8.4</AssemblyVersion>
     <AssemblyVersion>11.2.8.5</AssemblyVersion>
+    <AssemblyVersion>11.2.8.9</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Delegate</BaseTypeName>

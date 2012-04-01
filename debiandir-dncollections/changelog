@@ -1,3 +1,13 @@
+dylandotnet-collections (11.2.8.9-1) precise; urgency=low
+
+  * Adding ToString() for ALList and Item.
+  * Fixing ALList.AddAll(ALList).
+  * Refactoring loops in source code.
+  * Updating makefile.
+  * Bumping up version to 11.2.8.9
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 01 Apr 2012 14:07:54 +0100
+
 dylandotnet-collections (11.2.8.5-2) precise; urgency=low
 
   * Fixing debian/control

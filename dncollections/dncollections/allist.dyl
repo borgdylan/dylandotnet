@@ -26,31 +26,14 @@ class public auto ansi ALList
 	method public void Add(var ite as Item)
 		
 		if Length = Capacity then
-		
 			var na as Item[] = new Item[ItemArray[l] + 10]
 			var i as integer = -1
-			
-			label loop
-			label cont
-			
-			place loop
-			
-			i = i + 1
-			
-			na[i] = ItemArray[i]
-			
-			if i = (Length - 1) then
-				goto cont
-			else
-				goto loop
-			end if
-			
-			place cont
-			
+			do until i = (Length - 1)
+				i = i + 1		
+				na[i] = ItemArray[i]
+			end do
 			ItemArray = na
 			Capacity = ItemArray[l]
-			
-		
 		end if
 		
 		if Head = null then
@@ -78,33 +61,18 @@ class public auto ansi ALList
 	end method
 	
 	method public void AddAll(var al1 as ALList)
-		
 		var ite as Item = null
-		
 		if al1::Length > 0 then
-			label loop
-			label cont
-			
-			place loop
-			
-			if ite = null then
-				ite = al1::Head
-				Add(ite)
-			else
-				ite = ite::GoNext()
-				Add(ite)
-			end if
-			
-			if ite::HasNext() then
-				goto loop
-			else
-				goto cont
-			end if
-			
-			place cont
-			
+			do
+				if ite = null then
+					ite = al1::Head
+					Add(ite::MakeCopy())
+				else
+					ite = ite::GoNext()
+					Add(ite::MakeCopy())
+				end if		
+			while ite::HasNext()
 		end if
-				
 	end method
 	
 	method public static specialname ALList op_Addition(var lis as ALList, var ite as Item)
@@ -150,30 +118,17 @@ class public auto ansi ALList
 				Tail = ite::Previous
 			end if
 			
-			label loop
-			label cont
-			
 			var i as integer = ind - 1
 			
-			place loop
-			
-			if ind = Length - 1 then
-				goto cont
-			end if
-			
-			i = i + 1
-			ite = ItemArray[i + 1]
-			ite::Index = ite::Index - 1
-			ItemArray[i] = ite
-			
-			
-			if i = (Length - 2) then
-				goto cont
-			else
-				goto loop
-			end if
-			
-			place cont
+			do
+				if ind = Length - 1 then
+					break
+				end if
+				i = i + 1
+				ite = ItemArray[i + 1]
+				ite::Index = ite::Index - 1
+				ItemArray[i] = ite
+			until i = (Length - 2)
 			
 			Length = Length - 1
 			ItemArray[Length] = null
@@ -211,28 +166,13 @@ class public auto ansi ALList
 	method public Item FindItem(var sd as SearchDelegate)
 		
 		if Length > 0 then
-		
-			label loop
-			label cont
-			
 			var i as integer = -1
-			
-			place loop
-			
-			i = i + 1
-			
-			if sd::Invoke(ItemArray[i]::Value) then
-				return ItemArray[i]
-			end if
-			
-			if i = (Length - 1) then
-				goto cont
-			else
-				goto loop
-			end if
-			
-			place cont
-		
+			do until i = (Length - 1)
+				i = i + 1
+				if sd::Invoke(ItemArray[i]::Value) then
+					return ItemArray[i]
+				end if
+			end do
 		else
 			return null
 		end if
@@ -244,29 +184,14 @@ class public auto ansi ALList
 	method public boolean Remove(var o as object)
 		
 		if Length > 0 then
-		
-			label loop
-			label cont
-			
 			var i as integer = -1
-			
-			place loop
-			
-			i = i + 1
-			
-			if ItemArray[i]::Value = o then
-				Remove(i)
-				return true
-			end if
-			
-			if i = (Length - 1) then
-				goto cont
-			else
-				goto loop
-			end if
-			
-			place cont
-		
+			do until i = (Length - 1)
+				i = i + 1		
+				if ItemArray[i]::Value = o then
+					Remove(i)
+					return true
+				end if
+			end do
 		else
 			return false
 		end if
@@ -285,16 +210,13 @@ class public auto ansi ALList
 		return lis
 	end method
 	
-	
-	method public object FindItemValue(var sd as SearchDelegate)
-		
+	method public object FindItemValue(var sd as SearchDelegate)	
 		var ite as Item = FindItem(sd)
 		if ite = null then
 			return null
 		else
 			return ite::Value
 		end if
-		
 	end method
 	
 	method public ALList FindItems(var sd as SearchDelegate)
@@ -302,32 +224,40 @@ class public auto ansi ALList
 		var al1 as ALList = new ALList()
 		
 		if Length > 0 then
-		
-			label loop
-			label cont
-			
 			var i as integer = -1
-			
-			place loop
-			
-			i = i + 1
-			
-			if sd::Invoke(ItemArray[i]::Value)
-				al1::Add(ItemArray[i]::Value)
-			end if
-			
-			if i = (Length - 1) then
-				goto cont
-			else
-				goto loop
-			end if
-			
-			place cont
-		
+			do until i = (Length - 1)
+				i = i + 1		
+				if sd::Invoke(ItemArray[i]::Value)
+					al1::Add(ItemArray[i]::Value)
+				end if
+			end do
 		end if
 		
 		return al1
 		
+	end method
+	
+	method public hidebysig virtual string ToString()
+		
+		var i as integer = -1
+		var sb as StringBuilder = new StringBuilder()
+		sb::Append("{")
+		
+		do until i = (Length - 1)
+			i = i + 1
+			if GetItemValue(i) = null then
+				sb::Append("null")
+			else
+				sb::Append(GetItemValue(i)::ToString())
+			end if
+			if i != (Length - 1) then
+				sb::Append(",")
+			end if
+		end do
+		
+		sb::Append("}")
+		return sb::ToString()
+	
 	end method
 
 end class

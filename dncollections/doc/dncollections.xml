@@ -1,0 +1,286 @@
+<doc>
+    <assembly>
+        <name>dncollections</name>
+    </assembly>
+    <members>
+        <member name="T:dylan.NET.Collections.ALList">
+            <summary>A list of Items accesible via Indices like in ArrayLists and via Next/Previous like in a Doubly-Linked-List.</summary>
+            <remarks>Use ALStack or ALQueue if the functions of a Stack or Queue are needed in addition to the functions this class provides.</remarks>
+        </member>
+        <member name="C:dylan.NET.Collections.ALList">
+            <summary>Constructs a new ALList with 0 Items.</summary>
+            <remarks>The initial capacity is 10 Items. It is inceased automatically when required.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.Add(dylan.NET.Collections.Item)">
+            <param name="ite">The Item to add.</param>
+            <summary>Adds the supplied Item to the ALList.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.Add(System.Object)">
+            <param name="o">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.AddAll(dylan.NET.Collections.ALList)">
+            <param name="al1">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Collections.ALList.Capacity">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.CopyValue(System.Int32,System.Int32)">
+            <param name="src">To be added.</param>
+            <param name="dest">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.FindItem(dylan.NET.Collections.SearchDelegate)">
+            <param name="sd">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.FindItems(dylan.NET.Collections.SearchDelegate)">
+            <param name="sd">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.FindItemValue(dylan.NET.Collections.SearchDelegate)">
+            <param name="sd">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.GetItem(System.Int32)">
+            <param name="i">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.GetItemValue(System.Int32)">
+            <param name="i">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Collections.ALList.Head">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Collections.ALList.ItemArray">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Collections.ALList.Length">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,dylan.NET.Collections.Item)">
+            <param name="lis">To be added.</param>
+            <param name="ite">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,System.Object)">
+            <param name="lis">To be added.</param>
+            <param name="o">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Int32)">
+            <param name="lis">To be added.</param>
+            <param name="ind">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Object)">
+            <param name="lis">To be added.</param>
+            <param name="o">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.Remove(System.Int32)">
+            <param name="ind">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.Remove(System.Object)">
+            <param name="o">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.SwapValues(System.Int32,System.Int32)">
+            <param name="i">To be added.</param>
+            <param name="j">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Collections.ALList.Tail">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALList.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Collections.ALQueue">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Collections.ALQueue">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALQueue.Dequeue">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALQueue.DequeueValue">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALQueue.Enqueue(dylan.NET.Collections.Item)">
+            <param name="ite">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALQueue.EnqueueValue(System.Object)">
+            <param name="o">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALQueue.Peek">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALQueue.PeekValue">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Collections.ALStack">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Collections.ALStack">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALStack.Peek">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALStack.PeekValue">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALStack.Pop">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALStack.PopValue">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALStack.Push(dylan.NET.Collections.Item)">
+            <param name="ite">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.ALStack.PushValue(System.Object)">
+            <param name="o">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Collections.Item">
+            <summary>An item that can be placed in an ALList, ALQueue or ALStack.</summary>
+            <remarks />
+        </member>
+        <member name="C:dylan.NET.Collections.Item">
+            <summary>Constructs a new Item with a null value.</summary>
+            <remarks>The value of the Item is set to null. Set the Value field or use the other constructor.</remarks>
+        </member>
+        <member name="C:dylan.NET.Collections.Item(System.Object)">
+            <param name="o">The value of the Item.</param>
+            <summary>Constructs a new Item having the specified Value.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Collections.Item.GoNext">
+            <summary>Returns the Item that occurs after this one in the collection.</summary>
+            <returns>Null if there is no next Item else returns the Item that is next.</returns>
+            <remarks>Use HasNext() to see if there is a next Item.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.Item.GoPrevious">
+            <summary>Returns the Item that occurs before this one in the collection.</summary>
+            <returns>Null if there is no previous Item else returns the Item that is before.</returns>
+            <remarks>Use HasPrevious() to see if there is a previous Item.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.Item.HasNext">
+            <summary>Returns if there is a next Item or not.</summary>
+            <returns>True if there is a next Item else false.</returns>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Collections.Item.HasPrevious">
+            <summary>Returns if there is a previous Item or not.</summary>
+            <returns>True if there is a previous Item else false.</returns>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Collections.Item.Index">
+            <summary>The index of the slot occupied by this Item inside the ItemArray of a collection.</summary>
+            <remarks>Is equal to -1 if the Item is not in a collection.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.Item.MakeCopy">
+            <summary>Make a copy of this Item.</summary>
+            <returns>A new Item that has the same value as this one.</returns>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Collections.Item.MakeCopy(dylan.NET.Collections.Item)">
+            <param name="ite">The Item to copy.</param>
+            <summary>Make a copy of the given Item.</summary>
+            <returns>A new Item that has the same value as the given Item.</returns>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Collections.Item.Next">
+            <summary>The Next Item.</summary>
+            <remarks>Is null if this Item has no next Item or if it is not in a collection.</remarks>
+        </member>
+        <member name="F:dylan.NET.Collections.Item.Previous">
+            <summary>The Previous Item.</summary>
+            <remarks>Is null if this Item has no previous Item or if it is not in a collection.</remarks>
+        </member>
+        <member name="M:dylan.NET.Collections.Item.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Collections.Item.Value">
+            <summary>The object that occupies this Item.</summary>
+            <remarks />
+        </member>
+        <member name="T:dylan.NET.Collections.SearchDelegate">
+            <param name="o">The object to check for conformance to certain conditions.</param>
+            <summary>A way to supply a method that returns yes or no according to conformance of object to a condition.</summary>
+            <returns>True is the object conforms or False if otherwise.</returns>
+            <remarks>Useful in searches where True signifies that the item should be returned as the result of the search.</remarks>
+        </member>
+    </members>
+</doc>

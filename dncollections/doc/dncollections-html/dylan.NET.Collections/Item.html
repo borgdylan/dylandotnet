@@ -217,7 +217,7 @@
       </div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:dylan.NET.Collections.Item:Docs:Version Information">
-        <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+        <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
       <h2 class="Section" id="Members">Members</h2>
       <div class="SectionBox" id="_Members">
         <p>
@@ -335,7 +335,7 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:dylan.NET.Collections.Item.GoNext">GoNext</a>
+                    <a href="#M:dylan.NET.Collections.Item.GoNext()">GoNext</a>
                   </b>()<nobr> : <a href="../dylan.NET.Collections/Item.html">Item</a></nobr><blockquote>Returns the Item that occurs after this one in the collection.</blockquote></td>
               </tr>
               <tr valign="top">
@@ -345,7 +345,7 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:dylan.NET.Collections.Item.GoPrevious">GoPrevious</a>
+                    <a href="#M:dylan.NET.Collections.Item.GoPrevious()">GoPrevious</a>
                   </b>()<nobr> : <a href="../dylan.NET.Collections/Item.html">Item</a></nobr><blockquote>Returns the Item that occurs before this one in the collection.</blockquote></td>
               </tr>
               <tr valign="top">
@@ -355,7 +355,7 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:dylan.NET.Collections.Item.HasNext">HasNext</a>
+                    <a href="#M:dylan.NET.Collections.Item.HasNext()">HasNext</a>
                   </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote>Returns if there is a next Item or not.</blockquote></td>
               </tr>
               <tr valign="top">
@@ -365,7 +365,7 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:dylan.NET.Collections.Item.HasPrevious">HasPrevious</a>
+                    <a href="#M:dylan.NET.Collections.Item.HasPrevious()">HasPrevious</a>
                   </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote>Returns if there is a previous Item or not.</blockquote></td>
               </tr>
               <tr valign="top">
@@ -375,7 +375,7 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:dylan.NET.Collections.Item.MakeCopy">MakeCopy</a>
+                    <a href="#M:dylan.NET.Collections.Item.MakeCopy()">MakeCopy</a>
                   </b>()<nobr> : <a href="../dylan.NET.Collections/Item.html">Item</a></nobr><blockquote>Make a copy of this Item.</blockquote></td>
               </tr>
               <tr valign="top">
@@ -386,6 +386,15 @@
                   <b>
                     <a href="#M:dylan.NET.Collections.Item.MakeCopy(dylan.NET.Collections.Item)">MakeCopy</a>
                   </b>(<a href="../dylan.NET.Collections/Item.html">Item</a>)<nobr> : <a href="../dylan.NET.Collections/Item.html">Item</a></nobr><blockquote>Make a copy of the given Item.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>override </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.Item.ToString()">ToString</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
             </table>
           </div>
@@ -404,7 +413,7 @@
           <div class="SectionBox" id="C:dylan.NET.Collections.Item:Remarks">The value of the Item is set to null. Set the Value field or use the other constructor.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="C:dylan.NET.Collections.Item:Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
         <h3 id="C:dylan.NET.Collections.Item(System.Object)">Item Constructor</h3>
@@ -426,65 +435,65 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="C:dylan.NET.Collections.Item(System.Object):Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:dylan.NET.Collections.Item.GoNext">GoNext Method</h3>
-        <blockquote id="M:dylan.NET.Collections.Item.GoNext:member">
+        <h3 id="M:dylan.NET.Collections.Item.GoNext()">GoNext Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.GoNext():member">
           <p class="Summary">Returns the Item that occurs after this one in the collection.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>GoNext</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.GoNext:Returns">Null if there is no next Item else returns the Item that is next.</blockquote>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.GoNext():Returns">Null if there is no next Item else returns the Item that is next.</blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoNext:Remarks">Use HasNext() to see if there is a next Item.</div>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoNext():Remarks">Use HasNext() to see if there is a next Item.</div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoNext:Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoNext():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:dylan.NET.Collections.Item.GoPrevious">GoPrevious Method</h3>
-        <blockquote id="M:dylan.NET.Collections.Item.GoPrevious:member">
+        <h3 id="M:dylan.NET.Collections.Item.GoPrevious()">GoPrevious Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.GoPrevious():member">
           <p class="Summary">Returns the Item that occurs before this one in the collection.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>GoPrevious</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.GoPrevious:Returns">Null if there is no previous Item else returns the Item that is before.</blockquote>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.GoPrevious():Returns">Null if there is no previous Item else returns the Item that is before.</blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoPrevious:Remarks">Use HasPrevious() to see if there is a previous Item.</div>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoPrevious():Remarks">Use HasPrevious() to see if there is a previous Item.</div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoPrevious:Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoPrevious():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:dylan.NET.Collections.Item.HasNext">HasNext Method</h3>
-        <blockquote id="M:dylan.NET.Collections.Item.HasNext:member">
+        <h3 id="M:dylan.NET.Collections.Item.HasNext()">HasNext Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.HasNext():member">
           <p class="Summary">Returns if there is a next Item or not.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>HasNext</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.HasNext:Returns">True if there is a next Item else false.</blockquote>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.HasNext():Returns">True if there is a next Item else false.</blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasNext:Remarks">
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasNext():Remarks">
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasNext:Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasNext():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:dylan.NET.Collections.Item.HasPrevious">HasPrevious Method</h3>
-        <blockquote id="M:dylan.NET.Collections.Item.HasPrevious:member">
+        <h3 id="M:dylan.NET.Collections.Item.HasPrevious()">HasPrevious Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.HasPrevious():member">
           <p class="Summary">Returns if there is a previous Item or not.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>HasPrevious</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.HasPrevious:Returns">True if there is a previous Item else false.</blockquote>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.HasPrevious():Returns">True if there is a previous Item else false.</blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasPrevious:Remarks">
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasPrevious():Remarks">
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasPrevious:Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasPrevious():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
         <h3 id="F:dylan.NET.Collections.Item.Index">Index Field</h3>
@@ -496,22 +505,22 @@
           <div class="SectionBox" id="F:dylan.NET.Collections.Item.Index:Remarks">Is equal to -1 if the Item is not in a collection.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="F:dylan.NET.Collections.Item.Index:Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:dylan.NET.Collections.Item.MakeCopy">MakeCopy Method</h3>
-        <blockquote id="M:dylan.NET.Collections.Item.MakeCopy:member">
+        <h3 id="M:dylan.NET.Collections.Item.MakeCopy()">MakeCopy Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.MakeCopy():member">
           <p class="Summary">Make a copy of this Item.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>MakeCopy</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.MakeCopy:Returns">A new Item that has the same value as this one.</blockquote>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.MakeCopy():Returns">A new Item that has the same value as this one.</blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Collections.Item.MakeCopy:Remarks">
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.MakeCopy():Remarks">
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:dylan.NET.Collections.Item.MakeCopy:Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.MakeCopy():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:dylan.NET.Collections.Item.MakeCopy(dylan.NET.Collections.Item)">MakeCopy Method</h3>
@@ -535,7 +544,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:dylan.NET.Collections.Item.MakeCopy(dylan.NET.Collections.Item):Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
         <h3 id="F:dylan.NET.Collections.Item.Next">Next Field</h3>
@@ -547,7 +556,7 @@
           <div class="SectionBox" id="F:dylan.NET.Collections.Item.Next:Remarks">Is null if this Item has no next Item or if it is not in a collection.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="F:dylan.NET.Collections.Item.Next:Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
         <h3 id="F:dylan.NET.Collections.Item.Previous">Previous Field</h3>
@@ -559,7 +568,27 @@
           <div class="SectionBox" id="F:dylan.NET.Collections.Item.Previous:Remarks">Is null if this Item has no previous Item or if it is not in a collection.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="F:dylan.NET.Collections.Item.Previous:Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.Item.ToString()">ToString Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.ToString():member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public override <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ToString</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.ToString():Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.ToString():Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.ToString():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.9</div>
           <hr size="1" />
         </blockquote>
         <h3 id="F:dylan.NET.Collections.Item.Value">Value Field</h3>
@@ -572,7 +601,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="F:dylan.NET.Collections.Item.Value:Version Information">
-            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5</div>
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
           <hr size="1" />
         </blockquote>
       </div>

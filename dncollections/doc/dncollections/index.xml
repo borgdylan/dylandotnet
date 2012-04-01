@@ -1,6 +1,12 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dncollections" Version="11.2.8.5" />
+    <Assembly Name="dncollections" Version="11.2.8.9">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
   </Assemblies>
   <Remarks>This library provides Array-Linked-List based Lists,Stacks and Queues.</Remarks>
   <Copyright>This library is under the LGPL v. 3. Copyright Dylan Borg (C) 2012</Copyright>

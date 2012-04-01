@@ -5,5 +5,5 @@ pkglibdir=${libdir}/cli/dylandotnet-collections4
 
 Name: dylan.NET Collections
 Description: Collections for CLI 4.0
-Version: 11.2.8.5
+Version: 11.2.8.9
 Libs: -r:${pkglibdir}/dncollections.dll

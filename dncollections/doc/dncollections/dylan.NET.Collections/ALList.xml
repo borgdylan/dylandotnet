@@ -5,6 +5,7 @@
     <AssemblyName>dncollections</AssemblyName>
     <AssemblyVersion>11.2.8.4</AssemblyVersion>
     <AssemblyVersion>11.2.8.5</AssemblyVersion>
+    <AssemblyVersion>11.2.8.9</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -22,6 +23,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -36,6 +38,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -57,6 +60,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -76,6 +80,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -96,6 +101,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -112,6 +118,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -135,6 +142,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.Item</ReturnType>
@@ -155,6 +163,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.ALList</ReturnType>
@@ -176,6 +185,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
@@ -197,6 +207,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.Item</ReturnType>
@@ -218,6 +229,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
@@ -239,6 +251,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.Item</ReturnType>
@@ -255,6 +268,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.Item[]</ReturnType>
@@ -271,6 +285,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -287,6 +302,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.ALList</ReturnType>
@@ -310,6 +326,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.ALList</ReturnType>
@@ -332,6 +349,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.ALList</ReturnType>
@@ -354,6 +372,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.ALList</ReturnType>
@@ -377,6 +396,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -397,6 +417,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -418,6 +439,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -441,12 +463,30 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.4</AssemblyVersion>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Collections.Item</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

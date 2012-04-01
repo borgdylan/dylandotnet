@@ -1,4 +1,4 @@
-//dylan.NET Collections...please use dylandotnet4 >= 11.2.8.4 to compile
+//dylan.NET Collections...please use dylandotnet4 >= 11.2.8.8 to compile
 //An addition to the NEW dylan.NET Compiler
 
 //    dncollections.dll dylan.NET.Collections Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
@@ -12,13 +12,14 @@
 #refstdasm "mscorlib.dll"
 
 import System
+import System.Text
 import dylan.NET
 import dylan.NET.Collections
 
-#debug off
+#debug on
 
 assembly dncollections dll
-ver 11.2.8.5
+ver 11.2.8.9
 
 namespace dylan.NET.Collections
 	#include "dncollections/searchdelegate.dyl"

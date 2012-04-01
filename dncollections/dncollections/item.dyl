@@ -59,4 +59,12 @@ class public auto ansi Item
 		return new Item(ite::Value)
 	end method
 	
+	method public hidebysig virtual string ToString()
+		if Value = null then
+			return $string$Index + ":null"
+		else
+			return $string$Index + ":" + Value::ToString()
+		end if
+	end method
+	
 end class

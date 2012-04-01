@@ -3,7 +3,7 @@ Section: cli-mono
 Priority: optional
 Maintainer: Dylan Borg <borgdylan@hotmail.com>
 Build-Depends: debhelper (>= 7.0.50~), cli-common-dev (>= 0.8~), devscripts, libmono-corlib2.0-cil, libmono-system2.0-cil, mono-devel, mono-runtime, gawk, autotools-dev, monodoc-base
-Standards-Version: 3.9.2
+Standards-Version: 3.9.3
 Homepage: http://launchpad.net/dylandotnet
 Vcs-Git: git://gitorious.org/dylandotnet/dylandotnet.git
 Vcs-Bzr: lp:dylandotnet

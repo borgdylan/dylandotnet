@@ -6,6 +6,7 @@ all:
 	
 	$(MDOC) update -o doc/dncollections dncollections.dll
 	$(MDOC) export-html -o doc/dncollections-html doc/dncollections
+	$(MDOC) export-msxdoc -o doc/dncollections.xml doc/dncollections
 
 install:
 	
