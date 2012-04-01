@@ -1,3 +1,22 @@
+commit f2c7553aa049d94e309289bcd8e7b087044486c7
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sun Apr 1 11:47:43 2012 +0200
+
+    Committing latest dylan.NET code. This is dylan.NET 11.2.8.9
+    * Refactoring completely dnc,dnr,dnu,ast, and most of codegen.
+    * Adding support for unsigned nr. literals (load/operate upon)
+    * Adding support for parsing system.decimal literals(no load support yet)
+    * Adding support for parsing byref syntax(codegen not complete)
+    * Adding ToString() to some ast tokens.
+    * Adding dnr support for instruction selection for byref.
+    * Adding Microsoft XML Documentation output for docs.
+    * Adding support for buildlogs in makefiles.
+    * Updating makefiles and man pages.
+    * Bumping versions to 11.2.8.9.
+    * Tested to work on Mono 2.11
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 97413a88fddd1e892270cb2dc0e27ff5a61ff8a1
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Tue Feb 21 11:36:46 2012 +0100

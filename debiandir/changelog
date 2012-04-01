@@ -1,3 +1,27 @@
+dylandotnet (11.2.8.9-1) precise; urgency=low
+
+  * Refactoring completely dnc,dnr,dnu,ast, and most of codegen.
+  * Adding support for unsigned nr. literals (load/operate upon).
+  * Adding support for parsing system.decimal literals(no load support yet).
+  * Adding support for parsing byref syntax(codegen not complete).
+  * Adding ToString() to some ast tokens.
+  * Adding dnr support for instruction selection for byref.
+  * Adding Microsoft XML Documentation output for docs.
+  * Adding support for buildlogs in makefiles.
+  * Updating makefiles and man pages.
+  * Bumping up versions to 11.2.8.9.
+  * Tested to work on Mono 2.11
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 01 Apr 2012 12:09:45 +0100
+
+dylandotnet (11.2.8.8-1) precise; urgency=low
+
+  * Fixing a parser bug for var statements
+  * Updating man pages and makefiles.
+  * Bumping up version to 11.2.8.8
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 20 Feb 2012 13:56:11 +0100
+
 dylandotnet (11.2.8.7-1) precise; urgency=low
 
   * Adding support for pre/post conditioned loops.
