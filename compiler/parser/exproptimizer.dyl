@@ -66,11 +66,11 @@ var lvl as integer = 1
 var d as boolean = true
 var j as integer = 0
 
-i--
+i = i - 1
 idt = stm::Tokens[i]
 mn = IdentToMNTok(idt, mn)
 j = i
-i++
+i = i + 1
 
 var tok2 as Token = stm::Tokens[i]
 var typ2 as System.Type
@@ -79,7 +79,7 @@ var len as integer = stm::Tokens[l] - 1
 
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 
 label loop2
 label cont2
@@ -88,13 +88,13 @@ label fin
 place loop2
 
 //get parameters
-i++
+i = i + 1
 
 tok2 = stm::Tokens[i]
 typ2 = gettype RParen
 b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
-lvl--
+lvl = lvl - 1
 if lvl = 0 then
 d = false
 if ep2::Tokens[l] > 0 then
@@ -102,7 +102,7 @@ mct::AddParam(ep2)
 end if
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 goto cont2
 else
 d = true
@@ -115,11 +115,11 @@ tok2 = stm::Tokens[i]
 typ2 = gettype LParen
 b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
-lvl++
+lvl = lvl + 1
 d = true
 //stm::RemToken(i)
 len = stm::Tokens[l] - 1
-//i--
+//i = i - 1
 goto fin
 end if
 
@@ -135,7 +135,7 @@ end if
 ep2 = new Expr()
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 goto fin
 else
 d = true
@@ -152,7 +152,7 @@ if d = true then
 ep2::AddToken(stm::Tokens[i])
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 end if
 
 if i = len then
@@ -186,7 +186,7 @@ var nab as boolean = false
 
 tt = stm::Tokens[i]
 j = i
-i++
+i = i + 1
 
 var tok2 as Token = stm::Tokens[i]
 var typ2 as System.Type
@@ -212,7 +212,7 @@ end if
 
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 
 label loop2
 label cont2
@@ -221,13 +221,13 @@ label fin
 place loop2
 
 //get parameters
-i++
+i = i + 1
 
 tok2 = stm::Tokens[i]
 typ2 = rtyp
 b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
-lvl--
+lvl = lvl - 1
 if lvl = 0 then
 d = false
 if ep2::Tokens[l] > 0 then
@@ -239,7 +239,7 @@ end if
 end if
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 goto cont2
 else
 d = true
@@ -252,11 +252,11 @@ tok2 = stm::Tokens[i]
 typ2 = ltyp
 b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
-lvl++
+lvl = lvl + 1
 d = true
 //stm::RemToken(i)
 len = stm::Tokens[l] - 1
-//i--
+//i = i - 1
 goto fin
 end if
 
@@ -274,7 +274,7 @@ end if
 ep2 = new Expr()
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 goto fin
 else
 d = true
@@ -291,7 +291,7 @@ if d = true then
 ep2::AddToken(stm::Tokens[i])
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 end if
 
 if i = len then
@@ -322,10 +322,10 @@ var lvl as integer = 1
 var d as boolean = true
 var j as integer = 0
 
-i--
+i = i - 1
 idt = stm::Tokens[i]
 j = i
-i++
+i = i + 1
 
 var tok2 as Token = stm::Tokens[i]
 var typ2 as System.Type
@@ -334,7 +334,7 @@ var len as integer = stm::Tokens[l] - 1
 
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 
 label loop2
 label cont2
@@ -343,19 +343,19 @@ label fin
 place loop2
 
 //get parameters
-i++
+i = i + 1
 
 tok2 = stm::Tokens[i]
 typ2 = gettype RSParen
 b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
-lvl--
+lvl = lvl - 1
 if lvl = 0 then
 d = false
 //mct::AddParam(ep2)
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 goto cont2
 else
 d = true
@@ -368,7 +368,7 @@ tok2 = stm::Tokens[i]
 typ2 = gettype LSParen
 b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
-lvl++
+lvl = lvl + 1
 d = true
 goto fin
 end if
@@ -388,7 +388,7 @@ if d = true then
 ep2::AddToken(stm::Tokens[i])
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 end if
 
 if i = len then
@@ -416,11 +416,11 @@ var lvl as integer = 1
 var d as boolean = true
 var j as integer = 0
 
-i--
+i = i - 1
 mtd = stm::Tokens[i]
 idt = mtd::Name
 j = i
-i++
+i = i + 1
 
 var tok2 as Token = stm::Tokens[i]
 var typ2 as System.Type
@@ -429,7 +429,7 @@ var len as integer = stm::Tokens[l] - 1
 
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 
 label loop2
 label cont2
@@ -438,19 +438,19 @@ label fin
 place loop2
 
 //get parameters
-i++
+i = i + 1
 
 tok2 = stm::Tokens[i]
 typ2 = gettype RSParen
 b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
-lvl--
+lvl = lvl - 1
 if lvl = 0 then
 d = false
 //mct::AddParam(ep2)
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 goto cont2
 else
 d = true
@@ -463,7 +463,7 @@ tok2 = stm::Tokens[i]
 typ2 = gettype LSParen
 b2 = typ2::IsInstanceOfType($object$tok2)
 if b2 = true then
-lvl++
+lvl = lvl + 1
 d = true
 goto fin
 end if
@@ -483,7 +483,7 @@ if d = true then
 ep2::AddToken(stm::Tokens[i])
 stm::RemToken(i)
 len = stm::Tokens[l] - 1
-i--
+i = i - 1
 end if
 
 if i = len then
@@ -508,7 +508,6 @@ method public Expr Optimize(var exp as Expr)
 var len as integer = exp::Tokens[l] - 1
 var i as integer = -1
 var j as integer = -1
-var identtrnoff as boolean = false
 var mcbool as boolean = false
 var mcflgc as boolean = false
 var iflgc as boolean = false
@@ -518,7 +517,6 @@ var nctok as Token = null
 var ncttok as TypeTok = null
 var gtctok as Token = null
 var gtcttok as TypeTok = null
-var ptrctok as Token = null
 var ptrmntok as MethodNameTok = null
 var newavtok as Token = null
 var newaexpr as Expr = null
@@ -543,7 +541,7 @@ place loop
 
 if ParserFlags::MetChainFlag = false then
 
-i++
+i = i + 1
 
 label fin
 
@@ -558,7 +556,7 @@ b = typ::IsInstanceOfType($object$tok)
 if b = true then
 typ = gettype TypeTok
 exp::RemToken(i)
-i--
+i = i - 1
 len = exp::Tokens[l] - 1
 tok = exp::Tokens[i]
 b = typ::IsInstanceOfType($object$tok)
@@ -583,7 +581,7 @@ b = typ::IsInstanceOfType($object$tok)
 if b = true then
 typ = gettype TypeTok
 exp::RemToken(i)
-i--
+i = i - 1
 len = exp::Tokens[l] - 1
 tok = exp::Tokens[i]
 b = typ::IsInstanceOfType($object$tok)
@@ -618,7 +616,7 @@ str = str::Trim()
 ParserFlags::OrdOp = str
 end if
 exp::RemToken(i)
-i--
+i = i - 1
 len = exp::Tokens[l] - 1
 goto fin
 end if
@@ -628,7 +626,7 @@ b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
 exp::RemToken(i)
-i--
+i = i - 1
 len = exp::Tokens[l] - 1
 goto fin
 end if
@@ -640,7 +638,7 @@ if b = true then
 ParserFlags::isChanged = true
 ParserFlags::RefFlag = true
 exp::RemToken(i)
-i--
+i = i - 1
 len = exp::Tokens[l] - 1
 goto fin
 end if
@@ -652,7 +650,7 @@ if b = true then
 ParserFlags::isChanged = true
 ParserFlags::ValinrefFlag = true
 exp::RemToken(i)
-i--
+i = i - 1
 len = exp::Tokens[l] - 1
 goto fin
 end if
@@ -665,7 +663,7 @@ if ParserFlags::DurConvFlag <> false then
 var tt1 as TypeTok = exp::Tokens[i]
 ParserFlags::ConvTyp = tt1
 exp::RemToken(i)
-i--
+i = i - 1
 len = exp::Tokens[l] - 1
 else
 end if
@@ -696,7 +694,7 @@ tt3::Line = tt2::Line
 tt3::Value = tt2::Value
 ParserFlags::ConvTyp = tt3
 exp::RemToken(i)
-i--
+i = i - 1
 len = exp::Tokens[l] - 1
 
 end if
@@ -788,7 +786,7 @@ b = typ::IsInstanceOfType($object$tok)
 if b = true then
 
 exp::RemToken(i)
-len--
+len = len - 1
 
 nctok = exp::Tokens[i]
 
@@ -823,7 +821,7 @@ goto nccont2
 end if
 
 place ncloop2
-nci2++
+nci2 = nci2 + 1
 ncprs[nci2] = Optimize(ncprs[nci2])
 
 if nci2 = ncln2 then
@@ -853,7 +851,7 @@ b = typ::IsInstanceOfType($object$tok)
 if b = true then
 
 exp::RemToken(i)
-len--
+len = len - 1
 
 gtctok = exp::Tokens[i]
 
@@ -881,12 +879,12 @@ b = typ::IsInstanceOfType($object$tok)
 if b = true then
 
 exp::RemToken(i)
-len--
+len = len - 1
 
 tok = exp::Tokens[i]
 
 exp::RemToken(i)
-len--
+len = len - 1
 
 typ = gettype TypeTok
 b = typ::IsInstanceOfType($object$tok)
@@ -919,24 +917,24 @@ b = typ::IsInstanceOfType($object$tok)
 if b = true then
 
 exp::RemToken(i)
-len--
+len = len - 1
 
 ptrmntok = new MethodNameTok()
-ptrmntok = IdentToMNTok(exp::Tokens[i] , ptrmntok)
+ptrmntok = IdentToMNTok($Ident$exp::Tokens[i] , ptrmntok)
 
 var ptrctoken as PtrCallTok = new PtrCallTok()
 ptrctoken::MetToCall = ptrmntok
 exp::Tokens[i] = ptrctoken
 
 //outer check for (
-i++
+i = i + 1
 if i <= len then
 tok = exp::Tokens[i]
 typ = gettype LParen
 b = typ::IsInstanceOfType($object$tok)
 if b = true then
 exp::RemToken(i)
-len--
+len = len - 1
 //inner check for )
 //-----------------
 if i <= len then
@@ -945,7 +943,7 @@ typ = gettype RParen
 b = typ::IsInstanceOfType($object$tok)
 if b = true then
 exp::RemToken(i)
-len--
+len = len - 1
 end if
 end if
 //-----------------
@@ -968,7 +966,7 @@ mcbool = true
 end if
 ParserFlags::MetCallFlag = true
 exp = procMethodCall(exp, i)
-i--
+i = i - 1
 len = exp::Tokens[l] - 1
 
 var mct as MethodCallTok = exp::Tokens[i]
@@ -988,7 +986,7 @@ goto cont2
 end if
 
 place loop2
-i2++
+i2 = i2 + 1
 ParserFlags::MetCallFlag = false
 ParserFlags::IdentFlag = false
 ParserFlags::StringFlag = false
@@ -1023,7 +1021,7 @@ if b = true then
 if ParserFlags::IdentFlag = true then
 ParserFlags::IdentFlag = false
 exp = procIdentArrayAccess(exp, i)
-i--
+i = i - 1
 len = exp::Tokens[l] - 1
 
 var aidt as Ident = exp::Tokens[i]
@@ -1038,7 +1036,7 @@ else
 if ParserFlags::MetCallFlag = true then
 ParserFlags::MetCallFlag = false
 exp = procMtdArrayAccess(exp, i)
-i--
+i = i - 1
 len = exp::Tokens[l] - 1
 
 mcflgc = ParserFlags::MetCallFlag
@@ -1088,8 +1086,7 @@ else
 
 //method chain code
 
-i--
-
+i = i - 1
 
 label fin2
 

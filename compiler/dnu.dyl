@@ -27,7 +27,7 @@ import dylan.NET
 #debug on
 
 assembly dnu dll
-ver 11.2.8.9
+ver 11.2.9.1
 
 namespace dylan.NET.Utils
 	#include "dnu/consts.dyl"

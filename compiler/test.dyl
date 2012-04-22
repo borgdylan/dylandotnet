@@ -17,9 +17,9 @@ ver 1.1.0.0
 class public auto ansi Program
 
 	method public static void main()
-		Environment::set_CurrentDirectory("/var/www/Code/dylannet/compiler/tests")
+		Environment::set_CurrentDirectory("/var/www/Code/dylannet/compiler")
 		var arr as string[] = new string[1]
-		arr[0] = "protectedtests.dyl"
+		arr[0] = "dnu.dyl"
 		Module1::main(arr)
 		//Loader::ProtectedFlag = true
 		//var mi as MethodInfo = Loader::LoadMethod(gettype ProtectedTest, "ProtMtd", Type::EmptyTypes)

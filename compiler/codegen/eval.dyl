@@ -174,7 +174,11 @@ class public auto ansi beforefieldinit Evaluator
 		var src1 as Type
 		var snk1 as Type
 		var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ":")
-		
+		var pushaddr as boolean = idt::IsRef and idt::MemberAccessFlg
+
+		if pushaddr then
+			idt::IsRef = false
+		end if
 		if idtnamarr[0] = "me" then
 			i = i + 1
 			idtb1 = true
@@ -186,10 +190,18 @@ class public auto ansi beforefieldinit Evaluator
 			idtb2 = true
 			idtisstatic = false
 		end if
+		if AsmFactory::RefChainFlg then
+			AsmFactory::RefChainFlg = false
+			pushaddr = idt::MemberAccessFlg
+			if pushaddr = false then
+				idt::IsRef = true
+			end if
+		end if
 
 		do until i = (idtnamarr[l] - 1)
 			i = i + 1
 			AsmFactory::AddrFlg = (i != (idtnamarr[l] - 1))
+			AsmFactory::ForcedAddrFlg = (i == (idtnamarr[l] - 1)) and idt::IsRef and (idt::IsArr == false)
 			
 			if idtb2 = false then
 				if idtb1 = false then
@@ -199,8 +211,13 @@ class public auto ansi beforefieldinit Evaluator
 							AsmFactory::Type04 = vr::VarTyp
 							Helpers::EmitLocLd(vr::Index, vr::LocArg)
 						end if
-						AsmFactory::Type02 = vr::VarTyp
 						typ = vr::VarTyp
+						if AsmFactory::ForcedAddrFlg and (typ::get_IsByRef() == false) then
+							typ = typ::MakeByRefType()
+						elseif (AsmFactory::ForcedAddrFlg == false) and typ::get_IsByRef() then
+							typ = typ::GetElementType()
+						end if
+						AsmFactory::Type02 = typ
 						idtb2 = true
 						continue
 					end if
@@ -220,6 +237,9 @@ class public auto ansi beforefieldinit Evaluator
 						Helpers::EmitFldLd(idtfldinf, idtisstatic)
 					end if
 					typ = idtfldinf::get_FieldType()
+					if AsmFactory::ForcedAddrFlg then
+						typ = typ::MakeByRefType()
+					end if
 					AsmFactory::Type02 = typ
 					idtb2 = true
 					continue
@@ -240,6 +260,9 @@ class public auto ansi beforefieldinit Evaluator
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is not defined/accessible for the class '" + typ::ToString() + "'.")
 					end if
 					typ = Loader::MemberTyp
+					if AsmFactory::ForcedAddrFlg then
+						typ = typ::MakeByRefType()
+					end if
 					AsmFactory::Type02 = typ
 					if emt then
 						if Loader::FldLitFlag = false then
@@ -269,6 +292,9 @@ class public auto ansi beforefieldinit Evaluator
 						Helpers::EmitFldLd(idtfldinf, idtisstatic)
 					end if
 					typ = idtfldinf::get_FieldType()
+					if AsmFactory::ForcedAddrFlg then
+						typ = typ::MakeByRefType()
+					end if
 					AsmFactory::Type02 = typ
 				end if
 
@@ -278,6 +304,7 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 			idtb2 = true
 		end do
+		AsmFactory::ForcedAddrFlg = false
 
 		//array handling code
 		//-----------------------------------------
@@ -291,25 +318,31 @@ class public auto ansi beforefieldinit Evaluator
 			else
 				typ = AsmFactory::Type02
 				aed::Invoke(ConvToAST(ConvToRPN(idt::ArrLoc)), emt)
-
 				typ = typ::GetElementType()
+				if idt::IsRef then
+					AsmFactory::ForcedAddrFlg = true
+				end if
 				if emt then
 					ILEmitter::EmitConvI()
-					
 					if idt::MemberAccessFlg then
 						AsmFactory::AddrFlg = true
 						AsmFactory::Type04 = typ
 					end if
 					Helpers::EmitElemLd(typ)
 				end if
+				if AsmFactory::ForcedAddrFlg then
+					typ = typ::MakeByRefType()
+				end if
 				AsmFactory::Type02 = typ
 				AsmFactory::AddrFlg = false
+				AsmFactory::ForcedAddrFlg = false
 			end if
 		end if
 		//-----------------------------------------
 
 		if idt::MemberAccessFlg then
 			AsmFactory::ChainFlg = true
+			AsmFactory::RefChainFlg = pushaddr
 			aed::Invoke(idt::MemberToAccess, emt)
 		end if
 
@@ -345,6 +378,7 @@ class public auto ansi beforefieldinit Evaluator
 		var idtisstatic as boolean = false
 		var src1 as Type
 		var snk1 as Type
+		var pushaddr as boolean = mntok::IsRef and mntok::MemberAccessFlg
 
 		mnstrarr = ParseUtils::StringParser(mntok::Value, ":")
 		mcparenttyp = AsmFactory::CurnTypB
@@ -356,6 +390,9 @@ class public auto ansi beforefieldinit Evaluator
 		mnstrarr = ParseUtils::StringParser(mntok::Value, ":")
 		var len as integer = mnstrarr[l] - 2
 
+		if pushaddr then
+			mntok::IsRef = false
+		end if
 		if mnstrarr[0] = "me" then
 			i = i + 1
 			idtb1 = true
@@ -368,6 +405,13 @@ class public auto ansi beforefieldinit Evaluator
 				mcparenttyp = AsmFactory::Type02
 				idtb2 = true
 				mcisstatic = false
+			end if
+			if AsmFactory::RefChainFlg then
+				AsmFactory::RefChainFlg = false
+				pushaddr = mntok::MemberAccessFlg
+				if pushaddr = false then
+					mntok::IsRef = true
+				end if
 			end if
 
 			if mnstrarr[l] >= mcrestrord then
@@ -384,8 +428,11 @@ class public auto ansi beforefieldinit Evaluator
 									AsmFactory::Type04 = mcvr::VarTyp
 									Helpers::EmitLocLd(mcvr::Index, mcvr::LocArg)
 								end if
-								AsmFactory::Type02 = mcvr::VarTyp
 								mcparenttyp = mcvr::VarTyp
+								if mcparenttyp::get_IsByRef() then
+									mcparenttyp = mcparenttyp::GetElementType()
+								end if
+								AsmFactory::Type02 = mcparenttyp
 								idtb2 = true
 								continue
 							end if
@@ -418,23 +465,21 @@ class public auto ansi beforefieldinit Evaluator
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable or Class '" + mnstrarr[i] + "' is not defined.")
 						end if
 					else
-						if mcparenttyp::Equals(AsmFactory::CurnTypB) = false then
-							mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
-							if mcfldinf = null then
-								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
-							end if
-							mcparenttyp = Loader::MemberTyp
-							AsmFactory::Type02 = mcparenttyp
-							AsmFactory::Type04 = mcparenttyp
-						else
+						if mcparenttyp::Equals(AsmFactory::CurnTypB) then
 							mcfldinf = Helpers::GetLocFld(mnstrarr[i])
 							if mcfldinf = null then
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
 							end if
 							mcparenttyp = mcfldinf::get_FieldType()
-							AsmFactory::Type02 = mcparenttyp
-							AsmFactory::Type04 = mcparenttyp
+						else
+							mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
+							if mcfldinf = null then
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
+							end if
+							mcparenttyp = Loader::MemberTyp
 						end if
+						AsmFactory::Type02 = mcparenttyp
+						AsmFactory::Type04 = mcparenttyp
 
 						if emt then
 							Helpers::EmitFldLd(mcfldinf, mcisstatic)
@@ -534,6 +579,9 @@ class public auto ansi beforefieldinit Evaluator
 						mcparenttyp = AsmFactory::Type02
 						aed::Invoke(ConvToAST(ConvToRPN(mntok::ArrLoc)), emt)
 						mcparenttyp = mcparenttyp::GetElementType()
+						if mntok::IsRef then
+							AsmFactory::ForcedAddrFlg = true
+						end if
 						if emt then
 							ILEmitter::EmitConvI()
 							if mntok::MemberAccessFlg then
@@ -542,8 +590,12 @@ class public auto ansi beforefieldinit Evaluator
 							end if
 							Helpers::EmitElemLd(mcparenttyp)
 						end if
+						if AsmFactory::ForcedAddrFlg then
+							mcparenttyp = mcparenttyp::MakeByRefType()
+						end if
 						AsmFactory::Type02 = mcparenttyp
 						AsmFactory::AddrFlg = false
+						AsmFactory::ForcedAddrFlg = false
 					end if
 				end if
 				//-----------------------------------------
@@ -551,6 +603,7 @@ class public auto ansi beforefieldinit Evaluator
 
 			if mntok::MemberAccessFlg then
 				AsmFactory::ChainFlg = true
+				AsmFactory::RefChainFlg = pushaddr
 				aed::Invoke(mntok::MemberToAccess, emt)
 			end if
 		else
@@ -579,6 +632,203 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 		end if
 	end method
+
+	method public void ASTEmitNew(var nctok as NewCallTok, var emt as boolean, var aed as ASTEmitDelegate)
+		//constructor call section
+		var delparamarr as Type[]
+		var delmtdnam as string
+		var nctyp as Type = Helpers::CommitEvalTTok(nctok::Name)
+		var mcparams as Expr[] = nctok::Params
+		var delcreate as boolean = false
+		var typarr1 as Type[] = new Type[0]
+		var typarr2 as Type[]
+		var ncctorinf as ConstructorInfo
+		var i as integer = -1
+		var mnstrarr as string[]
+		var len as integer
+		var mcparenttyp as Type = null
+		var idtb1 as boolean = false
+		var idtb2 as boolean = false
+		var mcvr as VarItem
+		var mcfldinf as FieldInfo = null
+		var idtisstatic as boolean = false
+		var mcisstatic as boolean = false
+		var mcmetinf as MethodInfo = null
+
+		if nctyp::IsSubclassOf(gettype MulticastDelegate) then
+			delcreate = true
+			delparamarr = Loader::GetDelegateInvokeParams(nctyp)
+			delmtdnam = Helpers::StripDelMtdName(nctok::Params[0]::Tokens[0])
+		else
+			if nctok::Params[l] = 0 then
+				typarr1 = Type::EmptyTypes
+			else
+				typarr1 = new Type[0]
+			end if
+
+			do until i = (nctok::Params[l] - 1)
+				i = i + 1
+				aed::Invoke(ConvToAST(ConvToRPN(mcparams[i])), emt)
+				typarr2 = AsmFactory::TypArr
+				AsmFactory::TypArr = typarr1
+				AsmFactory::AddTyp(AsmFactory::Type02)
+				typarr1 = AsmFactory::TypArr
+				AsmFactory::TypArr = typarr2
+			end do
+		end if
+
+		if delcreate then
+			typarr1 = new Type[2]
+			typarr1[0] = gettype object
+			typarr1[1] = gettype IntPtr
+
+			//delegate pointer loading section
+			mnstrarr = ParseUtils::StringParser(delmtdnam, ":")
+			var mcrestrord as integer = 2
+			i = -1
+			len = mnstrarr[l] - 2
+
+			if mnstrarr[0] = "me" then
+				i = i + 1
+				idtb1 = true
+				mcrestrord = 3
+			end if
+
+			if mnstrarr[l] >= mcrestrord then
+				AsmFactory::AddrFlg = true
+
+				do until i = len
+					i = i + 1
+					if idtb2 = false then
+						if idtb1 = false then
+							mcvr = SymTable::FindVar(mnstrarr[i])
+							if mcvr <> null then
+								if emt then
+									AsmFactory::Type04 = mcvr::VarTyp
+									Helpers::EmitLocLd(mcvr::Index, mcvr::LocArg)
+								end if
+								mcparenttyp = mcvr::VarTyp
+								AsmFactory::Type02 = mcparenttyp
+								idtb2 = true
+								continue
+							else
+								mcfldinf = Helpers::GetLocFld(mnstrarr[i])
+								if mcfldinf <> null then
+									idtisstatic = mcfldinf::get_IsStatic()
+									if idtisstatic = false then
+										if emt then
+											ILEmitter::EmitLdarg(0)
+										end if
+									end if
+									if emt then
+										AsmFactory::Type04 = mcfldinf::get_FieldType()
+										Helpers::EmitFldLd(mcfldinf, idtisstatic)
+									end if
+									mcparenttyp = mcfldinf::get_FieldType()
+									AsmFactory::Type02 = mcparenttyp
+									idtb2 = true
+									continue
+								end if
+							end if
+						else
+							mcfldinf = Helpers::GetLocFld(mnstrarr[i])
+							if mcfldinf <> null then
+								idtisstatic = mcfldinf::get_IsStatic()
+								if idtisstatic = false then
+									if emt then
+										ILEmitter::EmitLdarg(0)
+									end if
+								end if
+								if emt then
+									AsmFactory::Type04 = mcfldinf::get_FieldType()
+									Helpers::EmitFldLd(mcfldinf, idtisstatic)
+								end if
+								AsmFactory::Type02 = mcfldinf::get_FieldType()
+								mcparenttyp = mcfldinf::get_FieldType()
+								idtb2 = true
+								continue
+							end if
+						end if
+						mcparenttyp = Loader::LoadClass(mnstrarr[i])
+						mcisstatic = true
+
+						if mcparenttyp = null then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable or Class '" + mnstrarr[i] + "' is not defined.")
+						end if
+					else
+						if mcparenttyp::Equals(AsmFactory::CurnTypB) = false then
+							mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
+							mcparenttyp = Loader::MemberTyp
+							AsmFactory::Type02 = mcparenttyp
+							AsmFactory::Type04 = mcparenttyp
+						else
+							mcfldinf = Helpers::GetLocFld(mnstrarr[i])
+							mcparenttyp = mcfldinf::get_FieldType()
+							AsmFactory::Type02 = mcparenttyp
+							AsmFactory::Type04 = mcparenttyp
+						end if
+
+						if emt then
+							Helpers::EmitFldLd(mcfldinf, mcisstatic)
+						end if
+						if mcisstatic then
+							mcisstatic = false
+						end if
+					end if
+					idtb2 = true
+				end if
+
+				AsmFactory::AddrFlg = false
+			end do
+
+			i = i + 1
+			//instance load for local methods of current isntance
+			if idtb2 = false then
+				if emt then
+					mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
+					mcisstatic = mcmetinf::get_IsStatic()
+					if mcisstatic = false then
+						ILEmitter::EmitLdarg(0)
+					end if
+				end if
+			end if
+			//----------------------------------------------------------
+
+			if idtb2 then
+				if mcparenttyp::Equals(AsmFactory::CurnTypB) = false then
+					mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], delparamarr)
+					//AsmFactory::Type02 = Loader::MemberTyp
+				else
+					mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
+					//AsmFactory::Type02 = mcmetinf::get_ReturnType()
+					mcisstatic = mcmetinf::get_IsStatic()
+				end if
+			else
+				mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
+				//AsmFactory::Type02 = mcmetinf::get_ReturnType()
+				mcisstatic = mcmetinf::get_IsStatic()
+			end if
+
+			if emt then
+				if mcisstatic  then
+					ILEmitter::EmitLdnull()
+				else
+					ILEmitter::EmitDup()
+				end if
+				Helpers::EmitPtrLd(mcmetinf,mcisstatic)
+			end if
+
+			//delegate pointer loading section
+		end if
+
+		ncctorinf = Helpers::GetLocCtor(nctyp, typarr1)
+
+		if emt  then
+			ILEmitter::EmitNewobj(ncctorinf)
+		end if
+
+		AsmFactory::Type02 = nctyp
+	end method
 	
 	method public void ASTEmit(var tok as Token, var emt as boolean)
 
@@ -588,13 +838,6 @@ class public auto ansi beforefieldinit Evaluator
 		var lctyp as Type = null
 		var rctyp as Type = null
 		var typ as Type
-		var b as boolean = false
-		var tt as TypeTok = null
-		var i as integer = -1
-		var len as integer = 0
-		var errstr as string
-
-		label fin
 
 		if isOp(tok) then
 			optok = $Op$tok
@@ -647,34 +890,21 @@ class public auto ansi beforefieldinit Evaluator
 		else
 			var src1 as Type
 			var snk1 as Type
-			var idtb1 as boolean = false
-			var idtb2 as boolean = false
-			var idtcomp as integer = 0
-			var idtisstatic as boolean = false
-			var mcparenttyp as Type
-			var mnstrarr as string[]
+
 			var mcmetinf as MethodInfo
-			var nctyp as Type
-			var mntok as MethodNameTok
-			var mcparams as Expr[]
 			var typarr1 as Type[] = new Type[0]
 			var typarr2 as Type[]
-			var paramlen as integer
-			var curexpr as Expr
-			var rpnparam as Expr
-			var astparam as Token
-			var ncctorinf as ConstructorInfo
-			var mcfldinf as FieldInfo
-			var mcvr as VarItem
 			var mcisstatic as boolean = false
-			var mcrestrord as integer = 2
-
 			var td as Type[] = new Type[10]
 			td[0] = gettype StringLiteral
 			td[1] = gettype Literal
 			td[2] = gettype Ident
 			td[3] = gettype MethodCallTok
 			td[4] = gettype NewCallTok
+			td[5] = gettype GettypeCallTok
+			td[6] = gettype MeTok
+			td[7] = gettype NewarrCallTok
+			td[8] = gettype PtrCallTok
 
 			if td[0]::IsInstanceOfType(tok) then
 				var slit as StringLiteral = $StringLiteral$tok
@@ -722,680 +952,274 @@ class public auto ansi beforefieldinit Evaluator
 			elseif td[3]::IsInstanceOfType(tok) then
 				ASTEmitMethod($MethodCallTok$tok,emt,new ASTEmitDelegate(ASTEmit()))
 			elseif td[4]::IsInstanceOfType(tok) then
-			//constructor call section
-
-var nctok as NewCallTok = tok
-var delparamarr as System.Type[]
-var delmtdnam as string
-tt = nctok::Name
-nctyp = Helpers::CommitEvalTTok(tt)
-mcparams = nctok::Params
-paramlen = mcparams[l] - 1
-var delcreate as boolean = false
-
-label ncloop
-label nccont
-
-typ = gettype MulticastDelegate
-b = nctyp::IsSubclassOf(typ)
-if b = true then
-delcreate = true
-delparamarr = Loader::GetDelegateInvokeParams(nctyp)
-curexpr = mcparams[0]
-delmtdnam = Helpers::StripDelMtdName(curexpr::Tokens[0])
-goto nccont
-end if
-
-if mcparams[l] = 0 then
-typarr1 = System.Type::EmptyTypes
-goto nccont
-else
-typarr1 = newarr System.Type 0
-end if
-
-i = -1
-
-place ncloop
-
-i = i + 1
-curexpr = mcparams[i]
-
-if curexpr::Tokens[l] = 1 then
-rpnparam = curexpr
-else
-if curexpr::Tokens[l] >= 3 then
-rpnparam = ConvToRPN(curexpr)
-end if
-end if
-
-astparam = ConvToAST(rpnparam)
-ASTEmit(astparam, emt)
-
-typarr2 = AsmFactory::TypArr
-AsmFactory::TypArr = typarr1
-AsmFactory::AddTyp(AsmFactory::Type02)
-typarr1 = AsmFactory::TypArr
-AsmFactory::TypArr = typarr2
-
-if i = paramlen then
-goto nccont
-else
-goto ncloop
-end if
-
-place nccont
-
-if delcreate = true then
-typarr1 = newarr System.Type 2
-typarr1[0] = gettype object
-typarr1[1] = gettype IntPtr
-
-//delegate pointer loading section
-
-mnstrarr = ParseUtils::StringParser(delmtdnam, ":")
-idtb1 = false
-idtb2 = false
-
-mcrestrord = 2
-mcparenttyp = null
-mcmetinf = null
-mcfldinf = null
-
-i = -1
-len = mnstrarr[l] - 2
-
-idtcomp = String::Compare(mnstrarr[0], "me")
-if idtcomp = 0 then
-i = i + 1
-idtb1 = true
-mcrestrord = 3
-end if
-
-label loopdel
-label contdel
-label delfin
-
-idtcomp = mnstrarr[l]
-if idtcomp >= mcrestrord then
-
-AsmFactory::AddrFlg = true
-
-place loopdel
-i = i + 1
-
-if idtb2 = false then
-
-if idtb1 = false then
-mcvr = SymTable::FindVar(mnstrarr[i])
-if mcvr <> null then
-if emt = true then
-AsmFactory::Type04 = mcvr::VarTyp
-Helpers::EmitLocLd(mcvr::Index, mcvr::LocArg)
-end if
-AsmFactory::Type02 = mcvr::VarTyp
-mcparenttyp = mcvr::VarTyp
-goto delfin
-else
-
-mcfldinf = Helpers::GetLocFld(mnstrarr[i])
-
-if mcfldinf <> null then
-idtisstatic = mcfldinf::get_IsStatic()
-if idtisstatic = false then
-if emt = true then
-ILEmitter::EmitLdarg(0)
-end if
-end if
-if emt = true then
-AsmFactory::Type04 = mcfldinf::get_FieldType()
-Helpers::EmitFldLd(mcfldinf, idtisstatic)
-end if
-AsmFactory::Type02 = mcfldinf::get_FieldType()
-mcparenttyp = mcfldinf::get_FieldType()
-goto delfin
-end if
-
-end if
-
-else
-
-mcfldinf = Helpers::GetLocFld(mnstrarr[i])
-
-if mcfldinf <> null then
-idtisstatic = mcfldinf::get_IsStatic()
-if idtisstatic = false then
-if emt = true then
-ILEmitter::EmitLdarg(0)
-end if
-end if
-if emt = true then
-AsmFactory::Type04 = mcfldinf::get_FieldType()
-Helpers::EmitFldLd(mcfldinf, idtisstatic)
-end if
-AsmFactory::Type02 = mcfldinf::get_FieldType()
-mcparenttyp = mcfldinf::get_FieldType()
-goto delfin
-end if
-
-end if
-
-mcparenttyp = Loader::LoadClass(mnstrarr[i])
-mcisstatic = true
-
-if mcparenttyp = null then
-errstr = String::Concat("Variable or Class '", mnstrarr[i], "' is not defined.")
-StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errstr)
-end if
-
-
-else
-
-b = mcparenttyp::Equals(AsmFactory::CurnTypB)
-
-if b = false then
-mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
-AsmFactory::Type02 = Loader::MemberTyp
-AsmFactory::Type04 = Loader::MemberTyp
-mcparenttyp = Loader::MemberTyp
-else
-mcfldinf = Helpers::GetLocFld(mnstrarr[i])
-AsmFactory::Type02 = mcfldinf::get_FieldType()
-AsmFactory::Type04 = mcfldinf::get_FieldType()
-mcparenttyp = mcfldinf::get_FieldType()
-end if
-
-if emt = true then
-Helpers::EmitFldLd(mcfldinf, mcisstatic)
-end if
-
-if mcisstatic = true then
-mcisstatic = false
-end if
-
-end if
-
-place delfin
-
-idtb2 = true
-
-if i = len then
-goto contdel
-else
-goto loopdel
-end if
-
-place contdel
-
-AsmFactory::AddrFlg = false
-
-end if
-
-i = i + 1
-//instance load for local methods of current isntance
-
-if idtb2 = false then
-if emt = true then
-mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
-mcisstatic = mcmetinf::get_IsStatic()
-if mcisstatic = false then
-ILEmitter::EmitLdarg(0)
-end if
-end if
-end if
-
-//----------------------------------------------------------
-
-if idtb2 = true then
-
-b = mcparenttyp::Equals(AsmFactory::CurnTypB)
-
-if b = false then
-mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], delparamarr)
-//AsmFactory::Type02 = Loader::MemberTyp
-else
-mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
-//AsmFactory::Type02 = mcmetinf::get_ReturnType()
-mcisstatic = mcmetinf::get_IsStatic()
-end if
-
-else
-
-mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
-//AsmFactory::Type02 = mcmetinf::get_ReturnType()
-mcisstatic = mcmetinf::get_IsStatic()
-
-end if
-
-if emt = true then
-if mcisstatic = true then
-ILEmitter::EmitLdnull()
-else
-ILEmitter::EmitDup()
-end if
-Helpers::EmitPtrLd(mcmetinf,mcisstatic)
-end if
-
-
-//delegate pointer loading section
-
-
-end if
-
-ncctorinf = Helpers::GetLocCtor(nctyp, typarr1)
-
-if emt = true then
-ILEmitter::EmitNewobj(ncctorinf)
-end if
-
-AsmFactory::Type02 = nctyp
-goto fin
-end if
-
-typ = gettype GettypeCallTok
-b = typ::IsInstanceOfType($object$tok)
-
-if b = true then
-
-if emt = true then
-
-//gettype section
-
-var gtctok as GettypeCallTok = tok
-tt = gtctok::Name
-typ = Helpers::CommitEvalTTok(tt)
-ILEmitter::EmitLdtoken(typ)
-
-typarr1 = newarr System.Type 0
-
-typarr2 = AsmFactory::TypArr
-AsmFactory::TypArr = typarr1
-typ = gettype System.RuntimeTypeHandle
-AsmFactory::AddTyp(typ)
-typarr1 = AsmFactory::TypArr
-AsmFactory::TypArr = typarr2
-
-typ = gettype System.Type
-mcmetinf = typ::GetMethod("GetTypeFromHandle", typarr1)
-ILEmitter::EmitCall(mcmetinf)
-
-end if
-
-AsmFactory::Type02 = gettype System.Type
-
-goto fin
-end if
-
-//me load section
-
-typ = gettype MeTok
-b = typ::IsInstanceOfType($object$tok)
-
-if b = true then
-
-var metk1 as MeTok = tok
-
-if emt = true then
-ILEmitter::EmitLdarg(0)
-end if
-
-AsmFactory::Type02 = AsmFactory::CurnTypB
-
-if metk1::Conv = true then
-if emt = true then
-src1 = AsmFactory::Type02
-end if
-
-tt = metk1::TTok
-AsmFactory::Type02 = Helpers::CommitEvalTTok(tt)
-
-if emt = true then
-snk1 = AsmFactory::Type02
-Helpers::EmitConv(src1, snk1)
-end if
-end if
-
-
-goto fin
-end if
-
-//array creation section
-
-typ = gettype NewarrCallTok
-b = typ::IsInstanceOfType($object$tok)
-
-if b = true then
-
-
-var newactok as NewarrCallTok = tok
-curexpr = newactok::ArrayLen
-tt = newactok::ArrayType
-typ = Helpers::CommitEvalTTok(tt)
-
-curexpr = ConvToRPN(curexpr)
-tok = ConvToAST(curexpr)
-ASTEmit(tok, emt)
-
-if emt = true then
-ILEmitter::EmitConvI()
-ILEmitter::EmitNewarr(typ)
-end if
-
-AsmFactory::Type02 = typ::MakeArrayType()
-
-goto fin
-end if
-
-//ptr load section - obsolete
-
-typ = gettype PtrCallTok
-b = typ::IsInstanceOfType($object$tok)
-
-if b = true then
-
-if emt = true then
-
-var ptrctok as PtrCallTok = tok
-mntok = ptrctok::MetToCall
-mcmetinf = Helpers::GetLocMetNoParams(mntok::Value)
-
-mcisstatic = mcmetinf::get_IsStatic()
-if mcisstatic = false then
-ILEmitter::EmitLdarg(0)
-end if
-Helpers::EmitPtrLd(mcmetinf, mcisstatic)
-end if
-AsmFactory::Type02 = gettype IntPtr
-goto fin
-end if
-
-place fin
-
-end if
-
-end method
-
-method public void Evaluate(var exp as Expr)
-
-var len as integer = exp::Tokens[l]
-//Console::WriteLine(len)
-var rpnexp as Expr
-
-if len = 1 then
-rpnexp = exp
-else
-if len >= 3 then
-rpnexp = ConvToRPN(exp)
-end if
-end if
-
-var asttok as Token = ConvToAST(rpnexp)
-ASTEmit(asttok, false)
-ASTEmit(asttok, true)
-
-end method
-
-method public void StoreEmit(var tok as Token, var exp as Expr)
-
-var i as integer
-var len as integer
-var idt as Ident = tok
-var idtnam as string = idt::Value
-var idtnamarr as string[]
-var vr as VarItem
-var idtb1 as boolean = false
-var idtb2 as boolean = false
-var idtisstatic as boolean = false
-var idtcomp as integer = 0
-var idttyp as System.Type
-var fldinf as FieldInfo
-//var typ as Type
-var b as boolean
-var restrord as integer = 2
-
-i = -1
-idtnamarr = ParseUtils::StringParser(idtnam, ":")
-len = idtnamarr[l] - 2
-
-idtcomp = String::Compare(idtnamarr[0], "me")
-if idtcomp = 0 then
-i = i + 1
-idtb1 = true
-restrord = 3
-end if
-
-label loop7
-label cont7
-label idtfin
-
-
-//if AsmFactory::ChainFlg = true then
-//AsmFactory::ChainFlg = false
-//mcparenttyp = AsmFactory::Type02
-//idtb2 = true
-//idtisstatic = false
-//end if
-
-if idt::IsArr = true then
-restrord = restrord - 1
-len = len + 1
-end if
-
-idtcomp = idtnamarr[l]
-if idtcomp >= restrord then
-//---------
-
-AsmFactory::AddrFlg = true
-
-place loop7
-i = i + 1
-
-if idtb2 = false then
-
-if idtb1 = false then
-vr = SymTable::FindVar(idtnamarr[i])
-if vr <> null then
-AsmFactory::Type04 = vr::VarTyp
-Helpers::EmitLocLd(vr::Index, vr::LocArg)
-idttyp = vr::VarTyp
-goto idtfin
-else
-
-fldinf = Helpers::GetLocFld(idtnamarr[i])
-
-if fldinf <> null then
-idtisstatic = fldinf::get_IsStatic()
-if idtisstatic = false then
-ILEmitter::EmitLdarg(0)
-end if
-AsmFactory::Type04 = fldinf::get_FieldType()
-Helpers::EmitFldLd(fldinf, idtisstatic)
-idttyp = fldinf::get_FieldType()
-goto idtfin
-end if
-
-end if
-
-else
-
-fldinf = Helpers::GetLocFld(idtnamarr[i])
-
-if fldinf <> null then
-idtisstatic = fldinf::get_IsStatic()
-if idtisstatic = false then
-ILEmitter::EmitLdarg(0)
-end if
-AsmFactory::Type04 = fldinf::get_FieldType()
-Helpers::EmitFldLd(fldinf, idtisstatic)
-idttyp = fldinf::get_FieldType()
-goto idtfin
-end if
-
-
-end if
-
-idttyp = Loader::LoadClass(idtnamarr[i])
-idtisstatic = true
-
-else
-
-b = idttyp::Equals(AsmFactory::CurnTypB)
-
-if b = false then
-fldinf = Loader::LoadField(idttyp, idtnamarr[i])
-idttyp = Loader::MemberTyp
-AsmFactory::Type04 = Loader::MemberTyp
-else
-fldinf = Helpers::GetLocFld(idtnamarr[i])
-idttyp = fldinf::get_FieldType()
-AsmFactory::Type04 = fldinf::get_FieldType()
-end if
-
-Helpers::EmitFldLd(fldinf, idtisstatic)
-
-if idtisstatic = true then
-idtisstatic = false
-end if
-
-end if
-
-place idtfin
-
-idtb2 = true
-
-if i = len then
-goto cont7
-else
-goto loop7
-end if
-
-place cont7
-
-AsmFactory::AddrFlg = false
-
-//----------
-end if
-
-//skip this ptr load for array cases
-label arrtpj
-
-if idt::IsArr = true then
-goto arrtpj
-end if
-
-
-//this pointer load in case of instance local field store
-
-i = i + 1
-
-if idtb2 = false then
-
-if idtb1 = false then
-SymTable::StoreFlg = true
-vr = SymTable::FindVar(idtnamarr[i])
-SymTable::StoreFlg = false
-if vr = null then
-//-------------
-fldinf = Helpers::GetLocFld(idtnamarr[i])
-if fldinf <> null then
-idtisstatic = fldinf::get_IsStatic()
-if idtisstatic = false then
-ILEmitter::EmitLdarg(0)
-end if
-end if
-//-------------
-
-end if
-
-else
-
-//-----------
-fldinf = Helpers::GetLocFld(idtnamarr[i])
-if fldinf <> null then
-idtisstatic = fldinf::get_IsStatic()
-if idtisstatic = false then
-ILEmitter::EmitLdarg(0)
-end if
-end if
-//------------
-
-end if
-end if
-
-place arrtpj
-
-//in case of array store load index
-//-------------------------------------------
-if idt::IsArr = true then
-
-Evaluate(idt::ArrLoc)
-ILEmitter::EmitConvI()
-
-end if
-//--------------------------------------------
-
-//--------------------------------------------------------------
-//loading of value to store
-
-Evaluate(exp)
-//typ = AsmFactory::Type02
-
-//--------------------------------------------------------------
-
-label arrlpj
-
-if idt::IsArr = true then
-idttyp = idttyp::GetElementType()
-ILEmitter::EmitStelem(idttyp)
-goto arrlpj
-end if
-
-if idtb2 = false then
-
-if idtb1 = false then
-SymTable::StoreFlg = true
-vr = SymTable::FindVar(idtnamarr[i])
-SymTable::StoreFlg = false
-if vr <> null then
-Helpers::EmitLocSt(vr::Index, vr::LocArg)
-vr::Stored = true
-vr::Line = ILEmitter::LineNr
-else
-
-fldinf = Helpers::GetLocFld(idtnamarr[i])
-if fldinf <> null then
-idtisstatic = fldinf::get_IsStatic()
-Helpers::EmitFldSt(fldinf, idtisstatic)
-end if
-
-end if
-
-else
-
-fldinf = Helpers::GetLocFld(idtnamarr[i])
-if fldinf <> null then
-idtisstatic = fldinf::get_IsStatic()
-Helpers::EmitFldSt(fldinf, idtisstatic)
-end if
-
-end if
-
-
-else
-
-b = idttyp::Equals(AsmFactory::CurnTypB)
-
-if b = false then
-fldinf = Loader::LoadField(idttyp, idtnamarr[i])
-Helpers::EmitFldSt(fldinf, idtisstatic)
-else
-fldinf = Helpers::GetLocFld(idtnamarr[i])
-Helpers::EmitFldSt(fldinf, idtisstatic)
-end if
-
-end if
-
-place arrlpj
-
-end method
+				ASTEmitNew($NewCallTok$tok,emt,new ASTEmitDelegate(ASTEmit()))
+			elseif td[5]::IsInstanceOfType(tok) then
+				if emt then
+					//gettype section
+					var gtctok as GettypeCallTok = $GettypeCallTok$tok
+					typ = Helpers::CommitEvalTTok(gtctok::Name)
+					ILEmitter::EmitLdtoken(typ)
+					typarr1 = new Type[0]
+					typarr2 = AsmFactory::TypArr
+					AsmFactory::TypArr = typarr1
+					typ = gettype RuntimeTypeHandle
+					AsmFactory::AddTyp(typ)
+					typarr1 = AsmFactory::TypArr
+					AsmFactory::TypArr = typarr2
+					typ = gettype Type
+					ILEmitter::EmitCall(typ::GetMethod("GetTypeFromHandle", typarr1))
+				end if
+				AsmFactory::Type02 = gettype Type
+			elseif td[6]::IsInstanceOfType(tok) then
+				var metk1 as MeTok = $MeTok$tok
+
+				if emt then
+					ILEmitter::EmitLdarg(0)
+				end if
+
+				AsmFactory::Type02 = AsmFactory::CurnTypB
+
+				if metk1::Conv then
+					if emt then
+						src1 = AsmFactory::Type02
+					end if
+					AsmFactory::Type02 = Helpers::CommitEvalTTok(metk1::TTok)
+					if emt then
+						snk1 = AsmFactory::Type02
+						Helpers::EmitConv(src1, snk1)
+					end if
+				end if
+			elseif td[7]::IsInstanceOfType(tok) then
+				//array creation section
+				var newactok as NewarrCallTok = $NewarrCallTok$tok
+				typ = Helpers::CommitEvalTTok(newactok::ArrayType)
+				ASTEmit(ConvToAST(ConvToRPN(newactok::ArrayLen)), emt)
+				if emt then
+					ILEmitter::EmitConvI()
+					ILEmitter::EmitNewarr(typ)
+				end if
+				AsmFactory::Type02 = typ::MakeArrayType()
+			elseif td[8]::IsInstanceOfType(tok) then
+				//ptr load section - obsolete
+				if emt then
+					var ptrctok as PtrCallTok = $PtrCallTok$tok
+					mcmetinf = Helpers::GetLocMetNoParams(ptrctok::MetToCall::Value)
+					mcisstatic = mcmetinf::get_IsStatic()
+					if mcisstatic = false then
+						ILEmitter::EmitLdarg(0)
+					end if
+					Helpers::EmitPtrLd(mcmetinf, mcisstatic)
+				end if
+				AsmFactory::Type02 = gettype IntPtr
+			end if
+
+		end if
+	end method
+
+	method public void Evaluate(var exp as Expr)
+		var asttok as Token = ConvToAST(ConvToRPN(exp))
+		ASTEmit(asttok, false)
+		ASTEmit(asttok, true)
+	end method
+
+	method public void StoreEmit(var tok as Token, var exp as Expr)
+
+		var i as integer = -1
+		var idt as Ident = $Ident$tok
+		var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ":")
+		var len as integer = idtnamarr[l] - 2
+		var vr as VarItem = null
+		var idtb1 as boolean = false
+		var idtb2 as boolean = false
+		var idtisstatic as boolean = false
+		var idttyp as Type
+		var fldinf as FieldInfo
+		var restrord as integer = 2
+		var isbyref as boolean = false
+	
+		if idtnamarr[0] = "me" then
+			i = i + 1
+			idtb1 = true
+			restrord = 3
+		end if
+	
+		//if AsmFactory::ChainFlg = true then
+		//AsmFactory::ChainFlg = false
+		//mcparenttyp = AsmFactory::Type02
+		//idtb2 = true
+		//idtisstatic = false
+		//end if
+
+		//determination of byref storage mode or not
+		if (idtnamarr[l] = 1) and (idt::IsArr = false) then
+			SymTable::StoreFlg = true
+			vr = SymTable::FindVar(idtnamarr[0])
+			SymTable::StoreFlg = false
+			if vr != null then
+				ASTEmit(ConvToAST(ConvToRPN(exp)),false)
+				isbyref = vr::VarTyp::get_IsByRef() and (AsmFactory::Type02::get_IsByRef() == false)
+			end if
+		end if
+
+		if idt::IsArr or isbyref then
+			restrord = restrord - 1
+			len = len + 1
+		end if
+
+		vr = null
+		if idtnamarr[l] >= restrord then
+			AsmFactory::AddrFlg = true
+	
+			do until i = len
+				i = i + 1
+	
+				if idtb2 = false then
+					if idtb1 = false then
+						vr = SymTable::FindVar(idtnamarr[i])
+						if vr <> null then
+							AsmFactory::Type04 = vr::VarTyp
+							if isbyref then
+								AsmFactory::ForcedAddrFlg = true
+							end if
+							Helpers::EmitLocLd(vr::Index, vr::LocArg)
+							if isbyref then
+								AsmFactory::ForcedAddrFlg = false
+							end if
+							idttyp = vr::VarTyp
+							if idttyp::get_IsByRef() and (isbyref = false) then
+								idttyp = idttyp::GetElementType()
+							end if
+							idtb2 = true
+							continue
+						end if
+					end if
+
+					fldinf = Helpers::GetLocFld(idtnamarr[i])
+					if fldinf <> null then
+						idtisstatic = fldinf::get_IsStatic()
+						if idtisstatic = false then
+							ILEmitter::EmitLdarg(0)
+						end if
+						idttyp = fldinf::get_FieldType()
+						AsmFactory::Type04 = idttyp
+						Helpers::EmitFldLd(fldinf, idtisstatic)
+						idtb2 = true
+						continue
+					end if
+
+					idttyp = Loader::LoadClass(idtnamarr[i])
+					idtisstatic = true
+
+					if idttyp = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable or Class '" + idtnamarr[i] + "' is not defined.")
+					end if
+
+				else
+					if idttyp::Equals(AsmFactory::CurnTypB) = false then
+						fldinf = Loader::LoadField(idttyp, idtnamarr[i])
+						if fldinf = null then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is not defined/accessible for the class '" + idttyp::ToString() + "'.")
+						end if
+						idttyp = Loader::MemberTyp
+						AsmFactory::Type04 = idttyp
+					else
+						fldinf = Helpers::GetLocFld(idtnamarr[i])
+						if fldinf = null then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
+						end if
+						idttyp = fldinf::get_FieldType()
+						AsmFactory::Type04 = idttyp
+					end if
+					Helpers::EmitFldLd(fldinf, idtisstatic)
+	
+					if idtisstatic then
+						idtisstatic = false
+					end if
+				end if
+	
+				idtb2 = true
+			end do
+			AsmFactory::AddrFlg = false
+		end if
+
+		//skip this ptr load for array and byref cases
+		if (idt::IsArr = false) and (isbyref = false) then
+			//this pointer load in case of instance local field store
+			i = i + 1
+			if idtb2 = false then
+				if idtb1 = false then
+					SymTable::StoreFlg = true
+					vr = SymTable::FindVar(idtnamarr[i])
+					SymTable::StoreFlg = false
+					if vr = null then
+						fldinf = Helpers::GetLocFld(idtnamarr[i])
+						if fldinf <> null then
+							idtisstatic = fldinf::get_IsStatic()
+							if idtisstatic = false then
+								ILEmitter::EmitLdarg(0)
+							end if
+						end if
+					end if
+				else
+					fldinf = Helpers::GetLocFld(idtnamarr[i])
+					if fldinf <> null then
+						idtisstatic = fldinf::get_IsStatic()
+						if idtisstatic = false then
+							ILEmitter::EmitLdarg(0)
+						end if
+					end if
+				end if
+			end if
+		end if
+
+		//in case of array store load index
+		//-------------------------------------------
+		if idt::IsArr then
+			Evaluate(idt::ArrLoc)
+			ILEmitter::EmitConvI()
+		end if
+		//--------------------------------------------
+	
+		//--------------------------------------------------------------
+		//loading of value to store
+		Evaluate(exp)
+		//--------------------------------------------------------------
+	
+		if idt::IsArr then
+			idttyp = idttyp::GetElementType()
+			ILEmitter::EmitStelem(idttyp)
+		elseif isbyref then
+			idttyp = idttyp::GetElementType()
+			ILEmitter::EmitStind(idttyp)
+		else
+			if idtb2 = false then
+				vr = null
+				if idtb1 = false then
+					SymTable::StoreFlg = true
+					vr = SymTable::FindVar(idtnamarr[i])
+					SymTable::StoreFlg = false
+					if vr <> null then
+						Helpers::EmitLocSt(vr::Index, vr::LocArg)
+						vr::Stored = true
+						vr::Line = ILEmitter::LineNr
+					end if
+				end if
+				if vr = null then
+					fldinf = Helpers::GetLocFld(idtnamarr[i])
+					if fldinf <> null then
+						idtisstatic = fldinf::get_IsStatic()
+						Helpers::EmitFldSt(fldinf, idtisstatic)
+					end if
+				end if
+			else
+				if idttyp::Equals(AsmFactory::CurnTypB) = false then
+					fldinf = Loader::LoadField(idttyp, idtnamarr[i])
+				else
+					fldinf = Helpers::GetLocFld(idtnamarr[i])
+				end if
+				Helpers::EmitFldSt(fldinf, idtisstatic)
+			end if
+		end if
+	end method
 
 end class

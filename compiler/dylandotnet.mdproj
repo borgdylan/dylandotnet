@@ -7,7 +7,7 @@
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0B8E3EEF-00E3-4633-B2BD-3D55AFD8CC6F}</ProjectGuid>
-    <ReleaseVersion>11.2.8.9</ReleaseVersion>
+    <ReleaseVersion>11.2.9.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
     <OutputPath>.</OutputPath>
@@ -39,6 +39,8 @@
     <Folder Include="dnu\" />
     <Folder Include="tests\" />
     <Folder Include="dnc\" />
+    <Folder Include="lexer\" />
+    <Folder Include="parser\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ast\aritops.dyl" />
@@ -137,7 +139,6 @@
     <None Include="tests\protectedtests.dyl" />
     <None Include="tests\strrecurse.dyl" />
     <None Include="tests\threads.dyl" />
-    <None Include="tests\vector.dll" />
     <None Include="tests\vector.dyl" />
     <None Include="tests\xmllib.dyl" />
     <None Include="dnr.dyl" />
@@ -152,5 +153,15 @@
     <None Include="dylandotnet4.1" />
     <None Include="pc2curdir.1" />
     <None Include="pc2dylandotnet.1" />
+    <None Include="tokenizer.Lexer.dyl" />
+    <None Include="lexer\lexer.dyl" />
+    <None Include="lexer\line.dyl" />
+    <None Include="tokenizer.Parser.dyl" />
+    <None Include="parser\exproptimizer.dyl" />
+    <None Include="parser\oldmethodstmtcode.txt" />
+    <None Include="parser\parser.dyl" />
+    <None Include="parser\parserflags.dyl" />
+    <None Include="parser\stmtoptimizer.dyl" />
+    <None Include="parser\tokenoptimizer.dyl" />
   </ItemGroup>
 </Project>

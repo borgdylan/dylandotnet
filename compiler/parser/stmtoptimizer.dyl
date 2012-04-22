@@ -69,7 +69,7 @@ label loop
 
 place loop
 
-i++
+i = i + 1
 
 tok = stm::Tokens[i]
 typ = gettype ThenTok
@@ -119,7 +119,7 @@ label loop
 
 place loop
 
-i++
+i = i + 1
 
 tok = stm::Tokens[i]
 exp::AddToken(tok)
@@ -174,7 +174,7 @@ label loop
 
 place loop
 
-i++
+i = i + 1
 
 tok = stm::Tokens[i]
 exp::AddToken(tok)
@@ -218,7 +218,7 @@ label loop
 
 place loop
 
-i++
+i = i + 1
 
 tok = stm::Tokens[i]
 exp::AddToken(tok)
@@ -273,7 +273,7 @@ label loop
 
 place loop
 
-i++
+i = i + 1
 
 tok = stm::Tokens[i]
 exp::AddToken(tok)
@@ -318,7 +318,7 @@ label loop
 
 place loop
 
-i++
+i = i + 1
 
 tok = stm::Tokens[i]
 typ = gettype ThenTok
@@ -484,7 +484,7 @@ exp = new Expr()
 
 place loop
 
-i++
+i = i + 1
 
 exp::AddToken(stm::Tokens[i])
 
@@ -508,6 +508,39 @@ end if
 
 return rets
 end method
+
+	method public Stmt checkThrow(var stm as Stmt, var b as boolean&)
+
+		var tok as Token = stm::Tokens[0]
+		var typ as Type = gettype ThrowTok
+		b = typ::IsInstanceOfType(tok)
+		var tros as ThrowStmt = new ThrowStmt()
+
+		if b then
+
+			tros::Line = stm::Line
+			tros::Tokens = stm::Tokens
+
+			var i as integer = 0
+			var len as integer = stm::Tokens[l] - 1
+			var exp as Expr = null
+		
+			if stm::Tokens[l] >= 2 then
+				exp = new Expr()
+				do until i = len
+					i = i + 1
+					exp::AddToken(stm::Tokens[i])
+				end do
+		
+				var eopt as ExprOptimizer = new ExprOptimizer()
+				tros::RExp = eopt::Optimize(exp)
+			end if
+	
+		end if
+
+		return tros
+	end method
+	
 
 method public Stmt checkCmt(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
@@ -560,6 +593,39 @@ end if
 end if
 return ds
 end method
+
+	method public Stmt checkTry(var stm as Stmt, var b as boolean&)
+		var ts as TryStmt = null
+
+		if stm::Tokens[l] < 2 then
+			var typ1 as Type = gettype TryTok
+			b = typ1::IsInstanceOfType(stm::Tokens[0])
+			ts = new TryStmt()
+
+			if b then
+				ts::Line = stm::Line
+				ts::Tokens = stm::Tokens
+			end if
+		end if
+		return ts
+	end method
+
+	method public Stmt checkFinally(var stm as Stmt, var b as boolean&)
+		var ts as FinallyStmt = null
+
+		if stm::Tokens[l] < 2 then
+			var typ1 as Type = gettype FinallyTok
+			b = typ1::IsInstanceOfType(stm::Tokens[0])
+			ts = new FinallyStmt()
+
+			if b then
+				ts::Line = stm::Line
+				ts::Tokens = stm::Tokens
+			end if
+		end if
+		return ts
+	end method
+
 
 method public Stmt checkBreak(var stm as Stmt, var b as boolean&)
 var bs as BreakStmt = null
@@ -725,6 +791,23 @@ end if
 return eds
 end method
 
+	method public Stmt checkEndTry(var stm as Stmt, var b as boolean&)
+		var ets as EndTryStmt = null
+
+		if stm::Tokens[l] >= 2 then
+			var typ1 as Type = gettype EndTok
+			var typ2 as Type = gettype TryTok
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+			ets = new EndTryStmt()
+
+			if b then
+				ets::Line = stm::Line
+				ets::Tokens = stm::Tokens
+			end if
+		end if
+		return ets
+	end method
+
 
 method public Stmt checkAssembly(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
@@ -740,43 +823,38 @@ end if
 return asms
 end method
 
-method public Stmt checkVer(var stm as Stmt, var b as boolean&)
-var tok as Token = stm::Tokens[0]
-var typ as System.Type = gettype VerTok
-valinref|b = typ::IsInstanceOfType($object$tok)
-var vers as VerStmt = new VerStmt()
-if valinref|b = true then
-vers::Line = stm::Line
-vers::Tokens = stm::Tokens
-tok = stm::Tokens[1]
-var ars as string[] = Utils.ParseUtils::StringParser(tok::Value,".")
-var ari as integer[] = newarr integer 4
-ari[0] = $integer$ars[0]
-ari[1] = $integer$ars[1]
-ari[2] = $integer$ars[2]
-ari[3] = $integer$ars[3]
-var intla as IntLiteral[] = newarr IntLiteral 4
-var intl as IntLiteral = null
-intl = new IntLiteral(ars[0])
-intl::Line = tok::Line
-intl::NumVal = ari[0]
-intla[0] = intl
-intl = new IntLiteral(ars[1])
-intl::Line = tok::Line
-intl::NumVal = ari[1]
-intla[1] = intl
-intl = new IntLiteral(ars[2])
-intl::Line = tok::Line
-intl::NumVal = ari[2]
-intla[2] = intl
-intl = new IntLiteral(ars[3])
-intl::Line = tok::Line
-intl::NumVal = ari[3]
-intla[3] = intl
-vers::VersionNos = intla
-end if
-return vers
-end method
+	method public Stmt checkVer(var stm as Stmt, var b as boolean&)
+		var typ as Type = gettype VerTok
+		var vers as VerStmt = new VerStmt()
+		b = typ::IsInstanceOfType(stm::Tokens[0])
+		if b then
+			vers::Line = stm::Line
+			vers::Tokens = stm::Tokens
+			var ars as string[] = ParseUtils::StringParser(stm::Tokens[1]::Value,".")
+			var ari as integer[] = new integer[4]
+			ari[0] = $integer$ars[0]
+			ari[1] = $integer$ars[1]
+			ari[2] = $integer$ars[2]
+			ari[3] = $integer$ars[3]
+			var intla as IntLiteral[] = new IntLiteral[4]
+			var intl as IntLiteral = null
+			intl = new IntLiteral(ari[0])
+			intl::Line = stm::Line
+			intla[0] = intl
+			intl = new IntLiteral(ari[1])
+			intl::Line = stm::Line
+			intla[1] = intl
+			intl = new IntLiteral(ari[2])
+			intl::Line = stm::Line
+			intla[2] = intl
+			intl = new IntLiteral(ari[3])
+			intl::Line = stm::Line
+			intla[3] = intl
+			vers::VersionNos = intla
+			stm = vers
+		end if
+		return vers
+	end method
 
 method public Stmt checkClass(var stm as Stmt, var b as boolean&)
 var tok as Token = stm::Tokens[0]
@@ -798,7 +876,7 @@ var bl as boolean = false
 
 place loop
 
-i++
+i = i + 1
 tok = stm::Tokens[i]
 typ = gettype Attributes.Attribute
 bl = typ::IsInstanceOfType($object$tok)
@@ -813,7 +891,7 @@ var typ2 as System.Type = gettype ExtendsTok
 var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
 
 if b2 = true then
-i++
+i = i + 1
 tok2 = stm::Tokens[i]
 typ2 = gettype TypeTok
 b2 = typ2::IsInstanceOfType($object$tok2)
@@ -876,7 +954,7 @@ var bl as boolean = false
 
 place loop
 
-i++
+i = i + 1
 tok = stm::Tokens[i]
 typ = gettype Attributes.Attribute
 bl = typ::IsInstanceOfType($object$tok)
@@ -894,7 +972,7 @@ end if
 
 place cont
 
-i++
+i = i + 1
 var tok2 as Token = stm::Tokens[i]
 var typ2 as System.Type = gettype TypeTok
 var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
@@ -909,7 +987,7 @@ else
 flss::FieldTyp = stm::Tokens[i]
 end if
 
-i++
+i = i + 1
 flss::FieldName = stm::Tokens[i]
 
 end if
@@ -924,7 +1002,7 @@ var typ as System.Type = gettype MethodTok
 valinref|b = typ::IsInstanceOfType($object$tok)
 var mtss as MethodStmt = new MethodStmt()
 var att as Attributes.Attribute = new Attributes.Attribute()
-var mn as Ident = new Ident()
+//var mn as Ident = new Ident()
 var exp as Expr = null
 var d as boolean = false
 
@@ -952,7 +1030,7 @@ var bl as boolean = false
 //loop to get attributes
 place loop
 
-i++
+i = i + 1
 tok = stm::Tokens[i]
 typ = gettype Attributes.Attribute
 bl = typ::IsInstanceOfType($object$tok)
@@ -961,7 +1039,7 @@ if bl = true then
 att = tok
 mtss::AddAttr(att)
 else
-i--
+i = i - 1
 goto jumpl
 end if
 
@@ -976,7 +1054,7 @@ place cont
 place jumpl
 
 //get return type and name
-i++
+i = i + 1
 
 var tok2 as Token = stm::Tokens[i]
 var typ2 as System.Type
@@ -995,7 +1073,7 @@ else
 mtss::RetTyp = stm::Tokens[i]
 end if
 
-i++
+i = i + 1
 
 tok2 = stm::Tokens[i]
 typ2 = gettype Ident
@@ -1007,7 +1085,7 @@ end if
 label loop2
 label cont2
 
-i++
+i = i + 1
 tok2 = stm::Tokens[i]
 typ2 = gettype LParen
 b2 = typ2::IsInstanceOfType($object$tok2)
@@ -1016,7 +1094,7 @@ if b2 = true then
 place loop2
 
 //get parameters
-i++
+i = i + 1
 
 tok2 = stm::Tokens[i]
 typ2 = gettype RParen
@@ -1079,7 +1157,7 @@ var typ as System.Type = gettype DelegateTok
 valinref|b = typ::IsInstanceOfType($object$tok)
 var dels as DelegateStmt = new DelegateStmt()
 var att as Attributes.Attribute = new Attributes.Attribute()
-var deln as Ident = new Ident()
+//var deln as Ident = new Ident()
 var exp as Expr = null
 var d as boolean = false
 
@@ -1107,7 +1185,7 @@ var bl as boolean = false
 //loop to get attributes
 place loop
 
-i++
+i = i + 1
 tok = stm::Tokens[i]
 typ = gettype Attributes.Attribute
 bl = typ::IsInstanceOfType($object$tok)
@@ -1116,7 +1194,7 @@ if bl = true then
 att = tok
 dels::AddAttr(att)
 else
-i--
+i = i - 1
 goto jumpl
 end if
 
@@ -1131,7 +1209,7 @@ place cont
 place jumpl
 
 //get return type and name
-i++
+i = i + 1
 
 var tok2 as Token = stm::Tokens[i]
 var typ2 as System.Type
@@ -1150,7 +1228,7 @@ else
 dels::RetTyp = stm::Tokens[i]
 end if
 
-i++
+i = i + 1
 
 tok2 = stm::Tokens[i]
 typ2 = gettype Ident
@@ -1162,7 +1240,7 @@ end if
 label loop2
 label cont2
 
-i++
+i = i + 1
 tok2 = stm::Tokens[i]
 typ2 = gettype LParen
 b2 = typ2::IsInstanceOfType($object$tok2)
@@ -1171,7 +1249,7 @@ if b2 = true then
 place loop2
 
 //get parameters
-i++
+i = i + 1
 
 tok2 = stm::Tokens[i]
 typ2 = gettype RParen
@@ -1297,6 +1375,39 @@ end if
 return vars
 end method
 
+	method public Stmt checkCatch(var stm as Stmt, var b as boolean&)
+		var typ as Type = gettype CatchTok
+		b = typ::IsInstanceOfType(stm::Tokens[0])
+		var cs as CatchStmt = new CatchStmt()
+
+		if b then
+			cs::Tokens = stm::Tokens
+			var tempexp as Expr = new Expr()
+			tempexp::Tokens = cs::Tokens
+			var eop as ExprOptimizer = new ExprOptimizer()
+			tempexp = eop::Optimize(tempexp)
+			tempexp = eop::Optimize(tempexp)
+			cs::Tokens = tempexp::Tokens
+			stm::Tokens = tempexp::Tokens
+			cs::Line = stm::Line
+			cs::ExName = stm::Tokens[1]
+
+			var typ2 as Type = gettype TypeTok
+
+			if typ2::IsInstanceOfType(cs::Tokens[3]) = false then
+				var t as Token = cs::Tokens[3]
+				var tt as TypeTok = new TypeTok()
+				tt::Line = t::Line
+				tt::Value = t::Value
+				cs::ExTyp = tt
+			else
+				cs::ExTyp = cs::Tokens[3]
+			end if
+
+		end if
+		return cs
+	end method
+
 method public Stmt AssOpt(var stm as Stmt)
 
 var asss as AssignStmt = stm
@@ -1351,10 +1462,10 @@ label cont
 
 place loop
 
-i++
+i = i + 1
 
 tok = stm::Tokens[i]
-c = typ::IsInstanceOfType($objecct$tok)
+c = typ::IsInstanceOfType(tok)
 
 if c = true then
 assind = i
@@ -1379,7 +1490,7 @@ label cont2
 
 place loop2
 
-i++
+i = i + 1
 
 le::AddToken(stm::Tokens[i])
 
@@ -1400,7 +1511,7 @@ label cont3
 
 place loop3
 
-i++
+i = i + 1
 
 re::AddToken(stm::Tokens[i])
 
@@ -1440,11 +1551,10 @@ method public Stmt Optimize(var stm as Stmt)
 //Console::WriteLine(stm::Line)
 
 var i as integer = -1
-var len as integer = stm::Tokens[l]
+var lenx as integer = stm::Tokens[l] - 1
 var to as TokenOptimizer = null
 var tmpstm as Stmt = null
 var compb as boolean = false
-len--
 
 ParserFlags::IfFlag = false
 ParserFlags::CmtFlag = false
@@ -1454,13 +1564,13 @@ label loop
 label cont
 label fin
 
-if len < 0 then
-goto cont
+if stm::Tokens[l] = 0 then
+goto fin
 end if
 
 place loop
 
-i++
+i = i + 1
 
 if ParserFlags::CmtFlag = true then
 goto cont
@@ -1474,7 +1584,7 @@ end if
 to = new TokenOptimizer()
 stm::Tokens[i] = to::Optimize(stm::Tokens[i])
 
-if i = len then
+if i = lenx then
 goto cont
 else
 goto loop
@@ -1515,8 +1625,7 @@ goto fin
 end if
 
 tmpstm = checkVer(stm, ref|compb)
-
-if compb = true then
+if compb then
 stm = tmpstm
 goto fin
 end if
@@ -1570,7 +1679,42 @@ stm = tmpstm
 goto fin
 end if
 
+tmpstm = checkCatch(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
 tmpstm = checkReturn(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkThrow(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkTry(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkFinally(stm, ref|compb)
+
+if compb = true then
+stm = tmpstm
+goto fin
+end if
+
+tmpstm = checkEndTry(stm, ref|compb)
 
 if compb = true then
 stm = tmpstm

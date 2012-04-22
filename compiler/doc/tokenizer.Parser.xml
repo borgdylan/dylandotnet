@@ -242,6 +242,13 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkCatch(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkClass(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">
             <param name="stm">To be added.</param>
             <param name="b">To be added.</param>
@@ -347,7 +354,21 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkEndTry(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkField(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkFinally(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">
             <param name="stm">To be added.</param>
             <param name="b">To be added.</param>
             <summary>To be added.</summary>
@@ -446,6 +467,20 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkScope(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkThrow(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">
+            <param name="stm">To be added.</param>
+            <param name="b">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.checkTry(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.Boolean@)">
             <param name="stm">To be added.</param>
             <param name="b">To be added.</param>
             <summary>To be added.</summary>

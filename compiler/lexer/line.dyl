@@ -75,8 +75,8 @@ comp = String::Compare(PrevChar, Utils.Constants::quot)
 if comp = 0 then
 if orflg = false then
 ob = true
-valinref|scla = false
-valinref|sca = true
+scla = false
+sca = true
 goto fin
 end if
 end if
@@ -87,7 +87,7 @@ end if
 comp = String::Compare(cc, "(")
 
 if comp = 0 then
-valinref|sca = true
+sca = true
 ob = true
 goto fin
 end if
@@ -95,7 +95,7 @@ end if
 comp = String::Compare(cc, ")")
 
 if comp = 0 then
-valinref|sca = true
+sca = true
 ob = true
 goto fin
 end if
@@ -105,12 +105,12 @@ comp = String::Compare(cc, "[")
 if comp = 0 then
 comp = String::Compare(lc, "]")
 if comp = 0 then
-valinref|sca = true
-valinref|scla = false
+sca = true
+scla = false
 ob = true
 goto fin
 else
-valinref|sca = true
+sca = true
 ob = true
 end if
 goto fin
@@ -122,9 +122,9 @@ if comp = 0 then
 comp = String::Compare(PrevChar, "[")
 if comp = 0 then
 ob = false
-valinref|sca = true
+sca = true
 else
-valinref|sca = true
+sca = true
 ob = true
 end if
 goto fin
@@ -133,7 +133,7 @@ end if
 comp = String::Compare(cc, ",")
 
 if comp = 0 then
-valinref|sca = true
+sca = true
 ob = true
 goto fin
 end if
@@ -141,7 +141,7 @@ end if
 comp = String::Compare(cc, "&")
 
 if comp = 0 then
-valinref|sca = true
+sca = true
 ob = true
 goto fin
 end if
@@ -149,7 +149,7 @@ end if
 comp = String::Compare(cc, "*")
 
 if comp = 0 then
-valinref|sca = true
+sca = true
 ob = true
 goto fin
 end if
@@ -159,7 +159,7 @@ comp = String::Compare(cc, "/")
 if comp = 0 then
 comp = String::Compare(lc, "/")
 if comp <> 0 then
-valinref|sca = true
+sca = true
 comp = String::Compare(PrevChar, "/")
 if comp = 0 then
 ob = false
@@ -173,8 +173,8 @@ if comp = 0 then
 ob = false
 goto fin
 else
-valinref|sca = true
-valinref|scla = false
+sca = true
+scla = false
 ob = true
 goto fin
 end if
@@ -184,7 +184,7 @@ end if
 comp = String::Compare(cc, "|")
 
 if comp = 0 then
-valinref|sca = true
+sca = true
 ob = true
 goto fin
 end if
@@ -192,7 +192,7 @@ end if
 comp = String::Compare(cc, "$")
 
 if comp = 0 then
-valinref|sca = true
+sca = true
 ob = true
 goto fin
 end if
@@ -200,7 +200,7 @@ end if
 comp = String::Compare(cc, "&")
 
 if comp = 0 then
-valinref|sca = true
+sca = true
 ob = true
 goto fin
 end if
@@ -208,7 +208,7 @@ end if
 comp = String::Compare(cc, "~")
 
 if comp = 0 then
-valinref|sca = true
+sca = true
 ob = true
 goto fin
 end if
@@ -218,7 +218,7 @@ comp = String::Compare(cc, "=")
 if comp = 0 then
 comp = String::Compare(lc, "=")
 if comp <> 0 then
-valinref|sca = true
+sca = true
 comp = String::Compare(PrevChar, ">")
 if comp = 0 then
 ob = false
@@ -242,8 +242,8 @@ end if
 end if
 goto fin
 else
-valinref|sca = true
-valinref|scla = false
+sca = true
+scla = false
 ob = true
 goto fin
 end if
@@ -254,12 +254,12 @@ comp = String::Compare(cc, "!")
 if comp = 0 then
 comp = String::Compare(lc, "=")
 if comp <> 0 then
-valinref|sca = true
+sca = true
 ob = true
 goto fin
 else
-valinref|sca = true
-valinref|scla = false
+sca = true
+scla = false
 ob = true
 goto fin
 end if
@@ -270,8 +270,8 @@ comp = String::Compare(cc, "<")
 if comp = 0 then
 comp = String::Compare(lc, "=")
 if comp = 0 then
-valinref|sca = true
-valinref|scla = false
+sca = true
+scla = false
 ob = true
 goto fin
 else
@@ -281,19 +281,19 @@ ob = false
 else
 comp = String::Compare(lc, "<")
 if comp = 0 then
-valinref|sca = true
-valinref|scla = false
+sca = true
+scla = false
 ob = true
 goto fin
 else
 comp = String::Compare(lc, ">")
 if comp = 0 then
-valinref|sca = true
-valinref|scla = false
+sca = true
+scla = false
 ob = true
 goto fin
 else
-valinref|sca = true
+sca = true
 ob = true
 goto fin
 end if
@@ -307,7 +307,7 @@ comp = String::Compare(cc, ">")
 if comp = 0 then
 comp = String::Compare(lc, "=")
 if comp <> 0 then
-valinref|sca = true
+sca = true
 comp = String::Compare(PrevChar, "<")
 if comp = 0 then
 ob = false
@@ -318,8 +318,8 @@ ob = false
 else
 comp = String::Compare(lc, ">")
 if comp = 0 then
-valinref|sca = true
-valinref|scla = false
+sca = true
+scla = false
 ob = true
 goto fin
 else
@@ -329,8 +329,8 @@ end if
 end if
 goto fin
 else
-valinref|sca = true
-valinref|scla = false
+sca = true
+scla = false
 ob = true
 goto fin
 end if
@@ -341,7 +341,7 @@ comp = String::Compare(cc, "-")
 if comp = 0 then
 comp = String::Compare(lc, "-")
 if comp <> 0 then
-valinref|sca = true
+sca = true
 comp = String::Compare(PrevChar, "-")
 if comp = 0 then
 ob = false
@@ -351,12 +351,12 @@ end if
 tc = $char$lc
 tb = Char::IsDigit(tc)
 if tb = true then
-valinref|scla = false
+scla = false
 end if
 goto fin
 else
-valinref|sca = true
-valinref|scla = false
+sca = true
+scla = false
 ob = true
 goto fin
 end if
@@ -367,7 +367,7 @@ comp = String::Compare(cc, "+")
 if comp = 0 then
 comp = String::Compare(lc, "+")
 if comp <> 0 then
-valinref|sca = true
+sca = true
 comp = String::Compare(PrevChar, "+")
 if comp = 0 then
 ob = false
@@ -377,12 +377,12 @@ end if
 tc = $char$lc
 tb = Char::IsDigit(tc)
 if tb = true then
-valinref|scla = false
+scla = false
 end if
 goto fin
 else
-valinref|sca = true
-valinref|scla = false
+sca = true
+scla = false
 ob = true
 goto fin
 end if
@@ -392,11 +392,11 @@ var tabchr as char = $char$9
 comp = String::Compare(cc, $string$tabchr)
 
 if comp = 0 then
-valinref|sca = false
+sca = false
 ob = true
 goto fin
 else
-valinref|sca = false
+sca = false
 ob = false
 end if
 
@@ -404,16 +404,16 @@ var spchr as char = $char$32
 comp = String::Compare(cc, $string$spchr)
 
 if comp = 0 then
-valinref|sca = false
+sca = false
 ob = true
 goto fin
 else
-valinref|sca = false
+sca = false
 ob = false
 end if
 
 else
-valinref|sca = false
+sca = false
 ob = false
 end if
 
@@ -431,7 +431,7 @@ var lachar as string = ""
 var curtok as Token = null
 var len as integer = str::get_Length()
 var comp as integer = 0
-len--
+len = len - 1
 
 var buf as string = ""
 var cuttok as boolean = false
@@ -448,7 +448,7 @@ end if
 
 place loop
 
-i++
+i = i + 1
 j = i + 1
 cuttok = false
 

@@ -1,16 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="dnr/loader.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnc/Mod1.dyl">
     <Files>
       <File FileName="test.dyl" Line="23" Column="1" />
-      <File FileName="dnr/loader.dyl" Line="236" Column="1" />
+      <File FileName="dnr/loader.dyl" Line="192" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="626" Column="1" />
-      <File FileName="codegen/eval.dyl" Line="503" Column="1" />
+      <File FileName="codegen/eval.dyl" Line="631" Column="34" />
       <File FileName="codegen/helpers.dyl" Line="358" Column="9" />
-      <File FileName="codegen/symtable.dyl" Line="416" Column="9" />
-      <File FileName="codegen/stmtreader.dyl" Line="497" Column="1" />
-      <File FileName="dnu/streamu.dyl" Line="130" Column="1" />
-      <File FileName="codegen/codegenerator.dyl" Line="53" Column="1" />
+      <File FileName="codegen/codegenerator.dyl" Line="73" Column="1" />
+      <File FileName="dnc/Mod1.dyl" Line="65" Column="1" />
+      <File FileName="parser/parser.dyl" Line="25" Column="1" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="1517" Column="1" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="17" Column="1" />
+      <File FileName="codegen/stmtreader.dyl" Line="121" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,6 +30,7 @@
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
           <Value>name</Value>
+          <Value>stm.Line</Value>
         </State>
       </Pad>
     </Pads>
@@ -36,6 +39,7 @@
     <BreakpointStore>
       <Breakpoint file="/var/www/Code/dylannet/compiler/test.dyl" line="23" />
       <Breakpoint file="/var/www/Code/dylannet/compiler/dnr/loader.dyl" line="215" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/dnc/Mod1.dyl" line="65" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -53,8 +53,8 @@ end class
 class public auto ansi ConstLiteral extends Literal
 
 	field public object ConstVal
-	field public System.Type ExtTyp
-	field public System.Type IntTyp
+	field public Type ExtTyp
+	field public Type IntTyp
 
 	method public void ConstLiteral()
 		me::ctor()
@@ -64,9 +64,9 @@ class public auto ansi ConstLiteral extends Literal
 		IntTyp = null
 	end method
 
-	method public void ConstLiteral(var value as string)
-		me::ctor(value)
-		ConstVal = null
+	method public void ConstLiteral(var value as object)
+		me::ctor()
+		ConstVal = value
 		LitTyp = new ObjectTok()
 		ExtTyp = null
 		IntTyp = null
@@ -109,16 +109,20 @@ class public auto ansi CharLiteral extends Literal
 
 	method public void CharLiteral()
 		me::ctor()
-		CharVal = 'a'
+		CharVal = ' '
 		LitTyp = new CharTok()
 		OrdOp = ""
 	end method
 
 	method public void CharLiteral(var value as string)
 		me::ctor(value)
-		CharVal = 'a'
+		CharVal = ' '
 		LitTyp = new CharTok()
 		OrdOp = ""
+		var c as char
+		if Char::TryParse(value,ref|c) then
+			CharVal = c
+		end if
 	end method
 	
 	method public void CharLiteral(var value as char)
@@ -154,6 +158,11 @@ class public auto ansi BooleanLiteral extends Literal
 		LitTyp = new BooleanTok()
 		OrdOp = ""
 		DoNot = false
+		if (value = "True") or (value = "true") then
+			BoolVal = true
+		elseif (value = "False") or (value = "false") then
+			BoolVal = false
+		end if
 	end method
 	
 	method public void BooleanLiteral(var value as boolean)
@@ -216,6 +225,10 @@ class public auto ansi IntLiteral extends NumberLiteral
 		me::ctor(value)
 		NumVal = 0i
 		LitTyp = new IntegerTok()
+		var n as integer
+		if Int32::TryParse(value,ref|n) then
+			NumVal = n
+		end if
 	end method
 	
 	method public void IntLiteral(var value as integer)
@@ -244,6 +257,10 @@ class public auto ansi DoubleLiteral extends NumberLiteral
 		me::ctor(value)
 		NumVal = 0d
 		LitTyp = new DoubleTok()
+		var n as double
+		if Double::TryParse(value,ref|n) then
+			NumVal = n
+		end if
 	end method
 	
 	method public void DoubleLiteral(var value as double)
@@ -272,6 +289,10 @@ class public auto ansi DecimalLiteral extends NumberLiteral
 		me::ctor(value)
 		NumVal = new Decimal(0)
 		LitTyp = new DecimalTok()
+		var n as decimal
+		if Decimal::TryParse(value,ref|n) then
+			NumVal = n
+		end if
 	end method
 	
 	method public void DecimalLiteral(var value as decimal)
@@ -300,6 +321,10 @@ class public auto ansi SByteLiteral extends NumberLiteral
 		me::ctor(value)
 		NumVal = 0b
 		LitTyp = new SByteTok()
+		var n as sbyte
+		if SByte::TryParse(value,ref|n) then
+			NumVal = n
+		end if
 	end method
 	
 	method public void SByteLiteral(var value as sbyte)
@@ -328,6 +353,10 @@ class public auto ansi ShortLiteral extends NumberLiteral
 		me::ctor(value)
 		NumVal = 0s
 		LitTyp = new ShortTok()
+		var n as short
+		if Int16::TryParse(value,ref|n) then
+			NumVal = n
+		end if
 	end method
 	
 	method public void ShortLiteral(var value as short)
@@ -356,6 +385,10 @@ class public auto ansi LongLiteral extends NumberLiteral
 		me::ctor(value)
 		NumVal = 0l
 		LitTyp = new LongTok()
+		var n as long
+		if Int64::TryParse(value,ref|n) then
+			NumVal = n
+		end if
 	end method
 	
 	method public void LongLiteral(var value as long)
@@ -384,6 +417,10 @@ class public auto ansi FloatLiteral extends NumberLiteral
 		me::ctor(value)
 		NumVal = 0f
 		LitTyp = new SingleTok()
+		var n as single
+		if Single::TryParse(value,ref|n) then
+			NumVal = n
+		end if
 	end method
 	
 	method public void FloatLiteral(var value as single)
@@ -412,6 +449,10 @@ class public auto ansi UIntLiteral extends NumberLiteral
 		me::ctor(value)
 		NumVal = 0ui
 		LitTyp = new UIntegerTok()
+		var n as uinteger
+		if UInt32::TryParse(value,ref|n) then
+			NumVal = n
+		end if
 	end method
 	
 	method public void UIntLiteral(var value as uinteger)
@@ -440,6 +481,10 @@ class public auto ansi ByteLiteral extends NumberLiteral
 		me::ctor(value)
 		NumVal = 0ub
 		LitTyp = new ByteTok()
+		var n as byte
+		if Byte::TryParse(value,ref|n) then
+			NumVal = n
+		end if
 	end method
 	
 	method public void ByteLiteral(var value as byte)
@@ -468,6 +513,10 @@ class public auto ansi UShortLiteral extends NumberLiteral
 		me::ctor(value)
 		NumVal = 0us
 		LitTyp = new UShortTok()
+		var n as ushort
+		if UInt16::TryParse(value,ref|n) then
+			NumVal = n
+		end if
 	end method
 	
 	method public void UShortLiteral(var value as ushort)
@@ -496,6 +545,10 @@ class public auto ansi ULongLiteral extends NumberLiteral
 		me::ctor(value)
 		NumVal = 0ul
 		LitTyp = new ULongTok()
+		var n as ulong
+		if UInt64::TryParse(value,ref|n) then
+			NumVal = n
+		end if
 	end method
 	
 	method public void ULongLiteral(var value as ulong)

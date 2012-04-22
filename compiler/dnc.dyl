@@ -1,6 +1,6 @@
 //The Compiler for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v.9.9 or later
+//compile with dylan.NET v.11.2.8.9 or later
 
 //    dnc.exe dylan.NET.Compiler Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -30,8 +30,10 @@ import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import dylan.NET.Tokenizer.Parser
 import dylan.NET.Tokenizer.CodeGen
 
+#debug on
+
 assembly dnc exe
-ver 11.2.8.9
+ver 11.2.9.1
 
 namespace dylan.NET.Compiler
 	#include "dnc/Mod1.dyl"

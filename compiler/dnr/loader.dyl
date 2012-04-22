@@ -188,6 +188,10 @@ class public auto ansi beforefieldinit Loader
 		var ints as Type[] = null
 		var i as integer = -1
 		var mtdinfo as MethodInfo = null
+
+		if typ::get_IsArray() then
+			typ = gettype Array
+		end if
 		
 		mtdinfo = typ::GetMethod(name,typs)
 

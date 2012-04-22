@@ -11,7 +11,9 @@ class public auto ansi beforefieldinit AsmFactory
 	field public static boolean DebugFlg
 	field public static boolean InMethodFlg
 	field public static boolean ChainFlg
+	field public static boolean RefChainFlg
 	field public static boolean PopFlg
+	field public static boolean ForcedAddrFlg
 	field public static boolean AddrFlg
 	field public static AssemblyName AsmNameStr
 	field public static AssemblyBuilder AsmB
@@ -45,8 +47,10 @@ class public auto ansi beforefieldinit AsmFactory
 	method public static void Init()
 		DebugFlg = false
 		ChainFlg = false
+		RefChainFlg = false
 		PopFlg = false
 		AddrFlg = false
+		ForcedAddrFlg = false
 		InMethodFlg = false
 		CurnNS = ""
 		DfltNS = ""

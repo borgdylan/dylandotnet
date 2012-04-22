@@ -1,23 +1,54 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="tests/protectedtests.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnr/ilemitter.dyl">
     <Files>
-      <File FileName="codegen/eval.dyl" Line="594" Column="1" />
-      <File FileName="templateproj/template.dyl" Line="40" Column="27" />
-      <File FileName="tests/protectedtests.dyl" Line="79" Column="19" />
-      <File FileName="dnr/loader.dyl" Line="421" Column="79" />
-      <File FileName="codegen/helpers.dyl" Line="941" Column="33" />
+      <File FileName="codegen/eval.dyl" Line="1186" Column="40" />
+      <File FileName="tests/protectedtests.dyl" Line="97" Column="1" />
+      <File FileName="dnr/loader.dyl" Line="187" Column="1" />
+      <File FileName="codegen/helpers.dyl" Line="424" Column="27" />
+      <File FileName="tests/conv.dyl" Line="20" Column="1" />
+      <File FileName="dnr/asmfactory.dyl" Line="50" Column="6" />
+      <File FileName="dnr/ilemitter.dyl" Line="704" Column="3" />
+      <File FileName="dnr/instructionhelper.dyl" Line="229" Column="30" />
+      <File FileName="ast/literals.dyl" Line="10" Column="1" />
+      <File FileName="codegen/stmtreader.dyl" Line="493" Column="9" />
+      <File FileName="tokenizer.Lexer.dyl" Line="31" Column="13" />
+      <File FileName="lexer/line.dyl" Line="71" Column="13" />
+      <File FileName="lexer/lexer.dyl" Line="119" Column="30" />
+      <File FileName="tokenizer.AST.dyl" Line="31" Column="13" />
+      <File FileName="tokenizer.CodeGen.dyl" Line="47" Column="13" />
+      <File FileName="dnc.dyl" Line="33" Column="10" />
+      <File FileName="dnr.dyl" Line="26" Column="10" />
+      <File FileName="dnu.dyl" Line="29" Column="17" />
+      <File FileName="tokenizer.Parser.dyl" Line="35" Column="10" />
+      <File FileName="parser/parser.dyl" Line="23" Column="46" />
+      <File FileName="parser/parserflags.dyl" Line="1" Column="1" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="689" Column="42" />
+      <File FileName="parser/exproptimizer.dyl" Line="939" Column="5" />
+      <File FileName="parser/oldmethodstmtcode.txt" Line="1" Column="1" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="1347" Column="11" />
+      <File FileName="codegen/codegenerator.dyl" Line="45" Column="40" />
+      <File FileName="dnc/Mod1.dyl" Line="13" Column="57" />
+      <File FileName="dev/pc2cd.dyl" Line="107" Column="1" />
+      <File FileName="dev/pc2dn.dyl" Line="83" Column="17" />
+      <File FileName="tests/arit.dyl" Line="1" Column="1" />
+      <File FileName="codegen/constldr.dyl" Line="1" Column="1" />
+      <File FileName="codegen/ctoritem.dyl" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
+            <Node name="ast" expanded="True" />
             <Node name="codegen" expanded="True" />
-            <Node name="dnr" expanded="True" />
-            <Node name="dnu" expanded="True" />
-            <Node name="tests" expanded="True">
-              <Node name="protectedtests.dyl" selected="True" />
+            <Node name="dev" expanded="True" />
+            <Node name="dnc" expanded="True" />
+            <Node name="dnr" expanded="True">
+              <Node name="ilemitter.dyl" selected="True" />
             </Node>
+            <Node name="lexer" expanded="True" />
+            <Node name="parser" expanded="True" />
+            <Node name="tests" expanded="True" />
           </Node>
           <Node name="template" expanded="True" />
         </State>

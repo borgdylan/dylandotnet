@@ -376,7 +376,7 @@ class public auto ansi beforefieldinit Helpers
 
 	method public static void EmitLiteral(var lit as Literal)
 	
-		var t as Type[] = new Type[14]
+		var t as Type[] = new Type[15]
 		t[0] = gettype StringLiteral
 		t[1] = gettype SByteLiteral
 		t[2] = gettype ShortLiteral
@@ -391,6 +391,7 @@ class public auto ansi beforefieldinit Helpers
 		t[11] = gettype UShortLiteral
 		t[12] = gettype UIntLiteral
 		t[13] = gettype ULongLiteral
+		t[14] = gettype DecimalLiteral
 
 		if t[0]::IsInstanceOfType(lit) then
 			var slit as StringLiteral = $StringLiteral$lit
@@ -433,6 +434,9 @@ class public auto ansi beforefieldinit Helpers
 		elseif t[13]::IsInstanceOfType(lit) then
 			var ullit as ULongLiteral = $ULongLiteral$lit
 			ILEmitter::EmitLdcU8(ullit::NumVal)
+		elseif t[14]::IsInstanceOfType(lit) then
+			var declit as DecimalLiteral = $DecimalLiteral$lit
+			ILEmitter::EmitLdcDec(declit::NumVal)
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Loading of literals of type '" + CommitEvalTTok(lit::LitTyp)::ToString() + "' is not yet supported.")
 		end if
@@ -666,11 +670,27 @@ class public auto ansi beforefieldinit Helpers
 
 	method public static void EmitLocLd(var ind as integer, var locarg as boolean)
 		var typ as Type = gettype ValueType
-		if AsmFactory::AddrFlg and typ::IsAssignableFrom(AsmFactory::Type04) then
-			if locarg then
-				ILEmitter::EmitLdloca(ind)
+		var t2 as Type
+
+		if AsmFactory::Type04::get_IsByRef() then
+			t2 = AsmFactory::Type04::GetElementType()
+		else
+			t2 = AsmFactory::Type04
+		end if
+
+		if (AsmFactory::AddrFlg and typ::IsAssignableFrom(t2)) or AsmFactory::ForcedAddrFlg then
+			if AsmFactory::Type04::get_IsByRef() then
+				if locarg then
+					ILEmitter::EmitLdloc(ind)
+				else
+					ILEmitter::EmitLdarg(ind)
+				end if
 			else
-				ILEmitter::EmitLdarga(ind)
+				if locarg then
+					ILEmitter::EmitLdloca(ind)
+				else
+					ILEmitter::EmitLdarga(ind)
+				end if
 			end if
 		else
 			if locarg then
@@ -678,12 +698,15 @@ class public auto ansi beforefieldinit Helpers
 			else
 				ILEmitter::EmitLdarg(ind)
 			end if
+			if AsmFactory::Type04::get_IsByRef() then
+				ILEmitter::EmitLdind(AsmFactory::Type04::GetElementType())
+			end if
 		end if
 	end method
 
 	method public static void EmitElemLd(var t as Type)
 		var typ as Type = gettype ValueType
-		if AsmFactory::AddrFlg and typ::IsAssignableFrom(AsmFactory::Type04) then
+		if (AsmFactory::AddrFlg and typ::IsAssignableFrom(AsmFactory::Type04)) or AsmFactory::ForcedAddrFlg then
 			ILEmitter::EmitLdelema(t)
 		else
 			ILEmitter::EmitLdelem(t)
@@ -898,7 +921,7 @@ class public auto ansi beforefieldinit Helpers
 
 	method public static void EmitFldLd(var fld as FieldInfo, var stat as boolean)
 		var typ as Type = gettype ValueType
-		if AsmFactory::AddrFlg and typ::IsAssignableFrom(AsmFactory::Type04) then
+		if (AsmFactory::AddrFlg and typ::IsAssignableFrom(AsmFactory::Type04)) or AsmFactory::ForcedAddrFlg then
 			if stat then
 				ILEmitter::EmitLdsflda(fld)
 			else

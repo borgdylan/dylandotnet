@@ -74,9 +74,9 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoheader
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.8.9\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.8.9\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.8.9\"
-DYLANDOTNET = /usr/local/bin/dylandotnet
-DYLANDOTNET4 = /usr/local/bin/dylandotnet4
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.1\"
+DYLANDOTNET = /usr/bin/dylandotnet
+DYLANDOTNET4 = /usr/bin/dylandotnet4
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
@@ -96,16 +96,16 @@ MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.8.9
+PACKAGE_STRING = dylandotnet 11.2.9.1
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.8.9
+PACKAGE_VERSION = 11.2.9.1
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.8.9
+VERSION = 11.2.9.1
 abs_builddir = /var/www/Code/dylannet/compiler
 abs_srcdir = /var/www/Code/dylannet/compiler
 abs_top_builddir = /var/www/Code/dylannet/compiler
@@ -511,6 +511,9 @@ uninstall: uninstallman
 clean:
 	$(MAKE) -C tests clean
 	$(MAKE) -C dev clean
+	rm -f *.exe
+	rm -f *.dll
+	rm -f *.mdb
 
 distclean: clean
 	$(MAKE) -C tests distclean
@@ -533,11 +536,15 @@ all:
 	'$(MONO)' 4.0/dnc.exe dnu.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnr.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe tokenizer.AST.dyl | tee -a buildlog4
+	'$(MONO)' 4.0/dnc.exe tokenizer.Lexer.dyl | tee -a buildlog4
+	'$(MONO)' 4.0/dnc.exe tokenizer.Parser.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnc.dyl | tee -a buildlog4
 	cp dnu.dll 4.0/dnu.dll
 	cp dnr.dll 4.0/dnr.dll
 	cp tokenizer.AST.dll 4.0/tokenizer.AST.dll
+	cp tokenizer.Lexer.dll 4.0/tokenizer.Lexer.dll
+	cp tokenizer.Parser.dll 4.0/tokenizer.Parser.dll
 	cp tokenizer.CodeGen.dll 4.0/tokenizer.CodeGen.dll
 	cp dnc.exe 4.0/dnc.exe
 
@@ -545,11 +552,15 @@ all:
 	'$(MONO)' 2.0/dnc.exe dnu.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe dnr.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe tokenizer.AST.dyl | tee -a buildlog
+	'$(MONO)' 2.0/dnc.exe tokenizer.Lexer.dyl | tee -a buildlog
+	'$(MONO)' 2.0/dnc.exe tokenizer.Parser.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe dnc.dyl | tee -a buildlog
 	cp dnu.dll 2.0/dnu.dll
 	cp dnr.dll 2.0/dnr.dll
 	cp tokenizer.AST.dll 2.0/tokenizer.AST.dll
+	cp tokenizer.Lexer.dll 2.0/tokenizer.Lexer.dll
+	cp tokenizer.Parser.dll 2.0/tokenizer.Parser.dll
 	cp tokenizer.CodeGen.dll 2.0/tokenizer.CodeGen.dll
 	cp dnc.exe 2.0/dnc.exe
 

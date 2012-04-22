@@ -17,7 +17,6 @@ var curln as Line = null
 var sr as StreamReader = new StreamReader(path)
 var crflag as boolean = false
 var lfflag as boolean = false
-var andflg as boolean = false
 var orflg as boolean = false
 var buf as string = ""
 var curline as integer = 0
@@ -30,7 +29,7 @@ var ch as string = ""
 var chr as char = 'a'
 var comp as integer = 0
 
-//len--
+//len = len - 1
 
 label loop
 label cont
@@ -59,14 +58,13 @@ if comp = 0 then
 lfflag = true
 end if
 
-andflg = crflag and lfflag
 orflg = crflag or lfflag
 
 if orflg = false then
 buf = String::Concat(buf, ch)
 else
 if lfflag = true then
-curline++
+curline = curline + 1
 //Console::WriteLine(buf)
 curstmt = new Stmt()
 curstmt::Line = curline
@@ -87,7 +85,7 @@ end if
 n = sr::Peek()
 
 if n = -1 then
-curline++
+curline = curline + 1
 //Console::WriteLine(buf)
 curstmt = new Stmt()
 curstmt::Line = curline
@@ -119,7 +117,6 @@ var curln as Line = null
 var sr as StringReader = new StringReader(str)
 var crflag as boolean = false
 var lfflag as boolean = false
-var andflg as boolean = false
 var orflg as boolean = false
 var buf as string = ""
 var curline as integer = 0
@@ -130,7 +127,7 @@ var ch as string = ""
 var chr as char = 'a'
 var comp as integer = 0
 
-//len--
+//len = len - 1
 
 label loop
 label cont
@@ -159,14 +156,13 @@ if comp = 0 then
 lfflag = true
 end if
 
-andflg = crflag and lfflag
 orflg = crflag or lfflag
 
 if orflg = false then
 buf = String::Concat(buf, ch)
 else
 if lfflag = true then
-curline++
+curline = curline + 1
 //Console::WriteLine(buf)
 curstmt = new Stmt()
 curstmt::Line = curline
@@ -187,7 +183,7 @@ end if
 n = sr::Peek()
 
 if n = -1 then
-curline++
+curline = curline + 1
 //Console::WriteLine(buf)
 curstmt = new Stmt()
 curstmt::Line = curline

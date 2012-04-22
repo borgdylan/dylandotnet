@@ -110,6 +110,10 @@
             <summary>Holds the current symbol writer.</summary>
             <remarks />
         </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.ForcedAddrFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.GenParamNames">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -157,6 +161,10 @@
         <member name="F:dylan.NET.Reflection.AsmFactory.PopFlg">
             <summary>If set indicates that the next method call should be followed by a 'pop'</summary>
             <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.RefChainFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.TypArr">
             <summary>Holds an array of Type.</summary>
@@ -305,6 +313,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCatch(System.Type)">
+            <param name="e">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitCeq">
             <summary>Emits the 'ceq' opcode.</summary>
             <remarks />
@@ -367,6 +380,14 @@
             <summary>Emits the 'dup' opcode.</summary>
             <remarks />
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitEndTry">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitFinally">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitIs(System.Type)">
             <param name="t">To be added.</param>
             <summary>To be added.</summary>
@@ -396,6 +417,11 @@
             <param name="c">The character to emit a load for.</param>
             <summary>Emits one of the variants of 'ldc.i4' opcode using the numerical unicode value of the character as the integer loaded.</summary>
             <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcDec(System.Decimal)">
+            <param name="n">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcI1(System.SByte)">
             <param name="n">The int8 number to emit a load for.</param>
@@ -631,6 +657,14 @@
             <param name="s">If the operands are signed or not.</param>
             <summary>Emits one of the variants of the 'sub' opcode.</summary>
             <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitThrow">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitTry">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitUnbox(System.Type)">
             <param name="t">The valuetype type to unbox to.</param>

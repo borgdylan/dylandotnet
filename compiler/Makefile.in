@@ -511,6 +511,9 @@ uninstall: uninstallman
 clean:
 	$(MAKE) -C tests clean
 	$(MAKE) -C dev clean
+	rm -f *.exe
+	rm -f *.dll
+	rm -f *.mdb
 
 distclean: clean
 	$(MAKE) -C tests distclean
@@ -533,11 +536,15 @@ all:
 	'$(MONO)' 4.0/dnc.exe dnu.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnr.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe tokenizer.AST.dyl | tee -a buildlog4
+	'$(MONO)' 4.0/dnc.exe tokenizer.Lexer.dyl | tee -a buildlog4
+	'$(MONO)' 4.0/dnc.exe tokenizer.Parser.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnc.dyl | tee -a buildlog4
 	cp dnu.dll 4.0/dnu.dll
 	cp dnr.dll 4.0/dnr.dll
 	cp tokenizer.AST.dll 4.0/tokenizer.AST.dll
+	cp tokenizer.Lexer.dll 4.0/tokenizer.Lexer.dll
+	cp tokenizer.Parser.dll 4.0/tokenizer.Parser.dll
 	cp tokenizer.CodeGen.dll 4.0/tokenizer.CodeGen.dll
 	cp dnc.exe 4.0/dnc.exe
 
@@ -545,11 +552,15 @@ all:
 	'$(MONO)' 2.0/dnc.exe dnu.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe dnr.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe tokenizer.AST.dyl | tee -a buildlog
+	'$(MONO)' 2.0/dnc.exe tokenizer.Lexer.dyl | tee -a buildlog
+	'$(MONO)' 2.0/dnc.exe tokenizer.Parser.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe dnc.dyl | tee -a buildlog
 	cp dnu.dll 2.0/dnu.dll
 	cp dnr.dll 2.0/dnr.dll
 	cp tokenizer.AST.dll 2.0/tokenizer.AST.dll
+	cp tokenizer.Lexer.dll 2.0/tokenizer.Lexer.dll
+	cp tokenizer.Parser.dll 2.0/tokenizer.Parser.dll
 	cp tokenizer.CodeGen.dll 2.0/tokenizer.CodeGen.dll
 	cp dnc.exe 2.0/dnc.exe
 

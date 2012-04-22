@@ -10,7 +10,7 @@ class public auto ansi StmtReader
 
 	method public void Read(var stm as Stmt, var fpath as string)
 
-		var t as Type[] = new Type[36]
+		var t as Type[] = new Type[41]
 		t[0] = gettype RefasmStmt
 		t[1] = gettype RefstdasmStmt
 		t[2] = gettype ImportStmt
@@ -47,6 +47,11 @@ class public auto ansi StmtReader
 		t[33] = gettype PlaceStmt
 		t[34] = gettype GotoStmt
 		t[35] = gettype CommentStmt
+		t[36] = gettype ThrowStmt
+		t[37] = gettype TryStmt
+		t[38] = gettype EndTryStmt
+		t[39] = gettype FinallyStmt
+		t[40] = gettype CatchStmt
 		
 		var tmpchrarr as char[]
 		var vtyp as Type = null
@@ -487,6 +492,32 @@ class public auto ansi StmtReader
 			var gtostm as GotoStmt = $GotoStmt$stm
 			ILEmitter::EmitBr(Helpers::GetLbl(gtostm::LabelName::Value))
 		elseif t[35]::IsInstanceOfType(stm) then
+		elseif t[36]::IsInstanceOfType(stm) then
+			var trostmt as ThrowStmt = $ThrowStmt$stm
+			if trostmt::RExp != null then
+				eval = new Evaluator()
+				eval::Evaluate(trostmt::RExp)
+				ILEmitter::EmitThrow()
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No exception to throw specified")
+			end if
+		elseif t[37]::IsInstanceOfType(stm) then
+			ILEmitter::EmitTry()
+		elseif t[38]::IsInstanceOfType(stm) then
+			ILEmitter::EmitEndTry()
+		elseif t[39]::IsInstanceOfType(stm) then
+			ILEmitter::EmitFinally()
+		elseif t[40]::IsInstanceOfType(stm) then
+			var cats as CatchStmt = $CatchStmt$stm
+			vtyp = Helpers::CommitEvalTTok(cats::ExTyp)
+			if vtyp = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + cats::ExTyp::Value + "' is not defined.")
+			end if
+			ILEmitter::DeclVar(cats::ExName::Value, vtyp)
+			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			SymTable::AddVar(cats::ExName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+			ILEmitter::EmitCatch(vtyp)
+			ILEmitter::EmitStloc(SymTable::FindVar(cats::ExName::Value)::Index)
 		else
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
 		end if

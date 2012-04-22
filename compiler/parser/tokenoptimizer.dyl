@@ -13,7 +13,7 @@ method public Token Optimize(var tok as Token)
 var comp as integer = 0
 var compb as boolean = false
 var tmpstr as string = ""
-var tmpchrarr as char[] = newarr char 0
+var tmpchrarr as char[] = new char[0]
 var orflg as boolean = false
 
 label fin
@@ -430,6 +430,27 @@ ParserFlags::IfFlag = true
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "try")
+
+if comp = 0 then
+var trytk as TryTok = new TryTok()
+trytk::Line = tok::Line
+trytk::Value = tok::Value
+tok = trytk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "finally")
+
+if comp = 0 then
+var finatk as FinallyTok = new FinallyTok()
+finatk::Line = tok::Line
+finatk::Value = tok::Value
+tok = finatk
+goto fin
+end if
+
+
 comp = String::Compare(tok::Value, "until")
 
 if comp = 0 then
@@ -807,6 +828,16 @@ tok = rettk
 goto fin
 end if
 
+comp = String::Compare(tok::Value, "throw")
+
+if comp = 0 then
+var thrtk as ThrowTok = new ThrowTok()
+thrtk::Line = tok::Line
+thrtk::Value = tok::Value
+tok = thrtk
+goto fin
+end if
+
 comp = String::Compare(tok::Value, "var")
 
 if comp = 0 then
@@ -814,6 +845,16 @@ var vrtk as VarTok = new VarTok()
 vrtk::Line = tok::Line
 vrtk::Value = tok::Value
 tok = vrtk
+goto fin
+end if
+
+comp = String::Compare(tok::Value, "catch")
+
+if comp = 0 then
+var cattk as CatchTok = new CatchTok()
+cattk::Line = tok::Line
+cattk::Value = tok::Value
+tok = cattk
 goto fin
 end if
 
@@ -1163,10 +1204,8 @@ tok = objtok
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^//(.)*$")
-
-if compb = true then
-var comtok as commentTok = new commentTok()
+if tok::Value like "^//(.)*$" then
+var comtok as CommentTok = new CommentTok()
 comtok::Line = tok::Line
 comtok::Value = tok::Value
 tok = comtok
@@ -1174,34 +1213,19 @@ ParserFlags::CmtFlag = true
 goto fin
 end if
 
-comp = String::Compare(tok::Value, "null")
-
-if comp = 0 then
+if tok::Value = "null" then
 var nulllit as NullLiteral = new NullLiteral(tok::Value)
 nulllit::Line = tok::Line
 tok = nulllit
 goto fin
 end if
 
-comp = String::Compare(tok::Value, "true")
-if comp = 0 then
-compb = true
-end if
-orflg = compb
-comp = String::Compare(tok::Value, "false")
-if comp = 0 then
-compb = true
-end if
-orflg = orflg or compb
-
-if compb = true then
+if (tok::Value = "true") or (tok::Value = "false") then
 var boolit as BooleanLiteral
-comp = String::Compare(tok::Value, "true")
-if comp = 0 then
+if tok::Value = "true" then
 boolit = new BooleanLiteral(true)
 end if
-comp = String::Compare(tok::Value, "false")
-if comp = 0 then
+if tok::Value = "false" then
 boolit = new BooleanLiteral(false)
 end if
 boolit::Line = tok::Line
@@ -1209,9 +1233,7 @@ tok = boolit
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^'(.)*'$")
-
-if compb = true then
+if tok::Value like "^'(.)*'$" then
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = $char$"'"
@@ -1222,12 +1244,7 @@ tok = chrlit
 goto fin
 end if
 
-
-tmpstr = String::Concat("^",Utils.Constants::quot,"(.)*")
-tmpstr = String::Concat(tmpstr, Utils.Constants::quot,"$")
-compb = Utils.ParseUtils::LikeOP(tok::Value, tmpstr)
-
-if compb = true then
+if tok::Value like ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
 tmpstr = tok::Value
 tmpchrarr = newarr char 1
 tmpchrarr[0] = $char$Utils.Constants::quot
@@ -1238,11 +1255,11 @@ tok = strlit
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^(\d)+\.(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+\.(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+\.(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("d")
@@ -1259,11 +1276,11 @@ tok = dlit2
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^(\d)+\.(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+\.(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+\.(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("f")
@@ -1280,11 +1297,11 @@ tok = flit
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^(\d)+\.(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+\.(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+\.(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("m")
@@ -1301,11 +1318,11 @@ tok = delit
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^(\d)+\.(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+\.(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+\.(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+\.(\d)+(.)*$"
 orflg = orflg or compb
 
 if orflg = true then
@@ -1316,11 +1333,11 @@ tok = dlit
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("d")
@@ -1337,11 +1354,11 @@ tok = dlit3
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("f")
@@ -1358,11 +1375,11 @@ tok = flit2
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("m")
@@ -1379,11 +1396,11 @@ tok = delit2
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("ui")
@@ -1404,11 +1421,11 @@ tok = uilit2
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("ip")
@@ -1430,11 +1447,11 @@ goto fin
 end if
 
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("i")
@@ -1452,11 +1469,11 @@ goto fin
 end if
 
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("ul")
@@ -1478,11 +1495,11 @@ goto fin
 end if
 
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("l")
@@ -1499,11 +1516,11 @@ tok = llit
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("us")
@@ -1524,11 +1541,11 @@ tok = uslit
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("s")
@@ -1545,11 +1562,11 @@ tok = slit
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("ub")
@@ -1570,11 +1587,11 @@ tok = ublit
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 tmpstr = tok::Value
 compb = tmpstr::EndsWith("b")
@@ -1591,11 +1608,11 @@ tok = blit
 goto fin
 end if
 
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^(\d)+(.)*$")
+compb = tok::Value like "^(\d)+(.)*$"
 orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^\+(\d)+(.)*$")
+compb = tok::Value like "^\+(\d)+(.)*$"
 orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^-(\d)+(.)*$")
+compb = tok::Value like "^-(\d)+(.)*$"
 orflg = orflg or compb
 
 
@@ -1607,15 +1624,7 @@ tok = ilit
 goto fin
 end if
 
-
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^([a-zA-Z])+(.)*$")
-orflg = compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^_(.)*([a-zA-Z])+(.)*$")
-orflg = orflg or compb
-compb = Utils.ParseUtils::LikeOP(tok::Value, "^::(.)*([a-zA-Z])+(.)*$")
-orflg = orflg or compb
-
-if orflg = true then
+if (tok::Value like "^([a-zA-Z])+(.)*$") or (tok::Value like "^_(.)*([a-zA-Z])+(.)*$") or (tok::Value like "^::(.)*([a-zA-Z])+(.)*$") then
 var idt as Ident = new Ident()
 idt::Line = tok::Line
 idt::Value = tok::Value

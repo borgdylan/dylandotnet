@@ -2147,6 +2147,11 @@
             <summary>Constructs a new ConstLiteral.</summary>
             <remarks />
         </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ConstLiteral(System.Object)">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ConstLiteral(System.String)">
             <param name="value" />
             <summary>This parameter is of no use in this case.</summary>

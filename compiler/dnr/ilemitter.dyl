@@ -40,44 +40,33 @@ class public auto ansi beforefieldinit ILEmitter
 	end method
 
 	method public static void AddSrcFile(var srcf as string)
-
 		var i as integer = -1
-
 		var destarr as string[] = new string[SrcFiles[l] + 1]
-
 		do until i = (SrcFiles[l] - 1)
 			i = i + 1
 			destarr[i] = SrcFiles[i]
 		end do
-
 		destarr[SrcFiles[l]] = srcf
 		SrcFiles = destarr
-
 	end method
 
 	method public static void PopSrcFile()
-
 		var i as integer = -1
 		var destarr as string[] = new string[SrcFiles[l] - 1]
-
 		do until i >= (destarr[l] - 1)
 			i = i + 1
 			destarr[i] = SrcFiles[i]
 		end do
-
 		SrcFiles = destarr
-
 	end method
 
 	method public static void AddDocWriter(var srcf as ISymbolDocumentWriter)
 		var i as integer = -1
 		var destarr as ISymbolDocumentWriter[] = new ISymbolDocumentWriter[DocWriters[l] + 1]
-
 		do until i = (DocWriters[l] - 1)
 			i = i + 1
 			destarr[i] = DocWriters[i]
 		end do
-
 		destarr[DocWriters[l]] = srcf
 		DocWriters = destarr
 	end method
@@ -85,12 +74,10 @@ class public auto ansi beforefieldinit ILEmitter
 	method public static void PopDocWriter()
 		var i as integer = -1
 		var destarr as ISymbolDocumentWriter[] = new ISymbolDocumentWriter[DocWriters[l] - 1]
-
 		do until i >= (destarr[l] - 1)
 			i = i + 1
 			destarr[i] = DocWriters[i]
 		end do
-
 		DocWriters = destarr
 	end method
 
@@ -244,7 +231,7 @@ class public auto ansi beforefieldinit ILEmitter
 		elseif t[2]::Equals(typ) then
 			ILGen::Emit(InstructionHelper::getOPCode("stelem.i2"))
 		elseif t[3]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stind.i4"))
+			ILGen::Emit(InstructionHelper::getOPCode("stelem.i4"))
 		elseif t[4]::Equals(typ) then
 			ILGen::Emit(InstructionHelper::getOPCode("stelem.i8"))
 		elseif t[5]::Equals(typ) then
@@ -693,6 +680,62 @@ class public auto ansi beforefieldinit ILEmitter
 
 	end method
 
+	method public static void EmitThrow()
+		ILGen::Emit(InstructionHelper::getOPCode("throw"))
+	end method
+
+	method public static void EmitTry()
+		ILGen::BeginExceptionBlock()
+	end method
+
+	method public static void EmitFinally()
+		ILGen::BeginFinallyBlock()
+	end method
+
+	method public static void EmitCatch(var e as Type)
+		ILGen::BeginCatchBlock(e)
+	end method
+
+	method public static void EmitEndTry()
+		ILGen::EndExceptionBlock()
+	end method
+
+	method public static void EmitLdcR4(var num as single)
+		ILGen::Emit(InstructionHelper::getOPCode("ldc.r4"), num)
+	end method
+
+	method public static void EmitLdcR8(var num as double)
+		ILGen::Emit(InstructionHelper::getOPCode("ldc.r8"), num)
+	end method
+
+	method public static void EmitLdcDec(var n as decimal)
+		var arr as Type[] = new Type[1]
+		var dec as Type = gettype decimal
+		var temps as single
+		var tempd as double
+		if (Math::Ceiling(n) = n) and ($decimal$Int32::MinValue <= n) and (n <= $decimal$Int32::MaxValue) then
+			EmitLdcI4($integer$n)
+			arr[0] = gettype integer
+			ILGen::Emit(InstructionHelper::getOPCode("newobj"), dec::GetConstructor(arr))
+		elseif (Math::Ceiling(n) = n) and ($decimal$Int64::MinValue <= n) and (n <= $decimal$Int64::MaxValue) then
+			EmitLdcI8($long$n)
+			arr[0] = gettype long
+			ILGen::Emit(InstructionHelper::getOPCode("newobj"), dec::GetConstructor(arr))
+		elseif Single::TryParse($string$n, ref|temps) then
+			EmitLdcR4($single$n)
+			arr[0] = gettype single
+			ILGen::Emit(InstructionHelper::getOPCode("newobj"), dec::GetConstructor(arr))
+		elseif Double::TryParse($string$n, ref|tempd) then
+			EmitLdcR8($double$n)
+			arr[0] = gettype double
+			ILGen::Emit(InstructionHelper::getOPCode("newobj"), dec::GetConstructor(arr))
+		else
+			ILGen::Emit(InstructionHelper::getOPCode("ldstr"),$string$n)
+			arr[0] = gettype string
+			ILGen::Emit(InstructionHelper::getOPCode("call"), dec::GetMethod("Parse",arr))
+		end if
+	end method
+
 	method public static void EmitCallvirt(var met as MethodInfo)
 		ILGen::Emit(InstructionHelper::getOPCode("callvirt"), met)
 	end method
@@ -932,14 +975,6 @@ class public auto ansi beforefieldinit ILEmitter
 		params[0] = deltyp
 		params[1] = deltyp
 		ILGen::Emit(InstructionHelper::getOPCode("call"), deltyp::GetMethod("Remove",params))
-	end method
-
-	method public static void EmitLdcR4(var num as single)
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.r4"), num)
-	end method
-
-	method public static void EmitLdcR8(var num as double)
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.r8"), num)
 	end method
 
 	method public static void EmitLdcBool(var b as boolean)
