@@ -7,7 +7,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.Lexer.Lexer">
+        <member name="C:dylan.NET.Tokenizer.Lexer.Lexer()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -27,7 +27,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.Lexer.Line">
+        <member name="C:dylan.NET.Tokenizer.Lexer.Line()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

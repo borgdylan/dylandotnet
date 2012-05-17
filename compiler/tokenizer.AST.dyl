@@ -16,6 +16,7 @@
 #debug on
 
 import System
+import System.IO
 import dylan.NET.Utils
 import dylan.NET.Tokenizer.AST
 import dylan.NET.Tokenizer.AST.Tokens
@@ -28,7 +29,7 @@ import dylan.NET.Tokenizer.AST.Tokens.Attributes
 import dylan.NET.Tokenizer.AST.Tokens.Chars
 
 assembly tokenizer.AST dll
-ver 11.2.9.1
+ver 11.2.9.3
 
 namespace dylan.NET.Tokenizer.AST.Tokens
 	#include "ast/token.dyl"

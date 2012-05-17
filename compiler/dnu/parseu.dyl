@@ -43,7 +43,7 @@ class public auto ansi ParseUtils
 
 
 	method public static string[] StringParser(var StringToParse as string, var DelimeterChar as string)
-		var arr as string[] = new string[0]
+		var arr as List<of string> = new List<of string>()
 		var ins as boolean = false
 		var ch as string = ""
 		var acc as string = ""
@@ -55,17 +55,13 @@ class public auto ansi ParseUtils
 			ch = $string$StringToParse::get_Chars(i)
 	
 			if ch = Utils.Constants::quot then
-				if ins = false then
-					ins = true
-				elseif ins = true then
-					ins = false
-				end if
+				ins = ins == false
 			end if
 	
 			if ch = DelimeterChar then
 				if ins = false then
 					if acc <> "" then
-						arr = addelem(arr, acc)
+						arr::Add(acc)
 					end if
 					acc = ""
 				end if
@@ -78,14 +74,14 @@ class public auto ansi ParseUtils
 	
 			if i = len then
 				if acc <> "" then
-					arr = addelem(arr, acc)
+					arr::Add(acc)
 				end if
 				acc = ""
 			end if
 
 		until i = len
 		
-		return arr
+		return Enumerable::ToArray<of string>($IEnumerable<of string>$arr)
 	end method
 
 	method public static string[] StringParser2ds(var StringToParse as string, var DelimeterChar as string, var DelimeterChar2 as string)
@@ -103,11 +99,7 @@ class public auto ansi ParseUtils
 			ch = $string$StringToParse::get_Chars(i)
 
 			if ch = ic then
-				if ins = false then
-					ins = true
-				elseif ins = true then
-					ins = false
-				end if
+				ins = ins == false
 			end if
 
 			if (ch = DelimeterChar) or (ch = DelimeterChar2) then

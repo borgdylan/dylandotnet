@@ -1,3 +1,20 @@
+dylandotnet (11.2.9.2-1) experimental; urgency=low
+
+  * (Closes:626078)
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 21 Apr 2012 18:57:04 +0100
+
+dylandotnet (11.2.9.1-1) precise; urgency=low
+
+  * Adding support for byref features (ready)
+  * Adding support for exception throw/catch
+  * Adding support for decimal literals e.g 7.2m
+  * Making lexer and parser compile under linux/Mac
+  * Updating Makefiles and man pages
+  * Bumping assembly versions to 11.2.9.1
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 21 Apr 2012 16:00:33 +0100
+
 dylandotnet (11.2.8.9-1) precise; urgency=low
 
   * Refactoring completely dnc,dnr,dnu,ast, and most of codegen.

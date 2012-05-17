@@ -1,3 +1,35 @@
+commit 8819df341227f72d1aa332ed2a143562641437d1
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sun Apr 22 15:49:02 2012 +0200
+
+    Commiting latest dylan.NET code to GIT and BZR. This is dylan.NET v. 11.2.9.1
+    	* Adding support for byref features (ready)
+    	* Adding support for exception throw/catch
+    	* Making lexer and parser compile under linux/Mac
+    	* Updating Makefiles and man pages
+    	* Bumping assembly versions to 11.2.9.1
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit a0047c7e59fd516c0e5a493800993f8751880286
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sun Apr 1 14:24:40 2012 +0200
+
+    Commiting latest version of dylan.NET.Collections:
+      * Adding ToString() for ALList and Item.
+      * Fixing ALList.AddAll(ALList).
+      * Refactoring loops in source code.
+      * Updating makefile.
+      * Bumping up version to 11.2.8.9
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit cdfca359fccdaa44544b0adbd071ad911b18d57a
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sun Apr 1 13:47:39 2012 +0200
+
+    Commiting tarballs and debs for dylan.NET 11.2.8.9
+
 commit f2c7553aa049d94e309289bcd8e7b087044486c7
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Sun Apr 1 11:47:43 2012 +0200

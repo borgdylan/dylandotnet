@@ -13,7 +13,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.CodeGenerator">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.CodeGenerator()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -27,7 +27,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.CtorItem">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.CtorItem()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -49,7 +49,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.Evaluator">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.Evaluator()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -150,7 +150,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.FieldItem">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.FieldItem()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -181,11 +181,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.Helpers">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.Helpers()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.Helpers">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.Helpers()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -280,6 +280,14 @@
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.getCodeFromType(System.Type)">
             <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetExtMet(System.Type,dylan.NET.Tokenizer.AST.Tokens.MethodNameTok,System.Type[])">
+            <param name="t">To be added.</param>
+            <param name="mn">To be added.</param>
+            <param name="paramtyps">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -400,7 +408,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.IfItem">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.IfItem()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -426,7 +434,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.LabelItem">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.LabelItem()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -448,7 +456,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.LoopItem">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.LoopItem()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -470,7 +478,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.MethodItem">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.MethodItem()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -502,16 +510,16 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.OpStack">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.OpStack()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.OpStack.getLength">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.OpStack.getLength()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.OpStack.PopOp">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.OpStack.PopOp()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -524,7 +532,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.OpStack.TopOp">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.OpStack.TopOp()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -533,7 +541,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.StmtReader">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.StmtReader()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -547,7 +555,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.SymTable">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.SymTable()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -564,7 +572,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddIf">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddIf()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -573,7 +581,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddLoop">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddLoop()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -634,7 +642,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.CheckUnusedVar">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.CheckUnusedVar()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -655,6 +663,12 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindCtor(System.Type[])">
+            <param name="paramst">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindFld(System.String)">
             <param name="nam">To be added.</param>
             <summary>To be added.</summary>
@@ -670,6 +684,13 @@
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindMet(System.String,System.Type[])">
             <param name="nam">To be added.</param>
             <param name="params">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindMet(System.String,System.Type[])">
+            <param name="nam">To be added.</param>
+            <param name="paramst">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -718,77 +739,77 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopIf">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopIf()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopLoop">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopLoop()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopTypArr">
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfElsePass">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopTypArr()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfEndLbl">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfElsePass()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfNxtBlkLbl">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfEndLbl()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadLoopEndLbl">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfNxtBlkLbl()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadLoopStartLbl">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadLoopEndLbl()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetCtor">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadLoopStartLbl()">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetCtor()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetFld">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetFld()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetIf">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetIf()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetLbl">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetLbl()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetLoop">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetLoop()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetMet">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetMet()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedCtor">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedCtor()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedFld">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedFld()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedMet">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedMet()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -797,15 +818,15 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetVar">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetVar()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfElsePass">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfElsePass()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfNxtBlkLbl">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfNxtBlkLbl()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -825,7 +846,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.TypeArr">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.TypeArr()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -837,7 +858,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.VarItem">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.VarItem()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

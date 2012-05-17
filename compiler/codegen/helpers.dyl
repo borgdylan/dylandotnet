@@ -32,13 +32,15 @@ class public auto ansi beforefieldinit Helpers
 		var fir as boolean = true
 		var flg as boolean
 		
-		var t as Type[] = new Type[6]
+		var t as Type[] = new Type[8]
 		t[0] = gettype Attributes.PublicAttr
 		t[1] = gettype Attributes.PrivateAttr
 		t[2] = gettype Attributes.AutoLayoutAttr
 		t[3] = gettype Attributes.AnsiClassAttr
 		t[4] = gettype Attributes.SealedAttr
 		t[5] = gettype Attributes.BeforeFieldInitAttr
+		t[6] = gettype Attributes.AbstractAttr
+		t[7] = gettype Attributes.InterfaceAttr
 		
 		do until i = (attrs[l] - 1)
 			i = i + 1
@@ -64,6 +66,10 @@ class public auto ansi beforefieldinit Helpers
 				temp = TypeAttributes::Sealed
 			elseif t[5]::IsInstanceOfType(attrs[i]) then
 				temp = TypeAttributes::BeforeFieldInit
+			elseif t[6]::IsInstanceOfType(attrs[i]) then
+				temp = TypeAttributes::Abstract
+			elseif t[7]::IsInstanceOfType(attrs[i]) then
+				temp = TypeAttributes::Interface
 			else
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attrs[i]::Value + "' is not a valid attribute for a class or delegate.")
@@ -95,7 +101,7 @@ class public auto ansi beforefieldinit Helpers
 		var foa as boolean = false
 		var faa as boolean = false
 
-		var t as Type[] = new Type[11]
+		var t as Type[] = new Type[13]
 		t[0] = gettype Attributes.PublicAttr
 		t[1] = gettype Attributes.StaticAttr
 		t[2] = gettype Attributes.SpecialNameAttr
@@ -107,6 +113,8 @@ class public auto ansi beforefieldinit Helpers
 		t[8] = gettype Attributes.AssemblyAttr
 		t[9] = gettype Attributes.FamORAssemAttr
 		t[10] = gettype Attributes.FamANDAssemAttr
+		t[11] = gettype Attributes.AbstractAttr
+		t[12] = gettype Attributes.NewSlotAttr
 
 		do until i = (attrs[l] - 1)
 			i = i + 1
@@ -151,6 +159,11 @@ class public auto ansi beforefieldinit Helpers
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
 				end if
 				faa = true
+			elseif t[11]::IsInstanceOfType(attrs[i]) then
+				temp = MethodAttributes::Abstract
+				ILEmitter::AbstractFlg = true
+			elseif t[12]::IsInstanceOfType(attrs[i]) then
+				temp = MethodAttributes::NewSlot
 			else
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attrs[i]::Value + "' is not a valid attribute for a method.")
@@ -277,11 +290,18 @@ class public auto ansi beforefieldinit Helpers
 			Loader::MakeRef = gtt::IsByRef
 			tstr = gtt::Value + "`" + $string$pttoks[l]
 			typ = Loader::LoadClass(tstr)
-			
+
+			if typ = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Type " + tstr + " could not be found!!")
+			end if
+
 			do until i = (pttoks[l] - 1)
 				i = i + 1
 				EvalTTok(pttoks[i])
 				temptyp = AsmFactory::Type01
+				if temptyp = null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Argument " + pttoks[i]::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
+				end if
 				AsmFactory::AddTyp(temptyp)
 			end do
 			
@@ -317,7 +337,7 @@ class public auto ansi beforefieldinit Helpers
 
 	end method
 
-	method public static System.Type CommitEvalTTok(var tt as TypeTok)
+	method public static Type CommitEvalTTok(var tt as TypeTok)
 		EvalTTok(tt)
 		return AsmFactory::Type01
 	end method
@@ -731,10 +751,16 @@ class public auto ansi beforefieldinit Helpers
 		if source::Equals(sink) then
 			return
 		end if
+
+		if source::get_IsEnum() then
+			if Enum::GetUnderlyingType(source)::Equals(sink) then
+				return
+			end if
+		end if
 		
 		//begin conv overload block
 		if (source::get_IsPrimitive() and sink::get_IsPrimitive()) = false then
-			if sink::Equals(AsmFactory::CurnTypB) = false then
+			if (sink::Equals(AsmFactory::CurnTypB) = false) and (sink::get_IsInterface() = false) then
 				m1 = Loader::LoadConvOp(sink, "op_Implicit", source, sink)
 				if m1 != null then
 					ILEmitter::EmitCall(m1)
@@ -746,7 +772,7 @@ class public auto ansi beforefieldinit Helpers
 					return
 				end if
 			end if
-			if source::Equals(AsmFactory::CurnTypB) = false then
+			if (source::Equals(AsmFactory::CurnTypB) = false) and (source::get_IsInterface() = false) then
 				m1 = Loader::LoadConvOp(source, "op_Implicit", source, sink)
 				if m1 != null then
 					ILEmitter::EmitCall(m1)
@@ -946,7 +972,7 @@ class public auto ansi beforefieldinit Helpers
 
 	method public static ConstructorInfo GetLocCtor(var t as Type, var typs as Type[])
 		if t::Equals(AsmFactory::CurnTypB) then
-			return SymTable::FindCtor(typs)::CtorBldr
+			return SymTable::FindCtor(typs)
 		else
 			return Loader::LoadCtor(t, typs)
 		end if
@@ -969,10 +995,10 @@ class public auto ansi beforefieldinit Helpers
 
 	method public static MethodInfo GetLocMet(var nam as string, var typs as Type[])
 		var metinf as MethodInfo = null
-		var meti as MethodItem = SymTable::FindMet(nam, typs)
+		var meti as MethodInfo = SymTable::FindMet(nam, typs)
 
 		if meti != null then
-			metinf = meti::MethodBldr
+			metinf = meti
 		else
 			Loader::ProtectedFlag = true
 			metinf = Loader::LoadMethod(AsmFactory::CurnInhTyp, nam, typs)
@@ -1070,6 +1096,24 @@ class public auto ansi beforefieldinit Helpers
 			end if
 		else
 			return false
+		end if
+	end method
+
+	method public static MethodInfo GetExtMet(var t as Type, var mn as MethodNameTok, var paramtyps as Type[])
+		var gmntt as Type = gettype GenericMethodNameTok
+		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
+		var name as string = mnstrarr[mnstrarr[l] - 1]
+		if gmntt::IsInstanceOfType(mn) then
+			var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
+			var genparams as Type[] = new Type[gmn::Params[l]]
+			var i as integer = -1
+			do until i = (genparams[l] - 1)
+				i = i + 1
+				genparams[i] = CommitEvalTTok(gmn::Params[i])
+			end do
+			return Loader::LoadGenericMethod(t, name, genparams, paramtyps)
+		else
+			return Loader::LoadMethod(t, name, paramtyps)
 		end if
 	end method
 

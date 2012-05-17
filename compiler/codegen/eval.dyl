@@ -545,7 +545,7 @@ class public auto ansi beforefieldinit Evaluator
 
 		if mectorflg = false then
 			if idtb2 and (mcparenttyp::Equals(AsmFactory::CurnTypB) = false) then
-				mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], typarr1)
+				mcmetinf = Helpers::GetExtMet(mcparenttyp, mntok, typarr1)
 				if mcmetinf = null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
 				end if
@@ -958,6 +958,9 @@ class public auto ansi beforefieldinit Evaluator
 					//gettype section
 					var gtctok as GettypeCallTok = $GettypeCallTok$tok
 					typ = Helpers::CommitEvalTTok(gtctok::Name)
+					if typ = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + gtctok::Name::Value + "' is not defined.")
+					end if
 					ILEmitter::EmitLdtoken(typ)
 					typarr1 = new Type[0]
 					typarr2 = AsmFactory::TypArr

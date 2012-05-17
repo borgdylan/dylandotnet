@@ -30,3 +30,12 @@ class public auto ansi AssignOp extends Op
 	end method
 
 end class
+
+class public auto ansi AsOp extends Op
+
+	method public void AsOp()
+		me::ctor()
+		PrecNo = 8
+	end method
+
+end class

@@ -12,12 +12,14 @@ class public auto ansi ClassStmt extends Stmt
 	field public Attributes.Attribute[] Attrs
 	field public Ident ClassName
 	field public TypeTok InhClass
+	field public TypeTok[] ImplInterfaces
 
 	method public void ClassStmt()
 		me::ctor()
-		Attrs = newarr Attributes.Attribute 0
+		Attrs = new Attributes.Attribute[0]
 		ClassName = new Ident()
 		InhClass = new TypeTok()
+		ImplInterfaces = new TypeTok[0]
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
@@ -33,6 +35,21 @@ class public auto ansi ClassStmt extends Stmt
 		destarr[Attrs[l]] = attrtoadd
 		Attrs = destarr
 
-end method
+	end method
+
+	method public void AddInterface(var interftoadd as TypeTok)
+
+		var i as integer = -1
+		var destarr as TypeTok[] = new TypeTok[ImplInterfaces[l] + 1]
+
+		do until i = (ImplInterfaces[l] - 1)
+			i = i + 1
+			destarr[i] = ImplInterfaces[i]
+		end do
+
+		destarr[ImplInterfaces[l]] = interftoadd
+		ImplInterfaces = destarr
+
+	end method
 
 end class

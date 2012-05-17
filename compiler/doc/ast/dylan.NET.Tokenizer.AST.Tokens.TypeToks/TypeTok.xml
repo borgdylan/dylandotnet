@@ -20,6 +20,8 @@
     <AssemblyVersion>11.2.8.7</AssemblyVersion>
     <AssemblyVersion>11.2.8.9</AssemblyVersion>
     <AssemblyVersion>11.2.9.1</AssemblyVersion>
+    <AssemblyVersion>11.2.9.2</AssemblyVersion>
+    <AssemblyVersion>11.2.9.3</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
@@ -52,6 +54,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -81,6 +85,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
@@ -89,6 +95,23 @@
         <param name="value">A valid type name that is reachable given the defined lists of assemblies and namespaces to import.</param>
         <summary>Constructs a new TypeTok assigning the type name's value as specified in the value parameter.</summary>
         <remarks>If you wish to set the type name later use the other constructor and set the 'Value' field acccordingly.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TypeTok (Type value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class System.Type value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="value" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsArray">
@@ -113,6 +136,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -144,6 +169,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -175,6 +202,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -206,6 +235,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -222,6 +253,8 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>

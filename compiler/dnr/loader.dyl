@@ -312,21 +312,16 @@ class public auto ansi beforefieldinit Loader
 
 	end method
 
-	method public static MethodInfo[] LoadSpecMtds(var typ as Type)
+	method public static IEnumerable<of MethodInfo> LoadSpecMtds(var typ as Type)
+		//var tempie as IEnumerable = typ::GetMethods()
+		var mtdinfos as IEnumerable<of MethodInfo> = Enumerable::OfType<of MethodInfo>($IEnumerable$typ::GetMethods())
+		return Enumerable::Where<of MethodInfo>(mtdinfos, new Func<of MethodInfo,boolean>(MILambdas::IsSpecial()))
+	end method
 
-		var i as integer = -1
-		var mtdinfos as MethodInfo[] = typ::GetMethods()
-		var mtdinfog as MethodInfo[] = new MethodInfo[0]
-	
-		do until i = (mtdinfos[l] - 1)
-			i = i + 1
-			if mtdinfos[i]::get_IsSpecialName() then
-				mtdinfog = addelemmtdinfo(mtdinfog, mtdinfos[i])
-			end if
-		end do
-
-		return mtdinfog
-
+	method public static IEnumerable<of MethodInfo> LoadGenericMtdOverlds(var typ as Type, var name as string, var paramlen as integer)
+		var mtdinfos as IEnumerable<of MethodInfo> = Enumerable::OfType<of MethodInfo>($IEnumerable$typ::GetMethods())
+		var mil as MILambdas = new MILambdas(name,paramlen)
+		return Enumerable::Where<of MethodInfo>(mtdinfos, new Func<of MethodInfo,boolean>(mil::GenericMtdFilter()))
 	end method
 
 	method public static boolean CompareParamsToTyps(var t1 as ParameterInfo[],var t2 as Type[])
@@ -352,23 +347,42 @@ class public auto ansi beforefieldinit Loader
 		var typs as Type[] = new Type[2]
 		typs[0] = typa
 		typs[1] = typb
-		var i as integer = -1
+
+		var mtdinfos as IEnumerable<of MethodInfo> = LoadSpecMtds(typ)
+		var mil as MILambdas = new MILambdas(name)
+		mtdinfos = Enumerable::Where<of MethodInfo>(mtdinfos, new Func<of MethodInfo,boolean>(mil::IsSameName()))
+		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(mtdinfos)
+
+		if matches[l] = 0 then
+			return null
+		else
+			var bind as Binder = Type::get_DefaultBinder()
+			var bf as BindingFlags = BindingFlags::Instance or BindingFlags::Static or BindingFlags::Public
+			return $MethodInfo$bind::SelectMethod(bf,matches,typs,new ParameterModifier[0])
+		end if
+
+	end method
+
+	method public static MethodInfo LoadGenericMethod(var typ as Type, var name as string, var genparams as Type[], var paramst as Type[])
+
 		var mtdinfo as MethodInfo = null
-		var mtdinfos as MethodInfo[] = LoadSpecMtds(typ)
-	
-		do until i = (mtdinfos[l] - 1)
-			i = i + 1
-			mtdinfo = mtdinfos[i]
-			if mtdinfo::get_Name() = name then
-				if CompareParamsToTyps(mtdinfo::GetParameters(), typs) then
-					return mtdinfo
-				else
-					mtdinfo = null
-				end if
-			else
-				mtdinfo = null
-			end if
-		end do
+		var mtdinfos as IEnumerable<of MethodInfo> = LoadGenericMtdOverlds(typ, name, genparams[l])
+		var mil as MILambdas = new MILambdas(genparams)
+		mtdinfos = Enumerable::Select<of MethodInfo,MethodInfo>(mtdinfos, new Func<of MethodInfo,MethodInfo>(mil::InstGenMtd()))
+		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(mtdinfos)
+
+		if matches[l] = 0 then
+			mtdinfo = null
+		else
+			var bind as Binder = Type::get_DefaultBinder()
+			var bf as BindingFlags = BindingFlags::Instance or BindingFlags::Static or BindingFlags::Public
+			mtdinfo =  $MethodInfo$bind::SelectMethod(bf,matches,paramst,new ParameterModifier[0])
+		end if
+
+		if mtdinfo != null then
+			MemberTyp = mtdinfo::get_ReturnType()
+		end if
+
 		return mtdinfo
 	end method
 
@@ -376,29 +390,19 @@ class public auto ansi beforefieldinit Loader
 
 		var typs as Type[] = new Type[1]
 		typs[0] = src
-		var i as integer = -1
-		var mtdinfo as MethodInfo = null
-		var mtdinfos as MethodInfo[] = LoadSpecMtds(typ)
-	
-		do until i = (mtdinfos[l] - 1)
-			i = i + 1
-			mtdinfo = mtdinfos[i]
+		var mtdinfos as IEnumerable<of MethodInfo> = LoadSpecMtds(typ)
+		var mil as MILambdas = new MILambdas(name,snk)
+		mtdinfos = Enumerable::Where<of MethodInfo>(mtdinfos, new Func<of MethodInfo,boolean>(mil::IsSameNameAndReturn()))
+		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(mtdinfos)
 
-			if mtdinfo::get_Name() = name then
-				if CompareParamsToTyps(mtdinfo::GetParameters(), typs) then
-					if mtdinfo::get_ReturnType()::Equals(snk) then
-						return mtdinfo
-					else
-						mtdinfo = null
-					end if
-				else
-					mtdinfo = null
-			end if
-			else
-				mtdinfo = null
-			end if
-		end do
-		return mtdinfo
+		if matches[l] = 0 then
+			return null
+		else
+			var bind as Binder = Type::get_DefaultBinder()
+			var bf as BindingFlags = BindingFlags::Instance or BindingFlags::Static or BindingFlags::Public
+			return $MethodInfo$bind::SelectMethod(bf,matches,typs,new ParameterModifier[0])
+		end if
+
 	end method
 
 	method public static FieldInfo LoadField(var typ as Type, var name as string)

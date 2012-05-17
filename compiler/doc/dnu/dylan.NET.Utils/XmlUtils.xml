@@ -16,6 +16,8 @@
     <AssemblyVersion>11.2.8.7</AssemblyVersion>
     <AssemblyVersion>11.2.8.9</AssemblyVersion>
     <AssemblyVersion>11.2.9.1</AssemblyVersion>
+    <AssemblyVersion>11.2.9.2</AssemblyVersion>
+    <AssemblyVersion>11.2.9.3</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -44,6 +46,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -69,6 +73,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XElement</ReturnType>
@@ -103,6 +109,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XElement</ReturnType>
@@ -137,6 +145,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XElement</ReturnType>
@@ -171,6 +181,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XElement</ReturnType>
@@ -205,6 +217,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -237,6 +251,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XAttribute</ReturnType>
@@ -271,6 +287,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XName</ReturnType>
@@ -303,6 +321,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XElement</ReturnType>
@@ -335,6 +355,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XElement</ReturnType>
@@ -369,9 +391,34 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XElement</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="el" Type="System.Xml.Linq.XElement" />
+        <Parameter Name="XPathQuery" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="el">To be added.</param>
+        <param name="XPathQuery">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="XPathSelectEls">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;System.Xml.Linq.XElement&gt; XPathSelectEls (System.Xml.Linq.XElement el, string XPathQuery);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class System.Xml.Linq.XElement&gt; XPathSelectEls(class System.Xml.Linq.XElement el, string XPathQuery) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Xml.Linq.XElement&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="el" Type="System.Xml.Linq.XElement" />

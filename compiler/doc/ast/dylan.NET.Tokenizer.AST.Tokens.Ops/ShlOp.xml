@@ -20,6 +20,8 @@
     <AssemblyVersion>11.2.8.7</AssemblyVersion>
     <AssemblyVersion>11.2.8.9</AssemblyVersion>
     <AssemblyVersion>11.2.9.1</AssemblyVersion>
+    <AssemblyVersion>11.2.9.2</AssemblyVersion>
+    <AssemblyVersion>11.2.9.3</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ops.AritOp</BaseTypeName>
@@ -52,6 +54,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>

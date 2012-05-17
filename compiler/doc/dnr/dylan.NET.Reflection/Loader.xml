@@ -16,6 +16,8 @@
     <AssemblyVersion>11.2.8.7</AssemblyVersion>
     <AssemblyVersion>11.2.8.9</AssemblyVersion>
     <AssemblyVersion>11.2.9.1</AssemblyVersion>
+    <AssemblyVersion>11.2.9.2</AssemblyVersion>
+    <AssemblyVersion>11.2.9.3</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -44,6 +46,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -68,6 +72,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.MethodInfo[]</ReturnType>
@@ -101,6 +107,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -135,6 +143,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -162,6 +172,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -189,6 +201,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -216,6 +230,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -243,6 +259,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
@@ -264,6 +282,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type[]</ReturnType>
@@ -295,6 +315,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.MethodInfo</ReturnType>
@@ -333,6 +355,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -364,6 +388,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.MethodInfo</ReturnType>
@@ -399,6 +425,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.ConstructorInfo</ReturnType>
@@ -433,6 +461,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.FieldInfo</ReturnType>
@@ -444,6 +474,81 @@
       <Docs>
         <param name="typ">To be added.</param>
         <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadGenericMethod">
+      <MemberSignature Language="C#" Value="public static System.Reflection.MethodInfo LoadGenericMethod (Type typ, string name, Type[] genparams, Type[] paramst);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Reflection.MethodInfo LoadGenericMethod(class System.Type typ, string name, class System.Type[] genparams, class System.Type[] paramst) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="genparams" Type="System.Type[]" />
+        <Parameter Name="paramst" Type="System.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="genparams">To be added.</param>
+        <param name="paramst">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadGenericMtdOverlds">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;System.Reflection.MethodInfo&gt; LoadGenericMtdOverlds (Type typ, string name, int paramlen);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class System.Reflection.MethodInfo&gt; LoadGenericMtdOverlds(class System.Type typ, string name, int32 paramlen) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Reflection.MethodInfo&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="paramlen" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="paramlen">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadGenericMtdOverlds">
+      <MemberSignature Language="C#" Value="public static System.Reflection.MethodInfo[] LoadGenericMtdOverlds (Type typ, string name, int paramlen);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Reflection.MethodInfo[] LoadGenericMtdOverlds(class System.Type typ, string name, int32 paramlen) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Reflection.MethodInfo[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="paramlen" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="paramlen">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -467,6 +572,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.MethodInfo</ReturnType>
@@ -497,6 +604,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.MethodInfo</ReturnType>
@@ -508,6 +617,26 @@
       <Docs>
         <param name="typ">To be added.</param>
         <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadSpecMtds">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;System.Reflection.MethodInfo&gt; LoadSpecMtds (Type typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class System.Reflection.MethodInfo&gt; LoadSpecMtds(class System.Type typ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Reflection.MethodInfo&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -530,6 +659,7 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.MethodInfo[]</ReturnType>
@@ -562,6 +692,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -589,6 +721,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -616,6 +750,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -637,6 +773,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type[]</ReturnType>
@@ -669,6 +807,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -693,6 +833,8 @@
         <AssemblyVersion>11.2.8.7</AssemblyVersion>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

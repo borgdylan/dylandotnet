@@ -1,6 +1,16 @@
 #refstdasm "mscorlib.dll"
+#refstdasm "System.dll"
+#refstdasm "System.Core.dll"
+#refstdasm "System.Xml.Linq.dll"
 
 import System
+import System.IO
+import System.Xml
+import System.Linq
+import System.Xml.Linq
+import System.Xml.Xpath
+import System.Reflection
+import System.Collections.Generic
 import template
 
 #debug on
@@ -13,9 +23,89 @@ delegate public auto ansi void MyDelegate(var x as integer)
 class public auto ansi beforefieldinit sealed SC
 end class
 
+class public auto ansi abstract interface IHello
+	method public hidebysig virtual abstract newslot void Hello()
+end class
+
+class public auto ansi abstract interface IHello2
+	method public hidebysig virtual abstract newslot void Hello2()
+end class
+
+class public auto ansi abstract interface IHello3
+	method public hidebysig virtual abstract newslot void Hello()
+end class
+
+class public auto ansi HelloClass implements IHello, IHello2, IHello3
+
+	method public hidebysig virtual final newslot void IHello.Hello()
+		Console::WriteLine("I Implement Hello")
+	end method
+
+	method public hidebysig virtual final newslot void IHello3.Hello()
+		Console::WriteLine("I Implement Hello3")
+	end method
+
+	method public hidebysig virtual final newslot void Hello2()
+		Console::WriteLine("I Implement Hello2")
+	end method
+
+end class
+
+
 class public auto ansi Program
 
 	field public static integer X
+	field public static IEnumerable<of string> Y
+
+	method public static void PrintXElement(var el as XElement)
+		Console::Write(el::Attribute(XName::Get("id"))::get_Value()::ToString())
+		Console::WriteLine(":" + el::get_Value()::ToString())
+	end method
+
+	method public static void gentest()
+		var quot as string = Convert::ToString($char$34)
+		var sw as StringWriter = new StringWriter()
+		sw::WriteLine("<root>")
+		sw::WriteLine("    <a id=" + quot + "1" + quot + ">Hello</a>")
+		sw::WriteLine("    <a id=" + quot + "2" + quot + ">World</a>")
+		sw::WriteLine("    <a id=" + quot + "3" + quot + ">!!</a>")
+		sw::WriteLine("</root>")
+		var xel as XElement = XElement::Parse(sw::ToString())
+		Console::WriteLine(xel::ToString())
+		var iexel as IEnumerable<of XElement> = XPath.Extensions::XPathSelectElements(xel,"./a")
+		var ienumxel as IEnumerator<of XElement> = iexel::GetEnumerator()
+		var pxel as Action<of XElement> = new Action<of XElement>(PrintXElement())
+		do while ienumxel::MoveNext()
+			pxel::Invoke(ienumxel::get_Current())
+		end do
+		Console::WriteLine("-------------------")
+		var lloi as List<of integer> = new List<of integer>()
+		var loi as IList<of integer> = $IList<of integer>$lloi
+		loi::Add(23)
+		loi::Add(11)
+		loi::Add(45)
+		//loi::RemoveAt(0)
+		var ienumloi as IEnumerator<of integer> = loi::GetEnumerator()
+		do while ienumloi::MoveNext()
+			Console::WriteLine(ienumloi::get_Current())
+		end do
+		Console::WriteLine("-------------------")
+		Console::WriteLine(Enumerable::Min<of integer>($IEnumerable<of integer>$loi))
+		Console::WriteLine("-------------------")
+		Console::WriteLine(Enumerable::Max<of integer>($IEnumerable<of integer>$loi))
+		Console::WriteLine("-------------------")
+		lloi::Sort()
+		ienumloi = loi::GetEnumerator()
+		do while ienumloi::MoveNext()
+			Console::WriteLine(ienumloi::get_Current())
+		end do
+		Console::WriteLine("-------------------")
+		lloi::Reverse()
+		ienumloi = loi::GetEnumerator()
+		do while ienumloi::MoveNext()
+			Console::WriteLine(ienumloi::get_Current())
+		end do
+	end method
 
 	method public static void exthrow()
 		try
@@ -74,9 +164,19 @@ class public auto ansi Program
 	end method
 
 	method public static void main()
+		gentest()
+		var hc as HelloClass = new HelloClass()
+		var ih as IHello = $IHello$hc
+	    ih::Hello()
+		var ih2 as IHello2 = $IHello2$hc
+		ih2::Hello2()
+		var ih3 as IHello3 = $IHello3$hc
+		ih3::Hello()
+		hc::Hello2()
 		exthrow()
 		var a as string = "z"
 		var b as boolean = "a" like "^(.)*$"
+		b = 10 == $integer$MethodAttributes::Final
 		b = new Decimal(4) == new Decimal(78)
 		b = (100ui > 67ui) or (100ui >= 67ui) or (100ui < 67ui) or (100ui <= 67ui)
 		b = test2()[0]
@@ -108,6 +208,8 @@ class public auto ansi Program
 		dv = 9223372036854775802m
 		dv = 2.5m
 		dv = 14028230000000000000000000006m
+		var typ as Type = gettype string[]
+		typ = gettype Func<of IEnumerable<of XElement> >
 	end method
 
 end class

@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.9.1">
+    <Assembly Name="tokenizer.AST" Version="11.2.9.3">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -108,6 +108,7 @@
       <Type Name="ExtendsTok" Kind="Class" />
       <Type Name="FieldTok" Kind="Class" />
       <Type Name="FinallyTok" Kind="Class" />
+      <Type Name="GenericMethodNameTok" Kind="Class" />
       <Type Name="GetTok" Kind="Class" />
       <Type Name="GettypeCallTok" Kind="Class" />
       <Type Name="GettypeTok" Kind="Class" />
@@ -115,6 +116,7 @@
       <Type Name="Ident" Kind="Class" />
       <Type Name="IfTok" Kind="Class" />
       <Type Name="ImageTok" Kind="Class" />
+      <Type Name="ImplementsTok" Kind="Class" />
       <Type Name="ImportTok" Kind="Class" />
       <Type Name="IncludeTok" Kind="Class" />
       <Type Name="LabelTok" Kind="Class" />
@@ -230,6 +232,7 @@
       <Type Name="AddOp" Kind="Class" />
       <Type Name="AndOp" Kind="Class" />
       <Type Name="AritOp" Kind="Class" />
+      <Type Name="AsOp" Kind="Class" />
       <Type Name="AssignOp" Kind="Class" />
       <Type Name="ConditionalOp" Kind="Class" />
       <Type Name="DecOp" Kind="Class" />
@@ -238,6 +241,7 @@
       <Type Name="GeOp" Kind="Class" />
       <Type Name="GtOp" Kind="Class" />
       <Type Name="IncOp" Kind="Class" />
+      <Type Name="IsOp" Kind="Class" />
       <Type Name="LeOp" Kind="Class" />
       <Type Name="LikeOp" Kind="Class" />
       <Type Name="LogicalOp" Kind="Class" />

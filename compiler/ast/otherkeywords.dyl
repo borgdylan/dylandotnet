@@ -102,6 +102,9 @@ end class
 class public auto ansi ExtendsTok extends Token
 end class
 
+class public auto ansi ImplementsTok extends Token
+end class
+
 class public auto ansi EnumTok extends Token
 end class
 

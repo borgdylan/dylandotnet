@@ -13,6 +13,7 @@ class public auto ansi beforefieldinit ILEmitter
 	field public static ILGenerator ILGen
 	field public static ISymbolDocumentWriter DocWriter
 	field public static boolean StaticFlg
+	field public static boolean AbstractFlg
 	field public static boolean DebugFlg
 	field public static integer LocInd
 	field public static integer ArgInd
@@ -26,6 +27,7 @@ class public auto ansi beforefieldinit ILEmitter
 		Constr = null
 		ILGen = null
 		StaticFlg = false
+		AbstractFlg = false
 		DebugFlg = false
 		LocInd = 0
 		ArgInd = 0

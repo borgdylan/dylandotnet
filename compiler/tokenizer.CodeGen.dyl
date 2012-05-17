@@ -1,6 +1,6 @@
-//The Parser for the dylan.NET language
+//The Code Generator for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v. 11.2.9.1 or later
+//compile with dylan.NET v. 11.2.9.3 or later
 
 //    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -11,6 +11,8 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 #refstdasm "mscorlib.dll"
+#refstdasm "System.dll"
+#refstdasm "System.Core.dll"
 #refasm "tokenizer.AST.dll"
 #refasm "tokenizer.Lexer.dll"
 #refasm "tokenizer.Parser.dll"
@@ -18,9 +20,12 @@
 #refasm "dnr.dll"
 
 import System
+import System.IO
+import System.Linq
 import System.Diagnostics
 import System.Diagnostics.SymbolStore
-import System.IO
+import System.Collections
+import System.Collections.Generic
 import System.Reflection
 import System.Reflection.Emit
 import System.Runtime.InteropServices
@@ -44,13 +49,15 @@ import dylan.NET.Tokenizer.CodeGen
 #debug on
 
 assembly tokenizer.CodeGen dll
-ver 11.2.9.1
+ver 11.2.9.3
 
 namespace dylan.NET.Tokenizer.CodeGen
 	#include "codegen/varitem.dyl"
 	#include "codegen/fielditem.dyl"
 	#include "codegen/methoditem.dyl"
+	#include "codegen/milambdas.dyl"
 	#include "codegen/ctoritem.dyl"
+	#include "codegen/cilambdas.dyl"
 	#include "codegen/labelitem.dyl"
 	#include "codegen/loopitem.dyl"
 	#include "codegen/ifitem.dyl"

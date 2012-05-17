@@ -61,4 +61,8 @@ class public auto ansi XmlUtils
 		return XPath.Extensions::XPathSelectElement(el, XPathQuery)
 	end method
 
+	method public static IEnumerable<of XElement> XPathSelectEls(var el as XElement, var XPathQuery as string)
+		return XPath.Extensions::XPathSelectElements(el, XPathQuery)
+	end method
+
 end class

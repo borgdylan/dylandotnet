@@ -7,7 +7,7 @@
             <summary>Holds the resources used during assembly making.</summary>
             <remarks />
         </member>
-        <member name="C:dylan.NET.Reflection.AsmFactory">
+        <member name="C:dylan.NET.Reflection.AsmFactory()">
             <summary>Initialises this class.</summary>
             <remarks />
         </member>
@@ -50,7 +50,7 @@
             <summary>When set indicates that a method chain beyond field chaining boundaries is in progress.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.AsmFactory.CreateTyp">
+        <member name="M:dylan.NET.Reflection.AsmFactory.CreateTyp()">
             <summary>Calls CreateType on the current TypeBuilder.</summary>
             <remarks>Usually done at the end of a class.</remarks>
         </member>
@@ -126,23 +126,23 @@
             <summary>If set indicates that a class is still being constructed.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.AsmFactory.Init">
+        <member name="M:dylan.NET.Reflection.AsmFactory.Init()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.AsmFactory.InitConstr">
+        <member name="M:dylan.NET.Reflection.AsmFactory.InitConstr()">
             <summary>Initialises AsmFactory and ILEmitter to work with a new ConstructorBuilder.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.AsmFactory.InitDelConstr">
+        <member name="M:dylan.NET.Reflection.AsmFactory.InitDelConstr()">
             <summary>Initialises AsmFactory to work with a new Delegate's ConstructorBuilder.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.AsmFactory.InitDelMet">
+        <member name="M:dylan.NET.Reflection.AsmFactory.InitDelMet()">
             <summary>Initialises AsmFactory to work with a new Delegate's MethodBuilder.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.AsmFactory.InitMtd">
+        <member name="M:dylan.NET.Reflection.AsmFactory.InitMtd()">
             <summary>Initialises AsmFactory and ILEmitter to work with a new MethodBuilder.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -194,11 +194,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Reflection.ConsolePrinter">
+        <member name="C:dylan.NET.Reflection.ConsolePrinter()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ConsolePrinter.PrintString">
+        <member name="M:dylan.NET.Reflection.ConsolePrinter.PrintString()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -215,9 +215,13 @@
             <summary>This class contains methods used for emitting opcodes to the current IL generator.</summary>
             <remarks />
         </member>
-        <member name="C:dylan.NET.Reflection.ILEmitter">
+        <member name="C:dylan.NET.Reflection.ILEmitter()">
             <summary>Initialises this class.</summary>
             <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.AbstractFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.AddDocWriter(System.Diagnostics.SymbolStore.ISymbolDocumentWriter)">
             <param name="srcf">To be added.</param>
@@ -251,7 +255,7 @@
             <summary>Declares a variable in the current method with the given name and type.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.DefineLbl">
+        <member name="M:dylan.NET.Reflection.ILEmitter.DefineLbl()">
             <summary>Defines a label in the current method.</summary>
             <returns>The label structure describing the label just defined.</returns>
             <remarks />
@@ -269,7 +273,7 @@
             <summary>Emits variants of the 'add' opcode accrodingly.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitAnd">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitAnd()">
             <summary>Emits the 'and' opcode.</summary>
             <remarks />
         </member>
@@ -318,7 +322,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCeq">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCeq()">
             <summary>Emits the 'ceq' opcode.</summary>
             <remarks />
         </member>
@@ -342,7 +346,7 @@
             <summary>Emits the 'clt(.un)' opcode.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCneq">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCneq()">
             <summary>Emits a sequence of 'ceq', 'ldc.i4.0' and 'ceq'.</summary>
             <remarks />
         </member>
@@ -351,23 +355,23 @@
             <summary>Emits the 'constrained.' prefix.</summary>
             <remarks>Emit only before a 'callvirt' that calls a virtual method on a valuetype. WORKS PROPERLY ONLY UNDER MONO. On .NET use a call instead of constrained with callvirt (works properly on both VMs).</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI()">
             <summary>Emits the 'conv.i' opcode.</summary>
             <remarks>Useful in preparing indices to work with array opcodes.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI4">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI4()">
             <summary>Emits the 'conv.i4' opcode.</summary>
             <remarks>Useful to convert array lengths returned by 'ldlen' to more appropriate format.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvU">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvU()">
             <summary>Emits the 'conv.u' opcode.</summary>
             <remarks>Useful in preparing indices to work with array opcodes.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitDelegateAdd">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitDelegateAdd()">
             <summary>Emits a 'call' to Delegate.Combine.</summary>
             <remarks>Useful for supporting '+' overload on delegates.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitDelegateSub">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitDelegateSub()">
             <summary>Emits a 'call' to Delegate.Remove.</summary>
             <remarks>Useful for supporting '-' overload on delegates.</remarks>
         </member>
@@ -376,15 +380,15 @@
             <summary>Emits the variants of the 'div' opcode accordingly.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitDup">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitDup()">
             <summary>Emits the 'dup' opcode.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitEndTry">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitEndTry()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitFinally">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitFinally()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -503,7 +507,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdlen">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdlen()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -517,7 +521,7 @@
             <summary>Emits one of the variants of the 'ldloca' opcode.</summary>
             <remarks>If the actual value is needed use EmitLdloc instead.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdnull">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdnull()">
             <summary>Emits the 'ldnull' opcode.</summary>
             <remarks>Useful for obtaining null references.</remarks>
         </member>
@@ -546,7 +550,7 @@
             <summary>Emits the 'ldvirtftn' opcode.</summary>
             <remarks>An isntance of a class must be loaded prior to this emission. If the pointer to a static method is required use EmitLdftn  instead.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLike">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLike()">
             <summary>Emits a 'call' to Regex.IsMatch.</summary>
             <remarks>Useful to compare strings against a pattern. This adds an implicit reference to System.dll!!! </remarks>
         </member>
@@ -555,11 +559,11 @@
             <summary>Emits one of the variants of the 'mul' opcode.</summary>
             <remarks>Multiplies its operands.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNand">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNand()">
             <summary>Emits a sequence of 'and', 'ldc.i4.0' and 'ceq'.</summary>
             <remarks>Applies a 1's complemented 'and' to its operands (nand).</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNeg">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNeg()">
             <summary>Emits the 'neg' opcode.</summary>
             <remarks>Does a 2's complement negation on its operand.</remarks>
         </member>
@@ -573,23 +577,23 @@
             <summary>Emits the 'newobj' opcode.</summary>
             <remarks>Useful for producing object instances.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNLike">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNLike()">
             <summary>Emits a sequence of Regex.IsMatch, 'ldc.i4.0' and 'ceq' .</summary>
             <remarks>Useul to check if a string does not conform to a pattern (notlike).</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNor">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNor()">
             <summary>Emits a sequence of 'or', 'ldc.i4.0' and 'ceq'.</summary>
             <remarks>dpes a 1's complemented 'or' (nor) on its operands.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNot">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNot()">
             <summary>Emits the 'not' opcode.</summary>
             <remarks>For booleans consider using 'ldc.i4.0' followed by a 'ceq' instead i.e. use EmitLdcI4(0) and EmitCeq.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitOr">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitOr()">
             <summary>Emits the 'or' opcode.</summary>
             <remarks>Does an inclusive 'or' on its opcode.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitPop">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitPop()">
             <summary>Emits the 'pop' opcode.</summary>
             <remarks>Usful when a value on the stack is not needed.</remarks>
         </member>
@@ -598,11 +602,11 @@
             <summary>Emits the 'rem' opcode.</summary>
             <remarks>Does a modulo operantion on the operands (%).</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitRet">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitRet()">
             <summary>Emits the 'ret' opcode.</summary>
             <remarks>Useful for returning the control to the method which called this one.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitShl">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitShl()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -636,15 +640,15 @@
             <summary>Emist one of the variants of the 'stloc' opcode.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStrAdd">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStrAdd()">
             <summary>Emits a call to String.Concat.</summary>
             <remarks>Useful for supporting string concatenation as addition of strings.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStrCeq">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStrCeq()">
             <summary>Emits a combination of String.Compare, 'ldc.i4.0' and 'ceq'.</summary>
             <remarks>Checks if two strings are equal. The use of the Equality overload in System.String is preferred over this.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStrCneq">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStrCneq()">
             <summary>Emits a combination of String.Compare, 'ldc.i4.0','ceq','ldc.i4.0' and 'ceq'.</summary>
             <remarks>Checks if two strings are not equal. The  use of the Inequality overload in System.String is preferred over this.</remarks>
         </member>
@@ -658,11 +662,11 @@
             <summary>Emits one of the variants of the 'sub' opcode.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitThrow">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitThrow()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitTry">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitTry()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -676,11 +680,11 @@
             <summary>Emits the 'unbox.any' opcode.</summary>
             <remarks>This unoxes the valuetype completely or if the reference is to a reference type casts it to the specified type.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitXnor">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitXnor()">
             <summary>Emits a sequence of 'xor', 'ldc.i4.0' and 'ceq'.</summary>
             <remarks>Does a 1's complemented 'xor' (xnor) on its operands.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitXor">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitXor()">
             <summary>Emist the 'xor' opcode.</summary>
             <remarks>Does an exclusive 'or' (xor) on its operands .</remarks>
         </member>
@@ -688,7 +692,7 @@
             <summary>Holds the current IL Generator.</summary>
             <remarks>All the Emit methods use the generator held here.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.Init">
+        <member name="M:dylan.NET.Reflection.ILEmitter.Init()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -714,11 +718,11 @@
             <summary>Holds the current MethodBuilder.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.PopDocWriter">
+        <member name="M:dylan.NET.Reflection.ILEmitter.PopDocWriter()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.PopSrcFile">
+        <member name="M:dylan.NET.Reflection.ILEmitter.PopSrcFile()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -734,7 +738,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Reflection.Importer">
+        <member name="C:dylan.NET.Reflection.Importer()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -768,7 +772,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.Importer.Init">
+        <member name="M:dylan.NET.Reflection.Importer.Init()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -780,7 +784,7 @@
             <summary>This class contains the infrastructure to return an OpCode instance given an opcode's name.</summary>
             <remarks>Use this class whenever you need an OpCode instance.</remarks>
         </member>
-        <member name="C:dylan.NET.Reflection.InstructionHelper">
+        <member name="C:dylan.NET.Reflection.InstructionHelper()">
             <summary>Constructs a new InstructionHelper".</summary>
             <remarks />
         </member>
@@ -801,7 +805,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Reflection.Loader">
+        <member name="C:dylan.NET.Reflection.Loader()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -883,6 +887,31 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadGenericMethod(System.Type,System.String,System.Type[],System.Type[])">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <param name="genparams">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadGenericMtdOverlds(System.Type,System.String,System.Int32)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <param name="paramlen">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadGenericMtdOverlds(System.Type,System.String,System.Int32)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <param name="paramlen">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.Loader.LoadMethod(System.Type,System.String,System.Type[])">
             <param name="typ">To be added.</param>
             <param name="name">To be added.</param>
@@ -894,6 +923,12 @@
         <member name="M:dylan.NET.Reflection.Loader.LoadMethodWithoutParams(System.Type,System.String)">
             <param name="typ">To be added.</param>
             <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadSpecMtds(System.Type)">
+            <param name="typ">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

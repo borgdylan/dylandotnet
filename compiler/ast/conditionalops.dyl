@@ -21,6 +21,16 @@ class public auto ansi EqOp extends ConditionalOp
 
 end class
 
+// is
+class public auto ansi IsOp extends ConditionalOp
+
+	method public void IsOp()
+		me::ctor()
+		PrecNo = 8
+	end method
+
+end class
+
 // like
 class public auto ansi LikeOp extends ConditionalOp
 

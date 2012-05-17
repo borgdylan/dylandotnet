@@ -55,7 +55,9 @@ class public auto ansi StmtReader
 		
 		var tmpchrarr as char[]
 		var vtyp as Type = null
+		var typ as Type = null
 		var eval as Evaluator = null
+		var i as integer
 
 		AsmFactory::ChainFlg = false
 		ILEmitter::LineNr = stm::Line
@@ -164,6 +166,7 @@ class public auto ansi StmtReader
 			end if
 
 			var inhtyp as Type = null
+			var interftyp as Type = null
 			var reft as Type  = clss::InhClass::RefTyp
 
 			if reft = null then
@@ -199,6 +202,17 @@ class public auto ansi StmtReader
 				AsmFactory::CurnTypName = clss::ClassName::Value
 				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value, Helpers::ProcessClassAttrs(clss::Attrs), inhtyp)
 			end if
+
+			i = -1
+			do until i = (clss::ImplInterfaces[l] - 1)
+				i = i + 1
+				interftyp = Helpers::CommitEvalTTok(clss::ImplInterfaces[i])
+				if interftyp = null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::InhClass::Value + "' is not defined or is not accessible.")
+				end if
+				AsmFactory::CurnTypB::AddInterfaceImplementation(interftyp)
+			end do
+
 		elseif t[8]::IsInstanceOfType(stm) then
 			var dels as DelegateStmt = $DelegateStmt$stm
 			
@@ -310,6 +324,7 @@ class public auto ansi StmtReader
 		elseif t[11]::IsInstanceOfType(stm) then
 			var mtss as MethodStmt = $MethodStmt$stm
 			ILEmitter::StaticFlg = false
+			ILEmitter::AbstractFlg = false
 			SymTable::ResetVar()
 			SymTable::ResetIf()
 			SymTable::ResetLbl()
@@ -326,6 +341,12 @@ class public auto ansi StmtReader
 			if mtss::Params[l] != 0 then
 				Helpers::ProcessParams(mtss::Params)
 			end if
+
+			var paramstyps as Type[] = AsmFactory::TypArr
+			var mtssnamarr as string[]
+			var mtssnamarr2 as string[]
+			var overldnam as string = ""
+			var overldmtd as MethodInfo = null
 
 			if (mtssnamstr = AsmFactory::CurnTypName) or (mtssnamstr like "^ctor\d*$") then
 				StreamUtils::Write("	Adding Constructor: ")
@@ -344,8 +365,25 @@ class public auto ansi StmtReader
 			else
 				StreamUtils::Write("	Adding Method: ")
 				StreamUtils::WriteLine(mtssnamstr)
+
+				mtssnamarr = ParseUtils::StringParser(mtssnamstr, ".")
+				if mtssnamarr[l] > 1 then
+					//Console::WriteLine(mtssnamarr[l])
+					overldnam = mtssnamarr[mtssnamarr[l] - 1]
+					mtssnamarr2 = new string[mtssnamarr[l] - 1]
+					Array::Copy($Array$mtssnamarr, 0, $Array$mtssnamarr2, 0, mtssnamarr2[l])
+					typ = Loader::LoadClass(String::Join(".", mtssnamarr2))
+					mtssnamstr = typ::ToString() + "." + overldnam
+				end if
+
 				AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, Helpers::ProcessMethodAttrs(mtss::Attrs), rettyp, AsmFactory::TypArr)
 				AsmFactory::InitMtd()
+
+				if mtssnamarr[l] > 1 then
+					overldmtd = Loader::LoadMethod(typ, overldnam, paramstyps)
+					AsmFactory::CurnTypB::DefineMethodOverride(AsmFactory::CurnMetB, overldmtd)
+				end if
+
 				if AsmFactory::isNested then
 					SymTable::AddNestedMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
 				else
@@ -356,15 +394,19 @@ class public auto ansi StmtReader
 				end if
 			end if
 
-			AsmFactory::InMethodFlg = true
+			if ILEmitter::AbstractFlg = false then
+				AsmFactory::InMethodFlg = true
+			end if
 			AsmFactory::CurnMetName = mtssnamstr
 		elseif t[12]::IsInstanceOfType(stm) then
-			ILEmitter::EmitRet()
 			AsmFactory::InMethodFlg = false
-			SymTable::CheckUnusedVar()
-			if AsmFactory::CurnMetName = "main" then
-				if AsmFactory::AsmMode = "exe" then
-					AsmFactory::AsmB::SetEntryPoint(ILEmitter::Met)
+			if ILEmitter::AbstractFlg = false then
+				ILEmitter::EmitRet()
+				SymTable::CheckUnusedVar()
+				if AsmFactory::CurnMetName = "main" then
+					if AsmFactory::AsmMode = "exe" then
+						AsmFactory::AsmB::SetEntryPoint(ILEmitter::Met)
+					end if
 				end if
 			end if
 		elseif t[13]::IsInstanceOfType(stm) then

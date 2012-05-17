@@ -163,5 +163,8 @@
     <None Include="parser\parserflags.dyl" />
     <None Include="parser\stmtoptimizer.dyl" />
     <None Include="parser\tokenoptimizer.dyl" />
+    <None Include="codegen\milambdas.dyl" />
+    <None Include="codegen\cilambdas.dyl" />
+    <None Include="dnr\milambdas.dyl" />
   </ItemGroup>
 </Project>

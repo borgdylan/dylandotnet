@@ -7,7 +7,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Utils.Constants">
+        <member name="C:dylan.NET.Utils.Constants()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -54,51 +54,51 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Utils.Keyboard">
+        <member name="C:dylan.NET.Utils.Keyboard()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.Keyboard.ReadBoolean">
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Utils.Keyboard.ReadChar">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadBoolean()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.Keyboard.ReadDouble">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadChar()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.Keyboard.ReadInteger">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadDouble()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.Keyboard.ReadLong">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadInteger()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.Keyboard.ReadSbyte">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadLong()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.Keyboard.ReadShort">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadSbyte()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.Keyboard.ReadSingle">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadShort()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.Keyboard.ReadString">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadSingle()">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.Keyboard.ReadString()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -107,7 +107,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Utils.ParseUtils">
+        <member name="C:dylan.NET.Utils.ParseUtils()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -153,15 +153,15 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Utils.StreamUtils">
+        <member name="C:dylan.NET.Utils.StreamUtils()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.StreamUtils.CloseInS">
+        <member name="M:dylan.NET.Utils.StreamUtils.CloseInS()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.StreamUtils.CloseOutS">
+        <member name="M:dylan.NET.Utils.StreamUtils.CloseOutS()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -169,7 +169,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.StreamUtils.InitInOutSWithStd">
+        <member name="M:dylan.NET.Utils.StreamUtils.InitInOutSWithStd()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -191,7 +191,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.StreamUtils.ReadLine">
+        <member name="M:dylan.NET.Utils.StreamUtils.ReadLine()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -244,7 +244,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Utils.XmlUtils">
+        <member name="C:dylan.NET.Utils.XmlUtils()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -309,6 +309,13 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Utils.XmlUtils.XPathSelectEl(System.Xml.Linq.XElement,System.String)">
+            <param name="el">To be added.</param>
+            <param name="XPathQuery">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.XmlUtils.XPathSelectEls(System.Xml.Linq.XElement,System.String)">
             <param name="el">To be added.</param>
             <param name="XPathQuery">To be added.</param>
             <summary>To be added.</summary>

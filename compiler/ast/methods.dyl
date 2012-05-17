@@ -9,6 +9,33 @@
 class public auto ansi MethodNameTok extends Ident
 end class
 
+class public auto ansi GenericMethodNameTok extends MethodNameTok
+
+	field public TypeTok[] Params
+
+	method public void GenericMethodNameTok()
+		me::ctor()
+		Params = new TypeTok[0]
+	end method
+
+	//method public void GenericMethodNameTok(var value as string)
+		//me::ctor()
+		//Params = new TypeTok[0]
+	//end method
+
+	method public void AddParam(var param as TypeTok)
+		var i as integer = -1
+		var destarr as TypeTok[] = new TypeTok[Params[l] + 1]
+		do until i = Params[l] - 1
+			i = i + 1
+			destarr[i] = Params[i]
+		end do
+		destarr[Params[l]] = param
+		Params = destarr
+	end method
+
+end class
+
 class public auto ansi MethodCallTok extends Token
 
 	field public MethodNameTok Name

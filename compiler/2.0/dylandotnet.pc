@@ -5,5 +5,5 @@ pkglibdir=${libdir}/dylandotnet
 
 Name: dylan.NET
 Description: Compiler for CLI 2.0
-Version: 11.2.9.1
+Version: 11.2.9.3
 Libs: -r:${pkglibdir}/dnr.dll -r:${pkglibdir}/dnc.exe -r:${pkglibdir}/dnu.dll -r:${pkglibdir}/tokenizer.AST.dll -r:${pkglibdir}/tokenizer.Lexer.dll -r:${pkglibdir}/tokenizer.Parser.dll -r:${pkglibdir}/tokenizer.CodeGen.dll

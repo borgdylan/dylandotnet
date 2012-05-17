@@ -28,6 +28,21 @@ class public auto ansi TypeTok extends Token
 		RefTyp = null
 		OrdOp = ""
 	end method
+
+	method public void TypeTok(var value as Type)
+		me::ctor()
+		IsByRef = value::get_IsByRef()
+		if IsByRef then
+			value = value::GetElementType()
+		end if
+		IsArray = value::get_IsArray()
+		if IsArray then
+			value = value::GetElementType()
+		end if
+		RefTyp = value
+		Value = value::ToString()
+		OrdOp = ""
+	end method
 	
 	method public hidebysig virtual string ToString()
 		if IsArray and IsByRef then
@@ -57,19 +72,40 @@ class public auto ansi GenericTypeTok extends TypeTok
 		Params = new TypeTok[0]
 	end method
 
-	method public static void AddParam(var param as TypeTok)
-
+	method public void AddParam(var param as TypeTok)
 		var i as integer = -1
 		var destarr as TypeTok[] = new TypeTok[Params[l] + 1]
-
 		do until i = Params[l] - 1
 			i = i + 1
 			destarr[i] = Params[i]
 		end do
-
 		destarr[Params[l]] = param
 		Params = destarr
+	end method
 
+	method public hidebysig virtual string ToString()
+		var sw as StringWriter = new StringWriter()
+		sw::Write(Value)
+		if Params[l] > 0 then
+			sw::Write("<of ")
+			var i as integer = -1
+			do until i = (Params[l] - 1)
+				i = i + 1
+				sw::Write(Params[i]::ToString())
+				if i < (Params[l] - 1) then
+					sw::Write(", ")
+				end if
+			end do
+			sw::Write("> ")
+		end if
+		if IsArray and IsByRef then
+			sw::Write("[]&")
+		elseif IsArray then
+			sw::Write("[]")
+		elseif IsByRef then
+			sw::Write("&")
+		end if
+		return sw::ToString()
 	end method
 
 end class
