@@ -22,6 +22,7 @@
     <AssemblyVersion>11.2.9.1</AssemblyVersion>
     <AssemblyVersion>11.2.9.2</AssemblyVersion>
     <AssemblyVersion>11.2.9.3</AssemblyVersion>
+    <AssemblyVersion>11.2.9.4</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -56,6 +57,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -87,6 +89,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
@@ -121,6 +124,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -139,6 +143,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -147,7 +152,7 @@
       <Docs>
         <summary>Outputs the Token in terms of dylan.NET syntax.</summary>
         <returns>The dylan.NET syntax that represents this Token.</returns>
-        <remarks>This method is overloaded in many subclasses as this implementation is too general.</remarks>
+        <remarks>This method is overridden in many subclasses as this implementation is too general.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Value">
@@ -174,6 +179,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>

@@ -743,7 +743,7 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.Importer.AddAsm(System.Reflection.Assembly)">
-            <param name="asm">To be added.</param>
+            <param name="asmm">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

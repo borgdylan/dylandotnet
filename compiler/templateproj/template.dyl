@@ -107,6 +107,21 @@ class public auto ansi Program
 		end do
 	end method
 
+	method public static void nullabletest()
+		var a as Nullable<of integer> = $Nullable<of integer>$null
+		Console::WriteLine(a::get_HasValue())
+		a = $Nullable<of integer>$56
+		Console::WriteLine(a::get_HasValue())
+		if a::get_HasValue() then
+			Console::WriteLine($integer$a)
+		end if
+		a = new Nullable<of integer>(46)
+		Console::WriteLine(a::get_HasValue())
+		if a::get_HasValue() then
+			Console::WriteLine(a::get_Value())
+		end if
+	end method
+
 	method public static void exthrow()
 		try
 			Console::WriteLine("try")

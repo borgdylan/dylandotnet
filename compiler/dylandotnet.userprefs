@@ -1,35 +1,60 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/cilambdas.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dev/pc2dn.dyl">
     <Files>
-      <File FileName="parser/exproptimizer.dyl" Line="302" Column="50" />
-      <File FileName="parser/stmtoptimizer.dyl" Line="1212" Column="6" />
-      <File FileName="ast/typetoks.dyl" Line="112" Column="1" />
-      <File FileName="templateproj/template.dyl" Line="95" Column="37" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="824" Column="31" />
+      <File FileName="ast/typetoks.dyl" Line="533" Column="2" />
+      <File FileName="templateproj/template.dyl" Line="113" Column="31" />
       <File FileName="tests/arraytest.dyl" Line="16" Column="27" />
-      <File FileName="codegen/eval.dyl" Line="390" Column="57" />
+      <File FileName="codegen/eval.dyl" Line="645" Column="35" />
       <File FileName="codegen/opstack.dyl" Line="24" Column="16" />
-      <File FileName="tokenizer.CodeGen.dyl" Line="64" Column="32" />
-      <File FileName="ast/methods.dyl" Line="28" Column="31" />
       <File FileName="tokenizer.Parser.dyl" Line="38" Column="13" />
-      <File FileName="codegen/symtable.dyl" Line="465" Column="40" />
-      <File FileName="codegen/milambdas.dyl" Line="78" Column="13" />
-      <File FileName="codegen/cilambdas.dyl" Line="68" Column="15" />
-      <File FileName="codegen/ctoritem.dyl" Line="1" Column="1" />
+      <File FileName="codegen/symtable.dyl" Line="11" Column="46" />
+      <File FileName="codegen/typeitem.dyl" Line="42" Column="12" />
+      <File FileName="codegen/typelist.dyl" Line="59" Column="1" />
+      <File FileName="codegen/ctoritem.dyl" Line="27" Column="42" />
+      <File FileName="codegen/stmtreader.dyl" Line="365" Column="43" />
+      <File FileName="tokenizer.CodeGen.dyl" Line="52" Column="13" />
+      <File FileName="codegen/typearr.dyl" Line="1" Column="1" />
+      <File FileName="dnr/asmfactory.dyl" Line="95" Column="13" />
+      <File FileName="codegen/methoditem.dyl" Line="33" Column="33" />
+      <File FileName="parser/parserflags.dyl" Line="97" Column="12" />
+      <File FileName="parser/parser.dyl" Line="23" Column="1" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="31" Column="25" />
+      <File FileName="parser/exproptimizer.dyl" Line="25" Column="31" />
+      <File FileName="dnr/milambdas.dyl" Line="6" Column="71" />
+      <File FileName="codegen/filambdas.dyl" Line="6" Column="71" />
+      <File FileName="dnc/Mod1.dyl" Line="20" Column="7" />
+      <File FileName="tests/arit.dyl" Line="7" Column="1" />
+      <File FileName="dnu.dyl" Line="33" Column="13" />
+      <File FileName="codegen/codegenerator.dyl" Line="44" Column="35" />
+      <File FileName="dnc.dyl" Line="36" Column="13" />
+      <File FileName="codegen/milambdas.dyl" Line="6" Column="71" />
+      <File FileName="codegen/cilambdas.dyl" Line="4" Column="21" />
+      <File FileName="codegen/tilambdas.dyl" Line="5" Column="56" />
+      <File FileName="codegen/helpers.dyl" Line="747" Column="2" />
+      <File FileName="ast/literals.dyl" Line="569" Column="1" />
+      <File FileName="dnr/ilemitter.dyl" Line="1" Column="1" />
+      <File FileName="ast/ident.dyl" Line="1" Column="1" />
+      <File FileName="ast/aritops.dyl" Line="1" Column="1" />
+      <File FileName="ast/op.dyl" Line="1" Column="1" />
+      <File FileName="dnr.dyl" Line="35" Column="13" />
+      <File FileName="tokenizer.Lexer.dyl" Line="31" Column="13" />
+      <File FileName="tokenizer.AST.dyl" Line="32" Column="13" />
+      <File FileName="dev/pc2cd.dyl" Line="89" Column="63" />
+      <File FileName="dev/pc2dn.dyl" Line="90" Column="63" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
-            <Node name="codegen" expanded="True">
-              <Node name="cilambdas.dyl" selected="True" />
+            <Node name="codegen" expanded="True" />
+            <Node name="dev" expanded="True">
+              <Node name="pc2dn.dyl" selected="True" />
             </Node>
-            <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
             <Node name="dnr" expanded="True" />
-            <Node name="dnu" expanded="True" />
-            <Node name="lexer" expanded="True" />
             <Node name="parser" expanded="True" />
             <Node name="tests" expanded="True" />
           </Node>

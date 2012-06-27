@@ -654,6 +654,10 @@ class public auto ansi beforefieldinit Evaluator
 		var idtisstatic as boolean = false
 		var mcisstatic as boolean = false
 		var mcmetinf as MethodInfo = null
+		
+		if nctyp = null then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + nctok::Name::ToString() + "' is not defined.")
+		end if
 
 		if nctyp::IsSubclassOf(gettype MulticastDelegate) then
 			delcreate = true
@@ -758,11 +762,17 @@ class public auto ansi beforefieldinit Evaluator
 					else
 						if mcparenttyp::Equals(AsmFactory::CurnTypB) = false then
 							mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
+							if mcfldinf = null then
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
+							end if
 							mcparenttyp = Loader::MemberTyp
 							AsmFactory::Type02 = mcparenttyp
 							AsmFactory::Type04 = mcparenttyp
 						else
 							mcfldinf = Helpers::GetLocFld(mnstrarr[i])
+							if mcfldinf = null then
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
+							end if
 							mcparenttyp = mcfldinf::get_FieldType()
 							AsmFactory::Type02 = mcparenttyp
 							AsmFactory::Type04 = mcparenttyp
@@ -797,14 +807,21 @@ class public auto ansi beforefieldinit Evaluator
 			if idtb2 then
 				if mcparenttyp::Equals(AsmFactory::CurnTypB) = false then
 					mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], delparamarr)
-					//AsmFactory::Type02 = Loader::MemberTyp
+					if mcmetinf = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
+					end if
 				else
 					mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
-					//AsmFactory::Type02 = mcmetinf::get_ReturnType()
+					if mcmetinf = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
+					end if
 					mcisstatic = mcmetinf::get_IsStatic()
 				end if
 			else
 				mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
+				if mcmetinf = null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
+				end if
 				//AsmFactory::Type02 = mcmetinf::get_ReturnType()
 				mcisstatic = mcmetinf::get_IsStatic()
 			end if
@@ -823,6 +840,10 @@ class public auto ansi beforefieldinit Evaluator
 
 		ncctorinf = Helpers::GetLocCtor(nctyp, typarr1)
 
+		if ncctorinf = null then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Constructor with the given parameter types is not defined/accessible for the class '" + nctyp::ToString() + "'.")
+		end if
+
 		if emt  then
 			ILEmitter::EmitNewobj(ncctorinf)
 		end if
@@ -830,7 +851,7 @@ class public auto ansi beforefieldinit Evaluator
 		AsmFactory::Type02 = nctyp
 	end method
 	
-	method public void ASTEmit(var tok as Token, var emt as boolean)
+	method public void ASTEmit(var tok as Token, var emt as boolean)c
 
 		var optok as Op = new Op()
 		var rc as Token = new Token()

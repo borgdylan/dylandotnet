@@ -6,32 +6,35 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi beforefieldinit ParserFlags
+class public auto ansi ParserFlags
 
-	field public static boolean IfFlag
-	field public static boolean AssemFlg
-	field public static boolean CmtFlag
-	field public static boolean NoOptFlag
-	field public static boolean AsFlag
-	field public static boolean NegFlag
-	field public static boolean NotFlag
-	field public static boolean ConvFlag
-	field public static boolean ArrFlag
-	field public static Expr ArrSlot
-	field public static boolean RefFlag
-	field public static boolean ValinrefFlag
-	field public static TypeTok ConvTyp
-	field public static string OrdOp
-	field public static boolean isChanged
-	field public static boolean ProcessTTokOnly
-	field public static boolean DurConvFlag
-	field public static boolean IdentFlag
-	field public static boolean MetCallFlag
-	field public static boolean MetChainFlag
-	field public static boolean StringFlag
+	field public boolean IfFlag
+	//field public boolean AssemFlg
+	field public boolean CmtFlag
+	field public boolean NoOptFlag
+	field public boolean AsFlag
+	field public boolean NegFlag
+	field public boolean NotFlag
+	field public boolean ConvFlag
+	field public boolean ArrFlag
+	field public Expr ArrSlot
+	field public boolean RefFlag
+	field public boolean ValinrefFlag
+	field public TypeTok ConvTyp
+	field public string OrdOp
+	field public boolean isChanged
+	field public boolean ProcessTTokOnly
+	field public boolean DurConvFlag
+	field public boolean IdentFlag
+	field public boolean MetCallFlag
+	field public boolean MetChainFlag
+	field public boolean StringFlag
 
-	method public static void ParserFlags()
-		AssemFlg = true
+	method public void ParserFlags()
+		me::ctor()
+		//true only for first parser
+		//AssemFlg = false
+		//--------------------------
 		IfFlag = false
 		CmtFlag = false
 		NoOptFlag = false
@@ -54,7 +57,7 @@ class public auto ansi beforefieldinit ParserFlags
 		StringFlag = false
 	end method
 
-	method public static void SetUnaryFalse()
+	method public void SetUnaryFalse()
 		NegFlag = false
 		NotFlag = false
 		ConvFlag = false
@@ -68,7 +71,7 @@ class public auto ansi beforefieldinit ParserFlags
 		DurConvFlag = false
 	end method
 	
-	method public static Ident UpdateIdent(var id as Ident)
+	method public Ident UpdateIdent(var id as Ident)
 		id::DoNeg = NegFlag
 		id::DoNot = NotFlag
 		id::Conv = ConvFlag
@@ -81,33 +84,33 @@ class public auto ansi beforefieldinit ParserFlags
 		return id
 	end method
 
-	method public static NullLiteral UpdateNullLit(var id as NullLiteral)
+	method public NullLiteral UpdateNullLit(var id as NullLiteral)
 		id::Conv = ConvFlag
 		id::TTok = ConvTyp
 		return id
 	end method
 	
-	method public static MeTok UpdateMeTok(var id as MeTok)
+	method public MeTok UpdateMeTok(var id as MeTok)
 		id::Conv = ConvFlag
 		id::TTok = ConvTyp
 		return id
 	end method
 	
-	method public static CharLiteral UpdateCharLit(var id as CharLiteral)
+	method public CharLiteral UpdateCharLit(var id as CharLiteral)
 		id::Conv = ConvFlag
 		id::TTok = ConvTyp
 		id::OrdOp = OrdOp
 		return id
 	end method
 
-	method public static StringLiteral UpdateStringLit(var id as StringLiteral)
+	method public StringLiteral UpdateStringLit(var id as StringLiteral)
 		id::Conv = ConvFlag
 		id::TTok = ConvTyp
 		id::OrdOp = OrdOp
 		return id
 	end method
 	
-	method public static BooleanLiteral UpdateBoolLit(var id as BooleanLiteral)
+	method public BooleanLiteral UpdateBoolLit(var id as BooleanLiteral)
 		id::DoNot = NotFlag
 		id::Conv = ConvFlag
 		id::TTok = ConvTyp
@@ -115,7 +118,7 @@ class public auto ansi beforefieldinit ParserFlags
 		return id
 	end method
 
-	method public static NumberLiteral UpdateNumLit(var id as NumberLiteral)
+	method public NumberLiteral UpdateNumLit(var id as NumberLiteral)
 		id::DoNeg = NegFlag
 		id::DoNot = NotFlag
 		id::Conv = ConvFlag

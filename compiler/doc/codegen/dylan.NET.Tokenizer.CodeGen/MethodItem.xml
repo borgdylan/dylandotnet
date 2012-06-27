@@ -20,6 +20,7 @@
     <AssemblyVersion>11.2.9.1</AssemblyVersion>
     <AssemblyVersion>11.2.9.2</AssemblyVersion>
     <AssemblyVersion>11.2.9.3</AssemblyVersion>
+    <AssemblyVersion>11.2.9.4</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -52,6 +53,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -81,6 +83,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="nme" Type="System.String" />
@@ -119,6 +122,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.MethodBuilder</ReturnType>
@@ -150,6 +154,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -181,6 +186,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -212,12 +218,31 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

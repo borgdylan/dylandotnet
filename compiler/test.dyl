@@ -11,6 +11,7 @@
 import System
 import System.IO
 import System.Xml
+import System.Reflection.Emit
 import System.Xml.Serialization
 import System.Reflection
 import dylan.NET.Reflection
@@ -27,14 +28,14 @@ import protectedtests
 #debug on
 
 assembly test exe
-ver 1.1.0.0
+ver 1.3.0.0
 
 class public auto ansi Program
 
 	method public static void main()
-		Environment::set_CurrentDirectory("/var/www/Code/dylannet/compiler/tests")
+		Environment::set_CurrentDirectory("/var/www/Code/dylannet/compiler")
 		var arr as string[] = new string[1]
-		arr[0] = "vector.dyl"
+		arr[0] = "dnc.dyl"
 		Module1::main(arr)
 		//var ln as Line = new Line()
 		//var st as Stmt = ln::Analyze(new Stmt(),"x = Array::BinarySearch(new integer[2],12)")
@@ -60,6 +61,12 @@ class public auto ansi Program
 		//Importer::AddImp("System.Xml.Linq")
 		//Importer::AddImp("System.Collections.Generic")
 		//var t as Type = Helpers::CommitEvalTTok($TypeTok$exp::Tokens[0])
+		//var tl as TypeList = SymTable::TypeLst
+		//var ti1 as TypeItem = tl::GetTypeItem("StreamUtils")
+		//var ti2 as TypeItem = tl::GetTypeItem(ti1::TypeBldr)
+		//var ci as ConstructorBuilder = tl::GetCtor(ti1::TypeBldr,Type::EmptyTypes)
+		//var mi as MethodBuilder = tl::GetMethod(ti1::TypeBldr,"CloseOutS",Type::EmptyTypes)
+		//var fi as FieldBuilder = tl::GetField(ti1::TypeBldr,"WarnH")
 	end method
 
 end class

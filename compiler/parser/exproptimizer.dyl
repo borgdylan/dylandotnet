@@ -8,6 +8,18 @@
 
 class public auto ansi ExprOptimizer
 
+	field public ParserFlags PFlags
+	
+	method public void ExprOptimizer()
+		me::ctor()
+		PFlags = new ParserFlags()
+	end method
+	
+	method public void ExprOptimizer(var pf as ParserFlags)
+		me::ctor()
+		PFlags = pf
+	end method
+
 	method public Expr procType(var stm as Expr, var i as integer)
 
 		var lpt as Type = gettype LAParen
@@ -717,7 +729,7 @@ end if
 
 place loop
 
-if ParserFlags::MetChainFlag = false then
+if PFlags::MetChainFlag = false then
 
 i = i + 1
 
@@ -778,20 +790,20 @@ exp::Tokens[i] = ttk2
 goto fin
 end if
 
-if ParserFlags::ProcessTTokOnly = false then
+if PFlags::ProcessTTokOnly = false then
 
 typ = gettype DollarSign
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-ParserFlags::DurConvFlag = ParserFlags::DurConvFlag nor ParserFlags::DurConvFlag
-ParserFlags::isChanged = true
-if ParserFlags::DurConvFlag <> false then
-ParserFlags::ConvFlag = true
-ParserFlags::OrdOp = String::Concat("conv ", ParserFlags::OrdOp)
-str = ParserFlags::OrdOp
+PFlags::DurConvFlag = PFlags::DurConvFlag nor PFlags::DurConvFlag
+PFlags::isChanged = true
+if PFlags::DurConvFlag <> false then
+PFlags::ConvFlag = true
+PFlags::OrdOp = String::Concat("conv ", PFlags::OrdOp)
+str = PFlags::OrdOp
 str = str::Trim()
-ParserFlags::OrdOp = str
+PFlags::OrdOp = str
 end if
 exp::RemToken(i)
 i = i - 1
@@ -813,8 +825,8 @@ typ = gettype RefTok
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-ParserFlags::isChanged = true
-ParserFlags::RefFlag = true
+PFlags::isChanged = true
+PFlags::RefFlag = true
 exp::RemToken(i)
 i = i - 1
 len = exp::Tokens[l] - 1
@@ -825,8 +837,8 @@ typ = gettype ValInRefTok
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-ParserFlags::isChanged = true
-ParserFlags::ValinrefFlag = true
+PFlags::isChanged = true
+PFlags::ValinrefFlag = true
 exp::RemToken(i)
 i = i - 1
 len = exp::Tokens[l] - 1
@@ -837,8 +849,8 @@ typ = gettype TypeTok
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-if ParserFlags::DurConvFlag <> false then
-ParserFlags::ConvTyp = $TypeTok$exp::Tokens[i]
+if PFlags::DurConvFlag <> false then
+PFlags::ConvTyp = $TypeTok$exp::Tokens[i]
 exp::RemToken(i)
 i = i - 1
 len = exp::Tokens[l] - 1
@@ -851,15 +863,15 @@ typ = gettype Ident
 b = typ::IsInstanceOfType($object$tok)
 
 if b then
-if ParserFlags::DurConvFlag = false then
-b = ParserFlags::MetCallFlag or ParserFlags::IdentFlag or ParserFlags::StringFlag
+if PFlags::DurConvFlag = false then
+b = PFlags::MetCallFlag or PFlags::IdentFlag or PFlags::StringFlag
 if b then
 mcbool = true
 end if
-ParserFlags::IdentFlag = true
-if ParserFlags::isChanged then
-exp::Tokens[i] = ParserFlags::UpdateIdent($Ident$exp::Tokens[i])
-ParserFlags::SetUnaryFalse()
+PFlags::IdentFlag = true
+if PFlags::isChanged then
+exp::Tokens[i] = PFlags::UpdateIdent($Ident$exp::Tokens[i])
+PFlags::SetUnaryFalse()
 j = i
 end if
 
@@ -880,7 +892,7 @@ else
 //tt3::Value = tt2::Value
 
 exp = procType(exp,i)
-ParserFlags::ConvTyp = exp::Tokens[i]
+PFlags::ConvTyp = exp::Tokens[i]
 exp::RemToken(i)
 i = i - 1
 len = exp::Tokens[l] - 1
@@ -893,10 +905,10 @@ typ = gettype CharLiteral
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-if ParserFlags::isChanged = true then
+if PFlags::isChanged = true then
 var cl1 as CharLiteral = exp::Tokens[i]
-exp::Tokens[i] = ParserFlags::UpdateCharLit(cl1)
-ParserFlags::SetUnaryFalse()
+exp::Tokens[i] = PFlags::UpdateCharLit(cl1)
+PFlags::SetUnaryFalse()
 j = i
 end if
 goto fin
@@ -906,10 +918,10 @@ typ = gettype NullLiteral
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-if ParserFlags::isChanged = true then
+if PFlags::isChanged = true then
 var nul1 as NullLiteral = exp::Tokens[i]
-exp::Tokens[i] = ParserFlags::UpdateNullLit(nul1)
-ParserFlags::SetUnaryFalse()
+exp::Tokens[i] = PFlags::UpdateNullLit(nul1)
+PFlags::SetUnaryFalse()
 j = i
 end if
 goto fin
@@ -919,10 +931,10 @@ typ = gettype MeTok
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-if ParserFlags::isChanged = true then
+if PFlags::isChanged = true then
 var metk1 as MeTok = exp::Tokens[i]
-exp::Tokens[i] = ParserFlags::UpdateMeTok(metk1)
-ParserFlags::SetUnaryFalse()
+exp::Tokens[i] = PFlags::UpdateMeTok(metk1)
+PFlags::SetUnaryFalse()
 j = i
 end if
 goto fin
@@ -932,11 +944,11 @@ typ = gettype StringLiteral
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-ParserFlags::StringFlag = true
-if ParserFlags::isChanged = true then
+PFlags::StringFlag = true
+if PFlags::isChanged = true then
 var sl1 as StringLiteral = exp::Tokens[i]
-exp::Tokens[i] = ParserFlags::UpdateStringLit(sl1)
-ParserFlags::SetUnaryFalse()
+exp::Tokens[i] = PFlags::UpdateStringLit(sl1)
+PFlags::SetUnaryFalse()
 j = i
 end if
 goto fin
@@ -946,10 +958,10 @@ typ = gettype BooleanLiteral
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-if ParserFlags::isChanged = true then
+if PFlags::isChanged = true then
 var bl1 as BooleanLiteral = exp::Tokens[i]
-exp::Tokens[i] = ParserFlags::UpdateBoolLit(bl1)
-ParserFlags::SetUnaryFalse()
+exp::Tokens[i] = PFlags::UpdateBoolLit(bl1)
+PFlags::SetUnaryFalse()
 j = i
 end if
 goto fin
@@ -959,10 +971,10 @@ typ = gettype NumberLiteral
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-if ParserFlags::isChanged = true then
+if PFlags::isChanged = true then
 var nl1 as NumberLiteral = exp::Tokens[i]
-exp::Tokens[i] = ParserFlags::UpdateNumLit(nl1)
-ParserFlags::SetUnaryFalse()
+exp::Tokens[i] = PFlags::UpdateNumLit(nl1)
+PFlags::SetUnaryFalse()
 j = i
 end if
 goto fin
@@ -1148,13 +1160,13 @@ typ = gettype LParen
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-b = ParserFlags::MetCallFlag or ParserFlags::StringFlag or ParserFlags::IdentFlag
-if ParserFlags::IdentFlag = true then
-ParserFlags::IdentFlag = false
+b = PFlags::MetCallFlag or PFlags::StringFlag or PFlags::IdentFlag
+if PFlags::IdentFlag = true then
+PFlags::IdentFlag = false
 if b = true then
 mcbool = true
 end if
-ParserFlags::MetCallFlag = true
+PFlags::MetCallFlag = true
 exp = procMethodCall(exp, i)
 i = i - 1
 len = exp::Tokens[l] - 1
@@ -1163,9 +1175,9 @@ var mct as MethodCallTok = exp::Tokens[i]
 var prs as Expr[] = mct::Params
 var ln2 as integer = prs[l] - 1
 
-mcflgc = ParserFlags::MetCallFlag
-iflgc = ParserFlags::IdentFlag
-sflgc = ParserFlags::StringFlag
+mcflgc = PFlags::MetCallFlag
+iflgc = PFlags::IdentFlag
+sflgc = PFlags::StringFlag
 
 var i2 as integer = -1
 label loop2
@@ -1177,9 +1189,9 @@ end if
 
 place loop2
 i2 = i2 + 1
-ParserFlags::MetCallFlag = false
-ParserFlags::IdentFlag = false
-ParserFlags::StringFlag = false
+PFlags::MetCallFlag = false
+PFlags::IdentFlag = false
+PFlags::StringFlag = false
 prs[i2] = Optimize(prs[i2])
 
 if i2 = ln2 then
@@ -1192,15 +1204,15 @@ place cont2
 
 end if
 
-ParserFlags::MetCallFlag = mcflgc
-ParserFlags::IdentFlag = iflgc
-ParserFlags::StringFlag = sflgc
+PFlags::MetCallFlag = mcflgc
+PFlags::IdentFlag = iflgc
+PFlags::StringFlag = sflgc
 
 goto fin
 end if
 
 //if i > j then
-//ParserFlags::IdentFlag = false
+//PFlags::IdentFlag = false
 //end if
 
 //-------------------------------------------------------------------------------------
@@ -1208,8 +1220,8 @@ typ = gettype LSParen
 b = typ::IsInstanceOfType($object$tok)
 
 if b = true then
-if ParserFlags::IdentFlag = true then
-ParserFlags::IdentFlag = false
+if PFlags::IdentFlag = true then
+PFlags::IdentFlag = false
 exp = procIdentArrayAccess(exp, i)
 i = i - 1
 len = exp::Tokens[l] - 1
@@ -1218,34 +1230,34 @@ var aidt as Ident = exp::Tokens[i]
 var arriloc as Expr = aidt::ArrLoc
 arriloc = Optimize(arriloc)
 
-ParserFlags::IdentFlag = true
+PFlags::IdentFlag = true
 j = i
 
 else
 
-if ParserFlags::MetCallFlag = true then
-ParserFlags::MetCallFlag = false
+if PFlags::MetCallFlag = true then
+PFlags::MetCallFlag = false
 exp = procMtdArrayAccess(exp, i)
 i = i - 1
 len = exp::Tokens[l] - 1
 
-mcflgc = ParserFlags::MetCallFlag
-iflgc = ParserFlags::IdentFlag
-sflgc = ParserFlags::StringFlag
+mcflgc = PFlags::MetCallFlag
+iflgc = PFlags::IdentFlag
+sflgc = PFlags::StringFlag
 
 var amtd as MethodCallTok = exp::Tokens[i]
 var amtdn as MethodNameTok = amtd::Name
 arriloc = amtdn::ArrLoc
-ParserFlags::MetCallFlag = false
-ParserFlags::IdentFlag = false
-ParserFlags::StringFlag = false
+PFlags::MetCallFlag = false
+PFlags::IdentFlag = false
+PFlags::StringFlag = false
 arriloc = Optimize(arriloc)
 
-ParserFlags::MetCallFlag = mcflgc
-ParserFlags::IdentFlag = iflgc
-ParserFlags::StringFlag = sflgc
+PFlags::MetCallFlag = mcflgc
+PFlags::IdentFlag = iflgc
+PFlags::StringFlag = sflgc
 
-ParserFlags::MetCallFlag = true
+PFlags::MetCallFlag = true
 j = i
 end if
 
@@ -1254,9 +1266,9 @@ goto fin
 end if
 
 if i > j then
-ParserFlags::MetCallFlag = false
-ParserFlags::IdentFlag = false
-ParserFlags::StringFlag = false
+PFlags::MetCallFlag = false
+PFlags::IdentFlag = false
+PFlags::StringFlag = false
 end if
 
 //-------------------------------------------------------------------------------------
@@ -1285,12 +1297,12 @@ mctok = exp::Tokens[i]
 typ = gettype Ident
 b = typ::IsInstanceOfType($object$mctok)
 
-if b = true then
+if b then
 mcident = mctok
-b = ParserFlags::MetCallFlag or ParserFlags::IdentFlag
-if b = true then
-ParserFlags::MetCallFlag = false
-ParserFlags::IdentFlag = false
+b = PFlags::MetCallFlag or PFlags::IdentFlag
+if b then
+PFlags::MetCallFlag = false
+PFlags::IdentFlag = false
 mcint = i + 1
 mctok2 = exp::Tokens[mcint]
 mcident::MemberAccessFlg = true
@@ -1301,7 +1313,7 @@ end if
 str = mcident::Value
 b = ParseUtils::LikeOP(str, "^::(.)*$")
 if b = true then
-ParserFlags::IdentFlag = true
+PFlags::IdentFlag = true
 end if
 goto fin2
 end if
@@ -1312,10 +1324,10 @@ b = typ::IsInstanceOfType($object$mctok)
 if b = true then
 mcmetcall = mctok
 mcmetname = mcmetcall::Name
-b = ParserFlags::MetCallFlag or ParserFlags::IdentFlag
+b = PFlags::MetCallFlag or PFlags::IdentFlag
 if b = true then
-ParserFlags::MetCallFlag = false
-ParserFlags::IdentFlag = false
+PFlags::MetCallFlag = false
+PFlags::IdentFlag = false
 mcint = i + 1
 mctok2 = exp::Tokens[mcint]
 mcmetname::MemberAccessFlg = true
@@ -1327,7 +1339,7 @@ end if
 str = mcmetname::Value
 b = ParseUtils::LikeOP(str, "^::(.)*$")
 if b = true then
-ParserFlags::MetCallFlag = true
+PFlags::MetCallFlag = true
 end if
 goto fin2
 end if
@@ -1337,10 +1349,10 @@ b = typ::IsInstanceOfType($object$mctok)
 
 if b = true then
 mcstr = mctok
-b = ParserFlags::MetCallFlag or ParserFlags::IdentFlag
+b = PFlags::MetCallFlag or PFlags::IdentFlag
 if b = true then
-ParserFlags::MetCallFlag = false
-ParserFlags::IdentFlag = false
+PFlags::MetCallFlag = false
+PFlags::IdentFlag = false
 mcint = i + 1
 mctok2 = exp::Tokens[mcint]
 mcstr::MemberAccessFlg = true
@@ -1363,26 +1375,26 @@ end if
 
 place cont
 
-if ParserFlags::MetChainFlag = false then
+if PFlags::MetChainFlag = false then
 if mcbool = true then
-ParserFlags::MetChainFlag = true
+PFlags::MetChainFlag = true
 len = exp::Tokens[l]
 i = len
 mcbool = false
-ParserFlags::MetCallFlag = false
-ParserFlags::IdentFlag = false
-ParserFlags::StringFlag = false
+PFlags::MetCallFlag = false
+PFlags::IdentFlag = false
+PFlags::StringFlag = false
 //if len > 1 then
 goto loop
 //end if
 end if
 else
-ParserFlags::MetChainFlag = false
+PFlags::MetChainFlag = false
 end if
 
-ParserFlags::MetCallFlag = false
-ParserFlags::IdentFlag = false
-ParserFlags::StringFlag = false
+PFlags::MetCallFlag = false
+PFlags::IdentFlag = false
+PFlags::StringFlag = false
 
 return exp
 end method

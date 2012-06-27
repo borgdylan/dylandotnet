@@ -29,4 +29,8 @@ class public auto ansi FieldItem
 		LitVal = null
 	end method
 
+	method public hidebysig virtual string ToString()
+		return Name + " : " + FieldTyp::ToString()
+	end method
+
 end class

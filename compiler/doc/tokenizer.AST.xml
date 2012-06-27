@@ -1690,7 +1690,7 @@
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Token.ToString()">
             <summary>Outputs the Token in terms of dylan.NET syntax.</summary>
             <returns>The dylan.NET syntax that represents this Token.</returns>
-            <remarks>This method is overloaded in many subclasses as this implementation is too general.</remarks>
+            <remarks>This method is overridden in many subclasses as this implementation is too general.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.Token.Value">
             <summary>The textual value of the Token.</summary>
@@ -2866,8 +2866,8 @@
             <remarks>Also sets PrecNo accordingly.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.TypeToks.BooleanTok">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <summary>Represents a type token that is usable to assign a type of 'boolean' to something.</summary>
+            <remarks>This resolves to a type of 'System.Boolean'.</remarks>
         </member>
         <member name="C:dylan.NET.Tokenizer.AST.Tokens.TypeToks.BooleanTok()">
             <summary>To be added.</summary>
@@ -2956,31 +2956,31 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <summary>Represents a generic type token that is usable to assign a type to something.</summary>
+            <remarks>Used to represent generic types and the parameters to be substitited into their definition.</remarks>
         </member>
         <member name="C:dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <summary>Constructs a new GenericTypeTok.</summary>
+            <remarks>If you want to pass the type name during construction use the other constructor.</remarks>
         </member>
         <member name="C:dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok(System.String)">
-            <param name="value">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <param name="value">A valid type name that is reachable given the defined lists of assemblies and namespaces to import.</param>
+            <summary>Constructs a new GenericTypeTok assigning the type name's value as specified in the value parameter.</summary>
+            <remarks>If you wish to set the type name later use the other constructor and set the 'Value' field acccordingly.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok.AddParam(dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)">
-            <param name="param">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <param name="param">A type token representing a generic type parameter.</param>
+            <summary>Adds a generic type parameter to the list of generic type parameters ie. 'Params'.</summary>
+            <remarks />
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok.Params">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <summary>Holds the type tokens for the type parameters that have to be substituted into this type.</summary>
+            <remarks>The parameters may be generic or non-generic.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok.ToString()">
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
+            <summary>Outputs the GenericTypeTok in terms of dylan.NET syntax.</summary>
+            <returns>The dylan.NET syntax that represents this GenericTypeTok.</returns>
+            <remarks>This method is overrides the TypeTok implementation of ToString() since that implementation does not capture generic type parameters.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntegerTok">
             <summary>To be added.</summary>
@@ -3148,9 +3148,9 @@
             <remarks>If you wish to set the type name later use the other constructor and set the 'Value' field acccordingly.</remarks>
         </member>
         <member name="C:dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok(System.Type)">
-            <param name="value">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <param name="value">A Type instance to convert into a TypeTok.</param>
+            <summary>Constructs a new TypeTok from the given Type instance and infers the values of the Value,IsArray and IsByRef fields.</summary>
+            <remarks />
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok.IsArray">
             <summary>If set to true indicates that an array type is desired.</summary>
@@ -3161,17 +3161,17 @@
             <remarks>Normally this field gets set true by the parser after finding '&amp;' after the type name.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok.OrdOp">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <summary>Deprecated.</summary>
+            <remarks>Deprecated.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok.RefTyp">
             <summary>Holds the System.Type instance representing the required type. This is set automatically if the standard type tokens are used.</summary>
             <remarks>Make sure not to set this manually. Let the constructors of the standard type tokens or the parser/codegen infer its value instead.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok.ToString()">
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
+            <summary>Outputs the TypeTok in terms of dylan.NET syntax.</summary>
+            <returns>The dylan.NET syntax that represents this TypeTok.</returns>
+            <remarks>This method is overridden in GenericTypeTok as this implementation does not capture generic type parameters.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.TypeToks.UIntegerTok">
             <summary>To be added.</summary>

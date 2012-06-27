@@ -1,6 +1,6 @@
 <Type Name="ParserFlags" FullName="dylan.NET.Tokenizer.Parser.ParserFlags">
   <TypeSignature Language="C#" Value="public class ParserFlags" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ParserFlags extends System.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ParserFlags extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.Parser</AssemblyName>
     <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -20,6 +20,7 @@
     <AssemblyVersion>11.2.9.1</AssemblyVersion>
     <AssemblyVersion>11.2.9.2</AssemblyVersion>
     <AssemblyVersion>11.2.9.3</AssemblyVersion>
+    <AssemblyVersion>11.2.9.4</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -51,7 +52,20 @@
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ParserFlags ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -60,8 +74,8 @@
       </Docs>
     </Member>
     <Member MemberName="ArrFlag">
-      <MemberSignature Language="C#" Value="public static bool ArrFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool ArrFlag" />
+      <MemberSignature Language="C#" Value="public bool ArrFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool ArrFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -81,6 +95,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -91,8 +106,8 @@
       </Docs>
     </Member>
     <Member MemberName="ArrSlot">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Exprs.Expr ArrSlot;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.AST.Exprs.Expr ArrSlot" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr ArrSlot;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Exprs.Expr ArrSlot" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -112,6 +127,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -122,12 +138,13 @@
       </Docs>
     </Member>
     <Member MemberName="AsFlag">
-      <MemberSignature Language="C#" Value="public static bool AsFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool AsFlag" />
+      <MemberSignature Language="C#" Value="public bool AsFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool AsFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -138,8 +155,8 @@
       </Docs>
     </Member>
     <Member MemberName="AssemFlg">
-      <MemberSignature Language="C#" Value="public static bool AssemFlg;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool AssemFlg" />
+      <MemberSignature Language="C#" Value="public bool AssemFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool AssemFlg" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.5</AssemblyVersion>
@@ -148,7 +165,6 @@
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -159,8 +175,8 @@
       </Docs>
     </Member>
     <Member MemberName="CmtFlag">
-      <MemberSignature Language="C#" Value="public static bool CmtFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool CmtFlag" />
+      <MemberSignature Language="C#" Value="public bool CmtFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool CmtFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -180,6 +196,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -190,8 +207,8 @@
       </Docs>
     </Member>
     <Member MemberName="ConvFlag">
-      <MemberSignature Language="C#" Value="public static bool ConvFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool ConvFlag" />
+      <MemberSignature Language="C#" Value="public bool ConvFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool ConvFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -211,6 +228,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -221,8 +239,8 @@
       </Docs>
     </Member>
     <Member MemberName="ConvTyp">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ConvTyp;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ConvTyp" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ConvTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ConvTyp" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -242,6 +260,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
@@ -252,8 +271,8 @@
       </Docs>
     </Member>
     <Member MemberName="DurConvFlag">
-      <MemberSignature Language="C#" Value="public static bool DurConvFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool DurConvFlag" />
+      <MemberSignature Language="C#" Value="public bool DurConvFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool DurConvFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -273,6 +292,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -283,8 +303,8 @@
       </Docs>
     </Member>
     <Member MemberName="IdentFlag">
-      <MemberSignature Language="C#" Value="public static bool IdentFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool IdentFlag" />
+      <MemberSignature Language="C#" Value="public bool IdentFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool IdentFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -304,6 +324,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -314,8 +335,8 @@
       </Docs>
     </Member>
     <Member MemberName="IfFlag">
-      <MemberSignature Language="C#" Value="public static bool IfFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool IfFlag" />
+      <MemberSignature Language="C#" Value="public bool IfFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool IfFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -335,6 +356,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -345,8 +367,8 @@
       </Docs>
     </Member>
     <Member MemberName="isChanged">
-      <MemberSignature Language="C#" Value="public static bool isChanged;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool isChanged" />
+      <MemberSignature Language="C#" Value="public bool isChanged;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool isChanged" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -366,6 +388,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -376,8 +399,8 @@
       </Docs>
     </Member>
     <Member MemberName="MetCallFlag">
-      <MemberSignature Language="C#" Value="public static bool MetCallFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool MetCallFlag" />
+      <MemberSignature Language="C#" Value="public bool MetCallFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool MetCallFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -397,6 +420,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -407,8 +431,8 @@
       </Docs>
     </Member>
     <Member MemberName="MetChainFlag">
-      <MemberSignature Language="C#" Value="public static bool MetChainFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool MetChainFlag" />
+      <MemberSignature Language="C#" Value="public bool MetChainFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool MetChainFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -428,6 +452,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -438,8 +463,8 @@
       </Docs>
     </Member>
     <Member MemberName="NegFlag">
-      <MemberSignature Language="C#" Value="public static bool NegFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool NegFlag" />
+      <MemberSignature Language="C#" Value="public bool NegFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool NegFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -459,6 +484,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -469,8 +495,8 @@
       </Docs>
     </Member>
     <Member MemberName="NoOptFlag">
-      <MemberSignature Language="C#" Value="public static bool NoOptFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool NoOptFlag" />
+      <MemberSignature Language="C#" Value="public bool NoOptFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool NoOptFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -490,6 +516,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -500,8 +527,8 @@
       </Docs>
     </Member>
     <Member MemberName="NotFlag">
-      <MemberSignature Language="C#" Value="public static bool NotFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool NotFlag" />
+      <MemberSignature Language="C#" Value="public bool NotFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool NotFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -521,6 +548,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -531,8 +559,8 @@
       </Docs>
     </Member>
     <Member MemberName="OrdOp">
-      <MemberSignature Language="C#" Value="public static string OrdOp;" />
-      <MemberSignature Language="ILAsm" Value=".field public static string OrdOp" />
+      <MemberSignature Language="C#" Value="public string OrdOp;" />
+      <MemberSignature Language="ILAsm" Value=".field public string OrdOp" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -552,6 +580,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -562,8 +591,8 @@
       </Docs>
     </Member>
     <Member MemberName="ProcessTTokOnly">
-      <MemberSignature Language="C#" Value="public static bool ProcessTTokOnly;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool ProcessTTokOnly" />
+      <MemberSignature Language="C#" Value="public bool ProcessTTokOnly;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool ProcessTTokOnly" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -583,6 +612,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -593,8 +623,8 @@
       </Docs>
     </Member>
     <Member MemberName="RefFlag">
-      <MemberSignature Language="C#" Value="public static bool RefFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool RefFlag" />
+      <MemberSignature Language="C#" Value="public bool RefFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool RefFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -614,6 +644,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -624,8 +655,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetUnaryFalse">
-      <MemberSignature Language="C#" Value="public static void SetUnaryFalse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void SetUnaryFalse() cil managed" />
+      <MemberSignature Language="C#" Value="public void SetUnaryFalse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void SetUnaryFalse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -645,6 +676,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -656,8 +688,8 @@
       </Docs>
     </Member>
     <Member MemberName="StringFlag">
-      <MemberSignature Language="C#" Value="public static bool StringFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool StringFlag" />
+      <MemberSignature Language="C#" Value="public bool StringFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool StringFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -677,6 +709,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -687,8 +720,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateBoolLit">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral UpdateBoolLit (dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral id);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral UpdateBoolLit(class dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral id) cil managed" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral UpdateBoolLit (dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral id);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral UpdateBoolLit(class dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral id) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -708,6 +741,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral</ReturnType>
@@ -723,8 +757,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateCharLit">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral UpdateCharLit (dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral id);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral UpdateCharLit(class dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral id) cil managed" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral UpdateCharLit (dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral id);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral UpdateCharLit(class dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral id) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -744,6 +778,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral</ReturnType>
@@ -759,8 +794,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateIdent">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.Ident UpdateIdent (dylan.NET.Tokenizer.AST.Tokens.Ident id);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Tokens.Ident UpdateIdent(class dylan.NET.Tokenizer.AST.Tokens.Ident id) cil managed" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Ident UpdateIdent (dylan.NET.Tokenizer.AST.Tokens.Ident id);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Ident UpdateIdent(class dylan.NET.Tokenizer.AST.Tokens.Ident id) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -780,6 +815,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Ident</ReturnType>
@@ -795,8 +831,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateMeTok">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.MeTok UpdateMeTok (dylan.NET.Tokenizer.AST.Tokens.MeTok id);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Tokens.MeTok UpdateMeTok(class dylan.NET.Tokenizer.AST.Tokens.MeTok id) cil managed" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.MeTok UpdateMeTok (dylan.NET.Tokenizer.AST.Tokens.MeTok id);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.MeTok UpdateMeTok(class dylan.NET.Tokenizer.AST.Tokens.MeTok id) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.6</AssemblyVersion>
@@ -805,6 +841,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.MeTok</ReturnType>
@@ -820,8 +857,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateNullLit">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral UpdateNullLit (dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral id);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral UpdateNullLit(class dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral id) cil managed" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral UpdateNullLit (dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral id);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral UpdateNullLit(class dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral id) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
@@ -840,6 +877,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral</ReturnType>
@@ -855,8 +893,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateNumLit">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral UpdateNumLit (dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral id);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral UpdateNumLit(class dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral id) cil managed" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral UpdateNumLit (dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral id);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral UpdateNumLit(class dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral id) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -876,6 +914,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</ReturnType>
@@ -891,8 +930,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateStringLit">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral UpdateStringLit (dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral id);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral UpdateStringLit(class dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral id) cil managed" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral UpdateStringLit (dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral id);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral UpdateStringLit(class dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral id) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -912,6 +951,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral</ReturnType>
@@ -927,8 +967,8 @@
       </Docs>
     </Member>
     <Member MemberName="ValinrefFlag">
-      <MemberSignature Language="C#" Value="public static bool ValinrefFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool ValinrefFlag" />
+      <MemberSignature Language="C#" Value="public bool ValinrefFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool ValinrefFlag" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -948,6 +988,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

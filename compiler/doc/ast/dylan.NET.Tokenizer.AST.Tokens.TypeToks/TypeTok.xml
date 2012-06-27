@@ -22,6 +22,7 @@
     <AssemblyVersion>11.2.9.1</AssemblyVersion>
     <AssemblyVersion>11.2.9.2</AssemblyVersion>
     <AssemblyVersion>11.2.9.3</AssemblyVersion>
+    <AssemblyVersion>11.2.9.4</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
@@ -56,6 +57,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -87,6 +89,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
@@ -104,14 +107,16 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">A Type instance to convert into a TypeTok.</param>
+        <summary>Constructs a new TypeTok from the given Type instance and infers the values of the Value,IsArray and IsByRef fields.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsArray">
@@ -138,6 +143,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -171,6 +177,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -203,14 +210,13 @@
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Deprecated.</summary>
+        <remarks>Deprecated.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RefTyp">
@@ -237,6 +243,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
@@ -255,15 +262,16 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Outputs the TypeTok in terms of dylan.NET syntax.</summary>
+        <returns>The dylan.NET syntax that represents this TypeTok.</returns>
+        <remarks>This method is overridden in GenericTypeTok as this implementation does not capture generic type parameters.</remarks>
       </Docs>
     </Member>
   </Members>

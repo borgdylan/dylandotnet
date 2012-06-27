@@ -11,6 +11,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="C:dylan.NET.Tokenizer.Parser.ExprOptimizer(dylan.NET.Tokenizer.Parser.ParserFlags)">
+            <param name="pf">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.checkVarAs(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Boolean@)">
             <param name="stm">To be added.</param>
             <param name="b">To be added.</param>
@@ -29,6 +34,10 @@
             <param name="exp">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.Parser.ExprOptimizer.PFlags">
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procIdentArrayAccess(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
@@ -81,13 +90,26 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="C:dylan.NET.Tokenizer.Parser.Parser(dylan.NET.Tokenizer.Parser.ParserFlags)">
+            <param name="pf">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.Parser.Parser.Parse(dylan.NET.Tokenizer.AST.Stmts.StmtSet)">
             <param name="stms">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.Parser.Parser.PFlags">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.Parser.ParserFlags">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.Parser.ParserFlags()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -230,6 +252,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="C:dylan.NET.Tokenizer.Parser.StmtOptimizer()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.Parser.StmtOptimizer(dylan.NET.Tokenizer.Parser.ParserFlags)">
+            <param name="pf">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -539,6 +566,10 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.Parser.StmtOptimizer.PFlags">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.Parser.TokenOptimizer">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -547,7 +578,16 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="C:dylan.NET.Tokenizer.Parser.TokenOptimizer(dylan.NET.Tokenizer.Parser.ParserFlags)">
+            <param name="pf">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.Parser.TokenOptimizer.GenLvl">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.Parser.TokenOptimizer.isFirstToken">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -562,6 +602,10 @@
             <param name="lkahead">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.Parser.TokenOptimizer.PFlags">
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
     </members>

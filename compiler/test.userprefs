@@ -1,43 +1,39 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/milambdas.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="test.dyl">
     <Files>
-      <File FileName="test.dyl" Line="38" Column="1" />
+      <File FileName="test.dyl" Line="70" Column="1" />
       <File FileName="dnr/loader.dyl" Line="416" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="626" Column="1" />
       <File FileName="codegen/eval.dyl" Line="1020" Column="1" />
-      <File FileName="codegen/helpers.dyl" Line="1008" Column="1" />
+      <File FileName="codegen/helpers.dyl" Line="1107" Column="1" />
       <File FileName="codegen/codegenerator.dyl" Line="73" Column="1" />
       <File FileName="dnc/Mod1.dyl" Line="71" Column="10" />
       <File FileName="parser/parser.dyl" Line="25" Column="1" />
       <File FileName="parser/stmtoptimizer.dyl" Line="1517" Column="1" />
       <File FileName="parser/tokenoptimizer.dyl" Line="17" Column="1" />
-      <File FileName="codegen/stmtreader.dyl" Line="384" Column="1" />
+      <File FileName="codegen/stmtreader.dyl" Line="126" Column="1" />
       <File FileName="parser/exproptimizer.dyl" Line="1173" Column="1" />
-      <File FileName="codegen/symtable.dyl" Line="443" Column="43" />
+      <File FileName="codegen/symtable.dyl" Line="389" Column="1" />
       <File FileName="codegen/milambdas.dyl" Line="78" Column="13" />
+      <File FileName="codegen/typeitem.dyl" Line="52" Column="1" />
+      <File FileName="codegen/typelist.dyl" Line="30" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State />
       </Pad>
       <Pad Id="ClassPad">
-        <State expanded="True">
-          <Node name="test" selected="True" />
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>stm</Value>
-          <Value>i</Value>
-        </State>
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/helpers.dyl" line="1107" />
-      <Breakpoint file="/var/www/Code/dylannet/compiler/test.dyl" line="38" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/test.dyl" line="64" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

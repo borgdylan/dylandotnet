@@ -29,4 +29,8 @@ class public auto ansi MethodItem
 		ParamTyps = ptyps
 	end method
 
+	method public hidebysig virtual string ToString()
+		return Name + " : " + $string$ParamTyps[l] + " : " + MethodTyp::ToString()
+	end method
+
 end class

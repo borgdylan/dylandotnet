@@ -22,6 +22,7 @@
     <AssemblyVersion>11.2.9.1</AssemblyVersion>
     <AssemblyVersion>11.2.9.2</AssemblyVersion>
     <AssemblyVersion>11.2.9.3</AssemblyVersion>
+    <AssemblyVersion>11.2.9.4</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.Literal</BaseTypeName>
@@ -56,6 +57,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -72,6 +74,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.Boolean" />
@@ -106,6 +109,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
@@ -140,6 +144,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -173,6 +178,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -207,6 +213,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -226,6 +233,7 @@
         <AssemblyVersion>11.2.9.1</AssemblyVersion>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>

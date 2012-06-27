@@ -32,9 +32,7 @@ class public auto ansi beforefieldinit Loader
 	method public static Type LoadClass(var name as string) 
 
 		var typ as Type = null
-		var i as integer = -1
 		var curasm as Assembly = null
-		var j as integer = -1
 		var curns as string = ""
 		var nest as boolean = false
 		var asmb as AssemblyBuilder
@@ -45,10 +43,10 @@ class public auto ansi beforefieldinit Loader
 			nest = true
 		end if
 
-		do until i = (Importer::Asms[l] - 1)
-			i = i + 1
-
-			curasm = Importer::Asms[i]
+		var asms as IList<of Assembly> = Importer::Asms
+		var asmse as IEnumerator<of Assembly> = asms::GetEnumerator()
+		do while asmse::MoveNext()
+			curasm = asmse::get_Current()
 
 			if curasm = AsmFactory::AsmB then
 				asmb = $AssemblyBuilder$curasm
@@ -68,12 +66,11 @@ class public auto ansi beforefieldinit Loader
 					break
 				end if
 			end if
-			
-			j = -1
 
-			do until j = (Importer::Imps[l] - 1)
-				j = j + 1
-				curns = Importer::Imps[j]
+			var imps as IList<of string> = Importer::Imps
+			var impse as IEnumerator<of string> = imps::GetEnumerator()
+			do while impse::MoveNext()
+				curns = impse::get_Current()
 
 				if curasm = AsmFactory::AsmB then
 					asmb = $AssemblyBuilder$curasm

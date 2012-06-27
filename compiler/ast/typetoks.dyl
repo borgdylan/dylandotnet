@@ -11,14 +11,14 @@ class public auto ansi TypeTok extends Token
 	field public boolean IsArray
 	field public boolean IsByRef
 	field public Type RefTyp
-	field public string OrdOp
+	//field public string OrdOp
 
 	method public void TypeTok()
 		me::ctor()
 		IsArray = false
 		IsByRef = false
 		RefTyp = null
-		OrdOp = ""
+		//OrdOp = ""
 	end method
 
 	method public void TypeTok(var value as string)
@@ -26,7 +26,7 @@ class public auto ansi TypeTok extends Token
 		IsArray = false
 		IsByRef = false
 		RefTyp = null
-		OrdOp = ""
+		//OrdOp = ""
 	end method
 
 	method public void TypeTok(var value as Type)
@@ -41,7 +41,7 @@ class public auto ansi TypeTok extends Token
 		end if
 		RefTyp = value
 		Value = value::ToString()
-		OrdOp = ""
+		//OrdOp = ""
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -114,7 +114,7 @@ end class
 class public auto ansi StringTok extends TypeTok
 
 	method public void StringTok()
-		me::ctor()
+		me::ctor("string")
 		RefTyp = gettype string
 	end method
 
@@ -140,7 +140,7 @@ end class
 class public auto ansi IntegerTok extends TypeTok
 
 	method public void IntegerTok()
-		me::ctor()
+		me::ctor("integer")
 		RefTyp = gettype integer
 	end method
 
@@ -166,7 +166,7 @@ end class
 class public auto ansi DoubleTok extends TypeTok
 
 	method public void DoubleTok()
-		me::ctor()
+		me::ctor("double")
 		RefTyp = gettype double
 	end method
 
@@ -192,7 +192,7 @@ end class
 class public auto ansi BooleanTok extends TypeTok
 
 	method public void BooleanTok()
-		me::ctor()
+		me::ctor("boolean")
 		RefTyp = gettype boolean
 	end method
 
@@ -218,7 +218,7 @@ end class
 class public auto ansi CharTok extends TypeTok
 
 	method public void CharTok()
-		me::ctor()
+		me::ctor("char")
 		RefTyp = gettype char
 	end method
 
@@ -226,7 +226,7 @@ class public auto ansi CharTok extends TypeTok
 		me::ctor(value)
 		RefTyp = gettype char
 	end method
-	
+
 	method public hidebysig virtual string ToString()
 		if IsArray and IsByRef then
 			return "char[]&"
@@ -244,7 +244,7 @@ end class
 class public auto ansi DecimalTok extends TypeTok
 
 	method public void DecimalTok()
-		me::ctor()
+		me::ctor("decimal")
 		RefTyp = gettype decimal
 	end method
 
@@ -270,7 +270,7 @@ end class
 class public auto ansi LongTok extends TypeTok
 
 	method public void LongTok()
-		me::ctor()
+		me::ctor("long")
 		RefTyp = gettype long
 	end method
 
@@ -296,7 +296,7 @@ end class
 class public auto ansi SByteTok extends TypeTok
 
 	method public void SByteTok()
-		me::ctor()
+		me::ctor("sbyte")
 		RefTyp = gettype sbyte
 	end method
 
@@ -322,7 +322,7 @@ end class
 class public auto ansi ShortTok extends TypeTok
 
 	method public void ShortTok()
-		me::ctor()
+		me::ctor("short")
 		RefTyp = gettype short
 	end method
 
@@ -348,7 +348,7 @@ end class
 class public auto ansi SingleTok extends TypeTok
 
 	method public void SingleTok()
-		me::ctor()
+		me::ctor("single")
 		RefTyp = gettype single
 	end method
 
@@ -374,7 +374,7 @@ end class
 class public auto ansi ObjectTok extends TypeTok
 
 	method public void ObjectTok()
-		me::ctor()
+		me::ctor("object")
 		RefTyp = gettype object
 	end method
 
@@ -400,7 +400,7 @@ end class
 class public auto ansi VoidTok extends TypeTok
 
 	method public void VoidTok()
-		me::ctor()
+		me::ctor("void")
 		RefTyp = gettype void
 	end method
 
@@ -418,7 +418,7 @@ end class
 class public auto ansi UIntegerTok extends TypeTok
 
 	method public void UIntegerTok()
-		me::ctor()
+		me::ctor("uinteger")
 		RefTyp = gettype uinteger
 	end method
 
@@ -444,7 +444,7 @@ end class
 class public auto ansi ULongTok extends TypeTok
 
 	method public void ULongTok()
-		me::ctor()
+		me::ctor("ulong")
 		RefTyp = gettype ulong
 	end method
 
@@ -470,7 +470,7 @@ end class
 class public auto ansi ByteTok extends TypeTok
 
 	method public void ByteTok()
-		me::ctor()
+		me::ctor("byte")
 		RefTyp = gettype byte
 	end method
 
@@ -496,7 +496,7 @@ end class
 class public auto ansi UShortTok extends TypeTok
 
 	method public void UShortTok()
-		me::ctor()
+		me::ctor("ushort")
 		RefTyp = gettype UInt16
 	end method
 
@@ -522,7 +522,7 @@ end class
 class public auto ansi IntPtrTok extends TypeTok
 
 	method public void IntPtrTok()
-		me::ctor()
+		me::ctor("intptr")
 		RefTyp = gettype IntPtr
 	end method
 

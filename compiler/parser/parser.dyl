@@ -8,29 +8,36 @@
 
 class public auto ansi Parser
 
-method public StmtSet Parse(var stms as StmtSet)
-var i as integer = -1
-var so as StmtOptimizer = null
-var len as integer = stms::Stmts[l] - 1
+	field public ParserFlags PFlags
+	
+	method public void Parser()
+		me::ctor()
+		PFlags = new ParserFlags()
+	end method
+	
+//	method public void Parser(var assemstate as boolean)
+//		me::ctor()
+//		PFlags = new ParserFlags()
+//		PFlags::AssemFlg = assemstate
+//	end method
 
-label loop
-label cont
+	method public void Parser(var pf as ParserFlags)
+		me::ctor()
+		PFlags = pf
+	end method
 
-place loop
-
-i = i + 1
-so = new StmtOptimizer()
-stms::Stmts[i] = so::Optimize(stms::Stmts[i])
-
-if i = len then
-goto cont
-else
-goto loop
-end if
-
-place cont
-
-return stms
-end method
+	method public StmtSet Parse(var stms as StmtSet)
+		var i as integer = -1
+		var so as StmtOptimizer = null
+		var len as integer = stms::Stmts[l] - 1
+		
+		do until i = len
+			i = i + 1
+			so = new StmtOptimizer(PFlags)
+			stms::Stmts[i] = so::Optimize(stms::Stmts[i])
+		end do
+		
+		return stms
+	end method
 
 end class

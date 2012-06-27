@@ -79,7 +79,7 @@ class public auto ansi beforefieldinit AsmFactory
 		ILEmitter::ILGen = CurnILGen
 		ILEmitter::DebugFlg = DebugFlg
 		ILEmitter::LocInd = -1
-		if ILEmitter::StaticFlg = true then
+		if CurnMetB::get_IsStatic() then
 			ILEmitter::ArgInd = -1
 		else
 			ILEmitter::ArgInd = 0
@@ -92,7 +92,7 @@ class public auto ansi beforefieldinit AsmFactory
 		ILEmitter::ILGen = CurnILGen
 		ILEmitter::DebugFlg = DebugFlg
 		ILEmitter::LocInd = -1
-		if ILEmitter::StaticFlg = true then
+		if CurnConB::get_IsStatic() then
 			ILEmitter::ArgInd = -1
 		else
 			ILEmitter::ArgInd = 0

@@ -17,10 +17,14 @@ class public auto ansi CtorItem
 		ParamTyps = new Type[0]
 	end method
 
-	method public void ctor1(var ptyps as Type[], var bld as ConstructorBuilder)
+	method public void CtorItem(var ptyps as Type[], var bld as ConstructorBuilder)
 		me::ctor()
 		CtorBldr = bld
 		ParamTyps = ptyps
+	end method
+
+	method public hidebysig virtual string ToString()
+		return "ctor : " + $string$ParamTyps[l]
 	end method
 
 end class

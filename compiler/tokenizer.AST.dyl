@@ -29,7 +29,7 @@ import dylan.NET.Tokenizer.AST.Tokens.Attributes
 import dylan.NET.Tokenizer.AST.Tokens.Chars
 
 assembly tokenizer.AST dll
-ver 11.2.9.3
+ver 11.2.9.4
 
 namespace dylan.NET.Tokenizer.AST.Tokens
 	#include "ast/token.dyl"

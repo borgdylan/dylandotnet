@@ -33,7 +33,7 @@ import dylan.NET.Tokenizer.CodeGen
 #debug on
 
 assembly dnc exe
-ver 11.2.9.3
+ver 11.2.9.4
 
 namespace dylan.NET.Compiler
 	#include "dnc/Mod1.dyl"

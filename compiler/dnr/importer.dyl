@@ -8,30 +8,29 @@
 
 class public auto ansi Importer
 
-	field public static Assembly[] Asms
-	field public static string[] Imps
-	field public static string[] LocImps
+	field public static List<of Assembly> Asms
+	field public static List<of string> Imps
+	field public static List<of string> LocImps
 
 	method public static void Init()
-		Asms = new Assembly[0]
-		Imps = new string[0]
+		Asms = new List<of Assembly>()
+		Imps = new List<of string>()
 	end method
 
 	method public static void Importer()
 		Init()
 	end method
 
-	method public static void AddAsm(var asm as Assembly)
-		var i as integer = -1
-		var destarr as Assembly[] = new Assembly[Asms[l] + 1]
-
-		do until i = (Asms[l] - 1) 
-			i = i + 1
-			destarr[i] = Asms[i]
-		end do
-
-		destarr[Asms[l]] = asm
-		Asms = destarr
+	method public static void AddAsm(var asmm as Assembly)
+		//var i as integer = -1
+		//var destarr as Assembly[] = new Assembly[Asms[l] + 1]
+		//do until i = (Asms[l] - 1)
+			//i = i + 1
+			//destarr[i] = Asms[i]
+		//end do
+		//destarr[Asms[l]] = asm
+		//Asms = destarr
+		Asms::Add(asmm)
 	end method
 
 	method public static string[] addelem(var srcarr as string[], var eltoadd as string)
@@ -48,11 +47,11 @@ class public auto ansi Importer
 	end method
 
 	method public static void AddImp(var imp as string)
-		Imps = addelem(Imps,imp)
+		Imps::Add(imp)
 	end method
 
 	method public static void AddLocImp(var imp as string)
-		Imps = addelem(Imps,imp)
+		Imps::Add(imp)
 	end method
 
 end class

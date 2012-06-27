@@ -746,6 +746,7 @@ class public auto ansi beforefieldinit Helpers
 		var convc as Type = gettype Convert
 		var typ as Type
 		var m1 as MethodInfo
+		//var c1 as ConstructorInfo
 		var arr as Type[] = new Type[1]
 	
 		if source::Equals(sink) then
@@ -980,10 +981,10 @@ class public auto ansi beforefieldinit Helpers
 
 	method public static FieldInfo GetLocFld(var nam as string)
 		var fldinf as FieldInfo = null
-		var fldi as FieldItem = SymTable::FindFld(nam)
+		var fldi as FieldInfo = SymTable::FindFld(nam)
 
 		if fldi != null then
-			fldinf = fldi::FieldBldr
+			fldinf = fldi
 		else
 			Loader::ProtectedFlag = true
 			fldinf = Loader::LoadField(AsmFactory::CurnInhTyp, nam)

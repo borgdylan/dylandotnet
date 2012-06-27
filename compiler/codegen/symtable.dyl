@@ -9,10 +9,10 @@
 class public auto ansi beforefieldinit SymTable
 
 	field private static List<of VarItem> VarLst
-	field private static List<of MethodItem> MetLst
-	field private static List<of CtorItem> CtorLst
 
-	field private static FieldItem[] FldLst
+	field public static TypeList TypeLst
+	field public static TypeItem CurnTypItem
+
 	field private static FieldItem[] NestedFldLst
 	field private static MethodItem[] NestedMetLst
 	field private static CtorItem[] NestedCtorLst
@@ -23,12 +23,10 @@ class public auto ansi beforefieldinit SymTable
 	field public static boolean StoreFlg
 
 	method public static void SymTable()
+		TypeLst = new TypeList()
 		VarLst = new List<of VarItem>()
-		FldLst = new FieldItem[0]
 		NestedFldLst = new FieldItem[0]
-		MetLst = new List<of MethodItem>()
 		NestedMetLst = new MethodItem[0]
-		CtorLst = new List<of CtorItem>()
 		NestedCtorLst = new CtorItem[0]
 		IfLst = new IfItem[0]
 		LoopLst = new LoopItem[0]
@@ -54,45 +52,35 @@ class public auto ansi beforefieldinit SymTable
 		VarLst::TrimExcess()
 	end method
 
-	method public static void ResetFld()
-		FldLst = new FieldItem[0]
-	end method
+//	method public static void ResetFld()
+//		FldLst::Clear()
+//		FldLst::TrimExcess()
+//	end method
 
 	method public static void ResetNestedFld()
 		NestedFldLst = new FieldItem[0]
 	end method
 
-	method public static void ResetMet()
-		MetLst::Clear()
-		MetLst::TrimExcess()
-	end method
+//	method public static void ResetMet()
+//		MetLst::Clear()
+//		MetLst::TrimExcess()
+//	end method
 
 	method public static void ResetNestedMet()
 		NestedMetLst = new MethodItem[0]
 	end method
 
-	method public static void ResetCtor()
-		CtorLst::Clear()
-		CtorLst::TrimExcess()
-	end method
+//	method public static void ResetCtor()
+//		CtorLst::Clear()
+//		CtorLst::TrimExcess()
+//	end method
 
 	method public static void ResetNestedCtor()
 		NestedCtorLst = new CtorItem[0]
 	end method
 
 	method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as Type, var lin as integer)
-
-		//var i as integer = -1
-		//var destarr as VarItem[] = new VarItem[VarLst[l] + 1]
-
-		//do until i = (VarLst[l] - 1)
-			//i = i + 1
-			//destarr[i] = VarLst[i]
-		//end do
-
 		VarLst::Add(new VarItem(nme, la, ind, typ, lin))
-		//VarLst = destarr
-
 	end method
 
 	method public static integer AddTypArr(var arr as Type[])
@@ -133,18 +121,7 @@ class public auto ansi beforefieldinit SymTable
 
 
 	method public static void AddFld(var nme as string, var typ as Type, var fld as FieldBuilder)
-
-		var i as integer = -1
-		var destarr as FieldItem[] = new FieldItem[FldLst[l] + 1]
-
-		do until i = (FldLst[l] - 1)
-			i = i + 1
-			destarr[i] = FldLst[i]
-		end do
-
-		destarr[FldLst[l]] = new FieldItem(nme, typ, fld)
-		FldLst = destarr
-
+		CurnTypItem::AddField(new FieldItem(nme, typ, fld))
 	end method
 
 	method public static void AddNestedFld(var nme as string, var typ as Type, var fld as FieldBuilder)
@@ -163,18 +140,7 @@ class public auto ansi beforefieldinit SymTable
 	end method
 
 	method public static void AddMet(var nme as string, var typ as Type, var ptyps as Type[], var met as MethodBuilder)
-
-		//var i as integer = -1
-		//var destarr as MethodItem[] = new MethodItem[MetLst[l] + 1]
-
-		//do until i = (MetLst[l] - 1)
-			//i = i + 1
-			//destarr[i] = MetLst[i]
-		//end do
-
-		MetLst::Add(new MethodItem(nme, typ, ptyps, met))
-		//MetLst = destarr
-
+		CurnTypItem::AddMethod(new MethodItem(nme, typ, ptyps, met))
 	end method
 
 	method public static void AddNestedMet(var nme as string, var typ as Type, var ptyps as Type[], var met as MethodBuilder)
@@ -193,18 +159,7 @@ class public auto ansi beforefieldinit SymTable
 	end method
 
 	method public static void AddCtor(var ptyps as Type[], var met as ConstructorBuilder)
-
-		//var i as integer = -1
-		//var destarr as CtorItem[] = new CtorItem[CtorLst[l] + 1]
-
-		//do until i = (CtorLst[l] - 1)
-			//i = i + 1
-			//destarr[i] = CtorLst[i]
-		//end do
-
-		CtorLst::Add(new CtorItem(ptyps, met))
-		//CtorLst = destarr
-
+		CurnTypItem::AddCtor(new CtorItem(ptyps, met))
 	end method
 
 	method public static void AddNestedCtor(var ptyps as Type[], var met as ConstructorBuilder)
@@ -387,17 +342,8 @@ class public auto ansi beforefieldinit SymTable
 		return null
 	end method
 
-	method public static FieldItem FindFld(var nam as string)
-
-		var i as integer = -1
-		do until i = (FldLst[l] - 1)
-			i = i + 1
-			if nam = FldLst[i]::Name then
-				return FldLst[i]
-			end if
-		end do
-
-		return null
+	method public static FieldInfo FindFld(var nam as string)
+		return $FieldInfo$CurnTypItem::GetField(nam)
 	end method
 
 	method public static boolean CmpTyps(var arra as Type[], var arrb as Type[])
@@ -419,31 +365,14 @@ class public auto ansi beforefieldinit SymTable
 	end method
 
 	method public static MethodInfo FindMet(var nam as string, var paramst as Type[])
-		var lom as IEnumerable<of MethodItem> = MetLst
-		var mil as MILambdas2 = new MILambdas2(nam, paramst)
-		var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(lom,new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
-		var matches as MethodItem[] = Enumerable::ToArray<of MethodItem>(lom2)
-
-		if matches[l] = 0 then
-			return null
-		elseif matches[l] = 1 then
-			return matches[0]::MethodBldr
-		else
-			var lod as IEnumerable<of integer[]> = Enumerable::Select<of MethodItem,integer[]>(lom2,new Func<of MethodItem,integer[]>(MILambdas2::ExtractDeriveness()))
-			var zd as Func<of integer[],integer,integer[]> = new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())
-			var lozd as IEnumerable<of integer[]> = Enumerable::Select<of integer[],integer[]>(lod,zd)
-			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(lozd,new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
-			return $MethodInfo$matches[chosen[chosen[l] - 1]]::MethodBldr
-		end if
+		return $MethodInfo$CurnTypItem::GetMethod(nam,paramst)
 	end method
 
 	method public static MethodItem FindMetNoParams(var nam as string)
 
-		//var i as integer = -1
-		var lom as IList<of MethodItem> = MetLst
+		var lom as IList<of MethodItem> = CurnTypItem::Methods
 		var ien as IEnumerator<of MethodItem> = lom::GetEnumerator()
 		do while ien::MoveNext()
-			//i = i + 1
 			if nam = ien::get_Current()::Name then
 				return ien::get_Current()
 			end if
@@ -453,39 +382,7 @@ class public auto ansi beforefieldinit SymTable
 	end method
 
 	method public static ConstructorInfo FindCtor(var paramst as Type[])
-
-		//var i as integer = -1
-		//do until i = (CtorLst[l] - 1)
-			//i = i + 1
-			//if CmpTyps(CtorLst[i]::ParamTyps, params) then
-				//return CtorLst[i]
-			//end if
-		//end do
-		var loc as IEnumerable<of CtorItem> = CtorLst
-		//var locb as IEnumerable<of ConstructorBuilder> = Enumerable::Select<of CtorItem,ConstructorBuilder>(loc,new Func<of CtorItem,ConstructorBuilder>(CILambdas::ExtractInfo()))
-		//var matches as ConstructorBuilder[] = Enumerable::ToArray<of ConstructorBuilder>(locb)
-		//if matches[l] = 0 then
-		//	return null
-		//else
-			//var bind as Binder = Type::get_DefaultBinder()
-			//var bf as BindingFlags = BindingFlags::Instance or BindingFlags::Static or BindingFlags::Public or BindingFlags::NonPublic
-			//return $ConstructorInfo$bind::SelectMethod(bf,matches,params,new ParameterModifier[0])
-		//end if
-		var cil as CILambdas = new CILambdas(paramst)
-		var loc2 as IEnumerable<of CtorItem> = Enumerable::Where<of CtorItem>(loc,new Func<of CtorItem,boolean>(cil::DetermineIfCandidate()))
-		var matches as CtorItem[] = Enumerable::ToArray<of CtorItem>(loc2)
-
-		if matches[l] = 0 then
-			return null
-		elseif matches[l] = 1 then
-			return matches[0]::CtorBldr
-		else
-			var lod as IEnumerable<of integer[]> = Enumerable::Select<of CtorItem,integer[]>(loc2,new Func<of CtorItem,integer[]>(CILambdas::ExtractDeriveness()))
-			var zd as Func<of integer[],integer,integer[]> = new Func<of integer[],integer,integer[]>(CILambdas::ZipDeriveness())
-			var lozd as IEnumerable<of integer[]> = Enumerable::Select<of integer[],integer[]>(lod,zd)
-			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(lozd,new Func<of integer[],integer[],integer[]>(CILambdas::DerivenessMax()))
-			return $ConstructorInfo$matches[chosen[chosen[l] - 1]]::CtorBldr
-		end if
+		return $ConstructorInfo$CurnTypItem::GetCtor(paramst)
 	end method
 
 end class

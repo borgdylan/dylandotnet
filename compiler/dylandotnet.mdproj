@@ -7,7 +7,7 @@
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0B8E3EEF-00E3-4633-B2BD-3D55AFD8CC6F}</ProjectGuid>
-    <ReleaseVersion>11.2.9.1</ReleaseVersion>
+    <ReleaseVersion>11.2.9.3</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
     <OutputPath>.</OutputPath>
@@ -16,7 +16,10 @@
     <MonoDevelop>
       <Properties>
         <Policies>
-          <TextStylePolicy TabWidth="4" RemoveTrailingWhitespace="True" inheritsSet="Mono" inheritsScope="text/plain" scope="text/plain" />
+          <TextStylePolicy TabWidth="4" inheritsSet="Mono" inheritsScope="text/plain" scope="text/plain" />
+          <ChangeLogPolicy UpdateMode="Nearest" VcsIntegration="None" inheritsSet="Mono">
+            <MessageStyle LineAlign="0" />
+          </ChangeLogPolicy>
         </Policies>
         <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="true" RelativeMakefileName="Makefile" RelativeConfigureInPath=".">
           <BuildFilesVar />
@@ -166,5 +169,9 @@
     <None Include="codegen\milambdas.dyl" />
     <None Include="codegen\cilambdas.dyl" />
     <None Include="dnr\milambdas.dyl" />
+    <None Include="codegen\typeitem.dyl" />
+    <None Include="codegen\filambdas.dyl" />
+    <None Include="codegen\typelist.dyl" />
+    <None Include="codegen\tilambdas.dyl" />
   </ItemGroup>
 </Project>

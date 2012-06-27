@@ -189,7 +189,6 @@ class public auto ansi StmtReader
 			end if
 			AsmFactory::CurnInhTyp = inhtyp
 
-
 			if AsmFactory::isNested = false then
 				AsmFactory::CurnTypName = clss::ClassName::Value
 				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value, Helpers::ProcessClassAttrs(clss::Attrs), inhtyp)
@@ -203,6 +202,10 @@ class public auto ansi StmtReader
 				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value, Helpers::ProcessClassAttrs(clss::Attrs), inhtyp)
 			end if
 
+			var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::ClassName::Value,AsmFactory::CurnTypB)
+			ti::InhTyp = inhtyp
+			SymTable::CurnTypItem = ti
+
 			i = -1
 			do until i = (clss::ImplInterfaces[l] - 1)
 				i = i + 1
@@ -211,7 +214,12 @@ class public auto ansi StmtReader
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::InhClass::Value + "' is not defined or is not accessible.")
 				end if
 				AsmFactory::CurnTypB::AddInterfaceImplementation(interftyp)
+
+				ti::AddInterface(interftyp)
+
 			end do
+
+			SymTable::TypeLst::AddType(ti)
 
 		elseif t[8]::IsInstanceOfType(stm) then
 			var dels as DelegateStmt = $DelegateStmt$stm
@@ -241,6 +249,10 @@ class public auto ansi StmtReader
 				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(dels::DelegateName::Value, dta, dinhtyp)
 			end if
 
+			var dti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + dels::DelegateName::Value,AsmFactory::CurnTypB)
+			dti::InhTyp = dinhtyp
+			SymTable::CurnTypItem = dti
+
 			SymTable::ResetVar()
 			SymTable::ResetIf()
 			SymTable::ResetLoop()
@@ -254,6 +266,8 @@ class public auto ansi StmtReader
 			
 			AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(dema, stdcc, dtarr)
 			AsmFactory::InitDelConstr()
+
+			SymTable::CurnTypItem::AddCtor(new CtorItem(dtarr,AsmFactory::CurnConB))
 
 			AsmFactory::TypArr = new Type[0]
 			dema = 128 or 6 or 256 or 64
@@ -270,9 +284,42 @@ class public auto ansi StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + dels::RetTyp::Value + "' is not defined or is not accessible.")
 			end if
 
-			AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod("Invoke", dema, drettyp, AsmFactory::TypArr)
+			AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod("Invoke", dema, drettyp, dtarr)
 			AsmFactory::InitDelMet()
 			Helpers::PostProcessParams(dels::Params)
+
+			SymTable::CurnTypItem::AddMethod(new MethodItem("Invoke",drettyp,dtarr,AsmFactory::CurnMetB))
+
+			var dtarr2 as Type[] = new Type[dtarr[l] + 2]
+			Array::Copy(dtarr,dtarr2,$long$dtarr[l])
+			dtarr2[dtarr2[l] - 2] = gettype AsyncCallback
+			dtarr2[dtarr2[l] - 1] = gettype object
+
+			AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod("BeginInvoke", dema, gettype IAsyncResult, dtarr2)
+			AsmFactory::InitDelMet()
+
+			SymTable::CurnTypItem::AddMethod(new MethodItem("BeginInvoke",gettype IAsyncResult,dtarr2,AsmFactory::CurnMetB))
+
+			var iter as integer = -1
+			var lis as IList<of Type> = new List<of Type>()
+			do until iter = (dtarr[l] - 1)
+				iter = iter + 1
+				if dtarr[iter]::get_IsByRef() then
+					lis::Add(dtarr[iter])
+				end if
+			end do
+			dtarr = Enumerable::ToArray<of Type>(lis)
+
+			var dtarr3 as Type[] = new Type[dtarr[l] + 1]
+			Array::Copy(dtarr,dtarr3,$long$dtarr[l])
+			dtarr3[dtarr3[l] - 1] = gettype IAsyncResult
+
+			AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod("EndInvoke", dema, drettyp, dtarr3)
+			AsmFactory::InitDelMet()
+
+			SymTable::CurnTypItem::AddMethod(new MethodItem("EndInvoke",drettyp,dtarr3,AsmFactory::CurnMetB))
+
+			SymTable::TypeLst::AddType(dti)
 
 			AsmFactory::CreateTyp()
 			if AsmFactory::isNested then
@@ -283,9 +330,6 @@ class public auto ansi StmtReader
 				SymTable::ResetNestedFld()
 			else
 				AsmFactory::inClass = false
-				SymTable::ResetMet()
-				SymTable::ResetCtor()
-				SymTable::ResetFld()
 			end if
 		elseif t[9]::IsInstanceOfType(stm) then
 			
@@ -317,9 +361,6 @@ class public auto ansi StmtReader
 				SymTable::ResetNestedFld()
 			else
 				AsmFactory::inClass = false
-				SymTable::ResetMet()
-				SymTable::ResetCtor()
-				SymTable::ResetFld()
 			end if
 		elseif t[11]::IsInstanceOfType(stm) then
 			var mtss as MethodStmt = $MethodStmt$stm

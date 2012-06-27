@@ -49,15 +49,19 @@ import dylan.NET.Tokenizer.CodeGen
 #debug on
 
 assembly tokenizer.CodeGen dll
-ver 11.2.9.3
+ver 11.2.9.4
 
 namespace dylan.NET.Tokenizer.CodeGen
 	#include "codegen/varitem.dyl"
 	#include "codegen/fielditem.dyl"
+	#include "codegen/filambdas.dyl"
 	#include "codegen/methoditem.dyl"
 	#include "codegen/milambdas.dyl"
 	#include "codegen/ctoritem.dyl"
 	#include "codegen/cilambdas.dyl"
+	#include "codegen/typeitem.dyl"
+	#include "codegen/tilambdas.dyl"
+	#include "codegen/typelist.dyl"
 	#include "codegen/labelitem.dyl"
 	#include "codegen/loopitem.dyl"
 	#include "codegen/ifitem.dyl"

@@ -5,14 +5,15 @@
     <AssemblyName>tokenizer.AST</AssemblyName>
     <AssemblyVersion>11.2.9.2</AssemblyVersion>
     <AssemblyVersion>11.2.9.3</AssemblyVersion>
+    <AssemblyVersion>11.2.9.4</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a generic type token that is usable to assign a type to something.</summary>
+    <remarks>Used to represent generic types and the parameters to be substitited into their definition.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -22,11 +23,12 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Constructs a new GenericTypeTok.</summary>
+        <remarks>If you want to pass the type name during construction use the other constructor.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -36,14 +38,15 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">A valid type name that is reachable given the defined lists of assemblies and namespaces to import.</param>
+        <summary>Constructs a new GenericTypeTok assigning the type name's value as specified in the value parameter.</summary>
+        <remarks>If you wish to set the type name later use the other constructor and set the 'Value' field acccordingly.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddParam">
@@ -53,6 +56,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -61,9 +65,10 @@
         <Parameter Name="param" Type="dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok" />
       </Parameters>
       <Docs>
-        <param name="param">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="param">A type token representing a generic type parameter.</param>
+        <summary>Adds a generic type parameter to the list of generic type parameters ie. 'Params'.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Params">
@@ -73,13 +78,14 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Holds the type tokens for the type parameters that have to be substituted into this type.</summary>
+        <remarks>The parameters may be generic or non-generic.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -89,15 +95,16 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Outputs the GenericTypeTok in terms of dylan.NET syntax.</summary>
+        <returns>The dylan.NET syntax that represents this GenericTypeTok.</returns>
+        <remarks>This method is overrides the TypeTok implementation of ToString() since that implementation does not capture generic type parameters.</remarks>
       </Docs>
     </Member>
   </Members>
