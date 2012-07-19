@@ -9,6 +9,7 @@ CLEANFILES =
 
 installman:
 	$(install_sh_PROGRAM) dylandotnet.1 $(DESTDIR)$(mandir)/man1/dylandotnet.1
+	$(install_sh_PROGRAM) dylandotnet.7 $(DESTDIR)$(mandir)/man7/dylandotnet.7
 	$(install_sh_PROGRAM) dylandotnet4.1 $(DESTDIR)$(mandir)/man1/dylandotnet4.1
 	$(install_sh_PROGRAM) pc2dylandotnet.1 $(DESTDIR)$(mandir)/man1/pc2dylandotnet.1
 	$(install_sh_PROGRAM) pc2curdir.1 $(DESTDIR)$(mandir)/man1/pc2curdir.1
@@ -22,6 +23,7 @@ install: installman
 	
 uninstallman:
 	rm $(DESTDIR)$(mandir)/man1/dylandotnet.1
+	rm $(DESTDIR)$(mandir)/man7/dylandotnet.7
 	rm $(DESTDIR)$(mandir)/man1/dylandotnet4.1
 	rm $(DESTDIR)$(mandir)/man1/pc2dylandotnet.1
 	rm $(DESTDIR)$(mandir)/man1/pc2curdir.1

@@ -35,7 +35,7 @@ import dylan.NET.Tokenizer.Parser
 #debug on
 
 assembly tokenizer.Parser dll
-ver 11.2.9.4
+ver 11.2.9.5
 
 namespace dylan.NET.Tokenizer.Parser
 	#include "parser/parserflags.dyl"

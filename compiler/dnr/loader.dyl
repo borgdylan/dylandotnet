@@ -116,10 +116,10 @@ class public auto ansi beforefieldinit Loader
 	end method
 
 	method public static Type ProcessType(var typ as Type)
-		if MakeArr = true then
+		if MakeArr then
 			typ = typ::MakeArrayType()
 		end if
-		if MakeRef = true then
+		if MakeRef then
 			typ = typ::MakeByRefType()
 		end if
 		

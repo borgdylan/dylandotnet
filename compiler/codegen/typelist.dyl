@@ -26,7 +26,12 @@ class public auto ansi TypeList
 		var lone as IEnumerator<of string> = lon::GetEnumerator()
 
 		do while lone::MoveNext()
-			var til as TILambdas = new TILambdas(lone::get_Current() + "." + nam)
+			var til as TILambdas
+			if lone::get_Current() = "" then
+				til = new TILambdas(nam)
+			else
+				til = new TILambdas(lone::get_Current() + "." + nam)
+			end if
 			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(lot,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
 			var matches as TypeItem[] = Enumerable::ToArray<of TypeItem>(lot2)
 			if matches[l] != 0 then

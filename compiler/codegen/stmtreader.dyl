@@ -72,9 +72,9 @@ class public auto ansi StmtReader
 
 		if t[0]::IsInstanceOfType(stm) then
 			var rastm as RefasmStmt = $RefasmStmt$stm
-			if rastm::AsmPath::Value like  ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
+			if rastm::AsmPath::Value like  c"^\q(.)*\q$" then
 				tmpchrarr = new char[1]
-				tmpchrarr[0] = $char$Utils.Constants::quot
+				tmpchrarr[0] = c'\q'
 				rastm::AsmPath::Value = rastm::AsmPath::Value::Trim(tmpchrarr)
 			end if
 			rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::Value)
@@ -83,9 +83,9 @@ class public auto ansi StmtReader
 			Importer::AddAsm(Assembly::LoadFrom(rastm::AsmPath::Value))
 		elseif t[1]::IsInstanceOfType(stm) then
 			var rsastm as RefstdasmStmt = $RefstdasmStmt$stm
-			if rsastm::AsmPath::Value like ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
+			if rsastm::AsmPath::Value like c"^\q(.)*\q$" then
 				tmpchrarr = new char[1]
-				tmpchrarr[0] = $char$Utils.Constants::quot
+				tmpchrarr[0] = c'\q'
 				rsastm::AsmPath::Value = rsastm::AsmPath::Value::Trim(tmpchrarr)
 			end if
 			rsastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rsastm::AsmPath::Value)
@@ -95,9 +95,9 @@ class public auto ansi StmtReader
 			Importer::AddAsm(Assembly::LoadFrom(rsastm::AsmPath::Value))
 		elseif t[2]::IsInstanceOfType(stm) then
 			var istm as ImportStmt = $ImportStmt$stm
-			if istm::NS::Value like ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
+			if istm::NS::Value like c"^\q(.)*\q$" then
 				tmpchrarr = new char[1]
-				tmpchrarr[0] = $char$Utils.Constants::quot
+				tmpchrarr[0] = c'\q'
 				istm::NS::Value = istm::NS::Value::Trim(tmpchrarr)
 			end if
 			StreamUtils::Write("Importing Namespace: ")
@@ -105,9 +105,9 @@ class public auto ansi StmtReader
 			Importer::AddImp(istm::NS::Value)
 		elseif t[3]::IsInstanceOfType(stm) then
 			var listm as LocimportStmt = $LocimportStmt$stm
-			if listm::NS::Value like ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
+			if listm::NS::Value like c"^\q(.)*\q$" then
 				tmpchrarr = new char[1]
-				tmpchrarr[0] = $char$Utils.Constants::quot
+				tmpchrarr[0] = c'\q'
 				listm::NS::Value = listm::NS::Value::Trim(tmpchrarr)
 			end if
 			StreamUtils::Write("Importing Namespace: ")
@@ -413,7 +413,7 @@ class public auto ansi StmtReader
 					overldnam = mtssnamarr[mtssnamarr[l] - 1]
 					mtssnamarr2 = new string[mtssnamarr[l] - 1]
 					Array::Copy($Array$mtssnamarr, 0, $Array$mtssnamarr2, 0, mtssnamarr2[l])
-					typ = Loader::LoadClass(String::Join(".", mtssnamarr2))
+					typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", mtssnamarr2)))
 					mtssnamstr = typ::ToString() + "." + overldnam
 				end if
 
@@ -421,7 +421,7 @@ class public auto ansi StmtReader
 				AsmFactory::InitMtd()
 
 				if mtssnamarr[l] > 1 then
-					overldmtd = Loader::LoadMethod(typ, overldnam, paramstyps)
+					overldmtd = Helpers::GetExtMet(typ, new MethodNameTok(overldnam), paramstyps)
 					AsmFactory::CurnTypB::DefineMethodOverride(AsmFactory::CurnMetB, overldmtd)
 				end if
 
@@ -480,9 +480,9 @@ class public auto ansi StmtReader
 			//SymTable::ResetUsed(curva::VarName::Value)
 		elseif t[16]::IsInstanceOfType(stm) then
 			var nss as NSStmt = $NSStmt$stm
-			if nss::NS::Value like ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
+			if nss::NS::Value like c"^\q(.)*\q$" then
 				tmpchrarr = new char[1]
-				tmpchrarr[0] = $char$Utils.Constants::quot
+				tmpchrarr[0] = c'\q'
 				nss::NS::Value = nss::NS::Value::Trim(tmpchrarr)
 			end if
 			AsmFactory::CurnNS = nss::NS::Value

@@ -18,13 +18,10 @@ class public auto ansi Constants
 	field public static initonly boolean f
 
 	method public static void Constants()
-		quot = $string$Convert::ToChar(34)
-		var chr as char = 'a'
-		chr = $char$13
-		cr = $string$chr
-		chr = $char$10
-		lf = $string$chr
-		crlf = cr + lf
+		quot = c"\q"
+		cr = c"\r"
+		lf = c"\n"
+		crlf = c"\r\n"
 		pi = Math::PI
 		e = Math::E
 		t = true

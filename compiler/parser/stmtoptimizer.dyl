@@ -1622,12 +1622,12 @@ class public auto ansi StmtOptimizer
 	i = i + 1
 	
 	if PFlags::CmtFlag then
-	goto cont
+		goto cont
 	end if
 	
 	
 	if PFlags::NoOptFlag then
-	goto cont
+		goto cont
 	end if
 	
 	if i != lenx then
@@ -1637,309 +1637,306 @@ class public auto ansi StmtOptimizer
 	end if
 	
 	if i = lenx then
-	goto cont
+		goto cont
 	else
-	goto loop
+		goto loop
 	end if
 	
 	place cont
 	
 	if stm::Tokens[l] = 0 then
-	goto fin
+		goto fin
+	else
+		i = -1
+		var tok as Token
+		var pcnt as integer = 0
+		var acnt as integer = 0
+		var scnt as integer = 0
+		var pltyp as Type = gettype LParen
+		var altyp as Type = gettype LAParen
+		var sltyp as Type = gettype LSParen
+		var prtyp as Type = gettype RParen
+		var artyp as Type = gettype RAParen
+		var srtyp as Type = gettype RSParen
+		do until i = (stm::Tokens[l] - 1)
+			i = i + 1
+			tok = stm::Tokens[i]
+			if pltyp::IsInstanceOfType(tok) then
+				pcnt = pcnt + 1
+			elseif prtyp::IsInstanceOfType(tok) then
+				pcnt = pcnt - 1
+			elseif altyp::IsInstanceOfType(tok) then
+				acnt = acnt + 1
+			elseif artyp::IsInstanceOfType(tok) then
+				acnt = acnt - 1
+			elseif sltyp::IsInstanceOfType(tok) then
+				scnt = scnt + 1
+			elseif srtyp::IsInstanceOfType(tok) then
+				scnt = scnt - 1
+			end if
+		end do
+		if pcnt != 0 then
+			StreamUtils::WriteLine("")
+			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing parentheses do not match!.")
+		elseif acnt != 0 then
+			StreamUtils::WriteLine("")
+			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing angle parentheses do not match!.")
+		elseif scnt != 0 then
+			StreamUtils::WriteLine("")
+			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing square parentheses do not match!.")
+		end if
 	end if
 	
 	tmpstm = checkCmt(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkImport(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkLocimport(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkAssembly(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkVer(stm, ref|compb)
 	if compb then
-	stm = tmpstm
-	goto fin
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkNS(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkClass(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkDelegate(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkField(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkMethod(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkAssign(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkVarAs(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkCatch(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkReturn(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkThrow(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkTry(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkFinally(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkEndTry(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkEndMtd(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkEndNS(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkEndCls(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkDebug(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkScope(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkInclude(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkRefasm(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkRefstdasm(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkLabel(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkPlace(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkGoto(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkIf(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkWhile(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkUntil(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkDoWhile(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkDoUntil(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
-	
 	tmpstm = checkElseIf(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkElse(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
-	tmpstm = checkDo(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	tmpstm = checkDo(stm, ref|compb)	
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkBreak(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkContinue(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
-	tmpstm = checkEndIf(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	tmpstm = checkEndIf(stm, ref|compb)	
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkEndDo(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	tmpstm = checkMethodCall(stm, ref|compb)
-	
-	if compb = true then
-	stm = tmpstm
-	goto fin
+	if compb then
+		stm = tmpstm
+		goto fin
 	end if
 	
 	

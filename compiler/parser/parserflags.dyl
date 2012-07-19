@@ -29,6 +29,7 @@ class public auto ansi ParserFlags
 	field public boolean MetCallFlag
 	field public boolean MetChainFlag
 	field public boolean StringFlag
+	field public string CurPath
 
 	method public void ParserFlags()
 		me::ctor()
@@ -55,6 +56,7 @@ class public auto ansi ParserFlags
 		MetChainFlag = false
 		ProcessTTokOnly = false
 		StringFlag = false
+		CurPath = ""
 	end method
 
 	method public void SetUnaryFalse()

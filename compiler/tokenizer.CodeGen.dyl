@@ -49,7 +49,7 @@ import dylan.NET.Tokenizer.CodeGen
 #debug on
 
 assembly tokenizer.CodeGen dll
-ver 11.2.9.4
+ver 11.2.9.5
 
 namespace dylan.NET.Tokenizer.CodeGen
 	#include "codegen/varitem.dyl"

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <asmv1:assemblyIdentity name="dnc.exe" version="11.2.7.5" publicKeyToken="65306ddd4b769779" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="dnc.exe" version="11.2.9.5" publicKeyToken="65306ddd4b769779" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="dnc" version="11.2.7.5" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="dnc" version="11.2.9.5" language="neutral" processorArchitecture="msil" />
     <commandLine file="dnc.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -28,7 +28,7 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="dnc.exe" size="5120">
-      <assemblyIdentity name="dnc" version="11.2.7.4" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="dnc" version="11.2.9.5" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -40,7 +40,7 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="dnu.dll" size="9216">
-      <assemblyIdentity name="dnu" version="1.1.0.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="dnu" version="11.2.9.5" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -52,7 +52,7 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="tokenizer.AST.dll" size="45056">
-      <assemblyIdentity name="tokenizer.AST" version="11.2.7.5" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="tokenizer.AST" version="11.2.9.5" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -64,7 +64,7 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="tokenizer.Lexer.dll" size="12288">
-      <assemblyIdentity name="tokenizer.Lexer" version="11.2.7.5" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="tokenizer.Lexer" version="11.2.9.5" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
@@ -76,7 +76,7 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="tokenizer.Parser.dll" size="65536">
-      <assemblyIdentity name="tokenizer.Parser" version="11.2.7.5" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="tokenizer.Parser" version="11.2.9.5" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />

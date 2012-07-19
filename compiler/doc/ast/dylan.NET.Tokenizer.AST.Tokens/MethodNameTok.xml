@@ -23,6 +23,7 @@
     <AssemblyVersion>11.2.9.2</AssemblyVersion>
     <AssemblyVersion>11.2.9.3</AssemblyVersion>
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
+    <AssemblyVersion>11.2.9.5</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ident</BaseTypeName>
@@ -58,12 +59,68 @@
         <AssemblyVersion>11.2.9.2</AssemblyVersion>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
+        <AssemblyVersion>11.2.9.5</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>Constructs a new MethodNameTok.</summary>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MethodNameTok (dylan.NET.Tokenizer.AST.Tokens.Ident idt);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class dylan.NET.Tokenizer.AST.Tokens.Ident idt) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
+        <AssemblyVersion>11.2.9.5</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="idt" Type="dylan.NET.Tokenizer.AST.Tokens.Ident" />
+      </Parameters>
+      <Docs>
+        <param name="idt">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MethodNameTok (string value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
+        <AssemblyVersion>11.2.9.5</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.MethodNameTok op_Implicit (dylan.NET.Tokenizer.AST.Tokens.Ident idt);" />
+      <MemberSignature Language="ILAsm" Value=".method public static specialname class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok op_Implicit(class dylan.NET.Tokenizer.AST.Tokens.Ident idt) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
+        <AssemblyVersion>11.2.9.5</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.MethodNameTok</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="idt" Type="dylan.NET.Tokenizer.AST.Tokens.Ident" />
+      </Parameters>
+      <Docs>
+        <param name="idt">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

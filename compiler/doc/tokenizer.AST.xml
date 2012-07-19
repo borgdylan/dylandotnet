@@ -871,8 +871,17 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.StmtSet(System.String)">
+            <param name="p">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.StmtSet.AddStmt(dylan.NET.Tokenizer.AST.Stmts.Stmt)">
             <param name="stmttoadd">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.StmtSet.Path">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1164,9 +1173,25 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok(dylan.NET.Tokenizer.AST.Tokens.Ident)">
+            <param name="idt">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok(System.String)">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.AddParam(dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)">
             <param name="param">To be added.</param>
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.op_Implicit(dylan.NET.Tokenizer.AST.Tokens.Ident)~dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok">
+            <param name="idt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.Params">
@@ -1392,6 +1417,22 @@
         <member name="C:dylan.NET.Tokenizer.AST.Tokens.MethodNameTok()">
             <summary>Constructs a new MethodNameTok.</summary>
             <remarks />
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.MethodNameTok(dylan.NET.Tokenizer.AST.Tokens.Ident)">
+            <param name="idt">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.MethodNameTok(System.String)">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.MethodNameTok.op_Implicit(dylan.NET.Tokenizer.AST.Tokens.Ident)~dylan.NET.Tokenizer.AST.Tokens.MethodNameTok">
+            <param name="idt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.MethodTok">
             <summary>Represents the 'method' keyword.</summary>

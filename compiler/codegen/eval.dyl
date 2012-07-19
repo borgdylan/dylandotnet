@@ -246,7 +246,7 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 				//----------------------
 				
-				typ = Loader::LoadClass(idtnamarr[i])
+				typ = Helpers::CommitEvalTTok(new TypeTok(idtnamarr[i]))
 				idtisstatic = true
 
 				if typ = null then
@@ -255,7 +255,7 @@ class public auto ansi beforefieldinit Evaluator
 				
 			else
 				if typ::Equals(AsmFactory::CurnTypB) = false then
-					idtfldinf = Loader::LoadField(typ, idtnamarr[i])
+					idtfldinf = Helpers::GetExtFld(typ, idtnamarr[i])
 					if idtfldinf = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is not defined/accessible for the class '" + typ::ToString() + "'.")
 					end if
@@ -384,7 +384,7 @@ class public auto ansi beforefieldinit Evaluator
 		mcparenttyp = AsmFactory::CurnTypB
 		mcmetinf = null
 		mcfldinf = null
-		mectorflg = mntok::Value == "me::ctor"
+		mectorflg = (mntok::Value == "me::ctor") or (mntok::Value == "mybase::ctor")
 
 		i = -1
 		mnstrarr = ParseUtils::StringParser(mntok::Value, ":")
@@ -458,7 +458,7 @@ class public auto ansi beforefieldinit Evaluator
 						end if
 						//----------------------------------
 				
-						mcparenttyp = Loader::LoadClass(mnstrarr[i])
+						mcparenttyp = Helpers::CommitEvalTTok(new TypeTok(mnstrarr[i]))
 						mcisstatic = true
 
 						if mcparenttyp = null then
@@ -472,7 +472,7 @@ class public auto ansi beforefieldinit Evaluator
 							end if
 							mcparenttyp = mcfldinf::get_FieldType()
 						else
-							mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
+							mcfldinf = Helpers::GetExtFld(mcparenttyp, mnstrarr[i])
 							if mcfldinf = null then
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
 							end if
@@ -609,7 +609,7 @@ class public auto ansi beforefieldinit Evaluator
 		else
 			mcparenttyp = AsmFactory::CurnInhTyp
 			Loader::ProtectedFlag = true
-			ncctorinf = Loader::LoadCtor(mcparenttyp, typarr1)
+			ncctorinf = Helpers::GetLocCtor(mcparenttyp, typarr1)
 			Loader::ProtectedFlag = false
 
 			if ncctorinf = null then
@@ -636,7 +636,7 @@ class public auto ansi beforefieldinit Evaluator
 	method public void ASTEmitNew(var nctok as NewCallTok, var emt as boolean, var aed as ASTEmitDelegate)
 		//constructor call section
 		var delparamarr as Type[]
-		var delmtdnam as string
+		var delmtdnam as MethodNameTok
 		var nctyp as Type = Helpers::CommitEvalTTok(nctok::Name)
 		var mcparams as Expr[] = nctok::Params
 		var delcreate as boolean = false
@@ -687,7 +687,7 @@ class public auto ansi beforefieldinit Evaluator
 			typarr1[1] = gettype IntPtr
 
 			//delegate pointer loading section
-			mnstrarr = ParseUtils::StringParser(delmtdnam, ":")
+			mnstrarr = ParseUtils::StringParser(delmtdnam::Value, ":")
 			var mcrestrord as integer = 2
 			i = -1
 			len = mnstrarr[l] - 2
@@ -753,7 +753,7 @@ class public auto ansi beforefieldinit Evaluator
 								continue
 							end if
 						end if
-						mcparenttyp = Loader::LoadClass(mnstrarr[i])
+						mcparenttyp = Helpers::CommitEvalTTok(new TypeTok(mnstrarr[i]))
 						mcisstatic = true
 
 						if mcparenttyp = null then
@@ -761,7 +761,7 @@ class public auto ansi beforefieldinit Evaluator
 						end if
 					else
 						if mcparenttyp::Equals(AsmFactory::CurnTypB) = false then
-							mcfldinf = Loader::LoadField(mcparenttyp, mnstrarr[i])
+							mcfldinf = Helpers::GetExtFld(mcparenttyp, mnstrarr[i])
 							if mcfldinf = null then
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
 							end if
@@ -806,7 +806,7 @@ class public auto ansi beforefieldinit Evaluator
 
 			if idtb2 then
 				if mcparenttyp::Equals(AsmFactory::CurnTypB) = false then
-					mcmetinf = Loader::LoadMethod(mcparenttyp, mnstrarr[i], delparamarr)
+					mcmetinf = Helpers::GetExtMet(mcparenttyp, delmtdnam, delparamarr)
 					if mcmetinf = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
 					end if
@@ -1131,7 +1131,7 @@ class public auto ansi beforefieldinit Evaluator
 						continue
 					end if
 
-					idttyp = Loader::LoadClass(idtnamarr[i])
+					idttyp = Helpers::CommitEvalTTok(new TypeTok(idtnamarr[i]))
 					idtisstatic = true
 
 					if idttyp = null then
@@ -1140,7 +1140,7 @@ class public auto ansi beforefieldinit Evaluator
 
 				else
 					if idttyp::Equals(AsmFactory::CurnTypB) = false then
-						fldinf = Loader::LoadField(idttyp, idtnamarr[i])
+						fldinf = Helpers::GetExtFld(idttyp, idtnamarr[i])
 						if fldinf = null then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is not defined/accessible for the class '" + idttyp::ToString() + "'.")
 						end if
@@ -1237,7 +1237,7 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 			else
 				if idttyp::Equals(AsmFactory::CurnTypB) = false then
-					fldinf = Loader::LoadField(idttyp, idtnamarr[i])
+					fldinf = Helpers::GetExtFld(idttyp, idtnamarr[i])
 				else
 					fldinf = Helpers::GetLocFld(idtnamarr[i])
 				end if

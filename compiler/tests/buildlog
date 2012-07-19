@@ -1,22 +1,22 @@
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 dylan.NET Version Info:
-dnc, Version=11.2.9.4, Culture=neutral, PublicKeyToken=null
-dnr, Version=11.2.9.4, Culture=neutral, PublicKeyToken=null
-dnu, Version=11.2.9.4, Culture=neutral, PublicKeyToken=null
-tokenizer.CodeGen, Version=11.2.9.4, Culture=neutral, PublicKeyToken=null
-tokenizer.Parser, Version=11.2.9.4, Culture=neutral, PublicKeyToken=null
-tokenizer.Lexer, Version=11.2.9.4, Culture=neutral, PublicKeyToken=null
-tokenizer.AST, Version=11.2.9.4, Culture=neutral, PublicKeyToken=null
+dnc, Version=11.2.9.5, Culture=neutral, PublicKeyToken=null
+dnr, Version=11.2.9.5, Culture=neutral, PublicKeyToken=null
+dnu, Version=11.2.9.5, Culture=neutral, PublicKeyToken=null
+tokenizer.CodeGen, Version=11.2.9.5, Culture=neutral, PublicKeyToken=null
+tokenizer.Parser, Version=11.2.9.5, Culture=neutral, PublicKeyToken=null
+tokenizer.Lexer, Version=11.2.9.5, Culture=neutral, PublicKeyToken=null
+tokenizer.AST, Version=11.2.9.5, Culture=neutral, PublicKeyToken=null
 
 Runtime & OS Version Info:
 mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 Runtime Version: 2.0.50727.1433
-OS: Unix 3.2.0.26
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+OS: Unix 3.2.0.27
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -33,7 +33,7 @@ Adding Class: arit.Module1
 	Adding Method: divide
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -95,7 +95,7 @@ WARNING: The variable v10 was initialised but then not used. at line 76 in file:
 WARNING: The variable v8 was initialised but then not used. at line 103 in file: conv.dyl
 WARNING: The variable v9 was initialised but then not used. at line 105 in file: conv.dyl
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -119,7 +119,7 @@ Adding Class: ctorfield.Module1
 	Adding Method: main
 WARNING: The variable a was initialised but then not used. at line 43 in file: ctorfield.dyl
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -132,7 +132,7 @@ Beginning Assembly: helloworld
 Adding Class: helloworld.Module1
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -145,7 +145,7 @@ Beginning Assembly: logicop
 Adding Class: logicop.Module1
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -167,7 +167,7 @@ Adding Class: mathematics.Arithmetic
 	Adding Method: Multiply
 	Adding Method: Divide
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -184,7 +184,7 @@ Adding Class: mathstest.Module1
 WARNING: The variable alg was initialised but then not used. at line 16 in file: mathstest.dyl
 WARNING: The variable str was initialised but then not used. at line 19 in file: mathstest.dyl
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -197,7 +197,7 @@ Beginning Assembly: numloops
 Adding Class: numloops.Module1
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -211,7 +211,7 @@ Beginning Assembly: openfile
 Adding Class: openfile.module1
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -231,7 +231,7 @@ Adding Class: Person.Person
 	Adding Method: getAge
 	Adding Method: print
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -246,7 +246,7 @@ Beginning Assembly: PersonProg
 Adding Class: PersonProg.PersonInst
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -259,7 +259,7 @@ Beginning Assembly: boxobj
 Adding Class: boxobj.Module1
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -279,7 +279,7 @@ Adding Class: xmllibrary.Mod1
 	Adding Method: setval
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -305,7 +305,7 @@ Adding Class: arraytest.Module1
 	Adding Method: test
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -348,7 +348,7 @@ Adding Class: vector.Vector
 	Adding Method: op_UnaryNegation
 	Adding Method: op_Implicit
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -369,7 +369,7 @@ Adding Class: dylan.NET.Tests.Threading.Program
 	Adding Method: TimerMethod
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -383,7 +383,7 @@ Adding Class: dylrecurse.Program
 	Adding Method: recurse
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -397,7 +397,7 @@ Adding Class: strrecurse.Program
 	Adding Method: palindrome
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.5 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg

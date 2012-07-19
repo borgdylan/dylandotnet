@@ -54,7 +54,7 @@ class public auto ansi ParseUtils
 			i = i + 1
 			ch = $string$StringToParse::get_Chars(i)
 	
-			if ch = Utils.Constants::quot then
+			if ch = c"\q" then
 				ins = ins == false
 			end if
 	
@@ -65,7 +65,7 @@ class public auto ansi ParseUtils
 					end if
 					acc = ""
 				end if
-				if ins = true then
+				if ins then
 					acc = acc + ch
 				end if
 			else
@@ -92,13 +92,12 @@ class public auto ansi ParseUtils
 		var acc as string = ""
 		var i as integer = -1
 		var len as integer = StringToParse::get_Length() - 1
-		var ic as string = Utils.Constants::quot
 		
 		do
 			i = i + 1
 			ch = $string$StringToParse::get_Chars(i)
 
-			if ch = ic then
+			if ch = c"\q" then
 				ins = ins == false
 			end if
 
@@ -109,7 +108,7 @@ class public auto ansi ParseUtils
 					end if
 					acc = ""
 				end if
-				if ins = true then
+				if ins then
 					acc = acc + ch
 				end if
 			else
@@ -167,6 +166,102 @@ class public auto ansi ParseUtils
 			end if
 		end if
 		return p
+	end method
+	
+	method public static boolean IsHexDigit(var c as char)
+		if Char::IsDigit(c) then
+			return true
+		else
+			c = Char::ToLower(c)
+			if c = 'a' then
+				return true
+			elseif c = 'b' then
+				return true
+			elseif c = 'c' then
+				return true
+			elseif c = 'd' then
+				return true
+			elseif c = 'e' then
+				return true
+			elseif c = 'f' then
+				return true
+			else
+				return false
+			end if
+		end if
+		
+	end method
+	
+	method public static string ProcessString(var escstr as string)
+		var sb as StringBuilder = new StringBuilder()
+		var i as integer = -1
+		var cc as char = 'a'
+		var len as integer = escstr::get_Length() - 1
+		var buf as string = ""
+		
+		do until i >= len
+			i = i + 1
+			cc = escstr::get_Chars(i)
+			if cc = '\' then
+				if i < len then
+					i = i + 1
+					cc = escstr::get_Chars(i)
+					if cc = 's' then
+						sb::Append($char$39)
+					elseif cc = 'q' then
+						sb::Append($char$34)
+					elseif cc = '\' then
+						sb::Append('\')
+					elseif cc = '0' then
+						sb::Append($char$0)
+					elseif cc = 'a' then
+						sb::Append($char$7)
+					elseif cc = 'b' then
+						sb::Append($char$8)
+					elseif cc = 'f' then
+						sb::Append($char$12)
+					elseif cc = 'n' then
+						sb::Append($char$10)
+					elseif cc = 'r' then
+						sb::Append($char$13)
+					elseif cc = 't' then
+						sb::Append($char$9)
+					elseif cc = 'v' then
+						sb::Append($char$11)
+					elseif cc = 'x' then
+						if i < (len - 3) then
+							i = i + 1
+							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(i + 1)) and IsHexDigit(escstr::get_Chars(i + 2)) and IsHexDigit(escstr::get_Chars(i + 3)) then
+								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(i + 1) + $string$escstr::get_Chars(i + 2) + $string$escstr::get_Chars(i + 3)
+								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
+								i = i + 3
+							elseif IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(i + 1)) then
+								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(i + 1)
+								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
+								i = i + 1
+							else
+								i = i - 1
+							end if
+						elseif i < (len - 1) then
+							i = i + 1
+							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(i + 1)) then
+								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(i + 1)
+								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
+								i = i + 1
+							else
+								i = i - 1
+							end if
+						end if
+					else
+						sb::Append(cc)
+					end if
+				end if
+			else
+				sb::Append(cc)
+			end if
+		end do
+		
+		return sb::ToString()
 	end method
 
 end class

@@ -37,10 +37,18 @@ end class
 class public auto ansi StmtSet
 
 	field public Stmt[] Stmts
+	field public string Path
 
 	method public void StmtSet()
 		me::ctor()
 		Stmts = new Stmt[0]
+		Path = ""
+	end method
+	
+	method public void StmtSet(var p as string)
+		me::ctor()
+		Stmts = new Stmt[0]
+		Path = p
 	end method
 
 	method public void AddStmt(var stmttoadd as Stmt)

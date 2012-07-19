@@ -7,6 +7,35 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi MethodNameTok extends Ident
+
+	method public void MethodNameTok()
+		me::ctor()
+	end method
+	
+	method public void MethodNameTok(var value as string)
+		me::ctor(value)
+	end method
+
+	method public void MethodNameTok(var idt as Ident)
+		me::ctor(idt::Value)
+		DoNeg = idt::DoNeg
+		DoNot = idt::DoNot
+		Conv = idt::Conv
+		IsArr = idt::IsArr
+		ArrLoc = idt::ArrLoc
+		IsRef = idt::IsRef
+		IsValInRef = idt::IsValInRef
+		IsRefInst = idt::IsRefInst
+		IsValInRefInst = idt::IsValInRefInst
+		TTok = idt::TTok
+		OrdOp = idt::OrdOp
+		Line = idt::Line
+	end method
+	
+	method public static specialname MethodNameTok op_Implicit(var idt as Ident)
+		return new MethodNameTok(idt)
+	end method
+
 end class
 
 class public auto ansi GenericMethodNameTok extends MethodNameTok
@@ -18,10 +47,37 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok
 		Params = new TypeTok[0]
 	end method
 
-	//method public void GenericMethodNameTok(var value as string)
-		//me::ctor()
-		//Params = new TypeTok[0]
-	//end method
+	method public void GenericMethodNameTok(var value as string)
+		me::ctor(value)
+		Params = new TypeTok[0]
+	end method
+	
+	method public void GenericMethodNameTok(var idt as Ident)
+		me::ctor(idt::Value)
+		Params = new TypeTok[0]
+		DoNeg = idt::DoNeg
+		DoNot = idt::DoNot
+		Conv = idt::Conv
+		IsArr = idt::IsArr
+		ArrLoc = idt::ArrLoc
+		IsRef = idt::IsRef
+		IsValInRef = idt::IsValInRef
+		IsRefInst = idt::IsRefInst
+		IsValInRefInst = idt::IsValInRefInst
+		TTok = idt::TTok
+		OrdOp = idt::OrdOp
+		Line = idt::Line
+	end method
+	
+	method public static specialname GenericMethodNameTok op_Implicit(var idt as Ident)
+		var gmntt as Type = gettype GenericMethodNameTok
+		if gmntt::IsInstanceOfType(idt) then
+			return idt
+		else
+			return new GenericMethodNameTok(idt)
+		end if
+	end method
+
 
 	method public void AddParam(var param as TypeTok)
 		var i as integer = -1

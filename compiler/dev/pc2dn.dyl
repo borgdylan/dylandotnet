@@ -18,21 +18,18 @@ import System.IO
 import System.Text
 
 assembly pc2dn exe
-ver 11.2.9.4
+ver 11.2.9.5
 
 namespace dylan.NET.PkgConfig.PC2DN
 
 	class public auto ansi Program
 	
-		method public static void PutInFile(var s as string, var sw as StreamWriter)
-			var q as char = 34
-			
+		method public static void PutInFile(var s as string, var sw as StreamWriter)			
 			if Path::IsPathRooted(s) then
-				sw::WriteLine("#refasm " + $string$q + s + $string$q)
+				sw::WriteLine(c"#refasm \q" + s + c"\q")
 			else
-				sw::WriteLine("#refstdasm " + $string$q + s + $string$q)
+				sw::WriteLine(c"#refstdasm \q" + s + c"\q")
 			end if
-			
 		end method
 	
 		method public static void ConvToDYL(var path as string)
@@ -87,7 +84,7 @@ namespace dylan.NET.PkgConfig.PC2DN
 	
 		method public static void main(var args as string[])
 		
-			Console::WriteLine("dylan.NET Pkg-Config Helper v. 11.2.9.4 Beta")
+			Console::WriteLine("dylan.NET Pkg-Config Helper v. 11.2.9.5 Beta")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2012 Dylan Borg")
 			if args[l] < 1 then
@@ -108,7 +105,6 @@ namespace dylan.NET.PkgConfig.PC2DN
 						ConvToDYL(args[i])
 					end if
 				until i = len
-				
 			end if
 		
 		end method

@@ -18,6 +18,8 @@ import template
 assembly template exe
 ver 1.1.0.0
 
+#include "empty.dyl"
+
 delegate public auto ansi void MyDelegate(var x as integer)
 
 class public auto ansi beforefieldinit sealed SC

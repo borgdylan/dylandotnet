@@ -126,22 +126,22 @@ class public auto ansi ExprOptimizer
 		return stm
 	end method
 
-	method public MethodNameTok IdentToMNTok(var idt as Ident, var mnt as MethodNameTok)
-		mnt::DoNeg = idt::DoNeg
-		mnt::DoNot = idt::DoNot
-		mnt::Conv = idt::Conv
-		mnt::IsArr = idt::IsArr
-		mnt::ArrLoc = idt::ArrLoc
-		mnt::IsRef = idt::IsRef
-		mnt::IsValInRef = idt::IsValInRef
-		mnt::IsRefInst = idt::IsRefInst
-		mnt::IsValInRefInst = idt::IsValInRefInst
-		mnt::TTok = idt::TTok
-		mnt::OrdOp = idt::OrdOp
-		mnt::Value = idt::Value
-		mnt::Line = idt::Line
-		return mnt
-	end method
+//	method public MethodNameTok IdentToMNTok(var idt as Ident, var mnt as MethodNameTok)
+//		mnt::DoNeg = idt::DoNeg
+//		mnt::DoNot = idt::DoNot
+//		mnt::Conv = idt::Conv
+//		mnt::IsArr = idt::IsArr
+//		mnt::ArrLoc = idt::ArrLoc
+//		mnt::IsRef = idt::IsRef
+//		mnt::IsValInRef = idt::IsValInRef
+//		mnt::IsRefInst = idt::IsRefInst
+//		mnt::IsValInRefInst = idt::IsValInRefInst
+//		mnt::TTok = idt::TTok
+//		mnt::OrdOp = idt::OrdOp
+//		mnt::Value = idt::Value
+//		mnt::Line = idt::Line
+//		return mnt
+//	end method
 
 	method public Expr procMtdName(var stm as Expr, var i as integer)
 
@@ -161,8 +161,7 @@ class public auto ansi ExprOptimizer
 
 		if isgeneric then
 
-			var gtt as GenericMethodNameTok = new GenericMethodNameTok()
-			gtt = IdentToMNTok($Ident$stm::Tokens[i], gtt)
+			var gtt as GenericMethodNameTok = new GenericMethodNameTok($Ident$stm::Tokens[i])
 			i = i + 1
 			stm::RemToken(i)
 			stm::RemToken(i)
@@ -215,8 +214,7 @@ class public auto ansi ExprOptimizer
 			tt = gtt
 		else
 			if ttt::IsInstanceOfType(stm::Tokens[i]) == false then
-				tt = new MethodNameTok()
-				tt = IdentToMNTok($Ident$stm::Tokens[i],tt)
+				tt = new MethodNameTok($Ident$stm::Tokens[i])
 			else
 				tt = $MethodNameTok$stm::Tokens[i]
 			end if
@@ -256,7 +254,7 @@ class public auto ansi ExprOptimizer
 
 	method public Expr procMethodCall(var stm as Expr, var i as integer)
 	
-		var mn as MethodNameTok = new MethodNameTok()
+		var mn as MethodNameTok = null
 		var mct as MethodCallTok = new MethodCallTok()
 		var mntkt as Type = gettype MethodNameTok
 		var ep2 as Expr = new Expr()
@@ -271,7 +269,7 @@ class public auto ansi ExprOptimizer
 		if mntkt::IsInstanceOfType(stm::Tokens[i]) then
 			mn = $MethodNameTok$stm::Tokens[i]
 		else
-			mn = IdentToMNTok($Ident$stm::Tokens[i], mn)
+			mn = new MethodNameTok($Ident$stm::Tokens[i])
 		end if
 
 		j = i
@@ -360,151 +358,141 @@ class public auto ansi ExprOptimizer
 	
 	end method
 
-method public Expr procNewCall(var stm as Expr, var i as integer)
+	method public Expr procNewCall(var stm as Expr, var i as integer)
 
-var nct as NewCallTok = new NewCallTok()
-var nact as NewarrCallTok = new NewarrCallTok()
-var tt as TypeTok
-var ep2 as Expr = new Expr()
-var lvl as integer = 1
-var d as boolean = true
-var j as integer = 0
-var ltyp as Type
-var rtyp as Type
-var nab as boolean = false
-
-tt = stm::Tokens[i]
-j = i
-i = i + 1
-
-var tok2 as Token = stm::Tokens[i]
-var typ2 as Type
-var b2 as boolean
-var len as integer = stm::Tokens[l] - 1
-
-typ2 = gettype LParen
-b2 = typ2::IsInstanceOfType($object$tok2)
-if b2 = true then
-ltyp = gettype LParen
-rtyp = gettype RParen
-else
-nab = true
-ltyp = gettype LSParen
-rtyp = gettype RSParen
-end if
-
-var ltyp2 as Type = gettype LAParen
-var rtyp2 as Type = gettype RAParen
-
-if nab = false then
-nct::Name = tt
-else
-nact::ArrayType = tt
-end if
-
-stm::RemToken(i)
-len = stm::Tokens[l] - 1
-i = i - 1
-
-label loop2
-label cont2
-label fin
-
-place loop2
-
-//get parameters
-i = i + 1
-
-tok2 = stm::Tokens[i]
-typ2 = rtyp
-b2 = rtyp::IsInstanceOfType($object$tok2) or rtyp2::IsInstanceOfType($object$tok2)
-if b2 = true then
-lvl = lvl - 1
-if lvl = 0 then
-d = false
-if ep2::Tokens[l] > 0 then
-if nab = false then
-nct::AddParam(ep2)
-else
-nact::ArrayLen = ep2
-end if
-end if
-stm::RemToken(i)
-len = stm::Tokens[l] - 1
-i = i - 1
-goto cont2
-else
-d = true
-goto fin
-end if
-goto fin
-end if
-
-tok2 = stm::Tokens[i]
-typ2 = ltyp
-b2 = ltyp::IsInstanceOfType($object$tok2) or ltyp2::IsInstanceOfType($object$tok2)
-if b2 = true then
-lvl = lvl + 1
-d = true
-//stm::RemToken(i)
-len = stm::Tokens[l] - 1
-//i = i - 1
-goto fin
-end if
-
-tok2 = stm::Tokens[i]
-typ2 = gettype Comma
-b2 = typ2::IsInstanceOfType($object$tok2)
-if b2 = true then
-if lvl = 1 then
-d = false
-if ep2::Tokens[l] > 0 then
-if nab = false then
-nct::AddParam(ep2)
-ep2 = new Expr()
-end if
-end if
-stm::RemToken(i)
-len = stm::Tokens[l] - 1
-i = i - 1
-goto fin
-else
-d = true
-goto fin
-end if
-else
-d = true
-goto fin
-end if
-
-place fin
-
-if d = true then
-ep2::AddToken(stm::Tokens[i])
-stm::RemToken(i)
-len = stm::Tokens[l] - 1
-i = i - 1
-end if
-
-if i = len then
-goto cont2
-else
-goto loop2
-end if
-
-place cont2
-
-if nab = false then
-nct::Line = tt::Line
-stm::Tokens[j] = nct
-else
-nact::Line = tt::Line
-stm::Tokens[j] = nact
-end if
-
-return stm
-
-end method
+		var nct as NewCallTok = new NewCallTok()
+		var nact as NewarrCallTok = new NewarrCallTok()
+		var tt as TypeTok
+		var ep2 as Expr = new Expr()
+		var lvl as integer = 1
+		var d as boolean = true
+		var j as integer = 0
+		var ltyp as Type
+		var rtyp as Type
+		var nab as boolean = false
+		
+		tt = stm::Tokens[i]
+		j = i
+		i = i + 1
+		
+		var tok2 as Token = stm::Tokens[i]
+		var typ2 as Type
+		var len as integer = stm::Tokens[l] - 1
+		
+		typ2 = gettype LParen
+		if typ2::IsInstanceOfType(tok2) then
+			ltyp = gettype LParen
+			rtyp = gettype RParen
+		else
+			nab = true
+			ltyp = gettype LSParen
+			rtyp = gettype RSParen
+		end if
+		
+		var ltyp2 as Type = gettype LAParen
+		var rtyp2 as Type = gettype RAParen
+		
+		if nab = false then
+			nct::Name = tt
+		else
+			nact::ArrayType = tt
+		end if
+		
+		stm::RemToken(i)
+		len = stm::Tokens[l] - 1
+		i = i - 1
+		
+		label loop2
+		label cont2
+		label fin
+		
+		place loop2
+		
+		//get parameters
+		i = i + 1
+		
+		if rtyp::IsInstanceOfType(stm::Tokens[i]) or rtyp2::IsInstanceOfType(stm::Tokens[i]) then
+			lvl = lvl - 1
+			if lvl = 0 then
+				d = false
+				if ep2::Tokens[l] > 0 then
+					if nab = false then
+						nct::AddParam(ep2)
+					else
+						nact::ArrayLen = ep2
+					end if
+				end if
+				stm::RemToken(i)
+				len = stm::Tokens[l] - 1
+				i = i - 1
+				goto cont2
+			else
+				d = true
+				goto fin
+			end if
+			goto fin
+		end if
+		
+		if ltyp::IsInstanceOfType(stm::Tokens[i]) or ltyp2::IsInstanceOfType(stm::Tokens[i]) then
+			lvl = lvl + 1
+			d = true
+			//stm::RemToken(i)
+			len = stm::Tokens[l] - 1
+			//i = i - 1
+			goto fin
+		end if
+		
+		typ2 = gettype Comma
+		if typ2::IsInstanceOfType(stm::Tokens[i]) then
+			if lvl = 1 then
+				d = false
+				if ep2::Tokens[l] > 0 then
+					if nab = false then
+						nct::AddParam(ep2)
+						ep2 = new Expr()
+					end if
+				end if
+				stm::RemToken(i)
+				len = stm::Tokens[l] - 1
+				i = i - 1
+				goto fin
+			else
+				d = true
+				goto fin
+			end if
+		else
+			d = true
+			goto fin
+		end if
+		
+		place fin
+		
+		if d then
+			ep2::AddToken(stm::Tokens[i])
+			stm::RemToken(i)
+			len = stm::Tokens[l] - 1
+			i = i - 1
+		end if
+		
+		if i = len then
+			goto cont2
+		else
+			goto loop2
+		end if
+		
+		place cont2
+		
+		if nab = false then
+			nct::Line = tt::Line
+			stm::Tokens[j] = nct
+		else
+			nact::Line = tt::Line
+			stm::Tokens[j] = nact
+		end if
+		
+		return stm
+		
+	end method
 
 method public Expr procIdentArrayAccess(var stm as Expr, var i as integer)
 
@@ -1121,8 +1109,7 @@ if b = true then
 exp::RemToken(i)
 len = len - 1
 
-ptrmntok = new MethodNameTok()
-ptrmntok = IdentToMNTok($Ident$exp::Tokens[i] , ptrmntok)
+ptrmntok = new MethodNameTok($Ident$exp::Tokens[i])
 
 var ptrctoken as PtrCallTok = new PtrCallTok()
 ptrctoken::MetToCall = ptrmntok

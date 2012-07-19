@@ -111,6 +111,12 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Utils.ParseUtils.IsHexDigit(System.Char)">
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Utils.ParseUtils.LikeOP(System.String,System.String)">
             <param name="str">To be added.</param>
             <param name="pattern">To be added.</param>
@@ -120,6 +126,12 @@
         </member>
         <member name="M:dylan.NET.Utils.ParseUtils.ProcessMSYSPath(System.String)">
             <param name="p">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.ParseUtils.ProcessString(System.String)">
+            <param name="escstr">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

@@ -7,7 +7,7 @@
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0B8E3EEF-00E3-4633-B2BD-3D55AFD8CC6F}</ProjectGuid>
-    <ReleaseVersion>11.2.9.3</ReleaseVersion>
+    <ReleaseVersion>11.2.9.5</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
     <OutputPath>.</OutputPath>

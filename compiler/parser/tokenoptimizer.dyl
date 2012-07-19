@@ -1058,17 +1058,37 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		if tok::Value like "^'(.)*'$" then
-			tmpchrarr[0] = $char$"'"
-			var chrlit as CharLiteral = new CharLiteral($char$tok::Value::Trim(tmpchrarr))
+		if (tok::Value like "^'(.)*'$") or (tok::Value like "^c'(.)*'$") then
+			if tok::Value::StartsWith("c") then
+				tmpchrarr[0] = 'c'
+				tok::Value = tok::Value::TrimStart(tmpchrarr)
+				tmpchrarr[0] = $char$"'"
+				tok::Value = tok::Value::Trim(tmpchrarr)
+				tok::Value = ParseUtils::ProcessString(tok::Value)
+			else
+				tmpchrarr[0] = $char$"'"
+				tok::Value = tok::Value::Trim(tmpchrarr)
+			end if
+			
+			var chrlit as CharLiteral = new CharLiteral($char$tok::Value)
 			chrlit::Line = tok::Line
 			tok = chrlit
 			goto fin
 		end if
 		
-		if tok::Value like ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
-			tmpchrarr[0] = $char$Utils.Constants::quot
-			var strlit as StringLiteral = new StringLiteral(tok::Value::Trim(tmpchrarr))
+		if (tok::Value like c"^\q(.)*\q$") or (tok::Value like c"^c\q(.)*\q$") then
+			if tok::Value::StartsWith("c") then
+				tmpchrarr[0] = 'c'
+				tok::Value = tok::Value::TrimStart(tmpchrarr)
+				tmpchrarr[0] = $char$Utils.Constants::quot
+				tok::Value = tok::Value::Trim(tmpchrarr)
+				tok::Value = ParseUtils::ProcessString(tok::Value)
+			else
+				tmpchrarr[0] = $char$Utils.Constants::quot
+				tok::Value = tok::Value::Trim(tmpchrarr)
+			end if
+			
+			var strlit as StringLiteral = new StringLiteral(tok::Value)
 			strlit::Line = tok::Line
 			tok = strlit
 			goto fin

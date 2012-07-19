@@ -264,6 +264,58 @@ class public auto ansi beforefieldinit Helpers
 	method public static boolean CheckUnsigned(var t as Type)
 		return t::Equals(gettype byte) or t::Equals(gettype ushort) or t::Equals(gettype uinteger) or t::Equals(gettype ulong) or t::Equals(gettype UIntPtr)
 	end method
+	
+	method public static boolean CheckSigned(var t as Type)
+		return t::Equals(gettype sbyte) or t::Equals(gettype short) or t::Equals(gettype integer) or t::Equals(gettype long) or t::Equals(gettype IntPtr)
+	end method
+	
+	method public static boolean IsPrimitiveIntegralType(var t as Type)
+		if CheckSigned(t) then
+			return true
+		elseif CheckUnsigned(t) then
+			return true
+		else
+			return false
+		end if
+	end method
+	
+	method public static boolean IsPrimitiveFPType(var t as Type)
+		if t::Equals(gettype double) then
+			return true
+		elseif t::Equals(gettype single) then
+			return true
+		else
+			return false
+		end if
+	end method
+	
+	method public static boolean IsPrimitiveNumericType(var t as Type)
+		if CheckSigned(t) then
+			return true
+		elseif IsPrimitiveFPType(t) then
+			return true
+		elseif CheckUnsigned(t) then
+			return true
+		else
+			return false
+		end if
+	end method
+	
+	method public static integer GetPrimitiveNumericSize(var t as Type)
+		if t::Equals(gettype boolean) then
+			return 1
+		elseif t::Equals(gettype sbyte) or t::Equals(gettype byte) then
+			return 8
+		elseif t::Equals(gettype short) or t::Equals(gettype ushort) or t::Equals(gettype char) then
+			return 16
+		elseif t::Equals(gettype integer) or t::Equals(gettype uinteger) or t::Equals(gettype single) then
+			return 32
+		elseif t::Equals(gettype long) or t::Equals(gettype ulong) or t::Equals(gettype double) then
+			return 64
+		else
+			return 0
+		end if
+	end method
 
 	//note that this method returns void and leaves a result in AsmFactory::Type01
 	method public static void EvalTTok(var tt as TypeTok)
@@ -315,14 +367,15 @@ class public auto ansi beforefieldinit Helpers
 				Loader::MakeRef = tt::IsByRef
 				if AsmFactory::CurnTypName = tt::Value then
 					typ = AsmFactory::CurnTypB
-					if tt::IsArray = true then
-						typ = typ::MakeArrayType()
-					end if
-					if tt::IsByRef = true then
-						typ = typ::MakeByRefType()
-					end if
-					Loader::MakeArr = false
-					Loader::MakeRef = false
+					//if tt::IsArray then
+					//	typ = typ::MakeArrayType()
+					//end if
+					//if tt::IsByRef then
+					//	typ = typ::MakeByRefType()
+					//end if
+					typ = Loader::ProcessType(typ)
+					//Loader::MakeArr = false
+					//Loader::MakeRef = false
 				else
 					typ = Loader::LoadClass(tt::Value)
 				end if
@@ -1031,17 +1084,17 @@ class public auto ansi beforefieldinit Helpers
 		return lbl
 	end method
 
-	method public static string StripDelMtdName(var t as Token)
+	method public static MethodNameTok StripDelMtdName(var t as Token)
 		var typ1 as Type = gettype Ident
 		var typ2 as Type = gettype MethodCallTok
 		if typ1::IsInstanceOfType(t) then
 			var idt as Ident = $Token$t
-			return idt::Value
+			return $MethodNameTok$idt
 		elseif typ2::IsInstanceOfType(t) then
 			var mct as MethodCallTok = $MethodCallTok$t
-			return mct::Name::Value
+			return mct::Name
 		else
-			return ""
+			return null
 		end if
 	end method
 
@@ -1117,6 +1170,9 @@ class public auto ansi beforefieldinit Helpers
 			return Loader::LoadMethod(t, name, paramtyps)
 		end if
 	end method
+	
+	method public static FieldInfo GetExtFld(var t as Type, var fld as string)
+		return Loader::LoadField(t,fld)
+	end method
 
 end class
-

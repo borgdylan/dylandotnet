@@ -145,6 +145,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.Parser.ParserFlags.CurPath">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.Parser.ParserFlags.DurConvFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
