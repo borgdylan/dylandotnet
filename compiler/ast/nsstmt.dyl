@@ -14,5 +14,13 @@ class public auto ansi NSStmt extends Stmt
 		me::ctor()
 		NS = new Token()
 	end method
+	
+	method public hidebysig virtual string ToString()
+		var temp as string = NS::Value
+		if temp notlike c"^\q(.)*\q$" then
+			temp = c"\q" + temp + c"\q"
+		end if
+		return "namespace " + temp
+	end method
 
 end class

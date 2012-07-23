@@ -13,6 +13,24 @@ class public auto ansi VerStmt extends Stmt
 	method public void ctor0()
 		me::ctor()
 		VersionNos = new IntLiteral[4]
+		var i as integer = -1
+		do until i = 3
+			i = i + 1
+			VersionNos[i] = new IntLiteral(0)
+		end do
+	end method
+	
+	method public hidebysig virtual string ToString()
+		var sw as StringWriter = new StringWriter()
+		var i as integer = -1
+		do until i = 3
+			i = i + 1
+			sw::Write(VersionNos[i]::ToStringNoI())
+			if i < 3 then
+				sw::Write(".")
+			end if
+		end do
+		return "ver " + sw::ToString()
 	end method
 
 end class

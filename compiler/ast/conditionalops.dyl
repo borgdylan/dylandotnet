@@ -18,6 +18,10 @@ class public auto ansi EqOp extends ConditionalOp
 		me::ctor()
 		PrecNo = 8
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "=="
+	end method
 
 end class
 
@@ -28,6 +32,10 @@ class public auto ansi IsOp extends ConditionalOp
 		me::ctor()
 		PrecNo = 8
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "is"
+	end method
 
 end class
 
@@ -37,6 +45,10 @@ class public auto ansi LikeOp extends ConditionalOp
 	method public void LikeOp()
 		me::ctor()
 		PrecNo = 8
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "like"
 	end method
 
 end class
@@ -50,6 +62,10 @@ class public auto ansi NeqOp extends ConditionalOp
 		me::ctor()
 		PrecNo = 8
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "!="
+	end method
 
 end class
 
@@ -59,6 +75,10 @@ class public auto ansi NLikeOp extends ConditionalOp
 	method public void NLikeOp()
 		me::ctor()
 		PrecNo = 8
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "notlike"
 	end method
 
 end class
@@ -71,6 +91,10 @@ class public auto ansi GtOp extends ConditionalOp
 		me::ctor()
 		PrecNo = 9
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return ">"
+	end method
 
 end class
 
@@ -80,6 +104,10 @@ class public auto ansi LtOp extends ConditionalOp
 	method public void LtOp()
 		me::ctor()
 		PrecNo = 9
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "<"
 	end method
 
 end class
@@ -91,6 +119,10 @@ class public auto ansi GeOp extends ConditionalOp
 		me::ctor()
 		PrecNo = 9
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return ">="
+	end method
 
 end class
 
@@ -100,6 +132,10 @@ class public auto ansi LeOp extends ConditionalOp
 	method public void LeOp()
 		me::ctor()
 		PrecNo = 9
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "<="
 	end method
 
 end class

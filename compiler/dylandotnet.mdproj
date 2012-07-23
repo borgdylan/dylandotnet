@@ -44,6 +44,7 @@
     <Folder Include="dnc\" />
     <Folder Include="lexer\" />
     <Folder Include="parser\" />
+    <Folder Include="web\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ast\aritops.dyl" />
@@ -173,5 +174,7 @@
     <None Include="codegen\filambdas.dyl" />
     <None Include="codegen\typelist.dyl" />
     <None Include="codegen\tilambdas.dyl" />
+    <None Include="ast\methodnametok.dyl" />
+    <None Include="web.dyl" />
   </ItemGroup>
 </Project>

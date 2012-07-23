@@ -81,7 +81,7 @@ class public auto ansi ParseUtils
 
 		until i = len
 		
-		return Enumerable::ToArray<of string>($IEnumerable<of string>$arr)
+		return Enumerable::ToArray<of string>(arr)
 	end method
 
 	method public static string[] StringParser2ds(var StringToParse as string, var DelimeterChar as string, var DelimeterChar2 as string)

@@ -24,6 +24,7 @@
     <AssemblyVersion>11.2.9.3</AssemblyVersion>
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
+    <AssemblyVersion>11.2.9.6</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
@@ -60,6 +61,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -79,6 +81,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.Int32" />
@@ -115,6 +118,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
@@ -153,6 +157,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -173,6 +178,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -183,6 +189,23 @@
         <returns>The dylan.NET syntactic equivalent to this literal ie. NumVal + "i".</returns>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToStringNoI">
+      <MemberSignature Language="C#" Value="public string ToStringNoI ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance string ToStringNoI() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

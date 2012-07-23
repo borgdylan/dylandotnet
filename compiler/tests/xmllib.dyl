@@ -18,16 +18,16 @@ class public auto ansi Mod1
 	end method
 
 	method public static XAttribute makeattr(var name as string, var value as string)
-		return new System.Xml.Linq.XAttribute(XName::Get(name, ""), $object$value)
+		return new System.Xml.Linq.XAttribute(XName::Get(name, ""), value)
 	end method
 
 	method public static XElement addattr(var el as XElement, var attr as XAttribute)
-		el::Add($object$attr)
+		el::Add(attr)
 		return el
 	end method
 
 	method public static XElement addnode(var el as XElement, var node as XElement)
-		el::Add($object$node)
+		el::Add(node)
 		return el
 	end method
 

@@ -1,4 +1,4 @@
-#refasm "/usr/lib/mono/4.0/mscorlib.dll"
+#refstdasm "mscorlib.dll"
 
 import System
 import System.Runtime.InteropServices

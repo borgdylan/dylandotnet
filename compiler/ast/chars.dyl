@@ -11,56 +11,98 @@ end class
 
 // ]
 class public auto ansi RSParen extends Character
+	method public hidebysig virtual string ToString()
+		return "]"
+	end method
 end class
 
 // [
 class public auto ansi LSParen extends Character
+	method public hidebysig virtual string ToString()
+		return "["
+	end method
 end class
 
 // []
 class public auto ansi LRSParen extends Character
+	method public hidebysig virtual string ToString()
+		return "[]"
+	end method
 end class
 
 // >
 class public auto ansi RAParen extends Character
+	method public hidebysig virtual string ToString()
+		return ">"
+	end method
 end class
 
 // <
 class public auto ansi LAParen extends Character
+	method public hidebysig virtual string ToString()
+		return "<"
+	end method
 end class
 
 // )
 class public auto ansi RParen extends Character
+	method public hidebysig virtual string ToString()
+		return ")"
+	end method
 end class
 
 // (
 class public auto ansi LParen extends Character
+	method public hidebysig virtual string ToString()
+		return "("
+	end method
 end class
 
 // ,
 class public auto ansi Comma extends Character
+	method public hidebysig virtual string ToString()
+		return ","
+	end method
 end class
 
 // \r\n
 class public auto ansi CrLf extends Character
+	method public hidebysig virtual string ToString()
+		return c"\r\n"
+	end method
 end class
 
 // \r
 class public auto ansi Cr extends Character
+	method public hidebysig virtual string ToString()
+		return c"\r"
+	end method
 end class
 
 // \n
 class public auto ansi Lf extends Character
+	method public hidebysig virtual string ToString()
+		return c"\n"
+	end method
 end class
 
 // |
 class public auto ansi Pipe extends Character
+	method public hidebysig virtual string ToString()
+		return "|"
+	end method
 end class
 
 // &
 class public auto ansi Ampersand extends Character
+	method public hidebysig virtual string ToString()
+		return "&"
+	end method
 end class
 
 // $
 class public auto ansi DollarSign extends Character
+	method public hidebysig virtual string ToString()
+		return "$"
+	end method
 end class

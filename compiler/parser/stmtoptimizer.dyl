@@ -22,10 +22,10 @@ class public auto ansi StmtOptimizer
 
 	method public Stmt checkRefasm(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype RefasmTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype RefasmTok
+	b = typ::IsInstanceOfType(tok)
 	var refasms as RefasmStmt = new RefasmStmt()
-	if valinref|b = true then
+	if b then
 	refasms::Line = stm::Line
 	refasms::Tokens = stm::Tokens
 	refasms::AsmPath = stm::Tokens[1]
@@ -35,10 +35,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkRefstdasm(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype RefstdasmTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype RefstdasmTok
+	b = typ::IsInstanceOfType(tok)
 	var refsasms as RefstdasmStmt = new RefstdasmStmt()
-	if valinref|b = true then
+	if b then
 	refsasms::Line = stm::Line
 	refsasms::Tokens = stm::Tokens
 	refsasms::AsmPath = stm::Tokens[1]
@@ -48,10 +48,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkInclude(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype IncludeTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype IncludeTok
+	b = typ::IsInstanceOfType(tok)
 	var inclus as IncludeStmt = new IncludeStmt()
-	if valinref|b = true then
+	if b then
 	inclus::Line = stm::Line
 	inclus::Tokens = stm::Tokens
 	inclus::Path = stm::Tokens[1]
@@ -62,12 +62,12 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkIf(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype IfTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype IfTok
+	b = typ::IsInstanceOfType(tok)
 	var ifs as IfStmt = new IfStmt()
 	var exp as Expr = new Expr()
 	
-	if valinref|b = true then
+	if b then
 	
 	ifs::Line = stm::Line
 	ifs::Tokens = stm::Tokens
@@ -85,7 +85,7 @@ class public auto ansi StmtOptimizer
 	
 	tok = stm::Tokens[i]
 	typ = gettype ThenTok
-	b2 = typ::IsInstanceOfType($object$tok)
+	b2 = typ::IsInstanceOfType(tok)
 	
 	
 	if b2 = true then
@@ -113,12 +113,12 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkWhile(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype WhileTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype WhileTok
+	b = typ::IsInstanceOfType(tok)
 	var whis as WhileStmt = new WhileStmt()
 	var exp as Expr = new Expr()
 	
-	if valinref|b = true then
+	if b then
 	
 	whis::Line = stm::Line
 	whis::Tokens = stm::Tokens
@@ -159,21 +159,16 @@ class public auto ansi StmtOptimizer
 	
 	if stm::Tokens[l] >= 2 then
 	
-	var tok1 as Token = stm::Tokens[0]
-	var typ1 as System.Type = gettype DoTok
-	var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+	var typ1 as Type = gettype DoTok
+	var typ2 as Type = gettype WhileTok
 	
-	var tok2 as Token = stm::Tokens[1]
-	var typ2 as System.Type = gettype WhileTok
-	var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
-	
-	valinref|b = b1 and b2
+	b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
 	
 	whis = new DoWhileStmt()
 	var exp as Expr = new Expr()
 	var tok as Token
 	
-	if valinref|b = true then
+	if b then
 	
 	whis::Line = stm::Line
 	whis::Tokens = stm::Tokens
@@ -212,12 +207,12 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkUntil(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype UntilTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype UntilTok
+	b = typ::IsInstanceOfType(tok)
 	var unts as UntilStmt = new UntilStmt()
 	var exp as Expr = new Expr()
 	
-	if valinref|b = true then
+	if b then
 	
 	unts::Line = stm::Line
 	unts::Tokens = stm::Tokens
@@ -258,20 +253,15 @@ class public auto ansi StmtOptimizer
 	
 	if stm::Tokens[l] >= 2 then
 	
-	var tok1 as Token = stm::Tokens[0]
-	var typ1 as System.Type = gettype DoTok
-	var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+	var typ1 as Type = gettype DoTok
+	var typ2 as Type = gettype UntilTok
 	
-	var tok2 as Token = stm::Tokens[1]
-	var typ2 as System.Type = gettype UntilTok
-	var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
-	
-	valinref|b = b1 and b2
+	b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
 	
 	unts = new DoUntilStmt()
 	var exp as Expr = new Expr()
 	
-	if valinref|b = true then
+	if b then
 	
 	unts::Line = stm::Line
 	unts::Tokens = stm::Tokens
@@ -311,12 +301,12 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkElseIf(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype ElseIfTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype ElseIfTok
+	b = typ::IsInstanceOfType(tok)
 	var ifs as ElseIfStmt = new ElseIfStmt()
 	var exp as Expr = new Expr()
 	
-	if valinref|b = true then
+	if b then
 	
 	ifs::Line = stm::Line
 	ifs::Tokens = stm::Tokens
@@ -334,7 +324,7 @@ class public auto ansi StmtOptimizer
 	
 	tok = stm::Tokens[i]
 	typ = gettype ThenTok
-	b2 = typ::IsInstanceOfType($object$tok)
+	b2 = typ::IsInstanceOfType(tok)
 	
 	
 	if b2 = true then
@@ -362,10 +352,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkLabel(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype LabelTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype LabelTok
+	b = typ::IsInstanceOfType(tok)
 	var lbls as LabelStmt = new LabelStmt()
-	if valinref|b = true then
+	if b then
 	lbls::Line = stm::Line
 	lbls::Tokens = stm::Tokens
 	lbls::LabelName = stm::Tokens[1]
@@ -375,10 +365,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkPlace(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype PlaceTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype PlaceTok
+	b = typ::IsInstanceOfType(tok)
 	var lbls as PlaceStmt = new PlaceStmt()
-	if valinref|b = true then
+	if b then
 	lbls::Line = stm::Line
 	lbls::Tokens = stm::Tokens
 	lbls::LabelName = stm::Tokens[1]
@@ -388,10 +378,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkGoto(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype GotoTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype GotoTok
+	b = typ::IsInstanceOfType(tok)
 	var lbls as GotoStmt = new GotoStmt()
-	if valinref|b = true then
+	if b then
 	lbls::Line = stm::Line
 	lbls::Tokens = stm::Tokens
 	lbls::LabelName = stm::Tokens[1]
@@ -402,10 +392,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkDebug(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype DebugTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype DebugTok
+	b = typ::IsInstanceOfType(tok)
 	var dbgs as DebugStmt = new DebugStmt()
-	if valinref|b = true then
+	if b then
 	dbgs::Line = stm::Line
 	dbgs::Tokens = stm::Tokens
 	dbgs::Opt = stm::Tokens[1]
@@ -416,10 +406,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkScope(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype ScopeTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype ScopeTok
+	b = typ::IsInstanceOfType(tok)
 	var scps as ScopeStmt = new ScopeStmt()
-	if valinref|b = true then
+	if b then
 	scps::Line = stm::Line
 	scps::Tokens = stm::Tokens
 	scps::Opt = stm::Tokens[1]
@@ -430,10 +420,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkImport(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype ImportTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype ImportTok
+	b = typ::IsInstanceOfType(tok)
 	var imps as ImportStmt = new ImportStmt()
-	if valinref|b = true then
+	if b then
 	imps::Line = stm::Line
 	imps::Tokens = stm::Tokens
 	imps::NS = stm::Tokens[1]
@@ -443,10 +433,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkNS(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype NamespaceTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype NamespaceTok
+	b = typ::IsInstanceOfType(tok)
 	var nss as NSStmt = new NSStmt()
-	if valinref|b = true then
+	if b then
 	nss::Line = stm::Line
 	nss::Tokens = stm::Tokens
 	nss::NS = stm::Tokens[1]
@@ -456,10 +446,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkLocimport(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype LocimportTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype LocimportTok
+	b = typ::IsInstanceOfType(tok)
 	var limps as LocimportStmt = new LocimportStmt()
-	if valinref|b = true then
+	if b then
 	limps::Line = stm::Line
 	limps::Tokens = stm::Tokens
 	limps::NS = stm::Tokens[1]
@@ -469,10 +459,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkReturn(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype ReturnTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype ReturnTok
+	b = typ::IsInstanceOfType(tok)
 	var rets as ReturnStmt = new ReturnStmt()
-	if valinref|b = true then
+	if b then
 	
 	rets::Line = stm::Line
 	rets::Tokens = stm::Tokens
@@ -556,10 +546,10 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkCmt(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype CommentTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype CommentTok
+	b = typ::IsInstanceOfType(tok)
 	var cmts as CommentStmt = new CommentStmt()
-	if valinref|b = true then
+	if b then
 	cmts::Line = stm::Line
 	cmts::Tokens = stm::Tokens
 	end if
@@ -571,14 +561,12 @@ class public auto ansi StmtOptimizer
 	
 	if stm::Tokens[l] < 2 then
 	
-	var tok1 as Token = stm::Tokens[0]
-	var typ1 as System.Type = gettype ElseTok
-	var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+	var typ1 as Type = gettype ElseTok
 	
-	valinref|b = b1
+	b = typ1::IsInstanceOfType(stm::Tokens[0])
 	
 	els = new ElseStmt()
-	if valinref|b = true then
+	if b then
 	els::Line = stm::Line
 	els::Tokens = stm::Tokens
 	end if
@@ -591,14 +579,12 @@ class public auto ansi StmtOptimizer
 	
 	if stm::Tokens[l] < 2 then
 	
-	var tok1 as Token = stm::Tokens[0]
-	var typ1 as System.Type = gettype DoTok
-	var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+	var typ1 as Type = gettype DoTok
 	
-	valinref|b = b1
+	b = typ1::IsInstanceOfType(stm::Tokens[0])
 	
 	ds = new DoStmt()
-	if valinref|b = true then
+	if b then
 	ds::Line = stm::Line
 	ds::Tokens = stm::Tokens
 	end if
@@ -644,14 +630,12 @@ class public auto ansi StmtOptimizer
 	
 	if stm::Tokens[l] < 2 then
 	
-	var tok1 as Token = stm::Tokens[0]
-	var typ1 as System.Type = gettype BreakTok
-	var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+	var typ1 as Type = gettype BreakTok
 	
-	valinref|b = b1
+	b = typ1::IsInstanceOfType(stm::Tokens[0])
 	
 	bs = new BreakStmt()
-	if valinref|b = true then
+	if b then
 	bs::Line = stm::Line
 	bs::Tokens = stm::Tokens
 	end if
@@ -664,14 +648,12 @@ class public auto ansi StmtOptimizer
 	
 	if stm::Tokens[l] < 2 then
 	
-	var tok1 as Token = stm::Tokens[0]
-	var typ1 as System.Type = gettype ContinueTok
-	var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+	var typ1 as Type = gettype ContinueTok
 	
-	valinref|b = b1
+	b = typ1::IsInstanceOfType(stm::Tokens[0])
 	
 	cs = new ContinueStmt()
-	if valinref|b = true then
+	if b then
 	cs::Line = stm::Line
 	cs::Tokens = stm::Tokens
 	end if
@@ -681,152 +663,127 @@ class public auto ansi StmtOptimizer
 	
 	
 	method public Stmt checkEndIf(var stm as Stmt, var b as boolean&)
+		var eifs as EndIfStmt = null
 	
-	var eifs as EndIfStmt = null
+		if stm::Tokens[l] >= 2 then
+
+			var typ1 as Type = gettype EndTok
+			var typ2 as Type = gettype IfTok
 	
-	if stm::Tokens[l] >= 2 then
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
 	
-	var tok1 as Token = stm::Tokens[0]
-	var typ1 as System.Type = gettype EndTok
-	var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
-	
-	var tok2 as Token = stm::Tokens[1]
-	var typ2 as System.Type = gettype IfTok
-	var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
-	
-	valinref|b = b1 and b2
-	
-	eifs = new EndIfStmt()
-	if valinref|b = true then
-	eifs::Line = stm::Line
-	eifs::Tokens = stm::Tokens
-	end if
-	end if
-	return eifs
+			if b then
+				eifs = new EndIfStmt()
+				eifs::Line = stm::Line
+				eifs::Tokens = stm::Tokens
+			end if
+		end if
+		return eifs
 	end method
 	
 	
 	method public Stmt checkEndMtd(var stm as Stmt, var b as boolean&)
-	var ems as EndMethodStmt = null
+		var ems as EndMethodStmt = null
 	
-	if stm::Tokens[l] >= 2 then
+		if stm::Tokens[l] >= 2 then
 	
-	var tok1 as Token = stm::Tokens[0]
-	var typ1 as System.Type = gettype EndTok
-	var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+			var typ1 as Type = gettype EndTok
+			var typ2 as Type = gettype MethodTok
 	
-	var tok2 as Token = stm::Tokens[1]
-	var typ2 as System.Type = gettype MethodTok
-	var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
 	
-	valinref|b = b1 and b2
-	
-	ems = new EndMethodStmt()
-	if valinref|b = true then
-	ems::Line = stm::Line
-	ems::Tokens = stm::Tokens
-	end if
-	end if
-	return ems
+			if b then
+				ems = new EndMethodStmt()
+				ems::Line = stm::Line
+				ems::Tokens = stm::Tokens
+			end if
+		end if
+		return ems
 	end method
 	
 	method public Stmt checkEndNS(var stm as Stmt, var b as boolean&)
-	var ens as EndNSStmt = null
+		var ens as EndNSStmt = null
 	
-	if stm::Tokens[l] >= 2 then
+		if stm::Tokens[l] >= 2 then
+
+			var typ1 as Type = gettype EndTok	
+			var typ2 as Type = gettype NamespaceTok
+				
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
 	
-	var tok1 as Token = stm::Tokens[0]
-	var typ1 as System.Type = gettype EndTok
-	var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
-	
-	var tok2 as Token = stm::Tokens[1]
-	var typ2 as System.Type = gettype NamespaceTok
-	var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
-	
-	valinref|b = b1 and b2
-	
-	ens = new EndNSStmt()
-	if valinref|b = true then
-	ens::Line = stm::Line
-	ens::Tokens = stm::Tokens
-	end if
-	end if
-	return ens
+			if b then
+				ens = new EndNSStmt()
+				ens::Line = stm::Line
+				ens::Tokens = stm::Tokens
+			end if
+		end if
+		return ens
 	end method
 	
 	
 	method public Stmt checkEndCls(var stm as Stmt, var b as boolean&)
-	var ecs as EndClassStmt = null
+		var ecs as EndClassStmt = null
 	
-	if stm::Tokens[l] >= 2 then
+		if stm::Tokens[l] >= 2 then
 	
-	var tok1 as Token = stm::Tokens[0]
-	var typ1 as System.Type = gettype EndTok
-	var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+			var typ1 as Type = gettype EndTok
+			var typ2 as Type = gettype ClassTok
+			var typ3 as Type = gettype StructTok
 	
-	var tok2 as Token = stm::Tokens[1]
-	var typ2 as System.Type = gettype ClassTok
-	var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and (typ2::IsInstanceOfType(stm::Tokens[1]) or typ3::IsInstanceOfType(stm::Tokens[1]))
 	
-	valinref|b = b1 and b2
-	
-	ecs = new EndClassStmt()
-	if valinref|b = true then
-	ecs::Line = stm::Line
-	ecs::Tokens = stm::Tokens
-	end if
-	end if
-	return ecs
+			if b then
+				ecs = new EndClassStmt()
+				ecs::Line = stm::Line
+				ecs::Tokens = stm::Tokens
+			end if
+		end if
+		return ecs
 	end method
 	
 	method public Stmt checkEndDo(var stm as Stmt, var b as boolean&)
-	var eds as EndDoStmt = null
+		var eds as EndDoStmt = null
 	
-	if stm::Tokens[l] >= 2 then
+		if stm::Tokens[l] >= 2 then
+
+			var typ1 as Type = gettype EndTok
+			var typ2 as Type = gettype DoTok
 	
-	var tok1 as Token = stm::Tokens[0]
-	var typ1 as System.Type = gettype EndTok
-	var b1 as boolean = typ1::IsInstanceOfType($object$tok1)
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
 	
-	var tok2 as Token = stm::Tokens[1]
-	var typ2 as System.Type = gettype DoTok
-	var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
-	
-	valinref|b = b1 and b2
-	
-	eds = new EndDoStmt()
-	if valinref|b = true then
-	eds::Line = stm::Line
-	eds::Tokens = stm::Tokens
-	end if
-	end if
-	return eds
+			if b then
+				eds = new EndDoStmt()
+				eds::Line = stm::Line
+				eds::Tokens = stm::Tokens
+			end if
+		end if
+		return eds
 	end method
 	
-		method public Stmt checkEndTry(var stm as Stmt, var b as boolean&)
-			var ets as EndTryStmt = null
-	
-			if stm::Tokens[l] >= 2 then
-				var typ1 as Type = gettype EndTok
-				var typ2 as Type = gettype TryTok
-				b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+	method public Stmt checkEndTry(var stm as Stmt, var b as boolean&)
+		var ets as EndTryStmt = null
+
+		if stm::Tokens[l] >= 2 then
+			var typ1 as Type = gettype EndTok
+			var typ2 as Type = gettype TryTok
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+
+			if b then
 				ets = new EndTryStmt()
-	
-				if b then
-					ets::Line = stm::Line
-					ets::Tokens = stm::Tokens
-				end if
+				ets::Line = stm::Line
+				ets::Tokens = stm::Tokens
 			end if
-			return ets
-		end method
+		end if
+		return ets
+	end method
 	
 	
 	method public Stmt checkAssembly(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype AssemblyTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype AssemblyTok
+	b = typ::IsInstanceOfType(tok)
 	var asms as AssemblyStmt = new AssemblyStmt()
-	if valinref|b = true then
+	if b then
 	asms::Line = stm::Line
 	asms::Tokens = stm::Tokens
 	asms::AsmName = stm::Tokens[1]
@@ -835,120 +792,112 @@ class public auto ansi StmtOptimizer
 	return asms
 	end method
 	
-		method public Stmt checkVer(var stm as Stmt, var b as boolean&)
-			var typ as Type = gettype VerTok
-			var vers as VerStmt = new VerStmt()
-			b = typ::IsInstanceOfType(stm::Tokens[0])
-			if b then
-				vers::Line = stm::Line
-				vers::Tokens = stm::Tokens
-				var ars as string[] = ParseUtils::StringParser(stm::Tokens[1]::Value,".")
-				var ari as integer[] = new integer[4]
-				ari[0] = $integer$ars[0]
-				ari[1] = $integer$ars[1]
-				ari[2] = $integer$ars[2]
-				ari[3] = $integer$ars[3]
-				var intla as IntLiteral[] = new IntLiteral[4]
-				var intl as IntLiteral = null
-				intl = new IntLiteral(ari[0])
-				intl::Line = stm::Line
-				intla[0] = intl
-				intl = new IntLiteral(ari[1])
-				intl::Line = stm::Line
-				intla[1] = intl
-				intl = new IntLiteral(ari[2])
-				intl::Line = stm::Line
-				intla[2] = intl
-				intl = new IntLiteral(ari[3])
-				intl::Line = stm::Line
-				intla[3] = intl
-				vers::VersionNos = intla
-				stm = vers
+	method public Stmt checkVer(var stm as Stmt, var b as boolean&)
+		var typ as Type = gettype VerTok
+		var vers as VerStmt = new VerStmt()
+		b = typ::IsInstanceOfType(stm::Tokens[0])
+		if b then
+			vers::Line = stm::Line
+			vers::Tokens = stm::Tokens
+			var ars as string[] = ParseUtils::StringParser(stm::Tokens[1]::Value,".")
+			var intla as IntLiteral[] = new IntLiteral[4]
+			var intl as IntLiteral = null
+			intl = new IntLiteral($integer$ars[0])
+			intl::Line = stm::Line
+			intla[0] = intl
+			intl = new IntLiteral($integer$ars[1])
+			intl::Line = stm::Line
+			intla[1] = intl
+			intl = new IntLiteral($integer$ars[2])
+			intl::Line = stm::Line
+			intla[2] = intl
+			intl = new IntLiteral($integer$ars[3])
+			intl::Line = stm::Line
+			intla[3] = intl
+			vers::VersionNos = intla
+			stm = vers
+		end if
+		return vers
+	end method
+
+	method public Stmt checkClass(var stm as Stmt, var b as boolean&)
+		var typ as Type = gettype ClassTok
+		var sttyp as Type = gettype StructTok
+		b = typ::IsInstanceOfType(stm::Tokens[0]) or sttyp::IsInstanceOfType(stm::Tokens[0])
+		var clss as ClassStmt = new ClassStmt()
+		var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
+		var tempexp as Expr
+		var stflg as boolean = false
+
+		if b then
+		
+			if sttyp::IsInstanceOfType(stm::Tokens[0]) then
+				stflg = true
+				clss::InhClass = new TypeTok(gettype ValueType)
 			end if
-			return vers
-		end method
+
+			clss::Line = stm::Line
+			clss::Tokens = stm::Tokens
+			var i as integer = 0
 	
-		method public Stmt checkClass(var stm as Stmt, var b as boolean&)
-			var typ as Type = gettype ClassTok
-			b = typ::IsInstanceOfType(stm::Tokens[0])
-			var clss as ClassStmt = new ClassStmt()
-			var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-			var tempexp as Expr
+			do until i >= (stm::Tokens[l] - 1)
 	
-			if b then
+				i = i + 1
+				typ = gettype Attributes.Attribute
 	
-				clss::Line = stm::Line
-				clss::Tokens = stm::Tokens
-				var i as integer = 0
-		
-				do until i >= (stm::Tokens[l] - 1)
-		
-					i = i + 1
-					typ = gettype Attributes.Attribute
-		
-					if typ::IsInstanceOfType(stm::Tokens[i]) then
-						clss::AddAttr($Attributes.Attribute$stm::Tokens[i])
-					else
-						var typ2 as Type = gettype ExtendsTok
-						typ = gettype ImplementsTok
-						if typ2::IsInstanceOfType(stm::Tokens[i]) then
-							i = i + 1
-							tempexp = new Expr()
-							tempexp::Tokens = stm::Tokens
-							texpexp = eopt::procType(tempexp,i)
-							stm::Tokens = tempexp::Tokens
-							//if typ2::IsInstanceOfType(stm::Tokens[i]) = false then
-								//var tt as TypeTok = new TypeTok()
-								//tt::Line = stm::Tokens[i]::Line
-								//tt::Value = stm::Tokens[i]::Value
-								//clss::InhClass = tt
-							//else
-								clss::InhClass = $TypeTok$stm::Tokens[i]
-							//end if
-						elseif typ::IsInstanceOfType(stm::Tokens[i]) then
-							typ2 = gettype TypeTok
-							typ = gettype Comma
-							do until i = (stm::Tokens[l] - 1)
-								i = i + 1
-								if typ::IsInstanceOfType(stm::Tokens[i]) = false then
-									//var tt2 as TypeTok = new TypeTok()
-									//tt2::Line = stm::Tokens[i]::Line
-									//tt2::Value = stm::Tokens[i]::Value
-									tempexp = new Expr()
-									tempexp::Tokens = stm::Tokens
-									texpexp = eopt::procType(tempexp,i)
-									stm::Tokens = tempexp::Tokens
-									clss::AddInterface($TypeTok$stm::Tokens[i])
-								end if
-							end do
-						else
-							clss::ClassName = stm::Tokens[i]
+				if typ::IsInstanceOfType(stm::Tokens[i]) then
+					clss::AddAttr($Attributes.Attribute$stm::Tokens[i])
+				else
+					var typ2 as Type = gettype ExtendsTok
+					typ = gettype ImplementsTok
+					if typ2::IsInstanceOfType(stm::Tokens[i]) then
+						i = i + 1
+						tempexp = new Expr()
+						tempexp::Tokens = stm::Tokens
+						tempexp = eopt::procType(tempexp,i)
+						stm::Tokens = tempexp::Tokens
+						
+						if stflg = false then
+							clss::InhClass = $TypeTok$stm::Tokens[i]
 						end if
-	
+					
+					elseif typ::IsInstanceOfType(stm::Tokens[i]) then
+						typ2 = gettype TypeTok
+						typ = gettype Comma
+						do until i = (stm::Tokens[l] - 1)
+							i = i + 1
+							if typ::IsInstanceOfType(stm::Tokens[i]) = false then
+								tempexp = new Expr()
+								tempexp::Tokens = stm::Tokens
+								tempexp = eopt::procType(tempexp,i)
+								stm::Tokens = tempexp::Tokens
+								clss::AddInterface($TypeTok$stm::Tokens[i])
+							end if
+						end do
+					else
+						clss::ClassName = stm::Tokens[i]
 					end if
-				end do
-			end if
-			
-			return clss
-		end method
+
+				end if
+			end do
+		end if
+		
+		return clss
+	end method
 	
 	method public Stmt checkField(var stm as Stmt, var b as boolean&)
 	
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype FieldTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype FieldTok
+	b = typ::IsInstanceOfType(tok)
 	var flss as FieldStmt = new FieldStmt()
 	var att as Attributes.Attribute = null
 	
-	if valinref|b = true then
+	if b then
 	
 	var tempexp as Expr = new Expr()
 	tempexp::Tokens = stm::Tokens
 	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	//PFlags::ProcessTTokOnly = true
-	//tempexp = eop::Optimize(tempexp)
-	//PFlags::ProcessTTokOnly = false
-	//stm::Tokens = tempexp::Tokens
 	
 	flss::Line = stm::Line
 	flss::Tokens = stm::Tokens
@@ -965,7 +914,7 @@ class public auto ansi StmtOptimizer
 	i = i + 1
 	tok = stm::Tokens[i]
 	typ = gettype Attributes.Attribute
-	bl = typ::IsInstanceOfType($object$tok)
+	bl = typ::IsInstanceOfType(tok)
 	
 	if bl then
 	att = tok
@@ -985,17 +934,9 @@ class public auto ansi StmtOptimizer
 	
 	i = i + 1
 	
-	//if b2 <> true then
-	//var t as Token = stm::Tokens[i]
-	//var tt as TypeTok = new TypeTok()
-	//tt::Line = t::Line
-	//tt::Value = t::Value
-	//flss::FieldTyp = tt
-	//else
 	tempexp = eop::procType(tempexp,i)
 	stm::Tokens = tempexp::Tokens
 	flss::FieldTyp = stm::Tokens[i]
-	//end if
 	
 	i = i + 1
 	flss::FieldName = stm::Tokens[i]
@@ -1008,23 +949,19 @@ class public auto ansi StmtOptimizer
 	method public Stmt checkMethod(var stm as Stmt, var b as boolean&)
 	
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype MethodTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype MethodTok
+	b = typ::IsInstanceOfType(tok)
 	var mtss as MethodStmt = new MethodStmt()
 	var att as Attributes.Attribute = new Attributes.Attribute()
 	//var mn as Ident = new Ident()
 	var exp as Expr = null
 	var d as boolean = false
 	
-	if valinref|b = true then
+	if b then
 	
 	var tempexp as Expr = new Expr()
 	tempexp::Tokens = stm::Tokens
 	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	//PFlags::ProcessTTokOnly = true
-	//tempexp = eop::Optimize(tempexp)
-	//PFlags::ProcessTTokOnly = false
-	//stm::Tokens = tempexp::Tokens
 	
 	mtss::Line = stm::Line
 	mtss::Tokens = stm::Tokens
@@ -1047,7 +984,7 @@ class public auto ansi StmtOptimizer
 	i = i + 1
 	tok = stm::Tokens[i]
 	typ = gettype Attributes.Attribute
-	bl = typ::IsInstanceOfType($object$tok)
+	bl = typ::IsInstanceOfType(tok)
 	
 	if bl = true then
 	att = tok
@@ -1074,20 +1011,9 @@ class public auto ansi StmtOptimizer
 	var typ2 as Type
 	var b2 as boolean
 	
-	//typ2 = gettype TypeTok
-	//b2 = typ2::IsInstanceOfType($object$tok2)
-	
-	//if b2 <> true then
-	//var t as Token = stm::Tokens[i]
-	//var tt as TypeTok = new TypeTok()
-	//tt::Line = t::Line
-	//tt::Value = t::Value
-	//mtss::RetTyp = tt
-	//else
 	tempexp = eop::procType(tempexp,i)
 	stm::Tokens = tempexp::Tokens
 	mtss::RetTyp = stm::Tokens[i]
-	//end if
 	
 	len = stm::Tokens[l] - 1
 	
@@ -1095,7 +1021,7 @@ class public auto ansi StmtOptimizer
 	
 	tok2 = stm::Tokens[i]
 	typ2 = gettype Ident
-	b2 = typ2::IsInstanceOfType($object$tok2)
+	b2 = typ2::IsInstanceOfType(tok2)
 	if b2 then
 	mtss::MethodName = tok2
 	end if
@@ -1106,7 +1032,7 @@ class public auto ansi StmtOptimizer
 	i = i + 1
 	tok2 = stm::Tokens[i]
 	typ2 = gettype LParen
-	b2 = typ2::IsInstanceOfType($object$tok2)
+	b2 = typ2::IsInstanceOfType(tok2)
 	if b2 then
 	
 	place loop2
@@ -1116,7 +1042,7 @@ class public auto ansi StmtOptimizer
 	
 	tok2 = stm::Tokens[i]
 	typ2 = gettype RParen
-	b2 = typ2::IsInstanceOfType($object$tok2)
+	b2 = typ2::IsInstanceOfType(tok2)
 	if b2 then
 	if d then
 	var eopt2 as ExprOptimizer = new ExprOptimizer(PFlags)
@@ -1131,7 +1057,7 @@ class public auto ansi StmtOptimizer
 	
 	tok2 = stm::Tokens[i]
 	typ2 = gettype VarTok
-	b2 = typ2::IsInstanceOfType($object$tok2)
+	b2 = typ2::IsInstanceOfType(tok2)
 	if b2 then
 	d = true
 	exp = new Expr()
@@ -1149,7 +1075,7 @@ class public auto ansi StmtOptimizer
 	
 	tok2 = stm::Tokens[i]
 	typ2 = gettype Comma
-	if typ2::IsInstanceOfType($object$tok2) and (lvl = 0) then
+	if typ2::IsInstanceOfType(tok2) and (lvl == 0) then
 	var eopt1 as ExprOptimizer = new ExprOptimizer(PFlags)
 	exp = eopt1::checkVarAs(exp,ref|bl)
 	if bl then
@@ -1180,23 +1106,19 @@ class public auto ansi StmtOptimizer
 	method public Stmt checkDelegate(var stm as Stmt, var b as boolean&)
 	
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype DelegateTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	var typ as Type = gettype DelegateTok
+	b = typ::IsInstanceOfType(tok)
 	var dels as DelegateStmt = new DelegateStmt()
 	var att as Attributes.Attribute = new Attributes.Attribute()
 	//var deln as Ident = new Ident()
 	var exp as Expr = null
 	var d as boolean = false
 	
-	if valinref|b = true then
+	if b then
 	
 	var tempexp as Expr = new Expr()
 	tempexp::Tokens = stm::Tokens
 	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	//PFlags::ProcessTTokOnly = true
-	//tempexp = eop::Optimize(tempexp)
-	//PFlags::ProcessTTokOnly = false
-	//stm::Tokens = tempexp::Tokens
 	
 	dels::Line = stm::Line
 	dels::Tokens = stm::Tokens
@@ -1219,7 +1141,7 @@ class public auto ansi StmtOptimizer
 	i = i + 1
 	tok = stm::Tokens[i]
 	typ = gettype Attributes.Attribute
-	bl = typ::IsInstanceOfType($object$tok)
+	bl = typ::IsInstanceOfType(tok)
 	
 	if bl then
 	att = tok
@@ -1245,28 +1167,18 @@ class public auto ansi StmtOptimizer
 	var tok2 as Token = stm::Tokens[i]
 	var typ2 as Type
 	var b2 as boolean
-	
-	//typ2 = gettype TypeTok
-	//b2 = typ2::IsInstanceOfType($object$tok2)
-	
-	//if b2 <> true then
-	//var t as Token = stm::Tokens[i]
-	//var tt as TypeTok = new TypeTok()
-	//tt::Line = t::Line
-	//tt::Value = t::Value
-	//dels::RetTyp = tt
-	//else
+
 	tempexp = eop::procType(tempexp,i)
 	stm::Tokens = tempexp::Tokens
 	dels::RetTyp = stm::Tokens[i]
-	//end if
+
 	len = stm::Tokens[l] - 1
 	
 	i = i + 1
 	
 	tok2 = stm::Tokens[i]
 	typ2 = gettype Ident
-	b2 = typ2::IsInstanceOfType($object$tok2)
+	b2 = typ2::IsInstanceOfType(tok2)
 	if b2 then
 	dels::DelegateName = tok2
 	end if
@@ -1277,7 +1189,7 @@ class public auto ansi StmtOptimizer
 	i = i + 1
 	tok2 = stm::Tokens[i]
 	typ2 = gettype LParen
-	b2 = typ2::IsInstanceOfType($object$tok2)
+	b2 = typ2::IsInstanceOfType(tok2)
 	if b2 then
 	
 	place loop2
@@ -1287,7 +1199,7 @@ class public auto ansi StmtOptimizer
 	
 	tok2 = stm::Tokens[i]
 	typ2 = gettype RParen
-	b2 = typ2::IsInstanceOfType($object$tok2)
+	b2 = typ2::IsInstanceOfType(tok2)
 	if b2 then
 	if d then
 	var eopt2 as ExprOptimizer = new ExprOptimizer(PFlags)
@@ -1302,7 +1214,7 @@ class public auto ansi StmtOptimizer
 	
 	tok2 = stm::Tokens[i]
 	typ2 = gettype VarTok
-	b2 = typ2::IsInstanceOfType($object$tok2)
+	b2 = typ2::IsInstanceOfType(tok2)
 	if b2 then
 	d = true
 	exp = new Expr()
@@ -1320,7 +1232,7 @@ class public auto ansi StmtOptimizer
 	
 	tok2 = stm::Tokens[i]
 	typ2 = gettype Comma
-	if typ2::IsInstanceOfType($object$tok2) and (lvl == 0) then
+	if typ2::IsInstanceOfType(tok2) and (lvl == 0) then
 	var eopt1 as ExprOptimizer = new ExprOptimizer(PFlags)
 	exp = eopt1::checkVarAs(exp,ref|bl)
 	if bl then
@@ -1352,17 +1264,17 @@ class public auto ansi StmtOptimizer
 	
 	if stm::Tokens[l] > 2 then
 	var tok as Token = stm::Tokens[0]
-	var typ as System.Type = gettype Ident
+	var typ as Type = gettype Ident
 	//var tokb as Token = stm::Tokens[1]
-	//var typb as System.Type = gettype LParen
-	var ba as boolean = typ::IsInstanceOfType($object$tok)
-	//var bb as boolean = typb::IsInstanceOfType($object$tokb)
+	//var typb as Type = gettype LParen
+	var ba as boolean = typ::IsInstanceOfType(tok)
+	//var bb as boolean = typb::IsInstanceOfType(tokb)
 	
-	valinref|b = ba
+	b = ba
 	
 	var mtcss as MethodCallStmt = new MethodCallStmt()
 	
-	if valinref|b = true then
+	if b then
 	
 	mtcss::Line = stm::Line
 	mtcss::Tokens = stm::Tokens
@@ -1383,34 +1295,22 @@ class public auto ansi StmtOptimizer
 	method public Stmt checkVarAs(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype VarTok
-	valinref|b = typ::IsInstanceOfType($object$tok)
+	b = typ::IsInstanceOfType(tok)
 	var vars as VarStmt = new VarStmt()
 	
-	if valinref|b = true then
+	if b then
 	vars::Tokens = stm::Tokens
 	var tempexp as Expr = new Expr()
 	tempexp::Tokens = vars::Tokens
 	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
 	tempexp = eop::procType(tempexp,3)
-	//tempexp = eop::Optimize(tempexp)
 	vars::Tokens = tempexp::Tokens
 	stm::Tokens = tempexp::Tokens
 	vars::Line = stm::Line
 	vars::VarName = stm::Tokens[1]
 	
-	//var tok2 as Token = vars::Tokens[3]
-	//var typ2 as System.Type = gettype TypeTok
-	//var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
-	
-	//if b2 <> true then
-	//var t as Token = vars::Tokens[3]
-	//var tt as TypeTok = new TypeTok()
-	//tt::Line = t::Line
-	//tt::Value = t::Value
-	//vars::VarTyp = tt
-	//else
 	vars::VarTyp = vars::Tokens[3]
-	//end if
+
 	
 	end if
 	return vars
@@ -1426,25 +1326,15 @@ class public auto ansi StmtOptimizer
 				var tempexp as Expr = new Expr()
 				tempexp::Tokens = cs::Tokens
 				var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-				//tempexp = eop::Optimize(tempexp)
-				//tempexp = eop::Optimize(tempexp)
 				cs::Tokens = tempexp::Tokens
 				stm::Tokens = tempexp::Tokens
 				cs::Line = stm::Line
 				cs::ExName = stm::Tokens[1]
 	
-				//if typ2::IsInstanceOfType(cs::Tokens[3]) = false then
-					//var t as Token = cs::Tokens[3]
-					//var tt as TypeTok = new TypeTok()
-					//tt::Line = t::Line
-					//tt::Value = t::Value
-					//cs::ExTyp = tt
-				//else
 				tempexp = eop::procType(tempexp,3)
 				cs::Tokens = tempexp::Tokens
 				cs::ExTyp = cs::Tokens[3]
-				//end if
-	
+					
 			end if
 			return cs
 		end method
@@ -1455,7 +1345,7 @@ class public auto ansi StmtOptimizer
 	var le as Expr = asss::LExp
 	var tok as Token = le::Tokens[0]
 	var typ as Type = gettype VarTok
-	var b as boolean = typ::IsInstanceOfType($object$tok)
+	var b as boolean = typ::IsInstanceOfType(tok)
 	var vass as VarAsgnStmt = new VarAsgnStmt()
 	if b  then
 	vass::Tokens = asss::Tokens
@@ -1469,20 +1359,8 @@ class public auto ansi StmtOptimizer
 	tempexp = eop::procType(tempexp,3)
 	le::Tokens = tempexp::Tokens
 	
-	//var tok2 as Token = le::Tokens[3]
-	//var typ2 as System.Type = gettype TypeTok
-	//var b2 as boolean = typ2::IsInstanceOfType($object$tok2)
-	
-	//if b2 <> true then
-	//var t as Token = le::Tokens[3]
-	//var tt as TypeTok = new TypeTok()
-	//tt::Line = t::Line
-	//tt::Value = t::Value
-	//vass::VarTyp = tt
-	//else
 	vass::VarTyp = le::Tokens[3]
-	//end if
-	
+		
 	vass::RExpr = asss::RExp
 	vass::RExpr = eop::Optimize(vass::RExpr)
 	
@@ -1495,7 +1373,7 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt checkAssign(var stm as Stmt, var b as boolean&)
 	var tok as Token = null
-	var typ as System.Type = gettype AssignOp
+	var typ as Type = gettype AssignOp
 	var asss as AssignStmt = new AssignStmt()
 	var c as boolean = false
 	var re as Expr = new Expr()
@@ -1596,8 +1474,6 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method public Stmt Optimize(var stm as Stmt)
-	
-	//Console::WriteLine(stm::Line)
 	
 	var i as integer = -1
 	var lenx as integer = stm::Tokens[l] - 1

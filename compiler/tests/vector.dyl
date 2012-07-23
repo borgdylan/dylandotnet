@@ -1,5 +1,5 @@
 //Vector Structure
-//use dylan.NET v. 11.2.9.2 or higher to compile this
+//use dylan.NET v. 11.2.9.6 or higher to compile this
 
 #refstdasm "mscorlib.dll"
 
@@ -9,9 +9,9 @@ import System.Collections.Generic
 #debug on
 
 assembly vector dll
-ver 1.3.0.0
+ver 1.4.0.0
 
-class public auto ansi Vector extends ValueType implements IEquatable<of Vector>, IComparable, IComparable<of Vector>, IComparer<of Vector>
+struct public auto ansi Vector implements IEquatable<of Vector>, IComparable, IComparable<of Vector>, IComparer<of Vector>
 
 	field public integer I
 	field public integer J
@@ -154,4 +154,4 @@ class public auto ansi Vector extends ValueType implements IEquatable<of Vector>
 		return new Vector(o)
 	end method
 
-end class
+end struct

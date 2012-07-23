@@ -670,6 +670,14 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "struct" then
+			var strctk as StructTok = new StructTok()
+			strctk::Line = tok::Line
+			strctk::Value = tok::Value
+			tok = strctk
+			goto fin
+		end if
+		
 		if tok::Value = "delegate" then
 			var deltk as DelegateTok = new DelegateTok()
 			deltk::Line = tok::Line

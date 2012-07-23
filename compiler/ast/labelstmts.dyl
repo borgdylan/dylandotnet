@@ -14,6 +14,10 @@ class public auto ansi LabelStmt extends Stmt
 		me::ctor()
 		LabelName = new Ident()
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "label " + LabelName::Value
+	end method
 
 end class
 
@@ -25,6 +29,10 @@ class public auto ansi PlaceStmt extends Stmt
 		me::ctor()
 		LabelName = new Ident()
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "place " + LabelName::Value
+	end method
 
 end class
 
@@ -35,6 +43,10 @@ class public auto ansi GotoStmt extends Stmt
 	method public void GotoStmt()
 		me::ctor()
 		LabelName = new Ident()
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "goto " + LabelName::Value
 	end method
 
 end class

@@ -32,7 +32,7 @@ import dylan.NET.Reflection
 #debug on
 
 assembly dnr dll
-ver 11.2.9.5
+ver 11.2.9.6
 
 namespace dylan.NET.Reflection
 	#include "dnr/milambdas.dyl"

@@ -14,6 +14,14 @@ class public auto ansi RefasmStmt extends Stmt
 		me::ctor()
 		AsmPath = new Token()
 	end method
+	
+	method public hidebysig virtual string ToString()
+		var temp as string = AsmPath::Value
+		if temp notlike c"^\q(.)*\q$" then
+			temp = c"\q" + temp + c"\q"
+		end if
+		return "#refasm " + temp
+	end method
 
 end class
 
@@ -24,6 +32,14 @@ class public auto ansi RefstdasmStmt extends Stmt
 	method public void RefstdasmStmt()
 		me::ctor()
 		AsmPath = new Token()
+	end method
+	
+	method public hidebysig virtual string ToString()
+		var temp as string = AsmPath::Value
+		if temp notlike c"^\q(.)*\q$" then
+			temp = c"\q" + temp + c"\q"
+		end if
+		return "#refstdasm " + temp
 	end method
 
 end class

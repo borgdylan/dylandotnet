@@ -311,12 +311,12 @@ class public auto ansi beforefieldinit Loader
 
 	method public static IEnumerable<of MethodInfo> LoadSpecMtds(var typ as Type)
 		//var tempie as IEnumerable = typ::GetMethods()
-		var mtdinfos as IEnumerable<of MethodInfo> = Enumerable::OfType<of MethodInfo>($IEnumerable$typ::GetMethods())
+		var mtdinfos as IEnumerable<of MethodInfo> = Enumerable::OfType<of MethodInfo>(typ::GetMethods())
 		return Enumerable::Where<of MethodInfo>(mtdinfos, new Func<of MethodInfo,boolean>(MILambdas::IsSpecial()))
 	end method
 
 	method public static IEnumerable<of MethodInfo> LoadGenericMtdOverlds(var typ as Type, var name as string, var paramlen as integer)
-		var mtdinfos as IEnumerable<of MethodInfo> = Enumerable::OfType<of MethodInfo>($IEnumerable$typ::GetMethods())
+		var mtdinfos as IEnumerable<of MethodInfo> = Enumerable::OfType<of MethodInfo>(typ::GetMethods())
 		var mil as MILambdas = new MILambdas(name,paramlen)
 		return Enumerable::Where<of MethodInfo>(mtdinfos, new Func<of MethodInfo,boolean>(mil::GenericMtdFilter()))
 	end method

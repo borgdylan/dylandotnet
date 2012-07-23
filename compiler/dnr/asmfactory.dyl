@@ -10,6 +10,7 @@ class public auto ansi beforefieldinit AsmFactory
 
 	field public static boolean DebugFlg
 	field public static boolean InMethodFlg
+	field public static boolean InCtorFlg
 	field public static boolean ChainFlg
 	field public static boolean RefChainFlg
 	field public static boolean PopFlg
@@ -52,6 +53,7 @@ class public auto ansi beforefieldinit AsmFactory
 		AddrFlg = false
 		ForcedAddrFlg = false
 		InMethodFlg = false
+		InCtorFlg = false
 		CurnNS = ""
 		DfltNS = ""
 		AsmFile = ""

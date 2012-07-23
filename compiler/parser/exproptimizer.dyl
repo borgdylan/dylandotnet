@@ -527,7 +527,7 @@ i = i + 1
 
 tok2 = stm::Tokens[i]
 typ2 = gettype RSParen
-b2 = typ2::IsInstanceOfType($object$tok2)
+b2 = typ2::IsInstanceOfType(tok2)
 if b2 = true then
 lvl = lvl - 1
 if lvl = 0 then
@@ -546,7 +546,7 @@ end if
 
 tok2 = stm::Tokens[i]
 typ2 = gettype LSParen
-b2 = typ2::IsInstanceOfType($object$tok2)
+b2 = typ2::IsInstanceOfType(tok2)
 if b2 = true then
 lvl = lvl + 1
 d = true
@@ -555,7 +555,7 @@ end if
 
 tok2 = stm::Tokens[i]
 typ2 = gettype Comma
-b2 = typ2::IsInstanceOfType($object$tok2)
+b2 = typ2::IsInstanceOfType(tok2)
 if b2 = true then
 else
 d = true
@@ -622,7 +622,7 @@ i = i + 1
 
 tok2 = stm::Tokens[i]
 typ2 = gettype RSParen
-b2 = typ2::IsInstanceOfType($object$tok2)
+b2 = typ2::IsInstanceOfType(tok2)
 if b2 = true then
 lvl = lvl - 1
 if lvl = 0 then
@@ -641,7 +641,7 @@ end if
 
 tok2 = stm::Tokens[i]
 typ2 = gettype LSParen
-b2 = typ2::IsInstanceOfType($object$tok2)
+b2 = typ2::IsInstanceOfType(tok2)
 if b2 = true then
 lvl = lvl + 1
 d = true
@@ -650,7 +650,7 @@ end if
 
 tok2 = stm::Tokens[i]
 typ2 = gettype Comma
-b2 = typ2::IsInstanceOfType($object$tok2)
+b2 = typ2::IsInstanceOfType(tok2)
 if b2 = true then
 else
 d = true
@@ -729,7 +729,7 @@ var b as boolean
 var str as string
 
 typ = gettype LRSParen
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 typ = gettype TypeTok
@@ -737,7 +737,7 @@ exp::RemToken(i)
 i = i - 1
 len = exp::Tokens[l] - 1
 tok = exp::Tokens[i]
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b <> true then
 var tk as Token = exp::Tokens[i]
@@ -754,7 +754,7 @@ goto fin
 end if
 
 typ = gettype Ampersand
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 typ = gettype TypeTok
@@ -762,7 +762,7 @@ exp::RemToken(i)
 i = i - 1
 len = exp::Tokens[l] - 1
 tok = exp::Tokens[i]
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b <> true then
 var tk2 as Token = exp::Tokens[i]
@@ -781,7 +781,7 @@ end if
 if PFlags::ProcessTTokOnly = false then
 
 typ = gettype DollarSign
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 PFlags::DurConvFlag = PFlags::DurConvFlag nor PFlags::DurConvFlag
@@ -800,7 +800,7 @@ goto fin
 end if
 
 typ = gettype Pipe
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 exp::RemToken(i)
@@ -810,7 +810,7 @@ goto fin
 end if
 
 typ = gettype RefTok
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 PFlags::isChanged = true
@@ -822,7 +822,7 @@ goto fin
 end if
 
 typ = gettype ValInRefTok
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 PFlags::isChanged = true
@@ -834,7 +834,7 @@ goto fin
 end if
 
 typ = gettype TypeTok
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 if PFlags::DurConvFlag <> false then
@@ -848,7 +848,7 @@ goto fin
 end if
 
 typ = gettype Ident
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b then
 if PFlags::DurConvFlag = false then
@@ -890,7 +890,7 @@ goto fin
 end if
 
 typ = gettype CharLiteral
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 if PFlags::isChanged = true then
@@ -903,7 +903,7 @@ goto fin
 end if
 
 typ = gettype NullLiteral
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 if PFlags::isChanged = true then
@@ -916,7 +916,7 @@ goto fin
 end if
 
 typ = gettype MeTok
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 if PFlags::isChanged = true then
@@ -929,7 +929,7 @@ goto fin
 end if
 
 typ = gettype StringLiteral
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 PFlags::StringFlag = true
@@ -943,7 +943,7 @@ goto fin
 end if
 
 typ = gettype BooleanLiteral
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 if PFlags::isChanged = true then
@@ -956,7 +956,7 @@ goto fin
 end if
 
 typ = gettype NumberLiteral
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 if PFlags::isChanged = true then
@@ -969,7 +969,7 @@ goto fin
 end if
 
 typ = gettype NewTok
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 
@@ -993,7 +993,7 @@ exp = procNewCall(exp, i)
 len = exp::Tokens[l] - 1
 
 typ = gettype NewCallTok
-b = typ::IsInstanceOfType($object$exp::Tokens[i])
+b = typ::IsInstanceOfType(exp::Tokens[i])
 
 if b = true then
 //if output is newcall
@@ -1035,7 +1035,7 @@ goto fin
 end if
 
 typ = gettype GettypeTok
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b then
 
@@ -1064,7 +1064,7 @@ end if
 
 
 typ = gettype NewarrTok
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 
@@ -1077,7 +1077,7 @@ exp::RemToken(i)
 len = len - 1
 
 typ = gettype TypeTok
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b <> true then
 newattok = new TypeTok()
@@ -1102,7 +1102,7 @@ end if
 
 
 typ = gettype PtrTok
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 
@@ -1120,7 +1120,7 @@ i = i + 1
 if i <= len then
 tok = exp::Tokens[i]
 typ = gettype LParen
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 if b = true then
 exp::RemToken(i)
 len = len - 1
@@ -1129,7 +1129,7 @@ len = len - 1
 if i <= len then
 tok = exp::Tokens[i]
 typ = gettype RParen
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 if b = true then
 exp::RemToken(i)
 len = len - 1
@@ -1144,7 +1144,7 @@ end if
 
 
 typ = gettype LParen
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 b = PFlags::MetCallFlag or PFlags::StringFlag or PFlags::IdentFlag
@@ -1204,7 +1204,7 @@ end if
 
 //-------------------------------------------------------------------------------------
 typ = gettype LSParen
-b = typ::IsInstanceOfType($object$tok)
+b = typ::IsInstanceOfType(tok)
 
 if b = true then
 if PFlags::IdentFlag = true then
@@ -1282,7 +1282,7 @@ label fin2
 mctok = exp::Tokens[i]
 
 typ = gettype Ident
-b = typ::IsInstanceOfType($object$mctok)
+b = typ::IsInstanceOfType(mctok)
 
 if b then
 mcident = mctok
@@ -1306,7 +1306,7 @@ goto fin2
 end if
 
 typ = gettype MethodCallTok
-b = typ::IsInstanceOfType($object$mctok)
+b = typ::IsInstanceOfType(mctok)
 
 if b = true then
 mcmetcall = mctok
@@ -1332,7 +1332,7 @@ goto fin2
 end if
 
 typ = gettype StringLiteral
-b = typ::IsInstanceOfType($object$mctok)
+b = typ::IsInstanceOfType(mctok)
 
 if b = true then
 mcstr = mctok

@@ -29,7 +29,7 @@ import dylan.NET.Tokenizer.AST.Tokens.Attributes
 import dylan.NET.Tokenizer.AST.Tokens.Chars
 
 assembly tokenizer.AST dll
-ver 11.2.9.5
+ver 11.2.9.6
 
 namespace dylan.NET.Tokenizer.AST.Tokens
 	#include "ast/token.dyl"
@@ -72,6 +72,7 @@ end namespace
 namespace dylan.NET.Tokenizer.AST.Tokens
 	#include "ast/otherkeywords.dyl"
 	#include "ast/comment.dyl"
+	#include "ast/methodnametok.dyl"
 	#include "ast/methods.dyl"
 end namespace
 

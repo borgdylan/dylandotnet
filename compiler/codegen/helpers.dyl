@@ -12,6 +12,7 @@ class public auto ansi beforefieldinit Helpers
 	field public static boolean DelegateFlg
 	field public static boolean OpCodeSuppFlg
 	field public static boolean EqSuppFlg
+	field public static boolean BaseFlg
 	field public static Type LeftOp
 	field public static Type RightOp
 
@@ -20,6 +21,7 @@ class public auto ansi beforefieldinit Helpers
 		DelegateFlg = false
 		OpCodeSuppFlg = false
 		EqSuppFlg = false
+		BaseFlg = false
 		LeftOp = null
 		RightOp = null
 	end method
@@ -803,6 +805,7 @@ class public auto ansi beforefieldinit Helpers
 		var arr as Type[] = new Type[1]
 	
 		if source::Equals(sink) then
+			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
 			return
 		end if
 
@@ -847,6 +850,7 @@ class public auto ansi beforefieldinit Helpers
 				ILEmitter::EmitBox(source)
 				return
 			else
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
 				return
 			end if
 		end if
@@ -862,6 +866,7 @@ class public auto ansi beforefieldinit Helpers
 		typ = gettype ValueType
 		if (typ::IsAssignableFrom(sink) or typ::IsAssignableFrom(source)) = false then
 			if sink::IsAssignableFrom(source) then
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
 				return
 			end if
 			if source::IsAssignableFrom(sink) then
@@ -968,7 +973,7 @@ class public auto ansi beforefieldinit Helpers
 	end method
 
 	method public static void EmitMetCall(var met as MethodInfo, var stat as boolean)
-		if stat then
+		if stat or BaseFlg then
 			ILEmitter::EmitCall(met)
 		else
 			var typ as Type = gettype ValueType
@@ -1051,7 +1056,7 @@ class public auto ansi beforefieldinit Helpers
 		var metinf as MethodInfo = null
 		var meti as MethodInfo = SymTable::FindMet(nam, typs)
 
-		if meti != null then
+		if (meti != null) and (BaseFlg == false) then
 			metinf = meti
 		else
 			Loader::ProtectedFlag = true
@@ -1088,7 +1093,7 @@ class public auto ansi beforefieldinit Helpers
 		var typ1 as Type = gettype Ident
 		var typ2 as Type = gettype MethodCallTok
 		if typ1::IsInstanceOfType(t) then
-			var idt as Ident = $Token$t
+			var idt as Ident = $Ident$t
 			return $MethodNameTok$idt
 		elseif typ2::IsInstanceOfType(t) then
 			var mct as MethodCallTok = $MethodCallTok$t

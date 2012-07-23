@@ -61,12 +61,14 @@ class public auto ansi TypeItem
 		if matches[l] = 0 then
 			return null
 		elseif matches[l] = 1 then
+			Loader::MemberTyp = matches[0]::MethodBldr::get_ReturnType()
 			return matches[0]::MethodBldr
 		else
 			var lod as IEnumerable<of integer[]> = Enumerable::Select<of MethodItem,integer[]>(lom2,new Func<of MethodItem,integer[]>(MILambdas2::ExtractDeriveness()))
 			var zd as Func<of integer[],integer,integer[]> = new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())
 			var lozd as IEnumerable<of integer[]> = Enumerable::Select<of integer[],integer[]>(lod,zd)
 			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(lozd,new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
+			Loader::MemberTyp = matches[chosen[chosen[l] - 1]]::MethodBldr::get_ReturnType()
 			return matches[chosen[chosen[l] - 1]]::MethodBldr
 		end if
 	end method
@@ -80,17 +82,20 @@ class public auto ansi TypeItem
 			if paramst[l] = 0 then
 				var cb as ConstructorBuilder = TypeBldr::DefineDefaultConstructor(MethodAttributes::Public)
 				Ctors::Add(new CtorItem(new Type[0], cb))
+				Loader::MemberTyp = TypeBldr
 				return cb
 			else
 				return null
 			end if
 		elseif matches[l] = 1 then
+			Loader::MemberTyp = TypeBldr
 			return matches[0]::CtorBldr
 		else
 			var lod as IEnumerable<of integer[]> = Enumerable::Select<of CtorItem,integer[]>(loc2,new Func<of CtorItem,integer[]>(CILambdas::ExtractDeriveness()))
 			var zd as Func<of integer[],integer,integer[]> = new Func<of integer[],integer,integer[]>(CILambdas::ZipDeriveness())
 			var lozd as IEnumerable<of integer[]> = Enumerable::Select<of integer[],integer[]>(lod,zd)
 			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(lozd,new Func<of integer[],integer[],integer[]>(CILambdas::DerivenessMax()))
+			Loader::MemberTyp = TypeBldr
 			return matches[chosen[chosen[l] - 1]]::CtorBldr
 		end if
 	end method
@@ -103,6 +108,7 @@ class public auto ansi TypeItem
 		if matches[l] = 0 then
 			return null
 		else
+			Loader::MemberTyp = matches[0]::FieldBldr::get_FieldType()
 			return matches[0]::FieldBldr
 		end if
 	end method

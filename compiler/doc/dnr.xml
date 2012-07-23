@@ -126,6 +126,10 @@
             <summary>If set indicates that a class is still being constructed.</summary>
             <remarks />
         </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.InCtorFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.AsmFactory.Init()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

@@ -10,9 +10,9 @@ delegate public void ErrorWarnHandler(var line as integer, var file as string, v
 
 class public auto ansi beforefieldinit StreamUtils
 
-	field public static Stream Stdin
-	field public static Stream Stdout
-	field public static Stream Stderr
+	field public static initonly Stream Stdin
+	field public static initonly Stream Stdout
+	field public static initonly Stream Stderr
 
 	field public static StreamReader InS
 	field public static StreamWriter OutS

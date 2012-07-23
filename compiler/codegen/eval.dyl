@@ -379,6 +379,7 @@ class public auto ansi beforefieldinit Evaluator
 		var src1 as Type
 		var snk1 as Type
 		var pushaddr as boolean = mntok::IsRef and mntok::MemberAccessFlg
+		var baseflg as boolean = false
 
 		mnstrarr = ParseUtils::StringParser(mntok::Value, ":")
 		mcparenttyp = AsmFactory::CurnTypB
@@ -397,6 +398,11 @@ class public auto ansi beforefieldinit Evaluator
 			i = i + 1
 			idtb1 = true
 			mcrestrord = 3
+		elseif mnstrarr[0] = "mybase" then
+			i = i + 1
+			idtb1 = true
+			mcrestrord = 3
+			baseflg = true
 		end if
 
 		if mectorflg = false then
@@ -506,7 +512,9 @@ class public auto ansi beforefieldinit Evaluator
 		if mectorflg = false then
 			if idtb2 = false then
 				if emt then
+					Helpers::BaseFlg = baseflg
 					mcmetinf = Helpers::GetLocMet(mnstrarr[i], mctok::TypArr)
+					Helpers::BaseFlg = false
 					mcisstatic = mcmetinf::get_IsStatic()
 					if mcisstatic = false then
 						ILEmitter::EmitLdarg(0)
@@ -550,7 +558,11 @@ class public auto ansi beforefieldinit Evaluator
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
 				end if
 				AsmFactory::Type02 = Loader::MemberTyp
+				baseflg = false
 			else
+				if idtb2 = false then
+					Helpers::BaseFlg = baseflg
+				end if
 				mcmetinf = Helpers::GetLocMet(mnstrarr[i], typarr1)
 				if mcmetinf = null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
@@ -564,6 +576,8 @@ class public auto ansi beforefieldinit Evaluator
 				Helpers::EmitMetCall(mcmetinf, mcisstatic)
 				AsmFactory::PopFlg = false
 			end if
+			
+			Helpers::BaseFlg = false
 
 			if mctok::PopFlg = false then
 				//array handling code
@@ -893,7 +907,7 @@ class public auto ansi beforefieldinit Evaluator
 			Helpers::EqSuppFlg = Helpers::EqSuppFlg or (lctyp::Equals(rctyp) and typ::IsAssignableFrom(lctyp))
 
 			typ = gettype ConditionalOp
-			if typ::IsInstanceOfType($object$optok) then
+			if typ::IsInstanceOfType(optok) then
 				AsmFactory::Type02 = gettype boolean
 			else
 				AsmFactory::Type02 = lctyp
@@ -1231,15 +1245,29 @@ class public auto ansi beforefieldinit Evaluator
 				if vr = null then
 					fldinf = Helpers::GetLocFld(idtnamarr[i])
 					if fldinf <> null then
+						if fldinf::get_IsInitOnly() and (AsmFactory::InCtorFlg == false) then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is declared as readonly and may only be set from constructors.")
+						end if
 						idtisstatic = fldinf::get_IsStatic()
 						Helpers::EmitFldSt(fldinf, idtisstatic)
+					else
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable or Field '" + idtnamarr[i] + "' is not defined for the current class/method.")
 					end if
 				end if
 			else
 				if idttyp::Equals(AsmFactory::CurnTypB) = false then
 					fldinf = Helpers::GetExtFld(idttyp, idtnamarr[i])
+					if fldinf = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is not defined/accessible for the class '" + idttyp::ToString() + "'.")
+					end if
 				else
 					fldinf = Helpers::GetLocFld(idtnamarr[i])
+					if fldinf = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
+					end if
+				end if
+				if fldinf::get_IsInitOnly() then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is declared as readonly and may not be set from this context.")
 				end if
 				Helpers::EmitFldSt(fldinf, idtisstatic)
 			end if

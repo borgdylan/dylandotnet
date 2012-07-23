@@ -1,13 +1,53 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/helpers.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/eval.dyl">
     <Files>
-      <File FileName="parser/stmtoptimizer.dyl" Line="1659" Column="38" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="840" Column="30" />
       <File FileName="codegen/ctoritem.dyl" Line="27" Column="42" />
-      <File FileName="codegen/helpers.dyl" Line="313" Column="89" />
-      <File FileName="dnu/streamu.dyl" Line="33" Column="15" />
-      <File FileName="templateproj/template.dyl" Line="208" Column="15" />
-      <File FileName="codegen/stmtreader.dyl" Line="484" Column="28" />
+      <File FileName="codegen/helpers.dyl" Line="976" Column="21" />
+      <File FileName="dnu/streamu.dyl" Line="18" Column="39" />
+      <File FileName="templateproj/template.dyl" Line="63" Column="38" />
+      <File FileName="ast/methods.dyl" Line="7" Column="46" />
+      <File FileName="ast/methodnametok.dyl" Line="16" Column="18" />
+      <File FileName="ast/otherkeywords.dyl" Line="456" Column="12" />
+      <File FileName="dnu/parseu.dyl" Line="84" Column="41" />
+      <File FileName="dnr/loader.dyl" Line="240" Column="10" />
+      <File FileName="parser/exproptimizer.dyl" Line="1335" Column="27" />
+      <File FileName="codegen/symtable.dyl" Line="385" Column="10" />
+      <File FileName="codegen/eval.dyl" Line="1251" Column="158" />
+      <File FileName="dnc/Mod1.dyl" Line="13" Column="57" />
+      <File FileName="dev/pc2cd.dyl" Line="89" Column="63" />
+      <File FileName="dev/pc2dn.dyl" Line="72" Column="4" />
+      <File FileName="ast/literals.dyl" Line="233" Column="2" />
+      <File FileName="ast/ident.dyl" Line="1" Column="1" />
+      <File FileName="ast/chars.dyl" Line="92" Column="13" />
+      <File FileName="ast/comment.dyl" Line="1" Column="1" />
+      <File FileName="ast/aritops.dyl" Line="122" Column="1" />
+      <File FileName="ast/conditionalops.dyl" Line="127" Column="10" />
+      <File FileName="ast/logicalops.dyl" Line="1" Column="1" />
+      <File FileName="ast/verstmt.dyl" Line="27" Column="13" />
+      <File FileName="codegen/typelist.dyl" Line="128" Column="3" />
+      <File FileName="codegen/varitem.dyl" Line="1" Column="1" />
+      <File FileName="ast/refasmstmt.dyl" Line="24" Column="12" />
+      <File FileName="codegen/stmtreader.dyl" Line="403" Column="33" />
+      <File FileName="ast/importstmts.dyl" Line="1" Column="1" />
+      <File FileName="ast/debugstmt.dyl" Line="1" Column="1" />
+      <File FileName="ast/asmstmt.dyl" Line="13" Column="25" />
+      <File FileName="ast/includestmt.dyl" Line="18" Column="45" />
+      <File FileName="ast/attributes.dyl" Line="16" Column="12" />
+      <File FileName="ast/labelstmts.dyl" Line="1" Column="1" />
+      <File FileName="ast/fieldstmt.dyl" Line="44" Column="83" />
+      <File FileName="ast/otherstmts.dyl" Line="1" Column="1" />
+      <File FileName="ast/op.dyl" Line="1" Column="1" />
+      <File FileName="ast/nsstmt.dyl" Line="1" Column="1" />
+      <File FileName="ast/newresstmt.dyl" Line="1" Column="1" />
+      <File FileName="ast/exceptionstmts.dyl" Line="23" Column="24" />
+      <File FileName="ast/classstmt.dyl" Line="14" Column="31" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="658" Column="41" />
+      <File FileName="ast/typetoks.dyl" Line="1" Column="1" />
+      <File FileName="codegen/typeitem.dyl" Line="107" Column="28" />
+      <File FileName="dnu/consts.dyl" Line="1" Column="1" />
+      <File FileName="dnr/asmfactory.dyl" Line="55" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,7 +55,7 @@
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
             <Node name="codegen" expanded="True">
-              <Node name="helpers.dyl" selected="True" />
+              <Node name="eval.dyl" selected="True" />
             </Node>
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />

@@ -24,6 +24,7 @@
     <AssemblyVersion>11.2.9.3</AssemblyVersion>
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
+    <AssemblyVersion>11.2.9.6</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
@@ -60,6 +61,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -93,6 +95,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -115,6 +118,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -154,6 +158,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[]</ReturnType>
@@ -189,6 +194,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Ident</ReturnType>
@@ -207,6 +213,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[]</ReturnType>
@@ -242,6 +249,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>

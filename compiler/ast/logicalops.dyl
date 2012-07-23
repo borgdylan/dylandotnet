@@ -16,6 +16,10 @@ class public auto ansi AndOp extends LogicalOp
 		me::ctor()
 		PrecNo = 7
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "and"
+	end method
 
 end class
 
@@ -24,6 +28,10 @@ class public auto ansi OrOp extends LogicalOp
 	method public void OrOp()
 		me::ctor()
 		PrecNo = 5
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "or"
 	end method
 
 end class
@@ -34,6 +42,10 @@ class public auto ansi NandOp extends LogicalOp
 		me::ctor()
 		PrecNo = 7
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "nand"
+	end method
 
 end class
 
@@ -42,6 +54,10 @@ class public auto ansi NorOp extends LogicalOp
 	method public void NorOp()
 		me::ctor()
 		PrecNo = 5
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "nor"
 	end method
 
 end class
@@ -52,6 +68,10 @@ class public auto ansi XorOp extends LogicalOp
 		me::ctor()
 		PrecNo = 6
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "xor"
+	end method
 
 end class
 
@@ -60,6 +80,10 @@ class public auto ansi XnorOp extends LogicalOp
 	method public void XnorOp()
 		me::ctor()
 		PrecNo = 6
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "xnor"
 	end method
 
 end class
@@ -70,6 +94,10 @@ class public auto ansi NotOp extends LogicalOp
 		me::ctor()
 		PrecNo = 13
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "~"
+	end method
 
 end class
 
@@ -78,6 +106,10 @@ class public auto ansi NegOp extends LogicalOp
 	method public void NegOp()
 		me::ctor()
 		PrecNo = 13
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "!"
 	end method
 
 end class

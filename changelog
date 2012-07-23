@@ -1,3 +1,85 @@
+commit 457857321b8e17306d3173582fd7c4d66f5e5c5a
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Thu Jul 19 20:13:22 2012 +0200
+
+    Committing latest dylan.NET code to GIT and BZR. This is dylan.NET 11.2.9.5 which is another minor release.
+      * Bumping up assembly versions to 11.2.9.5
+      * Beginning a new syntax manual in man-page format.
+      * Updating makefiles and man pages (installs dylandotnet.7 file).
+      * Updating README.
+      * Adding constructors for MethodNameTok and GenericMethodNameTok.
+      * Adding mechanism to make the GenericMethodNameTok and MethodNameTok
+        from Ident instances (includes operator overloads).
+      * Adding Path field to StmtSet plus a constructor to set it.
+      * Continuing Evaluator transition to new APIs.
+      * Adding new me::ctor alias mybase::ctor .
+      * Adding helper methods in codegen for numeric type determination.
+      * Adapting many functions class to use the new string escaping syntax.
+      * Fixing a TypeList bug.
+      * Optimizing ProcessType.
+      * In dnu, adding IsHexDigit and ProcessString (escaping function)
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit b0a225bf4badf7382b758537d98d866d7a3eae1e
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Thu Jul 19 19:49:59 2012 +0200
+
+    renaming debindir-dnide to debiandir-dnide
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 1f040aef4a5d803256a5fc1831af608201599f48
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Wed Jun 27 15:50:53 2012 +0200
+
+    Committing latest code to GIT and BZR. This is dylan.NET 11.2.9.4 which is a minor release.
+      * Beginning 3 phased codegen implementation.
+      * Transitioning current class member searches to 3 phased format.
+      * Creating a TypeItem for every created class.
+      * Adding a TypeList API for querying the assembly being made.
+      * Refactoring TokenOptimizer in order to speed it up.
+      * Making ParserFlags an instance class to allow simulataneous parsing.
+      * Changing the way the assembly keyword is parsed (diff logic, same outcomes).
+      * Adding error detection for constructor invocations.
+      * Bumping up versions to 11.2.9.4 (internal ABI breaks).
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 9870553c4a1e1d312f809c37703518feee0b2d28
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Thu May 17 09:24:42 2012 +0200
+
+    Committing latest dylan.NET source code to GIT and BZR. With great joy "This is dylan.NET 11.2.9.3!!!".
+      * Updating man pages and makefiles.
+      * Allowing Loader.LoadMethod to treat array types as System.Array.
+      * Allowing chaining on arrays.
+      * ABI break in Loader with special method loader returning IEnumerable<of MethodInfo>
+      * Adding support in loader for finding generic methods.
+      * Adding support for interface creation and implementation.
+      * Adding support for explicit implementation of non-generic interfaces.
+      * Adding support for implicit implementation of generic/normal interfaces.
+      * Adding support for using generic types and methods in code.
+      * Supporting LINQ to XML, LINQ to Objects, (LINQ to DataSet), Generic Collections.
+      * ABI break in SymTable with StoreFlg being the only public field.
+      * Beginning SymTable transition from arrays to generic collections.
+      * Transitioning completely OpStack to use Stack<of Token>
+      * Adding internal classes in dnr and codegen to support internal LINQ queries.
+      * Transitioning operator overload binding to use the Default Binder.
+      * Implementing a binder for local method/constructor calls.
+      * Changing vector test sample to implement some generic interfaces.
+      * Adding GenericMethodNameTok in AST.
+      * Adding parsing methods for generic type names and method names.
+      * ABI break in TokenOptimizer.Optimize, now also needs a lookahead.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 5d8eb25c3f883c900980be7ee79d6837c7f38152
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Thu May 17 09:05:55 2012 +0200
+
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 8819df341227f72d1aa332ed2a143562641437d1
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Sun Apr 22 15:49:02 2012 +0200

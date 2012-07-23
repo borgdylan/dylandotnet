@@ -14,6 +14,14 @@ class public auto ansi ImportStmt extends Stmt
 		me::ctor()
 		NS = new Token()
 	end method
+	
+	method public hidebysig virtual string ToString()
+		var temp as string = NS::Value
+		if temp notlike c"^\q(.)*\q$" then
+			temp = c"\q" + temp + c"\q"
+		end if
+		return "import " + temp
+	end method
 
 end class
 
@@ -24,6 +32,14 @@ class public auto ansi LocimportStmt extends Stmt
 	method public void LocimportStmt()
 		me::ctor()
 		NS = new Token()
+	end method
+	
+	method public hidebysig virtual string ToString()
+		var temp as string = NS::Value
+		if temp notlike c"^\q(.)*\q$" then
+			temp = c"\q" + temp + c"\q"
+		end if
+		return "locimport " + temp
 	end method
 
 end class

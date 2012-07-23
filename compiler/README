@@ -13,6 +13,8 @@ dnc.exe
 dnu.dll
 pc2cd.exe
 pc2dn.exe
+List of compiled libraries(GNU AGPL v3):
+web.dll
 
 List of Mono libraries required to build dylan.NET(MIT/X11):
 mscorlib.dll

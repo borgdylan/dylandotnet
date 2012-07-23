@@ -11,66 +11,114 @@ end class
 
 // hidebysig
 class public auto ansi HideBySigAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "hidebysig"
+	end method
 end class
 
 // specialname
 class public auto ansi SpecialNameAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "specialname"
+	end method
 end class
 
 // private 
 class public auto ansi PrivateAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "private"
+	end method
 end class
 
 // family
 class public auto ansi FamilyAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "family"
+	end method
 end class
 
 // public
 class public auto ansi PublicAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "public"
+	end method
 end class
 
 // static
 class public auto ansi StaticAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "static"
+	end method
 end class
 
 // virtual
 class public auto ansi VirtualAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "virtual"
+	end method
 end class
 
 // abstract
 class public auto ansi AbstractAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "abstract"
+	end method
 end class
 
 // newslot
 class public auto ansi NewSlotAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "newslot"
+	end method
 end class
 
 //pinvokeimpl
 class public auto ansi PinvokeImplAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "pinvokeimpl"
+	end method
 end class
 
 // hasdefault
 class public auto ansi HasDefaultAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "hasdefault"
+	end method
 end class
 
 // none
 class public auto ansi NoneAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "none"
+	end method
 end class
 
 // autochar
 class public auto ansi AutoClassAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "autochar"
+	end method
 end class
 
 // ansi
 class public auto ansi AnsiClassAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "ansi"
+	end method
 end class
 
 // beforefieldinit
 class public auto ansi BeforeFieldInitAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "beforefieldinit"
+	end method
 end class
 
 // sealed
 class public auto ansi SealedAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "sealed"
+	end method
 end class
 
 // interface
@@ -79,33 +127,57 @@ end class
 
 // initonly
 class public auto ansi InitOnlyAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "initonly"
+	end method
 end class
 
 // literal
 class public auto ansi LiteralAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "literal"
+	end method
 end class
 
 // final
 class public auto ansi FinalAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "final"
+	end method
 end class
 
 
 // assembly
 class public auto ansi AssemblyAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "assembly"
+	end method
 end class
 
 // famandassem
 class public auto ansi FamANDAssemAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "famandassem"
+	end method
 end class
 
 // famorassem
 class public auto ansi FamORAssemAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "famorassem"
+	end method
 end class
 
 // sequential
 class public auto ansi SequentialLayoutAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "sequential"
+	end method
 end class
 
 // auto
 class public auto ansi AutoLayoutAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "auto"
+	end method
 end class

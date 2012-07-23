@@ -343,7 +343,7 @@ class public auto ansi beforefieldinit SymTable
 	end method
 
 	method public static FieldInfo FindFld(var nam as string)
-		return $FieldInfo$CurnTypItem::GetField(nam)
+		return CurnTypItem::GetField(nam)
 	end method
 
 	method public static boolean CmpTyps(var arra as Type[], var arrb as Type[])
@@ -365,7 +365,7 @@ class public auto ansi beforefieldinit SymTable
 	end method
 
 	method public static MethodInfo FindMet(var nam as string, var paramst as Type[])
-		return $MethodInfo$CurnTypItem::GetMethod(nam,paramst)
+		return CurnTypItem::GetMethod(nam,paramst)
 	end method
 
 	method public static MethodItem FindMetNoParams(var nam as string)
@@ -382,7 +382,7 @@ class public auto ansi beforefieldinit SymTable
 	end method
 
 	method public static ConstructorInfo FindCtor(var paramst as Type[])
-		return $ConstructorInfo$CurnTypItem::GetCtor(paramst)
+		return CurnTypItem::GetCtor(paramst)
 	end method
 
 end class

@@ -10,6 +10,7 @@
     <AssemblyVersion>11.2.9.3</AssemblyVersion>
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
+    <AssemblyVersion>11.2.9.6</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -32,6 +33,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -51,6 +53,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="startl" Type="System.Reflection.Emit.Label" />
@@ -75,6 +78,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.Label</ReturnType>
@@ -96,6 +100,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Reflection.Emit.Label</ReturnType>

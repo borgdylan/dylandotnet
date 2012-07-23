@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="test.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnc/Mod1.dyl">
     <Files>
       <File FileName="test.dyl" Line="39" Column="1" />
       <File FileName="dnr/loader.dyl" Line="416" Column="1" />
@@ -8,7 +8,7 @@
       <File FileName="codegen/eval.dyl" Line="550" Column="1" />
       <File FileName="codegen/helpers.dyl" Line="1109" Column="1" />
       <File FileName="codegen/codegenerator.dyl" Line="73" Column="1" />
-      <File FileName="dnc/Mod1.dyl" Line="68" Column="1" />
+      <File FileName="dnc/Mod1.dyl" Line="67" Column="1" />
       <File FileName="parser/parser.dyl" Line="25" Column="1" />
       <File FileName="parser/stmtoptimizer.dyl" Line="1517" Column="1" />
       <File FileName="parser/tokenoptimizer.dyl" Line="17" Column="1" />
@@ -40,6 +40,8 @@
     <BreakpointStore>
       <Breakpoint file="/home/dylan/Desktop/compiler/codegen/eval.dyl" line="550" />
       <Breakpoint file="/home/dylan/Desktop/compiler/lexer/lexer.dyl" line="28" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/test.dyl" line="39" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/dnc/Mod1.dyl" line="67" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

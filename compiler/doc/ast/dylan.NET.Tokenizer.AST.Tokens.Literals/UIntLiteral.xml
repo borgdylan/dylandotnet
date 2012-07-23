@@ -24,6 +24,7 @@
     <AssemblyVersion>11.2.9.3</AssemblyVersion>
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
+    <AssemblyVersion>11.2.9.6</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
@@ -60,6 +61,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -94,6 +96,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
@@ -117,6 +120,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.UInt32" />
@@ -153,6 +157,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -173,6 +178,7 @@
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>

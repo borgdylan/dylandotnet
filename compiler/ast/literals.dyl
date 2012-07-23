@@ -97,7 +97,7 @@ class public auto ansi StringLiteral extends Literal
 	end method
 
 	method public hidebysig virtual string ToString()
-		return Constants::quot + Value + Constants::quot
+		return c"\q" + Value + c"\q"
 	end method
 
 end class
@@ -239,6 +239,10 @@ class public auto ansi IntLiteral extends NumberLiteral
 
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "i"
+	end method
+	
+	method public string ToStringNoI()
+		return $string$NumVal
 	end method
 
 end class

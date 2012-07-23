@@ -32,5 +32,9 @@ class public auto ansi DebugStmt extends Stmt
 		end if
 
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "#debug " + Opt::ToString()
+	end method
 
 end class

@@ -34,4 +34,14 @@ class public auto ansi FieldStmt extends Stmt
 
 	end method
 	
+	method public hidebysig virtual string ToString()
+		var sw as StringWriter = new StringWriter()
+		var i as integer = -1
+		do until i = (Attrs[l] - 1)
+			i = i + 1
+			sw::Write(Attrs[i]::ToString() + " ")
+		end do
+		return "field " + sw::ToString() + FieldTyp::ToString() + " " + FieldName::Value
+	end method
+	
 end class

@@ -403,6 +403,7 @@ class public auto ansi StmtReader
 				if mtss::Params[l] != 0 then
 					Helpers::PostProcessParamsConstr(mtss::Params)
 				end if
+				AsmFactory::InCtorFlg = true
 			else
 				StreamUtils::Write("	Adding Method: ")
 				StreamUtils::WriteLine(mtssnamstr)
@@ -412,7 +413,9 @@ class public auto ansi StmtReader
 					//Console::WriteLine(mtssnamarr[l])
 					overldnam = mtssnamarr[mtssnamarr[l] - 1]
 					mtssnamarr2 = new string[mtssnamarr[l] - 1]
+					//please preserve the $Array$ compilation workaround
 					Array::Copy($Array$mtssnamarr, 0, $Array$mtssnamarr2, 0, mtssnamarr2[l])
+					//----------------------------------------------------
 					typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", mtssnamarr2)))
 					mtssnamstr = typ::ToString() + "." + overldnam
 				end if
@@ -441,6 +444,7 @@ class public auto ansi StmtReader
 			AsmFactory::CurnMetName = mtssnamstr
 		elseif t[12]::IsInstanceOfType(stm) then
 			AsmFactory::InMethodFlg = false
+			AsmFactory::InCtorFlg = false
 			if ILEmitter::AbstractFlg = false then
 				ILEmitter::EmitRet()
 				SymTable::CheckUnusedVar()

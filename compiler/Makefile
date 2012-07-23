@@ -74,7 +74,7 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoheader
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.5\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.5\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.5\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.6\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.6\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.6\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
@@ -96,16 +96,16 @@ MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.9.5
+PACKAGE_STRING = dylandotnet 11.2.9.6
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.9.5
+PACKAGE_VERSION = 11.2.9.6
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.9.5
+VERSION = 11.2.9.6
 abs_builddir = /var/www/Code/dylannet/compiler
 abs_srcdir = /var/www/Code/dylannet/compiler
 abs_top_builddir = /var/www/Code/dylannet/compiler
@@ -542,6 +542,7 @@ all:
 	'$(MONO)' 4.0/dnc.exe tokenizer.Parser.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnc.dyl | tee -a buildlog4
+	'$(MONO)' 4.0/dnc.exe web.dyl | tee -a buildlog4
 	cp dnu.dll 4.0/dnu.dll
 	cp dnr.dll 4.0/dnr.dll
 	cp tokenizer.AST.dll 4.0/tokenizer.AST.dll
@@ -549,6 +550,7 @@ all:
 	cp tokenizer.Parser.dll 4.0/tokenizer.Parser.dll
 	cp tokenizer.CodeGen.dll 4.0/tokenizer.CodeGen.dll
 	cp dnc.exe 4.0/dnc.exe
+	cp web.dll 4.0/web.dll
 
 	'$(MONO)' 2.0/dnc.exe -V > buildlog
 	'$(MONO)' 2.0/dnc.exe dnu.dyl | tee -a buildlog

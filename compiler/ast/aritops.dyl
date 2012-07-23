@@ -16,6 +16,10 @@ class public auto ansi AddOp extends AritOp
 		me::ctor()
 		PrecNo = 11
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "+"
+	end method
 
 end class
 
@@ -27,6 +31,10 @@ class public auto ansi MulOp extends AritOp
 		PrecNo = 12
 	end method
 
+	method public hidebysig virtual string ToString()
+		return "*"
+	end method
+
 end class
 
 // -
@@ -35,6 +43,10 @@ class public auto ansi SubOp extends AritOp
 	method public void SubOp()
 		me::ctor()
 		PrecNo = 11
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "-"
 	end method
 
 end class
@@ -47,6 +59,10 @@ class public auto ansi DivOp extends AritOp
 		me::ctor()
 		PrecNo = 12
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "/"
+	end method
 
 end class
 
@@ -56,6 +72,10 @@ class public auto ansi ModOp extends AritOp
 	method public void ModOp()
 		me::ctor()
 		PrecNo = 12
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "%"
 	end method
 
 end class
@@ -67,6 +87,10 @@ class public auto ansi IncOp extends AritOp
 		me::ctor()
 		PrecNo = 13
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "++"
+	end method
 
 end class
 
@@ -76,6 +100,10 @@ class public auto ansi DecOp extends AritOp
 	method public void DecOp()
 		me::ctor()
 		PrecNo = 13
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "--"
 	end method
 
 end class
@@ -87,6 +115,10 @@ class public auto ansi ShlOp extends AritOp
 		me::ctor()
 		PrecNo = 10
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "<<"
+	end method
 
 end class
 
@@ -96,6 +128,10 @@ class public auto ansi ShrOp extends AritOp
 	method public void ShrOp()
 		me::ctor()
 		PrecNo = 10
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return ">>"
 	end method
 
 end class

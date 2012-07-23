@@ -7,24 +7,54 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi NewarrTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "newarr"
+	end method
+
 end class
 
 class public auto ansi NewTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "new"
+	end method
+
 end class
 
 class public auto ansi CastclassTok extends Token
 end class
 
 class public auto ansi GettypeTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "gettype"
+	end method
+
 end class
 
 class public auto ansi RefTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "ref"
+	end method
+
 end class
 
 class public auto ansi ValInRefTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "valinref"
+	end method
+
 end class
 
 class public auto ansi PtrTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "ptr"
+	end method
+
 end class
 
 class public auto ansi DependTok extends Token
@@ -37,30 +67,65 @@ class public auto ansi SwitchTok extends Token
 end class
 
 class public auto ansi OnTok extends SwitchTok
+
+	method public hidebysig virtual string ToString()
+		return "on"
+	end method
+
 end class
 
 class public auto ansi OfTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "of"
+	end method
+
 end class
 
 class public auto ansi OffTok extends SwitchTok
+
+	method public hidebysig virtual string ToString()
+		return "off"
+	end method
+
 end class
 
-class public auto ansi SingTok extends Token
-end class
+//class public auto ansi SingTok extends Token
+//end class
 
 class public auto ansi ScopeTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#scope"
+	end method
+
 end class
 
 class public auto ansi DebugTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#debug"
+	end method
+
 end class
 
 class public auto ansi MakeasmTok extends Token
 end class
 
 class public auto ansi RefasmTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#refasm"
+	end method
+
 end class
 
 class public auto ansi RefstdasmTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#refstdasm"
+	end method
+
 end class
 
 class public auto ansi NewresTok extends Token
@@ -70,126 +135,326 @@ class public auto ansi ImageTok extends Token
 end class
 
 class public auto ansi ImportTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "import"
+	end method
+
 end class
 
 class public auto ansi LocimportTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "locimport"
+	end method
+
 end class
 
 class public auto ansi AssemblyTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "assembly"
+	end method
+
 end class
 
 class public auto ansi ExeTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "exe"
+	end method
+
 end class
 
 class public auto ansi DllTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "dll"
+	end method
+
 end class
 
 class public auto ansi VerTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "ver"
+	end method
+
 end class
 
 class public auto ansi IncludeTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#include"
+	end method
+
 end class
 
 class public auto ansi XmldocTok extends Token
 end class
 
 class public auto ansi NamespaceTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "namespace"
+	end method
+
 end class
 
 class public auto ansi ClassTok extends Token
-end class
 
-class public auto ansi ExtendsTok extends Token
-end class
+	method public hidebysig virtual string ToString()
+		return "class"
+	end method
 
-class public auto ansi ImplementsTok extends Token
-end class
-
-class public auto ansi EnumTok extends Token
-end class
-
-class public auto ansi FieldTok extends Token
-end class
-
-class public auto ansi DelegateTok extends Token
 end class
 
 class public auto ansi StructTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "struct"
+	end method
+
+end class
+
+class public auto ansi ExtendsTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "estends"
+	end method
+
+end class
+
+class public auto ansi ImplementsTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "implements"
+	end method
+
+end class
+
+class public auto ansi EnumTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "enum"
+	end method
+
+end class
+
+class public auto ansi FieldTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "field"
+	end method
+
+end class
+
+class public auto ansi DelegateTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "delegate"
+	end method
+
 end class
 
 class public auto ansi PropertyTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "property"
+	end method
+
 end class
 
 class public auto ansi GetTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "get"
+	end method
+
 end class
 
 class public auto ansi SetTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "set"
+	end method
+
 end class
 
 class public auto ansi MethodTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "method"
+	end method
+
 end class
 
 class public auto ansi TryTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "try"
+	end method
+
 end class
 
 class public auto ansi CatchTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "catch"
+	end method
+
 end class
 
 class public auto ansi AsTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "as"
+	end method
+
 end class
 
 class public auto ansi FinallyTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "finally"
+	end method
+
 end class
 
 class public auto ansi LabelTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "label"
+	end method
+
 end class
 
 class public auto ansi PlaceTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "place"
+	end method
+
 end class
 
 class public auto ansi GotoTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "goto"
+	end method
+
 end class
 
 class public auto ansi IfTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "if"
+	end method
+
 end class
 
 class public auto ansi ElseIfTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "elseif"
+	end method
+
 end class
 
 class public auto ansi ThenTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "then"
+	end method
+
 end class
 
 class public auto ansi DoTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "do"
+	end method
+
 end class
 
 class public auto ansi BreakTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "break"
+	end method
+
 end class
 
 class public auto ansi ContinueTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "continue"
+	end method
+
 end class
 
 class public auto ansi WhileTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "while"
+	end method
+
 end class
 
 class public auto ansi UntilTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "until"
+	end method
+
 end class
 
 class public auto ansi LiteralTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "literal"
+	end method
+
 end class
 
 class public auto ansi VarTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "var"
+	end method
+	
 end class
 
 class public auto ansi ElseTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "else"
+	end method
+
 end class
 
 class public auto ansi ReturnTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "return"
+	end method
+
 end class
 
 class public auto ansi ThrowTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "throw"
+	end method
+	
 end class
 
 class public auto ansi EndTok extends Token
+	
+	method public hidebysig virtual string ToString()
+		return "end"
+	end method
+
 end class
 
 class public auto ansi MeTok extends Token
@@ -207,6 +472,14 @@ class public auto ansi MeTok extends Token
 		me::ctor(value)
 		Conv = false
 		TTok = null
+	end method
+	
+	method public hidebysig virtual string ToString()
+		if Conv then
+			return "$" + TTok::ToString() + "$me"
+		else
+			return "me"
+		end if
 	end method
 
 end class

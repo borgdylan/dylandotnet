@@ -53,11 +53,51 @@ class public auto ansi HelloClass implements IHello, IHello2, IHello3
 
 end class
 
+class public auto ansi BaseTest
+
+	method public void CallTS1()
+		Console::WriteLine(ToString())
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "Test " + mybase::ToString()
+	end method
+	
+	method public void CallTS2()
+		Console::WriteLine(ToString())
+	end method
+	
+	method public void CallTS3()
+		Console::WriteLine(mybase::ToString())
+	end method
+
+end class
+
+class public auto ansi beforefieldinit ROTest
+
+	field public static initonly integer X
+	
+	method public static void ROTest()
+		X = 11
+	end method
+	
+	method public static void Modifier()
+		var xc as integer = X
+		//X = xc * 2
+	end method
+
+end class
+
 
 class public auto ansi Program
 
 	field public static integer X
 	field public static IEnumerable<of string> Y
+	
+	method public static void Program()
+		var xc as integer = ROTest::X
+		//ROTest::X = xc + 12
+	end method
 
 	method public static void PrintXElement(var el as XElement)
 		Console::Write(el::Attribute(XName::Get("id"))::get_Value()::ToString())
@@ -227,6 +267,8 @@ class public auto ansi Program
 		dv = 14028230000000000000000000006m
 		var typ as Type = gettype string[]
 		typ = gettype Func<of IEnumerable<of XElement> >
+		var xc as integer = ROTest::X
+		//ROTest::X = xc + 12
 	end method
 
 end class

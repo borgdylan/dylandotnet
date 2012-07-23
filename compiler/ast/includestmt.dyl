@@ -14,5 +14,13 @@ class public auto ansi IncludeStmt extends Stmt
 		me::ctor()
 		Path = new Token()
 	end method
+	
+	method public hidebysig virtual string ToString()
+		var temp as string = Path::Value
+		if temp notlike c"^\q(.)*\q$" then
+			temp = c"\q" + temp + c"\q"
+		end if
+		return "#include " + temp
+	end method
 
 end class
