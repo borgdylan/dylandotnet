@@ -9,32 +9,35 @@
 class public auto ansi TypeItem
 
 	field public string Name
-	field public Type InhTyp
-	field public List<of Type> Interfaces
+	field public IKVM.Reflection.Type InhTyp
+	field public List<of IKVM.Reflection.Type> Interfaces
 	field public TypeBuilder TypeBldr
 	field public List<of MethodItem> Methods
 	field public List<of CtorItem> Ctors
 	field public List<of FieldItem> Fields
+	field assembly Func<of IKVM.Reflection.Type, ConstructorInfo> DefCtorDel
 
 	method public void TypeItem()
 		me::ctor()
-		Name = ""
+		Name = String::Empty
 		InhTyp = null
 		TypeBldr = null
-		Interfaces = new List<of Type>()
+		Interfaces = new List<of IKVM.Reflection.Type>()
 		Methods = new List<of MethodItem>()
 		Ctors = new List<of CtorItem>()
 		Fields = new List<of FieldItem>()
+		DefCtorDel = null
 	end method
 
 	method public void TypeItem(var nme as string,var bld as TypeBuilder)
 		me::ctor()
 		Name = nme
 		TypeBldr = bld
-		Interfaces = new List<of Type>()
+		Interfaces = new List<of IKVM.Reflection.Type>()
 		Methods = new List<of MethodItem>()
 		Ctors = new List<of CtorItem>()
 		Fields = new List<of FieldItem>()
+		DefCtorDel = null
 	end method
 
 	method public void AddField(var f as FieldItem)
@@ -49,11 +52,11 @@ class public auto ansi TypeItem
 		Ctors::Add(c)
 	end method
 
-	method public void AddInterface(var i as Type)
+	method public void AddInterface(var i as IKVM.Reflection.Type)
 		Interfaces::Add(i)
 	end method
 
-	method public MethodBuilder GetMethod(var nam as string, var paramst as Type[])
+	method public MethodBuilder GetMethod(var nam as string, var paramst as IKVM.Reflection.Type[])
 		var lom as IEnumerable<of MethodItem> = Methods
 		var mil as MILambdas2 = new MILambdas2(nam, paramst)
 		var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(lom,new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
@@ -73,15 +76,15 @@ class public auto ansi TypeItem
 		end if
 	end method
 
-	method public ConstructorBuilder GetCtor(var paramst as Type[])
+	method public ConstructorBuilder GetCtor(var paramst as IKVM.Reflection.Type[])
 		var loc as IEnumerable<of CtorItem> = Ctors
 		var cil as CILambdas = new CILambdas(paramst)
 		var loc2 as IEnumerable<of CtorItem> = Enumerable::Where<of CtorItem>(loc,new Func<of CtorItem,boolean>(cil::DetermineIfCandidate()))
 		var matches as CtorItem[] = Enumerable::ToArray<of CtorItem>(loc2)
 		if matches[l] = 0 then
-			if paramst[l] = 0 then
+			if (paramst[l] = 0) and (Ctors::get_Count() = 0) then
 				var cb as ConstructorBuilder = TypeBldr::DefineDefaultConstructor(MethodAttributes::Public)
-				Ctors::Add(new CtorItem(new Type[0], cb))
+				Ctors::Add(new CtorItem(new IKVM.Reflection.Type[0], cb))
 				Loader::MemberTyp = TypeBldr
 				return cb
 			else
@@ -101,6 +104,9 @@ class public auto ansi TypeItem
 	end method
 
 	method public FieldBuilder GetField(var nam as string)
+		Loader::FldLitFlag = false
+		Loader::EnumLitFlag = false
+	
 		var lof as IEnumerable<of FieldItem> = Fields
 		var fil as FILambdas = new FILambdas(nam)
 		var lof2 as IEnumerable<of FieldItem> = Enumerable::Where<of FieldItem>(lof,new Func<of FieldItem,boolean>(fil::DetermineIfCandidate()))

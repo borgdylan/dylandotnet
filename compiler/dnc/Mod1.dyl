@@ -6,54 +6,62 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Module1
+class public auto ansi static Program
+	
+	method private static void OutputVersion()
+		StreamUtils::WriteLine("dylan.NET Version Info:")
+		StreamUtils::WriteLine(Assembly::GetExecutingAssembly()::ToString())
+		StreamUtils::WriteLine(Assembly::GetAssembly(gettype Loader)::ToString())
+		StreamUtils::WriteLine(Assembly::GetAssembly(gettype XmlUtils)::ToString())
+		StreamUtils::WriteLine(Assembly::GetAssembly(gettype CodeGenerator)::ToString())
+		StreamUtils::WriteLine(Assembly::GetAssembly(gettype Parser)::ToString())
+		StreamUtils::WriteLine(Assembly::GetAssembly(gettype Lexer)::ToString())
+		StreamUtils::WriteLine(Assembly::GetAssembly(gettype StmtSet)::ToString())
 
-	method public static void main(var args as string[])
+		StreamUtils::WriteLine("")
+		StreamUtils::WriteLine("Runtime & OS Version Info:")
+		StreamUtils::WriteLine(Assembly::GetAssembly(gettype string)::ToString())
+		StreamUtils::Write("Runtime Version: ")
+		StreamUtils::WriteLine(Environment::get_Version()::ToString())
+		StreamUtils::Write("OS: ")
+		StreamUtils::WriteLine(Environment::get_OSVersion()::ToString())
+	end method
+	
+	method private static void OutputHelp()
+		StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
+		StreamUtils::WriteLine("Options:")
+		StreamUtils::WriteLine("   -V : View Version Nrs. for all dylan.NET assemblies")
+		StreamUtils::WriteLine("   -h : View this help message")
+	end method
+	
+	[method: STAThread()]
+	[method: ComVisible(false)]
+	method private static void main(var args as string[])
 
-		StreamUtils::WriteLine("dylan.NET Compiler v. 11.2.9.6 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5")
+		StreamUtils::WriteLine("dylan.NET Compiler v. 11.2.9.7 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5")
 		StreamUtils::WriteLine("                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x")
 		StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 		StreamUtils::WriteLine("Copyright (C) 2012 Dylan Borg")
 
-		if args[l] < 1 then
+		if args = null then
+			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
+		elseif args[l] < 1 then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		else
 //try
 			var i as integer = -1
 
 			do until i = (args[l] - 1)
-
 				i = i + 1
-				
+				StreamUtils::WriteLine("")
 				if args[i] = "-V" then
-					StreamUtils::WriteLine("")
-					StreamUtils::WriteLine("dylan.NET Version Info:")
-					StreamUtils::WriteLine(Assembly::GetExecutingAssembly()::ToString())
-					StreamUtils::WriteLine(Assembly::GetAssembly(gettype Loader)::ToString())
-					StreamUtils::WriteLine(Assembly::GetAssembly(gettype XmlUtils)::ToString())
-					StreamUtils::WriteLine(Assembly::GetAssembly(gettype CodeGenerator)::ToString())
-					StreamUtils::WriteLine(Assembly::GetAssembly(gettype Parser)::ToString())
-					StreamUtils::WriteLine(Assembly::GetAssembly(gettype Lexer)::ToString())
-					StreamUtils::WriteLine(Assembly::GetAssembly(gettype StmtSet)::ToString())
-
-					StreamUtils::WriteLine("")
-					StreamUtils::WriteLine("Runtime & OS Version Info:")
-					StreamUtils::WriteLine(Assembly::GetAssembly(gettype string)::ToString())
-					StreamUtils::Write("Runtime Version: ")
-					StreamUtils::WriteLine(Environment::get_Version()::ToString())
-					StreamUtils::Write("OS: ")
-					StreamUtils::WriteLine(Environment::get_OSVersion()::ToString())
+					OutputVersion()
 				elseif args[i] = "-h" then
-					StreamUtils::WriteLine("")
-					StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
-					StreamUtils::WriteLine("Options:")
-					StreamUtils::WriteLine("   -V : View Version Nrs. for all dylan.NET assemblies")
-					StreamUtils::WriteLine("   -h : View this help message")
+					OutputHelp()
 				else
 					ILEmitter::Init()
 					AsmFactory::Init()
 					Importer::Init()
-					StreamUtils::WriteLine("")
 					var lx as Lexer = new Lexer()
 					StreamUtils::Write("Now Lexing: ")
 					StreamUtils::Write(args[i])
@@ -67,7 +75,6 @@ class public auto ansi Module1
 					var cg as CodeGenerator = new CodeGenerator()
 					cg::EmitMSIL(ppstmts, args[i])
 				end if
-
 			end do
 //catch ex as Exception
 
@@ -79,6 +86,11 @@ class public auto ansi Module1
 
 		end if
 
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void Invoke(var args as string[])
+		main(args)
 	end method
 
 end class

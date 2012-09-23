@@ -8,11 +8,11 @@
 
 class public auto ansi TypeArr
 
-	field public Type[] Arr
+	field public IKVM.Reflection.Type[] Arr
 
 	method public void TypeArr()
 		me::ctor()
-		Arr = new Type[0]
+		Arr = new IKVM.Reflection.Type[0]
 	end method
 
 end class

@@ -14,5 +14,7 @@ Sebastien Pouliot <spouliot@motus.com>
 Per Arneng <pt99par@student.bth.se>
 Ben Maurer <bmaurer@users.sourceforge.net>
 
+I also wish to think Jeroen Frijters for writing IKVM from which the IKVM.Reflection library is taken and is present withing these sources.
+
 dylan.NET is written by:
 Dylan Borg <borgdylan@hotmail.com>

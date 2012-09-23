@@ -8,20 +8,20 @@
 
 class public auto ansi Parser
 
-	field public ParserFlags PFlags
+	field public Flags PFlags
 	
 	method public void Parser()
 		me::ctor()
-		PFlags = new ParserFlags()
+		PFlags = new Flags()
 	end method
 	
 //	method public void Parser(var assemstate as boolean)
 //		me::ctor()
-//		PFlags = new ParserFlags()
+//		PFlags = new Flags()
 //		PFlags::AssemFlg = assemstate
 //	end method
 
-	method public void Parser(var pf as ParserFlags)
+	method public void Parser(var pf as Flags)
 		me::ctor()
 		PFlags = pf
 	end method

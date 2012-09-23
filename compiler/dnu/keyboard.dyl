@@ -6,40 +6,49 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Keyboard
+class public auto ansi static Keyboard
 
+	[method: ComVisible(false)]
 	method public static string ReadString()
 		return Console::ReadLine()
 	end method
 	
+	[method: ComVisible(false)]
 	method public static integer ReadInteger()
 		return $integer$ReadString()
 	end method
 	
+	[method: ComVisible(false)]
 	method public static sbyte ReadSbyte()
 		return $sbyte$ReadString()
 	end method
 	
+	[method: ComVisible(false)]
 	method public static short ReadShort()
 		return $short$ReadString()
 	end method
 	
+	[method: ComVisible(false)]
 	method public static long ReadLong()
 		return $long$ReadString()
 	end method
 	
+	[method: ComVisible(false)]
 	method public static single ReadSingle()
 		return $single$ReadString()
 	end method
 	
+	[method: ComVisible(false)]
 	method public static double ReadDouble()
 		return $double$ReadString()
 	end method
 	
+	[method: ComVisible(false)]
 	method public static char ReadChar()
 		return $char$ReadString()
 	end method
 	
+	[method: ComVisible(false)]
 	method public static boolean ReadBoolean()
 		return $boolean$ReadString()
 	end method

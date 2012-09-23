@@ -13,7 +13,7 @@ class public auto ansi LabelItem
 
 	method public void LabelItem()
 		me::ctor()
-		LblName = ""
+		LblName = String::Empty
 	end method
 
 	method public void LabelItem(var ln as string, var l as Emit.Label)

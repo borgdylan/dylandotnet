@@ -1,6 +1,6 @@
 //The dylan.NET Reflection Library
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v.11.2.9.3 or later
+//compile with dylan.NET v.11.2.9.7 or later
 
 //    dnr.dll dylan.NET.Reflection Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -14,6 +14,7 @@
 #refstdasm "System.dll"
 #refstdasm "System.Core.dll"
 #refasm "dnu.dll"
+#refasm "IKVM.Reflection.dll"
 
 import System
 import System.IO
@@ -25,14 +26,19 @@ import System.Diagnostics.SymbolStore
 import System.Reflection
 import System.Reflection.Emit
 import System.Text.RegularExpressions
+import System.Runtime.InteropServices
 import dylan.NET
 import dylan.NET.Utils
 import dylan.NET.Reflection
+import IKVM.Reflection
+import IKVM.Reflection.Emit
 
 #debug on
 
+#include "dnr/assemblyinfo.dyl"
+
 assembly dnr dll
-ver 11.2.9.6
+ver 11.2.9.7
 
 namespace dylan.NET.Reflection
 	#include "dnr/milambdas.dyl"

@@ -6,19 +6,20 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi beforefieldinit Loader
+class public auto ansi static Loader
 
 	field public static boolean FldLitFlag
 	field public static boolean ProtectedFlag
 	field public static object FldLitVal
 	field public static boolean EnumLitFlag
-	field public static Type EnumLitTyp
-	field public static Type FldLitTyp
-	field public static Type MemberTyp
+	field public static IKVM.Reflection.Type EnumLitTyp
+	field public static IKVM.Reflection.Type FldLitTyp
+	field public static IKVM.Reflection.Type MemberTyp
+	field public static IKVM.Reflection.Type PreProcTyp
 	field public static boolean MakeArr
 	field public static boolean MakeRef
 
-	method public static void Loader()
+	method private static void Loader()
 		ProtectedFlag = false
 		FldLitFlag = false
 		FldLitVal = null
@@ -27,32 +28,35 @@ class public auto ansi beforefieldinit Loader
 		MemberTyp = null
 		MakeArr = false
 		MakeRef = false
+		PreProcTyp = null
 	end method
 
-	method public static Type LoadClass(var name as string) 
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.Type LoadClass(var name as string) 
 
-		var typ as Type = null
-		var curasm as Assembly = null
-		var curns as string = ""
+		var typ as IKVM.Reflection.Type = null
+		var curasm as IKVM.Reflection.Assembly = null
+		var curns as string = String::Empty
 		var nest as boolean = false
-		var asmb as AssemblyBuilder
+		var asmb as IKVM.Reflection.Emit.AssemblyBuilder
 
 		var na as string[] = ParseUtils::StringParser(name,"\")
 		name = na[0]
 		if na[l] > 1 then
 			nest = true
 		end if
-
-		var asms as IList<of Assembly> = Importer::Asms
-		var asmse as IEnumerator<of Assembly> = asms::GetEnumerator()
+		
+		var asms as IList<of IKVM.Reflection.Assembly> = Importer::Asms
+		var asmsproxy as IEnumerable<of IKVM.Reflection.Assembly> = asms
+		var asmse as IEnumerator<of IKVM.Reflection.Assembly> = asmsproxy::GetEnumerator()
 		do while asmse::MoveNext()
 			curasm = asmse::get_Current()
 
 			if curasm = AsmFactory::AsmB then
-				asmb = $AssemblyBuilder$curasm
+				asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
 				typ = asmb::GetType(name,false,false)
 				if typ != null then
-					if nest = true then
+					if nest then
 						typ = typ::GetNestedType(na[1])
 					end if
 					break
@@ -60,23 +64,23 @@ class public auto ansi beforefieldinit Loader
 			else
 				typ = curasm::GetType(name)
 				if typ != null then
-					if nest = true then
+					if nest then
 						typ = typ::GetNestedType(na[1])
 					end if
 					break
 				end if
 			end if
 
-			var imps as IList<of string> = Importer::Imps
+			var imps as IEnumerable<of string> = Importer::Imps
 			var impse as IEnumerator<of string> = imps::GetEnumerator()
 			do while impse::MoveNext()
 				curns = impse::get_Current()
 
 				if curasm = AsmFactory::AsmB then
-					asmb = $AssemblyBuilder$curasm
+					asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
 					typ = asmb::GetType(curns + "." + name,false,false)
 					if typ != null then
-						if nest = true then
+						if nest then
 							typ = typ::GetNestedType(na[1])
 						end if
 						break
@@ -85,7 +89,7 @@ class public auto ansi beforefieldinit Loader
 				else
 					typ = curasm::GetType(curns + "." + name)
 					if typ != null then
-						if nest = true then
+						if nest then
 							typ = typ::GetNestedType(na[1])
 						end if
 						break
@@ -98,12 +102,14 @@ class public auto ansi beforefieldinit Loader
 			end if
 			
 		end do
+		
+		PreProcTyp = typ
 
 		if typ != null then
-			if MakeArr = true then
+			if MakeArr then
 				typ = typ::MakeArrayType()
 			end if
-			if MakeRef = true then
+			if MakeRef then
 				typ = typ::MakeByRefType()
 			end if
 		end if
@@ -115,12 +121,15 @@ class public auto ansi beforefieldinit Loader
 
 	end method
 
-	method public static Type ProcessType(var typ as Type)
-		if MakeArr then
-			typ = typ::MakeArrayType()
-		end if
-		if MakeRef then
-			typ = typ::MakeByRefType()
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.Type ProcessType(var typ as IKVM.Reflection.Type)
+		if typ != null then
+			if MakeArr then
+				typ = typ::MakeArrayType()
+			end if
+			if MakeRef then
+				typ = typ::MakeByRefType()
+			end if
 		end if
 		
 		MakeArr = false
@@ -129,13 +138,14 @@ class public auto ansi beforefieldinit Loader
 		return typ
 	end method
 
-	method public static Type[] ParamsToTyps(var t as ParameterInfo[])
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.Type[] ParamsToTyps(var t as IKVM.Reflection.ParameterInfo[])
 
-		var arr as Type[] = new Type[t[l]]
+		var arr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[t[l]]
 		var i as integer = -1
 
 		if t[l] = 0 then
-			return Type::EmptyTypes
+			return IKVM.Reflection.Type::EmptyTypes
 		end if
 
 		do until i = (t[l] - 1)
@@ -146,11 +156,12 @@ class public auto ansi beforefieldinit Loader
 		return arr
 	end method
 
-	method public static MethodInfo LoadMethodWithoutParams(var typ as Type, var name as string)
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.MethodInfo LoadMethodWithoutParams(var typ as IKVM.Reflection.Type, var name as string)
 
-		var ints as Type[] = null
+		var ints as IKVM.Reflection.Type[] = null
 		var i as integer = -1
-		var mtdinfo as MethodInfo = null
+		var mtdinfo as IKVM.Reflection.MethodInfo = null
 
 		mtdinfo = typ::GetMethod(name)
 
@@ -176,18 +187,20 @@ class public auto ansi beforefieldinit Loader
 
 	end method
 
-	method public static Type[] GetDelegateInvokeParams(var typ as Type)
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.Type[] GetDelegateInvokeParams(var typ as IKVM.Reflection.Type)
 		return ParamsToTyps(LoadMethodWithoutParams(typ, "Invoke")::GetParameters())
 	end method
 
-	method public static MethodInfo LoadMethod(var typ as Type, var name as string, var typs as Type[])
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.MethodInfo LoadMethod(var typ as IKVM.Reflection.Type, var name as string, var typs as IKVM.Reflection.Type[])
 
-		var ints as Type[] = null
+		var ints as IKVM.Reflection.Type[] = null
 		var i as integer = -1
-		var mtdinfo as MethodInfo = null
+		var mtdinfo as IKVM.Reflection.MethodInfo = null
 
 		if typ::get_IsArray() then
-			typ = gettype Array
+			typ = ILEmitter::Univ::Import(gettype Array)
 		end if
 		
 		mtdinfo = typ::GetMethod(name,typs)
@@ -213,13 +226,13 @@ class public auto ansi beforefieldinit Loader
 		end if
 
 		if mtdinfo = null then
-			mtdinfo = typ::GetMethod(name,BindingFlags::Instance or BindingFlags::Static or BindingFlags::Public or BindingFlags::NonPublic, $Binder$null, typs, new ParameterModifier[0])
+			mtdinfo = typ::GetMethod(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
 
 			if mtdinfo != null then
 				//filter out private members
 				if mtdinfo::get_IsPrivate() = false then
-					var asmn as AssemblyName = typ::get_Assembly()::GetName()
-					var asmnc as AssemblyName = AsmFactory::AsmNameStr
+					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
 					var havinternal as boolean = false
 					if asmnc != null then
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
@@ -249,23 +262,24 @@ class public auto ansi beforefieldinit Loader
 
 	end method
 
-	method public static ConstructorInfo LoadCtor(var typ as Type, var typs as Type[])
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.ConstructorInfo LoadCtor(var typ as IKVM.Reflection.Type, var typs as IKVM.Reflection.Type[])
 
-		var ctorinf as ConstructorInfo = typ::GetConstructor(typs)
+		var ctorinf as IKVM.Reflection.ConstructorInfo = typ::GetConstructor(typs)
 
 		if ctorinf != null then
 			MemberTyp = typ
 		end if
 
 		if ctorinf = null then
-			ctorinf = typ::GetConstructor(BindingFlags::Instance or BindingFlags::Static or BindingFlags::Public or BindingFlags::NonPublic, $Binder$null, typs, new ParameterModifier[0])
+			ctorinf = typ::GetConstructor(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
 
 			if ctorinf != null then
 				//filter out private members
 				if ctorinf::get_IsPrivate() = false then
 				
-					var asmn as AssemblyName = typ::get_Assembly()::GetName()
-					var asmnc as AssemblyName = AsmFactory::AsmNameStr
+					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
 					var havinternal as boolean = false
 					if asmnc != null then
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
@@ -294,6 +308,7 @@ class public auto ansi beforefieldinit Loader
 
 	end method
 
+	[method: ComVisible(false)]
 	method public static MethodInfo[] addelemmtdinfo(var srcarr as MethodInfo[], var eltoadd as MethodInfo)
 
 		var i as integer = -1
@@ -309,18 +324,21 @@ class public auto ansi beforefieldinit Loader
 
 	end method
 
-	method public static IEnumerable<of MethodInfo> LoadSpecMtds(var typ as Type)
+	[method: ComVisible(false)]
+	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadSpecMtds(var typ as IKVM.Reflection.Type)
 		//var tempie as IEnumerable = typ::GetMethods()
-		var mtdinfos as IEnumerable<of MethodInfo> = Enumerable::OfType<of MethodInfo>(typ::GetMethods())
-		return Enumerable::Where<of MethodInfo>(mtdinfos, new Func<of MethodInfo,boolean>(MILambdas::IsSpecial()))
+		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = Enumerable::OfType<of IKVM.Reflection.MethodInfo>(typ::GetMethods())
+		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,boolean>(MILambdas::IsSpecial()))
 	end method
 
-	method public static IEnumerable<of MethodInfo> LoadGenericMtdOverlds(var typ as Type, var name as string, var paramlen as integer)
-		var mtdinfos as IEnumerable<of MethodInfo> = Enumerable::OfType<of MethodInfo>(typ::GetMethods())
+	[method: ComVisible(false)]
+	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadGenericMtdOverlds(var typ as IKVM.Reflection.Type, var name as string, var paramlen as integer)
+		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = Enumerable::OfType<of IKVM.Reflection.MethodInfo>(typ::GetMethods())
 		var mil as MILambdas = new MILambdas(name,paramlen)
-		return Enumerable::Where<of MethodInfo>(mtdinfos, new Func<of MethodInfo,boolean>(mil::GenericMtdFilter()))
+		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::GenericMtdFilter()))
 	end method
 
+	[method: ComVisible(false)]
 	method public static boolean CompareParamsToTyps(var t1 as ParameterInfo[],var t2 as Type[])
 		if t1[l] = t2[l] then
 			var i as integer = -1
@@ -339,41 +357,43 @@ class public auto ansi beforefieldinit Loader
 		end if
 	end method
 
-	method public static MethodInfo LoadBinOp(var typ as Type, var name as string, var typa as Type, var typb as Type)
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.MethodInfo LoadBinOp(var typ as IKVM.Reflection.Type, var name as string, var typa as IKVM.Reflection.Type, var typb as IKVM.Reflection.Type)
 
-		var typs as Type[] = new Type[2]
+		var typs as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
 		typs[0] = typa
 		typs[1] = typb
 
-		var mtdinfos as IEnumerable<of MethodInfo> = LoadSpecMtds(typ)
+		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = LoadSpecMtds(typ)
 		var mil as MILambdas = new MILambdas(name)
-		mtdinfos = Enumerable::Where<of MethodInfo>(mtdinfos, new Func<of MethodInfo,boolean>(mil::IsSameName()))
-		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(mtdinfos)
+		mtdinfos = Enumerable::Where<of IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameName()))
+		var matches as IKVM.Reflection.MethodInfo[] = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(mtdinfos)
 
 		if matches[l] = 0 then
 			return null
 		else
-			var bind as Binder = Type::get_DefaultBinder()
-			var bf as BindingFlags = BindingFlags::Instance or BindingFlags::Static or BindingFlags::Public
-			return $MethodInfo$bind::SelectMethod(bf,matches,typs,new ParameterModifier[0])
+			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
+			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public
+			return $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs,new IKVM.Reflection.ParameterModifier[0])
 		end if
 
 	end method
 
-	method public static MethodInfo LoadGenericMethod(var typ as Type, var name as string, var genparams as Type[], var paramst as Type[])
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.MethodInfo LoadGenericMethod(var typ as IKVM.Reflection.Type, var name as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[])
 
-		var mtdinfo as MethodInfo = null
-		var mtdinfos as IEnumerable<of MethodInfo> = LoadGenericMtdOverlds(typ, name, genparams[l])
+		var mtdinfo as IKVM.Reflection.MethodInfo = null
+		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = LoadGenericMtdOverlds(typ, name, genparams[l])
 		var mil as MILambdas = new MILambdas(genparams)
-		mtdinfos = Enumerable::Select<of MethodInfo,MethodInfo>(mtdinfos, new Func<of MethodInfo,MethodInfo>(mil::InstGenMtd()))
-		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(mtdinfos)
+		mtdinfos = Enumerable::Select<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(mil::InstGenMtd()))
+		var matches as IKVM.Reflection.MethodInfo[] = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(mtdinfos)
 
 		if matches[l] = 0 then
 			mtdinfo = null
 		else
-			var bind as Binder = Type::get_DefaultBinder()
-			var bf as BindingFlags = BindingFlags::Instance or BindingFlags::Static or BindingFlags::Public
-			mtdinfo =  $MethodInfo$bind::SelectMethod(bf,matches,paramst,new ParameterModifier[0])
+			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
+			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public
+			mtdinfo =  $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,paramst,new IKVM.Reflection.ParameterModifier[0])
 		end if
 
 		if mtdinfo != null then
@@ -383,40 +403,42 @@ class public auto ansi beforefieldinit Loader
 		return mtdinfo
 	end method
 
-	method public static MethodInfo LoadConvOp(var typ as Type, var name as string, var src as Type, var snk as Type)
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.MethodInfo LoadConvOp(var typ as IKVM.Reflection.Type, var name as string, var src as IKVM.Reflection.Type, var snk as IKVM.Reflection.Type)
 
-		var typs as Type[] = new Type[1]
+		var typs as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
 		typs[0] = src
-		var mtdinfos as IEnumerable<of MethodInfo> = LoadSpecMtds(typ)
+		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = LoadSpecMtds(typ)
 		var mil as MILambdas = new MILambdas(name,snk)
-		mtdinfos = Enumerable::Where<of MethodInfo>(mtdinfos, new Func<of MethodInfo,boolean>(mil::IsSameNameAndReturn()))
-		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(mtdinfos)
+		mtdinfos = Enumerable::Where<of IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameNameAndReturn()))
+		var matches as IKVM.Reflection.MethodInfo[] = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(mtdinfos)
 
 		if matches[l] = 0 then
 			return null
 		else
-			var bind as Binder = Type::get_DefaultBinder()
-			var bf as BindingFlags = BindingFlags::Instance or BindingFlags::Static or BindingFlags::Public
-			return $MethodInfo$bind::SelectMethod(bf,matches,typs,new ParameterModifier[0])
+			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
+			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public
+			return $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs,new IKVM.Reflection.ParameterModifier[0])
 		end if
 
 	end method
 
-	method public static FieldInfo LoadField(var typ as Type, var name as string)
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.FieldInfo LoadField(var typ as IKVM.Reflection.Type, var name as string)
 
-		var fldinfo as FieldInfo = null
+		var fldinfo as IKVM.Reflection.FieldInfo = null
 
 		fldinfo = typ::GetField(name)
 		
 		if fldinfo = null then
-			fldinfo = typ::GetField(name,BindingFlags::Instance or BindingFlags::Static or BindingFlags::Public or BindingFlags::NonPublic)
+			fldinfo = typ::GetField(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic)
 
 			if fldinfo != null then
 				//filter out private members
 				if fldinfo::get_IsPrivate() = false then
 			
-					var asmn as AssemblyName = typ::get_Assembly()::GetName()
-					var asmnc as AssemblyName = AsmFactory::AsmNameStr
+					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
 					var havinternal as boolean = false
 					if asmnc != null then
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
@@ -441,15 +463,58 @@ class public auto ansi beforefieldinit Loader
 			MemberTyp = fldinfo::get_FieldType()
 			FldLitFlag = fldinfo::get_IsLiteral()
 			EnumLitFlag = typ::get_IsEnum()
-			if FldLitFlag = true then
-				FldLitVal = fldinfo::GetValue(null)
-				FldLitTyp = FldLitVal::GetType()
+			if FldLitFlag then
+				FldLitVal = fldinfo::GetRawConstantValue()
+				FldLitTyp = fldinfo::get_FieldType()
 			end if
-			if EnumLitFlag = true then
-				EnumLitTyp = Enum::GetUnderlyingType(typ)
+			if EnumLitFlag then
+				EnumLitTyp = typ::GetEnumUnderlyingType()
 			end if
 		end if
 		return fldinfo
+
+	end method
+	
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.PropertyInfo LoadProperty(var typ as IKVM.Reflection.Type, var name as string)
+
+		var propinfo as IKVM.Reflection.PropertyInfo = null
+
+		propinfo = typ::GetProperty(name)
+		
+//		if propinfo = null then
+//			propinfo = typ::GetProperty(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic)
+//
+//			if propinfo != null then
+//				//filter out private members
+//				if propinfo::get_IsPrivate() = false then
+//			
+//					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+//					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
+//					var havinternal as boolean = false
+//					if asmnc != null then
+//						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
+//					end if
+//					
+//					if (propinfo::get_IsFamilyAndAssembly() and ProtectedFlag and havinternal) = false then
+//						if (propinfo::get_IsFamilyOrAssembly() and (ProtectedFlag or havinternal)) = false then
+//							if (propinfo::get_IsFamily() and ProtectedFlag) = false then
+//								if (propinfo::get_IsAssembly() and havinternal) = false then
+//									prpoinfo = null
+//								end if
+//							end if
+//						end if
+//					end if
+//				else
+//					propinfo = null
+//				end if
+//			end if
+//		end if
+
+		if propinfo != null then
+			MemberTyp = propinfo::get_PropertyType()
+		end if
+		return propinfo
 
 	end method
 

@@ -23,6 +23,7 @@
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
+    <AssemblyVersion>11.2.9.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -58,9 +59,26 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ExprOptimizer (dylan.NET.Tokenizer.Parser.Flags pf);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class dylan.NET.Tokenizer.Parser.Flags pf) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="pf" Type="dylan.NET.Tokenizer.Parser.Flags" />
+      </Parameters>
+      <Docs>
+        <param name="pf">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -85,7 +103,7 @@
       </Docs>
     </Member>
     <Member MemberName="checkVarAs">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr checkVarAs (dylan.NET.Tokenizer.AST.Exprs.Expr stm, ref bool b);" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr checkVarAs (dylan.NET.Tokenizer.AST.Exprs.Expr stm, out bool b);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Exprs.Expr checkVarAs(class dylan.NET.Tokenizer.AST.Exprs.Expr stm, bool b) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -115,7 +133,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
-        <Parameter Name="b" Type="System.Boolean&amp;" RefType="ref" />
+        <Parameter Name="b" Type="System.Boolean&amp;" RefType="out" />
       </Parameters>
       <Docs>
         <param name="stm">To be added.</param>
@@ -188,6 +206,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -203,17 +222,18 @@
       </Docs>
     </Member>
     <Member MemberName="PFlags">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.Parser.ParserFlags PFlags;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.Parser.ParserFlags PFlags" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.Parser.Flags PFlags;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.Parser.Flags PFlags" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.Parser.ParserFlags</ReturnType>
+        <ReturnType>dylan.NET.Tokenizer.Parser.Flags</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -245,6 +265,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -286,6 +307,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -327,6 +349,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -353,6 +376,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -392,6 +416,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -418,6 +443,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>

@@ -1,6 +1,6 @@
 //The Parser for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v.11.2.9.1 or later
+//compile with dylan.NET v.11.2.9.7 or later
 
 //    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -12,13 +12,21 @@
 
 #refstdasm "mscorlib.dll"
 #refstdasm "System.dll"
+#refstdasm "System.Core.dll"
 #refasm "tokenizer.AST.dll"
 #refasm "tokenizer.Lexer.dll"
 #refasm "dnu.dll"
+#refasm "dnr.dll"
+#refasm "IKVM.Reflection.dll"
 
 import System
+import System.Linq
+import System.Collections
+import System.Collections.Generic
+import System.Runtime.InteropServices
 import dylan.NET
 import dylan.NET.Utils
+import dylan.NET.Reflection
 import dylan.NET.Tokenizer.Lexer
 import dylan.NET.Tokenizer.AST
 import dylan.NET.Tokenizer.AST.Tokens
@@ -29,13 +37,17 @@ import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import dylan.NET.Tokenizer.AST.Tokens.Literals
 import dylan.NET.Tokenizer.AST.Tokens.Attributes
 import dylan.NET.Tokenizer.AST.Tokens.Chars
+import IKVM.Reflection
+import IKVM.Reflection.Emit
 
 import dylan.NET.Tokenizer.Parser
 
 #debug on
 
+#include "parser/assemblyinfo.dyl"
+
 assembly tokenizer.Parser dll
-ver 11.2.9.6
+ver 11.2.9.7
 
 namespace dylan.NET.Tokenizer.Parser
 	#include "parser/parserflags.dyl"

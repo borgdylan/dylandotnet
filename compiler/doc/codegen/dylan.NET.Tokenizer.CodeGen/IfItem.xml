@@ -22,6 +22,7 @@
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
+    <AssemblyVersion>11.2.9.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -56,9 +57,28 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public IfItem (IKVM.Reflection.Emit.Label endl, IKVM.Reflection.Emit.Label nbl);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(valuetype IKVM.Reflection.Emit.Label endl, valuetype IKVM.Reflection.Emit.Label nbl) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="endl" Type="IKVM.Reflection.Emit.Label" />
+        <Parameter Name="nbl" Type="IKVM.Reflection.Emit.Label" />
+      </Parameters>
+      <Docs>
+        <param name="endl">To be added.</param>
+        <param name="nbl">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -123,6 +143,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -133,8 +154,8 @@
       </Docs>
     </Member>
     <Member MemberName="EndLabel">
-      <MemberSignature Language="C#" Value="public System.Reflection.Emit.Label EndLabel;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Reflection.Emit.Label EndLabel" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.Label EndLabel;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype IKVM.Reflection.Emit.Label EndLabel" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
@@ -156,9 +177,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.Label</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -166,8 +188,8 @@
       </Docs>
     </Member>
     <Member MemberName="NextBlkLabel">
-      <MemberSignature Language="C#" Value="public System.Reflection.Emit.Label NextBlkLabel;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Reflection.Emit.Label NextBlkLabel" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.Label NextBlkLabel;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype IKVM.Reflection.Emit.Label NextBlkLabel" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.5</AssemblyVersion>
@@ -189,9 +211,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.Label</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

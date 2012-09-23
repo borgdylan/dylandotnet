@@ -8,16 +8,16 @@
 
 class public auto ansi CtorItem
 
-	field public Type[] ParamTyps
+	field public IKVM.Reflection.Type[] ParamTyps
 	field public ConstructorBuilder CtorBldr
 
 	method public void CtorItem()
 		me::ctor()
 		CtorBldr = null
-		ParamTyps = new Type[0]
+		ParamTyps = new IKVM.Reflection.Type[0]
 	end method
 
-	method public void CtorItem(var ptyps as Type[], var bld as ConstructorBuilder)
+	method public void CtorItem(var ptyps as IKVM.Reflection.Type[], var bld as ConstructorBuilder)
 		me::ctor()
 		CtorBldr = bld
 		ParamTyps = ptyps

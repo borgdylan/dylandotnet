@@ -158,6 +158,14 @@ class public auto ansi AssemblyTok extends Token
 
 end class
 
+class public auto ansi AssemblyCTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "assembly:"
+	end method
+
+end class
+
 class public auto ansi ExeTok extends Token
 
 	method public hidebysig virtual string ToString()
@@ -209,6 +217,14 @@ class public auto ansi ClassTok extends Token
 
 end class
 
+class public auto ansi ClassCTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "class:"
+	end method
+
+end class
+
 class public auto ansi StructTok extends Token
 
 	method public hidebysig virtual string ToString()
@@ -249,6 +265,14 @@ class public auto ansi FieldTok extends Token
 
 end class
 
+class public auto ansi FieldCTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "field:"
+	end method
+
+end class
+
 class public auto ansi DelegateTok extends Token
 
 	method public hidebysig virtual string ToString()
@@ -261,6 +285,14 @@ class public auto ansi PropertyTok extends Token
 
 	method public hidebysig virtual string ToString()
 		return "property"
+	end method
+
+end class
+
+class public auto ansi PropertyCTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "property:"
 	end method
 
 end class
@@ -285,6 +317,14 @@ class public auto ansi MethodTok extends Token
 
 	method public hidebysig virtual string ToString()
 		return "method"
+	end method
+
+end class
+
+class public auto ansi MethodCTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "method:"
 	end method
 
 end class
@@ -453,6 +493,30 @@ class public auto ansi EndTok extends Token
 	
 	method public hidebysig virtual string ToString()
 		return "end"
+	end method
+
+end class
+
+class public auto ansi InTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "in"
+	end method
+
+end class
+
+class public auto ansi OutTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "out"
+	end method
+
+end class
+
+class public auto ansi InOutTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "inout"
 	end method
 
 end class

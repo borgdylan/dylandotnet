@@ -53,8 +53,8 @@ end class
 class public auto ansi ConstLiteral extends Literal
 
 	field public object ConstVal
-	field public Type ExtTyp
-	field public Type IntTyp
+	field public IKVM.Reflection.Type ExtTyp
+	field public IKVM.Reflection.Type IntTyp
 
 	method public void ConstLiteral()
 		me::ctor()

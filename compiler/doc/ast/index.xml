@@ -1,9 +1,18 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.9.6">
+    <Assembly Name="tokenizer.AST" Version="11.2.9.7">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyConfiguration("DEBUG")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg &lt;borgdylan@hotmail.com&gt;")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("dylan.NET.Tokenizer.AST")</AttributeName>
         </Attribute>
       </Attributes>
     </Assembly>
@@ -24,10 +33,13 @@
       <Type Name="VarExpr" Kind="Class" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Stmts">
+      <Type Name="AssemblyAttrStmt" Kind="Class" />
       <Type Name="AssemblyStmt" Kind="Class" />
       <Type Name="AssignStmt" Kind="Class" />
+      <Type Name="AttrStmt" Kind="Class" />
       <Type Name="BreakStmt" Kind="Class" />
       <Type Name="CatchStmt" Kind="Class" />
+      <Type Name="ClassAttrStmt" Kind="Class" />
       <Type Name="ClassStmt" Kind="Class" />
       <Type Name="CommentStmt" Kind="Class" />
       <Type Name="ContinueStmt" Kind="Class" />
@@ -50,6 +62,7 @@
       <Type Name="EndTryStmt" Kind="Class" />
       <Type Name="EndXmlDocStmt" Kind="Class" />
       <Type Name="EnumStmt" Kind="Class" />
+      <Type Name="FieldAttrStmt" Kind="Class" />
       <Type Name="FieldStmt" Kind="Class" />
       <Type Name="FinallyStmt" Kind="Class" />
       <Type Name="GotoStmt" Kind="Class" />
@@ -61,6 +74,7 @@
       <Type Name="LiteralStmt" Kind="Class" />
       <Type Name="LocimportStmt" Kind="Class" />
       <Type Name="MakeasmStmt" Kind="Class" />
+      <Type Name="MethodAttrStmt" Kind="Class" />
       <Type Name="MethodCallStmt" Kind="Class" />
       <Type Name="MethodStmt" Kind="Class" />
       <Type Name="NewresStmt" Kind="Class" />
@@ -87,11 +101,14 @@
       <Type Name="XmlDocStmt" Kind="Class" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Tokens">
+      <Type Name="AssemblyCTok" Kind="Class" />
       <Type Name="AssemblyTok" Kind="Class" />
       <Type Name="AsTok" Kind="Class" />
+      <Type Name="AttrValuePair" Kind="Class" />
       <Type Name="BreakTok" Kind="Class" />
       <Type Name="CastclassTok" Kind="Class" />
       <Type Name="CatchTok" Kind="Class" />
+      <Type Name="ClassCTok" Kind="Class" />
       <Type Name="ClassTok" Kind="Class" />
       <Type Name="CommentTok" Kind="Class" />
       <Type Name="ContinueTok" Kind="Class" />
@@ -106,6 +123,7 @@
       <Type Name="EnumTok" Kind="Class" />
       <Type Name="ExeTok" Kind="Class" />
       <Type Name="ExtendsTok" Kind="Class" />
+      <Type Name="FieldCTok" Kind="Class" />
       <Type Name="FieldTok" Kind="Class" />
       <Type Name="FinallyTok" Kind="Class" />
       <Type Name="GenericMethodNameTok" Kind="Class" />
@@ -119,11 +137,14 @@
       <Type Name="ImplementsTok" Kind="Class" />
       <Type Name="ImportTok" Kind="Class" />
       <Type Name="IncludeTok" Kind="Class" />
+      <Type Name="InOutTok" Kind="Class" />
+      <Type Name="InTok" Kind="Class" />
       <Type Name="LabelTok" Kind="Class" />
       <Type Name="LiteralTok" Kind="Class" />
       <Type Name="LocimportTok" Kind="Class" />
       <Type Name="MakeasmTok" Kind="Class" />
       <Type Name="MethodCallTok" Kind="Class" />
+      <Type Name="MethodCTok" Kind="Class" />
       <Type Name="MethodNameTok" Kind="Class" />
       <Type Name="MethodTok" Kind="Class" />
       <Type Name="MeTok" Kind="Class" />
@@ -137,7 +158,9 @@
       <Type Name="OffTok" Kind="Class" />
       <Type Name="OfTok" Kind="Class" />
       <Type Name="OnTok" Kind="Class" />
+      <Type Name="OutTok" Kind="Class" />
       <Type Name="PlaceTok" Kind="Class" />
+      <Type Name="PropertyCTok" Kind="Class" />
       <Type Name="PropertyTok" Kind="Class" />
       <Type Name="PtrCallTok" Kind="Class" />
       <Type Name="PtrTok" Kind="Class" />

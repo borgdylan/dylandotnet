@@ -9,19 +9,19 @@
 class public auto ansi FieldItem
 
 	field public string Name
-	field public Type FieldTyp
+	field public IKVM.Reflection.Type FieldTyp
 	field public FieldBuilder FieldBldr
 	field public Literal LitVal
 
 	method public void FieldItem()
 		me::ctor()
-		Name = ""
+		Name = String::Empty
 		FieldTyp = null
 		FieldBldr = null
 		LitVal = null
 	end method
 
-	method public void FieldItem(var nme as string, var typ as Type, var bld as FieldBuilder)
+	method public void FieldItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as FieldBuilder)
 		me::ctor()
 		Name = nme
 		FieldTyp = typ

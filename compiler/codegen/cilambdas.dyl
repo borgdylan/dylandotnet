@@ -8,19 +8,19 @@
 
 class private auto ansi CILambdas
 
-	field assembly Type[] Params
+	field assembly IKVM.Reflection.Type[] Params
 
 	method assembly void CILambdas()
 		me::ctor()
 		Params = null
 	end method
 
-	method assembly void CILambdas(var params as Type[])
+	method assembly void CILambdas(var params as IKVM.Reflection.Type[])
 		me::ctor()
 		Params = params
 	end method
 
-	method assembly boolean CmpTyps(var arra as Type[], var arrb as Type[])
+	method assembly boolean CmpTyps(var arra as IKVM.Reflection.Type[], var arrb as IKVM.Reflection.Type[])
 		if arra[l] = arrb[l] then
 			if arra[l] = 0 then
 				return true
@@ -42,7 +42,7 @@ class private auto ansi CILambdas
 		return CmpTyps(ci::ParamTyps,Params)
 	end method
 
-	method assembly integer CalcDeriveness(var t as Type)
+	method assembly integer CalcDeriveness(var t as IKVM.Reflection.Type)
 		var d as integer = 1
 		do while t::get_BaseType() != null
 			d = d + 1

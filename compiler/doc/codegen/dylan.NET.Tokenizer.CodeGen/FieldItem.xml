@@ -23,6 +23,7 @@
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
+    <AssemblyVersion>11.2.9.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -58,9 +59,30 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FieldItem (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Emit.FieldBuilder bld);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Emit.FieldBuilder bld) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="nme" Type="System.String" />
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="bld" Type="IKVM.Reflection.Emit.FieldBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="nme">To be added.</param>
+        <param name="typ">To be added.</param>
+        <param name="bld">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -105,8 +127,8 @@
       </Docs>
     </Member>
     <Member MemberName="FieldBldr">
-      <MemberSignature Language="C#" Value="public System.Reflection.Emit.FieldBuilder FieldBldr;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Reflection.Emit.FieldBuilder FieldBldr" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.FieldBuilder FieldBldr;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Emit.FieldBuilder FieldBldr" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -129,9 +151,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.FieldBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.FieldBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -139,8 +162,8 @@
       </Docs>
     </Member>
     <Member MemberName="FieldTyp">
-      <MemberSignature Language="C#" Value="public Type FieldTyp;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Type FieldTyp" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type FieldTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type FieldTyp" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -163,9 +186,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type</ReturnType>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -194,6 +218,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.Literal</ReturnType>
@@ -228,6 +253,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -246,6 +272,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>

@@ -1,9 +1,24 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.Parser" Version="11.2.9.6">
+    <Assembly Name="tokenizer.Parser" Version="11.2.9.7">
       <Attributes>
         <Attribute>
+          <AttributeName>System.CLSCompliant(true)</AttributeName>
+        </Attribute>
+        <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyConfiguration("DEBUG")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg &lt;borgdylan@hotmail.com&gt;")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("dylan.NET.Tokenizer.Parser")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
         </Attribute>
       </Attributes>
     </Assembly>
@@ -13,6 +28,7 @@
   <Types>
     <Namespace Name="dylan.NET.Tokenizer.Parser">
       <Type Name="ExprOptimizer" Kind="Class" />
+      <Type Name="Flags" Kind="Class" />
       <Type Name="Parser" Kind="Class" />
       <Type Name="ParserFlags" Kind="Class" />
       <Type Name="StmtOptimizer" Kind="Class" />

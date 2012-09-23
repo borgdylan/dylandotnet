@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi beforefieldinit AsmFactory
+class public auto ansi static AsmFactory
 
 	field public static boolean DebugFlg
 	field public static boolean InMethodFlg
@@ -16,14 +16,14 @@ class public auto ansi beforefieldinit AsmFactory
 	field public static boolean PopFlg
 	field public static boolean ForcedAddrFlg
 	field public static boolean AddrFlg
-	field public static AssemblyName AsmNameStr
-	field public static AssemblyBuilder AsmB
-	field public static Type Type01
-	field public static Type Type02
-	field public static Type Type03
-	field public static Type Type04
-	field public static Type Type05
-	field public static ModuleBuilder MdlB
+	field public static IKVM.Reflection.AssemblyName AsmNameStr
+	field public static IKVM.Reflection.Emit.AssemblyBuilder AsmB
+	field public static IKVM.Reflection.Type Type01
+	field public static IKVM.Reflection.Type Type02
+	field public static IKVM.Reflection.Type Type03
+	field public static IKVM.Reflection.Type Type04
+	field public static IKVM.Reflection.Type Type05
+	field public static IKVM.Reflection.Emit.ModuleBuilder MdlB
 	field public static ISymbolDocumentWriter DocWriter
 	field public static string CurnNS
 	field public static string DfltNS
@@ -31,20 +31,21 @@ class public auto ansi beforefieldinit AsmFactory
 	field public static string AsmFile
 	field public static string CurnTypName
 	field public static string CurnMetName
-	field public static MethodBuilder CurnMetB
-	field public static ConstructorBuilder CurnConB
-	field public static FieldBuilder CurnFldB
-	field public static ILGenerator CurnILGen
-	field public static Type CurnInhTyp
-	field public static TypeBuilder CurnTypB
-	field public static TypeBuilder CurnTypB2
-	field public static TypeBuilder[] CurnTypList
+	field public static IKVM.Reflection.Emit.MethodBuilder CurnMetB
+	field public static IKVM.Reflection.Emit.ConstructorBuilder CurnConB
+	field public static IKVM.Reflection.Emit.FieldBuilder CurnFldB
+	field public static IKVM.Reflection.Emit.ILGenerator CurnILGen
+	field public static IKVM.Reflection.Type CurnInhTyp
+	field public static IKVM.Reflection.Emit.TypeBuilder CurnTypB
+	field public static IKVM.Reflection.Emit.TypeBuilder CurnTypB2
+	field public static IKVM.Reflection.Emit.TypeBuilder[] CurnTypList
 	field public static boolean isNested
 	field public static boolean inClass
-	field public static Type[] TypArr
+	field public static IKVM.Reflection.Type[] TypArr
 	field public static string[] GenParamNames
-	field public static GenericTypeParameterBuilder[] GenParamTyps
+	field public static IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
 
+	[method: ComVisible(false)]
 	method public static void Init()
 		DebugFlg = false
 		ChainFlg = false
@@ -54,28 +55,30 @@ class public auto ansi beforefieldinit AsmFactory
 		ForcedAddrFlg = false
 		InMethodFlg = false
 		InCtorFlg = false
-		CurnNS = ""
-		DfltNS = ""
-		AsmFile = ""
-		CurnTypList = new TypeBuilder[0]
-		TypArr = new Type[0]
+		CurnNS = String::Empty
+		DfltNS = String::Empty
+		AsmFile = String::Empty
+		CurnTypList = new IKVM.Reflection.Emit.TypeBuilder[0]
+		TypArr = new IKVM.Reflection.Type[0]
 		GenParamNames = new string[0]
-		GenParamTyps = new Type[0]
+		GenParamTyps = new IKVM.Reflection.Emit.GenericTypeParameterBuilder[0]
 		isNested = false
 		inClass = false
 	end method
 
-	method public static void AsmFactory()
-		AsmMode = ""
+	method private static void AsmFactory()
+		AsmMode = String::Empty
 		Init()
 	end method
 
-	method public static void CreateTyp()
-		CurnTypB::CreateType()
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.Type CreateTyp()
+		return CurnTypB::CreateType()
 	end method
 
+	[method: ComVisible(false)]
 	method public static void InitMtd()
-		CurnMetB::DefineParameter(0, ParameterAttributes::Retval, "")
+		CurnMetB::DefineParameter(0, IKVM.Reflection.ParameterAttributes::Retval, String::Empty)
 		CurnILGen = CurnMetB::GetILGenerator()
 		ILEmitter::Met = CurnMetB
 		ILEmitter::ILGen = CurnILGen
@@ -88,6 +91,7 @@ class public auto ansi beforefieldinit AsmFactory
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static void InitConstr()
 		CurnILGen = CurnConB::GetILGenerator()
 		ILEmitter::Constr = CurnConB
@@ -101,24 +105,27 @@ class public auto ansi beforefieldinit AsmFactory
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static void InitDelConstr()
-		CurnConB::DefineParameter(1, ParameterAttributes::None, "obj")
-		CurnConB::DefineParameter(2, ParameterAttributes::None, "ptr")
-		CurnConB::SetImplementationFlags(MethodImplAttributes::Runtime or MethodImplAttributes::Managed)
+		CurnConB::DefineParameter(1, IKVM.Reflection.ParameterAttributes::None, "obj")
+		CurnConB::DefineParameter(2, IKVM.Reflection.ParameterAttributes::None, "ptr")
+		CurnConB::SetImplementationFlags(IKVM.Reflection.MethodImplAttributes::Runtime or IKVM.Reflection.MethodImplAttributes::Managed)
 	end method
 
+	[method: ComVisible(false)]
 	method public static void InitDelMet()
 		ILEmitter::Met = CurnMetB
-		CurnMetB::SetImplementationFlags(MethodImplAttributes::Runtime or MethodImplAttributes::Managed)
+		CurnMetB::SetImplementationFlags(IKVM.Reflection.MethodImplAttributes::Runtime or IKVM.Reflection.MethodImplAttributes::Managed)
 	end method
 
-	method public static void AddTypB(var typ as TypeBuilder)
+	[method: ComVisible(false)]
+	method public static void AddTypB(var typ as IKVM.Reflection.Emit.TypeBuilder)
 
 		var len as integer = CurnTypList[l]
 		var stopel as integer = len - 1
 		var i as integer = -1
 
-		var destarr as TypeBuilder[] = new TypeBuilder[len + 1]
+		var destarr as IKVM.Reflection.Emit.TypeBuilder[] = new IKVM.Reflection.Emit.TypeBuilder[len + 1]
 
 		do until i = stopel
 			i = i + 1
@@ -130,13 +137,14 @@ class public auto ansi beforefieldinit AsmFactory
 
 	end method
 
-	method public static void AddTyp(var typ as Type)
+	[method: ComVisible(false)]
+	method public static void AddTyp(var typ as IKVM.Reflection.Type)
 
 		var len as integer = TypArr[l]
 		var stopel as integer = len - 1
 		var i as integer = -1
 
-		var destarr as Type[] = new Type[len + 1]
+		var destarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[len + 1]
 
 		do until i = stopel
 			i = i + 1
@@ -148,6 +156,7 @@ class public auto ansi beforefieldinit AsmFactory
 
 	end method
 
+	[method: ComVisible(false)]
 	method public static void AddGenParamName(var nam as string)
 
 		var len as integer = GenParamNames[l]

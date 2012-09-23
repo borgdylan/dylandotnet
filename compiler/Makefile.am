@@ -59,6 +59,10 @@ tarball: distclean
 	rm -f -r ./../$(distdir)
 
 all:
+	cp ./lib/IKVM.Reflection.dll ./IKVM.Reflection.dll
+	cp ./lib/IKVM.Reflection.dll ./2.0/IKVM.Reflection.dll
+	cp ./lib/IKVM.Reflection.dll ./4.0/IKVM.Reflection.dll
+	
 	'$(MONO)' 4.0/dnc.exe -V > buildlog4
 	'$(MONO)' 4.0/dnc.exe dnu.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnr.dyl | tee -a buildlog4

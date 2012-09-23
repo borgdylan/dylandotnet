@@ -6,9 +6,9 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-delegate public void ErrorWarnHandler(var line as integer, var file as string, var msg as string)
+//delegate public void ErrorWarnHandler(var line as integer, var file as string, var msg as string)
 
-class public auto ansi beforefieldinit StreamUtils
+class public auto ansi static StreamUtils
 
 	field public static initonly Stream Stdin
 	field public static initonly Stream Stdout
@@ -19,10 +19,10 @@ class public auto ansi beforefieldinit StreamUtils
 
 	field public static boolean UseConsole
 
-	field public static ErrorWarnHandler ErrorH
-	field public static ErrorWarnHandler WarnH
+	field public static Action<of integer, string, string> ErrorH
+	field public static Action<of integer, string, string> WarnH
 
-	method public static void StreamUtils()
+	method private static void StreamUtils()
 		Stdin = Console::OpenStandardInput()
 		Stderr = Console::OpenStandardError()
 		Stdout = Console::OpenStandardOutput()
@@ -32,55 +32,62 @@ class public auto ansi beforefieldinit StreamUtils
 		ErrorH = null
 		WarnH = null
 	end method
-
+	
+	[method: ComVisible(false)]
 	method public static void InitInS(var s as Stream)
-		if InS <> null then
+		if InS != null then
 			InS::Close()
 		end if
 		InS = new StreamReader(s)
 	end method
 
+	[method: ComVisible(false)]
 	method public static void InitOutS(var s as Stream)
-		if OutS <> null then
+		if OutS != null then
 			OutS::Close()
 		end if
 			OutS = new StreamWriter(s)
 	end method
 
+	[method: ComVisible(false)]
 	method public static void InitInOutSWithStd()
 		InitInS(Stdin)
 		InitOutS(Stdout)
 	end method
 
+	[method: ComVisible(false)]
 	method public static void CloseInS()
-		if InS <> null then
+		if InS != null then
 			InS::Close()
 			InS = null
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static void CloseOutS()
-		if OutS <> null then
+		if OutS != null then
 			OutS::Close()
 			OutS = null
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static string ReadLine()
 		if UseConsole = false then
-			if InS <> null then
+			if InS != null then
 				return InS::ReadLine()
 			else
-				return ""
+				return String::Empty
 			end if
 		else
 			return Console::ReadLine()
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static void WriteLine(var str as string)
 		if UseConsole = false then
-			if OutS <> null then
+			if OutS != null then
 				OutS::WriteLine(str)
 			end if
 		else
@@ -88,9 +95,10 @@ class public auto ansi beforefieldinit StreamUtils
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static void Write(var str as string)
 		if UseConsole = false then
-			if OutS <> null then
+			if OutS != null then
 				OutS::Write(str)
 			end if
 		else
@@ -98,7 +106,8 @@ class public auto ansi beforefieldinit StreamUtils
 		end if
 	end method
 
-	method public static void add_ErrorH(var eh as ErrorWarnHandler)
+	[method: ComVisible(false)]
+	method public static void add_ErrorH(var eh as Action<of integer, string, string>)
 		if ErrorH = null then
 			ErrorH = eh
 		else
@@ -106,7 +115,8 @@ class public auto ansi beforefieldinit StreamUtils
 		end if
 	end method
 
-	method public static void add_WarnH(var eh as ErrorWarnHandler)
+	[method: ComVisible(false)]
+	method public static void add_WarnH(var eh as Action<of integer, string, string>)
 		if WarnH = null then
 			WarnH = eh
 		else
@@ -114,18 +124,21 @@ class public auto ansi beforefieldinit StreamUtils
 		end if
 	end method
 
-	method public static void remove_ErrorH(var eh as ErrorWarnHandler)
+	[method: ComVisible(false)]
+	method public static void remove_ErrorH(var eh as Action<of integer, string, string>)
 		if ErrorH != null then
 			ErrorH = ErrorH - eh
 		end if
 	end method
 
-	method public static void remove_WarnH(var eh as ErrorWarnHandler)
+	[method: ComVisible(false)]
+	method public static void remove_WarnH(var eh as Action<of integer, string, string>)
 		if WarnH != null then
 			WarnH = WarnH - eh
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static void WriteWarn(var line as integer, var file as string, var msg as string)
 		WriteLine("WARNING: " + msg + " at line " + $string$line + " in file: " + file)
 		if WarnH != null then
@@ -133,6 +146,7 @@ class public auto ansi beforefieldinit StreamUtils
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static void WriteError(var line as integer, var file as string, var msg as string)
 		WriteLine("ERROR: " + msg + " at line " + $string$line + " in file: " + file)
 		if ErrorH != null then

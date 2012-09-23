@@ -10,8 +10,8 @@ class private auto ansi MILambdas
 
 	field assembly string Name
 	field assembly integer ParamLen
-	field assembly Type[] GenParams
-	field assembly Type ConvTyp
+	field assembly IKVM.Reflection.Type[] GenParams
+	field assembly IKVM.Reflection.Type ConvTyp
 
 	method assembly void MILambdas()
 		me::ctor()
@@ -29,7 +29,7 @@ class private auto ansi MILambdas
 		ConvTyp = null
 	end method
 
-	method assembly void MILambdas(var name as string, var snk as Type)
+	method assembly void MILambdas(var name as string, var snk as IKVM.Reflection.Type)
 		me::ctor()
 		Name = name
 		ParamLen = 0
@@ -37,7 +37,7 @@ class private auto ansi MILambdas
 		ConvTyp = snk
 	end method
 
-	method assembly void MILambdas(var genparams as Type[])
+	method assembly void MILambdas(var genparams as IKVM.Reflection.Type[])
 		me::ctor()
 		Name = ""
 		ParamLen = 0
@@ -53,7 +53,7 @@ class private auto ansi MILambdas
 		ConvTyp = null
 	end method
 
-	method assembly boolean GenericMtdFilter(var mi as MethodInfo)
+	method assembly boolean GenericMtdFilter(var mi as IKVM.Reflection.MethodInfo)
 		if mi::get_IsGenericMethod() then
 			if mi::get_Name() = Name then
 				if mi::GetGenericArguments()[l] = ParamLen then
@@ -64,19 +64,19 @@ class private auto ansi MILambdas
 		return false
 	end method
 
-	method assembly boolean IsSameName(var mi as MethodInfo)
+	method assembly boolean IsSameName(var mi as IKVM.Reflection.MethodInfo)
 		return mi::get_Name() == Name
 	end method
 
-	method assembly boolean IsSameNameAndReturn(var mi as MethodInfo)
+	method assembly boolean IsSameNameAndReturn(var mi as IKVM.Reflection.MethodInfo)
 		return (mi::get_Name() == Name) and mi::get_ReturnType()::Equals(ConvTyp)
 	end method
 
-	method assembly MethodInfo InstGenMtd(var mi as MethodInfo)
+	method assembly IKVM.Reflection.MethodInfo InstGenMtd(var mi as IKVM.Reflection.MethodInfo)
 		return mi::MakeGenericMethod(GenParams)
 	end method
 
-	method assembly static boolean IsSpecial(var mi as MethodInfo)
+	method assembly static boolean IsSpecial(var mi as IKVM.Reflection.MethodInfo)
 		return mi::get_IsSpecialName()
 	end method
 

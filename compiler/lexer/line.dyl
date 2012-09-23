@@ -15,7 +15,7 @@ class public auto ansi Line
 
 	method public void Line()
 		me::ctor()
-		PrevChar = ""
+		PrevChar = String::Empty
 		InStr = false
 		InChar = false
 	end method
@@ -29,7 +29,7 @@ class public auto ansi Line
 		return false
 	end method
 
-	method public boolean isSep(var cc as string, var lc as string, var sca as boolean&, var scla as boolean&)
+	method private boolean isSep(var cc as string, var lc as string, var sca as boolean&, var scla as boolean&)
 
 		var ob as boolean = false
 		if lc = null then
@@ -335,13 +335,13 @@ class public auto ansi Line
 
 	method public Stmt Analyze(var stm as Stmt, var str as string)
 	
-		var curchar as string = ""
-		var lachar as string = ""
+		var curchar as string = String::Empty
+		var lachar as string = String::Empty
 		var curtok as Token = null
 		var len as integer = str::get_Length()
 		len = len - 1
 		
-		var buf as string = ""
+		var buf as string = String::Empty
 		var cuttok as boolean = false
 		var sc as boolean = false
 		var scl as boolean = false
@@ -365,13 +365,13 @@ class public auto ansi Line
 		end if
 		
 		if sc then
-			if buf != "" then
+			if buf::get_Length() != 0 then
 				curtok = new Token()
 				curtok::Value = buf
 				curtok::Line = stm::Line
 				stm::AddToken(curtok)
 			end if
-			buf = ""
+			buf = String::Empty
 		end if
 		
 		sc = false
@@ -388,13 +388,13 @@ class public auto ansi Line
 		cuttok = isSep(curchar, lachar, ref|sc, ref|scl)
 		
 		if cuttok then
-			if buf != "" then
+			if buf::get_Length() != 0 then
 				curtok = new Token()
 				curtok::Value = buf
 				curtok::Line = stm::Line
 				stm::AddToken(curtok)
 			end if
-			buf = ""
+			buf = String::Empty
 			if sc then
 				buf = buf + curchar
 			end if
@@ -410,13 +410,13 @@ class public auto ansi Line
 		
 		place cont
 		
-		if buf != "" then
+		if buf::get_Length() != 0 then
 			curtok = new Token()
 			curtok::Value = buf
 			curtok::Line = stm::Line
 			stm::AddToken(curtok)
 		end if
-		buf = ""
+		buf = String::Empty
 		
 		return stm
 	

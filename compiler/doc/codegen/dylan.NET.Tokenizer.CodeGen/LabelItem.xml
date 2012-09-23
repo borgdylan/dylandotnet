@@ -18,6 +18,7 @@
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
+    <AssemblyVersion>11.2.9.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -48,9 +49,28 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LabelItem (string ln, IKVM.Reflection.Emit.Label l);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string ln, valuetype IKVM.Reflection.Emit.Label l) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="ln" Type="System.String" />
+        <Parameter Name="l" Type="IKVM.Reflection.Emit.Label" />
+      </Parameters>
+      <Docs>
+        <param name="ln">To be added.</param>
+        <param name="l">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -88,8 +108,8 @@
       </Docs>
     </Member>
     <Member MemberName="Lbl">
-      <MemberSignature Language="C#" Value="public System.Reflection.Emit.Label Lbl;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Reflection.Emit.Label Lbl" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.Label Lbl;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype IKVM.Reflection.Emit.Label Lbl" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
@@ -107,9 +127,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.Label</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -136,6 +157,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>

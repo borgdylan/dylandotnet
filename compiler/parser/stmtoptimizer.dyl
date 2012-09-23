@@ -8,19 +8,19 @@
 
 class public auto ansi StmtOptimizer
 
-	field public ParserFlags PFlags
+	field public Flags PFlags
 	
 	method public void StmtOptimizer()
 		me::ctor()
-		PFlags = new ParserFlags()
+		PFlags = new Flags()
 	end method
 	
-	method public void StmtOptimizer(var pf as ParserFlags)
+	method public void StmtOptimizer(var pf as Flags)
 		me::ctor()
 		PFlags = pf
 	end method
 
-	method public Stmt checkRefasm(var stm as Stmt, var b as boolean&)
+	method private Stmt checkRefasm(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype RefasmTok
 	b = typ::IsInstanceOfType(tok)
@@ -33,7 +33,7 @@ class public auto ansi StmtOptimizer
 	return refasms
 	end method
 	
-	method public Stmt checkRefstdasm(var stm as Stmt, var b as boolean&)
+	method private Stmt checkRefstdasm(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype RefstdasmTok
 	b = typ::IsInstanceOfType(tok)
@@ -46,7 +46,7 @@ class public auto ansi StmtOptimizer
 	return refsasms
 	end method
 	
-	method public Stmt checkInclude(var stm as Stmt, var b as boolean&)
+	method private Stmt checkInclude(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype IncludeTok
 	b = typ::IsInstanceOfType(tok)
@@ -60,7 +60,7 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	
-	method public Stmt checkIf(var stm as Stmt, var b as boolean&)
+	method private Stmt checkIf(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype IfTok
 	b = typ::IsInstanceOfType(tok)
@@ -111,7 +111,7 @@ class public auto ansi StmtOptimizer
 	return ifs
 	end method
 	
-	method public Stmt checkWhile(var stm as Stmt, var b as boolean&)
+	method private Stmt checkWhile(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype WhileTok
 	b = typ::IsInstanceOfType(tok)
@@ -153,7 +153,7 @@ class public auto ansi StmtOptimizer
 	return whis
 	end method
 	
-	method public Stmt checkDoWhile(var stm as Stmt, var b as boolean&)
+	method private Stmt checkDoWhile(var stm as Stmt, var b as boolean&)
 	
 	var whis as DoWhileStmt = null
 	
@@ -205,7 +205,7 @@ class public auto ansi StmtOptimizer
 	return whis
 	end method
 	
-	method public Stmt checkUntil(var stm as Stmt, var b as boolean&)
+	method private Stmt checkUntil(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype UntilTok
 	b = typ::IsInstanceOfType(tok)
@@ -247,7 +247,7 @@ class public auto ansi StmtOptimizer
 	return unts
 	end method
 	
-	method public Stmt checkDoUntil(var stm as Stmt, var b as boolean&)
+	method private Stmt checkDoUntil(var stm as Stmt, var b as boolean&)
 	
 	var unts as DoUntilStmt = null
 	
@@ -299,7 +299,7 @@ class public auto ansi StmtOptimizer
 	return unts
 	end method
 	
-	method public Stmt checkElseIf(var stm as Stmt, var b as boolean&)
+	method private Stmt checkElseIf(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype ElseIfTok
 	b = typ::IsInstanceOfType(tok)
@@ -350,7 +350,7 @@ class public auto ansi StmtOptimizer
 	return ifs
 	end method
 	
-	method public Stmt checkLabel(var stm as Stmt, var b as boolean&)
+	method private Stmt checkLabel(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype LabelTok
 	b = typ::IsInstanceOfType(tok)
@@ -358,12 +358,12 @@ class public auto ansi StmtOptimizer
 	if b then
 	lbls::Line = stm::Line
 	lbls::Tokens = stm::Tokens
-	lbls::LabelName = stm::Tokens[1]
+	lbls::LabelName = $Ident$stm::Tokens[1]
 	end if
 	return lbls
 	end method
 	
-	method public Stmt checkPlace(var stm as Stmt, var b as boolean&)
+	method private Stmt checkPlace(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype PlaceTok
 	b = typ::IsInstanceOfType(tok)
@@ -371,12 +371,12 @@ class public auto ansi StmtOptimizer
 	if b then
 	lbls::Line = stm::Line
 	lbls::Tokens = stm::Tokens
-	lbls::LabelName = stm::Tokens[1]
+	lbls::LabelName = $Ident$stm::Tokens[1]
 	end if
 	return lbls
 	end method
 	
-	method public Stmt checkGoto(var stm as Stmt, var b as boolean&)
+	method private Stmt checkGoto(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype GotoTok
 	b = typ::IsInstanceOfType(tok)
@@ -384,13 +384,13 @@ class public auto ansi StmtOptimizer
 	if b then
 	lbls::Line = stm::Line
 	lbls::Tokens = stm::Tokens
-	lbls::LabelName = stm::Tokens[1]
+	lbls::LabelName = $Ident$stm::Tokens[1]
 	end if
 	return lbls
 	end method
 	
 	
-	method public Stmt checkDebug(var stm as Stmt, var b as boolean&)
+	method private Stmt checkDebug(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype DebugTok
 	b = typ::IsInstanceOfType(tok)
@@ -398,13 +398,13 @@ class public auto ansi StmtOptimizer
 	if b then
 	dbgs::Line = stm::Line
 	dbgs::Tokens = stm::Tokens
-	dbgs::Opt = stm::Tokens[1]
+	dbgs::Opt = $SwitchTok$stm::Tokens[1]
 	dbgs::setFlg()
 	end if
 	return dbgs
 	end method
 	
-	method public Stmt checkScope(var stm as Stmt, var b as boolean&)
+	method private Stmt checkScope(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype ScopeTok
 	b = typ::IsInstanceOfType(tok)
@@ -412,13 +412,13 @@ class public auto ansi StmtOptimizer
 	if b then
 	scps::Line = stm::Line
 	scps::Tokens = stm::Tokens
-	scps::Opt = stm::Tokens[1]
+	scps::Opt = $SwitchTok$stm::Tokens[1]
 	scps::setFlg()
 	end if
 	return scps
 	end method
 	
-	method public Stmt checkImport(var stm as Stmt, var b as boolean&)
+	method private Stmt checkImport(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype ImportTok
 	b = typ::IsInstanceOfType(tok)
@@ -431,7 +431,7 @@ class public auto ansi StmtOptimizer
 	return imps
 	end method
 	
-	method public Stmt checkNS(var stm as Stmt, var b as boolean&)
+	method private Stmt checkNS(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype NamespaceTok
 	b = typ::IsInstanceOfType(tok)
@@ -444,7 +444,7 @@ class public auto ansi StmtOptimizer
 	return nss
 	end method
 	
-	method public Stmt checkLocimport(var stm as Stmt, var b as boolean&)
+	method private Stmt checkLocimport(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype LocimportTok
 	b = typ::IsInstanceOfType(tok)
@@ -457,7 +457,7 @@ class public auto ansi StmtOptimizer
 	return limps
 	end method
 	
-	method public Stmt checkReturn(var stm as Stmt, var b as boolean&)
+	method private Stmt checkReturn(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype ReturnTok
 	b = typ::IsInstanceOfType(tok)
@@ -511,7 +511,7 @@ class public auto ansi StmtOptimizer
 	return rets
 	end method
 	
-		method public Stmt checkThrow(var stm as Stmt, var b as boolean&)
+		method private Stmt checkThrow(var stm as Stmt, var b as boolean&)
 	
 			var tok as Token = stm::Tokens[0]
 			var typ as Type = gettype ThrowTok
@@ -544,7 +544,7 @@ class public auto ansi StmtOptimizer
 		end method
 		
 	
-	method public Stmt checkCmt(var stm as Stmt, var b as boolean&)
+	method private Stmt checkCmt(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype CommentTok
 	b = typ::IsInstanceOfType(tok)
@@ -556,7 +556,7 @@ class public auto ansi StmtOptimizer
 	return cmts
 	end method
 	
-	method public Stmt checkElse(var stm as Stmt, var b as boolean&)
+	method private Stmt checkElse(var stm as Stmt, var b as boolean&)
 	var els as ElseStmt = null
 	
 	if stm::Tokens[l] < 2 then
@@ -574,7 +574,7 @@ class public auto ansi StmtOptimizer
 	return els
 	end method
 	
-	method public Stmt checkDo(var stm as Stmt, var b as boolean&)
+	method private Stmt checkDo(var stm as Stmt, var b as boolean&)
 	var ds as DoStmt = null
 	
 	if stm::Tokens[l] < 2 then
@@ -592,7 +592,7 @@ class public auto ansi StmtOptimizer
 	return ds
 	end method
 	
-		method public Stmt checkTry(var stm as Stmt, var b as boolean&)
+		method private Stmt checkTry(var stm as Stmt, var b as boolean&)
 			var ts as TryStmt = null
 	
 			if stm::Tokens[l] < 2 then
@@ -608,7 +608,7 @@ class public auto ansi StmtOptimizer
 			return ts
 		end method
 	
-		method public Stmt checkFinally(var stm as Stmt, var b as boolean&)
+		method private Stmt checkFinally(var stm as Stmt, var b as boolean&)
 			var ts as FinallyStmt = null
 	
 			if stm::Tokens[l] < 2 then
@@ -625,7 +625,7 @@ class public auto ansi StmtOptimizer
 		end method
 	
 	
-	method public Stmt checkBreak(var stm as Stmt, var b as boolean&)
+	method private Stmt checkBreak(var stm as Stmt, var b as boolean&)
 	var bs as BreakStmt = null
 	
 	if stm::Tokens[l] < 2 then
@@ -643,7 +643,7 @@ class public auto ansi StmtOptimizer
 	return bs
 	end method
 	
-	method public Stmt checkContinue(var stm as Stmt, var b as boolean&)
+	method private Stmt checkContinue(var stm as Stmt, var b as boolean&)
 	var cs as ContinueStmt = null
 	
 	if stm::Tokens[l] < 2 then
@@ -662,7 +662,7 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	
-	method public Stmt checkEndIf(var stm as Stmt, var b as boolean&)
+	method private Stmt checkEndIf(var stm as Stmt, var b as boolean&)
 		var eifs as EndIfStmt = null
 	
 		if stm::Tokens[l] >= 2 then
@@ -682,7 +682,7 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	
-	method public Stmt checkEndMtd(var stm as Stmt, var b as boolean&)
+	method private Stmt checkEndMtd(var stm as Stmt, var b as boolean&)
 		var ems as EndMethodStmt = null
 	
 		if stm::Tokens[l] >= 2 then
@@ -701,7 +701,7 @@ class public auto ansi StmtOptimizer
 		return ems
 	end method
 	
-	method public Stmt checkEndNS(var stm as Stmt, var b as boolean&)
+	method private Stmt checkEndNS(var stm as Stmt, var b as boolean&)
 		var ens as EndNSStmt = null
 	
 		if stm::Tokens[l] >= 2 then
@@ -721,7 +721,7 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	
-	method public Stmt checkEndCls(var stm as Stmt, var b as boolean&)
+	method private Stmt checkEndCls(var stm as Stmt, var b as boolean&)
 		var ecs as EndClassStmt = null
 	
 		if stm::Tokens[l] >= 2 then
@@ -741,7 +741,7 @@ class public auto ansi StmtOptimizer
 		return ecs
 	end method
 	
-	method public Stmt checkEndDo(var stm as Stmt, var b as boolean&)
+	method private Stmt checkEndDo(var stm as Stmt, var b as boolean&)
 		var eds as EndDoStmt = null
 	
 		if stm::Tokens[l] >= 2 then
@@ -760,7 +760,7 @@ class public auto ansi StmtOptimizer
 		return eds
 	end method
 	
-	method public Stmt checkEndTry(var stm as Stmt, var b as boolean&)
+	method private Stmt checkEndTry(var stm as Stmt, var b as boolean&)
 		var ets as EndTryStmt = null
 
 		if stm::Tokens[l] >= 2 then
@@ -777,8 +777,277 @@ class public auto ansi StmtOptimizer
 		return ets
 	end method
 	
+	method private Stmt checkMetAttr(var stm as Stmt, var b as boolean&)
+		var mas as MethodAttrStmt = null
+
+		if stm::Tokens[l] >= 2 then
+			var typ1 as Type = gettype LSParen
+			var typ2 as Type = gettype MethodCTok
+			
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+
+			if b then
+				mas = new MethodAttrStmt()
+				
+				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
+				var tempexp as Expr = new Expr()
+				tempexp::Tokens = stm::Tokens
+				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
+				mas::Tokens = tempexp::Tokens
+				mas::Ctor = $NewCallTok$mas::Tokens[2]
+				mas::Line = stm::Line
+				//mas::Tokens = stm::Tokens
+				
+				var j as integer = -1
+				do until j = (mas::Ctor::Params[l] - 1)
+					j = j + 1
+					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+				end do
+				
+				var et as Type = gettype RSParen
+				var ct as Type = gettype Comma
+				var eqt as Type = gettype AssignOp
+				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var curvp as AttrValuePair = null
+				var eqf as boolean = false
+				
+				var i as integer = 2
+				do until i = (mas::Tokens[l] - 1)
+					i = i + 1
+					if et::IsInstanceOfType(mas::Tokens[i]) then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						break
+					elseif ct::IsInstanceOfType(mas::Tokens[i]) then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						curvp = new AttrValuePair()
+						curvp::ValueExpr = new Expr()
+						eqf = false
+					elseif eqt::IsInstanceOfType(mas::Tokens[i]) then
+						eqf = true
+					else
+						if eqf then
+							curvp::ValueExpr::AddToken(mas::Tokens[i])
+						else
+							curvp::Name = $Ident$mas::Tokens[i]
+						end if
+					end if
+				end do
+				
+				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp)
+				
+			end if
+		end if
+		return mas
+	end method
 	
-	method public Stmt checkAssembly(var stm as Stmt, var b as boolean&)
+	method private Stmt checkFldAttr(var stm as Stmt, var b as boolean&)
+		var mas as FieldAttrStmt = null
+
+		if stm::Tokens[l] >= 2 then
+			var typ1 as Type = gettype LSParen
+			var typ2 as Type = gettype FieldCTok
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+
+			if b then
+				mas = new FieldAttrStmt()
+				
+				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
+				var tempexp as Expr = new Expr()
+				tempexp::Tokens = stm::Tokens
+				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
+				mas::Tokens = tempexp::Tokens
+				mas::Ctor = $NewCallTok$mas::Tokens[2]
+				mas::Line = stm::Line
+				//mas::Tokens = stm::Tokens
+				
+				var j as integer = -1
+				do until j = (mas::Ctor::Params[l] - 1)
+					j = j + 1
+					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+				end do
+				
+				var et as Type = gettype RSParen
+				var ct as Type = gettype Comma
+				var eqt as Type = gettype AssignOp
+				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var curvp as AttrValuePair = null
+				var eqf as boolean = false
+				
+				var i as integer = 2
+				do until i = (mas::Tokens[l] - 1)
+					i = i + 1
+					if et::IsInstanceOfType(mas::Tokens[i]) then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						break
+					elseif ct::IsInstanceOfType(mas::Tokens[i]) then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						curvp = new AttrValuePair()
+						curvp::ValueExpr = new Expr()
+						eqf = false
+					elseif eqt::IsInstanceOfType(mas::Tokens[i]) then
+						eqf = true
+					else
+						if eqf then
+							curvp::ValueExpr::AddToken(mas::Tokens[i])
+						else
+							curvp::Name = $Ident$mas::Tokens[i]
+						end if
+					end if
+				end do
+				
+				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp) 
+			end if
+		end if
+		return mas
+	end method
+	
+	method private Stmt checkClsAttr(var stm as Stmt, var b as boolean&)
+		var mas as ClassAttrStmt = null
+
+		if stm::Tokens[l] >= 2 then
+			var typ1 as Type = gettype LSParen
+			var typ2 as Type = gettype ClassCTok
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+
+			if b then
+				mas = new ClassAttrStmt()
+				
+				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
+				var tempexp as Expr = new Expr()
+				tempexp::Tokens = stm::Tokens
+				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
+				mas::Tokens = tempexp::Tokens
+				mas::Ctor = $NewCallTok$mas::Tokens[2]
+				mas::Line = stm::Line
+				//mas::Tokens = stm::Tokens
+				
+				var j as integer = -1
+				do until j = (mas::Ctor::Params[l] - 1)
+					j = j + 1
+					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+				end do
+				
+				var et as Type = gettype RSParen
+				var ct as Type = gettype Comma
+				var eqt as Type = gettype AssignOp
+				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var curvp as AttrValuePair = null
+				var eqf as boolean = false
+				
+				var i as integer = 2
+				do until i = (mas::Tokens[l] - 1)
+					i = i + 1
+					if et::IsInstanceOfType(mas::Tokens[i]) then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						break
+					elseif ct::IsInstanceOfType(mas::Tokens[i]) then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						curvp = new AttrValuePair()
+						curvp::ValueExpr = new Expr()
+						eqf = false
+					elseif eqt::IsInstanceOfType(mas::Tokens[i]) then
+						eqf = true
+					else
+						if eqf then
+							curvp::ValueExpr::AddToken(mas::Tokens[i])
+						else
+							curvp::Name = $Ident$mas::Tokens[i]
+						end if
+					end if
+				end do
+				
+				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp) 
+			end if
+		end if
+		return mas
+	end method
+	
+	method private Stmt checkAsmAttr(var stm as Stmt, var b as boolean&)
+		var mas as AssemblyAttrStmt = null
+
+		if stm::Tokens[l] >= 2 then
+			var typ1 as Type = gettype LSParen
+			var typ2 as Type = gettype AssemblyCTok
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+
+			if b then
+				mas = new AssemblyAttrStmt()
+				
+				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
+				var tempexp as Expr = new Expr()
+				tempexp::Tokens = stm::Tokens
+				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
+				mas::Tokens = tempexp::Tokens
+				mas::Ctor = $NewCallTok$mas::Tokens[2]
+				mas::Line = stm::Line
+				//mas::Tokens = stm::Tokens
+				
+				var j as integer = -1
+				do until j = (mas::Ctor::Params[l] - 1)
+					j = j + 1
+					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+				end do
+				
+				var et as Type = gettype RSParen
+				var ct as Type = gettype Comma
+				var eqt as Type = gettype AssignOp
+				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var curvp as AttrValuePair = null
+				var eqf as boolean = false
+				
+				var i as integer = 2
+				do until i = (mas::Tokens[l] - 1)
+					i = i + 1
+					if et::IsInstanceOfType(mas::Tokens[i]) then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						break
+					elseif ct::IsInstanceOfType(mas::Tokens[i]) then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						curvp = new AttrValuePair()
+						curvp::ValueExpr = new Expr()
+						eqf = false
+					elseif eqt::IsInstanceOfType(mas::Tokens[i]) then
+						eqf = true
+					else
+						if eqf then
+							curvp::ValueExpr::AddToken(mas::Tokens[i])
+						else
+							curvp::Name = $Ident$mas::Tokens[i]
+						end if
+					end if
+				end do
+				
+				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp) 
+			end if
+		end if
+		return mas
+	end method
+	
+	method private Stmt checkAssembly(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype AssemblyTok
 	b = typ::IsInstanceOfType(tok)
@@ -786,13 +1055,13 @@ class public auto ansi StmtOptimizer
 	if b then
 	asms::Line = stm::Line
 	asms::Tokens = stm::Tokens
-	asms::AsmName = stm::Tokens[1]
+	asms::AsmName = $Ident$stm::Tokens[1]
 	asms::Mode = stm::Tokens[2]
 	end if
 	return asms
 	end method
 	
-	method public Stmt checkVer(var stm as Stmt, var b as boolean&)
+	method private Stmt checkVer(var stm as Stmt, var b as boolean&)
 		var typ as Type = gettype VerTok
 		var vers as VerStmt = new VerStmt()
 		b = typ::IsInstanceOfType(stm::Tokens[0])
@@ -820,7 +1089,7 @@ class public auto ansi StmtOptimizer
 		return vers
 	end method
 
-	method public Stmt checkClass(var stm as Stmt, var b as boolean&)
+	method private Stmt checkClass(var stm as Stmt, var b as boolean&)
 		var typ as Type = gettype ClassTok
 		var sttyp as Type = gettype StructTok
 		b = typ::IsInstanceOfType(stm::Tokens[0]) or sttyp::IsInstanceOfType(stm::Tokens[0])
@@ -833,7 +1102,7 @@ class public auto ansi StmtOptimizer
 		
 			if sttyp::IsInstanceOfType(stm::Tokens[0]) then
 				stflg = true
-				clss::InhClass = new TypeTok(gettype ValueType)
+				clss::InhClass = new TypeTok(ILEmitter::Univ::Import(gettype ValueType))
 			end if
 
 			clss::Line = stm::Line
@@ -875,7 +1144,7 @@ class public auto ansi StmtOptimizer
 							end if
 						end do
 					else
-						clss::ClassName = stm::Tokens[i]
+						clss::ClassName = $Ident$stm::Tokens[i]
 					end if
 
 				end if
@@ -885,7 +1154,7 @@ class public auto ansi StmtOptimizer
 		return clss
 	end method
 	
-	method public Stmt checkField(var stm as Stmt, var b as boolean&)
+	method private Stmt checkField(var stm as Stmt, var b as boolean&)
 	
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype FieldTok
@@ -917,7 +1186,7 @@ class public auto ansi StmtOptimizer
 	bl = typ::IsInstanceOfType(tok)
 	
 	if bl then
-	att = tok
+	att = $Attributes.Attribute$tok
 	flss::AddAttr(att)
 	else
 	i = i - 1
@@ -936,331 +1205,303 @@ class public auto ansi StmtOptimizer
 	
 	tempexp = eop::procType(tempexp,i)
 	stm::Tokens = tempexp::Tokens
-	flss::FieldTyp = stm::Tokens[i]
+	flss::FieldTyp = $TypeTok$stm::Tokens[i]
 	
 	i = i + 1
-	flss::FieldName = stm::Tokens[i]
+	flss::FieldName = $Ident$stm::Tokens[i]
 	
 	end if
 	
 	return flss
 	end method
 	
-	method public Stmt checkMethod(var stm as Stmt, var b as boolean&)
+	method private Stmt checkMethod(var stm as Stmt, var b as boolean&)
 	
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype MethodTok
-	b = typ::IsInstanceOfType(tok)
-	var mtss as MethodStmt = new MethodStmt()
-	var att as Attributes.Attribute = new Attributes.Attribute()
-	//var mn as Ident = new Ident()
-	var exp as Expr = null
-	var d as boolean = false
-	
-	if b then
-	
-	var tempexp as Expr = new Expr()
-	tempexp::Tokens = stm::Tokens
-	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	
-	mtss::Line = stm::Line
-	mtss::Tokens = stm::Tokens
-	
-	var lvl as integer = 0
-	var lpt as Type = gettype LAParen
-	var rpt as Type = gettype RAParen
-	
-	label loop
-	label cont
-	label jumpl
-	
-	var i as integer = 0
-	var len as integer = stm::Tokens[l] - 1
-	var bl as boolean = false
-	
-	//loop to get attributes
-	place loop
-	
-	i = i + 1
-	tok = stm::Tokens[i]
-	typ = gettype Attributes.Attribute
-	bl = typ::IsInstanceOfType(tok)
-	
-	if bl = true then
-	att = tok
-	mtss::AddAttr(att)
-	else
-	i = i - 1
-	goto jumpl
-	end if
-	
-	if i = len then
-	goto cont
-	else
-	goto loop
-	end if
-	
-	place cont
-	
-	place jumpl
-	
-	//get return type and name
-	i = i + 1
-	
-	var tok2 as Token = stm::Tokens[i]
-	var typ2 as Type
-	var b2 as boolean
-	
-	tempexp = eop::procType(tempexp,i)
-	stm::Tokens = tempexp::Tokens
-	mtss::RetTyp = stm::Tokens[i]
-	
-	len = stm::Tokens[l] - 1
-	
-	i = i + 1
-	
-	tok2 = stm::Tokens[i]
-	typ2 = gettype Ident
-	b2 = typ2::IsInstanceOfType(tok2)
-	if b2 then
-	mtss::MethodName = tok2
-	end if
-	
-	label loop2
-	label cont2
-	
-	i = i + 1
-	tok2 = stm::Tokens[i]
-	typ2 = gettype LParen
-	b2 = typ2::IsInstanceOfType(tok2)
-	if b2 then
-	
-	place loop2
-	
-	//get parameters
-	i = i + 1
-	
-	tok2 = stm::Tokens[i]
-	typ2 = gettype RParen
-	b2 = typ2::IsInstanceOfType(tok2)
-	if b2 then
-	if d then
-	var eopt2 as ExprOptimizer = new ExprOptimizer(PFlags)
-	exp = eopt2::checkVarAs(exp,ref|bl)
-	if bl then
-	mtss::AddParam(exp)
-	end if
-	end if
-	d = false
-	goto cont2
-	end if
-	
-	tok2 = stm::Tokens[i]
-	typ2 = gettype VarTok
-	b2 = typ2::IsInstanceOfType(tok2)
-	if b2 then
-	d = true
-	exp = new Expr()
-	end if
-	
-	if lpt::IsInstanceOfType(stm::Tokens[i]) then
-		d = true
-		lvl = lvl + 1
-	end if
-	
-	if rpt::IsInstanceOfType(stm::Tokens[i]) then
-		d = true
-		lvl = lvl - 1
-	end if
-	
-	tok2 = stm::Tokens[i]
-	typ2 = gettype Comma
-	if typ2::IsInstanceOfType(tok2) and (lvl == 0) then
-	var eopt1 as ExprOptimizer = new ExprOptimizer(PFlags)
-	exp = eopt1::checkVarAs(exp,ref|bl)
-	if bl then
-	mtss::AddParam(exp)
-	end if
-	d = false
-	end if
-	
-	if d then
-	exp::AddToken(stm::Tokens[i])
-	end if
-	
-	
-	if i = len then
-	goto cont2
-	else
-	goto loop2
-	end if
-	
-	place cont2
-	
-	end if
-	
-	end if
-	return mtss
+		var tok as Token = stm::Tokens[0]
+		var typ as Type = gettype MethodTok
+		b = typ::IsInstanceOfType(tok)
+		var mtss as MethodStmt = new MethodStmt()
+		var exp as Expr = null
+		var d as boolean = false
+		
+		if b then
+		
+			var tempexp as Expr = new Expr()
+			tempexp::Tokens = stm::Tokens
+			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+			
+			mtss::Line = stm::Line
+			mtss::Tokens = stm::Tokens
+			
+			var lvl as integer = 0
+			var lpt as Type = gettype LAParen
+			var rpt as Type = gettype RAParen
+			
+			var i as integer = 0
+			var len as integer = stm::Tokens[l] - 1
+			var bl as boolean = false
+			
+			//loop to get attributes
+			do until i = len
+				i = i + 1
+				//tok = stm::Tokens[i]
+				typ = gettype Attributes.Attribute
+				if typ::IsInstanceOfType(stm::Tokens[i]) then
+					mtss::AddAttr($Attributes.Attribute$stm::Tokens[i])
+				else
+					i = i - 1
+					break
+				end if
+			end do
+			
+			//get return type and name
+			i = i + 1
+			
+			var typ2 as Type
+			
+			tempexp = eop::procType(tempexp,i)
+			stm::Tokens = tempexp::Tokens
+			mtss::RetTyp = $TypeTok$stm::Tokens[i]
+			
+			len = stm::Tokens[l] - 1
+			i = i + 1
+			
+			typ2 = gettype Ident
+			if typ2::IsInstanceOfType(stm::Tokens[i]) then
+				mtss::MethodName = $Ident$stm::Tokens[i]
+			end if
+			
+			i = i + 1
+			typ2 = gettype LParen
+			
+			if typ2::IsInstanceOfType(stm::Tokens[i]) then
+				exp = null
+				do until i = len
+			
+					//get parameters
+					i = i + 1
+				
+					typ2 = gettype RParen
+					if typ2::IsInstanceOfType(stm::Tokens[i]) then
+						if d then
+							var eopt2 as ExprOptimizer = new ExprOptimizer(PFlags)
+							exp = eopt2::checkVarAs(exp,ref|bl)
+							if bl then
+								mtss::AddParam(exp)
+							end if
+						end if
+						d = false
+						break
+					end if
+				
+					typ2 = gettype VarTok
+					if typ2::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						if exp = null then
+							exp = new Expr()
+						end if
+					end if
+				
+					typ2 = gettype InTok
+					if typ2::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						if exp = null then
+							exp = new Expr()
+						end if
+					end if
+				
+					typ2 = gettype InOutTok
+					if typ2::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						if exp = null then
+							exp = new Expr()
+						end if
+					end if
+				
+					typ2 = gettype OutTok
+					if typ2::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						if exp = null then
+							exp = new Expr()
+						end if
+					end if
+				
+					if lpt::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						lvl = lvl + 1
+					end if
+					
+					if rpt::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						lvl = lvl - 1
+					end if
+					
+					typ2 = gettype Comma
+					if typ2::IsInstanceOfType(stm::Tokens[i]) and (lvl == 0) then
+						var eopt1 as ExprOptimizer = new ExprOptimizer(PFlags)
+						exp = eopt1::checkVarAs(exp,ref|bl)
+						if bl then
+							mtss::AddParam(exp)
+						end if
+						d = false
+						exp = null
+					end if
+					
+					if d then
+						exp::AddToken(stm::Tokens[i])
+					end if
+				end do
+			end if
+
+		end if
+		return mtss
 	end method
 	
-	method public Stmt checkDelegate(var stm as Stmt, var b as boolean&)
+	method private Stmt checkDelegate(var stm as Stmt, var b as boolean&)
 	
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype DelegateTok
-	b = typ::IsInstanceOfType(tok)
-	var dels as DelegateStmt = new DelegateStmt()
-	var att as Attributes.Attribute = new Attributes.Attribute()
-	//var deln as Ident = new Ident()
-	var exp as Expr = null
-	var d as boolean = false
-	
-	if b then
-	
-	var tempexp as Expr = new Expr()
-	tempexp::Tokens = stm::Tokens
-	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	
-	dels::Line = stm::Line
-	dels::Tokens = stm::Tokens
-	
-	var lvl as integer = 0
-	var lpt as Type = gettype LAParen
-	var rpt as Type = gettype RAParen
-	
-	label loop
-	label cont
-	label jumpl
-	
-	var i as integer = 0
-	var len as integer = stm::Tokens[l] - 1
-	var bl as boolean = false
-	
-	//loop to get attributes
-	place loop
-	
-	i = i + 1
-	tok = stm::Tokens[i]
-	typ = gettype Attributes.Attribute
-	bl = typ::IsInstanceOfType(tok)
-	
-	if bl then
-	att = tok
-	dels::AddAttr(att)
-	else
-	i = i - 1
-	goto jumpl
-	end if
-	
-	if i = len then
-	goto cont
-	else
-	goto loop
-	end if
-	
-	place cont
-	
-	place jumpl
-	
-	//get return type and name
-	i = i + 1
-	
-	var tok2 as Token = stm::Tokens[i]
-	var typ2 as Type
-	var b2 as boolean
+		var tok as Token = stm::Tokens[0]
+		var typ as Type = gettype DelegateTok
+		b = typ::IsInstanceOfType(tok)
+		var dels as DelegateStmt = new DelegateStmt()
+		var exp as Expr = null
+		var d as boolean = false
+		
+		if b then
+		
+			var tempexp as Expr = new Expr()
+			tempexp::Tokens = stm::Tokens
+			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+			
+			dels::Line = stm::Line
+			dels::Tokens = stm::Tokens
+			
+			var lvl as integer = 0
+			var lpt as Type = gettype LAParen
+			var rpt as Type = gettype RAParen
+			
+			var i as integer = 0
+			var len as integer = stm::Tokens[l] - 1
+			var bl as boolean = false
+			
+			//loop to get attributes
+			do until i = len
+				i = i + 1
+				tok = stm::Tokens[i]
+				typ = gettype Attributes.Attribute
+			
+				if typ::IsInstanceOfType(stm::Tokens[i]) then
+					dels::AddAttr($Attributes.Attribute$stm::Tokens[i])
+				else
+					i = i - 1
+					break
+				end if
+			end do
+			
+			//get return type and name
+			i = i + 1
+			
+			var typ2 as Type
 
-	tempexp = eop::procType(tempexp,i)
-	stm::Tokens = tempexp::Tokens
-	dels::RetTyp = stm::Tokens[i]
+			tempexp = eop::procType(tempexp,i)
+			stm::Tokens = tempexp::Tokens
+			dels::RetTyp = $TypeTok$stm::Tokens[i]
 
-	len = stm::Tokens[l] - 1
-	
-	i = i + 1
-	
-	tok2 = stm::Tokens[i]
-	typ2 = gettype Ident
-	b2 = typ2::IsInstanceOfType(tok2)
-	if b2 then
-	dels::DelegateName = tok2
-	end if
-	
-	label loop2
-	label cont2
-	
-	i = i + 1
-	tok2 = stm::Tokens[i]
-	typ2 = gettype LParen
-	b2 = typ2::IsInstanceOfType(tok2)
-	if b2 then
-	
-	place loop2
-	
-	//get parameters
-	i = i + 1
-	
-	tok2 = stm::Tokens[i]
-	typ2 = gettype RParen
-	b2 = typ2::IsInstanceOfType(tok2)
-	if b2 then
-	if d then
-	var eopt2 as ExprOptimizer = new ExprOptimizer(PFlags)
-	exp = eopt2::checkVarAs(exp,ref|bl)
-	if bl then
-	dels::AddParam(exp)
-	end if
-	end if
-	d = false
-	goto cont2
-	end if
-	
-	tok2 = stm::Tokens[i]
-	typ2 = gettype VarTok
-	b2 = typ2::IsInstanceOfType(tok2)
-	if b2 then
-	d = true
-	exp = new Expr()
-	end if
-	
-	if lpt::IsInstanceOfType(stm::Tokens[i]) then
-		d = true
-		lvl = lvl + 1
-	end if
-	
-	if rpt::IsInstanceOfType(stm::Tokens[i]) then
-		d = true
-		lvl = lvl - 1
-	end if
-	
-	tok2 = stm::Tokens[i]
-	typ2 = gettype Comma
-	if typ2::IsInstanceOfType(tok2) and (lvl == 0) then
-	var eopt1 as ExprOptimizer = new ExprOptimizer(PFlags)
-	exp = eopt1::checkVarAs(exp,ref|bl)
-	if bl then
-	dels::AddParam(exp)
-	end if
-	d = false
-	end if
-	
-	if d then
-	exp::AddToken(stm::Tokens[i])
-	end if
-	
-	
-	if i = len then
-	goto cont2
-	else
-	goto loop2
-	end if
-	
-	place cont2
-	
-	end if
-	
-	end if
-	return dels
+			len = stm::Tokens[l] - 1
+			
+			i = i + 1
+			
+			typ2 = gettype Ident
+			if typ2::IsInstanceOfType(stm::Tokens[i]) then
+				dels::DelegateName = $Ident$stm::Tokens[i]
+			end if
+			
+			i = i + 1
+			typ2 = gettype LParen
+			if typ2::IsInstanceOfType(stm::Tokens[i]) then
+				
+				exp = null
+				do until i = len
+			
+					//get parameters
+					i = i + 1
+				
+					typ2 = gettype RParen
+					if typ2::IsInstanceOfType(stm::Tokens[i]) then
+						if d then
+							var eopt2 as ExprOptimizer = new ExprOptimizer(PFlags)
+							exp = eopt2::checkVarAs(exp,ref|bl)
+							if bl then
+								dels::AddParam(exp)
+							end if
+						end if
+						d = false
+						break
+					end if
+				
+					typ2 = gettype VarTok
+					if typ2::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						if exp = null then
+							exp = new Expr()
+						end if
+					end if
+				
+					typ2 = gettype InTok
+					if typ2::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						if exp = null then
+							exp = new Expr()
+						end if
+					end if
+				
+					typ2 = gettype InOutTok
+					if typ2::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						if exp = null then
+							exp = new Expr()
+						end if
+					end if
+				
+					typ2 = gettype OutTok
+					if typ2::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						if exp = null then
+							exp = new Expr()
+						end if
+					end if
+				
+					if lpt::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						lvl = lvl + 1
+					end if
+					
+					if rpt::IsInstanceOfType(stm::Tokens[i]) then
+						d = true
+						lvl = lvl - 1
+					end if
+					
+					typ2 = gettype Comma
+					if typ2::IsInstanceOfType(stm::Tokens[i]) and (lvl == 0) then
+						var eopt1 as ExprOptimizer = new ExprOptimizer(PFlags)
+						exp = eopt1::checkVarAs(exp,ref|bl)
+						if bl then
+							dels::AddParam(exp)
+						end if
+						d = false
+						exp = null
+					end if
+					
+					if d then
+						exp::AddToken(stm::Tokens[i])
+					end if
+				end do
+			end if
+		
+		end if
+		return dels
 	end method
 	
-	method public Stmt checkMethodCall(var stm as Stmt, var b as boolean&)
+	method private Stmt checkMethodCall(var stm as Stmt, var b as boolean&)
 	
 	if stm::Tokens[l] > 2 then
 	var tok as Token = stm::Tokens[0]
@@ -1292,7 +1533,7 @@ class public auto ansi StmtOptimizer
 	return mtcss
 	end method
 	
-	method public Stmt checkVarAs(var stm as Stmt, var b as boolean&)
+	method private Stmt checkVarAs(var stm as Stmt, var b as boolean&)
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype VarTok
 	b = typ::IsInstanceOfType(tok)
@@ -1307,16 +1548,16 @@ class public auto ansi StmtOptimizer
 	vars::Tokens = tempexp::Tokens
 	stm::Tokens = tempexp::Tokens
 	vars::Line = stm::Line
-	vars::VarName = stm::Tokens[1]
+	vars::VarName = $Ident$stm::Tokens[1]
 	
-	vars::VarTyp = vars::Tokens[3]
+	vars::VarTyp = $TypeTok$vars::Tokens[3]
 
 	
 	end if
 	return vars
 	end method
 	
-		method public Stmt checkCatch(var stm as Stmt, var b as boolean&)
+		method private Stmt checkCatch(var stm as Stmt, var b as boolean&)
 			var typ as Type = gettype CatchTok
 			b = typ::IsInstanceOfType(stm::Tokens[0])
 			var cs as CatchStmt = new CatchStmt()
@@ -1329,17 +1570,17 @@ class public auto ansi StmtOptimizer
 				cs::Tokens = tempexp::Tokens
 				stm::Tokens = tempexp::Tokens
 				cs::Line = stm::Line
-				cs::ExName = stm::Tokens[1]
+				cs::ExName = $Ident$stm::Tokens[1]
 	
 				tempexp = eop::procType(tempexp,3)
 				cs::Tokens = tempexp::Tokens
-				cs::ExTyp = cs::Tokens[3]
+				cs::ExTyp = $TypeTok$cs::Tokens[3]
 					
 			end if
 			return cs
 		end method
 	
-	method public Stmt AssOpt(var stm as Stmt)
+	method private Stmt AssOpt(var stm as Stmt)
 	
 	var asss as AssignStmt = $AssignStmt$stm
 	var le as Expr = asss::LExp
@@ -1350,7 +1591,7 @@ class public auto ansi StmtOptimizer
 	if b  then
 	vass::Tokens = asss::Tokens
 	vass::Line = asss::Line
-	vass::VarName = le::Tokens[1]
+	vass::VarName = $Ident$le::Tokens[1]
 	
 	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
 	
@@ -1359,7 +1600,7 @@ class public auto ansi StmtOptimizer
 	tempexp = eop::procType(tempexp,3)
 	le::Tokens = tempexp::Tokens
 	
-	vass::VarTyp = le::Tokens[3]
+	vass::VarTyp = $TypeTok$le::Tokens[3]
 		
 	vass::RExpr = asss::RExp
 	vass::RExpr = eop::Optimize(vass::RExpr)
@@ -1371,7 +1612,7 @@ class public auto ansi StmtOptimizer
 	
 	end method
 	
-	method public Stmt checkAssign(var stm as Stmt, var b as boolean&)
+	method private Stmt checkAssign(var stm as Stmt, var b as boolean&)
 	var tok as Token = null
 	var typ as Type = gettype AssignOp
 	var asss as AssignStmt = new AssignStmt()
@@ -1392,7 +1633,7 @@ class public auto ansi StmtOptimizer
 	tok = stm::Tokens[i]
 	c = typ::IsInstanceOfType(tok)
 	
-	if c = true then
+	if c then
 	assind = i
 	goto cont
 	end if
@@ -1455,15 +1696,18 @@ class public auto ansi StmtOptimizer
 	
 	b = true
 	
-	asss = AssOpt(asss)
+	var asss2 as Stmt = AssOpt(asss)
 	var vasst as Type = gettype VarAsgnStmt
-	if vasst::IsInstanceOfType(asss) = false then
+	if vasst::IsInstanceOfType(asss2) = false then
 		var eop as ExprOptimizer = new ExprOptimizer(PFlags)
 		re = eop::Optimize(re)
 		le = eop::Optimize(le)
+		asss::LExp = le
+		asss::RExp = re
+		return asss
+	else
+		return asss2
 	end if
-	
-	return asss
 	
 	else
 	b = false
@@ -1552,13 +1796,13 @@ class public auto ansi StmtOptimizer
 			end if
 		end do
 		if pcnt != 0 then
-			StreamUtils::WriteLine("")
+			StreamUtils::WriteLine(String::Empty)
 			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing parentheses do not match!.")
 		elseif acnt != 0 then
-			StreamUtils::WriteLine("")
+			StreamUtils::WriteLine(String::Empty)
 			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing angle parentheses do not match!.")
 		elseif scnt != 0 then
-			StreamUtils::WriteLine("")
+			StreamUtils::WriteLine(String::Empty)
 			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing square parentheses do not match!.")
 		end if
 	end if
@@ -1576,6 +1820,12 @@ class public auto ansi StmtOptimizer
 	end if
 	
 	tmpstm = checkLocimport(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
+	tmpstm = checkAsmAttr(stm, ref|compb)
 	if compb then
 		stm = tmpstm
 		goto fin
@@ -1599,6 +1849,12 @@ class public auto ansi StmtOptimizer
 		goto fin
 	end if
 	
+	tmpstm = checkClsAttr(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
 	tmpstm = checkClass(stm, ref|compb)
 	if compb then
 		stm = tmpstm
@@ -1611,7 +1867,19 @@ class public auto ansi StmtOptimizer
 		goto fin
 	end if
 	
+	tmpstm = checkFldAttr(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
 	tmpstm = checkField(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
+	tmpstm = checkMetAttr(stm, ref|compb)
 	if compb then
 		stm = tmpstm
 		goto fin

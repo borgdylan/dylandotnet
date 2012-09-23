@@ -21,6 +21,7 @@
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
+    <AssemblyVersion>11.2.9.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.Literal</BaseTypeName>
@@ -54,6 +55,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -73,6 +75,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.Object" />
@@ -135,6 +138,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
@@ -145,8 +149,8 @@
       </Docs>
     </Member>
     <Member MemberName="ExtTyp">
-      <MemberSignature Language="C#" Value="public Type ExtTyp;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Type ExtTyp" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type ExtTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type ExtTyp" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
@@ -167,9 +171,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type</ReturnType>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>The type of the constant as it should appear in method parameter lists etc.</summary>
@@ -177,8 +182,8 @@
       </Docs>
     </Member>
     <Member MemberName="IntTyp">
-      <MemberSignature Language="C#" Value="public Type IntTyp;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Type IntTyp" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type IntTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type IntTyp" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.6</AssemblyVersion>
@@ -199,9 +204,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type</ReturnType>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>The actual type of the value which is used for the transformation of this class instance into a suitable literal loadable by the EmitLiteral method in the Helpers class of CodeGen.</summary>

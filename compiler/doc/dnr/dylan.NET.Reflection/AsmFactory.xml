@@ -1,6 +1,6 @@
 <Type Name="AsmFactory" FullName="dylan.NET.Reflection.AsmFactory">
-  <TypeSignature Language="C#" Value="public class AsmFactory" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit AsmFactory extends System.Object" />
+  <TypeSignature Language="C#" Value="public static class AsmFactory" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit AsmFactory extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>dnr</AssemblyName>
     <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -21,6 +21,7 @@
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
+    <AssemblyVersion>11.2.9.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -86,7 +87,13 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -119,6 +126,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -127,6 +135,30 @@
         <summary>Set this to allow automatic valuetype pointer load during field chaining.</summary>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddTyp">
+      <MemberSignature Language="C#" Value="public static void AddTyp (IKVM.Reflection.Type typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddTyp(class IKVM.Reflection.Type typ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddTyp">
@@ -167,6 +199,30 @@
       </Docs>
     </Member>
     <Member MemberName="AddTypB">
+      <MemberSignature Language="C#" Value="public static void AddTypB (IKVM.Reflection.Emit.TypeBuilder typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddTypB(class IKVM.Reflection.Emit.TypeBuilder typ) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Emit.TypeBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddTypB">
       <MemberSignature Language="C#" Value="public static void AddTypB (System.Reflection.Emit.TypeBuilder typ);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddTypB(class System.Reflection.Emit.TypeBuilder typ) cil managed" />
       <MemberType>Method</MemberType>
@@ -204,8 +260,8 @@
       </Docs>
     </Member>
     <Member MemberName="AsmB">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.AssemblyBuilder AsmB;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.Emit.AssemblyBuilder AsmB" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.AssemblyBuilder AsmB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.AssemblyBuilder AsmB" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -226,9 +282,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.AssemblyBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.AssemblyBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the AssemblyBuilder for the assembly under construction.</summary>
@@ -259,6 +316,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -292,6 +350,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -303,8 +362,8 @@
       </Docs>
     </Member>
     <Member MemberName="AsmNameStr">
-      <MemberSignature Language="C#" Value="public static System.Reflection.AssemblyName AsmNameStr;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.AssemblyName AsmNameStr" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.AssemblyName AsmNameStr;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.AssemblyName AsmNameStr" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -325,9 +384,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.AssemblyName</ReturnType>
+        <ReturnType>IKVM.Reflection.AssemblyName</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the AssemblyName for the assembly under construction.</summary>
@@ -358,6 +418,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -366,6 +427,28 @@
         <summary>When set indicates that a method chain beyond field chaining boundaries is in progress.</summary>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateTyp">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CreateTyp ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type CreateTyp() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CreateTyp">
@@ -402,8 +485,8 @@
       </Docs>
     </Member>
     <Member MemberName="CurnConB">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.ConstructorBuilder CurnConB;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.Emit.ConstructorBuilder CurnConB" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.ConstructorBuilder CurnConB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.ConstructorBuilder CurnConB" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -424,9 +507,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.ConstructorBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.ConstructorBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current ConstructorBuilder.</summary>
@@ -435,8 +519,8 @@
       </Docs>
     </Member>
     <Member MemberName="CurnFldB">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.FieldBuilder CurnFldB;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.Emit.FieldBuilder CurnFldB" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.FieldBuilder CurnFldB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.FieldBuilder CurnFldB" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -457,9 +541,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.FieldBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.FieldBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current FieldBuilder.</summary>
@@ -468,8 +553,8 @@
       </Docs>
     </Member>
     <Member MemberName="CurnILGen">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.ILGenerator CurnILGen;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.Emit.ILGenerator CurnILGen" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.ILGenerator CurnILGen;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.ILGenerator CurnILGen" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -490,9 +575,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.ILGenerator</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.ILGenerator</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Hold the ILGenerator for the current method or constructor.</summary>
@@ -501,8 +587,8 @@
       </Docs>
     </Member>
     <Member MemberName="CurnInhTyp">
-      <MemberSignature Language="C#" Value="public static Type CurnInhTyp;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Type CurnInhTyp" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CurnInhTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type CurnInhTyp" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
@@ -520,9 +606,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type</ReturnType>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds a Type instance representing the base class for the class under construction.</summary>
@@ -531,8 +618,8 @@
       </Docs>
     </Member>
     <Member MemberName="CurnMetB">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.MethodBuilder CurnMetB;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.Emit.MethodBuilder CurnMetB" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.MethodBuilder CurnMetB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.MethodBuilder CurnMetB" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -553,9 +640,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.MethodBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.MethodBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current MethodBuilder.</summary>
@@ -586,6 +674,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -619,6 +708,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -630,8 +720,8 @@
       </Docs>
     </Member>
     <Member MemberName="CurnTypB">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.TypeBuilder CurnTypB;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.Emit.TypeBuilder CurnTypB" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.TypeBuilder CurnTypB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.TypeBuilder CurnTypB" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -652,9 +742,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.TypeBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.TypeBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current TypeBuilder.</summary>
@@ -663,8 +754,8 @@
       </Docs>
     </Member>
     <Member MemberName="CurnTypB2">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.TypeBuilder CurnTypB2;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.Emit.TypeBuilder CurnTypB2" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.TypeBuilder CurnTypB2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.TypeBuilder CurnTypB2" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -685,9 +776,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.TypeBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.TypeBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds a second TypeBuilder temporarily.</summary>
@@ -696,8 +788,8 @@
       </Docs>
     </Member>
     <Member MemberName="CurnTypList">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.TypeBuilder[] CurnTypList;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.Emit.TypeBuilder[] CurnTypList" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.TypeBuilder[] CurnTypList;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.TypeBuilder[] CurnTypList" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -718,9 +810,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.TypeBuilder[]</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.TypeBuilder[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the list of TypeBuilders.</summary>
@@ -749,6 +842,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -782,6 +876,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -815,6 +910,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -848,6 +944,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Diagnostics.SymbolStore.ISymbolDocumentWriter</ReturnType>
@@ -869,6 +966,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -901,6 +999,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
@@ -911,8 +1010,8 @@
       </Docs>
     </Member>
     <Member MemberName="GenParamTyps">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -933,9 +1032,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.GenericTypeParameterBuilder[]</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.GenericTypeParameterBuilder[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -965,6 +1065,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -981,6 +1082,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -1002,7 +1104,13 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1035,7 +1143,13 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1064,7 +1178,13 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1093,7 +1213,13 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1127,7 +1253,13 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1160,6 +1292,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -1193,6 +1326,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -1204,8 +1338,8 @@
       </Docs>
     </Member>
     <Member MemberName="MdlB">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.ModuleBuilder MdlB;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Reflection.Emit.ModuleBuilder MdlB" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.ModuleBuilder MdlB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.ModuleBuilder MdlB" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -1226,9 +1360,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.ModuleBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.ModuleBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the current ModuleBuilder.</summary>
@@ -1258,6 +1393,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -1279,6 +1415,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -1289,8 +1426,8 @@
       </Docs>
     </Member>
     <Member MemberName="TypArr">
-      <MemberSignature Language="C#" Value="public static Type[] TypArr;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Type[] TypArr" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type[] TypArr;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type[] TypArr" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -1311,9 +1448,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type[]</ReturnType>
+        <ReturnType>IKVM.Reflection.Type[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds an array of Type.</summary>
@@ -1322,8 +1460,8 @@
       </Docs>
     </Member>
     <Member MemberName="Type01">
-      <MemberSignature Language="C#" Value="public static Type Type01;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Type Type01" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type Type01;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type Type01" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -1344,9 +1482,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type</ReturnType>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Usually holds the output of the EvalTTok method from the codegen module.</summary>
@@ -1354,8 +1493,8 @@
       </Docs>
     </Member>
     <Member MemberName="Type02">
-      <MemberSignature Language="C#" Value="public static Type Type02;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Type Type02" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type Type02;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type Type02" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -1376,9 +1515,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type</ReturnType>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Usually holds the output of the ASTEmit method of the codegen module.</summary>
@@ -1386,8 +1526,8 @@
       </Docs>
     </Member>
     <Member MemberName="Type03">
-      <MemberSignature Language="C#" Value="public static Type Type03;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Type Type03" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type Type03;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type Type03" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -1408,9 +1548,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type</ReturnType>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Usually used as temporary storage by the ASTEmit method of the codegen module.</summary>
@@ -1418,8 +1559,8 @@
       </Docs>
     </Member>
     <Member MemberName="Type04">
-      <MemberSignature Language="C#" Value="public static Type Type04;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Type Type04" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type Type04;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type Type04" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -1440,9 +1581,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type</ReturnType>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Usually used to pass in the Type of the field that will be loaded for checks associated with the AddrFlg.</summary>
@@ -1450,8 +1592,8 @@
       </Docs>
     </Member>
     <Member MemberName="Type05">
-      <MemberSignature Language="C#" Value="public static Type Type05;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Type Type05" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type Type05;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type Type05" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.9</AssemblyVersion>
@@ -1467,9 +1609,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type</ReturnType>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Usually used to pass in the type that declares the instance method to be called that is needed for checks associated with virtual valuetype method detection.</summary>

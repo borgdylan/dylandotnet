@@ -23,6 +23,7 @@
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
+    <AssemblyVersion>11.2.9.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -58,9 +59,32 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MethodItem (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.MethodBuilder bld);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.MethodBuilder bld) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="nme" Type="System.String" />
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="ptyps" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="bld" Type="IKVM.Reflection.Emit.MethodBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="nme">To be added.</param>
+        <param name="typ">To be added.</param>
+        <param name="ptyps">To be added.</param>
+        <param name="bld">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -107,8 +131,8 @@
       </Docs>
     </Member>
     <Member MemberName="MethodBldr">
-      <MemberSignature Language="C#" Value="public System.Reflection.Emit.MethodBuilder MethodBldr;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Reflection.Emit.MethodBuilder MethodBldr" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.MethodBuilder MethodBldr;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Emit.MethodBuilder MethodBldr" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -131,9 +155,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.MethodBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.Emit.MethodBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -141,8 +166,8 @@
       </Docs>
     </Member>
     <Member MemberName="MethodTyp">
-      <MemberSignature Language="C#" Value="public Type MethodTyp;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Type MethodTyp" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type MethodTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type MethodTyp" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -165,9 +190,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type</ReturnType>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -199,6 +225,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -209,8 +236,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParamTyps">
-      <MemberSignature Language="C#" Value="public Type[] ParamTyps;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Type[] ParamTyps" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type[] ParamTyps;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type[] ParamTyps" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -233,9 +260,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type[]</ReturnType>
+        <ReturnType>IKVM.Reflection.Type[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -251,6 +279,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>

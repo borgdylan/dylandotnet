@@ -9,7 +9,7 @@
 class private auto ansi TILambdas
 
 	field assembly string Name
-	field assembly Type TB
+	field assembly IKVM.Reflection.Type TB
 
 	method assembly void TILambdas()
 		me::ctor()
@@ -22,7 +22,7 @@ class private auto ansi TILambdas
 		Name = name
 	end method
 
-	method assembly void TILambdas(var name as Type)
+	method assembly void TILambdas(var name as IKVM.Reflection.Type)
 		me::ctor()
 		TB = name
 	end method

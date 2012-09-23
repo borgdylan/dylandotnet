@@ -1,6 +1,6 @@
 <Type Name="InstructionHelper" FullName="dylan.NET.Reflection.InstructionHelper">
-  <TypeSignature Language="C#" Value="public class InstructionHelper" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi InstructionHelper extends System.Object" />
+  <TypeSignature Language="C#" Value="public static class InstructionHelper" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit InstructionHelper extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>dnr</AssemblyName>
     <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -21,6 +21,7 @@
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
+    <AssemblyVersion>11.2.9.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -92,6 +93,31 @@
         <summary>Compares 2 strings.</summary>
         <returns>True if the strings are equal else returns False.</returns>
         <remarks>This is mostly used as infrastructure for the getOPCode method.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="getOPCode">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.OpCode getOPCode (string code);" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.OpCode getOPCode(string code) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.OpCode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="code" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="code">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="getOPCode">

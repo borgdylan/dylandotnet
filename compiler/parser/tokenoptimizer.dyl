@@ -9,17 +9,17 @@
 class public auto ansi TokenOptimizer
 
 	field public integer GenLvl
-	field public ParserFlags PFlags
+	field public Flags PFlags
 	field public boolean isFirstToken
 
 	method public void TokenOptimizer()
 		me::ctor()
 		GenLvl = 0
-		PFlags = new ParserFlags()
+		PFlags = new Flags()
 		isFirstToken = true
 	end method
 	
-	method public void TokenOptimizer(var pf as ParserFlags)
+	method public void TokenOptimizer(var pf as Flags)
 		me::ctor()
 		GenLvl = 0
 		PFlags = pf
@@ -598,6 +598,14 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "assembly:" then
+			var asmctk as AssemblyCTok = new AssemblyCTok()
+			asmctk::Line = tok::Line
+			asmctk::Value = tok::Value
+			tok = asmctk
+			goto fin
+		end if
+		
 		if tok::Value = "assembly" then
 			if isFirstToken then
 				var asmtk as AssemblyTok = new AssemblyTok()
@@ -654,11 +662,27 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "field:" then
+			var flctk as FieldCTok = new FieldCTok()
+			flctk::Line = tok::Line
+			flctk::Value = tok::Value
+			tok = flctk
+			goto fin
+		end if
+		
 		if tok::Value = "field" then
 			var fltk as FieldTok = new FieldTok()
 			fltk::Line = tok::Line
 			fltk::Value = tok::Value
 			tok = fltk
+			goto fin
+		end if
+		
+		if tok::Value = "class:" then
+			var clctk as ClassCTok = new ClassCTok()
+			clctk::Line = tok::Line
+			clctk::Value = tok::Value
+			tok = clctk
 			goto fin
 		end if
 		
@@ -707,6 +731,14 @@ class public auto ansi TokenOptimizer
 			mettk::Line = tok::Line
 			mettk::Value = tok::Value
 			tok = mettk
+			goto fin
+		end if
+		
+		if tok::Value = "method:" then
+			var metctk as MethodCTok = new MethodCTok()
+			metctk::Line = tok::Line
+			metctk::Value = tok::Value
+			tok = metctk
 			goto fin
 		end if
 		
@@ -763,6 +795,30 @@ class public auto ansi TokenOptimizer
 			oftk::Line = tok::Line
 			oftk::Value = tok::Value
 			tok = oftk
+			goto fin
+		end if
+		
+		if tok::Value = "in" then
+			var intk as InTok = new InTok()
+			intk::Line = tok::Line
+			intk::Value = tok::Value
+			tok = intk
+			goto fin
+		end if
+		
+		if tok::Value = "out" then
+			var outtk as OutTok = new OutTok()
+			outtk::Line = tok::Line
+			outtk::Value = tok::Value
+			tok = outtk
+			goto fin
+		end if
+		
+		if tok::Value = "inout" then
+			var inouttk as InOutTok = new InOutTok()
+			inouttk::Line = tok::Line
+			inouttk::Value = tok::Value
+			tok = inouttk
 			goto fin
 		end if
 		

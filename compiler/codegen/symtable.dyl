@@ -6,9 +6,13 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi beforefieldinit SymTable
+class public auto ansi static SymTable
 
 	field private static List<of VarItem> VarLst
+	field public static List<of CustomAttributeBuilder> MethodCALst
+	field public static List<of CustomAttributeBuilder> FieldCALst
+	field public static List<of CustomAttributeBuilder> ClassCALst
+	field public static List<of CustomAttributeBuilder> AssemblyCALst
 
 	field public static TypeList TypeLst
 	field public static TypeItem CurnTypItem
@@ -22,7 +26,7 @@ class public auto ansi beforefieldinit SymTable
 	field private static TypeArr[] TypLst
 	field public static boolean StoreFlg
 
-	method public static void SymTable()
+	method private static void SymTable()
 		TypeLst = new TypeList()
 		VarLst = new List<of VarItem>()
 		NestedFldLst = new FieldItem[0]
@@ -33,20 +37,28 @@ class public auto ansi beforefieldinit SymTable
 		LblLst = new LabelItem[0]
 		TypLst = new TypeArr[0]
 		StoreFlg = false
+		MethodCALst = new List<of CustomAttributeBuilder>()
+		FieldCALst = new List<of CustomAttributeBuilder>()
+		ClassCALst = new List<of CustomAttributeBuilder>()
+		AssemblyCALst = new List<of CustomAttributeBuilder>()
 	end method
-
+	
+	[method: ComVisible(false)]
 	method public static void ResetIf()
 		IfLst = new IfItem[0]
 	end method
 
+	[method: ComVisible(false)]
 	method public static void ResetLoop()
 		LoopLst = new LoopItem[0]
 	end method
 
+	[method: ComVisible(false)]
 	method public static void ResetLbl()
 		LblLst = new LabelItem[0]
 	end method
-
+	
+	[method: ComVisible(false)]
 	method public static void ResetVar()
 		VarLst::Clear()
 		VarLst::TrimExcess()
@@ -57,6 +69,7 @@ class public auto ansi beforefieldinit SymTable
 //		FldLst::TrimExcess()
 //	end method
 
+	[method: ComVisible(false)]
 	method public static void ResetNestedFld()
 		NestedFldLst = new FieldItem[0]
 	end method
@@ -66,6 +79,31 @@ class public auto ansi beforefieldinit SymTable
 //		MetLst::TrimExcess()
 //	end method
 
+	[method: ComVisible(false)]
+	method public static void ResetMetCAs()
+		MethodCALst::Clear()
+		MethodCALst::TrimExcess()
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ResetFldCAs()
+		FieldCALst::Clear()
+		FieldCALst::TrimExcess()
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ResetClsCAs()
+		ClassCALst::Clear()
+		ClassCALst::TrimExcess()
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ResetAsmCAs()
+		AssemblyCALst::Clear()
+		AssemblyCALst::TrimExcess()
+	end method
+	
+	[method: ComVisible(false)]
 	method public static void ResetNestedMet()
 		NestedMetLst = new MethodItem[0]
 	end method
@@ -75,15 +113,18 @@ class public auto ansi beforefieldinit SymTable
 //		CtorLst::TrimExcess()
 //	end method
 
+	[method: ComVisible(false)]
 	method public static void ResetNestedCtor()
 		NestedCtorLst = new CtorItem[0]
 	end method
 
-	method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as Type, var lin as integer)
+	[method: ComVisible(false)]
+	method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type, var lin as integer)
 		VarLst::Add(new VarItem(nme, la, ind, typ, lin))
 	end method
 
-	method public static integer AddTypArr(var arr as Type[])
+	[method: ComVisible(false)]
+	method public static integer AddTypArr(var arr as IKVM.Reflection.Type[])
 
 		var vr as TypeArr = new TypeArr()
 		vr::Arr = arr
@@ -100,7 +141,8 @@ class public auto ansi beforefieldinit SymTable
 		return TypLst[l] - 1
 	end method
 
-	method public static Type[] PopTypArr()
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.Type[] PopTypArr()
 
 		var b as TypeArr = TypLst[0]
 		var i as integer = 0
@@ -119,12 +161,33 @@ class public auto ansi beforefieldinit SymTable
 
 	end method
 
-
-	method public static void AddFld(var nme as string, var typ as Type, var fld as FieldBuilder)
+	[method: ComVisible(false)]
+	method public static void AddFld(var nme as string, var typ as IKVM.Reflection.Type, var fld as FieldBuilder)
 		CurnTypItem::AddField(new FieldItem(nme, typ, fld))
 	end method
-
-	method public static void AddNestedFld(var nme as string, var typ as Type, var fld as FieldBuilder)
+	
+	[method: ComVisible(false)]
+	method public static void AddMtdCA(var ca as CustomAttributeBuilder)
+		MethodCALst::Add(ca)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddFldCA(var ca as CustomAttributeBuilder)
+		FieldCALst::Add(ca)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddClsCA(var ca as CustomAttributeBuilder)
+		ClassCALst::Add(ca)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddAsmCA(var ca as CustomAttributeBuilder)
+		AssemblyCALst::Add(ca)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddNestedFld(var nme as string, var typ as IKVM.Reflection.Type, var fld as FieldBuilder)
 
 		var i as integer = -1
 		var destarr as FieldItem[] = new FieldItem[NestedFldLst[l] + 1]
@@ -139,11 +202,13 @@ class public auto ansi beforefieldinit SymTable
 
 	end method
 
-	method public static void AddMet(var nme as string, var typ as Type, var ptyps as Type[], var met as MethodBuilder)
+	[method: ComVisible(false)]
+	method public static void AddMet(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var met as MethodBuilder)
 		CurnTypItem::AddMethod(new MethodItem(nme, typ, ptyps, met))
 	end method
 
-	method public static void AddNestedMet(var nme as string, var typ as Type, var ptyps as Type[], var met as MethodBuilder)
+	[method: ComVisible(false)]
+	method public static void AddNestedMet(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var met as MethodBuilder)
 
 		var i as integer = -1
 		var destarr as MethodItem[] = new MethodItem[NestedMetLst[l] + 1]
@@ -157,12 +222,14 @@ class public auto ansi beforefieldinit SymTable
 		NestedMetLst = destarr
 
 	end method
-
-	method public static void AddCtor(var ptyps as Type[], var met as ConstructorBuilder)
+	
+	[method: ComVisible(false)]
+	method public static void AddCtor(var ptyps as IKVM.Reflection.Type[], var met as ConstructorBuilder)
 		CurnTypItem::AddCtor(new CtorItem(ptyps, met))
 	end method
-
-	method public static void AddNestedCtor(var ptyps as Type[], var met as ConstructorBuilder)
+	
+	[method: ComVisible(false)]
+	method public static void AddNestedCtor(var ptyps as IKVM.Reflection.Type[], var met as ConstructorBuilder)
 
 		var vr as CtorItem = new CtorItem(ptyps, met)
 		var len as integer = NestedCtorLst[l]
@@ -181,6 +248,7 @@ class public auto ansi beforefieldinit SymTable
 
 	end method
 
+	[method: ComVisible(false)]
 	method public static void AddIf()
 
 		var i as integer = -1
@@ -196,10 +264,11 @@ class public auto ansi beforefieldinit SymTable
 
 	end method
 
+	[method: ComVisible(false)]
 	method public static void AddLoop()
 
 		var i as integer = -1
-		var destarr as IfItem[] = new LoopItem[LoopLst[l] + 1]
+		var destarr as LoopItem[] = new LoopItem[LoopLst[l] + 1]
 
 		do until i = (LoopLst[l] - 1)
 			i = i + 1
@@ -211,7 +280,7 @@ class public auto ansi beforefieldinit SymTable
 
 	end method
 
-
+	[method: ComVisible(false)]
 	method public static void PopIf()
 
 		var i as integer = -1
@@ -226,6 +295,7 @@ class public auto ansi beforefieldinit SymTable
 
 	end method
 
+	[method: ComVisible(false)]
 	method public static void PopLoop()
 
 		var i as integer = -1
@@ -240,36 +310,44 @@ class public auto ansi beforefieldinit SymTable
 
 	end method
 
+	[method: ComVisible(false)]
 	method public static Emit.Label ReadIfEndLbl()
 		return IfLst[IfLst[l] - 1]::EndLabel
 	end method
 
+	[method: ComVisible(false)]
 	method public static Emit.Label ReadIfNxtBlkLbl()
 		return IfLst[IfLst[l] - 1]::NextBlkLabel
 	end method
 
+	[method: ComVisible(false)]
 	method public static Emit.Label ReadLoopEndLbl()
 		return LoopLst[LoopLst[l] - 1]::EndLabel
 	end method
 
+	[method: ComVisible(false)]
 	method public static Emit.Label ReadLoopStartLbl()
 		return LoopLst[LoopLst[l] - 1]::StartLabel
 	end method
 
+	[method: ComVisible(false)]
 	method public static boolean ReadIfElsePass()
 		return IfLst[IfLst[l] - 1]::ElsePass
 	end method
 
+	[method: ComVisible(false)]
 	method public static void SetIfElsePass()
 		var ifi as IfItem = IfLst[IfLst[l] - 1]
 		ifi::ElsePass = true
 	end method
 
+	[method: ComVisible(false)]
 	method public static void SetIfNxtBlkLbl()
 		var ifi as IfItem = IfLst[IfLst[l] - 1]
 		ifi::NextBlkLabel = ILEmitter::DefineLbl()
 	end method
 
+	[method: ComVisible(false)]
 	method public static void AddLbl(var nam as string)
 
 		var i as integer = -1
@@ -285,10 +363,10 @@ class public auto ansi beforefieldinit SymTable
 
 	end method
 
-
+	[method: ComVisible(false)]
 	method public static VarItem FindVar(var nam as string)
 
-		var vl as IList<of VarItem> = VarLst
+		var vl as IEnumerable<of VarItem> = VarLst
 		var vle as IEnumerator<of VarItem> = vl::GetEnumerator()
 		do while vle::MoveNext()
 			if nam = vle::get_Current()::Name then
@@ -303,8 +381,9 @@ class public auto ansi beforefieldinit SymTable
 		return null
 	end method
 
+	[method: ComVisible(false)]
 	method public static void ResetUsed(var nam as string)
-		var vl as IList<of VarItem> = VarLst
+		var vl as IEnumerable<of VarItem> = VarLst
 		var vle as IEnumerator<of VarItem> = vl::GetEnumerator()
 		do while vle::MoveNext()
 			if nam = vle::get_Current()::Name then
@@ -314,8 +393,9 @@ class public auto ansi beforefieldinit SymTable
 		end do
 	end method
 
+	[method: ComVisible(false)]
 	method public static void CheckUnusedVar()
-		var vl as IList<of VarItem> = VarLst
+		var vl as IEnumerable<of VarItem> = VarLst
 		var vle as IEnumerator<of VarItem> = vl::GetEnumerator()
 		do while vle::MoveNext()
 			var vlec as VarItem = vle::get_Current()
@@ -329,6 +409,7 @@ class public auto ansi beforefieldinit SymTable
 		end do
 	end method
 
+	[method: ComVisible(false)]
 	method public static LabelItem FindLbl(var nam as string)
 
 		var i as integer = -1
@@ -342,11 +423,13 @@ class public auto ansi beforefieldinit SymTable
 		return null
 	end method
 
+	[method: ComVisible(false)]
 	method public static FieldInfo FindFld(var nam as string)
 		return CurnTypItem::GetField(nam)
 	end method
 
-	method public static boolean CmpTyps(var arra as Type[], var arrb as Type[])
+	[method: ComVisible(false)]
+	method public static boolean CmpTyps(var arra as IKVM.Reflection.Type[], var arrb as IKVM.Reflection.Type[])
 		if arra[l] = arrb[l] then
 			if arra[l] = 0 then
 				return true
@@ -364,13 +447,15 @@ class public auto ansi beforefieldinit SymTable
 		return true
 	end method
 
-	method public static MethodInfo FindMet(var nam as string, var paramst as Type[])
+	[method: ComVisible(false)]
+	method public static MethodInfo FindMet(var nam as string, var paramst as IKVM.Reflection.Type[])
 		return CurnTypItem::GetMethod(nam,paramst)
 	end method
 
+	[method: ComVisible(false)]
 	method public static MethodItem FindMetNoParams(var nam as string)
 
-		var lom as IList<of MethodItem> = CurnTypItem::Methods
+		var lom as IEnumerable<of MethodItem> = CurnTypItem::Methods
 		var ien as IEnumerator<of MethodItem> = lom::GetEnumerator()
 		do while ien::MoveNext()
 			if nam = ien::get_Current()::Name then
@@ -381,7 +466,8 @@ class public auto ansi beforefieldinit SymTable
 		return null
 	end method
 
-	method public static ConstructorInfo FindCtor(var paramst as Type[])
+	[method: ComVisible(false)]
+	method public static ConstructorInfo FindCtor(var paramst as IKVM.Reflection.Type[])
 		return CurnTypItem::GetCtor(paramst)
 	end method
 

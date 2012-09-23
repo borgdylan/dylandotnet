@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Constants
+class public auto ansi static Constants
 
 	field public static initonly string quot
 	field public static initonly string cr
@@ -17,7 +17,7 @@ class public auto ansi Constants
 	field public static initonly boolean t
 	field public static initonly boolean f
 
-	method public static void Constants()
+	method private static void Constants()
 		quot = c"\q"
 		cr = c"\r"
 		lf = c"\n"

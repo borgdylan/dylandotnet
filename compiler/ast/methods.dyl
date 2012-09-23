@@ -11,14 +11,14 @@ class public auto ansi MethodCallTok extends Token
 	field public MethodNameTok Name
 	field public Expr[] Params
 	field public boolean PopFlg
-	field public Type[] TypArr
+	field public IKVM.Reflection.Type[] TypArr
 
 	method public void MethodCallTok()
 		me::ctor()
 		Name = new MethodNameTok()
 		PopFlg = false
 		Params = new Expr[0]
-		TypArr = Type::EmptyTypes
+		TypArr = IKVM.Reflection.Type::EmptyTypes
 	end method
 
 	method public void MethodCallTok(var value as string)
@@ -26,7 +26,7 @@ class public auto ansi MethodCallTok extends Token
 		Name = new MethodNameTok()
 		PopFlg = false
 		Params = new Expr[0]
-		TypArr = Type::EmptyTypes
+		TypArr = IKVM.Reflection.Type::EmptyTypes
 	end method
 
 	method public void AddParam(var paramtoadd as Expr)

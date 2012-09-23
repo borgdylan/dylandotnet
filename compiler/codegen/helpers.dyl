@@ -6,26 +6,40 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi beforefieldinit Helpers
+class public auto ansi static Helpers
 
 	field public static boolean StringFlg
+	field public static boolean NullExprFlg
 	field public static boolean DelegateFlg
 	field public static boolean OpCodeSuppFlg
 	field public static boolean EqSuppFlg
 	field public static boolean BaseFlg
-	field public static Type LeftOp
-	field public static Type RightOp
+	field public static IKVM.Reflection.Type LeftOp
+	field public static IKVM.Reflection.Type RightOp
 
-	method public static void Helpers()
+	method private static void Helpers()
 		StringFlg = false
 		DelegateFlg = false
 		OpCodeSuppFlg = false
 		EqSuppFlg = false
 		BaseFlg = false
+		NullExprFlg = false
 		LeftOp = null
 		RightOp = null
 	end method
+	
+	//uses NullExprFlag as input
+	[method: ComVisible(false)]
+	method public static void CheckAssignability(var t1 as IKVM.Reflection.Type, var t2 as IKVM.Reflection.Type)
+		if t1::IsAssignableFrom(t2) == false then
+			if NullExprFlg and (t1::IsAssignableFrom(ILEmitter::Univ::Import(gettype ValueType)) == false) then
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Slots of type '" + t1::ToString() + "' cannot be assigned values of type '" + t2::ToString() +"'.")
+			end if
+		end if
+	end method
 
+	[method: ComVisible(false)]
 	method public static TypeAttributes ProcessClassAttrs(var attrs as Attributes.Attribute[])
 		
 		var ta as TypeAttributes
@@ -33,8 +47,10 @@ class public auto ansi beforefieldinit Helpers
 		var i as integer = -1
 		var fir as boolean = true
 		var flg as boolean
+		var absf as boolean = false
+		var sldf as boolean = false
 		
-		var t as Type[] = new Type[8]
+		var t as Type[] = new Type[9]
 		t[0] = gettype Attributes.PublicAttr
 		t[1] = gettype Attributes.PrivateAttr
 		t[2] = gettype Attributes.AutoLayoutAttr
@@ -43,6 +59,7 @@ class public auto ansi beforefieldinit Helpers
 		t[5] = gettype Attributes.BeforeFieldInitAttr
 		t[6] = gettype Attributes.AbstractAttr
 		t[7] = gettype Attributes.InterfaceAttr
+		t[8] = gettype Attributes.StaticAttr
 		
 		do until i = (attrs[l] - 1)
 			i = i + 1
@@ -66,12 +83,18 @@ class public auto ansi beforefieldinit Helpers
 				temp = TypeAttributes::AnsiClass
 			elseif t[4]::IsInstanceOfType(attrs[i]) then
 				temp = TypeAttributes::Sealed
+				sldf = true
 			elseif t[5]::IsInstanceOfType(attrs[i]) then
 				temp = TypeAttributes::BeforeFieldInit
 			elseif t[6]::IsInstanceOfType(attrs[i]) then
 				temp = TypeAttributes::Abstract
+				absf = true
 			elseif t[7]::IsInstanceOfType(attrs[i]) then
 				temp = TypeAttributes::Interface
+				ILEmitter::InterfaceFlg = true
+			elseif t[8]::IsInstanceOfType(attrs[i]) then
+				temp = TypeAttributes::Abstract or TypeAttributes::BeforeFieldInit or TypeAttributes::Sealed
+				ILEmitter::StaticCFlg = true
 			else
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attrs[i]::Value + "' is not a valid attribute for a class or delegate.")
@@ -87,10 +110,15 @@ class public auto ansi beforefieldinit Helpers
 			end if
 			
 		end do
+		
+		if absf and sldf then
+			ILEmitter::StaticCFlg = true
+		end if
 
 		return ta
 	end method
 
+	[method: ComVisible(false)]
 	method public static MethodAttributes ProcessMethodAttrs(var attrs as Attributes.Attribute[])
 		
 		var ta as MethodAttributes
@@ -185,7 +213,7 @@ class public auto ansi beforefieldinit Helpers
 		return ta
 	end method
 
-
+	[method: ComVisible(false)]
 	method public static FieldAttributes ProcessFieldAttrs(var attrs as Attributes.Attribute[])
 		
 		var ta as FieldAttributes
@@ -263,15 +291,18 @@ class public auto ansi beforefieldinit Helpers
 		return ta
 	end method
 
-	method public static boolean CheckUnsigned(var t as Type)
-		return t::Equals(gettype byte) or t::Equals(gettype ushort) or t::Equals(gettype uinteger) or t::Equals(gettype ulong) or t::Equals(gettype UIntPtr)
+	[method: ComVisible(false)]
+	method public static boolean CheckUnsigned(var t as IKVM.Reflection.Type)
+		return t::Equals(ILEmitter::Univ::Import(gettype byte)) or t::Equals(ILEmitter::Univ::Import(gettype ushort)) or t::Equals(ILEmitter::Univ::Import(gettype uinteger)) or t::Equals(ILEmitter::Univ::Import(gettype ulong)) or t::Equals(ILEmitter::Univ::Import(gettype UIntPtr))
 	end method
 	
-	method public static boolean CheckSigned(var t as Type)
-		return t::Equals(gettype sbyte) or t::Equals(gettype short) or t::Equals(gettype integer) or t::Equals(gettype long) or t::Equals(gettype IntPtr)
+	[method: ComVisible(false)]
+	method public static boolean CheckSigned(var t as IKVM.Reflection.Type)
+		return t::Equals(ILEmitter::Univ::Import(gettype sbyte)) or t::Equals(ILEmitter::Univ::Import(gettype short)) or t::Equals(ILEmitter::Univ::Import(gettype integer)) or t::Equals(ILEmitter::Univ::Import(gettype long)) or t::Equals(ILEmitter::Univ::Import(gettype IntPtr))
 	end method
 	
-	method public static boolean IsPrimitiveIntegralType(var t as Type)
+	[method: ComVisible(false)]
+	method public static boolean IsPrimitiveIntegralType(var t as IKVM.Reflection.Type)
 		if CheckSigned(t) then
 			return true
 		elseif CheckUnsigned(t) then
@@ -281,17 +312,19 @@ class public auto ansi beforefieldinit Helpers
 		end if
 	end method
 	
-	method public static boolean IsPrimitiveFPType(var t as Type)
-		if t::Equals(gettype double) then
+	[method: ComVisible(false)]
+	method public static boolean IsPrimitiveFPType(var t as IKVM.Reflection.Type)
+		if t::Equals(ILEmitter::Univ::Import(gettype double)) then
 			return true
-		elseif t::Equals(gettype single) then
+		elseif t::Equals(ILEmitter::Univ::Import(gettype single)) then
 			return true
 		else
 			return false
 		end if
 	end method
 	
-	method public static boolean IsPrimitiveNumericType(var t as Type)
+	[method: ComVisible(false)]
+	method public static boolean IsPrimitiveNumericType(var t as IKVM.Reflection.Type)
 		if CheckSigned(t) then
 			return true
 		elseif IsPrimitiveFPType(t) then
@@ -303,16 +336,17 @@ class public auto ansi beforefieldinit Helpers
 		end if
 	end method
 	
-	method public static integer GetPrimitiveNumericSize(var t as Type)
-		if t::Equals(gettype boolean) then
+	[method: ComVisible(false)]
+	method public static integer GetPrimitiveNumericSize(var t as IKVM.Reflection.Type)
+		if t::Equals(ILEmitter::Univ::Import(gettype boolean)) then
 			return 1
-		elseif t::Equals(gettype sbyte) or t::Equals(gettype byte) then
+		elseif t::Equals(ILEmitter::Univ::Import(gettype sbyte)) or t::Equals(ILEmitter::Univ::Import(gettype byte)) then
 			return 8
-		elseif t::Equals(gettype short) or t::Equals(gettype ushort) or t::Equals(gettype char) then
+		elseif t::Equals(ILEmitter::Univ::Import(gettype short)) or t::Equals(ILEmitter::Univ::Import(gettype ushort)) or t::Equals(ILEmitter::Univ::Import(gettype char)) then
 			return 16
-		elseif t::Equals(gettype integer) or t::Equals(gettype uinteger) or t::Equals(gettype single) then
+		elseif t::Equals(ILEmitter::Univ::Import(gettype integer)) or t::Equals(ILEmitter::Univ::Import(gettype uinteger)) or t::Equals(ILEmitter::Univ::Import(gettype single)) then
 			return 32
-		elseif t::Equals(gettype long) or t::Equals(gettype ulong) or t::Equals(gettype double) then
+		elseif t::Equals(ILEmitter::Univ::Import(gettype long)) or t::Equals(ILEmitter::Univ::Import(gettype ulong)) or t::Equals(ILEmitter::Univ::Import(gettype double)) then
 			return 64
 		else
 			return 0
@@ -320,11 +354,12 @@ class public auto ansi beforefieldinit Helpers
 	end method
 
 	//note that this method returns void and leaves a result in AsmFactory::Type01
+	[method: ComVisible(false)]
 	method public static void EvalTTok(var tt as TypeTok)
 
-		var tarr as Type[]
-		var typ as Type
-		var temptyp as Type
+		//var tarr as IKVM.Reflection.Type[]
+		var typ as IKVM.Reflection.Type
+		var temptyp as IKVM.Reflection.Type
 		var gtt as GenericTypeTok
 		var pttoks as TypeTok[] = new TypeTok[0]
 		var i as integer = -1
@@ -337,13 +372,15 @@ class public auto ansi beforefieldinit Helpers
 			gtt = $GenericTypeTok$tt
 			pttoks = gtt::Params
 
-			tarr = AsmFactory::TypArr
-			AsmFactory::TypArr = new Type[0]
-
-			Loader::MakeArr = gtt::IsArray
-			Loader::MakeRef = gtt::IsByRef
-			tstr = gtt::Value + "`" + $string$pttoks[l]
-			typ = Loader::LoadClass(tstr)
+			var lop as List<of IKVM.Reflection.Type> = new List<of IKVM.Reflection.Type>()
+			
+			if gtt::RefTyp = null then
+				tstr = gtt::Value + "`" + $string$pttoks[l]
+				typ = Loader::LoadClass(tstr)
+				gtt::RefTyp = Loader::PreProcTyp
+			else
+				typ = gtt::RefTyp
+			end if
 
 			if typ = null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Type " + tstr + " could not be found!!")
@@ -356,30 +393,25 @@ class public auto ansi beforefieldinit Helpers
 				if temptyp = null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Argument " + pttoks[i]::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
 				end if
-				AsmFactory::AddTyp(temptyp)
+				lop::Add(temptyp)
 			end do
 			
 			//typ = typ::GetGenericTypeDefinition()
-			typ = typ::MakeGenericType(AsmFactory::TypArr)
-			AsmFactory::TypArr = tarr
-			
+			typ = typ::MakeGenericType(Enumerable::ToArray<of IKVM.Reflection.Type>(lop))
+			Loader::MakeArr = gtt::IsArray
+			Loader::MakeRef = gtt::IsByRef
+			typ = Loader::ProcessType(typ)
 		else
 			if tt::RefTyp = null then
 				Loader::MakeArr = tt::IsArray
 				Loader::MakeRef = tt::IsByRef
-				if AsmFactory::CurnTypName = tt::Value then
-					typ = AsmFactory::CurnTypB
-					//if tt::IsArray then
-					//	typ = typ::MakeArrayType()
-					//end if
-					//if tt::IsByRef then
-					//	typ = typ::MakeByRefType()
-					//end if
+				typ = SymTable::TypeLst::GetType(tt::Value)
+				if typ != null  then
+					tt::RefTyp = typ
 					typ = Loader::ProcessType(typ)
-					//Loader::MakeArr = false
-					//Loader::MakeRef = false
 				else
 					typ = Loader::LoadClass(tt::Value)
+					tt::RefTyp = Loader::PreProcTyp
 				end if
 			else
 				Loader::MakeArr = tt::IsArray
@@ -392,16 +424,18 @@ class public auto ansi beforefieldinit Helpers
 
 	end method
 
-	method public static Type CommitEvalTTok(var tt as TypeTok)
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.Type CommitEvalTTok(var tt as TypeTok)
 		EvalTTok(tt)
 		return AsmFactory::Type01
 	end method
 
+	[method: ComVisible(false)]
 	method public static void ProcessParams(var ps as Expr[])
 
 		var i as integer = -1
 		var curp as VarExpr = null
-		var typ as Type = null
+		var typ as IKVM.Reflection.Type = null
 
 		do until i = (ps[l] - 1)
 			i = i + 1
@@ -419,36 +453,69 @@ class public auto ansi beforefieldinit Helpers
 		
 	end method
 
+	[method: ComVisible(false)]
 	method public static void PostProcessParams(var ps as Expr[])
 
 		var i as integer = -1
 		var curp as VarExpr = null
+		var typ2 as Type = gettype InTok
+		var typ3 as Type = gettype OutTok
+		var typ4 as Type = gettype InOutTok
 		
 		do until i = (ps[l] - 1)
 			i = i + 1
 			curp = $VarExpr$ps[i]
-			ILEmitter::Met::DefineParameter(i + 1, ParameterAttributes::None, curp::VarName::Value)
+			var pa as ParameterAttributes = ParameterAttributes::None
+			
+			if curp::Attr != null then
+				if typ2::IsInstanceOfType(curp::Attr) then
+					pa = ParameterAttributes::In
+				elseif typ3::IsInstanceOfType(curp::Attr) then
+					pa = ParameterAttributes::Out
+				elseif typ4::IsInstanceOfType(curp::Attr) then
+					pa = ParameterAttributes::In or ParameterAttributes::Out
+				end if	
+			end if
+			
+			ILEmitter::Met::DefineParameter(i + 1, pa, curp::VarName::Value)
 			ILEmitter::ArgInd = ILEmitter::ArgInd + 1
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 		end do
 		
 	end method
 
+	[method: ComVisible(false)]
 	method public static void PostProcessParamsConstr(var ps as Expr[])
 
 		var i as integer = -1
 		var curp as VarExpr = null
-
+		var typ2 as Type = gettype InTok
+		var typ3 as Type = gettype OutTok
+		var typ4 as Type = gettype InOutTok
+		
 		do until i = (ps[l] - 1)
 			i = i + 1
 			curp = $VarExpr$ps[i]
-			ILEmitter::Constr::DefineParameter(i + 1, ParameterAttributes::None, curp::VarName::Value)
+			var pa as ParameterAttributes = ParameterAttributes::None
+			
+			if curp::Attr != null then
+				if typ2::IsInstanceOfType(curp::Attr) then
+					pa = ParameterAttributes::In
+				elseif typ3::IsInstanceOfType(curp::Attr) then
+					pa = ParameterAttributes::Out
+				elseif typ4::IsInstanceOfType(curp::Attr) then
+					pa = ParameterAttributes::In or ParameterAttributes::Out
+				end if	
+			end if
+			
+			ILEmitter::Constr::DefineParameter(i + 1, pa, curp::VarName::Value)
 			ILEmitter::ArgInd = ILEmitter::ArgInd + 1
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 		end do
 		
 	end method
 
+	[method: ComVisible(false)]
 	method public static void EmitLiteral(var lit as Literal)
 	
 		var t as Type[] = new Type[15]
@@ -517,24 +584,90 @@ class public auto ansi beforefieldinit Helpers
 		end if
 
 	end method
+	
+	[method: ComVisible(false)]
+	method public static object LiteralToConst(var lit as Literal)
+	
+		var t as Type[] = new Type[14]
+		t[0] = gettype StringLiteral
+		t[1] = gettype SByteLiteral
+		t[2] = gettype ShortLiteral
+		t[3] = gettype IntLiteral
+		t[4] = gettype LongLiteral
+		t[5] = gettype FloatLiteral
+		t[6] = gettype DoubleLiteral
+		t[7] = gettype BooleanLiteral
+		t[8] = gettype CharLiteral
+		t[9] = gettype NullLiteral
+		t[10] = gettype ByteLiteral
+		t[11] = gettype UShortLiteral
+		t[12] = gettype UIntLiteral
+		t[13] = gettype ULongLiteral
+
+		if t[0]::IsInstanceOfType(lit) then
+			var slit as StringLiteral = $StringLiteral$lit
+			return slit::Value
+		elseif t[1]::IsInstanceOfType(lit) then
+			var sblit as SByteLiteral = $SByteLiteral$lit
+			return $object$sblit::NumVal
+		elseif t[2]::IsInstanceOfType(lit) then
+			var shlit as ShortLiteral = $ShortLiteral$lit
+			return $object$shlit::NumVal
+		elseif t[3]::IsInstanceOfType(lit) then
+			var ilit as IntLiteral = $IntLiteral$lit
+			return $object$ilit::NumVal
+		elseif t[4]::IsInstanceOfType(lit) then
+			var llit as LongLiteral = $LongLiteral$lit
+			return $object$llit::NumVal
+		elseif t[5]::IsInstanceOfType(lit) then
+			var flit as FloatLiteral = $FloatLiteral$lit
+			return $object$flit::NumVal
+		elseif t[6]::IsInstanceOfType(lit) then
+			var dlit as DoubleLiteral = $DoubleLiteral$lit
+			return $object$dlit::NumVal
+		elseif t[7]::IsInstanceOfType(lit) then
+			var bllit as BooleanLiteral = $BooleanLiteral$lit
+			return $object$bllit::BoolVal
+		elseif t[8]::IsInstanceOfType(lit) then
+			var clit as CharLiteral = $CharLiteral$lit
+			return $object$clit::CharVal
+		elseif t[9]::IsInstanceOfType(lit) then
+			return null
+		elseif t[10]::IsInstanceOfType(lit) then
+			var blit as ByteLiteral = $ByteLiteral$lit
+			return $object$blit::NumVal
+		elseif t[11]::IsInstanceOfType(lit) then
+			var uslit as UShortLiteral = $UShortLiteral$lit
+			return $object$uslit::NumVal
+		elseif t[12]::IsInstanceOfType(lit) then
+			var uilit as UIntLiteral = $UIntLiteral$lit
+			return $object$uilit::NumVal
+		elseif t[13]::IsInstanceOfType(lit) then
+			var ullit as ULongLiteral = $ULongLiteral$lit
+			return $object$ullit::NumVal
+		else
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Literals of type '" + CommitEvalTTok(lit::LitTyp)::ToString() + "' are not suitable for constants.")
+			return null
+		end if
+	end method
 
 	method public static Literal ProcessConst(var lit as ConstLiteral)
 
-		var t as Type[] = new Type[14]
-		t[0] = gettype string
-		t[1] = gettype sbyte
-		t[2] = gettype short
-		t[3] = gettype integer
-		t[4] = gettype long
-		t[5] = gettype single
-		t[6] = gettype double
-		t[7] = gettype boolean
-		t[8] = gettype char
-		t[9] = gettype object
-		t[10] = gettype byte
-		t[11] = gettype ushort
-		t[12] = gettype uinteger
-		t[13] = gettype ulong
+		var t as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[14]
+		t[0] = ILEmitter::Univ::Import(gettype string)
+		t[1] = ILEmitter::Univ::Import(gettype sbyte)
+		t[2] = ILEmitter::Univ::Import(gettype short)
+		t[3] = ILEmitter::Univ::Import(gettype integer)
+		t[4] = ILEmitter::Univ::Import(gettype long)
+		t[5] = ILEmitter::Univ::Import(gettype single)
+		t[6] = ILEmitter::Univ::Import(gettype double)
+		t[7] = ILEmitter::Univ::Import(gettype boolean)
+		t[8] = ILEmitter::Univ::Import(gettype char)
+		t[9] = ILEmitter::Univ::Import(gettype object)
+		t[10] = ILEmitter::Univ::Import(gettype byte)
+		t[11] = ILEmitter::Univ::Import(gettype ushort)
+		t[12] = ILEmitter::Univ::Import(gettype uinteger)
+		t[13] = ILEmitter::Univ::Import(gettype ulong)
 		
 		if t[0]::Equals(lit::IntTyp) then
 			return new StringLiteral($string$lit::ConstVal)
@@ -571,6 +704,7 @@ class public auto ansi beforefieldinit Helpers
 
 	end method
 
+	[method: ComVisible(false)]
 	method public static void EmitOp(var op as Op, var s as boolean)
 
 		var mtd as MethodInfo = null
@@ -743,9 +877,10 @@ class public auto ansi beforefieldinit Helpers
 
 	end method
 
+	[method: ComVisible(false)]
 	method public static void EmitLocLd(var ind as integer, var locarg as boolean)
-		var typ as Type = gettype ValueType
-		var t2 as Type
+		var typ as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ValueType)
+		var t2 as IKVM.Reflection.Type
 
 		if AsmFactory::Type04::get_IsByRef() then
 			t2 = AsmFactory::Type04::GetElementType()
@@ -779,8 +914,9 @@ class public auto ansi beforefieldinit Helpers
 		end if
 	end method
 
-	method public static void EmitElemLd(var t as Type)
-		var typ as Type = gettype ValueType
+	[method: ComVisible(false)]
+	method public static void EmitElemLd(var t as IKVM.Reflection.Type)
+		var typ as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ValueType)
 		if (AsmFactory::AddrFlg and typ::IsAssignableFrom(AsmFactory::Type04)) or AsmFactory::ForcedAddrFlg then
 			ILEmitter::EmitLdelema(t)
 		else
@@ -788,6 +924,7 @@ class public auto ansi beforefieldinit Helpers
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static void EmitLocSt(var ind as integer, var locarg as boolean)
 		if locarg then
 			ILEmitter::EmitStloc(ind)
@@ -796,13 +933,14 @@ class public auto ansi beforefieldinit Helpers
 		end if
 	end method
 
-	method public static void EmitConv(var source as Type, var sink as Type)
+	[method: ComVisible(false)]
+	method public static void EmitConv(var source as IKVM.Reflection.Type, var sink as IKVM.Reflection.Type)
 
-		var convc as Type = gettype Convert
-		var typ as Type
+		var convc as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype Convert)
+		var typ as IKVM.Reflection.Type
 		var m1 as MethodInfo
 		//var c1 as ConstructorInfo
-		var arr as Type[] = new Type[1]
+		var arr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
 	
 		if source::Equals(sink) then
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
@@ -810,7 +948,7 @@ class public auto ansi beforefieldinit Helpers
 		end if
 
 		if source::get_IsEnum() then
-			if Enum::GetUnderlyingType(source)::Equals(sink) then
+			if source::GetEnumUnderlyingType()::Equals(sink) then
 				return
 			end if
 		end if
@@ -844,8 +982,8 @@ class public auto ansi beforefieldinit Helpers
 		end if
 		//end conv overload block
 
-		if sink::Equals(gettype object) then
-			typ = gettype ValueType
+		if sink::Equals(ILEmitter::Univ::Import(gettype object)) then
+			typ = ILEmitter::Univ::Import(gettype ValueType)
 			if typ::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
 				return
@@ -855,15 +993,15 @@ class public auto ansi beforefieldinit Helpers
 			end if
 		end if
 
-		if source::Equals(gettype object) then
-			typ = gettype ValueType
+		if source::Equals(ILEmitter::Univ::Import(gettype object)) then
+			typ = ILEmitter::Univ::Import(gettype ValueType)
 			if typ::IsAssignableFrom(sink) then
 				ILEmitter::EmitUnboxAny(sink)
 				return
 			end if
 		end if
 
-		typ = gettype ValueType
+		typ = ILEmitter::Univ::Import(gettype ValueType)
 		if (typ::IsAssignableFrom(sink) or typ::IsAssignableFrom(source)) = false then
 			if sink::IsAssignableFrom(source) then
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
@@ -875,92 +1013,92 @@ class public auto ansi beforefieldinit Helpers
 			end if
 		end if
 
-		if source::Equals(gettype IntPtr) then
-			typ = gettype IntPtr
-			m1 = typ::GetMethod("ToInt64", Type::EmptyTypes)
+		if source::Equals(ILEmitter::Univ::Import(gettype IntPtr)) then
+			typ = ILEmitter::Univ::Import(gettype IntPtr)
+			m1 = typ::GetMethod("ToInt64", IKVM.Reflection.Type::EmptyTypes)
 			ILEmitter::EmitCallvirt(m1)
-			source = gettype long
+			source = ILEmitter::Univ::Import(gettype long)
 		end if
 		
-		if sink::Equals(gettype string) then
+		if sink::Equals(ILEmitter::Univ::Import(gettype string)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToString", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype char) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype char)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToChar", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype decimal) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype decimal)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToDecimal", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype double) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype double)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToDouble", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype single) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype single)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToSingle", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype long) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype long)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToInt64", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype ulong) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype ulong)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToUInt64", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype integer) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype integer)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToInt32", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype uinteger) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype uinteger)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToUInt32", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype short) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype short)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToInt16", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype ushort) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype ushort)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToUInt16", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype sbyte) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype sbyte)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToSByte", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype byte) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype byte)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToByte", arr)
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(gettype boolean) then
+		elseif sink::Equals(ILEmitter::Univ::Import(gettype boolean)) then
 			arr[0] = source
 			m1 = convc::GetMethod("ToBoolean", arr)
 			if m1 != null then
@@ -972,11 +1110,12 @@ class public auto ansi beforefieldinit Helpers
 
 	end method
 
+	[method: ComVisible(false)]
 	method public static void EmitMetCall(var met as MethodInfo, var stat as boolean)
 		if stat or BaseFlg then
 			ILEmitter::EmitCall(met)
 		else
-			var typ as Type = gettype ValueType
+			var typ as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ValueType)
 			if typ::IsAssignableFrom(AsmFactory::Type05) then
 				if met::get_IsVirtual() then
 					//ILEmitter::EmitConstrained(AsmFactory::Type05)
@@ -989,13 +1128,14 @@ class public auto ansi beforefieldinit Helpers
 			end if
 		end if
 		if AsmFactory::PopFlg then
-			var rt as Type = met::get_ReturnType()
-			if rt::Equals(gettype void) == false then
+			var rt as IKVM.Reflection.Type = met::get_ReturnType()
+			if rt::Equals(ILEmitter::Univ::Import(gettype void)) == false then
 				ILEmitter::EmitPop()
 			end if
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static void EmitPtrLd(var met as MethodInfo, var stat as boolean)
 		if stat then
 			ILEmitter::EmitLdftn(met)
@@ -1004,8 +1144,9 @@ class public auto ansi beforefieldinit Helpers
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static void EmitFldLd(var fld as FieldInfo, var stat as boolean)
-		var typ as Type = gettype ValueType
+		var typ as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ValueType)
 		if (AsmFactory::AddrFlg and typ::IsAssignableFrom(AsmFactory::Type04)) or AsmFactory::ForcedAddrFlg then
 			if stat then
 				ILEmitter::EmitLdsflda(fld)
@@ -1021,6 +1162,7 @@ class public auto ansi beforefieldinit Helpers
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static void EmitFldSt(var fld as FieldInfo, var stat as boolean)
 		if stat then
 			ILEmitter::EmitStsfld(fld)
@@ -1029,7 +1171,8 @@ class public auto ansi beforefieldinit Helpers
 		end if
 	end method
 
-	method public static ConstructorInfo GetLocCtor(var t as Type, var typs as Type[])
+	[method: ComVisible(false)]
+	method public static ConstructorInfo GetLocCtor(var t as IKVM.Reflection.Type, var typs as IKVM.Reflection.Type[])
 		if t::Equals(AsmFactory::CurnTypB) then
 			return SymTable::FindCtor(typs)
 		else
@@ -1037,6 +1180,7 @@ class public auto ansi beforefieldinit Helpers
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static FieldInfo GetLocFld(var nam as string)
 		var fldinf as FieldInfo = null
 		var fldi as FieldInfo = SymTable::FindFld(nam)
@@ -1045,14 +1189,20 @@ class public auto ansi beforefieldinit Helpers
 			fldinf = fldi
 		else
 			Loader::ProtectedFlag = true
-			fldinf = Loader::LoadField(AsmFactory::CurnInhTyp, nam)
+			var f as FieldInfo = SymTable::TypeLst::GetField(AsmFactory::CurnInhTyp,nam)
+			if f != null then
+				fldinf = f
+			else
+				fldinf = Loader::LoadField(AsmFactory::CurnInhTyp, nam)
+			end if
 			Loader::ProtectedFlag = false
 		end if
 
 		return fldinf
 	end method
 
-	method public static MethodInfo GetLocMet(var nam as string, var typs as Type[])
+	[method: ComVisible(false)]
+	method public static MethodInfo GetLocMet(var nam as string, var typs as IKVM.Reflection.Type[])
 		var metinf as MethodInfo = null
 		var meti as MethodInfo = SymTable::FindMet(nam, typs)
 
@@ -1060,13 +1210,19 @@ class public auto ansi beforefieldinit Helpers
 			metinf = meti
 		else
 			Loader::ProtectedFlag = true
-			metinf = Loader::LoadMethod(AsmFactory::CurnInhTyp, nam, typs)
+			var m as MethodInfo = SymTable::TypeLst::GetMethod(AsmFactory::CurnInhTyp,nam,typs)
+			if m != null then
+				metinf = m
+			else
+				metinf = Loader::LoadMethod(AsmFactory::CurnInhTyp, nam, typs)
+			end if
 			Loader::ProtectedFlag = false
 		end if
 
 		return metinf
 	end method
 
+	[method: ComVisible(false)]
 	method public static MethodInfo GetLocMetNoParams(var nam as string)
 		var metinf as MethodInfo = null
 		var meti as MethodItem = SymTable::FindMetNoParams(nam)
@@ -1078,6 +1234,7 @@ class public auto ansi beforefieldinit Helpers
 		return metinf
 	end method
 
+	[method: ComVisible(false)]
 	method public static Emit.Label GetLbl(var nam as string)
 		var lbl as Emit.Label
 		var lbli as LabelItem = SymTable::FindLbl(nam)
@@ -1089,6 +1246,7 @@ class public auto ansi beforefieldinit Helpers
 		return lbl
 	end method
 
+	[method: ComVisible(false)]
 	method public static MethodNameTok StripDelMtdName(var t as Token)
 		var typ1 as Type = gettype Ident
 		var typ2 as Type = gettype MethodCallTok
@@ -1103,6 +1261,7 @@ class public auto ansi beforefieldinit Helpers
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static Token SetPopFlg(var t as Token)
 
 		var t2 as Token = t
@@ -1144,6 +1303,7 @@ class public auto ansi beforefieldinit Helpers
 
 	end method
 
+	[method: ComVisible(false)]
 	method public static boolean CheckIfArrLen(var ind as Expr)
 		var typ as Type
 		if ind::Tokens[l] = 1 then
@@ -1158,13 +1318,14 @@ class public auto ansi beforefieldinit Helpers
 		end if
 	end method
 
-	method public static MethodInfo GetExtMet(var t as Type, var mn as MethodNameTok, var paramtyps as Type[])
+	[method: ComVisible(false)]
+	method public static MethodInfo GetExtMet(var t as IKVM.Reflection.Type, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
 		var gmntt as Type = gettype GenericMethodNameTok
 		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
 		var name as string = mnstrarr[mnstrarr[l] - 1]
 		if gmntt::IsInstanceOfType(mn) then
 			var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
-			var genparams as Type[] = new Type[gmn::Params[l]]
+			var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
 			var i as integer = -1
 			do until i = (genparams[l] - 1)
 				i = i + 1
@@ -1172,12 +1333,77 @@ class public auto ansi beforefieldinit Helpers
 			end do
 			return Loader::LoadGenericMethod(t, name, genparams, paramtyps)
 		else
-			return Loader::LoadMethod(t, name, paramtyps)
+			var m as MethodInfo = SymTable::TypeLst::GetMethod(t,name,paramtyps)
+			if m != null then
+				return m
+			else
+				return Loader::LoadMethod(t, name, paramtyps)
+			end if
 		end if
 	end method
 	
-	method public static FieldInfo GetExtFld(var t as Type, var fld as string)
-		return Loader::LoadField(t,fld)
+	[method: ComVisible(false)]
+	method public static FieldInfo GetExtFld(var t as IKVM.Reflection.Type, var fld as string)
+		var f as FieldInfo = SymTable::TypeLst::GetField(t,fld)
+		if f != null then
+			return f
+		else
+			return Loader::LoadField(t,fld)
+		end if
+	end method
+	
+	[method: ComVisible(false)]
+	method public static PropertyInfo GetExtProp(var t as IKVM.Reflection.Type, var prop as string)
+		//var f as FieldInfo = SymTable::TypeLst::GetField(t,fld)
+		//if f != null then
+		//	return f
+		//else
+			return Loader::LoadProperty(t,prop)
+		//end if
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ApplyMetAttrs()
+		var ien as IEnumerable<of CustomAttributeBuilder> = SymTable::MethodCALst
+		var ienum as IEnumerator<of CustomAttributeBuilder> = ien::GetEnumerator()
+		
+		do while ienum::MoveNext()
+			if AsmFactory::InCtorFlg then
+				AsmFactory::CurnConB::SetCustomAttribute(ienum::get_Current())
+			else
+				AsmFactory::CurnMetB::SetCustomAttribute(ienum::get_Current())
+			end if
+		end do
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ApplyFldAttrs()
+		var ien as IEnumerable<of CustomAttributeBuilder> = SymTable::FieldCALst
+		var ienum as IEnumerator<of CustomAttributeBuilder> = ien::GetEnumerator()
+		
+		do while ienum::MoveNext()
+			AsmFactory::CurnFldB::SetCustomAttribute(ienum::get_Current())
+		end do
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ApplyClsAttrs()
+		var ien as IEnumerable<of CustomAttributeBuilder> = SymTable::ClassCALst
+		var ienum as IEnumerator<of CustomAttributeBuilder> = ien::GetEnumerator()
+		
+		do while ienum::MoveNext()
+			AsmFactory::CurnTypB::SetCustomAttribute(ienum::get_Current())
+		end do
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ApplyAsmAttrs()
+		var ien as IEnumerable<of CustomAttributeBuilder> = SymTable::AssemblyCALst
+		var ienum as IEnumerator<of CustomAttributeBuilder> = ien::GetEnumerator()
+		
+		do while ienum::MoveNext()
+			AsmFactory::AsmB::SetCustomAttribute(ienum::get_Current())
+		end do
 	end method
 
 end class

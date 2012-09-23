@@ -1,6 +1,6 @@
 //The utility library for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v.11.2.9.5 or later
+//compile with dylan.NET v.11.2.9.7 or later
 
 //    dnu.dll dylan.NET.Utils Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -25,14 +25,17 @@ import System.Xml.Linq
 import System.Xml.XPath
 import System.Collections.Generic
 import System.Text.RegularExpressions
+import System.Runtime.InteropServices
 
 import dylan.NET.Utils
 import dylan.NET
 
 #debug on
 
+#include "dnu/assemblyinfo.dyl"
+
 assembly dnu dll
-ver 11.2.9.6
+ver 11.2.9.7
 
 namespace dylan.NET.Utils
 	#include "dnu/consts.dyl"

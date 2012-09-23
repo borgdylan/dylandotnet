@@ -6,13 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi ParseUtils
-
-	field public static string[] stack
-
-	method public static void ParseUtils()
-		stack = new string[0]
-	end method
+class public auto ansi static ParseUtils
 
 	method private static string[] addelem(var srcarr as string[], var eltoadd as string)
 
@@ -41,12 +35,12 @@ class public auto ansi ParseUtils
 		return destarr
 	end method
 
-
+	[method: ComVisible(false)]
 	method public static string[] StringParser(var StringToParse as string, var DelimeterChar as string)
 		var arr as List<of string> = new List<of string>()
 		var ins as boolean = false
-		var ch as string = ""
-		var acc as string = ""
+		var ch as string = String::Empty
+		var acc as string = String::Empty
 		var i as integer = -1
 		var len as integer = StringToParse::get_Length() - 1
 	
@@ -60,10 +54,10 @@ class public auto ansi ParseUtils
 	
 			if ch = DelimeterChar then
 				if ins = false then
-					if acc <> "" then
+					if acc::get_Length() != 0 then
 						arr::Add(acc)
 					end if
-					acc = ""
+					acc = String::Empty
 				end if
 				if ins then
 					acc = acc + ch
@@ -73,23 +67,24 @@ class public auto ansi ParseUtils
 			end if
 	
 			if i = len then
-				if acc <> "" then
+				if acc::get_Length() != 0 then
 					arr::Add(acc)
 				end if
-				acc = ""
+				acc = String::Empty
 			end if
 
 		until i = len
 		
 		return Enumerable::ToArray<of string>(arr)
 	end method
-
+	
+	[method: ComVisible(false)]
 	method public static string[] StringParser2ds(var StringToParse as string, var DelimeterChar as string, var DelimeterChar2 as string)
 
 		var arr as string[] = new string[0]
 		var ins as boolean = false
-		var ch as string = ""
-		var acc as string = ""
+		var ch as string = String::Empty
+		var acc as string = String::Empty
 		var i as integer = -1
 		var len as integer = StringToParse::get_Length() - 1
 		
@@ -103,10 +98,10 @@ class public auto ansi ParseUtils
 
 			if (ch = DelimeterChar) or (ch = DelimeterChar2) then
 				if ins = false then
-					if acc <> "" then
+					if acc::get_Length() != 0 then
 						arr = addelem(arr, acc)
 					end if
-					acc = ""
+					acc = String::Empty
 				end if
 				if ins then
 					acc = acc + ch
@@ -116,10 +111,10 @@ class public auto ansi ParseUtils
 			end if
 
 			if i = len then
-				if acc <> "" then
+				if acc::get_Length() != 0 then
 					arr = addelem(arr, acc)
 				end if
-				acc = ""
+				acc = String::Empty
 			end if
 
 		until i = len
@@ -127,10 +122,12 @@ class public auto ansi ParseUtils
 		return arr
 	end method
 
+	[method: ComVisible(false)]
 	method public static boolean LikeOP(var str as string, var pattern as string)
 		return str like pattern
 	end method
 
+	[method: ComVisible(false)]
 	method public static integer RetPrec(var chr as string)
 		if chr = "(" then
 			return -1
@@ -145,6 +142,7 @@ class public auto ansi ParseUtils
 		end if
 	end method
 
+	[method: ComVisible(false)]
 	method public static string ProcessMSYSPath(var p as string)
 
 		var platf as PlatformID = Environment::get_OSVersion()::get_Platform()
@@ -168,6 +166,7 @@ class public auto ansi ParseUtils
 		return p
 	end method
 	
+	[method: ComVisible(false)]
 	method public static boolean IsHexDigit(var c as char)
 		if Char::IsDigit(c) then
 			return true
@@ -192,12 +191,13 @@ class public auto ansi ParseUtils
 		
 	end method
 	
+	[method: ComVisible(false)]
 	method public static string ProcessString(var escstr as string)
 		var sb as StringBuilder = new StringBuilder()
 		var i as integer = -1
 		var cc as char = 'a'
 		var len as integer = escstr::get_Length() - 1
-		var buf as string = ""
+		var buf as string = String::Empty
 		
 		do until i >= len
 			i = i + 1

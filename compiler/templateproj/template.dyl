@@ -1,3 +1,5 @@
+//dylan.NET test code
+
 #refstdasm "mscorlib.dll"
 #refstdasm "System.dll"
 #refstdasm "System.Core.dll"
@@ -7,6 +9,7 @@ import System
 import System.IO
 import System.Xml
 import System.Linq
+import System.Security.Permissions
 import System.Xml.Linq
 import System.Xml.Xpath
 import System.Reflection
@@ -15,6 +18,9 @@ import template
 
 #debug on
 
+[assembly: System.Reflection.AssemblyConfiguration("DEBUG")]
+[assembly: System.Reflection.AssemblyTitle("template")]
+[assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>")]
 assembly template exe
 ver 1.1.0.0
 
@@ -55,6 +61,11 @@ end class
 
 class public auto ansi BaseTest
 
+	field private BaseTest F1
+	field private template.BaseTest F2
+
+	//[method: Obsolete("Test Custom Attribute")]
+	[method: SecurityPermissionAttribute(SecurityAction::Assert), SkipVerification = true]
 	method public void CallTS1()
 		Console::WriteLine(ToString())
 	end method
@@ -219,7 +230,17 @@ class public auto ansi Program
 	method public static boolean[] test2()
 		return new boolean[2]
 	end method
+	
+	method public static void intest(in var p as integer&)
+	end method
+	
+	method public static void outtest(out var p as integer&)
+	end method
+	
+	method public static void inouttest(inout var p as integer&)
+	end method
 
+	[method: STAThread()]
 	method public static void main()
 		gentest()
 		var hc as HelloClass = new HelloClass()

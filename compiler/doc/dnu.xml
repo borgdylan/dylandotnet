@@ -260,9 +260,23 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Utils.XmlUtils.AddAttr(System.Xml.Linq.XContainer,System.Xml.Linq.XAttribute)">
+            <param name="el">To be added.</param>
+            <param name="attr">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Utils.XmlUtils.AddAttr(System.Xml.Linq.XElement,System.Xml.Linq.XAttribute)">
             <param name="el">To be added.</param>
             <param name="attr">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.XmlUtils.AddAttrArr(System.Xml.Linq.XContainer,System.Xml.Linq.XAttribute[])">
+            <param name="el">To be added.</param>
+            <param name="attrs">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -274,9 +288,23 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Utils.XmlUtils.AddNode(System.Xml.Linq.XContainer,System.Xml.Linq.XElement)">
+            <param name="el">To be added.</param>
+            <param name="node">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Utils.XmlUtils.AddNode(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
             <param name="el">To be added.</param>
             <param name="node">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.XmlUtils.AddNodeArr(System.Xml.Linq.XContainer,System.Xml.Linq.XElement[])">
+            <param name="el">To be added.</param>
+            <param name="nodes">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -327,7 +355,21 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Utils.XmlUtils.XPathSelectEl(System.Xml.Linq.XNode,System.String)">
+            <param name="el">To be added.</param>
+            <param name="XPathQuery">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Utils.XmlUtils.XPathSelectEls(System.Xml.Linq.XElement,System.String)">
+            <param name="el">To be added.</param>
+            <param name="XPathQuery">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.XmlUtils.XPathSelectEls(System.Xml.Linq.XNode,System.String)">
             <param name="el">To be added.</param>
             <param name="XPathQuery">To be added.</param>
             <summary>To be added.</summary>

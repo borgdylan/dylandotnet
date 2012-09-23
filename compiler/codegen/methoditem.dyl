@@ -9,19 +9,19 @@
 class public auto ansi MethodItem
 
 	field public string Name
-	field public Type MethodTyp
-	field public Type[] ParamTyps
+	field public IKVM.Reflection.Type MethodTyp
+	field public IKVM.Reflection.Type[] ParamTyps
 	field public MethodBuilder MethodBldr
 
 	method public void MethodItem()
 		me::ctor()
-		Name = ""
+		Name = String::Empty
 		MethodTyp = null
 		MethodBldr = null
-		ParamTyps = new Type[0]
+		ParamTyps = new IKVM.Reflection.Type[0]
 	end method
 
-	method public void MethodItem(var nme as string, var typ as Type, var ptyps as Type[], var bld as MethodBuilder)
+	method public void MethodItem(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var bld as MethodBuilder)
 		me::ctor()
 		Name = nme
 		MethodTyp = typ

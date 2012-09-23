@@ -20,6 +20,7 @@
     <AssemblyVersion>11.2.9.4</AssemblyVersion>
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
+    <AssemblyVersion>11.2.9.7</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -52,6 +53,7 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -60,8 +62,8 @@
       </Docs>
     </Member>
     <Member MemberName="Arr">
-      <MemberSignature Language="C#" Value="public Type[] Arr;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Type[] Arr" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type[] Arr;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type[] Arr" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.7</AssemblyVersion>
@@ -81,9 +83,10 @@
         <AssemblyVersion>11.2.9.4</AssemblyVersion>
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Type[]</ReturnType>
+        <ReturnType>IKVM.Reflection.Type[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

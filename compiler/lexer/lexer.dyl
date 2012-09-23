@@ -16,7 +16,7 @@ class public auto ansi Lexer
 		var sr as StreamReader = new StreamReader(path)
 		var crflag as boolean = false
 		var lfflag as boolean = false
-		var buf as string = ""
+		var buf as string = String::Empty
 		var curline as integer = 0
 		var curstmtlen as integer = -1
 		var chr as char = 'a'
@@ -48,7 +48,7 @@ class public auto ansi Lexer
 						stmts::AddStmt(curstmt)
 					end if
 			
-					buf = ""
+					buf = String::Empty
 					crflag = false
 					lfflag = false
 				end if
@@ -70,6 +70,7 @@ class public auto ansi Lexer
 		end do
 		
 		sr::Close()
+		sr::Dispose()
 		
 		return stmts
 	end method
@@ -82,7 +83,7 @@ class public auto ansi Lexer
 		var sr as StringReader = new StringReader(str)
 		var crflag as boolean = false
 		var lfflag as boolean = false
-		var buf as string = ""
+		var buf as string = String::Empty
 		var curline as integer = 0
 		var curstmtlen as integer = -1
 		var chr as char = 'a'
@@ -114,7 +115,7 @@ class public auto ansi Lexer
 						stmts::AddStmt(curstmt)
 					end if
 			
-					buf = ""
+					buf = String::Empty
 					crflag = false
 					lfflag = false
 				end if

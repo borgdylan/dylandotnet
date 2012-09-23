@@ -1,24 +1,25 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="dnc/Mod1.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/stmtreader.dyl">
     <Files>
-      <File FileName="test.dyl" Line="39" Column="1" />
-      <File FileName="dnr/loader.dyl" Line="416" Column="1" />
+      <File FileName="dnr/loader.dyl" Line="268" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="626" Column="1" />
-      <File FileName="codegen/eval.dyl" Line="550" Column="1" />
-      <File FileName="codegen/helpers.dyl" Line="1109" Column="1" />
-      <File FileName="codegen/codegenerator.dyl" Line="73" Column="1" />
-      <File FileName="dnc/Mod1.dyl" Line="67" Column="1" />
-      <File FileName="parser/parser.dyl" Line="25" Column="1" />
-      <File FileName="parser/stmtoptimizer.dyl" Line="1517" Column="1" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="17" Column="1" />
-      <File FileName="codegen/stmtreader.dyl" Line="126" Column="1" />
-      <File FileName="parser/exproptimizer.dyl" Line="1173" Column="1" />
-      <File FileName="codegen/symtable.dyl" Line="389" Column="1" />
-      <File FileName="codegen/milambdas.dyl" Line="78" Column="13" />
-      <File FileName="codegen/typeitem.dyl" Line="52" Column="1" />
-      <File FileName="codegen/typelist.dyl" Line="30" Column="1" />
-      <File FileName="lexer/lexer.dyl" Line="29" Column="3" />
+      <File FileName="codegen/eval.dyl" Line="558" Column="1" />
+      <File FileName="codegen/helpers.dyl" Line="1105" Column="1" />
+      <File FileName="codegen/codegenerator.dyl" Line="51" Column="1" />
+      <File FileName="dnc/Mod1.dyl" Line="66" Column="1" />
+      <File FileName="parser/parser.dyl" Line="37" Column="1" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="1219" Column="9" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="1040" Column="1" />
+      <File FileName="codegen/stmtreader.dyl" Line="31" Column="1" />
+      <File FileName="parser/exproptimizer.dyl" Line="241" Column="1" />
+      <File FileName="codegen/symtable.dyl" Line="346" Column="1" />
+      <File FileName="codegen/milambdas.dyl" Line="41" Column="14" />
+      <File FileName="codegen/typeitem.dyl" Line="95" Column="1" />
+      <File FileName="codegen/typelist.dyl" Line="106" Column="1" />
+      <File FileName="lexer/lexer.dyl" Line="16" Column="1" />
+      <File FileName="test.dyl" Line="39" Column="1" />
+      <File FileName="dnu/streamu.dyl" Line="26" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -29,7 +30,7 @@
         </State>
       </Pad>
       <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
+        <State selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State />
@@ -41,7 +42,11 @@
       <Breakpoint file="/home/dylan/Desktop/compiler/codegen/eval.dyl" line="550" />
       <Breakpoint file="/home/dylan/Desktop/compiler/lexer/lexer.dyl" line="28" />
       <Breakpoint file="/var/www/Code/dylannet/compiler/test.dyl" line="39" />
-      <Breakpoint file="/var/www/Code/dylannet/compiler/dnc/Mod1.dyl" line="67" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/helpers.dyl" line="36" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/eval.dyl" line="1224" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/eval.dyl" line="558" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/stmtreader.dyl" line="46" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/stmtreader.dyl" line="31" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

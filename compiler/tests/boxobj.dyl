@@ -16,7 +16,7 @@ class public auto ansi Module1
 		Console::WriteLine($string$num)
 
 		var obj2 as object = $object$"12"
-		var obj2s as string = obj2
+		var obj2s as string = $string$obj2
 		var num3 as integer = $integer$obj2s
 		Console::WriteLine($string$num3)
 

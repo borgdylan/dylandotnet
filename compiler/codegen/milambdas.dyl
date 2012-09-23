@@ -9,7 +9,7 @@
 class private auto ansi MILambdas2
 
 	field assembly string Name
-	field assembly Type[] Params
+	field assembly IKVM.Reflection.Type[] Params
 
 	method assembly void MILambdas2()
 		me::ctor()
@@ -17,13 +17,13 @@ class private auto ansi MILambdas2
 		Params = null
 	end method
 
-	method assembly void MILambdas2(var name as string, var params as Type[])
+	method assembly void MILambdas2(var name as string, var params as IKVM.Reflection.Type[])
 		me::ctor()
 		Name = name
 		Params = params
 	end method
 
-	method assembly boolean CmpTyps(var arra as Type[], var arrb as Type[])
+	method assembly boolean CmpTyps(var arra as IKVM.Reflection.Type[], var arrb as IKVM.Reflection.Type[])
 		if arra[l] = arrb[l] then
 			if arra[l] = 0 then
 				return true
@@ -45,7 +45,7 @@ class private auto ansi MILambdas2
 		return (mi::Name == Name) and CmpTyps(mi::ParamTyps,Params)
 	end method
 
-	method assembly integer CalcDeriveness(var t as Type)
+	method assembly integer CalcDeriveness(var t as IKVM.Reflection.Type)
 		var d as integer = 1
 		do while t::get_BaseType() != null
 			d = d + 1

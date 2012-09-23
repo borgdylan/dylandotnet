@@ -176,5 +176,14 @@
     <None Include="codegen\tilambdas.dyl" />
     <None Include="ast\methodnametok.dyl" />
     <None Include="web.dyl" />
+    <None Include="ast\attrstmts.dyl" />
+    <None Include="ast\assemblyinfo.dyl" />
+    <None Include="codegen\assemblyinfo.dyl" />
+    <None Include="lexer\assemblyinfo.dyl" />
+    <None Include="parser\assemblyinfo.dyl" />
+    <None Include="dnu\assemblyinfo.dyl" />
+    <None Include="dnr\assemblyinfo.dyl" />
+    <None Include="dnc\assemblyinfo.dyl" />
+    <None Include="ast\attrvalpair.dyl" />
   </ItemGroup>
 </Project>

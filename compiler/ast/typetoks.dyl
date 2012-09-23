@@ -6,11 +6,11 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi TypeTok extends Token
+class public auto ansi TypeTok extends Token implements ICloneable
 
 	field public boolean IsArray
 	field public boolean IsByRef
-	field public Type RefTyp
+	field public IKVM.Reflection.Type RefTyp
 	//field public string OrdOp
 
 	method public void TypeTok()
@@ -29,7 +29,7 @@ class public auto ansi TypeTok extends Token
 		//OrdOp = ""
 	end method
 
-	method public void TypeTok(var value as Type)
+	method public void TypeTok(var value as IKVM.Reflection.Type)
 		me::ctor()
 		IsByRef = value::get_IsByRef()
 		if IsByRef then
@@ -42,6 +42,18 @@ class public auto ansi TypeTok extends Token
 		RefTyp = value
 		Value = value::ToString()
 		//OrdOp = ""
+	end method
+	
+	method public hidebysig virtual TypeTok CloneTT()
+		var tt as TypeTok = new TypeTok()
+		tt::IsArray = IsArray
+		tt::IsByRef = IsByRef
+		tt::RefTyp = RefTyp
+		return tt
+	end method
+	
+	method public hidebysig virtual final newslot object Clone()
+		return CloneTT()
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -58,7 +70,7 @@ class public auto ansi TypeTok extends Token
 
 end class
 
-class public auto ansi GenericTypeTok extends TypeTok
+class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 
 	field public TypeTok[] Params
 
@@ -70,6 +82,24 @@ class public auto ansi GenericTypeTok extends TypeTok
 	method public void GenericTypeTok(var value as string)
 		me::ctor(value)
 		Params = new TypeTok[0]
+	end method
+	
+	method public hidebysig virtual TypeTok CloneTT()
+		var tt as GenericTypeTok = new GenericTypeTok()
+		tt::IsArray = IsArray
+		tt::IsByRef = IsByRef
+		tt::RefTyp = RefTyp
+		tt::Params = new TypeTok[Params[l]]
+		var i as integer = -1
+		do until i = (Params[l] - 1)
+			i = i + 1
+			tt::Params[i] = Params[i]::CloneTT()
+		end do
+		return tt
+	end method
+	
+	method public hidebysig virtual final newslot object Clone()
+		return CloneTT()
 	end method
 
 	method public void AddParam(var param as TypeTok)
@@ -115,12 +145,12 @@ class public auto ansi StringTok extends TypeTok
 
 	method public void StringTok()
 		me::ctor("string")
-		RefTyp = gettype string
+		RefTyp = ILEmitter::Univ::Import(gettype string)
 	end method
 
 	method public void StringTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype string
+		RefTyp = ILEmitter::Univ::Import(gettype string)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -141,12 +171,12 @@ class public auto ansi IntegerTok extends TypeTok
 
 	method public void IntegerTok()
 		me::ctor("integer")
-		RefTyp = gettype integer
+		RefTyp = ILEmitter::Univ::Import(gettype integer)
 	end method
 
 	method public void IntegerTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype integer
+		RefTyp = ILEmitter::Univ::Import(gettype integer)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -167,12 +197,12 @@ class public auto ansi DoubleTok extends TypeTok
 
 	method public void DoubleTok()
 		me::ctor("double")
-		RefTyp = gettype double
+		RefTyp = ILEmitter::Univ::Import(gettype double)
 	end method
 
 	method public void DoubleTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype double
+		RefTyp = ILEmitter::Univ::Import(gettype double)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -193,12 +223,12 @@ class public auto ansi BooleanTok extends TypeTok
 
 	method public void BooleanTok()
 		me::ctor("boolean")
-		RefTyp = gettype boolean
+		RefTyp = ILEmitter::Univ::Import(gettype boolean)
 	end method
 
 	method public void BooleanTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype boolean
+		RefTyp = ILEmitter::Univ::Import(gettype boolean)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -219,12 +249,12 @@ class public auto ansi CharTok extends TypeTok
 
 	method public void CharTok()
 		me::ctor("char")
-		RefTyp = gettype char
+		RefTyp = ILEmitter::Univ::Import(gettype char)
 	end method
 
 	method public void CharTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype char
+		RefTyp = ILEmitter::Univ::Import(gettype char)
 	end method
 
 	method public hidebysig virtual string ToString()
@@ -245,12 +275,12 @@ class public auto ansi DecimalTok extends TypeTok
 
 	method public void DecimalTok()
 		me::ctor("decimal")
-		RefTyp = gettype decimal
+		RefTyp = ILEmitter::Univ::Import(gettype decimal)
 	end method
 
 	method public void DecimalTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype decimal
+		RefTyp = ILEmitter::Univ::Import(gettype decimal)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -271,12 +301,12 @@ class public auto ansi LongTok extends TypeTok
 
 	method public void LongTok()
 		me::ctor("long")
-		RefTyp = gettype long
+		RefTyp = ILEmitter::Univ::Import(gettype long)
 	end method
 
 	method public void LongTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype long
+		RefTyp = ILEmitter::Univ::Import(gettype long)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -297,12 +327,12 @@ class public auto ansi SByteTok extends TypeTok
 
 	method public void SByteTok()
 		me::ctor("sbyte")
-		RefTyp = gettype sbyte
+		RefTyp = ILEmitter::Univ::Import(gettype sbyte)
 	end method
 
 	method public void SByteTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype sbyte
+		RefTyp = ILEmitter::Univ::Import(gettype sbyte)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -323,12 +353,12 @@ class public auto ansi ShortTok extends TypeTok
 
 	method public void ShortTok()
 		me::ctor("short")
-		RefTyp = gettype short
+		RefTyp = ILEmitter::Univ::Import(gettype short)
 	end method
 
 	method public void ShortTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype short
+		RefTyp = ILEmitter::Univ::Import(gettype short)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -349,12 +379,12 @@ class public auto ansi SingleTok extends TypeTok
 
 	method public void SingleTok()
 		me::ctor("single")
-		RefTyp = gettype single
+		RefTyp = ILEmitter::Univ::Import(gettype single)
 	end method
 
 	method public void SingleTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype single
+		RefTyp = ILEmitter::Univ::Import(gettype single)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -375,12 +405,12 @@ class public auto ansi ObjectTok extends TypeTok
 
 	method public void ObjectTok()
 		me::ctor("object")
-		RefTyp = gettype object
+		RefTyp = ILEmitter::Univ::Import(gettype object)
 	end method
 
 	method public void ObjectTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype object
+		RefTyp = ILEmitter::Univ::Import(gettype object)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -401,12 +431,12 @@ class public auto ansi VoidTok extends TypeTok
 
 	method public void VoidTok()
 		me::ctor("void")
-		RefTyp = gettype void
+		RefTyp = ILEmitter::Univ::Import(gettype void)
 	end method
 
 	method public void VoidTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype void
+		RefTyp = ILEmitter::Univ::Import(gettype void)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -419,12 +449,12 @@ class public auto ansi UIntegerTok extends TypeTok
 
 	method public void UIntegerTok()
 		me::ctor("uinteger")
-		RefTyp = gettype uinteger
+		RefTyp = ILEmitter::Univ::Import(gettype uinteger)
 	end method
 
 	method public void UIntegerTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype uinteger
+		RefTyp = ILEmitter::Univ::Import(gettype uinteger)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -445,12 +475,12 @@ class public auto ansi ULongTok extends TypeTok
 
 	method public void ULongTok()
 		me::ctor("ulong")
-		RefTyp = gettype ulong
+		RefTyp = ILEmitter::Univ::Import(gettype ulong)
 	end method
 
 	method public void ULongTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype ulong
+		RefTyp = ILEmitter::Univ::Import(gettype ulong)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -471,12 +501,12 @@ class public auto ansi ByteTok extends TypeTok
 
 	method public void ByteTok()
 		me::ctor("byte")
-		RefTyp = gettype byte
+		RefTyp = ILEmitter::Univ::Import(gettype byte)
 	end method
 
 	method public void ByteTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype byte
+		RefTyp = ILEmitter::Univ::Import(gettype byte)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -497,12 +527,12 @@ class public auto ansi UShortTok extends TypeTok
 
 	method public void UShortTok()
 		me::ctor("ushort")
-		RefTyp = gettype UInt16
+		RefTyp = ILEmitter::Univ::Import(gettype UInt16)
 	end method
 
 	method public void UShortTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype UInt16
+		RefTyp = ILEmitter::Univ::Import(gettype UInt16)
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -523,12 +553,12 @@ class public auto ansi IntPtrTok extends TypeTok
 
 	method public void IntPtrTok()
 		me::ctor("intptr")
-		RefTyp = gettype IntPtr
+		RefTyp = ILEmitter::Univ::Import(gettype IntPtr)
 	end method
 
 	method public void IntPtrTok(var value as string)
 		me::ctor(value)
-		RefTyp = gettype IntPtr
+		RefTyp = ILEmitter::Univ::Import(gettype IntPtr)
 	end method
 	
 	method public hidebysig virtual string ToString()

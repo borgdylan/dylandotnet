@@ -35,7 +35,7 @@ class public auto ansi MethodNameTok extends Ident
 	method public static specialname MethodNameTok op_Implicit(var idt as Ident)
 		var mntt as Type = gettype MethodNameTok
 		if mntt::IsInstanceOfType(idt) then
-			return idt
+			return $MethodNameTok$idt
 		else
 			return new MethodNameTok(idt)
 		end if
@@ -77,7 +77,7 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok
 	method public static specialname GenericMethodNameTok op_Implicit(var idt as Ident)
 		var gmntt as Type = gettype GenericMethodNameTok
 		if gmntt::IsInstanceOfType(idt) then
-			return idt
+			return $GenericMethodNameTok$idt
 		else
 			return new GenericMethodNameTok(idt)
 		end if

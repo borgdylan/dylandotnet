@@ -1,3 +1,65 @@
+dylandotnet (11.2.9.6-1) precise; urgency=low
+
+  * Updating man pages and makefiles.
+  * Allowing Loader.LoadMethod to treat array types as System.Array.
+  * Allowing chaining on arrays.
+  * ABI break in Loader with special method loader returning IEnumerable<of MethodInfo>
+  * Adding support in loader for finding generic methods.
+  * Adding support for interface creation and implementation.
+  * Adding support for explicit implementation of non-generic interfaces.
+  * Adding support for implicit implementation of generic/normal interfaces.
+  * Adding support for using generic types and methods in code.
+  * Supporting LINQ to XML, LINQ to Objects, (LINQ to DataSet), Generic Collections.
+  * ABI break in SymTable with StoreFlg being the only public field.
+  * Beginning SymTable transition from arrays to generic collections.
+  * Transitioning completely OpStack to use Stack<of Token>
+  * Adding internal classes in dnr and codegen to support internal LINQ queries.
+  * Transitioning operator overload binding to use the Default Binder.
+  * Implementing a binder for local method/constructor calls.
+  * Changing vector test sample to implement some generic interfaces.
+  * Adding GenericMethodNameTok in AST.
+  * Adding parsing methods for generic type names and method names.
+  * ABI break in TokenOptimizer.Optimize, now also needs a lookahead.
+  * Beginning 3 phased codegen implementation.
+  * Transitioning current class member searches to 3 phased format.
+  * Creating a TypeItem for every created class.
+  * Adding a TypeList API for querying the assembly being made.
+  * Refactoring TokenOptimizer in order to speed it up.
+  * Making ParserFlags an instance class to allow simulataneous parsing.
+  * Changing the way the assembly keyword is parsed (diff logic, same outcomes).
+  * Adding error detection for constructor invocations.
+  * Bumping up assembly versions to 11.2.9.5
+  * Beginning a new syntax manual in man-page format.
+  * Updating makefiles so as to install dylandotnet.7 file.
+  * Updating README.
+  * Adding constructors for MethodNameTok and GenericMethodNameTok.
+  * Adding mechanism to make the GenericMethodNameTok and MethodNameTok
+  *     from Ident instances (includes operator overloads).
+  * Adding Path field to StmtSet plus a constructor to set it.
+  * Continuing Evaluator transition to new APIs.
+  * Adding new me::ctor alias mybase::ctor .
+  * Adding helper methods in codegen for numeric type determination.
+  * Adapting many class functions to use the new string escaping syntax.
+  * Fixing a TypeList bug.
+  * Optimizing ProcessType.
+  * In dnu, adding IsHexDigit and ProcessString (escaping function)
+  * Bumping up versions to 11.2.9.6
+  * Adding stub dylan.NET.Web files (gnu affero).
+  * Adding ToString() for many AST classes.
+  * Separating MethodNameTok and GenericMethodNameTok in another file.
+  * Adding support for mybase:: prefix for method calls.
+  * Adding more error output cases for assignment cases.
+  * Adding dnr and Helpers modifications for mybase:: prefix support.
+  * Adding flag for determining if current context is a constructor.
+  * Removing some redundant conversions.
+  * Adding warning that signals redundant conversions.
+  * Making new codegen API additions better.
+  * Adding support for access control in TypeList.
+  * Forcing dylandotnet.7 install to dylandotnet-doc package.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 23 Jul 2012 22:34:26 +0100
+
+
 dylandotnet (11.2.9.2-1) experimental; urgency=low
 
   * (Closes:626078)

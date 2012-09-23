@@ -1,3 +1,24 @@
+commit 5c202cf3c70ec1e7985539814d87e0f0737d9138
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Jul 23 22:24:19 2012 +0200
+
+    Committing dylan.NET 11.2.9.6 to GIT and BZR
+      * Bumping up versions to 11.2.9.6
+      * Updating Makefiles and man pages.
+      * Adding stub dylan.NET.Web files (gnu affero).
+      * Adding ToString() for many AST classes.
+      * Separating MethodNameTok and GenericMethodNameTok in another file.
+      * Adding support for mybase:: prefix for method calls.
+      * Adding more error output cases for assignment cases.
+      * Adding dnr and Helpers modifications for mybase:: prefix support.
+      * Adding flag for determining if current context is a constructor.
+      * Removing some redundant conversions.
+      * Adding warning that signals redundant conversions.
+      * Making new codegen API additions better.
+      * Adding support for access control in TypeList.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 457857321b8e17306d3173582fd7c4d66f5e5c5a
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Thu Jul 19 20:13:22 2012 +0200

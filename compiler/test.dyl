@@ -33,10 +33,10 @@ ver 1.3.0.0
 class public auto ansi Program
 
 	method public static void main()
-		Environment::set_CurrentDirectory("/var/www/Code/dylannet/compiler/templateproj")
+		Environment::set_CurrentDirectory("/var/www/Code/dylannet/nunittest")
 		var arr as string[] = new string[1]
-		arr[0] = "template.dyl"
-		Module1::main(arr)
+		arr[0] = "nunittest.dyl"
+		Program::Invoke(arr)
 		//var ln as Line = new Line()
 		//var st as Stmt = ln::Analyze(new Stmt(),"x = Array::BinarySearch(new integer[2],12)")
 		//var exp as Expr = new Expr()
@@ -62,11 +62,10 @@ class public auto ansi Program
 		//Importer::AddImp("System.Collections.Generic")
 		//var t as Type = Helpers::CommitEvalTTok($TypeTok$exp::Tokens[0])
 		//var tl as TypeList = SymTable::TypeLst
-		//var ti1 as TypeItem = tl::GetTypeItem("StreamUtils")
-		//var ti2 as TypeItem = tl::GetTypeItem(ti1::TypeBldr)
-		//var ci as ConstructorBuilder = tl::GetCtor(ti1::TypeBldr,Type::EmptyTypes)
-		//var mi as MethodBuilder = tl::GetMethod(ti1::TypeBldr,"CloseOutS",Type::EmptyTypes)
-		//var fi as FieldBuilder = tl::GetField(ti1::TypeBldr,"WarnH")
+		//var fil as Type = tl::GetType("FILambdas")
+		//var ta as Type[] = new Type[1]
+		//ta[0] = tl::GetType("FieldItem")
+		//var mi as MethodInfo = tl::GetMethod(fil,"DetermineIfCandidate", ta)
 	end method
 
 end class

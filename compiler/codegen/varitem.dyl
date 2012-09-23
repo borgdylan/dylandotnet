@@ -12,14 +12,14 @@ class public auto ansi VarItem
 	// t for loc f for arg
 	field public boolean LocArg
 	field public integer Index
-	field public Type VarTyp
+	field public IKVM.Reflection.Type VarTyp
 	field public boolean Used
 	field public boolean Stored
 	field public integer Line
 
 	method public void VarItem()
 		me::ctor()
-		Name = ""
+		Name = String::Empty
 		LocArg = false
 		Index = -1
 		VarTyp = null
@@ -28,7 +28,7 @@ class public auto ansi VarItem
 		Line = 0
 	end method
 
-	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as Type)
+	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type)
 		me::ctor()
 		Name = nme
 		LocArg = la
@@ -39,7 +39,7 @@ class public auto ansi VarItem
 		Line = 0
 	end method
 
-	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as Type, var line as integer)
+	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type, var line as integer)
 		me::ctor()
 		Name = nme
 		LocArg = la
@@ -48,6 +48,10 @@ class public auto ansi VarItem
 		Used = false
 		Stored = false
 		Line = line
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return Name
 	end method
 
 end class

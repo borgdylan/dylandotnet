@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi ParserFlags
+class public auto ansi Flags
 
 	field public boolean IfFlag
 	//field public boolean AssemFlg
@@ -31,7 +31,7 @@ class public auto ansi ParserFlags
 	field public boolean StringFlag
 	field public string CurPath
 
-	method public void ParserFlags()
+	method public void Flags()
 		me::ctor()
 		//true only for first parser
 		//AssemFlg = false
@@ -48,7 +48,7 @@ class public auto ansi ParserFlags
 		RefFlag = false
 		ValinrefFlag = false
 		ConvTyp = null
-		OrdOp = ""
+		OrdOp = String::Empty
 		isChanged = false
 		DurConvFlag = false
 		IdentFlag = false
@@ -56,7 +56,7 @@ class public auto ansi ParserFlags
 		MetChainFlag = false
 		ProcessTTokOnly = false
 		StringFlag = false
-		CurPath = ""
+		CurPath = String::Empty
 	end method
 
 	method public void SetUnaryFalse()
@@ -68,7 +68,7 @@ class public auto ansi ParserFlags
 		RefFlag = false
 		ValinrefFlag = false
 		ConvTyp = null
-		OrdOp = ""
+		OrdOp = String::Empty
 		isChanged = false
 		DurConvFlag = false
 	end method
