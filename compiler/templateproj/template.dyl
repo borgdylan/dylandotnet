@@ -4,6 +4,7 @@
 #refstdasm "System.dll"
 #refstdasm "System.Core.dll"
 #refstdasm "System.Xml.Linq.dll"
+#refasm "C5.Mono.dll"
 
 import System
 import System.IO
@@ -13,7 +14,11 @@ import System.Security.Permissions
 import System.Xml.Linq
 import System.Xml.Xpath
 import System.Reflection
+import System.Collections
 import System.Collections.Generic
+import SCGIE = System.Collections.Generic.IEnumerable
+import SCG = System.Collections.Generic
+import System.Threading
 import template
 
 #debug on
@@ -125,8 +130,8 @@ class public auto ansi Program
 		sw::WriteLine("</root>")
 		var xel as XElement = XElement::Parse(sw::ToString())
 		Console::WriteLine(xel::ToString())
-		var iexel as IEnumerable<of XElement> = XPath.Extensions::XPathSelectElements(xel,"./a")
-		var ienumxel as IEnumerator<of XElement> = iexel::GetEnumerator()
+		var iexel as SCGIE<of XElement> = XPath.Extensions::XPathSelectElements(xel,"./a")
+		var ienumxel as SCG.IEnumerator<of XElement> = iexel::GetEnumerator()
 		var pxel as Action<of XElement> = new Action<of XElement>(PrintXElement())
 		do while ienumxel::MoveNext()
 			pxel::Invoke(ienumxel::get_Current())
@@ -239,57 +244,114 @@ class public auto ansi Program
 	
 	method public static void inouttest(inout var p as integer&)
 	end method
+	
+	method public static void scopingtests()
+		var i as integer = 0
+		
+		do
+			var i as integer
+			i = 12
+			Console::WriteLine(i)
+		until true
+		
+		i = 23
+		Console::WriteLine(i)
+	end method
+	
+	method public static void foreachtests()
+		
+		var arr as integer[] = new integer[2]
+		arr[0] = 3
+		arr[1] = 23
+		
+		foreach i in arr
+			Console::WriteLine(i)
+		end for
+		
+		Console::WriteLine("--------------------------")
+		
+		var arr2 as string[] = new string[4]
+		arr2[0] = "This"
+		arr2[1] = "is"
+		arr2[2] = "a"
+		arr2[3] = "foreach"
+		
+		foreach i in arr2
+			Console::WriteLine(i)
+		end for
+		
+		Console::WriteLine("--------------------------")
+		
+		var tl as C5.IList<of long> = new C5.LinkedList<of long>()
+		var tli as integer = 0
+		do until tli = 10
+			tli = tli + 1
+			var dt as DateTime = DateTime::get_Now()
+			tl::Add(dt::get_Ticks() / TimeSpan::TicksPerMillisecond)
+			Thread::Sleep(500)
+		end do
+		
+		foreach dt in tl
+			Console::WriteLine(dt::ToString())
+		end for
+		Console::WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~")
+		foreach dt in tl::Backwards()
+			Console::WriteLine(dt::ToString())
+		end for
+		
+	end method
 
 	[method: STAThread()]
 	method public static void main()
-		gentest()
-		var hc as HelloClass = new HelloClass()
-		var ih as IHello = $IHello$hc
-	    ih::Hello()
-		var ih2 as IHello2 = $IHello2$hc
-		ih2::Hello2()
-		var ih3 as IHello3 = $IHello3$hc
-		ih3::Hello()
-		hc::Hello2()
-		exthrow()
-		var a as string = "z"
-		var b as boolean = "a" like "^(.)*$"
-		b = 10 == $integer$MethodAttributes::Final
-		b = new Decimal(4) == new Decimal(78)
-		b = (100ui > 67ui) or (100ui >= 67ui) or (100ui < 67ui) or (100ui <= 67ui)
-		b = test2()[0]
-		test(ref|b)
-		test(ref|test2()[0])
-		test(ref|a)
-		var i as integer = 34
-		test(ref|i)
-		var ba as boolean[] = new boolean[1]
-		ba[0] = false
-		test(ref|ba[0])
-		test(ref|ba)
-		Console::WriteLine('a' + $char$4)
-		var ubv as byte = 6ub
-		var usv as ushort = 6us
-		var uiv as uinteger = 3294967295ui
-		Console::WriteLine(Convert::ToString(((((UInt32::MaxValue - 17ui) / 30ui) * 9ui) + 5ui))) % 21ui
-		Console::WriteLine(((((Int32::MaxValue - 10) / 20) * 10) + 9) % 20)
-		var ulv as ulong = 0ul
-		ulv = 6ul
-		ulv = 6004ul
-		ulv = UInt64::MaxValue
-		//Int64::MaxValue
-		ulv = 9223372036854775807ul
-		var arr as integer[]  = new integer[1]
-		arr[0] = 3
-		arr[0]::ToString()
-		var dv as decimal = 7m
-		dv = 9223372036854775802m
-		dv = 2.5m
-		dv = 14028230000000000000000000006m
-		var typ as Type = gettype string[]
-		typ = gettype Func<of IEnumerable<of XElement> >
-		var xc as integer = ROTest::X
-		//ROTest::X = xc + 12
+//		gentest()
+//		var hc as HelloClass = new HelloClass()
+//		var ih as IHello = $IHello$hc
+//	    ih::Hello()
+//		var ih2 as IHello2 = $IHello2$hc
+//		ih2::Hello2()
+//		var ih3 as IHello3 = $IHello3$hc
+//		ih3::Hello()
+//		hc::Hello2()
+//		exthrow()
+//		var a as string = "z"
+//		var b as boolean = "a" like "^(.)*$"
+//		b = 10 == $integer$MethodAttributes::Final
+//		b = new Decimal(4) == new Decimal(78)
+//		b = (100ui > 67ui) or (100ui >= 67ui) or (100ui < 67ui) or (100ui <= 67ui)
+//		b = test2()[0]
+//		test(ref|b)
+//		test(ref|test2()[0])
+//		test(ref|a)
+//		var i as integer = 34
+//		test(ref|i)
+//		var ba as boolean[] = new boolean[1]
+//		ba[0] = false
+//		test(ref|ba[0])
+//		test(ref|ba)
+//		Console::WriteLine('a' + $char$4)
+//		var ubv as byte = 6ub
+//		var usv as ushort = 6us
+//		var uiv as uinteger = 3294967295ui
+//		Console::WriteLine(Convert::ToString(((((UInt32::MaxValue - 17ui) / 30ui) * 9ui) + 5ui))) % 21ui
+//		Console::WriteLine(((((Int32::MaxValue - 10) / 20) * 10) + 9) % 20)
+//		var ulv as ulong = 0ul
+//		ulv = 6ul
+//		ulv = 6004ul
+//		ulv = UInt64::MaxValue
+//		//Int64::MaxValue
+//		ulv = 9223372036854775807ul
+//		var arr as integer[]  = new integer[1]
+//		arr[0] = 3
+//		arr[0]::ToString()
+//		var dv as decimal = 7m
+//		dv = 9223372036854775802m
+//		dv = 2.5m
+//		dv = 14028230000000000000000000006m
+//		var typ as Type = gettype string[]
+//		typ = gettype Func<of IEnumerable<of XElement> >
+//		var xc as integer = ROTest::X
+//		//ROTest::X = xc + 12
+		foreachtests()
 	end method
 
 end class

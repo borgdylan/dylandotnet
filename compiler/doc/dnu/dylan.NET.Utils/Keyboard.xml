@@ -20,6 +20,7 @@
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
     <AssemblyVersion>11.2.9.7</AssemblyVersion>
+    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -80,6 +81,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -118,6 +120,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -156,6 +159,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -194,6 +198,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -232,6 +237,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -270,6 +276,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -308,6 +315,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -346,6 +354,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -384,6 +393,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>

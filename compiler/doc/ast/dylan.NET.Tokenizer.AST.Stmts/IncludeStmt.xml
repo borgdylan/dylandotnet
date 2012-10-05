@@ -26,6 +26,7 @@
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
     <AssemblyVersion>11.2.9.7</AssemblyVersion>
+    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
@@ -64,6 +65,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -99,9 +101,25 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SSet">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.StmtSet SSet;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Stmts.StmtSet SSet" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.StmtSet</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -115,6 +133,7 @@
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>

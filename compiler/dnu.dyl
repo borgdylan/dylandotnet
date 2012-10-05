@@ -15,6 +15,8 @@
 #refstdasm "System.Core.dll"
 #refstdasm "System.Xml.Linq.dll"
 
+#refasm "C5.Mono.dll"
+
 import System
 import System.IO
 import System.Globalization
@@ -35,7 +37,7 @@ import dylan.NET
 #include "dnu/assemblyinfo.dyl"
 
 assembly dnu dll
-ver 11.2.9.7
+ver 11.2.9.8
 
 namespace dylan.NET.Utils
 	#include "dnu/consts.dyl"

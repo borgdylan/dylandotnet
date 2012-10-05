@@ -8,6 +8,7 @@
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
     <AssemblyVersion>11.2.9.7</AssemblyVersion>
+    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -28,6 +29,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -45,6 +47,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -64,6 +67,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -83,6 +87,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.ConstructorBuilder</ReturnType>
@@ -99,37 +104,13 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetCtor">
-      <MemberSignature Language="C#" Value="public System.Reflection.Emit.ConstructorBuilder GetCtor (Type t, Type[] paramst);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class System.Reflection.Emit.ConstructorBuilder GetCtor(class System.Type t, class System.Type[] paramst) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Reflection.Emit.ConstructorBuilder</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="t" Type="System.Type" />
-        <Parameter Name="paramst" Type="System.Type[]" />
-      </Parameters>
-      <Docs>
-        <param name="t">To be added.</param>
-        <param name="paramst">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GetField">
       <MemberSignature Language="C#" Value="public IKVM.Reflection.FieldInfo GetField (IKVM.Reflection.Type t, string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.FieldInfo GetField(class IKVM.Reflection.Type t, string nam) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.FieldInfo</ReturnType>
@@ -146,37 +127,13 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetField">
-      <MemberSignature Language="C#" Value="public System.Reflection.Emit.FieldBuilder GetField (Type t, string nam);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class System.Reflection.Emit.FieldBuilder GetField(class System.Type t, string nam) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Reflection.Emit.FieldBuilder</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="t" Type="System.Type" />
-        <Parameter Name="nam" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="t">To be added.</param>
-        <param name="nam">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GetMethod">
       <MemberSignature Language="C#" Value="public IKVM.Reflection.MethodInfo GetMethod (IKVM.Reflection.Type t, string nam, IKVM.Reflection.Type[] paramst);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.MethodInfo GetMethod(class IKVM.Reflection.Type t, string nam, class IKVM.Reflection.Type[] paramst) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
@@ -195,39 +152,13 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetMethod">
-      <MemberSignature Language="C#" Value="public System.Reflection.Emit.MethodBuilder GetMethod (Type t, string nam, Type[] paramst);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class System.Reflection.Emit.MethodBuilder GetMethod(class System.Type t, string nam, class System.Type[] paramst) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Reflection.Emit.MethodBuilder</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="t" Type="System.Type" />
-        <Parameter Name="nam" Type="System.String" />
-        <Parameter Name="paramst" Type="System.Type[]" />
-      </Parameters>
-      <Docs>
-        <param name="t">To be added.</param>
-        <param name="nam">To be added.</param>
-        <param name="paramst">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GetType">
       <MemberSignature Language="C#" Value="public IKVM.Reflection.Type GetType (string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.Type GetType(string nam) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Type</ReturnType>
@@ -271,6 +202,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.CodeGen.TypeItem</ReturnType>
@@ -295,6 +227,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.CodeGen.TypeItem</ReturnType>
@@ -333,8 +266,8 @@
       </Docs>
     </Member>
     <Member MemberName="Types">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;dylan.NET.Tokenizer.CodeGen.TypeItem&gt; Types;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Collections.Generic.List`1&lt;class dylan.NET.Tokenizer.CodeGen.TypeItem&gt; Types" />
+      <MemberSignature Language="C#" Value="public C5.IList&lt;dylan.NET.Tokenizer.CodeGen.TypeItem&gt; Types;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.IList`1&lt;class dylan.NET.Tokenizer.CodeGen.TypeItem&gt; Types" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
@@ -342,9 +275,10 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;dylan.NET.Tokenizer.CodeGen.TypeItem&gt;</ReturnType>
+        <ReturnType>C5.IList&lt;dylan.NET.Tokenizer.CodeGen.TypeItem&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

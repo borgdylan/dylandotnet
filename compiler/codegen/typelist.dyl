@@ -8,33 +8,31 @@
 
 class public auto ansi TypeList
 
-	field public List<of TypeItem> Types
+	field public C5.IList<of TypeItem> Types
 
 	method public void TypeList()
 		me::ctor()
-		Types = new List<of TypeItem>()
+		Types = new C5.LinkedList<of TypeItem>()
 	end method
 
 	method public TypeItem GetTypeItem(var nam as string)
-		var lot as IEnumerable<of TypeItem> = Types
-		var lon as IList<of string> = new List<of string>(Importer::Imps)
-		var lonproxy as IEnumerable<of string> = lon
+		var lon as C5.IList<of string> = new C5.LinkedList<of string>()
+		lon::AddAll(Importer::Imps)
 		lon::Add(String::Empty)
-		var lone as IEnumerator<of string> = lonproxy::GetEnumerator()
-
-		do while lone::MoveNext()
+		
+		foreach ns in lon
 			var til as TILambdas
-			if lone::get_Current()::get_Length() = 0 then
+			if ns::get_Length() = 0 then
 				til = new TILambdas(nam)
 			else
-				til = new TILambdas(lone::get_Current() + "." + nam)
+				til = new TILambdas(ns + "." + nam)
 			end if
-			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(lot,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
+			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
 			var matches as TypeItem[] = Enumerable::ToArray<of TypeItem>(lot2)
 			if matches[l] != 0 then
 				return matches[0]
 			end if
-		end do
+		end for
 
 		return null
 	end method

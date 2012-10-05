@@ -19,6 +19,7 @@
 #refasm "dnu.dll"
 #refasm "dnr.dll"
 #refasm "IKVM.Reflection.dll"
+#refasm "C5.Mono.dll"
 
 import System
 import System.IO
@@ -54,7 +55,7 @@ import dylan.NET.Tokenizer.CodeGen
 #include "codegen/assemblyinfo.dyl"
 
 assembly tokenizer.CodeGen dll
-ver 11.2.9.7
+ver 11.2.9.8
 
 namespace dylan.NET.Tokenizer.CodeGen
 	#include "codegen/varitem.dyl"

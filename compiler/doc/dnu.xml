@@ -161,6 +161,13 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Utils.ParseUtils.StringParserL(System.String,System.String)">
+            <param name="StringToParse">To be added.</param>
+            <param name="DelimeterChar">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Utils.StreamUtils">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

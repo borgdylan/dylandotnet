@@ -35,8 +35,6 @@ class public auto ansi static Loader
 	method public static IKVM.Reflection.Type LoadClass(var name as string) 
 
 		var typ as IKVM.Reflection.Type = null
-		var curasm as IKVM.Reflection.Assembly = null
-		var curns as string = String::Empty
 		var nest as boolean = false
 		var asmb as IKVM.Reflection.Emit.AssemblyBuilder
 
@@ -46,12 +44,27 @@ class public auto ansi static Loader
 			nest = true
 		end if
 		
-		var asms as IList<of IKVM.Reflection.Assembly> = Importer::Asms
-		var asmsproxy as IEnumerable<of IKVM.Reflection.Assembly> = asms
-		var asmse as IEnumerator<of IKVM.Reflection.Assembly> = asmsproxy::GetEnumerator()
-		do while asmse::MoveNext()
-			curasm = asmse::get_Current()
-
+		foreach curasm in Importer::Asms
+			
+			foreach alias in Importer::AliasMap::get_Keys()
+				if name = alias then
+					Console::Write(name + " -> ")
+					name = Importer::AliasMap::get_Item(alias)
+					Console::WriteLine(name)
+					break
+				elseif name like ("^" + alias + "`\d+$") then
+					Console::Write(name + " -> ")
+					name = Importer::AliasMap::get_Item(alias) + name::Substring(alias::get_Length())
+					Console::WriteLine(name)
+					break
+				elseif name::StartsWith(alias + ".") then
+					Console::Write(name + " -> ")
+					name = Importer::AliasMap::get_Item(alias) + name::Substring(alias::get_Length())
+					Console::WriteLine(name)
+					break
+				end if
+			end for
+			
 			if curasm = AsmFactory::AsmB then
 				asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
 				typ = asmb::GetType(name,false,false)
@@ -71,11 +84,8 @@ class public auto ansi static Loader
 				end if
 			end if
 
-			var imps as IEnumerable<of string> = Importer::Imps
-			var impse as IEnumerator<of string> = imps::GetEnumerator()
-			do while impse::MoveNext()
-				curns = impse::get_Current()
-
+			name = na[0]
+			foreach curns in Importer::Imps
 				if curasm = AsmFactory::AsmB then
 					asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
 					typ = asmb::GetType(curns + "." + name,false,false)
@@ -85,7 +95,6 @@ class public auto ansi static Loader
 						end if
 						break
 					end if
-
 				else
 					typ = curasm::GetType(curns + "." + name)
 					if typ != null then
@@ -95,13 +104,13 @@ class public auto ansi static Loader
 						break
 					end if
 				end if
-			end do
+			end for
 			
 			if typ != null then
 				break
 			end if
 			
-		end do
+		end for
 		
 		PreProcTyp = typ
 
@@ -327,13 +336,13 @@ class public auto ansi static Loader
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadSpecMtds(var typ as IKVM.Reflection.Type)
 		//var tempie as IEnumerable = typ::GetMethods()
-		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = Enumerable::OfType<of IKVM.Reflection.MethodInfo>(typ::GetMethods())
+		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = typ::GetMethods()
 		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,boolean>(MILambdas::IsSpecial()))
 	end method
 
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadGenericMtdOverlds(var typ as IKVM.Reflection.Type, var name as string, var paramlen as integer)
-		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = Enumerable::OfType<of IKVM.Reflection.MethodInfo>(typ::GetMethods())
+		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = typ::GetMethods()
 		var mil as MILambdas = new MILambdas(name,paramlen)
 		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::GenericMtdFilter()))
 	end method

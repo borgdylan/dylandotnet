@@ -21,6 +21,8 @@ install: prodscript
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet/tokenizer.CodeGen.dll
 	$(install_sh_PROGRAM) IKVM.Reflection.dll $(DESTDIR)$(libdir)/dylandotnet/IKVM.Reflection.dll
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet/IKVM.Reflection.dll
+	$(install_sh_PROGRAM) C5.Mono.dll $(DESTDIR)$(libdir)/dylandotnet/C5.Mono.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/C5.Mono.dll
 	$(install_sh_PROGRAM) dnc.exe $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
 	

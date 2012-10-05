@@ -28,6 +28,19 @@ class public auto ansi DoUntilStmt extends Stmt
 
 end class
 
+class public auto ansi ForeachStmt extends Stmt
+
+	field public Expr Exp
+	field public Ident Iter
+
+	method public void ForeachStmt()
+		me::ctor()
+		Exp = new Expr()
+		Iter = new Ident()
+	end method
+
+end class
+
 class public auto ansi WhileStmt extends Stmt
 
 	field public Expr Exp

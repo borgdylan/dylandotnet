@@ -47,6 +47,7 @@ all:
 	'$(MONO)' ../2.0/dnc.exe dylrecurse.dyl | tee -a buildlog
 	'$(MONO)' ../2.0/dnc.exe strrecurse.dyl | tee -a buildlog
 	'$(MONO)' ../2.0/dnc.exe protectedtests.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe transnames.dyl | tee -a buildlog
 	
 install:
 	tar -czf tests.tar.gz *

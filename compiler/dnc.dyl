@@ -36,7 +36,7 @@ import dylan.NET.Tokenizer.CodeGen
 #include "dnc/assemblyinfo.dyl"
 
 assembly dnc exe
-ver 11.2.9.7
+ver 11.2.9.8
 
 namespace dylan.NET.Compiler
 	#include "dnc/Mod1.dyl"

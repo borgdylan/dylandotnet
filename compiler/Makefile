@@ -96,7 +96,7 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoheader
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.7\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.7\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.7\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.8\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.8\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.8\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
@@ -118,16 +118,16 @@ MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.9.7
+PACKAGE_STRING = dylandotnet 11.2.9.8
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.9.7
+PACKAGE_VERSION = 11.2.9.8
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.9.7
+VERSION = 11.2.9.8
 abs_builddir = /var/www/Code/dylannet/compiler
 abs_srcdir = /var/www/Code/dylannet/compiler
 abs_top_builddir = /var/www/Code/dylannet/compiler
@@ -560,6 +560,7 @@ all:
 	cp ./lib/IKVM.Reflection.dll ./2.0/IKVM.Reflection.dll
 	cp ./lib/IKVM.Reflection.dll ./4.0/IKVM.Reflection.dll
 
+	cp ./lib/4.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 4.0/dnc.exe -V > buildlog4
 	'$(MONO)' 4.0/dnc.exe dnu.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnr.dyl | tee -a buildlog4
@@ -569,6 +570,7 @@ all:
 	'$(MONO)' 4.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnc.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe web.dyl | tee -a buildlog4
+	cp ./lib/4.0/C5.Mono.dll ./4.0/C5.Mono.dll
 	cp dnu.dll 4.0/dnu.dll
 	cp dnr.dll 4.0/dnr.dll
 	cp tokenizer.AST.dll 4.0/tokenizer.AST.dll
@@ -578,6 +580,7 @@ all:
 	cp dnc.exe 4.0/dnc.exe
 	cp web.dll 4.0/web.dll
 
+	cp ./lib/2.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 2.0/dnc.exe -V > buildlog
 	'$(MONO)' 2.0/dnc.exe dnu.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe dnr.dyl | tee -a buildlog
@@ -586,6 +589,7 @@ all:
 	'$(MONO)' 2.0/dnc.exe tokenizer.Parser.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe dnc.dyl | tee -a buildlog
+	cp ./lib/2.0/C5.Mono.dll ./2.0/C5.Mono.dll
 	cp dnu.dll 2.0/dnu.dll
 	cp dnr.dll 2.0/dnr.dll
 	cp tokenizer.AST.dll 2.0/tokenizer.AST.dll

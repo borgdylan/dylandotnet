@@ -4,6 +4,7 @@
   <AssemblyInfo>
     <AssemblyName>dnc</AssemblyName>
     <AssemblyVersion>11.2.9.7</AssemblyVersion>
+    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -20,6 +21,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>

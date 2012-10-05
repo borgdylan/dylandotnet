@@ -8,14 +8,16 @@
 
 class public auto ansi static Importer
 
-	field public static List<of IKVM.Reflection.Assembly> Asms
-	field public static List<of string> Imps
-	field public static List<of string> LocImps
+	field public static C5.IList<of IKVM.Reflection.Assembly> Asms
+	field public static C5.IList<of string> Imps
+	field public static C5.IList<of string> LocImps
+	field public static C5.IDictionary<of string,string> AliasMap
 
 	[method: ComVisible(false)]
 	method public static void Init()
-		Asms = new List<of IKVM.Reflection.Assembly>()
-		Imps = new List<of string>()
+		Asms = new C5.LinkedList<of IKVM.Reflection.Assembly>()
+		Imps = new C5.LinkedList<of string>()
+		AliasMap = new C5.HashDictionary<of string,string>()
 	end method
 
 	method private static void Importer()
@@ -51,6 +53,11 @@ class public auto ansi static Importer
 	[method: ComVisible(false)]
 	method public static void AddImp(var imp as string)
 		Imps::Add(imp)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void RegisterAlias(var alias as string, var ns as string)
+		AliasMap::Add(alias, ns)
 	end method
 
 	[method: ComVisible(false)]

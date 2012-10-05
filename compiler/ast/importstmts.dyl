@@ -9,10 +9,12 @@
 class public auto ansi ImportStmt extends Stmt
 
 	field public Token NS
+	field public Token Alias
 
 	method public void ImportStmt()
 		me::ctor()
 		NS = new Token()
+		Alias = new Token()
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -20,7 +22,17 @@ class public auto ansi ImportStmt extends Stmt
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"
 		end if
-		return "import " + temp
+		var temp2 as string = Alias::Value
+		if temp2::get_Length() != 0 then
+			if temp2 notlike c"^\q(.)*\q$" then
+				temp2 = c"\q" + temp2 + c"\q"
+			end if
+		end if
+		if temp2::get_Length() = 0 then
+			return "import " + temp
+		else
+			return "import " + temp2 + " = " + temp
+		end if
 	end method
 
 end class

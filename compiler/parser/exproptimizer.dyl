@@ -728,10 +728,10 @@ class public auto ansi ExprOptimizer
 				i = i - 1
 				len = exp::Tokens[l] - 1
 				tok = exp::Tokens[i]
-
+				
+				var ttk as TypeTok = new TypeTok()
 				if typ::IsInstanceOfType(tok) = false then
 					var tk as Token = exp::Tokens[i]
-					var ttk as TypeTok = new TypeTok()
 					ttk::Line = tk::Line
 					ttk::Value = tk::Value
 					ttk::IsArray = true
@@ -751,10 +751,10 @@ class public auto ansi ExprOptimizer
 				i = i - 1
 				len = exp::Tokens[l] - 1
 				tok = exp::Tokens[i]
-
+				
+				var ttk2 as TypeTok = new TypeTok()
 				if typ::IsInstanceOfType(tok) = false then
 					var tk2 as Token = exp::Tokens[i]
-					var ttk2 as TypeTok = new TypeTok()
 					ttk2::Line = tk2::Line
 					ttk2::Value = tk2::Value
 					ttk2::IsByRef = true
@@ -1101,6 +1101,7 @@ class public auto ansi ExprOptimizer
 				typ = gettype LSParen
 
 				if typ::IsInstanceOfType(tok) then
+					var arriloc as Expr
 					if PFlags::IdentFlag then
 						PFlags::IdentFlag = false
 						exp = procIdentArrayAccess(exp, i)
@@ -1108,7 +1109,7 @@ class public auto ansi ExprOptimizer
 						len = exp::Tokens[l] - 1
 
 						var aidt as Ident = $Ident$exp::Tokens[i]
-						var arriloc as Expr = aidt::ArrLoc
+						arriloc = aidt::ArrLoc
 						arriloc = Optimize(arriloc)
 
 						PFlags::IdentFlag = true

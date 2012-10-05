@@ -37,7 +37,7 @@ class public auto ansi static ParseUtils
 
 	[method: ComVisible(false)]
 	method public static string[] StringParser(var StringToParse as string, var DelimeterChar as string)
-		var arr as List<of string> = new List<of string>()
+		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
 		var ins as boolean = false
 		var ch as string = String::Empty
 		var acc as string = String::Empty
@@ -75,13 +75,56 @@ class public auto ansi static ParseUtils
 
 		until i = len
 		
-		return Enumerable::ToArray<of string>(arr)
+		return arr::ToArray()
+	end method
+	
+	[method: ComVisible(false)]
+	method public static C5.IList<of string> StringParserL(var StringToParse as string, var DelimeterChar as string)
+		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
+		var ins as boolean = false
+		var ch as string = String::Empty
+		var acc as string = String::Empty
+		var i as integer = -1
+		var len as integer = StringToParse::get_Length() - 1
+	
+		do
+			i = i + 1
+			ch = $string$StringToParse::get_Chars(i)
+	
+			if ch = c"\q" then
+				ins = ins == false
+			end if
+	
+			if ch = DelimeterChar then
+				if ins = false then
+					if acc::get_Length() != 0 then
+						arr::Add(acc)
+					end if
+					acc = String::Empty
+				end if
+				if ins then
+					acc = acc + ch
+				end if
+			else
+				acc = acc + ch
+			end if
+	
+			if i = len then
+				if acc::get_Length() != 0 then
+					arr::Add(acc)
+				end if
+				acc = String::Empty
+			end if
+
+		until i = len
+		
+		return arr
 	end method
 	
 	[method: ComVisible(false)]
 	method public static string[] StringParser2ds(var StringToParse as string, var DelimeterChar as string, var DelimeterChar2 as string)
 
-		var arr as string[] = new string[0]
+		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
 		var ins as boolean = false
 		var ch as string = String::Empty
 		var acc as string = String::Empty
@@ -99,7 +142,7 @@ class public auto ansi static ParseUtils
 			if (ch = DelimeterChar) or (ch = DelimeterChar2) then
 				if ins = false then
 					if acc::get_Length() != 0 then
-						arr = addelem(arr, acc)
+						arr::Add(acc)
 					end if
 					acc = String::Empty
 				end if
@@ -112,14 +155,14 @@ class public auto ansi static ParseUtils
 
 			if i = len then
 				if acc::get_Length() != 0 then
-					arr = addelem(arr, acc)
+					arr::Add(acc)
 				end if
 				acc = String::Empty
 			end if
 
 		until i = len
 
-		return arr
+		return arr::ToArray()
 	end method
 
 	[method: ComVisible(false)]

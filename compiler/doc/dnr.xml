@@ -234,10 +234,6 @@
             <summary>This class contains methods used for emitting opcodes to the current IL generator.</summary>
             <remarks />
         </member>
-        <member name="C:dylan.NET.Reflection.ILEmitter()">
-            <summary>Initialises this class.</summary>
-            <remarks />
-        </member>
         <member name="F:dylan.NET.Reflection.ILEmitter.AbstractFlg">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -255,6 +251,10 @@
         <member name="F:dylan.NET.Reflection.ILEmitter.ArgInd">
             <summary>The index for the last declared argument.</summary>
             <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.BeginScope()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Reflection.ILEmitter.Constr">
             <summary>Holds the current ConstructorBuilder.</summary>
@@ -274,21 +274,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.DeclVar(System.String,System.Type)">
-            <param name="name">The name of the variabe to declare.</param>
-            <param name="typ">The type for the variable to declare.</param>
-            <summary>Declares a variable in the current method with the given name and type.</summary>
-            <remarks />
-        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.DefineLbl()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.DefineLbl()">
-            <summary>Defines a label in the current method.</summary>
-            <returns>The label structure describing the label just defined.</returns>
-            <remarks />
         </member>
         <member name="F:dylan.NET.Reflection.ILEmitter.DocWriter">
             <summary>Holds the current symbol writer.</summary>
@@ -312,87 +301,42 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitBox(System.Type)">
-            <param name="t">The type of the valuetype to box.</param>
-            <summary>Emits the 'box' opcode.</summary>
-            <remarks>Use this opcode only with struct types as ref types do not need boxing.</remarks>
-        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitBr(IKVM.Reflection.Emit.Label)">
             <param name="lbl">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitBr(System.Reflection.Emit.Label)">
-            <param name="lbl">The label to branch to.</param>
-            <summary>Emits a 'br' opcode.</summary>
-            <remarks />
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitBrfalse(IKVM.Reflection.Emit.Label)">
             <param name="lbl">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitBrfalse(System.Reflection.Emit.Label)">
-            <param name="lbl">The label to branch to.</param>
-            <summary>Emits the 'brfalse' opcode.</summary>
-            <remarks />
-        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitBrtrue(IKVM.Reflection.Emit.Label)">
             <param name="lbl">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitBrtrue(System.Reflection.Emit.Label)">
-            <param name="lbl">The label to branch to.</param>
-            <summary>Emits the 'brtrue' opcode.</summary>
-            <remarks />
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitCall(IKVM.Reflection.MethodInfo)">
             <param name="met">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCall(System.Reflection.MethodInfo)">
-            <param name="met">The method to call.</param>
-            <summary>Emits the 'call' opcode.</summary>
-            <remarks />
-        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitCallCtor(IKVM.Reflection.ConstructorInfo)">
             <param name="met">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCallCtor(System.Reflection.ConstructorInfo)">
-            <param name="met">The constructor to call.</param>
-            <summary>Emits a 'call' opcode specifically for constructors.</summary>
-            <remarks>Used only to call superclass constructors inside ref type constructors.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitCallvirt(IKVM.Reflection.MethodInfo)">
             <param name="met">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCallvirt(System.Reflection.MethodInfo)">
-            <param name="met">The method to call.</param>
-            <summary>Emits the 'callvirt' opcode.</summary>
-            <remarks />
-        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitCastclass(IKVM.Reflection.Type)">
             <param name="t">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCastclass(System.Type)">
-            <param name="t">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitCatch(IKVM.Reflection.Type)">
-            <param name="e">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCatch(System.Type)">
             <param name="e">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -429,11 +373,6 @@
             <param name="t">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConstrained(System.Type)">
-            <param name="t">The type to constrain the next 'callvirt' to.</param>
-            <summary>Emits the 'constrained.' prefix.</summary>
-            <remarks>Emit only before a 'callvirt' that calls a virtual method on a valuetype. WORKS PROPERLY ONLY UNDER MONO. On .NET use a call instead of constrained with callvirt (works properly on both VMs).</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI()">
             <summary>Emits the 'conv.i' opcode.</summary>
@@ -477,17 +416,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitIs(System.Type)">
-            <param name="t">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitIsinst(IKVM.Reflection.Type)">
-            <param name="t">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitIsinst(System.Type)">
             <param name="t">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -582,17 +511,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdelema(System.Type)">
-            <param name="typ">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdfld(IKVM.Reflection.FieldInfo)">
-            <param name="fld">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdfld(System.Reflection.FieldInfo)">
             <param name="fld">The instance field to load.</param>
             <summary>Emits the 'ldfld' opcode.</summary>
             <remarks>An instance of a class must be loaded prior to this emission. If a static field is to be loaded use EmitLdsfld instead. If the address is required use EmitLdflda instead.</remarks>
@@ -868,6 +787,10 @@
             <summary>Emist the 'xor' opcode.</summary>
             <remarks>Does an exclusive 'or' (xor) on its operands .</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EndScope()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Reflection.ILEmitter.ILGen">
             <summary>Holds the current IL Generator.</summary>
             <remarks>All the Emit methods use the generator held here.</remarks>
@@ -939,25 +862,9 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Reflection.Importer()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Reflection.Importer.AddAsm(IKVM.Reflection.Assembly)">
             <param name="asmm">To be added.</param>
             <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Reflection.Importer.AddAsm(System.Reflection.Assembly)">
-            <param name="asmm">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Reflection.Importer.addelem(System.String[],System.String)">
-            <param name="srcarr">To be added.</param>
-            <param name="eltoadd">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.Importer.AddImp(System.String)">
@@ -967,6 +874,10 @@
         </member>
         <member name="M:dylan.NET.Reflection.Importer.AddLocImp(System.String)">
             <param name="imp">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Importer.AliasMap">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -983,6 +894,12 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Reflection.Importer.LocImps">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Importer.RegisterAlias(System.String,System.String)">
+            <param name="alias">To be added.</param>
+            <param name="ns">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

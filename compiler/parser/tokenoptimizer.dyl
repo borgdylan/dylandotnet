@@ -449,6 +449,22 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "for" then
+			var fotk as ForTok = new ForTok()
+			fotk::Line = tok::Line
+			fotk::Value = tok::Value
+			tok = fotk
+			goto fin
+		end if
+		
+		if tok::Value = "foreach" then
+			var foetk as ForeachTok = new ForeachTok()
+			foetk::Line = tok::Line
+			foetk::Value = tok::Value
+			tok = foetk
+			goto fin
+		end if
+		
 		if tok::Value = "break" then
 			var brktk as BreakTok = new BreakTok()
 			brktk::Line = tok::Line
@@ -803,6 +819,7 @@ class public auto ansi TokenOptimizer
 			intk::Line = tok::Line
 			intk::Value = tok::Value
 			tok = intk
+			PFlags::IfFlag = true
 			goto fin
 		end if
 		

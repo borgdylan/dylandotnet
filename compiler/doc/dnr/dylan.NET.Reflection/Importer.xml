@@ -22,6 +22,7 @@
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
     <AssemblyVersion>11.2.9.7</AssemblyVersion>
+    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -32,42 +33,13 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName=".cctor">
-      <MemberSignature Language="C#" Value="public Importer ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static specialname rtspecialname void .cctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.3</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddAsm">
       <MemberSignature Language="C#" Value="public static void AddAsm (IKVM.Reflection.Assembly asmm);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddAsm(class IKVM.Reflection.Assembly asmm) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -83,81 +55,6 @@
       <Docs>
         <param name="asmm">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddAsm">
-      <MemberSignature Language="C#" Value="public static void AddAsm (System.Reflection.Assembly asmm);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddAsm(class System.Reflection.Assembly asmm) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.3</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="asmm" Type="System.Reflection.Assembly" />
-      </Parameters>
-      <Docs>
-        <param name="asmm">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="addelem">
-      <MemberSignature Language="C#" Value="public static string[] addelem (string[] srcarr, string eltoadd);" />
-      <MemberSignature Language="ILAsm" Value=".method public static string[] addelem(string[] srcarr, string eltoadd) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.3</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String[]</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="srcarr" Type="System.String[]" />
-        <Parameter Name="eltoadd" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="srcarr">To be added.</param>
-        <param name="eltoadd">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -185,6 +82,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -227,6 +125,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -245,9 +144,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AliasMap">
+      <MemberSignature Language="C#" Value="public static C5.IDictionary&lt;string,string&gt; AliasMap;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IDictionary`2&lt;string, string&gt; AliasMap" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>C5.IDictionary&lt;System.String,System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Asms">
-      <MemberSignature Language="C#" Value="public static System.Collections.Generic.List&lt;IKVM.Reflection.Assembly&gt; Asms;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Collections.Generic.List`1&lt;class IKVM.Reflection.Assembly&gt; Asms" />
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Assembly&gt; Asms;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Assembly&gt; Asms" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -269,9 +183,10 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;IKVM.Reflection.Assembly&gt;</ReturnType>
+        <ReturnType>C5.IList&lt;IKVM.Reflection.Assembly&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -279,8 +194,8 @@
       </Docs>
     </Member>
     <Member MemberName="Imps">
-      <MemberSignature Language="C#" Value="public static System.Collections.Generic.List&lt;string&gt; Imps;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Collections.Generic.List`1&lt;string&gt; Imps" />
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;string&gt; Imps;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;string&gt; Imps" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -302,9 +217,10 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;System.String&gt;</ReturnType>
+        <ReturnType>C5.IList&lt;System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -324,6 +240,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -340,8 +257,8 @@
       </Docs>
     </Member>
     <Member MemberName="LocImps">
-      <MemberSignature Language="C#" Value="public static System.Collections.Generic.List&lt;string&gt; LocImps;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Collections.Generic.List`1&lt;string&gt; LocImps" />
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;string&gt; LocImps;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;string&gt; LocImps" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.3</AssemblyVersion>
@@ -363,11 +280,38 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;System.String&gt;</ReturnType>
+        <ReturnType>C5.IList&lt;System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegisterAlias">
+      <MemberSignature Language="C#" Value="public static void RegisterAlias (string alias, string ns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void RegisterAlias(string alias, string ns) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="alias" Type="System.String" />
+        <Parameter Name="ns" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="alias">To be added.</param>
+        <param name="ns">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

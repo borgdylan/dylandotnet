@@ -8,11 +8,11 @@
 
 class public auto ansi static SymTable
 
-	field private static List<of VarItem> VarLst
-	field public static List<of CustomAttributeBuilder> MethodCALst
-	field public static List<of CustomAttributeBuilder> FieldCALst
-	field public static List<of CustomAttributeBuilder> ClassCALst
-	field public static List<of CustomAttributeBuilder> AssemblyCALst
+	field private static C5.LinkedList<of C5.LinkedList<of VarItem> > VarLst
+	field public static C5.IList<of CustomAttributeBuilder> MethodCALst
+	field public static C5.IList<of CustomAttributeBuilder> FieldCALst
+	field public static C5.IList<of CustomAttributeBuilder> ClassCALst
+	field public static C5.IList<of CustomAttributeBuilder> AssemblyCALst
 
 	field public static TypeList TypeLst
 	field public static TypeItem CurnTypItem
@@ -20,37 +20,40 @@ class public auto ansi static SymTable
 	field private static FieldItem[] NestedFldLst
 	field private static MethodItem[] NestedMetLst
 	field private static CtorItem[] NestedCtorLst
-	field private static IfItem[] IfLst
-	field private static LoopItem[] LoopLst
+	
+	field private static C5.LinkedList<of IfItem> IfLst
+	field private static C5.LinkedList<of LoopItem> LoopLst
+	
 	field private static LabelItem[] LblLst
 	field private static TypeArr[] TypLst
 	field public static boolean StoreFlg
 
 	method private static void SymTable()
 		TypeLst = new TypeList()
-		VarLst = new List<of VarItem>()
+		VarLst = new C5.LinkedList<of C5.LinkedList<of VarItem> >()
+		VarLst::Push(new C5.LinkedList<of VarItem>())
 		NestedFldLst = new FieldItem[0]
 		NestedMetLst = new MethodItem[0]
 		NestedCtorLst = new CtorItem[0]
-		IfLst = new IfItem[0]
-		LoopLst = new LoopItem[0]
+		IfLst = new C5.LinkedList<of IfItem>()
+		LoopLst = new C5.LinkedList<of LoopItem>()
 		LblLst = new LabelItem[0]
 		TypLst = new TypeArr[0]
 		StoreFlg = false
-		MethodCALst = new List<of CustomAttributeBuilder>()
-		FieldCALst = new List<of CustomAttributeBuilder>()
-		ClassCALst = new List<of CustomAttributeBuilder>()
-		AssemblyCALst = new List<of CustomAttributeBuilder>()
+		MethodCALst = new C5.LinkedList<of CustomAttributeBuilder>()
+		FieldCALst = new C5.LinkedList<of CustomAttributeBuilder>()
+		ClassCALst = new C5.LinkedList<of CustomAttributeBuilder>()
+		AssemblyCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void ResetIf()
-		IfLst = new IfItem[0]
+		IfLst::Clear()
 	end method
 
 	[method: ComVisible(false)]
 	method public static void ResetLoop()
-		LoopLst = new LoopItem[0]
+		LoopLst::Clear()
 	end method
 
 	[method: ComVisible(false)]
@@ -61,12 +64,11 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void ResetVar()
 		VarLst::Clear()
-		VarLst::TrimExcess()
+		VarLst::Push(new C5.LinkedList<of VarItem>())
 	end method
 
 //	method public static void ResetFld()
 //		FldLst::Clear()
-//		FldLst::TrimExcess()
 //	end method
 
 	[method: ComVisible(false)]
@@ -76,31 +78,26 @@ class public auto ansi static SymTable
 
 //	method public static void ResetMet()
 //		MetLst::Clear()
-//		MetLst::TrimExcess()
 //	end method
 
 	[method: ComVisible(false)]
 	method public static void ResetMetCAs()
 		MethodCALst::Clear()
-		MethodCALst::TrimExcess()
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void ResetFldCAs()
 		FieldCALst::Clear()
-		FieldCALst::TrimExcess()
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void ResetClsCAs()
 		ClassCALst::Clear()
-		ClassCALst::TrimExcess()
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void ResetAsmCAs()
 		AssemblyCALst::Clear()
-		AssemblyCALst::TrimExcess()
 	end method
 	
 	[method: ComVisible(false)]
@@ -110,7 +107,6 @@ class public auto ansi static SymTable
 
 //	method public static void ResetCtor()
 //		CtorLst::Clear()
-//		CtorLst::TrimExcess()
 //	end method
 
 	[method: ComVisible(false)]
@@ -120,7 +116,7 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type, var lin as integer)
-		VarLst::Add(new VarItem(nme, la, ind, typ, lin))
+		VarLst::get_Last()::Add(new VarItem(nme, la, ind, typ, lin))
 	end method
 
 	[method: ComVisible(false)]
@@ -250,100 +246,58 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static void AddIf()
-
-		var i as integer = -1
-		var destarr as IfItem[] = new IfItem[IfLst[l] + 1]
-
-		do until i = (IfLst[l] - 1)
-			i = i + 1
-			destarr[i] = IfLst[i]
-		end do
-
-		destarr[IfLst[l]] = new IfItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl())
-		IfLst = destarr
-
+		IfLst::Push(new IfItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl()))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void AddLoop()
-
-		var i as integer = -1
-		var destarr as LoopItem[] = new LoopItem[LoopLst[l] + 1]
-
-		do until i = (LoopLst[l] - 1)
-			i = i + 1
-			destarr[i] = LoopLst[i]
-		end do
-
-		destarr[LoopLst[l]] = new LoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl())
-		LoopLst = destarr
-
+		LoopLst::Push(new LoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl()))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void PopIf()
-
-		var i as integer = -1
-		var destarr as IfItem[] = new IfItem[IfLst[l] - 1]
-
-		do until i >= (IfLst[l] - 2)
-			i = i + 1
-			destarr[i] = IfLst[i]
-		end do
-
-		IfLst = destarr
-
+		IfLst::Pop()
 	end method
 
 	[method: ComVisible(false)]
 	method public static void PopLoop()
-
-		var i as integer = -1
-		var destarr as LoopItem[] = new LoopItem[LoopLst[l] - 1]
-
-		do until i >= (LoopLst[l] - 2)
-			i = i + 1
-			destarr[i] = LoopLst[i]
-		end do
-
-		LoopLst = destarr
-
+		LoopLst::Pop()
 	end method
 
 	[method: ComVisible(false)]
 	method public static Emit.Label ReadIfEndLbl()
-		return IfLst[IfLst[l] - 1]::EndLabel
+		return IfLst::get_Last()::EndLabel
 	end method
 
 	[method: ComVisible(false)]
 	method public static Emit.Label ReadIfNxtBlkLbl()
-		return IfLst[IfLst[l] - 1]::NextBlkLabel
+		return IfLst::get_Last()::NextBlkLabel
 	end method
 
 	[method: ComVisible(false)]
 	method public static Emit.Label ReadLoopEndLbl()
-		return LoopLst[LoopLst[l] - 1]::EndLabel
+		return LoopLst::get_Last()::EndLabel
 	end method
 
 	[method: ComVisible(false)]
 	method public static Emit.Label ReadLoopStartLbl()
-		return LoopLst[LoopLst[l] - 1]::StartLabel
+		return LoopLst::get_Last()::StartLabel
 	end method
 
 	[method: ComVisible(false)]
 	method public static boolean ReadIfElsePass()
-		return IfLst[IfLst[l] - 1]::ElsePass
+		return IfLst::get_Last()::ElsePass
 	end method
 
 	[method: ComVisible(false)]
 	method public static void SetIfElsePass()
-		var ifi as IfItem = IfLst[IfLst[l] - 1]
+		var ifi as IfItem = IfLst::get_Last()
 		ifi::ElsePass = true
 	end method
 
 	[method: ComVisible(false)]
 	method public static void SetIfNxtBlkLbl()
-		var ifi as IfItem = IfLst[IfLst[l] - 1]
+		var ifi as IfItem = IfLst::get_Last()
 		ifi::NextBlkLabel = ILEmitter::DefineLbl()
 	end method
 
@@ -365,40 +319,33 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static VarItem FindVar(var nam as string)
-
-		var vl as IEnumerable<of VarItem> = VarLst
-		var vle as IEnumerator<of VarItem> = vl::GetEnumerator()
-		do while vle::MoveNext()
-			if nam = vle::get_Current()::Name then
-				var vai as VarItem = vle::get_Current()
-				if StoreFlg == false then
-					vai::Used = true
+		foreach s in VarLst::Backwards()
+			foreach v in s
+				if nam = v::Name then
+					if StoreFlg == false then
+						v::Used = true
+					end if
+					return v
 				end if
-				return vai
-			end if
-		end do
-
+			end for
+		end for
 		return null
 	end method
 
 	[method: ComVisible(false)]
 	method public static void ResetUsed(var nam as string)
-		var vl as IEnumerable<of VarItem> = VarLst
-		var vle as IEnumerator<of VarItem> = vl::GetEnumerator()
-		do while vle::MoveNext()
-			if nam = vle::get_Current()::Name then
-				var vai as VarItem = vle::get_Current()
-				vai::Used = false
-			end if
-		end do
+		foreach s in VarLst::Backwards()
+			foreach v in s
+				if nam = v::Name then
+					v::Used = false
+				end if
+			end for
+		end for
 	end method
 
 	[method: ComVisible(false)]
 	method public static void CheckUnusedVar()
-		var vl as IEnumerable<of VarItem> = VarLst
-		var vle as IEnumerator<of VarItem> = vl::GetEnumerator()
-		do while vle::MoveNext()
-			var vlec as VarItem = vle::get_Current()
+		foreach vlec in VarLst::get_Last()
 			if (vlec::Used = false) and vlec::LocArg then
 				if vlec::Stored then
 					StreamUtils::WriteWarn(vlec::Line, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was initialised but then not used.")
@@ -406,7 +353,20 @@ class public auto ansi static SymTable
 					StreamUtils::WriteWarn(vlec::Line, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was declared but never used.")
 				end if
 			end if
-		end do
+		end for
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void PushScope()
+		ILEmitter::BeginScope()
+		VarLst::Push(new C5.LinkedList<of VarItem>())
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void PopScope()
+		ILEmitter::EndScope()
+		CheckUnusedVar()
+		VarLst::Pop()
 	end method
 
 	[method: ComVisible(false)]
@@ -454,15 +414,11 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static MethodItem FindMetNoParams(var nam as string)
-
-		var lom as IEnumerable<of MethodItem> = CurnTypItem::Methods
-		var ien as IEnumerator<of MethodItem> = lom::GetEnumerator()
-		do while ien::MoveNext()
-			if nam = ien::get_Current()::Name then
-				return ien::get_Current()
+		foreach met in CurnTypItem::Methods
+			if nam = met::Name then
+				return met
 			end if
-		end do
-
+		end for
 		return null
 	end method
 

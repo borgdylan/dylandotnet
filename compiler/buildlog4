@@ -1,22 +1,22 @@
-dylan.NET Compiler v. 11.2.9.7 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 dylan.NET Version Info:
-dnc, Version=11.2.9.7, Culture=neutral, PublicKeyToken=null
-dnr, Version=11.2.9.7, Culture=neutral, PublicKeyToken=null
-dnu, Version=11.2.9.7, Culture=neutral, PublicKeyToken=null
-tokenizer.CodeGen, Version=11.2.9.7, Culture=neutral, PublicKeyToken=null
-tokenizer.Parser, Version=11.2.9.7, Culture=neutral, PublicKeyToken=null
-tokenizer.Lexer, Version=11.2.9.7, Culture=neutral, PublicKeyToken=null
-tokenizer.AST, Version=11.2.9.7, Culture=neutral, PublicKeyToken=null
+dnc, Version=11.2.9.8, Culture=neutral, PublicKeyToken=null
+dnr, Version=11.2.9.8, Culture=neutral, PublicKeyToken=null
+dnu, Version=11.2.9.8, Culture=neutral, PublicKeyToken=null
+tokenizer.CodeGen, Version=11.2.9.8, Culture=neutral, PublicKeyToken=null
+tokenizer.Parser, Version=11.2.9.8, Culture=neutral, PublicKeyToken=null
+tokenizer.Lexer, Version=11.2.9.8, Culture=neutral, PublicKeyToken=null
+tokenizer.AST, Version=11.2.9.8, Culture=neutral, PublicKeyToken=null
 
 Runtime & OS Version Info:
 mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 Runtime Version: 4.0.30319.17020
-OS: Unix 3.5.0.15
-dylan.NET Compiler v. 11.2.9.7 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+OS: Unix 3.5.0.16
+dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -27,6 +27,7 @@ Referencing Assembly: /usr/lib/mono/4.5/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/4.5/System.dll
 Referencing Assembly: /usr/lib/mono/4.5/System.Core.dll
 Referencing Assembly: /usr/lib/mono/4.5/System.Xml.Linq.dll
+Referencing Assembly: C5.Mono.dll
 Importing Namespace: System
 Importing Namespace: System.IO
 Importing Namespace: System.Globalization
@@ -75,6 +76,7 @@ Adding Class: dylan.NET.Utils.ParseUtils
 	Adding Method: addelem
 	Adding Method: remelem
 	Adding Method: StringParser
+	Adding Method: StringParserL
 	Adding Method: StringParser2ds
 	Adding Method: LikeOP
 	Adding Method: RetPrec
@@ -120,7 +122,7 @@ Adding Class: dylan.NET.Utils.StreamUtils
 	Adding Method: WriteWarn
 	Adding Method: WriteError
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.7 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -132,6 +134,7 @@ Referencing Assembly: /usr/lib/mono/4.5/System.dll
 Referencing Assembly: /usr/lib/mono/4.5/System.Core.dll
 Referencing Assembly: dnu.dll
 Referencing Assembly: IKVM.Reflection.dll
+Referencing Assembly: C5.Mono.dll
 Importing Namespace: System
 Importing Namespace: System.IO
 Importing Namespace: System.Linq
@@ -292,6 +295,8 @@ Adding Class: dylan.NET.Reflection.ILEmitter
 	Adding Method: DefineLbl
 	Adding Method: MarkLbl
 	Adding Method: MarkDbgPt
+	Adding Method: BeginScope
+	Adding Method: EndScope
 Now Lexing: dnr/asmfactory.dyl...Done.
 Now Parsing: dnr/asmfactory.dyl...Done.
 Adding Class: dylan.NET.Reflection.AsmFactory
@@ -347,10 +352,12 @@ Adding Class: dylan.NET.Reflection.Importer
 	Adding Field: Asms
 	Adding Field: Imps
 	Adding Field: LocImps
+	Adding Field: AliasMap
 	Adding Method: Init
 	Adding Constructor: Importer
 	Adding Method: AddAsm
 	Adding Method: AddImp
+	Adding Method: RegisterAlias
 	Adding Method: AddLocImp
 Now Lexing: dnr/loader.dyl...Done.
 Now Parsing: dnr/loader.dyl...Done.
@@ -390,7 +397,7 @@ Adding Class: dylan.NET.Reflection.ConsolePrinter
 	Adding Method: PrintString
 	Adding Method: WriteClass
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.7 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -611,7 +618,7 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.Literal
 	Adding Field: LitTyp
 	Adding Field: Conv
 	Adding Field: TTok
-	Adding Constructor: ctor0
+	Adding Constructor: Literal
 	Adding Constructor: Literal
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral
 	Adding Field: NullVal
@@ -937,6 +944,10 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.ThenTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.DoTok
 	Adding Method: ToString
+Adding Class: dylan.NET.Tokenizer.AST.Tokens.ForTok
+	Adding Method: ToString
+Adding Class: dylan.NET.Tokenizer.AST.Tokens.ForeachTok
+	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.BreakTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.ContinueTok
@@ -1142,6 +1153,7 @@ Now Lexing: ast/importstmts.dyl...Done.
 Now Parsing: ast/importstmts.dyl...Done.
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.ImportStmt
 	Adding Field: NS
+	Adding Field: Alias
 	Adding Constructor: ImportStmt
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.LocimportStmt
@@ -1159,12 +1171,13 @@ Now Lexing: ast/verstmt.dyl...Done.
 Now Parsing: ast/verstmt.dyl...Done.
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.VerStmt
 	Adding Field: VersionNos
-	Adding Constructor: ctor0
+	Adding Constructor: VerStmt
 	Adding Method: ToString
 Now Lexing: ast/includestmt.dyl...Done.
 Now Parsing: ast/includestmt.dyl...Done.
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.IncludeStmt
 	Adding Field: Path
+	Adding Field: SSet
 	Adding Constructor: IncludeStmt
 	Adding Method: ToString
 Now Lexing: ast/xmldocstmt.dyl...Done.
@@ -1279,6 +1292,10 @@ Adding Class: dylan.NET.Tokenizer.AST.Stmts.DoWhileStmt
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.DoUntilStmt
 	Adding Field: Exp
 	Adding Constructor: DoUntilStmt
+Adding Class: dylan.NET.Tokenizer.AST.Stmts.ForeachStmt
+	Adding Field: Exp
+	Adding Field: Iter
+	Adding Constructor: ForeachStmt
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.WhileStmt
 	Adding Field: Exp
 	Adding Constructor: WhileStmt
@@ -1353,7 +1370,7 @@ Adding Class: dylan.NET.Tokenizer.AST.Stmts.EndPropStmt
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.CommentStmt
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.7 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -1391,7 +1408,7 @@ Adding Class: dylan.NET.Tokenizer.Lexer.Lexer
 	Adding Method: Analyze
 	Adding Method: AnalyzeString
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.7 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -1500,6 +1517,7 @@ Adding Class: dylan.NET.Tokenizer.Parser.StmtOptimizer
 	Adding Method: checkDoWhile
 	Adding Method: checkUntil
 	Adding Method: checkDoUntil
+	Adding Method: checkForeach
 	Adding Method: checkElseIf
 	Adding Method: checkLabel
 	Adding Method: checkPlace
@@ -1548,7 +1566,7 @@ Adding Class: dylan.NET.Tokenizer.Parser.Parser
 	Adding Constructor: Parser
 	Adding Method: Parse
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.7 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -1564,6 +1582,7 @@ Referencing Assembly: tokenizer.Parser.dll
 Referencing Assembly: dnu.dll
 Referencing Assembly: dnr.dll
 Referencing Assembly: IKVM.Reflection.dll
+Referencing Assembly: C5.Mono.dll
 Importing Namespace: System
 Importing Namespace: System.IO
 Importing Namespace: System.Linq
@@ -1796,6 +1815,8 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.SymTable
 	Adding Method: FindVar
 	Adding Method: ResetUsed
 	Adding Method: CheckUnusedVar
+	Adding Method: PushScope
+	Adding Method: PopScope
 	Adding Method: FindLbl
 	Adding Method: FindFld
 	Adding Method: CmpTyps
@@ -1856,6 +1877,7 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.Helpers
 	Adding Method: ApplyFldAttrs
 	Adding Method: ApplyClsAttrs
 	Adding Method: ApplyAsmAttrs
+	Adding Method: ProcessForeach
 Now Lexing: codegen/constldr.dyl...Done.
 Now Parsing: codegen/constldr.dyl...Done.
 Now Lexing: codegen/opstack.dyl...Done.
@@ -1891,14 +1913,12 @@ Now Parsing: codegen/stmtreader.dyl...Done.
 Adding Class: dylan.NET.Tokenizer.CodeGen.StmtReader
 	Adding Method: AttrStmtToCAB
 	Adding Method: Read
-WARNING: Converting from 'System.String[]' to 'System.Array' is redundant. at line 543 in file: /var/www/Code/dylannet/compiler/codegen/stmtreader.dyl
-WARNING: Converting from 'System.String[]' to 'System.Array' is redundant. at line 543 in file: /var/www/Code/dylannet/compiler/codegen/stmtreader.dyl
 Now Lexing: codegen/codegenerator.dyl...Done.
 Now Parsing: codegen/codegenerator.dyl...Done.
 Adding Class: dylan.NET.Tokenizer.CodeGen.CodeGenerator
 	Adding Method: EmitMSIL
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.7 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
@@ -1935,7 +1955,7 @@ Adding Class: dylan.NET.Compiler.Program
 	Adding Method: main
 	Adding Method: Invoke
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.7 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg

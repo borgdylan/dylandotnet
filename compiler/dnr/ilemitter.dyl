@@ -10,7 +10,7 @@ class public auto ansi static ILEmitter
 
 	field public static IKVM.Reflection.Emit.MethodBuilder Met
 	field public static IKVM.Reflection.Emit.ConstructorBuilder Constr
-	field public static IKVM.Reflection.Emit.ILGenerator ILGen
+	field assembly static IKVM.Reflection.Emit.ILGenerator ILGen
 	field public static ISymbolDocumentWriter DocWriter
 	field public static boolean StaticFlg
 	field public static boolean AbstractFlg
@@ -1135,7 +1135,7 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void DeclVar(var name as string, var typ as IKVM.Reflection.Type)
 		var lb as IKVM.Reflection.Emit.LocalBuilder = ILGen::DeclareLocal(typ)
-		if DebugFlg then
+		if DebugFlg and (name::get_Length() != 0) then
 			lb::SetLocalSymInfo(name)
 		end if
 	end method
@@ -1155,4 +1155,18 @@ class public auto ansi static ILEmitter
 		ILGen::MarkSequencePoint(DocWriter, line, 1, line, 100)
 	end method
 
+	[method: ComVisible(false)]
+	method public static void BeginScope()
+		if DebugFlg then
+			ILGen::BeginScope()
+		end if
+	end method
+	
+		[method: ComVisible(false)]
+	method public static void EndScope()
+		if DebugFlg then
+			ILGen::EndScope()
+		end if
+	end method
+	
 end class

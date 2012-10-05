@@ -185,5 +185,6 @@
     <None Include="dnr\assemblyinfo.dyl" />
     <None Include="dnc\assemblyinfo.dyl" />
     <None Include="ast\attrvalpair.dyl" />
+    <None Include="tests\transnames.dyl" />
   </ItemGroup>
 </Project>

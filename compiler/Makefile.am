@@ -63,6 +63,7 @@ all:
 	cp ./lib/IKVM.Reflection.dll ./2.0/IKVM.Reflection.dll
 	cp ./lib/IKVM.Reflection.dll ./4.0/IKVM.Reflection.dll
 	
+	cp ./lib/4.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 4.0/dnc.exe -V > buildlog4
 	'$(MONO)' 4.0/dnc.exe dnu.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnr.dyl | tee -a buildlog4
@@ -72,6 +73,7 @@ all:
 	'$(MONO)' 4.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnc.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe web.dyl | tee -a buildlog4
+	cp ./lib/4.0/C5.Mono.dll ./4.0/C5.Mono.dll
 	cp dnu.dll 4.0/dnu.dll
 	cp dnr.dll 4.0/dnr.dll
 	cp tokenizer.AST.dll 4.0/tokenizer.AST.dll
@@ -81,6 +83,7 @@ all:
 	cp dnc.exe 4.0/dnc.exe
 	cp web.dll 4.0/web.dll
 	
+	cp ./lib/2.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 2.0/dnc.exe -V > buildlog
 	'$(MONO)' 2.0/dnc.exe dnu.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe dnr.dyl | tee -a buildlog
@@ -89,6 +92,7 @@ all:
 	'$(MONO)' 2.0/dnc.exe tokenizer.Parser.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog
 	'$(MONO)' 2.0/dnc.exe dnc.dyl | tee -a buildlog
+	cp ./lib/2.0/C5.Mono.dll ./2.0/C5.Mono.dll
 	cp dnu.dll 2.0/dnu.dll
 	cp dnr.dll 2.0/dnr.dll
 	cp tokenizer.AST.dll 2.0/tokenizer.AST.dll

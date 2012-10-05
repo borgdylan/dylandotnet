@@ -31,7 +31,7 @@ import dylan.NET.Tokenizer.Lexer
 #include "lexer/assemblyinfo.dyl"
 
 assembly tokenizer.Lexer dll
-ver 11.2.9.7
+ver 11.2.9.8
 
 namespace dylan.NET.Tokenizer.Lexer
 	#include "lexer/line.dyl"

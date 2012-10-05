@@ -110,13 +110,11 @@ struct public auto ansi Vector implements IEquatable<of Vector>, IComparable, IC
 	end method
 	
 	method public static specialname boolean op_Inequality(var v1 as Vector, var v2 as Vector)
-		var b as boolean = v1::Equals(v2)
-		return b nand b
+		return v1::Equals(v2) == false
 	end method
 	
 	method public static specialname boolean op_Inequality(var v1 as Vector, var v2 as object)
-		var b as boolean = v1::Equals(v2)
-		return b nand b
+		return v1::Equals(v2) == false
 	end method
 	
 	method public static specialname Vector op_Addition(var v1 as Vector, var v2 as Vector)

@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.9.7">
+    <Assembly Name="tokenizer.AST" Version="11.2.9.8">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -65,6 +65,7 @@
       <Type Name="FieldAttrStmt" Kind="Class" />
       <Type Name="FieldStmt" Kind="Class" />
       <Type Name="FinallyStmt" Kind="Class" />
+      <Type Name="ForeachStmt" Kind="Class" />
       <Type Name="GotoStmt" Kind="Class" />
       <Type Name="IfStmt" Kind="Class" />
       <Type Name="ImportStmt" Kind="Class" />
@@ -126,6 +127,8 @@
       <Type Name="FieldCTok" Kind="Class" />
       <Type Name="FieldTok" Kind="Class" />
       <Type Name="FinallyTok" Kind="Class" />
+      <Type Name="ForeachTok" Kind="Class" />
+      <Type Name="ForTok" Kind="Class" />
       <Type Name="GenericMethodNameTok" Kind="Class" />
       <Type Name="GetTok" Kind="Class" />
       <Type Name="GettypeCallTok" Kind="Class" />

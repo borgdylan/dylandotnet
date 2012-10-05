@@ -28,6 +28,7 @@ System.Xml.dll
 System.Xml.Linq.dll
 
 The IKVM.Reflection.dll was written by Jeroen Frijters and is part of IKVM.NET
+The C5.Mono.dll was written by Sestoft,Kokholm and Nielsen of the IT Universoty of Copenhagen.
 
 Not all of the latter are actually required to build the system but all of them are included here in the sources to facilitate further additions that use them by someone other than me and to help programmers wanting to use dylan.NET with the core set of libraries. These were originally obtained from a  monocharge tarball and their license and sources is enclosed in the mono-class directory.
 

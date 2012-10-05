@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.CodeGen" Version="11.2.9.7">
+    <Assembly Name="tokenizer.CodeGen" Version="11.2.9.8">
       <Attributes>
         <Attribute>
           <AttributeName>System.CLSCompliant(true)</AttributeName>

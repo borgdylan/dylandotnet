@@ -12,7 +12,7 @@ class public auto ansi Literal extends Token
 	field public boolean Conv
 	field public TypeTok TTok
 
-	method public void ctor0()
+	method public void Literal()
 		me::ctor()
 		LitTyp = null
 		Conv = false

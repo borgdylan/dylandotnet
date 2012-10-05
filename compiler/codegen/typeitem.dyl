@@ -10,11 +10,11 @@ class public auto ansi TypeItem
 
 	field public string Name
 	field public IKVM.Reflection.Type InhTyp
-	field public List<of IKVM.Reflection.Type> Interfaces
+	field public C5.IList<of IKVM.Reflection.Type> Interfaces
 	field public TypeBuilder TypeBldr
-	field public List<of MethodItem> Methods
-	field public List<of CtorItem> Ctors
-	field public List<of FieldItem> Fields
+	field public C5.IList<of MethodItem> Methods
+	field public C5.IList<of CtorItem> Ctors
+	field public C5.IList<of FieldItem> Fields
 	field assembly Func<of IKVM.Reflection.Type, ConstructorInfo> DefCtorDel
 
 	method public void TypeItem()
@@ -22,10 +22,10 @@ class public auto ansi TypeItem
 		Name = String::Empty
 		InhTyp = null
 		TypeBldr = null
-		Interfaces = new List<of IKVM.Reflection.Type>()
-		Methods = new List<of MethodItem>()
-		Ctors = new List<of CtorItem>()
-		Fields = new List<of FieldItem>()
+		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
+		Methods = new C5.LinkedList<of MethodItem>()
+		Ctors = new C5.LinkedList<of CtorItem>()
+		Fields = new C5.LinkedList<of FieldItem>()
 		DefCtorDel = null
 	end method
 
@@ -33,10 +33,10 @@ class public auto ansi TypeItem
 		me::ctor()
 		Name = nme
 		TypeBldr = bld
-		Interfaces = new List<of IKVM.Reflection.Type>()
-		Methods = new List<of MethodItem>()
-		Ctors = new List<of CtorItem>()
-		Fields = new List<of FieldItem>()
+		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
+		Methods = new C5.LinkedList<of MethodItem>()
+		Ctors = new C5.LinkedList<of CtorItem>()
+		Fields = new C5.LinkedList<of FieldItem>()
 		DefCtorDel = null
 	end method
 

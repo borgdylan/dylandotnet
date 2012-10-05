@@ -1364,46 +1364,87 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static void ApplyMetAttrs()
-		var ien as IEnumerable<of CustomAttributeBuilder> = SymTable::MethodCALst
-		var ienum as IEnumerator<of CustomAttributeBuilder> = ien::GetEnumerator()
-		
-		do while ienum::MoveNext()
+		foreach ca in SymTable::MethodCALst
 			if AsmFactory::InCtorFlg then
-				AsmFactory::CurnConB::SetCustomAttribute(ienum::get_Current())
+				AsmFactory::CurnConB::SetCustomAttribute(ca)
 			else
-				AsmFactory::CurnMetB::SetCustomAttribute(ienum::get_Current())
+				AsmFactory::CurnMetB::SetCustomAttribute(ca)
 			end if
-		end do
+		end for
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void ApplyFldAttrs()
-		var ien as IEnumerable<of CustomAttributeBuilder> = SymTable::FieldCALst
-		var ienum as IEnumerator<of CustomAttributeBuilder> = ien::GetEnumerator()
-		
-		do while ienum::MoveNext()
-			AsmFactory::CurnFldB::SetCustomAttribute(ienum::get_Current())
-		end do
+		foreach ca in SymTable::FieldCALst
+			AsmFactory::CurnFldB::SetCustomAttribute(ca)
+		end for
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void ApplyClsAttrs()
-		var ien as IEnumerable<of CustomAttributeBuilder> = SymTable::ClassCALst
-		var ienum as IEnumerator<of CustomAttributeBuilder> = ien::GetEnumerator()
-		
-		do while ienum::MoveNext()
-			AsmFactory::CurnTypB::SetCustomAttribute(ienum::get_Current())
-		end do
+		foreach ca in SymTable::ClassCALst
+			AsmFactory::CurnTypB::SetCustomAttribute(ca)
+		end for
 	end method
 	
 	[method: ComVisible(false)]
-	method public static void ApplyAsmAttrs()
-		var ien as IEnumerable<of CustomAttributeBuilder> = SymTable::AssemblyCALst
-		var ienum as IEnumerator<of CustomAttributeBuilder> = ien::GetEnumerator()
+	method public static void ApplyAsmAttrs()	
+		foreach ca in SymTable::AssemblyCALst
+			AsmFactory::AsmB::SetCustomAttribute(ca)
+		end for
+	end method
+	
+	[method: ComVisible(false)]
+	method public static MethodInfo[] ProcessForeach(var t as IKVM.Reflection.Type)
+		var arr as MethodInfo[] = new MethodInfo[3]
+		var ie as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype IEnumerable`1)
+		var ie2 as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype IEnumerable)
+		var ie3 as IKVM.Reflection.Type = null
+		var flgs as boolean[] = new boolean[2]
+		flgs[0] = false
+		flgs[1] = false
 		
-		do while ienum::MoveNext()
-			AsmFactory::AsmB::SetCustomAttribute(ienum::get_Current())
-		end do
+		if t::get_IsGenericType() then
+			if ie::Equals(t::GetGenericTypeDefinition()) then
+				flgs[0] = true
+				ie3 = t
+			end if
+		else
+			if ie2::Equals(t) then
+				flgs[1] = true
+			end if
+		end if
+		
+		if flgs[0] then
+		elseif flgs[1] then
+			ie3 = ie2
+		else
+			foreach interf in t::GetInterfaces()
+				if interf::get_IsGenericType() then
+					if ie::Equals(interf::GetGenericTypeDefinition()) then
+						flgs[0] = true
+						ie3 = interf
+					end if
+				else
+					if ie2::Equals(interf) then
+						flgs[1] = true
+					end if
+				end if
+			end for
+			
+			if flgs[0] then
+			elseif flgs[1] then
+				ie3 = ie2
+			else
+				return null
+			end if
+		end if
+		
+		arr[0] = Loader::LoadMethod(ie3, "GetEnumerator", IKVM.Reflection.Type::EmptyTypes)
+		arr[1] = Loader::LoadMethod(arr[0]::get_ReturnType(), "MoveNext", IKVM.Reflection.Type::EmptyTypes)
+		arr[2] = Loader::LoadMethod(arr[0]::get_ReturnType(), "get_Current", IKVM.Reflection.Type::EmptyTypes)
+		
+		return arr
 	end method
 
 end class

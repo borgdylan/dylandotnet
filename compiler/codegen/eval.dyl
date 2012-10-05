@@ -351,6 +351,9 @@ class public auto ansi beforefieldinit Evaluator
 				src1 = AsmFactory::Type02
 			end if
 			AsmFactory::Type02 = Helpers::CommitEvalTTok(idt::TTok)
+			if AsmFactory::Type02 = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + idt::TTok::Value +"' was not found.")
+			end if	
 			if emt then
 				snk1 = AsmFactory::Type02
 				Helpers::EmitConv(src1, snk1)
@@ -640,6 +643,9 @@ class public auto ansi beforefieldinit Evaluator
 				src1 = AsmFactory::Type02
 			end if
 			AsmFactory::Type02 = Helpers::CommitEvalTTok(mntok::TTok)
+			if AsmFactory::Type02 = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + mntok::TTok::Value +"' was not found.")
+			end if
 			if emt then
 				snk1 = AsmFactory::Type02
 				Helpers::EmitConv(src1, snk1)
@@ -960,6 +966,9 @@ class public auto ansi beforefieldinit Evaluator
 						src1 = AsmFactory::Type02
 					end if
 					AsmFactory::Type02 = Helpers::CommitEvalTTok(slit::TTok)
+					if AsmFactory::Type02 = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + slit::TTok::Value +"' was not found.")
+					end if
 					if emt then
 						snk1 = AsmFactory::Type02
 						Helpers::EmitConv(src1, snk1)
@@ -978,6 +987,9 @@ class public auto ansi beforefieldinit Evaluator
 						src1 = AsmFactory::Type02
 					end if
 					AsmFactory::Type02 = Helpers::CommitEvalTTok(lit::TTok)
+					if AsmFactory::Type02 = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + lit::TTok::Value +"' was not found.")
+					end if
 					if emt then
 						snk1 = AsmFactory::Type02
 						Helpers::EmitConv(src1, snk1)
@@ -1022,6 +1034,9 @@ class public auto ansi beforefieldinit Evaluator
 						src1 = AsmFactory::Type02
 					end if
 					AsmFactory::Type02 = Helpers::CommitEvalTTok(metk1::TTok)
+					if AsmFactory::Type02 = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + metk1::TTok::Value +"' was not found.")
+					end if
 					if emt then
 						snk1 = AsmFactory::Type02
 						Helpers::EmitConv(src1, snk1)

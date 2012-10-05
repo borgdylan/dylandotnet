@@ -8,6 +8,7 @@
     <AssemblyVersion>11.2.9.5</AssemblyVersion>
     <AssemblyVersion>11.2.9.6</AssemblyVersion>
     <AssemblyVersion>11.2.9.7</AssemblyVersion>
+    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -28,6 +29,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -41,6 +43,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="nme" Type="System.String" />
@@ -84,6 +87,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -107,6 +111,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -126,6 +131,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -171,6 +177,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -185,8 +192,8 @@
       </Docs>
     </Member>
     <Member MemberName="Ctors">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;dylan.NET.Tokenizer.CodeGen.CtorItem&gt; Ctors;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Collections.Generic.List`1&lt;class dylan.NET.Tokenizer.CodeGen.CtorItem&gt; Ctors" />
+      <MemberSignature Language="C#" Value="public C5.IList&lt;dylan.NET.Tokenizer.CodeGen.CtorItem&gt; Ctors;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.IList`1&lt;class dylan.NET.Tokenizer.CodeGen.CtorItem&gt; Ctors" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
@@ -194,9 +201,10 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;dylan.NET.Tokenizer.CodeGen.CtorItem&gt;</ReturnType>
+        <ReturnType>C5.IList&lt;dylan.NET.Tokenizer.CodeGen.CtorItem&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -204,8 +212,8 @@
       </Docs>
     </Member>
     <Member MemberName="Fields">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;dylan.NET.Tokenizer.CodeGen.FieldItem&gt; Fields;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Collections.Generic.List`1&lt;class dylan.NET.Tokenizer.CodeGen.FieldItem&gt; Fields" />
+      <MemberSignature Language="C#" Value="public C5.IList&lt;dylan.NET.Tokenizer.CodeGen.FieldItem&gt; Fields;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.IList`1&lt;class dylan.NET.Tokenizer.CodeGen.FieldItem&gt; Fields" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
@@ -213,9 +221,10 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;dylan.NET.Tokenizer.CodeGen.FieldItem&gt;</ReturnType>
+        <ReturnType>C5.IList&lt;dylan.NET.Tokenizer.CodeGen.FieldItem&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -228,6 +237,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.ConstructorBuilder</ReturnType>
@@ -271,6 +281,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.FieldBuilder</ReturnType>
@@ -314,6 +325,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.MethodBuilder</ReturnType>
@@ -365,6 +377,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Type</ReturnType>
@@ -375,8 +388,8 @@
       </Docs>
     </Member>
     <Member MemberName="Interfaces">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;IKVM.Reflection.Type&gt; Interfaces;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Collections.Generic.List`1&lt;class IKVM.Reflection.Type&gt; Interfaces" />
+      <MemberSignature Language="C#" Value="public C5.IList&lt;IKVM.Reflection.Type&gt; Interfaces;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.IList`1&lt;class IKVM.Reflection.Type&gt; Interfaces" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
@@ -384,9 +397,10 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;IKVM.Reflection.Type&gt;</ReturnType>
+        <ReturnType>C5.IList&lt;IKVM.Reflection.Type&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -394,8 +408,8 @@
       </Docs>
     </Member>
     <Member MemberName="Methods">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;dylan.NET.Tokenizer.CodeGen.MethodItem&gt; Methods;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Collections.Generic.List`1&lt;class dylan.NET.Tokenizer.CodeGen.MethodItem&gt; Methods" />
+      <MemberSignature Language="C#" Value="public C5.IList&lt;dylan.NET.Tokenizer.CodeGen.MethodItem&gt; Methods;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.IList`1&lt;class dylan.NET.Tokenizer.CodeGen.MethodItem&gt; Methods" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.3</AssemblyVersion>
@@ -403,9 +417,10 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;dylan.NET.Tokenizer.CodeGen.MethodItem&gt;</ReturnType>
+        <ReturnType>C5.IList&lt;dylan.NET.Tokenizer.CodeGen.MethodItem&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -422,6 +437,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -441,6 +457,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -462,6 +479,7 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.TypeBuilder</ReturnType>

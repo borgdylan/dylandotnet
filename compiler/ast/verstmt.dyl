@@ -10,7 +10,7 @@ class public auto ansi VerStmt extends Stmt
 
 	field public IntLiteral[] VersionNos
 
-	method public void ctor0()
+	method public void VerStmt()
 		me::ctor()
 		VersionNos = new IntLiteral[4]
 		var i as integer = -1

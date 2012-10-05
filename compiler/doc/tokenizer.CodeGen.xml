@@ -618,6 +618,12 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessForeach(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessMethodAttrs(dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[])">
             <param name="attrs">To be added.</param>
             <summary>To be added.</summary>
@@ -816,10 +822,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.CodeGen.OpStack.Stack">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.OpStack.TopOp()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
@@ -869,20 +871,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder)">
-            <param name="ptyps">To be added.</param>
-            <param name="met">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.FieldBuilder)">
-            <param name="nme">To be added.</param>
-            <param name="typ">To be added.</param>
-            <param name="fld">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder)">
             <param name="nme">To be added.</param>
             <param name="typ">To be added.</param>
             <param name="fld">To be added.</param>
@@ -915,14 +904,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder)">
-            <param name="nme">To be added.</param>
-            <param name="typ">To be added.</param>
-            <param name="ptyps">To be added.</param>
-            <param name="met">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddMtdCA(IKVM.Reflection.Emit.CustomAttributeBuilder)">
             <param name="ca">To be added.</param>
             <summary>To be added.</summary>
@@ -934,20 +915,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedCtor(System.Type[],System.Reflection.Emit.ConstructorBuilder)">
-            <param name="ptyps">To be added.</param>
-            <param name="met">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedFld(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.FieldBuilder)">
-            <param name="nme">To be added.</param>
-            <param name="typ">To be added.</param>
-            <param name="fld">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedFld(System.String,System.Type,System.Reflection.Emit.FieldBuilder)">
             <param name="nme">To be added.</param>
             <param name="typ">To be added.</param>
             <param name="fld">To be added.</param>
@@ -962,49 +930,13 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddNestedMet(System.String,System.Type,System.Type[],System.Reflection.Emit.MethodBuilder)">
-            <param name="nme">To be added.</param>
-            <param name="typ">To be added.</param>
-            <param name="ptyps">To be added.</param>
-            <param name="met">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddTypArr(IKVM.Reflection.Type[])">
             <param name="arr">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddTypArr(System.Type[])">
-            <param name="arr">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddTypArr(System.Type[])">
-            <param name="arr">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddVar(System.String,System.Boolean,System.Int32,System.Type)">
-            <param name="nme">To be added.</param>
-            <param name="la">To be added.</param>
-            <param name="ind">To be added.</param>
-            <param name="typ">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddVar(System.String,System.Boolean,System.Int32,IKVM.Reflection.Type,System.Int32)">
-            <param name="nme">To be added.</param>
-            <param name="la">To be added.</param>
-            <param name="ind">To be added.</param>
-            <param name="typ">To be added.</param>
-            <param name="lin">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddVar(System.String,System.Boolean,System.Int32,System.Type,System.Int32)">
             <param name="nme">To be added.</param>
             <param name="la">To be added.</param>
             <param name="ind">To be added.</param>
@@ -1032,17 +964,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.CmpTyps(System.Type[],System.Type[])">
-            <param name="arra">To be added.</param>
-            <param name="arrb">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.CtorLst">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.CurnTypItem">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1053,30 +974,6 @@
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindCtor(IKVM.Reflection.Type[])">
             <param name="paramst">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindCtor(System.Type[])">
-            <param name="params">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindCtor(System.Type[])">
-            <param name="paramst">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindFld(System.String)">
-            <param name="nam">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindFld(System.String)">
-            <param name="nam">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -1126,10 +1023,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.FldLst">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.IfLst">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1143,14 +1036,6 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.MethodCALst">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.MetLst">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.NestedCtorLst">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1170,6 +1055,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopScope()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopTypArr()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
@@ -1178,6 +1067,10 @@
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopTypArr()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PushScope()">
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfElsePass()">
@@ -1299,14 +1192,6 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.TypeLst">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.TypLst">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.VarLst">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1463,13 +1348,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetCtor(System.Type,System.Type[])">
-            <param name="t">To be added.</param>
-            <param name="paramst">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetField(IKVM.Reflection.Type,System.String)">
             <param name="t">To be added.</param>
             <param name="nam">To be added.</param>
@@ -1477,22 +1355,7 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetField(System.Type,System.String)">
-            <param name="t">To be added.</param>
-            <param name="nam">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetMethod(IKVM.Reflection.Type,System.String,IKVM.Reflection.Type[])">
-            <param name="t">To be added.</param>
-            <param name="nam">To be added.</param>
-            <param name="paramst">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetMethod(System.Type,System.String,System.Type[])">
             <param name="t">To be added.</param>
             <param name="nam">To be added.</param>
             <param name="paramst">To be added.</param>

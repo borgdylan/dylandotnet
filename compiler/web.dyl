@@ -56,7 +56,7 @@ import dylan.NET.Tokenizer.CodeGen
 #debug on
 
 assembly web dll
-ver 11.2.9.6
+ver 11.2.9.8
 
 namespace dylan.NET.Web
 

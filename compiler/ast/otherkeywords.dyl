@@ -417,6 +417,22 @@ class public auto ansi DoTok extends Token
 
 end class
 
+class public auto ansi ForTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "for"
+	end method
+
+end class
+
+class public auto ansi ForeachTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "foreach"
+	end method
+
+end class
+
 class public auto ansi BreakTok extends Token
 
 	method public hidebysig virtual string ToString()

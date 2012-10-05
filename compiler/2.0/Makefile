@@ -75,7 +75,7 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoheader
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.7\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.7\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.7\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.8\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.8\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.8\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
@@ -97,16 +97,16 @@ MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.9.7
+PACKAGE_STRING = dylandotnet 11.2.9.8
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.9.7
+PACKAGE_VERSION = 11.2.9.8
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.9.7
+VERSION = 11.2.9.8
 abs_builddir = /var/www/Code/dylannet/compiler/2.0
 abs_srcdir = /var/www/Code/dylannet/compiler/2.0
 abs_top_builddir = /var/www/Code/dylannet/compiler
@@ -359,6 +359,8 @@ install: prodscript
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet/tokenizer.CodeGen.dll
 	$(install_sh_PROGRAM) IKVM.Reflection.dll $(DESTDIR)$(libdir)/dylandotnet/IKVM.Reflection.dll
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet/IKVM.Reflection.dll
+	$(install_sh_PROGRAM) C5.Mono.dll $(DESTDIR)$(libdir)/dylandotnet/C5.Mono.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/C5.Mono.dll
 	$(install_sh_PROGRAM) dnc.exe $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
 

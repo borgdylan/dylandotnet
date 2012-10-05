@@ -108,7 +108,7 @@ class public auto ansi StmtReader
 
 	method public void Read(var stm as Stmt, var fpath as string)
 
-		var t as Type[] = new Type[45]
+		var t as Type[] = new Type[46]
 		t[0] = gettype RefasmStmt
 		t[1] = gettype RefstdasmStmt
 		t[2] = gettype ImportStmt
@@ -154,6 +154,7 @@ class public auto ansi StmtReader
 		t[42] = gettype FieldAttrStmt
 		t[43] = gettype ClassAttrStmt
 		t[44] = gettype AssemblyAttrStmt
+		t[45] = gettype ForeachStmt
 		
 		var tmpchrarr as char[]
 		var vtyp as IKVM.Reflection.Type = null
@@ -202,9 +203,21 @@ class public auto ansi StmtReader
 				tmpchrarr[0] = c'\q'
 				istm::NS::Value = istm::NS::Value::Trim(tmpchrarr)
 			end if
-			StreamUtils::Write("Importing Namespace: ")
-			StreamUtils::WriteLine(istm::NS::Value)
-			Importer::AddImp(istm::NS::Value)
+			if istm::Alias::Value::get_Length() != 0 then
+				if istm::Alias::Value like c"^\q(.)*\q$" then
+					tmpchrarr = new char[1]
+					tmpchrarr[0] = c'\q'
+					istm::Alias::Value = istm::Alias::Value::Trim(tmpchrarr)
+				end if
+			end if
+			if istm::Alias::Value::get_Length() == 0 then
+				StreamUtils::Write("Importing Namespace: ")
+				StreamUtils::WriteLine(istm::NS::Value)
+				Importer::AddImp(istm::NS::Value)
+			else
+				StreamUtils::WriteLine("Aliasing '" + istm::Alias::Value + "' to Namespace: " + istm::NS::Value)
+				Importer::RegisterAlias(istm::Alias::Value,istm::NS::Value)
+			end if
 		elseif t[3]::IsInstanceOfType(stm) then
 			var listm as LocimportStmt = $LocimportStmt$stm
 			if listm::NS::Value like c"^\q(.)*\q$" then
@@ -212,6 +225,7 @@ class public auto ansi StmtReader
 				tmpchrarr[0] = c'\q'
 				listm::NS::Value = listm::NS::Value::Trim(tmpchrarr)
 			end if
+			
 			StreamUtils::Write("Importing Namespace: ")
 			StreamUtils::WriteLine(listm::NS::Value)
 			Importer::AddLocImp(listm::NS::Value)
@@ -510,8 +524,7 @@ class public auto ansi StmtReader
 			end if
 
 			var paramstyps as IKVM.Reflection.Type[] = AsmFactory::TypArr
-			var mtssnamarr as string[]
-			var mtssnamarr2 as string[]
+			var mtssnamarr as C5.IList<of string>
 			var overldnam as string = String::Empty
 			var overldmtd as MethodInfo = null
 
@@ -534,22 +547,18 @@ class public auto ansi StmtReader
 				StreamUtils::Write("	Adding Method: ")
 				StreamUtils::WriteLine(mtssnamstr)
 
-				mtssnamarr = ParseUtils::StringParser(mtssnamstr, ".")
-				if mtssnamarr[l] > 1 then
-					//Console::WriteLine(mtssnamarr[l])
-					overldnam = mtssnamarr[mtssnamarr[l] - 1]
-					mtssnamarr2 = new string[mtssnamarr[l] - 1]
-					//please preserve the $Array$ compilation workaround
-					Array::Copy($Array$mtssnamarr, 0, $Array$mtssnamarr2, 0, mtssnamarr2[l])
-					//----------------------------------------------------
-					typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", mtssnamarr2)))
+				mtssnamarr = ParseUtils::StringParserL(mtssnamstr, ".")
+				if mtssnamarr::get_Count() > 1 then
+					//Console::WriteLine(mtssnamarr::get_Count())
+					overldnam = mtssnamarr::get_Last()
+					typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", mtssnamarr::View(0,mtssnamarr::get_Count() - 1)::ToArray())))
 					mtssnamstr = typ::ToString() + "." + overldnam
 				end if
 
 				AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, Helpers::ProcessMethodAttrs(mtss::Attrs), rettyp, AsmFactory::TypArr)
 				AsmFactory::InitMtd()
 
-				if mtssnamarr[l] > 1 then
+				if mtssnamarr::get_Count() > 1 then
 					overldmtd = Helpers::GetExtMet(typ, new MethodNameTok(overldnam), paramstyps)
 					AsmFactory::CurnTypB::DefineMethodOverride(AsmFactory::CurnMetB, overldmtd)
 				end if
@@ -640,10 +649,12 @@ class public auto ansi StmtReader
 		elseif t[20]::IsInstanceOfType(stm) then
 			var ifstm as IfStmt = $IfStmt$stm
 			SymTable::AddIf()
+			SymTable::PushScope()
 			eval = new Evaluator()
 			eval::Evaluate(ifstm::Exp)
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
 		elseif t[21]::IsInstanceOfType(stm) then
+			SymTable::PushScope()
 			SymTable::AddLoop()
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
 		elseif t[22]::IsInstanceOfType(stm) then
@@ -657,6 +668,7 @@ class public auto ansi StmtReader
 			ILEmitter::EmitBrfalse(SymTable::ReadLoopStartLbl())
 			ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
 			SymTable::PopLoop()
+			SymTable::PopScope()
 		elseif t[25]::IsInstanceOfType(stm) then
 			var whstm as WhileStmt = $WhileStmt$stm
 			eval = new Evaluator()
@@ -664,8 +676,10 @@ class public auto ansi StmtReader
 			ILEmitter::EmitBrtrue(SymTable::ReadLoopStartLbl())
 			ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
 			SymTable::PopLoop()
+			SymTable::PopScope()
 		elseif t[26]::IsInstanceOfType(stm) then
 			var dustm as DoUntilStmt = $DoUntilStmt$stm
+			SymTable::PushScope()
 			SymTable::AddLoop()
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
 			eval = new Evaluator()
@@ -673,6 +687,7 @@ class public auto ansi StmtReader
 			ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
 		elseif t[27]::IsInstanceOfType(stm) then
 			var dwstm as DoWhileStmt = $DoWhileStmt$stm
+			SymTable::PushScope()
 			SymTable::AddLoop()
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
 			eval = new Evaluator()
@@ -683,6 +698,8 @@ class public auto ansi StmtReader
 			ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
 			SymTable::SetIfNxtBlkLbl()
 			var elifstm as ElseIfStmt = $ElseIfStmt$stm
+			SymTable::PopScope()
+			SymTable::PushScope()
 			eval = new Evaluator()
 			eval::Evaluate(elifstm::Exp)
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
@@ -690,16 +707,20 @@ class public auto ansi StmtReader
 			ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
 			ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
 			SymTable::SetIfElsePass()
+			SymTable::PopScope()
+			SymTable::PushScope()
 		elseif t[30]::IsInstanceOfType(stm) then
 			if SymTable::ReadIfElsePass() = false then
 				ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
 			end if
 			ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
 			SymTable::PopIf()
+			SymTable::PopScope()
 		elseif t[31]::IsInstanceOfType(stm) then
 			ILEmitter::EmitBr(SymTable::ReadLoopStartLbl())
 			ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
 			SymTable::PopLoop()
+			SymTable::PopScope()
 		elseif t[32]::IsInstanceOfType(stm) then
 			var lblstm as LabelStmt = $LabelStmt$stm
 			SymTable::AddLbl(lblstm::LabelName::Value)
@@ -720,12 +741,18 @@ class public auto ansi StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No exception to throw specified")
 			end if
 		elseif t[37]::IsInstanceOfType(stm) then
+			SymTable::PushScope()
 			ILEmitter::EmitTry()
 		elseif t[38]::IsInstanceOfType(stm) then
 			ILEmitter::EmitEndTry()
+			SymTable::PopScope()
 		elseif t[39]::IsInstanceOfType(stm) then
+			SymTable::PopScope()
+			SymTable::PushScope()
 			ILEmitter::EmitFinally()
 		elseif t[40]::IsInstanceOfType(stm) then
+			SymTable::PopScope()
+			SymTable::PushScope()
 			var cats as CatchStmt = $CatchStmt$stm
 			vtyp = Helpers::CommitEvalTTok(cats::ExTyp)
 			if vtyp = null then
@@ -744,6 +771,31 @@ class public auto ansi StmtReader
 			SymTable::AddClsCA(AttrStmtToCAB($ClassAttrStmt$stm))
 		elseif t[44]::IsInstanceOfType(stm) then
 			SymTable::AddAsmCA(AttrStmtToCAB($AssemblyAttrStmt$stm))
+		elseif t[45]::IsInstanceOfType(stm) then
+			var festm as ForeachStmt = $ForeachStmt$stm
+			SymTable::PushScope()
+			eval = new Evaluator()
+			eval::Evaluate(festm::Exp)
+			var mtds as MethodInfo[] = Helpers::ProcessForeach(AsmFactory::Type02)
+			if mtds = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class " + AsmFactory::Type02::ToString() + " is not an IEnumerable or IEnumerable<of T>.")
+			end if
+			ILEmitter::EmitCallvirt(mtds[0])
+			ILEmitter::DeclVar(String::Empty, mtds[0]::get_ReturnType())
+			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			var ien as integer = ILEmitter::LocInd
+			ILEmitter::EmitStloc(ien)
+			SymTable::AddLoop()
+			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
+			ILEmitter::EmitLdloc(ien)
+			ILEmitter::EmitCallvirt(mtds[1])
+			ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
+			ILEmitter::DeclVar(festm::Iter::Value, mtds[2]::get_ReturnType())
+			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, mtds[2]::get_ReturnType(), ILEmitter::LineNr)
+			ILEmitter::EmitLdloc(ien)
+			ILEmitter::EmitCallvirt(mtds[2])
+			ILEmitter::EmitStloc(ILEmitter::LocInd)
 		else
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
 		end if

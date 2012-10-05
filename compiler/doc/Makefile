@@ -75,7 +75,7 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoheader
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.7\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.7\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.7\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.8\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.8\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.8\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
@@ -97,16 +97,16 @@ MONO = /usr/bin/mono
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.9.7
+PACKAGE_STRING = dylandotnet 11.2.9.8
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.9.7
+PACKAGE_VERSION = 11.2.9.8
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.9.7
+VERSION = 11.2.9.8
 abs_builddir = /var/www/Code/dylannet/compiler/doc
 abs_srcdir = /var/www/Code/dylannet/compiler/doc
 abs_top_builddir = /var/www/Code/dylannet/compiler
@@ -339,13 +339,13 @@ uninstall-am:
 .PHONY: all
 
 all:
-	'$(MDOC)' update -o ast ../tokenizer.AST.dll
-	'$(MDOC)' update -o lexer ../tokenizer.Lexer.dll
-	'$(MDOC)' update -o parser ../tokenizer.Parser.dll
-	'$(MDOC)' update -o codegen ../tokenizer.CodeGen.dll
-	'$(MDOC)' update -o dnu ../dnu.dll
-	'$(MDOC)' update -o dnr ../dnr.dll
-	'$(MDOC)' update -o dnc ../dnc.exe
+	'$(MDOC)' update --delete -o ast ../tokenizer.AST.dll
+	'$(MDOC)' update --delete -o lexer ../tokenizer.Lexer.dll
+	'$(MDOC)' update --delete -o parser ../tokenizer.Parser.dll
+	'$(MDOC)' update --delete -o codegen ../tokenizer.CodeGen.dll
+	'$(MDOC)' update --delete -o dnu ../dnu.dll
+	'$(MDOC)' update --delete -o dnr ../dnr.dll
+	'$(MDOC)' update --delete -o dnc ../dnc.exe
 
 	'$(MDOC)' export-html -o ast-html ast
 	'$(MDOC)' export-html -o lexer-html lexer

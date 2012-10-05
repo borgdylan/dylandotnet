@@ -112,191 +112,144 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method private Stmt checkWhile(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype WhileTok
-	b = typ::IsInstanceOfType(tok)
-	var whis as WhileStmt = new WhileStmt()
-	var exp as Expr = new Expr()
-	
-	if b then
-	
-	whis::Line = stm::Line
-	whis::Tokens = stm::Tokens
-	
-	var i as integer = 0
-	var len as integer = stm::Tokens[l] - 1
-	
-	label cont
-	label loop
-	
-	place loop
-	
-	i = i + 1
-	
-	tok = stm::Tokens[i]
-	exp::AddToken(tok)
-	
-	if i = len then
-	goto cont
-	else
-	goto loop
-	end if
-	
-	place cont
-	
-	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	exp = eop::Optimize(exp)
-	whis::Exp = exp
-	
-	end if
-	
-	return whis
+		var typ as Type = gettype WhileTok
+		b = typ::IsInstanceOfType(stm::Tokens[0])
+		var whis as WhileStmt = new WhileStmt()
+		var exp as Expr = new Expr()
+		
+		if b then
+			whis::Line = stm::Line
+			whis::Tokens = stm::Tokens
+			var i as integer = 0
+			
+			do until i = (stm::Tokens[l] - 1)
+				i = i + 1
+				exp::AddToken(stm::Tokens[i])
+			end do
+			
+			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+			exp = eop::Optimize(exp)
+			whis::Exp = exp
+		end if
+		
+		return whis
 	end method
 	
 	method private Stmt checkDoWhile(var stm as Stmt, var b as boolean&)
 	
-	var whis as DoWhileStmt = null
-	
-	if stm::Tokens[l] >= 2 then
-	
-	var typ1 as Type = gettype DoTok
-	var typ2 as Type = gettype WhileTok
-	
-	b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
-	
-	whis = new DoWhileStmt()
-	var exp as Expr = new Expr()
-	var tok as Token
-	
-	if b then
-	
-	whis::Line = stm::Line
-	whis::Tokens = stm::Tokens
-	
-	var i as integer = 1
-	var len as integer = stm::Tokens[l] - 1
-	
-	label cont
-	label loop
-	
-	place loop
-	
-	i = i + 1
-	
-	tok = stm::Tokens[i]
-	exp::AddToken(tok)
-	
-	if i = len then
-	goto cont
-	else
-	goto loop
-	end if
-	
-	place cont
-	
-	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	exp = eop::Optimize(exp)
-	whis::Exp = exp
-	
-	end if
-	
-	end if
-	
-	return whis
+		var whis as DoWhileStmt = null
+		
+		if stm::Tokens[l] >= 2 then
+		
+			var typ1 as Type = gettype DoTok
+			var typ2 as Type = gettype WhileTok
+			
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+			
+			whis = new DoWhileStmt()
+			var exp as Expr = new Expr()
+			
+			if b then
+				whis::Line = stm::Line
+				whis::Tokens = stm::Tokens
+				var i as integer = 1
+				
+				do until i = (stm::Tokens[l] - 1)
+					i = i + 1
+					exp::AddToken(stm::Tokens[i])
+				end do
+				
+				var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+				exp = eop::Optimize(exp)
+				whis::Exp = exp
+			end if
+		end if
+		
+		return whis
 	end method
 	
 	method private Stmt checkUntil(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype UntilTok
-	b = typ::IsInstanceOfType(tok)
-	var unts as UntilStmt = new UntilStmt()
-	var exp as Expr = new Expr()
-	
-	if b then
-	
-	unts::Line = stm::Line
-	unts::Tokens = stm::Tokens
-	
-	var i as integer = 0
-	var len as integer = stm::Tokens[l] - 1
-	
-	label cont
-	label loop
-	
-	place loop
-	
-	i = i + 1
-	
-	tok = stm::Tokens[i]
-	exp::AddToken(tok)
-	
-	if i = len then
-	goto cont
-	else
-	goto loop
-	end if
-	
-	place cont
-	
-	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	exp = eop::Optimize(exp)
-	unts::Exp = exp
-	
-	end if
-	
-	return unts
+		var typ as Type = gettype UntilTok
+		b = typ::IsInstanceOfType(stm::Tokens[0])
+		var unts as UntilStmt = new UntilStmt()
+		var exp as Expr = new Expr()
+		
+		if b then
+			unts::Line = stm::Line
+			unts::Tokens = stm::Tokens
+			var i as integer = 0
+			
+			do until i = (stm::Tokens[l] - 1)
+				i = i + 1
+				exp::AddToken(stm::Tokens[i])	
+			end do
+			
+			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+			exp = eop::Optimize(exp)
+			unts::Exp = exp
+		end if
+		
+		return unts
 	end method
 	
 	method private Stmt checkDoUntil(var stm as Stmt, var b as boolean&)
 	
-	var unts as DoUntilStmt = null
+		var unts as DoUntilStmt = null
+		
+		if stm::Tokens[l] >= 2 then
+		
+			var typ1 as Type = gettype DoTok
+			var typ2 as Type = gettype UntilTok
+			
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+			
+			unts = new DoUntilStmt()
+			var exp as Expr = new Expr()
+			
+			if b then
+			
+				unts::Line = stm::Line
+				unts::Tokens = stm::Tokens				
+				var i as integer = 1
+
+				do until i = (stm::Tokens[l] - 1)
+					i = i + 1
+					exp::AddToken(stm::Tokens[i])
+				end do
+								
+				var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+				exp = eop::Optimize(exp)
+				unts::Exp = exp
+			end if	
+		end if
 	
-	if stm::Tokens[l] >= 2 then
+		return unts
+	end method
 	
-	var typ1 as Type = gettype DoTok
-	var typ2 as Type = gettype UntilTok
-	
-	b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
-	
-	unts = new DoUntilStmt()
-	var exp as Expr = new Expr()
-	
-	if b then
-	
-	unts::Line = stm::Line
-	unts::Tokens = stm::Tokens
-	
-	var i as integer = 1
-	var len as integer = stm::Tokens[l] - 1
-	var tok as Token
-	
-	label cont
-	label loop
-	
-	place loop
-	
-	i = i + 1
-	
-	tok = stm::Tokens[i]
-	exp::AddToken(tok)
-	
-	if i = len then
-	goto cont
-	else
-	goto loop
-	end if
-	
-	place cont
-	
-	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	exp = eop::Optimize(exp)
-	unts::Exp = exp
-	
-	end if
-	
-	end if
-	
-	return unts
+	method private Stmt checkForeach(var stm as Stmt, var b as boolean&)
+		var typ as Type = gettype ForeachTok
+		b = typ::IsInstanceOfType(stm::Tokens[0])
+		var fes as ForeachStmt = new ForeachStmt()
+		var exp as Expr = new Expr()
+		
+		if b then
+			fes::Line = stm::Line
+			fes::Tokens = stm::Tokens
+			fes::Iter = $Ident$stm::Tokens[1]
+			
+			var i as integer = 2
+			
+			do until i = (stm::Tokens[l] - 1)
+				i = i + 1
+				exp::AddToken(stm::Tokens[i])	
+			end do
+			
+			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+			exp = eop::Optimize(exp)
+			fes::Exp = exp
+		end if
+		
+		return fes
 	end method
 	
 	method private Stmt checkElseIf(var stm as Stmt, var b as boolean&)
@@ -419,16 +372,24 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method private Stmt checkImport(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype ImportTok
-	b = typ::IsInstanceOfType(tok)
-	var imps as ImportStmt = new ImportStmt()
-	if b then
-	imps::Line = stm::Line
-	imps::Tokens = stm::Tokens
-	imps::NS = stm::Tokens[1]
-	end if
-	return imps
+		var typ as Type = gettype ImportTok
+		b = typ::IsInstanceOfType(stm::Tokens[0])
+		var imps as ImportStmt = new ImportStmt()
+		if b then
+			imps::Line = stm::Line
+			imps::Tokens = stm::Tokens
+			if stm::Tokens[l] >= 4 then
+				if stm::Tokens[2]::Value = "=" then
+					imps::Alias = stm::Tokens[1]
+					imps::NS = stm::Tokens[3]
+				else
+					imps::NS = stm::Tokens[1]
+				end if
+			else
+				imps::NS = stm::Tokens[1]
+			end if
+		end if
+		return imps
 	end method
 	
 	method private Stmt checkNS(var stm as Stmt, var b as boolean&)
@@ -748,8 +709,9 @@ class public auto ansi StmtOptimizer
 
 			var typ1 as Type = gettype EndTok
 			var typ2 as Type = gettype DoTok
+			var typ3 as Type = gettype ForTok
 	
-			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+			b = typ1::IsInstanceOfType(stm::Tokens[0]) and (typ2::IsInstanceOfType(stm::Tokens[1]) or typ3::IsInstanceOfType(stm::Tokens[1]))
 	
 			if b then
 				eds = new EndDoStmt()
@@ -1503,6 +1465,8 @@ class public auto ansi StmtOptimizer
 	
 	method private Stmt checkMethodCall(var stm as Stmt, var b as boolean&)
 	
+	var mtcss as MethodCallStmt = new MethodCallStmt()
+	
 	if stm::Tokens[l] > 2 then
 	var tok as Token = stm::Tokens[0]
 	var typ as Type = gettype Ident
@@ -1512,8 +1476,6 @@ class public auto ansi StmtOptimizer
 	//var bb as boolean = typb::IsInstanceOfType(tokb)
 	
 	b = ba
-	
-	var mtcss as MethodCallStmt = new MethodCallStmt()
 	
 	if b then
 	
@@ -2023,6 +1985,12 @@ class public auto ansi StmtOptimizer
 		goto fin
 	end if
 	
+	tmpstm = checkForeach(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
 	tmpstm = checkDoWhile(stm, ref|compb)
 	if compb then
 		stm = tmpstm
@@ -2082,7 +2050,6 @@ class public auto ansi StmtOptimizer
 		stm = tmpstm
 		goto fin
 	end if
-	
 	
 	place fin
 	

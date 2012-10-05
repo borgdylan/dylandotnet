@@ -9,10 +9,12 @@
 class public auto ansi IncludeStmt extends Stmt
 
 	field public Token Path
+	field public StmtSet SSet
 
 	method public void IncludeStmt()
 		me::ctor()
 		Path = new Token()
+		SSet = null
 	end method
 	
 	method public hidebysig virtual string ToString()

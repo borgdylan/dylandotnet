@@ -15,6 +15,7 @@
 #refstdasm "System.Core.dll"
 #refasm "dnu.dll"
 #refasm "IKVM.Reflection.dll"
+#refasm "C5.Mono.dll"
 
 import System
 import System.IO
@@ -38,7 +39,7 @@ import IKVM.Reflection.Emit
 #include "dnr/assemblyinfo.dyl"
 
 assembly dnr dll
-ver 11.2.9.7
+ver 11.2.9.8
 
 namespace dylan.NET.Reflection
 	#include "dnr/milambdas.dyl"
