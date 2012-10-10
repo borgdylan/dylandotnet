@@ -300,6 +300,11 @@ class public auto ansi Program
 		end for
 		
 	end method
+	
+	method public static void aliastests()
+		Console::WriteLine(string::Empty)
+		Console::WriteLine(integer::Parse("23"))
+	end method
 
 	[method: STAThread()]
 	method public static void main()

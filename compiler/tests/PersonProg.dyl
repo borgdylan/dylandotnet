@@ -14,7 +14,7 @@ class public auto ansi PersonInst
 
 	method public static void main()
 
-		var p as Person = new Person("Dylan Borg", "Blk C3 Flat 11, Ta' Paris H/E B'kara", 18)
+		var p as Person = new Person("Dylan Borg", "Address Here", 18)
 		var name as string = p::getName()
 		var address as string = p::getAddress()
 		var age as integer = p::getAge()
