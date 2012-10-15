@@ -1,0 +1,6 @@
+<Namespace Name="dylan.NET.LZW">
+  <Docs>
+    <summary>Classes for Compressing/Decompressing files using Lempel-Ziv-Welch.</summary>
+    <remarks>Classes for Compressing/Decompressing files using Lempel-Ziv-Welch.</remarks>
+  </Docs>
+</Namespace>

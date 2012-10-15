@@ -1,0 +1,9 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+pkglibdir=${libdir}/cli/dylandotnet-lzw4
+
+Name: dylan.NET.LZW
+Description: LZW library for CLI 4.0
+Version: @version@
+Libs: -r:${pkglibdir}/lzw.dll -r:${pkglibdir}/C5.Mono.dll

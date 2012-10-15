@@ -1,0 +1,35 @@
+<doc>
+    <assembly>
+        <name>lzw</name>
+    </assembly>
+    <members>
+        <member name="T:dylan.NET.LZW.Compressor">
+            <summary>Lempel-Ziv-Welch Compressor</summary>
+            <remarks>Output files should be the decompressed using this library's decompressor.</remarks>
+        </member>
+        <member name="C:dylan.NET.LZW.Compressor()">
+            <summary>Make a new Compressor instance.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.LZW.Compressor.Compress(System.String,System.String)">
+            <param name="srcpath">File to compress.</param>
+            <param name="destpath">File to write to.</param>
+            <summary>Compress file at 'srcpath' using LZW and write the output to 'destpath'.</summary>
+            <remarks>The file paths can be relative or rooted. Relative paths are relative to the current working directory.</remarks>
+        </member>
+        <member name="T:dylan.NET.LZW.Decompressor">
+            <summary>Lempel-Ziv-Welch Decompressor</summary>
+            <remarks>Input files should be the output of this library's compressor.</remarks>
+        </member>
+        <member name="C:dylan.NET.LZW.Decompressor()">
+            <summary>Make a new Decompressor instance.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.LZW.Decompressor.Decompress(System.String,System.String)">
+            <param name="srcpath">File to decompress.</param>
+            <param name="destpath">File to write to.</param>
+            <summary>Decompress file at 'srcpath' using LZW and write the output to 'destpath'.</summary>
+            <remarks>The file paths can be relative or rooted. Relative paths are relative to the current working directory.</remarks>
+        </member>
+    </members>
+</doc>

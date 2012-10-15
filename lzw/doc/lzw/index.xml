@@ -1,0 +1,35 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="lzw" Version="1.1.0.0">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.CLSCompliant(true)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyConfiguration("DEBUG")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg &lt;borgdylan@hotmail.com&gt;")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("dylan.NET.LZW")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>Lempel-Ziv-Welch library for .NET/Mono.</Remarks>
+  <Copyright>Copyright (C) Dylan Borg 2012.</Copyright>
+  <Types>
+    <Namespace Name="dylan.NET.LZW">
+      <Type Name="Compressor" Kind="Class" />
+      <Type Name="Decompressor" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>lzw</Title>
+</Overview>

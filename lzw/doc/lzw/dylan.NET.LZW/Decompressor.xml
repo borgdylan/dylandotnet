@@ -1,0 +1,53 @@
+<Type Name="Decompressor" FullName="dylan.NET.LZW.Decompressor">
+  <TypeSignature Language="C#" Value="public class Decompressor" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Decompressor extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>lzw</AssemblyName>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Lempel-Ziv-Welch Decompressor</summary>
+    <remarks>Input files should be the output of this library's compressor.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Decompressor ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Make a new Decompressor instance.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Decompress">
+      <MemberSignature Language="C#" Value="public void Decompress (string srcpath, string destpath);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void Decompress(string srcpath, string destpath) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="srcpath" Type="System.String" />
+        <Parameter Name="destpath" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="srcpath">File to decompress.</param>
+        <param name="destpath">File to write to.</param>
+        <summary>Decompress file at 'srcpath' using LZW and write the output to 'destpath'.</summary>
+        <remarks>The file paths can be relative or rooted. Relative paths are relative to the current working directory.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
