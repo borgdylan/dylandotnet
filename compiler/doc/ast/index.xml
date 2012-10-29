@@ -55,6 +55,7 @@
       <Type Name="EndClassStmt" Kind="Class" />
       <Type Name="EndDoStmt" Kind="Class" />
       <Type Name="EndEnumStmt" Kind="Class" />
+      <Type Name="EndHIfStmt" Kind="Class" />
       <Type Name="EndIfStmt" Kind="Class" />
       <Type Name="EndMethodStmt" Kind="Class" />
       <Type Name="EndNSStmt" Kind="Class" />
@@ -67,6 +68,12 @@
       <Type Name="FinallyStmt" Kind="Class" />
       <Type Name="ForeachStmt" Kind="Class" />
       <Type Name="GotoStmt" Kind="Class" />
+      <Type Name="HCondCompStmt" Kind="Class" />
+      <Type Name="HDefineStmt" Kind="Class" />
+      <Type Name="HElseIfStmt" Kind="Class" />
+      <Type Name="HElseStmt" Kind="Class" />
+      <Type Name="HIfStmt" Kind="Class" />
+      <Type Name="HUndefStmt" Kind="Class" />
       <Type Name="IfStmt" Kind="Class" />
       <Type Name="ImportStmt" Kind="Class" />
       <Type Name="IncludeStmt" Kind="Class" />
@@ -134,6 +141,11 @@
       <Type Name="GettypeCallTok" Kind="Class" />
       <Type Name="GettypeTok" Kind="Class" />
       <Type Name="GotoTok" Kind="Class" />
+      <Type Name="HDefineTok" Kind="Class" />
+      <Type Name="HElseIfTok" Kind="Class" />
+      <Type Name="HElseTok" Kind="Class" />
+      <Type Name="HIfTok" Kind="Class" />
+      <Type Name="HUndefTok" Kind="Class" />
       <Type Name="Ident" Kind="Class" />
       <Type Name="IfTok" Kind="Class" />
       <Type Name="ImageTok" Kind="Class" />
@@ -224,12 +236,14 @@
       <Type Name="CrLf" Kind="Class" />
       <Type Name="DollarSign" Kind="Class" />
       <Type Name="LAParen" Kind="Class" />
+      <Type Name="LCParen" Kind="Class" />
       <Type Name="Lf" Kind="Class" />
       <Type Name="LParen" Kind="Class" />
       <Type Name="LRSParen" Kind="Class" />
       <Type Name="LSParen" Kind="Class" />
       <Type Name="Pipe" Kind="Class" />
       <Type Name="RAParen" Kind="Class" />
+      <Type Name="RCParen" Kind="Class" />
       <Type Name="RParen" Kind="Class" />
       <Type Name="RSParen" Kind="Class" />
     </Namespace>

@@ -33,3 +33,59 @@ end class
 
 class public auto ansi EndIfStmt extends Stmt
 end class
+
+//conditional compilation variants
+
+class public auto ansi HCondCompStmt extends Stmt
+end class
+
+class public auto ansi HIfStmt extends HCondCompStmt
+
+	field public Expr Exp
+
+	method public void HIfStmt()
+		me::ctor()
+		Exp = new Expr()
+	end method
+
+end class
+
+class public auto ansi HElseIfStmt extends HCondCompStmt
+
+	field public Expr Exp
+
+	method public void HElseIfStmt()
+		me::ctor()
+		Exp = new Expr()
+	end method
+
+end class
+
+class public auto ansi HElseStmt extends HCondCompStmt
+end class
+
+class public auto ansi EndHIfStmt extends HCondCompStmt
+end class
+
+class public auto ansi HDefineStmt extends Stmt
+
+	field public Ident Symbol
+
+	method public void HDefineStmt()
+		me::ctor()
+		Symbol = new Ident()
+	end method
+
+end class
+
+class public auto ansi HUndefStmt extends Stmt
+
+	field public Ident Symbol
+
+	method public void HUndefStmt()
+		me::ctor()
+		Symbol = new Ident()
+	end method
+
+end class
+

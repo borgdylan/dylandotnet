@@ -23,7 +23,11 @@ import template
 
 #debug on
 
+#if DEBUG then
 [assembly: System.Reflection.AssemblyConfiguration("DEBUG")]
+#else
+[assembly: System.Reflection.AssemblyConfiguration("RELEASE")]
+end #if
 [assembly: System.Reflection.AssemblyTitle("template")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>")]
 assembly template exe
@@ -356,7 +360,11 @@ class public auto ansi Program
 //		typ = gettype Func<of IEnumerable<of XElement> >
 //		var xc as integer = ROTest::X
 //		//ROTest::X = xc + 12
-		foreachtests()
+//		foreachtests()
+		Console::WriteLine("asdf" is List<of object>)
+		Console::WriteLine(("asdf" as List<of object>)  != null)
+		Console::WriteLine("asdf" is string)
+		Console::WriteLine(("asdf" as string) != null)
 	end method
 
 end class

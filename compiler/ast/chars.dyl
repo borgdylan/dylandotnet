@@ -23,6 +23,20 @@ class public auto ansi LSParen extends Character
 	end method
 end class
 
+// {
+class public auto ansi RCParen extends Character
+	method public hidebysig virtual string ToString()
+		return "}"
+	end method
+end class
+
+// }
+class public auto ansi LCParen extends Character
+	method public hidebysig virtual string ToString()
+		return "{"
+	end method
+end class
+
 // []
 class public auto ansi LRSParen extends Character
 	method public hidebysig virtual string ToString()

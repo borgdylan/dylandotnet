@@ -591,6 +591,10 @@ DYLANDOTNET
 MDOC
 MONO
 PKG_CONFIG
+NET45_FALSE
+NET45_TRUE
+DEBUG_FALSE
+DEBUG_TRUE
 MAINT
 MAINTAINER_MODE_FALSE
 MAINTAINER_MODE_TRUE
@@ -671,6 +675,8 @@ ac_subst_files=''
 ac_user_opts='
 enable_option_checking
 enable_maintainer_mode
+enable_debug
+enable_net45
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1296,6 +1302,10 @@ Optional Features:
   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
   --enable-maintainer-mode  enable make rules and dependencies not useful
 			  (and sometimes confusing) to the casual installer
+  --enable-debug          enables debug symbol making for the compiler
+                          (default is yes)
+  --enable-net45          enables use of .NET 4.5 under CLR v.4 (default is
+                          yes)
 
 Report bugs to <borgdylan@hotmail.com>.
 _ACEOF
@@ -2369,6 +2379,38 @@ fi
 
 
 
+# Check whether --enable-debug was given.
+if test "${enable_debug+set}" = set; then :
+  enableval=$enable_debug;
+else
+  enable_debug=yes
+fi
+
+ if test "x$enable_debug" = "xyes"; then
+  DEBUG_TRUE=
+  DEBUG_FALSE='#'
+else
+  DEBUG_TRUE='#'
+  DEBUG_FALSE=
+fi
+
+
+# Check whether --enable-net45 was given.
+if test "${enable_net45+set}" = set; then :
+  enableval=$enable_net45;
+else
+  enable_net45=yes
+fi
+
+ if test "x$enable_net45" = "xyes"; then
+  NET45_TRUE=
+  NET45_FALSE='#'
+else
+  NET45_TRUE='#'
+  NET45_FALSE=
+fi
+
+
 # Extract the first word of "pkg-config", so it can be a program name with args.
 set dummy pkg-config; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -2592,12 +2634,10 @@ $as_echo "no" >&6; }
 fi
 
 
-
 if test "x$DYLANDOTNET4" = "xno"; then
 	{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: dylan.NET compiler for CLI 4.0 is not installed...This build system has one built-in." >&5
 $as_echo "$as_me: WARNING: dylan.NET compiler for CLI 4.0 is not installed...This build system has one built-in." >&2;}
 fi
-
 
 ac_config_files="$ac_config_files Makefile tests/Makefile doc/Makefile 2.0/Makefile 4.0/Makefile dev/Makefile templateproj/Makefile"
 
@@ -2749,6 +2789,14 @@ LTLIBOBJS=$ac_ltlibobjs
 
 if test -z "${MAINTAINER_MODE_TRUE}" && test -z "${MAINTAINER_MODE_FALSE}"; then
   as_fn_error $? "conditional \"MAINTAINER_MODE\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${DEBUG_TRUE}" && test -z "${DEBUG_FALSE}"; then
+  as_fn_error $? "conditional \"DEBUG\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${NET45_TRUE}" && test -z "${NET45_FALSE}"; then
+  as_fn_error $? "conditional \"NET45\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 

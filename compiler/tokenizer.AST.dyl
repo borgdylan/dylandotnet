@@ -15,7 +15,10 @@
 #refasm "dnr.dll"
 #refasm "IKVM.Reflection.dll"
 
-#debug on
+#include "cflags.dyl"
+#if DEBUG then
+	#debug on
+end #if
 
 import System
 import System.IO

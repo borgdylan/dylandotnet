@@ -28,9 +28,16 @@ class public auto ansi Line
 		end if
 		return false
 	end method
-
+	
+	//cc - char to be evaluated
+	//lc - lookahead char
+	//sca/sc - still copy signal (enables copy to buffer)
+	//scla/scl - still cut last signal (enables a buffer flush in the cycle after a char is put in buffer)
+	//ob/cuttok - signal to flush buffer before current char is written to it
 	method private boolean isSep(var cc as string, var lc as string, var sca as boolean&, var scla as boolean&)
-
+		//scla is true as set by Analyze i.e. set only if setting to false
+		//sca is false as set by Analyze i.e. set only if setting to true
+		//scla and sca are considered only if ob is true
 		var ob as boolean = false
 		if lc = null then
 			lc = " "
@@ -74,13 +81,24 @@ class public auto ansi Line
 				ob = true
 				goto fin
 			end if
+			
+			if cc = "{" then
+				sca = true
+				ob = true
+				goto fin
+			end if
+
+			if cc = "}" then
+				sca = true
+				ob = true
+				goto fin
+			end if
 
 			if cc = "[" then
 				if lc = "]" then
 					sca = true
 					scla = false
 					ob = true
-					goto fin
 				else
 					sca = true
 					ob = true
@@ -125,18 +143,16 @@ class public auto ansi Line
 					else
 						ob = true
 					end if
-					goto fin
 				else
 					if PrevChar = "/" then
 						ob = false
-						goto fin
 					else
 						sca = true
 						scla = false
 						ob = true
-						goto fin
 					end if
 				end if
+				goto fin
 			end if
 
 			if cc = "|" then
@@ -168,41 +184,33 @@ class public auto ansi Line
 					sca = true
 					if PrevChar = ">" then
 						ob = false
+					elseif PrevChar = "<" then
+						ob = false
+					elseif PrevChar = "!" then
+						ob = false
+					elseif PrevChar = "=" then
+						ob = false
 					else
-						if PrevChar = "<" then
-							ob = false
-						else
-							if PrevChar = "!" then
-								ob = false
-							else
-								if PrevChar = "=" then
-									ob = false
-								else
-									ob = true
-								end if
-							end if
-						end if
+						ob = true
 					end if
-					goto fin
 				else
 					sca = true
 					scla = false
 					ob = true
-					goto fin
 				end if
+				goto fin
 			end if
 
 			if cc = "!" then
 				if lc != "=" then
 					sca = true
 					ob = true
-					goto fin
 				else
 					sca = true
 					scla = false
 					ob = true
-					goto fin
 				end if
+				goto fin
 			end if
 
 			if cc = "<" then
@@ -210,30 +218,23 @@ class public auto ansi Line
 					sca = true
 					scla = false
 					ob = true
-					goto fin
 				else
 					if PrevChar = "<" then
 						ob = false
+					elseif lc = "<" then
+						sca = true
+						scla = false
+						ob = true
+					elseif lc = ">" then
+						sca = true
+						scla = false
+						ob = true
 					else
-						if lc = "<" then
-							sca = true
-							scla = false
-							ob = true
-							goto fin
-						else
-							if lc = ">" then
-								sca = true
-								scla = false
-								ob = true
-								goto fin
-							else
-								sca = true
-								ob = true
-								goto fin
-							end if
-						end if
+						sca = true
+						ob = true
 					end if
 				end if
+				goto fin
 			end if
 
 			if cc = ">" then
@@ -241,27 +242,21 @@ class public auto ansi Line
 					sca = true
 					if PrevChar = "<" then
 						ob = false
+					elseif PrevChar = ">" then
+						ob = false
+					elseif lc = ">" then
+						sca = true
+						scla = false
+						ob = true
 					else
-						if PrevChar = ">" then
-							ob = false
-						else
-							if lc = ">" then
-								sca = true
-								scla = false
-								ob = true
-								goto fin
-							else
-								ob = true
-							end if
-						end if
+						ob = true
 					end if
-					goto fin
 				else
 					sca = true
 					scla = false
 					ob = true
-					goto fin
 				end if
+				goto fin
 			end if
 
 			if cc = "-" then
@@ -275,13 +270,12 @@ class public auto ansi Line
 					if Char::IsDigit($char$lc) then
 						scla = false
 					end if
-					goto fin
 				else
 					sca = true
 					scla = false
 					ob = true
-					goto fin
 				end if
+				goto fin
 			end if
 
 			if cc = "+" then
@@ -295,13 +289,12 @@ class public auto ansi Line
 					if Char::IsDigit($char$lc) then
 						scla = false
 					end if
-					goto fin
 				else
 					sca = true
 					scla = false
 					ob = true
-					goto fin
 				end if
+				goto fin
 			end if
 
 			if cc = c"\t" then

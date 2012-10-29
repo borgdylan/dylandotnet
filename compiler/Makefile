@@ -559,6 +559,9 @@ all:
 	cp ./lib/IKVM.Reflection.dll ./IKVM.Reflection.dll
 	cp ./lib/IKVM.Reflection.dll ./2.0/IKVM.Reflection.dll
 	cp ./lib/IKVM.Reflection.dll ./4.0/IKVM.Reflection.dll
+	cat cflags.dyl.in > cflags.dyl
+	echo '#define DEBUG' | tee -a cflags.dyl
+#	echo '#undef NET_4_5' | tee -a cflags.dyl
 
 	cp ./lib/4.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 4.0/dnc.exe -V > buildlog4

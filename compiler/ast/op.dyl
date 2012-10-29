@@ -21,21 +21,30 @@ class public auto ansi Op extends Token
 
 end class
 
-
+//=
 class public auto ansi AssignOp extends Op
 
 	method public void AssignOp()
 		me::ctor()
 		PrecNo = 1
 	end method
+	
+	method public hidebysig virtual string ToString()
+		return "="
+	end method
 
 end class
 
+//as
 class public auto ansi AsOp extends Op
 
 	method public void AsOp()
 		me::ctor()
 		PrecNo = 8
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "as"
 	end method
 
 end class

@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/stmtreader.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/eval.dyl">
     <Files>
       <File FileName="dnr/loader.dyl" Line="268" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="626" Column="1" />
-      <File FileName="codegen/eval.dyl" Line="558" Column="1" />
-      <File FileName="codegen/helpers.dyl" Line="1105" Column="1" />
+      <File FileName="codegen/eval.dyl" Line="550" Column="1" />
+      <File FileName="codegen/helpers.dyl" Line="36" Column="1" />
       <File FileName="codegen/codegenerator.dyl" Line="51" Column="1" />
       <File FileName="dnc/Mod1.dyl" Line="66" Column="1" />
       <File FileName="parser/parser.dyl" Line="37" Column="1" />
@@ -17,7 +17,7 @@
       <File FileName="codegen/milambdas.dyl" Line="41" Column="14" />
       <File FileName="codegen/typeitem.dyl" Line="95" Column="1" />
       <File FileName="codegen/typelist.dyl" Line="106" Column="1" />
-      <File FileName="lexer/lexer.dyl" Line="16" Column="1" />
+      <File FileName="lexer/lexer.dyl" Line="28" Column="1" />
       <File FileName="test.dyl" Line="39" Column="1" />
       <File FileName="dnu/streamu.dyl" Line="26" Column="1" />
     </Files>
@@ -39,14 +39,8 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/home/dylan/Desktop/compiler/codegen/eval.dyl" line="550" />
-      <Breakpoint file="/home/dylan/Desktop/compiler/lexer/lexer.dyl" line="28" />
-      <Breakpoint file="/var/www/Code/dylannet/compiler/test.dyl" line="39" />
-      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/helpers.dyl" line="36" />
-      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/eval.dyl" line="1224" />
-      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/eval.dyl" line="558" />
-      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/stmtreader.dyl" line="46" />
-      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/stmtreader.dyl" line="31" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/eval.dyl" line="925" />
+      <Breakpoint file="/home/dylan/Desktop/compiler/codegen/eval.dyl" line="933" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

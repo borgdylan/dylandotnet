@@ -31,7 +31,10 @@ import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import dylan.NET.Tokenizer.Parser
 import dylan.NET.Tokenizer.CodeGen
 
-#debug on
+#include "cflags.dyl"
+#if DEBUG then
+	#debug on
+end #if
 
 #include "dnc/assemblyinfo.dyl"
 

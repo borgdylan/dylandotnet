@@ -32,7 +32,10 @@ import System.Runtime.InteropServices
 import dylan.NET.Utils
 import dylan.NET
 
-#debug on
+#include "cflags.dyl"
+#if DEBUG then
+	#debug on
+end #if
 
 #include "dnu/assemblyinfo.dyl"
 

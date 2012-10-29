@@ -114,6 +114,18 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.EvaluateHIf(dylan.NET.Tokenizer.AST.Exprs.Expr)">
+            <param name="exp">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.EvaluateHIf(dylan.NET.Tokenizer.AST.Tokens.Token)">
+            <param name="rt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.Evaluator.InstToken">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -871,6 +883,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddDef(System.String)">
+            <param name="sym">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.FieldBuilder)">
             <param name="nme">To be added.</param>
             <param name="typ">To be added.</param>
@@ -966,6 +983,12 @@
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.CurnTypItem">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.EvalDef(System.String)">
+            <param name="sym">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.FieldCALst">
@@ -1192,6 +1215,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.TypeLst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.UnDef(System.String)">
+            <param name="sym">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

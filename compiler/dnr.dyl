@@ -34,7 +34,10 @@ import dylan.NET.Reflection
 import IKVM.Reflection
 import IKVM.Reflection.Emit
 
-#debug on
+#include "cflags.dyl"
+#if DEBUG then
+	#debug on
+end #if
 
 #include "dnr/assemblyinfo.dyl"
 

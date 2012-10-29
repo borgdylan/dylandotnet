@@ -42,7 +42,10 @@ import IKVM.Reflection.Emit
 
 import dylan.NET.Tokenizer.Parser
 
-#debug on
+#include "cflags.dyl"
+#if DEBUG then
+	#debug on
+end #if
 
 #include "parser/assemblyinfo.dyl"
 

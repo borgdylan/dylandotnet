@@ -4,10 +4,16 @@
 AC_PREREQ([2.67])
 AC_INIT([dylandotnet], [11.2.9.8], [borgdylan@hotmail.com])
 AC_CANONICAL_SYSTEM
-AM_INIT_AUTOMAKE(dylandotnet, 11.2.9.8)
+AM_INIT_AUTOMAKE([dylandotnet],[11.2.9.8])
 AM_MAINTAINER_MODE
 
 AC_PROG_INSTALL
+
+AC_ARG_ENABLE([debug],[AS_HELP_STRING([--enable-debug],[enables debug symbol making for the compiler (default is yes)])],[],[enable_debug=yes])
+AM_CONDITIONAL([DEBUG],[test "x$enable_debug" = "xyes"])
+
+AC_ARG_ENABLE([net45],[AS_HELP_STRING([--enable-net45],[enables use of .NET 4.5 under CLR v.4 (default is yes)])],[],[enable_net45=yes])
+AM_CONDITIONAL([NET45],[test "x$enable_net45" = "xyes"])
 
 dnl pkg-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
@@ -36,11 +42,9 @@ fi
 
 dnl dylandotnet4
 AC_PATH_PROG(DYLANDOTNET4, dylandotnet4, no)
-
 if test "x$DYLANDOTNET4" = "xno"; then
 	AC_MSG_WARN([dylan.NET compiler for CLI 4.0 is not installed...This build system has one built-in.])
 fi
-
 
 AC_OUTPUT([
 Makefile

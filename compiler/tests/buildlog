@@ -1,5 +1,5 @@
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
@@ -15,16 +15,18 @@ tokenizer.AST, Version=11.2.9.8, Culture=neutral, PublicKeyToken=null
 Runtime & OS Version Info:
 mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 Runtime Version: 2.0.50727.1433
-OS: Unix 3.5.0.17
+OS: Unix 3.5.0.18
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: arit.dyl...Done.
 Now Parsing: arit.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
++DEBUG
 Beginning Assembly: arit
 Adding Class: arit.Module1
 	Adding Method: add
@@ -34,14 +36,16 @@ Adding Class: arit.Module1
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: conv.dyl...Done.
 Now Parsing: conv.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
++DEBUG
 Beginning Assembly: conv
 Adding Class: conv.Module1
 	Adding Field: numfld
@@ -102,15 +106,17 @@ WARNING: The variable v8 was initialised but then not used. at line 103 in file:
 WARNING: The variable v9 was initialised but then not used. at line 105 in file: conv.dyl
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: ctorfield.dyl...Done.
 Now Parsing: ctorfield.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: ctorfield
++DEBUG
 Beginning Assembly: ctorfield
 Adding Class: ctorfield.Test
 	Adding Field: teststr
@@ -126,40 +132,46 @@ Adding Class: ctorfield.Module1
 WARNING: The variable a was initialised but then not used. at line 43 in file: ctorfield.dyl
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: helloworld.dyl...Done.
 Now Parsing: helloworld.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
++DEBUG
 Beginning Assembly: helloworld
 Adding Class: helloworld.Module1
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: logicop.dyl...Done.
 Now Parsing: logicop.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
++DEBUG
 Beginning Assembly: logicop
 Adding Class: logicop.Module1
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: mathematics.dyl...Done.
 Now Parsing: mathematics.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
++DEBUG
 Beginning Assembly: mathematics
 Adding Class: mathematics.Algebra
 	Adding Method: SolveTrinomialPos
@@ -175,16 +187,18 @@ Adding Class: mathematics.Arithmetic
 	Adding Method: Divide
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: mathstest.dyl...Done.
 Now Parsing: mathstest.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: mathematics.dll
 Importing Namespace: System
 Importing Namespace: mathematics
++DEBUG
 Beginning Assembly: mathstest
 Adding Class: mathstest.Module1
 	Adding Method: main
@@ -192,41 +206,47 @@ WARNING: The variable alg was initialised but then not used. at line 16 in file:
 WARNING: The variable str was initialised but then not used. at line 19 in file: mathstest.dyl
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: numloops.dyl...Done.
 Now Parsing: numloops.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
++DEBUG
 Beginning Assembly: numloops
 Adding Class: numloops.Module1
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: openfile.dyl...Done.
 Now Parsing: openfile.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: System.IO
++DEBUG
 Beginning Assembly: openfile
 Adding Class: openfile.module1
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: Person.dyl...Done.
 Now Parsing: Person.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
++DEBUG
 Beginning Assembly: Person
 Adding Class: Person.Person
 	Adding Field: name
@@ -239,45 +259,51 @@ Adding Class: Person.Person
 	Adding Method: print
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: PersonProg.dyl...Done.
 Now Parsing: PersonProg.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: Person.dll
 Importing Namespace: System
 Importing Namespace: Person
++DEBUG
 Beginning Assembly: PersonProg
 Adding Class: PersonProg.PersonInst
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: boxobj.dyl...Done.
 Now Parsing: boxobj.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
++DEBUG
 Beginning Assembly: boxobj
 Adding Class: boxobj.Module1
 	Adding Method: main
 WARNING: Converting from 'System.String' to 'System.Object' is redundant. at line 18 in file: boxobj.dyl
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: xmllib.dyl...Done.
 Now Parsing: xmllib.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.Xml.Linq.dll
 Importing Namespace: System
 Importing Namespace: System.Xml.Linq
++DEBUG
 Beginning Assembly: xmllibrary
 Adding Class: xmllibrary.Mod1
 	Adding Method: makenode
@@ -288,15 +314,17 @@ Adding Class: xmllibrary.Mod1
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: arraytest.dyl...Done.
 Now Parsing: arraytest.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: arraytest
++DEBUG
 Beginning Assembly: arraytest
 Adding Class: arraytest.instc
 	Adding Field: arr
@@ -314,16 +342,18 @@ Adding Class: arraytest.Module1
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: vector.dyl...Done.
 Now Parsing: vector.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: System.Collections.Generic
 Importing Namespace: vector
++DEBUG
 Beginning Assembly: vector
 Adding Class: vector.Vector
 	Adding Field: I
@@ -358,15 +388,17 @@ Adding Class: vector.Vector
 	Adding Method: op_Implicit
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: threads.dyl...Done.
 Now Parsing: threads.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: System.Threading
++DEBUG
 Beginning Assembly: threads
 Adding Class: dylan.NET.Tests.Threading.Program
 	Adding Field: TimerObj
@@ -379,43 +411,49 @@ Adding Class: dylan.NET.Tests.Threading.Program
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: dylrecurse.dyl...Done.
 Now Parsing: dylrecurse.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
++DEBUG
 Beginning Assembly: dylrecurse
 Adding Class: dylrecurse.Program
 	Adding Method: recurse
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: strrecurse.dyl...Done.
 Now Parsing: strrecurse.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
++DEBUG
 Beginning Assembly: strrecurse
 Adding Class: strrecurse.Program
 	Adding Method: palindrome
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: protectedtests.dyl...Done.
 Now Parsing: protectedtests.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: protectedtests
++DEBUG
 Beginning Assembly: protectedtests
 Adding Class: protectedtests.SealedClass
 Adding Class: protectedtests.InternalClass
@@ -448,12 +486,13 @@ Adding Class: protectedtests.Program
 	Adding Method: main
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: transnames.dyl...Done.
 Now Parsing: transnames.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.Core.dll
@@ -464,6 +503,7 @@ Importing Namespace: System.Linq
 Importing Namespace: System.Xml.Linq
 Importing Namespace: System.Collections
 Importing Namespace: System.Collections.Generic
++DEBUG
 Beginning Assembly: transnames
 Adding Class: transnames.Program
 	Adding Method: LineToTuple

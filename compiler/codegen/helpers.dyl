@@ -50,49 +50,38 @@ class public auto ansi static Helpers
 		var absf as boolean = false
 		var sldf as boolean = false
 		
-		var t as Type[] = new Type[9]
-		t[0] = gettype Attributes.PublicAttr
-		t[1] = gettype Attributes.PrivateAttr
-		t[2] = gettype Attributes.AutoLayoutAttr
-		t[3] = gettype Attributes.AnsiClassAttr
-		t[4] = gettype Attributes.SealedAttr
-		t[5] = gettype Attributes.BeforeFieldInitAttr
-		t[6] = gettype Attributes.AbstractAttr
-		t[7] = gettype Attributes.InterfaceAttr
-		t[8] = gettype Attributes.StaticAttr
-		
 		do until i = (attrs[l] - 1)
 			i = i + 1
 			flg = true
 			
-			if t[0]::IsInstanceOfType(attrs[i]) then
+			if attrs[i] is Attributes.PublicAttr then
 				if AsmFactory::isNested = false then
 					temp = TypeAttributes::Public
 				else
 					temp = TypeAttributes::NestedPublic
 				end if
-			elseif t[1]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.PrivateAttr then
 				if AsmFactory::isNested = false then
 					temp = TypeAttributes::NotPublic
 				else
 					temp = TypeAttributes::NestedPrivate
 				end if
-			elseif t[2]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.AutoLayoutAttr then
 				temp = TypeAttributes::AutoLayout
-			elseif t[3]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.AnsiClassAttr then
 				temp = TypeAttributes::AnsiClass
-			elseif t[4]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.SealedAttr then
 				temp = TypeAttributes::Sealed
 				sldf = true
-			elseif t[5]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.BeforeFieldInitAttr then
 				temp = TypeAttributes::BeforeFieldInit
-			elseif t[6]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.AbstractAttr then
 				temp = TypeAttributes::Abstract
 				absf = true
-			elseif t[7]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.InterfaceAttr then
 				temp = TypeAttributes::Interface
 				ILEmitter::InterfaceFlg = true
-			elseif t[8]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.StaticAttr then
 				temp = TypeAttributes::Abstract or TypeAttributes::BeforeFieldInit or TypeAttributes::Sealed
 				ILEmitter::StaticCFlg = true
 			else
@@ -131,68 +120,53 @@ class public auto ansi static Helpers
 		var foa as boolean = false
 		var faa as boolean = false
 
-		var t as Type[] = new Type[13]
-		t[0] = gettype Attributes.PublicAttr
-		t[1] = gettype Attributes.StaticAttr
-		t[2] = gettype Attributes.SpecialNameAttr
-		t[3] = gettype Attributes.VirtualAttr
-		t[4] = gettype Attributes.HideBySigAttr
-		t[5] = gettype Attributes.PrivateAttr
-		t[6] = gettype Attributes.FamilyAttr
-		t[7] = gettype Attributes.FinalAttr
-		t[8] = gettype Attributes.AssemblyAttr
-		t[9] = gettype Attributes.FamORAssemAttr
-		t[10] = gettype Attributes.FamANDAssemAttr
-		t[11] = gettype Attributes.AbstractAttr
-		t[12] = gettype Attributes.NewSlotAttr
-
 		do until i = (attrs[l] - 1)
 			i = i + 1
 			flg = true
 
-			if t[0]::IsInstanceOfType(attrs[i]) then
+			if attrs[i] is Attributes.PublicAttr then
 				temp = MethodAttributes::Public
-			elseif t[1]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.StaticAttr then
 				temp = MethodAttributes::Static
 				ILEmitter::StaticFlg = true
-			elseif t[2]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.SpecialNameAttr then
 				temp = MethodAttributes::SpecialName
-			elseif t[3]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.VirtualAttr then
 				temp = MethodAttributes::Virtual
-			elseif t[4]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.HideBySigAttr then
 				temp = MethodAttributes::HideBySig
-			elseif t[5]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.PrivateAttr then
 				temp = MethodAttributes::Private
-			elseif t[6]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.FamilyAttr then
 				temp = MethodAttributes::Family
 				if assem or fam or foa or faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
 				end if
 				fam = true
-			elseif t[7]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.FinalAttr then
 				temp = MethodAttributes::Final
-			elseif t[8]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.AssemblyAttr then
 				temp = MethodAttributes::Assembly
 				if assem or fam or foa or faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
 				end if
 				assem = true
-			elseif t[9]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.FamORAssemAttr then
 				temp = MethodAttributes::FamORAssem
 				if assem or fam or foa or faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
 				end if
 				foa = true
-			elseif t[10]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.FamANDAssemAttr then
 				temp = MethodAttributes::FamANDAssem
 				if assem or fam or foa or faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
 				end if
 				faa = true
-			elseif t[11]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.AbstractAttr then
 				temp = MethodAttributes::Abstract
 				ILEmitter::AbstractFlg = true
-			elseif t[12]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.NewSlotAttr then
 				temp = MethodAttributes::NewSlot
 			else
 				flg = false
@@ -226,47 +200,37 @@ class public auto ansi static Helpers
 		var foa as boolean = false
 		var faa as boolean = false
 		
-		var t as Type[] = new Type[8]
-		t[0] = gettype Attributes.PublicAttr
-		t[1] = gettype Attributes.StaticAttr
-		t[2] = gettype Attributes.InitOnlyAttr
-		t[3] = gettype Attributes.PrivateAttr
-		t[4] = gettype Attributes.FamilyAttr
-		t[5] = gettype Attributes.AssemblyAttr
-		t[6] = gettype Attributes.FamORAssemAttr
-		t[7] = gettype Attributes.FamANDAssemAttr
-		
 		do until i = (attrs[l] - 1)
 			i = i + 1
 			flg = true
 
-			if t[0]::IsInstanceOfType(attrs[i]) then
+			if attrs[i] is Attributes.PublicAttr then
 				temp = FieldAttributes::Public
-			elseif t[1]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.StaticAttr then
 				temp = FieldAttributes::Static
-			elseif t[2]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.InitOnlyAttr then
 				temp = FieldAttributes::InitOnly
-			elseif t[3]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.PrivateAttr then
 				temp = FieldAttributes::Private
-			elseif t[4]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.FamilyAttr then
 				temp = FieldAttributes::Family
 				if assem or fam or foa or faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
 				end if
 				fam = true
-			elseif t[5]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.AssemblyAttr then
 				temp = FieldAttributes::Assembly
 				if assem or fam or foa or faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
 				end if
 				assem = true
-			elseif t[6]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.FamORAssemAttr then
 				temp = FieldAttributes::FamORAssem
 				if assem or fam or foa or faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
 				end if
 				foa = true
-			elseif t[7]::IsInstanceOfType(attrs[i]) then
+			elseif attrs[i] is Attributes.FamANDAssemAttr then
 				temp = FieldAttributes::FamANDAssem
 				if assem or fam or foa or faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
@@ -365,9 +329,7 @@ class public auto ansi static Helpers
 		var i as integer = -1
 		var tstr as string = " "
 
-		var ttyp as Type = gettype GenericTypeTok
-
-		if ttyp::IsInstanceOfType(tt) then
+		if tt is GenericTypeTok then
 
 			gtt = $GenericTypeTok$tt
 			pttoks = gtt::Params
@@ -458,9 +420,6 @@ class public auto ansi static Helpers
 
 		var i as integer = -1
 		var curp as VarExpr = null
-		var typ2 as Type = gettype InTok
-		var typ3 as Type = gettype OutTok
-		var typ4 as Type = gettype InOutTok
 		
 		do until i = (ps[l] - 1)
 			i = i + 1
@@ -468,11 +427,11 @@ class public auto ansi static Helpers
 			var pa as ParameterAttributes = ParameterAttributes::None
 			
 			if curp::Attr != null then
-				if typ2::IsInstanceOfType(curp::Attr) then
+				if curp::Attr is InTok then
 					pa = ParameterAttributes::In
-				elseif typ3::IsInstanceOfType(curp::Attr) then
+				elseif curp::Attr is OutTok then
 					pa = ParameterAttributes::Out
-				elseif typ4::IsInstanceOfType(curp::Attr) then
+				elseif curp::Attr is InOutTok then
 					pa = ParameterAttributes::In or ParameterAttributes::Out
 				end if	
 			end if
@@ -489,9 +448,6 @@ class public auto ansi static Helpers
 
 		var i as integer = -1
 		var curp as VarExpr = null
-		var typ2 as Type = gettype InTok
-		var typ3 as Type = gettype OutTok
-		var typ4 as Type = gettype InOutTok
 		
 		do until i = (ps[l] - 1)
 			i = i + 1
@@ -499,11 +455,11 @@ class public auto ansi static Helpers
 			var pa as ParameterAttributes = ParameterAttributes::None
 			
 			if curp::Attr != null then
-				if typ2::IsInstanceOfType(curp::Attr) then
+				if curp::Attr is InTok then
 					pa = ParameterAttributes::In
-				elseif typ3::IsInstanceOfType(curp::Attr) then
+				elseif curp::Attr is OutTok then
 					pa = ParameterAttributes::Out
-				elseif typ4::IsInstanceOfType(curp::Attr) then
+				elseif curp::Attr is InOutTok then
 					pa = ParameterAttributes::In or ParameterAttributes::Out
 				end if	
 			end if
@@ -517,66 +473,49 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void EmitLiteral(var lit as Literal)
-	
-		var t as Type[] = new Type[15]
-		t[0] = gettype StringLiteral
-		t[1] = gettype SByteLiteral
-		t[2] = gettype ShortLiteral
-		t[3] = gettype IntLiteral
-		t[4] = gettype LongLiteral
-		t[5] = gettype FloatLiteral
-		t[6] = gettype DoubleLiteral
-		t[7] = gettype BooleanLiteral
-		t[8] = gettype CharLiteral
-		t[9] = gettype NullLiteral
-		t[10] = gettype ByteLiteral
-		t[11] = gettype UShortLiteral
-		t[12] = gettype UIntLiteral
-		t[13] = gettype ULongLiteral
-		t[14] = gettype DecimalLiteral
 
-		if t[0]::IsInstanceOfType(lit) then
+		if lit is StringLiteral then
 			var slit as StringLiteral = $StringLiteral$lit
 			ILEmitter::EmitLdstr(slit::Value)
-		elseif t[1]::IsInstanceOfType(lit) then
+		elseif lit is SByteLiteral then
 			var sblit as SByteLiteral = $SByteLiteral$lit
 			ILEmitter::EmitLdcI1(sblit::NumVal)
-		elseif t[2]::IsInstanceOfType(lit) then
+		elseif lit is ShortLiteral then
 			var shlit as ShortLiteral = $ShortLiteral$lit
 			ILEmitter::EmitLdcI2(shlit::NumVal)
-		elseif t[3]::IsInstanceOfType(lit) then
+		elseif lit is IntLiteral then
 			var ilit as IntLiteral = $IntLiteral$lit
 			ILEmitter::EmitLdcI4(ilit::NumVal)
-		elseif t[4]::IsInstanceOfType(lit) then
+		elseif lit is LongLiteral then
 			var llit as LongLiteral = $LongLiteral$lit
 			ILEmitter::EmitLdcI8(llit::NumVal)
-		elseif t[5]::IsInstanceOfType(lit) then
+		elseif lit is FloatLiteral then
 			var flit as FloatLiteral = $FloatLiteral$lit
 			ILEmitter::EmitLdcR4(flit::NumVal)
-		elseif t[6]::IsInstanceOfType(lit) then
+		elseif lit is DoubleLiteral then
 			var dlit as DoubleLiteral = $DoubleLiteral$lit
 			ILEmitter::EmitLdcR8(dlit::NumVal)
-		elseif t[7]::IsInstanceOfType(lit) then
+		elseif lit is BooleanLiteral then
 			var bllit as BooleanLiteral = $BooleanLiteral$lit
 			ILEmitter::EmitLdcBool(bllit::BoolVal)
-		elseif t[8]::IsInstanceOfType(lit) then
+		elseif lit is CharLiteral then
 			var clit as CharLiteral = $CharLiteral$lit
 			ILEmitter::EmitLdcChar(clit::CharVal)
-		elseif t[9]::IsInstanceOfType(lit) then
+		elseif lit is NullLiteral then
 			ILEmitter::EmitLdnull()
-		elseif t[10]::IsInstanceOfType(lit) then
+		elseif lit is ByteLiteral then
 			var blit as ByteLiteral = $ByteLiteral$lit
 			ILEmitter::EmitLdcU1(blit::NumVal)
-		elseif t[11]::IsInstanceOfType(lit) then
+		elseif lit is UShortLiteral then
 			var uslit as UShortLiteral = $UShortLiteral$lit
 			ILEmitter::EmitLdcU2(uslit::NumVal)
-		elseif t[12]::IsInstanceOfType(lit) then
+		elseif lit is UIntLiteral then
 			var uilit as UIntLiteral = $UIntLiteral$lit
 			ILEmitter::EmitLdcU4(uilit::NumVal)
-		elseif t[13]::IsInstanceOfType(lit) then
+		elseif lit is ULongLiteral then
 			var ullit as ULongLiteral = $ULongLiteral$lit
 			ILEmitter::EmitLdcU8(ullit::NumVal)
-		elseif t[14]::IsInstanceOfType(lit) then
+		elseif lit is DecimalLiteral then
 			var declit as DecimalLiteral = $DecimalLiteral$lit
 			ILEmitter::EmitLdcDec(declit::NumVal)
 		else
@@ -587,62 +526,45 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static object LiteralToConst(var lit as Literal)
-	
-		var t as Type[] = new Type[14]
-		t[0] = gettype StringLiteral
-		t[1] = gettype SByteLiteral
-		t[2] = gettype ShortLiteral
-		t[3] = gettype IntLiteral
-		t[4] = gettype LongLiteral
-		t[5] = gettype FloatLiteral
-		t[6] = gettype DoubleLiteral
-		t[7] = gettype BooleanLiteral
-		t[8] = gettype CharLiteral
-		t[9] = gettype NullLiteral
-		t[10] = gettype ByteLiteral
-		t[11] = gettype UShortLiteral
-		t[12] = gettype UIntLiteral
-		t[13] = gettype ULongLiteral
-
-		if t[0]::IsInstanceOfType(lit) then
+		if lit is StringLiteral then
 			var slit as StringLiteral = $StringLiteral$lit
 			return slit::Value
-		elseif t[1]::IsInstanceOfType(lit) then
+		elseif lit is SByteLiteral then
 			var sblit as SByteLiteral = $SByteLiteral$lit
 			return $object$sblit::NumVal
-		elseif t[2]::IsInstanceOfType(lit) then
+		elseif lit is ShortLiteral then
 			var shlit as ShortLiteral = $ShortLiteral$lit
 			return $object$shlit::NumVal
-		elseif t[3]::IsInstanceOfType(lit) then
+		elseif lit is IntLiteral then
 			var ilit as IntLiteral = $IntLiteral$lit
 			return $object$ilit::NumVal
-		elseif t[4]::IsInstanceOfType(lit) then
+		elseif lit is LongLiteral then
 			var llit as LongLiteral = $LongLiteral$lit
 			return $object$llit::NumVal
-		elseif t[5]::IsInstanceOfType(lit) then
+		elseif lit is FloatLiteral then
 			var flit as FloatLiteral = $FloatLiteral$lit
 			return $object$flit::NumVal
-		elseif t[6]::IsInstanceOfType(lit) then
+		elseif lit is DoubleLiteral then
 			var dlit as DoubleLiteral = $DoubleLiteral$lit
 			return $object$dlit::NumVal
-		elseif t[7]::IsInstanceOfType(lit) then
+		elseif lit is BooleanLiteral then
 			var bllit as BooleanLiteral = $BooleanLiteral$lit
 			return $object$bllit::BoolVal
-		elseif t[8]::IsInstanceOfType(lit) then
+		elseif lit is CharLiteral then
 			var clit as CharLiteral = $CharLiteral$lit
 			return $object$clit::CharVal
-		elseif t[9]::IsInstanceOfType(lit) then
+		elseif lit is NullLiteral then
 			return null
-		elseif t[10]::IsInstanceOfType(lit) then
+		elseif lit is ByteLiteral then
 			var blit as ByteLiteral = $ByteLiteral$lit
 			return $object$blit::NumVal
-		elseif t[11]::IsInstanceOfType(lit) then
+		elseif lit is UShortLiteral then
 			var uslit as UShortLiteral = $UShortLiteral$lit
 			return $object$uslit::NumVal
-		elseif t[12]::IsInstanceOfType(lit) then
+		elseif lit is UIntLiteral then
 			var uilit as UIntLiteral = $UIntLiteral$lit
 			return $object$uilit::NumVal
-		elseif t[13]::IsInstanceOfType(lit) then
+		elseif lit is ULongLiteral then
 			var ullit as ULongLiteral = $ULongLiteral$lit
 			return $object$ullit::NumVal
 		else
@@ -708,28 +630,8 @@ class public auto ansi static Helpers
 	method public static void EmitOp(var op as Op, var s as boolean)
 
 		var mtd as MethodInfo = null
-		var t as Type[] = new Type[19]
-		t[0] = gettype AddOp
-		t[1] = gettype MulOp
-		t[2] = gettype SubOp
-		t[3] = gettype DivOp
-		t[4] = gettype ModOp
-		t[5] = gettype OrOp
-		t[6] = gettype AndOp
-		t[7] = gettype XorOp
-		t[8] = gettype NandOp
-		t[9] = gettype NorOp
-		t[10] = gettype XnorOp
-		t[11] = gettype GtOp
-		t[12] = gettype LtOp
-		t[13] = gettype GeOp
-		t[14] = gettype LeOp
-		t[15] = gettype EqOp
-		t[16] = gettype NeqOp
-		t[17] = gettype LikeOp
-		t[18] = gettype NLikeOp
 
-		if t[0]::IsInstanceOfType(op) then
+		if op is AddOp then
 			mtd = Loader::LoadBinOp(LeftOp, "op_Addition", LeftOp, RightOp)
 			if mtd != null then
 				ILEmitter::EmitCall(mtd)
@@ -743,7 +645,7 @@ class public auto ansi static Helpers
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The + operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[1]::IsInstanceOfType(op) then
+		elseif op is MulOp then
 			mtd = Loader::LoadBinOp(LeftOp, "op_Multiply", LeftOp, RightOp)
 			if mtd != null then
 				ILEmitter::EmitCall(mtd)
@@ -753,7 +655,7 @@ class public auto ansi static Helpers
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The * operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[2]::IsInstanceOfType(op) then
+		elseif op is SubOp then
 			mtd = Loader::LoadBinOp(LeftOp, "op_Subtraction", LeftOp, RightOp)
 			if mtd != null then
 				ILEmitter::EmitCall(mtd)
@@ -765,7 +667,7 @@ class public auto ansi static Helpers
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The - operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[3]::IsInstanceOfType(op) then
+		elseif op is DivOp then
 			mtd = Loader::LoadBinOp(LeftOp, "op_Division", LeftOp, RightOp)
 			if mtd != null then
 				ILEmitter::EmitCall(mtd)
@@ -775,7 +677,7 @@ class public auto ansi static Helpers
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The / operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[4]::IsInstanceOfType(op) then
+		elseif op is ModOp then
 			mtd = Loader::LoadBinOp(LeftOp, "op_Modulus", LeftOp, RightOp)
 			if mtd != null then
 				ILEmitter::EmitCall(mtd)
@@ -785,19 +687,19 @@ class public auto ansi static Helpers
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The % operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[5]::IsInstanceOfType(op) then
+		elseif op is OrOp then
 			ILEmitter::EmitOr()
-		elseif t[6]::IsInstanceOfType(op) then
+		elseif op is AndOp then
 			ILEmitter::EmitAnd()
-		elseif t[7]::IsInstanceOfType(op) then
+		elseif op is XorOp then
 			ILEmitter::EmitXor()
-		elseif t[8]::IsInstanceOfType(op) then
+		elseif op is NandOp then
 			ILEmitter::EmitNand()
-		elseif t[9]::IsInstanceOfType(op) then
+		elseif op is NorOp then
 			ILEmitter::EmitNor()
-		elseif t[10]::IsInstanceOfType(op) then
+		elseif op is XnorOp then
 			ILEmitter::EmitXnor()
-		elseif t[11]::IsInstanceOfType(op) then
+		elseif op is GtOp then
 			mtd = Loader::LoadBinOp(LeftOp, "op_GreaterThan", LeftOp, RightOp)
 			if mtd != null then
 				ILEmitter::EmitCall(mtd)
@@ -807,7 +709,7 @@ class public auto ansi static Helpers
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The > operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[12]::IsInstanceOfType(op) then
+		elseif op is LtOp then
 			mtd = Loader::LoadBinOp(LeftOp, "op_LessThan", LeftOp, RightOp)
 			if mtd != null then
 				ILEmitter::EmitCall(mtd)
@@ -817,7 +719,7 @@ class public auto ansi static Helpers
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The < operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[13]::IsInstanceOfType(op) then
+		elseif op is GeOp then
 			mtd = Loader::LoadBinOp(LeftOp, "op_GreaterThanOrEqual", LeftOp, RightOp)
 			if mtd != null then
 				ILEmitter::EmitCall(mtd)
@@ -827,7 +729,7 @@ class public auto ansi static Helpers
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The >= operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[14]::IsInstanceOfType(op) then
+		elseif op is LeOp then
 			mtd = Loader::LoadBinOp(LeftOp, "op_LessThanOrEqual", LeftOp, RightOp)
 			if mtd != null then
 				ILEmitter::EmitCall(mtd)
@@ -837,7 +739,7 @@ class public auto ansi static Helpers
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The <= operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[15]::IsInstanceOfType(op) then
+		elseif op is EqOp then
 			mtd = Loader::LoadBinOp(LeftOp, "op_Equality", LeftOp, RightOp)
 			if mtd != null then
 				ILEmitter::EmitCall(mtd)
@@ -849,7 +751,7 @@ class public auto ansi static Helpers
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The == operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[16]::IsInstanceOfType(op) then
+		elseif op is NeqOp then
 			mtd = Loader::LoadBinOp(LeftOp, "op_Inequality", LeftOp, RightOp)
 			if mtd != null then
 				ILEmitter::EmitCall(mtd)
@@ -861,13 +763,13 @@ class public auto ansi static Helpers
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The != operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[17]::IsInstanceOfType(op) then
+		elseif op is LikeOp then
 			if StringFlg then
 				ILEmitter::EmitLike()
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The like operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
-		elseif t[18]::IsInstanceOfType(op) then
+		elseif op is NLikeOp then
 			if StringFlg then
 				ILEmitter::EmitNLike()
 			else
@@ -1248,12 +1150,10 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static MethodNameTok StripDelMtdName(var t as Token)
-		var typ1 as Type = gettype Ident
-		var typ2 as Type = gettype MethodCallTok
-		if typ1::IsInstanceOfType(t) then
+		if t is Ident then
 			var idt as Ident = $Ident$t
 			return $MethodNameTok$idt
-		elseif typ2::IsInstanceOfType(t) then
+		elseif t is MethodCallTok then
 			var mct as MethodCallTok = $MethodCallTok$t
 			return mct::Name
 		else
@@ -1266,11 +1166,9 @@ class public auto ansi static Helpers
 
 		var t2 as Token = t
 		var t3 as MethodCallTok = null
-		var typ1 as Type = gettype MethodCallTok
-		var typ2 as Type = gettype Ident
 
 		do while true
-			if typ1::IsInstanceOfType(t2) then
+			if t2 is MethodCallTok then
 				var mct as MethodCallTok = $MethodCallTok$t2
 				t3 = mct
 				if mct::Name::MemberAccessFlg then
@@ -1279,7 +1177,7 @@ class public auto ansi static Helpers
 				else
 					break
 				end if
-			elseif typ2::IsInstanceOfType(t2) then
+			elseif t2 is Ident then
 				var idt as Ident = $Ident$t2
 				if idt::MemberAccessFlg then
 					t2 = idt::MemberToAccess
@@ -1305,10 +1203,8 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static boolean CheckIfArrLen(var ind as Expr)
-		var typ as Type
 		if ind::Tokens[l] = 1 then
-			typ = gettype Ident
-			if typ::IsInstanceOfType(ind::Tokens[0]) then
+			if ind::Tokens[0] is Ident then
 				return ind::Tokens[0]::Value == "l"
 			else
 				return false
@@ -1320,10 +1216,9 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static MethodInfo GetExtMet(var t as IKVM.Reflection.Type, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
-		var gmntt as Type = gettype GenericMethodNameTok
 		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
 		var name as string = mnstrarr[mnstrarr[l] - 1]
-		if gmntt::IsInstanceOfType(mn) then
+		if mn is GenericMethodNameTok then
 			var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
 			var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
 			var i as integer = -1

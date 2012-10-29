@@ -24,6 +24,8 @@ class public auto ansi static SymTable
 	field private static C5.LinkedList<of IfItem> IfLst
 	field private static C5.LinkedList<of LoopItem> LoopLst
 	
+	field assembly static C5.TreeSet<of string> DefSyms
+	
 	field private static LabelItem[] LblLst
 	field private static TypeArr[] TypLst
 	field public static boolean StoreFlg
@@ -44,6 +46,7 @@ class public auto ansi static SymTable
 		FieldCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		ClassCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		AssemblyCALst = new C5.LinkedList<of CustomAttributeBuilder>()
+		DefSyms = new C5.TreeSet<of string>()
 	end method
 	
 	[method: ComVisible(false)]
@@ -263,7 +266,24 @@ class public auto ansi static SymTable
 	method public static void PopLoop()
 		LoopLst::Pop()
 	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddDef(var sym as string)
+		DefSyms::Add(sym)
+		Console::WriteLine("+" + sym)
+	end method
 
+	[method: ComVisible(false)]
+	method public static void UnDef(var sym as string)
+		DefSyms::Remove(sym)
+		//Console::WriteLine("-" + sym)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static boolean EvalDef(var sym as string)
+		return DefSyms::Find(ref|sym)
+	end method
+	
 	[method: ComVisible(false)]
 	method public static Emit.Label ReadIfEndLbl()
 		return IfLst::get_Last()::EndLabel

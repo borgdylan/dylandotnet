@@ -6,6 +6,10 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
+#if DEBUG then
 [assembly: System.Reflection.AssemblyConfiguration("DEBUG")]
+#else
+[assembly: System.Reflection.AssemblyConfiguration("RELEASE")]
+end #if
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.Tokenizer.AST")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>")]

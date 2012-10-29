@@ -18,6 +18,7 @@ class public auto ansi static Importer
 		Asms = new C5.LinkedList<of IKVM.Reflection.Assembly>()
 		Imps = new C5.LinkedList<of string>()
 		AliasMap = new C5.HashDictionary<of string,string>()
+		AliasMap::Add("object", "System.Object")
 		AliasMap::Add("string", "System.String")
 		AliasMap::Add("char", "System.Char")
 		AliasMap::Add("boolean", "System.Boolean")

@@ -1,5 +1,5 @@
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
@@ -15,14 +15,15 @@ tokenizer.AST, Version=11.2.9.8, Culture=neutral, PublicKeyToken=null
 Runtime & OS Version Info:
 mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 Runtime Version: 2.0.50727.1433
-OS: Unix 3.5.0.17
+OS: Unix 3.5.0.18
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: dnu.dyl...Done.
 Now Parsing: dnu.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.Core.dll
@@ -41,6 +42,11 @@ Importing Namespace: System.Text.RegularExpressions
 Importing Namespace: System.Runtime.InteropServices
 Importing Namespace: dylan.NET.Utils
 Importing Namespace: dylan.NET
+Now Lexing: cflags.dyl...Done.
+Now Parsing: cflags.dyl...Done.
++NET_3_5
++DEBUG
++DEBUG
 Now Lexing: dnu/assemblyinfo.dyl...Done.
 Now Parsing: dnu/assemblyinfo.dyl...Done.
 Beginning Assembly: dnu
@@ -123,12 +129,13 @@ Adding Class: dylan.NET.Utils.StreamUtils
 	Adding Method: WriteError
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: dnr.dyl...Done.
 Now Parsing: dnr.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.Core.dll
@@ -151,6 +158,11 @@ Importing Namespace: dylan.NET.Utils
 Importing Namespace: dylan.NET.Reflection
 Importing Namespace: IKVM.Reflection
 Importing Namespace: IKVM.Reflection.Emit
+Now Lexing: cflags.dyl...Done.
+Now Parsing: cflags.dyl...Done.
++NET_3_5
++DEBUG
++DEBUG
 Now Lexing: dnr/assemblyinfo.dyl...Done.
 Now Parsing: dnr/assemblyinfo.dyl...Done.
 Beginning Assembly: dnr
@@ -398,16 +410,22 @@ Adding Class: dylan.NET.Reflection.ConsolePrinter
 	Adding Method: WriteClass
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: tokenizer.AST.dyl...Done.
 Now Parsing: tokenizer.AST.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: dnu.dll
 Referencing Assembly: dnr.dll
 Referencing Assembly: IKVM.Reflection.dll
+Now Lexing: cflags.dyl...Done.
+Now Parsing: cflags.dyl...Done.
++NET_3_5
++DEBUG
++DEBUG
 Importing Namespace: System
 Importing Namespace: System.IO
 Importing Namespace: dylan.NET.Utils
@@ -465,8 +483,10 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.Op
 	Adding Constructor: Op
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AssignOp
 	Adding Constructor: AssignOp
+	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AsOp
 	Adding Constructor: AsOp
+	Adding Method: ToString
 Now Lexing: ast/aritops.dyl...Done.
 Now Parsing: ast/aritops.dyl...Done.
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AritOp
@@ -545,70 +565,104 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok
 	Adding Method: AddParam
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.StringTok
+	Adding Field: strtyp
+	Adding Constructor: StringTok
 	Adding Constructor: StringTok
 	Adding Constructor: StringTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntegerTok
+	Adding Field: inttyp
+	Adding Constructor: IntegerTok
 	Adding Constructor: IntegerTok
 	Adding Constructor: IntegerTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.DoubleTok
+	Adding Field: dbltyp
+	Adding Constructor: DoubleTok
 	Adding Constructor: DoubleTok
 	Adding Constructor: DoubleTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.BooleanTok
+	Adding Field: bltyp
+	Adding Constructor: BooleanTok
 	Adding Constructor: BooleanTok
 	Adding Constructor: BooleanTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.CharTok
+	Adding Field: chrtyp
+	Adding Constructor: CharTok
 	Adding Constructor: CharTok
 	Adding Constructor: CharTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.DecimalTok
+	Adding Field: dectyp
+	Adding Constructor: DecimalTok
 	Adding Constructor: DecimalTok
 	Adding Constructor: DecimalTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.LongTok
+	Adding Field: lngtyp
+	Adding Constructor: LongTok
 	Adding Constructor: LongTok
 	Adding Constructor: LongTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.SByteTok
+	Adding Field: sbtyp
+	Adding Constructor: SByteTok
 	Adding Constructor: SByteTok
 	Adding Constructor: SByteTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.ShortTok
+	Adding Field: shtyp
+	Adding Constructor: ShortTok
 	Adding Constructor: ShortTok
 	Adding Constructor: ShortTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.SingleTok
+	Adding Field: sngtyp
+	Adding Constructor: SingleTok
 	Adding Constructor: SingleTok
 	Adding Constructor: SingleTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.ObjectTok
+	Adding Field: objtyp
+	Adding Constructor: ObjectTok
 	Adding Constructor: ObjectTok
 	Adding Constructor: ObjectTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.VoidTok
+	Adding Field: vdtyp
+	Adding Constructor: VoidTok
 	Adding Constructor: VoidTok
 	Adding Constructor: VoidTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.UIntegerTok
+	Adding Field: uinttyp
+	Adding Constructor: UIntegerTok
 	Adding Constructor: UIntegerTok
 	Adding Constructor: UIntegerTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.ULongTok
+	Adding Field: ulngtyp
+	Adding Constructor: ULongTok
 	Adding Constructor: ULongTok
 	Adding Constructor: ULongTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.ByteTok
+	Adding Field: btyp
+	Adding Constructor: ByteTok
 	Adding Constructor: ByteTok
 	Adding Constructor: ByteTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.UShortTok
+	Adding Field: ushtyp
+	Adding Constructor: UShortTok
 	Adding Constructor: UShortTok
 	Adding Constructor: UShortTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntPtrTok
+	Adding Field: iptyp
+	Adding Constructor: IntPtrTok
 	Adding Constructor: IntPtrTok
 	Adding Constructor: IntPtrTok
 	Adding Method: ToString
@@ -938,7 +992,11 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.GotoTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.IfTok
 	Adding Method: ToString
+Adding Class: dylan.NET.Tokenizer.AST.Tokens.HIfTok
+	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.ElseIfTok
+	Adding Method: ToString
+Adding Class: dylan.NET.Tokenizer.AST.Tokens.HElseIfTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.ThenTok
 	Adding Method: ToString
@@ -961,6 +1019,12 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.LiteralTok
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.VarTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.ElseTok
+	Adding Method: ToString
+Adding Class: dylan.NET.Tokenizer.AST.Tokens.HElseTok
+	Adding Method: ToString
+Adding Class: dylan.NET.Tokenizer.AST.Tokens.HDefineTok
+	Adding Method: ToString
+Adding Class: dylan.NET.Tokenizer.AST.Tokens.HUndefTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.ReturnTok
 	Adding Method: ToString
@@ -1032,6 +1096,10 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Chars.Character
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Chars.RSParen
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Chars.LSParen
+	Adding Method: ToString
+Adding Class: dylan.NET.Tokenizer.AST.Tokens.Chars.RCParen
+	Adding Method: ToString
+Adding Class: dylan.NET.Tokenizer.AST.Tokens.Chars.LCParen
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Chars.LRSParen
 	Adding Method: ToString
@@ -1316,6 +1384,21 @@ Adding Class: dylan.NET.Tokenizer.AST.Stmts.ElseIfStmt
 	Adding Constructor: ElseIfStmt
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.ElseStmt
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.EndIfStmt
+Adding Class: dylan.NET.Tokenizer.AST.Stmts.HCondCompStmt
+Adding Class: dylan.NET.Tokenizer.AST.Stmts.HIfStmt
+	Adding Field: Exp
+	Adding Constructor: HIfStmt
+Adding Class: dylan.NET.Tokenizer.AST.Stmts.HElseIfStmt
+	Adding Field: Exp
+	Adding Constructor: HElseIfStmt
+Adding Class: dylan.NET.Tokenizer.AST.Stmts.HElseStmt
+Adding Class: dylan.NET.Tokenizer.AST.Stmts.EndHIfStmt
+Adding Class: dylan.NET.Tokenizer.AST.Stmts.HDefineStmt
+	Adding Field: Symbol
+	Adding Constructor: HDefineStmt
+Adding Class: dylan.NET.Tokenizer.AST.Stmts.HUndefStmt
+	Adding Field: Symbol
+	Adding Constructor: HUndefStmt
 Now Lexing: ast/varstmts.dyl...Done.
 Now Parsing: ast/varstmts.dyl...Done.
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.VarStmt
@@ -1371,12 +1454,13 @@ Adding Class: dylan.NET.Tokenizer.AST.Stmts.EndPropStmt
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.CommentStmt
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: tokenizer.Lexer.dyl...Done.
 Now Parsing: tokenizer.Lexer.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Referencing Assembly: tokenizer.AST.dll
@@ -1389,6 +1473,11 @@ Importing Namespace: dylan.NET.Utils
 Importing Namespace: dylan.NET.Tokenizer.AST.Tokens
 Importing Namespace: dylan.NET.Tokenizer.AST.Stmts
 Importing Namespace: dylan.NET.Tokenizer.Lexer
+Now Lexing: cflags.dyl...Done.
+Now Parsing: cflags.dyl...Done.
++NET_3_5
++DEBUG
++DEBUG
 Now Lexing: lexer/assemblyinfo.dyl...Done.
 Now Parsing: lexer/assemblyinfo.dyl...Done.
 Beginning Assembly: tokenizer.Lexer
@@ -1409,12 +1498,13 @@ Adding Class: dylan.NET.Tokenizer.Lexer.Lexer
 	Adding Method: AnalyzeString
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: tokenizer.Parser.dyl...Done.
 Now Parsing: tokenizer.Parser.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.Core.dll
@@ -1444,6 +1534,11 @@ Importing Namespace: dylan.NET.Tokenizer.AST.Tokens.Chars
 Importing Namespace: IKVM.Reflection
 Importing Namespace: IKVM.Reflection.Emit
 Importing Namespace: dylan.NET.Tokenizer.Parser
+Now Lexing: cflags.dyl...Done.
+Now Parsing: cflags.dyl...Done.
++NET_3_5
++DEBUG
++DEBUG
 Now Lexing: parser/assemblyinfo.dyl...Done.
 Now Parsing: parser/assemblyinfo.dyl...Done.
 Beginning Assembly: tokenizer.Parser
@@ -1513,15 +1608,19 @@ Adding Class: dylan.NET.Tokenizer.Parser.StmtOptimizer
 	Adding Method: checkRefstdasm
 	Adding Method: checkInclude
 	Adding Method: checkIf
+	Adding Method: checkHIf
 	Adding Method: checkWhile
 	Adding Method: checkDoWhile
 	Adding Method: checkUntil
 	Adding Method: checkDoUntil
 	Adding Method: checkForeach
 	Adding Method: checkElseIf
+	Adding Method: checkHElseIf
 	Adding Method: checkLabel
 	Adding Method: checkPlace
 	Adding Method: checkGoto
+	Adding Method: checkHDefine
+	Adding Method: checkHUndef
 	Adding Method: checkDebug
 	Adding Method: checkScope
 	Adding Method: checkImport
@@ -1531,12 +1630,14 @@ Adding Class: dylan.NET.Tokenizer.Parser.StmtOptimizer
 	Adding Method: checkThrow
 	Adding Method: checkCmt
 	Adding Method: checkElse
+	Adding Method: checkHElse
 	Adding Method: checkDo
 	Adding Method: checkTry
 	Adding Method: checkFinally
 	Adding Method: checkBreak
 	Adding Method: checkContinue
 	Adding Method: checkEndIf
+	Adding Method: checkEndHIf
 	Adding Method: checkEndMtd
 	Adding Method: checkEndNS
 	Adding Method: checkEndCls
@@ -1567,12 +1668,13 @@ Adding Class: dylan.NET.Tokenizer.Parser.Parser
 	Adding Method: Parse
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: tokenizer.CodeGen.dyl...Done.
 Now Parsing: tokenizer.CodeGen.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.Core.dll
@@ -1608,6 +1710,11 @@ Importing Namespace: dylan.NET.Tokenizer.Parser
 Importing Namespace: IKVM.Reflection
 Importing Namespace: IKVM.Reflection.Emit
 Importing Namespace: dylan.NET.Tokenizer.CodeGen
+Now Lexing: cflags.dyl...Done.
+Now Parsing: cflags.dyl...Done.
++NET_3_5
++DEBUG
++DEBUG
 Now Lexing: codegen/assemblyinfo.dyl...Done.
 Now Parsing: codegen/assemblyinfo.dyl...Done.
 Beginning Assembly: tokenizer.CodeGen
@@ -1772,6 +1879,7 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.SymTable
 	Adding Field: NestedCtorLst
 	Adding Field: IfLst
 	Adding Field: LoopLst
+	Adding Field: DefSyms
 	Adding Field: LblLst
 	Adding Field: TypLst
 	Adding Field: StoreFlg
@@ -1804,6 +1912,9 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.SymTable
 	Adding Method: AddLoop
 	Adding Method: PopIf
 	Adding Method: PopLoop
+	Adding Method: AddDef
+	Adding Method: UnDef
+	Adding Method: EvalDef
 	Adding Method: ReadIfEndLbl
 	Adding Method: ReadIfNxtBlkLbl
 	Adding Method: ReadLoopEndLbl
@@ -1894,7 +2005,6 @@ Now Parsing: codegen/eval.dyl...Done.
 Adding Delegate: dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate
 Adding Class: dylan.NET.Tokenizer.CodeGen.Evaluator
 	Adding Field: Stack
-	Adding Field: InstToken
 	Adding Constructor: Evaluator
 	Adding Method: RetPrec
 	Adding Method: isLParen
@@ -1908,6 +2018,8 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.Evaluator
 	Adding Method: ASTEmit
 	Adding Method: Evaluate
 	Adding Method: StoreEmit
+	Adding Method: EvaluateHIf
+	Adding Method: EvaluateHIf
 Now Lexing: codegen/stmtreader.dyl...Done.
 Now Parsing: codegen/stmtreader.dyl...Done.
 Adding Class: dylan.NET.Tokenizer.CodeGen.StmtReader
@@ -1919,12 +2031,13 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.CodeGenerator
 	Adding Method: EmitMSIL
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
-                           and Xamarin Mono v. 2.6.7/v. 2.10.x/v. 2.11.x
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: dnc.dyl...Done.
 Now Parsing: dnc.dyl...Done.
++CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Referencing Assembly: tokenizer.AST.dll
@@ -1944,6 +2057,11 @@ Importing Namespace: dylan.NET.Tokenizer.AST.Stmts
 Importing Namespace: dylan.NET.Tokenizer.AST.Tokens.TypeToks
 Importing Namespace: dylan.NET.Tokenizer.Parser
 Importing Namespace: dylan.NET.Tokenizer.CodeGen
+Now Lexing: cflags.dyl...Done.
+Now Parsing: cflags.dyl...Done.
++NET_3_5
++DEBUG
++DEBUG
 Now Lexing: dnc/assemblyinfo.dyl...Done.
 Now Parsing: dnc/assemblyinfo.dyl...Done.
 Beginning Assembly: dnc

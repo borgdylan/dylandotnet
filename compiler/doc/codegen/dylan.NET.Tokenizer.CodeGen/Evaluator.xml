@@ -344,6 +344,46 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EvaluateHIf">
+      <MemberSignature Language="C#" Value="public bool EvaluateHIf (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool EvaluateHIf(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="exp" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
+      </Parameters>
+      <Docs>
+        <param name="exp">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EvaluateHIf">
+      <MemberSignature Language="C#" Value="public bool EvaluateHIf (dylan.NET.Tokenizer.AST.Tokens.Token rt);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool EvaluateHIf(class dylan.NET.Tokenizer.AST.Tokens.Token rt) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rt" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+      </Parameters>
+      <Docs>
+        <param name="rt">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="InstToken">
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token InstToken;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Token InstToken" />
@@ -368,7 +408,6 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
@@ -379,8 +418,8 @@
       </Docs>
     </Member>
     <Member MemberName="isLParen">
-      <MemberSignature Language="C#" Value="public bool isLParen (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance bool isLParen(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool isLParen (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool isLParen(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -420,8 +459,8 @@
       </Docs>
     </Member>
     <Member MemberName="isOp">
-      <MemberSignature Language="C#" Value="public bool isOp (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance bool isOp(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool isOp (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool isOp(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -461,8 +500,8 @@
       </Docs>
     </Member>
     <Member MemberName="isRParen">
-      <MemberSignature Language="C#" Value="public bool isRParen (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance bool isRParen(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool isRParen (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool isRParen(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.8.9</AssemblyVersion>
@@ -489,8 +528,8 @@
       </Docs>
     </Member>
     <Member MemberName="RetPrec">
-      <MemberSignature Language="C#" Value="public int RetPrec (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance int32 RetPrec(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
+      <MemberSignature Language="C#" Value="public static int RetPrec (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
+      <MemberSignature Language="ILAsm" Value=".method public static int32 RetPrec(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>

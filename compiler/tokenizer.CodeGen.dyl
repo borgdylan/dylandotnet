@@ -50,7 +50,10 @@ import IKVM.Reflection.Emit
 
 import dylan.NET.Tokenizer.CodeGen
 
-#debug on
+#include "cflags.dyl"
+#if DEBUG then
+	#debug on
+end #if
 
 #include "codegen/assemblyinfo.dyl"
 

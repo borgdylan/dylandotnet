@@ -1,6 +1,6 @@
 <Type Name="ObjectTok" FullName="dylan.NET.Tokenizer.AST.Tokens.TypeToks.ObjectTok">
   <TypeSignature Language="C#" Value="public class ObjectTok : dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi ObjectTok extends dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ObjectTok extends dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
     <AssemblyVersion>11.2.7.2</AssemblyVersion>

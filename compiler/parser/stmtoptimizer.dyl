@@ -61,54 +61,67 @@ class public auto ansi StmtOptimizer
 	
 	
 	method private Stmt checkIf(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype IfTok
-	b = typ::IsInstanceOfType(tok)
-	var ifs as IfStmt = new IfStmt()
-	var exp as Expr = new Expr()
+		var tok as Token = stm::Tokens[0]
+		b = tok is IfTok
+		var ifs as IfStmt = new IfStmt()
+		var exp as Expr = new Expr()
+		
+		if b then
+			ifs::Line = stm::Line
+			ifs::Tokens = stm::Tokens
+			
+			var i as integer = 0
+			var len as integer = stm::Tokens[l] - 1
+			
+			do until i = len
+				i = i + 1
+				tok = stm::Tokens[i]		
+				
+				if tok is ThenTok then
+					break
+				else
+					exp::AddToken(tok)
+				end if
+			end do
+			
+			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+			exp = eop::Optimize(exp)
+			ifs::Exp = exp
+		end if
+		
+		return ifs
+	end method
 	
-	if b then
-	
-	ifs::Line = stm::Line
-	ifs::Tokens = stm::Tokens
-	
-	var i as integer = 0
-	var len as integer = stm::Tokens[l] - 1
-	var b2 as boolean
-	
-	label cont
-	label loop
-	
-	place loop
-	
-	i = i + 1
-	
-	tok = stm::Tokens[i]
-	typ = gettype ThenTok
-	b2 = typ::IsInstanceOfType(tok)
-	
-	
-	if b2 = true then
-	goto cont
-	else
-	exp::AddToken(tok)
-	end if
-	
-	if i = len then
-	goto cont
-	else
-	goto loop
-	end if
-	
-	place cont
-	
-	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	exp = eop::Optimize(exp)
-	ifs::Exp = exp
-	
-	end if
-	
-	return ifs
+	method private Stmt checkHIf(var stm as Stmt, var b as boolean&)
+		var tok as Token = stm::Tokens[0]
+		b = tok is HIfTok
+		var ifs as HIfStmt = new HIfStmt()
+		var exp as Expr = new Expr()
+		
+		if b then
+			ifs::Line = stm::Line
+			ifs::Tokens = stm::Tokens
+			
+			var i as integer = 0
+			var len as integer = stm::Tokens[l] - 1
+			
+			do until i = len
+				i = i + 1
+				tok = stm::Tokens[i]		
+				
+				if tok is ThenTok then
+					break
+				else
+					exp::AddToken(tok)
+				end if
+			end do
+			
+			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+			exp = eop::Optimize(exp)
+			ifs::Exp = exp
+		end if
+		
+		return ifs
 	end method
 	
 	method private Stmt checkWhile(var stm as Stmt, var b as boolean&)
@@ -253,122 +266,148 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method private Stmt checkElseIf(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype ElseIfTok
-	b = typ::IsInstanceOfType(tok)
-	var ifs as ElseIfStmt = new ElseIfStmt()
-	var exp as Expr = new Expr()
+		var tok as Token = stm::Tokens[0]
+		b = tok is ElseIfTok
+		var ifs as ElseIfStmt = new ElseIfStmt()
+		var exp as Expr = new Expr()
+		
+		if b then
+		
+			ifs::Line = stm::Line
+			ifs::Tokens = stm::Tokens
+			
+			var i as integer = 0
+			var len as integer = stm::Tokens[l] - 1
+			
+			do until i = len
+				i = i + 1
+				tok = stm::Tokens[i]
+				if tok is ThenTok then
+					break
+				else
+					exp::AddToken(tok)
+				end if
+			end do
+			
+			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+			exp = eop::Optimize(exp)
+			ifs::Exp = exp
+		
+		end if
+		
+		return ifs
+	end method
 	
-	if b then
-	
-	ifs::Line = stm::Line
-	ifs::Tokens = stm::Tokens
-	
-	var i as integer = 0
-	var len as integer = stm::Tokens[l] - 1
-	var b2 as boolean
-	
-	label cont
-	label loop
-	
-	place loop
-	
-	i = i + 1
-	
-	tok = stm::Tokens[i]
-	typ = gettype ThenTok
-	b2 = typ::IsInstanceOfType(tok)
-	
-	
-	if b2 = true then
-	goto cont
-	else
-	exp::AddToken(tok)
-	end if
-	
-	if i = len then
-	goto cont
-	else
-	goto loop
-	end if
-	
-	place cont
-	
-	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	exp = eop::Optimize(exp)
-	ifs::Exp = exp
-	
-	end if
-	
-	return ifs
+	method private Stmt checkHElseIf(var stm as Stmt, var b as boolean&)
+		var tok as Token = stm::Tokens[0]
+		b = tok is HElseIfTok
+		var ifs as HElseIfStmt = new HElseIfStmt()
+		var exp as Expr = new Expr()
+		
+		if b then
+		
+			ifs::Line = stm::Line
+			ifs::Tokens = stm::Tokens
+			
+			var i as integer = 0
+			var len as integer = stm::Tokens[l] - 1
+			
+			do until i = len
+				i = i + 1
+				tok = stm::Tokens[i]
+				if tok is ThenTok then
+					break
+				else
+					exp::AddToken(tok)
+				end if
+			end do
+			
+			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+			exp = eop::Optimize(exp)
+			ifs::Exp = exp
+		
+		end if
+		
+		return ifs
 	end method
 	
 	method private Stmt checkLabel(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype LabelTok
-	b = typ::IsInstanceOfType(tok)
-	var lbls as LabelStmt = new LabelStmt()
-	if b then
-	lbls::Line = stm::Line
-	lbls::Tokens = stm::Tokens
-	lbls::LabelName = $Ident$stm::Tokens[1]
-	end if
-	return lbls
+		b = stm::Tokens[0] is LabelTok
+		var lbls as LabelStmt = new LabelStmt()
+		if b then
+			lbls::Line = stm::Line
+			lbls::Tokens = stm::Tokens
+			lbls::LabelName = $Ident$stm::Tokens[1]
+		end if
+		return lbls
 	end method
 	
 	method private Stmt checkPlace(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype PlaceTok
-	b = typ::IsInstanceOfType(tok)
-	var lbls as PlaceStmt = new PlaceStmt()
-	if b then
-	lbls::Line = stm::Line
-	lbls::Tokens = stm::Tokens
-	lbls::LabelName = $Ident$stm::Tokens[1]
-	end if
-	return lbls
+		b = stm::Tokens[0] is PlaceTok
+		var lbls as PlaceStmt = new PlaceStmt()
+		if b then
+			lbls::Line = stm::Line
+			lbls::Tokens = stm::Tokens
+			lbls::LabelName = $Ident$stm::Tokens[1]
+		end if
+		return lbls
 	end method
 	
 	method private Stmt checkGoto(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype GotoTok
-	b = typ::IsInstanceOfType(tok)
-	var lbls as GotoStmt = new GotoStmt()
-	if b then
-	lbls::Line = stm::Line
-	lbls::Tokens = stm::Tokens
-	lbls::LabelName = $Ident$stm::Tokens[1]
-	end if
-	return lbls
+		b = stm::Tokens[0] is GotoTok
+		var lbls as GotoStmt = new GotoStmt()
+		if b then
+			lbls::Line = stm::Line
+			lbls::Tokens = stm::Tokens
+			lbls::LabelName = $Ident$stm::Tokens[1]
+		end if
+		return lbls
 	end method
 	
+	method private Stmt checkHDefine(var stm as Stmt, var b as boolean&)
+		b = stm::Tokens[0] is HDefineTok
+		var lbls as HDefineStmt = new HDefineStmt()
+		if b then
+			lbls::Line = stm::Line
+			lbls::Tokens = stm::Tokens
+			lbls::Symbol = $Ident$stm::Tokens[1]
+		end if
+		return lbls
+	end method
+	
+	method private Stmt checkHUndef(var stm as Stmt, var b as boolean&)
+		b = stm::Tokens[0] is HUndefTok
+		var lbls as HUndefStmt = new HUndefStmt()
+		if b then
+			lbls::Line = stm::Line
+			lbls::Tokens = stm::Tokens
+			lbls::Symbol = $Ident$stm::Tokens[1]
+		end if
+		return lbls
+	end method
 	
 	method private Stmt checkDebug(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype DebugTok
-	b = typ::IsInstanceOfType(tok)
-	var dbgs as DebugStmt = new DebugStmt()
-	if b then
-	dbgs::Line = stm::Line
-	dbgs::Tokens = stm::Tokens
-	dbgs::Opt = $SwitchTok$stm::Tokens[1]
-	dbgs::setFlg()
-	end if
-	return dbgs
+		b = stm::Tokens[0] is DebugTok
+		var dbgs as DebugStmt = new DebugStmt()
+		if b then
+			dbgs::Line = stm::Line
+			dbgs::Tokens = stm::Tokens
+			dbgs::Opt = $SwitchTok$stm::Tokens[1]
+			dbgs::setFlg()
+		end if
+		return dbgs
 	end method
 	
 	method private Stmt checkScope(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype ScopeTok
-	b = typ::IsInstanceOfType(tok)
-	var scps as ScopeStmt = new ScopeStmt()
-	if b then
-	scps::Line = stm::Line
-	scps::Tokens = stm::Tokens
-	scps::Opt = $SwitchTok$stm::Tokens[1]
-	scps::setFlg()
-	end if
-	return scps
+		b = stm::Tokens[0] is ScopeTok
+		var scps as ScopeStmt = new ScopeStmt()
+		if b then
+			scps::Line = stm::Line
+			scps::Tokens = stm::Tokens
+			scps::Opt = $SwitchTok$stm::Tokens[1]
+			scps::setFlg()
+		end if
+		return scps
 	end method
 	
 	method private Stmt checkImport(var stm as Stmt, var b as boolean&)
@@ -518,21 +557,29 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method private Stmt checkElse(var stm as Stmt, var b as boolean&)
-	var els as ElseStmt = null
+		var els as ElseStmt = null
+		if stm::Tokens[l] < 2 then	
+			b = stm::Tokens[0] is ElseTok
+			els = new ElseStmt()
+			if b then
+				els::Line = stm::Line
+				els::Tokens = stm::Tokens
+			end if
+		end if
+		return els
+	end method
 	
-	if stm::Tokens[l] < 2 then
-	
-	var typ1 as Type = gettype ElseTok
-	
-	b = typ1::IsInstanceOfType(stm::Tokens[0])
-	
-	els = new ElseStmt()
-	if b then
-	els::Line = stm::Line
-	els::Tokens = stm::Tokens
-	end if
-	end if
-	return els
+	method private Stmt checkHElse(var stm as Stmt, var b as boolean&)
+		var els as HElseStmt = null
+		if stm::Tokens[l] < 2 then	
+			b = stm::Tokens[0] is HElseTok
+			els = new HElseStmt()
+			if b then
+				els::Line = stm::Line
+				els::Tokens = stm::Tokens
+			end if
+		end if
+		return els
 	end method
 	
 	method private Stmt checkDo(var stm as Stmt, var b as boolean&)
@@ -627,14 +674,27 @@ class public auto ansi StmtOptimizer
 		var eifs as EndIfStmt = null
 	
 		if stm::Tokens[l] >= 2 then
-
-			var typ1 as Type = gettype EndTok
-			var typ2 as Type = gettype IfTok
 	
-			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+			b = (stm::Tokens[0] is EndTok) and (stm::Tokens[1] is IfTok)
 	
 			if b then
 				eifs = new EndIfStmt()
+				eifs::Line = stm::Line
+				eifs::Tokens = stm::Tokens
+			end if
+		end if
+		return eifs
+	end method
+	
+	method private Stmt checkEndHIf(var stm as Stmt, var b as boolean&)
+		var eifs as EndHIfStmt = null
+	
+		if stm::Tokens[l] >= 2 then
+	
+			b = (stm::Tokens[0] is EndTok) and (stm::Tokens[1] is HIfTok)
+	
+			if b then
+				eifs = new EndHIfStmt()
 				eifs::Line = stm::Line
 				eifs::Tokens = stm::Tokens
 			end if
@@ -1690,6 +1750,7 @@ class public auto ansi StmtOptimizer
 	PFlags::IfFlag = false
 	PFlags::CmtFlag = false
 	PFlags::NoOptFlag = false
+	PFlags::AsFlag = false
 	
 	label loop
 	label cont
@@ -1925,6 +1986,18 @@ class public auto ansi StmtOptimizer
 		goto fin
 	end if
 	
+	tmpstm = checkHDefine(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
+	tmpstm = checkHUndef(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
 	tmpstm = checkScope(stm, ref|compb)
 	if compb then
 		stm = tmpstm
@@ -1973,6 +2046,12 @@ class public auto ansi StmtOptimizer
 		goto fin
 	end if
 	
+	tmpstm = checkHIf(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
 	tmpstm = checkWhile(stm, ref|compb)
 	if compb then
 		stm = tmpstm
@@ -2009,7 +2088,19 @@ class public auto ansi StmtOptimizer
 		goto fin
 	end if
 	
+	tmpstm = checkHElseIf(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
 	tmpstm = checkElse(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
+	tmpstm = checkHElse(stm, ref|compb)
 	if compb then
 		stm = tmpstm
 		goto fin
@@ -2034,6 +2125,12 @@ class public auto ansi StmtOptimizer
 	end if
 	
 	tmpstm = checkEndIf(stm, ref|compb)	
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
+	tmpstm = checkEndHIf(stm, ref|compb)	
 	if compb then
 		stm = tmpstm
 		goto fin

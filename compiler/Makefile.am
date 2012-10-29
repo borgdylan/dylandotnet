@@ -62,6 +62,14 @@ all:
 	cp ./lib/IKVM.Reflection.dll ./IKVM.Reflection.dll
 	cp ./lib/IKVM.Reflection.dll ./2.0/IKVM.Reflection.dll
 	cp ./lib/IKVM.Reflection.dll ./4.0/IKVM.Reflection.dll
+	cat cflags.dyl.in > cflags.dyl
+if DEBUG
+	echo '#define DEBUG' | tee -a cflags.dyl
+endif
+if NET45
+else
+	echo '#undef NET_4_5' | tee -a cflags.dyl
+endif
 	
 	cp ./lib/4.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 4.0/dnc.exe -V > buildlog4
@@ -100,7 +108,7 @@ all:
 	cp tokenizer.Parser.dll 2.0/tokenizer.Parser.dll
 	cp tokenizer.CodeGen.dll 2.0/tokenizer.CodeGen.dll
 	cp dnc.exe 2.0/dnc.exe
-
+	
 	cp ChangeLog doc/ChangeLog
 	echo "Hello World"
 	$(MAKE) -C tests all

@@ -26,7 +26,10 @@ import dylan.NET.Tokenizer.AST.Stmts
 
 import dylan.NET.Tokenizer.Lexer
 
-#debug on
+#include "cflags.dyl"
+#if DEBUG then
+	#debug on
+end #if
 
 #include "lexer/assemblyinfo.dyl"
 

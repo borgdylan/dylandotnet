@@ -22,20 +22,12 @@ class public auto ansi ExprOptimizer
 
 	method public Expr procType(var stm as Expr, var i as integer)
 
-		var lpt as Type = gettype LAParen
-		var rpt as Type = gettype RAParen
-		var oft as Type = gettype OfTok
-		var ct as Type = gettype Comma
-		var ttt as Type = gettype TypeTok
-		var ampt as Type = gettype Ampersand
-		var lrspt as Type = gettype LRSParen
-
 		var isgeneric as boolean = false
 		var j as integer = i
 		var tt as TypeTok
 
 		if i < (stm::Tokens[l] - 2) then
-			isgeneric = lpt::IsInstanceOfType(stm::Tokens[i + 1]) and oft::IsInstanceOfType(stm::Tokens[i + 2])
+			isgeneric = (stm::Tokens[i + 1] is LAParen) and (stm::Tokens[i + 2] is OfTok)
 		end if
 
 		if isgeneric then
@@ -52,13 +44,13 @@ class public auto ansi ExprOptimizer
 
 			do until i = len
 				i = i + 1
-				if lpt::IsInstanceOfType(stm::Tokens[i]) then
+				if stm::Tokens[i] is LAParen then
 					ep2::AddToken(stm::Tokens[i])
 					stm::RemToken(i)
 					lvl = lvl + 1
 					i = i - 1
 					len = len - 1
-				elseif ct::IsInstanceOfType(stm::Tokens[i]) then
+				elseif stm::Tokens[i] is Comma then
 					if lvl > 1 then
 						ep2::AddToken(stm::Tokens[i])
 					end if
@@ -70,7 +62,7 @@ class public auto ansi ExprOptimizer
 						ep2 = new Expr()
 					end if
 					i = i - 1
-				elseif rpt::IsInstanceOfType(stm::Tokens[i]) then
+				elseif stm::Tokens[i] is RAParen then
 					lvl = lvl - 1
 					if lvl > 0 then
 						ep2::AddToken(stm::Tokens[i])
@@ -92,7 +84,7 @@ class public auto ansi ExprOptimizer
 			end do
 			tt = gtt
 		else
-			if ttt::IsInstanceOfType(stm::Tokens[i]) == false then
+			if (stm::Tokens[i] is TypeTok) == false then
 				tt = new TypeTok(stm::Tokens[i]::Value)
 				tt::Line = stm::Tokens[i]::Line
 			else
@@ -107,11 +99,11 @@ class public auto ansi ExprOptimizer
 			c = c + 1
 			if i < (stm::Tokens[l] - 1) then
 				i = i + 1
-				if lrspt::IsInstanceOfType(stm::Tokens[i]) then
+				if stm::Tokens[i] is LRSParen then
 					tt::IsArray = true
 					stm::RemToken(i)
 					i = i - 1
-				elseif ampt::IsInstanceOfType(stm::Tokens[i]) then
+				elseif stm::Tokens[i] is Ampersand then
 					tt::IsByRef = true
 					stm::RemToken(i)
 					i = i - 1
@@ -128,18 +120,12 @@ class public auto ansi ExprOptimizer
 
 	method public Expr procMtdName(var stm as Expr, var i as integer)
 
-		var lpt as Type = gettype LAParen
-		var rpt as Type = gettype RAParen
-		var oft as Type = gettype OfTok
-		var ct as Type = gettype Comma
-		var ttt as Type = gettype MethodNameTok
-
 		var isgeneric as boolean = false
 		var j as integer = i
 		var tt as MethodNameTok
 
 		if i < (stm::Tokens[l] - 2) then
-			isgeneric = lpt::IsInstanceOfType(stm::Tokens[i + 1]) and oft::IsInstanceOfType(stm::Tokens[i + 2])
+			isgeneric = (stm::Tokens[i + 1] is LAParen) and (stm::Tokens[i + 2] is OfTok)
 		end if
 
 		if isgeneric then
@@ -156,13 +142,13 @@ class public auto ansi ExprOptimizer
 
 			do until i = len
 				i = i + 1
-				if lpt::IsInstanceOfType(stm::Tokens[i]) then
+				if stm::Tokens[i] is LAParen then
 					ep2::AddToken(stm::Tokens[i])
 					stm::RemToken(i)
 					lvl = lvl + 1
 					i = i - 1
 					len = len - 1
-				elseif ct::IsInstanceOfType(stm::Tokens[i]) then
+				elseif stm::Tokens[i] is Comma then
 					if lvl > 1 then
 						ep2::AddToken(stm::Tokens[i])
 					end if
@@ -174,7 +160,7 @@ class public auto ansi ExprOptimizer
 						ep2 = new Expr()
 					end if
 					i = i - 1
-				elseif rpt::IsInstanceOfType(stm::Tokens[i]) then
+				elseif stm::Tokens[i] is RAParen then
 					lvl = lvl - 1
 					if lvl > 0 then
 						ep2::AddToken(stm::Tokens[i])
@@ -196,7 +182,7 @@ class public auto ansi ExprOptimizer
 			end do
 			tt = gtt
 		else
-			if ttt::IsInstanceOfType(stm::Tokens[i]) == false then
+			if (stm::Tokens[i] is MethodNameTok) == false then
 				tt = new MethodNameTok($Ident$stm::Tokens[i])
 			else
 				tt = $MethodNameTok$stm::Tokens[i]
@@ -209,24 +195,20 @@ class public auto ansi ExprOptimizer
 	end method
 
 	method assembly Expr checkVarAs(var stm as Expr,out var b as boolean&)
-		var typ as Type = gettype VarTok
-		var typ2 as Type = gettype InTok
-		var typ3 as Type = gettype OutTok
-		var typ4 as Type = gettype InOutTok
 		var bs as integer = 0
 		var bst as Token = null
 		
-		if typ::IsInstanceOfType(stm::Tokens[0]) then
+		if stm::Tokens[0] is VarTok then
 			b = true
-		elseif typ2::IsInstanceOfType(stm::Tokens[0]) and typ::IsInstanceOfType(stm::Tokens[1]) then
-			b = true
-			bs = 1
-			bst = stm::Tokens[0]
-		elseif typ3::IsInstanceOfType(stm::Tokens[0]) and typ::IsInstanceOfType(stm::Tokens[1]) then
+		elseif (stm::Tokens[0] is InTok) and (stm::Tokens[1] is VarTok) then
 			b = true
 			bs = 1
 			bst = stm::Tokens[0]
-		elseif typ4::IsInstanceOfType(stm::Tokens[0]) and typ::IsInstanceOfType(stm::Tokens[1]) then
+		elseif (stm::Tokens[0] is OutTok) and (stm::Tokens[1] is VarTok) then
+			b = true
+			bs = 1
+			bst = stm::Tokens[0]
+		elseif (stm::Tokens[0] is InOutTok) and (stm::Tokens[1] is VarTok) then
 			b = true
 			bs = 1
 			bst = stm::Tokens[0]
@@ -253,17 +235,13 @@ class public auto ansi ExprOptimizer
 	
 		var mn as MethodNameTok = null
 		var mct as MethodCallTok = new MethodCallTok()
-		var mntkt as Type = gettype MethodNameTok
 		var ep2 as Expr = new Expr()
 		var lvl as integer = 1
 		var d as boolean = true
 		var j as integer = 0
 
-		var ltyp2 as Type = gettype LAParen
-		var rtyp2 as Type = gettype RAParen
-
 		i = i - 1
-		if mntkt::IsInstanceOfType(stm::Tokens[i]) then
+		if stm::Tokens[i] is MethodNameTok then
 			mn = $MethodNameTok$stm::Tokens[i]
 		else
 			mn = new MethodNameTok($Ident$stm::Tokens[i])
@@ -272,22 +250,18 @@ class public auto ansi ExprOptimizer
 		j = i
 		i = i + 1
 
-		var typ2 as Type
 		var len as integer = stm::Tokens[l] - 1
 
 		stm::RemToken(i)
 		len = stm::Tokens[l] - 1
 		i = i - 1
 
-		label fin
-
 		do until i = len
 
 			//get parameters
 			i = i + 1
 	
-			typ2 = gettype RParen
-			if typ2::IsInstanceOfType(stm::Tokens[i]) or rtyp2::IsInstanceOfType(stm::Tokens[i]) then
+			if (stm::Tokens[i] is RParen) or (stm::Tokens[i] is RAParen) then
 				lvl = lvl - 1
 				if lvl = 0 then
 					d = false
@@ -300,23 +274,14 @@ class public auto ansi ExprOptimizer
 					break
 				else
 					d = true
-					goto fin
 				end if
-				goto fin
-			end if
-
-			typ2 = gettype LParen
-			if typ2::IsInstanceOfType(stm::Tokens[i]) or ltyp2::IsInstanceOfType(stm::Tokens[i]) then
+			elseif (stm::Tokens[i] is LParen) or (stm::Tokens[i] is LAParen) then
 				lvl = lvl + 1
 				d = true
 				//stm::RemToken(i)
 				len = stm::Tokens[l] - 1
 				//i = i - 1
-				goto fin
-			end if
-
-			typ2 = gettype Comma
-			if typ2::IsInstanceOfType(stm::Tokens[i]) then
+			elseif (stm::Tokens[i] is Comma) then
 				if lvl = 1 then
 					d = false
 					if ep2::Tokens[l] > 0 then
@@ -326,17 +291,12 @@ class public auto ansi ExprOptimizer
 					stm::RemToken(i)
 					len = stm::Tokens[l] - 1
 					i = i - 1
-					goto fin
 				else
 					d = true
-					goto fin
 				end if
 			else
 				d = true
-				goto fin
 			end if
-			
-			place fin
 			
 			if d then
 				ep2::AddToken(stm::Tokens[i])
@@ -373,11 +333,9 @@ class public auto ansi ExprOptimizer
 		i = i + 1
 		
 		var tok2 as Token = stm::Tokens[i]
-		var typ2 as Type
 		var len as integer = stm::Tokens[l] - 1
 		
-		typ2 = gettype LParen
-		if typ2::IsInstanceOfType(tok2) then
+		if tok2 is LParen then
 			ltyp = gettype LParen
 			rtyp = gettype RParen
 		else
@@ -386,98 +344,72 @@ class public auto ansi ExprOptimizer
 			rtyp = gettype RSParen
 		end if
 		
-		var ltyp2 as Type = gettype LAParen
-		var rtyp2 as Type = gettype RAParen
-		
-		if nab = false then
-			nct::Name = tt
-		else
+		if nab then
 			nact::ArrayType = tt
+		else
+			nct::Name = tt
 		end if
 		
 		stm::RemToken(i)
 		len = stm::Tokens[l] - 1
 		i = i - 1
 		
-		label loop2
-		label cont2
-		label fin
+		do until i = len
 		
-		place loop2
-		
-		//get parameters
-		i = i + 1
-		
-		if rtyp::IsInstanceOfType(stm::Tokens[i]) or rtyp2::IsInstanceOfType(stm::Tokens[i]) then
-			lvl = lvl - 1
-			if lvl = 0 then
-				d = false
-				if ep2::Tokens[l] > 0 then
-					if nab = false then
-						nct::AddParam(ep2)
-					else
-						nact::ArrayLen = ep2
+			//get parameters
+			i = i + 1
+			
+			if rtyp::IsInstanceOfType(stm::Tokens[i]) or (stm::Tokens[i] is RAParen) then
+				lvl = lvl - 1
+				if lvl = 0 then
+					d = false
+					if ep2::Tokens[l] > 0 then
+						if nab = false then
+							nct::AddParam(ep2)
+						else
+							nact::ArrayLen = ep2
+						end if
 					end if
+					stm::RemToken(i)
+					len = stm::Tokens[l] - 1
+					i = i - 1
+					break
+				else
+					d = true
 				end if
+			elseif ltyp::IsInstanceOfType(stm::Tokens[i]) or (stm::Tokens[i] is LAParen) then
+				lvl = lvl + 1
+				d = true
+				//stm::RemToken(i)
+				len = stm::Tokens[l] - 1
+				//i = i - 1
+			elseif stm::Tokens[i] is Comma then
+				if lvl = 1 then
+					d = false
+					if ep2::Tokens[l] > 0 then
+						if nab = false then
+							nct::AddParam(ep2)
+							ep2 = new Expr()
+						end if
+					end if
+					stm::RemToken(i)
+					len = stm::Tokens[l] - 1
+					i = i - 1
+				else
+					d = true
+				end if
+			else
+				d = true
+			end if
+			
+			if d then
+				ep2::AddToken(stm::Tokens[i])
 				stm::RemToken(i)
 				len = stm::Tokens[l] - 1
 				i = i - 1
-				goto cont2
-			else
-				d = true
-				goto fin
 			end if
-			goto fin
-		end if
 		
-		if ltyp::IsInstanceOfType(stm::Tokens[i]) or ltyp2::IsInstanceOfType(stm::Tokens[i]) then
-			lvl = lvl + 1
-			d = true
-			//stm::RemToken(i)
-			len = stm::Tokens[l] - 1
-			//i = i - 1
-			goto fin
-		end if
-		
-		typ2 = gettype Comma
-		if typ2::IsInstanceOfType(stm::Tokens[i]) then
-			if lvl = 1 then
-				d = false
-				if ep2::Tokens[l] > 0 then
-					if nab = false then
-						nct::AddParam(ep2)
-						ep2 = new Expr()
-					end if
-				end if
-				stm::RemToken(i)
-				len = stm::Tokens[l] - 1
-				i = i - 1
-				goto fin
-			else
-				d = true
-				goto fin
-			end if
-		else
-			d = true
-			goto fin
-		end if
-		
-		place fin
-		
-		if d then
-			ep2::AddToken(stm::Tokens[i])
-			stm::RemToken(i)
-			len = stm::Tokens[l] - 1
-			i = i - 1
-		end if
-		
-		if i = len then
-			goto cont2
-		else
-			goto loop2
-		end if
-		
-		place cont2
+		end do
 		
 		if nab = false then
 			nct::Line = tt::Line
@@ -504,76 +436,42 @@ class public auto ansi ExprOptimizer
 		j = i
 		i = i + 1
 
-		var tok2 as Token = stm::Tokens[i]
-		var typ2 as System.Type
-		var b2 as boolean
 		var len as integer = stm::Tokens[l] - 1
 
 		stm::RemToken(i)
 		len = stm::Tokens[l] - 1
 		i = i - 1
 
-		label loop2
-		label cont2
-		label fin
+		do until i = len
+			//get parameters
+			i = i + 1
 
-		place loop2
+			if stm::Tokens[i] is RSParen then
+				lvl = lvl - 1
+				if lvl = 0 then
+					d = false
+					//mct::AddParam(ep2)
+					stm::RemToken(i)
+					len = stm::Tokens[l] - 1
+					i = i - 1
+					break
+				else
+					d = true
+				end if
+			elseif stm::Tokens[i] is LSParen then
+				lvl = lvl + 1
+				d = true
+			elseif (stm::Tokens[i] is Comma) == false then
+				d = true
+			end if
 
-		//get parameters
-		i = i + 1
-
-		tok2 = stm::Tokens[i]
-		typ2 = gettype RSParen
-		b2 = typ2::IsInstanceOfType(tok2)
-		if b2 then
-			lvl = lvl - 1
-			if lvl = 0 then
-				d = false
-				//mct::AddParam(ep2)
+			if d then
+				ep2::AddToken(stm::Tokens[i])
 				stm::RemToken(i)
 				len = stm::Tokens[l] - 1
 				i = i - 1
-				goto cont2
-			else
-				d = true
-				goto fin
 			end if
-			goto fin
-		end if
-
-		tok2 = stm::Tokens[i]
-		typ2 = gettype LSParen
-		b2 = typ2::IsInstanceOfType(tok2)
-		if b2 then
-			lvl = lvl + 1
-			d = true
-			goto fin
-		end if
-
-		tok2 = stm::Tokens[i]
-		typ2 = gettype Comma
-		b2 = typ2::IsInstanceOfType(tok2)
-		if b2 == false then
-			d = true
-			goto fin
-		end if
-
-		place fin
-
-		if d then
-			ep2::AddToken(stm::Tokens[i])
-			stm::RemToken(i)
-			len = stm::Tokens[l] - 1
-			i = i - 1
-		end if
-
-		if i = len then
-			goto cont2
-		else
-			goto loop2
-		end if
-
-		place cont2
+		end do
 
 		idt::ArrLoc = ep2
 		idt::IsArr = true
@@ -598,76 +496,42 @@ class public auto ansi ExprOptimizer
 		j = i
 		i = i + 1
 
-		var tok2 as Token = stm::Tokens[i]
-		var typ2 as System.Type
-		var b2 as boolean
 		var len as integer = stm::Tokens[l] - 1
 
 		stm::RemToken(i)
 		len = stm::Tokens[l] - 1
 		i = i - 1
 
-		label loop2
-		label cont2
-		label fin
+		do until i = len
+			//get parameters
+			i = i + 1
 
-		place loop2
+			if stm::Tokens[i] is RSParen then
+				lvl = lvl - 1
+				if lvl = 0 then
+					d = false
+					//mct::AddParam(ep2)
+					stm::RemToken(i)
+					len = stm::Tokens[l] - 1
+					i = i - 1
+					break
+				else
+					d = true
+				end if
+			elseif stm::Tokens[i] is LSParen then
+				lvl = lvl + 1
+				d = true
+			elseif (stm::Tokens[i] is Comma) == false then
+				d = true
+			end if
 
-		//get parameters
-		i = i + 1
-
-		tok2 = stm::Tokens[i]
-		typ2 = gettype RSParen
-		b2 = typ2::IsInstanceOfType(tok2)
-		if b2 then
-			lvl = lvl - 1
-			if lvl = 0 then
-				d = false
-				//mct::AddParam(ep2)
+			if d then
+				ep2::AddToken(stm::Tokens[i])
 				stm::RemToken(i)
 				len = stm::Tokens[l] - 1
 				i = i - 1
-				goto cont2
-			else
-				d = true
-				goto fin
 			end if
-			goto fin
-		end if
-
-		tok2 = stm::Tokens[i]
-		typ2 = gettype LSParen
-		b2 = typ2::IsInstanceOfType(tok2)
-		if b2 then
-			lvl = lvl + 1
-			d = true
-			goto fin
-		end if
-
-		tok2 = stm::Tokens[i]
-		typ2 = gettype Comma
-		b2 = typ2::IsInstanceOfType(tok2)
-		if b2 == false then
-			d = true
-			goto fin
-		end if
-
-		place fin
-
-		if d then
-			ep2::AddToken(stm::Tokens[i])
-			stm::RemToken(i)
-			len = stm::Tokens[l] - 1
-			i = i - 1
-		end if
-
-		if i = len then
-			goto cont2
-		else
-			goto loop2
-		end if
-
-		place cont2
+		end do
 
 		idt::ArrLoc = ep2
 		idt::IsArr = true
@@ -697,13 +561,9 @@ class public auto ansi ExprOptimizer
 		var mcmetcall as MethodCallTok = null
 		var mcmetname as MethodNameTok = null
 		var mcstr as StringLiteral = null
-		var lpt as Type = gettype LAParen
-		var oft as Type = gettype OfTok
-
 
 		label loop
 		label cont
-
 
 		if len < 0 then
 			goto cont
@@ -718,19 +578,15 @@ class public auto ansi ExprOptimizer
 			label fin
 
 			var tok as Token = exp::Tokens[i]
-			var typ as Type
 
-			typ = gettype LRSParen
-
-			if typ::IsInstanceOfType(tok) then
-				typ = gettype TypeTok
+			if tok is LRSParen then
 				exp::RemToken(i)
 				i = i - 1
 				len = exp::Tokens[l] - 1
 				tok = exp::Tokens[i]
 				
 				var ttk as TypeTok = new TypeTok()
-				if typ::IsInstanceOfType(tok) = false then
+				if (tok is TypeTok) = false then
 					var tk as Token = exp::Tokens[i]
 					ttk::Line = tk::Line
 					ttk::Value = tk::Value
@@ -743,17 +599,14 @@ class public auto ansi ExprOptimizer
 				goto fin
 			end if
 
-			typ = gettype Ampersand
-
-			if typ::IsInstanceOfType(tok) then
-				typ = gettype TypeTok
+			if tok is Ampersand then
 				exp::RemToken(i)
 				i = i - 1
 				len = exp::Tokens[l] - 1
 				tok = exp::Tokens[i]
 				
 				var ttk2 as TypeTok = new TypeTok()
-				if typ::IsInstanceOfType(tok) = false then
+				if (tok is TypeTok) = false then
 					var tk2 as Token = exp::Tokens[i]
 					ttk2::Line = tk2::Line
 					ttk2::Value = tk2::Value
@@ -768,10 +621,8 @@ class public auto ansi ExprOptimizer
 
 			if PFlags::ProcessTTokOnly = false then
 
-				typ = gettype DollarSign
-
-				if typ::IsInstanceOfType(tok) then
-					PFlags::DurConvFlag = PFlags::DurConvFlag nor PFlags::DurConvFlag
+				if tok is DollarSign then
+					PFlags::DurConvFlag = PFlags::DurConvFlag == false
 					PFlags::isChanged = true
 					if PFlags::DurConvFlag then
 						PFlags::ConvFlag = true
@@ -784,18 +635,14 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype Pipe
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is Pipe then
 					exp::RemToken(i)
 					i = i - 1
 					len = exp::Tokens[l] - 1
 					goto fin
 				end if
 
-				typ = gettype RefTok
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is RefTok then
 					PFlags::isChanged = true
 					PFlags::RefFlag = true
 					exp::RemToken(i)
@@ -804,9 +651,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype ValInRefTok
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is ValInRefTok then
 					PFlags::isChanged = true
 					PFlags::ValinrefFlag = true
 					exp::RemToken(i)
@@ -815,9 +660,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype TypeTok
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is TypeTok then
 					if PFlags::DurConvFlag then
 						PFlags::ConvTyp = $TypeTok$exp::Tokens[i]
 						exp::RemToken(i)
@@ -827,9 +670,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype Ident
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is Ident then
 					if PFlags::DurConvFlag = false then
 						if PFlags::MetCallFlag or PFlags::IdentFlag or PFlags::StringFlag then
 							mcbool = true
@@ -843,7 +684,7 @@ class public auto ansi ExprOptimizer
 
 						//genericmethodnametok detector
 						if i < (exp::Tokens[l] - 2) then
-							if lpt::IsInstanceOfType(exp::Tokens[i + 1]) and oft::IsInstanceOfType(exp::Tokens[i + 2]) then
+							if (exp::Tokens[i + 1] is LAParen) and (exp::Tokens[i + 2] is OfTok) then
 								exp = procMtdName(exp, i)
 								len = exp::Tokens[l] - 1
 							end if
@@ -859,9 +700,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype CharLiteral
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is CharLiteral then
 					if PFlags::isChanged then
 						var cl1 as CharLiteral = $CharLiteral$exp::Tokens[i]
 						exp::Tokens[i] = PFlags::UpdateCharLit(cl1)
@@ -871,9 +710,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype NullLiteral
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is NullLiteral then
 					if PFlags::isChanged then
 						var nul1 as NullLiteral = $NullLiteral$exp::Tokens[i]
 						exp::Tokens[i] = PFlags::UpdateNullLit(nul1)
@@ -883,9 +720,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype MeTok
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is MeTok then
 					if PFlags::isChanged then
 						var metk1 as MeTok = $MeTok$exp::Tokens[i]
 						exp::Tokens[i] = PFlags::UpdateMeTok(metk1)
@@ -895,9 +730,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype StringLiteral
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is StringLiteral then
 					PFlags::StringFlag = true
 					if PFlags::isChanged then
 						var sl1 as StringLiteral = $StringLiteral$exp::Tokens[i]
@@ -908,9 +741,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype BooleanLiteral
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is BooleanLiteral then
 					if PFlags::isChanged then
 						var bl1 as BooleanLiteral = $BooleanLiteral$exp::Tokens[i]
 						exp::Tokens[i] = PFlags::UpdateBoolLit(bl1)
@@ -920,9 +751,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype NumberLiteral
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is NumberLiteral then
 					if PFlags::isChanged then
 						var nl1 as NumberLiteral = $NumberLiteral$exp::Tokens[i]
 						exp::Tokens[i] = PFlags::UpdateNumLit(nl1)
@@ -932,9 +761,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype NewTok
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is NewTok then
 
 					exp::RemToken(i)
 					len = len - 1
@@ -945,9 +772,7 @@ class public auto ansi ExprOptimizer
 					exp = procNewCall(exp, i)
 					len = exp::Tokens[l] - 1
 
-					typ = gettype NewCallTok
-
-					if typ::IsInstanceOfType(exp::Tokens[i]) then
+					if exp::Tokens[i] is NewCallTok then
 						//if output is newcall
 						var nctoken as NewCallTok = $NewCallTok$exp::Tokens[i]
 
@@ -965,9 +790,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype GettypeTok
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is GettypeTok then
 
 					exp::RemToken(i)
 					len = len - 1
@@ -982,9 +805,14 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				typ = gettype NewarrTok
+				if (tok is IsOp) or (tok is AsOp) then
+					i = i + 1
+					exp = procType(exp,i)
+					len = exp::Tokens[l] - 1
+					goto fin
+				end if
 
-				if typ::IsInstanceOfType(tok) then
+				if tok is NewarrTok then
 
 					exp::RemToken(i)
 					len = len - 1
@@ -994,9 +822,7 @@ class public auto ansi ExprOptimizer
 					exp::RemToken(i)
 					len = len - 1
 
-					typ = gettype TypeTok
-
-					if typ::IsInstanceOfType(tok) = false then
+					if (tok is TypeTok) = false then
 						newattok = new TypeTok()
 						newattok::Line = tok::Line
 						newattok::Value = tok::Value
@@ -1017,10 +843,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-
-				typ = gettype PtrTok
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is PtrTok then
 
 					exp::RemToken(i)
 					len = len - 1
@@ -1035,16 +858,14 @@ class public auto ansi ExprOptimizer
 					i = i + 1
 					if i <= len then
 						tok = exp::Tokens[i]
-						typ = gettype LParen
-						if typ::IsInstanceOfType(tok) then
+						if tok is LParen then
 							exp::RemToken(i)
 							len = len - 1
 							//inner check for )
 							//-----------------
 							if i <= len then
 								tok = exp::Tokens[i]
-								typ = gettype RParen
-								if typ::IsInstanceOfType(tok) then
+								if tok is RParen then
 									exp::RemToken(i)
 									len = len - 1
 								end if
@@ -1056,10 +877,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-
-				typ = gettype LParen
-
-				if typ::IsInstanceOfType(tok) then
+				if tok is LParen then
 					if PFlags::IdentFlag then
 						PFlags::IdentFlag = false
 						if PFlags::MetCallFlag or PFlags::StringFlag or PFlags::IdentFlag then
@@ -1098,9 +916,8 @@ class public auto ansi ExprOptimizer
 				//end if
 
 				//-------------------------------------------------------------------------------------
-				typ = gettype LSParen
 
-				if typ::IsInstanceOfType(tok) then
+				if tok is LSParen then
 					var arriloc as Expr
 					if PFlags::IdentFlag then
 						PFlags::IdentFlag = false
@@ -1159,18 +976,12 @@ class public auto ansi ExprOptimizer
 			end if
 
 		else
-
 			//method chain code
 
 			i = i - 1
-
 			mctok = exp::Tokens[i]
-			var t2 as Type[] = new Type[3]
-			t2[0] = gettype Ident
-			t2[1] = gettype MethodCallTok
-			t2[2] = gettype StringLiteral
 			
-			if t2[0]::IsInstanceOfType(mctok) then
+			if mctok is Ident then
 				mcident = $Ident$mctok
 				if PFlags::MetCallFlag or PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
@@ -1184,7 +995,7 @@ class public auto ansi ExprOptimizer
 				if mcident::Value like "^::(.)*$" then
 					PFlags::IdentFlag = true
 				end if
-			elseif t2[1]::IsInstanceOfType(mctok) then
+			elseif mctok is MethodCallTok then
 				mcmetcall = $MethodCallTok$mctok
 				mcmetname = mcmetcall::Name
 				if PFlags::MetCallFlag or PFlags::IdentFlag then
@@ -1200,7 +1011,7 @@ class public auto ansi ExprOptimizer
 				if mcmetname::Value like "^::(.)*$" then
 					PFlags::MetCallFlag = true
 				end if
-			elseif t2[2]::IsInstanceOfType(mctok) then
+			elseif mctok is StringLiteral then
 				mcstr = $StringLiteral$mctok
 				if PFlags::MetCallFlag or PFlags::IdentFlag then
 					PFlags::MetCallFlag = false

@@ -18,7 +18,11 @@ import System.IO
 import System.Runtime.InteropServices
 import System.Text
 
+#if DEBUG then
+[assembly: System.Reflection.AssemblyConfiguration("DEBUG")]
+#else
 [assembly: System.Reflection.AssemblyConfiguration("RELEASE")]
+end #if
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.PkgConfig.PC2CD")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>")]
 

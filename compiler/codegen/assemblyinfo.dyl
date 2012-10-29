@@ -8,6 +8,10 @@
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(true)]
+#if DEBUG then
 [assembly: System.Reflection.AssemblyConfiguration("DEBUG")]
+#else
+[assembly: System.Reflection.AssemblyConfiguration("RELEASE")]
+end #if
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.Tokenizer.CodeGen")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>")]

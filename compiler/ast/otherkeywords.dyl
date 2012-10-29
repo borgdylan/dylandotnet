@@ -393,6 +393,14 @@ class public auto ansi IfTok extends Token
 
 end class
 
+class public auto ansi HIfTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#if"
+	end method
+
+end class
+
 class public auto ansi ElseIfTok extends Token
 
 	method public hidebysig virtual string ToString()
@@ -400,6 +408,15 @@ class public auto ansi ElseIfTok extends Token
 	end method
 
 end class
+
+class public auto ansi HElseIfTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#elseif"
+	end method
+
+end class
+
 
 class public auto ansi ThenTok extends Token
 
@@ -485,6 +502,30 @@ class public auto ansi ElseTok extends Token
 
 	method public hidebysig virtual string ToString()
 		return "else"
+	end method
+
+end class
+
+class public auto ansi HElseTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#else"
+	end method
+
+end class
+
+class public auto ansi HDefineTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#define"
+	end method
+
+end class
+
+class public auto ansi HUndefTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#undef"
 	end method
 
 end class

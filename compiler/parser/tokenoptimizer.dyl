@@ -114,6 +114,7 @@ class public auto ansi TokenOptimizer
 				assop::Value = tok::Value
 				tok = assop
 			end if
+			PFlags::AsFlag = false
 			goto fin
 		end if
 		
@@ -333,6 +334,22 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "{" then
+			var lcpar as LCParen = new LCParen()
+			lcpar::Line = tok::Line
+			lcpar::Value = tok::Value
+			tok = lcpar
+			goto fin
+		end if
+		
+		if tok::Value = "}" then
+			var rcpar as RCParen = new RCParen()
+			rcpar::Line = tok::Line
+			rcpar::Value = tok::Value
+			tok = rcpar
+			goto fin
+		end if
+		
 		if tok::Value = "|" then
 			var pip as Pipe = new Pipe()
 			pip::Line = tok::Line
@@ -390,6 +407,15 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "#if" then
+			var hiftk as HIfTok = new HIfTok()
+			hiftk::Line = tok::Line
+			hiftk::Value = tok::Value
+			tok = hiftk
+			PFlags::IfFlag = true
+			goto fin
+		end if
+		
 		if tok::Value = "try" then
 			var trytk as TryTok = new TryTok()
 			trytk::Line = tok::Line
@@ -433,11 +459,44 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "#elseif" then
+			var heliftk as HElseIfTok = new HElseIfTok()
+			heliftk::Line = tok::Line
+			heliftk::Value = tok::Value
+			tok = heliftk
+			PFlags::IfFlag = true
+			goto fin
+		end if
+		
 		if tok::Value = "else" then
 			var elsetk as ElseTok = new ElseTok()
 			elsetk::Line = tok::Line
 			elsetk::Value = tok::Value
 			tok = elsetk
+			goto fin
+		end if
+		
+		if tok::Value = "#else" then
+			var helsetk as HElseTok = new HElseTok()
+			helsetk::Line = tok::Line
+			helsetk::Value = tok::Value
+			tok = helsetk
+			goto fin
+		end if
+		
+		if tok::Value = "#define" then
+			var hdeftk as HDefineTok = new HDefineTok()
+			hdeftk::Line = tok::Line
+			hdeftk::Value = tok::Value
+			tok = hdeftk
+			goto fin
+		end if
+		
+		if tok::Value = "#undef" then
+			var hudeftk as HUndefTok = new HUndefTok()
+			hudeftk::Line = tok::Line
+			hudeftk::Value = tok::Value
+			tok = hudeftk
 			goto fin
 		end if
 		
@@ -787,6 +846,7 @@ class public auto ansi TokenOptimizer
 			vrtk::Line = tok::Line
 			vrtk::Value = tok::Value
 			tok = vrtk
+			PFlags::AsFlag = true
 			goto fin
 		end if
 		
@@ -795,14 +855,22 @@ class public auto ansi TokenOptimizer
 			cattk::Line = tok::Line
 			cattk::Value = tok::Value
 			tok = cattk
+			PFlags::AsFlag = true
 			goto fin
 		end if
 		
 		if tok::Value = "as" then
-			var astk as AsTok = new AsTok()
-			astk::Line = tok::Line
-			astk::Value = tok::Value
-			tok = astk
+			if PFlags::AsFlag then
+				var astk as AsTok = new AsTok()
+				astk::Line = tok::Line
+				astk::Value = tok::Value
+				tok = astk
+			else
+				var asop as AsOp = new AsOp()
+				asop::Line = tok::Line
+				asop::Value = tok::Value
+				tok = asop
+			end if
 			goto fin
 		end if
 		

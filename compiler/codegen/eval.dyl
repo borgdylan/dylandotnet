@@ -11,47 +11,37 @@ delegate public auto ansi void ASTEmitDelegate(var t as Token, var emt as boolea
 class public auto ansi beforefieldinit Evaluator
 
 	field public OpStack Stack
-	field public Token InstToken
+	//field public Token InstToken
 
 	method public void Evaluator()
 		me::ctor()
 		Stack = null
-		InstToken = new Token()
+		//InstToken = new Token()
 	end method
 
-	method public integer RetPrec(var tok as Token)
-		
-		var t as Type[] = new Type[3]
-		t[0] = gettype Op
-		t[1] = gettype LParen
-		t[2] = gettype RParen
-		
-		if t[0]::IsInstanceOfType(tok) then
+	method public static integer RetPrec(var tok as Token)
+		if tok is Op then
 			var optok as Op = $Op$tok
 			return optok::PrecNo
-		elseif t[1]::IsInstanceOfType(tok) then
+		elseif tok is LParen then
 			return -1		
-		elseif t[2]::IsInstanceOfType(tok) then
+		elseif tok is RParen then
 			return 0
 		else
 			return 0		
 		end if
-
 	end method
 
-	method public boolean isLParen(var tok as Token)
-		var typ as Type = gettype LParen
-		return typ::IsInstanceOfType(tok)
+	method public static boolean isLParen(var tok as Token)
+		return tok is LParen
 	end method
 	
-	method public boolean isRParen(var tok as Token)
-		var typ as Type = gettype RParen
-		return typ::IsInstanceOfType(tok)
+	method public static boolean isRParen(var tok as Token)
+		return tok is RParen
 	end method
 
-	method public boolean isOp(var tok as Token)
-		var typ as Type = gettype Op
-		return typ::IsInstanceOfType(tok)
+	method public static boolean isOp(var tok as Token)
+		return tok is Op
 	end method
 
 	method public Expr ConvToRPN(var exp as Expr)
@@ -879,50 +869,79 @@ class public auto ansi beforefieldinit Evaluator
 		var lctyp as IKVM.Reflection.Type = null
 		var rctyp as IKVM.Reflection.Type = null
 		var typ as Type
+		var isflg as boolean = false
+		var asflg as boolean = false
 
-		if isOp(tok) then
+		if tok is Op then
 			optok = $Op$tok
+			
+			if optok is IsOp then
+				isflg = true
+			elseif optok is AsOp then
+				asflg = true
+			end if
+			
 			rc = optok::RChild
 			lc = optok::LChild
 			ASTEmit(lc, emt)
 			lctyp = AsmFactory::Type02
-			ASTEmit(rc, emt)
-			rctyp = AsmFactory::Type02
+	
+			if (isflg or asflg) == false then
+				ASTEmit(rc, emt)
+				rctyp = AsmFactory::Type02
 
-			if emt then
-				typ = gettype string
-				Helpers::StringFlg = lctyp::Equals(ILEmitter::Univ::Import(typ)) and lctyp::Equals(rctyp)
-			end if
-
-			if emt then
-				typ = gettype Delegate
-				if lctyp::Equals(rctyp) then
-					Helpers::DelegateFlg = lctyp::IsSubclassOf(ILEmitter::Univ::Import(typ))
+				if emt then
+					typ = gettype string
+					Helpers::StringFlg = lctyp::Equals(ILEmitter::Univ::Import(typ)) and lctyp::Equals(rctyp)
 				end if
+
+				if emt then
+					typ = gettype Delegate
+					if lctyp::Equals(rctyp) then
+						Helpers::DelegateFlg = lctyp::IsSubclassOf(ILEmitter::Univ::Import(typ))
+					end if
+				end if
+
+				if lctyp::Equals(rctyp) then
+					Helpers::OpCodeSuppFlg = lctyp::get_IsPrimitive()
+				else
+					Helpers::OpCodeSuppFlg = false
+				end if
+
+				typ = gettype ValueType
+				Helpers::EqSuppFlg = ((ILEmitter::Univ::Import(typ)::IsAssignableFrom(lctyp) or ILEmitter::Univ::Import(typ)::IsAssignableFrom(rctyp)) == false) or Helpers::OpCodeSuppFlg
+				typ = gettype Enum
+				Helpers::EqSuppFlg = Helpers::EqSuppFlg or (lctyp::Equals(rctyp) and ILEmitter::Univ::Import(typ)::IsAssignableFrom(lctyp))
 			end if
 
-			if lctyp::Equals(rctyp) then
-				Helpers::OpCodeSuppFlg = lctyp::get_IsPrimitive()
-			else
-				Helpers::OpCodeSuppFlg = false
-			end if
-
-			typ = gettype ValueType
-			Helpers::EqSuppFlg = ((ILEmitter::Univ::Import(typ)::IsAssignableFrom(lctyp) or ILEmitter::Univ::Import(typ)::IsAssignableFrom(rctyp)) == false) or Helpers::OpCodeSuppFlg
-			typ = gettype Enum
-			Helpers::EqSuppFlg = Helpers::EqSuppFlg or (lctyp::Equals(rctyp) and ILEmitter::Univ::Import(typ)::IsAssignableFrom(lctyp))
-
-			typ = gettype ConditionalOp
-			if typ::IsInstanceOfType(optok) then
+			//typ = gettype ConditionalOp
+			if optok is ConditionalOp then
 				AsmFactory::Type02 = ILEmitter::Univ::Import(gettype boolean)
 			else
 				AsmFactory::Type02 = lctyp
 			end if
 
 			if emt then
-				Helpers::LeftOp = lctyp
-				Helpers::RightOp = rctyp
-				Helpers::EmitOp(optok, Helpers::CheckUnsigned(lctyp) == false)
+				if isflg then
+					var istyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok($TypeTok$rc)
+					if istyp = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + rc::Value + "' was not found.")
+					else
+						ILEmitter::EmitIs(istyp)
+					end if
+				elseif asflg then
+					var astyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok($TypeTok$rc)
+					if astyp = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + rc::Value + "' was not found.")
+					else
+						ILEmitter::EmitIsinst(astyp)
+					end if
+					AsmFactory::Type02 = astyp
+				else
+					Helpers::LeftOp = lctyp
+					Helpers::RightOp = rctyp
+					Helpers::EmitOp(optok, Helpers::CheckUnsigned(lctyp) == false)
+				end if
 				Helpers::StringFlg = false
 				Helpers::OpCodeSuppFlg = false
 				Helpers::EqSuppFlg = false
@@ -937,18 +956,8 @@ class public auto ansi beforefieldinit Evaluator
 			var typarr1 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[0]
 			var typarr2 as IKVM.Reflection.Type[]
 			var mcisstatic as boolean = false
-			var td as Type[] = new Type[10]
-			td[0] = gettype StringLiteral
-			td[1] = gettype Literal
-			td[2] = gettype Ident
-			td[3] = gettype MethodCallTok
-			td[4] = gettype NewCallTok
-			td[5] = gettype GettypeCallTok
-			td[6] = gettype MeTok
-			td[7] = gettype NewarrCallTok
-			td[8] = gettype PtrCallTok
 
-			if td[0]::IsInstanceOfType(tok) then
+			if tok is StringLiteral then
 				var slit as StringLiteral = $StringLiteral$tok
 				AsmFactory::Type02 = Helpers::CommitEvalTTok(slit::LitTyp)
 				
@@ -967,14 +976,14 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 					AsmFactory::Type02 = Helpers::CommitEvalTTok(slit::TTok)
 					if AsmFactory::Type02 = null then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + slit::TTok::Value +"' was not found.")
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + slit::TTok::Value + "' was not found.")
 					end if
 					if emt then
 						snk1 = AsmFactory::Type02
 						Helpers::EmitConv(src1, snk1)
 					end if
 				end if
-			elseif td[1]::IsInstanceOfType(tok) then
+			elseif tok is Literal then
 				var lit as Literal = $Literal$tok
 				
 				if emt then
@@ -988,20 +997,20 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 					AsmFactory::Type02 = Helpers::CommitEvalTTok(lit::TTok)
 					if AsmFactory::Type02 = null then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + lit::TTok::Value +"' was not found.")
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + lit::TTok::Value + "' was not found.")
 					end if
 					if emt then
 						snk1 = AsmFactory::Type02
 						Helpers::EmitConv(src1, snk1)
 					end if
 				end if
-			elseif td[2]::IsInstanceOfType(tok) then
+			elseif tok is Ident then
 				ASTEmitIdent($Ident$tok,emt,new ASTEmitDelegate(ASTEmit()))
-			elseif td[3]::IsInstanceOfType(tok) then
+			elseif tok is MethodCallTok then
 				ASTEmitMethod($MethodCallTok$tok,emt,new ASTEmitDelegate(ASTEmit()))
-			elseif td[4]::IsInstanceOfType(tok) then
+			elseif tok is NewCallTok then
 				ASTEmitNew($NewCallTok$tok,emt,new ASTEmitDelegate(ASTEmit()))
-			elseif td[5]::IsInstanceOfType(tok) then
+			elseif tok is GettypeCallTok then
 				if emt then
 					//gettype section
 					var gtctok as GettypeCallTok = $GettypeCallTok$tok
@@ -1020,7 +1029,7 @@ class public auto ansi beforefieldinit Evaluator
 					ILEmitter::EmitCall(typ2::GetMethod("GetTypeFromHandle", typarr1))
 				end if
 				AsmFactory::Type02 = ILEmitter::Univ::Import(gettype Type)
-			elseif td[6]::IsInstanceOfType(tok) then
+			elseif tok is MeTok then
 				var metk1 as MeTok = $MeTok$tok
 
 				if emt then
@@ -1042,7 +1051,7 @@ class public auto ansi beforefieldinit Evaluator
 						Helpers::EmitConv(src1, snk1)
 					end if
 				end if
-			elseif td[7]::IsInstanceOfType(tok) then
+			elseif tok is NewarrCallTok then
 				//array creation section
 				var newactok as NewarrCallTok = $NewarrCallTok$tok
 				typ2 = Helpers::CommitEvalTTok(newactok::ArrayType)
@@ -1052,9 +1061,10 @@ class public auto ansi beforefieldinit Evaluator
 					ILEmitter::EmitNewarr(typ2)
 				end if
 				AsmFactory::Type02 = typ2::MakeArrayType()
-			elseif td[8]::IsInstanceOfType(tok) then
+			elseif tok is PtrCallTok then
 				//ptr load section - obsolete
 				if emt then
+					StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Using 'ptr' is considered an obsolte practice.")
 					var ptrctok as PtrCallTok = $PtrCallTok$tok
 					mcmetinf = Helpers::GetLocMetNoParams(ptrctok::MetToCall::Value)
 					mcisstatic = mcmetinf::get_IsStatic()
@@ -1071,8 +1081,7 @@ class public auto ansi beforefieldinit Evaluator
 
 	method public void Evaluate(var exp as Expr)
 		var asttok as Token = ConvToAST(ConvToRPN(exp))
-		var nt as Type = gettype NullLiteral
-		Helpers::NullExprFlg = nt::IsInstanceOfType(asttok)
+		Helpers::NullExprFlg = asttok is NullLiteral
 		ASTEmit(asttok, false)
 		ASTEmit(asttok, true)
 	end method
@@ -1300,6 +1309,31 @@ class public auto ansi beforefieldinit Evaluator
 				Helpers::EmitFldSt(fldinf, idtisstatic)
 			end if
 		end if
+	end method
+	
+	method public boolean EvaluateHIf(var rt as Token)
+		if rt is Op then
+			var o as Op = $Op$rt
+			if o is EqOp then
+				return EvaluateHIf(o::LChild) == EvaluateHIf(o::RChild)
+			elseif o is NeqOp then
+				return EvaluateHIf(o::LChild) != EvaluateHIf(o::RChild)
+			elseif o is OrOp then
+				return EvaluateHIf(o::LChild) or EvaluateHIf(o::RChild)
+			elseif o is AndOp then
+				return EvaluateHIf(o::LChild) and EvaluateHIf(o::RChild)
+			end if
+		elseif rt is Ident then
+			return SymTable::EvalDef(rt::Value)
+		elseif rt is BooleanLiteral then
+			var bl as BooleanLiteral = $BooleanLiteral$rt
+			return bl::BoolVal
+		end if
+		return false
+	end method
+	
+	method public boolean EvaluateHIf(var exp as Expr)
+		return EvaluateHIf(ConvToAST(ConvToRPN(exp)))
 	end method
 
 end class

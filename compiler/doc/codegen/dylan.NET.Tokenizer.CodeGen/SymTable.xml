@@ -144,6 +144,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AddDef">
+      <MemberSignature Language="C#" Value="public static void AddDef (string sym);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddDef(string sym) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sym" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="sym">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddFld">
       <MemberSignature Language="C#" Value="public static void AddFld (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Emit.FieldBuilder fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddFld(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Emit.FieldBuilder fld) cil managed" />
@@ -617,6 +641,31 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EvalDef">
+      <MemberSignature Language="C#" Value="public static bool EvalDef (string sym);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool EvalDef(string sym) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sym" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="sym">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -2082,6 +2131,30 @@
         <ReturnType>dylan.NET.Tokenizer.CodeGen.TypeList</ReturnType>
       </ReturnValue>
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnDef">
+      <MemberSignature Language="C#" Value="public static void UnDef (string sym);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void UnDef(string sym) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sym" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="sym">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
