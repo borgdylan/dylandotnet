@@ -48,41 +48,38 @@ class public auto ansi static Program
 		elseif args[l] < 1 then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		else
-//try
-			var i as integer = -1
+			//try
+				var i as integer = -1
 
-			do until i = (args[l] - 1)
-				i = i + 1
-				StreamUtils::WriteLine("")
-				if args[i] = "-V" then
-					OutputVersion()
-				elseif args[i] = "-h" then
-					OutputHelp()
-				else
-					ILEmitter::Init()
-					AsmFactory::Init()
-					Importer::Init()
-					var lx as Lexer = new Lexer()
-					StreamUtils::Write("Now Lexing: ")
-					StreamUtils::Write(args[i])
-					var pstmts as StmtSet = lx::Analyze(args[i])
-					StreamUtils::WriteLine("...Done.")
-					var ps as Parser = new Parser()
-					StreamUtils::Write("Now Parsing: ")
-					StreamUtils::Write(args[i])
-					var ppstmts as StmtSet = ps::Parse(pstmts)
-					StreamUtils::WriteLine("...Done.")
-					var cg as CodeGenerator = new CodeGenerator()
-					cg::EmitMSIL(ppstmts, args[i])
-				end if
-			end do
-//catch ex as Exception
-
-//var exstr as string = ex::ToString()
-//StreamUtils::WriteLine(exstr)
-//Console::ReadKey()
-
-//end try
+				do until i = (args[l] - 1)
+					i = i + 1
+					StreamUtils::WriteLine("")
+					if args[i] = "-V" then
+						OutputVersion()
+					elseif args[i] = "-h" then
+						OutputHelp()
+					else
+						ILEmitter::Init()
+						AsmFactory::Init()
+						Importer::Init()
+						var lx as Lexer = new Lexer()
+						StreamUtils::Write("Now Lexing: ")
+						StreamUtils::Write(args[i])
+						var pstmts as StmtSet = lx::Analyze(args[i])
+						StreamUtils::WriteLine("...Done.")
+						var ps as Parser = new Parser()
+						StreamUtils::Write("Now Parsing: ")
+						StreamUtils::Write(args[i])
+						var ppstmts as StmtSet = ps::Parse(pstmts)
+						StreamUtils::WriteLine("...Done.")
+						var cg as CodeGenerator = new CodeGenerator()
+						cg::EmitMSIL(ppstmts, args[i])
+					end if
+				end do
+			//catch ex as Exception
+			//	StreamUtils::WriteLine(ex::ToString())
+			//	Environment::Exit(2)
+			//end try
 
 		end if
 

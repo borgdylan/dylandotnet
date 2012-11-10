@@ -23,10 +23,8 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: arit.dyl...Done.
 Now Parsing: arit.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
-+DEBUG
 Beginning Assembly: arit
 Adding Class: arit.Module1
 	Adding Method: add
@@ -42,10 +40,8 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: conv.dyl...Done.
 Now Parsing: conv.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
-+DEBUG
 Beginning Assembly: conv
 Adding Class: conv.Module1
 	Adding Field: numfld
@@ -112,11 +108,9 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: ctorfield.dyl...Done.
 Now Parsing: ctorfield.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: ctorfield
-+DEBUG
 Beginning Assembly: ctorfield
 Adding Class: ctorfield.Test
 	Adding Field: teststr
@@ -138,10 +132,8 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: helloworld.dyl...Done.
 Now Parsing: helloworld.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
-+DEBUG
 Beginning Assembly: helloworld
 Adding Class: helloworld.Module1
 	Adding Method: main
@@ -153,10 +145,8 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: logicop.dyl...Done.
 Now Parsing: logicop.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
-+DEBUG
 Beginning Assembly: logicop
 Adding Class: logicop.Module1
 	Adding Method: main
@@ -168,10 +158,8 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: mathematics.dyl...Done.
 Now Parsing: mathematics.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
-+DEBUG
 Beginning Assembly: mathematics
 Adding Class: mathematics.Algebra
 	Adding Method: SolveTrinomialPos
@@ -193,12 +181,10 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: mathstest.dyl...Done.
 Now Parsing: mathstest.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: mathematics.dll
 Importing Namespace: System
 Importing Namespace: mathematics
-+DEBUG
 Beginning Assembly: mathstest
 Adding Class: mathstest.Module1
 	Adding Method: main
@@ -212,10 +198,8 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: numloops.dyl...Done.
 Now Parsing: numloops.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
-+DEBUG
 Beginning Assembly: numloops
 Adding Class: numloops.Module1
 	Adding Method: main
@@ -227,11 +211,9 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: openfile.dyl...Done.
 Now Parsing: openfile.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: System.IO
-+DEBUG
 Beginning Assembly: openfile
 Adding Class: openfile.module1
 	Adding Method: main
@@ -243,10 +225,8 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: Person.dyl...Done.
 Now Parsing: Person.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
-+DEBUG
 Beginning Assembly: Person
 Adding Class: Person.Person
 	Adding Field: name
@@ -265,12 +245,10 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: PersonProg.dyl...Done.
 Now Parsing: PersonProg.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: Person.dll
 Importing Namespace: System
 Importing Namespace: Person
-+DEBUG
 Beginning Assembly: PersonProg
 Adding Class: PersonProg.PersonInst
 	Adding Method: main
@@ -282,10 +260,8 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: boxobj.dyl...Done.
 Now Parsing: boxobj.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
-+DEBUG
 Beginning Assembly: boxobj
 Adding Class: boxobj.Module1
 	Adding Method: main
@@ -298,12 +274,10 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: xmllib.dyl...Done.
 Now Parsing: xmllib.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.Xml.Linq.dll
 Importing Namespace: System
 Importing Namespace: System.Xml.Linq
-+DEBUG
 Beginning Assembly: xmllibrary
 Adding Class: xmllibrary.Mod1
 	Adding Method: makenode
@@ -320,11 +294,9 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: arraytest.dyl...Done.
 Now Parsing: arraytest.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: arraytest
-+DEBUG
 Beginning Assembly: arraytest
 Adding Class: arraytest.instc
 	Adding Field: arr
@@ -348,12 +320,10 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: vector.dyl...Done.
 Now Parsing: vector.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: System.Collections.Generic
 Importing Namespace: vector
-+DEBUG
 Beginning Assembly: vector
 Adding Class: vector.Vector
 	Adding Field: I
@@ -394,11 +364,9 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: threads.dyl...Done.
 Now Parsing: threads.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: System.Threading
-+DEBUG
 Beginning Assembly: threads
 Adding Class: dylan.NET.Tests.Threading.Program
 	Adding Field: TimerObj
@@ -417,10 +385,8 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: dylrecurse.dyl...Done.
 Now Parsing: dylrecurse.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
-+DEBUG
 Beginning Assembly: dylrecurse
 Adding Class: dylrecurse.Program
 	Adding Method: recurse
@@ -433,10 +399,8 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: strrecurse.dyl...Done.
 Now Parsing: strrecurse.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
-+DEBUG
 Beginning Assembly: strrecurse
 Adding Class: strrecurse.Program
 	Adding Method: palindrome
@@ -449,11 +413,9 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: protectedtests.dyl...Done.
 Now Parsing: protectedtests.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Importing Namespace: protectedtests
-+DEBUG
 Beginning Assembly: protectedtests
 Adding Class: protectedtests.SealedClass
 Adding Class: protectedtests.InternalClass
@@ -492,7 +454,6 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: transnames.dyl...Done.
 Now Parsing: transnames.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.Core.dll
@@ -503,7 +464,6 @@ Importing Namespace: System.Linq
 Importing Namespace: System.Xml.Linq
 Importing Namespace: System.Collections
 Importing Namespace: System.Collections.Generic
-+DEBUG
 Beginning Assembly: transnames
 Adding Class: transnames.Program
 	Adding Method: LineToTuple

@@ -420,6 +420,13 @@ class public auto ansi static Helpers
 
 		var i as integer = -1
 		var curp as VarExpr = null
+			
+//		if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), 0) then
+//			var pbrv as ParameterBuilder = ILEmitter::Met::DefineParameter(0, ParameterAttributes::Retval, $string$null)
+//			foreach ca in SymTable::ParameterCALst::get_Item(0)
+//				pbrv::SetCustomAttribute(ca)
+//			end for
+//		end if
 		
 		do until i = (ps[l] - 1)
 			i = i + 1
@@ -436,11 +443,19 @@ class public auto ansi static Helpers
 				end if	
 			end if
 			
-			ILEmitter::Met::DefineParameter(i + 1, pa, curp::VarName::Value)
+			var pb as ParameterBuilder = ILEmitter::Met::DefineParameter(i + 1, pa, curp::VarName::Value)
+			
+			if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), i + 1) then
+				foreach ca in SymTable::ParameterCALst::get_Item(i + 1)
+					pb::SetCustomAttribute(ca)
+				end for
+			end if
+			
 			ILEmitter::ArgInd = ILEmitter::ArgInd + 1
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 		end do
 		
+		SymTable::ResetParamCAs()
 	end method
 
 	[method: ComVisible(false)]
@@ -464,11 +479,19 @@ class public auto ansi static Helpers
 				end if	
 			end if
 			
-			ILEmitter::Constr::DefineParameter(i + 1, pa, curp::VarName::Value)
+			var pb as ParameterBuilder = ILEmitter::Constr::DefineParameter(i + 1, pa, curp::VarName::Value)
+			
+			if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), i + 1) then
+				foreach ca in SymTable::ParameterCALst::get_Item(i + 1)
+					pb::SetCustomAttribute(ca)
+				end for
+			end if
+			
 			ILEmitter::ArgInd = ILEmitter::ArgInd + 1
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 		end do
 		
+		SymTable::ResetParamCAs()
 	end method
 
 	[method: ComVisible(false)]
@@ -776,6 +799,7 @@ class public auto ansi static Helpers
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The notlike operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 			end if
 		end if
+		//FIXME
 
 	end method
 

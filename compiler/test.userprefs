@@ -1,19 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/eval.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/helpers.dyl">
     <Files>
       <File FileName="dnr/loader.dyl" Line="268" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="626" Column="1" />
-      <File FileName="codegen/eval.dyl" Line="550" Column="1" />
-      <File FileName="codegen/helpers.dyl" Line="36" Column="1" />
+      <File FileName="codegen/eval.dyl" Line="925" Column="1" />
+      <File FileName="codegen/helpers.dyl" Line="442" Column="59" />
       <File FileName="codegen/codegenerator.dyl" Line="51" Column="1" />
       <File FileName="dnc/Mod1.dyl" Line="66" Column="1" />
       <File FileName="parser/parser.dyl" Line="37" Column="1" />
       <File FileName="parser/stmtoptimizer.dyl" Line="1219" Column="9" />
       <File FileName="parser/tokenoptimizer.dyl" Line="1040" Column="1" />
-      <File FileName="codegen/stmtreader.dyl" Line="31" Column="1" />
+      <File FileName="codegen/stmtreader.dyl" Line="794" Column="1" />
       <File FileName="parser/exproptimizer.dyl" Line="241" Column="1" />
-      <File FileName="codegen/symtable.dyl" Line="346" Column="1" />
+      <File FileName="codegen/symtable.dyl" Line="201" Column="1" />
       <File FileName="codegen/milambdas.dyl" Line="41" Column="14" />
       <File FileName="codegen/typeitem.dyl" Line="95" Column="1" />
       <File FileName="codegen/typelist.dyl" Line="106" Column="1" />
@@ -39,8 +39,9 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/eval.dyl" line="925" />
       <Breakpoint file="/home/dylan/Desktop/compiler/codegen/eval.dyl" line="933" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/symtable.dyl" line="198" />
+      <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/helpers.dyl" line="439" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

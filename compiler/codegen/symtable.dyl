@@ -13,6 +13,7 @@ class public auto ansi static SymTable
 	field public static C5.IList<of CustomAttributeBuilder> FieldCALst
 	field public static C5.IList<of CustomAttributeBuilder> ClassCALst
 	field public static C5.IList<of CustomAttributeBuilder> AssemblyCALst
+	field public static C5.IDictionary<of integer, C5.LinkedList<of CustomAttributeBuilder> > ParameterCALst
 
 	field public static TypeList TypeLst
 	field public static TypeItem CurnTypItem
@@ -46,6 +47,7 @@ class public auto ansi static SymTable
 		FieldCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		ClassCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		AssemblyCALst = new C5.LinkedList<of CustomAttributeBuilder>()
+		ParameterCALst = new C5.HashDictionary<of integer, C5.LinkedList<of CustomAttributeBuilder> >()
 		DefSyms = new C5.TreeSet<of string>()
 	end method
 	
@@ -101,6 +103,11 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void ResetAsmCAs()
 		AssemblyCALst::Clear()
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ResetParamCAs()
+		ParameterCALst::Clear()
 	end method
 	
 	[method: ComVisible(false)]
@@ -183,6 +190,14 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void AddAsmCA(var ca as CustomAttributeBuilder)
 		AssemblyCALst::Add(ca)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddParamCA(var ind as integer,var ca as CustomAttributeBuilder)
+		if Enumerable::Contains<of integer>(ParameterCALst::get_Keys(),ind) == false then
+			ParameterCALst::Add(ind, new C5.LinkedList<of CustomAttributeBuilder>())
+		end if
+		ParameterCALst::get_Item(ind)::Add(ca)
 	end method
 	
 	[method: ComVisible(false)]
@@ -270,7 +285,7 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void AddDef(var sym as string)
 		DefSyms::Add(sym)
-		Console::WriteLine("+" + sym)
+		//Console::WriteLine("+" + sym)
 	end method
 
 	[method: ComVisible(false)]

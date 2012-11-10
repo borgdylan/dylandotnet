@@ -94,6 +94,7 @@ MAKEINFO = ${SHELL} /var/www/Code/dylannet/compiler/missing --run makeinfo
 MDOC = /usr/bin/mdoc
 MKDIR_P = /bin/mkdir -p
 MONO = /usr/bin/mono
+NUNIT = /usr/bin/nunit-console
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet

@@ -476,6 +476,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AddParamCA">
+      <MemberSignature Language="C#" Value="public static void AddParamCA (int ind, IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddParamCA(int32 ind, class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ind" Type="System.Int32" />
+        <Parameter Name="ca" Type="IKVM.Reflection.Emit.CustomAttributeBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ind">To be added.</param>
+        <param name="ca">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddTypArr">
       <MemberSignature Language="C#" Value="public static int AddTypArr (IKVM.Reflection.Type[] arr);" />
       <MemberSignature Language="ILAsm" Value=".method public static int32 AddTypArr(class IKVM.Reflection.Type[] arr) cil managed" />
@@ -1094,6 +1120,21 @@
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.CodeGen.MethodItem[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParameterCALst">
+      <MemberSignature Language="C#" Value="public static C5.IDictionary&lt;int,C5.LinkedList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;&gt; ParameterCALst;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IDictionary`2&lt;int32, class C5.LinkedList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt;&gt; ParameterCALst" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>C5.IDictionary&lt;System.Int32,C5.LinkedList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1920,6 +1961,27 @@
         <AssemblyVersion>11.2.9.5</AssemblyVersion>
         <AssemblyVersion>11.2.9.6</AssemblyVersion>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetParamCAs">
+      <MemberSignature Language="C#" Value="public static void ResetParamCAs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetParamCAs() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
         <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>

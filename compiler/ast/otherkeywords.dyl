@@ -530,6 +530,22 @@ class public auto ansi HUndefTok extends Token
 
 end class
 
+class public auto ansi ErrorTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#error"
+	end method
+
+end class
+
+class public auto ansi WarningTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#warning"
+	end method
+
+end class
+
 class public auto ansi ReturnTok extends Token
 
 	method public hidebysig virtual string ToString()
@@ -601,6 +617,14 @@ class public auto ansi MeTok extends Token
 		else
 			return "me"
 		end if
+	end method
+
+end class
+
+class public auto ansi ParameterCTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return Value
 	end method
 
 end class

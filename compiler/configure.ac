@@ -33,6 +33,12 @@ if test "x$MDOC" = "xno"; then
 	AC_MSG_ERROR([You need to install monodoc])
 fi
 
+dnl nunit-console
+AC_PATH_PROG(NUNIT, nunit-console, no)
+if test "x$NUNIT" = "xno"; then
+        AC_MSG_ERROR([You need to install nunit-console])
+fi
+
 dnl dylandotnet
 AC_PATH_PROG(DYLANDOTNET, dylandotnet, no)
 
@@ -54,4 +60,5 @@ doc/Makefile
 4.0/Makefile
 dev/Makefile
 templateproj/Makefile
+unit/Makefile
 ])

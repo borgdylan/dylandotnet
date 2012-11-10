@@ -604,6 +604,9 @@ class public auto ansi StmtReader
 			SymTable::PushScope()
 			eval = new Evaluator()
 			eval::Evaluate(ifstm::Exp)
+			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for If Statements should evaluate to boolean.")
+			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
 		elseif stm is DoStmt then
 			SymTable::PushScope()
@@ -617,6 +620,9 @@ class public auto ansi StmtReader
 			var unstm as UntilStmt = $UntilStmt$stm
 			eval = new Evaluator()
 			eval::Evaluate(unstm::Exp)
+			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Until Statements should evaluate to boolean.")
+			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadLoopStartLbl())
 			ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
 			SymTable::PopLoop()
@@ -625,6 +631,9 @@ class public auto ansi StmtReader
 			var whstm as WhileStmt = $WhileStmt$stm
 			eval = new Evaluator()
 			eval::Evaluate(whstm::Exp)
+			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for While Statements should evaluate to boolean.")
+			end if
 			ILEmitter::EmitBrtrue(SymTable::ReadLoopStartLbl())
 			ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
 			SymTable::PopLoop()
@@ -636,6 +645,9 @@ class public auto ansi StmtReader
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
 			eval = new Evaluator()
 			eval::Evaluate(dustm::Exp)
+			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Do Until Statements should evaluate to boolean.")
+			end if
 			ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
 		elseif stm is DoWhileStmt then
 			var dwstm as DoWhileStmt = $DoWhileStmt$stm
@@ -644,6 +656,9 @@ class public auto ansi StmtReader
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
 			eval = new Evaluator()
 			eval::Evaluate(dwstm::Exp)
+			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Do While Statements should evaluate to boolean.")
+			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
 		elseif stm is ElseIfStmt then
 			ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
@@ -654,6 +669,9 @@ class public auto ansi StmtReader
 			SymTable::PushScope()
 			eval = new Evaluator()
 			eval::Evaluate(elifstm::Exp)
+			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for ElseIf Statements should evaluate to boolean.")
+			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
 		elseif stm is ElseStmt then
 			ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
@@ -754,6 +772,25 @@ class public auto ansi StmtReader
 		elseif stm is HUndefStmt then
 			var hustm as HUndefStmt = $HUndefStmt$stm
 			SymTable::UnDef(hustm::Symbol::Value)
+		elseif stm is WarningStmt then
+			var wstm as WarningStmt = $WarningStmt$stm
+			if wstm::Msg::Value like c"^\q(.)*\q$" then
+				tmpchrarr = new char[1]
+				tmpchrarr[0] = c'\q'
+				wstm::Msg::Value = wstm::Msg::Value::Trim(tmpchrarr)
+			end if
+			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, wstm::Msg::Value)
+		elseif stm is ErrorStmt then
+			var wstm as ErrorStmt = $ErrorStmt$stm
+			if wstm::Msg::Value like c"^\q(.)*\q$" then
+				tmpchrarr = new char[1]
+				tmpchrarr[0] = c'\q'
+				wstm::Msg::Value = wstm::Msg::Value::Trim(tmpchrarr)
+			end if
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, wstm::Msg::Value)
+		elseif stm is ParameterAttrStmt then
+			var pas as ParameterAttrStmt = $ParameterAttrStmt$stm
+			SymTable::AddParamCA(pas::Index,AttrStmtToCAB(pas))
 		else
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
 		end if

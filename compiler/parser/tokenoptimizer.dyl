@@ -647,6 +647,22 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "#error" then
+			var errtk as ErrorTok = new ErrorTok()
+			errtk::Line = tok::Line
+			errtk::Value = tok::Value
+			tok = errtk
+			goto fin
+		end if
+		
+		if tok::Value = "#warning" then
+			var warntk as WarningTok = new WarningTok()
+			warntk::Line = tok::Line
+			warntk::Value = tok::Value
+			tok = warntk
+			goto fin
+		end if
+		
 		if tok::Value = "#scope" then
 			var scptk as ScopeTok = new ScopeTok()
 			scptk::Line = tok::Line
@@ -758,6 +774,14 @@ class public auto ansi TokenOptimizer
 			clctk::Line = tok::Line
 			clctk::Value = tok::Value
 			tok = clctk
+			goto fin
+		end if
+		
+		if tok::Value like "^parameter(\d)+:$" then
+			var pctk as ParameterCTok = new ParameterCTok()
+			pctk::Line = tok::Line
+			pctk::Value = tok::Value
+			tok = pctk
 			goto fin
 		end if
 		

@@ -38,14 +38,12 @@ class public auto ansi TypeList
 	end method
 
 	method public TypeItem GetTypeItem(var t as IKVM.Reflection.Type)
-		var lot as IEnumerable<of TypeItem> = Types
 		var til as TILambdas = new TILambdas(t)
-		var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(lot,new Func<of TypeItem,boolean>(til::DetermineIfCandidateType()))
-		var matches as TypeItem[] = Enumerable::ToArray<of TypeItem>(lot2)
-		if matches[l] != 0 then
-			return matches[0]
-		end if
-		return null
+		#if NET_4_0 or NET_4_5 then
+			return ParallelEnumerable::FirstOrDefault<of TypeItem>(ParallelEnumerable::Where<of TypeItem>(ParallelEnumerable::AsParallel<of TypeItem>(Types),new Func<of TypeItem,boolean>(til::DetermineIfCandidateType())))
+		#else
+			return Enumerable::FirstOrDefault<of TypeItem>(Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidateType())))
+		end #if
 	end method
 	
 	method public IKVM.Reflection.Type GetType(var nam as string)

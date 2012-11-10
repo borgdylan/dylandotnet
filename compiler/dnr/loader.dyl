@@ -48,19 +48,13 @@ class public auto ansi static Loader
 			
 			foreach alias in Importer::AliasMap::get_Keys()
 				if name = alias then
-					//Console::Write(name + " -> ")
 					name = Importer::AliasMap::get_Item(alias)
-					//Console::WriteLine(name)
 					break
 				elseif name like ("^" + alias + "`\d+$") then
-					//Console::Write(name + " -> ")
 					name = Importer::AliasMap::get_Item(alias) + name::Substring(alias::get_Length())
-					//Console::WriteLine(name)
 					break
 				elseif name::StartsWith(alias + ".") then
-					//Console::Write(name + " -> ")
 					name = Importer::AliasMap::get_Item(alias) + name::Substring(alias::get_Length())
-					//Console::WriteLine(name)
 					break
 				end if
 			end for
@@ -335,16 +329,17 @@ class public auto ansi static Loader
 
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadSpecMtds(var typ as IKVM.Reflection.Type)
-		//var tempie as IEnumerable = typ::GetMethods()
-		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = typ::GetMethods()
-		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,boolean>(MILambdas::IsSpecial()))
+		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(typ::GetMethods(), new Func<of IKVM.Reflection.MethodInfo,boolean>(MILambdas::IsSpecial()))
 	end method
 
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadGenericMtdOverlds(var typ as IKVM.Reflection.Type, var name as string, var paramlen as integer)
-		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = typ::GetMethods()
 		var mil as MILambdas = new MILambdas(name,paramlen)
-		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::GenericMtdFilter()))
+		#if NET_4_0 or NET_4_5 then
+			return ParallelEnumerable::Where<of IKVM.Reflection.MethodInfo>(ParallelEnumerable::AsParallel<of IKVM.Reflection.MethodInfo>(typ::GetMethods()), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::GenericMtdFilter()))
+		#else
+			return Enumerable::Where<of IKVM.Reflection.MethodInfo>(typ::GetMethods(), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::GenericMtdFilter()))
+		end #if
 	end method
 
 	[method: ComVisible(false)]
@@ -373,10 +368,9 @@ class public auto ansi static Loader
 		typs[0] = typa
 		typs[1] = typb
 
-		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = LoadSpecMtds(typ)
 		var mil as MILambdas = new MILambdas(name)
-		mtdinfos = Enumerable::Where<of IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameName()))
-		var matches as IKVM.Reflection.MethodInfo[] = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(mtdinfos)
+		var matches as IKVM.Reflection.MethodInfo[]		
+		matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameName())))
 
 		if matches[l] = 0 then
 			return null
@@ -392,11 +386,15 @@ class public auto ansi static Loader
 	method public static IKVM.Reflection.MethodInfo LoadGenericMethod(var typ as IKVM.Reflection.Type, var name as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[])
 
 		var mtdinfo as IKVM.Reflection.MethodInfo = null
-		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = LoadGenericMtdOverlds(typ, name, genparams[l])
 		var mil as MILambdas = new MILambdas(genparams)
-		mtdinfos = Enumerable::Select<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(mil::InstGenMtd()))
-		var matches as IKVM.Reflection.MethodInfo[] = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(mtdinfos)
-
+	
+		var matches as IKVM.Reflection.MethodInfo[]
+		#if NET_4_0 or NET_4_5 then
+			matches = ParallelEnumerable::ToArray<of IKVM.Reflection.MethodInfo>(ParallelEnumerable::Select<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(ParallelEnumerable::AsParallel<of IKVM.Reflection.MethodInfo>(LoadGenericMtdOverlds(typ, name, genparams[l])), new Func<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(mil::InstGenMtd())))
+		#else
+			matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Select<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(LoadGenericMtdOverlds(typ, name, genparams[l]), new Func<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(mil::InstGenMtd())))
+		end #if
+		
 		if matches[l] = 0 then
 			mtdinfo = null
 		else
@@ -417,11 +415,11 @@ class public auto ansi static Loader
 
 		var typs as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
 		typs[0] = src
-		var mtdinfos as IEnumerable<of IKVM.Reflection.MethodInfo> = LoadSpecMtds(typ)
 		var mil as MILambdas = new MILambdas(name,snk)
-		mtdinfos = Enumerable::Where<of IKVM.Reflection.MethodInfo>(mtdinfos, new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameNameAndReturn()))
-		var matches as IKVM.Reflection.MethodInfo[] = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(mtdinfos)
-
+		
+		var matches as IKVM.Reflection.MethodInfo[]
+		matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameNameAndReturn())))
+		
 		if matches[l] = 0 then
 			return null
 		else

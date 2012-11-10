@@ -63,6 +63,7 @@
       <Type Name="EndTryStmt" Kind="Class" />
       <Type Name="EndXmlDocStmt" Kind="Class" />
       <Type Name="EnumStmt" Kind="Class" />
+      <Type Name="ErrorStmt" Kind="Class" />
       <Type Name="FieldAttrStmt" Kind="Class" />
       <Type Name="FieldStmt" Kind="Class" />
       <Type Name="FinallyStmt" Kind="Class" />
@@ -87,6 +88,7 @@
       <Type Name="MethodStmt" Kind="Class" />
       <Type Name="NewresStmt" Kind="Class" />
       <Type Name="NSStmt" Kind="Class" />
+      <Type Name="ParameterAttrStmt" Kind="Class" />
       <Type Name="PlaceStmt" Kind="Class" />
       <Type Name="PropertyGetStmt" Kind="Class" />
       <Type Name="PropertySetStmt" Kind="Class" />
@@ -105,6 +107,7 @@
       <Type Name="VarAsgnStmt" Kind="Class" />
       <Type Name="VarStmt" Kind="Class" />
       <Type Name="VerStmt" Kind="Class" />
+      <Type Name="WarningStmt" Kind="Class" />
       <Type Name="WhileStmt" Kind="Class" />
       <Type Name="XmlDocStmt" Kind="Class" />
     </Namespace>
@@ -129,6 +132,7 @@
       <Type Name="ElseTok" Kind="Class" />
       <Type Name="EndTok" Kind="Class" />
       <Type Name="EnumTok" Kind="Class" />
+      <Type Name="ErrorTok" Kind="Class" />
       <Type Name="ExeTok" Kind="Class" />
       <Type Name="ExtendsTok" Kind="Class" />
       <Type Name="FieldCTok" Kind="Class" />
@@ -174,6 +178,7 @@
       <Type Name="OfTok" Kind="Class" />
       <Type Name="OnTok" Kind="Class" />
       <Type Name="OutTok" Kind="Class" />
+      <Type Name="ParameterCTok" Kind="Class" />
       <Type Name="PlaceTok" Kind="Class" />
       <Type Name="PropertyCTok" Kind="Class" />
       <Type Name="PropertyTok" Kind="Class" />
@@ -197,6 +202,7 @@
       <Type Name="ValInRefTok" Kind="Class" />
       <Type Name="VarTok" Kind="Class" />
       <Type Name="VerTok" Kind="Class" />
+      <Type Name="WarningTok" Kind="Class" />
       <Type Name="WhileTok" Kind="Class" />
       <Type Name="XmldocTok" Kind="Class" />
     </Namespace>

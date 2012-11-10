@@ -45,6 +45,7 @@
     <Folder Include="lexer\" />
     <Folder Include="parser\" />
     <Folder Include="web\" />
+    <Folder Include="unit\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ast\aritops.dyl" />
@@ -186,5 +187,9 @@
     <None Include="dnc\assemblyinfo.dyl" />
     <None Include="ast\attrvalpair.dyl" />
     <None Include="tests\transnames.dyl" />
+    <None Include="unit\Makefile.am" />
+    <None Include="unit\nunit.dyl" />
+    <None Include="unit\unit.dyl" />
+    <None Include="unit\parseutests.dyl" />
   </ItemGroup>
 </Project>

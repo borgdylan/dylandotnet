@@ -21,44 +21,59 @@ class public auto ansi StmtOptimizer
 	end method
 
 	method private Stmt checkRefasm(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype RefasmTok
-	b = typ::IsInstanceOfType(tok)
-	var refasms as RefasmStmt = new RefasmStmt()
-	if b then
-	refasms::Line = stm::Line
-	refasms::Tokens = stm::Tokens
-	refasms::AsmPath = stm::Tokens[1]
-	end if
-	return refasms
+		b = stm::Tokens[0] is RefasmTok
+		var refasms as RefasmStmt = new RefasmStmt()
+		if b then
+			refasms::Line = stm::Line
+			refasms::Tokens = stm::Tokens
+			refasms::AsmPath = stm::Tokens[1]
+		end if
+		return refasms
 	end method
 	
 	method private Stmt checkRefstdasm(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype RefstdasmTok
-	b = typ::IsInstanceOfType(tok)
-	var refsasms as RefstdasmStmt = new RefstdasmStmt()
-	if b then
-	refsasms::Line = stm::Line
-	refsasms::Tokens = stm::Tokens
-	refsasms::AsmPath = stm::Tokens[1]
-	end if
-	return refsasms
+		b = stm::Tokens[0] is RefstdasmTok
+		var refsasms as RefstdasmStmt = new RefstdasmStmt()
+		if b then
+			refsasms::Line = stm::Line
+			refsasms::Tokens = stm::Tokens
+			refsasms::AsmPath = stm::Tokens[1]
+		end if
+		return refsasms
 	end method
 	
 	method private Stmt checkInclude(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype IncludeTok
-	b = typ::IsInstanceOfType(tok)
-	var inclus as IncludeStmt = new IncludeStmt()
-	if b then
-	inclus::Line = stm::Line
-	inclus::Tokens = stm::Tokens
-	inclus::Path = stm::Tokens[1]
-	end if
-	return inclus
+		b = stm::Tokens[0] is IncludeTok
+		var inclus as IncludeStmt = new IncludeStmt()
+		if b then
+			inclus::Line = stm::Line
+			inclus::Tokens = stm::Tokens
+			inclus::Path = stm::Tokens[1]
+		end if
+		return inclus
 	end method
 	
+	method private Stmt checkError(var stm as Stmt, var b as boolean&)
+		b = stm::Tokens[0] is ErrorTok
+		var errs as ErrorStmt = new ErrorStmt()
+		if b then
+			errs::Line = stm::Line
+			errs::Tokens = stm::Tokens
+			errs::Msg = stm::Tokens[1]
+		end if
+		return errs
+	end method
+	
+	method private Stmt checkWarning(var stm as Stmt, var b as boolean&)
+		b = stm::Tokens[0] is WarningTok
+		var warns as WarningStmt = new WarningStmt()
+		if b then
+			warns::Line = stm::Line
+			warns::Tokens = stm::Tokens
+			warns::Msg = stm::Tokens[1]
+		end if
+		return warns
+	end method
 	
 	method private Stmt checkIf(var stm as Stmt, var b as boolean&)
 		var tok as Token = stm::Tokens[0]
@@ -803,10 +818,7 @@ class public auto ansi StmtOptimizer
 		var mas as MethodAttrStmt = null
 
 		if stm::Tokens[l] >= 2 then
-			var typ1 as Type = gettype LSParen
-			var typ2 as Type = gettype MethodCTok
-			
-			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+			b = (stm::Tokens[0] is LSParen) and (stm::Tokens[1] is MethodCTok)
 
 			if b then
 				mas = new MethodAttrStmt()
@@ -826,9 +838,6 @@ class public auto ansi StmtOptimizer
 					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
 				end do
 				
-				var et as Type = gettype RSParen
-				var ct as Type = gettype Comma
-				var eqt as Type = gettype AssignOp
 				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
 				var curvp as AttrValuePair = null
 				var eqf as boolean = false
@@ -836,13 +845,13 @@ class public auto ansi StmtOptimizer
 				var i as integer = 2
 				do until i = (mas::Tokens[l] - 1)
 					i = i + 1
-					if et::IsInstanceOfType(mas::Tokens[i]) then
+					if mas::Tokens[i] is RSParen then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
 						end if
 						break
-					elseif ct::IsInstanceOfType(mas::Tokens[i]) then
+					elseif mas::Tokens[i] is Comma then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
@@ -850,7 +859,7 @@ class public auto ansi StmtOptimizer
 						curvp = new AttrValuePair()
 						curvp::ValueExpr = new Expr()
 						eqf = false
-					elseif eqt::IsInstanceOfType(mas::Tokens[i]) then
+					elseif mas::Tokens[i] is AssignOp then
 						eqf = true
 					else
 						if eqf then
@@ -872,9 +881,7 @@ class public auto ansi StmtOptimizer
 		var mas as FieldAttrStmt = null
 
 		if stm::Tokens[l] >= 2 then
-			var typ1 as Type = gettype LSParen
-			var typ2 as Type = gettype FieldCTok
-			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+			b = (stm::Tokens[0] is LSParen) and (stm::Tokens[1] is FieldCTok)
 
 			if b then
 				mas = new FieldAttrStmt()
@@ -894,9 +901,6 @@ class public auto ansi StmtOptimizer
 					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
 				end do
 				
-				var et as Type = gettype RSParen
-				var ct as Type = gettype Comma
-				var eqt as Type = gettype AssignOp
 				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
 				var curvp as AttrValuePair = null
 				var eqf as boolean = false
@@ -904,13 +908,13 @@ class public auto ansi StmtOptimizer
 				var i as integer = 2
 				do until i = (mas::Tokens[l] - 1)
 					i = i + 1
-					if et::IsInstanceOfType(mas::Tokens[i]) then
+					if mas::Tokens[i] is RSParen then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
 						end if
 						break
-					elseif ct::IsInstanceOfType(mas::Tokens[i]) then
+					elseif mas::Tokens[i] is Comma then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
@@ -918,7 +922,7 @@ class public auto ansi StmtOptimizer
 						curvp = new AttrValuePair()
 						curvp::ValueExpr = new Expr()
 						eqf = false
-					elseif eqt::IsInstanceOfType(mas::Tokens[i]) then
+					elseif mas::Tokens[i] is AssignOp then
 						eqf = true
 					else
 						if eqf then
@@ -939,9 +943,7 @@ class public auto ansi StmtOptimizer
 		var mas as ClassAttrStmt = null
 
 		if stm::Tokens[l] >= 2 then
-			var typ1 as Type = gettype LSParen
-			var typ2 as Type = gettype ClassCTok
-			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+			b = (stm::Tokens[0] is LSParen) and (stm::Tokens[1] is ClassCTok)
 
 			if b then
 				mas = new ClassAttrStmt()
@@ -961,9 +963,6 @@ class public auto ansi StmtOptimizer
 					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
 				end do
 				
-				var et as Type = gettype RSParen
-				var ct as Type = gettype Comma
-				var eqt as Type = gettype AssignOp
 				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
 				var curvp as AttrValuePair = null
 				var eqf as boolean = false
@@ -971,13 +970,13 @@ class public auto ansi StmtOptimizer
 				var i as integer = 2
 				do until i = (mas::Tokens[l] - 1)
 					i = i + 1
-					if et::IsInstanceOfType(mas::Tokens[i]) then
+					if mas::Tokens[i] is RSParen then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
 						end if
 						break
-					elseif ct::IsInstanceOfType(mas::Tokens[i]) then
+					elseif mas::Tokens[i] is Comma then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
@@ -985,7 +984,7 @@ class public auto ansi StmtOptimizer
 						curvp = new AttrValuePair()
 						curvp::ValueExpr = new Expr()
 						eqf = false
-					elseif eqt::IsInstanceOfType(mas::Tokens[i]) then
+					elseif mas::Tokens[i] is AssignOp then
 						eqf = true
 					else
 						if eqf then
@@ -1006,9 +1005,7 @@ class public auto ansi StmtOptimizer
 		var mas as AssemblyAttrStmt = null
 
 		if stm::Tokens[l] >= 2 then
-			var typ1 as Type = gettype LSParen
-			var typ2 as Type = gettype AssemblyCTok
-			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+			b = (stm::Tokens[0] is LSParen) and (stm::Tokens[1] is AssemblyCTok)
 
 			if b then
 				mas = new AssemblyAttrStmt()
@@ -1028,9 +1025,6 @@ class public auto ansi StmtOptimizer
 					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
 				end do
 				
-				var et as Type = gettype RSParen
-				var ct as Type = gettype Comma
-				var eqt as Type = gettype AssignOp
 				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
 				var curvp as AttrValuePair = null
 				var eqf as boolean = false
@@ -1038,13 +1032,13 @@ class public auto ansi StmtOptimizer
 				var i as integer = 2
 				do until i = (mas::Tokens[l] - 1)
 					i = i + 1
-					if et::IsInstanceOfType(mas::Tokens[i]) then
+					if mas::Tokens[i] is RSParen then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
 						end if
 						break
-					elseif ct::IsInstanceOfType(mas::Tokens[i]) then
+					elseif mas::Tokens[i] is Comma then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
@@ -1052,7 +1046,71 @@ class public auto ansi StmtOptimizer
 						curvp = new AttrValuePair()
 						curvp::ValueExpr = new Expr()
 						eqf = false
-					elseif eqt::IsInstanceOfType(mas::Tokens[i]) then
+					elseif mas::Tokens[i] is AssignOp then
+						eqf = true
+					else
+						if eqf then
+							curvp::ValueExpr::AddToken(mas::Tokens[i])
+						else
+							curvp::Name = $Ident$mas::Tokens[i]
+						end if
+					end if
+				end do
+				
+				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp) 
+			end if
+		end if
+		return mas
+	end method
+	
+	method private Stmt checkParamAttr(var stm as Stmt, var b as boolean&)
+		var mas as ParameterAttrStmt = null
+
+		if stm::Tokens[l] >= 2 then
+			b = (stm::Tokens[0] is LSParen) and (stm::Tokens[1] is ParameterCTok)
+
+			if b then
+				mas = new ParameterAttrStmt()
+				
+				var pct as ParameterCTok = $ParameterCTok$stm::Tokens[1]
+				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
+				var tempexp as Expr = new Expr()
+				tempexp::Tokens = stm::Tokens
+				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
+				mas::Tokens = tempexp::Tokens
+				mas::Ctor = $NewCallTok$mas::Tokens[2]
+				mas::Line = stm::Line
+				mas::Index = $integer$pct::Value::Substring(9,pct::Value::get_Length() - 10)
+				//mas::Tokens = stm::Tokens
+				
+				var j as integer = -1
+				do until j = (mas::Ctor::Params[l] - 1)
+					j = j + 1
+					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+				end do
+				
+				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var curvp as AttrValuePair = null
+				var eqf as boolean = false
+				
+				var i as integer = 2
+				do until i = (mas::Tokens[l] - 1)
+					i = i + 1
+					if mas::Tokens[i] is RSParen then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						break
+					elseif mas::Tokens[i] is Comma then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						curvp = new AttrValuePair()
+						curvp::ValueExpr = new Expr()
+						eqf = false
+					elseif mas::Tokens[i] is AssignOp then
 						eqf = true
 					else
 						if eqf then
@@ -1908,6 +1966,12 @@ class public auto ansi StmtOptimizer
 		goto fin
 	end if
 	
+	tmpstm = checkParamAttr(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
 	tmpstm = checkMethod(stm, ref|compb)
 	if compb then
 		stm = tmpstm
@@ -2005,6 +2069,18 @@ class public auto ansi StmtOptimizer
 	end if
 	
 	tmpstm = checkInclude(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
+	tmpstm = checkError(stm, ref|compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
+	tmpstm = checkWarning(stm, ref|compb)
 	if compb then
 		stm = tmpstm
 		goto fin

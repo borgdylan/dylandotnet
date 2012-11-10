@@ -33,7 +33,7 @@ ver 1.3.0.0
 class public auto ansi Program
 
 	method public static void main()
-		Environment::set_CurrentDirectory("/home/dylan/Desktop/compiler/templateproj")
+		Environment::set_CurrentDirectory("/var/www/Code/dylannet/compiler/templateproj")
 		var arr as string[] = new string[1]
 		arr[0] = "template.dyl"
 		Program::Invoke(arr)

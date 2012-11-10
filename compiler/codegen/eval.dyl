@@ -1323,12 +1323,14 @@ class public auto ansi beforefieldinit Evaluator
 			elseif o is AndOp then
 				return EvaluateHIf(o::LChild) and EvaluateHIf(o::RChild)
 			end if
+			//FIXME
 		elseif rt is Ident then
 			return SymTable::EvalDef(rt::Value)
 		elseif rt is BooleanLiteral then
 			var bl as BooleanLiteral = $BooleanLiteral$rt
 			return bl::BoolVal
 		end if
+		//FIXME
 		return false
 	end method
 	

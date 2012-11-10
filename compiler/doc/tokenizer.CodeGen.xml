@@ -947,6 +947,12 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddParamCA(System.Int32,IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ind">To be added.</param>
+            <param name="ca">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddTypArr(IKVM.Reflection.Type[])">
             <param name="arr">To be added.</param>
             <summary>To be added.</summary>
@@ -1070,6 +1076,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.ParameterCALst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopIf()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1190,6 +1200,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetNestedMet()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetParamCAs()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

@@ -115,6 +115,7 @@ MAKEINFO = ${SHELL} /var/www/Code/dylannet/compiler/missing --run makeinfo
 MDOC = /usr/bin/mdoc
 MKDIR_P = /bin/mkdir -p
 MONO = /usr/bin/mono
+NUNIT = /usr/bin/nunit-console
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
@@ -535,6 +536,7 @@ uninstall: uninstallman
 clean:
 	$(MAKE) -C tests clean
 	$(MAKE) -C dev clean
+	$(MAKE) -C unit clean
 	rm -f *.exe
 	rm -f *.dll
 	rm -f *.mdb
@@ -545,6 +547,7 @@ distclean: clean
 	$(MAKE) -C 2.0 distclean
 	$(MAKE) -C 4.0 distclean
 	$(MAKE) -C dev distclean
+	$(MAKE) -C unit distclean
 	rm -f Makefile
 	rm -f config.status
 	rm -f config.log
@@ -556,6 +559,7 @@ tarball: distclean
 	rm -f -r ./../$(distdir)
 
 all:
+	echo '' > lock-file
 	cp ./lib/IKVM.Reflection.dll ./IKVM.Reflection.dll
 	cp ./lib/IKVM.Reflection.dll ./2.0/IKVM.Reflection.dll
 	cp ./lib/IKVM.Reflection.dll ./4.0/IKVM.Reflection.dll
@@ -606,6 +610,10 @@ all:
 	$(MAKE) -C tests all
 	$(MAKE) -C doc all
 	$(MAKE) -C dev all
+	rm -f lock-file
+
+test:
+	$(MAKE) -C unit all
 
 testc:
 	$(MAKE) -C tests testc

@@ -23,7 +23,6 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: pc2dn.dyl...Done.
 Now Parsing: pc2dn.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Importing Namespace: System
@@ -42,7 +41,6 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: pc2cd.dyl...Done.
 Now Parsing: pc2cd.dyl...Done.
-+CLR_2
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Importing Namespace: System

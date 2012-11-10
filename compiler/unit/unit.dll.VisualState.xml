@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1778]/var/www/Code/dylannet/compiler/unit/unit.dll</TopNode>
+  <SelectedNode>[0-1778]/var/www/Code/dylannet/compiler/unit/unit.dll</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1778]/var/www/Code/dylannet/compiler/unit/unit.dll" Expanded="true" />
+    <Node UniqueName="[0-1779]dylan" Expanded="true" />
+    <Node UniqueName="[0-1780]dylan.NET" Expanded="true" />
+    <Node UniqueName="[0-1781]dylan.NET.UnitTests" Expanded="true" />
+    <Node UniqueName="[0-1000]dylan.NET.UnitTests.TestParseUtils" Expanded="true" />
+    <Node UniqueName="[0-1258]dylan.NET.UnitTests.TestParseUtils.TestProcessStringUTF16" Expanded="true" />
+  </Nodes>
+</VisualState>

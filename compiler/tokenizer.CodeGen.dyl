@@ -24,6 +24,7 @@
 import System
 import System.IO
 import System.Linq
+import System.Threading
 import System.Diagnostics
 import System.Diagnostics.SymbolStore
 import System.Collections
@@ -77,7 +78,7 @@ namespace dylan.NET.Tokenizer.CodeGen
 	#include "codegen/typearr.dyl"
 	#include "codegen/symtable.dyl"
 	#include "codegen/helpers.dyl"
-	#include "codegen/constldr.dyl"
+	//#include "codegen/constldr.dyl"
 	#include "codegen/opstack.dyl"
 	#include "codegen/eval.dyl"
 	#include "codegen/stmtreader.dyl"

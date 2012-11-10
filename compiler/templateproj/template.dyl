@@ -23,6 +23,8 @@ import template
 
 #debug on
 
+#warning "This is test code."
+
 #if DEBUG then
 [assembly: System.Reflection.AssemblyConfiguration("DEBUG")]
 #else
@@ -118,7 +120,7 @@ class public auto ansi Program
 		var xc as integer = ROTest::X
 		//ROTest::X = xc + 12
 	end method
-
+	
 	method public static void PrintXElement(var el as XElement)
 		Console::Write(el::Attribute(XName::Get("id"))::get_Value()::ToString())
 		Console::WriteLine(":" + el::get_Value()::ToString())
@@ -235,7 +237,7 @@ class public auto ansi Program
 		str = s::ToString()
 		sp = "Hello, You've been ByRefd"
 	end method
-
+	
 	method public static boolean[] test2()
 		return new boolean[2]
 	end method
@@ -365,6 +367,8 @@ class public auto ansi Program
 		Console::WriteLine(("asdf" as List<of object>)  != null)
 		Console::WriteLine("asdf" is string)
 		Console::WriteLine(("asdf" as string) != null)
+		if true then
+		end if
 	end method
 
 end class

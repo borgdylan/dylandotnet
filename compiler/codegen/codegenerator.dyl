@@ -8,8 +8,50 @@
 
 class public auto ansi CodeGenerator
 
-	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
+	method private static void LPFile(var incstm as object)
+		var inclustm as IncludeStmt = $IncludeStmt$incstm
+		if Monitor::TryEnter(inclustm::Path) then
+			try
+				if inclustm::SSet == null then
+					if inclustm::Path::Value like c"^\q(.)*\q$" then
+						var tmpchrarr as char[] = new char[1]
+						tmpchrarr[0] = c'\q'
+						inclustm::Path::Value = inclustm::Path::Value::Trim(tmpchrarr)
+					end if
 
+					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
+					var lx as Lexer = new Lexer()
+					StreamUtils::Write("Now Lexing: ")
+					StreamUtils::WriteLine(inclustm::Path::Value)
+					var pstmts as StmtSet = lx::Analyze(inclustm::Path::Value)
+					var ps as Parser = new Parser()
+					StreamUtils::Write("Now Parsing: ")
+					StreamUtils::WriteLine(inclustm::Path::Value)
+					var ppstmts as StmtSet = ps::Parse(pstmts)
+					inclustm::SSet = ppstmts
+					StreamUtils::Write("Finished Processing: ")
+					StreamUtils::Write(inclustm::Path::Value)
+					StreamUtils::WriteLine(" (worker thread)")
+				end if
+			finally
+				Monitor::Exit(inclustm::Path)
+			end try
+		end if
+	end method
+	
+	method private static void LPThread(var sset as object)
+		var sst as StmtSet = $StmtSet$sset
+		foreach stm in sst::Stmts
+			if stm is IncludeStmt then
+				ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),stm)
+			end if
+		end for
+	end method
+
+	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
+		
+		ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
+		
 		var i as integer = -1
 		var helseflg as boolean = true
 		var procflg as boolean = true
@@ -64,24 +106,43 @@ class public auto ansi CodeGenerator
 			elseif procflg then
 				if stmts::Stmts[i] is IncludeStmt then
 					var inclustm as IncludeStmt = $IncludeStmt$stmts::Stmts[i]
-					if inclustm::Path::Value like ("^" + Utils.Constants::quot + "(.)*" + Utils.Constants::quot + "$") then
-						var tmpchrarr as char[] = new char[1]
-						tmpchrarr[0] = $char$Utils.Constants::quot
-						inclustm::Path::Value = inclustm::Path::Value::Trim(tmpchrarr)
-					end if
-
-					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
-					var lx as Lexer = new Lexer()
-					StreamUtils::Write("Now Lexing: ")
-					StreamUtils::Write(inclustm::Path::Value)
-					var pstmts as StmtSet = lx::Analyze(inclustm::Path::Value)
-					StreamUtils::WriteLine("...Done.")
-					var ps as Parser = new Parser()
-					StreamUtils::Write("Now Parsing: ")
-					StreamUtils::Write(inclustm::Path::Value)
-					var ppstmts as StmtSet = ps::Parse(pstmts)
-					StreamUtils::WriteLine("...Done.")
-					EmitMSIL(ppstmts, inclustm::Path::Value)
+					var pth as string
+					var sset as StmtSet
+		
+					try
+						Monitor::Enter(inclustm::Path)
+						if inclustm::Path::Value like c"^\q(.)*\q$" then
+							var tmpchrarr as char[] = new char[1]
+							tmpchrarr[0] = c'\q'
+							inclustm::Path::Value = inclustm::Path::Value::Trim(tmpchrarr)
+						end if
+						inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
+						pth = inclustm::Path::Value
+						
+						if inclustm::SSet == null then
+							var lx as Lexer = new Lexer()
+							StreamUtils::Write("Now Lexing: ")
+							StreamUtils::WriteLine(inclustm::Path::Value)
+							var pstmts as StmtSet = lx::Analyze(inclustm::Path::Value)
+							//StreamUtils::WriteLine("...Done.")
+							var ps as Parser = new Parser()
+							StreamUtils::Write("Now Parsing: ")
+							StreamUtils::WriteLine(inclustm::Path::Value)
+							var ppstmts as StmtSet = ps::Parse(pstmts)
+							inclustm::SSet = ppstmts
+							sset = ppstmts
+							StreamUtils::Write("Finished Processing: ")
+							StreamUtils::Write(inclustm::Path::Value)
+							StreamUtils::WriteLine(" (inline)")
+						else
+							sset = inclustm::SSet
+						end if
+					finally
+						Monitor::Exit(inclustm::Path)
+					end try
+						
+					//StreamUtils::WriteLine("...Done.")
+					EmitMSIL(sset, pth)
 				else
 					var sr as StmtReader = new StmtReader()
 					if stmts::Stmts[i] != null then

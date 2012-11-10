@@ -57,30 +57,44 @@ class public auto ansi TypeItem
 	end method
 
 	method public MethodBuilder GetMethod(var nam as string, var paramst as IKVM.Reflection.Type[])
-		var lom as IEnumerable<of MethodItem> = Methods
 		var mil as MILambdas2 = new MILambdas2(nam, paramst)
-		var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(lom,new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
-		var matches as MethodItem[] = Enumerable::ToArray<of MethodItem>(lom2)
+		
+		#if NET_4_0 or NET_4_5 then
+			var lom2 as ParallelQuery<of MethodItem> = ParallelEnumerable::Where<of MethodItem>(ParallelEnumerable::AsParallel<of MethodItem>(Methods),new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
+			var matches as MethodItem[] = ParallelEnumerable::ToArray<of MethodItem>(lom2)
+		#else
+			var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(Methods,new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
+			var matches as MethodItem[] = Enumerable::ToArray<of MethodItem>(lom2)
+		end #if
+		
 		if matches[l] = 0 then
 			return null
 		elseif matches[l] = 1 then
 			Loader::MemberTyp = matches[0]::MethodBldr::get_ReturnType()
 			return matches[0]::MethodBldr
 		else
-			var lod as IEnumerable<of integer[]> = Enumerable::Select<of MethodItem,integer[]>(lom2,new Func<of MethodItem,integer[]>(MILambdas2::ExtractDeriveness()))
-			var zd as Func<of integer[],integer,integer[]> = new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())
-			var lozd as IEnumerable<of integer[]> = Enumerable::Select<of integer[],integer[]>(lod,zd)
-			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(lozd,new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
+			var chosen as integer[]
+			#if NET_4_0 or NET_4_5 then
+				chosen = ParallelEnumerable::Aggregate<of integer[]>(ParallelEnumerable::Select<of integer[],integer[]>(ParallelEnumerable::Select<of MethodItem,integer[]>(lom2,new Func<of MethodItem,integer[]>(MILambdas2::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
+			#else
+				chosen = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of MethodItem,integer[]>(lom2,new Func<of MethodItem,integer[]>(MILambdas2::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
+			end #if
 			Loader::MemberTyp = matches[chosen[chosen[l] - 1]]::MethodBldr::get_ReturnType()
 			return matches[chosen[chosen[l] - 1]]::MethodBldr
 		end if
 	end method
 
 	method public ConstructorBuilder GetCtor(var paramst as IKVM.Reflection.Type[])
-		var loc as IEnumerable<of CtorItem> = Ctors
 		var cil as CILambdas = new CILambdas(paramst)
-		var loc2 as IEnumerable<of CtorItem> = Enumerable::Where<of CtorItem>(loc,new Func<of CtorItem,boolean>(cil::DetermineIfCandidate()))
-		var matches as CtorItem[] = Enumerable::ToArray<of CtorItem>(loc2)
+		
+		#if NET_4_0 or NET_4_5 then
+			var loc2 as ParallelQuery<of CtorItem> = ParallelEnumerable::Where<of CtorItem>(ParallelEnumerable::AsParallel<of CtorItem>(Ctors),new Func<of CtorItem,boolean>(cil::DetermineIfCandidate()))
+			var matches as CtorItem[] = Enumerable::ToArray<of CtorItem>(loc2)
+		#else
+			var loc2 as IEnumerable<of CtorItem> = Enumerable::Where<of CtorItem>(Ctors,new Func<of CtorItem,boolean>(cil::DetermineIfCandidate()))
+			var matches as CtorItem[] = Enumerable::ToArray<of CtorItem>(loc2)
+		end #if
+		
 		if matches[l] = 0 then
 			if (paramst[l] = 0) and (Ctors::get_Count() = 0) then
 				var cb as ConstructorBuilder = TypeBldr::DefineDefaultConstructor(MethodAttributes::Public)
@@ -94,10 +108,12 @@ class public auto ansi TypeItem
 			Loader::MemberTyp = TypeBldr
 			return matches[0]::CtorBldr
 		else
-			var lod as IEnumerable<of integer[]> = Enumerable::Select<of CtorItem,integer[]>(loc2,new Func<of CtorItem,integer[]>(CILambdas::ExtractDeriveness()))
-			var zd as Func<of integer[],integer,integer[]> = new Func<of integer[],integer,integer[]>(CILambdas::ZipDeriveness())
-			var lozd as IEnumerable<of integer[]> = Enumerable::Select<of integer[],integer[]>(lod,zd)
-			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(lozd,new Func<of integer[],integer[],integer[]>(CILambdas::DerivenessMax()))
+			var chosen as integer[]
+			#if NET_4_0 or NET_4_5 then
+				chosen = ParallelEnumerable::Aggregate<of integer[]>(ParallelEnumerable::Select<of integer[],integer[]>(ParallelEnumerable::Select<of CtorItem,integer[]>(loc2,new Func<of CtorItem,integer[]>(CILambdas::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(CILambdas::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(CILambdas::DerivenessMax()))
+			#else
+				chosen = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of CtorItem,integer[]>(loc2,new Func<of CtorItem,integer[]>(CILambdas::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(CILambdas::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(CILambdas::DerivenessMax()))
+			end #if
 			Loader::MemberTyp = TypeBldr
 			return matches[chosen[chosen[l] - 1]]::CtorBldr
 		end if
@@ -107,10 +123,14 @@ class public auto ansi TypeItem
 		Loader::FldLitFlag = false
 		Loader::EnumLitFlag = false
 	
-		var lof as IEnumerable<of FieldItem> = Fields
 		var fil as FILambdas = new FILambdas(nam)
-		var lof2 as IEnumerable<of FieldItem> = Enumerable::Where<of FieldItem>(lof,new Func<of FieldItem,boolean>(fil::DetermineIfCandidate()))
-		var matches as FieldItem[] = Enumerable::ToArray<of FieldItem>(lof2)
+		var matches as FieldItem[]
+		#if NET_4_0 or NET_4_5 then
+			matches = ParallelEnumerable::ToArray<of FieldItem>(ParallelEnumerable::Where<of FieldItem>(ParallelEnumerable::AsParallel<of FieldItem>(Fields),new Func<of FieldItem,boolean>(fil::DetermineIfCandidate())))
+		#else
+			matches = Enumerable::ToArray<of FieldItem>(Enumerable::Where<of FieldItem>(Fields,new Func<of FieldItem,boolean>(fil::DetermineIfCandidate())))
+		end #if
+			
 		if matches[l] = 0 then
 			return null
 		else

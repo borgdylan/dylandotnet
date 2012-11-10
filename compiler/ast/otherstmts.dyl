@@ -104,3 +104,41 @@ end class
 
 class public auto ansi CommentStmt extends Stmt
 end class
+
+class public auto ansi ErrorStmt extends Stmt
+
+	field public Token Msg
+
+	method public void ErrorStmt()
+		me::ctor()
+		Msg = new Token()
+	end method
+	
+	method public hidebysig virtual string ToString()
+		var temp as string = Msg::Value
+		if temp notlike c"^\q(.)*\q$" then
+			temp = c"\q" + temp + c"\q"
+		end if
+		return "#error " + temp
+	end method
+
+end class
+
+class public auto ansi WarningStmt extends Stmt
+
+	field public Token Msg
+
+	method public void WarningStmt()
+		me::ctor()
+		Msg = new Token()
+	end method
+	
+	method public hidebysig virtual string ToString()
+		var temp as string = Msg::Value
+		if temp notlike c"^\q(.)*\q$" then
+			temp = c"\q" + temp + c"\q"
+		end if
+		return "#warning " + temp
+	end method
+
+end class
