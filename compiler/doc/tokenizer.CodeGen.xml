@@ -244,6 +244,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.Helpers.BoolFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CheckAssignability(IKVM.Reflection.Type,IKVM.Reflection.Type)">
             <param name="t1">To be added.</param>
             <param name="t2">To be added.</param>
@@ -258,6 +262,19 @@
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CheckIfArrLen(dylan.NET.Tokenizer.AST.Exprs.Expr)">
             <param name="ind">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CheckSHLRLHS(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CheckSHLRRHS(IKVM.Reflection.Type,System.Boolean)">
+            <param name="t">To be added.</param>
+            <param name="accepti64">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

@@ -6,8 +6,8 @@ Copyright (C) 2012 Dylan Borg
 
 Now Lexing: unit.dyl...Done.
 Now Parsing: unit.dyl...Done.
-Now Lexing: parseutests.dyl
-Now Parsing: parseutests.dyl
+Now Lexing: streamutests.dyl
+Now Parsing: streamutests.dyl
 Referencing Assembly: /usr/lib/mono/4.5/mscorlib.dll
 Referencing Assembly: dnu.dll
 Now Lexing: nunit.dyl
@@ -18,10 +18,14 @@ Referencing Assembly: /usr/lib/cli/nunit.util-2.6/nunit.util.dll
 Referencing Assembly: /usr/lib/cli/nunit.framework-2.6/nunit.framework.dll
 Referencing Assembly: /usr/lib/cli/nunit.core.interfaces-2.6/nunit.core.interfaces.dll
 Importing Namespace: System
+Importing Namespace: System.IO
 Importing Namespace: NUnit.Framework
 Importing Namespace: dylan.NET.UnitTests
 Importing Namespace: dylan.NET.Utils
 Beginning Assembly: unit
+Finished Processing: streamutests.dyl (worker thread)
+Now Lexing: parseutests.dyl
+Now Parsing: parseutests.dyl
 Finished Processing: parseutests.dyl (worker thread)
 Adding Class: dylan.NET.UnitTests.TestParseUtils
 	Adding Method: TestProcessStringExtASCII
@@ -45,4 +49,17 @@ Adding Class: dylan.NET.UnitTests.TestParseUtils
 	Adding Method: TestStringParserNoQ
 	Adding Method: TestStringParserCQ
 	Adding Method: TestStringParser2dsCQ
+Adding Class: dylan.NET.UnitTests.TestStreamUtils
+	Adding Field: ms
+	Adding Field: sw
+	Adding Field: sr
+	Adding Method: SetupTests
+	Adding Method: TestWriteLine
+	Adding Method: TestWrite
+	Adding Method: TestReadLine
+	Adding Method: TestInitInS
+	Adding Method: TestInitOutS
+	Adding Method: TestCloseInS
+	Adding Method: TestCloseOutS
+	Adding Method: TeardownTests
 Writing Assembly to Disk...Done.

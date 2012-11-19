@@ -3,6 +3,7 @@
 #include "nunit.dyl"
 
 import System
+import System.IO
 import NUnit.Framework
 import dylan.NET.UnitTests
 import dylan.NET.Utils
@@ -23,4 +24,5 @@ ver 11.2.9.8
 
 namespace dylan.NET.UnitTests
 	#include "parseutests.dyl"
+	#include "streamutests.dyl"
 end namespace

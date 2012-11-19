@@ -340,7 +340,7 @@ uninstall-am:
 	mostlyclean-generic pdf pdf-am ps ps-am uninstall uninstall-am
 
 all:
-	'$(MONO)' ../2.0/dnc.exe template.dyl
+	'$(MONO)' ../4.0/dnc.exe template.dyl
 	cp template.exe build/template.exe
 	cp template.exe.mdb build/template.exe.mdb
 

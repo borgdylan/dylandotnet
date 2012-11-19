@@ -1106,6 +1106,35 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="LoadUnaOp">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo LoadUnaOp (IKVM.Reflection.Type typ, string name, IKVM.Reflection.Type typa);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo LoadUnaOp(class IKVM.Reflection.Type typ, string name, class IKVM.Reflection.Type typa) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="typa" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="typa">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="MakeArr">
       <MemberSignature Language="C#" Value="public static bool MakeArr;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool MakeArr" />

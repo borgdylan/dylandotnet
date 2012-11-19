@@ -184,6 +184,21 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="BoolFlg">
+      <MemberSignature Language="C#" Value="public static bool BoolFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool BoolFlg" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CheckAssignability">
       <MemberSignature Language="C#" Value="public static void CheckAssignability (IKVM.Reflection.Type t1, IKVM.Reflection.Type t2);" />
       <MemberSignature Language="ILAsm" Value=".method public static void CheckAssignability(class IKVM.Reflection.Type t1, class IKVM.Reflection.Type t2) cil managed" />
@@ -265,6 +280,58 @@
       </Parameters>
       <Docs>
         <param name="ind">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckSHLRLHS">
+      <MemberSignature Language="C#" Value="public static bool CheckSHLRLHS (IKVM.Reflection.Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool CheckSHLRLHS(class IKVM.Reflection.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckSHLRRHS">
+      <MemberSignature Language="C#" Value="public static bool CheckSHLRRHS (IKVM.Reflection.Type t, bool accepti64);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool CheckSHLRRHS(class IKVM.Reflection.Type t, bool accepti64) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="IKVM.Reflection.Type" />
+        <Parameter Name="accepti64" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="accepti64">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

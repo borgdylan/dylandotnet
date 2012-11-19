@@ -364,6 +364,8 @@ all:
 	'$(MDOC)' export-msxdoc -o dnr.xml dnr
 	'$(MDOC)' export-msxdoc -o dnc.xml dnc
 
+	chmod --recursive a+r .
+
 install:	
 	tar -czf ast.tar.gz ast-html
 	$(install_sh_PROGRAM) ast.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/ast.tar.gz

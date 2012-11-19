@@ -24,6 +24,8 @@ all:
 	'$(MDOC)' export-msxdoc -o dnu.xml dnu
 	'$(MDOC)' export-msxdoc -o dnr.xml dnr
 	'$(MDOC)' export-msxdoc -o dnc.xml dnc
+	
+	chmod --recursive a+r .
 
 install:	
 	tar -czf ast.tar.gz ast-html

@@ -58,14 +58,8 @@ class public auto ansi TypeItem
 
 	method public MethodBuilder GetMethod(var nam as string, var paramst as IKVM.Reflection.Type[])
 		var mil as MILambdas2 = new MILambdas2(nam, paramst)
-		
-		#if NET_4_0 or NET_4_5 then
-			var lom2 as ParallelQuery<of MethodItem> = ParallelEnumerable::Where<of MethodItem>(ParallelEnumerable::AsParallel<of MethodItem>(Methods),new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
-			var matches as MethodItem[] = ParallelEnumerable::ToArray<of MethodItem>(lom2)
-		#else
-			var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(Methods,new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
-			var matches as MethodItem[] = Enumerable::ToArray<of MethodItem>(lom2)
-		end #if
+		var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(Methods,new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
+		var matches as MethodItem[] = Enumerable::ToArray<of MethodItem>(lom2)
 		
 		if matches[l] = 0 then
 			return null
@@ -73,12 +67,7 @@ class public auto ansi TypeItem
 			Loader::MemberTyp = matches[0]::MethodBldr::get_ReturnType()
 			return matches[0]::MethodBldr
 		else
-			var chosen as integer[]
-			#if NET_4_0 or NET_4_5 then
-				chosen = ParallelEnumerable::Aggregate<of integer[]>(ParallelEnumerable::Select<of integer[],integer[]>(ParallelEnumerable::Select<of MethodItem,integer[]>(lom2,new Func<of MethodItem,integer[]>(MILambdas2::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
-			#else
-				chosen = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of MethodItem,integer[]>(lom2,new Func<of MethodItem,integer[]>(MILambdas2::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
-			end #if
+			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of MethodItem,integer[]>(lom2,new Func<of MethodItem,integer[]>(MILambdas2::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
 			Loader::MemberTyp = matches[chosen[chosen[l] - 1]]::MethodBldr::get_ReturnType()
 			return matches[chosen[chosen[l] - 1]]::MethodBldr
 		end if
@@ -86,14 +75,8 @@ class public auto ansi TypeItem
 
 	method public ConstructorBuilder GetCtor(var paramst as IKVM.Reflection.Type[])
 		var cil as CILambdas = new CILambdas(paramst)
-		
-		#if NET_4_0 or NET_4_5 then
-			var loc2 as ParallelQuery<of CtorItem> = ParallelEnumerable::Where<of CtorItem>(ParallelEnumerable::AsParallel<of CtorItem>(Ctors),new Func<of CtorItem,boolean>(cil::DetermineIfCandidate()))
-			var matches as CtorItem[] = Enumerable::ToArray<of CtorItem>(loc2)
-		#else
-			var loc2 as IEnumerable<of CtorItem> = Enumerable::Where<of CtorItem>(Ctors,new Func<of CtorItem,boolean>(cil::DetermineIfCandidate()))
-			var matches as CtorItem[] = Enumerable::ToArray<of CtorItem>(loc2)
-		end #if
+		var loc2 as IEnumerable<of CtorItem> = Enumerable::Where<of CtorItem>(Ctors,new Func<of CtorItem,boolean>(cil::DetermineIfCandidate()))
+		var matches as CtorItem[] = Enumerable::ToArray<of CtorItem>(loc2)
 		
 		if matches[l] = 0 then
 			if (paramst[l] = 0) and (Ctors::get_Count() = 0) then
@@ -108,12 +91,7 @@ class public auto ansi TypeItem
 			Loader::MemberTyp = TypeBldr
 			return matches[0]::CtorBldr
 		else
-			var chosen as integer[]
-			#if NET_4_0 or NET_4_5 then
-				chosen = ParallelEnumerable::Aggregate<of integer[]>(ParallelEnumerable::Select<of integer[],integer[]>(ParallelEnumerable::Select<of CtorItem,integer[]>(loc2,new Func<of CtorItem,integer[]>(CILambdas::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(CILambdas::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(CILambdas::DerivenessMax()))
-			#else
-				chosen = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of CtorItem,integer[]>(loc2,new Func<of CtorItem,integer[]>(CILambdas::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(CILambdas::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(CILambdas::DerivenessMax()))
-			end #if
+			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of CtorItem,integer[]>(loc2,new Func<of CtorItem,integer[]>(CILambdas::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(CILambdas::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(CILambdas::DerivenessMax()))
 			Loader::MemberTyp = TypeBldr
 			return matches[chosen[chosen[l] - 1]]::CtorBldr
 		end if
@@ -124,12 +102,7 @@ class public auto ansi TypeItem
 		Loader::EnumLitFlag = false
 	
 		var fil as FILambdas = new FILambdas(nam)
-		var matches as FieldItem[]
-		#if NET_4_0 or NET_4_5 then
-			matches = ParallelEnumerable::ToArray<of FieldItem>(ParallelEnumerable::Where<of FieldItem>(ParallelEnumerable::AsParallel<of FieldItem>(Fields),new Func<of FieldItem,boolean>(fil::DetermineIfCandidate())))
-		#else
-			matches = Enumerable::ToArray<of FieldItem>(Enumerable::Where<of FieldItem>(Fields,new Func<of FieldItem,boolean>(fil::DetermineIfCandidate())))
-		end #if
+		var matches as FieldItem[] = Enumerable::ToArray<of FieldItem>(Enumerable::Where<of FieldItem>(Fields,new Func<of FieldItem,boolean>(fil::DetermineIfCandidate())))
 			
 		if matches[l] = 0 then
 			return null

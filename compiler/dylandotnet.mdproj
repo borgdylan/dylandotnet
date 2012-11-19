@@ -191,5 +191,6 @@
     <None Include="unit\nunit.dyl" />
     <None Include="unit\unit.dyl" />
     <None Include="unit\parseutests.dyl" />
+    <None Include="unit\streamutests.dyl" />
   </ItemGroup>
 </Project>

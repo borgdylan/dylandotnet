@@ -3,6 +3,7 @@
 #refstdasm "mscorlib.dll"
 #refstdasm "System.dll"
 #refstdasm "System.Core.dll"
+#refstdasm "System.Numerics.dll"
 #refstdasm "System.Xml.Linq.dll"
 #refasm "C5.Mono.dll"
 
@@ -10,6 +11,7 @@ import System
 import System.IO
 import System.Xml
 import System.Linq
+import System.Numerics
 import System.Security.Permissions
 import System.Xml.Linq
 import System.Xml.Xpath
@@ -76,7 +78,7 @@ class public auto ansi BaseTest
 	field private template.BaseTest F2
 
 	//[method: Obsolete("Test Custom Attribute")]
-	[method: SecurityPermissionAttribute(SecurityAction::Assert), SkipVerification = true]
+	//[method: SecurityPermissionAttribute(SecurityAction::Assert), SkipVerification = true]
 	method public void CallTS1()
 		Console::WriteLine(ToString())
 	end method
@@ -119,6 +121,39 @@ class public auto ansi Program
 	method public static void Program()
 		var xc as integer = ROTest::X
 		//ROTest::X = xc + 12
+	end method
+	
+	method public static void numerictest()
+		var bi as BigInteger = ($BigInteger$12 >> 1) << 2
+		Console::WriteLine(bi::ToString())
+		bi = $BigInteger$12 + $BigInteger$5
+		Console::WriteLine(bi::ToString())
+		bi = $BigInteger$12 * $BigInteger$5
+		Console::WriteLine(bi::ToString())
+		bi = $BigInteger$12 - $BigInteger$5
+		Console::WriteLine(bi::ToString())
+		bi = $BigInteger$12 / $BigInteger$5
+		Console::WriteLine(bi::ToString())
+		bi = $BigInteger$12 % $BigInteger$5
+		Console::WriteLine(bi::ToString())
+		bi = $BigInteger$12 and $BigInteger$5
+		Console::WriteLine(bi::ToString())
+		bi = $BigInteger$12 nand $BigInteger$5
+		Console::WriteLine(bi::ToString())
+		bi = $BigInteger$12 or $BigInteger$5
+		Console::WriteLine(bi::ToString())
+		bi = $BigInteger$12 nor $BigInteger$5
+		Console::WriteLine(bi::ToString())
+		bi = $BigInteger$12 xor $BigInteger$5
+		Console::WriteLine(bi::ToString())
+		bi = $BigInteger$12 xnor $BigInteger$5
+		Console::WriteLine(bi::ToString())
+		Console::WriteLine(bi == 24l)
+		Console::WriteLine(bi != 24l)
+		Console::WriteLine(bi < 45l)
+		Console::WriteLine(bi > 20l)
+		Console::WriteLine(bi <= 45l)
+		Console::WriteLine(bi >= 20l)
 	end method
 	
 	method public static void PrintXElement(var el as XElement)
@@ -205,7 +240,7 @@ class public auto ansi Program
 
 	method public static void test(var bp as boolean&)
 		var b as boolean = bp
-		var bp2 as boolean& = ref|bp
+		var bp2 as boolean& = ref bp
 		var str as string = bp::ToString()
 		str = b::ToString()
 		bp = true
@@ -213,7 +248,7 @@ class public auto ansi Program
 
 	method public static void test(var ip as integer&)
 		var i as integer = ip
-		var ip2 as integer& = ref|ip
+		var ip2 as integer& = ref ip
 		var str as string = ip::ToString()
 		str = i::ToString()
 		ip = 67
@@ -221,10 +256,10 @@ class public auto ansi Program
 
 	method public static void test(var bpa as boolean[]&)
 		var ba as boolean[] = bpa
-		var bpa2 as boolean[]& = ref|bpa
+		var bpa2 as boolean[]& = ref bpa
 		var ba0 as boolean = bpa[0]
 		var str as string = bpa[0]::ToString()
-		test(ref|bpa[0])
+		test(ref bpa[0])
 		bpa = new boolean[5]
 		bpa[0] = true
 		var i as integer = bpa::get_Rank()
@@ -232,7 +267,7 @@ class public auto ansi Program
 
 	method public static void test(var sp as string&)
 		var s as string = sp
-		var sp2 as string& = ref|sp
+		var sp2 as string& = ref sp
 		var str as string = sp::ToString()
 		str = s::ToString()
 		sp = "Hello, You've been ByRefd"
@@ -330,15 +365,15 @@ class public auto ansi Program
 //		b = new Decimal(4) == new Decimal(78)
 //		b = (100ui > 67ui) or (100ui >= 67ui) or (100ui < 67ui) or (100ui <= 67ui)
 //		b = test2()[0]
-//		test(ref|b)
-//		test(ref|test2()[0])
-//		test(ref|a)
+//		test(ref b)
+//		test(ref test2()[0])
+//		test(ref a)
 //		var i as integer = 34
-//		test(ref|i)
+//		test(ref i)
 //		var ba as boolean[] = new boolean[1]
 //		ba[0] = false
-//		test(ref|ba[0])
-//		test(ref|ba)
+//		test(ref ba[0])
+//		test(ref ba)
 //		Console::WriteLine('a' + $char$4)
 //		var ubv as byte = 6ub
 //		var usv as ushort = 6us
@@ -363,12 +398,23 @@ class public auto ansi Program
 //		var xc as integer = ROTest::X
 //		//ROTest::X = xc + 12
 //		foreachtests()
-		Console::WriteLine("asdf" is List<of object>)
-		Console::WriteLine(("asdf" as List<of object>)  != null)
-		Console::WriteLine("asdf" is string)
-		Console::WriteLine(("asdf" as string) != null)
-		if true then
-		end if
+//		Console::WriteLine("asdf" is List<of object>)
+//		Console::WriteLine(("asdf" as List<of object>)  != null)
+//		Console::WriteLine("asdf" is string)
+//		Console::WriteLine(("asdf" as string) != null)
+//		Console::WriteLine(2 << 3)
+//		Console::WriteLine(2ui << 3)
+//		Console::WriteLine(2l << 3)
+//		Console::WriteLine(32 >> 2)
+//		Console::WriteLine(32ui >> 2)
+//		Console::WriteLine(32l >> 2)
+		numerictest()
+		Console::WriteLine(true nand true)
+		Console::WriteLine(true nor true)
+		Console::WriteLine(true xnor true)
+		Console::WriteLine(1 nand 2)
+		Console::WriteLine(1 nor 2)
+		Console::WriteLine(1 xnor 3)
 	end method
 
 end class

@@ -622,6 +622,10 @@
             <summary>Emits a sequence of 'and', 'ldc.i4.0' and 'ceq'.</summary>
             <remarks>Applies a 1's complemented 'and' to its operands (nand).</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNandOther()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitNeg()">
             <summary>Emits the 'neg' opcode.</summary>
             <remarks>Does a 2's complement negation on its operand.</remarks>
@@ -654,9 +658,17 @@
             <summary>Emits a sequence of 'or', 'ldc.i4.0' and 'ceq'.</summary>
             <remarks>dpes a 1's complemented 'or' (nor) on its operands.</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNorOther()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitNot()">
             <summary>Emits the 'not' opcode.</summary>
             <remarks>For booleans consider using 'ldc.i4.0' followed by a 'ceq' instead i.e. use EmitLdcI4(0) and EmitCeq.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNotOther()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitOr()">
             <summary>Emits the 'or' opcode.</summary>
@@ -782,6 +794,10 @@
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitXnor()">
             <summary>Emits a sequence of 'xor', 'ldc.i4.0' and 'ceq'.</summary>
             <remarks>Does a 1's complemented 'xor' (xnor) on its operands.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitXnorOther()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitXor()">
             <summary>Emist the 'xor' opcode.</summary>
@@ -1153,6 +1169,14 @@
         </member>
         <member name="M:dylan.NET.Reflection.Loader.LoadSpecMtds(System.Type)">
             <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadUnaOp(IKVM.Reflection.Type,System.String,IKVM.Reflection.Type)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <param name="typa">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

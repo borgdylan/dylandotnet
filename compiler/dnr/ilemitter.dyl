@@ -98,149 +98,149 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitRet()
-		ILGen::Emit(InstructionHelper::getOPCode("ret"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ret)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitDup()
-		ILGen::Emit(InstructionHelper::getOPCode("dup"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Dup)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitPop()
-		ILGen::Emit(InstructionHelper::getOPCode("pop"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Pop)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdlen()
-		ILGen::Emit(InstructionHelper::getOPCode("ldlen"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldlen)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitBox(var t as IKVM.Reflection.Type)
-		ILGen::Emit(InstructionHelper::getOPCode("box"), t)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Box, t)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitUnbox(var t as IKVM.Reflection.Type)
-		ILGen::Emit(InstructionHelper::getOPCode("unbox"), t)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Unbox, t)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitUnboxAny(var t as IKVM.Reflection.Type)
-		ILGen::Emit(InstructionHelper::getOPCode("unbox.any"), t)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Unbox_Any, t)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCastclass(var t as IKVM.Reflection.Type)
-		ILGen::Emit(InstructionHelper::getOPCode("castclass"), t)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Castclass, t)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitIsinst(var t as IKVM.Reflection.Type)
-		ILGen::Emit(InstructionHelper::getOPCode("isinst"), t)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Isinst, t)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitIs(var t as IKVM.Reflection.Type)
-		ILGen::Emit(InstructionHelper::getOPCode("isinst"), t)
-		ILGen::Emit(InstructionHelper::getOPCode("ldnull"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Isinst, t)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitConstrained(var t as IKVM.Reflection.Type)
-		ILGen::Emit(InstructionHelper::getOPCode("constrained."), t)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Constrained, t)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdloc(var num as integer)		
 		if num = 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldloc.0"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_0)
 		elseif num = 1 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldloc.1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_1)
 		elseif num = 2 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldloc.2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_2)
 		elseif num = 3 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldloc.3"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_3)
 		elseif (num >= 0) and (num <= 255) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldloc.s"), Convert::ToByte(num))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_S, $byte$num)
 		elseif num >= 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldloc"), $short$num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc, $short$num)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdloca(var num as integer)
 		if (num >= 0) and (num <= 255) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldloca.s"), Convert::ToByte(num))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloca_S, $byte$num)
 		elseif num >= 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldloca"), $short$num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloca, $short$num)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdarg(var num as integer)
 		if num = 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldarg.0"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_0)
 		elseif num = 1 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldarg.1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_1)
 		elseif num = 2 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldarg.2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_2)
 		elseif num = 3 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldarg.3"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_3)
 		elseif (num >= 0) and (num <= 255) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldarg.s"), Convert::ToByte(num))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_S, $byte$num)
 		elseif num >= 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldarg"), $short$num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg, $short$num)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdarga(var num as integer)
 		if (num >= 0) and (num <= 255) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldarga.s"), Convert::ToByte(num))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarga_S, $byte$num)
 		elseif num >= 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldarga"), $short$num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarga, $short$num)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitStloc(var num as integer)
 		if num = 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("stloc.0"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_0)
 		elseif num = 1 then
-			ILGen::Emit(InstructionHelper::getOPCode("stloc.1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_1)
 		elseif num = 2 then
-			ILGen::Emit(InstructionHelper::getOPCode("stloc.2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_2)
 		elseif num = 3 then
-			ILGen::Emit(InstructionHelper::getOPCode("stloc.3"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_3)
 		elseif (num >= 0) and (num <= 255) then
-			ILGen::Emit(InstructionHelper::getOPCode("stloc.s"), Convert::ToByte(num))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_S, $byte$num)
 		elseif num >= 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("stloc"), $short$num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc, $short$num)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitStarg(var num as integer)
 		if (num >= 0) and (num <= 255) then
-			ILGen::Emit(InstructionHelper::getOPCode("starg.s"), Convert::ToByte(num))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Starg_S, $byte$num)
 		elseif num >= 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("starg"), $short$num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Starg, $short$num)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitStfld(var fld as IKVM.Reflection.FieldInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("stfld"), fld)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stfld, fld)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitStsfld(var fld as IKVM.Reflection.FieldInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("stsfld"), fld)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stsfld, fld)
 	end method
 	
 	[method: ComVisible(false)]
@@ -258,23 +258,23 @@ class public auto ansi static ILEmitter
 		t[8] = Univ::Import(gettype object)
 				
 		if t[0]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stelem.i"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I)
 		elseif t[1]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stelem.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I1)
 		elseif t[2]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stelem.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I2)
 		elseif t[3]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stelem.i4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I4)
 		elseif t[4]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stelem.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I8)
 		elseif t[5]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stelem.r4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_R4)
 		elseif t[6]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stelem.r8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_R8)
 		elseif t[7]::IsAssignableFrom(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stelem"), typ)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem, typ)
 		elseif t[8]::IsAssignableFrom(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stelem.ref"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_Ref)
 		end if
 
 	end method
@@ -294,23 +294,23 @@ class public auto ansi static ILEmitter
 		t[8] = Univ::Import(gettype object)
 				
 		if t[0]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stind.i"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I)
 		elseif t[1]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stind.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I1)
 		elseif t[2]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stind.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I2)
 		elseif t[3]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stind.i4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I4)
 		elseif t[4]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stind.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I8)
 		elseif t[5]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stind.r4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_R4)
 		elseif t[6]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stind.r8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_R8)
 		elseif t[7]::IsAssignableFrom(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stobj"), typ)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stobj, typ)
 		elseif t[8]::IsAssignableFrom(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("stind.ref"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_Ref)
 		end if
 
 	end method
@@ -328,34 +328,34 @@ class public auto ansi static ILEmitter
 		t[6] = Univ::Import(gettype double)
 		t[7] = Univ::Import(gettype ValueType)
 		t[8] = Univ::Import(gettype object)
-		t[9] = Univ::Import(gettype Byte)
-		t[10] = Univ::Import(gettype UInt16)
-		t[11] = Univ::Import(gettype UInt32)
+		t[9] = Univ::Import(gettype byte)
+		t[10] = Univ::Import(gettype ushort)
+		t[11] = Univ::Import(gettype uinteger)
 		
 		if t[0]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem.i"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I)
 		elseif t[1]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I1)
 		elseif t[2]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I2)
 		elseif t[3]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem.i4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I4)
 		elseif t[9]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_U1)
 		elseif t[10]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_U2)
 		elseif t[11]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_U4)
 		elseif t[4]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I8)
 		elseif t[5]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem.r4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_R4)
 		elseif t[6]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem.r8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_R8)
 		elseif t[7]::IsAssignableFrom(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem"), typ)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem, typ)
 		elseif t[8]::IsAssignableFrom(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldelem.ref"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_Ref)
 		end if
 
 	end method
@@ -373,81 +373,81 @@ class public auto ansi static ILEmitter
 		t[6] = Univ::Import(gettype double)
 		t[7] = Univ::Import(gettype ValueType)
 		t[8] = Univ::Import(gettype object)
-		t[9] = Univ::Import(gettype Byte)
-		t[10] = Univ::Import(gettype UInt16)
-		t[11] = Univ::Import(gettype UInt32)
+		t[9] = Univ::Import(gettype byte)
+		t[10] = Univ::Import(gettype ushort)
+		t[11] = Univ::Import(gettype uinteger)
 		
 		if t[0]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldind.i"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I)
 		elseif t[1]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldind.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I1)
 		elseif t[2]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldind.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I2)
 		elseif t[3]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldind.i4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I4)
 		elseif t[9]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldind.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_U1)
 		elseif t[10]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldind.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_U2)
 		elseif t[11]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldind.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_U4)
 		elseif t[4]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldind.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I8)
 		elseif t[5]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldind.r4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_R4)
 		elseif t[6]::Equals(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldind.r8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_R8)
 		elseif t[7]::IsAssignableFrom(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldobj"), typ)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldobj, typ)
 		elseif t[8]::IsAssignableFrom(typ) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldind.ref"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_Ref)
 		end if
 
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdelema(var typ as IKVM.Reflection.Type)
-		ILGen::Emit(InstructionHelper::getOPCode("ldelema"), typ)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelema, typ)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcI8(var n as long)
 
 		if n = -1l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.m1"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_M1)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		elseif n = 0l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		elseif n = 1l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.1"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		elseif n = 2l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.2"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		elseif n = 3l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.3"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		elseif n = 4l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.4"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		elseif n = 5l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.5"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		elseif n = 6l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.6"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		elseif n = 7l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.7"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		elseif n = 8l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.8"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i8"))
-		elseif (n >= $long$Int32::MinValue) and (n <= $long$Int32::MaxValue) then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4"), $integer$n)
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
+		elseif (n >= $long$integer::MinValue) and (n <= $long$integer::MaxValue) then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, $integer$n)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i8"), n)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I8, n)
 		end if
 		
 	end method
@@ -456,44 +456,44 @@ class public auto ansi static ILEmitter
 	method public static void EmitLdcU8(var n as ulong)
 
 		if n = $ulong$0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		elseif n = $ulong$1 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.1"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		elseif n = $ulong$2 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.2"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		elseif n = $ulong$3 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.3"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		elseif n = $ulong$4 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.4"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		elseif n = $ulong$5 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.5"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		elseif n = $ulong$6 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.6"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		elseif n = $ulong$7 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.7"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		elseif n = $ulong$8 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.8"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u8"))
-		elseif n <= $ulong$Int32::MaxValue then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4"), $integer$n)
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u8"))
-		elseif n <= $ulong$Int64::MaxValue then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i8"), $long$n)
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
+		elseif n <= $ulong$integer::MaxValue then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, $integer$n)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
+		elseif n <= $ulong$long::MaxValue then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I8, $long$n)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("ldstr"), $string$n)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldstr, $string$n)
 			var arr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
 			arr[0] = Univ::Import(gettype string)
 			var convc as IKVM.Reflection.Type = Univ::Import(gettype Convert)
-			ILGen::Emit(InstructionHelper::getOPCode("call"), convc::GetMethod("ToUInt64", arr))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, convc::GetMethod("ToUInt64", arr))
 		end if
 		
 	end method
@@ -502,27 +502,27 @@ class public auto ansi static ILEmitter
 	method public static void EmitLdcI4(var num as integer)
 	
 		if num = -1 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.m1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_M1)
 		elseif num = 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		elseif num = 1 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
 		elseif num = 2 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
 		elseif num = 3 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.3"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
 		elseif num = 4 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
 		elseif num = 5 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.5"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
 		elseif num = 6 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.6"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
 		elseif num = 7 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.7"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
 		elseif num = 8 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.8"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4"), num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, num)
 		end if
 	
 	end method
@@ -533,38 +533,38 @@ class public auto ansi static ILEmitter
 		var num as long = $long$n		
 			
 		if num = 0l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
 		elseif num = 1l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.1"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
 		elseif num = 2l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.2"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
 		elseif num = 3l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.3"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
 		elseif num = 4l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.4"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
 		elseif num = 5l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.5"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
 		elseif num = 6l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.6"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
 		elseif num = 7l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.7"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
 		elseif num = 8l then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.8"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u4"))
-		elseif num <= $long$Int32::MaxValue then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4"), $integer$num)
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
+		elseif num <= $long$integer::MaxValue then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, $integer$num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i8"), num)
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u4"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I8, num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
 		end if
 	
 	end method
@@ -574,38 +574,38 @@ class public auto ansi static ILEmitter
 		var num as integer = $integer$n
 
 		if num = -1 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.m1"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_M1)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
 		elseif num = 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
 		elseif num = 1 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.1"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
 		elseif num = 2 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.2"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
 		elseif num = 3 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.3"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
 		elseif num = 4 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.4"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
 		elseif num = 5 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.5"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
 		elseif num = 6 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.6"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
 		elseif num = 7 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.7"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
 		elseif num = 8 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.8"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4"), num)
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
 		end if
 	end method
 	
@@ -614,35 +614,35 @@ class public auto ansi static ILEmitter
 		var num as integer = $integer$n
 
 		if num = 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
 		elseif num = 1 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.1"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
 		elseif num = 2 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.2"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
 		elseif num = 3 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.3"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
 		elseif num = 4 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.4"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
 		elseif num = 5 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.5"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
 		elseif num = 6 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.6"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
 		elseif num = 7 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.7"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
 		elseif num = 8 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.8"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4"), num)
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u2"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
 		end if
 	end method
 
@@ -651,38 +651,38 @@ class public auto ansi static ILEmitter
 		var num as integer = $integer$n
 
 		if num = -1 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.m1"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_M1)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		elseif num = 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		elseif num = 1 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.1"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		elseif num = 2 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.2"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		elseif num = 3 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.3"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		elseif num = 4 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.4"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		elseif num = 5 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.5"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		elseif num = 6 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.6"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		elseif num = 7 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.7"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		elseif num = 8 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.8"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4"), num)
-			ILGen::Emit(InstructionHelper::getOPCode("conv.i1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		end if
 
 	end method
@@ -692,42 +692,42 @@ class public auto ansi static ILEmitter
 		var num as integer = $integer$n
 
 		if num = 0 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
 		elseif num = 1 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.1"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
 		elseif num = 2 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.2"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
 		elseif num = 3 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.3"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
 		elseif num = 4 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.4"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
 		elseif num = 5 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.5"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
 		elseif num = 6 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.6"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
 		elseif num = 7 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.7"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
 		elseif num = 8 then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.8"))
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4"), num)
-			ILGen::Emit(InstructionHelper::getOPCode("conv.u1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
 		end if
 
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitThrow()
-		ILGen::Emit(InstructionHelper::getOPCode("throw"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Throw)
 	end method
 
 	[method: ComVisible(false)]
@@ -752,12 +752,12 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcR4(var num as single)
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.r4"), num)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_R4, num)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcR8(var num as double)
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.r8"), num)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_R8, num)
 	end method
 
 	[method: ComVisible(false)]
@@ -766,235 +766,258 @@ class public auto ansi static ILEmitter
 		var dec as IKVM.Reflection.Type = Univ::Import(gettype decimal)
 		var temps as single
 		var tempd as double
-		if (Math::Ceiling(n) = n) and ($decimal$Int32::MinValue <= n) and (n <= $decimal$Int32::MaxValue) then
+		if (Math::Ceiling(n) = n) and ($decimal$integer::MinValue <= n) and (n <= $decimal$integer::MaxValue) then
 			EmitLdcI4($integer$n)
 			arr[0] = Univ::Import(gettype integer)
-			ILGen::Emit(InstructionHelper::getOPCode("newobj"), dec::GetConstructor(arr))
-		elseif (Math::Ceiling(n) = n) and ($decimal$Int64::MinValue <= n) and (n <= $decimal$Int64::MaxValue) then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(arr))
+		elseif (Math::Ceiling(n) = n) and ($decimal$long::MinValue <= n) and (n <= $decimal$long::MaxValue) then
 			EmitLdcI8($long$n)
 			arr[0] = Univ::Import(gettype long)
-			ILGen::Emit(InstructionHelper::getOPCode("newobj"), dec::GetConstructor(arr))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(arr))
 		elseif Single::TryParse($string$n, ref|temps) then
 			EmitLdcR4($single$n)
 			arr[0] = Univ::Import(gettype single)
-			ILGen::Emit(InstructionHelper::getOPCode("newobj"), dec::GetConstructor(arr))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(arr))
 		elseif Double::TryParse($string$n, ref|tempd) then
 			EmitLdcR8($double$n)
 			arr[0] = Univ::Import(gettype double)
-			ILGen::Emit(InstructionHelper::getOPCode("newobj"), dec::GetConstructor(arr))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(arr))
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("ldstr"),$string$n)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldstr,$string$n)
 			arr[0] = Univ::Import(gettype string)
-			ILGen::Emit(InstructionHelper::getOPCode("call"), dec::GetMethod("Parse",arr))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, dec::GetMethod("Parse",arr))
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCallvirt(var met as IKVM.Reflection.MethodInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("callvirt"), met)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Callvirt, met)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitCallCtor(var met as IKVM.Reflection.ConstructorInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("call"), met)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, met)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitCall(var met as IKVM.Reflection.MethodInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("call"), met)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, met)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdftn(var met as IKVM.Reflection.MethodInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("ldftn"), met)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldftn, met)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdvirtftn(var met as IKVM.Reflection.MethodInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("ldvirtftn"), met)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldvirtftn, met)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdfld(var fld as IKVM.Reflection.FieldInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("ldfld"), fld)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldfld, fld)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdsfld(var fld as IKVM.Reflection.FieldInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("ldsfld"), fld)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldsfld, fld)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdflda(var fld as IKVM.Reflection.FieldInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("ldflda"), fld)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldflda, fld)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdsflda(var fld as IKVM.Reflection.FieldInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("ldsflda"), fld)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldsflda, fld)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdstr(var str as string)
-		ILGen::Emit(InstructionHelper::getOPCode("ldstr"), str)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldstr, str)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitAdd(var s as boolean)
 		if s then
-			ILGen::Emit(InstructionHelper::getOPCode("add"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Add)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("add.ovf.un"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Add_Ovf_Un)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitDiv(var s as boolean)
 		if s then
-			ILGen::Emit(InstructionHelper::getOPCode("div"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Div)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("div.un"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Div_Un)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitMul(var s as boolean)
 		if s then
-			ILGen::Emit(InstructionHelper::getOPCode("mul"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Mul)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("mul.ovf.un"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Mul_Ovf_Un)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitSub(var s as boolean)
 		if s then
-			ILGen::Emit(InstructionHelper::getOPCode("sub"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Sub)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("sub.ovf.un"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Sub_Ovf_Un)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitRem(var s as boolean)
 		if s then
-			ILGen::Emit(InstructionHelper::getOPCode("rem"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Rem)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("rem.un"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Rem_Un)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitShl()
-		ILGen::Emit(InstructionHelper::getOPCode("shl"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Shl)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitShr(var s as boolean)
 		if s then
-			ILGen::Emit(InstructionHelper::getOPCode("shr"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Shr)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("shr.un"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Shr_Un)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitAnd()
-		ILGen::Emit(InstructionHelper::getOPCode("and"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::And)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitOr()
-		ILGen::Emit(InstructionHelper::getOPCode("or"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Or)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitXor()
-		ILGen::Emit(InstructionHelper::getOPCode("xor"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Xor)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitNot()
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitNotOther()
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Not)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitNeg()
-		ILGen::Emit(InstructionHelper::getOPCode("neg"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Neg)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitNand()
-		ILGen::Emit(InstructionHelper::getOPCode("and"))
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::And)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitNandOther()
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::And)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Not)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitNor()
-		ILGen::Emit(InstructionHelper::getOPCode("or"))
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Or)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitNorOther()
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Or)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Not)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitXnor()
-		ILGen::Emit(InstructionHelper::getOPCode("xor"))
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Xor)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitXnorOther()
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Xor)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Not)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCeq()
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCneq()
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCgt(var s as boolean)
 		if s then
-			ILGen::Emit(InstructionHelper::getOPCode("cgt"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Cgt)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("cgt.un"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Cgt_Un)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitClt(var s as boolean)
 		if s then
-			ILGen::Emit(InstructionHelper::getOPCode("clt"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Clt)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("clt.un"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Clt_Un)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCle(var s as boolean)
 		if s then
-			ILGen::Emit(InstructionHelper::getOPCode("cgt"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Cgt)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("cgt.un"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Cgt_Un)
 		end if
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCge(var s as boolean)
 		if s then
-			ILGen::Emit(InstructionHelper::getOPCode("clt"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Clt)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("clt.un"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Clt_Un)
 		end if
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
 
 	[method: ComVisible(false)]
@@ -1003,7 +1026,7 @@ class public auto ansi static ILEmitter
 		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
 		params[0] = Univ::Import(gettype string)
 		params[1] = Univ::Import(gettype string)
-		ILGen::Emit(InstructionHelper::getOPCode("call"), lotyp::GetMethod("IsMatch",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, lotyp::GetMethod("IsMatch",params))
 	end method
 
 	[method: ComVisible(false)]
@@ -1012,9 +1035,9 @@ class public auto ansi static ILEmitter
 		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
 		params[0] = Univ::Import(gettype string)
 		params[1] = Univ::Import(gettype string)
-		ILGen::Emit(InstructionHelper::getOPCode("call"), lotyp::GetMethod("IsMatch",params))
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, lotyp::GetMethod("IsMatch",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
 
 	[method: ComVisible(false)]
@@ -1023,9 +1046,9 @@ class public auto ansi static ILEmitter
 		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
 		params[0] = Univ::Import(gettype string)
 		params[1] = Univ::Import(gettype string)
-		ILGen::Emit(InstructionHelper::getOPCode("call"), strtyp::GetMethod("Compare",params))
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Compare",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
 
 	[method: ComVisible(false)]
@@ -1034,11 +1057,11 @@ class public auto ansi static ILEmitter
 		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
 		params[0] = Univ::Import(gettype string)
 		params[1] = Univ::Import(gettype string)
-		ILGen::Emit(InstructionHelper::getOPCode("call"), strtyp::GetMethod("Compare",params))
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
-		ILGen::Emit(InstructionHelper::getOPCode("ceq"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Compare",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
 
 	[method: ComVisible(false)]
@@ -1047,7 +1070,7 @@ class public auto ansi static ILEmitter
 		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
 		params[0] = strtyp
 		params[1] = strtyp
-		ILGen::Emit(InstructionHelper::getOPCode("call"), strtyp::GetMethod("Concat",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Concat",params))
 	end method
 
 	[method: ComVisible(false)]
@@ -1056,7 +1079,7 @@ class public auto ansi static ILEmitter
 		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
 		params[0] = deltyp
 		params[1] = deltyp
-		ILGen::Emit(InstructionHelper::getOPCode("call"), deltyp::GetMethod("Combine",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, deltyp::GetMethod("Combine",params))
 	end method
 
 	[method: ComVisible(false)]
@@ -1065,71 +1088,71 @@ class public auto ansi static ILEmitter
 		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
 		params[0] = deltyp
 		params[1] = deltyp
-		ILGen::Emit(InstructionHelper::getOPCode("call"), deltyp::GetMethod("Remove",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, deltyp::GetMethod("Remove",params))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcBool(var b as boolean)
 		if b then
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.1"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
 		else
-			ILGen::Emit(InstructionHelper::getOPCode("ldc.i4.0"))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcChar(var c as char)
-		ILGen::Emit(InstructionHelper::getOPCode("ldc.i4"), $integer$c)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, $integer$c)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdnull()
-		ILGen::Emit(InstructionHelper::getOPCode("ldnull"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitNewobj(var c as IKVM.Reflection.ConstructorInfo)
-		ILGen::Emit(InstructionHelper::getOPCode("newobj"), c)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, c)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitBr(var lbl as IKVM.Reflection.Emit.Label)
-		ILGen::Emit(InstructionHelper::getOPCode("br"), lbl)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Br, lbl)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitBrfalse(var lbl as IKVM.Reflection.Emit.Label)
-		ILGen::Emit(InstructionHelper::getOPCode("brfalse"), lbl)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lbl)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitBrtrue(var lbl as IKVM.Reflection.Emit.Label)
-		ILGen::Emit(InstructionHelper::getOPCode("brtrue"), lbl)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lbl)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdtoken(var t as IKVM.Reflection.Type)
-		ILGen::Emit(InstructionHelper::getOPCode("ldtoken"), t)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldtoken, t)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitConvU()
-		ILGen::Emit(InstructionHelper::getOPCode("conv.u"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitConvI()
-		ILGen::Emit(InstructionHelper::getOPCode("conv.i"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitConvI4()
-		ILGen::Emit(InstructionHelper::getOPCode("conv.i4"))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I4)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitNewarr(var t as IKVM.Reflection.Type)
-		ILGen::Emit(InstructionHelper::getOPCode("newarr"), t)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newarr, t)
 	end method
 
 	[method: ComVisible(false)]

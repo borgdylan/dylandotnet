@@ -14,8 +14,8 @@ class public auto ansi static StreamUtils
 	field public static initonly Stream Stdout
 	field public static initonly Stream Stderr
 
-	field public static StreamReader InS
-	field public static StreamWriter OutS
+	field private static StreamReader InS
+	field private static StreamWriter OutS
 
 	field public static boolean UseConsole
 
@@ -89,6 +89,7 @@ class public auto ansi static StreamUtils
 		if UseConsole = false then
 			if OutS != null then
 				OutS::WriteLine(str)
+				OutS::Flush()
 			end if
 		else
 			Console::WriteLine(str)
@@ -100,6 +101,7 @@ class public auto ansi static StreamUtils
 		if UseConsole = false then
 			if OutS != null then
 				OutS::Write(str)
+				OutS::Flush()
 			end if
 		else
 			Console::Write(str)

@@ -32,17 +32,17 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 	end method
 
-	method public static boolean isLParen(var tok as Token)
-		return tok is LParen
-	end method
-	
-	method public static boolean isRParen(var tok as Token)
-		return tok is RParen
-	end method
-
-	method public static boolean isOp(var tok as Token)
-		return tok is Op
-	end method
+//	method public static boolean isLParen(var tok as Token)
+//		return tok is LParen
+//	end method
+//	
+//	method public static boolean isRParen(var tok as Token)
+//		return tok is RParen
+//	end method
+//
+//	method public static boolean isOp(var tok as Token)
+//		return tok is Op
+//	end method
 
 	method public Expr ConvToRPN(var exp as Expr)
 		
@@ -62,9 +62,9 @@ class public auto ansi beforefieldinit Evaluator
 			i = i + 1
 			tok = exp::Tokens[i]
 
-			if (isOp(tok) or isLParen(tok) or isRParen(tok)) = false then
+			if ((tok is Op) or (tok is LParen) or (tok is RParen)) = false then
 				exp2::AddToken(tok)
-			elseif isOp(tok) then
+			elseif tok is Op then
 				if Stack::getLength() != 0 then
 					if RetPrec(tok) <= RetPrec(Stack::TopOp()) then
 						exp2::AddToken(Stack::TopOp())
@@ -72,21 +72,21 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				end if
 				Stack::PushOp(tok)
-			elseif isLParen(tok) then
+			elseif tok is LParen then
 				Stack::PushOp(tok)
-			elseif isRParen(tok) then
+			elseif tok is RParen then
 				if Stack::getLength() != 0 then
-					if isLParen(Stack::TopOp()) = false then
+					if (Stack::TopOp() is LParen) = false then
 						exp2::AddToken(Stack::TopOp())
 						Stack::PopOp()
 						if Stack::getLength() != 0 then
-							if isLParen(Stack::TopOp()) then
+							if Stack::TopOp() is LParen then
 								Stack::PopOp()
 							end if
 						end if
 					end if
 				else
-					if isLParen(Stack::TopOp()) then
+					if Stack::TopOp() is LParen then
 						Stack::PopOp()
 					end if
 				end if
@@ -98,7 +98,7 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 
 		do
-			if isLParen(Stack::TopOp()) = false then
+			if (Stack::TopOp() is LParen) = false then
 				exp2::AddToken(Stack::TopOp())
 			end if
 			Stack::PopOp()
@@ -126,7 +126,7 @@ class public auto ansi beforefieldinit Evaluator
 		do until i = len
 			i = i + 1
 			tok = exp::Tokens[i]
-			if isOp(tok) then
+			if tok is Op then
 				if i >= 2 then
 					optok = $Op$tok
 					j = i - 1
@@ -891,14 +891,16 @@ class public auto ansi beforefieldinit Evaluator
 				rctyp = AsmFactory::Type02
 
 				if emt then
-					typ = gettype string
-					Helpers::StringFlg = lctyp::Equals(ILEmitter::Univ::Import(typ)) and lctyp::Equals(rctyp)
+					Helpers::StringFlg = lctyp::Equals(ILEmitter::Univ::Import(gettype string)) and lctyp::Equals(rctyp)
+				end if
+				
+				if emt then
+					Helpers::BoolFlg = lctyp::Equals(ILEmitter::Univ::Import(gettype boolean)) and lctyp::Equals(rctyp)
 				end if
 
 				if emt then
-					typ = gettype Delegate
 					if lctyp::Equals(rctyp) then
-						Helpers::DelegateFlg = lctyp::IsSubclassOf(ILEmitter::Univ::Import(typ))
+						Helpers::DelegateFlg = lctyp::IsSubclassOf(ILEmitter::Univ::Import(gettype Delegate))
 					end if
 				end if
 

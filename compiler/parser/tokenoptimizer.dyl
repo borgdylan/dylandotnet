@@ -32,9 +32,7 @@ class public auto ansi TokenOptimizer
 			lkahead = new Token()
 		end if
 		
-		var compb as boolean = false
 		var tmpchrarr as char[] = new char[1]
-		var orflg as boolean = false
 		
 		label fin
 		
@@ -1267,10 +1265,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")
-		compb = tok::Value::EndsWith("d")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("d") then
 			tmpchrarr[0] = 'd'
 			var dlit2 as DoubleLiteral = new DoubleLiteral($double$tok::Value::TrimEnd(tmpchrarr))
 			dlit2::Line = tok::Line
@@ -1278,10 +1273,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")
-		compb = tok::Value::EndsWith("f")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("f") then
 			tmpchrarr[0] = 'f'
 			var flit as FloatLiteral = new FloatLiteral($single$tok::Value::TrimEnd(tmpchrarr))
 			flit::Line = tok::Line
@@ -1289,10 +1281,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")
-		compb = tok::Value::EndsWith("m")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("m") then
 			tmpchrarr[0] = 'm'
 			var delit as DecimalLiteral = new DecimalLiteral($decimal$tok::Value::TrimEnd(tmpchrarr))
 			delit::Line = tok::Line
@@ -1307,10 +1296,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("d")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("d") then
 			tmpchrarr[0] = 'd'
 			var dlit3 as DoubleLiteral = new DoubleLiteral($double$tok::Value::TrimEnd(tmpchrarr))
 			dlit3::Line = tok::Line
@@ -1318,10 +1304,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("f")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("f") then
 			tmpchrarr[0] = 'f'
 			var flit2 as FloatLiteral = new FloatLiteral($single$tok::Value::TrimEnd(tmpchrarr))
 			flit2::Line = tok::Line
@@ -1329,10 +1312,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("m")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("m") then
 			tmpchrarr[0] = 'm'
 			var delit2 as DecimalLiteral = new DecimalLiteral($decimal$tok::Value::TrimEnd(tmpchrarr))
 			delit2::Line = tok::Line
@@ -1340,10 +1320,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("ui")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ui") then
 			tmpchrarr[0] = 'i'
 			tok::Value = tok::Value::TrimEnd(tmpchrarr)
 			tmpchrarr[0] = 'u'
@@ -1353,10 +1330,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("ip")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ip") then
 			var iplit2 as IntPtrLiteral = new IntPtrLiteral()
 			iplit2::Line = tok::Line
 			tmpchrarr[0] = 'p'
@@ -1369,10 +1343,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("i")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("i") then
 			tmpchrarr[0] = 'i'
 			var ilit2 as IntLiteral = new IntLiteral($integer$tok::Value::TrimEnd(tmpchrarr))
 			ilit2::Line = tok::Line
@@ -1380,10 +1351,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("ul")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ul") then
 			tmpchrarr[0] = 'l'
 			tok::Value = tok::Value::TrimEnd(tmpchrarr)
 			tmpchrarr[0] = 'u'
@@ -1393,10 +1361,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("l")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("l") then
 			tmpchrarr[0] = 'l'
 			var llit as LongLiteral = new LongLiteral($long$tok::Value::TrimEnd(tmpchrarr))
 			llit::Line = tok::Line
@@ -1404,10 +1369,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("us")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("us") then
 			tmpchrarr[0] = 's'
 			tok::Value = tok::Value::TrimEnd(tmpchrarr)
 			tmpchrarr[0] = 'u'
@@ -1417,10 +1379,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("s")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("s") then
 			tmpchrarr[0] = 's'
 			var slit as ShortLiteral = new ShortLiteral($short$tok::Value::TrimEnd(tmpchrarr))
 			slit::Line = tok::Line
@@ -1428,10 +1387,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("ub")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ub") then
 			tmpchrarr[0] = 'b'
 			tok::Value = tok::Value::TrimEnd(tmpchrarr)
 			tmpchrarr[0] = 'u'
@@ -1441,10 +1397,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		orflg = (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")
-		compb = tok::Value::EndsWith("b")
-		
-		if orflg and compb then
+		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("b") then
 			tmpchrarr[0] = 'b'
 			var blit as SByteLiteral = new SByteLiteral($sbyte$tok::Value::TrimEnd(tmpchrarr))
 			blit::Line = tok::Line

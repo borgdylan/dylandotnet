@@ -2757,6 +2757,27 @@
         <remarks>Applies a 1's complemented 'and' to its operands (nand).</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitNandOther">
+      <MemberSignature Language="C#" Value="public static void EmitNandOther ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitNandOther() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitNeg">
       <MemberSignature Language="C#" Value="public static void EmitNeg ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNeg() cil managed" />
@@ -2993,6 +3014,27 @@
         <remarks>dpes a 1's complemented 'or' (nor) on its operands.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitNorOther">
+      <MemberSignature Language="C#" Value="public static void EmitNorOther ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitNorOther() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitNot">
       <MemberSignature Language="C#" Value="public static void EmitNot ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNot() cil managed" />
@@ -3031,6 +3073,27 @@
       <Docs>
         <summary>Emits the 'not' opcode.</summary>
         <remarks>For booleans consider using 'ldc.i4.0' followed by a 'ceq' instead i.e. use EmitLdcI4(0) and EmitCeq.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitNotOther">
+      <MemberSignature Language="C#" Value="public static void EmitNotOther ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitNotOther() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitOr">
@@ -3957,6 +4020,27 @@
       <Docs>
         <summary>Emits a sequence of 'xor', 'ldc.i4.0' and 'ceq'.</summary>
         <remarks>Does a 1's complemented 'xor' (xnor) on its operands.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitXnorOther">
+      <MemberSignature Language="C#" Value="public static void EmitXnorOther ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitXnorOther() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitXor">

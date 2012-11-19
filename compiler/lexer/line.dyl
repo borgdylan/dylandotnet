@@ -378,7 +378,7 @@ class public auto ansi Line
 			lachar = null
 		end if
 		
-		cuttok = isSep(curchar, lachar, ref|sc, ref|scl)
+		cuttok = isSep(curchar, lachar, ref sc, ref scl)
 		
 		if cuttok then
 			if buf::get_Length() != 0 then
