@@ -3,26 +3,26 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
     <Files>
       <File FileName="codegen/eval.dyl" Line="910" Column="36" />
-      <File FileName="codegen/helpers.dyl" Line="835" Column="4" />
+      <File FileName="codegen/helpers.dyl" Line="1520" Column="29" />
       <File FileName="ast/typetoks.dyl" Line="197" Column="22" />
-      <File FileName="ast/methodnametok.dyl" Line="35" Column="78" />
+      <File FileName="ast/methodnametok.dyl" Line="30" Column="19" />
       <File FileName="lexer/line.dyl" Line="367" Column="23" />
       <File FileName="parser/parserflags.dyl" Line="23" Column="30" />
       <File FileName="parser/parser.dyl" Line="37" Column="1" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="101" Column="9" />
-      <File FileName="parser/stmtoptimizer.dyl" Line="1969" Column="21" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="864" Column="9" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="2257" Column="8" />
       <File FileName="parser/exproptimizer.dyl" Line="810" Column="27" />
       <File FileName="ast/op.dyl" Line="24" Column="4" />
       <File FileName="ast/conditionalops.dyl" Line="38" Column="12" />
       <File FileName="ast/chars.dyl" Line="30" Column="12" />
-      <File FileName="ast/otherkeywords.dyl" Line="619" Column="9" />
+      <File FileName="ast/otherkeywords.dyl" Line="620" Column="1" />
       <File FileName="ast/ifstmts.dyl" Line="67" Column="56" />
       <File FileName="dnc/Mod1.dyl" Line="45" Column="57" />
-      <File FileName="codegen/symtable.dyl" Line="194" Column="2" />
+      <File FileName="codegen/symtable.dyl" Line="216" Column="11" />
       <File FileName="codegen/codegenerator.dyl" Line="18" Column="27" />
-      <File FileName="codegen/stmtreader.dyl" Line="528" Column="28" />
+      <File FileName="codegen/stmtreader.dyl" Line="816" Column="3" />
       <File FileName="dev/pc2cd.dyl" Line="127" Column="1" />
-      <File FileName="dev/pc2dn.dyl" Line="37" Column="1" />
+      <File FileName="dev/pc2dn.dyl" Line="43" Column="23" />
       <File FileName="dnc.dyl" Line="37" Column="8" />
       <File FileName="dnr.dyl" Line="40" Column="8" />
       <File FileName="dnu.dyl" Line="38" Column="8" />
@@ -39,11 +39,11 @@
       <File FileName="tests/strrecurse.dyl" Line="1" Column="1" />
       <File FileName="ast/includestmt.dyl" Line="28" Column="10" />
       <File FileName="codegen/constldr.dyl" Line="1" Column="1" />
-      <File FileName="ast/otherstmts.dyl" Line="117" Column="51" />
+      <File FileName="ast/otherstmts.dyl" Line="97" Column="10" />
       <File FileName="dnu/streamu.dyl" Line="34" Column="12" />
       <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
       <File FileName="unit/unit.dyl" Line="21" Column="3" />
-      <File FileName="ast/attrstmts.dyl" Line="33" Column="1" />
+      <File FileName="ast/attrstmts.dyl" Line="38" Column="10" />
       <File FileName="dnr/importer.dyl" Line="1" Column="1" />
       <File FileName="tests/PersonProg.dyl" Line="1" Column="1" />
       <File FileName="unit/parseutests.dyl" Line="1" Column="1" />
@@ -52,8 +52,11 @@
       <File FileName="unit/streamutests.dyl" Line="62" Column="26" />
       <File FileName="dnu/consts.dyl" Line="1" Column="1" />
       <File FileName="ast/aritops.dyl" Line="120" Column="14" />
-      <File FileName="templateproj/template.dyl" Line="134" Column="12" />
-      <File FileName="tests/transnames.dyl" Line="36" Column="1" />
+      <File FileName="templateproj/template.dyl" Line="374" Column="12" />
+      <File FileName="tests/transnames.dyl" Line="36" Column="6" />
+      <File FileName="ast/propstmt.dyl" Line="56" Column="21" />
+      <File FileName="ast/attributes.dyl" Line="93" Column="12" />
+      <File FileName="dnr/asmfactory.dyl" Line="37" Column="51" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

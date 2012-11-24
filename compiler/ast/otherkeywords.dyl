@@ -297,6 +297,23 @@ class public auto ansi PropertyCTok extends Token
 
 end class
 
+class public auto ansi EventTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "event"
+	end method
+
+end class
+
+class public auto ansi EventCTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "event:"
+	end method
+
+end class
+
+
 class public auto ansi GetTok extends Token
 
 	method public hidebysig virtual string ToString()
@@ -312,6 +329,23 @@ class public auto ansi SetTok extends Token
 	end method
 
 end class
+
+class public auto ansi AddTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "add"
+	end method
+
+end class
+
+class public auto ansi RemoveTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "remove"
+	end method
+
+end class
+
 
 class public auto ansi MethodTok extends Token
 

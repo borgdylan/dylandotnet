@@ -74,8 +74,8 @@
       </Docs>
     </Member>
     <Member MemberName="Getter">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.MethodNameTok Getter;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok Getter" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Ident Getter;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Ident Getter" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.7.2</AssemblyVersion>
@@ -104,7 +104,7 @@
         <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.MethodNameTok</ReturnType>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Ident</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

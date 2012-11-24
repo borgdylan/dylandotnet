@@ -23,6 +23,7 @@ class public auto ansi static AsmFactory
 	field public static IKVM.Reflection.Type Type03
 	field public static IKVM.Reflection.Type Type04
 	field public static IKVM.Reflection.Type Type05
+	field public static IKVM.Reflection.Type CurnEventType
 	field public static IKVM.Reflection.Emit.ModuleBuilder MdlB
 	field public static ISymbolDocumentWriter DocWriter
 	field public static string CurnNS
@@ -34,6 +35,8 @@ class public auto ansi static AsmFactory
 	field public static IKVM.Reflection.Emit.MethodBuilder CurnMetB
 	field public static IKVM.Reflection.Emit.ConstructorBuilder CurnConB
 	field public static IKVM.Reflection.Emit.FieldBuilder CurnFldB
+	field public static IKVM.Reflection.Emit.PropertyBuilder CurnPropB
+	field public static IKVM.Reflection.Emit.EventBuilder CurnEventB
 	field public static IKVM.Reflection.Emit.ILGenerator CurnILGen
 	field public static IKVM.Reflection.Type CurnInhTyp
 	field public static IKVM.Reflection.Emit.TypeBuilder CurnTypB

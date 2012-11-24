@@ -33,7 +33,7 @@ class public auto ansi beforefieldinit Module1
 
 	field public static string str
 
-	method public static void ctor0()
+	method public static void Module1()
 		str = ""
 		Console::WriteLine("The constructor for Module1 has been executed")
 	end method

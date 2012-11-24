@@ -530,6 +530,36 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="CurnEventB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.EventBuilder CurnEventB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.EventBuilder CurnEventB" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.EventBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnEventType">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CurnEventType;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type CurnEventType" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CurnFldB">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.FieldBuilder CurnFldB;" />
       <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.FieldBuilder CurnFldB" />
@@ -735,6 +765,21 @@
         <summary>Holds the current namespace.</summary>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnPropB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.PropertyBuilder CurnPropB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.PropertyBuilder CurnPropB" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.PropertyBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CurnTypB">

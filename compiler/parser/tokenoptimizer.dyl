@@ -767,6 +767,38 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "property:" then
+			var prctk as PropertyCTok = new PropertyCTok()
+			prctk::Line = tok::Line
+			prctk::Value = tok::Value
+			tok = prctk
+			goto fin
+		end if
+		
+		if tok::Value = "property" then
+			var prtk as PropertyTok = new PropertyTok()
+			prtk::Line = tok::Line
+			prtk::Value = tok::Value
+			tok = prtk
+			goto fin
+		end if
+		
+		if tok::Value = "event:" then
+			var evctk as EventCTok = new EventCTok()
+			evctk::Line = tok::Line
+			evctk::Value = tok::Value
+			tok = evctk
+			goto fin
+		end if
+		
+		if tok::Value = "event" then
+			var evtk as EventTok = new EventTok()
+			evtk::Line = tok::Line
+			evtk::Value = tok::Value
+			tok = evtk
+			goto fin
+		end if
+		
 		if tok::Value = "class:" then
 			var clctk as ClassCTok = new ClassCTok()
 			clctk::Line = tok::Line
@@ -844,6 +876,38 @@ class public auto ansi TokenOptimizer
 			entk::Line = tok::Line
 			entk::Value = tok::Value
 			tok = entk
+			goto fin
+		end if
+		
+		if tok::Value = "set" then
+			var setk as SetTok = new SetTok()
+			setk::Line = tok::Line
+			setk::Value = tok::Value
+			tok = setk
+			goto fin
+		end if
+		
+		if tok::Value = "get" then
+			var getk as GetTok = new GetTok()
+			getk::Line = tok::Line
+			getk::Value = tok::Value
+			tok = getk
+			goto fin
+		end if
+		
+		if tok::Value = "add" then
+			var adtk as AddTok = new AddTok()
+			adtk::Line = tok::Line
+			adtk::Value = tok::Value
+			tok = adtk
+			goto fin
+		end if
+		
+		if tok::Value = "remove" then
+			var rmtk as RemoveTok = new RemoveTok()
+			rmtk::Line = tok::Line
+			rmtk::Value = tok::Value
+			tok = rmtk
 			goto fin
 		end if
 		
@@ -958,6 +1022,14 @@ class public auto ansi TokenOptimizer
 			statattr::Line = tok::Line
 			statattr::Value = tok::Value
 			tok = statattr
+			goto fin
+		end if
+		
+		if tok::Value = "none" then
+			var nonattr as NoneAttr = new NoneAttr()
+			nonattr::Line = tok::Line
+			nonattr::Value = tok::Value
+			tok = nonattr
 			goto fin
 		end if
 		

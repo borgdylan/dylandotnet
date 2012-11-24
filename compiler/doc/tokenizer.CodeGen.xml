@@ -232,11 +232,19 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyEventAttrs()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyFldAttrs()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyMetAttrs()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyPropAttrs()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -635,6 +643,12 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessEventAttrs(dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[])">
+            <param name="attrs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessFieldAttrs(dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[])">
             <param name="attrs">To be added.</param>
             <summary>To be added.</summary>
@@ -668,6 +682,12 @@
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessParams(dylan.NET.Tokenizer.AST.Exprs.Expr[])">
             <param name="ps">To be added.</param>
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessPropAttrs(dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[])">
+            <param name="attrs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.Helpers.RightOp">
@@ -905,6 +925,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddEventCA(IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ca">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.FieldBuilder)">
             <param name="nme">To be added.</param>
             <param name="typ">To be added.</param>
@@ -970,6 +995,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddPropCA(IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ca">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddTypArr(IKVM.Reflection.Type[])">
             <param name="arr">To be added.</param>
             <summary>To be added.</summary>
@@ -1012,6 +1042,10 @@
             <param name="sym">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.EventCALst">
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.FieldCALst">
@@ -1119,6 +1153,10 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.PropertyCALst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PushScope()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1180,6 +1218,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetEventCAs()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetFld()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1221,6 +1263,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetParamCAs()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetPropCAs()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

@@ -73,6 +73,14 @@
             <summary>Holds the current ConstructorBuilder.</summary>
             <remarks />
         </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnEventB">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnEventType">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.CurnFldB">
             <summary>Holds the current FieldBuilder.</summary>
             <remarks />
@@ -96,6 +104,10 @@
         <member name="F:dylan.NET.Reflection.AsmFactory.CurnNS">
             <summary>Holds the current namespace.</summary>
             <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnPropB">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.CurnTypB">
             <summary>Holds the current TypeBuilder.</summary>

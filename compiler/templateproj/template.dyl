@@ -117,9 +117,13 @@ class public auto ansi Program
 
 	field public static integer X
 	field public static IEnumerable<of string> Y
+	field private static integer _TestProperty
+	field private static EventHandler _TestEvent
 	
 	method public static void Program()
 		var xc as integer = ROTest::X
+		_TestProperty = 0
+		_TestEvent = null
 		//ROTest::X = xc + 12
 	end method
 	
@@ -346,6 +350,46 @@ class public auto ansi Program
 		Console::WriteLine(string::Empty)
 		Console::WriteLine(integer::Parse("23"))
 	end method
+	
+	method public static hidebysig specialname integer get_TestProperty()
+		return _TestProperty
+	end method
+	
+	method public static hidebysig specialname void set_TestProperty(var i as integer)
+		_TestProperty = i
+	end method
+	
+	[property: Obsolete("Test Custom Attribute")]
+	property none integer TestProperty
+		get get_TestProperty()
+		set set_TestProperty()
+	end property
+	
+	method public static hidebysig specialname void add_TestEvent(var eh as EventHandler)
+		if _TestEvent != null then
+			_TestEvent = _TestEvent + eh
+		else
+			_TestEvent = eh
+		end if
+	end method
+	
+	method public static hidebysig specialname void remove_TestEvent(var eh as EventHandler)
+		if _TestEvent != null then
+			_TestEvent = _TestEvent - eh
+		end if
+	end method
+	
+	method public static void OnTestEvent()
+		if _TestEvent != null then
+			_TestEvent::Invoke(null,new EventArgs())
+		end if
+	end method
+	
+	[event: Obsolete("Test Custom Attribute")]
+	event none EventHandler TestEvent
+		add add_TestEvent()
+		remove remove_TestEvent()
+	end event
 
 	[method: STAThread()]
 	method public static void main()

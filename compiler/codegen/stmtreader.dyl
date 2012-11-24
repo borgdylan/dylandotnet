@@ -441,7 +441,6 @@ class public auto ansi StmtReader
 
 			StreamUtils::Write("	Adding Field: ")
 			StreamUtils::WriteLine(flss::FieldName::Value)
-
 		elseif stm is EndClassStmt then
 			SymTable::TypeLst::EnsureDefaultCtor(AsmFactory::CurnTypB)
 			AsmFactory::CreateTyp()
@@ -791,10 +790,104 @@ class public auto ansi StmtReader
 		elseif stm is ParameterAttrStmt then
 			var pas as ParameterAttrStmt = $ParameterAttrStmt$stm
 			SymTable::AddParamCA(pas::Index,AttrStmtToCAB(pas))
+		elseif stm is PropertyStmt then
+			var prss as PropertyStmt = $PropertyStmt$stm
+			var ptyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(prss::PropertyTyp)
+			
+			if ptyp = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + prss::PropertyTyp::Value + "' is not defined.")
+			end if
+			
+			AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prss::PropertyName::Value,Helpers::ProcessPropAttrs(prss::Attrs), ptyp, IKVM.Reflection.Type::EmptyTypes)
+			
+			Helpers::ApplyPropAttrs()
+			SymTable::ResetPropCAs()
+			
+			if AsmFactory::isNested then
+				//SymTable::AddNestedProp(prss::PropertyName::Value, ptyp, AsmFactory::CurnPropB)
+			else
+				//SymTable::AddProp(prss::PropertyName::Value, ptyp, AsmFactory::CurnPropB)
+			end if
+
+			StreamUtils::Write("	Adding Property: ")
+			StreamUtils::WriteLine(prss::PropertyName::Value)
+		elseif stm is PropertyGetStmt then
+			var prgs as PropertyGetStmt = $PropertyGetStmt$stm
+			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prgs::Getter::Value, IKVM.Reflection.Type::EmptyTypes)
+			if mb != null then
+				AsmFactory::CurnPropB::SetGetMethod(mb)
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + prgs::Getter::Value + "' with the required signature is not defined.")
+			end if
+			StreamUtils::Write("		Setting Property Getter: ")
+			StreamUtils::WriteLine(prgs::Getter::Value)
+		elseif stm is PropertySetStmt then
+			var prss as PropertySetStmt = $PropertySetStmt$stm
+			var pga as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
+			pga[0] = AsmFactory::CurnPropB::get_PropertyType()
+			var mb2 as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, pga)
+			if mb2 != null then
+				AsmFactory::CurnPropB::SetSetMethod(mb2)
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + prss::Setter::Value + "' with the required signature is not defined.")
+			end if
+			StreamUtils::Write("		Setting Property Setter: ")
+			StreamUtils::WriteLine(prss::Setter::Value)
+		elseif stm is EndPropStmt then
+		elseif stm is EventStmt then
+			var evss as EventStmt = $EventStmt$stm
+			var etyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(evss::EventTyp)
+			
+			if etyp = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + evss::EventTyp::Value + "' is not defined.")
+			end if
+			
+			AsmFactory::CurnEventB = AsmFactory::CurnTypB::DefineEvent(evss::EventName::Value,Helpers::ProcessEventAttrs(evss::Attrs), etyp)
+			AsmFactory::CurnEventType = etyp
+			
+			Helpers::ApplyEventAttrs()
+			SymTable::ResetEventCAs()
+			
+			if AsmFactory::isNested then
+				//SymTable::AddNestedProp(prss::PropertyName::Value, ptyp, AsmFactory::CurnPropB)
+			else
+				//SymTable::AddProp(prss::PropertyName::Value, ptyp, AsmFactory::CurnPropB)
+			end if
+
+			StreamUtils::Write("	Adding Event: ")
+			StreamUtils::WriteLine(evss::EventName::Value)
+		elseif stm is EventAddStmt then
+			var evas as EventAddStmt = $EventAddStmt$stm
+			var eaa as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
+			eaa[0] = AsmFactory::CurnEventType
+			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Adder::Value, eaa)
+			if mb != null then
+				AsmFactory::CurnEventB::SetAddOnMethod(mb)
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + evas::Adder::Value + "' with the required signature is not defined.")
+			end if
+			StreamUtils::Write("		Setting Event Adder: ")
+			StreamUtils::WriteLine(evas::Adder::Value)
+		elseif stm is EventRemoveStmt then
+			var evas as EventRemoveStmt = $EventRemoveStmt$stm
+			var eaa as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
+			eaa[0] = AsmFactory::CurnEventType
+			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Remover::Value, eaa)
+			if mb != null then
+				AsmFactory::CurnEventB::SetRemoveOnMethod(mb)
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + evas::Remover::Value + "' with the required signature is not defined.")
+			end if
+			StreamUtils::Write("		Setting Event Remover: ")
+			StreamUtils::WriteLine(evas::Remover::Value)
+		elseif stm is EndEventStmt then
+		elseif stm is PropertyAttrStmt then
+			SymTable::AddPropCA(AttrStmtToCAB($PropertyAttrStmt$stm))
+		elseif stm is EventAttrStmt then
+			SymTable::AddEventCA(AttrStmtToCAB($EventAttrStmt$stm))
 		else
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
 		end if
-		return
 	end method
 
 end class

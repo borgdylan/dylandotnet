@@ -13,6 +13,8 @@ class public auto ansi static SymTable
 	field public static C5.IList<of CustomAttributeBuilder> FieldCALst
 	field public static C5.IList<of CustomAttributeBuilder> ClassCALst
 	field public static C5.IList<of CustomAttributeBuilder> AssemblyCALst
+	field public static C5.IList<of CustomAttributeBuilder> EventCALst
+	field public static C5.IList<of CustomAttributeBuilder> PropertyCALst
 	field public static C5.IDictionary<of integer, C5.LinkedList<of CustomAttributeBuilder> > ParameterCALst
 
 	field public static TypeList TypeLst
@@ -47,6 +49,8 @@ class public auto ansi static SymTable
 		FieldCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		ClassCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		AssemblyCALst = new C5.LinkedList<of CustomAttributeBuilder>()
+		PropertyCALst = new C5.LinkedList<of CustomAttributeBuilder>()
+		EventCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		ParameterCALst = new C5.HashDictionary<of integer, C5.LinkedList<of CustomAttributeBuilder> >()
 		DefSyms = new C5.TreeSet<of string>()
 	end method
@@ -103,6 +107,16 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void ResetAsmCAs()
 		AssemblyCALst::Clear()
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ResetPropCAs()
+		PropertyCALst::Clear()
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ResetEventCAs()
+		EventCALst::Clear()
 	end method
 	
 	[method: ComVisible(false)]
@@ -185,6 +199,21 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void AddClsCA(var ca as CustomAttributeBuilder)
 		ClassCALst::Add(ca)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddAsmCA(var ca as CustomAttributeBuilder)
+		AssemblyCALst::Add(ca)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddEventCA(var ca as CustomAttributeBuilder)
+		EventCALst::Add(ca)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddPropCA(var ca as CustomAttributeBuilder)
+		PropertyCALst::Add(ca)
 	end method
 	
 	[method: ComVisible(false)]

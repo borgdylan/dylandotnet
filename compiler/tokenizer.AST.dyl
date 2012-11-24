@@ -123,6 +123,7 @@ namespace dylan.NET.Tokenizer.AST.Stmts
 	#include "ast/delegatestmt.dyl"
 	#include "ast/enumstmt.dyl"
 	#include "ast/propstmt.dyl"
+	#include "ast/eventstmt.dyl"
 	#include "ast/metstmt.dyl"
 	#include "ast/fieldstmt.dyl"
 	#include "ast/exceptionstmts.dyl"

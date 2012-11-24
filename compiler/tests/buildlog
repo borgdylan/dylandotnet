@@ -29,12 +29,7 @@ Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Beginning Assembly: arit
 Adding Class: arit.Module1
-	Adding Method: add
-	Adding Method: subtract
-	Adding Method: multiply
-	Adding Method: divide
-	Adding Method: main
-Writing Assembly to Disk...Done.
+	Adding Method: 
 dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
@@ -125,7 +120,7 @@ Adding Class: ctorfield.Test
 WARNING: The variable tinst was initialised but then not used. at line 27 in file: ctorfield.dyl
 Adding Class: ctorfield.Module1
 	Adding Field: str
-	Adding Constructor: ctor0
+	Adding Constructor: Module1
 	Adding Method: main
 WARNING: The variable a was initialised but then not used. at line 43 in file: ctorfield.dyl
 Writing Assembly to Disk...Done.

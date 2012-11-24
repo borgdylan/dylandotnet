@@ -1,3 +1,119 @@
+commit 67eddd182ba65944f822e12cde0fe0f00c38c45f
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Nov 19 13:29:15 2012 +0100
+
+    Committing latest dylan.NET code to GIT/BZR:
+      * Commenting isOp,isLParen,isRParen in eval.dyl (not used)
+      * Performing some optimisations.
+      * Implementing SHL and SHR i.e. << and >> (with overloads).
+      * Enabling overloading of xor,or,and and their not-ted forms.
+      * Handling catch all case in EmitOp.
+      * Reverting all PLINQ code to regular LINQ.
+      * Adding prompt to indicate runtime targeted by the compiler.
+      * Removing the InstructionHelper class from dnr and optimising
+        the ILEmitter class.
+      * Adding LoadUnaOp in loader.dyl toa llow finding of unary overloads
+      * Fxing StreamUtils (adding Flush calls)
+      * Adding unit tests for StreamUtils.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit c32c523b9c3618f6a93b63097a0a12f5f1f0cb08
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sat Nov 10 21:21:48 2012 +0100
+
+    Committing latest dylan.NET source code:
+      * adding the use of a lock-file during build to facilitate usage of Jenkins CI
+      * Adding experimental support for applying custom attributes on method parameters
+      * Adding support for #error and #warning.
+      * Changing implementation of file lexing/parsing runner in codegen so that it uses threadpool threading.
+      * Fixing some statement handlers so that they issue errors when needed.
+      * using PLINQ for .NET4.0/4.5 when possible
+      * adding unit tests for dylan.NET.Utils.ParseUtils (use NUnit)
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit c57e1c51e460e6af27aef33674a5a772c764fec9
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Oct 29 08:25:33 2012 +0100
+
+    Committing latest dylan.NET code to GIT and BZR:
+      * Adding cflags file for defining compile time flags.
+      * Adding conditional compiles for AssemblyConfiguration.
+      * Adding support for '{','}' in AST.
+      * Adding support for conditional compilation.
+      * Refactoring some functions so they use is.
+      * Adding ToString() for AssignOp and AsOp.
+      * Doing refactorings to increase speed.
+      * Adding support for debug,net45 options in configure.
+    
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 6af22894257c67a3b2e1d916011ca36e44bab3a4
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Mon Oct 15 10:29:41 2012 +0200
+
+    Committing latest files for lzw.dll
+    
+      * Adding autotools build system for dylan.NET.LZW.
+      * Adding docs and pkg-config files
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 5a8efbc8f684e44dbe2d9b51f058b4a695268fd3
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sun Oct 14 18:47:27 2012 +0200
+
+    Adding LZW(Lempel-Ziv-Welch) library for .NET/Mono
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit 05919fc223bd56d658c95e3d93663d2a1d54603c
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Wed Oct 10 16:47:04 2012 +0200
+
+    Committing latest dylan.NET code to GIT and BZR.
+      * Adding built in aliases for import alias.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit b3a3decf09d8b85384a32950bdd9ff189541f04d
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Fri Oct 5 08:49:15 2012 +0200
+
+    Committing latest dylan.NET code to GIT (not final 11.2.9.8 release)
+      * Switching main collection uses to C5.
+      * Bumping ABI version to 11.2.9.8.
+      * Implementing a C# like "using" alias
+        but using the import dylan.NET keyword instead.
+      * Preparing IncludeStmt for threaded lexing/parsing
+      * Implementing foreach syntax at all levels.
+      * Adding guards for conversions checking if the destination class exists.
+      * Converting use of IEnumerator to foreach
+      * Switching some SymTable arrays to C5 lists.
+      * Adding generics + foreach example in tests.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+commit ffc952ffd62759f405a91e2e293cc23dafa6dda6
+Author: Dylan Borg <borgdylan@hotmail.com>
+Date:   Sun Sep 23 15:58:03 2012 +0200
+
+    Committing latest dylan.NET code. This is dylan.NET 11.2.9.7.
+      * Bundling IKVM.Reflection with source.
+      * Updating makefiles and man pages.
+      * Bumping up version numbers to 11.2.9.7.
+      * Many ABI breaks due to the migration to using IKVM for CodeGen.
+      * Other ABI breaks due to Gendarme suggested fixes.
+      * main method of dnc no longer public, use Invoke instead if using as library.
+      * Adding support for using custom attributes including the use of value pairs.
+      * Adding assemblyinfo.dyl files to the compiler.
+      * Fixing miscellaneous bugs and increasing efficiency in some places.
+      * Adding support for the pseudo type modifier 'static' to make static classes.
+    
+    Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
 commit 5c202cf3c70ec1e7985539814d87e0f0737d9138
 Author: Dylan Borg <borgdylan@hotmail.com>
 Date:   Mon Jul 23 22:24:19 2012 +0200

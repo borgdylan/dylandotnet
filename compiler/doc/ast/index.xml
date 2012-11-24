@@ -55,6 +55,7 @@
       <Type Name="EndClassStmt" Kind="Class" />
       <Type Name="EndDoStmt" Kind="Class" />
       <Type Name="EndEnumStmt" Kind="Class" />
+      <Type Name="EndEventStmt" Kind="Class" />
       <Type Name="EndHIfStmt" Kind="Class" />
       <Type Name="EndIfStmt" Kind="Class" />
       <Type Name="EndMethodStmt" Kind="Class" />
@@ -64,6 +65,10 @@
       <Type Name="EndXmlDocStmt" Kind="Class" />
       <Type Name="EnumStmt" Kind="Class" />
       <Type Name="ErrorStmt" Kind="Class" />
+      <Type Name="EventAddStmt" Kind="Class" />
+      <Type Name="EventAttrStmt" Kind="Class" />
+      <Type Name="EventRemoveStmt" Kind="Class" />
+      <Type Name="EventStmt" Kind="Class" />
       <Type Name="FieldAttrStmt" Kind="Class" />
       <Type Name="FieldStmt" Kind="Class" />
       <Type Name="FinallyStmt" Kind="Class" />
@@ -90,6 +95,7 @@
       <Type Name="NSStmt" Kind="Class" />
       <Type Name="ParameterAttrStmt" Kind="Class" />
       <Type Name="PlaceStmt" Kind="Class" />
+      <Type Name="PropertyAttrStmt" Kind="Class" />
       <Type Name="PropertyGetStmt" Kind="Class" />
       <Type Name="PropertySetStmt" Kind="Class" />
       <Type Name="PropertyStmt" Kind="Class" />
@@ -112,6 +118,7 @@
       <Type Name="XmlDocStmt" Kind="Class" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Tokens">
+      <Type Name="AddTok" Kind="Class" />
       <Type Name="AssemblyCTok" Kind="Class" />
       <Type Name="AssemblyTok" Kind="Class" />
       <Type Name="AsTok" Kind="Class" />
@@ -133,6 +140,8 @@
       <Type Name="EndTok" Kind="Class" />
       <Type Name="EnumTok" Kind="Class" />
       <Type Name="ErrorTok" Kind="Class" />
+      <Type Name="EventCTok" Kind="Class" />
+      <Type Name="EventTok" Kind="Class" />
       <Type Name="ExeTok" Kind="Class" />
       <Type Name="ExtendsTok" Kind="Class" />
       <Type Name="FieldCTok" Kind="Class" />
@@ -187,6 +196,7 @@
       <Type Name="RefasmTok" Kind="Class" />
       <Type Name="RefstdasmTok" Kind="Class" />
       <Type Name="RefTok" Kind="Class" />
+      <Type Name="RemoveTok" Kind="Class" />
       <Type Name="ReturnTok" Kind="Class" />
       <Type Name="ScopeTok" Kind="Class" />
       <Type Name="SetTok" Kind="Class" />

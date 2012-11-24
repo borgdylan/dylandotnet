@@ -10,11 +10,13 @@ class public auto ansi PropertyStmt extends Stmt
 
 	field public Attributes.Attribute[] Attrs
 	field public Ident PropertyName
+	field public TypeTok PropertyTyp
 
 	method public void PropertyStmt()
 		me::ctor()
 		Attrs = new Attributes.Attribute[0]
 		PropertyName = new Ident()
+		PropertyTyp = new TypeTok()
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
@@ -36,22 +38,28 @@ end class
 
 class public auto ansi PropertySetStmt extends Stmt
 
-	field public MethodNameTok Setter
+	field public Ident Setter
 
 	method public void PropertySetStmt()
 		me::ctor()
-		Setter = new MethodNameTok()
+		Setter = new Ident()
 	end method
 
 end class
 
 class public auto ansi PropertyGetStmt extends Stmt
 
-	field public MethodNameTok Getter
+	field public Ident Getter
 
 	method public void PropertyGetStmt()
 		me::ctor()
-		Getter = new MethodNameTok()
+		Getter = new Ident()
 	end method
 
+end class
+
+class public auto ansi EndPropStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end property"
+	end method
 end class

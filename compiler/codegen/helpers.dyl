@@ -255,6 +255,81 @@ class public auto ansi static Helpers
 
 		return ta
 	end method
+	
+	[method: ComVisible(false)]
+	method public static PropertyAttributes ProcessPropAttrs(var attrs as Attributes.Attribute[])
+		
+		var ta as PropertyAttributes
+		var temp as PropertyAttributes
+		var i as integer = -1
+		var fir as boolean = true
+		var flg as boolean
+		
+		do until i = (attrs[l] - 1)
+			i = i + 1
+			flg = true
+
+			if attrs[i] is Attributes.NoneAttr then
+				temp = PropertyAttributes::None
+			elseif attrs[i] is Attributes.SpecialNameAttr then
+				temp = PropertyAttributes::SpecialName
+			//elseif attrs[i] is Attributes.InitOnlyAttr then
+			//	temp = FieldAttributes::InitOnly
+			else
+				flg = false
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attrs[i]::Value + "' is not a valid attribute for a property.")
+			end if
+
+			if flg then
+				if fir then
+					fir = (fir == false)
+					ta = temp
+				else
+					ta = temp or ta
+				end if
+			end if
+
+		end do
+
+		return ta
+	end method
+	
+	[method: ComVisible(false)]
+	method public static EventAttributes ProcessEventAttrs(var attrs as Attributes.Attribute[])
+		
+		var ta as EventAttributes
+		var temp as EventAttributes
+		var i as integer = -1
+		var fir as boolean = true
+		var flg as boolean
+		
+		do until i = (attrs[l] - 1)
+			i = i + 1
+			flg = true
+
+			if attrs[i] is Attributes.NoneAttr then
+				temp = EventAttributes::None
+			elseif attrs[i] is Attributes.SpecialNameAttr then
+				temp = EventAttributes::SpecialName
+			else
+				flg = false
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attrs[i]::Value + "' is not a valid attribute for a property.")
+			end if
+
+			if flg then
+				if fir then
+					fir = (fir == false)
+					ta = temp
+				else
+					ta = temp or ta
+				end if
+			end if
+
+		end do
+
+		return ta
+	end method
+
 
 	[method: ComVisible(false)]
 	method public static boolean CheckUnsigned(var t as IKVM.Reflection.Type)
@@ -1446,6 +1521,20 @@ class public auto ansi static Helpers
 	method public static void ApplyAsmAttrs()	
 		foreach ca in SymTable::AssemblyCALst
 			AsmFactory::AsmB::SetCustomAttribute(ca)
+		end for
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ApplyPropAttrs()	
+		foreach ca in SymTable::PropertyCALst
+			AsmFactory::CurnPropB::SetCustomAttribute(ca)
+		end for
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ApplyEventAttrs()	
+		foreach ca in SymTable::EventCALst
+			AsmFactory::CurnEventB::SetCustomAttribute(ca)
 		end for
 	end method
 	

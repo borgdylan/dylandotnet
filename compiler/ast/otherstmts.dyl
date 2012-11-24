@@ -96,12 +96,6 @@ class public auto ansi EndTryStmt extends Stmt
 	end method
 end class
 
-class public auto ansi EndPropStmt extends Stmt
-	method public hidebysig virtual string ToString()
-		return "end property"
-	end method
-end class
-
 class public auto ansi CommentStmt extends Stmt
 end class
 

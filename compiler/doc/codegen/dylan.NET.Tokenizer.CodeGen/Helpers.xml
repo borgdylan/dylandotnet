@@ -123,6 +123,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ApplyEventAttrs">
+      <MemberSignature Language="C#" Value="public static void ApplyEventAttrs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ApplyEventAttrs() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ApplyFldAttrs">
       <MemberSignature Language="C#" Value="public static void ApplyFldAttrs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ApplyFldAttrs() cil managed" />
@@ -151,6 +172,27 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyPropAttrs">
+      <MemberSignature Language="C#" Value="public static void ApplyPropAttrs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ApplyPropAttrs() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
         <AssemblyVersion>11.2.9.8</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
@@ -2178,6 +2220,31 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ProcessEventAttrs">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.EventAttributes ProcessEventAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.EventAttributes ProcessEventAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.EventAttributes</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="attrs" Type="dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[]" />
+      </Parameters>
+      <Docs>
+        <param name="attrs">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ProcessFieldAttrs">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.FieldAttributes ProcessFieldAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.FieldAttributes ProcessFieldAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
@@ -2375,6 +2442,31 @@
       <Docs>
         <param name="ps">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProcessPropAttrs">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.PropertyAttributes ProcessPropAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.PropertyAttributes ProcessPropAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.PropertyAttributes</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="attrs" Type="dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[]" />
+      </Parameters>
+      <Docs>
+        <param name="attrs">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
