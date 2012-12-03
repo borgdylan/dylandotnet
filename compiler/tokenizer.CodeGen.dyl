@@ -59,7 +59,7 @@ end #if
 #include "codegen/assemblyinfo.dyl"
 
 assembly tokenizer.CodeGen dll
-ver 11.2.9.8
+ver 11.2.9.9
 
 namespace dylan.NET.Tokenizer.CodeGen
 	#include "codegen/varitem.dyl"
@@ -75,6 +75,7 @@ namespace dylan.NET.Tokenizer.CodeGen
 	#include "codegen/labelitem.dyl"
 	#include "codegen/loopitem.dyl"
 	#include "codegen/ifitem.dyl"
+	#include "codegen/lockitem.dyl"
 	#include "codegen/typearr.dyl"
 	#include "codegen/symtable.dyl"
 	#include "codegen/helpers.dyl"

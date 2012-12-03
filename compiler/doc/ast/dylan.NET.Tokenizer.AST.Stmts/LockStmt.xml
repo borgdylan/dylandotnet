@@ -1,0 +1,39 @@
+<Type Name="LockStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.LockStmt">
+  <TypeSignature Language="C#" Value="public class LockStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi LockStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LockStmt ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lockee">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr Lockee;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Exprs.Expr Lockee" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -6,7 +6,11 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi ConditionalOp extends Op
+class public auto ansi abstract ConditionalOp extends Op
+
+	method family void ConditionalOp()
+		me::ctor()
+	end method
 
 end class
 

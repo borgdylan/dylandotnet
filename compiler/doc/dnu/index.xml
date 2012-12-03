@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dnu" Version="11.2.9.8">
+    <Assembly Name="dnu" Version="11.2.9.9">
       <Attributes>
         <Attribute>
           <AttributeName>System.CLSCompliant(true)</AttributeName>
@@ -28,7 +28,6 @@
   <Types>
     <Namespace Name="dylan.NET.Utils">
       <Type Name="Constants" Kind="Class" />
-      <Type Name="ErrorWarnHandler" Kind="Delegate" />
       <Type Name="Keyboard" Kind="Class" />
       <Type Name="ParseUtils" Kind="Class" />
       <Type Name="StreamUtils" Kind="Class" />

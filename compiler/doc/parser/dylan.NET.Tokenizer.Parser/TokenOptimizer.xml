@@ -3,28 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi TokenOptimizer extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.Parser</AssemblyName>
-    <AssemblyVersion>11.2.7.2</AssemblyVersion>
-    <AssemblyVersion>11.2.7.5</AssemblyVersion>
-    <AssemblyVersion>11.2.7.6</AssemblyVersion>
-    <AssemblyVersion>11.2.7.7</AssemblyVersion>
-    <AssemblyVersion>11.2.7.8</AssemblyVersion>
-    <AssemblyVersion>11.2.7.9</AssemblyVersion>
-    <AssemblyVersion>11.2.8.1</AssemblyVersion>
-    <AssemblyVersion>11.2.8.2</AssemblyVersion>
-    <AssemblyVersion>11.2.8.3</AssemblyVersion>
-    <AssemblyVersion>11.2.8.4</AssemblyVersion>
-    <AssemblyVersion>11.2.8.5</AssemblyVersion>
-    <AssemblyVersion>11.2.8.6</AssemblyVersion>
-    <AssemblyVersion>11.2.8.7</AssemblyVersion>
-    <AssemblyVersion>11.2.8.9</AssemblyVersion>
-    <AssemblyVersion>11.2.9.1</AssemblyVersion>
-    <AssemblyVersion>11.2.9.2</AssemblyVersion>
-    <AssemblyVersion>11.2.9.3</AssemblyVersion>
-    <AssemblyVersion>11.2.9.4</AssemblyVersion>
-    <AssemblyVersion>11.2.9.5</AssemblyVersion>
-    <AssemblyVersion>11.2.9.6</AssemblyVersion>
-    <AssemblyVersion>11.2.9.7</AssemblyVersion>
-    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -39,30 +17,6 @@
       <MemberSignature Language="C#" Value="public TokenOptimizer ();" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -73,31 +27,8 @@
       <MemberSignature Language="C#" Value="public TokenOptimizer (dylan.NET.Tokenizer.Parser.Flags pf);" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class dylan.NET.Tokenizer.Parser.Flags pf) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="pf" Type="dylan.NET.Tokenizer.Parser.Flags" />
-      </Parameters>
-      <Docs>
-        <param name="pf">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public TokenOptimizer (dylan.NET.Tokenizer.Parser.ParserFlags pf);" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class dylan.NET.Tokenizer.Parser.ParserFlags pf) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="pf" Type="dylan.NET.Tokenizer.Parser.ParserFlags" />
       </Parameters>
       <Docs>
         <param name="pf">To be added.</param>
@@ -109,15 +40,6 @@
       <MemberSignature Language="C#" Value="public int GenLvl;" />
       <MemberSignature Language="ILAsm" Value=".field public int32 GenLvl" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -130,14 +52,6 @@
       <MemberSignature Language="C#" Value="public bool isFirstToken;" />
       <MemberSignature Language="ILAsm" Value=".field public bool isFirstToken" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -147,52 +61,9 @@
       </Docs>
     </Member>
     <Member MemberName="Optimize">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token Optimize (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Token Optimize(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="tok" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
-      </Parameters>
-      <Docs>
-        <param name="tok">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Optimize">
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token Optimize (dylan.NET.Tokenizer.AST.Tokens.Token tok, dylan.NET.Tokenizer.AST.Tokens.Token lkahead);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Token Optimize(class dylan.NET.Tokenizer.AST.Tokens.Token tok, class dylan.NET.Tokenizer.AST.Tokens.Token lkahead) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
       </ReturnValue>
@@ -212,14 +83,6 @@
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.Parser.Flags PFlags;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.Parser.Flags PFlags" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.Parser.Flags</ReturnType>
       </ReturnValue>

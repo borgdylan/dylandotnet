@@ -83,7 +83,6 @@ endif
 	'$(MONO)' 4.0/dnc.exe tokenizer.Parser.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnc.dyl | tee -a buildlog4
-	'$(MONO)' 4.0/dnc.exe web.dyl | tee -a buildlog4
 	cp ./lib/4.0/C5.Mono.dll ./4.0/C5.Mono.dll
 	cp dnu.dll 4.0/dnu.dll
 	cp dnr.dll 4.0/dnr.dll
@@ -92,7 +91,6 @@ endif
 	cp tokenizer.Parser.dll 4.0/tokenizer.Parser.dll
 	cp tokenizer.CodeGen.dll 4.0/tokenizer.CodeGen.dll
 	cp dnc.exe 4.0/dnc.exe
-	cp web.dll 4.0/web.dll
 	
 	cp ./lib/2.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 2.0/dnc.exe -V > buildlog

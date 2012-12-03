@@ -3,19 +3,6 @@
         <name>dnc</name>
     </assembly>
     <members>
-        <member name="T:dylan.NET.Compiler.Module1">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Compiler.Module1()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Compiler.Module1.main(System.String[])">
-            <param name="args">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="T:dylan.NET.Compiler.Program">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

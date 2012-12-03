@@ -6,7 +6,11 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi LogicalOp extends Op
+class public auto ansi abstract LogicalOp extends Op
+
+	method family void LogicalOp()
+		me::ctor()
+	end method
 
 end class
 

@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.Parser" Version="11.2.9.8">
+    <Assembly Name="tokenizer.Parser" Version="11.2.9.9">
       <Attributes>
         <Attribute>
           <AttributeName>System.CLSCompliant(true)</AttributeName>
@@ -30,7 +30,6 @@
       <Type Name="ExprOptimizer" Kind="Class" />
       <Type Name="Flags" Kind="Class" />
       <Type Name="Parser" Kind="Class" />
-      <Type Name="ParserFlags" Kind="Class" />
       <Type Name="StmtOptimizer" Kind="Class" />
       <Type Name="TokenOptimizer" Kind="Class" />
     </Namespace>

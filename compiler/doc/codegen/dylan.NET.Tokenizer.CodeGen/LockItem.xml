@@ -1,0 +1,52 @@
+<Type Name="LockItem" FullName="dylan.NET.Tokenizer.CodeGen.LockItem">
+  <TypeSignature Language="C#" Value="public class LockItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi LockItem extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.CodeGen</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LockItem ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LockItem (int loc);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(int32 loc) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="loc" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="loc">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LockeeLoc">
+      <MemberSignature Language="C#" Value="public int LockeeLoc;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 LockeeLoc" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

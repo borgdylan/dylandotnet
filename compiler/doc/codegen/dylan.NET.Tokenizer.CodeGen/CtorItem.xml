@@ -3,28 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi CtorItem extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
-    <AssemblyVersion>11.2.7.2</AssemblyVersion>
-    <AssemblyVersion>11.2.7.5</AssemblyVersion>
-    <AssemblyVersion>11.2.7.6</AssemblyVersion>
-    <AssemblyVersion>11.2.7.7</AssemblyVersion>
-    <AssemblyVersion>11.2.7.8</AssemblyVersion>
-    <AssemblyVersion>11.2.7.9</AssemblyVersion>
-    <AssemblyVersion>11.2.8.1</AssemblyVersion>
-    <AssemblyVersion>11.2.8.2</AssemblyVersion>
-    <AssemblyVersion>11.2.8.3</AssemblyVersion>
-    <AssemblyVersion>11.2.8.4</AssemblyVersion>
-    <AssemblyVersion>11.2.8.5</AssemblyVersion>
-    <AssemblyVersion>11.2.8.6</AssemblyVersion>
-    <AssemblyVersion>11.2.8.7</AssemblyVersion>
-    <AssemblyVersion>11.2.8.9</AssemblyVersion>
-    <AssemblyVersion>11.2.9.1</AssemblyVersion>
-    <AssemblyVersion>11.2.9.2</AssemblyVersion>
-    <AssemblyVersion>11.2.9.3</AssemblyVersion>
-    <AssemblyVersion>11.2.9.4</AssemblyVersion>
-    <AssemblyVersion>11.2.9.5</AssemblyVersion>
-    <AssemblyVersion>11.2.9.6</AssemblyVersion>
-    <AssemblyVersion>11.2.9.7</AssemblyVersion>
-    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -39,30 +17,6 @@
       <MemberSignature Language="C#" Value="public CtorItem ();" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -73,50 +27,9 @@
       <MemberSignature Language="C#" Value="public CtorItem (IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.ConstructorBuilder bld);" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.ConstructorBuilder bld) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="ptyps" Type="IKVM.Reflection.Type[]" />
         <Parameter Name="bld" Type="IKVM.Reflection.Emit.ConstructorBuilder" />
-      </Parameters>
-      <Docs>
-        <param name="ptyps">To be added.</param>
-        <param name="bld">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CtorItem (Type[] ptyps, System.Reflection.Emit.ConstructorBuilder bld);" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class System.Type[] ptyps, class System.Reflection.Emit.ConstructorBuilder bld) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="ptyps" Type="System.Type[]" />
-        <Parameter Name="bld" Type="System.Reflection.Emit.ConstructorBuilder" />
       </Parameters>
       <Docs>
         <param name="ptyps">To be added.</param>
@@ -129,30 +42,6 @@
       <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.ConstructorBuilder CtorBldr;" />
       <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Emit.ConstructorBuilder CtorBldr" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.ConstructorBuilder</ReturnType>
       </ReturnValue>
@@ -165,30 +54,6 @@
       <MemberSignature Language="C#" Value="public IKVM.Reflection.Type[] ParamTyps;" />
       <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type[] ParamTyps" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Type[]</ReturnType>
       </ReturnValue>
@@ -201,14 +66,6 @@
       <MemberSignature Language="C#" Value="public override string ToString ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>

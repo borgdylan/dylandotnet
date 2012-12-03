@@ -11,18 +11,3 @@ end class
 
 class public auto ansi LogicExpr extends Expr
 end class
-
-class public auto ansi VarExpr extends Expr
-
-	field public TypeTok VarTyp
-	field public Ident VarName
-	field public Token Attr
-
-	method public void VarExpr()
-		me::ctor()
-		VarTyp = new TypeTok()
-		VarName = new Ident()
-		Attr = null
-	end method
-
-end class

@@ -1,6 +1,6 @@
 //The pkg-config helper for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v.11.2.9.7 or later
+//compile with dylan.NET v.11.2.9.8 or later
 
 //    pc2dn.exe dylan.NET.PkgConfig.PC2DN Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -26,7 +26,7 @@ end #if
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>")]
 
 assembly pc2dn exe
-ver 11.2.9.8
+ver 11.2.9.9
 
 namespace dylan.NET.PkgConfig.PC2DN
 
@@ -90,10 +90,10 @@ namespace dylan.NET.PkgConfig.PC2DN
 			
 		end method
 		
-		//[method: STAThread()]
-		method public static void main(var args as string[])
+		[method: STAThread()]
+		method private static void main(var args as string[])
 		
-			Console::WriteLine("dylan.NET Pkg-Config Helper v. 11.2.9.8 Beta")
+			Console::WriteLine("dylan.NET Pkg-Config Helper v. 11.2.9.9 Beta")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2012 Dylan Borg")
 			if args[l] < 1 then

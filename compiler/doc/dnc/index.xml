@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dnc" Version="11.2.9.8">
+    <Assembly Name="dnc" Version="11.2.9.9">
       <Attributes>
         <Attribute>
           <AttributeName>System.CLSCompliant(true)</AttributeName>
@@ -27,7 +27,6 @@
   <Copyright>To be added.</Copyright>
   <Types>
     <Namespace Name="dylan.NET.Compiler">
-      <Type Name="Module1" Kind="Class" />
       <Type Name="Program" Kind="Class" />
     </Namespace>
   </Types>

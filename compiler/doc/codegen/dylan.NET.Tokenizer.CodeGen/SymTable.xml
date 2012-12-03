@@ -3,28 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit SymTable extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
-    <AssemblyVersion>11.2.7.2</AssemblyVersion>
-    <AssemblyVersion>11.2.7.5</AssemblyVersion>
-    <AssemblyVersion>11.2.7.6</AssemblyVersion>
-    <AssemblyVersion>11.2.7.7</AssemblyVersion>
-    <AssemblyVersion>11.2.7.8</AssemblyVersion>
-    <AssemblyVersion>11.2.7.9</AssemblyVersion>
-    <AssemblyVersion>11.2.8.1</AssemblyVersion>
-    <AssemblyVersion>11.2.8.2</AssemblyVersion>
-    <AssemblyVersion>11.2.8.3</AssemblyVersion>
-    <AssemblyVersion>11.2.8.4</AssemblyVersion>
-    <AssemblyVersion>11.2.8.5</AssemblyVersion>
-    <AssemblyVersion>11.2.8.6</AssemblyVersion>
-    <AssemblyVersion>11.2.8.7</AssemblyVersion>
-    <AssemblyVersion>11.2.8.9</AssemblyVersion>
-    <AssemblyVersion>11.2.9.1</AssemblyVersion>
-    <AssemblyVersion>11.2.9.2</AssemblyVersion>
-    <AssemblyVersion>11.2.9.3</AssemblyVersion>
-    <AssemblyVersion>11.2.9.4</AssemblyVersion>
-    <AssemblyVersion>11.2.9.5</AssemblyVersion>
-    <AssemblyVersion>11.2.9.6</AssemblyVersion>
-    <AssemblyVersion>11.2.9.7</AssemblyVersion>
-    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -35,46 +13,10 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName=".cctor">
-      <MemberSignature Language="C#" Value="public SymTable ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static specialname rtspecialname void .cctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddAsmCA">
       <MemberSignature Language="C#" Value="public static void AddAsmCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddAsmCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -96,10 +38,6 @@
       <MemberSignature Language="C#" Value="public static void AddClsCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddClsCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -121,10 +59,6 @@
       <MemberSignature Language="C#" Value="public static void AddCtor (IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.ConstructorBuilder met);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddCtor(class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.ConstructorBuilder met) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -148,9 +82,6 @@
       <MemberSignature Language="C#" Value="public static void AddDef (string sym);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddDef(string sym) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -172,9 +103,6 @@
       <MemberSignature Language="C#" Value="public static void AddEventCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddEventCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -196,10 +124,6 @@
       <MemberSignature Language="C#" Value="public static void AddFld (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Emit.FieldBuilder fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddFld(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Emit.FieldBuilder fld) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -225,10 +149,6 @@
       <MemberSignature Language="C#" Value="public static void AddFldCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddFldCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -250,29 +170,6 @@
       <MemberSignature Language="C#" Value="public static void AddIf ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddIf() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -291,25 +188,6 @@
       <MemberSignature Language="C#" Value="public static void AddLbl (string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddLbl(string nam) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -327,22 +205,31 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AddLock">
+      <MemberSignature Language="C#" Value="public static void AddLock (int loc);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddLock(int32 loc) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="loc" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="loc">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddLoop">
       <MemberSignature Language="C#" Value="public static void AddLoop ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddLoop() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -361,10 +248,6 @@
       <MemberSignature Language="C#" Value="public static void AddMet (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.MethodBuilder met);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddMet(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.MethodBuilder met) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -392,10 +275,6 @@
       <MemberSignature Language="C#" Value="public static void AddMtdCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddMtdCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -417,10 +296,6 @@
       <MemberSignature Language="C#" Value="public static void AddNestedCtor (IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.ConstructorBuilder met);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddNestedCtor(class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.ConstructorBuilder met) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -444,10 +319,6 @@
       <MemberSignature Language="C#" Value="public static void AddNestedFld (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Emit.FieldBuilder fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddNestedFld(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Emit.FieldBuilder fld) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -473,10 +344,6 @@
       <MemberSignature Language="C#" Value="public static void AddNestedMet (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.MethodBuilder met);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddNestedMet(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.MethodBuilder met) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -504,9 +371,6 @@
       <MemberSignature Language="C#" Value="public static void AddParamCA (int ind, IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddParamCA(int32 ind, class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -530,9 +394,6 @@
       <MemberSignature Language="C#" Value="public static void AddPropCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddPropCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -554,10 +415,6 @@
       <MemberSignature Language="C#" Value="public static int AddTypArr (IKVM.Reflection.Type[] arr);" />
       <MemberSignature Language="ILAsm" Value=".method public static int32 AddTypArr(class IKVM.Reflection.Type[] arr) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -580,10 +437,6 @@
       <MemberSignature Language="C#" Value="public static void AddVar (string nme, bool la, int ind, IKVM.Reflection.Type typ, int lin);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddVar(string nme, bool la, int32 ind, class IKVM.Reflection.Type typ, int32 lin) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -613,10 +466,6 @@
       <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; AssemblyCALst;" />
       <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; AssemblyCALst" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
       </ReturnValue>
@@ -629,17 +478,6 @@
       <MemberSignature Language="C#" Value="public static void CheckUnusedVar ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void CheckUnusedVar() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -658,10 +496,6 @@
       <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; ClassCALst;" />
       <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; ClassCALst" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
       </ReturnValue>
@@ -674,10 +508,6 @@
       <MemberSignature Language="C#" Value="public static bool CmpTyps (IKVM.Reflection.Type[] arra, IKVM.Reflection.Type[] arrb);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool CmpTyps(class IKVM.Reflection.Type[] arra, class IKVM.Reflection.Type[] arrb) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -702,14 +532,6 @@
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.TypeItem CurnTypItem;" />
       <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.TypeItem CurnTypItem" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.CodeGen.TypeItem</ReturnType>
       </ReturnValue>
@@ -722,9 +544,6 @@
       <MemberSignature Language="C#" Value="public static bool EvalDef (string sym);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool EvalDef(string sym) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -747,9 +566,6 @@
       <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; EventCALst;" />
       <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; EventCALst" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
       </ReturnValue>
@@ -762,10 +578,6 @@
       <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; FieldCALst;" />
       <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; FieldCALst" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
       </ReturnValue>
@@ -778,10 +590,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.ConstructorInfo FindCtor (IKVM.Reflection.Type[] paramst);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.ConstructorInfo FindCtor(class IKVM.Reflection.Type[] paramst) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -804,10 +612,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.FieldInfo FindFld (string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.FieldInfo FindFld(string nam) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -830,25 +634,6 @@
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.LabelItem FindLbl (string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.LabelItem FindLbl(string nam) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -871,10 +656,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo FindMet (string nam, IKVM.Reflection.Type[] paramst);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo FindMet(string nam, class IKVM.Reflection.Type[] paramst) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -895,88 +676,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="FindMet">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.MethodItem FindMet (string nam, Type[] params);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.MethodItem FindMet(string nam, class System.Type[] params) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.CodeGen.MethodItem</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="nam" Type="System.String" />
-        <Parameter Name="params" Type="System.Type[]" />
-      </Parameters>
-      <Docs>
-        <param name="nam">To be added.</param>
-        <param name="params">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="FindMet">
-      <MemberSignature Language="C#" Value="public static System.Reflection.MethodInfo FindMet (string nam, Type[] paramst);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.Reflection.MethodInfo FindMet(string nam, class System.Type[] paramst) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Reflection.MethodInfo</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="nam" Type="System.String" />
-        <Parameter Name="paramst" Type="System.Type[]" />
-      </Parameters>
-      <Docs>
-        <param name="nam">To be added.</param>
-        <param name="paramst">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="FindMetNoParams">
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.MethodItem FindMetNoParams (string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.MethodItem FindMetNoParams(string nam) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -999,30 +702,6 @@
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.VarItem FindVar (string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.VarItem FindVar(string nam) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1041,148 +720,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="IfLst">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.IfItem[] IfLst;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.IfItem[] IfLst" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.CodeGen.IfItem[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="LblLst">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.LabelItem[] LblLst;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.LabelItem[] LblLst" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.CodeGen.LabelItem[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="LoopLst">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.LoopItem[] LoopLst;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.LoopItem[] LoopLst" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.CodeGen.LoopItem[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="MethodCALst">
       <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; MethodCALst;" />
       <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; MethodCALst" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NestedFldLst">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.FieldItem[] NestedFldLst;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.FieldItem[] NestedFldLst" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.CodeGen.FieldItem[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NestedMetLst">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.MethodItem[] NestedMetLst;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.MethodItem[] NestedMetLst" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.CodeGen.MethodItem[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1193,9 +736,6 @@
       <MemberSignature Language="C#" Value="public static C5.IDictionary&lt;int,C5.LinkedList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;&gt; ParameterCALst;" />
       <MemberSignature Language="ILAsm" Value=".field public static class C5.IDictionary`2&lt;int32, class C5.LinkedList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt;&gt; ParameterCALst" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>C5.IDictionary&lt;System.Int32,C5.LinkedList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;&gt;</ReturnType>
       </ReturnValue>
@@ -1208,29 +748,24 @@
       <MemberSignature Language="C#" Value="public static void PopIf ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void PopIf() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopLock">
+      <MemberSignature Language="C#" Value="public static void PopLock ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopLock() cil managed" />
+      <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1249,18 +784,6 @@
       <MemberSignature Language="C#" Value="public static void PopLoop ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void PopLoop() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1279,9 +802,6 @@
       <MemberSignature Language="C#" Value="public static void PopScope ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void PopScope() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1300,10 +820,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type[] PopTypArr ();" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type[] PopTypArr() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1319,46 +835,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="PopTypArr">
-      <MemberSignature Language="C#" Value="public static Type[] PopTypArr ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.Type[] PopTypArr() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Type[]</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="PropertyCALst">
       <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; PropertyCALst;" />
       <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; PropertyCALst" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
       </ReturnValue>
@@ -1371,9 +851,6 @@
       <MemberSignature Language="C#" Value="public static void PushScope ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void PushScope() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1392,29 +869,6 @@
       <MemberSignature Language="C#" Value="public static bool ReadIfElsePass ();" />
       <MemberSignature Language="ILAsm" Value=".method public static bool ReadIfElsePass() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1434,10 +888,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadIfEndLbl ();" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadIfEndLbl() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1445,41 +895,6 @@
       </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ReadIfEndLbl">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.Label ReadIfEndLbl ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static valuetype System.Reflection.Emit.Label ReadIfEndLbl() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Reflection.Emit.Label</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1492,10 +907,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadIfNxtBlkLbl ();" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadIfNxtBlkLbl() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1511,33 +922,17 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ReadIfNxtBlkLbl">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.Label ReadIfNxtBlkLbl ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static valuetype System.Reflection.Emit.Label ReadIfNxtBlkLbl() cil managed" />
+    <Member MemberName="ReadLockeeLoc">
+      <MemberSignature Language="C#" Value="public static int ReadLockeeLoc ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static int32 ReadLockeeLoc() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
-        <ReturnType>System.Reflection.Emit.Label</ReturnType>
+        <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1550,10 +945,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadLoopEndLbl ();" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadLoopEndLbl() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1561,30 +952,6 @@
       </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ReadLoopEndLbl">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.Label ReadLoopEndLbl ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static valuetype System.Reflection.Emit.Label ReadLoopEndLbl() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Reflection.Emit.Label</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1597,10 +964,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadLoopStartLbl ();" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadLoopStartLbl() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1616,38 +979,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ReadLoopStartLbl">
-      <MemberSignature Language="C#" Value="public static System.Reflection.Emit.Label ReadLoopStartLbl ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static valuetype System.Reflection.Emit.Label ReadLoopStartLbl() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Reflection.Emit.Label</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ResetAsmCAs">
       <MemberSignature Language="C#" Value="public static void ResetAsmCAs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetAsmCAs() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1666,46 +1001,11 @@
       <MemberSignature Language="C#" Value="public static void ResetClsCAs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetClsCAs() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetCtor">
-      <MemberSignature Language="C#" Value="public static void ResetCtor ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetCtor() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1719,9 +1019,6 @@
       <MemberSignature Language="C#" Value="public static void ResetEventCAs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetEventCAs() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1736,45 +1033,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ResetFld">
-      <MemberSignature Language="C#" Value="public static void ResetFld ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetFld() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ResetFldCAs">
       <MemberSignature Language="C#" Value="public static void ResetFldCAs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetFldCAs() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1793,29 +1055,6 @@
       <MemberSignature Language="C#" Value="public static void ResetIf ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetIf() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1834,25 +1073,24 @@
       <MemberSignature Language="C#" Value="public static void ResetLbl ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetLbl() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetLock">
+      <MemberSignature Language="C#" Value="public static void ResetLock ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetLock() cil managed" />
+      <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1871,18 +1109,6 @@
       <MemberSignature Language="C#" Value="public static void ResetLoop ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetLoop() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1897,45 +1123,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ResetMet">
-      <MemberSignature Language="C#" Value="public static void ResetMet ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetMet() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ResetMetCAs">
       <MemberSignature Language="C#" Value="public static void ResetMetCAs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetMetCAs() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1954,30 +1145,6 @@
       <MemberSignature Language="C#" Value="public static void ResetNestedCtor ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetNestedCtor() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -1996,30 +1163,6 @@
       <MemberSignature Language="C#" Value="public static void ResetNestedFld ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetNestedFld() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -2038,30 +1181,6 @@
       <MemberSignature Language="C#" Value="public static void ResetNestedMet ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetNestedMet() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -2080,9 +1199,6 @@
       <MemberSignature Language="C#" Value="public static void ResetParamCAs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetParamCAs() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -2101,9 +1217,6 @@
       <MemberSignature Language="C#" Value="public static void ResetPropCAs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetPropCAs() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -2122,17 +1235,6 @@
       <MemberSignature Language="C#" Value="public static void ResetUsed (string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetUsed(string nam) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -2154,30 +1256,6 @@
       <MemberSignature Language="C#" Value="public static void ResetVar ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetVar() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -2196,29 +1274,6 @@
       <MemberSignature Language="C#" Value="public static void SetIfElsePass ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void SetIfElsePass() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -2237,29 +1292,6 @@
       <MemberSignature Language="C#" Value="public static void SetIfNxtBlkLbl ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void SetIfNxtBlkLbl() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -2278,17 +1310,6 @@
       <MemberSignature Language="C#" Value="public static bool StoreFlg;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool StoreFlg" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -2301,14 +1322,6 @@
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.TypeList TypeLst;" />
       <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.TypeList TypeLst" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.CodeGen.TypeList</ReturnType>
       </ReturnValue>
@@ -2321,9 +1334,6 @@
       <MemberSignature Language="C#" Value="public static void UnDef (string sym);" />
       <MemberSignature Language="ILAsm" Value=".method public static void UnDef(string sym) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>

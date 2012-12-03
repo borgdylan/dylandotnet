@@ -116,6 +116,8 @@ MDOC = @MDOC@
 MKDIR_P = @MKDIR_P@
 MONO = @MONO@
 NUNIT = @NUNIT@
+NUNITPC_CFLAGS = @NUNITPC_CFLAGS@
+NUNITPC_LIBS = @NUNITPC_LIBS@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -125,6 +127,8 @@ PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
+PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
+PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
@@ -576,7 +580,6 @@ all:
 	'$(MONO)' 4.0/dnc.exe tokenizer.Parser.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnc.dyl | tee -a buildlog4
-	'$(MONO)' 4.0/dnc.exe web.dyl | tee -a buildlog4
 	cp ./lib/4.0/C5.Mono.dll ./4.0/C5.Mono.dll
 	cp dnu.dll 4.0/dnu.dll
 	cp dnr.dll 4.0/dnr.dll
@@ -585,7 +588,6 @@ all:
 	cp tokenizer.Parser.dll 4.0/tokenizer.Parser.dll
 	cp tokenizer.CodeGen.dll 4.0/tokenizer.CodeGen.dll
 	cp dnc.exe 4.0/dnc.exe
-	cp web.dll 4.0/web.dll
 
 	cp ./lib/2.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 2.0/dnc.exe -V > buildlog

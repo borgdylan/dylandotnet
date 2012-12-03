@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi AttrValuePair extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
-    <AssemblyVersion>11.2.9.7</AssemblyVersion>
-    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public AttrValuePair ();" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="public AttrValuePair (dylan.NET.Tokenizer.AST.Tokens.Ident nme, dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class dylan.NET.Tokenizer.AST.Tokens.Ident nme, class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="nme" Type="dylan.NET.Tokenizer.AST.Tokens.Ident" />
         <Parameter Name="exp" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
@@ -52,10 +42,6 @@
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Ident Name;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Ident Name" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Ident</ReturnType>
       </ReturnValue>
@@ -68,10 +54,6 @@
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr ValueExpr;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Exprs.Expr ValueExpr" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
       </ReturnValue>

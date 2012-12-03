@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dnr" Version="11.2.9.8">
+    <Assembly Name="dnr" Version="11.2.9.9">
       <Attributes>
         <Attribute>
           <AttributeName>System.CLSCompliant(true)</AttributeName>
@@ -31,7 +31,6 @@
       <Type Name="ConsolePrinter" Kind="Class" />
       <Type Name="ILEmitter" Kind="Class" />
       <Type Name="Importer" Kind="Class" />
-      <Type Name="InstructionHelper" Kind="Class" />
       <Type Name="Loader" Kind="Class" />
     </Namespace>
   </Types>

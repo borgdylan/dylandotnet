@@ -6,20 +6,20 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Literal extends Token
+class public auto ansi abstract Literal extends Token
 
 	field public TypeTok LitTyp
 	field public boolean Conv
 	field public TypeTok TTok
 
-	method public void Literal()
+	method family void Literal()
 		me::ctor()
 		LitTyp = null
 		Conv = false
 		TTok = null
 	end method
 
-	method public void Literal(var value as string)
+	method family void Literal(var value as string)
 		me::ctor(value)
 		LitTyp = null
 		Conv = false
@@ -189,20 +189,20 @@ class public auto ansi BooleanLiteral extends Literal
 end class
 
 
-class public auto ansi NumberLiteral extends Literal
+class public auto ansi asbtract NumberLiteral extends Literal
 
 	field public string OrdOp
 	field public boolean DoNot
 	field public boolean DoNeg
 
-	method public void NumberLiteral()
+	method family void NumberLiteral()
 		me::ctor()
 		OrdOp = ""
 		DoNot = false
 		DoNeg = false
 	end method
 
-	method public void NumberLiteral(var value as string)
+	method family void NumberLiteral(var value as string)
 		me::ctor(value)
 		OrdOp = ""
 		DoNot = false

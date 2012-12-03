@@ -3,50 +3,6 @@
         <name>tokenizer.AST</name>
     </assembly>
     <members>
-        <member name="T:dylan.NET.Tokenizer.AST.Exprs.AritExpr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Exprs.AritExpr()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Exprs.CastclassExpr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Exprs.CastclassExpr()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Exprs.CastclassExpr.DestType">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Exprs.CastclassExpr.Obj">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Exprs.ConditionalExpr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Exprs.ConditionalExpr()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Exprs.ConditionalExpr.CondOP">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Exprs.ConditionalExpr.LtExpr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Exprs.ConditionalExpr.RtExpr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Exprs.Expr">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -74,66 +30,6 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Exprs.Expr.Tokens">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Exprs.GettypeExpr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Exprs.GettypeExpr()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Exprs.GettypeExpr.TypeToGet">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Exprs.LogicExpr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Exprs.LogicExpr()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Exprs.NewarrExpr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Exprs.NewarrExpr()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Exprs.NewarrExpr.ArrayLen">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Exprs.NewarrExpr.ArrayType">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Exprs.NewExpr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Exprs.NewExpr()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Exprs.NewExpr.MetToCall">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Exprs.PtrExpr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Exprs.PtrExpr()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Exprs.PtrExpr.MetToCall">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -376,18 +272,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Stmts.DependStmt">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Stmts.DependStmt()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Stmts.DependStmt.Path">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.DoStmt">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -503,6 +387,19 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Stmts.EndLockStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.EndLockStmt()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Stmts.EndLockStmt.ToString()">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.EndMethodStmt">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -553,14 +450,6 @@
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.EndTryStmt.ToString()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Stmts.EndXmlDocStmt">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Stmts.EndXmlDocStmt()">
-            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.EnumStmt">
@@ -818,10 +707,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Stmts.IfStmt.CondExpr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="F:dylan.NET.Tokenizer.AST.Stmts.IfStmt.Exp">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -930,15 +815,15 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Stmts.MakeasmStmt">
+        <member name="T:dylan.NET.Tokenizer.AST.Stmts.LockStmt">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Stmts.MakeasmStmt()">
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.LockStmt()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Stmts.MakeasmStmt.Opt">
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.LockStmt.Lockee">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1181,26 +1066,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Stmts.SingStmt">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Stmts.SingStmt()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Stmts.StdasmStmt">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Stmts.StdasmStmt()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Stmts.StdasmStmt.Opt">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.Stmt">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1364,22 +1229,6 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Stmts.WhileStmt.Exp">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Stmts.XmlDocStmt">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Stmts.XmlDocStmt()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Stmts.XmlDocStmt.NodePath">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Stmts.XmlDocStmt.NodeType">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1562,14 +1411,6 @@
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.DelegateTok.ToString()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Tokens.DependTok">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.DependTok()">
-            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.DllTok">
@@ -2124,12 +1965,17 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Tokens.MakeasmTok">
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.LockTok">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.MakeasmTok()">
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.LockTok()">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.LockTok.ToString()">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.MethodCallTok">
@@ -2335,14 +2181,6 @@
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Tokens.NullTok">
-            <summary>Represents the 'null' keyword.</summary>
-            <remarks>This class is deprecated and as from 11.2.7.4 is no longer available in the AST. Use the NullLiteral class instead.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.NullTok()">
-            <summary>Constructs a new NullTok.</summary>
-            <remarks />
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.OffTok">
             <summary>Represents the 'off' keyword.</summary>
@@ -2569,22 +2407,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Tokens.SingTok">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.SingTok()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Tokens.StdasmTok">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.StdasmTok()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.StructTok">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -2747,14 +2569,6 @@
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.WhileTok.ToString()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Tokens.XmldocTok">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.XmldocTok()">
-            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.Attributes.AbstractAttr">
@@ -3406,11 +3220,6 @@
             <param name="value">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Literals.ConstLiteral(System.String)">
-            <param name="value" />
-            <summary>This parameter is of no use in this case.</summary>
-            <remarks />
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.ConstLiteral.ConstVal">
             <summary>The value of the Literal/Constant field as given by the reflection infrastructure.</summary>
@@ -4412,14 +4221,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Tokens.TypeToks.MeTok">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.TypeToks.MeTok()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.TypeToks.ObjectTok">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -4528,11 +4329,6 @@
             <summary>Constructs a new TypeTok assigning the type name's value as specified in the value parameter.</summary>
             <remarks>If you wish to set the type name later use the other constructor and set the 'Value' field acccordingly.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok(System.Type)">
-            <param name="value">A Type instance to convert into a TypeTok.</param>
-            <summary>Constructs a new TypeTok from the given Type instance and infers the values of the Value,IsArray and IsByRef fields.</summary>
-            <remarks />
-        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok.Clone()">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
@@ -4550,10 +4346,6 @@
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok.IsByRef">
             <summary>If set to true indicates that a byref type is desired.</summary>
             <remarks>Normally this field gets set true by the parser after finding '&amp;' after the type name.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok.OrdOp">
-            <summary>Deprecated.</summary>
-            <remarks>Deprecated.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok.RefTyp">
             <summary>Holds the System.Type instance representing the required type. This is set automatically if the standard type tokens are used.</summary>

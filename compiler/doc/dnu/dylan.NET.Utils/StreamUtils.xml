@@ -3,24 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit StreamUtils extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>dnu</AssemblyName>
-    <AssemblyVersion>11.2.7.8</AssemblyVersion>
-    <AssemblyVersion>11.2.7.9</AssemblyVersion>
-    <AssemblyVersion>11.2.8.1</AssemblyVersion>
-    <AssemblyVersion>11.2.8.2</AssemblyVersion>
-    <AssemblyVersion>11.2.8.3</AssemblyVersion>
-    <AssemblyVersion>11.2.8.4</AssemblyVersion>
-    <AssemblyVersion>11.2.8.5</AssemblyVersion>
-    <AssemblyVersion>11.2.8.6</AssemblyVersion>
-    <AssemblyVersion>11.2.8.7</AssemblyVersion>
-    <AssemblyVersion>11.2.8.9</AssemblyVersion>
-    <AssemblyVersion>11.2.9.1</AssemblyVersion>
-    <AssemblyVersion>11.2.9.2</AssemblyVersion>
-    <AssemblyVersion>11.2.9.3</AssemblyVersion>
-    <AssemblyVersion>11.2.9.4</AssemblyVersion>
-    <AssemblyVersion>11.2.9.5</AssemblyVersion>
-    <AssemblyVersion>11.2.9.6</AssemblyVersion>
-    <AssemblyVersion>11.2.9.7</AssemblyVersion>
-    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -31,58 +13,10 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName=".cctor">
-      <MemberSignature Language="C#" Value="public StreamUtils ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static specialname rtspecialname void .cctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CloseInS">
       <MemberSignature Language="C#" Value="public static void CloseInS ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void CloseInS() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -101,26 +35,6 @@
       <MemberSignature Language="C#" Value="public static void CloseOutS ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void CloseOutS() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -136,20 +50,17 @@
       </Docs>
     </Member>
     <Member MemberName="ErrorH">
-      <MemberSignature Language="C#" Value="public static Action&lt;int,string,string&gt; ErrorH;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Action`3&lt;int32, string, string&gt; ErrorH" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
+      <MemberSignature Language="C#" Value="public static event Action&lt;int,string,string&gt; ErrorH;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.Action`3&lt;int32, string, string&gt; ErrorH" />
+      <MemberType>Event</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>add: System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>remove: System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Action&lt;System.Int32,System.String,System.String&gt;</ReturnType>
       </ReturnValue>
@@ -162,26 +73,6 @@
       <MemberSignature Language="C#" Value="public static void InitInOutSWithStd ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void InitInOutSWithStd() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -200,26 +91,6 @@
       <MemberSignature Language="C#" Value="public static void InitInS (System.IO.Stream s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void InitInS(class System.IO.Stream s) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -241,26 +112,6 @@
       <MemberSignature Language="C#" Value="public static void InitOutS (System.IO.Stream s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void InitOutS(class System.IO.Stream s) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -278,92 +129,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InS">
-      <MemberSignature Language="C#" Value="public static System.IO.StreamReader InS;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.IO.StreamReader InS" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IO.StreamReader</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OutS">
-      <MemberSignature Language="C#" Value="public static System.IO.StreamWriter OutS;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.IO.StreamWriter OutS" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IO.StreamWriter</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ReadLine">
       <MemberSignature Language="C#" Value="public static string ReadLine ();" />
       <MemberSignature Language="ILAsm" Value=".method public static string ReadLine() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -383,26 +152,6 @@
       <MemberSignature Language="C#" Value="public static readonly System.IO.Stream Stderr;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.IO.Stream Stderr" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IO.Stream</ReturnType>
       </ReturnValue>
@@ -415,26 +164,6 @@
       <MemberSignature Language="C#" Value="public static readonly System.IO.Stream Stdin;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.IO.Stream Stdin" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IO.Stream</ReturnType>
       </ReturnValue>
@@ -447,26 +176,6 @@
       <MemberSignature Language="C#" Value="public static readonly System.IO.Stream Stdout;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly class System.IO.Stream Stdout" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IO.Stream</ReturnType>
       </ReturnValue>
@@ -479,25 +188,6 @@
       <MemberSignature Language="C#" Value="public static bool UseConsole;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool UseConsole" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -507,20 +197,17 @@
       </Docs>
     </Member>
     <Member MemberName="WarnH">
-      <MemberSignature Language="C#" Value="public static Action&lt;int,string,string&gt; WarnH;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Action`3&lt;int32, string, string&gt; WarnH" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
+      <MemberSignature Language="C#" Value="public static event Action&lt;int,string,string&gt; WarnH;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.Action`3&lt;int32, string, string&gt; WarnH" />
+      <MemberType>Event</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>add: System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>remove: System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Action&lt;System.Int32,System.String,System.String&gt;</ReturnType>
       </ReturnValue>
@@ -533,26 +220,6 @@
       <MemberSignature Language="C#" Value="public static void Write (string str);" />
       <MemberSignature Language="ILAsm" Value=".method public static void Write(string str) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -574,23 +241,6 @@
       <MemberSignature Language="C#" Value="public static void WriteError (int line, string file, string msg);" />
       <MemberSignature Language="ILAsm" Value=".method public static void WriteError(int32 line, string file, string msg) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -616,26 +266,6 @@
       <MemberSignature Language="C#" Value="public static void WriteLine (string str);" />
       <MemberSignature Language="ILAsm" Value=".method public static void WriteLine(string str) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -657,23 +287,6 @@
       <MemberSignature Language="C#" Value="public static void WriteWarn (int line, string file, string msg);" />
       <MemberSignature Language="ILAsm" Value=".method public static void WriteWarn(int32 line, string file, string msg) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>

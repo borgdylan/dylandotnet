@@ -473,102 +473,95 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method private Stmt checkReturn(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype ReturnTok
-	b = typ::IsInstanceOfType(tok)
-	var rets as ReturnStmt = new ReturnStmt()
-	if b then
-	
-	rets::Line = stm::Line
-	rets::Tokens = stm::Tokens
-	
-	label fin
-	label loop
-	label cont
-	
-	var i as integer = 0
-	var len as integer = stm::Tokens[l] - 1
-	var exp as Expr = null
-	
-	if stm::Tokens[l] = 1 then
-	rets::RExp = null
-	goto fin
-	end if
-	
-	if stm::Tokens[l] >= 2 then
-	
-	exp = new Expr()
-	
-	place loop
-	
-	i = i + 1
-	
-	exp::AddToken(stm::Tokens[i])
-	
-	if i = len then
-	goto cont
-	else
-	goto loop
-	end if 
-	
-	place cont
-	
-	var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-	exp = eopt::Optimize(exp)
-	rets::RExp = exp
-	
-	end if
-	
-	place fin
-	
-	end if
-	
-	return rets
+		b = stm::Tokens[0] is ReturnTok
+		var rets as ReturnStmt = new ReturnStmt()
+		if b then
+			rets::Line = stm::Line
+			rets::Tokens = stm::Tokens
+			
+			var i as integer = 0
+			var len as integer = stm::Tokens[l] - 1
+			
+			if stm::Tokens[l] = 1 then
+				rets::RExp = null
+			elseif stm::Tokens[l] >= 2 then
+				var exp as Expr = new Expr()
+				
+				do
+					i = i + 1
+					exp::AddToken(stm::Tokens[i])
+				until i = len
+			
+				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
+				exp = eopt::Optimize(exp)
+				rets::RExp = exp
+			end if
+		end if
+		
+		return rets
 	end method
 	
-		method private Stmt checkThrow(var stm as Stmt, var b as boolean&)
-	
-			var tok as Token = stm::Tokens[0]
-			var typ as Type = gettype ThrowTok
-			b = typ::IsInstanceOfType(tok)
-			var tros as ThrowStmt = new ThrowStmt()
-	
-			if b then
-	
-				tros::Line = stm::Line
-				tros::Tokens = stm::Tokens
-	
-				var i as integer = 0
-				var len as integer = stm::Tokens[l] - 1
-				var exp as Expr = null
-			
-				if stm::Tokens[l] >= 2 then
-					exp = new Expr()
-					do until i = len
-						i = i + 1
-						exp::AddToken(stm::Tokens[i])
-					end do
-			
-					var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-					tros::RExp = eopt::Optimize(exp)
-				end if
+	method private Stmt checkThrow(var stm as Stmt, var b as boolean&)
+		b = stm::Tokens[0] is ThrowTok
+		var tros as ThrowStmt = new ThrowStmt()
+
+		if b then
+			tros::Line = stm::Line
+			tros::Tokens = stm::Tokens
+
+			var i as integer = 0
+			var len as integer = stm::Tokens[l] - 1
+			var exp as Expr = null
 		
+			if stm::Tokens[l] >= 2 then
+				exp = new Expr()
+				do until i = len
+					i = i + 1
+					exp::AddToken(stm::Tokens[i])
+				end do
+		
+				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
+				tros::RExp = eopt::Optimize(exp)
 			end if
+		end if
+		return tros
+	end method
 	
-			return tros
-		end method
+	method private Stmt checkLock(var stm as Stmt, var b as boolean&)
+		b = stm::Tokens[0] is LockTok
+		var tros as LockStmt = new LockStmt()
+
+		if b then
+			tros::Line = stm::Line
+			tros::Tokens = stm::Tokens
+
+			var i as integer = 0
+			var len as integer = stm::Tokens[l] - 1
+			var exp as Expr = null
+		
+			if stm::Tokens[l] >= 2 then
+				exp = new Expr()
+				do until i = len
+					i = i + 1
+					exp::AddToken(stm::Tokens[i])
+				end do
+		
+				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
+				tros::Lockee = eopt::Optimize(exp)
+			end if
+		end if
+		return tros
+	end method
 		
 	
 	method private Stmt checkCmt(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens[0]
-	var typ as Type = gettype CommentTok
-	b = typ::IsInstanceOfType(tok)
-	var cmts as CommentStmt = new CommentStmt()
-	if b then
-	cmts::Line = stm::Line
-	cmts::Tokens = stm::Tokens
-	end if
-	return cmts
+		b = stm::Tokens[0] is CommentTok
+		var cmts as CommentStmt = new CommentStmt()
+		if b then
+			cmts::Line = stm::Line
+			cmts::Tokens = stm::Tokens
+		end if
+		return cmts
 	end method
 	
 	method private Stmt checkElse(var stm as Stmt, var b as boolean&)
@@ -598,21 +591,16 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method private Stmt checkDo(var stm as Stmt, var b as boolean&)
-	var ds as DoStmt = null
-	
-	if stm::Tokens[l] < 2 then
-	
-	var typ1 as Type = gettype DoTok
-	
-	b = typ1::IsInstanceOfType(stm::Tokens[0])
-	
-	ds = new DoStmt()
-	if b then
-	ds::Line = stm::Line
-	ds::Tokens = stm::Tokens
-	end if
-	end if
-	return ds
+		var ds as DoStmt = null
+		if stm::Tokens[l] < 2 then
+			b = stm::Tokens[0] is DoTok
+			if b then
+				ds = new DoStmt()
+				ds::Line = stm::Line
+				ds::Tokens = stm::Tokens
+			end if
+		end if
+		return ds
 	end method
 	
 		method private Stmt checkTry(var stm as Stmt, var b as boolean&)
@@ -649,49 +637,36 @@ class public auto ansi StmtOptimizer
 	
 	
 	method private Stmt checkBreak(var stm as Stmt, var b as boolean&)
-	var bs as BreakStmt = null
-	
-	if stm::Tokens[l] < 2 then
-	
-	var typ1 as Type = gettype BreakTok
-	
-	b = typ1::IsInstanceOfType(stm::Tokens[0])
-	
-	bs = new BreakStmt()
-	if b then
-	bs::Line = stm::Line
-	bs::Tokens = stm::Tokens
-	end if
-	end if
-	return bs
+		var bs as BreakStmt = null
+		if stm::Tokens[l] < 2 then	
+			b = stm::Tokens[0] is BreakTok
+			if b then
+				bs = new BreakStmt()
+				bs::Line = stm::Line
+				bs::Tokens = stm::Tokens
+			end if
+		end if
+		return bs
 	end method
 	
 	method private Stmt checkContinue(var stm as Stmt, var b as boolean&)
-	var cs as ContinueStmt = null
-	
-	if stm::Tokens[l] < 2 then
-	
-	var typ1 as Type = gettype ContinueTok
-	
-	b = typ1::IsInstanceOfType(stm::Tokens[0])
-	
-	cs = new ContinueStmt()
-	if b then
-	cs::Line = stm::Line
-	cs::Tokens = stm::Tokens
-	end if
-	end if
-	return cs
+		var cs as ContinueStmt = null
+		if stm::Tokens[l] < 2 then	
+			b = stm::Tokens[0] is ContinueTok
+			if b then
+				cs = new ContinueStmt()
+				cs::Line = stm::Line
+				cs::Tokens = stm::Tokens
+			end if
+		end if
+		return cs
 	end method
 	
 	
 	method private Stmt checkEndIf(var stm as Stmt, var b as boolean&)
 		var eifs as EndIfStmt = null
-	
 		if stm::Tokens[l] >= 2 then
-	
 			b = (stm::Tokens[0] is EndTok) and (stm::Tokens[1] is IfTok)
-	
 			if b then
 				eifs = new EndIfStmt()
 				eifs::Line = stm::Line
@@ -703,11 +678,8 @@ class public auto ansi StmtOptimizer
 	
 	method private Stmt checkEndHIf(var stm as Stmt, var b as boolean&)
 		var eifs as EndHIfStmt = null
-	
 		if stm::Tokens[l] >= 2 then
-	
 			b = (stm::Tokens[0] is EndTok) and (stm::Tokens[1] is HIfTok)
-	
 			if b then
 				eifs = new EndHIfStmt()
 				eifs::Line = stm::Line
@@ -719,11 +691,8 @@ class public auto ansi StmtOptimizer
 	
 	method private Stmt checkEndProp(var stm as Stmt, var b as boolean&)
 		var eps as EndPropStmt = null
-	
 		if stm::Tokens[l] >= 2 then
-	
 			b = (stm::Tokens[0] is EndTok) and (stm::Tokens[1] is PropertyTok)
-	
 			if b then
 				eps = new EndPropStmt()
 				eps::Line = stm::Line
@@ -735,11 +704,8 @@ class public auto ansi StmtOptimizer
 	
 	method private Stmt checkEndEvent(var stm as Stmt, var b as boolean&)
 		var eps as EndEventStmt = null
-	
 		if stm::Tokens[l] >= 2 then
-	
 			b = (stm::Tokens[0] is EndTok) and (stm::Tokens[1] is EventTok)
-	
 			if b then
 				eps = new EndEventStmt()
 				eps::Line = stm::Line
@@ -751,13 +717,8 @@ class public auto ansi StmtOptimizer
 	
 	method private Stmt checkEndMtd(var stm as Stmt, var b as boolean&)
 		var ems as EndMethodStmt = null
-	
 		if stm::Tokens[l] >= 2 then
-	
-			var typ1 as Type = gettype EndTok
-			var typ2 as Type = gettype MethodTok
-	
-			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
+			b = (stm::Tokens[0] is EndTok) and (stm::Tokens[1] is MethodTok)
 	
 			if b then
 				ems = new EndMethodStmt()
@@ -770,14 +731,8 @@ class public auto ansi StmtOptimizer
 	
 	method private Stmt checkEndNS(var stm as Stmt, var b as boolean&)
 		var ens as EndNSStmt = null
-	
 		if stm::Tokens[l] >= 2 then
-
-			var typ1 as Type = gettype EndTok	
-			var typ2 as Type = gettype NamespaceTok
-				
-			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
-	
+			b = (stm::Tokens[0] is EndTok) and (stm::Tokens[1] is NamespaceTok)
 			if b then
 				ens = new EndNSStmt()
 				ens::Line = stm::Line
@@ -790,15 +745,8 @@ class public auto ansi StmtOptimizer
 	
 	method private Stmt checkEndCls(var stm as Stmt, var b as boolean&)
 		var ecs as EndClassStmt = null
-	
 		if stm::Tokens[l] >= 2 then
-	
-			var typ1 as Type = gettype EndTok
-			var typ2 as Type = gettype ClassTok
-			var typ3 as Type = gettype StructTok
-	
-			b = typ1::IsInstanceOfType(stm::Tokens[0]) and (typ2::IsInstanceOfType(stm::Tokens[1]) or typ3::IsInstanceOfType(stm::Tokens[1]))
-	
+			b = (stm::Tokens[0] is EndTok) and ((stm::Tokens[1] is ClassTok) or (stm::Tokens[1] is StructTok))
 			if b then
 				ecs = new EndClassStmt()
 				ecs::Line = stm::Line
@@ -810,15 +758,8 @@ class public auto ansi StmtOptimizer
 	
 	method private Stmt checkEndDo(var stm as Stmt, var b as boolean&)
 		var eds as EndDoStmt = null
-	
 		if stm::Tokens[l] >= 2 then
-
-			var typ1 as Type = gettype EndTok
-			var typ2 as Type = gettype DoTok
-			var typ3 as Type = gettype ForTok
-	
-			b = typ1::IsInstanceOfType(stm::Tokens[0]) and (typ2::IsInstanceOfType(stm::Tokens[1]) or typ3::IsInstanceOfType(stm::Tokens[1]))
-	
+			b = (stm::Tokens[0] is EndTok) and ((stm::Tokens[1] is DoTok) or (stm::Tokens[1] is ForTok))
 			if b then
 				eds = new EndDoStmt()
 				eds::Line = stm::Line
@@ -830,12 +771,8 @@ class public auto ansi StmtOptimizer
 	
 	method private Stmt checkEndTry(var stm as Stmt, var b as boolean&)
 		var ets as EndTryStmt = null
-
 		if stm::Tokens[l] >= 2 then
-			var typ1 as Type = gettype EndTok
-			var typ2 as Type = gettype TryTok
-			b = typ1::IsInstanceOfType(stm::Tokens[0]) and typ2::IsInstanceOfType(stm::Tokens[1])
-
+			b = (stm::Tokens[0] is EndTok) and (stm::Tokens[1] is TryTok)
 			if b then
 				ets = new EndTryStmt()
 				ets::Line = stm::Line
@@ -843,6 +780,19 @@ class public auto ansi StmtOptimizer
 			end if
 		end if
 		return ets
+	end method
+	
+	method private Stmt checkEndLock(var stm as Stmt, var b as boolean&)
+		var els as EndLockStmt = null
+		if stm::Tokens[l] >= 2 then
+			b = (stm::Tokens[0] is EndTok) and (stm::Tokens[1] is LockTok)
+			if b then
+				els = new EndLockStmt()
+				els::Line = stm::Line
+				els::Tokens = stm::Tokens
+			end if
+		end if
+		return els
 	end method
 	
 	method private Stmt checkMetAttr(var stm as Stmt, var b as boolean&)
@@ -1572,7 +1522,7 @@ class public auto ansi StmtOptimizer
 					if stm::Tokens[i] is RParen then
 						if d then
 							var eopt2 as ExprOptimizer = new ExprOptimizer(PFlags)
-							exp = eopt2::checkVarAs(exp,ref|bl)
+							exp = eopt2::checkVarAs(exp,ref bl)
 							if bl then
 								mtss::AddParam(exp)
 							end if
@@ -1621,7 +1571,7 @@ class public auto ansi StmtOptimizer
 			
 					if (stm::Tokens[i] is Comma) and (lvl == 0) then
 						var eopt1 as ExprOptimizer = new ExprOptimizer(PFlags)
-						exp = eopt1::checkVarAs(exp,ref|bl)
+						exp = eopt1::checkVarAs(exp,ref bl)
 						if bl then
 							mtss::AddParam(exp)
 						end if
@@ -1711,7 +1661,7 @@ class public auto ansi StmtOptimizer
 					if typ2::IsInstanceOfType(stm::Tokens[i]) then
 						if d then
 							var eopt2 as ExprOptimizer = new ExprOptimizer(PFlags)
-							exp = eopt2::checkVarAs(exp,ref|bl)
+							exp = eopt2::checkVarAs(exp,ref bl)
 							if bl then
 								dels::AddParam(exp)
 							end if
@@ -1765,7 +1715,7 @@ class public auto ansi StmtOptimizer
 					typ2 = gettype Comma
 					if typ2::IsInstanceOfType(stm::Tokens[i]) and (lvl == 0) then
 						var eopt1 as ExprOptimizer = new ExprOptimizer(PFlags)
-						exp = eopt1::checkVarAs(exp,ref|bl)
+						exp = eopt1::checkVarAs(exp,ref bl)
 						if bl then
 							dels::AddParam(exp)
 						end if
@@ -2155,27 +2105,26 @@ class public auto ansi StmtOptimizer
 		var pcnt as integer = 0
 		var acnt as integer = 0
 		var scnt as integer = 0
-		var pltyp as Type = gettype LParen
-		var altyp as Type = gettype LAParen
-		var sltyp as Type = gettype LSParen
-		var prtyp as Type = gettype RParen
-		var artyp as Type = gettype RAParen
-		var srtyp as Type = gettype RSParen
+		var ccnt as integer = 0
 		do until i = (stm::Tokens[l] - 1)
 			i = i + 1
 			tok = stm::Tokens[i]
-			if pltyp::IsInstanceOfType(tok) then
+			if tok is LParen then
 				pcnt = pcnt + 1
-			elseif prtyp::IsInstanceOfType(tok) then
+			elseif tok is RParen then
 				pcnt = pcnt - 1
-			elseif altyp::IsInstanceOfType(tok) then
+			elseif tok is LAParen then
 				acnt = acnt + 1
-			elseif artyp::IsInstanceOfType(tok) then
+			elseif tok is RAParen then
 				acnt = acnt - 1
-			elseif sltyp::IsInstanceOfType(tok) then
+			elseif tok is LSParen then
 				scnt = scnt + 1
-			elseif srtyp::IsInstanceOfType(tok) then
+			elseif tok is RSParen then
 				scnt = scnt - 1
+			elseif tok is LCParen then
+				ccnt = ccnt + 1
+			elseif tok is RCParen then
+				ccnt = ccnt - 1
 			end if
 		end do
 		if pcnt != 0 then
@@ -2187,400 +2136,415 @@ class public auto ansi StmtOptimizer
 		elseif scnt != 0 then
 			StreamUtils::WriteLine(String::Empty)
 			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing square parentheses do not match!.")
+		elseif ccnt != 0 then
+			StreamUtils::WriteLine(String::Empty)
+			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing curly parentheses do not match!.")
 		end if
 	end if
 	
-	tmpstm = checkCmt(stm, ref|compb)
+	tmpstm = checkCmt(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkImport(stm, ref|compb)
+	tmpstm = checkImport(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkLocimport(stm, ref|compb)
+	tmpstm = checkLocimport(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkAsmAttr(stm, ref|compb)
+	tmpstm = checkAsmAttr(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkAssembly(stm, ref|compb)
+	tmpstm = checkAssembly(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkVer(stm, ref|compb)
+	tmpstm = checkVer(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkNS(stm, ref|compb)
+	tmpstm = checkNS(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkClsAttr(stm, ref|compb)
+	tmpstm = checkClsAttr(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkClass(stm, ref|compb)
+	tmpstm = checkClass(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkDelegate(stm, ref|compb)
+	tmpstm = checkDelegate(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkFldAttr(stm, ref|compb)
+	tmpstm = checkFldAttr(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkField(stm, ref|compb)
+	tmpstm = checkField(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkPropAttr(stm, ref|compb)
+	tmpstm = checkPropAttr(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkProperty(stm, ref|compb)
+	tmpstm = checkProperty(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkEventAttr(stm, ref|compb)
+	tmpstm = checkEventAttr(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkEvent(stm, ref|compb)
+	tmpstm = checkEvent(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkGet(stm, ref|compb)
+	tmpstm = checkGet(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkSet(stm, ref|compb)
+	tmpstm = checkSet(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkAdd(stm, ref|compb)
+	tmpstm = checkAdd(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkRemove(stm, ref|compb)
+	tmpstm = checkRemove(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkMetAttr(stm, ref|compb)
+	tmpstm = checkMetAttr(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkParamAttr(stm, ref|compb)
+	tmpstm = checkParamAttr(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkMethod(stm, ref|compb)
+	tmpstm = checkMethod(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkAssign(stm, ref|compb)
+	tmpstm = checkAssign(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkVarAs(stm, ref|compb)
+	tmpstm = checkVarAs(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkCatch(stm, ref|compb)
+	tmpstm = checkCatch(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkReturn(stm, ref|compb)
+	tmpstm = checkReturn(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkThrow(stm, ref|compb)
+	tmpstm = checkLock(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkTry(stm, ref|compb)
+	tmpstm = checkThrow(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkFinally(stm, ref|compb)
+	tmpstm = checkTry(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkEndTry(stm, ref|compb)
+	tmpstm = checkFinally(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkEndMtd(stm, ref|compb)
+	tmpstm = checkEndLock(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkEndProp(stm, ref|compb)
+	tmpstm = checkEndTry(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkEndEvent(stm, ref|compb)
+	tmpstm = checkEndMtd(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkEndNS(stm, ref|compb)
+	tmpstm = checkEndProp(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkEndCls(stm, ref|compb)
+	tmpstm = checkEndEvent(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkDebug(stm, ref|compb)
+	tmpstm = checkEndNS(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkHDefine(stm, ref|compb)
+	tmpstm = checkEndCls(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkHUndef(stm, ref|compb)
+	tmpstm = checkDebug(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkScope(stm, ref|compb)
+	tmpstm = checkHDefine(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkInclude(stm, ref|compb)
+	tmpstm = checkHUndef(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkError(stm, ref|compb)
+	tmpstm = checkScope(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkWarning(stm, ref|compb)
+	tmpstm = checkInclude(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkRefasm(stm, ref|compb)
+	tmpstm = checkError(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkRefstdasm(stm, ref|compb)
+	tmpstm = checkWarning(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkLabel(stm, ref|compb)
+	tmpstm = checkRefasm(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkPlace(stm, ref|compb)
+	tmpstm = checkRefstdasm(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkGoto(stm, ref|compb)
+	tmpstm = checkLabel(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkIf(stm, ref|compb)
+	tmpstm = checkPlace(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkHIf(stm, ref|compb)
+	tmpstm = checkGoto(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkWhile(stm, ref|compb)
+	tmpstm = checkIf(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkUntil(stm, ref|compb)
+	tmpstm = checkHIf(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkForeach(stm, ref|compb)
+	tmpstm = checkWhile(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkDoWhile(stm, ref|compb)
+	tmpstm = checkUntil(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkDoUntil(stm, ref|compb)
+	tmpstm = checkForeach(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkElseIf(stm, ref|compb)
+	tmpstm = checkDoWhile(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkHElseIf(stm, ref|compb)
+	tmpstm = checkDoUntil(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkElse(stm, ref|compb)
+	tmpstm = checkElseIf(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkHElse(stm, ref|compb)
+	tmpstm = checkHElseIf(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkDo(stm, ref|compb)	
+	tmpstm = checkElse(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkBreak(stm, ref|compb)
+	tmpstm = checkHElse(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkContinue(stm, ref|compb)
+	tmpstm = checkDo(stm, ref compb)	
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkEndIf(stm, ref|compb)	
+	tmpstm = checkBreak(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkEndHIf(stm, ref|compb)	
+	tmpstm = checkContinue(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkEndDo(stm, ref|compb)
+	tmpstm = checkEndIf(stm, ref compb)	
 	if compb then
 		stm = tmpstm
 		goto fin
 	end if
 	
-	tmpstm = checkMethodCall(stm, ref|compb)
+	tmpstm = checkEndHIf(stm, ref compb)	
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
+	tmpstm = checkEndDo(stm, ref compb)
+	if compb then
+		stm = tmpstm
+		goto fin
+	end if
+	
+	tmpstm = checkMethodCall(stm, ref compb)
 	if compb then
 		stm = tmpstm
 		goto fin

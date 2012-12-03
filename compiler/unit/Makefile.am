@@ -1,5 +1,5 @@
 all:
-	'$(PKG_CONFIG)' --libs nunit > nunit.libs
+	echo '$(NUNITPC_LIBS)' > nunit.libs
 	'$(MONO)' ../dev/pc2dn.exe nunit.libs
 	cp ../4.0/dnu.dll dnu.dll
 	cp ../4.0/C5.Mono.dll C5.Mono.dll

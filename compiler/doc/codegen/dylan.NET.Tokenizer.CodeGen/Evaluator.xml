@@ -3,28 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Evaluator extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
-    <AssemblyVersion>11.2.7.2</AssemblyVersion>
-    <AssemblyVersion>11.2.7.5</AssemblyVersion>
-    <AssemblyVersion>11.2.7.6</AssemblyVersion>
-    <AssemblyVersion>11.2.7.7</AssemblyVersion>
-    <AssemblyVersion>11.2.7.8</AssemblyVersion>
-    <AssemblyVersion>11.2.7.9</AssemblyVersion>
-    <AssemblyVersion>11.2.8.1</AssemblyVersion>
-    <AssemblyVersion>11.2.8.2</AssemblyVersion>
-    <AssemblyVersion>11.2.8.3</AssemblyVersion>
-    <AssemblyVersion>11.2.8.4</AssemblyVersion>
-    <AssemblyVersion>11.2.8.5</AssemblyVersion>
-    <AssemblyVersion>11.2.8.6</AssemblyVersion>
-    <AssemblyVersion>11.2.8.7</AssemblyVersion>
-    <AssemblyVersion>11.2.8.9</AssemblyVersion>
-    <AssemblyVersion>11.2.9.1</AssemblyVersion>
-    <AssemblyVersion>11.2.9.2</AssemblyVersion>
-    <AssemblyVersion>11.2.9.3</AssemblyVersion>
-    <AssemblyVersion>11.2.9.4</AssemblyVersion>
-    <AssemblyVersion>11.2.9.5</AssemblyVersion>
-    <AssemblyVersion>11.2.9.6</AssemblyVersion>
-    <AssemblyVersion>11.2.9.7</AssemblyVersion>
-    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -39,30 +17,6 @@
       <MemberSignature Language="C#" Value="public Evaluator ();" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -73,30 +27,6 @@
       <MemberSignature Language="C#" Value="public void ASTEmit (dylan.NET.Tokenizer.AST.Tokens.Token tok, bool emt);" />
       <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmit(class dylan.NET.Tokenizer.AST.Tokens.Token tok, bool emt) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -115,17 +45,6 @@
       <MemberSignature Language="C#" Value="public void ASTEmitIdent (dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt, dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed);" />
       <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitIdent(class dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt, class dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -146,17 +65,6 @@
       <MemberSignature Language="C#" Value="public void ASTEmitMethod (dylan.NET.Tokenizer.AST.Tokens.MethodCallTok mctok, bool emt, dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed);" />
       <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitMethod(class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok mctok, bool emt, class dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -177,16 +85,6 @@
       <MemberSignature Language="C#" Value="public void ASTEmitNew (dylan.NET.Tokenizer.AST.Tokens.NewCallTok nctok, bool emt, dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed);" />
       <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitNew(class dylan.NET.Tokenizer.AST.Tokens.NewCallTok nctok, bool emt, class dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -204,52 +102,9 @@
       </Docs>
     </Member>
     <Member MemberName="ConvToAST">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr ConvToAST (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Exprs.Expr ConvToAST(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="exp" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
-      </Parameters>
-      <Docs>
-        <param name="exp">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ConvToAST">
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token ConvToAST (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Token ConvToAST(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
       </ReturnValue>
@@ -267,30 +122,6 @@
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr ConvToRPN (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Exprs.Expr ConvToRPN(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
       </ReturnValue>
@@ -308,30 +139,6 @@
       <MemberSignature Language="C#" Value="public void Evaluate (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
       <MemberSignature Language="ILAsm" Value=".method public instance void Evaluate(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -348,9 +155,6 @@
       <MemberSignature Language="C#" Value="public bool EvaluateHIf (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
       <MemberSignature Language="ILAsm" Value=".method public instance bool EvaluateHIf(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -368,9 +172,6 @@
       <MemberSignature Language="C#" Value="public bool EvaluateHIf (dylan.NET.Tokenizer.AST.Tokens.Token rt);" />
       <MemberSignature Language="ILAsm" Value=".method public instance bool EvaluateHIf(class dylan.NET.Tokenizer.AST.Tokens.Token rt) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -384,174 +185,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InstToken">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token InstToken;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Token InstToken" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="isLParen">
-      <MemberSignature Language="C#" Value="public static bool isLParen (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
-      <MemberSignature Language="ILAsm" Value=".method public static bool isLParen(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="tok" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
-      </Parameters>
-      <Docs>
-        <param name="tok">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="isOp">
-      <MemberSignature Language="C#" Value="public static bool isOp (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
-      <MemberSignature Language="ILAsm" Value=".method public static bool isOp(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="tok" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
-      </Parameters>
-      <Docs>
-        <param name="tok">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="isRParen">
-      <MemberSignature Language="C#" Value="public static bool isRParen (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
-      <MemberSignature Language="ILAsm" Value=".method public static bool isRParen(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="tok" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
-      </Parameters>
-      <Docs>
-        <param name="tok">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="RetPrec">
       <MemberSignature Language="C#" Value="public static int RetPrec (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
       <MemberSignature Language="ILAsm" Value=".method public static int32 RetPrec(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -569,30 +206,6 @@
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.CodeGen.OpStack Stack;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.CodeGen.OpStack Stack" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.2</AssemblyVersion>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.CodeGen.OpStack</ReturnType>
       </ReturnValue>
@@ -602,50 +215,9 @@
       </Docs>
     </Member>
     <Member MemberName="StoreEmit">
-      <MemberSignature Language="C#" Value="public void StoreEmit (dylan.NET.Tokenizer.AST.Tokens.Ident idt);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void StoreEmit(class dylan.NET.Tokenizer.AST.Tokens.Ident idt) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.5</AssemblyVersion>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="idt" Type="dylan.NET.Tokenizer.AST.Tokens.Ident" />
-      </Parameters>
-      <Docs>
-        <param name="idt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="StoreEmit">
       <MemberSignature Language="C#" Value="public void StoreEmit (dylan.NET.Tokenizer.AST.Tokens.Token tok, dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
       <MemberSignature Language="ILAsm" Value=".method public instance void StoreEmit(class dylan.NET.Tokenizer.AST.Tokens.Token tok, class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

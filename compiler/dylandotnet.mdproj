@@ -176,7 +176,6 @@
     <None Include="codegen\typelist.dyl" />
     <None Include="codegen\tilambdas.dyl" />
     <None Include="ast\methodnametok.dyl" />
-    <None Include="web.dyl" />
     <None Include="ast\attrstmts.dyl" />
     <None Include="ast\assemblyinfo.dyl" />
     <None Include="codegen\assemblyinfo.dyl" />
@@ -192,5 +191,7 @@
     <None Include="unit\unit.dyl" />
     <None Include="unit\parseutests.dyl" />
     <None Include="unit\streamutests.dyl" />
+    <None Include="codegen\lockitem.dyl" />
+    <None Include="ast\varexpr.dyl" />
   </ItemGroup>
 </Project>

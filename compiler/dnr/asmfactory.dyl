@@ -81,7 +81,6 @@ class public auto ansi static AsmFactory
 
 	[method: ComVisible(false)]
 	method public static void InitMtd()
-		CurnMetB::DefineParameter(0, IKVM.Reflection.ParameterAttributes::Retval, String::Empty)
 		CurnILGen = CurnMetB::GetILGenerator()
 		ILEmitter::Met = CurnMetB
 		ILEmitter::ILGen = CurnILGen

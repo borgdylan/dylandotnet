@@ -57,13 +57,18 @@ class public auto ansi PtrTok extends Token
 
 end class
 
-class public auto ansi DependTok extends Token
-end class
+//class public auto ansi DependTok extends Token
+//end class
+//
+//class public auto ansi StdasmTok extends Token
+//end class
 
-class public auto ansi StdasmTok extends Token
-end class
+class public auto ansi abstract SwitchTok extends Token
 
-class public auto ansi SwitchTok extends Token
+	method family void SwitchTok()
+		me::ctor()
+	end method
+
 end class
 
 class public auto ansi OnTok extends SwitchTok
@@ -109,8 +114,8 @@ class public auto ansi DebugTok extends Token
 
 end class
 
-class public auto ansi MakeasmTok extends Token
-end class
+//class public auto ansi MakeasmTok extends Token
+//end class
 
 class public auto ansi RefasmTok extends Token
 
@@ -198,8 +203,8 @@ class public auto ansi IncludeTok extends Token
 
 end class
 
-class public auto ansi XmldocTok extends Token
-end class
+//class public auto ansi XmldocTok extends Token
+//end class
 
 class public auto ansi NamespaceTok extends Token
 
@@ -624,6 +629,14 @@ class public auto ansi InOutTok extends Token
 
 	method public hidebysig virtual string ToString()
 		return "inout"
+	end method
+
+end class
+
+class public auto ansi LockTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "lock"
 	end method
 
 end class

@@ -540,13 +540,6 @@ class public auto ansi static Helpers
 
 		var i as integer = -1
 		var curp as VarExpr = null
-			
-//		if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), 0) then
-//			var pbrv as ParameterBuilder = ILEmitter::Met::DefineParameter(0, ParameterAttributes::Retval, $string$null)
-//			foreach ca in SymTable::ParameterCALst::get_Item(0)
-//				pbrv::SetCustomAttribute(ca)
-//			end for
-//		end if
 		
 		do until i = (ps[l] - 1)
 			i = i + 1

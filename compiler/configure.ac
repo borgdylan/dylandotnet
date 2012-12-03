@@ -2,9 +2,9 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([dylandotnet], [11.2.9.8], [borgdylan@hotmail.com])
+AC_INIT([dylandotnet], [11.2.9.9], [borgdylan@hotmail.com])
 AC_CANONICAL_SYSTEM
-AM_INIT_AUTOMAKE([dylandotnet],[11.2.9.8])
+AM_INIT_AUTOMAKE([dylandotnet],[11.2.9.9])
 AM_MAINTAINER_MODE
 
 AC_PROG_INSTALL
@@ -38,6 +38,8 @@ AC_PATH_PROG(NUNIT, nunit-console, no)
 if test "x$NUNIT" = "xno"; then
         AC_MSG_ERROR([You need to install nunit-console])
 fi
+
+PKG_CHECK_MODULES(NUNITPC, nunit)
 
 dnl dylandotnet
 AC_PATH_PROG(DYLANDOTNET, dylandotnet, no)

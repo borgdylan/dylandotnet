@@ -87,12 +87,15 @@ class public auto ansi EndNSStmt extends Stmt
 	end method
 end class
 
-class public auto ansi EndXmlDocStmt extends Stmt
-end class
-
 class public auto ansi EndTryStmt extends Stmt
 	method public hidebysig virtual string ToString()
 		return "end try"
+	end method
+end class
+
+class public auto ansi EndLockStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end lock"
 	end method
 end class
 
@@ -136,3 +139,15 @@ class public auto ansi WarningStmt extends Stmt
 	end method
 
 end class
+
+class public auto ansi LockStmt extends Stmt
+
+	field public Expr Lockee
+
+	method public void LockStmt()
+		me::ctor()
+		Lockee = new Expr()
+	end method
+
+end class
+

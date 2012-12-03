@@ -1,13 +1,13 @@
 .PHONY: all
 
 all:
-	'$(MDOC)' update --delete -o ast ../tokenizer.AST.dll
-	'$(MDOC)' update --delete -o lexer ../tokenizer.Lexer.dll
-	'$(MDOC)' update --delete -o parser ../tokenizer.Parser.dll
-	'$(MDOC)' update --delete -o codegen ../tokenizer.CodeGen.dll
-	'$(MDOC)' update --delete -o dnu ../dnu.dll
-	'$(MDOC)' update --delete -o dnr ../dnr.dll
-	'$(MDOC)' update --delete -o dnc ../dnc.exe
+	'$(MDOC)' update --delete -fno-assembly-versions -o ast ../tokenizer.AST.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o lexer ../tokenizer.Lexer.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o parser ../tokenizer.Parser.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o codegen ../tokenizer.CodeGen.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnu ../dnu.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnr ../dnr.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnc ../dnc.exe
 	
 	'$(MDOC)' export-html -o ast-html ast
 	'$(MDOC)' export-html -o lexer-html lexer

@@ -3,26 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit XmlUtils extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>dnu</AssemblyName>
-    <AssemblyVersion>11.2.7.6</AssemblyVersion>
-    <AssemblyVersion>11.2.7.7</AssemblyVersion>
-    <AssemblyVersion>11.2.7.8</AssemblyVersion>
-    <AssemblyVersion>11.2.7.9</AssemblyVersion>
-    <AssemblyVersion>11.2.8.1</AssemblyVersion>
-    <AssemblyVersion>11.2.8.2</AssemblyVersion>
-    <AssemblyVersion>11.2.8.3</AssemblyVersion>
-    <AssemblyVersion>11.2.8.4</AssemblyVersion>
-    <AssemblyVersion>11.2.8.5</AssemblyVersion>
-    <AssemblyVersion>11.2.8.6</AssemblyVersion>
-    <AssemblyVersion>11.2.8.7</AssemblyVersion>
-    <AssemblyVersion>11.2.8.9</AssemblyVersion>
-    <AssemblyVersion>11.2.9.1</AssemblyVersion>
-    <AssemblyVersion>11.2.9.2</AssemblyVersion>
-    <AssemblyVersion>11.2.9.3</AssemblyVersion>
-    <AssemblyVersion>11.2.9.4</AssemblyVersion>
-    <AssemblyVersion>11.2.9.5</AssemblyVersion>
-    <AssemblyVersion>11.2.9.6</AssemblyVersion>
-    <AssemblyVersion>11.2.9.7</AssemblyVersion>
-    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -33,44 +13,10 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public XmlUtils ();" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddAttr">
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XContainer AddAttr (System.Xml.Linq.XContainer el, System.Xml.Linq.XAttribute attr);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XContainer AddAttr(class System.Xml.Linq.XContainer el, class System.Xml.Linq.XAttribute attr) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -81,45 +27,6 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="el" Type="System.Xml.Linq.XContainer" />
-        <Parameter Name="attr" Type="System.Xml.Linq.XAttribute" />
-      </Parameters>
-      <Docs>
-        <param name="el">To be added.</param>
-        <param name="attr">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddAttr">
-      <MemberSignature Language="C#" Value="public static System.Xml.Linq.XElement AddAttr (System.Xml.Linq.XElement el, System.Xml.Linq.XAttribute attr);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XElement AddAttr(class System.Xml.Linq.XElement el, class System.Xml.Linq.XAttribute attr) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Xml.Linq.XElement</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="el" Type="System.Xml.Linq.XElement" />
         <Parameter Name="attr" Type="System.Xml.Linq.XAttribute" />
       </Parameters>
       <Docs>
@@ -134,10 +41,6 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XContainer AddAttrArr (System.Xml.Linq.XContainer el, System.Xml.Linq.XAttribute[] attrs);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XContainer AddAttrArr(class System.Xml.Linq.XContainer el, class System.Xml.Linq.XAttribute[] attrs) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -148,45 +51,6 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="el" Type="System.Xml.Linq.XContainer" />
-        <Parameter Name="attrs" Type="System.Xml.Linq.XAttribute[]" />
-      </Parameters>
-      <Docs>
-        <param name="el">To be added.</param>
-        <param name="attrs">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddAttrArr">
-      <MemberSignature Language="C#" Value="public static System.Xml.Linq.XElement AddAttrArr (System.Xml.Linq.XElement el, System.Xml.Linq.XAttribute[] attrs);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XElement AddAttrArr(class System.Xml.Linq.XElement el, class System.Xml.Linq.XAttribute[] attrs) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Xml.Linq.XElement</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="el" Type="System.Xml.Linq.XElement" />
         <Parameter Name="attrs" Type="System.Xml.Linq.XAttribute[]" />
       </Parameters>
       <Docs>
@@ -201,10 +65,6 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XContainer AddNode (System.Xml.Linq.XContainer el, System.Xml.Linq.XElement node);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XContainer AddNode(class System.Xml.Linq.XContainer el, class System.Xml.Linq.XElement node) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -215,45 +75,6 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="el" Type="System.Xml.Linq.XContainer" />
-        <Parameter Name="node" Type="System.Xml.Linq.XElement" />
-      </Parameters>
-      <Docs>
-        <param name="el">To be added.</param>
-        <param name="node">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddNode">
-      <MemberSignature Language="C#" Value="public static System.Xml.Linq.XElement AddNode (System.Xml.Linq.XElement el, System.Xml.Linq.XElement node);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XElement AddNode(class System.Xml.Linq.XElement el, class System.Xml.Linq.XElement node) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Xml.Linq.XElement</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="el" Type="System.Xml.Linq.XElement" />
         <Parameter Name="node" Type="System.Xml.Linq.XElement" />
       </Parameters>
       <Docs>
@@ -268,10 +89,6 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XContainer AddNodeArr (System.Xml.Linq.XContainer el, System.Xml.Linq.XElement[] nodes);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XContainer AddNodeArr(class System.Xml.Linq.XContainer el, class System.Xml.Linq.XElement[] nodes) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -292,71 +109,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddNodeArr">
-      <MemberSignature Language="C#" Value="public static System.Xml.Linq.XElement AddNodeArr (System.Xml.Linq.XElement el, System.Xml.Linq.XElement[] nodes);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XElement AddNodeArr(class System.Xml.Linq.XElement el, class System.Xml.Linq.XElement[] nodes) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Xml.Linq.XElement</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="el" Type="System.Xml.Linq.XElement" />
-        <Parameter Name="nodes" Type="System.Xml.Linq.XElement[]" />
-      </Parameters>
-      <Docs>
-        <param name="el">To be added.</param>
-        <param name="nodes">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GetVal">
       <MemberSignature Language="C#" Value="public static string GetVal (System.Xml.Linq.XElement el);" />
       <MemberSignature Language="ILAsm" Value=".method public static string GetVal(class System.Xml.Linq.XElement el) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -379,28 +135,6 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XAttribute MakeAttr (string name, string value);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XAttribute MakeAttr(string name, string value) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -425,28 +159,6 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XName MakeName (string name);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XName MakeName(string name) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -469,28 +181,6 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XElement MakeNode (string name);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XElement MakeNode(string name) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -513,28 +203,6 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XElement SetVal (System.Xml.Linq.XElement el, string value);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XElement SetVal(class System.Xml.Linq.XElement el, string value) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -556,52 +224,9 @@
       </Docs>
     </Member>
     <Member MemberName="XPathSelectEl">
-      <MemberSignature Language="C#" Value="public static System.Xml.Linq.XElement XPathSelectEl (System.Xml.Linq.XElement el, string XPathQuery);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XElement XPathSelectEl(class System.Xml.Linq.XElement el, string XPathQuery) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.7.6</AssemblyVersion>
-        <AssemblyVersion>11.2.7.7</AssemblyVersion>
-        <AssemblyVersion>11.2.7.8</AssemblyVersion>
-        <AssemblyVersion>11.2.7.9</AssemblyVersion>
-        <AssemblyVersion>11.2.8.1</AssemblyVersion>
-        <AssemblyVersion>11.2.8.2</AssemblyVersion>
-        <AssemblyVersion>11.2.8.3</AssemblyVersion>
-        <AssemblyVersion>11.2.8.4</AssemblyVersion>
-        <AssemblyVersion>11.2.8.5</AssemblyVersion>
-        <AssemblyVersion>11.2.8.6</AssemblyVersion>
-        <AssemblyVersion>11.2.8.7</AssemblyVersion>
-        <AssemblyVersion>11.2.8.9</AssemblyVersion>
-        <AssemblyVersion>11.2.9.1</AssemblyVersion>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Xml.Linq.XElement</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="el" Type="System.Xml.Linq.XElement" />
-        <Parameter Name="XPathQuery" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="el">To be added.</param>
-        <param name="XPathQuery">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="XPathSelectEl">
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XElement XPathSelectEl (System.Xml.Linq.XNode el, string XPathQuery);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XElement XPathSelectEl(class System.Xml.Linq.XNode el, string XPathQuery) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
@@ -623,39 +248,9 @@
       </Docs>
     </Member>
     <Member MemberName="XPathSelectEls">
-      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;System.Xml.Linq.XElement&gt; XPathSelectEls (System.Xml.Linq.XElement el, string XPathQuery);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class System.Xml.Linq.XElement&gt; XPathSelectEls(class System.Xml.Linq.XElement el, string XPathQuery) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.2</AssemblyVersion>
-        <AssemblyVersion>11.2.9.3</AssemblyVersion>
-        <AssemblyVersion>11.2.9.4</AssemblyVersion>
-        <AssemblyVersion>11.2.9.5</AssemblyVersion>
-        <AssemblyVersion>11.2.9.6</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Xml.Linq.XElement&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="el" Type="System.Xml.Linq.XElement" />
-        <Parameter Name="XPathQuery" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="el">To be added.</param>
-        <param name="XPathQuery">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="XPathSelectEls">
       <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;System.Xml.Linq.XElement&gt; XPathSelectEls (System.Xml.Linq.XNode el, string XPathQuery);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class System.Xml.Linq.XElement&gt; XPathSelectEls(class System.Xml.Linq.XNode el, string XPathQuery) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>

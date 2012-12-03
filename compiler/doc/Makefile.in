@@ -95,6 +95,8 @@ MDOC = @MDOC@
 MKDIR_P = @MKDIR_P@
 MONO = @MONO@
 NUNIT = @NUNIT@
+NUNITPC_CFLAGS = @NUNITPC_CFLAGS@
+NUNITPC_LIBS = @NUNITPC_LIBS@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -104,6 +106,8 @@ PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
+PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
+PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
@@ -340,13 +344,13 @@ uninstall-am:
 .PHONY: all
 
 all:
-	'$(MDOC)' update --delete -o ast ../tokenizer.AST.dll
-	'$(MDOC)' update --delete -o lexer ../tokenizer.Lexer.dll
-	'$(MDOC)' update --delete -o parser ../tokenizer.Parser.dll
-	'$(MDOC)' update --delete -o codegen ../tokenizer.CodeGen.dll
-	'$(MDOC)' update --delete -o dnu ../dnu.dll
-	'$(MDOC)' update --delete -o dnr ../dnr.dll
-	'$(MDOC)' update --delete -o dnc ../dnc.exe
+	'$(MDOC)' update --delete -fno-assembly-versions -o ast ../tokenizer.AST.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o lexer ../tokenizer.Lexer.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o parser ../tokenizer.Parser.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o codegen ../tokenizer.CodeGen.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnu ../dnu.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnr ../dnr.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnc ../dnc.exe
 
 	'$(MDOC)' export-html -o ast-html ast
 	'$(MDOC)' export-html -o lexer-html lexer

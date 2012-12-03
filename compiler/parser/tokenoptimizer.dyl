@@ -919,6 +919,14 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "lock" then
+			var loktk as LockTok = new LockTok()
+			loktk::Line = tok::Line
+			loktk::Value = tok::Value
+			tok = loktk
+			goto fin
+		end if
+		
 		if tok::Value = "throw" then
 			var thrtk as ThrowTok = new ThrowTok()
 			thrtk::Line = tok::Line

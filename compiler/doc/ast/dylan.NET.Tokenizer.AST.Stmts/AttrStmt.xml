@@ -1,10 +1,8 @@
 <Type Name="AttrStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.AttrStmt">
-  <TypeSignature Language="C#" Value="public class AttrStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi AttrStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="C#" Value="public abstract class AttrStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract AttrStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
-    <AssemblyVersion>11.2.9.7</AssemblyVersion>
-    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public AttrStmt ();" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.NewCallTok Ctor;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.NewCallTok Ctor" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.NewCallTok</ReturnType>
       </ReturnValue>
@@ -49,10 +39,6 @@
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.AttrValuePair[] Pairs;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.AttrValuePair[] Pairs" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.7</AssemblyVersion>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.AttrValuePair[]</ReturnType>
       </ReturnValue>

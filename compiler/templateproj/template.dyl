@@ -459,6 +459,9 @@ class public auto ansi Program
 		Console::WriteLine(1 nand 2)
 		Console::WriteLine(1 nor 2)
 		Console::WriteLine(1 xnor 3)
+		var obj as object = new object()
+		lock obj
+		end lock
 	end method
 
 end class

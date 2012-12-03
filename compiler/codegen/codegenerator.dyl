@@ -108,9 +108,9 @@ class public auto ansi CodeGenerator
 					var inclustm as IncludeStmt = $IncludeStmt$stmts::Stmts[i]
 					var pth as string
 					var sset as StmtSet
-		
+					
+					Monitor::Enter(inclustm::Path)
 					try
-						Monitor::Enter(inclustm::Path)
 						if inclustm::Path::Value like c"^\q(.)*\q$" then
 							var tmpchrarr as char[] = new char[1]
 							tmpchrarr[0] = c'\q'
@@ -124,7 +124,6 @@ class public auto ansi CodeGenerator
 							StreamUtils::Write("Now Lexing: ")
 							StreamUtils::WriteLine(inclustm::Path::Value)
 							var pstmts as StmtSet = lx::Analyze(inclustm::Path::Value)
-							//StreamUtils::WriteLine("...Done.")
 							var ps as Parser = new Parser()
 							StreamUtils::Write("Now Parsing: ")
 							StreamUtils::WriteLine(inclustm::Path::Value)
@@ -141,7 +140,6 @@ class public auto ansi CodeGenerator
 						Monitor::Exit(inclustm::Path)
 					end try
 						
-					//StreamUtils::WriteLine("...Done.")
 					EmitMSIL(sset, pth)
 				else
 					var sr as StmtReader = new StmtReader()

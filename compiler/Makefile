@@ -96,7 +96,7 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/compiler/missing --run autoheader
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.8\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.8\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.8\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.9\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.9\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.9\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
@@ -116,19 +116,23 @@ MDOC = /usr/bin/mdoc
 MKDIR_P = /bin/mkdir -p
 MONO = /usr/bin/mono
 NUNIT = /usr/bin/nunit-console
+NUNITPC_CFLAGS =  
+NUNITPC_LIBS = -r:/usr/lib/cli/nunit.core-2.6/nunit.core.dll -r:/usr/lib/cli/nunit.util-2.6/nunit.util.dll -r:/usr/lib/cli/nunit.framework-2.6/nunit.framework.dll -r:/usr/lib/cli/nunit.core.interfaces-2.6/nunit.core.interfaces.dll  
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.9.8
+PACKAGE_STRING = dylandotnet 11.2.9.9
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.9.8
+PACKAGE_VERSION = 11.2.9.9
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
+PKG_CONFIG_LIBDIR = 
+PKG_CONFIG_PATH = 
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.9.8
+VERSION = 11.2.9.9
 abs_builddir = /var/www/Code/dylannet/compiler
 abs_srcdir = /var/www/Code/dylannet/compiler
 abs_top_builddir = /var/www/Code/dylannet/compiler
@@ -576,7 +580,6 @@ all:
 	'$(MONO)' 4.0/dnc.exe tokenizer.Parser.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog4
 	'$(MONO)' 4.0/dnc.exe dnc.dyl | tee -a buildlog4
-	'$(MONO)' 4.0/dnc.exe web.dyl | tee -a buildlog4
 	cp ./lib/4.0/C5.Mono.dll ./4.0/C5.Mono.dll
 	cp dnu.dll 4.0/dnu.dll
 	cp dnr.dll 4.0/dnr.dll
@@ -585,7 +588,6 @@ all:
 	cp tokenizer.Parser.dll 4.0/tokenizer.Parser.dll
 	cp tokenizer.CodeGen.dll 4.0/tokenizer.CodeGen.dll
 	cp dnc.exe 4.0/dnc.exe
-	cp web.dll 4.0/web.dll
 
 	cp ./lib/2.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 2.0/dnc.exe -V > buildlog

@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.CodeGen" Version="11.2.9.8">
+    <Assembly Name="tokenizer.CodeGen" Version="11.2.9.9">
       <Attributes>
         <Attribute>
           <AttributeName>System.CLSCompliant(true)</AttributeName>
@@ -35,6 +35,7 @@
       <Type Name="Helpers" Kind="Class" />
       <Type Name="IfItem" Kind="Class" />
       <Type Name="LabelItem" Kind="Class" />
+      <Type Name="LockItem" Kind="Class" />
       <Type Name="LoopItem" Kind="Class" />
       <Type Name="MethodItem" Kind="Class" />
       <Type Name="OpStack" Kind="Class" />

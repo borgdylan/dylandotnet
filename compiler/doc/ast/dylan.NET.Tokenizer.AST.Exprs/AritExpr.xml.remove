@@ -1,0 +1,27 @@
+<Type Name="AritExpr" FullName="dylan.NET.Tokenizer.AST.Exprs.AritExpr">
+  <TypeSignature Language="C#" Value="public class AritExpr : dylan.NET.Tokenizer.AST.Exprs.Expr" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi AritExpr extends dylan.NET.Tokenizer.AST.Exprs.Expr" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Exprs.Expr</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AritExpr ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

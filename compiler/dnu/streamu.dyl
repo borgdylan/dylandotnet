@@ -19,8 +19,8 @@ class public auto ansi static StreamUtils
 
 	field public static boolean UseConsole
 
-	field public static Action<of integer, string, string> ErrorH
-	field public static Action<of integer, string, string> WarnH
+	field private static Action<of integer, string, string> _ErrorH
+	field private static Action<of integer, string, string> _WarnH
 
 	method private static void StreamUtils()
 		Stdin = Console::OpenStandardInput()
@@ -29,8 +29,8 @@ class public auto ansi static StreamUtils
 		InS = null
 		OutS = null
 		UseConsole = true
-		ErrorH = null
-		WarnH = null
+		_ErrorH = null
+		_WarnH = null
 	end method
 	
 	[method: ComVisible(false)]
@@ -109,50 +109,60 @@ class public auto ansi static StreamUtils
 	end method
 
 	[method: ComVisible(false)]
-	method public static void add_ErrorH(var eh as Action<of integer, string, string>)
-		if ErrorH = null then
-			ErrorH = eh
+	method public static hidebysig specialname void add_ErrorH(var eh as Action<of integer, string, string>)
+		if _ErrorH = null then
+			_ErrorH = eh
 		else
-			ErrorH = ErrorH + eh
+			_ErrorH = _ErrorH + eh
 		end if
 	end method
 
 	[method: ComVisible(false)]
-	method public static void add_WarnH(var eh as Action<of integer, string, string>)
-		if WarnH = null then
-			WarnH = eh
+	method public static hidebysig specialname void remove_ErrorH(var eh as Action<of integer, string, string>)
+		if _ErrorH != null then
+			_ErrorH = _ErrorH - eh
+		end if
+	end method
+	
+	event none Action<of integer, string, string> ErrorH
+		add add_ErrorH()
+		remove remove_ErrorH()
+	end event
+	
+	[method: ComVisible(false)]
+	method public static hidebysig specialname void add_WarnH(var eh as Action<of integer, string, string>)
+		if _WarnH = null then
+			_WarnH = eh
 		else
-			WarnH = WarnH + eh
+			_WarnH = _WarnH + eh
 		end if
 	end method
 
 	[method: ComVisible(false)]
-	method public static void remove_ErrorH(var eh as Action<of integer, string, string>)
-		if ErrorH != null then
-			ErrorH = ErrorH - eh
+	method public static hidebysig specialname void remove_WarnH(var eh as Action<of integer, string, string>)
+		if _WarnH != null then
+			_WarnH = _WarnH - eh
 		end if
 	end method
-
-	[method: ComVisible(false)]
-	method public static void remove_WarnH(var eh as Action<of integer, string, string>)
-		if WarnH != null then
-			WarnH = WarnH - eh
-		end if
-	end method
+	
+	event none Action<of integer, string, string> WarnH
+		add add_WarnH()
+		remove remove_WarnH()
+	end event
 
 	[method: ComVisible(false)]
 	method public static void WriteWarn(var line as integer, var file as string, var msg as string)
 		WriteLine("WARNING: " + msg + " at line " + $string$line + " in file: " + file)
-		if WarnH != null then
-			WarnH::Invoke(line,file,msg)
+		if _WarnH != null then
+			_WarnH::Invoke(line,file,msg)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void WriteError(var line as integer, var file as string, var msg as string)
 		WriteLine("ERROR: " + msg + " at line " + $string$line + " in file: " + file)
-		if ErrorH != null then
-			ErrorH::Invoke(line,file,msg)
+		if _ErrorH != null then
+			_ErrorH::Invoke(line,file,msg)
 		end if
 		CloseInS()
 		CloseOutS()

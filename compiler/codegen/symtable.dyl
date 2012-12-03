@@ -25,6 +25,7 @@ class public auto ansi static SymTable
 	field private static CtorItem[] NestedCtorLst
 	
 	field private static C5.LinkedList<of IfItem> IfLst
+	field private static C5.LinkedList<of LockItem> LockLst
 	field private static C5.LinkedList<of LoopItem> LoopLst
 	
 	field assembly static C5.TreeSet<of string> DefSyms
@@ -41,6 +42,7 @@ class public auto ansi static SymTable
 		NestedMetLst = new MethodItem[0]
 		NestedCtorLst = new CtorItem[0]
 		IfLst = new C5.LinkedList<of IfItem>()
+		LockLst = new C5.LinkedList<of LockItem>()
 		LoopLst = new C5.LinkedList<of LoopItem>()
 		LblLst = new LabelItem[0]
 		TypLst = new TypeArr[0]
@@ -58,6 +60,11 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void ResetIf()
 		IfLst::Clear()
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ResetLock()
+		LockLst::Clear()
 	end method
 
 	[method: ComVisible(false)]
@@ -295,6 +302,11 @@ class public auto ansi static SymTable
 	method public static void AddIf()
 		IfLst::Push(new IfItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl()))
 	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddLock(var loc as integer)
+		LockLst::Push(new LockItem(loc))
+	end method
 
 	[method: ComVisible(false)]
 	method public static void AddLoop()
@@ -305,6 +317,11 @@ class public auto ansi static SymTable
 	method public static void PopIf()
 		IfLst::Pop()
 	end method
+	
+	[method: ComVisible(false)]
+	method public static void PopLock()
+		LockLst::Pop()
+	end method
 
 	[method: ComVisible(false)]
 	method public static void PopLoop()
@@ -314,13 +331,11 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void AddDef(var sym as string)
 		DefSyms::Add(sym)
-		//Console::WriteLine("+" + sym)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void UnDef(var sym as string)
 		DefSyms::Remove(sym)
-		//Console::WriteLine("-" + sym)
 	end method
 	
 	[method: ComVisible(false)]
@@ -336,6 +351,11 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static Emit.Label ReadIfNxtBlkLbl()
 		return IfLst::get_Last()::NextBlkLabel
+	end method
+	
+	[method: ComVisible(false)]
+	method public static integer ReadLockeeLoc()
+		return LockLst::get_Last()::LockeeLoc
 	end method
 
 	[method: ComVisible(false)]

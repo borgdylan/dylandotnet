@@ -18,3 +18,6 @@ class public auto ansi XmlDocStmt extends Stmt
 	end method
 
 end class
+
+class public auto ansi EndXmlDocStmt extends Stmt
+end class

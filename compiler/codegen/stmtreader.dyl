@@ -507,6 +507,14 @@ class public auto ansi StmtReader
 				end if
 
 				AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, Helpers::ProcessMethodAttrs(mtss::Attrs), rettyp, AsmFactory::TypArr)
+				
+				var pbrv as ParameterBuilder = AsmFactory::CurnMetB::DefineParameter(0, IKVM.Reflection.ParameterAttributes::Retval, $string$null)
+				if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), 0) then
+					foreach ca in SymTable::ParameterCALst::get_Item(0)
+						pbrv::SetCustomAttribute(ca)
+					end for
+				end if
+		
 				AsmFactory::InitMtd()
 
 				if mtssnamarr::get_Count() > 1 then
@@ -705,6 +713,9 @@ class public auto ansi StmtReader
 			if trostmt::RExp != null then
 				eval = new Evaluator()
 				eval::Evaluate(trostmt::RExp)
+				if ILEmitter::Univ::Import(gettype Exception)::IsAssignableFrom(AsmFactory::Type02) == false then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + AsmFactory::Type02::ToString() + "' is not an Exception Type.")
+				end if
 				ILEmitter::EmitThrow()
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No exception to throw specified")

@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.2.9.8">
+    <Assembly Name="tokenizer.AST" Version="11.2.9.9">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -21,15 +21,7 @@
   <Copyright>Copyright (c) Dylan Borg 2012. The library tokenizer.AST.dll is licensed under the LGPLv3.</Copyright>
   <Types>
     <Namespace Name="dylan.NET.Tokenizer.AST.Exprs">
-      <Type Name="AritExpr" Kind="Class" />
-      <Type Name="CastclassExpr" Kind="Class" />
-      <Type Name="ConditionalExpr" Kind="Class" />
       <Type Name="Expr" Kind="Class" />
-      <Type Name="GettypeExpr" Kind="Class" />
-      <Type Name="LogicExpr" Kind="Class" />
-      <Type Name="NewarrExpr" Kind="Class" />
-      <Type Name="NewExpr" Kind="Class" />
-      <Type Name="PtrExpr" Kind="Class" />
       <Type Name="VarExpr" Kind="Class" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Stmts">
@@ -46,7 +38,6 @@
       <Type Name="DebugStmt" Kind="Class" />
       <Type Name="DecStmt" Kind="Class" />
       <Type Name="DelegateStmt" Kind="Class" />
-      <Type Name="DependStmt" Kind="Class" />
       <Type Name="DoStmt" Kind="Class" />
       <Type Name="DoUntilStmt" Kind="Class" />
       <Type Name="DoWhileStmt" Kind="Class" />
@@ -58,11 +49,11 @@
       <Type Name="EndEventStmt" Kind="Class" />
       <Type Name="EndHIfStmt" Kind="Class" />
       <Type Name="EndIfStmt" Kind="Class" />
+      <Type Name="EndLockStmt" Kind="Class" />
       <Type Name="EndMethodStmt" Kind="Class" />
       <Type Name="EndNSStmt" Kind="Class" />
       <Type Name="EndPropStmt" Kind="Class" />
       <Type Name="EndTryStmt" Kind="Class" />
-      <Type Name="EndXmlDocStmt" Kind="Class" />
       <Type Name="EnumStmt" Kind="Class" />
       <Type Name="ErrorStmt" Kind="Class" />
       <Type Name="EventAddStmt" Kind="Class" />
@@ -87,7 +78,7 @@
       <Type Name="LabelStmt" Kind="Class" />
       <Type Name="LiteralStmt" Kind="Class" />
       <Type Name="LocimportStmt" Kind="Class" />
-      <Type Name="MakeasmStmt" Kind="Class" />
+      <Type Name="LockStmt" Kind="Class" />
       <Type Name="MethodAttrStmt" Kind="Class" />
       <Type Name="MethodCallStmt" Kind="Class" />
       <Type Name="MethodStmt" Kind="Class" />
@@ -103,8 +94,6 @@
       <Type Name="RefstdasmStmt" Kind="Class" />
       <Type Name="ReturnStmt" Kind="Class" />
       <Type Name="ScopeStmt" Kind="Class" />
-      <Type Name="SingStmt" Kind="Class" />
-      <Type Name="StdasmStmt" Kind="Class" />
       <Type Name="Stmt" Kind="Class" />
       <Type Name="StmtSet" Kind="Class" />
       <Type Name="ThrowStmt" Kind="Class" />
@@ -115,7 +104,6 @@
       <Type Name="VerStmt" Kind="Class" />
       <Type Name="WarningStmt" Kind="Class" />
       <Type Name="WhileStmt" Kind="Class" />
-      <Type Name="XmlDocStmt" Kind="Class" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Tokens">
       <Type Name="AddTok" Kind="Class" />
@@ -132,7 +120,6 @@
       <Type Name="ContinueTok" Kind="Class" />
       <Type Name="DebugTok" Kind="Class" />
       <Type Name="DelegateTok" Kind="Class" />
-      <Type Name="DependTok" Kind="Class" />
       <Type Name="DllTok" Kind="Class" />
       <Type Name="DoTok" Kind="Class" />
       <Type Name="ElseIfTok" Kind="Class" />
@@ -170,7 +157,7 @@
       <Type Name="LabelTok" Kind="Class" />
       <Type Name="LiteralTok" Kind="Class" />
       <Type Name="LocimportTok" Kind="Class" />
-      <Type Name="MakeasmTok" Kind="Class" />
+      <Type Name="LockTok" Kind="Class" />
       <Type Name="MethodCallTok" Kind="Class" />
       <Type Name="MethodCTok" Kind="Class" />
       <Type Name="MethodNameTok" Kind="Class" />
@@ -182,7 +169,6 @@
       <Type Name="NewCallTok" Kind="Class" />
       <Type Name="NewresTok" Kind="Class" />
       <Type Name="NewTok" Kind="Class" />
-      <Type Name="NullTok" Kind="Class" />
       <Type Name="OffTok" Kind="Class" />
       <Type Name="OfTok" Kind="Class" />
       <Type Name="OnTok" Kind="Class" />
@@ -200,8 +186,6 @@
       <Type Name="ReturnTok" Kind="Class" />
       <Type Name="ScopeTok" Kind="Class" />
       <Type Name="SetTok" Kind="Class" />
-      <Type Name="SingTok" Kind="Class" />
-      <Type Name="StdasmTok" Kind="Class" />
       <Type Name="StructTok" Kind="Class" />
       <Type Name="SwitchTok" Kind="Class" />
       <Type Name="ThenTok" Kind="Class" />
@@ -214,7 +198,6 @@
       <Type Name="VerTok" Kind="Class" />
       <Type Name="WarningTok" Kind="Class" />
       <Type Name="WhileTok" Kind="Class" />
-      <Type Name="XmldocTok" Kind="Class" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Tokens.Attributes">
       <Type Name="AbstractAttr" Kind="Class" />
@@ -328,7 +311,6 @@
       <Type Name="IntegerTok" Kind="Class" />
       <Type Name="IntPtrTok" Kind="Class" />
       <Type Name="LongTok" Kind="Class" />
-      <Type Name="MeTok" Kind="Class" />
       <Type Name="ObjectTok" Kind="Class" />
       <Type Name="SByteTok" Kind="Class" />
       <Type Name="ShortTok" Kind="Class" />

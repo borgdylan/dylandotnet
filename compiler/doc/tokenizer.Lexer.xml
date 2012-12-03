@@ -52,15 +52,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Lexer.Line.isSep(System.String,System.String,System.Boolean@,System.Boolean@)">
-            <param name="cc">To be added.</param>
-            <param name="lc">To be added.</param>
-            <param name="sca">To be added.</param>
-            <param name="scla">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="F:dylan.NET.Tokenizer.Lexer.Line.PrevChar">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

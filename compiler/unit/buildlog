@@ -1,7 +1,8 @@
 
-dylan.NET Compiler v. 11.2.9.8 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.2.9.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2012 Dylan Borg
 
 Now Lexing: unit.dyl...Done.
@@ -9,6 +10,9 @@ Now Parsing: unit.dyl...Done.
 Now Lexing: streamutests.dyl
 Now Parsing: streamutests.dyl
 Referencing Assembly: /usr/lib/mono/4.5/mscorlib.dll
+Finished Processing: streamutests.dyl (worker thread)
+Now Lexing: parseutests.dyl
+Now Parsing: parseutests.dyl
 Referencing Assembly: dnu.dll
 Now Lexing: nunit.dyl
 Now Parsing: nunit.dyl
@@ -23,9 +27,6 @@ Importing Namespace: NUnit.Framework
 Importing Namespace: dylan.NET.UnitTests
 Importing Namespace: dylan.NET.Utils
 Beginning Assembly: unit
-Finished Processing: streamutests.dyl (worker thread)
-Now Lexing: parseutests.dyl
-Now Parsing: parseutests.dyl
 Finished Processing: parseutests.dyl (worker thread)
 Adding Class: dylan.NET.UnitTests.TestParseUtils
 	Adding Method: TestProcessStringExtASCII

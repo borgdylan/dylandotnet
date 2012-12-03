@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi ParameterAttrStmt extends dylan.NET.Tokenizer.AST.Stmts.AttrStmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
-    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.AttrStmt</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public ParameterAttrStmt ();" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="public int Index;" />
       <MemberSignature Language="ILAsm" Value=".field public int32 Index" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>11.2.9.8</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>

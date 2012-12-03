@@ -7,10 +7,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Utils.Constants()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="F:dylan.NET.Utils.Constants.cr">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -43,18 +39,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Utils.ErrorWarnHandler">
-            <param name="line">To be added.</param>
-            <param name="file">To be added.</param>
-            <param name="msg">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="T:dylan.NET.Utils.Keyboard">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Utils.Keyboard()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -107,10 +92,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Utils.ParseUtils()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Utils.ParseUtils.IsHexDigit(System.Char)">
             <param name="c">To be added.</param>
             <summary>To be added.</summary>
@@ -142,10 +123,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Utils.ParseUtils.stack">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Utils.ParseUtils.StringParser(System.String,System.String)">
             <param name="StringToParse">To be added.</param>
             <param name="DelimeterChar">To be added.</param>
@@ -172,10 +149,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Utils.StreamUtils()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Utils.StreamUtils.CloseInS()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -184,7 +157,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Utils.StreamUtils.ErrorH">
+        <member name="E:dylan.NET.Utils.StreamUtils.ErrorH">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -199,14 +172,6 @@
         </member>
         <member name="M:dylan.NET.Utils.StreamUtils.InitOutS(System.IO.Stream)">
             <param name="s">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Utils.StreamUtils.InS">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Utils.StreamUtils.OutS">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -231,7 +196,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Utils.StreamUtils.WarnH">
+        <member name="E:dylan.NET.Utils.StreamUtils.WarnH">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -263,18 +228,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Utils.XmlUtils()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Utils.XmlUtils.AddAttr(System.Xml.Linq.XContainer,System.Xml.Linq.XAttribute)">
-            <param name="el">To be added.</param>
-            <param name="attr">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Utils.XmlUtils.AddAttr(System.Xml.Linq.XElement,System.Xml.Linq.XAttribute)">
             <param name="el">To be added.</param>
             <param name="attr">To be added.</param>
             <summary>To be added.</summary>
@@ -288,13 +242,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.XmlUtils.AddAttrArr(System.Xml.Linq.XElement,System.Xml.Linq.XAttribute[])">
-            <param name="el">To be added.</param>
-            <param name="attrs">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Utils.XmlUtils.AddNode(System.Xml.Linq.XContainer,System.Xml.Linq.XElement)">
             <param name="el">To be added.</param>
             <param name="node">To be added.</param>
@@ -302,21 +249,7 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.XmlUtils.AddNode(System.Xml.Linq.XElement,System.Xml.Linq.XElement)">
-            <param name="el">To be added.</param>
-            <param name="node">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Utils.XmlUtils.AddNodeArr(System.Xml.Linq.XContainer,System.Xml.Linq.XElement[])">
-            <param name="el">To be added.</param>
-            <param name="nodes">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Utils.XmlUtils.AddNodeArr(System.Xml.Linq.XElement,System.Xml.Linq.XElement[])">
             <param name="el">To be added.</param>
             <param name="nodes">To be added.</param>
             <summary>To be added.</summary>
@@ -355,21 +288,7 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.XmlUtils.XPathSelectEl(System.Xml.Linq.XElement,System.String)">
-            <param name="el">To be added.</param>
-            <param name="XPathQuery">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Utils.XmlUtils.XPathSelectEl(System.Xml.Linq.XNode,System.String)">
-            <param name="el">To be added.</param>
-            <param name="XPathQuery">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Utils.XmlUtils.XPathSelectEls(System.Xml.Linq.XElement,System.String)">
             <param name="el">To be added.</param>
             <param name="XPathQuery">To be added.</param>
             <summary>To be added.</summary>

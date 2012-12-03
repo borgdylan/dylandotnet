@@ -39,7 +39,7 @@ end #if
 #include "dnc/assemblyinfo.dyl"
 
 assembly dnc exe
-ver 11.2.9.8
+ver 11.2.9.9
 
 namespace dylan.NET.Compiler
 	#include "dnc/Mod1.dyl"

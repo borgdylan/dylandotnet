@@ -39,7 +39,7 @@ import IKVM.Reflection.Emit
 #include "ast/assemblyinfo.dyl"
 
 assembly tokenizer.AST dll
-ver 11.2.9.8
+ver 11.2.9.9
 
 namespace dylan.NET.Tokenizer.AST.Tokens
 	#include "ast/token.dyl"
@@ -95,29 +95,30 @@ namespace dylan.NET.Tokenizer.AST
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Exprs
-	#include "ast/newarrexpr.dyl"
-	#include "ast/newexpr.dyl"
-	#include "ast/castclassexpr.dyl"
-	#include "ast/gettypeexpr.dyl"
-	#include "ast/ptrexpr.dyl"
-	#include "ast/otherexpr.dyl"
-	#include "ast/conditionalexpr.dyl"
+	#include "ast/varexpr.dyl"
+	//#include "ast/newarrexpr.dyl"
+	//#include "ast/newexpr.dyl"
+	//#include "ast/castclassexpr.dyl"
+	//#include "ast/gettypeexpr.dyl"
+	//#include "ast/ptrexpr.dyl"
+	//#include "ast/otherexpr.dyl"
+	//#include "ast/conditionalexpr.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Stmts
-	#include "ast/dependstmt.dyl"
-	#include "ast/stdasmstmt.dyl"
-	#include "ast/singstmt.dyl"
+	//#include "ast/dependstmt.dyl"
+	//#include "ast/stdasmstmt.dyl"
+	//#include "ast/singstmt.dyl"
 	#include "ast/debugstmt.dyl"
 	#include "ast/scopestmt.dyl"
-	#include "ast/makeasmstmt.dyl"
+	//#include "ast/makeasmstmt.dyl"
 	#include "ast/refasmstmt.dyl"
 	#include "ast/newresstmt.dyl"
 	#include "ast/importstmts.dyl"
 	#include "ast/asmstmt.dyl"
 	#include "ast/verstmt.dyl"
 	#include "ast/includestmt.dyl"
-	#include "ast/xmldocstmt.dyl"
+	//#include "ast/xmldocstmt.dyl"
 	#include "ast/nsstmt.dyl"
 	#include "ast/classstmt.dyl"
 	#include "ast/delegatestmt.dyl"
