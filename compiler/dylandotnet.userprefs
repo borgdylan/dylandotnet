@@ -52,7 +52,7 @@
       <File FileName="unit/streamutests.dyl" Line="62" Column="18" />
       <File FileName="dnu/consts.dyl" Line="1" Column="1" />
       <File FileName="ast/aritops.dyl" Line="13" Column="12" />
-      <File FileName="templateproj/template.dyl" Line="448" Column="51" />
+      <File FileName="templateproj/template.dyl" Line="452" Column="32" />
       <File FileName="tests/transnames.dyl" Line="36" Column="6" />
       <File FileName="ast/propstmt.dyl" Line="56" Column="21" />
       <File FileName="ast/attributes.dyl" Line="11" Column="29" />
