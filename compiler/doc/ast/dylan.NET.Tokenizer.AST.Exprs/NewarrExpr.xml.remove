@@ -3,6 +3,30 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi NewarrExpr extends dylan.NET.Tokenizer.AST.Exprs.Expr" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
+    <AssemblyVersion>11.2.7.2</AssemblyVersion>
+    <AssemblyVersion>11.2.7.3</AssemblyVersion>
+    <AssemblyVersion>11.2.7.4</AssemblyVersion>
+    <AssemblyVersion>11.2.7.5</AssemblyVersion>
+    <AssemblyVersion>11.2.7.6</AssemblyVersion>
+    <AssemblyVersion>11.2.7.7</AssemblyVersion>
+    <AssemblyVersion>11.2.7.8</AssemblyVersion>
+    <AssemblyVersion>11.2.7.9</AssemblyVersion>
+    <AssemblyVersion>11.2.8.1</AssemblyVersion>
+    <AssemblyVersion>11.2.8.2</AssemblyVersion>
+    <AssemblyVersion>11.2.8.3</AssemblyVersion>
+    <AssemblyVersion>11.2.8.4</AssemblyVersion>
+    <AssemblyVersion>11.2.8.5</AssemblyVersion>
+    <AssemblyVersion>11.2.8.6</AssemblyVersion>
+    <AssemblyVersion>11.2.8.7</AssemblyVersion>
+    <AssemblyVersion>11.2.8.9</AssemblyVersion>
+    <AssemblyVersion>11.2.9.1</AssemblyVersion>
+    <AssemblyVersion>11.2.9.2</AssemblyVersion>
+    <AssemblyVersion>11.2.9.3</AssemblyVersion>
+    <AssemblyVersion>11.2.9.4</AssemblyVersion>
+    <AssemblyVersion>11.2.9.5</AssemblyVersion>
+    <AssemblyVersion>11.2.9.6</AssemblyVersion>
+    <AssemblyVersion>11.2.9.7</AssemblyVersion>
+    <AssemblyVersion>11.2.9.8</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Exprs.Expr</BaseTypeName>
@@ -17,6 +41,32 @@
       <MemberSignature Language="C#" Value="public NewarrExpr ();" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
+        <AssemblyVersion>11.2.8.3</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.6</AssemblyVersion>
+        <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+        <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
+        <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -27,6 +77,32 @@
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token ArrayLen;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Token ArrayLen" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
+        <AssemblyVersion>11.2.8.3</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.6</AssemblyVersion>
+        <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+        <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
+        <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
       </ReturnValue>
@@ -39,6 +115,32 @@
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ArrayType;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ArrayType" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.7.2</AssemblyVersion>
+        <AssemblyVersion>11.2.7.3</AssemblyVersion>
+        <AssemblyVersion>11.2.7.4</AssemblyVersion>
+        <AssemblyVersion>11.2.7.5</AssemblyVersion>
+        <AssemblyVersion>11.2.7.6</AssemblyVersion>
+        <AssemblyVersion>11.2.7.7</AssemblyVersion>
+        <AssemblyVersion>11.2.7.8</AssemblyVersion>
+        <AssemblyVersion>11.2.7.9</AssemblyVersion>
+        <AssemblyVersion>11.2.8.1</AssemblyVersion>
+        <AssemblyVersion>11.2.8.2</AssemblyVersion>
+        <AssemblyVersion>11.2.8.3</AssemblyVersion>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.6</AssemblyVersion>
+        <AssemblyVersion>11.2.8.7</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+        <AssemblyVersion>11.2.9.1</AssemblyVersion>
+        <AssemblyVersion>11.2.9.2</AssemblyVersion>
+        <AssemblyVersion>11.2.9.3</AssemblyVersion>
+        <AssemblyVersion>11.2.9.4</AssemblyVersion>
+        <AssemblyVersion>11.2.9.5</AssemblyVersion>
+        <AssemblyVersion>11.2.9.6</AssemblyVersion>
+        <AssemblyVersion>11.2.9.7</AssemblyVersion>
+        <AssemblyVersion>11.2.9.8</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
       </ReturnValue>

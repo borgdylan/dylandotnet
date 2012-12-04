@@ -44,7 +44,6 @@
     <Folder Include="dnc\" />
     <Folder Include="lexer\" />
     <Folder Include="parser\" />
-    <Folder Include="web\" />
     <Folder Include="unit\" />
   </ItemGroup>
   <ItemGroup>

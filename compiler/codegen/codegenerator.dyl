@@ -21,6 +21,10 @@ class public auto ansi CodeGenerator
 
 					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
 					var lx as Lexer = new Lexer()
+					if File::Exists(inclustm::Path::Value) == false then
+						//StreamUtils::Write(c"\n")
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "File '" + inclustm::Path::Value + "' does not exist.")
+					end if
 					StreamUtils::Write("Now Lexing: ")
 					StreamUtils::WriteLine(inclustm::Path::Value)
 					var pstmts as StmtSet = lx::Analyze(inclustm::Path::Value)
@@ -121,6 +125,10 @@ class public auto ansi CodeGenerator
 						
 						if inclustm::SSet == null then
 							var lx as Lexer = new Lexer()
+							if File::Exists(inclustm::Path::Value) == false then
+								//StreamUtils::Write(c"\n")
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "File '" + inclustm::Path::Value + "' does not exist.")
+							end if
 							StreamUtils::Write("Now Lexing: ")
 							StreamUtils::WriteLine(inclustm::Path::Value)
 							var pstmts as StmtSet = lx::Analyze(inclustm::Path::Value)

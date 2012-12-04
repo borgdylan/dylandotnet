@@ -53,7 +53,7 @@ class public auto ansi static Program
 		elseif args[l] < 1 then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		else
-			//try
+			try
 				var i as integer = -1
 
 				do until i = (args[l] - 1)
@@ -68,6 +68,10 @@ class public auto ansi static Program
 						AsmFactory::Init()
 						Importer::Init()
 						var lx as Lexer = new Lexer()
+						if File::Exists(args[i]) == false then
+							//StreamUtils::Write(c"\n")
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "File '" + args[i] + "' does not exist.")
+						end if
 						StreamUtils::Write("Now Lexing: ")
 						StreamUtils::Write(args[i])
 						var pstmts as StmtSet = lx::Analyze(args[i])
@@ -81,10 +85,10 @@ class public auto ansi static Program
 						cg::EmitMSIL(ppstmts, args[i])
 					end if
 				end do
-			//catch ex as Exception
-			//	StreamUtils::WriteLine(ex::ToString())
-			//	Environment::Exit(2)
-			//end try
+			catch ex as Exception
+				StreamUtils::Write(c"\n")
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+			end try
 
 		end if
 
