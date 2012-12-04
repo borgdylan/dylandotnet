@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnc/Mod1.dyl">
     <Files>
       <File FileName="codegen/eval.dyl" Line="910" Column="36" />
       <File FileName="codegen/helpers.dyl" Line="542" Column="29" />
@@ -17,10 +17,10 @@
       <File FileName="ast/chars.dyl" Line="30" Column="12" />
       <File FileName="ast/otherkeywords.dyl" Line="207" Column="12" />
       <File FileName="ast/ifstmts.dyl" Line="67" Column="56" />
-      <File FileName="dnc/Mod1.dyl" Line="45" Column="57" />
+      <File FileName="dnc/Mod1.dyl" Line="72" Column="10" />
       <File FileName="codegen/symtable.dyl" Line="345" Column="2" />
-      <File FileName="codegen/codegenerator.dyl" Line="142" Column="7" />
-      <File FileName="codegen/stmtreader.dyl" Line="491" Column="2" />
+      <File FileName="codegen/codegenerator.dyl" Line="25" Column="9" />
+      <File FileName="codegen/stmtreader.dyl" Line="900" Column="126" />
       <File FileName="dev/pc2cd.dyl" Line="127" Column="1" />
       <File FileName="dev/pc2dn.dyl" Line="43" Column="23" />
       <File FileName="dnc.dyl" Line="37" Column="8" />
@@ -52,7 +52,6 @@
       <File FileName="unit/streamutests.dyl" Line="62" Column="18" />
       <File FileName="dnu/consts.dyl" Line="1" Column="1" />
       <File FileName="ast/aritops.dyl" Line="13" Column="12" />
-      <File FileName="templateproj/template.dyl" Line="448" Column="51" />
       <File FileName="tests/transnames.dyl" Line="36" Column="6" />
       <File FileName="ast/propstmt.dyl" Line="56" Column="21" />
       <File FileName="ast/attributes.dyl" Line="11" Column="29" />
@@ -69,6 +68,7 @@
       <File FileName="ast/stdasmstmt.dyl" Line="19" Column="1" />
       <File FileName="ast/attrvalpair.dyl" Line="1" Column="1" />
       <File FileName="ast/expr.dyl" Line="36" Column="32" />
+      <File FileName="templateproj/template.dyl" Line="25" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -77,7 +77,9 @@
             <Node name="ast" expanded="True" />
             <Node name="codegen" expanded="True" />
             <Node name="dev" expanded="True" />
-            <Node name="dnc" expanded="True" />
+            <Node name="dnc" expanded="True">
+              <Node name="Mod1.dyl" selected="True" />
+            </Node>
             <Node name="dnr" expanded="True" />
             <Node name="dnu" expanded="True" />
             <Node name="lexer" expanded="True" />
@@ -85,9 +87,7 @@
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>
-          <Node name="template" expanded="True">
-            <Node name="template.dyl" selected="True" />
-          </Node>
+          <Node name="template" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
