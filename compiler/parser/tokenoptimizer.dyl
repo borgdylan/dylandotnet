@@ -879,7 +879,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		if tok::Value = "set" then
+		if (tok::Value = "set") and isFirstToken then
 			var setk as SetTok = new SetTok()
 			setk::Line = tok::Line
 			setk::Value = tok::Value
@@ -887,7 +887,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		if tok::Value = "get" then
+		if (tok::Value = "get") and isFirstToken then
 			var getk as GetTok = new GetTok()
 			getk::Line = tok::Line
 			getk::Value = tok::Value
@@ -895,7 +895,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		if tok::Value = "add" then
+		if (tok::Value = "add") and isFirstToken then
 			var adtk as AddTok = new AddTok()
 			adtk::Line = tok::Line
 			adtk::Value = tok::Value
@@ -903,7 +903,7 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
-		if tok::Value = "remove" then
+		if (tok::Value = "remove")  and isFirstToken then
 			var rmtk as RemoveTok = new RemoveTok()
 			rmtk::Line = tok::Line
 			rmtk::Value = tok::Value

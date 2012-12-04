@@ -15,7 +15,7 @@ class public auto ansi Module1
 
 	method public static double subtract(var n1 as double, var n2 as double)
 		return n1 - n2
-		end method
+	end method
 
 	method public static double multiply(var n1 as double, var n2 as double)
 		return n1 * n2

@@ -29,7 +29,12 @@ Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Importing Namespace: System
 Beginning Assembly: arit
 Adding Class: arit.Module1
-	Adding Method: 
+	Adding Method: add
+	Adding Method: subtract
+	Adding Method: multiply
+	Adding Method: divide
+	Adding Method: main
+Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.2.9.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.

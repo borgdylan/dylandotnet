@@ -1,3 +1,0 @@
-#! /bin/sh
-
-exec @MONO@ @libdir@/dylandotnet/dnc.exe "$@"
