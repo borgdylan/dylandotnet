@@ -129,6 +129,11 @@ class public auto ansi StmtReader
 				rastm::AsmPath::Value = rastm::AsmPath::Value::Trim(tmpchrarr)
 			end if
 			rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::Value)
+			
+			if File::Exists(rastm::AsmPath::Value) == false then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Assembly File '" + rastm::AsmPath::Value + "' does not exist.")
+			end if
+			
 			StreamUtils::Write("Referencing Assembly: ")
 			StreamUtils::WriteLine(rastm::AsmPath::Value)
 			Importer::AddAsm(ILEmitter::Univ::LoadFile(rastm::AsmPath::Value))
@@ -141,6 +146,11 @@ class public auto ansi StmtReader
 			end if
 			rsastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rsastm::AsmPath::Value)
 			rsastm::AsmPath::Value = Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), rsastm::AsmPath::Value)
+			
+			if File::Exists(rsastm::AsmPath::Value) == false then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Assembly File '" + rsastm::AsmPath::Value + "' does not exist.")
+			end if
+			
 			StreamUtils::Write("Referencing Assembly: ")
 			StreamUtils::WriteLine(rsastm::AsmPath::Value)
 			Importer::AddAsm(ILEmitter::Univ::LoadFile(rsastm::AsmPath::Value))
@@ -295,7 +305,9 @@ class public auto ansi StmtReader
 				i = i + 1
 				interftyp = Helpers::CommitEvalTTok(clss::ImplInterfaces[i])
 				if interftyp = null then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::InhClass::Value + "' is not defined or is not accessible.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::ImplInterfaces[i]::Value + "' is not defined or is not accessible.")
+				elseif interftyp::get_IsInterface() == false then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + interftyp::ToString() + "' is not an interface.")
 				end if
 				AsmFactory::CurnTypB::AddInterfaceImplementation(interftyp)
 
@@ -546,6 +558,7 @@ class public auto ansi StmtReader
 			if ILEmitter::AbstractFlg = false then
 				ILEmitter::EmitRet()
 				SymTable::CheckUnusedVar()
+				SymTable::CheckCtrlBlks()
 				if AsmFactory::CurnMetName = "main" then
 					if AsmFactory::AsmMode = "exe" then
 						AsmFactory::AsmB::SetEntryPoint(ILEmitter::Met)

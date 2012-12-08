@@ -784,6 +784,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.CheckCtrlBlks()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.CheckUnusedVar()">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1209,6 +1213,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.VarItem.Stored">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.VarItem.StoreLines">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

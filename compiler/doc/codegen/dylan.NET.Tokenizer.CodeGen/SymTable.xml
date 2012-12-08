@@ -474,6 +474,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CheckCtrlBlks">
+      <MemberSignature Language="C#" Value="public static void CheckCtrlBlks ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void CheckCtrlBlks() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CheckUnusedVar">
       <MemberSignature Language="C#" Value="public static void CheckUnusedVar ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void CheckUnusedVar() cil managed" />

@@ -1276,7 +1276,7 @@ class public auto ansi beforefieldinit Evaluator
 						Helpers::CheckAssignability(vr::VarTyp, outt)
 						Helpers::EmitLocSt(vr::Index, vr::LocArg)
 						vr::Stored = true
-						vr::Line = ILEmitter::LineNr
+						vr::StoreLines::Add(ILEmitter::LineNr)
 					end if
 				end if
 				if vr = null then

@@ -433,11 +433,25 @@ class public auto ansi static SymTable
 			if (vlec::Used = false) and vlec::LocArg then
 				if vlec::Stored then
 					StreamUtils::WriteWarn(vlec::Line, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was initialised but then not used.")
+					foreach line in vlec::StoreLines
+						if line != vlec::Line then
+							StreamUtils::WriteWarn(line, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was initialised but then not used.")
+						end if
+					end for
 				else
 					StreamUtils::WriteWarn(vlec::Line, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was declared but never used.")
 				end if
 			end if
 		end for
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void CheckCtrlBlks()
+		if IfLst::get_Count() != 0 then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "This method has unterminated If statements.")
+		elseif LoopLst::get_Count() != 0 then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "This method has unterminated looping statements.")
+		end if
 	end method
 	
 	[method: ComVisible(false)]
