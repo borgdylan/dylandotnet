@@ -58,7 +58,7 @@ class public auto ansi Algebra
 
 		var str as string = ""
 
-		return $string$xsqr + "x2" + $string$op1 + $string$mid "x" + $string$op2 + $string$cons
+		return $string$xsqr + "x2" + $string$op1 + $string$mid + "x" + $string$op2 + $string$cons
 
 	end method
 

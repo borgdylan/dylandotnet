@@ -16,6 +16,7 @@ class public auto ansi VarItem
 	field public boolean Used
 	field public boolean Stored
 	field public integer Line
+	field public C5.TreeSet<of integer> StoreLines
 
 	method public void VarItem()
 		me::ctor()
@@ -26,6 +27,7 @@ class public auto ansi VarItem
 		Used = false
 		Stored = false
 		Line = 0
+		StoreLines = new C5.TreeSet<of integer>()
 	end method
 
 	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type)
@@ -37,6 +39,7 @@ class public auto ansi VarItem
 		Used = false
 		Stored = false
 		Line = 0
+		StoreLines = new C5.TreeSet<of integer>()
 	end method
 
 	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type, var line as integer)
@@ -48,6 +51,7 @@ class public auto ansi VarItem
 		Used = false
 		Stored = false
 		Line = line
+		StoreLines = new C5.TreeSet<of integer>()
 	end method
 	
 	method public hidebysig virtual string ToString()

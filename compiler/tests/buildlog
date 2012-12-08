@@ -16,7 +16,7 @@ tokenizer.AST, Version=11.2.9.9, Culture=neutral, PublicKeyToken=null
 Runtime & OS Version Info:
 mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 Runtime Version: 2.0.50727.1433
-OS: Unix 3.5.0.19
+OS: Unix 3.5.0.20
 dylan.NET Compiler v. 11.2.9.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
@@ -173,7 +173,7 @@ Adding Class: mathematics.Algebra
 	Adding Method: SolveTrinomialNeg
 	Adding Method: ExpandTrinomial
 WARNING: Converting from 'System.String' to 'System.String' is redundant. at line 61 in file: mathematics.dyl
-WARNING: The variable op2 was initialised but then not used. at line 56 in file: mathematics.dyl
+WARNING: Converting from 'System.String' to 'System.String' is redundant. at line 61 in file: mathematics.dyl
 WARNING: The variable str was initialised but then not used. at line 59 in file: mathematics.dyl
 Adding Class: mathematics.Arithmetic
 	Adding Method: Add
@@ -463,6 +463,7 @@ WARNING: The variable i was initialised but then not used. at line 78 in file: p
 Adding Class: protectedtests.InheritingClass
 	Adding Constructor: InheritingClass
 	Adding Method: Test
+WARNING: The variable i was initialised but then not used. at line 96 in file: protectedtests.dyl
 WARNING: The variable i was initialised but then not used. at line 97 in file: protectedtests.dyl
 Adding Class: protectedtests.Program
 	Adding Method: main
