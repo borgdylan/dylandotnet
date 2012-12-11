@@ -360,6 +360,10 @@ install: prodscript
 	$(install_sh_PROGRAM) pc2cd.exe $(DESTDIR)$(libdir)/dylandotnet-dev/pc2cd.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet-dev/pc2cd.exe
 
+	if [[ $(host) =~ i686-pc-linux-gnu ]] ; then \
+		$(MONO) --aot $(DESTDIR)$(libdir)/dylandotnet-dev/*.exe; \
+	fi
+
 uninstall:
 	rm -f $(DESTDIR)$(bindir)/pc2dylandotnet
 	rm -f $(DESTDIR)$(bindir)/pc2curdir

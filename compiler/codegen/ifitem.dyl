@@ -11,17 +11,20 @@ class public auto ansi IfItem
 	field public Emit.Label EndLabel
 	field public Emit.Label NextBlkLabel
 	field public boolean ElsePass
+	field public integer Line
 
 	method public void IfItem()
 		me::ctor()
 		ElsePass = false
+		Line = 0
 	end method
 
-	method public void IfItem(var endl as Emit.Label, var nbl as Emit.Label)
+	method public void IfItem(var endl as Emit.Label, var nbl as Emit.Label, var ln as integer)
 		me::ctor()
 		EndLabel = endl
 		NextBlkLabel = nbl
 		ElsePass = false
+		Line = ln
 	end method
 
 end class
