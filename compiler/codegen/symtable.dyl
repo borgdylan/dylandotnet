@@ -305,7 +305,7 @@ class public auto ansi static SymTable
 	
 	[method: ComVisible(false)]
 	method public static void AddLock(var loc as integer)
-		LockLst::Push(new LockItem(loc))
+		LockLst::Push(new LockItem(loc, ILEmitter::LineNr))
 	end method
 
 	[method: ComVisible(false)]
@@ -454,6 +454,10 @@ class public auto ansi static SymTable
 		elseif LoopLst::get_Count() != 0 then
 			foreach lpite in LoopLst
 				StreamUtils::WriteError(lpite::Line, ILEmitter::CurSrcFile, "This looping statement is unterminated.")
+			end for
+		elseif LockLst::get_Count() != 0 then
+			foreach lckite in LockLst
+				StreamUtils::WriteError(lckite::Line, ILEmitter::CurSrcFile, "This lock statement is unterminated.")
 			end for
 		end if
 	end method

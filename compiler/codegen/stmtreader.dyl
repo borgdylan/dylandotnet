@@ -827,11 +827,11 @@ class public auto ansi StmtReader
 			Helpers::ApplyPropAttrs()
 			SymTable::ResetPropCAs()
 			
-			if AsmFactory::isNested then
+			//if AsmFactory::isNested then
 				//SymTable::AddNestedProp(prss::PropertyName::Value, ptyp, AsmFactory::CurnPropB)
-			else
+			//else
 				//SymTable::AddProp(prss::PropertyName::Value, ptyp, AsmFactory::CurnPropB)
-			end if
+			//end if
 
 			StreamUtils::Write("	Adding Property: ")
 			StreamUtils::WriteLine(prss::PropertyName::Value)
@@ -909,6 +909,33 @@ class public auto ansi StmtReader
 			SymTable::AddPropCA(AttrStmtToCAB($PropertyAttrStmt$stm))
 		elseif stm is EventAttrStmt then
 			SymTable::AddEventCA(AttrStmtToCAB($EventAttrStmt$stm))
+		elseif stm is LockStmt then
+			var lstm as LockStmt = $LockStmt$stm
+			SymTable::PushScope()
+			eval = new Evaluator()
+			eval::Evaluate(lstm::Lockee)
+			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type02) then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Locks should only be taken on Objects and not Valuetypes.")
+			end if
+			ILEmitter::DeclVar(String::Empty, ILEmitter::Univ::Import(gettype object))
+			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			var lockee as integer = ILEmitter::LocInd
+			ILEmitter::EmitStloc(lockee)
+			SymTable::AddLock(lockee)
+			ILEmitter::EmitLdloc(lockee)
+			var soarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
+			soarr[0] = ILEmitter::Univ::Import(gettype object)
+			ILEmitter::EmitCall(ILEmitter::Univ::Import(gettype Monitor)::GetMethod("Enter",soarr))
+			ILEmitter::EmitTry()
+		elseif stm is EndLockStmt then
+			ILEmitter::EmitFinally()
+			ILEmitter::EmitLdloc(SymTable::ReadLockeeLoc())
+			var soarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
+			soarr[0] = ILEmitter::Univ::Import(gettype object)
+			ILEmitter::EmitCall(ILEmitter::Univ::Import(gettype Monitor)::GetMethod("Exit",soarr))
+			ILEmitter::EmitEndTry()
+			SymTable::PopLock()
+			SymTable::PopScope()
 		else
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
 		end if

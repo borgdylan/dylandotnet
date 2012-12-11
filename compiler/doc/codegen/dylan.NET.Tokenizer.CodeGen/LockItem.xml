@@ -24,14 +24,28 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public LockItem (int loc);" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(int32 loc) cil managed" />
+      <MemberSignature Language="C#" Value="public LockItem (int loc, int ln);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(int32 loc, int32 ln) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="loc" Type="System.Int32" />
+        <Parameter Name="ln" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="loc">To be added.</param>
+        <param name="ln">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Line">
+      <MemberSignature Language="C#" Value="public int Line;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Line" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

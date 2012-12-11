@@ -113,8 +113,7 @@ class public auto ansi CodeGenerator
 					var pth as string
 					var sset as StmtSet
 					
-					Monitor::Enter(inclustm::Path)
-					try
+					lock inclustm::Path
 						if inclustm::Path::Value like c"^\q(.)*\q$" then
 							var tmpchrarr as char[] = new char[1]
 							tmpchrarr[0] = c'\q'
@@ -144,9 +143,7 @@ class public auto ansi CodeGenerator
 						else
 							sset = inclustm::SSet
 						end if
-					finally
-						Monitor::Exit(inclustm::Path)
-					end try
+					end lock
 						
 					EmitMSIL(sset, pth)
 				else
