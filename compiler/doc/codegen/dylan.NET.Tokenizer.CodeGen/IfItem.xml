@@ -24,16 +24,18 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public IfItem (IKVM.Reflection.Emit.Label endl, IKVM.Reflection.Emit.Label nbl);" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(valuetype IKVM.Reflection.Emit.Label endl, valuetype IKVM.Reflection.Emit.Label nbl) cil managed" />
+      <MemberSignature Language="C#" Value="public IfItem (IKVM.Reflection.Emit.Label endl, IKVM.Reflection.Emit.Label nbl, int ln);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(valuetype IKVM.Reflection.Emit.Label endl, valuetype IKVM.Reflection.Emit.Label nbl, int32 ln) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="endl" Type="IKVM.Reflection.Emit.Label" />
         <Parameter Name="nbl" Type="IKVM.Reflection.Emit.Label" />
+        <Parameter Name="ln" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="endl">To be added.</param>
         <param name="nbl">To be added.</param>
+        <param name="ln">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -56,6 +58,18 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Line">
+      <MemberSignature Language="C#" Value="public int Line;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Line" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

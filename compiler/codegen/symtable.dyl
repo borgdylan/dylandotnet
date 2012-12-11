@@ -300,7 +300,7 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static void AddIf()
-		IfLst::Push(new IfItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl()))
+		IfLst::Push(new IfItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), ILEmitter::LineNr))
 	end method
 	
 	[method: ComVisible(false)]
@@ -310,7 +310,7 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static void AddLoop()
-		LoopLst::Push(new LoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl()))
+		LoopLst::Push(new LoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), ILEmitter::LineNr))
 	end method
 
 	[method: ComVisible(false)]
@@ -340,7 +340,7 @@ class public auto ansi static SymTable
 	
 	[method: ComVisible(false)]
 	method public static boolean EvalDef(var sym as string)
-		return DefSyms::Find(ref|sym)
+		return DefSyms::Find(ref sym)
 	end method
 	
 	[method: ComVisible(false)]
@@ -448,9 +448,13 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void CheckCtrlBlks()
 		if IfLst::get_Count() != 0 then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "This method has unterminated If statements.")
+			foreach ifite in IfLst
+				StreamUtils::WriteError(ifite::Line, ILEmitter::CurSrcFile, "This If statement is unterminated.")
+			end for
 		elseif LoopLst::get_Count() != 0 then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "This method has unterminated looping statements.")
+			foreach lpite in LoopLst
+				StreamUtils::WriteError(lpite::Line, ILEmitter::CurSrcFile, "This looping statement is unterminated.")
+			end for
 		end if
 	end method
 	

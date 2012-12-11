@@ -497,9 +497,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.IfItem(IKVM.Reflection.Emit.Label,IKVM.Reflection.Emit.Label)">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.IfItem(IKVM.Reflection.Emit.Label,IKVM.Reflection.Emit.Label,System.Int32)">
             <param name="endl">To be added.</param>
             <param name="nbl">To be added.</param>
+            <param name="ln">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -508,6 +509,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.IfItem.EndLabel">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.IfItem.Line">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -562,13 +567,18 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.LoopItem(IKVM.Reflection.Emit.Label,IKVM.Reflection.Emit.Label)">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.LoopItem(IKVM.Reflection.Emit.Label,IKVM.Reflection.Emit.Label,System.Int32)">
             <param name="startl">To be added.</param>
             <param name="endl">To be added.</param>
+            <param name="ln">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.LoopItem.EndLabel">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.LoopItem.Line">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

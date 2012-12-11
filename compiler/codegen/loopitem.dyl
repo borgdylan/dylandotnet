@@ -10,15 +10,18 @@ class public auto ansi LoopItem
 
 	field public Emit.Label EndLabel
 	field public Emit.Label StartLabel
+	field public integer Line
 
 	method public void LoopItem()
 		me::ctor()
+		Line = 0
 	end method
 
-	method public void LoopItem(var startl as Emit.Label, var endl as Emit.Label)
+	method public void LoopItem(var startl as Emit.Label, var endl as Emit.Label, var ln as integer)
 		me::ctor()
 		EndLabel = endl
 		StartLabel = startl
+		Line = ln
 	end method
 
 end class

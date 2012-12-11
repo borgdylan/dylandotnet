@@ -26,6 +26,10 @@ install: prodscript
 	$(install_sh_PROGRAM) dnc.exe $(DESTDIR)$(libdir)/dylandotnet4/dnc.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/dnc.exe
 	
+	if [[ $(host) =~ i686-pc-linux-gnu ]] ; then \
+		$(MONO) --aot $(DESTDIR)$(libdir)/dylandotnet4/*.exe $(DESTDIR)$(libdir)/dylandotnet4/*.dll; \
+	fi
+	
 	if [[ $(host) =~ .*-apple-darwin.* ]] ; then \
 		$(install_sh_PROGRAM) dylandotnet4.pc /Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig/dylandotnet4.pc; \
 		chmod -x /Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig/dylandotnet4.pc; \
