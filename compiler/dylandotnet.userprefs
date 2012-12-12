@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/codegenerator.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/typelist.dyl">
     <Files>
       <File FileName="codegen/eval.dyl" Line="910" Column="36" />
-      <File FileName="codegen/helpers.dyl" Line="542" Column="29" />
+      <File FileName="codegen/helpers.dyl" Line="1472" Column="12" />
       <File FileName="ast/typetoks.dyl" Line="197" Column="22" />
       <File FileName="ast/methodnametok.dyl" Line="30" Column="19" />
       <File FileName="lexer/line.dyl" Line="367" Column="23" />
@@ -30,10 +30,10 @@
       <File FileName="tokenizer.CodeGen.dyl" Line="64" Column="38" />
       <File FileName="tokenizer.Lexer.dyl" Line="32" Column="8" />
       <File FileName="tokenizer.Parser.dyl" Line="36" Column="47" />
-      <File FileName="dnr/loader.dyl" Line="399" Column="8" />
-      <File FileName="codegen/typelist.dyl" Line="21" Column="26" />
+      <File FileName="dnr/loader.dyl" Line="224" Column="1" />
+      <File FileName="codegen/typelist.dyl" Line="185" Column="4" />
       <File FileName="codegen/typearr.dyl" Line="1" Column="1" />
-      <File FileName="codegen/typeitem.dyl" Line="60" Column="55" />
+      <File FileName="codegen/typeitem.dyl" Line="13" Column="59" />
       <File FileName="codegen/milambdas.dyl" Line="1" Column="1" />
       <File FileName="tests/protectedtests.dyl" Line="1" Column="1" />
       <File FileName="tests/strrecurse.dyl" Line="1" Column="1" />
@@ -48,7 +48,7 @@
       <File FileName="tests/PersonProg.dyl" Line="1" Column="1" />
       <File FileName="unit/parseutests.dyl" Line="1" Column="1" />
       <File FileName="dnr/instructionhelper.dyl" Line="59" Column="11" />
-      <File FileName="dnr/ilemitter.dyl" Line="968" Column="49" />
+      <File FileName="dnr/ilemitter.dyl" Line="35" Column="20" />
       <File FileName="unit/streamutests.dyl" Line="62" Column="18" />
       <File FileName="dnu/consts.dyl" Line="1" Column="1" />
       <File FileName="ast/aritops.dyl" Line="13" Column="12" />
@@ -77,7 +77,7 @@
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
             <Node name="codegen" expanded="True">
-              <Node name="codegenerator.dyl" selected="True" />
+              <Node name="typelist.dyl" selected="True" />
             </Node>
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
