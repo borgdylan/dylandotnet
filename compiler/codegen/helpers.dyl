@@ -1441,6 +1441,16 @@ class public auto ansi static Helpers
 			return false
 		end if
 	end method
+	
+	[method: ComVisible(false)]
+	method public static IEnumerable<of IKVM.Reflection.Type> GetTypeInterfaces(var t as IKVM.Reflection.Type)
+		var ti as TypeItem = SymTable::TypeLst::GetTypeItem(t)
+		if ti != null then
+			return ti::Interfaces
+		else
+			return t::GetInterfaces()
+		end if
+	end method
 
 	[method: ComVisible(false)]
 	method public static MethodInfo GetExtMet(var t as IKVM.Reflection.Type, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
@@ -1556,7 +1566,7 @@ class public auto ansi static Helpers
 		elseif flgs[1] then
 			ie3 = ie2
 		else
-			foreach interf in t::GetInterfaces()
+			foreach interf in GetTypeInterfaces(t)
 				if interf::get_IsGenericType() then
 					if ie::Equals(interf::GetGenericTypeDefinition()) then
 						flgs[0] = true

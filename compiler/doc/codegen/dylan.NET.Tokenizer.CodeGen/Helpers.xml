@@ -783,6 +783,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetTypeInterfaces">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt; GetTypeInterfaces (IKVM.Reflection.Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class IKVM.Reflection.Type&gt; GetTypeInterfaces(class IKVM.Reflection.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsPrimitiveFPType">
       <MemberSignature Language="C#" Value="public static bool IsPrimitiveFPType (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool IsPrimitiveFPType(class IKVM.Reflection.Type t) cil managed" />
