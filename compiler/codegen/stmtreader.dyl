@@ -312,7 +312,11 @@ class public auto ansi StmtReader
 				AsmFactory::CurnTypB::AddInterfaceImplementation(interftyp)
 
 				ti::AddInterface(interftyp)
+				foreach interfa in Helpers::GetTypeInterfaces(interftyp)
+					ti::AddInterface(interfa)
+				end for
 			end do
+			ti::NormalizeInterfaces()
 
 		elseif stm is DelegateStmt then
 			var dels as DelegateStmt = $DelegateStmt$stm

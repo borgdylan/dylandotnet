@@ -137,12 +137,12 @@ class public auto ansi TypeList
 			end if
 			
 			if fldinfo = null then
-				Loader::ProtectedFlag = true
+				//Loader::ProtectedFlag = true
 				fldinfo = GetField(ti::InhTyp,nam)
 				if fldinfo = null then
 					fldinfo = Loader::LoadField(ti::InhTyp, nam)
 				end if
-				Loader::ProtectedFlag = false
+				//Loader::ProtectedFlag = false
 			end if
 			
 			return fldinfo
@@ -175,13 +175,29 @@ class public auto ansi TypeList
 			end if
 			
 			if mtdinfo = null then
-				Loader::ProtectedFlag = true
+				//Loader::ProtectedFlag = true
 				mtdinfo = GetMethod(ti::InhTyp,nam,paramst)
 				if mtdinfo = null then
 					mtdinfo = Loader::LoadMethod(ti::InhTyp, nam, paramst)
 				end if
-				Loader::ProtectedFlag = false
+				//Loader::ProtectedFlag = false
 			end if
+			
+			if mtdinfo = null then
+				if ti::Interfaces != null then
+					foreach interf in ti::Interfaces
+						mtdinfo = GetMethod(interf,nam,paramst)
+						if mtdinfo = null then
+							mtdinfo = Loader::LoadMethod(interf, nam, paramst)
+						end if
+
+						if mtdinfo != null then
+							break
+						end if
+					end for
+				end if
+			end if
+
 			
 			return mtdinfo
 		end if

@@ -55,6 +55,12 @@ class public auto ansi TypeItem
 	method public void AddInterface(var i as IKVM.Reflection.Type)
 		Interfaces::Add(i)
 	end method
+	
+	method public void NormalizeInterfaces()
+		var nl as C5.IList<of IKVM.Reflection.Type> = new C5.LinkedList<of IKVM.Reflection.Type>()
+		nl::AddAll(Enumerable::Distinct<of IKVM.Reflection.Type>(Interfaces))
+		Interfaces = nl
+	end method
 
 	method public MethodBuilder GetMethod(var nam as string, var paramst as IKVM.Reflection.Type[])
 		var mil as MILambdas2 = new MILambdas2(nam, paramst)

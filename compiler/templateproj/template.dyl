@@ -94,6 +94,18 @@ class public auto ansi BaseTest
 	method public void CallTS3()
 		Console::WriteLine(mybase::ToString())
 	end method
+	
+	method public void CallTS4(var o as object)
+		Console::WriteLine(o)
+	end method
+	
+	method public void CallTS4(var o as BaseTest)
+		Console::WriteLine(o)
+	end method
+	
+	method public void CallTS5()
+		CallTS4(me)
+	end method
 
 end class
 
@@ -112,6 +124,9 @@ class public auto ansi beforefieldinit ROTest
 
 end class
 
+class private auto ansi OTTEnumerator implements IEnumerator<of integer>
+
+end class
 
 class public auto ansi Program
 

@@ -199,7 +199,6 @@ class public auto ansi static Loader
 	method public static IKVM.Reflection.MethodInfo LoadMethod(var typ as IKVM.Reflection.Type, var name as string, var typs as IKVM.Reflection.Type[])
 
 		var ints as IKVM.Reflection.Type[] = null
-		var i as integer = -1
 		var mtdinfo as IKVM.Reflection.MethodInfo = null
 
 		if typ::get_IsArray() then
@@ -212,14 +211,13 @@ class public auto ansi static Loader
 			ints = typ::GetInterfaces()
 
 			if ints != null then
-				do until i = (ints[l] - 1)
-					i = i + 1
-					mtdinfo = ints[i]::GetMethod(name,typs)
+				foreach interf in ints
+					mtdinfo = interf::GetMethod(name,typs)
 
 					if mtdinfo != null then
 						break
 					end if
-				end do
+				end for
 			end if
 
 		end if
