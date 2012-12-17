@@ -6,10 +6,24 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
+class private auto ansi LPFileTuple
+
+	field public string Path
+	field public IncludeStmt InclStmt
+	
+	method public void LPFileTuple(var p as string,var incs as IncludeStmt)
+		me::ctor()
+		Path = p
+		InclStmt = incs
+	end method
+
+end class
+
 class public auto ansi CodeGenerator
 
 	method private static void LPFile(var incstm as object)
-		var inclustm as IncludeStmt = $IncludeStmt$incstm
+		var tup as LPFileTuple = $LPFileTuple$incstm
+		var inclustm as IncludeStmt = tup::InclStmt
 		if Monitor::TryEnter(inclustm::Path) then
 			try
 				if inclustm::SSet == null then
@@ -23,7 +37,7 @@ class public auto ansi CodeGenerator
 					var lx as Lexer = new Lexer()
 					if File::Exists(inclustm::Path::Value) == false then
 						//StreamUtils::Write(c"\n")
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "File '" + inclustm::Path::Value + "' does not exist.")
+						StreamUtils::WriteError(inclustm::Line, tup::Path, "File '" + inclustm::Path::Value + "' does not exist.")
 					end if
 					StreamUtils::Write("Now Lexing: ")
 					StreamUtils::WriteLine(inclustm::Path::Value)
@@ -47,7 +61,7 @@ class public auto ansi CodeGenerator
 		var sst as StmtSet = $StmtSet$sset
 		foreach stm in sst::Stmts
 			if stm is IncludeStmt then
-				ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),stm)
+				ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),new LPFileTuple(sst::Path, $IncludeStmt$stm))
 			end if
 		end for
 	end method
@@ -126,7 +140,7 @@ class public auto ansi CodeGenerator
 							var lx as Lexer = new Lexer()
 							if File::Exists(inclustm::Path::Value) == false then
 								//StreamUtils::Write(c"\n")
-								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "File '" + inclustm::Path::Value + "' does not exist.")
+								StreamUtils::WriteError(inclustm::Line, stmts::Path, "File '" + inclustm::Path::Value + "' does not exist.")
 							end if
 							StreamUtils::Write("Now Lexing: ")
 							StreamUtils::WriteLine(inclustm::Path::Value)

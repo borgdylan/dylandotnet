@@ -4,29 +4,23 @@
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA
+//Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi MethodCallTok extends Token
+class public auto ansi NewCallTok extends Token
 
-	field public MethodNameTok Name
+	field public TypeTok Name
 	field public Expr[] Params
-	field public boolean PopFlg
-	field public IKVM.Reflection.Type[] TypArr
 
-	method public void MethodCallTok()
+	method public void NewCallTok()
 		me::ctor()
-		Name = new MethodNameTok()
-		PopFlg = false
+		Name = new TypeTok()
 		Params = new Expr[0]
-		TypArr = IKVM.Reflection.Type::EmptyTypes
 	end method
 
-	method public void MethodCallTok(var value as string)
+	method public void NewCallTok(var value as string)
 		me::ctor(value)
-		Name = new MethodNameTok()
-		PopFlg = false
+		Name = new TypeTok()
 		Params = new Expr[0]
-		TypArr = IKVM.Reflection.Type::EmptyTypes
 	end method
 
 	method public void AddParam(var paramtoadd as Expr)
@@ -50,34 +44,59 @@ class public auto ansi MethodCallTok extends Token
 
 end class
 
-class public auto ansi GettypeCallTok extends Token
+class public auto ansi NewarrCallTok extends Token
 
-	field public TypeTok Name
+	field public TypeTok ArrayType
+	field public Expr ArrayLen
 
-	method public void GettypeCallTok()
+	method public void NewarrCallTok()
 		me::ctor()
-		Name = new TypeTok()
+		ArrayType = new TypeTok()
+		ArrayLen = new Expr()
 	end method
 
-	method public void GettypeCallTok(var value as string)
+	method public void NewarrCallTok(var value as string)
 		me::ctor(value)
-		Name = new TypeTok()
+		ArrayType = new TypeTok()
+		ArrayLen = new Expr()
 	end method
 
 end class
 
-class public auto ansi PtrCallTok extends Token
+class public auto ansi ArrInitCallTok extends Token
 
-	field public MethodNameTok MetToCall
+	field public TypeTok ArrayType
+	field public Expr[] Elements
 
-	method public void PtrCallTok()
+	method public void ArrInitCallTok()
 		me::ctor()
-		MetToCall = new MethodNameTok()
+		ArrayType = new TypeTok()
+		Elements = new Expr[0]
 	end method
 
-	method public void PtrCallTok(var value as string)
+	method public void ArrInitCallTok(var value as string)
 		me::ctor(value)
-		MetToCall = new MethodNameTok()
+		ArrayType = new TypeTok()
+		Elements = new Expr[0]
+	end method
+	
+	method public void AddElem(var eltoadd as Expr)
+
+		var i as integer = -1
+		var destarr as Expr[] = new Expr[Elements[l] + 1]
+
+		do until i = (Elements[l] - 1)
+			i = i + 1
+			destarr[i] = Elements[i]
+		end do
+		
+		if Elements[l] = 0 then
+			Line = eltoadd::Line
+		end if
+		
+		destarr[Elements[l]] = eltoadd
+		Elements = destarr
+
 	end method
 
 end class

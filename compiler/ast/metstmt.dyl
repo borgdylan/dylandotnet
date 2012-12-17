@@ -54,3 +54,9 @@ class public auto ansi MethodStmt extends Stmt
 	end method
 
 end class
+
+class public auto ansi EndMethodStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end method"
+	end method
+end class

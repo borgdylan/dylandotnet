@@ -11,16 +11,16 @@
       <File FileName="parser/parser.dyl" Line="37" Column="1" />
       <File FileName="parser/tokenoptimizer.dyl" Line="913" Column="3" />
       <File FileName="parser/stmtoptimizer.dyl" Line="2141" Column="65" />
-      <File FileName="parser/exproptimizer.dyl" Line="144" Column="14" />
+      <File FileName="parser/exproptimizer.dyl" Line="796" Column="38" />
       <File FileName="ast/op.dyl" Line="27" Column="31" />
       <File FileName="ast/conditionalops.dyl" Line="9" Column="32" />
       <File FileName="ast/chars.dyl" Line="30" Column="12" />
       <File FileName="ast/otherkeywords.dyl" Line="207" Column="12" />
       <File FileName="ast/ifstmts.dyl" Line="67" Column="56" />
-      <File FileName="dnc/Mod1.dyl" Line="72" Column="10" />
+      <File FileName="dnc/Mod1.dyl" Line="96" Column="14" />
       <File FileName="codegen/symtable.dyl" Line="463" Column="12" />
       <File FileName="codegen/codegenerator.dyl" Line="127" Column="4" />
-      <File FileName="codegen/stmtreader.dyl" Line="310" Column="1" />
+      <File FileName="codegen/stmtreader.dyl" Line="832" Column="47" />
       <File FileName="dev/pc2cd.dyl" Line="127" Column="1" />
       <File FileName="dev/pc2dn.dyl" Line="43" Column="23" />
       <File FileName="dnc.dyl" Line="37" Column="8" />
@@ -40,7 +40,7 @@
       <File FileName="ast/includestmt.dyl" Line="28" Column="10" />
       <File FileName="codegen/constldr.dyl" Line="1" Column="1" />
       <File FileName="ast/otherstmts.dyl" Line="88" Column="10" />
-      <File FileName="dnu/streamu.dyl" Line="34" Column="12" />
+      <File FileName="dnu/streamu.dyl" Line="14" Column="23" />
       <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
       <File FileName="unit/unit.dyl" Line="21" Column="3" />
       <File FileName="ast/attrstmts.dyl" Line="28" Column="54" />
@@ -55,7 +55,7 @@
       <File FileName="tests/transnames.dyl" Line="36" Column="6" />
       <File FileName="ast/propstmt.dyl" Line="56" Column="21" />
       <File FileName="ast/attributes.dyl" Line="11" Column="29" />
-      <File FileName="dnr/asmfactory.dyl" Line="85" Column="28" />
+      <File FileName="dnr/asmfactory.dyl" Line="35" Column="37" />
       <File FileName="codegen/lockitem.dyl" Line="23" Column="12" />
       <File FileName="codegen/ifitem.dyl" Line="14" Column="2" />
       <File FileName="ast/logicalops.dyl" Line="9" Column="32" />
@@ -68,9 +68,10 @@
       <File FileName="ast/stdasmstmt.dyl" Line="19" Column="1" />
       <File FileName="ast/attrvalpair.dyl" Line="1" Column="1" />
       <File FileName="ast/expr.dyl" Line="37" Column="19" />
-      <File FileName="templateproj/template.dyl" Line="127" Column="73" />
+      <File FileName="templateproj/template.dyl" Line="155" Column="15" />
       <File FileName="codegen/loopitem.dyl" Line="1" Column="1" />
       <File FileName="ast/ident.dyl" Line="1" Column="1" />
+      <File FileName="dnc/testcode.txt" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

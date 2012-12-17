@@ -32,6 +32,7 @@ class public auto ansi static AsmFactory
 	field public static string AsmFile
 	field public static string CurnTypName
 	field public static string CurnMetName
+	field public static string CurnExplImplType
 	field public static IKVM.Reflection.Emit.MethodBuilder CurnMetB
 	field public static IKVM.Reflection.Emit.ConstructorBuilder CurnConB
 	field public static IKVM.Reflection.Emit.FieldBuilder CurnFldB
@@ -61,6 +62,7 @@ class public auto ansi static AsmFactory
 		CurnNS = String::Empty
 		DfltNS = String::Empty
 		AsmFile = String::Empty
+		CurnExplImplType = String::Empty
 		CurnTypList = new IKVM.Reflection.Emit.TypeBuilder[0]
 		TypArr = new IKVM.Reflection.Type[0]
 		GenParamNames = new string[0]

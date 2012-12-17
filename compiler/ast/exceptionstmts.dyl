@@ -45,3 +45,9 @@ class public auto ansi ThrowStmt extends Stmt
 	end method
 
 end class
+
+class public auto ansi EndTryStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end try"
+	end method
+end class

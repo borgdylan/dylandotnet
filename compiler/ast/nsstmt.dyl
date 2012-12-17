@@ -24,3 +24,9 @@ class public auto ansi NSStmt extends Stmt
 	end method
 
 end class
+
+class public auto ansi EndNSStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end namespace"
+	end method
+end class

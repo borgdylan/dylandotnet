@@ -39,6 +39,14 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Utils.ErrorException">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Utils.ErrorException()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Utils.Keyboard">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -189,6 +197,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Utils.StreamUtils.Stdout">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Utils.StreamUtils.TerminateOnError">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

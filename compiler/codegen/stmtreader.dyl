@@ -821,12 +821,23 @@ class public auto ansi StmtReader
 		elseif stm is PropertyStmt then
 			var prss as PropertyStmt = $PropertyStmt$stm
 			var ptyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(prss::PropertyTyp)
+			AsmFactory::CurnExplImplType = String::Empty
 			
 			if ptyp = null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + prss::PropertyTyp::Value + "' is not defined.")
 			end if
 			
-			AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prss::PropertyName::Value,Helpers::ProcessPropAttrs(prss::Attrs), ptyp, IKVM.Reflection.Type::EmptyTypes)
+			var prssnamstr as string = prss::PropertyName::Value
+			var prssnamarr as C5.IList<of string> = ParseUtils::StringParserL(prssnamstr, ".")
+			var propoverldnam as string = String::Empty
+			if prssnamarr::get_Count() > 1 then
+				propoverldnam = prssnamarr::get_Last()
+				typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", prssnamarr::View(0,prssnamarr::get_Count() - 1)::ToArray())))
+				AsmFactory::CurnExplImplType = typ::ToString()
+				prssnamstr = typ::ToString() + "." + propoverldnam
+			end if
+			
+			AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prssnamstr,Helpers::ProcessPropAttrs(prss::Attrs), ptyp, IKVM.Reflection.Type::EmptyTypes)
 			
 			Helpers::ApplyPropAttrs()
 			SymTable::ResetPropCAs()
@@ -841,6 +852,10 @@ class public auto ansi StmtReader
 			StreamUtils::WriteLine(prss::PropertyName::Value)
 		elseif stm is PropertyGetStmt then
 			var prgs as PropertyGetStmt = $PropertyGetStmt$stm
+			if AsmFactory::CurnExplImplType::get_Length() > 0 then
+				prgs::Getter::Value = AsmFactory::CurnExplImplType + "." + prgs::Getter::Value
+			end if
+			
 			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prgs::Getter::Value, IKVM.Reflection.Type::EmptyTypes)
 			if mb != null then
 				AsmFactory::CurnPropB::SetGetMethod(mb)
@@ -853,6 +868,11 @@ class public auto ansi StmtReader
 			var prss as PropertySetStmt = $PropertySetStmt$stm
 			var pga as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
 			pga[0] = AsmFactory::CurnPropB::get_PropertyType()
+			
+			if AsmFactory::CurnExplImplType::get_Length() > 0 then
+				prss::Setter::Value = AsmFactory::CurnExplImplType + "." + prss::Setter::Value
+			end if
+			
 			var mb2 as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, pga)
 			if mb2 != null then
 				AsmFactory::CurnPropB::SetSetMethod(mb2)

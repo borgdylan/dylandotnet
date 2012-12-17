@@ -63,6 +63,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnExplImplType">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.CurnFldB">
             <summary>Holds the current FieldBuilder.</summary>
             <remarks />

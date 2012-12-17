@@ -63,33 +63,9 @@ class public auto ansi MethodCallStmt extends Stmt
 
 end class
 
-class public auto ansi EndMethodStmt extends Stmt
-	method public hidebysig virtual string ToString()
-		return "end method"
-	end method
-end class
-
 class public auto ansi EndEnumStmt extends Stmt
 	method public hidebysig virtual string ToString()
 		return "end enum"
-	end method
-end class
-
-class public auto ansi EndClassStmt extends Stmt
-	method public hidebysig virtual string ToString()
-		return "end class"
-	end method
-end class
-
-class public auto ansi EndNSStmt extends Stmt
-	method public hidebysig virtual string ToString()
-		return "end namespace"
-	end method
-end class
-
-class public auto ansi EndTryStmt extends Stmt
-	method public hidebysig virtual string ToString()
-		return "end try"
 	end method
 end class
 

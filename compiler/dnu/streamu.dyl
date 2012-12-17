@@ -8,6 +8,14 @@
 
 //delegate public void ErrorWarnHandler(var line as integer, var file as string, var msg as string)
 
+class public auto ansi ErrorException extends Exception
+
+	method public void ErrorException()
+		me::ctor("An Error Happened.")
+	end method
+
+end class
+
 class public auto ansi static StreamUtils
 
 	field public static initonly Stream Stdin
@@ -18,6 +26,7 @@ class public auto ansi static StreamUtils
 	field private static StreamWriter OutS
 
 	field public static boolean UseConsole
+	field public static boolean TerminateOnError
 
 	field private static Action<of integer, string, string> _ErrorH
 	field private static Action<of integer, string, string> _WarnH
@@ -29,6 +38,7 @@ class public auto ansi static StreamUtils
 		InS = null
 		OutS = null
 		UseConsole = true
+		TerminateOnError = true
 		_ErrorH = null
 		_WarnH = null
 	end method
@@ -166,7 +176,11 @@ class public auto ansi static StreamUtils
 		end if
 		CloseInS()
 		CloseOutS()
-		Environment::Exit(1)
+		if TerminateOnError then
+			Environment::Exit(1)
+		else
+			throw new ErrorException()
+		end if
 	end method
 
 end class

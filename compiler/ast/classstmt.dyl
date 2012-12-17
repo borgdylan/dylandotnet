@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-// class Attrs ClassName extends InhClass
+// class Attrs ClassName extends InhClass implements ImplInterafaces
 class public auto ansi ClassStmt extends Stmt
 
 	field public Attributes.Attribute[] Attrs
@@ -52,4 +52,10 @@ class public auto ansi ClassStmt extends Stmt
 
 	end method
 
+end class
+
+class public auto ansi EndClassStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end class"
+	end method
 end class

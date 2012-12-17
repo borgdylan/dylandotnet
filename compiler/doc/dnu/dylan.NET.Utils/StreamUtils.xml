@@ -184,6 +184,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TerminateOnError">
+      <MemberSignature Language="C#" Value="public static bool TerminateOnError;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool TerminateOnError" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="UseConsole">
       <MemberSignature Language="C#" Value="public static bool UseConsole;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool UseConsole" />

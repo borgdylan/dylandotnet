@@ -261,7 +261,7 @@ class public auto ansi ExprOptimizer
 			//get parameters
 			i = i + 1
 	
-			if (stm::Tokens[i] is RParen) or (stm::Tokens[i] is RAParen) then
+			if (stm::Tokens[i] is RParen) or (stm::Tokens[i] is RAParen) or (stm::Tokens[i] is RCParen) then
 				lvl = lvl - 1
 				if lvl = 0 then
 					d = false
@@ -275,7 +275,7 @@ class public auto ansi ExprOptimizer
 				else
 					d = true
 				end if
-			elseif (stm::Tokens[i] is LParen) or (stm::Tokens[i] is LAParen) then
+			elseif (stm::Tokens[i] is LParen) or (stm::Tokens[i] is LAParen) or (stm::Tokens[i] is LCParen) then
 				lvl = lvl + 1
 				d = true
 				//stm::RemToken(i)
@@ -319,15 +319,19 @@ class public auto ansi ExprOptimizer
 
 		var nct as NewCallTok = new NewCallTok()
 		var nact as NewarrCallTok = new NewarrCallTok()
+		var aict as ArrInitCallTok = new ArrInitCallTok()
 		var tt as TypeTok
 		var ep2 as Expr = new Expr()
 		var lvl as integer = 1
 		var d as boolean = true
 		var j as integer = 0
-		var ltyp as Type
-		var rtyp as Type
+		//flag for array creation using length
 		var nab as boolean = false
+		//flag for array creation using initializer
+		var nai as boolean = false
 		
+		//no need to call the next line as its done before this method is used
+		//stm = procType(stm, i)
 		tt = $TypeTok$stm::Tokens[i]
 		j = i
 		i = i + 1
@@ -335,17 +339,17 @@ class public auto ansi ExprOptimizer
 		var tok2 as Token = stm::Tokens[i]
 		var len as integer = stm::Tokens[l] - 1
 		
-		if tok2 is LParen then
-			ltyp = gettype LParen
-			rtyp = gettype RParen
-		else
+		if tok2 is LSParen then
 			nab = true
-			ltyp = gettype LSParen
-			rtyp = gettype RSParen
+		elseif tok2 is LCParen
+			nai = true
 		end if
 		
 		if nab then
 			nact::ArrayType = tt
+		elseif nai then
+			tt::IsArray = false
+			aict::ArrayType = tt
 		else
 			nct::Name = tt
 		end if
@@ -356,18 +360,20 @@ class public auto ansi ExprOptimizer
 		
 		do until i = len
 		
-			//get parameters
+			//get parameters/members/length
 			i = i + 1
 			
-			if rtyp::IsInstanceOfType(stm::Tokens[i]) or (stm::Tokens[i] is RAParen) then
+			if (stm::Tokens[i] is RParen) or (stm::Tokens[i] is RSParen) or (stm::Tokens[i] is RAParen) or (stm::Tokens[i] is RCParen) then
 				lvl = lvl - 1
 				if lvl = 0 then
 					d = false
 					if ep2::Tokens[l] > 0 then
-						if nab = false then
-							nct::AddParam(ep2)
-						else
+						if nab then
 							nact::ArrayLen = ep2
+						elseif nai then
+							aict::AddElem(ep2)
+						else
+							nct::AddParam(ep2)
 						end if
 					end if
 					stm::RemToken(i)
@@ -377,7 +383,7 @@ class public auto ansi ExprOptimizer
 				else
 					d = true
 				end if
-			elseif ltyp::IsInstanceOfType(stm::Tokens[i]) or (stm::Tokens[i] is LAParen) then
+			elseif (stm::Tokens[i] is LParen) or (stm::Tokens[i] is LSParen) or (stm::Tokens[i] is LAParen) or (stm::Tokens[i] is LCParen) then
 				lvl = lvl + 1
 				d = true
 				//stm::RemToken(i)
@@ -387,7 +393,10 @@ class public auto ansi ExprOptimizer
 				if lvl = 1 then
 					d = false
 					if ep2::Tokens[l] > 0 then
-						if nab = false then
+						if nai then
+							aict::AddElem(ep2)
+							ep2 = new Expr()
+						elseif nab = false then
 							nct::AddParam(ep2)
 							ep2 = new Expr()
 						end if
@@ -411,12 +420,15 @@ class public auto ansi ExprOptimizer
 		
 		end do
 		
-		if nab = false then
-			nct::Line = tt::Line
-			stm::Tokens[j] = nct
-		else
+		if nab then
 			nact::Line = tt::Line
 			stm::Tokens[j] = nact
+		elseif nai then
+			aict::Line = tt::Line
+			stm::Tokens[j] = aict
+		else
+			nct::Line = tt::Line
+			stm::Tokens[j] = nct
 		end if
 		
 		return stm
@@ -780,6 +792,15 @@ class public auto ansi ExprOptimizer
 						do until nci2 = (nctoken::Params[l] - 1)
 							nci2 = nci2 + 1
 							nctoken::Params[nci2] = Optimize(nctoken::Params[nci2])
+						end do
+					elseif exp::Tokens[i] is ArrInitCallTok then
+						//if output is arrinitcall
+						var naitoken as ArrInitCallTok = $ArrInitCallTok$exp::Tokens[i]
+
+						var naii2 as integer = -1
+						do until naii2 = (naitoken::Elements[l] - 1)
+							naii2 = naii2 + 1
+							naitoken::Elements[naii2] = Optimize(naitoken::Elements[naii2])
 						end do
 					else
 						//if output is newarrcall

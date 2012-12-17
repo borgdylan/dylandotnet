@@ -192,5 +192,6 @@
     <None Include="unit\streamutests.dyl" />
     <None Include="codegen\lockitem.dyl" />
     <None Include="ast\varexpr.dyl" />
+    <None Include="ast\newcalltoks.dyl" />
   </ItemGroup>
 </Project>
