@@ -85,9 +85,15 @@ class public auto ansi static Program
 						cg::EmitMSIL(ppstmts, args[i])
 					end if
 				end do
+				
+			catch errex as ErrorException
+			
 			catch ex as Exception
 				StreamUtils::Write(c"\n")
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+				try
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+				catch errex2 as ErrorException
+				end try
 			end try
 
 		end if

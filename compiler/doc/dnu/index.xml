@@ -28,6 +28,7 @@
   <Types>
     <Namespace Name="dylan.NET.Utils">
       <Type Name="Constants" Kind="Class" />
+      <Type Name="ErrorException" Kind="Class" />
       <Type Name="Keyboard" Kind="Class" />
       <Type Name="ParseUtils" Kind="Class" />
       <Type Name="StreamUtils" Kind="Class" />

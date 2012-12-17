@@ -124,8 +124,58 @@ class public auto ansi beforefieldinit ROTest
 
 end class
 
-class private auto ansi OTTEnumerator implements IEnumerator<of integer>
+class public auto ansi OTTEnumerator implements IEnumerator<of integer>, IEnumerator, IDisposable
 
+	field private integer _Current
+	
+	method public void OTTEnumerator()
+		_Current = 0
+	end method
+	
+	method public hidebysig virtual newslot final boolean MoveNext()
+		if _Current < 10 then
+			_Current = _Current + 1
+			return true
+		else
+			return false
+		end if
+	end method
+	
+	method public hidebysig virtual newslot final void Reset()
+		_Current = 0
+	end method
+	
+	method public hidebysig virtual newslot final void Dispose()
+	end method
+	
+	method public hidebysig virtual newslot final specialname integer get_Current()
+		return _Current
+	end method
+	
+	method public hidebysig virtual newslot final specialname object IEnumerator.get_Current()
+		return $object$_Current
+	end method
+	
+	property none integer Current
+		get get_Current()
+	end property
+	
+	property none object IEnumerator.Current
+		get get_Current()
+	end property
+
+end class
+
+class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
+
+	method public hidebysig virtual newslot final IEnumerator<of integer> GetEnumerator()
+		return new OTTEnumerator()
+	end method
+
+	method public hidebysig virtual newslot final IEnumerator IEnumerable.GetEnumerator()
+		return new OTTEnumerator()
+	end method
+	
 end class
 
 class public auto ansi Program
@@ -478,6 +528,10 @@ class public auto ansi Program
 		lock new object()
 			Console::WriteLine("In A Lock")
 		end lock
+		
+		foreach o in new OTT()
+			Console::WriteLine(o)
+		end for
 	end method
 
 end class
