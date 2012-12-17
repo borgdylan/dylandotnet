@@ -1063,6 +1063,33 @@ class public auto ansi beforefieldinit Evaluator
 					ILEmitter::EmitNewarr(typ2)
 				end if
 				AsmFactory::Type02 = typ2::MakeArrayType()
+			elseif tok is ArrInitCallTok then
+				//array initializer section
+				var aictok as ArrInitCallTok = $ArrInitCallTok$tok
+				typ2 = Helpers::CommitEvalTTok(aictok::ArrayType)
+				
+				if emt then
+					ILEmitter::EmitLdcI4(aictok::Elements[l])
+					ILEmitter::EmitConvI()
+					ILEmitter::EmitNewarr(typ2)
+				end if
+				
+				var aii as integer = -1
+				do until aii = (aictok::Elements[l] - 1)
+					aii = aii + 1
+					if emt then
+						ILEmitter::EmitDup()
+						ILEmitter::EmitLdcI4(aii)
+						ILEmitter::EmitConvI()
+					end if
+					ASTEmit(ConvToAST(ConvToRPN(aictok::Elements[aii])), emt)
+					Helpers::CheckAssignability(AsmFactory::Type02, typ2)
+					if emt then
+						ILEmitter::EmitStelem(typ2)
+					end if	
+				end do
+				
+				AsmFactory::Type02 = typ2::MakeArrayType()
 			elseif tok is PtrCallTok then
 				//ptr load section - obsolete
 				if emt then

@@ -85,6 +85,7 @@ namespace dylan.NET.Tokenizer.AST.Tokens
 	#include "ast/comment.dyl"
 	#include "ast/methodnametok.dyl"
 	#include "ast/methods.dyl"
+	#include "ast/newcalltoks.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens.Chars

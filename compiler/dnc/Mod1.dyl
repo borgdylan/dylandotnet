@@ -88,12 +88,12 @@ class public auto ansi static Program
 				
 			catch errex as ErrorException
 			
-			catch ex as Exception
-				StreamUtils::Write(c"\n")
-				try
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
-				catch errex2 as ErrorException
-				end try
+//			catch ex as Exception
+//				StreamUtils::Write(c"\n")
+//				try
+//					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+//				catch errex2 as ErrorException
+//				end try
 			end try
 
 		end if

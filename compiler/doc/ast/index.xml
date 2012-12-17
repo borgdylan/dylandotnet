@@ -107,6 +107,7 @@
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Tokens">
       <Type Name="AddTok" Kind="Class" />
+      <Type Name="ArrInitCallTok" Kind="Class" />
       <Type Name="AssemblyCTok" Kind="Class" />
       <Type Name="AssemblyTok" Kind="Class" />
       <Type Name="AsTok" Kind="Class" />

@@ -370,23 +370,13 @@ class public auto ansi Program
 	
 	method public static void foreachtests()
 		
-		var arr as integer[] = new integer[2]
-		arr[0] = 3
-		arr[1] = 23
-		
-		foreach i in arr
+		foreach i in new integer[] {3, 23}
 			Console::WriteLine(i)
 		end for
 		
 		Console::WriteLine("--------------------------")
 		
-		var arr2 as string[] = new string[4]
-		arr2[0] = "This"
-		arr2[1] = "is"
-		arr2[2] = "a"
-		arr2[3] = "foreach"
-		
-		foreach i in arr2
+		foreach i in new string[] {"This", "is", "a", "foreach"}
 			Console::WriteLine(i)
 		end for
 		
