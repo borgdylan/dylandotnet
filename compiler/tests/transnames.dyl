@@ -22,13 +22,8 @@ ver 2.1.0.0
 class public auto ansi Program
 
 	method public static string[] LineToTuple(var l as string)
-		var delims as char[] = new char[1]
-		delims[0] = ','
-		var lar as string[] = l::Split(delims)
-		var lar2 as string[] = new string[3]
-		lar2[0] = lar[2]
-		lar2[1] = lar[1]
-		lar2[2] = lar[0]
+		var lar as string[] = l::Split(new char[] {','})
+		var lar2 as string[] = new string[] {lar[2], lar[1], lar[0]}
 		return lar2
 	end method
 	

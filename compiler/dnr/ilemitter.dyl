@@ -490,10 +490,8 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldstr, $string$n)
-			var arr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
-			arr[0] = Univ::Import(gettype string)
 			var convc as IKVM.Reflection.Type = Univ::Import(gettype Convert)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, convc::GetMethod("ToUInt64", arr))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {Univ::Import(gettype string)}))
 		end if
 		
 	end method
@@ -762,30 +760,24 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcDec(var n as decimal)
-		var arr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
 		var dec as IKVM.Reflection.Type = Univ::Import(gettype decimal)
 		var temps as single
 		var tempd as double
 		if (Math::Ceiling(n) = n) and ($decimal$integer::MinValue <= n) and (n <= $decimal$integer::MaxValue) then
 			EmitLdcI4($integer$n)
-			arr[0] = Univ::Import(gettype integer)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(arr))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype integer)}))
 		elseif (Math::Ceiling(n) = n) and ($decimal$long::MinValue <= n) and (n <= $decimal$long::MaxValue) then
 			EmitLdcI8($long$n)
-			arr[0] = Univ::Import(gettype long)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(arr))
-		elseif Single::TryParse($string$n, ref|temps) then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype long)}))
+		elseif Single::TryParse($string$n, ref temps) then
 			EmitLdcR4($single$n)
-			arr[0] = Univ::Import(gettype single)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(arr))
-		elseif Double::TryParse($string$n, ref|tempd) then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype single)}))
+		elseif Double::TryParse($string$n, ref tempd) then
 			EmitLdcR8($double$n)
-			arr[0] = Univ::Import(gettype double)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(arr))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype double)}))
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldstr,$string$n)
-			arr[0] = Univ::Import(gettype string)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, dec::GetMethod("Parse",arr))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, dec::GetMethod("Parse",new IKVM.Reflection.Type[] {Univ::Import(gettype string)}))
 		end if
 	end method
 
@@ -1023,19 +1015,15 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void EmitLike()
 		var lotyp as IKVM.Reflection.Type = Univ::Import(gettype Regex)
-		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
-		params[0] = Univ::Import(gettype string)
-		params[1] = Univ::Import(gettype string)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, lotyp::GetMethod("IsMatch",params))
+		var strtyp as IKVM.Reflection.Type = Univ::Import(gettype string)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, lotyp::GetMethod("IsMatch",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitNLike()
 		var lotyp as IKVM.Reflection.Type = Univ::Import(gettype Regex)
-		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
-		params[0] = Univ::Import(gettype string)
-		params[1] = Univ::Import(gettype string)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, lotyp::GetMethod("IsMatch",params))
+		var strtyp as IKVM.Reflection.Type = Univ::Import(gettype string)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, lotyp::GetMethod("IsMatch",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
@@ -1043,10 +1031,7 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void EmitStrCeq()
 		var strtyp as IKVM.Reflection.Type = Univ::Import(gettype string)
-		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
-		params[0] = Univ::Import(gettype string)
-		params[1] = Univ::Import(gettype string)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Compare",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Compare",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
@@ -1054,10 +1039,7 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void EmitStrCneq()
 		var strtyp as IKVM.Reflection.Type = Univ::Import(gettype string)
-		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
-		params[0] = Univ::Import(gettype string)
-		params[1] = Univ::Import(gettype string)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Compare",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Compare",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
@@ -1067,28 +1049,19 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void EmitStrAdd()
 		var strtyp as IKVM.Reflection.Type = Univ::Import(gettype string)
-		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
-		params[0] = strtyp
-		params[1] = strtyp
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Concat",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Concat",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitDelegateAdd()
 		var deltyp as IKVM.Reflection.Type = Univ::Import(gettype Delegate)
-		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
-		params[0] = deltyp
-		params[1] = deltyp
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, deltyp::GetMethod("Combine",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, deltyp::GetMethod("Combine",new IKVM.Reflection.Type[] {deltyp, deltyp}))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitDelegateSub()
 		var deltyp as IKVM.Reflection.Type = Univ::Import(gettype Delegate)
-		var params as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
-		params[0] = deltyp
-		params[1] = deltyp
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, deltyp::GetMethod("Remove",params))
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, deltyp::GetMethod("Remove",new IKVM.Reflection.Type[] {deltyp, deltyp}))
 	end method
 
 	[method: ComVisible(false)]

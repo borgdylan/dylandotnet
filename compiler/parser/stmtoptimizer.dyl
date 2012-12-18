@@ -1254,21 +1254,7 @@ class public auto ansi StmtOptimizer
 			vers::Line = stm::Line
 			vers::Tokens = stm::Tokens
 			var ars as string[] = ParseUtils::StringParser(stm::Tokens[1]::Value,".")
-			var intla as IntLiteral[] = new IntLiteral[4]
-			var intl as IntLiteral = null
-			intl = new IntLiteral($integer$ars[0])
-			intl::Line = stm::Line
-			intla[0] = intl
-			intl = new IntLiteral($integer$ars[1])
-			intl::Line = stm::Line
-			intla[1] = intl
-			intl = new IntLiteral($integer$ars[2])
-			intl::Line = stm::Line
-			intla[2] = intl
-			intl = new IntLiteral($integer$ars[3])
-			intl::Line = stm::Line
-			intla[3] = intl
-			vers::VersionNos = intla
+			vers::VersionNos = new IntLiteral[] {new IntLiteral($integer$ars[0]),new IntLiteral($integer$ars[1]),new IntLiteral($integer$ars[2]),new IntLiteral($integer$ars[3])}
 			stm = vers
 		end if
 		return vers

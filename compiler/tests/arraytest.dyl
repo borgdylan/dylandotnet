@@ -44,12 +44,8 @@ class public auto ansi statc
 	
 	method public static void statc()
 		arr = new string[2]
-		var latearr as string[] = new string[2]
-		latearr[0] = "S"
-		latearr[1] = "C"
-	
+		var latearr as string[] = new string[] {"S,C"}
 		arr = latearr
-
 	end method
 	
 	method public static void test(var paramarr as string[])
@@ -69,7 +65,7 @@ class public auto ansi beforefieldinit Module1
 	field public static string[] fldarr
 
 	method public static void Module1()
-		fldarr = newarr string 2
+		fldarr = new string[2]
 	end method
 
 	method public static string[] addelem(var srcarr as string[], var eltoadd as string)
@@ -103,20 +99,9 @@ class public auto ansi beforefieldinit Module1
 
 	method public static void main()
 
-		var numarr as integer[] = new integer[3]
-		numarr[0] = 1
-		numarr[1] = 2
-		numarr[2] = 3
-
-		var numarr2 as double[] = new double[3]
-		numarr2[0] = 10.0
-		numarr2[1] = 20.0
-		numarr2[2] = 30.0
-		
-		var strarr as string[] = new string[3]
-		strarr[0] = "a"
-		strarr[1] = "b"
-		strarr[2] = "c"
+		var numarr as integer[] = new integer[] {1, 2, 3}
+		var numarr2 as double[] = new double[] {10d, 20d, 30d}
+		var strarr as string[] = new string[] {"a", "b", "c"}
 	
 		Console::WriteLine($double$numarr[0] + numarr2[0]) 
 		Console::WriteLine($double$numarr[1] + numarr2[1]) 
@@ -124,10 +109,7 @@ class public auto ansi beforefieldinit Module1
 
 		Console::WriteLine(String::Concat(strarr))
 
-		var arrofstr as string[] = new string[3]
-		arrofstr[0] = "This"
-		arrofstr[1] = "is"
-		arrofstr[2] = "dylan.NET"
+		var arrofstr as string[] = new string[] {"This", "is", "dylan.NET"}
 		
 		Console::WriteLine(arrofstr[l])
 		test(arrofstr)

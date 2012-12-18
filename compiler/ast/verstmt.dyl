@@ -12,12 +12,7 @@ class public auto ansi VerStmt extends Stmt
 
 	method public void VerStmt()
 		me::ctor()
-		VersionNos = new IntLiteral[4]
-		var i as integer = -1
-		do until i = 3
-			i = i + 1
-			VersionNos[i] = new IntLiteral(0)
-		end do
+		VersionNos = new IntLiteral[] {new IntLiteral(0), new IntLiteral(0), new IntLiteral(0), new IntLiteral(0)}
 	end method
 	
 	method public hidebysig virtual string ToString()

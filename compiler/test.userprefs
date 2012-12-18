@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="parser/exproptimizer.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/helpers.dyl">
     <Files>
       <File FileName="dnr/loader.dyl" Line="268" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="626" Column="1" />
       <File FileName="codegen/eval.dyl" Line="925" Column="1" />
-      <File FileName="codegen/helpers.dyl" Line="548" Column="4" />
+      <File FileName="codegen/helpers.dyl" Line="1531" Column="46" />
       <File FileName="codegen/codegenerator.dyl" Line="51" Column="1" />
       <File FileName="dnc/Mod1.dyl" Line="66" Column="1" />
       <File FileName="parser/parser.dyl" Line="37" Column="1" />
@@ -18,7 +18,7 @@
       <File FileName="codegen/typeitem.dyl" Line="95" Column="1" />
       <File FileName="codegen/typelist.dyl" Line="106" Column="1" />
       <File FileName="lexer/lexer.dyl" Line="28" Column="1" />
-      <File FileName="test.dyl" Line="38" Column="2" />
+      <File FileName="test.dyl" Line="44" Column="52" />
       <File FileName="dnu/streamu.dyl" Line="26" Column="1" />
     </Files>
     <Pads>

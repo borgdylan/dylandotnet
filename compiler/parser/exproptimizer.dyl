@@ -348,6 +348,7 @@ class public auto ansi ExprOptimizer
 		if nab then
 			nact::ArrayType = tt
 		elseif nai then
+			aict::ForceArray = tt::IsArray
 			tt::IsArray = false
 			aict::ArrayType = tt
 		else

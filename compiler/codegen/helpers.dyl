@@ -1070,7 +1070,6 @@ class public auto ansi static Helpers
 		var typ as IKVM.Reflection.Type
 		var m1 as MethodInfo
 		//var c1 as ConstructorInfo
-		var arr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
 	
 		if source::Equals(sink) then
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
@@ -1151,86 +1150,72 @@ class public auto ansi static Helpers
 		end if
 		
 		if sink::Equals(ILEmitter::Univ::Import(gettype string)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToString", arr)
+			m1 = convc::GetMethod("ToString", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype char)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToChar", arr)
+			m1 = convc::GetMethod("ToChar", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype decimal)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToDecimal", arr)
+			m1 = convc::GetMethod("ToDecimal", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype double)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToDouble", arr)
+			m1 = convc::GetMethod("ToDouble", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype single)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToSingle", arr)
+			m1 = convc::GetMethod("ToSingle", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype long)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToInt64", arr)
+			m1 = convc::GetMethod("ToInt64", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype ulong)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToUInt64", arr)
+			m1 = convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype integer)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToInt32", arr)
+			m1 = convc::GetMethod("ToInt32", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype uinteger)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToUInt32", arr)
+			m1 = convc::GetMethod("ToUInt32", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype short)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToInt16", arr)
+			m1 = convc::GetMethod("ToInt16", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype ushort)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToUInt16", arr)
+			m1 = convc::GetMethod("ToUInt16", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype sbyte)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToSByte", arr)
+			m1 = convc::GetMethod("ToSByte", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype byte)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToByte", arr)
+			m1 = convc::GetMethod("ToByte", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype boolean)) then
-			arr[0] = source
-			m1 = convc::GetMethod("ToBoolean", arr)
+			m1 = convc::GetMethod("ToBoolean", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
@@ -1547,9 +1532,7 @@ class public auto ansi static Helpers
 		var ie as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype IEnumerable`1)
 		var ie2 as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype IEnumerable)
 		var ie3 as IKVM.Reflection.Type = null
-		var flgs as boolean[] = new boolean[2]
-		flgs[0] = false
-		flgs[1] = false
+		var flgs as boolean[] = new boolean[] {false, false}
 		
 		if t::get_IsGenericType() then
 			if ie::Equals(t::GetGenericTypeDefinition()) then

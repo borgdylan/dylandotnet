@@ -104,7 +104,6 @@ class public auto ansi StmtReader
 
 	method public void Read(var stm as Stmt, var fpath as string)
 		
-		var tmpchrarr as char[]
 		var vtyp as IKVM.Reflection.Type = null
 		var typ as IKVM.Reflection.Type = null
 		var eval as Evaluator = null
@@ -124,9 +123,7 @@ class public auto ansi StmtReader
 		if stm is RefasmStmt then
 			var rastm as RefasmStmt = $RefasmStmt$stm
 			if rastm::AsmPath::Value like  c"^\q(.)*\q$" then
-				tmpchrarr = new char[1]
-				tmpchrarr[0] = c'\q'
-				rastm::AsmPath::Value = rastm::AsmPath::Value::Trim(tmpchrarr)
+				rastm::AsmPath::Value = rastm::AsmPath::Value::Trim(new char[] {c'\q'})
 			end if
 			rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::Value)
 			
@@ -140,9 +137,7 @@ class public auto ansi StmtReader
 		elseif stm is RefstdasmStmt then
 			var rsastm as RefstdasmStmt = $RefstdasmStmt$stm
 			if rsastm::AsmPath::Value like c"^\q(.)*\q$" then
-				tmpchrarr = new char[1]
-				tmpchrarr[0] = c'\q'
-				rsastm::AsmPath::Value = rsastm::AsmPath::Value::Trim(tmpchrarr)
+				rsastm::AsmPath::Value = rsastm::AsmPath::Value::Trim(new char[] {c'\q'})
 			end if
 			rsastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rsastm::AsmPath::Value)
 			rsastm::AsmPath::Value = Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), rsastm::AsmPath::Value)
@@ -157,15 +152,11 @@ class public auto ansi StmtReader
 		elseif stm is ImportStmt then
 			var istm as ImportStmt = $ImportStmt$stm
 			if istm::NS::Value like c"^\q(.)*\q$" then
-				tmpchrarr = new char[1]
-				tmpchrarr[0] = c'\q'
-				istm::NS::Value = istm::NS::Value::Trim(tmpchrarr)
+				istm::NS::Value = istm::NS::Value::Trim(new char[] {c'\q'})
 			end if
 			if istm::Alias::Value::get_Length() != 0 then
 				if istm::Alias::Value like c"^\q(.)*\q$" then
-					tmpchrarr = new char[1]
-					tmpchrarr[0] = c'\q'
-					istm::Alias::Value = istm::Alias::Value::Trim(tmpchrarr)
+					istm::Alias::Value = istm::Alias::Value::Trim(new char[] {c'\q'})
 				end if
 			end if
 			if istm::Alias::Value::get_Length() == 0 then
@@ -179,9 +170,7 @@ class public auto ansi StmtReader
 		elseif stm is LocimportStmt then
 			var listm as LocimportStmt = $LocimportStmt$stm
 			if listm::NS::Value like c"^\q(.)*\q$" then
-				tmpchrarr = new char[1]
-				tmpchrarr[0] = c'\q'
-				listm::NS::Value = listm::NS::Value::Trim(tmpchrarr)
+				listm::NS::Value = listm::NS::Value::Trim(new char[] {c'\q'})
 			end if
 			
 			StreamUtils::Write("Importing Namespace: ")
@@ -601,9 +590,7 @@ class public auto ansi StmtReader
 		elseif stm is NSStmt then
 			var nss as NSStmt = $NSStmt$stm
 			if nss::NS::Value like c"^\q(.)*\q$" then
-				tmpchrarr = new char[1]
-				tmpchrarr[0] = c'\q'
-				nss::NS::Value = nss::NS::Value::Trim(tmpchrarr)
+				nss::NS::Value = nss::NS::Value::Trim(new char[] {c'\q'})
 			end if
 			AsmFactory::CurnNS = nss::NS::Value
 		elseif stm is EndNSStmt then
@@ -802,17 +789,13 @@ class public auto ansi StmtReader
 		elseif stm is WarningStmt then
 			var wstm as WarningStmt = $WarningStmt$stm
 			if wstm::Msg::Value like c"^\q(.)*\q$" then
-				tmpchrarr = new char[1]
-				tmpchrarr[0] = c'\q'
-				wstm::Msg::Value = wstm::Msg::Value::Trim(tmpchrarr)
+				wstm::Msg::Value = wstm::Msg::Value::Trim(new char[] {c'\q'})
 			end if
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, wstm::Msg::Value)
 		elseif stm is ErrorStmt then
 			var wstm as ErrorStmt = $ErrorStmt$stm
 			if wstm::Msg::Value like c"^\q(.)*\q$" then
-				tmpchrarr = new char[1]
-				tmpchrarr[0] = c'\q'
-				wstm::Msg::Value = wstm::Msg::Value::Trim(tmpchrarr)
+				wstm::Msg::Value = wstm::Msg::Value::Trim(new char[] {c'\q'})
 			end if
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, wstm::Msg::Value)
 		elseif stm is ParameterAttrStmt then

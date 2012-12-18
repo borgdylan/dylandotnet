@@ -76,5 +76,17 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ForceArray">
+      <MemberSignature Language="C#" Value="public bool ForceArray;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool ForceArray" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>

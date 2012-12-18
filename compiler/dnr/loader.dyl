@@ -357,11 +357,6 @@ class public auto ansi static Loader
 
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.MethodInfo LoadBinOp(var typ as IKVM.Reflection.Type, var name as string, var typa as IKVM.Reflection.Type, var typb as IKVM.Reflection.Type)
-
-		var typs as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
-		typs[0] = typa
-		typs[1] = typb
-
 		var mil as MILambdas = new MILambdas(name)
 		var matches as IKVM.Reflection.MethodInfo[]		
 		matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameName())))
@@ -371,17 +366,12 @@ class public auto ansi static Loader
 		else
 			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
 			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public
-			return $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs,new IKVM.Reflection.ParameterModifier[0])
+			return $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new IKVM.Reflection.Type[] {typa, typb},new IKVM.Reflection.ParameterModifier[0])
 		end if
-
 	end method
 	
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.MethodInfo LoadUnaOp(var typ as IKVM.Reflection.Type, var name as string, var typa as IKVM.Reflection.Type)
-
-		var typs as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
-		typs[0] = typa
-
 		var mil as MILambdas = new MILambdas(name)
 		var matches as IKVM.Reflection.MethodInfo[]		
 		matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameName())))
@@ -391,9 +381,8 @@ class public auto ansi static Loader
 		else
 			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
 			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public
-			return $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs,new IKVM.Reflection.ParameterModifier[0])
+			return $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new IKVM.Reflection.Type[] {typa},new IKVM.Reflection.ParameterModifier[0])
 		end if
-
 	end method
 
 	[method: ComVisible(false)]
@@ -422,9 +411,6 @@ class public auto ansi static Loader
 
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.MethodInfo LoadConvOp(var typ as IKVM.Reflection.Type, var name as string, var src as IKVM.Reflection.Type, var snk as IKVM.Reflection.Type)
-
-		var typs as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
-		typs[0] = src
 		var mil as MILambdas = new MILambdas(name,snk)
 		
 		var matches as IKVM.Reflection.MethodInfo[]
@@ -435,7 +421,7 @@ class public auto ansi static Loader
 		else
 			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
 			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public
-			return $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs,new IKVM.Reflection.ParameterModifier[0])
+			return $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new IKVM.Reflection.Type[] {src},new IKVM.Reflection.ParameterModifier[0])
 		end if
 
 	end method

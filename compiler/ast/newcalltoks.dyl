@@ -67,17 +67,20 @@ class public auto ansi ArrInitCallTok extends Token
 
 	field public TypeTok ArrayType
 	field public Expr[] Elements
+	field public boolean ForceArray
 
 	method public void ArrInitCallTok()
 		me::ctor()
 		ArrayType = new TypeTok()
 		Elements = new Expr[0]
+		ForceArray = false
 	end method
 
 	method public void ArrInitCallTok(var value as string)
 		me::ctor(value)
 		ArrayType = new TypeTok()
 		Elements = new Expr[0]
+		ForceArray = false
 	end method
 	
 	method public void AddElem(var eltoadd as Expr)

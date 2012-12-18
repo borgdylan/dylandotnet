@@ -33,9 +33,9 @@ ver 1.3.0.0
 class public auto ansi Program
 
 	method public static void main()
-		Environment::set_CurrentDirectory("/var/www/Code/dylannet/dylandotnet/compiler/templateproj")
+		Environment::set_CurrentDirectory("/var/www/Code/dylannet/dylandotnet/compiler")
 		var arr as string[] = new string[1]
-		arr[0] = "template.dyl"
+		arr[0] = "tokenizer.CodeGen.dyl"
 		Program::Invoke(arr)
 		//var ln as Line = new Line()
 		//var st as Stmt = ln::Analyze(new Stmt(),"x = Array::BinarySearch(new integer[2],12)")
