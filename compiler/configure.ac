@@ -63,4 +63,5 @@ doc/Makefile
 dev/Makefile
 templateproj/Makefile
 unit/Makefile
+m4/Makefile
 ])

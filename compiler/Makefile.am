@@ -1,4 +1,4 @@
-#SUBDIRS = . tests doc 2.0 4.0 dev
+#SUBDIRS = . tests doc 2.0 4.0 dev unit m4
 
 EXTRA_DIST = 
 CLEANFILES = 
@@ -20,6 +20,7 @@ install: installman
 	$(MAKE) -C 2.0 install
 	$(MAKE) -C 4.0 install
 	$(MAKE) -C dev install
+	$(MAKE) -C m4 install
 	
 uninstallman:
 	rm $(DESTDIR)$(mandir)/man1/dylandotnet.1
@@ -34,6 +35,7 @@ uninstall: uninstallman
 	$(MAKE) -C 2.0 uninstall
 	$(MAKE) -C 4.0 uninstall
 	$(MAKE) -C dev uninstall
+	$(MAKE) -C m4 uninstall
 
 clean:
 	$(MAKE) -C tests clean
@@ -50,6 +52,7 @@ distclean: clean
 	$(MAKE) -C 4.0 distclean
 	$(MAKE) -C dev distclean
 	$(MAKE) -C unit distclean
+	$(MAKE) -C m4 distclean
 	rm -f Makefile
 	rm -f config.status
 	rm -f config.log
@@ -126,4 +129,5 @@ testc:
 	$(MAKE) -C 2.0 testc
 	$(MAKE) -C 4.0 testc
 	$(MAKE) -C dev testc
+	$(MAKE) -C m4 testc
 
