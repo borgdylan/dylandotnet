@@ -23,9 +23,9 @@ class public auto ansi Compressor
 		//init dictionary with chars available in utf-8
 		Dict = new HashDictionary<of string, ushort>()
 		var c as char = c'\0'
-		do while c < $char$256
+		do while c < c'\x0100'
 			Dict::Add($string$c,$ushort$c)
-			c = c + $char$1			
+			c = c + c'\x01'
 		end do
 	end method
 	
@@ -58,7 +58,7 @@ class public auto ansi Compressor
 			do until i = 7
 				i = i + 1
 				if ll::Pop() then
-					b = b + (1ub * $byte$Math::Pow(2d, $double$i))
+					b = b + Convert::ToByte(1 << i)
 				end if
 			end do
 			//write the byte to the binary file
@@ -145,10 +145,7 @@ class public auto ansi Compressor
 		//then write them to the queue
 		cs = buf::ToString()
 		if cs::get_Length() > 0 then
-			var tempia as integer[] = new integer[1]
-			tempia[0] = $integer$Dict::get_Item(cs)
-			ba = new BitArray(tempia)
-				
+			ba = new BitArray(new integer[] {$integer$Dict::get_Item(cs)})
 			var i as integer = cdsz
 			do until i = 0
 				i = i - 1

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ItemType>GenericProject</ItemType>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{f2a79bed-58d8-46f7-89f5-8bc937672243}</ProjectGuid>
+    <ReleaseVersion>1.2.0.0</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <TextStylePolicy TabWidth="4" inheritsSet="Mono" inheritsScope="text/plain" scope="text/plain" />
+          <ChangeLogPolicy UpdateMode="Nearest" VcsIntegration="None" inheritsSet="Mono">
+            <MessageStyle LineAlign="0" />
+          </ChangeLogPolicy>
+          <VersionControlPolicy inheritsSet="Mono" />
+        </Policies>
+        <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="true" RelativeMakefileName="Makefile" RelativeConfigureInPath=".">
+          <BuildFilesVar />
+          <DeployFilesVar />
+          <ResourcesVar />
+          <OthersVar />
+          <GacRefVar />
+          <AsmRefVar />
+          <ProjectRefVar />
+          <MessageRegex Error="^ERROR:\s(?&lt;message&gt;.*)\sat line\s(?&lt;line&gt;\d*)\sin file:\s*(?&lt;file&gt;.*)$" Warning="^WARNING:\s(?&lt;message&gt;.*)\sat line\s(?&lt;line&gt;\d*)\sin file:\s*(?&lt;file&gt;.*)$" Name="Custom" />
+        </MonoDevelop.Autotools.MakefileInfo>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <None Include="Makefile.am" />
+    <None Include="configure.ac" />
+    <None Include="lzw.dyl" />
+    <None Include="assemblyinfo.dyl" />
+    <None Include="uncompress.dyl" />
+    <None Include="compress.dyl" />
+  </ItemGroup>
+</Project>

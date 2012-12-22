@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="dnu/streamu.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="m4/dylandotnet-macros.7">
     <Files>
       <File FileName="codegen/eval.dyl" Line="1073" Column="2" />
       <File FileName="codegen/helpers.dyl" Line="1558" Column="9" />
@@ -95,22 +95,16 @@
       <File FileName="tests/arit.dyl" Line="1" Column="1" />
       <File FileName="ast/newexpr.dyl" Line="1" Column="1" />
       <File FileName="ast/newcalltoks.dyl" Line="83" Column="21" />
+      <File FileName="m4/dylandotnet-macros.7" Line="35" Column="1" />
+      <File FileName="m4/dylandotnet.m4" Line="18" Column="65" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
-            <Node name="ast" expanded="True" />
-            <Node name="codegen" expanded="True" />
-            <Node name="dev" expanded="True" selected="True" />
-            <Node name="dnc" expanded="True" />
-            <Node name="dnr" expanded="True" />
-            <Node name="dnu" expanded="True" />
-            <Node name="lexer" expanded="True" />
-            <Node name="m4" expanded="True" />
-            <Node name="parser" expanded="True" />
-            <Node name="tests" expanded="True" />
-            <Node name="unit" expanded="True" />
+            <Node name="m4" expanded="True">
+              <Node name="dylandotnet-macros.7" selected="True" />
+            </Node>
           </Node>
           <Node name="template" expanded="True" />
         </State>

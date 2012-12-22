@@ -23,9 +23,9 @@ class public auto ansi Decompressor
 		//init dictionary with chars available in utf-8
 		Dict = new HashDictionary<of ushort,string>()
 		var c as char = c'\0'
-		do while c < $char$256
+		do while c < c'\x0100'
 			Dict::Add($ushort$c,$string$c)
-			c = c + $char$1			
+			c = c + c'\x01'			
 		end do
 	end method
 	
@@ -46,9 +46,7 @@ class public auto ansi Decompressor
 	method private ushort ReadBits(var br as BinaryReader, var n as integer)
 		var i as integer
 		do while BQ::get_Count() < n
-			var tempia as integer[] = new integer[1]
-			tempia[0] = $integer$br::ReadByte()
-			var ba as BitArray = new BitArray(tempia)
+			var ba as BitArray = new BitArray(new integer[] {$integer$br::ReadByte()})
 			i = 8
 			do until i = 0
 				i = i - 1
@@ -63,13 +61,13 @@ class public auto ansi Decompressor
 			i = i + 1
 			ll::Push(BQ::Dequeue())
 		end do
-		//convert the 8 bit pattern to an unsigned 8 bit number
+		//convert the 8 bit pattern to an unsigned 16 bit number
 		var b as ushort = 0us
 		i = -1
 		do until i = (n - 1)
 			i = i + 1
 			if ll::Pop() then
-				b = b + (1us * $ushort$Math::Pow(2d, $double$i))
+				b = b + Convert::ToUInt16(1 << i)
 			end if
 		end do
 		
