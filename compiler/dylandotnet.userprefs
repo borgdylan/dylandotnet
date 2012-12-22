@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/helpers.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnu/streamu.dyl">
     <Files>
       <File FileName="codegen/eval.dyl" Line="1073" Column="2" />
       <File FileName="codegen/helpers.dyl" Line="1558" Column="9" />
@@ -40,7 +40,7 @@
       <File FileName="ast/includestmt.dyl" Line="28" Column="10" />
       <File FileName="codegen/constldr.dyl" Line="1" Column="1" />
       <File FileName="ast/otherstmts.dyl" Line="88" Column="10" />
-      <File FileName="dnu/streamu.dyl" Line="14" Column="23" />
+      <File FileName="dnu/streamu.dyl" Line="151" Column="29" />
       <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
       <File FileName="unit/unit.dyl" Line="21" Column="3" />
       <File FileName="ast/attrstmts.dyl" Line="28" Column="54" />
@@ -101,13 +101,13 @@
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
-            <Node name="codegen" expanded="True">
-              <Node name="helpers.dyl" selected="True" />
-            </Node>
+            <Node name="codegen" expanded="True" />
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
             <Node name="dnr" expanded="True" />
-            <Node name="dnu" expanded="True" />
+            <Node name="dnu" expanded="True">
+              <Node name="streamu.dyl" selected="True" />
+            </Node>
             <Node name="lexer" expanded="True" />
             <Node name="parser" expanded="True" />
             <Node name="tests" expanded="True" />
