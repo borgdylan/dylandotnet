@@ -45,6 +45,7 @@
     <Folder Include="lexer\" />
     <Folder Include="parser\" />
     <Folder Include="unit\" />
+    <Folder Include="m4\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ast\aritops.dyl" />
@@ -193,5 +194,9 @@
     <None Include="codegen\lockitem.dyl" />
     <None Include="ast\varexpr.dyl" />
     <None Include="ast\newcalltoks.dyl" />
+    <None Include="m4\Makefile.am" />
+    <None Include="m4\dylandotnet-macros.7" />
+    <None Include="m4\dylandotnet.m4" />
+    <None Include="dev\Makefile.am" />
   </ItemGroup>
 </Project>

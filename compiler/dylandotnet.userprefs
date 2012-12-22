@@ -102,15 +102,15 @@
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
             <Node name="codegen" expanded="True" />
-            <Node name="dev" expanded="True" />
+            <Node name="dev" expanded="True" selected="True" />
             <Node name="dnc" expanded="True" />
             <Node name="dnr" expanded="True" />
-            <Node name="dnu" expanded="True">
-              <Node name="streamu.dyl" selected="True" />
-            </Node>
+            <Node name="dnu" expanded="True" />
             <Node name="lexer" expanded="True" />
+            <Node name="m4" expanded="True" />
             <Node name="parser" expanded="True" />
             <Node name="tests" expanded="True" />
+            <Node name="unit" expanded="True" />
           </Node>
           <Node name="template" expanded="True" />
         </State>

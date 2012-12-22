@@ -7,9 +7,61 @@ dylandotnet-macros \- The helper macros specification for the \fBdylan.NET\fP pr
 This manual page is for describing the macros written in \fBM4\fP that help developers using \fBdylan.NET\fP as their language of choice.
 
 .SH DESCRIPTION
+The \fbm4\fP macros found in \fIm4/dylandotnet.m4\fP inside the tarballs and in \fI<prefix>/share/dylandotnet/dylandotnet.m4\fP if installed using the Makefile are there to help in coding
+the large \fBdylan.NET\fP constructs that take several lines to write. These macros take a set of parameters and expand to a few lines of \fBdylan.NET\fP that after a little review may be
+used in your code. Most macros are useless or of little use by themsleves but others are indispensable. Below is the description of these \fBindispensable\fP macros and how one should invoke
+them. Please note that \fBM4\fP is needed to load the macro package and invoke the macros. Use of \fBGNU M4\fP is recommended over use of the standard UNIX variants of M4.
+
+.SH MACROS
+
+.SS Events
+
+There is a set of macros that expand into \fBevent\fP statements and their supporting code. These macros take the \fIevent name\fP and \fIdelegate type\fP for the event. There are many variants
+of the \fBevent\fP macro, see the last section for the macro name prefixes used.
+
+.SS Properties
+
+There is a set of macros that expand into \fBproperty\fP statements and their supporting code. These macros take the \fIproperty name\fP and \fItype\fP for the property. There are many variants
+of the \fBproperty\fP macro include readonly and read/write variants, see the last section for the macro name prefixes used.
+
+.SS "Main Method"
+
+There is a macro named \fBmainmethod\fP that expands into an implementation of the \fImain\fP method. The macro emits the usual style of \fImain\fP method i.e. the one taking a parameter
+\fIargs\fP of type \fIstring[]\fP.
+
+.SH "PREFIXES USED"
+
+No prefix indicates that an access modifier of \fBpublic\fP is required.
+
+.SS "p"
+private
+
+.SS "s"
+static i.e. public static
+
+.SS "ssp"
+static specialname i.e. public static specialname
+
+.SS "ps"
+private static
+
+.SS "o"
+override i.e. public hidebysig virtual
+
+.SS "ii"
+interface impelementation i.e. public hidebysig virtual newslot 
+
+.SS "osp"
+override specialname i.e. public hidebysig virtual specialname
+
+.SS "iisp"
+interface impelementation specialname i.e. public hidebysig virtual newslot specialname 
+
+.SS "r"
+readonly (only for properties) i.e. emits property code that does not have a setter
 
 .SH VERSION
 11.2.9.8
 
 .SH "SEE ALSO"
-See also http://launchpad.net/dylandotnet, \fBdylandotnet\fP(1), \fBdylandotnet4\fP(1), \fBm4(1)\fP
+See also http://launchpad.net/dylandotnet,\fBdylandotnet\fP(1), \fBdylandotnet4\fP(1), \fBm4(1)\fP
