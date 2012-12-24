@@ -993,6 +993,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ProcessCollection">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.CollectionItem ProcessCollection (IKVM.Reflection.Type t, bool forcearr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.CollectionItem ProcessCollection(class IKVM.Reflection.Type t, bool forcearr) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.CollectionItem</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="IKVM.Reflection.Type" />
+        <Parameter Name="forcearr" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="forcearr">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ProcessConst">
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.Literals.Literal ProcessConst (dylan.NET.Tokenizer.AST.Tokens.Literals.ConstLiteral lit);" />
       <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Tokens.Literals.Literal ProcessConst(class dylan.NET.Tokenizer.AST.Tokens.Literals.ConstLiteral lit) cil managed" />

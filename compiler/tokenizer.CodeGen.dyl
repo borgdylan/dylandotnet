@@ -71,6 +71,7 @@ namespace dylan.NET.Tokenizer.CodeGen
 	#include "codegen/cilambdas.dyl"
 	#include "codegen/typeitem.dyl"
 	#include "codegen/tilambdas.dyl"
+	#include "codegen/collectionitem.dyl"
 	#include "codegen/typelist.dyl"
 	#include "codegen/labelitem.dyl"
 	#include "codegen/loopitem.dyl"

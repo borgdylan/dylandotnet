@@ -23,6 +23,26 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.CollectionItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.CollectionItem()">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.CollectionItem.AddMtd">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.CollectionItem.Ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.CollectionItem.ElemType">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.CodeGen.CtorItem">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -430,6 +450,13 @@
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessClassAttrs(dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[])">
             <param name="attrs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessCollection(IKVM.Reflection.Type,System.Boolean)">
+            <param name="t">To be added.</param>
+            <param name="forcearr">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

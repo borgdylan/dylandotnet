@@ -374,6 +374,10 @@ class public auto ansi Program
 			Console::WriteLine(i)
 		end for
 		
+		foreach i in new C5.LinkedList<of integer> {1,12,23}
+			Console::WriteLine(i)
+		end for
+		
 		Console::WriteLine("--------------------------")
 		
 		foreach i in new string[] {"This", "is", "a", "foreach"}
@@ -496,7 +500,7 @@ class public auto ansi Program
 //		typ = gettype Func<of IEnumerable<of XElement> >
 //		var xc as integer = ROTest::X
 //		//ROTest::X = xc + 12
-//		foreachtests()
+		foreachtests()
 //		Console::WriteLine("asdf" is List<of object>)
 //		Console::WriteLine(("asdf" as List<of object>)  != null)
 //		Console::WriteLine("asdf" is string)

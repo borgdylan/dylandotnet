@@ -29,6 +29,7 @@
     <Namespace Name="dylan.NET.Tokenizer.CodeGen">
       <Type Name="ASTEmitDelegate" Kind="Delegate" />
       <Type Name="CodeGenerator" Kind="Class" />
+      <Type Name="CollectionItem" Kind="Class" />
       <Type Name="CtorItem" Kind="Class" />
       <Type Name="Evaluator" Kind="Class" />
       <Type Name="FieldItem" Kind="Class" />

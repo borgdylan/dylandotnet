@@ -11,6 +11,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
     <OutputPath>.</OutputPath>
+    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ProjectExtensions>
     <MonoDevelop>

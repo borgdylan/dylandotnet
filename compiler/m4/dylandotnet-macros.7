@@ -33,32 +33,47 @@ There is a macro named \fBmainmethod\fP that expands into an implementation of t
 
 No prefix indicates that an access modifier of \fBpublic\fP is required.
 
-.SS "p"
+.TP
+.B "p"
 private
 
-.SS "s"
+.TP
+.B "s"
 static i.e. public static
 
-.SS "ssp"
+.TP
+.B "ssp"
 static specialname i.e. public static specialname
 
-.SS "ps"
+.TP
+.B "ps"
 private static
 
-.SS "o"
+.TP
+.B "o"
 override i.e. public hidebysig virtual
 
-.SS "ii"
+.TP
+.B "ii"
 interface impelementation i.e. public hidebysig virtual newslot 
 
-.SS "osp"
+.TP
+.B "osp"
 override specialname i.e. public hidebysig virtual specialname
 
-.SS "iisp"
+.TP
+.B "iisp"
 interface impelementation specialname i.e. public hidebysig virtual newslot specialname 
 
-.SS "r"
+.TP
+.B "r"
 readonly (only for properties) i.e. emits property code that does not have a setter
+
+.SH FILES
+
+.B
+.IP <prefix>/share/dylandotnet/dylandotnet.m4
+The \fBm4\fP macro package containing the relevant macros.
 
 .SH VERSION
 11.2.9.8

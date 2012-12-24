@@ -1,0 +1,63 @@
+<Type Name="CollectionItem" FullName="dylan.NET.Tokenizer.CodeGen.CollectionItem">
+  <TypeSignature Language="C#" Value="public class CollectionItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi CollectionItem extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.CodeGen</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CollectionItem ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddMtd">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.MethodInfo AddMtd;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.MethodInfo AddMtd" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Ctor">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.ConstructorInfo Ctor;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.ConstructorInfo Ctor" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.ConstructorInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ElemType">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type ElemType;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type ElemType" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

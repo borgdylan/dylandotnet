@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="m4/dylandotnet-macros.7">
+  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
     <Files>
-      <File FileName="codegen/eval.dyl" Line="1073" Column="2" />
-      <File FileName="codegen/helpers.dyl" Line="1558" Column="9" />
+      <File FileName="codegen/eval.dyl" Line="1107" Column="4" />
+      <File FileName="codegen/helpers.dyl" Line="1586" Column="3" />
       <File FileName="ast/typetoks.dyl" Line="197" Column="22" />
       <File FileName="ast/methodnametok.dyl" Line="24" Column="21" />
       <File FileName="lexer/line.dyl" Line="367" Column="23" />
@@ -27,7 +27,7 @@
       <File FileName="dnr.dyl" Line="40" Column="8" />
       <File FileName="dnu.dyl" Line="38" Column="8" />
       <File FileName="tokenizer.AST.dyl" Line="112" Column="30" />
-      <File FileName="tokenizer.CodeGen.dyl" Line="64" Column="38" />
+      <File FileName="tokenizer.CodeGen.dyl" Line="74" Column="39" />
       <File FileName="tokenizer.Lexer.dyl" Line="32" Column="8" />
       <File FileName="tokenizer.Parser.dyl" Line="36" Column="47" />
       <File FileName="dnr/loader.dyl" Line="370" Column="9" />
@@ -57,7 +57,7 @@
       <File FileName="ast/attributes.dyl" Line="11" Column="29" />
       <File FileName="dnr/asmfactory.dyl" Line="35" Column="37" />
       <File FileName="codegen/lockitem.dyl" Line="23" Column="12" />
-      <File FileName="codegen/ifitem.dyl" Line="14" Column="2" />
+      <File FileName="codegen/ifitem.dyl" Line="1" Column="1" />
       <File FileName="ast/logicalops.dyl" Line="9" Column="32" />
       <File FileName="ast/literals.dyl" Line="205" Column="15" />
       <File FileName="ast/stmt.dyl" Line="30" Column="32" />
@@ -68,7 +68,7 @@
       <File FileName="ast/stdasmstmt.dyl" Line="19" Column="1" />
       <File FileName="ast/attrvalpair.dyl" Line="1" Column="1" />
       <File FileName="ast/expr.dyl" Line="37" Column="19" />
-      <File FileName="templateproj/template.dyl" Line="512" Column="3" />
+      <File FileName="templateproj/template.dyl" Line="516" Column="36" />
       <File FileName="codegen/loopitem.dyl" Line="1" Column="1" />
       <File FileName="ast/ident.dyl" Line="1" Column="1" />
       <File FileName="dnc/testcode.txt" Line="1" Column="1" />
@@ -95,18 +95,19 @@
       <File FileName="tests/arit.dyl" Line="1" Column="1" />
       <File FileName="ast/newexpr.dyl" Line="1" Column="1" />
       <File FileName="ast/newcalltoks.dyl" Line="83" Column="21" />
-      <File FileName="m4/dylandotnet-macros.7" Line="35" Column="1" />
       <File FileName="m4/dylandotnet.m4" Line="18" Column="65" />
+      <File FileName="dylandotnet.1" Line="35" Column="10" />
+      <File FileName="codegen/collectionitem.dyl" Line="3" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
-            <Node name="m4" expanded="True">
-              <Node name="dylandotnet-macros.7" selected="True" />
-            </Node>
+            <Node name="ast" expanded="True" />
+            <Node name="codegen" expanded="True" />
+            <Node name="m4" expanded="True" />
           </Node>
-          <Node name="template" expanded="True" />
+          <Node name="template" expanded="True" selected="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

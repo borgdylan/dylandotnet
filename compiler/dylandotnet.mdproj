@@ -198,5 +198,6 @@
     <None Include="m4\dylandotnet-macros.7" />
     <None Include="m4\dylandotnet.m4" />
     <None Include="dev\Makefile.am" />
+    <None Include="codegen\collectionitem.dyl" />
   </ItemGroup>
 </Project>

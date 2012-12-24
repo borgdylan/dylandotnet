@@ -1291,7 +1291,12 @@ class public auto ansi static Helpers
 		if t::Equals(AsmFactory::CurnTypB) then
 			return SymTable::FindCtor(typs)
 		else
-			return Loader::LoadCtor(t, typs)
+			var ci as ConstructorInfo = SymTable::TypeLst::GetCtor(t,typs)
+			if ci != null then
+				return ci
+			else
+				return Loader::LoadCtor(t, typs)
+			end if
 		end if
 	end method
 
@@ -1527,6 +1532,65 @@ class public auto ansi static Helpers
 	end method
 	
 	[method: ComVisible(false)]
+	method public static CollectionItem ProcessCollection(var t as IKVM.Reflection.Type, var forcearr as boolean)
+		
+		if forcearr then
+			return null
+		end if
+		
+		var ci as CollectionItem = new CollectionItem()
+		var ie as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ICollection`1)
+		var ie2 as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ICollection)
+		var ie3 as IKVM.Reflection.Type = null
+		var flgs as boolean[] = new boolean[] {false, false}
+		
+		if t::get_IsGenericType() then
+			if ie::Equals(t::GetGenericTypeDefinition()) then
+				flgs[0] = true
+				ie3 = t
+			end if
+		else
+			if ie2::Equals(t) then
+				flgs[1] = true
+			end if
+		end if
+		
+		if flgs[0] then
+			ci::ElemType = ie3::GetGenericArguments()[0]
+		elseif flgs[1] then
+			ie3 = ie2
+			ci::ElemType = ILEmitter::Univ::Import(gettype object)
+		else
+			foreach interf in GetTypeInterfaces(t)
+				if interf::get_IsGenericType() then
+					if ie::Equals(interf::GetGenericTypeDefinition()) then
+						flgs[0] = true
+						ie3 = interf
+					end if
+				else
+					if ie2::Equals(interf) then
+						flgs[1] = true
+					end if
+				end if
+			end for
+			
+			if flgs[0] then
+				ci::ElemType = ie3::GetGenericArguments()[0]
+			elseif flgs[1] then
+				ie3 = ie2
+				ci::ElemType = ILEmitter::Univ::Import(gettype object)
+			else
+				return null
+			end if
+		end if
+		
+		ci::AddMtd = Loader::LoadMethod(ie3, "Add", new IKVM.Reflection.Type[] {ci::ElemType})
+		ci::Ctor = GetLocCtor(t, IKVM.Reflection.Type::EmptyTypes)
+		
+		return ci
+	end method
+	
+	[method: ComVisible(false)]
 	method public static MethodInfo[] ProcessForeach(var t as IKVM.Reflection.Type)
 		var arr as MethodInfo[] = new MethodInfo[3]
 		var ie as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype IEnumerable`1)
@@ -1576,5 +1640,6 @@ class public auto ansi static Helpers
 		
 		return arr
 	end method
+
 
 end class

@@ -1046,7 +1046,7 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 					AsmFactory::Type02 = Helpers::CommitEvalTTok(metk1::TTok)
 					if AsmFactory::Type02 = null then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + metk1::TTok::Value +"' was not found.")
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + metk1::TTok::::ToString() + "' was not found.")
 					end if
 					if emt then
 						snk1 = AsmFactory::Type02
@@ -1067,33 +1067,57 @@ class public auto ansi beforefieldinit Evaluator
 				//array initializer section
 				var aictok as ArrInitCallTok = $ArrInitCallTok$tok
 				typ2 = Helpers::CommitEvalTTok(aictok::ArrayType)
-				
-				if emt then
-					ILEmitter::EmitLdcI4(aictok::Elements[l])
-					ILEmitter::EmitConvI()
-					ILEmitter::EmitNewarr(typ2)
+				if typ2 = null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + aictok::ArrayType::ToString() + "' was not found.")
 				end if
 				
-				var aii as integer = -1
-				do until aii = (aictok::Elements[l] - 1)
-					aii = aii + 1
-					if emt then
-						ILEmitter::EmitDup()
-						ILEmitter::EmitLdcI4(aii)
-						ILEmitter::EmitConvI()
-					end if
-					ASTEmit(ConvToAST(ConvToRPN(aictok::Elements[aii])), emt)
-					Helpers::CheckAssignability(AsmFactory::Type02, typ2)
-					if emt then
-						ILEmitter::EmitStelem(typ2)
-					end if	
-				end do
+				var ci as CollectionItem = Helpers::ProcessCollection(typ2,aictok::ForceArray)
 				
-				AsmFactory::Type02 = typ2::MakeArrayType()
+				if(ci == null) then
+					if emt then
+						ILEmitter::EmitLdcI4(aictok::Elements[l])
+						ILEmitter::EmitConvI()
+						ILEmitter::EmitNewarr(typ2)
+					end if
+					
+					var aii as integer = -1
+					do until aii = (aictok::Elements[l] - 1)
+						aii = aii + 1
+						if emt then
+							ILEmitter::EmitDup()
+							ILEmitter::EmitLdcI4(aii)
+							ILEmitter::EmitConvI()
+						end if
+						ASTEmit(ConvToAST(ConvToRPN(aictok::Elements[aii])), emt)
+						Helpers::CheckAssignability(typ2,AsmFactory::Type02)
+						if emt then
+							ILEmitter::EmitStelem(typ2)
+						end if	
+					end do
+					AsmFactory::Type02 = typ2::MakeArrayType()
+				else
+					if emt then
+						ILEmitter::EmitNewobj(ci::Ctor)
+					end if
+					
+					var aii as integer = -1
+					do until aii = (aictok::Elements[l] - 1)
+						aii = aii + 1
+						if emt then
+							ILEmitter::EmitDup()
+						end if
+						ASTEmit(ConvToAST(ConvToRPN(aictok::Elements[aii])), emt)
+						Helpers::CheckAssignability(ci::ElemType,AsmFactory::Type02)
+						if emt then
+							ILEmitter::EmitCallvirt(ci::AddMtd)
+						end if	
+					end do
+					AsmFactory::Type02 = typ2
+				end if
 			elseif tok is PtrCallTok then
 				//ptr load section - obsolete
 				if emt then
-					StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Using 'ptr' is considered an obsolte practice.")
+					StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Using 'ptr' is considered an obsolete practice.")
 					var ptrctok as PtrCallTok = $PtrCallTok$tok
 					mcmetinf = Helpers::GetLocMetNoParams(ptrctok::MetToCall::Value)
 					mcisstatic = mcmetinf::get_IsStatic()
