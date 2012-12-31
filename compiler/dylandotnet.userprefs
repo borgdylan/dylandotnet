@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/eval.dyl">
     <Files>
-      <File FileName="codegen/eval.dyl" Line="1107" Column="4" />
-      <File FileName="codegen/helpers.dyl" Line="1586" Column="3" />
+      <File FileName="codegen/eval.dyl" Line="1331" Column="101" />
+      <File FileName="codegen/helpers.dyl" Line="35" Column="44" />
       <File FileName="ast/typetoks.dyl" Line="197" Column="22" />
       <File FileName="ast/methodnametok.dyl" Line="24" Column="21" />
       <File FileName="lexer/line.dyl" Line="367" Column="23" />
@@ -27,11 +27,11 @@
       <File FileName="dnr.dyl" Line="40" Column="8" />
       <File FileName="dnu.dyl" Line="38" Column="8" />
       <File FileName="tokenizer.AST.dyl" Line="112" Column="30" />
-      <File FileName="tokenizer.CodeGen.dyl" Line="74" Column="39" />
+      <File FileName="tokenizer.CodeGen.dyl" Line="71" Column="34" />
       <File FileName="tokenizer.Lexer.dyl" Line="32" Column="8" />
       <File FileName="tokenizer.Parser.dyl" Line="36" Column="47" />
       <File FileName="dnr/loader.dyl" Line="370" Column="9" />
-      <File FileName="codegen/typelist.dyl" Line="185" Column="4" />
+      <File FileName="codegen/typelist.dyl" Line="29" Column="40" />
       <File FileName="codegen/typearr.dyl" Line="1" Column="1" />
       <File FileName="codegen/typeitem.dyl" Line="61" Column="25" />
       <File FileName="codegen/milambdas.dyl" Line="52" Column="11" />
@@ -41,7 +41,7 @@
       <File FileName="codegen/constldr.dyl" Line="1" Column="1" />
       <File FileName="ast/otherstmts.dyl" Line="88" Column="10" />
       <File FileName="dnu/streamu.dyl" Line="151" Column="29" />
-      <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
+      <File FileName="dnu/parseu.dyl" Line="306" Column="3" />
       <File FileName="unit/unit.dyl" Line="21" Column="3" />
       <File FileName="ast/attrstmts.dyl" Line="28" Column="54" />
       <File FileName="dnr/importer.dyl" Line="1" Column="1" />
@@ -66,9 +66,9 @@
       <File FileName="ast/singstmt.dyl" Line="1" Column="1" />
       <File FileName="ast/dependstmt.dyl" Line="1" Column="1" />
       <File FileName="ast/stdasmstmt.dyl" Line="19" Column="1" />
-      <File FileName="ast/attrvalpair.dyl" Line="1" Column="1" />
+      <File FileName="ast/attrvalpair.dyl" Line="27" Column="1" />
       <File FileName="ast/expr.dyl" Line="37" Column="19" />
-      <File FileName="templateproj/template.dyl" Line="516" Column="36" />
+      <File FileName="templateproj/template.dyl" Line="387" Column="51" />
       <File FileName="codegen/loopitem.dyl" Line="1" Column="1" />
       <File FileName="ast/ident.dyl" Line="1" Column="1" />
       <File FileName="dnc/testcode.txt" Line="1" Column="1" />
@@ -94,20 +94,31 @@
       <File FileName="tests/boxobj.dyl" Line="1" Column="1" />
       <File FileName="tests/arit.dyl" Line="1" Column="1" />
       <File FileName="ast/newexpr.dyl" Line="1" Column="1" />
-      <File FileName="ast/newcalltoks.dyl" Line="83" Column="21" />
+      <File FileName="ast/newcalltoks.dyl" Line="120" Column="14" />
       <File FileName="m4/dylandotnet.m4" Line="18" Column="65" />
       <File FileName="dylandotnet.1" Line="35" Column="10" />
       <File FileName="codegen/collectionitem.dyl" Line="3" Column="1" />
+      <File FileName="codegen/filambdas.dyl" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
-            <Node name="codegen" expanded="True" />
+            <Node name="codegen" expanded="True">
+              <Node name="eval.dyl" selected="True" />
+            </Node>
+            <Node name="dev" expanded="True" />
+            <Node name="dnc" expanded="True" />
+            <Node name="dnr" expanded="True" />
+            <Node name="dnu" expanded="True" />
+            <Node name="lexer" expanded="True" />
             <Node name="m4" expanded="True" />
+            <Node name="parser" expanded="True" />
+            <Node name="tests" expanded="True" />
+            <Node name="unit" expanded="True" />
           </Node>
-          <Node name="template" expanded="True" selected="True" />
+          <Node name="template" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

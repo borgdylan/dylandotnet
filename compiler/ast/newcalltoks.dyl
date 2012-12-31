@@ -103,3 +103,41 @@ class public auto ansi ArrInitCallTok extends Token
 	end method
 
 end class
+
+class public auto ansi ObjInitCallTok extends Token
+
+	field public NewCallTok Ctor
+	field public Token[] Elements
+
+	method public void ObjInitCallTok()
+		me::ctor()
+		Ctor = null
+		Elements = new Token[0]
+	end method
+
+	method public void ObjInitCallTok(var value as string)
+		me::ctor(value)
+		Ctor = null
+		Elements = new Token[0]
+	end method
+	
+	method public void AddElem(var eltoadd as Token)
+
+		var i as integer = -1
+		var destarr as Token[] = new Token[Elements[l] + 1]
+
+		do until i = (Elements[l] - 1)
+			i = i + 1
+			destarr[i] = Elements[i]
+		end do
+		
+		if Elements[l] = 0 then
+			Line = eltoadd::Line
+		end if
+		
+		destarr[Elements[l]] = eltoadd
+		Elements = destarr
+
+	end method
+
+end class

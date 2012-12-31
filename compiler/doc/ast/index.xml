@@ -170,6 +170,7 @@
       <Type Name="NewCallTok" Kind="Class" />
       <Type Name="NewresTok" Kind="Class" />
       <Type Name="NewTok" Kind="Class" />
+      <Type Name="ObjInitCallTok" Kind="Class" />
       <Type Name="OffTok" Kind="Class" />
       <Type Name="OfTok" Kind="Class" />
       <Type Name="OnTok" Kind="Class" />

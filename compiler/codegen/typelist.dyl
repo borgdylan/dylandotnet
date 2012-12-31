@@ -16,9 +16,8 @@ class public auto ansi TypeList
 	end method
 
 	method public TypeItem GetTypeItem(var nam as string)
-		var lon as C5.IList<of string> = new C5.LinkedList<of string>()
+		var lon as C5.IList<of string> = new C5.LinkedList<of string> {String::Empty}
 		lon::AddAll(Importer::Imps)
-		lon::Add(String::Empty)
 		
 		foreach ns in lon
 			var til as TILambdas

@@ -1,11 +1,11 @@
 <Type Name="AttrValuePair" FullName="dylan.NET.Tokenizer.AST.Tokens.AttrValuePair">
-  <TypeSignature Language="C#" Value="public class AttrValuePair" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi AttrValuePair extends System.Object" />
+  <TypeSignature Language="C#" Value="public class AttrValuePair : dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi AttrValuePair extends dylan.NET.Tokenizer.AST.Tokens.Token" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

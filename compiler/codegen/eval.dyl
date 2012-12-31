@@ -308,6 +308,13 @@ class public auto ansi beforefieldinit Evaluator
 			else
 				typ = AsmFactory::Type02
 				aed::Invoke(ConvToAST(ConvToRPN(idt::ArrLoc)), emt)
+				
+				if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
+				elseif typ::get_IsArray() == false then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + typ::ToString() + "' is not an Array Type.")
+				end if
+				
 				typ = typ::GetElementType()
 				if idt::IsRef then
 					AsmFactory::ForcedAddrFlg = true
@@ -585,6 +592,13 @@ class public auto ansi beforefieldinit Evaluator
 					else
 						mcparenttyp = AsmFactory::Type02
 						aed::Invoke(ConvToAST(ConvToRPN(mntok::ArrLoc)), emt)
+						
+						if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
+						elseif mcparenttyp::get_IsArray() == false then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + mcparenttyp::ToString() + "' is not an Array Type.")
+						end if
+						
 						mcparenttyp = mcparenttyp::GetElementType()
 						if mntok::IsRef then
 							AsmFactory::ForcedAddrFlg = true
@@ -1058,6 +1072,9 @@ class public auto ansi beforefieldinit Evaluator
 				var newactok as NewarrCallTok = $NewarrCallTok$tok
 				typ2 = Helpers::CommitEvalTTok(newactok::ArrayType)
 				ASTEmit(ConvToAST(ConvToRPN(newactok::ArrayLen)), emt)
+				if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Lengths should be of a Primitive Integer Type.")
+				end if
 				if emt then
 					ILEmitter::EmitConvI()
 					ILEmitter::EmitNewarr(typ2)
@@ -1289,17 +1306,18 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 		end if
 
-		//in case of array store load index
+		//in case of array store, load index
 		//-------------------------------------------
 		if idt::IsArr then
 			Evaluate(idt::ArrLoc)
+			
+			if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
+			end if
+			
 			ILEmitter::EmitConvI()
 		end if
 		//--------------------------------------------
-		
-		if idt::Value == "asms" then
-			idt = idt
-		end if
 		
 		//--------------------------------------------------------------
 		//loading of value to store
@@ -1309,6 +1327,9 @@ class public auto ansi beforefieldinit Evaluator
 		var outt as IKVM.Reflection.Type = AsmFactory::Type02
 		
 		if idt::IsArr then
+			if idttyp::get_IsArray() == false then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + idttyp::ToString() + "' is not an Array Type.")
+			end if
 			idttyp = idttyp::GetElementType()
 			Helpers::CheckAssignability(idttyp, outt)
 			ILEmitter::EmitStelem(idttyp)
