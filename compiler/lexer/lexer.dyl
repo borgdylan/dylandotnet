@@ -42,7 +42,7 @@ class public auto ansi Lexer
 					curstmt::Line = curline
 					curln = new Line()
 					curstmt = curln::Analyze(curstmt, buf)
-					curstmtlen = curstmt::Tokens[l]
+					curstmtlen = curstmt::Tokens::get_Count()
 			
 					if curstmtlen != 0 then
 						stmts::AddStmt(curstmt)
@@ -60,7 +60,7 @@ class public auto ansi Lexer
 				curstmt::Line = curline
 				curln = new Line()
 				curstmt = curln::Analyze(curstmt, buf)
-				curstmtlen = curstmt::Tokens[l]
+				curstmtlen = curstmt::Tokens::get_Count()
 			
 				if curstmtlen != 0 then
 					stmts::AddStmt(curstmt)
@@ -109,7 +109,7 @@ class public auto ansi Lexer
 					curstmt::Line = curline
 					curln = new Line()
 					curstmt = curln::Analyze(curstmt, buf)
-					curstmtlen = curstmt::Tokens[l]
+					curstmtlen = curstmt::Tokens::get_Count()
 			
 					if curstmtlen != 0 then
 						stmts::AddStmt(curstmt)
@@ -127,7 +127,7 @@ class public auto ansi Lexer
 				curstmt::Line = curline
 				curln = new Line()
 				curstmt = curln::Analyze(curstmt, buf)
-				curstmtlen = curstmt::Tokens[l]
+				curstmtlen = curstmt::Tokens::get_Count()
 			
 				if curstmtlen != 0 then
 					stmts::AddStmt(curstmt)

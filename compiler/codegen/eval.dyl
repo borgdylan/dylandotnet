@@ -46,7 +46,7 @@ class public auto ansi beforefieldinit Evaluator
 
 	method public Expr ConvToRPN(var exp as Expr)
 		
-		if (exp::Tokens[l] = 0) or (exp::Tokens[l] = 1) then
+		if (exp::Tokens::get_Count() = 0) or (exp::Tokens::get_Count() = 1) then
 			return exp
 		end if
 		
@@ -57,10 +57,10 @@ class public auto ansi beforefieldinit Evaluator
 		
 		exp2::Line = exp::Line
 
-		do until i = (exp::Tokens[l] - 1)
+		do until i = (exp::Tokens::get_Count() - 1)
 
 			i = i + 1
-			tok = exp::Tokens[i]
+			tok = exp::Tokens::get_Item(i)
 
 			if ((tok is Op) or (tok is LParen) or (tok is RParen)) = false then
 				exp2::AddToken(tok)
@@ -117,34 +117,34 @@ class public auto ansi beforefieldinit Evaluator
 		var tok2 as Token = null
 		var optok as Op
 
-		if exp::Tokens[l] = 1 then
-			return exp::Tokens[0]
-		elseif exp::Tokens[l] = 0 then
+		if exp::Tokens::get_Count() = 1 then
+			return exp::Tokens::get_Item(0)
+		elseif exp::Tokens::get_Count() = 0 then
 			return null
 		end if
-		var len as integer = exp::Tokens[l] - 1
+		var len as integer = exp::Tokens::get_Count() - 1
 		do until i = len
 			i = i + 1
-			tok = exp::Tokens[i]
+			tok = exp::Tokens::get_Item(i)
 			if tok is Op then
 				if i >= 2 then
 					optok = $Op$tok
 					j = i - 1
-					tok2 = exp::Tokens[j]
+					tok2 = exp::Tokens::get_Item(j)
 					exp::RemToken(j)
 					len = len - 1
 					j = j - 1
-					tok = exp::Tokens[j]
+					tok = exp::Tokens::get_Item(j)
 					exp::RemToken(j)
 					len =  len - 1
 					optok::LChild = tok
 					optok::RChild = tok2
-					exp::Tokens[j] = optok
+					exp::Tokens::set_Item(j,optok)
 					i = j
 				end if
 			end if
 			if i = len then
-				tokf =  exp::Tokens[0]
+				tokf =  exp::Tokens::get_Item(0)
 			end if
 		end do
 		
@@ -300,6 +300,10 @@ class public auto ansi beforefieldinit Evaluator
 		//-----------------------------------------
 		if idt::IsArr then
 			if Helpers::CheckIfArrLen(idt::ArrLoc) then
+				typ = AsmFactory::Type02
+				if typ::get_IsArray() == false then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + typ::ToString() + "' is not an Array Type.")
+				end if
 				if emt then
 					ILEmitter::EmitLdlen()
 					ILEmitter::EmitConvI4()
@@ -584,6 +588,10 @@ class public auto ansi beforefieldinit Evaluator
 				//-----------------------------------------
 				if mntok::IsArr = true then
 					if Helpers::CheckIfArrLen(mntok::ArrLoc) then
+						mcparenttyp = AsmFactory::Type02
+						if mcparenttyp::get_IsArray() == false then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + mcparenttyp::ToString() + "' is not an Array Type.")
+						end if
 						if emt then
 							ILEmitter::EmitLdlen()
 							ILEmitter::EmitConvI4()
@@ -686,7 +694,7 @@ class public auto ansi beforefieldinit Evaluator
 		if nctyp::IsSubclassOf(ILEmitter::Univ::Import(gettype MulticastDelegate)) then
 			delcreate = true
 			delparamarr = Loader::GetDelegateInvokeParams(nctyp)
-			delmtdnam = Helpers::StripDelMtdName(nctok::Params[0]::Tokens[0])
+			delmtdnam = Helpers::StripDelMtdName(nctok::Params[0]::Tokens::get_Item(0))
 		else
 			if nctok::Params[l] = 0 then
 				typarr1 = IKVM.Reflection.Type::EmptyTypes

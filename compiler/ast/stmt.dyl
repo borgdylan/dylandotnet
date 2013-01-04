@@ -8,62 +8,60 @@
 
 class public auto ansi Stmt
 
-	field public Token[] Tokens
+	field public C5.ArrayList<of Token> Tokens
 	field public integer Line
 
 	method public void Stmt()
 		me::ctor()
-		Tokens = new Token[0]
+		Tokens = new C5.ArrayList<of Token>()
 		Line = 0
 	end method
 
 	method public void AddToken(var toktoadd as Token)
-
-		var i as integer = -1
-		var destarr as Token[] = new Token[Tokens[l] + 1]
-
-		do until i = (Tokens[l] - 1)
-			i = i + 1
-			destarr[i] = Tokens[i]
-		end do
-
-		destarr[Tokens[l]] = toktoadd
-		Tokens = destarr
-
+		Tokens::Add(toktoadd)
+//		var i as integer = -1
+//		var destarr as Token[] = new Token[Tokens[l] + 1]
+//
+//		do until i = (Tokens[l] - 1)
+//			i = i + 1
+//			destarr[i] = Tokens[i]
+//		end do
+//
+//		destarr[Tokens[l]] = toktoadd
+//		Tokens = destarr
 	end method
 
 end class
 
 class public auto ansi StmtSet
 
-	field public Stmt[] Stmts
+	field public C5.ArrayList<of Stmt> Stmts
 	field public string Path
 
 	method public void StmtSet()
 		me::ctor()
-		Stmts = new Stmt[0]
+		Stmts = new C5.ArrayList<of Stmt>()
 		Path = ""
 	end method
 	
 	method public void StmtSet(var p as string)
 		me::ctor()
-		Stmts = new Stmt[0]
+		Stmts = new C5.ArrayList<of Stmt>()
 		Path = p
 	end method
 
 	method public void AddStmt(var stmttoadd as Stmt)
-		
-		var i as integer = -1
-		var destarr as Stmt[] = new Stmt[Stmts[l] + 1]
-
-		do until i = (Stmts[l] - 1)
-			i = i + 1
-			destarr[i] = Stmts[i]
-		end do
-
-		destarr[Stmts[l]] = stmttoadd
-		Stmts = destarr
-
+		Stmts::Add(stmttoadd)
+//		var i as integer = -1
+//		var destarr as Stmt[] = new Stmt[Stmts[l] + 1]
+//
+//		do until i = (Stmts[l] - 1)
+//			i = i + 1
+//			destarr[i] = Stmts[i]
+//		end do
+//
+//		destarr[Stmts[l]] = stmttoadd
+//		Stmts = destarr
 	end method
 
 end class

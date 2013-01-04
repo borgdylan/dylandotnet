@@ -14,6 +14,7 @@
 #refasm "dnu.dll"
 #refasm "dnr.dll"
 #refasm "IKVM.Reflection.dll"
+#refasm "C5.Mono.dll"
 
 #include "cflags.dyl"
 #if DEBUG then

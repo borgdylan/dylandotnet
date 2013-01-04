@@ -1421,9 +1421,9 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static boolean CheckIfArrLen(var ind as Expr)
-		if ind::Tokens[l] = 1 then
-			if ind::Tokens[0] is Ident then
-				return ind::Tokens[0]::Value == "l"
+		if ind::Tokens::get_Count() = 1 then
+			if ind::Tokens::get_Item(0) is Ident then
+				return ind::Tokens::get_Item(0)::Value == "l"
 			else
 				return false
 			end if

@@ -31,10 +31,10 @@ class public auto ansi Parser
 		var so as StmtOptimizer = null
 		PFlags::CurPath = stms::Path
 		
-		do until i = (stms::Stmts[l] - 1)
+		do until i = (stms::Stmts::get_Count() - 1)
 			i = i + 1
 			so = new StmtOptimizer(PFlags)
-			stms::Stmts[i] = so::Optimize(stms::Stmts[i])
+			stms::Stmts::set_Item(i,so::Optimize(stms::Stmts::get_Item(i)))
 		end do
 		
 		return stms

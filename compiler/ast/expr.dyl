@@ -8,52 +8,50 @@
 
 class public auto ansi Expr
 
-	field public Token[] Tokens
+	field public C5.ArrayList<of Token> Tokens
 	field public integer Line
 	field public Type ResultTyp
 
 	method public void Expr()
 		me::ctor()
-		Tokens = new Token[0]
+		Tokens = new C5.ArrayList<of Token>()
 		Line = 0
 		ResultTyp = null
 	end method
 
 	method public void AddToken(var toktoadd as Token)
+		Tokens::Add(toktoadd)
+//		var i as integer = -1
+//		var destarr as Token[] = new Token[Tokens[l] + 1]
+//
+//		do until i = (Tokens[l] - 1)
+//			i = i + 1
+//			destarr[i] = Tokens[i]
+//		end do
 
-		var i as integer = -1
-		var destarr as Token[] = new Token[Tokens[l] + 1]
-
-		do until i = (Tokens[l] - 1)
-			i = i + 1
-			destarr[i] = Tokens[i]
-		end do
-
-		if Tokens[l] = 0 then
+		if Tokens::get_Count() = 0 then
 			Line = toktoadd::Line
 		end if
 
-		destarr[Tokens[l]] = toktoadd
-		Tokens = destarr
-
+//		destarr[Tokens[l]] = toktoadd
+//		Tokens = destarr
 	end method
 
 	method public void RemToken(var ind as integer)
-
-		var i as integer = -1
-		var j as integer = -1
-		var destarr as Token[] = new Token[Tokens[l] - 1]
-
-		do until i = (Tokens[l] - 1)
-			i = i + 1
-			if i != ind then
-				j = j + 1
-				destarr[j] = Tokens[i]
-			end if
-		end do
-
-		Tokens = destarr
-
+		Tokens::RemoveAt(ind)
+//		var i as integer = -1
+//		var j as integer = -1
+//		var destarr as Token[] = new Token[Tokens[l] - 1]
+//
+//		do until i = (Tokens[l] - 1)
+//			i = i + 1
+//			if i != ind then
+//				j = j + 1
+//				destarr[j] = Tokens[i]
+//			end if
+//		end do
+//
+//		Tokens = destarr
 	end method
 
 

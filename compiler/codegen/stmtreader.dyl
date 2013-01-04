@@ -25,12 +25,12 @@ class public auto ansi StmtReader
 		var i as integer = -1
 		do until i = (stm::Ctor::Params[l] - 1)
 			i = i + 1
-			if stm::Ctor::Params[i]::Tokens[0] is Literal then
-				var lit as Literal = $Literal$stm::Ctor::Params[i]::Tokens[0]
+			if stm::Ctor::Params[i]::Tokens::get_Item(0) is Literal then
+				var lit as Literal = $Literal$stm::Ctor::Params[i]::Tokens::get_Item(0)
 				tarr[i] = Helpers::CommitEvalTTok(lit::LitTyp)
 				oarr[i] = Helpers::LiteralToConst(lit)
-			elseif stm::Ctor::Params[i]::Tokens[0] is Ident then
-				var idt as Ident = $Ident$stm::Ctor::Params[i]::Tokens[0]
+			elseif stm::Ctor::Params[i]::Tokens::get_Item(0) is Ident then
+				var idt as Ident = $Ident$stm::Ctor::Params[i]::Tokens::get_Item(0)
 				var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ":")
 				var constcls as IKVM.Reflection.Type = Helpers::CommitEvalTTok(new TypeTok(idtnamarr[0]))
 				var fldinf as FieldInfo = Helpers::GetExtFld(constcls, idtnamarr[1])
@@ -38,8 +38,8 @@ class public auto ansi StmtReader
 					tarr[i] = Loader::FldLitTyp
 					oarr[i] = Loader::FldLitVal
 				end if
-			elseif stm::Ctor::Params[i]::Tokens[0] is GettypeCallTok then
-				var gtc as GettypeCallTok = $GettypeCallTok$stm::Ctor::Params[i]::Tokens[0]
+			elseif stm::Ctor::Params[i]::Tokens::get_Item(0) is GettypeCallTok then
+				var gtc as GettypeCallTok = $GettypeCallTok$stm::Ctor::Params[i]::Tokens::get_Item(0)
 				tarr[i] = ILEmitter::Univ::Import(gettype Type)
 				oarr[i] = Helpers::CommitEvalTTok(gtc::Name)
 			end if
@@ -69,15 +69,15 @@ class public auto ansi StmtReader
 				end if
 			end if
 				
-			if stm::Pairs[i]::ValueExpr::Tokens[0] is Literal then
-				var lit2 as Literal = $Literal$stm::Pairs[i]::ValueExpr::Tokens[0]
+			if stm::Pairs[i]::ValueExpr::Tokens::get_Item(0) is Literal then
+				var lit2 as Literal = $Literal$stm::Pairs[i]::ValueExpr::Tokens::get_Item(0)
 				if multflg then
 					poarr::Add(Helpers::LiteralToConst(lit2))
 				else
 					foarr::Add(Helpers::LiteralToConst(lit2))
 				end if
-			elseif stm::Pairs[i]::ValueExpr::Tokens[0] is Ident then
-				var idt2 as Ident = $Ident$stm::Pairs[i]::ValueExpr::Tokens[0]
+			elseif stm::Pairs[i]::ValueExpr::Tokens::get_Item(0) is Ident then
+				var idt2 as Ident = $Ident$stm::Pairs[i]::ValueExpr::Tokens::get_Item(0)
 				var idtnamarr2 as string[] = ParseUtils::StringParser(idt2::Value, ":")
 				var constcls2 as IKVM.Reflection.Type = Helpers::CommitEvalTTok(new TypeTok(idtnamarr2[0]))
 				var fldinf2 as FieldInfo = Helpers::GetExtFld(constcls2, idtnamarr2[1])
@@ -88,8 +88,8 @@ class public auto ansi StmtReader
 						foarr::Add(Loader::FldLitVal)
 					end if
 				end if
-			elseif stm::Pairs[i]::ValueExpr::Tokens[0] is GettypeCallTok then
-				var gtc2 as GettypeCallTok = $GettypeCallTok$stm::Pairs[i]::ValueExpr::Tokens[0]
+			elseif stm::Pairs[i]::ValueExpr::Tokens::get_Item(0) is GettypeCallTok then
+				var gtc2 as GettypeCallTok = $GettypeCallTok$stm::Pairs[i]::ValueExpr::Tokens::get_Item(0)
 				if multflg then
 					poarr::Add(Helpers::CommitEvalTTok(gtc2::Name))
 				else
@@ -598,7 +598,7 @@ class public auto ansi StmtReader
 		elseif stm is AssignStmt then
 			var asgnstm as AssignStmt = $AssignStmt$stm
 			eval = new Evaluator()
-			eval::StoreEmit(asgnstm::LExp::Tokens[0], asgnstm::RExp)
+			eval::StoreEmit(asgnstm::LExp::Tokens::get_Item(0), asgnstm::RExp)
 		elseif stm is MethodCallStmt then
 			var mcstmt as MethodCallStmt = $MethodCallStmt$stm
 			var mcstmtexp as Expr = new Expr()

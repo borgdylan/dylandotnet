@@ -93,37 +93,37 @@ class public auto ansi CodeGenerator
 		var hefs as C5.IStack<of boolean> = new C5.LinkedList<of boolean>()
 		var pfs as C5.IStack<of boolean> = new C5.LinkedList<of boolean>()
 		
-		do until i = (stmts::Stmts[l] - 1)
+		do until i = (stmts::Stmts::get_Count() - 1)
 			i = i + 1
-			if stmts::Stmts[i] is HCondCompStmt then
-				if stmts::Stmts[i] is HIfStmt then
+			if stmts::Stmts::get_Item(i) is HCondCompStmt then
+				if stmts::Stmts::get_Item(i) is HIfStmt then
 					hefs::Push(helseflg)
 					pfs::Push(procflg)
 					helseflg = procflg
-					var hif as HIfStmt = $HIfStmt$stmts::Stmts[i]
+					var hif as HIfStmt = $HIfStmt$stmts::Stmts::get_Item(i)
 					if eval::EvaluateHIf(hif::Exp) and helseflg then
 						procflg = true
 						helseflg = false
 					else
 						procflg = false
 					end if
-				elseif stmts::Stmts[i] is HElseIfStmt then
-					var hif as HElseIfStmt = $HElseIfStmt$stmts::Stmts[i]
+				elseif stmts::Stmts::get_Item(i) is HElseIfStmt then
+					var hif as HElseIfStmt = $HElseIfStmt$stmts::Stmts::get_Item(i)
 					if eval::EvaluateHIf(hif::Exp) and helseflg then
 						procflg = true
 						helseflg = false
 					else
 						procflg = false
 					end if
-				elseif stmts::Stmts[i] is HElseStmt then
+				elseif stmts::Stmts::get_Item(i) is HElseStmt then
 					procflg = helseflg
-				elseif stmts::Stmts[i] is EndHIfStmt then
+				elseif stmts::Stmts::get_Item(i) is EndHIfStmt then
 					helseflg = hefs::Pop()
 					procflg = pfs::Pop()
 				end if
 			elseif procflg then
-				if stmts::Stmts[i] is IncludeStmt then
-					var inclustm as IncludeStmt = $IncludeStmt$stmts::Stmts[i]
+				if stmts::Stmts::get_Item(i) is IncludeStmt then
+					var inclustm as IncludeStmt = $IncludeStmt$stmts::Stmts::get_Item(i)
 					var pth as string
 					var sset as StmtSet
 					
@@ -162,8 +162,8 @@ class public auto ansi CodeGenerator
 					EmitMSIL(sset, pth)
 				else
 					var sr as StmtReader = new StmtReader()
-					if stmts::Stmts[i] != null then
-						sr::Read(stmts::Stmts[i], fpath)
+					if stmts::Stmts::get_Item(i) != null then
+						sr::Read(stmts::Stmts::get_Item(i), fpath)
 					end if
 				end if
 			end if
