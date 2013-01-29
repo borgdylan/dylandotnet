@@ -65,11 +65,11 @@
       </Docs>
     </Member>
     <Member MemberName="Elements">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token[] Elements;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Token[] Elements" />
+      <MemberSignature Language="C#" Value="public C5.ArrayList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt; Elements;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.ArrayList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Token&gt; Elements" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token[]</ReturnType>
+        <ReturnType>C5.ArrayList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

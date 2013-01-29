@@ -790,18 +790,18 @@ class public auto ansi ExprOptimizer
 						var nctoken as NewCallTok = $NewCallTok$exp::Tokens::get_Item(i)
 
 						var nci2 as integer = -1
-						do until nci2 = (nctoken::Params[l] - 1)
+						do until nci2 = (nctoken::Params::get_Count() - 1)
 							nci2 = nci2 + 1
-							nctoken::Params[nci2] = Optimize(nctoken::Params[nci2])
+							nctoken::Params::set_Item(nci2,Optimize(nctoken::Params::get_Item(nci2)))
 						end do
 					elseif exp::Tokens::get_Item(i) is ArrInitCallTok then
 						//if output is arrinitcall
 						var naitoken as ArrInitCallTok = $ArrInitCallTok$exp::Tokens::get_Item(i)
 
 						var naii2 as integer = -1
-						do until naii2 = (naitoken::Elements[l] - 1)
+						do until naii2 = (naitoken::Elements::get_Count() - 1)
 							naii2 = naii2 + 1
-							naitoken::Elements[naii2] = Optimize(naitoken::Elements[naii2])
+							naitoken::Elements::set_Item(naii2,Optimize(naitoken::Elements::get_Item(naii2)))
 						end do
 					else
 						//if output is newarrcall
@@ -917,12 +917,12 @@ class public auto ansi ExprOptimizer
 						sflgc = PFlags::StringFlag
 
 						var i2 as integer = -1
-						do until i2 = (mct::Params[l] - 1)
+						do until i2 = (mct::Params::get_Count() - 1)
 							i2 = i2 + 1
 							PFlags::MetCallFlag = false
 							PFlags::IdentFlag = false
 							PFlags::StringFlag = false
-							mct::Params[i2] = Optimize(mct::Params[i2])
+							mct::Params::set_Item(i2,Optimize(mct::Params::get_Item(i2)))
 						end do
 					end if
 

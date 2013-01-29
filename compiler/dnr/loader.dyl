@@ -332,8 +332,15 @@ class public auto ansi static Loader
 
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadGenericMtdOverlds(var typ as IKVM.Reflection.Type, var name as string, var paramlen as integer)
-		var mil as MILambdas = new MILambdas(name,paramlen)
-		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(typ::GetMethods(), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::GenericMtdFilter()))
+		var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+		var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
+		var havinternal as boolean = false
+		if asmnc != null then
+			havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
+		end if
+					
+		var mil as MILambdas = new MILambdas(name,paramlen, havinternal, ProtectedFlag)
+		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(typ::GetMethods(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::GenericMtdFilter()))
 	end method
 
 	[method: ComVisible(false)]

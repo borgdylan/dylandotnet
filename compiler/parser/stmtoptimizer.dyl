@@ -814,12 +814,12 @@ class public auto ansi StmtOptimizer
 				//mas::Tokens = stm::Tokens
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params[l] - 1)
+				do until j = (mas::Ctor::Params::get_Count() - 1)
 					j = j + 1
-					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
-				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
 				var curvp as AttrValuePair = null
 				var eqf as boolean = false
 				
@@ -851,7 +851,7 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp)
+				mas::Pairs = lp
 				
 			end if
 		end if
@@ -877,12 +877,12 @@ class public auto ansi StmtOptimizer
 				//mas::Tokens = stm::Tokens
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params[l] - 1)
+				do until j = (mas::Ctor::Params::get_Count() - 1)
 					j = j + 1
-					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
-				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
 				var curvp as AttrValuePair = null
 				var eqf as boolean = false
 				
@@ -914,7 +914,7 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp) 
+				mas::Pairs = lp 
 			end if
 		end if
 		return mas
@@ -939,12 +939,12 @@ class public auto ansi StmtOptimizer
 				//mas::Tokens = stm::Tokens
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params[l] - 1)
+				do until j = (mas::Ctor::Params::get_Count() - 1)
 					j = j + 1
-					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
-				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
 				var curvp as AttrValuePair = null
 				var eqf as boolean = false
 				
@@ -976,7 +976,7 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp) 
+				mas::Pairs = lp 
 			end if
 		end if
 		return mas
@@ -1001,12 +1001,12 @@ class public auto ansi StmtOptimizer
 				//mas::Tokens = stm::Tokens
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params[l] - 1)
+				do until j = (mas::Ctor::Params::get_Count() - 1)
 					j = j + 1
-					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
-				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
 				var curvp as AttrValuePair = null
 				var eqf as boolean = false
 				
@@ -1038,7 +1038,7 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp) 
+				mas::Pairs = lp 
 			end if
 		end if
 		return mas
@@ -1063,12 +1063,12 @@ class public auto ansi StmtOptimizer
 				//mas::Tokens = stm::Tokens
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params[l] - 1)
+				do until j = (mas::Ctor::Params::get_Count() - 1)
 					j = j + 1
-					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
-				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
 				var curvp as AttrValuePair = null
 				var eqf as boolean = false
 				
@@ -1100,7 +1100,7 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp) 
+				mas::Pairs = lp 
 			end if
 		end if
 		return mas
@@ -1125,12 +1125,12 @@ class public auto ansi StmtOptimizer
 				//mas::Tokens = stm::Tokens
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params[l] - 1)
+				do until j = (mas::Ctor::Params::get_Count() - 1)
 					j = j + 1
-					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
-				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
 				var curvp as AttrValuePair = null
 				var eqf as boolean = false
 				
@@ -1162,7 +1162,7 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp) 
+				mas::Pairs = lp 
 			end if
 		end if
 		return mas
@@ -1189,12 +1189,12 @@ class public auto ansi StmtOptimizer
 				//mas::Tokens = stm::Tokens
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params[l] - 1)
+				do until j = (mas::Ctor::Params::get_Count() - 1)
 					j = j + 1
-					mas::Ctor::Params[j] = eopt::Optimize(mas::Ctor::Params[j])
+					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
-				var lp as List<of AttrValuePair> = new List<of AttrValuePair>()
+				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
 				var curvp as AttrValuePair = null
 				var eqf as boolean = false
 				
@@ -1226,7 +1226,7 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = Enumerable::ToArray<of AttrValuePair>(lp) 
+				mas::Pairs = lp 
 			end if
 		end if
 		return mas

@@ -12,6 +12,8 @@ class private auto ansi MILambdas
 	field assembly integer ParamLen
 	field assembly IKVM.Reflection.Type[] GenParams
 	field assembly IKVM.Reflection.Type ConvTyp
+	field assembly boolean HaveInternal
+	field assembly boolean ProtectedFlag
 
 	method assembly void MILambdas()
 		me::ctor()
@@ -19,6 +21,8 @@ class private auto ansi MILambdas
 		ParamLen = 0
 		GenParams = null
 		ConvTyp = null
+		HaveInternal = false
+		ProtectedFlag = false
 	end method
 
 	method assembly void MILambdas(var name as string)
@@ -27,6 +31,8 @@ class private auto ansi MILambdas
 		ParamLen = 0
 		GenParams = null
 		ConvTyp = null
+		HaveInternal = false
+		ProtectedFlag = false
 	end method
 
 	method assembly void MILambdas(var name as string, var snk as IKVM.Reflection.Type)
@@ -35,6 +41,8 @@ class private auto ansi MILambdas
 		ParamLen = 0
 		GenParams = null
 		ConvTyp = snk
+		HaveInternal = false
+		ProtectedFlag = false
 	end method
 
 	method assembly void MILambdas(var genparams as IKVM.Reflection.Type[])
@@ -43,25 +51,50 @@ class private auto ansi MILambdas
 		ParamLen = 0
 		GenParams = genparams
 		ConvTyp = null
+		HaveInternal = false
+		ProtectedFlag = false
 	end method
 
-	method assembly void MILambdas(var name as string,var paramlen as integer)
+	method assembly void MILambdas(var name as string,var paramlen as integer, var hvint as boolean, var protf as boolean)
 		me::ctor()
 		Name = name
 		ParamLen = paramlen
 		GenParams = null
 		ConvTyp = null
+		HaveInternal = hvint
+		ProtectedFlag = protf
 	end method
 
 	method assembly boolean GenericMtdFilter(var mi as IKVM.Reflection.MethodInfo)
 		if mi::get_IsGenericMethod() then
 			if mi::get_Name() = Name then
-				if mi::GetGenericArguments()[l] = ParamLen then
-					return true
+				if mi::GetGenericArguments()[l] != ParamLen then
+					return false
 				end if
+			else
+				return false
+			end if
+		else
+			return false
+		end if
+		
+		if mi::get_IsPublic() == false then
+			if mi::get_IsPrivate() = false then
+				if (mi::get_IsFamilyAndAssembly() and ProtectedFlag and HaveInternal) = false then
+					if (mi::get_IsFamilyOrAssembly() and (ProtectedFlag or HaveInternal)) = false then
+						if (mi::get_IsFamily() and ProtectedFlag) = false then
+							if (mi::get_IsAssembly() and HaveInternal) = false then
+								return false
+							end if
+						end if
+					end if
+				end if
+			else
+				return false
 			end if
 		end if
-		return false
+		
+		return true
 	end method
 
 	method assembly boolean IsSameName(var mi as IKVM.Reflection.MethodInfo)

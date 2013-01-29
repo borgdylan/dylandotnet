@@ -17,7 +17,7 @@ class public auto ansi static Helpers
 	field public static boolean BaseFlg
 	field public static IKVM.Reflection.Type LeftOp
 	field public static IKVM.Reflection.Type RightOp
-
+	
 	method private static void Helpers()
 		StringFlg = false
 		DelegateFlg = false
@@ -35,7 +35,7 @@ class public auto ansi static Helpers
 		if t1::IsAssignableFrom(t2) == false then
 			if NullExprFlg and (t1::IsAssignableFrom(ILEmitter::Univ::Import(gettype ValueType)) == false) then
 			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Slots of type '" + t1::ToString() + "' cannot be assigned values of type '" + t2::ToString() +"'.")
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Slots of type '" + t1::ToString() + "' cannot be assigned values of type '" + t2::ToString() + "'.")
 			end if
 		end if
 	end method
@@ -1322,19 +1322,36 @@ class public auto ansi static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static MethodInfo GetLocMet(var nam as string, var typs as IKVM.Reflection.Type[])
+	method public static MethodInfo GetLocMet(var mn as MethodNameTok, var typs as IKVM.Reflection.Type[])
+		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
+		var nam as string = mnstrarr[mnstrarr[l] - 1]
 		var metinf as MethodInfo = null
 		var meti as MethodInfo = SymTable::FindMet(nam, typs)
 
+		if mn is GenericMethodNameTok then
+			meti = null
+		end if
+		
 		if (meti != null) and (BaseFlg == false) then
 			metinf = meti
 		else
 			Loader::ProtectedFlag = true
-			var m as MethodInfo = SymTable::TypeLst::GetMethod(AsmFactory::CurnInhTyp,nam,typs)
+			var m as MethodInfo = SymTable::TypeLst::GetMethod(AsmFactory::CurnInhTyp,mn,typs)
 			if m != null then
 				metinf = m
 			else
-				metinf = Loader::LoadMethod(AsmFactory::CurnInhTyp, nam, typs)
+				if mn is GenericMethodNameTok then
+					var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
+					var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
+					var i as integer = -1
+					do until i = (genparams[l] - 1)
+						i = i + 1
+						genparams[i] = CommitEvalTTok(gmn::Params[i])
+					end do
+					metinf = Loader::LoadGenericMethod(AsmFactory::CurnInhTyp, nam, genparams, typs)
+				else
+					metinf = Loader::LoadMethod(AsmFactory::CurnInhTyp, nam, typs)
+				end if
 			end if
 			Loader::ProtectedFlag = false
 		end if
@@ -1456,7 +1473,7 @@ class public auto ansi static Helpers
 			end do
 			return Loader::LoadGenericMethod(t, name, genparams, paramtyps)
 		else
-			var m as MethodInfo = SymTable::TypeLst::GetMethod(t,name,paramtyps)
+			var m as MethodInfo = SymTable::TypeLst::GetMethod(t,mn,paramtyps)
 			if m != null then
 				return m
 			else

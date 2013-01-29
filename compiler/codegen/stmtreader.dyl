@@ -19,18 +19,18 @@ class public auto ansi StmtReader
 		if typ == null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Attribute Class '" + stm::Ctor::Name::ToString() +"' was not found.")
 		end if
-		var tarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[stm::Ctor::Params[l]]
-		var oarr as object[] = new object[stm::Ctor::Params[l]]
+		var tarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[stm::Ctor::Params::get_Count()]
+		var oarr as object[] = new object[stm::Ctor::Params::get_Count()]
 		
 		var i as integer = -1
-		do until i = (stm::Ctor::Params[l] - 1)
+		foreach param in stm::Ctor::Params
 			i = i + 1
-			if stm::Ctor::Params[i]::Tokens::get_Item(0) is Literal then
-				var lit as Literal = $Literal$stm::Ctor::Params[i]::Tokens::get_Item(0)
+			if param::Tokens::get_Item(0) is Literal then
+				var lit as Literal = $Literal$param::Tokens::get_Item(0)
 				tarr[i] = Helpers::CommitEvalTTok(lit::LitTyp)
 				oarr[i] = Helpers::LiteralToConst(lit)
-			elseif stm::Ctor::Params[i]::Tokens::get_Item(0) is Ident then
-				var idt as Ident = $Ident$stm::Ctor::Params[i]::Tokens::get_Item(0)
+			elseif param::Tokens::get_Item(0) is Ident then
+				var idt as Ident = $Ident$param::Tokens::get_Item(0)
 				var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ":")
 				var constcls as IKVM.Reflection.Type = Helpers::CommitEvalTTok(new TypeTok(idtnamarr[0]))
 				var fldinf as FieldInfo = Helpers::GetExtFld(constcls, idtnamarr[1])
@@ -38,46 +38,46 @@ class public auto ansi StmtReader
 					tarr[i] = Loader::FldLitTyp
 					oarr[i] = Loader::FldLitVal
 				end if
-			elseif stm::Ctor::Params[i]::Tokens::get_Item(0) is GettypeCallTok then
-				var gtc as GettypeCallTok = $GettypeCallTok$stm::Ctor::Params[i]::Tokens::get_Item(0)
+			elseif param::Tokens::get_Item(0) is GettypeCallTok then
+				var gtc as GettypeCallTok = $GettypeCallTok$param::Tokens::get_Item(0)
 				tarr[i] = ILEmitter::Univ::Import(gettype Type)
 				oarr[i] = Helpers::CommitEvalTTok(gtc::Name)
 			end if
-		end do
+		end for
 		
-		var piarr as List<of PropertyInfo> = new List<of PropertyInfo>()
-		var poarr as List<of object> = new List<of object>()
-		var fiarr as List<of FieldInfo> = new List<of FieldInfo>()
-		var foarr as List<of object> = new List<of object>()
+		var piarr as C5.IList<of PropertyInfo> = new C5.LinkedList<of PropertyInfo>()
+		var poarr as C5.IList<of object> = new C5.LinkedList<of object>()
+		var fiarr as C5.IList<of FieldInfo> = new C5.LinkedList<of FieldInfo>()
+		var foarr as C5.IList<of object> = new C5.LinkedList<of object>()
 		var tempprop as PropertyInfo = null
 		var tempfld as FieldInfo = null
 		
 		i = -1
-		do until i = (stm::Pairs[l] - 1)
+		foreach curpair in stm::Pairs
 			i = i + 1
 			var multflg as boolean = true
-			tempprop = Helpers::GetExtProp(typ,stm::Pairs[i]::Name::Value)
+			tempprop = Helpers::GetExtProp(typ,curpair::Name::Value)
 			if tempprop != null then
 				piarr::Add(tempprop)
 			else
-				tempfld = Helpers::GetExtFld(typ,stm::Pairs[i]::Name::Value)
+				tempfld = Helpers::GetExtFld(typ,curpair::Name::Value)
 				if tempfld != null then
 					fiarr::Add(tempfld)
 					multflg = false
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Property or Field " + stm::Pairs[i]::Name::Value + " does not exist in the attribute class " + typ::ToString())
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Property or Field " + curpair::Name::Value + " does not exist in the attribute class " + typ::ToString())
 				end if
 			end if
 				
-			if stm::Pairs[i]::ValueExpr::Tokens::get_Item(0) is Literal then
-				var lit2 as Literal = $Literal$stm::Pairs[i]::ValueExpr::Tokens::get_Item(0)
+			if curpair::ValueExpr::Tokens::get_Item(0) is Literal then
+				var lit2 as Literal = $Literal$curpair::ValueExpr::Tokens::get_Item(0)
 				if multflg then
 					poarr::Add(Helpers::LiteralToConst(lit2))
 				else
 					foarr::Add(Helpers::LiteralToConst(lit2))
 				end if
-			elseif stm::Pairs[i]::ValueExpr::Tokens::get_Item(0) is Ident then
-				var idt2 as Ident = $Ident$stm::Pairs[i]::ValueExpr::Tokens::get_Item(0)
+			elseif curpair::ValueExpr::Tokens::get_Item(0) is Ident then
+				var idt2 as Ident = $Ident$curpair::ValueExpr::Tokens::get_Item(0)
 				var idtnamarr2 as string[] = ParseUtils::StringParser(idt2::Value, ":")
 				var constcls2 as IKVM.Reflection.Type = Helpers::CommitEvalTTok(new TypeTok(idtnamarr2[0]))
 				var fldinf2 as FieldInfo = Helpers::GetExtFld(constcls2, idtnamarr2[1])
@@ -88,15 +88,15 @@ class public auto ansi StmtReader
 						foarr::Add(Loader::FldLitVal)
 					end if
 				end if
-			elseif stm::Pairs[i]::ValueExpr::Tokens::get_Item(0) is GettypeCallTok then
-				var gtc2 as GettypeCallTok = $GettypeCallTok$stm::Pairs[i]::ValueExpr::Tokens::get_Item(0)
+			elseif curpair::ValueExpr::Tokens::get_Item(0) is GettypeCallTok then
+				var gtc2 as GettypeCallTok = $GettypeCallTok$curpair::ValueExpr::Tokens::get_Item(0)
 				if multflg then
 					poarr::Add(Helpers::CommitEvalTTok(gtc2::Name))
 				else
 					foarr::Add(Helpers::CommitEvalTTok(gtc2::Name))
 				end if
 			end if
-		end do
+		end for
 		
 		var ctor as ConstructorInfo = Helpers::GetLocCtor(typ,tarr)
 		return new CustomAttributeBuilder(ctor, oarr, Enumerable::ToArray<of PropertyInfo>(piarr), Enumerable::ToArray<of object>(poarr), Enumerable::ToArray<of FieldInfo>(fiarr), Enumerable::ToArray<of object>(foarr))

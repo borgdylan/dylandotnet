@@ -1,26 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/codegenerator.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/symtable.dyl">
     <Files>
-      <File FileName="codegen/eval.dyl" Line="594" Column="7" />
-      <File FileName="codegen/helpers.dyl" Line="1433" Column="12" />
+      <File FileName="codegen/eval.dyl" Line="851" Column="44" />
+      <File FileName="codegen/helpers.dyl" Line="38" Column="167" />
       <File FileName="ast/typetoks.dyl" Line="197" Column="22" />
       <File FileName="ast/methodnametok.dyl" Line="24" Column="21" />
       <File FileName="lexer/line.dyl" Line="333" Column="22" />
       <File FileName="parser/parserflags.dyl" Line="23" Column="30" />
-      <File FileName="parser/parser.dyl" Line="37" Column="67" />
+      <File FileName="parser/parser.dyl" Line="25" Column="13" />
       <File FileName="parser/tokenoptimizer.dyl" Line="33" Column="9" />
-      <File FileName="parser/stmtoptimizer.dyl" Line="1895" Column="49" />
-      <File FileName="parser/exproptimizer.dyl" Line="268" Column="33" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="987" Column="1" />
+      <File FileName="parser/exproptimizer.dyl" Line="918" Column="1" />
       <File FileName="ast/op.dyl" Line="27" Column="31" />
       <File FileName="ast/conditionalops.dyl" Line="9" Column="32" />
       <File FileName="ast/chars.dyl" Line="30" Column="12" />
       <File FileName="ast/otherkeywords.dyl" Line="207" Column="12" />
       <File FileName="ast/ifstmts.dyl" Line="67" Column="56" />
       <File FileName="dnc/Mod1.dyl" Line="96" Column="10" />
-      <File FileName="codegen/symtable.dyl" Line="474" Column="19" />
+      <File FileName="codegen/symtable.dyl" Line="38" Column="26" />
       <File FileName="codegen/codegenerator.dyl" Line="90" Column="9" />
-      <File FileName="codegen/stmtreader.dyl" Line="596" Column="31" />
+      <File FileName="codegen/stmtreader.dyl" Line="916" Column="39" />
       <File FileName="dev/pc2cd.dyl" Line="20" Column="1" />
       <File FileName="dev/pc2dn.dyl" Line="43" Column="23" />
       <File FileName="dnc.dyl" Line="37" Column="8" />
@@ -35,6 +35,17 @@
       <File FileName="lexer/lexer.dyl" Line="45" Column="47" />
       <File FileName="codegen/ctoritem.dyl" Line="1" Column="1" />
       <File FileName="templateproj/template.dyl" Line="140" Column="14" />
+      <File FileName="ast/newcalltoks.dyl" Line="88" Column="54" />
+      <File FileName="ast/newexpr.dyl" Line="1" Column="1" />
+      <File FileName="unit/streamutests.dyl" Line="1" Column="1" />
+      <File FileName="ast/methods.dyl" Line="33" Column="25" />
+      <File FileName="ast/attrvalpair.dyl" Line="1" Column="1" />
+      <File FileName="ast/attrstmts.dyl" Line="17" Column="47" />
+      <File FileName="codegen/typelist.dyl" Line="193" Column="8" />
+      <File FileName="dnr/loader.dyl" Line="253" Column="11" />
+      <File FileName="dnr/milambdas.dyl" Line="86" Column="14" />
+      <File FileName="tokenizer.CodeGen.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.Lexer.dyl" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -42,7 +53,7 @@
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
             <Node name="codegen" expanded="True">
-              <Node name="codegenerator.dyl" selected="True" />
+              <Node name="symtable.dyl" selected="True" />
             </Node>
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
@@ -58,7 +69,9 @@
         </State>
       </Pad>
       <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="dylandotnet" selected="True" />
+        </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>

@@ -9,7 +9,7 @@
 class public auto ansi MethodCallTok extends Token
 
 	field public MethodNameTok Name
-	field public Expr[] Params
+	field public C5.ArrayList<of Expr> Params
 	field public boolean PopFlg
 	field public IKVM.Reflection.Type[] TypArr
 
@@ -17,7 +17,7 @@ class public auto ansi MethodCallTok extends Token
 		me::ctor()
 		Name = new MethodNameTok()
 		PopFlg = false
-		Params = new Expr[0]
+		Params = new C5.ArrayList<of Expr>()
 		TypArr = IKVM.Reflection.Type::EmptyTypes
 	end method
 
@@ -25,27 +25,26 @@ class public auto ansi MethodCallTok extends Token
 		me::ctor(value)
 		Name = new MethodNameTok()
 		PopFlg = false
-		Params = new Expr[0]
+		Params = new C5.ArrayList<of Expr>()
 		TypArr = IKVM.Reflection.Type::EmptyTypes
 	end method
 
 	method public void AddParam(var paramtoadd as Expr)
-
-		var i as integer = -1
-		var destarr as Expr[] = new Expr[Params[l] + 1]
-
-		do until i = (Params[l] - 1)
-			i = i + 1
-			destarr[i] = Params[i]
-		end do
+		Params::Add(paramtoadd)
+//		var i as integer = -1
+//		var destarr as Expr[] = new Expr[Params[l] + 1]
+//
+//		do until i = (Params[l] - 1)
+//			i = i + 1
+//			destarr[i] = Params[i]
+//		end do
 		
-		if Params[l] = 0 then
+		if Params::get_Count() = 0 then
 			Line = paramtoadd::Line
 		end if
 		
-		destarr[Params[l]] = paramtoadd
-		Params = destarr
-
+//		destarr[Params[l]] = paramtoadd
+//		Params = destarr
 	end method
 
 end class

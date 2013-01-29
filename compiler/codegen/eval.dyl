@@ -517,7 +517,7 @@ class public auto ansi beforefieldinit Evaluator
 			if idtb2 = false then
 				if emt then
 					Helpers::BaseFlg = baseflg
-					mcmetinf = Helpers::GetLocMet(mnstrarr[i], mctok::TypArr)
+					mcmetinf = Helpers::GetLocMet(mntok, mctok::TypArr)
 					Helpers::BaseFlg = false
 					mcisstatic = mcmetinf::get_IsStatic()
 					if mcisstatic = false then
@@ -533,19 +533,19 @@ class public auto ansi beforefieldinit Evaluator
 		i = -1
 		typarr1 = new IKVM.Reflection.Type[0]
 
-		if mctok::Params[l] = 0 then
+		if mctok::Params::get_Count() = 0 then
 			typarr1 = IKVM.Reflection.Type::EmptyTypes
 		end if
 
-		do until i = (mctok::Params[l] - 1)
-			i = i + 1
-			aed::Invoke(ConvToAST(ConvToRPN(mctok::Params[i])), emt)
+		foreach param in mctok::Params
+			//i = i + 1
+			aed::Invoke(ConvToAST(ConvToRPN(param)), emt)
 			typarr2 = AsmFactory::TypArr
 			AsmFactory::TypArr = typarr1
 			AsmFactory::AddTyp(AsmFactory::Type02)
 			typarr1 = AsmFactory::TypArr
 			AsmFactory::TypArr = typarr2
-		end do
+		end for
 
 		if emt = false then
 			mctok::TypArr = typarr1
@@ -567,7 +567,7 @@ class public auto ansi beforefieldinit Evaluator
 				if idtb2 = false then
 					Helpers::BaseFlg = baseflg
 				end if
-				mcmetinf = Helpers::GetLocMet(mnstrarr[i], typarr1)
+				mcmetinf = Helpers::GetLocMet(mntok, typarr1)
 				if mcmetinf = null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
 				end if
@@ -670,7 +670,7 @@ class public auto ansi beforefieldinit Evaluator
 		var delparamarr as IKVM.Reflection.Type[]
 		var delmtdnam as MethodNameTok
 		var nctyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(nctok::Name)
-		var mcparams as Expr[] = nctok::Params
+		//var mcparams as C5.ArrayList<of Expr> = nctok::Params
 		var delcreate as boolean = false
 		var typarr1 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[0]
 		var typarr2 as IKVM.Reflection.Type[]
@@ -694,29 +694,27 @@ class public auto ansi beforefieldinit Evaluator
 		if nctyp::IsSubclassOf(ILEmitter::Univ::Import(gettype MulticastDelegate)) then
 			delcreate = true
 			delparamarr = Loader::GetDelegateInvokeParams(nctyp)
-			delmtdnam = Helpers::StripDelMtdName(nctok::Params[0]::Tokens::get_Item(0))
+			delmtdnam = Helpers::StripDelMtdName(nctok::Params::get_Item(0)::Tokens::get_Item(0))
 		else
-			if nctok::Params[l] = 0 then
+			if nctok::Params::get_Count() = 0 then
 				typarr1 = IKVM.Reflection.Type::EmptyTypes
 			else
 				typarr1 = new IKVM.Reflection.Type[0]
 			end if
 
-			do until i = (nctok::Params[l] - 1)
-				i = i + 1
-				aed::Invoke(ConvToAST(ConvToRPN(mcparams[i])), emt)
+			foreach param in nctok::Params
+				//i = i + 1
+				aed::Invoke(ConvToAST(ConvToRPN(param)), emt)
 				typarr2 = AsmFactory::TypArr
 				AsmFactory::TypArr = typarr1
 				AsmFactory::AddTyp(AsmFactory::Type02)
 				typarr1 = AsmFactory::TypArr
 				AsmFactory::TypArr = typarr2
-			end do
+			end for
 		end if
 
 		if delcreate then
-			typarr1 = new IKVM.Reflection.Type[2]
-			typarr1[0] = ILEmitter::Univ::Import(gettype object)
-			typarr1[1] = ILEmitter::Univ::Import(gettype IntPtr)
+			typarr1 = new IKVM.Reflection.Type[] {ILEmitter::Univ::Import(gettype object), ILEmitter::Univ::Import(gettype IntPtr)}
 
 			//delegate pointer loading section
 			mnstrarr = ParseUtils::StringParser(delmtdnam::Value, ":")
@@ -827,7 +825,7 @@ class public auto ansi beforefieldinit Evaluator
 			//instance load for local methods of current isntance
 			if idtb2 = false then
 				if emt then
-					mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
+					mcmetinf = Helpers::GetLocMet(delmtdnam, delparamarr)
 					mcisstatic = mcmetinf::get_IsStatic()
 					if mcisstatic = false then
 						ILEmitter::EmitLdarg(0)
@@ -843,14 +841,14 @@ class public auto ansi beforefieldinit Evaluator
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
 					end if
 				else
-					mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
+					mcmetinf = Helpers::GetLocMet(delmtdnam, delparamarr)
 					if mcmetinf = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
 					end if
 					mcisstatic = mcmetinf::get_IsStatic()
 				end if
 			else
-				mcmetinf = Helpers::GetLocMet(mnstrarr[i], delparamarr)
+				mcmetinf = Helpers::GetLocMet(delmtdnam, delparamarr)
 				if mcmetinf = null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
 				end if
@@ -1100,25 +1098,25 @@ class public auto ansi beforefieldinit Evaluator
 				
 				if(ci == null) then
 					if emt then
-						ILEmitter::EmitLdcI4(aictok::Elements[l])
+						ILEmitter::EmitLdcI4(aictok::Elements::get_Count())
 						ILEmitter::EmitConvI()
 						ILEmitter::EmitNewarr(typ2)
 					end if
 					
 					var aii as integer = -1
-					do until aii = (aictok::Elements[l] - 1)
+					foreach elem in aictok::Elements
 						aii = aii + 1
 						if emt then
 							ILEmitter::EmitDup()
 							ILEmitter::EmitLdcI4(aii)
 							ILEmitter::EmitConvI()
 						end if
-						ASTEmit(ConvToAST(ConvToRPN(aictok::Elements[aii])), emt)
+						ASTEmit(ConvToAST(ConvToRPN(elem)), emt)
 						Helpers::CheckAssignability(typ2,AsmFactory::Type02)
 						if emt then
 							ILEmitter::EmitStelem(typ2)
 						end if	
-					end do
+					end for
 					AsmFactory::Type02 = typ2::MakeArrayType()
 				else
 					if emt then
@@ -1126,17 +1124,17 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 					
 					var aii as integer = -1
-					do until aii = (aictok::Elements[l] - 1)
+					foreach elem in aictok::Elements
 						aii = aii + 1
 						if emt then
 							ILEmitter::EmitDup()
 						end if
-						ASTEmit(ConvToAST(ConvToRPN(aictok::Elements[aii])), emt)
+						ASTEmit(ConvToAST(ConvToRPN(elem)), emt)
 						Helpers::CheckAssignability(ci::ElemType,AsmFactory::Type02)
 						if emt then
 							ILEmitter::EmitCallvirt(ci::AddMtd)
 						end if	
-					end do
+					end for
 					AsmFactory::Type02 = typ2
 				end if
 			elseif tok is PtrCallTok then

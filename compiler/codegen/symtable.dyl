@@ -33,7 +33,7 @@ class public auto ansi static SymTable
 	field private static LabelItem[] LblLst
 	field private static TypeArr[] TypLst
 	field public static boolean StoreFlg
-
+	
 	method private static void SymTable()
 		TypeLst = new TypeList()
 		VarLst = new C5.LinkedList<of C5.LinkedList<of VarItem> >()

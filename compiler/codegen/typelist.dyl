@@ -148,11 +148,14 @@ class public auto ansi TypeList
 		end if
 	end method
 
-	method public MethodInfo GetMethod(var t as IKVM.Reflection.Type,var nam as string,var paramst as IKVM.Reflection.Type[])
+	method public MethodInfo GetMethod(var t as IKVM.Reflection.Type,var mn as MethodNameTok,var paramst as IKVM.Reflection.Type[])
 		var ti as TypeItem = GetTypeItem(t)
 		if ti = null then
 			return null
 		else
+			var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
+			var nam as string = mnstrarr[mnstrarr[l] - 1]
+		
 			var mtdinfo as MethodInfo = ti::GetMethod(nam,paramst)
 			if mtdinfo != null then
 				if mtdinfo::get_IsPublic() == false then
@@ -174,18 +177,27 @@ class public auto ansi TypeList
 			end if
 			
 			if mtdinfo = null then
-				//Loader::ProtectedFlag = true
-				mtdinfo = GetMethod(ti::InhTyp,nam,paramst)
+				mtdinfo = GetMethod(ti::InhTyp,mn,paramst)
 				if mtdinfo = null then
-					mtdinfo = Loader::LoadMethod(ti::InhTyp, nam, paramst)
+					//if mn is GenericMethodNameTok then
+					//	var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
+					//	var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
+					//	var i as integer = -1
+					//	do until i = (genparams[l] - 1)
+					//		i = i + 1
+					//		genparams[i] = CETTDelegate::Invoke(gmn::Params[i])
+					//	end do
+					//	mtdinfo = Loader::LoadGenericMethod(ti::InhTyp, nam, genparams, paramst)
+					//else
+						mtdinfo = Loader::LoadMethod(ti::InhTyp, nam, paramst)
+					//end if
 				end if
-				//Loader::ProtectedFlag = false
 			end if
 			
 			if mtdinfo = null then
 				if ti::Interfaces != null then
 					foreach interf in ti::Interfaces
-						mtdinfo = GetMethod(interf,nam,paramst)
+						mtdinfo = GetMethod(interf,mn,paramst)
 						if mtdinfo = null then
 							mtdinfo = Loader::LoadMethod(interf, nam, paramst)
 						end if

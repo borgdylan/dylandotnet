@@ -9,37 +9,36 @@
 class public auto ansi NewCallTok extends Token
 
 	field public TypeTok Name
-	field public Expr[] Params
+	field public C5.ArrayList<of Expr> Params
 
 	method public void NewCallTok()
 		me::ctor()
 		Name = new TypeTok()
-		Params = new Expr[0]
+		Params = new C5.ArrayList<of Expr>()
 	end method
 
 	method public void NewCallTok(var value as string)
 		me::ctor(value)
 		Name = new TypeTok()
-		Params = new Expr[0]
+		Params = new C5.ArrayList<of Expr>()
 	end method
 
 	method public void AddParam(var paramtoadd as Expr)
-
-		var i as integer = -1
-		var destarr as Expr[] = new Expr[Params[l] + 1]
-
-		do until i = (Params[l] - 1)
-			i = i + 1
-			destarr[i] = Params[i]
-		end do
+		Params::Add(paramtoadd)
+//		var i as integer = -1
+//		var destarr as Expr[] = new Expr[Params[l] + 1]
+//
+//		do until i = (Params[l] - 1)
+//			i = i + 1
+//			destarr[i] = Params[i]
+//		end do
 		
-		if Params[l] = 0 then
+		if Params::get_Count() = 0 then
 			Line = paramtoadd::Line
 		end if
 		
-		destarr[Params[l]] = paramtoadd
-		Params = destarr
-
+//		destarr[Params[l]] = paramtoadd
+//		Params = destarr
 	end method
 
 end class
@@ -66,40 +65,39 @@ end class
 class public auto ansi ArrInitCallTok extends Token
 
 	field public TypeTok ArrayType
-	field public Expr[] Elements
+	field public C5.ArrayList<of Expr> Elements
 	field public boolean ForceArray
 
 	method public void ArrInitCallTok()
 		me::ctor()
 		ArrayType = new TypeTok()
-		Elements = new Expr[0]
+		Elements = new C5.ArrayList<of Expr>()
 		ForceArray = false
 	end method
 
 	method public void ArrInitCallTok(var value as string)
 		me::ctor(value)
 		ArrayType = new TypeTok()
-		Elements = new Expr[0]
+		Elements = new C5.ArrayList<of Expr>()
 		ForceArray = false
 	end method
 	
 	method public void AddElem(var eltoadd as Expr)
-
-		var i as integer = -1
-		var destarr as Expr[] = new Expr[Elements[l] + 1]
-
-		do until i = (Elements[l] - 1)
-			i = i + 1
-			destarr[i] = Elements[i]
-		end do
+		Elements::Add(eltoadd)
+//		var i as integer = -1
+//		var destarr as Expr[] = new Expr[Elements[l] + 1]
+//
+//		do until i = (Elements[l] - 1)
+//			i = i + 1
+//			destarr[i] = Elements[i]
+//		end do
 		
-		if Elements[l] = 0 then
+		if Elements::get_Count() = 0 then
 			Line = eltoadd::Line
 		end if
 		
-		destarr[Elements[l]] = eltoadd
-		Elements = destarr
-
+//		destarr[Elements[l]] = eltoadd
+//		Elements = destarr
 	end method
 
 end class
@@ -107,37 +105,36 @@ end class
 class public auto ansi ObjInitCallTok extends Token
 
 	field public NewCallTok Ctor
-	field public Token[] Elements
+	field public C5.ArrayList<of Token> Elements
 
 	method public void ObjInitCallTok()
 		me::ctor()
 		Ctor = null
-		Elements = new Token[0]
+		Elements = new C5.ArrayList<of Token>()
 	end method
 
 	method public void ObjInitCallTok(var value as string)
 		me::ctor(value)
 		Ctor = null
-		Elements = new Token[0]
+		Elements = new C5.ArrayList<of Token>()
 	end method
 	
 	method public void AddElem(var eltoadd as Token)
-
-		var i as integer = -1
-		var destarr as Token[] = new Token[Elements[l] + 1]
-
-		do until i = (Elements[l] - 1)
-			i = i + 1
-			destarr[i] = Elements[i]
-		end do
+		Elements::Add(eltoadd)
+//		var i as integer = -1
+//		var destarr as Token[] = new Token[Elements[l] + 1]
+//
+//		do until i = (Elements[l] - 1)
+//			i = i + 1
+//			destarr[i] = Elements[i]
+//		end do
 		
-		if Elements[l] = 0 then
+		if Elements::get_Count() = 0 then
 			Line = eltoadd::Line
 		end if
 		
-		destarr[Elements[l]] = eltoadd
-		Elements = destarr
-
+//		destarr[Elements[l]] = eltoadd
+//		Elements = destarr
 	end method
 
 end class
