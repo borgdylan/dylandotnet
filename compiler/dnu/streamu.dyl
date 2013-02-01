@@ -83,38 +83,38 @@ class public auto ansi static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static string ReadLine()
-		if UseConsole = false then
+		if UseConsole then
+			return Console::ReadLine()
+		else
 			if InS != null then
 				return InS::ReadLine()
 			else
 				return String::Empty
 			end if
-		else
-			return Console::ReadLine()
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void WriteLine(var str as string)
-		if UseConsole = false then
+		if UseConsole then
+			Console::WriteLine(str)
+		else
 			if OutS != null then
 				OutS::WriteLine(str)
 				OutS::Flush()
 			end if
-		else
-			Console::WriteLine(str)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void Write(var str as string)
-		if UseConsole = false then
+		if UseConsole then
+			Console::Write(str)
+		else
 			if OutS != null then
 				OutS::Write(str)
 				OutS::Flush()
 			end if
-		else
-			Console::Write(str)
 		end if
 	end method
 
@@ -174,9 +174,9 @@ class public auto ansi static StreamUtils
 		if _ErrorH != null then
 			_ErrorH::Invoke(line,file,msg)
 		end if
-		CloseInS()
-		CloseOutS()
 		if TerminateOnError then
+			CloseInS()
+			CloseOutS()
 			Environment::Exit(1)
 		else
 			throw new ErrorException()

@@ -17,6 +17,7 @@ class public auto ansi TestStreamUtils
 	[method: SetUp()]
 	method public void SetupTests()
 		StreamUtils::UseConsole = false
+		StreamUtils::TerminateOnError = false
 		ms = new MemoryStream()
 		StreamUtils::InitInS(ms)
 		StreamUtils::InitOutS(ms)
@@ -70,7 +71,34 @@ class public auto ansi TestStreamUtils
 		StreamUtils::CloseOutS()
 		Assert::IsFalse(ms::get_CanWrite())
 	end method
-
+	
+	[method: Test()]
+	[method: ExpectedException(gettype ErrorException)]
+	method public void TestWriteErrorExcp()
+		StreamUtils::WriteError(0, String::Empty, String::Empty)
+	end method
+	
+	[method: Test()]
+	method public void TestWriteErrorMsg()
+		var p as long = ms::get_Position()
+		try
+			StreamUtils::WriteError(0, "file.dyl", "Test Error")
+		catch ex as ErrorException
+			ms::Seek(p, SeekOrigin::Begin)
+			var sr as StreamReader = new StreamReader(ms)
+			Assert::AreEqual("ERROR: Test Error at line 0 in file: file.dyl",sr::ReadLine())
+		end try
+	end method
+	
+	[method: Test()]
+	method public void TestWriteWarnMsg()
+		var p as long = ms::get_Position()
+		StreamUtils::WriteWarn(0, "file.dyl", "Test Warning")
+		ms::Seek(p, SeekOrigin::Begin)
+		var sr as StreamReader = new StreamReader(ms)
+		Assert::AreEqual("WARNING: Test Warning at line 0 in file: file.dyl",sr::ReadLine())
+	end method
+	
 	[method: TearDown()]
 	method public void TeardownTests()
 		StreamUtils::CloseInS()

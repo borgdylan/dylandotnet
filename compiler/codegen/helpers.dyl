@@ -192,53 +192,52 @@ class public auto ansi static Helpers
 		
 		var ta as FieldAttributes
 		var temp as FieldAttributes
-		var i as integer = -1
 		var fir as boolean = true
 		var flg as boolean
 		var fam as boolean = false
 		var assem as boolean = false
 		var foa as boolean = false
 		var faa as boolean = false
+		var errs as string = "Only one of family, assembly, famorassem, famandassem can be used in an attribute list."
 		
-		do until i = (attrs[l] - 1)
-			i = i + 1
+		foreach attr in attrs
 			flg = true
 
-			if attrs[i] is Attributes.PublicAttr then
+			if attr is Attributes.PublicAttr then
 				temp = FieldAttributes::Public
-			elseif attrs[i] is Attributes.StaticAttr then
+			elseif attr is Attributes.StaticAttr then
 				temp = FieldAttributes::Static
-			elseif attrs[i] is Attributes.InitOnlyAttr then
+			elseif attr is Attributes.InitOnlyAttr then
 				temp = FieldAttributes::InitOnly
-			elseif attrs[i] is Attributes.PrivateAttr then
+			elseif attr is Attributes.PrivateAttr then
 				temp = FieldAttributes::Private
-			elseif attrs[i] is Attributes.FamilyAttr then
+			elseif attr is Attributes.FamilyAttr then
 				temp = FieldAttributes::Family
 				if assem or fam or foa or faa then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				fam = true
-			elseif attrs[i] is Attributes.AssemblyAttr then
+			elseif attr is Attributes.AssemblyAttr then
 				temp = FieldAttributes::Assembly
 				if assem or fam or foa or faa then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				assem = true
-			elseif attrs[i] is Attributes.FamORAssemAttr then
+			elseif attr is Attributes.FamORAssemAttr then
 				temp = FieldAttributes::FamORAssem
 				if assem or fam or foa or faa then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				foa = true
-			elseif attrs[i] is Attributes.FamANDAssemAttr then
+			elseif attr is Attributes.FamANDAssemAttr then
 				temp = FieldAttributes::FamANDAssem
 				if assem or fam or foa or faa then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				faa = true
 			else
 				flg = false
-				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attrs[i]::Value + "' is not a valid attribute for a field.")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a field.")
 			end if
 
 			if flg then
@@ -250,7 +249,7 @@ class public auto ansi static Helpers
 				end if
 			end if
 
-		end do
+		end for
 
 		return ta
 	end method
@@ -260,23 +259,21 @@ class public auto ansi static Helpers
 		
 		var ta as PropertyAttributes
 		var temp as PropertyAttributes
-		var i as integer = -1
 		var fir as boolean = true
 		var flg as boolean
 		
-		do until i = (attrs[l] - 1)
-			i = i + 1
+		foreach attr in attrs
 			flg = true
 
-			if attrs[i] is Attributes.NoneAttr then
+			if attr is Attributes.NoneAttr then
 				temp = PropertyAttributes::None
-			elseif attrs[i] is Attributes.SpecialNameAttr then
+			elseif attr is Attributes.SpecialNameAttr then
 				temp = PropertyAttributes::SpecialName
-			//elseif attrs[i] is Attributes.InitOnlyAttr then
+			//elseif attr is Attributes.InitOnlyAttr then
 			//	temp = FieldAttributes::InitOnly
 			else
 				flg = false
-				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attrs[i]::Value + "' is not a valid attribute for a property.")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a property.")
 			end if
 
 			if flg then
@@ -288,7 +285,7 @@ class public auto ansi static Helpers
 				end if
 			end if
 
-		end do
+		end for
 
 		return ta
 	end method
@@ -298,21 +295,19 @@ class public auto ansi static Helpers
 		
 		var ta as EventAttributes
 		var temp as EventAttributes
-		var i as integer = -1
 		var fir as boolean = true
 		var flg as boolean
 		
-		do until i = (attrs[l] - 1)
-			i = i + 1
+		foreach attr in attrs
 			flg = true
 
-			if attrs[i] is Attributes.NoneAttr then
+			if attr is Attributes.NoneAttr then
 				temp = EventAttributes::None
-			elseif attrs[i] is Attributes.SpecialNameAttr then
+			elseif attr is Attributes.SpecialNameAttr then
 				temp = EventAttributes::SpecialName
 			else
 				flg = false
-				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attrs[i]::Value + "' is not a valid attribute for a property.")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a property.")
 			end if
 
 			if flg then
@@ -324,7 +319,7 @@ class public auto ansi static Helpers
 				end if
 			end if
 
-		end do
+		end for
 
 		return ta
 	end method

@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="codegen/helpers.dyl">
     <Files>
       <File FileName="codegen/eval.dyl" Line="851" Column="44" />
-      <File FileName="codegen/helpers.dyl" Line="42" Column="1" />
+      <File FileName="codegen/helpers.dyl" Line="285" Column="11" />
       <File FileName="ast/typetoks.dyl" Line="197" Column="22" />
       <File FileName="ast/methodnametok.dyl" Line="24" Column="21" />
       <File FileName="lexer/line.dyl" Line="333" Column="22" />
@@ -17,7 +17,7 @@
       <File FileName="ast/chars.dyl" Line="30" Column="12" />
       <File FileName="ast/otherkeywords.dyl" Line="207" Column="12" />
       <File FileName="ast/ifstmts.dyl" Line="67" Column="56" />
-      <File FileName="dnc/Mod1.dyl" Line="96" Column="10" />
+      <File FileName="dnc/Mod1.dyl" Line="94" Column="87" />
       <File FileName="codegen/symtable.dyl" Line="519" Column="30" />
       <File FileName="codegen/codegenerator.dyl" Line="90" Column="9" />
       <File FileName="codegen/stmtreader.dyl" Line="513" Column="1" />
@@ -37,7 +37,7 @@
       <File FileName="templateproj/template.dyl" Line="28" Column="55" />
       <File FileName="ast/newcalltoks.dyl" Line="88" Column="54" />
       <File FileName="ast/newexpr.dyl" Line="1" Column="1" />
-      <File FileName="unit/streamutests.dyl" Line="1" Column="1" />
+      <File FileName="unit/streamutests.dyl" Line="98" Column="48" />
       <File FileName="ast/methods.dyl" Line="33" Column="25" />
       <File FileName="ast/attrvalpair.dyl" Line="1" Column="1" />
       <File FileName="ast/attrstmts.dyl" Line="17" Column="47" />
@@ -50,6 +50,7 @@
       <File FileName="codegen/milambdas.dyl" Line="67" Column="41" />
       <File FileName="dnr/ilemitter.dyl" Line="27" Column="56" />
       <File FileName="ast/attributes.dyl" Line="78" Column="10" />
+      <File FileName="dnu/streamu.dyl" Line="173" Column="79" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

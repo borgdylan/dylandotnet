@@ -102,6 +102,7 @@ class public auto ansi static Program
 	
 	[method: ComVisible(false)]
 	method public static void Invoke(var args as string[])
+		StreamUtils::TerminateOnError = false
 		main(args)
 	end method
 
