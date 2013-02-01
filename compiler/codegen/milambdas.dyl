@@ -40,9 +40,31 @@ class private auto ansi MILambdas2
 		end if
 		return true
 	end method
+	
+	method assembly boolean CmpTyps2(var arra as IKVM.Reflection.Type[], var arrb as IKVM.Reflection.Type[])
+		if arra[l] = arrb[l] then
+			if arra[l] = 0 then
+				return true
+			end if
+			var i as integer = -1
+			do until i = (arra[l] - 1)
+				i = i + 1
+				if arra[i]::Equals(arrb[i]) = false then
+					return false
+				end if
+			end do
+		else
+			return false
+		end if
+		return true
+	end method
 
 	method assembly boolean DetermineIfCandidate(var mi as MethodItem)
 		return (mi::Name == Name) and CmpTyps(mi::ParamTyps,Params)
+	end method
+	
+	method assembly boolean DetermineIfProtoCandidate(var mi as MethodItem)
+		return (mi::Name == Name) and CmpTyps2(mi::ParamTyps,Params)
 	end method
 
 	method assembly integer CalcDeriveness(var t as IKVM.Reflection.Type)

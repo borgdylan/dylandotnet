@@ -900,6 +900,13 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindProtoMet(System.String,IKVM.Reflection.Type[])">
+            <param name="nam">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindVar(System.String)">
             <param name="nam">To be added.</param>
             <summary>To be added.</summary>
@@ -1126,6 +1133,13 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetMethod(System.String,IKVM.Reflection.Type[])">
+            <param name="nam">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetProtoMethod(System.String,IKVM.Reflection.Type[])">
             <param name="nam">To be added.</param>
             <param name="paramst">To be added.</param>
             <summary>To be added.</summary>

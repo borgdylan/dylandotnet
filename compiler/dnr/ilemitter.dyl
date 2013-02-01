@@ -18,6 +18,7 @@ class public auto ansi static ILEmitter
 	field public static boolean InterfaceFlg
 	field public static boolean StaticCFlg
 	field public static boolean DebugFlg
+	field public static boolean ProtoFlg
 	field public static integer LocInd
 	field public static integer ArgInd
 	field public static integer LineNr
@@ -38,6 +39,7 @@ class public auto ansi static ILEmitter
 		InterfaceFlg = false
 		StaticCFlg = false
 		DebugFlg = false
+		ProtoFlg = false
 		LocInd = 0
 		ArgInd = 0
 		LineNr = 0

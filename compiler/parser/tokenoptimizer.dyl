@@ -1111,6 +1111,14 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "prototype" then
+			var protoattr as PrototypeAttr = new PrototypeAttr()
+			protoattr::Line = tok::Line
+			protoattr::Value = tok::Value
+			tok = protoattr
+			goto fin
+		end if
+		
 		if tok::Value = "interface" then
 			var interfattr as InterfaceAttr = new InterfaceAttr()
 			interfattr::Line = tok::Line

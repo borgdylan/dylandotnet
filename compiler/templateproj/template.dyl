@@ -25,7 +25,7 @@ import template
 
 #debug on
 
-#warning "This is test code."
+#warning "This is test code and is not a sample either."
 
 #if DEBUG then
 [assembly: System.Reflection.AssemblyConfiguration("DEBUG")]

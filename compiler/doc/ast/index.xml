@@ -222,6 +222,7 @@
       <Type Name="NoneAttr" Kind="Class" />
       <Type Name="PinvokeImplAttr" Kind="Class" />
       <Type Name="PrivateAttr" Kind="Class" />
+      <Type Name="PrototypeAttr" Kind="Class" />
       <Type Name="PublicAttr" Kind="Class" />
       <Type Name="SealedAttr" Kind="Class" />
       <Type Name="SequentialLayoutAttr" Kind="Class" />

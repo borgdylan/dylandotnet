@@ -179,6 +179,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetProtoMethod">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.CodeGen.MethodItem GetProtoMethod (string nam, IKVM.Reflection.Type[] paramst);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.CodeGen.MethodItem GetProtoMethod(string nam, class IKVM.Reflection.Type[] paramst) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.MethodItem</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nam" Type="System.String" />
+        <Parameter Name="paramst" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="nam">To be added.</param>
+        <param name="paramst">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="InhTyp">
       <MemberSignature Language="C#" Value="public IKVM.Reflection.Type InhTyp;" />
       <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type InhTyp" />

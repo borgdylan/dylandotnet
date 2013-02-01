@@ -2259,6 +2259,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ProtoFlg">
+      <MemberSignature Language="C#" Value="public static bool ProtoFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool ProtoFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SrcFiles">
       <MemberSignature Language="C#" Value="public static string[] SrcFiles;" />
       <MemberSignature Language="ILAsm" Value=".field public static string[] SrcFiles" />

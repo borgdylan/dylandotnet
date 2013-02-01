@@ -70,6 +70,13 @@ class public auto ansi AbstractAttr extends Attributes.Attribute
 	end method
 end class
 
+// prototype
+class public auto ansi PrototypeAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "prototype"
+	end method
+end class
+
 // newslot
 class public auto ansi NewSlotAttr extends Attributes.Attribute
 	method public hidebysig virtual string ToString()

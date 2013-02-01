@@ -78,6 +78,12 @@ class public auto ansi TypeItem
 			return matches[chosen[chosen[l] - 1]]::MethodBldr
 		end if
 	end method
+	
+	method public MethodItem GetProtoMethod(var nam as string, var paramst as IKVM.Reflection.Type[])
+		var mil as MILambdas2 = new MILambdas2(nam, paramst)
+		var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(Methods,new Func<of MethodItem,boolean>(mil::DetermineIfProtoCandidate()))
+		return Enumerable::FirstOrDefault<of MethodItem>(lom2)
+	end method
 
 	method public ConstructorBuilder GetCtor(var paramst as IKVM.Reflection.Type[])
 		var cil as CILambdas = new CILambdas(paramst)

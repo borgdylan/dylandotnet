@@ -280,7 +280,6 @@ class public auto ansi static SymTable
 	
 	[method: ComVisible(false)]
 	method public static void AddNestedCtor(var ptyps as IKVM.Reflection.Type[], var met as ConstructorBuilder)
-
 		var vr as CtorItem = new CtorItem(ptyps, met)
 		var len as integer = NestedCtorLst[l]
 		var destl as integer = len + 1
@@ -295,7 +294,6 @@ class public auto ansi static SymTable
 
 		destarr[len] = vr
 		NestedCtorLst = destarr
-
 	end method
 
 	[method: ComVisible(false)]
@@ -387,7 +385,6 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static void AddLbl(var nam as string)
-
 		var i as integer = -1
 		var destarr as LabelItem[] = new LabelItem[LblLst[l] + 1]
 
@@ -398,7 +395,6 @@ class public auto ansi static SymTable
 
 		destarr[LblLst[l]] = new LabelItem(nam, ILEmitter::DefineLbl())
 		LblLst = destarr
-
 	end method
 
 	[method: ComVisible(false)]
@@ -516,6 +512,11 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static MethodInfo FindMet(var nam as string, var paramst as IKVM.Reflection.Type[])
 		return CurnTypItem::GetMethod(nam,paramst)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static MethodItem FindProtoMet(var nam as string, var paramst as IKVM.Reflection.Type[])
+		return CurnTypItem::GetProtoMethod(nam,paramst)
 	end method
 
 	[method: ComVisible(false)]
