@@ -81,8 +81,12 @@ class public auto ansi TypeItem
 	
 	method public MethodItem GetProtoMethod(var nam as string, var paramst as IKVM.Reflection.Type[])
 		var mil as MILambdas2 = new MILambdas2(nam, paramst)
-		var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(Methods,new Func<of MethodItem,boolean>(mil::DetermineIfProtoCandidate()))
-		return Enumerable::FirstOrDefault<of MethodItem>(lom2)
+		var lom2 as MethodItem[] = Enumerable::ToArray<of MethodItem>(Enumerable::Where<of MethodItem>(Methods,new Func<of MethodItem,boolean>(mil::DetermineIfProtoCandidate())))
+		if lom2[l] > 0 then
+			return lom2[0]
+		else
+			return null
+		end if
 	end method
 
 	method public ConstructorBuilder GetCtor(var paramst as IKVM.Reflection.Type[])

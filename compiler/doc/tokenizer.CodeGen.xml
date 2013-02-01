@@ -3,12 +3,6 @@
         <name>tokenizer.CodeGen</name>
     </assembly>
     <members>
-        <member name="T:dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate">
-            <param name="t">To be added.</param>
-            <param name="emt">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="T:dylan.NET.Tokenizer.CodeGen.CodeGenerator">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -84,24 +78,21 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmitIdent(dylan.NET.Tokenizer.AST.Tokens.Ident,System.Boolean,dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmitIdent(dylan.NET.Tokenizer.AST.Tokens.Ident,System.Boolean)">
             <param name="idt">To be added.</param>
             <param name="emt">To be added.</param>
-            <param name="aed">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmitMethod(dylan.NET.Tokenizer.AST.Tokens.MethodCallTok,System.Boolean,dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmitMethod(dylan.NET.Tokenizer.AST.Tokens.MethodCallTok,System.Boolean)">
             <param name="mctok">To be added.</param>
             <param name="emt">To be added.</param>
-            <param name="aed">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmitNew(dylan.NET.Tokenizer.AST.Tokens.NewCallTok,System.Boolean,dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmitNew(dylan.NET.Tokenizer.AST.Tokens.NewCallTok,System.Boolean)">
             <param name="nctok">To be added.</param>
             <param name="emt">To be added.</param>
-            <param name="aed">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

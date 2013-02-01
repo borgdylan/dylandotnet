@@ -42,8 +42,8 @@
       </Docs>
     </Member>
     <Member MemberName="ASTEmitIdent">
-      <MemberSignature Language="C#" Value="public void ASTEmitIdent (dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt, dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitIdent(class dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt, class dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed) cil managed" />
+      <MemberSignature Language="C#" Value="public void ASTEmitIdent (dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitIdent(class dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -51,19 +51,17 @@
       <Parameters>
         <Parameter Name="idt" Type="dylan.NET.Tokenizer.AST.Tokens.Ident" />
         <Parameter Name="emt" Type="System.Boolean" />
-        <Parameter Name="aed" Type="dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate" />
       </Parameters>
       <Docs>
         <param name="idt">To be added.</param>
         <param name="emt">To be added.</param>
-        <param name="aed">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ASTEmitMethod">
-      <MemberSignature Language="C#" Value="public void ASTEmitMethod (dylan.NET.Tokenizer.AST.Tokens.MethodCallTok mctok, bool emt, dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitMethod(class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok mctok, bool emt, class dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed) cil managed" />
+      <MemberSignature Language="C#" Value="public void ASTEmitMethod (dylan.NET.Tokenizer.AST.Tokens.MethodCallTok mctok, bool emt);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitMethod(class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok mctok, bool emt) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -71,19 +69,17 @@
       <Parameters>
         <Parameter Name="mctok" Type="dylan.NET.Tokenizer.AST.Tokens.MethodCallTok" />
         <Parameter Name="emt" Type="System.Boolean" />
-        <Parameter Name="aed" Type="dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate" />
       </Parameters>
       <Docs>
         <param name="mctok">To be added.</param>
         <param name="emt">To be added.</param>
-        <param name="aed">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ASTEmitNew">
-      <MemberSignature Language="C#" Value="public void ASTEmitNew (dylan.NET.Tokenizer.AST.Tokens.NewCallTok nctok, bool emt, dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitNew(class dylan.NET.Tokenizer.AST.Tokens.NewCallTok nctok, bool emt, class dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate aed) cil managed" />
+      <MemberSignature Language="C#" Value="public void ASTEmitNew (dylan.NET.Tokenizer.AST.Tokens.NewCallTok nctok, bool emt);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitNew(class dylan.NET.Tokenizer.AST.Tokens.NewCallTok nctok, bool emt) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -91,12 +87,10 @@
       <Parameters>
         <Parameter Name="nctok" Type="dylan.NET.Tokenizer.AST.Tokens.NewCallTok" />
         <Parameter Name="emt" Type="System.Boolean" />
-        <Parameter Name="aed" Type="dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate" />
       </Parameters>
       <Docs>
         <param name="nctok">To be added.</param>
         <param name="emt">To be added.</param>
-        <param name="aed">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

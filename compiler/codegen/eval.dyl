@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-delegate public auto ansi void ASTEmitDelegate(var t as Token, var emt as boolean)
+//delegate public auto ansi void ASTEmitDelegate(var t as Token, var emt as boolean)
 
 class public auto ansi beforefieldinit Evaluator
 
@@ -18,6 +18,8 @@ class public auto ansi beforefieldinit Evaluator
 		Stack = null
 		//InstToken = new Token()
 	end method
+	
+	method public prototype void ASTEmit(var tok as Token, var emt as boolean)
 
 	method public static integer RetPrec(var tok as Token)
 		if tok is Op then
@@ -152,7 +154,7 @@ class public auto ansi beforefieldinit Evaluator
 
 	end method
 
-	method public void ASTEmitIdent(var idt as Ident, var emt as boolean, var aed as ASTEmitDelegate)
+	method public void ASTEmitIdent(var idt as Ident, var emt as boolean)
 	
 		var i as integer = -1
 		var idtb1 as boolean = false
@@ -311,7 +313,7 @@ class public auto ansi beforefieldinit Evaluator
 				AsmFactory::Type02 = ILEmitter::Univ::Import(gettype integer)
 			else
 				typ = AsmFactory::Type02
-				aed::Invoke(ConvToAST(ConvToRPN(idt::ArrLoc)), emt)
+				ASTEmit(ConvToAST(ConvToRPN(idt::ArrLoc)), emt)
 				
 				if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
@@ -344,7 +346,7 @@ class public auto ansi beforefieldinit Evaluator
 		if idt::MemberAccessFlg then
 			AsmFactory::ChainFlg = true
 			AsmFactory::RefChainFlg = pushaddr
-			aed::Invoke(idt::MemberToAccess, emt)
+			ASTEmit(idt::MemberToAccess, emt)
 		end if
 
 		if idt::Conv then
@@ -362,7 +364,7 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 	end method
 	
-	method public void ASTEmitMethod(var mctok as MethodCallTok, var emt as boolean, var aed as ASTEmitDelegate)
+	method public void ASTEmitMethod(var mctok as MethodCallTok, var emt as boolean)
 		var mcparenttyp as IKVM.Reflection.Type
 		var mnstrarr as string[]
 		var mcmetinf as MethodInfo
@@ -539,7 +541,7 @@ class public auto ansi beforefieldinit Evaluator
 
 		foreach param in mctok::Params
 			//i = i + 1
-			aed::Invoke(ConvToAST(ConvToRPN(param)), emt)
+			ASTEmit(ConvToAST(ConvToRPN(param)), emt)
 			typarr2 = AsmFactory::TypArr
 			AsmFactory::TypArr = typarr1
 			AsmFactory::AddTyp(AsmFactory::Type02)
@@ -599,7 +601,7 @@ class public auto ansi beforefieldinit Evaluator
 						AsmFactory::Type02 = ILEmitter::Univ::Import(gettype integer)
 					else
 						mcparenttyp = AsmFactory::Type02
-						aed::Invoke(ConvToAST(ConvToRPN(mntok::ArrLoc)), emt)
+						ASTEmit(ConvToAST(ConvToRPN(mntok::ArrLoc)), emt)
 						
 						if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
@@ -633,7 +635,7 @@ class public auto ansi beforefieldinit Evaluator
 			if mntok::MemberAccessFlg then
 				AsmFactory::ChainFlg = true
 				AsmFactory::RefChainFlg = pushaddr
-				aed::Invoke(mntok::MemberToAccess, emt)
+				ASTEmit(mntok::MemberToAccess, emt)
 			end if
 		else
 			mcparenttyp = AsmFactory::CurnInhTyp
@@ -665,7 +667,7 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 	end method
 
-	method public void ASTEmitNew(var nctok as NewCallTok, var emt as boolean, var aed as ASTEmitDelegate)
+	method public void ASTEmitNew(var nctok as NewCallTok, var emt as boolean)
 		//constructor call section
 		var delparamarr as IKVM.Reflection.Type[]
 		var delmtdnam as MethodNameTok
@@ -704,7 +706,7 @@ class public auto ansi beforefieldinit Evaluator
 
 			foreach param in nctok::Params
 				//i = i + 1
-				aed::Invoke(ConvToAST(ConvToRPN(param)), emt)
+				ASTEmit(ConvToAST(ConvToRPN(param)), emt)
 				typarr2 = AsmFactory::TypArr
 				AsmFactory::TypArr = typarr1
 				AsmFactory::AddTyp(AsmFactory::Type02)
@@ -881,7 +883,7 @@ class public auto ansi beforefieldinit Evaluator
 		AsmFactory::Type02 = nctyp
 	end method
 	
-	method public void ASTEmit(var tok as Token, var emt as boolean)c
+	method public void ASTEmit(var tok as Token, var emt as boolean)
 
 		var optok as Op = new Op()
 		var rc as Token = new Token()
@@ -1027,11 +1029,11 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				end if
 			elseif tok is Ident then
-				ASTEmitIdent($Ident$tok,emt,new ASTEmitDelegate(ASTEmit()))
+				ASTEmitIdent($Ident$tok,emt)
 			elseif tok is MethodCallTok then
-				ASTEmitMethod($MethodCallTok$tok,emt,new ASTEmitDelegate(ASTEmit()))
+				ASTEmitMethod($MethodCallTok$tok,emt)
 			elseif tok is NewCallTok then
-				ASTEmitNew($NewCallTok$tok,emt,new ASTEmitDelegate(ASTEmit()))
+				ASTEmitNew($NewCallTok$tok,emt)
 			elseif tok is GettypeCallTok then
 				if emt then
 					//gettype section

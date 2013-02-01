@@ -462,6 +462,7 @@ class public auto ansi StmtReader
 			var mtss as MethodStmt = $MethodStmt$stm
 			ILEmitter::StaticFlg = false
 			ILEmitter::AbstractFlg = false
+			ILEmitter::ProtoFlg = false
 			SymTable::ResetVar()
 			SymTable::ResetIf()
 			SymTable::ResetLbl()
@@ -483,12 +484,13 @@ class public auto ansi StmtReader
 			var mtssnamarr as C5.IList<of string>
 			var overldnam as string = String::Empty
 			var overldmtd as MethodInfo = null
+			var mipt as MethodItem = null
+			var fromproto as boolean = false
 
 			if (mtssnamstr = AsmFactory::CurnTypName) or (mtssnamstr like "^ctor\d*$") then
 				StreamUtils::Write("	Adding Constructor: ")
 				StreamUtils::WriteLine(mtssnamstr)
-				var stdcallconv as CallingConventions = CallingConventions::Standard
-				AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(Helpers::ProcessMethodAttrs(mtss::Attrs), stdcallconv, AsmFactory::TypArr)
+				AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(Helpers::ProcessMethodAttrs(mtss::Attrs), CallingConventions::Standard, AsmFactory::TypArr)
 				AsmFactory::InitConstr()
 				if AsmFactory::isNested then
 					SymTable::AddNestedCtor(AsmFactory::TypArr, AsmFactory::CurnConB)
@@ -510,37 +512,53 @@ class public auto ansi StmtReader
 					typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", mtssnamarr::View(0,mtssnamarr::get_Count() - 1)::ToArray())))
 					mtssnamstr = typ::ToString() + "." + overldnam
 				end if
-
-				AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, Helpers::ProcessMethodAttrs(mtss::Attrs), rettyp, AsmFactory::TypArr)
 				
-				var pbrv as ParameterBuilder = AsmFactory::CurnMetB::DefineParameter(0, IKVM.Reflection.ParameterAttributes::Retval, $string$null)
-				if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), 0) then
-					foreach ca in SymTable::ParameterCALst::get_Item(0)
-						pbrv::SetCustomAttribute(ca)
-					end for
-				end if
-		
-				AsmFactory::InitMtd()
-
-				if mtssnamarr::get_Count() > 1 then
-					overldmtd = Helpers::GetExtMet(typ, new MethodNameTok(overldnam), paramstyps)
-					AsmFactory::CurnTypB::DefineMethodOverride(AsmFactory::CurnMetB, overldmtd)
-				end if
-
-				if AsmFactory::isNested then
-					SymTable::AddNestedMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
+				mipt = SymTable::FindProtoMet(mtssnamstr, AsmFactory::TypArr)
+				fromproto = mipt != null
+				
+				if fromproto then
+					AsmFactory::CurnMetB = mipt::MethodBldr
+					ILEmitter::StaticFlg = AsmFactory::CurnMetB::get_IsStatic()
+					ILEmitter::AbstractFlg = AsmFactory::CurnMetB::get_IsAbstract()
 				else
-					SymTable::AddMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
+					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, Helpers::ProcessMethodAttrs(mtss::Attrs), rettyp, AsmFactory::TypArr)
 				end if
-				if mtss::Params[l] != 0 then
-					Helpers::PostProcessParams(mtss::Params)
+				
+				if ILEmitter::ProtoFlg == false then
+					var pbrv as ParameterBuilder = AsmFactory::CurnMetB::DefineParameter(0, IKVM.Reflection.ParameterAttributes::Retval, $string$null)
+					if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), 0) then
+						foreach ca in SymTable::ParameterCALst::get_Item(0)
+							pbrv::SetCustomAttribute(ca)
+						end for
+					end if
+		
+					AsmFactory::InitMtd()
+
+					if mtssnamarr::get_Count() > 1 then
+						overldmtd = Helpers::GetExtMet(typ, new MethodNameTok(overldnam), paramstyps)
+						AsmFactory::CurnTypB::DefineMethodOverride(AsmFactory::CurnMetB, overldmtd)
+					end if
+				end if
+				
+				if fromproto = false then
+					if AsmFactory::isNested then
+						SymTable::AddNestedMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
+					else
+						SymTable::AddMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
+					end if
+				end if
+				
+				if ILEmitter::ProtoFlg == false then
+					if mtss::Params[l] != 0 then
+						Helpers::PostProcessParams(mtss::Params)
+					end if
 				end if
 			end if
 			
 			Helpers::ApplyMetAttrs()
 			SymTable::ResetMetCAs()
 			
-			if ILEmitter::AbstractFlg = false then
+			if (ILEmitter::AbstractFlg or ILEmitter::ProtoFlg) = false then
 				AsmFactory::InMethodFlg = true
 			end if
 			AsmFactory::CurnMetName = mtssnamstr
@@ -548,7 +566,7 @@ class public auto ansi StmtReader
 		elseif stm is EndMethodStmt then
 			AsmFactory::InMethodFlg = false
 			AsmFactory::InCtorFlg = false
-			if ILEmitter::AbstractFlg = false then
+			if (ILEmitter::AbstractFlg or ILEmitter::ProtoFlg) = false then
 				ILEmitter::EmitRet()
 				SymTable::CheckUnusedVar()
 				SymTable::CheckCtrlBlks()

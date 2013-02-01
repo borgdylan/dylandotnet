@@ -192,6 +192,16 @@ class public auto ansi Program
 		//ROTest::X = xc + 12
 	end method
 	
+	method public prototype void ProtoMethod(var x as integer, var y as integer)
+	
+	method public void ProtoTest()
+		ProtoMethod(12,6)
+	end method
+	
+	method public void ProtoMethod(var x as integer, var y as integer)
+		Console::WriteLine("ProtoImpl")
+	end method
+	
 	method public static void numerictest()
 		var bi as BigInteger = ($BigInteger$12 >> 1) << 2
 		Console::WriteLine(bi::ToString())
