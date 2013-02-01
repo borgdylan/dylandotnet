@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/helpers.dyl">
     <Files>
       <File FileName="codegen/eval.dyl" Line="851" Column="44" />
-      <File FileName="codegen/helpers.dyl" Line="132" Column="32" />
+      <File FileName="codegen/helpers.dyl" Line="42" Column="1" />
       <File FileName="ast/typetoks.dyl" Line="197" Column="22" />
       <File FileName="ast/methodnametok.dyl" Line="24" Column="21" />
       <File FileName="lexer/line.dyl" Line="333" Column="22" />
@@ -56,7 +56,9 @@
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
-            <Node name="codegen" expanded="True" />
+            <Node name="codegen" expanded="True">
+              <Node name="helpers.dyl" selected="True" />
+            </Node>
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
             <Node name="dnr" expanded="True" />
@@ -67,9 +69,7 @@
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>
-          <Node name="template" expanded="True">
-            <Node name="template.dyl" selected="True" />
-          </Node>
+          <Node name="template" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

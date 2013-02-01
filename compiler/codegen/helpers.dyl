@@ -45,49 +45,47 @@ class public auto ansi static Helpers
 		
 		var ta as TypeAttributes
 		var temp as TypeAttributes
-		var i as integer = -1
 		var fir as boolean = true
 		var flg as boolean
 		var absf as boolean = false
 		var sldf as boolean = false
 		
-		do until i = (attrs[l] - 1)
-			i = i + 1
+		foreach attr in attrs
 			flg = true
 			
-			if attrs[i] is Attributes.PublicAttr then
+			if attr is Attributes.PublicAttr then
 				if AsmFactory::isNested = false then
 					temp = TypeAttributes::Public
 				else
 					temp = TypeAttributes::NestedPublic
 				end if
-			elseif attrs[i] is Attributes.PrivateAttr then
+			elseif attr is Attributes.PrivateAttr then
 				if AsmFactory::isNested = false then
 					temp = TypeAttributes::NotPublic
 				else
 					temp = TypeAttributes::NestedPrivate
 				end if
-			elseif attrs[i] is Attributes.AutoLayoutAttr then
+			elseif attr is Attributes.AutoLayoutAttr then
 				temp = TypeAttributes::AutoLayout
-			elseif attrs[i] is Attributes.AnsiClassAttr then
+			elseif attr is Attributes.AnsiClassAttr then
 				temp = TypeAttributes::AnsiClass
-			elseif attrs[i] is Attributes.SealedAttr then
+			elseif attr is Attributes.SealedAttr then
 				temp = TypeAttributes::Sealed
 				sldf = true
-			elseif attrs[i] is Attributes.BeforeFieldInitAttr then
+			elseif attr is Attributes.BeforeFieldInitAttr then
 				temp = TypeAttributes::BeforeFieldInit
-			elseif attrs[i] is Attributes.AbstractAttr then
+			elseif attr is Attributes.AbstractAttr then
 				temp = TypeAttributes::Abstract
 				absf = true
-			elseif attrs[i] is Attributes.InterfaceAttr then
+			elseif attr is Attributes.InterfaceAttr then
 				temp = TypeAttributes::Interface
 				ILEmitter::InterfaceFlg = true
-			elseif attrs[i] is Attributes.StaticAttr then
+			elseif attr is Attributes.StaticAttr then
 				temp = TypeAttributes::Abstract or TypeAttributes::BeforeFieldInit or TypeAttributes::Sealed
 				ILEmitter::StaticCFlg = true
 			else
 				flg = false
-				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attrs[i]::Value + "' is not a valid attribute for a class or delegate.")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a class or delegate.")
 			end if
 			
 			if flg then
@@ -99,7 +97,7 @@ class public auto ansi static Helpers
 				end if
 			end if
 			
-		end do
+		end for
 		
 		if absf and sldf then
 			ILEmitter::StaticCFlg = true
@@ -113,65 +111,66 @@ class public auto ansi static Helpers
 		
 		var ta as MethodAttributes
 		var temp as MethodAttributes
-		var i as integer = -1
 		var fir as boolean = true
 		var flg as boolean
 		var fam as boolean = false
 		var assem as boolean = false
 		var foa as boolean = false
 		var faa as boolean = false
+		var errs as string = "Only one of family, assembly, famorassem, famandassem can be used in an attribute list."
 
-		do until i = (attrs[l] - 1)
-			i = i + 1
+		foreach attr in attrs
 			flg = true
 
-			if attrs[i] is Attributes.PublicAttr then
+			if attr is Attributes.PublicAttr then
 				temp = MethodAttributes::Public
-			elseif attrs[i] is Attributes.StaticAttr then
+			elseif attr is Attributes.StaticAttr then
 				temp = MethodAttributes::Static
 				ILEmitter::StaticFlg = true
-			elseif attrs[i] is Attributes.SpecialNameAttr then
+			elseif attr is Attributes.SpecialNameAttr then
 				temp = MethodAttributes::SpecialName
-			elseif attrs[i] is Attributes.VirtualAttr then
+			elseif attr is Attributes.VirtualAttr then
 				temp = MethodAttributes::Virtual
-			elseif attrs[i] is Attributes.HideBySigAttr then
+			elseif attr is Attributes.HideBySigAttr then
 				temp = MethodAttributes::HideBySig
-			elseif attrs[i] is Attributes.PrivateAttr then
+			elseif attr is Attributes.PrivateAttr then
 				temp = MethodAttributes::Private
-			elseif attrs[i] is Attributes.FamilyAttr then
+			elseif attr is Attributes.FamilyAttr then
 				temp = MethodAttributes::Family
 				if assem or fam or foa or faa then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				fam = true
-			elseif attrs[i] is Attributes.FinalAttr then
+			elseif attr is Attributes.FinalAttr then
 				temp = MethodAttributes::Final
-			elseif attrs[i] is Attributes.AssemblyAttr then
+			elseif attr is Attributes.AssemblyAttr then
 				temp = MethodAttributes::Assembly
 				if assem or fam or foa or faa then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				assem = true
-			elseif attrs[i] is Attributes.FamORAssemAttr then
+			elseif attr is Attributes.FamORAssemAttr then
 				temp = MethodAttributes::FamORAssem
 				if assem or fam or foa or faa then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				foa = true
-			elseif attrs[i] is Attributes.FamANDAssemAttr then
+			elseif attr is Attributes.FamANDAssemAttr then
 				temp = MethodAttributes::FamANDAssem
 				if assem or fam or foa or faa then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Only one of family, assembly, famorassem, famandassem can be used in an attribute list.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				faa = true
-			elseif attrs[i] is Attributes.AbstractAttr then
+			elseif attr is Attributes.AbstractAttr then
 				temp = MethodAttributes::Abstract
 				ILEmitter::AbstractFlg = true
-			elseif attrs[i] is Attributes.NewSlotAttr then
+			elseif attr is Attributes.NewSlotAttr then
 				temp = MethodAttributes::NewSlot
+			elseif attr is Attributes.PrototypeAttr then
+				ILEmitter::ProtoFlg = true
 			else
 				flg = false
-				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attrs[i]::Value + "' is not a valid attribute for a method.")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a method.")
 			end if
 			
 			if flg then
@@ -183,7 +182,7 @@ class public auto ansi static Helpers
 				end if
 			end if
 			
-		end do
+		end for
 
 		return ta
 	end method
