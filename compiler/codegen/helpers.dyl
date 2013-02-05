@@ -87,7 +87,6 @@ class public auto ansi static Helpers
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a class or delegate.")
 			end if
-			
 			if flg then
 				if fir then
 					fir = (fir == false)
@@ -96,13 +95,10 @@ class public auto ansi static Helpers
 					ta = temp or ta
 				end if
 			end if
-			
 		end for
-		
 		if absf and sldf then
 			ILEmitter::StaticCFlg = true
 		end if
-
 		return ta
 	end method
 
@@ -172,7 +168,6 @@ class public auto ansi static Helpers
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a method.")
 			end if
-			
 			if flg then
 				if fir then
 					fir = (fir == false)
@@ -180,10 +175,8 @@ class public auto ansi static Helpers
 				else
 					ta = temp or ta
 				end if
-			end if
-			
+			end if		
 		end for
-
 		return ta
 	end method
 
@@ -239,7 +232,6 @@ class public auto ansi static Helpers
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a field.")
 			end if
-
 			if flg then
 				if fir then
 					fir = (fir == false)
@@ -248,9 +240,7 @@ class public auto ansi static Helpers
 					ta = temp or ta
 				end if
 			end if
-
 		end for
-
 		return ta
 	end method
 	
@@ -269,13 +259,10 @@ class public auto ansi static Helpers
 				temp = PropertyAttributes::None
 			elseif attr is Attributes.SpecialNameAttr then
 				temp = PropertyAttributes::SpecialName
-			//elseif attr is Attributes.InitOnlyAttr then
-			//	temp = FieldAttributes::InitOnly
 			else
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a property.")
 			end if
-
 			if flg then
 				if fir then
 					fir = (fir == false)
@@ -284,9 +271,7 @@ class public auto ansi static Helpers
 					ta = temp or ta
 				end if
 			end if
-
 		end for
-
 		return ta
 	end method
 	
@@ -300,7 +285,6 @@ class public auto ansi static Helpers
 		
 		foreach attr in attrs
 			flg = true
-
 			if attr is Attributes.NoneAttr then
 				temp = EventAttributes::None
 			elseif attr is Attributes.SpecialNameAttr then
@@ -309,7 +293,6 @@ class public auto ansi static Helpers
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a property.")
 			end if
-
 			if flg then
 				if fir then
 					fir = (fir == false)
@@ -318,9 +301,7 @@ class public auto ansi static Helpers
 					ta = temp or ta
 				end if
 			end if
-
 		end for
-
 		return ta
 	end method
 

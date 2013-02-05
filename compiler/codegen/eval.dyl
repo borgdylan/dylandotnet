@@ -11,12 +11,10 @@
 class public auto ansi beforefieldinit Evaluator
 
 	field public OpStack Stack
-	//field public Token InstToken
 
 	method public void Evaluator()
 		me::ctor()
 		Stack = null
-		//InstToken = new Token()
 	end method
 	
 	method public prototype void ASTEmit(var tok as Token, var emt as boolean)
@@ -149,9 +147,52 @@ class public auto ansi beforefieldinit Evaluator
 				tokf =  exp::Tokens::get_Item(0)
 			end if
 		end do
-		
 		return tokf
-
+	end method
+	
+	method private void ASTEmitArrayLoad(var idt as Ident, var emt as boolean)
+		if idt::IsArr then
+			var typ as IKVM.Reflection.Type = null
+			if Helpers::CheckIfArrLen(idt::ArrLoc) then
+				typ = AsmFactory::Type02
+				if typ::get_IsArray() == false then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + typ::ToString() + "' is not an Array Type.")
+				end if
+				if emt then
+					ILEmitter::EmitLdlen()
+					ILEmitter::EmitConvI4()
+				end if
+				AsmFactory::Type02 = ILEmitter::Univ::Import(gettype integer)
+			else
+				typ = AsmFactory::Type02
+				ASTEmit(ConvToAST(ConvToRPN(idt::ArrLoc)), emt)
+				
+				if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
+				elseif typ::get_IsArray() == false then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + typ::ToString() + "' is not an Array Type.")
+				end if
+				
+				typ = typ::GetElementType()
+				if idt::IsRef then
+					AsmFactory::ForcedAddrFlg = true
+				end if
+				if emt then
+					ILEmitter::EmitConvI()
+					if idt::MemberAccessFlg then
+						AsmFactory::AddrFlg = true
+						AsmFactory::Type04 = typ
+					end if
+					Helpers::EmitElemLd(typ)
+				end if
+				if AsmFactory::ForcedAddrFlg then
+					typ = typ::MakeByRefType()
+				end if
+				AsmFactory::Type02 = typ
+				AsmFactory::AddrFlg = false
+				AsmFactory::ForcedAddrFlg = false
+			end if
+		end if
 	end method
 
 	method public void ASTEmitIdent(var idt as Ident, var emt as boolean)
@@ -298,50 +339,7 @@ class public auto ansi beforefieldinit Evaluator
 		end do
 		AsmFactory::ForcedAddrFlg = false
 
-		//array handling code
-		//-----------------------------------------
-		if idt::IsArr then
-			if Helpers::CheckIfArrLen(idt::ArrLoc) then
-				typ = AsmFactory::Type02
-				if typ::get_IsArray() == false then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + typ::ToString() + "' is not an Array Type.")
-				end if
-				if emt then
-					ILEmitter::EmitLdlen()
-					ILEmitter::EmitConvI4()
-				end if
-				AsmFactory::Type02 = ILEmitter::Univ::Import(gettype integer)
-			else
-				typ = AsmFactory::Type02
-				ASTEmit(ConvToAST(ConvToRPN(idt::ArrLoc)), emt)
-				
-				if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
-				elseif typ::get_IsArray() == false then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + typ::ToString() + "' is not an Array Type.")
-				end if
-				
-				typ = typ::GetElementType()
-				if idt::IsRef then
-					AsmFactory::ForcedAddrFlg = true
-				end if
-				if emt then
-					ILEmitter::EmitConvI()
-					if idt::MemberAccessFlg then
-						AsmFactory::AddrFlg = true
-						AsmFactory::Type04 = typ
-					end if
-					Helpers::EmitElemLd(typ)
-				end if
-				if AsmFactory::ForcedAddrFlg then
-					typ = typ::MakeByRefType()
-				end if
-				AsmFactory::Type02 = typ
-				AsmFactory::AddrFlg = false
-				AsmFactory::ForcedAddrFlg = false
-			end if
-		end if
-		//-----------------------------------------
+		ASTEmitArrayLoad(idt, emt)
 
 		if idt::MemberAccessFlg then
 			AsmFactory::ChainFlg = true
@@ -540,7 +538,6 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 
 		foreach param in mctok::Params
-			//i = i + 1
 			ASTEmit(ConvToAST(ConvToRPN(param)), emt)
 			typarr2 = AsmFactory::TypArr
 			AsmFactory::TypArr = typarr1
@@ -582,54 +579,9 @@ class public auto ansi beforefieldinit Evaluator
 				Helpers::EmitMetCall(mcmetinf, mcisstatic)
 				AsmFactory::PopFlg = false
 			end if
-			
 			Helpers::BaseFlg = false
-
 			if mctok::PopFlg = false then
-				//array handling code
-				//-----------------------------------------
-				if mntok::IsArr = true then
-					if Helpers::CheckIfArrLen(mntok::ArrLoc) then
-						mcparenttyp = AsmFactory::Type02
-						if mcparenttyp::get_IsArray() == false then
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + mcparenttyp::ToString() + "' is not an Array Type.")
-						end if
-						if emt then
-							ILEmitter::EmitLdlen()
-							ILEmitter::EmitConvI4()
-						end if
-						AsmFactory::Type02 = ILEmitter::Univ::Import(gettype integer)
-					else
-						mcparenttyp = AsmFactory::Type02
-						ASTEmit(ConvToAST(ConvToRPN(mntok::ArrLoc)), emt)
-						
-						if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
-						elseif mcparenttyp::get_IsArray() == false then
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + mcparenttyp::ToString() + "' is not an Array Type.")
-						end if
-						
-						mcparenttyp = mcparenttyp::GetElementType()
-						if mntok::IsRef then
-							AsmFactory::ForcedAddrFlg = true
-						end if
-						if emt then
-							ILEmitter::EmitConvI()
-							if mntok::MemberAccessFlg then
-								AsmFactory::AddrFlg = true
-								AsmFactory::Type04 = mcparenttyp
-							end if
-							Helpers::EmitElemLd(mcparenttyp)
-						end if
-						if AsmFactory::ForcedAddrFlg then
-							mcparenttyp = mcparenttyp::MakeByRefType()
-						end if
-						AsmFactory::Type02 = mcparenttyp
-						AsmFactory::AddrFlg = false
-						AsmFactory::ForcedAddrFlg = false
-					end if
-				end if
-				//-----------------------------------------
+				ASTEmitArrayLoad(mntok, emt)
 			end if
 
 			if mntok::MemberAccessFlg then
