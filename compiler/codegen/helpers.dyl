@@ -83,6 +83,8 @@ class public auto ansi static Helpers
 			elseif attr is Attributes.StaticAttr then
 				temp = TypeAttributes::Abstract or TypeAttributes::BeforeFieldInit or TypeAttributes::Sealed
 				ILEmitter::StaticCFlg = true
+			elseif attr is Attributes.PartialAttr then
+				ILEmitter::PartialFlg = true
 			else
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a class or delegate.")

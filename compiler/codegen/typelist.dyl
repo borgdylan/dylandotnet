@@ -27,9 +27,9 @@ class public auto ansi TypeList
 				til = new TILambdas(ns + "." + nam)
 			end if
 			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
-			var matches as TypeItem[] = Enumerable::ToArray<of TypeItem>(lot2)
-			if matches[l] != 0 then
-				return matches[0]
+			var match as TypeItem = Enumerable::FirstOrDefault<of TypeItem>(lot2)
+			if match != null then
+				return match
 			end if
 		end for
 

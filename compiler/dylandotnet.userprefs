@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/eval.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
     <Files>
       <File FileName="codegen/eval.dyl" Line="409" Column="18" />
       <File FileName="codegen/helpers.dyl" Line="89" Column="10" />
@@ -34,7 +34,7 @@
       <File FileName="tests/mathematics.dyl" Line="22" Column="1" />
       <File FileName="lexer/lexer.dyl" Line="45" Column="47" />
       <File FileName="codegen/ctoritem.dyl" Line="1" Column="1" />
-      <File FileName="templateproj/template.dyl" Line="254" Column="72" />
+      <File FileName="templateproj/template.dyl" Line="278" Column="47" />
       <File FileName="ast/newcalltoks.dyl" Line="88" Column="54" />
       <File FileName="ast/newexpr.dyl" Line="1" Column="1" />
       <File FileName="unit/streamutests.dyl" Line="103" Column="36" />
@@ -58,9 +58,7 @@
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
-            <Node name="codegen" expanded="True">
-              <Node name="eval.dyl" selected="True" />
-            </Node>
+            <Node name="codegen" expanded="True" />
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
             <Node name="dnr" expanded="True" />
@@ -71,7 +69,9 @@
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>
-          <Node name="template" expanded="True" />
+          <Node name="template" expanded="True">
+            <Node name="template.dyl" selected="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">

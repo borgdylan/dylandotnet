@@ -9,6 +9,7 @@
 class public auto ansi TypeItem
 
 	field public string Name
+	field public boolean IsStatic
 	field public IKVM.Reflection.Type InhTyp
 	field public C5.IList<of IKVM.Reflection.Type> Interfaces
 	field public TypeBuilder TypeBldr
@@ -19,6 +20,7 @@ class public auto ansi TypeItem
 
 	method public void TypeItem()
 		me::ctor()
+		IsStatic = false
 		Name = String::Empty
 		InhTyp = null
 		TypeBldr = null
@@ -31,6 +33,7 @@ class public auto ansi TypeItem
 
 	method public void TypeItem(var nme as string,var bld as TypeBuilder)
 		me::ctor()
+		IsStatic = false
 		Name = nme
 		TypeBldr = bld
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()

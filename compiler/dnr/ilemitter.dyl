@@ -16,6 +16,7 @@ class public auto ansi static ILEmitter
 	field public static boolean AbstractFlg
 	field public static boolean StructFlg
 	field public static boolean InterfaceFlg
+	field public static boolean PartialFlg
 	field public static boolean StaticCFlg
 	field public static boolean DebugFlg
 	field public static boolean ProtoFlg
@@ -40,6 +41,7 @@ class public auto ansi static ILEmitter
 		StaticCFlg = false
 		DebugFlg = false
 		ProtoFlg = false
+		PartialFlg = false
 		LocInd = 0
 		ArgInd = 0
 		LineNr = 0

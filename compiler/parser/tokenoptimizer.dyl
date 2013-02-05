@@ -1119,6 +1119,14 @@ class public auto ansi TokenOptimizer
 			goto fin
 		end if
 		
+		if tok::Value = "partial" then
+			var partattr as PartialAttr = new PartialAttr()
+			partattr::Line = tok::Line
+			partattr::Value = tok::Value
+			tok = partattr
+			goto fin
+		end if
+		
 		if tok::Value = "interface" then
 			var interfattr as InterfaceAttr = new InterfaceAttr()
 			interfattr::Line = tok::Line

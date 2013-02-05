@@ -166,6 +166,11 @@ class public auto ansi OTTEnumerator implements IEnumerator<of integer>, IEnumer
 
 end class
 
+class public auto ansi partial Program
+	field public static integer Z
+	method public prototype void ProtoMethod(var x as integer, var y as integer)
+end class
+
 class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
 
 	method public hidebysig virtual newslot final IEnumerator<of integer> GetEnumerator()
@@ -178,6 +183,7 @@ class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
 	
 end class
 
+
 class public auto ansi Program
 
 	field public static integer X
@@ -189,10 +195,9 @@ class public auto ansi Program
 		var xc as integer = ROTest::X
 		_TestProperty = 0
 		_TestEvent = null
+		Z = 12
 		//ROTest::X = xc + 12
 	end method
-	
-	method public prototype void ProtoMethod(var x as integer, var y as integer)
 	
 	method public void ProtoTest()
 		ProtoMethod(12,6)
@@ -257,8 +262,7 @@ class public auto ansi Program
 			pxel::Invoke(ienumxel::get_Current())
 		end do
 		Console::WriteLine("-------------------")
-		var lloi as List<of integer> = new List<of integer>()
-		var loi as IList<of integer> = $IList<of integer>$lloi
+		var loi as List<of integer> = new List<of integer>()
 		loi::Add(23)
 		loi::Add(11)
 		loi::Add(45)
@@ -268,17 +272,17 @@ class public auto ansi Program
 			Console::WriteLine(ienumloi::get_Current())
 		end do
 		Console::WriteLine("-------------------")
-		Console::WriteLine(Enumerable::Min<of integer>($IEnumerable<of integer>$loi))
+		Console::WriteLine(Enumerable::Min<of integer>(loi))
 		Console::WriteLine("-------------------")
-		Console::WriteLine(Enumerable::Max<of integer>($IEnumerable<of integer>$loi))
+		Console::WriteLine(Enumerable::Max<of integer>(loi))
 		Console::WriteLine("-------------------")
-		lloi::Sort()
+		loi::Sort()
 		ienumloi = loi::GetEnumerator()
 		do while ienumloi::MoveNext()
 			Console::WriteLine(ienumloi::get_Current())
 		end do
 		Console::WriteLine("-------------------")
-		lloi::Reverse()
+		loi::Reverse()
 		ienumloi = loi::GetEnumerator()
 		do while ienumloi::MoveNext()
 			Console::WriteLine(ienumloi::get_Current())

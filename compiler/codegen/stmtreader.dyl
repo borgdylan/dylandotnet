@@ -228,6 +228,7 @@ class public auto ansi StmtReader
 		elseif stm is ClassStmt then
 			var clss as ClassStmt = $ClassStmt$stm
 			ILEmitter::StructFlg = false
+			ILEmitter::PartialFlg = false
 			ILEmitter::InterfaceFlg = false
 			ILEmitter::StaticCFlg = false
 			
@@ -241,71 +242,103 @@ class public auto ansi StmtReader
 			var inhtyp as IKVM.Reflection.Type = null
 			var interftyp as IKVM.Reflection.Type = null
 			var reft as IKVM.Reflection.Type  = clss::InhClass::RefTyp
-
-			if reft = null then
-				if clss::InhClass::Value::get_Length() = 0 then
-					inhtyp = ILEmitter::Univ::Import(gettype object)
+			
+			var ti2 as TypeItem = SymTable::TypeLst::GetTypeItem(AsmFactory::CurnNS + "." + clss::ClassName::Value)
+			
+			if ti2 == null then
+				if reft = null then
+					if clss::InhClass::Value::get_Length() = 0 then
+						inhtyp = ILEmitter::Univ::Import(gettype object)
+					else
+						inhtyp = Helpers::CommitEvalTTok(clss::InhClass)
+					end if
 				else
-					inhtyp = Helpers::CommitEvalTTok(clss::InhClass)
+					inhtyp = reft 
+				end if
+				if inhtyp = null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Base Class '" + clss::InhClass::Value + "' is not defined or is not accessible.")
+				end if
+				if inhtyp != null then
+					if inhtyp::get_IsSealed() then
+						inhtyp = null
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::InhClass::Value + "' is not inheritable.")
+					end if
 				end if
 			else
-				inhtyp = reft 
+				inhtyp = ti2::InhTyp
+				//StreamUtils::WriteLine("CAUTION: " + ti2::ToString())
 			end if
-			if inhtyp = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Base Class '" + clss::InhClass::Value + "' is not defined or is not accessible.")
-			end if
-			if inhtyp != null then
-				if inhtyp::get_IsSealed() then
-					inhtyp = null
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::InhClass::Value + "' is not inheritable.")
-				end if
-			end if
-			ILEmitter::StructFlg = inhtyp::Equals(ILEmitter::Univ::Import(gettype ValueType))
-			var clssparams as TypeAttributes = Helpers::ProcessClassAttrs(clss::Attrs)
 			
-			if ILEmitter::InterfaceFlg then
-				inhtyp = null
+			ILEmitter::StructFlg = inhtyp::Equals(ILEmitter::Univ::Import(gettype ValueType))
+			var clssparams as TypeAttributes = TypeAttributes::Class
+			
+			if ti2 == null then
+				clssparams = Helpers::ProcessClassAttrs(clss::Attrs)
+				if ILEmitter::InterfaceFlg then
+					inhtyp = null
+				end if
+			else
+				ILEmitter::InterfaceFlg = ti2::TypeBldr::get_IsInterface()
+				ILEmitter::StaticCFlg = ti2::IsStatic
+				foreach attr in clss::Attrs
+					if attr is Attributes.PartialAttr then
+						ILEmitter::PartialFlg = true
+						break
+					end if
+				end for
 			end if
 			
 			AsmFactory::CurnInhTyp = inhtyp
-			if AsmFactory::isNested = false then
-				AsmFactory::CurnTypName = clss::ClassName::Value
-				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value, clssparams, inhtyp)
-				StreamUtils::Write("Adding Class: ")
-				StreamUtils::WriteLine(AsmFactory::CurnNS + "." + clss::ClassName::Value)
+			
+			if ti2 == null then
+				if AsmFactory::isNested = false then
+					AsmFactory::CurnTypName = clss::ClassName::Value
+					AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value, clssparams, inhtyp)
+					StreamUtils::Write("Adding Class: ")
+					StreamUtils::WriteLine(AsmFactory::CurnNS + "." + clss::ClassName::Value)
+				else
+					AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
+					StreamUtils::Write("Adding Nested Class: ")
+					StreamUtils::WriteLine(clss::ClassName::Value)
+					AsmFactory::CurnTypName = clss::ClassName::Value
+					AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value, clssparams, inhtyp)
+				end if
 			else
-				AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
-				StreamUtils::Write("Adding Nested Class: ")
-				StreamUtils::WriteLine(clss::ClassName::Value)
+				SymTable::CurnTypItem = ti2
+				AsmFactory::CurnTypB = ti2::TypeBldr
 				AsmFactory::CurnTypName = clss::ClassName::Value
-				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value, clssparams, inhtyp)
+				StreamUtils::Write("Continuing Class: ")
+				StreamUtils::WriteLine(AsmFactory::CurnNS + "." + clss::ClassName::Value)
 			end if
 			
 			Helpers::ApplyClsAttrs()
 			SymTable::ResetClsCAs()
 
-			var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::ClassName::Value,AsmFactory::CurnTypB)
-			ti::InhTyp = inhtyp
-			SymTable::CurnTypItem = ti
-			SymTable::TypeLst::AddType(ti)
+			if ti2 == null then
+				var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::ClassName::Value,AsmFactory::CurnTypB)
+				ti::InhTyp = inhtyp
+				ti::IsStatic = ILEmitter::StaticCFlg
+				SymTable::CurnTypItem = ti
+				SymTable::TypeLst::AddType(ti)
 
-			i = -1
-			do until i = (clss::ImplInterfaces[l] - 1)
-				i = i + 1
-				interftyp = Helpers::CommitEvalTTok(clss::ImplInterfaces[i])
-				if interftyp = null then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::ImplInterfaces[i]::Value + "' is not defined or is not accessible.")
-				elseif interftyp::get_IsInterface() == false then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + interftyp::ToString() + "' is not an interface.")
-				end if
-				AsmFactory::CurnTypB::AddInterfaceImplementation(interftyp)
+				i = -1
+				do until i = (clss::ImplInterfaces[l] - 1)
+					i = i + 1
+					interftyp = Helpers::CommitEvalTTok(clss::ImplInterfaces[i])
+					if interftyp = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::ImplInterfaces[i]::Value + "' is not defined or is not accessible.")
+					elseif interftyp::get_IsInterface() == false then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + interftyp::ToString() + "' is not an interface.")
+					end if
+					AsmFactory::CurnTypB::AddInterfaceImplementation(interftyp)
 
-				ti::AddInterface(interftyp)
-				foreach interfa in Helpers::GetTypeInterfaces(interftyp)
-					ti::AddInterface(interfa)
-				end for
-			end do
-			ti::NormalizeInterfaces()
+					ti::AddInterface(interftyp)
+					foreach interfa in Helpers::GetTypeInterfaces(interftyp)
+						ti::AddInterface(interfa)
+					end for
+				end do
+				ti::NormalizeInterfaces()
+			end if
 
 		elseif stm is DelegateStmt then
 			var dels as DelegateStmt = $DelegateStmt$stm
@@ -447,15 +480,19 @@ class public auto ansi StmtReader
 			StreamUtils::Write("	Adding Field: ")
 			StreamUtils::WriteLine(flss::FieldName::Value)
 		elseif stm is EndClassStmt then
-			SymTable::TypeLst::EnsureDefaultCtor(AsmFactory::CurnTypB)
-			AsmFactory::CreateTyp()
 			if AsmFactory::isNested then
+				SymTable::TypeLst::EnsureDefaultCtor(AsmFactory::CurnTypB)
+				AsmFactory::CreateTyp()
 				AsmFactory::CurnTypB = AsmFactory::CurnTypB2
 				AsmFactory::isNested = false
 				SymTable::ResetNestedMet()
 				SymTable::ResetNestedCtor()
 				SymTable::ResetNestedFld()
 			else
+				if ILEmitter::PartialFlg == false
+					SymTable::TypeLst::EnsureDefaultCtor(AsmFactory::CurnTypB)
+					AsmFactory::CreateTyp()
+				end if
 				AsmFactory::inClass = false
 			end if
 		elseif stm is MethodStmt then
@@ -502,9 +539,6 @@ class public auto ansi StmtReader
 				end if
 				AsmFactory::InCtorFlg = true
 			else
-				StreamUtils::Write("	Adding Method: ")
-				StreamUtils::WriteLine(mtssnamstr)
-
 				mtssnamarr = ParseUtils::StringParserL(mtssnamstr, ".")
 				if mtssnamarr::get_Count() > 1 then
 					//Console::WriteLine(mtssnamarr::get_Count())
@@ -517,10 +551,14 @@ class public auto ansi StmtReader
 				fromproto = mipt != null
 				
 				if fromproto then
+					StreamUtils::Write("	Continuing Method: ")
+					StreamUtils::WriteLine(mtssnamstr)
 					AsmFactory::CurnMetB = mipt::MethodBldr
 					ILEmitter::StaticFlg = AsmFactory::CurnMetB::get_IsStatic()
 					ILEmitter::AbstractFlg = AsmFactory::CurnMetB::get_IsAbstract()
 				else
+					StreamUtils::Write("	Adding Method: ")
+					StreamUtils::WriteLine(mtssnamstr)
 					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, Helpers::ProcessMethodAttrs(mtss::Attrs), rettyp, AsmFactory::TypArr)
 				end if
 				

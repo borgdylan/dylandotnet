@@ -1145,6 +1145,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.IsStatic">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.Methods">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

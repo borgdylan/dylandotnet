@@ -2223,6 +2223,18 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="PartialFlg">
+      <MemberSignature Language="C#" Value="public static bool PartialFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool PartialFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PopDocWriter">
       <MemberSignature Language="C#" Value="public static void PopDocWriter ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void PopDocWriter() cil managed" />

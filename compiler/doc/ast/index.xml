@@ -220,6 +220,7 @@
       <Type Name="LiteralAttr" Kind="Class" />
       <Type Name="NewSlotAttr" Kind="Class" />
       <Type Name="NoneAttr" Kind="Class" />
+      <Type Name="PartialAttr" Kind="Class" />
       <Type Name="PinvokeImplAttr" Kind="Class" />
       <Type Name="PrivateAttr" Kind="Class" />
       <Type Name="PrototypeAttr" Kind="Class" />
