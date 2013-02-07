@@ -1,14 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/stmtreader.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="test.dyl">
     <Files>
-      <File FileName="dnr/loader.dyl" Line="268" Column="1" />
+      <File FileName="dnr/loader.dyl" Line="208" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="626" Column="1" />
       <File FileName="codegen/eval.dyl" Line="1099" Column="1" />
-      <File FileName="codegen/helpers.dyl" Line="1588" Column="1" />
+      <File FileName="codegen/helpers.dyl" Line="1457" Column="1" />
       <File FileName="codegen/codegenerator.dyl" Line="51" Column="1" />
-      <File FileName="dnc/Mod1.dyl" Line="66" Column="1" />
-      <File FileName="parser/parser.dyl" Line="37" Column="1" />
+      <File FileName="dnc/Mod1.dyl" Line="108" Column="2" />
+      <File FileName="parser/parser.dyl" Line="3" Column="40" />
       <File FileName="parser/stmtoptimizer.dyl" Line="1219" Column="9" />
       <File FileName="parser/tokenoptimizer.dyl" Line="1040" Column="1" />
       <File FileName="codegen/stmtreader.dyl" Line="549" Column="1" />
@@ -16,18 +16,14 @@
       <File FileName="codegen/symtable.dyl" Line="519" Column="1" />
       <File FileName="codegen/milambdas.dyl" Line="41" Column="14" />
       <File FileName="codegen/typeitem.dyl" Line="85" Column="1" />
-      <File FileName="codegen/typelist.dyl" Line="106" Column="1" />
+      <File FileName="codegen/typelist.dyl" Line="26" Column="20" />
       <File FileName="lexer/lexer.dyl" Line="28" Column="1" />
-      <File FileName="test.dyl" Line="59" Column="41" />
+      <File FileName="test.dyl" Line="39" Column="18" />
       <File FileName="dnu/streamu.dyl" Line="26" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="test" expanded="True">
-            <Node name="test.dyl" selected="True" />
-          </Node>
-        </State>
+        <State />
       </Pad>
       <Pad Id="ClassPad">
         <State selected="True" />
@@ -43,7 +39,7 @@
       <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/symtable.dyl" line="198" />
       <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/helpers.dyl" line="545" />
       <Breakpoint file="/var/www/Code/dylannet/compiler/codegen/helpers.dyl" line="568" />
-      <Breakpoint file="/var/www/Code/dylannet/dylandotnet/compiler/codegen/stmtreader.dyl" line="522" />
+      <Breakpoint file="/var/www/Code/dylannet/dylandotnet/compiler/test.dyl" line="43" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

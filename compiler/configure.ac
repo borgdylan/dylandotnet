@@ -15,6 +15,9 @@ AM_CONDITIONAL([DEBUG],[test "x$enable_debug" = "xyes"])
 AC_ARG_ENABLE([net45],[AS_HELP_STRING([--enable-net45],[enables use of .NET 4.5 under CLR v.4 (default is yes)])],[],[enable_net45=yes])
 AM_CONDITIONAL([NET45],[test "x$enable_net45" = "xyes"])
 
+AC_ARG_ENABLE([rx],[AS_HELP_STRING([--enable-rx],[enables use of Rx.NET under .NET 4.5 (default is yes)])],[],[enable_rx=yes])
+AM_CONDITIONAL([RX],[test "x$enable_rx" = "xyes"])
+
 dnl pkg-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
 if test "x$PKG_CONFIG" = "xno"; then

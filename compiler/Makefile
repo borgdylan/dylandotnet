@@ -522,7 +522,6 @@ install: installman
 	$(MAKE) -C 2.0 install
 	$(MAKE) -C 4.0 install
 	$(MAKE) -C dev install
-	$(MAKE) -C m4 install
 
 uninstallman:
 	rm $(DESTDIR)$(mandir)/man1/dylandotnet.1
@@ -537,7 +536,6 @@ uninstall: uninstallman
 	$(MAKE) -C 2.0 uninstall
 	$(MAKE) -C 4.0 uninstall
 	$(MAKE) -C dev uninstall
-	$(MAKE) -C m4 uninstall
 
 clean:
 	$(MAKE) -C tests clean
@@ -573,7 +571,7 @@ all:
 	cat cflags.dyl.in > cflags.dyl
 	echo '#define DEBUG' | tee -a cflags.dyl
 #	echo '#undef NET_4_5' | tee -a cflags.dyl
-
+	echo '#define RX' | tee -a cflags.dyl
 	cp ./lib/4.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 4.0/dnc.exe -V > buildlog4
 	'$(MONO)' 4.0/dnc.exe dnu.dyl | tee -a buildlog4
@@ -626,7 +624,6 @@ testc:
 	$(MAKE) -C 2.0 testc
 	$(MAKE) -C 4.0 testc
 	$(MAKE) -C dev testc
-	$(MAKE) -C m4 testc
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

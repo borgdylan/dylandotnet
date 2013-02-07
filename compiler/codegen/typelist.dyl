@@ -6,6 +6,10 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
+class public auto ansi static partial Helpers
+	method public static prototype IKVM.Reflection.Type CommitEvalTTok(var tt as TypeTok)
+end class
+
 class public auto ansi TypeList
 
 	field public C5.IList<of TypeItem> Types
@@ -179,18 +183,18 @@ class public auto ansi TypeList
 			if mtdinfo = null then
 				mtdinfo = GetMethod(ti::InhTyp,mn,paramst)
 				if mtdinfo = null then
-					//if mn is GenericMethodNameTok then
-					//	var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
-					//	var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
-					//	var i as integer = -1
-					//	do until i = (genparams[l] - 1)
-					//		i = i + 1
-					//		genparams[i] = CETTDelegate::Invoke(gmn::Params[i])
-					//	end do
-					//	mtdinfo = Loader::LoadGenericMethod(ti::InhTyp, nam, genparams, paramst)
-					//else
+					if mn is GenericMethodNameTok then
+						var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
+						var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
+						var i as integer = -1
+						do until i = (genparams[l] - 1)
+							i = i + 1
+							genparams[i] = Helpers::CommitEvalTTok(gmn::Params[i])
+						end do
+						mtdinfo = Loader::LoadGenericMethod(ti::InhTyp, nam, genparams, paramst)
+					else
 						mtdinfo = Loader::LoadMethod(ti::InhTyp, nam, paramst)
-					//end if
+					end if
 				end if
 			end if
 			

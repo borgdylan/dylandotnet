@@ -596,6 +596,8 @@ NUNIT
 MDOC
 MONO
 PKG_CONFIG
+RX_FALSE
+RX_TRUE
 NET45_FALSE
 NET45_TRUE
 DEBUG_FALSE
@@ -682,6 +684,7 @@ enable_option_checking
 enable_maintainer_mode
 enable_debug
 enable_net45
+enable_rx
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1315,6 +1318,8 @@ Optional Features:
   --enable-debug          enables debug symbol making for the compiler
                           (default is yes)
   --enable-net45          enables use of .NET 4.5 under CLR v.4 (default is
+                          yes)
+  --enable-rx             enables use of Rx.NET under .NET 4.5 (default is
                           yes)
 
 Some influential environment variables:
@@ -2435,6 +2440,22 @@ else
 fi
 
 
+# Check whether --enable-rx was given.
+if test "${enable_rx+set}" = set; then :
+  enableval=$enable_rx;
+else
+  enable_rx=yes
+fi
+
+ if test "x$enable_rx" = "xyes"; then
+  RX_TRUE=
+  RX_FALSE='#'
+else
+  RX_TRUE='#'
+  RX_FALSE=
+fi
+
+
 # Extract the first word of "pkg-config", so it can be a program name with args.
 set dummy pkg-config; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -3078,6 +3099,10 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${NET45_TRUE}" && test -z "${NET45_FALSE}"; then
   as_fn_error $? "conditional \"NET45\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${RX_TRUE}" && test -z "${RX_FALSE}"; then
+  as_fn_error $? "conditional \"RX\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 

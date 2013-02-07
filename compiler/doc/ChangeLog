@@ -1,92 +1,157 @@
+2013-02-05  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Committing latest dylan.NET Code:   * Adding "partial" class attribute/modifier   * Add very experimental support for partial classes   * Amending class and method adding messages to reflect
+	  class/method continuation Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2013-02-01  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Committing latest dylan.NET code:   * Finishing method prototype feature.    * Using the latter in Evaluator class to speed up IL emission.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2013-02-01  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Committing latest dylan.NET code:   * Adding support for parsing and reading the 'prototype' method
+	  attribute in codegen.  * Speeding up attribute processing for methods and classes thru the
+	use of foreach.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2013-01-29  Dylan Borg <borgdylan@hotmail.com>
+
+	* : * Allowing a class to call directly inherited generic methods(not
+	ready for all cases) Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2012-12-31  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Committing latest dylan.NET code to GIT:   * Making AttrValuePair extend the Token class.    * Adding ObjInitCallTok class to represent object initializers.    * Adding security checks in eval.dyl when using array syntaxes.    * Using collection inirializers where possible.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2012-12-22  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Committing latest dylandotnet-lzw code:   * Adding new solution files for the lzw library   * Optimizing the lzw code to perform better Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2012-12-22  Dylan Borg <borgdylan@hotmail.com>
+
+	* : * adding more m4 macros Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2012-12-21  Dylan Borg <borgdylan@hotmail.com>
+
+	* : adding m4 script
+
+2012-12-17  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Merge remote-tracking branch 'refs/remotes/myorigin/master'
+
+2012-12-17  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Committing latest dylan.NET code to repo:   * Adding ability to not terminate the program on error      (throws an ErrorException instead)   * Adding ability for explicit implementation of properties       (non-generic interfaces only)   * Handling ErrorException (should TerminateOnError be false) in
+	  dnc Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2012-12-15  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Committing latest dylan.NET code:   * Adding function to get interfaces for a type in Helpers   * Using the latter in the foreach processor   * Amending interface implementation code to enumerate all      actual interfaces that are implemented   * Adding NormalizeInterfaces function to TypeItem Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2012-12-11  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Merge remote-tracking branch 'refs/remotes/myorigin/master'
+
+2012-12-11  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Merge remote-tracking branch 'refs/remotes/myorigin/master'
+
+2012-12-08  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Merge remote-tracking branch 'refs/remotes/myorigin/master'
+
+2012-12-05  Dylan Borg <borgdylan@hotmail.com>
+
+	* : fixing changelog format from git to GNU by using git2cl to
+	convert git logs to GNu ChangeLog
+
 2012-12-04  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET code:   * Outputting an error if a source file is not found   * Handling exceptions in general outputting them as errors
+	* : cleanup of files to catch up to workspace before the git repo
+	  begins to be used as the actual workspace * Forcing recognition of 'add','remove','get','set' only if they
+	occur as the first token in a statement. (allows their use as method
+	names for e.g.)
 
 2012-12-03  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Removing some useless files.
+	* : Commiting latest dylan.NET code to GIT repo:   * bumping version to 11.2.9.9   * updating IKVM.Reflection library   * excluding unused ast files from the compilation   * fixing some token hierarchies in ast(making classes abstract
+	  when needed) * moving VarExpr to its own file   * fixing and enabling custom attributes on the return parameter of
+	  methods * adding tokens in ast model for upcoming lock statement   * adding some codegen code for the latter(not ready)   * changing StreamUtils pseudi events to real .NET events   * cleaning documentation (remove actually non-present members)   * adding unit test license headers
 
-2012-11-24  Dylan Borg <borgdylan@hotmail.com>
+2012-11-19  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest dylan.NET source code. With great joy, this is
-	  dylan.NET v. 11.2.9.8 (final) * Adding experimental support for events.    * Adding experimental support for properties (phase 1/2)   * Adding support for custom attributes on the latter 2.    * Updating man pages for 11.2.9.8 release.    * Adding tarballs for this and the latter releases.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Committing latest dylan.NET code to GIT/BZR:   * Commenting isOp,isLParen,isRParen in eval.dyl (not used)   * Performing some optimisations.    * Implementing SHL and SHR i.e. << and >> (with overloads).    * Enabling overloading of xor,or,and and their not-ted forms.    * Handling catch all case in EmitOp.    * Reverting all PLINQ code to regular LINQ.    * Adding prompt to indicate runtime targeted by the compiler.    * Removing the InstructionHelper class from dnr and optimising     the ILEmitter class.    * Adding LoadUnaOp in loader.dyl toa llow finding of unary
+	  overloads * Fxing StreamUtils (adding Flush calls)   * Adding unit tests for StreamUtils.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2012-11-10  Dylan Borg <borgdylan@hotmail.com>
+2012-10-29  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest dylan.NET source code:   * adding the use of a lock-file during build to facilitate usage
-	  of Jenkins CI * Adding experimental support for applying custom attributes on
-	  method parameters * Adding support for #error and #warning.    * Changing implementation of file lexing/parsing runner in codegen
-	  so that it uses threadpool threading.  * Fixing some statement handlers so that they issue errors when
-	  needed.  * using PLINQ for .NET4.0/4.5 when possible   * adding unit tests for dylan.NET.Utils.ParseUtils (use NUnit) Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Committing latest dylan.NET code to GIT and BZR:   * Adding cflags file for defining compile time flags.    * Adding conditional compiles for AssemblyConfiguration.    * Adding support for '{','}' in AST.    * Adding support for conditional compilation.    * Refactoring some functions so they use is.    * Adding ToString() for AssignOp and AsOp.    * Doing refactorings to increase speed.    * Adding support for debug,net45 options in configure.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2012-10-15  Dylan Borg <borgdylan@hotmail.com>
+2012-10-14  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest files for lzw.dll   * Adding autotools build system for dylan.NET.LZW.    * Adding docs and pkg-config files Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Adding LZW(Lempel-Ziv-Welch) library for .NET/Mono Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2012-10-10  Dylan Borg <borgdylan@hotmail.com>
+2012-10-05  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest dylan.NET code to GIT and BZR.    * Adding built in aliases for import alias.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Committing latest dylan.NET code to GIT (not final 11.2.9.8
+	  release) * Switching main collection uses to C5.    * Bumping ABI version to 11.2.9.8.    * Implementing a C# like "using" alias     but using the import dylan.NET keyword instead.    * Preparing IncludeStmt for threaded lexing/parsing   * Implementing foreach syntax at all levels.    * Adding guards for conversions checking if the destination class
+	  exists.  * Converting use of IEnumerator to foreach   * Switching some SymTable arrays to C5 lists.    * Adding generics + foreach example in tests.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2012-09-23  Dylan Borg <borgdylan@hotmail.com>
+2012-07-23  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest dylan.NET code. This is dylan.NET 11.2.9.7.    * Bundling IKVM.Reflection with source.    * Updating makefiles and man pages.    * Bumping up version numbers to 11.2.9.7.    * Many ABI breaks due to the migration to using IKVM for CodeGen.    * Other ABI breaks due to Gendarme suggested fixes.    * main method of dnc no longer public, use Invoke instead if using
-	  as library.  * Adding support for using custom attributes including the use of
-	  value pairs.  * Adding assemblyinfo.dyl files to the compiler.    * Fixing miscellaneous bugs and increasing efficiency in some
-	  places.  * Adding support for the pseudo type modifier 'static' to make
-	static classes.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Committing dylan.NET 11.2.9.6 to GIT and BZR   * Bumping up versions to 11.2.9.6   * Updating Makefiles and man pages.    * Adding stub dylan.NET.Web files (gnu affero).    * Adding ToString() for many AST classes.    * Separating MethodNameTok and GenericMethodNameTok in another
+	  file.  * Adding support for mybase:: prefix for method calls.    * Adding more error output cases for assignment cases.    * Adding dnr and Helpers modifications for mybase:: prefix
+	  support.  * Adding flag for determining if current context is a constructor.    * Removing some redundant conversions.    * Adding warning that signals redundant conversions.    * Making new codegen API additions better.    * Adding support for access control in TypeList.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2012-07-19  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest dylan.NET code to GIT and BZR. This is
-	  dylan.NET 11.2.9.5 which is another minor release.  * Bumping up assembly versions to 11.2.9.5   * Beginning a new syntax manual in man-page format.    * Updating makefiles and man pages (installs dylandotnet.7 file).    * Updating README.    * Adding constructors for MethodNameTok and GenericMethodNameTok.    * Adding mechanism to make the GenericMethodNameTok and
-	    MethodNameTok from Ident instances (includes operator overloads).    * Adding Path field to StmtSet plus a constructor to set it.    * Continuing Evaluator transition to new APIs.    * Adding new me::ctor alias mybase::ctor .    * Adding helper methods in codegen for numeric type determination.    * Adapting many functions class to use the new string escaping
-	  syntax.  * Fixing a TypeList bug.    * Optimizing ProcessType.    * In dnu, adding IsHexDigit and ProcessString (escaping function) Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
-
-2012-06-27  Dylan Borg <borgdylan@hotmail.com>
-
-	* : Committing latest code to GIT and BZR. This is dylan.NET
-	  11.2.9.4 which is a minor release.  * Beginning 3 phased codegen implementation.    * Transitioning current class member searches to 3 phased format.    * Creating a TypeItem for every created class.    * Adding a TypeList API for querying the assembly being made.    * Refactoring TokenOptimizer in order to speed it up.    * Making ParserFlags an instance class to allow simulataneous
-	  parsing.  * Changing the way the assembly keyword is parsed (diff logic, same
-	  outcomes).  * Adding error detection for constructor invocations.    * Bumping up versions to 11.2.9.4 (internal ABI breaks).  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : renaming debindir-dnide to debiandir-dnide Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2012-05-17  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Committing latest dylan.NET source code to GIT and BZR. With
+	  great joy "This is dylan.NET 11.2.9.3!!!".  * Updating man pages and makefiles.    * Allowing Loader.LoadMethod to treat array types as System.Array.    * Allowing chaining on arrays.    * ABI break in Loader with special method loader returning
+	  IEnumerable<of MethodInfo> * Adding support in loader for finding generic methods.    * Adding support for interface creation and implementation.    * Adding support for explicit implementation of non-generic
+	  interfaces.  * Adding support for implicit implementation of generic/normal
+	  interfaces.  * Adding support for using generic types and methods in code.    * Supporting LINQ to XML, LINQ to Objects, (LINQ to DataSet),
+	  Generic Collections.  * ABI break in SymTable with StoreFlg being the only public field.    * Beginning SymTable transition from arrays to generic
+	  collections.  * Transitioning completely OpStack to use Stack<of Token>   * Adding internal classes in dnr and codegen to support internal
+	  LINQ queries.  * Transitioning operator overload binding to use the Default Binder.    * Implementing a binder for local method/constructor calls.    * Changing vector test sample to implement some generic
+	  interfaces.  * Adding GenericMethodNameTok in AST.    * Adding parsing methods for generic type names and method names.    * ABI break in TokenOptimizer.Optimize, now also needs a
+	  lookahead.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2012-04-22  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Commiting latest dylan.NET code to GIT and BZR. This is
+		dylan.NET v. 11.2.9.1 * Adding support for byref features (ready) 	* Adding support for exception throw/catch 	* Making lexer and parser compile under linux/Mac 	* Updating Makefiles and man pages 	* Bumping assembly versions to 11.2.9.1 Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2012-04-01  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest version of dylan.NET.Collections:   * Adding ToString() for ALList and Item.    * Fixing ALList.AddAll(ALList).    * Refactoring loops in source code.    * Updating makefile.    * Bumping up version to 11.2.8.9 Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting tarballs and debs for dylan.NET 11.2.8.9
 
-2012-04-01  Dylan Borg <borgdylan@hotmail.com>
+2012-02-21  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest dylan.NET code. This is dylan.NET 11.2.8.9 * Refactoring completely dnc,dnr,dnu,ast, and most of codegen.  * Adding support for unsigned nr. literals (load/operate upon) * Adding support for parsing system.decimal literals(no load support
-	yet) * Adding support for parsing byref syntax(codegen not complete) * Adding ToString() to some ast tokens.  * Adding dnr support for instruction selection for byref.  * Adding Microsoft XML Documentation output for docs.  * Adding support for buildlogs in makefiles.  * Updating makefiles and man pages.  * Bumping versions to 11.2.8.9.  * Tested to work on Mono 2.11 Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET source code v.112.8.7   * Adding support for pre/post conditioned loops.    * Adding support for break/continue statements.    * Updating man pages and makefiles.    * Bumping up version to 11.2.8.7 Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2012-02-19  Dylan Borg <borgdylan@hotmail.com>
+2012-02-18  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting dylan.NET 11.2.8.6 with the following changes:   * Adding support for conversion syntax before 'me' and 'null'.    * Fixing internal read permissions detection bug   * Updating man pages.    * Adding 6 more test files to cover latest features.    * Bumping up version to 11.2.8.6 Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Coommiting latest dylan.NET code to repos. This is v. 11.2.8.5.    * Adding support for namespace names enclosed in quotes.    * Adding support for making not inheritable and internal classes.    * Adding support for making internal, protected
+	  fields/methods/constructors.  * Adding support for consuming the above.    * Adding support for making non-overridable methods.    * Updating man pages.    * Bumping up version to 11.2.8.5 Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2012-02-16  Dylan Borg <borgdylan@hotmail.com>
+2012-02-11  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting first code release of dylan.NET IDE (v. 11.2.8.3).
-	Adding the debian directory of the ide and the collections library.
-	Updating tarballs/debs.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Adding the dylandotnet-collections library source
+	code,tarballs,and deb files. These are equal to dylan.NET
+	Collections 11.2.8.5.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2012-02-08  Dylan Borg <borgdylan@hotmail.com>
+2012-02-07  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET code to GIT and BZR. Fixing a bug in
-	the parser that did not detect a chaining case. This is dylan.NET
-	11.2.8.4.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
-
-2012-01-16  Dylan Borg <borgdylan@hotmail.com>
-
-	* : Commiting latest dylan.NET code to GIT and BZR. Adding some
-	error detection for inexistent class.  /variables. Adding #include
-	and #refstdasm statements. Adding downcasting/upcasting support for
-	reference. Adding support for MSYS generated URIson Windows. Adding
-	support for method chaining on method calls that do not occur after
-	an '='. Fixing zero parameter delegation bug. Updating makefiles and
-	debian directory. This is dylan.NET 11.2.8.2.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting the latest version dylan.NET. This is dylan.NET
+	version 11.2.8.3!!! Adding array length getting as well as
+	load/store of elements. Fixing some minor bugs in local method
+	calls. Adding dev programs pc2dylandotnet and pc2curdir. Updating
+	debiandir with latest debian packaging. Updating makefiles and
+	manpages. Adding .pc files for the compiler in dylandotnet.pc and
+	dylandotnet4.pc.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2012-01-02  Dylan Borg <borgdylan@hotmail.com>
 
@@ -95,235 +160,207 @@
 2012-01-02  Dylan Borg <borgdylan@hotmail.com>
 
 	* : Fixing another error in MAC OS/X part of tests build script Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2012-01-02  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Commiting emergency fix for tests Makefile . Updating library
+	finding script for MAC OS/X based systems.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2011-12-23  Dylan Borg <borgdylan@hotmail.com>
 
-	* : fixing 0byte tarball problem by uncompressing and recompressing Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
-
-2011-12-13  Dylan Borg <borgdylan@hotmail.com>
-
-	* : Committing latest dylan.NET code to GIT and BZR. Adding support
-	for delegate creation, delegation of methods and delegate
-	combine/remove using +/- operator overloads. Finishing new array
-	creation syntax. Updating man pages and makefiles. Adding more
-	tests.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting tarballs and debs for v. 11.2.8.1. Packages already
+	available from PPA.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2011-12-01  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET code to GIT and BZR. This is
-	dylan.NET 11.2.7.9. Fixing me prefix bug. Adding ability to use me
-	as a keyword for loading the thi9s pointer as an instance of the
-	current class. Adding ptr expression for getting pointer to a local
-	method(useful in event handling). Adding support for boxing and
-	unboxing thru the use of the conversion syntax. Adding proper way
-	for call handling in case of virtual method call on valuetypes.
-	Adding initial support for array creation. Fixed some bugs and added
-	some attributes. Updating man pages and makefiles. Adding test
-	programs.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Adding tarballs and debs for dylan.NET 112.7.9. Adding
+	dependence of monodoc-base in control file.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2011-11-28  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Comiting latest dylan.NET tarballs and .deb packages. This is
-	dylan.NET 11.2.7.8 .  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : commit deecb9ba9dc70c3bd0d98678c617370e136339e7 Author: Dylan
+	Borg <borgdylan@hotmail.com> Date:   Mon Nov 28 18:50:25 2011 +0100
 
-2011-11-13  Dylan Borg <borgdylan@hotmail.com>
+2011-11-14  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest dylan.NET code to GIT and BZR. Adding
-	StreamUtils and Keyboard classes to dnu. Fixing starg bugs in dnr.
-	Forcing all console outputs to use StreamUtils. Updating manpages
-	and docs.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET tarballs and .deb packages. This is
+	dylan.NET 11.2.7.8 Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2011-11-05  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest dylan.NET source code to GIT and BZR, Adding
-	method chaining, field chaining support. Adding abilty to use
-	current class as type for members and variables. Allowing
-	instantiation of the current class in its own methods. Adding
-	support for return support which actually returns at the point of
-	the statement. Fixing method chain detection regex. Updating docs
-	and man pages. Allowing constructors to be identified by class name
-	not just ctor. This is dylan.NET 11.2.7.7.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest debs and tarballs for 11.2.7.7. Also putting
+	updated debian directory in debiandir.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-09-21  Dylan Borg <borgdylan@hotmail.com>
+2011-10-04  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest dylan.NET code to GIT and BZR. Adding support
-	for gettype and new expressions. Adding operator overloading. Adding
-	more binary operators include the like operator(uses regex).
-	Switching the pattern matching system in the parser to regex.
-	Updating makefile and manpage. Adding new dnu.dll sources.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Committing latest dylan.NET sources. This is dylan.NET
+	11.2.7.6!!! Adding field and method calls with field chanining
+	inside the name for static and instance possibiities. Enabling loads
+	of enum members and constants as if they were static fields. Local
+	field loads are still to be supported in the next release. Adding
+	CLI 4.0 version of the assemblies and thus also updated makefile to
+	install these as well. Moved dnu inside main dnu directory so it can
+	make part of tarballs. Inclusding a copy of the dnr sources in the
+	main directory too for similar reasons. Adding monodoc documentation
+	stubs for all the dylan.NET libraries as well as forcing the
+	makefile to install all such documentation in tarball format.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2011-08-31  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Updating dylan.NET GIT and BZR. Adding complete support for if
-	statements complete with elseif support. Adding support for
-	concatenation of string literals using '+' and comparison of the
-	latter using '==' or '=' the last being legal only in an if
-	statement. Adding more conversion target types and enabling
-	conversion on all tokens that should support it. Adding remova of
-	Makefile,config.status and config.log on tarball make. Updating
-	assemblies and man page to 11.2.7.5 Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Updating changelogs and adding new 11.2.7.5 tarball...uscan can
+	now be used.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2011-08-17  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Committing latest dylan.NET code to GIT and BZR. Adding
+	NullLiteral to AST. Adding parser support for the word null to be
+	used as a literal of type object signifiying a null referernce.
+	Adding ldnull capable dnr library. Fixing bug where method loading
+	without defined variables launches an exception. Adding .NET's VB
+	runtime instead of the Mono one which has some like operator bugs at
+	the moment. Bumping up assembly version to 11.2.7.4.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2011-08-10  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET to GIT and BZR. Updating version
-	numbers on makefile. Adding xnor operator.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Adding latest dylan.NET code to GIT and BZR. Also check latest
+	dnr code. Adding emmision of certain constants, strings and variable
+	store/load instructions. Also enabling some of the operators.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-07-31  Dylan Borg <borgdylan@hotmail.com>
+2011-07-30  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET files to GIT and BZR. Adding partial
-	AST docs. Adding makefile entries to un/intall the latter as the
-	un/installdoc targets which are auto called by un/install.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET code to GIT and BZR. Adding code to
+	ASTEmit function.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-07-18  Dylan Borg <borgdylan@hotmail.com>
+2011-07-11  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET code to GIT and BZR.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET code to GIT and BZR. Makefile from
+	./configure can now make A tarball using "make tarball". Adding
+	tarballs directory with tarballs for packagers. Adding debiandir
+	with pre-mase debian directory files that can help with speedy
+	package making. adding manpage. API changes in liiterals.dyl file of
+	AST.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-07-05  Dylan Borg <borgdylan@hotmail.com>
+2011-07-04  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest dylan.NET code to GIT and BZR. Adding 2
-	methods in Helpers class of codegen lib in order to convert types to
-	a numeric code and back again for using in expr eval. Added some
-	code to evaluator in new method ASTEmit(Token,boolean) Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Committing lates dylan.NET code to GIT and BZR. Fixing method
+	chain bug described on launchpad.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-06-22  Dylan Borg <borgdylan@hotmail.com>
+2011-06-05  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Committing latest dylan.NET code to GIT and BZR. Adding in AST
-	making for expressions that have been made into RPN. Added RChld and
-	LChild fields in Op class to facilitate the latter. Added other code
-	to Evaluator class.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET code to GIT and BZR. Relicensing all
+	the code to LGPLv3(license enclosed in COPYING). Added method chain
+	parsing to ExprOptimizer. Re-organized the source tree. All sources
+	were moved from .txt to .dyl whicha re still text files. This is the
+	extension for all future dylan.NET source code.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-05-31  Dylan Borg <borgdylan@hotmail.com>
+2011-05-11  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET BZR and GIT repos. Adding sources of
-	used mono libraries in mono-class directory. Adding line to export
-	assembly version as unmanaged resource. Inhibiting empty statement
-	addition into StmtSet in Lexer. Preparing components for method
-	chaining. Fixes in AST and Lexer,Parser. Added detections for array
-	accesses in Parser.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET code to GIT and BZR. Adding more
+	native types to the parser detections. Upgraded AST.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-05-04  Dylan Borg <borgdylan@hotmail.com>
+2011-04-25  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET BZR and GIT repos. Adding support for
-	intptr and uinteger types as type tokans and literals in AST. Adding
-	support for intptr and uinteger literals and type tokens to be
-	detected by the parser. Switching System.Type obtainment method to
-	dylan.NET.Tokenizer.CodeGen.Helpers.CommitEvalTTok(TypeTok).  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Adding ShlOp and ShrOp to AST components. Adding detections for
+	<< and >> in Parser components.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-04-24  Dylan Borg <borgdylan@hotmail.com>
+2011-04-23  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Adding licensing info as COPYING file. Switiching to GNU GPLv2
-	license.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
-
-2011-04-09  Dylan Borg <borgdylan@hotmail.com>
-
-	* : Commiting latest code to GIT and BZR. Bug in dnr got fixed and
-	is part of the new compiler. Verified to work on .NET and Mono VMs.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET code to GIT and BZR repositories.
+	Adding partial debug support. Adding classes to support symbol
+	table. Adding latest dnr.dll.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2011-04-03  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET GIT and BZR repos. Exporting
-	InstructionHelper to dnr. Adding more processors in Helpers to aid
-	field and method emission. Adding FieldStmt and MethodStmt
-	detections in StmtReader. Adding FieldStmt creations in Parser.
-	Completed field and method making. This is dylan.NET 11.2.5.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-04-01  Dylan Borg <borgdylan@hotmail.com>
+2011-04-02  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Updating GOT and BZR repos with all the latest code. Giving
-	AsmFactory to dnr(latest binaries enclosed in dylan.NET). Adding
-	more StmtReader detections to handle class and end class stataments.
-	Adding capabailty of saving assembly to disk.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET GIT and BZR repos. Fixing bug in
+	Parser. Adding ability of making nested classes. Adding lexer
+	modification to treat [] as one token instead of 2. This change
+	still has to be echoed in the ast and parser.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-03-25  Dylan Borg <borgdylan@hotmail.com>
+2011-03-30  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET code to repos. Updating codegen
-	detections for assembly stmt as well as adding support for thr debug
-	statment(just detections-does not work for now). Also
-	dylan.NET.Reflection is now being used as the reflection library.
-	The code was before in the codegen dll but has been given its own
-	project.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET GIT and BZR repos. This is a bug fix
+	revision. Has fixed dnr from dnr repo.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-02-22  Dylan Borg <borgdylan@hotmail.com>
+2011-03-22  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET code to GIT and BZR repos. Adding
-	StmtReader detection for assembly and ver statements and their
-	handlers.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Updating dylan.NET BZR and GIT repos.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-02-05  Dylan Borg <borgdylan@hotmail.com>
+2011-02-20  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET code repo to GIT and BZR. Adding
-	these classes to CodeGEN module: COdeGenerator-the main class of the
-	module,Importer-in charge of keeping imported dlls and namespaces
-	and StmtREader - in charge of interpreting statement(currently can
-	interpret #refasm and can load dlls). This distro has been confirmed
-	to work on Win32 and on Linux.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET repo to GIT and BZR. Adding namespace
+	import capability to StmtReader in codegen. Adding Loader class to
+	codegen. Tested on win32 under .NET and Mono 2.10. This is dylan.NET
+	v. 11.2.4.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2011-01-02  Dylan Borg <borgdylan@hotmail.com>
+2011-01-04  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting version 11.2.3 of dylan.NET codenamed 'nest' to GIT
-	and BZR repos. Adding BooleanLiteral class in AST. Updating all
-	literal classes in AST. Updating TokenOptimizer to support the
-	keywords true and false as boolean literals. Updating ExprOptimizer
-	to support literal tokens. Fixing bugs in all modules. Doing a
-	little update on manual files.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET repo to GIT and BZR. Adding first
+	codegen files. Shifting build meethod from msbuild to gnu make.
+	Adding InstructionHelper class in codgen module.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2011-01-01  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Commiting latest dylan.NET into GIT and BZR repos. Adding method
+	call detection in right expressions for assignment statements.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2010-12-31  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET GIT and BZR repos. Adding
-	condensation code for conversions in assignment stataments.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Adding latest dylan.NET code to GIT and BZR repos. Fixing
+	ParserFlags and adding some code to ExprOptimizer.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2010-12-06  Dylan Borg <borgdylan@hotmail.com>
+2010-11-26  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Updating dylan.NET GIT and BZR repos. Adding parser flags in
-	ParserFlags Static Class. This will be used by teh Expression
-	Optimizer.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting lates dylan.NET repo on GIT and BZR. Fixing bug in old
+	compiler. Modifying Lexer of new compiler to use StreamReader as
+	Input.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2010-11-14  Dylan Borg <borgdylan@hotmail.com>
+2010-10-31  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting Latest GIT and BZR(Launchpad) repos for dylan.NET.
-	Adding detections for Method calls as a statement. Expression
-	optimization only remains in order to complete the basic parser.
-	More extensions in the future.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
-
-2010-10-30  Dylan Borg <borgdylan@hotmail.com>
-
-	* : Updating all compiler assembly versions to 11.1.2. This equal to
-	release 11.1.2 on launchpad. Also updating doc files.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET GIT repo(available as BZR from
+	LaunchPad). Adding detection for method and class ending statements,
+	comment statements. Adding CommentStmt class to AST components.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2010-10-30  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET source into GIT repo. Adding really
-	basic method statement detections. Note that this repo is also
-	available at Launchpad.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest dylan.NET GIT repo )also cloned to BZR on
+	LaunchPad). Fixing bug in TokenOptimizer(see LaunchPad bug reports).
+	Adding ExprOptimizer class with parameter expression detection.
+	Finalising Method statement detection in StmtOptimizer. Modified
+	AST. Edited MethodStmt by removing ParamTyps field and associated
+	code (shall incorpated iin the parameter expression in future)
+	System verified to be working under .NET 3.5 SP1 and Mono 2.6.7.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+
+2010-10-09  Dylan Borg <borgdylan@hotmail.com>
+
+	* : Commiting latest dylan.NET git repo now with full sources +
+	binaries for sld.dll and dnu.dll now all under the dylan.NET.*
+	namespace. Please note that sld only has shared libs for win32 and
+	linux bundled.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2010-10-08  Dylan Borg <borgdylan@hotmail.com>
 
-	* : This is the latest dylan.NET git repo. Updates to the general
-	namespaces have been made with the namespace "dylan.NET.*" being
-	used as the root namespace. A new dylan.NET manual written in LYX is
-	available as .lyx,.ps,.dvi and .pdf.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : removing everything from repo. please WAIT  for a new rep
+	containin the latest updated packages, Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2010-09-14  Dylan Borg <borgdylan@hotmail.com>
+2010-09-12  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Adding html version of monodoc documentation files. Who wants to
-	help on the documentation effort is welcome. Also updating bundled
-	Microsoft.VisualBasic.dll from monocharge 14-Sep-10.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Adding empty monodoc skeletons for the whole new compiler.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2010-09-06  Dylan Borg <borgdylan@hotmail.com>
+2010-08-31  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting update to the new compiler. Adding detection for the
-	class statement. Also replaced vb runtime library with the latest
-	one from mono.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Commiting latest repo for dylan.NET. Replacing old
+	Microsoft.VisualBasic.dll with new one from MonoCharge archive of 31
+	Aug 2010.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
 2010-08-28  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET  GIT repo to gitorious. Adding
-	detection for Locimport, Var As, Var As Assign and Assembly
-	statements.  Modified greeting to say version 11.1.2 instead of
-	11.1. Tested on .NET and Mono Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
+	* : Bugfixes to old compiler made.  Signed-off-by: Dylan Borg <borgdylan@hotmail.com>
 
-2010-08-25  unknown <borgdylan@hotmail.com>
+2010-08-23  Dylan Borg <borgdylan@hotmail.com>
 
-	* : Commiting latest dylan.NET code to GIT repo. Added detection for
-	#refasm, import and assign statements
+	* dylan.NET new and old compiler
 

@@ -199,5 +199,6 @@
     <None Include="m4\dylandotnet.m4" />
     <None Include="dev\Makefile.am" />
     <None Include="codegen\collectionitem.dyl" />
+    <None Include="cflags.dyl.in" />
   </ItemGroup>
 </Project>

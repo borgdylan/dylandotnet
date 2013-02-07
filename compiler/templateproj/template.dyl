@@ -21,6 +21,7 @@ import System.Collections.Generic
 import SCGIE = System.Collections.Generic.IEnumerable
 import SCG = System.Collections.Generic
 import System.Threading
+import System.Threading.Tasks
 import template
 
 #debug on
@@ -541,6 +542,9 @@ class public auto ansi Program
 		foreach o in new OTT()
 			Console::WriteLine(o)
 		end for
+		
+		var ao as object = new integer[] {1,2,3}
+		var ai as integer[] = $integer[]$ao
 	end method
 
 end class

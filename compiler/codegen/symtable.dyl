@@ -224,11 +224,6 @@ class public auto ansi static SymTable
 	end method
 	
 	[method: ComVisible(false)]
-	method public static void AddAsmCA(var ca as CustomAttributeBuilder)
-		AssemblyCALst::Add(ca)
-	end method
-	
-	[method: ComVisible(false)]
 	method public static void AddParamCA(var ind as integer,var ca as CustomAttributeBuilder)
 		if Enumerable::Contains<of integer>(ParameterCALst::get_Keys(),ind) == false then
 			ParameterCALst::Add(ind, new C5.LinkedList<of CustomAttributeBuilder>())

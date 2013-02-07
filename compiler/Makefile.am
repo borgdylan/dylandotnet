@@ -20,7 +20,6 @@ install: installman
 	$(MAKE) -C 2.0 install
 	$(MAKE) -C 4.0 install
 	$(MAKE) -C dev install
-	$(MAKE) -C m4 install
 	
 uninstallman:
 	rm $(DESTDIR)$(mandir)/man1/dylandotnet.1
@@ -35,7 +34,6 @@ uninstall: uninstallman
 	$(MAKE) -C 2.0 uninstall
 	$(MAKE) -C 4.0 uninstall
 	$(MAKE) -C dev uninstall
-	$(MAKE) -C m4 uninstall
 
 clean:
 	$(MAKE) -C tests clean
@@ -76,7 +74,9 @@ if NET45
 else
 	echo '#undef NET_4_5' | tee -a cflags.dyl
 endif
-	
+if RX
+	echo '#define RX' | tee -a cflags.dyl
+endif
 	cp ./lib/4.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 4.0/dnc.exe -V > buildlog4
 	'$(MONO)' 4.0/dnc.exe dnu.dyl | tee -a buildlog4
@@ -129,5 +129,4 @@ testc:
 	$(MAKE) -C 2.0 testc
 	$(MAKE) -C 4.0 testc
 	$(MAKE) -C dev testc
-	$(MAKE) -C m4 testc
 

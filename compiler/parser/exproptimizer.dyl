@@ -675,6 +675,7 @@ class public auto ansi ExprOptimizer
 
 				if tok is TypeTok then
 					if PFlags::DurConvFlag then
+						exp = procType(exp,i)
 						PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
 						exp::RemToken(i)
 						i = i - 1

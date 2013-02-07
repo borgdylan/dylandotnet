@@ -105,5 +105,18 @@ class public auto ansi static Program
 		StreamUtils::TerminateOnError = false
 		main(args)
 	end method
+	
+	#if NET_4_0 then
+	
+		method private static void InvokeAsyncWrapper(var args as object)
+			Invoke($String[]$args)
+		end method
+	
+		[method: ComVisible(false)]
+		method public static Task InvokeAsync(var args as string[])
+			return Task::get_Factory()::StartNew(new Action<of object>(InvokeAsyncWrapper()),args)
+		end method
+	
+	end #if
 
 end class

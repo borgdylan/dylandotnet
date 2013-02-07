@@ -1,12 +1,12 @@
 #refstdasm "mscorlib.dll"
 #refstdasm "System.Xml.dll"
-#refasm "dnc.exe"
-#refasm "dnr.dll"
-#refasm "tests/protectedtests.exe"
-#refasm "tokenizer.Lexer.dll"
-#refasm "tokenizer.CodeGen.dll"
-#refasm "tokenizer.Parser.dll"
-#refasm "tokenizer.AST.dll"
+#refasm "4.0/dnc.exe"
+//#refasm "dnr.dll"
+//#refasm "tests/protectedtests.exe"
+//#refasm "tokenizer.Lexer.dll"
+//#refasm "tokenizer.CodeGen.dll"
+//#refasm "tokenizer.Parser.dll"
+//#refasm "tokenizer.AST.dll"
 
 import System
 import System.IO
@@ -14,6 +14,7 @@ import System.Xml
 import System.Reflection.Emit
 import System.Xml.Serialization
 import System.Reflection
+import System.Threading.Tasks
 import dylan.NET.Reflection
 import dylan.NET.Compiler
 import dylan.NET.Tokenizer.Lexer
@@ -33,10 +34,13 @@ ver 1.3.0.0
 class public auto ansi Program
 
 	method public static void main()
-		Environment::set_CurrentDirectory("/var/www/Code/dylannet/dylandotnet/compiler/templateproj")
-		var arr as string[] = new string[1]
-		arr[0] = "template.dyl"
+		Environment::set_CurrentDirectory("/var/www/Code/dylannet/dylandotnet/compiler")
+		var arr as string[] = new string[] {"tokenizer.CodeGen.dyl"}
 		Program::Invoke(arr)
+		//var t as Task = Program::InvokeAsync(arr)
+		//Console::ReadLine()
+		//Console::WriteLine($object$t::get_Status())
+		//t::Wait()
 		//var ln as Line = new Line()
 		//var st as Stmt = ln::Analyze(new Stmt(),"x = Array::BinarySearch(new integer[2],12)")
 		//var exp as Expr = new Expr()

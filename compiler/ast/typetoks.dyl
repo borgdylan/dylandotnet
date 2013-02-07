@@ -11,14 +11,12 @@ class public auto ansi TypeTok extends Token implements ICloneable
 	field public boolean IsArray
 	field public boolean IsByRef
 	field public IKVM.Reflection.Type RefTyp
-	//field public string OrdOp
 
 	method public void TypeTok()
 		me::ctor()
 		IsArray = false
 		IsByRef = false
 		RefTyp = null
-		//OrdOp = ""
 	end method
 
 	method public void TypeTok(var value as string)
@@ -26,7 +24,6 @@ class public auto ansi TypeTok extends Token implements ICloneable
 		IsArray = false
 		IsByRef = false
 		RefTyp = null
-		//OrdOp = ""
 	end method
 
 	method public void TypeTok(var value as IKVM.Reflection.Type)
@@ -41,11 +38,10 @@ class public auto ansi TypeTok extends Token implements ICloneable
 		end if
 		RefTyp = value
 		Value = value::ToString()
-		//OrdOp = ""
 	end method
 	
 	method public hidebysig virtual TypeTok CloneTT()
-		var tt as TypeTok = new TypeTok()
+		var tt as TypeTok = new TypeTok(Value)
 		tt::IsArray = IsArray
 		tt::IsByRef = IsByRef
 		tt::RefTyp = RefTyp
@@ -85,7 +81,7 @@ class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 	end method
 	
 	method public hidebysig virtual TypeTok CloneTT()
-		var tt as GenericTypeTok = new GenericTypeTok()
+		var tt as GenericTypeTok = new GenericTypeTok(Value)
 		tt::IsArray = IsArray
 		tt::IsByRef = IsByRef
 		tt::RefTyp = RefTyp

@@ -3,284 +3,264 @@
         <name>tokenizer.Parser</name>
     </assembly>
     <members>
-        <member name="T:dylan.NET.Tokenizer.Parser.ExprOptimizer">
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.Parser.ExprOptimizer()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.Parser.ExprOptimizer(dylan.NET.Tokenizer.Parser.Flags)">
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer..ctor">
             <param name="pf">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.Optimize(dylan.NET.Tokenizer.AST.Exprs.Expr)">
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.Optimize">
             <param name="exp">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.ExprOptimizer.PFlags">
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.PFlags">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procIdentArrayAccess(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.procIdentArrayAccess">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procMethodCall(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.procMethodCall">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procMtdArrayAccess(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.procMtdArrayAccess">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procMtdName(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.procMtdName">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procNewCall(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.procNewCall">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procType(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.procType">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.Parser.Flags">
+        <member name="dylan.NET.Tokenizer.Parser.Flags..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.Parser.Flags()">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.ArrFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.ArrFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.ArrSlot">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.ArrSlot">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.AsFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.AsFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.CmtFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.CmtFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.ConvFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.ConvFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.ConvTyp">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.ConvTyp">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.CurPath">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.CurPath">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.DurConvFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.DurConvFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.IdentFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.IdentFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.IfFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.IfFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.isChanged">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.isChanged">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.MetCallFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.MetCallFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.MetChainFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.MetChainFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.NegFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.NegFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.NoOptFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.NoOptFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.NotFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.NotFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.OrdOp">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.OrdOp">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.ProcessTTokOnly">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.ProcessTTokOnly">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.RefFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.RefFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.SetUnaryFalse">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.Flags.SetUnaryFalse()">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.StringFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.StringFlag">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.Flags.UpdateBoolLit(dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral)">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.UpdateBoolLit">
             <param name="id">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.Flags.UpdateCharLit(dylan.NET.Tokenizer.AST.Tokens.Literals.CharLiteral)">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.UpdateCharLit">
             <param name="id">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.Flags.UpdateIdent(dylan.NET.Tokenizer.AST.Tokens.Ident)">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.UpdateIdent">
             <param name="id">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.Flags.UpdateMeTok(dylan.NET.Tokenizer.AST.Tokens.MeTok)">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.UpdateMeTok">
             <param name="id">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.Flags.UpdateNullLit(dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral)">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.UpdateNullLit">
             <param name="id">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.Flags.UpdateNumLit(dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral)">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.UpdateNumLit">
             <param name="id">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.Flags.UpdateStringLit(dylan.NET.Tokenizer.AST.Tokens.Literals.StringLiteral)">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.UpdateStringLit">
             <param name="id">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.ValinrefFlag">
+        <member name="dylan.NET.Tokenizer.Parser.Flags.ValinrefFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.Parser.Parser">
+        <member name="dylan.NET.Tokenizer.Parser.Parser..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.Parser.Parser()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.Parser.Parser(dylan.NET.Tokenizer.Parser.Flags)">
+        <member name="dylan.NET.Tokenizer.Parser.Parser..ctor">
             <param name="pf">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.Parser.Parse(dylan.NET.Tokenizer.AST.Stmts.StmtSet)">
+        <member name="dylan.NET.Tokenizer.Parser.Parser.Parse">
             <param name="stms">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Parser.PFlags">
+        <member name="dylan.NET.Tokenizer.Parser.Parser.PFlags">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.Parser.StmtOptimizer">
+        <member name="dylan.NET.Tokenizer.Parser.StmtOptimizer..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.Parser.StmtOptimizer()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.Parser.StmtOptimizer(dylan.NET.Tokenizer.Parser.Flags)">
+        <member name="dylan.NET.Tokenizer.Parser.StmtOptimizer..ctor">
             <param name="pf">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.Optimize(dylan.NET.Tokenizer.AST.Stmts.Stmt)">
+        <member name="dylan.NET.Tokenizer.Parser.StmtOptimizer.Optimize">
             <param name="stm">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.StmtOptimizer.PFlags">
+        <member name="dylan.NET.Tokenizer.Parser.StmtOptimizer.PFlags">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.Parser.TokenOptimizer">
+        <member name="dylan.NET.Tokenizer.Parser.TokenOptimizer..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.Parser.TokenOptimizer()">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.Parser.TokenOptimizer(dylan.NET.Tokenizer.Parser.Flags)">
+        <member name="dylan.NET.Tokenizer.Parser.TokenOptimizer..ctor">
             <param name="pf">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.TokenOptimizer.GenLvl">
+        <member name="dylan.NET.Tokenizer.Parser.TokenOptimizer.GenLvl">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.TokenOptimizer.isFirstToken">
+        <member name="dylan.NET.Tokenizer.Parser.TokenOptimizer.isFirstToken">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.TokenOptimizer.Optimize(dylan.NET.Tokenizer.AST.Tokens.Token,dylan.NET.Tokenizer.AST.Tokens.Token)">
+        <member name="dylan.NET.Tokenizer.Parser.TokenOptimizer.Optimize">
             <param name="tok">To be added.</param>
             <param name="lkahead">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.TokenOptimizer.PFlags">
+        <member name="dylan.NET.Tokenizer.Parser.TokenOptimizer.PFlags">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
