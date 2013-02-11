@@ -544,7 +544,7 @@ class public auto ansi Program
 		end for
 		
 		var ao as object = new integer[] {1,2,3}
-		var ai as integer[] = $integer[]$ao
+		var ai = $integer[]$ao
 	end method
 
 end class

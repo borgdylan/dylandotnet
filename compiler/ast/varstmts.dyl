@@ -33,3 +33,16 @@ class public auto ansi VarAsgnStmt extends Stmt
 	end method
 
 end class
+
+class public auto ansi InfVarAsgnStmt extends Stmt
+
+	field public Ident VarName
+	field public Expr RExpr
+
+	method public void InfVarAsgnStmt()
+		me::ctor()
+		VarName = new Ident()
+		RExpr = new Expr()
+	end method
+
+end class

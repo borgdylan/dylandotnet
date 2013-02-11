@@ -179,6 +179,23 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EvaluateType">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type EvaluateType (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.Type EvaluateType(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="exp" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
+      </Parameters>
+      <Docs>
+        <param name="exp">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RetPrec">
       <MemberSignature Language="C#" Value="public static int RetPrec (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
       <MemberSignature Language="ILAsm" Value=".method public static int32 RetPrec(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />

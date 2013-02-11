@@ -1899,140 +1899,109 @@ class public auto ansi StmtOptimizer
 		end method
 	
 	method private Stmt AssOpt(var stm as Stmt)
-	
-	var asss as AssignStmt = $AssignStmt$stm
-	var le as Expr = asss::LExp
-	var tok as Token = le::Tokens::get_Item(0)
-	var typ as Type = gettype VarTok
-	var b as boolean = typ::IsInstanceOfType(tok)
-	var vass as VarAsgnStmt = new VarAsgnStmt()
-	if b  then
-	vass::Tokens = asss::Tokens
-	vass::Line = asss::Line
-	vass::VarName = $Ident$le::Tokens::get_Item(1)
-	
-	var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-	
-	var tempexp as Expr = new Expr()
-	tempexp::Tokens = le::Tokens
-	tempexp = eop::procType(tempexp,3)
-	le::Tokens = tempexp::Tokens
-	
-	vass::VarTyp = $TypeTok$le::Tokens::get_Item(3)
+		var asss as AssignStmt = $AssignStmt$stm
+		var le as Expr = asss::LExp
 		
-	vass::RExpr = asss::RExp
-	vass::RExpr = eop::Optimize(vass::RExpr)
-	
-	return vass
-	else
-	return stm
-	end if
-	
+		if le::Tokens::get_Count() >= 4 then
+			var vass as VarAsgnStmt = new VarAsgnStmt()
+			if (le::Tokens::get_Item(0) is VarTok) and (le::Tokens::get_Item(2) is AsTok) then
+				vass::Tokens = asss::Tokens
+				vass::Line = asss::Line
+				vass::VarName = $Ident$le::Tokens::get_Item(1)
+				
+				var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+				
+				var tempexp as Expr = new Expr()
+				tempexp::Tokens = le::Tokens
+				tempexp = eop::procType(tempexp,3)
+				le::Tokens = tempexp::Tokens
+				
+				vass::VarTyp = $TypeTok$le::Tokens::get_Item(3)
+					
+				vass::RExpr = asss::RExp
+				vass::RExpr = eop::Optimize(vass::RExpr)
+				
+				return vass
+			else
+				return stm
+			end if
+		elseif le::Tokens::get_Count() >= 2 then
+			var vass as InfVarAsgnStmt = new InfVarAsgnStmt()
+			if le::Tokens::get_Item(0) is VarTok then
+				vass::Tokens = asss::Tokens
+				vass::Line = asss::Line
+				vass::VarName = $Ident$le::Tokens::get_Item(1)
+				
+				var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+				vass::RExpr = asss::RExp
+				vass::RExpr = eop::Optimize(vass::RExpr)
+				
+				return vass
+			else
+				return stm
+			end if
+		else
+			return stm
+		end if
 	end method
 	
 	method private Stmt checkAssign(var stm as Stmt, var b as boolean&)
-	var tok as Token = null
-	var typ as Type = gettype AssignOp
-	var asss as AssignStmt = new AssignStmt()
-	var c as boolean = false
-	var re as Expr = new Expr()
-	var le as Expr = new Expr()
-	var i as integer = -1
-	var len as integer = stm::Tokens::get_Count() - 1
-	var assind as integer = 0
-	
-	label loop
-	label cont
-	
-	place loop
-	
-	i = i + 1
-	
-	tok = stm::Tokens::get_Item(i)
-	c = typ::IsInstanceOfType(tok)
-	
-	if c then
-	assind = i
-	goto cont
-	end if
-	
-	if i = len then
-	goto cont
-	else 
-	goto loop
-	end if
-	
-	place cont
-	
-	if assind <> 0 then
-	
-	i = -1
-	len = assind - 1
-	
-	label loop2
-	label cont2
-	
-	place loop2
-	
-	i = i + 1
-	
-	le::AddToken(stm::Tokens::get_Item(i))
-	
-	if i = len then
-	goto cont2
-	else
-	goto loop2
-	end if
-	
-	place cont2
-	
-	
-	i = assind
-	len = stm::Tokens::get_Count() - 1
-	
-	label loop3
-	label cont3
-	
-	place loop3
-	
-	i = i + 1
-	
-	re::AddToken(stm::Tokens::get_Item(i))
-	
-	if i = len then
-	goto cont3
-	else
-	goto loop3
-	end if
-	
-	place cont3
-	
-	asss::Line = stm::Line
-	asss::Tokens = stm::Tokens
-	asss::LExp = le
-	asss::RExp = re
-	
-	b = true
-	
-	var asss2 as Stmt = AssOpt(asss)
-	var vasst as Type = gettype VarAsgnStmt
-	if vasst::IsInstanceOfType(asss2) = false then
-		var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-		re = eop::Optimize(re)
-		le = eop::Optimize(le)
-		asss::LExp = le
-		asss::RExp = re
-		return asss
-	else
-		return asss2
-	end if
-	
-	else
-	b = false
-	return stm
-	
-	end if
-	
+		var asss as AssignStmt = new AssignStmt()
+		var re as Expr = new Expr()
+		var le as Expr = new Expr()
+		var i as integer = -1
+		var len as integer = stm::Tokens::get_Count() - 1
+		var assind as integer = 0
+		
+		do until i = len
+			i = i + 1
+			if stm::Tokens::get_Item(i) is AssignOp then
+				assind = i
+				break
+			end if
+		end do
+		
+		if assind != 0 then
+		
+			i = -1
+			len = assind - 1
+			
+			do until i = len
+				i = i + 1
+				le::AddToken(stm::Tokens::get_Item(i))
+			end do
+			
+			i = assind
+			len = stm::Tokens::get_Count() - 1
+			
+			do until i = len
+				i = i + 1
+				re::AddToken(stm::Tokens::get_Item(i))
+			end do
+			
+			asss::Line = stm::Line
+			asss::Tokens = stm::Tokens
+			asss::LExp = le
+			asss::RExp = re
+			
+			b = true
+			
+			var asss2 as Stmt = AssOpt(asss)
+			if (asss2 is VarAsgnStmt) or (asss2 is InfVarAsgnStmt) then
+				return asss2
+			else
+				var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+				re = eop::Optimize(re)
+				le = eop::Optimize(le)
+				asss::LExp = le
+				asss::RExp = re
+				return asss
+			end if
+		
+		else
+			b = false
+			return stm
+		end if
 	end method
 	
 	method public Stmt Optimize(var stm as Stmt)

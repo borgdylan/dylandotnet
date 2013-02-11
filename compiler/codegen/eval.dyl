@@ -1115,6 +1115,13 @@ class public auto ansi beforefieldinit Evaluator
 		ASTEmit(asttok, false)
 		ASTEmit(asttok, true)
 	end method
+	
+	method public IKVM.Reflection.Type EvaluateType(var exp as Expr)
+		var asttok as Token = ConvToAST(ConvToRPN(exp))
+		Helpers::NullExprFlg = asttok is NullLiteral
+		ASTEmit(asttok, false)
+		return AsmFactory::Type02
+	end method
 
 	method public void StoreEmit(var tok as Token, var exp as Expr)
 

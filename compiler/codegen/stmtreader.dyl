@@ -638,7 +638,14 @@ class public auto ansi StmtReader
 			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 			eval = new Evaluator()
 			eval::StoreEmit(curva::VarName, curva::RExpr)
-			//SymTable::ResetUsed(curva::VarName::Value)
+		elseif stm is InfVarAsgnStmt then
+			var curva as InfVarAsgnStmt = $InfVarAsgnStmt$stm
+			eval = new Evaluator()
+			vtyp = eval::EvaluateType(curva::RExpr)
+			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
+			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+			eval::StoreEmit(curva::VarName, curva::RExpr)
 		elseif stm is NSStmt then
 			var nss as NSStmt = $NSStmt$stm
 			if nss::NS::Value like c"^\q(.)*\q$" then

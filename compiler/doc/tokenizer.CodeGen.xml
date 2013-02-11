@@ -109,6 +109,12 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.Evaluator.EvaluateType">
+            <param name="exp">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.Evaluator.RetPrec">
             <param name="tok">To be added.</param>
             <summary>To be added.</summary>
