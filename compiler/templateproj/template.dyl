@@ -414,7 +414,7 @@ class public auto ansi Program
 			Console::WriteLine(dt::ToString())
 		end for
 		Console::WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~")
-		foreach dt in tl::Backwards()
+		foreach dt in tl::Backwards()::GetEnumerator()
 			Console::WriteLine(dt::ToString())
 		end for
 		

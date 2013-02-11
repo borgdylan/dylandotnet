@@ -1584,6 +1584,8 @@ class public auto ansi static Helpers
 		return ci
 	end method
 	
+	
+	//for IEnumerable<of T>
 	[method: ComVisible(false)]
 	method public static MethodInfo[] ProcessForeach(var t as IKVM.Reflection.Type)
 		var arr as MethodInfo[] = new MethodInfo[3]
@@ -1634,6 +1636,52 @@ class public auto ansi static Helpers
 		
 		return arr
 	end method
-
+	
+	//for IEnumerator<of T>
+	[method: ComVisible(false)]
+	method public static MethodInfo[] ProcessForeach2(var t as IKVM.Reflection.Type)
+		var ie as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype IEnumerator`1)
+		var ie2 as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype IEnumerator)
+		var ie3 as IKVM.Reflection.Type = null
+		var flgs as boolean[] = new boolean[] {false, false}
+		
+		if t::get_IsGenericType() then
+			if ie::Equals(t::GetGenericTypeDefinition()) then
+				flgs[0] = true
+				ie3 = t
+			end if
+		else
+			if ie2::Equals(t) then
+				flgs[1] = true
+			end if
+		end if
+		
+		if flgs[0] then
+		elseif flgs[1] then
+			ie3 = ie2
+		else
+			foreach interf in GetTypeInterfaces(t)
+				if interf::get_IsGenericType() then
+					if ie::Equals(interf::GetGenericTypeDefinition()) then
+						flgs[0] = true
+						ie3 = interf
+					end if
+				else
+					if ie2::Equals(interf) then
+						flgs[1] = true
+					end if
+				end if
+			end for
+			
+			if flgs[0] then
+			elseif flgs[1] then
+				ie3 = ie2
+			else
+				return null
+			end if
+		end if
+		
+		return new MethodInfo[] {Loader::LoadMethod(ie3, "MoveNext", IKVM.Reflection.Type::EmptyTypes), Loader::LoadMethod(ie3, "get_Current", IKVM.Reflection.Type::EmptyTypes)}
+	end method
 
 end class

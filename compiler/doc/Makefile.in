@@ -344,13 +344,13 @@ uninstall-am:
 .PHONY: all
 
 all:
-	'$(MDOC)' update --delete -fno-assembly-versions -o ast ../tokenizer.AST.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o lexer ../tokenizer.Lexer.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o parser ../tokenizer.Parser.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o codegen ../tokenizer.CodeGen.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o dnu ../dnu.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o dnr ../dnr.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o dnc ../dnc.exe
+	'$(MDOC)' update --delete -fno-assembly-versions -o ast ../4.0/tokenizer.AST.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o lexer ../4.0/tokenizer.Lexer.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o parser ../4.0/tokenizer.Parser.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o codegen ../4.0/tokenizer.CodeGen.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnu ../4.0/dnu.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnr ../4.0/dnr.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnc ../4.0/dnc.exe
 
 	'$(MDOC)' export-html -o ast-html ast
 	'$(MDOC)' export-html -o lexer-html lexer

@@ -75,7 +75,7 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing --run 
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.9\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.9\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.9\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.3.1.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.3.1.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.3.1.1\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
@@ -100,10 +100,10 @@ NUNITPC_LIBS = -r:/usr/lib/cli/nunit.core-2.6/nunit.core.dll -r:/usr/lib/cli/nun
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.9.9
+PACKAGE_STRING = dylandotnet 11.3.1.1
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.9.9
+PACKAGE_VERSION = 11.3.1.1
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
@@ -111,7 +111,7 @@ PKG_CONFIG_PATH =
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.9.9
+VERSION = 11.3.1.1
 abs_builddir = /var/www/Code/dylannet/dylandotnet/compiler/dev
 abs_srcdir = /var/www/Code/dylannet/dylandotnet/compiler/dev
 abs_top_builddir = /var/www/Code/dylannet/dylandotnet/compiler
@@ -343,22 +343,29 @@ all:
 	'$(MONO)' ../2.0/dnc.exe -V > buildlog
 	'$(MONO)' ../2.0/dnc.exe pc2dn.dyl | tee -a buildlog
 	'$(MONO)' ../2.0/dnc.exe pc2cd.dyl | tee -a buildlog
+	'$(MONO)' ../2.0/dnc.exe nuget2dn.dyl | tee -a buildlog
 
 prodscript:
 	sed -e "s|\@libdir\@|$(libdir)|g" \
 	    -e "s|\@MONO\@|$(MONO)|g" pc2curdir.in > pc2curdir
 	sed -e "s|\@libdir\@|$(libdir)|g" \
 	    -e "s|\@MONO\@|$(MONO)|g" pc2dylandotnet.in > pc2dylandotnet
+	sed -e "s|\@libdir\@|$(libdir)|g" \
+	    -e "s|\@MONO\@|$(MONO)|g" nuget2dylandotnet.in > nuget2dylandotnet
 
 install: prodscript 
 	$(install_sh_PROGRAM) pc2dylandotnet $(DESTDIR)$(bindir)/pc2dylandotnet
 	chmod a+x $(DESTDIR)$(bindir)/pc2dylandotnet
 	$(install_sh_PROGRAM) pc2curdir $(DESTDIR)$(bindir)/pc2curdir
 	chmod a+x $(DESTDIR)$(bindir)/pc2curdir
+	$(install_sh_PROGRAM) nuget2dylandotnet $(DESTDIR)$(bindir)/nuget2dylandotnet
+	chmod a+x $(DESTDIR)$(bindir)/nuget2dylandotnet
 	$(install_sh_PROGRAM) pc2dn.exe $(DESTDIR)$(libdir)/dylandotnet-dev/pc2dn.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet-dev/pc2dn.exe
 	$(install_sh_PROGRAM) pc2cd.exe $(DESTDIR)$(libdir)/dylandotnet-dev/pc2cd.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet-dev/pc2cd.exe
+	$(install_sh_PROGRAM) nuget2dn.exe $(DESTDIR)$(libdir)/dylandotnet-dev/nuget2dn.exe
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet-dev/nuget2dn.exe
 
 	if [[ $(host) =~ i686-pc-linux-gnu ]] ; then \
 		$(MONO) --aot $(DESTDIR)$(libdir)/dylandotnet-dev/*.exe; \
@@ -367,6 +374,7 @@ install: prodscript
 uninstall:
 	rm -f $(DESTDIR)$(bindir)/pc2dylandotnet
 	rm -f $(DESTDIR)$(bindir)/pc2curdir
+	rm -f $(DESTDIR)$(bindir)/nuget2dylandotnet
 	rm -r -f $(DESTDIR)$(libdir)/dylandotnet-dev
 clean:
 	rm -f *.exe

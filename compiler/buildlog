@@ -1,23 +1,23 @@
-dylan.NET Compiler v. 11.2.9.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!
 Copyright (C) 2012 Dylan Borg
 
 dylan.NET Version Info:
-dnc, Version=11.2.9.9, Culture=neutral, PublicKeyToken=null
-dnr, Version=11.2.9.9, Culture=neutral, PublicKeyToken=null
-dnu, Version=11.2.9.9, Culture=neutral, PublicKeyToken=null
-tokenizer.CodeGen, Version=11.2.9.9, Culture=neutral, PublicKeyToken=null
-tokenizer.Parser, Version=11.2.9.9, Culture=neutral, PublicKeyToken=null
-tokenizer.Lexer, Version=11.2.9.9, Culture=neutral, PublicKeyToken=null
-tokenizer.AST, Version=11.2.9.9, Culture=neutral, PublicKeyToken=null
+dnc, Version=11.3.1.1, Culture=neutral, PublicKeyToken=null
+dnr, Version=11.3.1.1, Culture=neutral, PublicKeyToken=null
+dnu, Version=11.3.1.1, Culture=neutral, PublicKeyToken=null
+tokenizer.CodeGen, Version=11.3.1.1, Culture=neutral, PublicKeyToken=null
+tokenizer.Parser, Version=11.3.1.1, Culture=neutral, PublicKeyToken=null
+tokenizer.Lexer, Version=11.3.1.1, Culture=neutral, PublicKeyToken=null
+tokenizer.AST, Version=11.3.1.1, Culture=neutral, PublicKeyToken=null
 
 Runtime & OS Version Info:
 mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 Runtime Version: 2.0.50727.1433
 OS: Unix 3.8.0.4
-dylan.NET Compiler v. 11.2.9.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!
@@ -48,16 +48,16 @@ Importing Namespace: dylan.NET
 Now Lexing: cflags.dyl
 Now Parsing: cflags.dyl
 Finished Processing: cflags.dyl (inline)
-Finished Processing: dnu/streamu.dyl (worker thread)
-Now Lexing: dnu/keyboard.dyl
 Now Lexing: dnu/assemblyinfo.dyl
 Now Parsing: dnu/assemblyinfo.dyl
-Now Parsing: dnu/keyboard.dyl
 Finished Processing: dnu/assemblyinfo.dyl (inline)
+Finished Processing: dnu/streamu.dyl (worker thread)
+Now Lexing: dnu/keyboard.dyl
+Now Parsing: dnu/keyboard.dyl
+Beginning Assembly: dnu
 Finished Processing: dnu/keyboard.dyl (worker thread)
 Now Lexing: dnu/parseu.dyl
 Now Parsing: dnu/parseu.dyl
-Beginning Assembly: dnu
 Now Lexing: dnu/consts.dyl
 Now Parsing: dnu/consts.dyl
 Finished Processing: dnu/consts.dyl (inline)
@@ -71,10 +71,10 @@ Adding Class: dylan.NET.Utils.Constants
 	Adding Field: t
 	Adding Field: f
 	Adding Constructor: Constants
-Finished Processing: dnu/parseu.dyl (worker thread)
 Now Lexing: dnu/xmlu.dyl
 Now Parsing: dnu/xmlu.dyl
-Finished Processing: dnu/xmlu.dyl (worker thread)
+Finished Processing: dnu/parseu.dyl (worker thread)
+Finished Processing: dnu/xmlu.dyl (inline)
 Adding Class: dylan.NET.Utils.XmlUtils
 	Adding Method: MakeName
 	Adding Method: MakeNode
@@ -142,7 +142,7 @@ Adding Class: dylan.NET.Utils.StreamUtils
 	Adding Method: WriteWarn
 	Adding Method: WriteError
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!
@@ -153,9 +153,10 @@ Now Parsing: dnr.dyl...Done.
 Now Lexing: dnr/consoleprinter.dyl
 Now Parsing: dnr/consoleprinter.dyl
 Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
-Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Finished Processing: dnr/consoleprinter.dyl (worker thread)
 Now Lexing: dnr/loader.dyl
+Referencing Assembly: /usr/lib/mono/2.0/System.dll
+Now Parsing: dnr/loader.dyl
 Referencing Assembly: /usr/lib/mono/2.0/System.Core.dll
 Referencing Assembly: dnu.dll
 Referencing Assembly: IKVM.Reflection.dll
@@ -181,7 +182,6 @@ Now Parsing: cflags.dyl
 Finished Processing: cflags.dyl (inline)
 Now Lexing: dnr/assemblyinfo.dyl
 Now Parsing: dnr/assemblyinfo.dyl
-Now Parsing: dnr/loader.dyl
 Finished Processing: dnr/assemblyinfo.dyl (inline)
 Beginning Assembly: dnr
 Now Lexing: dnr/milambdas.dyl
@@ -200,14 +200,14 @@ Adding Class: dylan.NET.Reflection.MILambdas
 	Adding Constructor: MILambdas
 	Adding Constructor: MILambdas
 	Adding Method: GenericMtdFilter
+Finished Processing: dnr/loader.dyl (worker thread)
+Now Lexing: dnr/importer.dyl
+Now Parsing: dnr/importer.dyl
 	Adding Method: IsSameName
 	Adding Method: IsSameNameAndReturn
 	Adding Method: InstGenMtd
 	Adding Method: IsSpecial
-Finished Processing: dnr/loader.dyl (worker thread)
-Now Lexing: dnr/importer.dyl
 Now Lexing: dnr/ilemitter.dyl
-Now Parsing: dnr/importer.dyl
 Finished Processing: dnr/importer.dyl (worker thread)
 Now Lexing: dnr/asmfactory.dyl
 Now Parsing: dnr/asmfactory.dyl
@@ -437,7 +437,7 @@ Adding Class: dylan.NET.Reflection.ConsolePrinter
 	Adding Method: PrintString
 	Adding Method: WriteClass
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!
@@ -471,11 +471,11 @@ Importing Namespace: dylan.NET.Tokenizer.AST.Tokens.Chars
 Importing Namespace: IKVM.Reflection
 Importing Namespace: IKVM.Reflection.Emit
 Now Lexing: ast/assemblyinfo.dyl
+Now Parsing: ast/assemblyinfo.dyl
 Finished Processing: ast/otherstmts.dyl (worker thread)
 Now Lexing: ast/attrstmts.dyl
-Now Parsing: ast/assemblyinfo.dyl
-Now Parsing: ast/attrstmts.dyl
 Finished Processing: ast/assemblyinfo.dyl (inline)
+Now Parsing: ast/attrstmts.dyl
 Finished Processing: ast/attrstmts.dyl (worker thread)
 Now Lexing: ast/varstmts.dyl
 Now Parsing: ast/varstmts.dyl
@@ -492,18 +492,18 @@ Now Parsing: ast/labelstmts.dyl
 Finished Processing: ast/labelstmts.dyl (worker thread)
 Now Lexing: ast/exceptionstmts.dyl
 Now Parsing: ast/exceptionstmts.dyl
+Now Lexing: ast/token.dyl
 Finished Processing: ast/exceptionstmts.dyl (worker thread)
 Now Lexing: ast/fieldstmt.dyl
-Now Lexing: ast/token.dyl
-Now Parsing: ast/fieldstmt.dyl
 Now Parsing: ast/token.dyl
+Now Parsing: ast/fieldstmt.dyl
 Finished Processing: ast/token.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Token
 Finished Processing: ast/fieldstmt.dyl (worker thread)
 Now Lexing: ast/metstmt.dyl
-Now Parsing: ast/metstmt.dyl
 	Adding Field: Value
 	Adding Field: Line
+Now Parsing: ast/metstmt.dyl
 	Adding Constructor: Token
 Finished Processing: ast/metstmt.dyl (worker thread)
 Now Lexing: ast/eventstmt.dyl
@@ -512,31 +512,37 @@ Finished Processing: ast/eventstmt.dyl (worker thread)
 Now Lexing: ast/propstmt.dyl
 Now Parsing: ast/propstmt.dyl
 	Adding Constructor: Token
-	Adding Method: ToString
 Finished Processing: ast/propstmt.dyl (worker thread)
 Now Lexing: ast/enumstmt.dyl
+	Adding Method: ToString
 Now Parsing: ast/enumstmt.dyl
 Now Lexing: ast/expr.dyl
 Now Parsing: ast/expr.dyl
-Finished Processing: ast/expr.dyl (inline)
-Adding Class: dylan.NET.Tokenizer.AST.Exprs.Expr
 Finished Processing: ast/enumstmt.dyl (worker thread)
 Now Lexing: ast/delegatestmt.dyl
 Now Parsing: ast/delegatestmt.dyl
+Finished Processing: ast/expr.dyl (inline)
+Adding Class: dylan.NET.Tokenizer.AST.Exprs.Expr
 	Adding Field: Tokens
 	Adding Field: Line
 	Adding Field: ResultTyp
 	Adding Constructor: Expr
-	Adding Method: AddToken
 Finished Processing: ast/delegatestmt.dyl (worker thread)
 Now Lexing: ast/classstmt.dyl
 Now Parsing: ast/classstmt.dyl
-	Adding Method: RemToken
-Now Lexing: ast/stmt.dyl
-Now Parsing: ast/stmt.dyl
+	Adding Method: AddToken
 Finished Processing: ast/classstmt.dyl (worker thread)
 Now Lexing: ast/nsstmt.dyl
 Now Parsing: ast/nsstmt.dyl
+	Adding Method: RemToken
+Now Lexing: ast/stmt.dyl
+Finished Processing: ast/nsstmt.dyl (worker thread)
+Now Lexing: ast/includestmt.dyl
+Now Parsing: ast/stmt.dyl
+Now Parsing: ast/includestmt.dyl
+Finished Processing: ast/includestmt.dyl (worker thread)
+Now Lexing: ast/verstmt.dyl
+Now Parsing: ast/verstmt.dyl
 Finished Processing: ast/stmt.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.Stmt
 	Adding Field: Tokens
@@ -548,15 +554,12 @@ Adding Class: dylan.NET.Tokenizer.AST.Stmts.StmtSet
 	Adding Field: Path
 	Adding Constructor: StmtSet
 	Adding Constructor: StmtSet
-Finished Processing: ast/nsstmt.dyl (worker thread)
-Now Lexing: ast/includestmt.dyl
-Now Parsing: ast/includestmt.dyl
 	Adding Method: AddStmt
 Now Lexing: ast/op.dyl
 Now Parsing: ast/op.dyl
-Finished Processing: ast/includestmt.dyl (worker thread)
-Now Lexing: ast/verstmt.dyl
-Now Parsing: ast/verstmt.dyl
+Finished Processing: ast/verstmt.dyl (worker thread)
+Now Lexing: ast/asmstmt.dyl
+Now Parsing: ast/asmstmt.dyl
 Finished Processing: ast/op.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.Op
 	Adding Field: PrecNo
@@ -570,15 +573,18 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AsOp
 	Adding Constructor: AsOp
 	Adding Method: ToString
 Now Lexing: ast/aritops.dyl
-Now Parsing: ast/aritops.dyl
-Finished Processing: ast/verstmt.dyl (worker thread)
-Now Lexing: ast/asmstmt.dyl
-Now Parsing: ast/asmstmt.dyl
 Finished Processing: ast/asmstmt.dyl (worker thread)
 Now Lexing: ast/importstmts.dyl
+Now Parsing: ast/aritops.dyl
 Now Parsing: ast/importstmts.dyl
+Finished Processing: ast/importstmts.dyl (worker thread)
+Now Lexing: ast/newresstmt.dyl
+Now Parsing: ast/newresstmt.dyl
+Finished Processing: ast/newresstmt.dyl (worker thread)
+Now Lexing: ast/refasmstmt.dyl
 Finished Processing: ast/aritops.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AritOp
+Now Parsing: ast/refasmstmt.dyl
 	Adding Constructor: AritOp
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AddOp
 	Adding Constructor: AddOp
@@ -608,22 +614,19 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.ShrOp
 	Adding Constructor: ShrOp
 	Adding Method: ToString
 Now Lexing: ast/logicalops.dyl
-Finished Processing: ast/importstmts.dyl (worker thread)
-Now Lexing: ast/newresstmt.dyl
 Now Parsing: ast/logicalops.dyl
-Now Parsing: ast/newresstmt.dyl
-Finished Processing: ast/newresstmt.dyl (worker thread)
-Now Lexing: ast/refasmstmt.dyl
-Now Parsing: ast/refasmstmt.dyl
 Finished Processing: ast/refasmstmt.dyl (worker thread)
 Now Lexing: ast/scopestmt.dyl
 Now Parsing: ast/scopestmt.dyl
+Finished Processing: ast/scopestmt.dyl (worker thread)
+Now Lexing: ast/debugstmt.dyl
 Finished Processing: ast/logicalops.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.LogicalOp
 	Adding Constructor: LogicalOp
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AndOp
 	Adding Constructor: AndOp
 	Adding Method: ToString
+Now Parsing: ast/debugstmt.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.OrOp
 	Adding Constructor: OrOp
 	Adding Method: ToString
@@ -646,15 +649,12 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.NegOp
 	Adding Constructor: NegOp
 	Adding Method: ToString
 Now Lexing: ast/typetoks.dyl
-Finished Processing: ast/scopestmt.dyl (worker thread)
-Now Lexing: ast/debugstmt.dyl
-Now Parsing: ast/debugstmt.dyl
-Now Parsing: ast/typetoks.dyl
 Finished Processing: ast/debugstmt.dyl (worker thread)
 Now Lexing: ast/varexpr.dyl
 Now Parsing: ast/varexpr.dyl
 Finished Processing: ast/varexpr.dyl (worker thread)
 Now Lexing: ast/chars.dyl
+Now Parsing: ast/typetoks.dyl
 Now Parsing: ast/chars.dyl
 Finished Processing: ast/chars.dyl (worker thread)
 Now Lexing: ast/newcalltoks.dyl
@@ -729,7 +729,10 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.DecimalTok
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.LongTok
 	Adding Field: lngtyp
 	Adding Constructor: LongTok
+Finished Processing: ast/otherkeywords.dyl (worker thread)
+Now Lexing: ast/attrvalpair.dyl
 	Adding Constructor: LongTok
+Now Parsing: ast/attrvalpair.dyl
 	Adding Constructor: LongTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.SByteTok
@@ -741,15 +744,15 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.SByteTok
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.ShortTok
 	Adding Field: shtyp
 	Adding Constructor: ShortTok
+Finished Processing: ast/attrvalpair.dyl (worker thread)
+Now Lexing: ast/conditionalops.dyl
 	Adding Constructor: ShortTok
 	Adding Constructor: ShortTok
 	Adding Method: ToString
+Now Parsing: ast/conditionalops.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.SingleTok
-Finished Processing: ast/otherkeywords.dyl (worker thread)
-Now Lexing: ast/attrvalpair.dyl
 	Adding Field: sngtyp
 	Adding Constructor: SingleTok
-Now Parsing: ast/attrvalpair.dyl
 	Adding Constructor: SingleTok
 	Adding Constructor: SingleTok
 	Adding Method: ToString
@@ -762,13 +765,10 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.ObjectTok
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.VoidTok
 	Adding Field: vdtyp
 	Adding Constructor: VoidTok
-Finished Processing: ast/attrvalpair.dyl (worker thread)
-Now Lexing: ast/conditionalops.dyl
 	Adding Constructor: VoidTok
 	Adding Constructor: VoidTok
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.UIntegerTok
-Now Parsing: ast/conditionalops.dyl
 	Adding Field: uinttyp
 	Adding Constructor: UIntegerTok
 	Adding Constructor: UIntegerTok
@@ -786,12 +786,15 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.ByteTok
 	Adding Constructor: ByteTok
 	Adding Constructor: ByteTok
 	Adding Method: ToString
+Finished Processing: ast/conditionalops.dyl (worker thread)
+Now Lexing: ast/attributes.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.UShortTok
 	Adding Field: ushtyp
 	Adding Constructor: UShortTok
 	Adding Constructor: UShortTok
 	Adding Constructor: UShortTok
 	Adding Method: ToString
+Now Parsing: ast/attributes.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntPtrTok
 	Adding Field: iptyp
 	Adding Constructor: IntPtrTok
@@ -799,9 +802,6 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntPtrTok
 	Adding Constructor: IntPtrTok
 	Adding Method: ToString
 Now Lexing: ast/literals.dyl
-Finished Processing: ast/conditionalops.dyl (worker thread)
-Now Lexing: ast/attributes.dyl
-Now Parsing: ast/attributes.dyl
 Now Parsing: ast/literals.dyl
 Finished Processing: ast/attributes.dyl (worker thread)
 Now Lexing: ast/ident.dyl
@@ -1325,6 +1325,7 @@ Adding Class: dylan.NET.Tokenizer.AST.Stmts.VerStmt
 	Adding Field: VersionNos
 	Adding Constructor: VerStmt
 	Adding Method: ToString
+	Adding Method: ToVersion
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.IncludeStmt
 	Adding Field: Path
 	Adding Field: SSet
@@ -1533,7 +1534,7 @@ Adding Class: dylan.NET.Tokenizer.AST.Stmts.LockStmt
 	Adding Field: Lockee
 	Adding Constructor: LockStmt
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!
@@ -1578,7 +1579,7 @@ Adding Class: dylan.NET.Tokenizer.Lexer.Lexer
 	Adding Method: Analyze
 	Adding Method: AnalyzeString
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!
@@ -1588,9 +1589,9 @@ Now Lexing: tokenizer.Parser.dyl...Done.
 Now Parsing: tokenizer.Parser.dyl...Done.
 Now Lexing: parser/parser.dyl
 Now Parsing: parser/parser.dyl
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Finished Processing: parser/parser.dyl (worker thread)
 Now Lexing: parser/stmtoptimizer.dyl
-Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.dll
 Referencing Assembly: /usr/lib/mono/2.0/System.Core.dll
 Referencing Assembly: tokenizer.AST.dll
@@ -1768,7 +1769,7 @@ Adding Class: dylan.NET.Tokenizer.Parser.Parser
 	Adding Constructor: Parser
 	Adding Method: Parse
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!
@@ -1825,9 +1826,9 @@ Finished Processing: codegen/codegenerator.dyl (worker thread)
 Now Lexing: codegen/stmtreader.dyl
 Now Lexing: codegen/varitem.dyl
 Now Parsing: codegen/varitem.dyl
+Now Parsing: codegen/stmtreader.dyl
 Finished Processing: codegen/varitem.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.CodeGen.VarItem
-Now Parsing: codegen/stmtreader.dyl
 	Adding Field: Name
 	Adding Field: LocArg
 	Adding Field: Index
@@ -1966,24 +1967,24 @@ Finished Processing: codegen/labelitem.dyl (worker thread)
 Now Lexing: codegen/loopitem.dyl
 Now Parsing: codegen/loopitem.dyl
 	Adding Method: GetTypeItem
+Finished Processing: codegen/stmtreader.dyl (worker thread)
+Now Lexing: codegen/eval.dyl
 Finished Processing: codegen/loopitem.dyl (worker thread)
 Now Lexing: codegen/ifitem.dyl
 Now Parsing: codegen/ifitem.dyl
+Now Parsing: codegen/eval.dyl
+	Adding Method: GetTypeItem
 Finished Processing: codegen/ifitem.dyl (worker thread)
 Now Lexing: codegen/lockitem.dyl
 Now Parsing: codegen/lockitem.dyl
+	Adding Method: GetType
 Finished Processing: codegen/lockitem.dyl (worker thread)
 Now Lexing: codegen/typearr.dyl
 Now Parsing: codegen/typearr.dyl
-	Adding Method: GetTypeItem
 Finished Processing: codegen/typearr.dyl (worker thread)
 Now Lexing: codegen/symtable.dyl
-	Adding Method: GetType
-Now Parsing: codegen/symtable.dyl
-Finished Processing: codegen/stmtreader.dyl (worker thread)
-Now Lexing: codegen/eval.dyl
 	Adding Method: GetCtor
-Now Parsing: codegen/eval.dyl
+Now Parsing: codegen/symtable.dyl
 	Adding Method: GetDefaultCtor
 	Adding Method: EnsureDefaultCtor
 	Adding Method: AddType
@@ -1993,13 +1994,13 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.LabelItem
 	Adding Field: Lbl
 	Adding Field: LblName
 	Adding Constructor: LabelItem
-Now Lexing: codegen/helpers.dyl
 	Adding Constructor: LabelItem
 Adding Class: dylan.NET.Tokenizer.CodeGen.LoopItem
 	Adding Field: EndLabel
 	Adding Field: StartLabel
 	Adding Field: Line
 	Adding Constructor: LoopItem
+Now Lexing: codegen/helpers.dyl
 	Adding Constructor: LoopItem
 Adding Class: dylan.NET.Tokenizer.CodeGen.IfItem
 	Adding Field: EndLabel
@@ -2007,7 +2008,6 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.IfItem
 	Adding Field: ElsePass
 	Adding Field: Line
 	Adding Constructor: IfItem
-Now Parsing: codegen/helpers.dyl
 	Adding Constructor: IfItem
 Adding Class: dylan.NET.Tokenizer.CodeGen.LockItem
 	Adding Field: LockeeLoc
@@ -2017,6 +2017,7 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.LockItem
 Adding Class: dylan.NET.Tokenizer.CodeGen.TypeArr
 	Adding Field: Arr
 	Adding Constructor: TypeArr
+Now Parsing: codegen/helpers.dyl
 Finished Processing: codegen/symtable.dyl (worker thread)
 Now Lexing: codegen/opstack.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.SymTable
@@ -2104,8 +2105,8 @@ Finished Processing: codegen/opstack.dyl (worker thread)
 	Adding Method: FindMet
 	Adding Method: FindProtoMet
 	Adding Method: FindMetNoParams
-	Adding Method: FindCtor
 Finished Processing: codegen/eval.dyl (worker thread)
+	Adding Method: FindCtor
 Finished Processing: codegen/helpers.dyl (worker thread)
 Continuing Class: dylan.NET.Tokenizer.CodeGen.Helpers
 	Adding Field: StringFlg
@@ -2169,6 +2170,7 @@ Continuing Class: dylan.NET.Tokenizer.CodeGen.Helpers
 	Adding Method: ApplyEventAttrs
 	Adding Method: ProcessCollection
 	Adding Method: ProcessForeach
+	Adding Method: ProcessForeach2
 Adding Class: dylan.NET.Tokenizer.CodeGen.OpStack
 	Adding Field: Stack
 	Adding Constructor: OpStack
@@ -2204,7 +2206,7 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.CodeGenerator
 	Adding Method: LPThread
 	Adding Method: EmitMSIL
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.2.9.9 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!

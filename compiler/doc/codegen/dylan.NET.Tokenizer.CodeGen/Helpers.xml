@@ -1100,6 +1100,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ProcessForeach2">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo[] ProcessForeach2 (IKVM.Reflection.Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo[] ProcessForeach2(class IKVM.Reflection.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ProcessMethodAttrs">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodAttributes ProcessMethodAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.MethodAttributes ProcessMethodAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />

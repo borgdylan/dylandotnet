@@ -96,7 +96,7 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing --run 
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.9\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.9\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.9\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.3.1.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.3.1.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.3.1.1\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
@@ -121,10 +121,10 @@ NUNITPC_LIBS = -r:/usr/lib/cli/nunit.core-2.6/nunit.core.dll -r:/usr/lib/cli/nun
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.9.9
+PACKAGE_STRING = dylandotnet 11.3.1.1
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.9.9
+PACKAGE_VERSION = 11.3.1.1
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
@@ -132,7 +132,7 @@ PKG_CONFIG_PATH =
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.9.9
+VERSION = 11.3.1.1
 abs_builddir = /var/www/Code/dylannet/dylandotnet/compiler
 abs_srcdir = /var/www/Code/dylannet/dylandotnet/compiler
 abs_top_builddir = /var/www/Code/dylannet/dylandotnet/compiler
@@ -514,6 +514,7 @@ installman:
 	$(install_sh_PROGRAM) dylandotnet.7 $(DESTDIR)$(mandir)/man7/dylandotnet.7
 	$(install_sh_PROGRAM) dylandotnet4.1 $(DESTDIR)$(mandir)/man1/dylandotnet4.1
 	$(install_sh_PROGRAM) pc2dylandotnet.1 $(DESTDIR)$(mandir)/man1/pc2dylandotnet.1
+	$(install_sh_PROGRAM) nuget2dylandotnet.1 $(DESTDIR)$(mandir)/man1/nuget2dylandotnet.1
 	$(install_sh_PROGRAM) pc2curdir.1 $(DESTDIR)$(mandir)/man1/pc2curdir.1
 
 install: installman	
@@ -528,6 +529,7 @@ uninstallman:
 	rm $(DESTDIR)$(mandir)/man7/dylandotnet.7
 	rm $(DESTDIR)$(mandir)/man1/dylandotnet4.1
 	rm $(DESTDIR)$(mandir)/man1/pc2dylandotnet.1
+	rm $(DESTDIR)$(mandir)/man1/nuget2dylandotnet.1
 	rm $(DESTDIR)$(mandir)/man1/pc2curdir.1
 
 uninstall: uninstallman

@@ -452,6 +452,12 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.Helpers.ProcessForeach2">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.Helpers.ProcessMethodAttrs">
             <param name="attrs">To be added.</param>
             <summary>To be added.</summary>

@@ -27,5 +27,9 @@ class public auto ansi VerStmt extends Stmt
 		end do
 		return "ver " + sw::ToString()
 	end method
+	
+	method public Version ToVersion()
+		return new Version(VersionNos[0]::NumVal, VersionNos[1]::NumVal, VersionNos[2]::NumVal, VersionNos[3]::NumVal)
+	end method
 
 end class

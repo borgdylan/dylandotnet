@@ -187,7 +187,7 @@ class public auto ansi StmtReader
 			SymTable::TypeLst = new TypeList()
 		elseif stm is VerStmt then
 			var asmv as VerStmt = $VerStmt$stm
-			AsmFactory::AsmNameStr::set_Version(new Version(asmv::VersionNos[0]::NumVal, asmv::VersionNos[1]::NumVal, asmv::VersionNos[2]::NumVal, asmv::VersionNos[3]::NumVal))
+			AsmFactory::AsmNameStr::set_Version(asmv::ToVersion())
 			var aasv as AssemblyBuilderAccess = AssemblyBuilderAccess::Save
 			AsmFactory::AsmB = ILEmitter::Univ::DefineDynamicAssembly(AsmFactory::AsmNameStr, aasv, Directory::GetCurrentDirectory())
 			AsmFactory::MdlB = AsmFactory::AsmB::DefineDynamicModule(AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode, AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode, AsmFactory::DebugFlg)
@@ -266,7 +266,6 @@ class public auto ansi StmtReader
 				end if
 			else
 				inhtyp = ti2::InhTyp
-				//StreamUtils::WriteLine("CAUTION: " + ti2::ToString())
 			end if
 			
 			ILEmitter::StructFlg = inhtyp::Equals(ILEmitter::Univ::Import(gettype ValueType))
@@ -386,10 +385,7 @@ class public auto ansi StmtReader
 
 			var dema as MethodAttributes = MethodAttributes::HideBySig or MethodAttributes::Public
 			var stdcc as CallingConventions = CallingConventions::Standard
-			var dtarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[2]
-			dtarr[0] = ILEmitter::Univ::Import(gettype object)
-			dtarr[1] = ILEmitter::Univ::Import(gettype IntPtr)
-			
+			var dtarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[] {ILEmitter::Univ::Import(gettype object), ILEmitter::Univ::Import(gettype IntPtr)}
 			AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(dema, stdcc, dtarr)
 			AsmFactory::InitDelConstr()
 
@@ -817,25 +813,45 @@ class public auto ansi StmtReader
 			eval = new Evaluator()
 			eval::Evaluate(festm::Exp)
 			var mtds as MethodInfo[] = Helpers::ProcessForeach(AsmFactory::Type02)
-			if mtds = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class " + AsmFactory::Type02::ToString() + " is not an IEnumerable or IEnumerable<of T>.")
+			if mtds != null then
+				ILEmitter::EmitCallvirt(mtds[0])
+				ILEmitter::DeclVar(String::Empty, mtds[0]::get_ReturnType())
+				ILEmitter::LocInd = ILEmitter::LocInd + 1
+				var ien as integer = ILEmitter::LocInd
+				ILEmitter::EmitStloc(ien)
+				SymTable::AddLoop()
+				ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
+				ILEmitter::EmitLdloc(ien)
+				ILEmitter::EmitCallvirt(mtds[1])
+				ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
+				ILEmitter::DeclVar(festm::Iter::Value, mtds[2]::get_ReturnType())
+				ILEmitter::LocInd = ILEmitter::LocInd + 1
+				SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, mtds[2]::get_ReturnType(), ILEmitter::LineNr)
+				ILEmitter::EmitLdloc(ien)
+				ILEmitter::EmitCallvirt(mtds[2])
+				ILEmitter::EmitStloc(ILEmitter::LocInd)
+			else
+				mtds = Helpers::ProcessForeach2(AsmFactory::Type02)
+				if mtds != null then
+					ILEmitter::DeclVar(String::Empty, AsmFactory::Type02)
+					ILEmitter::LocInd = ILEmitter::LocInd + 1
+					var ien as integer = ILEmitter::LocInd
+					ILEmitter::EmitStloc(ien)
+					SymTable::AddLoop()
+					ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
+					ILEmitter::EmitLdloc(ien)
+					ILEmitter::EmitCallvirt(mtds[0])
+					ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
+					ILEmitter::DeclVar(festm::Iter::Value, mtds[1]::get_ReturnType())
+					ILEmitter::LocInd = ILEmitter::LocInd + 1
+					SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, mtds[1]::get_ReturnType(), ILEmitter::LineNr)
+					ILEmitter::EmitLdloc(ien)
+					ILEmitter::EmitCallvirt(mtds[1])
+					ILEmitter::EmitStloc(ILEmitter::LocInd)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class " + AsmFactory::Type02::ToString() + " is not an IEnumerable/IEnumerator or IEnumerable<of T>/IEnumerator<of T>.")
+				end if
 			end if
-			ILEmitter::EmitCallvirt(mtds[0])
-			ILEmitter::DeclVar(String::Empty, mtds[0]::get_ReturnType())
-			ILEmitter::LocInd = ILEmitter::LocInd + 1
-			var ien as integer = ILEmitter::LocInd
-			ILEmitter::EmitStloc(ien)
-			SymTable::AddLoop()
-			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
-			ILEmitter::EmitLdloc(ien)
-			ILEmitter::EmitCallvirt(mtds[1])
-			ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
-			ILEmitter::DeclVar(festm::Iter::Value, mtds[2]::get_ReturnType())
-			ILEmitter::LocInd = ILEmitter::LocInd + 1
-			SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, mtds[2]::get_ReturnType(), ILEmitter::LineNr)
-			ILEmitter::EmitLdloc(ien)
-			ILEmitter::EmitCallvirt(mtds[2])
-			ILEmitter::EmitStloc(ILEmitter::LocInd)
 		elseif stm is HDefineStmt then
 			var hdstm as HDefineStmt = $HDefineStmt$stm
 			SymTable::AddDef(hdstm::Symbol::Value)
@@ -905,14 +921,12 @@ class public auto ansi StmtReader
 			StreamUtils::WriteLine(prgs::Getter::Value)
 		elseif stm is PropertySetStmt then
 			var prss as PropertySetStmt = $PropertySetStmt$stm
-			var pga as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
-			pga[0] = AsmFactory::CurnPropB::get_PropertyType()
 			
 			if AsmFactory::CurnExplImplType::get_Length() > 0 then
 				prss::Setter::Value = AsmFactory::CurnExplImplType + "." + prss::Setter::Value
 			end if
 			
-			var mb2 as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, pga)
+			var mb2 as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, new IKVM.Reflection.Type[] {AsmFactory::CurnPropB::get_PropertyType()})
 			if mb2 != null then
 				AsmFactory::CurnPropB::SetSetMethod(mb2)
 			else
@@ -935,11 +949,11 @@ class public auto ansi StmtReader
 			Helpers::ApplyEventAttrs()
 			SymTable::ResetEventCAs()
 			
-			if AsmFactory::isNested then
+			//if AsmFactory::isNested then
 				//SymTable::AddNestedProp(prss::PropertyName::Value, ptyp, AsmFactory::CurnPropB)
-			else
+			//else
 				//SymTable::AddProp(prss::PropertyName::Value, ptyp, AsmFactory::CurnPropB)
-			end if
+			//end if
 
 			StreamUtils::Write("	Adding Event: ")
 			StreamUtils::WriteLine(evss::EventName::Value)
@@ -986,16 +1000,12 @@ class public auto ansi StmtReader
 			ILEmitter::EmitStloc(lockee)
 			SymTable::AddLock(lockee)
 			ILEmitter::EmitLdloc(lockee)
-			var soarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
-			soarr[0] = ILEmitter::Univ::Import(gettype object)
-			ILEmitter::EmitCall(ILEmitter::Univ::Import(gettype Monitor)::GetMethod("Enter",soarr))
+			ILEmitter::EmitCall(ILEmitter::Univ::Import(gettype Monitor)::GetMethod("Enter",new IKVM.Reflection.Type[] {ILEmitter::Univ::Import(gettype object)}))
 			ILEmitter::EmitTry()
 		elseif stm is EndLockStmt then
 			ILEmitter::EmitFinally()
 			ILEmitter::EmitLdloc(SymTable::ReadLockeeLoc())
-			var soarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
-			soarr[0] = ILEmitter::Univ::Import(gettype object)
-			ILEmitter::EmitCall(ILEmitter::Univ::Import(gettype Monitor)::GetMethod("Exit",soarr))
+			ILEmitter::EmitCall(ILEmitter::Univ::Import(gettype Monitor)::GetMethod("Exit",new IKVM.Reflection.Type[] {ILEmitter::Univ::Import(gettype object)}))
 			ILEmitter::EmitEndTry()
 			SymTable::PopLock()
 			SymTable::PopScope()

@@ -75,7 +75,7 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing --run 
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing --run automake-1.11
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.2.9.9\" -DPACKAGE_STRING=\"dylandotnet\ 11.2.9.9\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.2.9.9\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.3.1.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.3.1.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.3.1.1\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
@@ -100,10 +100,10 @@ NUNITPC_LIBS = -r:/usr/lib/cli/nunit.core-2.6/nunit.core.dll -r:/usr/lib/cli/nun
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.2.9.9
+PACKAGE_STRING = dylandotnet 11.3.1.1
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.2.9.9
+PACKAGE_VERSION = 11.3.1.1
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
@@ -111,7 +111,7 @@ PKG_CONFIG_PATH =
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.2.9.9
+VERSION = 11.3.1.1
 abs_builddir = /var/www/Code/dylannet/dylandotnet/compiler/doc
 abs_srcdir = /var/www/Code/dylannet/dylandotnet/compiler/doc
 abs_top_builddir = /var/www/Code/dylannet/dylandotnet/compiler
@@ -344,13 +344,13 @@ uninstall-am:
 .PHONY: all
 
 all:
-	'$(MDOC)' update --delete -fno-assembly-versions -o ast ../tokenizer.AST.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o lexer ../tokenizer.Lexer.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o parser ../tokenizer.Parser.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o codegen ../tokenizer.CodeGen.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o dnu ../dnu.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o dnr ../dnr.dll
-	'$(MDOC)' update --delete -fno-assembly-versions -o dnc ../dnc.exe
+	'$(MDOC)' update --delete -fno-assembly-versions -o ast ../4.0/tokenizer.AST.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o lexer ../4.0/tokenizer.Lexer.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o parser ../4.0/tokenizer.Parser.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o codegen ../4.0/tokenizer.CodeGen.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnu ../4.0/dnu.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnr ../4.0/dnr.dll
+	'$(MDOC)' update --delete -fno-assembly-versions -o dnc ../4.0/dnc.exe
 
 	'$(MDOC)' export-html -o ast-html ast
 	'$(MDOC)' export-html -o lexer-html lexer

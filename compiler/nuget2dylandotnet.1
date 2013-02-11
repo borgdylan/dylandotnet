@@ -1,0 +1,53 @@
+.TH NUGET2DYLANDOTNET 1 "2013-02-11" "Linux" "NuGet Helper for dylan.NET"
+
+.SH NAME
+nuget2dylandotnet \- A program for generating dylan.NET #refasm statements for NuGet packages.
+
+.SH SYNOPSIS
+.B nuget2dylandotnet
+.RI [-h|-no45|folder-names...]
+.br
+
+.SH DESCRIPTION
+This manual page explains the
+.B nuget2dylandotnet
+program.
+.PP
+The program
+.B nuget2dylandotnet
+is for generating dylan.NET '#refasm' statements for libraries inside NuGet packages thereby allowing libraries for which NuGet paclages exist to be used in dylan.NET programs with less effort.
+
+.SH OPTIONS
+-h will print the help info yet it can be used together with the folder-name(s) for the input folder(s) in the same command.
+
+.B
+.IP folder-names
+The folder name(s) of the folder(s) having package content obtained by issuing 'mono NuGet.exe install package-name'
+in the form : 'nuget2dylandotnet folder-name' ;where folder-name is the folder mentioned before. Also note that the folder must have a "lib" directory inside it i.e. this command only applies to BuGet packages that ship Mono/.NET libraries inside them.
+.B
+.IP -no45
+This option will force preference of .NET 4.0 targeted libraries over .NET 4.5 targeted libraries.
+.B
+.IP -h
+This option displays a short listing of the options available. If you have read all of this man page you will not need to consult the output of -h. The command is issued like this 'nuget2dylandotnet -h'.
+
+.SH FILES
+.PP
+This is the list of the most important files installed by the dylan.NET Makefile or Package whichever one was used for the install. Before these paths one should add /usr/ or /usr/local/ whichever prefix was chosen in the Makefile. In package installation cases the prefix is /usr/ .
+
+.B
+.IP bin/nuget2dylandotnet
+The executable script which when invoked in the terminal executes the program on the mono runtime.
+.B
+.IP lib/dylandonet-dev/nuget2dn.exe
+The actual program that is executed by the script. This reads in the command line arguments and writes .dyl files from the folder structures.
+.B
+.IP share/man/man1/nuget2dylandonet.1
+This is this very man page for nuget2dylandotnet.
+
+
+.SH VERSION
+11.3.1.1
+
+.SH "SEE ALSO"
+See also http://launchpad.net/dylandotnet
