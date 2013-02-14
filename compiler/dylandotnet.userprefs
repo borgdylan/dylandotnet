@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="parser/stmtoptimizer.dyl" Line="1161" Column="13" />
       <File FileName="parser/exproptimizer.dyl" Line="884" Column="23" />
@@ -9,7 +9,8 @@
       <File FileName="ast/attrvalpair.dyl" Line="13" Column="2" />
       <File FileName="templateproj/template.dyl" Line="557" Column="1" />
       <File FileName="dnc/Mod1.dyl" Line="101" Column="12" />
-      <File FileName="codegen/eval.dyl" Line="846" Column="31" />
+      <File FileName="codegen/eval.dyl" Line="1114" Column="172" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="639" Column="12" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,13 +24,13 @@
             <Node name="dnu" expanded="True" />
             <Node name="lexer" expanded="True" />
             <Node name="m4" expanded="True" />
-            <Node name="parser" expanded="True" />
+            <Node name="parser" expanded="True">
+              <Node name="tokenoptimizer.dyl" selected="True" />
+            </Node>
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>
-          <Node name="template" expanded="True">
-            <Node name="template.dyl" selected="True" />
-          </Node>
+          <Node name="template" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

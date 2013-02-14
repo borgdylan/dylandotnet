@@ -1107,6 +1107,12 @@ class public auto ansi beforefieldinit Evaluator
 						if fldinf = null then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is not defined/accessible for the class '" + ctyp::ToString() + "'.")
 						end if
+						if fldinf::get_IsInitOnly() then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is declared as readonly and may not be set from this context.")
+						end if
+						if fldinf::get_IsStatic() then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is declared as static and may not be set from object initializers.")
+						end if
 						Helpers::CheckAssignability(fldinf::get_FieldType(), AsmFactory::Type02)
 						if emt then	
 							Helpers::EmitFldSt(fldinf, fldinf::get_IsStatic())
