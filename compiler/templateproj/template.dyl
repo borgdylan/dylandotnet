@@ -184,6 +184,11 @@ class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
 	
 end class
 
+class public auto ansi ObjInit
+	field public integer A
+	field public integer B
+	field public ObjInit C
+end class
 
 class public auto ansi Program
 
@@ -545,6 +550,7 @@ class public auto ansi Program
 		
 		var ao as object = new integer[] {1,2,3}
 		var ai = $integer[]$ao
+		var oi = new ObjInit() {A = 1, B = 2, C = new ObjInit() {A = 3, B = 4, C = null}}
 	end method
 
 end class

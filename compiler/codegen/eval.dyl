@@ -836,7 +836,7 @@ class public auto ansi beforefieldinit Evaluator
 	end method
 	
 	method public void ASTEmit(var tok as Token, var emt as boolean)
-
+		Helpers::NullExprFlg = tok is NullLiteral
 		var optok as Op = new Op()
 		var rc as Token = new Token()
 		var lc as Token = new Token()
@@ -1091,6 +1091,29 @@ class public auto ansi beforefieldinit Evaluator
 					end for
 					AsmFactory::Type02 = typ2
 				end if
+			elseif tok is ObjInitCallTok then
+				//object initializer section
+				var oictok as ObjInitCallTok = $ObjInitCallTok$tok
+				ASTEmitNew(oictok::Ctor,emt)
+				var ctyp = AsmFactory::Type02
+				foreach el2 in oictok::Elements
+					if el2 is AttrValuePair then
+						var el as AttrValuePair = $AttrValuePair$el2
+						if emt then
+							ILEmitter::EmitDup()
+						end if
+						ASTEmit(ConvToAST(ConvToRPN(el::ValueExpr)), emt)
+						var fldinf = Helpers::GetExtFld(ctyp, el::Name::Value)
+						if fldinf = null then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is not defined/accessible for the class '" + ctyp::ToString() + "'.")
+						end if
+						Helpers::CheckAssignability(fldinf::get_FieldType(), AsmFactory::Type02)
+						if emt then	
+							Helpers::EmitFldSt(fldinf, fldinf::get_IsStatic())
+						end if
+					end if
+				end for
+				AsmFactory::Type02 = ctyp
 			elseif tok is PtrCallTok then
 				//ptr load section - obsolete
 				if emt then

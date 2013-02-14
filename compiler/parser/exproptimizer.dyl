@@ -19,6 +19,8 @@ class public auto ansi ExprOptimizer
 		me::ctor()
 		PFlags = pf
 	end method
+	
+	method public prototype Expr Optimize(var exp as Expr)
 
 	method public Expr procType(var stm as Expr, var i as integer)
 
@@ -310,6 +312,93 @@ class public auto ansi ExprOptimizer
 		mct::Name = mn
 		mct::Line = mn::Line
 		stm::Tokens::set_Item(j,mct)
+	
+		return stm
+	
+	end method
+	
+	method public Expr procObjInitCall(var stm as Expr, var i as integer)
+		
+		var ct as NewCallTok = $NewCallTok$stm::Tokens::get_Item(i)
+		var oic as ObjInitCallTok = new ObjInitCallTok()
+		var lvl as integer = 1
+		var d as boolean = true
+		var j as integer = i
+		var lp as C5.ArrayList<of Token> = new C5.ArrayList<of Token>()
+		var curvp as AttrValuePair = new AttrValuePair()
+		curvp::ValueExpr = new Expr()
+		var eqf as boolean = false
+		
+		i = i + 1
+		stm::RemToken(i)
+		var len as integer = stm::Tokens::get_Count() - 1
+		i = i - 1
+
+		do until i = len
+			i = i + 1
+			
+			if eqf then
+				d = true
+			end if
+	
+			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
+				lvl = lvl - 1
+				if lvl = 0 then
+					d = false
+					curvp::ValueExpr = Optimize(curvp::ValueExpr)
+					lp::Add(curvp)
+					stm::RemToken(i)
+					len = stm::Tokens::get_Count() - 1
+					i = i - 1
+					break
+				else
+					d = true
+				end if
+			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
+				lvl = lvl + 1
+				d = true
+			elseif stm::Tokens::get_Item(i) is AssignOp2 then
+				if lvl = 1 then
+					eqf = true
+					stm::RemToken(i)
+					len = stm::Tokens::get_Count() - 1
+					i = i - 1
+					d = false
+				end if
+			elseif stm::Tokens::get_Item(i) is Comma then
+				if lvl = 1 then
+					d = false
+					eqf = false
+					curvp::ValueExpr = Optimize(curvp::ValueExpr)
+					lp::Add(curvp)
+					curvp = new AttrValuePair()
+					curvp::ValueExpr = new Expr()
+					stm::RemToken(i)
+					len = stm::Tokens::get_Count() - 1
+					i = i - 1
+				else
+					d = true
+				end if
+			else
+				d = true
+			end if
+			
+			if d then
+				if eqf then
+					curvp::ValueExpr::AddToken(stm::Tokens::get_Item(i))
+				else
+					curvp::Name = $Ident$stm::Tokens::get_Item(i)
+				end if
+				stm::RemToken(i)
+				len = stm::Tokens::get_Count() - 1
+				i = i - 1
+			end if
+		end do
+	
+		oic::Line = ct::Line
+		oic::Ctor = ct
+		oic::Elements = lp
+		stm::Tokens::set_Item(j,oic)
 	
 		return stm
 	
@@ -796,9 +885,12 @@ class public auto ansi ExprOptimizer
 							nctoken::Params::set_Item(nci2,Optimize(nctoken::Params::get_Item(nci2)))
 						end do
 						
-						//if exp::Tokens::get_Item(i + 1) is LCParen then
-							//object intitializer code here
-						//end if
+						if i < len then
+							if exp::Tokens::get_Item(i + 1) is LCParen then
+								exp = procObjInitCall(exp, i)
+								len = exp::Tokens::get_Count() - 1
+							end if
+						end if
 						
 					elseif exp::Tokens::get_Item(i) is ArrInitCallTok then
 						//if output is arrinitcall

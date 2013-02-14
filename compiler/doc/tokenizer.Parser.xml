@@ -57,6 +57,13 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.procObjInitCall">
+            <param name="stm">To be added.</param>
+            <param name="i">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.procType">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
