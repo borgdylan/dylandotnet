@@ -795,6 +795,11 @@ class public auto ansi ExprOptimizer
 							nci2 = nci2 + 1
 							nctoken::Params::set_Item(nci2,Optimize(nctoken::Params::get_Item(nci2)))
 						end do
+						
+						//if exp::Tokens::get_Item(i + 1) is LCParen then
+							//object intitializer code here
+						//end if
+						
 					elseif exp::Tokens::get_Item(i) is ArrInitCallTok then
 						//if output is arrinitcall
 						var naitoken as ArrInitCallTok = $ArrInitCallTok$exp::Tokens::get_Item(i)

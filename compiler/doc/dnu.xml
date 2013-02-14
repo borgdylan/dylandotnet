@@ -3,6 +3,32 @@
         <name>dnu</name>
     </assembly>
     <members>
+        <member name="dylan.NET.Utils.CompilerMsg..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Utils.CompilerMsg..ctor">
+            <param name="line">To be added.</param>
+            <param name="file">To be added.</param>
+            <param name="msg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Utils.CompilerMsg.File">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Utils.CompilerMsg.Line">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Utils.CompilerMsg.Msg">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Utils.Constants.cr">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -149,6 +175,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Utils.StreamUtils.Errors">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Utils.StreamUtils.InitInOutSWithStd">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -190,6 +221,11 @@
         </member>
         <member name="dylan.NET.Utils.StreamUtils.WarnH">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Utils.StreamUtils.Warnings">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Utils.StreamUtils.Write">

@@ -50,8 +50,8 @@
       </Docs>
     </Member>
     <Member MemberName="ErrorH">
-      <MemberSignature Language="C#" Value="public static event Action&lt;int,string,string&gt; ErrorH;" />
-      <MemberSignature Language="ILAsm" Value=".event class System.Action`3&lt;int32, string, string&gt; ErrorH" />
+      <MemberSignature Language="C#" Value="public static event Action&lt;dylan.NET.Utils.CompilerMsg&gt; ErrorH;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.Action`1&lt;class dylan.NET.Utils.CompilerMsg&gt; ErrorH" />
       <MemberType>Event</MemberType>
       <Attributes>
         <Attribute>
@@ -62,10 +62,29 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Action&lt;System.Int32,System.String,System.String&gt;</ReturnType>
+        <ReturnType>System.Action&lt;dylan.NET.Utils.CompilerMsg&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Errors">
+      <MemberSignature Language="C#" Value="public static IObservable&lt;dylan.NET.Utils.CompilerMsg&gt; Errors ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.IObservable`1&lt;class dylan.NET.Utils.CompilerMsg&gt; Errors() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.IObservable&lt;dylan.NET.Utils.CompilerMsg&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -209,8 +228,8 @@
       </Docs>
     </Member>
     <Member MemberName="WarnH">
-      <MemberSignature Language="C#" Value="public static event Action&lt;int,string,string&gt; WarnH;" />
-      <MemberSignature Language="ILAsm" Value=".event class System.Action`3&lt;int32, string, string&gt; WarnH" />
+      <MemberSignature Language="C#" Value="public static event Action&lt;dylan.NET.Utils.CompilerMsg&gt; WarnH;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.Action`1&lt;class dylan.NET.Utils.CompilerMsg&gt; WarnH" />
       <MemberType>Event</MemberType>
       <Attributes>
         <Attribute>
@@ -221,10 +240,29 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Action&lt;System.Int32,System.String,System.String&gt;</ReturnType>
+        <ReturnType>System.Action&lt;dylan.NET.Utils.CompilerMsg&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Warnings">
+      <MemberSignature Language="C#" Value="public static IObservable&lt;dylan.NET.Utils.CompilerMsg&gt; Warnings ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.IObservable`1&lt;class dylan.NET.Utils.CompilerMsg&gt; Warnings() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.IObservable&lt;dylan.NET.Utils.CompilerMsg&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

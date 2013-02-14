@@ -201,5 +201,6 @@
     <None Include="codegen\collectionitem.dyl" />
     <None Include="cflags.dyl.in" />
     <None Include="dev\nuget2dn.dyl" />
+    <None Include="dnu\compilermsg.dyl" />
   </ItemGroup>
 </Project>

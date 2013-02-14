@@ -36,6 +36,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CurlyLvl">
+      <MemberSignature Language="C#" Value="public int CurlyLvl;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 CurlyLvl" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GenLvl">
       <MemberSignature Language="C#" Value="public int GenLvl;" />
       <MemberSignature Language="ILAsm" Value=".field public int32 GenLvl" />

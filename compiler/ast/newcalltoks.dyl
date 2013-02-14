@@ -25,20 +25,9 @@ class public auto ansi NewCallTok extends Token
 
 	method public void AddParam(var paramtoadd as Expr)
 		Params::Add(paramtoadd)
-//		var i as integer = -1
-//		var destarr as Expr[] = new Expr[Params[l] + 1]
-//
-//		do until i = (Params[l] - 1)
-//			i = i + 1
-//			destarr[i] = Params[i]
-//		end do
-		
 		if Params::get_Count() = 0 then
 			Line = paramtoadd::Line
 		end if
-		
-//		destarr[Params[l]] = paramtoadd
-//		Params = destarr
 	end method
 
 end class
@@ -84,20 +73,9 @@ class public auto ansi ArrInitCallTok extends Token
 	
 	method public void AddElem(var eltoadd as Expr)
 		Elements::Add(eltoadd)
-//		var i as integer = -1
-//		var destarr as Expr[] = new Expr[Elements[l] + 1]
-//
-//		do until i = (Elements[l] - 1)
-//			i = i + 1
-//			destarr[i] = Elements[i]
-//		end do
-		
 		if Elements::get_Count() = 0 then
 			Line = eltoadd::Line
 		end if
-		
-//		destarr[Elements[l]] = eltoadd
-//		Elements = destarr
 	end method
 
 end class
@@ -121,20 +99,9 @@ class public auto ansi ObjInitCallTok extends Token
 	
 	method public void AddElem(var eltoadd as Token)
 		Elements::Add(eltoadd)
-//		var i as integer = -1
-//		var destarr as Token[] = new Token[Elements[l] + 1]
-//
-//		do until i = (Elements[l] - 1)
-//			i = i + 1
-//			destarr[i] = Elements[i]
-//		end do
-		
 		if Elements::get_Count() = 0 then
 			Line = eltoadd::Line
 		end if
-		
-//		destarr[Elements[l]] = eltoadd
-//		Elements = destarr
 	end method
 
 end class

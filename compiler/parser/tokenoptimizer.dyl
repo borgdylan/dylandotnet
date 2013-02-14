@@ -9,12 +9,14 @@
 class public auto ansi TokenOptimizer
 
 	field public integer GenLvl
+	field public integer CurlyLvl
 	field public Flags PFlags
 	field public boolean isFirstToken
 
 	method public void TokenOptimizer()
 		me::ctor()
 		GenLvl = 0
+		CurlyLvl = 0
 		PFlags = new Flags()
 		isFirstToken = true
 	end method
@@ -22,6 +24,7 @@ class public auto ansi TokenOptimizer
 	method public void TokenOptimizer(var pf as Flags)
 		me::ctor()
 		GenLvl = 0
+		CurlyLvl = 0
 		PFlags = pf
 		isFirstToken = true
 	end method
@@ -99,7 +102,13 @@ class public auto ansi TokenOptimizer
 		end if
 		
 		if tok::Value = "=" then
-			if PFlags::IfFlag then
+			if CurlyLvl > 0 then
+				var assop as AssignOp2 = new AssignOp2()
+				assop::Line = tok::Line
+				assop::Value = tok::Value
+				//tok = new AssignOp2() {Line = tok::Line, Value = tok::Value}
+				tok = assop
+			elseif PFlags::IfFlag then
 				var eqop2 as EqOp = new EqOp()
 				eqop2::Line = tok::Line
 				eqop2::Value = tok::Value
@@ -331,6 +340,7 @@ class public auto ansi TokenOptimizer
 		end if
 		
 		if tok::Value = "{" then
+			CurlyLvl = CurlyLvl + 1
 			var lcpar as LCParen = new LCParen()
 			lcpar::Line = tok::Line
 			lcpar::Value = tok::Value
@@ -339,6 +349,7 @@ class public auto ansi TokenOptimizer
 		end if
 		
 		if tok::Value = "}" then
+			CurlyLvl = CurlyLvl - 1
 			var rcpar as RCParen = new RCParen()
 			rcpar::Line = tok::Line
 			rcpar::Value = tok::Value

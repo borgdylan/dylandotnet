@@ -13,7 +13,7 @@ class public auto ansi Lexer
 		var stmts as StmtSet = new StmtSet(path)
 		var curstmt as Stmt = null
 		var curln as Line = null
-		var sr as StreamReader = new StreamReader(path)
+		var sr as StreamReader = new StreamReader(path,true)
 		var crflag as boolean = false
 		var lfflag as boolean = false
 		var buf as string = String::Empty

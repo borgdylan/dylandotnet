@@ -278,6 +278,7 @@
       <Type Name="AritOp" Kind="Class" />
       <Type Name="AsOp" Kind="Class" />
       <Type Name="AssignOp" Kind="Class" />
+      <Type Name="AssignOp2" Kind="Class" />
       <Type Name="ConditionalOp" Kind="Class" />
       <Type Name="DecOp" Kind="Class" />
       <Type Name="DivOp" Kind="Class" />

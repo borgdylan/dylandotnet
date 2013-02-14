@@ -35,6 +35,20 @@ class public auto ansi AssignOp extends Op
 
 end class
 
+//=
+class public auto ansi AssignOp2 extends Op
+
+	method public void AssignOp2()
+		me::ctor()
+		PrecNo = 1
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "="
+	end method
+
+end class
+
 //as
 class public auto ansi AsOp extends Op
 

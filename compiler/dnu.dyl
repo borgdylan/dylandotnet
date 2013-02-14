@@ -14,7 +14,6 @@
 #refstdasm "System.dll"
 #refstdasm "System.Core.dll"
 #refstdasm "System.Xml.Linq.dll"
-
 #refasm "C5.Mono.dll"
 
 import System
@@ -37,6 +36,13 @@ import dylan.NET
 	#debug on
 end #if
 
+#if RX and NET_4_5 then
+	#refstdasm "System.Reactive.Core.dll"
+	#refstdasm "System.Reactive.Linq.dll"
+	import System.Reactive
+	import System.Reactive.Linq
+end #if
+
 #include "dnu/assemblyinfo.dyl"
 
 assembly dnu dll
@@ -47,6 +53,7 @@ namespace dylan.NET.Utils
 	#include "dnu/xmlu.dyl"
 	#include "dnu/parseu.dyl"
 	#include "dnu/keyboard.dyl"
+	#include "dnu/compilermsg.dyl"
 	#include "dnu/streamu.dyl"
 	//#include "dnu/winapi.txt"
 end namespace

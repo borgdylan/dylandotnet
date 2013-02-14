@@ -28,8 +28,8 @@ class public auto ansi static StreamUtils
 	field public static boolean UseConsole
 	field public static boolean TerminateOnError
 
-	field private static Action<of integer, string, string> _ErrorH
-	field private static Action<of integer, string, string> _WarnH
+	field private static Action<of CompilerMsg> _ErrorH
+	field private static Action<of CompilerMsg> _WarnH
 
 	method private static void StreamUtils()
 		Stdin = Console::OpenStandardInput()
@@ -119,7 +119,7 @@ class public auto ansi static StreamUtils
 	end method
 
 	[method: ComVisible(false)]
-	method public static hidebysig specialname void add_ErrorH(var eh as Action<of integer, string, string>)
+	method public static hidebysig specialname void add_ErrorH(var eh as Action<of CompilerMsg>)
 		if _ErrorH = null then
 			_ErrorH = eh
 		else
@@ -128,19 +128,19 @@ class public auto ansi static StreamUtils
 	end method
 
 	[method: ComVisible(false)]
-	method public static hidebysig specialname void remove_ErrorH(var eh as Action<of integer, string, string>)
+	method public static hidebysig specialname void remove_ErrorH(var eh as Action<of CompilerMsg>)
 		if _ErrorH != null then
 			_ErrorH = _ErrorH - eh
 		end if
 	end method
 	
-	event none Action<of integer, string, string> ErrorH
+	event none Action<of CompilerMsg> ErrorH
 		add add_ErrorH()
 		remove remove_ErrorH()
 	end event
 	
 	[method: ComVisible(false)]
-	method public static hidebysig specialname void add_WarnH(var eh as Action<of integer, string, string>)
+	method public static hidebysig specialname void add_WarnH(var eh as Action<of CompilerMsg>)
 		if _WarnH = null then
 			_WarnH = eh
 		else
@@ -149,13 +149,13 @@ class public auto ansi static StreamUtils
 	end method
 
 	[method: ComVisible(false)]
-	method public static hidebysig specialname void remove_WarnH(var eh as Action<of integer, string, string>)
+	method public static hidebysig specialname void remove_WarnH(var eh as Action<of CompilerMsg>)
 		if _WarnH != null then
 			_WarnH = _WarnH - eh
 		end if
 	end method
 	
-	event none Action<of integer, string, string> WarnH
+	event none Action<of CompilerMsg> WarnH
 		add add_WarnH()
 		remove remove_WarnH()
 	end event
@@ -164,7 +164,7 @@ class public auto ansi static StreamUtils
 	method public static void WriteWarn(var line as integer, var file as string, var msg as string)
 		WriteLine("WARNING: " + msg + " at line " + $string$line + " in file: " + file)
 		if _WarnH != null then
-			_WarnH::Invoke(line,file,msg)
+			_WarnH::Invoke(new CompilerMsg(line,file,msg))
 		end if
 	end method
 
@@ -172,7 +172,7 @@ class public auto ansi static StreamUtils
 	method public static void WriteError(var line as integer, var file as string, var msg as string)
 		WriteLine("ERROR: " + msg + " at line " + $string$line + " in file: " + file)
 		if _ErrorH != null then
-			_ErrorH::Invoke(line,file,msg)
+			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
 		end if
 		if TerminateOnError then
 			CloseInS()
@@ -182,5 +182,19 @@ class public auto ansi static StreamUtils
 			throw new ErrorException()
 		end if
 	end method
+	
+	#if RX and NET_4_5 then
+	
+		[method: ComVisible(false)]
+		method public static IObservable<of CompilerMsg> Errors()
+			return Observable::FromEvent<of CompilerMsg>(new Action<of Action<of CompilerMsg> >(add_ErrorH()),new Action<of Action<of CompilerMsg> >(remove_ErrorH()))
+		end method
+		
+		[method: ComVisible(false)]
+		method public static IObservable<of CompilerMsg> Warnings()
+			return Observable::FromEvent<of CompilerMsg>(new Action<of Action<of CompilerMsg> >(add_WarnH()),new Action<of Action<of CompilerMsg> >(remove_WarnH()))
+		end method
+	
+	end #if
 
 end class

@@ -245,6 +245,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.Parser.TokenOptimizer.CurlyLvl">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.Parser.TokenOptimizer.GenLvl">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
