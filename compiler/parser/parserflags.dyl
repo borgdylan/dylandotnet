@@ -128,5 +128,11 @@ class public auto ansi Flags
 		id::OrdOp = OrdOp
 		return id
 	end method
+	
+	method public void ResetMCISFlgs()
+		MetCallFlag = false
+		IdentFlag = false
+		StringFlag = false
+	end method
 
 end class

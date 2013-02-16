@@ -251,6 +251,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ResetMCISFlgs">
+      <MemberSignature Language="C#" Value="public void ResetMCISFlgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void ResetMCISFlgs() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SetUnaryFalse">
       <MemberSignature Language="C#" Value="public void SetUnaryFalse ();" />
       <MemberSignature Language="ILAsm" Value=".method public instance void SetUnaryFalse() cil managed" />
