@@ -1,17 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="parser/exproptimizer.dyl">
-    <Files>
-      <File FileName="parser/stmtoptimizer.dyl" Line="1227" Column="62" />
-      <File FileName="parser/exproptimizer.dyl" Line="620" Column="28" />
-      <File FileName="codegen/stmtreader.dyl" Line="650" Column="35" />
-      <File FileName="ast/newcalltoks.dyl" Line="85" Column="30" />
-      <File FileName="ast/attrvalpair.dyl" Line="13" Column="2" />
-      <File FileName="templateproj/template.dyl" Line="557" Column="1" />
-      <File FileName="dnc/Mod1.dyl" Line="101" Column="12" />
-      <File FileName="codegen/eval.dyl" Line="1114" Column="172" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="639" Column="12" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
@@ -25,7 +14,7 @@
             <Node name="lexer" expanded="True" />
             <Node name="m4" expanded="True" />
             <Node name="parser" expanded="True">
-              <Node name="exproptimizer.dyl" selected="True" />
+              <Node name="parserflags.dyl" selected="True" />
             </Node>
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />

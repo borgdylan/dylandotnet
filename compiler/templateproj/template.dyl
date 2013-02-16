@@ -185,9 +185,34 @@ class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
 end class
 
 class public auto ansi ObjInit
+	
 	field public integer A
 	field public integer B
 	field public ObjInit C
+	field private string _Msg
+	
+	method public void ABC()
+		Console::WriteLine("hello")
+	end method
+	
+	method public integer XYZ(var s as string)
+		Console::WriteLine(s)
+		return 0
+	end method
+	
+	method public hidebysig specialname string get_Msg()
+		return _Msg
+	end method
+	
+	method public hidebysig specialname void set_Msg(var m as string)
+		_Msg = m
+	end method
+
+	property none string Msg
+		get get_Msg()
+		set set_Msg()
+	end property
+	
 end class
 
 class public auto ansi Program
@@ -550,7 +575,7 @@ class public auto ansi Program
 		
 		var ao as object = new integer[] {1,2,3}
 		var ai = $integer[]$ao
-		var oi = new ObjInit() {A = 1, B = 2, C = new ObjInit() {A = 3, B = 4, C = null}}
+		var oi = new ObjInit() {A = 1, B = 2, C = new ObjInit() {A = 3, B = 4, C = null, set_Msg("InnerHello")}, set_Msg("Hello")}
 	end method
 
 end class

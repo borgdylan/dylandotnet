@@ -170,7 +170,7 @@ class public auto ansi static Loader
 
 		if mtdinfo = null then
 			ints = typ::GetInterfaces()
-			if ints <> null then
+			if ints != null then
 				do until i = (ints[l] - 1)
 					i = i + 1
 					mtdinfo = ints[i]::GetMethod(name)

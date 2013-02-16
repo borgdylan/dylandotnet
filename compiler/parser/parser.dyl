@@ -14,12 +14,6 @@ class public auto ansi Parser
 		me::ctor()
 		PFlags = new Flags()
 	end method
-	
-//	method public void Parser(var assemstate as boolean)
-//		me::ctor()
-//		PFlags = new Flags()
-//		PFlags::AssemFlg = assemstate
-//	end method
 
 	method public void Parser(var pf as Flags)
 		me::ctor()

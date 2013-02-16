@@ -31,20 +31,9 @@ class public auto ansi MethodCallTok extends Token
 
 	method public void AddParam(var paramtoadd as Expr)
 		Params::Add(paramtoadd)
-//		var i as integer = -1
-//		var destarr as Expr[] = new Expr[Params[l] + 1]
-//
-//		do until i = (Params[l] - 1)
-//			i = i + 1
-//			destarr[i] = Params[i]
-//		end do
-		
 		if Params::get_Count() = 0 then
 			Line = paramtoadd::Line
 		end if
-		
-//		destarr[Params[l]] = paramtoadd
-//		Params = destarr
 	end method
 
 end class

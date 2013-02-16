@@ -41,11 +41,7 @@ class public auto ansi TypeTok extends Token implements ICloneable
 	end method
 	
 	method public hidebysig virtual TypeTok CloneTT()
-		var tt as TypeTok = new TypeTok(Value)
-		tt::IsArray = IsArray
-		tt::IsByRef = IsByRef
-		tt::RefTyp = RefTyp
-		return tt
+		return new TypeTok(Value) {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp}
 	end method
 	
 	method public hidebysig virtual final newslot object Clone()
@@ -81,11 +77,7 @@ class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 	end method
 	
 	method public hidebysig virtual TypeTok CloneTT()
-		var tt as GenericTypeTok = new GenericTypeTok(Value)
-		tt::IsArray = IsArray
-		tt::IsByRef = IsByRef
-		tt::RefTyp = RefTyp
-		tt::Params = new TypeTok[Params[l]]
+		var tt as GenericTypeTok = new GenericTypeTok(Value) {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp, Params = new TypeTok[Params[l]]}
 		var i as integer = -1
 		do until i = (Params[l] - 1)
 			i = i + 1

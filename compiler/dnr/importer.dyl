@@ -41,14 +41,6 @@ class public auto ansi static Importer
 
 	[method: ComVisible(false)]
 	method public static void AddAsm(var asmm as IKVM.Reflection.Assembly)
-		//var i as integer = -1
-		//var destarr as Assembly[] = new Assembly[Asms[l] + 1]
-		//do until i = (Asms[l] - 1)
-			//i = i + 1
-			//destarr[i] = Asms[i]
-		//end do
-		//destarr[Asms[l]] = asm
-		//Asms = destarr
 		Asms::Add(asmm)
 	end method
 

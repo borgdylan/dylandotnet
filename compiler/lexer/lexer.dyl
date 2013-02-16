@@ -9,7 +9,6 @@
 class public auto ansi Lexer
 
 	method public StmtSet Analyze(var path as string)
-	
 		var stmts as StmtSet = new StmtSet(path)
 		var curstmt as Stmt = null
 		var curln as Line = null
@@ -38,10 +37,8 @@ class public auto ansi Lexer
 			else
 				if lfflag then
 					curline = curline + 1
-					curstmt = new Stmt()
-					curstmt::Line = curline
 					curln = new Line()
-					curstmt = curln::Analyze(curstmt, buf)
+					curstmt = curln::Analyze(new Stmt() {Line = curline}, buf)
 					curstmtlen = curstmt::Tokens::get_Count()
 			
 					if curstmtlen != 0 then
@@ -56,10 +53,8 @@ class public auto ansi Lexer
 			
 			if sr::Peek() = -1 then
 				curline = curline + 1
-				curstmt = new Stmt()
-				curstmt::Line = curline
 				curln = new Line()
-				curstmt = curln::Analyze(curstmt, buf)
+				curstmt = curln::Analyze(new Stmt() {Line = curline}, buf)
 				curstmtlen = curstmt::Tokens::get_Count()
 			
 				if curstmtlen != 0 then
@@ -76,7 +71,6 @@ class public auto ansi Lexer
 	end method
 	
 	method public StmtSet AnalyzeString(var str as string)
-	
 		var stmts as StmtSet = new StmtSet()
 		var curstmt as Stmt = null
 		var curln as Line = null
@@ -105,10 +99,8 @@ class public auto ansi Lexer
 			else
 				if lfflag then
 					curline = curline + 1
-					curstmt = new Stmt()
-					curstmt::Line = curline
 					curln = new Line()
-					curstmt = curln::Analyze(curstmt, buf)
+					curstmt = curln::Analyze(new Stmt() {Line = curline}, buf)
 					curstmtlen = curstmt::Tokens::get_Count()
 			
 					if curstmtlen != 0 then
@@ -123,10 +115,8 @@ class public auto ansi Lexer
 			
 			if sr::Peek() = -1 then
 				curline = curline + 1
-				curstmt = new Stmt()
-				curstmt::Line = curline
 				curln = new Line()
-				curstmt = curln::Analyze(curstmt, buf)
+				curstmt = curln::Analyze(new Stmt() {Line = curline}, buf)
 				curstmtlen = curstmt::Tokens::get_Count()
 			
 				if curstmtlen != 0 then

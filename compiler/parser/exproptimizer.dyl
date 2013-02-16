@@ -306,15 +306,30 @@ class public auto ansi ExprOptimizer
 	
 	end method
 	
+	method private Token ObjInitHelper(var e as Expr)
+		e = Optimize(e)
+		if e::Tokens::get_Count() > 2 then
+			if e::Tokens::get_Item(1) is AssignOp2 then
+				var e2 as Expr = new Expr() {Line = e::Line}
+				e2::Tokens::AddAll(e::Tokens::View(2,e::Tokens::get_Count() - 2))
+				return new AttrValuePair() {Name = $Ident$e::Tokens::get_Item(0), ValueExpr = e2}
+			end if
+		end if
+		if e::Tokens::get_Count() > 0 then
+			if e::Tokens::get_Item(0) is MethodCallTok then
+				return e::Tokens::get_Item(0)
+			end if
+		end if
+		return null
+	end method
+	
 	method public Expr procObjInitCall(var stm as Expr, var i as integer)
-		
 		var ct as NewCallTok = $NewCallTok$stm::Tokens::get_Item(i)
 		var lvl as integer = 1
 		var d as boolean = true
 		var j as integer = i
 		var lp as C5.ArrayList<of Token> = new C5.ArrayList<of Token>()
-		var curvp as AttrValuePair = new AttrValuePair() {ValueExpr = new Expr()}
-		var eqf as boolean = false
+		var ep as Expr = new Expr()
 		
 		i = i + 1
 		stm::RemToken(i)
@@ -323,17 +338,12 @@ class public auto ansi ExprOptimizer
 
 		do until i = len
 			i = i + 1
-			
-			if eqf then
-				d = true
-			end if
 	
 			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
 				lvl = lvl - 1
 				if lvl = 0 then
 					d = false
-					curvp::ValueExpr = Optimize(curvp::ValueExpr)
-					lp::Add(curvp)
+					lp::Add(ObjInitHelper(ep))
 					stm::RemToken(i)
 					len = stm::Tokens::get_Count() - 1
 					i = i - 1
@@ -344,21 +354,11 @@ class public auto ansi ExprOptimizer
 			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
 				lvl = lvl + 1
 				d = true
-			elseif stm::Tokens::get_Item(i) is AssignOp2 then
-				if lvl = 1 then
-					eqf = true
-					stm::RemToken(i)
-					len = stm::Tokens::get_Count() - 1
-					i = i - 1
-					d = false
-				end if
 			elseif stm::Tokens::get_Item(i) is Comma then
 				if lvl = 1 then
 					d = false
-					eqf = false
-					curvp::ValueExpr = Optimize(curvp::ValueExpr)
-					lp::Add(curvp)
-					curvp = new AttrValuePair() {ValueExpr = new Expr()}
+					lp::Add(ObjInitHelper(ep))
+					ep = new Expr()
 					stm::RemToken(i)
 					len = stm::Tokens::get_Count() - 1
 					i = i - 1
@@ -370,11 +370,7 @@ class public auto ansi ExprOptimizer
 			end if
 			
 			if d then
-				if eqf then
-					curvp::ValueExpr::AddToken(stm::Tokens::get_Item(i))
-				else
-					curvp::Name = $Ident$stm::Tokens::get_Item(i)
-				end if
+				ep::AddToken(stm::Tokens::get_Item(i))
 				stm::RemToken(i)
 				len = stm::Tokens::get_Count() - 1
 				i = i - 1
@@ -586,7 +582,6 @@ class public auto ansi ExprOptimizer
 				lvl = lvl - 1
 				if lvl = 0 then
 					d = false
-					//mct::AddParam(ep2)
 					stm::RemToken(i)
 					len = stm::Tokens::get_Count() - 1
 					i = i - 1
@@ -627,9 +622,6 @@ class public auto ansi ExprOptimizer
 		var i as integer = -1
 		var j as integer = -1
 		var mcbool as boolean = false
-		//var mcflgc as boolean = false
-		//var iflgc as boolean = false
-		//var sflgc as boolean = false
 		var mctok as Token = null
 		var newavtok as Token = null
 		var newaexpr as Expr = null
@@ -777,8 +769,7 @@ class public auto ansi ExprOptimizer
 
 				if tok is CharLiteral then
 					if PFlags::isChanged then
-						var cl1 as CharLiteral = $CharLiteral$exp::Tokens::get_Item(i)
-						exp::Tokens::set_Item(i,PFlags::UpdateCharLit(cl1))
+						exp::Tokens::set_Item(i,PFlags::UpdateCharLit($CharLiteral$exp::Tokens::get_Item(i)))
 						PFlags::SetUnaryFalse()
 						j = i
 					end if
@@ -787,8 +778,7 @@ class public auto ansi ExprOptimizer
 
 				if tok is NullLiteral then
 					if PFlags::isChanged then
-						var nul1 as NullLiteral = $NullLiteral$exp::Tokens::get_Item(i)
-						exp::Tokens::set_Item(i,PFlags::UpdateNullLit(nul1))
+						exp::Tokens::set_Item(i,PFlags::UpdateNullLit($NullLiteral$exp::Tokens::get_Item(i)))
 						PFlags::SetUnaryFalse()
 						j = i
 					end if
@@ -797,8 +787,7 @@ class public auto ansi ExprOptimizer
 
 				if tok is MeTok then
 					if PFlags::isChanged then
-						var metk1 as MeTok = $MeTok$exp::Tokens::get_Item(i)
-						exp::Tokens::set_Item(i,PFlags::UpdateMeTok(metk1))
+						exp::Tokens::set_Item(i,PFlags::UpdateMeTok($MeTok$exp::Tokens::get_Item(i)))
 						PFlags::SetUnaryFalse()
 						j = i
 					end if
@@ -808,8 +797,7 @@ class public auto ansi ExprOptimizer
 				if tok is StringLiteral then
 					PFlags::StringFlag = true
 					if PFlags::isChanged then
-						var sl1 as StringLiteral = $StringLiteral$exp::Tokens::get_Item(i)
-						exp::Tokens::set_Item(i,PFlags::UpdateStringLit(sl1))
+						exp::Tokens::set_Item(i,PFlags::UpdateStringLit($StringLiteral$exp::Tokens::get_Item(i)))
 						PFlags::SetUnaryFalse()
 						j = i
 					end if
@@ -818,8 +806,7 @@ class public auto ansi ExprOptimizer
 
 				if tok is BooleanLiteral then
 					if PFlags::isChanged then
-						var bl1 as BooleanLiteral = $BooleanLiteral$exp::Tokens::get_Item(i)
-						exp::Tokens::set_Item(i,PFlags::UpdateBoolLit(bl1))
+						exp::Tokens::set_Item(i,PFlags::UpdateBoolLit($BooleanLiteral$exp::Tokens::get_Item(i)))
 						PFlags::SetUnaryFalse()
 						j = i
 					end if
@@ -828,8 +815,7 @@ class public auto ansi ExprOptimizer
 
 				if tok is NumberLiteral then
 					if PFlags::isChanged then
-						var nl1 as NumberLiteral = $NumberLiteral$exp::Tokens::get_Item(i)
-						exp::Tokens::set_Item(i,PFlags::UpdateNumLit(nl1))
+						exp::Tokens::set_Item(i,PFlags::UpdateNumLit($NumberLiteral$exp::Tokens::get_Item(i)))
 						PFlags::SetUnaryFalse()
 						j = i
 					end if
@@ -837,43 +823,18 @@ class public auto ansi ExprOptimizer
 				end if
 
 				if tok is NewTok then
-
 					exp::RemToken(i)
 					exp = procNewCall(procType(exp, i), i)
 					len = exp::Tokens::get_Count() - 1
-
 					if exp::Tokens::get_Item(i) is NewCallTok then
 						//if output is newcall
-						//var nctoken as NewCallTok = $NewCallTok$exp::Tokens::get_Item(i)
-
-						//var nci2 as integer = -1
-						//do until nci2 = (nctoken::Params::get_Count() - 1)
-						//	nci2 = nci2 + 1
-						//	nctoken::Params::set_Item(nci2,Optimize(nctoken::Params::get_Item(nci2)))
-						//end do
-						
 						if i < len then
 							if exp::Tokens::get_Item(i + 1) is LCParen then
 								exp = procObjInitCall(exp, i)
 								len = exp::Tokens::get_Count() - 1
 							end if
 						end if
-						
-					//elseif exp::Tokens::get_Item(i) is ArrInitCallTok then
-						//if output is arrinitcall
-						//var naitoken as ArrInitCallTok = $ArrInitCallTok$exp::Tokens::get_Item(i)
-
-						//var naii2 as integer = -1
-						//do until naii2 = (naitoken::Elements::get_Count() - 1)
-						//	naii2 = naii2 + 1
-						//	naitoken::Elements::set_Item(naii2,Optimize(naitoken::Elements::get_Item(naii2)))
-						//end do
-					//else
-						//if output is newarrcall
-						//var nactoken as NewarrCallTok = $NewarrCallTok$exp::Tokens::get_Item(i)
-						//nactoken::ArrayLen = Optimize(nactoken::ArrayLen)
 					end if
-
 					goto fin
 				end if
 
@@ -899,10 +860,10 @@ class public auto ansi ExprOptimizer
 					exp::RemToken(i)
 					len = len - 1
 
-					if (tok is TypeTok) = false then
-						newattok = new TypeTok() {Line = tok::Line, Value = tok::Value}
-					else
+					if tok is TypeTok then
 						newattok = $TypeTok$tok
+					else
+						newattok = new TypeTok() {Line = tok::Line, Value = tok::Value}
 					end if
 
 					newavtok = exp::Tokens::get_Item(i)
@@ -953,23 +914,6 @@ class public auto ansi ExprOptimizer
 						exp = procMethodCall(exp, i)
 						i = i - 1
 						len = exp::Tokens::get_Count() - 1
-
-						//var mct as MethodCallTok = $MethodCallTok$exp::Tokens::get_Item(i)
-
-						//mcflgc = PFlags::MetCallFlag
-						//iflgc = PFlags::IdentFlag
-						//sflgc = PFlags::StringFlag
-
-						//var i2 as integer = -1
-						//do until i2 = (mct::Params::get_Count() - 1)
-						//	i2 = i2 + 1
-						//	PFlags::ResetMCISFlgs()
-						//	mct::Params::set_Item(i2,Optimize(mct::Params::get_Item(i2)))
-						//end do
-						
-						//PFlags::MetCallFlag = mcflgc
-						//PFlags::IdentFlag = iflgc
-						//PFlags::StringFlag = sflgc
 					end if
 
 					goto fin
@@ -987,10 +931,6 @@ class public auto ansi ExprOptimizer
 						exp = procIdentArrayAccess(exp, i)
 						i = i - 1
 						len = exp::Tokens::get_Count() - 1
-
-						//var aidt as Ident = $Ident$exp::Tokens::get_Item(i)
-						//aidt::ArrLoc = Optimize(aidt::ArrLoc)
-
 						PFlags::IdentFlag = true
 						j = i
 					elseif PFlags::MetCallFlag then
@@ -998,19 +938,6 @@ class public auto ansi ExprOptimizer
 						exp = procMtdArrayAccess(exp, i)
 						i = i - 1
 						len = exp::Tokens::get_Count() - 1
-
-						//mcflgc = PFlags::MetCallFlag
-						//iflgc = PFlags::IdentFlag
-						//sflgc = PFlags::StringFlag
-
-						//var amtd as MethodCallTok = $MethodCallTok$exp::Tokens::get_Item(i)
-						//PFlags::ResetMCISFlgs()
-						//amtd::Name::ArrLoc = Optimize(amtd::Name::ArrLoc)
-
-						//PFlags::MetCallFlag = mcflgc
-						//PFlags::IdentFlag = iflgc
-						//PFlags::StringFlag = sflgc
-
 						PFlags::MetCallFlag = true
 						j = i
 					end if

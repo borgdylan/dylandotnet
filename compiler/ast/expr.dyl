@@ -21,37 +21,13 @@ class public auto ansi Expr
 
 	method public void AddToken(var toktoadd as Token)
 		Tokens::Add(toktoadd)
-//		var i as integer = -1
-//		var destarr as Token[] = new Token[Tokens[l] + 1]
-//
-//		do until i = (Tokens[l] - 1)
-//			i = i + 1
-//			destarr[i] = Tokens[i]
-//		end do
-
 		if Tokens::get_Count() = 0 then
 			Line = toktoadd::Line
 		end if
-
-//		destarr[Tokens[l]] = toktoadd
-//		Tokens = destarr
 	end method
 
 	method public void RemToken(var ind as integer)
 		Tokens::RemoveAt(ind)
-//		var i as integer = -1
-//		var j as integer = -1
-//		var destarr as Token[] = new Token[Tokens[l] - 1]
-//
-//		do until i = (Tokens[l] - 1)
-//			i = i + 1
-//			if i != ind then
-//				j = j + 1
-//				destarr[j] = Tokens[i]
-//			end if
-//		end do
-//
-//		Tokens = destarr
 	end method
 
 

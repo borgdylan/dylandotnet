@@ -56,7 +56,7 @@ class public auto ansi static StreamUtils
 		if OutS != null then
 			OutS::Close()
 		end if
-			OutS = new StreamWriter(s)
+		OutS = new StreamWriter(s)
 	end method
 
 	[method: ComVisible(false)]

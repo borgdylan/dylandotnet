@@ -690,7 +690,7 @@ class public auto ansi beforefieldinit Evaluator
 					if idtb2 = false then
 						if idtb1 = false then
 							mcvr = SymTable::FindVar(mnstrarr[i])
-							if mcvr <> null then
+							if mcvr != null then
 								if emt then
 									AsmFactory::Type04 = mcvr::VarTyp
 									Helpers::EmitLocLd(mcvr::Index, mcvr::LocArg)
@@ -701,7 +701,7 @@ class public auto ansi beforefieldinit Evaluator
 								continue
 							else
 								mcfldinf = Helpers::GetLocFld(mnstrarr[i])
-								if mcfldinf <> null then
+								if mcfldinf != null then
 									idtisstatic = mcfldinf::get_IsStatic()
 									if idtisstatic = false then
 										if emt then
@@ -720,7 +720,7 @@ class public auto ansi beforefieldinit Evaluator
 							end if
 						else
 							mcfldinf = Helpers::GetLocFld(mnstrarr[i])
-							if mcfldinf <> null then
+							if mcfldinf != null then
 								idtisstatic = mcfldinf::get_IsStatic()
 								if idtisstatic = false then
 									if emt then
@@ -1097,13 +1097,15 @@ class public auto ansi beforefieldinit Evaluator
 				ASTEmitNew(oictok::Ctor,emt)
 				var ctyp = AsmFactory::Type02
 				foreach el2 in oictok::Elements
-					if el2 is AttrValuePair then
+					if el2 == null then
+						//do nothing
+					elseif el2 is AttrValuePair then
 						var el as AttrValuePair = $AttrValuePair$el2
 						if emt then
 							ILEmitter::EmitDup()
 						end if
 						ASTEmit(ConvToAST(ConvToRPN(el::ValueExpr)), emt)
-						var fldinf = Helpers::GetExtFld(ctyp, el::Name::Value)
+						var fldinf as FieldInfo = Helpers::GetExtFld(ctyp, el::Name::Value)
 						if fldinf = null then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is not defined/accessible for the class '" + ctyp::ToString() + "'.")
 						end if
@@ -1116,6 +1118,16 @@ class public auto ansi beforefieldinit Evaluator
 						Helpers::CheckAssignability(fldinf::get_FieldType(), AsmFactory::Type02)
 						if emt then	
 							Helpers::EmitFldSt(fldinf, fldinf::get_IsStatic())
+						end if
+					elseif el2 is MethodCallTok then
+						var el as MethodCallTok = $MethodCallTok$el2
+						if Helpers::SetPopFlg(el) != null then
+							if emt then
+								ILEmitter::EmitDup()
+							end if
+							AsmFactory::Type02 = ctyp
+							AsmFactory::ChainFlg = true
+							ASTEmit(el, emt)
 						end if
 					end if
 				end for
@@ -1206,7 +1218,7 @@ class public auto ansi beforefieldinit Evaluator
 				if idtb2 = false then
 					if idtb1 = false then
 						vr = SymTable::FindVar(idtnamarr[i])
-						if vr <> null then
+						if vr != null then
 							AsmFactory::Type04 = vr::VarTyp
 							if isbyref then
 								AsmFactory::ForcedAddrFlg = true
@@ -1225,7 +1237,7 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 
 					fldinf = Helpers::GetLocFld(idtnamarr[i])
-					if fldinf <> null then
+					if fldinf != null then
 						idtisstatic = fldinf::get_IsStatic()
 						if idtisstatic = false then
 							ILEmitter::EmitLdarg(0)
@@ -1283,7 +1295,7 @@ class public auto ansi beforefieldinit Evaluator
 					SymTable::StoreFlg = false
 					if vr = null then
 						fldinf = Helpers::GetLocFld(idtnamarr[i])
-						if fldinf <> null then
+						if fldinf != null then
 							idtisstatic = fldinf::get_IsStatic()
 							if idtisstatic = false then
 								ILEmitter::EmitLdarg(0)
@@ -1292,7 +1304,7 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				else
 					fldinf = Helpers::GetLocFld(idtnamarr[i])
-					if fldinf <> null then
+					if fldinf != null then
 						idtisstatic = fldinf::get_IsStatic()
 						if idtisstatic = false then
 							ILEmitter::EmitLdarg(0)
@@ -1340,7 +1352,7 @@ class public auto ansi beforefieldinit Evaluator
 					SymTable::StoreFlg = true
 					vr = SymTable::FindVar(idtnamarr[i])
 					SymTable::StoreFlg = false
-					if vr <> null then
+					if vr != null then
 						Helpers::CheckAssignability(vr::VarTyp, outt)
 						Helpers::EmitLocSt(vr::Index, vr::LocArg)
 						vr::Stored = true
@@ -1349,7 +1361,7 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 				if vr = null then
 					fldinf = Helpers::GetLocFld(idtnamarr[i])
-					if fldinf <> null then
+					if fldinf != null then
 						if fldinf::get_IsInitOnly() and (AsmFactory::InCtorFlg == false) then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is declared as readonly and may only be set from constructors.")
 						end if
