@@ -545,7 +545,7 @@ class public auto ansi Program
 //		typ = gettype Func<of IEnumerable<of XElement> >
 //		var xc as integer = ROTest::X
 //		//ROTest::X = xc + 12
-		foreachtests()
+//		foreachtests()
 //		Console::WriteLine("asdf" is List<of object>)
 //		Console::WriteLine(("asdf" as List<of object>)  != null)
 //		Console::WriteLine("asdf" is string)
@@ -576,6 +576,7 @@ class public auto ansi Program
 		var ao as object = new integer[] {1,2,3}
 		var ai = $integer[]$ao
 		var oi = new ObjInit() {A = 1, B = 2, C = new ObjInit() {A = 3, B = 4, C = null, set_Msg("InnerHello")}, set_Msg("Hello")}
+		var ti = "{" + #ternary {Environment::get_OSVersion()::get_Platform() == PlatformID::Unix ? "Unix!!!" , "Not Unix :("} + "}"
 	end method
 
 end class

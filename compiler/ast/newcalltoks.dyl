@@ -105,3 +105,25 @@ class public auto ansi ObjInitCallTok extends Token
 	end method
 
 end class
+
+class public auto ansi TernaryCallTok extends Token
+
+	field public Expr Condition
+	field public Expr TrueExpr
+	field public Expr FalseExpr
+
+	method public void TernaryCallTok()
+		me::ctor()
+		Condition = new Expr()
+		TrueExpr = new Expr()
+		FalseExpr = new Expr()
+	end method
+
+	method public void TernaryCallTok(var value as string)
+		me::ctor(value)
+		Condition = new Expr()
+		TrueExpr = new Expr()
+		FalseExpr = new Expr()
+	end method
+
+end class

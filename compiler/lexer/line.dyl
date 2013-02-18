@@ -60,12 +60,10 @@ class public auto ansi Line
 			//----------------------------------
 			if cc = ":" then
 				if PrevChar = c"\q" then
-					if (InStr or InChar) = false then
-						ob = true
-						scla = false
-						sca = true
-						goto fin
-					end if
+					ob = true
+					scla = false
+					sca = true
+					goto fin
 				end if
 			end if
 			//----------------------------------
@@ -156,6 +154,12 @@ class public auto ansi Line
 			end if
 
 			if cc = "|" then
+				sca = true
+				ob = true
+				goto fin
+			end if
+			
+			if cc = "?" then
 				sca = true
 				ob = true
 				goto fin
@@ -330,9 +334,7 @@ class public auto ansi Line
 	
 		var curchar as string = String::Empty
 		var lachar as string = String::Empty
-		var curtok as Token = null
-		var len as integer = str::get_Length()
-		len = len - 1
+		var len as integer = str::get_Length() - 1
 		
 		var buf as string = String::Empty
 		var cuttok as boolean = false
@@ -359,10 +361,7 @@ class public auto ansi Line
 		
 		if sc then
 			if buf::get_Length() != 0 then
-				curtok = new Token()
-				curtok::Value = buf
-				curtok::Line = stm::Line
-				stm::AddToken(curtok)
+				stm::AddToken(new Token() {Value = buf, Line = stm::Line})
 			end if
 			buf = String::Empty
 		end if
@@ -382,10 +381,7 @@ class public auto ansi Line
 		
 		if cuttok then
 			if buf::get_Length() != 0 then
-				curtok = new Token()
-				curtok::Value = buf
-				curtok::Line = stm::Line
-				stm::AddToken(curtok)
+				stm::AddToken(new Token() {Value = buf, Line = stm::Line})
 			end if
 			buf = String::Empty
 			if sc then
@@ -404,10 +400,7 @@ class public auto ansi Line
 		place cont
 		
 		if buf::get_Length() != 0 then
-			curtok = new Token()
-			curtok::Value = buf
-			curtok::Line = stm::Line
-			stm::AddToken(curtok)
+			stm::AddToken(new Token() {Value = buf, Line = stm::Line})
 		end if
 		buf = String::Empty
 		

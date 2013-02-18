@@ -12,6 +12,7 @@ class public auto ansi TokenOptimizer
 	field public integer CurlyLvl
 	field public Flags PFlags
 	field public boolean isFirstToken
+	field public boolean isFirstRun
 
 	method public void TokenOptimizer()
 		me::ctor()
@@ -19,6 +20,7 @@ class public auto ansi TokenOptimizer
 		CurlyLvl = 0
 		PFlags = new Flags()
 		isFirstToken = true
+		isFirstRun = true
 	end method
 	
 	method public void TokenOptimizer(var pf as Flags)
@@ -27,962 +29,434 @@ class public auto ansi TokenOptimizer
 		CurlyLvl = 0
 		PFlags = pf
 		isFirstToken = true
+		isFirstRun = true
 	end method
 
 	method public Token Optimize(var tok as Token, var lkahead as Token)
-
 		if lkahead = null then
 			lkahead = new Token()
 		end if
-		
-		label fin
+		if isFirstRun = false then
+			if isFirstToken then
+				isFirstToken = false
+			end if
+		end if
+		isFirstRun = false
 		
 		if tok::Value = "+" then
-			tok = new AddOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "*" then
-			tok = new MulOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "-" then
-			tok = new SubOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "/" then
-			tok = new DivOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "++" then
-			tok = new IncOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "--" then
-			tok = new DecOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "<<" then
-			tok = new ShlOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = ">>" then
-			tok = new ShrOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "=" then
-			if CurlyLvl > 0 then
-				tok = new AssignOp2() {Line = tok::Line, Value = tok::Value}
-			elseif PFlags::IfFlag then
-				tok = new EqOp() {Line = tok::Line, Value = tok::Value}
-			else
-				tok = new AssignOp() {Line = tok::Line, Value = tok::Value}
-			end if
+			return new AddOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "*" then
+			return new MulOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "-" then
+			return new SubOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "/" then
+			return new DivOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "++" then
+			return new IncOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "--" then
+			return new DecOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "<<" then
+			return new ShlOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = ">>" then
+			return new ShrOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "=" then
 			PFlags::AsFlag = false
-			goto fin
-		end if
-		
-		if tok::Value = "%" then
-			tok = new ModOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "==" then
-			tok = new EqOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "like" then
-			tok = new LikeOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "!" then
-			tok = new NegOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "~" then
-			tok = new NotOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "!=" then
-			tok = new NeqOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "notlike" then
-			tok = new NLikeOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "<>" then
-			tok = new NeqOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = ">=" then
-			tok = new GeOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "<="  then
-			tok = new LeOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = ">" then
+			if CurlyLvl > 0 then
+				return new AssignOp2() {Line = tok::Line, Value = tok::Value}
+			elseif PFlags::IfFlag then
+				return new EqOp() {Line = tok::Line, Value = tok::Value}
+			else
+				return new AssignOp() {Line = tok::Line, Value = tok::Value}
+			end if
+		elseif tok::Value = "%" then
+			return new ModOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "==" then
+			return new EqOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "like" then
+			return new LikeOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "!" then
+			return new NegOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "~" then
+			return new NotOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "!=" then
+			return new NeqOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "notlike" then
+			return new NLikeOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "<>" then
+			return new NeqOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = ">=" then
+			return new GeOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "<="  then
+			return new LeOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = ">" then
 			if GenLvl = 0 then
-				tok = new GtOp() {Line = tok::Line, Value = tok::Value}
+				return new GtOp() {Line = tok::Line, Value = tok::Value}
 			else
 				GenLvl = GenLvl - 1
-				tok = new RAParen() {Line = tok::Line, Value = tok::Value}
+				return new RAParen() {Line = tok::Line, Value = tok::Value}
 			end if
-		goto fin
-		end if
-		
-		if tok::Value = "<" then
+		elseif tok::Value = "<" then
 			if lkahead::Value = "of" then
 				GenLvl = GenLvl + 1
-				tok = new LAParen() {Line = tok::Line, Value = tok::Value}
+				return new LAParen() {Line = tok::Line, Value = tok::Value}
 			else
-				tok = new LtOp() {Line = tok::Line, Value = tok::Value}
+				return new LtOp() {Line = tok::Line, Value = tok::Value}
 			end if
-			goto fin
-		end if
-		
-		if tok::Value = "is" then
-			tok = new IsOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "and" then
-			tok = new AndOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "or" then
-			tok = new OrOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "nand" then
-			tok = new NandOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "nor" then
-			tok = new NorOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "xor" then
-			tok = new XorOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "xnor" then
-			tok = new XnorOp() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "(" then
-			tok = new LParen() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = ")" then
-			tok = new RParen() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "[]" then
-			tok = new LRSParen() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "&" then
-			tok = new Ampersand() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "[" then
-			tok = new LSParen() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "]" then
-			tok = new RSParen() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "{" then
+		elseif tok::Value = "is" then
+			return new IsOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "and" then
+			return new AndOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "or" then
+			return new OrOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "nand" then
+			return new NandOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "nor" then
+			return new NorOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "xor" then
+			return new XorOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "xnor" then
+			return new XnorOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "(" then
+			return new LParen() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = ")" then
+			return new RParen() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "[]" then
+			return new LRSParen() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "&" then
+			return new Ampersand() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "[" then
+			return new LSParen() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "]" then
+			return new RSParen() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "{" then
 			CurlyLvl = CurlyLvl + 1
-			tok = new LCParen() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "}" then
+			return new LCParen() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "}" then
 			CurlyLvl = CurlyLvl - 1
-			tok = new RCParen() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "|" then
-			tok = new Pipe() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "," then
-			tok = new Comma() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "$" then
-			tok = new DollarSign() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "label" then
-			tok = new LabelTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "place" then
-			tok = new PlaceTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "goto" then
-			tok = new GotoTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "if" then
-			tok = new IfTok() {Line = tok::Line, Value = tok::Value}
+			return new RCParen() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "|" then
+			return new Pipe() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "," then
+			return new Comma() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "?" then
+			return new QuestionMark() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "$" then
+			return new DollarSign() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "label" then
+			return new LabelTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "place" then
+			return new PlaceTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "goto" then
+			return new GotoTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "if" then
 			PFlags::IfFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "#if" then
-			tok = new HIfTok() {Line = tok::Line, Value = tok::Value}
+			return new IfTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#if" then
 			PFlags::IfFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "try" then
-			tok = new TryTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "finally" then
-			tok = new FinallyTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "until" then
-			tok = new UntilTok() {Line = tok::Line, Value = tok::Value}
+			return new HIfTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "try" then
+			return new TryTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "finally" then
+			return new FinallyTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "until" then
 			PFlags::IfFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "while" then
-			tok = new WhileTok() {Line = tok::Line, Value = tok::Value}
+			return new UntilTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "while" then
 			PFlags::IfFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "elseif" then
-			tok = new ElseIfTok() {Line = tok::Line, Value = tok::Value}
+			return new WhileTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "elseif" then
 			PFlags::IfFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "#elseif" then
-			tok = new HElseIfTok() {Line = tok::Line, Value = tok::Value}
+			return new ElseIfTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#elseif" then
 			PFlags::IfFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "else" then
-			tok = new ElseTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "#else" then
-			tok = new HElseTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "#define" then
-			tok = new HDefineTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "#undef" then
-			tok = new HUndefTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "do" then
-			tok = new DoTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "for" then
-			tok = new ForTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "foreach" then
-			tok = new ForeachTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "break" then
-			tok = new BreakTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "continue" then
-			tok = new ContinueTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "then" then
-			tok = new ThenTok() {Line = tok::Line, Value = tok::Value}
+			return new HElseIfTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "else" then
+			return new ElseTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#else" then
+			return new HElseTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#ternary" then
+			return new TernaryTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#define" then
+			return new HDefineTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#undef" then
+			return new HUndefTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "do" then
+			return new DoTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "for" then
+			return new ForTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "foreach" then
+			return new ForeachTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "break" then
+			return new BreakTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "continue" then
+			return new ContinueTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "then" then
 			PFlags::IfFlag = false
-			goto fin
-		end if
-		
-		if tok::Value = "new" then
-			tok = new NewTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "newarr" then
-			tok = new NewarrTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "me" then
-			tok = new MeTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "namespace" then
-			tok = new NamespaceTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "ptr" then
-			tok = new PtrTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "gettype" then
-			tok = new GettypeTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "ref" then
-			tok = new RefTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "valinref" then
-			tok = new ValInRefTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "#refasm" then
-			tok = new RefasmTok() {Line = tok::Line, Value = tok::Value}
+			return new ThenTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "new" then
+			return new NewTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "newarr" then
+			return new NewarrTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "me" then
+			return new MeTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "namespace" then
+			return new NamespaceTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "ptr" then
+			return new PtrTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "gettype" then
+			return new GettypeTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "ref" then
+			return new RefTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "valinref" then
+			return new ValInRefTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#refasm" then
 			PFlags::NoOptFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "#refstdasm" then
-			tok = new RefstdasmTok() {Line = tok::Line, Value = tok::Value}
+			return new RefasmTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#refstdasm" then
 			PFlags::NoOptFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "#debug" then
-			tok = new DebugTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "#include" then
-			tok = new IncludeTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "#error" then
-			tok = new ErrorTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "#warning" then
-			tok = new WarningTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "#scope" then
-			tok = new ScopeTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "import" then
-			tok = new ImportTok() {Line = tok::Line, Value = tok::Value}
+			return new RefstdasmTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#debug" then
+			return new DebugTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#include" then
+			return new IncludeTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#error" then
+			return new ErrorTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#warning" then
+			return new WarningTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "#scope" then
+			return new ScopeTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "import" then
 			PFlags::NoOptFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "locimport" then
-			tok = new LocimportTok() {Line = tok::Line, Value = tok::Value}
+			return new ImportTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "locimport" then
 			PFlags::NoOptFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "assembly:" then
-			tok = new AssemblyCTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "assembly" then
+			return new LocimportTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "assembly:" then
+			return new AssemblyCTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "assembly" then
 			if isFirstToken then
-				tok = new AssemblyTok() {Line = tok::Line, Value = tok::Value}
+				return new AssemblyTok() {Line = tok::Line, Value = tok::Value}
 			else
-				tok = new AssemblyAttr() {Line = tok::Line, Value = tok::Value}
+				return new AssemblyAttr() {Line = tok::Line, Value = tok::Value}
 			end if
-			goto fin
-		end if
-		
-		if tok::Value = "ver" then
-			tok = new VerTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "ver" then
 			PFlags::NoOptFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "on" then
-			tok = new OnTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "off" then
-			tok = new OffTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "exe" then
-			tok = new ExeTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "dll" then
-			tok = new DllTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "field:" then
-			tok = new FieldCTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "field" then
-			tok = new FieldTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "property:" then
-			tok = new PropertyCTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "property" then
-			tok = new PropertyTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "event:" then
-			tok = new EventCTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "event" then
-			tok = new EventTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "class:" then
-			tok = new ClassCTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value like "^parameter(\d)+:$" then
-			tok = new ParameterCTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "class" then
-			tok = new ClassTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "struct" then
-			tok = new StructTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "delegate" then
-			tok = new DelegateTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "extends" then
-			tok = new ExtendsTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "implements" then
-			tok = new ImplementsTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "method" then
-			tok = new MethodTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "method:" then
-			tok = new MethodCTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "end" then
-			tok = new EndTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if (tok::Value = "set") and isFirstToken then
-			tok = new SetTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if (tok::Value = "get") and isFirstToken then
-			tok = new GetTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if (tok::Value = "add") and isFirstToken then
-			tok = new AddTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if (tok::Value = "remove")  and isFirstToken then
-			tok = new RemoveTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "return" then
-			tok = new ReturnTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "lock" then
-			tok = new LockTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "throw" then
-			tok = new ThrowTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "var" then
-			tok = new VarTok() {Line = tok::Line, Value = tok::Value}
+			return new VerTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "on" then
+			return new OnTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "off" then
+			return new OffTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "exe" then
+			return new ExeTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "dll" then
+			return new DllTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "field:" then
+			return new FieldCTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "field" then
+			return new FieldTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "property:" then
+			return new PropertyCTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "property" then
+			return new PropertyTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "event:" then
+			return new EventCTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "event" then
+			return new EventTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "class:" then
+			return new ClassCTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value like "^parameter(\d)+:$" then
+			return new ParameterCTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "class" then
+			return new ClassTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "struct" then
+			return new StructTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "delegate" then
+			return new DelegateTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "extends" then
+			return new ExtendsTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "implements" then
+			return new ImplementsTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "method" then
+			return new MethodTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "method:" then
+			return new MethodCTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "end" then
+			return new EndTok() {Line = tok::Line, Value = tok::Value}
+		elseif (tok::Value = "set") and isFirstToken then
+			return new SetTok() {Line = tok::Line, Value = tok::Value}
+		elseif (tok::Value = "get") and isFirstToken then
+			return new GetTok() {Line = tok::Line, Value = tok::Value}
+		elseif (tok::Value = "add") and isFirstToken then
+			return new AddTok() {Line = tok::Line, Value = tok::Value}
+		elseif (tok::Value = "remove")  and isFirstToken then
+			return new RemoveTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "return" then
+			return new ReturnTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "lock" then
+			return new LockTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "throw" then
+			return new ThrowTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "var" then
 			PFlags::AsFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "catch" then
-			tok = new CatchTok() {Line = tok::Line, Value = tok::Value}
+			return new VarTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "catch" then
 			PFlags::AsFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "as" then
+			return new CatchTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "as" then
 			if PFlags::AsFlag then
-				tok = new AsTok() {Line = tok::Line, Value = tok::Value}
+				return new AsTok() {Line = tok::Line, Value = tok::Value}
 			else
-				tok = new AsOp() {Line = tok::Line, Value = tok::Value}
+				return new AsOp() {Line = tok::Line, Value = tok::Value}
 			end if
-			goto fin
-		end if
-		
-		if tok::Value = "of" then
-			tok = new OfTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "in" then
-			tok = new InTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "of" then
+			return new OfTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "in" then
 			PFlags::IfFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "out" then
-			tok = new OutTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "inout" then
-			tok = new InOutTok() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "private" then
-			tok = new PrivateAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "public" then
-			tok = new PublicAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "initonly" then
-			tok = new InitOnlyAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "static" then
-			tok = new StaticAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "none" then
-			tok = new NoneAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "specialname" then
-			tok = new SpecialNameAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "sealed" then
-			tok = new SealedAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "final" then
-			tok = new FinalAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "hidebysig" then
-			tok = new HideBySigAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "family" then
-			tok = new FamilyAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "famorassem" then
-			tok = new FamORAssemAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "famandassem" then
-			tok = new FamANDAssemAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "virtual" then
-			tok = new VirtualAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "abstract" then
-			tok = new AbstractAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "prototype" then
-			tok = new PrototypeAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "partial" then
-			tok = new PartialAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "interface" then
-			tok = new InterfaceAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "newslot" then
-			tok = new NewSlotAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "auto" then
-			tok = new AutoLayoutAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "autochar" then
-			tok = new AutoClassAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "ansi" then
-			tok = new AnsiClassAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "beforefieldinit" then
-			tok = new BeforeFieldInitAttr() {Line = tok::Line, Value = tok::Value}
-			goto fin
-		end if
-		
-		if tok::Value = "string" then
-			tok = new StringTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-	
-		if tok::Value = "void" then
-			tok = new VoidTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "decimal" then
-			tok = new DecimalTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "integer" then
-			tok = new IntegerTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "intptr" then
-			tok = new IntPtrTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "uinteger" then
-			tok = new UIntegerTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "double" then
-			tok = new DoubleTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "boolean" then
-			tok = new BooleanTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "char" then
-			tok = new CharTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "single" then
-			tok = new SingleTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "sbyte" then
-			tok = new SByteTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "byte" then
-			tok = new ByteTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "short" then
-			tok = new ShortTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "ushort" then
-			tok = new UShortTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "long" then
-			tok = new LongTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "ulong" then
-			tok = new ULongTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value = "object" then
-			tok = new ObjectTok(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if tok::Value like "^//(.)*$" then
-			tok = new CommentTok() {Line = tok::Line, Value = tok::Value}
+			return new InTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "out" then
+			return new OutTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "inout" then
+			return new InOutTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "private" then
+			return new PrivateAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "public" then
+			return new PublicAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "initonly" then
+			return new InitOnlyAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "static" then
+			return new StaticAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "none" then
+			return new NoneAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "specialname" then
+			return new SpecialNameAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "sealed" then
+			return new SealedAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "final" then
+			return new FinalAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "hidebysig" then
+			return new HideBySigAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "family" then
+			return new FamilyAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "famorassem" then
+			return new FamORAssemAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "famandassem" then
+			return new FamANDAssemAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "virtual" then
+			return new VirtualAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "abstract" then
+			return new AbstractAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "prototype" then
+			return new PrototypeAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "partial" then
+			return new PartialAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "interface" then
+			return new InterfaceAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "newslot" then
+			return new NewSlotAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "auto" then
+			return new AutoLayoutAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "autochar" then
+			return new AutoClassAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "ansi" then
+			return new AnsiClassAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "beforefieldinit" then
+			return new BeforeFieldInitAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "string" then
+			return new StringTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "void" then
+			return new VoidTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "decimal" then
+			return new DecimalTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "integer" then
+			return new IntegerTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "intptr" then
+			return new IntPtrTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "uinteger" then
+			return new UIntegerTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "double" then
+			return new DoubleTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "boolean" then
+			return new BooleanTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "char" then
+			return new CharTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "single" then
+			return new SingleTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "sbyte" then
+			return new SByteTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "byte" then
+			return new ByteTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "short" then
+			return new ShortTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "ushort" then
+			return new UShortTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "long" then
+			return new LongTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "ulong" then
+			return new ULongTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value = "object" then
+			return new ObjectTok(tok::Value) {Line = tok::Line}
+		elseif tok::Value like "^//(.)*$" then
 			PFlags::CmtFlag = true
-			goto fin
-		end if
-		
-		if tok::Value = "null" then
-			tok = new NullLiteral(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if (tok::Value = "true") or (tok::Value = "false") then
-			var boolit as BooleanLiteral
+			return new CommentTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "null" then
+			return new NullLiteral(tok::Value) {Line = tok::Line}
+		elseif (tok::Value = "true") or (tok::Value = "false") then
 			if tok::Value = "true" then
-				boolit = new BooleanLiteral(true)
+				return new BooleanLiteral(true) {Line = tok::Line}
+			elseif tok::Value = "false" then
+				return new BooleanLiteral(false) {Line = tok::Line}
 			end if
-			if tok::Value = "false" then
-				boolit = new BooleanLiteral(false)
-			end if
-			boolit::Line = tok::Line
-			tok = boolit
-			goto fin
-		end if
-		
-		if (tok::Value like "^'(.)*'$") or (tok::Value like "^c'(.)*'$") then
+		elseif (tok::Value like "^'(.)*'$") or (tok::Value like "^c'(.)*'$") then
 			if tok::Value::StartsWith("c") then
 				tok::Value = ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\s'}))
 			else
 				tok::Value = tok::Value::Trim(new char[] {c'\s'})
 			end if
-			tok = new CharLiteral($char$tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if (tok::Value like c"^\q(.)*\q$") or (tok::Value like c"^c\q(.)*\q$") then
+			return new CharLiteral($char$tok::Value) {Line = tok::Line}
+		elseif (tok::Value like c"^\q(.)*\q$") or (tok::Value like c"^c\q(.)*\q$") then
 			if tok::Value::StartsWith("c") then
 				tok::Value = ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'}))
 			else
 				tok::Value = tok::Value::Trim(new char[] {c'\q'})
 			end if
-			tok = new StringLiteral(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("d") then
-			tok = new DoubleLiteral($double$tok::Value::TrimEnd(new char[] {'d'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("f") then
-			tok = new FloatLiteral($single$tok::Value::TrimEnd(new char[] {'f'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("m") then
-			tok = new DecimalLiteral($decimal$tok::Value::TrimEnd(new char[] {'m'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if (tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$") then
-			tok = new DoubleLiteral($double$tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("d") then
-			tok = new DoubleLiteral($double$tok::Value::TrimEnd(new char[] {'d'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("f") then
-			tok = new FloatLiteral($single$tok::Value::TrimEnd(new char[] {'f'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("m") then
-			tok = new DecimalLiteral($decimal$tok::Value::TrimEnd(new char[] {'m'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ui") then
-			tok = new UIntLiteral($uinteger$tok::Value::TrimEnd(new char[] {'i'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ip") then
+			return new StringLiteral(tok::Value) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("d") then
+			return new DoubleLiteral($double$tok::Value::TrimEnd(new char[] {'d'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("f") then
+			return new FloatLiteral($single$tok::Value::TrimEnd(new char[] {'f'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("m") then
+			return new DecimalLiteral($decimal$tok::Value::TrimEnd(new char[] {'m'})) {Line = tok::Line}
+		elseif (tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$") then
+			return new DoubleLiteral($double$tok::Value) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("d") then
+			return new DoubleLiteral($double$tok::Value::TrimEnd(new char[] {'d'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("f") then
+			return new FloatLiteral($single$tok::Value::TrimEnd(new char[] {'f'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("m") then
+			return new DecimalLiteral($decimal$tok::Value::TrimEnd(new char[] {'m'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ui") then
+			return new UIntLiteral($uinteger$tok::Value::TrimEnd(new char[] {'i'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ip") then
 			tok::Value = tok::Value::TrimEnd(new char[] {'p'})::TrimEnd(new char[] {'i'})
-			tok = new IntPtrLiteral() {NumVal = new IntPtr($integer$tok::Value), Value = tok::Value, Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("i") then
-			tok = new IntLiteral($integer$tok::Value::TrimEnd(new char[] {'i'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ul") then
-			tok = new ULongLiteral($ulong$tok::Value::TrimEnd(new char[] {'l'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("l") then
-			tok = new LongLiteral($long$tok::Value::TrimEnd(new char[] {'l'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("us") then
-			tok = new UShortLiteral($ushort$tok::Value::TrimEnd(new char[] {'s'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("s") then
-			tok = new ShortLiteral($short$tok::Value::TrimEnd(new char[] {'s'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ub") then
-			tok = new ByteLiteral($byte$tok::Value::TrimEnd(new char[] {'b'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("b") then
-			tok = new SByteLiteral($sbyte$tok::Value::TrimEnd(new char[] {'b'})) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$") then
-			tok = new IntLiteral($integer$tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		if (tok::Value like "^([a-zA-Z])+(.)*$") or (tok::Value like "^_(.)*([a-zA-Z])+(.)*$") or (tok::Value like "^::(.)*([a-zA-Z])+(.)*$") then
-			tok = new Ident(tok::Value) {Line = tok::Line}
-			goto fin
-		end if
-		
-		place fin
-		
-		if isFirstToken then
-			isFirstToken = false
+			return new IntPtrLiteral() {NumVal = new IntPtr($integer$tok::Value), Value = tok::Value, Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("i") then
+			return new IntLiteral($integer$tok::Value::TrimEnd(new char[] {'i'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ul") then
+			return new ULongLiteral($ulong$tok::Value::TrimEnd(new char[] {'l'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("l") then
+			return new LongLiteral($long$tok::Value::TrimEnd(new char[] {'l'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("us") then
+			return new UShortLiteral($ushort$tok::Value::TrimEnd(new char[] {'s'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("s") then
+			return new ShortLiteral($short$tok::Value::TrimEnd(new char[] {'s'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ub") then
+			return new ByteLiteral($byte$tok::Value::TrimEnd(new char[] {'b'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
+		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("b") then
+			return new SByteLiteral($sbyte$tok::Value::TrimEnd(new char[] {'b'})) {Line = tok::Line}
+		elseif (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$") then
+			return new IntLiteral($integer$tok::Value) {Line = tok::Line}
+		elseif (tok::Value like "^([a-zA-Z])+(.)*$") or (tok::Value like "^_(.)*([a-zA-Z])+(.)*$") or (tok::Value like "^::(.)*([a-zA-Z])+(.)*$") then
+			return new Ident(tok::Value) {Line = tok::Line}
 		end if
 		
 		return tok

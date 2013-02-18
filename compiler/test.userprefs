@@ -10,17 +10,16 @@
       <File FileName="dnc/Mod1.dyl" Line="108" Column="2" />
       <File FileName="parser/parser.dyl" Line="3" Column="40" />
       <File FileName="parser/stmtoptimizer.dyl" Line="1219" Column="9" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="1040" Column="1" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="467" Column="1" />
       <File FileName="codegen/stmtreader.dyl" Line="663" Column="1" />
-      <File FileName="parser/exproptimizer.dyl" Line="671" Column="13" />
+      <File FileName="parser/exproptimizer.dyl" Line="391" Column="8" />
       <File FileName="codegen/symtable.dyl" Line="519" Column="1" />
       <File FileName="codegen/milambdas.dyl" Line="41" Column="14" />
       <File FileName="codegen/typeitem.dyl" Line="85" Column="1" />
       <File FileName="codegen/typelist.dyl" Line="26" Column="20" />
       <File FileName="lexer/lexer.dyl" Line="28" Column="1" />
-      <File FileName="test.dyl" Line="39" Column="4" />
+      <File FileName="test.dyl" Line="39" Column="1" />
       <File FileName="dnu/streamu.dyl" Line="26" Column="1" />
-      <File FileName="../../../../../var/www/Code/dylannet/dylandotnet/compiler/test.dyl" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

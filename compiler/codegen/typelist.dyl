@@ -20,10 +20,7 @@ class public auto ansi TypeList
 	end method
 
 	method public TypeItem GetTypeItem(var nam as string)
-		var lon as C5.IList<of string> = new C5.LinkedList<of string> {String::Empty}
-		lon::AddAll(Importer::Imps)
-		
-		foreach ns in lon
+		foreach ns in new C5.LinkedList<of string>() {Add(string::Empty), AddAll(Importer::Imps)}
 			var til as TILambdas
 			if ns::get_Length() = 0 then
 				til = new TILambdas(nam)
@@ -36,7 +33,6 @@ class public auto ansi TypeList
 				return match
 			end if
 		end for
-
 		return null
 	end method
 

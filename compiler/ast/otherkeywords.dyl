@@ -553,6 +553,14 @@ class public auto ansi HElseTok extends Token
 
 end class
 
+class public auto ansi TernaryTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#ternary"
+	end method
+
+end class
+
 class public auto ansi HDefineTok extends Token
 
 	method public hidebysig virtual string ToString()

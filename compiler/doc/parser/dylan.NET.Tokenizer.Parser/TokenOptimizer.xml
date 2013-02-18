@@ -60,6 +60,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="isFirstRun">
+      <MemberSignature Language="C#" Value="public bool isFirstRun;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool isFirstRun" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="isFirstToken">
       <MemberSignature Language="C#" Value="public bool isFirstToken;" />
       <MemberSignature Language="ILAsm" Value=".field public bool isFirstToken" />

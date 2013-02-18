@@ -34,7 +34,7 @@ ver 1.3.0.0
 class public auto ansi Program
 
 	method public static void main()
-		Environment::set_CurrentDirectory("/home/dylan/Desktop/dylandotnet/compiler/templateproj")
+		Environment::set_CurrentDirectory("/var/www/Code/dylannet/dylandotnet/compiler/templateproj")
 		var arr as string[] = new string[] {"template.dyl"}
 		Program::Invoke(arr)
 		//var t as Task = Program::InvokeAsync(arr)

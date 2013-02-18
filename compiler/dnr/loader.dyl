@@ -394,10 +394,8 @@ class public auto ansi static Loader
 
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.MethodInfo LoadGenericMethod(var typ as IKVM.Reflection.Type, var name as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[])
-
 		var mtdinfo as IKVM.Reflection.MethodInfo = null
 		var mil as MILambdas = new MILambdas(genparams)
-	
 		var matches as IKVM.Reflection.MethodInfo[]
 		matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Select<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(LoadGenericMtdOverlds(typ, name, genparams[l]), new Func<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(mil::InstGenMtd())))
 		
@@ -419,7 +417,6 @@ class public auto ansi static Loader
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.MethodInfo LoadConvOp(var typ as IKVM.Reflection.Type, var name as string, var src as IKVM.Reflection.Type, var snk as IKVM.Reflection.Type)
 		var mil as MILambdas = new MILambdas(name,snk)
-		
 		var matches as IKVM.Reflection.MethodInfo[]
 		matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameNameAndReturn())))
 		
@@ -435,10 +432,7 @@ class public auto ansi static Loader
 
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.FieldInfo LoadField(var typ as IKVM.Reflection.Type, var name as string)
-
-		var fldinfo as IKVM.Reflection.FieldInfo = null
-
-		fldinfo = typ::GetField(name)
+		var fldinfo as IKVM.Reflection.FieldInfo = typ::GetField(name)
 		
 		if fldinfo = null then
 			fldinfo = typ::GetField(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic)
@@ -488,9 +482,7 @@ class public auto ansi static Loader
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.PropertyInfo LoadProperty(var typ as IKVM.Reflection.Type, var name as string)
 
-		var propinfo as IKVM.Reflection.PropertyInfo = null
-
-		propinfo = typ::GetProperty(name)
+		var propinfo as IKVM.Reflection.PropertyInfo = typ::GetProperty(name)
 		
 //		if propinfo = null then
 //			propinfo = typ::GetProperty(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic)

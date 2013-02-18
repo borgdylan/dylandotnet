@@ -1132,6 +1132,36 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				end for
 				AsmFactory::Type02 = ctyp
+			elseif tok is TernaryCallTok then
+				var tcc as TernaryCallTok = $TernaryCallTok$tok
+				if emt then
+					SymTable::AddIf()
+				end if
+				ASTEmit(ConvToAST(ConvToRPN(tcc::Condition)), emt)
+				if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Ternary Expressions should evaluate to boolean.")
+				end if
+				if emt then
+					ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
+				end if
+				ASTEmit(ConvToAST(ConvToRPN(tcc::TrueExpr)), emt)
+				var ctyp = AsmFactory::Type02
+				if emt then
+					ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
+					ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
+					SymTable::SetIfElsePass()
+				end if
+				ASTEmit(ConvToAST(ConvToRPN(tcc::FalseExpr)), emt)
+				if AsmFactory::Type02::Equals(ctyp) == false then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "True and False Cases for Ternary Expressions should evaluate to the same type.")
+				end if
+				if emt then
+					if SymTable::ReadIfElsePass() = false then
+						ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
+					end if
+					ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
+					SymTable::PopIf()
+				end if
 			elseif tok is PtrCallTok then
 				//ptr load section - obsolete
 				if emt then

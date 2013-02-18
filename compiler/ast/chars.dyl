@@ -120,3 +120,18 @@ class public auto ansi DollarSign extends Character
 		return "$"
 	end method
 end class
+
+// ?
+class public auto ansi QuestionMark extends Character
+	method public hidebysig virtual string ToString()
+		return "?"
+	end method
+end class
+
+// :
+class public auto ansi Colon extends Character
+	method public hidebysig virtual string ToString()
+		return ":"
+	end method
+end class
+

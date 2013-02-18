@@ -64,6 +64,13 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.procTernaryCall">
+            <param name="stm">To be added.</param>
+            <param name="i">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.Parser.ExprOptimizer.procType">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
@@ -261,6 +268,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.Parser.TokenOptimizer.GenLvl">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.Parser.TokenOptimizer.isFirstRun">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

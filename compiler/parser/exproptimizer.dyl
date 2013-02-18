@@ -380,6 +380,80 @@ class public auto ansi ExprOptimizer
 		stm::Tokens::set_Item(j, new ObjInitCallTok() {Line = ct::Line, Ctor = ct, Elements = lp})
 		return stm
 	end method
+	
+	method public Expr procTernaryCall(var stm as Expr, var i as integer)
+		var ct as TernaryCallTok = new TernaryCallTok() {Line = stm::Tokens::get_Item(i)::Line}
+		var lvl as integer = 1
+		var d as boolean = true
+		var j as integer = i
+		var stg as integer = 0
+		
+		i = i + 1
+		stm::RemToken(i)
+		var len as integer = stm::Tokens::get_Count() - 1
+		i = i - 1
+
+		do until i = len
+			i = i + 1
+			
+			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
+				lvl = lvl - 1
+				if lvl = 0 then
+					d = false
+					stm::RemToken(i)
+					len = stm::Tokens::get_Count() - 1
+					i = i - 1
+					break
+				else
+					d = true
+				end if
+			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
+				lvl = lvl + 1
+				d = true
+			elseif stm::Tokens::get_Item(i) is Comma then
+				if lvl = 1 then
+					d = false
+					stm::RemToken(i)
+					len = stm::Tokens::get_Count() - 1
+					i = i - 1
+					stg = 2
+				else
+					d = true
+				end if
+			elseif stm::Tokens::get_Item(i) is QuestionMark then
+				if lvl = 1 then
+					d = false
+					stm::RemToken(i)
+					len = stm::Tokens::get_Count() - 1
+					i = i - 1
+					stg = 1
+				else
+					d = true
+				end if
+			else
+				d = true
+			end if
+			
+			if d then
+				if stg = 0 then
+					ct::Condition::AddToken(stm::Tokens::get_Item(i))
+				elseif stg = 1 then
+					ct::TrueExpr::AddToken(stm::Tokens::get_Item(i))
+				elseif stg = 2 then
+					ct::FalseExpr::AddToken(stm::Tokens::get_Item(i))
+				end if
+				stm::RemToken(i)
+				len = stm::Tokens::get_Count() - 1
+				i = i - 1
+			end if
+		end do
+		
+		ct::Condition = Optimize(ct::Condition)
+		ct::TrueExpr = Optimize(ct::TrueExpr)
+		ct::FalseExpr = Optimize(ct::FalseExpr)
+		stm::Tokens::set_Item(j, ct)
+		return stm
+	end method
 
 	method public Expr procNewCall(var stm as Expr, var i as integer)
 
@@ -849,6 +923,13 @@ class public auto ansi ExprOptimizer
 				if (tok is IsOp) or (tok is AsOp) then
 					i = i + 1
 					exp = procType(exp,i)
+					len = exp::Tokens::get_Count() - 1
+					goto fin
+				end if
+				
+				if tok is TernaryTok then
+					//call ternary processor
+					exp = procTernaryCall(exp, i)
 					len = exp::Tokens::get_Count() - 1
 					goto fin
 				end if

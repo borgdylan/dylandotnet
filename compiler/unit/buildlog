@@ -23,10 +23,10 @@ Importing Namespace: System.IO
 Importing Namespace: NUnit.Framework
 Importing Namespace: dylan.NET.UnitTests
 Importing Namespace: dylan.NET.Utils
-Beginning Assembly: unit
 Finished Processing: streamutests.dyl (worker thread)
 Now Lexing: parseutests.dyl
 Now Parsing: parseutests.dyl
+Beginning Assembly: unit
 Finished Processing: parseutests.dyl (worker thread)
 Adding Class: dylan.NET.UnitTests.TestParseUtils
 	Adding Method: TestProcessStringExtASCII

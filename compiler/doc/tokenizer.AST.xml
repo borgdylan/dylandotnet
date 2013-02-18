@@ -1841,6 +1841,36 @@
             <summary>Constructs a new SwitchTok.</summary>
             <remarks />
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.TernaryCallTok..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.TernaryCallTok..ctor">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.TernaryCallTok.Condition">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.TernaryCallTok.FalseExpr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.TernaryCallTok.TrueExpr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.TernaryTok..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.TernaryTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.ThenTok..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -2199,6 +2229,15 @@
             <summary>Cosntructs a new Character.</summary>
             <remarks>You might prefer using one of the subclasses of this class. This class only is useful for detecting characters in general.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Chars.Colon..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Chars.Colon.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Chars.Comma..ctor">
             <summary>Constructs a new Comma.</summary>
             <remarks />
@@ -2294,6 +2333,15 @@
             <remarks />
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Chars.Pipe.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Chars.QuestionMark..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Chars.QuestionMark.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

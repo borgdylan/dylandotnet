@@ -191,6 +191,8 @@
       <Type Name="SetTok" Kind="Class" />
       <Type Name="StructTok" Kind="Class" />
       <Type Name="SwitchTok" Kind="Class" />
+      <Type Name="TernaryCallTok" Kind="Class" />
+      <Type Name="TernaryTok" Kind="Class" />
       <Type Name="ThenTok" Kind="Class" />
       <Type Name="ThrowTok" Kind="Class" />
       <Type Name="Token" Kind="Class" />
@@ -235,6 +237,7 @@
     <Namespace Name="dylan.NET.Tokenizer.AST.Tokens.Chars">
       <Type Name="Ampersand" Kind="Class" />
       <Type Name="Character" Kind="Class" />
+      <Type Name="Colon" Kind="Class" />
       <Type Name="Comma" Kind="Class" />
       <Type Name="Cr" Kind="Class" />
       <Type Name="CrLf" Kind="Class" />
@@ -246,6 +249,7 @@
       <Type Name="LRSParen" Kind="Class" />
       <Type Name="LSParen" Kind="Class" />
       <Type Name="Pipe" Kind="Class" />
+      <Type Name="QuestionMark" Kind="Class" />
       <Type Name="RAParen" Kind="Class" />
       <Type Name="RCParen" Kind="Class" />
       <Type Name="RParen" Kind="Class" />
