@@ -401,11 +401,7 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value = "null" then
 			return new NullLiteral(tok::Value) {Line = tok::Line}
 		elseif (tok::Value = "true") or (tok::Value = "false") then
-			if tok::Value = "true" then
-				return new BooleanLiteral(true) {Line = tok::Line}
-			elseif tok::Value = "false" then
-				return new BooleanLiteral(false) {Line = tok::Line}
-			end if
+			return #ternary {tok::Value == "true" ? new BooleanLiteral(true) {Line = tok::Line} , new BooleanLiteral(false) {Line = tok::Line}}
 		elseif (tok::Value like "^'(.)*'$") or (tok::Value like "^c'(.)*'$") then
 			if tok::Value::StartsWith("c") then
 				tok::Value = ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\s'}))
