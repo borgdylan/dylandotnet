@@ -1152,8 +1152,9 @@ class public auto ansi beforefieldinit Evaluator
 					SymTable::SetIfElsePass()
 				end if
 				ASTEmit(ConvToAST(ConvToRPN(tcc::FalseExpr)), emt)
-				if AsmFactory::Type02::Equals(ctyp) == false then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "True and False Cases for Ternary Expressions should evaluate to the same type.")
+				AsmFactory::Type02 = Helpers::CheckCompat(AsmFactory::Type02, ctyp)
+				if AsmFactory::Type02 == null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "True and False Cases for Ternary Expressions should evaluate to compatible types.")
 				end if
 				if emt then
 					if SymTable::ReadIfElsePass() = false then

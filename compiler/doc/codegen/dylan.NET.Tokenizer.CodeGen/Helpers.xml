@@ -168,6 +168,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CheckCompat">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CheckCompat (IKVM.Reflection.Type ta, IKVM.Reflection.Type tb);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type CheckCompat(class IKVM.Reflection.Type ta, class IKVM.Reflection.Type tb) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ta" Type="IKVM.Reflection.Type" />
+        <Parameter Name="tb" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="ta">To be added.</param>
+        <param name="tb">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CheckIfArrLen">
       <MemberSignature Language="C#" Value="public static bool CheckIfArrLen (dylan.NET.Tokenizer.AST.Exprs.Expr ind);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool CheckIfArrLen(class dylan.NET.Tokenizer.AST.Exprs.Expr ind) cil managed" />
@@ -548,27 +567,6 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="EvalTTok">
-      <MemberSignature Language="C#" Value="public static void EvalTTok (dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok tt);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EvalTTok(class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok tt) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="tt" Type="dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok" />
-      </Parameters>
-      <Docs>
-        <param name="tt">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

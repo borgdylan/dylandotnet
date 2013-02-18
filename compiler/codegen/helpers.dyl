@@ -414,11 +414,8 @@ class public auto ansi static Helpers
 		end if
 	end method
 
-	//note that this method returns void and leaves a result in AsmFactory::Type01
 	[method: ComVisible(false)]
-	method public static void EvalTTok(var tt as TypeTok)
-
-		//var tarr as IKVM.Reflection.Type[]
+	method public static IKVM.Reflection.Type CommitEvalTTok(var tt as TypeTok)
 		var typ as IKVM.Reflection.Type
 		var temptyp as IKVM.Reflection.Type
 		var gtt as GenericTypeTok
@@ -431,7 +428,7 @@ class public auto ansi static Helpers
 			gtt = $GenericTypeTok$tt
 			pttoks = gtt::Params
 
-			var lop as List<of IKVM.Reflection.Type> = new List<of IKVM.Reflection.Type>()
+			var lop as C5.IList<of IKVM.Reflection.Type> = new C5.LinkedList<of IKVM.Reflection.Type>()
 			
 			if gtt::RefTyp = null then
 				tstr = gtt::Value + "`" + $string$pttoks[l]
@@ -447,8 +444,7 @@ class public auto ansi static Helpers
 
 			do until i = (pttoks[l] - 1)
 				i = i + 1
-				EvalTTok(pttoks[i])
-				temptyp = AsmFactory::Type01
+				temptyp = CommitEvalTTok(pttoks[i])
 				if temptyp = null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Argument " + pttoks[i]::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
 				end if
@@ -479,14 +475,7 @@ class public auto ansi static Helpers
 			end if
 		end if
 
-		AsmFactory::Type01 = typ
-
-	end method
-
-	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type CommitEvalTTok(var tt as TypeTok)
-		EvalTTok(tt)
-		return AsmFactory::Type01
+		return typ
 	end method
 
 	[method: ComVisible(false)]
@@ -1682,6 +1671,42 @@ class public auto ansi static Helpers
 		end if
 		
 		return new MethodInfo[] {Loader::LoadMethod(ie3, "MoveNext", IKVM.Reflection.Type::EmptyTypes), Loader::LoadMethod(ie3, "get_Current", IKVM.Reflection.Type::EmptyTypes)}
+	end method
+
+	method public static IKVM.Reflection.Type CheckCompat(var ta as IKVM.Reflection.Type,var tb as IKVM.Reflection.Type)
+		if ta::Equals(tb) then
+			return ta
+		else
+			if ta::get_IsEnum() and ta::GetEnumUnderlyingType()::Equals(tb) then
+				return tb
+			elseif tb::get_IsEnum() and tb::GetEnumUnderlyingType()::Equals(ta) then
+				return ta
+			end if
+		
+			var typ = ILEmitter::Univ::Import(gettype ValueType)
+			if typ::IsAssignableFrom(ta) or typ::IsAssignableFrom(tb) then
+				return null
+			end if
+			
+			var f as boolean = true
+			do while true
+				if f then
+					if ta::get_BaseType() != null then
+						ta = ta::get_BaseType()
+					end if
+				else
+					if tb::get_BaseType() != null then
+						tb = tb::get_BaseType()
+					end if
+				end if
+				if ta::Equals(tb) then
+					return ta
+				end if
+				f = f == false
+			end do
+			
+		end if
+		return null
 	end method
 
 end class

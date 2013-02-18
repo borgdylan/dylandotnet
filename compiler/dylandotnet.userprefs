@@ -1,17 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/helpers.dyl">
     <Files>
-      <File FileName="parser/exproptimizer.dyl" Line="417" Column="40" />
+      <File FileName="parser/exproptimizer.dyl" Line="418" Column="15" />
       <File FileName="codegen/stmtreader.dyl" Line="665" Column="45" />
-      <File FileName="codegen/eval.dyl" Line="1147" Column="29" />
-      <File FileName="templateproj/template.dyl" Line="559" Column="16" />
+      <File FileName="codegen/eval.dyl" Line="1156" Column="26" />
+      <File FileName="templateproj/template.dyl" Line="580" Column="12" />
       <File FileName="parser/stmtoptimizer.dyl" Line="1568" Column="14" />
-      <File FileName="codegen/helpers.dyl" Line="1398" Column="11" />
+      <File FileName="codegen/helpers.dyl" Line="1705" Column="19" />
       <File FileName="dnu/compilermsg.dyl" Line="49" Column="14" />
       <File FileName="codegen/typelist.dyl" Line="35" Column="10" />
-      <File FileName="dnr/loader.dyl" Line="327" Column="1" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="158" Column="62" />
+      <File FileName="dnr/loader.dyl" Line="109" Column="7" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="404" Column="3" />
       <File FileName="parser/parser.dyl" Line="1" Column="1" />
       <File FileName="ast/chars.dyl" Line="117" Column="5" />
       <File FileName="lexer/line.dyl" Line="68" Column="10" />
@@ -19,13 +19,16 @@
       <File FileName="ast/otherkeywords.dyl" Line="559" Column="19" />
       <File FileName="ast/newexpr.dyl" Line="1" Column="1" />
       <File FileName="ast/newcalltoks.dyl" Line="117" Column="25" />
+      <File FileName="codegen/milambdas.dyl" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
-            <Node name="codegen" expanded="True" />
+            <Node name="codegen" expanded="True">
+              <Node name="helpers.dyl" selected="True" />
+            </Node>
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
             <Node name="dnr" expanded="True" />
@@ -36,9 +39,7 @@
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>
-          <Node name="template" expanded="True">
-            <Node name="template.dyl" selected="True" />
-          </Node>
+          <Node name="template" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

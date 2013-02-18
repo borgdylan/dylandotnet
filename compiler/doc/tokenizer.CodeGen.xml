@@ -201,6 +201,13 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.Helpers.CheckCompat">
+            <param name="ta">To be added.</param>
+            <param name="tb">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.Helpers.CheckIfArrLen">
             <param name="ind">To be added.</param>
             <summary>To be added.</summary>
@@ -301,11 +308,6 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.CodeGen.Helpers.EqSuppFlg">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Tokenizer.CodeGen.Helpers.EvalTTok">
-            <param name="tt">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
