@@ -19,16 +19,10 @@ class public auto ansi Stmt
 
 	method public void AddToken(var toktoadd as Token)
 		Tokens::Add(toktoadd)
-//		var i as integer = -1
-//		var destarr as Token[] = new Token[Tokens[l] + 1]
-//
-//		do until i = (Tokens[l] - 1)
-//			i = i + 1
-//			destarr[i] = Tokens[i]
-//		end do
-//
-//		destarr[Tokens[l]] = toktoadd
-//		Tokens = destarr
+	end method
+	
+	method public void RemToken(var ind as integer)
+		Tokens::RemoveAt(ind)
 	end method
 
 end class
@@ -52,16 +46,6 @@ class public auto ansi StmtSet
 
 	method public void AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
-//		var i as integer = -1
-//		var destarr as Stmt[] = new Stmt[Stmts[l] + 1]
-//
-//		do until i = (Stmts[l] - 1)
-//			i = i + 1
-//			destarr[i] = Stmts[i]
-//		end do
-//
-//		destarr[Stmts[l]] = stmttoadd
-//		Stmts = destarr
 	end method
 
 end class

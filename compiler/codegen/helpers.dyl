@@ -1677,10 +1677,14 @@ class public auto ansi static Helpers
 		if ta::Equals(tb) then
 			return ta
 		else
-			if ta::get_IsEnum() and ta::GetEnumUnderlyingType()::Equals(tb) then
-				return tb
-			elseif tb::get_IsEnum() and tb::GetEnumUnderlyingType()::Equals(ta) then
-				return ta
+			if ta::get_IsEnum() then
+				if ta::GetEnumUnderlyingType()::Equals(tb) then
+					return tb
+				end if
+			elseif tb::get_IsEnum() then
+				if tb::GetEnumUnderlyingType()::Equals(ta) then
+					return ta
+				end if
 			end if
 		
 			var typ = ILEmitter::Univ::Import(gettype ValueType)

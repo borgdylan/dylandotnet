@@ -698,8 +698,6 @@ class public auto ansi ExprOptimizer
 		var mcbool as boolean = false
 		var mctok as Token = null
 		var newavtok as Token = null
-		var newaexpr as Expr = null
-		var newattok as TypeTok = null
 		var mctok2 as Token = null
 		var mcident as Ident = null
 		var mcmetcall as MethodCallTok = null
@@ -940,18 +938,8 @@ class public auto ansi ExprOptimizer
 					tok = exp::Tokens::get_Item(i)
 					exp::RemToken(i)
 					len = len - 1
-
-					if tok is TypeTok then
-						newattok = $TypeTok$tok
-					else
-						newattok = new TypeTok() {Line = tok::Line, Value = tok::Value}
-					end if
-
 					newavtok = exp::Tokens::get_Item(i)
-					newaexpr = new Expr()
-					newaexpr::AddToken(newavtok)
-					exp::Tokens::set_Item(i, new NewarrCallTok() {ArrayType = newattok, ArrayLen = newaexpr})
-
+					exp::Tokens::set_Item(i, new NewarrCallTok() {ArrayType = #ternary {tok is TypeTok ? $TypeTok$tok , new TypeTok() {Line = tok::Line, Value = tok::Value}}, ArrayLen = new Expr() {AddToken(newavtok)}})
 					goto fin
 				end if
 

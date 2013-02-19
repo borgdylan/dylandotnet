@@ -303,11 +303,7 @@ class public auto ansi TokenOptimizer
 			PFlags::AsFlag = true
 			return new CatchTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "as" then
-			if PFlags::AsFlag then
-				return new AsTok() {Line = tok::Line, Value = tok::Value}
-			else
-				return new AsOp() {Line = tok::Line, Value = tok::Value}
-			end if
+			return #ternary {PFlags::AsFlag ? new AsTok() {Line = tok::Line, Value = tok::Value}, new AsOp() {Line = tok::Line, Value = tok::Value}}
 		elseif tok::Value = "of" then
 			return new OfTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "in" then
@@ -403,19 +399,10 @@ class public auto ansi TokenOptimizer
 		elseif (tok::Value = "true") or (tok::Value = "false") then
 			return #ternary {tok::Value == "true" ? new BooleanLiteral(true) {Line = tok::Line} , new BooleanLiteral(false) {Line = tok::Line}}
 		elseif (tok::Value like "^'(.)*'$") or (tok::Value like "^c'(.)*'$") then
-			if tok::Value::StartsWith("c") then
-				tok::Value = ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\s'}))
-			else
-				tok::Value = tok::Value::Trim(new char[] {c'\s'})
-			end if
+			tok::Value = #ternary {tok::Value::StartsWith("c") ? ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\s'})), tok::Value::Trim(new char[] {c'\s'})}
 			return new CharLiteral($char$tok::Value) {Line = tok::Line}
 		elseif (tok::Value like c"^\q(.)*\q$") or (tok::Value like c"^c\q(.)*\q$") then
-			if tok::Value::StartsWith("c") then
-				tok::Value = ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'}))
-			else
-				tok::Value = tok::Value::Trim(new char[] {c'\q'})
-			end if
-			return new StringLiteral(tok::Value) {Line = tok::Line}
+			return new StringLiteral(#ternary {tok::Value::StartsWith("c") ? ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'})), tok::Value::Trim(new char[] {c'\q'})}) {Line = tok::Line}
 		elseif ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("d") then
 			return new DoubleLiteral($double$tok::Value::TrimEnd(new char[] {'d'})) {Line = tok::Line}
 		elseif ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("f") then

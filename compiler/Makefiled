@@ -1,9 +1,0 @@
-all: compile
-	echo "Hello from the dylan.NET Makefile"
-	
-lexer:
-	dylan.NET_Compiler E:\Code\dylannet\compiler\tokenizer.Lexer.dyl
-parser:
-	dylan.NET_Compiler E:\Code\dylannet\compiler\tokenizer.Parser.dyl
-	
-compile: lexer parser

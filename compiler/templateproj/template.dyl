@@ -576,7 +576,10 @@ class public auto ansi Program
 		var ao as object = new integer[] {1,2,3}
 		var ai = $integer[]$ao
 		var oi = new ObjInit() {A = 1, B = 2, C = new ObjInit() {A = 3, B = 4, C = null, set_Msg("InnerHello")}, set_Msg("Hello")}
-		var ti = "{" + #ternary {Environment::get_OSVersion()::get_Platform() == PlatformID::Unix ? "Unix!!!" , "Not Unix :("} + "}"
+		var ti = #ternary {true or false ? new C5.LinkedList<of string>() , new C5.ArrayList<of string>()}
+		Console::WriteLine("Hello from " _
+			+ "a continued " _
+			+ "line")
 	end method
 
 end class

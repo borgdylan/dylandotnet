@@ -1,18 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/helpers.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
     <Files>
-      <File FileName="parser/exproptimizer.dyl" Line="418" Column="15" />
+      <File FileName="parser/exproptimizer.dyl" Line="711" Column="13" />
       <File FileName="codegen/stmtreader.dyl" Line="665" Column="45" />
       <File FileName="codegen/eval.dyl" Line="1156" Column="26" />
-      <File FileName="templateproj/template.dyl" Line="580" Column="12" />
-      <File FileName="parser/stmtoptimizer.dyl" Line="1568" Column="14" />
-      <File FileName="codegen/helpers.dyl" Line="1705" Column="19" />
+      <File FileName="templateproj/template.dyl" Line="554" Column="33" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="1775" Column="33" />
+      <File FileName="codegen/helpers.dyl" Line="1684" Column="27" />
       <File FileName="dnu/compilermsg.dyl" Line="49" Column="14" />
       <File FileName="codegen/typelist.dyl" Line="35" Column="10" />
       <File FileName="dnr/loader.dyl" Line="109" Column="7" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="404" Column="3" />
-      <File FileName="parser/parser.dyl" Line="1" Column="1" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="397" Column="2" />
+      <File FileName="parser/parser.dyl" Line="27" Column="3" />
       <File FileName="ast/chars.dyl" Line="117" Column="5" />
       <File FileName="lexer/line.dyl" Line="68" Column="10" />
       <File FileName="dev/nuget2dn.dyl" Line="25" Column="11" />
@@ -20,15 +20,20 @@
       <File FileName="ast/newexpr.dyl" Line="1" Column="1" />
       <File FileName="ast/newcalltoks.dyl" Line="117" Column="25" />
       <File FileName="codegen/milambdas.dyl" Line="1" Column="1" />
+      <File FileName="lexer/lexer.dyl" Line="42" Column="6" />
+      <File FileName="ast/stmt.dyl" Line="28" Column="10" />
+      <File FileName="ast/expr.dyl" Line="31" Column="12" />
+      <File FileName="pc2curdir.1" Line="47" Column="9" />
+      <File FileName="pc2dylandotnet.1" Line="1" Column="33" />
+      <File FileName="dylandotnet.1" Line="103" Column="9" />
+      <File FileName="dylandotnet4.1" Line="102" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
-            <Node name="codegen" expanded="True">
-              <Node name="helpers.dyl" selected="True" />
-            </Node>
+            <Node name="codegen" expanded="True" />
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
             <Node name="dnr" expanded="True" />
@@ -39,7 +44,9 @@
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>
-          <Node name="template" expanded="True" />
+          <Node name="template" expanded="True">
+            <Node name="template.dyl" selected="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
