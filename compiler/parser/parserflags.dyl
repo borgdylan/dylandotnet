@@ -27,6 +27,7 @@ class public auto ansi Flags
 	field public boolean DurConvFlag
 	field public boolean IdentFlag
 	field public boolean MetCallFlag
+	field public boolean CtorFlag
 	field public boolean MetChainFlag
 	field public boolean StringFlag
 	field public string CurPath
@@ -52,7 +53,8 @@ class public auto ansi Flags
 		isChanged = false
 		DurConvFlag = false
 		IdentFlag = false
-		MetCallFlag = false
+		CtorFlag = false
+ 		MetCallFlag = false
 		MetChainFlag = false
 		ProcessTTokOnly = false
 		StringFlag = false
@@ -133,6 +135,7 @@ class public auto ansi Flags
 		MetCallFlag = false
 		IdentFlag = false
 		StringFlag = false
+		CtorFlag = false
 	end method
 
 end class

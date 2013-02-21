@@ -10,17 +10,23 @@ class public auto ansi NewCallTok extends Token
 
 	field public TypeTok Name
 	field public C5.ArrayList<of Expr> Params
+	field public boolean MemberAccessFlg
+	field public Token MemberToAccess
 
 	method public void NewCallTok()
 		me::ctor()
 		Name = new TypeTok()
 		Params = new C5.ArrayList<of Expr>()
+		MemberAccessFlg = false
+		MemberToAccess = new Token()
 	end method
 
 	method public void NewCallTok(var value as string)
 		me::ctor(value)
 		Name = new TypeTok()
 		Params = new C5.ArrayList<of Expr>()
+		MemberAccessFlg = false
+		MemberToAccess = new Token()
 	end method
 
 	method public void AddParam(var paramtoadd as Expr)

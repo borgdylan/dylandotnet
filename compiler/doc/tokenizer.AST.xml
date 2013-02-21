@@ -1633,6 +1633,14 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.NewCallTok.MemberAccessFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.NewCallTok.MemberToAccess">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.NewCallTok.Name">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

@@ -245,7 +245,7 @@ class public auto ansi ExprOptimizer
 		len = stm::Tokens::get_Count() - 1
 		i = i - 1
 		
-		var flgc as boolean[] = new boolean[] {PFlags::MetCallFlag, PFlags::IdentFlag, PFlags::StringFlag}
+		var flgc as boolean[] = new boolean[] {PFlags::MetCallFlag, PFlags::IdentFlag, PFlags::StringFlag, PFlags::CtorFlag}
 				
 		do until i = len
 
@@ -300,7 +300,8 @@ class public auto ansi ExprOptimizer
 		PFlags::MetCallFlag = flgc[0]
 		PFlags::IdentFlag = flgc[1]
 		PFlags::StringFlag = flgc[2]
-	
+		PFlags::CtorFlag = flgc[3]
+		
 		stm::Tokens::set_Item(j,mct)
 		return stm
 	
@@ -646,7 +647,7 @@ class public auto ansi ExprOptimizer
 		len = stm::Tokens::get_Count() - 1
 		i = i - 1
 
-		var flgc as boolean[] = new boolean[] {PFlags::MetCallFlag, PFlags::IdentFlag, PFlags::StringFlag}
+		var flgc as boolean[] = new boolean[] {PFlags::MetCallFlag, PFlags::IdentFlag, PFlags::StringFlag, PFlags::CtorFlag}
 
 		do until i = len
 			//get parameters
@@ -687,7 +688,8 @@ class public auto ansi ExprOptimizer
 		PFlags::MetCallFlag = flgc[0]
 		PFlags::IdentFlag = flgc[1]
 		PFlags::StringFlag = flgc[2]
-
+		PFlags::CtorFlag = flgc[3]
+		
 		return stm
 	end method
 
@@ -698,7 +700,6 @@ class public auto ansi ExprOptimizer
 		var mcbool as boolean = false
 		var mctok as Token = null
 		var newavtok as Token = null
-		var mctok2 as Token = null
 		var mcident as Ident = null
 		var mcmetcall as MethodCallTok = null
 		var mcmetname as MethodNameTok = null
@@ -811,7 +812,7 @@ class public auto ansi ExprOptimizer
 
 				if tok is Ident then
 					if PFlags::DurConvFlag = false then
-						if PFlags::MetCallFlag or PFlags::IdentFlag or PFlags::StringFlag then
+						if PFlags::MetCallFlag or PFlags::IdentFlag or PFlags::StringFlag or PFlags::CtorFlag then
 							mcbool = true
 						end if
 						PFlags::IdentFlag = true
@@ -904,6 +905,8 @@ class public auto ansi ExprOptimizer
 							if exp::Tokens::get_Item(i + 1) is LCParen then
 								exp = procObjInitCall(exp, i)
 								len = exp::Tokens::get_Count() - 1
+							else
+								PFlags::CtorFlag = true
 							end if
 						end if
 					end if
@@ -976,7 +979,7 @@ class public auto ansi ExprOptimizer
 				if tok is LParen then
 					if PFlags::IdentFlag then
 						PFlags::IdentFlag = false
-						if PFlags::MetCallFlag or PFlags::StringFlag or PFlags::IdentFlag then
+						if PFlags::MetCallFlag or PFlags::StringFlag or PFlags::IdentFlag  or PFlags::CtorFlag then
 							mcbool = true
 						end if
 						PFlags::MetCallFlag = true
@@ -1038,14 +1041,23 @@ class public auto ansi ExprOptimizer
 				if PFlags::MetCallFlag or PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false
-					mctok2 = exp::Tokens::get_Item(i + 1)
 					mcident::MemberAccessFlg = true
-					mcident::MemberToAccess = mctok2
+					mcident::MemberToAccess = exp::Tokens::get_Item(i + 1)
 					exp::RemToken(i + 1)
 					exp::Tokens::set_Item(i,mcident)
 				end if
 				if mcident::Value like "^::(.)*$" then
 					PFlags::IdentFlag = true
+				end if
+			elseif mctok is NewCallTok then
+				var mcnct = $NewCallTok$mctok
+				if PFlags::MetCallFlag or PFlags::IdentFlag then
+					PFlags::MetCallFlag = false
+					PFlags::IdentFlag = false
+					mcnct::MemberAccessFlg = true
+					mcnct::MemberToAccess = exp::Tokens::get_Item(i + 1)
+					exp::RemToken(i + 1)
+					exp::Tokens::set_Item(i,mcnct)
 				end if
 			elseif mctok is MethodCallTok then
 				mcmetcall = $MethodCallTok$mctok
@@ -1053,9 +1065,8 @@ class public auto ansi ExprOptimizer
 				if PFlags::MetCallFlag or PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false
-					mctok2 = exp::Tokens::get_Item(i + 1)
 					mcmetname::MemberAccessFlg = true
-					mcmetname::MemberToAccess = mctok2
+					mcmetname::MemberToAccess = exp::Tokens::get_Item(i + 1)
 					exp::RemToken(i + 1)
 					mcmetcall::Name = mcmetname
 					exp::Tokens::set_Item(i,mcmetcall)
@@ -1068,9 +1079,8 @@ class public auto ansi ExprOptimizer
 				if PFlags::MetCallFlag or PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false
-					mctok2 = exp::Tokens::get_Item(i + 1)
 					mcstr::MemberAccessFlg = true
-					mcstr::MemberToAccess = mctok2
+					mcstr::MemberToAccess = exp::Tokens::get_Item(i + 1)
 					exp::RemToken(i + 1)
 					exp::Tokens::set_Item(i,mcstr)
 				end if

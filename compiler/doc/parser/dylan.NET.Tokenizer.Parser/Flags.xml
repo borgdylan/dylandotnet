@@ -95,6 +95,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CtorFlag">
+      <MemberSignature Language="C#" Value="public bool CtorFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool CtorFlag" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CurPath">
       <MemberSignature Language="C#" Value="public string CurPath;" />
       <MemberSignature Language="ILAsm" Value=".field public string CurPath" />
