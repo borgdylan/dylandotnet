@@ -562,6 +562,15 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 				AsmFactory::Type02 = Loader::MemberTyp
 				baseflg = false
+				
+				if mcisstatic != mcmetinf::get_IsStatic() then
+					if mcisstatic and (mcmetinf::get_IsStatic() == false) then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' defined for the class '" + mcparenttyp::ToString() + "' is an instance method.")
+					else
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' defined for the class '" + mcparenttyp::ToString() + "' is static.")
+					end if
+				end if
+				
 			else
 				if idtb2 = false then
 					Helpers::BaseFlg = baseflg

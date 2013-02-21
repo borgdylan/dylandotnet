@@ -563,7 +563,6 @@ class public auto ansi Program
 		Console::WriteLine(1 nand 2)
 		Console::WriteLine(1 nor 2)
 		Console::WriteLine(1 xnor 3)
-		//var emptarr as integer[] = new integer[] {}
 		
 		lock new object()
 			Console::WriteLine("In A Lock")

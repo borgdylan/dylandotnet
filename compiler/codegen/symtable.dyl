@@ -8,7 +8,7 @@
 
 class public auto ansi static SymTable
 
-	field private static C5.LinkedList<of C5.LinkedList<of VarItem> > VarLst
+	field private static C5.LinkedList<of C5.HashDictionary<of string, VarItem> > VarLst
 	field public static C5.IList<of CustomAttributeBuilder> MethodCALst
 	field public static C5.IList<of CustomAttributeBuilder> FieldCALst
 	field public static C5.IList<of CustomAttributeBuilder> ClassCALst
@@ -36,8 +36,8 @@ class public auto ansi static SymTable
 	
 	method private static void SymTable()
 		TypeLst = new TypeList()
-		VarLst = new C5.LinkedList<of C5.LinkedList<of VarItem> >()
-		VarLst::Push(new C5.LinkedList<of VarItem>())
+		VarLst = new C5.LinkedList<of C5.HashDictionary<of string, VarItem> >()
+		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 		NestedFldLst = new FieldItem[0]
 		NestedMetLst = new MethodItem[0]
 		NestedCtorLst = new CtorItem[0]
@@ -80,7 +80,7 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void ResetVar()
 		VarLst::Clear()
-		VarLst::Push(new C5.LinkedList<of VarItem>())
+		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 	end method
 
 //	method public static void ResetFld()
@@ -147,14 +147,17 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type, var lin as integer)
-		VarLst::get_Last()::Add(new VarItem(nme, la, ind, typ, lin))
+		if VarLst::get_Last()::Contains(nme) then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable '" + nme + "' is already declared in the current scope!")
+		else
+			VarLst::get_Last()::Add(nme, new VarItem(nme, la, ind, typ, lin))
+		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static integer AddTypArr(var arr as IKVM.Reflection.Type[])
 
-		var vr as TypeArr = new TypeArr()
-		vr::Arr = arr
+		var vr as TypeArr = new TypeArr() {Arr = arr}
 		var i as integer = -1
 		var destarr as TypeArr[] = new TypeArr[TypLst[l] + 1]
 
@@ -177,8 +180,8 @@ class public auto ansi static SymTable
 		var destarr as TypeArr[] = new TypeArr[TypLst[l] - 1]
 
 		do until i >= (TypLst[l] - 1)
+			j = i
 			i = i + 1
-			j = i - 1
 			destarr[j] = TypLst[i]
 		end do
 
@@ -395,14 +398,13 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static VarItem FindVar(var nam as string)
 		foreach s in VarLst::Backwards()
-			foreach v in s
-				if nam = v::Name then
-					if StoreFlg == false then
-						v::Used = true
-					end if
-					return v
+			if s::Contains(nam) then
+				var v = s::get_Item(nam)
+				if StoreFlg == false then
+					v::Used = true
 				end if
-			end for
+				return v
+			end if
 		end for
 		return null
 	end method
@@ -410,17 +412,18 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void ResetUsed(var nam as string)
 		foreach s in VarLst::Backwards()
-			foreach v in s
-				if nam = v::Name then
-					v::Used = false
-				end if
-			end for
+			if s::Contains(nam) then
+				var v = s::get_Item(nam)
+				v::Used = false
+			end if
 		end for
 	end method
 
 	[method: ComVisible(false)]
 	method public static void CheckUnusedVar()
-		foreach vlec in VarLst::get_Last()
+		var hm = VarLst::get_Last()
+		foreach k in hm::get_Keys()
+			var vlec = hm::get_Item(k)
 			if (vlec::Used = false) and vlec::LocArg then
 				if vlec::Stored then
 					StreamUtils::WriteWarn(vlec::Line, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was initialised but then not used.")
@@ -456,7 +459,7 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void PushScope()
 		ILEmitter::BeginScope()
-		VarLst::Push(new C5.LinkedList<of VarItem>())
+		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 	end method
 	
 	[method: ComVisible(false)]

@@ -51,58 +51,58 @@ Adding Class: conv.Module1
 	Adding Constructor: Module1
 	Adding Method: mettest
 WARNING: Converting from 'System.Int32' to 'System.Int32' is redundant. at line 21 in file: conv.dyl
-WARNING: The variable v1 was initialised but then not used. at line 20 in file: conv.dyl
-WARNING: The variable v2 was initialised but then not used. at line 21 in file: conv.dyl
-WARNING: The variable v3 was initialised but then not used. at line 22 in file: conv.dyl
-WARNING: The variable v4 was initialised but then not used. at line 23 in file: conv.dyl
-WARNING: The variable v5 was initialised but then not used. at line 24 in file: conv.dyl
-WARNING: The variable v6 was initialised but then not used. at line 25 in file: conv.dyl
-WARNING: The variable v7 was initialised but then not used. at line 26 in file: conv.dyl
-WARNING: The variable v8 was initialised but then not used. at line 27 in file: conv.dyl
 WARNING: The variable v9 was initialised but then not used. at line 28 in file: conv.dyl
+WARNING: The variable v8 was initialised but then not used. at line 27 in file: conv.dyl
+WARNING: The variable v7 was initialised but then not used. at line 26 in file: conv.dyl
+WARNING: The variable v6 was initialised but then not used. at line 25 in file: conv.dyl
 WARNING: The variable v10 was initialised but then not used. at line 29 in file: conv.dyl
+WARNING: The variable v5 was initialised but then not used. at line 24 in file: conv.dyl
+WARNING: The variable v4 was initialised but then not used. at line 23 in file: conv.dyl
+WARNING: The variable v3 was initialised but then not used. at line 22 in file: conv.dyl
+WARNING: The variable v2 was initialised but then not used. at line 21 in file: conv.dyl
+WARNING: The variable v1 was initialised but then not used. at line 20 in file: conv.dyl
 	Adding Method: strtest
 WARNING: Converting from 'System.String' to 'System.String' is redundant. at line 36 in file: conv.dyl
+WARNING: The variable v2 was initialised but then not used. at line 37 in file: conv.dyl
+WARNING: The variable v7 was initialised but then not used. at line 42 in file: conv.dyl
+WARNING: The variable v5 was initialised but then not used. at line 40 in file: conv.dyl
+WARNING: The variable v10 was initialised but then not used. at line 45 in file: conv.dyl
+WARNING: The variable v3 was initialised but then not used. at line 38 in file: conv.dyl
+WARNING: The variable v8 was initialised but then not used. at line 43 in file: conv.dyl
 WARNING: The variable str was initialised but then not used. at line 35 in file: conv.dyl
 WARNING: The variable v1 was initialised but then not used. at line 36 in file: conv.dyl
-WARNING: The variable v2 was initialised but then not used. at line 37 in file: conv.dyl
-WARNING: The variable v3 was initialised but then not used. at line 38 in file: conv.dyl
-WARNING: The variable v4 was initialised but then not used. at line 39 in file: conv.dyl
-WARNING: The variable v5 was initialised but then not used. at line 40 in file: conv.dyl
 WARNING: The variable v6 was initialised but then not used. at line 41 in file: conv.dyl
-WARNING: The variable v7 was initialised but then not used. at line 42 in file: conv.dyl
-WARNING: The variable v8 was initialised but then not used. at line 43 in file: conv.dyl
+WARNING: The variable v4 was initialised but then not used. at line 39 in file: conv.dyl
 WARNING: The variable v9 was initialised but then not used. at line 44 in file: conv.dyl
-WARNING: The variable v10 was initialised but then not used. at line 45 in file: conv.dyl
 	Adding Method: vartest
 WARNING: Converting from 'System.Int32' to 'System.Int32' is redundant. at line 53 in file: conv.dyl
-WARNING: The variable v1 was initialised but then not used. at line 52 in file: conv.dyl
-WARNING: The variable v2 was initialised but then not used. at line 53 in file: conv.dyl
-WARNING: The variable v3 was initialised but then not used. at line 54 in file: conv.dyl
 WARNING: The variable v4 was initialised but then not used. at line 55 in file: conv.dyl
-WARNING: The variable v5 was initialised but then not used. at line 56 in file: conv.dyl
 WARNING: The variable v6 was initialised but then not used. at line 57 in file: conv.dyl
-WARNING: The variable v7 was initialised but then not used. at line 58 in file: conv.dyl
-WARNING: The variable v8 was initialised but then not used. at line 59 in file: conv.dyl
-WARNING: The variable v9 was initialised but then not used. at line 60 in file: conv.dyl
 WARNING: The variable v10 was initialised but then not used. at line 61 in file: conv.dyl
+WARNING: The variable v8 was initialised but then not used. at line 59 in file: conv.dyl
+WARNING: The variable v1 was initialised but then not used. at line 52 in file: conv.dyl
+WARNING: The variable v3 was initialised but then not used. at line 54 in file: conv.dyl
+WARNING: The variable v5 was initialised but then not used. at line 56 in file: conv.dyl
+WARNING: The variable v7 was initialised but then not used. at line 58 in file: conv.dyl
+WARNING: The variable v9 was initialised but then not used. at line 60 in file: conv.dyl
+WARNING: The variable v2 was initialised but then not used. at line 53 in file: conv.dyl
 	Adding Method: fldtest
 WARNING: Converting from 'System.Int32' to 'System.Int32' is redundant. at line 68 in file: conv.dyl
-WARNING: The variable v1 was initialised but then not used. at line 67 in file: conv.dyl
-WARNING: The variable v2 was initialised but then not used. at line 68 in file: conv.dyl
-WARNING: The variable v3 was initialised but then not used. at line 69 in file: conv.dyl
-WARNING: The variable v4 was initialised but then not used. at line 70 in file: conv.dyl
-WARNING: The variable v5 was initialised but then not used. at line 71 in file: conv.dyl
 WARNING: The variable v6 was initialised but then not used. at line 72 in file: conv.dyl
-WARNING: The variable v7 was initialised but then not used. at line 73 in file: conv.dyl
-WARNING: The variable v8 was initialised but then not used. at line 74 in file: conv.dyl
-WARNING: The variable v9 was initialised but then not used. at line 75 in file: conv.dyl
 WARNING: The variable v10 was initialised but then not used. at line 76 in file: conv.dyl
+WARNING: The variable v3 was initialised but then not used. at line 69 in file: conv.dyl
+WARNING: The variable v7 was initialised but then not used. at line 73 in file: conv.dyl
+WARNING: The variable v4 was initialised but then not used. at line 70 in file: conv.dyl
+WARNING: The variable v8 was initialised but then not used. at line 74 in file: conv.dyl
+WARNING: The variable v1 was initialised but then not used. at line 67 in file: conv.dyl
+WARNING: The variable v5 was initialised but then not used. at line 71 in file: conv.dyl
+WARNING: The variable v9 was initialised but then not used. at line 75 in file: conv.dyl
+WARNING: The variable v2 was initialised but then not used. at line 68 in file: conv.dyl
 	Adding Method: main
 WARNING: Converting from 'System.String' to 'System.String' is redundant. at line 83 in file: conv.dyl
 WARNING: Converting from 'System.Int32' to 'System.Int32' is redundant. at line 85 in file: conv.dyl
-WARNING: The variable v8 was initialised but then not used. at line 103 in file: conv.dyl
 WARNING: The variable v9 was initialised but then not used. at line 105 in file: conv.dyl
+WARNING: The variable v8 was initialised but then not used. at line 103 in file: conv.dyl
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.1.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
@@ -196,8 +196,8 @@ Importing Namespace: mathematics
 Beginning Assembly: mathstest
 Adding Class: mathstest.Module1
 	Adding Method: main
-WARNING: The variable alg was initialised but then not used. at line 16 in file: mathstest.dyl
 WARNING: The variable str was initialised but then not used. at line 19 in file: mathstest.dyl
+WARNING: The variable alg was initialised but then not used. at line 16 in file: mathstest.dyl
 Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.1.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y

@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/eval.dyl">
     <Files>
       <File FileName="parser/exproptimizer.dyl" Line="711" Column="13" />
-      <File FileName="codegen/stmtreader.dyl" Line="665" Column="45" />
-      <File FileName="codegen/eval.dyl" Line="1156" Column="26" />
-      <File FileName="templateproj/template.dyl" Line="554" Column="33" />
+      <File FileName="codegen/stmtreader.dyl" Line="675" Column="26" />
+      <File FileName="codegen/eval.dyl" Line="591" Column="28" />
+      <File FileName="templateproj/template.dyl" Line="584" Column="10" />
       <File FileName="parser/stmtoptimizer.dyl" Line="1775" Column="33" />
       <File FileName="codegen/helpers.dyl" Line="1684" Column="27" />
       <File FileName="dnu/compilermsg.dyl" Line="49" Column="14" />
@@ -27,13 +27,16 @@
       <File FileName="pc2dylandotnet.1" Line="1" Column="33" />
       <File FileName="dylandotnet.1" Line="103" Column="9" />
       <File FileName="dylandotnet4.1" Line="102" Column="9" />
+      <File FileName="codegen/symtable.dyl" Line="36" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
-            <Node name="codegen" expanded="True" />
+            <Node name="codegen" expanded="True">
+              <Node name="eval.dyl" selected="True" />
+            </Node>
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
             <Node name="dnr" expanded="True" />
@@ -44,9 +47,7 @@
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>
-          <Node name="template" expanded="True">
-            <Node name="template.dyl" selected="True" />
-          </Node>
+          <Node name="template" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
