@@ -1649,6 +1649,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.NewCallTok.PopFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.NewresTok..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1681,6 +1685,18 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.ObjInitCallTok.Elements">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.ObjInitCallTok.MemberAccessFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.ObjInitCallTok.MemberToAccess">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.ObjInitCallTok.PopFlg">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

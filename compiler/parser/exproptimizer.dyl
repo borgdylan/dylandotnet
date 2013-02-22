@@ -905,9 +905,8 @@ class public auto ansi ExprOptimizer
 							if exp::Tokens::get_Item(i + 1) is LCParen then
 								exp = procObjInitCall(exp, i)
 								len = exp::Tokens::get_Count() - 1
-							else
-								PFlags::CtorFlag = true
 							end if
+							PFlags::CtorFlag = true
 						end if
 					end if
 					goto fin
@@ -1051,6 +1050,16 @@ class public auto ansi ExprOptimizer
 				end if
 			elseif mctok is NewCallTok then
 				var mcnct = $NewCallTok$mctok
+				if PFlags::MetCallFlag or PFlags::IdentFlag then
+					PFlags::MetCallFlag = false
+					PFlags::IdentFlag = false
+					mcnct::MemberAccessFlg = true
+					mcnct::MemberToAccess = exp::Tokens::get_Item(i + 1)
+					exp::RemToken(i + 1)
+					exp::Tokens::set_Item(i,mcnct)
+				end if
+			elseif mctok is ObjInitCallTok then
+				var mcnct = $ObjInitCallTok$mctok
 				if PFlags::MetCallFlag or PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false

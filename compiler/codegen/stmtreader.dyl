@@ -660,11 +660,9 @@ class public auto ansi StmtReader
 			eval::StoreEmit(asgnstm::LExp::Tokens::get_Item(0), asgnstm::RExp)
 		elseif stm is MethodCallStmt then
 			var mcstmt as MethodCallStmt = $MethodCallStmt$stm
-			var mcstmtexp as Expr = new Expr()
 			if Helpers::SetPopFlg(mcstmt::MethodToken) != null then
-				mcstmtexp::AddToken(mcstmt::MethodToken)
 				eval = new Evaluator()
-				eval::Evaluate(mcstmtexp)
+				eval::Evaluate(new Expr() {AddToken(mcstmt::MethodToken)})
 			else
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No variable/field loads are allowed without a destination being specified")
 			end if

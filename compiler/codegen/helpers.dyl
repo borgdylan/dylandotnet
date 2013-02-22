@@ -1367,13 +1367,30 @@ class public auto ansi static Helpers
 
 		var t2 as Token = t
 		var t3 as MethodCallTok = null
+		var t4 as NewCallTok = null
+		var t5 as ObjInitCallTok = null
 
 		do while true
-			if t2 is MethodCallTok then
-				var mct as MethodCallTok = $MethodCallTok$t2
-				t3 = mct
-				if mct::Name::MemberAccessFlg then
-					t2 = mct::Name::MemberToAccess
+			if t2 is MethodCallTok then 
+				t3 = $MethodCallTok$t2
+				if t3::Name::MemberAccessFlg then
+					t2 = t3::Name::MemberToAccess
+					continue
+				else
+					break
+				end if
+			elseif t2 is NewCallTok then
+				t4 = $NewCallTok$t2
+				if t4::MemberAccessFlg then
+					t2 = t4::MemberToAccess
+					continue
+				else
+					break
+				end if
+			elseif t2 is ObjInitCallTok then
+				t5 = $ObjInitCallTok$t2
+				if t5::MemberAccessFlg then
+					t2 = t5::MemberToAccess
 					continue
 				else
 					break
@@ -1392,9 +1409,23 @@ class public auto ansi static Helpers
 		if t3 != null then
 			t3::PopFlg = true
 			if t3::Name::MemberAccessFlg then
-				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "MethodCall statements should end their chain with a method call and not a field load!!")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "MethodCall/NewCall/ObjInitCall statements should end their chain with a method call etc. and not a field load!!")
 			end if
 			t3::Name::MemberAccessFlg = false
+			return t
+		elseif t4 != null then
+			t4::PopFlg = true
+			if t4::MemberAccessFlg then
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "MethodCall/NewCall/ObjInitCall statements should end their chain with a method call etc. and not a field load!!")
+			end if
+			t4::MemberAccessFlg = false
+			return t
+		elseif t5 != null then
+			t5::PopFlg = true
+			if t5::MemberAccessFlg then
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "MethodCall/NewCall/ObjInitCall statements should end their chain with a method call etc. and not a field load!!")
+			end if
+			t5::MemberAccessFlg = false
 			return t
 		else
 			return null

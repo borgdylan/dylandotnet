@@ -12,6 +12,7 @@ class public auto ansi NewCallTok extends Token
 	field public C5.ArrayList<of Expr> Params
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
+	field public boolean PopFlg
 
 	method public void NewCallTok()
 		me::ctor()
@@ -19,6 +20,7 @@ class public auto ansi NewCallTok extends Token
 		Params = new C5.ArrayList<of Expr>()
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
+		PopFlg = false
 	end method
 
 	method public void NewCallTok(var value as string)
@@ -27,6 +29,7 @@ class public auto ansi NewCallTok extends Token
 		Params = new C5.ArrayList<of Expr>()
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
+		PopFlg = false
 	end method
 
 	method public void AddParam(var paramtoadd as Expr)
@@ -90,17 +93,26 @@ class public auto ansi ObjInitCallTok extends Token
 
 	field public NewCallTok Ctor
 	field public C5.ArrayList<of Token> Elements
+	field public boolean MemberAccessFlg
+	field public Token MemberToAccess
+	field public boolean PopFlg
 
 	method public void ObjInitCallTok()
 		me::ctor()
 		Ctor = null
 		Elements = new C5.ArrayList<of Token>()
+		MemberAccessFlg = false
+		MemberToAccess = new Token()
+		PopFlg = false
 	end method
 
 	method public void ObjInitCallTok(var value as string)
 		me::ctor(value)
 		Ctor = null
 		Elements = new C5.ArrayList<of Token>()
+		MemberAccessFlg = false
+		MemberToAccess = new Token()
+		PopFlg = false
 	end method
 	
 	method public void AddElem(var eltoadd as Token)

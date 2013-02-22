@@ -197,7 +197,7 @@ class public auto ansi ObjInit
 	
 	method public integer XYZ(var s as string)
 		Console::WriteLine(s)
-		return 0
+		return s::GetHashCode()
 	end method
 	
 	method public hidebysig specialname string get_Msg()
@@ -576,6 +576,12 @@ class public auto ansi Program
 		var ai = $integer[]$ao
 		var oi = new ObjInit() {A = 1, B = 2, C = new ObjInit() {A = 3, B = 4, C = null, set_Msg("InnerHello")}, set_Msg("Hello")}
 		var ti = #ternary {true or false ? new C5.LinkedList<of string>() , new C5.ArrayList<of string>()}
+		var ci = new ObjInit()::XYZ("hello")
+		ci = new ObjInit(){A = 3, C = null}::A
+		new ObjInit()::ABC()
+		new ObjInit()::XYZ("t")
+		new ObjInit(){C = new ObjInit()}::C::XYZ("u")
+		Console::WriteLine(new ObjInit(){A = 3, B = new ObjInit()::XYZ("q")}::B)
 		Console::WriteLine("Hello from " _
 			+ "a continued " _
 			+ "line")

@@ -100,5 +100,17 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="PopFlg">
+      <MemberSignature Language="C#" Value="public bool PopFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool PopFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>

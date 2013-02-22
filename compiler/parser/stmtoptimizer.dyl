@@ -1571,7 +1571,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkMethodCall(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() > 2 then
-			b = stm::Tokens::get_Item(0) is Ident
+			b = (stm::Tokens::get_Item(0) is Ident) or (stm::Tokens::get_Item(0) is NewTok)
 			if b then
 				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
 				return new MethodCallStmt() {Line = stm::Line, Tokens = stm::Tokens, MethodToken = eopt::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})::Tokens::get_Item(0)}

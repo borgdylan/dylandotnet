@@ -837,11 +837,18 @@ class public auto ansi beforefieldinit Evaluator
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Constructor with the given parameter types is not defined/accessible for the class '" + nctyp::ToString() + "'.")
 		end if
 
-		if emt  then
+		if emt then
 			ILEmitter::EmitNewobj(ncctorinf)
+			if nctok::PopFlg then
+				ILEmitter::EmitPop()
+			end if
 		end if
-
 		AsmFactory::Type02 = nctyp
+		
+		if nctok::MemberAccessFlg then
+			AsmFactory::ChainFlg = true
+			ASTEmit(nctok::MemberToAccess, emt)
+		end if
 	end method
 	
 	method public void ASTEmit(var tok as Token, var emt as boolean)
@@ -1106,41 +1113,50 @@ class public auto ansi beforefieldinit Evaluator
 				ASTEmitNew(oictok::Ctor,emt)
 				var ctyp = AsmFactory::Type02
 				foreach el2 in oictok::Elements
-					if el2 == null then
-						//do nothing
-					elseif el2 is AttrValuePair then
-						var el as AttrValuePair = $AttrValuePair$el2
-						if emt then
-							ILEmitter::EmitDup()
-						end if
-						ASTEmit(ConvToAST(ConvToRPN(el::ValueExpr)), emt)
-						var fldinf as FieldInfo = Helpers::GetExtFld(ctyp, el::Name::Value)
-						if fldinf = null then
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is not defined/accessible for the class '" + ctyp::ToString() + "'.")
-						end if
-						if fldinf::get_IsInitOnly() then
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is declared as readonly and may not be set from this context.")
-						end if
-						if fldinf::get_IsStatic() then
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is declared as static and may not be set from object initializers.")
-						end if
-						Helpers::CheckAssignability(fldinf::get_FieldType(), AsmFactory::Type02)
-						if emt then	
-							Helpers::EmitFldSt(fldinf, fldinf::get_IsStatic())
-						end if
-					elseif el2 is MethodCallTok then
-						var el as MethodCallTok = $MethodCallTok$el2
-						if Helpers::SetPopFlg(el) != null then
+					if el2 != null then
+						if el2 is AttrValuePair then
+							var el as AttrValuePair = $AttrValuePair$el2
 							if emt then
 								ILEmitter::EmitDup()
 							end if
-							AsmFactory::Type02 = ctyp
-							AsmFactory::ChainFlg = true
-							ASTEmit(el, emt)
+							ASTEmit(ConvToAST(ConvToRPN(el::ValueExpr)), emt)
+							var fldinf as FieldInfo = Helpers::GetExtFld(ctyp, el::Name::Value)
+							if fldinf = null then
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is not defined/accessible for the class '" + ctyp::ToString() + "'.")
+							end if
+							if fldinf::get_IsInitOnly() then
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is declared as readonly and may not be set from this context.")
+							end if
+							if fldinf::get_IsStatic() then
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is declared as static and may not be set from object initializers.")
+							end if
+							Helpers::CheckAssignability(fldinf::get_FieldType(), AsmFactory::Type02)
+							if emt then	
+								Helpers::EmitFldSt(fldinf, fldinf::get_IsStatic())
+							end if
+						elseif el2 is MethodCallTok then
+							var el as MethodCallTok = $MethodCallTok$el2
+							if Helpers::SetPopFlg(el) != null then
+								if emt then
+									ILEmitter::EmitDup()
+								end if
+								AsmFactory::Type02 = ctyp
+								AsmFactory::ChainFlg = true
+								ASTEmit(el, emt)
+							end if
 						end if
 					end if
 				end for
 				AsmFactory::Type02 = ctyp
+				if emt then
+					if oictok::PopFlg then
+						ILEmitter::EmitPop()
+					end if
+				end if
+				if oictok::MemberAccessFlg then
+					AsmFactory::ChainFlg = true
+					ASTEmit(oictok::MemberToAccess, emt)
+				end if
 			elseif tok is TernaryCallTok then
 				var tcc as TernaryCallTok = $TernaryCallTok$tok
 				if emt then

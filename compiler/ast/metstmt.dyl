@@ -12,14 +12,12 @@ class public auto ansi MethodStmt extends Stmt
 	field public Ident MethodName
 	field public TypeTok RetTyp
 	field public Expr[] Params
-	//field public string[] ParamTyps
 
 	method public void MethodStmt()
 		me::ctor()
 		Attrs = new Attributes.Attribute[0]
 		MethodName = new Ident()
 		Params = new Expr[0]
-		//ParamTyps = new string[0]
 		RetTyp = new TypeTok()
 	end method
 
