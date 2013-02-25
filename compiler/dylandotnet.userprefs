@@ -1,45 +1,80 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ast/newcalltoks.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="parser/stmtoptimizer.dyl">
     <Files>
-      <File FileName="parser/exproptimizer.dyl" Line="1067" Column="5" />
-      <File FileName="codegen/stmtreader.dyl" Line="675" Column="26" />
-      <File FileName="codegen/eval.dyl" Line="1134" Column="3" />
+      <File FileName="parser/exproptimizer.dyl" Line="711" Column="13" />
+      <File FileName="codegen/stmtreader.dyl" Line="1" Column="75" />
+      <File FileName="codegen/eval.dyl" Line="1" Column="75" />
       <File FileName="templateproj/template.dyl" Line="565" Column="31" />
-      <File FileName="parser/stmtoptimizer.dyl" Line="1775" Column="33" />
-      <File FileName="codegen/helpers.dyl" Line="1684" Column="27" />
-      <File FileName="dnu/compilermsg.dyl" Line="49" Column="14" />
-      <File FileName="codegen/typelist.dyl" Line="35" Column="10" />
-      <File FileName="dnr/loader.dyl" Line="109" Column="7" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="397" Column="2" />
-      <File FileName="parser/parser.dyl" Line="27" Column="3" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="662" Column="30" />
+      <File FileName="codegen/helpers.dyl" Line="1" Column="75" />
+      <File FileName="dnu/compilermsg.dyl" Line="1" Column="49" />
+      <File FileName="codegen/typelist.dyl" Line="1" Column="75" />
+      <File FileName="dnr/loader.dyl" Line="369" Column="10" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="306" Column="1" />
+      <File FileName="parser/parser.dyl" Line="29" Column="10" />
       <File FileName="ast/chars.dyl" Line="117" Column="5" />
-      <File FileName="lexer/line.dyl" Line="68" Column="10" />
+      <File FileName="lexer/line.dyl" Line="397" Column="33" />
       <File FileName="dev/nuget2dn.dyl" Line="25" Column="11" />
       <File FileName="ast/otherkeywords.dyl" Line="559" Column="19" />
       <File FileName="ast/newexpr.dyl" Line="1" Column="1" />
-      <File FileName="ast/newcalltoks.dyl" Line="106" Column="17" />
-      <File FileName="codegen/milambdas.dyl" Line="1" Column="1" />
-      <File FileName="lexer/lexer.dyl" Line="42" Column="6" />
+      <File FileName="ast/newcalltoks.dyl" Line="101" Column="13" />
+      <File FileName="codegen/milambdas.dyl" Line="1" Column="75" />
+      <File FileName="lexer/lexer.dyl" Line="118" Column="11" />
       <File FileName="ast/stmt.dyl" Line="28" Column="10" />
       <File FileName="ast/expr.dyl" Line="31" Column="12" />
       <File FileName="pc2curdir.1" Line="47" Column="9" />
       <File FileName="pc2dylandotnet.1" Line="1" Column="33" />
       <File FileName="dylandotnet.1" Line="103" Column="9" />
       <File FileName="dylandotnet4.1" Line="102" Column="9" />
-      <File FileName="codegen/symtable.dyl" Line="36" Column="2" />
+      <File FileName="codegen/symtable.dyl" Line="1" Column="75" />
       <File FileName="ast/methodnametok.dyl" Line="21" Column="21" />
       <File FileName="ast/ident.dyl" Line="39" Column="31" />
-      <File FileName="parser/parserflags.dyl" Line="138" Column="19" />
+      <File FileName="parser/parserflags.dyl" Line="1" Column="73" />
       <File FileName="ast/methods.dyl" Line="19" Column="3" />
+      <File FileName="codegen/codegenerator.dyl" Line="1" Column="75" />
+      <File FileName="dnc/Mod1.dyl" Line="1" Column="52" />
+      <File FileName="codegen/opstack.dyl" Line="1" Column="75" />
+      <File FileName="codegen/typeitem.dyl" Line="1" Column="75" />
+      <File FileName="codegen/filambdas.dyl" Line="1" Column="75" />
+      <File FileName="codegen/cilambdas.dyl" Line="1" Column="75" />
+      <File FileName="codegen/varitem.dyl" Line="1" Column="75" />
+      <File FileName="codegen/tilambdas.dyl" Line="1" Column="75" />
+      <File FileName="codegen/fielditem.dyl" Line="1" Column="75" />
+      <File FileName="codegen/ctoritem.dyl" Line="1" Column="75" />
+      <File FileName="codegen/collectionitem.dyl" Line="1" Column="75" />
+      <File FileName="codegen/loopitem.dyl" Line="1" Column="75" />
+      <File FileName="codegen/lockitem.dyl" Line="1" Column="75" />
+      <File FileName="codegen/labelitem.dyl" Line="1" Column="75" />
+      <File FileName="codegen/assemblyinfo.dyl" Line="1" Column="75" />
+      <File FileName="codegen/constldr.dyl" Line="1" Column="1" />
+      <File FileName="codegen/ifitem.dyl" Line="1" Column="75" />
+      <File FileName="codegen/methoditem.dyl" Line="1" Column="75" />
+      <File FileName="codegen/typearr.dyl" Line="1" Column="75" />
+      <File FileName="dnc/assemblyinfo.dyl" Line="17" Column="67" />
+      <File FileName="dnu/assemblyinfo.dyl" Line="17" Column="67" />
+      <File FileName="dnu/consts.dyl" Line="1" Column="49" />
+      <File FileName="dnu/keyboard.dyl" Line="1" Column="49" />
+      <File FileName="dnu/parseu.dyl" Line="265" Column="24" />
+      <File FileName="dnu/streamu.dyl" Line="1" Column="49" />
+      <File FileName="dnu/xmlu.dyl" Line="1" Column="49" />
+      <File FileName="dnu/winapi.dyl" Line="1" Column="49" />
+      <File FileName="dnr/asmfactory.dyl" Line="68" Column="32" />
+      <File FileName="dnr/assemblyinfo.dyl" Line="17" Column="67" />
+      <File FileName="dnr/consoleprinter.dyl" Line="1" Column="54" />
+      <File FileName="dnr/ilemitter.dyl" Line="1048" Column="2" />
+      <File FileName="tests/conv.dyl" Line="21" Column="3" />
+      <File FileName="dnr/importer.dyl" Line="38" Column="39" />
+      <File FileName="dnr/instructionhelper.dyl" Line="1" Column="54" />
+      <File FileName="dnr/milambdas.dyl" Line="37" Column="1" />
+      <File FileName="lexer/assemblyinfo.dyl" Line="13" Column="67" />
+      <File FileName="parser/assemblyinfo.dyl" Line="17" Column="67" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
-            <Node name="ast" expanded="True">
-              <Node name="newcalltoks.dyl" selected="True" />
-            </Node>
+            <Node name="ast" expanded="True" />
             <Node name="codegen" expanded="True" />
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
@@ -47,7 +82,9 @@
             <Node name="dnu" expanded="True" />
             <Node name="lexer" expanded="True" />
             <Node name="m4" expanded="True" />
-            <Node name="parser" expanded="True" />
+            <Node name="parser" expanded="True">
+              <Node name="stmtoptimizer.dyl" selected="True" />
+            </Node>
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>

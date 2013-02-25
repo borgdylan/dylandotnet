@@ -333,6 +333,12 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.Helpers.GetInhHierarchy">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.Helpers.GetLbl">
             <param name="nam">To be added.</param>
             <summary>To be added.</summary>

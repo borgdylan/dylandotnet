@@ -1,4 +1,4 @@
-//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -45,17 +45,14 @@ class public auto ansi beforefieldinit Evaluator
 //	end method
 
 	method public Expr ConvToRPN(var exp as Expr)
-		
-		if (exp::Tokens::get_Count() = 0) or (exp::Tokens::get_Count() = 1) then
+		if (exp::Tokens::get_Count() == 0) or (exp::Tokens::get_Count() == 1) then
 			return exp
 		end if
 		
 		Stack = new OpStack()
-		var exp2 as Expr = new Expr()
+		var exp2 as Expr = new Expr() {Line = exp::Line}
 		var i as integer = -1
 		var tok as Token = null
-		
-		exp2::Line = exp::Line
 
 		do until i = (exp::Tokens::get_Count() - 1)
 
@@ -105,7 +102,6 @@ class public auto ansi beforefieldinit Evaluator
 		until Stack::getLength() = 0
 
 		return exp2
-
 	end method
 
 	method public Token ConvToAST(var exp as Expr)
@@ -144,7 +140,7 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 			end if
 			if i = len then
-				tokf =  exp::Tokens::get_Item(0)
+				tokf = exp::Tokens::get_Item(0)
 			end if
 		end do
 		return tokf
@@ -894,24 +890,14 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				end if
 
-				if lctyp::Equals(rctyp) then
-					Helpers::OpCodeSuppFlg = lctyp::get_IsPrimitive()
-				else
-					Helpers::OpCodeSuppFlg = false
-				end if
-
+				Helpers::OpCodeSuppFlg = #ternary{lctyp::Equals(rctyp) ? lctyp::get_IsPrimitive(), false}
 				typ = gettype ValueType
 				Helpers::EqSuppFlg = ((ILEmitter::Univ::Import(typ)::IsAssignableFrom(lctyp) or ILEmitter::Univ::Import(typ)::IsAssignableFrom(rctyp)) == false) or Helpers::OpCodeSuppFlg
 				typ = gettype Enum
 				Helpers::EqSuppFlg = Helpers::EqSuppFlg or (lctyp::Equals(rctyp) and ILEmitter::Univ::Import(typ)::IsAssignableFrom(lctyp))
 			end if
 
-			//typ = gettype ConditionalOp
-			if optok is ConditionalOp then
-				AsmFactory::Type02 = ILEmitter::Univ::Import(gettype boolean)
-			else
-				AsmFactory::Type02 = lctyp
-			end if
+			AsmFactory::Type02 = #ternary {optok is ConditionalOp ? ILEmitter::Univ::Import(gettype boolean), lctyp}
 
 			if emt then
 				if isflg then
@@ -1177,7 +1163,7 @@ class public auto ansi beforefieldinit Evaluator
 					SymTable::SetIfElsePass()
 				end if
 				ASTEmit(ConvToAST(ConvToRPN(tcc::FalseExpr)), emt)
-				AsmFactory::Type02 = Helpers::CheckCompat(AsmFactory::Type02, ctyp)
+				AsmFactory::Type02 = Helpers::CheckCompat(ctyp, AsmFactory::Type02)
 				if AsmFactory::Type02 == null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "True and False Cases for Ternary Expressions should evaluate to compatible types.")
 				end if

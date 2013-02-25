@@ -17,11 +17,6 @@
       <MemberSignature Language="C#" Value="public static bool ReadBoolean ();" />
       <MemberSignature Language="ILAsm" Value=".method public static bool ReadBoolean() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -36,11 +31,6 @@
       <MemberSignature Language="C#" Value="public static char ReadChar ();" />
       <MemberSignature Language="ILAsm" Value=".method public static char ReadChar() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Char</ReturnType>
       </ReturnValue>
@@ -55,11 +45,6 @@
       <MemberSignature Language="C#" Value="public static double ReadDouble ();" />
       <MemberSignature Language="ILAsm" Value=".method public static float64 ReadDouble() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -74,11 +59,6 @@
       <MemberSignature Language="C#" Value="public static int ReadInteger ();" />
       <MemberSignature Language="ILAsm" Value=".method public static int32 ReadInteger() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -93,11 +73,6 @@
       <MemberSignature Language="C#" Value="public static long ReadLong ();" />
       <MemberSignature Language="ILAsm" Value=".method public static int64 ReadLong() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
@@ -112,11 +87,6 @@
       <MemberSignature Language="C#" Value="public static sbyte ReadSbyte ();" />
       <MemberSignature Language="ILAsm" Value=".method public static int8 ReadSbyte() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.SByte</ReturnType>
       </ReturnValue>
@@ -131,11 +101,6 @@
       <MemberSignature Language="C#" Value="public static short ReadShort ();" />
       <MemberSignature Language="ILAsm" Value=".method public static int16 ReadShort() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int16</ReturnType>
       </ReturnValue>
@@ -150,11 +115,6 @@
       <MemberSignature Language="C#" Value="public static float ReadSingle ();" />
       <MemberSignature Language="ILAsm" Value=".method public static float32 ReadSingle() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -169,11 +129,6 @@
       <MemberSignature Language="C#" Value="public static string ReadString ();" />
       <MemberSignature Language="ILAsm" Value=".method public static string ReadString() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>

@@ -1,4 +1,4 @@
-//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -28,25 +28,20 @@ class public auto ansi CodeGenerator
 			try
 				if inclustm::SSet == null then
 					if inclustm::Path::Value like c"^\q(.)*\q$" then
-						var tmpchrarr as char[] = new char[1]
-						tmpchrarr[0] = c'\q'
-						inclustm::Path::Value = inclustm::Path::Value::Trim(tmpchrarr)
+						inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
 					end if
 
 					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
-					var lx as Lexer = new Lexer()
 					if File::Exists(inclustm::Path::Value) == false then
 						//StreamUtils::Write(c"\n")
 						StreamUtils::WriteError(inclustm::Line, tup::Path, "File '" + inclustm::Path::Value + "' does not exist.")
 					end if
 					StreamUtils::Write("Now Lexing: ")
 					StreamUtils::WriteLine(inclustm::Path::Value)
-					var pstmts as StmtSet = lx::Analyze(inclustm::Path::Value)
-					var ps as Parser = new Parser()
+					var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
 					StreamUtils::Write("Now Parsing: ")
 					StreamUtils::WriteLine(inclustm::Path::Value)
-					var ppstmts as StmtSet = ps::Parse(pstmts)
-					inclustm::SSet = ppstmts
+					inclustm::SSet = new Parser()::Parse(pstmts)
 					StreamUtils::Write("Finished Processing: ")
 					StreamUtils::Write(inclustm::Path::Value)
 					StreamUtils::WriteLine(" (worker thread)")
@@ -129,28 +124,22 @@ class public auto ansi CodeGenerator
 					
 					lock inclustm::Path
 						if inclustm::Path::Value like c"^\q(.)*\q$" then
-							var tmpchrarr as char[] = new char[1]
-							tmpchrarr[0] = c'\q'
-							inclustm::Path::Value = inclustm::Path::Value::Trim(tmpchrarr)
+							inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
 						end if
 						inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
 						pth = inclustm::Path::Value
 						
 						if inclustm::SSet == null then
-							var lx as Lexer = new Lexer()
 							if File::Exists(inclustm::Path::Value) == false then
-								//StreamUtils::Write(c"\n")
 								StreamUtils::WriteError(inclustm::Line, stmts::Path, "File '" + inclustm::Path::Value + "' does not exist.")
 							end if
 							StreamUtils::Write("Now Lexing: ")
 							StreamUtils::WriteLine(inclustm::Path::Value)
-							var pstmts as StmtSet = lx::Analyze(inclustm::Path::Value)
-							var ps as Parser = new Parser()
+							var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
 							StreamUtils::Write("Now Parsing: ")
 							StreamUtils::WriteLine(inclustm::Path::Value)
-							var ppstmts as StmtSet = ps::Parse(pstmts)
-							inclustm::SSet = ppstmts
-							sset = ppstmts
+							sset = new Parser()::Parse(pstmts)
+							inclustm::SSet = sset
 							StreamUtils::Write("Finished Processing: ")
 							StreamUtils::Write(inclustm::Path::Value)
 							StreamUtils::WriteLine(" (inline)")
@@ -161,9 +150,8 @@ class public auto ansi CodeGenerator
 						
 					EmitMSIL(sset, pth)
 				else
-					var sr as StmtReader = new StmtReader()
 					if stmts::Stmts::get_Item(i) != null then
-						sr::Read(stmts::Stmts::get_Item(i), fpath)
+						new StmtReader()::Read(stmts::Stmts::get_Item(i), fpath)
 					end if
 				end if
 			end if

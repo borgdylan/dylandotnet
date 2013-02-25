@@ -1,4 +1,4 @@
-//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
@@ -60,9 +60,7 @@ class public auto ansi TypeItem
 	end method
 	
 	method public void NormalizeInterfaces()
-		var nl as C5.IList<of IKVM.Reflection.Type> = new C5.LinkedList<of IKVM.Reflection.Type>()
-		nl::AddAll(Enumerable::Distinct<of IKVM.Reflection.Type>(Interfaces))
-		Interfaces = nl
+		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>() {AddAll(Enumerable::Distinct<of IKVM.Reflection.Type>(Interfaces))}
 	end method
 
 	method public MethodBuilder GetMethod(var nam as string, var paramst as IKVM.Reflection.Type[])

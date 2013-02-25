@@ -1,4 +1,4 @@
-//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -204,13 +204,8 @@ class public auto ansi StmtReader
 			if AsmFactory::DebugFlg then
 				var dtyp as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype DebuggableAttribute)
 				var debugattr as DebuggableAttribute\DebuggingModes = DebuggableAttribute\DebuggingModes::Default or DebuggableAttribute\DebuggingModes::DisableOptimizations
-				var oattr as object = $object$debugattr
 				var dattyp as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype DebuggableAttribute\DebuggingModes)
-				var tarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
-				tarr[0] = dattyp
-				var oarr as object[] = new object[1]
-				oarr[0] = oattr
-				AsmFactory::AsmB::SetCustomAttribute(new CustomAttributeBuilder(dtyp::GetConstructor(tarr), oarr))
+				AsmFactory::AsmB::SetCustomAttribute(new CustomAttributeBuilder(dtyp::GetConstructor(new IKVM.Reflection.Type[] {dattyp}), new object[] {$object$debugattr}))
 			end if
 			// --------------------------------------------------------------------------------------------------------
 			
@@ -314,9 +309,7 @@ class public auto ansi StmtReader
 			SymTable::ResetClsCAs()
 
 			if ti2 == null then
-				var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::ClassName::Value,AsmFactory::CurnTypB)
-				ti::InhTyp = inhtyp
-				ti::IsStatic = ILEmitter::StaticCFlg
+				var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::ClassName::Value, AsmFactory::CurnTypB) {InhTyp = inhtyp, IsStatic = ILEmitter::StaticCFlg}
 				SymTable::CurnTypItem = ti
 				SymTable::TypeLst::AddType(ti)
 
@@ -353,8 +346,7 @@ class public auto ansi StmtReader
 				AsmFactory::inClass = true
 			end if
 
-			var dta as TypeAttributes = Helpers::ProcessClassAttrs(dels::Attrs)
-			dta = dta or TypeAttributes::AnsiClass or TypeAttributes::Sealed or TypeAttributes::AutoClass
+			var dta as TypeAttributes = Helpers::ProcessClassAttrs(dels::Attrs) or TypeAttributes::AnsiClass or TypeAttributes::Sealed or TypeAttributes::AutoClass
 			var dinhtyp as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype MulticastDelegate)
 			AsmFactory::CurnInhTyp = dinhtyp
 
@@ -374,8 +366,7 @@ class public auto ansi StmtReader
 			Helpers::ApplyClsAttrs()
 			SymTable::ResetClsCAs()
 
-			var dti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + dels::DelegateName::Value,AsmFactory::CurnTypB)
-			dti::InhTyp = dinhtyp
+			var dti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + dels::DelegateName::Value,AsmFactory::CurnTypB) {InhTyp = dinhtyp}
 			SymTable::CurnTypItem = dti
 
 			SymTable::ResetVar()
@@ -613,8 +604,7 @@ class public auto ansi StmtReader
 		elseif stm is ReturnStmt then
 			var retstmt as ReturnStmt = $ReturnStmt$stm
 			if retstmt::RExp != null then
-				eval = new Evaluator()
-				eval::Evaluate(retstmt::RExp)
+				new Evaluator()::Evaluate(retstmt::RExp)
 				Helpers::CheckAssignability(AsmFactory::CurnMetB::get_ReturnType(), AsmFactory::Type02)
 			end if
 			ILEmitter::EmitRet()
@@ -636,8 +626,7 @@ class public auto ansi StmtReader
 			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
 			ILEmitter::LocInd = ILEmitter::LocInd + 1
 			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
-			eval = new Evaluator()
-			eval::StoreEmit(curva::VarName, curva::RExpr)
+			new Evaluator()::StoreEmit(curva::VarName, curva::RExpr)
 		elseif stm is InfVarAsgnStmt then
 			var curva as InfVarAsgnStmt = $InfVarAsgnStmt$stm
 			eval = new Evaluator()
@@ -656,13 +645,11 @@ class public auto ansi StmtReader
 			AsmFactory::CurnNS = AsmFactory::DfltNS
 		elseif stm is AssignStmt then
 			var asgnstm as AssignStmt = $AssignStmt$stm
-			eval = new Evaluator()
-			eval::StoreEmit(asgnstm::LExp::Tokens::get_Item(0), asgnstm::RExp)
+			new Evaluator()::StoreEmit(asgnstm::LExp::Tokens::get_Item(0), asgnstm::RExp)
 		elseif stm is MethodCallStmt then
 			var mcstmt as MethodCallStmt = $MethodCallStmt$stm
 			if Helpers::SetPopFlg(mcstmt::MethodToken) != null then
-				eval = new Evaluator()
-				eval::Evaluate(new Expr() {AddToken(mcstmt::MethodToken)})
+				new Evaluator()::Evaluate(new Expr() {AddToken(mcstmt::MethodToken)})
 			else
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No variable/field loads are allowed without a destination being specified")
 			end if
@@ -670,8 +657,7 @@ class public auto ansi StmtReader
 			var ifstm as IfStmt = $IfStmt$stm
 			SymTable::AddIf()
 			SymTable::PushScope()
-			eval = new Evaluator()
-			eval::Evaluate(ifstm::Exp)
+			new Evaluator()::Evaluate(ifstm::Exp)
 			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for If Statements should evaluate to boolean.")
 			end if
@@ -686,8 +672,7 @@ class public auto ansi StmtReader
 			ILEmitter::EmitBr(SymTable::ReadLoopStartLbl())
 		elseif stm is UntilStmt then
 			var unstm as UntilStmt = $UntilStmt$stm
-			eval = new Evaluator()
-			eval::Evaluate(unstm::Exp)
+			new Evaluator()::Evaluate(unstm::Exp)
 			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Until Statements should evaluate to boolean.")
 			end if
@@ -697,8 +682,7 @@ class public auto ansi StmtReader
 			SymTable::PopScope()
 		elseif stm is WhileStmt then
 			var whstm as WhileStmt = $WhileStmt$stm
-			eval = new Evaluator()
-			eval::Evaluate(whstm::Exp)
+			new Evaluator()::Evaluate(whstm::Exp)
 			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for While Statements should evaluate to boolean.")
 			end if
@@ -711,8 +695,7 @@ class public auto ansi StmtReader
 			SymTable::PushScope()
 			SymTable::AddLoop()
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
-			eval = new Evaluator()
-			eval::Evaluate(dustm::Exp)
+			new Evaluator()::Evaluate(dustm::Exp)
 			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Do Until Statements should evaluate to boolean.")
 			end if
@@ -722,8 +705,7 @@ class public auto ansi StmtReader
 			SymTable::PushScope()
 			SymTable::AddLoop()
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
-			eval = new Evaluator()
-			eval::Evaluate(dwstm::Exp)
+			new Evaluator()::Evaluate(dwstm::Exp)
 			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Do While Statements should evaluate to boolean.")
 			end if
@@ -735,8 +717,7 @@ class public auto ansi StmtReader
 			var elifstm as ElseIfStmt = $ElseIfStmt$stm
 			SymTable::PopScope()
 			SymTable::PushScope()
-			eval = new Evaluator()
-			eval::Evaluate(elifstm::Exp)
+			new Evaluator()::Evaluate(elifstm::Exp)
 			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for ElseIf Statements should evaluate to boolean.")
 			end if
@@ -772,8 +753,7 @@ class public auto ansi StmtReader
 		elseif stm is ThrowStmt then
 			var trostmt as ThrowStmt = $ThrowStmt$stm
 			if trostmt::RExp != null then
-				eval = new Evaluator()
-				eval::Evaluate(trostmt::RExp)
+				new Evaluator()::Evaluate(trostmt::RExp)
 				if ILEmitter::Univ::Import(gettype Exception)::IsAssignableFrom(AsmFactory::Type02) == false then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + AsmFactory::Type02::ToString() + "' is not an Exception Type.")
 				end if
@@ -815,8 +795,7 @@ class public auto ansi StmtReader
 		elseif stm is ForeachStmt then
 			var festm as ForeachStmt = $ForeachStmt$stm
 			SymTable::PushScope()
-			eval = new Evaluator()
-			eval::Evaluate(festm::Exp)
+			new Evaluator()::Evaluate(festm::Exp)
 			var mtds as MethodInfo[] = Helpers::ProcessForeach(AsmFactory::Type02)
 			if mtds != null then
 				ILEmitter::EmitCallvirt(mtds[0])
@@ -964,9 +943,7 @@ class public auto ansi StmtReader
 			StreamUtils::WriteLine(evss::EventName::Value)
 		elseif stm is EventAddStmt then
 			var evas as EventAddStmt = $EventAddStmt$stm
-			var eaa as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
-			eaa[0] = AsmFactory::CurnEventType
-			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Adder::Value, eaa)
+			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Adder::Value, new IKVM.Reflection.Type[] {AsmFactory::CurnEventType})
 			if mb != null then
 				AsmFactory::CurnEventB::SetAddOnMethod(mb)
 			else
@@ -976,9 +953,7 @@ class public auto ansi StmtReader
 			StreamUtils::WriteLine(evas::Adder::Value)
 		elseif stm is EventRemoveStmt then
 			var evas as EventRemoveStmt = $EventRemoveStmt$stm
-			var eaa as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[1]
-			eaa[0] = AsmFactory::CurnEventType
-			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Remover::Value, eaa)
+			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Remover::Value, new IKVM.Reflection.Type[] {AsmFactory::CurnEventType})
 			if mb != null then
 				AsmFactory::CurnEventB::SetRemoveOnMethod(mb)
 			else
@@ -994,8 +969,7 @@ class public auto ansi StmtReader
 		elseif stm is LockStmt then
 			var lstm as LockStmt = $LockStmt$stm
 			SymTable::PushScope()
-			eval = new Evaluator()
-			eval::Evaluate(lstm::Lockee)
+			new Evaluator()::Evaluate(lstm::Lockee)
 			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type02) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Locks should only be taken on Objects and not Valuetypes.")
 			end if

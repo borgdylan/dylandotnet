@@ -30,11 +30,6 @@
       <MemberSignature Language="C#" Value="public static void AddDocWriter (System.Diagnostics.SymbolStore.ISymbolDocumentWriter srcf);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddDocWriter(class System.Diagnostics.SymbolStore.ISymbolDocumentWriter srcf) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -51,11 +46,6 @@
       <MemberSignature Language="C#" Value="public static void AddSrcFile (string srcf);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddSrcFile(string srcf) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -85,11 +75,6 @@
       <MemberSignature Language="C#" Value="public static void BeginScope ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void BeginScope() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -140,11 +125,6 @@
       <MemberSignature Language="C#" Value="public static void DeclVar (string name, IKVM.Reflection.Type typ);" />
       <MemberSignature Language="ILAsm" Value=".method public static void DeclVar(string name, class IKVM.Reflection.Type typ) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -163,11 +143,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label DefineLbl ();" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label DefineLbl() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
       </ReturnValue>
@@ -206,11 +181,6 @@
       <MemberSignature Language="C#" Value="public static void EmitAdd (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitAdd(bool s) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -228,11 +198,6 @@
       <MemberSignature Language="C#" Value="public static void EmitAnd ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitAnd() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -247,11 +212,6 @@
       <MemberSignature Language="C#" Value="public static void EmitBox (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitBox(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -268,11 +228,6 @@
       <MemberSignature Language="C#" Value="public static void EmitBr (IKVM.Reflection.Emit.Label lbl);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitBr(valuetype IKVM.Reflection.Emit.Label lbl) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -289,11 +244,6 @@
       <MemberSignature Language="C#" Value="public static void EmitBrfalse (IKVM.Reflection.Emit.Label lbl);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitBrfalse(valuetype IKVM.Reflection.Emit.Label lbl) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -310,11 +260,6 @@
       <MemberSignature Language="C#" Value="public static void EmitBrtrue (IKVM.Reflection.Emit.Label lbl);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitBrtrue(valuetype IKVM.Reflection.Emit.Label lbl) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -331,11 +276,6 @@
       <MemberSignature Language="C#" Value="public static void EmitCall (IKVM.Reflection.MethodInfo met);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitCall(class IKVM.Reflection.MethodInfo met) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -352,11 +292,6 @@
       <MemberSignature Language="C#" Value="public static void EmitCallCtor (IKVM.Reflection.ConstructorInfo met);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitCallCtor(class IKVM.Reflection.ConstructorInfo met) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -373,11 +308,6 @@
       <MemberSignature Language="C#" Value="public static void EmitCallvirt (IKVM.Reflection.MethodInfo met);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitCallvirt(class IKVM.Reflection.MethodInfo met) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -394,11 +324,6 @@
       <MemberSignature Language="C#" Value="public static void EmitCastclass (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitCastclass(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -415,11 +340,6 @@
       <MemberSignature Language="C#" Value="public static void EmitCatch (IKVM.Reflection.Type e);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitCatch(class IKVM.Reflection.Type e) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -436,11 +356,6 @@
       <MemberSignature Language="C#" Value="public static void EmitCeq ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitCeq() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -455,11 +370,6 @@
       <MemberSignature Language="C#" Value="public static void EmitCge (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitCge(bool s) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -477,11 +387,6 @@
       <MemberSignature Language="C#" Value="public static void EmitCgt (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitCgt(bool s) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -499,11 +404,6 @@
       <MemberSignature Language="C#" Value="public static void EmitCle (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitCle(bool s) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -521,11 +421,6 @@
       <MemberSignature Language="C#" Value="public static void EmitClt (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitClt(bool s) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -543,11 +438,6 @@
       <MemberSignature Language="C#" Value="public static void EmitCneq ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitCneq() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -562,11 +452,6 @@
       <MemberSignature Language="C#" Value="public static void EmitConstrained (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitConstrained(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -583,11 +468,6 @@
       <MemberSignature Language="C#" Value="public static void EmitConvI ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitConvI() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -601,11 +481,6 @@
       <MemberSignature Language="C#" Value="public static void EmitConvI4 ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitConvI4() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -619,11 +494,6 @@
       <MemberSignature Language="C#" Value="public static void EmitConvU ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitConvU() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -637,11 +507,6 @@
       <MemberSignature Language="C#" Value="public static void EmitDelegateAdd ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitDelegateAdd() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -655,11 +520,6 @@
       <MemberSignature Language="C#" Value="public static void EmitDelegateSub ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitDelegateSub() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -673,11 +533,6 @@
       <MemberSignature Language="C#" Value="public static void EmitDiv (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitDiv(bool s) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -695,11 +550,6 @@
       <MemberSignature Language="C#" Value="public static void EmitDup ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitDup() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -714,11 +564,6 @@
       <MemberSignature Language="C#" Value="public static void EmitEndTry ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitEndTry() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -732,11 +577,6 @@
       <MemberSignature Language="C#" Value="public static void EmitFinally ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitFinally() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -750,11 +590,6 @@
       <MemberSignature Language="C#" Value="public static void EmitIs (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitIs(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -771,11 +606,6 @@
       <MemberSignature Language="C#" Value="public static void EmitIsinst (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitIsinst(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -792,11 +622,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdarg (int num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdarg(int32 num) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -813,11 +638,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdarga (int num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdarga(int32 num) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -834,11 +654,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcBool (bool b);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcBool(bool b) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -856,11 +671,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcChar (char c);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcChar(char c) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -878,11 +688,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcDec (decimal n);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcDec(valuetype System.Decimal n) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -899,11 +704,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcI1 (sbyte n);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcI1(int8 n) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -921,11 +721,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcI2 (short n);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcI2(int16 n) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -943,11 +738,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcI4 (int num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcI4(int32 num) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -965,11 +755,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcI8 (long n);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcI8(int64 n) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -987,11 +772,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcR4 (float num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcR4(float32 num) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1009,11 +789,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcR8 (double num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcR8(float64 num) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1031,11 +806,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcU1 (byte n);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcU1(unsigned int8 n) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1052,11 +822,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcU2 (ushort n);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcU2(unsigned int16 n) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1073,11 +838,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcU4 (uint n);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcU4(unsigned int32 n) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1094,11 +854,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdcU8 (ulong n);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcU8(unsigned int64 n) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1115,11 +870,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdelem (IKVM.Reflection.Type typ);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdelem(class IKVM.Reflection.Type typ) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1136,11 +886,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdelema (IKVM.Reflection.Type typ);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdelema(class IKVM.Reflection.Type typ) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1157,11 +902,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdfld (IKVM.Reflection.FieldInfo fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdfld(class IKVM.Reflection.FieldInfo fld) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1178,11 +918,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdflda (IKVM.Reflection.FieldInfo fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdflda(class IKVM.Reflection.FieldInfo fld) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1199,11 +934,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdftn (IKVM.Reflection.MethodInfo met);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdftn(class IKVM.Reflection.MethodInfo met) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1220,11 +950,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdind (IKVM.Reflection.Type typ);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdind(class IKVM.Reflection.Type typ) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1241,11 +966,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdlen ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdlen() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1259,11 +979,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdloc (int num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdloc(int32 num) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1280,11 +995,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdloca (int num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdloca(int32 num) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1301,11 +1011,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdnull ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdnull() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1319,11 +1024,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdsfld (IKVM.Reflection.FieldInfo fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdsfld(class IKVM.Reflection.FieldInfo fld) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1340,11 +1040,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdsflda (IKVM.Reflection.FieldInfo fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdsflda(class IKVM.Reflection.FieldInfo fld) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1361,11 +1056,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdstr (string str);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdstr(string str) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1383,11 +1073,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdtoken (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdtoken(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1404,11 +1089,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLdvirtftn (IKVM.Reflection.MethodInfo met);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdvirtftn(class IKVM.Reflection.MethodInfo met) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1425,11 +1105,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLike ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLike() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1443,11 +1118,6 @@
       <MemberSignature Language="C#" Value="public static void EmitMul (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitMul(bool s) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1464,11 +1134,6 @@
       <MemberSignature Language="C#" Value="public static void EmitNand ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNand() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1482,11 +1147,6 @@
       <MemberSignature Language="C#" Value="public static void EmitNandOther ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNandOther() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1500,11 +1160,6 @@
       <MemberSignature Language="C#" Value="public static void EmitNeg ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNeg() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1518,11 +1173,6 @@
       <MemberSignature Language="C#" Value="public static void EmitNewarr (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNewarr(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1539,11 +1189,6 @@
       <MemberSignature Language="C#" Value="public static void EmitNewobj (IKVM.Reflection.ConstructorInfo c);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNewobj(class IKVM.Reflection.ConstructorInfo c) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1560,11 +1205,6 @@
       <MemberSignature Language="C#" Value="public static void EmitNLike ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNLike() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1578,11 +1218,6 @@
       <MemberSignature Language="C#" Value="public static void EmitNor ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNor() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1596,11 +1231,6 @@
       <MemberSignature Language="C#" Value="public static void EmitNorOther ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNorOther() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1614,11 +1244,6 @@
       <MemberSignature Language="C#" Value="public static void EmitNot ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNot() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1632,11 +1257,6 @@
       <MemberSignature Language="C#" Value="public static void EmitNotOther ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNotOther() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1650,11 +1270,6 @@
       <MemberSignature Language="C#" Value="public static void EmitOr ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitOr() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1668,11 +1283,6 @@
       <MemberSignature Language="C#" Value="public static void EmitPop ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitPop() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1686,11 +1296,6 @@
       <MemberSignature Language="C#" Value="public static void EmitRem (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitRem(bool s) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1707,11 +1312,6 @@
       <MemberSignature Language="C#" Value="public static void EmitRet ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitRet() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1725,11 +1325,6 @@
       <MemberSignature Language="C#" Value="public static void EmitShl ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitShl() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1743,11 +1338,6 @@
       <MemberSignature Language="C#" Value="public static void EmitShr (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitShr(bool s) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1764,11 +1354,6 @@
       <MemberSignature Language="C#" Value="public static void EmitStarg (int num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitStarg(int32 num) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1786,11 +1371,6 @@
       <MemberSignature Language="C#" Value="public static void EmitStelem (IKVM.Reflection.Type typ);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitStelem(class IKVM.Reflection.Type typ) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1807,11 +1387,6 @@
       <MemberSignature Language="C#" Value="public static void EmitStfld (IKVM.Reflection.FieldInfo fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitStfld(class IKVM.Reflection.FieldInfo fld) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1828,11 +1403,6 @@
       <MemberSignature Language="C#" Value="public static void EmitStind (IKVM.Reflection.Type typ);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitStind(class IKVM.Reflection.Type typ) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1849,11 +1419,6 @@
       <MemberSignature Language="C#" Value="public static void EmitStloc (int num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitStloc(int32 num) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1870,11 +1435,6 @@
       <MemberSignature Language="C#" Value="public static void EmitStrAdd ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitStrAdd() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1888,11 +1448,6 @@
       <MemberSignature Language="C#" Value="public static void EmitStrCeq ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitStrCeq() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1906,11 +1461,6 @@
       <MemberSignature Language="C#" Value="public static void EmitStrCneq ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitStrCneq() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1924,11 +1474,6 @@
       <MemberSignature Language="C#" Value="public static void EmitStsfld (IKVM.Reflection.FieldInfo fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitStsfld(class IKVM.Reflection.FieldInfo fld) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1945,11 +1490,6 @@
       <MemberSignature Language="C#" Value="public static void EmitSub (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitSub(bool s) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1967,11 +1507,6 @@
       <MemberSignature Language="C#" Value="public static void EmitThrow ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitThrow() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1985,11 +1520,6 @@
       <MemberSignature Language="C#" Value="public static void EmitTry ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitTry() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2003,11 +1533,6 @@
       <MemberSignature Language="C#" Value="public static void EmitUnbox (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitUnbox(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2024,11 +1549,6 @@
       <MemberSignature Language="C#" Value="public static void EmitUnboxAny (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitUnboxAny(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2045,11 +1565,6 @@
       <MemberSignature Language="C#" Value="public static void EmitXnor ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitXnor() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2063,11 +1578,6 @@
       <MemberSignature Language="C#" Value="public static void EmitXnorOther ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitXnorOther() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2081,11 +1591,6 @@
       <MemberSignature Language="C#" Value="public static void EmitXor ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitXor() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2099,11 +1604,6 @@
       <MemberSignature Language="C#" Value="public static void EndScope ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EndScope() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2117,11 +1617,6 @@
       <MemberSignature Language="C#" Value="public static void Init ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void Init() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2172,11 +1667,6 @@
       <MemberSignature Language="C#" Value="public static void MarkDbgPt (int line);" />
       <MemberSignature Language="ILAsm" Value=".method public static void MarkDbgPt(int32 line) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2193,11 +1683,6 @@
       <MemberSignature Language="C#" Value="public static void MarkLbl (IKVM.Reflection.Emit.Label lbl);" />
       <MemberSignature Language="ILAsm" Value=".method public static void MarkLbl(valuetype IKVM.Reflection.Emit.Label lbl) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2239,11 +1724,6 @@
       <MemberSignature Language="C#" Value="public static void PopDocWriter ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void PopDocWriter() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -2257,11 +1737,6 @@
       <MemberSignature Language="C#" Value="public static void PopSrcFile ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void PopSrcFile() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

@@ -1,4 +1,4 @@
-//    dnu.dll dylan.NET.Utils Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    dnu.dll dylan.NET.Utils Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -187,12 +187,10 @@ class public auto ansi static ParseUtils
 
 	[method: ComVisible(false)]
 	method public static string ProcessMSYSPath(var p as string)
-
-		var platf as PlatformID = Environment::get_OSVersion()::get_Platform()
 		var arr as string[]
 		var str as string
 	
-		if platf = PlatformID::Win32NT then
+		if Environment::get_OSVersion()::get_Platform() == PlatformID::Win32NT then
 			if p::Contains("/") then
 				p = p::Replace('/','\')
 				if File::Exists(p) = false then
@@ -250,27 +248,27 @@ class public auto ansi static ParseUtils
 					i = i + 1
 					cc = escstr::get_Chars(i)
 					if cc = 's' then
-						sb::Append($char$39)
+						sb::Append(c'\s')
 					elseif cc = 'q' then
-						sb::Append($char$34)
+						sb::Append(c'\q')
 					elseif cc = '\' then
 						sb::Append('\')
 					elseif cc = '0' then
-						sb::Append($char$0)
+						sb::Append(c'\0')
 					elseif cc = 'a' then
-						sb::Append($char$7)
+						sb::Append(c'\a')
 					elseif cc = 'b' then
-						sb::Append($char$8)
+						sb::Append(c'\b')
 					elseif cc = 'f' then
-						sb::Append($char$12)
+						sb::Append(c'\f')
 					elseif cc = 'n' then
-						sb::Append($char$10)
+						sb::Append(c'\n')
 					elseif cc = 'r' then
-						sb::Append($char$13)
+						sb::Append(c'\r')
 					elseif cc = 't' then
-						sb::Append($char$9)
+						sb::Append(c'\t')
 					elseif cc = 'v' then
-						sb::Append($char$11)
+						sb::Append(c'\v')
 					elseif cc = 'x' then
 						if i < (len - 3) then
 							i = i + 1

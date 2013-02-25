@@ -1,4 +1,4 @@
-//    dnr.dll dylan.NET.Reflection Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    dnr.dll dylan.NET.Reflection Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -248,165 +248,107 @@ class public auto ansi static ILEmitter
 	end method
 	
 	[method: ComVisible(false)]
-	method public static void EmitStelem(var typ as IKVM.Reflection.Type)
-
-		var t as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[9] 
-		t[0] = Univ::Import(gettype intptr)
-		t[1] = Univ::Import(gettype sbyte)
-		t[2] = Univ::Import(gettype short)
-		t[3] = Univ::Import(gettype integer)
-		t[4] = Univ::Import(gettype long)
-		t[5] = Univ::Import(gettype single)
-		t[6] = Univ::Import(gettype double)
-		t[7] = Univ::Import(gettype ValueType)
-		t[8] = Univ::Import(gettype object)
-				
-		if t[0]::Equals(typ) then
+	method public static void EmitStelem(var typ as IKVM.Reflection.Type)	
+		if Univ::Import(gettype intptr)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I)
-		elseif t[1]::Equals(typ) then
+		elseif Univ::Import(gettype sbyte)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I1)
-		elseif t[2]::Equals(typ) then
+		elseif Univ::Import(gettype short)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I2)
-		elseif t[3]::Equals(typ) then
+		elseif Univ::Import(gettype integer)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I4)
-		elseif t[4]::Equals(typ) then
+		elseif Univ::Import(gettype long)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I8)
-		elseif t[5]::Equals(typ) then
+		elseif Univ::Import(gettype single)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_R4)
-		elseif t[6]::Equals(typ) then
+		elseif Univ::Import(gettype double)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_R8)
-		elseif t[7]::IsAssignableFrom(typ) then
+		elseif Univ::Import(gettype ValueType)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem, typ)
-		elseif t[8]::IsAssignableFrom(typ) then
+		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_Ref)
 		end if
-
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitStind(var typ as IKVM.Reflection.Type)
-
-		var t as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[9] 
-		t[0] = Univ::Import(gettype intptr)
-		t[1] = Univ::Import(gettype sbyte)
-		t[2] = Univ::Import(gettype short)
-		t[3] = Univ::Import(gettype integer)
-		t[4] = Univ::Import(gettype long)
-		t[5] = Univ::Import(gettype single)
-		t[6] = Univ::Import(gettype double)
-		t[7] = Univ::Import(gettype ValueType)
-		t[8] = Univ::Import(gettype object)
-				
-		if t[0]::Equals(typ) then
+	method public static void EmitStind(var typ as IKVM.Reflection.Type)	
+		if Univ::Import(gettype intptr)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I)
-		elseif t[1]::Equals(typ) then
+		elseif Univ::Import(gettype sbyte)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I1)
-		elseif t[2]::Equals(typ) then
+		elseif Univ::Import(gettype short)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I2)
-		elseif t[3]::Equals(typ) then
+		elseif Univ::Import(gettype integer)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I4)
-		elseif t[4]::Equals(typ) then
+		elseif Univ::Import(gettype long)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I8)
-		elseif t[5]::Equals(typ) then
+		elseif Univ::Import(gettype single)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_R4)
-		elseif t[6]::Equals(typ) then
+		elseif Univ::Import(gettype double)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_R8)
-		elseif t[7]::IsAssignableFrom(typ) then
+		elseif Univ::Import(gettype ValueType)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stobj, typ)
-		elseif t[8]::IsAssignableFrom(typ) then
+		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_Ref)
 		end if
-
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdelem(var typ as IKVM.Reflection.Type)
-
-		var t as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[12]
-		t[0] = Univ::Import(gettype intptr)
-		t[1] = Univ::Import(gettype sbyte)
-		t[2] = Univ::Import(gettype short)
-		t[3] = Univ::Import(gettype integer)
-		t[4] = Univ::Import(gettype long)
-		t[5] = Univ::Import(gettype single)
-		t[6] = Univ::Import(gettype double)
-		t[7] = Univ::Import(gettype ValueType)
-		t[8] = Univ::Import(gettype object)
-		t[9] = Univ::Import(gettype byte)
-		t[10] = Univ::Import(gettype ushort)
-		t[11] = Univ::Import(gettype uinteger)
-		
-		if t[0]::Equals(typ) then
+		if Univ::Import(gettype intptr)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I)
-		elseif t[1]::Equals(typ) then
+		elseif Univ::Import(gettype sbyte)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I1)
-		elseif t[2]::Equals(typ) then
+		elseif Univ::Import(gettype short)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I2)
-		elseif t[3]::Equals(typ) then
+		elseif Univ::Import(gettype integer)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I4)
-		elseif t[9]::Equals(typ) then
+		elseif Univ::Import(gettype byte)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_U1)
-		elseif t[10]::Equals(typ) then
+		elseif Univ::Import(gettype ushort)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_U2)
-		elseif t[11]::Equals(typ) then
+		elseif Univ::Import(gettype uinteger)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_U4)
-		elseif t[4]::Equals(typ) then
+		elseif Univ::Import(gettype long)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I8)
-		elseif t[5]::Equals(typ) then
+		elseif Univ::Import(gettype single)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_R4)
-		elseif t[6]::Equals(typ) then
+		elseif Univ::Import(gettype double)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_R8)
-		elseif t[7]::IsAssignableFrom(typ) then
+		elseif Univ::Import(gettype ValueType)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem, typ)
-		elseif t[8]::IsAssignableFrom(typ) then
+		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_Ref)
 		end if
-
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdind(var typ as IKVM.Reflection.Type)
-
-		var t as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[12]
-		t[0] = Univ::Import(gettype intptr)
-		t[1] = Univ::Import(gettype sbyte)
-		t[2] = Univ::Import(gettype short)
-		t[3] = Univ::Import(gettype integer)
-		t[4] = Univ::Import(gettype long)
-		t[5] = Univ::Import(gettype single)
-		t[6] = Univ::Import(gettype double)
-		t[7] = Univ::Import(gettype ValueType)
-		t[8] = Univ::Import(gettype object)
-		t[9] = Univ::Import(gettype byte)
-		t[10] = Univ::Import(gettype ushort)
-		t[11] = Univ::Import(gettype uinteger)
-		
-		if t[0]::Equals(typ) then
+		if Univ::Import(gettype intptr)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I)
-		elseif t[1]::Equals(typ) then
+		elseif Univ::Import(gettype sbyte)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I1)
-		elseif t[2]::Equals(typ) then
+		elseif Univ::Import(gettype short)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I2)
-		elseif t[3]::Equals(typ) then
+		elseif Univ::Import(gettype integer)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I4)
-		elseif t[9]::Equals(typ) then
+		elseif Univ::Import(gettype byte)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_U1)
-		elseif t[10]::Equals(typ) then
+		elseif Univ::Import(gettype ushort)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_U2)
-		elseif t[11]::Equals(typ) then
+		elseif Univ::Import(gettype uinteger)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_U4)
-		elseif t[4]::Equals(typ) then
+		elseif Univ::Import(gettype long)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I8)
-		elseif t[5]::Equals(typ) then
+		elseif Univ::Import(gettype single)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_R4)
-		elseif t[6]::Equals(typ) then
+		elseif Univ::Import(gettype double)::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_R8)
-		elseif t[7]::IsAssignableFrom(typ) then
+		elseif Univ::Import(gettype ValueType)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldobj, typ)
-		elseif t[8]::IsAssignableFrom(typ) then
+		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_Ref)
 		end if
-
 	end method
 
 	[method: ComVisible(false)]
@@ -416,7 +358,6 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcI8(var n as long)
-
 		if n = -1l then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_M1)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
@@ -453,12 +394,10 @@ class public auto ansi static ILEmitter
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I8, n)
 		end if
-		
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcU8(var n as ulong)
-
 		if n = $ulong$0 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
@@ -497,12 +436,10 @@ class public auto ansi static ILEmitter
 			var convc as IKVM.Reflection.Type = Univ::Import(gettype Convert)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {Univ::Import(gettype string)}))
 		end if
-		
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcI4(var num as integer)
-	
 		if num = -1 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_M1)
 		elseif num = 0 then
@@ -526,14 +463,11 @@ class public auto ansi static ILEmitter
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, num)
 		end if
-	
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdcU4(var n as uinteger)
-		
 		var num as long = $long$n		
-			
 		if num = 0l then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
@@ -568,13 +502,11 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I8, num)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
 		end if
-	
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdcI2(var n as short)
 		var num as integer = $integer$n
-
 		if num = -1 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_M1)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
@@ -614,7 +546,6 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void EmitLdcU2(var n as ushort)
 		var num as integer = $integer$n
-
 		if num = 0 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
@@ -651,7 +582,6 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void EmitLdcI1(var n as sbyte)
 		var num as integer = $integer$n
-
 		if num = -1 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_M1)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
@@ -686,13 +616,11 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, num)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I1)
 		end if
-
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdcU1(var n as byte)
 		var num as integer = $integer$n
-
 		if num = 0 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
@@ -724,7 +652,6 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, num)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U1)
 		end if
-
 	end method
 
 	[method: ComVisible(false)]
@@ -767,10 +694,10 @@ class public auto ansi static ILEmitter
 		var dec as IKVM.Reflection.Type = Univ::Import(gettype decimal)
 		var temps as single
 		var tempd as double
-		if (Math::Ceiling(n) = n) and ($decimal$integer::MinValue <= n) and (n <= $decimal$integer::MaxValue) then
+		if (Math::Ceiling(n) == n) and ($decimal$integer::MinValue <= n) and (n <= $decimal$integer::MaxValue) then
 			EmitLdcI4($integer$n)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype integer)}))
-		elseif (Math::Ceiling(n) = n) and ($decimal$long::MinValue <= n) and (n <= $decimal$long::MaxValue) then
+		elseif (Math::Ceiling(n) == n) and ($decimal$long::MinValue <= n) and (n <= $decimal$long::MaxValue) then
 			EmitLdcI8($long$n)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype long)}))
 		elseif Single::TryParse($string$n, ref temps) then
@@ -837,47 +764,27 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitAdd(var s as boolean)
-		if s then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Add)
-		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Add_Ovf_Un)
-		end if
+		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Add, IKVM.Reflection.Emit.OpCodes::Add_Ovf_Un})
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitDiv(var s as boolean)
-		if s then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Div)
-		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Div_Un)
-		end if
+		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Div, IKVM.Reflection.Emit.OpCodes::Div_Un})
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitMul(var s as boolean)
-		if s then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Mul)
-		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Mul_Ovf_Un)
-		end if
+		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Mul, IKVM.Reflection.Emit.OpCodes::Mul_Ovf_Un})
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitSub(var s as boolean)
-		if s then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Sub)
-		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Sub_Ovf_Un)
-		end if
+		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Sub, IKVM.Reflection.Emit.OpCodes::Sub_Ovf_Un})
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitRem(var s as boolean)
-		if s then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Rem)
-		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Rem_Un)
-		end if
+		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Rem, IKVM.Reflection.Emit.OpCodes::Rem_Un})
 	end method
 
 	[method: ComVisible(false)]
@@ -887,11 +794,7 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitShr(var s as boolean)
-		if s then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Shr)
-		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Shr_Un)
-		end if
+		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Shr, IKVM.Reflection.Emit.OpCodes::Shr_Un})
 	end method
 
 	[method: ComVisible(false)]
@@ -978,40 +881,24 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitCgt(var s as boolean)
-		if s then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Cgt)
-		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Cgt_Un)
-		end if
+		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Cgt, IKVM.Reflection.Emit.OpCodes::Cgt_Un})
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitClt(var s as boolean)
-		if s then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Clt)
-		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Clt_Un)
-		end if
+		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Clt, IKVM.Reflection.Emit.OpCodes::Clt_Un})
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCle(var s as boolean)
-		if s then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Cgt)
-		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Cgt_Un)
-		end if
+		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Cgt, IKVM.Reflection.Emit.OpCodes::Cgt_Un})
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCge(var s as boolean)
-		if s then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Clt)
-		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Clt_Un)
-		end if
+		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Clt, IKVM.Reflection.Emit.OpCodes::Clt_Un})
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
@@ -1070,11 +957,7 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcBool(var b as boolean)
-		if b then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
-		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
-		end if
+		ILGen::Emit(#ternary{b ? IKVM.Reflection.Emit.OpCodes::Ldc_I4_1, IKVM.Reflection.Emit.OpCodes::Ldc_I4_0})
 	end method
 
 	[method: ComVisible(false)]
@@ -1162,7 +1045,7 @@ class public auto ansi static ILEmitter
 		end if
 	end method
 	
-		[method: ComVisible(false)]
+	[method: ComVisible(false)]
 	method public static void EndScope()
 		if DebugFlg then
 			ILGen::EndScope()

@@ -1,4 +1,4 @@
-//    dnc.exe dylan.NET.Compiler Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    dnc.exe dylan.NET.Compiler Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -67,33 +67,29 @@ class public auto ansi static Program
 						ILEmitter::Init()
 						AsmFactory::Init()
 						Importer::Init()
-						var lx as Lexer = new Lexer()
 						if File::Exists(args[i]) == false then
-							//StreamUtils::Write(c"\n")
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "File '" + args[i] + "' does not exist.")
 						end if
 						StreamUtils::Write("Now Lexing: ")
 						StreamUtils::Write(args[i])
-						var pstmts as StmtSet = lx::Analyze(args[i])
+						var pstmts as StmtSet = new Lexer()::Analyze(args[i])
 						StreamUtils::WriteLine("...Done.")
-						var ps as Parser = new Parser()
 						StreamUtils::Write("Now Parsing: ")
 						StreamUtils::Write(args[i])
-						var ppstmts as StmtSet = ps::Parse(pstmts)
+						var ppstmts as StmtSet = new Parser()::Parse(pstmts)
 						StreamUtils::WriteLine("...Done.")
-						var cg as CodeGenerator = new CodeGenerator()
-						cg::EmitMSIL(ppstmts, args[i])
+						new CodeGenerator()::EmitMSIL(ppstmts, args[i])
 					end if
 				end do
 				
 			catch errex as ErrorException
 			
-//			catch ex as Exception
-//				StreamUtils::Write(c"\n")
-//				try
-//					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
-//				catch errex2 as ErrorException
-//				end try
+			catch ex as Exception
+				StreamUtils::Write(c"\n")
+				try
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+				catch errex2 as ErrorException
+				end try
 			end try
 
 		end if

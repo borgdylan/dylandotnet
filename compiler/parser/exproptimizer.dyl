@@ -1,4 +1,4 @@
-//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -694,7 +694,6 @@ class public auto ansi ExprOptimizer
 	end method
 
 	method public Expr Optimize(var exp as Expr)
-		var len as integer = exp::Tokens::get_Count() - 1
 		var i as integer = -1
 		var j as integer = -1
 		var mcbool as boolean = false
@@ -707,7 +706,12 @@ class public auto ansi ExprOptimizer
 
 		label loop
 		label cont
-
+		
+		if exp == null then
+			goto cont
+		end if
+		
+		var len as integer = exp::Tokens::get_Count() - 1
 		if len < 0 then
 			goto cont
 		end if

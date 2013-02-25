@@ -1,4 +1,4 @@
-//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -54,17 +54,9 @@ class public auto ansi static Helpers
 			flg = true
 			
 			if attr is Attributes.PublicAttr then
-				if AsmFactory::isNested = false then
-					temp = TypeAttributes::Public
-				else
-					temp = TypeAttributes::NestedPublic
-				end if
+				temp = #ternary{AsmFactory::isNested ? TypeAttributes::NestedPublic, TypeAttributes::Public}
 			elseif attr is Attributes.PrivateAttr then
-				if AsmFactory::isNested = false then
-					temp = TypeAttributes::NotPublic
-				else
-					temp = TypeAttributes::NestedPrivate
-				end if
+				temp = #ternary{AsmFactory::isNested ? TypeAttributes::NestedPrivate, TypeAttributes::NotPublic}
 			elseif attr is Attributes.AutoLayoutAttr then
 				temp = TypeAttributes::AutoLayout
 			elseif attr is Attributes.AnsiClassAttr then
@@ -675,57 +667,39 @@ class public auto ansi static Helpers
 		end if
 	end method
 
-	method public static Literal ProcessConst(var lit as ConstLiteral)
-
-		var t as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[14]
-		t[0] = ILEmitter::Univ::Import(gettype string)
-		t[1] = ILEmitter::Univ::Import(gettype sbyte)
-		t[2] = ILEmitter::Univ::Import(gettype short)
-		t[3] = ILEmitter::Univ::Import(gettype integer)
-		t[4] = ILEmitter::Univ::Import(gettype long)
-		t[5] = ILEmitter::Univ::Import(gettype single)
-		t[6] = ILEmitter::Univ::Import(gettype double)
-		t[7] = ILEmitter::Univ::Import(gettype boolean)
-		t[8] = ILEmitter::Univ::Import(gettype char)
-		t[9] = ILEmitter::Univ::Import(gettype object)
-		t[10] = ILEmitter::Univ::Import(gettype byte)
-		t[11] = ILEmitter::Univ::Import(gettype ushort)
-		t[12] = ILEmitter::Univ::Import(gettype uinteger)
-		t[13] = ILEmitter::Univ::Import(gettype ulong)
-		
-		if t[0]::Equals(lit::IntTyp) then
+	method public static Literal ProcessConst(var lit as ConstLiteral)		
+		if ILEmitter::Univ::Import(gettype string)::Equals(lit::IntTyp) then
 			return new StringLiteral($string$lit::ConstVal)
-		elseif t[1]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype sbyte)::Equals(lit::IntTyp) then
 			return new SByteLiteral($sbyte$lit::ConstVal)
-		elseif t[2]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype short)::Equals(lit::IntTyp) then
 			return new ShortLiteral($short$lit::ConstVal)
-		elseif t[3]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype integer)::Equals(lit::IntTyp) then
 			return new IntLiteral($integer$lit::ConstVal)
-		elseif t[4]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype long)::Equals(lit::IntTyp) then
 			return new LongLiteral($long$lit::ConstVal)
-		elseif t[5]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype single)::Equals(lit::IntTyp) then
 			return new FloatLiteral($single$lit::ConstVal)
-		elseif t[6]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype double)::Equals(lit::IntTyp) then
 			return new DoubleLiteral($double$lit::ConstVal)
-		elseif t[7]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype boolean)::Equals(lit::IntTyp) then
 			return new BooleanLiteral($boolean$lit::ConstVal)
-		elseif t[8]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype char)::Equals(lit::IntTyp) then
 			return new CharLiteral($char$lit::ConstVal)
-		elseif t[9]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype object)::Equals(lit::IntTyp) then
 			return new NullLiteral()
-		elseif t[10]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype byte)::Equals(lit::IntTyp) then
 			return new ByteLiteral($byte$lit::ConstVal)
-		elseif t[11]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype ushort)::Equals(lit::IntTyp) then
 			return new UShortLiteral($ushort$lit::ConstVal)
-		elseif t[12]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype uinteger)::Equals(lit::IntTyp) then
 			return new UIntLiteral($uinteger$lit::ConstVal)
-		elseif t[13]::Equals(lit::IntTyp) then
+		elseif ILEmitter::Univ::Import(gettype ulong)::Equals(lit::IntTyp) then
 			return new ULongLiteral($ulong$lit::ConstVal)
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Loading of constants of internal type '" + lit::IntTyp::ToString() + "' is not yet supported.")
 			return null
 		end if
-
 	end method
 
 	[method: ComVisible(false)]
@@ -975,16 +949,8 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void EmitLocLd(var ind as integer, var locarg as boolean)
-		var typ as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ValueType)
-		var t2 as IKVM.Reflection.Type
-
-		if AsmFactory::Type04::get_IsByRef() then
-			t2 = AsmFactory::Type04::GetElementType()
-		else
-			t2 = AsmFactory::Type04
-		end if
-
-		if (AsmFactory::AddrFlg and typ::IsAssignableFrom(t2)) or AsmFactory::ForcedAddrFlg then
+		if (AsmFactory::AddrFlg and ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom( _
+			#ternary{AsmFactory::Type04::get_IsByRef() ? AsmFactory::Type04::GetElementType(), AsmFactory::Type04})) or AsmFactory::ForcedAddrFlg then
 			if AsmFactory::Type04::get_IsByRef() then
 				if locarg then
 					ILEmitter::EmitLdloc(ind)
@@ -1012,8 +978,7 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void EmitElemLd(var t as IKVM.Reflection.Type)
-		var typ as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ValueType)
-		if (AsmFactory::AddrFlg and typ::IsAssignableFrom(AsmFactory::Type04)) or AsmFactory::ForcedAddrFlg then
+		if (AsmFactory::AddrFlg and ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type04)) or AsmFactory::ForcedAddrFlg then
 			ILEmitter::EmitLdelema(t)
 		else
 			ILEmitter::EmitLdelem(t)
@@ -1227,8 +1192,7 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void EmitFldLd(var fld as FieldInfo, var stat as boolean)
-		var typ as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ValueType)
-		if (AsmFactory::AddrFlg and typ::IsAssignableFrom(AsmFactory::Type04)) or AsmFactory::ForcedAddrFlg then
+		if (AsmFactory::AddrFlg and ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type04)) or AsmFactory::ForcedAddrFlg then
 			if stat then
 				ILEmitter::EmitLdsflda(fld)
 			else
@@ -1330,7 +1294,7 @@ class public auto ansi static Helpers
 		var metinf as MethodInfo = null
 		var meti as MethodItem = SymTable::FindMetNoParams(nam)
 
-		if meti <> null then
+		if meti != null then
 			metinf = meti::MethodBldr
 		end if
 
@@ -1342,7 +1306,7 @@ class public auto ansi static Helpers
 		var lbl as Emit.Label
 		var lbli as LabelItem = SymTable::FindLbl(nam)
 
-		if lbli <> null then
+		if lbli != null then
 			lbl = lbli::Lbl
 		end if
 
@@ -1435,12 +1399,8 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static boolean CheckIfArrLen(var ind as Expr)
-		if ind::Tokens::get_Count() = 1 then
-			if ind::Tokens::get_Item(0) is Ident then
-				return ind::Tokens::get_Item(0)::Value == "l"
-			else
-				return false
-			end if
+		if ind::Tokens::get_Count() == 1 then
+			return #ternary{ind::Tokens::get_Item(0) is Ident ? ind::Tokens::get_Item(0)::Value == "l", false}
 		else
 			return false
 		end if
@@ -1471,22 +1431,14 @@ class public auto ansi static Helpers
 			return Loader::LoadGenericMethod(t, name, genparams, paramtyps)
 		else
 			var m as MethodInfo = SymTable::TypeLst::GetMethod(t,mn,paramtyps)
-			if m != null then
-				return m
-			else
-				return Loader::LoadMethod(t, name, paramtyps)
-			end if
+			return #ternary{m != null ? m, Loader::LoadMethod(t, name, paramtyps)}
 		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static FieldInfo GetExtFld(var t as IKVM.Reflection.Type, var fld as string)
 		var f as FieldInfo = SymTable::TypeLst::GetField(t,fld)
-		if f != null then
-			return f
-		else
-			return Loader::LoadField(t,fld)
-		end if
+		return #ternary{f != null ? f, Loader::LoadField(t,fld)}
 	end method
 	
 	[method: ComVisible(false)]
@@ -1703,6 +1655,15 @@ class public auto ansi static Helpers
 		
 		return new MethodInfo[] {Loader::LoadMethod(ie3, "MoveNext", IKVM.Reflection.Type::EmptyTypes), Loader::LoadMethod(ie3, "get_Current", IKVM.Reflection.Type::EmptyTypes)}
 	end method
+	
+	method public static IEnumerable<of IKVM.Reflection.Type> GetInhHierarchy(var t as IKVM.Reflection.Type)
+		var l = new C5.LinkedList<of IKVM.Reflection.Type> {t}
+		do while t::get_BaseType() != null
+			t = t::get_BaseType()
+			l::Add(t)
+		end do
+		return l::Backwards()
+	end method
 
 	method public static IKVM.Reflection.Type CheckCompat(var ta as IKVM.Reflection.Type,var tb as IKVM.Reflection.Type)
 		if ta::Equals(tb) then
@@ -1723,22 +1684,17 @@ class public auto ansi static Helpers
 				return null
 			end if
 			
-			var f as boolean = true
-			do while true
-				if f then
-					if ta::get_BaseType() != null then
-						ta = ta::get_BaseType()
-					end if
+			var la = GetInhHierarchy(ta)::GetEnumerator()
+			var lb = GetInhHierarchy(tb)::GetEnumerator()
+			var curans as IKVM.Reflection.Type = null
+			do while la::MoveNext() and lb::MoveNext()
+				if la::get_Current()::Equals(lb::get_Current()) then
+					curans = la::get_Current()
 				else
-					if tb::get_BaseType() != null then
-						tb = tb::get_BaseType()
-					end if
+					return curans
 				end if
-				if ta::Equals(tb) then
-					return ta
-				end if
-				f = f == false
 			end do
+			return curans
 			
 		end if
 		return null

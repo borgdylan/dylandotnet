@@ -1,4 +1,4 @@
-//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -22,75 +22,55 @@ class public auto ansi StmtOptimizer
 
 	method private Stmt checkRefasm(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is RefasmTok
-		var refasms as RefasmStmt = new RefasmStmt()
 		if b then
-			refasms::Line = stm::Line
-			refasms::Tokens = stm::Tokens
-			refasms::AsmPath = stm::Tokens::get_Item(1)
+			return new RefasmStmt() {Line = stm::Line, Tokens = stm::Tokens, AsmPath = stm::Tokens::get_Item(1)}
 		end if
-		return refasms
+		return null
 	end method
 	
 	method private Stmt checkRefstdasm(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is RefstdasmTok
-		var refsasms as RefstdasmStmt = new RefstdasmStmt()
 		if b then
-			refsasms::Line = stm::Line
-			refsasms::Tokens = stm::Tokens
-			refsasms::AsmPath = stm::Tokens::get_Item(1)
+			return new RefstdasmStmt() {Line = stm::Line, Tokens = stm::Tokens, AsmPath = stm::Tokens::get_Item(1)}
 		end if
-		return refsasms
+		return null
 	end method
 	
 	method private Stmt checkInclude(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is IncludeTok
-		var inclus as IncludeStmt = new IncludeStmt()
 		if b then
-			inclus::Line = stm::Line
-			inclus::Tokens = stm::Tokens
-			inclus::Path = stm::Tokens::get_Item(1)
+			return new IncludeStmt() {Line = stm::Line, Tokens = stm::Tokens, Path = stm::Tokens::get_Item(1)}
 		end if
-		return inclus
+		return null
 	end method
 	
 	method private Stmt checkError(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is ErrorTok
-		var errs as ErrorStmt = new ErrorStmt()
 		if b then
-			errs::Line = stm::Line
-			errs::Tokens = stm::Tokens
-			errs::Msg = stm::Tokens::get_Item(1)
+			return new ErrorStmt() {Line = stm::Line, Tokens = stm::Tokens, Msg = stm::Tokens::get_Item(1)}
 		end if
-		return errs
+		return null
 	end method
 	
 	method private Stmt checkWarning(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is WarningTok
-		var warns as WarningStmt = new WarningStmt()
 		if b then
-			warns::Line = stm::Line
-			warns::Tokens = stm::Tokens
-			warns::Msg = stm::Tokens::get_Item(1)
+			return new WarningStmt() {Line = stm::Line, Tokens = stm::Tokens, Msg = stm::Tokens::get_Item(1)}
 		end if
-		return warns
+		return null
 	end method
 	
 	method private Stmt checkIf(var stm as Stmt, var b as boolean&)
-		var tok as Token = stm::Tokens::get_Item(0)
-		b = tok is IfTok
-		var ifs as IfStmt = new IfStmt()
-		var exp as Expr = new Expr()
+		b = stm::Tokens::get_Item(0) is IfTok
 		
 		if b then
-			ifs::Line = stm::Line
-			ifs::Tokens = stm::Tokens
-			
+			var exp as Expr = new Expr()
 			var i as integer = 0
 			var len as integer = stm::Tokens::get_Count() - 1
 			
 			do until i = len
 				i = i + 1
-				tok = stm::Tokens::get_Item(i)		
+				var tok as Token = stm::Tokens::get_Item(i)		
 				
 				if tok is ThenTok then
 					break
@@ -99,30 +79,23 @@ class public auto ansi StmtOptimizer
 				end if
 			end do
 			
-			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-			exp = eop::Optimize(exp)
-			ifs::Exp = exp
+			return new IfStmt() {Line = stm::Line, Tokens = stm::Tokens, Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
 		end if
 		
-		return ifs
+		return null
 	end method
 	
 	method private Stmt checkHIf(var stm as Stmt, var b as boolean&)
-		var tok as Token = stm::Tokens::get_Item(0)
-		b = tok is HIfTok
-		var ifs as HIfStmt = new HIfStmt()
-		var exp as Expr = new Expr()
+		b = stm::Tokens::get_Item(0) is HIfTok
 		
 		if b then
-			ifs::Line = stm::Line
-			ifs::Tokens = stm::Tokens
-			
+			var exp as Expr = new Expr()
 			var i as integer = 0
 			var len as integer = stm::Tokens::get_Count() - 1
 			
 			do until i = len
 				i = i + 1
-				tok = stm::Tokens::get_Item(i)		
+				var tok as Token = stm::Tokens::get_Item(i)	
 				
 				if tok is ThenTok then
 					break
@@ -131,23 +104,17 @@ class public auto ansi StmtOptimizer
 				end if
 			end do
 			
-			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-			exp = eop::Optimize(exp)
-			ifs::Exp = exp
+			return new HIfStmt() {Line = stm::Line, Tokens = stm::Tokens, Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
 		end if
 		
-		return ifs
+		return null
 	end method
 	
 	method private Stmt checkWhile(var stm as Stmt, var b as boolean&)
-		var typ as Type = gettype WhileTok
-		b = typ::IsInstanceOfType(stm::Tokens::get_Item(0))
-		var whis as WhileStmt = new WhileStmt()
-		var exp as Expr = new Expr()
+		b = stm::Tokens::get_Item(0) is WhileTok
 		
 		if b then
-			whis::Line = stm::Line
-			whis::Tokens = stm::Tokens
+			var exp as Expr = new Expr()
 			var i as integer = 0
 			
 			do until i = (stm::Tokens::get_Count() - 1)
@@ -155,31 +122,19 @@ class public auto ansi StmtOptimizer
 				exp::AddToken(stm::Tokens::get_Item(i))
 			end do
 			
-			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-			exp = eop::Optimize(exp)
-			whis::Exp = exp
+			return new WhileStmt(){Line = stm::Line, Tokens = stm::Tokens, Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
 		end if
 		
-		return whis
+		return null
 	end method
 	
 	method private Stmt checkDoWhile(var stm as Stmt, var b as boolean&)
-	
-		var whis as DoWhileStmt = null
-		
-		if stm::Tokens::get_Count() >= 2 then
-		
-			var typ1 as Type = gettype DoTok
-			var typ2 as Type = gettype WhileTok
-			
-			b = typ1::IsInstanceOfType(stm::Tokens::get_Item(0)) and typ2::IsInstanceOfType(stm::Tokens::get_Item(1))
-			
-			whis = new DoWhileStmt()
-			var exp as Expr = new Expr()
+		b = false
+		if stm::Tokens::get_Count() >= 2 then	
+			b = (stm::Tokens::get_Item(0) is DoTok) and (stm::Tokens::get_Item(1) is WhileTok)
 			
 			if b then
-				whis::Line = stm::Line
-				whis::Tokens = stm::Tokens
+				var exp as Expr = new Expr()
 				var i as integer = 1
 				
 				do until i = (stm::Tokens::get_Count() - 1)
@@ -187,24 +142,17 @@ class public auto ansi StmtOptimizer
 					exp::AddToken(stm::Tokens::get_Item(i))
 				end do
 				
-				var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-				exp = eop::Optimize(exp)
-				whis::Exp = exp
+				return new DoWhileStmt() {Line = stm::Line, Tokens = stm::Tokens, Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
 			end if
 		end if
 		
-		return whis
+		return null
 	end method
 	
 	method private Stmt checkUntil(var stm as Stmt, var b as boolean&)
-		var typ as Type = gettype UntilTok
-		b = typ::IsInstanceOfType(stm::Tokens::get_Item(0))
-		var unts as UntilStmt = new UntilStmt()
-		var exp as Expr = new Expr()
-		
+		b = stm::Tokens::get_Item(0) is UntilTok
 		if b then
-			unts::Line = stm::Line
-			unts::Tokens = stm::Tokens
+			var exp as Expr = new Expr()
 			var i as integer = 0
 			
 			do until i = (stm::Tokens::get_Count() - 1)
@@ -212,59 +160,37 @@ class public auto ansi StmtOptimizer
 				exp::AddToken(stm::Tokens::get_Item(i))	
 			end do
 			
-			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-			exp = eop::Optimize(exp)
-			unts::Exp = exp
+			return new UntilStmt() {Line = stm::Line, Tokens = stm::Tokens, Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
 		end if
 		
-		return unts
+		return null
 	end method
 	
 	method private Stmt checkDoUntil(var stm as Stmt, var b as boolean&)
-	
-		var unts as DoUntilStmt = null
-		
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
-		
-			var typ1 as Type = gettype DoTok
-			var typ2 as Type = gettype UntilTok
-			
-			b = typ1::IsInstanceOfType(stm::Tokens::get_Item(0)) and typ2::IsInstanceOfType(stm::Tokens::get_Item(1))
-			
-			unts = new DoUntilStmt()
-			var exp as Expr = new Expr()
+			b = (stm::Tokens::get_Item(0) is DoTok) and (stm::Tokens::get_Item(1) is UntilTok)
 			
 			if b then
-			
-				unts::Line = stm::Line
-				unts::Tokens = stm::Tokens				
+				var exp as Expr = new Expr()
 				var i as integer = 1
 
 				do until i = (stm::Tokens::get_Count() - 1)
 					i = i + 1
 					exp::AddToken(stm::Tokens::get_Item(i))
 				end do
-								
-				var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-				exp = eop::Optimize(exp)
-				unts::Exp = exp
+				
+				return new DoUntilStmt() {Line = stm::Line, Tokens = stm::Tokens, Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
 			end if	
 		end if
 	
-		return unts
+		return null
 	end method
 	
 	method private Stmt checkForeach(var stm as Stmt, var b as boolean&)
-		var typ as Type = gettype ForeachTok
-		b = typ::IsInstanceOfType(stm::Tokens::get_Item(0))
-		var fes as ForeachStmt = new ForeachStmt()
-		var exp as Expr = new Expr()
-		
+		b = stm::Tokens::get_Item(0) is ForeachTok
 		if b then
-			fes::Line = stm::Line
-			fes::Tokens = stm::Tokens
-			fes::Iter = $Ident$stm::Tokens::get_Item(1)
-			
+			var exp as Expr = new Expr()
 			var i as integer = 2
 			
 			do until i = (stm::Tokens::get_Count() - 1)
@@ -272,31 +198,22 @@ class public auto ansi StmtOptimizer
 				exp::AddToken(stm::Tokens::get_Item(i))	
 			end do
 			
-			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-			exp = eop::Optimize(exp)
-			fes::Exp = exp
+			return new ForeachStmt() {Line = stm::Line, Tokens = stm::Tokens, Iter = $Ident$stm::Tokens::get_Item(1), Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
 		end if
 		
-		return fes
+		return null
 	end method
 	
 	method private Stmt checkElseIf(var stm as Stmt, var b as boolean&)
-		var tok as Token = stm::Tokens::get_Item(0)
-		b = tok is ElseIfTok
-		var ifs as ElseIfStmt = new ElseIfStmt()
-		var exp as Expr = new Expr()
-		
+		b = stm::Tokens::get_Item(0) is ElseIfTok
 		if b then
-		
-			ifs::Line = stm::Line
-			ifs::Tokens = stm::Tokens
-			
+			var exp as Expr = new Expr()
 			var i as integer = 0
 			var len as integer = stm::Tokens::get_Count() - 1
 			
 			do until i = len
 				i = i + 1
-				tok = stm::Tokens::get_Item(i)
+				var tok as Token = stm::Tokens::get_Item(i)
 				if tok is ThenTok then
 					break
 				else
@@ -304,32 +221,22 @@ class public auto ansi StmtOptimizer
 				end if
 			end do
 			
-			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-			exp = eop::Optimize(exp)
-			ifs::Exp = exp
-		
+			return new ElseIfStmt() {Line = stm::Line, Tokens = stm::Tokens, Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
 		end if
 		
-		return ifs
+		return null
 	end method
 	
 	method private Stmt checkHElseIf(var stm as Stmt, var b as boolean&)
-		var tok as Token = stm::Tokens::get_Item(0)
-		b = tok is HElseIfTok
-		var ifs as HElseIfStmt = new HElseIfStmt()
-		var exp as Expr = new Expr()
-		
+		b = stm::Tokens::get_Item(0) is HElseIfTok
 		if b then
-		
-			ifs::Line = stm::Line
-			ifs::Tokens = stm::Tokens
-			
+			var exp as Expr = new Expr()
 			var i as integer = 0
 			var len as integer = stm::Tokens::get_Count() - 1
 			
 			do until i = len
 				i = i + 1
-				tok = stm::Tokens::get_Item(i)
+				var tok as Token = stm::Tokens::get_Item(i)
 				if tok is ThenTok then
 					break
 				else
@@ -337,101 +244,72 @@ class public auto ansi StmtOptimizer
 				end if
 			end do
 			
-			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-			exp = eop::Optimize(exp)
-			ifs::Exp = exp
-		
+			return new HElseIfStmt() {Line = stm::Line, Tokens = stm::Tokens, Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
 		end if
 		
-		return ifs
+		return null
 	end method
 	
 	method private Stmt checkLabel(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is LabelTok
-		var lbls as LabelStmt = new LabelStmt()
 		if b then
-			lbls::Line = stm::Line
-			lbls::Tokens = stm::Tokens
-			lbls::LabelName = $Ident$stm::Tokens::get_Item(1)
+			return new LabelStmt() {Line = stm::Line, Tokens = stm::Tokens, LabelName = $Ident$stm::Tokens::get_Item(1)}
 		end if
-		return lbls
+		return null
 	end method
 	
 	method private Stmt checkPlace(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is PlaceTok
-		var lbls as PlaceStmt = new PlaceStmt()
 		if b then
-			lbls::Line = stm::Line
-			lbls::Tokens = stm::Tokens
-			lbls::LabelName = $Ident$stm::Tokens::get_Item(1)
+			return new PlaceStmt() {Line = stm::Line, Tokens = stm::Tokens, LabelName = $Ident$stm::Tokens::get_Item(1)}
 		end if
-		return lbls
+		return null
 	end method
 	
 	method private Stmt checkGoto(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is GotoTok
-		var lbls as GotoStmt = new GotoStmt()
 		if b then
-			lbls::Line = stm::Line
-			lbls::Tokens = stm::Tokens
-			lbls::LabelName = $Ident$stm::Tokens::get_Item(1)
+			return new GotoStmt() {Line = stm::Line, Tokens = stm::Tokens, LabelName = $Ident$stm::Tokens::get_Item(1)}
 		end if
-		return lbls
+		return null
 	end method
 	
 	method private Stmt checkHDefine(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is HDefineTok
-		var lbls as HDefineStmt = new HDefineStmt()
 		if b then
-			lbls::Line = stm::Line
-			lbls::Tokens = stm::Tokens
-			lbls::Symbol = $Ident$stm::Tokens::get_Item(1)
+			return new HDefineStmt() {Line = stm::Line, Tokens = stm::Tokens, Symbol = $Ident$stm::Tokens::get_Item(1)}
 		end if
-		return lbls
+		return null
 	end method
 	
 	method private Stmt checkHUndef(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is HUndefTok
-		var lbls as HUndefStmt = new HUndefStmt()
 		if b then
-			lbls::Line = stm::Line
-			lbls::Tokens = stm::Tokens
-			lbls::Symbol = $Ident$stm::Tokens::get_Item(1)
+			return new HUndefStmt() {Line = stm::Line, Tokens = stm::Tokens, Symbol = $Ident$stm::Tokens::get_Item(1)}
 		end if
-		return lbls
+		return null
 	end method
 	
 	method private Stmt checkDebug(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is DebugTok
-		var dbgs as DebugStmt = new DebugStmt()
-		if b then
-			dbgs::Line = stm::Line
-			dbgs::Tokens = stm::Tokens
-			dbgs::Opt = $SwitchTok$stm::Tokens::get_Item(1)
-			dbgs::setFlg()
+		if b then	
+			return new DebugStmt() {Line = stm::Line, Tokens = stm::Tokens, Opt = $SwitchTok$stm::Tokens::get_Item(1), setFlg()}
 		end if
-		return dbgs
+		return null
 	end method
 	
 	method private Stmt checkScope(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is ScopeTok
-		var scps as ScopeStmt = new ScopeStmt()
 		if b then
-			scps::Line = stm::Line
-			scps::Tokens = stm::Tokens
-			scps::Opt = $SwitchTok$stm::Tokens::get_Item(1)
-			scps::setFlg()
+			return new ScopeStmt() {Line = stm::Line, Tokens = stm::Tokens, Opt = $SwitchTok$stm::Tokens::get_Item(1), setFlg()}
 		end if
-		return scps
+		return null
 	end method
 	
 	method private Stmt checkImport(var stm as Stmt, var b as boolean&)
-		var typ as Type = gettype ImportTok
-		b = typ::IsInstanceOfType(stm::Tokens::get_Item(0))
-		var imps as ImportStmt = new ImportStmt()
+		b = stm::Tokens::get_Item(0) is ImportTok
 		if b then
-			imps::Line = stm::Line
-			imps::Tokens = stm::Tokens
+			var imps as ImportStmt = new ImportStmt() {Line = stm::Line, Tokens = stm::Tokens}
 			if stm::Tokens::get_Count() >= 4 then
 				if stm::Tokens::get_Item(2)::Value = "=" then
 					imps::Alias = stm::Tokens::get_Item(1)
@@ -442,43 +320,31 @@ class public auto ansi StmtOptimizer
 			else
 				imps::NS = stm::Tokens::get_Item(1)
 			end if
+			return imps
 		end if
-		return imps
+		return null
 	end method
 	
 	method private Stmt checkNS(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens::get_Item(0)
-	var typ as Type = gettype NamespaceTok
-	b = typ::IsInstanceOfType(tok)
-	var nss as NSStmt = new NSStmt()
-	if b then
-	nss::Line = stm::Line
-	nss::Tokens = stm::Tokens
-	nss::NS = stm::Tokens::get_Item(1)
-	end if
-	return nss
+		b = stm::Tokens::get_Item(0) is NamespaceTok
+		if b then
+			return new NSStmt() {Line = stm::Line, Tokens = stm::Tokens, NS = stm::Tokens::get_Item(1)}
+		end if
+		return null
 	end method
 	
 	method private Stmt checkLocimport(var stm as Stmt, var b as boolean&)
-	var tok as Token = stm::Tokens::get_Item(0)
-	var typ as Type = gettype LocimportTok
-	b = typ::IsInstanceOfType(tok)
-	var limps as LocimportStmt = new LocimportStmt()
-	if b then
-	limps::Line = stm::Line
-	limps::Tokens = stm::Tokens
-	limps::NS = stm::Tokens::get_Item(1)
-	end if
-	return limps
+		b = stm::Tokens::get_Item(0) is LocimportTok
+		if b then
+			return new LocimportStmt() {Line = stm::Line, Tokens = stm::Tokens, NS = stm::Tokens::get_Item(1)}
+		end if
+		return null
 	end method
 	
 	method private Stmt checkReturn(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is ReturnTok
-		var rets as ReturnStmt = new ReturnStmt()
 		if b then
-			rets::Line = stm::Line
-			rets::Tokens = stm::Tokens
-			
+			var rets as ReturnStmt = new ReturnStmt() {Line = stm::Line, Tokens = stm::Tokens}
 			var i as integer = 0
 			var len as integer = stm::Tokens::get_Count() - 1
 			
@@ -486,71 +352,51 @@ class public auto ansi StmtOptimizer
 				rets::RExp = null
 			elseif stm::Tokens::get_Count() >= 2 then
 				var exp as Expr = new Expr()
-				
 				do
 					i = i + 1
 					exp::AddToken(stm::Tokens::get_Item(i))
 				until i = len
-			
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				exp = eopt::Optimize(exp)
-				rets::RExp = exp
+				rets::RExp = new ExprOptimizer(PFlags)::Optimize(exp)
 			end if
+			return rets
 		end if
 		
-		return rets
+		return null
 	end method
 	
 	method private Stmt checkThrow(var stm as Stmt, var b as boolean&)
-		b = stm::Tokens::get_Item(0) is ThrowTok
-		var tros as ThrowStmt = new ThrowStmt()
-
+		b = (stm::Tokens::get_Item(0) is ThrowTok) and (stm::Tokens::get_Count() >= 2)
 		if b then
-			tros::Line = stm::Line
-			tros::Tokens = stm::Tokens
-
 			var i as integer = 0
 			var len as integer = stm::Tokens::get_Count() - 1
-			var exp as Expr = null
-		
-			if stm::Tokens::get_Count() >= 2 then
-				exp = new Expr()
-				do until i = len
-					i = i + 1
-					exp::AddToken(stm::Tokens::get_Item(i))
-				end do
-		
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				tros::RExp = eopt::Optimize(exp)
-			end if
+			var exp as Expr = new Expr()
+			
+			do until i = len
+				i = i + 1
+				exp::AddToken(stm::Tokens::get_Item(i))
+			end do
+	
+			return new ThrowStmt() {Line = stm::Line, Tokens = stm::Tokens, RExp = new ExprOptimizer(PFlags)::Optimize(exp)}
 		end if
-		return tros
+		return null
 	end method
 	
 	method private Stmt checkLock(var stm as Stmt, var b as boolean&)
-		b = stm::Tokens::get_Item(0) is LockTok
-		var tros as LockStmt = new LockStmt()
-
+		b = (stm::Tokens::get_Item(0) is LockTok) and (stm::Tokens::get_Count() >= 2)
 		if b then
-			tros::Line = stm::Line
-			tros::Tokens = stm::Tokens
 
 			var i as integer = 0
 			var len as integer = stm::Tokens::get_Count() - 1
-			var exp as Expr = null
-		
-			if stm::Tokens::get_Count() >= 2 then
-				exp = new Expr()
-				do until i = len
-					i = i + 1
-					exp::AddToken(stm::Tokens::get_Item(i))
-				end do
-		
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				tros::Lockee = eopt::Optimize(exp)
-			end if
+			var exp as Expr = new Expr()
+			
+			do until i = len
+				i = i + 1
+				exp::AddToken(stm::Tokens::get_Item(i))
+			end do
+			
+			return new LockStmt() {Line = stm::Line, Tokens = stm::Tokens, Lockee = new ExprOptimizer(PFlags)::Optimize(exp)}
 		end if
-		return tros
+		return null
 	end method
 		
 	
@@ -752,22 +598,14 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method private Stmt checkMetAttr(var stm as Stmt, var b as boolean&)
-		var mas as MethodAttrStmt = null
-
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is MethodCTok)
 
 			if b then
-				mas = new MethodAttrStmt()
-				
 				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = new Expr()
-				tempexp::Tokens = stm::Tokens
-				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
-				mas::Tokens = tempexp::Tokens
-				mas::Ctor = $NewCallTok$mas::Tokens::get_Item(2)
-				mas::Line = stm::Line
-				//mas::Tokens = stm::Tokens
+				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
+				var mas as MethodAttrStmt = new MethodAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
 				do until j = (mas::Ctor::Params::get_Count() - 1)
@@ -811,7 +649,7 @@ class public auto ansi StmtOptimizer
 				
 			end if
 		end if
-		return mas
+		return null
 	end method
 	
 	method private Stmt checkFldAttr(var stm as Stmt, var b as boolean&)

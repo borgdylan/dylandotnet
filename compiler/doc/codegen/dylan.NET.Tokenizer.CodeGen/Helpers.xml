@@ -17,11 +17,6 @@
       <MemberSignature Language="C#" Value="public static void ApplyAsmAttrs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ApplyAsmAttrs() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -35,11 +30,6 @@
       <MemberSignature Language="C#" Value="public static void ApplyClsAttrs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ApplyClsAttrs() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -53,11 +43,6 @@
       <MemberSignature Language="C#" Value="public static void ApplyEventAttrs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ApplyEventAttrs() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -71,11 +56,6 @@
       <MemberSignature Language="C#" Value="public static void ApplyFldAttrs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ApplyFldAttrs() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -89,11 +69,6 @@
       <MemberSignature Language="C#" Value="public static void ApplyMetAttrs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ApplyMetAttrs() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -107,11 +82,6 @@
       <MemberSignature Language="C#" Value="public static void ApplyPropAttrs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ApplyPropAttrs() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -149,11 +119,6 @@
       <MemberSignature Language="C#" Value="public static void CheckAssignability (IKVM.Reflection.Type t1, IKVM.Reflection.Type t2);" />
       <MemberSignature Language="ILAsm" Value=".method public static void CheckAssignability(class IKVM.Reflection.Type t1, class IKVM.Reflection.Type t2) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -191,11 +156,6 @@
       <MemberSignature Language="C#" Value="public static bool CheckIfArrLen (dylan.NET.Tokenizer.AST.Exprs.Expr ind);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool CheckIfArrLen(class dylan.NET.Tokenizer.AST.Exprs.Expr ind) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -213,11 +173,6 @@
       <MemberSignature Language="C#" Value="public static bool CheckSHLRLHS (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool CheckSHLRLHS(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -235,11 +190,6 @@
       <MemberSignature Language="C#" Value="public static bool CheckSHLRRHS (IKVM.Reflection.Type t, bool accepti64);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool CheckSHLRRHS(class IKVM.Reflection.Type t, bool accepti64) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -259,11 +209,6 @@
       <MemberSignature Language="C#" Value="public static bool CheckSigned (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool CheckSigned(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -281,11 +226,6 @@
       <MemberSignature Language="C#" Value="public static bool CheckUnsigned (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool CheckUnsigned(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -303,11 +243,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CommitEvalTTok (dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok tt);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type CommitEvalTTok(class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok tt) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
@@ -337,11 +272,6 @@
       <MemberSignature Language="C#" Value="public static void EmitConv (IKVM.Reflection.Type source, IKVM.Reflection.Type sink);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitConv(class IKVM.Reflection.Type source, class IKVM.Reflection.Type sink) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -360,11 +290,6 @@
       <MemberSignature Language="C#" Value="public static void EmitElemLd (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitElemLd(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -381,11 +306,6 @@
       <MemberSignature Language="C#" Value="public static void EmitFldLd (IKVM.Reflection.FieldInfo fld, bool stat);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitFldLd(class IKVM.Reflection.FieldInfo fld, bool stat) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -404,11 +324,6 @@
       <MemberSignature Language="C#" Value="public static void EmitFldSt (IKVM.Reflection.FieldInfo fld, bool stat);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitFldSt(class IKVM.Reflection.FieldInfo fld, bool stat) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -427,11 +342,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLiteral (dylan.NET.Tokenizer.AST.Tokens.Literals.Literal lit);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLiteral(class dylan.NET.Tokenizer.AST.Tokens.Literals.Literal lit) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -448,11 +358,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLocLd (int ind, bool locarg);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLocLd(int32 ind, bool locarg) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -471,11 +376,6 @@
       <MemberSignature Language="C#" Value="public static void EmitLocSt (int ind, bool locarg);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLocSt(int32 ind, bool locarg) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -494,11 +394,6 @@
       <MemberSignature Language="C#" Value="public static void EmitMetCall (IKVM.Reflection.MethodInfo met, bool stat);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitMetCall(class IKVM.Reflection.MethodInfo met, bool stat) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -517,11 +412,6 @@
       <MemberSignature Language="C#" Value="public static void EmitOp (dylan.NET.Tokenizer.AST.Tokens.Ops.Op op, bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitOp(class dylan.NET.Tokenizer.AST.Tokens.Ops.Op op, bool s) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -540,11 +430,6 @@
       <MemberSignature Language="C#" Value="public static void EmitPtrLd (IKVM.Reflection.MethodInfo met, bool stat);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitPtrLd(class IKVM.Reflection.MethodInfo met, bool stat) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -575,11 +460,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.FieldInfo GetExtFld (IKVM.Reflection.Type t, string fld);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.FieldInfo GetExtFld(class IKVM.Reflection.Type t, string fld) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.FieldInfo</ReturnType>
       </ReturnValue>
@@ -599,11 +479,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo GetExtMet (IKVM.Reflection.Type t, dylan.NET.Tokenizer.AST.Tokens.MethodNameTok mn, IKVM.Reflection.Type[] paramtyps);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo GetExtMet(class IKVM.Reflection.Type t, class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok mn, class IKVM.Reflection.Type[] paramtyps) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
       </ReturnValue>
@@ -625,11 +500,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.PropertyInfo GetExtProp (IKVM.Reflection.Type t, string prop);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.PropertyInfo GetExtProp(class IKVM.Reflection.Type t, string prop) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.PropertyInfo</ReturnType>
       </ReturnValue>
@@ -645,15 +515,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetInhHierarchy">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt; GetInhHierarchy (IKVM.Reflection.Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class IKVM.Reflection.Type&gt; GetInhHierarchy(class IKVM.Reflection.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetLbl">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label GetLbl (string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label GetLbl(string nam) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
       </ReturnValue>
@@ -671,11 +553,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.ConstructorInfo GetLocCtor (IKVM.Reflection.Type t, IKVM.Reflection.Type[] typs);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.ConstructorInfo GetLocCtor(class IKVM.Reflection.Type t, class IKVM.Reflection.Type[] typs) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.ConstructorInfo</ReturnType>
       </ReturnValue>
@@ -695,11 +572,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.FieldInfo GetLocFld (string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.FieldInfo GetLocFld(string nam) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.FieldInfo</ReturnType>
       </ReturnValue>
@@ -717,11 +589,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo GetLocMet (dylan.NET.Tokenizer.AST.Tokens.MethodNameTok mn, IKVM.Reflection.Type[] typs);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo GetLocMet(class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok mn, class IKVM.Reflection.Type[] typs) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
       </ReturnValue>
@@ -741,11 +608,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo GetLocMetNoParams (string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo GetLocMetNoParams(string nam) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
       </ReturnValue>
@@ -763,11 +625,6 @@
       <MemberSignature Language="C#" Value="public static int GetPrimitiveNumericSize (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static int32 GetPrimitiveNumericSize(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -785,11 +642,6 @@
       <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt; GetTypeInterfaces (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class IKVM.Reflection.Type&gt; GetTypeInterfaces(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt;</ReturnType>
       </ReturnValue>
@@ -807,11 +659,6 @@
       <MemberSignature Language="C#" Value="public static bool IsPrimitiveFPType (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool IsPrimitiveFPType(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -829,11 +676,6 @@
       <MemberSignature Language="C#" Value="public static bool IsPrimitiveIntegralType (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool IsPrimitiveIntegralType(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -851,11 +693,6 @@
       <MemberSignature Language="C#" Value="public static bool IsPrimitiveNumericType (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool IsPrimitiveNumericType(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -885,11 +722,6 @@
       <MemberSignature Language="C#" Value="public static object LiteralToConst (dylan.NET.Tokenizer.AST.Tokens.Literals.Literal lit);" />
       <MemberSignature Language="ILAsm" Value=".method public static object LiteralToConst(class dylan.NET.Tokenizer.AST.Tokens.Literals.Literal lit) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -931,11 +763,6 @@
       <MemberSignature Language="C#" Value="public static void PostProcessParams (dylan.NET.Tokenizer.AST.Exprs.Expr[] ps);" />
       <MemberSignature Language="ILAsm" Value=".method public static void PostProcessParams(class dylan.NET.Tokenizer.AST.Exprs.Expr[] ps) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -952,11 +779,6 @@
       <MemberSignature Language="C#" Value="public static void PostProcessParamsConstr (dylan.NET.Tokenizer.AST.Exprs.Expr[] ps);" />
       <MemberSignature Language="ILAsm" Value=".method public static void PostProcessParamsConstr(class dylan.NET.Tokenizer.AST.Exprs.Expr[] ps) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -973,11 +795,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.TypeAttributes ProcessClassAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.TypeAttributes ProcessClassAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
@@ -995,11 +812,6 @@
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.CollectionItem ProcessCollection (IKVM.Reflection.Type t, bool forcearr);" />
       <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.CollectionItem ProcessCollection(class IKVM.Reflection.Type t, bool forcearr) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.CodeGen.CollectionItem</ReturnType>
       </ReturnValue>
@@ -1036,11 +848,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.EventAttributes ProcessEventAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.EventAttributes ProcessEventAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.EventAttributes</ReturnType>
       </ReturnValue>
@@ -1058,11 +865,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.FieldAttributes ProcessFieldAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.FieldAttributes ProcessFieldAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.FieldAttributes</ReturnType>
       </ReturnValue>
@@ -1080,11 +882,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo[] ProcessForeach (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo[] ProcessForeach(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.MethodInfo[]</ReturnType>
       </ReturnValue>
@@ -1102,11 +899,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo[] ProcessForeach2 (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo[] ProcessForeach2(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.MethodInfo[]</ReturnType>
       </ReturnValue>
@@ -1124,11 +916,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodAttributes ProcessMethodAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.MethodAttributes ProcessMethodAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.MethodAttributes</ReturnType>
       </ReturnValue>
@@ -1146,11 +933,6 @@
       <MemberSignature Language="C#" Value="public static void ProcessParams (dylan.NET.Tokenizer.AST.Exprs.Expr[] ps);" />
       <MemberSignature Language="ILAsm" Value=".method public static void ProcessParams(class dylan.NET.Tokenizer.AST.Exprs.Expr[] ps) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1167,11 +949,6 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.PropertyAttributes ProcessPropAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.PropertyAttributes ProcessPropAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.PropertyAttributes</ReturnType>
       </ReturnValue>
@@ -1201,11 +978,6 @@
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.Token SetPopFlg (dylan.NET.Tokenizer.AST.Tokens.Token t);" />
       <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Tokens.Token SetPopFlg(class dylan.NET.Tokenizer.AST.Tokens.Token t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
       </ReturnValue>
@@ -1235,11 +1007,6 @@
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.MethodNameTok StripDelMtdName (dylan.NET.Tokenizer.AST.Tokens.Token t);" />
       <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok StripDelMtdName(class dylan.NET.Tokenizer.AST.Tokens.Token t) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.MethodNameTok</ReturnType>
       </ReturnValue>

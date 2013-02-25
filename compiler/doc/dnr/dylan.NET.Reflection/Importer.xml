@@ -17,11 +17,6 @@
       <MemberSignature Language="C#" Value="public static void AddAsm (IKVM.Reflection.Assembly asmm);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddAsm(class IKVM.Reflection.Assembly asmm) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -38,11 +33,6 @@
       <MemberSignature Language="C#" Value="public static void AddImp (string imp);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddImp(string imp) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -59,11 +49,6 @@
       <MemberSignature Language="C#" Value="public static void AddLocImp (string imp);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddLocImp(string imp) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -116,11 +101,6 @@
       <MemberSignature Language="C#" Value="public static void Init ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void Init() cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -146,11 +126,6 @@
       <MemberSignature Language="C#" Value="public static void RegisterAlias (string alias, string ns);" />
       <MemberSignature Language="ILAsm" Value=".method public static void RegisterAlias(string alias, string ns) cil managed" />
       <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

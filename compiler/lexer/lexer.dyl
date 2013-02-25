@@ -1,4 +1,4 @@
-//    tokenizer.Lexer.dll dylan.NET.Tokenizer.Lexer Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.Lexer.dll dylan.NET.Tokenizer.Lexer Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -11,7 +11,6 @@ class public auto ansi Lexer
 	method public StmtSet Analyze(var path as string)
 		var stmts as StmtSet = new StmtSet(path)
 		var curstmt as Stmt = null
-		var curln as Line = null
 		var sr as StreamReader = new StreamReader(path,true)
 		var crflag as boolean = false
 		var lfflag as boolean = false
@@ -37,8 +36,7 @@ class public auto ansi Lexer
 			else
 				if lfflag then
 					curline = curline + 1
-					curln = new Line()
-					curstmt = curln::Analyze(new Stmt() {Line = curline}, buf)
+					curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
 					curstmtlen = curstmt::Tokens::get_Count()
 			
 					if curstmtlen != 0 then
@@ -53,8 +51,7 @@ class public auto ansi Lexer
 			
 			if sr::Peek() = -1 then
 				curline = curline + 1
-				curln = new Line()
-				curstmt = curln::Analyze(new Stmt() {Line = curline}, buf)
+				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
 				curstmtlen = curstmt::Tokens::get_Count()
 			
 				if curstmtlen != 0 then
@@ -73,7 +70,6 @@ class public auto ansi Lexer
 	method public StmtSet AnalyzeString(var str as string)
 		var stmts as StmtSet = new StmtSet()
 		var curstmt as Stmt = null
-		var curln as Line = null
 		var sr as StringReader = new StringReader(str)
 		var crflag as boolean = false
 		var lfflag as boolean = false
@@ -99,8 +95,7 @@ class public auto ansi Lexer
 			else
 				if lfflag then
 					curline = curline + 1
-					curln = new Line()
-					curstmt = curln::Analyze(new Stmt() {Line = curline}, buf)
+					curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
 					curstmtlen = curstmt::Tokens::get_Count()
 			
 					if curstmtlen != 0 then
@@ -115,8 +110,7 @@ class public auto ansi Lexer
 			
 			if sr::Peek() = -1 then
 				curline = curline + 1
-				curln = new Line()
-				curstmt = curln::Analyze(new Stmt() {Line = curline}, buf)
+				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
 				curstmtlen = curstmt::Tokens::get_Count()
 			
 				if curstmtlen != 0 then

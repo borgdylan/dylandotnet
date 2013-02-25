@@ -1,4 +1,4 @@
-//    dnr.dll dylan.NET.Reflection Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    dnr.dll dylan.NET.Reflection Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -17,22 +17,22 @@ class public auto ansi static Importer
 	method public static void Init()
 		Asms = new C5.LinkedList<of IKVM.Reflection.Assembly>()
 		Imps = new C5.LinkedList<of string>()
-		AliasMap = new C5.HashDictionary<of string,string>()
-		AliasMap::Add("object", "System.Object")
-		AliasMap::Add("string", "System.String")
-		AliasMap::Add("char", "System.Char")
-		AliasMap::Add("boolean", "System.Boolean")
-		AliasMap::Add("sbyte", "System.SByte")
-		AliasMap::Add("short", "System.Int16")
-		AliasMap::Add("integer", "System.Int32")
-		AliasMap::Add("long", "System.Int64")
-		AliasMap::Add("byte", "System.Byte")
-		AliasMap::Add("ushort", "System.UInt16")
-		AliasMap::Add("uinteger", "System.UInt32")
-		AliasMap::Add("ulong", "System.UInt64")
-		AliasMap::Add("intptr", "System.IntPtr")
-		AliasMap::Add("uintptr", "System.UIntPtr")
-		AliasMap::Add("decimal", "System.Decimal")
+		AliasMap = new C5.HashDictionary<of string,string>() { _
+		Add("object", "System.Object"), _
+		Add("string", "System.String"), _
+		Add("char", "System.Char"), _
+		Add("boolean", "System.Boolean"), _
+		Add("sbyte", "System.SByte"), _
+		Add("short", "System.Int16"), _
+		Add("integer", "System.Int32"), _
+		Add("long", "System.Int64"), _
+		Add("byte", "System.Byte"), _
+		Add("ushort", "System.UInt16"), _
+		Add("uinteger", "System.UInt32"), _
+		Add("ulong", "System.UInt64"), _
+		Add("intptr", "System.IntPtr"), _
+		Add("uintptr", "System.UIntPtr"), _
+		Add("decimal", "System.Decimal")}
 	end method
 
 	method private static void Importer()

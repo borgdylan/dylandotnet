@@ -1,4 +1,4 @@
-//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
@@ -21,12 +21,7 @@ class public auto ansi TypeList
 
 	method public TypeItem GetTypeItem(var nam as string)
 		foreach ns in new C5.LinkedList<of string>() {Add(string::Empty), AddAll(Importer::Imps)}
-			var til as TILambdas
-			if ns::get_Length() = 0 then
-				til = new TILambdas(nam)
-			else
-				til = new TILambdas(ns + "." + nam)
-			end if
+			var til as TILambdas = #ternary{ns::get_Length() == 0 ? new TILambdas(nam), new TILambdas(ns + "." + nam)}
 			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
 			var match as TypeItem = Enumerable::FirstOrDefault<of TypeItem>(lot2)
 			if match != null then
@@ -43,11 +38,7 @@ class public auto ansi TypeList
 	
 	method public IKVM.Reflection.Type GetType(var nam as string)
 		var ti as TypeItem = GetTypeItem(nam)
-		if ti = null then
-			return null
-		else
-			return ti::TypeBldr
-		end if
+		return #ternary{ti == null ? $IKVM.Reflection.Type$null, ti::TypeBldr}
 	end method
 
 
@@ -81,11 +72,7 @@ class public auto ansi TypeList
 	
 	method assembly ConstructorInfo GetDefaultCtor(var t as IKVM.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
-		if ti != null then
-			return GetCtor(t, IKVM.Reflection.Type::EmptyTypes)
-		else
-			return Loader::LoadCtor(t, IKVM.Reflection.Type::EmptyTypes)
-		end if
+		return #ternary {ti != null ? GetCtor(t, IKVM.Reflection.Type::EmptyTypes), Loader::LoadCtor(t, IKVM.Reflection.Type::EmptyTypes)}
 	end method
 	
 	method public void EnsureDefaultCtor(var t as IKVM.Reflection.Type)
