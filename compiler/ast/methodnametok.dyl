@@ -1,4 +1,4 @@
-//    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -33,11 +33,7 @@ class public auto ansi MethodNameTok extends Ident
 	end method
 	
 	method public static specialname MethodNameTok op_Implicit(var idt as Ident)
-		if idt is MethodNameTok then
-			return $MethodNameTok$idt
-		else
-			return new MethodNameTok(idt)
-		end if
+		return #ternary{idt is MethodNameTok ? $MethodNameTok$idt, new MethodNameTok(idt)}
 	end method
 
 end class
@@ -74,11 +70,7 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok
 	end method
 	
 	method public static specialname GenericMethodNameTok op_Implicit(var idt as Ident)
-		if idt is GenericMethodNameTok then
-			return $GenericMethodNameTok$idt
-		else
-			return new GenericMethodNameTok(idt)
-		end if
+		return #ternary {idt is GenericMethodNameTok ? $GenericMethodNameTok$idt, new GenericMethodNameTok(idt)}
 	end method
 
 

@@ -28,7 +28,7 @@ end #if
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>")]
 
 assembly nuget2dn exe
-ver 11.3.1.1
+ver 11.3.1.2
 
 namespace dylan.NET.NuGet
 

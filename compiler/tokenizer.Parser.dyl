@@ -1,6 +1,6 @@
 //The Parser for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v.11.3.1.1 or later
+//compile with dylan.NET v.11.3.1.2 or later
 
 //    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -51,7 +51,7 @@ end #if
 #include "parser/assemblyinfo.dyl"
 
 assembly tokenizer.Parser dll
-ver 11.3.1.1
+ver 11.3.1.2
 
 namespace dylan.NET.Tokenizer.Parser
 	#include "parser/parserflags.dyl"

@@ -23,10 +23,10 @@ import System.Text
 [assembly: System.Reflection.AssemblyConfiguration("RELEASE")]
 end #if
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.PkgConfig.PC2DN")]
-[assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>")]
+[assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>")]
 
 assembly pc2dn exe
-ver 11.3.1.1
+ver 11.3.1.2
 
 namespace dylan.NET.PkgConfig.PC2DN
 

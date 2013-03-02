@@ -1,4 +1,4 @@
-//    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -120,7 +120,7 @@ class public auto ansi CharLiteral extends Literal
 		LitTyp = new CharTok()
 		OrdOp = ""
 		var c as char
-		if Char::TryParse(value,ref|c) then
+		if Char::TryParse(value,ref c) then
 			CharVal = c
 		end if
 	end method
@@ -226,7 +226,7 @@ class public auto ansi IntLiteral extends NumberLiteral
 		NumVal = 0i
 		LitTyp = new IntegerTok()
 		var n as integer
-		if Int32::TryParse(value,ref|n) then
+		if Int32::TryParse(value,ref n) then
 			NumVal = n
 		end if
 	end method
@@ -262,7 +262,7 @@ class public auto ansi DoubleLiteral extends NumberLiteral
 		NumVal = 0d
 		LitTyp = new DoubleTok()
 		var n as double
-		if Double::TryParse(value,ref|n) then
+		if Double::TryParse(value,ref n) then
 			NumVal = n
 		end if
 	end method
@@ -294,7 +294,7 @@ class public auto ansi DecimalLiteral extends NumberLiteral
 		NumVal = new Decimal(0)
 		LitTyp = new DecimalTok()
 		var n as decimal
-		if Decimal::TryParse(value,ref|n) then
+		if Decimal::TryParse(value,ref n) then
 			NumVal = n
 		end if
 	end method
@@ -326,7 +326,7 @@ class public auto ansi SByteLiteral extends NumberLiteral
 		NumVal = 0b
 		LitTyp = new SByteTok()
 		var n as sbyte
-		if SByte::TryParse(value,ref|n) then
+		if SByte::TryParse(value,ref n) then
 			NumVal = n
 		end if
 	end method
@@ -358,7 +358,7 @@ class public auto ansi ShortLiteral extends NumberLiteral
 		NumVal = 0s
 		LitTyp = new ShortTok()
 		var n as short
-		if Int16::TryParse(value,ref|n) then
+		if Int16::TryParse(value,ref n) then
 			NumVal = n
 		end if
 	end method
@@ -390,7 +390,7 @@ class public auto ansi LongLiteral extends NumberLiteral
 		NumVal = 0l
 		LitTyp = new LongTok()
 		var n as long
-		if Int64::TryParse(value,ref|n) then
+		if Int64::TryParse(value,ref n) then
 			NumVal = n
 		end if
 	end method
@@ -422,7 +422,7 @@ class public auto ansi FloatLiteral extends NumberLiteral
 		NumVal = 0f
 		LitTyp = new SingleTok()
 		var n as single
-		if Single::TryParse(value,ref|n) then
+		if Single::TryParse(value,ref n) then
 			NumVal = n
 		end if
 	end method
@@ -454,7 +454,7 @@ class public auto ansi UIntLiteral extends NumberLiteral
 		NumVal = 0ui
 		LitTyp = new UIntegerTok()
 		var n as uinteger
-		if UInt32::TryParse(value,ref|n) then
+		if UInt32::TryParse(value,ref n) then
 			NumVal = n
 		end if
 	end method
@@ -486,7 +486,7 @@ class public auto ansi ByteLiteral extends NumberLiteral
 		NumVal = 0ub
 		LitTyp = new ByteTok()
 		var n as byte
-		if Byte::TryParse(value,ref|n) then
+		if Byte::TryParse(value,ref n) then
 			NumVal = n
 		end if
 	end method
@@ -518,7 +518,7 @@ class public auto ansi UShortLiteral extends NumberLiteral
 		NumVal = 0us
 		LitTyp = new UShortTok()
 		var n as ushort
-		if UInt16::TryParse(value,ref|n) then
+		if UInt16::TryParse(value,ref n) then
 			NumVal = n
 		end if
 	end method
@@ -550,7 +550,7 @@ class public auto ansi ULongLiteral extends NumberLiteral
 		NumVal = 0ul
 		LitTyp = new ULongTok()
 		var n as ulong
-		if UInt64::TryParse(value,ref|n) then
+		if UInt64::TryParse(value,ref n) then
 			NumVal = n
 		end if
 	end method

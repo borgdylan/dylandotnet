@@ -1,8 +1,8 @@
 //The Compiler for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v.11.2.9.9 or later
+//compile with dylan.NET v.11.3.1.2 or later
 
-//    dnc.exe dylan.NET.Compiler Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    dnc.exe dylan.NET.Compiler Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -43,7 +43,7 @@ end #if
 #include "dnc/assemblyinfo.dyl"
 
 assembly dnc exe
-ver 11.3.1.1
+ver 11.3.1.2
 
 namespace dylan.NET.Compiler
 	#include "dnc/Mod1.dyl"

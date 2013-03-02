@@ -38,7 +38,7 @@ class public auto ansi static Program
 	[method: ComVisible(false)]
 	method private static void main(var args as string[])
 
-		StreamUtils::WriteLine("dylan.NET Compiler v. 11.3.1.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5")
+		StreamUtils::WriteLine("dylan.NET Compiler v. 11.3.1.2 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5")
 		StreamUtils::WriteLine("                           and Xamarin Mono v. 2.x.y/v. 3.x.y")
 		StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 		#if NET_4_0 then
@@ -46,7 +46,7 @@ class public auto ansi static Program
 		#else
 			StreamUtils::WriteLine("Currently Targeting the 3.5 Profile!!")
 		end #if
-		StreamUtils::WriteLine("Copyright (C) 2012 Dylan Borg")
+		StreamUtils::WriteLine("Copyright (C) 2013 Dylan Borg")
 
 		if args = null then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")

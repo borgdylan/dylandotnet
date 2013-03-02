@@ -2,7 +2,7 @@
 //A Component of the NEW dylan.NET Compiler
 //compile with dylan.NET v.11.2.9.8 or later
 
-//    unit.dll dylan.NET.UnitTests Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    unit.dll dylan.NET.UnitTests Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -26,7 +26,7 @@ import dylan.NET.Utils
 [assembly: System.Reflection.AssemblyConfiguration("RELEASE")]
 end #if
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.UnitTests")]
-[assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>")]
+[assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>")]
 
 assembly unit dll
 ver 11.2.9.9

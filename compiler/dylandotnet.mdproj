@@ -152,7 +152,6 @@
     <None Include="tokenizer.CodeGen.dyl" />
     <None Include="dnc.dyl" />
     <None Include="dnc\Mod1.dyl" />
-    <None Include="dnc\testcode.txt" />
     <None Include="Makefile.am" />
     <None Include="dylandotnet.1" />
     <None Include="dylandotnet4.1" />

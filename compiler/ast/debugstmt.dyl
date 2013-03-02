@@ -1,4 +1,4 @@
-//    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -20,17 +20,11 @@ class public auto ansi DebugStmt extends Stmt
 	end method
 
 	method public void setFlg()
-
-		var t as Type[] = new Type[2]
-		t[0] = gettype OnTok
-		t[1] = gettype OffTok
-
-		if t[0]::IsInstanceOfType(Opt) then
+		if Opt is OnTok then
 			Flg = true
-		elseif t[1]::IsInstanceOfType(Opt) then
+		elseif Opt is OffTok then
 			Flg = false
 		end if
-
 	end method
 	
 	method public hidebysig virtual string ToString()
