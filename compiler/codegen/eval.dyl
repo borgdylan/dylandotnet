@@ -899,27 +899,32 @@ class public auto ansi beforefieldinit Evaluator
 
 			AsmFactory::Type02 = #ternary {optok is ConditionalOp ? ILEmitter::Univ::Import(gettype boolean), lctyp}
 
-			if emt then
-				if isflg then
+			if isflg then
+				if emt then
 					var istyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok($TypeTok$rc)
 					if istyp = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + rc::Value + "' was not found.")
 					else
 						ILEmitter::EmitIs(istyp)
 					end if
-				elseif asflg then
-					var astyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok($TypeTok$rc)
-					if astyp = null then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + rc::Value + "' was not found.")
-					else
+				end if
+			elseif asflg then
+				var astyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok($TypeTok$rc)
+				if astyp = null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + rc::Value + "' was not found.")
+				else
+					if emt then
 						ILEmitter::EmitIsinst(astyp)
 					end if
-					AsmFactory::Type02 = astyp
-				else
-					Helpers::LeftOp = lctyp
-					Helpers::RightOp = rctyp
-					Helpers::EmitOp(optok, Helpers::CheckUnsigned(lctyp) == false)
 				end if
+				AsmFactory::Type02 = astyp
+			else
+				Helpers::LeftOp = lctyp
+				Helpers::RightOp = rctyp
+				Helpers::EmitOp(optok, Helpers::CheckUnsigned(lctyp) == false, emt)
+			end if
+				
+			if emt then
 				Helpers::StringFlg = false
 				Helpers::OpCodeSuppFlg = false
 				Helpers::EqSuppFlg = false

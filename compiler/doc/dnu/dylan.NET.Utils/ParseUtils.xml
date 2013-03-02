@@ -17,6 +17,11 @@
       <MemberSignature Language="C#" Value="public static bool IsHexDigit (char c);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool IsHexDigit(char c) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -34,6 +39,11 @@
       <MemberSignature Language="C#" Value="public static bool LikeOP (string str, string pattern);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool LikeOP(string str, string pattern) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -53,6 +63,11 @@
       <MemberSignature Language="C#" Value="public static string ProcessMSYSPath (string p);" />
       <MemberSignature Language="ILAsm" Value=".method public static string ProcessMSYSPath(string p) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -70,6 +85,11 @@
       <MemberSignature Language="C#" Value="public static string ProcessString (string escstr);" />
       <MemberSignature Language="ILAsm" Value=".method public static string ProcessString(string escstr) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -87,6 +107,11 @@
       <MemberSignature Language="C#" Value="public static int RetPrec (string chr);" />
       <MemberSignature Language="ILAsm" Value=".method public static int32 RetPrec(string chr) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -104,6 +129,11 @@
       <MemberSignature Language="C#" Value="public static string[] StringParser (string StringToParse, string DelimeterChar);" />
       <MemberSignature Language="ILAsm" Value=".method public static string[] StringParser(string StringToParse, string DelimeterChar) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
@@ -123,6 +153,11 @@
       <MemberSignature Language="C#" Value="public static string[] StringParser2ds (string StringToParse, string DelimeterChar, string DelimeterChar2);" />
       <MemberSignature Language="ILAsm" Value=".method public static string[] StringParser2ds(string StringToParse, string DelimeterChar, string DelimeterChar2) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
@@ -144,6 +179,11 @@
       <MemberSignature Language="C#" Value="public static C5.IList&lt;string&gt; StringParserL (string StringToParse, string DelimeterChar);" />
       <MemberSignature Language="ILAsm" Value=".method public static class C5.IList`1&lt;string&gt; StringParserL(string StringToParse, string DelimeterChar) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>C5.IList&lt;System.String&gt;</ReturnType>
       </ReturnValue>

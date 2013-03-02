@@ -585,6 +585,7 @@ class public auto ansi Program
 		Console::WriteLine("Hello from " _
 			+ "a continued " _
 			+ "line")
+		var dd = DateTime::get_Now() - DateTime::get_Now()
 	end method
 
 end class

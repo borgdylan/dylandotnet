@@ -703,7 +703,7 @@ class public auto ansi static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitOp(var op as Op, var s as boolean)
+	method public static void EmitOp(var op as Op, var s as boolean, var emt as boolean)
 
 		var mtd1 as MethodInfo = null
 		var mtd3 as MethodInfo = null
@@ -711,88 +711,120 @@ class public auto ansi static Helpers
 		if op is AddOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_Addition", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif StringFlg then
-				ILEmitter::EmitStrAdd()
-			elseif DelegateFlg then
-				ILEmitter::EmitDelegateAdd()
-			elseif OpCodeSuppFlg then
-				ILEmitter::EmitAdd(s)
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '+' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if StringFlg then
+					ILEmitter::EmitStrAdd()
+				elseif DelegateFlg then
+					ILEmitter::EmitDelegateAdd()
+				elseif OpCodeSuppFlg then
+					ILEmitter::EmitAdd(s)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '+' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is MulOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_Multiply", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif OpCodeSuppFlg then
-				ILEmitter::EmitMul(s)
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '*' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if OpCodeSuppFlg then
+					ILEmitter::EmitMul(s)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '*' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is SubOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_Subtraction", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif DelegateFlg then
-				ILEmitter::EmitDelegateSub()
-			elseif OpCodeSuppFlg then
-				ILEmitter::EmitSub(s)
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '-' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if DelegateFlg then
+					ILEmitter::EmitDelegateSub()
+				elseif OpCodeSuppFlg then
+					ILEmitter::EmitSub(s)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '-' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is DivOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_Division", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif OpCodeSuppFlg then
-				ILEmitter::EmitDiv(s)
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '/' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if OpCodeSuppFlg then
+					ILEmitter::EmitDiv(s)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '/' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is ModOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_Modulus", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif OpCodeSuppFlg then
-				ILEmitter::EmitRem(s)
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '%' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if OpCodeSuppFlg then
+					ILEmitter::EmitRem(s)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '%' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is OrOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseOr", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif EqSuppFlg then
-				ILEmitter::EmitOr()
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'or' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if EqSuppFlg then
+					ILEmitter::EmitOr()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'or' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is AndOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseAnd", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif EqSuppFlg then
-				ILEmitter::EmitAnd()
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'and' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if EqSuppFlg then
+					ILEmitter::EmitAnd()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'and' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is XorOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_ExclusiveOr", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif EqSuppFlg then
-				ILEmitter::EmitXor()
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'xor' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if EqSuppFlg then
+					ILEmitter::EmitXor()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'xor' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is NandOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseAnd", LeftOp, RightOp)
@@ -801,15 +833,19 @@ class public auto ansi static Helpers
 			end if
 			
 			if mtd3 != null then
-				ILEmitter::EmitCall(mtd1)
-				ILEmitter::EmitCall(mtd3)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+					ILEmitter::EmitCall(mtd3)
+				end if
 				AsmFactory::Type02 = mtd3::get_ReturnType()
-			elseif BoolFlg then
-				ILEmitter::EmitNand()
-			elseif EqSuppFlg then
-				ILEmitter::EmitNandOther()
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'nand' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if BoolFlg then
+					ILEmitter::EmitNand()
+				elseif EqSuppFlg then
+					ILEmitter::EmitNandOther()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'nand' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is NorOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseOr", LeftOp, RightOp)
@@ -818,15 +854,19 @@ class public auto ansi static Helpers
 			end if
 			
 			if mtd3 != null then
-				ILEmitter::EmitCall(mtd1)
-				ILEmitter::EmitCall(mtd3)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+					ILEmitter::EmitCall(mtd3)
+				end if
 				AsmFactory::Type02 = mtd3::get_ReturnType()
-			elseif BoolFlg then
-				ILEmitter::EmitNor()
-			elseif EqSuppFlg then
-				ILEmitter::EmitNorOther()
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'nor' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if BoolFlg then
+					ILEmitter::EmitNor()
+				elseif EqSuppFlg then
+					ILEmitter::EmitNorOther()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'nor' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is XnorOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_ExclusiveOr", LeftOp, RightOp)
@@ -835,111 +875,151 @@ class public auto ansi static Helpers
 			end if
 			
 			if mtd3 != null then
-				ILEmitter::EmitCall(mtd1)
-				ILEmitter::EmitCall(mtd3)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+					ILEmitter::EmitCall(mtd3)
+				end if
 				AsmFactory::Type02 = mtd3::get_ReturnType()
-			elseif BoolFlg then
-				ILEmitter::EmitXnor()
-			elseif EqSuppFlg then
-				ILEmitter::EmitXnorOther()
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'xnor' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if BoolFlg then
+					ILEmitter::EmitXnor()
+				elseif EqSuppFlg then
+					ILEmitter::EmitXnorOther()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'xnor' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is GtOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_GreaterThan", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif OpCodeSuppFlg then
-				ILEmitter::EmitCgt(s)
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '>' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if OpCodeSuppFlg then
+					ILEmitter::EmitCgt(s)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '>' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is LtOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_LessThan", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif OpCodeSuppFlg then
-				ILEmitter::EmitClt(s)
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '<' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if OpCodeSuppFlg then
+					ILEmitter::EmitClt(s)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '<' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is GeOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_GreaterThanOrEqual", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif OpCodeSuppFlg then
-				ILEmitter::EmitCge(s)
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '>=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if OpCodeSuppFlg then
+					ILEmitter::EmitCge(s)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '>=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is LeOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_LessThanOrEqual", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif OpCodeSuppFlg then
-				ILEmitter::EmitCle(s)
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '<=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if OpCodeSuppFlg then
+					ILEmitter::EmitCle(s)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '<=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is EqOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_Equality", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif StringFlg then
-				ILEmitter::EmitStrCeq()
-			elseif EqSuppFlg then
-				ILEmitter::EmitCeq()
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '==' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if StringFlg then
+					ILEmitter::EmitStrCeq()
+				elseif EqSuppFlg then
+					ILEmitter::EmitCeq()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '==' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is NeqOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_Inequality", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif StringFlg then
-				ILEmitter::EmitStrCneq()
-			elseif EqSuppFlg then
-				ILEmitter::EmitCneq()
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '!=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if StringFlg then
+					ILEmitter::EmitStrCneq()
+				elseif EqSuppFlg then
+					ILEmitter::EmitCneq()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '!=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is LikeOp then
-			if StringFlg then
-				ILEmitter::EmitLike()
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'like' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			if emt then
+				if StringFlg then
+					ILEmitter::EmitLike()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'like' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is NLikeOp then
-			if StringFlg then
-				ILEmitter::EmitNLike()
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'notlike' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			if emt then
+				if StringFlg then
+					ILEmitter::EmitNLike()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'notlike' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is ShlOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_LeftShift", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif CheckSHLRLHS(LeftOp) and CheckSHLRRHS(RightOp, false) then
-				ILEmitter::EmitShl()
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '<<' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if CheckSHLRLHS(LeftOp) and CheckSHLRRHS(RightOp, false) then
+					ILEmitter::EmitShl()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '<<' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		elseif op is ShrOp then
 			mtd1 = Loader::LoadBinOp(LeftOp, "op_RightShift", LeftOp, RightOp)
 			if mtd1 != null then
-				ILEmitter::EmitCall(mtd1)
+				if emt then
+					ILEmitter::EmitCall(mtd1)
+				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
-			elseif CheckSHLRLHS(LeftOp) and CheckSHLRRHS(RightOp, false) then
-				ILEmitter::EmitShr(s)
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '>>' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			elseif emt then
+				if CheckSHLRLHS(LeftOp) and CheckSHLRRHS(RightOp, false) then
+					ILEmitter::EmitShr(s)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '>>' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
 			end if
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '" + op::ToString() + "' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")

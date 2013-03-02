@@ -298,6 +298,7 @@
         <member name="dylan.NET.Tokenizer.CodeGen.Helpers.EmitOp">
             <param name="op">To be added.</param>
             <param name="s">To be added.</param>
+            <param name="emt">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

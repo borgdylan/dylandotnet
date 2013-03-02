@@ -631,8 +631,7 @@ class public auto ansi StmtOptimizer
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
 						end if
-						curvp = new AttrValuePair()
-						curvp::ValueExpr = new Expr()
+						curvp = new AttrValuePair() {ValueExpr = new Expr()}
 						eqf = false
 					elseif mas::Tokens::get_Item(i) is AssignOp then
 						eqf = true
@@ -646,29 +645,21 @@ class public auto ansi StmtOptimizer
 				end do
 				
 				mas::Pairs = lp
-				
+				return mas
 			end if
 		end if
 		return null
 	end method
 	
 	method private Stmt checkFldAttr(var stm as Stmt, var b as boolean&)
-		var mas as FieldAttrStmt = null
-
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is FieldCTok)
 
 			if b then
-				mas = new FieldAttrStmt()
-				
 				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = new Expr()
-				tempexp::Tokens = stm::Tokens
-				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
-				mas::Tokens = tempexp::Tokens
-				mas::Ctor = $NewCallTok$mas::Tokens::get_Item(2)
-				mas::Line = stm::Line
-				//mas::Tokens = stm::Tokens
+				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
+				var mas as FieldAttrStmt = new FieldAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
 				do until j = (mas::Ctor::Params::get_Count() - 1)
@@ -694,8 +685,7 @@ class public auto ansi StmtOptimizer
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
 						end if
-						curvp = new AttrValuePair()
-						curvp::ValueExpr = new Expr()
+						curvp = new AttrValuePair() {ValueExpr = new Expr()}
 						eqf = false
 					elseif mas::Tokens::get_Item(i) is AssignOp then
 						eqf = true
@@ -708,29 +698,22 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = lp 
+				mas::Pairs = lp
+				return mas
 			end if
 		end if
-		return mas
+		return null
 	end method
 	
 	method private Stmt checkClsAttr(var stm as Stmt, var b as boolean&)
-		var mas as ClassAttrStmt = null
-
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is ClassCTok)
 
 			if b then
-				mas = new ClassAttrStmt()
-				
 				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = new Expr()
-				tempexp::Tokens = stm::Tokens
-				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
-				mas::Tokens = tempexp::Tokens
-				mas::Ctor = $NewCallTok$mas::Tokens::get_Item(2)
-				mas::Line = stm::Line
-				//mas::Tokens = stm::Tokens
+				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
+				var mas as ClassAttrStmt = new ClassAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
 				do until j = (mas::Ctor::Params::get_Count() - 1)
@@ -756,8 +739,7 @@ class public auto ansi StmtOptimizer
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
 						end if
-						curvp = new AttrValuePair()
-						curvp::ValueExpr = new Expr()
+						curvp = new AttrValuePair() {ValueExpr = new Expr()}
 						eqf = false
 					elseif mas::Tokens::get_Item(i) is AssignOp then
 						eqf = true
@@ -770,29 +752,22 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = lp 
+				mas::Pairs = lp
+				return mas 
 			end if
 		end if
-		return mas
+		return null
 	end method
 	
 	method private Stmt checkAsmAttr(var stm as Stmt, var b as boolean&)
-		var mas as AssemblyAttrStmt = null
-
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is AssemblyCTok)
 
 			if b then
-				mas = new AssemblyAttrStmt()
-				
 				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = new Expr()
-				tempexp::Tokens = stm::Tokens
-				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
-				mas::Tokens = tempexp::Tokens
-				mas::Ctor = $NewCallTok$mas::Tokens::get_Item(2)
-				mas::Line = stm::Line
-				//mas::Tokens = stm::Tokens
+				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
+				var mas as AssemblyAttrStmt = new AssemblyAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
 				do until j = (mas::Ctor::Params::get_Count() - 1)
@@ -818,8 +793,7 @@ class public auto ansi StmtOptimizer
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
 						end if
-						curvp = new AttrValuePair()
-						curvp::ValueExpr = new Expr()
+						curvp = new AttrValuePair() {ValueExpr = new Expr()}
 						eqf = false
 					elseif mas::Tokens::get_Item(i) is AssignOp then
 						eqf = true
@@ -832,29 +806,22 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = lp 
+				mas::Pairs = lp
+				return mas
 			end if
 		end if
-		return mas
+		return null
 	end method
 	
 	method private Stmt checkEventAttr(var stm as Stmt, var b as boolean&)
-		var mas as EventAttrStmt = null
-
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is EventCTok)
 
 			if b then
-				mas = new EventAttrStmt()
-				
 				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = new Expr()
-				tempexp::Tokens = stm::Tokens
-				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
-				mas::Tokens = tempexp::Tokens
-				mas::Ctor = $NewCallTok$mas::Tokens::get_Item(2)
-				mas::Line = stm::Line
-				//mas::Tokens = stm::Tokens
+				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
+				var mas as EventAttrStmt = new EventAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
 				do until j = (mas::Ctor::Params::get_Count() - 1)
@@ -880,8 +847,7 @@ class public auto ansi StmtOptimizer
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
 						end if
-						curvp = new AttrValuePair()
-						curvp::ValueExpr = new Expr()
+						curvp = new AttrValuePair() {ValueExpr = new Expr()}
 						eqf = false
 					elseif mas::Tokens::get_Item(i) is AssignOp then
 						eqf = true
@@ -894,29 +860,22 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = lp 
+				mas::Pairs = lp
+				return mas 
 			end if
 		end if
-		return mas
+		return null
 	end method
 	
 	method private Stmt checkPropAttr(var stm as Stmt, var b as boolean&)
-		var mas as PropertyAttrStmt = null
-
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is PropertyCTok)
 
 			if b then
-				mas = new PropertyAttrStmt()
-				
 				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = new Expr()
-				tempexp::Tokens = stm::Tokens
-				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
-				mas::Tokens = tempexp::Tokens
-				mas::Ctor = $NewCallTok$mas::Tokens::get_Item(2)
-				mas::Line = stm::Line
-				//mas::Tokens = stm::Tokens
+				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
+				var mas as PropertyAttrStmt = new PropertyAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
 				do until j = (mas::Ctor::Params::get_Count() - 1)
@@ -942,8 +901,7 @@ class public auto ansi StmtOptimizer
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
 						end if
-						curvp = new AttrValuePair()
-						curvp::ValueExpr = new Expr()
+						curvp = new AttrValuePair() {ValueExpr = new Expr()}
 						eqf = false
 					elseif mas::Tokens::get_Item(i) is AssignOp then
 						eqf = true
@@ -956,31 +914,23 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = lp 
+				mas::Pairs = lp
+				return mas
 			end if
 		end if
-		return mas
+		return null
 	end method
 	
 	method private Stmt checkParamAttr(var stm as Stmt, var b as boolean&)
-		var mas as ParameterAttrStmt = null
-
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is ParameterCTok)
 
 			if b then
-				mas = new ParameterAttrStmt()
-				
 				var pct as ParameterCTok = $ParameterCTok$stm::Tokens::get_Item(1)
 				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = new Expr()
-				tempexp::Tokens = stm::Tokens
-				tempexp = eopt::procNewCall(eopt::procType(tempexp,2),2)
-				mas::Tokens = tempexp::Tokens
-				mas::Ctor = $NewCallTok$mas::Tokens::get_Item(2)
-				mas::Line = stm::Line
-				mas::Index = $integer$pct::Value::Substring(9,pct::Value::get_Length() - 10)
-				//mas::Tokens = stm::Tokens
+				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
+				var mas as ParameterAttrStmt = new ParameterAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line, Index = $integer$pct::Value::Substring(9,pct::Value::get_Length() - 10)}
 				
 				var j as integer = -1
 				do until j = (mas::Ctor::Params::get_Count() - 1)
@@ -1006,8 +956,7 @@ class public auto ansi StmtOptimizer
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 							lp::Add(curvp)
 						end if
-						curvp = new AttrValuePair()
-						curvp::ValueExpr = new Expr()
+						curvp = new AttrValuePair() {ValueExpr = new Expr()}
 						eqf = false
 					elseif mas::Tokens::get_Item(i) is AssignOp then
 						eqf = true
@@ -1020,10 +969,11 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 				
-				mas::Pairs = lp 
+				mas::Pairs = lp
+				return mas
 			end if
 		end if
-		return mas
+		return null
 	end method
 	
 	method private Stmt checkAssembly(var stm as Stmt, var b as boolean&)
@@ -1297,13 +1247,10 @@ class public auto ansi StmtOptimizer
 	
 	method private Stmt checkDelegate(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is DelegateTok
-		var dels as DelegateStmt = null
-		var exp as Expr = null
-		var d as boolean = false
-		
 		if b then
-			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-			dels = new DelegateStmt() {Line = stm::Line, Tokens = stm::Tokens}
+			var exp as Expr = null
+			var d as boolean = false
+			var dels as DelegateStmt = new DelegateStmt() {Line = stm::Line, Tokens = stm::Tokens}
 			var lvl as integer = 0	
 			var i as integer = 0
 			var len as integer = stm::Tokens::get_Count() - 1
@@ -1322,7 +1269,7 @@ class public auto ansi StmtOptimizer
 			
 			//get return type and name
 			i = i + 1
-			stm::Tokens = eop::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+			stm::Tokens = new ExprOptimizer(PFlags)::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
 			dels::RetTyp = $TypeTok$stm::Tokens::get_Item(i)
 			len = stm::Tokens::get_Count() - 1
 			i = i + 1
@@ -1342,8 +1289,7 @@ class public auto ansi StmtOptimizer
 				
 					if stm::Tokens::get_Item(i) is RParen then
 						if d then
-							var eopt2 as ExprOptimizer = new ExprOptimizer(PFlags)
-							exp = eopt2::checkVarAs(exp,ref bl)
+							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 							if bl then
 								dels::AddParam(exp)
 							end if
@@ -1387,8 +1333,7 @@ class public auto ansi StmtOptimizer
 					end if
 					
 					if (stm::Tokens::get_Item(i) is Comma) and (lvl == 0) then
-						var eopt1 as ExprOptimizer = new ExprOptimizer(PFlags)
-						exp = eopt1::checkVarAs(exp,ref bl)
+						exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 						if bl then
 							dels::AddParam(exp)
 						end if
@@ -1401,9 +1346,9 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 			end if
-		
+			return dels
 		end if
-		return dels
+		return null
 	end method
 	
 	method private Stmt checkMethodCall(var stm as Stmt, var b as boolean&)
@@ -1411,22 +1356,20 @@ class public auto ansi StmtOptimizer
 		if stm::Tokens::get_Count() > 2 then
 			b = (stm::Tokens::get_Item(0) is Ident) or (stm::Tokens::get_Item(0) is NewTok)
 			if b then
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				return new MethodCallStmt() {Line = stm::Line, Tokens = stm::Tokens, MethodToken = eopt::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})::Tokens::get_Item(0)}
+				return new MethodCallStmt() {Line = stm::Line, Tokens = stm::Tokens, MethodToken = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})::Tokens::get_Item(0)}
 			end if
 		end if
 		return null
 	end method
 	
 	method private Stmt checkGet(var stm as Stmt, var b as boolean&)
-		var prgs as PropertyGetStmt = null
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is GetTok) and (stm::Tokens::get_Item(1) is Ident)
 			
 			if b then
-				prgs = new PropertyGetStmt() {Line = stm::Line, Tokens = stm::Tokens}
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var exp as Expr = eopt::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
+				var prgs as PropertyGetStmt = new PropertyGetStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
 				if exp::Tokens::get_Item(1) is MethodCallTok then
 					var mc as MethodCallTok = $MethodCallTok$exp::Tokens::get_Item(1)
 					prgs::Getter = mc::Name
@@ -1435,20 +1378,20 @@ class public auto ansi StmtOptimizer
 				else
 					prgs::Getter = null
 				end if
+				return prgs
 			end if
 		end if
-		return prgs
+		return null
 	end method
 	
 	method private Stmt checkSet(var stm as Stmt, var b as boolean&)
-		var prss as PropertySetStmt = null
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is SetTok) and (stm::Tokens::get_Item(1) is Ident)
 			
 			if b then
-				prss = new PropertySetStmt() {Line = stm::Line, Tokens = stm::Tokens}
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var exp as Expr = eopt::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
+				var prss as PropertySetStmt = new PropertySetStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
 				if exp::Tokens::get_Item(1) is MethodCallTok then
 					var mc as MethodCallTok = $MethodCallTok$exp::Tokens::get_Item(1)
 					prss::Setter = mc::Name
@@ -1457,20 +1400,20 @@ class public auto ansi StmtOptimizer
 				else
 					prss::Setter = null
 				end if
+				return prss
 			end if
 		end if
-		return prss
+		return null
 	end method
 	
 	method private Stmt checkRemove(var stm as Stmt, var b as boolean&)
-		var evrs as EventRemoveStmt = null
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is RemoveTok) and (stm::Tokens::get_Item(1) is Ident)
 			
 			if b then
-				evrs = new EventRemoveStmt() {Line = stm::Line, Tokens = stm::Tokens}
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var exp as Expr = eopt::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
+				var evrs as EventRemoveStmt = new EventRemoveStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
 				if exp::Tokens::get_Item(1) is MethodCallTok then
 					var mc as MethodCallTok = $MethodCallTok$exp::Tokens::get_Item(1)
 					evrs::Remover = mc::Name
@@ -1479,20 +1422,20 @@ class public auto ansi StmtOptimizer
 				else
 					evrs::Remover = null
 				end if
+				return evrs
 			end if
 		end if
-		return evrs
+		return null
 	end method
 	
 	method private Stmt checkAdd(var stm as Stmt, var b as boolean&)
-		var evas as EventAddStmt = null
+		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is AddTok) and (stm::Tokens::get_Item(1) is Ident)
 			
 			if b then
-				evas = new EventAddStmt() {Line = stm::Line, Tokens = stm::Tokens}
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var exp as Expr = eopt::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
+				var evas as EventAddStmt = new EventAddStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
 				if exp::Tokens::get_Item(1) is MethodCallTok then
 					var mc as MethodCallTok = $MethodCallTok$exp::Tokens::get_Item(1)
 					evas::Adder = mc::Name
@@ -1501,16 +1444,16 @@ class public auto ansi StmtOptimizer
 				else
 					evas::Adder = null
 				end if
+				return evas
 			end if
 		end if
-		return evas
+		return null
 	end method
 	
 	method private Stmt checkVarAs(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is VarTok
 		if b then
-			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-			var tempexp as Expr = eop::procType(new Expr() {Tokens = stm::Tokens}, 3)
+			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Tokens = stm::Tokens}, 3)
 			return new VarStmt() {Tokens = tempexp::Tokens, Line = stm::Line, VarName = $Ident$tempexp::Tokens::get_Item(1), VarTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
 		end if
 		return null
@@ -1519,8 +1462,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkCatch(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is CatchTok
 		if b then
-			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
-			var tempexp as Expr = eop::procType(new Expr() {Tokens = stm::Tokens}, 3)
+			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Tokens = stm::Tokens}, 3)
 			return new CatchStmt() {Tokens = tempexp::Tokens, Line = stm::Line, ExName = $Ident$tempexp::Tokens::get_Item(1), ExTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
 		end if
 		return null

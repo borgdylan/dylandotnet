@@ -17,6 +17,11 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XContainer AddAttr (System.Xml.Linq.XContainer el, System.Xml.Linq.XAttribute attr);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XContainer AddAttr(class System.Xml.Linq.XContainer el, class System.Xml.Linq.XAttribute attr) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XContainer</ReturnType>
       </ReturnValue>
@@ -36,6 +41,11 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XContainer AddAttrArr (System.Xml.Linq.XContainer el, System.Xml.Linq.XAttribute[] attrs);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XContainer AddAttrArr(class System.Xml.Linq.XContainer el, class System.Xml.Linq.XAttribute[] attrs) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XContainer</ReturnType>
       </ReturnValue>
@@ -55,6 +65,11 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XContainer AddNode (System.Xml.Linq.XContainer el, System.Xml.Linq.XElement node);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XContainer AddNode(class System.Xml.Linq.XContainer el, class System.Xml.Linq.XElement node) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XContainer</ReturnType>
       </ReturnValue>
@@ -74,6 +89,11 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XContainer AddNodeArr (System.Xml.Linq.XContainer el, System.Xml.Linq.XElement[] nodes);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XContainer AddNodeArr(class System.Xml.Linq.XContainer el, class System.Xml.Linq.XElement[] nodes) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XContainer</ReturnType>
       </ReturnValue>
@@ -93,6 +113,11 @@
       <MemberSignature Language="C#" Value="public static string GetVal (System.Xml.Linq.XElement el);" />
       <MemberSignature Language="ILAsm" Value=".method public static string GetVal(class System.Xml.Linq.XElement el) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -110,6 +135,11 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XAttribute MakeAttr (string name, string value);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XAttribute MakeAttr(string name, string value) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XAttribute</ReturnType>
       </ReturnValue>
@@ -129,6 +159,11 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XName MakeName (string name);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XName MakeName(string name) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XName</ReturnType>
       </ReturnValue>
@@ -146,6 +181,11 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XElement MakeNode (string name);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XElement MakeNode(string name) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XElement</ReturnType>
       </ReturnValue>
@@ -163,6 +203,11 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XElement SetVal (System.Xml.Linq.XElement el, string value);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XElement SetVal(class System.Xml.Linq.XElement el, string value) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XElement</ReturnType>
       </ReturnValue>
@@ -182,6 +227,11 @@
       <MemberSignature Language="C#" Value="public static System.Xml.Linq.XElement XPathSelectEl (System.Xml.Linq.XNode el, string XPathQuery);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Xml.Linq.XElement XPathSelectEl(class System.Xml.Linq.XNode el, string XPathQuery) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Xml.Linq.XElement</ReturnType>
       </ReturnValue>
@@ -201,6 +251,11 @@
       <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;System.Xml.Linq.XElement&gt; XPathSelectEls (System.Xml.Linq.XNode el, string XPathQuery);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class System.Xml.Linq.XElement&gt; XPathSelectEls(class System.Xml.Linq.XNode el, string XPathQuery) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Xml.Linq.XElement&gt;</ReturnType>
       </ReturnValue>

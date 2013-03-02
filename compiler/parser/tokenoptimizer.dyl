@@ -1,4 +1,4 @@
-//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -234,11 +234,7 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value = "assembly:" then
 			return new AssemblyCTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "assembly" then
-			if isFirstToken then
-				return new AssemblyTok() {Line = tok::Line, Value = tok::Value}
-			else
-				return new AssemblyAttr() {Line = tok::Line, Value = tok::Value}
-			end if
+			return #ternary {isFirstToken ? new AssemblyTok() {Line = tok::Line, Value = tok::Value}, new AssemblyAttr() {Line = tok::Line, Value = tok::Value}}
 		elseif tok::Value = "ver" then
 			PFlags::NoOptFlag = true
 			return new VerTok() {Line = tok::Line, Value = tok::Value}
