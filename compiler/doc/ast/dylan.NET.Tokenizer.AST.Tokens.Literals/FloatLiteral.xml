@@ -1,13 +1,17 @@
 <Type Name="FloatLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral">
-  <TypeSignature Language="C#" Value="public class FloatLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi FloatLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="C#" Value="public class FloatLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral, dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi FloatLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.INegatable</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>Represents a single (float32) literal.</summary>
     <remarks>Such literals have an 'f' suffix.</remarks>
@@ -55,6 +59,19 @@
     <Member MemberName="Conv">
       <MemberSignature Language="C#" Value="public bool Conv { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Conv" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoNeg">
+      <MemberSignature Language="C#" Value="public bool DoNeg { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoNeg" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

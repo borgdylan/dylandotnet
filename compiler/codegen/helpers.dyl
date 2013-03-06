@@ -319,7 +319,19 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static boolean CheckSigned(var t as IKVM.Reflection.Type)
-		return t::Equals(ILEmitter::Univ::Import(gettype sbyte)) or t::Equals(ILEmitter::Univ::Import(gettype short)) or t::Equals(ILEmitter::Univ::Import(gettype integer)) or t::Equals(ILEmitter::Univ::Import(gettype long)) or t::Equals(ILEmitter::Univ::Import(gettype intptr))
+		if t::Equals(ILEmitter::Univ::Import(gettype sbyte)) then
+			return true
+		elseif t::Equals(ILEmitter::Univ::Import(gettype short)) then
+			return true
+		elseif t::Equals(ILEmitter::Univ::Import(gettype integer)) then
+			return true
+		elseif t::Equals(ILEmitter::Univ::Import(gettype long)) then
+			return true
+		elseif t::Equals(ILEmitter::Univ::Import(gettype intptr)) then
+			return true
+		else
+			return false
+		end if
 	end method
 	
 	[method: ComVisible(false)]
@@ -1778,6 +1790,23 @@ class public auto ansi static Helpers
 			
 		end if
 		return null
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitNeg(var t as IKVM.Reflection.Type)
+		var oo = Loader::LoadUnaOp(t, "op_UnaryNegation", t)
+		if oo != null then
+			ILEmitter::EmitCall(oo)
+			AsmFactory::Type02 = oo::get_ReturnType()
+		elseif t::Equals(ILEmitter::Univ::Import(gettype boolean)) then
+			ILEmitter::EmitNot()
+		elseif CheckSigned(t) then
+			ILEmitter::EmitNeg()
+		elseif IsPrimitiveFPType(t) then
+			ILEmitter::EmitNeg()
+		else
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '!' operation is undefined for '" + t::ToString() + "'.")
+		end if
 	end method
 
 end class

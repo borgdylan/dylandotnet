@@ -206,6 +206,14 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				end if
 			end if
+			if (s == "neg") and (iuo is INegatable) then
+				var idt = $INegatable$iuo
+				if idt::get_DoNeg() then
+					if emt then
+						Helpers::EmitNeg(AsmFactory::Type02)
+					end if
+				end if
+			end if
 		end for
 	end method
 

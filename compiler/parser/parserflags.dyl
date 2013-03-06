@@ -111,13 +111,11 @@ class public auto ansi Flags
 	end method
 	
 	method public BooleanLiteral UpdateBoolLit(var id as BooleanLiteral)
-		id::DoNeg = NegFlag
 		UpdateToken(id)
 		return id
 	end method
 
 	method public NumberLiteral UpdateNumLit(var id as NumberLiteral)
-		id::DoNeg = NegFlag
 		id::DoNot = NotFlag
 		UpdateToken(id)
 		return id

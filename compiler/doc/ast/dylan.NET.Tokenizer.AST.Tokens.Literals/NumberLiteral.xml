@@ -51,18 +51,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DoNeg">
-      <MemberSignature Language="C#" Value="public bool DoNeg;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool DoNeg" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Determines if a two's complement negation should be applied to the literal after loading.</summary>
-        <remarks>This is usually applied using the neg opcode.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="DoNot">
       <MemberSignature Language="C#" Value="public bool DoNot;" />
       <MemberSignature Language="ILAsm" Value=".field public bool DoNot" />

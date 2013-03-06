@@ -290,23 +290,23 @@ class public auto ansi CharLiteral extends Literal implements IUnaryOperatable, 
 
 end class
 
-class public auto ansi BooleanLiteral extends Literal implements IUnaryOperatable, IConvable
+class public auto ansi BooleanLiteral extends Literal implements IUnaryOperatable, IConvable, INegatable
 
 	field public boolean BoolVal
-	field public boolean DoNeg
+	field private boolean _DoNeg
 
 	method public void BooleanLiteral()
 		me::ctor()
 		BoolVal = false
 		LitTyp = new BooleanTok()
-		DoNeg = false
+		_DoNeg = false
 	end method
 
 	method public void BooleanLiteral(var value as string)
 		me::ctor(value)
 		BoolVal = false
 		LitTyp = new BooleanTok()
-		DoNeg = false
+		_DoNeg = false
 		if (value = "True") or (value = "true") then
 			BoolVal = true
 		elseif (value = "False") or (value = "false") then
@@ -314,11 +314,11 @@ class public auto ansi BooleanLiteral extends Literal implements IUnaryOperatabl
 		end if
 	end method
 	
-	method public void BooleanLiteral(var value as boolean) implements IUnaryOperatable, IConvable
+	method public void BooleanLiteral(var value as boolean)
 		me::ctor()
 		BoolVal = value
 		LitTyp = new BooleanTok()
-		DoNeg = false
+		_DoNeg = false
 		if value then
 			Value = "true"
 		else
@@ -372,6 +372,19 @@ class public auto ansi BooleanLiteral extends Literal implements IUnaryOperatabl
 		get get_TTok()
 		set set_TTok()
 	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
+		return _DoNeg
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
+		_DoNeg = dn
+	end method
+	
+	property none boolean DoNeg
+		get get_DoNeg()
+		set set_DoNeg()
+	end property
 
 end class
 
@@ -379,18 +392,15 @@ end class
 class public auto ansi asbtract NumberLiteral extends Literal implements IUnaryOperatable, IConvable
 
 	field public boolean DoNot
-	field public boolean DoNeg
 
 	method family void NumberLiteral()
 		me::ctor()
 		DoNot = false
-		DoNeg = false
 	end method
 
 	method family void NumberLiteral(var value as string)
 		me::ctor(value)
 		DoNot = false
-		DoNeg = false
 	end method
 	
 	method public hidebysig virtual specialname final newslot string get_OrdOp()
@@ -434,14 +444,16 @@ class public auto ansi asbtract NumberLiteral extends Literal implements IUnaryO
 
 end class
 
-class public auto ansi IntLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
+class public auto ansi IntLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable
 
 	field public integer NumVal
+	field private boolean _DoNeg
 
 	method public void IntLiteral()
 		me::ctor()
 		NumVal = 0i
 		LitTyp = new IntegerTok()
+		_DoNeg = false
 	end method
 
 	method public void IntLiteral(var value as string)
@@ -452,12 +464,14 @@ class public auto ansi IntLiteral extends NumberLiteral implements IUnaryOperata
 		if Int32::TryParse(value,ref n) then
 			NumVal = n
 		end if
+		_DoNeg = false
 	end method
 	
 	method public void IntLiteral(var value as integer)
 		me::ctor($string$value)
 		NumVal = value
 		LitTyp = new IntegerTok()
+		_DoNeg = false
 	end method
 
 	method public hidebysig virtual string ToString()
@@ -506,17 +520,32 @@ class public auto ansi IntLiteral extends NumberLiteral implements IUnaryOperata
 		get get_TTok()
 		set set_TTok()
 	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
+		return _DoNeg
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
+		_DoNeg = dn
+	end method
+	
+	property none boolean DoNeg
+		get get_DoNeg()
+		set set_DoNeg()
+	end property
 
 end class
 
-class public auto ansi DoubleLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
+class public auto ansi DoubleLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable
 
 	field public double NumVal
+	field private boolean _DoNeg
 
 	method public void DoubleLiteral()
 		me::ctor()
 		NumVal = 0d
 		LitTyp = new DoubleTok()
+		_DoNeg = false
 	end method
 
 	method public void DoubleLiteral(var value as string)
@@ -527,12 +556,14 @@ class public auto ansi DoubleLiteral extends NumberLiteral implements IUnaryOper
 		if Double::TryParse(value,ref n) then
 			NumVal = n
 		end if
+		_DoNeg = false
 	end method
 	
 	method public void DoubleLiteral(var value as double)
 		me::ctor($string$value)
 		NumVal = value
 		LitTyp = new DoubleTok()
+		_DoNeg = false
 	end method
 
 	method public hidebysig virtual string ToString()
@@ -577,17 +608,32 @@ class public auto ansi DoubleLiteral extends NumberLiteral implements IUnaryOper
 		get get_TTok()
 		set set_TTok()
 	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
+		return _DoNeg
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
+		_DoNeg = dn
+	end method
+	
+	property none boolean DoNeg
+		get get_DoNeg()
+		set set_DoNeg()
+	end property
 
 end class
 
-class public auto ansi DecimalLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
+class public auto ansi DecimalLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable
 
 	field public decimal NumVal
+	field private boolean _DoNeg
 
 	method public void DecimalLiteral()
 		me::ctor()
 		NumVal = new Decimal(0)
 		LitTyp = new DecimalTok()
+		_DoNeg = false
 	end method
 
 	method public void DecimalLiteral(var value as string)
@@ -598,12 +644,14 @@ class public auto ansi DecimalLiteral extends NumberLiteral implements IUnaryOpe
 		if Decimal::TryParse(value,ref n) then
 			NumVal = n
 		end if
+		_DoNeg = false
 	end method
 	
 	method public void DecimalLiteral(var value as decimal)
 		me::ctor($string$value)
 		NumVal = value
 		LitTyp = new DecimalTok()
+		_DoNeg = false
 	end method
 
 	method public hidebysig virtual string ToString()
@@ -648,17 +696,32 @@ class public auto ansi DecimalLiteral extends NumberLiteral implements IUnaryOpe
 		get get_TTok()
 		set set_TTok()
 	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
+		return _DoNeg
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
+		_DoNeg = dn
+	end method
+	
+	property none boolean DoNeg
+		get get_DoNeg()
+		set set_DoNeg()
+	end property
 
 end class
 
-class public auto ansi SByteLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
+class public auto ansi SByteLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable
 
 	field public sbyte NumVal
+	field private boolean _DoNeg
 
 	method public void SByteLiteral()
 		me::ctor()
 		NumVal = 0b
 		LitTyp = new SByteTok()
+		_DoNeg = false
 	end method
 
 	method public void SByteLiteral(var value as string)
@@ -669,12 +732,14 @@ class public auto ansi SByteLiteral extends NumberLiteral implements IUnaryOpera
 		if SByte::TryParse(value,ref n) then
 			NumVal = n
 		end if
+		_DoNeg = false
 	end method
 	
 	method public void SByteLiteral(var value as sbyte)
 		me::ctor($string$value)
 		NumVal = value
 		LitTyp = new SByteTok()
+		_DoNeg = false
 	end method
 
 	method public hidebysig virtual string ToString()
@@ -719,18 +784,33 @@ class public auto ansi SByteLiteral extends NumberLiteral implements IUnaryOpera
 		get get_TTok()
 		set set_TTok()
 	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
+		return _DoNeg
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
+		_DoNeg = dn
+	end method
+	
+	property none boolean DoNeg
+		get get_DoNeg()
+		set set_DoNeg()
+	end property
 
 end class
 
 
-class public auto ansi ShortLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
+class public auto ansi ShortLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable
 
-		field public short NumVal
+	field public short NumVal
+	field private boolean _DoNeg
 
 	method public void ShortLiteral()
 		me::ctor()
 		NumVal = 0s
 		LitTyp = new ShortTok()
+		_DoNeg = false
 	end method
 
 	method public void ShortLiteral(var value as string)
@@ -741,12 +821,14 @@ class public auto ansi ShortLiteral extends NumberLiteral implements IUnaryOpera
 		if Int16::TryParse(value,ref n) then
 			NumVal = n
 		end if
+		_DoNeg = false
 	end method
 	
 	method public void ShortLiteral(var value as short)
 		me::ctor($string$value)
 		NumVal = value
 		LitTyp = new ShortTok()
+		_DoNeg = false
 	end method
 
 	method public hidebysig virtual string ToString()
@@ -790,17 +872,32 @@ class public auto ansi ShortLiteral extends NumberLiteral implements IUnaryOpera
 		get get_TTok()
 		set set_TTok()
 	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
+		return _DoNeg
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
+		_DoNeg = dn
+	end method
+	
+	property none boolean DoNeg
+		get get_DoNeg()
+		set set_DoNeg()
+	end property
 
 end class
 
-class public auto ansi LongLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
+class public auto ansi LongLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable
 
 	field public long NumVal
+	field private boolean _DoNeg
 
 	method public void LongLiteral()
 		me::ctor()
 		NumVal = 0l
 		LitTyp = new LongTok()
+		_DoNeg = false
 	end method
 
 	method public void LongLiteral(var value as string)
@@ -811,12 +908,14 @@ class public auto ansi LongLiteral extends NumberLiteral implements IUnaryOperat
 		if Int64::TryParse(value,ref n) then
 			NumVal = n
 		end if
+		_DoNeg = false
 	end method
 	
 	method public void LongLiteral(var value as long)
 		me::ctor($string$value)
 		NumVal = value
 		LitTyp = new LongTok()
+		_DoNeg = false
 	end method
 
 	method public hidebysig virtual string ToString()
@@ -861,17 +960,32 @@ class public auto ansi LongLiteral extends NumberLiteral implements IUnaryOperat
 		get get_TTok()
 		set set_TTok()
 	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
+		return _DoNeg
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
+		_DoNeg = dn
+	end method
+	
+	property none boolean DoNeg
+		get get_DoNeg()
+		set set_DoNeg()
+	end property
 
 end class
 
-class public auto ansi FloatLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
+class public auto ansi FloatLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable
 
 	field public single NumVal
+	field private boolean _DoNeg
 
 	method public void FloatLiteral()
 		me::ctor()
 		NumVal = 0f
 		LitTyp = new SingleTok()
+		_DoNeg = false
 	end method
 
 	method public void FloatLiteral(var value as string)
@@ -882,12 +996,14 @@ class public auto ansi FloatLiteral extends NumberLiteral implements IUnaryOpera
 		if Single::TryParse(value,ref n) then
 			NumVal = n
 		end if
+		_DoNeg = false
 	end method
 	
 	method public void FloatLiteral(var value as single)
 		me::ctor($string$value)
 		NumVal = value
 		LitTyp = new SingleTok()
+		_DoNeg = false
 	end method
 
 	method public hidebysig virtual string ToString()
@@ -931,6 +1047,19 @@ class public auto ansi FloatLiteral extends NumberLiteral implements IUnaryOpera
 	property none TypeTok TTok
 		get get_TTok()
 		set set_TTok()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
+		return _DoNeg
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
+		_DoNeg = dn
+	end method
+	
+	property none boolean DoNeg
+		get get_DoNeg()
+		set set_DoNeg()
 	end property
 
 end class

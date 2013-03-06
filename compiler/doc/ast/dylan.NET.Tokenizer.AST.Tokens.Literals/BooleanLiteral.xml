@@ -1,13 +1,17 @@
 <Type Name="BooleanLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral">
-  <TypeSignature Language="C#" Value="public class BooleanLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi BooleanLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="C#" Value="public class BooleanLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.Literal, dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi BooleanLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.Literal</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.INegatable</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>Represents a boolean literal.</summary>
     <remarks>It is usually one of the literals 'true' or 'false'.</remarks>
@@ -75,14 +79,15 @@
       </Docs>
     </Member>
     <Member MemberName="DoNeg">
-      <MemberSignature Language="C#" Value="public bool DoNeg;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool DoNeg" />
-      <MemberType>Field</MemberType>
+      <MemberSignature Language="C#" Value="public bool DoNeg { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoNeg" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
