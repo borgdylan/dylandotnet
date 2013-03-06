@@ -190,6 +190,24 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 		end if
 	end method
+	
+	method public void ASTEmitUnary(var iuo as IUnaryOperatable, var emt as boolean)
+		foreach s in ParseUtils::StringParser(iuo::get_OrdOp(), " ")
+			if (s == "conv") and (iuo is IConvable) then
+				var idt = $IConvable$iuo
+				if idt::get_Conv() then
+					var	src1 = AsmFactory::Type02
+					AsmFactory::Type02 = Helpers::CommitEvalTTok(idt::get_TTok())
+					if AsmFactory::Type02 = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + idt::get_TTok()::Value + "' was not found.")
+					end if	
+					if emt then
+						Helpers::EmitConv(src1, AsmFactory::Type02)
+					end if
+				end if
+			end if
+		end for
+	end method
 
 	method public void ASTEmitIdent(var idt as Ident, var emt as boolean)
 	
@@ -200,8 +218,6 @@ class public auto ansi beforefieldinit Evaluator
 		var idtfldinf as FieldInfo
 		var idtisstatic as boolean = false
 		var typ as IKVM.Reflection.Type
-		var src1 as IKVM.Reflection.Type
-		var snk1 as IKVM.Reflection.Type
 		var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ":")
 		var pushaddr as boolean = idt::IsRef and idt::MemberAccessFlg
 
@@ -298,15 +314,8 @@ class public auto ansi beforefieldinit Evaluator
 							AsmFactory::Type04 = Loader::MemberTyp
 							Helpers::EmitFldLd(idtfldinf, idtisstatic)
 						else
-							var constlit as ConstLiteral = new ConstLiteral()
-							constlit::ConstVal = Loader::FldLitVal
-							constlit::ExtTyp = Loader::FldLitTyp
-							if Loader::EnumLitFlag then
-								constlit::IntTyp = Loader::EnumLitTyp
-							else
-								constlit::IntTyp = Loader::FldLitTyp
-							end if
-							Helpers::EmitLiteral(Helpers::ProcessConst(constlit))
+							Helpers::EmitLiteral(Helpers::ProcessConst( _
+								new ConstLiteral() {ConstVal = Loader::FldLitVal, ExtTyp = Loader::FldLitTyp, IntTyp = #ternary {Loader::EnumLitFlag ? Loader::EnumLitTyp, Loader::FldLitTyp}}))
 							typ = Loader::FldLitTyp
 							AsmFactory::Type02 = typ
 						end if
@@ -342,20 +351,7 @@ class public auto ansi beforefieldinit Evaluator
 			AsmFactory::RefChainFlg = pushaddr
 			ASTEmit(idt::MemberToAccess, emt)
 		end if
-
-		if idt::Conv then
-			if emt then
-				src1 = AsmFactory::Type02
-			end if
-			AsmFactory::Type02 = Helpers::CommitEvalTTok(idt::TTok)
-			if AsmFactory::Type02 = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + idt::TTok::Value +"' was not found.")
-			end if	
-			if emt then
-				snk1 = AsmFactory::Type02
-				Helpers::EmitConv(src1, snk1)
-			end if
-		end if
+		ASTEmitUnary(idt, emt)
 	end method
 	
 	method public void ASTEmitMethod(var mctok as MethodCallTok, var emt as boolean)
@@ -363,8 +359,6 @@ class public auto ansi beforefieldinit Evaluator
 		var mnstrarr as string[]
 		var mcmetinf as MethodInfo
 		var mntok as MethodNameTok = mctok::Name
-		var typarr1 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[0]
-		var typarr2 as IKVM.Reflection.Type[]
 		var ncctorinf as ConstructorInfo
 		var mcfldinf as FieldInfo
 		var mcvr as VarItem
@@ -376,8 +370,6 @@ class public auto ansi beforefieldinit Evaluator
 		var idtb1 as boolean = false
 		var idtb2 as boolean = false
 		var idtisstatic as boolean = false
-		var src1 as IKVM.Reflection.Type
-		var snk1 as IKVM.Reflection.Type
 		var pushaddr as boolean = mntok::IsRef and mntok::MemberAccessFlg
 		var baseflg as boolean = false
 
@@ -527,21 +519,14 @@ class public auto ansi beforefieldinit Evaluator
 		AsmFactory::Type03 = AsmFactory::Type02
 
 		i = -1
-		typarr1 = new IKVM.Reflection.Type[0]
-
-		if mctok::Params::get_Count() = 0 then
-			typarr1 = IKVM.Reflection.Type::EmptyTypes
-		end if
-
+			
+		var lt = new C5.LinkedList<of IKVM.Reflection.Type>()
 		foreach param in mctok::Params
 			ASTEmit(ConvToAST(ConvToRPN(param)), emt)
-			typarr2 = AsmFactory::TypArr
-			AsmFactory::TypArr = typarr1
-			AsmFactory::AddTyp(AsmFactory::Type02)
-			typarr1 = AsmFactory::TypArr
-			AsmFactory::TypArr = typarr2
+			lt::Add(AsmFactory::Type02)
 		end for
-
+		var typarr1 as IKVM.Reflection.Type[] = lt::ToArray()
+		
 		if emt = false then
 			mctok::TypArr = typarr1
 		end if
@@ -609,19 +594,7 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 		end if
 
-		if mntok::Conv then
-			if emt then
-				src1 = AsmFactory::Type02
-			end if
-			AsmFactory::Type02 = Helpers::CommitEvalTTok(mntok::TTok)
-			if AsmFactory::Type02 = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + mntok::TTok::Value +"' was not found.")
-			end if
-			if emt then
-				snk1 = AsmFactory::Type02
-				Helpers::EmitConv(src1, snk1)
-			end if
-		end if
+		ASTEmitUnary(mntok, emt)
 	end method
 
 	method public void ASTEmitNew(var nctok as NewCallTok, var emt as boolean)
@@ -632,7 +605,6 @@ class public auto ansi beforefieldinit Evaluator
 		//var mcparams as C5.ArrayList<of Expr> = nctok::Params
 		var delcreate as boolean = false
 		var typarr1 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[0]
-		var typarr2 as IKVM.Reflection.Type[]
 		var ncctorinf as ConstructorInfo
 		var i as integer = -1
 		var mnstrarr as string[]
@@ -655,21 +627,12 @@ class public auto ansi beforefieldinit Evaluator
 			delparamarr = Loader::GetDelegateInvokeParams(nctyp)
 			delmtdnam = Helpers::StripDelMtdName(nctok::Params::get_Item(0)::Tokens::get_Item(0))
 		else
-			if nctok::Params::get_Count() = 0 then
-				typarr1 = IKVM.Reflection.Type::EmptyTypes
-			else
-				typarr1 = new IKVM.Reflection.Type[0]
-			end if
-
+			var lt = new C5.LinkedList<of IKVM.Reflection.Type>()
 			foreach param in nctok::Params
-				//i = i + 1
 				ASTEmit(ConvToAST(ConvToRPN(param)), emt)
-				typarr2 = AsmFactory::TypArr
-				AsmFactory::TypArr = typarr1
-				AsmFactory::AddTyp(AsmFactory::Type02)
-				typarr1 = AsmFactory::TypArr
-				AsmFactory::TypArr = typarr2
+				lt::Add(AsmFactory::Type02)
 			end for
+			typarr1 = lt::ToArray()
 		end if
 
 		if delcreate then
@@ -755,17 +718,15 @@ class public auto ansi beforefieldinit Evaluator
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
 							end if
 							mcparenttyp = Loader::MemberTyp
-							AsmFactory::Type02 = mcparenttyp
-							AsmFactory::Type04 = mcparenttyp
 						else
 							mcfldinf = Helpers::GetLocFld(mnstrarr[i])
 							if mcfldinf = null then
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
 							end if
 							mcparenttyp = mcfldinf::get_FieldType()
-							AsmFactory::Type02 = mcparenttyp
-							AsmFactory::Type04 = mcparenttyp
 						end if
+						AsmFactory::Type02 = mcparenttyp
+						AsmFactory::Type04 = mcparenttyp
 
 						if emt then
 							Helpers::EmitFldLd(mcfldinf, mcisstatic)
@@ -816,7 +777,7 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 
 			if emt then
-				if mcisstatic  then
+				if mcisstatic then
 					ILEmitter::EmitLdnull()
 				else
 					ILEmitter::EmitDup()
@@ -878,13 +839,7 @@ class public auto ansi beforefieldinit Evaluator
 
 				if emt then
 					Helpers::StringFlg = lctyp::Equals(ILEmitter::Univ::Import(gettype string)) and lctyp::Equals(rctyp)
-				end if
-				
-				if emt then
 					Helpers::BoolFlg = lctyp::Equals(ILEmitter::Univ::Import(gettype boolean)) and lctyp::Equals(rctyp)
-				end if
-
-				if emt then
 					if lctyp::Equals(rctyp) then
 						Helpers::DelegateFlg = lctyp::IsSubclassOf(ILEmitter::Univ::Import(gettype Delegate))
 					end if
@@ -931,13 +886,9 @@ class public auto ansi beforefieldinit Evaluator
 				Helpers::DelegateFlg = false
 			end if
 		else
-			var src1 as IKVM.Reflection.Type
-			var snk1 as IKVM.Reflection.Type
 			var typ2 as IKVM.Reflection.Type
 
 			var mcmetinf as MethodInfo
-			var typarr1 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[0]
-			var typarr2 as IKVM.Reflection.Type[]
 			var mcisstatic as boolean = false
 
 			if tok is StringLiteral then
@@ -953,19 +904,7 @@ class public auto ansi beforefieldinit Evaluator
 					ASTEmit(slit::MemberToAccess, emt)
 				end if
 
-				if slit::Conv then
-					if emt then
-						src1 = AsmFactory::Type02
-					end if
-					AsmFactory::Type02 = Helpers::CommitEvalTTok(slit::TTok)
-					if AsmFactory::Type02 = null then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + slit::TTok::Value + "' was not found.")
-					end if
-					if emt then
-						snk1 = AsmFactory::Type02
-						Helpers::EmitConv(src1, snk1)
-					end if
-				end if
+				ASTEmitUnary(slit, emt)
 			elseif tok is Literal then
 				var lit as Literal = $Literal$tok
 				
@@ -974,19 +913,7 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 				AsmFactory::Type02 = Helpers::CommitEvalTTok(lit::LitTyp)
 				
-				if lit::Conv then
-					if emt then
-						src1 = AsmFactory::Type02
-					end if
-					AsmFactory::Type02 = Helpers::CommitEvalTTok(lit::TTok)
-					if AsmFactory::Type02 = null then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + lit::TTok::Value + "' was not found.")
-					end if
-					if emt then
-						snk1 = AsmFactory::Type02
-						Helpers::EmitConv(src1, snk1)
-					end if
-				end if
+				ASTEmitUnary(lit, emt)
 			elseif tok is Ident then
 				ASTEmitIdent($Ident$tok,emt)
 			elseif tok is MethodCallTok then
@@ -1002,38 +929,15 @@ class public auto ansi beforefieldinit Evaluator
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + gtctok::Name::Value + "' is not defined.")
 					end if
 					ILEmitter::EmitLdtoken(typ2)
-					typarr1 = new IKVM.Reflection.Type[0]
-					typarr2 = AsmFactory::TypArr
-					AsmFactory::TypArr = typarr1
-					AsmFactory::AddTyp(ILEmitter::Univ::Import(gettype RuntimeTypeHandle))
-					typarr1 = AsmFactory::TypArr
-					AsmFactory::TypArr = typarr2
-					typ2 = ILEmitter::Univ::Import(gettype Type)
-					ILEmitter::EmitCall(typ2::GetMethod("GetTypeFromHandle", typarr1))
+					ILEmitter::EmitCall(ILEmitter::Univ::Import(gettype Type)::GetMethod("GetTypeFromHandle", new IKVM.Reflection.Type[] {ILEmitter::Univ::Import(gettype RuntimeTypeHandle)}))
 				end if
 				AsmFactory::Type02 = ILEmitter::Univ::Import(gettype Type)
 			elseif tok is MeTok then
-				var metk1 as MeTok = $MeTok$tok
-
 				if emt then
 					ILEmitter::EmitLdarg(0)
 				end if
-
 				AsmFactory::Type02 = AsmFactory::CurnTypB
-
-				if metk1::Conv then
-					if emt then
-						src1 = AsmFactory::Type02
-					end if
-					AsmFactory::Type02 = Helpers::CommitEvalTTok(metk1::TTok)
-					if AsmFactory::Type02 = null then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + metk1::TTok::::ToString() + "' was not found.")
-					end if
-					if emt then
-						snk1 = AsmFactory::Type02
-						Helpers::EmitConv(src1, snk1)
-					end if
-				end if
+				ASTEmitUnary($MeTok$tok, emt)
 			elseif tok is NewarrCallTok then
 				//array creation section
 				var newactok as NewarrCallTok = $NewarrCallTok$tok
@@ -1114,11 +1018,9 @@ class public auto ansi beforefieldinit Evaluator
 							var fldinf as FieldInfo = Helpers::GetExtFld(ctyp, el::Name::Value)
 							if fldinf = null then
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is not defined/accessible for the class '" + ctyp::ToString() + "'.")
-							end if
-							if fldinf::get_IsInitOnly() then
+							elseif fldinf::get_IsInitOnly() then
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is declared as readonly and may not be set from this context.")
-							end if
-							if fldinf::get_IsStatic() then
+							elseif fldinf::get_IsStatic() then
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + el::Name::Value + "' is declared as static and may not be set from object initializers.")
 							end if
 							Helpers::CheckAssignability(fldinf::get_FieldType(), AsmFactory::Type02)
@@ -1199,14 +1101,14 @@ class public auto ansi beforefieldinit Evaluator
 
 	method public void Evaluate(var exp as Expr)
 		var asttok as Token = ConvToAST(ConvToRPN(exp))
-		Helpers::NullExprFlg = asttok is NullLiteral
+		//Helpers::NullExprFlg = asttok is NullLiteral
 		ASTEmit(asttok, false)
 		ASTEmit(asttok, true)
 	end method
 	
 	method public IKVM.Reflection.Type EvaluateType(var exp as Expr)
 		var asttok as Token = ConvToAST(ConvToRPN(exp))
-		Helpers::NullExprFlg = asttok is NullLiteral
+		//Helpers::NullExprFlg = asttok is NullLiteral
 		ASTEmit(asttok, false)
 		return AsmFactory::Type02
 	end method

@@ -13,6 +13,12 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.Lexer.Lexer.AnalyzeStream">
+            <param name="sm">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.Lexer.Lexer.AnalyzeString">
             <param name="str">To be added.</param>
             <summary>To be added.</summary>
@@ -30,22 +36,10 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Tokenizer.Lexer.Line.InChar">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Tokenizer.Lexer.Line.InStr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="dylan.NET.Tokenizer.Lexer.Line.isDigit">
             <param name="c">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Tokenizer.Lexer.Line.PrevChar">
-            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
     </members>

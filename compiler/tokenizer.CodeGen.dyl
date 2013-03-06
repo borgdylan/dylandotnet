@@ -37,6 +37,7 @@ import dylan.NET.Utils
 import dylan.NET.Reflection
 import dylan.NET.Tokenizer.Lexer
 import dylan.NET.Tokenizer.AST
+import dylan.NET.Tokenizer.AST.Interfaces
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Stmts

@@ -777,6 +777,17 @@ class public auto ansi ExprOptimizer
 					len = exp::Tokens::get_Count() - 1
 					goto fin
 				end if
+				
+				if tok is NegOp then
+					PFlags::isChanged = true
+					PFlags::NegFlag = true
+					PFlags::OrdOp = "neg " + PFlags::OrdOp
+					PFlags::OrdOp = PFlags::OrdOp::Trim()
+					exp::RemToken(i)
+					i = i - 1
+					len = exp::Tokens::get_Count() - 1
+					goto fin
+				end if
 
 				if tok is Pipe then
 					exp::RemToken(i)

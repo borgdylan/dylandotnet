@@ -44,7 +44,7 @@ class public auto ansi static ParseUtils
 		var i as integer = -1
 		var len as integer = StringToParse::get_Length() - 1
 	
-		do
+		do until i = len
 			i = i + 1
 			ch = $string$StringToParse::get_Chars(i)
 	
@@ -73,7 +73,7 @@ class public auto ansi static ParseUtils
 				acc = String::Empty
 			end if
 
-		until i = len
+		end do
 		
 		return arr::ToArray()
 	end method
@@ -87,7 +87,7 @@ class public auto ansi static ParseUtils
 		var i as integer = -1
 		var len as integer = StringToParse::get_Length() - 1
 	
-		do
+		do until i = len
 			i = i + 1
 			ch = $string$StringToParse::get_Chars(i)
 	
@@ -116,7 +116,7 @@ class public auto ansi static ParseUtils
 				acc = String::Empty
 			end if
 
-		until i = len
+		end do
 		
 		return arr
 	end method
@@ -131,7 +131,7 @@ class public auto ansi static ParseUtils
 		var i as integer = -1
 		var len as integer = StringToParse::get_Length() - 1
 		
-		do
+		do until i = len
 			i = i + 1
 			ch = $string$StringToParse::get_Chars(i)
 
@@ -160,7 +160,7 @@ class public auto ansi static ParseUtils
 				acc = String::Empty
 			end if
 
-		until i = len
+		end do
 
 		return arr::ToArray()
 	end method

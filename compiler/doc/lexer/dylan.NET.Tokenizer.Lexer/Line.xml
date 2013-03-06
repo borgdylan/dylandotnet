@@ -42,30 +42,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InChar">
-      <MemberSignature Language="C#" Value="public bool InChar;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool InChar" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InStr">
-      <MemberSignature Language="C#" Value="public bool InStr;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool InStr" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="isDigit">
       <MemberSignature Language="C#" Value="public bool isDigit (char c);" />
       <MemberSignature Language="ILAsm" Value=".method public instance bool isDigit(char c) cil managed" />
@@ -80,18 +56,6 @@
         <param name="c">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PrevChar">
-      <MemberSignature Language="C#" Value="public string PrevChar;" />
-      <MemberSignature Language="ILAsm" Value=".field public string PrevChar" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,13 +1,20 @@
 <Type Name="Ident" FullName="dylan.NET.Tokenizer.AST.Tokens.Ident">
-  <TypeSignature Language="C#" Value="public class Ident : dylan.NET.Tokenizer.AST.Tokens.Token" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi Ident extends dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <TypeSignature Language="C#" Value="public class Ident : dylan.NET.Tokenizer.AST.Tokens.Token, dylan.NET.Tokenizer.AST.Interfaces.IConvable, dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Ident extends dylan.NET.Tokenizer.AST.Tokens.Token implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IConvable</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.INegatable</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>Represents an identifier.</summary>
     <remarks>May be a variable,arguument, field, method name etc.</remarks>
@@ -36,6 +43,54 @@
         <remarks>Assigns a value to the 'Value' field during initalisation. If this string is not available at construct time use the other constructor and set 'Value' manually.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="_Conv">
+      <MemberSignature Language="C#" Value="protected bool _Conv;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool _Conv" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_DoNeg">
+      <MemberSignature Language="C#" Value="protected bool _DoNeg;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool _DoNeg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_OrdOp">
+      <MemberSignature Language="C#" Value="protected string _OrdOp;" />
+      <MemberSignature Language="ILAsm" Value=".field family string _OrdOp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_TTok">
+      <MemberSignature Language="C#" Value="protected dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok _TTok;" />
+      <MemberSignature Language="ILAsm" Value=".field family class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok _TTok" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ArrLoc">
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr ArrLoc;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Exprs.Expr ArrLoc" />
@@ -49,27 +104,29 @@
       </Docs>
     </Member>
     <Member MemberName="Conv">
-      <MemberSignature Language="C#" Value="public bool Conv;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool Conv" />
-      <MemberType>Field</MemberType>
+      <MemberSignature Language="C#" Value="public bool Conv { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Conv" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>This flag must be set if a conversion is desired.</summary>
-        <remarks>The TTok field must be set if this is set.</remarks>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DoNeg">
-      <MemberSignature Language="C#" Value="public bool DoNeg;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool DoNeg" />
-      <MemberType>Field</MemberType>
+      <MemberSignature Language="C#" Value="public bool DoNeg { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoNeg" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>If a negation is wished this flag is to be set.</summary>
-        <remarks>Set this only on identifiers that lead to numbers.</remarks>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DoNot">
@@ -108,18 +165,6 @@
         <remarks>Works only with valutypes/struct types.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="IsRefInst">
-      <MemberSignature Language="C#" Value="public bool IsRefInst;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool IsRefInst" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="IsValInRef">
       <MemberSignature Language="C#" Value="public bool IsValInRef;" />
       <MemberSignature Language="ILAsm" Value=".field public bool IsValInRef" />
@@ -130,18 +175,6 @@
       <Docs>
         <summary>If this identifer leads to an address and you wish to access the location at that address set this flag.</summary>
         <remarks>Such an identifier cannot be stored in fields.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsValInRefInst">
-      <MemberSignature Language="C#" Value="public bool IsValInRefInst;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool IsValInRefInst" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MemberAccessFlg">
@@ -169,28 +202,29 @@
       </Docs>
     </Member>
     <Member MemberName="OrdOp">
-      <MemberSignature Language="C#" Value="public string OrdOp;" />
-      <MemberSignature Language="ILAsm" Value=".field public string OrdOp" />
-      <MemberType>Field</MemberType>
+      <MemberSignature Language="C#" Value="public string OrdOp { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string OrdOp" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Indicates the order in which the unary operators get applied in.</summary>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TTok">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok" />
-      <MemberType>Field</MemberType>
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Holds a type token indicating the type to convert to.</summary>
-        <remarks>For a conversion to happen the Conv flag must be set to true.</remarks>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

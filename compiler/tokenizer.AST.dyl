@@ -26,6 +26,7 @@ import System.IO
 import dylan.NET.Utils
 import dylan.NET.Reflection
 import dylan.NET.Tokenizer.AST
+import dylan.NET.Tokenizer.AST.Interfaces
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Stmts
@@ -62,6 +63,10 @@ end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens.TypeToks
 	#include "ast/typetoks.dyl"
+end namespace
+
+namespace dylan.NET.Tokenizer.AST.Interfaces
+	#include "ast/interfaces.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens.Literals

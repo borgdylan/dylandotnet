@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi MethodNameTok extends Ident
+class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, IConvable, INegatable
 
 	method public void MethodNameTok()
 		me::ctor()
@@ -18,27 +18,77 @@ class public auto ansi MethodNameTok extends Ident
 
 	method public void MethodNameTok(var idt as Ident)
 		me::ctor(idt::Value)
-		DoNeg = idt::DoNeg
+		_DoNeg = idt::get_DoNeg()
 		DoNot = idt::DoNot
-		Conv = idt::Conv
+		_Conv = idt::get_Conv()
 		IsArr = idt::IsArr
 		ArrLoc = idt::ArrLoc
 		IsRef = idt::IsRef
 		IsValInRef = idt::IsValInRef
-		IsRefInst = idt::IsRefInst
-		IsValInRefInst = idt::IsValInRefInst
-		TTok = idt::TTok
-		OrdOp = idt::OrdOp
+		_TTok = idt::get_TTok()
+		_OrdOp = idt::get_OrdOp()
 		Line = idt::Line
 	end method
 	
 	method public static specialname MethodNameTok op_Implicit(var idt as Ident)
 		return #ternary{idt is MethodNameTok ? $MethodNameTok$idt, new MethodNameTok(idt)}
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
+		return _DoNeg
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
+		_DoNeg = dn
+	end method
+	
+	property none boolean DoNeg
+		get get_DoNeg()
+		set set_DoNeg()
+	end property
 
 end class
 
-class public auto ansi GenericMethodNameTok extends MethodNameTok
+class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUnaryOperatable, IConvable, INegatable
 
 	field public TypeTok[] Params
 
@@ -55,17 +105,15 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok
 	method public void GenericMethodNameTok(var idt as Ident)
 		me::ctor(idt::Value)
 		Params = new TypeTok[0]
-		DoNeg = idt::DoNeg
+		_DoNeg = idt::get_DoNeg()
 		DoNot = idt::DoNot
-		Conv = idt::Conv
+		_Conv = idt::get_Conv()
 		IsArr = idt::IsArr
 		ArrLoc = idt::ArrLoc
 		IsRef = idt::IsRef
 		IsValInRef = idt::IsValInRef
-		IsRefInst = idt::IsRefInst
-		IsValInRefInst = idt::IsValInRefInst
-		TTok = idt::TTok
-		OrdOp = idt::OrdOp
+		_TTok = idt::get_TTok()
+		_OrdOp = idt::get_OrdOp()
 		Line = idt::Line
 	end method
 	
@@ -84,5 +132,57 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok
 		destarr[Params[l]] = param
 		Params = destarr
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
+		return _DoNeg
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
+		_DoNeg = dn
+	end method
+	
+	property none boolean DoNeg
+		get get_DoNeg()
+		set set_DoNeg()
+	end property
 
 end class

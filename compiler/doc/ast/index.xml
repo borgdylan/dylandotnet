@@ -18,11 +18,16 @@
     </Assembly>
   </Assemblies>
   <Remarks>This is the AST module for the dylan.NET compiler.</Remarks>
-  <Copyright>Copyright (c) Dylan Borg 2012. The library tokenizer.AST.dll is licensed under the LGPLv3.</Copyright>
+  <Copyright>Copyright (c) Dylan Borg 2013. The library tokenizer.AST.dll is licensed under the LGPLv3.</Copyright>
   <Types>
     <Namespace Name="dylan.NET.Tokenizer.AST.Exprs">
       <Type Name="Expr" Kind="Class" />
       <Type Name="VarExpr" Kind="Class" />
+    </Namespace>
+    <Namespace Name="dylan.NET.Tokenizer.AST.Interfaces">
+      <Type Name="IConvable" Kind="Interface" />
+      <Type Name="INegatable" Kind="Interface" />
+      <Type Name="IUnaryOperatable" Kind="Interface" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Stmts">
       <Type Name="AssemblyAttrStmt" Kind="Class" />

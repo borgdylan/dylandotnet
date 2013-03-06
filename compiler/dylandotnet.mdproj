@@ -202,4 +202,7 @@
     <None Include="dev\nuget2dn.dyl" />
     <None Include="dnu\compilermsg.dyl" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ast\interfaces.dyl" />
+  </ItemGroup>
 </Project>

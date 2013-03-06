@@ -6,29 +6,71 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi abstract Literal extends Token
+class public auto ansi abstract Literal extends Token implements IUnaryOperatable, IConvable
 
 	field public TypeTok LitTyp
-	field public boolean Conv
-	field public TypeTok TTok
+	field family boolean _Conv
+	field family TypeTok _TTok
+	field family string _OrdOp
 
 	method family void Literal()
 		me::ctor()
 		LitTyp = null
-		Conv = false
-		TTok = null
+		_Conv = false
+		_TTok = null
+		_OrdOp = string::Empty
 	end method
 
 	method family void Literal(var value as string)
 		me::ctor(value)
 		LitTyp = null
-		Conv = false
-		TTok = null
+		_Conv = false
+		_TTok = null
+		_OrdOp = string::Empty
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi NullLiteral extends Literal
+class public auto ansi NullLiteral extends Literal implements IUnaryOperatable, IConvable
 
 	field public object NullVal
 
@@ -47,6 +89,45 @@ class public auto ansi NullLiteral extends Literal
 	method public hidebysig virtual string ToString()
 		return "null"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
@@ -74,16 +155,14 @@ class public auto ansi ConstLiteral extends Literal
 
 end class
 
-class public auto ansi StringLiteral extends Literal
+class public auto ansi StringLiteral extends Literal implements IUnaryOperatable, IConvable
 
-	field public string OrdOp
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
 
 	method public void StringLiteral()
 		me::ctor()
 		LitTyp = new StringTok()
-		OrdOp = ""
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
 	end method
@@ -91,7 +170,6 @@ class public auto ansi StringLiteral extends Literal
 	method public void StringLiteral(var value as string)
 		me::ctor(value)
 		LitTyp = new StringTok()
-		OrdOp = ""
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
 	end method
@@ -99,26 +177,62 @@ class public auto ansi StringLiteral extends Literal
 	method public hidebysig virtual string ToString()
 		return c"\q" + Value + c"\q"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi CharLiteral extends Literal
+class public auto ansi CharLiteral extends Literal implements IUnaryOperatable, IConvable
 
 	field public char CharVal
-	field public string OrdOp
 
 	method public void CharLiteral()
 		me::ctor()
 		CharVal = ' '
 		LitTyp = new CharTok()
-		OrdOp = ""
 	end method
 
 	method public void CharLiteral(var value as string)
 		me::ctor(value)
 		CharVal = ' '
 		LitTyp = new CharTok()
-		OrdOp = ""
 		var c as char
 		if Char::TryParse(value,ref c) then
 			CharVal = c
@@ -129,35 +243,70 @@ class public auto ansi CharLiteral extends Literal
 		me::ctor($string$value)
 		CharVal = value
 		LitTyp = new CharTok()
-		OrdOp = ""
 	end method
 
 	method public hidebysig virtual string ToString()
 		return "'" + $string$CharVal + "'"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi BooleanLiteral extends Literal
+class public auto ansi BooleanLiteral extends Literal implements IUnaryOperatable, IConvable
 
 	field public boolean BoolVal
-	field public string OrdOp
-	field public boolean DoNot
+	field public boolean DoNeg
 
 	method public void BooleanLiteral()
 		me::ctor()
 		BoolVal = false
 		LitTyp = new BooleanTok()
-		OrdOp = ""
-		DoNot = false
+		DoNeg = false
 	end method
 
 	method public void BooleanLiteral(var value as string)
 		me::ctor(value)
 		BoolVal = false
 		LitTyp = new BooleanTok()
-		OrdOp = ""
-		DoNot = false
+		DoNeg = false
 		if (value = "True") or (value = "true") then
 			BoolVal = true
 		elseif (value = "False") or (value = "false") then
@@ -165,12 +314,11 @@ class public auto ansi BooleanLiteral extends Literal
 		end if
 	end method
 	
-	method public void BooleanLiteral(var value as boolean)
+	method public void BooleanLiteral(var value as boolean) implements IUnaryOperatable, IConvable
 		me::ctor()
 		BoolVal = value
 		LitTyp = new BooleanTok()
-		OrdOp = ""
-		DoNot = false
+		DoNeg = false
 		if value then
 			Value = "true"
 		else
@@ -185,33 +333,108 @@ class public auto ansi BooleanLiteral extends Literal
 			return "false"
 		end if
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
 
-class public auto ansi asbtract NumberLiteral extends Literal
+class public auto ansi asbtract NumberLiteral extends Literal implements IUnaryOperatable, IConvable
 
-	field public string OrdOp
 	field public boolean DoNot
 	field public boolean DoNeg
 
 	method family void NumberLiteral()
 		me::ctor()
-		OrdOp = ""
 		DoNot = false
 		DoNeg = false
 	end method
 
 	method family void NumberLiteral(var value as string)
 		me::ctor(value)
-		OrdOp = ""
 		DoNot = false
 		DoNeg = false
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi IntLiteral extends NumberLiteral
+class public auto ansi IntLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
 
 	field public integer NumVal
 
@@ -244,10 +467,49 @@ class public auto ansi IntLiteral extends NumberLiteral
 	method public string ToStringNoI()
 		return $string$NumVal
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi DoubleLiteral extends NumberLiteral
+class public auto ansi DoubleLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
 
 	field public double NumVal
 
@@ -276,10 +538,49 @@ class public auto ansi DoubleLiteral extends NumberLiteral
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "d"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi DecimalLiteral extends NumberLiteral
+class public auto ansi DecimalLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
 
 	field public decimal NumVal
 
@@ -308,10 +609,49 @@ class public auto ansi DecimalLiteral extends NumberLiteral
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "m"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi SByteLiteral extends NumberLiteral
+class public auto ansi SByteLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
 
 	field public sbyte NumVal
 
@@ -340,12 +680,52 @@ class public auto ansi SByteLiteral extends NumberLiteral
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "b"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi ShortLiteral extends NumberLiteral
 
-	field public short NumVal
+class public auto ansi ShortLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
+
+		field public short NumVal
 
 	method public void ShortLiteral()
 		me::ctor()
@@ -372,10 +752,48 @@ class public auto ansi ShortLiteral extends NumberLiteral
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "s"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi LongLiteral extends NumberLiteral
+class public auto ansi LongLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
 
 	field public long NumVal
 
@@ -404,10 +822,49 @@ class public auto ansi LongLiteral extends NumberLiteral
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "l"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi FloatLiteral extends NumberLiteral
+class public auto ansi FloatLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
 
 	field public single NumVal
 
@@ -436,10 +893,49 @@ class public auto ansi FloatLiteral extends NumberLiteral
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "f"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi UIntLiteral extends NumberLiteral
+class public auto ansi UIntLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
 
 	field public uinteger NumVal
 
@@ -468,10 +964,49 @@ class public auto ansi UIntLiteral extends NumberLiteral
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "ui"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi ByteLiteral extends NumberLiteral
+class public auto ansi ByteLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
 
 	field public byte NumVal
 
@@ -500,10 +1035,49 @@ class public auto ansi ByteLiteral extends NumberLiteral
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "ub"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi UShortLiteral extends NumberLiteral
+class public auto ansi UShortLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
 
 	field public ushort NumVal
 
@@ -532,10 +1106,49 @@ class public auto ansi UShortLiteral extends NumberLiteral
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "us"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi ULongLiteral extends NumberLiteral
+class public auto ansi ULongLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
 
 	field public UInt64 NumVal
 
@@ -564,10 +1177,49 @@ class public auto ansi ULongLiteral extends NumberLiteral
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "ul"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 
-class public auto ansi IntPtrLiteral extends NumberLiteral
+class public auto ansi IntPtrLiteral extends NumberLiteral implements IUnaryOperatable, IConvable
 
 	field public IntPtr NumVal
 
@@ -586,5 +1238,44 @@ class public auto ansi IntPtrLiteral extends NumberLiteral
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "ip"
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class

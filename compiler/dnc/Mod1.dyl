@@ -87,7 +87,7 @@ class public auto ansi static Program
 			catch ex as Exception
 				StreamUtils::Write(c"\n")
 				try
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::get_Message())
 				catch errex2 as ErrorException
 				end try
 			end try

@@ -16,8 +16,6 @@ class public auto ansi Flags
 	field public boolean NegFlag
 	field public boolean NotFlag
 	field public boolean ConvFlag
-	field public boolean ArrFlag
-	field public Expr ArrSlot
 	field public boolean RefFlag
 	field public boolean ValinrefFlag
 	field public TypeTok ConvTyp
@@ -44,12 +42,10 @@ class public auto ansi Flags
 		NegFlag = false
 		NotFlag = false
 		ConvFlag = false
-		ArrFlag = false
-		ArrSlot = null
 		RefFlag = false
 		ValinrefFlag = false
 		ConvTyp = null
-		OrdOp = String::Empty
+		OrdOp = string::Empty
 		isChanged = false
 		DurConvFlag = false
 		IdentFlag = false
@@ -58,76 +54,72 @@ class public auto ansi Flags
 		MetChainFlag = false
 		ProcessTTokOnly = false
 		StringFlag = false
-		CurPath = String::Empty
+		CurPath = string::Empty
 	end method
 
 	method public void SetUnaryFalse()
 		NegFlag = false
 		NotFlag = false
 		ConvFlag = false
-		ArrFlag = false
-		ArrSlot = null
 		RefFlag = false
 		ValinrefFlag = false
 		ConvTyp = null
-		OrdOp = String::Empty
+		OrdOp = string::Empty
 		isChanged = false
 		DurConvFlag = false
 	end method
 	
+	method public void UpdateToken(var iuo as IUnaryOperatable)
+		iuo::set_OrdOp(OrdOp)
+		if iuo is IConvable then
+			var id = $IConvable$iuo
+			id::set_Conv(ConvFlag)
+			id::set_TTok(ConvTyp)
+		end if
+		if iuo is INegatable then
+			var id = $INegatable$iuo
+			id::set_DoNeg(NegFlag)
+		end if
+	end method
+	
 	method public Ident UpdateIdent(var id as Ident)
-		id::DoNeg = NegFlag
 		id::DoNot = NotFlag
-		id::Conv = ConvFlag
-		id::IsArr = ArrFlag
-		id::ArrLoc = ArrSlot
 		id::IsRef = RefFlag
 		id::IsValInRef = ValinrefFlag
-		id::TTok = ConvTyp
-		id::OrdOp = OrdOp
+		UpdateToken(id)
 		return id
 	end method
 
 	method public NullLiteral UpdateNullLit(var id as NullLiteral)
-		id::Conv = ConvFlag
-		id::TTok = ConvTyp
+		UpdateToken(id)
 		return id
 	end method
 	
 	method public MeTok UpdateMeTok(var id as MeTok)
-		id::Conv = ConvFlag
-		id::TTok = ConvTyp
+		UpdateToken(id)
 		return id
 	end method
 	
 	method public CharLiteral UpdateCharLit(var id as CharLiteral)
-		id::Conv = ConvFlag
-		id::TTok = ConvTyp
-		id::OrdOp = OrdOp
+		UpdateToken(id)
 		return id
 	end method
 
 	method public StringLiteral UpdateStringLit(var id as StringLiteral)
-		id::Conv = ConvFlag
-		id::TTok = ConvTyp
-		id::OrdOp = OrdOp
+		UpdateToken(id)
 		return id
 	end method
 	
 	method public BooleanLiteral UpdateBoolLit(var id as BooleanLiteral)
-		id::DoNot = NotFlag
-		id::Conv = ConvFlag
-		id::TTok = ConvTyp
-		id::OrdOp = OrdOp
+		id::DoNeg = NegFlag
+		UpdateToken(id)
 		return id
 	end method
 
 	method public NumberLiteral UpdateNumLit(var id as NumberLiteral)
 		id::DoNeg = NegFlag
 		id::DoNot = NotFlag
-		id::Conv = ConvFlag
-		id::TTok = ConvTyp
-		id::OrdOp = OrdOp
+		UpdateToken(id)
 		return id
 	end method
 	

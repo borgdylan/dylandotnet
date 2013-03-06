@@ -82,14 +82,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Tokenizer.Parser.Flags.ArrFlag">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Tokenizer.Parser.Flags.ArrSlot">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="dylan.NET.Tokenizer.Parser.Flags.AsFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -214,6 +206,11 @@
             <param name="id">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.Parser.Flags.UpdateToken">
+            <param name="iuo">To be added.</param>
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.Parser.Flags.ValinrefFlag">

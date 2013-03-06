@@ -23,30 +23,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ArrFlag">
-      <MemberSignature Language="C#" Value="public bool ArrFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool ArrFlag" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ArrSlot">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr ArrSlot;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Exprs.Expr ArrSlot" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AsFlag">
       <MemberSignature Language="C#" Value="public bool AsFlag;" />
       <MemberSignature Language="ILAsm" Value=".field public bool AsFlag" />
@@ -417,6 +393,22 @@
         <param name="id">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateToken">
+      <MemberSignature Language="C#" Value="public void UpdateToken (dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable iuo);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void UpdateToken(class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable iuo) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iuo" Type="dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+      </Parameters>
+      <Docs>
+        <param name="iuo">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

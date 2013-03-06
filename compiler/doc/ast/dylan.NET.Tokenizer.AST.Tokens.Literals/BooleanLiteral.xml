@@ -1,6 +1,6 @@
 <Type Name="BooleanLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.BooleanLiteral">
   <TypeSignature Language="C#" Value="public class BooleanLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi BooleanLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi BooleanLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
@@ -61,30 +61,42 @@
         <remarks>This value is loaded as the number 1 or 0 for true or false repectively.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DoNot">
-      <MemberSignature Language="C#" Value="public bool DoNot;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool DoNot" />
+    <Member MemberName="Conv">
+      <MemberSignature Language="C#" Value="public bool Conv { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Conv" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoNeg">
+      <MemberSignature Language="C#" Value="public bool DoNeg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool DoNeg" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>This flag indicates whether a negation of the vaue is required.</summary>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OrdOp">
-      <MemberSignature Language="C#" Value="public string OrdOp;" />
-      <MemberSignature Language="ILAsm" Value=".field public string OrdOp" />
-      <MemberType>Field</MemberType>
+      <MemberSignature Language="C#" Value="public string OrdOp { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string OrdOp" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Contains the order in which unary operations are to be done on the literal.</summary>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -100,6 +112,19 @@
         <returns>The dylan.NET syntactic equivalent to this literal ie. "true" or "false".</returns>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TTok">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

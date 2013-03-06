@@ -649,26 +649,68 @@ class public auto ansi LockTok extends Token
 
 end class
 
-class public auto ansi MeTok extends Token
+class public auto ansi MeTok extends Token implements IUnaryOperatable, IConvable
 
-	field public boolean Conv
-	field public TypeTok TTok
+	field public boolean _Conv
+	field public TypeTok _TTok
+	field private string _OrdOp
 
 	method public void MeTok()
 		me::ctor()
-		Conv = false
-		TTok = null
+		_Conv = false
+		_TTok = null
+		_OrdOp = string::Empty
 	end method
 
 	method public void MeTok(var value as string)
 		me::ctor(value)
-		Conv = false
-		TTok = null
+		_Conv = false
+		_TTok = null
+		_OrdOp = string::Empty
 	end method
 	
 	method public hidebysig virtual string ToString()
-		return #ternary{Conv ? "$" + TTok::ToString() + "$me", "me"}
+		return #ternary{_Conv ? "$" + _TTok::ToString() + "$me", "me"}
 	end method
+	
+	method public hidebysig virtual specialname final newslot string get_OrdOp()
+		return _OrdOp
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
+		_OrdOp = oo
+	end method
+	
+	property none string OrdOp
+		get get_OrdOp()
+		set set_OrdOp()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_Conv()
+		return _Conv
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
+		_Conv = c
+	end method
+	
+	property none boolean Conv
+		get get_Conv()
+		set set_Conv()
+	end property
+	
+	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
+		return _TTok
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
+		_TTok = tt
+	end method
+	
+	property none TypeTok TTok
+		get get_TTok()
+		set set_TTok()
+	end property
 
 end class
 

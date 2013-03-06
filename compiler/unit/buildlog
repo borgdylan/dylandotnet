@@ -11,11 +11,11 @@ Now Lexing: streamutests.dyl
 Now Parsing: streamutests.dyl
 Referencing Assembly: /usr/lib/mono/4.5/mscorlib.dll
 Referencing Assembly: dnu.dll
-Finished Processing: streamutests.dyl (worker thread)
-Now Lexing: parseutests.dyl
 Now Lexing: nunit.dyl
 Now Parsing: nunit.dyl
 Finished Processing: nunit.dyl (inline)
+Finished Processing: streamutests.dyl (worker thread)
+Now Lexing: parseutests.dyl
 Referencing Assembly: /usr/lib/cli/nunit.core-2.6/nunit.core.dll
 Referencing Assembly: /usr/lib/cli/nunit.util-2.6/nunit.util.dll
 Referencing Assembly: /usr/lib/cli/nunit.framework-2.6/nunit.framework.dll
@@ -48,6 +48,7 @@ Adding Class: dylan.NET.UnitTests.TestParseUtils
 	Adding Method: TestProcessStringBSL
 	Adding Method: TestStringParserQ
 	Adding Method: TestStringParserNoQ
+	Adding Method: TestStringParserEmpty
 	Adding Method: TestStringParserCQ
 	Adding Method: TestStringParser2dsCQ
 Adding Class: dylan.NET.UnitTests.TestStreamUtils

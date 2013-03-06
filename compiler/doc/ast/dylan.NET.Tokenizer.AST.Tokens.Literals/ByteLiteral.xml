@@ -1,6 +1,6 @@
 <Type Name="ByteLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral">
   <TypeSignature Language="C#" Value="public class ByteLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi ByteLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ByteLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
@@ -52,6 +52,19 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="Conv">
+      <MemberSignature Language="C#" Value="public bool Conv { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Conv" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="NumVal">
       <MemberSignature Language="C#" Value="public byte NumVal;" />
       <MemberSignature Language="ILAsm" Value=".field public unsigned int8 NumVal" />
@@ -62,6 +75,19 @@
       <Docs>
         <summary>The numeric value of the literal.</summary>
         <remarks>It is loaded using the ldc.i4 set of opcodes followed by a conv.u1.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OrdOp">
+      <MemberSignature Language="C#" Value="public string OrdOp { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string OrdOp" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -77,6 +103,19 @@
         <returns>The dylan.NET syntactic equivalent to this literal ie. NumVal + "ub".</returns>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TTok">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

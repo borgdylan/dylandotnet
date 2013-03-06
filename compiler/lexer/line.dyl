@@ -9,13 +9,13 @@
 
 class public auto ansi Line
 
-	field public string PrevChar
-	field public boolean InStr
-	field public boolean InChar
+	field private string PrevChar
+	field private boolean InStr
+	field private boolean InChar
 
 	method public void Line()
 		me::ctor()
-		PrevChar = String::Empty
+		PrevChar = string::Empty
 		InStr = false
 		InChar = false
 	end method
