@@ -10,17 +10,17 @@ class public auto ansi static XmlUtils
 	
 	[method: ComVisible(false)]
 	method public static XName MakeName(var name as string)
-		return XName::Get(name, String::Empty)
+		return XName::Get(name, string::Empty)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static XElement MakeNode(var name as string)
-		return new XElement(XName::Get(name, String::Empty))
+		return new XElement(XName::Get(name, string::Empty))
 	end method
 	
 	[method: ComVisible(false)]
 	method public static XAttribute MakeAttr(var name as string, var value as string)
-		return new XAttribute(XName::Get(name, String::Empty), value)
+		return new XAttribute(XName::Get(name, string::Empty), value)
 	end method
 
 	[method: ComVisible(false)]

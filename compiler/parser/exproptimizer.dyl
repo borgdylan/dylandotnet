@@ -788,6 +788,17 @@ class public auto ansi ExprOptimizer
 					len = exp::Tokens::get_Count() - 1
 					goto fin
 				end if
+				
+				if tok is NotOp then
+					PFlags::isChanged = true
+					PFlags::NotFlag = true
+					PFlags::OrdOp = "not " + PFlags::OrdOp
+					PFlags::OrdOp = PFlags::OrdOp::Trim()
+					exp::RemToken(i)
+					i = i - 1
+					len = exp::Tokens::get_Count() - 1
+					goto fin
+				end if
 
 				if tok is Pipe then
 					exp::RemToken(i)
@@ -826,7 +837,7 @@ class public auto ansi ExprOptimizer
 				end if
 
 				if tok is Ident then
-					if PFlags::DurConvFlag = false then
+					if !PFlags::DurConvFlag then
 						if PFlags::MetCallFlag or PFlags::IdentFlag or PFlags::StringFlag or PFlags::CtorFlag then
 							mcbool = true
 						end if
@@ -1120,7 +1131,7 @@ class public auto ansi ExprOptimizer
 
 		place cont
 
-		if PFlags::MetChainFlag = false then
+		if !PFlags::MetChainFlag then
 			if mcbool then
 				PFlags::MetChainFlag = true
 				len = exp::Tokens::get_Count()

@@ -46,14 +46,14 @@ class public auto ansi Line
 		label fin
 
 		if cc = c"\q" then
-			InStr = InStr == false
+			InStr = !InStr
 			if InStr = false then
 				InChar = false
 			end if
 		end if
 
 		if cc = "'" then
-			InChar = InChar == false
+			InChar = !InChar
 		end if
 
 		if (InStr or InChar) = false then
@@ -332,11 +332,11 @@ class public auto ansi Line
 
 	method public Stmt Analyze(var stm as Stmt, var str as string)
 	
-		var curchar as string = String::Empty
-		var lachar as string = String::Empty
+		var curchar as string = string::Empty
+		var lachar as string = string::Empty
 		var len as integer = str::get_Length() - 1
 		
-		var buf as string = String::Empty
+		var buf as string = string::Empty
 		var cuttok as boolean = false
 		var sc as boolean = false
 		var scl as boolean = false
@@ -363,7 +363,7 @@ class public auto ansi Line
 			if buf::get_Length() != 0 then
 				stm::AddToken(new Token() {Value = buf, Line = stm::Line})
 			end if
-			buf = String::Empty
+			buf = string::Empty
 		end if
 		
 		sc = false

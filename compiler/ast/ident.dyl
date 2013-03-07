@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Ident extends Token implements IUnaryOperatable, IConvable, INegatable
+class public auto ansi Ident extends Token implements IUnaryOperatable, IConvable, INegatable, INotable
 
 	field public boolean IsRef
 	field public boolean IsValInRef
@@ -15,7 +15,7 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 	field public boolean IsArr
 	field public Expr ArrLoc
 	field family boolean _DoNeg
-	field public boolean DoNot
+	field family boolean _DoNot
 	field family string _OrdOp
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
@@ -29,7 +29,7 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 		IsArr = false
 		ArrLoc = new Expr()
 		_DoNeg = false
-		DoNot = false
+		_DoNot = false
 		_OrdOp = string::Empty
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
@@ -44,7 +44,7 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 		IsArr = false
 		ArrLoc = new Expr()
 		_DoNeg = false
-		DoNot = false
+		_DoNot = false
 		_OrdOp = string::Empty
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
@@ -100,6 +100,19 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 	property none boolean DoNeg
 		get get_DoNeg()
 		set set_DoNeg()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNot()
+		return _DoNot
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
+		_DoNot = dn
+	end method
+	
+	property none boolean DoNot
+		get get_DoNot()
+		set set_DoNot()
 	end property
 
 end class

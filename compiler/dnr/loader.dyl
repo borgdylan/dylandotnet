@@ -231,7 +231,7 @@ class public auto ansi static Loader
 
 			if mtdinfo != null then
 				//filter out private members
-				if mtdinfo::get_IsPrivate() = false then
+				if !mtdinfo::get_IsPrivate() then
 					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
 					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
 					var havinternal as boolean = false
@@ -277,7 +277,7 @@ class public auto ansi static Loader
 
 			if ctorinf != null then
 				//filter out private members
-				if ctorinf::get_IsPrivate() = false then
+				if !ctorinf::get_IsPrivate() then
 				
 					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
 					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
@@ -352,7 +352,7 @@ class public auto ansi static Loader
 			end if
 			do until i = (t1[l] - 1)
 				i = i + 1
-				if t1[i]::get_ParameterType()::Equals(t2[i]) = false then
+				if !t1[i]::get_ParameterType()::Equals(t2[i]) then
 					return false
 				end if
 			end do
@@ -439,7 +439,7 @@ class public auto ansi static Loader
 
 			if fldinfo != null then
 				//filter out private members
-				if fldinfo::get_IsPrivate() = false then
+				if !fldinfo::get_IsPrivate() then
 			
 					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
 					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr

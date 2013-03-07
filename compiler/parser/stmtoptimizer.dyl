@@ -1017,7 +1017,7 @@ class public auto ansi StmtOptimizer
 					if stm::Tokens::get_Item(i) is ExtendsTok then
 						i = i + 1
 						stm::Tokens = eopt::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
-						if stflg = false then
+						if !stflg then
 							clss::InhClass = $TypeTok$stm::Tokens::get_Item(i)
 						end if
 					elseif stm::Tokens::get_Item(i) is ImplementsTok then

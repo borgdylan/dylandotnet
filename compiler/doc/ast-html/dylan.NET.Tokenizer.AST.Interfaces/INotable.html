@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>tokenizer.AST: dylan.NET.Tokenizer.AST.Interfaces</title>
+    <title>dylan.NET.Tokenizer.AST.Interfaces.INotable</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
       a { text-decoration: none }
@@ -187,50 +187,84 @@
   </head>
   <body>
     <div class="CollectionTitle">
-      <a href="../index.html">tokenizer.AST</a>
+      <a href="../index.html">tokenizer.AST</a> : <a href="index.html">dylan.NET.Tokenizer.AST.Interfaces Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.AST.Interfaces.INotable">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.AST.Interfaces.INotable:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.AST.Interfaces.INotable:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.AST.Interfaces.INotable:Members">Member Details</a>
+      </p>
     </div>
-    <h1 class="PageTitle">dylan.NET.Tokenizer.AST.Interfaces Namespace</h1>
-    <p class="Summary">
-    </p>
-    <div>
+    <h1 class="PageTitle" id="T:dylan.NET.Tokenizer.AST.Interfaces.INotable">INotable  Interface</h1>
+    <p class="Summary" id="T:dylan.NET.Tokenizer.AST.Interfaces.INotable:Summary">The interface implemented by all Tokens supporting one's complement i.e. '~'.</p>
+    <div id="T:dylan.NET.Tokenizer.AST.Interfaces.INotable:Signature">
+      <h2>Syntax</h2>
+      <div class="Signature">public interface  <b>INotable</b> : <a href="../dylan.NET.Tokenizer.AST.Interfaces/IUnaryOperatable.html">IUnaryOperatable</a></div>
     </div>
-    <div class="Remarks">
-      <h2 class="Section"> Namespace</h2>
-      <p>The interfaces allow discoverability of the operations supported by using the 'is' operator on implementers.</p>
-      <table class="TypesListing" style="margin-top: 1em">
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-        <tr valign="top">
-          <td>
-            <a href="./IConvable.html">IConvable</a>
-          </td>
-          <td>The interface implemented by all Tokens supporting conversion.</td>
-        </tr>
-        <tr valign="top">
-          <td>
-            <a href="./INegatable.html">INegatable</a>
-          </td>
-          <td>The interface implemented by all Tokens supporting negation i.e. '!'.</td>
-        </tr>
-        <tr valign="top">
-          <td>
-            <a href="./INotable.html">INotable</a>
-          </td>
-          <td>The interface implemented by all Tokens supporting one's complement i.e. '~'.</td>
-        </tr>
-        <tr valign="top">
-          <td>
-            <a href="./IUnaryOperatable.html">IUnaryOperatable</a>
-          </td>
-          <td>The main interface for those Tokens that support unary operations.</td>
-        </tr>
-      </table>
+    <div class="Remarks" id="T:dylan.NET.Tokenizer.AST.Interfaces.INotable:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:dylan.NET.Tokenizer.AST.Interfaces.INotable:Docs:Remarks">This interface depends on IUnaryOperatable.</div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:dylan.NET.Tokenizer.AST.Interfaces.INotable:Docs:Version Information">
+        <b>Namespace: </b>dylan.NET.Tokenizer.AST.Interfaces<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <h2 class="Section">Public Properties</h2>
+        <div class="SectionBox" id="Public Properties">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Tokenizer.AST.Interfaces.INotable.DoNot">DoNot</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. The flag indicating whether one's complement should be done.</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="Members">
+    <div class="Members" id="T:dylan.NET.Tokenizer.AST.Interfaces.INotable:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="P:dylan.NET.Tokenizer.AST.Interfaces.INotable.DoNot">DoNot Property</h3>
+        <blockquote id="P:dylan.NET.Tokenizer.AST.Interfaces.INotable.DoNot:member">
+          <p class="Summary">The flag indicating whether one's complement should be done.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>DoNot</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Tokenizer.AST.Interfaces.INotable.DoNot:Value">The boolean value for the flag.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Tokenizer.AST.Interfaces.INotable.DoNot:Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Tokenizer.AST.Interfaces.INotable.DoNot:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Interfaces<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
     </div>
     <hr size="1" />
-    <div class="Copyright">Copyright (c) Dylan Borg 2013. The library tokenizer.AST.dll is licensed under the LGPLv3.</div>
+    <div class="Copyright">
+    </div>
   </body>
 </html>

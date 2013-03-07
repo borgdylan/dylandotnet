@@ -32,8 +32,8 @@ class public auto ansi static Helpers
 	//uses NullExprFlag as input
 	[method: ComVisible(false)]
 	method public static void CheckAssignability(var t1 as IKVM.Reflection.Type, var t2 as IKVM.Reflection.Type)
-		if t1::IsAssignableFrom(t2) == false then
-			if NullExprFlg and (t1::IsAssignableFrom(ILEmitter::Univ::Import(gettype ValueType)) == false) then
+		if !t1::IsAssignableFrom(t2) then
+			if NullExprFlg and !t1::IsAssignableFrom(ILEmitter::Univ::Import(gettype ValueType)) then
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Slots of type '" + t1::ToString() + "' cannot be assigned values of type '" + t2::ToString() + "'.")
 			end if
@@ -1107,7 +1107,7 @@ class public auto ansi static Helpers
 		
 		//begin conv overload block
 		if (source::get_IsPrimitive() and sink::get_IsPrimitive()) = false then
-			if (sink::Equals(AsmFactory::CurnTypB) = false) and (sink::get_IsInterface() = false) then
+			if !sink::Equals(AsmFactory::CurnTypB) and !sink::get_IsInterface() then
 				m1 = Loader::LoadConvOp(sink, "op_Implicit", source, sink)
 				if m1 != null then
 					ILEmitter::EmitCall(m1)
@@ -1119,7 +1119,7 @@ class public auto ansi static Helpers
 					return
 				end if
 			end if
-			if (source::Equals(AsmFactory::CurnTypB) = false) and (source::get_IsInterface() = false) then
+			if !source::Equals(AsmFactory::CurnTypB) and !source::get_IsInterface() then
 				m1 = Loader::LoadConvOp(source, "op_Implicit", source, sink)
 				if m1 != null then
 					ILEmitter::EmitCall(m1)
@@ -1267,7 +1267,7 @@ class public auto ansi static Helpers
 		end if
 		if AsmFactory::PopFlg then
 			var rt as IKVM.Reflection.Type = met::get_ReturnType()
-			if rt::Equals(ILEmitter::Univ::Import(gettype void)) == false then
+			if !rt::Equals(ILEmitter::Univ::Import(gettype void)) then
 				ILEmitter::EmitPop()
 			end if
 		end if
@@ -1354,7 +1354,7 @@ class public auto ansi static Helpers
 			meti = null
 		end if
 		
-		if (meti != null) and (BaseFlg == false) then
+		if (meti != null) and !BaseFlg then
 			metinf = meti
 		else
 			Loader::ProtectedFlag = true
@@ -1806,6 +1806,19 @@ class public auto ansi static Helpers
 			ILEmitter::EmitNeg()
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '!' operation is undefined for '" + t::ToString() + "'.")
+		end if
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitNot(var t as IKVM.Reflection.Type)
+		var oo = Loader::LoadUnaOp(t, "op_OnesComplement", t)
+		if oo != null then
+			ILEmitter::EmitCall(oo)
+			AsmFactory::Type02 = oo::get_ReturnType()
+		elseif IsPrimitiveIntegralType(t) then
+			ILEmitter::EmitNotOther()
+		else
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '~' operation is undefined for '" + t::ToString() + "'.")
 		end if
 	end method
 

@@ -10,14 +10,14 @@ class public auto ansi StmtReader
 
 	method public CustomAttributeBuilder AttrStmtToCAB(var stm as AttrStmt)
 		var typ as IKVM.Reflection.Type = null
-		if stm::Ctor::Name::Value::EndsWith("Attribute") == false then
+		if !stm::Ctor::Name::Value::EndsWith("Attribute") then
 			typ = Helpers::CommitEvalTTok(new TypeTok(stm::Ctor::Name::Value + "Attribute"))
 		end if
 		if typ == null then
 			typ = Helpers::CommitEvalTTok(stm::Ctor::Name)
 		end if
 		if typ == null then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Attribute Class '" + stm::Ctor::Name::ToString() +"' was not found.")
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Attribute Class '" + stm::Ctor::Name::ToString() + "' was not found.")
 		end if
 		var tarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[stm::Ctor::Params::get_Count()]
 		var oarr as object[] = new object[stm::Ctor::Params::get_Count()]
@@ -285,7 +285,7 @@ class public auto ansi StmtReader
 			AsmFactory::CurnInhTyp = inhtyp
 			
 			if ti2 == null then
-				if AsmFactory::isNested = false then
+				if !AsmFactory::isNested then
 					AsmFactory::CurnTypName = clss::ClassName::Value
 					AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value, clssparams, inhtyp)
 					StreamUtils::Write("Adding Class: ")
@@ -319,7 +319,7 @@ class public auto ansi StmtReader
 					interftyp = Helpers::CommitEvalTTok(clss::ImplInterfaces[i])
 					if interftyp = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::ImplInterfaces[i]::Value + "' is not defined or is not accessible.")
-					elseif interftyp::get_IsInterface() == false then
+					elseif !interftyp::get_IsInterface() then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + interftyp::ToString() + "' is not an interface.")
 					end if
 					AsmFactory::CurnTypB::AddInterfaceImplementation(interftyp)
@@ -350,7 +350,7 @@ class public auto ansi StmtReader
 			var dinhtyp as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype MulticastDelegate)
 			AsmFactory::CurnInhTyp = dinhtyp
 
-			if AsmFactory::isNested = false then
+			if !AsmFactory::isNested then
 				AsmFactory::CurnTypName = dels::DelegateName::Value
 				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + dels::DelegateName::Value, dta, dinhtyp)
 				StreamUtils::Write("Adding Delegate: ")
@@ -549,7 +549,7 @@ class public auto ansi StmtReader
 					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, Helpers::ProcessMethodAttrs(mtss::Attrs), rettyp, AsmFactory::TypArr)
 				end if
 				
-				if ILEmitter::ProtoFlg == false then
+				if !ILEmitter::ProtoFlg then
 					var pbrv as ParameterBuilder = AsmFactory::CurnMetB::DefineParameter(0, IKVM.Reflection.ParameterAttributes::Retval, $string$null)
 					if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), 0) then
 						foreach ca in SymTable::ParameterCALst::get_Item(0)
@@ -565,7 +565,7 @@ class public auto ansi StmtReader
 					end if
 				end if
 				
-				if fromproto = false then
+				if !fromproto then
 					if AsmFactory::isNested then
 						SymTable::AddNestedMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
 					else
@@ -573,7 +573,7 @@ class public auto ansi StmtReader
 					end if
 				end if
 				
-				if ILEmitter::ProtoFlg == false then
+				if !ILEmitter::ProtoFlg then
 					if mtss::Params[l] != 0 then
 						Helpers::PostProcessParams(mtss::Params)
 					end if
@@ -658,7 +658,7 @@ class public auto ansi StmtReader
 			SymTable::AddIf()
 			SymTable::PushScope()
 			new Evaluator()::Evaluate(ifstm::Exp)
-			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for If Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
@@ -673,7 +673,7 @@ class public auto ansi StmtReader
 		elseif stm is UntilStmt then
 			var unstm as UntilStmt = $UntilStmt$stm
 			new Evaluator()::Evaluate(unstm::Exp)
-			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Until Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadLoopStartLbl())
@@ -683,7 +683,7 @@ class public auto ansi StmtReader
 		elseif stm is WhileStmt then
 			var whstm as WhileStmt = $WhileStmt$stm
 			new Evaluator()::Evaluate(whstm::Exp)
-			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for While Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrtrue(SymTable::ReadLoopStartLbl())
@@ -696,7 +696,7 @@ class public auto ansi StmtReader
 			SymTable::AddLoop()
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
 			new Evaluator()::Evaluate(dustm::Exp)
-			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Do Until Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
@@ -706,7 +706,7 @@ class public auto ansi StmtReader
 			SymTable::AddLoop()
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
 			new Evaluator()::Evaluate(dwstm::Exp)
-			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Do While Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
@@ -718,7 +718,7 @@ class public auto ansi StmtReader
 			SymTable::PopScope()
 			SymTable::PushScope()
 			new Evaluator()::Evaluate(elifstm::Exp)
-			if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for ElseIf Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
@@ -729,7 +729,7 @@ class public auto ansi StmtReader
 			SymTable::PopScope()
 			SymTable::PushScope()
 		elseif stm is EndIfStmt then
-			if SymTable::ReadIfElsePass() = false then
+			if !SymTable::ReadIfElsePass() then
 				ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
 			end if
 			ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
@@ -754,7 +754,7 @@ class public auto ansi StmtReader
 			var trostmt as ThrowStmt = $ThrowStmt$stm
 			if trostmt::RExp != null then
 				new Evaluator()::Evaluate(trostmt::RExp)
-				if ILEmitter::Univ::Import(gettype Exception)::IsAssignableFrom(AsmFactory::Type02) == false then
+				if !ILEmitter::Univ::Import(gettype Exception)::IsAssignableFrom(AsmFactory::Type02) then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + AsmFactory::Type02::ToString() + "' is not an Exception Type.")
 				end if
 				ILEmitter::EmitThrow()

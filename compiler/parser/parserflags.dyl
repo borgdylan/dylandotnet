@@ -80,10 +80,13 @@ class public auto ansi Flags
 			var id = $INegatable$iuo
 			id::set_DoNeg(NegFlag)
 		end if
+		if iuo is INotable then
+			var id = $INotable$iuo
+			id::set_DoNot(NotFlag)
+		end if
 	end method
 	
 	method public Ident UpdateIdent(var id as Ident)
-		id::DoNot = NotFlag
 		id::IsRef = RefFlag
 		id::IsValInRef = ValinrefFlag
 		UpdateToken(id)
@@ -116,7 +119,6 @@ class public auto ansi Flags
 	end method
 
 	method public NumberLiteral UpdateNumLit(var id as NumberLiteral)
-		id::DoNot = NotFlag
 		UpdateToken(id)
 		return id
 	end method

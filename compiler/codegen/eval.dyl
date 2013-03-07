@@ -151,7 +151,7 @@ class public auto ansi beforefieldinit Evaluator
 			var typ as IKVM.Reflection.Type = null
 			if Helpers::CheckIfArrLen(idt::ArrLoc) then
 				typ = AsmFactory::Type02
-				if typ::get_IsArray() == false then
+				if !typ::get_IsArray() then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + typ::ToString() + "' is not an Array Type.")
 				end if
 				if emt then
@@ -165,7 +165,7 @@ class public auto ansi beforefieldinit Evaluator
 				
 				if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
-				elseif typ::get_IsArray() == false then
+				elseif !typ::get_IsArray() then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + typ::ToString() + "' is not an Array Type.")
 				end if
 				
@@ -214,6 +214,14 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				end if
 			end if
+			if (s == "not") and (iuo is INotable) then
+				var idt = $INotable$iuo
+				if idt::get_DoNot() then
+					if emt then
+						Helpers::EmitNot(AsmFactory::Type02)
+					end if
+				end if
+			end if
 		end for
 	end method
 
@@ -246,7 +254,7 @@ class public auto ansi beforefieldinit Evaluator
 		if AsmFactory::RefChainFlg then
 			AsmFactory::RefChainFlg = false
 			pushaddr = idt::MemberAccessFlg
-			if pushaddr = false then
+			if !pushaddr then
 				idt::IsRef = true
 			end if
 		end if
@@ -256,8 +264,8 @@ class public auto ansi beforefieldinit Evaluator
 			AsmFactory::AddrFlg = (i != (idtnamarr[l] - 1))
 			AsmFactory::ForcedAddrFlg = (i == (idtnamarr[l] - 1)) and idt::IsRef and (idt::IsArr == false)
 			
-			if idtb2 = false then
-				if idtb1 = false then
+			if !idtb2 then
+				if !idtb1 then
 					vr = SymTable::FindVar(idtnamarr[i])
 					if vr != null then
 						if emt then
@@ -265,9 +273,9 @@ class public auto ansi beforefieldinit Evaluator
 							Helpers::EmitLocLd(vr::Index, vr::LocArg)
 						end if
 						typ = vr::VarTyp
-						if AsmFactory::ForcedAddrFlg and (typ::get_IsByRef() == false) then
+						if AsmFactory::ForcedAddrFlg and !typ::get_IsByRef() then
 							typ = typ::MakeByRefType()
-						elseif (AsmFactory::ForcedAddrFlg == false) and typ::get_IsByRef() then
+						elseif !AsmFactory::ForcedAddrFlg and typ::get_IsByRef() then
 							typ = typ::GetElementType()
 						end if
 						AsmFactory::Type02 = typ
@@ -280,7 +288,7 @@ class public auto ansi beforefieldinit Evaluator
 				idtfldinf = Helpers::GetLocFld(idtnamarr[i])
 				if idtfldinf != null then
 					idtisstatic = idtfldinf::get_IsStatic()
-					if idtisstatic = false then
+					if !idtisstatic then
 						if emt then
 							ILEmitter::EmitLdarg(0)
 						end if
@@ -307,7 +315,7 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 				
 			else
-				if typ::Equals(AsmFactory::CurnTypB) = false then
+				if !typ::Equals(AsmFactory::CurnTypB) then
 					idtfldinf = Helpers::GetExtFld(typ, idtnamarr[i])
 					if idtfldinf = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is not defined/accessible for the class '" + typ::ToString() + "'.")
@@ -318,7 +326,7 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 					AsmFactory::Type02 = typ
 					if emt then
-						if Loader::FldLitFlag = false then
+						if !Loader::FldLitFlag then
 							AsmFactory::Type04 = Loader::MemberTyp
 							Helpers::EmitFldLd(idtfldinf, idtisstatic)
 						else
@@ -405,7 +413,7 @@ class public auto ansi beforefieldinit Evaluator
 			baseflg = true
 		end if
 
-		if mectorflg = false then
+		if !mectorflg then
 			if AsmFactory::ChainFlg then
 				AsmFactory::ChainFlg = false
 				mcparenttyp = AsmFactory::Type02
@@ -415,7 +423,7 @@ class public auto ansi beforefieldinit Evaluator
 			if AsmFactory::RefChainFlg then
 				AsmFactory::RefChainFlg = false
 				pushaddr = mntok::MemberAccessFlg
-				if pushaddr = false then
+				if !pushaddr then
 					mntok::IsRef = true
 				end if
 			end if
@@ -426,8 +434,8 @@ class public auto ansi beforefieldinit Evaluator
 				do until i = len
 					i = i + 1
 
-					if idtb2 = false then
-						if idtb1 = false then
+					if !idtb2 then
+						if !idtb1 then
 							mcvr = SymTable::FindVar(mnstrarr[i])
 							if mcvr != null then
 								if emt then
@@ -448,7 +456,7 @@ class public auto ansi beforefieldinit Evaluator
 						mcfldinf = Helpers::GetLocFld(mnstrarr[i])
 						if mcfldinf != null then
 							idtisstatic = mcfldinf::get_IsStatic()
-							if idtisstatic = false then
+							if !idtisstatic then
 								if emt then
 									ILEmitter::EmitLdarg(0)
 								end if
@@ -509,14 +517,14 @@ class public auto ansi beforefieldinit Evaluator
 		i = i + 1
 		//instance load for local methods of current isntance
 
-		if mectorflg = false then
-			if idtb2 = false then
+		if !mectorflg then
+			if !idtb2 then
 				if emt then
 					Helpers::BaseFlg = baseflg
 					mcmetinf = Helpers::GetLocMet(mntok, mctok::TypArr)
 					Helpers::BaseFlg = false
 					mcisstatic = mcmetinf::get_IsStatic()
-					if mcisstatic = false then
+					if !mcisstatic then
 						ILEmitter::EmitLdarg(0)
 					end if
 				end if
@@ -535,7 +543,7 @@ class public auto ansi beforefieldinit Evaluator
 		end for
 		var typarr1 as IKVM.Reflection.Type[] = lt::ToArray()
 		
-		if emt = false then
+		if !emt then
 			mctok::TypArr = typarr1
 		end if
 
@@ -543,7 +551,7 @@ class public auto ansi beforefieldinit Evaluator
 		i = j
 		AsmFactory::Type05 = mcparenttyp
 
-		if mectorflg = false then
+		if !mectorflg then
 			if idtb2 and (mcparenttyp::Equals(AsmFactory::CurnTypB) = false) then
 				mcmetinf = Helpers::GetExtMet(mcparenttyp, mntok, typarr1)
 				if mcmetinf = null then
@@ -553,7 +561,7 @@ class public auto ansi beforefieldinit Evaluator
 				baseflg = false
 				
 				if mcisstatic != mcmetinf::get_IsStatic() then
-					if mcisstatic and (mcmetinf::get_IsStatic() == false) then
+					if mcisstatic and !mcmetinf::get_IsStatic() then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' defined for the class '" + mcparenttyp::ToString() + "' is an instance method.")
 					else
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' defined for the class '" + mcparenttyp::ToString() + "' is static.")
@@ -561,7 +569,7 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 				
 			else
-				if idtb2 = false then
+				if !idtb2 then
 					Helpers::BaseFlg = baseflg
 				end if
 				mcmetinf = Helpers::GetLocMet(mntok, typarr1)
@@ -578,7 +586,7 @@ class public auto ansi beforefieldinit Evaluator
 				AsmFactory::PopFlg = false
 			end if
 			Helpers::BaseFlg = false
-			if mctok::PopFlg = false then
+			if !mctok::PopFlg then
 				ASTEmitArrayLoad(mntok, emt)
 			end if
 
@@ -663,8 +671,8 @@ class public auto ansi beforefieldinit Evaluator
 
 				do until i = len
 					i = i + 1
-					if idtb2 = false then
-						if idtb1 = false then
+					if !idtb2 then
+						if !idtb1 then
 							mcvr = SymTable::FindVar(mnstrarr[i])
 							if mcvr != null then
 								if emt then
@@ -679,7 +687,7 @@ class public auto ansi beforefieldinit Evaluator
 								mcfldinf = Helpers::GetLocFld(mnstrarr[i])
 								if mcfldinf != null then
 									idtisstatic = mcfldinf::get_IsStatic()
-									if idtisstatic = false then
+									if !idtisstatic then
 										if emt then
 											ILEmitter::EmitLdarg(0)
 										end if
@@ -698,7 +706,7 @@ class public auto ansi beforefieldinit Evaluator
 							mcfldinf = Helpers::GetLocFld(mnstrarr[i])
 							if mcfldinf != null then
 								idtisstatic = mcfldinf::get_IsStatic()
-								if idtisstatic = false then
+								if !idtisstatic then
 									if emt then
 										ILEmitter::EmitLdarg(0)
 									end if
@@ -720,7 +728,7 @@ class public auto ansi beforefieldinit Evaluator
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable or Class '" + mnstrarr[i] + "' is not defined.")
 						end if
 					else
-						if mcparenttyp::Equals(AsmFactory::CurnTypB) = false then
+						if !mcparenttyp::Equals(AsmFactory::CurnTypB) then
 							mcfldinf = Helpers::GetExtFld(mcparenttyp, mnstrarr[i])
 							if mcfldinf = null then
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
@@ -751,11 +759,11 @@ class public auto ansi beforefieldinit Evaluator
 
 			i = i + 1
 			//instance load for local methods of current isntance
-			if idtb2 = false then
+			if !idtb2 then
 				if emt then
 					mcmetinf = Helpers::GetLocMet(delmtdnam, delparamarr)
 					mcisstatic = mcmetinf::get_IsStatic()
-					if mcisstatic = false then
+					if !mcisstatic then
 						ILEmitter::EmitLdarg(0)
 					end if
 				end if
@@ -763,7 +771,7 @@ class public auto ansi beforefieldinit Evaluator
 			//----------------------------------------------------------
 
 			if idtb2 then
-				if mcparenttyp::Equals(AsmFactory::CurnTypB) = false then
+				if !mcparenttyp::Equals(AsmFactory::CurnTypB) then
 					mcmetinf = Helpers::GetExtMet(mcparenttyp, delmtdnam, delparamarr)
 					if mcmetinf = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
@@ -969,7 +977,7 @@ class public auto ansi beforefieldinit Evaluator
 				
 				var ci as CollectionItem = Helpers::ProcessCollection(typ2,aictok::ForceArray)
 				
-				if(ci == null) then
+				if (ci == null) then
 					if emt then
 						ILEmitter::EmitLdcI4(aictok::Elements::get_Count())
 						ILEmitter::EmitConvI()
@@ -1064,7 +1072,7 @@ class public auto ansi beforefieldinit Evaluator
 					SymTable::AddIf()
 				end if
 				ASTEmit(ConvToAST(ConvToRPN(tcc::Condition)), emt)
-				if AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) == false then
+				if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Ternary Expressions should evaluate to boolean.")
 				end if
 				if emt then
@@ -1083,7 +1091,7 @@ class public auto ansi beforefieldinit Evaluator
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "True and False Cases for Ternary Expressions should evaluate to compatible types.")
 				end if
 				if emt then
-					if SymTable::ReadIfElsePass() = false then
+					if !SymTable::ReadIfElsePass() then
 						ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
 					end if
 					ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
@@ -1096,7 +1104,7 @@ class public auto ansi beforefieldinit Evaluator
 					var ptrctok as PtrCallTok = $PtrCallTok$tok
 					mcmetinf = Helpers::GetLocMetNoParams(ptrctok::MetToCall::Value)
 					mcisstatic = mcmetinf::get_IsStatic()
-					if mcisstatic = false then
+					if !mcisstatic then
 						ILEmitter::EmitLdarg(0)
 					end if
 					Helpers::EmitPtrLd(mcmetinf, mcisstatic)
@@ -1150,13 +1158,13 @@ class public auto ansi beforefieldinit Evaluator
 		//end if
 
 		//determination of byref storage mode or not
-		if (idtnamarr[l] = 1) and (idt::IsArr = false) then
+		if (idtnamarr[l] = 1) and !idt::IsArr then
 			SymTable::StoreFlg = true
 			vr = SymTable::FindVar(idtnamarr[0])
 			SymTable::StoreFlg = false
 			if vr != null then
 				ASTEmit(ConvToAST(ConvToRPN(exp)),false)
-				isbyref = vr::VarTyp::get_IsByRef() and (AsmFactory::Type02::get_IsByRef() == false)
+				isbyref = vr::VarTyp::get_IsByRef() and !AsmFactory::Type02::get_IsByRef()
 			end if
 		end if
 
@@ -1172,8 +1180,8 @@ class public auto ansi beforefieldinit Evaluator
 			do until i = len
 				i = i + 1
 	
-				if idtb2 = false then
-					if idtb1 = false then
+				if !idtb2 then
+					if !idtb1 then
 						vr = SymTable::FindVar(idtnamarr[i])
 						if vr != null then
 							AsmFactory::Type04 = vr::VarTyp
@@ -1185,7 +1193,7 @@ class public auto ansi beforefieldinit Evaluator
 								AsmFactory::ForcedAddrFlg = false
 							end if
 							idttyp = vr::VarTyp
-							if idttyp::get_IsByRef() and (isbyref = false) then
+							if idttyp::get_IsByRef() and !isbyref then
 								idttyp = idttyp::GetElementType()
 							end if
 							idtb2 = true
@@ -1196,7 +1204,7 @@ class public auto ansi beforefieldinit Evaluator
 					fldinf = Helpers::GetLocFld(idtnamarr[i])
 					if fldinf != null then
 						idtisstatic = fldinf::get_IsStatic()
-						if idtisstatic = false then
+						if !idtisstatic then
 							ILEmitter::EmitLdarg(0)
 						end if
 						idttyp = fldinf::get_FieldType()
@@ -1214,7 +1222,7 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 
 				else
-					if idttyp::Equals(AsmFactory::CurnTypB) = false then
+					if !idttyp::Equals(AsmFactory::CurnTypB) then
 						fldinf = Helpers::GetExtFld(idttyp, idtnamarr[i])
 						if fldinf = null then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is not defined/accessible for the class '" + idttyp::ToString() + "'.")
@@ -1242,11 +1250,11 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 
 		//skip this ptr load for array and byref cases
-		if (idt::IsArr = false) and (isbyref = false) then
+		if !idt::IsArr and !isbyref then
 			//this pointer load in case of instance local field store
 			i = i + 1
-			if idtb2 = false then
-				if idtb1 = false then
+			if !idtb2 then
+				if !idtb1 then
 					SymTable::StoreFlg = true
 					vr = SymTable::FindVar(idtnamarr[i])
 					SymTable::StoreFlg = false
@@ -1254,7 +1262,7 @@ class public auto ansi beforefieldinit Evaluator
 						fldinf = Helpers::GetLocFld(idtnamarr[i])
 						if fldinf != null then
 							idtisstatic = fldinf::get_IsStatic()
-							if idtisstatic = false then
+							if !idtisstatic then
 								ILEmitter::EmitLdarg(0)
 							end if
 						end if
@@ -1263,7 +1271,7 @@ class public auto ansi beforefieldinit Evaluator
 					fldinf = Helpers::GetLocFld(idtnamarr[i])
 					if fldinf != null then
 						idtisstatic = fldinf::get_IsStatic()
-						if idtisstatic = false then
+						if !idtisstatic then
 							ILEmitter::EmitLdarg(0)
 						end if
 					end if
@@ -1276,7 +1284,7 @@ class public auto ansi beforefieldinit Evaluator
 		if idt::IsArr then
 			Evaluate(idt::ArrLoc)
 			
-			if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
+			if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
 			end if
 			
@@ -1292,7 +1300,7 @@ class public auto ansi beforefieldinit Evaluator
 		var outt as IKVM.Reflection.Type = AsmFactory::Type02
 		
 		if idt::IsArr then
-			if idttyp::get_IsArray() == false then
+			if !idttyp::get_IsArray() then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + idttyp::ToString() + "' is not an Array Type.")
 			end if
 			idttyp = idttyp::GetElementType()
@@ -1303,9 +1311,9 @@ class public auto ansi beforefieldinit Evaluator
 			Helpers::CheckAssignability(idttyp, outt)
 			ILEmitter::EmitStind(idttyp)
 		else
-			if idtb2 = false then
+			if !idtb2 then
 				vr = null
-				if idtb1 = false then
+				if !idtb1 then
 					SymTable::StoreFlg = true
 					vr = SymTable::FindVar(idtnamarr[i])
 					SymTable::StoreFlg = false
@@ -1319,7 +1327,7 @@ class public auto ansi beforefieldinit Evaluator
 				if vr = null then
 					fldinf = Helpers::GetLocFld(idtnamarr[i])
 					if fldinf != null then
-						if fldinf::get_IsInitOnly() and (AsmFactory::InCtorFlg == false) then
+						if fldinf::get_IsInitOnly() and !AsmFactory::InCtorFlg then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is declared as readonly and may only be set from constructors.")
 						end if
 						idtisstatic = fldinf::get_IsStatic()
@@ -1330,7 +1338,7 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				end if
 			else
-				if idttyp::Equals(AsmFactory::CurnTypB) = false then
+				if !idttyp::Equals(AsmFactory::CurnTypB) then
 					fldinf = Helpers::GetExtFld(idttyp, idtnamarr[i])
 					if fldinf = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is not defined/accessible for the class '" + idttyp::ToString() + "'.")

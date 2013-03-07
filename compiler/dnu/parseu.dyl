@@ -39,8 +39,8 @@ class public auto ansi static ParseUtils
 	method public static string[] StringParser(var StringToParse as string, var DelimeterChar as string)
 		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
 		var ins as boolean = false
-		var ch as string = String::Empty
-		var acc as string = String::Empty
+		var ch as string = string::Empty
+		var acc as string = string::Empty
 		var i as integer = -1
 		var len as integer = StringToParse::get_Length() - 1
 	
@@ -49,15 +49,15 @@ class public auto ansi static ParseUtils
 			ch = $string$StringToParse::get_Chars(i)
 	
 			if ch = c"\q" then
-				ins = ins == false
+				ins = !ins
 			end if
 	
 			if ch = DelimeterChar then
-				if ins = false then
+				if !ins then
 					if acc::get_Length() != 0 then
 						arr::Add(acc)
 					end if
-					acc = String::Empty
+					acc = string::Empty
 				end if
 				if ins then
 					acc = acc + ch
@@ -82,8 +82,8 @@ class public auto ansi static ParseUtils
 	method public static C5.IList<of string> StringParserL(var StringToParse as string, var DelimeterChar as string)
 		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
 		var ins as boolean = false
-		var ch as string = String::Empty
-		var acc as string = String::Empty
+		var ch as string = string::Empty
+		var acc as string = string::Empty
 		var i as integer = -1
 		var len as integer = StringToParse::get_Length() - 1
 	
@@ -92,15 +92,15 @@ class public auto ansi static ParseUtils
 			ch = $string$StringToParse::get_Chars(i)
 	
 			if ch = c"\q" then
-				ins = ins == false
+				ins = !ins
 			end if
 	
 			if ch = DelimeterChar then
-				if ins = false then
+				if !ins then
 					if acc::get_Length() != 0 then
 						arr::Add(acc)
 					end if
-					acc = String::Empty
+					acc = string::Empty
 				end if
 				if ins then
 					acc = acc + ch
@@ -113,7 +113,7 @@ class public auto ansi static ParseUtils
 				if acc::get_Length() != 0 then
 					arr::Add(acc)
 				end if
-				acc = String::Empty
+				acc = string::Empty
 			end if
 
 		end do
@@ -126,8 +126,8 @@ class public auto ansi static ParseUtils
 
 		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
 		var ins as boolean = false
-		var ch as string = String::Empty
-		var acc as string = String::Empty
+		var ch as string = string::Empty
+		var acc as string = string::Empty
 		var i as integer = -1
 		var len as integer = StringToParse::get_Length() - 1
 		
@@ -136,15 +136,15 @@ class public auto ansi static ParseUtils
 			ch = $string$StringToParse::get_Chars(i)
 
 			if ch = c"\q" then
-				ins = ins == false
+				ins = !ins
 			end if
 
 			if (ch = DelimeterChar) or (ch = DelimeterChar2) then
-				if ins = false then
+				if !ins then
 					if acc::get_Length() != 0 then
 						arr::Add(acc)
 					end if
-					acc = String::Empty
+					acc = string::Empty
 				end if
 				if ins then
 					acc = acc + ch
@@ -157,7 +157,7 @@ class public auto ansi static ParseUtils
 				if acc::get_Length() != 0 then
 					arr::Add(acc)
 				end if
-				acc = String::Empty
+				acc = string::Empty
 			end if
 
 		end do
@@ -238,7 +238,7 @@ class public auto ansi static ParseUtils
 		var i as integer = -1
 		var cc as char = 'a'
 		var len as integer = escstr::get_Length() - 1
-		var buf as string = String::Empty
+		var buf as string = string::Empty
 		
 		do until i >= len
 			i = i + 1

@@ -400,7 +400,7 @@ class public auto ansi static SymTable
 		foreach s in VarLst::Backwards()
 			if s::Contains(nam) then
 				var v = s::get_Item(nam)
-				if StoreFlg == false then
+				if !StoreFlg then
 					v::Used = true
 				end if
 				return v
@@ -424,7 +424,7 @@ class public auto ansi static SymTable
 		var hm = VarLst::get_Last()
 		foreach k in hm::get_Keys()
 			var vlec = hm::get_Item(k)
-			if (vlec::Used = false) and vlec::LocArg then
+			if !vlec::Used and vlec::LocArg then
 				if vlec::Stored then
 					StreamUtils::WriteWarn(vlec::Line, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was initialised but then not used.")
 					foreach line in vlec::StoreLines

@@ -1,6 +1,6 @@
 <Type Name="MethodNameTok" FullName="dylan.NET.Tokenizer.AST.Tokens.MethodNameTok">
   <TypeSignature Language="C#" Value="public class MethodNameTok : dylan.NET.Tokenizer.AST.Tokens.Ident" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi MethodNameTok extends dylan.NET.Tokenizer.AST.Tokens.Ident implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi MethodNameTok extends dylan.NET.Tokenizer.AST.Tokens.Ident implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.INotable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
@@ -66,6 +66,19 @@
     <Member MemberName="DoNeg">
       <MemberSignature Language="C#" Value="public bool DoNeg { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool DoNeg" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoNot">
+      <MemberSignature Language="C#" Value="public bool DoNot { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoNot" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

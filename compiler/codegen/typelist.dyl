@@ -49,13 +49,13 @@ class public auto ansi TypeList
 		else
 			var ctorinf as ConstructorBuilder = ti::GetCtor(paramst)
 			if ctorinf != null then
-				if ctorinf::get_IsPublic() == false then
+				if !ctorinf::get_IsPublic() then
 					//filter out private members
-					if ctorinf::get_IsPrivate() = false then
+					if !ctorinf::get_IsPrivate() then
 						if (ctorinf::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) = false then
 							if (ctorinf::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) = false then
 								if (ctorinf::get_IsFamily() and Loader::ProtectedFlag) = false then
-									if ctorinf::get_IsAssembly() = false then
+									if !ctorinf::get_IsAssembly() then
 										ctorinf = null
 									end if
 								end if
@@ -104,13 +104,13 @@ class public auto ansi TypeList
 		else
 			var fldinfo as FieldInfo = ti::GetField(nam)
 			if fldinfo != null then
-				if fldinfo::get_IsPublic() == false then
+				if !fldinfo::get_IsPublic() then
 					//filter out private members
-					if fldinfo::get_IsPrivate() = false then
+					if !fldinfo::get_IsPrivate() then
 						if (fldinfo::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) = false then
 							if (fldinfo::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) = false then
 								if (fldinfo::get_IsFamily() and Loader::ProtectedFlag) = false then
-									if fldinfo::get_IsAssembly() = false then
+									if !fldinfo::get_IsAssembly() then
 										fldinfo = null
 									end if
 								end if
@@ -145,13 +145,13 @@ class public auto ansi TypeList
 		
 			var mtdinfo as MethodInfo = ti::GetMethod(nam,paramst)
 			if mtdinfo != null then
-				if mtdinfo::get_IsPublic() == false then
+				if !mtdinfo::get_IsPublic() then
 					//filter out private members
-					if mtdinfo::get_IsPrivate() = false then
+					if !mtdinfo::get_IsPrivate() then
 						if (mtdinfo::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) = false then
 							if (mtdinfo::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) = false then
 								if (mtdinfo::get_IsFamily() and Loader::ProtectedFlag) = false then
-									if mtdinfo::get_IsAssembly() = false then
+									if !mtdinfo::get_IsAssembly() then
 										mtdinfo = null
 									end if
 								end if

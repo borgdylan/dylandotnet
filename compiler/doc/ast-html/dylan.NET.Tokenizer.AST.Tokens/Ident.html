@@ -209,7 +209,7 @@
     <p class="Summary" id="T:dylan.NET.Tokenizer.AST.Tokens.Ident:Summary">Represents an identifier.</p>
     <div id="T:dylan.NET.Tokenizer.AST.Tokens.Ident:Signature">
       <h2>Syntax</h2>
-      <div class="Signature">public class  <b>Ident</b> : <a href="../dylan.NET.Tokenizer.AST.Tokens/Token.html">Token</a>,	<a href="../dylan.NET.Tokenizer.AST.Interfaces/IConvable.html">dylan.NET.Tokenizer.AST.Interfaces.IConvable</a>, <a href="../dylan.NET.Tokenizer.AST.Interfaces/INegatable.html">dylan.NET.Tokenizer.AST.Interfaces.INegatable</a></div>
+      <div class="Signature">public class  <b>Ident</b> : <a href="../dylan.NET.Tokenizer.AST.Tokens/Token.html">Token</a>,	<a href="../dylan.NET.Tokenizer.AST.Interfaces/IConvable.html">dylan.NET.Tokenizer.AST.Interfaces.IConvable</a>, <a href="../dylan.NET.Tokenizer.AST.Interfaces/INegatable.html">dylan.NET.Tokenizer.AST.Interfaces.INegatable</a>, <a href="../dylan.NET.Tokenizer.AST.Interfaces/INotable.html">dylan.NET.Tokenizer.AST.Interfaces.INotable</a></div>
     </div>
     <div class="Remarks" id="T:dylan.NET.Tokenizer.AST.Tokens.Ident:Docs">
       <h2 class="Section">Remarks</h2>
@@ -274,21 +274,6 @@
                   <i>
                     <a href="../dylan.NET.Tokenizer.AST.Exprs/Expr.html">dylan.NET.Tokenizer.AST.Exprs.Expr</a>
                   </i>. Holds an expression that evaluates to the array location to load or store into.</td>
-              </tr>
-              <tr valign="top">
-                <td>
-                  <div>
-                  </div>
-                </td>
-                <td>
-                  <b>
-                    <a href="#F:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot">DoNot</a>
-                  </b>
-                </td>
-                <td>
-                  <i>
-                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
-                  </i>. If a biwise not is required set this flag.</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -439,6 +424,21 @@
                 </td>
                 <td>
                   <b>
+                    <a href="#F:dylan.NET.Tokenizer.AST.Tokens.Ident._DoNot">_DoNot</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
                     <a href="#F:dylan.NET.Tokenizer.AST.Tokens.Ident._OrdOp">_OrdOp</a>
                   </b>
                 </td>
@@ -492,6 +492,21 @@
                 <td>
                   <b>
                     <a href="#P:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNeg">DoNeg</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot">DoNot</a>
                   </b>
                 </td>
                 <td>
@@ -620,6 +635,22 @@
             <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)</div>
           <hr size="1" />
         </blockquote>
+        <h3 id="F:dylan.NET.Tokenizer.AST.Tokens.Ident._DoNot">_DoNot Field</h3>
+        <blockquote id="F:dylan.NET.Tokenizer.AST.Tokens.Ident._DoNot:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">protected <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>_DoNot</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Ident._DoNot:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Ident._DoNot:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)</div>
+          <hr size="1" />
+        </blockquote>
         <h3 id="F:dylan.NET.Tokenizer.AST.Tokens.Ident._OrdOp">_OrdOp Field</h3>
         <blockquote id="F:dylan.NET.Tokenizer.AST.Tokens.Ident._OrdOp:member">
           <p class="Summary">
@@ -704,15 +735,23 @@
             <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="F:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot">DoNot Field</h3>
-        <blockquote id="F:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot:member">
-          <p class="Summary">If a biwise not is required set this flag.</p>
+        <h3 id="P:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot">DoNot Property</h3>
+        <blockquote id="P:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
           <h2>Syntax</h2>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>DoNot</b> </div>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>DoNot</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot:Remarks">Set this only on identifiers that point to boolean values.</div>
+          <div class="SectionBox" id="P:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot:Version Information">
+          <div class="SectionBox" id="P:dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot:Version Information">
             <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)</div>
           <hr size="1" />
         </blockquote>

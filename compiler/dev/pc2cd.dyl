@@ -35,8 +35,7 @@ namespace dylan.NET.PkgConfig.PC2CD
 	
 		method public static void CopyFile(var s as string)
 			
-			if Path::IsPathRooted(s) then
-			else
+			if !Path::IsPathRooted(s) then
 				s = Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), s)
 			end if
 			

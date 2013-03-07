@@ -49,3 +49,15 @@ class public auto ansi abstract interface INegatable implements IUnaryOperatable
 	end property
 	
 end class
+
+class public auto ansi abstract interface INotable implements IUnaryOperatable
+	
+	method public hidebysig virtual specialname abstract newslot boolean get_DoNot()
+	method public hidebysig virtual specialname abstract newslot void set_DoNot(var dn as boolean)
+	
+	property none boolean DoNot
+		get get_DoNot()
+		set set_DoNot()
+	end property
+	
+end class

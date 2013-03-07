@@ -57,7 +57,12 @@
         </member>
         <member name="dylan.NET.Tokenizer.AST.Interfaces.INegatable.DoNeg">
             <summary>The flag indicating whether negation should be done.</summary>
-            <value>The boolean value fo the flag.</value>
+            <value>The boolean value for the flag.</value>
+            <remarks />
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Interfaces.INotable.DoNot">
+            <summary>The flag indicating whether one's complement should be done.</summary>
+            <value>The boolean value for the flag.</value>
             <remarks />
         </member>
         <member name="dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable.OrdOp">
@@ -1274,6 +1279,11 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.DoNot">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.op_Implicit">
             <param name="idt">To be added.</param>
             <summary>To be added.</summary>
@@ -1396,6 +1406,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Ident._DoNot">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Ident._OrdOp">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1419,8 +1433,9 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Ident.DoNot">
-            <summary>If a biwise not is required set this flag.</summary>
-            <remarks>Set this only on identifiers that point to boolean values.</remarks>
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Ident.IsArr">
             <summary>This flag must be set to perform an array access.</summary>
@@ -1605,6 +1620,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.MethodNameTok.DoNeg">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.MethodNameTok.DoNot">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
@@ -2560,6 +2580,11 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.DoNot">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.NumVal">
             <summary>The numeric value of the literal.</summary>
             <remarks>It is loaded using the ldc.i4 set of opcodes followed by a conv.u1.</remarks>
@@ -2791,6 +2816,11 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral.DoNot">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral.NumVal">
             <summary>The numerical value of this literal.</summary>
             <remarks>It is loaded using just the ldc.i4 set of opcodes.</remarks>
@@ -2825,6 +2855,16 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral.Conv">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral.DoNeg">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral.DoNot">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
@@ -2912,6 +2952,11 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.LongLiteral.DoNot">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.LongLiteral.NumVal">
             <summary>The numeric value of the literal.</summary>
             <remarks>It is loaded using the ldc.i4 set of opcodes folowed by a conv.i8 or by using ldc.i8 directly.</remarks>
@@ -2978,10 +3023,6 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral.DoNot">
-            <summary>Determines if a bitwise not should be applied on the literal after loading.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral.OrdOp">
             <summary>To be added.</summary>
             <value>To be added.</value>
@@ -3012,6 +3053,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral.DoNeg">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral.DoNot">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
@@ -3055,6 +3101,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.ShortLiteral.DoNeg">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.ShortLiteral.DoNot">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
@@ -3134,6 +3185,11 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral.DoNot">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral.NumVal">
             <summary>The numerical value of this literal.</summary>
             <remarks>It is loaded using the ldc.i4 set of opcodes or the 'ldc.i8' opcode followed by a conv.u4.</remarks>
@@ -3172,6 +3228,11 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral.DoNot">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral.NumVal">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -3206,6 +3267,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral.Conv">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral.DoNot">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>

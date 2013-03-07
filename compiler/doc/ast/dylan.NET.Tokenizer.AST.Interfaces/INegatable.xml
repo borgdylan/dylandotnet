@@ -10,7 +10,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>The interface implemnted by all Tokens supporting negation i.e. '!'.</summary>
+    <summary>The interface implemented by all Tokens supporting negation i.e. '!'.</summary>
     <remarks>This interface depends on IUnaryOperatable.</remarks>
   </Docs>
   <Members>
@@ -23,7 +23,7 @@
       </ReturnValue>
       <Docs>
         <summary>The flag indicating whether negation should be done.</summary>
-        <value>The boolean value fo the flag.</value>
+        <value>The boolean value for the flag.</value>
         <remarks>
         </remarks>
       </Docs>

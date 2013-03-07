@@ -86,11 +86,7 @@ class public auto ansi static StreamUtils
 		if UseConsole then
 			return Console::ReadLine()
 		else
-			if InS != null then
-				return InS::ReadLine()
-			else
-				return String::Empty
-			end if
+			return #ternary {InS != null ? InS::ReadLine(), string::Empty}
 		end if
 	end method
 

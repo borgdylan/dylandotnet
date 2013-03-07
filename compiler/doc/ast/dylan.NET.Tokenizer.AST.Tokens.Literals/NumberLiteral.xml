@@ -51,18 +51,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DoNot">
-      <MemberSignature Language="C#" Value="public bool DoNot;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool DoNot" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Determines if a bitwise not should be applied on the literal after loading.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OrdOp">
       <MemberSignature Language="C#" Value="public string OrdOp { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string OrdOp" />

@@ -27,6 +27,7 @@
     <Namespace Name="dylan.NET.Tokenizer.AST.Interfaces">
       <Type Name="IConvable" Kind="Interface" />
       <Type Name="INegatable" Kind="Interface" />
+      <Type Name="INotable" Kind="Interface" />
       <Type Name="IUnaryOperatable" Kind="Interface" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Stmts">

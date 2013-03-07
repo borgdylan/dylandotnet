@@ -1,6 +1,6 @@
 <Type Name="Ident" FullName="dylan.NET.Tokenizer.AST.Tokens.Ident">
-  <TypeSignature Language="C#" Value="public class Ident : dylan.NET.Tokenizer.AST.Tokens.Token, dylan.NET.Tokenizer.AST.Interfaces.IConvable, dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi Ident extends dylan.NET.Tokenizer.AST.Tokens.Token implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="C#" Value="public class Ident : dylan.NET.Tokenizer.AST.Tokens.Token, dylan.NET.Tokenizer.AST.Interfaces.IConvable, dylan.NET.Tokenizer.AST.Interfaces.INegatable, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Ident extends dylan.NET.Tokenizer.AST.Tokens.Token implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.INotable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
@@ -13,6 +13,9 @@
     </Interface>
     <Interface>
       <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.INegatable</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.INotable</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -58,6 +61,18 @@
     <Member MemberName="_DoNeg">
       <MemberSignature Language="C#" Value="protected bool _DoNeg;" />
       <MemberSignature Language="ILAsm" Value=".field family bool _DoNeg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_DoNot">
+      <MemberSignature Language="C#" Value="protected bool _DoNot;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool _DoNot" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -130,15 +145,16 @@
       </Docs>
     </Member>
     <Member MemberName="DoNot">
-      <MemberSignature Language="C#" Value="public bool DoNot;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool DoNot" />
-      <MemberType>Field</MemberType>
+      <MemberSignature Language="C#" Value="public bool DoNot { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoNot" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>If a biwise not is required set this flag.</summary>
-        <remarks>Set this only on identifiers that point to boolean values.</remarks>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsArr">

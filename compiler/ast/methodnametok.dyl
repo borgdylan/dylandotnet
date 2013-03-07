@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, IConvable, INegatable
+class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, IConvable, INegatable, INotable
 
 	method public void MethodNameTok()
 		me::ctor()
@@ -19,7 +19,7 @@ class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, 
 	method public void MethodNameTok(var idt as Ident)
 		me::ctor(idt::Value)
 		_DoNeg = idt::get_DoNeg()
-		DoNot = idt::DoNot
+		_DoNot = idt::get_DoNot()
 		_Conv = idt::get_Conv()
 		IsArr = idt::IsArr
 		ArrLoc = idt::ArrLoc
@@ -85,10 +85,23 @@ class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, 
 		get get_DoNeg()
 		set set_DoNeg()
 	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNot()
+		return _DoNot
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
+		_DoNot = dn
+	end method
+	
+	property none boolean DoNot
+		get get_DoNot()
+		set set_DoNot()
+	end property
 
 end class
 
-class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUnaryOperatable, IConvable, INegatable
+class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUnaryOperatable, IConvable, INegatable, INotable
 
 	field public TypeTok[] Params
 
@@ -106,7 +119,7 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUn
 		me::ctor(idt::Value)
 		Params = new TypeTok[0]
 		_DoNeg = idt::get_DoNeg()
-		DoNot = idt::DoNot
+		_DoNot = idt::get_DoNot()
 		_Conv = idt::get_Conv()
 		IsArr = idt::IsArr
 		ArrLoc = idt::ArrLoc
@@ -183,6 +196,19 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUn
 	property none boolean DoNeg
 		get get_DoNeg()
 		set set_DoNeg()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoNot()
+		return _DoNot
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
+		_DoNot = dn
+	end method
+	
+	property none boolean DoNot
+		get get_DoNot()
+		set set_DoNot()
 	end property
 
 end class
