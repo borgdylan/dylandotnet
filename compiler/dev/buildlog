@@ -1,23 +1,23 @@
-dylan.NET Compiler v. 11.3.1.2 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.3 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!
 Copyright (C) 2013 Dylan Borg
 
 dylan.NET Version Info:
-dnc, Version=11.3.1.2, Culture=neutral, PublicKeyToken=null
-dnr, Version=11.3.1.2, Culture=neutral, PublicKeyToken=null
-dnu, Version=11.3.1.2, Culture=neutral, PublicKeyToken=null
-tokenizer.CodeGen, Version=11.3.1.2, Culture=neutral, PublicKeyToken=null
-tokenizer.Parser, Version=11.3.1.2, Culture=neutral, PublicKeyToken=null
-tokenizer.Lexer, Version=11.3.1.2, Culture=neutral, PublicKeyToken=null
-tokenizer.AST, Version=11.3.1.2, Culture=neutral, PublicKeyToken=null
+dnc, Version=11.3.1.3, Culture=neutral, PublicKeyToken=null
+dnr, Version=11.3.1.3, Culture=neutral, PublicKeyToken=null
+dnu, Version=11.3.1.3, Culture=neutral, PublicKeyToken=null
+tokenizer.CodeGen, Version=11.3.1.3, Culture=neutral, PublicKeyToken=null
+tokenizer.Parser, Version=11.3.1.3, Culture=neutral, PublicKeyToken=null
+tokenizer.Lexer, Version=11.3.1.3, Culture=neutral, PublicKeyToken=null
+tokenizer.AST, Version=11.3.1.3, Culture=neutral, PublicKeyToken=null
 
 Runtime & OS Version Info:
 mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 Runtime Version: 2.0.50727.1433
 OS: Unix 3.8.0.11
-dylan.NET Compiler v. 11.3.1.2 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.3 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!
@@ -36,7 +36,7 @@ Adding Class: dylan.NET.PkgConfig.PC2DN.Program
 	Adding Method: ConvToDYL
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.1.2 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.3 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!
@@ -56,7 +56,7 @@ Adding Class: dylan.NET.PkgConfig.PC2CD.Program
 	Adding Method: ConvToDYL
 	Adding Method: main
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.1.2 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.3 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 3.5 Profile!!

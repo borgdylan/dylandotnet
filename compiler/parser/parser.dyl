@@ -26,14 +26,14 @@ class public auto ansi Parser
 		PFlags::CurPath = stms::Path
 		
 		do until i >= (stms::Stmts::get_Count() - 1)
-			i = i + 1
+			i = ++i
 			so = new StmtOptimizer(PFlags)
 			var cs as Stmt = stms::Stmts::get_Item(i)
 			
 			do while cs::Tokens::get_Item(cs::Tokens::get_Count() - 1)::Value == "_"
 				cs::RemToken(cs::Tokens::get_Count() - 1)
-				cs::Tokens::AddAll(stms::Stmts::get_Item(i + 1)::Tokens)
-				stms::Stmts::RemoveAt(i + 1)
+				cs::Tokens::AddAll(stms::Stmts::get_Item(++i)::Tokens)
+				stms::Stmts::RemoveAt(++i)
 			end do
 			
 			stms::Stmts::set_Item(i,so::Optimize(cs))

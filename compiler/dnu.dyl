@@ -46,7 +46,7 @@ end #if
 #include "dnu/assemblyinfo.dyl"
 
 assembly dnu dll
-ver 11.3.1.2
+ver 11.3.1.3
 
 namespace dylan.NET.Utils
 	#include "dnu/consts.dyl"

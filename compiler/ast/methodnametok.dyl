@@ -20,6 +20,8 @@ class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, 
 		me::ctor(idt::Value)
 		_DoNeg = idt::get_DoNeg()
 		_DoNot = idt::get_DoNot()
+		_DoDec = idt::get_DoDec()
+		_DoInc = idt::get_DoInc()
 		_Conv = idt::get_Conv()
 		IsArr = idt::IsArr
 		ArrLoc = idt::ArrLoc
@@ -146,6 +148,8 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUn
 		Params = new TypeTok[0]
 		_DoNeg = idt::get_DoNeg()
 		_DoNot = idt::get_DoNot()
+		_DoDec = idt::get_DoDec()
+		_DoInc = idt::get_DoInc()
 		_Conv = idt::get_Conv()
 		IsArr = idt::IsArr
 		ArrLoc = idt::ArrLoc

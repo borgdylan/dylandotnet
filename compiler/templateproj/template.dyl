@@ -586,9 +586,7 @@ class public auto ansi Program
 			+ "a continued " _
 			+ "line")
 		var dd = DateTime::get_Now() - DateTime::get_Now()
-		var d = 11
-		d = ++d
-		d = --d
+		var d = ++test2()::get_Rank()
 	end method
 
 end class
