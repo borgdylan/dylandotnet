@@ -1,6 +1,6 @@
 <Type Name="Ident" FullName="dylan.NET.Tokenizer.AST.Tokens.Ident">
-  <TypeSignature Language="C#" Value="public class Ident : dylan.NET.Tokenizer.AST.Tokens.Token, dylan.NET.Tokenizer.AST.Interfaces.IConvable, dylan.NET.Tokenizer.AST.Interfaces.INegatable, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi Ident extends dylan.NET.Tokenizer.AST.Tokens.Token implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.INotable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="C#" Value="public class Ident : dylan.NET.Tokenizer.AST.Tokens.Token, dylan.NET.Tokenizer.AST.Interfaces.IConvable, dylan.NET.Tokenizer.AST.Interfaces.IIncDecable, dylan.NET.Tokenizer.AST.Interfaces.INegatable, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Ident extends dylan.NET.Tokenizer.AST.Tokens.Token implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.IIncDecable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.INotable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
@@ -10,6 +10,9 @@
   <Interfaces>
     <Interface>
       <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IConvable</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IIncDecable</InterfaceName>
     </Interface>
     <Interface>
       <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.INegatable</InterfaceName>
@@ -49,6 +52,30 @@
     <Member MemberName="_Conv">
       <MemberSignature Language="C#" Value="protected bool _Conv;" />
       <MemberSignature Language="ILAsm" Value=".field family bool _Conv" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_DoDec">
+      <MemberSignature Language="C#" Value="protected bool _DoDec;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool _DoDec" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_DoInc">
+      <MemberSignature Language="C#" Value="protected bool _DoInc;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool _DoInc" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -121,6 +148,32 @@
     <Member MemberName="Conv">
       <MemberSignature Language="C#" Value="public bool Conv { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Conv" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoDec">
+      <MemberSignature Language="C#" Value="public bool DoDec { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoDec" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoInc">
+      <MemberSignature Language="C#" Value="public bool DoInc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoInc" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

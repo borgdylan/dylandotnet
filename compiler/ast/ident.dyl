@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Ident extends Token implements IUnaryOperatable, IConvable, INegatable, INotable
+class public auto ansi Ident extends Token implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
 
 	field public boolean IsRef
 	field public boolean IsValInRef
@@ -16,6 +16,8 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 	field public Expr ArrLoc
 	field family boolean _DoNeg
 	field family boolean _DoNot
+	field family boolean _DoInc
+	field family boolean _DoDec
 	field family string _OrdOp
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
@@ -30,6 +32,8 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 		ArrLoc = new Expr()
 		_DoNeg = false
 		_DoNot = false
+		_DoInc = false
+		_DoDec = false
 		_OrdOp = string::Empty
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
@@ -45,6 +49,8 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 		ArrLoc = new Expr()
 		_DoNeg = false
 		_DoNot = false
+		_DoInc = false
+		_DoDec = false
 		_OrdOp = string::Empty
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
@@ -113,6 +119,32 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 	property none boolean DoNot
 		get get_DoNot()
 		set set_DoNot()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoInc()
+		return _DoInc
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoInc(var inc as boolean)
+		_DoInc = inc
+	end method
+	
+	property none boolean DoInc
+		get get_DoInc()
+		set set_DoInc()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoDec()
+		return _DoDec
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoDec(var dec as boolean)
+		_DoDec = dec
+	end method
+	
+	property none boolean DoDec
+		get get_DoDec()
+		set set_DoDec()
 	end property
 
 end class

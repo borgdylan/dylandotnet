@@ -95,6 +95,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DecFlag">
+      <MemberSignature Language="C#" Value="public bool DecFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool DecFlag" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DurConvFlag">
       <MemberSignature Language="C#" Value="public bool DurConvFlag;" />
       <MemberSignature Language="ILAsm" Value=".field public bool DurConvFlag" />
@@ -122,6 +134,18 @@
     <Member MemberName="IfFlag">
       <MemberSignature Language="C#" Value="public bool IfFlag;" />
       <MemberSignature Language="ILAsm" Value=".field public bool IfFlag" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IncFlag">
+      <MemberSignature Language="C#" Value="public bool IncFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool IncFlag" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

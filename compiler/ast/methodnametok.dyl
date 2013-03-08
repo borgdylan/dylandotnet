@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, IConvable, INegatable, INotable
+class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
 
 	method public void MethodNameTok()
 		me::ctor()
@@ -98,10 +98,36 @@ class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, 
 		get get_DoNot()
 		set set_DoNot()
 	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoInc()
+		return _DoInc
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoInc(var inc as boolean)
+		_DoInc = inc
+	end method
+	
+	property none boolean DoInc
+		get get_DoInc()
+		set set_DoInc()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoDec()
+		return _DoDec
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoDec(var dec as boolean)
+		_DoDec = dec
+	end method
+	
+	property none boolean DoDec
+		get get_DoDec()
+		set set_DoDec()
+	end property
 
 end class
 
-class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUnaryOperatable, IConvable, INegatable, INotable
+class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
 
 	field public TypeTok[] Params
 
@@ -209,6 +235,32 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUn
 	property none boolean DoNot
 		get get_DoNot()
 		set set_DoNot()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoInc()
+		return _DoInc
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoInc(var inc as boolean)
+		_DoInc = inc
+	end method
+	
+	property none boolean DoInc
+		get get_DoInc()
+		set set_DoInc()
+	end property
+	
+	method public hidebysig virtual specialname final newslot boolean get_DoDec()
+		return _DoDec
+	end method
+	
+	method public hidebysig virtual specialname final newslot void set_DoDec(var dec as boolean)
+		_DoDec = dec
+	end method
+	
+	property none boolean DoDec
+		get get_DoDec()
+		set set_DoDec()
 	end property
 
 end class

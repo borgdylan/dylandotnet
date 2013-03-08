@@ -15,6 +15,8 @@ class public auto ansi Flags
 	field public boolean AsFlag
 	field public boolean NegFlag
 	field public boolean NotFlag
+	field public boolean IncFlag
+	field public boolean DecFlag
 	field public boolean ConvFlag
 	field public boolean RefFlag
 	field public boolean ValinrefFlag
@@ -41,6 +43,8 @@ class public auto ansi Flags
 		AsFlag = false
 		NegFlag = false
 		NotFlag = false
+		IncFlag = false
+		DecFlag = false
 		ConvFlag = false
 		RefFlag = false
 		ValinrefFlag = false
@@ -60,6 +64,8 @@ class public auto ansi Flags
 	method public void SetUnaryFalse()
 		NegFlag = false
 		NotFlag = false
+		IncFlag = false
+		DecFlag = false
 		ConvFlag = false
 		RefFlag = false
 		ValinrefFlag = false
@@ -83,6 +89,11 @@ class public auto ansi Flags
 		if iuo is INotable then
 			var id = $INotable$iuo
 			id::set_DoNot(NotFlag)
+		end if
+		if iuo is IIncDecable then
+			var id = $IIncDecable$iuo
+			id::set_DoInc(IncFlag)
+			id::set_DoDec(DecFlag)
 		end if
 	end method
 	

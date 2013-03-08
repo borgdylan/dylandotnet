@@ -799,6 +799,28 @@ class public auto ansi ExprOptimizer
 					len = exp::Tokens::get_Count() - 1
 					goto fin
 				end if
+				
+				if tok is IncOp then
+					PFlags::isChanged = true
+					PFlags::IncFlag = true
+					PFlags::OrdOp = "inc " + PFlags::OrdOp
+					PFlags::OrdOp = PFlags::OrdOp::Trim()
+					exp::RemToken(i)
+					i = i - 1
+					len = exp::Tokens::get_Count() - 1
+					goto fin
+				end if
+				
+				if tok is DecOp then
+					PFlags::isChanged = true
+					PFlags::DecFlag = true
+					PFlags::OrdOp = "dec " + PFlags::OrdOp
+					PFlags::OrdOp = PFlags::OrdOp::Trim()
+					exp::RemToken(i)
+					i = i - 1
+					len = exp::Tokens::get_Count() - 1
+					goto fin
+				end if
 
 				if tok is Pipe then
 					exp::RemToken(i)

@@ -1821,5 +1821,93 @@ class public auto ansi static Helpers
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '~' operation is undefined for '" + t::ToString() + "'.")
 		end if
 	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitInc(var t as IKVM.Reflection.Type)
+		var oo = Loader::LoadUnaOp(t, "op_Increment", t)
+		if oo != null then
+			ILEmitter::EmitCall(oo)
+			AsmFactory::Type02 = oo::get_ReturnType()
+		elseif t::Equals(ILEmitter::Univ::Import(gettype char)) then
+			ILEmitter::EmitLdcChar(c'\x01')
+			ILEmitter::EmitAdd(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype integer)) then
+			ILEmitter::EmitLdcI4(1)
+			ILEmitter::EmitAdd(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype long)) then
+			ILEmitter::EmitLdcI8(1l)
+			ILEmitter::EmitAdd(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype short)) then
+			ILEmitter::EmitLdcI2(1s)
+			ILEmitter::EmitAdd(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype sbyte)) then
+			ILEmitter::EmitLdcI1(1b)
+			ILEmitter::EmitAdd(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype single)) then
+			ILEmitter::EmitLdcR4(1f)
+			ILEmitter::EmitAdd(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype double)) then
+			ILEmitter::EmitLdcR8(1d)
+			ILEmitter::EmitAdd(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype uinteger)) then
+			ILEmitter::EmitLdcU4(1ui)
+			ILEmitter::EmitAdd(false)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype ulong)) then
+			ILEmitter::EmitLdcU8(1ul)
+			ILEmitter::EmitAdd(false)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype ushort)) then
+			ILEmitter::EmitLdcU2(1us)
+			ILEmitter::EmitAdd(false)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype byte)) then
+			ILEmitter::EmitLdcU1(1ub)
+			ILEmitter::EmitAdd(false)
+		else
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '++' operation is undefined for '" + t::ToString() + "'.")
+		end if
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitDec(var t as IKVM.Reflection.Type)
+		var oo = Loader::LoadUnaOp(t, "op_Decrement", t)
+		if oo != null then
+			ILEmitter::EmitCall(oo)
+			AsmFactory::Type02 = oo::get_ReturnType()
+		elseif t::Equals(ILEmitter::Univ::Import(gettype char)) then
+			ILEmitter::EmitLdcChar(c'\x01')
+			ILEmitter::EmitSub(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype integer)) then
+			ILEmitter::EmitLdcI4(1)
+			ILEmitter::EmitSub(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype long)) then
+			ILEmitter::EmitLdcI8(1l)
+			ILEmitter::EmitSub(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype short)) then
+			ILEmitter::EmitLdcI2(1s)
+			ILEmitter::EmitSub(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype sbyte)) then
+			ILEmitter::EmitLdcI1(1b)
+			ILEmitter::EmitSub(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype single)) then
+			ILEmitter::EmitLdcR4(1f)
+			ILEmitter::EmitSub(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype double)) then
+			ILEmitter::EmitLdcR8(1d)
+			ILEmitter::EmitSub(true)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype uinteger)) then
+			ILEmitter::EmitLdcU4(1ui)
+			ILEmitter::EmitSub(false)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype ulong)) then
+			ILEmitter::EmitLdcU8(1ul)
+			ILEmitter::EmitSub(false)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype ushort)) then
+			ILEmitter::EmitLdcU2(1us)
+			ILEmitter::EmitSub(false)
+		elseif t::Equals(ILEmitter::Univ::Import(gettype byte)) then
+			ILEmitter::EmitLdcU1(1ub)
+			ILEmitter::EmitSub(false)
+		else
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '--' operation is undefined for '" + t::ToString() + "'.")
+		end if
+	end method
 
 end class

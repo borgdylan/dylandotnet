@@ -356,6 +356,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitDec">
+      <MemberSignature Language="C#" Value="public static void EmitDec (IKVM.Reflection.Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitDec(class IKVM.Reflection.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitElemLd">
       <MemberSignature Language="C#" Value="public static void EmitElemLd (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitElemLd(class IKVM.Reflection.Type t) cil managed" />
@@ -419,6 +440,27 @@
       <Docs>
         <param name="fld">To be added.</param>
         <param name="stat">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitInc">
+      <MemberSignature Language="C#" Value="public static void EmitInc (IKVM.Reflection.Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitInc(class IKVM.Reflection.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

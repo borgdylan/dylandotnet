@@ -222,6 +222,22 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				end if
 			end if
+			if (s == "inc") and (iuo is IIncDecable) then
+				var idt = $IIncDecable$iuo
+				if idt::get_DoInc() then
+					if emt then
+						Helpers::EmitInc(AsmFactory::Type02)
+					end if
+				end if
+			end if
+			if (s == "dec") and (iuo is IIncDecable) then
+				var idt = $IIncDecable$iuo
+				if idt::get_DoDec() then
+					if emt then
+						Helpers::EmitDec(AsmFactory::Type02)
+					end if
+				end if
+			end if
 		end for
 	end method
 

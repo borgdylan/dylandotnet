@@ -55,6 +55,16 @@
             <value>The TypeTok encoding the Type to convert to.</value>
             <remarks>For this property to have effect set the 'Conv' property should be set to true.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Interfaces.IIncDecable.DoDec">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Interfaces.IIncDecable.DoInc">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Interfaces.INegatable.DoNeg">
             <summary>The flag indicating whether negation should be done.</summary>
             <value>The boolean value for the flag.</value>
@@ -1274,6 +1284,16 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.DoDec">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.DoInc">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.DoNeg">
             <summary>To be added.</summary>
             <value>To be added.</value>
@@ -1402,6 +1422,14 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Ident._DoDec">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Ident._DoInc">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Ident._DoNeg">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1423,6 +1451,16 @@
             <remarks>This may be just the letter 'l' as an Ident so as to signal that the array length is required.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.Ident.Conv">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Ident.DoDec">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.Ident.DoInc">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
@@ -1615,6 +1653,16 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.MethodNameTok.Conv">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.MethodNameTok.DoDec">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.MethodNameTok.DoInc">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>

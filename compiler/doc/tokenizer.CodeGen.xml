@@ -261,6 +261,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.Helpers.EmitDec">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.Helpers.EmitElemLd">
             <param name="t">To be added.</param>
             <summary>To be added.</summary>
@@ -275,6 +280,11 @@
         <member name="dylan.NET.Tokenizer.CodeGen.Helpers.EmitFldSt">
             <param name="fld">To be added.</param>
             <param name="stat">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.Helpers.EmitInc">
+            <param name="t">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

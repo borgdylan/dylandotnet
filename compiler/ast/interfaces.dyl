@@ -61,3 +61,23 @@ class public auto ansi abstract interface INotable implements IUnaryOperatable
 	end property
 	
 end class
+
+class public auto ansi abstract interface IIncDecable implements IUnaryOperatable
+	
+	method public hidebysig virtual specialname abstract newslot boolean get_DoInc()
+	method public hidebysig virtual specialname abstract newslot void set_DoInc(var inc as boolean)
+	
+	property none boolean DoInc
+		get get_DoInc()
+		set set_DoInc()
+	end property
+	
+	method public hidebysig virtual specialname abstract newslot boolean get_DoDec()
+	method public hidebysig virtual specialname abstract newslot void set_DoDec(var dec as boolean)
+	
+	property none boolean DoDec
+		get get_DoDec()
+		set set_DoDec()
+	end property
+	
+end class

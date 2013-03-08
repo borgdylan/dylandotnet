@@ -106,6 +106,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.Parser.Flags.DecFlag">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.Parser.Flags.DurConvFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -115,6 +119,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.Parser.Flags.IfFlag">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.Parser.Flags.IncFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

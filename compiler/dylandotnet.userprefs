@@ -1,17 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ast/literals.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
     <Files>
-      <File FileName="parser/exproptimizer.dyl" Line="799" Column="17" />
+      <File FileName="parser/exproptimizer.dyl" Line="803" Column="3" />
       <File FileName="codegen/stmtreader.dyl" Line="981" Column="32" />
-      <File FileName="codegen/eval.dyl" Line="221" Column="35" />
-      <File FileName="templateproj/template.dyl" Line="588" Column="53" />
+      <File FileName="codegen/eval.dyl" Line="241" Column="10" />
+      <File FileName="templateproj/template.dyl" Line="591" Column="4" />
       <File FileName="parser/stmtoptimizer.dyl" Line="1058" Column="11" />
-      <File FileName="codegen/helpers.dyl" Line="1811" Column="2" />
+      <File FileName="codegen/helpers.dyl" Line="1897" Column="29" />
       <File FileName="dnu/compilermsg.dyl" Line="1" Column="49" />
       <File FileName="codegen/typelist.dyl" Line="31" Column="14" />
       <File FileName="dnr/loader.dyl" Line="461" Column="20" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="78" Column="20" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="56" Column="32" />
       <File FileName="parser/parser.dyl" Line="40" Column="9" />
       <File FileName="ast/chars.dyl" Line="1" Column="67" />
       <File FileName="lexer/line.dyl" Line="336" Column="27" />
@@ -70,11 +70,11 @@
       <File FileName="tests/transnames.dyl" Line="1" Column="1" />
       <File FileName="tests/vector.dyl" Line="1" Column="1" />
       <File FileName="tests/xmllib.dyl" Line="5" Column="35" />
-      <File FileName="ast/ident.dyl" Line="116" Column="14" />
-      <File FileName="ast/methodnametok.dyl" Line="212" Column="14" />
-      <File FileName="parser/parserflags.dyl" Line="34" Column="13" />
+      <File FileName="ast/ident.dyl" Line="9" Column="104" />
+      <File FileName="ast/methodnametok.dyl" Line="130" Column="140" />
+      <File FileName="parser/parserflags.dyl" Line="91" Column="26" />
       <File FileName="tokenizer.AST.dyl" Line="29" Column="32" />
-      <File FileName="ast/interfaces.dyl" Line="51" Column="10" />
+      <File FileName="ast/interfaces.dyl" Line="80" Column="18" />
       <File FileName="ast/includestmt.dyl" Line="1" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="841" Column="49" />
       <File FileName="dnu/parseu.dyl" Line="241" Column="24" />
@@ -99,9 +99,7 @@
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
-            <Node name="ast" expanded="True">
-              <Node name="literals.dyl" selected="True" />
-            </Node>
+            <Node name="ast" expanded="True" />
             <Node name="codegen" expanded="True" />
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
@@ -113,7 +111,9 @@
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>
-          <Node name="template" expanded="True" />
+          <Node name="template" expanded="True">
+            <Node name="template.dyl" selected="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
