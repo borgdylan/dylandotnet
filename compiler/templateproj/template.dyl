@@ -135,7 +135,7 @@ class public auto ansi OTTEnumerator implements IEnumerator<of integer>, IEnumer
 	
 	method public hidebysig virtual newslot final boolean MoveNext()
 		if _Current < 10 then
-			_Current = _Current + 1
+			_Current++
 			return true
 		else
 			return false
@@ -434,7 +434,7 @@ class public auto ansi Program
 		var tl as C5.IList<of long> = new C5.LinkedList<of long>()
 		var tli as integer = 0
 		do until tli = 10
-			tli = tli + 1
+			tli++
 			var dt as DateTime = DateTime::get_Now()
 			tl::Add(dt::get_Ticks() / TimeSpan::TicksPerMillisecond)
 			Thread::Sleep(500)
@@ -586,7 +586,9 @@ class public auto ansi Program
 			+ "a continued " _
 			+ "line")
 		var dd = DateTime::get_Now() - DateTime::get_Now()
-		var d = ++test2()::get_Rank()
+		var d = test2()::get_Rank()
+		d++
+		d--
 	end method
 
 end class

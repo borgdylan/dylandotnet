@@ -54,9 +54,9 @@ class public auto ansi beforefieldinit Evaluator
 		var i as integer = -1
 		var tok as Token = null
 
-		do until i = (exp::Tokens::get_Count() - 1)
+		do until i = --exp::Tokens::get_Count()
 
-			i = i + 1
+			i = ++i
 			tok = exp::Tokens::get_Item(i)
 
 			if ((tok is Op) or (tok is LParen) or (tok is RParen)) = false then
@@ -118,21 +118,21 @@ class public auto ansi beforefieldinit Evaluator
 		elseif exp::Tokens::get_Count() = 0 then
 			return null
 		end if
-		var len as integer = exp::Tokens::get_Count() - 1
+		var len as integer = --exp::Tokens::get_Count()
 		do until i = len
-			i = i + 1
+			i = ++i
 			tok = exp::Tokens::get_Item(i)
 			if tok is Op then
 				if i >= 2 then
 					optok = $Op$tok
-					j = i - 1
+					j = --i
 					tok2 = exp::Tokens::get_Item(j)
 					exp::RemToken(j)
-					len = len - 1
-					j = j - 1
+					len = --len
+					j = --j
 					tok = exp::Tokens::get_Item(j)
 					exp::RemToken(j)
-					len =  len - 1
+					len = --len
 					optok::LChild = tok
 					optok::RChild = tok2
 					exp::Tokens::set_Item(j,optok)
@@ -257,7 +257,7 @@ class public auto ansi beforefieldinit Evaluator
 			idt::IsRef = false
 		end if
 		if idtnamarr[0] = "me" then
-			i = i + 1
+			i = ++i
 			idtb1 = true
 		end if
 			
@@ -275,10 +275,10 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 		end if
 
-		do until i = (idtnamarr[l] - 1)
-			i = i + 1
-			AsmFactory::AddrFlg = (i != (idtnamarr[l] - 1))
-			AsmFactory::ForcedAddrFlg = (i == (idtnamarr[l] - 1)) and idt::IsRef and (idt::IsArr == false)
+		do until i = --idtnamarr[l]
+			i = ++i
+			AsmFactory::AddrFlg = i != --idtnamarr[l]
+			AsmFactory::ForcedAddrFlg = (i == --idtnamarr[l]) and idt::IsRef and (idt::IsArr == false)
 			
 			if !idtb2 then
 				if !idtb1 then
@@ -419,11 +419,11 @@ class public auto ansi beforefieldinit Evaluator
 			mntok::IsRef = false
 		end if
 		if mnstrarr[0] = "me" then
-			i = i + 1
+			i = ++i
 			idtb1 = true
 			mcrestrord = 3
 		elseif mnstrarr[0] = "mybase" then
-			i = i + 1
+			i = ++i
 			idtb1 = true
 			mcrestrord = 3
 			baseflg = true
@@ -448,7 +448,7 @@ class public auto ansi beforefieldinit Evaluator
 				AsmFactory::AddrFlg = true
 
 				do until i = len
-					i = i + 1
+					i = ++i
 
 					if !idtb2 then
 						if !idtb1 then
@@ -530,7 +530,7 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 		end if
 
-		i = i + 1
+		i = ++i
 		//instance load for local methods of current isntance
 
 		if !mectorflg then
@@ -677,7 +677,7 @@ class public auto ansi beforefieldinit Evaluator
 			len = mnstrarr[l] - 2
 
 			if mnstrarr[0] = "me" then
-				i = i + 1
+				i = ++i
 				idtb1 = true
 				mcrestrord = 3
 			end if
@@ -686,7 +686,7 @@ class public auto ansi beforefieldinit Evaluator
 				AsmFactory::AddrFlg = true
 
 				do until i = len
-					i = i + 1
+					i = ++i
 					if !idtb2 then
 						if !idtb1 then
 							mcvr = SymTable::FindVar(mnstrarr[i])
@@ -773,7 +773,7 @@ class public auto ansi beforefieldinit Evaluator
 				AsmFactory::AddrFlg = false
 			end do
 
-			i = i + 1
+			i = ++i
 			//instance load for local methods of current isntance
 			if !idtb2 then
 				if emt then
@@ -1002,7 +1002,7 @@ class public auto ansi beforefieldinit Evaluator
 					
 					var aii as integer = -1
 					foreach elem in aictok::Elements
-						aii = aii + 1
+						aii = ++aii
 						if emt then
 							ILEmitter::EmitDup()
 							ILEmitter::EmitLdcI4(aii)
@@ -1022,7 +1022,7 @@ class public auto ansi beforefieldinit Evaluator
 					
 					var aii as integer = -1
 					foreach elem in aictok::Elements
-						aii = aii + 1
+						aii = ++aii
 						if emt then
 							ILEmitter::EmitDup()
 						end if
@@ -1161,7 +1161,7 @@ class public auto ansi beforefieldinit Evaluator
 		var isbyref as boolean = false
 	
 		if idtnamarr[0] = "me" then
-			i = i + 1
+			i = ++i
 			idtb1 = true
 			restrord = 3
 		end if
@@ -1185,8 +1185,8 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 
 		if idt::IsArr or isbyref then
-			restrord = restrord - 1
-			len = len + 1
+			restrord = --restrord
+			len = ++len
 		end if
 
 		vr = null
@@ -1194,7 +1194,7 @@ class public auto ansi beforefieldinit Evaluator
 			AsmFactory::AddrFlg = true
 	
 			do until i = len
-				i = i + 1
+				i = ++i
 	
 				if !idtb2 then
 					if !idtb1 then
@@ -1268,7 +1268,7 @@ class public auto ansi beforefieldinit Evaluator
 		//skip this ptr load for array and byref cases
 		if !idt::IsArr and !isbyref then
 			//this pointer load in case of instance local field store
-			i = i + 1
+			i = ++i
 			if !idtb2 then
 				if !idtb1 then
 					SymTable::StoreFlg = true

@@ -141,7 +141,7 @@ class public auto ansi TypeList
 			return null
 		else
 			var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
-			var nam as string = mnstrarr[mnstrarr[l] - 1]
+			var nam as string = mnstrarr[--mnstrarr[l]]
 		
 			var mtdinfo as MethodInfo = ti::GetMethod(nam,paramst)
 			if mtdinfo != null then
@@ -170,8 +170,8 @@ class public auto ansi TypeList
 						var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
 						var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
 						var i as integer = -1
-						do until i = (genparams[l] - 1)
-							i = i + 1
+						do until i = --genparams[l]
+							i = ++i
 							genparams[i] = Helpers::CommitEvalTTok(gmn::Params[i])
 						end do
 						mtdinfo = Loader::LoadGenericMethod(ti::InhTyp, nam, genparams, paramst)

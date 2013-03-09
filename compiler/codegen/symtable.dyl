@@ -159,16 +159,16 @@ class public auto ansi static SymTable
 
 		var vr as TypeArr = new TypeArr() {Arr = arr}
 		var i as integer = -1
-		var destarr as TypeArr[] = new TypeArr[TypLst[l] + 1]
+		var destarr as TypeArr[] = new TypeArr[++TypLst[l]]
 
-		do until i = (TypLst[l] - 1)
-			i = i + 1
+		do until i = --TypLst[l]
+			i = ++i
 			destarr[i] = TypLst[i]
 		end do
 
 		destarr[TypLst[l]] = vr
 		TypLst = destarr
-		return TypLst[l] - 1
+		return --TypLst[l]
 	end method
 
 	[method: ComVisible(false)]
@@ -177,11 +177,11 @@ class public auto ansi static SymTable
 		var b as TypeArr = TypLst[0]
 		var i as integer = 0
 		var j as integer
-		var destarr as TypeArr[] = new TypeArr[TypLst[l] - 1]
+		var destarr as TypeArr[] = new TypeArr[--TypLst[l]]
 
-		do until i >= (TypLst[l] - 1)
+		do until i >= --TypLst[l]
 			j = i
-			i = i + 1
+			i = ++i
 			destarr[j] = TypLst[i]
 		end do
 
@@ -238,10 +238,10 @@ class public auto ansi static SymTable
 	method public static void AddNestedFld(var nme as string, var typ as IKVM.Reflection.Type, var fld as FieldBuilder)
 
 		var i as integer = -1
-		var destarr as FieldItem[] = new FieldItem[NestedFldLst[l] + 1]
+		var destarr as FieldItem[] = new FieldItem[++NestedFldLst[l]]
 
-		do until i = NestedFldLst[l] - 1
-			i = i + 1
+		do until i = --NestedFldLst[l]
+			i = ++i
 			destarr[i] = NestedFldLst[i]
 		end do
 
@@ -259,10 +259,10 @@ class public auto ansi static SymTable
 	method public static void AddNestedMet(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var met as MethodBuilder)
 
 		var i as integer = -1
-		var destarr as MethodItem[] = new MethodItem[NestedMetLst[l] + 1]
+		var destarr as MethodItem[] = new MethodItem[++NestedMetLst[l]]
 
-		do until i = (NestedMetLst[l] - 1)
-			i = i + 1
+		do until i = --NestedMetLst[l]
+			i = ++i
 			destarr[i] = NestedMetLst[i]
 		end do
 
@@ -280,13 +280,13 @@ class public auto ansi static SymTable
 	method public static void AddNestedCtor(var ptyps as IKVM.Reflection.Type[], var met as ConstructorBuilder)
 		var vr as CtorItem = new CtorItem(ptyps, met)
 		var len as integer = NestedCtorLst[l]
-		var destl as integer = len + 1
-		var stopel as integer = len - 1
+		var destl as integer = ++len
+		var stopel as integer = --len
 		var i as integer = -1
 		var destarr as CtorItem[] = new CtorItem[destl]
 
 		do until i = stopel
-			i = i + 1
+			i = ++i
 			destarr[i] = NestedCtorLst[i]
 		end do
 
@@ -384,10 +384,10 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void AddLbl(var nam as string)
 		var i as integer = -1
-		var destarr as LabelItem[] = new LabelItem[LblLst[l] + 1]
+		var destarr as LabelItem[] = new LabelItem[++LblLst[l]]
 
-		do until i = (LblLst[l] - 1)
-			i = i + 1
+		do until i = --LblLst[l]
+			i = ++i
 			destarr[i] = LblLst[i]
 		end do
 
@@ -473,8 +473,8 @@ class public auto ansi static SymTable
 	method public static LabelItem FindLbl(var nam as string)
 
 		var i as integer = -1
-		do until i = (LblLst[l] - 1)
-			i = i + 1
+		do until i = --LblLst[l]
+			i = ++i
 			if nam = LblLst[i]::LblName then
 				return LblLst[i]
 			end if
@@ -495,8 +495,8 @@ class public auto ansi static SymTable
 				return true
 			end if
 			var i as integer = -1
-			do until i = (arra[l] - 1)
-				i = i + 1
+			do until i = --arra[l]
+				i = ++i
 				if arra[i]::IsAssignableFrom(arrb[i]) = false then
 					return false
 				end if

@@ -24,7 +24,7 @@ class public auto ansi StmtReader
 		
 		var i as integer = -1
 		foreach param in stm::Ctor::Params
-			i = i + 1
+			i = ++i
 			if param::Tokens::get_Item(0) is Literal then
 				var lit as Literal = $Literal$param::Tokens::get_Item(0)
 				tarr[i] = Helpers::CommitEvalTTok(lit::LitTyp)
@@ -54,7 +54,7 @@ class public auto ansi StmtReader
 		
 		i = -1
 		foreach curpair in stm::Pairs
-			i = i + 1
+			i = ++i
 			var multflg as boolean = true
 			tempprop = Helpers::GetExtProp(typ,curpair::Name::Value)
 			if tempprop != null then
@@ -314,8 +314,8 @@ class public auto ansi StmtReader
 				SymTable::TypeLst::AddType(ti)
 
 				i = -1
-				do until i = (clss::ImplInterfaces[l] - 1)
-					i = i + 1
+				do until i = --clss::ImplInterfaces[l]
+					i = ++i
 					interftyp = Helpers::CommitEvalTTok(clss::ImplInterfaces[i])
 					if interftyp = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::ImplInterfaces[i]::Value + "' is not defined or is not accessible.")
@@ -406,7 +406,7 @@ class public auto ansi StmtReader
 			var dtarr2 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[dtarr[l] + 2]
 			Array::Copy(dtarr,dtarr2,$long$dtarr[l])
 			dtarr2[dtarr2[l] - 2] = ILEmitter::Univ::Import(gettype AsyncCallback)
-			dtarr2[dtarr2[l] - 1] = ILEmitter::Univ::Import(gettype object)
+			dtarr2[--dtarr2[l]] = ILEmitter::Univ::Import(gettype object)
 
 			AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod("BeginInvoke", dema, ILEmitter::Univ::Import(gettype IAsyncResult), dtarr2)
 			AsmFactory::InitDelMet()
@@ -415,17 +415,17 @@ class public auto ansi StmtReader
 
 			var iter as integer = -1
 			var lis as IList<of IKVM.Reflection.Type> = new List<of IKVM.Reflection.Type>()
-			do until iter = (dtarr[l] - 1)
-				iter = iter + 1
+			do until iter = --dtarr[l]
+				iter = ++iter
 				if dtarr[iter]::get_IsByRef() then
 					lis::Add(dtarr[iter])
 				end if
 			end do
 			dtarr = Enumerable::ToArray<of IKVM.Reflection.Type>(lis)
 
-			var dtarr3 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[dtarr[l] + 1]
+			var dtarr3 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[++dtarr[l]]
 			Array::Copy(dtarr,dtarr3,$long$dtarr[l])
-			dtarr3[dtarr3[l] - 1] = ILEmitter::Univ::Import(gettype IAsyncResult)
+			dtarr3[--dtarr3[l]] = ILEmitter::Univ::Import(gettype IAsyncResult)
 
 			AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod("EndInvoke", dema, drettyp, dtarr3)
 			AsmFactory::InitDelMet()
@@ -530,7 +530,7 @@ class public auto ansi StmtReader
 				if mtssnamarr::get_Count() > 1 then
 					//Console::WriteLine(mtssnamarr::get_Count())
 					overldnam = mtssnamarr::get_Last()
-					typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", mtssnamarr::View(0,mtssnamarr::get_Count() - 1)::ToArray())))
+					typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", mtssnamarr::View(0,--mtssnamarr::get_Count())::ToArray())))
 					mtssnamstr = typ::ToString() + "." + overldnam
 				end if
 				
@@ -615,7 +615,7 @@ class public auto ansi StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curv::VarTyp::Value + "' is not defined.")
 			end if
 			ILEmitter::DeclVar(curv::VarName::Value, vtyp)
-			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			ILEmitter::LocInd = ++ILEmitter::LocInd
 			SymTable::AddVar(curv::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 		elseif stm is VarAsgnStmt then
 			var curva as VarAsgnStmt = $VarAsgnStmt$stm
@@ -624,7 +624,7 @@ class public auto ansi StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curva::VarTyp::Value + "' is not defined.")
 			end if
 			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
-			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			ILEmitter::LocInd = ++ILEmitter::LocInd
 			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 			new Evaluator()::StoreEmit(curva::VarName, curva::RExpr)
 		elseif stm is InfVarAsgnStmt then
@@ -632,7 +632,7 @@ class public auto ansi StmtReader
 			eval = new Evaluator()
 			vtyp = eval::EvaluateType(curva::RExpr)
 			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
-			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			ILEmitter::LocInd = ++ILEmitter::LocInd
 			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 			eval::StoreEmit(curva::VarName, curva::RExpr)
 		elseif stm is NSStmt then
@@ -780,7 +780,7 @@ class public auto ansi StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + cats::ExTyp::Value + "' is not defined.")
 			end if
 			ILEmitter::DeclVar(cats::ExName::Value, vtyp)
-			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			ILEmitter::LocInd = ++ILEmitter::LocInd
 			SymTable::AddVar(cats::ExName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 			ILEmitter::EmitCatch(vtyp)
 			ILEmitter::EmitStloc(SymTable::FindVar(cats::ExName::Value)::Index)
@@ -800,7 +800,7 @@ class public auto ansi StmtReader
 			if mtds != null then
 				ILEmitter::EmitCallvirt(mtds[0])
 				ILEmitter::DeclVar(String::Empty, mtds[0]::get_ReturnType())
-				ILEmitter::LocInd = ILEmitter::LocInd + 1
+				ILEmitter::LocInd = ++ILEmitter::LocInd
 				var ien as integer = ILEmitter::LocInd
 				ILEmitter::EmitStloc(ien)
 				SymTable::AddLoop()
@@ -809,7 +809,7 @@ class public auto ansi StmtReader
 				ILEmitter::EmitCallvirt(mtds[1])
 				ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
 				ILEmitter::DeclVar(festm::Iter::Value, mtds[2]::get_ReturnType())
-				ILEmitter::LocInd = ILEmitter::LocInd + 1
+				ILEmitter::LocInd = ++ILEmitter::LocInd
 				SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, mtds[2]::get_ReturnType(), ILEmitter::LineNr)
 				ILEmitter::EmitLdloc(ien)
 				ILEmitter::EmitCallvirt(mtds[2])
@@ -818,7 +818,7 @@ class public auto ansi StmtReader
 				mtds = Helpers::ProcessForeach2(AsmFactory::Type02)
 				if mtds != null then
 					ILEmitter::DeclVar(String::Empty, AsmFactory::Type02)
-					ILEmitter::LocInd = ILEmitter::LocInd + 1
+					ILEmitter::LocInd = ++ILEmitter::LocInd
 					var ien as integer = ILEmitter::LocInd
 					ILEmitter::EmitStloc(ien)
 					SymTable::AddLoop()
@@ -827,7 +827,7 @@ class public auto ansi StmtReader
 					ILEmitter::EmitCallvirt(mtds[0])
 					ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
 					ILEmitter::DeclVar(festm::Iter::Value, mtds[1]::get_ReturnType())
-					ILEmitter::LocInd = ILEmitter::LocInd + 1
+					ILEmitter::LocInd = ++ILEmitter::LocInd
 					SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, mtds[1]::get_ReturnType(), ILEmitter::LineNr)
 					ILEmitter::EmitLdloc(ien)
 					ILEmitter::EmitCallvirt(mtds[1])
@@ -871,7 +871,7 @@ class public auto ansi StmtReader
 			var propoverldnam as string = String::Empty
 			if prssnamarr::get_Count() > 1 then
 				propoverldnam = prssnamarr::get_Last()
-				typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", prssnamarr::View(0,prssnamarr::get_Count() - 1)::ToArray())))
+				typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", prssnamarr::View(0,--prssnamarr::get_Count())::ToArray())))
 				AsmFactory::CurnExplImplType = typ::ToString()
 				prssnamstr = typ::ToString() + "." + propoverldnam
 			end if
@@ -974,7 +974,7 @@ class public auto ansi StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Locks should only be taken on Objects and not Valuetypes.")
 			end if
 			ILEmitter::DeclVar(String::Empty, ILEmitter::Univ::Import(gettype object))
-			ILEmitter::LocInd = ILEmitter::LocInd + 1
+			ILEmitter::LocInd = ++ILEmitter::LocInd
 			var lockee as integer = ILEmitter::LocInd
 			ILEmitter::EmitStloc(lockee)
 			SymTable::AddLock(lockee)
@@ -988,6 +988,16 @@ class public auto ansi StmtReader
 			ILEmitter::EmitEndTry()
 			SymTable::PopLock()
 			SymTable::PopScope()
+		elseif stm is IncStmt then
+			var ic as IncStmt = $IncStmt$stm
+			ic::NumVar::set_OrdOp("inc")
+			ic::NumVar::set_DoInc(true)
+			new Evaluator()::StoreEmit(ic::NumVar, new Expr() {AddToken(ic::NumVar)})
+		elseif stm is DecStmt then
+			var dc as DecStmt = $DecStmt$stm
+			dc::NumVar::set_OrdOp("dec")
+			dc::NumVar::set_DoDec(true)
+			new Evaluator()::StoreEmit(dc::NumVar, new Expr() {AddToken(dc::NumVar)})
 		else
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
 		end if

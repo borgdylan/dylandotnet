@@ -25,7 +25,7 @@ class public auto ansi IncStmt extends Stmt
 
 	method public void IncStmt()
 		me::ctor()
-		NumVar = new Ident()
+		NumVar = null
 	end method
 
 end class
@@ -36,7 +36,7 @@ class public auto ansi DecStmt extends Stmt
 
 	method public void DecStmt()
 		me::ctor()
-		NumVar = new Ident()
+		NumVar = null
 	end method
 
 end class

@@ -11,10 +11,10 @@ class public auto ansi static ParseUtils
 	method private static string[] addelem(var srcarr as string[], var eltoadd as string)
 
 		var i as integer = -1
-		var destarr as string[] = new string[srcarr[l] + 1]
+		var destarr as string[] = new string[++srcarr[l]]
 
-		do until i = (srcarr[l] - 1)
-			i = i + 1
+		do until i = --srcarr[l]
+			i = ++i
 			destarr[i] = srcarr[i]
 		end do
 
@@ -25,10 +25,10 @@ class public auto ansi static ParseUtils
 
 	method private static string[] remelem(var srcarr as string[])
 		var i as integer = -1
-		var destarr as string[] = new string[srcarr[l] - 1]
+		var destarr as string[] = new string[--srcarr[l]]
 
 		do while (srcarr[l] - 2) >= i
-			i = i + 1
+			i = ++i
 			destarr[i] = srcarr[i]
 		end do
 	
@@ -42,10 +42,10 @@ class public auto ansi static ParseUtils
 		var ch as string = string::Empty
 		var acc as string = string::Empty
 		var i as integer = -1
-		var len as integer = StringToParse::get_Length() - 1
+		var len as integer = --StringToParse::get_Length()
 	
 		do until i = len
-			i = i + 1
+			i = ++i
 			ch = $string$StringToParse::get_Chars(i)
 	
 			if ch = c"\q" then
@@ -85,10 +85,10 @@ class public auto ansi static ParseUtils
 		var ch as string = string::Empty
 		var acc as string = string::Empty
 		var i as integer = -1
-		var len as integer = StringToParse::get_Length() - 1
+		var len as integer = --StringToParse::get_Length()
 	
 		do until i = len
-			i = i + 1
+			i = ++i
 			ch = $string$StringToParse::get_Chars(i)
 	
 			if ch = c"\q" then
@@ -129,10 +129,10 @@ class public auto ansi static ParseUtils
 		var ch as string = string::Empty
 		var acc as string = string::Empty
 		var i as integer = -1
-		var len as integer = StringToParse::get_Length() - 1
+		var len as integer = --StringToParse::get_Length()
 		
 		do until i = len
-			i = i + 1
+			i = ++i
 			ch = $string$StringToParse::get_Chars(i)
 
 			if ch = c"\q" then
@@ -237,15 +237,15 @@ class public auto ansi static ParseUtils
 		var sb as StringBuilder = new StringBuilder()
 		var i as integer = -1
 		var cc as char = 'a'
-		var len as integer = escstr::get_Length() - 1
+		var len as integer = --escstr::get_Length()
 		var buf as string = string::Empty
 		
 		do until i >= len
-			i = i + 1
+			i = ++i
 			cc = escstr::get_Chars(i)
 			if cc = '\' then
 				if i < len then
-					i = i + 1
+					i = ++i
 					cc = escstr::get_Chars(i)
 					if cc = 's' then
 						sb::Append(c'\s')
@@ -271,26 +271,26 @@ class public auto ansi static ParseUtils
 						sb::Append(c'\v')
 					elseif cc = 'x' then
 						if i < (len - 3) then
-							i = i + 1
-							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(i + 1)) and IsHexDigit(escstr::get_Chars(i + 2)) and IsHexDigit(escstr::get_Chars(i + 3)) then
-								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(i + 1) + $string$escstr::get_Chars(i + 2) + $string$escstr::get_Chars(i + 3)
+							i = ++i
+							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) and IsHexDigit(escstr::get_Chars(i + 2)) and IsHexDigit(escstr::get_Chars(i + 3)) then
+								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i) + $string$escstr::get_Chars(i + 2) + $string$escstr::get_Chars(i + 3)
 								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
 								i = i + 3
-							elseif IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(i + 1)) then
-								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(i + 1)
+							elseif IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) then
+								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
 								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
-								i = i + 1
+								i = ++i
 							else
-								i = i - 1
+								i = --i
 							end if
-						elseif i < (len - 1) then
-							i = i + 1
-							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(i + 1)) then
-								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(i + 1)
+						elseif i < --len then
+							i = ++i
+							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) then
+								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
 								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
-								i = i + 1
+								i = ++i
 							else
-								i = i - 1
+								i = --i
 							end if
 						end if
 					else

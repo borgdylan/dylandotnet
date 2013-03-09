@@ -151,8 +151,8 @@ class public auto ansi static Loader
 			return IKVM.Reflection.Type::EmptyTypes
 		end if
 
-		do until i = (t[l] - 1)
-			i = i + 1
+		do until i = --t[l]
+			i = ++i
 			arr[i] = t[i]::get_ParameterType()
 		end do
 
@@ -171,8 +171,8 @@ class public auto ansi static Loader
 		if mtdinfo = null then
 			ints = typ::GetInterfaces()
 			if ints != null then
-				do until i = (ints[l] - 1)
-					i = i + 1
+				do until i = --ints[l]
+					i = ++i
 					mtdinfo = ints[i]::GetMethod(name)
 					if mtdinfo != null then
 						break
@@ -313,10 +313,10 @@ class public auto ansi static Loader
 	method public static MethodInfo[] addelemmtdinfo(var srcarr as MethodInfo[], var eltoadd as MethodInfo)
 
 		var i as integer = -1
-		var destarr as MethodInfo[] = new MethodInfo[srcarr[l] + 1]
+		var destarr as MethodInfo[] = new MethodInfo[++srcarr[l]]
 
-		do until i = (srcarr[l] - 1)
-			i = i + 1
+		do until i = --srcarr[l]
+			i = ++i
 			destarr[i] = srcarr[i]
 		end do
 
@@ -350,8 +350,8 @@ class public auto ansi static Loader
 			if t1[l] = 0 then
 				return true
 			end if
-			do until i = (t1[l] - 1)
-				i = i + 1
+			do until i = --t1[l]
+				i = ++i
 				if !t1[i]::get_ParameterType()::Equals(t2[i]) then
 					return false
 				end if

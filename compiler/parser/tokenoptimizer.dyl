@@ -92,12 +92,12 @@ class public auto ansi TokenOptimizer
 			if GenLvl = 0 then
 				return new GtOp() {Line = tok::Line, Value = tok::Value}
 			else
-				GenLvl = GenLvl - 1
+				GenLvl = --GenLvl
 				return new RAParen() {Line = tok::Line, Value = tok::Value}
 			end if
 		elseif tok::Value = "<" then
 			if lkahead::Value = "of" then
-				GenLvl = GenLvl + 1
+				GenLvl = ++GenLvl
 				return new LAParen() {Line = tok::Line, Value = tok::Value}
 			else
 				return new LtOp() {Line = tok::Line, Value = tok::Value}
@@ -129,10 +129,10 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value = "]" then
 			return new RSParen() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "{" then
-			CurlyLvl = CurlyLvl + 1
+			CurlyLvl = ++CurlyLvl
 			return new LCParen() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "}" then
-			CurlyLvl = CurlyLvl - 1
+			CurlyLvl = --CurlyLvl
 			return new RCParen() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "|" then
 			return new Pipe() {Line = tok::Line, Value = tok::Value}

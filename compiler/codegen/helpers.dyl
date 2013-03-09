@@ -446,8 +446,8 @@ class public auto ansi static Helpers
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Type " + tstr + " could not be found!!")
 			end if
 
-			do until i = (pttoks[l] - 1)
-				i = i + 1
+			do until i = --pttoks[l]
+				i = ++i
 				temptyp = CommitEvalTTok(pttoks[i])
 				if temptyp = null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Argument " + pttoks[i]::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
@@ -489,8 +489,8 @@ class public auto ansi static Helpers
 		var curp as VarExpr = null
 		var typ as IKVM.Reflection.Type = null
 
-		do until i = (ps[l] - 1)
-			i = i + 1
+		do until i = --ps[l]
+			i = ++i
 			curp = $VarExpr$ps[i]
 			typ = CommitEvalTTok(curp::VarTyp)
 			if typ = null then
@@ -511,8 +511,8 @@ class public auto ansi static Helpers
 		var i as integer = -1
 		var curp as VarExpr = null
 		
-		do until i = (ps[l] - 1)
-			i = i + 1
+		do until i = --ps[l]
+			i = ++i
 			curp = $VarExpr$ps[i]
 			var pa as ParameterAttributes = ParameterAttributes::None
 			
@@ -526,15 +526,15 @@ class public auto ansi static Helpers
 				end if	
 			end if
 			
-			var pb as ParameterBuilder = ILEmitter::Met::DefineParameter(i + 1, pa, curp::VarName::Value)
+			var pb as ParameterBuilder = ILEmitter::Met::DefineParameter(++i, pa, curp::VarName::Value)
 			
-			if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), i + 1) then
-				foreach ca in SymTable::ParameterCALst::get_Item(i + 1)
+			if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(),++i) then
+				foreach ca in SymTable::ParameterCALst::get_Item(++i)
 					pb::SetCustomAttribute(ca)
 				end for
 			end if
 			
-			ILEmitter::ArgInd = ILEmitter::ArgInd + 1
+			ILEmitter::ArgInd = ++ILEmitter::ArgInd
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 		end do
 		
@@ -547,8 +547,8 @@ class public auto ansi static Helpers
 		var i as integer = -1
 		var curp as VarExpr = null
 		
-		do until i = (ps[l] - 1)
-			i = i + 1
+		do until i = --ps[l]
+			i = ++i
 			curp = $VarExpr$ps[i]
 			var pa as ParameterAttributes = ParameterAttributes::None
 			
@@ -562,15 +562,15 @@ class public auto ansi static Helpers
 				end if	
 			end if
 			
-			var pb as ParameterBuilder = ILEmitter::Constr::DefineParameter(i + 1, pa, curp::VarName::Value)
+			var pb as ParameterBuilder = ILEmitter::Constr::DefineParameter(++i, pa, curp::VarName::Value)
 			
-			if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), i + 1) then
-				foreach ca in SymTable::ParameterCALst::get_Item(i + 1)
+			if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(),++i) then
+				foreach ca in SymTable::ParameterCALst::get_Item(++i)
 					pb::SetCustomAttribute(ca)
 				end for
 			end if
 			
-			ILEmitter::ArgInd = ILEmitter::ArgInd + 1
+			ILEmitter::ArgInd = ++ILEmitter::ArgInd
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 		end do
 		
@@ -1135,8 +1135,7 @@ class public auto ansi static Helpers
 		//end conv overload block
 
 		if sink::Equals(ILEmitter::Univ::Import(gettype object)) then
-			typ = ILEmitter::Univ::Import(gettype ValueType)
-			if typ::IsAssignableFrom(source) then
+			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
 				return
 			else
@@ -1144,10 +1143,16 @@ class public auto ansi static Helpers
 				return
 			end if
 		end if
+		
+		if sink::get_IsInterface() then
+			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(source) and sink::IsAssignableFrom(source) then
+				ILEmitter::EmitBox(source)
+				return
+			end if
+		end if
 
 		if source::Equals(ILEmitter::Univ::Import(gettype object)) then
-			typ = ILEmitter::Univ::Import(gettype ValueType)
-			if typ::IsAssignableFrom(sink) then
+			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(sink) then
 				ILEmitter::EmitUnboxAny(sink)
 				return
 			end if
@@ -1346,7 +1351,7 @@ class public auto ansi static Helpers
 	[method: ComVisible(false)]
 	method public static MethodInfo GetLocMet(var mn as MethodNameTok, var typs as IKVM.Reflection.Type[])
 		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
-		var nam as string = mnstrarr[mnstrarr[l] - 1]
+		var nam as string = mnstrarr[--mnstrarr[l]]
 		var metinf as MethodInfo = null
 		var meti as MethodInfo = SymTable::FindMet(nam, typs)
 
@@ -1366,8 +1371,8 @@ class public auto ansi static Helpers
 					var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
 					var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
 					var i as integer = -1
-					do until i = (genparams[l] - 1)
-						i = i + 1
+					do until i = --genparams[l]
+						i = ++i
 						genparams[i] = CommitEvalTTok(gmn::Params[i])
 					end do
 					metinf = Loader::LoadGenericMethod(AsmFactory::CurnInhTyp, nam, genparams, typs)
@@ -1511,13 +1516,13 @@ class public auto ansi static Helpers
 	[method: ComVisible(false)]
 	method public static MethodInfo GetExtMet(var t as IKVM.Reflection.Type, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
 		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
-		var name as string = mnstrarr[mnstrarr[l] - 1]
+		var name as string = mnstrarr[--mnstrarr[l]]
 		if mn is GenericMethodNameTok then
 			var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
 			var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
 			var i as integer = -1
-			do until i = (genparams[l] - 1)
-				i = i + 1
+			do until i = --genparams[l]
+				i = ++i
 				genparams[i] = CommitEvalTTok(gmn::Params[i])
 			end do
 			return Loader::LoadGenericMethod(t, name, genparams, paramtyps)

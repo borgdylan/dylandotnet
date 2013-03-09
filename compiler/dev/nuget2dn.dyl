@@ -1,6 +1,6 @@
 //The NuGet helper for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v.11.2.9.9 or later
+//compile with dylan.NET v.11.3.1.3 or later
 
 //    nuget2dn.exe dylan.NET.NuGet Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -28,7 +28,7 @@ end #if
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>")]
 
 assembly nuget2dn exe
-ver 11.3.1.2
+ver 11.3.1.3
 
 namespace dylan.NET.NuGet
 
@@ -48,7 +48,7 @@ namespace dylan.NET.NuGet
 		[method: STAThread()]
 		method public static void main(var args as string[])
 		
-			Console::WriteLine("dylan.NET NuGet Helper v. 11.3.1.1 Beta")
+			Console::WriteLine("dylan.NET NuGet Helper v. 11.3.1.3 Beta")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2012 Dylan Borg")
 			if args[l] < 1 then

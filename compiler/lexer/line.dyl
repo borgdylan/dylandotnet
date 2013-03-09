@@ -334,7 +334,7 @@ class public auto ansi Line
 	
 		var curchar as string = string::Empty
 		var lachar as string = string::Empty
-		var len as integer = str::get_Length() - 1
+		var len as integer = --str::get_Length()
 		
 		var buf as string = string::Empty
 		var cuttok as boolean = false
@@ -351,8 +351,8 @@ class public auto ansi Line
 		
 		place loop
 		
-		i = i + 1
-		j = i + 1
+		i = ++i
+		j = ++i
 		cuttok = false
 		
 		if scl = false then
@@ -397,7 +397,7 @@ class public auto ansi Line
 		if buf::get_Length() != 0 then
 			stm::AddToken(new Token() {Value = buf, Line = stm::Line})
 		end if
-		buf = String::Empty
+		buf = string::Empty
 		
 		return stm
 	

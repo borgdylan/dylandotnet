@@ -126,13 +126,13 @@ class public auto ansi static AsmFactory
 	method public static void AddTypB(var typ as IKVM.Reflection.Emit.TypeBuilder)
 
 		var len as integer = CurnTypList[l]
-		var stopel as integer = len - 1
+		var stopel as integer = --len
 		var i as integer = -1
 
-		var destarr as IKVM.Reflection.Emit.TypeBuilder[] = new IKVM.Reflection.Emit.TypeBuilder[len + 1]
+		var destarr as IKVM.Reflection.Emit.TypeBuilder[] = new IKVM.Reflection.Emit.TypeBuilder[++len]
 
 		do until i = stopel
-			i = i + 1
+			i = ++i
 			destarr[i] = CurnTypList[i]
 		end do
 
@@ -145,13 +145,13 @@ class public auto ansi static AsmFactory
 	method public static void AddTyp(var typ as IKVM.Reflection.Type)
 
 		var len as integer = TypArr[l]
-		var stopel as integer = len - 1
+		var stopel as integer = --len
 		var i as integer = -1
 
-		var destarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[len + 1]
+		var destarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[++len]
 
 		do until i = stopel
-			i = i + 1
+			i = ++i
 			destarr[i] = TypArr[i]
 		end do
 		
@@ -164,13 +164,13 @@ class public auto ansi static AsmFactory
 	method public static void AddGenParamName(var nam as string)
 
 		var len as integer = GenParamNames[l]
-		var stopel as integer = len - 1
+		var stopel as integer = --len
 		var i as integer = -1
 
-		var destarr as string[] = new string[len + 1]
+		var destarr as string[] = new string[++len]
 
 		do until i = stopel
-			i = i + 1
+			i = ++i
 			destarr[i] = GenParamNames[i]
 		end do
 		

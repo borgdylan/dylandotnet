@@ -66,10 +66,10 @@ class public auto ansi StmtOptimizer
 		if b then
 			var exp as Expr = new Expr()
 			var i as integer = 0
-			var len as integer = stm::Tokens::get_Count() - 1
+			var len as integer = --stm::Tokens::get_Count()
 			
 			do until i = len
-				i = i + 1
+				i = ++i
 				var tok as Token = stm::Tokens::get_Item(i)		
 				
 				if tok is ThenTok then
@@ -91,10 +91,10 @@ class public auto ansi StmtOptimizer
 		if b then
 			var exp as Expr = new Expr()
 			var i as integer = 0
-			var len as integer = stm::Tokens::get_Count() - 1
+			var len as integer = --stm::Tokens::get_Count()
 			
 			do until i = len
-				i = i + 1
+				i = ++i
 				var tok as Token = stm::Tokens::get_Item(i)	
 				
 				if tok is ThenTok then
@@ -117,8 +117,8 @@ class public auto ansi StmtOptimizer
 			var exp as Expr = new Expr()
 			var i as integer = 0
 			
-			do until i = (stm::Tokens::get_Count() - 1)
-				i = i + 1
+			do until i = --stm::Tokens::get_Count() 
+				i = ++i
 				exp::AddToken(stm::Tokens::get_Item(i))
 			end do
 			
@@ -137,8 +137,8 @@ class public auto ansi StmtOptimizer
 				var exp as Expr = new Expr()
 				var i as integer = 1
 				
-				do until i = (stm::Tokens::get_Count() - 1)
-					i = i + 1
+				do until i = --stm::Tokens::get_Count() 
+					i = ++i
 					exp::AddToken(stm::Tokens::get_Item(i))
 				end do
 				
@@ -155,8 +155,8 @@ class public auto ansi StmtOptimizer
 			var exp as Expr = new Expr()
 			var i as integer = 0
 			
-			do until i = (stm::Tokens::get_Count() - 1)
-				i = i + 1
+			do until i = --stm::Tokens::get_Count() 
+				i = ++i
 				exp::AddToken(stm::Tokens::get_Item(i))	
 			end do
 			
@@ -175,8 +175,8 @@ class public auto ansi StmtOptimizer
 				var exp as Expr = new Expr()
 				var i as integer = 1
 
-				do until i = (stm::Tokens::get_Count() - 1)
-					i = i + 1
+				do until i = --stm::Tokens::get_Count() 
+					i = ++i
 					exp::AddToken(stm::Tokens::get_Item(i))
 				end do
 				
@@ -193,8 +193,8 @@ class public auto ansi StmtOptimizer
 			var exp as Expr = new Expr()
 			var i as integer = 2
 			
-			do until i = (stm::Tokens::get_Count() - 1)
-				i = i + 1
+			do until i = --stm::Tokens::get_Count() 
+				i = ++i
 				exp::AddToken(stm::Tokens::get_Item(i))	
 			end do
 			
@@ -209,10 +209,10 @@ class public auto ansi StmtOptimizer
 		if b then
 			var exp as Expr = new Expr()
 			var i as integer = 0
-			var len as integer = stm::Tokens::get_Count() - 1
+			var len as integer = --stm::Tokens::get_Count() 
 			
 			do until i = len
-				i = i + 1
+				i = ++i
 				var tok as Token = stm::Tokens::get_Item(i)
 				if tok is ThenTok then
 					break
@@ -232,10 +232,10 @@ class public auto ansi StmtOptimizer
 		if b then
 			var exp as Expr = new Expr()
 			var i as integer = 0
-			var len as integer = stm::Tokens::get_Count() - 1
+			var len as integer = --stm::Tokens::get_Count() 
 			
 			do until i = len
-				i = i + 1
+				i = ++i
 				var tok as Token = stm::Tokens::get_Item(i)
 				if tok is ThenTok then
 					break
@@ -346,14 +346,14 @@ class public auto ansi StmtOptimizer
 		if b then
 			var rets as ReturnStmt = new ReturnStmt() {Line = stm::Line, Tokens = stm::Tokens}
 			var i as integer = 0
-			var len as integer = stm::Tokens::get_Count() - 1
+			var len as integer = --stm::Tokens::get_Count() 
 			
 			if stm::Tokens::get_Count() = 1 then
 				rets::RExp = null
 			elseif stm::Tokens::get_Count() >= 2 then
 				var exp as Expr = new Expr()
 				do
-					i = i + 1
+					i = ++i
 					exp::AddToken(stm::Tokens::get_Item(i))
 				until i = len
 				rets::RExp = new ExprOptimizer(PFlags)::Optimize(exp)
@@ -368,11 +368,11 @@ class public auto ansi StmtOptimizer
 		b = (stm::Tokens::get_Item(0) is ThrowTok) and (stm::Tokens::get_Count() >= 2)
 		if b then
 			var i as integer = 0
-			var len as integer = stm::Tokens::get_Count() - 1
+			var len as integer = --stm::Tokens::get_Count() 
 			var exp as Expr = new Expr()
 			
 			do until i = len
-				i = i + 1
+				i = ++i
 				exp::AddToken(stm::Tokens::get_Item(i))
 			end do
 	
@@ -386,11 +386,11 @@ class public auto ansi StmtOptimizer
 		if b then
 
 			var i as integer = 0
-			var len as integer = stm::Tokens::get_Count() - 1
+			var len as integer = --stm::Tokens::get_Count() 
 			var exp as Expr = new Expr()
 			
 			do until i = len
-				i = i + 1
+				i = ++i
 				exp::AddToken(stm::Tokens::get_Item(i))
 			end do
 			
@@ -608,8 +608,8 @@ class public auto ansi StmtOptimizer
 				var mas as MethodAttrStmt = new MethodAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params::get_Count() - 1)
-					j = j + 1
+				do until j = --mas::Ctor::Params::get_Count()
+					j = ++j
 					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
@@ -618,8 +618,8 @@ class public auto ansi StmtOptimizer
 				var eqf as boolean = false
 				
 				var i as integer = 2
-				do until i = (mas::Tokens::get_Count() - 1)
-					i = i + 1
+				do until i = --mas::Tokens::get_Count()
+					i = ++i
 					if mas::Tokens::get_Item(i) is RSParen then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
@@ -662,8 +662,8 @@ class public auto ansi StmtOptimizer
 				var mas as FieldAttrStmt = new FieldAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params::get_Count() - 1)
-					j = j + 1
+				do until j = --mas::Ctor::Params::get_Count()
+					j = ++j
 					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
@@ -672,8 +672,8 @@ class public auto ansi StmtOptimizer
 				var eqf as boolean = false
 				
 				var i as integer = 2
-				do until i = (mas::Tokens::get_Count() - 1)
-					i = i + 1
+				do until i = --mas::Tokens::get_Count()
+					i = ++i
 					if mas::Tokens::get_Item(i) is RSParen then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
@@ -716,8 +716,8 @@ class public auto ansi StmtOptimizer
 				var mas as ClassAttrStmt = new ClassAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params::get_Count() - 1)
-					j = j + 1
+				do until j = --mas::Ctor::Params::get_Count()
+					j = ++j
 					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
@@ -726,8 +726,8 @@ class public auto ansi StmtOptimizer
 				var eqf as boolean = false
 				
 				var i as integer = 2
-				do until i = (mas::Tokens::get_Count() - 1)
-					i = i + 1
+				do until i = --mas::Tokens::get_Count() 
+					i = ++i
 					if mas::Tokens::get_Item(i) is RSParen then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
@@ -770,8 +770,8 @@ class public auto ansi StmtOptimizer
 				var mas as AssemblyAttrStmt = new AssemblyAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params::get_Count() - 1)
-					j = j + 1
+				do until j = --mas::Ctor::Params::get_Count()
+					j = ++j
 					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
@@ -780,8 +780,8 @@ class public auto ansi StmtOptimizer
 				var eqf as boolean = false
 				
 				var i as integer = 2
-				do until i = (mas::Tokens::get_Count() - 1)
-					i = i + 1
+				do until i = --mas::Tokens::get_Count() 
+					i = ++i
 					if mas::Tokens::get_Item(i) is RSParen then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
@@ -824,8 +824,8 @@ class public auto ansi StmtOptimizer
 				var mas as EventAttrStmt = new EventAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params::get_Count() - 1)
-					j = j + 1
+				do until j = --mas::Ctor::Params::get_Count()
+					j = ++j
 					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
@@ -834,8 +834,8 @@ class public auto ansi StmtOptimizer
 				var eqf as boolean = false
 				
 				var i as integer = 2
-				do until i = (mas::Tokens::get_Count() - 1)
-					i = i + 1
+				do until i = --mas::Tokens::get_Count() 
+					i = ++i
 					if mas::Tokens::get_Item(i) is RSParen then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
@@ -878,8 +878,8 @@ class public auto ansi StmtOptimizer
 				var mas as PropertyAttrStmt = new PropertyAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params::get_Count() - 1)
-					j = j + 1
+				do until j = --mas::Ctor::Params::get_Count()
+					j = ++j
 					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
@@ -888,8 +888,8 @@ class public auto ansi StmtOptimizer
 				var eqf as boolean = false
 				
 				var i as integer = 2
-				do until i = (mas::Tokens::get_Count() - 1)
-					i = i + 1
+				do until i = --mas::Tokens::get_Count() 
+					i = ++i
 					if mas::Tokens::get_Item(i) is RSParen then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
@@ -933,8 +933,8 @@ class public auto ansi StmtOptimizer
 				var mas as ParameterAttrStmt = new ParameterAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line, Index = $integer$pct::Value::Substring(9,pct::Value::get_Length() - 10)}
 				
 				var j as integer = -1
-				do until j = (mas::Ctor::Params::get_Count() - 1)
-					j = j + 1
+				do until j = --mas::Ctor::Params::get_Count()
+					j = ++j
 					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
 				end do
 				
@@ -943,8 +943,8 @@ class public auto ansi StmtOptimizer
 				var eqf as boolean = false
 				
 				var i as integer = 2
-				do until i = (mas::Tokens::get_Count() - 1)
-					i = i + 1
+				do until i = --mas::Tokens::get_Count() 
+					i = ++i
 					if mas::Tokens::get_Item(i) is RSParen then
 						if curvp != null then
 							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
@@ -1009,20 +1009,20 @@ class public auto ansi StmtOptimizer
 			
 			var i as integer = 0
 	
-			do until i >= (stm::Tokens::get_Count() - 1)
-				i = i + 1
+			do until i >= --stm::Tokens::get_Count() 
+				i = ++i
 				if stm::Tokens::get_Item(i) is Attributes.Attribute then
 					clss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
 				else
 					if stm::Tokens::get_Item(i) is ExtendsTok then
-						i = i + 1
+						i = ++i
 						stm::Tokens = eopt::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
 						if !stflg then
 							clss::InhClass = $TypeTok$stm::Tokens::get_Item(i)
 						end if
 					elseif stm::Tokens::get_Item(i) is ImplementsTok then
-						do until i = (stm::Tokens::get_Count() - 1)
-							i = i + 1
+						do until i = --stm::Tokens::get_Count() 
+							i = ++i
 							if (stm::Tokens::get_Item(i) is Comma) = false then
 								stm::Tokens = eopt::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
 								clss::AddInterface($TypeTok$stm::Tokens::get_Item(i))
@@ -1049,19 +1049,19 @@ class public auto ansi StmtOptimizer
 			var len as integer = stm::Tokens::get_Count() - 3
 			
 			do until i = len
-				i = i + 1
+				i = ++i
 				if stm::Tokens::get_Item(i) is Attributes.Attribute then
 					flss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
 				else
-					i = i - 1
+					i = --i
 					break
 				end if
 			end do
 			
-			i = i + 1
+			i = ++i
 			stm::Tokens = eop::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
 			flss::FieldTyp = $TypeTok$stm::Tokens::get_Item(i)
-			i = i + 1
+			i = ++i
 			flss::FieldName = $Ident$stm::Tokens::get_Item(i)
 			return flss
 		end if
@@ -1078,19 +1078,19 @@ class public auto ansi StmtOptimizer
 			var len as integer = stm::Tokens::get_Count() - 3
 			
 			do until i = len
-				i = i + 1
+				i = ++i
 				if stm::Tokens::get_Item(i) is Attributes.Attribute then
 					prss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
 				else
-					i = i - 1
+					i = --i
 					break
 				end if
 			end do
 			
-			i = i + 1
+			i = ++i
 			stm::Tokens = eop::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
 			prss::PropertyTyp = $TypeTok$stm::Tokens::get_Item(i)
-			i = i + 1
+			i = ++i
 			prss::PropertyName = $Ident$stm::Tokens::get_Item(i)
 			return prss
 		end if
@@ -1107,19 +1107,19 @@ class public auto ansi StmtOptimizer
 			var len as integer = stm::Tokens::get_Count() - 3
 			
 			do until i = len
-				i = i + 1
+				i = ++i
 				if stm::Tokens::get_Item(i) is Attributes.Attribute then
 					evss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
 				else
-					i = i - 1
+					i = --i
 					break
 				end if
 			end do
 			
-			i = i + 1
+			i = ++i
 			stm::Tokens = eop::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
 			evss::EventTyp = $TypeTok$stm::Tokens::get_Item(i)
-			i = i + 1
+			i = ++i
 			evss::EventName = $Ident$stm::Tokens::get_Item(i)
 			return evss
 		end if
@@ -1139,41 +1139,41 @@ class public auto ansi StmtOptimizer
 			mtss = new MethodStmt() {Line = stm::Line, Tokens = stm::Tokens}
 			var lvl as integer = 0
 			var i as integer = 0
-			var len as integer = stm::Tokens::get_Count() - 1
+			var len as integer = --stm::Tokens::get_Count() 
 			var bl as boolean = false
 			
 			//loop to get attributes
 			do until i = len
-				i = i + 1
+				i = ++i
 				if stm::Tokens::get_Item(i) is Attributes.Attribute then
 					mtss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
 				else
-					i = i - 1
+					i = --i
 					break
 				end if
 			end do
 			
 			//get return type and name
-			i = i + 1
+			i = ++i
 			
 			stm::Tokens = eop::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
 			mtss::RetTyp = $TypeTok$stm::Tokens::get_Item(i)
 			
-			len = stm::Tokens::get_Count() - 1
-			i = i + 1
+			len = --stm::Tokens::get_Count() 
+			i = ++i
 			
 			if stm::Tokens::get_Item(i) is Ident then
 				mtss::MethodName = $Ident$stm::Tokens::get_Item(i)
 			end if
 			
-			i = i + 1
+			i = ++i
 			
 			if stm::Tokens::get_Item(i) is LParen then
 				exp = null
 				do until i = len
 			
 					//get parameters
-					i = i + 1
+					i = ++i
 				
 					if stm::Tokens::get_Item(i) is RParen then
 						if d then
@@ -1217,12 +1217,12 @@ class public auto ansi StmtOptimizer
 				
 					if stm::Tokens::get_Item(i) is LAParen then
 						d = true
-						lvl = lvl + 1
+						lvl = ++lvl
 					end if
 					
 					if stm::Tokens::get_Item(i) is RAParen then
 						d = true
-						lvl = lvl - 1
+						lvl = --lvl
 					end if
 			
 					if (stm::Tokens::get_Item(i) is Comma) and (lvl == 0) then
@@ -1253,39 +1253,39 @@ class public auto ansi StmtOptimizer
 			var dels as DelegateStmt = new DelegateStmt() {Line = stm::Line, Tokens = stm::Tokens}
 			var lvl as integer = 0	
 			var i as integer = 0
-			var len as integer = stm::Tokens::get_Count() - 1
+			var len as integer = --stm::Tokens::get_Count() 
 			var bl as boolean = false
 			
 			//loop to get attributes
 			do until i = len
-				i = i + 1
+				i = ++i
 				if stm::Tokens::get_Item(i) is Attributes.Attribute then
 					dels::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
 				else
-					i = i - 1
+					i = --i
 					break
 				end if
 			end do
 			
 			//get return type and name
-			i = i + 1
+			i = ++i
 			stm::Tokens = new ExprOptimizer(PFlags)::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
 			dels::RetTyp = $TypeTok$stm::Tokens::get_Item(i)
-			len = stm::Tokens::get_Count() - 1
-			i = i + 1
+			len = --stm::Tokens::get_Count() 
+			i = ++i
 			
 			if stm::Tokens::get_Item(i) is Ident then
 				dels::DelegateName = $Ident$stm::Tokens::get_Item(i)
 			end if
 			
-			i = i + 1
+			i = ++i
 			if stm::Tokens::get_Item(i) is LParen then
 				
 				exp = null
 				do until i = len
 			
 					//get parameters
-					i = i + 1
+					i = ++i
 				
 					if stm::Tokens::get_Item(i) is RParen then
 						if d then
@@ -1324,12 +1324,12 @@ class public auto ansi StmtOptimizer
 				
 					if stm::Tokens::get_Item(i) is LAParen then
 						d = true
-						lvl = lvl + 1
+						lvl = ++lvl
 					end if
 					
 					if stm::Tokens::get_Item(i) is RAParen then
 						d = true
-						lvl = lvl - 1
+						lvl = --lvl
 					end if
 					
 					if (stm::Tokens::get_Item(i) is Comma) and (lvl == 0) then
@@ -1347,6 +1347,24 @@ class public auto ansi StmtOptimizer
 				end do
 			end if
 			return dels
+		end if
+		return null
+	end method
+	
+	method private Stmt checkIncDec(var stm as Stmt, var b as boolean&)
+		b = false
+		if stm::Tokens::get_Count() >= 2 then
+			var t = stm::Tokens::get_Item(--stm::Tokens::get_Count())
+			b = (stm::Tokens::get_Item(0) is Ident) and ((t is IncOp) or (t is DecOp))
+			if b then
+				stm::RemToken(--stm::Tokens::get_Count())
+				var nv = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})::Tokens::get_Item(0)
+				if t is IncOp then
+					return new IncStmt() {Line = stm::Line, Tokens = stm::Tokens, NumVar = $Ident$nv}
+				else
+					return new DecStmt() {Line = stm::Line, Tokens = stm::Tokens, NumVar = $Ident$nv}
+				end if
+			end if
 		end if
 		return null
 	end method
@@ -1495,11 +1513,11 @@ class public auto ansi StmtOptimizer
 		var re as Expr = new Expr()
 		var le as Expr = new Expr()
 		var i as integer = -1
-		var len as integer = stm::Tokens::get_Count() - 1
+		var len as integer = --stm::Tokens::get_Count() 
 		var assind as integer = 0
 		
 		do until i = len
-			i = i + 1
+			i = ++i
 			if stm::Tokens::get_Item(i) is AssignOp then
 				assind = i
 				break
@@ -1508,18 +1526,18 @@ class public auto ansi StmtOptimizer
 		
 		if assind != 0 then
 			i = -1
-			len = assind - 1
+			len = --assind
 			
 			do until i = len
-				i = i + 1
+				i = ++i
 				le::AddToken(stm::Tokens::get_Item(i))
 			end do
 			
 			i = assind
-			len = stm::Tokens::get_Count() - 1
+			len = --stm::Tokens::get_Count() 
 			
 			do until i = len
-				i = i + 1
+				i = ++i
 				re::AddToken(stm::Tokens::get_Item(i))
 			end do
 			
@@ -1542,7 +1560,7 @@ class public auto ansi StmtOptimizer
 	
 	method public Stmt Optimize(var stm as Stmt)
 		var i as integer = -1
-		var lenx as integer = stm::Tokens::get_Count() - 1
+		var lenx as integer = --stm::Tokens::get_Count() 
 		var to as TokenOptimizer = new TokenOptimizer(PFlags)
 		var tmpstm as Stmt = null
 		var compb as boolean = false
@@ -1557,14 +1575,14 @@ class public auto ansi StmtOptimizer
 		end if
 		
 		do until i = lenx
-			i = i + 1
+			i = ++i
 			if PFlags::CmtFlag then
 				break
 			elseif PFlags::NoOptFlag then
 				break
 			end if
 			if i != lenx then
-				stm::Tokens::set_Item(i,to::Optimize(stm::Tokens::get_Item(i),stm::Tokens::get_Item(i + 1)))
+				stm::Tokens::set_Item(i,to::Optimize(stm::Tokens::get_Item(i),stm::Tokens::get_Item(++i)))
 			else
 				stm::Tokens::set_Item(i,to::Optimize(stm::Tokens::get_Item(i),$Token$null))
 			end if
@@ -1576,38 +1594,38 @@ class public auto ansi StmtOptimizer
 		var acnt as integer = 0
 		var scnt as integer = 0
 		var ccnt as integer = 0
-		do until i = (stm::Tokens::get_Count() - 1)
-			i = i + 1
+		do until i = --stm::Tokens::get_Count() 
+			i = ++i
 			tok = stm::Tokens::get_Item(i)
 			if tok is LParen then
-				pcnt = pcnt + 1
+				pcnt = ++pcnt
 			elseif tok is RParen then
-				pcnt = pcnt - 1
+				pcnt = --pcnt
 			elseif tok is LAParen then
-				acnt = acnt + 1
+				acnt = ++acnt
 			elseif tok is RAParen then
-				acnt = acnt - 1
+				acnt = --acnt
 			elseif tok is LSParen then
-				scnt = scnt + 1
+				scnt = ++scnt
 			elseif tok is RSParen then
-				scnt = scnt - 1
+				scnt = --scnt
 			elseif tok is LCParen then
-				ccnt = ccnt + 1
+				ccnt = ++ccnt
 			elseif tok is RCParen then
-				ccnt = ccnt - 1
+				ccnt = --ccnt
 			end if
 		end do
 		if pcnt != 0 then
-			StreamUtils::WriteLine(String::Empty)
+			StreamUtils::WriteLine(string::Empty)
 			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing parentheses do not match!.")
 		elseif acnt != 0 then
-			StreamUtils::WriteLine(String::Empty)
+			StreamUtils::WriteLine(string::Empty)
 			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing angle parentheses do not match!.")
 		elseif scnt != 0 then
-			StreamUtils::WriteLine(String::Empty)
+			StreamUtils::WriteLine(string::Empty)
 			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing square parentheses do not match!.")
 		elseif ccnt != 0 then
-			StreamUtils::WriteLine(String::Empty)
+			StreamUtils::WriteLine(string::Empty)
 			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing curly parentheses do not match!.")
 		end if
 		
@@ -2008,6 +2026,12 @@ class public auto ansi StmtOptimizer
 		end if
 		
 		tmpstm = checkEndDo(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+		
+		tmpstm = checkIncDec(stm, ref compb)
 		if compb then
 			stm = tmpstm
 			return stm

@@ -57,9 +57,9 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void AddSrcFile(var srcf as string)
 		var i as integer = -1
-		var destarr as string[] = new string[SrcFiles[l] + 1]
-		do until i = (SrcFiles[l] - 1)
-			i = i + 1
+		var destarr as string[] = new string[++SrcFiles[l]]
+		do until i = --SrcFiles[l]
+			i = ++i
 			destarr[i] = SrcFiles[i]
 		end do
 		destarr[SrcFiles[l]] = srcf
@@ -69,9 +69,9 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void PopSrcFile()
 		var i as integer = -1
-		var destarr as string[] = new string[SrcFiles[l] - 1]
-		do until i >= (destarr[l] - 1)
-			i = i + 1
+		var destarr as string[] = new string[--SrcFiles[l]]
+		do until i >= --destarr[l]
+			i = ++i
 			destarr[i] = SrcFiles[i]
 		end do
 		SrcFiles = destarr
@@ -80,9 +80,9 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void AddDocWriter(var srcf as ISymbolDocumentWriter)
 		var i as integer = -1
-		var destarr as ISymbolDocumentWriter[] = new ISymbolDocumentWriter[DocWriters[l] + 1]
-		do until i = (DocWriters[l] - 1)
-			i = i + 1
+		var destarr as ISymbolDocumentWriter[] = new ISymbolDocumentWriter[++DocWriters[l]]
+		do until i = --DocWriters[l]
+			i = ++i
 			destarr[i] = DocWriters[i]
 		end do
 		destarr[DocWriters[l]] = srcf
@@ -92,9 +92,9 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void PopDocWriter()
 		var i as integer = -1
-		var destarr as ISymbolDocumentWriter[] = new ISymbolDocumentWriter[DocWriters[l] - 1]
-		do until i >= (destarr[l] - 1)
-			i = i + 1
+		var destarr as ISymbolDocumentWriter[] = new ISymbolDocumentWriter[--DocWriters[l]]
+		do until i >= --destarr[l]
+			i = ++i
 			destarr[i] = DocWriters[i]
 		end do
 		DocWriters = destarr

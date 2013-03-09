@@ -2,20 +2,20 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
     <Files>
-      <File FileName="parser/exproptimizer.dyl" Line="803" Column="3" />
-      <File FileName="codegen/stmtreader.dyl" Line="981" Column="32" />
-      <File FileName="codegen/eval.dyl" Line="241" Column="10" />
-      <File FileName="templateproj/template.dyl" Line="591" Column="4" />
-      <File FileName="parser/stmtoptimizer.dyl" Line="1058" Column="11" />
-      <File FileName="codegen/helpers.dyl" Line="1897" Column="29" />
+      <File FileName="parser/exproptimizer.dyl" Line="218" Column="107" />
+      <File FileName="codegen/stmtreader.dyl" Line="992" Column="36" />
+      <File FileName="codegen/eval.dyl" Line="1168" Column="2" />
+      <File FileName="templateproj/template.dyl" Line="565" Column="31" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="2023" Column="16" />
+      <File FileName="codegen/helpers.dyl" Line="1919" Column="1" />
       <File FileName="dnu/compilermsg.dyl" Line="1" Column="49" />
-      <File FileName="codegen/typelist.dyl" Line="31" Column="14" />
-      <File FileName="dnr/loader.dyl" Line="461" Column="20" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="56" Column="32" />
-      <File FileName="parser/parser.dyl" Line="40" Column="9" />
+      <File FileName="codegen/typelist.dyl" Line="144" Column="35" />
+      <File FileName="dnr/loader.dyl" Line="174" Column="18" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="100" Column="16" />
+      <File FileName="parser/parser.dyl" Line="34" Column="20" />
       <File FileName="ast/chars.dyl" Line="1" Column="67" />
-      <File FileName="lexer/line.dyl" Line="336" Column="27" />
-      <File FileName="dev/nuget2dn.dyl" Line="100" Column="18" />
+      <File FileName="lexer/line.dyl" Line="400" Column="10" />
+      <File FileName="dev/nuget2dn.dyl" Line="3" Column="36" />
       <File FileName="ast/otherkeywords.dyl" Line="713" Column="14" />
       <File FileName="ast/literals.dyl" Line="1483" Column="120" />
       <File FileName="ast/logicalops.dyl" Line="116" Column="13" />
@@ -27,7 +27,7 @@
       <File FileName="ast/nsstmt.dyl" Line="1" Column="67" />
       <File FileName="ast/op.dyl" Line="1" Column="67" />
       <File FileName="ast/otherexpr.dyl" Line="1" Column="67" />
-      <File FileName="ast/otherstmts.dyl" Line="1" Column="67" />
+      <File FileName="ast/otherstmts.dyl" Line="25" Column="1" />
       <File FileName="ast/propstmt.dyl" Line="1" Column="67" />
       <File FileName="ast/ptrexpr.dyl" Line="1" Column="1" />
       <File FileName="ast/refasmstmt.dyl" Line="1" Column="67" />
@@ -41,14 +41,14 @@
       <File FileName="ast/verstmt.dyl" Line="1" Column="67" />
       <File FileName="ast/xmldocstmt.dyl" Line="1" Column="67" />
       <File FileName="cflags.dyl.in" Line="1" Column="1" />
-      <File FileName="dnc.dyl" Line="35" Column="15" />
-      <File FileName="dnr.dyl" Line="45" Column="13" />
-      <File FileName="dnu.dyl" Line="49" Column="13" />
-      <File FileName="tokenizer.CodeGen.dyl" Line="40" Column="42" />
-      <File FileName="tokenizer.Lexer.dyl" Line="37" Column="13" />
-      <File FileName="tokenizer.Parser.dyl" Line="33" Column="33" />
-      <File FileName="dev/pc2cd.dyl" Line="38" Column="8" />
-      <File FileName="dev/pc2dn.dyl" Line="26" Column="67" />
+      <File FileName="dnc.dyl" Line="3" Column="36" />
+      <File FileName="dnr.dyl" Line="3" Column="36" />
+      <File FileName="dnu.dyl" Line="3" Column="36" />
+      <File FileName="tokenizer.CodeGen.dyl" Line="3" Column="37" />
+      <File FileName="tokenizer.Lexer.dyl" Line="3" Column="37" />
+      <File FileName="tokenizer.Parser.dyl" Line="3" Column="36" />
+      <File FileName="dev/pc2cd.dyl" Line="3" Column="36" />
+      <File FileName="dev/pc2dn.dyl" Line="96" Column="63" />
       <File FileName="unit/unit.dyl" Line="29" Column="67" />
       <File FileName="unit/streamutests.dyl" Line="1" Column="54" />
       <File FileName="unit/parseutests.dyl" Line="21" Column="18" />
@@ -71,19 +71,19 @@
       <File FileName="tests/vector.dyl" Line="1" Column="1" />
       <File FileName="tests/xmllib.dyl" Line="5" Column="35" />
       <File FileName="ast/ident.dyl" Line="9" Column="104" />
-      <File FileName="ast/methodnametok.dyl" Line="130" Column="140" />
+      <File FileName="ast/methodnametok.dyl" Line="130" Column="10" />
       <File FileName="parser/parserflags.dyl" Line="91" Column="26" />
-      <File FileName="tokenizer.AST.dyl" Line="29" Column="32" />
+      <File FileName="tokenizer.AST.dyl" Line="3" Column="36" />
       <File FileName="ast/interfaces.dyl" Line="80" Column="18" />
       <File FileName="ast/includestmt.dyl" Line="1" Column="1" />
-      <File FileName="dnr/ilemitter.dyl" Line="841" Column="49" />
-      <File FileName="dnu/parseu.dyl" Line="241" Column="24" />
+      <File FileName="dnr/ilemitter.dyl" Line="95" Column="72" />
+      <File FileName="dnu/parseu.dyl" Line="293" Column="15" />
       <File FileName="codegen/typeitem.dyl" Line="72" Column="15" />
-      <File FileName="ast/conditionalops.dyl" Line="1" Column="1" />
-      <File FileName="lexer/lexer.dyl" Line="162" Column="12" />
-      <File FileName="dnu/streamu.dyl" Line="89" Column="66" />
+      <File FileName="ast/conditionalops.dyl" Line="40" Column="51" />
+      <File FileName="lexer/lexer.dyl" Line="38" Column="25" />
+      <File FileName="dnu/streamu.dyl" Line="129" Column="23" />
       <File FileName="dnu/xmlu.dyl" Line="23" Column="43" />
-      <File FileName="dnr/asmfactory.dyl" Line="1" Column="1" />
+      <File FileName="dnr/asmfactory.dyl" Line="132" Column="94" />
       <File FileName="dnr/assemblyinfo.dyl" Line="1" Column="1" />
       <File FileName="dnr/consoleprinter.dyl" Line="1" Column="1" />
       <File FileName="dnr/importer.dyl" Line="1" Column="1" />
@@ -93,7 +93,10 @@
       <File FileName="codegen/collectionitem.dyl" Line="1" Column="1" />
       <File FileName="codegen/filambdas.dyl" Line="1" Column="1" />
       <File FileName="codegen/milambdas.dyl" Line="1" Column="1" />
-      <File FileName="codegen/symtable.dyl" Line="435" Column="9" />
+      <File FileName="codegen/symtable.dyl" Line="161" Column="23" />
+      <File FileName="lexer/assemblyinfo.dyl" Line="1" Column="1" />
+      <File FileName="codegen/opstack.dyl" Line="1" Column="1" />
+      <File FileName="dnc/Mod1.dyl" Line="63" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
