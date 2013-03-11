@@ -1073,8 +1073,8 @@
       </Docs>
     </Member>
     <Member MemberName="ProcessClassAttrs">
-      <MemberSignature Language="C#" Value="public static IKVM.Reflection.TypeAttributes ProcessClassAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
-      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.TypeAttributes ProcessClassAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.TypeAttributes ProcessClassAttrs (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.TypeAttributes ProcessClassAttrs(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1085,7 +1085,7 @@
         <ReturnType>IKVM.Reflection.TypeAttributes</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="attrs" Type="dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[]" />
+        <Parameter Name="attrs" Type="System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt;" />
       </Parameters>
       <Docs>
         <param name="attrs">To be added.</param>
@@ -1136,8 +1136,8 @@
       </Docs>
     </Member>
     <Member MemberName="ProcessEventAttrs">
-      <MemberSignature Language="C#" Value="public static IKVM.Reflection.EventAttributes ProcessEventAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
-      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.EventAttributes ProcessEventAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.EventAttributes ProcessEventAttrs (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.EventAttributes ProcessEventAttrs(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1148,7 +1148,7 @@
         <ReturnType>IKVM.Reflection.EventAttributes</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="attrs" Type="dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[]" />
+        <Parameter Name="attrs" Type="System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt;" />
       </Parameters>
       <Docs>
         <param name="attrs">To be added.</param>
@@ -1158,8 +1158,8 @@
       </Docs>
     </Member>
     <Member MemberName="ProcessFieldAttrs">
-      <MemberSignature Language="C#" Value="public static IKVM.Reflection.FieldAttributes ProcessFieldAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
-      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.FieldAttributes ProcessFieldAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.FieldAttributes ProcessFieldAttrs (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.FieldAttributes ProcessFieldAttrs(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1170,7 +1170,7 @@
         <ReturnType>IKVM.Reflection.FieldAttributes</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="attrs" Type="dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[]" />
+        <Parameter Name="attrs" Type="System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt;" />
       </Parameters>
       <Docs>
         <param name="attrs">To be added.</param>
@@ -1224,8 +1224,8 @@
       </Docs>
     </Member>
     <Member MemberName="ProcessMethodAttrs">
-      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodAttributes ProcessMethodAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
-      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.MethodAttributes ProcessMethodAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodAttributes ProcessMethodAttrs (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.MethodAttributes ProcessMethodAttrs(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1236,7 +1236,7 @@
         <ReturnType>IKVM.Reflection.MethodAttributes</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="attrs" Type="dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[]" />
+        <Parameter Name="attrs" Type="System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt;" />
       </Parameters>
       <Docs>
         <param name="attrs">To be added.</param>
@@ -1267,8 +1267,8 @@
       </Docs>
     </Member>
     <Member MemberName="ProcessPropAttrs">
-      <MemberSignature Language="C#" Value="public static IKVM.Reflection.PropertyAttributes ProcessPropAttrs (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs);" />
-      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.PropertyAttributes ProcessPropAttrs(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[] attrs) cil managed" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.PropertyAttributes ProcessPropAttrs (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.PropertyAttributes ProcessPropAttrs(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1279,7 +1279,7 @@
         <ReturnType>IKVM.Reflection.PropertyAttributes</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="attrs" Type="dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute[]" />
+        <Parameter Name="attrs" Type="System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt;" />
       </Parameters>
       <Docs>
         <param name="attrs">To be added.</param>

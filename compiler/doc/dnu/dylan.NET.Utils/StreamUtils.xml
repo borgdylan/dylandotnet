@@ -69,25 +69,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Errors">
-      <MemberSignature Language="C#" Value="public static IObservable&lt;dylan.NET.Utils.CompilerMsg&gt; Errors ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.IObservable`1&lt;class dylan.NET.Utils.CompilerMsg&gt; Errors() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.IObservable&lt;dylan.NET.Utils.CompilerMsg&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="InitInOutSWithStd">
       <MemberSignature Language="C#" Value="public static void InitInOutSWithStd ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void InitInOutSWithStd() cil managed" />
@@ -244,25 +225,6 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Warnings">
-      <MemberSignature Language="C#" Value="public static IObservable&lt;dylan.NET.Utils.CompilerMsg&gt; Warnings ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.IObservable`1&lt;class dylan.NET.Utils.CompilerMsg&gt; Warnings() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.IObservable&lt;dylan.NET.Utils.CompilerMsg&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

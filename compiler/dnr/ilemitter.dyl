@@ -59,7 +59,7 @@ class public auto ansi static ILEmitter
 		var i as integer = -1
 		var destarr as string[] = new string[++SrcFiles[l]]
 		do until i = --SrcFiles[l]
-			i = ++i
+			i++
 			destarr[i] = SrcFiles[i]
 		end do
 		destarr[SrcFiles[l]] = srcf
@@ -71,7 +71,7 @@ class public auto ansi static ILEmitter
 		var i as integer = -1
 		var destarr as string[] = new string[--SrcFiles[l]]
 		do until i >= --destarr[l]
-			i = ++i
+			i++
 			destarr[i] = SrcFiles[i]
 		end do
 		SrcFiles = destarr
@@ -82,7 +82,7 @@ class public auto ansi static ILEmitter
 		var i as integer = -1
 		var destarr as ISymbolDocumentWriter[] = new ISymbolDocumentWriter[++DocWriters[l]]
 		do until i = --DocWriters[l]
-			i = ++i
+			i++
 			destarr[i] = DocWriters[i]
 		end do
 		destarr[DocWriters[l]] = srcf
@@ -94,7 +94,7 @@ class public auto ansi static ILEmitter
 		var i as integer = -1
 		var destarr as ISymbolDocumentWriter[] = new ISymbolDocumentWriter[--DocWriters[l]]
 		do until i >= --destarr[l]
-			i = ++i
+			i++
 			destarr[i] = DocWriters[i]
 		end do
 		DocWriters = destarr

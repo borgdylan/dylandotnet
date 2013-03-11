@@ -132,7 +132,7 @@ class public auto ansi static AsmFactory
 		var destarr as IKVM.Reflection.Emit.TypeBuilder[] = new IKVM.Reflection.Emit.TypeBuilder[++len]
 
 		do until i = stopel
-			i = ++i
+			i++
 			destarr[i] = CurnTypList[i]
 		end do
 
@@ -151,7 +151,7 @@ class public auto ansi static AsmFactory
 		var destarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[++len]
 
 		do until i = stopel
-			i = ++i
+			i++
 			destarr[i] = TypArr[i]
 		end do
 		
@@ -170,7 +170,7 @@ class public auto ansi static AsmFactory
 		var destarr as string[] = new string[++len]
 
 		do until i = stopel
-			i = ++i
+			i++
 			destarr[i] = GenParamNames[i]
 		end do
 		

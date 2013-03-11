@@ -57,7 +57,7 @@ class public auto ansi static Program
 				var i as integer = -1
 
 				do until i = --args[l]
-					i = ++i
+					i++
 					StreamUtils::WriteLine("")
 					if args[i] = "-V" then
 						OutputVersion()

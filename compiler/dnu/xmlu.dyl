@@ -33,9 +33,9 @@ class public auto ansi static XmlUtils
 	method public static XContainer AddAttrArr(var el as XContainer, var attrs as XAttribute[])
 		var i as integer = -1
 		do
-			i = i + 1
+			i++
 			el::Add(attrs[i])
-		until i = (attrs[l] - 1)
+		until i = --attrs[l]
 		return el
 	end method
 
@@ -49,9 +49,9 @@ class public auto ansi static XmlUtils
 	method public static XContainer AddNodeArr(var el as XContainer, var nodes as XElement[])
 		var i as integer = -1
 		do
-			i = i + 1
+			i++
 			el::Add(nodes[i])
-		until i = (nodes[l] - 1)
+		until i = --nodes[l]
 		return el
 	end method
 

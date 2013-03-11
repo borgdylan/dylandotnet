@@ -24,7 +24,7 @@ class public auto ansi StmtReader
 		
 		var i as integer = -1
 		foreach param in stm::Ctor::Params
-			i = ++i
+			i++
 			if param::Tokens::get_Item(0) is Literal then
 				var lit as Literal = $Literal$param::Tokens::get_Item(0)
 				tarr[i] = Helpers::CommitEvalTTok(lit::LitTyp)
@@ -54,7 +54,7 @@ class public auto ansi StmtReader
 		
 		i = -1
 		foreach curpair in stm::Pairs
-			i = ++i
+			i++
 			var multflg as boolean = true
 			tempprop = Helpers::GetExtProp(typ,curpair::Name::Value)
 			if tempprop != null then
@@ -315,7 +315,7 @@ class public auto ansi StmtReader
 
 				i = -1
 				do until i = --clss::ImplInterfaces[l]
-					i = ++i
+					i++
 					interftyp = Helpers::CommitEvalTTok(clss::ImplInterfaces[i])
 					if interftyp = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::ImplInterfaces[i]::Value + "' is not defined or is not accessible.")

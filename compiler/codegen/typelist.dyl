@@ -171,7 +171,7 @@ class public auto ansi TypeList
 						var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
 						var i as integer = -1
 						do until i = --genparams[l]
-							i = ++i
+							i++
 							genparams[i] = Helpers::CommitEvalTTok(gmn::Params[i])
 						end do
 						mtdinfo = Loader::LoadGenericMethod(ti::InhTyp, nam, genparams, paramst)

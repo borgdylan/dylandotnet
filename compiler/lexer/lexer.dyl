@@ -35,7 +35,7 @@ class public auto ansi Lexer
 				buf = buf + $string$chr
 			else
 				if lfflag then
-					curline = ++curline
+					curline++
 					curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
 					curstmtlen = curstmt::Tokens::get_Count()
 			
@@ -50,7 +50,7 @@ class public auto ansi Lexer
 			end if
 			
 			if sr::Peek() = -1 then
-				curline = ++curline
+				curline++
 				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
 				curstmtlen = curstmt::Tokens::get_Count()
 			
@@ -94,7 +94,7 @@ class public auto ansi Lexer
 				buf = buf + $string$chr
 			else
 				if lfflag then
-					curline = ++curline
+					curline++
 					curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
 					curstmtlen = curstmt::Tokens::get_Count()
 			
@@ -109,7 +109,7 @@ class public auto ansi Lexer
 			end if
 			
 			if sr::Peek() = -1 then
-				curline = ++curline
+				curline++
 				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
 				curstmtlen = curstmt::Tokens::get_Count()
 			
@@ -153,7 +153,7 @@ class public auto ansi Lexer
 				buf = buf + $string$chr
 			else
 				if lfflag then
-					curline = ++curline
+					curline++
 					curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
 					curstmtlen = curstmt::Tokens::get_Count()
 			
@@ -168,7 +168,7 @@ class public auto ansi Lexer
 			end if
 			
 			if sr::Peek() = -1 then
-				curline = ++curline
+				curline++
 				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
 				curstmtlen = curstmt::Tokens::get_Count()
 			

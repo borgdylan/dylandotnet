@@ -14,7 +14,7 @@ class public auto ansi static ParseUtils
 		var destarr as string[] = new string[++srcarr[l]]
 
 		do until i = --srcarr[l]
-			i = ++i
+			i++
 			destarr[i] = srcarr[i]
 		end do
 
@@ -28,7 +28,7 @@ class public auto ansi static ParseUtils
 		var destarr as string[] = new string[--srcarr[l]]
 
 		do while (srcarr[l] - 2) >= i
-			i = ++i
+			i++
 			destarr[i] = srcarr[i]
 		end do
 	
@@ -45,7 +45,7 @@ class public auto ansi static ParseUtils
 		var len as integer = --StringToParse::get_Length()
 	
 		do until i = len
-			i = ++i
+			i++
 			ch = $string$StringToParse::get_Chars(i)
 	
 			if ch = c"\q" then
@@ -88,7 +88,7 @@ class public auto ansi static ParseUtils
 		var len as integer = --StringToParse::get_Length()
 	
 		do until i = len
-			i = ++i
+			i++
 			ch = $string$StringToParse::get_Chars(i)
 	
 			if ch = c"\q" then
@@ -132,7 +132,7 @@ class public auto ansi static ParseUtils
 		var len as integer = --StringToParse::get_Length()
 		
 		do until i = len
-			i = ++i
+			i++
 			ch = $string$StringToParse::get_Chars(i)
 
 			if ch = c"\q" then
@@ -241,11 +241,11 @@ class public auto ansi static ParseUtils
 		var buf as string = string::Empty
 		
 		do until i >= len
-			i = ++i
+			i++
 			cc = escstr::get_Chars(i)
 			if cc = '\' then
 				if i < len then
-					i = ++i
+					i++
 					cc = escstr::get_Chars(i)
 					if cc = 's' then
 						sb::Append(c'\s')
@@ -271,7 +271,7 @@ class public auto ansi static ParseUtils
 						sb::Append(c'\v')
 					elseif cc = 'x' then
 						if i < (len - 3) then
-							i = ++i
+							i++
 							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) and IsHexDigit(escstr::get_Chars(i + 2)) and IsHexDigit(escstr::get_Chars(i + 3)) then
 								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i) + $string$escstr::get_Chars(i + 2) + $string$escstr::get_Chars(i + 3)
 								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
@@ -279,18 +279,18 @@ class public auto ansi static ParseUtils
 							elseif IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) then
 								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
 								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
-								i = ++i
+								i++
 							else
-								i = --i
+								i--
 							end if
 						elseif i < --len then
-							i = ++i
+							i++
 							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) then
 								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
 								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
-								i = ++i
+								i++
 							else
-								i = --i
+								i--
 							end if
 						end if
 					else

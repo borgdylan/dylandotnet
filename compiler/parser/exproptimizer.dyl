@@ -35,51 +35,51 @@ class public auto ansi ExprOptimizer
 		if isgeneric then
 
 			var gtt as GenericTypeTok = new GenericTypeTok(stm::Tokens::get_Item(i)::Value)
-			i = ++i
+			i++
 			stm::RemToken(i)
 			stm::RemToken(i)
-			i = --i
+			i--
 
 			var ep2 as Expr = new Expr()
 			var lvl as integer = 1
 			var len as integer = --stm::Tokens::get_Count()
 
 			do until i = len
-				i = ++i
+				i++
 				if stm::Tokens::get_Item(i) is LAParen then
 					ep2::AddToken(stm::Tokens::get_Item(i))
 					stm::RemToken(i)
-					lvl = ++lvl
-					i = --i
-					len = --len
+					lvl++
+					i--
+					len--
 				elseif stm::Tokens::get_Item(i) is Comma then
 					if lvl > 1 then
 						ep2::AddToken(stm::Tokens::get_Item(i))
 					end if
 					stm::RemToken(i)
-					len = --len
+					len--
 					if lvl <= 1 then
 						gtt::AddParam($TypeTok$procType(ep2, 0)::Tokens::get_Item(0))
 						ep2 = new Expr()
 					end if
-					i = --i
+					i--
 				elseif stm::Tokens::get_Item(i) is RAParen then
-					lvl = --lvl
+					lvl--
 					if lvl > 0 then
 						ep2::AddToken(stm::Tokens::get_Item(i))
 					end if
 					stm::RemToken(i)
-					len = --len
+					len--
 					if lvl = 0 then
 						gtt::AddParam($TypeTok$procType(ep2, 0)::Tokens::get_Item(0))
 						break
 					end if
-					i = --i
+					i--
 				else
 					ep2::AddToken(stm::Tokens::get_Item(i))
 					stm::RemToken(i)
-					i = --i
-					len = --len
+					i--
+					len--
 				end if
 			end do
 			tt = gtt
@@ -97,15 +97,15 @@ class public auto ansi ExprOptimizer
 		do until c = 2
 			c = ++c
 			if i < --stm::Tokens::get_Count() then
-				i = ++i
+				i++
 				if stm::Tokens::get_Item(i) is LRSParen then
 					tt::IsArray = true
 					stm::RemToken(i)
-					i = --i
+					i--
 				elseif stm::Tokens::get_Item(i) is Ampersand then
 					tt::IsByRef = true
 					stm::RemToken(i)
-					i = --i
+					i--
 				else
 					break
 				end if
@@ -130,51 +130,51 @@ class public auto ansi ExprOptimizer
 		if isgeneric then
 
 			var gtt as GenericMethodNameTok = new GenericMethodNameTok($Ident$stm::Tokens::get_Item(i))
-			i = ++i
+			i++
 			stm::RemToken(i)
 			stm::RemToken(i)
-			i = --i
+			i--
 
 			var ep2 as Expr = new Expr()
 			var lvl as integer = 1
 			var len as integer = --stm::Tokens::get_Count()
 
 			do until i = len
-				i = ++i
+				i++
 				if stm::Tokens::get_Item(i) is LAParen then
 					ep2::AddToken(stm::Tokens::get_Item(i))
 					stm::RemToken(i)
-					lvl = ++lvl
-					i = --i
-					len = --len
+					lvl++
+					i--
+					len--
 				elseif stm::Tokens::get_Item(i) is Comma then
 					if lvl > 1 then
 						ep2::AddToken(stm::Tokens::get_Item(i))
 					end if
 					stm::RemToken(i)
-					len = --len
+					len--
 					if lvl <= 1 then
 						gtt::AddParam($TypeTok$procType(ep2, 0)::Tokens::get_Item(0))
 						ep2 = new Expr()
 					end if
-					i = --i
+					i--
 				elseif stm::Tokens::get_Item(i) is RAParen then
-					lvl = --lvl
+					lvl--
 					if lvl > 0 then
 						ep2::AddToken(stm::Tokens::get_Item(i))
 					end if
 					stm::RemToken(i)
-					len = --len
+					len--
 					if lvl = 0 then
 						gtt::AddParam($TypeTok$procType(ep2, 0)::Tokens::get_Item(0))
 						break
 					end if
-					i = --i
+					i--
 				else
 					ep2::AddToken(stm::Tokens::get_Item(i))
 					stm::RemToken(i)
-					i = --i
-					len = --len
+					i--
+					len--
 				end if
 			end do
 			tt = gtt
@@ -227,7 +227,7 @@ class public auto ansi ExprOptimizer
 		var d as boolean = true
 		var j as integer = 0
 
-		i = --i
+		i--
 		var mn as MethodNameTok = null
 		if stm::Tokens::get_Item(i) is MethodNameTok then
 			mn = $MethodNameTok$stm::Tokens::get_Item(i)
@@ -237,23 +237,23 @@ class public auto ansi ExprOptimizer
 		var mct as MethodCallTok = new MethodCallTok() {Name = mn, Line = mn::Line}
 		
 		j = i
-		i = ++i
+		i++
 
 		var len as integer = --stm::Tokens::get_Count()
 
 		stm::RemToken(i)
 		len = --stm::Tokens::get_Count()
-		i = --i
+		i--
 		
 		var flgc as boolean[] = new boolean[] {PFlags::MetCallFlag, PFlags::IdentFlag, PFlags::StringFlag, PFlags::CtorFlag}
 				
 		do until i = len
 
 			//get parameters
-			i = ++i
+			i++
 	
 			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
-				lvl = --lvl
+				lvl--
 				if lvl = 0 then
 					d = false
 					if ep2::Tokens::get_Count() > 0 then
@@ -262,13 +262,13 @@ class public auto ansi ExprOptimizer
 					end if
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
-					i = --i
+					i--
 					break
 				else
 					d = true
 				end if
 			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
-				lvl = ++lvl
+				lvl++
 				d = true
 				len = --stm::Tokens::get_Count()
 			elseif (stm::Tokens::get_Item(i) is Comma) then
@@ -281,7 +281,7 @@ class public auto ansi ExprOptimizer
 					ep2 = new Expr()
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
-					i = --i
+					i--
 				else
 					d = true
 				end if
@@ -293,7 +293,7 @@ class public auto ansi ExprOptimizer
 				ep2::AddToken(stm::Tokens::get_Item(i))
 				stm::RemToken(i)
 				len = --stm::Tokens::get_Count()
-				i = --i
+				i--
 			end if
 		end do
 		
@@ -332,28 +332,28 @@ class public auto ansi ExprOptimizer
 		var lp as C5.ArrayList<of Token> = new C5.ArrayList<of Token>()
 		var ep as Expr = new Expr()
 		
-		i = ++i
+		i++
 		stm::RemToken(i)
 		var len as integer = --stm::Tokens::get_Count()
-		i = --i
+		i--
 
 		do until i = len
-			i = ++i
+			i++
 	
 			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
-				lvl = --lvl
+				lvl--
 				if lvl = 0 then
 					d = false
 					lp::Add(ObjInitHelper(ep))
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
-					i = --i
+					i--
 					break
 				else
 					d = true
 				end if
 			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
-				lvl = ++lvl
+				lvl++
 				d = true
 			elseif stm::Tokens::get_Item(i) is Comma then
 				if lvl = 1 then
@@ -362,7 +362,7 @@ class public auto ansi ExprOptimizer
 					ep = new Expr()
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
-					i = --i
+					i--
 				else
 					d = true
 				end if
@@ -374,7 +374,7 @@ class public auto ansi ExprOptimizer
 				ep::AddToken(stm::Tokens::get_Item(i))
 				stm::RemToken(i)
 				len = --stm::Tokens::get_Count()
-				i = --i
+				i--
 			end if
 		end do
 		
@@ -389,34 +389,34 @@ class public auto ansi ExprOptimizer
 		var j as integer = i
 		var stg as integer = 0
 		
-		i = ++i
+		i++
 		stm::RemToken(i)
 		var len as integer = --stm::Tokens::get_Count()
-		i = --i
+		i--
 
 		do until i = len
-			i = ++i
+			i++
 			
 			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
-				lvl = --lvl
+				lvl--
 				if lvl = 0 then
 					d = false
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
-					i = --i
+					i--
 					break
 				else
 					d = true
 				end if
 			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
-				lvl = ++lvl
+				lvl++
 				d = true
 			elseif stm::Tokens::get_Item(i) is Comma then
 				if lvl = 1 then
 					d = false
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
-					i = --i
+					i--
 					stg = 2
 				else
 					d = true
@@ -426,7 +426,7 @@ class public auto ansi ExprOptimizer
 					d = false
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
-					i = --i
+					i--
 					stg = 1
 				else
 					d = true
@@ -445,7 +445,7 @@ class public auto ansi ExprOptimizer
 				end if
 				stm::RemToken(i)
 				len = --stm::Tokens::get_Count()
-				i = --i
+				i--
 			end if
 		end do
 		
@@ -453,6 +453,50 @@ class public auto ansi ExprOptimizer
 		ct::TrueExpr = Optimize(ct::TrueExpr)
 		ct::FalseExpr = Optimize(ct::FalseExpr)
 		stm::Tokens::set_Item(j, ct)
+		return stm
+	end method
+	
+	method public Expr procExprCall(var stm as Expr, var i as integer)
+		var e as Expr = new Expr() {Line = stm::Tokens::get_Item(i)::Line}
+		var ecc as ExprCallTok = $ExprCallTok$stm::Tokens::get_Item(i)
+		var lvl as integer = 1
+		var d as boolean = true
+		
+		i++
+		stm::RemToken(i)
+		var len as integer = --stm::Tokens::get_Count()
+		i--
+
+		do until i = len
+			i++
+			
+			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
+				lvl--
+				if lvl = 0 then
+					d = false
+					stm::RemToken(i)
+					len = --stm::Tokens::get_Count()
+					i--
+					break
+				else
+					d = true
+				end if
+			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
+				lvl++
+				d = true
+			else
+				d = true
+			end if
+			
+			if d then
+				e::AddToken(stm::Tokens::get_Item(i))
+				stm::RemToken(i)
+				len = --stm::Tokens::get_Count()
+				i--
+			end if
+		end do
+		
+		ecc::Exp = Optimize(e)
 		return stm
 	end method
 
@@ -475,7 +519,7 @@ class public auto ansi ExprOptimizer
 		//stm = procType(stm, i)
 		tt = $TypeTok$stm::Tokens::get_Item(i)
 		j = i
-		i = ++i
+		i++
 		
 		var tok2 as Token = stm::Tokens::get_Item(i)
 		var len as integer = --stm::Tokens::get_Count()
@@ -498,15 +542,15 @@ class public auto ansi ExprOptimizer
 		
 		stm::RemToken(i)
 		len = --stm::Tokens::get_Count()
-		i = --i
+		i--
 		
 		do until i = len
 		
 			//get parameters/members/length
-			i = ++i
+			i++
 			
 			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RSParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
-				lvl = --lvl
+				lvl--
 				if lvl = 0 then
 					d = false
 					if ep2::Tokens::get_Count() > 0 then
@@ -520,17 +564,17 @@ class public auto ansi ExprOptimizer
 					end if
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
-					i = --i
+					i--
 					break
 				else
 					d = true
 				end if
 			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LSParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
-				lvl = ++lvl
+				lvl++
 				d = true
 				//stm::RemToken(i)
 				len = --stm::Tokens::get_Count()
-				//i = --i
+				//i--
 			elseif stm::Tokens::get_Item(i) is Comma then
 				if lvl = 1 then
 					d = false
@@ -545,7 +589,7 @@ class public auto ansi ExprOptimizer
 					end if
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
-					i = --i
+					i--
 				else
 					d = true
 				end if
@@ -557,7 +601,7 @@ class public auto ansi ExprOptimizer
 				ep2::AddToken(stm::Tokens::get_Item(i))
 				stm::RemToken(i)
 				len = --stm::Tokens::get_Count()
-				i = --i
+				i--
 			end if
 		
 		end do
@@ -582,33 +626,33 @@ class public auto ansi ExprOptimizer
 		var d as boolean = true
 		var j as integer = 0
 
-		i = --i
+		i--
 		var idt as Ident = $Ident$stm::Tokens::get_Item(i)
 		j = i
-		i = ++i
+		i++
 
 		var len as integer = --stm::Tokens::get_Count()
 		stm::RemToken(i)
 		len = --stm::Tokens::get_Count()
-		i = --i
+		i--
 
 		do until i = len
 			//get parameters
-			i = ++i
+			i++
 
 			if stm::Tokens::get_Item(i) is RSParen then
-				lvl = --lvl
+				lvl--
 				if lvl = 0 then
 					d = false
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
-					i = --i
+					i--
 					break
 				else
 					d = true
 				end if
 			elseif stm::Tokens::get_Item(i) is LSParen then
-				lvl = ++lvl
+				lvl++
 				d = true
 			elseif (stm::Tokens::get_Item(i) is Comma) == false then
 				d = true
@@ -618,7 +662,7 @@ class public auto ansi ExprOptimizer
 				ep2::AddToken(stm::Tokens::get_Item(i))
 				stm::RemToken(i)
 				len = --stm::Tokens::get_Count()
-				i = --i
+				i--
 			end if
 		end do
 
@@ -635,37 +679,37 @@ class public auto ansi ExprOptimizer
 		var d as boolean = true
 		var j as integer = 0
 
-		i = --i
+		i--
 		var mtd as MethodCallTok = $MethodCallTok$stm::Tokens::get_Item(i)
 		var idt as MethodNameTok = mtd::Name
 		j = i
-		i = ++i
+		i++
 
 		var len as integer = --stm::Tokens::get_Count()
 
 		stm::RemToken(i)
 		len = --stm::Tokens::get_Count()
-		i = --i
+		i--
 
 		var flgc as boolean[] = new boolean[] {PFlags::MetCallFlag, PFlags::IdentFlag, PFlags::StringFlag, PFlags::CtorFlag}
 
 		do until i = len
 			//get parameters
-			i = ++i
+			i++
 
 			if stm::Tokens::get_Item(i) is RSParen then
-				lvl = --lvl
+				lvl--
 				if lvl = 0 then
 					d = false
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
-					i = --i
+					i--
 					break
 				else
 					d = true
 				end if
 			elseif stm::Tokens::get_Item(i) is LSParen then
-				lvl = ++lvl
+				lvl++
 				d = true
 			elseif (stm::Tokens::get_Item(i) is Comma) == false then
 				d = true
@@ -675,7 +719,7 @@ class public auto ansi ExprOptimizer
 				ep2::AddToken(stm::Tokens::get_Item(i))
 				stm::RemToken(i)
 				len = --stm::Tokens::get_Count()
-				i = --i
+				i--
 			end if
 		end do
 
@@ -720,7 +764,7 @@ class public auto ansi ExprOptimizer
 		
 		if PFlags::MetChainFlag = false then
 			//non-method chain i.e. normal code
-			i = ++i
+			i++
 
 			label fin
 
@@ -728,7 +772,7 @@ class public auto ansi ExprOptimizer
 
 			if tok is LRSParen then
 				exp::RemToken(i)
-				i = --i
+				i--
 				len = --exp::Tokens::get_Count() 
 				tok = exp::Tokens::get_Item(i)
 				
@@ -746,7 +790,7 @@ class public auto ansi ExprOptimizer
 
 			if tok is Ampersand then
 				exp::RemToken(i)
-				i = --i
+				i--
 				len = --exp::Tokens::get_Count() 
 				tok = exp::Tokens::get_Item(i)
 				
@@ -773,7 +817,7 @@ class public auto ansi ExprOptimizer
 						PFlags::OrdOp = PFlags::OrdOp::Trim()
 					end if
 					exp::RemToken(i)
-					i = --i
+					i--
 					len = --exp::Tokens::get_Count() 
 					goto fin
 				end if
@@ -784,7 +828,7 @@ class public auto ansi ExprOptimizer
 					PFlags::OrdOp = "neg " + PFlags::OrdOp
 					PFlags::OrdOp = PFlags::OrdOp::Trim()
 					exp::RemToken(i)
-					i = --i
+					i--
 					len = --exp::Tokens::get_Count() 
 					goto fin
 				end if
@@ -795,7 +839,7 @@ class public auto ansi ExprOptimizer
 					PFlags::OrdOp = "not " + PFlags::OrdOp
 					PFlags::OrdOp = PFlags::OrdOp::Trim()
 					exp::RemToken(i)
-					i = --i
+					i--
 					len = --exp::Tokens::get_Count() 
 					goto fin
 				end if
@@ -806,7 +850,7 @@ class public auto ansi ExprOptimizer
 					PFlags::OrdOp = "inc " + PFlags::OrdOp
 					PFlags::OrdOp = PFlags::OrdOp::Trim()
 					exp::RemToken(i)
-					i = --i
+					i--
 					len = --exp::Tokens::get_Count() 
 					goto fin
 				end if
@@ -817,14 +861,14 @@ class public auto ansi ExprOptimizer
 					PFlags::OrdOp = "dec " + PFlags::OrdOp
 					PFlags::OrdOp = PFlags::OrdOp::Trim()
 					exp::RemToken(i)
-					i = --i
+					i--
 					len = --exp::Tokens::get_Count() 
 					goto fin
 				end if
 
 				if tok is Pipe then
 					exp::RemToken(i)
-					i = --i
+					i--
 					len = --exp::Tokens::get_Count() 
 					goto fin
 				end if
@@ -833,7 +877,7 @@ class public auto ansi ExprOptimizer
 					PFlags::isChanged = true
 					PFlags::RefFlag = true
 					exp::RemToken(i)
-					i = --i
+					i--
 					len = --exp::Tokens::get_Count() 
 					goto fin
 				end if
@@ -842,7 +886,7 @@ class public auto ansi ExprOptimizer
 					PFlags::isChanged = true
 					PFlags::ValinrefFlag = true
 					exp::RemToken(i)
-					i = --i
+					i--
 					len = --exp::Tokens::get_Count() 
 					goto fin
 				end if
@@ -852,7 +896,7 @@ class public auto ansi ExprOptimizer
 						exp = procType(exp,i)
 						PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
 						exp::RemToken(i)
-						i = --i
+						i--
 						len = --exp::Tokens::get_Count() 
 					end if
 					goto fin
@@ -882,7 +926,7 @@ class public auto ansi ExprOptimizer
 						exp = procType(exp,i)
 						PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
 						exp::RemToken(i)
-						i = --i
+						i--
 						len = --exp::Tokens::get_Count() 
 					end if
 					goto fin
@@ -969,25 +1013,52 @@ class public auto ansi ExprOptimizer
 				end if
 
 				if (tok is IsOp) or (tok is AsOp) then
-					i = ++i
+					i++
 					exp = procType(exp,i)
 					len = --exp::Tokens::get_Count() 
 					goto fin
 				end if
 				
 				if tok is TernaryTok then
-					//call ternary processor
-					exp = procTernaryCall(exp, i)
-					len = --exp::Tokens::get_Count() 
+					if i < len then
+						if exp::Tokens::get_Item(++i) is LCParen then
+							//call ternary processor
+							exp = procTernaryCall(exp, i)
+							len = --exp::Tokens::get_Count() 
+							goto fin
+						end if
+					end if
+					StreamUtils::WriteLine(string::Empty)
+					StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Expected a '{' after a '#ternary'!")
+					goto fin
+				end if
+				
+				if tok is ExprTok then
+					if i < len then
+						if exp::Tokens::get_Item(++i) is LParen then
+							exp::Tokens::set_Item(i, new ExprCallTok() {Line = exp::Line})
+							if PFlags::isChanged then
+								PFlags::UpdateToken($ExprCallTok$exp::Tokens::get_Item(i))
+								PFlags::SetUnaryFalse()
+								j = i
+							end if
+							exp = procExprCall(exp, i)
+							len = --exp::Tokens::get_Count()
+							PFlags::CtorFlag = true
+							goto fin
+						end if 
+					end if
+					StreamUtils::WriteLine(string::Empty)
+					StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Expected a '(' after a '#expr'!")
 					goto fin
 				end if
 
 				if tok is NewarrTok then
 					exp::RemToken(i)
-					len = --len
+					len--
 					tok = exp::Tokens::get_Item(i)
 					exp::RemToken(i)
-					len = --len
+					len--
 					newavtok = exp::Tokens::get_Item(i)
 					exp::Tokens::set_Item(i, new NewarrCallTok() {ArrayType = #ternary {tok is TypeTok ? $TypeTok$tok , new TypeTok() {Line = tok::Line, Value = tok::Value}}, ArrayLen = new Expr() {AddToken(newavtok)}})
 					goto fin
@@ -996,24 +1067,24 @@ class public auto ansi ExprOptimizer
 				if tok is PtrTok then
 
 					exp::RemToken(i)
-					len = --len
+					len--
 					var ptrctoken as PtrCallTok = new PtrCallTok() {MetToCall = new MethodNameTok($Ident$exp::Tokens::get_Item(i))}
 					exp::Tokens::set_Item(i,ptrctoken)
 
 					//outer check for (
-					i = ++i
+					i++
 					if i <= len then
 						tok = exp::Tokens::get_Item(i)
 						if tok is LParen then
 							exp::RemToken(i)
-							len = --len
+							len--
 							//inner check for )
 							//-----------------
 							if i <= len then
 								tok = exp::Tokens::get_Item(i)
 								if tok is RParen then
 									exp::RemToken(i)
-									len = --len
+									len--
 								end if
 							end if
 							//-----------------
@@ -1031,7 +1102,7 @@ class public auto ansi ExprOptimizer
 						end if
 						PFlags::MetCallFlag = true
 						exp = procMethodCall(exp, i)
-						i = --i
+						i--
 						len = --exp::Tokens::get_Count() 
 					end if
 
@@ -1048,14 +1119,14 @@ class public auto ansi ExprOptimizer
 					if PFlags::IdentFlag then
 						PFlags::IdentFlag = false
 						exp = procIdentArrayAccess(exp, i)
-						i = --i
+						i--
 						len = --exp::Tokens::get_Count() 
 						PFlags::IdentFlag = true
 						j = i
 					elseif PFlags::MetCallFlag then
 						PFlags::MetCallFlag = false
 						exp = procMtdArrayAccess(exp, i)
-						i = --i
+						i--
 						len = --exp::Tokens::get_Count() 
 						PFlags::MetCallFlag = true
 						j = i
@@ -1080,7 +1151,7 @@ class public auto ansi ExprOptimizer
 		else
 			//method chain code
 
-			i = --i
+			i--
 			mctok = exp::Tokens::get_Item(i)
 			
 			if mctok is Ident then
@@ -1108,6 +1179,16 @@ class public auto ansi ExprOptimizer
 				end if
 			elseif mctok is ObjInitCallTok then
 				var mcnct = $ObjInitCallTok$mctok
+				if PFlags::MetCallFlag or PFlags::IdentFlag then
+					PFlags::MetCallFlag = false
+					PFlags::IdentFlag = false
+					mcnct::MemberAccessFlg = true
+					mcnct::MemberToAccess = exp::Tokens::get_Item(++i)
+					exp::RemToken(++i)
+					exp::Tokens::set_Item(i,mcnct)
+				end if
+			elseif mctok is ExprCallTok then
+				var mcnct = $ExprCallTok$mctok
 				if PFlags::MetCallFlag or PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false

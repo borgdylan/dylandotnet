@@ -19,7 +19,7 @@ class public auto ansi VerStmt extends Stmt
 		var sw as StringWriter = new StringWriter()
 		var i as integer = -1
 		do until i = 3
-			i = i + 1
+			i++
 			sw::Write(VersionNos[i]::ToStringNoI())
 			if i < 3 then
 				sw::Write(".")

@@ -8,30 +8,19 @@
 
 class public auto ansi PropertyStmt extends Stmt
 
-	field public Attributes.Attribute[] Attrs
+	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident PropertyName
 	field public TypeTok PropertyTyp
 
 	method public void PropertyStmt()
 		me::ctor()
-		Attrs = new Attributes.Attribute[0]
+		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		PropertyName = new Ident()
 		PropertyTyp = new TypeTok()
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
-		
-		var i as integer = -1
-		var destarr as Attributes.Attribute[] = new Attributes.Attribute[Attrs[l] + 1]
-
-		do until i = (Attrs[l] - 1)
-			i = i + 1
-			destarr[i] = Attrs[i]
-		end do
-
-		destarr[Attrs[l]] = attrtoadd
-		Attrs = destarr
-
+		Attrs::Add(attrtoadd)
 	end method
 
 end class

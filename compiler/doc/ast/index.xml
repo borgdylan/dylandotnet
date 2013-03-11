@@ -139,6 +139,8 @@
       <Type Name="EventCTok" Kind="Class" />
       <Type Name="EventTok" Kind="Class" />
       <Type Name="ExeTok" Kind="Class" />
+      <Type Name="ExprCallTok" Kind="Class" />
+      <Type Name="ExprTok" Kind="Class" />
       <Type Name="ExtendsTok" Kind="Class" />
       <Type Name="FieldCTok" Kind="Class" />
       <Type Name="FieldTok" Kind="Class" />

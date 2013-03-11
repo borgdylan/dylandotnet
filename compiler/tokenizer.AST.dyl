@@ -75,6 +75,7 @@ end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens
 	#include "ast/ident.dyl"
+	#include "ast/exprcalltok.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Tokens.Attributes

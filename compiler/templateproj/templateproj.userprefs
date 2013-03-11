@@ -12,15 +12,15 @@
       <File FileName="template.dyl" Line="5" Column="1" />
       <File FileName="../dnr/ilemitter.dyl" Line="18" Column="36" />
       <File FileName="../dnr/instructionhelper.dyl" Line="52" Column="24" />
-      <File FileName="../dnc.dyl" Line="37" Column="25" />
-      <File FileName="../dnc/Mod1.dyl" Line="61" Column="33" />
+      <File FileName="../dnc.dyl" Line="37" Column="8" />
+      <File FileName="../dnc/Mod1.dyl" Line="61" Column="32" />
       <File FileName="../Makefile.am" Line="77" Column="14" />
       <File FileName="../dnr/asmfactory.dyl" Line="63" Column="15" />
       <File FileName="../dnr/importer.dyl" Line="21" Column="9" />
       <File FileName="../dnr/loader.dyl" Line="208" Column="9" />
       <File FileName="../codegen/stmtreader.dyl" Line="495" Column="1" />
-      <File FileName="../dylandotnet.1" Line="28" Column="133" />
-      <File FileName="../dylandotnet4.1" Line="28" Column="130" />
+      <File FileName="../dylandotnet.1" Line="28" Column="4" />
+      <File FileName="../dylandotnet4.1" Line="28" Column="4" />
       <File FileName="../tests/ctorfield.dyl" Line="3" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

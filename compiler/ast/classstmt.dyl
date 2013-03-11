@@ -9,41 +9,30 @@
 // class Attrs ClassName extends InhClass implements ImplInterafaces
 class public auto ansi ClassStmt extends Stmt
 
-	field public Attributes.Attribute[] Attrs
+	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident ClassName
 	field public TypeTok InhClass
 	field public TypeTok[] ImplInterfaces
 
 	method public void ClassStmt()
 		me::ctor()
-		Attrs = new Attributes.Attribute[0]
+		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		ClassName = new Ident()
 		InhClass = new TypeTok()
 		ImplInterfaces = new TypeTok[0]
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
-
-		var i as integer = -1
-		var destarr as Attributes.Attribute[] = new Attributes.Attribute[Attrs[l] + 1]
-
-		do until i = (Attrs[l] - 1)
-			i = i + 1
-			destarr[i] = Attrs[i]
-		end do
-
-		destarr[Attrs[l]] = attrtoadd
-		Attrs = destarr
-
+		Attrs::Add(attrtoadd)
 	end method
 
 	method public void AddInterface(var interftoadd as TypeTok)
 
 		var i as integer = -1
-		var destarr as TypeTok[] = new TypeTok[ImplInterfaces[l] + 1]
+		var destarr as TypeTok[] = new TypeTok[++ImplInterfaces[l]]
 
-		do until i = (ImplInterfaces[l] - 1)
-			i = i + 1
+		do until i = --ImplInterfaces[l]
+			i++
 			destarr[i] = ImplInterfaces[i]
 		end do
 

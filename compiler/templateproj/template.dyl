@@ -586,9 +586,7 @@ class public auto ansi Program
 			+ "a continued " _
 			+ "line")
 		var dd = DateTime::get_Now() - DateTime::get_Now()
-		var d = test2()::get_Rank()
-		d++
-		d--
+		var x = #expr("abc" + $string$!#expr(12 + 6))::Trim()::get_Length()
 	end method
 
 end class

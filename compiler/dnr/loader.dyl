@@ -152,7 +152,7 @@ class public auto ansi static Loader
 		end if
 
 		do until i = --t[l]
-			i = ++i
+			i++
 			arr[i] = t[i]::get_ParameterType()
 		end do
 
@@ -172,7 +172,7 @@ class public auto ansi static Loader
 			ints = typ::GetInterfaces()
 			if ints != null then
 				do until i = --ints[l]
-					i = ++i
+					i++
 					mtdinfo = ints[i]::GetMethod(name)
 					if mtdinfo != null then
 						break
@@ -316,7 +316,7 @@ class public auto ansi static Loader
 		var destarr as MethodInfo[] = new MethodInfo[++srcarr[l]]
 
 		do until i = --srcarr[l]
-			i = ++i
+			i++
 			destarr[i] = srcarr[i]
 		end do
 
@@ -351,7 +351,7 @@ class public auto ansi static Loader
 				return true
 			end if
 			do until i = --t1[l]
-				i = ++i
+				i++
 				if !t1[i]::get_ParameterType()::Equals(t2[i]) then
 					return false
 				end if

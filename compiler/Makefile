@@ -573,7 +573,7 @@ all:
 	cat cflags.dyl.in > cflags.dyl
 	echo '#define DEBUG' | tee -a cflags.dyl
 #	echo '#undef NET_4_5' | tee -a cflags.dyl
-	echo '#define RX' | tee -a cflags.dyl
+#	echo '#define RX' | tee -a cflags.dyl
 	cp ./lib/4.0/C5.Mono.dll ./C5.Mono.dll
 	'$(MONO)' 4.0/dnc.exe -V > buildlog4
 	'$(MONO)' 4.0/dnc.exe dnu.dyl | tee -a buildlog4

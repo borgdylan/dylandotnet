@@ -41,7 +41,7 @@ class public auto ansi static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static TypeAttributes ProcessClassAttrs(var attrs as Attributes.Attribute[])
+	method public static TypeAttributes ProcessClassAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
 		
 		var ta as TypeAttributes
 		var temp as TypeAttributes
@@ -97,7 +97,7 @@ class public auto ansi static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static MethodAttributes ProcessMethodAttrs(var attrs as Attributes.Attribute[])
+	method public static MethodAttributes ProcessMethodAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
 		
 		var ta as MethodAttributes
 		var temp as MethodAttributes
@@ -175,7 +175,7 @@ class public auto ansi static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static FieldAttributes ProcessFieldAttrs(var attrs as Attributes.Attribute[])
+	method public static FieldAttributes ProcessFieldAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
 		
 		var ta as FieldAttributes
 		var temp as FieldAttributes
@@ -239,7 +239,7 @@ class public auto ansi static Helpers
 	end method
 	
 	[method: ComVisible(false)]
-	method public static PropertyAttributes ProcessPropAttrs(var attrs as Attributes.Attribute[])
+	method public static PropertyAttributes ProcessPropAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
 		
 		var ta as PropertyAttributes
 		var temp as PropertyAttributes
@@ -270,7 +270,7 @@ class public auto ansi static Helpers
 	end method
 	
 	[method: ComVisible(false)]
-	method public static EventAttributes ProcessEventAttrs(var attrs as Attributes.Attribute[])
+	method public static EventAttributes ProcessEventAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
 		
 		var ta as EventAttributes
 		var temp as EventAttributes
@@ -447,7 +447,7 @@ class public auto ansi static Helpers
 			end if
 
 			do until i = --pttoks[l]
-				i = ++i
+				i++
 				temptyp = CommitEvalTTok(pttoks[i])
 				if temptyp = null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Argument " + pttoks[i]::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
@@ -490,7 +490,7 @@ class public auto ansi static Helpers
 		var typ as IKVM.Reflection.Type = null
 
 		do until i = --ps[l]
-			i = ++i
+			i++
 			curp = $VarExpr$ps[i]
 			typ = CommitEvalTTok(curp::VarTyp)
 			if typ = null then
@@ -512,7 +512,7 @@ class public auto ansi static Helpers
 		var curp as VarExpr = null
 		
 		do until i = --ps[l]
-			i = ++i
+			i++
 			curp = $VarExpr$ps[i]
 			var pa as ParameterAttributes = ParameterAttributes::None
 			
@@ -548,7 +548,7 @@ class public auto ansi static Helpers
 		var curp as VarExpr = null
 		
 		do until i = --ps[l]
-			i = ++i
+			i++
 			curp = $VarExpr$ps[i]
 			var pa as ParameterAttributes = ParameterAttributes::None
 			
@@ -1372,7 +1372,7 @@ class public auto ansi static Helpers
 					var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
 					var i as integer = -1
 					do until i = --genparams[l]
-						i = ++i
+						i++
 						genparams[i] = CommitEvalTTok(gmn::Params[i])
 					end do
 					metinf = Loader::LoadGenericMethod(AsmFactory::CurnInhTyp, nam, genparams, typs)
@@ -1522,7 +1522,7 @@ class public auto ansi static Helpers
 			var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
 			var i as integer = -1
 			do until i = --genparams[l]
-				i = ++i
+				i++
 				genparams[i] = CommitEvalTTok(gmn::Params[i])
 			end do
 			return Loader::LoadGenericMethod(t, name, genparams, paramtyps)

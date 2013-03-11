@@ -649,6 +649,14 @@ class public auto ansi LockTok extends Token
 
 end class
 
+class public auto ansi ExprTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#expr"
+	end method
+
+end class
+
 class public auto ansi MeTok extends Token implements IUnaryOperatable, IConvable
 
 	field public boolean _Conv

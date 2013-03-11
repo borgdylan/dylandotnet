@@ -167,9 +167,9 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUn
 
 	method public void AddParam(var param as TypeTok)
 		var i as integer = -1
-		var destarr as TypeTok[] = new TypeTok[Params[l] + 1]
-		do until i = Params[l] - 1
-			i = i + 1
+		var destarr as TypeTok[] = new TypeTok[++Params[l]]
+		do until i = --Params[l]
+			i++
 			destarr[i] = Params[i]
 		end do
 		destarr[Params[l]] = param

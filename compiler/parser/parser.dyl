@@ -26,7 +26,7 @@ class public auto ansi Parser
 		PFlags::CurPath = stms::Path
 		
 		do until i >= (--stms::Stmts::get_Count())
-			i = ++i
+			i++
 			so = new StmtOptimizer(PFlags)
 			var cs as Stmt = stms::Stmts::get_Item(i)
 			

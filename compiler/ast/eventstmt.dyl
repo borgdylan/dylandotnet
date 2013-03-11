@@ -8,30 +8,19 @@
 
 class public auto ansi EventStmt extends Stmt
 
-	field public Attributes.Attribute[] Attrs
+	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident EventName
 	field public TypeTok EventTyp
 
 	method public void EventStmt()
 		me::ctor()
-		Attrs = new Attributes.Attribute[0]
+		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		EventName = new Ident()
 		EventTyp = new TypeTok()
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
-		
-		var i as integer = -1
-		var destarr as Attributes.Attribute[] = new Attributes.Attribute[Attrs[l] + 1]
-
-		do until i = (Attrs[l] - 1)
-			i = i + 1
-			destarr[i] = Attrs[i]
-		end do
-
-		destarr[Attrs[l]] = attrtoadd
-		Attrs = destarr
-
+		Attrs::Add(attrtoadd)
 	end method
 
 end class

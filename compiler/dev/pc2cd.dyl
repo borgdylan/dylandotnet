@@ -104,7 +104,7 @@ namespace dylan.NET.PkgConfig.PC2CD
 				var len as integer = args[l] - 1
 				
 				do
-					i = ++i
+					i++
 					
 					if args[i] == "-h" then
 						Console::WriteLine("")

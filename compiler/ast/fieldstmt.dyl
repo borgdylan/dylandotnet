@@ -8,39 +8,26 @@
 
 class public auto ansi FieldStmt extends Stmt
 
-	field public Attributes.Attribute[] Attrs
+	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident FieldName
 	field public TypeTok FieldTyp
 
 	method public void FieldStmt()
 		me::ctor()
-		Attrs = new Attributes.Attribute[0]
+		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		FieldName = new Ident()
 		FieldTyp = new TypeTok()
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
-		
-		var i as integer = -1
-		var destarr as Attributes.Attribute[] = new Attributes.Attribute[Attrs[l] + 1]
-
-		do until i = (Attrs[l] - 1)
-			i = i + 1
-			destarr[i] = Attrs[i]
-		end do
-
-		destarr[Attrs[l]] = attrtoadd
-		Attrs = destarr
-
+		Attrs::Add(attrtoadd)
 	end method
 	
 	method public hidebysig virtual string ToString()
 		var sw as StringWriter = new StringWriter()
-		var i as integer = -1
-		do until i = (Attrs[l] - 1)
-			i = i + 1
-			sw::Write(Attrs[i]::ToString() + " ")
-		end do
+		foreach attr in Attrs
+			sw::Write(attr::ToString() + " ")
+		end for
 		return "field " + sw::ToString() + FieldTyp::ToString() + " " + FieldName::Value
 	end method
 	

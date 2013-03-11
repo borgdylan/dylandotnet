@@ -8,4 +8,3 @@
 end #if
 
 #define DEBUG
-#define RX
