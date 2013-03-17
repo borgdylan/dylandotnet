@@ -12,12 +12,22 @@
 
 #refstdasm mscorlib.dll
 #refstdasm System.dll
-#refasm "tokenizer.AST.dll"
-#refasm "tokenizer.Lexer.dll"
-#refasm "tokenizer.Parser.dll"
-#refasm "tokenizer.CodeGen.dll"
-#refasm "dnu.dll"
-#refasm "dnr.dll"
+
+#if CLR_2 then
+#refasm "build/2.0/tokenizer.AST.dll"
+#refasm "build/2.0/tokenizer.Lexer.dll"
+#refasm "build/2.0/tokenizer.Parser.dll"
+#refasm "build/2.0/tokenizer.CodeGen.dll"
+#refasm "build/2.0/dnu.dll"
+#refasm "build/2.0/dnr.dll"
+#else
+#refasm "build/4.0/tokenizer.AST.dll"
+#refasm "build/4.0/tokenizer.Lexer.dll"
+#refasm "build/4.0/tokenizer.Parser.dll"
+#refasm "build/4.0/tokenizer.CodeGen.dll"
+#refasm "build/4.0/dnu.dll"
+#refasm "build/4.0/dnr.dll"
+end #if
 
 import System
 import System.IO
@@ -46,5 +56,5 @@ assembly dnc exe
 ver 11.3.1.3
 
 namespace dylan.NET.Compiler
-	#include "dnc/Mod1.dyl"
+	#include "dnc/Program.dyl"
 end namespace

@@ -28,7 +28,6 @@
   <Types>
     <Namespace Name="dylan.NET.Reflection">
       <Type Name="AsmFactory" Kind="Class" />
-      <Type Name="ConsolePrinter" Kind="Class" />
       <Type Name="ILEmitter" Kind="Class" />
       <Type Name="Importer" Kind="Class" />
       <Type Name="Loader" Kind="Class" />

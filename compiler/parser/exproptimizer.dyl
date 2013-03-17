@@ -813,8 +813,7 @@ class public auto ansi ExprOptimizer
 					PFlags::isChanged = true
 					if PFlags::DurConvFlag then
 						PFlags::ConvFlag = true
-						PFlags::OrdOp = "conv " + PFlags::OrdOp
-						PFlags::OrdOp = PFlags::OrdOp::Trim()
+						PFlags::OrdOp = #expr("conv " + PFlags::OrdOp)::Trim()
 					end if
 					exp::RemToken(i)
 					i--
@@ -825,8 +824,7 @@ class public auto ansi ExprOptimizer
 				if tok is NegOp then
 					PFlags::isChanged = true
 					PFlags::NegFlag = true
-					PFlags::OrdOp = "neg " + PFlags::OrdOp
-					PFlags::OrdOp = PFlags::OrdOp::Trim()
+					PFlags::OrdOp = #expr("neg " + PFlags::OrdOp)::Trim()
 					exp::RemToken(i)
 					i--
 					len = --exp::Tokens::get_Count() 
@@ -836,8 +834,7 @@ class public auto ansi ExprOptimizer
 				if tok is NotOp then
 					PFlags::isChanged = true
 					PFlags::NotFlag = true
-					PFlags::OrdOp = "not " + PFlags::OrdOp
-					PFlags::OrdOp = PFlags::OrdOp::Trim()
+					PFlags::OrdOp = #expr("not " + PFlags::OrdOp)::Trim()
 					exp::RemToken(i)
 					i--
 					len = --exp::Tokens::get_Count() 
@@ -847,8 +844,7 @@ class public auto ansi ExprOptimizer
 				if tok is IncOp then
 					PFlags::isChanged = true
 					PFlags::IncFlag = true
-					PFlags::OrdOp = "inc " + PFlags::OrdOp
-					PFlags::OrdOp = PFlags::OrdOp::Trim()
+					PFlags::OrdOp = #expr("inc " + PFlags::OrdOp)::Trim()
 					exp::RemToken(i)
 					i--
 					len = --exp::Tokens::get_Count() 
@@ -858,8 +854,7 @@ class public auto ansi ExprOptimizer
 				if tok is DecOp then
 					PFlags::isChanged = true
 					PFlags::DecFlag = true
-					PFlags::OrdOp = "dec " + PFlags::OrdOp
-					PFlags::OrdOp = PFlags::OrdOp::Trim()
+					PFlags::OrdOp = #expr("dec " + PFlags::OrdOp)::Trim()
 					exp::RemToken(i)
 					i--
 					len = --exp::Tokens::get_Count() 
@@ -1038,7 +1033,7 @@ class public auto ansi ExprOptimizer
 						if exp::Tokens::get_Item(++i) is LParen then
 							exp::Tokens::set_Item(i, new ExprCallTok() {Line = exp::Line})
 							if PFlags::isChanged then
-								PFlags::UpdateToken($ExprCallTok$exp::Tokens::get_Item(i))
+								PFlags::UpdateToken($IUnaryOperatable$exp::Tokens::get_Item(i))
 								PFlags::SetUnaryFalse()
 								j = i
 							end if

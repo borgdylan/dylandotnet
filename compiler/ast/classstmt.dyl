@@ -12,14 +12,14 @@ class public auto ansi ClassStmt extends Stmt
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident ClassName
 	field public TypeTok InhClass
-	field public TypeTok[] ImplInterfaces
+	field public C5.LinkedList<of TypeTok> ImplInterfaces
 
 	method public void ClassStmt()
 		me::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		ClassName = new Ident()
 		InhClass = new TypeTok()
-		ImplInterfaces = new TypeTok[0]
+		ImplInterfaces = new C5.LinkedList<of TypeTok>()
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
@@ -27,18 +27,7 @@ class public auto ansi ClassStmt extends Stmt
 	end method
 
 	method public void AddInterface(var interftoadd as TypeTok)
-
-		var i as integer = -1
-		var destarr as TypeTok[] = new TypeTok[++ImplInterfaces[l]]
-
-		do until i = --ImplInterfaces[l]
-			i++
-			destarr[i] = ImplInterfaces[i]
-		end do
-
-		destarr[ImplInterfaces[l]] = interftoadd
-		ImplInterfaces = destarr
-
+		ImplInterfaces::Add(interftoadd)
 	end method
 
 end class

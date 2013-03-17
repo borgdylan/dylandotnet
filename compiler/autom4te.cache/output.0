@@ -596,6 +596,8 @@ NUNIT
 MDOC
 MONO
 PKG_CONFIG
+AOT_FALSE
+AOT_TRUE
 RX_FALSE
 RX_TRUE
 NET45_FALSE
@@ -685,6 +687,7 @@ enable_maintainer_mode
 enable_debug
 enable_net45
 enable_rx
+enable_aot
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1321,6 +1324,8 @@ Optional Features:
                           yes)
   --enable-rx             enables use of Rx.NET under .NET 4.5 (default is
                           yes)
+  --enable-aot            enables use of AOT during installation under i386
+                          (default is no)
 
 Some influential environment variables:
   PKG_CONFIG  path to pkg-config utility
@@ -2456,6 +2461,22 @@ else
 fi
 
 
+@%:@ Check whether --enable-aot was given.
+if test "${enable_aot+set}" = set; then :
+  enableval=$enable_aot; 
+else
+  enable_aot=no
+fi
+
+ if test "x$enable_aot" = "xyes"; then
+  AOT_TRUE=
+  AOT_FALSE='#'
+else
+  AOT_TRUE='#'
+  AOT_FALSE=
+fi
+
+
 # Extract the first word of "pkg-config", so it can be a program name with args.
 set dummy pkg-config; ac_word=$2
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
@@ -2941,7 +2962,7 @@ if test "x$DYLANDOTNET4" = "xno"; then
 $as_echo "$as_me: WARNING: dylan.NET compiler for CLI 4.0 is not installed...This build system has one built-in." >&2;}
 fi
 
-ac_config_files="$ac_config_files Makefile tests/Makefile doc/Makefile 2.0/Makefile 4.0/Makefile dev/Makefile templateproj/Makefile unit/Makefile m4/Makefile"
+ac_config_files="$ac_config_files Makefile tests/Makefile doc/Makefile build/2.0/Makefile build/4.0/Makefile 2.0/Makefile 4.0/Makefile dev/Makefile templateproj/Makefile unit/Makefile m4/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3103,6 +3124,10 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${RX_TRUE}" && test -z "${RX_FALSE}"; then
   as_fn_error $? "conditional \"RX\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${AOT_TRUE}" && test -z "${AOT_FALSE}"; then
+  as_fn_error $? "conditional \"AOT\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 
@@ -3671,6 +3696,8 @@ do
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
+    "build/2.0/Makefile") CONFIG_FILES="$CONFIG_FILES build/2.0/Makefile" ;;
+    "build/4.0/Makefile") CONFIG_FILES="$CONFIG_FILES build/4.0/Makefile" ;;
     "2.0/Makefile") CONFIG_FILES="$CONFIG_FILES 2.0/Makefile" ;;
     "4.0/Makefile") CONFIG_FILES="$CONFIG_FILES 4.0/Makefile" ;;
     "dev/Makefile") CONFIG_FILES="$CONFIG_FILES dev/Makefile" ;;

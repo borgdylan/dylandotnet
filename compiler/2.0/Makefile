@@ -368,10 +368,9 @@ install: prodscript
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet/C5.Mono.dll
 	$(install_sh_PROGRAM) dnc.exe $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
-
-	if [[ $(host) =~ i686-pc-linux-gnu ]] ; then \
-		$(MONO) --aot $(DESTDIR)$(libdir)/dylandotnet/*.exe $(DESTDIR)$(libdir)/dylandotnet/*.dll; \
-	fi
+#	if [[ $(host) =~ i686-pc-linux-gnu ]] ; then \
+#		$(MONO) --aot $(DESTDIR)$(libdir)/dylandotnet/*.exe $(DESTDIR)$(libdir)/dylandotnet/*.dll; \
+#	fi
 
 	if [[ $(host) =~ .*-apple-darwin.* ]] ; then \
 		$(install_sh_PROGRAM) dylandotnet.pc /Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig/dylandotnet.pc; \

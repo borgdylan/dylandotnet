@@ -33,8 +33,7 @@ class public auto ansi static Helpers
 	[method: ComVisible(false)]
 	method public static void CheckAssignability(var t1 as IKVM.Reflection.Type, var t2 as IKVM.Reflection.Type)
 		if !t1::IsAssignableFrom(t2) then
-			if NullExprFlg and !t1::IsAssignableFrom(ILEmitter::Univ::Import(gettype ValueType)) then
-			else
+			if !#expr(NullExprFlg and !t1::IsAssignableFrom(ILEmitter::Univ::Import(gettype ValueType))) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Slots of type '" + t1::ToString() + "' cannot be assigned values of type '" + t2::ToString() + "'.")
 			end if
 		end if
@@ -484,7 +483,6 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void ProcessParams(var ps as Expr[])
-
 		var i as integer = -1
 		var curp as VarExpr = null
 		var typ as IKVM.Reflection.Type = null
@@ -502,7 +500,6 @@ class public auto ansi static Helpers
 			end if
 
 		end do
-		
 	end method
 
 	[method: ComVisible(false)]
@@ -534,7 +531,7 @@ class public auto ansi static Helpers
 				end for
 			end if
 			
-			ILEmitter::ArgInd = ++ILEmitter::ArgInd
+			ILEmitter::ArgInd++
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 		end do
 		
@@ -570,7 +567,7 @@ class public auto ansi static Helpers
 				end for
 			end if
 			
-			ILEmitter::ArgInd = ++ILEmitter::ArgInd
+			ILEmitter::ArgInd++
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 		end do
 		
@@ -579,100 +576,71 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void EmitLiteral(var lit as Literal)
-
 		if lit is StringLiteral then
-			var slit as StringLiteral = $StringLiteral$lit
-			ILEmitter::EmitLdstr(slit::Value)
+			ILEmitter::EmitLdstr(#expr($StringLiteral$lit)::Value)
 		elseif lit is SByteLiteral then
-			var sblit as SByteLiteral = $SByteLiteral$lit
-			ILEmitter::EmitLdcI1(sblit::NumVal)
+			ILEmitter::EmitLdcI1(#expr($SByteLiteral$lit)::NumVal)
 		elseif lit is ShortLiteral then
-			var shlit as ShortLiteral = $ShortLiteral$lit
-			ILEmitter::EmitLdcI2(shlit::NumVal)
+			ILEmitter::EmitLdcI2(#expr($ShortLiteral$lit)::NumVal)
 		elseif lit is IntLiteral then
-			var ilit as IntLiteral = $IntLiteral$lit
-			ILEmitter::EmitLdcI4(ilit::NumVal)
+			ILEmitter::EmitLdcI4(#expr($IntLiteral$lit)::NumVal)
 		elseif lit is LongLiteral then
-			var llit as LongLiteral = $LongLiteral$lit
-			ILEmitter::EmitLdcI8(llit::NumVal)
+			ILEmitter::EmitLdcI8(#expr($LongLiteral$lit)::NumVal)
 		elseif lit is FloatLiteral then
-			var flit as FloatLiteral = $FloatLiteral$lit
-			ILEmitter::EmitLdcR4(flit::NumVal)
+			ILEmitter::EmitLdcR4(#expr($FloatLiteral$lit)::NumVal)
 		elseif lit is DoubleLiteral then
-			var dlit as DoubleLiteral = $DoubleLiteral$lit
-			ILEmitter::EmitLdcR8(dlit::NumVal)
+			ILEmitter::EmitLdcR8(#expr($DoubleLiteral$lit)::NumVal)
 		elseif lit is BooleanLiteral then
-			var bllit as BooleanLiteral = $BooleanLiteral$lit
-			ILEmitter::EmitLdcBool(bllit::BoolVal)
+			ILEmitter::EmitLdcBool(#expr($BooleanLiteral$lit)::BoolVal)
 		elseif lit is CharLiteral then
-			var clit as CharLiteral = $CharLiteral$lit
-			ILEmitter::EmitLdcChar(clit::CharVal)
+			ILEmitter::EmitLdcChar(#expr($CharLiteral$lit)::CharVal)
 		elseif lit is NullLiteral then
 			ILEmitter::EmitLdnull()
 		elseif lit is ByteLiteral then
-			var blit as ByteLiteral = $ByteLiteral$lit
-			ILEmitter::EmitLdcU1(blit::NumVal)
+			ILEmitter::EmitLdcU1(#expr($ByteLiteral$lit)::NumVal)
 		elseif lit is UShortLiteral then
-			var uslit as UShortLiteral = $UShortLiteral$lit
-			ILEmitter::EmitLdcU2(uslit::NumVal)
+			ILEmitter::EmitLdcU2(#expr($UShortLiteral$lit)::NumVal)
 		elseif lit is UIntLiteral then
-			var uilit as UIntLiteral = $UIntLiteral$lit
-			ILEmitter::EmitLdcU4(uilit::NumVal)
+			ILEmitter::EmitLdcU4(#expr($UIntLiteral$lit)::NumVal)
 		elseif lit is ULongLiteral then
-			var ullit as ULongLiteral = $ULongLiteral$lit
-			ILEmitter::EmitLdcU8(ullit::NumVal)
+			ILEmitter::EmitLdcU8(#expr($ULongLiteral$lit)::NumVal)
 		elseif lit is DecimalLiteral then
-			var declit as DecimalLiteral = $DecimalLiteral$lit
-			ILEmitter::EmitLdcDec(declit::NumVal)
+			ILEmitter::EmitLdcDec(#expr($DecimalLiteral$lit)::NumVal)
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Loading of literals of type '" + CommitEvalTTok(lit::LitTyp)::ToString() + "' is not yet supported.")
 		end if
-
 	end method
 	
 	[method: ComVisible(false)]
 	method public static object LiteralToConst(var lit as Literal)
 		if lit is StringLiteral then
-			var slit as StringLiteral = $StringLiteral$lit
-			return slit::Value
+			return #expr($StringLiteral$lit)::Value
 		elseif lit is SByteLiteral then
-			var sblit as SByteLiteral = $SByteLiteral$lit
-			return $object$sblit::NumVal
+			return $object$#expr($SByteLiteral$lit)::NumVal
 		elseif lit is ShortLiteral then
-			var shlit as ShortLiteral = $ShortLiteral$lit
-			return $object$shlit::NumVal
+			return $object$#expr($ShortLiteral$lit)::NumVal
 		elseif lit is IntLiteral then
-			var ilit as IntLiteral = $IntLiteral$lit
-			return $object$ilit::NumVal
+			return $object$#expr($IntLiteral$lit)::NumVal
 		elseif lit is LongLiteral then
-			var llit as LongLiteral = $LongLiteral$lit
-			return $object$llit::NumVal
+			return $object$#expr($LongLiteral$lit)::NumVal
 		elseif lit is FloatLiteral then
-			var flit as FloatLiteral = $FloatLiteral$lit
-			return $object$flit::NumVal
+			return $object$#expr($FloatLiteral$lit)::NumVal
 		elseif lit is DoubleLiteral then
-			var dlit as DoubleLiteral = $DoubleLiteral$lit
-			return $object$dlit::NumVal
+			return $object$#expr($DoubleLiteral$lit)::NumVal
 		elseif lit is BooleanLiteral then
-			var bllit as BooleanLiteral = $BooleanLiteral$lit
-			return $object$bllit::BoolVal
+			return $object$#expr($BooleanLiteral$lit)::BoolVal
 		elseif lit is CharLiteral then
-			var clit as CharLiteral = $CharLiteral$lit
-			return $object$clit::CharVal
+			return $object$#expr($CharLiteral$lit)::CharVal
 		elseif lit is NullLiteral then
 			return null
 		elseif lit is ByteLiteral then
-			var blit as ByteLiteral = $ByteLiteral$lit
-			return $object$blit::NumVal
+			return $object$#expr($ByteLiteral$lit)::NumVal
 		elseif lit is UShortLiteral then
-			var uslit as UShortLiteral = $UShortLiteral$lit
-			return $object$uslit::NumVal
+			return $object$#expr($UShortLiteral$lit)::NumVal
 		elseif lit is UIntLiteral then
-			var uilit as UIntLiteral = $UIntLiteral$lit
-			return $object$uilit::NumVal
+			return $object$#expr($UIntLiteral$lit)::NumVal
 		elseif lit is ULongLiteral then
-			var ullit as ULongLiteral = $ULongLiteral$lit
-			return $object$ullit::NumVal
+			return $object$#expr($ULongLiteral$lit)::NumVal
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Literals of type '" + CommitEvalTTok(lit::LitTyp)::ToString() + "' are not suitable for constants.")
 			return null
@@ -1163,8 +1131,10 @@ class public auto ansi static Helpers
 			if sink::IsAssignableFrom(source) then
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
 				return
-			end if
-			if source::IsAssignableFrom(sink) then
+			elseif source::IsAssignableFrom(sink) then
+				ILEmitter::EmitCastclass(sink)
+				return
+			elseif source::get_IsInterface() or sink::get_IsInterface() then
 				ILEmitter::EmitCastclass(sink)
 				return
 			end if
@@ -1250,7 +1220,6 @@ class public auto ansi static Helpers
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No conversion from '" + source::ToString() + "' to '" + sink::ToString() + "' exists.")
 		end if
-
 	end method
 
 	[method: ComVisible(false)]
@@ -1258,8 +1227,7 @@ class public auto ansi static Helpers
 		if stat or BaseFlg then
 			ILEmitter::EmitCall(met)
 		else
-			var typ as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ValueType)
-			if typ::IsAssignableFrom(AsmFactory::Type05) then
+			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type05) then
 				if met::get_IsVirtual() then
 					//ILEmitter::EmitConstrained(AsmFactory::Type05)
 					ILEmitter::EmitCall(met)
@@ -1271,8 +1239,7 @@ class public auto ansi static Helpers
 			end if
 		end if
 		if AsmFactory::PopFlg then
-			var rt as IKVM.Reflection.Type = met::get_ReturnType()
-			if !rt::Equals(ILEmitter::Univ::Import(gettype void)) then
+			if !met::get_ReturnType()::Equals(ILEmitter::Univ::Import(gettype void)) then
 				ILEmitter::EmitPop()
 			end if
 		end if
@@ -1413,11 +1380,9 @@ class public auto ansi static Helpers
 	[method: ComVisible(false)]
 	method public static MethodNameTok StripDelMtdName(var t as Token)
 		if t is Ident then
-			var idt as Ident = $Ident$t
-			return $MethodNameTok$idt
+			return $MethodNameTok$#expr($Ident$t)
 		elseif t is MethodCallTok then
-			var mct as MethodCallTok = $MethodCallTok$t
-			return mct::Name
+			return #expr($MethodCallTok$t)::Name
 		else
 			return null
 		end if

@@ -95,16 +95,14 @@ class public auto ansi CodeGenerator
 					hefs::Push(helseflg)
 					pfs::Push(procflg)
 					helseflg = procflg
-					var hif as HIfStmt = $HIfStmt$stmts::Stmts::get_Item(i)
-					if eval::EvaluateHIf(hif::Exp) and helseflg then
+					if eval::EvaluateHIf(#expr($HIfStmt$stmts::Stmts::get_Item(i))::Exp) and helseflg then
 						procflg = true
 						helseflg = false
 					else
 						procflg = false
 					end if
 				elseif stmts::Stmts::get_Item(i) is HElseIfStmt then
-					var hif as HElseIfStmt = $HElseIfStmt$stmts::Stmts::get_Item(i)
-					if eval::EvaluateHIf(hif::Exp) and helseflg then
+					if eval::EvaluateHIf(#expr($HElseIfStmt$stmts::Stmts::get_Item(i))::Exp) and helseflg then
 						procflg = true
 						helseflg = false
 					else

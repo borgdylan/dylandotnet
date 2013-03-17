@@ -18,6 +18,9 @@ AM_CONDITIONAL([NET45],[test "x$enable_net45" = "xyes"])
 AC_ARG_ENABLE([rx],[AS_HELP_STRING([--enable-rx],[enables use of Rx.NET under .NET 4.5 (default is yes)])],[],[enable_rx=yes])
 AM_CONDITIONAL([RX],[test "x$enable_rx" = "xyes"])
 
+AC_ARG_ENABLE([aot],[AS_HELP_STRING([--enable-aot],[enables use of AOT during installation under i386 (default is no)])],[],[enable_aot=no])
+AM_CONDITIONAL([AOT],[test "x$enable_aot" = "xyes"])
+
 dnl pkg-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
 if test "x$PKG_CONFIG" = "xno"; then
@@ -61,6 +64,8 @@ AC_OUTPUT([
 Makefile
 tests/Makefile
 doc/Makefile
+build/2.0/Makefile
+build/4.0/Makefile
 2.0/Makefile
 4.0/Makefile
 dev/Makefile

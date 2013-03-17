@@ -15,30 +15,6 @@
 
 
 
-#if test -e "*.exe"; then rm -f *.exe ; fi
-#if test -e "*.mdb"; then rm -f *.mdb ; fi
-#if test -e "*.dll"; then rm -f *.dll ; fi
-
-#preprep:
-#	
-#	if [[ $(host) =~ .*-apple-darwin.* ]] ; then \
-#		readlink $(MONO) > monol; \
-#		printf "/Library/Frameworks/Mono.framework/Versions/Current/lib/mono/2.0/mscorlib.dll" > mscorlibl; \
-#		printf "/Library/Frameworks/Mono.framework/Versions/Current/lib/mono/2.0/System.Xml.Linq.dll" > sysxmllinql; \
-#	else \
-#		readlink -e -n $(MONO) > monol; \
-#		dirname `cat monol` > monol; \
-#		echo -n `cat monol`/../lib/mono/2.0/mscorlib.dll > mscorlibl; \
-#		readlink -e -n `cat mscorlibl` > mscorlibl;\
-#		echo -n `cat monol`/../lib/mono/2.0/System.Xml.Linq.dll > sysxmllinql; \
-#		readlink -e -n `cat sysxmllinql` > sysxmllinql; \
-#	fi
-#	
-#	rm -f monol
-#	
-#	sed -e "s|\@MSCORLIB\@|$(MSCORLIB)|g" \
-#	    -e "s|\@SYSXMLLINQ\@|$(SYSXMLLINQ)|g" libs.in > libs
-
 am__make_dryrun = \
   { \
     am__dry=no; \
@@ -364,31 +340,58 @@ uninstall-am:
 	maintainer-clean maintainer-clean-generic mostlyclean \
 	mostlyclean-generic pdf pdf-am ps ps-am uninstall uninstall-am
 
+.PHONY: all install clean distclean testc compilestart
 
-.PHONY: all
+%.exe: %.dyl
+	'$(MONO)' ../2.0/dnc.exe $< | tee -a buildlog
 
-all:
+%.dll: %.dyl
+	'$(MONO)' ../2.0/dnc.exe $< | tee -a buildlog
+
+compilestart:
 	'$(MONO)' ../2.0/dnc.exe -V > buildlog
-	'$(MONO)' ../2.0/dnc.exe arit.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe conv.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe ctorfield.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe helloworld.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe logicop.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe mathematics.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe mathstest.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe numloops.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe openfile.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe Person.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe PersonProg.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe boxobj.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe xmllib.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe arraytest.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe vector.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe threads.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe dylrecurse.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe strrecurse.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe protectedtests.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe transnames.dyl | tee -a buildlog
+
+arit.exe: arit.dyl ./../config.status ./../config.log
+
+conv.exe: conv.dyl ./../config.status ./../config.log
+
+ctorfield.exe: ctorfield.dyl ./../config.status ./../config.log
+
+helloworld.exe: helloworld.dyl ./../config.status ./../config.log
+
+logicop.exe: logicop.dyl ./../config.status ./../config.log
+
+mathematics.dll: mathematics.dyl ./../config.status ./../config.log
+
+mathstest.exe: mathstest.dyl ./../config.status ./../config.log
+
+numloops.exe: numloops.dyl ./../config.status ./../config.log
+
+openfile.exe: openfile.dyl ./../config.status ./../config.log
+
+Person.dll: Person.dyl ./../config.status ./../config.log
+
+PersonProg.exe: PersonProg.dyl ./../config.status ./../config.log
+
+boxobj.exe: boxobj.dyl ./../config.status ./../config.log
+
+xmllib.exe: xmllib.dyl ./../config.status ./../config.log
+
+arraytest.exe: arraytest.dyl ./../config.status ./../config.log
+
+vector.dll: vector.dyl ./../config.status ./../config.log
+
+threads.exe: threads.dyl ./../config.status ./../config.log
+
+dylrecurse.exe: dylrecurse.dyl ./../config.status ./../config.log
+
+strrecurse.exe: strrecurse.dyl ./../config.status ./../config.log
+
+protectedtests.exe: protectedtests.dyl ./../config.status ./../config.log
+
+transnames.exe: transnames.dyl ./../config.status ./../config.log
+
+all: compilestart arit.exe conv.exe ctorfield.exe helloworld.exe logicop.exe mathematics.dll mathstest.exe numloops.exe Person.dll PersonProg.exe boxobj.exe xmllib.exe arraytest.exe vector.dll threads.exe dylrecurse.exe strrecurse.exe protectedtests.exe transnames.exe
 
 install:
 	tar -czf tests.tar.gz *

@@ -228,7 +228,7 @@ class public auto ansi static SymTable
 	
 	[method: ComVisible(false)]
 	method public static void AddParamCA(var ind as integer,var ca as CustomAttributeBuilder)
-		if Enumerable::Contains<of integer>(ParameterCALst::get_Keys(),ind) == false then
+		if !Enumerable::Contains<of integer>(ParameterCALst::get_Keys(),ind) then
 			ParameterCALst::Add(ind, new C5.LinkedList<of CustomAttributeBuilder>())
 		end if
 		ParameterCALst::get_Item(ind)::Add(ca)

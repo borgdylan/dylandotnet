@@ -13,8 +13,14 @@
 
 #refstdasm "mscorlib.dll"
 #refstdasm "System.dll"
-#refasm "tokenizer.AST.dll"
-#refasm "dnu.dll"
+
+#if CLR_2 then
+#refasm "build/2.0/tokenizer.AST.dll"
+#refasm "build/2.0/dnu.dll"
+#else
+#refasm "build/4.0/tokenizer.AST.dll"
+#refasm "build/4.0/dnu.dll"
+end #if
 
 import System
 import System.IO

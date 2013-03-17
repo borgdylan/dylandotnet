@@ -1,0 +1,84 @@
+.PHONY: all install clean distclean testc compilestart
+
+%.exe: %.dyl
+	'$(MONO)' ../2.0/dnc.exe $< | tee -a buildlog
+
+%.dll: %.dyl
+	'$(MONO)' ../2.0/dnc.exe $< | tee -a buildlog
+
+compilestart:
+	'$(MONO)' ../2.0/dnc.exe -V > buildlog
+
+arit.exe: arit.dyl ./../config.status ./../config.log
+
+conv.exe: conv.dyl ./../config.status ./../config.log
+
+ctorfield.exe: ctorfield.dyl ./../config.status ./../config.log
+	'$(MONO)'helloworld.exe: helloworld.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe helloworld.dyl | tee -a buildlog
+
+logicop.exe: logicop.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe logicop.dyl | tee -a buildlog
+
+mathematics.dll: mathematics.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe mathematics.dyl | tee -a buildlog
+
+mathstest.exe: mathstest.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe mathstest.dyl | tee -a buildlog
+
+numloops.exe: numloops.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe numloops.dyl | tee -a buildlog
+
+openfile.exe: openfile.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe openfile.dyl | tee -a buildlog
+
+Person.dll: Person.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe Person.dyl | tee -a buildlog
+
+PersonProg.exe: PersonProg.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe PersonProg.dyl | tee -a buildlog
+
+boxobj.exe: boxobj.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe boxobj.dyl | tee -a buildlog
+
+xmllibrary.exe: xmllib.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe xmllib.dyl | tee -a buildlog
+
+arraytest.exe: arraytest.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe arraytest.dyl | tee -a buildlog
+
+vector.dll: vector.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe vector.dyl | tee -a buildlog
+
+threads.exe: threads.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe threads.dyl | tee -a buildlog
+
+dylrecurse.exe: dylrecurse.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe dylrecurse.dyl | tee -a buildlog
+
+strrecurse.exe: strrecurse.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe strrecurse.dyl | tee -a buildlog
+
+protectedtests.exe: protectedtests.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe protectedtests.dyl | tee -a buildlog
+
+transnames.exe: transnames.dyl ./../config.status ./../config.log
+	'$(MONO)' ../2.0/dnc.exe transnames.dyl | tee -a buildlog
+
+all: compilestart arit.exe conv.exe ctorfield.exe helloworld.exe logicop.exe mathematics.dll mathstest.exe numloops.exe Person.dll PersonProg.exe boxobj.exe xmllibrary.exe arraytest.exe vector.dll threads.exe dylrecurse.exe strrecurse.exe protectedtests.exe transnames.exe
+
+install:
+	tar -czf tests.tar.gz *
+	$(install_sh_PROGRAM) tests.tar.gz $(DESTDIR)$(prefix)/share/doc/dylandotnet-doc/tests.tar.gz
+	rm -f tests.tar.gz
+
+clean:
+	rm -f *.exe
+	rm -f *.mdb
+	rm -f *.dll
+	
+distclean:
+	rm -f Makefile
+
+testc:
+	echo 'hello'

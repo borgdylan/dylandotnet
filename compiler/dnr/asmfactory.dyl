@@ -88,11 +88,7 @@ class public auto ansi static AsmFactory
 		ILEmitter::ILGen = CurnILGen
 		ILEmitter::DebugFlg = DebugFlg
 		ILEmitter::LocInd = -1
-		if CurnMetB::get_IsStatic() then
-			ILEmitter::ArgInd = -1
-		else
-			ILEmitter::ArgInd = 0
-		end if
+		ILEmitter::ArgInd = #ternary {CurnMetB::get_IsStatic() ? -1, 0}
 	end method
 
 	[method: ComVisible(false)]
@@ -102,11 +98,7 @@ class public auto ansi static AsmFactory
 		ILEmitter::ILGen = CurnILGen
 		ILEmitter::DebugFlg = DebugFlg
 		ILEmitter::LocInd = -1
-		if CurnConB::get_IsStatic() then
-			ILEmitter::ArgInd = -1
-		else
-			ILEmitter::ArgInd = 0
-		end if
+		ILEmitter::ArgInd = #ternary {CurnConB::get_IsStatic() ? -1, 0}
 	end method
 
 	[method: ComVisible(false)]

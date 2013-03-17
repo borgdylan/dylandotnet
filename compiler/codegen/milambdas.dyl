@@ -29,9 +29,9 @@ class private auto ansi MILambdas2
 				return true
 			end if
 			var i as integer = -1
-			do until i = (arra[l] - 1)
-				i = i + 1
-				if arra[i]::IsAssignableFrom(arrb[i]) = false then
+			do until i = --arra[l]
+				i++
+				if !arra[i]::IsAssignableFrom(arrb[i]) then
 					return false
 				end if
 			end do
@@ -47,9 +47,9 @@ class private auto ansi MILambdas2
 				return true
 			end if
 			var i as integer = -1
-			do until i = (arra[l] - 1)
-				i = i + 1
-				if arra[i]::Equals(arrb[i]) = false then
+			do until i = --arra[l]
+				i++
+				if !arra[i]::Equals(arrb[i]) then
 					return false
 				end if
 			end do
@@ -70,7 +70,7 @@ class private auto ansi MILambdas2
 	method assembly integer CalcDeriveness(var t as IKVM.Reflection.Type)
 		var d as integer = 1
 		do while t::get_BaseType() != null
-			d = d + 1
+			d++
 			t = t::get_BaseType()
 		end do
 		return d
@@ -79,17 +79,17 @@ class private auto ansi MILambdas2
 	method assembly static integer[] ExtractDeriveness(var mi as MethodItem)
 		var deriv as integer[] = new integer[mi::ParamTyps[l]]
 		var i as integer = -1
-		do until i = (deriv[l] - 1)
-			i = i + 1
+		do until i = --deriv[l]
+			i++
 			deriv[i] = CalcDeriveness(mi::ParamTyps[i])
 		end do
 		return deriv
 	end method
 
 	method assembly static integer[] ZipDeriveness(var d as integer[],var n as integer)
-		var deriv as integer[] = new integer[d[l] + 1]
+		var deriv as integer[] = new integer[++d[l]]
 		Array::Copy(d,deriv,$long$d[l])
-		deriv[deriv[l] - 1] = n
+		deriv[--deriv[l]] = n
 		return deriv
 	end method
 
@@ -97,17 +97,13 @@ class private auto ansi MILambdas2
 		var i as integer = -1
 		var f as boolean = true
 		do until i >= (d1[l] - 2)
-			i = i + 1
+			i++
 			if d1[i] < d2[i] then
 				f = false
 				break
 			end if
 		end do
-		if f then
-			return d1
-		else
-			return d2
-		end if
+		return #ternary {f ? d1, d2}
 	end method
 
 end class

@@ -9,7 +9,7 @@ import System.Xml.Linq
 
 #debug on
 
-assembly xmllibrary exe
+assembly xmllib exe
 ver 1.2.0.0
 
 class public auto ansi Mod1

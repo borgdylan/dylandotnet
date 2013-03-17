@@ -1455,8 +1455,7 @@ class public auto ansi StmtOptimizer
 				var evas as EventAddStmt = new EventAddStmt() {Line = stm::Line, Tokens = stm::Tokens}
 				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
 				if exp::Tokens::get_Item(1) is MethodCallTok then
-					var mc as MethodCallTok = $MethodCallTok$exp::Tokens::get_Item(1)
-					evas::Adder = mc::Name
+					evas::Adder = #expr($MethodCallTok$exp::Tokens::get_Item(1))::Name
 				elseif exp::Tokens::get_Item(1) is Ident then
 					evas::Adder = $Ident$exp::Tokens::get_Item(1)
 				else

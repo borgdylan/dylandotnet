@@ -13,9 +13,16 @@
 #refstdasm "mscorlib.dll"
 #refstdasm "System.dll"
 #refstdasm "System.Core.dll"
-#refasm "dnu.dll"
-#refasm "IKVM.Reflection.dll"
-#refasm "C5.Mono.dll"
+
+#if CLR_2 then
+#refasm "build/2.0/C5.Mono.dll"
+#refasm "build/2.0/IKVM.Reflection.dll"
+#refasm "build/2.0/dnu.dll"
+#else
+#refasm "build/4.0/C5.Mono.dll"
+#refasm "build/4.0/IKVM.Reflection.dll"
+#refasm "build/4.0/dnu.dll"
+end #if
 
 import System
 import System.IO
@@ -51,5 +58,5 @@ namespace dylan.NET.Reflection
 	#include "dnr/asmfactory.dyl"
 	#include "dnr/importer.dyl"
 	#include "dnr/loader.dyl"
-	#include "dnr/consoleprinter.dyl"
+	//#include "dnr/consoleprinter.dyl"
 end namespace

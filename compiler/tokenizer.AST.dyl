@@ -11,10 +11,18 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 #refstdasm "mscorlib.dll"
-#refasm "dnu.dll"
-#refasm "dnr.dll"
-#refasm "IKVM.Reflection.dll"
-#refasm "C5.Mono.dll"
+
+#if CLR_2 then
+#refasm "build/2.0/C5.Mono.dll"
+#refasm "build/2.0/IKVM.Reflection.dll"
+#refasm "build/2.0/dnu.dll"
+#refasm "build/2.0/dnr.dll"
+#else
+#refasm "build/4.0/C5.Mono.dll"
+#refasm "build/4.0/IKVM.Reflection.dll"
+#refasm "build/4.0/dnu.dll"
+#refasm "build/4.0/dnr.dll"
+end #if
 
 #include "cflags.dyl"
 #if DEBUG then
@@ -99,27 +107,14 @@ namespace dylan.NET.Tokenizer.AST.Tokens.Chars
 	#include "ast/chars.dyl"
 end namespace
 
-namespace dylan.NET.Tokenizer.AST
-end namespace
-
 namespace dylan.NET.Tokenizer.AST.Exprs
 	#include "ast/varexpr.dyl"
-	//#include "ast/newarrexpr.dyl"
-	//#include "ast/newexpr.dyl"
-	//#include "ast/castclassexpr.dyl"
-	//#include "ast/gettypeexpr.dyl"
-	//#include "ast/ptrexpr.dyl"
-	//#include "ast/otherexpr.dyl"
-	//#include "ast/conditionalexpr.dyl"
 end namespace
 
 namespace dylan.NET.Tokenizer.AST.Stmts
-	//#include "ast/dependstmt.dyl"
 	//#include "ast/stdasmstmt.dyl"
-	//#include "ast/singstmt.dyl"
 	#include "ast/debugstmt.dyl"
 	#include "ast/scopestmt.dyl"
-	//#include "ast/makeasmstmt.dyl"
 	#include "ast/refasmstmt.dyl"
 	#include "ast/newresstmt.dyl"
 	#include "ast/importstmts.dyl"

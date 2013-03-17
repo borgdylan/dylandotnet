@@ -30,18 +30,14 @@ class public auto ansi StmtReader
 				tarr[i] = Helpers::CommitEvalTTok(lit::LitTyp)
 				oarr[i] = Helpers::LiteralToConst(lit)
 			elseif param::Tokens::get_Item(0) is Ident then
-				var idt as Ident = $Ident$param::Tokens::get_Item(0)
-				var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ":")
-				var constcls as IKVM.Reflection.Type = Helpers::CommitEvalTTok(new TypeTok(idtnamarr[0]))
-				var fldinf as FieldInfo = Helpers::GetExtFld(constcls, idtnamarr[1])
-				if Loader::FldLitFlag and (fldinf != null) then
+				var idtnamarr as string[] = ParseUtils::StringParser(#expr($Ident$param::Tokens::get_Item(0))::Value, ":")
+				if Loader::FldLitFlag and (Helpers::GetExtFld(Helpers::CommitEvalTTok(new TypeTok(idtnamarr[0])), idtnamarr[1]) != null) then
 					tarr[i] = Loader::FldLitTyp
 					oarr[i] = Loader::FldLitVal
 				end if
 			elseif param::Tokens::get_Item(0) is GettypeCallTok then
-				var gtc as GettypeCallTok = $GettypeCallTok$param::Tokens::get_Item(0)
 				tarr[i] = ILEmitter::Univ::Import(gettype Type)
-				oarr[i] = Helpers::CommitEvalTTok(gtc::Name)
+				oarr[i] = Helpers::CommitEvalTTok(#expr($GettypeCallTok$param::Tokens::get_Item(0))::Name)
 			end if
 		end for
 		
@@ -77,11 +73,8 @@ class public auto ansi StmtReader
 					foarr::Add(Helpers::LiteralToConst(lit2))
 				end if
 			elseif curpair::ValueExpr::Tokens::get_Item(0) is Ident then
-				var idt2 as Ident = $Ident$curpair::ValueExpr::Tokens::get_Item(0)
-				var idtnamarr2 as string[] = ParseUtils::StringParser(idt2::Value, ":")
-				var constcls2 as IKVM.Reflection.Type = Helpers::CommitEvalTTok(new TypeTok(idtnamarr2[0]))
-				var fldinf2 as FieldInfo = Helpers::GetExtFld(constcls2, idtnamarr2[1])
-				if Loader::FldLitFlag and (fldinf2 != null) then
+				var idtnamarr2 as string[] = ParseUtils::StringParser(#expr($Ident$curpair::ValueExpr::Tokens::get_Item(0))::Value, ":")
+				if Loader::FldLitFlag and (Helpers::GetExtFld(Helpers::CommitEvalTTok(new TypeTok(idtnamarr2[0])), idtnamarr2[1]) != null) then
 					if multflg then
 						poarr::Add(Loader::FldLitVal)
 					else
@@ -98,8 +91,8 @@ class public auto ansi StmtReader
 			end if
 		end for
 		
-		var ctor as ConstructorInfo = Helpers::GetLocCtor(typ,tarr)
-		return new CustomAttributeBuilder(ctor, oarr, Enumerable::ToArray<of PropertyInfo>(piarr), Enumerable::ToArray<of object>(poarr), Enumerable::ToArray<of FieldInfo>(fiarr), Enumerable::ToArray<of object>(foarr))
+		return new CustomAttributeBuilder(Helpers::GetLocCtor(typ,tarr), oarr, Enumerable::ToArray<of PropertyInfo>(piarr), _
+			 Enumerable::ToArray<of object>(poarr), Enumerable::ToArray<of FieldInfo>(fiarr), Enumerable::ToArray<of object>(foarr))
 	end method
 
 	method public void Read(var stm as Stmt, var fpath as string)
@@ -107,7 +100,6 @@ class public auto ansi StmtReader
 		var vtyp as IKVM.Reflection.Type = null
 		var typ as IKVM.Reflection.Type = null
 		var eval as Evaluator = null
-		var i as integer
 
 		AsmFactory::ChainFlg = false
 		ILEmitter::LineNr = stm::Line
@@ -127,7 +119,7 @@ class public auto ansi StmtReader
 			end if
 			rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::Value)
 			
-			if File::Exists(rastm::AsmPath::Value) == false then
+			if !File::Exists(rastm::AsmPath::Value) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Assembly File '" + rastm::AsmPath::Value + "' does not exist.")
 			end if
 			
@@ -139,10 +131,9 @@ class public auto ansi StmtReader
 			if rsastm::AsmPath::Value like c"^\q(.)*\q$" then
 				rsastm::AsmPath::Value = rsastm::AsmPath::Value::Trim(new char[] {c'\q'})
 			end if
-			rsastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rsastm::AsmPath::Value)
-			rsastm::AsmPath::Value = Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), rsastm::AsmPath::Value)
+			rsastm::AsmPath::Value = Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), ParseUtils::ProcessMSYSPath(rsastm::AsmPath::Value))
 			
-			if File::Exists(rsastm::AsmPath::Value) == false then
+			if !File::Exists(rsastm::AsmPath::Value) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Assembly File '" + rsastm::AsmPath::Value + "' does not exist.")
 			end if
 			
@@ -188,8 +179,7 @@ class public auto ansi StmtReader
 		elseif stm is VerStmt then
 			var asmv as VerStmt = $VerStmt$stm
 			AsmFactory::AsmNameStr::set_Version(asmv::ToVersion())
-			var aasv as AssemblyBuilderAccess = AssemblyBuilderAccess::Save
-			AsmFactory::AsmB = ILEmitter::Univ::DefineDynamicAssembly(AsmFactory::AsmNameStr, aasv, Directory::GetCurrentDirectory())
+			AsmFactory::AsmB = ILEmitter::Univ::DefineDynamicAssembly(AsmFactory::AsmNameStr, AssemblyBuilderAccess::Save, Directory::GetCurrentDirectory())
 			AsmFactory::MdlB = AsmFactory::AsmB::DefineDynamicModule(AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode, AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode, AsmFactory::DebugFlg)
 
 			if AsmFactory::DebugFlg then
@@ -313,12 +303,10 @@ class public auto ansi StmtReader
 				SymTable::CurnTypItem = ti
 				SymTable::TypeLst::AddType(ti)
 
-				i = -1
-				do until i = --clss::ImplInterfaces[l]
-					i++
-					interftyp = Helpers::CommitEvalTTok(clss::ImplInterfaces[i])
+				foreach interf in clss::ImplInterfaces
+					interftyp = Helpers::CommitEvalTTok(interf)
 					if interftyp = null then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::ImplInterfaces[i]::Value + "' is not defined or is not accessible.")
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + interf::Value + "' is not defined or is not accessible.")
 					elseif !interftyp::get_IsInterface() then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + interftyp::ToString() + "' is not an interface.")
 					end if
@@ -328,7 +316,7 @@ class public auto ansi StmtReader
 					foreach interfa in Helpers::GetTypeInterfaces(interftyp)
 						ti::AddInterface(interfa)
 					end for
-				end do
+				end for
 				ti::NormalizeInterfaces()
 			end if
 
@@ -445,7 +433,6 @@ class public auto ansi StmtReader
 				AsmFactory::inClass = false
 			end if
 		elseif stm is FieldStmt then
-			
 			var flss as FieldStmt = $FieldStmt$stm
 			var ftyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(flss::FieldTyp)
 			
@@ -741,14 +728,11 @@ class public auto ansi StmtReader
 			SymTable::PopLoop()
 			SymTable::PopScope()
 		elseif stm is LabelStmt then
-			var lblstm as LabelStmt = $LabelStmt$stm
-			SymTable::AddLbl(lblstm::LabelName::Value)
+			SymTable::AddLbl(#expr($LabelStmt$stm)::LabelName::Value)
 		elseif stm is PlaceStmt then
-			var plcstm as PlaceStmt = $PlaceStmt$stm
-			ILEmitter::MarkLbl(Helpers::GetLbl(plcstm::LabelName::Value))
+			ILEmitter::MarkLbl(Helpers::GetLbl(#expr($PlaceStmt$stm)::LabelName::Value))
 		elseif stm is GotoStmt then
-			var gtostm as GotoStmt = $GotoStmt$stm
-			ILEmitter::EmitBr(Helpers::GetLbl(gtostm::LabelName::Value))
+			ILEmitter::EmitBr(Helpers::GetLbl(#expr($GotoStmt$stm)::LabelName::Value))
 		elseif stm is CommentStmt then
 		elseif stm is ThrowStmt then
 			var trostmt as ThrowStmt = $ThrowStmt$stm
@@ -837,11 +821,9 @@ class public auto ansi StmtReader
 				end if
 			end if
 		elseif stm is HDefineStmt then
-			var hdstm as HDefineStmt = $HDefineStmt$stm
-			SymTable::AddDef(hdstm::Symbol::Value)
+			SymTable::AddDef(#expr($HDefineStmt$stm)::Symbol::Value)
 		elseif stm is HUndefStmt then
-			var hustm as HUndefStmt = $HUndefStmt$stm
-			SymTable::UnDef(hustm::Symbol::Value)
+			SymTable::UnDef(#expr($HUndefStmt$stm)::Symbol::Value)
 		elseif stm is WarningStmt then
 			var wstm as WarningStmt = $WarningStmt$stm
 			if wstm::Msg::Value like c"^\q(.)*\q$" then

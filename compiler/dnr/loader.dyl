@@ -239,10 +239,10 @@ class public auto ansi static Loader
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
 					end if
 
-					if (mtdinfo::get_IsFamilyAndAssembly() and ProtectedFlag and havinternal) = false then
-						if (mtdinfo::get_IsFamilyOrAssembly() and (ProtectedFlag or havinternal)) = false then
-							if (mtdinfo::get_IsFamily() and ProtectedFlag) = false then
-								if (mtdinfo::get_IsAssembly() and havinternal) = false then
+					if !#expr(mtdinfo::get_IsFamilyAndAssembly() and ProtectedFlag and havinternal) then
+						if !#expr(mtdinfo::get_IsFamilyOrAssembly() and (ProtectedFlag or havinternal)) then
+							if !#expr(mtdinfo::get_IsFamily() and ProtectedFlag) then
+								if !#expr(mtdinfo::get_IsAssembly() and havinternal) then
 									mtdinfo = null
 								end if
 							end if
@@ -286,10 +286,10 @@ class public auto ansi static Loader
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
 					end if
 				
-					if (ctorinf::get_IsFamilyAndAssembly() and ProtectedFlag and havinternal) = false then
-						if (ctorinf::get_IsFamilyOrAssembly() and (ProtectedFlag or havinternal)) = false then
-							if (ctorinf::get_IsFamily() and ProtectedFlag) = false then
-								if (ctorinf::get_IsAssembly() and havinternal) = false then
+					if !#expr(ctorinf::get_IsFamilyAndAssembly() and ProtectedFlag and havinternal) then
+						if !#expr(ctorinf::get_IsFamilyOrAssembly() and (ProtectedFlag or havinternal)) then
+							if !#expr(ctorinf::get_IsFamily() and ProtectedFlag) then
+								if !#expr(ctorinf::get_IsAssembly() and havinternal) then
 									ctorinf = null
 								end if
 							end if
@@ -306,22 +306,6 @@ class public auto ansi static Loader
 		end if
 
 		return ctorinf
-
-	end method
-
-	[method: ComVisible(false)]
-	method public static MethodInfo[] addelemmtdinfo(var srcarr as MethodInfo[], var eltoadd as MethodInfo)
-
-		var i as integer = -1
-		var destarr as MethodInfo[] = new MethodInfo[++srcarr[l]]
-
-		do until i = --srcarr[l]
-			i++
-			destarr[i] = srcarr[i]
-		end do
-
-		destarr[srcarr[l]] = eltoadd
-		return destarr
 
 	end method
 
@@ -448,10 +432,10 @@ class public auto ansi static Loader
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
 					end if
 					
-					if (fldinfo::get_IsFamilyAndAssembly() and ProtectedFlag and havinternal) = false then
-						if (fldinfo::get_IsFamilyOrAssembly() and (ProtectedFlag or havinternal)) = false then
-							if (fldinfo::get_IsFamily() and ProtectedFlag) = false then
-								if (fldinfo::get_IsAssembly() and havinternal) = false then
+					if !#expr(fldinfo::get_IsFamilyAndAssembly() and ProtectedFlag and havinternal) then
+						if !#expr(fldinfo::get_IsFamilyOrAssembly() and (ProtectedFlag or havinternal)) then
+							if !#expr(fldinfo::get_IsFamily() and ProtectedFlag) then
+								if !#expr(fldinfo::get_IsAssembly() and havinternal) then
 									fldinfo = null
 								end if
 							end if

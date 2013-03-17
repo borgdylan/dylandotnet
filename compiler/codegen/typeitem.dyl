@@ -75,8 +75,8 @@ class public auto ansi TypeItem
 			return matches[0]::MethodBldr
 		else
 			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of MethodItem,integer[]>(lom2,new Func<of MethodItem,integer[]>(MILambdas2::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
-			Loader::MemberTyp = matches[chosen[chosen[l] - 1]]::MethodBldr::get_ReturnType()
-			return matches[chosen[chosen[l] - 1]]::MethodBldr
+			Loader::MemberTyp = matches[chosen[--chosen[l]]]::MethodBldr::get_ReturnType()
+			return matches[chosen[--chosen[l]]]::MethodBldr
 		end if
 	end method
 	
@@ -110,7 +110,7 @@ class public auto ansi TypeItem
 		else
 			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of CtorItem,integer[]>(loc2,new Func<of CtorItem,integer[]>(CILambdas::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(CILambdas::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(CILambdas::DerivenessMax()))
 			Loader::MemberTyp = TypeBldr
-			return matches[chosen[chosen[l] - 1]]::CtorBldr
+			return matches[chosen[--chosen[l]]]::CtorBldr
 		end if
 	end method
 

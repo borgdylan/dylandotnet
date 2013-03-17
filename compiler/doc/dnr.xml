@@ -203,19 +203,6 @@
             <summary>Usually used to pass in the type that declares the instance method to be called that is needed for checks associated with virtual valuetype method detection.</summary>
             <remarks>This field is usually reserved just for this usage.</remarks>
         </member>
-        <member name="dylan.NET.Reflection.ConsolePrinter.PrintString">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Reflection.ConsolePrinter.SW">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Reflection.ConsolePrinter.WriteClass">
-            <param name="typ">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="dylan.NET.Reflection.ILEmitter.AbstractFlg">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -814,13 +801,6 @@
             <param name="alias">To be added.</param>
             <param name="ns">To be added.</param>
             <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Reflection.Loader.addelemmtdinfo">
-            <param name="srcarr">To be added.</param>
-            <param name="eltoadd">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Reflection.Loader.CompareParamsToTyps">

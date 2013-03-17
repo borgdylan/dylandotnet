@@ -27,8 +27,8 @@ class private auto ansi CILambdas
 			end if
 			var i as integer = -1
 			do until i = (arra[l] - 1)
-				i = i + 1
-				if arra[i]::IsAssignableFrom(arrb[i]) = false then
+				i++
+				if !arra[i]::IsAssignableFrom(arrb[i]) then
 					return false
 				end if
 			end do
@@ -54,17 +54,17 @@ class private auto ansi CILambdas
 	method assembly static integer[] ExtractDeriveness(var ci as CtorItem)
 		var deriv as integer[] = new integer[ci::ParamTyps[l]]
 		var i as integer = -1
-		do until i = (deriv[l] - 1)
-			i = i + 1
+		do until i = --deriv[l]
+			i++
 			deriv[i] = CalcDeriveness(ci::ParamTyps[i])
 		end do
 		return deriv
 	end method
 
 	method assembly static integer[] ZipDeriveness(var d as integer[],var n as integer)
-		var deriv as integer[] = new integer[d[l] + 1]
+		var deriv as integer[] = new integer[++d[l]]
 		Array::Copy(d,deriv,$long$d[l])
-		deriv[deriv[l] - 1] = n
+		deriv[--deriv[l]] = n
 		return deriv
 	end method
 

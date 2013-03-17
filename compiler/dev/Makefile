@@ -339,11 +339,19 @@ uninstall-am:
 	maintainer-clean maintainer-clean-generic mostlyclean \
 	mostlyclean-generic pdf pdf-am ps ps-am uninstall uninstall-am
 
-all:
+buildlog:
 	'$(MONO)' ../2.0/dnc.exe -V > buildlog
-	'$(MONO)' ../2.0/dnc.exe pc2dn.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe pc2cd.dyl | tee -a buildlog
-	'$(MONO)' ../2.0/dnc.exe nuget2dn.dyl | tee -a buildlog
+
+%.exe : %.dyl
+	'$(MONO)' ../2.0/dnc.exe $< | tee -a buildlog
+
+pc2dn.exe: pc2dn.dyl ./../config.status ./../config.log
+
+pc2cd.exe: pc2cd.dyl ./../config.status ./../config.log
+
+nuget2dn.exe: nuget2dn.dyl ./../config.status ./../config.log
+
+all: buildlog pc2dn.exe pc2cd.exe nuget2dn.exe
 
 prodscript:
 	sed -e "s|\@libdir\@|$(libdir)|g" \
@@ -366,10 +374,9 @@ install: prodscript
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet-dev/pc2cd.exe
 	$(install_sh_PROGRAM) nuget2dn.exe $(DESTDIR)$(libdir)/dylandotnet-dev/nuget2dn.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet-dev/nuget2dn.exe
-
-	if [[ $(host) =~ i686-pc-linux-gnu ]] ; then \
-		$(MONO) --aot $(DESTDIR)$(libdir)/dylandotnet-dev/*.exe; \
-	fi
+#	if [[ $(host) =~ i686-pc-linux-gnu ]] ; then \
+#		$(MONO) --aot $(DESTDIR)$(libdir)/dylandotnet-dev/*.exe; \
+#	fi
 
 uninstall:
 	rm -f $(DESTDIR)$(bindir)/pc2dylandotnet
@@ -384,6 +391,8 @@ distclean: clean
 
 testc:
 	echo 'hello'
+
+.PHONY: buildlog all install uninstall clean distclean testc
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -14,7 +14,12 @@
 #refstdasm "System.dll"
 #refstdasm "System.Core.dll"
 #refstdasm "System.Xml.Linq.dll"
-#refasm "C5.Mono.dll"
+
+#if CLR_2 then
+#refasm "build/2.0/C5.Mono.dll"
+#else
+#refasm "build/4.0/C5.Mono.dll"
+end #if
 
 import System
 import System.IO

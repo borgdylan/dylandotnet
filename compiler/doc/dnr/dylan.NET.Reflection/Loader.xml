@@ -13,30 +13,6 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="addelemmtdinfo">
-      <MemberSignature Language="C#" Value="public static System.Reflection.MethodInfo[] addelemmtdinfo (System.Reflection.MethodInfo[] srcarr, System.Reflection.MethodInfo eltoadd);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.Reflection.MethodInfo[] addelemmtdinfo(class System.Reflection.MethodInfo[] srcarr, class System.Reflection.MethodInfo eltoadd) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Reflection.MethodInfo[]</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="srcarr" Type="System.Reflection.MethodInfo[]" />
-        <Parameter Name="eltoadd" Type="System.Reflection.MethodInfo" />
-      </Parameters>
-      <Docs>
-        <param name="srcarr">To be added.</param>
-        <param name="eltoadd">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CompareParamsToTyps">
       <MemberSignature Language="C#" Value="public static bool CompareParamsToTyps (System.Reflection.ParameterInfo[] t1, Type[] t2);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool CompareParamsToTyps(class System.Reflection.ParameterInfo[] t1, class System.Type[] t2) cil managed" />

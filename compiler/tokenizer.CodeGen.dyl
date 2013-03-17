@@ -13,13 +13,24 @@
 #refstdasm "mscorlib.dll"
 #refstdasm "System.dll"
 #refstdasm "System.Core.dll"
-#refasm "tokenizer.AST.dll"
-#refasm "tokenizer.Lexer.dll"
-#refasm "tokenizer.Parser.dll"
-#refasm "dnu.dll"
-#refasm "dnr.dll"
-#refasm "IKVM.Reflection.dll"
-#refasm "C5.Mono.dll"
+
+#if CLR_2 then
+#refasm "build/2.0/C5.Mono.dll"
+#refasm "build/2.0/tokenizer.AST.dll"
+#refasm "build/2.0/tokenizer.Lexer.dll"
+#refasm "build/2.0/tokenizer.Parser.dll"
+#refasm "build/2.0/IKVM.Reflection.dll"
+#refasm "build/2.0/dnu.dll"
+#refasm "build/2.0/dnr.dll"
+#else
+#refasm "build/4.0/C5.Mono.dll"
+#refasm "build/4.0/tokenizer.AST.dll"
+#refasm "build/4.0/tokenizer.Lexer.dll"
+#refasm "build/4.0/tokenizer.Parser.dll"
+#refasm "build/4.0/IKVM.Reflection.dll"
+#refasm "build/4.0/dnu.dll"
+#refasm "build/4.0/dnr.dll"
+end #if
 
 import System
 import System.IO

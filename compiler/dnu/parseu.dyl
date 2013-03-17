@@ -139,7 +139,7 @@ class public auto ansi static ParseUtils
 				ins = !ins
 			end if
 
-			if (ch = DelimeterChar) or (ch = DelimeterChar2) then
+			if (ch == DelimeterChar) or (ch == DelimeterChar2) then
 				if !ins then
 					if acc::get_Length() != 0 then
 						arr::Add(acc)
@@ -197,8 +197,7 @@ class public auto ansi static ParseUtils
 					arr = StringParser(p, "\")
 					str = arr[0]
 					if str::get_Length() = 1 then
-						str = str + ":"
-						arr[0] = str
+						arr[0] = str + ":"
 					end if
 					p = String::Join("\",arr)
 				end if
