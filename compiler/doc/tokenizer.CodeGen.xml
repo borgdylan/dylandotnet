@@ -678,6 +678,44 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PropertyItem..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PropertyItem..ctor">
+            <param name="nme">To be added.</param>
+            <param name="typ">To be added.</param>
+            <param name="bld">To be added.</param>
+            <param name="attr">To be added.</param>
+            <param name="expl">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PropertyItem.Attrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PropertyItem.ExplImplType">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PropertyItem.Name">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PropertyItem.PropertyBldr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PropertyItem.PropertyTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PropertyItem.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.StmtReader..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -831,6 +869,10 @@
             <param name="arrb">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.SymTable.CurnProp">
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.CodeGen.SymTable.CurnTypItem">

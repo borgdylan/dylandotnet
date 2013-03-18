@@ -581,6 +581,7 @@
     <None Include="dnc\Program.dyl" />
     <None Include="nuget2dylandotnet.1" />
     <None Include="configure.ac" />
+    <None Include="codegen\propertyitem.dyl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ast\interfaces.dyl" />

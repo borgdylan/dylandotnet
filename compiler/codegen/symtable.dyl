@@ -19,6 +19,7 @@ class public auto ansi static SymTable
 
 	field public static TypeList TypeLst
 	field public static TypeItem CurnTypItem
+	field public static PropertyItem CurnProp
 
 	field private static FieldItem[] NestedFldLst
 	field private static MethodItem[] NestedMetLst
@@ -55,6 +56,7 @@ class public auto ansi static SymTable
 		EventCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		ParameterCALst = new C5.HashDictionary<of integer, C5.LinkedList<of CustomAttributeBuilder> >()
 		DefSyms = new C5.TreeSet<of string>()
+		CurnProp = null
 	end method
 	
 	[method: ComVisible(false)]

@@ -115,5 +115,17 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="SpecialFlg">
+      <MemberSignature Language="C#" Value="public bool SpecialFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool SpecialFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>

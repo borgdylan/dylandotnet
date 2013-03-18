@@ -546,6 +546,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CurnProp">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.PropertyItem CurnProp;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.PropertyItem CurnProp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.PropertyItem</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CurnTypItem">
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.TypeItem CurnTypItem;" />
       <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.TypeItem CurnTypItem" />

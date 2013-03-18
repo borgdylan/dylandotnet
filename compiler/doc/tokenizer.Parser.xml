@@ -306,5 +306,9 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.Parser.TokenOptimizer.SpecialFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
     </members>
 </doc>

@@ -39,6 +39,7 @@
       <Type Name="LoopItem" Kind="Class" />
       <Type Name="MethodItem" Kind="Class" />
       <Type Name="OpStack" Kind="Class" />
+      <Type Name="PropertyItem" Kind="Class" />
       <Type Name="StmtReader" Kind="Class" />
       <Type Name="SymTable" Kind="Class" />
       <Type Name="TypeArr" Kind="Class" />

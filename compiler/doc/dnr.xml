@@ -91,6 +91,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Reflection.AsmFactory.CurnPropName">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Reflection.AsmFactory.CurnTypB">
             <summary>Holds the current TypeBuilder.</summary>
             <remarks />

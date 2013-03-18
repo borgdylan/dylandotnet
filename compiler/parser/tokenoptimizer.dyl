@@ -13,6 +13,7 @@ class public auto ansi TokenOptimizer
 	field public Flags PFlags
 	field public boolean isFirstToken
 	field public boolean isFirstRun
+	field public boolean SpecialFlg
 
 	method public void TokenOptimizer()
 		me::ctor()
@@ -21,6 +22,7 @@ class public auto ansi TokenOptimizer
 		PFlags = new Flags()
 		isFirstToken = true
 		isFirstRun = true
+		SpecialFlg = false
 	end method
 	
 	method public void TokenOptimizer(var pf as Flags)
@@ -30,6 +32,7 @@ class public auto ansi TokenOptimizer
 		PFlags = pf
 		isFirstToken = true
 		isFirstRun = true
+		SpecialFlg = false
 	end method
 
 	method public Token Optimize(var tok as Token, var lkahead as Token)
@@ -96,7 +99,7 @@ class public auto ansi TokenOptimizer
 				return new RAParen() {Line = tok::Line, Value = tok::Value}
 			end if
 		elseif tok::Value = "<" then
-			if lkahead::Value = "of" then
+			if lkahead::Value == "of" then
 				GenLvl++
 				return new LAParen() {Line = tok::Line, Value = tok::Value}
 			else
@@ -279,10 +282,13 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value = "method:" then
 			return new MethodCTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "end" then
+			SpecialFlg = (lkahead::Value == "set") or (lkahead::Value == "get")
 			return new EndTok() {Line = tok::Line, Value = tok::Value}
-		elseif (tok::Value = "set") and isFirstToken then
+		elseif (tok::Value = "set") and (isFirstToken or SpecialFlg) then
+			SpecialFlg = false
 			return new SetTok() {Line = tok::Line, Value = tok::Value}
-		elseif (tok::Value = "get") and isFirstToken then
+		elseif (tok::Value = "get") and (isFirstToken or SpecialFlg) then
+			SpecialFlg = false
 			return new GetTok() {Line = tok::Line, Value = tok::Value}
 		elseif (tok::Value = "add") and isFirstToken then
 			return new AddTok() {Line = tok::Line, Value = tok::Value}

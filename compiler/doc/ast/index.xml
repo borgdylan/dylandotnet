@@ -54,12 +54,14 @@
       <Type Name="EndDoStmt" Kind="Class" />
       <Type Name="EndEnumStmt" Kind="Class" />
       <Type Name="EndEventStmt" Kind="Class" />
+      <Type Name="EndGetStmt" Kind="Class" />
       <Type Name="EndHIfStmt" Kind="Class" />
       <Type Name="EndIfStmt" Kind="Class" />
       <Type Name="EndLockStmt" Kind="Class" />
       <Type Name="EndMethodStmt" Kind="Class" />
       <Type Name="EndNSStmt" Kind="Class" />
       <Type Name="EndPropStmt" Kind="Class" />
+      <Type Name="EndSetStmt" Kind="Class" />
       <Type Name="EndTryStmt" Kind="Class" />
       <Type Name="EnumStmt" Kind="Class" />
       <Type Name="ErrorStmt" Kind="Class" />

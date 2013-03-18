@@ -31,7 +31,7 @@ class public auto ansi PropertySetStmt extends Stmt
 
 	method public void PropertySetStmt()
 		me::ctor()
-		Setter = new Ident()
+		Setter = null
 	end method
 
 end class
@@ -42,7 +42,7 @@ class public auto ansi PropertyGetStmt extends Stmt
 
 	method public void PropertyGetStmt()
 		me::ctor()
-		Getter = new Ident()
+		Getter = null
 	end method
 
 end class
@@ -50,5 +50,17 @@ end class
 class public auto ansi EndPropStmt extends Stmt
 	method public hidebysig virtual string ToString()
 		return "end property"
+	end method
+end class
+
+class public auto ansi EndSetStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end set"
+	end method
+end class
+
+class public auto ansi EndGetStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end get"
 	end method
 end class

@@ -157,6 +157,7 @@ class public auto ansi static Helpers
 				temp = MethodAttributes::NewSlot
 			elseif attr is Attributes.PrototypeAttr then
 				ILEmitter::ProtoFlg = true
+			elseif attr is Attributes.NoneAttr then
 			else
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a method.")

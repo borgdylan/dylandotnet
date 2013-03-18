@@ -597,6 +597,28 @@ class public auto ansi StmtOptimizer
 		return null
 	end method
 	
+	method private Stmt checkEndSet(var stm as Stmt, var b as boolean&)
+		b = false
+		if stm::Tokens::get_Count() >= 2 then
+			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is SetTok)
+			if b then
+				return new EndSetStmt() {Line = stm::Line, Tokens = stm::Tokens}
+			end if
+		end if
+		return null
+	end method
+	
+	method private Stmt checkEndGet(var stm as Stmt, var b as boolean&)
+		b = false
+		if stm::Tokens::get_Count() >= 2 then
+			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is GetTok)
+			if b then
+				return new EndGetStmt() {Line = stm::Line, Tokens = stm::Tokens}
+			end if
+		end if
+		return null
+	end method
+	
 	method private Stmt checkMetAttr(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
@@ -1384,19 +1406,20 @@ class public auto ansi StmtOptimizer
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is GetTok) and (stm::Tokens::get_Item(1) is Ident)
-			
 			if b then
 				var prgs as PropertyGetStmt = new PropertyGetStmt() {Line = stm::Line, Tokens = stm::Tokens}
 				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
 				if exp::Tokens::get_Item(1) is MethodCallTok then
-					var mc as MethodCallTok = $MethodCallTok$exp::Tokens::get_Item(1)
-					prgs::Getter = mc::Name
+					prgs::Getter = #expr($MethodCallTok$exp::Tokens::get_Item(1))::Name
 				elseif exp::Tokens::get_Item(1) is Ident then
 					prgs::Getter = $Ident$exp::Tokens::get_Item(1)
-				else
-					prgs::Getter = null
 				end if
 				return prgs
+			end if
+		elseif stm::Tokens::get_Count() == 1 then
+			b = stm::Tokens::get_Item(0) is GetTok
+			if b then
+				return new PropertyGetStmt() {Line = stm::Line, Tokens = stm::Tokens}
 			end if
 		end if
 		return null
@@ -1406,19 +1429,20 @@ class public auto ansi StmtOptimizer
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is SetTok) and (stm::Tokens::get_Item(1) is Ident)
-			
 			if b then
 				var prss as PropertySetStmt = new PropertySetStmt() {Line = stm::Line, Tokens = stm::Tokens}
 				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
 				if exp::Tokens::get_Item(1) is MethodCallTok then
-					var mc as MethodCallTok = $MethodCallTok$exp::Tokens::get_Item(1)
-					prss::Setter = mc::Name
+					prss::Setter = #expr($MethodCallTok$exp::Tokens::get_Item(1))::Name
 				elseif exp::Tokens::get_Item(1) is Ident then
 					prss::Setter = $Ident$exp::Tokens::get_Item(1)
-				else
-					prss::Setter = null
 				end if
 				return prss
+			end if
+		elseif stm::Tokens::get_Count() == 1 then
+			b = stm::Tokens::get_Item(0) is SetTok
+			if b then
+				return new PropertySetStmt() {Line = stm::Line, Tokens = stm::Tokens}
 			end if
 		end if
 		return null
@@ -1827,6 +1851,18 @@ class public auto ansi StmtOptimizer
 		end if
 		
 		tmpstm = checkEndMtd(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+		
+		tmpstm = checkEndSet(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+		
+		tmpstm = checkEndGet(stm, ref compb)
 		if compb then
 			stm = tmpstm
 			return stm

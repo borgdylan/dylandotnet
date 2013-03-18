@@ -1,37 +1,37 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="tokenizer.Parser.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ast/propstmt.dyl">
     <Files>
       <File FileName="ast/classstmt.dyl" Line="29" Column="61" />
       <File FileName="ast/enumstmt.dyl" Line="32" Column="1" />
       <File FileName="ast/delegatestmt.dyl" Line="30" Column="24" />
       <File FileName="ast/fieldstmt.dyl" Line="24" Column="12" />
-      <File FileName="ast/metstmt.dyl" Line="26" Column="12" />
-      <File FileName="ast/propstmt.dyl" Line="24" Column="12" />
+      <File FileName="ast/metstmt.dyl" Line="10" Column="1" />
+      <File FileName="ast/propstmt.dyl" Line="46" Column="12" />
       <File FileName="ast/eventstmt.dyl" Line="29" Column="1" />
       <File FileName="ast/ident.dyl" Line="151" Column="1" />
       <File FileName="ast/exprcalltok.dyl" Line="33" Column="13" />
       <File FileName="ast/otherkeywords.dyl" Line="646" Column="26" />
       <File FileName="tokenizer.AST.dyl" Line="17" Column="1" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="228" Column="33" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="290" Column="36" />
       <File FileName="ast/methodnametok.dyl" Line="184" Column="14" />
       <File FileName="parser/exproptimizer.dyl" Line="817" Column="12" />
       <File FileName="parser/parserflags.dyl" Line="1" Column="1" />
       <File FileName="parser/parser.dyl" Line="1" Column="1" />
-      <File FileName="parser/stmtoptimizer.dyl" Line="1484" Column="9" />
-      <File FileName="templateproj/template.dyl" Line="569" Column="11" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="2082" Column="12" />
+      <File FileName="templateproj/template.dyl" Line="475" Column="10" />
       <File FileName="codegen/eval.dyl" Line="1122" Column="5" />
       <File FileName="parser/oldmethodstmtcode.txt" Line="1" Column="1" />
-      <File FileName="codegen/helpers.dyl" Line="32" Column="21" />
-      <File FileName="codegen/stmtreader.dyl" Line="116" Column="45" />
-      <File FileName="codegen/symtable.dyl" Line="525" Column="10" />
+      <File FileName="codegen/helpers.dyl" Line="160" Column="43" />
+      <File FileName="codegen/stmtreader.dyl" Line="927" Column="55" />
+      <File FileName="codegen/symtable.dyl" Line="50" Column="19" />
       <File FileName="codegen/codegenerator.dyl" Line="164" Column="29" />
       <File FileName="codegen/typeitem.dyl" Line="84" Column="46" />
       <File FileName="codegen/typelist.dyl" Line="1" Column="1" />
       <File FileName="dnr/loader.dyl" Line="310" Column="12" />
       <File FileName="dnr/importer.dyl" Line="1" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="73" Column="27" />
-      <File FileName="dnr/asmfactory.dyl" Line="160" Column="24" />
+      <File FileName="dnr/asmfactory.dyl" Line="66" Column="5" />
       <File FileName="dnu/streamu.dyl" Line="150" Column="24" />
       <File FileName="dnu/parseu.dyl" Line="189" Column="62" />
       <File FileName="lexer/lexer.dyl" Line="1" Column="1" />
@@ -66,7 +66,7 @@
       <File FileName="ast/xmldocstmt.dyl" Line="1" Column="1" />
       <File FileName="ast/varstmts.dyl" Line="1" Column="1" />
       <File FileName="ast/varexpr.dyl" Line="1" Column="1" />
-      <File FileName="ast/typetoks.dyl" Line="1" Column="1" />
+      <File FileName="ast/typetoks.dyl" Line="29" Column="43" />
       <File FileName="ast/token.dyl" Line="1" Column="1" />
       <File FileName="ast/stmt.dyl" Line="1" Column="1" />
       <File FileName="ast/otherstmts.dyl" Line="1" Column="1" />
@@ -89,19 +89,24 @@
       <File FileName="pc2curdir.1" Line="47" Column="9" />
       <File FileName="pc2dylandotnet.1" Line="1" Column="33" />
       <File FileName="nuget2dylandotnet.1" Line="50" Column="9" />
-      <File FileName="tokenizer.CodeGen.dyl" Line="17" Column="1" />
+      <File FileName="tokenizer.CodeGen.dyl" Line="79" Column="28" />
       <File FileName="tokenizer.Lexer.dyl" Line="18" Column="1" />
-      <File FileName="tokenizer.Parser.dyl" Line="30" Column="17" />
+      <File FileName="tokenizer.Parser.dyl" Line="39" Column="23" />
       <File FileName="dnu/assemblyinfo.dyl" Line="8" Column="1" />
       <File FileName="dnu/keyboard.dyl" Line="1" Column="1" />
       <File FileName="dnu/compilermsg.dyl" Line="37" Column="12" />
       <File FileName="cflags.dyl.in" Line="10" Column="1" />
+      <File FileName="codegen/methoditem.dyl" Line="1" Column="1" />
+      <File FileName="codegen/propertyitem.dyl" Line="32" Column="15" />
+      <File FileName="codegen/fielditem.dyl" Line="37" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
-            <Node name="ast" expanded="True" />
+            <Node name="ast" expanded="True">
+              <Node name="propstmt.dyl" selected="True" />
+            </Node>
             <Node name="codegen" expanded="True" />
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
@@ -110,7 +115,6 @@
             <Node name="lexer" expanded="True" />
             <Node name="m4" expanded="True" />
             <Node name="parser" expanded="True" />
-            <Node name="tokenizer.Parser.dyl" selected="True" />
           </Node>
           <Node name="template" expanded="True" />
         </State>

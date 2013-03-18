@@ -315,6 +315,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CurnPropName">
+      <MemberSignature Language="C#" Value="public static string CurnPropName;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string CurnPropName" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CurnTypB">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.TypeBuilder CurnTypB;" />
       <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.TypeBuilder CurnTypB" />

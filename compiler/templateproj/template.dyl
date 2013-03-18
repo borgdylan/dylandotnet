@@ -469,6 +469,15 @@ class public auto ansi Program
 		set set_TestProperty()
 	end property
 	
+	property public static integer TestProperty2
+		get
+			return _TestProperty
+		end get
+		set
+			_TestProperty = value
+		end set
+	end property
+	
 	method public static hidebysig specialname void add_TestEvent(var eh as EventHandler)
 		if _TestEvent != null then
 			_TestEvent = _TestEvent + eh

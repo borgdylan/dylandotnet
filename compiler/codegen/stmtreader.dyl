@@ -850,15 +850,18 @@ class public auto ansi StmtReader
 			
 			var prssnamstr as string = prss::PropertyName::Value
 			var prssnamarr as C5.IList<of string> = ParseUtils::StringParserL(prssnamstr, ".")
-			var propoverldnam as string = String::Empty
+			var propoverldnam as string = string::Empty
+			var propnam = prssnamstr
 			if prssnamarr::get_Count() > 1 then
 				propoverldnam = prssnamarr::get_Last()
+				propnam = propoverldnam
 				typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", prssnamarr::View(0,--prssnamarr::get_Count())::ToArray())))
 				AsmFactory::CurnExplImplType = typ::ToString()
 				prssnamstr = typ::ToString() + "." + propoverldnam
 			end if
 			
-			AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prssnamstr,Helpers::ProcessPropAttrs(prss::Attrs), ptyp, IKVM.Reflection.Type::EmptyTypes)
+			AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prssnamstr,PropertyAttributes::None, ptyp, IKVM.Reflection.Type::EmptyTypes)
+			SymTable::CurnProp = new PropertyItem(propnam, ptyp, AsmFactory::CurnPropB, prss::Attrs, AsmFactory::CurnExplImplType)
 			
 			Helpers::ApplyPropAttrs()
 			SymTable::ResetPropCAs()
@@ -873,33 +876,55 @@ class public auto ansi StmtReader
 			StreamUtils::WriteLine(prss::PropertyName::Value)
 		elseif stm is PropertyGetStmt then
 			var prgs as PropertyGetStmt = $PropertyGetStmt$stm
-			if AsmFactory::CurnExplImplType::get_Length() > 0 then
-				prgs::Getter::Value = AsmFactory::CurnExplImplType + "." + prgs::Getter::Value
-			end if
 			
-			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prgs::Getter::Value, IKVM.Reflection.Type::EmptyTypes)
-			if mb != null then
-				AsmFactory::CurnPropB::SetGetMethod(mb)
+			if prgs::Getter != null then
+				if AsmFactory::CurnExplImplType::get_Length() > 0 then
+					prgs::Getter::Value = AsmFactory::CurnExplImplType + "." + prgs::Getter::Value
+				end if
+				
+				var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prgs::Getter::Value, IKVM.Reflection.Type::EmptyTypes)
+				if mb != null then
+					AsmFactory::CurnPropB::SetGetMethod(mb)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + prgs::Getter::Value + "' with the required signature is not defined.")
+				end if
+				StreamUtils::Write("		Setting Property Getter: ")
+				StreamUtils::WriteLine(prgs::Getter::Value)
 			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + prgs::Getter::Value + "' with the required signature is not defined.")
+				var cprop = SymTable::CurnProp
+				var metname = #ternary{AsmFactory::CurnExplImplType::get_Length() > 0 ? AsmFactory::CurnExplImplType + ".get_", "get_"}  + cprop::Name
+				Read(new MethodStmt() {MethodName = new Ident(metname), RetTyp = new TypeTok(cprop::PropertyTyp), Line = prgs::Line, _
+					 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}},fpath)
+				cprop::PropertyBldr::SetGetMethod(AsmFactory::CurnMetB)
 			end if
-			StreamUtils::Write("		Setting Property Getter: ")
-			StreamUtils::WriteLine(prgs::Getter::Value)
+		elseif stm is EndGetStmt then
+			Read(new EndMethodStmt() {Line = stm::Line}, fpath)
 		elseif stm is PropertySetStmt then
 			var prss as PropertySetStmt = $PropertySetStmt$stm
-			
-			if AsmFactory::CurnExplImplType::get_Length() > 0 then
-				prss::Setter::Value = AsmFactory::CurnExplImplType + "." + prss::Setter::Value
-			end if
-			
-			var mb2 as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, new IKVM.Reflection.Type[] {AsmFactory::CurnPropB::get_PropertyType()})
-			if mb2 != null then
-				AsmFactory::CurnPropB::SetSetMethod(mb2)
+			if prss::Setter != null then
+				if AsmFactory::CurnExplImplType::get_Length() > 0 then
+					prss::Setter::Value = AsmFactory::CurnExplImplType + "." + prss::Setter::Value
+				end if
+				
+				var mb2 as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, new IKVM.Reflection.Type[] {SymTable::CurnProp::PropertyTyp})
+				if mb2 != null then
+					AsmFactory::CurnPropB::SetSetMethod(mb2)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + prss::Setter::Value + "' with the required signature is not defined.")
+				end if
+				StreamUtils::Write("		Setting Property Setter: ")
+				StreamUtils::WriteLine(prss::Setter::Value)
 			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + prss::Setter::Value + "' with the required signature is not defined.")
+				var cprop = SymTable::CurnProp
+				var metname = #ternary{AsmFactory::CurnExplImplType::get_Length() > 0 ? AsmFactory::CurnExplImplType + ".set_", "set_"}  + cprop::Name
+				var mets = new MethodStmt() {MethodName = new Ident(metname), RetTyp = new VoidTok(), Line = prss::Line,  _
+					 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}}
+				mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cprop::PropertyTyp)})
+				Read(mets,fpath)
+				cprop::PropertyBldr::SetSetMethod(AsmFactory::CurnMetB)
 			end if
-			StreamUtils::Write("		Setting Property Setter: ")
-			StreamUtils::WriteLine(prss::Setter::Value)
+		elseif stm is EndSetStmt then
+			Read(new EndMethodStmt() {Line = stm::Line}, fpath)
 		elseif stm is EndPropStmt then
 		elseif stm is EventStmt then
 			var evss as EventStmt = $EventStmt$stm
