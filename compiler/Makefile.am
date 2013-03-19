@@ -187,8 +187,7 @@ if DEBUG
 	mv dnc.exe.mdb build/2.0/dnc.exe.mdb
 endif
 
-all: compilestart build/4.0/dnu.dll build/4.0/dnr.dll build/4.0/tokenizer.AST.dll build/4.0/tokenizer.Lexer.dll build/4.0/tokenizer.Parser.dll build/4.0/tokenizer.CodeGen.dll build/4.0/dnc.exe build/2.0/dnu.dll build/2.0/dnr.dll build/2.0/tokenizer.AST.dll build/2.0/tokenizer.Lexer.dll build/2.0/tokenizer.Parser.dll build/2.0/tokenizer.CodeGen.dll build/2.0/dnc.exe
-	
+all: compilestart build/4.0/dnu.dll build/4.0/dnr.dll build/4.0/tokenizer.AST.dll build/4.0/tokenizer.Lexer.dll build/4.0/tokenizer.Parser.dll build/4.0/tokenizer.CodeGen.dll build/4.0/dnc.exe build/2.0/dnu.dll build/2.0/dnr.dll build/2.0/tokenizer.AST.dll build/2.0/tokenizer.Lexer.dll build/2.0/tokenizer.Parser.dll build/2.0/tokenizer.CodeGen.dll build/2.0/dnc.exe	
 	cp -u ./lib/4.0/C5.Mono.dll ./4.0/C5.Mono.dll
 	cp -u build/4.0/dnu.dll 4.0/dnu.dll
 	cp -u build/4.0/dnr.dll 4.0/dnr.dll

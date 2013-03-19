@@ -1396,10 +1396,11 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 			//FIXME
 		elseif rt is Ident then
-			return SymTable::EvalDef(rt::Value)
+			var b = SymTable::EvalDef(rt::Value)
+			return #ternary{#expr($Ident$rt)::get_DoNeg() ? !b, b}
 		elseif rt is BooleanLiteral then
 			var bl as BooleanLiteral = $BooleanLiteral$rt
-			return bl::BoolVal
+			return #ternary{bl::get_DoNeg() ? !bl::BoolVal, bl::BoolVal}
 		end if
 		//FIXME
 		return false

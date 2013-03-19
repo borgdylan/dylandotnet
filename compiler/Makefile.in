@@ -110,7 +110,6 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LTLIBOBJS = @LTLIBOBJS@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MDOC = @MDOC@
 MKDIR_P = @MKDIR_P@
@@ -191,7 +190,7 @@ all: all-am
 .SUFFIXES:
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -218,9 +217,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	$(am__cd) $(srcdir) && $(AUTOCONF)
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
 tags: TAGS
@@ -654,8 +653,7 @@ build/2.0/dnc.exe: $(wildcard dnc/*.dyl) dnc.dyl cflags.dyl
 	mv dnc.exe build/2.0/dnc.exe
 @DEBUG_TRUE@	mv dnc.exe.mdb build/2.0/dnc.exe.mdb
 
-all: compilestart build/4.0/dnu.dll build/4.0/dnr.dll build/4.0/tokenizer.AST.dll build/4.0/tokenizer.Lexer.dll build/4.0/tokenizer.Parser.dll build/4.0/tokenizer.CodeGen.dll build/4.0/dnc.exe build/2.0/dnu.dll build/2.0/dnr.dll build/2.0/tokenizer.AST.dll build/2.0/tokenizer.Lexer.dll build/2.0/tokenizer.Parser.dll build/2.0/tokenizer.CodeGen.dll build/2.0/dnc.exe
-
+all: compilestart build/4.0/dnu.dll build/4.0/dnr.dll build/4.0/tokenizer.AST.dll build/4.0/tokenizer.Lexer.dll build/4.0/tokenizer.Parser.dll build/4.0/tokenizer.CodeGen.dll build/4.0/dnc.exe build/2.0/dnu.dll build/2.0/dnr.dll build/2.0/tokenizer.AST.dll build/2.0/tokenizer.Lexer.dll build/2.0/tokenizer.Parser.dll build/2.0/tokenizer.CodeGen.dll build/2.0/dnc.exe	
 	cp -u ./lib/4.0/C5.Mono.dll ./4.0/C5.Mono.dll
 	cp -u build/4.0/dnu.dll 4.0/dnu.dll
 	cp -u build/4.0/dnr.dll 4.0/dnr.dll

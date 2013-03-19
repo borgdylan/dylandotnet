@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+<title>Referencing Libraries - Untitled</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Untitled">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Syntax.html#Syntax" title="Syntax">
+<link rel="prev" href="General-Structure.html#General-Structure" title="General Structure">
+<link rel="next" href="Importing-Namespaces.html#Importing-Namespaces" title="Importing Namespaces">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This is the manual documenting the syntax of the dylan.NET programming language.
+Copyright (C) 2013 Dylan Borg-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Referencing-Libraries"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Importing-Namespaces.html#Importing-Namespaces">Importing Namespaces</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="General-Structure.html#General-Structure">General Structure</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Syntax.html#Syntax">Syntax</a>
+<hr>
+</div>
+
+<h3 class="section">2.2 Referencing Libraries</h3>
+
+   <p class="indent">Sometimes one may require the use of already defined functions and classes that are not part of the current program's/library's sources. The <code>#refasm</code> and <code>#refstdasm</code> statements allow the referencing of a .NET library inside <code>dylan.NET</code> source code. <code>#refstdasm</code> allows the refercning of the standard libraries which ship with the .NET runtime. Because of the more organised way used by Mono in installing its libraries, the <code>#refstdasm</code> statement can allow referencing any library in the runtime directory (paths are in relation to it) of the .NET profile being used. In the case of <code>#refasm</code>, the paths specified are relative to the current working directory. In both statements, enclosing the path in double-quotes is recommended so as to prevent the compiler's lexer from breaking the path into many tokens, as would happen with &lsquo;<samp><span class="samp">UNIX</span></samp>&rsquo; style paths which include the &lsquo;<samp><span class="samp">/</span></samp>&rsquo; and or &lsquo;<samp><span class="samp">-</span></samp>&rsquo; characters which for <code>dylan.NET</code> are the division and subtraction operators repectively.
+   <pre class="sp">
+
+</pre>
+Some examples of referencing some standard libraries and one non-standard library:
+
+<pre class="example">     <code>#refstdasm "mscorlib.dll"</code>
+     <code>#refstdasm "System.dll"</code>
+     <code>#refstdasm "System.Xml.Linq.dll"</code>
+     <code>#refstdasm "System.Core.dll"</code>
+     <code>#refasm "lib/mylibrary.dll"</code>
+</pre>
+   </body></html>
+

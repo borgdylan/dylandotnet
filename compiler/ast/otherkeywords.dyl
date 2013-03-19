@@ -681,45 +681,33 @@ class public auto ansi MeTok extends Token implements IUnaryOperatable, IConvabl
 		return #ternary{_Conv ? "$" + _TTok::ToString() + "$me", "me"}
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
-
+	
 end class
 
 class public auto ansi ParameterCTok extends Token

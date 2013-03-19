@@ -8,76 +8,55 @@
 
 class public auto ansi abstract interface IUnaryOperatable
 	
-	method public hidebysig virtual specialname abstract newslot string get_OrdOp()
-	method public hidebysig virtual specialname abstract newslot void set_OrdOp(var oo as string)
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual abstract newslot string OrdOp
+		get
+		set
 	end property
 	
 end class
 
 class public auto ansi abstract interface IConvable implements IUnaryOperatable
 	
-	method public hidebysig virtual specialname abstract newslot boolean get_Conv()
-	method public hidebysig virtual specialname abstract newslot void set_Conv(var c as boolean)
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual abstract newslot boolean Conv
+		get
+		set
 	end property
 	
-	method public hidebysig virtual specialname abstract newslot TypeTok get_TTok()
-	method public hidebysig virtual specialname abstract newslot void set_TTok(var tt as TypeTok)
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual abstract newslot TypeTok TTok
+		get
+		set
 	end property
 	
 end class
 
 class public auto ansi abstract interface INegatable implements IUnaryOperatable
 	
-	method public hidebysig virtual specialname abstract newslot boolean get_DoNeg()
-	method public hidebysig virtual specialname abstract newslot void set_DoNeg(var dn as boolean)
-	
-	property none boolean DoNeg
-		get get_DoNeg()
-		set set_DoNeg()
+	property public hidebysig virtual abstract newslot boolean DoNeg
+		get
+		set
 	end property
 	
 end class
 
 class public auto ansi abstract interface INotable implements IUnaryOperatable
 	
-	method public hidebysig virtual specialname abstract newslot boolean get_DoNot()
-	method public hidebysig virtual specialname abstract newslot void set_DoNot(var dn as boolean)
-	
-	property none boolean DoNot
-		get get_DoNot()
-		set set_DoNot()
+	property public hidebysig virtual abstract newslot boolean DoNot
+		get
+		set
 	end property
 	
 end class
 
 class public auto ansi abstract interface IIncDecable implements IUnaryOperatable
 	
-	method public hidebysig virtual specialname abstract newslot boolean get_DoInc()
-	method public hidebysig virtual specialname abstract newslot void set_DoInc(var inc as boolean)
-	
-	property none boolean DoInc
-		get get_DoInc()
-		set set_DoInc()
+	property public hidebysig virtual abstract newslot boolean DoInc
+		get
+		set
 	end property
-	
-	method public hidebysig virtual specialname abstract newslot boolean get_DoDec()
-	method public hidebysig virtual specialname abstract newslot void set_DoDec(var dec as boolean)
-	
-	property none boolean DoDec
-		get get_DoDec()
-		set set_DoDec()
+		
+	property public hidebysig virtual abstract newslot boolean DoDec
+		get
+		set
 	end property
 	
 end class

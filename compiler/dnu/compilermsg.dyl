@@ -19,33 +19,27 @@ class public auto ansi sealed CompilerMsg
 	end method
 
 	method public void CompilerMsg(var line as integer, var file as string, var msg as string)
-		me::_Line = line
-		me::_File = file
-		me::_Msg = msg
+		_Line = line
+		_File = file
+		_Msg = msg
 	end method
 	
-	method public hidebysig specialname integer get_Line()
-		return _Line
-	end method
-
-	property none integer Line
-		get get_Line()
+	property public integer Linevb
+		get
+			return _Line
+		end get
 	end property
 	
-	method public hidebysig specialname string get_File()
-		return _File
-	end method
-
-	property none string File
-		get get_File()
+	property public string File
+		get
+			return _File
+		end get
 	end property
 	
-	method public hidebysig specialname string get_Msg()
-		return _Msg
-	end method
-
 	property none string Msg
-		get get_Msg()
+		get
+			return _Msg
+		end get
 	end property
 	
 end class

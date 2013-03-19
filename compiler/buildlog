@@ -70,9 +70,9 @@ Finished Processing: cflags.dyl (inline)
 Now Lexing: codegen/assemblyinfo.dyl
 Now Parsing: codegen/assemblyinfo.dyl
 Finished Processing: codegen/assemblyinfo.dyl (inline)
-Beginning Assembly: tokenizer.CodeGen
 Finished Processing: codegen/codegenerator.dyl (worker thread)
 Now Lexing: codegen/stmtreader.dyl
+Beginning Assembly: tokenizer.CodeGen
 Now Lexing: codegen/varitem.dyl
 Now Parsing: codegen/varitem.dyl
 Now Parsing: codegen/stmtreader.dyl
@@ -191,16 +191,16 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.TypeItem
 	Adding Method: AddInterface
 	Adding Method: NormalizeInterfaces
 	Adding Method: GetMethod
-	Adding Method: GetProtoMethod
 Now Lexing: codegen/tilambdas.dyl
 Now Parsing: codegen/tilambdas.dyl
-	Adding Method: GetCtor
+	Adding Method: GetProtoMethod
 Finished Processing: codegen/tilambdas.dyl (worker thread)
 Now Lexing: codegen/collectionitem.dyl
 Now Parsing: codegen/collectionitem.dyl
 Finished Processing: codegen/collectionitem.dyl (worker thread)
 Now Lexing: codegen/typelist.dyl
 Now Parsing: codegen/typelist.dyl
+	Adding Method: GetCtor
 	Adding Method: GetField
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.CodeGen.TILambdas
@@ -231,21 +231,21 @@ Now Parsing: codegen/loopitem.dyl
 Finished Processing: codegen/loopitem.dyl (worker thread)
 Now Lexing: codegen/ifitem.dyl
 Now Parsing: codegen/ifitem.dyl
-Finished Processing: codegen/stmtreader.dyl (worker thread)
-Now Lexing: codegen/eval.dyl
 Finished Processing: codegen/ifitem.dyl (worker thread)
 Now Lexing: codegen/lockitem.dyl
-	Adding Method: GetTypeItem
+Finished Processing: codegen/stmtreader.dyl (worker thread)
+Now Lexing: codegen/eval.dyl
 Now Parsing: codegen/lockitem.dyl
-Now Parsing: codegen/eval.dyl
+	Adding Method: GetTypeItem
 Finished Processing: codegen/lockitem.dyl (worker thread)
 Now Lexing: codegen/typearr.dyl
 Now Parsing: codegen/typearr.dyl
-	Adding Method: GetType
 Finished Processing: codegen/typearr.dyl (worker thread)
 Now Lexing: codegen/symtable.dyl
-Now Parsing: codegen/symtable.dyl
+	Adding Method: GetType
 	Adding Method: GetCtor
+Now Parsing: codegen/symtable.dyl
+Now Parsing: codegen/eval.dyl
 	Adding Method: GetDefaultCtor
 	Adding Method: EnsureDefaultCtor
 	Adding Method: AddType
@@ -257,7 +257,6 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.LabelItem
 	Adding Constructor: LabelItem
 	Adding Constructor: LabelItem
 Adding Class: dylan.NET.Tokenizer.CodeGen.LoopItem
-Now Lexing: codegen/helpers.dyl
 	Adding Field: EndLabel
 	Adding Field: StartLabel
 	Adding Field: Line
@@ -269,7 +268,6 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.IfItem
 	Adding Field: ElsePass
 	Adding Field: Line
 	Adding Constructor: IfItem
-Now Parsing: codegen/helpers.dyl
 	Adding Constructor: IfItem
 Adding Class: dylan.NET.Tokenizer.CodeGen.LockItem
 	Adding Field: LockeeLoc
@@ -279,14 +277,16 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.LockItem
 Adding Class: dylan.NET.Tokenizer.CodeGen.TypeArr
 	Adding Field: Arr
 	Adding Constructor: TypeArr
+Now Lexing: codegen/helpers.dyl
 Finished Processing: codegen/symtable.dyl (worker thread)
 Now Lexing: codegen/opstack.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.SymTable
 Now Parsing: codegen/opstack.dyl
 	Adding Field: VarLst
+Now Parsing: codegen/helpers.dyl
 	Adding Field: MethodCALst
-Finished Processing: codegen/opstack.dyl (worker thread)
 	Adding Field: FieldCALst
+Finished Processing: codegen/opstack.dyl (worker thread)
 	Adding Field: ClassCALst
 	Adding Field: AssemblyCALst
 	Adding Field: EventCALst
@@ -367,8 +367,8 @@ Finished Processing: codegen/opstack.dyl (worker thread)
 	Adding Method: FindMet
 	Adding Method: FindProtoMet
 	Adding Method: FindMetNoParams
-Finished Processing: codegen/eval.dyl (worker thread)
 	Adding Method: FindCtor
+Finished Processing: codegen/eval.dyl (worker thread)
 Finished Processing: codegen/helpers.dyl (worker thread)
 Continuing Class: dylan.NET.Tokenizer.CodeGen.Helpers
 	Adding Field: StringFlg

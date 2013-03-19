@@ -139,6 +139,7 @@ namespace dylan.NET.NuGet
 								sw::Flush()
 								sw::Close()
 								sw::Dispose()
+								Console::WriteLine(arg + ".dyl")
 							else
 								Console::WriteLine("The directory '" + arg + "' does not contain a 'lib' directory!!!")
 							end if

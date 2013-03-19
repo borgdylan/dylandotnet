@@ -1,0 +1,174 @@
+\input texinfo
+@settitle dylan.NET Programmer's Manual
+@setfilename dylandotnet.info
+@afourpaper
+
+@copying
+This is the manual documenting the syntax of the dylan.NET programming language.
+Copyright @copyright{} 2013 Dylan Borg
+@end copying
+
+@titlepage
+@title @code{dylan.NET} Programmer's Manual
+@sp 2
+@subtitle This is the manual documenting the syntax of the @code{dylan.NET} programming language.
+@author Dylan Borg
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+@headings single
+
+@contents
+
+@ifnottex
+@node Top
+@top dylan.NET Programmer's Manual
+@end ifnottex
+
+@menu
+* Introduction::
+* Syntax::
+* Practical Examples::
+@end menu
+
+@node Introduction
+@chapter Introduction
+
+@indent
+@code{dylan.NET} is a new programming language for the @acronym{CLR, Common Language Runtime} which produces bytecode in @acronym{MSIL, Microsoft Intermediate Language} format that is suitable for input to the Xamarin Mono and/or Microsoft .NET Framework virtual machines. The compiler itself i.e. @command{dylandotnet} runs on the latter virtual machines as well and is in fact @dfn{self-hosting, compiles itself}. The intent of this literature is not to explain the command-line invocation of the compiler but rather to explain the syntax of the language (as of v. 11.3.1.4) and to provide some examples that may be used in practice.
+@sp 1
+@strong{Note:} @emph{Some of the example code in this manual may be an extract from the sample programs accompanying the compiler source code or may be extracts from the compiler source code itself. In such case the source file for the particular extract will be quoted.}
+@sp 1
+To whet your appetite for the next chapter, below is the standard @samp{Hello, World!} program written in @code{dylan.NET}:
+
+@float
+@example
+@verbatim
+#refstdasm "mscorlib.dll"
+
+import System
+
+#debug on
+
+assembly helloworld exe
+ver 1.2.0.0
+
+class public auto ansi static Program
+
+	method public static void main()
+		Console::WriteLine("Hello, World!")	
+	end method
+
+end class
+@end verbatim
+@end example
+@caption{@cite{Adapted from the @file{helloworld.dyl} sample program.}}
+@end float
+
+@node Syntax
+@chapter Syntax
+
+@indent
+The aim of this chapter is to explain the structure of of a @code{dylan.NET} program/library. This will be followed by explanations of the various statement types available in the @code{dylan.NET} language and how they compare to a reference .NET language, in this case @samp{C#}.
+
+@menu
+* General Structure::
+* Referencing Libraries::
+* Importing Namespaces::
+* Debug Mode::
+* Declaring an Assembly::
+* Specifying the Assembly Version::
+* Conditional Compilation::
+@end menu
+
+@node General Structure
+@section General Structure
+
+@indent
+With reference to the sample program presented in @ref{Introduction}, the structure of a @code{dylan.NET} program/library is as follows:
+@sp 1
+@itemize
+@item
+@code{#refstdasm} and/or @code{#refasm} statements which are used to reference class libraries.
+
+@item
+@code{import} statements which import namespaces from the libraries.
+
+@item
+An optional turning on of debugging as a @code{#debug} statement. 
+
+@item
+The declarations of the assembly name and its version as @code{assembly} and @code{ver} statements.
+
+@item
+The actual code for the program/library as a set of classes and their members. @emph{The name @samp{main} when used with a method indicates that it is the entry point of the program.}
+@end itemize
+
+@node Referencing Libraries
+@section Referencing Libraries
+
+@indent
+Sometimes one may require the use of already defined functions and classes that are not part of the current program's/library's sources. The @code{#refasm} and @code{#refstdasm} statements allow the referencing of a .NET library inside @code{dylan.NET} source code. @code{#refstdasm} allows the refercning of the standard libraries which ship with the .NET runtime. Because of the more organised way used by Mono in installing its libraries, the @code{#refstdasm} statement can allow referencing any library in the runtime directory (paths are in relation to it) of the .NET profile being used. In the case of @code{#refasm}, the paths specified are relative to the current working directory.
+@sp 1
+@strong{Note:} @emph{In both statements, enclosing the path in double-quotes is recommended so as to prevent the compiler's lexer from breaking the path into many tokens, as would happen with @samp{UNIX} style paths which include the @samp{/} and or @samp{-} characters which for @code{dylan.NET} are the division and subtraction operators repectively.}
+@sp 1
+Some examples of referencing some standard libraries and one non-standard library:
+
+@example
+@code{#refstdasm "mscorlib.dll"}
+@code{#refstdasm "System.dll"}
+@code{#refstdasm "System.Xml.Linq.dll"}
+@code{#refstdasm "System.Core.dll"}
+@code{#refasm "lib/mylibrary.dll"}
+@end example
+
+@node Importing Namespaces
+@section Importing Namespaces
+
+@indent
+The @code{import} statement allows the import of namespaces. This implies that one does not need to use the full name of classes when writing a class' name since the compiler always tries to prepend imported namespaces with a supplied class name while searching inside the imported libraries and in the generated code for the sources being compiled. The @samp{Console} class being used in the code sample in @ref{Introduction} is in fact named @samp{System.Console} and is found in the @samp{mscorlib.dll} library. The @code{import System} line in the sources allowed the omission of the namespace part of the class name while calling the @samp{WriteLine} method.
+@sp 1
+@strong{Note:} @emph{Enclosing the namespace in double-quotes is needed in certain cases, so as to prevent the compiler's lexer from breaking the namespace spcified into many tokens, as would happen with @samp{UNIX} style paths which include the @samp{/} and or @samp{-} characters which for @code{dylan.NET} are the division and subtraction operators repectively.}
+@sp 1
+Some examples of importing some standard namespaces:
+@example
+@code{import System}
+@code{import System.Xml.Linq}
+@code{import System.Collections.Generic}
+@code{import System.Linq}
+@end example
+
+@node Debug Mode
+@section Debug Mode
+
+@indent
+The @code{#debug} statement is used to turn on/off the production of debugging symbols in @samp{.mdb} (Mono) or @samp{.pdb} (.NET) format. By default debug mode is @code{off}. Turning the debug symbol making @code{on} will also imply @code{#define DEBUG}. @xref{Conditional Compilation} for more info on the latter. To turn debug symbol making on, use @code{#debug on}. @strong{This statement should occur before the @code{assembly} and @code{ver} statements.}
+
+@node Declaring an Assembly
+@section Declaring an Assembly
+
+@indent
+The @code{assembly} statement is used to declare an assembly given its name which has to be a single identifier token and mode which can be @dfn{@code{exe}, executable program} or @dfn{@code{dll}, dynamically linked library}. @strong{This statement should occur before the @code{ver} statement.} See the examples below:
+@example
+@code{assembly testprog exe}
+@code{assembly testlib dll}
+@end example
+
+@node Specifying the Assembly Version
+@section Specifying the Assembly Version
+
+@indent
+The @code{ver} statement defines the version for the assembly declared using a preceding @code{assembly} statement and actually triggeres the creation of a new @samp{assembly} by the compiler. The version number is made up of 4 integers, all of which must be specified. For more information on .NET version numbers look up @samp{System.Version} on @cite{MSDN}. An example usage would be:
+@example
+@code{ver 1.1.0.0}
+@end example
+
+@node Conditional Compilation
+@section Conditional Compilation
+
+@node Practical Examples
+@chapter Practical Examples
+
+
+@bye

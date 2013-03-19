@@ -29,43 +29,31 @@ class public auto ansi abstract Literal extends Token implements IUnaryOperatabl
 		_OrdOp = string::Empty
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 
 end class
@@ -90,43 +78,31 @@ class public auto ansi NullLiteral extends Literal implements IUnaryOperatable, 
 		return "null"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 
 end class
@@ -178,43 +154,31 @@ class public auto ansi StringLiteral extends Literal implements IUnaryOperatable
 		return c"\q" + Value + c"\q"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 
 end class
@@ -249,43 +213,31 @@ class public auto ansi CharLiteral extends Literal implements IUnaryOperatable, 
 		return "'" + $string$CharVal + "'"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 
 end class
@@ -319,71 +271,47 @@ class public auto ansi BooleanLiteral extends Literal implements IUnaryOperatabl
 		BoolVal = value
 		LitTyp = new BooleanTok()
 		_DoNeg = false
-		if value then
-			Value = "true"
-		else
-			Value = "false"
-		end if
+		Value = #ternary {value ? "true", "false"}
 	end method
 
 	method public hidebysig virtual string ToString()
-		if BoolVal then
-			return "true"
-		else
-			return "false"
-		end if
+		return #ternary {BoolVal ? "true", "false"}
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
-		return _DoNeg
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
-		_DoNeg = dn
-	end method
-	
-	property none boolean DoNeg
-		get get_DoNeg()
-		set set_DoNeg()
+	property public hidebysig virtual final newslot boolean DoNeg
+		get
+			return _DoNeg
+		end get
+		set
+			_DoNeg = value
+		end set
 	end property
 
 end class
@@ -399,43 +327,31 @@ class public auto ansi asbtract NumberLiteral extends Literal implements IUnaryO
 		me::ctor(value)
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 
 end class
@@ -482,69 +398,49 @@ class public auto ansi IntLiteral extends NumberLiteral implements IUnaryOperata
 		return $string$NumVal
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
-		return _DoNeg
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
-		_DoNeg = dn
-	end method
-	
-	property none boolean DoNeg
-		get get_DoNeg()
-		set set_DoNeg()
+	property public hidebysig virtual final newslot boolean DoNeg
+		get
+			return _DoNeg
+		end get
+		set
+			_DoNeg = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNot()
-		return _DoNot
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
-		_DoNot = dn
-	end method
-	
-	property none boolean DoNot
-		get get_DoNot()
-		set set_DoNot()
+	property public hidebysig virtual final newslot boolean DoNot
+		get
+			return _DoNot
+		end get
+		set
+			_DoNot = value
+		end set
 	end property
 
 end class
@@ -583,56 +479,40 @@ class public auto ansi DoubleLiteral extends NumberLiteral implements IUnaryOper
 		return $string$NumVal + "d"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
-		return _DoNeg
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
-		_DoNeg = dn
-	end method
-	
-	property none boolean DoNeg
-		get get_DoNeg()
-		set set_DoNeg()
+	property public hidebysig virtual final newslot boolean DoNeg
+		get
+			return _DoNeg
+		end get
+		set
+			_DoNeg = value
+		end set
 	end property
 
 end class
@@ -671,56 +551,40 @@ class public auto ansi DecimalLiteral extends NumberLiteral implements IUnaryOpe
 		return $string$NumVal + "m"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
-		return _DoNeg
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
-		_DoNeg = dn
-	end method
-	
-	property none boolean DoNeg
-		get get_DoNeg()
-		set set_DoNeg()
+	property public hidebysig virtual final newslot boolean DoNeg
+		get
+			return _DoNeg
+		end get
+		set
+			_DoNeg = value
+		end set
 	end property
 
 end class
@@ -763,69 +627,49 @@ class public auto ansi SByteLiteral extends NumberLiteral implements IUnaryOpera
 		return $string$NumVal + "b"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
-		return _DoNeg
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
-		_DoNeg = dn
-	end method
-	
-	property none boolean DoNeg
-		get get_DoNeg()
-		set set_DoNeg()
+	property public hidebysig virtual final newslot boolean DoNeg
+		get
+			return _DoNeg
+		end get
+		set
+			_DoNeg = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNot()
-		return _DoNot
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
-		_DoNot = dn
-	end method
-	
-	property none boolean DoNot
-		get get_DoNot()
-		set set_DoNot()
+	property public hidebysig virtual final newslot boolean DoNot
+		get
+			return _DoNot
+		end get
+		set
+			_DoNot = value
+		end set
 	end property
 
 end class
@@ -869,68 +713,49 @@ class public auto ansi ShortLiteral extends NumberLiteral implements IUnaryOpera
 		return $string$NumVal + "s"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
-	end property
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
-		return _DoNeg
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
-		_DoNeg = dn
-	end method
-	
-	property none boolean DoNeg
-		get get_DoNeg()
-		set set_DoNeg()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNot()
-		return _DoNot
-	end method
+	property public hidebysig virtual final newslot boolean DoNeg
+		get
+			return _DoNeg
+		end get
+		set
+			_DoNeg = value
+		end set
+	end property
 	
-	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
-		_DoNot = dn
-	end method
-	
-	property none boolean DoNot
-		get get_DoNot()
-		set set_DoNot()
+	property public hidebysig virtual final newslot boolean DoNot
+		get
+			return _DoNot
+		end get
+		set
+			_DoNot = value
+		end set
 	end property
 
 end class
@@ -973,69 +798,49 @@ class public auto ansi LongLiteral extends NumberLiteral implements IUnaryOperat
 		return $string$NumVal + "l"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
-		return _DoNeg
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
-		_DoNeg = dn
-	end method
-	
-	property none boolean DoNeg
-		get get_DoNeg()
-		set set_DoNeg()
+	property public hidebysig virtual final newslot boolean DoNeg
+		get
+			return _DoNeg
+		end get
+		set
+			_DoNeg = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNot()
-		return _DoNot
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
-		_DoNot = dn
-	end method
-	
-	property none boolean DoNot
-		get get_DoNot()
-		set set_DoNot()
+	property public hidebysig virtual final newslot boolean DoNot
+		get
+			return _DoNot
+		end get
+		set
+			_DoNot = value
+		end set
 	end property
 
 end class
@@ -1074,56 +879,40 @@ class public auto ansi FloatLiteral extends NumberLiteral implements IUnaryOpera
 		return $string$NumVal + "f"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
-		return _DoNeg
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
-		_DoNeg = dn
-	end method
-	
-	property none boolean DoNeg
-		get get_DoNeg()
-		set set_DoNeg()
+	property public hidebysig virtual final newslot boolean DoNeg
+		get
+			return _DoNeg
+		end get
+		set
+			_DoNeg = value
+		end set
 	end property
 
 end class
@@ -1162,56 +951,40 @@ class public auto ansi UIntLiteral extends NumberLiteral implements IUnaryOperat
 		return $string$NumVal + "ui"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNot()
-		return _DoNot
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
-		_DoNot = dn
-	end method
-	
-	property none boolean DoNot
-		get get_DoNot()
-		set set_DoNot()
+	property public hidebysig virtual final newslot boolean DoNot
+		get
+			return _DoNot
+		end get
+		set
+			_DoNot = value
+		end set
 	end property
 
 end class
@@ -1250,56 +1023,40 @@ class public auto ansi ByteLiteral extends NumberLiteral implements IUnaryOperat
 		return $string$NumVal + "ub"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNot()
-		return _DoNot
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
-		_DoNot = dn
-	end method
-	
-	property none boolean DoNot
-		get get_DoNot()
-		set set_DoNot()
+	property public hidebysig virtual final newslot boolean DoNot
+		get
+			return _DoNot
+		end get
+		set
+			_DoNot = value
+		end set
 	end property
 
 end class
@@ -1338,56 +1095,40 @@ class public auto ansi UShortLiteral extends NumberLiteral implements IUnaryOper
 		return $string$NumVal + "us"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNot()
-		return _DoNot
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
-		_DoNot = dn
-	end method
-	
-	property none boolean DoNot
-		get get_DoNot()
-		set set_DoNot()
+	property public hidebysig virtual final newslot boolean DoNot
+		get
+			return _DoNot
+		end get
+		set
+			_DoNot = value
+		end set
 	end property
 
 end class
@@ -1426,56 +1167,40 @@ class public auto ansi ULongLiteral extends NumberLiteral implements IUnaryOpera
 		return $string$NumVal + "ul"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNot()
-		return _DoNot
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
-		_DoNot = dn
-	end method
-	
-	property none boolean DoNot
-		get get_DoNot()
-		set set_DoNot()
+	property public hidebysig virtual final newslot boolean DoNot
+		get
+			return _DoNot
+		end get
+		set
+			_DoNot = value
+		end set
 	end property
 
 end class
@@ -1506,69 +1231,49 @@ class public auto ansi IntPtrLiteral extends NumberLiteral implements IUnaryOper
 		return $string$NumVal + "ip"
 	end method
 	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNot()
-		return _DoNot
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
-		_DoNot = dn
-	end method
-	
-	property none boolean DoNot
-		get get_DoNot()
-		set set_DoNot()
+	property public hidebysig virtual final newslot boolean DoNot
+		get
+			return _DoNot
+		end get
+		set
+			_DoNot = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
-		return _DoNeg
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
-		_DoNeg = dn
-	end method
-	
-	property none boolean DoNeg
-		get get_DoNeg()
-		set set_DoNeg()
+	property public hidebysig virtual final newslot boolean DoNeg
+		get
+			return _DoNeg
+		end get
+		set
+			_DoNeg = value
+		end set
 	end property
 
 end class

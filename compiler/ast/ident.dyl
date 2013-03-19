@@ -55,96 +55,68 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
 	end method
-	
-	method public hidebysig virtual specialname final newslot string get_OrdOp()
-		return _OrdOp
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_OrdOp(var oo as string)
-		_OrdOp = oo
-	end method
-	
-	property none string OrdOp
-		get get_OrdOp()
-		set set_OrdOp()
+		
+	property public hidebysig virtual final newslot string OrdOp
+		get
+			return _OrdOp
+		end get
+		set
+			_OrdOp = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_Conv()
-		return _Conv
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_Conv(var c as boolean)
-		_Conv = c
-	end method
-	
-	property none boolean Conv
-		get get_Conv()
-		set set_Conv()
+	property public hidebysig virtual final newslot boolean Conv
+		get
+			return _Conv
+		end get
+		set
+			_Conv = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot TypeTok get_TTok()
-		return _TTok
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_TTok(var tt as TypeTok)
-		_TTok = tt
-	end method
-	
-	property none TypeTok TTok
-		get get_TTok()
-		set set_TTok()
+	property public hidebysig virtual final newslot TypeTok TTok
+		get
+			return _TTok
+		end get
+		set
+			_TTok = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNeg()
-		return _DoNeg
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNeg(var dn as boolean)
-		_DoNeg = dn
-	end method
-	
-	property none boolean DoNeg
-		get get_DoNeg()
-		set set_DoNeg()
+	property public hidebysig virtual final newslot boolean DoNeg
+		get
+			return _DoNeg
+		end get
+		set
+			_DoNeg = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoNot()
-		return _DoNot
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoNot(var dn as boolean)
-		_DoNot = dn
-	end method
-	
-	property none boolean DoNot
-		get get_DoNot()
-		set set_DoNot()
+	property public hidebysig virtual final newslot boolean DoNot
+		get
+			return _DoNot
+		end get
+		set
+			_DoNot = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoInc()
-		return _DoInc
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoInc(var inc as boolean)
-		_DoInc = inc
-	end method
-	
-	property none boolean DoInc
-		get get_DoInc()
-		set set_DoInc()
+	property public hidebysig virtual final newslot boolean DoInc
+		get
+			return _DoInc
+		end get
+		set
+			_DoInc = value
+		end set
 	end property
 	
-	method public hidebysig virtual specialname final newslot boolean get_DoDec()
-		return _DoDec
-	end method
-	
-	method public hidebysig virtual specialname final newslot void set_DoDec(var dec as boolean)
-		_DoDec = dec
-	end method
-	
-	property none boolean DoDec
-		get get_DoDec()
-		set set_DoDec()
+	property public hidebysig virtual final newslot boolean DoDec
+		get
+			return _DoDec
+		end get
+		set
+			_DoDec = value
+		end set
 	end property
 
 end class

@@ -1,0 +1,190 @@
+This is dylandotnet.info, produced by makeinfo version 4.13 from
+dylandotnet.texi.
+
+This is the manual documenting the syntax of the dylan.NET programming
+language.  Copyright (C) 2013 Dylan Borg
+
+
+File: dylandotnet.info,  Node: Top,  Next: Introduction,  Up: (dir)
+
+dylan.NET Programmer's Manual
+*****************************
+
+* Menu:
+
+* Introduction::
+* Syntax::
+* Practical Examples::
+
+
+File: dylandotnet.info,  Node: Introduction,  Next: Syntax,  Prev: Top,  Up: Top
+
+1 Introduction
+**************
+
+   `dylan.NET' is a new programming language for the CLR (Common
+Language Runtime) which produces bytecode in MSIL (Microsoft
+Intermediate Language) format that is suitable for input to the Xamarin
+Mono and/or Microsoft .NET Framework virtual machines. The compiler
+itself i.e. `dylandotnet' runs on the latter virtual machines as well
+and is in fact "self-hosting, compiles itself". The intent of this
+literature is not to explain the command-line invocation of the
+compiler but rather to explain the syntax of the language (as of v.
+11.3.1.4) and to provide some examples that may be used in practice.
+
+   *Note_* _Some of the example code in this manual may be an extract
+from the sample programs accompanying the compiler source code or may
+be extracts from the compiler source code itself. In such case the
+source file for the particular extract will be quoted._
+
+   To whet your appetite for the next chapter, below is the standard
+`Hello, World!' program written in `dylan.NET':
+
+     #refstdasm "mscorlib.dll"
+
+     import System
+
+     #debug on
+
+     assembly helloworld exe
+     ver 1.2.0.0
+
+     class public auto ansi static Program
+
+     	method public static void main()
+     		Console::WriteLine("Hello, World!")
+     	end method
+
+     end class
+
+`Adapted from the `helloworld.dyl' sample program.'
+
+
+File: dylandotnet.info,  Node: Syntax,  Next: Practical Examples,  Prev: Introduction,  Up: Top
+
+2 Syntax
+********
+
+   The aim of this chapter is to explain the structure of of a
+`dylan.NET' program/library. This will be followed by explanations of
+the various statement types available in the `dylan.NET' language and
+how they compare to a reference .NET language, in this case `C#'.
+
+* Menu:
+
+* General Structure::
+* Referencing Libraries::
+* Importing Namespaces::
+* Debug Mode::
+* Declaring an Assembly::
+
+
+File: dylandotnet.info,  Node: General Structure,  Next: Referencing Libraries,  Up: Syntax
+
+2.1 General Structure
+=====================
+
+   With reference to the sample program presented in *note
+Introduction::, the structure of a `dylan.NET' program/library is as
+follows:
+
+   * `#refstdasm' and/or `#refasm' statements which are used to
+     reference class libraries.
+
+   * `import' statements which import namespaces from the libraries.
+
+   * An optional turning on of debugging as a `#debug' statement.
+
+   * The declarations of the assembly name and its version as
+     `assembly' and `ver' statements.
+
+   * The actual code for the program/library as a set of classes and
+     their members. _The name `main' when used with a method indicates
+     that it is the entry point of the program._
+
+
+File: dylandotnet.info,  Node: Referencing Libraries,  Next: Importing Namespaces,  Prev: General Structure,  Up: Syntax
+
+2.2 Referencing Libraries
+=========================
+
+   Sometimes one may require the use of already defined functions and
+classes that are not part of the current program's/library's sources.
+The `#refasm' and `#refstdasm' statements allow the referencing of a
+.NET library inside `dylan.NET' source code. `#refstdasm' allows the
+refercning of the standard libraries which ship with the .NET runtime.
+Because of the more organised way used by Mono in installing its
+libraries, the `#refstdasm' statement can allow referencing any library
+in the runtime directory (paths are in relation to it) of the .NET
+profile being used. In the case of `#refasm', the paths specified are
+relative to the current working directory. In both statements,
+enclosing the path in double-quotes is recommended so as to prevent the
+compiler's lexer from breaking the path into many tokens, as would
+happen with `UNIX' style paths which include the `/' and or `-'
+characters which for `dylan.NET' are the division and subtraction
+operators repectively.
+
+   Some examples of referencing some standard libraries and one
+non-standard library:
+
+     `#refstdasm "mscorlib.dll"'
+     `#refstdasm "System.dll"'
+     `#refstdasm "System.Xml.Linq.dll"'
+     `#refstdasm "System.Core.dll"'
+     `#refasm "lib/mylibrary.dll"'
+
+
+File: dylandotnet.info,  Node: Importing Namespaces,  Next: Debug Mode,  Prev: Referencing Libraries,  Up: Syntax
+
+2.3 Importing Namespaces
+========================
+
+   The `import' statement allows the import of namespaces. This implies
+that one does not need to use the full name of classes when writing a
+class' name since the compiler always tries to prepend imported
+namespaces with a supplied class name while searching inside the
+imported libraries and in the generated code for the sources being
+compiled. The `Console' class being used in the code sample in *note
+Introduction:: is in fact named `System.Console' and is found in the
+`mscorlib.dll' library. The `import System' line in the sources allowed
+the omission of the namespace part of the class name while calling the
+`WriteLine' method.
+
+   Some examples of importing some standard namespaces:
+     `import System'
+     `import System.Xml.Linq'
+     `import System.Collections.Generic'
+     `import System.Linq'
+
+
+File: dylandotnet.info,  Node: Debug Mode,  Next: Declaring an Assembly,  Prev: Importing Namespaces,  Up: Syntax
+
+2.4 Debug Mode
+==============
+
+
+File: dylandotnet.info,  Node: Declaring an Assembly,  Prev: Debug Mode,  Up: Syntax
+
+2.5 Declaring an Assembly
+=========================
+
+
+File: dylandotnet.info,  Node: Practical Examples,  Prev: Syntax,  Up: Top
+
+3 Practical Examples
+********************
+
+
+
+Tag Table:
+Node: Top197
+Node: Introduction390
+Node: Syntax1820
+Node: General Structure2332
+Node: Referencing Libraries3135
+Node: Importing Namespaces4554
+Node: Debug Mode5537
+Node: Declaring an Assembly5685
+Node: Practical Examples5826
+
+End Tag Table

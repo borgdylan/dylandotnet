@@ -149,20 +149,16 @@ class public auto ansi OTTEnumerator implements IEnumerator<of integer>, IEnumer
 	method public hidebysig virtual newslot final void Dispose()
 	end method
 	
-	method public hidebysig virtual newslot final specialname integer get_Current()
-		return _Current
-	end method
-	
-	method public hidebysig virtual newslot final specialname object IEnumerator.get_Current()
-		return $object$_Current
-	end method
-	
-	property none integer Current
-		get get_Current()
+	property public hidebysig virtual newslot final integer Current
+		get
+			return _Current
+		end get
 	end property
 	
-	property none object IEnumerator.Current
-		get get_Current()
+	property public hidebysig virtual newslot final object IEnumerator.Current
+		get
+			return $object$_Current
+		end get
 	end property
 
 end class
