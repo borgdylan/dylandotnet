@@ -6,9 +6,9 @@
 @numsecentry{Debug Mode}{2.4}{Debug Mode}{3}
 @numsecentry{Declaring an Assembly}{2.5}{Declaring an Assembly}{3}
 @numsecentry{Specifying the Assembly Version}{2.6}{Specifying the Assembly Version}{3}
-@numsecentry{Declaring a Class}{2.7}{Declaring a Class}{3}
-@numsecentry{Declaring a Field}{2.8}{Declaring a Field}{3}
-@numsecentry{Declaring a Method}{2.9}{Declaring a Method}{3}
-@numsecentry{Declaring a Constructor}{2.10}{Declaring a Constructor}{3}
-@numsecentry{Conditional Compilation}{2.11}{Conditional Compilation}{3}
-@numchapentry{Practical Examples}{3}{Practical Examples}{4}
+@numsecentry{Declaring a Class}{2.7}{Declaring a Class}{4}
+@numsecentry{Declaring a Field}{2.8}{Declaring a Field}{4}
+@numsecentry{Declaring a Method}{2.9}{Declaring a Method}{4}
+@numsecentry{Declaring a Constructor}{2.10}{Declaring a Constructor}{4}
+@numsecentry{Conditional Compilation}{2.11}{Conditional Compilation}{4}
+@numchapentry{Practical Examples}{3}{Practical Examples}{5}

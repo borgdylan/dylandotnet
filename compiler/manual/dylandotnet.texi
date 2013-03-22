@@ -120,10 +120,12 @@ Sometimes one may require the use of already defined functions and classes that 
 Some examples of referencing some standard libraries and one non-standard library:
 
 @example
+@code{//#refstdasm @var{standardlib.dll}}
 @code{#refstdasm "mscorlib.dll"}
 @code{#refstdasm "System.dll"}
 @code{#refstdasm "System.Xml.Linq.dll"}
 @code{#refstdasm "System.Core.dll"}
+@code{//#refasm @var{path/to/lib.dll}}
 @code{#refasm "lib/mylibrary.dll"}
 @end example
 
@@ -137,17 +139,29 @@ The @code{import} statement allows the import of namespaces. This implies that o
 @sp 1
 Some examples of importing some standard namespaces:
 @example
+@code{//import @var{namespace}}
 @code{import System}
 @code{import System.Xml.Linq}
 @code{import System.Collections.Generic}
 @code{import System.Linq}
 @end example
+@sp 1
+@strong{Note:} @emph{In the rare cases when using two or more classes that are @strong{named the same}, but are @strong{from different namsepaces}, the @code{dylan.NET} compiler will select the class from the namespace that is imported first.}
+
+To make sure the actually needed class gets selected in the latter case, one would need to prepend the namespace to the class' name everytime the class is used. Since the latter methodology is inefficient and requires extra typing, @samp{aliased namespaces} can be used instead to be able to assign a short alias to the namepace.  As an example, to set the alias @samp{SCG} to the @samp{System.Coillections.Generic} namespace one would use the following code:
+@sp 1
+@example
+@code{//import @var{alias} = @var{namespace}}
+@code{import SCG = System.Collections.Generic}
+@end example
+@sp 1
+With the above alias, specifiying the alias as the namespace part of a class name will make the compiler swap it by the namespace assigned to the particular alias.
 
 @node Debug Mode
 @section Debug Mode
 
 @indent
-The @code{#debug} statement is used to turn on/off the production of debugging symbols in @samp{.mdb} (Mono) or @samp{.pdb} (.NET) format. By default debug mode is @code{off}. Turning the debug symbol making @code{on} will also imply @code{#define DEBUG}. For more info on the latter, @pxref{Conditional Compilation}. To turn debug symbol making on, use @code{#debug on}. @strong{This statement should occur before the @code{assembly} and @code{ver} statements.}
+The @code{#debug} statement is used to turn on/off the production of debugging symbols in @samp{.mdb} (Mono) or @samp{.pdb} (.NET) format. By default debug mode is @code{off}. Turning the debug symbol making @code{on} will also imply @code{#define DEBUG}. For more info on the latter, @pxref{Conditional Compilation}. To turn debug symbol making on, use @code{#debug on} or use @code{#debug off} to make it clearer that no debug symbols will b made. @strong{This statement should occur before the @code{assembly} and @code{ver} statements.}
 
 @node Declaring an Assembly
 @section Declaring an Assembly
@@ -155,6 +169,7 @@ The @code{#debug} statement is used to turn on/off the production of debugging s
 @indent
 The @code{assembly} statement is used to declare an assembly given its name which has to be a single identifier token and mode which can be @dfn{@code{exe}, executable program} or @dfn{@code{dll}, dynamically linked library}. @strong{This statement should occur before the @code{ver} statement.} See the examples below:
 @example
+@code{//assembly @var{assembly_name} exe|dll}
 @code{assembly testprog exe}
 @code{assembly testlib dll}
 @end example
@@ -170,6 +185,46 @@ The @code{ver} statement defines the version for the assembly declared using a p
 
 @node Declaring a Class
 @section Declaring a Class
+
+@indent
+The @code{class} statement is used when declaring a new class and has the following format:
+@example
+@code{class @var{attributes} @var{class_name} [extends @var{parent_class}] [implements @var{interfaces}] }
+@indent @indent @indent @indent @var{class_body}
+@code{end class}
+@end example
+The @var{class_name}  has to be a valid identifier (current namespace is prepended to the class name in the format @var{namespace}.@var{classs_name}) while the @var{parentclass} and every member of the comma delimeted list @var{interfaces} must be valid type names. A valid type name should be similar in form to the following examples:
+@example
+@code{//non-generic}
+@code{Console}
+@code{Version}
+@code{//generic}
+@code{IEnumerable<of string>}
+@code{IDictionary<of string, object>}
+@end example
+The @var{attributes} list may contain one of the following type attributes:
+@table @code
+@item public
+Makes the class visible to all classes no matter where they are declared
+@item private
+Makes the class be visible only to the assembly in which it is declared
+@item auto
+Lets the runtime lay the class members in its own order
+@item autochar
+@item ansi
+@item sequential
+Forces the runtime to lay the class members in the order they were declared
+@item abstract
+Marks the class as being @samp{abstract}
+@item interface
+Marks the class as being @samp{interface} (should also use @code{abstract})
+@item beforefieldinit
+Runs the static constructor exactly once, before the first use of the class
+@item sealed
+Disallows inheritance of the class by other classes
+@item static
+Same as specifying all of @code{sealed}, @code{beforefieldinit} and @code{abstract}
+@end table
 
 @node Declaring a Field
 @section Declaring a Field
