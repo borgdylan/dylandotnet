@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/eval.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnu/streamu.dyl">
     <Files>
       <File FileName="ast/ident.dyl" Line="120" Column="14" />
       <File FileName="ast/methodnametok.dyl" Line="100" Column="14" />
@@ -9,19 +9,20 @@
       <File FileName="dev/nuget2dn.dyl" Line="137" Column="17" />
       <File FileName="tests/helloworld.dyl" Line="23" Column="1" />
       <File FileName="codegen/eval.dyl" Line="1403" Column="64" />
+      <File FileName="dnu/streamu.dyl" Line="196" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
-            <Node name="codegen" expanded="True">
-              <Node name="eval.dyl" selected="True" />
-            </Node>
+            <Node name="codegen" expanded="True" />
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
             <Node name="dnr" expanded="True" />
-            <Node name="dnu" expanded="True" />
+            <Node name="dnu" expanded="True">
+              <Node name="streamu.dyl" selected="True" />
+            </Node>
             <Node name="lexer" expanded="True" />
             <Node name="m4" expanded="True" />
             <Node name="parser" expanded="True" />

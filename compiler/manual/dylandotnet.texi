@@ -70,7 +70,7 @@ end class
 @chapter Syntax
 
 @indent
-The aim of this chapter is to explain the structure of of a @code{dylan.NET} program/library. This will be followed by explanations of the various statement types available in the @code{dylan.NET} language and how they compare to a reference .NET language, in this case @samp{C#}.
+The aim of this chapter is to explain the structure of of a @code{dylan.NET} program/library. This will be followed by explanations of the various statement types available in the @code{dylan.NET} programming language.
 
 @menu
 * General Structure::
@@ -79,6 +79,10 @@ The aim of this chapter is to explain the structure of of a @code{dylan.NET} pro
 * Debug Mode::
 * Declaring an Assembly::
 * Specifying the Assembly Version::
+* Declaring a Class::
+* Declaring a Field::
+* Declaring a Method::
+* Declaring a Constructor::
 * Conditional Compilation::
 @end menu
 
@@ -143,7 +147,7 @@ Some examples of importing some standard namespaces:
 @section Debug Mode
 
 @indent
-The @code{#debug} statement is used to turn on/off the production of debugging symbols in @samp{.mdb} (Mono) or @samp{.pdb} (.NET) format. By default debug mode is @code{off}. Turning the debug symbol making @code{on} will also imply @code{#define DEBUG}. @xref{Conditional Compilation} for more info on the latter. To turn debug symbol making on, use @code{#debug on}. @strong{This statement should occur before the @code{assembly} and @code{ver} statements.}
+The @code{#debug} statement is used to turn on/off the production of debugging symbols in @samp{.mdb} (Mono) or @samp{.pdb} (.NET) format. By default debug mode is @code{off}. Turning the debug symbol making @code{on} will also imply @code{#define DEBUG}. For more info on the latter, @pxref{Conditional Compilation}. To turn debug symbol making on, use @code{#debug on}. @strong{This statement should occur before the @code{assembly} and @code{ver} statements.}
 
 @node Declaring an Assembly
 @section Declaring an Assembly
@@ -159,10 +163,22 @@ The @code{assembly} statement is used to declare an assembly given its name whic
 @section Specifying the Assembly Version
 
 @indent
-The @code{ver} statement defines the version for the assembly declared using a preceding @code{assembly} statement and actually triggeres the creation of a new @samp{assembly} by the compiler. The version number is made up of 4 integers, all of which must be specified. For more information on .NET version numbers look up @samp{System.Version} on @cite{MSDN}. An example usage would be:
+The @code{ver} statement defines the version for the assembly declared using a preceding @code{assembly} statement and actually triggers the creation of a new @samp{assembly} by the compiler. The version number is made up of 4 integers, all of which must be specified. For more information on .NET version numbers look up @samp{System.Version} on @cite{@url{http://msdn.microsoft.com/en-us/library/system.version.aspx,MSDN}}. @strong{The @code{ver} statement should occur immediately after the @code{assembly} statement.} An example usage would be:
 @example
 @code{ver 1.1.0.0}
 @end example
+
+@node Declaring a Class
+@section Declaring a Class
+
+@node Declaring a Field
+@section Declaring a Field
+
+@node  Declaring a Method
+@section Declaring a Method
+
+@node Declaring a Constructor
+@section Declaring a Constructor
 
 @node Conditional Compilation
 @section Conditional Compilation

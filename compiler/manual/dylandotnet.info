@@ -67,8 +67,8 @@ File: dylandotnet.info,  Node: Syntax,  Next: Practical Examples,  Prev: Introdu
 
    The aim of this chapter is to explain the structure of of a
 `dylan.NET' program/library. This will be followed by explanations of
-the various statement types available in the `dylan.NET' language and
-how they compare to a reference .NET language, in this case `C#'.
+the various statement types available in the `dylan.NET' programming
+language.
 
 * Menu:
 
@@ -77,6 +77,12 @@ how they compare to a reference .NET language, in this case `C#'.
 * Importing Namespaces::
 * Debug Mode::
 * Declaring an Assembly::
+* Specifying the Assembly Version::
+* Declaring a Class::
+* Declaring a Field::
+* Declaring a Method::
+* Declaring a Constructor::
+* Conditional Compilation::
 
 
 File: dylandotnet.info,  Node: General Structure,  Next: Referencing Libraries,  Up: Syntax
@@ -117,12 +123,13 @@ Because of the more organised way used by Mono in installing its
 libraries, the `#refstdasm' statement can allow referencing any library
 in the runtime directory (paths are in relation to it) of the .NET
 profile being used. In the case of `#refasm', the paths specified are
-relative to the current working directory. In both statements,
-enclosing the path in double-quotes is recommended so as to prevent the
-compiler's lexer from breaking the path into many tokens, as would
-happen with `UNIX' style paths which include the `/' and or `-'
-characters which for `dylan.NET' are the division and subtraction
-operators repectively.
+relative to the current working directory.
+
+   *Note_* _In both statements, enclosing the path in double-quotes is
+recommended so as to prevent the compiler's lexer from breaking the
+path into many tokens, as would happen with `UNIX' style paths which
+include the `/' and or `-' characters which for `dylan.NET' are the
+division and subtraction operators repectively._
 
    Some examples of referencing some standard libraries and one
 non-standard library:
@@ -150,6 +157,12 @@ Introduction:: is in fact named `System.Console' and is found in the
 the omission of the namespace part of the class name while calling the
 `WriteLine' method.
 
+   *Note_* _Enclosing the namespace in double-quotes is needed in
+certain cases, so as to prevent the compiler's lexer from breaking the
+namespace spcified into many tokens, as would happen with `UNIX' style
+paths which include the `/' and or `-' characters which for `dylan.NET'
+are the division and subtraction operators repectively._
+
    Some examples of importing some standard namespaces:
      `import System'
      `import System.Xml.Linq'
@@ -162,11 +175,72 @@ File: dylandotnet.info,  Node: Debug Mode,  Next: Declaring an Assembly,  Prev: 
 2.4 Debug Mode
 ==============
 
+   The `#debug' statement is used to turn on/off the production of
+debugging symbols in `.mdb' (Mono) or `.pdb' (.NET) format. By default
+debug mode is `off'. Turning the debug symbol making `on' will also
+imply `#define DEBUG'. For more info on the latter, *note Conditional
+Compilation::. To turn debug symbol making on, use `#debug on'. *This
+statement should occur before the `assembly' and `ver' statements.*
+
 
-File: dylandotnet.info,  Node: Declaring an Assembly,  Prev: Debug Mode,  Up: Syntax
+File: dylandotnet.info,  Node: Declaring an Assembly,  Next: Specifying the Assembly Version,  Prev: Debug Mode,  Up: Syntax
 
 2.5 Declaring an Assembly
 =========================
+
+   The `assembly' statement is used to declare an assembly given its
+name which has to be a single identifier token and mode which can be
+"`exe', executable program" or "`dll', dynamically linked library".
+*This statement should occur before the `ver' statement.* See the
+examples below:
+     `assembly testprog exe'
+     `assembly testlib dll'
+
+
+File: dylandotnet.info,  Node: Specifying the Assembly Version,  Next: Declaring a Class,  Prev: Declaring an Assembly,  Up: Syntax
+
+2.6 Specifying the Assembly Version
+===================================
+
+   The `ver' statement defines the version for the assembly declared
+using a preceding `assembly' statement and actually triggers the
+creation of a new `assembly' by the compiler. The version number is
+made up of 4 integers, all of which must be specified. For more
+information on .NET version numbers look up `System.Version' on `MSDN
+(http://msdn.microsoft.com/en-us/library/system.version.aspx)'. *The
+`ver' statement should occur immediately after the `assembly'
+statement.* An example usage would be:
+     `ver 1.1.0.0'
+
+
+File: dylandotnet.info,  Node: Declaring a Class,  Next: Declaring a Field,  Prev: Specifying the Assembly Version,  Up: Syntax
+
+2.7 Declaring a Class
+=====================
+
+
+File: dylandotnet.info,  Node: Declaring a Field,  Next: Declaring a Method,  Prev: Declaring a Class,  Up: Syntax
+
+2.8 Declaring a Field
+=====================
+
+
+File: dylandotnet.info,  Node: Declaring a Method,  Next: Declaring a Constructor,  Prev: Declaring a Field,  Up: Syntax
+
+2.9 Declaring a Method
+======================
+
+
+File: dylandotnet.info,  Node: Declaring a Constructor,  Next: Conditional Compilation,  Prev: Declaring a Method,  Up: Syntax
+
+2.10 Declaring a Constructor
+============================
+
+
+File: dylandotnet.info,  Node: Conditional Compilation,  Prev: Declaring a Constructor,  Up: Syntax
+
+2.11 Conditional Compilation
+============================
 
 
 File: dylandotnet.info,  Node: Practical Examples,  Prev: Syntax,  Up: Top
@@ -180,11 +254,17 @@ Tag Table:
 Node: Top197
 Node: Introduction390
 Node: Syntax1820
-Node: General Structure2332
-Node: Referencing Libraries3135
-Node: Importing Namespaces4554
-Node: Debug Mode5537
-Node: Declaring an Assembly5685
-Node: Practical Examples5826
+Node: General Structure2434
+Node: Referencing Libraries3237
+Node: Importing Namespaces4670
+Node: Debug Mode5991
+Node: Declaring an Assembly6554
+Node: Specifying the Assembly Version7081
+Node: Declaring a Class7815
+Node: Declaring a Field7991
+Node: Declaring a Method8154
+Node: Declaring a Constructor8325
+Node: Conditional Compilation8514
+Node: Practical Examples8676
 
 End Tag Table

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdfetex 2013.1.24)  19 MAR 2013 22:11
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdfetex 2013.1.24)  20 MAR 2013 17:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -170,10 +170,10 @@ This is `epsf.tex' v2.7.4 <14 February 2011>
 
 Chapter 2 [1] [2] Chapter 3 [3] [4] ) 
 Here is how much of TeX's memory you used:
- 1720 strings out of 495042
- 20896 string characters out of 3158416
- 58141 words of memory out of 3000000
- 3082 multiletter control sequences out of 15000+200000
+ 1740 strings out of 495042
+ 21298 string characters out of 3158416
+ 60105 words of memory out of 3000000
+ 3098 multiletter control sequences out of 15000+200000
  32127 words of font info for 112 fonts, out of 3000000 for 9000
  1269 hyphenation exceptions out of 8191
  12i,6n,17p,794b,336s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -187,10 +187,10 @@ nts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on dylandotnet.pdf (7 pages, 130632 bytes).
+Output written on dylandotnet.pdf (7 pages, 132847 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
- 15 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 159 PDF objects out of 1000 (max. 8388607)
+ 135 compressed objects within 2 object streams
+ 19 named destinations out of 1000 (max. 500000)
+ 125 words of extra memory for PDF output out of 10000 (max. 10000000)
 

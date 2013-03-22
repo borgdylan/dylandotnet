@@ -41,6 +41,10 @@ Up:&nbsp;<a rel="up" accesskey="u" href="Syntax.html#Syntax">Syntax</a>
    <pre class="sp">
 
 </pre>
+<strong>Note:</strong> <em>Enclosing the namespace in double-quotes is needed in certain cases, so as to prevent the compiler's lexer from breaking the namespace spcified into many tokens, as would happen with &lsquo;</em><samp><span class="samp">UNIX</span></samp><em>&rsquo; style paths which include the &lsquo;</em><samp><span class="samp">/</span></samp><em>&rsquo; and or &lsquo;</em><samp><span class="samp">-</span></samp><em>&rsquo; characters which for </em><code>dylan.NET</code><em> are the division and subtraction operators repectively.</em>
+   <pre class="sp">
+
+</pre>
 Some examples of importing some standard namespaces:
 <pre class="example">     <code>import System</code>
      <code>import System.Xml.Linq</code>
