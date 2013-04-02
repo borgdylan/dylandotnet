@@ -50,6 +50,7 @@
       <Type Name="DoWhileStmt" Kind="Class" />
       <Type Name="ElseIfStmt" Kind="Class" />
       <Type Name="ElseStmt" Kind="Class" />
+      <Type Name="EndAddStmt" Kind="Class" />
       <Type Name="EndClassStmt" Kind="Class" />
       <Type Name="EndDoStmt" Kind="Class" />
       <Type Name="EndEnumStmt" Kind="Class" />
@@ -61,6 +62,7 @@
       <Type Name="EndMethodStmt" Kind="Class" />
       <Type Name="EndNSStmt" Kind="Class" />
       <Type Name="EndPropStmt" Kind="Class" />
+      <Type Name="EndRemoveStmt" Kind="Class" />
       <Type Name="EndSetStmt" Kind="Class" />
       <Type Name="EndTryStmt" Kind="Class" />
       <Type Name="EnumStmt" Kind="Class" />

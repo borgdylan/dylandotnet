@@ -582,6 +582,7 @@
     <None Include="nuget2dylandotnet.1" />
     <None Include="configure.ac" />
     <None Include="codegen\propertyitem.dyl" />
+    <None Include="codegen\eventitem.dyl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ast\interfaces.dyl" />

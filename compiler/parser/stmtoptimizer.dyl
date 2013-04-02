@@ -486,139 +486,88 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	
-	method private Stmt checkEndIf(var stm as Stmt, var b as boolean&)
+	method private Stmt checkEnd(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is IfTok)
+			b = stm::Tokens::get_Item(0) is EndTok
+			
 			if b then
-				return new EndIfStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				b = stm::Tokens::get_Item(1) is IfTok
+				if b then
+					return new EndIfStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = stm::Tokens::get_Item(1) is HIfTok
+				if b then
+					return new EndHIfStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = (stm::Tokens::get_Item(1) is DoTok) or (stm::Tokens::get_Item(1) is ForTok)
+				if b then
+					return new EndDoStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = stm::Tokens::get_Item(1) is PropertyTok
+				if b then
+					return new EndPropStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = stm::Tokens::get_Item(1) is EventTok
+				if b then
+					return new EndEventStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = stm::Tokens::get_Item(1) is MethodTok
+				if b then
+					return new EndMethodStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = stm::Tokens::get_Item(1) is NamespaceTok
+				if b then
+					return new EndNSStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = (stm::Tokens::get_Item(1) is ClassTok) or (stm::Tokens::get_Item(1) is StructTok)
+				if b then
+					return new EndClassStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = stm::Tokens::get_Item(1) is TryTok
+				if b then
+					return new EndTryStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = stm::Tokens::get_Item(1) is LockTok
+				if b then
+					return new EndLockStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = stm::Tokens::get_Item(1) is SetTok
+				if b then
+					return new EndSetStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = stm::Tokens::get_Item(1) is GetTok
+				if b then
+					return new EndGetStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = stm::Tokens::get_Item(1) is RemoveTok
+				if b then
+					return new EndRemoveStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				b = stm::Tokens::get_Item(1) is AddTok
+				if b then
+					return new EndAddStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
+				StreamUtils::WriteError(stm::Line, PFlags::CurPath, c"\nUnexpected token '" + stm::Tokens::get_Item(1)::ToString() + "' after 'end'!.")
 			end if
 		end if
 		return null
 	end method
-	
-	method private Stmt checkEndHIf(var stm as Stmt, var b as boolean&)
-		b = false
-		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is HIfTok)
-			if b then
-				return new EndHIfStmt() {Line = stm::Line, Tokens = stm::Tokens}
-			end if
-		end if
-		return null
-	end method
-	
-	method private Stmt checkEndProp(var stm as Stmt, var b as boolean&)
-		b = false
-		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is PropertyTok)
-			if b then
-				return new EndPropStmt() {Line = stm::Line, Tokens = stm::Tokens}
-			end if
-		end if
-		return null
-	end method
-	
-	method private Stmt checkEndEvent(var stm as Stmt, var b as boolean&)
-		b = false
-		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is EventTok)
-			if b then
-				return new EndEventStmt() {Line = stm::Line, Tokens = stm::Tokens}
-			end if
-		end if
-		return null
-	end method
-	
-	method private Stmt checkEndMtd(var stm as Stmt, var b as boolean&)
-		b = false
-		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is MethodTok)
-			if b then
-				return new EndMethodStmt() {Line = stm::Line, Tokens = stm::Tokens}
-			end if
-		end if
-		return null
-	end method
-	
-	method private Stmt checkEndNS(var stm as Stmt, var b as boolean&)
-		b = false
-		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is NamespaceTok)
-			if b then
-				return new EndNSStmt() {Line = stm::Line, Tokens = stm::Tokens}
-			end if
-		end if
-		return null
-	end method
-	
-	
-	method private Stmt checkEndCls(var stm as Stmt, var b as boolean&)
-		b = false
-		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and ((stm::Tokens::get_Item(1) is ClassTok) or (stm::Tokens::get_Item(1) is StructTok))
-			if b then
-				return new EndClassStmt() {Line = stm::Line, Tokens = stm::Tokens}
-			end if
-		end if
-		return null
-	end method
-	
-	method private Stmt checkEndDo(var stm as Stmt, var b as boolean&)
-		b = false
-		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and ((stm::Tokens::get_Item(1) is DoTok) or (stm::Tokens::get_Item(1) is ForTok))
-			if b then
-				return new EndDoStmt() {Line = stm::Line, Tokens = stm::Tokens}
-			end if
-		end if
-		return null
-	end method
-	
-	method private Stmt checkEndTry(var stm as Stmt, var b as boolean&)
-		b = false
-		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is TryTok)
-			if b then
-				return new EndTryStmt() {Line = stm::Line, Tokens = stm::Tokens}
-			end if
-		end if
-		return null
-	end method
-	
-	method private Stmt checkEndLock(var stm as Stmt, var b as boolean&)
-		b = false
-		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is LockTok)
-			if b then
-				return new EndLockStmt() {Line = stm::Line, Tokens = stm::Tokens}
-			end if
-		end if
-		return null
-	end method
-	
-	method private Stmt checkEndSet(var stm as Stmt, var b as boolean&)
-		b = false
-		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is SetTok)
-			if b then
-				return new EndSetStmt() {Line = stm::Line, Tokens = stm::Tokens}
-			end if
-		end if
-		return null
-	end method
-	
-	method private Stmt checkEndGet(var stm as Stmt, var b as boolean&)
-		b = false
-		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is EndTok) and (stm::Tokens::get_Item(1) is GetTok)
-			if b then
-				return new EndGetStmt() {Line = stm::Line, Tokens = stm::Tokens}
-			end if
-		end if
-		return null
-	end method
-	
+			
 	method private Stmt checkMetAttr(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
@@ -1452,19 +1401,20 @@ class public auto ansi StmtOptimizer
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is RemoveTok) and (stm::Tokens::get_Item(1) is Ident)
-			
 			if b then
 				var evrs as EventRemoveStmt = new EventRemoveStmt() {Line = stm::Line, Tokens = stm::Tokens}
 				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
 				if exp::Tokens::get_Item(1) is MethodCallTok then
-					var mc as MethodCallTok = $MethodCallTok$exp::Tokens::get_Item(1)
-					evrs::Remover = mc::Name
+					evrs::Remover = #expr($MethodCallTok$exp::Tokens::get_Item(1))::Name
 				elseif exp::Tokens::get_Item(1) is Ident then
 					evrs::Remover = $Ident$exp::Tokens::get_Item(1)
-				else
-					evrs::Remover = null
 				end if
 				return evrs
+			end if
+		elseif stm::Tokens::get_Count() == 1 then
+			b = stm::Tokens::get_Item(0) is RemoveTok
+			if b then
+				return new EventRemoveStmt() {Line = stm::Line, Tokens = stm::Tokens}
 			end if
 		end if
 		return null
@@ -1473,8 +1423,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkAdd(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is AddTok) and (stm::Tokens::get_Item(1) is Ident)
-			
+			b = (stm::Tokens::get_Item(0) is AddTok) and (stm::Tokens::get_Item(1) is Ident)	
 			if b then
 				var evas as EventAddStmt = new EventAddStmt() {Line = stm::Line, Tokens = stm::Tokens}
 				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
@@ -1482,10 +1431,13 @@ class public auto ansi StmtOptimizer
 					evas::Adder = #expr($MethodCallTok$exp::Tokens::get_Item(1))::Name
 				elseif exp::Tokens::get_Item(1) is Ident then
 					evas::Adder = $Ident$exp::Tokens::get_Item(1)
-				else
-					evas::Adder = null
 				end if
 				return evas
+			end if
+		elseif stm::Tokens::get_Count() == 1 then
+			b = stm::Tokens::get_Item(0) is AddTok	
+			if b then
+				return new EventAddStmt() {Line = stm::Line, Tokens = stm::Tokens}
 			end if
 		end if
 		return null
@@ -1838,55 +1790,7 @@ class public auto ansi StmtOptimizer
 			return stm
 		end if
 		
-		tmpstm = checkEndLock(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkEndTry(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkEndMtd(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkEndSet(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkEndGet(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkEndProp(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkEndEvent(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkEndNS(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkEndCls(stm, ref compb)
+		tmpstm = checkEnd(stm, ref compb)	
 		if compb then
 			stm = tmpstm
 			return stm
@@ -2043,24 +1947,6 @@ class public auto ansi StmtOptimizer
 		end if
 		
 		tmpstm = checkContinue(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkEndIf(stm, ref compb)	
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkEndHIf(stm, ref compb)	
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkEndDo(stm, ref compb)
 		if compb then
 			stm = tmpstm
 			return stm

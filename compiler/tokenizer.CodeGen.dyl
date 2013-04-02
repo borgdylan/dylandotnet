@@ -77,6 +77,7 @@ namespace dylan.NET.Tokenizer.CodeGen
 	#include "codegen/varitem.dyl"
 	#include "codegen/fielditem.dyl"
 	#include "codegen/propertyitem.dyl"
+	#include "codegen/eventitem.dyl"
 	#include "codegen/filambdas.dyl"
 	#include "codegen/methoditem.dyl"
 	#include "codegen/milambdas.dyl"

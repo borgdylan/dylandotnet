@@ -114,46 +114,34 @@ class public auto ansi static StreamUtils
 		end if
 	end method
 
-	[method: ComVisible(false)]
-	method public static hidebysig specialname void add_ErrorH(var eh as Action<of CompilerMsg>)
-		if _ErrorH = null then
-			_ErrorH = eh
-		else
-			_ErrorH = _ErrorH + eh
-		end if
-	end method
-
-	[method: ComVisible(false)]
-	method public static hidebysig specialname void remove_ErrorH(var eh as Action<of CompilerMsg>)
-		if _ErrorH != null then
-			_ErrorH = _ErrorH - eh
-		end if
-	end method
-	
-	event none Action<of CompilerMsg> ErrorH
-		add add_ErrorH()
-		remove remove_ErrorH()
+	event public static Action<of CompilerMsg> ErrorH
+		add
+			if _ErrorH = null then
+				_ErrorH = value
+			else
+				_ErrorH = _ErrorH + value
+			end if
+		end add
+		remove
+			if _ErrorH != null then
+				_ErrorH = _ErrorH - value
+			end if
+		end remove
 	end event
 	
-	[method: ComVisible(false)]
-	method public static hidebysig specialname void add_WarnH(var eh as Action<of CompilerMsg>)
-		if _WarnH = null then
-			_WarnH = eh
-		else
-			_WarnH = _WarnH + eh
-		end if
-	end method
-
-	[method: ComVisible(false)]
-	method public static hidebysig specialname void remove_WarnH(var eh as Action<of CompilerMsg>)
-		if _WarnH != null then
-			_WarnH = _WarnH - eh
-		end if
-	end method
-	
-	event none Action<of CompilerMsg> WarnH
-		add add_WarnH()
-		remove remove_WarnH()
+	event public static Action<of CompilerMsg> WarnH
+		add
+			if _WarnH = null then
+				_WarnH = value
+			else
+				_WarnH = _WarnH + value
+			end if
+		end add
+		remove
+			if _WarnH != null then
+				_WarnH = _WarnH - value
+			end if
+		end remove
 	end event
 
 	[method: ComVisible(false)]

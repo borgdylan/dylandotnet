@@ -25,7 +25,7 @@ class public auto ansi Compressor
 		var c as char = c'\0'
 		do while c < c'\x0100'
 			Dict::Add($string$c,$ushort$c)
-			c = c + c'\x01'
+			c++
 		end do
 	end method
 	
@@ -49,16 +49,16 @@ class public auto ansi Compressor
 			var ll as IStack<of boolean> = new LinkedList<of boolean>()
 			var i as integer = 0
 			do until i = 8
-				i = i + 1
+				i++
 				ll::Push(BQ::Dequeue())
 			end do
 			//convert the 8 bit pattern to an unsigned 8 bit number
 			var b as byte = 0ub
 			i = -1
 			do until i = 7
-				i = i + 1
+				i++
 				if ll::Pop() then
-					b = b + Convert::ToByte(1 << i)
+					b = b + $byte$#expr(1 << i)
 				end if
 			end do
 			//write the byte to the binary file
@@ -97,24 +97,23 @@ class public auto ansi Compressor
 			//if string in buffer is not in dictionary
 			//add the string in the dictionary and output
 			//substring that was in dictionary
-			if KeyExists(buf::ToString()) = false then
+			if !KeyExists(buf::ToString()) then
 				cs = buf::ToString()
 				//get substring that was in dictionary
-				cs = cs::Substring(0,cs::get_Length() - 1)
+				cs = cs::Substring(0,--cs::get_Length())
 				//get code for the substring from dictionary
 				//and compute the bits for it
-				var tempia as integer[] = new integer[1]
-				tempia[0] = $integer$Dict::get_Item(cs)
+				var tempia as integer[] = new integer[] {$integer$Dict::get_Item(cs)}
 				ba = new BitArray(tempia)
 				
 				//enqueue bits for writing
 				var i as integer = cdsz
 				if cdszc then
 					cdszc = false
-					i = i - 1
+					i--
 				end if
 				do until i = 0
-					i = i - 1
+					i--
 					BQ::Enqueue(ba::get_Item(i))
 				end do
 				
@@ -122,10 +121,10 @@ class public auto ansi Compressor
 				//add a new entry
 				if cnt < ushort::MaxValue then
 					//compute next code
-					cnt = cnt + 1us
+					cnt++
 					//increase code size if needed
-					if $integer$Math::Ceiling(Math::Log($double$cnt + 1d,2d)) != cdsz then
-						cdsz = cdsz + 1
+					if $integer$Math::Ceiling(Math::Log(++$double$cnt,2d)) != cdsz then
+						cdsz++
 						cdszc = true
 					end if
 					//actually add a dictionary entry
@@ -148,7 +147,7 @@ class public auto ansi Compressor
 			ba = new BitArray(new integer[] {$integer$Dict::get_Item(cs)})
 			var i as integer = cdsz
 			do until i = 0
-				i = i - 1
+				i--
 				BQ::Enqueue(ba::get_Item(i))
 			end do
 		end if
@@ -160,7 +159,7 @@ class public auto ansi Compressor
 			if r != 0 then
 				var i as integer = 0
 				do until i = (8 - r)
-					i = i + 1
+					i++
 					BQ::Enqueue(false)
 				end do
 			end if

@@ -279,6 +279,15 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.EndAddStmt..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.EndAddStmt.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Stmts.EndClassStmt..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -359,6 +368,15 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Stmts.EndPropStmt.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.EndRemoveStmt..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.EndRemoveStmt.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

@@ -20,6 +20,7 @@ class public auto ansi static SymTable
 	field public static TypeList TypeLst
 	field public static TypeItem CurnTypItem
 	field public static PropertyItem CurnProp
+	field public static EventItem CurnEvent
 
 	field private static FieldItem[] NestedFldLst
 	field private static MethodItem[] NestedMetLst
@@ -57,6 +58,7 @@ class public auto ansi static SymTable
 		ParameterCALst = new C5.HashDictionary<of integer, C5.LinkedList<of CustomAttributeBuilder> >()
 		DefSyms = new C5.TreeSet<of string>()
 		CurnProp = null
+		CurnEvent = null
 	end method
 	
 	[method: ComVisible(false)]
@@ -149,11 +151,22 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type, var lin as integer)
-		if VarLst::get_Last()::Contains(nme) then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable '" + nme + "' is already declared in the current scope!")
-		else
-			VarLst::get_Last()::Add(nme, new VarItem(nme, la, ind, typ, lin))
-		end if
+		
+		var flg = false
+		foreach s in VarLst::Backwards()
+			if s::Contains(nme) then
+				if !flg then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable '" + nme + "' is already declared in the current scope!")
+					return
+				else
+					StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable '" + nme + "' will hide a variable in an outer scope!")
+					break
+				end if
+			end if
+			flg = true
+		end for
+		
+		VarLst::get_Last()::Add(nme, new VarItem(nme, la, ind, typ, lin))
 	end method
 
 	[method: ComVisible(false)]

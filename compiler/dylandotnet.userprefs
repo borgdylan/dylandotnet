@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="dnu/streamu.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="parser/tokenoptimizer.dyl">
     <Files>
       <File FileName="ast/ident.dyl" Line="120" Column="14" />
       <File FileName="ast/methodnametok.dyl" Line="100" Column="14" />
@@ -8,8 +8,23 @@
       <File FileName="cflags.dyl.in" Line="10" Column="1" />
       <File FileName="dev/nuget2dn.dyl" Line="137" Column="17" />
       <File FileName="tests/helloworld.dyl" Line="23" Column="1" />
-      <File FileName="codegen/eval.dyl" Line="1403" Column="64" />
-      <File FileName="dnu/streamu.dyl" Line="196" Column="10" />
+      <File FileName="codegen/eval.dyl" Line="62" Column="13" />
+      <File FileName="dnu/streamu.dyl" Line="148" Column="31" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="569" Column="12" />
+      <File FileName="parser/parser.dyl" Line="33" Column="21" />
+      <File FileName="ast/propstmt.dyl" Line="66" Column="10" />
+      <File FileName="ast/eventstmt.dyl" Line="64" Column="21" />
+      <File FileName="ast/interfaces.dyl" Line="1" Column="1" />
+      <File FileName="codegen/stmtreader.dyl" Line="1008" Column="36" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="306" Column="18" />
+      <File FileName="codegen/propertyitem.dyl" Line="41" Column="1" />
+      <File FileName="codegen/eventitem.dyl" Line="27" Column="13" />
+      <File FileName="tokenizer.CodeGen.dyl" Line="80" Column="25" />
+      <File FileName="codegen/symtable.dyl" Line="176" Column="24" />
+      <File FileName="templateproj/template.dyl" Line="471" Column="6" />
+      <File FileName="dnc/Program.dyl" Line="56" Column="4" />
+      <File FileName="codegen/helpers.dyl" Line="1" Column="1" />
+      <File FileName="parser/exproptimizer.dyl" Line="1024" Column="13" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,17 +35,20 @@
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
             <Node name="dnr" expanded="True" />
-            <Node name="dnu" expanded="True">
-              <Node name="streamu.dyl" selected="True" />
-            </Node>
+            <Node name="dnu" expanded="True" />
             <Node name="lexer" expanded="True" />
             <Node name="m4" expanded="True" />
-            <Node name="parser" expanded="True" />
+            <Node name="parser" expanded="True">
+              <Node name="tokenoptimizer.dyl" selected="True" />
+            </Node>
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>
           <Node name="template" expanded="True" />
         </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>

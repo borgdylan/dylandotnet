@@ -399,11 +399,11 @@ class public auto ansi Program
 	method public static void scopingtests()
 		var i as integer = 0
 		
-		do
+		if true then
 			var i as integer
 			i = 12
 			Console::WriteLine(i)
-		until true
+		end if
 		
 		i = 23
 		Console::WriteLine(i)
@@ -451,21 +451,7 @@ class public auto ansi Program
 		Console::WriteLine(integer::Parse("23"))
 	end method
 	
-	method public static hidebysig specialname integer get_TestProperty()
-		return _TestProperty
-	end method
-	
-	method public static hidebysig specialname void set_TestProperty(var i as integer)
-		_TestProperty = i
-	end method
-	
-	[property: Obsolete("Test Custom Attribute")]
-	property none integer TestProperty
-		get get_TestProperty()
-		set set_TestProperty()
-	end property
-	
-	property public static integer TestProperty2
+	property public static integer TestProperty
 		get
 			return _TestProperty
 		end get
@@ -474,20 +460,6 @@ class public auto ansi Program
 		end set
 	end property
 	
-	method public static hidebysig specialname void add_TestEvent(var eh as EventHandler)
-		if _TestEvent != null then
-			_TestEvent = _TestEvent + eh
-		else
-			_TestEvent = eh
-		end if
-	end method
-	
-	method public static hidebysig specialname void remove_TestEvent(var eh as EventHandler)
-		if _TestEvent != null then
-			_TestEvent = _TestEvent - eh
-		end if
-	end method
-	
 	method public static void OnTestEvent()
 		if _TestEvent != null then
 			_TestEvent::Invoke(null,new EventArgs())
@@ -495,9 +467,19 @@ class public auto ansi Program
 	end method
 	
 	[event: Obsolete("Test Custom Attribute")]
-	event none EventHandler TestEvent
-		add add_TestEvent()
-		remove remove_TestEvent()
+	event public static EventHandler TestEvent
+		add
+			if _TestEvent != null then
+				_TestEvent = _TestEvent + value
+			else
+				_TestEvent = value
+			end if
+		end add
+		remove
+			if _TestEvent != null then
+				_TestEvent = _TestEvent - value
+			end if
+		end remove
 	end event
 
 	[method: STAThread()]

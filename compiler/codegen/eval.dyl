@@ -59,7 +59,7 @@ class public auto ansi beforefieldinit Evaluator
 			i++
 			tok = exp::Tokens::get_Item(i)
 
-			if ((tok is Op) or (tok is LParen) or (tok is RParen)) = false then
+			if !#expr((tok is Op) or (tok is LParen) or (tok is RParen)) then
 				exp2::AddToken(tok)
 			elseif tok is Op then
 				if Stack::getLength() != 0 then
@@ -73,7 +73,7 @@ class public auto ansi beforefieldinit Evaluator
 				Stack::PushOp(tok)
 			elseif tok is RParen then
 				if Stack::getLength() != 0 then
-					if (Stack::TopOp() is LParen) = false then
+					if !#expr(Stack::TopOp() is LParen) then
 						exp2::AddToken(Stack::TopOp())
 						Stack::PopOp()
 						if Stack::getLength() != 0 then
@@ -95,7 +95,7 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 
 		do
-			if (Stack::TopOp() is LParen) = false then
+			if !#expr(Stack::TopOp() is LParen) then
 				exp2::AddToken(Stack::TopOp())
 			end if
 			Stack::PopOp()
@@ -207,32 +207,28 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 			end if
 			if (s == "neg") and (iuo is INegatable) then
-				var idt = $INegatable$iuo
-				if idt::get_DoNeg() then
+				if #expr($INegatable$iuo)::get_DoNeg() then
 					if emt then
 						Helpers::EmitNeg(AsmFactory::Type02)
 					end if
 				end if
 			end if
 			if (s == "not") and (iuo is INotable) then
-				var idt = $INotable$iuo
-				if idt::get_DoNot() then
+				if #expr($INotable$iuo)::get_DoNot() then
 					if emt then
 						Helpers::EmitNot(AsmFactory::Type02)
 					end if
 				end if
 			end if
 			if (s == "inc") and (iuo is IIncDecable) then
-				var idt = $IIncDecable$iuo
-				if idt::get_DoInc() then
+				if #expr($IIncDecable$iuo)::get_DoInc() then
 					if emt then
 						Helpers::EmitInc(AsmFactory::Type02)
 					end if
 				end if
 			end if
 			if (s == "dec") and (iuo is IIncDecable) then
-				var idt = $IIncDecable$iuo
-				if idt::get_DoDec() then
+				if #expr($IIncDecable$iuo)::get_DoDec() then
 					if emt then
 						Helpers::EmitDec(AsmFactory::Type02)
 					end if
@@ -255,8 +251,7 @@ class public auto ansi beforefieldinit Evaluator
 
 		if pushaddr then
 			idt::IsRef = false
-		end if
-		if idtnamarr[0] = "me" then
+		elseif idtnamarr[0] = "me" then
 			i++
 			idtb1 = true
 		end if
@@ -577,11 +572,8 @@ class public auto ansi beforefieldinit Evaluator
 				baseflg = false
 				
 				if mcisstatic != mcmetinf::get_IsStatic() then
-					if mcisstatic and !mcmetinf::get_IsStatic() then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' defined for the class '" + mcparenttyp::ToString() + "' is an instance method.")
-					else
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' defined for the class '" + mcparenttyp::ToString() + "' is static.")
-					end if
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' defined for the class '" _
+							+ mcparenttyp::ToString() + #ternary {mcisstatic and !mcmetinf::get_IsStatic() ? "' is an instance method.", "' is static."})
 				end if
 				
 			else

@@ -39,7 +39,7 @@ class public auto ansi TokenOptimizer
 		if lkahead = null then
 			lkahead = new Token()
 		end if
-		if isFirstRun = false then
+		if !isFirstRun then
 			if isFirstToken then
 				isFirstToken = false
 			end if
@@ -282,7 +282,7 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value = "method:" then
 			return new MethodCTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "end" then
-			SpecialFlg = (lkahead::Value == "set") or (lkahead::Value == "get")
+			SpecialFlg = (lkahead::Value == "set") or (lkahead::Value == "get") or (lkahead::Value == "add") or (lkahead::Value == "remove")
 			return new EndTok() {Line = tok::Line, Value = tok::Value}
 		elseif (tok::Value = "set") and (isFirstToken or SpecialFlg) then
 			SpecialFlg = false
@@ -290,9 +290,11 @@ class public auto ansi TokenOptimizer
 		elseif (tok::Value = "get") and (isFirstToken or SpecialFlg) then
 			SpecialFlg = false
 			return new GetTok() {Line = tok::Line, Value = tok::Value}
-		elseif (tok::Value = "add") and isFirstToken then
+		elseif (tok::Value = "add") and (isFirstToken or SpecialFlg) then
+			SpecialFlg = false
 			return new AddTok() {Line = tok::Line, Value = tok::Value}
-		elseif (tok::Value = "remove")  and isFirstToken then
+		elseif (tok::Value = "remove")  and (isFirstToken or SpecialFlg) then
+			SpecialFlg = false
 			return new RemoveTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "return" then
 			return new ReturnTok() {Line = tok::Line, Value = tok::Value}
@@ -442,7 +444,7 @@ class public auto ansi TokenOptimizer
 			return new SByteLiteral($sbyte$tok::Value::TrimEnd(new char[] {'b'})) {Line = tok::Line}
 		elseif (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$") then
 			return new IntLiteral($integer$tok::Value) {Line = tok::Line}
-		elseif (tok::Value like "^([a-zA-Z])+(.)*$") or (tok::Value like "^_(.)*([a-zA-Z])+(.)*$") or (tok::Value like "^::(.)*([a-zA-Z])+(.)*$") then
+		elseif (tok::Value like "^([a-zA-Z])+(.)*$") or (tok::Value like "^_(.)+$") or (tok::Value like "^::([a-zA-Z])+(.)*$") or (tok::Value like "^::_(.)+$") then
 			return new Ident(tok::Value) {Line = tok::Line}
 		end if
 		

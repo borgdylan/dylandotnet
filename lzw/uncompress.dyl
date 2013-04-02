@@ -25,7 +25,7 @@ class public auto ansi Decompressor
 		var c as char = c'\0'
 		do while c < c'\x0100'
 			Dict::Add($ushort$c,$string$c)
-			c = c + c'\x01'			
+			c++	
 		end do
 	end method
 	
@@ -49,7 +49,7 @@ class public auto ansi Decompressor
 			var ba as BitArray = new BitArray(new integer[] {$integer$br::ReadByte()})
 			i = 8
 			do until i = 0
-				i = i - 1
+				i--
 				BQ::Enqueue(ba::get_Item(i))
 			end do
 		end do
@@ -58,16 +58,16 @@ class public auto ansi Decompressor
 		var ll as IStack<of boolean> = new LinkedList<of boolean>()
 		i = 0
 		do until i = n
-			i = i + 1
+			i++
 			ll::Push(BQ::Dequeue())
 		end do
 		//convert the 8 bit pattern to an unsigned 16 bit number
 		var b as ushort = 0us
 		i = -1
 		do until i = (n - 1)
-			i = i + 1
+			i++
 			if ll::Pop() then
-				b = b + Convert::ToUInt16(1 << i)
+				b = b + $ushort$#expr(1 << i)
 			end if
 		end do
 		
@@ -109,17 +109,17 @@ class public auto ansi Decompressor
 				//append char
 				buf::Append(s)
 				
-				if ValExists(buf::ToString()) = false then
+				if !ValExists(buf::ToString()) then
 					//temporary string
 					var tmps as string = buf::ToString()
 					//if dictionary can take more entries
 					//add a new entry
 					if cnt < ushort::MaxValue then
 						//compute next code
-						cnt = cnt + 1us
+						cnt++
 						//increase code size if needed
-						if $integer$Math::Ceiling(Math::Log($double$cnt + 1d,2d)) != cdsz then
-							cdsz = cdsz + 1
+						if $integer$Math::Ceiling(Math::Log(++$double$cnt,2d)) != cdsz then
+							cdsz++
 						end if
 						//actually add a dictionary entry
 						Dict::Add(cnt,tmps)
@@ -127,7 +127,7 @@ class public auto ansi Decompressor
 					
 					//reset buffer and add last buffer char to it
 					buf = new StringBuilder()
-					buf::Append(tmps::get_Chars(tmps::get_Length() - 1))
+					buf::Append(tmps::get_Chars(--tmps::get_Length()))
 					
 				end if 
 			end for

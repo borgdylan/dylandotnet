@@ -1024,7 +1024,7 @@ class public auto ansi ExprOptimizer
 						end if
 					end if
 					StreamUtils::WriteLine(string::Empty)
-					StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Expected a '{' after a '#ternary'!")
+					StreamUtils::WriteError(exp::Line, PFlags::CurPath, c"\nExpected a '{' after a '#ternary'!")
 					goto fin
 				end if
 				
@@ -1044,7 +1044,7 @@ class public auto ansi ExprOptimizer
 						end if 
 					end if
 					StreamUtils::WriteLine(string::Empty)
-					StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Expected a '(' after a '#expr'!")
+					StreamUtils::WriteError(exp::Line, PFlags::CurPath, c"\nExpected a '(' after a '#expr'!")
 					goto fin
 				end if
 

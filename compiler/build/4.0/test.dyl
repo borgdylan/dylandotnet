@@ -1,6 +1,6 @@
 #refstdasm "mscorlib.dll"
 #refstdasm "System.Xml.dll"
-#refasm "4.0/dnc.exe"
+#refasm "dnc.exe"
 //#refasm "dnr.dll"
 //#refasm "tests/protectedtests.exe"
 //#refasm "tokenizer.Lexer.dll"
@@ -34,8 +34,8 @@ ver 1.3.0.0
 class public auto ansi Program
 
 	method public static void main()
-		Environment::set_CurrentDirectory("/var/www/Code/dylannet/dylandotnet/compiler/templateproj")
-		var arr as string[] = new string[] {"template.dyl"}
+		Environment::set_CurrentDirectory("/var/www/Code/dylannet/mvctest")
+		var arr as string[] = new string[] {"mvctest.dyl"}
 		Program::Invoke(arr)
 		//var t as Task = Program::InvokeAsync(arr)
 		//Console::ReadLine()

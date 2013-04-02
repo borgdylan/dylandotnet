@@ -31,7 +31,7 @@ class public auto ansi EventAddStmt extends Stmt
 
 	method public void EventAddStmt()
 		me::ctor()
-		Adder = new Ident()
+		Adder = null
 	end method
 
 end class
@@ -42,7 +42,7 @@ class public auto ansi EventRemoveStmt extends Stmt
 
 	method public void EventRemoveStmt()
 		me::ctor()
-		Remover = new Ident()
+		Remover = null
 	end method
 
 end class
@@ -50,5 +50,17 @@ end class
 class public auto ansi EndEventStmt extends Stmt
 	method public hidebysig virtual string ToString()
 		return "end event"
+	end method
+end class
+
+class public auto ansi EndAddStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end add"
+	end method
+end class
+
+class public auto ansi EndRemoveStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end remove"
 	end method
 end class

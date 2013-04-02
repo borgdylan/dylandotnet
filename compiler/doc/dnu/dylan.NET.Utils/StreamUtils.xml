@@ -53,14 +53,6 @@
       <MemberSignature Language="C#" Value="public static event Action&lt;dylan.NET.Utils.CompilerMsg&gt; ErrorH;" />
       <MemberSignature Language="ILAsm" Value=".event class System.Action`1&lt;class dylan.NET.Utils.CompilerMsg&gt; ErrorH" />
       <MemberType>Event</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>add: System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>remove: System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Action&lt;dylan.NET.Utils.CompilerMsg&gt;</ReturnType>
       </ReturnValue>
@@ -231,14 +223,6 @@
       <MemberSignature Language="C#" Value="public static event Action&lt;dylan.NET.Utils.CompilerMsg&gt; WarnH;" />
       <MemberSignature Language="ILAsm" Value=".event class System.Action`1&lt;class dylan.NET.Utils.CompilerMsg&gt; WarnH" />
       <MemberType>Event</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>add: System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>remove: System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Action&lt;dylan.NET.Utils.CompilerMsg&gt;</ReturnType>
       </ReturnValue>

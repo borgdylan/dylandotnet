@@ -31,9 +31,11 @@ class public auto ansi StmtReader
 				oarr[i] = Helpers::LiteralToConst(lit)
 			elseif param::Tokens::get_Item(0) is Ident then
 				var idtnamarr as string[] = ParseUtils::StringParser(#expr($Ident$param::Tokens::get_Item(0))::Value, ":")
-				if Loader::FldLitFlag and (Helpers::GetExtFld(Helpers::CommitEvalTTok(new TypeTok(idtnamarr[0])), idtnamarr[1]) != null) then
-					tarr[i] = Loader::FldLitTyp
-					oarr[i] = Loader::FldLitVal
+				if  Helpers::GetExtFld(Helpers::CommitEvalTTok(new TypeTok(idtnamarr[0])), idtnamarr[1]) != null then
+					if Loader::FldLitFlag then
+						tarr[i] = Loader::FldLitTyp
+						oarr[i] = Loader::FldLitVal
+					end if
 				end if
 			elseif param::Tokens::get_Item(0) is GettypeCallTok then
 				tarr[i] = ILEmitter::Univ::Import(gettype Type)
@@ -74,11 +76,13 @@ class public auto ansi StmtReader
 				end if
 			elseif curpair::ValueExpr::Tokens::get_Item(0) is Ident then
 				var idtnamarr2 as string[] = ParseUtils::StringParser(#expr($Ident$curpair::ValueExpr::Tokens::get_Item(0))::Value, ":")
-				if Loader::FldLitFlag and (Helpers::GetExtFld(Helpers::CommitEvalTTok(new TypeTok(idtnamarr2[0])), idtnamarr2[1]) != null) then
-					if multflg then
-						poarr::Add(Loader::FldLitVal)
-					else
-						foarr::Add(Loader::FldLitVal)
+				if Helpers::GetExtFld(Helpers::CommitEvalTTok(new TypeTok(idtnamarr2[0])), idtnamarr2[1]) != null then
+					if Loader::FldLitFlag then
+						if multflg then
+							poarr::Add(Loader::FldLitVal)
+						else
+							foarr::Add(Loader::FldLitVal)
+						end if
 					end if
 				end if
 			elseif curpair::ValueExpr::Tokens::get_Item(0) is GettypeCallTok then
@@ -842,7 +846,7 @@ class public auto ansi StmtReader
 		elseif stm is PropertyStmt then
 			var prss as PropertyStmt = $PropertyStmt$stm
 			var ptyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(prss::PropertyTyp)
-			AsmFactory::CurnExplImplType = String::Empty
+			AsmFactory::CurnExplImplType = string::Empty
 			
 			if ptyp = null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + prss::PropertyTyp::Value + "' is not defined.")
@@ -855,7 +859,7 @@ class public auto ansi StmtReader
 			if prssnamarr::get_Count() > 1 then
 				propoverldnam = prssnamarr::get_Last()
 				propnam = propoverldnam
-				typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", prssnamarr::View(0,--prssnamarr::get_Count())::ToArray())))
+				typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", prssnamarr::View(0,--prssnamarr::get_Count())::ToArray())))
 				AsmFactory::CurnExplImplType = typ::ToString()
 				prssnamstr = typ::ToString() + "." + propoverldnam
 			end if
@@ -878,8 +882,8 @@ class public auto ansi StmtReader
 			var prgs as PropertyGetStmt = $PropertyGetStmt$stm
 			
 			if prgs::Getter != null then
-				if AsmFactory::CurnExplImplType::get_Length() > 0 then
-					prgs::Getter::Value = AsmFactory::CurnExplImplType + "." + prgs::Getter::Value
+				if SymTable::CurnProp::ExplImplType::get_Length() > 0 then
+					prgs::Getter::Value = SymTable::CurnProp::ExplImplType + "." + prgs::Getter::Value
 				end if
 				
 				var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prgs::Getter::Value, IKVM.Reflection.Type::EmptyTypes)
@@ -892,7 +896,7 @@ class public auto ansi StmtReader
 				StreamUtils::WriteLine(prgs::Getter::Value)
 			else
 				var cprop = SymTable::CurnProp
-				var metname = #ternary{AsmFactory::CurnExplImplType::get_Length() > 0 ? AsmFactory::CurnExplImplType + ".get_", "get_"}  + cprop::Name
+				var metname = #ternary{cprop::ExplImplType::get_Length() > 0 ? cprop::ExplImplType + ".get_", "get_"}  + cprop::Name
 				Read(new MethodStmt() {MethodName = new Ident(metname), RetTyp = new TypeTok(cprop::PropertyTyp), Line = prgs::Line, _
 					 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}},fpath)
 				cprop::PropertyBldr::SetGetMethod(AsmFactory::CurnMetB)
@@ -902,13 +906,13 @@ class public auto ansi StmtReader
 		elseif stm is PropertySetStmt then
 			var prss as PropertySetStmt = $PropertySetStmt$stm
 			if prss::Setter != null then
-				if AsmFactory::CurnExplImplType::get_Length() > 0 then
-					prss::Setter::Value = AsmFactory::CurnExplImplType + "." + prss::Setter::Value
+				if SymTable::CurnProp::ExplImplType::get_Length() > 0 then
+					prss::Setter::Value = SymTable::CurnProp::ExplImplType + "." + prss::Setter::Value
 				end if
 				
-				var mb2 as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, new IKVM.Reflection.Type[] {SymTable::CurnProp::PropertyTyp})
-				if mb2 != null then
-					AsmFactory::CurnPropB::SetSetMethod(mb2)
+				var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, new IKVM.Reflection.Type[] {SymTable::CurnProp::PropertyTyp})
+				if mb != null then
+					AsmFactory::CurnPropB::SetSetMethod(mb)
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + prss::Setter::Value + "' with the required signature is not defined.")
 				end if
@@ -916,7 +920,7 @@ class public auto ansi StmtReader
 				StreamUtils::WriteLine(prss::Setter::Value)
 			else
 				var cprop = SymTable::CurnProp
-				var metname = #ternary{AsmFactory::CurnExplImplType::get_Length() > 0 ? AsmFactory::CurnExplImplType + ".set_", "set_"}  + cprop::Name
+				var metname = #ternary{cprop::ExplImplType::get_Length() > 0 ? cprop::ExplImplType + ".set_", "set_"}  + cprop::Name
 				var mets = new MethodStmt() {MethodName = new Ident(metname), RetTyp = new VoidTok(), Line = prss::Line,  _
 					 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}}
 				mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cprop::PropertyTyp)})
@@ -925,16 +929,30 @@ class public auto ansi StmtReader
 			end if
 		elseif stm is EndSetStmt then
 			Read(new EndMethodStmt() {Line = stm::Line}, fpath)
-		elseif stm is EndPropStmt then
+		elseif (stm is EndPropStmt) or (stm is EndEventStmt) then
 		elseif stm is EventStmt then
 			var evss as EventStmt = $EventStmt$stm
 			var etyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(evss::EventTyp)
+			AsmFactory::CurnExplImplType = string::Empty
 			
 			if etyp = null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + evss::EventTyp::Value + "' is not defined.")
 			end if
 			
-			AsmFactory::CurnEventB = AsmFactory::CurnTypB::DefineEvent(evss::EventName::Value,Helpers::ProcessEventAttrs(evss::Attrs), etyp)
+			var evssnamstr as string = evss::EventName::Value
+			var evssnamarr as C5.IList<of string> = ParseUtils::StringParserL(evssnamstr, ".")
+			var evoverldnam as string = string::Empty
+			var evnam = evssnamstr
+			if evssnamarr::get_Count() > 1 then
+				evoverldnam = evssnamarr::get_Last()
+				evnam = evoverldnam
+				typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", evssnamarr::View(0,--evssnamarr::get_Count())::ToArray())))
+				AsmFactory::CurnExplImplType = typ::ToString()
+				evssnamstr = typ::ToString() + "." + evoverldnam
+			end if
+			
+			AsmFactory::CurnEventB = AsmFactory::CurnTypB::DefineEvent(evssnamstr,EventAttributes::None, etyp)
+			SymTable::CurnEvent = new EventItem(evnam, etyp, AsmFactory::CurnEventB, evss::Attrs, AsmFactory::CurnExplImplType)
 			AsmFactory::CurnEventType = etyp
 			
 			Helpers::ApplyEventAttrs()
@@ -950,25 +968,58 @@ class public auto ansi StmtReader
 			StreamUtils::WriteLine(evss::EventName::Value)
 		elseif stm is EventAddStmt then
 			var evas as EventAddStmt = $EventAddStmt$stm
-			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Adder::Value, new IKVM.Reflection.Type[] {AsmFactory::CurnEventType})
-			if mb != null then
-				AsmFactory::CurnEventB::SetAddOnMethod(mb)
+			
+			if evas::Adder != null then
+				if SymTable::CurnEvent::ExplImplType::get_Length() > 0 then
+					evas::Adder::Value = SymTable::CurnEvent::ExplImplType + "." + evas::Adder::Value
+				end if
+				
+				var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Adder::Value, new IKVM.Reflection.Type[] {SymTable::CurnEvent::EventTyp})
+				if mb != null then
+					AsmFactory::CurnEventB::SetAddOnMethod(mb)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + evas::Adder::Value + "' with the required signature is not defined.")
+				end if
+				StreamUtils::Write("		Setting Event Adder: ")
+				StreamUtils::WriteLine(evas::Adder::Value)
 			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + evas::Adder::Value + "' with the required signature is not defined.")
+				var cevent = SymTable::CurnEvent
+				var metname = #ternary{cevent::ExplImplType::get_Length() > 0 ? cevent::ExplImplType + ".add_", "add_"}  + cevent::Name
+				var mets = new MethodStmt() {MethodName = new Ident(metname), RetTyp = new VoidTok(), Line = evas::Line,  _
+					 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cevent::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}}
+				mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cevent::EventTyp)})
+				Read(mets,fpath)
+				cevent::EventBldr::SetAddOnMethod(AsmFactory::CurnMetB)
 			end if
-			StreamUtils::Write("		Setting Event Adder: ")
-			StreamUtils::WriteLine(evas::Adder::Value)
+		elseif stm is EndAddStmt then
+			Read(new EndMethodStmt() {Line = stm::Line}, fpath)
 		elseif stm is EventRemoveStmt then
 			var evas as EventRemoveStmt = $EventRemoveStmt$stm
-			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Remover::Value, new IKVM.Reflection.Type[] {AsmFactory::CurnEventType})
-			if mb != null then
-				AsmFactory::CurnEventB::SetRemoveOnMethod(mb)
+			
+			if evas::Remover != null then
+				if SymTable::CurnEvent::ExplImplType::get_Length() > 0 then
+					evas::Remover::Value = SymTable::CurnEvent::ExplImplType + "." + evas::Remover::Value
+				end if
+				
+				var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Remover::Value, new IKVM.Reflection.Type[] {SymTable::CurnEvent::EventTyp})
+				if mb != null then
+					AsmFactory::CurnEventB::SetRemoveOnMethod(mb)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + evas::Remover::Value + "' with the required signature is not defined.")
+				end if
+				StreamUtils::Write("		Setting Event Remover: ")
+				StreamUtils::WriteLine(evas::Remover::Value)
 			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + evas::Remover::Value + "' with the required signature is not defined.")
+				var cevent = SymTable::CurnEvent
+				var metname = #ternary{cevent::ExplImplType::get_Length() > 0 ? cevent::ExplImplType + ".remove_", "remove_"}  + cevent::Name
+				var mets = new MethodStmt() {MethodName = new Ident(metname), RetTyp = new VoidTok(), Line = evas::Line,  _
+					 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cevent::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}}
+				mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cevent::EventTyp)})
+				Read(mets,fpath)
+				cevent::EventBldr::SetRemoveOnMethod(AsmFactory::CurnMetB)
 			end if
-			StreamUtils::Write("		Setting Event Remover: ")
-			StreamUtils::WriteLine(evas::Remover::Value)
-		elseif stm is EndEventStmt then
+		elseif stm is EndRemoveStmt then
+			Read(new EndMethodStmt() {Line = stm::Line}, fpath)
 		elseif stm is PropertyAttrStmt then
 			SymTable::AddPropCA(AttrStmtToCAB($PropertyAttrStmt$stm))
 		elseif stm is EventAttrStmt then

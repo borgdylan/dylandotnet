@@ -22,12 +22,11 @@ class public auto ansi Parser
 
 	method public StmtSet Parse(var stms as StmtSet)
 		var i as integer = -1
-		var so as StmtOptimizer = null
+		var so as StmtOptimizer = new StmtOptimizer(PFlags)
 		PFlags::CurPath = stms::Path
 		
 		do until i >= (--stms::Stmts::get_Count())
 			i++
-			so = new StmtOptimizer(PFlags)
 			var cs as Stmt = stms::Stmts::get_Item(i)
 			
 			do while cs::Tokens::get_Item(--cs::Tokens::get_Count())::Value == "_"
