@@ -436,12 +436,12 @@ class public auto ansi Program
 			Thread::Sleep(500)
 		end do
 		
-		foreach dt in tl
-			Console::WriteLine(dt::ToString())
+		foreach dt as string in tl
+			Console::WriteLine(dt)
 		end for
 		Console::WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~")
-		foreach dt in tl::Backwards()::GetEnumerator()
-			Console::WriteLine(dt::ToString())
+		foreach dt as string in tl::Backwards()::GetEnumerator()
+			Console::WriteLine(dt)
 		end for
 		
 	end method
@@ -532,7 +532,7 @@ class public auto ansi Program
 //		typ = gettype Func<of IEnumerable<of XElement> >
 //		var xc as integer = ROTest::X
 //		//ROTest::X = xc + 12
-//		foreachtests()
+		foreachtests()
 //		Console::WriteLine("asdf" is List<of object>)
 //		Console::WriteLine(("asdf" as List<of object>)  != null)
 //		Console::WriteLine("asdf" is string)

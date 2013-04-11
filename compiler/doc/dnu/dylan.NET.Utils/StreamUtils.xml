@@ -296,6 +296,31 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="WriteErrorLine">
+      <MemberSignature Language="C#" Value="public static void WriteErrorLine (int line, string file, string msg);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void WriteErrorLine(int32 line, string file, string msg) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="line" Type="System.Int32" />
+        <Parameter Name="file" Type="System.String" />
+        <Parameter Name="msg" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="line">To be added.</param>
+        <param name="file">To be added.</param>
+        <param name="msg">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="WriteLine">
       <MemberSignature Language="C#" Value="public static void WriteLine (string str);" />
       <MemberSignature Language="ILAsm" Value=".method public static void WriteLine(string str) cil managed" />

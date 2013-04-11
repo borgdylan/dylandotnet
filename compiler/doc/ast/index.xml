@@ -75,6 +75,7 @@
       <Type Name="FieldStmt" Kind="Class" />
       <Type Name="FinallyStmt" Kind="Class" />
       <Type Name="ForeachStmt" Kind="Class" />
+      <Type Name="ForStmt" Kind="Class" />
       <Type Name="GotoStmt" Kind="Class" />
       <Type Name="HCondCompStmt" Kind="Class" />
       <Type Name="HDefineStmt" Kind="Class" />
@@ -135,6 +136,7 @@
       <Type Name="DelegateTok" Kind="Class" />
       <Type Name="DllTok" Kind="Class" />
       <Type Name="DoTok" Kind="Class" />
+      <Type Name="DowntoTok" Kind="Class" />
       <Type Name="ElseIfTok" Kind="Class" />
       <Type Name="ElseTok" Kind="Class" />
       <Type Name="EndTok" Kind="Class" />
@@ -202,6 +204,7 @@
       <Type Name="ReturnTok" Kind="Class" />
       <Type Name="ScopeTok" Kind="Class" />
       <Type Name="SetTok" Kind="Class" />
+      <Type Name="StepTok" Kind="Class" />
       <Type Name="StructTok" Kind="Class" />
       <Type Name="SwitchTok" Kind="Class" />
       <Type Name="TernaryCallTok" Kind="Class" />
@@ -211,6 +214,7 @@
       <Type Name="Token" Kind="Class" />
       <Type Name="TryTok" Kind="Class" />
       <Type Name="UntilTok" Kind="Class" />
+      <Type Name="UptoTok" Kind="Class" />
       <Type Name="ValInRefTok" Kind="Class" />
       <Type Name="VarTok" Kind="Class" />
       <Type Name="VerTok" Kind="Class" />

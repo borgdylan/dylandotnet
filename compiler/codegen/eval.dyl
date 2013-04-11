@@ -1133,15 +1133,12 @@ class public auto ansi beforefieldinit Evaluator
 
 	method public void Evaluate(var exp as Expr)
 		var asttok as Token = ConvToAST(ConvToRPN(exp))
-		//Helpers::NullExprFlg = asttok is NullLiteral
 		ASTEmit(asttok, false)
 		ASTEmit(asttok, true)
 	end method
 	
 	method public IKVM.Reflection.Type EvaluateType(var exp as Expr)
-		var asttok as Token = ConvToAST(ConvToRPN(exp))
-		//Helpers::NullExprFlg = asttok is NullLiteral
-		ASTEmit(asttok, false)
+		ASTEmit(ConvToAST(ConvToRPN(exp)), false)
 		return AsmFactory::Type02
 	end method
 
@@ -1385,16 +1382,18 @@ class public auto ansi beforefieldinit Evaluator
 				return EvaluateHIf(o::LChild) or EvaluateHIf(o::RChild)
 			elseif o is AndOp then
 				return EvaluateHIf(o::LChild) and EvaluateHIf(o::RChild)
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The operator '" + o::ToString() + "' is not supported when using #if and #elseif.")
 			end if
-			//FIXME
 		elseif rt is Ident then
 			var b = SymTable::EvalDef(rt::Value)
 			return #ternary{#expr($Ident$rt)::get_DoNeg() ? !b, b}
 		elseif rt is BooleanLiteral then
 			var bl as BooleanLiteral = $BooleanLiteral$rt
 			return #ternary{bl::get_DoNeg() ? !bl::BoolVal, bl::BoolVal}
+		else
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Tokens of type '" + rt::GetType()::ToString() + "' are not supported when using #if and #elseif.")
 		end if
-		//FIXME
 		return false
 	end method
 	

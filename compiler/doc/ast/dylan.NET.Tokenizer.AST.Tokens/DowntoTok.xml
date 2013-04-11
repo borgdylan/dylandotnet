@@ -1,0 +1,41 @@
+<Type Name="DowntoTok" FullName="dylan.NET.Tokenizer.AST.Tokens.DowntoTok">
+  <TypeSignature Language="C#" Value="public class DowntoTok : dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi DowntoTok extends dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public DowntoTok ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

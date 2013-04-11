@@ -603,7 +603,7 @@ class public auto ansi StmtReader
 			var curv as VarStmt = $VarStmt$stm
 			vtyp = Helpers::CommitEvalTTok(curv::VarTyp)
 			if vtyp = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curv::VarTyp::Value + "' is not defined.")
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curv::VarTyp::ToString() + "' is not defined.")
 			end if
 			ILEmitter::DeclVar(curv::VarName::Value, vtyp)
 			ILEmitter::LocInd = ++ILEmitter::LocInd
@@ -612,7 +612,7 @@ class public auto ansi StmtReader
 			var curva as VarAsgnStmt = $VarAsgnStmt$stm
 			vtyp = Helpers::CommitEvalTTok(curva::VarTyp)
 			if vtyp = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curva::VarTyp::Value + "' is not defined.")
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curva::VarTyp::ToString() + "' is not defined.")
 			end if
 			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
 			ILEmitter::LocInd = ++ILEmitter::LocInd
@@ -785,10 +785,15 @@ class public auto ansi StmtReader
 			SymTable::PushScope()
 			new Evaluator()::Evaluate(festm::Exp)
 			var mtds as MethodInfo[] = Helpers::ProcessForeach(AsmFactory::Type02)
+			var ttu = Helpers::CommitEvalTTok(festm::Typ)
+			if (ttu == null) and (festm::Typ != null) then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + festm::Typ::ToString() + "' is not defined.")
+			end if
+			var ttu2 as IKVM.Reflection.Type
 			if mtds != null then
 				ILEmitter::EmitCallvirt(mtds[0])
-				ILEmitter::DeclVar(String::Empty, mtds[0]::get_ReturnType())
-				ILEmitter::LocInd = ++ILEmitter::LocInd
+				ILEmitter::DeclVar(string::Empty, mtds[0]::get_ReturnType())
+				ILEmitter::LocInd++
 				var ien as integer = ILEmitter::LocInd
 				ILEmitter::EmitStloc(ien)
 				SymTable::AddLoop()
@@ -796,17 +801,21 @@ class public auto ansi StmtReader
 				ILEmitter::EmitLdloc(ien)
 				ILEmitter::EmitCallvirt(mtds[1])
 				ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
-				ILEmitter::DeclVar(festm::Iter::Value, mtds[2]::get_ReturnType())
-				ILEmitter::LocInd = ++ILEmitter::LocInd
-				SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, mtds[2]::get_ReturnType(), ILEmitter::LineNr)
+				ttu2 = #ternary {ttu == null ? mtds[2]::get_ReturnType(), ttu}
+				ILEmitter::DeclVar(festm::Iter::Value, ttu2)
+				ILEmitter::LocInd++
+				SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, ttu2, ILEmitter::LineNr)
 				ILEmitter::EmitLdloc(ien)
 				ILEmitter::EmitCallvirt(mtds[2])
+				if ttu != null then
+					Helpers::EmitConv(mtds[2]::get_ReturnType(), ttu)
+				end if
 				ILEmitter::EmitStloc(ILEmitter::LocInd)
 			else
 				mtds = Helpers::ProcessForeach2(AsmFactory::Type02)
 				if mtds != null then
-					ILEmitter::DeclVar(String::Empty, AsmFactory::Type02)
-					ILEmitter::LocInd = ++ILEmitter::LocInd
+					ILEmitter::DeclVar(string::Empty, AsmFactory::Type02)
+					ILEmitter::LocInd++
 					var ien as integer = ILEmitter::LocInd
 					ILEmitter::EmitStloc(ien)
 					SymTable::AddLoop()
@@ -814,11 +823,15 @@ class public auto ansi StmtReader
 					ILEmitter::EmitLdloc(ien)
 					ILEmitter::EmitCallvirt(mtds[0])
 					ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
-					ILEmitter::DeclVar(festm::Iter::Value, mtds[1]::get_ReturnType())
-					ILEmitter::LocInd = ++ILEmitter::LocInd
-					SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, mtds[1]::get_ReturnType(), ILEmitter::LineNr)
+					ttu2 = #ternary {ttu == null ? mtds[1]::get_ReturnType(), ttu}
+					ILEmitter::DeclVar(festm::Iter::Value, ttu2)
+					ILEmitter::LocInd++
+					SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, ttu2, ILEmitter::LineNr)
 					ILEmitter::EmitLdloc(ien)
 					ILEmitter::EmitCallvirt(mtds[1])
+					if ttu != null then
+						Helpers::EmitConv(mtds[1]::get_ReturnType(), ttu)
+					end if
 					ILEmitter::EmitStloc(ILEmitter::LocInd)
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class " + AsmFactory::Type02::ToString() + " is not an IEnumerable/IEnumerator or IEnumerable<of T>/IEnumerator<of T>.")

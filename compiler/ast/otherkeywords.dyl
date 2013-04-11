@@ -481,6 +481,30 @@ class public auto ansi ForTok extends Token
 
 end class
 
+class public auto ansi UptoTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "upto"
+	end method
+
+end class
+
+class public auto ansi DowntoTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "downto"
+	end method
+
+end class
+
+class public auto ansi StepTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "step"
+	end method
+
+end class
+
 class public auto ansi ForeachTok extends Token
 
 	method public hidebysig virtual string ToString()

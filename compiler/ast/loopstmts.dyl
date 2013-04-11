@@ -32,11 +32,34 @@ class public auto ansi ForeachStmt extends Stmt
 
 	field public Expr Exp
 	field public Ident Iter
+	field public TypeTok Typ
 
 	method public void ForeachStmt()
 		me::ctor()
 		Exp = new Expr()
 		Iter = new Ident()
+		Typ = null
+	end method
+
+end class
+
+class public auto ansi ForStmt extends Stmt
+
+	field public Expr StartExp
+	field public Expr EndExp
+	field public Expr StepExp
+	field public Ident Iter
+	field public TypeTok Typ
+	field public boolean Direction
+
+	method public void ForStmt()
+		me::ctor()
+		StartExp = new Expr()
+		EndExp = new Expr()
+		Iter = new Ident()
+		Typ = null
+		StepExp = null
+		Direction = true
 	end method
 
 end class

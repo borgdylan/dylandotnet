@@ -167,6 +167,21 @@ class public auto ansi static StreamUtils
 		end if
 	end method
 	
+	[method: ComVisible(false)]
+	method public static void WriteErrorLine(var line as integer, var file as string, var msg as string)
+		WriteLine(c"\nERROR: " + msg + " at line " + $string$line + " in file: " + file)
+		if _ErrorH != null then
+			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
+		end if
+		if TerminateOnError then
+			CloseInS()
+			CloseOutS()
+			Environment::Exit(1)
+		else
+			throw new ErrorException()
+		end if
+	end method
+	
 	#if RX and NET_4_5 then
 	
 		[method: ComVisible(false)]

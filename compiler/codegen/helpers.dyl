@@ -420,6 +420,11 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.Type CommitEvalTTok(var tt as TypeTok)
+		
+		if tt == null then
+			return null
+		end if
+		
 		var typ as IKVM.Reflection.Type
 		var temptyp as IKVM.Reflection.Type
 		var gtt as GenericTypeTok

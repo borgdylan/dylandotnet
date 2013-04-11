@@ -186,9 +186,17 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value = "do" then
 			return new DoTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "for" then
+			PFlags::AsFlag = true
 			return new ForTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "foreach" then
+			PFlags::AsFlag = true
 			return new ForeachTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "upto" then
+			return new UptoTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "downto" then
+			return new DowntoTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "step" then
+			return new StepTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "break" then
 			return new BreakTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "continue" then
@@ -314,6 +322,7 @@ class public auto ansi TokenOptimizer
 			return new OfTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "in" then
 			PFlags::IfFlag = true
+			PFlags::AsFlag = false
 			return new InTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "out" then
 			return new OutTok() {Line = tok::Line, Value = tok::Value}

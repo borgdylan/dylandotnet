@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="parser/tokenoptimizer.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
     <Files>
       <File FileName="ast/ident.dyl" Line="120" Column="14" />
       <File FileName="ast/methodnametok.dyl" Line="100" Column="14" />
@@ -8,23 +8,24 @@
       <File FileName="cflags.dyl.in" Line="10" Column="1" />
       <File FileName="dev/nuget2dn.dyl" Line="137" Column="17" />
       <File FileName="tests/helloworld.dyl" Line="23" Column="1" />
-      <File FileName="codegen/eval.dyl" Line="62" Column="13" />
-      <File FileName="dnu/streamu.dyl" Line="148" Column="31" />
-      <File FileName="parser/stmtoptimizer.dyl" Line="569" Column="12" />
+      <File FileName="codegen/eval.dyl" Line="1396" Column="9" />
+      <File FileName="dnu/streamu.dyl" Line="175" Column="9" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="209" Column="11" />
       <File FileName="parser/parser.dyl" Line="33" Column="21" />
       <File FileName="ast/propstmt.dyl" Line="66" Column="10" />
       <File FileName="ast/eventstmt.dyl" Line="64" Column="21" />
       <File FileName="ast/interfaces.dyl" Line="1" Column="1" />
-      <File FileName="codegen/stmtreader.dyl" Line="1008" Column="36" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="306" Column="18" />
+      <File FileName="codegen/stmtreader.dyl" Line="817" Column="35" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="197" Column="65" />
       <File FileName="codegen/propertyitem.dyl" Line="41" Column="1" />
       <File FileName="codegen/eventitem.dyl" Line="27" Column="13" />
       <File FileName="tokenizer.CodeGen.dyl" Line="80" Column="25" />
       <File FileName="codegen/symtable.dyl" Line="176" Column="24" />
-      <File FileName="templateproj/template.dyl" Line="471" Column="6" />
+      <File FileName="templateproj/template.dyl" Line="522" Column="22" />
       <File FileName="dnc/Program.dyl" Line="56" Column="4" />
-      <File FileName="codegen/helpers.dyl" Line="1" Column="1" />
-      <File FileName="parser/exproptimizer.dyl" Line="1024" Column="13" />
+      <File FileName="codegen/helpers.dyl" Line="426" Column="5" />
+      <File FileName="parser/exproptimizer.dyl" Line="1026" Column="98" />
+      <File FileName="ast/otherkeywords.dyl" Line="489" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -38,13 +39,13 @@
             <Node name="dnu" expanded="True" />
             <Node name="lexer" expanded="True" />
             <Node name="m4" expanded="True" />
-            <Node name="parser" expanded="True">
-              <Node name="tokenoptimizer.dyl" selected="True" />
-            </Node>
+            <Node name="parser" expanded="True" />
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>
-          <Node name="template" expanded="True" />
+          <Node name="template" expanded="True">
+            <Node name="template.dyl" selected="True" />
+          </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">

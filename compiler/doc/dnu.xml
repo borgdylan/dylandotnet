@@ -240,6 +240,13 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Utils.StreamUtils.WriteErrorLine">
+            <param name="line">To be added.</param>
+            <param name="file">To be added.</param>
+            <param name="msg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Utils.StreamUtils.WriteLine">
             <param name="str">To be added.</param>
             <summary>To be added.</summary>

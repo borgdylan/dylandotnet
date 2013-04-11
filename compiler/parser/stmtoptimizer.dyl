@@ -190,15 +190,33 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkForeach(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is ForeachTok
 		if b then
-			var exp as Expr = new Expr()
+			var iter = stm::Tokens::get_Item(1) as Ident
+			if iter == null then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an identifier after a 'foreach'!")
+			end if
+			
+			var exp as Expr = new Expr() {Line = stm::Line}
 			var i as integer = 2
+			var typ as TypeTok = null
+			
+			if stm::Tokens::get_Item(i) is InTok then
+			elseif stm::Tokens::get_Item(i) is AsTok then
+				stm::Tokens = new ExprOptimizer()::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)::Tokens
+				typ = $TypeTok$stm::Tokens::get_Item(3)
+				i = 4
+				if !#expr(stm::Tokens::get_Item(i) is InTok) then
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an 'in' after 'as <type>' instead of '" + stm::Tokens::get_Item(i)::Value + "'!")
+				end if
+			else 
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an 'as' or an 'in' instead of '" + stm::Tokens::get_Item(i)::Value + "'!")
+			end if
 			
 			do until i = --stm::Tokens::get_Count() 
 				i++
 				exp::AddToken(stm::Tokens::get_Item(i))	
 			end do
 			
-			return new ForeachStmt() {Line = stm::Line, Tokens = stm::Tokens, Iter = $Ident$stm::Tokens::get_Item(1), Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
+			return new ForeachStmt() {Line = stm::Line, Tokens = stm::Tokens, Iter = iter, Typ = typ, Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
 		end if
 		
 		return null

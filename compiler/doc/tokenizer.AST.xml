@@ -525,6 +525,38 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.ForeachStmt.Typ">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.ForStmt..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.ForStmt.Direction">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.ForStmt.EndExp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.ForStmt.Iter">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.ForStmt.StartExp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.ForStmt.StepExp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Stmts.ForStmt.Typ">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Stmts.GotoStmt..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1166,6 +1198,15 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.DoTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.DowntoTok..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.DowntoTok.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -2141,6 +2182,15 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.StepTok..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.StepTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.StructTok..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -2238,6 +2288,15 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.AST.Tokens.UntilTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.UptoTok..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.AST.Tokens.UptoTok.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
