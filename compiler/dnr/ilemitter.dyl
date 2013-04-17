@@ -14,6 +14,7 @@ class public auto ansi static ILEmitter
 	field public static ISymbolDocumentWriter DocWriter
 	field public static boolean StaticFlg
 	field public static boolean AbstractFlg
+	field public static boolean AbstractCFlg
 	field public static boolean StructFlg
 	field public static boolean InterfaceFlg
 	field public static boolean PartialFlg
@@ -36,6 +37,7 @@ class public auto ansi static ILEmitter
 		ILGen = null
 		StaticFlg = false
 		AbstractFlg = false
+		AbstractCFlg = false
 		StructFlg = false
 		InterfaceFlg = false
 		StaticCFlg = false

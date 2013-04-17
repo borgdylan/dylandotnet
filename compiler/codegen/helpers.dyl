@@ -67,6 +67,7 @@ class public auto ansi static Helpers
 				temp = TypeAttributes::BeforeFieldInit
 			elseif attr is Attributes.AbstractAttr then
 				temp = TypeAttributes::Abstract
+				ILEmitter::AbstractCFlg = true
 				absf = true
 			elseif attr is Attributes.InterfaceAttr then
 				temp = TypeAttributes::Interface
@@ -488,11 +489,13 @@ class public auto ansi static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static void ProcessParams(var ps as Expr[])
+	method public static IKVM.Reflection.Type[] ProcessParams(var ps as Expr[])
 		var i as integer = -1
 		var curp as VarExpr = null
 		var typ as IKVM.Reflection.Type = null
-
+		
+		var lt = new C5.LinkedList<of IKVM.Reflection.Type>()
+		
 		do until i = --ps[l]
 			i++
 			curp = $VarExpr$ps[i]
@@ -502,10 +505,11 @@ class public auto ansi static Helpers
 			end if
 
 			if typ != null then
-				AsmFactory::AddTyp(typ)
+				lt::Add(typ)
 			end if
 
 		end do
+		return lt::ToArray()
 	end method
 
 	[method: ComVisible(false)]

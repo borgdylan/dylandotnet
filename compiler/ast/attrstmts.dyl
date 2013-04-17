@@ -11,7 +11,7 @@ class public auto ansi abstract AttrStmt extends Stmt
 	field public NewCallTok Ctor
 	field public C5.ArrayList<of AttrValuePair> Pairs
 
-	method public family void AttrStmt()
+	method family void AttrStmt()
 		me::ctor()
 		Ctor = null
 		Pairs = new C5.ArrayList<of AttrValuePair>()

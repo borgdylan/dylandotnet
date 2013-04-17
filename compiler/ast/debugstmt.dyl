@@ -15,7 +15,7 @@ class public auto ansi DebugStmt extends Stmt
 
 	method public void DebugStmt()
 		me::ctor()
-		Opt = new SwitchTok()
+		Opt = null
 		Flg = false
 	end method
 

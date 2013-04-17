@@ -7,11 +7,6 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi abstract Attribute extends Token
-
-	method family void Attribute()
-		me::ctor()
-	end method
-
 end class
 
 // hidebysig

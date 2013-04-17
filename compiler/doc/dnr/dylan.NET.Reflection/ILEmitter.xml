@@ -14,6 +14,18 @@
     </remarks>
   </Docs>
   <Members>
+    <Member MemberName="AbstractCFlg">
+      <MemberSignature Language="C#" Value="public static bool AbstractCFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool AbstractCFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AbstractFlg">
       <MemberSignature Language="C#" Value="public static bool AbstractFlg;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool AbstractFlg" />

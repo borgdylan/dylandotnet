@@ -16,7 +16,7 @@ class public auto ansi TypeItem
 	field public C5.IList<of MethodItem> Methods
 	field public C5.IList<of CtorItem> Ctors
 	field public C5.IList<of FieldItem> Fields
-	field assembly Func<of IKVM.Reflection.Type, ConstructorInfo> DefCtorDel
+	//field assembly Func<of IKVM.Reflection.Type, ConstructorInfo> DefCtorDel
 
 	method public void TypeItem()
 		me::ctor()
@@ -28,7 +28,7 @@ class public auto ansi TypeItem
 		Methods = new C5.LinkedList<of MethodItem>()
 		Ctors = new C5.LinkedList<of CtorItem>()
 		Fields = new C5.LinkedList<of FieldItem>()
-		DefCtorDel = null
+		//DefCtorDel = null
 	end method
 
 	method public void TypeItem(var nme as string,var bld as TypeBuilder)
@@ -40,7 +40,7 @@ class public auto ansi TypeItem
 		Methods = new C5.LinkedList<of MethodItem>()
 		Ctors = new C5.LinkedList<of CtorItem>()
 		Fields = new C5.LinkedList<of FieldItem>()
-		DefCtorDel = null
+		//DefCtorDel = null
 	end method
 
 	method public void AddField(var f as FieldItem)

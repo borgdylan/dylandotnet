@@ -52,9 +52,9 @@ class public auto ansi TypeList
 				if !ctorinf::get_IsPublic() then
 					//filter out private members
 					if !ctorinf::get_IsPrivate() then
-						if (ctorinf::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) = false then
-							if (ctorinf::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) = false then
-								if (ctorinf::get_IsFamily() and Loader::ProtectedFlag) = false then
+						if !#expr(ctorinf::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) then
+							if !#expr(ctorinf::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) then
+								if !#expr(ctorinf::get_IsFamily() and Loader::ProtectedFlag) then
 									if !ctorinf::get_IsAssembly() then
 										ctorinf = null
 									end if
@@ -76,7 +76,7 @@ class public auto ansi TypeList
 	end method
 	
 	method public void EnsureDefaultCtor(var t as IKVM.Reflection.Type)
-		if (ILEmitter::StructFlg or ILEmitter::InterfaceFlg or ILEmitter::StaticCFlg) == false then
+		if !#expr(ILEmitter::StructFlg or ILEmitter::InterfaceFlg or ILEmitter::StaticCFlg) then
 			var ti as TypeItem = GetTypeItem(t)
 			if ti != null then
 				if ti::Ctors::get_Count() == 0 then
@@ -84,8 +84,12 @@ class public auto ansi TypeList
 					var ctorinf as ConstructorInfo = GetDefaultCtor(ti::InhTyp)
 					Loader::ProtectedFlag = false
 					if ctorinf != null then
-						var cb as ConstructorBuilder = ti::TypeBldr::DefineDefaultConstructor(MethodAttributes::Public)
-						ti::Ctors::Add(new CtorItem(new IKVM.Reflection.Type[0], cb))
+						var cb as ConstructorBuilder = ti::TypeBldr::DefineConstructor(#ternary {ILEmitter::AbstractCFlg ? MethodAttributes::Family, MethodAttributes::Public}, CallingConventions::Standard, IKVM.Reflection.Type::EmptyTypes)
+						var ilg = cb::GetILGenerator()
+						ilg::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_0)
+						ilg::Emit(IKVM.Reflection.Emit.OpCodes::Call, ctorinf)
+						ilg::Emit(IKVM.Reflection.Emit.OpCodes::Ret)
+						ti::Ctors::Add(new CtorItem(IKVM.Reflection.Type::EmptyTypes, cb))
 					end if
 				end if
 			end if
@@ -93,7 +97,7 @@ class public auto ansi TypeList
 	end method
 	
 	method public void AddType(var t as TypeItem)
-		t::DefCtorDel = new Func<of IKVM.Reflection.Type, ConstructorInfo>(GetDefaultCtor())
+		//t::DefCtorDel = new Func<of IKVM.Reflection.Type, ConstructorInfo>(GetDefaultCtor())
 		Types::Add(t)
 	end method
 
@@ -107,9 +111,9 @@ class public auto ansi TypeList
 				if !fldinfo::get_IsPublic() then
 					//filter out private members
 					if !fldinfo::get_IsPrivate() then
-						if (fldinfo::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) = false then
-							if (fldinfo::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) = false then
-								if (fldinfo::get_IsFamily() and Loader::ProtectedFlag) = false then
+						if !#expr(fldinfo::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) then
+							if !#expr(fldinfo::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) then
+								if !#expr(fldinfo::get_IsFamily() and Loader::ProtectedFlag) then
 									if !fldinfo::get_IsAssembly() then
 										fldinfo = null
 									end if
@@ -148,9 +152,9 @@ class public auto ansi TypeList
 				if !mtdinfo::get_IsPublic() then
 					//filter out private members
 					if !mtdinfo::get_IsPrivate() then
-						if (mtdinfo::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) = false then
-							if (mtdinfo::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) = false then
-								if (mtdinfo::get_IsFamily() and Loader::ProtectedFlag) = false then
+						if !#expr(mtdinfo::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) then
+							if !#expr(mtdinfo::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) then
+								if !#expr(mtdinfo::get_IsFamily() and Loader::ProtectedFlag) then
 									if !mtdinfo::get_IsAssembly() then
 										mtdinfo = null
 									end if

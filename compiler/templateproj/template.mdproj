@@ -6,12 +6,12 @@
     <ItemType>GenericProject</ItemType>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6175a8f7-dd76-445f-ad70-a9d349ac4bcc}</ProjectGuid>
+    <ProjectGuid>{6175A8F7-DD76-445F-AD70-A9D349AC4BCC}</ProjectGuid>
     <ReleaseVersion>11.2.9.5</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
     <OutputPath>.</OutputPath>
-    <ConsolePause>false</ConsolePause>
+    <ConsolePause>False</ConsolePause>
   </PropertyGroup>
   <ProjectExtensions>
     <MonoDevelop>
@@ -19,7 +19,7 @@
         <Policies>
           <TextStylePolicy TabWidth="4" inheritsSet="Mono" inheritsScope="text/plain" scope="text/plain" />
         </Policies>
-        <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="true" RelativeMakefileName="Makefile" ExecuteTargetName="run" IsAutotoolsProject="true" RelativeConfigureInPath="..">
+        <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="True" RelativeMakefileName="Makefile" ExecuteTargetName="run" IsAutotoolsProject="True" RelativeConfigureInPath="..">
           <BuildFilesVar />
           <DeployFilesVar />
           <ResourcesVar />

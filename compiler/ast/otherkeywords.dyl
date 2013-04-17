@@ -64,11 +64,6 @@ end class
 //end class
 
 class public auto ansi abstract SwitchTok extends Token
-
-	method family void SwitchTok()
-		me::ctor()
-	end method
-
 end class
 
 class public auto ansi OnTok extends SwitchTok

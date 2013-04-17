@@ -67,7 +67,7 @@ class private auto ansi MILambdas2
 		return (mi::Name == Name) and CmpTyps2(mi::ParamTyps,Params)
 	end method
 
-	method assembly integer CalcDeriveness(var t as IKVM.Reflection.Type)
+	method assembly static integer CalcDeriveness(var t as IKVM.Reflection.Type)
 		var d as integer = 1
 		do while t::get_BaseType() != null
 			d++

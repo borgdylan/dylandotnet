@@ -7,11 +7,6 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi abstract ConditionalOp extends Op
-
-	method family void ConditionalOp()
-		me::ctor()
-	end method
-
 end class
 
 // =

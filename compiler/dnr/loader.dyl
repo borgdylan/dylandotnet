@@ -266,18 +266,20 @@ class public auto ansi static Loader
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.ConstructorInfo LoadCtor(var typ as IKVM.Reflection.Type, var typs as IKVM.Reflection.Type[])
 
-		var ctorinf as IKVM.Reflection.ConstructorInfo = typ::GetConstructor(typs)
+		var ctorinf as IKVM.Reflection.ConstructorInfo = null
+		// = typ::GetConstructor(typs)
 
-		if ctorinf != null then
-			MemberTyp = typ
-		end if
+		//if ctorinf != null then
+		//	MemberTyp = typ
+		//end if
 
 		if ctorinf = null then
-			ctorinf = typ::GetConstructor(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
+			ctorinf = typ::GetConstructor(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
 
 			if ctorinf != null then
 				//filter out private members
-				if !ctorinf::get_IsPrivate() then
+				if ctorinf::get_IsPublic() then
+				elseif !ctorinf::get_IsPrivate() then
 				
 					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
 					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr

@@ -7,11 +7,6 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi abstract LogicalOp extends Op
-
-	method family void LogicalOp()
-		me::ctor()
-	end method
-
 end class
 
 class public auto ansi AndOp extends LogicalOp

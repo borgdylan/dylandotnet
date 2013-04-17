@@ -207,6 +207,10 @@
             <summary>Usually used to pass in the type that declares the instance method to be called that is needed for checks associated with virtual valuetype method detection.</summary>
             <remarks>This field is usually reserved just for this usage.</remarks>
         </member>
+        <member name="dylan.NET.Reflection.ILEmitter.AbstractCFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Reflection.ILEmitter.AbstractFlg">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

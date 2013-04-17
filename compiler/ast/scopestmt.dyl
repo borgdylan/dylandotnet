@@ -15,7 +15,7 @@ class public auto ansi ScopeStmt extends Stmt
 
 	method public void ScopeStmt()
 		me::ctor()
-		Opt = new SwitchTok()
+		Opt = null
 		Flg = false
 	end method
 

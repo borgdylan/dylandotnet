@@ -1246,8 +1246,8 @@
       </Docs>
     </Member>
     <Member MemberName="ProcessParams">
-      <MemberSignature Language="C#" Value="public static void ProcessParams (dylan.NET.Tokenizer.AST.Exprs.Expr[] ps);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ProcessParams(class dylan.NET.Tokenizer.AST.Exprs.Expr[] ps) cil managed" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type[] ProcessParams (dylan.NET.Tokenizer.AST.Exprs.Expr[] ps);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type[] ProcessParams(class dylan.NET.Tokenizer.AST.Exprs.Expr[] ps) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1255,7 +1255,7 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>IKVM.Reflection.Type[]</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="ps" Type="dylan.NET.Tokenizer.AST.Exprs.Expr[]" />
@@ -1263,6 +1263,7 @@
       <Docs>
         <param name="ps">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

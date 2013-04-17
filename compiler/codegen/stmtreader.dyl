@@ -220,6 +220,7 @@ class public auto ansi StmtReader
 			ILEmitter::PartialFlg = false
 			ILEmitter::InterfaceFlg = false
 			ILEmitter::StaticCFlg = false
+			ILEmitter::AbstractCFlg = false
 			
 			if AsmFactory::inClass then
 				AsmFactory::isNested = true
@@ -267,6 +268,7 @@ class public auto ansi StmtReader
 				end if
 			else
 				ILEmitter::InterfaceFlg = ti2::TypeBldr::get_IsInterface()
+				ILEmitter::AbstractCFlg = ti2::TypeBldr::get_IsAbstract()
 				ILEmitter::StaticCFlg = ti2::IsStatic
 				foreach attr in clss::Attrs
 					if attr is Attributes.PartialAttr then
@@ -376,12 +378,7 @@ class public auto ansi StmtReader
 
 			AsmFactory::TypArr = new IKVM.Reflection.Type[0]
 			dema = MethodAttributes::HideBySig or MethodAttributes::Public or MethodAttributes::NewSlot or MethodAttributes::Virtual
-			if dels::Params[l] = 0 then
-				dtarr = IKVM.Reflection.Type::EmptyTypes
-			else
-				Helpers::ProcessParams(dels::Params)
-				dtarr = AsmFactory::TypArr
-			end if
+			dtarr = #ternary {dels::Params[l] == 0 ? IKVM.Reflection.Type::EmptyTypes, Helpers::ProcessParams(dels::Params)}
 			
 			var drettyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(dels::RetTyp)
 			
@@ -446,6 +443,12 @@ class public auto ansi StmtReader
 			
 			AsmFactory::CurnFldB = AsmFactory::CurnTypB::DefineField(flss::FieldName::Value, ftyp, Helpers::ProcessFieldAttrs(flss::Attrs))
 			
+			if ILEmitter::InterfaceFlg then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Interfaces should not have Fields!")
+			elseif !AsmFactory::CurnFldB::get_IsStatic() and ILEmitter::StaticCFlg then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Static Classes should not have Instance Fields!")
+			end if
+			
 			Helpers::ApplyFldAttrs()
 			SymTable::ResetFldCAs()
 			
@@ -467,7 +470,7 @@ class public auto ansi StmtReader
 				SymTable::ResetNestedCtor()
 				SymTable::ResetNestedFld()
 			else
-				if ILEmitter::PartialFlg == false
+				if !ILEmitter::PartialFlg then
 					SymTable::TypeLst::EnsureDefaultCtor(AsmFactory::CurnTypB)
 					AsmFactory::CreateTyp()
 				end if
@@ -489,13 +492,7 @@ class public auto ansi StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + mtss::RetTyp::Value + "' is not defined or is not accessible.")
 			end if
 
-			AsmFactory::TypArr = new IKVM.Reflection.Type[0]
-
-			if mtss::Params[l] != 0 then
-				Helpers::ProcessParams(mtss::Params)
-			end if
-
-			var paramstyps as IKVM.Reflection.Type[] = AsmFactory::TypArr
+			var paramstyps as IKVM.Reflection.Type[] = #ternary {mtss::Params[l] == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}			
 			var mtssnamarr as C5.IList<of string>
 			var overldnam as string = String::Empty
 			var overldmtd as MethodInfo = null
@@ -505,12 +502,23 @@ class public auto ansi StmtReader
 			if (mtssnamstr = AsmFactory::CurnTypName) or (mtssnamstr like "^ctor\d*$") then
 				StreamUtils::Write("	Adding Constructor: ")
 				StreamUtils::WriteLine(mtssnamstr)
-				AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(Helpers::ProcessMethodAttrs(mtss::Attrs), CallingConventions::Standard, AsmFactory::TypArr)
+				AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(Helpers::ProcessMethodAttrs(mtss::Attrs), CallingConventions::Standard, paramstyps)
 				AsmFactory::InitConstr()
+				
+				if ILEmitter::InterfaceFlg then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Interfaces should not have Constructors!")
+				elseif AsmFactory::CurnConB::get_IsPublic() and ILEmitter::AbstractCFlg then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Abstract Classes should not have Publicly Visible Constructors!")
+				elseif !ILEmitter::StaticFlg and ILEmitter::StaticCFlg then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Static Classes should not have Instance Constructors but only Type Initializers!")
+				elseif ILEmitter::StaticFlg and (paramstyps[l] != 0) then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type Initializers should NOT have any Parameters!")
+				end if
+				
 				if AsmFactory::isNested then
-					SymTable::AddNestedCtor(AsmFactory::TypArr, AsmFactory::CurnConB)
+					SymTable::AddNestedCtor(paramstyps, AsmFactory::CurnConB)
 				else
-					SymTable::AddCtor(AsmFactory::TypArr, AsmFactory::CurnConB)
+					SymTable::AddCtor(paramstyps, AsmFactory::CurnConB)
 				end if
 				if mtss::Params[l] != 0 then
 					Helpers::PostProcessParamsConstr(mtss::Params)
@@ -525,7 +533,7 @@ class public auto ansi StmtReader
 					mtssnamstr = typ::ToString() + "." + overldnam
 				end if
 				
-				mipt = SymTable::FindProtoMet(mtssnamstr, AsmFactory::TypArr)
+				mipt = SymTable::FindProtoMet(mtssnamstr, paramstyps)
 				fromproto = mipt != null
 				
 				if fromproto then
@@ -537,7 +545,7 @@ class public auto ansi StmtReader
 				else
 					StreamUtils::Write("	Adding Method: ")
 					StreamUtils::WriteLine(mtssnamstr)
-					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, Helpers::ProcessMethodAttrs(mtss::Attrs), rettyp, AsmFactory::TypArr)
+					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, Helpers::ProcessMethodAttrs(mtss::Attrs), rettyp, paramstyps)
 				end if
 				
 				if !ILEmitter::ProtoFlg then
@@ -549,6 +557,14 @@ class public auto ansi StmtReader
 					end if
 		
 					AsmFactory::InitMtd()
+					
+					if ILEmitter::InterfaceFlg and !ILEmitter::AbstractFlg then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods in Interfaces should all be Abstract!")
+					elseif ILEmitter::InterfaceFlg and ILEmitter::StaticFlg then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods in Interfaces should not be Static!")
+					elseif !ILEmitter::StaticFlg and ILEmitter::StaticCFlg then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Static Classes should not have Instance Methods!")
+					end if
 
 					if mtssnamarr::get_Count() > 1 then
 						overldmtd = Helpers::GetExtMet(typ, new MethodNameTok(overldnam), paramstyps)
@@ -558,9 +574,9 @@ class public auto ansi StmtReader
 				
 				if !fromproto then
 					if AsmFactory::isNested then
-						SymTable::AddNestedMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
+						SymTable::AddNestedMet(mtssnamstr, rettyp, paramstyps, AsmFactory::CurnMetB)
 					else
-						SymTable::AddMet(mtssnamstr, rettyp, AsmFactory::TypArr, AsmFactory::CurnMetB)
+						SymTable::AddMet(mtssnamstr, rettyp, paramstyps, AsmFactory::CurnMetB)
 					end if
 				end if
 				
