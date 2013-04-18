@@ -1,5 +1,5 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="cflags.dyl.in">
     <Files>
       <File FileName="ast/ident.dyl" Line="1" Column="1" />
@@ -15,13 +15,13 @@
       <File FileName="ast/propstmt.dyl" Line="1" Column="1" />
       <File FileName="ast/eventstmt.dyl" Line="1" Column="1" />
       <File FileName="ast/interfaces.dyl" Line="1" Column="1" />
-      <File FileName="codegen/stmtreader.dyl" Line="564" Column="116" />
+      <File FileName="codegen/stmtreader.dyl" Line="1" Column="1" />
       <File FileName="parser/tokenoptimizer.dyl" Line="1" Column="1" />
       <File FileName="codegen/propertyitem.dyl" Line="1" Column="1" />
       <File FileName="codegen/eventitem.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen.dyl" Line="1" Column="1" />
       <File FileName="codegen/symtable.dyl" Line="1" Column="1" />
-      <File FileName="templateproj/template.dyl" Line="563" Column="19" />
+      <File FileName="templateproj/template.dyl" Line="1" Column="1" />
       <File FileName="dnc/Program.dyl" Line="1" Column="1" />
       <File FileName="codegen/helpers.dyl" Line="1" Column="1" />
       <File FileName="parser/exproptimizer.dyl" Line="1" Column="1" />
@@ -32,7 +32,7 @@
       <File FileName="codegen/codegenerator.dyl" Line="1" Column="1" />
       <File FileName="ast/op.dyl" Line="1" Column="1" />
       <File FileName="ast/logicalops.dyl" Line="1" Column="1" />
-      <File FileName="codegen/typelist.dyl" Line="1" Column="1" />
+      <File FileName="codegen/typelist.dyl" Line="156" Column="12" />
       <File FileName="ast/conditionalops.dyl" Line="1" Column="1" />
       <File FileName="ast/aritops.dyl" Line="1" Column="1" />
       <File FileName="ast/attributes.dyl" Line="1" Column="1" />

@@ -53,7 +53,7 @@ class public auto ansi TypeList
 					//filter out private members
 					if !ctorinf::get_IsPrivate() then
 						if !#expr(ctorinf::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) then
-							if !#expr(ctorinf::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) then
+							if !ctorinf::get_IsFamilyOrAssembly() then
 								if !#expr(ctorinf::get_IsFamily() and Loader::ProtectedFlag) then
 									if !ctorinf::get_IsAssembly() then
 										ctorinf = null
@@ -112,7 +112,7 @@ class public auto ansi TypeList
 					//filter out private members
 					if !fldinfo::get_IsPrivate() then
 						if !#expr(fldinfo::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) then
-							if !#expr(fldinfo::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) then
+							if !fldinfo::get_IsFamilyOrAssembly() then
 								if !#expr(fldinfo::get_IsFamily() and Loader::ProtectedFlag) then
 									if !fldinfo::get_IsAssembly() then
 										fldinfo = null
@@ -153,7 +153,7 @@ class public auto ansi TypeList
 					//filter out private members
 					if !mtdinfo::get_IsPrivate() then
 						if !#expr(mtdinfo::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) then
-							if !#expr(mtdinfo::get_IsFamilyOrAssembly() and (Loader::ProtectedFlag or true)) then
+							if !mtdinfo::get_IsFamilyOrAssembly() then
 								if !#expr(mtdinfo::get_IsFamily() and Loader::ProtectedFlag) then
 									if !mtdinfo::get_IsAssembly() then
 										mtdinfo = null
