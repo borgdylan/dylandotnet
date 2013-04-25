@@ -17,3 +17,467 @@ Runtime & OS Version Info:
 mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 Runtime Version: 2.0.50727.1433
 OS: Unix 3.9.0.8
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: arit.dyl...Done.
+Now Parsing: arit.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Beginning Assembly: arit
+Adding Class: arit.Module1
+	Adding Method: add
+	Adding Method: subtract
+	Adding Method: multiply
+	Adding Method: divide
+	Adding Method: main
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: conv.dyl...Done.
+Now Parsing: conv.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Beginning Assembly: conv
+Adding Class: conv.Module1
+	Adding Field: numfld
+	Adding Constructor: Module1
+	Adding Method: mettest
+WARNING: Converting from 'System.Int32' to 'System.Int32' is redundant. at line 21 in file: conv.dyl
+WARNING: The variable v4 was initialised but then not used. at line 23 in file: conv.dyl
+WARNING: The variable v7 was initialised but then not used. at line 26 in file: conv.dyl
+WARNING: The variable v3 was initialised but then not used. at line 22 in file: conv.dyl
+WARNING: The variable v10 was initialised but then not used. at line 29 in file: conv.dyl
+WARNING: The variable v6 was initialised but then not used. at line 25 in file: conv.dyl
+WARNING: The variable v2 was initialised but then not used. at line 21 in file: conv.dyl
+WARNING: The variable v9 was initialised but then not used. at line 28 in file: conv.dyl
+WARNING: The variable v5 was initialised but then not used. at line 24 in file: conv.dyl
+WARNING: The variable v1 was initialised but then not used. at line 20 in file: conv.dyl
+WARNING: The variable v8 was initialised but then not used. at line 27 in file: conv.dyl
+	Adding Method: strtest
+WARNING: Converting from 'System.String' to 'System.String' is redundant. at line 36 in file: conv.dyl
+WARNING: The variable v2 was initialised but then not used. at line 37 in file: conv.dyl
+WARNING: The variable v4 was initialised but then not used. at line 39 in file: conv.dyl
+WARNING: The variable str was initialised but then not used. at line 35 in file: conv.dyl
+WARNING: The variable v6 was initialised but then not used. at line 41 in file: conv.dyl
+WARNING: The variable v8 was initialised but then not used. at line 43 in file: conv.dyl
+WARNING: The variable v10 was initialised but then not used. at line 45 in file: conv.dyl
+WARNING: The variable v1 was initialised but then not used. at line 36 in file: conv.dyl
+WARNING: The variable v3 was initialised but then not used. at line 38 in file: conv.dyl
+WARNING: The variable v5 was initialised but then not used. at line 40 in file: conv.dyl
+WARNING: The variable v7 was initialised but then not used. at line 42 in file: conv.dyl
+WARNING: The variable v9 was initialised but then not used. at line 44 in file: conv.dyl
+	Adding Method: vartest
+WARNING: Converting from 'System.Int32' to 'System.Int32' is redundant. at line 53 in file: conv.dyl
+WARNING: The variable v9 was initialised but then not used. at line 60 in file: conv.dyl
+WARNING: The variable v4 was initialised but then not used. at line 55 in file: conv.dyl
+WARNING: The variable v8 was initialised but then not used. at line 59 in file: conv.dyl
+WARNING: The variable v3 was initialised but then not used. at line 54 in file: conv.dyl
+WARNING: The variable v7 was initialised but then not used. at line 58 in file: conv.dyl
+WARNING: The variable v2 was initialised but then not used. at line 53 in file: conv.dyl
+WARNING: The variable v6 was initialised but then not used. at line 57 in file: conv.dyl
+WARNING: The variable v1 was initialised but then not used. at line 52 in file: conv.dyl
+WARNING: The variable v5 was initialised but then not used. at line 56 in file: conv.dyl
+WARNING: The variable v10 was initialised but then not used. at line 61 in file: conv.dyl
+	Adding Method: fldtest
+WARNING: Converting from 'System.Int32' to 'System.Int32' is redundant. at line 68 in file: conv.dyl
+WARNING: The variable v6 was initialised but then not used. at line 72 in file: conv.dyl
+WARNING: The variable v7 was initialised but then not used. at line 73 in file: conv.dyl
+WARNING: The variable v10 was initialised but then not used. at line 76 in file: conv.dyl
+WARNING: The variable v8 was initialised but then not used. at line 74 in file: conv.dyl
+WARNING: The variable v9 was initialised but then not used. at line 75 in file: conv.dyl
+WARNING: The variable v1 was initialised but then not used. at line 67 in file: conv.dyl
+WARNING: The variable v2 was initialised but then not used. at line 68 in file: conv.dyl
+WARNING: The variable v3 was initialised but then not used. at line 69 in file: conv.dyl
+WARNING: The variable v4 was initialised but then not used. at line 70 in file: conv.dyl
+WARNING: The variable v5 was initialised but then not used. at line 71 in file: conv.dyl
+	Adding Method: main
+WARNING: Converting from 'System.String' to 'System.String' is redundant. at line 83 in file: conv.dyl
+WARNING: Converting from 'System.Int32' to 'System.Int32' is redundant. at line 85 in file: conv.dyl
+WARNING: The variable v8 was initialised but then not used. at line 103 in file: conv.dyl
+WARNING: The variable v9 was initialised but then not used. at line 105 in file: conv.dyl
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: ctorfield.dyl...Done.
+Now Parsing: ctorfield.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Importing Namespace: ctorfield
+Beginning Assembly: ctorfield
+Adding Class: ctorfield.Test
+	Adding Field: teststr
+	Adding Field: testnum1
+	Adding Field: testnum2
+	Adding Constructor: Test
+	Adding Constructor: Test
+WARNING: The variable tinst was initialised but then not used. at line 27 in file: ctorfield.dyl
+Adding Class: ctorfield.Module1
+	Adding Field: str
+	Adding Constructor: Module1
+	Adding Method: main
+WARNING: The variable a was initialised but then not used. at line 43 in file: ctorfield.dyl
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: helloworld.dyl...Done.
+Now Parsing: helloworld.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Beginning Assembly: helloworld
+Adding Class: helloworld.Module1
+	Adding Method: main
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: logicop.dyl...Done.
+Now Parsing: logicop.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Beginning Assembly: logicop
+Adding Class: logicop.Module1
+	Adding Method: main
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: mathematics.dyl...Done.
+Now Parsing: mathematics.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Beginning Assembly: mathematics
+Adding Class: mathematics.Algebra
+	Adding Method: SolveTrinomialPos
+	Adding Method: SolveTrinomialNeg
+	Adding Method: ExpandTrinomial
+WARNING: Converting from 'System.String' to 'System.String' is redundant. at line 61 in file: mathematics.dyl
+WARNING: Converting from 'System.String' to 'System.String' is redundant. at line 61 in file: mathematics.dyl
+WARNING: The variable str was initialised but then not used. at line 59 in file: mathematics.dyl
+Adding Class: mathematics.Arithmetic
+	Adding Method: Add
+	Adding Method: Subtract
+	Adding Method: Multiply
+	Adding Method: Divide
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: mathstest.dyl...Done.
+Now Parsing: mathstest.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Referencing Assembly: mathematics.dll
+Importing Namespace: System
+Importing Namespace: mathematics
+Beginning Assembly: mathstest
+Adding Class: mathstest.Module1
+	Adding Method: main
+WARNING: The variable str was initialised but then not used. at line 19 in file: mathstest.dyl
+WARNING: The variable alg was initialised but then not used. at line 16 in file: mathstest.dyl
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: numloops.dyl...Done.
+Now Parsing: numloops.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Beginning Assembly: numloops
+Adding Class: numloops.Module1
+	Adding Method: main
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: Person.dyl...Done.
+Now Parsing: Person.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Beginning Assembly: Person
+Adding Class: Person.Person
+	Adding Field: name
+	Adding Field: address
+	Adding Field: age
+	Adding Constructor: Person
+	Adding Method: getName
+	Adding Method: getAddress
+	Adding Method: getAge
+	Adding Method: print
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: PersonProg.dyl...Done.
+Now Parsing: PersonProg.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Referencing Assembly: Person.dll
+Importing Namespace: System
+Importing Namespace: Person
+Beginning Assembly: PersonProg
+Adding Class: PersonProg.PersonInst
+	Adding Method: main
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: boxobj.dyl...Done.
+Now Parsing: boxobj.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Beginning Assembly: boxobj
+Adding Class: boxobj.Module1
+	Adding Method: main
+WARNING: Converting from 'System.String' to 'System.Object' is redundant. at line 18 in file: boxobj.dyl
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: xmllib.dyl...Done.
+Now Parsing: xmllib.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Referencing Assembly: /usr/lib/mono/2.0/System.Xml.Linq.dll
+Importing Namespace: System
+Importing Namespace: System.Xml.Linq
+Beginning Assembly: xmllib
+Adding Class: xmllib.Mod1
+	Adding Method: makenode
+	Adding Method: makeattr
+	Adding Method: addattr
+	Adding Method: addnode
+	Adding Method: setval
+	Adding Method: main
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: arraytest.dyl...Done.
+Now Parsing: arraytest.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Importing Namespace: arraytest
+Beginning Assembly: arraytest
+Adding Class: arraytest.instc
+	Adding Field: arr
+	Adding Constructor: instc
+	Adding Method: test
+Adding Class: arraytest.statc
+	Adding Field: arr
+	Adding Constructor: statc
+	Adding Method: test
+Adding Class: arraytest.Module1
+	Adding Field: fldarr
+	Adding Constructor: Module1
+	Adding Method: addelem
+	Adding Method: test
+	Adding Method: main
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: vector.dyl...Done.
+Now Parsing: vector.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Importing Namespace: System.Collections.Generic
+Importing Namespace: vector
+Beginning Assembly: vector
+Adding Class: vector.Vector
+	Adding Field: I
+	Adding Field: J
+	Adding Field: K
+	Adding Field: Origin
+	Adding Field: AllOnes
+	Adding Field: Test
+	Adding Constructor: Vector
+	Adding Constructor: Vector
+	Adding Constructor: Vector
+	Adding Method: Magnitude
+	Adding Method: ToString
+	Adding Method: Equals
+	Adding Method: CompareTo
+	Adding Method: CompareTo
+	Adding Method: Compare
+	Adding Method: Equals
+	Adding Method: Add
+	Adding Method: op_Equality
+	Adding Method: op_Equality
+	Adding Method: op_Inequality
+	Adding Method: op_Inequality
+	Adding Method: op_Addition
+	Adding Method: Subtract
+	Adding Method: op_Subtraction
+	Adding Method: Multiply
+	Adding Method: op_Multiply
+	Adding Method: ToObject
+	Adding Method: op_Explicit
+	Adding Method: op_UnaryNegation
+	Adding Method: op_Implicit
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: threads.dyl...Done.
+Now Parsing: threads.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Importing Namespace: System.Threading
+Beginning Assembly: threads
+Adding Class: dylan.NET.Tests.Threading.Program
+	Adding Field: TimerObj
+	Adding Constructor: Program
+	Adding Method: ThreadMethod
+	Adding Method: ThreadMethod
+	Adding Method: Loop1s
+	Adding Method: Loop2s
+	Adding Method: TimerMethod
+	Adding Method: main
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: dylrecurse.dyl...Done.
+Now Parsing: dylrecurse.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Beginning Assembly: dylrecurse
+Adding Class: dylrecurse.Program
+	Adding Method: recurse
+	Adding Method: main
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: strrecurse.dyl...Done.
+Now Parsing: strrecurse.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Beginning Assembly: strrecurse
+Adding Class: strrecurse.Program
+	Adding Method: palindrome
+	Adding Method: main
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: protectedtests.dyl...Done.
+Now Parsing: protectedtests.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Importing Namespace: System
+Importing Namespace: protectedtests
+Beginning Assembly: protectedtests
+Adding Class: protectedtests.SealedClass
+Adding Class: protectedtests.InternalClass
+Adding Class: protectedtests.ProtectedTest
+	Adding Field: ProtFld
+	Adding Field: AssemFld
+	Adding Field: FamORAssemFld
+	Adding Field: FamANDAssemFld
+	Adding Field: PrivFld
+	Adding Constructor: ProtectedTest
+	Adding Constructor: ProtectedTest
+	Adding Constructor: ProtectedTest
+	Adding Method: ProtMtd
+	Adding Method: PrivMtd
+	Adding Method: FinalMtd
+	Adding Method: AssemMtd
+	Adding Method: FamORAssemMtd
+	Adding Method: FamANDAssemMtd
+	Adding Method: RunProtMtd
+	Adding Method: GetProtFld
+Adding Class: protectedtests.NonInheritingClass
+	Adding Method: Test
+WARNING: The variable i was initialised but then not used. at line 78 in file: protectedtests.dyl
+WARNING: The variable pt2 was initialised but then not used. at line 77 in file: protectedtests.dyl
+Adding Class: protectedtests.InheritingClass
+	Adding Constructor: InheritingClass
+	Adding Method: Test
+WARNING: The variable i was initialised but then not used. at line 96 in file: protectedtests.dyl
+WARNING: The variable i was initialised but then not used. at line 97 in file: protectedtests.dyl
+Adding Class: protectedtests.Program
+	Adding Method: main
+Writing Assembly to Disk...Done.
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 3.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: transnames.dyl...Done.
+Now Parsing: transnames.dyl...Done.
+Referencing Assembly: /usr/lib/mono/2.0/mscorlib.dll
+Referencing Assembly: /usr/lib/mono/2.0/System.dll
+Referencing Assembly: /usr/lib/mono/2.0/System.Core.dll
+Referencing Assembly: /usr/lib/mono/2.0/System.Xml.Linq.dll
+Importing Namespace: System
+Importing Namespace: System.IO
+Importing Namespace: System.Linq
+Importing Namespace: System.Xml.Linq
+Importing Namespace: System.Collections
+Importing Namespace: System.Collections.Generic
+Beginning Assembly: transnames
+Adding Class: transnames.Program
+	Adding Method: LineToTuple
+	Adding Method: TupleToLine
+	Adding Method: TupleToXML
+	Adding Method: GetTupleKey
+	Adding Method: GetTupleKey2
+	Adding Method: PrintLines
+	Adding Method: main
+Writing Assembly to Disk...Done.
