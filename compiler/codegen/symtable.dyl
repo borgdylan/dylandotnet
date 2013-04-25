@@ -21,6 +21,7 @@ class public auto ansi static SymTable
 	field public static TypeItem CurnTypItem
 	field public static PropertyItem CurnProp
 	field public static EventItem CurnEvent
+	field public static PInvokeInfo PIInfo
 
 	field private static FieldItem[] NestedFldLst
 	field private static MethodItem[] NestedMetLst
@@ -33,7 +34,7 @@ class public auto ansi static SymTable
 	field assembly static C5.TreeSet<of string> DefSyms
 	
 	field private static LabelItem[] LblLst
-	field private static TypeArr[] TypLst
+//	field private static TypeArr[] TypLst
 	field public static boolean StoreFlg
 	
 	method private static void SymTable()
@@ -47,7 +48,7 @@ class public auto ansi static SymTable
 		LockLst = new C5.LinkedList<of LockItem>()
 		LoopLst = new C5.LinkedList<of LoopItem>()
 		LblLst = new LabelItem[0]
-		TypLst = new TypeArr[0]
+	//	TypLst = new TypeArr[0]
 		StoreFlg = false
 		MethodCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		FieldCALst = new C5.LinkedList<of CustomAttributeBuilder>()
@@ -59,6 +60,7 @@ class public auto ansi static SymTable
 		DefSyms = new C5.TreeSet<of string>()
 		CurnProp = null
 		CurnEvent = null
+		PIInfo = null
 	end method
 	
 	[method: ComVisible(false)]
@@ -165,46 +167,49 @@ class public auto ansi static SymTable
 			end if
 			flg = true
 		end for
-		
-		VarLst::get_Last()::Add(nme, new VarItem(nme, la, ind, typ, lin))
+		var vr = new VarItem(nme, la, ind, typ, lin)
+		if StoreFlg then
+			vr::Stored = true
+		end if
+		VarLst::get_Last()::Add(nme, vr)
 	end method
 
-	[method: ComVisible(false)]
-	method public static integer AddTypArr(var arr as IKVM.Reflection.Type[])
+//	[method: ComVisible(false)]
+//	method public static integer AddTypArr(var arr as IKVM.Reflection.Type[])
+//
+//		var vr as TypeArr = new TypeArr() {Arr = arr}
+//		var i as integer = -1
+//		var destarr as TypeArr[] = new TypeArr[++TypLst[l]]
+//
+//		do until i = --TypLst[l]
+//			i++
+//			destarr[i] = TypLst[i]
+//		end do
+//
+//		destarr[TypLst[l]] = vr
+//		TypLst = destarr
+//		return --TypLst[l]
+//	end method
 
-		var vr as TypeArr = new TypeArr() {Arr = arr}
-		var i as integer = -1
-		var destarr as TypeArr[] = new TypeArr[++TypLst[l]]
-
-		do until i = --TypLst[l]
-			i++
-			destarr[i] = TypLst[i]
-		end do
-
-		destarr[TypLst[l]] = vr
-		TypLst = destarr
-		return --TypLst[l]
-	end method
-
-	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type[] PopTypArr()
-
-		var b as TypeArr = TypLst[0]
-		var i as integer = 0
-		var j as integer
-		var destarr as TypeArr[] = new TypeArr[--TypLst[l]]
-
-		do until i >= --TypLst[l]
-			j = i
-			i++
-			destarr[j] = TypLst[i]
-		end do
-
-		TypLst = destarr
-
-		return b::Arr
-
-	end method
+//	[method: ComVisible(false)]
+//	method public static IKVM.Reflection.Type[] PopTypArr()
+//
+//		var b as TypeArr = TypLst[0]
+//		var i as integer = 0
+//		var j as integer
+//		var destarr as TypeArr[] = new TypeArr[--TypLst[l]]
+//
+//		do until i >= --TypLst[l]
+//			j = i
+//			i++
+//			destarr[j] = TypLst[i]
+//		end do
+//
+//		TypLst = destarr
+//
+//		return b::Arr
+//
+//	end method
 
 	[method: ComVisible(false)]
 	method public static void AddFld(var nme as string, var typ as IKVM.Reflection.Type, var fld as FieldBuilder)
@@ -213,40 +218,54 @@ class public auto ansi static SymTable
 	
 	[method: ComVisible(false)]
 	method public static void AddMtdCA(var ca as CustomAttributeBuilder)
-		MethodCALst::Add(ca)
+		if ca != null then
+			MethodCALst::Add(ca)
+		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddFldCA(var ca as CustomAttributeBuilder)
-		FieldCALst::Add(ca)
+		if ca != null then
+			FieldCALst::Add(ca)
+		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddClsCA(var ca as CustomAttributeBuilder)
-		ClassCALst::Add(ca)
+		if ca != null then
+			ClassCALst::Add(ca)
+		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddAsmCA(var ca as CustomAttributeBuilder)
-		AssemblyCALst::Add(ca)
+		if ca != null then
+			AssemblyCALst::Add(ca)
+		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddEventCA(var ca as CustomAttributeBuilder)
-		EventCALst::Add(ca)
+		if ca != null then
+			EventCALst::Add(ca)
+		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddPropCA(var ca as CustomAttributeBuilder)
-		PropertyCALst::Add(ca)
+		if ca != null then
+			PropertyCALst::Add(ca)
+		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddParamCA(var ind as integer,var ca as CustomAttributeBuilder)
-		if !Enumerable::Contains<of integer>(ParameterCALst::get_Keys(),ind) then
-			ParameterCALst::Add(ind, new C5.LinkedList<of CustomAttributeBuilder>())
+		if ca != null then
+			if !Enumerable::Contains<of integer>(ParameterCALst::get_Keys(),ind) then
+				ParameterCALst::Add(ind, new C5.LinkedList<of CustomAttributeBuilder>())
+			end if
+			ParameterCALst::get_Item(ind)::Add(ca)
 		end if
-		ParameterCALst::get_Item(ind)::Add(ca)
 	end method
 	
 	[method: ComVisible(false)]
@@ -415,8 +434,11 @@ class public auto ansi static SymTable
 		foreach s in VarLst::Backwards()
 			if s::Contains(nam) then
 				var v = s::get_Item(nam)
-				if !StoreFlg then
+				if !StoreFlg and !AsmFactory::ForcedAddrFlg then
 					v::Used = true
+					if !v::Stored and v::LocArg then
+						StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The variable " + v::Name + " might not have been initialized.")
+					end if
 				end if
 				return v
 			end if
@@ -424,15 +446,15 @@ class public auto ansi static SymTable
 		return null
 	end method
 
-	[method: ComVisible(false)]
-	method public static void ResetUsed(var nam as string)
-		foreach s in VarLst::Backwards()
-			if s::Contains(nam) then
-				var v = s::get_Item(nam)
-				v::Used = false
-			end if
-		end for
-	end method
+//	[method: ComVisible(false)]
+//	method public static void ResetUsed(var nam as string)
+//		foreach s in VarLst::Backwards()
+//			if s::Contains(nam) then
+//				var v = s::get_Item(nam)
+//				v::Used = false
+//			end if
+//		end for
+//	end method
 
 	[method: ComVisible(false)]
 	method public static void CheckUnusedVar()

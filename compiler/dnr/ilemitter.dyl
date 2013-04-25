@@ -21,6 +21,7 @@ class public auto ansi static ILEmitter
 	field public static boolean StaticCFlg
 	field public static boolean DebugFlg
 	field public static boolean ProtoFlg
+	field public static boolean PInvokeFlg
 	field public static integer LocInd
 	field public static integer ArgInd
 	field public static integer LineNr
@@ -44,6 +45,7 @@ class public auto ansi static ILEmitter
 		DebugFlg = false
 		ProtoFlg = false
 		PartialFlg = false
+		PInvokeFlg = false
 		LocInd = 0
 		ArgInd = 0
 		LineNr = 0
@@ -702,10 +704,10 @@ class public auto ansi static ILEmitter
 		elseif (Math::Ceiling(n) == n) and ($decimal$long::MinValue <= n) and (n <= $decimal$long::MaxValue) then
 			EmitLdcI8($long$n)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype long)}))
-		elseif Single::TryParse($string$n, ref temps) then
+		elseif single::TryParse($string$n, ref temps) then
 			EmitLdcR4($single$n)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype single)}))
-		elseif Double::TryParse($string$n, ref tempd) then
+		elseif double::TryParse($string$n, ref tempd) then
 			EmitLdcR8($double$n)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype double)}))
 		else
@@ -1010,6 +1012,31 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void EmitConvI4()
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I4)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitConvOvfI4(var s as boolean)
+		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I4, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I4_Un})
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitConvI8(var s as boolean)
+		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_I8, IKVM.Reflection.Emit.OpCodes::Conv_U8})
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitConvOvfI8(var s as boolean)
+		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I8, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I8_Un})
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitConvU2()
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitConvOvfU2(var s as boolean)
+		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U2, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U2_Un})
 	end method
 
 	[method: ComVisible(false)]

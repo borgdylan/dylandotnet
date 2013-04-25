@@ -83,11 +83,7 @@ class public auto ansi static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static string ReadLine()
-		if UseConsole then
-			return Console::ReadLine()
-		else
-			return #ternary {InS != null ? InS::ReadLine(), string::Empty}
-		end if
+		return #ternary {UseConsole ? Console::ReadLine(), #ternary {InS != null ? InS::ReadLine(), string::Empty}}
 	end method
 
 	[method: ComVisible(false)]
@@ -116,11 +112,7 @@ class public auto ansi static StreamUtils
 
 	event public static Action<of CompilerMsg> ErrorH
 		add
-			if _ErrorH = null then
-				_ErrorH = value
-			else
-				_ErrorH = _ErrorH + value
-			end if
+			_ErrorH = #ternary {_ErrorH == null ? value, _ErrorH + value}
 		end add
 		remove
 			if _ErrorH != null then
@@ -131,11 +123,7 @@ class public auto ansi static StreamUtils
 	
 	event public static Action<of CompilerMsg> WarnH
 		add
-			if _WarnH = null then
-				_WarnH = value
-			else
-				_WarnH = _WarnH + value
-			end if
+			_WarnH = #ternary {_WarnH == null ? value, _WarnH + value}
 		end add
 		remove
 			if _WarnH != null then

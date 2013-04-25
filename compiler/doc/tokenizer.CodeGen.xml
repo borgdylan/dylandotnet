@@ -717,6 +717,22 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PInvokeInfo..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PInvokeInfo.CallConv">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PInvokeInfo.CSet">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.PInvokeInfo.LibName">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.PropertyItem..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -872,12 +888,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Tokenizer.CodeGen.SymTable.AddTypArr">
-            <param name="arr">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.SymTable.AddVar">
             <param name="nme">To be added.</param>
             <param name="la">To be added.</param>
@@ -988,6 +998,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.SymTable.PIInfo">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.SymTable.PopIf">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1002,11 +1016,6 @@
         </member>
         <member name="dylan.NET.Tokenizer.CodeGen.SymTable.PopScope">
             <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Tokenizer.CodeGen.SymTable.PopTypArr">
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.CodeGen.SymTable.PropertyCALst">
@@ -1103,11 +1112,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Tokenizer.CodeGen.SymTable.ResetUsed">
-            <param name="nam">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.SymTable.ResetVar">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1130,14 +1134,6 @@
         </member>
         <member name="dylan.NET.Tokenizer.CodeGen.SymTable.UnDef">
             <param name="sym">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Tokenizer.CodeGen.TypeArr..ctor">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Tokenizer.CodeGen.TypeArr.Arr">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

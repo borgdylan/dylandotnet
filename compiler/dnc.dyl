@@ -53,7 +53,7 @@ end #if
 #include "dnc/assemblyinfo.dyl"
 
 assembly dnc exe
-ver 11.3.1.3
+ver 11.3.1.4
 
 namespace dylan.NET.Compiler
 	#include "dnc/Program.dyl"

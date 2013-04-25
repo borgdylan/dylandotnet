@@ -48,28 +48,6 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddTyp">
-      <MemberSignature Language="C#" Value="public static void AddTyp (IKVM.Reflection.Type typ);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddTyp(class IKVM.Reflection.Type typ) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
-      </Parameters>
-      <Docs>
-        <param name="typ">The Type instance to add to the AsmFactory TypArr array.</param>
-        <summary>Adds a Type instance to the TypArr array.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddTypB">
       <MemberSignature Language="C#" Value="public static void AddTypB (IKVM.Reflection.Emit.TypeBuilder typ);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddTypB(class IKVM.Reflection.Emit.TypeBuilder typ) cil managed" />
@@ -572,6 +550,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="InitPInvokeMtd">
+      <MemberSignature Language="C#" Value="public static void InitPInvokeMtd ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void InitPInvokeMtd() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="InMethodFlg">
       <MemberSignature Language="C#" Value="public static bool InMethodFlg;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool InMethodFlg" />
@@ -634,19 +630,6 @@
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TypArr">
-      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type[] TypArr;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type[] TypArr" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>IKVM.Reflection.Type[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Holds an array of Type.</summary>
-        <remarks>
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Type01">

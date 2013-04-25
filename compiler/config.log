@@ -14,7 +14,7 @@ hostname = ubuntu-server
 uname -m = i686
 uname -r = 3.9.0-rc7-custom
 uname -s = Linux
-uname -v = #11 SMP Mon Apr 15 08:15:10 CEST 2013
+uname -v = #12 SMP Thu Apr 18 11:58:47 CEST 2013
 
 /usr/bin/uname -p = unknown
 /bin/uname -X     = unknown

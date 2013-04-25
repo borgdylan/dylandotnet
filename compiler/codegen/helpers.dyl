@@ -60,6 +60,8 @@ class public auto ansi static Helpers
 				temp = TypeAttributes::AutoLayout
 			elseif attr is Attributes.AnsiClassAttr then
 				temp = TypeAttributes::AnsiClass
+			elseif attr is Attributes.SequentialLayoutAttr then
+				temp = TypeAttributes::SequentialLayout
 			elseif attr is Attributes.SealedAttr then
 				temp = TypeAttributes::Sealed
 				sldf = true
@@ -158,6 +160,8 @@ class public auto ansi static Helpers
 				temp = MethodAttributes::NewSlot
 			elseif attr is Attributes.PrototypeAttr then
 				ILEmitter::ProtoFlg = true
+			elseif attr is Attributes.PinvokeImplAttr then
+				ILEmitter::PInvokeFlg = true
 			elseif attr is Attributes.NoneAttr then
 			else
 				flg = false
@@ -414,6 +418,8 @@ class public auto ansi static Helpers
 			return 32
 		elseif t::Equals(ILEmitter::Univ::Import(gettype long)) or t::Equals(ILEmitter::Univ::Import(gettype ulong)) or t::Equals(ILEmitter::Univ::Import(gettype double)) then
 			return 64
+		elseif t::Equals(ILEmitter::Univ::Import(gettype intptr)) or t::Equals(ILEmitter::Univ::Import(gettype UIntPtr)) then
+			return 64
 		else
 			return 0
 		end if
@@ -542,7 +548,9 @@ class public auto ansi static Helpers
 			end if
 			
 			ILEmitter::ArgInd++
+			SymTable::StoreFlg = true
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
+			SymTable::StoreFlg = false
 		end do
 		
 		SymTable::ResetParamCAs()
@@ -578,7 +586,9 @@ class public auto ansi static Helpers
 			end if
 			
 			ILEmitter::ArgInd++
+			SymTable::StoreFlg = true
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
+			SymTable::StoreFlg = false
 		end do
 		
 		SymTable::ResetParamCAs()
@@ -1164,7 +1174,13 @@ class public auto ansi static Helpers
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype char)) then
 			m1 = convc::GetMethod("ToChar", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if IsPrimitiveIntegralType(source) then
+				if (GetPrimitiveNumericSize(source) <= 16) and CheckUnsigned(source) then
+					ILEmitter::EmitConvU2()
+				else
+					ILEmitter::EmitConvOvfU2(CheckSigned(source))
+				end if
+			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype decimal)) then
@@ -1184,7 +1200,13 @@ class public auto ansi static Helpers
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype long)) then
 			m1 = convc::GetMethod("ToInt64", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if IsPrimitiveIntegralType(source) then
+				if GetPrimitiveNumericSize(source) <= 32 then
+					ILEmitter::EmitConvI8(CheckSigned(source))
+				else
+					ILEmitter::EmitConvOvfI8(CheckSigned(source))
+				end if
+			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype ulong)) then
@@ -1194,7 +1216,13 @@ class public auto ansi static Helpers
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype integer)) then
 			m1 = convc::GetMethod("ToInt32", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if IsPrimitiveIntegralType(source) then
+				if GetPrimitiveNumericSize(source) <= 16 then
+					ILEmitter::EmitConvI4()
+				else
+					ILEmitter::EmitConvOvfI4(CheckSigned(source))
+				end if
+			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(ILEmitter::Univ::Import(gettype uinteger)) then

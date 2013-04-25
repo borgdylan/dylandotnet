@@ -1,12 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../dnr/loader.dyl">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../codegen/typeitem.dyl">
     <Files>
-      <File FileName="test.dyl" Line="39" Column="23" />
-      <File FileName="../../dnr/loader.dyl" Line="310" Column="1" />
+      <File FileName="test.dyl" Line="1" Column="1" />
+      <File FileName="../../dnr/loader.dyl" Line="1" Column="1" />
       <File FileName="../../codegen/helpers.dyl" Line="1" Column="1" />
       <File FileName="../../codegen/stmtreader.dyl" Line="1" Column="1" />
-      <File FileName="../../codegen/typelist.dyl" Line="85" Column="1" />
+      <File FileName="../../codegen/typelist.dyl" Line="97" Column="1" />
+      <File FileName="../../codegen/symtable.dyl" Line="1" Column="1" />
+      <File FileName="../../codegen/ctoritem.dyl" Line="1" Column="1" />
+      <File FileName="../../codegen/typeitem.dyl" Line="116" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,15 +24,13 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>name</Value>
+          <Value>mtssnamarr</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/var/www/Code/dylannet/dylandotnet/compiler/dnr/loader.dyl" line="269" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

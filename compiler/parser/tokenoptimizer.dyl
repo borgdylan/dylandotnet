@@ -372,6 +372,10 @@ class public auto ansi TokenOptimizer
 			return new AnsiClassAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "beforefieldinit" then
 			return new BeforeFieldInitAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "pinvokeimpl" then
+			return new PinvokeImplAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "sequential" then
+			return new SequentialLayoutAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "string" then
 			return new StringTok(tok::Value) {Line = tok::Line}
 		elseif tok::Value = "void" then

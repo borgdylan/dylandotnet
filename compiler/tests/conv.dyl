@@ -7,7 +7,7 @@ import System
 assembly conv exe
 ver 1.2.0.0
 
-class public auto ansi beforefieldinit Module1
+class public auto ansi static Module1
 
 	field public static integer numfld
 
@@ -17,16 +17,16 @@ class public auto ansi beforefieldinit Module1
 
 	method public static void mettest()
 
-		var v1 as string = $string$Convert::ToInt32($double$1)
-		var v2 as integer = $integer$Convert::ToInt32($double$1)
-		var v3 as double = $double$Convert::ToInt32($double$1)
-		var v4 as boolean = $boolean$Convert::ToInt32($double$1)
-		var v5 as char = $char$Convert::ToInt32($double$1)
-		var v6 as decimal = $decimal$Convert::ToInt32($double$1)
-		var v7 as long = $long$Convert::ToInt32($double$1)
-		var v8 as sbyte = $sbyte$Convert::ToInt32($double$1)
-		var v9 as short = $short$Convert::ToInt32($double$1)
-		var v10 as single = $single$Convert::ToInt32($double$1)
+		var v1 as string = $string$#expr($integer$#expr($double$1))
+		var v2 as integer = $integer$#expr($integer$#expr($double$1))
+		var v3 as double = $double$#expr($integer$#expr($double$1))
+		var v4 as boolean = $boolean$#expr($integer$#expr($double$1))
+		var v5 as char = $char$#expr($integer$#expr($double$1))
+		var v6 as decimal = $decimal$#expr($integer$#expr($double$1))
+		var v7 as long = $long$#expr($integer$#expr($double$1))
+		var v8 as sbyte = $sbyte$#expr($integer$#expr($double$1))
+		var v9 as short = $short$#expr($integer$#expr($double$1))
+		var v10 as single = $single$#expr($integer$#expr($double$1))
 
 	end method
 

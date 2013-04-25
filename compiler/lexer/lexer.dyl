@@ -7,11 +7,10 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi Lexer
-
-	method public StmtSet Analyze(var path as string)
+	
+	method public StmtSet AnalyzeCore(var sr as TextReader, var path as string)
 		var stmts as StmtSet = new StmtSet(path)
 		var curstmt as Stmt = null
-		var sr as StreamReader = new StreamReader(path,true)
 		var crflag as boolean = false
 		var lfflag as boolean = false
 		var buf as string = string::Empty
@@ -23,15 +22,15 @@ class public auto ansi Lexer
 		
 			chr = $char$sr::Read()
 			
-			if chr = c'\r' then
+			if chr == c'\r' then
 				crflag = true
 			end if
 			
-			if chr = c'\n' then
+			if chr == c'\n' then
 				lfflag = true
 			end if
 			
-			if (crflag or lfflag) = false then
+			if !#expr(crflag or lfflag) then
 				buf = buf + $string$chr
 			else
 				if lfflag then
@@ -49,7 +48,7 @@ class public auto ansi Lexer
 				end if
 			end if
 			
-			if sr::Peek() = -1 then
+			if sr::Peek() == -1 then
 				curline++
 				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
 				curstmtlen = curstmt::Tokens::get_Count()
@@ -65,124 +64,18 @@ class public auto ansi Lexer
 		sr::Dispose()
 		
 		return stmts
+	end method
+	
+	method public StmtSet Analyze(var path as string)
+		return AnalyzeCore(new StreamReader(path,true), path)
 	end method
 	
 	method public StmtSet AnalyzeString(var str as string)
-		var stmts as StmtSet = new StmtSet()
-		var curstmt as Stmt = null
-		var sr as StringReader = new StringReader(str)
-		var crflag as boolean = false
-		var lfflag as boolean = false
-		var buf as string = string::Empty
-		var curline as integer = 0
-		var curstmtlen as integer = -1
-		var chr as char = 'a'
-		 
-		do while sr::Peek() >= 0
-		
-			chr = $char$sr::Read()
-			
-			if chr = c'\r' then
-				crflag = true
-			end if
-			
-			if chr = c'\n' then
-				lfflag = true
-			end if
-			
-			if (crflag or lfflag) = false then
-				buf = buf + $string$chr
-			else
-				if lfflag then
-					curline++
-					curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
-					curstmtlen = curstmt::Tokens::get_Count()
-			
-					if curstmtlen != 0 then
-						stmts::AddStmt(curstmt)
-					end if
-			
-					buf = string::Empty
-					crflag = false
-					lfflag = false
-				end if
-			end if
-			
-			if sr::Peek() = -1 then
-				curline++
-				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
-				curstmtlen = curstmt::Tokens::get_Count()
-			
-				if curstmtlen != 0 then
-					stmts::AddStmt(curstmt)
-				end if
-			end if
-			
-		end do
-		
-		sr::Close()
-		sr::Dispose()
-		
-		return stmts
+		return AnalyzeCore(new StringReader(str), string::Empty)
 	end method
 	
 	method public StmtSet AnalyzeStream(var sm as Stream)
-		var stmts as StmtSet = new StmtSet()
-		var curstmt as Stmt = null
-		var sr as StreamReader = new StreamReader(sm)
-		var crflag as boolean = false
-		var lfflag as boolean = false
-		var buf as string = string::Empty
-		var curline as integer = 0
-		var curstmtlen as integer = -1
-		var chr as char = 'a'
-		 
-		do while sr::Peek() >= 0
-		
-			chr = $char$sr::Read()
-			
-			if chr = c'\r' then
-				crflag = true
-			end if
-			
-			if chr = c'\n' then
-				lfflag = true
-			end if
-			
-			if (crflag or lfflag) = false then
-				buf = buf + $string$chr
-			else
-				if lfflag then
-					curline++
-					curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
-					curstmtlen = curstmt::Tokens::get_Count()
-			
-					if curstmtlen != 0 then
-						stmts::AddStmt(curstmt)
-					end if
-			
-					buf = string::Empty
-					crflag = false
-					lfflag = false
-				end if
-			end if
-			
-			if sr::Peek() = -1 then
-				curline++
-				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
-				curstmtlen = curstmt::Tokens::get_Count()
-			
-				if curstmtlen != 0 then
-					stmts::AddStmt(curstmt)
-				end if
-			end if
-			
-		end do
-		
-		sr::Close()
-		sr::Dispose()
-		
-		return stmts
+		return AnalyzeCore(new StreamReader(sm), string::Empty)
 	end method
 
 

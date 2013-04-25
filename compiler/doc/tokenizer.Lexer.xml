@@ -13,6 +13,13 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.Lexer.Lexer.AnalyzeCore">
+            <param name="sr">To be added.</param>
+            <param name="path">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.Lexer.Lexer.AnalyzeStream">
             <param name="sm">To be added.</param>
             <summary>To be added.</summary>

@@ -10,7 +10,6 @@ class public auto ansi static Importer
 
 	field public static C5.IList<of IKVM.Reflection.Assembly> Asms
 	field public static C5.IList<of string> Imps
-	field public static C5.IList<of string> LocImps
 	field public static C5.IDictionary<of string,string> AliasMap
 
 	[method: ComVisible(false)]
@@ -26,13 +25,15 @@ class public auto ansi static Importer
 		Add("short", "System.Int16"), _
 		Add("integer", "System.Int32"), _
 		Add("long", "System.Int64"), _
+		Add("single", "System.Single"), _
+		Add("double", "System.Double"), _
 		Add("byte", "System.Byte"), _
 		Add("ushort", "System.UInt16"), _
 		Add("uinteger", "System.UInt32"), _
 		Add("ulong", "System.UInt64"), _
 		Add("intptr", "System.IntPtr"), _
 		Add("uintptr", "System.UIntPtr"), _
-		Add("decimal", "System.Decimal")}
+		Add("decimal", "System.Decimal") }
 	end method
 
 	method private static void Importer()
@@ -44,19 +45,6 @@ class public auto ansi static Importer
 		Asms::Add(asmm)
 	end method
 
-//	method private static string[] addelem(var srcarr as string[], var eltoadd as string)
-//		var i as integer = -1
-//		var destarr as string[] = new string[srcarr[l] + 1]
-//
-//		do until i = (srcarr[l] - 1)
-//			i = i + 1
-//			destarr[i] = srcarr[i]
-//		end do
-//
-//		destarr[srcarr[l]] = eltoadd
-//		return destarr
-//	end method
-
 	[method: ComVisible(false)]
 	method public static void AddImp(var imp as string)
 		Imps::Add(imp)
@@ -67,9 +55,9 @@ class public auto ansi static Importer
 		AliasMap::Add(alias, ns)
 	end method
 
-	[method: ComVisible(false)]
-	method public static void AddLocImp(var imp as string)
-		Imps::Add(imp)
-	end method
+//	[method: ComVisible(false)]
+//	method public static void AddLocImp(var imp as string)
+//		Imps::Add(imp)
+//	end method
 
 end class

@@ -27,7 +27,7 @@ end #if
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>")]
 
 assembly pc2cd exe
-ver 11.3.1.3
+ver 11.3.1.4
 
 namespace dylan.NET.PkgConfig.PC2CD
 
@@ -94,7 +94,7 @@ namespace dylan.NET.PkgConfig.PC2CD
 		[method: STAThread()]
 		method public static void main(var args as string[])
 		
-			Console::WriteLine("dylan.NET Pkg-Config Helper v. 11.3.1.3 Beta")
+			Console::WriteLine("dylan.NET Pkg-Config Helper v. 11.3.1.4 Beta")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2012 Dylan Borg")
 			if args[l] < 1 then

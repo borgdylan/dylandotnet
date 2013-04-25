@@ -33,7 +33,7 @@ class public auto ansi Line
 	//lc - lookahead char
 	//sca/sc - still copy signal (enables copy to buffer)
 	//scla/scl - still cut last signal (enables a buffer flush in the cycle after a char is put in buffer)
-	//ob/cuttok - signal to flush buffer before current char is written to it
+	//ob/[cuttok] - signal to flush buffer before current char is written to it
 	method private boolean isSep(var cc as string, var lc as string, var sca as boolean&, var scla as boolean&)
 		//scla is true as set by Analyze i.e. set only if setting to false
 		//sca is false as set by Analyze i.e. set only if setting to true
@@ -43,104 +43,56 @@ class public auto ansi Line
 			lc = " "
 		end if
 
-		label fin
-
-		if cc = c"\q" then
+		if cc == c"\q" then
 			InStr = !InStr
-			if InStr = false then
+			if InStr == false then
 				InChar = false
 			end if
 		end if
 
-		if cc = "'" then
+		if cc == "'" then
 			InChar = !InChar
 		end if
 
-		if (InStr or InChar) = false then
-			//----------------------------------
-			if cc = ":" then
-				if PrevChar = c"\q" then
-					ob = true
-					scla = false
-					sca = true
-					goto fin
-				end if
-			end if
-			//----------------------------------
-
-			if cc = "(" then
+		if !#expr(InStr or InChar) then
+			if (cc == ":") and (PrevChar == c"\q") then
+				ob = true
+				scla = false
+				sca = true
+			elseif cc = "(" then
 				sca = true
 				ob = true
-				goto fin
-			end if
-
-			if cc = ")" then
+			elseif cc = ")" then
 				sca = true
 				ob = true
-				goto fin
-			end if
-			
-			if cc = "{" then
+			elseif cc = "{" then
 				sca = true
 				ob = true
-				goto fin
-			end if
-
-			if cc = "}" then
+			elseif cc = "}" then
 				sca = true
 				ob = true
-				goto fin
-			end if
-
-			if cc = "[" then
+			elseif cc = "[" then
+				sca = true
+				ob = true
 				if lc = "]" then
-					sca = true
 					scla = false
-					ob = true
-				else
-					sca = true
-					ob = true
 				end if
-				goto fin
-			end if
-
-			if cc = "]" then
-				if PrevChar = "[" then
-					ob = false
-					sca = true
-				else
-					sca = true
-					ob = true
-				end if
-				goto fin
-			end if
-
-			if cc = "," then
+			elseif cc = "]" then
+				sca = true
+				ob = PrevChar != "["
+			elseif cc = "," then
 				sca = true
 				ob = true
-				goto fin
-			end if
-
-			if cc = "&" then
+			elseif cc = "&" then
 				sca = true
 				ob = true
-				goto fin
-			end if
-
-			if cc = "*" then
+			elseif cc = "*" then
 				sca = true
 				ob = true
-				goto fin
-			end if
-
-			if cc = "/" then
+			elseif cc = "/" then
 				if lc != "/" then
 					sca = true
-					if PrevChar = "/" then
-						ob = false
-					else
-						ob = true
-					end if
+					ob = PrevChar != "/"
 				else
 					if PrevChar = "/" then
 						ob = false
@@ -150,42 +102,24 @@ class public auto ansi Line
 						ob = true
 					end if
 				end if
-				goto fin
-			end if
-
-			if cc = "|" then
+			elseif cc = "|" then
 				sca = true
 				ob = true
-				goto fin
-			end if
-			
-			if cc = "?" then
+			elseif cc = "?" then
 				sca = true
 				ob = true
-				goto fin
-			end if
-
-			if cc = "$" then
+			elseif cc = "$" then
 				sca = true
 				ob = true
-				goto fin
-			end if
-
-			if cc = "&" then
+			elseif cc = "&" then
 				sca = true
 				ob = true
-				goto fin
-			end if
-
-			if cc = "~" then
+			elseif cc = "~" then
 				sca = true
 				ob = true
-				goto fin
-			end if
-
-			if cc = "=" then
+			elseif cc = "=" then
+				sca = true
 				if lc != "=" then
-					sca = true
 					if PrevChar = ">" then
 						ob = false
 					elseif PrevChar = "<" then
@@ -198,26 +132,16 @@ class public auto ansi Line
 						ob = true
 					end if
 				else
-					sca = true
 					scla = false
 					ob = true
 				end if
-				goto fin
-			end if
-
-			if cc = "!" then
-				if lc != "=" then
-					sca = true
-					ob = true
-				else
-					sca = true
+			elseif cc = "!" then
+				sca = true
+				ob = true
+				if lc == "=" then
 					scla = false
-					ob = true
 				end if
-				goto fin
-			end if
-
-			if cc = "<" then
+			elseif cc = "<" then
 				if lc = "=" then
 					sca = true
 					scla = false
@@ -238,12 +162,9 @@ class public auto ansi Line
 						ob = true
 					end if
 				end if
-				goto fin
-			end if
-
-			if cc = ">" then
+			elseif cc = ">" then
+				sca = true
 				if lc != "=" then
-					sca = true
 					if PrevChar = "<" then
 						ob = false
 					elseif PrevChar = ">" then
@@ -256,64 +177,37 @@ class public auto ansi Line
 						ob = true
 					end if
 				else
-					sca = true
 					scla = false
 					ob = true
 				end if
-				goto fin
-			end if
-
-			if cc = "-" then
+			elseif cc = "-" then
+				sca = true
 				if lc != "-" then
-					sca = true
-					if PrevChar = "-" then
-						ob = false
-					else
-						ob = true
-					end if
+					ob = PrevChar != "-"
 					if Char::IsDigit($char$lc) then
 						scla = false
 					end if
 				else
-					sca = true
 					scla = false
 					ob = true
 				end if
-				goto fin
-			end if
-
-			if cc = "+" then
+			elseif cc = "+" then
+				sca = true
 				if lc != "+" then
-					sca = true
-					if PrevChar = "+" then
-						ob = false
-					else
-						ob = true
-					end if
-					if Char::IsDigit($char$lc) then
+					ob = PrevChar != "+"
+					if char::IsDigit($char$lc) then
 						scla = false
 					end if
 				else
-					sca = true
 					scla = false
 					ob = true
 				end if
-				goto fin
-			end if
-
-			if cc = c"\t" then
+			elseif cc = c"\t" then
 				sca = false
 				ob = true
-				goto fin
-			else
-				sca = false
-				ob = false
-			end if
-
-			if cc = " " then
+			elseif cc = " " then
 				sca = false
 				ob = true
-				goto fin
 			else
 				sca = false
 				ob = false
@@ -322,8 +216,6 @@ class public auto ansi Line
 			sca = false
 			ob = false
 		end if
-
-		place fin
 
 		PrevChar = cc
 		return ob
@@ -337,62 +229,47 @@ class public auto ansi Line
 		var len as integer = --str::get_Length()
 		
 		var buf as string = string::Empty
-		var cuttok as boolean = false
 		var sc as boolean = false
 		var scl as boolean = false
 		var i as integer = -1
 		var j as integer = 0
-		label loop
-		label cont
 		
-		if len = -1 then
-			goto cont
+		if len > -1 then
+			do			
+				i++
+				j = ++i
+				
+				if !scl then
+					sc = false
+				end if
+				
+				if sc then
+					if buf::get_Length() != 0 then
+						stm::AddToken(new Token() {Value = buf, Line = stm::Line})
+					end if
+					buf = string::Empty
+				end if
+				
+				sc = false
+				scl = true
+				
+				curchar = $string$str::get_Chars(i)
+				lachar = #ternary{i < len ? $string$str::get_Chars(j), null}
+				
+				if isSep(curchar, lachar, ref sc, ref scl) then
+					if buf::get_Length() != 0 then
+						stm::AddToken(new Token() {Value = buf, Line = stm::Line})
+					end if
+					buf = string::Empty
+					if sc then
+						buf = buf + curchar
+					end if
+				else
+					buf = buf + curchar
+				end if
+			
+			until i == len
 		end if
-		
-		place loop
-		
-		i++
-		j = ++i
-		cuttok = false
-		
-		if scl = false then
-			sc = false
-		end if
-		
-		if sc then
-			if buf::get_Length() != 0 then
-				stm::AddToken(new Token() {Value = buf, Line = stm::Line})
-			end if
-			buf = string::Empty
-		end if
-		
-		sc = false
-		scl = true
-		
-		curchar = $string$str::get_Chars(i)
-		lachar = #ternary{i < len ? $string$str::get_Chars(j), null}
-		
-		cuttok = isSep(curchar, lachar, ref sc, ref scl)
-		
-		if cuttok then
-			if buf::get_Length() != 0 then
-				stm::AddToken(new Token() {Value = buf, Line = stm::Line})
-			end if
-			buf = string::Empty
-			if sc then
-				buf = buf + curchar
-			end if
-		else
-			buf = buf + curchar
-		end if
-		
-		if i = len then
-			goto cont
-		else
-			goto loop
-		end if
-		
-		place cont
 		
 		if buf::get_Length() != 0 then
 			stm::AddToken(new Token() {Value = buf, Line = stm::Line})

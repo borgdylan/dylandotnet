@@ -12,11 +12,6 @@
             <summary>Set this to allow automatic valuetype pointer load during field chaining.</summary>
             <remarks />
         </member>
-        <member name="dylan.NET.Reflection.AsmFactory.AddTyp">
-            <param name="typ">The Type instance to add to the AsmFactory TypArr array.</param>
-            <summary>Adds a Type instance to the TypArr array.</summary>
-            <remarks />
-        </member>
         <member name="dylan.NET.Reflection.AsmFactory.AddTypB">
             <param name="typ">The TypeBuilder to add.</param>
             <summary>Add a TypeBuilder to the list of type builders.</summary>
@@ -163,6 +158,10 @@
             <summary>Initialises AsmFactory and ILEmitter to work with a new MethodBuilder.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Reflection.AsmFactory.InitPInvokeMtd">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Reflection.AsmFactory.InMethodFlg">
             <summary>If set indicates that a method is under construction.</summary>
             <remarks />
@@ -182,10 +181,6 @@
         <member name="dylan.NET.Reflection.AsmFactory.RefChainFlg">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Reflection.AsmFactory.TypArr">
-            <summary>Holds an array of Type.</summary>
-            <remarks />
         </member>
         <member name="dylan.NET.Reflection.AsmFactory.Type01">
             <summary>Usually holds the output of the EvalTTok method from the codegen module.</summary>
@@ -359,9 +354,33 @@
             <summary>Emits the 'conv.i4' opcode.</summary>
             <remarks>Useful to convert array lengths returned by 'ldlen' to more appropriate format.</remarks>
         </member>
+        <member name="dylan.NET.Reflection.ILEmitter.EmitConvI8">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Reflection.ILEmitter.EmitConvOvfI4">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Reflection.ILEmitter.EmitConvOvfI8">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Reflection.ILEmitter.EmitConvOvfU2">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Reflection.ILEmitter.EmitConvU">
             <summary>Emits the 'conv.u' opcode.</summary>
             <remarks>Useful in preparing indices to work with array opcodes.</remarks>
+        </member>
+        <member name="dylan.NET.Reflection.ILEmitter.EmitConvU2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Reflection.ILEmitter.EmitDelegateAdd">
             <summary>Emits a 'call' to Delegate.Combine.</summary>
@@ -738,6 +757,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Reflection.ILEmitter.PInvokeFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Reflection.ILEmitter.PopDocWriter">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -780,11 +803,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Reflection.Importer.AddLocImp">
-            <param name="imp">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="dylan.NET.Reflection.Importer.AliasMap">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -798,10 +816,6 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Reflection.Importer.Init">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="dylan.NET.Reflection.Importer.LocImps">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

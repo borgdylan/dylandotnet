@@ -40,6 +40,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AnalyzeCore">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.StmtSet AnalyzeCore (System.IO.TextReader sr, string path);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Stmts.StmtSet AnalyzeCore(class System.IO.TextReader sr, string path) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.StmtSet</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sr" Type="System.IO.TextReader" />
+        <Parameter Name="path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="sr">To be added.</param>
+        <param name="path">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AnalyzeStream">
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.StmtSet AnalyzeStream (System.IO.Stream sm);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Stmts.StmtSet AnalyzeStream(class System.IO.Stream sm) cil managed" />

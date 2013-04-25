@@ -49,7 +49,7 @@ import IKVM.Reflection.Emit
 #include "ast/assemblyinfo.dyl"
 
 assembly tokenizer.AST dll
-ver 11.3.1.3
+ver 11.3.1.4
 
 namespace dylan.NET.Tokenizer.AST.Tokens
 	#include "ast/token.dyl"

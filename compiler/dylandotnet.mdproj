@@ -21,7 +21,7 @@
             <MessageStyle LineAlign="0" />
           </ChangeLogPolicy>
         </Policies>
-        <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="true" RelativeMakefileName="Makefile" RelativeConfigureInPath=".">
+        <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="True" RelativeMakefileName="Makefile" RelativeConfigureInPath=".">
           <BuildFilesVar />
           <DeployFilesVar />
           <ResourcesVar />
@@ -583,6 +583,7 @@
     <None Include="configure.ac" />
     <None Include="codegen\propertyitem.dyl" />
     <None Include="codegen\eventitem.dyl" />
+    <None Include="codegen\pinvokeinfo.dyl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ast\interfaces.dyl" />

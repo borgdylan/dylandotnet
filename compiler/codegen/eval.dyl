@@ -21,8 +21,7 @@ class public auto ansi beforefieldinit Evaluator
 
 	method public static integer RetPrec(var tok as Token)
 		if tok is Op then
-			var optok as Op = $Op$tok
-			return optok::PrecNo
+			return #expr($Op$tok)::PrecNo
 		elseif tok is LParen then
 			return -1		
 		elseif tok is RParen then
@@ -31,18 +30,6 @@ class public auto ansi beforefieldinit Evaluator
 			return 0		
 		end if
 	end method
-
-//	method public static boolean isLParen(var tok as Token)
-//		return tok is LParen
-//	end method
-//	
-//	method public static boolean isRParen(var tok as Token)
-//		return tok is RParen
-//	end method
-//
-//	method public static boolean isOp(var tok as Token)
-//		return tok is Op
-//	end method
 
 	method public Expr ConvToRPN(var exp as Expr)
 		if (exp::Tokens::get_Count() == 0) or (exp::Tokens::get_Count() == 1) then
@@ -54,7 +41,7 @@ class public auto ansi beforefieldinit Evaluator
 		var i as integer = -1
 		var tok as Token = null
 
-		do until i = --exp::Tokens::get_Count()
+		do until i == --exp::Tokens::get_Count()
 
 			i++
 			tok = exp::Tokens::get_Item(i)
@@ -90,7 +77,7 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 		end do
 
-		if Stack::getLength() = 0 then
+		if Stack::getLength() == 0 then
 			return exp2
 		end if
 
@@ -113,13 +100,13 @@ class public auto ansi beforefieldinit Evaluator
 		var tok2 as Token = null
 		var optok as Op
 
-		if exp::Tokens::get_Count() = 1 then
+		if exp::Tokens::get_Count() == 1 then
 			return exp::Tokens::get_Item(0)
 		elseif exp::Tokens::get_Count() = 0 then
 			return null
 		end if
 		var len as integer = --exp::Tokens::get_Count()
-		do until i = len
+		do until i == len
 			i++
 			tok = exp::Tokens::get_Item(i)
 			if tok is Op then
@@ -139,7 +126,7 @@ class public auto ansi beforefieldinit Evaluator
 					i = j
 				end if
 			end if
-			if i = len then
+			if i == len then
 				tokf = exp::Tokens::get_Item(0)
 			end if
 		end do
@@ -163,7 +150,7 @@ class public auto ansi beforefieldinit Evaluator
 				typ = AsmFactory::Type02
 				ASTEmit(ConvToAST(ConvToRPN(idt::ArrLoc)), emt)
 				
-				if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
+				if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
 				elseif !typ::get_IsArray() then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + typ::ToString() + "' is not an Array Type.")
@@ -273,7 +260,7 @@ class public auto ansi beforefieldinit Evaluator
 		do until i = --idtnamarr[l]
 			i++
 			AsmFactory::AddrFlg = i != --idtnamarr[l]
-			AsmFactory::ForcedAddrFlg = (i == --idtnamarr[l]) and idt::IsRef and (idt::IsArr == false)
+			AsmFactory::ForcedAddrFlg = (i == --idtnamarr[l]) and idt::IsRef and !idt::IsArr
 			
 			if !idtb2 then
 				if !idtb1 then
@@ -878,29 +865,22 @@ class public auto ansi beforefieldinit Evaluator
 	method public void ASTEmit(var tok as Token, var emt as boolean)
 		Helpers::NullExprFlg = tok is NullLiteral
 		var optok as Op = null
-		var rc as Token = new Token()
-		var lc as Token = new Token()
+		var rc as Token = null
+		var lc as Token = null
 		var lctyp as IKVM.Reflection.Type = null
 		var rctyp as IKVM.Reflection.Type = null
-		var typ as Type
-		var isflg as boolean = false
-		var asflg as boolean = false
 
 		if tok is Op then
 			optok = $Op$tok
-			
-			if optok is IsOp then
-				isflg = true
-			elseif optok is AsOp then
-				asflg = true
-			end if
+			var isflg as boolean = optok is IsOp
+			var asflg as boolean = optok is AsOp
 			
 			rc = optok::RChild
 			lc = optok::LChild
 			ASTEmit(lc, emt)
 			lctyp = AsmFactory::Type02
 	
-			if (isflg or asflg) == false then
+			if !#expr(isflg or asflg) then
 				ASTEmit(rc, emt)
 				rctyp = AsmFactory::Type02
 
@@ -913,17 +893,16 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 
 				Helpers::OpCodeSuppFlg = #ternary{lctyp::Equals(rctyp) ? lctyp::get_IsPrimitive(), false}
-				typ = gettype ValueType
-				Helpers::EqSuppFlg = ((ILEmitter::Univ::Import(typ)::IsAssignableFrom(lctyp) or ILEmitter::Univ::Import(typ)::IsAssignableFrom(rctyp)) == false) or Helpers::OpCodeSuppFlg
-				typ = gettype Enum
-				Helpers::EqSuppFlg = Helpers::EqSuppFlg or (lctyp::Equals(rctyp) and ILEmitter::Univ::Import(typ)::IsAssignableFrom(lctyp))
+				var typ2 = ILEmitter::Univ::Import(gettype ValueType)
+				Helpers::EqSuppFlg = !#expr(typ2::IsAssignableFrom(lctyp) or typ2::IsAssignableFrom(rctyp)) or Helpers::OpCodeSuppFlg
+				Helpers::EqSuppFlg = Helpers::EqSuppFlg or (lctyp::Equals(rctyp) and ILEmitter::Univ::Import(gettype Enum)::IsAssignableFrom(lctyp))
 			end if
 
 			AsmFactory::Type02 = #ternary {optok is ConditionalOp ? ILEmitter::Univ::Import(gettype boolean), lctyp}
 
 			if isflg then
 				if emt then
-					var istyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok($TypeTok$rc)
+					var istyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
 					if istyp = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + rc::Value + "' was not found.")
 					else
@@ -931,7 +910,7 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				end if
 			elseif asflg then
-				var astyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok($TypeTok$rc)
+				var astyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
 				if astyp = null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + rc::Value + "' was not found.")
 				else
@@ -943,7 +922,7 @@ class public auto ansi beforefieldinit Evaluator
 			else
 				Helpers::LeftOp = lctyp
 				Helpers::RightOp = rctyp
-				Helpers::EmitOp(optok, Helpers::CheckUnsigned(lctyp) == false, emt)
+				Helpers::EmitOp(optok, !Helpers::CheckUnsigned(lctyp), emt)
 			end if
 				
 			if emt then
@@ -1010,7 +989,7 @@ class public auto ansi beforefieldinit Evaluator
 				var newactok as NewarrCallTok = $NewarrCallTok$tok
 				typ2 = Helpers::CommitEvalTTok(newactok::ArrayType)
 				ASTEmit(ConvToAST(ConvToRPN(newactok::ArrayLen)), emt)
-				if Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) == false then
+				if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Array Lengths should be of a Primitive Integer Type.")
 				end if
 				if emt then
@@ -1028,7 +1007,7 @@ class public auto ansi beforefieldinit Evaluator
 				
 				var ci as CollectionItem = Helpers::ProcessCollection(typ2,aictok::ForceArray)
 				
-				if (ci == null) then
+				if ci == null then
 					if emt then
 						ILEmitter::EmitLdcI4(aictok::Elements::get_Count())
 						ILEmitter::EmitConvI()
@@ -1214,7 +1193,7 @@ class public auto ansi beforefieldinit Evaluator
 		//end if
 
 		//determination of byref storage mode or not
-		if (idtnamarr[l] = 1) and !idt::IsArr then
+		if (idtnamarr[l] == 1) and !idt::IsArr then
 			SymTable::StoreFlg = true
 			vr = SymTable::FindVar(idtnamarr[0])
 			SymTable::StoreFlg = false
@@ -1419,8 +1398,7 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 				if fldinf::get_IsInitOnly() then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is declared as readonly and may not be set from this context.")
-				end if
-				if idtisstatic != fldinf::get_IsStatic() then
+				elseif idtisstatic != fldinf::get_IsStatic() then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' defined for the class '" _
 						+ idttyp::ToString() + #ternary {idtisstatic and !fldinf::get_IsStatic() ? "' is an instance field.", "' is static."})
 				end if

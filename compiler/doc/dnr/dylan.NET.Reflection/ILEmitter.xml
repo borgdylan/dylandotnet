@@ -627,6 +627,90 @@
         <remarks>Useful to convert array lengths returned by 'ldlen' to more appropriate format.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitConvI8">
+      <MemberSignature Language="C#" Value="public static void EmitConvI8 (bool s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvI8(bool s) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvOvfI4">
+      <MemberSignature Language="C#" Value="public static void EmitConvOvfI4 (bool s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvOvfI4(bool s) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvOvfI8">
+      <MemberSignature Language="C#" Value="public static void EmitConvOvfI8 (bool s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvOvfI8(bool s) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvOvfU2">
+      <MemberSignature Language="C#" Value="public static void EmitConvOvfU2 (bool s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvOvfU2(bool s) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitConvU">
       <MemberSignature Language="C#" Value="public static void EmitConvU ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitConvU() cil managed" />
@@ -643,6 +727,24 @@
       <Docs>
         <summary>Emits the 'conv.u' opcode.</summary>
         <remarks>Useful in preparing indices to work with array opcodes.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvU2">
+      <MemberSignature Language="C#" Value="public static void EmitConvU2 ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvU2() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitDelegateAdd">
@@ -2238,6 +2340,18 @@
     <Member MemberName="PartialFlg">
       <MemberSignature Language="C#" Value="public static bool PartialFlg;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool PartialFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PInvokeFlg">
+      <MemberSignature Language="C#" Value="public static bool PInvokeFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool PInvokeFlg" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

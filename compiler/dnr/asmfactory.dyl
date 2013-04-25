@@ -46,7 +46,7 @@ class public auto ansi static AsmFactory
 	field public static IKVM.Reflection.Emit.TypeBuilder[] CurnTypList
 	field public static boolean isNested
 	field public static boolean inClass
-	field public static IKVM.Reflection.Type[] TypArr
+	//field public static IKVM.Reflection.Type[] TypArr
 	field public static string[] GenParamNames
 	field public static IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
 
@@ -66,7 +66,7 @@ class public auto ansi static AsmFactory
 		CurnPropName = string::Empty
 		CurnExplImplType = string::Empty
 		CurnTypList = new IKVM.Reflection.Emit.TypeBuilder[0]
-		TypArr = new IKVM.Reflection.Type[0]
+		//TypArr = new IKVM.Reflection.Type[0]
 		GenParamNames = new string[0]
 		GenParamTyps = new IKVM.Reflection.Emit.GenericTypeParameterBuilder[0]
 		isNested = false
@@ -74,7 +74,7 @@ class public auto ansi static AsmFactory
 	end method
 
 	method private static void AsmFactory()
-		AsmMode = String::Empty
+		AsmMode = "exe"
 		Init()
 	end method
 
@@ -115,6 +115,12 @@ class public auto ansi static AsmFactory
 		ILEmitter::Met = CurnMetB
 		CurnMetB::SetImplementationFlags(IKVM.Reflection.MethodImplAttributes::Runtime or IKVM.Reflection.MethodImplAttributes::Managed)
 	end method
+	
+	[method: ComVisible(false)]
+	method public static void InitPInvokeMtd()
+		ILEmitter::Met = CurnMetB
+		CurnMetB::SetImplementationFlags(CurnMetB::GetMethodImplementationFlags() or IKVM.Reflection.MethodImplAttributes::PreserveSig)
+	end method
 
 	[method: ComVisible(false)]
 	method public static void AddTypB(var typ as IKVM.Reflection.Emit.TypeBuilder)
@@ -135,24 +141,24 @@ class public auto ansi static AsmFactory
 
 	end method
 
-	[method: ComVisible(false)]
-	method public static void AddTyp(var typ as IKVM.Reflection.Type)
-
-		var len as integer = TypArr[l]
-		var stopel as integer = --len
-		var i as integer = -1
-
-		var destarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[++len]
-
-		do until i = stopel
-			i++
-			destarr[i] = TypArr[i]
-		end do
-		
-		destarr[len] = typ
-		TypArr = destarr
-
-	end method
+//	[method: ComVisible(false)]
+//	method public static void AddTyp(var typ as IKVM.Reflection.Type)
+//
+//		var len as integer = TypArr[l]
+//		var stopel as integer = --len
+//		var i as integer = -1
+//
+//		var destarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[++len]
+//
+//		do until i = stopel
+//			i++
+//			destarr[i] = TypArr[i]
+//		end do
+//		
+//		destarr[len] = typ
+//		TypArr = destarr
+//
+//	end method
 
 	[method: ComVisible(false)]
 	method public static void AddGenParamName(var nam as string)

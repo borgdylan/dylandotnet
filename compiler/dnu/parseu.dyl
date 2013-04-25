@@ -8,32 +8,32 @@
 
 class public auto ansi static ParseUtils
 
-	method private static string[] addelem(var srcarr as string[], var eltoadd as string)
-
-		var i as integer = -1
-		var destarr as string[] = new string[++srcarr[l]]
-
-		do until i = --srcarr[l]
-			i++
-			destarr[i] = srcarr[i]
-		end do
-
-		destarr[srcarr[l]] = eltoadd
-
-		return destarr
-	end method
-
-	method private static string[] remelem(var srcarr as string[])
-		var i as integer = -1
-		var destarr as string[] = new string[--srcarr[l]]
-
-		do while (srcarr[l] - 2) >= i
-			i++
-			destarr[i] = srcarr[i]
-		end do
-	
-		return destarr
-	end method
+//	method private static string[] addelem(var srcarr as string[], var eltoadd as string)
+//
+//		var i as integer = -1
+//		var destarr as string[] = new string[++srcarr[l]]
+//
+//		do until i = --srcarr[l]
+//			i++
+//			destarr[i] = srcarr[i]
+//		end do
+//
+//		destarr[srcarr[l]] = eltoadd
+//
+//		return destarr
+//	end method
+//
+//	method private static string[] remelem(var srcarr as string[])
+//		var i as integer = -1
+//		var destarr as string[] = new string[--srcarr[l]]
+//
+//		do while (srcarr[l] - 2) >= i
+//			i++
+//			destarr[i] = srcarr[i]
+//		end do
+//	
+//		return destarr
+//	end method
 
 	[method: ComVisible(false)]
 	method public static string[] StringParser(var StringToParse as string, var DelimeterChar as string)

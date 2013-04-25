@@ -351,8 +351,7 @@ class public auto ansi static Loader
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.MethodInfo LoadBinOp(var typ as IKVM.Reflection.Type, var name as string, var typa as IKVM.Reflection.Type, var typb as IKVM.Reflection.Type)
 		var mil as MILambdas = new MILambdas(name)
-		var matches as IKVM.Reflection.MethodInfo[]		
-		matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameName())))
+		var matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameName())))
 
 		if matches[l] = 0 then
 			return null
@@ -366,8 +365,7 @@ class public auto ansi static Loader
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.MethodInfo LoadUnaOp(var typ as IKVM.Reflection.Type, var name as string, var typa as IKVM.Reflection.Type)
 		var mil as MILambdas = new MILambdas(name)
-		var matches as IKVM.Reflection.MethodInfo[]		
-		matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameName())))
+		var matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameName())))
 
 		if matches[l] = 0 then
 			return null
@@ -382,8 +380,7 @@ class public auto ansi static Loader
 	method public static IKVM.Reflection.MethodInfo LoadGenericMethod(var typ as IKVM.Reflection.Type, var name as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[])
 		var mtdinfo as IKVM.Reflection.MethodInfo = null
 		var mil as MILambdas = new MILambdas(genparams)
-		var matches as IKVM.Reflection.MethodInfo[]
-		matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Select<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(LoadGenericMtdOverlds(typ, name, genparams[l]), new Func<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(mil::InstGenMtd())))
+		var matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Select<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(LoadGenericMtdOverlds(typ, name, genparams[l]), new Func<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(mil::InstGenMtd())))
 		
 		if matches[l] = 0 then
 			mtdinfo = null
@@ -403,8 +400,7 @@ class public auto ansi static Loader
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.MethodInfo LoadConvOp(var typ as IKVM.Reflection.Type, var name as string, var src as IKVM.Reflection.Type, var snk as IKVM.Reflection.Type)
 		var mil as MILambdas = new MILambdas(name,snk)
-		var matches as IKVM.Reflection.MethodInfo[]
-		matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameNameAndReturn())))
+		var matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameNameAndReturn())))
 		
 		if matches[l] = 0 then
 			return null

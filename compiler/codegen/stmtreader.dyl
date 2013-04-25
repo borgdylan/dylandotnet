@@ -19,6 +19,12 @@ class public auto ansi StmtReader
 		if typ == null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Attribute Class '" + stm::Ctor::Name::ToString() + "' was not found.")
 		end if
+		
+		if typ::Equals(ILEmitter::Univ::Import(gettype DllImportAttribute)) then
+			SymTable::PIInfo = new PInvokeInfo() {LibName = $string$Helpers::LiteralToConst($Literal$stm::Ctor::Params::get_Item(0)::Tokens::get_Item(0))}
+			return null
+		end if
+		
 		var tarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[stm::Ctor::Params::get_Count()]
 		var oarr as object[] = new object[stm::Ctor::Params::get_Count()]
 		
@@ -95,8 +101,7 @@ class public auto ansi StmtReader
 			end if
 		end for
 		
-		return new CustomAttributeBuilder(Helpers::GetLocCtor(typ,tarr), oarr, Enumerable::ToArray<of PropertyInfo>(piarr), _
-			 Enumerable::ToArray<of object>(poarr), Enumerable::ToArray<of FieldInfo>(fiarr), Enumerable::ToArray<of object>(foarr))
+		return new CustomAttributeBuilder(Helpers::GetLocCtor(typ,tarr), oarr, piarr::ToArray(), poarr::ToArray(), fiarr::::ToArray(), foarr::ToArray())
 	end method
 
 	method public void Read(var stm as Stmt, var fpath as string)
@@ -170,7 +175,7 @@ class public auto ansi StmtReader
 			
 			StreamUtils::Write("Importing Namespace: ")
 			StreamUtils::WriteLine(listm::NS::Value)
-			Importer::AddLocImp(listm::NS::Value)
+			Importer::AddImp(listm::NS::Value)
 		elseif stm is AssemblyStmt then
 			var asms as AssemblyStmt = $AssemblyStmt$stm
 			AsmFactory::AsmNameStr = new AssemblyName(asms::AsmName::Value)
@@ -376,7 +381,6 @@ class public auto ansi StmtReader
 
 			SymTable::CurnTypItem::AddCtor(new CtorItem(dtarr,AsmFactory::CurnConB))
 
-			AsmFactory::TypArr = new IKVM.Reflection.Type[0]
 			dema = MethodAttributes::HideBySig or MethodAttributes::Public or MethodAttributes::NewSlot or MethodAttributes::Virtual
 			dtarr = #ternary {dels::Params[l] == 0 ? IKVM.Reflection.Type::EmptyTypes, Helpers::ProcessParams(dels::Params)}
 			
@@ -481,6 +485,7 @@ class public auto ansi StmtReader
 			ILEmitter::StaticFlg = false
 			ILEmitter::AbstractFlg = false
 			ILEmitter::ProtoFlg = false
+			ILEmitter::PInvokeFlg = false
 			SymTable::ResetVar()
 			SymTable::ResetIf()
 			SymTable::ResetLbl()
@@ -529,7 +534,7 @@ class public auto ansi StmtReader
 				if mtssnamarr::get_Count() > 1 then
 					//Console::WriteLine(mtssnamarr::get_Count())
 					overldnam = mtssnamarr::get_Last()
-					typ = Helpers::CommitEvalTTok(new TypeTok(String::Join(".", mtssnamarr::View(0,--mtssnamarr::get_Count())::ToArray())))
+					typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", mtssnamarr::View(0,--mtssnamarr::get_Count())::ToArray())))
 					mtssnamstr = typ::ToString() + "." + overldnam
 				end if
 				
@@ -545,7 +550,11 @@ class public auto ansi StmtReader
 				else
 					StreamUtils::Write("	Adding Method: ")
 					StreamUtils::WriteLine(mtssnamstr)
-					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, Helpers::ProcessMethodAttrs(mtss::Attrs), rettyp, paramstyps)
+					var ma = Helpers::ProcessMethodAttrs(mtss::Attrs)
+					var pinfo = SymTable::PIInfo
+					AsmFactory::CurnMetB = #ternary {ILEmitter::PInvokeFlg ? _
+						AsmFactory::CurnTypB::DefinePInvokeMethod(mtssnamstr, pinfo::LibName, ma, CallingConventions::Standard, rettyp, paramstyps, pinfo::CallConv, pinfo::CSet), _
+						AsmFactory::CurnTypB::DefineMethod(mtssnamstr, ma, rettyp, paramstyps)}
 				end if
 				
 				if !ILEmitter::ProtoFlg then
@@ -555,8 +564,12 @@ class public auto ansi StmtReader
 							pbrv::SetCustomAttribute(ca)
 						end for
 					end if
-		
-					AsmFactory::InitMtd()
+					
+					if ILEmitter::PInvokeFlg then
+						AsmFactory::InitPInvokeMtd()
+					else
+						AsmFactory::InitMtd()
+					end if
 					
 					if ILEmitter::InterfaceFlg and !ILEmitter::AbstractFlg then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods in Interfaces should all be Abstract!")
@@ -590,7 +603,7 @@ class public auto ansi StmtReader
 			Helpers::ApplyMetAttrs()
 			SymTable::ResetMetCAs()
 			
-			if (ILEmitter::AbstractFlg or ILEmitter::ProtoFlg) = false then
+			if !#expr(ILEmitter::AbstractFlg or ILEmitter::ProtoFlg or ILEmitter::PInvokeFlg) then
 				AsmFactory::InMethodFlg = true
 			end if
 			AsmFactory::CurnMetName = mtssnamstr
@@ -598,12 +611,12 @@ class public auto ansi StmtReader
 		elseif stm is EndMethodStmt then
 			AsmFactory::InMethodFlg = false
 			AsmFactory::InCtorFlg = false
-			if (ILEmitter::AbstractFlg or ILEmitter::ProtoFlg) = false then
+			if !#expr(ILEmitter::AbstractFlg or ILEmitter::ProtoFlg or ILEmitter::PInvokeFlg) then
 				ILEmitter::EmitRet()
 				SymTable::CheckUnusedVar()
 				SymTable::CheckCtrlBlks()
-				if AsmFactory::CurnMetName = "main" then
-					if AsmFactory::AsmMode = "exe" then
+				if AsmFactory::CurnMetName == "main" then
+					if AsmFactory::AsmMode == "exe" then
 						AsmFactory::AsmB::SetEntryPoint(ILEmitter::Met)
 					end if
 				end if
@@ -784,8 +797,10 @@ class public auto ansi StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + cats::ExTyp::Value + "' is not defined.")
 			end if
 			ILEmitter::DeclVar(cats::ExName::Value, vtyp)
-			ILEmitter::LocInd = ++ILEmitter::LocInd
+			ILEmitter::LocInd++
+			SymTable::StoreFlg = true
 			SymTable::AddVar(cats::ExName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+			SymTable::StoreFlg = false
 			ILEmitter::EmitCatch(vtyp)
 			ILEmitter::EmitStloc(SymTable::FindVar(cats::ExName::Value)::Index)
 		elseif stm is MethodAttrStmt then
@@ -820,7 +835,9 @@ class public auto ansi StmtReader
 				ttu2 = #ternary {ttu == null ? mtds[2]::get_ReturnType(), ttu}
 				ILEmitter::DeclVar(festm::Iter::Value, ttu2)
 				ILEmitter::LocInd++
+				SymTable::StoreFlg = true
 				SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, ttu2, ILEmitter::LineNr)
+				SymTable::StoreFlg = false
 				ILEmitter::EmitLdloc(ien)
 				ILEmitter::EmitCallvirt(mtds[2])
 				if ttu != null then
@@ -842,7 +859,9 @@ class public auto ansi StmtReader
 					ttu2 = #ternary {ttu == null ? mtds[1]::get_ReturnType(), ttu}
 					ILEmitter::DeclVar(festm::Iter::Value, ttu2)
 					ILEmitter::LocInd++
+					SymTable::StoreFlg = true
 					SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, ttu2, ILEmitter::LineNr)
+					SymTable::StoreFlg = false
 					ILEmitter::EmitLdloc(ien)
 					ILEmitter::EmitCallvirt(mtds[1])
 					if ttu != null then

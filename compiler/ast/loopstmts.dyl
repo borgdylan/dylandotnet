@@ -56,7 +56,7 @@ class public auto ansi ForStmt extends Stmt
 		me::ctor()
 		StartExp = new Expr()
 		EndExp = new Expr()
-		Iter = new Ident()
+		Iter = null
 		Typ = null
 		StepExp = null
 		Direction = true

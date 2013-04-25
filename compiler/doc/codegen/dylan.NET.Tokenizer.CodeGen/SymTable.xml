@@ -411,28 +411,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddTypArr">
-      <MemberSignature Language="C#" Value="public static int AddTypArr (IKVM.Reflection.Type[] arr);" />
-      <MemberSignature Language="ILAsm" Value=".method public static int32 AddTypArr(class IKVM.Reflection.Type[] arr) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="arr" Type="IKVM.Reflection.Type[]" />
-      </Parameters>
-      <Docs>
-        <param name="arr">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddVar">
       <MemberSignature Language="C#" Value="public static void AddVar (string nme, bool la, int ind, IKVM.Reflection.Type typ, int lin);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddVar(string nme, bool la, int32 ind, class IKVM.Reflection.Type typ, int32 lin) cil managed" />
@@ -810,6 +788,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="PIInfo">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.PInvokeInfo PIInfo;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.PInvokeInfo PIInfo" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.PInvokeInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PopIf">
       <MemberSignature Language="C#" Value="public static void PopIf ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void PopIf() cil managed" />
@@ -879,25 +869,6 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PopTypArr">
-      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type[] PopTypArr ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type[] PopTypArr() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>IKVM.Reflection.Type[]</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1293,27 +1264,6 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetUsed">
-      <MemberSignature Language="C#" Value="public static void ResetUsed (string nam);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetUsed(string nam) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="nam" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="nam">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

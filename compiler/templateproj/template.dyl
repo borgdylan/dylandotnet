@@ -10,6 +10,7 @@
 import System
 import System.IO
 import System.Xml
+import System.Text
 import System.Linq
 import System.Numerics
 import System.Security.Permissions
@@ -22,6 +23,7 @@ import SCGIE = System.Collections.Generic.IEnumerable
 import SCG = System.Collections.Generic
 import System.Threading
 import System.Threading.Tasks
+import System.Runtime.InteropServices
 import template
 
 #debug on
@@ -41,6 +43,11 @@ ver 1.1.0.0
 #include "empty.dyl"
 
 delegate public auto ansi void MyDelegate(var x as integer)
+
+struct public sequential ansi point
+	field public integer x
+	field public integer y
+end struct
 
 class public auto ansi beforefieldinit sealed SC
 end class
@@ -163,11 +170,6 @@ class public auto ansi OTTEnumerator implements IEnumerator<of integer>, IEnumer
 
 end class
 
-class public auto ansi partial Program
-	field public static integer Z
-	method public prototype void ProtoMethod(var x as integer, var y as integer)
-end class
-
 class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
 
 	method public hidebysig virtual newslot final IEnumerator<of integer> GetEnumerator()
@@ -211,6 +213,11 @@ class public auto ansi ObjInit
 	
 end class
 
+class public auto ansi partial Program
+	field public static integer Z
+	method public prototype void ProtoMethod(var x as integer, var y as integer)
+end class
+
 class public auto ansi Program
 
 	field public static integer X
@@ -218,7 +225,7 @@ class public auto ansi Program
 	field private static integer _TestProperty
 	field private static EventHandler _TestEvent
 	
-	method public static void Program()
+	method private static void Program()
 		var xc as integer = ROTest::X
 		_TestProperty = 0
 		_TestEvent = null
@@ -481,6 +488,21 @@ class public auto ansi Program
 			end if
 		end remove
 	end event
+	
+	[method: DllImport("libm")]
+	method public pinvokeimpl static double sin(var x as double)
+	
+	[method: DllImport("libctest")]
+	method public pinvokeimpl static integer incr(var x as integer)
+	
+	[method: DllImport("libctest")]
+	method public pinvokeimpl static double cplxmod(var a as double, var b as double)
+	
+	[method: DllImport("libctest")]
+	method public pinvokeimpl static void printpt(var p as point)
+	
+	[method: DllImport("libctest")]
+	method public pinvokeimpl static void incrpt(var p as point&)
 
 	[method: STAThread()]
 	method public static void main()
@@ -543,7 +565,7 @@ class public auto ansi Program
 //		Console::WriteLine(32 >> 2)
 //		Console::WriteLine(32ui >> 2)
 //		Console::WriteLine(32l >> 2)
-		numerictest()
+//		numerictest()
 		Console::WriteLine(true nand true)
 		Console::WriteLine(true nor true)
 		Console::WriteLine(true xnor true)

@@ -80,10 +80,10 @@ class private auto ansi MILambdas
 		
 		if !mi::get_IsPublic() then
 			if !mi::get_IsPrivate() then
-				if (mi::get_IsFamilyAndAssembly() and ProtectedFlag and HaveInternal) = false then
-					if (mi::get_IsFamilyOrAssembly() and (ProtectedFlag or HaveInternal)) = false then
-						if (mi::get_IsFamily() and ProtectedFlag) = false then
-							if (mi::get_IsAssembly() and HaveInternal) = false then
+				if !#expr(mi::get_IsFamilyAndAssembly() and ProtectedFlag and HaveInternal) then
+					if !#expr(mi::get_IsFamilyOrAssembly() and (ProtectedFlag or HaveInternal)) then
+						if !#expr(mi::get_IsFamily() and ProtectedFlag) then
+							if !#expr(mi::get_IsAssembly() and HaveInternal) then
 								return false
 							end if
 						end if
