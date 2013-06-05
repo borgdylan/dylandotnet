@@ -67,6 +67,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AsmBasePath">
+      <MemberSignature Language="C#" Value="public static string AsmBasePath;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string AsmBasePath" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Asms">
       <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Assembly&gt; Asms;" />
       <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Assembly&gt; Asms" />

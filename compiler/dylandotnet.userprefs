@@ -1,6 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnc/Program.dyl">
     <Files>
       <File FileName="ast/ident.dyl" Line="1" Column="1" />
       <File FileName="ast/methodnametok.dyl" Line="1" Column="1" />
@@ -20,8 +20,8 @@
       <File FileName="codegen/eventitem.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen.dyl" Line="1" Column="1" />
       <File FileName="codegen/symtable.dyl" Line="1" Column="1" />
-      <File FileName="templateproj/template.dyl" Line="598" Column="70" />
-      <File FileName="dnc/Program.dyl" Line="1" Column="1" />
+      <File FileName="templateproj/template.dyl" Line="1" Column="1" />
+      <File FileName="dnc/Program.dyl" Line="61" Column="3" />
       <File FileName="codegen/helpers.dyl" Line="1" Column="1" />
       <File FileName="parser/exproptimizer.dyl" Line="1" Column="1" />
       <File FileName="ast/otherkeywords.dyl" Line="1" Column="1" />
@@ -73,10 +73,14 @@
       <File FileName="dev/pc2dn.dyl" Line="1" Column="1" />
       <File FileName="ast/loopstmts.dyl" Line="1" Column="1" />
       <File FileName="codegen/varitem.dyl" Line="1" Column="1" />
+      <File FileName="ast/typetoks.dyl" Line="1" Column="1" />
+      <File FileName="dnr/itypeprovider.dyl" Line="1" Column="1" />
+      <File FileName="dnr/pcltypeprovider.dyl" Line="1" Column="1" />
+      <File FileName="dnr/fxtypeprovider.txt" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
             <Node name="codegen" expanded="True" />
@@ -90,13 +94,8 @@
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
           </Node>
-          <Node name="template" expanded="True">
-            <Node name="template.dyl" selected="True" />
-          </Node>
+          <Node name="template" expanded="True" />
         </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
@@ -107,7 +106,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/home/dylan/Desktop/compiler/codegen/eval.dyl" line="550" />
+      <Breakpoint file="/home/dylan/Desktop/compiler/codegen/eval.dyl" line="550" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -140,7 +140,7 @@ class public auto ansi StmtReader
 			if rsastm::AsmPath::Value like c"^\q(.)*\q$" then
 				rsastm::AsmPath::Value = rsastm::AsmPath::Value::Trim(new char[] {c'\q'})
 			end if
-			rsastm::AsmPath::Value = Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), ParseUtils::ProcessMSYSPath(rsastm::AsmPath::Value))
+			rsastm::AsmPath::Value = Path::Combine(Importer::AsmBasePath, ParseUtils::ProcessMSYSPath(rsastm::AsmPath::Value))
 			
 			if !File::Exists(rsastm::AsmPath::Value) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Assembly File '" + rsastm::AsmPath::Value + "' does not exist.")

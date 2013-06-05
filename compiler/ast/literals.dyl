@@ -197,7 +197,7 @@ class public auto ansi CharLiteral extends Literal implements IUnaryOperatable, 
 		me::ctor(value)
 		CharVal = ' '
 		LitTyp = new CharTok()
-		var c as char
+		var c as char = c'\0'
 		if char::TryParse(value,ref c) then
 			CharVal = c
 		end if
@@ -374,7 +374,7 @@ class public auto ansi IntLiteral extends NumberLiteral implements IUnaryOperata
 		me::ctor(value)
 		NumVal = 0i
 		LitTyp = new IntegerTok()
-		var n as integer
+		var n as integer = 0
 		if integer::TryParse(value,ref n) then
 			NumVal = n
 		end if
@@ -461,7 +461,7 @@ class public auto ansi DoubleLiteral extends NumberLiteral implements IUnaryOper
 		me::ctor(value)
 		NumVal = 0d
 		LitTyp = new DoubleTok()
-		var n as double
+		var n as double = 0d
 		if double::TryParse(value,ref n) then
 			NumVal = n
 		end if
@@ -533,7 +533,7 @@ class public auto ansi DecimalLiteral extends NumberLiteral implements IUnaryOpe
 		me::ctor(value)
 		NumVal = new Decimal(0)
 		LitTyp = new DecimalTok()
-		var n as decimal
+		var n as decimal = 0m
 		if decimal::TryParse(value,ref n) then
 			NumVal = n
 		end if
@@ -607,7 +607,7 @@ class public auto ansi SByteLiteral extends NumberLiteral implements IUnaryOpera
 		me::ctor(value)
 		NumVal = 0b
 		LitTyp = new SByteTok()
-		var n as sbyte
+		var n as sbyte = 0b
 		if sbyte::TryParse(value,ref n) then
 			NumVal = n
 		end if
@@ -693,7 +693,7 @@ class public auto ansi ShortLiteral extends NumberLiteral implements IUnaryOpera
 		me::ctor(value)
 		NumVal = 0s
 		LitTyp = new ShortTok()
-		var n as short
+		var n as short = 0s
 		if short::TryParse(value,ref n) then
 			NumVal = n
 		end if
@@ -778,7 +778,7 @@ class public auto ansi LongLiteral extends NumberLiteral implements IUnaryOperat
 		me::ctor(value)
 		NumVal = 0l
 		LitTyp = new LongTok()
-		var n as long
+		var n as long = 0l
 		if long::TryParse(value,ref n) then
 			NumVal = n
 		end if
@@ -861,7 +861,7 @@ class public auto ansi FloatLiteral extends NumberLiteral implements IUnaryOpera
 		me::ctor(value)
 		NumVal = 0f
 		LitTyp = new SingleTok()
-		var n as single
+		var n as single = 0f
 		if single::TryParse(value,ref n) then
 			NumVal = n
 		end if
@@ -933,7 +933,7 @@ class public auto ansi UIntLiteral extends NumberLiteral implements IUnaryOperat
 		me::ctor(value)
 		NumVal = 0ui
 		LitTyp = new UIntegerTok()
-		var n as uinteger
+		var n as uinteger = 0ui
 		if uinteger::TryParse(value,ref n) then
 			NumVal = n
 		end if
@@ -1005,7 +1005,7 @@ class public auto ansi ByteLiteral extends NumberLiteral implements IUnaryOperat
 		me::ctor(value)
 		NumVal = 0ub
 		LitTyp = new ByteTok()
-		var n as byte
+		var n as byte = 0ub
 		if byte::TryParse(value,ref n) then
 			NumVal = n
 		end if
@@ -1077,7 +1077,7 @@ class public auto ansi UShortLiteral extends NumberLiteral implements IUnaryOper
 		me::ctor(value)
 		NumVal = 0us
 		LitTyp = new UShortTok()
-		var n as ushort
+		var n as ushort = 0us
 		if ushort::TryParse(value,ref n) then
 			NumVal = n
 		end if
@@ -1149,7 +1149,7 @@ class public auto ansi ULongLiteral extends NumberLiteral implements IUnaryOpera
 		me::ctor(value)
 		NumVal = 0ul
 		LitTyp = new ULongTok()
-		var n as ulong
+		var n as ulong = 0ul
 		if ulong::TryParse(value,ref n) then
 			NumVal = n
 		end if

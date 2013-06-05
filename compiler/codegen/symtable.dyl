@@ -434,9 +434,9 @@ class public auto ansi static SymTable
 		foreach s in VarLst::Backwards()
 			if s::Contains(nam) then
 				var v = s::get_Item(nam)
-				if !StoreFlg and !AsmFactory::ForcedAddrFlg then
+				if !StoreFlg then
 					v::Used = true
-					if !v::Stored and v::LocArg then
+					if !v::Stored and v::LocArg and !AsmFactory::ForcedAddrFlg then
 						StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The variable " + v::Name + " might not have been initialized.")
 					end if
 				end if

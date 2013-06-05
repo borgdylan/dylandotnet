@@ -7,7 +7,7 @@
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0B8E3EEF-00E3-4633-B2BD-3D55AFD8CC6F}</ProjectGuid>
-    <ReleaseVersion>11.2.9.5</ReleaseVersion>
+    <ReleaseVersion>11.3.1.4</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
     <OutputPath>.</OutputPath>
@@ -584,6 +584,9 @@
     <None Include="codegen\propertyitem.dyl" />
     <None Include="codegen\eventitem.dyl" />
     <None Include="codegen\pinvokeinfo.dyl" />
+    <None Include="dnr\itypeprovider.dyl" />
+    <None Include="dnr\pcltypeprovider.dyl" />
+    <None Include="dnr\fxtypeprovider.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ast\interfaces.dyl" />

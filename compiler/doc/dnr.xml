@@ -807,6 +807,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Reflection.Importer.AsmBasePath">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Reflection.Importer.Asms">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

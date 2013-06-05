@@ -11,11 +11,13 @@ class public auto ansi static Importer
 	field public static C5.IList<of IKVM.Reflection.Assembly> Asms
 	field public static C5.IList<of string> Imps
 	field public static C5.IDictionary<of string,string> AliasMap
+	field public static string AsmBasePath
 
 	[method: ComVisible(false)]
 	method public static void Init()
 		Asms = new C5.LinkedList<of IKVM.Reflection.Assembly>()
 		Imps = new C5.LinkedList<of string>()
+		AsmBasePath = RuntimeEnvironment::GetRuntimeDirectory()
 		AliasMap = new C5.HashDictionary<of string,string>() { _
 		Add("object", "System.Object"), _
 		Add("string", "System.String"), _

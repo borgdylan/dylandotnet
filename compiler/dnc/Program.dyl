@@ -63,11 +63,24 @@ class public auto ansi static Program
 						OutputVersion()
 					elseif args[i] = "-h" then
 						OutputHelp()
+					//elseif args[i] = "-pcl" then
+					//	i++
+					//	if i < args[l] then
+					//		//get pcl lookup durectory
+					//		args[i] = ParseUtils::ProcessMSYSPath(args[i])
+					//		if !Directory::Exists(args[i]) then
+					//			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Directory '" + args[i] + "' does not exist.")
+					//		else
+					//			Importer::AsmBasePath = args[i]
+					//		end if
+					//	else
+					//		StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "PCL Directory path expected.")
+					//	end if
 					else
 						ILEmitter::Init()
 						AsmFactory::Init()
 						Importer::Init()
-						if File::Exists(args[i]) == false then
+						if !File::Exists(args[i]) then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "File '" + args[i] + "' does not exist.")
 						end if
 						StreamUtils::Write("Now Lexing: ")

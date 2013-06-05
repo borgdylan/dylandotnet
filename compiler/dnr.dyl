@@ -55,6 +55,7 @@ namespace dylan.NET.Reflection
 	#include "dnr/milambdas.dyl"
 	//#include "dnr/instructionhelper.dyl"
 	#include "dnr/ilemitter.dyl"
+	//#include "dnr/itypeprovider.dyl"
 	#include "dnr/asmfactory.dyl"
 	#include "dnr/importer.dyl"
 	#include "dnr/loader.dyl"
