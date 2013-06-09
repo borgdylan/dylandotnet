@@ -342,6 +342,11 @@ class public auto ansi static SymTable
 	method public static void AddLoop()
 		LoopLst::Push(new LoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), ILEmitter::LineNr))
 	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddForLoop(var iter as string, var _step as Expr, var dir as boolean)
+		LoopLst::Push(new ForLoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), iter, _step, dir, ILEmitter::LineNr))
+	end method
 
 	[method: ComVisible(false)]
 	method public static void PopIf()
@@ -391,6 +396,11 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static Emit.Label ReadLoopEndLbl()
 		return LoopLst::get_Last()::EndLabel
+	end method
+	
+	[method: ComVisible(false)]
+	method public static LoopItem ReadLoop()
+		return LoopLst::get_Last()
 	end method
 
 	[method: ComVisible(false)]

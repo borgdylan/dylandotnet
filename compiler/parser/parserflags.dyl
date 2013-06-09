@@ -13,6 +13,7 @@ class public auto ansi Flags
 	field public boolean CmtFlag
 	field public boolean NoOptFlag
 	field public boolean AsFlag
+	field public boolean ForFlag
 	field public boolean NegFlag
 	field public boolean NotFlag
 	field public boolean IncFlag
@@ -41,6 +42,7 @@ class public auto ansi Flags
 		CmtFlag = false
 		NoOptFlag = false
 		AsFlag = false
+		ForFlag = false
 		NegFlag = false
 		NotFlag = false
 		IncFlag = false

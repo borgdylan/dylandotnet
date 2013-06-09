@@ -99,12 +99,7 @@ namespace dylan.NET.PkgConfig.PC2DN
 			if args[l] < 1 then
 				Console::WriteLine("Usage: pc2dylandotnet [options] <file-name>")
 			else
-				var i as integer = -1
-				var len as integer = args[l] - 1
-				
-				do
-					i++
-					
+				for i = 0 upto --args[l]					
 					if args[i] == "-h" then
 						Console::WriteLine("")
 						Console::WriteLine("Usage: pc2dylandotnet [options] <file-name>")
@@ -113,7 +108,7 @@ namespace dylan.NET.PkgConfig.PC2DN
 					else
 						ConvToDYL(args[i])
 					end if
-				until i = len
+				end for
 			end if
 		
 		end method

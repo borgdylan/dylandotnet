@@ -689,7 +689,16 @@ class public auto ansi StmtReader
 		elseif stm is BreakStmt then
 			ILEmitter::EmitBr(SymTable::ReadLoopEndLbl())
 		elseif stm is ContinueStmt then
-			ILEmitter::EmitBr(SymTable::ReadLoopStartLbl())
+			var fl = SymTable::ReadLoop() as ForLoopItem
+			if fl != null then
+				if !fl::ContinueFlg then
+					fl::ContinueFlg = true
+					fl::StepLabel = ILEmitter::DefineLbl()
+				end if
+				ILEmitter::EmitBr(fl::StepLabel)
+			else
+				ILEmitter::EmitBr(SymTable::ReadLoopStartLbl())
+			end if
 		elseif stm is UntilStmt then
 			var unstm as UntilStmt = $UntilStmt$stm
 			new Evaluator()::Evaluate(unstm::Exp)
@@ -730,6 +739,25 @@ class public auto ansi StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Do While Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
+		elseif stm is ForStmt then
+			var fstm as ForStmt = $ForStmt$stm
+			SymTable::PushScope()
+			
+			eval = new Evaluator()
+			eval::Evaluate(fstm::StartExp)
+			ILEmitter::DeclVar(fstm::Iter::Value, AsmFactory::Type02)
+			ILEmitter::LocInd++
+			SymTable::StoreFlg = true
+			SymTable::AddVar(fstm::Iter::Value, true, ILEmitter::LocInd, AsmFactory::Type02, ILEmitter::LineNr)
+			SymTable::StoreFlg = false
+			ILEmitter::EmitStloc(ILEmitter::LocInd)
+			
+			SymTable::AddForLoop(fstm::Iter::Value, fstm::StepExp, fstm::Direction)
+			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
+			eval::Evaluate(new Expr() {Line = fstm::Line, AddToken(fstm::Iter), AddToken(#ternary{fstm::Direction ? new GtOp(), new LtOp()}) , _
+				AddToken(eval::ConvToAST(eval::ConvToRPN(fstm::EndExp)))})
+			
+			ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
 		elseif stm is ElseIfStmt then
 			ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
 			ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
@@ -756,6 +784,23 @@ class public auto ansi StmtReader
 			SymTable::PopIf()
 			SymTable::PopScope()
 		elseif stm is EndDoStmt then
+			var fl = SymTable::ReadLoop() as ForLoopItem
+			if fl != null then
+				if fl::ContinueFlg then
+					ILEmitter::MarkLbl(fl::StepLabel)
+				end if
+				if fl::StepExp == null then
+					Read(#ternary{fl::Direction ? new IncStmt() {Line = fl::Line, NumVar = new Ident(fl::Iter)}, _
+						new DecStmt() {Line = fl::Line, NumVar = new Ident(fl::Iter)}},fpath)
+				else
+					eval = new Evaluator()
+					var idt = new Ident(fl::Iter) {Line = fl::Line}
+					var ee = new Expr() {Line = fl::Line, AddToken(idt), AddToken(#ternary{fl::Direction ? new AddOp(), _
+					 new SubOp()}) , AddToken(eval::ConvToAST(eval::ConvToRPN(fl::StepExp)))}
+					 Read(new AssignStmt() {Line = fl::Line, LExp = new Expr() {Line = fl::Line, AddToken(idt) }, RExp = ee}, fpath)
+				end if
+			end if
+			
 			ILEmitter::EmitBr(SymTable::ReadLoopStartLbl())
 			ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
 			SymTable::PopLoop()

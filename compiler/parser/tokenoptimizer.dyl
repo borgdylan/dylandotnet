@@ -68,6 +68,8 @@ class public auto ansi TokenOptimizer
 				return new AssignOp2() {Line = tok::Line, Value = tok::Value}
 			elseif PFlags::IfFlag then
 				return new EqOp() {Line = tok::Line, Value = tok::Value}
+			elseif PFlags::ForFlag then
+				return new AssignOp2() {Line = tok::Line, Value = tok::Value}
 			else
 				return new AssignOp() {Line = tok::Line, Value = tok::Value}
 			end if
@@ -187,6 +189,7 @@ class public auto ansi TokenOptimizer
 			return new DoTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "for" then
 			PFlags::AsFlag = true
+			PFlags::ForFlag = true
 			return new ForTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "foreach" then
 			PFlags::AsFlag = true

@@ -54,10 +54,7 @@ class public auto ansi static Program
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		else
 			try
-				var i as integer = -1
-
-				do until i = --args[l]
-					i++
+				for i = 0 upto --args[l]
 					StreamUtils::WriteLine("")
 					if args[i] = "-V" then
 						OutputVersion()
@@ -93,7 +90,7 @@ class public auto ansi static Program
 						StreamUtils::WriteLine("...Done.")
 						new CodeGenerator()::EmitMSIL(ppstmts, args[i])
 					end if
-				end do
+				end for
 				
 			catch errex as ErrorException
 			

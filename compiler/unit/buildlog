@@ -1,5 +1,5 @@
 
-dylan.NET Compiler v. 11.3.1.3 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Currently Targeting the 4.0/4.5 Profile!!
@@ -23,11 +23,11 @@ Importing Namespace: System.IO
 Importing Namespace: NUnit.Framework
 Importing Namespace: dylan.NET.UnitTests
 Importing Namespace: dylan.NET.Utils
-Finished Processing: streamutests.dyl (worker thread)
+Beginning Assembly: unit
 Now Lexing: parseutests.dyl
 Now Parsing: parseutests.dyl
-Beginning Assembly: unit
-Finished Processing: parseutests.dyl (worker thread)
+Finished Processing: streamutests.dyl (worker thread)
+Finished Processing: parseutests.dyl (inline)
 Adding Class: dylan.NET.UnitTests.TestParseUtils
 	Adding Method: TestProcessStringExtASCII
 	Adding Method: TestProcessStringUTF16

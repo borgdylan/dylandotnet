@@ -207,6 +207,40 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.ForLoopItem..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.ForLoopItem..ctor">
+            <param name="startl">To be added.</param>
+            <param name="endl">To be added.</param>
+            <param name="iter">To be added.</param>
+            <param name="_step">To be added.</param>
+            <param name="dir">To be added.</param>
+            <param name="ln">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.ForLoopItem.ContinueFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.ForLoopItem.Direction">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.ForLoopItem.Iter">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.ForLoopItem.StepExp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.ForLoopItem.StepLabel">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.Helpers.ApplyAsmAttrs">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -825,6 +859,13 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.SymTable.AddForLoop">
+            <param name="iter">To be added.</param>
+            <param name="_step">To be added.</param>
+            <param name="dir">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.SymTable.AddIf">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1042,6 +1083,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.CodeGen.SymTable.ReadLockeeLoc">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.SymTable.ReadLoop">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

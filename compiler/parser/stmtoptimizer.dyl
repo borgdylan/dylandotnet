@@ -222,6 +222,99 @@ class public auto ansi StmtOptimizer
 		return null
 	end method
 	
+	method private Stmt checkFor(var stm as Stmt, var b as boolean&)
+		b = stm::Tokens::get_Item(0) is ForTok
+		if b then
+			var iter = stm::Tokens::get_Item(1) as Ident
+			if iter == null then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an identifier after a 'for'!")
+			end if
+			
+			var startexp as Expr = new Expr() {Line = stm::Line}
+			var endexp as Expr = new Expr() {Line = stm::Line}
+			var stepexp as Expr = null
+			var direction as boolean = true
+			var status as integer = 1
+			
+			var i as integer = 2
+			var typ as TypeTok = null
+			
+			if stm::Tokens::get_Item(i) is AssignOp2 then
+			elseif stm::Tokens::get_Item(i) is AsTok then
+				stm::Tokens = new ExprOptimizer()::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)::Tokens
+				typ = $TypeTok$stm::Tokens::get_Item(3)
+				i = 4
+				if !#expr(stm::Tokens::get_Item(i) is AssignOp2) then
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an '=' after 'as <type>' instead of '" + stm::Tokens::get_Item(i)::Value + "'!")
+				end if
+			else 
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an 'as' or an '=' instead of '" + stm::Tokens::get_Item(i)::Value + "'!")
+			end if
+			
+			do until i = --stm::Tokens::get_Count() 
+				i++
+				var curtok as Token = stm::Tokens::get_Item(i)
+				
+				if curtok is UptoTok then
+					if status == 1 then
+						status = 2
+						direction = true
+						continue
+					elseif status == 2 then
+						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect an 'upto' after another 'upto'/'downto' was met!")
+						break
+					elseif status == 3 then
+						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect an 'upto' after a 'step' was met!")
+						break
+					end if
+				elseif curtok is DowntoTok then
+					if status == 1 then
+						status = 2
+						direction = false
+						continue
+					elseif status == 2 then
+						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect a 'downto' after another 'upto'/'downto' was met!")
+						break
+					elseif status == 3 then
+						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect a 'downto' after a 'step' was met!")
+						break
+					end if
+				elseif curtok is StepTok then
+					if status == 1 then
+						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect a 'step' before an 'upto'/'downto' wasn't even met!")
+						break
+					elseif status == 2 then
+						status = 3
+						stepexp = new Expr() {Line = stm::Line}
+						continue
+					elseif status == 3 then
+						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect a 'step' after another 'step' was met!")
+						break
+					end if
+				end if
+				
+				if status == 1 then
+					startexp::AddToken(curtok)
+				elseif status == 2 then
+					endexp::AddToken(curtok)
+				elseif status == 3 then
+					stepexp::AddToken(curtok)
+				end if
+			end do
+			
+			if status < 2 then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "For loops require the use of a 'downto'/'upto' clause!")
+			end if
+			
+			var eopt = new ExprOptimizer(PFlags)
+			return new ForStmt() {Line = stm::Line, Tokens = stm::Tokens, Iter = iter, Typ = typ, _
+				StartExp = eopt::Optimize(startexp), EndExp = eopt::Optimize(endexp), Direction = direction, _
+				StepExp = #ternary {stepexp == null ? $Expr$null, eopt::Optimize(stepexp)} }
+		end if
+		
+		return null
+	end method
+	
 	method private Stmt checkElseIf(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is ElseIfTok
 		if b then
@@ -1562,6 +1655,7 @@ class public auto ansi StmtOptimizer
 		PFlags::CmtFlag = false
 		PFlags::NoOptFlag = false
 		PFlags::AsFlag = false
+		PFlags::ForFlag = false
 		
 		if stm::Tokens::get_Count() = 0 then
 			return stm
@@ -1911,6 +2005,12 @@ class public auto ansi StmtOptimizer
 		end if
 		
 		tmpstm = checkForeach(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+		
+		tmpstm = checkFor(stm, ref compb)
 		if compb then
 			stm = tmpstm
 			return stm

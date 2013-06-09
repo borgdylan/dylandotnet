@@ -25,3 +25,29 @@ class public auto ansi LoopItem
 	end method
 
 end class
+
+class public auto ansi ForLoopItem extends LoopItem
+
+	field public string Iter
+	field public Expr StepExp
+	field public boolean Direction
+	field public Emit.Label StepLabel
+	field public boolean ContinueFlg
+	
+	method public void ForLoopItem()
+		me::ctor()
+		Iter = string::Empty
+		StepExp = null
+		Direction = true
+		ContinueFlg = false
+	end method
+
+	method public void ForLoopItem(var startl as Emit.Label, var endl as Emit.Label, var iter as string, var _step as Expr, var dir as boolean, var ln as integer)
+		me::ctor(endl, startl, ln)
+		Iter = iter
+		StepExp = _step
+		Direction = dir
+		ContinueFlg = false
+	end method
+
+end class

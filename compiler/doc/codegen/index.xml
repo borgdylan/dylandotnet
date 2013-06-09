@@ -33,6 +33,7 @@
       <Type Name="Evaluator" Kind="Class" />
       <Type Name="EventItem" Kind="Class" />
       <Type Name="FieldItem" Kind="Class" />
+      <Type Name="ForLoopItem" Kind="Class" />
       <Type Name="Helpers" Kind="Class" />
       <Type Name="IfItem" Kind="Class" />
       <Type Name="LabelItem" Kind="Class" />

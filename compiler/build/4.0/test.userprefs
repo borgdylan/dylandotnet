@@ -1,15 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../codegen/typeitem.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../codegen/stmtreader.dyl">
     <Files>
       <File FileName="test.dyl" Line="1" Column="1" />
       <File FileName="../../dnr/loader.dyl" Line="1" Column="1" />
       <File FileName="../../codegen/helpers.dyl" Line="1" Column="1" />
       <File FileName="../../codegen/stmtreader.dyl" Line="1" Column="1" />
-      <File FileName="../../codegen/typelist.dyl" Line="97" Column="1" />
+      <File FileName="../../codegen/typelist.dyl" Line="1" Column="1" />
       <File FileName="../../codegen/symtable.dyl" Line="1" Column="1" />
       <File FileName="../../codegen/ctoritem.dyl" Line="1" Column="1" />
-      <File FileName="../../codegen/typeitem.dyl" Line="116" Column="1" />
+      <File FileName="../../codegen/typeitem.dyl" Line="1" Column="1" />
+      <File FileName="../../parser/exproptimizer.dyl" Line="1" Column="1" />
+      <File FileName="../../dnu/streamu.dyl" Line="154" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

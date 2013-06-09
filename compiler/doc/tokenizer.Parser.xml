@@ -121,6 +121,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.Parser.Flags.ForFlag">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.Parser.Flags.IdentFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
