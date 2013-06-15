@@ -341,7 +341,7 @@ class public auto ansi StmtReader
 			if AsmFactory::inClass then
 				AsmFactory::isNested = true
 			end if
-			if AsmFactory::isNested = false then
+			if !AsmFactory::isNested then
 				AsmFactory::inClass = true
 			end if
 
@@ -886,7 +886,9 @@ class public auto ansi StmtReader
 				ILEmitter::EmitLdloc(ien)
 				ILEmitter::EmitCallvirt(mtds[2])
 				if ttu != null then
-					Helpers::EmitConv(mtds[2]::get_ReturnType(), ttu)
+					if !ttu::Equals(mtds[2]::get_ReturnType()) then
+						Helpers::EmitConv(mtds[2]::get_ReturnType(), ttu)
+					end if
 				end if
 				ILEmitter::EmitStloc(ILEmitter::LocInd)
 			else
@@ -910,7 +912,9 @@ class public auto ansi StmtReader
 					ILEmitter::EmitLdloc(ien)
 					ILEmitter::EmitCallvirt(mtds[1])
 					if ttu != null then
-						Helpers::EmitConv(mtds[1]::get_ReturnType(), ttu)
+						if !ttu::Equals(mtds[1]::get_ReturnType()) then
+							Helpers::EmitConv(mtds[1]::get_ReturnType(), ttu)
+						end if
 					end if
 					ILEmitter::EmitStloc(ILEmitter::LocInd)
 				else
