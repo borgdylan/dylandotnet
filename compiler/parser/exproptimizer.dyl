@@ -228,12 +228,9 @@ class public auto ansi ExprOptimizer
 		var j as integer = 0
 
 		i--
-		var mn as MethodNameTok = null
-		if stm::Tokens::get_Item(i) is MethodNameTok then
-			mn = $MethodNameTok$stm::Tokens::get_Item(i)
-		else
-			mn = new MethodNameTok($Ident$stm::Tokens::get_Item(i))
-		end if
+		var mn as MethodNameTok = #ternary { stm::Tokens::get_Item(i) is MethodNameTok ? $MethodNameTok$stm::Tokens::get_Item(i), _
+			new MethodNameTok($Ident$stm::Tokens::get_Item(i)) }
+		
 		var mct as MethodCallTok = new MethodCallTok() {Name = mn, Line = mn::Line}
 		
 		j = i

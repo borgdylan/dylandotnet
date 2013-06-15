@@ -149,7 +149,7 @@ class public auto ansi static StreamUtils
 		if TerminateOnError then
 			CloseInS()
 			CloseOutS()
-			Environment::Exit(1)
+			Environment::Exit(-1)
 		else
 			throw new ErrorException()
 		end if
@@ -164,7 +164,7 @@ class public auto ansi static StreamUtils
 		if TerminateOnError then
 			CloseInS()
 			CloseOutS()
-			Environment::Exit(1)
+			Environment::Exit(-1)
 		else
 			throw new ErrorException()
 		end if

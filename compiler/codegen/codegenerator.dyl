@@ -32,19 +32,14 @@ class public auto ansi CodeGenerator
 					end if
 
 					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
-					if File::Exists(inclustm::Path::Value) == false then
-						//StreamUtils::Write(c"\n")
-						StreamUtils::WriteError(inclustm::Line, tup::Path, "File '" + inclustm::Path::Value + "' does not exist.")
+					if !File::Exists(inclustm::Path::Value) then
+						StreamUtils::WriteError(inclustm::Line, tup::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
 					end if
-					StreamUtils::Write("Now Lexing: ")
-					StreamUtils::WriteLine(inclustm::Path::Value)
+					StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
 					var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
-					StreamUtils::Write("Now Parsing: ")
-					StreamUtils::WriteLine(inclustm::Path::Value)
+					StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
 					inclustm::SSet = new Parser()::Parse(pstmts)
-					StreamUtils::Write("Finished Processing: ")
-					StreamUtils::Write(inclustm::Path::Value)
-					StreamUtils::WriteLine(" (worker thread)")
+					StreamUtils::WriteLine(string::Format("Finished Processing: {0} (worker thread)", inclustm::Path::Value))
 				end if
 			finally
 				Monitor::Exit(inclustm::Path)
@@ -69,7 +64,7 @@ class public auto ansi CodeGenerator
 		var helseflg as boolean = true
 		var procflg as boolean = true
 		
-		if ILEmitter::SrcFiles[l] = 0 then
+		if ILEmitter::SrcFiles::get_Count() == 0 then
 			SymTable::DefSyms::Clear()
 			SymTable::AddDef("CLR_" + $string$Environment::get_Version()::get_Major())
 		end if
@@ -77,7 +72,7 @@ class public auto ansi CodeGenerator
 		ILEmitter::CurSrcFile = fpath
 		ILEmitter::AddSrcFile(fpath)
 
-		if ILEmitter::DocWriters[l] > 0 then
+		if ILEmitter::DocWriters::get_Count() > 0 then
 			fpath = Path::GetFullPath(fpath)
 			var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
 			ILEmitter::DocWriter = docw
@@ -89,7 +84,7 @@ class public auto ansi CodeGenerator
 		var pfs as C5.IStack<of boolean> = new C5.LinkedList<of boolean>()
 		
 		do until i = (stmts::Stmts::get_Count() - 1)
-			i = i + 1
+			i++
 			if stmts::Stmts::get_Item(i) is HCondCompStmt then
 				if stmts::Stmts::get_Item(i) is HIfStmt then
 					hefs::Push(helseflg)
@@ -128,19 +123,15 @@ class public auto ansi CodeGenerator
 						pth = inclustm::Path::Value
 						
 						if inclustm::SSet == null then
-							if File::Exists(inclustm::Path::Value) == false then
+							if !File::Exists(inclustm::Path::Value) then
 								StreamUtils::WriteError(inclustm::Line, stmts::Path, "File '" + inclustm::Path::Value + "' does not exist.")
 							end if
-							StreamUtils::Write("Now Lexing: ")
-							StreamUtils::WriteLine(inclustm::Path::Value)
+							StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
 							var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
-							StreamUtils::Write("Now Parsing: ")
-							StreamUtils::WriteLine(inclustm::Path::Value)
+							StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
 							sset = new Parser()::Parse(pstmts)
 							inclustm::SSet = sset
-							StreamUtils::Write("Finished Processing: ")
-							StreamUtils::Write(inclustm::Path::Value)
-							StreamUtils::WriteLine(" (inline)")
+							StreamUtils::WriteLine(string::Format("Finished Processing: {0} (inline)", inclustm::Path::Value))
 						else
 							sset = inclustm::SSet
 						end if
@@ -156,18 +147,18 @@ class public auto ansi CodeGenerator
 		end do
 		
 		ILEmitter::PopSrcFile()
-		if ILEmitter::SrcFiles[l] > 0 then
-			ILEmitter::CurSrcFile = ILEmitter::SrcFiles[ILEmitter::SrcFiles[l] - 1]
+		if ILEmitter::SrcFiles::get_Count() > 0 then
+			ILEmitter::CurSrcFile = ILEmitter::SrcFiles::get_Last()
 		end if
 
-		if ILEmitter::DocWriters[l] > 0 then
+		if ILEmitter::DocWriters::get_Count() > 0 then
 			ILEmitter::PopDocWriter()
-			if ILEmitter::DocWriters[l] > 0 then
-				ILEmitter::DocWriter = ILEmitter::DocWriters[ILEmitter::DocWriters[l] - 1]
+			if ILEmitter::DocWriters::get_Count() > 0 then
+				ILEmitter::DocWriter = ILEmitter::DocWriters::get_Last()
 			end if
 		end if
 
-		if ILEmitter::SrcFiles[l] = 0 then
+		if ILEmitter::SrcFiles::get_Count() = 0 then
 			StreamUtils::Write("Writing Assembly to Disk")
 			AsmFactory::AsmB::DefineVersionInfoResource()
 			AsmFactory::AsmB::Save(AsmFactory::AsmFile)

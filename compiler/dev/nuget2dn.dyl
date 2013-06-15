@@ -84,7 +84,7 @@ namespace dylan.NET.NuGet
 										sw::WriteLine("#if CLR_4 then")
 										foreach file in dir::GetFiles()
 											if file::get_Extension()::ToLowerInvariant() == ".dll" or file::get_Extension()::ToLowerInvariant() == ".exe" then
-												sw::WriteLine(c"#refasm \q" + arg + "/lib/" + dir::get_Name() + "/" + file::get_Name() + c"\q")
+												sw::WriteLine(c"#refasm \q{0}/lib/{1}/{2}\q", arg, dir::get_Name(). file::get_Name())
 											end if
 										end for
 										sw::WriteLine("end #if")
@@ -95,7 +95,7 @@ namespace dylan.NET.NuGet
 										sw::WriteLine("#if CLR_4 then")
 										foreach file in dir::GetFiles()
 											if file::get_Extension()::ToLowerInvariant() == ".dll" or file::get_Extension()::ToLowerInvariant() == ".exe" then
-												sw::WriteLine(c"#refasm \q" + arg + "/lib/" + dir::get_Name() + "/" + file::get_Name() + c"\q")
+												sw::WriteLine(c"#refasm \q{0}/lib/{1}/{2}\q", arg, dir::get_Name(), file::get_Name())
 											end if
 										end for
 										sw::WriteLine("end #if")
@@ -108,7 +108,7 @@ namespace dylan.NET.NuGet
 										end if
 										foreach file in dir::GetFiles()
 											if file::get_Extension()::ToLowerInvariant() == ".dll" or file::get_Extension()::ToLowerInvariant() == ".exe" then
-												sw::WriteLine(c"#refasm \q" + arg + "/lib/" + dir::get_Name() + "/" + file::get_Name() + c"\q")
+												sw::WriteLine(c"#refasm \q{0}/lib/{1}/{2}\q", arg, dir::get_Name(), file::get_Name())
 											end if
 										end for
 										if applyc2 then
@@ -122,7 +122,7 @@ namespace dylan.NET.NuGet
 										end if
 										foreach file in dir::GetFiles()
 											if file::get_Extension()::ToLowerInvariant() == ".dll" or file::get_Extension()::ToLowerInvariant() == ".exe" then
-												sw::WriteLine(c"#refasm \q" + arg + "/lib/" + dir::get_Name() + "/" + file::get_Name() + c"\q")
+												sw::WriteLine(c"#refasm \q{0}/lib/{1}/{2}\q", arg, dir::get_Name(), file::get_Name())
 											end if
 										end for
 										if applyc2 then
@@ -132,19 +132,19 @@ namespace dylan.NET.NuGet
 								else
 									foreach file in di::GetFiles()
 										if file::get_Extension()::ToLowerInvariant() == ".dll" or file::get_Extension()::ToLowerInvariant() == ".exe" then
-											sw::WriteLine(c"#refasm \q" + arg + "/lib/" + file::get_Name() + c"\q")
+											sw::WriteLine(c"#refasm \q{0}/lib/{1}\q", arg, file::get_Name())
 										end if
 									end for
 								end if
 								sw::Flush()
 								sw::Close()
 								sw::Dispose()
-								Console::WriteLine(arg + ".dyl")
+								Console::WriteLine("{0}.dyl", arg)
 							else
-								Console::WriteLine("The directory '" + arg + "' does not contain a 'lib' directory!!!")
+								Console::WriteLine("The directory '{0}' does not contain a 'lib' directory!!!", arg)
 							end if
 						else
-							Console::WriteLine("The directory '" + arg + "' does not exist!!!")
+							Console::WriteLine("The directory '{0}' does not exist!!!", arg)
 						end if
 					end if
 				end for

@@ -33,11 +33,7 @@ namespace dylan.NET.PkgConfig.PC2DN
 	class public auto ansi Program
 	
 		method public static void PutInFile(var s as string, var sw as StreamWriter)			
-			if Path::IsPathRooted(s) then
-				sw::WriteLine(c"#refasm \q" + s + c"\q")
-			else
-				sw::WriteLine(c"#refstdasm \q" + s + c"\q")
-			end if
+			sw::WriteLine(#ternary {Path::IsPathRooted(s) ? c"#refasm \q{0}\q", c"#refstdasm \q{0}\q"} , s)
 		end method
 	
 		method public static void ConvToDYL(var path as string)
@@ -49,14 +45,14 @@ namespace dylan.NET.PkgConfig.PC2DN
 			var s as string = null
 			
 			do
-				if $char$sr::Peek() = '-' then
+				if $char$sr::Peek() == '-' then
 					flags[0] = true
 					flags[1] = false
 					flags[2] = false
-				elseif ($char$sr::Peek() = 'r') and flags[0] then
+				elseif ($char$sr::Peek() == 'r') and flags[0] then
 					flags[1] = true
 					flags[2] = false
-				elseif ($char$sr::Peek() = ':') and flags[1] then
+				elseif ($char$sr::Peek() == ':') and flags[1] then
 					flags[2] = true
 				end if
 				
@@ -67,8 +63,7 @@ namespace dylan.NET.PkgConfig.PC2DN
 					if sb::ToString() != "-r:" then
 						s = sb::ToString()
 						if s like "^(.)*-r:$" then
-							s = s::Substring(0, s::get_Length() - 4)
-							s = s::Trim()
+							s = s::Substring(0, s::get_Length() - 4)::Trim()
 						end if
 						
 						PutInFile(s, sw)

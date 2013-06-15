@@ -1,10 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="dnc/Program.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="cflags.dyl.in">
     <Files>
       <File FileName="ast/ident.dyl" Line="1" Column="1" />
-      <File FileName="ast/methodnametok.dyl" Line="1" Column="1" />
-      <File FileName="ast/exprcalltok.dyl" Line="1" Column="1" />
       <File FileName="dev/nuget2dn.dyl" Line="1" Column="1" />
       <File FileName="tests/helloworld.dyl" Line="1" Column="1" />
       <File FileName="codegen/eval.dyl" Line="1" Column="1" />
@@ -13,15 +11,14 @@
       <File FileName="parser/parser.dyl" Line="1" Column="1" />
       <File FileName="ast/propstmt.dyl" Line="1" Column="1" />
       <File FileName="ast/eventstmt.dyl" Line="1" Column="1" />
-      <File FileName="ast/interfaces.dyl" Line="1" Column="1" />
       <File FileName="codegen/stmtreader.dyl" Line="1" Column="1" />
       <File FileName="parser/tokenoptimizer.dyl" Line="1" Column="1" />
       <File FileName="codegen/propertyitem.dyl" Line="1" Column="1" />
       <File FileName="codegen/eventitem.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen.dyl" Line="1" Column="1" />
       <File FileName="codegen/symtable.dyl" Line="1" Column="1" />
-      <File FileName="templateproj/template.dyl" Line="599" Column="3" />
-      <File FileName="dnc/Program.dyl" Line="71" Column="42" />
+      <File FileName="templateproj/template.dyl" Line="1" Column="1" />
+      <File FileName="dnc/Program.dyl" Line="1" Column="1" />
       <File FileName="codegen/helpers.dyl" Line="1" Column="1" />
       <File FileName="parser/exproptimizer.dyl" Line="1" Column="1" />
       <File FileName="ast/otherkeywords.dyl" Line="1" Column="1" />
@@ -33,20 +30,17 @@
       <File FileName="ast/logicalops.dyl" Line="1" Column="1" />
       <File FileName="codegen/typelist.dyl" Line="1" Column="1" />
       <File FileName="ast/conditionalops.dyl" Line="1" Column="1" />
-      <File FileName="ast/aritops.dyl" Line="1" Column="1" />
       <File FileName="ast/attributes.dyl" Line="1" Column="1" />
-      <File FileName="ast/literals.dyl" Line="1" Column="1" />
       <File FileName="dnr/loader.dyl" Line="1" Column="1" />
       <File FileName="ast/debugstmt.dyl" Line="1" Column="1" />
       <File FileName="ast/scopestmt.dyl" Line="1" Column="1" />
       <File FileName="codegen/milambdas.dyl" Line="1" Column="1" />
       <File FileName="codegen/cilambdas.dyl" Line="1" Column="1" />
       <File FileName="tests/vector.dyl" Line="1" Column="1" />
-      <File FileName="ast/attrstmts.dyl" Line="1" Column="1" />
       <File FileName="dnu/consts.dyl" Line="1" Column="1" />
       <File FileName="codegen/typearr.dyl" Line="1" Column="1" />
       <File FileName="ast/methods.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.Lexer.dyl" Line="24" Column="1" />
+      <File FileName="tokenizer.Lexer.dyl" Line="1" Column="1" />
       <File FileName="dnr/assemblyinfo.dyl" Line="1" Column="1" />
       <File FileName="dnr/consoleprinter.dyl" Line="1" Column="1" />
       <File FileName="dnr/instructionhelper.dyl" Line="1" Column="1" />
@@ -55,7 +49,7 @@
       <File FileName="dnu/compilermsg.dyl" Line="1" Column="1" />
       <File FileName="dnu/keyboard.dyl" Line="1" Column="1" />
       <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
-      <File FileName="cflags.dyl.in" Line="10" Column="1" />
+      <File FileName="cflags.dyl.in" Line="1" Column="1" />
       <File FileName="dnu/winapi.dyl" Line="1" Column="1" />
       <File FileName="dnu/xmlu.dyl" Line="1" Column="1" />
       <File FileName="lexer/lexer.dyl" Line="1" Column="1" />
@@ -73,7 +67,6 @@
       <File FileName="dev/pc2dn.dyl" Line="1" Column="1" />
       <File FileName="ast/loopstmts.dyl" Line="1" Column="1" />
       <File FileName="codegen/varitem.dyl" Line="1" Column="1" />
-      <File FileName="ast/typetoks.dyl" Line="1" Column="1" />
       <File FileName="dnr/itypeprovider.dyl" Line="1" Column="1" />
       <File FileName="dnr/pcltypeprovider.dyl" Line="1" Column="1" />
       <File FileName="dnr/fxtypeprovider.txt" Line="1" Column="1" />
@@ -86,7 +79,13 @@
       <File FileName="tests/logicop.dyl" Line="1" Column="1" />
       <File FileName="tests/dylrecurse.dyl" Line="1" Column="1" />
       <File FileName="tests/ctorfield.dyl" Line="1" Column="1" />
-      <File FileName="lexer/line.dyl" Line="24" Column="19" />
+      <File FileName="lexer/line.dyl" Line="1" Column="1" />
+      <File FileName="ast/literals.dyl" Line="1" Column="1" />
+      <File FileName="ast/verstmt.dyl" Line="1" Column="1" />
+      <File FileName="ast/varstmts.dyl" Line="1" Column="1" />
+      <File FileName="unit/unit.dyl" Line="1" Column="1" />
+      <File FileName="unit/streamutests.dyl" Line="1" Column="1" />
+      <File FileName="unit/parseutests.dyl" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -95,9 +94,7 @@
             <Node name="ast" expanded="True" />
             <Node name="codegen" expanded="True" />
             <Node name="dev" expanded="True" />
-            <Node name="dnc" expanded="True">
-              <Node name="Program.dyl" selected="True" />
-            </Node>
+            <Node name="dnc" expanded="True" />
             <Node name="dnr" expanded="True" />
             <Node name="dnu" expanded="True" />
             <Node name="lexer" expanded="True" />
@@ -105,6 +102,7 @@
             <Node name="parser" expanded="True" />
             <Node name="tests" expanded="True" />
             <Node name="unit" expanded="True" />
+            <Node name="cflags.dyl.in" selected="True" />
           </Node>
           <Node name="template" expanded="True" />
         </State>

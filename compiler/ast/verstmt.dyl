@@ -17,14 +17,12 @@ class public auto ansi VerStmt extends Stmt
 	
 	method public hidebysig virtual string ToString()
 		var sw as StringWriter = new StringWriter()
-		var i as integer = -1
-		do until i = 3
-			i++
+		for i = 0 upto 3
 			sw::Write(VersionNos[i]::ToStringNoI())
 			if i < 3 then
 				sw::Write(".")
 			end if
-		end do
+		end for
 		return "ver " + sw::ToString()
 	end method
 	

@@ -21,10 +21,8 @@ class public auto ansi static Program
 		StreamUtils::WriteLine("")
 		StreamUtils::WriteLine("Runtime & OS Version Info:")
 		StreamUtils::WriteLine(Assembly::GetAssembly(gettype string)::ToString())
-		StreamUtils::Write("Runtime Version: ")
-		StreamUtils::WriteLine(Environment::get_Version()::ToString())
-		StreamUtils::Write("OS: ")
-		StreamUtils::WriteLine(Environment::get_OSVersion()::ToString())
+		StreamUtils::WriteLine(string::Format("Runtime Version: {0}", Environment::get_Version()::ToString()))
+		StreamUtils::WriteLine(string::Format("OS: {0}", Environment::get_OSVersion()::ToString()))
 	end method
 	
 	method private static void OutputHelp()
@@ -41,7 +39,7 @@ class public auto ansi static Program
 		StreamUtils::WriteLine("dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5")
 		StreamUtils::WriteLine("                           and Xamarin Mono v. 2.x.y/v. 3.x.y")
 		StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-		#if NET_4_0 then
+		#if NET_4_0 or NET_4_5 then
 			StreamUtils::WriteLine("Currently Targeting the 4.0/4.5 Profile!!")
 		#else
 			StreamUtils::WriteLine("Currently Targeting the 3.5 Profile!!")
@@ -78,14 +76,11 @@ class public auto ansi static Program
 						AsmFactory::Init()
 						Importer::Init()
 						if !File::Exists(args[i]) then
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "File '" + args[i] + "' does not exist.")
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("File '{0}' does not exist.", args[i]))
 						end if
-						StreamUtils::Write("Now Lexing: ")
-						StreamUtils::Write(args[i])
+						StreamUtils::Write(string::Format("Now Lexing: {0}", args[i]))
 						var pstmts as StmtSet = new Lexer()::Analyze(args[i])
-						StreamUtils::WriteLine("...Done.")
-						StreamUtils::Write("Now Parsing: ")
-						StreamUtils::Write(args[i])
+						StreamUtils::Write(string::Format(c"...Done.\nNow Parsing: {0}", args[i]))
 						var ppstmts as StmtSet = new Parser()::Parse(pstmts)
 						StreamUtils::WriteLine("...Done.")
 						new CodeGenerator()::EmitMSIL(ppstmts, args[i])
@@ -95,7 +90,7 @@ class public auto ansi static Program
 			catch errex as ErrorException
 			
 			catch ex as Exception
-				StreamUtils::Write(c"\n")
+				StreamUtils::WriteLine(string::Empty)
 				try
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::get_Message())
 				catch errex2 as ErrorException
@@ -112,7 +107,7 @@ class public auto ansi static Program
 		main(args)
 	end method
 	
-	#if NET_4_0 then
+	#if NET_4_0 or NET_4_5 then
 	
 		method private static void InvokeAsyncWrapper(var args as object)
 			Invoke($String[]$args)

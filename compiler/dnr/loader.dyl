@@ -143,18 +143,15 @@ class public auto ansi static Loader
 
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.Type[] ParamsToTyps(var t as IKVM.Reflection.ParameterInfo[])
-
 		var arr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[t[l]]
-		var i as integer = -1
-
+		
 		if t[l] = 0 then
 			return IKVM.Reflection.Type::EmptyTypes
 		end if
 
-		do until i = --t[l]
-			i++
+		for i = 0 upto --t[l]
 			arr[i] = t[i]::get_ParameterType()
-		end do
+		end for
 
 		return arr
 	end method
@@ -163,21 +160,17 @@ class public auto ansi static Loader
 	method public static IKVM.Reflection.MethodInfo LoadMethodWithoutParams(var typ as IKVM.Reflection.Type, var name as string)
 
 		var ints as IKVM.Reflection.Type[] = null
-		var i as integer = -1
-		var mtdinfo as IKVM.Reflection.MethodInfo = null
-
-		mtdinfo = typ::GetMethod(name)
+		var mtdinfo as IKVM.Reflection.MethodInfo = typ::GetMethod(name)
 
 		if mtdinfo = null then
 			ints = typ::GetInterfaces()
 			if ints != null then
-				do until i = --ints[l]
-					i++
+				for i = 0 upto --ints[l]
 					mtdinfo = ints[i]::GetMethod(name)
 					if mtdinfo != null then
 						break
 					end if
-				end do
+				end for
 
 			end if
 		end if
@@ -332,16 +325,14 @@ class public auto ansi static Loader
 	[method: ComVisible(false)]
 	method public static boolean CompareParamsToTyps(var t1 as ParameterInfo[],var t2 as Type[])
 		if t1[l] = t2[l] then
-			var i as integer = -1
 			if t1[l] = 0 then
 				return true
 			end if
-			do until i = --t1[l]
-				i++
+			for i = 0 upto --t1[l]
 				if !t1[i]::get_ParameterType()::Equals(t2[i]) then
 					return false
 				end if
-			end do
+			end for
 			return true
 		else
 			return false

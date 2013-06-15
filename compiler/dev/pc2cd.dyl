@@ -52,14 +52,14 @@ namespace dylan.NET.PkgConfig.PC2CD
 			var s as string = null
 			
 			do
-				if $char$sr::Peek() = '-' then
+				if $char$sr::Peek() == '-' then
 					flags[0] = true
 					flags[1] = false
 					flags[2] = false
-				elseif ($char$sr::Peek() = 'r') and flags[0] then
+				elseif ($char$sr::Peek() == 'r') and flags[0] then
 					flags[1] = true
 					flags[2] = false
-				elseif ($char$sr::Peek() = ':') and flags[1] then
+				elseif ($char$sr::Peek() == ':') and flags[1] then
 					flags[2] = true
 				end if
 				
@@ -70,8 +70,7 @@ namespace dylan.NET.PkgConfig.PC2CD
 					if sb::ToString() != "-r:" then
 						s = sb::ToString()
 						if s like "^(.)*-r:$" then
-							s = s::Substring(0, s::get_Length() - 4)
-							s = s::Trim()
+							s = s::Substring(0, s::get_Length() - 4)::Trim()
 						end if
 						
 						CopyFile(s)

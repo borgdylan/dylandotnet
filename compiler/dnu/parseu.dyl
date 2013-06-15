@@ -41,11 +41,9 @@ class public auto ansi static ParseUtils
 		var ins as boolean = false
 		var ch as string = string::Empty
 		var acc as string = string::Empty
-		var i as integer = -1
 		var len as integer = --StringToParse::get_Length()
 	
-		do until i = len
-			i++
+		for i = 0 upto len
 			ch = $string$StringToParse::get_Chars(i)
 	
 			if ch = c"\q" then
@@ -73,7 +71,7 @@ class public auto ansi static ParseUtils
 				acc = String::Empty
 			end if
 
-		end do
+		end for
 		
 		return arr::ToArray()
 	end method
@@ -84,11 +82,9 @@ class public auto ansi static ParseUtils
 		var ins as boolean = false
 		var ch as string = string::Empty
 		var acc as string = string::Empty
-		var i as integer = -1
 		var len as integer = --StringToParse::get_Length()
 	
-		do until i = len
-			i++
+		for i = 0 upto len
 			ch = $string$StringToParse::get_Chars(i)
 	
 			if ch = c"\q" then
@@ -116,7 +112,7 @@ class public auto ansi static ParseUtils
 				acc = string::Empty
 			end if
 
-		end do
+		end for
 		
 		return arr
 	end method
@@ -128,11 +124,9 @@ class public auto ansi static ParseUtils
 		var ins as boolean = false
 		var ch as string = string::Empty
 		var acc as string = string::Empty
-		var i as integer = -1
 		var len as integer = --StringToParse::get_Length()
 		
-		do until i = len
-			i++
+		for i = 0 upto len
 			ch = $string$StringToParse::get_Chars(i)
 
 			if ch = c"\q" then
@@ -160,7 +154,7 @@ class public auto ansi static ParseUtils
 				acc = string::Empty
 			end if
 
-		end do
+		end for
 
 		return arr::ToArray()
 	end method
@@ -199,7 +193,7 @@ class public auto ansi static ParseUtils
 					if str::get_Length() = 1 then
 						arr[0] = str + ":"
 					end if
-					p = String::Join("\",arr)
+					p = string::Join("\",arr)
 				end if
 			end if
 		end if
@@ -208,10 +202,10 @@ class public auto ansi static ParseUtils
 	
 	[method: ComVisible(false)]
 	method public static boolean IsHexDigit(var c as char)
-		if Char::IsDigit(c) then
+		if char::IsDigit(c) then
 			return true
 		else
-			c = Char::ToLower(c)
+			c = char::ToLower(c)
 			if c = 'a' then
 				return true
 			elseif c = 'b' then
@@ -273,11 +267,11 @@ class public auto ansi static ParseUtils
 							i++
 							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) and IsHexDigit(escstr::get_Chars(i + 2)) and IsHexDigit(escstr::get_Chars(i + 3)) then
 								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i) + $string$escstr::get_Chars(i + 2) + $string$escstr::get_Chars(i + 3)
-								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
+								sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
 								i = i + 3
 							elseif IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) then
 								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
-								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
+								sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
 								i++
 							else
 								i--
@@ -286,7 +280,7 @@ class public auto ansi static ParseUtils
 							i++
 							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) then
 								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
-								sb::Append($char$Int32::Parse(buf,NumberStyles::HexNumber))
+								sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
 								i++
 							else
 								i--

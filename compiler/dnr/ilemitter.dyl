@@ -26,8 +26,8 @@ class public auto ansi static ILEmitter
 	field public static integer ArgInd
 	field public static integer LineNr
 	field public static string CurSrcFile
-	field public static string[] SrcFiles
-	field public static ISymbolDocumentWriter[] DocWriters
+	field public static C5.LinkedList<of string> SrcFiles
+	field public static C5.LinkedList<of ISymbolDocumentWriter> DocWriters
 	field public static Universe Univ
 
 	[method: ComVisible(false)]
@@ -50,8 +50,8 @@ class public auto ansi static ILEmitter
 		ArgInd = 0
 		LineNr = 0
 		CurSrcFile = String::Empty
-		SrcFiles = new string[0]
-		DocWriters = new ISymbolDocumentWriter[0]
+		SrcFiles = new C5.LinkedList<of string>()
+		DocWriters = new C5.LinkedList<of ISymbolDocumentWriter>()
 	end method
 
 	method private static void ILEmitter()
@@ -60,48 +60,22 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void AddSrcFile(var srcf as string)
-		var i as integer = -1
-		var destarr as string[] = new string[++SrcFiles[l]]
-		do until i = --SrcFiles[l]
-			i++
-			destarr[i] = SrcFiles[i]
-		end do
-		destarr[SrcFiles[l]] = srcf
-		SrcFiles = destarr
+		SrcFiles::Push(srcf)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void PopSrcFile()
-		var i as integer = -1
-		var destarr as string[] = new string[--SrcFiles[l]]
-		do until i >= --destarr[l]
-			i++
-			destarr[i] = SrcFiles[i]
-		end do
-		SrcFiles = destarr
+		SrcFiles::Pop()
 	end method
 
 	[method: ComVisible(false)]
 	method public static void AddDocWriter(var srcf as ISymbolDocumentWriter)
-		var i as integer = -1
-		var destarr as ISymbolDocumentWriter[] = new ISymbolDocumentWriter[++DocWriters[l]]
-		do until i = --DocWriters[l]
-			i++
-			destarr[i] = DocWriters[i]
-		end do
-		destarr[DocWriters[l]] = srcf
-		DocWriters = destarr
+		DocWriters::Push(srcf)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void PopDocWriter()
-		var i as integer = -1
-		var destarr as ISymbolDocumentWriter[] = new ISymbolDocumentWriter[--DocWriters[l]]
-		do until i >= --destarr[l]
-			i++
-			destarr[i] = DocWriters[i]
-		end do
-		DocWriters = destarr
+		DocWriters::Pop()
 	end method
 
 	[method: ComVisible(false)]

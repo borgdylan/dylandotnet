@@ -78,11 +78,9 @@ class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 	
 	method public hidebysig virtual TypeTok CloneTT()
 		var tt as GenericTypeTok = new GenericTypeTok(Value) {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp, Params = new TypeTok[Params[l]]}
-		var i as integer = -1
-		do until i = --Params[l]
-			i++
+		for i = 0 upto --Params[l]
 			tt::Params[i] = Params[i]::CloneTT()
-		end do
+		end for
 		return tt
 	end method
 	
@@ -91,12 +89,10 @@ class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 	end method
 
 	method public void AddParam(var param as TypeTok)
-		var i as integer = -1
 		var destarr as TypeTok[] = new TypeTok[Params[l] + 1]
-		do until i = --Params[l]
-			i++
+		for i = 0 upto --Params[l]
 			destarr[i] = Params[i]
-		end do
+		end for
 		destarr[Params[l]] = param
 		Params = destarr
 	end method
@@ -106,14 +102,12 @@ class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 		sw::Write(Value)
 		if Params[l] > 0 then
 			sw::Write("<of ")
-			var i as integer = -1
-			do until i = (Params[l] - 1)
-				i++
+			for i = 0 upto Params[l] - 1
 				sw::Write(Params[i]::ToString())
 				if i < (Params[l] - 1) then
 					sw::Write(", ")
 				end if
-			end do
+			end for
 			sw::Write("> ")
 		end if
 		if IsArray and IsByRef then

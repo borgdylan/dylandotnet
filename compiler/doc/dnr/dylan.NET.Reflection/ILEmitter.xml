@@ -203,11 +203,11 @@
       </Docs>
     </Member>
     <Member MemberName="DocWriters">
-      <MemberSignature Language="C#" Value="public static System.Diagnostics.SymbolStore.ISymbolDocumentWriter[] DocWriters;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class System.Diagnostics.SymbolStore.ISymbolDocumentWriter[] DocWriters" />
+      <MemberSignature Language="C#" Value="public static C5.LinkedList&lt;System.Diagnostics.SymbolStore.ISymbolDocumentWriter&gt; DocWriters;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.LinkedList`1&lt;class System.Diagnostics.SymbolStore.ISymbolDocumentWriter&gt; DocWriters" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>System.Diagnostics.SymbolStore.ISymbolDocumentWriter[]</ReturnType>
+        <ReturnType>C5.LinkedList&lt;System.Diagnostics.SymbolStore.ISymbolDocumentWriter&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -2410,11 +2410,11 @@
       </Docs>
     </Member>
     <Member MemberName="SrcFiles">
-      <MemberSignature Language="C#" Value="public static string[] SrcFiles;" />
-      <MemberSignature Language="ILAsm" Value=".field public static string[] SrcFiles" />
+      <MemberSignature Language="C#" Value="public static C5.LinkedList&lt;string&gt; SrcFiles;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.LinkedList`1&lt;string&gt; SrcFiles" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>System.String[]</ReturnType>
+        <ReturnType>C5.LinkedList&lt;System.String&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
