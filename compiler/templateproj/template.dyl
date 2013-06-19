@@ -435,13 +435,11 @@ class public auto ansi Program
 		Console::WriteLine("--------------------------")
 		
 		var tl as C5.IList<of long> = new C5.LinkedList<of long>()
-		var tli as integer = 0
-		do until tli = 10
-			tli++
+		for tli = 1 upto 10
 			var dt as DateTime = DateTime::get_Now()
 			tl::Add(dt::get_Ticks() / TimeSpan::TicksPerMillisecond)
 			Thread::Sleep(500)
-		end do
+		end for
 		
 		foreach dt as string in tl
 			Console::WriteLine(dt)
@@ -599,7 +597,7 @@ class public auto ansi Program
 		
 		for xi = 1 upto 7
 			for xj = xi downto 1
-				for xz = xj downto 1
+				for xz as double = xj downto 1
 					Console::WriteLine("{0}, {1}, {2}", $object$xi, $object$xj, $object$xz)
 				end for
 			end for

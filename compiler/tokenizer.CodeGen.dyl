@@ -92,6 +92,7 @@ namespace dylan.NET.Tokenizer.CodeGen
 	#include "codegen/ifitem.dyl"
 	#include "codegen/lockitem.dyl"
 	#include "codegen/pinvokeinfo.dyl"
+	#include "codegen/constinfo.dyl"
 	//#include "codegen/typearr.dyl"
 	#include "codegen/symtable.dyl"
 	#include "codegen/helpers.dyl"

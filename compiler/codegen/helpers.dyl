@@ -1523,11 +1523,12 @@ class public auto ansi static Helpers
 		if mn is GenericMethodNameTok then
 			var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
 			var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
-			var i as integer = -1
-			do until i = --genparams[l]
-				i++
+			for i = 0 upto --genparams[l]
 				genparams[i] = CommitEvalTTok(gmn::Params[i])
-			end do
+				if genparams[i] == null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gmn::Params[i]::ToString(), name))
+				end if
+			end for
 			return Loader::LoadGenericMethod(t, name, genparams, paramtyps)
 		else
 			var m as MethodInfo = SymTable::TypeLst::GetMethod(t,mn,paramtyps)
@@ -1916,6 +1917,38 @@ class public auto ansi static Helpers
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '--' operation is undefined for '" + t::ToString() + "'.")
 		end if
+	end method
+	
+	[method: ComVisible(false)]
+	method public static ConstInfo ProcessConstExpr(var exp as Expr)
+		if exp::Tokens::get_Item(0) is Literal then
+			var lit as Literal = $Literal$exp::Tokens::get_Item(0)
+			return new ConstInfo() {Typ = CommitEvalTTok(lit::LitTyp), Value = LiteralToConst(lit)}
+		elseif exp::Tokens::get_Item(0) is Ident then
+			var idtnamarr as string[] = ParseUtils::StringParser(#expr($Ident$exp::Tokens::get_Item(0))::Value, ":")
+			var typ as IKVM.Reflection.Type = CommitEvalTTok(new TypeTok(idtnamarr[0]))
+			if typ != null then
+				if  GetExtFld(typ, idtnamarr[1]) != null then
+					if Loader::FldLitFlag then
+						return new ConstInfo() {Typ = Loader::FldLitTyp, Value = Loader::FldLitVal}
+					else	
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' of the class '{1}' is not a constant.", idtnamarr[1], typ::ToString()))
+					end if
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[1], typ::ToString()))
+				end if
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", idtnamarr[0]))
+			end if
+		elseif exp::Tokens::get_Item(0) is GettypeCallTok then
+			var val = Helpers::CommitEvalTTok(#expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name)
+			if val != null then
+				return new ConstInfo() {Typ = ILEmitter::Univ::Import(gettype Type), Value = val}
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", #expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name))
+			end if
+		end if
+		return null
 	end method
 
 end class

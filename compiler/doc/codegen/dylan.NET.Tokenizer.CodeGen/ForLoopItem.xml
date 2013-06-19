@@ -24,8 +24,8 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ForLoopItem (IKVM.Reflection.Emit.Label startl, IKVM.Reflection.Emit.Label endl, string iter, dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir, int ln);" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(valuetype IKVM.Reflection.Emit.Label startl, valuetype IKVM.Reflection.Emit.Label endl, string iter, class dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir, int32 ln) cil managed" />
+      <MemberSignature Language="C#" Value="public ForLoopItem (IKVM.Reflection.Emit.Label startl, IKVM.Reflection.Emit.Label endl, string iter, dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir, IKVM.Reflection.Type t, int ln);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(valuetype IKVM.Reflection.Emit.Label startl, valuetype IKVM.Reflection.Emit.Label endl, string iter, class dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir, class IKVM.Reflection.Type t, int32 ln) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="startl" Type="IKVM.Reflection.Emit.Label" />
@@ -33,6 +33,7 @@
         <Parameter Name="iter" Type="System.String" />
         <Parameter Name="_step" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
         <Parameter Name="dir" Type="System.Boolean" />
+        <Parameter Name="t" Type="IKVM.Reflection.Type" />
         <Parameter Name="ln" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -41,6 +42,7 @@
         <param name="iter">To be added.</param>
         <param name="_step">To be added.</param>
         <param name="dir">To be added.</param>
+        <param name="t">To be added.</param>
         <param name="ln">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -100,6 +102,18 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Typ">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type Typ;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type Typ" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -33,6 +33,7 @@ class public auto ansi ForLoopItem extends LoopItem
 	field public boolean Direction
 	field public Emit.Label StepLabel
 	field public boolean ContinueFlg
+	field public IKVM.Reflection.Type Typ
 	
 	method public void ForLoopItem()
 		me::ctor()
@@ -40,14 +41,16 @@ class public auto ansi ForLoopItem extends LoopItem
 		StepExp = null
 		Direction = true
 		ContinueFlg = false
+		Typ = null
 	end method
 
-	method public void ForLoopItem(var startl as Emit.Label, var endl as Emit.Label, var iter as string, var _step as Expr, var dir as boolean, var ln as integer)
+	method public void ForLoopItem(var startl as Emit.Label, var endl as Emit.Label, var iter as string, var _step as Expr, var dir as boolean, var t as IKVM.Reflection.Type, var ln as integer)
 		me::ctor(endl, startl, ln)
 		Iter = iter
 		StepExp = _step
 		Direction = dir
 		ContinueFlg = false
+		Typ = t
 	end method
 
 end class

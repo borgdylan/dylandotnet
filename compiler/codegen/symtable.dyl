@@ -345,7 +345,7 @@ class public auto ansi static SymTable
 	
 	[method: ComVisible(false)]
 	method public static void AddForLoop(var iter as string, var _step as Expr, var dir as boolean)
-		LoopLst::Push(new ForLoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), iter, _step, dir, ILEmitter::LineNr))
+		LoopLst::Push(new ForLoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), iter, _step, dir, $IKVM.Reflection.Type$null, ILEmitter::LineNr))
 	end method
 
 	[method: ComVisible(false)]

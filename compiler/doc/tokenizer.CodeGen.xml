@@ -29,6 +29,18 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.ConstInfo..ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.ConstInfo.Typ">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.ConstInfo.Value">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.CtorItem..ctor">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -217,6 +229,7 @@
             <param name="iter">To be added.</param>
             <param name="_step">To be added.</param>
             <param name="dir">To be added.</param>
+            <param name="t">To be added.</param>
             <param name="ln">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -238,6 +251,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="dylan.NET.Tokenizer.CodeGen.ForLoopItem.StepLabel">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.ForLoopItem.Typ">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -547,6 +564,12 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.Helpers.ProcessConstExpr">
+            <param name="exp">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Tokenizer.CodeGen.Helpers.ProcessEventAttrs">
             <param name="attrs">To be added.</param>
             <summary>To be added.</summary>
@@ -817,6 +840,84 @@
         </member>
         <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.Read">
             <param name="stm">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass">
+            <param name="clss">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadDelegate">
+            <param name="dels">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEndDo">
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEvent">
+            <param name="evss">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEventAdd">
+            <param name="evas">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEventRemove">
+            <param name="evas">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadField">
+            <param name="flss">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadFor">
+            <param name="fstm">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach">
+            <param name="festm">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod">
+            <param name="mtss">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadProperty">
+            <param name="prss">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadPropertyGet">
+            <param name="prgs">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadPropertySet">
+            <param name="prss">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="dylan.NET.Tokenizer.CodeGen.StmtReader.ReadVer">
+            <param name="asmv">To be added.</param>
             <param name="fpath">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
