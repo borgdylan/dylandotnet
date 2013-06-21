@@ -829,6 +829,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="dylan.NET.Reflection.Importer.TypeMap">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="dylan.NET.Reflection.Loader.CompareParamsToTyps">
             <param name="t1">To be added.</param>
             <param name="t2">To be added.</param>

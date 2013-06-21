@@ -1,6 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/stmtreader.dyl">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/helpers.dyl">
     <Files>
       <File FileName="ast/ident.dyl" Line="1" Column="1" />
       <File FileName="dev/nuget2dn.dyl" Line="1" Column="1" />
@@ -11,7 +11,7 @@
       <File FileName="parser/parser.dyl" Line="1" Column="1" />
       <File FileName="ast/propstmt.dyl" Line="1" Column="1" />
       <File FileName="ast/eventstmt.dyl" Line="1" Column="1" />
-      <File FileName="codegen/stmtreader.dyl" Line="490" Column="123" />
+      <File FileName="codegen/stmtreader.dyl" Line="454" Column="67" />
       <File FileName="parser/tokenoptimizer.dyl" Line="1" Column="1" />
       <File FileName="codegen/propertyitem.dyl" Line="1" Column="1" />
       <File FileName="codegen/eventitem.dyl" Line="1" Column="1" />
@@ -19,7 +19,7 @@
       <File FileName="codegen/symtable.dyl" Line="1" Column="1" />
       <File FileName="templateproj/template.dyl" Line="1" Column="1" />
       <File FileName="dnc/Program.dyl" Line="1" Column="1" />
-      <File FileName="codegen/helpers.dyl" Line="1" Column="1" />
+      <File FileName="codegen/helpers.dyl" Line="452" Column="22" />
       <File FileName="parser/exproptimizer.dyl" Line="1" Column="1" />
       <File FileName="ast/otherkeywords.dyl" Line="1" Column="1" />
       <File FileName="dnr/asmfactory.dyl" Line="1" Column="1" />
@@ -45,11 +45,11 @@
       <File FileName="dnr/consoleprinter.dyl" Line="1" Column="1" />
       <File FileName="dnr/instructionhelper.dyl" Line="1" Column="1" />
       <File FileName="dnr/milambdas.dyl" Line="1" Column="1" />
-      <File FileName="dnr/importer.dyl" Line="1" Column="1" />
+      <File FileName="dnr/importer.dyl" Line="36" Column="36" />
       <File FileName="dnu/compilermsg.dyl" Line="1" Column="1" />
       <File FileName="dnu/keyboard.dyl" Line="1" Column="1" />
       <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
-      <File FileName="cflags.dyl.in" Line="1" Column="1" />
+      <File FileName="cflags.dyl.in" Line="10" Column="1" />
       <File FileName="dnu/winapi.dyl" Line="1" Column="1" />
       <File FileName="dnu/xmlu.dyl" Line="1" Column="1" />
       <File FileName="lexer/lexer.dyl" Line="1" Column="1" />
@@ -86,7 +86,7 @@
       <File FileName="unit/unit.dyl" Line="1" Column="1" />
       <File FileName="unit/streamutests.dyl" Line="1" Column="1" />
       <File FileName="unit/parseutests.dyl" Line="1" Column="1" />
-      <File FileName="codegen/constinfo.dyl" Line="13" Column="2" />
+      <File FileName="codegen/constinfo.dyl" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -94,7 +94,7 @@
           <Node name="dylandotnet" expanded="True">
             <Node name="ast" expanded="True" />
             <Node name="codegen" expanded="True">
-              <Node name="stmtreader.dyl" selected="True" />
+              <Node name="helpers.dyl" selected="True" />
             </Node>
             <Node name="dev" expanded="True" />
             <Node name="dnc" expanded="True" />
@@ -121,7 +121,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/home/dylan/Desktop/compiler/codegen/eval.dyl" line="550" />
+      <Breakpoint file="/home/dylan/Desktop/compiler/codegen/eval.dyl" line="550" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

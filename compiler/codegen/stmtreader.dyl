@@ -499,8 +499,7 @@ class public auto ansi StmtReader
 		Helpers::ApplyEventAttrs()
 		SymTable::ResetEventCAs()
 		
-		StreamUtils::Write("	Adding Event: ")
-		StreamUtils::WriteLine(evss::EventName::Value)
+		StreamUtils::WriteLine("	Adding Event: " + evss::EventName::Value)
 	end method
 	
 	method public void ReadEventAdd(var evas as EventAddStmt, var fpath as string)

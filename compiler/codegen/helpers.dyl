@@ -436,8 +436,6 @@ class public auto ansi static Helpers
 		var temptyp as IKVM.Reflection.Type
 		var gtt as GenericTypeTok
 		var pttoks as TypeTok[] = new TypeTok[0]
-		var i as integer = -1
-		var tstr as string = " "
 
 		if tt is GenericTypeTok then
 
@@ -446,48 +444,57 @@ class public auto ansi static Helpers
 
 			var lop as C5.IList<of IKVM.Reflection.Type> = new C5.LinkedList<of IKVM.Reflection.Type>()
 			
-			if gtt::RefTyp = null then
-				tstr = gtt::Value + "`" + $string$pttoks[l]
+			var tstr = gtt::Value + "`" + $string$pttoks[l]
+			if gtt::RefTyp != null then
+				typ = gtt::RefTyp
+			elseif Importer::TypeMap::Contains(tstr) then
+				gtt::RefTyp = Importer::TypeMap::get_Item(tstr)
+				typ = gtt::RefTyp
+			else
 				typ = Loader::LoadClass(tstr)
 				gtt::RefTyp = Loader::PreProcTyp
-			else
-				typ = gtt::RefTyp
+				Importer::TypeMap::set_Item(tstr, Loader::PreProcTyp)
 			end if
 
 			if typ = null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Type " + tstr + " could not be found!!")
 			end if
 
-			do until i = --pttoks[l]
-				i++
+			for i = 0 upto --pttoks[l]
 				temptyp = CommitEvalTTok(pttoks[i])
-				if temptyp = null then
+				if temptyp == null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Argument " + pttoks[i]::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
 				end if
 				lop::Add(temptyp)
 			end do
 			
-			//typ = typ::GetGenericTypeDefinition()
-			typ = typ::MakeGenericType(Enumerable::ToArray<of IKVM.Reflection.Type>(lop))
+			typ = typ::MakeGenericType(lop::ToArray())
 			Loader::MakeArr = gtt::IsArray
 			Loader::MakeRef = gtt::IsByRef
 			typ = Loader::ProcessType(typ)
 		else
-			if tt::RefTyp = null then
+			if tt::RefTyp != null then
+				Loader::MakeArr = tt::IsArray
+				Loader::MakeRef = tt::IsByRef
+				typ = Loader::ProcessType(tt::RefTyp)
+			elseif Importer::TypeMap::Contains(tt::Value) then
+				tt::RefTyp = Importer::TypeMap::get_Item(tt::Value)
+				Loader::MakeArr = tt::IsArray
+				Loader::MakeRef = tt::IsByRef
+				typ = Loader::ProcessType(tt::RefTyp)
+			else
 				Loader::MakeArr = tt::IsArray
 				Loader::MakeRef = tt::IsByRef
 				typ = SymTable::TypeLst::GetType(tt::Value)
 				if typ != null  then
 					tt::RefTyp = typ
+					Importer::TypeMap::set_Item(tt::Value, typ)
 					typ = Loader::ProcessType(typ)
 				else
 					typ = Loader::LoadClass(tt::Value)
+					Importer::TypeMap::set_Item(tt::Value, Loader::PreProcTyp)
 					tt::RefTyp = Loader::PreProcTyp
-				end if
-			else
-				Loader::MakeArr = tt::IsArray
-				Loader::MakeRef = tt::IsByRef
-				typ = Loader::ProcessType(tt::RefTyp) 
+				end if 
 			end if
 		end if
 

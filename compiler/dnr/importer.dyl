@@ -11,6 +11,7 @@ class public auto ansi static Importer
 	field public static C5.IList<of IKVM.Reflection.Assembly> Asms
 	field public static C5.IList<of string> Imps
 	field public static C5.IDictionary<of string,string> AliasMap
+	field public static C5.IDictionary<of string, IKVM.Reflection.Type> TypeMap
 	field public static string AsmBasePath
 
 	[method: ComVisible(false)]
@@ -19,23 +20,24 @@ class public auto ansi static Importer
 		Imps = new C5.LinkedList<of string>()
 		AsmBasePath = RuntimeEnvironment::GetRuntimeDirectory()
 		AliasMap = new C5.HashDictionary<of string,string>() { _
-		Add("object", "System.Object"), _
-		Add("string", "System.String"), _
-		Add("char", "System.Char"), _
-		Add("boolean", "System.Boolean"), _
-		Add("sbyte", "System.SByte"), _
-		Add("short", "System.Int16"), _
-		Add("integer", "System.Int32"), _
-		Add("long", "System.Int64"), _
-		Add("single", "System.Single"), _
-		Add("double", "System.Double"), _
-		Add("byte", "System.Byte"), _
-		Add("ushort", "System.UInt16"), _
-		Add("uinteger", "System.UInt32"), _
-		Add("ulong", "System.UInt64"), _
-		Add("intptr", "System.IntPtr"), _
-		Add("uintptr", "System.UIntPtr"), _
-		Add("decimal", "System.Decimal") }
+			Add("object", "System.Object"), _
+			Add("string", "System.String"), _
+			Add("char", "System.Char"), _
+			Add("boolean", "System.Boolean"), _
+			Add("sbyte", "System.SByte"), _
+			Add("short", "System.Int16"), _
+			Add("integer", "System.Int32"), _
+			Add("long", "System.Int64"), _
+			Add("single", "System.Single"), _
+			Add("double", "System.Double"), _
+			Add("byte", "System.Byte"), _
+			Add("ushort", "System.UInt16"), _
+			Add("uinteger", "System.UInt32"), _
+			Add("ulong", "System.UInt64"), _
+			Add("intptr", "System.IntPtr"), _
+			Add("uintptr", "System.UIntPtr"), _
+			Add("decimal", "System.Decimal") }
+		TypeMap = new C5.HashDictionary<of string, IKVM.Reflection.Type>()
 	end method
 
 	method private static void Importer()
