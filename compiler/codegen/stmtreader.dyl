@@ -19,7 +19,7 @@ class public auto ansi StmtReader
 			typ = Helpers::CommitEvalTTok(stm::Ctor::Name)
 		end if
 		if typ == null then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Attribute Class '" + stm::Ctor::Name::ToString() + "' was not found.")
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Attribute Class '{0}' was not found.", stm::Ctor::Name::ToString()))
 		end if
 		
 		if typ::Equals(ILEmitter::Univ::Import(gettype DllImportAttribute)) then
@@ -56,7 +56,7 @@ class public auto ansi StmtReader
 					fiarr::Add(tempfld)
 					multflg = false
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Property or Field " + curpair::Name::Value + " does not exist in the attribute class " + typ::ToString())
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Property or Field {0} does not exist in the attribute class {1}", curpair::Name::Value, typ::ToString()))
 				end if
 			end if
 			
@@ -81,7 +81,7 @@ class public auto ansi StmtReader
 		if AsmFactory::inClass then
 			AsmFactory::isNested = true
 		end if
-		if AsmFactory::isNested = false then
+		if !AsmFactory::isNested then
 			AsmFactory::inClass = true
 		end if
 
@@ -92,22 +92,15 @@ class public auto ansi StmtReader
 		var ti2 as TypeItem = SymTable::TypeLst::GetTypeItem(AsmFactory::CurnNS + "." + clss::ClassName::Value)
 		
 		if ti2 == null then
-			if reft = null then
-				if clss::InhClass::Value::get_Length() = 0 then
-					inhtyp = ILEmitter::Univ::Import(gettype object)
-				else
-					inhtyp = Helpers::CommitEvalTTok(clss::InhClass)
-				end if
-			else
-				inhtyp = reft 
-			end if
+			inhtyp = #ternary {reft == null ? #ternary {clss::InhClass::Value::get_Length() == 0 ? _
+					ILEmitter::Univ::Import(gettype object), Helpers::CommitEvalTTok(clss::InhClass)} , reft}
 			if inhtyp = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Base Class '" + clss::InhClass::Value + "' is not defined or is not accessible.")
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Base Class '{0}' is not defined or is not accessible.", clss::InhClass::Value))
 			end if
 			if inhtyp != null then
 				if inhtyp::get_IsSealed() then
 					inhtyp = null
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + clss::InhClass::Value + "' is not inheritable.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not inheritable.", clss::InhClass::Value))
 				end if
 			end if
 		else
@@ -140,12 +133,10 @@ class public auto ansi StmtReader
 			if !AsmFactory::isNested then
 				AsmFactory::CurnTypName = clss::ClassName::Value
 				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value, clssparams, inhtyp)
-				StreamUtils::Write("Adding Class: ")
-				StreamUtils::WriteLine(AsmFactory::CurnNS + "." + clss::ClassName::Value)
+				StreamUtils::WriteLine(string::Format("Adding Class: {0}.{1}" , AsmFactory::CurnNS, clss::ClassName::Value))
 			else
 				AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
-				StreamUtils::Write("Adding Nested Class: ")
-				StreamUtils::WriteLine(clss::ClassName::Value)
+				StreamUtils::WriteLine(string::Format("Adding Nested Class: {0}", clss::ClassName::Value))
 				AsmFactory::CurnTypName = clss::ClassName::Value
 				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value, clssparams, inhtyp)
 			end if
@@ -153,8 +144,7 @@ class public auto ansi StmtReader
 			SymTable::CurnTypItem = ti2
 			AsmFactory::CurnTypB = ti2::TypeBldr
 			AsmFactory::CurnTypName = clss::ClassName::Value
-			StreamUtils::Write("Continuing Class: ")
-			StreamUtils::WriteLine(AsmFactory::CurnNS + "." + clss::ClassName::Value)
+			StreamUtils::WriteLine(string::Format("Continuing Class: {0}.{1}", AsmFactory::CurnNS, clss::ClassName::Value))
 		end if
 		
 		Helpers::ApplyClsAttrs()
@@ -168,9 +158,9 @@ class public auto ansi StmtReader
 			foreach interf in clss::ImplInterfaces
 				interftyp = Helpers::CommitEvalTTok(interf)
 				if interftyp = null then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + interf::Value + "' is not defined or is not accessible.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", interf::Value))
 				elseif !interftyp::get_IsInterface() then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + interftyp::ToString() + "' is not an interface.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not an interface.", interftyp::ToString()))
 				end if
 				AsmFactory::CurnTypB::AddInterfaceImplementation(interftyp)
 
@@ -303,7 +293,7 @@ class public auto ansi StmtReader
 		var typ as IKVM.Reflection.Type = null
 		
 		if rettyp = null then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + mtss::RetTyp::Value + "' is not defined or is not accessible.")
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", mtss::RetTyp::Value))
 		end if
 
 		var paramstyps as IKVM.Reflection.Type[] = #ternary {mtss::Params[l] == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}			
@@ -314,8 +304,7 @@ class public auto ansi StmtReader
 		var fromproto as boolean = false
 
 		if (mtssnamstr = AsmFactory::CurnTypName) or (mtssnamstr like "^ctor\d*$") then
-			StreamUtils::Write("	Adding Constructor: ")
-			StreamUtils::WriteLine(mtssnamstr)
+			StreamUtils::WriteLine("	Adding Constructor: " + mtssnamstr)
 			AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(Helpers::ProcessMethodAttrs(mtss::Attrs), CallingConventions::Standard, paramstyps)
 			AsmFactory::InitConstr()
 			
@@ -344,21 +333,19 @@ class public auto ansi StmtReader
 				//Console::WriteLine(mtssnamarr::get_Count())
 				overldnam = mtssnamarr::get_Last()
 				typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", mtssnamarr::View(0,--mtssnamarr::get_Count())::ToArray())))
-				mtssnamstr = typ::ToString() + "." + overldnam
+				mtssnamstr = string::Format("{0}.{1}", typ::ToString(), overldnam)
 			end if
 			
 			mipt = SymTable::FindProtoMet(mtssnamstr, paramstyps)
 			fromproto = mipt != null
 			
 			if fromproto then
-				StreamUtils::Write("	Continuing Method: ")
-				StreamUtils::WriteLine(mtssnamstr)
+				StreamUtils::WriteLine("	Continuing Method: " + mtssnamstr)
 				AsmFactory::CurnMetB = mipt::MethodBldr
 				ILEmitter::StaticFlg = AsmFactory::CurnMetB::get_IsStatic()
 				ILEmitter::AbstractFlg = AsmFactory::CurnMetB::get_IsAbstract()
 			else
-				StreamUtils::Write("	Adding Method: ")
-				StreamUtils::WriteLine(mtssnamstr)
+				StreamUtils::WriteLine("	Adding Method: " + mtssnamstr)
 				var ma = Helpers::ProcessMethodAttrs(mtss::Attrs)
 				var pinfo = SymTable::PIInfo
 				AsmFactory::CurnMetB = #ternary {ILEmitter::PInvokeFlg ? _
@@ -424,7 +411,7 @@ class public auto ansi StmtReader
 		var mtds as MethodInfo[] = Helpers::ProcessForeach(AsmFactory::Type02)
 		var ttu = Helpers::CommitEvalTTok(festm::Typ)
 		if (ttu == null) and (festm::Typ != null) then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + festm::Typ::ToString() + "' is not defined.")
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", festm::Typ::ToString()))
 		end if
 		var ttu2 as IKVM.Reflection.Type
 		if mtds != null then
@@ -479,7 +466,7 @@ class public auto ansi StmtReader
 				end if
 				ILEmitter::EmitStloc(ILEmitter::LocInd)
 			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class " + AsmFactory::Type02::ToString() + " is not an IEnumerable/IEnumerator or IEnumerable<of T>/IEnumerator<of T>.")
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class {0} is not an IEnumerable/IEnumerator or IEnumerable<of T>/IEnumerator<of T>.", AsmFactory::Type02::ToString()))
 			end if
 		end if
 	end method
