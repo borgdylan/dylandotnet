@@ -167,8 +167,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddForLoop">
-      <MemberSignature Language="C#" Value="public static void AddForLoop (string iter, dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddForLoop(string iter, class dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir) cil managed" />
+      <MemberSignature Language="C#" Value="public static void AddForLoop (string iter, dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir, dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddForLoop(string iter, class dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir, class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok t) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -182,11 +182,13 @@
         <Parameter Name="iter" Type="System.String" />
         <Parameter Name="_step" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
         <Parameter Name="dir" Type="System.Boolean" />
+        <Parameter Name="t" Type="dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok" />
       </Parameters>
       <Docs>
         <param name="iter">To be added.</param>
         <param name="_step">To be added.</param>
         <param name="dir">To be added.</param>
+        <param name="t">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

@@ -3,152 +3,172 @@
         <name>dnu</name>
     </assembly>
     <members>
-        <member name="dylan.NET.Utils.CompilerMsg..ctor">
+        <member name="T:dylan.NET.Utils.CompilerMsg">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.CompilerMsg..ctor">
+        <member name="C:dylan.NET.Utils.CompilerMsg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Utils.CompilerMsg(System.Int32,System.String,System.String)">
             <param name="line">To be added.</param>
             <param name="file">To be added.</param>
             <param name="msg">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.CompilerMsg.File">
+        <member name="P:dylan.NET.Utils.CompilerMsg.File">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.CompilerMsg.Linevb">
+        <member name="P:dylan.NET.Utils.CompilerMsg.Linevb">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.CompilerMsg.Msg">
+        <member name="P:dylan.NET.Utils.CompilerMsg.Msg">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Constants.cr">
+        <member name="T:dylan.NET.Utils.Constants">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Constants.crlf">
+        <member name="F:dylan.NET.Utils.Constants.cr">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Constants.e">
+        <member name="F:dylan.NET.Utils.Constants.crlf">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Constants.f">
+        <member name="F:dylan.NET.Utils.Constants.e">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Constants.lf">
+        <member name="F:dylan.NET.Utils.Constants.f">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Constants.pi">
+        <member name="F:dylan.NET.Utils.Constants.lf">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Constants.quot">
+        <member name="F:dylan.NET.Utils.Constants.pi">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Constants.t">
+        <member name="F:dylan.NET.Utils.Constants.quot">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.ErrorException..ctor">
+        <member name="F:dylan.NET.Utils.Constants.t">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Keyboard.ReadBoolean">
+        <member name="T:dylan.NET.Utils.ErrorException">
             <summary>To be added.</summary>
-            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Keyboard.ReadChar">
+        <member name="C:dylan.NET.Utils.ErrorException">
             <summary>To be added.</summary>
-            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Keyboard.ReadDouble">
+        <member name="T:dylan.NET.Utils.Keyboard">
             <summary>To be added.</summary>
-            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Keyboard.ReadInteger">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadBoolean">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Keyboard.ReadLong">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadChar">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Keyboard.ReadSbyte">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadDouble">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Keyboard.ReadShort">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadInteger">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Keyboard.ReadSingle">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadLong">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.Keyboard.ReadString">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadSbyte">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.ParseUtils.IsHexDigit">
+        <member name="M:dylan.NET.Utils.Keyboard.ReadShort">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.Keyboard.ReadSingle">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.Keyboard.ReadString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Utils.ParseUtils">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.ParseUtils.IsHexDigit(System.Char)">
             <param name="c">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.ParseUtils.LikeOP">
+        <member name="M:dylan.NET.Utils.ParseUtils.LikeOP(System.String,System.String)">
             <param name="str">To be added.</param>
             <param name="pattern">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.ParseUtils.ProcessMSYSPath">
+        <member name="M:dylan.NET.Utils.ParseUtils.ProcessMSYSPath(System.String)">
             <param name="p">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.ParseUtils.ProcessString">
+        <member name="M:dylan.NET.Utils.ParseUtils.ProcessString(System.String)">
             <param name="escstr">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.ParseUtils.RetPrec">
+        <member name="M:dylan.NET.Utils.ParseUtils.RetPrec(System.String)">
             <param name="chr">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.ParseUtils.StringParser">
+        <member name="M:dylan.NET.Utils.ParseUtils.StringParser(System.String,System.String)">
             <param name="StringToParse">To be added.</param>
             <param name="DelimeterChar">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.ParseUtils.StringParser2ds">
+        <member name="M:dylan.NET.Utils.ParseUtils.StringParser2ds(System.String,System.String,System.String)">
             <param name="StringToParse">To be added.</param>
             <param name="DelimeterChar">To be added.</param>
             <param name="DelimeterChar2">To be added.</param>
@@ -156,177 +176,185 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.ParseUtils.StringParserL">
+        <member name="M:dylan.NET.Utils.ParseUtils.StringParserL(System.String,System.String)">
             <param name="StringToParse">To be added.</param>
             <param name="DelimeterChar">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.CloseInS">
+        <member name="T:dylan.NET.Utils.StreamUtils">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.CloseOutS">
+        <member name="M:dylan.NET.Utils.StreamUtils.CloseInS">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.ErrorH">
+        <member name="M:dylan.NET.Utils.StreamUtils.CloseOutS">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.Errors">
+        <member name="E:dylan.NET.Utils.StreamUtils.ErrorH">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.StreamUtils.Errors">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.InitInOutSWithStd">
+        <member name="M:dylan.NET.Utils.StreamUtils.InitInOutSWithStd">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.InitInS">
+        <member name="M:dylan.NET.Utils.StreamUtils.InitInS(System.IO.Stream)">
             <param name="s">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.InitOutS">
+        <member name="M:dylan.NET.Utils.StreamUtils.InitOutS(System.IO.Stream)">
             <param name="s">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.ReadLine">
+        <member name="M:dylan.NET.Utils.StreamUtils.ReadLine">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.Stderr">
+        <member name="F:dylan.NET.Utils.StreamUtils.Stderr">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.Stdin">
+        <member name="F:dylan.NET.Utils.StreamUtils.Stdin">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.Stdout">
+        <member name="F:dylan.NET.Utils.StreamUtils.Stdout">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.TerminateOnError">
+        <member name="F:dylan.NET.Utils.StreamUtils.TerminateOnError">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.UseConsole">
+        <member name="F:dylan.NET.Utils.StreamUtils.UseConsole">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.WarnH">
+        <member name="E:dylan.NET.Utils.StreamUtils.WarnH">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.Warnings">
+        <member name="M:dylan.NET.Utils.StreamUtils.Warnings">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.Write">
+        <member name="M:dylan.NET.Utils.StreamUtils.Write(System.String)">
             <param name="str">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.WriteError">
+        <member name="M:dylan.NET.Utils.StreamUtils.WriteError(System.Int32,System.String,System.String)">
             <param name="line">To be added.</param>
             <param name="file">To be added.</param>
             <param name="msg">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.WriteErrorLine">
+        <member name="M:dylan.NET.Utils.StreamUtils.WriteErrorLine(System.Int32,System.String,System.String)">
             <param name="line">To be added.</param>
             <param name="file">To be added.</param>
             <param name="msg">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.WriteLine">
+        <member name="M:dylan.NET.Utils.StreamUtils.WriteLine(System.String)">
             <param name="str">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.StreamUtils.WriteWarn">
+        <member name="M:dylan.NET.Utils.StreamUtils.WriteWarn(System.Int32,System.String,System.String)">
             <param name="line">To be added.</param>
             <param name="file">To be added.</param>
             <param name="msg">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.XmlUtils.AddAttr">
+        <member name="T:dylan.NET.Utils.XmlUtils">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.XmlUtils.AddAttr(System.Xml.Linq.XContainer,System.Xml.Linq.XAttribute)">
             <param name="el">To be added.</param>
             <param name="attr">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.XmlUtils.AddAttrArr">
+        <member name="M:dylan.NET.Utils.XmlUtils.AddAttrArr(System.Xml.Linq.XContainer,System.Xml.Linq.XAttribute[])">
             <param name="el">To be added.</param>
             <param name="attrs">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.XmlUtils.AddNode">
+        <member name="M:dylan.NET.Utils.XmlUtils.AddNode(System.Xml.Linq.XContainer,System.Xml.Linq.XElement)">
             <param name="el">To be added.</param>
             <param name="node">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.XmlUtils.AddNodeArr">
+        <member name="M:dylan.NET.Utils.XmlUtils.AddNodeArr(System.Xml.Linq.XContainer,System.Xml.Linq.XElement[])">
             <param name="el">To be added.</param>
             <param name="nodes">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.XmlUtils.GetVal">
+        <member name="M:dylan.NET.Utils.XmlUtils.GetVal(System.Xml.Linq.XElement)">
             <param name="el">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.XmlUtils.MakeAttr">
+        <member name="M:dylan.NET.Utils.XmlUtils.MakeAttr(System.String,System.String)">
             <param name="name">To be added.</param>
             <param name="value">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.XmlUtils.MakeName">
+        <member name="M:dylan.NET.Utils.XmlUtils.MakeName(System.String)">
             <param name="name">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.XmlUtils.MakeNode">
+        <member name="M:dylan.NET.Utils.XmlUtils.MakeNode(System.String)">
             <param name="name">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.XmlUtils.SetVal">
+        <member name="M:dylan.NET.Utils.XmlUtils.SetVal(System.Xml.Linq.XElement,System.String)">
             <param name="el">To be added.</param>
             <param name="value">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.XmlUtils.XPathSelectEl">
+        <member name="M:dylan.NET.Utils.XmlUtils.XPathSelectEl(System.Xml.Linq.XNode,System.String)">
             <param name="el">To be added.</param>
             <param name="XPathQuery">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="dylan.NET.Utils.XmlUtils.XPathSelectEls">
+        <member name="M:dylan.NET.Utils.XmlUtils.XPathSelectEls(System.Xml.Linq.XNode,System.String)">
             <param name="el">To be added.</param>
             <param name="XPathQuery">To be added.</param>
             <summary>To be added.</summary>

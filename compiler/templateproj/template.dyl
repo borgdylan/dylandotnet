@@ -597,7 +597,7 @@ class public auto ansi Program
 		
 		for xi = 1 upto 7
 			for xj = xi downto 1
-				for xz as double = xj downto 1
+				for xz = xj downto 1
 					Console::WriteLine("{0}, {1}, {2}", $object$xi, $object$xj, $object$xz)
 				end for
 			end for

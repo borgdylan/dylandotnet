@@ -611,23 +611,37 @@ class public auto ansi StmtReader
 	method public void ReadFor(var fstm as ForStmt, var fpath as string)
 		var ttu = Helpers::CommitEvalTTok(fstm::Typ)
 		if (ttu == null) and (fstm::Typ != null) then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + fstm::Typ::ToString() + "' is not defined.")
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", fstm::Typ::ToString()))
 		end if
 		SymTable::PushScope()
 		
 		var eval = new Evaluator()
 		eval::Evaluate(fstm::StartExp)
-		ILEmitter::DeclVar(fstm::Iter::Value, AsmFactory::Type02)
+		var ttu2 = #ternary {ttu == null ? AsmFactory::Type02, ttu}
+		ILEmitter::DeclVar(fstm::Iter::Value, ttu2)
 		ILEmitter::LocInd++
 		SymTable::StoreFlg = true
-		SymTable::AddVar(fstm::Iter::Value, true, ILEmitter::LocInd, AsmFactory::Type02, ILEmitter::LineNr)
+		SymTable::AddVar(fstm::Iter::Value, true, ILEmitter::LocInd, ttu2, ILEmitter::LineNr)
 		SymTable::StoreFlg = false
+		if ttu != null then
+			if !ttu::Equals(AsmFactory::Type02) then
+				Helpers::EmitConv(AsmFactory::Type02, ttu)
+			end if
+		end if
 		ILEmitter::EmitStloc(ILEmitter::LocInd)
 		
-		SymTable::AddForLoop(fstm::Iter::Value, fstm::StepExp, fstm::Direction)
+		SymTable::AddForLoop(fstm::Iter::Value, fstm::StepExp, fstm::Direction, fstm::Typ)
 		ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
+		var et = eval::ConvToAST(eval::ConvToRPN(fstm::EndExp))
+		eval::ASTEmit(et, false)
+		if ttu != null then
+			if !ttu::Equals(AsmFactory::Type02) then
+				et = new ExprCallTok() {Exp = new Expr() {AddToken(et)}, set_Conv(true), set_TTok(fstm::Typ), set_OrdOp("conv")}
+			end if
+		end if
+		
 		eval::Evaluate(new Expr() {Line = fstm::Line, AddToken(fstm::Iter), AddToken(#ternary{fstm::Direction ? new GtOp(), new LtOp()}) , _
-			AddToken(eval::ConvToAST(eval::ConvToRPN(fstm::EndExp)))})
+			AddToken(et)})
 		
 		ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
 	end method
@@ -721,10 +735,24 @@ class public auto ansi StmtReader
 				Read(#ternary{fl::Direction ? new IncStmt() {Line = fl::Line, NumVar = new Ident(fl::Iter)}, _
 					new DecStmt() {Line = fl::Line, NumVar = new Ident(fl::Iter)}},fpath)
 			else
+				var ttu = Helpers::CommitEvalTTok(fl::Typ)
+				if (ttu == null) and (fl::Typ != null) then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", fl::Typ::ToString()))
+				end if
+				
 				var eval = new Evaluator()
 				var idt = new Ident(fl::Iter) {Line = fl::Line}
+				var et = eval::ConvToAST(eval::ConvToRPN(fl::StepExp))	
+				eval::ASTEmit(et, false)
+				
+				if ttu != null then
+					if !ttu::Equals(AsmFactory::Type02) then
+						et = new ExprCallTok() {Exp = new Expr() {AddToken(et)}, set_Conv(true), set_TTok(fl::Typ), set_OrdOp("conv")}
+					end if
+				end if
+				
 				var ee = new Expr() {Line = fl::Line, AddToken(idt), AddToken(#ternary{fl::Direction ? new AddOp(), _
-				 new SubOp()}) , AddToken(eval::ConvToAST(eval::ConvToRPN(fl::StepExp)))}
+				 new SubOp()}) , AddToken(et)}
 				 Read(new AssignStmt() {Line = fl::Line, LExp = new Expr() {Line = fl::Line, AddToken(idt) }, RExp = ee}, fpath)
 			end if
 		end if
