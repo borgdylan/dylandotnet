@@ -204,7 +204,7 @@ class public auto ansi static Helpers
 			elseif attr is Attributes.PrivateAttr then
 				temp = FieldAttributes::Private
 			elseif attr is Attributes.LiteralAttr then
-				temp = FieldAttributes::Literal
+				temp = FieldAttributes::Literal or FieldAttributes::Static
 			elseif attr is Attributes.FamilyAttr then
 				temp = FieldAttributes::Family
 				if assem or fam or foa or faa then
@@ -1100,6 +1100,10 @@ class public auto ansi static Helpers
 			if source::GetEnumUnderlyingType()::Equals(sink) then
 				return
 			end if
+		elseif sink::get_IsEnum() then
+			if source::Equals(sink::GetEnumUnderlyingType()) then
+				return
+			end if
 		end if
 		
 		//begin conv overload block
@@ -1766,6 +1770,7 @@ class public auto ansi static Helpers
 		return new MethodInfo[] {Loader::LoadMethod(ie3, "MoveNext", IKVM.Reflection.Type::EmptyTypes), Loader::LoadMethod(ie3, "get_Current", IKVM.Reflection.Type::EmptyTypes)}
 	end method
 	
+	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.Type> GetInhHierarchy(var t as IKVM.Reflection.Type)
 		var l = new C5.LinkedList<of IKVM.Reflection.Type> {t}
 		do while t::get_BaseType() != null
@@ -1774,7 +1779,8 @@ class public auto ansi static Helpers
 		end do
 		return l::Backwards()
 	end method
-
+	
+	[method: ComVisible(false)]
 	method public static IKVM.Reflection.Type CheckCompat(var ta as IKVM.Reflection.Type,var tb as IKVM.Reflection.Type)
 		if ta::Equals(tb) then
 			return ta
@@ -1930,32 +1936,36 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static ConstInfo ProcessConstExpr(var exp as Expr)
-		if exp::Tokens::get_Item(0) is Literal then
-			var lit as Literal = $Literal$exp::Tokens::get_Item(0)
-			return new ConstInfo() {Typ = CommitEvalTTok(lit::LitTyp), Value = LiteralToConst(lit)}
-		elseif exp::Tokens::get_Item(0) is Ident then
-			var idtnamarr as string[] = ParseUtils::StringParser(#expr($Ident$exp::Tokens::get_Item(0))::Value, ":")
-			var typ as IKVM.Reflection.Type = CommitEvalTTok(new TypeTok(idtnamarr[0]))
-			if typ != null then
-				if  GetExtFld(typ, idtnamarr[1]) != null then
-					if Loader::FldLitFlag then
-						return new ConstInfo() {Typ = Loader::FldLitTyp, Value = Loader::FldLitVal}
-					else	
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' of the class '{1}' is not a constant.", idtnamarr[1], typ::ToString()))
+		if exp::Tokens::get_Count() > 0 then
+			if exp::Tokens::get_Item(0) is Literal then
+				var lit as Literal = $Literal$exp::Tokens::get_Item(0)
+				return new ConstInfo() {Typ = CommitEvalTTok(lit::LitTyp), Value = LiteralToConst(lit)}
+			elseif exp::Tokens::get_Item(0) is Ident then
+				var idtnamarr as string[] = ParseUtils::StringParser(#expr($Ident$exp::Tokens::get_Item(0))::Value, ":")
+				var typ as IKVM.Reflection.Type = CommitEvalTTok(new TypeTok(idtnamarr[0]))
+				if typ != null then
+					if  GetExtFld(typ, idtnamarr[1]) != null then
+						if Loader::FldLitFlag then
+							return new ConstInfo() {Typ = Loader::FldLitTyp, Value = Loader::FldLitVal}
+						else	
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' of the class '{1}' is not a constant.", idtnamarr[1], typ::ToString()))
+						end if
+					else
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[1], typ::ToString()))
 					end if
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[1], typ::ToString()))
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", idtnamarr[0]))
 				end if
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", idtnamarr[0]))
+			elseif exp::Tokens::get_Item(0) is GettypeCallTok then
+				var val = Helpers::CommitEvalTTok(#expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name)
+				if val != null then
+					return new ConstInfo() {Typ = ILEmitter::Univ::Import(gettype Type), Value = val}
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", #expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name))
+				end if
 			end if
-		elseif exp::Tokens::get_Item(0) is GettypeCallTok then
-			var val = Helpers::CommitEvalTTok(#expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name)
-			if val != null then
-				return new ConstInfo() {Typ = ILEmitter::Univ::Import(gettype Type), Value = val}
-			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", #expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name))
-			end if
+		else
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Unexpected empty constant expression.")
 		end if
 		return null
 	end method

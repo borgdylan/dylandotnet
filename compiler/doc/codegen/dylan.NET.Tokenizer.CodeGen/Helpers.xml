@@ -172,6 +172,11 @@
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CheckCompat (IKVM.Reflection.Type ta, IKVM.Reflection.Type tb);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type CheckCompat(class IKVM.Reflection.Type ta, class IKVM.Reflection.Type tb) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Type</ReturnType>
       </ReturnValue>
@@ -735,6 +740,11 @@
       <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt; GetInhHierarchy (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class IKVM.Reflection.Type&gt; GetInhHierarchy(class IKVM.Reflection.Type t) cil managed" />
       <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt;</ReturnType>
       </ReturnValue>

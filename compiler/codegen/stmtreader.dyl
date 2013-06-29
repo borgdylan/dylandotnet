@@ -584,7 +584,7 @@ class public auto ansi StmtReader
 		var ftyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(flss::FieldTyp)
 			
 		if ftyp = null then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + flss::FieldTyp::Value + "' is not defined.")
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", flss::FieldTyp::Value))
 		end if
 		
 		AsmFactory::CurnFldB = AsmFactory::CurnTypB::DefineField(flss::FieldName::Value, ftyp, Helpers::ProcessFieldAttrs(flss::Attrs))
@@ -598,19 +598,27 @@ class public auto ansi StmtReader
 		Helpers::ApplyFldAttrs()
 		SymTable::ResetFldCAs()
 		
-		var litval as object = null
-		if AsmFactory::CurnFldB::get_IsLiteral() and (flss::ConstExp != null) then
-			litval = Helpers::ProcessConstExpr(flss::ConstExp)::Value
-			AsmFactory::CurnFldB::SetConstant(litval)
+		var litval as ConstInfo = null
+		if AsmFactory::CurnFldB::get_IsLiteral() then
+			if flss::ConstExp == null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Constants should always be initialized in their declaration!")
+			else
+				litval = Helpers::ProcessConstExpr(flss::ConstExp)
+				if litval::Typ::Equals(ftyp) then
+					AsmFactory::CurnFldB::SetConstant(litval::Value)
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Slots of type '{0}' cannot be assigned values of type '{1}'.", ftyp::ToString(), litval::Typ::ToString()))
+				end if
+			end if
 		end if
 		
 		if AsmFactory::isNested then
 			SymTable::AddNestedFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB)
 		else
-			SymTable::AddFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB, litval)
+			SymTable::AddFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB, #ternary{ litval == null ? null, litval::Value})
 		end if
 
-		StreamUtils::Write("	Adding Field: ")
+		StreamUtils::Write(#ternary{AsmFactory::CurnFldB::get_IsLiteral() ?  "	Adding Constant: ", "	Adding Field: "})
 		StreamUtils::WriteLine(flss::FieldName::Value)
 	end method
 	

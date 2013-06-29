@@ -228,6 +228,7 @@ class public auto ansi Program
 	field public static literal integer Const = 11
 	field public static literal integer Const2 = 5
 	field public static literal integer Const3 = 93
+	field public static literal string ConstsIntrodIn = "11.3.1.5"
 	
 	method private static void Program()
 		var xc as integer = ROTest::X
@@ -610,6 +611,7 @@ class public auto ansi Program
 		Console::WriteLine(integer::MinValue)
 		Console::WriteLine(Const)
 		Console::WriteLine(Program::Const2)
+		Console::WriteLine(ConstsIntrodIn)
 		
 	end method
 
