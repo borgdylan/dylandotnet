@@ -170,6 +170,7 @@ class public auto ansi OTTEnumerator implements IEnumerator<of integer>, IEnumer
 
 end class
 
+[class: Obsolete("This class is only fakely obsolete")]
 class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
 
 	method public hidebysig virtual newslot final IEnumerator<of integer> GetEnumerator()
@@ -224,6 +225,9 @@ class public auto ansi Program
 	field public static IEnumerable<of string> Y
 	field private static integer _TestProperty
 	field private static EventHandler _TestEvent
+	field public static literal integer Const = 11
+	field public static literal integer Const2 = 5
+	field public static literal integer Const3 = 93
 	
 	method private static void Program()
 		var xc as integer = ROTest::X
@@ -602,6 +606,10 @@ class public auto ansi Program
 				end for
 			end for
 		end for
+		
+		Console::WriteLine(integer::MinValue)
+		Console::WriteLine(Const)
+		Console::WriteLine(Program::Const2)
 		
 	end method
 

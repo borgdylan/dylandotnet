@@ -24,18 +24,20 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public FieldItem (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Emit.FieldBuilder bld);" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Emit.FieldBuilder bld) cil managed" />
+      <MemberSignature Language="C#" Value="public FieldItem (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Emit.FieldBuilder bld, object litval);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Emit.FieldBuilder bld, object litval) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="nme" Type="System.String" />
         <Parameter Name="typ" Type="IKVM.Reflection.Type" />
         <Parameter Name="bld" Type="IKVM.Reflection.Emit.FieldBuilder" />
+        <Parameter Name="litval" Type="System.Object" />
       </Parameters>
       <Docs>
         <param name="nme">To be added.</param>
         <param name="typ">To be added.</param>
         <param name="bld">To be added.</param>
+        <param name="litval">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -65,11 +67,11 @@
       </Docs>
     </Member>
     <Member MemberName="LitVal">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Literals.Literal LitVal;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Literals.Literal LitVal" />
+      <MemberSignature Language="C#" Value="public object LitVal;" />
+      <MemberSignature Language="ILAsm" Value=".field public object LitVal" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Literals.Literal</ReturnType>
+        <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

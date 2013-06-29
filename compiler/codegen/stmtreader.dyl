@@ -598,10 +598,16 @@ class public auto ansi StmtReader
 		Helpers::ApplyFldAttrs()
 		SymTable::ResetFldCAs()
 		
+		var litval as object = null
+		if AsmFactory::CurnFldB::get_IsLiteral() and (flss::ConstExp != null) then
+			litval = Helpers::ProcessConstExpr(flss::ConstExp)::Value
+			AsmFactory::CurnFldB::SetConstant(litval)
+		end if
+		
 		if AsmFactory::isNested then
 			SymTable::AddNestedFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB)
 		else
-			SymTable::AddFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB)
+			SymTable::AddFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB, litval)
 		end if
 
 		StreamUtils::Write("	Adding Field: ")

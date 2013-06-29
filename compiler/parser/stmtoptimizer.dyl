@@ -1128,9 +1128,8 @@ class public auto ansi StmtOptimizer
 			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
 			var flss as FieldStmt = new FieldStmt() {Line = stm::Line, Tokens = stm::Tokens}
 			var i as integer = 0
-			var len as integer = stm::Tokens::get_Count() - 3
 			
-			do until i = len
+			do while i <= --stm::Tokens::get_Count()
 				i++
 				if stm::Tokens::get_Item(i) is Attributes.Attribute then
 					flss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
@@ -1145,6 +1144,21 @@ class public auto ansi StmtOptimizer
 			flss::FieldTyp = $TypeTok$stm::Tokens::get_Item(i)
 			i++
 			flss::FieldName = $Ident$stm::Tokens::get_Item(i)
+			
+			if i < --stm::Tokens::get_Count() then
+				i++
+				if !#expr(stm::Tokens::get_Item(i) is AssignOp2) then
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an '=' or nothing at all after the field name instead of '" + stm::Tokens::get_Item(i)::Value + "'!")
+				end if
+				
+				var cexp as Expr = new Expr()
+				do until i == --stm::Tokens::get_Count()
+					i++
+					cexp::AddToken(stm::Tokens::get_Item(i))
+				end do
+				flss::ConstExp = eop::Optimize(cexp)
+			end if
+			
 			return flss
 		end if
 		

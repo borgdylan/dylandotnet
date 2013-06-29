@@ -219,10 +219,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.FieldItem(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.FieldBuilder)">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.FieldItem(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.FieldBuilder,System.Object)">
             <param name="nme">To be added.</param>
             <param name="typ">To be added.</param>
             <param name="bld">To be added.</param>
+            <param name="litval">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1024,10 +1025,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.FieldBuilder)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.FieldBuilder,System.Object)">
             <param name="nme">To be added.</param>
             <param name="typ">To be added.</param>
             <param name="fld">To be added.</param>
+            <param name="litval">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

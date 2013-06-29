@@ -265,6 +265,7 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value = "field:" then
 			return new FieldCTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "field" then
+			PFlags::ForFlag = true
 			return new FieldTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "property:" then
 			return new PropertyCTok() {Line = tok::Line, Value = tok::Value}
@@ -351,6 +352,8 @@ class public auto ansi TokenOptimizer
 			return new HideBySigAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "family" then
 			return new FamilyAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value = "literal" then
+			return new LiteralAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "famorassem" then
 			return new FamORAssemAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value = "famandassem" then

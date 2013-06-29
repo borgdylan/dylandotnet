@@ -11,12 +11,14 @@ class public auto ansi FieldStmt extends Stmt
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident FieldName
 	field public TypeTok FieldTyp
-
+	field public Expr ConstExp
+	
 	method public void FieldStmt()
 		me::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		FieldName = new Ident()
 		FieldTyp = new TypeTok()
+		ConstExp = null
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)

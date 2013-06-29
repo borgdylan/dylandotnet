@@ -203,6 +203,8 @@ class public auto ansi static Helpers
 				temp = FieldAttributes::InitOnly
 			elseif attr is Attributes.PrivateAttr then
 				temp = FieldAttributes::Private
+			elseif attr is Attributes.LiteralAttr then
+				temp = FieldAttributes::Literal
 			elseif attr is Attributes.FamilyAttr then
 				temp = FieldAttributes::Family
 				if assem or fam or foa or faa then

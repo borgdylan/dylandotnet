@@ -212,8 +212,8 @@ class public auto ansi static SymTable
 //	end method
 
 	[method: ComVisible(false)]
-	method public static void AddFld(var nme as string, var typ as IKVM.Reflection.Type, var fld as FieldBuilder)
-		CurnTypItem::AddField(new FieldItem(nme, typ, fld))
+	method public static void AddFld(var nme as string, var typ as IKVM.Reflection.Type, var fld as FieldBuilder, var litval as object)
+		CurnTypItem::AddField(new FieldItem(nme, typ, fld, litval))
 	end method
 	
 	[method: ComVisible(false)]
@@ -279,7 +279,7 @@ class public auto ansi static SymTable
 			destarr[i] = NestedFldLst[i]
 		end do
 
-		destarr[NestedFldLst[l]] = new FieldItem(nme, typ, fld)
+		destarr[NestedFldLst[l]] = new FieldItem(nme, typ, fld, null)
 		NestedFldLst = destarr
 
 	end method

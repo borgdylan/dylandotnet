@@ -121,8 +121,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddFld">
-      <MemberSignature Language="C#" Value="public static void AddFld (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Emit.FieldBuilder fld);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddFld(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Emit.FieldBuilder fld) cil managed" />
+      <MemberSignature Language="C#" Value="public static void AddFld (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Emit.FieldBuilder fld, object litval);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddFld(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Emit.FieldBuilder fld, object litval) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -136,11 +136,13 @@
         <Parameter Name="nme" Type="System.String" />
         <Parameter Name="typ" Type="IKVM.Reflection.Type" />
         <Parameter Name="fld" Type="IKVM.Reflection.Emit.FieldBuilder" />
+        <Parameter Name="litval" Type="System.Object" />
       </Parameters>
       <Docs>
         <param name="nme">To be added.</param>
         <param name="typ">To be added.</param>
         <param name="fld">To be added.</param>
+        <param name="litval">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

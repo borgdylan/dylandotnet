@@ -297,8 +297,15 @@ class public auto ansi beforefieldinit Evaluator
 						end if
 					end if
 					if emt then
-						AsmFactory::Type04 = idtfldinf::get_FieldType()
-						Helpers::EmitFldLd(idtfldinf, idtisstatic)
+						if !Loader::FldLitFlag then
+							AsmFactory::Type04 = idtfldinf::get_FieldType()
+							Helpers::EmitFldLd(idtfldinf, idtisstatic)
+						else
+							Helpers::EmitLiteral(Helpers::ProcessConst( _
+								new ConstLiteral() {ConstVal = Loader::FldLitVal, ExtTyp = Loader::FldLitTyp, IntTyp = #ternary {Loader::EnumLitFlag ? Loader::EnumLitTyp, Loader::FldLitTyp}}))
+							typ = Loader::FldLitTyp
+							AsmFactory::Type02 = typ
+						end if
 					end if
 					idtisstatic = false
 					typ = idtfldinf::get_FieldType()
@@ -349,7 +356,7 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				else
 					idtfldinf = Helpers::GetLocFld(idtnamarr[i])
-					if idtfldinf = null then
+					if idtfldinf == null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
 					end if
 					
@@ -359,9 +366,17 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 					
 					if emt then
-						AsmFactory::Type04 = idtfldinf::get_FieldType()
-						Helpers::EmitFldLd(idtfldinf, idtisstatic)
+						if !Loader::FldLitFlag then
+							AsmFactory::Type04 = idtfldinf::get_FieldType()
+							Helpers::EmitFldLd(idtfldinf, idtisstatic)
+						else
+							Helpers::EmitLiteral(Helpers::ProcessConst( _
+								new ConstLiteral() {ConstVal = Loader::FldLitVal, ExtTyp = Loader::FldLitTyp, IntTyp = #ternary {Loader::EnumLitFlag ? Loader::EnumLitTyp, Loader::FldLitTyp}}))
+							typ = Loader::FldLitTyp
+							AsmFactory::Type02 = typ
+						end if
 					end if
+					
 					typ = idtfldinf::get_FieldType()
 					if AsmFactory::ForcedAddrFlg then
 						typ = typ::MakeByRefType()
@@ -1371,6 +1386,9 @@ class public auto ansi beforefieldinit Evaluator
 					if fldinf != null then
 						if fldinf::get_IsInitOnly() and !AsmFactory::InCtorFlg then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is declared as readonly and may only be set from constructors.")
+						end if
+						if fldinf::get_IsLiteral() then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + idtnamarr[i] + "' is declared as a constant and may not be set again.")
 						end if
 						idtisstatic = fldinf::get_IsStatic()
 						

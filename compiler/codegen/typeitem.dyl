@@ -120,13 +120,30 @@ class public auto ansi TypeItem
 	
 		var fil as FILambdas = new FILambdas(nam)
 		var matches as FieldItem[] = Enumerable::ToArray<of FieldItem>(Enumerable::Where<of FieldItem>(Fields,new Func<of FieldItem,boolean>(fil::DetermineIfCandidate())))
-			
-		if matches[l] = 0 then
-			return null
+		
+		var fldinfo as FieldBuilder
+		var fld as FieldItem = null
+		if matches[l] == 0 then
+			fldinfo = null
 		else
-			Loader::MemberTyp = matches[0]::FieldBldr::get_FieldType()
-			return matches[0]::FieldBldr
+			fld = matches[0]
+			fldinfo = fld::FieldBldr
 		end if
+		
+		if fldinfo != null then
+			Loader::MemberTyp = fldinfo::get_FieldType()
+			Loader::FldLitFlag = fldinfo::get_IsLiteral()
+			//Loader::EnumLitFlag = typ::get_IsEnum()
+			if Loader::FldLitFlag then
+				Loader::FldLitVal = fld::LitVal
+				Loader::FldLitTyp = fldinfo::get_FieldType()
+			end if
+			//if Loader::EnumLitFlag then
+			//	Loader::EnumLitTyp = typ::GetEnumUnderlyingType()
+			//end if
+		end if
+		
+		return fldinfo
 	end method
 
 	method public hidebysig virtual string ToString()
