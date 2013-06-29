@@ -62,7 +62,7 @@ end #if
 #include "parser/assemblyinfo.dyl"
 
 assembly tokenizer.Parser dll
-ver 11.3.1.4
+ver 11.3.1.5
 
 namespace dylan.NET.Tokenizer.Parser
 	#include "parser/parserflags.dyl"

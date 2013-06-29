@@ -49,7 +49,7 @@ end #if
 #include "dnr/assemblyinfo.dyl"
 
 assembly dnr dll
-ver 11.3.1.4
+ver 11.3.1.5
 
 namespace dylan.NET.Reflection
 	#include "dnr/milambdas.dyl"
