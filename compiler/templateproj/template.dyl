@@ -190,6 +190,17 @@ class public auto ansi ObjInit
 	field public ObjInit C
 	field private string _Msg
 	
+	method public void ObjInit(var a as integer, var b as integer, var msg as string)
+		me::ctor()
+		A = a
+		B = b
+		_Msg = msg
+	end method
+	
+	method public void ObjInit()
+		ctor(0,0,string::Empty)
+	end method
+	
 	method public void ABC()
 		Console::WriteLine("hello")
 	end method
@@ -199,17 +210,13 @@ class public auto ansi ObjInit
 		return s::GetHashCode()
 	end method
 	
-	method public hidebysig specialname string get_Msg()
-		return _Msg
-	end method
-	
-	method public hidebysig specialname void set_Msg(var m as string)
-		_Msg = m
-	end method
-
-	property none string Msg
-		get get_Msg()
-		set set_Msg()
+	property public string Msg
+		get
+			return _Msg
+		end get
+		set
+			_Msg = value
+		end set
 	end property
 	
 end class

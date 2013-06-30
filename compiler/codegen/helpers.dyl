@@ -1355,11 +1355,7 @@ class public auto ansi static Helpers
 		else
 			Loader::ProtectedFlag = true
 			var f as FieldInfo = SymTable::TypeLst::GetField(AsmFactory::CurnInhTyp,nam)
-			if f != null then
-				fldinf = f
-			else
-				fldinf = Loader::LoadField(AsmFactory::CurnInhTyp, nam)
-			end if
+			fldinf = #ternary { f != null ? f, Loader::LoadField(AsmFactory::CurnInhTyp, nam) }
 			Loader::ProtectedFlag = false
 		end if
 

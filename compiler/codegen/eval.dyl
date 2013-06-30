@@ -403,49 +403,38 @@ class public auto ansi beforefieldinit Evaluator
 	end method
 	
 	method public void ASTEmitMethod(var mctok as MethodCallTok, var emt as boolean)
-		var mcparenttyp as IKVM.Reflection.Type
-		var mnstrarr as string[]
-		var mcmetinf as MethodInfo
+		var mcmetinf as MethodInfo = null
 		var mntok as MethodNameTok = mctok::Name
-		var ncctorinf as ConstructorInfo
-		var mcfldinf as FieldInfo
-		var mcvr as VarItem
+		var mcfldinf as FieldInfo = null
 		var mcisstatic as boolean = false
-		var mectorflg as boolean = false
 		var mcrestrord as integer = 2
 		var i as integer = -1
-		var j as integer = 0
 		var idtb1 as boolean = false
 		var idtb2 as boolean = false
 		var idtisstatic as boolean = false
 		var pushaddr as boolean = mntok::IsRef and mntok::MemberAccessFlg
 		var baseflg as boolean = false
-
-		mnstrarr = ParseUtils::StringParser(mntok::Value, ":")
-		mcparenttyp = AsmFactory::CurnTypB
-		mcmetinf = null
-		mcfldinf = null
-		mectorflg = (mntok::Value == "me::ctor") or (mntok::Value == "mybase::ctor")
-
-		i = -1
-		mnstrarr = ParseUtils::StringParser(mntok::Value, ":")
+		var mcparenttyp as IKVM.Reflection.Type = AsmFactory::CurnTypB
+		var mectorflg as boolean = (mntok::Value == "me::ctor") or (mntok::Value == "mybase::ctor")
+		var ctorflg as boolean = mntok::Value == "ctor"
+		var mnstrarr as string[] = ParseUtils::StringParser(mntok::Value, ":")
 		var len as integer = mnstrarr[l] - 2
 
 		if pushaddr then
 			mntok::IsRef = false
 		end if
-		if mnstrarr[0] = "me" then
+		if (mnstrarr[0] == "me") or (mnstrarr[0] == "mybase") then
 			i++
 			idtb1 = true
 			mcrestrord = 3
-		elseif mnstrarr[0] = "mybase" then
-			i++
-			idtb1 = true
-			mcrestrord = 3
-			baseflg = true
+			baseflg = mnstrarr[0] == "mybase"
 		end if
 
-		if !mectorflg then
+		if mectorflg or ctorflg then
+			if emt then
+				ILEmitter::EmitLdarg(0)
+			end if
+		else
 			if AsmFactory::ChainFlg then
 				AsmFactory::ChainFlg = false
 				mcparenttyp = AsmFactory::Type02
@@ -463,12 +452,12 @@ class public auto ansi beforefieldinit Evaluator
 			if mnstrarr[l] >= mcrestrord then
 				AsmFactory::AddrFlg = true
 
-				do until i = len
+				do until i == len
 					i++
 
 					if !idtb2 then
 						if !idtb1 then
-							mcvr = SymTable::FindVar(mnstrarr[i])
+							var mcvr as VarItem = SymTable::FindVar(mnstrarr[i])
 							if mcvr != null then
 								if emt then
 									AsmFactory::Type04 = mcvr::VarTyp
@@ -490,18 +479,17 @@ class public auto ansi beforefieldinit Evaluator
 							idtisstatic = mcfldinf::get_IsStatic()
 							
 							if !idtisstatic and ILEmitter::StaticFlg then
-								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is an instance field and cannot be used from a static method without an instance being provided.")
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' is an instance field and cannot be used from a static method without an instance being provided.", mnstrarr[i]))
 							end if
 							
-							if !idtisstatic then
-								if emt then
+							if emt then
+								if !idtisstatic then
 									ILEmitter::EmitLdarg(0)
 								end if
-							end if
-							if emt then
 								AsmFactory::Type04 = mcfldinf::get_FieldType()
 								Helpers::EmitFldLd(mcfldinf, idtisstatic)
 							end if
+							
 							mcisstatic = false
 							mcparenttyp = mcfldinf::get_FieldType()
 							AsmFactory::Type02 = mcparenttyp
@@ -513,27 +501,19 @@ class public auto ansi beforefieldinit Evaluator
 						mcparenttyp = Helpers::CommitEvalTTok(new TypeTok(mnstrarr[i]))
 						mcisstatic = true
 
-						if mcparenttyp = null then
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable or Class '" + mnstrarr[i] + "' is not defined.")
+						if mcparenttyp == null then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Variable or Class '{0}' is not defined.", mnstrarr[i]))
 						end if
 					else
-						if mcparenttyp::Equals(AsmFactory::CurnTypB) then
-							mcfldinf = Helpers::GetLocFld(mnstrarr[i])
-							if mcfldinf = null then
-								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
-							end if
-							mcparenttyp = mcfldinf::get_FieldType()
-						else
-							mcfldinf = Helpers::GetExtFld(mcparenttyp, mnstrarr[i])
-							if mcfldinf = null then
-								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
-							end if
-							mcparenttyp = Loader::MemberTyp
+						mcfldinf = #ternary {mcparenttyp::Equals(AsmFactory::CurnTypB) ? Helpers::GetLocFld(mnstrarr[i]) , Helpers::GetExtFld(mcparenttyp, mnstrarr[i])}
+						if mcfldinf == null then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", mnstrarr[i], mcparenttyp::ToString()))
 						end if
+						mcparenttyp = Loader::MemberTyp
 						
 						if mcisstatic != mcfldinf::get_IsStatic() then
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + mnstrarr[i] + "' defined for the class '" _
-								+ mcfldinf::get_DeclaringType()::ToString() + #ternary {mcisstatic and !mcfldinf::get_IsStatic() ? "' is an instance field.", "' is static."})
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' {2}.", _
+								mnstrarr[i], mcfldinf::get_DeclaringType()::ToString(), #ternary {mcisstatic and !mcfldinf::get_IsStatic() ? "is an instance field", "is static"}))
 						end if
 						
 						AsmFactory::Type02 = mcparenttyp
@@ -552,16 +532,12 @@ class public auto ansi beforefieldinit Evaluator
 
 				AsmFactory::AddrFlg = false
 			end if
-		else
-			if emt then
-				ILEmitter::EmitLdarg(0)
-			end if
 		end if
 
 		i++
 		//instance load for local methods of current isntance
 
-		if !mectorflg then
+		if !mectorflg and !ctorflg then
 			if !idtb2 then
 				if emt then
 					Helpers::BaseFlg = baseflg
@@ -570,7 +546,7 @@ class public auto ansi beforefieldinit Evaluator
 					mcisstatic = mcmetinf::get_IsStatic()
 					
 					if !mcisstatic and ILEmitter::StaticFlg then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' is an instance method and cannot be called from a static method without an instance being provided.")
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Method '{0}' is an instance method and cannot be called from a static method without an instance being provided.", mnstrarr[i]))
 					end if
 					
 					if !mcisstatic then
@@ -579,11 +555,8 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 			end if
 		end if
-				
-		j = i
+		
 		AsmFactory::Type03 = AsmFactory::Type02
-
-		i = -1
 			
 		var lt = new C5.LinkedList<of IKVM.Reflection.Type>()
 		foreach param in mctok::Params
@@ -597,21 +570,46 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 
 		AsmFactory::Type02 = AsmFactory::Type03
-		i = j
 		AsmFactory::Type05 = mcparenttyp
 
-		if !mectorflg then
+		if mectorflg then
+			mcparenttyp = AsmFactory::CurnInhTyp
+			Loader::ProtectedFlag = true
+			var ncctorinf as ConstructorInfo = Helpers::GetLocCtor(mcparenttyp, typarr1)
+			Loader::ProtectedFlag = false
+
+			if ncctorinf == null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Base Class Constructor with the given parameter types is not defined/accessible for the class '{0}'.", mcparenttyp::ToString()))
+			end if
+
+			if emt then
+				ILEmitter::EmitCallCtor(ncctorinf)
+			end if
+		elseif ctorflg then
+			mcparenttyp = AsmFactory::CurnTypB
+			Loader::ProtectedFlag = true
+			var ncctorinf as ConstructorInfo = Helpers::GetLocCtor(mcparenttyp, typarr1)
+			Loader::ProtectedFlag = false
+
+			if ncctorinf == null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class Constructor with the given parameter types is not defined/accessible for the class '{0}'.", mcparenttyp::ToString()))
+			end if
+
+			if emt then
+				ILEmitter::EmitCallCtor(ncctorinf)
+			end if
+		else
 			if idtb2 and !mcparenttyp::Equals(AsmFactory::CurnTypB) then
 				mcmetinf = Helpers::GetExtMet(mcparenttyp, mntok, typarr1)
 				if mcmetinf = null then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i], mcparenttyp::ToString()))
 				end if
 				AsmFactory::Type02 = Loader::MemberTyp
 				baseflg = false
 				
 				if mcisstatic != mcmetinf::get_IsStatic() then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' defined for the class '" _
-							+ mcparenttyp::ToString() + #ternary {mcisstatic and !mcmetinf::get_IsStatic() ? "' is an instance method.", "' is static."})
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Method '{0}' defined for the class '{1}' {2}", _
+							mnstrarr[i], mcparenttyp::ToString(), #ternary {mcisstatic and !mcmetinf::get_IsStatic() ? "is an instance method.", "is static."}))
 				end if
 				
 			else
@@ -620,7 +618,7 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 				mcmetinf = Helpers::GetLocMet(mntok, typarr1)
 				if mcmetinf = null then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i], AsmFactory::CurnTypB::ToString()))
 				end if
 				AsmFactory::Type02 = mcmetinf::get_ReturnType()
 				mcisstatic = mcmetinf::get_IsStatic()
@@ -640,19 +638,6 @@ class public auto ansi beforefieldinit Evaluator
 				AsmFactory::ChainFlg = true
 				AsmFactory::RefChainFlg = pushaddr
 				ASTEmit(mntok::MemberToAccess, emt)
-			end if
-		else
-			mcparenttyp = AsmFactory::CurnInhTyp
-			Loader::ProtectedFlag = true
-			ncctorinf = Helpers::GetLocCtor(mcparenttyp, typarr1)
-			Loader::ProtectedFlag = false
-
-			if ncctorinf = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Base Class Constructor with the given parameter types is not defined/accessible for the class '" + mcparenttyp::ToString() + "'.")
-			end if
-
-			if emt then
-				ILEmitter::EmitCallCtor(ncctorinf)
 			end if
 		end if
 

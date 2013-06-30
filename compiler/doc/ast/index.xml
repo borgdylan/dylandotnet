@@ -89,7 +89,6 @@
       <Type Name="IncStmt" Kind="Class" />
       <Type Name="InfVarAsgnStmt" Kind="Class" />
       <Type Name="LabelStmt" Kind="Class" />
-      <Type Name="LiteralStmt" Kind="Class" />
       <Type Name="LocimportStmt" Kind="Class" />
       <Type Name="LockStmt" Kind="Class" />
       <Type Name="MethodAttrStmt" Kind="Class" />

@@ -25,15 +25,15 @@ class public auto ansi EnumStmt extends Stmt
 	
 end class
 
-class public auto ansi LiteralStmt extends Stmt
-
-	field public Expr RExp
-	field public Ident LitName
-
-	method public void LiteralStmt()
-		me::ctor()
-		RExp = new Expr()
-		LitName = new Ident()
-	end method
-
-end class
+//class public auto ansi LiteralStmt extends Stmt
+//
+//	field public Expr RExp
+//	field public Ident LitName
+//
+//	method public void LiteralStmt()
+//		me::ctor()
+//		RExp = new Expr()
+//		LitName = new Ident()
+//	end method
+//
+//end class

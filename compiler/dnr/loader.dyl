@@ -267,7 +267,7 @@ class public auto ansi static Loader
 		//end if
 
 		if ctorinf = null then
-			ctorinf = typ::GetConstructor(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
+			ctorinf = typ::GetConstructor(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic or IKVM.Reflection.BindingFlags::DeclaredOnly, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
 
 			if ctorinf != null then
 				//filter out private members
