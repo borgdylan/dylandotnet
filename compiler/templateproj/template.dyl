@@ -170,7 +170,7 @@ class public auto ansi OTTEnumerator implements IEnumerator<of integer>, IEnumer
 
 end class
 
-[class: Obsolete("This class is only fakely obsolete")]
+//[class: Obsolete("This class is only fakely obsolete")]
 class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
 
 	method public hidebysig virtual newslot final IEnumerator<of integer> GetEnumerator()
@@ -225,6 +225,14 @@ class public auto ansi partial Program
 	field public static integer Z
 	method public prototype void ProtoMethod(var x as integer, var y as integer)
 end class
+
+[enum: Flags()]
+enum public auto ansi integer MyEnum
+	None = 0
+	A = 1
+	B = 2
+	C = 4
+end enum
 
 class public auto ansi Program
 
@@ -601,9 +609,9 @@ class public auto ansi Program
 		new ObjInit()::XYZ("t")
 		new ObjInit(){C = new ObjInit()}::C::XYZ("u")
 		Console::WriteLine(new ObjInit(){A = 3, B = new ObjInit()::XYZ("q")}::B)
-		Console::WriteLine("Hello from " _
-			+ "a continued " _
-			+ "line")
+		Console::WriteLine("Hello from {0} {1}" _
+			, "a continued" _
+			, "line")
 		var dd = DateTime::get_Now() - DateTime::get_Now()
 		var x = #expr("abc" + $string$!#expr(12 + 6))::Trim()::get_Length()
 		
@@ -619,6 +627,8 @@ class public auto ansi Program
 		Console::WriteLine(Const)
 		Console::WriteLine(Program::Const2)
 		Console::WriteLine(ConstsIntrodIn)
+		Console::WriteLine(gettype MyEnum)
+		Console::WriteLine($object$#expr(MyEnum::A or MyEnum::B))
 		
 	end method
 

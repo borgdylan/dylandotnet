@@ -38,7 +38,13 @@ class public auto ansi TypeList
 	
 	method public IKVM.Reflection.Type GetType(var nam as string)
 		var ti as TypeItem = GetTypeItem(nam)
-		return #ternary{ti == null ? $IKVM.Reflection.Type$null, ti::TypeBldr}
+		if ti == null then
+			return null
+		elseif ti::BakedTyp != null then
+			return ti::BakedTyp
+		else
+			return #ternary{ti::IsEnum ? ti::EnumBldr, ti::TypeBldr}
+		end if
 	end method
 
 

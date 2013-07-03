@@ -10,14 +10,13 @@ class public auto ansi StmtOptimizer
 
 	field public Flags PFlags
 	
-	method public void StmtOptimizer()
-		me::ctor()
-		PFlags = new Flags()
-	end method
-	
 	method public void StmtOptimizer(var pf as Flags)
 		me::ctor()
 		PFlags = pf
+	end method
+	
+	method public void StmtOptimizer()
+		ctor(new Flags())
 	end method
 
 	method private Stmt checkRefasm(var stm as Stmt, var b as boolean&)
@@ -643,6 +642,11 @@ class public auto ansi StmtOptimizer
 					return new EndClassStmt() {Line = stm::Line, Tokens = stm::Tokens}
 				end if
 				
+				b = stm::Tokens::get_Item(1) is EnumTok
+				if b then
+					return new EndEnumStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
 				b = stm::Tokens::get_Item(1) is TryTok
 				if b then
 					return new EndTryStmt() {Line = stm::Line, Tokens = stm::Tokens}
@@ -688,6 +692,60 @@ class public auto ansi StmtOptimizer
 				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
 				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
 				var mas as MethodAttrStmt = new MethodAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
+				
+				var j as integer = -1
+				do until j = --mas::Ctor::Params::get_Count()
+					j++
+					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
+				end do
+				
+				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
+				var curvp as AttrValuePair = null
+				var eqf as boolean = false
+				
+				var i as integer = 2
+				do until i = --mas::Tokens::get_Count()
+					i++
+					if mas::Tokens::get_Item(i) is RSParen then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						break
+					elseif mas::Tokens::get_Item(i) is Comma then
+						if curvp != null then
+							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+							lp::Add(curvp)
+						end if
+						curvp = new AttrValuePair() {ValueExpr = new Expr()}
+						eqf = false
+					elseif mas::Tokens::get_Item(i) is AssignOp then
+						eqf = true
+					else
+						if eqf then
+							curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
+						else
+							curvp::Name = $Ident$mas::Tokens::get_Item(i)
+						end if
+					end if
+				end do
+				
+				mas::Pairs = lp
+				return mas
+			end if
+		end if
+		return null
+	end method
+	
+	method private Stmt checkEnumAttr(var stm as Stmt, var b as boolean&)
+		b = false
+		if stm::Tokens::get_Count() >= 2 then
+			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is EnumCTok)
+
+			if b then
+				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
+				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
+				var mas as EnumAttrStmt = new EnumAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
 				
 				var j as integer = -1
 				do until j = --mas::Ctor::Params::get_Count()
@@ -1158,6 +1216,36 @@ class public auto ansi StmtOptimizer
 				end do
 				flss::ConstExp = eop::Optimize(cexp)
 			end if
+			
+			return flss
+		end if
+		
+		return null
+	end method
+	
+	method private Stmt checkEnum(var stm as Stmt, var b as boolean&)
+		b = stm::Tokens::get_Item(0) is EnumTok
+		
+		if b then
+			var eop as ExprOptimizer = new ExprOptimizer(PFlags)
+			var flss as EnumStmt = new EnumStmt() {Line = stm::Line, Tokens = stm::Tokens}
+			var i as integer = 0
+			
+			do while i <= --stm::Tokens::get_Count()
+				i++
+				if stm::Tokens::get_Item(i) is Attributes.Attribute then
+					flss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
+				else
+					i--
+					break
+				end if
+			end do
+			
+			i++
+			stm::Tokens = eop::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+			flss::EnumTyp = $TypeTok$stm::Tokens::get_Item(i)
+			i++
+			flss::EnumName = $Ident$stm::Tokens::get_Item(i)
 			
 			return flss
 		end if
@@ -1779,6 +1867,18 @@ class public auto ansi StmtOptimizer
 		end if
 		
 		tmpstm = checkClass(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+		
+		tmpstm = checkEnumAttr(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+		
+		tmpstm = checkEnum(stm, ref compb)
 		if compb then
 			stm = tmpstm
 			return stm

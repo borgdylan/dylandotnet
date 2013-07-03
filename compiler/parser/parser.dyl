@@ -10,16 +10,15 @@ class public auto ansi Parser
 
 	field public Flags PFlags
 	
-	method public void Parser()
-		me::ctor()
-		PFlags = new Flags()
-	end method
-
 	method public void Parser(var pf as Flags)
 		me::ctor()
 		PFlags = pf
 	end method
 
+	method public void Parser()
+		ctor(new Flags())
+	end method
+	
 	method public StmtSet Parse(var stms as StmtSet)
 		var i as integer = -1
 		var so as StmtOptimizer = new StmtOptimizer(PFlags)

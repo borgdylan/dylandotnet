@@ -559,6 +559,14 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Stmts.EnumAttrStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.EnumAttrStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.EnumStmt">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1674,6 +1682,19 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.EndTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.EnumCTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.EnumCTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.EnumCTok.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

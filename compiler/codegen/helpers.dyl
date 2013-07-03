@@ -97,6 +97,43 @@ class public auto ansi static Helpers
 		end if
 		return ta
 	end method
+	
+	[method: ComVisible(false)]
+	method public static TypeAttributes ProcessClassAttrsE(var attrs as IEnumerable<of Attributes.Attribute>)
+		
+		var ta as TypeAttributes
+		var temp as TypeAttributes
+		var fir as boolean = true
+		var flg as boolean
+		
+		foreach attr in attrs
+			flg = true
+			
+			if attr is Attributes.PublicAttr then
+				temp = #ternary{AsmFactory::isNested ? TypeAttributes::NestedPublic, TypeAttributes::Public}
+			elseif attr is Attributes.PrivateAttr then
+				temp = #ternary{AsmFactory::isNested ? TypeAttributes::NestedPrivate, TypeAttributes::NotPublic}
+			elseif attr is Attributes.AutoLayoutAttr then
+				temp = TypeAttributes::AutoLayout
+			elseif attr is Attributes.AnsiClassAttr then
+				temp = TypeAttributes::AnsiClass
+			elseif attr is Attributes.SealedAttr then
+				temp = TypeAttributes::Sealed
+			else
+				flg = false
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for an enum.")
+			end if
+			if flg then
+				if fir then
+					fir = (fir == false)
+					ta = temp
+				else
+					ta = temp or ta
+				end if
+			end if
+		end for
+		return ta
+	end method
 
 	[method: ComVisible(false)]
 	method public static MethodAttributes ProcessMethodAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
@@ -1604,6 +1641,13 @@ class public auto ansi static Helpers
 	method public static void ApplyEventAttrs()	
 		foreach ca in SymTable::EventCALst
 			AsmFactory::CurnEventB::SetCustomAttribute(ca)
+		end for
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ApplyEnumAttrs()	
+		foreach ca in SymTable::EnumCALst
+			AsmFactory::CurnEnumB::SetCustomAttribute(ca)
 		end for
 	end method
 	

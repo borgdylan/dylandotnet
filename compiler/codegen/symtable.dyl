@@ -15,6 +15,7 @@ class public auto ansi static SymTable
 	field public static C5.IList<of CustomAttributeBuilder> AssemblyCALst
 	field public static C5.IList<of CustomAttributeBuilder> EventCALst
 	field public static C5.IList<of CustomAttributeBuilder> PropertyCALst
+	field public static C5.IList<of CustomAttributeBuilder> EnumCALst
 	field public static C5.IDictionary<of integer, C5.LinkedList<of CustomAttributeBuilder> > ParameterCALst
 
 	field public static TypeList TypeLst
@@ -56,6 +57,7 @@ class public auto ansi static SymTable
 		AssemblyCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		PropertyCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		EventCALst = new C5.LinkedList<of CustomAttributeBuilder>()
+		EnumCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		ParameterCALst = new C5.HashDictionary<of integer, C5.LinkedList<of CustomAttributeBuilder> >()
 		DefSyms = new C5.TreeSet<of string>()
 		CurnProp = null
@@ -130,6 +132,11 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void ResetEventCAs()
 		EventCALst::Clear()
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void ResetEnumCAs()
+		EnumCALst::Clear()
 	end method
 	
 	[method: ComVisible(false)]
@@ -248,6 +255,13 @@ class public auto ansi static SymTable
 	method public static void AddEventCA(var ca as CustomAttributeBuilder)
 		if ca != null then
 			EventCALst::Add(ca)
+		end if
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddEnumCA(var ca as CustomAttributeBuilder)
+		if ca != null then
+			EnumCALst::Add(ca)
 		end if
 	end method
 	

@@ -65,6 +65,7 @@
       <Type Name="EndRemoveStmt" Kind="Class" />
       <Type Name="EndSetStmt" Kind="Class" />
       <Type Name="EndTryStmt" Kind="Class" />
+      <Type Name="EnumAttrStmt" Kind="Class" />
       <Type Name="EnumStmt" Kind="Class" />
       <Type Name="ErrorStmt" Kind="Class" />
       <Type Name="EventAddStmt" Kind="Class" />
@@ -139,6 +140,7 @@
       <Type Name="ElseIfTok" Kind="Class" />
       <Type Name="ElseTok" Kind="Class" />
       <Type Name="EndTok" Kind="Class" />
+      <Type Name="EnumCTok" Kind="Class" />
       <Type Name="EnumTok" Kind="Class" />
       <Type Name="ErrorTok" Kind="Class" />
       <Type Name="EventCTok" Kind="Class" />

@@ -14,15 +14,6 @@ class public auto ansi PropertyItem
 	field public string ExplImplType
 	field public IEnumerable<of Attributes.Attribute> Attrs
 
-	method public void PropertyItem()
-		me::ctor()
-		Name = string::Empty
-		PropertyTyp = null
-		PropertyBldr = null
-		ExplImplType = string::Empty
-		Attrs = null
-	end method
-
 	method public void PropertyItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as PropertyBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)
 		me::ctor()
 		Name = nme
@@ -31,6 +22,10 @@ class public auto ansi PropertyItem
 		ExplImplType = string::Empty
 		Attrs = attr
 		ExplImplType = expl
+	end method
+	
+	method public void PropertyItem()
+		ctor(string::Empty, $IKVM.Reflection.Type$null, $PropertyBuilder$null, $IEnumerable<of Attributes.Attribute>$null, string::Empty)
 	end method
 
 	method public hidebysig virtual string ToString()

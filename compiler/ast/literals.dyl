@@ -13,20 +13,16 @@ class public auto ansi abstract Literal extends Token implements IUnaryOperatabl
 	field family TypeTok _TTok
 	field family string _OrdOp
 
-	method family void Literal()
-		me::ctor()
-		LitTyp = null
-		_Conv = false
-		_TTok = null
-		_OrdOp = string::Empty
-	end method
-
 	method family void Literal(var value as string)
 		me::ctor(value)
 		LitTyp = null
 		_Conv = false
 		_TTok = null
 		_OrdOp = string::Empty
+	end method
+	
+	method family void Literal()
+		ctor(string::Empty)
 	end method
 	
 	property public hidebysig virtual final newslot string OrdOp
@@ -62,16 +58,14 @@ class public auto ansi NullLiteral extends Literal implements IUnaryOperatable, 
 
 	field public object NullVal
 
-	method public void NullLiteral()
-		me::ctor()
-		NullVal = null
-		LitTyp = new ObjectTok()
-	end method
-
 	method public void NullLiteral(var value as string)
 		me::ctor(value)
 		NullVal = null
 		LitTyp = new ObjectTok()
+	end method
+	
+	method public void NullLiteral()
+		ctor(string::Empty)
 	end method
 
 	method public hidebysig virtual string ToString()
@@ -113,20 +107,16 @@ class public auto ansi ConstLiteral extends Literal
 	field public IKVM.Reflection.Type ExtTyp
 	field public IKVM.Reflection.Type IntTyp
 
-	method public void ConstLiteral()
-		me::ctor()
-		ConstVal = null
-		LitTyp = new ObjectTok()
-		ExtTyp = null
-		IntTyp = null
-	end method
-
 	method public void ConstLiteral(var value as object)
 		me::ctor()
 		ConstVal = value
 		LitTyp = new ObjectTok()
 		ExtTyp = null
 		IntTyp = null
+	end method
+	
+	method public void ConstLiteral()
+		ctor(null)
 	end method
 
 end class
@@ -136,18 +126,15 @@ class public auto ansi StringLiteral extends Literal implements IUnaryOperatable
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
 
-	method public void StringLiteral()
-		me::ctor()
-		LitTyp = new StringTok()
-		MemberAccessFlg = false
-		MemberToAccess = new Token()
-	end method
-
 	method public void StringLiteral(var value as string)
 		me::ctor(value)
 		LitTyp = new StringTok()
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
+	end method
+	
+	method public void StringLiteral()
+		ctor(string::Empty)
 	end method
 
 	method public hidebysig virtual string ToString()
@@ -187,16 +174,18 @@ class public auto ansi CharLiteral extends Literal implements IUnaryOperatable, 
 
 	field public char CharVal
 
-	method public void CharLiteral()
-		me::ctor()
-		CharVal = ' '
+	method private void CharLiteral(var values as string, var value as char)
+		me::ctor(values)
+		CharVal = value
 		LitTyp = new CharTok()
+	end method
+	
+	method public void CharLiteral()
+		ctor(string::Empty, c'\0')
 	end method
 
 	method public void CharLiteral(var value as string)
-		me::ctor(value)
-		CharVal = ' '
-		LitTyp = new CharTok()
+		ctor(value, c'\0')
 		var c as char = c'\0'
 		if char::TryParse(value,ref c) then
 			CharVal = c
@@ -204,9 +193,7 @@ class public auto ansi CharLiteral extends Literal implements IUnaryOperatable, 
 	end method
 	
 	method public void CharLiteral(var value as char)
-		me::ctor($string$value)
-		CharVal = value
-		LitTyp = new CharTok()
+		ctor($string$value, value)
 	end method
 
 	method public hidebysig virtual string ToString()
@@ -259,9 +246,9 @@ class public auto ansi BooleanLiteral extends Literal implements IUnaryOperatabl
 		BoolVal = false
 		LitTyp = new BooleanTok()
 		_DoNeg = false
-		if (value = "True") or (value = "true") then
+		if (value == "True") or (value == "true") then
 			BoolVal = true
-		elseif (value = "False") or (value = "false") then
+		elseif (value == "False") or (value == "false") then
 			BoolVal = false
 		end if
 	end method

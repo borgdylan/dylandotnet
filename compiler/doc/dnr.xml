@@ -50,6 +50,10 @@
             <summary>Holds the current ConstructorBuilder.</summary>
             <remarks />
         </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnEnumB">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.CurnEventB">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -139,6 +143,10 @@
             <remarks />
         </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.InCtorFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.inEnum">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

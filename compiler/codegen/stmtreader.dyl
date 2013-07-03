@@ -173,6 +173,40 @@ class public auto ansi StmtReader
 		end if
 	end method
 	
+	method public void ReadEnum(var clss as EnumStmt)
+		//if AsmFactory::inClass then
+		//	AsmFactory::isNested = true
+		//end if
+		//if !AsmFactory::isNested then
+			AsmFactory::inEnum = true
+		//end if
+
+		var enumtyp = Helpers::CommitEvalTTok(clss::EnumTyp)
+		if enumtyp == null then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", clss::EnumTyp::Value))
+		end if
+		
+		var clssparams as TypeAttributes = Helpers::ProcessClassAttrsE(clss::Attrs) or TypeAttributes::Sealed		
+		//if !AsmFactory::isNested then
+			AsmFactory::CurnTypName = clss::EnumName::Value
+			AsmFactory::CurnEnumB = AsmFactory::MdlB::DefineEnum(AsmFactory::CurnNS + "." + clss::EnumName::Value, clssparams, enumtyp)
+			StreamUtils::WriteLine(string::Format("Adding Enum: {0}.{1}" , AsmFactory::CurnNS, clss::EnumName::Value))
+		//else
+		//	AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
+		//	StreamUtils::WriteLine(string::Format("Adding Nested Enum: {0}", clss::EnumName::Value))
+		//	AsmFactory::CurnTypName = clss::EnumName::Value
+		//	AsmFactory::CurnEnumB = AsmFactory::CurnTypB2::DefineEnum(clss::EnumName::Value, clssparams, enumtyp)
+		//end if
+		
+		Helpers::ApplyEnumAttrs()
+		SymTable::ResetEnumCAs()
+
+		var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::EnumName::Value, AsmFactory::CurnEnumB) {InhTyp = enumtyp}
+		SymTable::CurnTypItem = ti
+		SymTable::TypeLst::AddType(ti)
+
+	end method
+	
 	method public void ReadDelegate(var dels as DelegateStmt)
 		ILEmitter::StructFlg = false
 		ILEmitter::InterfaceFlg = false
@@ -866,6 +900,8 @@ class public auto ansi StmtReader
 			end if
 		elseif stm is ClassStmt then
 			ReadClass($ClassStmt$stm)
+		elseif stm is EnumStmt then
+			ReadEnum($EnumStmt$stm)
 		elseif stm is DelegateStmt then
 			ReadDelegate($DelegateStmt$stm)
 		elseif stm is FieldStmt then
@@ -886,6 +922,20 @@ class public auto ansi StmtReader
 				end if
 				AsmFactory::inClass = false
 			end if
+		elseif stm is EndEnumStmt then
+			//if AsmFactory::isNested then
+			//	AsmFactory::CreateTyp()
+			//	AsmFactory::CurnTypB = AsmFactory::CurnTypB2
+			//	AsmFactory::isNested = false
+			//	SymTable::ResetNestedMet()
+			//	SymTable::ResetNestedCtor()
+			//	SymTable::ResetNestedFld()
+			//else
+			//	if !ILEmitter::PartialFlg then
+					SymTable::CurnTypItem::BakedTyp = AsmFactory::CurnEnumB::CreateType()
+			//	end if
+				AsmFactory::inEnum = false
+			//end if
 		elseif stm is MethodStmt then
 			ReadMethod($MethodStmt$stm)
 		elseif stm is EndMethodStmt then
@@ -945,7 +995,24 @@ class public auto ansi StmtReader
 			AsmFactory::CurnNS = AsmFactory::DfltNS
 		elseif stm is AssignStmt then
 			var asgnstm as AssignStmt = $AssignStmt$stm
-			new Evaluator()::StoreEmit(asgnstm::LExp::Tokens::get_Item(0), asgnstm::RExp)
+			if !AsmFactory::inEnum then
+				new Evaluator()::StoreEmit(asgnstm::LExp::Tokens::get_Item(0), asgnstm::RExp)
+			else
+				//enum members
+				var litval as ConstInfo = null
+				var name = asgnstm::LExp::Tokens::get_Item(0)::Value
+				if asgnstm::RExp::Tokens::get_Count() < 1 then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Enum members should always be initialized in their declaration!")
+				else
+					litval = Helpers::ProcessConstExpr(asgnstm::RExp)
+					if litval::Typ::Equals(SymTable::CurnTypItem::InhTyp) then
+						AsmFactory::CurnFldB = AsmFactory::CurnEnumB::DefineLiteral(name, litval::Value)
+						SymTable::AddFld(name, SymTable::CurnTypItem::EnumBldr, AsmFactory::CurnFldB, litval::Value)
+					else
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Slots of type '{0}' cannot be assigned values of type '{1}'.", SymTable::CurnTypItem::InhTyp::ToString(), litval::Typ::ToString()))
+					end if
+				end if
+			end if
 		elseif stm is MethodCallStmt then
 			var mcstmt as MethodCallStmt = $MethodCallStmt$stm
 			if Helpers::SetPopFlg(mcstmt::MethodToken) != null then
@@ -1145,6 +1212,8 @@ class public auto ansi StmtReader
 			SymTable::AddPropCA(AttrStmtToCAB($PropertyAttrStmt$stm))
 		elseif stm is EventAttrStmt then
 			SymTable::AddEventCA(AttrStmtToCAB($EventAttrStmt$stm))
+		elseif stm is EnumAttrStmt then
+			SymTable::AddEnumCA(AttrStmtToCAB($EnumAttrStmt$stm))
 		elseif stm is LockStmt then
 			var lstm as LockStmt = $LockStmt$stm
 			SymTable::PushScope()

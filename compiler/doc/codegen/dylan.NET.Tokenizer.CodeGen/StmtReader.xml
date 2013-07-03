@@ -106,6 +106,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ReadEnum">
+      <MemberSignature Language="C#" Value="public void ReadEnum (dylan.NET.Tokenizer.AST.Stmts.EnumStmt clss);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void ReadEnum(class dylan.NET.Tokenizer.AST.Stmts.EnumStmt clss) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="clss" Type="dylan.NET.Tokenizer.AST.Stmts.EnumStmt" />
+      </Parameters>
+      <Docs>
+        <param name="clss">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ReadEvent">
       <MemberSignature Language="C#" Value="public void ReadEvent (dylan.NET.Tokenizer.AST.Stmts.EventStmt evss, string fpath);" />
       <MemberSignature Language="ILAsm" Value=".method public instance void ReadEvent(class dylan.NET.Tokenizer.AST.Stmts.EventStmt evss, string fpath) cil managed" />

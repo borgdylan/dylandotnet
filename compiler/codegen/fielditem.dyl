@@ -13,20 +13,16 @@ class public auto ansi FieldItem
 	field public FieldBuilder FieldBldr
 	field public object LitVal
 
-	method public void FieldItem()
-		me::ctor()
-		Name = String::Empty
-		FieldTyp = null
-		FieldBldr = null
-		LitVal = null
-	end method
-
 	method public void FieldItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as FieldBuilder, var litval as object)
 		me::ctor()
 		Name = nme
 		FieldTyp = typ
 		FieldBldr = bld
 		LitVal = litval
+	end method
+	
+	method public void FieldItem()
+		ctor(string::Empty, $IKVM.Reflection.Type$null, $FieldBuilder$null, null)
 	end method
 
 	method public hidebysig virtual string ToString()

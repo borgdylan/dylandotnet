@@ -22,23 +22,6 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
 
-	method public void Ident()
-		me::ctor()
-		IsRef = false
-		IsValInRef = false
-		_Conv = false
-		_TTok = new TypeTok()
-		IsArr = false
-		ArrLoc = new Expr()
-		_DoNeg = false
-		_DoNot = false
-		_DoInc = false
-		_DoDec = false
-		_OrdOp = string::Empty
-		MemberAccessFlg = false
-		MemberToAccess = new Token()
-	end method
-
 	method public void Ident(var value as string)
 		me::ctor(value)
 		IsRef = false
@@ -54,6 +37,10 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 		_OrdOp = string::Empty
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
+	end method
+	
+	method public void Ident()
+		ctor(string::Empty)
 	end method
 		
 	property public hidebysig virtual final newslot string OrdOp

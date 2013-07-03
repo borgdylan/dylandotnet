@@ -11,16 +11,14 @@ class public auto ansi CtorItem
 	field public IKVM.Reflection.Type[] ParamTyps
 	field public ConstructorBuilder CtorBldr
 
-	method public void CtorItem()
-		me::ctor()
-		CtorBldr = null
-		ParamTyps = new IKVM.Reflection.Type[0]
-	end method
-
 	method public void CtorItem(var ptyps as IKVM.Reflection.Type[], var bld as ConstructorBuilder)
 		me::ctor()
 		CtorBldr = bld
 		ParamTyps = ptyps
+	end method
+	
+	method public void CtorItem()
+		ctor(new IKVM.Reflection.Type[0], $ConstructorBuilder$null)
 	end method
 
 	method public hidebysig virtual string ToString()

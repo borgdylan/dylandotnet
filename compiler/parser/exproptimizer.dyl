@@ -10,14 +10,13 @@ class public auto ansi ExprOptimizer
 
 	field public Flags PFlags
 	
-	method public void ExprOptimizer()
-		me::ctor()
-		PFlags = new Flags()
-	end method
-	
 	method public void ExprOptimizer(var pf as Flags)
 		me::ctor()
 		PFlags = pf
+	end method
+	
+	method public void ExprOptimizer()
+		ctor(new Flags())
 	end method
 	
 	method public prototype Expr Optimize(var exp as Expr)

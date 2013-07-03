@@ -19,20 +19,6 @@ class public auto ansi ExprCallTok extends Token implements IUnaryOperatable, IC
 	field public Token MemberToAccess
 	field public Expr Exp
 
-	method public void ExprCallTok()
-		me::ctor()
-		_Conv = false
-		_TTok = new TypeTok()
-		_DoNeg = false
-		_DoNot = false
-		_DoInc = false
-		_DoDec = false
-		_OrdOp = string::Empty
-		MemberAccessFlg = false
-		MemberToAccess = new Token()
-		Exp = null
-	end method
-
 	method public void ExprCallTok(var value as string)
 		me::ctor(value)
 		_Conv = false
@@ -45,6 +31,10 @@ class public auto ansi ExprCallTok extends Token implements IUnaryOperatable, IC
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
 		Exp = null
+	end method
+	
+	method public void ExprCallTok()
+		ctor(string::Empty)
 	end method
 	
 	property public hidebysig virtual final newslot string OrdOp

@@ -11,36 +11,41 @@ class public auto ansi TypeItem
 	field public string Name
 	field public boolean IsStatic
 	field public IKVM.Reflection.Type InhTyp
+	field public IKVM.Reflection.Type BakedTyp
 	field public C5.IList<of IKVM.Reflection.Type> Interfaces
 	field public TypeBuilder TypeBldr
+	field public EnumBuilder EnumBldr
 	field public C5.IList<of MethodItem> Methods
 	field public C5.IList<of CtorItem> Ctors
 	field public C5.IList<of FieldItem> Fields
-	//field assembly Func<of IKVM.Reflection.Type, ConstructorInfo> DefCtorDel
+	field public boolean IsEnum
 
-	method public void TypeItem()
-		me::ctor()
-		IsStatic = false
-		Name = String::Empty
-		InhTyp = null
-		TypeBldr = null
-		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
-		Methods = new C5.LinkedList<of MethodItem>()
-		Ctors = new C5.LinkedList<of CtorItem>()
-		Fields = new C5.LinkedList<of FieldItem>()
-		//DefCtorDel = null
-	end method
-
-	method public void TypeItem(var nme as string,var bld as TypeBuilder)
+	method private void TypeItem(var nme as string, var bld as TypeBuilder, var bld3 as EnumBuilder)
 		me::ctor()
 		IsStatic = false
 		Name = nme
 		TypeBldr = bld
+		EnumBldr = bld3
+		InhTyp = null
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
 		Methods = new C5.LinkedList<of MethodItem>()
 		Ctors = new C5.LinkedList<of CtorItem>()
 		Fields = new C5.LinkedList<of FieldItem>()
-		//DefCtorDel = null
+		BakedTyp = null
+	end method
+	
+	method public void TypeItem(var nme as string, var bld as TypeBuilder)
+		ctor(nme, bld, $EnumBuilder$null)
+		IsEnum = false
+	end method
+	
+	method public void TypeItem(var nme as string, var bld3 as EnumBuilder)
+		ctor(nme, $TypeBuilder$null, bld3)
+		IsEnum = true
+	end method
+	
+	method public void TypeItem()
+		ctor(string::Empty, $TypeBuilder$null)
 	end method
 
 	method public void AddField(var f as FieldItem)
@@ -133,14 +138,14 @@ class public auto ansi TypeItem
 		if fldinfo != null then
 			Loader::MemberTyp = fldinfo::get_FieldType()
 			Loader::FldLitFlag = fldinfo::get_IsLiteral()
-			//Loader::EnumLitFlag = typ::get_IsEnum()
+			Loader::EnumLitFlag = IsEnum
 			if Loader::FldLitFlag then
 				Loader::FldLitVal = fld::LitVal
 				Loader::FldLitTyp = fldinfo::get_FieldType()
 			end if
-			//if Loader::EnumLitFlag then
-			//	Loader::EnumLitTyp = typ::GetEnumUnderlyingType()
-			//end if
+			if IsEnum then
+				Loader::EnumLitTyp = InhTyp
+			end if
 		end if
 		
 		return fldinfo

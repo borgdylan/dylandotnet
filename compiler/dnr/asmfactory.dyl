@@ -44,8 +44,10 @@ class public auto ansi static AsmFactory
 	field public static IKVM.Reflection.Emit.TypeBuilder CurnTypB
 	field public static IKVM.Reflection.Emit.TypeBuilder CurnTypB2
 	field public static IKVM.Reflection.Emit.TypeBuilder[] CurnTypList
+	field public static IKVM.Reflection.Emit.EnumBuilder CurnEnumB
 	field public static boolean isNested
 	field public static boolean inClass
+	field public static boolean inEnum
 	//field public static IKVM.Reflection.Type[] TypArr
 	field public static string[] GenParamNames
 	field public static IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
@@ -71,6 +73,7 @@ class public auto ansi static AsmFactory
 		GenParamTyps = new IKVM.Reflection.Emit.GenericTypeParameterBuilder[0]
 		isNested = false
 		inClass = false
+		inEnum = false
 	end method
 
 	method private static void AsmFactory()

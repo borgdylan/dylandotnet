@@ -257,6 +257,14 @@ class public auto ansi EnumTok extends Token
 
 end class
 
+class public auto ansi EnumCTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "enum:"
+	end method
+
+end class
+
 class public auto ansi FieldTok extends Token
 
 	method public hidebysig virtual string ToString()

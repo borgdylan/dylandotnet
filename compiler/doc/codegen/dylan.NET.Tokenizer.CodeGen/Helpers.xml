@@ -49,6 +49,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ApplyEnumAttrs">
+      <MemberSignature Language="C#" Value="public static void ApplyEnumAttrs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ApplyEnumAttrs() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ApplyEventAttrs">
       <MemberSignature Language="C#" Value="public static void ApplyEventAttrs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ApplyEventAttrs() cil managed" />
@@ -1085,6 +1103,28 @@
     <Member MemberName="ProcessClassAttrs">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.TypeAttributes ProcessClassAttrs (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs);" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.TypeAttributes ProcessClassAttrs(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.TypeAttributes</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="attrs" Type="System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="attrs">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProcessClassAttrsE">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.TypeAttributes ProcessClassAttrsE (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.TypeAttributes ProcessClassAttrsE(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>

@@ -24,6 +24,21 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TypeItem (string nme, IKVM.Reflection.Emit.EnumBuilder bld3);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string nme, class IKVM.Reflection.Emit.EnumBuilder bld3) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="nme" Type="System.String" />
+        <Parameter Name="bld3" Type="IKVM.Reflection.Emit.EnumBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="nme">To be added.</param>
+        <param name="bld3">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public TypeItem (string nme, IKVM.Reflection.Emit.TypeBuilder bld);" />
       <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string nme, class IKVM.Reflection.Emit.TypeBuilder bld) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -102,12 +117,36 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="BakedTyp">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type BakedTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type BakedTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Ctors">
       <MemberSignature Language="C#" Value="public C5.IList&lt;dylan.NET.Tokenizer.CodeGen.CtorItem&gt; Ctors;" />
       <MemberSignature Language="ILAsm" Value=".field public class C5.IList`1&lt;class dylan.NET.Tokenizer.CodeGen.CtorItem&gt; Ctors" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>C5.IList&lt;dylan.NET.Tokenizer.CodeGen.CtorItem&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumBldr">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.EnumBuilder EnumBldr;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Emit.EnumBuilder EnumBldr" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.EnumBuilder</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -216,6 +255,18 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>C5.IList&lt;IKVM.Reflection.Type&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsEnum">
+      <MemberSignature Language="C#" Value="public bool IsEnum;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool IsEnum" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

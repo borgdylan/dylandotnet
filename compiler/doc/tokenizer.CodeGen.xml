@@ -303,6 +303,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyEnumAttrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyEventAttrs">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -583,6 +587,12 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessClassAttrs(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute})">
+            <param name="attrs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessClassAttrsE(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute})">
             <param name="attrs">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
@@ -932,6 +942,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt)">
+            <param name="clss">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEvent(dylan.NET.Tokenizer.AST.Stmts.EventStmt,System.String)">
             <param name="evss">To be added.</param>
             <param name="fpath">To be added.</param>
@@ -1017,6 +1032,11 @@
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddDef(System.String)">
             <param name="sym">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddEnumCA(IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ca">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1150,6 +1170,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.CurnTypItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.EnumCALst">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1290,6 +1314,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetEnumCAs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetEventCAs">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1371,6 +1399,12 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.TypeItem(System.String,IKVM.Reflection.Emit.EnumBuilder)">
+            <param name="nme">To be added.</param>
+            <param name="bld3">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="C:dylan.NET.Tokenizer.CodeGen.TypeItem(System.String,IKVM.Reflection.Emit.TypeBuilder)">
             <param name="nme">To be added.</param>
             <param name="bld">To be added.</param>
@@ -1397,7 +1431,15 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.BakedTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.Ctors">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.EnumBldr">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1436,6 +1478,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.Interfaces">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.IsEnum">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

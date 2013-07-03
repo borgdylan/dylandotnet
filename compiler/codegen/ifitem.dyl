@@ -20,10 +20,9 @@ class public auto ansi IfItem
 	end method
 
 	method public void IfItem(var endl as Emit.Label, var nbl as Emit.Label, var ln as integer)
-		me::ctor()
+		ctor()
 		EndLabel = endl
 		NextBlkLabel = nbl
-		ElsePass = false
 		Line = ln
 	end method
 

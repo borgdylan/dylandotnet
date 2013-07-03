@@ -167,6 +167,18 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="CurnEnumB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.EnumBuilder CurnEnumB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.EnumBuilder CurnEnumB" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.EnumBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CurnEventB">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.EventBuilder CurnEventB;" />
       <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.EventBuilder CurnEventB" />
@@ -448,6 +460,18 @@
     <Member MemberName="InCtorFlg">
       <MemberSignature Language="C#" Value="public static bool InCtorFlg;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool InCtorFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="inEnum">
+      <MemberSignature Language="C#" Value="public static bool inEnum;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool inEnum" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

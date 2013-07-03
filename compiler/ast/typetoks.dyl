@@ -12,22 +12,19 @@ class public auto ansi TypeTok extends Token implements ICloneable
 	field public boolean IsByRef
 	field public IKVM.Reflection.Type RefTyp
 
-	method public void TypeTok()
-		me::ctor()
-		IsArray = false
-		IsByRef = false
-		RefTyp = null
-	end method
-
 	method public void TypeTok(var value as string)
 		me::ctor(value)
 		IsArray = false
 		IsByRef = false
 		RefTyp = null
 	end method
+	
+	method public void TypeTok()
+		me::ctor(string::Empty)
+	end method
 
 	method public void TypeTok(var value as IKVM.Reflection.Type)
-		me::ctor()
+		me::ctor(value::ToString())
 		IsByRef = value::get_IsByRef()
 		if IsByRef then
 			value = value::GetElementType()
@@ -37,7 +34,6 @@ class public auto ansi TypeTok extends Token implements ICloneable
 			value = value::GetElementType()
 		end if
 		RefTyp = value
-		Value = value::ToString()
 	end method
 	
 	method public hidebysig virtual TypeTok CloneTT()
@@ -66,14 +62,13 @@ class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 
 	field public TypeTok[] Params
 
-	method public void GenericTypeTok()
-		me::ctor()
-		Params = new TypeTok[0]
-	end method
-
 	method public void GenericTypeTok(var value as string)
 		me::ctor(value)
 		Params = new TypeTok[0]
+	end method
+	
+	method public void GenericTypeTok()
+		ctor(string::Empty)
 	end method
 	
 	method public hidebysig virtual TypeTok CloneTT()
@@ -131,16 +126,16 @@ class public auto ansi beforefieldinit StringTok extends TypeTok
 		strtyp = ILEmitter::Univ::Import(gettype string)
 	end method
 
-	method public void StringTok()
-		me::ctor("string")
-		RefTyp = strtyp
-	end method
-
 	method public void StringTok(var value as string)
 		me::ctor(value)
 		RefTyp = strtyp
 	end method
 	
+	method public void StringTok()
+		ctor("string")
+	end method
+
+				
 	method public hidebysig virtual string ToString()
 		if IsArray and IsByRef then
 			return "string[]&"
@@ -163,14 +158,13 @@ class public auto ansi beforefieldinit IntegerTok extends TypeTok
 		inttyp = ILEmitter::Univ::Import(gettype integer)
 	end method
 
-	method public void IntegerTok()
-		me::ctor("integer")
-		RefTyp = inttyp
-	end method
-
 	method public void IntegerTok(var value as string)
 		me::ctor(value)
 		RefTyp = inttyp
+	end method
+	
+	method public void IntegerTok()
+		ctor("integer")
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -195,16 +189,15 @@ class public auto ansi beforefieldinit DoubleTok extends TypeTok
 		dbltyp = ILEmitter::Univ::Import(gettype double)
 	end method
 
-	method public void DoubleTok()
-		me::ctor("double")
-		RefTyp = dbltyp
-	end method
-
 	method public void DoubleTok(var value as string)
 		me::ctor(value)
 		RefTyp = dbltyp
 	end method
 	
+	method public void DoubleTok()
+		ctor("double")
+	end method
+				
 	method public hidebysig virtual string ToString()
 		if IsArray and IsByRef then
 			return "double[]&"
@@ -227,14 +220,13 @@ class public auto ansi beforefieldinit BooleanTok extends TypeTok
 		bltyp = ILEmitter::Univ::Import(gettype boolean)
 	end method
 	
-	method public void BooleanTok()
-		me::ctor("boolean")
-		RefTyp = bltyp
-	end method
-
 	method public void BooleanTok(var value as string)
 		me::ctor(value)
 		RefTyp = bltyp
+	end method
+	
+	method public void BooleanTok()
+		ctor("boolean")
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -259,16 +251,15 @@ class public auto ansi beforefieldinit CharTok extends TypeTok
 		chrtyp = ILEmitter::Univ::Import(gettype char)
 	end method
 	
-	method public void CharTok()
-		me::ctor("char")
-		RefTyp = chrtyp
-	end method
-
 	method public void CharTok(var value as string)
 		me::ctor(value)
 		RefTyp = chrtyp
 	end method
-
+	
+	method public void CharTok()
+		ctor("char")
+	end method
+	
 	method public hidebysig virtual string ToString()
 		if IsArray and IsByRef then
 			return "char[]&"
@@ -291,14 +282,13 @@ class public auto ansi beforefieldinit DecimalTok extends TypeTok
 		dectyp = ILEmitter::Univ::Import(gettype decimal)
 	end method
 	
-	method public void DecimalTok()
-		me::ctor("decimal")
-		RefTyp = dectyp
-	end method
-
 	method public void DecimalTok(var value as string)
 		me::ctor(value)
 		RefTyp = dectyp
+	end method
+	
+	method public void DecimalTok()
+		ctor("decimal")
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -322,15 +312,14 @@ class public auto ansi beforefieldinit LongTok extends TypeTok
 	method private static void LongTok()
 		lngtyp = ILEmitter::Univ::Import(gettype long)
 	end method
-	
-	method public void LongTok()
-		me::ctor("long")
-		RefTyp = lngtyp
-	end method
 
 	method public void LongTok(var value as string)
 		me::ctor(value)
 		RefTyp = lngtyp
+	end method
+	
+	method public void LongTok()
+		ctor("long")
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -355,15 +344,15 @@ class public auto ansi beforefieldinit SByteTok extends TypeTok
 		sbtyp = ILEmitter::Univ::Import(gettype sbyte)
 	end method
 	
-	method public void SByteTok()
-		me::ctor("sbyte")
-		RefTyp = sbtyp
-	end method
-
 	method public void SByteTok(var value as string)
 		me::ctor(value)
 		RefTyp = sbtyp
 	end method
+	
+	method public void SByteTok()
+		ctor("sbyte")
+	end method
+
 	
 	method public hidebysig virtual string ToString()
 		if IsArray and IsByRef then
@@ -387,14 +376,13 @@ class public auto ansi beforefieldinit ShortTok extends TypeTok
 		shtyp = ILEmitter::Univ::Import(gettype short)
 	end method
 	
-	method public void ShortTok()
-		me::ctor("short")
-		RefTyp = shtyp
-	end method
-
 	method public void ShortTok(var value as string)
 		me::ctor(value)
 		RefTyp = shtyp
+	end method
+	
+	method public void ShortTok()
+		ctor("short")
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -451,16 +439,15 @@ class public auto ansi beforefieldinit ObjectTok extends TypeTok
 		objtyp = ILEmitter::Univ::Import(gettype object)
 	end method
 	
-	method public void ObjectTok()
-		me::ctor("object")
-		RefTyp = objtyp
-	end method
-
 	method public void ObjectTok(var value as string)
 		me::ctor(value)
 		RefTyp = objtyp
 	end method
 	
+	method public void ObjectTok()
+		ctor("object")
+	end method
+
 	method public hidebysig virtual string ToString()
 		if IsArray and IsByRef then
 			return "object[]&"
@@ -483,14 +470,13 @@ class public auto ansi beforefieldinit VoidTok extends TypeTok
 		vdtyp = ILEmitter::Univ::Import(gettype void)
 	end method
 	
-	method public void VoidTok()
-		me::ctor("void")
-		RefTyp = vdtyp
-	end method
-
 	method public void VoidTok(var value as string)
 		me::ctor(value)
 		RefTyp = vdtyp
+	end method
+	
+	method public void VoidTok()
+		ctor("void")
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -507,16 +493,15 @@ class public auto ansi beforefieldinit UIntegerTok extends TypeTok
 		uinttyp = ILEmitter::Univ::Import(gettype uinteger)
 	end method
 	
-	method public void UIntegerTok()
-		me::ctor("uinteger")
-		RefTyp = uinttyp
-	end method
-
 	method public void UIntegerTok(var value as string)
 		me::ctor(value)
 		RefTyp = uinttyp
 	end method
 	
+	method public void UIntegerTok()
+		ctor("uinteger")
+	end method
+
 	method public hidebysig virtual string ToString()
 		if IsArray and IsByRef then
 			return "uinteger[]&"
@@ -539,14 +524,13 @@ class public auto ansi beforefieldinit ULongTok extends TypeTok
 		ulngtyp = ILEmitter::Univ::Import(gettype ulong)
 	end method
 	
-	method public void ULongTok()
-		me::ctor("ulong")
-		RefTyp = ulngtyp
-	end method
-
 	method public void ULongTok(var value as string)
 		me::ctor(value)
 		RefTyp = ulngtyp
+	end method
+	
+	method public void ULongTok()
+		ctor("ulong")
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -571,14 +555,13 @@ class public auto ansi beforefieldinit ByteTok extends TypeTok
 		btyp = ILEmitter::Univ::Import(gettype byte)
 	end method
 	
-	method public void ByteTok()
-		me::ctor("byte")
-		RefTyp = btyp
-	end method
-
 	method public void ByteTok(var value as string)
 		me::ctor(value)
 		RefTyp = btyp
+	end method
+	
+	method public void ByteTok()
+		ctor("byte")
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -603,16 +586,15 @@ class public auto ansi beforefieldinit UShortTok extends TypeTok
 		ushtyp = ILEmitter::Univ::Import(gettype ushort)
 	end method
 	
-	method public void UShortTok()
-		me::ctor("ushort")
-		RefTyp = ushtyp
-	end method
-
 	method public void UShortTok(var value as string)
 		me::ctor(value)
 		RefTyp = ushtyp
 	end method
 	
+	method public void UShortTok()
+		ctor("ushort")
+	end method
+
 	method public hidebysig virtual string ToString()
 		if IsArray and IsByRef then
 			return "ushort[]&"
@@ -635,14 +617,13 @@ class public auto ansi beforefieldinit IntPtrTok extends TypeTok
 		iptyp = ILEmitter::Univ::Import(gettype IntPtr)
 	end method
 	
-	method public void IntPtrTok()
-		me::ctor("intptr")
-		RefTyp = iptyp
-	end method
-
 	method public void IntPtrTok(var value as string)
 		me::ctor(value)
 		RefTyp = iptyp
+	end method
+	
+	method public void IntPtrTok()
+		ctor("intptr")
 	end method
 	
 	method public hidebysig virtual string ToString()

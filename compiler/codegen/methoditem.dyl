@@ -13,20 +13,16 @@ class public auto ansi MethodItem
 	field public IKVM.Reflection.Type[] ParamTyps
 	field public MethodBuilder MethodBldr
 
-	method public void MethodItem()
-		me::ctor()
-		Name = String::Empty
-		MethodTyp = null
-		MethodBldr = null
-		ParamTyps = new IKVM.Reflection.Type[0]
-	end method
-
 	method public void MethodItem(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var bld as MethodBuilder)
 		me::ctor()
 		Name = nme
 		MethodTyp = typ
 		MethodBldr = bld
 		ParamTyps = ptyps
+	end method
+	
+	method public void MethodItem()
+		ctor(string::Empty, $IKVM.Reflection.Type$null, new IKVM.Reflection.Type[0], $MethodBuilder$null)
 	end method
 
 	method public hidebysig virtual string ToString()

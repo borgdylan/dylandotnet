@@ -11,16 +11,14 @@ class public auto ansi AttrValuePair extends Token
 	field public Ident Name
 	field public Expr ValueExpr
 	
-	method public void AttrValuePair()
-		me::ctor()
-		Name = null
-		ValueExpr = null
-	end method
-	
 	method public void AttrValuePair(var nme as Ident, var exp as Expr)
 		me::ctor()
 		Name = nme
 		ValueExpr = exp
+	end method
+	
+	method public void AttrValuePair()
+		ctor($Ident$null, $Expr$null)
 	end method
 
 end class

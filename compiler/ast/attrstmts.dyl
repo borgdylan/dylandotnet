@@ -37,6 +37,9 @@ end class
 class public auto ansi EventAttrStmt extends AttrStmt
 end class
 
+class public auto ansi EnumAttrStmt extends AttrStmt
+end class
+
 class public auto ansi ParameterAttrStmt extends AttrStmt
 
 	field public integer Index

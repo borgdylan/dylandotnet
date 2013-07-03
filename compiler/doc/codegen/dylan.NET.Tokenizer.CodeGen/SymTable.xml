@@ -99,6 +99,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AddEnumCA">
+      <MemberSignature Language="C#" Value="public static void AddEnumCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddEnumCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ca" Type="IKVM.Reflection.Emit.CustomAttributeBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ca">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddEventCA">
       <MemberSignature Language="C#" Value="public static void AddEventCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddEventCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
@@ -583,6 +604,18 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.CodeGen.TypeItem</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumCALst">
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; EnumCALst;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; EnumCALst" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1085,6 +1118,24 @@
     <Member MemberName="ResetClsCAs">
       <MemberSignature Language="C#" Value="public static void ResetClsCAs ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetClsCAs() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetEnumCAs">
+      <MemberSignature Language="C#" Value="public static void ResetEnumCAs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetEnumCAs() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
