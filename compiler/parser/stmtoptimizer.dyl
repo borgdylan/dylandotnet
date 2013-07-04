@@ -682,56 +682,59 @@ class public auto ansi StmtOptimizer
 		end if
 		return null
 	end method
-			
+	
+	method private AttrStmt parseCustAttr(var mas as AttrStmt, var stm as Stmt)
+		var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
+		var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
+		
+		mas::Tokens = tempexp::Tokens
+		mas::Ctor = $NewCallTok$tempexp::Tokens::get_Item(2)
+		mas::Line = stm::Line
+		
+		for j = 0 upto --mas::Ctor::Params::get_Count()
+			mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
+		end for
+		
+		var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
+		var curvp as AttrValuePair = null
+		var eqf as boolean = false
+		
+		for i = 3 upto --mas::Tokens::get_Count()
+			if mas::Tokens::get_Item(i) is RSParen then
+				if curvp != null then
+					curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+					lp::Add(curvp)
+				end if
+				break
+			elseif mas::Tokens::get_Item(i) is Comma then
+				if curvp != null then
+					curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+					lp::Add(curvp)
+				end if
+				curvp = new AttrValuePair() {ValueExpr = new Expr()}
+				eqf = false
+			elseif mas::Tokens::get_Item(i) is AssignOp then
+				eqf = true
+			else
+				if eqf then
+					curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
+				else
+					curvp::Name = $Ident$mas::Tokens::get_Item(i)
+				end if
+			end if
+		end for
+		
+		mas::Pairs = lp
+		return mas
+	end method 
+	
 	method private Stmt checkMetAttr(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is MethodCTok)
 
 			if b then
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
-				var mas as MethodAttrStmt = new MethodAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
-				
-				var j as integer = -1
-				do until j = --mas::Ctor::Params::get_Count()
-					j++
-					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
-				end do
-				
-				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
-				var curvp as AttrValuePair = null
-				var eqf as boolean = false
-				
-				var i as integer = 2
-				do until i = --mas::Tokens::get_Count()
-					i++
-					if mas::Tokens::get_Item(i) is RSParen then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						break
-					elseif mas::Tokens::get_Item(i) is Comma then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						curvp = new AttrValuePair() {ValueExpr = new Expr()}
-						eqf = false
-					elseif mas::Tokens::get_Item(i) is AssignOp then
-						eqf = true
-					else
-						if eqf then
-							curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
-						else
-							curvp::Name = $Ident$mas::Tokens::get_Item(i)
-						end if
-					end if
-				end do
-				
-				mas::Pairs = lp
-				return mas
+				return parseCustAttr(new MethodAttrStmt(), stm)
 			end if
 		end if
 		return null
@@ -743,49 +746,7 @@ class public auto ansi StmtOptimizer
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is EnumCTok)
 
 			if b then
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
-				var mas as EnumAttrStmt = new EnumAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
-				
-				var j as integer = -1
-				do until j = --mas::Ctor::Params::get_Count()
-					j++
-					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
-				end do
-				
-				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
-				var curvp as AttrValuePair = null
-				var eqf as boolean = false
-				
-				var i as integer = 2
-				do until i = --mas::Tokens::get_Count()
-					i++
-					if mas::Tokens::get_Item(i) is RSParen then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						break
-					elseif mas::Tokens::get_Item(i) is Comma then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						curvp = new AttrValuePair() {ValueExpr = new Expr()}
-						eqf = false
-					elseif mas::Tokens::get_Item(i) is AssignOp then
-						eqf = true
-					else
-						if eqf then
-							curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
-						else
-							curvp::Name = $Ident$mas::Tokens::get_Item(i)
-						end if
-					end if
-				end do
-				
-				mas::Pairs = lp
-				return mas
+				return parseCustAttr(new EnumAttrStmt(), stm)
 			end if
 		end if
 		return null
@@ -797,49 +758,7 @@ class public auto ansi StmtOptimizer
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is FieldCTok)
 
 			if b then
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
-				var mas as FieldAttrStmt = new FieldAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
-				
-				var j as integer = -1
-				do until j = --mas::Ctor::Params::get_Count()
-					j++
-					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
-				end do
-				
-				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
-				var curvp as AttrValuePair = null
-				var eqf as boolean = false
-				
-				var i as integer = 2
-				do until i = --mas::Tokens::get_Count()
-					i++
-					if mas::Tokens::get_Item(i) is RSParen then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						break
-					elseif mas::Tokens::get_Item(i) is Comma then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						curvp = new AttrValuePair() {ValueExpr = new Expr()}
-						eqf = false
-					elseif mas::Tokens::get_Item(i) is AssignOp then
-						eqf = true
-					else
-						if eqf then
-							curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
-						else
-							curvp::Name = $Ident$mas::Tokens::get_Item(i)
-						end if
-					end if
-				end do
-				
-				mas::Pairs = lp
-				return mas
+				return parseCustAttr(new FieldAttrStmt(), stm)
 			end if
 		end if
 		return null
@@ -851,49 +770,7 @@ class public auto ansi StmtOptimizer
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is ClassCTok)
 
 			if b then
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
-				var mas as ClassAttrStmt = new ClassAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
-				
-				var j as integer = -1
-				do until j = --mas::Ctor::Params::get_Count()
-					j++
-					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
-				end do
-				
-				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
-				var curvp as AttrValuePair = null
-				var eqf as boolean = false
-				
-				var i as integer = 2
-				do until i = --mas::Tokens::get_Count() 
-					i++
-					if mas::Tokens::get_Item(i) is RSParen then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						break
-					elseif mas::Tokens::get_Item(i) is Comma then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						curvp = new AttrValuePair() {ValueExpr = new Expr()}
-						eqf = false
-					elseif mas::Tokens::get_Item(i) is AssignOp then
-						eqf = true
-					else
-						if eqf then
-							curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
-						else
-							curvp::Name = $Ident$mas::Tokens::get_Item(i)
-						end if
-					end if
-				end do
-				
-				mas::Pairs = lp
-				return mas 
+				return parseCustAttr(new ClassAttrStmt(), stm)
 			end if
 		end if
 		return null
@@ -905,49 +782,7 @@ class public auto ansi StmtOptimizer
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is AssemblyCTok)
 
 			if b then
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
-				var mas as AssemblyAttrStmt = new AssemblyAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
-				
-				var j as integer = -1
-				do until j = --mas::Ctor::Params::get_Count()
-					j++
-					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
-				end do
-				
-				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
-				var curvp as AttrValuePair = null
-				var eqf as boolean = false
-				
-				var i as integer = 2
-				do until i = --mas::Tokens::get_Count() 
-					i++
-					if mas::Tokens::get_Item(i) is RSParen then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						break
-					elseif mas::Tokens::get_Item(i) is Comma then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						curvp = new AttrValuePair() {ValueExpr = new Expr()}
-						eqf = false
-					elseif mas::Tokens::get_Item(i) is AssignOp then
-						eqf = true
-					else
-						if eqf then
-							curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
-						else
-							curvp::Name = $Ident$mas::Tokens::get_Item(i)
-						end if
-					end if
-				end do
-				
-				mas::Pairs = lp
-				return mas
+				return parseCustAttr(new AssemblyAttrStmt(), stm)
 			end if
 		end if
 		return null
@@ -959,49 +794,7 @@ class public auto ansi StmtOptimizer
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is EventCTok)
 
 			if b then
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
-				var mas as EventAttrStmt = new EventAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
-				
-				var j as integer = -1
-				do until j = --mas::Ctor::Params::get_Count()
-					j++
-					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
-				end do
-				
-				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
-				var curvp as AttrValuePair = null
-				var eqf as boolean = false
-				
-				var i as integer = 2
-				do until i = --mas::Tokens::get_Count() 
-					i++
-					if mas::Tokens::get_Item(i) is RSParen then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						break
-					elseif mas::Tokens::get_Item(i) is Comma then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						curvp = new AttrValuePair() {ValueExpr = new Expr()}
-						eqf = false
-					elseif mas::Tokens::get_Item(i) is AssignOp then
-						eqf = true
-					else
-						if eqf then
-							curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
-						else
-							curvp::Name = $Ident$mas::Tokens::get_Item(i)
-						end if
-					end if
-				end do
-				
-				mas::Pairs = lp
-				return mas 
+				return parseCustAttr(new EventAttrStmt(), stm)
 			end if
 		end if
 		return null
@@ -1013,49 +806,7 @@ class public auto ansi StmtOptimizer
 			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is PropertyCTok)
 
 			if b then
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
-				var mas as PropertyAttrStmt = new PropertyAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line}
-				
-				var j as integer = -1
-				do until j = --mas::Ctor::Params::get_Count()
-					j++
-					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
-				end do
-				
-				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
-				var curvp as AttrValuePair = null
-				var eqf as boolean = false
-				
-				var i as integer = 2
-				do until i = --mas::Tokens::get_Count() 
-					i++
-					if mas::Tokens::get_Item(i) is RSParen then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						break
-					elseif mas::Tokens::get_Item(i) is Comma then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						curvp = new AttrValuePair() {ValueExpr = new Expr()}
-						eqf = false
-					elseif mas::Tokens::get_Item(i) is AssignOp then
-						eqf = true
-					else
-						if eqf then
-							curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
-						else
-							curvp::Name = $Ident$mas::Tokens::get_Item(i)
-						end if
-					end if
-				end do
-				
-				mas::Pairs = lp
-				return mas
+				return parseCustAttr(new PropertyAttrStmt(), stm)
 			end if
 		end if
 		return null
@@ -1068,49 +819,7 @@ class public auto ansi StmtOptimizer
 
 			if b then
 				var pct as ParameterCTok = $ParameterCTok$stm::Tokens::get_Item(1)
-				var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-				var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
-				var mas as ParameterAttrStmt = new ParameterAttrStmt() {Tokens = tempexp::Tokens, Ctor = $NewCallTok$tempexp::Tokens::get_Item(2), Line = stm::Line, Index = $integer$pct::Value::Substring(9,pct::Value::get_Length() - 10)}
-				
-				var j as integer = -1
-				do until j = --mas::Ctor::Params::get_Count()
-					j++
-					mas::Ctor::Params::set_Item(j,eopt::Optimize(mas::Ctor::Params::get_Item(j)))
-				end do
-				
-				var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
-				var curvp as AttrValuePair = null
-				var eqf as boolean = false
-				
-				var i as integer = 2
-				do until i = --mas::Tokens::get_Count() 
-					i++
-					if mas::Tokens::get_Item(i) is RSParen then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						break
-					elseif mas::Tokens::get_Item(i) is Comma then
-						if curvp != null then
-							curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-							lp::Add(curvp)
-						end if
-						curvp = new AttrValuePair() {ValueExpr = new Expr()}
-						eqf = false
-					elseif mas::Tokens::get_Item(i) is AssignOp then
-						eqf = true
-					else
-						if eqf then
-							curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
-						else
-							curvp::Name = $Ident$mas::Tokens::get_Item(i)
-						end if
-					end if
-				end do
-				
-				mas::Pairs = lp
-				return mas
+				return parseCustAttr(new ParameterAttrStmt() {Index = $integer$pct::Value::Substring(9,pct::Value::get_Length() - 10)}, stm)
 			end if
 		end if
 		return null
