@@ -103,7 +103,6 @@ class public auto ansi TypeList
 	end method
 	
 	method public void AddType(var t as TypeItem)
-		//t::DefCtorDel = new Func<of IKVM.Reflection.Type, ConstructorInfo>(GetDefaultCtor())
 		Types::Add(t)
 	end method
 

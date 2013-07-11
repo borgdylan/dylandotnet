@@ -73,9 +73,9 @@ class public auto ansi TypeItem
 		var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(Methods,new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
 		var matches as MethodItem[] = Enumerable::ToArray<of MethodItem>(lom2)
 		
-		if matches[l] = 0 then
+		if matches[l] == 0 then
 			return null
-		elseif matches[l] = 1 then
+		elseif matches[l] == 1 then
 			Loader::MemberTyp = matches[0]::MethodBldr::get_ReturnType()
 			return matches[0]::MethodBldr
 		else

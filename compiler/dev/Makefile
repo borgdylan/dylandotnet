@@ -339,6 +339,7 @@ uninstall-am:
 	mostlyclean-generic pdf pdf-am ps ps-am uninstall uninstall-am
 
 buildlog:
+	cp -u ../2.0/dnu.dll dnu.dll
 	'$(MONO)' ../2.0/dnc.exe -V > buildlog
 
 %.exe : %.dyl
@@ -350,7 +351,9 @@ pc2cd.exe: pc2cd.dyl ./../config.status ./../config.log
 
 nuget2dn.exe: nuget2dn.dyl ./../config.status ./../config.log
 
-all: buildlog pc2dn.exe pc2cd.exe nuget2dn.exe
+resproc.exe: resproc.dyl ./../config.status ./../config.log
+
+all: buildlog pc2dn.exe pc2cd.exe nuget2dn.exe resproc.exe
 
 prodscript:
 	sed -e "s|\@libdir\@|$(libdir)|g" \
@@ -359,6 +362,8 @@ prodscript:
 	    -e "s|\@MONO\@|$(MONO)|g" pc2dylandotnet.in > pc2dylandotnet
 	sed -e "s|\@libdir\@|$(libdir)|g" \
 	    -e "s|\@MONO\@|$(MONO)|g" nuget2dylandotnet.in > nuget2dylandotnet
+	sed -e "s|\@libdir\@|$(libdir)|g" \
+	    -e "s|\@MONO\@|$(MONO)|g" resproc.in > resproc
 
 install: prodscript 
 	$(install_sh_PROGRAM) pc2dylandotnet $(DESTDIR)$(bindir)/pc2dylandotnet
@@ -367,14 +372,21 @@ install: prodscript
 	chmod a+x $(DESTDIR)$(bindir)/pc2curdir
 	$(install_sh_PROGRAM) nuget2dylandotnet $(DESTDIR)$(bindir)/nuget2dylandotnet
 	chmod a+x $(DESTDIR)$(bindir)/nuget2dylandotnet
+	$(install_sh_PROGRAM) resproc $(DESTDIR)$(bindir)/resproc
+	chmod a+x $(DESTDIR)$(bindir)/resproc
 	$(install_sh_PROGRAM) pc2dn.exe $(DESTDIR)$(libdir)/dylandotnet-dev/pc2dn.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet-dev/pc2dn.exe
 	$(install_sh_PROGRAM) pc2cd.exe $(DESTDIR)$(libdir)/dylandotnet-dev/pc2cd.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet-dev/pc2cd.exe
 	$(install_sh_PROGRAM) nuget2dn.exe $(DESTDIR)$(libdir)/dylandotnet-dev/nuget2dn.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet-dev/nuget2dn.exe
+	$(install_sh_PROGRAM) resproc.exe $(DESTDIR)$(libdir)/dylandotnet-dev/resproc.exe
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet-dev/resproc.exe
+	$(install_sh_PROGRAM) dnu.dll $(DESTDIR)$(libdir)/dylandotnet-dev/dnu.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet-dev/dnu.dll
 #	if [[ $(host) =~ i686-pc-linux-gnu ]] ; then \
 #		$(MONO) --aot $(DESTDIR)$(libdir)/dylandotnet-dev/*.exe; \
+#		$(MONO) --aot $(DESTDIR)$(libdir)/dylandotnet-dev/*.dll; \
 #	fi
 
 uninstall:

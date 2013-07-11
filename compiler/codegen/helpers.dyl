@@ -599,7 +599,7 @@ class public auto ansi static Helpers
 			SymTable::StoreFlg = false
 		end do
 		
-		SymTable::ResetParamCAs()
+		SymTable::ParameterCALst::Clear()
 	end method
 
 	[method: ComVisible(false)]
@@ -637,7 +637,7 @@ class public auto ansi static Helpers
 			SymTable::StoreFlg = false
 		end do
 		
-		SymTable::ResetParamCAs()
+		SymTable::ParameterCALst::Clear()
 	end method
 
 	[method: ComVisible(false)]
@@ -1315,9 +1315,8 @@ class public auto ansi static Helpers
 		if stat or BaseFlg then
 			ILEmitter::EmitCall(met)
 		else
-			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type05) then
-				if met::get_IsVirtual() then
-					//ILEmitter::EmitConstrained(AsmFactory::Type05)
+			if met::get_IsVirtual() then
+				if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type05) then
 					ILEmitter::EmitCall(met)
 				else
 					ILEmitter::EmitCallvirt(met)
@@ -1607,6 +1606,7 @@ class public auto ansi static Helpers
 				AsmFactory::CurnMetB::SetCustomAttribute(ca)
 			end if
 		end for
+		SymTable::MethodCALst::Clear()
 	end method
 	
 	[method: ComVisible(false)]
@@ -1614,6 +1614,7 @@ class public auto ansi static Helpers
 		foreach ca in SymTable::FieldCALst
 			AsmFactory::CurnFldB::SetCustomAttribute(ca)
 		end for
+		SymTable::FieldCALst::Clear()
 	end method
 	
 	[method: ComVisible(false)]
@@ -1621,6 +1622,7 @@ class public auto ansi static Helpers
 		foreach ca in SymTable::ClassCALst
 			AsmFactory::CurnTypB::SetCustomAttribute(ca)
 		end for
+		SymTable::ClassCALst::Clear()
 	end method
 	
 	[method: ComVisible(false)]
@@ -1628,6 +1630,7 @@ class public auto ansi static Helpers
 		foreach ca in SymTable::AssemblyCALst
 			AsmFactory::AsmB::SetCustomAttribute(ca)
 		end for
+		SymTable::AssemblyCALst::Clear()
 	end method
 	
 	[method: ComVisible(false)]
@@ -1635,6 +1638,7 @@ class public auto ansi static Helpers
 		foreach ca in SymTable::PropertyCALst
 			AsmFactory::CurnPropB::SetCustomAttribute(ca)
 		end for
+		SymTable::PropertyCALst::Clear()
 	end method
 	
 	[method: ComVisible(false)]
@@ -1642,6 +1646,7 @@ class public auto ansi static Helpers
 		foreach ca in SymTable::EventCALst
 			AsmFactory::CurnEventB::SetCustomAttribute(ca)
 		end for
+		SymTable::EventCALst::Clear()
 	end method
 	
 	[method: ComVisible(false)]
@@ -1649,6 +1654,7 @@ class public auto ansi static Helpers
 		foreach ca in SymTable::EnumCALst
 			AsmFactory::CurnEnumB::SetCustomAttribute(ca)
 		end for
+		SymTable::EnumCALst::Clear()
 	end method
 	
 	[method: ComVisible(false)]

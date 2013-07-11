@@ -588,6 +588,7 @@
     <None Include="dnr\pcltypeprovider.dyl" />
     <None Include="dnr\fxtypeprovider.txt" />
     <None Include="codegen\constinfo.dyl" />
+    <None Include="dev\resproc.dyl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ast\interfaces.dyl" />

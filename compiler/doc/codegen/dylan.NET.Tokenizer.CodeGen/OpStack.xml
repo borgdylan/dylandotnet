@@ -1,11 +1,14 @@
 <Type Name="OpStack" FullName="dylan.NET.Tokenizer.CodeGen.OpStack">
-  <TypeSignature Language="C#" Value="public class OpStack" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi OpStack extends System.Object" />
+  <TypeSignature Language="C#" Value="public class OpStack : C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi OpStack extends C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Token&gt;" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="!0">dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeArgument>
+    </BaseTypeArguments>
   </Base>
   <Interfaces />
   <Docs>

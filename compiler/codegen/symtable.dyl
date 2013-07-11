@@ -35,7 +35,6 @@ class public auto ansi static SymTable
 	field assembly static C5.TreeSet<of string> DefSyms
 	
 	field private static LabelItem[] LblLst
-//	field private static TypeArr[] TypLst
 	field public static boolean StoreFlg
 	
 	method private static void SymTable()
@@ -49,7 +48,6 @@ class public auto ansi static SymTable
 		LockLst = new C5.LinkedList<of LockItem>()
 		LoopLst = new C5.LinkedList<of LoopItem>()
 		LblLst = new LabelItem[0]
-	//	TypLst = new TypeArr[0]
 		StoreFlg = false
 		MethodCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		FieldCALst = new C5.LinkedList<of CustomAttributeBuilder>()
@@ -91,67 +89,15 @@ class public auto ansi static SymTable
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 	end method
 
-//	method public static void ResetFld()
-//		FldLst::Clear()
-//	end method
-
 	[method: ComVisible(false)]
 	method public static void ResetNestedFld()
 		NestedFldLst = new FieldItem[0]
-	end method
-
-//	method public static void ResetMet()
-//		MetLst::Clear()
-//	end method
-
-	[method: ComVisible(false)]
-	method public static void ResetMetCAs()
-		MethodCALst::Clear()
-	end method
-	
-	[method: ComVisible(false)]
-	method public static void ResetFldCAs()
-		FieldCALst::Clear()
-	end method
-	
-	[method: ComVisible(false)]
-	method public static void ResetClsCAs()
-		ClassCALst::Clear()
-	end method
-	
-	[method: ComVisible(false)]
-	method public static void ResetAsmCAs()
-		AssemblyCALst::Clear()
-	end method
-	
-	[method: ComVisible(false)]
-	method public static void ResetPropCAs()
-		PropertyCALst::Clear()
-	end method
-	
-	[method: ComVisible(false)]
-	method public static void ResetEventCAs()
-		EventCALst::Clear()
-	end method
-	
-	[method: ComVisible(false)]
-	method public static void ResetEnumCAs()
-		EnumCALst::Clear()
-	end method
-	
-	[method: ComVisible(false)]
-	method public static void ResetParamCAs()
-		ParameterCALst::Clear()
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void ResetNestedMet()
 		NestedMetLst = new MethodItem[0]
 	end method
-
-//	method public static void ResetCtor()
-//		CtorLst::Clear()
-//	end method
 
 	[method: ComVisible(false)]
 	method public static void ResetNestedCtor()
@@ -180,43 +126,6 @@ class public auto ansi static SymTable
 		end if
 		VarLst::get_Last()::Add(nme, vr)
 	end method
-
-//	[method: ComVisible(false)]
-//	method public static integer AddTypArr(var arr as IKVM.Reflection.Type[])
-//
-//		var vr as TypeArr = new TypeArr() {Arr = arr}
-//		var i as integer = -1
-//		var destarr as TypeArr[] = new TypeArr[++TypLst[l]]
-//
-//		do until i = --TypLst[l]
-//			i++
-//			destarr[i] = TypLst[i]
-//		end do
-//
-//		destarr[TypLst[l]] = vr
-//		TypLst = destarr
-//		return --TypLst[l]
-//	end method
-
-//	[method: ComVisible(false)]
-//	method public static IKVM.Reflection.Type[] PopTypArr()
-//
-//		var b as TypeArr = TypLst[0]
-//		var i as integer = 0
-//		var j as integer
-//		var destarr as TypeArr[] = new TypeArr[--TypLst[l]]
-//
-//		do until i >= --TypLst[l]
-//			j = i
-//			i++
-//			destarr[j] = TypLst[i]
-//		end do
-//
-//		TypLst = destarr
-//
-//		return b::Arr
-//
-//	end method
 
 	[method: ComVisible(false)]
 	method public static void AddFld(var nme as string, var typ as IKVM.Reflection.Type, var fld as FieldBuilder, var litval as object)
@@ -469,16 +378,6 @@ class public auto ansi static SymTable
 		end for
 		return null
 	end method
-
-//	[method: ComVisible(false)]
-//	method public static void ResetUsed(var nam as string)
-//		foreach s in VarLst::Backwards()
-//			if s::Contains(nam) then
-//				var v = s::get_Item(nam)
-//				v::Used = false
-//			end if
-//		end for
-//	end method
 
 	[method: ComVisible(false)]
 	method public static void CheckUnusedVar()

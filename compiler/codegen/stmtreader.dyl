@@ -148,7 +148,6 @@ class public auto ansi StmtReader
 		end if
 		
 		Helpers::ApplyClsAttrs()
-		SymTable::ResetClsCAs()
 
 		if ti2 == null then
 			var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::ClassName::Value, AsmFactory::CurnTypB) {InhTyp = inhtyp, IsStatic = ILEmitter::StaticCFlg}
@@ -199,7 +198,6 @@ class public auto ansi StmtReader
 		//end if
 		
 		Helpers::ApplyEnumAttrs()
-		SymTable::ResetEnumCAs()
 
 		var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::EnumName::Value, AsmFactory::CurnEnumB) {InhTyp = enumtyp}
 		SymTable::CurnTypItem = ti
@@ -237,7 +235,6 @@ class public auto ansi StmtReader
 		end if
 		
 		Helpers::ApplyClsAttrs()
-		SymTable::ResetClsCAs()
 
 		var dti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + dels::DelegateName::Value,AsmFactory::CurnTypB) {InhTyp = dinhtyp}
 		SymTable::CurnTypItem = dti
@@ -364,7 +361,6 @@ class public auto ansi StmtReader
 		else
 			mtssnamarr = ParseUtils::StringParserL(mtssnamstr, ".")
 			if mtssnamarr::get_Count() > 1 then
-				//Console::WriteLine(mtssnamarr::get_Count())
 				overldnam = mtssnamarr::get_Last()
 				typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", mtssnamarr::View(0,--mtssnamarr::get_Count())::ToArray())))
 				mtssnamstr = string::Format("{0}.{1}", typ::ToString(), overldnam)
@@ -431,7 +427,6 @@ class public auto ansi StmtReader
 		end if
 		
 		Helpers::ApplyMetAttrs()
-		SymTable::ResetMetCAs()
 		
 		if !#expr(ILEmitter::AbstractFlg or ILEmitter::ProtoFlg or ILEmitter::PInvokeFlg) then
 			AsmFactory::InMethodFlg = true
@@ -531,7 +526,6 @@ class public auto ansi StmtReader
 		AsmFactory::CurnEventType = etyp
 		
 		Helpers::ApplyEventAttrs()
-		SymTable::ResetEventCAs()
 		
 		StreamUtils::WriteLine("	Adding Event: " + evss::EventName::Value)
 	end method
@@ -608,7 +602,6 @@ class public auto ansi StmtReader
 		// --------------------------------------------------------------------------------------------------------
 		
 		Helpers::ApplyAsmAttrs()
-		SymTable::ResetAsmCAs()
 		
 		AsmFactory::AsmFile = AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode
 		Importer::AddAsm(AsmFactory::AsmB)
@@ -630,7 +623,6 @@ class public auto ansi StmtReader
 		end if
 		
 		Helpers::ApplyFldAttrs()
-		SymTable::ResetFldCAs()
 		
 		var litval as ConstInfo = null
 		if AsmFactory::CurnFldB::get_IsLiteral() then
@@ -719,7 +711,6 @@ class public auto ansi StmtReader
 		SymTable::CurnProp = new PropertyItem(propnam, ptyp, AsmFactory::CurnPropB, prss::Attrs, AsmFactory::CurnExplImplType)
 		
 		Helpers::ApplyPropAttrs()
-		SymTable::ResetPropCAs()
 
 		StreamUtils::Write("	Adding Property: ")
 		StreamUtils::WriteLine(prss::PropertyName::Value)
@@ -1008,6 +999,7 @@ class public auto ansi StmtReader
 					if litval::Typ::Equals(SymTable::CurnTypItem::InhTyp) then
 						AsmFactory::CurnFldB = AsmFactory::CurnEnumB::DefineLiteral(name, litval::Value)
 						SymTable::AddFld(name, SymTable::CurnTypItem::EnumBldr, AsmFactory::CurnFldB, litval::Value)
+						Helpers::ApplyFldAttrs()
 					else
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Slots of type '{0}' cannot be assigned values of type '{1}'.", SymTable::CurnTypItem::InhTyp::ToString(), litval::Typ::ToString()))
 					end if

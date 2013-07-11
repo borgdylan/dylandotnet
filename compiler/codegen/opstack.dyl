@@ -6,35 +6,32 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi OpStack
-
-	field private Stack<of Token> Stack
+class public auto ansi OpStack extends C5.LinkedList<of Token>
 
 	method public void OpStack()
 		me::ctor()
-		Stack = new Stack<of Token>()
 	end method
 
 	method public void PushOp(var optok as Token)
-		Stack::Push(optok)
+		Push(optok)
 	end method
 
 	method public void PopOp()
-		if Stack::get_Count() != 0 then
-			Stack::Pop()
+		if get_Count() != 0 then
+			Pop()
 		end if
 	end method
 
 	method public Token TopOp()
-		if Stack::get_Count() = 0 then
+		if get_Count() == 0 then
 			return null
 		else
-			return Stack::Peek()
+			return get_Last()
 		end if
 	end method
 
 	method public integer getLength()
-		return Stack::get_Count()
+		return get_Count()
 	end method
 
 end class

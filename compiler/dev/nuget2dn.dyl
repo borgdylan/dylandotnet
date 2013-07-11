@@ -50,7 +50,7 @@ namespace dylan.NET.NuGet
 		
 			Console::WriteLine("dylan.NET NuGet Helper v. 11.3.1.5 Beta")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-			Console::WriteLine("Copyright (C) 2012 Dylan Borg")
+			Console::WriteLine("Copyright (C) 2013 Dylan Borg")
 			if args[l] < 1 then
 				Console::WriteLine("Usage: nuget2dylandotnet [options] <folder-name>")
 			else

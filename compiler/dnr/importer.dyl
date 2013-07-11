@@ -59,9 +59,4 @@ class public auto ansi static Importer
 		AliasMap::Add(alias, ns)
 	end method
 
-//	[method: ComVisible(false)]
-//	method public static void AddLocImp(var imp as string)
-//		Imps::Add(imp)
-//	end method
-
 end class

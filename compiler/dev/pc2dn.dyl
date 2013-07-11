@@ -2,7 +2,7 @@
 //A Component of the NEW dylan.NET Compiler
 //compile with dylan.NET v.11.3.1.4 or later
 
-//    pc2dn.exe dylan.NET.PkgConfig.PC2DN Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
+//    pc2dn.exe dylan.NET.PkgConfig.PC2DN Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -90,7 +90,7 @@ namespace dylan.NET.PkgConfig.PC2DN
 		
 			Console::WriteLine("dylan.NET Pkg-Config Helper v. 11.3.1.5 Beta")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-			Console::WriteLine("Copyright (C) 2012 Dylan Borg")
+			Console::WriteLine("Copyright (C) 2013 Dylan Borg")
 			if args[l] < 1 then
 				Console::WriteLine("Usage: pc2dylandotnet [options] <file-name>")
 			else

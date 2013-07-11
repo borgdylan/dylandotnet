@@ -649,7 +649,6 @@ class public auto ansi beforefieldinit Evaluator
 		var delparamarr as IKVM.Reflection.Type[]
 		var delmtdnam as MethodNameTok
 		var nctyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(nctok::Name)
-		//var mcparams as C5.ArrayList<of Expr> = nctok::Params
 		var delcreate as boolean = false
 		var typarr1 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[0]
 		var ncctorinf as ConstructorInfo
@@ -815,7 +814,6 @@ class public auto ansi beforefieldinit Evaluator
 					if mcmetinf = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
 					end if
-					//mcisstatic = mcmetinf::get_IsStatic()
 				end if
 				if mcisstatic != mcmetinf::get_IsStatic() then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' defined for the class '" _
@@ -826,7 +824,6 @@ class public auto ansi beforefieldinit Evaluator
 				if mcmetinf = null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Method '" + mnstrarr[i] + "' with the given parameter types is not defined/accessible for the class '" + AsmFactory::CurnTypB::ToString() + "'.")
 				end if
-				//AsmFactory::Type02 = mcmetinf::get_ReturnType()
 				mcisstatic = mcmetinf::get_IsStatic()
 			end if
 

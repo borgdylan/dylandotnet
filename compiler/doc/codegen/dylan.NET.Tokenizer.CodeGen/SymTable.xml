@@ -1097,96 +1097,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ResetAsmCAs">
-      <MemberSignature Language="C#" Value="public static void ResetAsmCAs ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetAsmCAs() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetClsCAs">
-      <MemberSignature Language="C#" Value="public static void ResetClsCAs ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetClsCAs() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetEnumCAs">
-      <MemberSignature Language="C#" Value="public static void ResetEnumCAs ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetEnumCAs() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetEventCAs">
-      <MemberSignature Language="C#" Value="public static void ResetEventCAs ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetEventCAs() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetFldCAs">
-      <MemberSignature Language="C#" Value="public static void ResetFldCAs ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetFldCAs() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ResetIf">
       <MemberSignature Language="C#" Value="public static void ResetIf ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetIf() cil managed" />
@@ -1259,24 +1169,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ResetMetCAs">
-      <MemberSignature Language="C#" Value="public static void ResetMetCAs ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetMetCAs() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ResetNestedCtor">
       <MemberSignature Language="C#" Value="public static void ResetNestedCtor ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetNestedCtor() cil managed" />
@@ -1316,42 +1208,6 @@
     <Member MemberName="ResetNestedMet">
       <MemberSignature Language="C#" Value="public static void ResetNestedMet ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetNestedMet() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetParamCAs">
-      <MemberSignature Language="C#" Value="public static void ResetParamCAs ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetParamCAs() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetPropCAs">
-      <MemberSignature Language="C#" Value="public static void ResetPropCAs ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetPropCAs() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>

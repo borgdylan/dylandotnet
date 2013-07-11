@@ -5,5 +5,5 @@ pkglibdir=${libdir}/dylandotnet4
 
 Name: dylan.NET4
 Description: Compiler for CLI 4.0
-Version: 11.3.1.4
+Version: 11.3.1.5
 Libs: -r:${pkglibdir}/dnr.dll -r:${pkglibdir}/dnc.exe -r:${pkglibdir}/dnu.dll -r:${pkglibdir}/tokenizer.AST.dll -r:${pkglibdir}/tokenizer.Lexer.dll -r:${pkglibdir}/tokenizer.Parser.dll -r:${pkglibdir}/tokenizer.CodeGen.dll -r:${pkglibdir}/IKVM.Reflection.dll -r:${pkglibdir}/C5.Mono.dll
