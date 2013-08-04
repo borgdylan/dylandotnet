@@ -15,3 +15,4 @@
 end #if
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.Utils")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>")]
+[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]

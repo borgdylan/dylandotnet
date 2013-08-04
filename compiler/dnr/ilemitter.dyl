@@ -885,7 +885,7 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void DeclVar(var name as string, var typ as IKVM.Reflection.Type)
 		var lb as IKVM.Reflection.Emit.LocalBuilder = ILGen::DeclareLocal(typ)
-		if DebugFlg and (name::get_Length() != 0) then
+		if DebugFlg then
 			lb::SetLocalSymInfo(name)
 		end if
 	end method

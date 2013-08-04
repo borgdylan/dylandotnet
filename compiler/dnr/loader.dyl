@@ -44,20 +44,20 @@ class public auto ansi static Loader
 			nest = true
 		end if
 		
+		foreach alias in Importer::AliasMap::get_Keys()
+			if name = alias then
+				name = Importer::AliasMap::get_Item(alias)
+				break
+			elseif name like ("^" + alias + "`\d+$") then
+				name = Importer::AliasMap::get_Item(alias) + name::Substring(alias::get_Length())
+				break
+			elseif name::StartsWith(alias + ".") then
+				name = Importer::AliasMap::get_Item(alias) + name::Substring(alias::get_Length())
+				break
+			end if
+		end for
+	
 		foreach curasm in Importer::Asms
-			
-			foreach alias in Importer::AliasMap::get_Keys()
-				if name = alias then
-					name = Importer::AliasMap::get_Item(alias)
-					break
-				elseif name like ("^" + alias + "`\d+$") then
-					name = Importer::AliasMap::get_Item(alias) + name::Substring(alias::get_Length())
-					break
-				elseif name::StartsWith(alias + ".") then
-					name = Importer::AliasMap::get_Item(alias) + name::Substring(alias::get_Length())
-					break
-				end if
-			end for
 			
 			if curasm = AsmFactory::AsmB then
 				asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
@@ -78,7 +78,6 @@ class public auto ansi static Loader
 				end if
 			end if
 
-			name = na[0]
 			foreach curns in Importer::Imps
 				if curasm = AsmFactory::AsmB then
 					asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm

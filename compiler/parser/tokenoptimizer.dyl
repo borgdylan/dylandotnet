@@ -30,7 +30,7 @@ class public auto ansi TokenOptimizer
 	end method
 
 	method public Token Optimize(var tok as Token, var lkahead as Token)
-		if lkahead = null then
+		if lkahead == null then
 			lkahead = new Token()
 		end if
 		if !isFirstRun then
@@ -88,7 +88,7 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value == "<="  then
 			return new LeOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == ">" then
-			if GenLvl = 0 then
+			if GenLvl == 0 then
 				return new GtOp() {Line = tok::Line, Value = tok::Value}
 			else
 				GenLvl--
@@ -292,7 +292,7 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value == "enum:" then
 			return new EnumCTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "end" then
-			SpecialFlg = (lkahead::Value == "set") or (lkahead::Value == "get") or (lkahead::Value == "add") or (lkahead::Value == "remove")
+			SpecialFlg = lkahead::Value like "^((((s)|(g))et)|(add)|(remove))$"
 			return new EndTok() {Line = tok::Line, Value = tok::Value}
 		elseif (tok::Value == "set") and (isFirstToken or SpecialFlg) then
 			SpecialFlg = false
@@ -370,6 +370,8 @@ class public auto ansi TokenOptimizer
 			return new NewSlotAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "auto" then
 			return new AutoLayoutAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "autogen" then
+			return new AutoGenAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "autochar" then
 			return new AutoClassAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "ansi" then
@@ -419,54 +421,55 @@ class public auto ansi TokenOptimizer
 			return new CommentTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "null" then
 			return new NullLiteral(tok::Value) {Line = tok::Line}
-		elseif (tok::Value == "true") or (tok::Value == "false") then
+		elseif tok::Value like "^((true)|(false))$" then
 			return #ternary {tok::Value == "true" ? new BooleanLiteral(true) {Line = tok::Line} , new BooleanLiteral(false) {Line = tok::Line}}
-		elseif (tok::Value like "^'(.)*'$") or (tok::Value like "^c'(.)*'$") then
+		elseif tok::Value like "^(c)?'(.)*'$" then
 			tok::Value = #ternary {tok::Value::StartsWith("c") ? ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\s'})), tok::Value::Trim(new char[] {c'\s'})}
 			return new CharLiteral($char$tok::Value) {Line = tok::Line}
-		elseif (tok::Value like c"^\q(.)*\q$") or (tok::Value like c"^c\q(.)*\q$") then
+		elseif tok::Value like c"^(c)?\q(.)*\q$" then
 			return new StringLiteral(#ternary {tok::Value::StartsWith("c") ? ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'})), tok::Value::Trim(new char[] {c'\q'})}) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("d") then
+		elseif tok::Value like "^(\+|-)?(\d)+\.(\d)+d$" then
 			return new DoubleLiteral($double$tok::Value::TrimEnd(new char[] {'d'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("f") then
+		elseif tok::Value like "^(\+|-)?(\d)+\.(\d)+f$" then
 			return new FloatLiteral($single$tok::Value::TrimEnd(new char[] {'f'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$")) and tok::Value::EndsWith("m") then
+		elseif tok::Value like "^(\+|-)?(\d)+\.(\d)+m$" then
 			return new DecimalLiteral($decimal$tok::Value::TrimEnd(new char[] {'m'})) {Line = tok::Line}
-		elseif (tok::Value like "^(\d)+\.(\d)+(.)*$") or (tok::Value like "^\+(\d)+\.(\d)+(.)*$") or (tok::Value like "^-(\d)+\.(\d)+(.)*$") then
+		elseif tok::Value like "^(\+|-)?(\d)+\.(\d)+$" then
 			return new DoubleLiteral($double$tok::Value) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("d") then
+		elseif tok::Value like "^(\+|-)?(\d)+d$" then
 			return new DoubleLiteral($double$tok::Value::TrimEnd(new char[] {'d'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("f") then
+		elseif tok::Value like "^(\+|-)?(\d)+f$" then
 			return new FloatLiteral($single$tok::Value::TrimEnd(new char[] {'f'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("m") then
+		elseif tok::Value like "^(\+|-)?(\d)+m$" then
 			return new DecimalLiteral($decimal$tok::Value::TrimEnd(new char[] {'m'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ui") then
+		elseif tok::Value like "^(\+|-)?(\d)+ui$" then
 			return new UIntLiteral($uinteger$tok::Value::TrimEnd(new char[] {'i'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ip") then
+		elseif tok::Value like "^(\+|-)?(\d)+ip$" then
 			tok::Value = tok::Value::TrimEnd(new char[] {'p'})::TrimEnd(new char[] {'i'})
 			return new IntPtrLiteral() {NumVal = new IntPtr($integer$tok::Value), Value = tok::Value, Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("i") then
+		elseif tok::Value like "^(\+|-)?(\d)+i$" then
 			return new IntLiteral($integer$tok::Value::TrimEnd(new char[] {'i'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ul") then
+		elseif tok::Value like "^(\+|-)?(\d)+ul$" then
 			return new ULongLiteral($ulong$tok::Value::TrimEnd(new char[] {'l'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("l") then
+		elseif tok::Value like "^(\+|-)?(\d)+l$" then
 			return new LongLiteral($long$tok::Value::TrimEnd(new char[] {'l'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("us") then
+		elseif tok::Value like "^(\+|-)?(\d)+us$" then
 			return new UShortLiteral($ushort$tok::Value::TrimEnd(new char[] {'s'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("s") then
+		elseif tok::Value like "^(\+|-)?(\d)+s$" then
 			return new ShortLiteral($short$tok::Value::TrimEnd(new char[] {'s'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("ub") then
+		elseif tok::Value like "^(\+|-)?(\d)+ub$" then
 			return new ByteLiteral($byte$tok::Value::TrimEnd(new char[] {'b'})::TrimEnd(new char[] {'u'})) {Line = tok::Line}
-		elseif ((tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$")) and tok::Value::EndsWith("b") then
+		elseif tok::Value like "^(\+|-)?(\d)+b$" then
 			return new SByteLiteral($sbyte$tok::Value::TrimEnd(new char[] {'b'})) {Line = tok::Line}
-		elseif (tok::Value like "^(\d)+(.)*$") or (tok::Value like "^\+(\d)+(.)*$") or (tok::Value like "^-(\d)+(.)*$") then
+		elseif tok::Value like "^(\+|-)?(\d)+$" then
 			return new IntLiteral($integer$tok::Value) {Line = tok::Line}
-		elseif (tok::Value like "^([a-zA-Z])+(.)*$") or (tok::Value like "^_(.)+$") or (tok::Value like "^::([a-zA-Z])+(.)*$") or (tok::Value like "^::_(.)+$") then
+		elseif tok::Value like "^(::)?((([a-zA-Z])+(.)*)|(_(.)+))$" then
 			return new Ident(tok::Value) {Line = tok::Line}
+		else
+			StreamUtils::WriteErrorLine(tok::Line, PFlags::CurPath, "'" + tok::Value + "' is an invalid token!")
 		end if
 		
 		return tok
-		
 	end method
 
 end class

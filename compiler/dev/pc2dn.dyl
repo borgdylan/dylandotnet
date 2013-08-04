@@ -24,6 +24,7 @@ import System.Text
 end #if
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.PkgConfig.PC2DN")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>")]
+[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]
 
 assembly pc2dn exe
 ver 11.3.1.5

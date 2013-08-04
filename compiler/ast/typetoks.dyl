@@ -61,10 +61,14 @@ end class
 class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 
 	field public TypeTok[] Params
-
-	method public void GenericTypeTok(var value as string)
+	
+	method public void GenericTypeTok(var value as string, var params as TypeTok[])
 		me::ctor(value)
-		Params = new TypeTok[0]
+		Params = params
+	end method
+	
+	method public void GenericTypeTok(var value as string)
+		ctor(value, new TypeTok[0])
 	end method
 	
 	method public void GenericTypeTok()

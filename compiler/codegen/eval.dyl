@@ -256,7 +256,17 @@ class public auto ansi beforefieldinit Evaluator
 				idt::IsRef = true
 			end if
 		end if
+		
+		if idt::ExplType != null then
+			typ = Helpers::CommitEvalTTok(idt::ExplType)
+			idtisstatic = true
+			idtb2 = true
 
+			if typ == null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", idt::ExplType))
+			end if
+		end if
+		
 		do until i = --idtnamarr[l]
 			i++
 			AsmFactory::AddrFlg = i != --idtnamarr[l]
@@ -448,7 +458,17 @@ class public auto ansi beforefieldinit Evaluator
 					mntok::IsRef = true
 				end if
 			end if
+			
+			if mntok::ExplType != null then
+				mcparenttyp = Helpers::CommitEvalTTok(mntok::ExplType)
+				mcisstatic = true
+				idtb2 = true
 
+				if mcparenttyp == null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", mntok::ExplType))
+				end if
+			end if
+			
 			if mnstrarr[l] >= mcrestrord then
 				AsmFactory::AddrFlg = true
 
@@ -694,6 +714,16 @@ class public auto ansi beforefieldinit Evaluator
 				i++
 				idtb1 = true
 				mcrestrord = 3
+			end if
+			
+			if delmtdnam::ExplType != null then
+				mcparenttyp = Helpers::CommitEvalTTok(delmtdnam::ExplType)
+				mcisstatic = true
+				idtb2 = true
+
+				if mcparenttyp == null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", delmtdnam::ExplType))
+				end if
 			end if
 
 			if mnstrarr[l] >= mcrestrord then

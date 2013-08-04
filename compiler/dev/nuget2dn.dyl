@@ -26,6 +26,7 @@ import System.Collections.Generic
 end #if
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.NuGet")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>")]
+[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]
 
 assembly nuget2dn exe
 ver 11.3.1.5
@@ -84,7 +85,7 @@ namespace dylan.NET.NuGet
 										sw::WriteLine("#if CLR_4 then")
 										foreach file in dir::GetFiles()
 											if file::get_Extension()::ToLowerInvariant() == ".dll" or file::get_Extension()::ToLowerInvariant() == ".exe" then
-												sw::WriteLine(c"#refasm \q{0}/lib/{1}/{2}\q", arg, dir::get_Name(). file::get_Name())
+												sw::WriteLine(c"#refasm \q{0}/lib/{1}/{2}\q", arg, dir::get_Name(), file::get_Name())
 											end if
 										end for
 										sw::WriteLine("end #if")
@@ -156,4 +157,3 @@ namespace dylan.NET.NuGet
 	end class
 
 end namespace
-

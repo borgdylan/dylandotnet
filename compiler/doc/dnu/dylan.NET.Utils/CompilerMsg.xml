@@ -53,9 +53,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Linevb">
-      <MemberSignature Language="C#" Value="public int Linevb { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Linevb" />
+    <Member MemberName="Line">
+      <MemberSignature Language="C#" Value="public int Line { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Line" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -67,7 +67,7 @@
       </Docs>
     </Member>
     <Member MemberName="Msg">
-      <MemberSignature Language="C#" Value="string Msg { get; }" />
+      <MemberSignature Language="C#" Value="public string Msg { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Msg" />
       <MemberType>Property</MemberType>
       <ReturnValue>

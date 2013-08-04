@@ -51,26 +51,26 @@ class public auto ansi static Program
 		elseif args[l] < 1 then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		else
-			//try
+			try
 				for i = 0 upto --args[l]
 					StreamUtils::WriteLine("")
 					if args[i] = "-V" then
 						OutputVersion()
 					elseif args[i] = "-h" then
 						OutputHelp()
-					//elseif args[i] = "-pcl" then
-					//	i++
-					//	if i < args[l] then
-					//		//get pcl lookup durectory
-					//		args[i] = ParseUtils::ProcessMSYSPath(args[i])
-					//		if !Directory::Exists(args[i]) then
-					//			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Directory '" + args[i] + "' does not exist.")
-					//		else
-					//			Importer::AsmBasePath = args[i]
-					//		end if
-					//	else
-					//		StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "PCL Directory path expected.")
-					//	end if
+					elseif args[i] = "-pcl" then
+						i++
+						if i < args[l] then
+							//get pcl lookup durectory
+							args[i] = ParseUtils::ProcessMSYSPath(args[i])
+							if !Directory::Exists(args[i]) then
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Directory '" + args[i] + "' does not exist.")
+							else
+								Importer::AsmBasePath = args[i]
+							end if
+						else
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "PCL Directory path expected.")
+						end if
 					else
 						ILEmitter::Init()
 						AsmFactory::Init()
@@ -87,15 +87,15 @@ class public auto ansi static Program
 					end if
 				end for
 				
-			//catch errex as ErrorException
+			catch errex as ErrorException
 			
-			//catch ex as Exception
-			//	StreamUtils::WriteLine(string::Empty)
-			//	try
-			//		StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::get_Message())
-			//	catch errex2 as ErrorException
-			//	end try
-			//end try
+			catch ex as Exception
+				StreamUtils::WriteLine(string::Empty)
+				try
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::get_Message())
+				catch errex2 as ErrorException
+				end try
+			end try
 
 		end if
 
@@ -110,7 +110,7 @@ class public auto ansi static Program
 	#if NET_4_0 or NET_4_5 then
 	
 		method private static void InvokeAsyncWrapper(var args as object)
-			Invoke($String[]$args)
+			Invoke($string[]$args)
 		end method
 	
 		[method: ComVisible(false)]

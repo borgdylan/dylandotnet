@@ -12,4 +12,5 @@
 [assembly: System.Reflection.AssemblyConfiguration("RELEASE")]
 end #if
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.Tokenizer.AST")]
-[assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>")]
+[assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>")]
+[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]

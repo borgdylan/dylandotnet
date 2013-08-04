@@ -8,6 +8,11 @@
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(true)]
+#if DEBUG then
 [assembly: System.Reflection.AssemblyConfiguration("DEBUG")]
+#else
+[assembly: System.Reflection.AssemblyConfiguration("RELEASE")]
+end #if
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.Tokenizer.Lexer")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>")]
+[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]

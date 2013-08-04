@@ -37,6 +37,8 @@ import template
 end #if
 [assembly: System.Reflection.AssemblyTitle("template")]
 [assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>")]
+[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]
+
 assembly template exe
 ver 1.1.0.0
 
@@ -54,6 +56,9 @@ end class
 
 class public auto ansi abstract interface IHello
 	method public hidebysig virtual abstract newslot void Hello()
+	
+	property public hidebysig virtual abstract newslot autogen integer MyInt
+	property public initonly hidebysig virtual abstract newslot autogen integer MyInt2
 end class
 
 class public auto ansi abstract interface IHello2
@@ -65,7 +70,10 @@ class public auto ansi abstract interface IHello3
 end class
 
 class public auto ansi HelloClass implements IHello, IHello2, IHello3
-
+	
+	property public hidebysig virtual final newslot autogen integer MyInt
+	property public initonly hidebysig virtual final newslot autogen integer MyInt2
+	
 	method public hidebysig virtual final newslot void IHello.Hello()
 		Console::WriteLine("I Implement Hello")
 	end method
@@ -221,9 +229,9 @@ class public auto ansi ObjInit
 	
 end class
 
-class public auto ansi partial Program
+class public auto ansi static partial Program
 	field public static integer Z
-	method public prototype void ProtoMethod(var x as integer, var y as integer)
+	method public static prototype void ProtoMethod(var x as integer, var y as integer)
 end class
 
 [enum: Flags()]
@@ -234,8 +242,11 @@ enum public auto ansi integer MyEnum
 	C = 4
 end enum
 
-class public auto ansi Program
-
+class public auto ansi static Program
+	
+	property public static autogen integer AutoTest
+	property public initonly static autogen integer AutoROTest
+	
 	field public static integer X
 	field public static IEnumerable<of string> Y
 	field private static integer _TestProperty
@@ -251,13 +262,15 @@ class public auto ansi Program
 		_TestEvent = null
 		Z = 12
 		//ROTest::X = xc + 12
+		_AutoTest = 11
+		_AutoROTest = 11
 	end method
 	
-	method public void ProtoTest()
+	method public static void ProtoTest()
 		ProtoMethod(12,6)
 	end method
 	
-	method public void ProtoMethod(var x as integer, var y as integer)
+	method public static void ProtoMethod(var x as integer, var y as integer)
 		Console::WriteLine("ProtoImpl")
 	end method
 	

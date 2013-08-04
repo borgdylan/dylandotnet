@@ -9,10 +9,13 @@
           <AttributeName>System.Reflection.AssemblyConfiguration("DEBUG")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg &lt;borgdylan@hotmail.com&gt;")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyCopyright("Copyright (C) 2013 Dylan Borg &lt;borgdylan@hotmail.com&gt;")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyTitle("dylan.NET.Tokenizer.AST")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
         </Attribute>
       </Attributes>
     </Assembly>
@@ -228,6 +231,7 @@
       <Type Name="AssemblyAttr" Kind="Class" />
       <Type Name="Attribute" Kind="Class" />
       <Type Name="AutoClassAttr" Kind="Class" />
+      <Type Name="AutoGenAttr" Kind="Class" />
       <Type Name="AutoLayoutAttr" Kind="Class" />
       <Type Name="BeforeFieldInitAttr" Kind="Class" />
       <Type Name="FamANDAssemAttr" Kind="Class" />

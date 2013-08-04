@@ -9,9 +9,13 @@
 //delegate public void ErrorWarnHandler(var line as integer, var file as string, var msg as string)
 
 class public auto ansi ErrorException extends Exception
-
+	
+	method public void ErrorException(var errtext as string)
+		me::ctor(errtext)
+	end method
+	
 	method public void ErrorException()
-		me::ctor("An Error Happened.")
+		ctor("An Error Happened.")
 	end method
 
 end class

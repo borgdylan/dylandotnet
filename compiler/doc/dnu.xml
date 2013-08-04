@@ -23,7 +23,7 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="P:dylan.NET.Utils.CompilerMsg.Linevb">
+        <member name="P:dylan.NET.Utils.CompilerMsg.Line">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
@@ -74,6 +74,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="C:dylan.NET.Utils.ErrorException">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Utils.ErrorException(System.String)">
+            <param name="errtext">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

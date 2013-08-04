@@ -199,7 +199,8 @@ class public auto ansi static Helpers
 				ILEmitter::ProtoFlg = true
 			elseif attr is Attributes.PinvokeImplAttr then
 				ILEmitter::PInvokeFlg = true
-			elseif attr is Attributes.NoneAttr then
+			//elseif attr is Attributes.NoneAttr then
+			//elseif attr is Attributes.AutoGenAttr then
 			else
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a method.")

@@ -24,7 +24,7 @@ class public auto ansi sealed CompilerMsg
 		_Msg = msg
 	end method
 	
-	property public integer Linevb
+	property public integer Line
 		get
 			return _Line
 		end get
@@ -36,7 +36,7 @@ class public auto ansi sealed CompilerMsg
 		end get
 	end property
 	
-	property none string Msg
+	property public string Msg
 		get
 			return _Msg
 		end get

@@ -137,6 +137,9 @@ end class
 
 // interface
 class public auto ansi InterfaceAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "interface"
+	end method
 end class
 
 // initonly
@@ -193,5 +196,12 @@ end class
 class public auto ansi AutoLayoutAttr extends Attributes.Attribute
 	method public hidebysig virtual string ToString()
 		return "auto"
+	end method
+end class
+
+// autogen
+class public auto ansi AutoGenAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "autogen"
 	end method
 end class

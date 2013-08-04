@@ -21,7 +21,8 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 	field family string _OrdOp
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
-
+	field public TypeTok ExplType
+	
 	method public void Ident(var value as string)
 		me::ctor(value)
 		IsRef = false
@@ -37,6 +38,7 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 		_OrdOp = string::Empty
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
+		ExplType = null
 	end method
 	
 	method public void Ident()

@@ -2202,6 +2202,10 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Ident.ExplType">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.Ident.IsArr">
             <summary>This flag must be set to perform an array access.</summary>
             <remarks>The slot to be used is to be put in ArrLoc.</remarks>
@@ -3187,6 +3191,19 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoGenAttr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoGenAttr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoGenAttr.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.Attributes.AutoLayoutAttr">
             <summary>Represents the 'auto' attribute.</summary>
             <remarks>May only be applied to classes. Allows the CLR to arrange their fields automatically.</remarks>
@@ -3310,6 +3327,11 @@
         </member>
         <member name="C:dylan.NET.Tokenizer.AST.Tokens.Attributes.InterfaceAttr">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.Attributes.InterfaceAttr.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.Attributes.LiteralAttr">
@@ -5099,6 +5121,12 @@
             <param name="value">A valid type name that is reachable given the defined lists of assemblies and namespaces to import.</param>
             <summary>Constructs a new GenericTypeTok assigning the type name's value as specified in the value parameter.</summary>
             <remarks>If you wish to set the type name later use the other constructor and set the 'Value' field acccordingly.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok(System.String,dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[])">
+            <param name="value">To be added.</param>
+            <param name="params">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok.AddParam(dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)">
             <param name="param">A type token representing a generic type parameter.</param>

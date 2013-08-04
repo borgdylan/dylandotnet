@@ -203,18 +203,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CurnExplImplType">
-      <MemberSignature Language="C#" Value="public static string CurnExplImplType;" />
-      <MemberSignature Language="ILAsm" Value=".field public static string CurnExplImplType" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CurnFldB">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.FieldBuilder CurnFldB;" />
       <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.FieldBuilder CurnFldB" />
@@ -299,18 +287,6 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.Emit.PropertyBuilder</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CurnPropName">
-      <MemberSignature Language="C#" Value="public static string CurnPropName;" />
-      <MemberSignature Language="ILAsm" Value=".field public static string CurnPropName" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

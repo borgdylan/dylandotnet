@@ -383,6 +383,14 @@ class public auto ansi StmtReader
 					AsmFactory::CurnTypB::DefineMethod(mtssnamstr, ma, rettyp, paramstyps)}
 			end if
 			
+			if ILEmitter::InterfaceFlg and !ILEmitter::AbstractFlg then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods in Interfaces should all be Abstract!")
+			elseif ILEmitter::InterfaceFlg and ILEmitter::StaticFlg then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods in Interfaces should not be Static!")
+			elseif !ILEmitter::StaticFlg and ILEmitter::StaticCFlg then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Static Classes should not have Instance Methods!")
+			end if
+			
 			if !ILEmitter::ProtoFlg then
 				var pbrv as ParameterBuilder = AsmFactory::CurnMetB::DefineParameter(0, IKVM.Reflection.ParameterAttributes::Retval, $string$null)
 				if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), 0) then
@@ -395,14 +403,6 @@ class public auto ansi StmtReader
 					AsmFactory::InitPInvokeMtd()
 				else
 					AsmFactory::InitMtd()
-				end if
-				
-				if ILEmitter::InterfaceFlg and !ILEmitter::AbstractFlg then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods in Interfaces should all be Abstract!")
-				elseif ILEmitter::InterfaceFlg and ILEmitter::StaticFlg then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods in Interfaces should not be Static!")
-				elseif !ILEmitter::StaticFlg and ILEmitter::StaticCFlg then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Static Classes should not have Instance Methods!")
 				end if
 
 				if mtssnamarr::get_Count() > 1 then
@@ -502,7 +502,7 @@ class public auto ansi StmtReader
 	
 	method public void ReadEvent(var evss as EventStmt, var fpath as string)
 		var etyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(evss::EventTyp)
-		AsmFactory::CurnExplImplType = string::Empty
+		var eit = string::Empty
 		var typ as IKVM.Reflection.Type = null
 		
 		if etyp = null then
@@ -517,12 +517,12 @@ class public auto ansi StmtReader
 			evoverldnam = evssnamarr::get_Last()
 			evnam = evoverldnam
 			typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", evssnamarr::View(0,--evssnamarr::get_Count())::ToArray())))
-			AsmFactory::CurnExplImplType = typ::ToString()
+			eit = typ::ToString()
 			evssnamstr = typ::ToString() + "." + evoverldnam
 		end if
 		
 		AsmFactory::CurnEventB = AsmFactory::CurnTypB::DefineEvent(evssnamstr,EventAttributes::None, etyp)
-		SymTable::CurnEvent = new EventItem(evnam, etyp, AsmFactory::CurnEventB, evss::Attrs, AsmFactory::CurnExplImplType)
+		SymTable::CurnEvent = new EventItem(evnam, etyp, AsmFactory::CurnEventB, evss::Attrs, eit)
 		AsmFactory::CurnEventType = etyp
 		
 		Helpers::ApplyEventAttrs()
@@ -610,7 +610,7 @@ class public auto ansi StmtReader
 	method public void ReadField(var flss as FieldStmt)
 		var ftyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(flss::FieldTyp)
 			
-		if ftyp = null then
+		if ftyp == null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", flss::FieldTyp::Value))
 		end if
 		
@@ -686,36 +686,6 @@ class public auto ansi StmtReader
 		ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
 	end method
 	
-	method public void ReadProperty(var prss as PropertyStmt, var fpath as string)
-		var ptyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(prss::PropertyTyp)
-		AsmFactory::CurnExplImplType = string::Empty
-		var typ as IKVM.Reflection.Type = null
-		
-		if ptyp = null then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + prss::PropertyTyp::Value + "' is not defined.")
-		end if
-		
-		var prssnamstr as string = prss::PropertyName::Value
-		var prssnamarr as C5.IList<of string> = ParseUtils::StringParserL(prssnamstr, ".")
-		var propoverldnam as string = string::Empty
-		var propnam = prssnamstr
-		if prssnamarr::get_Count() > 1 then
-			propoverldnam = prssnamarr::get_Last()
-			propnam = propoverldnam
-			typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", prssnamarr::View(0,--prssnamarr::get_Count())::ToArray())))
-			AsmFactory::CurnExplImplType = typ::ToString()
-			prssnamstr = typ::ToString() + "." + propoverldnam
-		end if
-		
-		AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prssnamstr,PropertyAttributes::None, ptyp, IKVM.Reflection.Type::EmptyTypes)
-		SymTable::CurnProp = new PropertyItem(propnam, ptyp, AsmFactory::CurnPropB, prss::Attrs, AsmFactory::CurnExplImplType)
-		
-		Helpers::ApplyPropAttrs()
-
-		StreamUtils::Write("	Adding Property: ")
-		StreamUtils::WriteLine(prss::PropertyName::Value)
-	end method
-	
 	method public void ReadPropertyGet(var prgs as PropertyGetStmt, var fpath as string)
 		if prgs::Getter != null then
 			if SymTable::CurnProp::ExplImplType::get_Length() > 0 then
@@ -762,6 +732,108 @@ class public auto ansi StmtReader
 			Read(mets,fpath)
 			cprop::PropertyBldr::SetSetMethod(AsmFactory::CurnMetB)
 		end if
+	end method
+	
+	method public void ReadProperty(var prss as PropertyStmt, var fpath as string)
+		var ptyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(prss::PropertyTyp)
+		var eit = string::Empty
+		var typ as IKVM.Reflection.Type = null
+		
+		if ptyp == null then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + prss::PropertyTyp::Value + "' is not defined.")
+		end if
+		
+		var prssnamstr as string = prss::PropertyName::Value
+		var prssnamarr as C5.IList<of string> = ParseUtils::StringParserL(prssnamstr, ".")
+		var propoverldnam as string = string::Empty
+		var propnam = prssnamstr
+		if prssnamarr::get_Count() > 1 then
+			propoverldnam = prssnamarr::get_Last()
+			propnam = propoverldnam
+			typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", prssnamarr::View(0,--prssnamarr::get_Count())::ToArray())))
+			eit = typ::ToString()
+			prssnamstr = typ::ToString() + "." + propoverldnam
+		end if
+		
+		AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prssnamstr, PropertyAttributes::None, ptyp, IKVM.Reflection.Type::EmptyTypes)
+		SymTable::CurnProp = new PropertyItem(propnam, ptyp, AsmFactory::CurnPropB, prss::Attrs, eit)
+		
+		Helpers::ApplyPropAttrs()
+
+		StreamUtils::Write("	Adding Property: ")
+		StreamUtils::WriteLine(prss::PropertyName::Value)
+		
+		var isauto as boolean = false
+		var isautoind as integer = -1
+		var isrdonly as boolean = false
+		var isrdonlyind as integer = -1
+		var isstatic as boolean = false
+		var isabstract as boolean = false
+		
+		var i as integer = -1
+		foreach a in prss::Attrs
+			i++
+			if a is AutoGenAttr then
+				isauto = true
+				isautoind = i
+			elseif a is InitOnlyAttr then
+				isrdonly = true
+				isrdonlyind = i
+			elseif a is StaticAttr then
+				isstatic = true
+			elseif a is AbstractAttr then
+				isabstract = true
+			end if
+		end for
+		
+		if isauto then
+			prss::Attrs::RemoveAt(isautoind)
+			if isrdonly then
+				prss::Attrs::RemoveAt(isrdonlyind)
+			end if
+			
+			if ILEmitter::InterfaceFlg and !isabstract then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Properties in Interfaces should all be Abstract!")
+			elseif ILEmitter::InterfaceFlg and isstatic then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Properties in Interfaces should not be Static!")
+			elseif !isstatic and ILEmitter::StaticCFlg then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Static Classes should not have Instance Properties!")
+			end if
+			
+			//field
+			if !isabstract then
+				var fld = SymTable::FindFld("_" + propnam)
+				if fld == null then
+					var attrs = new C5.LinkedList<of Attributes.Attribute> {new PrivateAttr()}
+					if isstatic then
+						attrs::Add(new StaticAttr())
+					end if
+					ReadField(new FieldStmt() {Line = prss::Line, FieldName = new Ident("_" + propnam), _
+						FieldTyp = prss::PropertyTyp, Attrs = attrs})
+				else
+					if !fld::get_FieldType()::Equals(ptyp) then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Already existing field '_{0}' is not of the required type '{1}'!", propnam, ptyp::ToString()))
+					end if
+				end if
+			end if
+			//getter
+			ReadPropertyGet(new PropertyGetStmt() {Getter = null, Line = prss::Line}, fpath)
+			if !isabstract then
+				Read(new ReturnStmt() {Line = prss::Line, RExp = new Expr() {AddToken(new Ident("_" + propnam))} }, fpath)
+				Read(new EndMethodStmt() {Line = prss::Line}, fpath)
+			end if
+			//setter
+			if !isrdonly then
+				ReadPropertySet(new PropertySetStmt() {Setter = null, Line = prss::Line}, fpath)
+				if !isabstract then
+					new Evaluator()::StoreEmit(new Ident("_" + propnam), new Expr() {AddToken(new Ident("value"))})
+					Read(new EndMethodStmt() {Line = prss::Line}, fpath)
+				end if
+			end if
+			//end
+			SymTable::CurnProp = null
+		end if
+		
 	end method
 	
 	method public void ReadEndDo(var fpath as string)
@@ -1189,7 +1261,10 @@ class public auto ansi StmtReader
 			ReadPropertySet($PropertySetStmt$stm, fpath)
 		elseif stm is EndSetStmt then
 			Read(new EndMethodStmt() {Line = stm::Line}, fpath)
-		elseif (stm is EndPropStmt) or (stm is EndEventStmt) then
+		elseif stm is EndPropStmt then
+			SymTable::CurnProp = null
+		elseif stm is EndEventStmt then
+			SymTable::CurnEvent = null
 		elseif stm is EventStmt then
 			ReadEvent($EventStmt$stm, fpath)
 		elseif stm is EventAddStmt then

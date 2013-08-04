@@ -1143,7 +1143,22 @@ class public auto ansi ExprOptimizer
 			i--
 			mctok = exp::Tokens::get_Item(i)
 			
-			if mctok is Ident then
+			if mctok is GenericMethodNameTok then
+				var mct = $GenericMethodNameTok$mctok
+				if PFlags::MetCallFlag or PFlags::IdentFlag then
+					PFlags::MetCallFlag = false
+					PFlags::IdentFlag = false
+					var conseq as Token = exp::Tokens::get_Item(++i)
+					if conseq is Ident then
+						mcident = $Ident$conseq
+						mcident::ExplType = new GenericTypeTok(mct::Value, mct::Params)
+					elseif conseq is MethodCallTok then
+						mcident = #expr($MethodCallTok$conseq)::Name
+						mcident::ExplType = new GenericTypeTok(mct::Value, mct::Params)
+					end if	
+					exp::RemToken(i)
+				end if
+			elseif mctok is Ident then
 				mcident = $Ident$mctok
 				if PFlags::MetCallFlag or PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
