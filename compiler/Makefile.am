@@ -86,6 +86,12 @@ compilestart: cflags.dyl
 	cp -u ./lib/IKVM.Reflection.dll ./4.0/IKVM.Reflection.dll
 	cp -u ./lib/4.0/C5.Mono.dll ./build/4.0/C5.Mono.dll
 	cp -u ./lib/2.0/C5.Mono.dll ./build/2.0/C5.Mono.dll
+	cp -u ./lib/4.0/C5.Mono.dll ./4.0/C5.Mono.dll
+	cp -u ./lib/2.0/C5.Mono.dll ./2.0/C5.Mono.dll
+	cp -u ./lib/4.0/System.Interactive.dll ./build/4.0/System.Interactive.dll
+	cp -u ./lib/2.0/System.Interactive.dll ./build/2.0/System.Interactive.dll
+	cp -u ./lib/4.0/System.Interactive.dll ./4.0/System.Interactive.dll
+	cp -u ./lib/2.0/System.Interactive.dll ./2.0/System.Interactive.dll
 	'$(MONO)' 4.0/dnc.exe -V > buildlog4
 	'$(MONO)' 2.0/dnc.exe -V > buildlog
 

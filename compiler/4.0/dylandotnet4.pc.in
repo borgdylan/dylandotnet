@@ -6,4 +6,4 @@ pkglibdir=${libdir}/dylandotnet4
 Name: dylan.NET4
 Description: Compiler for CLI 4.0
 Version: @version@
-Libs: -r:${pkglibdir}/dnr.dll -r:${pkglibdir}/dnc.exe -r:${pkglibdir}/dnu.dll -r:${pkglibdir}/tokenizer.AST.dll -r:${pkglibdir}/tokenizer.Lexer.dll -r:${pkglibdir}/tokenizer.Parser.dll -r:${pkglibdir}/tokenizer.CodeGen.dll -r:${pkglibdir}/IKVM.Reflection.dll -r:${pkglibdir}/C5.Mono.dll
+Libs: -r:${pkglibdir}/System.Interactive.dll -r:${pkglibdir}/IKVM.Reflection.dll -r:${pkglibdir}/C5.Mono.dll -r:${pkglibdir}/dnr.dll -r:${pkglibdir}/dnc.exe -r:${pkglibdir}/dnu.dll -r:${pkglibdir}/tokenizer.AST.dll -r:${pkglibdir}/tokenizer.Lexer.dll -r:${pkglibdir}/tokenizer.Parser.dll -r:${pkglibdir}/tokenizer.CodeGen.dll

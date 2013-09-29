@@ -23,6 +23,8 @@ install: prodscript
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/IKVM.Reflection.dll
 	$(install_sh_PROGRAM) C5.Mono.dll $(DESTDIR)$(libdir)/dylandotnet4/C5.Mono.dll
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/C5.Mono.dll
+	$(install_sh_PROGRAM) System.Interactive.dll $(DESTDIR)$(libdir)/dylandotnet4/System.Interactive.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/System.Interactive.dll
 	$(install_sh_PROGRAM) dnc.exe $(DESTDIR)$(libdir)/dylandotnet4/dnc.exe
 	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/dnc.exe
 if AOT	
