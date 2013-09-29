@@ -68,6 +68,7 @@
       <Type Name="EndRemoveStmt" Kind="Class" />
       <Type Name="EndSetStmt" Kind="Class" />
       <Type Name="EndTryStmt" Kind="Class" />
+      <Type Name="EndUsingStmt" Kind="Class" />
       <Type Name="EnumAttrStmt" Kind="Class" />
       <Type Name="EnumStmt" Kind="Class" />
       <Type Name="ErrorStmt" Kind="Class" />
@@ -129,13 +130,14 @@
       <Type Name="AsTok" Kind="Class" />
       <Type Name="AttrValuePair" Kind="Class" />
       <Type Name="BreakTok" Kind="Class" />
-      <Type Name="CastclassTok" Kind="Class" />
       <Type Name="CatchTok" Kind="Class" />
       <Type Name="ClassCTok" Kind="Class" />
       <Type Name="ClassTok" Kind="Class" />
       <Type Name="CommentTok" Kind="Class" />
       <Type Name="ContinueTok" Kind="Class" />
       <Type Name="DebugTok" Kind="Class" />
+      <Type Name="DefaultCallTok" Kind="Class" />
+      <Type Name="DefaultTok" Kind="Class" />
       <Type Name="DelegateTok" Kind="Class" />
       <Type Name="DllTok" Kind="Class" />
       <Type Name="DoTok" Kind="Class" />
@@ -219,10 +221,12 @@
       <Type Name="TryTok" Kind="Class" />
       <Type Name="UntilTok" Kind="Class" />
       <Type Name="UptoTok" Kind="Class" />
+      <Type Name="UsingTok" Kind="Class" />
       <Type Name="ValInRefTok" Kind="Class" />
       <Type Name="VarTok" Kind="Class" />
       <Type Name="VerTok" Kind="Class" />
       <Type Name="WarningTok" Kind="Class" />
+      <Type Name="WhereTok" Kind="Class" />
       <Type Name="WhileTok" Kind="Class" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Tokens.Attributes">
@@ -305,6 +309,7 @@
       <Type Name="AsOp" Kind="Class" />
       <Type Name="AssignOp" Kind="Class" />
       <Type Name="AssignOp2" Kind="Class" />
+      <Type Name="CoalesceOp" Kind="Class" />
       <Type Name="ConditionalOp" Kind="Class" />
       <Type Name="DecOp" Kind="Class" />
       <Type Name="DivOp" Kind="Class" />

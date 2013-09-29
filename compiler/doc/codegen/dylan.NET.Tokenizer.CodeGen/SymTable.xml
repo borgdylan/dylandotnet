@@ -295,8 +295,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddMet">
-      <MemberSignature Language="C#" Value="public static void AddMet (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.MethodBuilder met);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddMet(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.MethodBuilder met) cil managed" />
+      <MemberSignature Language="C#" Value="public static void AddMet (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.MethodBuilder met, int nrgenparams);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddMet(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.MethodBuilder met, int32 nrgenparams) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -311,12 +311,14 @@
         <Parameter Name="typ" Type="IKVM.Reflection.Type" />
         <Parameter Name="ptyps" Type="IKVM.Reflection.Type[]" />
         <Parameter Name="met" Type="IKVM.Reflection.Emit.MethodBuilder" />
+        <Parameter Name="nrgenparams" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="nme">To be added.</param>
         <param name="typ">To be added.</param>
         <param name="ptyps">To be added.</param>
         <param name="met">To be added.</param>
+        <param name="nrgenparams">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -457,6 +459,27 @@
       </Parameters>
       <Docs>
         <param name="ca">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddUsing">
+      <MemberSignature Language="C#" Value="public static void AddUsing (string loc);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddUsing(string loc) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="loc" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="loc">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -712,6 +735,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="FindGenMet">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo FindGenMet (string nam, IKVM.Reflection.Type[] genparams, IKVM.Reflection.Type[] paramst);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo FindGenMet(string nam, class IKVM.Reflection.Type[] genparams, class IKVM.Reflection.Type[] paramst) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nam" Type="System.String" />
+        <Parameter Name="genparams" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="paramst" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="nam">To be added.</param>
+        <param name="genparams">To be added.</param>
+        <param name="paramst">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="FindLbl">
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.LabelItem FindLbl (string nam);" />
       <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.LabelItem FindLbl(string nam) cil managed" />
@@ -826,6 +875,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MetGenParams">
+      <MemberSignature Language="C#" Value="public static C5.HashDictionary&lt;string,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; MetGenParams;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.HashDictionary`2&lt;string, class dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; MetGenParams" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;System.String,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="MethodCALst">
       <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; MethodCALst;" />
       <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; MethodCALst" />
@@ -919,6 +980,24 @@
     <Member MemberName="PopScope">
       <MemberSignature Language="C#" Value="public static void PopScope ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void PopScope() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopUsing">
+      <MemberSignature Language="C#" Value="public static void PopUsing ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopUsing() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1097,6 +1176,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ReadUseeLoc">
+      <MemberSignature Language="C#" Value="public static string ReadUseeLoc ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static string ReadUseeLoc() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ResetIf">
       <MemberSignature Language="C#" Value="public static void ResetIf ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetIf() cil managed" />
@@ -1169,6 +1267,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ResetMetGenParams">
+      <MemberSignature Language="C#" Value="public static void ResetMetGenParams ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetMetGenParams() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ResetNestedCtor">
       <MemberSignature Language="C#" Value="public static void ResetNestedCtor ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetNestedCtor() cil managed" />
@@ -1208,6 +1324,24 @@
     <Member MemberName="ResetNestedMet">
       <MemberSignature Language="C#" Value="public static void ResetNestedMet ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetNestedMet() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetUsing">
+      <MemberSignature Language="C#" Value="public static void ResetUsing ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetUsing() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1273,6 +1407,29 @@
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetMetGenParams">
+      <MemberSignature Language="C#" Value="public static void SetMetGenParams (string[] names, IKVM.Reflection.Emit.GenericTypeParameterBuilder[] actuals);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void SetMetGenParams(string[] names, class IKVM.Reflection.Emit.GenericTypeParameterBuilder[] actuals) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="names" Type="System.String[]" />
+        <Parameter Name="actuals" Type="IKVM.Reflection.Emit.GenericTypeParameterBuilder[]" />
+      </Parameters>
+      <Docs>
+        <param name="names">To be added.</param>
+        <param name="actuals">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

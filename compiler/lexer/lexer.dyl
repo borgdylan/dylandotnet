@@ -60,18 +60,25 @@ class public auto ansi Lexer
 		
 		end do
 		
-		sr::Close()
-		sr::Dispose()
-		
 		return stmts
 	end method
 	
+	//NOTE: Close calls only Dispose so the calls are equivalent
+	
 	method public StmtSet Analyze(var path as string)
-		return AnalyzeCore(new StreamReader(path,true), path)
+		var res as StmtSet
+		using sr as StreamReader = new StreamReader(path,true)
+			res = AnalyzeCore(sr, path)
+		end using
+		return res
 	end method
 	
 	method public StmtSet AnalyzeString(var str as string)
-		return AnalyzeCore(new StringReader(str), string::Empty)
+		var res as StmtSet
+		using sr as StringReader = new StringReader(str)
+			res = AnalyzeCore(sr, string::Empty)
+		end using
+		return res
 	end method
 	
 	method public StmtSet AnalyzeStream(var sm as Stream)

@@ -62,3 +62,17 @@ class public auto ansi AsOp extends Op
 	end method
 
 end class
+
+//??
+class public auto ansi CoalesceOp extends Op
+
+	method public void CoalesceOp()
+		me::ctor()
+		PrecNo = 8
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "??"
+	end method
+
+end class

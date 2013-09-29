@@ -178,9 +178,26 @@
             <summary>Holds the current ModuleBuilder.</summary>
             <remarks />
         </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.NSStack">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.PCLSet">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.PopFlg">
             <summary>If set indicates that the next method call should be followed by a 'pop'</summary>
             <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.PopNS">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.PushNS(System.String)">
+            <param name="ns">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.RefChainFlg">
             <summary>To be added.</summary>
@@ -412,6 +429,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitFinally">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitInitobj(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

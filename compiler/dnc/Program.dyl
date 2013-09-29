@@ -59,18 +59,19 @@ class public auto ansi static Program
 					elseif args[i] = "-h" then
 						OutputHelp()
 					elseif args[i] = "-pcl" then
-						i++
-						if i < args[l] then
+						//AsmFactory::PCLSet = true
+						//i++
+						//if i < args[l] then
 							//get pcl lookup durectory
-							args[i] = ParseUtils::ProcessMSYSPath(args[i])
-							if !Directory::Exists(args[i]) then
-								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Directory '" + args[i] + "' does not exist.")
-							else
-								Importer::AsmBasePath = args[i]
-							end if
-						else
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "PCL Directory path expected.")
-						end if
+						//	args[i] = ParseUtils::ProcessMSYSPath(args[i])
+						//	if !Directory::Exists(args[i]) then
+						//		StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Directory '" + args[i] + "' does not exist.")
+						//	else
+						//		Importer::AsmBasePath = args[i]
+						//	end if
+						//else
+						//	StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "PCL Directory path expected.")
+						//end if
 					else
 						ILEmitter::Init()
 						AsmFactory::Init()
@@ -92,7 +93,7 @@ class public auto ansi static Program
 			catch ex as Exception
 				StreamUtils::WriteLine(string::Empty)
 				try
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::get_Message())
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
 				catch errex2 as ErrorException
 				end try
 			end try

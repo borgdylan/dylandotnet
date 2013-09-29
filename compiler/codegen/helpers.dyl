@@ -513,28 +513,39 @@ class public auto ansi static Helpers
 			Loader::MakeRef = gtt::IsByRef
 			typ = Loader::ProcessType(typ)
 		else
-			if tt::RefTyp != null then
-				Loader::MakeArr = tt::IsArray
-				Loader::MakeRef = tt::IsByRef
-				typ = Loader::ProcessType(tt::RefTyp)
-			elseif Importer::TypeMap::Contains(tt::Value) then
-				tt::RefTyp = Importer::TypeMap::get_Item(tt::Value)
-				Loader::MakeArr = tt::IsArray
-				Loader::MakeRef = tt::IsByRef
-				typ = Loader::ProcessType(tt::RefTyp)
+			
+			var isgenparam = SymTable::MetGenParams::Contains(tt::Value)
+			
+			if !isgenparam then
+				if tt::RefTyp != null then
+					Loader::MakeArr = tt::IsArray
+					Loader::MakeRef = tt::IsByRef
+					typ = Loader::ProcessType(tt::RefTyp)
+				elseif Importer::TypeMap::Contains(tt::Value) then
+					tt::RefTyp = Importer::TypeMap::get_Item(tt::Value)
+					Loader::MakeArr = tt::IsArray
+					Loader::MakeRef = tt::IsByRef
+					typ = Loader::ProcessType(tt::RefTyp)
+				else
+					Loader::MakeArr = tt::IsArray
+					Loader::MakeRef = tt::IsByRef
+					typ = SymTable::TypeLst::GetType(tt::Value)
+					if typ != null  then
+						tt::RefTyp = typ
+						Importer::TypeMap::set_Item(tt::Value, typ)
+						typ = Loader::ProcessType(typ)
+					else
+						typ = Loader::LoadClass(tt::Value)
+						Importer::TypeMap::set_Item(tt::Value, Loader::PreProcTyp)
+						tt::RefTyp = Loader::PreProcTyp
+					end if 
+				end if
 			else
 				Loader::MakeArr = tt::IsArray
 				Loader::MakeRef = tt::IsByRef
-				typ = SymTable::TypeLst::GetType(tt::Value)
-				if typ != null  then
-					tt::RefTyp = typ
-					Importer::TypeMap::set_Item(tt::Value, typ)
-					typ = Loader::ProcessType(typ)
-				else
-					typ = Loader::LoadClass(tt::Value)
-					Importer::TypeMap::set_Item(tt::Value, Loader::PreProcTyp)
-					tt::RefTyp = Loader::PreProcTyp
-				end if 
+				typ = SymTable::MetGenParams::get_Item(tt::Value)::Bldr
+				tt::RefTyp = typ
+				typ = Loader::ProcessType(typ)
 			end if
 		end if
 
@@ -1077,7 +1088,8 @@ class public auto ansi static Helpers
 	[method: ComVisible(false)]
 	method public static void EmitLocLd(var ind as integer, var locarg as boolean)
 		if (AsmFactory::AddrFlg and ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom( _
-			#ternary{AsmFactory::Type04::get_IsByRef() ? AsmFactory::Type04::GetElementType(), AsmFactory::Type04})) or AsmFactory::ForcedAddrFlg then
+			#ternary{AsmFactory::Type04::get_IsByRef() ? AsmFactory::Type04::GetElementType(), AsmFactory::Type04})  and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
+			 or AsmFactory::ForcedAddrFlg then
 			if AsmFactory::Type04::get_IsByRef() then
 				if locarg then
 					ILEmitter::EmitLdloc(ind)
@@ -1105,7 +1117,8 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void EmitElemLd(var t as IKVM.Reflection.Type)
-		if (AsmFactory::AddrFlg and ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type04)) or AsmFactory::ForcedAddrFlg then
+		if (AsmFactory::AddrFlg and ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type04)  and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
+		 or AsmFactory::ForcedAddrFlg then
 			ILEmitter::EmitLdelema(t)
 		else
 			ILEmitter::EmitLdelem(t)
@@ -1123,7 +1136,7 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void EmitConv(var source as IKVM.Reflection.Type, var sink as IKVM.Reflection.Type)
-
+		var isgenparam = (source is GenericTypeParameterBuilder) or (sink  is GenericTypeParameterBuilder)
 		var convc as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype Convert)
 		var typ as IKVM.Reflection.Type
 		var m1 as MethodInfo
@@ -1144,38 +1157,43 @@ class public auto ansi static Helpers
 			end if
 		end if
 		
-		//begin conv overload block
-		if (source::get_IsPrimitive() and sink::get_IsPrimitive()) = false then
-			if !sink::Equals(AsmFactory::CurnTypB) and !sink::get_IsInterface() then
-				m1 = Loader::LoadConvOp(sink, "op_Implicit", source, sink)
-				if m1 != null then
-					ILEmitter::EmitCall(m1)
-					return
+		if !isgenparam then
+			//begin conv overload block
+			if (source::get_IsPrimitive() and sink::get_IsPrimitive()) = false then
+				if !sink::Equals(AsmFactory::CurnTypB) and !sink::get_IsInterface() then
+					m1 = Loader::LoadConvOp(sink, "op_Implicit", source, sink)
+					if m1 != null then
+						ILEmitter::EmitCall(m1)
+						return
+					end if
+					m1 = Loader::LoadConvOp(sink, "op_Explicit", source, sink)
+					if m1 != null then
+						ILEmitter::EmitCall(m1)
+						return
+					end if
 				end if
-				m1 = Loader::LoadConvOp(sink, "op_Explicit", source, sink)
-				if m1 != null then
-					ILEmitter::EmitCall(m1)
-					return
+				if !source::Equals(AsmFactory::CurnTypB) and !source::get_IsInterface() then
+					m1 = Loader::LoadConvOp(source, "op_Implicit", source, sink)
+					if m1 != null then
+						ILEmitter::EmitCall(m1)
+						return
+					end if
+					m1 = Loader::LoadConvOp(source, "op_Explicit", source, sink)
+					if m1 != null then
+						ILEmitter::EmitCall(m1)
+						return
+					end if
 				end if
 			end if
-			if !source::Equals(AsmFactory::CurnTypB) and !source::get_IsInterface() then
-				m1 = Loader::LoadConvOp(source, "op_Implicit", source, sink)
-				if m1 != null then
-					ILEmitter::EmitCall(m1)
-					return
-				end if
-				m1 = Loader::LoadConvOp(source, "op_Explicit", source, sink)
-				if m1 != null then
-					ILEmitter::EmitCall(m1)
-					return
-				end if
-			end if
+			//end conv overload block
 		end if
-		//end conv overload block
 
 		if sink::Equals(ILEmitter::Univ::Import(gettype object)) then
 			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
+				return
+			elseif (sink::get_BaseType() == null) and !sink::Equals(ILEmitter::Univ::Import(gettype object)) then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
 				return
 			else
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
@@ -1187,6 +1205,10 @@ class public auto ansi static Helpers
 			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(source) and sink::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
 				return
+			elseif ILEmitter::Univ::Import(gettype object)::IsAssignableFrom(source) then
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
+				return
 			end if
 		end if
 
@@ -1194,13 +1216,19 @@ class public auto ansi static Helpers
 			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(sink) then
 				ILEmitter::EmitUnboxAny(sink)
 				return
+			elseif ILEmitter::Univ::Import(gettype object)::IsAssignableFrom(sink) then
+			else
+				ILEmitter::EmitUnboxAny(sink)
+				return
 			end if
 		end if
 
 		typ = ILEmitter::Univ::Import(gettype ValueType)
-		if (typ::IsAssignableFrom(sink) or typ::IsAssignableFrom(source)) = false then
+		if !#expr(typ::IsAssignableFrom(sink) or typ::IsAssignableFrom(source)) then
 			if sink::IsAssignableFrom(source) then
-				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
+				if !sink::get_IsInterface() then
+					StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
+				end if
 				return
 			elseif source::IsAssignableFrom(sink) then
 				ILEmitter::EmitCastclass(sink)
@@ -1210,7 +1238,12 @@ class public auto ansi static Helpers
 				return
 			end if
 		end if
-
+		
+		if isgenparam then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No conversion from '" + source::ToString() + "' to '" + sink::ToString() + "' exists.")
+			return
+		end if
+		
 		if source::Equals(ILEmitter::Univ::Import(gettype IntPtr)) then
 			typ = ILEmitter::Univ::Import(gettype IntPtr)
 			m1 = typ::GetMethod("ToInt64", IKVM.Reflection.Type::EmptyTypes)
@@ -1316,7 +1349,10 @@ class public auto ansi static Helpers
 		if stat or BaseFlg then
 			ILEmitter::EmitCall(met)
 		else
-			if met::get_IsVirtual() then
+			if AsmFactory::Type05 is GenericTypeParameterBuilder then
+				ILEmitter::EmitConstrained(AsmFactory::Type05)
+				ILEmitter::EmitCallvirt(met)
+			elseif met::get_IsVirtual() then
 				if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type05) then
 					ILEmitter::EmitCall(met)
 				else
@@ -1344,7 +1380,8 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void EmitFldLd(var fld as FieldInfo, var stat as boolean)
-		if (AsmFactory::AddrFlg and ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type04)) or AsmFactory::ForcedAddrFlg then
+		if (AsmFactory::AddrFlg and ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type04) and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
+			 or AsmFactory::ForcedAddrFlg then
 			if stat then
 				ILEmitter::EmitLdsflda(fld)
 			else
@@ -1392,49 +1429,11 @@ class public auto ansi static Helpers
 		else
 			Loader::ProtectedFlag = true
 			var f as FieldInfo = SymTable::TypeLst::GetField(AsmFactory::CurnInhTyp,nam)
-			fldinf = #ternary { f != null ? f, Loader::LoadField(AsmFactory::CurnInhTyp, nam) }
+			fldinf = f ?? Loader::LoadField(AsmFactory::CurnInhTyp, nam)
 			Loader::ProtectedFlag = false
 		end if
 
 		return fldinf
-	end method
-
-	[method: ComVisible(false)]
-	method public static MethodInfo GetLocMet(var mn as MethodNameTok, var typs as IKVM.Reflection.Type[])
-		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
-		var nam as string = mnstrarr[--mnstrarr[l]]
-		var metinf as MethodInfo = null
-		var meti as MethodInfo = SymTable::FindMet(nam, typs)
-
-		if mn is GenericMethodNameTok then
-			meti = null
-		end if
-		
-		if (meti != null) and !BaseFlg then
-			metinf = meti
-		else
-			Loader::ProtectedFlag = true
-			var m as MethodInfo = SymTable::TypeLst::GetMethod(AsmFactory::CurnInhTyp,mn,typs)
-			if m != null then
-				metinf = m
-			else
-				if mn is GenericMethodNameTok then
-					var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
-					var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
-					var i as integer = -1
-					do until i = --genparams[l]
-						i++
-						genparams[i] = CommitEvalTTok(gmn::Params[i])
-					end do
-					metinf = Loader::LoadGenericMethod(AsmFactory::CurnInhTyp, nam, genparams, typs)
-				else
-					metinf = Loader::LoadMethod(AsmFactory::CurnInhTyp, nam, typs)
-				end if
-			end if
-			Loader::ProtectedFlag = false
-		end if
-
-		return metinf
 	end method
 
 	[method: ComVisible(false)]
@@ -1564,22 +1563,64 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static MethodInfo GetExtMet(var t as IKVM.Reflection.Type, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
+		
+		if t is GenericTypeParameterBuilder then
+			return GetExtMet(SymTable::MetGenParams::get_Item(t::get_Name())::BaseType, mn, paramtyps)
+		end if
+		
 		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
 		var name as string = mnstrarr[--mnstrarr[l]]
+		
+		var m as MethodInfo = SymTable::TypeLst::GetMethod(t,mn,paramtyps)
+		if m != null then
+			return m
+		else		
+			if mn is GenericMethodNameTok then
+				var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
+				var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
+				for i = 0 upto --genparams[l]
+					genparams[i] = CommitEvalTTok(gmn::Params[i])
+					if genparams[i] == null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gmn::Params[i]::ToString(), name))
+					end if
+				end for
+				return Loader::LoadGenericMethod(t, name, genparams, paramtyps)
+			else
+				return Loader::LoadMethod(t, name, paramtyps)
+			end if
+		end if
+	end method
+	
+	[method: ComVisible(false)]
+	method public static MethodInfo GetLocMet(var mn as MethodNameTok, var typs as IKVM.Reflection.Type[])
+		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
+		var nam as string = mnstrarr[--mnstrarr[l]]
+		var metinf as MethodInfo = null
+		var meti as MethodInfo = null
+
 		if mn is GenericMethodNameTok then
 			var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
 			var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
 			for i = 0 upto --genparams[l]
 				genparams[i] = CommitEvalTTok(gmn::Params[i])
 				if genparams[i] == null then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gmn::Params[i]::ToString(), name))
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gmn::Params[i]::ToString(), nam))
 				end if
 			end for
-			return Loader::LoadGenericMethod(t, name, genparams, paramtyps)
+			meti = SymTable::FindGenMet(nam, genparams, typs)
 		else
-			var m as MethodInfo = SymTable::TypeLst::GetMethod(t,mn,paramtyps)
-			return #ternary{m != null ? m, Loader::LoadMethod(t, name, paramtyps)}
+			meti = SymTable::FindMet(nam, typs)
 		end if
+		
+		if (meti != null) and !BaseFlg then
+			metinf = meti
+		else
+			Loader::ProtectedFlag = true
+			metinf = GetExtMet(AsmFactory::CurnInhTyp, mn, typs)
+			Loader::ProtectedFlag = false
+		end if
+
+		return metinf
 	end method
 	
 	[method: ComVisible(false)]

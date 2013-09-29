@@ -7,56 +7,23 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi abstract interface IUnaryOperatable
-	
-	property public hidebysig virtual abstract newslot string OrdOp
-		get
-		set
-	end property
-	
+	property public hidebysig virtual abstract newslot autogen string OrdOp
 end class
 
 class public auto ansi abstract interface IConvable implements IUnaryOperatable
-	
-	property public hidebysig virtual abstract newslot boolean Conv
-		get
-		set
-	end property
-	
-	property public hidebysig virtual abstract newslot TypeTok TTok
-		get
-		set
-	end property
-	
+	property public hidebysig virtual abstract newslot autogen boolean Conv
+	property public hidebysig virtual abstract newslot autogen TypeTok TTok
 end class
 
 class public auto ansi abstract interface INegatable implements IUnaryOperatable
-	
-	property public hidebysig virtual abstract newslot boolean DoNeg
-		get
-		set
-	end property
-	
+	property public hidebysig virtual abstract newslot autogen boolean DoNeg
 end class
 
 class public auto ansi abstract interface INotable implements IUnaryOperatable
-	
-	property public hidebysig virtual abstract newslot boolean DoNot
-		get
-		set
-	end property
-	
+	property public hidebysig virtual abstract newslot autogen boolean DoNot
 end class
 
 class public auto ansi abstract interface IIncDecable implements IUnaryOperatable
-	
-	property public hidebysig virtual abstract newslot boolean DoInc
-		get
-		set
-	end property
-		
-	property public hidebysig virtual abstract newslot boolean DoDec
-		get
-		set
-	end property
-	
+	property public hidebysig virtual abstract newslot autogen boolean DoInc
+	property public hidebysig virtual abstract newslot autogen boolean DoDec
 end class

@@ -657,6 +657,11 @@ class public auto ansi StmtOptimizer
 					return new EndLockStmt() {Line = stm::Line, Tokens = stm::Tokens}
 				end if
 				
+				b = stm::Tokens::get_Item(1) is UsingTok
+				if b then
+					return new EndUsingStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				end if
+				
 				b = stm::Tokens::get_Item(1) is SetTok
 				if b then
 					return new EndSetStmt() {Line = stm::Line, Tokens = stm::Tokens}
@@ -685,7 +690,7 @@ class public auto ansi StmtOptimizer
 	
 	method private AttrStmt parseCustAttr(var mas as AttrStmt, var stm as Stmt)
 		var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
-		var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Tokens = stm::Tokens},2),2)
+		var tempexp as Expr = eopt::procNewCall(eopt::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens},2),2)
 		
 		mas::Tokens = tempexp::Tokens
 		mas::Ctor = $NewCallTok$tempexp::Tokens::get_Item(2)
@@ -865,7 +870,7 @@ class public auto ansi StmtOptimizer
 				else
 					if stm::Tokens::get_Item(i) is ExtendsTok then
 						i++
-						stm::Tokens = eopt::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+						stm::Tokens = eopt::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 						if !stflg then
 							clss::InhClass = $TypeTok$stm::Tokens::get_Item(i)
 						end if
@@ -873,7 +878,7 @@ class public auto ansi StmtOptimizer
 						do until i = --stm::Tokens::get_Count() 
 							i++
 							if (stm::Tokens::get_Item(i) is Comma) = false then
-								stm::Tokens = eopt::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+								stm::Tokens = eopt::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 								clss::AddInterface($TypeTok$stm::Tokens::get_Item(i))
 							end if
 						end do
@@ -907,7 +912,7 @@ class public auto ansi StmtOptimizer
 			end do
 			
 			i++
-			stm::Tokens = eop::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+			stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 			flss::FieldTyp = $TypeTok$stm::Tokens::get_Item(i)
 			i++
 			flss::FieldName = $Ident$stm::Tokens::get_Item(i)
@@ -951,7 +956,7 @@ class public auto ansi StmtOptimizer
 			end do
 			
 			i++
-			stm::Tokens = eop::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+			stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 			flss::EnumTyp = $TypeTok$stm::Tokens::get_Item(i)
 			i++
 			flss::EnumName = $Ident$stm::Tokens::get_Item(i)
@@ -981,7 +986,7 @@ class public auto ansi StmtOptimizer
 			end do
 			
 			i++
-			stm::Tokens = eop::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+			stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 			prss::PropertyTyp = $TypeTok$stm::Tokens::get_Item(i)
 			i++
 			prss::PropertyName = $Ident$stm::Tokens::get_Item(i)
@@ -1010,7 +1015,7 @@ class public auto ansi StmtOptimizer
 			end do
 			
 			i++
-			stm::Tokens = eop::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+			stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 			evss::EventTyp = $TypeTok$stm::Tokens::get_Item(i)
 			i++
 			evss::EventName = $Ident$stm::Tokens::get_Item(i)
@@ -1049,15 +1054,14 @@ class public auto ansi StmtOptimizer
 			//get return type and name
 			i++
 			
-			stm::Tokens = eop::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+			stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 			mtss::RetTyp = $TypeTok$stm::Tokens::get_Item(i)
 			
 			len = --stm::Tokens::get_Count() 
 			i++
 			
-			if stm::Tokens::get_Item(i) is Ident then
-				mtss::MethodName = $Ident$stm::Tokens::get_Item(i)
-			end if
+			stm::Tokens = eop::procMtdName(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+			mtss::MethodName = $MethodNameTok$stm::Tokens::get_Item(i)
 			
 			i++
 			
@@ -1162,7 +1166,7 @@ class public auto ansi StmtOptimizer
 			
 			//get return type and name
 			i++
-			stm::Tokens = new ExprOptimizer(PFlags)::procType(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+			stm::Tokens = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 			dels::RetTyp = $TypeTok$stm::Tokens::get_Item(i)
 			len = --stm::Tokens::get_Count() 
 			i++
@@ -1368,7 +1372,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkVarAs(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is VarTok
 		if b then
-			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Tokens = stm::Tokens}, 3)
+			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)
 			return new VarStmt() {Tokens = tempexp::Tokens, Line = stm::Line, VarName = $Ident$tempexp::Tokens::get_Item(1), VarTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
 		end if
 		return null
@@ -1377,7 +1381,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkCatch(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is CatchTok
 		if b then
-			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Tokens = stm::Tokens}, 3)
+			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)
 			return new CatchStmt() {Tokens = tempexp::Tokens, Line = stm::Line, ExName = $Ident$tempexp::Tokens::get_Item(1), ExTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
 		end if
 		return null
@@ -1389,15 +1393,17 @@ class public auto ansi StmtOptimizer
 		var eop as ExprOptimizer = new ExprOptimizer(PFlags)
 		
 		if le::Tokens::get_Count() >= 4 then
-			if (le::Tokens::get_Item(0) is VarTok) and (le::Tokens::get_Item(2) is AsTok) then
-				le::Tokens = eop::procType(new Expr() {Tokens = le::Tokens}, 3)::Tokens		
-				return new VarAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), Tokens = asss::Tokens, VarTyp = $TypeTok$le::Tokens::get_Item(3), RExpr = eop::Optimize(asss::RExp)}
+			if ((le::Tokens::get_Item(0) is VarTok) or (le::Tokens::get_Item(0) is UsingTok)) and (le::Tokens::get_Item(2) is AsTok) then
+				le::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = le::Tokens}, 3)::Tokens		
+				return new VarAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), Tokens = asss::Tokens, VarTyp = $TypeTok$le::Tokens::get_Item(3), _
+					RExpr = eop::Optimize(asss::RExp), IsUsing = le::Tokens::get_Item(0) is UsingTok}
 			else
 				return stm
 			end if
 		elseif le::Tokens::get_Count() >= 2 then
-			if le::Tokens::get_Item(0) is VarTok then
-				return new InfVarAsgnStmt() {Line = asss::Line, Tokens = asss::Tokens, VarName = $Ident$le::Tokens::get_Item(1), RExpr = eop::Optimize(asss::RExp)}
+			if (le::Tokens::get_Item(0) is VarTok) or (le::Tokens::get_Item(0) is UsingTok) then
+				return new InfVarAsgnStmt() {Line = asss::Line, Tokens = asss::Tokens, VarName = $Ident$le::Tokens::get_Item(1), _
+					RExpr = eop::Optimize(asss::RExp), IsUsing = le::Tokens::get_Item(0) is UsingTok}
 			else
 				return stm
 			end if

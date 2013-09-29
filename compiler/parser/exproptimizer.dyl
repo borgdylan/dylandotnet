@@ -32,14 +32,19 @@ class public auto ansi ExprOptimizer
 		end if
 
 		if isgeneric then
-
-			var gtt as GenericTypeTok = new GenericTypeTok(stm::Tokens::get_Item(i)::Value)
+			
+			var gttarg = stm::Tokens::get_Item(i)
+			if !#expr((gttarg is Ident) or (gttarg is TypeTok)) then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", gttarg::Value))
+			end if
+			
+			var gtt as GenericTypeTok = new GenericTypeTok(gttarg::Value)
 			i++
 			stm::RemToken(i)
 			stm::RemToken(i)
 			i--
 
-			var ep2 as Expr = new Expr()
+			var ep2 as Expr = new Expr() {Line = stm::Line}
 			var lvl as integer = 1
 			var len as integer = --stm::Tokens::get_Count()
 
@@ -59,7 +64,7 @@ class public auto ansi ExprOptimizer
 					len--
 					if lvl <= 1 then
 						gtt::AddParam($TypeTok$procType(ep2, 0)::Tokens::get_Item(0))
-						ep2 = new Expr()
+						ep2 = new Expr() {Line = stm::Line}
 					end if
 					i--
 				elseif stm::Tokens::get_Item(i) is RAParen then
@@ -83,21 +88,30 @@ class public auto ansi ExprOptimizer
 			end do
 			tt = gtt
 		else
-			if (stm::Tokens::get_Item(i) is TypeTok) == false then
-				tt = new TypeTok(stm::Tokens::get_Item(i)::Value) {Line = stm::Tokens::get_Item(i)::Line}
+			if i < stm::Tokens::get_Count() then
+				if stm::Tokens::get_Item(i) is TypeTok then
+					tt = $TypeTok$stm::Tokens::get_Item(i)
+				elseif stm::Tokens::get_Item(i) is Ident then
+					tt = new TypeTok(stm::Tokens::get_Item(i)::Value) {Line = stm::Tokens::get_Item(i)::Line}	
+				else
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
+				end if
 			else
-				tt = $TypeTok$stm::Tokens::get_Item(i)
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an identifier instead of ''!")
 			end if
 		end if
 
 		i = j
 		var c as integer = 0
-
-		do until c = 2
-			c = ++c
+		do until c = 3
+			c++
 			if i < --stm::Tokens::get_Count() then
 				i++
-				if stm::Tokens::get_Item(i) is LRSParen then
+				if stm::Tokens::get_Item(i) is QuestionMark then
+					stm::RemToken(i)
+					i--
+					tt = new GenericTypeTok("System.Nullable") { AddParam(tt) }
+				elseif stm::Tokens::get_Item(i) is LRSParen then
 					tt::IsArray = true
 					stm::RemToken(i)
 					i--
@@ -134,7 +148,7 @@ class public auto ansi ExprOptimizer
 			stm::RemToken(i)
 			i--
 
-			var ep2 as Expr = new Expr()
+			var ep2 as Expr = new Expr() {Line = stm::Line}
 			var lvl as integer = 1
 			var len as integer = --stm::Tokens::get_Count()
 
@@ -154,7 +168,7 @@ class public auto ansi ExprOptimizer
 					len--
 					if lvl <= 1 then
 						gtt::AddParam($TypeTok$procType(ep2, 0)::Tokens::get_Item(0))
-						ep2 = new Expr()
+						ep2 = new Expr() {Line = stm::Line}
 					end if
 					i--
 				elseif stm::Tokens::get_Item(i) is RAParen then
@@ -178,10 +192,12 @@ class public auto ansi ExprOptimizer
 			end do
 			tt = gtt
 		else
-			if (stm::Tokens::get_Item(i) is MethodNameTok) == false then
+			if stm::Tokens::get_Item(i) is MethodNameTok then
+				tt = $MethodNameTok$stm::Tokens::get_Item(i)
+			elseif stm::Tokens::get_Item(i) is Ident then
 				tt = new MethodNameTok($Ident$stm::Tokens::get_Item(i))
 			else
-				tt = $MethodNameTok$stm::Tokens::get_Item(i)
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
 			end if
 		end if
 
@@ -1002,6 +1018,14 @@ class public auto ansi ExprOptimizer
 					exp::Tokens::set_Item(i,new GettypeCallTok() {Name = $TypeTok$exp::Tokens::get_Item(i)})
 					goto fin
 				end if
+				
+				if tok is DefaultTok then
+					exp::RemToken(i)
+					exp = procType(exp,i)
+					len = --exp::Tokens::get_Count() 
+					exp::Tokens::set_Item(i,new DefaultCallTok() {Name = $TypeTok$exp::Tokens::get_Item(i)})
+					goto fin
+				end if
 
 				if (tok is IsOp) or (tok is AsOp) then
 					i++
@@ -1019,7 +1043,7 @@ class public auto ansi ExprOptimizer
 							goto fin
 						end if
 					end if
-					StreamUtils::WriteError(exp::Line, PFlags::CurPath, c"\nExpected a '{' after a '#ternary'!")
+					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '{' after a '#ternary'!")
 					goto fin
 				end if
 				
@@ -1038,7 +1062,7 @@ class public auto ansi ExprOptimizer
 							goto fin
 						end if 
 					end if
-					StreamUtils::WriteError(exp::Line, PFlags::CurPath, c"\nExpected a '(' after a '#expr'!")
+					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#expr'!")
 					goto fin
 				end if
 

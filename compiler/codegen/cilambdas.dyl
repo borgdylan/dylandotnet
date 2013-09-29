@@ -45,7 +45,7 @@ class private auto ansi CILambdas
 	method assembly static integer CalcDeriveness(var t as IKVM.Reflection.Type)
 		var d as integer = 1
 		do while t::get_BaseType() != null
-			d = d + 1
+			d++
 			t = t::get_BaseType()
 		end do
 		return d
@@ -72,7 +72,7 @@ class private auto ansi CILambdas
 		var i as integer = -1
 		var f as boolean = true
 		do until i >= (d1[l] - 2)
-			i = i + 1
+			i++
 			if d1[i] < d2[i] then
 				f = false
 				break

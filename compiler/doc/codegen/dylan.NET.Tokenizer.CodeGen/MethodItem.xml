@@ -78,6 +78,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="NrGenParams">
+      <MemberSignature Language="C#" Value="public int NrGenParams;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 NrGenParams" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ParamTyps">
       <MemberSignature Language="C#" Value="public IKVM.Reflection.Type[] ParamTyps;" />
       <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type[] ParamTyps" />

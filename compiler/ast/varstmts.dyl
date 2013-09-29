@@ -24,12 +24,14 @@ class public auto ansi VarAsgnStmt extends Stmt
 	field public TypeTok VarTyp
 	field public Ident VarName
 	field public Expr RExpr
-
+	field public boolean IsUsing
+	
 	method public void VarAsgnStmt()
 		me::ctor()
 		VarTyp = new TypeTok()
 		VarName = new Ident()
 		RExpr = new Expr()
+		IsUsing = false
 	end method
 
 end class
@@ -38,11 +40,19 @@ class public auto ansi InfVarAsgnStmt extends Stmt
 
 	field public Ident VarName
 	field public Expr RExpr
+	field public boolean IsUsing
 
 	method public void InfVarAsgnStmt()
 		me::ctor()
 		VarName = new Ident()
 		RExpr = new Expr()
+		IsUsing = false
 	end method
 
+end class
+
+class public auto ansi EndUsingStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end using"
+	end method
 end class

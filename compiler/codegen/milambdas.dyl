@@ -9,18 +9,71 @@
 class private auto ansi MILambdas2
 
 	field assembly string Name
+	field assembly integer ParamLen
 	field assembly IKVM.Reflection.Type[] Params
-
+	
 	method assembly void MILambdas2()
 		me::ctor()
 		Name = string::Empty
 		Params = null
+		ParamLen = 0
 	end method
 
 	method assembly void MILambdas2(var name as string, var params as IKVM.Reflection.Type[])
 		me::ctor()
 		Name = name
 		Params = params
+		ParamLen = 0
+	end method
+	
+	method assembly void MILambdas2(var params as IKVM.Reflection.Type[])
+		me::ctor()
+		Name = string::Empty
+		Params = params
+		ParamLen = 0
+	end method
+	
+	method assembly void MILambdas2(var name as string, var pl as integer)
+		me::ctor()
+		Name = name
+		Params = null
+		ParamLen = pl
+	end method
+	
+	method assembly boolean GenericMtdFilter(var mi as MethodItem)
+		if mi::NrGenParams > 0 then
+			if mi::Name = Name then
+				if mi::NrGenParams != ParamLen then
+					return false
+				end if
+			else
+				return false
+			end if
+		else
+			return false
+		end if
+		
+//		if !mi::get_IsPublic() then
+//			if !mi::get_IsPrivate() then
+//				if !#expr(mi::get_IsFamilyAndAssembly() and ProtectedFlag and HaveInternal) then
+//					if !#expr(mi::get_IsFamilyOrAssembly() and (ProtectedFlag or HaveInternal)) then
+//						if !#expr(mi::get_IsFamily() and ProtectedFlag) then
+//							if !#expr(mi::get_IsAssembly() and HaveInternal) then
+//								return false
+//							end if
+//						end if
+//					end if
+//				end if
+//			else
+//				return false
+//			end if
+//		end if
+//		
+		return true
+	end method
+	
+	method assembly IKVM.Reflection.MethodInfo InstGenMtd(var mi as MethodItem)
+		return mi::MethodBldr::MakeGenericMethod(Params)
 	end method
 
 	method assembly boolean CmpTyps(var arra as IKVM.Reflection.Type[], var arrb as IKVM.Reflection.Type[])
@@ -60,7 +113,20 @@ class private auto ansi MILambdas2
 	end method
 
 	method assembly boolean DetermineIfCandidate(var mi as MethodItem)
-		return (mi::Name == Name) and CmpTyps(mi::ParamTyps,Params)
+		if mi::NrGenParams > 0 then
+			return false
+		else
+			return (mi::Name == Name) and CmpTyps(mi::ParamTyps,Params)
+		end if
+	end method
+	
+	method assembly boolean DetermineIfCandidate2(var mi as MethodInfo)
+		var params = mi::GetParameters()
+		var paramlist = new IKVM.Reflection.Type[params[l]]
+		for i = 0 upto --params[l]
+			paramlist[i] = params[i]::get_ParameterType()
+		end for
+		return CmpTyps(paramlist,Params)
 	end method
 	
 	method assembly boolean DetermineIfProtoCandidate(var mi as MethodItem)
@@ -82,6 +148,17 @@ class private auto ansi MILambdas2
 		do until i = --deriv[l]
 			i++
 			deriv[i] = CalcDeriveness(mi::ParamTyps[i])
+		end do
+		return deriv
+	end method
+	
+	method assembly static integer[] ExtractDeriveness2(var mi as MethodInfo)
+		var params = mi::GetParameters()
+		var deriv as integer[] = new integer[params[l]]
+		var i as integer = -1
+		do until i = --deriv[l]
+			i++
+			deriv[i] = CalcDeriveness(params[i]::get_ParameterType())
 		end do
 		return deriv
 	end method

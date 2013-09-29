@@ -9,6 +9,7 @@
 class public auto ansi static SymTable
 
 	field private static C5.LinkedList<of C5.HashDictionary<of string, VarItem> > VarLst
+	field public static C5.HashDictionary<of string, TypeParamItem> MetGenParams
 	field public static C5.IList<of CustomAttributeBuilder> MethodCALst
 	field public static C5.IList<of CustomAttributeBuilder> FieldCALst
 	field public static C5.IList<of CustomAttributeBuilder> ClassCALst
@@ -30,6 +31,7 @@ class public auto ansi static SymTable
 	
 	field private static C5.LinkedList<of IfItem> IfLst
 	field private static C5.LinkedList<of LockItem> LockLst
+	field private static C5.LinkedList<of UsingItem> UsingLst
 	field private static C5.LinkedList<of LoopItem> LoopLst
 	
 	field assembly static C5.TreeSet<of string> DefSyms
@@ -40,12 +42,14 @@ class public auto ansi static SymTable
 	method private static void SymTable()
 		TypeLst = new TypeList()
 		VarLst = new C5.LinkedList<of C5.HashDictionary<of string, VarItem> >()
+		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>()
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 		NestedFldLst = new FieldItem[0]
 		NestedMetLst = new MethodItem[0]
 		NestedCtorLst = new CtorItem[0]
 		IfLst = new C5.LinkedList<of IfItem>()
 		LockLst = new C5.LinkedList<of LockItem>()
+		UsingLst = new C5.LinkedList<of UsingItem>()
 		LoopLst = new C5.LinkedList<of LoopItem>()
 		LblLst = new LabelItem[0]
 		StoreFlg = false
@@ -72,6 +76,11 @@ class public auto ansi static SymTable
 	method public static void ResetLock()
 		LockLst::Clear()
 	end method
+	
+	[method: ComVisible(false)]
+	method public static void ResetUsing()
+		UsingLst::Clear()
+	end method
 
 	[method: ComVisible(false)]
 	method public static void ResetLoop()
@@ -88,7 +97,19 @@ class public auto ansi static SymTable
 		VarLst::Clear()
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 	end method
-
+	
+	[method: ComVisible(false)]
+	method public static void ResetMetGenParams()
+		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>()
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void SetMetGenParams(var names as string[], var actuals as GenericTypeParameterBuilder[])
+		for i = 0 upto --names[l]
+			MetGenParams::Add(names[i], new TypeParamItem(names[i], actuals[i]))
+		end for
+	end method
+	
 	[method: ComVisible(false)]
 	method public static void ResetNestedFld()
 		NestedFldLst = new FieldItem[0]
@@ -208,8 +229,8 @@ class public auto ansi static SymTable
 	end method
 
 	[method: ComVisible(false)]
-	method public static void AddMet(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var met as MethodBuilder)
-		CurnTypItem::AddMethod(new MethodItem(nme, typ, ptyps, met))
+	method public static void AddMet(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var met as MethodBuilder, var nrgenparams as integer)
+		CurnTypItem::AddMethod(new MethodItem(nme, typ, ptyps, met) {NrGenParams = nrgenparams})
 	end method
 
 	[method: ComVisible(false)]
@@ -260,6 +281,11 @@ class public auto ansi static SymTable
 	method public static void AddLock(var loc as integer)
 		LockLst::Push(new LockItem(loc, ILEmitter::LineNr))
 	end method
+	
+	[method: ComVisible(false)]
+	method public static void AddUsing(var loc as string)
+		UsingLst::Push(new UsingItem(loc, ILEmitter::LineNr))
+	end method
 
 	[method: ComVisible(false)]
 	method public static void AddLoop()
@@ -279,6 +305,11 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void PopLock()
 		LockLst::Pop()
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void PopUsing()
+		UsingLst::Pop()
 	end method
 
 	[method: ComVisible(false)]
@@ -314,6 +345,11 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static integer ReadLockeeLoc()
 		return LockLst::get_Last()::LockeeLoc
+	end method
+	
+	[method: ComVisible(false)]
+	method public static string ReadUseeLoc()
+		return UsingLst::get_Last()::UseeLoc
 	end method
 
 	[method: ComVisible(false)]
@@ -413,6 +449,10 @@ class public auto ansi static SymTable
 			foreach lckite in LockLst
 				StreamUtils::WriteError(lckite::Line, ILEmitter::CurSrcFile, "This lock statement is unterminated.")
 			end for
+		elseif UsingLst::get_Count() != 0 then
+			foreach usite in UsingLst
+				StreamUtils::WriteError(usite::Line, ILEmitter::CurSrcFile, "This using statement is unterminated.")
+			end for
 		end if
 	end method
 	
@@ -469,7 +509,12 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static MethodInfo FindMet(var nam as string, var paramst as IKVM.Reflection.Type[])
-		return CurnTypItem::GetMethod(nam,paramst)
+		return CurnTypItem::GetMethod(nam, paramst)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static MethodInfo FindGenMet(var nam as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[])
+		return CurnTypItem::GetGenericMethod(nam, genparams, paramst)
 	end method
 	
 	[method: ComVisible(false)]

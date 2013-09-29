@@ -245,6 +245,8 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem, typ)
 		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_Ref)
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem, typ)
 		end if
 	end method
 
@@ -268,6 +270,8 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stobj, typ)
 		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_Ref)
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stobj, typ)
 		end if
 	end method
 
@@ -297,6 +301,8 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem, typ)
 		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_Ref)
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem, typ)
 		end if
 	end method
 	
@@ -326,6 +332,8 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldobj, typ)
 		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_Ref)
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldobj, typ)
 		end if
 	end method
 
@@ -830,6 +838,11 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void EmitBrtrue(var lbl as IKVM.Reflection.Emit.Label)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lbl)
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void EmitInitobj(var t as IKVM.Reflection.Type)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Initobj, t)
 	end method
 
 	[method: ComVisible(false)]

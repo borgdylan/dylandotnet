@@ -23,6 +23,14 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 	field public Token MemberToAccess
 	field public TypeTok ExplType
 	
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
+	property public hidebysig virtual final newslot autogen boolean DoInc
+	property public hidebysig virtual final newslot autogen boolean DoDec
+	
 	method public void Ident(var value as string)
 		me::ctor(value)
 		IsRef = false
@@ -35,7 +43,7 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 		_DoNot = false
 		_DoInc = false
 		_DoDec = false
-		_OrdOp = string::Empty
+		_OrdOp = ""
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
 		ExplType = null
@@ -44,68 +52,5 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 	method public void Ident()
 		ctor(string::Empty)
 	end method
-		
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoInc
-		get
-			return _DoInc
-		end get
-		set
-			_DoInc = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoDec
-		get
-			return _DoDec
-		end get
-		set
-			_DoDec = value
-		end set
-	end property
 
 end class

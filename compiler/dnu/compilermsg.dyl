@@ -8,14 +8,14 @@
 
 class public auto ansi sealed CompilerMsg
 
-	field private integer _Line
-	field private string _File
-	field private string _Msg
+	property public autogen integer Line
+	property public autogen string File	
+	property public autogen string Msg
 	
 	method public void CompilerMsg()
 		_Line = 0
-		_File = ""
-		_Msg = ""
+		_File = string::Empty
+		_Msg = string::Empty
 	end method
 
 	method public void CompilerMsg(var line as integer, var file as string, var msg as string)
@@ -23,23 +23,5 @@ class public auto ansi sealed CompilerMsg
 		_File = file
 		_Msg = msg
 	end method
-	
-	property public integer Line
-		get
-			return _Line
-		end get
-	end property
-	
-	property public string File
-		get
-			return _File
-		end get
-	end property
-	
-	property public string Msg
-		get
-			return _Msg
-		end get
-	end property
 	
 end class

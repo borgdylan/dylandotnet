@@ -559,6 +559,19 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Stmts.EndUsingStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.EndUsingStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Stmts.EndUsingStmt.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.EnumAttrStmt">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -925,6 +938,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="C:dylan.NET.Tokenizer.AST.Stmts.InfVarAsgnStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.InfVarAsgnStmt.IsUsing">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1318,6 +1335,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.VarAsgnStmt.IsUsing">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.AST.Stmts.VarAsgnStmt.RExpr">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1514,14 +1535,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Tokens.CastclassTok">
-            <summary>Represents the 'castclass' keyword.</summary>
-            <remarks>Used in detecting a class cast.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.CastclassTok">
-            <summary>Cosntructs a new CastclassTok.</summary>
-            <remarks />
-        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.CatchTok">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1591,6 +1604,36 @@
             <remarks />
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.DebugTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.DefaultCallTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.DefaultCallTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.DefaultCallTok(System.String)">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Tokens.DefaultCallTok.Name">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.DefaultTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.DefaultTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.DefaultTok.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -1774,34 +1817,6 @@
         </member>
         <member name="C:dylan.NET.Tokenizer.AST.Tokens.ExprCallTok(System.String)">
             <param name="value">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.ExprCallTok._Conv">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.ExprCallTok._DoDec">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.ExprCallTok._DoInc">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.ExprCallTok._DoNeg">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.ExprCallTok._DoNot">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.ExprCallTok._OrdOp">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.ExprCallTok._TTok">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -3066,6 +3081,19 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.UsingTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.UsingTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.UsingTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.ValInRefTok">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -3114,6 +3142,19 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.WarningTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.WhereTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.WhereTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.WhereTok.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -3815,6 +3856,11 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.DoNeg">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="P:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.DoNot">
             <summary>To be added.</summary>
             <value>To be added.</value>
@@ -4480,6 +4526,11 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral.DoNeg">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="P:dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral.DoNot">
             <summary>To be added.</summary>
             <value>To be added.</value>
@@ -4527,6 +4578,11 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral.DoNeg">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="P:dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral.DoNot">
             <summary>To be added.</summary>
             <value>To be added.</value>
@@ -4570,6 +4626,11 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="P:dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral.Conv">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral.DoNeg">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
@@ -4667,6 +4728,19 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Ops.AssignOp2.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.Ops.CoalesceOp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Ops.CoalesceOp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.Ops.CoalesceOp.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

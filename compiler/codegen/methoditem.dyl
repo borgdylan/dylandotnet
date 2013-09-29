@@ -12,6 +12,7 @@ class public auto ansi MethodItem
 	field public IKVM.Reflection.Type MethodTyp
 	field public IKVM.Reflection.Type[] ParamTyps
 	field public MethodBuilder MethodBldr
+	field public integer NrGenParams
 
 	method public void MethodItem(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var bld as MethodBuilder)
 		me::ctor()
@@ -19,6 +20,7 @@ class public auto ansi MethodItem
 		MethodTyp = typ
 		MethodBldr = bld
 		ParamTyps = ptyps
+		NrGenParams = 0
 	end method
 	
 	method public void MethodItem()

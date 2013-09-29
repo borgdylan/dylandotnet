@@ -24,6 +24,7 @@ import SCG = System.Collections.Generic
 import System.Threading
 import System.Threading.Tasks
 import System.Runtime.InteropServices
+import System.Runtime.CompilerServices
 import template
 
 #debug on
@@ -229,6 +230,76 @@ class public auto ansi ObjInit
 	
 end class
 
+class public auto ansi static Generics
+	method public static T Func<of T>(var o as T)
+		return o
+	end method
+	
+	method public static Tuple<of T, U> Func<of T, U>(var o as T, var o2 as U)
+		return Tuple::Create<of T, U>(o, o2)
+	end method
+	
+	method public static T[] Func2<of T>(var ie as IEnumerable<of T>)
+		return Enumerable::ToArray<of T>(ie)
+	end method
+	
+	method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T)
+		var destarr as T[] = new T[++srcarr[l]]
+
+		for i = 0 upto --srcarr[l]
+			destarr[i] = srcarr[i]
+		end for
+
+		destarr[srcarr[l]] = eltoadd
+
+		return destarr
+	end method
+	
+	method public static T[] remelem<of T>(var srcarr as T[], var ind as integer)
+		var destarr as T[] = new T[--srcarr[l]]
+
+		for i = 0 upto --ind
+			destarr[i] = srcarr[i]
+		end for
+		for i = ++ind upto --srcarr[l]
+			destarr[--i] = srcarr[i]
+		end for
+		
+		return destarr
+	end method
+	
+	method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T )
+		return addelem<of T>(addelem<of T>(srcarr, eltoadd), eltoadd2)
+	end method
+	
+	method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var ind as integer)
+		return remelem<of T>(addelem<of T>(srcarr, eltoadd), ind)
+	end method
+	
+	method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T, var ind as integer)
+		return remelem<of T>(addelem<of T>(srcarr, eltoadd, eltoadd2), ind)
+	end method
+	
+	method public static void exch<of T>(var p1 as T&, var p2 as T&)
+		var temp = p1
+		p1 = p2
+		p2 = temp
+	end method
+	
+	method public static T getdefault<of T>()
+		return default T
+	end method
+	
+	method public static string ToString<of T>(var t as T)
+		return Func<of T>(t)::ToString()
+	end method
+	
+	method public static Type GetType<of T>(var t as T)
+		return t::GetType()
+	end method
+	
+end class
+
 class public auto ansi static partial Program
 	field public static integer Z
 	method public static prototype void ProtoMethod(var x as integer, var y as integer)
@@ -357,18 +428,19 @@ class public auto ansi static Program
 	end method
 
 	method public static void nullabletest()
-		var a as Nullable<of integer> = $Nullable<of integer>$null
+		var a as integer? = $integer?$null
 		Console::WriteLine(a::get_HasValue())
-		a = $Nullable<of integer>$56
+		a = $integer?$56
 		Console::WriteLine(a::get_HasValue())
 		if a::get_HasValue() then
 			Console::WriteLine($integer$a)
 		end if
-		a = new Nullable<of integer>(46)
+		a = new integer?(46)
 		Console::WriteLine(a::get_HasValue())
 		if a::get_HasValue() then
 			Console::WriteLine(a::get_Value())
 		end if
+		var narr = new integer?[] {new integer?(2), new integer?(4)}
 	end method
 
 	method public static void exthrow()
@@ -625,7 +697,6 @@ class public auto ansi static Program
 		Console::WriteLine("Hello from {0} {1}" _
 			, "a continued" _
 			, "line")
-		var dd = DateTime::get_Now() - DateTime::get_Now()
 		var x = #expr("abc" + $string$!#expr(12 + 6))::Trim()::get_Length()
 		
 		for xi = 1 upto 7
@@ -642,7 +713,22 @@ class public auto ansi static Program
 		Console::WriteLine(ConstsIntrodIn)
 		Console::WriteLine(gettype MyEnum)
 		Console::WriteLine($object$#expr(MyEnum::A or MyEnum::B))
+		Console::WriteLine(DateTime::get_Now()::ToString())
+		Console::WriteLine(new DateTime(1993, 5, 11, 14, 0, 0)::ToString())
+		Console::WriteLine(#expr(DateTime::get_Now() - new DateTime(1993, 5, 11, 14, 0, 0))::ToString())
+		var arr as IEnumerable<of integer> = Generics::addelem<of integer>(new integer[] {1,2}, 3)
+		Console::WriteLine(null ?? "null" ?? c"your CLR thinks \qnull\q is null!!")
+		Console::WriteLine("not null" ?? "null")
+		
+		using ms as MemoryStream = new MemoryStream()
+			var sw = new StreamWriter(ms)
+			sw::Write("Hello There")
+			sw::Flush()
+			ms::Seek(0l, SeekOrigin::Begin)
+			var sr = new StreamReader(ms)
+			Console::WriteLine(sr::ReadToEnd())
+		end using
 		
 	end method
-
+	
 end class

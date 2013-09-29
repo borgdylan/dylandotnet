@@ -10,10 +10,12 @@ class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, 
 
 	method public void MethodNameTok()
 		me::ctor()
+		_OrdOp = ""
 	end method
 	
 	method public void MethodNameTok(var value as string)
 		me::ctor(value)
+		_OrdOp = ""
 	end method
 
 	method public void MethodNameTok(var idt as Ident)
@@ -36,68 +38,13 @@ class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, 
 		return #ternary{idt is MethodNameTok ? $MethodNameTok$idt, new MethodNameTok(idt)}
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoInc
-		get
-			return _DoInc
-		end get
-		set
-			_DoInc = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoDec
-		get
-			return _DoDec
-		end get
-		set
-			_DoDec = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
+	property public hidebysig virtual final newslot autogen boolean DoInc
+	property public hidebysig virtual final newslot autogen boolean DoDec
 
 end class
 
@@ -148,67 +95,12 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUn
 		Params = destarr
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoInc
-		get
-			return _DoInc
-		end get
-		set
-			_DoInc = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoDec
-		get
-			return _DoDec
-		end get
-		set
-			_DoDec = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
+	property public hidebysig virtual final newslot autogen boolean DoInc
+	property public hidebysig virtual final newslot autogen boolean DoDec
 
 end class

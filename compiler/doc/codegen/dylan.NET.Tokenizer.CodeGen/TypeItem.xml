@@ -199,6 +199,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetGenericMethod">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.MethodInfo GetGenericMethod (string nam, IKVM.Reflection.Type[] genparams, IKVM.Reflection.Type[] paramst);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.MethodInfo GetGenericMethod(string nam, class IKVM.Reflection.Type[] genparams, class IKVM.Reflection.Type[] paramst) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nam" Type="System.String" />
+        <Parameter Name="genparams" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="paramst" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="nam">To be added.</param>
+        <param name="genparams">To be added.</param>
+        <param name="paramst">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetMethod">
       <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.MethodBuilder GetMethod (string nam, IKVM.Reflection.Type[] paramst);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.Emit.MethodBuilder GetMethod(string nam, class IKVM.Reflection.Type[] paramst) cil managed" />

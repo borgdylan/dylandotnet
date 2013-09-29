@@ -68,11 +68,11 @@
       </Docs>
     </Member>
     <Member MemberName="MethodName">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Ident MethodName;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Ident MethodName" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.MethodNameTok MethodName;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok MethodName" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Ident</ReturnType>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.MethodNameTok</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

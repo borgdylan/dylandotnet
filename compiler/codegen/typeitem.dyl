@@ -85,6 +85,25 @@ class public auto ansi TypeItem
 		end if
 	end method
 	
+	method public MethodInfo GetGenericMethod(var nam as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[])
+		var mil as MILambdas2 = new MILambdas2(nam, genparams[l])
+		var mil2 as MILambdas2 = new MILambdas2(genparams)
+		var mil3 as MILambdas2 = new MILambdas2(nam, paramst)
+		var glom as IEnumerable<of MethodInfo> = Enumerable::Where<of MethodInfo>(Enumerable::Select<of MethodItem, MethodInfo>(Enumerable::Where<of MethodItem>(Methods , new Func<of MethodItem,boolean>(mil::GenericMtdFilter())), new Func<of MethodItem,MethodInfo>(mil2::InstGenMtd())), new Func<of MethodInfo, boolean>(mil3::DetermineIfCandidate2()))
+		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(glom)
+		
+		if matches[l] == 0 then
+			return null
+		elseif matches[l] == 1 then
+			Loader::MemberTyp = matches[0]::get_ReturnType()
+			return matches[0]
+		else
+			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of MethodInfo,integer[]>(glom,new Func<of MethodInfo,integer[]>(MILambdas2::ExtractDeriveness2())),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
+			Loader::MemberTyp = matches[chosen[--chosen[l]]]::get_ReturnType()
+			return matches[chosen[--chosen[l]]]
+		end if
+	end method
+	
 	method public MethodItem GetProtoMethod(var nam as string, var paramst as IKVM.Reflection.Type[])
 		var mil as MILambdas2 = new MILambdas2(nam, paramst)
 		var lom2 as MethodItem[] = Enumerable::ToArray<of MethodItem>(Enumerable::Where<of MethodItem>(Methods,new Func<of MethodItem,boolean>(mil::DetermineIfProtoCandidate())))

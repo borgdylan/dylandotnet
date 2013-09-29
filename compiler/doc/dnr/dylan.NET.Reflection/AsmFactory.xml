@@ -607,6 +607,30 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="NSStack">
+      <MemberSignature Language="C#" Value="public static C5.LinkedList&lt;string&gt; NSStack;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.LinkedList`1&lt;string&gt; NSStack" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.LinkedList&lt;System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PCLSet">
+      <MemberSignature Language="C#" Value="public static bool PCLSet;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool PCLSet" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PopFlg">
       <MemberSignature Language="C#" Value="public static bool PopFlg;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool PopFlg" />
@@ -618,6 +642,45 @@
         <summary>If set indicates that the next method call should be followed by a 'pop'</summary>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopNS">
+      <MemberSignature Language="C#" Value="public static void PopNS ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopNS() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PushNS">
+      <MemberSignature Language="C#" Value="public static void PushNS (string ns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PushNS(string ns) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ns" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="ns">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RefChainFlg">

@@ -25,33 +25,10 @@ class public auto ansi abstract Literal extends Token implements IUnaryOperatabl
 		ctor(string::Empty)
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
 	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-
 end class
 
 class public auto ansi NullLiteral extends Literal implements IUnaryOperatable, IConvable
@@ -72,33 +49,10 @@ class public auto ansi NullLiteral extends Literal implements IUnaryOperatable, 
 		return "null"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
 	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-
 end class
 
 class public auto ansi ConstLiteral extends Literal
@@ -141,32 +95,9 @@ class public auto ansi StringLiteral extends Literal implements IUnaryOperatable
 		return c"\q" + Value + c"\q"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
 
 end class
 
@@ -200,32 +131,9 @@ class public auto ansi CharLiteral extends Literal implements IUnaryOperatable, 
 		return "'" + $string$CharVal + "'"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
 
 end class
 
@@ -265,41 +173,10 @@ class public auto ansi BooleanLiteral extends Literal implements IUnaryOperatabl
 		return #ternary {BoolVal ? "true", "false"}
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
 
 end class
 
@@ -314,32 +191,9 @@ class public auto ansi asbtract NumberLiteral extends Literal implements IUnaryO
 		me::ctor(value)
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
 
 end class
 
@@ -385,50 +239,11 @@ class public auto ansi IntLiteral extends NumberLiteral implements IUnaryOperata
 		return $string$NumVal
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
 
 end class
 
@@ -466,41 +281,10 @@ class public auto ansi DoubleLiteral extends NumberLiteral implements IUnaryOper
 		return $string$NumVal + "d"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
 
 end class
 
@@ -538,41 +322,10 @@ class public auto ansi DecimalLiteral extends NumberLiteral implements IUnaryOpe
 		return $string$NumVal + "m"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
 
 end class
 
@@ -614,50 +367,11 @@ class public auto ansi SByteLiteral extends NumberLiteral implements IUnaryOpera
 		return $string$NumVal + "b"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
 
 end class
 
@@ -709,41 +423,11 @@ class public auto ansi ShortLiteral extends NumberLiteral implements IUnaryOpera
 		end set
 	end property
 	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
 
 end class
 
@@ -785,50 +469,11 @@ class public auto ansi LongLiteral extends NumberLiteral implements IUnaryOperat
 		return $string$NumVal + "l"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
 
 end class
 
@@ -866,41 +511,10 @@ class public auto ansi FloatLiteral extends NumberLiteral implements IUnaryOpera
 		return $string$NumVal + "f"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
 
 end class
 
@@ -938,41 +552,11 @@ class public auto ansi UIntLiteral extends NumberLiteral implements IUnaryOperat
 		return $string$NumVal + "ui"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
 
 end class
 
@@ -1010,41 +594,11 @@ class public auto ansi ByteLiteral extends NumberLiteral implements IUnaryOperat
 		return $string$NumVal + "ub"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
 
 end class
 
@@ -1082,41 +636,11 @@ class public auto ansi UShortLiteral extends NumberLiteral implements IUnaryOper
 		return $string$NumVal + "us"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
 
 end class
 
@@ -1154,41 +678,11 @@ class public auto ansi ULongLiteral extends NumberLiteral implements IUnaryOpera
 		return $string$NumVal + "ul"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
 
 end class
 
@@ -1218,49 +712,10 @@ class public auto ansi IntPtrLiteral extends NumberLiteral implements IUnaryOper
 		return $string$NumVal + "ip"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean Conv
-		get
-			return _Conv
-		end get
-		set
-			_Conv = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot TypeTok TTok
-		get
-			return _TTok
-		end get
-		set
-			_TTok = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNot
-		get
-			return _DoNot
-		end get
-		set
-			_DoNot = value
-		end set
-	end property
-	
-	property public hidebysig virtual final newslot boolean DoNeg
-		get
-			return _DoNeg
-		end get
-		set
-			_DoNeg = value
-		end set
-	end property
+	property public hidebysig virtual final newslot autogen string OrdOp
+	property public hidebysig virtual final newslot autogen boolean Conv
+	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual final newslot autogen boolean DoNeg
+	property public hidebysig virtual final newslot autogen boolean DoNot
 
 end class

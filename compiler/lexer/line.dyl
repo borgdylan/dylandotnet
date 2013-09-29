@@ -106,7 +106,12 @@ class public auto ansi Line
 				ob = true
 			elseif cc = "?" then
 				sca = true
-				ob = true
+				if lc == "?" then
+					scla = false
+					ob = true
+				else
+					ob = PrevChar != "?"
+				end if
 			elseif cc = "$" then
 				sca = true
 				ob = true
@@ -181,25 +186,25 @@ class public auto ansi Line
 				end if
 			elseif cc = "-" then
 				sca = true
-				if lc != "-" then
-					ob = PrevChar != "-"
-					if Char::IsDigit($char$lc) then
-						scla = false
-					end if
-				else
+				if lc == "-" then
 					scla = false
 					ob = true
+				else
+					ob = PrevChar != "-"
+					if char::IsDigit($char$lc) then
+						scla = false
+					end if
 				end if
 			elseif cc = "+" then
 				sca = true
-				if lc != "+" then
+				if lc == "+" then
+					scla = false
+					ob = true
+				else
 					ob = PrevChar != "+"
 					if char::IsDigit($char$lc) then
 						scla = false
 					end if
-				else
-					scla = false
-					ob = true
 				end if
 			elseif cc = c"\t" then
 				sca = false

@@ -63,12 +63,6 @@ class public auto ansi MethodCallStmt extends Stmt
 
 end class
 
-class public auto ansi EndEnumStmt extends Stmt
-	method public hidebysig virtual string ToString()
-		return "end enum"
-	end method
-end class
-
 class public auto ansi EndLockStmt extends Stmt
 	method public hidebysig virtual string ToString()
 		return "end lock"

@@ -1,154 +1,30 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ast/ident.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="parser/tokenoptimizer.dyl">
     <Files>
-      <File FileName="ast/ident.dyl" Line="21" Column="28" />
-      <File FileName="dev/nuget2dn.dyl" Line="1" Column="1" />
-      <File FileName="codegen/eval.dyl" Line="1" Column="1" />
-      <File FileName="dnu/streamu.dyl" Line="1" Column="1" />
-      <File FileName="parser/stmtoptimizer.dyl" Line="1" Column="1" />
-      <File FileName="parser/parser.dyl" Line="1" Column="1" />
-      <File FileName="ast/propstmt.dyl" Line="1" Column="1" />
-      <File FileName="ast/eventstmt.dyl" Line="1" Column="1" />
-      <File FileName="codegen/stmtreader.dyl" Line="1" Column="1" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="1" Column="1" />
-      <File FileName="codegen/propertyitem.dyl" Line="1" Column="1" />
-      <File FileName="codegen/eventitem.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen.dyl" Line="1" Column="1" />
-      <File FileName="codegen/symtable.dyl" Line="1" Column="1" />
-      <File FileName="dnc/Program.dyl" Line="1" Column="1" />
-      <File FileName="codegen/helpers.dyl" Line="1" Column="1" />
-      <File FileName="parser/exproptimizer.dyl" Line="1" Column="1" />
-      <File FileName="ast/otherkeywords.dyl" Line="1" Column="1" />
-      <File FileName="dnr/asmfactory.dyl" Line="1" Column="1" />
-      <File FileName="codegen/typeitem.dyl" Line="1" Column="1" />
-      <File FileName="dnr/ilemitter.dyl" Line="1" Column="1" />
-      <File FileName="codegen/codegenerator.dyl" Line="1" Column="1" />
-      <File FileName="ast/op.dyl" Line="1" Column="1" />
-      <File FileName="ast/logicalops.dyl" Line="1" Column="1" />
       <File FileName="codegen/typelist.dyl" Line="1" Column="1" />
-      <File FileName="ast/conditionalops.dyl" Line="1" Column="1" />
-      <File FileName="ast/attributes.dyl" Line="1" Column="1" />
-      <File FileName="dnr/loader.dyl" Line="1" Column="1" />
-      <File FileName="ast/debugstmt.dyl" Line="1" Column="1" />
-      <File FileName="ast/scopestmt.dyl" Line="1" Column="1" />
-      <File FileName="codegen/milambdas.dyl" Line="1" Column="1" />
-      <File FileName="codegen/cilambdas.dyl" Line="1" Column="1" />
-      <File FileName="tests/vector.dyl" Line="1" Column="1" />
-      <File FileName="dnu/consts.dyl" Line="1" Column="1" />
-      <File FileName="codegen/typearr.dyl" Line="1" Column="1" />
-      <File FileName="ast/methods.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.Lexer.dyl" Line="1" Column="1" />
-      <File FileName="dnr/assemblyinfo.dyl" Line="1" Column="1" />
-      <File FileName="dnr/consoleprinter.dyl" Line="1" Column="1" />
-      <File FileName="dnr/instructionhelper.dyl" Line="1" Column="1" />
-      <File FileName="dnr/milambdas.dyl" Line="1" Column="1" />
-      <File FileName="dnr/importer.dyl" Line="1" Column="1" />
-      <File FileName="dnu/compilermsg.dyl" Line="1" Column="1" />
-      <File FileName="dnu/keyboard.dyl" Line="1" Column="1" />
-      <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
       <File FileName="cflags.dyl.in" Line="1" Column="1" />
-      <File FileName="dnu/xmlu.dyl" Line="1" Column="1" />
-      <File FileName="lexer/lexer.dyl" Line="1" Column="1" />
-      <File FileName="ast/stmt.dyl" Line="1" Column="1" />
-      <File FileName="ast/attrvalpair.dyl" Line="1" Column="1" />
-      <File FileName="codegen/pinvokeinfo.dyl" Line="1" Column="1" />
-      <File FileName="configure.ac" Line="1" Column="1" />
-      <File FileName="tests/conv.dyl" Line="1" Column="1" />
-      <File FileName="dnc.dyl" Line="1" Column="1" />
-      <File FileName="dnu.dyl" Line="1" Column="1" />
-      <File FileName="dnr.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.Parser.dyl" Line="1" Column="1" />
-      <File FileName="dev/pc2cd.dyl" Line="1" Column="1" />
-      <File FileName="dev/pc2dn.dyl" Line="1" Column="1" />
-      <File FileName="ast/loopstmts.dyl" Line="1" Column="1" />
-      <File FileName="codegen/varitem.dyl" Line="1" Column="1" />
-      <File FileName="dnr/itypeprovider.dyl" Line="1" Column="1" />
-      <File FileName="dnr/pcltypeprovider.dyl" Line="1" Column="1" />
-      <File FileName="dnr/fxtypeprovider.txt" Line="1" Column="1" />
-      <File FileName="parser/parserflags.dyl" Line="1" Column="1" />
-      <File FileName="codegen/loopitem.dyl" Line="1" Column="1" />
-      <File FileName="codegen/constldr.dyl" Line="1" Column="1" />
-      <File FileName="codegen/collectionitem.dyl" Line="1" Column="1" />
-      <File FileName="ast/expr.dyl" Line="1" Column="1" />
-      <File FileName="tests/numloops.dyl" Line="1" Column="1" />
-      <File FileName="tests/logicop.dyl" Line="1" Column="1" />
-      <File FileName="tests/dylrecurse.dyl" Line="1" Column="1" />
-      <File FileName="tests/ctorfield.dyl" Line="1" Column="1" />
-      <File FileName="lexer/line.dyl" Line="1" Column="1" />
-      <File FileName="ast/literals.dyl" Line="1" Column="1" />
-      <File FileName="ast/verstmt.dyl" Line="1" Column="1" />
-      <File FileName="ast/varstmts.dyl" Line="1" Column="1" />
-      <File FileName="unit/unit.dyl" Line="1" Column="1" />
-      <File FileName="unit/streamutests.dyl" Line="1" Column="1" />
-      <File FileName="unit/parseutests.dyl" Line="1" Column="1" />
-      <File FileName="codegen/constinfo.dyl" Line="1" Column="1" />
-      <File FileName="pc2dylandotnet.1" Line="1" Column="1" />
-      <File FileName="ast/fieldstmt.dyl" Line="1" Column="1" />
-      <File FileName="codegen/fielditem.dyl" Line="1" Column="1" />
-      <File FileName="ast/enumstmt.dyl" Line="1" Column="1" />
-      <File FileName="ast/token.dyl" Line="1" Column="1" />
-      <File FileName="ast/aritops.dyl" Line="1" Column="1" />
-      <File FileName="ast/chars.dyl" Line="1" Column="1" />
-      <File FileName="ast/comment.dyl" Line="1" Column="1" />
-      <File FileName="ast/exprcalltok.dyl" Line="1" Column="1" />
-      <File FileName="ast/typetoks.dyl" Line="1" Column="1" />
-      <File FileName="ast/ifstmts.dyl" Line="1" Column="1" />
-      <File FileName="ast/metstmt.dyl" Line="1" Column="1" />
-      <File FileName="ast/exceptionstmts.dyl" Line="1" Column="1" />
-      <File FileName="ast/varexpr.dyl" Line="1" Column="1" />
-      <File FileName="codegen/ctoritem.dyl" Line="1" Column="1" />
-      <File FileName="codegen/ifitem.dyl" Line="1" Column="1" />
-      <File FileName="codegen/methoditem.dyl" Line="1" Column="1" />
-      <File FileName="ast/otherstmts.dyl" Line="1" Column="1" />
-      <File FileName="codegen/tilambdas.dyl" Line="1" Column="1" />
-      <File FileName="ast/attrstmts.dyl" Line="1" Column="1" />
-      <File FileName="ast/asmstmt.dyl" Line="1" Column="1" />
-      <File FileName="codegen/opstack.dyl" Line="1" Column="1" />
-      <File FileName="dev/resproc.dyl" Line="1" Column="1" />
+      <File FileName="dnr/loader.dyl" Line="1" Column="1" />
       <File FileName="templateproj/template.dyl" Line="1" Column="1" />
-      <File FileName="parser/assemblyinfo.dyl" Line="1" Column="1" />
-      <File FileName="lexer/assemblyinfo.dyl" Line="1" Column="1" />
-      <File FileName="dnu/assemblyinfo.dyl" Line="1" Column="1" />
-      <File FileName="dnc/assemblyinfo.dyl" Line="1" Column="1" />
-      <File FileName="ast/interfaces.dyl" Line="1" Column="1" />
-      <File FileName="ast/assemblyinfo.dyl" Line="1" Column="1" />
-      <File FileName="codegen/assemblyinfo.dyl" Line="1" Column="1" />
-      <File FileName="ast/methodnametok.dyl" Line="1" Column="1" />
+      <File FileName="codegen/usingitem.dyl" Line="1" Column="1" />
+      <File FileName="codegen/symtable.dyl" Line="1" Column="1" />
+      <File FileName="codegen/stmtreader.dyl" Line="1" Column="1" />
+      <File FileName="codegen/eval.dyl" Line="1" Column="1" />
+      <File FileName="ast/exprcalltok.dyl" Line="1" Column="1" />
+      <File FileName="ast/methods.dyl" Line="1" Column="1" />
+      <File FileName="lexer/lexer.dyl" Line="1" Column="1" />
+      <File FileName="codegen/helpers.dyl" Line="1" Column="1" />
+      <File FileName="dnr/ilemitter.dyl" Line="1" Column="1" />
+      <File FileName="dnr/asmfactory.dyl" Line="1" Column="1" />
+      <File FileName="dnr/fxtypeprovider.txt" Line="1" Column="1" />
+      <File FileName="dnr/pcltypeprovider.dyl" Line="1" Column="1" />
+      <File FileName="dnr/itypeprovider.dyl" Line="1" Column="1" />
+      <File FileName="dnc/Program.dyl" Line="1" Column="1" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="dylandotnet" expanded="True">
-            <Node name="ast" expanded="True" />
-            <Node name="codegen" expanded="True" />
-            <Node name="dev" expanded="True" />
-            <Node name="dnc" expanded="True" />
-            <Node name="dnr" expanded="True" />
-            <Node name="dnu" expanded="True">
-              <Node name="assemblyinfo.dyl" selected="True" />
-            </Node>
-            <Node name="lexer" expanded="True" />
-            <Node name="m4" expanded="True" />
-            <Node name="parser" expanded="True" />
-            <Node name="tests" expanded="True" />
-            <Node name="unit" expanded="True" />
-          </Node>
-          <Node name="template" expanded="True" />
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>buf</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/home/dylan/Desktop/compiler/codegen/eval.dyl" line="550" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

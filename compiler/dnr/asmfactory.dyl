@@ -27,6 +27,7 @@ class public auto ansi static AsmFactory
 	field public static IKVM.Reflection.Emit.ModuleBuilder MdlB
 	field public static ISymbolDocumentWriter DocWriter
 	field public static string CurnNS
+	field public static C5.LinkedList<of string> NSStack
 	field public static string DfltNS
 	field public static string AsmMode
 	field public static string AsmFile
@@ -48,6 +49,7 @@ class public auto ansi static AsmFactory
 	field public static boolean inEnum
 	field public static string[] GenParamNames
 	field public static IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
+	field public static boolean PCLSet
 
 	[method: ComVisible(false)]
 	method public static void Init()
@@ -68,6 +70,8 @@ class public auto ansi static AsmFactory
 		isNested = false
 		inClass = false
 		inEnum = false
+		NSStack = new C5.LinkedList<of string>()
+		PCLSet = false
 	end method
 
 	method private static void AsmFactory()
@@ -150,6 +154,25 @@ class public auto ansi static AsmFactory
 		destarr[len] = nam
 		GenParamNames = destarr
 
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void PushNS(var ns as string)
+		if NSStack::get_Count() != 0 then
+			ns = string::Format("{0}.{1}",CurnNS,ns)
+		end if
+		NSStack::Push(ns)
+		CurnNS = ns
+	end method
+	
+	[method: ComVisible(false)]
+	method public static void PopNS()
+		if NSStack::get_Count() == 0 then
+			CurnNS = DfltNS
+		else
+			NSStack::Pop()
+			CurnNS = #ternary{ NSStack::get_Count() == 0 ? DfltNS, NSStack::get_Last()}
+		end if
 	end method
 
 end class

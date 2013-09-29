@@ -38,6 +38,11 @@ class public auto ansi static ParseUtils
 	[method: ComVisible(false)]
 	method public static string[] StringParser(var StringToParse as string, var DelimeterChar as string)
 		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
+		
+		if StringToParse == null then
+			return arr::ToArray()
+		end if
+		
 		var ins as boolean = false
 		var ch as string = string::Empty
 		var acc as string = string::Empty
@@ -79,6 +84,11 @@ class public auto ansi static ParseUtils
 	[method: ComVisible(false)]
 	method public static C5.IList<of string> StringParserL(var StringToParse as string, var DelimeterChar as string)
 		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
+		
+		if StringToParse == null then
+			return arr
+		end if
+		
 		var ins as boolean = false
 		var ch as string = string::Empty
 		var acc as string = string::Empty

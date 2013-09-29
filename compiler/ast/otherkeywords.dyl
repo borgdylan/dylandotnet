@@ -22,13 +22,29 @@ class public auto ansi NewTok extends Token
 
 end class
 
-class public auto ansi CastclassTok extends Token
-end class
+//class public auto ansi CastclassTok extends Token
+//end class
 
 class public auto ansi GettypeTok extends Token
 
 	method public hidebysig virtual string ToString()
 		return "gettype"
+	end method
+
+end class
+
+class public auto ansi DefaultTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "default"
+	end method
+
+end class
+
+class public auto ansi WhereTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "where"
 	end method
 
 end class
@@ -560,6 +576,14 @@ class public auto ansi VarTok extends Token
 
 	method public hidebysig virtual string ToString()
 		return "var"
+	end method
+	
+end class
+
+class public auto ansi UsingTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "using"
 	end method
 	
 end class

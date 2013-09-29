@@ -139,6 +139,8 @@ class public auto ansi TokenOptimizer
 			return new Comma() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "?" then
 			return new QuestionMark() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "??" then
+			return new CoalesceOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "$" then
 			return new DollarSign() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "label" then
@@ -188,6 +190,9 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value == "foreach" then
 			PFlags::AsFlag = true
 			return new ForeachTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "where" then
+			PFlags::AsFlag = true
+			return new WhereTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "upto" then
 			return new UptoTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "downto" then
@@ -213,6 +218,8 @@ class public auto ansi TokenOptimizer
 			return new PtrTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "gettype" then
 			return new GettypeTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "default" then
+			return new DefaultTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "ref" then
 			return new RefTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "valinref" then
@@ -258,7 +265,7 @@ class public auto ansi TokenOptimizer
 			return new DllTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "field:" then
 			return new FieldCTok() {Line = tok::Line, Value = tok::Value}
-		elseif tok::Value =="field" then
+		elseif tok::Value == "field" then
 			PFlags::ForFlag = true
 			return new FieldTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "property:" then
@@ -315,6 +322,9 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value == "var" then
 			PFlags::AsFlag = true
 			return new VarTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "using" then
+			PFlags::AsFlag = true
+			return new UsingTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "catch" then
 			PFlags::AsFlag = true
 			return new CatchTok() {Line = tok::Line, Value = tok::Value}

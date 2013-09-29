@@ -115,11 +115,11 @@ class public auto ansi beforefieldinit Evaluator
 					j = --i
 					tok2 = exp::Tokens::get_Item(j)
 					exp::RemToken(j)
-					len = --len
-					j = --j
+					len--
+					j--
 					tok = exp::Tokens::get_Item(j)
 					exp::RemToken(j)
-					len = --len
+					len--
 					optok::LChild = tok
 					optok::RChild = tok2
 					exp::Tokens::set_Item(j,optok)
@@ -131,6 +131,19 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 		end do
 		return tokf
+	end method
+	
+	method private void ASTEmitValueFilter(var emt as boolean)
+		if emt then
+			if !#expr(AsmFactory::Type02 is GenericTypeParameterBuilder) then
+				if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type02) then
+					ILEmitter::DeclVar(string::Empty, AsmFactory::Type02)
+					ILEmitter::LocInd++
+					ILEmitter::EmitStloc(ILEmitter::LocInd)
+					ILEmitter::EmitLdloca(ILEmitter::LocInd)
+				end if
+			end if
+		end if
 	end method
 	
 	method private void ASTEmitArrayLoad(var idt as Ident, var emt as boolean)
@@ -429,7 +442,8 @@ class public auto ansi beforefieldinit Evaluator
 		var ctorflg as boolean = mntok::Value == "ctor"
 		var mnstrarr as string[] = ParseUtils::StringParser(mntok::Value, ":")
 		var len as integer = mnstrarr[l] - 2
-
+		var iterflg = false
+		
 		if pushaddr then
 			mntok::IsRef = false
 		end if
@@ -474,14 +488,18 @@ class public auto ansi beforefieldinit Evaluator
 
 				do until i == len
 					i++
-
+					iterflg = true
 					if !idtb2 then
 						if !idtb1 then
 							var mcvr as VarItem = SymTable::FindVar(mnstrarr[i])
 							if mcvr != null then
 								if emt then
 									AsmFactory::Type04 = mcvr::VarTyp
+									if (i == len) and (mcvr::VarTyp is GenericTypeParameterBuilder) then
+										AsmFactory::ForcedAddrFlg = true
+									end if
 									Helpers::EmitLocLd(mcvr::Index, mcvr::LocArg)
+									AsmFactory::ForcedAddrFlg = false
 								end if
 								mcparenttyp = mcvr::VarTyp
 								if mcparenttyp::get_IsByRef() then
@@ -645,6 +663,12 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 		
 			if emt then
+				if !iterflg and (AsmFactory::Type05 is GenericTypeParameterBuilder) then
+					ILEmitter::DeclVar(string::Empty, AsmFactory::Type05)
+					ILEmitter::LocInd++
+					ILEmitter::EmitStloc(ILEmitter::LocInd)
+					ILEmitter::EmitLdloca(ILEmitter::LocInd)
+				end if
 				AsmFactory::PopFlg = mctok::PopFlg
 				Helpers::EmitMetCall(mcmetinf, mcisstatic)
 				AsmFactory::PopFlg = false
@@ -652,6 +676,9 @@ class public auto ansi beforefieldinit Evaluator
 			Helpers::BaseFlg = false
 			if !mctok::PopFlg then
 				ASTEmitArrayLoad(mntok, emt)
+				if !mntok::IsArr and mntok::MemberAccessFlg then
+					ASTEmitValueFilter(emt)
+				end if
 			end if
 
 			if mntok::MemberAccessFlg then
@@ -883,7 +910,8 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 		AsmFactory::Type02 = nctyp
 		
-		if nctok::MemberAccessFlg then
+		if nctok::MemberAccessFlg and !nctok::PopFlg then
+			ASTEmitValueFilter(emt)
 			AsmFactory::ChainFlg = true
 			ASTEmit(nctok::MemberToAccess, emt)
 		end if
@@ -901,13 +929,14 @@ class public auto ansi beforefieldinit Evaluator
 			optok = $Op$tok
 			var isflg as boolean = optok is IsOp
 			var asflg as boolean = optok is AsOp
+			var coalflg as boolean = optok is CoalesceOp
 			
 			rc = optok::RChild
 			lc = optok::LChild
 			ASTEmit(lc, emt)
 			lctyp = AsmFactory::Type02
 	
-			if !#expr(isflg or asflg) then
+			if !#expr(isflg or asflg or coalflg) then
 				ASTEmit(rc, emt)
 				rctyp = AsmFactory::Type02
 
@@ -930,7 +959,7 @@ class public auto ansi beforefieldinit Evaluator
 			if isflg then
 				if emt then
 					var istyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
-					if istyp = null then
+					if istyp == null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + rc::Value + "' was not found.")
 					else
 						ILEmitter::EmitIs(istyp)
@@ -938,7 +967,7 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 			elseif asflg then
 				var astyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
-				if astyp = null then
+				if astyp == null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The Class '" + rc::Value + "' was not found.")
 				else
 					if emt then
@@ -946,6 +975,22 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				end if
 				AsmFactory::Type02 = astyp
+			elseif coalflg then
+				if emt then
+					SymTable::AddIf()
+					ILEmitter::EmitDup()
+					ILEmitter::EmitBrtrue(SymTable::ReadIfEndLbl())
+					ILEmitter::EmitPop()
+				end if
+				ASTEmit(rc, emt)
+				AsmFactory::Type02 = Helpers::CheckCompat(lctyp, AsmFactory::Type02)
+				if AsmFactory::Type02 == null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing  should evaluate to compatible types.")
+				end if
+				if emt then
+					ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
+					SymTable::PopIf()
+				end if
 			else
 				Helpers::LeftOp = lctyp
 				Helpers::RightOp = rctyp
@@ -1005,6 +1050,21 @@ class public auto ansi beforefieldinit Evaluator
 					ILEmitter::EmitCall(ILEmitter::Univ::Import(gettype Type)::GetMethod("GetTypeFromHandle", new IKVM.Reflection.Type[] {ILEmitter::Univ::Import(gettype RuntimeTypeHandle)}))
 				end if
 				AsmFactory::Type02 = ILEmitter::Univ::Import(gettype Type)
+			elseif tok is DefaultCallTok then
+				if emt then
+					//default section
+					var dftok as DefaultCallTok = $DefaultCallTok$tok
+					typ2 = Helpers::CommitEvalTTok(dftok::Name)
+					if typ2 = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + dftok::Name::Value + "' is not defined.")
+					end if
+					ILEmitter::DeclVar(string::Empty, typ2)
+					ILEmitter::LocInd++
+					ILEmitter::EmitLdloca(ILEmitter::LocInd)
+					ILEmitter::EmitInitobj(typ2)
+					ILEmitter::EmitLdloc(ILEmitter::LocInd)	
+				end if
+				AsmFactory::Type02 = typ2
 			elseif tok is MeTok then
 				if emt then
 					ILEmitter::EmitLdarg(0)
@@ -1158,9 +1218,11 @@ class public auto ansi beforefieldinit Evaluator
 				var ecc as ExprCallTok = $ExprCallTok$tok
 				ASTEmit(ConvToAST(ConvToRPN(ecc::Exp)), emt)
 				if ecc::MemberAccessFlg then
+					ASTEmitValueFilter(emt)
 					AsmFactory::ChainFlg = true
 					ASTEmit(ecc::MemberToAccess, emt)
 				end if
+				
 				ASTEmitUnary(ecc, emt)
 			elseif tok is PtrCallTok then
 				//ptr load section - obsolete
@@ -1231,15 +1293,15 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 
 		if idt::IsArr or isbyref then
-			restrord = --restrord
-			len = ++len
+			restrord--
+			len++
 		end if
 
 		vr = null
 		if idtnamarr[l] >= restrord then
 			AsmFactory::AddrFlg = true
 	
-			do until i = len
+			do until i == len
 				i++
 	
 				if !idtb2 then

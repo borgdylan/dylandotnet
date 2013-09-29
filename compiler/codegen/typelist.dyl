@@ -20,14 +20,30 @@ class public auto ansi TypeList
 	end method
 
 	method public TypeItem GetTypeItem(var nam as string)
-		foreach ns in new C5.LinkedList<of string>() {Add(string::Empty), AddAll(Importer::Imps)}
-			var til as TILambdas = #ternary{ns::get_Length() == 0 ? new TILambdas(nam), new TILambdas(ns + "." + nam)}
+		
+		foreach alias in Importer::AliasMap::get_Keys()
+			if nam == alias then
+				nam = Importer::AliasMap::get_Item(alias)
+				break
+			elseif nam like ("^" + alias + "`\d+$") then
+				nam = Importer::AliasMap::get_Item(alias) + nam::Substring(alias::get_Length())
+				break
+			elseif nam::StartsWith(alias + ".") then
+				nam = Importer::AliasMap::get_Item(alias) + nam::Substring(alias::get_Length())
+				break
+			end if
+		end for
+		
+		foreach ns in new C5.LinkedList<of string>() {Add(string::Empty), Add(AsmFactory::CurnNS), AddAll(Importer::Imps)}
+			var til as TILambdas = new TILambdas(#ternary{ns::get_Length() == 0 ? nam , ns + "." + nam} )
 			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
 			var match as TypeItem = Enumerable::FirstOrDefault<of TypeItem>(lot2)
+			
 			if match != null then
 				return match
 			end if
 		end for
+		
 		return null
 	end method
 
@@ -40,10 +56,8 @@ class public auto ansi TypeList
 		var ti as TypeItem = GetTypeItem(nam)
 		if ti == null then
 			return null
-		elseif ti::BakedTyp != null then
-			return ti::BakedTyp
 		else
-			return #ternary{ti::IsEnum ? ti::EnumBldr, ti::TypeBldr}
+			return ti::BakedTyp ?? #ternary{ti::IsEnum ? ti::EnumBldr, ti::TypeBldr}
 		end if
 	end method
 
@@ -131,16 +145,7 @@ class public auto ansi TypeList
 				end if
 			end if
 			
-			if fldinfo = null then
-				//Loader::ProtectedFlag = true
-				fldinfo = GetField(ti::InhTyp,nam)
-				if fldinfo = null then
-					fldinfo = Loader::LoadField(ti::InhTyp, nam)
-				end if
-				//Loader::ProtectedFlag = false
-			end if
-			
-			return fldinfo
+			return fldinfo ?? (GetField(ti::InhTyp, nam) ?? Loader::LoadField(ti::InhTyp, nam))
 		end if
 	end method
 
@@ -152,7 +157,21 @@ class public auto ansi TypeList
 			var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
 			var nam as string = mnstrarr[--mnstrarr[l]]
 		
-			var mtdinfo as MethodInfo = ti::GetMethod(nam,paramst)
+			var mtdinfo as MethodInfo
+			if mn is GenericMethodNameTok then
+				var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
+				var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
+				for i = 0 upto --genparams[l]
+					genparams[i] = Helpers::CommitEvalTTok(gmn::Params[i])
+					if genparams[i] == null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gmn::Params[i]::ToString(), nam))
+					end if
+				end for
+				mtdinfo = ti::GetGenericMethod(nam, genparams, paramst)
+			else
+				mtdinfo = ti::GetMethod(nam,paramst)
+			end if
+			
 			if mtdinfo != null then
 				if !mtdinfo::get_IsPublic() then
 					//filter out private members
@@ -178,11 +197,12 @@ class public auto ansi TypeList
 					if mn is GenericMethodNameTok then
 						var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
 						var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
-						var i as integer = -1
-						do until i = --genparams[l]
-							i++
+						for i = 0 upto --genparams[l]
 							genparams[i] = Helpers::CommitEvalTTok(gmn::Params[i])
-						end do
+							if genparams[i] == null then
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gmn::Params[i]::ToString(), nam))
+							end if
+						end for
 						mtdinfo = Loader::LoadGenericMethod(ti::InhTyp, nam, genparams, paramst)
 					else
 						mtdinfo = Loader::LoadMethod(ti::InhTyp, nam, paramst)
@@ -205,7 +225,6 @@ class public auto ansi TypeList
 				end if
 			end if
 
-			
 			return mtdinfo
 		end if
 	end method

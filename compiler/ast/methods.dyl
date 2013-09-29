@@ -50,6 +50,22 @@ class public auto ansi GettypeCallTok extends Token
 
 end class
 
+class public auto ansi DefaultCallTok extends Token
+
+	field public TypeTok Name
+
+	method public void DefaultCallTok()
+		me::ctor()
+		Name = new TypeTok()
+	end method
+
+	method public void DefaultCallTok(var value as string)
+		me::ctor(value)
+		Name = new TypeTok()
+	end method
+
+end class
+
 class public auto ansi PtrCallTok extends Token
 
 	field public MethodNameTok MetToCall

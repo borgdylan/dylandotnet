@@ -9,14 +9,14 @@
 class public auto ansi MethodStmt extends Stmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
-	field public Ident MethodName
+	field public MethodNameTok MethodName
 	field public TypeTok RetTyp
 	field public Expr[] Params
 
 	method public void MethodStmt()
 		me::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
-		MethodName = new Ident()
+		MethodName = new MethodNameTok()
 		Params = new Expr[0]
 		RetTyp = new TypeTok()
 	end method

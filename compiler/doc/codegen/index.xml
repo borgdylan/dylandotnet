@@ -51,6 +51,8 @@
       <Type Name="SymTable" Kind="Class" />
       <Type Name="TypeItem" Kind="Class" />
       <Type Name="TypeList" Kind="Class" />
+      <Type Name="TypeParamItem" Kind="Class" />
+      <Type Name="UsingItem" Kind="Class" />
       <Type Name="VarItem" Kind="Class" />
     </Namespace>
   </Types>

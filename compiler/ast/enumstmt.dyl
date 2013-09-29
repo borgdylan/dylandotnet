@@ -25,6 +25,12 @@ class public auto ansi EnumStmt extends Stmt
 	
 end class
 
+class public auto ansi EndEnumStmt extends Stmt
+	method public hidebysig virtual string ToString()
+		return "end enum"
+	end method
+end class
+
 //class public auto ansi LiteralStmt extends Stmt
 //
 //	field public Expr RExp

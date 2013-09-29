@@ -23,11 +23,7 @@ class public auto ansi OpStack extends C5.LinkedList<of Token>
 	end method
 
 	method public Token TopOp()
-		if get_Count() == 0 then
-			return null
-		else
-			return get_Last()
-		end if
+		return #ternary { get_Count() == 0 ? $Token$null , get_Last()}
 	end method
 
 	method public integer getLength()

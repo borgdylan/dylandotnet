@@ -188,6 +188,23 @@
   <body>
     <div class="CollectionTitle">
       <a href="../index.html">dnr</a> : <a href="index.html">dylan.NET.Reflection Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Reflection.ILEmitter">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.ILEmitter:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.ILEmitter:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.ILEmitter:Members">Member Details</a>
+      </p>
+    </div>
     <h1 class="PageTitle" id="T:dylan.NET.Reflection.ILEmitter">ILEmitter  Class</h1>
     <p class="Summary" id="T:dylan.NET.Reflection.ILEmitter:Summary">This class contains methods used for emitting opcodes to the current IL generator.</p>
     <div>
@@ -830,6 +847,15 @@
                   <b>
                     <a href="#M:dylan.NET.Reflection.ILEmitter.EmitFinally()">EmitFinally</a>
                   </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.ILEmitter.EmitInitobj(IKVM.Reflection.Type)">EmitInitobj</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -1502,7 +1528,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>AbstractCFlg</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>AbstractCFlg</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.AbstractCFlg:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -1518,7 +1544,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>AbstractFlg</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>AbstractFlg</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.AbstractFlg:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -1534,7 +1560,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddDocWriter</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Diagnostics.SymbolStore.ISymbolDocumentWriter">System.Diagnostics.SymbolStore.ISymbolDocumentWriter</a> srcf)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddDocWriter</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Diagnostics.SymbolStore.ISymbolDocumentWriter">System.Diagnostics.SymbolStore.ISymbolDocumentWriter</a> srcf)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.AddDocWriter(System.Diagnostics.SymbolStore.ISymbolDocumentWriter):Parameters">
             <dl>
@@ -1561,7 +1587,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddSrcFile</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> srcf)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddSrcFile</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> srcf)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.AddSrcFile(System.String):Parameters">
             <dl>
@@ -1586,7 +1612,7 @@
         <blockquote id="F:dylan.NET.Reflection.ILEmitter.ArgInd:member">
           <p class="Summary">The index for the last declared argument.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>ArgInd</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>ArgInd</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.ArgInd:Remarks">
           </div>
@@ -1601,7 +1627,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>BeginScope</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>BeginScope</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.BeginScope():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -1615,7 +1641,7 @@
         <blockquote id="F:dylan.NET.Reflection.ILEmitter.Constr:member">
           <p class="Summary">Holds the current ConstructorBuilder.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.ConstructorBuilder</a> <b>Constr</b> </div>
+          <div class="Signature">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.ConstructorBuilder</a> <b>Constr</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.Constr:Remarks">
           </div>
@@ -1630,7 +1656,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>CurSrcFile</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>CurSrcFile</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.CurSrcFile:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -1644,7 +1670,7 @@
         <blockquote id="F:dylan.NET.Reflection.ILEmitter.DebugFlg:member">
           <p class="Summary">If debugging is enabled this flag is set else it is unset (false).</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>DebugFlg</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>DebugFlg</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.DebugFlg:Remarks">Usually this reflects the value of the Debug Flag in AsmFactory.</div>
           <h2 class="Section">Requirements</h2>
@@ -1658,7 +1684,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>DeclVar</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> name, <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>DeclVar</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> name, <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.DeclVar(System.String,IKVM.Reflection.Type):Parameters">
             <dl>
@@ -1691,7 +1717,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.Label</a> <b>DefineLbl</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.Label</a> <b>DefineLbl</b> ()</div>
           <h4 class="Subsection">Returns</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.DefineLbl():Returns">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -1709,7 +1735,7 @@
         <blockquote id="F:dylan.NET.Reflection.ILEmitter.DocWriter:member">
           <p class="Summary">Holds the current symbol writer.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Diagnostics.SymbolStore.ISymbolDocumentWriter">System.Diagnostics.SymbolStore.ISymbolDocumentWriter</a> <b>DocWriter</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Diagnostics.SymbolStore.ISymbolDocumentWriter">System.Diagnostics.SymbolStore.ISymbolDocumentWriter</a> <b>DocWriter</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.DocWriter:Remarks">Used if debugging information is to be written.</div>
           <h2 class="Section">Requirements</h2>
@@ -1723,7 +1749,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">C5.LinkedList&lt;System.Diagnostics.SymbolStore.ISymbolDocumentWriter&gt;</a> <b>DocWriters</b> </div>
+          <div class="Signature">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">C5.LinkedList&lt;System.Diagnostics.SymbolStore.ISymbolDocumentWriter&gt;</a> <b>DocWriters</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.DocWriters:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -1737,7 +1763,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitAdd(System.Boolean):member">
           <p class="Summary">Emits variants of the 'add' opcode accrodingly.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitAdd</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitAdd</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitAdd(System.Boolean):Parameters">
             <dl>
@@ -1759,7 +1785,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitAnd():member">
           <p class="Summary">Emits the 'and' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitAnd</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitAnd</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitAnd():Remarks">
           </div>
@@ -1774,7 +1800,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitBox</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitBox</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBox(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -1801,7 +1827,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitBr</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.Label</a> lbl)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitBr</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.Label</a> lbl)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBr(IKVM.Reflection.Emit.Label):Parameters">
             <dl>
@@ -1828,7 +1854,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitBrfalse</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.Label</a> lbl)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitBrfalse</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.Label</a> lbl)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBrfalse(IKVM.Reflection.Emit.Label):Parameters">
             <dl>
@@ -1855,7 +1881,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitBrtrue</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.Label</a> lbl)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitBrtrue</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.Label</a> lbl)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitBrtrue(IKVM.Reflection.Emit.Label):Parameters">
             <dl>
@@ -1882,7 +1908,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCall</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.MethodInfo</a> met)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCall</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.MethodInfo</a> met)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCall(IKVM.Reflection.MethodInfo):Parameters">
             <dl>
@@ -1909,7 +1935,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCallCtor</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.ConstructorInfo</a> met)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCallCtor</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.ConstructorInfo</a> met)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCallCtor(IKVM.Reflection.ConstructorInfo):Parameters">
             <dl>
@@ -1936,7 +1962,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCallvirt</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.MethodInfo</a> met)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCallvirt</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.MethodInfo</a> met)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCallvirt(IKVM.Reflection.MethodInfo):Parameters">
             <dl>
@@ -1963,7 +1989,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCastclass</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCastclass</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCastclass(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -1990,7 +2016,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCatch</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> e)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCatch</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> e)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCatch(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -2015,7 +2041,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCeq():member">
           <p class="Summary">Emits the 'ceq' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCeq</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCeq</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCeq():Remarks">
           </div>
@@ -2028,7 +2054,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCge(System.Boolean):member">
           <p class="Summary">Emits a sequence of 'clt(.un)' , 'ldc.i4.0' and 'ceq'.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCge</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCge</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCge(System.Boolean):Parameters">
             <dl>
@@ -2050,7 +2076,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCgt(System.Boolean):member">
           <p class="Summary">Emits the 'cgt(.un)' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCgt</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCgt</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCgt(System.Boolean):Parameters">
             <dl>
@@ -2072,7 +2098,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCle(System.Boolean):member">
           <p class="Summary">Emits a sequence of 'cgt(.un)' , 'ldc.i4.0' and 'ceq'.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCle</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCle</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCle(System.Boolean):Parameters">
             <dl>
@@ -2094,7 +2120,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitClt(System.Boolean):member">
           <p class="Summary">Emits the 'clt(.un)' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitClt</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitClt</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitClt(System.Boolean):Parameters">
             <dl>
@@ -2116,7 +2142,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitCneq():member">
           <p class="Summary">Emits a sequence of 'ceq', 'ldc.i4.0' and 'ceq'.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCneq</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitCneq</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitCneq():Remarks">
           </div>
@@ -2131,7 +2157,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConstrained</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConstrained</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitConstrained(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -2156,7 +2182,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitConvI():member">
           <p class="Summary">Emits the 'conv.i' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvI</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvI</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitConvI():Remarks">Useful in preparing indices to work with array opcodes.</div>
           <h2 class="Section">Requirements</h2>
@@ -2168,7 +2194,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitConvI4():member">
           <p class="Summary">Emits the 'conv.i4' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvI4</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvI4</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitConvI4():Remarks">Useful to convert array lengths returned by 'ldlen' to more appropriate format.</div>
           <h2 class="Section">Requirements</h2>
@@ -2182,7 +2208,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvI8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvI8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitConvI8(System.Boolean):Parameters">
             <dl>
@@ -2209,7 +2235,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvOvfI4</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvOvfI4</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfI4(System.Boolean):Parameters">
             <dl>
@@ -2236,7 +2262,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvOvfI8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvOvfI8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfI8(System.Boolean):Parameters">
             <dl>
@@ -2263,7 +2289,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvOvfU2</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvOvfU2</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfU2(System.Boolean):Parameters">
             <dl>
@@ -2288,7 +2314,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitConvU():member">
           <p class="Summary">Emits the 'conv.u' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvU</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvU</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitConvU():Remarks">Useful in preparing indices to work with array opcodes.</div>
           <h2 class="Section">Requirements</h2>
@@ -2302,7 +2328,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvU2</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitConvU2</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitConvU2():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -2316,7 +2342,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitDelegateAdd():member">
           <p class="Summary">Emits a 'call' to Delegate.Combine.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitDelegateAdd</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitDelegateAdd</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitDelegateAdd():Remarks">Useful for supporting '+' overload on delegates.</div>
           <h2 class="Section">Requirements</h2>
@@ -2328,7 +2354,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitDelegateSub():member">
           <p class="Summary">Emits a 'call' to Delegate.Remove.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitDelegateSub</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitDelegateSub</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitDelegateSub():Remarks">Useful for supporting '-' overload on delegates.</div>
           <h2 class="Section">Requirements</h2>
@@ -2340,7 +2366,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitDiv(System.Boolean):member">
           <p class="Summary">Emits the variants of the 'div' opcode accordingly.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitDiv</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitDiv</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitDiv(System.Boolean):Parameters">
             <dl>
@@ -2362,7 +2388,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitDup():member">
           <p class="Summary">Emits the 'dup' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitDup</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitDup</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitDup():Remarks">
           </div>
@@ -2377,7 +2403,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitEndTry</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitEndTry</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitEndTry():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -2393,7 +2419,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitFinally</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitFinally</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitFinally():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -2403,13 +2429,40 @@
             <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)</div>
           <hr size="1" />
         </blockquote>
+        <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitInitobj(IKVM.Reflection.Type)">EmitInitobj Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitInitobj(IKVM.Reflection.Type):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitInitobj</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitInitobj(IKVM.Reflection.Type):Parameters">
+            <dl>
+              <dt>
+                <i>t</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitInitobj(IKVM.Reflection.Type):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitInitobj(IKVM.Reflection.Type):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)</div>
+          <hr size="1" />
+        </blockquote>
         <h3 id="M:dylan.NET.Reflection.ILEmitter.EmitIs(IKVM.Reflection.Type)">EmitIs Method</h3>
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitIs(IKVM.Reflection.Type):member">
           <p class="Summary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitIs</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitIs</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitIs(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -2436,7 +2489,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitIsinst</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitIsinst</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitIsinst(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -2461,7 +2514,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdarg(System.Int32):member">
           <p class="Summary">Emits one of the variants of 'ldarg' accordingly.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdarg</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdarg</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdarg(System.Int32):Parameters">
             <dl>
@@ -2482,7 +2535,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdarga(System.Int32):member">
           <p class="Summary">Emits the 'ldarga' or 'ldarga.s' opcodes accordingly.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdarga</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdarga</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdarga(System.Int32):Parameters">
             <dl>
@@ -2503,7 +2556,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcBool(System.Boolean):member">
           <p class="Summary">Emits 'ldc.i4.1' or 'ldc.i4.0' for true or false respectively.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcBool</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcBool</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> b)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcBool(System.Boolean):Parameters">
             <dl>
@@ -2525,7 +2578,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcChar(System.Char):member">
           <p class="Summary">Emits one of the variants of 'ldc.i4' opcode using the numerical unicode value of the character as the integer loaded.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcChar</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Char">char</a> c)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcChar</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Char">char</a> c)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcChar(System.Char):Parameters">
             <dl>
@@ -2549,7 +2602,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcDec</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Decimal">decimal</a> n)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcDec</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Decimal">decimal</a> n)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcDec(System.Decimal):Parameters">
             <dl>
@@ -2574,7 +2627,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI1(System.SByte):member">
           <p class="Summary">Emits one of the variants of 'ldc.i4' followed by a 'conv.i1'.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI1</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.SByte">sbyte</a> n)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI1</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.SByte">sbyte</a> n)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI1(System.SByte):Parameters">
             <dl>
@@ -2596,7 +2649,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI2(System.Int16):member">
           <p class="Summary">Emits one of the variants of 'ldc.i4' followed by a 'conv.i2'.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI2</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int16">short</a> n)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI2</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int16">short</a> n)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI2(System.Int16):Parameters">
             <dl>
@@ -2618,7 +2671,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI4(System.Int32):member">
           <p class="Summary">Emits one of the variants of the 'ldc.i4' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI4</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI4</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI4(System.Int32):Parameters">
             <dl>
@@ -2640,7 +2693,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI8(System.Int64):member">
           <p class="Summary">Emits one of the variants of 'ldc.i4' followed by a 'conv.i8' or an 'ldc.i8' accordingly.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int64">long</a> n)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcI8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int64">long</a> n)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcI8(System.Int64):Parameters">
             <dl>
@@ -2662,7 +2715,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR4(System.Single):member">
           <p class="Summary">Emits the 'ldc.r4' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcR4</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Single">float</a> num)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcR4</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Single">float</a> num)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR4(System.Single):Parameters">
             <dl>
@@ -2684,7 +2737,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR8(System.Double):member">
           <p class="Summary">Emits the 'ldc.r8' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcR8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Double">double</a> num)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcR8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Double">double</a> num)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcR8(System.Double):Parameters">
             <dl>
@@ -2708,7 +2761,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcU1</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> n)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcU1</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> n)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcU1(System.Byte):Parameters">
             <dl>
@@ -2735,7 +2788,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcU2</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.UInt16">ushort</a> n)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcU2</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.UInt16">ushort</a> n)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcU2(System.UInt16):Parameters">
             <dl>
@@ -2762,7 +2815,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcU4</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.UInt32">uint</a> n)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcU4</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.UInt32">uint</a> n)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcU4(System.UInt32):Parameters">
             <dl>
@@ -2789,7 +2842,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcU8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.UInt64">ulong</a> n)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdcU8</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.UInt64">ulong</a> n)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdcU8(System.UInt64):Parameters">
             <dl>
@@ -2814,7 +2867,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdelem(IKVM.Reflection.Type):member">
           <p class="Summary">Emits one of the 'ldelem' variants accordingly.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdelem</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdelem</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdelem(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -2837,7 +2890,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdelema</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdelema</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdelema(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -2862,7 +2915,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdfld(IKVM.Reflection.FieldInfo):member">
           <p class="Summary">Emits the 'ldfld' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdfld</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdfld</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdfld(IKVM.Reflection.FieldInfo):Parameters">
             <dl>
@@ -2883,7 +2936,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdflda(IKVM.Reflection.FieldInfo):member">
           <p class="Summary">Emits the 'ldflda' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdflda</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdflda</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdflda(IKVM.Reflection.FieldInfo):Parameters">
             <dl>
@@ -2904,7 +2957,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdftn(IKVM.Reflection.MethodInfo):member">
           <p class="Summary">Emits the 'ldftn' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdftn</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.MethodInfo</a> met)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdftn</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.MethodInfo</a> met)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdftn(IKVM.Reflection.MethodInfo):Parameters">
             <dl>
@@ -2927,7 +2980,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdind</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdind</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdind(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -2954,7 +3007,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdlen</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdlen</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdlen():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -2968,7 +3021,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdloc(System.Int32):member">
           <p class="Summary">Emits one of the variants of the 'ldloc' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdloc</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdloc</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdloc(System.Int32):Parameters">
             <dl>
@@ -2989,7 +3042,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdloca(System.Int32):member">
           <p class="Summary">Emits one of the variants of the 'ldloca' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdloca</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdloca</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdloca(System.Int32):Parameters">
             <dl>
@@ -3010,7 +3063,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdnull():member">
           <p class="Summary">Emits the 'ldnull' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdnull</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdnull</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdnull():Remarks">Useful for obtaining null references.</div>
           <h2 class="Section">Requirements</h2>
@@ -3022,7 +3075,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdsfld(IKVM.Reflection.FieldInfo):member">
           <p class="Summary">Emits the 'ldsfld' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdsfld</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdsfld</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdsfld(IKVM.Reflection.FieldInfo):Parameters">
             <dl>
@@ -3043,7 +3096,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdsflda(IKVM.Reflection.FieldInfo):member">
           <p class="Summary">Emits the 'ldsflda' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdsflda</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdsflda</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdsflda(IKVM.Reflection.FieldInfo):Parameters">
             <dl>
@@ -3064,7 +3117,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdstr(System.String):member">
           <p class="Summary">Emits the 'ldstr' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdstr</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> str)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdstr</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> str)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdstr(System.String):Parameters">
             <dl>
@@ -3086,7 +3139,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdtoken(IKVM.Reflection.Type):member">
           <p class="Summary">Emits the 'ldtoken' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdtoken</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdtoken</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdtoken(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -3107,7 +3160,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLdvirtftn(IKVM.Reflection.MethodInfo):member">
           <p class="Summary">Emits the 'ldvirtftn' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdvirtftn</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.MethodInfo</a> met)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLdvirtftn</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.MethodInfo</a> met)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLdvirtftn(IKVM.Reflection.MethodInfo):Parameters">
             <dl>
@@ -3128,7 +3181,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitLike():member">
           <p class="Summary">Emits a 'call' to Regex.IsMatch.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLike</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitLike</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitLike():Remarks">Useful to compare strings against a pattern. This adds an implicit reference to System.dll!!! </div>
           <h2 class="Section">Requirements</h2>
@@ -3140,7 +3193,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitMul(System.Boolean):member">
           <p class="Summary">Emits one of the variants of the 'mul' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitMul</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitMul</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitMul(System.Boolean):Parameters">
             <dl>
@@ -3161,7 +3214,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNand():member">
           <p class="Summary">Emits a sequence of 'and', 'ldc.i4.0' and 'ceq'.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNand</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNand</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNand():Remarks">Applies a 1's complemented 'and' to its operands (nand).</div>
           <h2 class="Section">Requirements</h2>
@@ -3175,7 +3228,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNandOther</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNandOther</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNandOther():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3189,7 +3242,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNeg():member">
           <p class="Summary">Emits the 'neg' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNeg</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNeg</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNeg():Remarks">Does a 2's complement negation on its operand.</div>
           <h2 class="Section">Requirements</h2>
@@ -3201,7 +3254,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNewarr(IKVM.Reflection.Type):member">
           <p class="Summary">Emits the 'newarr' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNewarr</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNewarr</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNewarr(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -3222,7 +3275,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNewobj(IKVM.Reflection.ConstructorInfo):member">
           <p class="Summary">Emits the 'newobj' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNewobj</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.ConstructorInfo</a> c)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNewobj</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.ConstructorInfo</a> c)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNewobj(IKVM.Reflection.ConstructorInfo):Parameters">
             <dl>
@@ -3243,7 +3296,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNLike():member">
           <p class="Summary">Emits a sequence of Regex.IsMatch, 'ldc.i4.0' and 'ceq' .</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNLike</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNLike</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNLike():Remarks">Useul to check if a string does not conform to a pattern (notlike).</div>
           <h2 class="Section">Requirements</h2>
@@ -3255,7 +3308,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNor():member">
           <p class="Summary">Emits a sequence of 'or', 'ldc.i4.0' and 'ceq'.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNor</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNor</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNor():Remarks">dpes a 1's complemented 'or' (nor) on its operands.</div>
           <h2 class="Section">Requirements</h2>
@@ -3269,7 +3322,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNorOther</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNorOther</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNorOther():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3283,7 +3336,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitNot():member">
           <p class="Summary">Emits the 'not' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNot</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNot</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNot():Remarks">For booleans consider using 'ldc.i4.0' followed by a 'ceq' instead i.e. use EmitLdcI4(0) and EmitCeq.</div>
           <h2 class="Section">Requirements</h2>
@@ -3297,7 +3350,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNotOther</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitNotOther</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitNotOther():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3311,7 +3364,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitOr():member">
           <p class="Summary">Emits the 'or' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitOr</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitOr</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitOr():Remarks">Does an inclusive 'or' on its opcode.</div>
           <h2 class="Section">Requirements</h2>
@@ -3323,7 +3376,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitPop():member">
           <p class="Summary">Emits the 'pop' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitPop</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitPop</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitPop():Remarks">Usful when a value on the stack is not needed.</div>
           <h2 class="Section">Requirements</h2>
@@ -3335,7 +3388,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitRem(System.Boolean):member">
           <p class="Summary">Emits the 'rem' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitRem</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitRem</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitRem(System.Boolean):Parameters">
             <dl>
@@ -3356,7 +3409,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitRet():member">
           <p class="Summary">Emits the 'ret' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitRet</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitRet</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitRet():Remarks">Useful for returning the control to the method which called this one.</div>
           <h2 class="Section">Requirements</h2>
@@ -3370,7 +3423,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitShl</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitShl</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitShl():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3386,7 +3439,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitShr</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitShr</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitShr(System.Boolean):Parameters">
             <dl>
@@ -3411,7 +3464,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStarg(System.Int32):member">
           <p class="Summary">Emits one of the variants of the 'starg' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStarg</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStarg</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStarg(System.Int32):Parameters">
             <dl>
@@ -3435,7 +3488,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStelem</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStelem</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStelem(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -3462,7 +3515,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStfld</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStfld</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStfld(IKVM.Reflection.FieldInfo):Parameters">
             <dl>
@@ -3489,7 +3542,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStind</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStind</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> typ)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStind(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -3514,7 +3567,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStloc(System.Int32):member">
           <p class="Summary">Emist one of the variants of the 'stloc' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStloc</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStloc</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> num)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStloc(System.Int32):Parameters">
             <dl>
@@ -3537,7 +3590,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStrAdd():member">
           <p class="Summary">Emits a call to String.Concat.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStrAdd</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStrAdd</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStrAdd():Remarks">Useful for supporting string concatenation as addition of strings.</div>
           <h2 class="Section">Requirements</h2>
@@ -3549,7 +3602,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStrCeq():member">
           <p class="Summary">Emits a combination of String.Compare, 'ldc.i4.0' and 'ceq'.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStrCeq</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStrCeq</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStrCeq():Remarks">Checks if two strings are equal. The use of the Equality overload in System.String is preferred over this.</div>
           <h2 class="Section">Requirements</h2>
@@ -3561,7 +3614,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitStrCneq():member">
           <p class="Summary">Emits a combination of String.Compare, 'ldc.i4.0','ceq','ldc.i4.0' and 'ceq'.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStrCneq</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStrCneq</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStrCneq():Remarks">Checks if two strings are not equal. The  use of the Inequality overload in System.String is preferred over this.</div>
           <h2 class="Section">Requirements</h2>
@@ -3575,7 +3628,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStsfld</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitStsfld</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.FieldInfo</a> fld)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitStsfld(IKVM.Reflection.FieldInfo):Parameters">
             <dl>
@@ -3600,7 +3653,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitSub(System.Boolean):member">
           <p class="Summary">Emits one of the variants of the 'sub' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitSub</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitSub</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitSub(System.Boolean):Parameters">
             <dl>
@@ -3624,7 +3677,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitThrow</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitThrow</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitThrow():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3640,7 +3693,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitTry</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitTry</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitTry():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3656,7 +3709,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitUnbox</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitUnbox</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitUnbox(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -3683,7 +3736,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitUnboxAny</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitUnboxAny</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Type</a> t)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitUnboxAny(IKVM.Reflection.Type):Parameters">
             <dl>
@@ -3708,7 +3761,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitXnor():member">
           <p class="Summary">Emits a sequence of 'xor', 'ldc.i4.0' and 'ceq'.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitXnor</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitXnor</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitXnor():Remarks">Does a 1's complemented 'xor' (xnor) on its operands.</div>
           <h2 class="Section">Requirements</h2>
@@ -3722,7 +3775,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitXnorOther</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitXnorOther</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitXnorOther():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3736,7 +3789,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.EmitXor():member">
           <p class="Summary">Emist the 'xor' opcode.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitXor</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EmitXor</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EmitXor():Remarks">Does an exclusive 'or' (xor) on its operands .</div>
           <h2 class="Section">Requirements</h2>
@@ -3750,7 +3803,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EndScope</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>EndScope</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.EndScope():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3766,7 +3819,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Init</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Init</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.Init():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3782,7 +3835,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>InterfaceFlg</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>InterfaceFlg</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.InterfaceFlg:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3798,7 +3851,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>LineNr</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>LineNr</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.LineNr:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3812,7 +3865,7 @@
         <blockquote id="F:dylan.NET.Reflection.ILEmitter.LocInd:member">
           <p class="Summary">The index for the last declared variable.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>LocInd</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>LocInd</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.LocInd:Remarks">
           </div>
@@ -3825,7 +3878,7 @@
         <blockquote id="M:dylan.NET.Reflection.ILEmitter.MarkDbgPt(System.Int32):member">
           <p class="Summary">Marks a trace point in the debug symbols.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>MarkDbgPt</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> line)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>MarkDbgPt</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> line)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.MarkDbgPt(System.Int32):Parameters">
             <dl>
@@ -3848,7 +3901,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>MarkLbl</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.Label</a> lbl)</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>MarkLbl</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.Label</a> lbl)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.ILEmitter.MarkLbl(IKVM.Reflection.Emit.Label):Parameters">
             <dl>
@@ -3873,7 +3926,7 @@
         <blockquote id="F:dylan.NET.Reflection.ILEmitter.Met:member">
           <p class="Summary">Holds the current MethodBuilder.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.MethodBuilder</a> <b>Met</b> </div>
+          <div class="Signature">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.MethodBuilder</a> <b>Met</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.Met:Remarks">
           </div>
@@ -3888,7 +3941,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>PartialFlg</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>PartialFlg</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.PartialFlg:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3904,7 +3957,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>PInvokeFlg</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>PInvokeFlg</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.PInvokeFlg:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3920,7 +3973,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>PopDocWriter</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>PopDocWriter</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.PopDocWriter():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3936,7 +3989,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>PopSrcFile</b> ()</div>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>PopSrcFile</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Reflection.ILEmitter.PopSrcFile():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3952,7 +4005,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>ProtoFlg</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>ProtoFlg</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.ProtoFlg:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3968,7 +4021,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">C5.LinkedList&lt;string&gt;</a> <b>SrcFiles</b> </div>
+          <div class="Signature">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">C5.LinkedList&lt;string&gt;</a> <b>SrcFiles</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.SrcFiles:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3984,7 +4037,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>StaticCFlg</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>StaticCFlg</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.StaticCFlg:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -3998,7 +4051,7 @@
         <blockquote id="F:dylan.NET.Reflection.ILEmitter.StaticFlg:member">
           <p class="Summary">Set if the current method is static else unset.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>StaticFlg</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>StaticFlg</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.StaticFlg:Remarks">
           </div>
@@ -4013,7 +4066,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>StructFlg</b> </div>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>StructFlg</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.StructFlg:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -4029,7 +4082,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Universe</a> <b>Univ</b> </div>
+          <div class="Signature">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Universe</a> <b>Univ</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Reflection.ILEmitter.Univ:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
