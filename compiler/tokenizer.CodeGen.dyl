@@ -16,6 +16,7 @@
 
 #if CLR_2 then
 #refasm "build/2.0/C5.Mono.dll"
+#refasm "build/2.0/System.Interactive.dll"
 #refasm "build/2.0/tokenizer.AST.dll"
 #refasm "build/2.0/tokenizer.Lexer.dll"
 #refasm "build/2.0/tokenizer.Parser.dll"
@@ -24,6 +25,7 @@
 #refasm "build/2.0/dnr.dll"
 #else
 #refasm "build/4.0/C5.Mono.dll"
+#refasm "build/4.0/System.Interactive.dll"
 #refasm "build/4.0/tokenizer.AST.dll"
 #refasm "build/4.0/tokenizer.Lexer.dll"
 #refasm "build/4.0/tokenizer.Parser.dll"

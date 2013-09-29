@@ -34,7 +34,7 @@ class public auto ansi TypeList
 			end if
 		end for
 		
-		foreach ns in new C5.LinkedList<of string>() {Add(string::Empty), Add(AsmFactory::CurnNS), AddAll(Importer::Imps)}
+		foreach ns in EnumerableEx::StartWith<of string>(Importer::Imps, new string[] {string::Empty, AsmFactory::CurnNS})
 			var til as TILambdas = new TILambdas(#ternary{ns::get_Length() == 0 ? nam , ns + "." + nam} )
 			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
 			var match as TypeItem = Enumerable::FirstOrDefault<of TypeItem>(lot2)

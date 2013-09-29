@@ -16,10 +16,12 @@
 
 #if CLR_2 then
 #refasm "build/2.0/C5.Mono.dll"
+#refasm "build/2.0/System.Interactive.dll"
 #refasm "build/2.0/IKVM.Reflection.dll"
 #refasm "build/2.0/dnu.dll"
 #else
 #refasm "build/4.0/C5.Mono.dll"
+#refasm "build/4.0/System.Interactive.dll"
 #refasm "build/4.0/IKVM.Reflection.dll"
 #refasm "build/4.0/dnu.dll"
 end #if
