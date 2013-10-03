@@ -188,6 +188,23 @@
   <body>
     <div class="CollectionTitle">
       <a href="../index.html">tokenizer.AST</a> : <a href="index.html">dylan.NET.Tokenizer.AST.Tokens Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.AST.Tokens.Token">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.AST.Tokens.Token:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.AST.Tokens.Token:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Tokenizer.AST.Tokens.Token:Members">Member Details</a>
+      </p>
+    </div>
     <h1 class="PageTitle" id="T:dylan.NET.Tokenizer.AST.Tokens.Token">Token  Class</h1>
     <p class="Summary" id="T:dylan.NET.Tokenizer.AST.Tokens.Token:Summary">This is the Token class which is the basis for all of the dylan.NET AST.</p>
     <div>
@@ -301,7 +318,7 @@
         <blockquote id="C:dylan.NET.Tokenizer.AST.Tokens.Token():member">
           <p class="Summary">Constructs a Token.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public  <b>Token</b> ()</div>
+          <div class="Signature">public  <b>Token</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Token():Remarks">To just initialise a new Token with a particular value use the other constructor.</div>
           <h2 class="Section">Requirements</h2>
@@ -313,7 +330,7 @@
         <blockquote id="C:dylan.NET.Tokenizer.AST.Tokens.Token(System.String):member">
           <p class="Summary">Constructs a Token given its Value.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public  <b>Token</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> value)</div>
+          <div class="Signature">public  <b>Token</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> value)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="C:dylan.NET.Tokenizer.AST.Tokens.Token(System.String):Parameters">
             <dl>
@@ -334,7 +351,7 @@
         <blockquote id="F:dylan.NET.Tokenizer.AST.Tokens.Token.Line:member">
           <p class="Summary">The Line where this Token was found.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>Line</b> </div>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>Line</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Token.Line:Remarks">This is important for debug info emission.</div>
           <h2 class="Section">Requirements</h2>
@@ -346,7 +363,7 @@
         <blockquote id="M:dylan.NET.Tokenizer.AST.Tokens.Token.ToString():member">
           <p class="Summary">Outputs the Token in terms of dylan.NET syntax.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public override <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ToString</b> ()</div>
+          <div class="Signature">public override <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ToString</b> ()</div>
           <h4 class="Subsection">Returns</h4>
           <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.AST.Tokens.Token.ToString():Returns">The dylan.NET syntax that represents this Token.</blockquote>
           <h2 class="Section">Remarks</h2>
@@ -360,7 +377,7 @@
         <blockquote id="F:dylan.NET.Tokenizer.AST.Tokens.Token.Value:member">
           <p class="Summary">The textual value of the Token.</p>
           <h2>Syntax</h2>
-          <div class="Signature" id="">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Value</b> </div>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Value</b> </div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Token.Value:Remarks">From this the Parser module can further optimize the Token into other subclasses.</div>
           <h2 class="Section">Requirements</h2>

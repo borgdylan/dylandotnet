@@ -71,6 +71,7 @@ class public auto ansi CodeGenerator
 		
 		ILEmitter::CurSrcFile = fpath
 		ILEmitter::AddSrcFile(fpath)
+		Importer::ImpsStack::Push(new C5.LinkedList<of string>())
 
 		if ILEmitter::DocWriters::get_Count() > 0 then
 			fpath = Path::GetFullPath(fpath)
@@ -147,6 +148,7 @@ class public auto ansi CodeGenerator
 		end do
 		
 		ILEmitter::PopSrcFile()
+		Importer::ImpsStack::Pop()
 		if ILEmitter::SrcFiles::get_Count() > 0 then
 			ILEmitter::CurSrcFile = ILEmitter::SrcFiles::get_Last()
 		end if
