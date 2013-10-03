@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="templateproj/template.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/typelist.dyl">
     <Files>
-      <File FileName="codegen/typelist.dyl" Line="1" Column="1" />
+      <File FileName="codegen/typelist.dyl" Line="37" Column="167" />
       <File FileName="cflags.dyl.in" Line="1" Column="1" />
-      <File FileName="dnr/loader.dyl" Line="1" Column="1" />
-      <File FileName="templateproj/template.dyl" Line="264" Column="33" />
+      <File FileName="dnr/loader.dyl" Line="83" Column="57" />
+      <File FileName="templateproj/template.dyl" Line="1" Column="1" />
       <File FileName="codegen/usingitem.dyl" Line="1" Column="1" />
       <File FileName="codegen/symtable.dyl" Line="1" Column="1" />
       <File FileName="codegen/stmtreader.dyl" Line="1" Column="1" />
@@ -23,6 +23,8 @@
       <File FileName="parser/tokenoptimizer.dyl" Line="1" Column="1" />
       <File FileName="dnr.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen.dyl" Line="1" Column="1" />
+      <File FileName="dnr/importer.dyl" Line="1" Column="1" />
+      <File FileName="codegen/codegenerator.dyl" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

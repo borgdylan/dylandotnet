@@ -78,7 +78,7 @@ class public auto ansi static Loader
 				end if
 			end if
 
-			foreach curns in EnumerableEx::StartWith<of string>(Importer::Imps, new string[] {AsmFactory::CurnNS})
+			foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {AsmFactory::CurnNS})
 				if curasm = AsmFactory::AsmB then
 					asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
 					typ = asmb::GetType(curns + "." + name,false,false)
