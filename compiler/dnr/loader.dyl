@@ -57,31 +57,11 @@ class public auto ansi static Loader
 			end if
 		end for
 	
-		foreach curasm in Importer::Asms
-			
-			if curasm = AsmFactory::AsmB then
-				asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
-				typ = asmb::GetType(name,false,false)
-				if typ != null then
-					if nest then
-						typ = typ::GetNestedType(na[1])
-					end if
-					break
-				end if
-			else
-				typ = curasm::GetType(name)
-				if typ != null then
-					if nest then
-						typ = typ::GetNestedType(na[1])
-					end if
-					break
-				end if
-			end if
-
-			foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {AsmFactory::CurnNS})
-				if curasm = AsmFactory::AsmB then
+		foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
+			foreach curasm in Importer::Asms
+				if curasm == AsmFactory::AsmB then
 					asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
-					typ = asmb::GetType(curns + "." + name,false,false)
+					typ = asmb::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name},false,false)
 					if typ != null then
 						if nest then
 							typ = typ::GetNestedType(na[1])
@@ -89,7 +69,7 @@ class public auto ansi static Loader
 						break
 					end if
 				else
-					typ = curasm::GetType(curns + "." + name)
+					typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
 					if typ != null then
 						if nest then
 							typ = typ::GetNestedType(na[1])
@@ -102,7 +82,6 @@ class public auto ansi static Loader
 			if typ != null then
 				break
 			end if
-			
 		end for
 		
 		PreProcTyp = typ

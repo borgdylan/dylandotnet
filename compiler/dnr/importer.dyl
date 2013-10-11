@@ -18,7 +18,7 @@ class public auto ansi static Importer
 	[method: ComVisible(false)]
 	method public static void Init()
 		Asms = new C5.LinkedList<of IKVM.Reflection.Assembly>()
-		Imps = new C5.LinkedList<of string>()
+		//Imps = new C5.LinkedList<of string>()
 		ImpsStack = new C5.LinkedList<of C5.LinkedList<of string> > {new C5.LinkedList<of string>()}
 		AsmBasePath = RuntimeEnvironment::GetRuntimeDirectory()
 		AliasMap = new C5.HashDictionary<of string,string>() { _
@@ -53,7 +53,7 @@ class public auto ansi static Importer
 
 	[method: ComVisible(false)]
 	method public static void AddImp(var imp as string)
-		Imps::Add(imp)
+		//Imps::Add(imp)
 		ImpsStack::get_Last()::Add(imp)
 	end method
 	

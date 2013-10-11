@@ -1,10 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="codegen/typelist.dyl">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="cflags.dyl.in">
     <Files>
-      <File FileName="codegen/typelist.dyl" Line="37" Column="167" />
-      <File FileName="cflags.dyl.in" Line="1" Column="1" />
-      <File FileName="dnr/loader.dyl" Line="83" Column="57" />
+      <File FileName="codegen/typelist.dyl" Line="38" Column="95" />
+      <File FileName="cflags.dyl.in" Line="10" Column="1" />
+      <File FileName="dnr/loader.dyl" Line="60" Column="222" />
       <File FileName="templateproj/template.dyl" Line="1" Column="1" />
       <File FileName="codegen/usingitem.dyl" Line="1" Column="1" />
       <File FileName="codegen/symtable.dyl" Line="1" Column="1" />
