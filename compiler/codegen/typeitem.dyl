@@ -17,7 +17,7 @@ class public auto ansi TypeItem
 	field public EnumBuilder EnumBldr
 	field public C5.IList<of MethodItem> Methods
 	field public C5.IList<of CtorItem> Ctors
-	field public C5.IList<of FieldItem> Fields
+	field public C5.HashDictionary<of string, FieldItem> Fields
 	field public boolean IsEnum
 
 	method private void TypeItem(var nme as string, var bld as TypeBuilder, var bld3 as EnumBuilder)
@@ -30,7 +30,7 @@ class public auto ansi TypeItem
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
 		Methods = new C5.LinkedList<of MethodItem>()
 		Ctors = new C5.LinkedList<of CtorItem>()
-		Fields = new C5.LinkedList<of FieldItem>()
+		Fields = new C5.HashDictionary<of string, FieldItem>()
 		BakedTyp = null
 	end method
 	
@@ -48,8 +48,12 @@ class public auto ansi TypeItem
 		ctor(string::Empty, $TypeBuilder$null)
 	end method
 
-	method public void AddField(var f as FieldItem)
-		Fields::Add(f)
+	method public void AddField(var f as FieldItem)		
+		if Fields::Contains(f::Name) then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + f::Name + "' is already declared in the current class!")
+		end if
+
+		Fields::Add(f::Name, f)
 	end method
 
 	method public void AddMethod(var m as MethodItem)
@@ -119,8 +123,8 @@ class public auto ansi TypeItem
 		var loc2 as IEnumerable<of CtorItem> = Enumerable::Where<of CtorItem>(Ctors,new Func<of CtorItem,boolean>(cil::DetermineIfCandidate()))
 		var matches as CtorItem[] = Enumerable::ToArray<of CtorItem>(loc2)
 		
-		if matches[l] = 0 then
-			if (paramst[l] = 0) and (Ctors::get_Count() = 0) then
+		if matches[l] == 0 then
+			if (paramst[l] == 0) and (Ctors::get_Count() == 0) then
 				var cb as ConstructorBuilder = TypeBldr::DefineDefaultConstructor(MethodAttributes::Public)
 				Ctors::Add(new CtorItem(new IKVM.Reflection.Type[0], cb))
 				Loader::MemberTyp = TypeBldr
@@ -128,7 +132,7 @@ class public auto ansi TypeItem
 			else
 				return null
 			end if
-		elseif matches[l] = 1 then
+		elseif matches[l] == 1 then
 			Loader::MemberTyp = TypeBldr
 			return matches[0]::CtorBldr
 		else
@@ -142,17 +146,18 @@ class public auto ansi TypeItem
 		Loader::FldLitFlag = false
 		Loader::EnumLitFlag = false
 	
-		var fil as FILambdas = new FILambdas(nam)
-		var matches as FieldItem[] = Enumerable::ToArray<of FieldItem>(Enumerable::Where<of FieldItem>(Fields,new Func<of FieldItem,boolean>(fil::DetermineIfCandidate())))
-		
-		var fldinfo as FieldBuilder
-		var fld as FieldItem = null
-		if matches[l] == 0 then
-			fldinfo = null
-		else
-			fld = matches[0]
-			fldinfo = fld::FieldBldr
-		end if
+		//var fil as FILambdas = new FILambdas(nam)
+		//var matches as FieldItem[] = Enumerable::ToArray<of FieldItem>(Enumerable::Where<of FieldItem>(Fields,new Func<of FieldItem,boolean>(fil::DetermineIfCandidate())))
+
+		var fld as FieldItem = #ternary { Fields::Contains(nam) ? Fields::get_Item(nam), $FieldItem$null }
+		var fldinfo as FieldBuilder = #ternary { fld == null ? $FieldBuilder$null, fld::FieldBldr }
+
+		//if matches[l] == 0 then
+		//	fldinfo = null
+		//else
+		//	fld = matches[0]
+		//	fldinfo = fld::FieldBldr
+		//end if
 		
 		if fldinfo != null then
 			Loader::MemberTyp = fldinfo::get_FieldType()

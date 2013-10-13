@@ -154,11 +154,11 @@
       </Docs>
     </Member>
     <Member MemberName="Fields">
-      <MemberSignature Language="C#" Value="public C5.IList&lt;dylan.NET.Tokenizer.CodeGen.FieldItem&gt; Fields;" />
-      <MemberSignature Language="ILAsm" Value=".field public class C5.IList`1&lt;class dylan.NET.Tokenizer.CodeGen.FieldItem&gt; Fields" />
+      <MemberSignature Language="C#" Value="public C5.HashDictionary&lt;string,dylan.NET.Tokenizer.CodeGen.FieldItem&gt; Fields;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.HashDictionary`2&lt;string, class dylan.NET.Tokenizer.CodeGen.FieldItem&gt; Fields" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>C5.IList&lt;dylan.NET.Tokenizer.CodeGen.FieldItem&gt;</ReturnType>
+        <ReturnType>C5.HashDictionary&lt;System.String,dylan.NET.Tokenizer.CodeGen.FieldItem&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
