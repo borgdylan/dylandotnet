@@ -58,8 +58,12 @@ Finished Processing: dnu/assemblyinfo.dyl (inline)
 Beginning Assembly: dnu
 Now Lexing: dnu/consts.dyl
 Now Parsing: dnu/consts.dyl
-Finished Processing: dnu/consts.dyl (inline)
+Finished Processing: dnu/consts.dyl (worker thread)
+Now Lexing: dnu/xmlu.dyl
 Adding Class: dylan.NET.Utils.Constants
+Now Parsing: dnu/xmlu.dyl
+Finished Processing: dnu/streamu.dyl (worker thread)
+Now Lexing: dnu/compilermsg.dyl
 	Adding Field: quot
 	Adding Field: cr
 	Adding Field: lf
@@ -69,18 +73,14 @@ Adding Class: dylan.NET.Utils.Constants
 	Adding Field: t
 	Adding Field: f
 	Adding Constructor: Constants
-Finished Processing: dnu/streamu.dyl (worker thread)
-Now Lexing: dnu/compilermsg.dyl
 Now Parsing: dnu/compilermsg.dyl
 Finished Processing: dnu/compilermsg.dyl (worker thread)
 Now Lexing: dnu/keyboard.dyl
-Now Lexing: dnu/xmlu.dyl
 Now Parsing: dnu/keyboard.dyl
-Now Parsing: dnu/xmlu.dyl
 Finished Processing: dnu/keyboard.dyl (worker thread)
 Now Lexing: dnu/parseu.dyl
 Now Parsing: dnu/parseu.dyl
-Finished Processing: dnu/xmlu.dyl (inline)
+Finished Processing: dnu/xmlu.dyl (worker thread)
 Adding Class: dylan.NET.Utils.XmlUtils
 	Adding Method: MakeName
 	Adding Method: MakeNode
@@ -204,6 +204,8 @@ Finished Processing: dnr/assemblyinfo.dyl (inline)
 Beginning Assembly: dnr
 Now Lexing: dnr/milambdas.dyl
 Now Parsing: dnr/milambdas.dyl
+Now Lexing: dnr/ilemitter.dyl
+Now Parsing: dnr/ilemitter.dyl
 Finished Processing: dnr/milambdas.dyl (inline)
 Adding Class: dylan.NET.Reflection.MILambdas
 	Adding Field: Name
@@ -218,20 +220,18 @@ Adding Class: dylan.NET.Reflection.MILambdas
 	Adding Constructor: MILambdas
 	Adding Constructor: MILambdas
 	Adding Method: GenericMtdFilter
+Now Lexing: dnr/asmfactory.dyl
+Now Parsing: dnr/asmfactory.dyl
 	Adding Method: IsSameName
 	Adding Method: IsSameNameAndReturn
 	Adding Method: InstGenMtd
 	Adding Method: IsSpecial
-Now Lexing: dnr/ilemitter.dyl
-Now Parsing: dnr/ilemitter.dyl
-Finished Processing: dnr/loader.dyl (worker thread)
 Now Lexing: dnr/importer.dyl
 Now Parsing: dnr/importer.dyl
 Finished Processing: dnr/importer.dyl (worker thread)
-Now Lexing: dnr/asmfactory.dyl
-Now Parsing: dnr/asmfactory.dyl
 Finished Processing: dnr/asmfactory.dyl (worker thread)
-Finished Processing: dnr/ilemitter.dyl (inline)
+Finished Processing: dnr/loader.dyl (worker thread)
+Finished Processing: dnr/ilemitter.dyl (worker thread)
 Adding Class: dylan.NET.Reflection.ILEmitter
 	Adding Field: Met
 	Adding Field: Constr
@@ -499,65 +499,56 @@ Importing Namespace: IKVM.Reflection.Emit
 Now Lexing: ast/assemblyinfo.dyl
 Now Parsing: ast/assemblyinfo.dyl
 Finished Processing: ast/assemblyinfo.dyl (inline)
+Beginning Assembly: tokenizer.AST
 Finished Processing: ast/otherstmts.dyl (worker thread)
 Now Lexing: ast/attrstmts.dyl
 Now Parsing: ast/attrstmts.dyl
-Beginning Assembly: tokenizer.AST
+Now Lexing: ast/token.dyl
+Now Parsing: ast/token.dyl
 Finished Processing: ast/attrstmts.dyl (worker thread)
 Now Lexing: ast/varstmts.dyl
 Now Parsing: ast/varstmts.dyl
-Now Lexing: ast/token.dyl
-Now Parsing: ast/token.dyl
 Finished Processing: ast/token.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Token
 	Adding Field: Value
 	Adding Field: Line
 	Adding Constructor: Token
+Now Lexing: ast/expr.dyl
+Now Parsing: ast/expr.dyl
+	Adding Constructor: Token
+	Adding Method: ToString
 Finished Processing: ast/varstmts.dyl (worker thread)
 Now Lexing: ast/ifstmts.dyl
 Now Parsing: ast/ifstmts.dyl
-	Adding Constructor: Token
-	Adding Method: ToString
-Now Lexing: ast/expr.dyl
-Now Parsing: ast/expr.dyl
-Finished Processing: ast/ifstmts.dyl (worker thread)
-Now Lexing: ast/loopstmts.dyl
-Now Parsing: ast/loopstmts.dyl
-Finished Processing: ast/expr.dyl (inline)
+Finished Processing: ast/expr.dyl (worker thread)
+Now Lexing: ast/stmt.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Exprs.Expr
 	Adding Field: Tokens
 	Adding Field: Line
+Now Parsing: ast/stmt.dyl
 	Adding Field: ResultTyp
 	Adding Constructor: Expr
 	Adding Method: AddToken
 	Adding Method: RemToken
-Now Lexing: ast/stmt.dyl
-Now Parsing: ast/stmt.dyl
-Finished Processing: ast/loopstmts.dyl (worker thread)
-Now Lexing: ast/labelstmts.dyl
-Now Parsing: ast/labelstmts.dyl
-Finished Processing: ast/labelstmts.dyl (worker thread)
-Now Lexing: ast/exceptionstmts.dyl
-Finished Processing: ast/stmt.dyl (inline)
+Finished Processing: ast/ifstmts.dyl (worker thread)
+Now Lexing: ast/loopstmts.dyl
+Now Parsing: ast/loopstmts.dyl
+Finished Processing: ast/stmt.dyl (worker thread)
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.Stmt
 	Adding Field: Tokens
 	Adding Field: Line
-Now Parsing: ast/exceptionstmts.dyl
 	Adding Constructor: Stmt
 	Adding Method: AddToken
 	Adding Method: RemToken
 Adding Class: dylan.NET.Tokenizer.AST.Stmts.StmtSet
+Now Lexing: ast/op.dyl
 	Adding Field: Stmts
 	Adding Field: Path
 	Adding Constructor: StmtSet
 	Adding Constructor: StmtSet
-	Adding Method: AddStmt
-Now Lexing: ast/op.dyl
 Now Parsing: ast/op.dyl
-Finished Processing: ast/exceptionstmts.dyl (worker thread)
-Now Lexing: ast/fieldstmt.dyl
-Now Parsing: ast/fieldstmt.dyl
-Finished Processing: ast/op.dyl (inline)
+	Adding Method: AddStmt
+Finished Processing: ast/op.dyl (worker thread)
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.Op
 	Adding Field: PrecNo
 	Adding Field: LChild
@@ -570,17 +561,20 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AssignOp2
 	Adding Constructor: AssignOp2
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AsOp
+Now Lexing: ast/aritops.dyl
+Now Parsing: ast/aritops.dyl
 	Adding Constructor: AsOp
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.CoalesceOp
 	Adding Constructor: CoalesceOp
 	Adding Method: ToString
-Now Lexing: ast/aritops.dyl
-Now Parsing: ast/aritops.dyl
-Finished Processing: ast/fieldstmt.dyl (worker thread)
-Now Lexing: ast/metstmt.dyl
-Now Parsing: ast/metstmt.dyl
-Finished Processing: ast/aritops.dyl (inline)
+Finished Processing: ast/loopstmts.dyl (worker thread)
+Now Lexing: ast/labelstmts.dyl
+Now Parsing: ast/labelstmts.dyl
+Now Lexing: ast/logicalops.dyl
+Now Parsing: ast/logicalops.dyl
+Finished Processing: ast/aritops.dyl (worker thread)
+Now Lexing: ast/typetoks.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AritOp
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AddOp
 	Adding Constructor: AddOp
@@ -588,9 +582,13 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AddOp
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.MulOp
 	Adding Constructor: MulOp
 	Adding Method: ToString
+Finished Processing: ast/labelstmts.dyl (worker thread)
+Now Lexing: ast/exceptionstmts.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.SubOp
 	Adding Constructor: SubOp
 	Adding Method: ToString
+Now Parsing: ast/exceptionstmts.dyl
+Now Parsing: ast/typetoks.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.DivOp
 	Adding Constructor: DivOp
 	Adding Method: ToString
@@ -603,31 +601,27 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.IncOp
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.DecOp
 	Adding Constructor: DecOp
 	Adding Method: ToString
-Finished Processing: ast/metstmt.dyl (worker thread)
-Now Lexing: ast/eventstmt.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.ShlOp
 	Adding Constructor: ShlOp
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.ShrOp
 	Adding Constructor: ShrOp
 	Adding Method: ToString
-Now Lexing: ast/logicalops.dyl
-Now Parsing: ast/eventstmt.dyl
-Now Parsing: ast/logicalops.dyl
-Finished Processing: ast/eventstmt.dyl (worker thread)
-Now Lexing: ast/propstmt.dyl
-Now Parsing: ast/propstmt.dyl
-Finished Processing: ast/logicalops.dyl (inline)
+Finished Processing: ast/logicalops.dyl (worker thread)
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.LogicalOp
+Now Lexing: ast/interfaces.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.AndOp
 	Adding Constructor: AndOp
 	Adding Method: ToString
+Now Parsing: ast/interfaces.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.OrOp
 	Adding Constructor: OrOp
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.NandOp
 	Adding Constructor: NandOp
 	Adding Method: ToString
+Finished Processing: ast/exceptionstmts.dyl (worker thread)
+Now Lexing: ast/fieldstmt.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.NorOp
 	Adding Constructor: NorOp
 	Adding Method: ToString
@@ -637,22 +631,57 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.XorOp
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.XnorOp
 	Adding Constructor: XnorOp
 	Adding Method: ToString
+Now Parsing: ast/fieldstmt.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.NotOp
 	Adding Constructor: NotOp
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ops.NegOp
 	Adding Constructor: NegOp
 	Adding Method: ToString
-Now Lexing: ast/typetoks.dyl
-Now Parsing: ast/typetoks.dyl
+Finished Processing: ast/interfaces.dyl (worker thread)
+Now Lexing: ast/literals.dyl
+Now Parsing: ast/literals.dyl
+Finished Processing: ast/fieldstmt.dyl (worker thread)
+Now Lexing: ast/metstmt.dyl
+Now Parsing: ast/metstmt.dyl
+Now Lexing: ast/ident.dyl
+Now Parsing: ast/ident.dyl
+Finished Processing: ast/metstmt.dyl (worker thread)
+Now Lexing: ast/eventstmt.dyl
+Now Parsing: ast/eventstmt.dyl
+Finished Processing: ast/ident.dyl (worker thread)
+Now Lexing: ast/exprcalltok.dyl
+Now Parsing: ast/exprcalltok.dyl
+Finished Processing: ast/eventstmt.dyl (worker thread)
+Now Lexing: ast/propstmt.dyl
+Now Parsing: ast/propstmt.dyl
+Finished Processing: ast/exprcalltok.dyl (worker thread)
+Now Lexing: ast/attributes.dyl
+Now Parsing: ast/attributes.dyl
+Now Lexing: ast/conditionalops.dyl
+Now Parsing: ast/conditionalops.dyl
 Finished Processing: ast/propstmt.dyl (worker thread)
 Now Lexing: ast/enumstmt.dyl
 Now Parsing: ast/enumstmt.dyl
 Finished Processing: ast/enumstmt.dyl (worker thread)
 Now Lexing: ast/delegatestmt.dyl
 Now Parsing: ast/delegatestmt.dyl
+Finished Processing: ast/conditionalops.dyl (worker thread)
+Now Lexing: ast/attrvalpair.dyl
+Now Parsing: ast/attrvalpair.dyl
+Finished Processing: ast/attributes.dyl (worker thread)
+Finished Processing: ast/attrvalpair.dyl (worker thread)
+Now Lexing: ast/comment.dyl
+Now Lexing: ast/otherkeywords.dyl
+Now Parsing: ast/comment.dyl
+Finished Processing: ast/comment.dyl (worker thread)
+Now Lexing: ast/methodnametok.dyl
+Now Parsing: ast/methodnametok.dyl
+Now Lexing: ast/methods.dyl
 Finished Processing: ast/delegatestmt.dyl (worker thread)
 Now Lexing: ast/classstmt.dyl
+Now Parsing: ast/otherkeywords.dyl
+Now Parsing: ast/methods.dyl
 Now Parsing: ast/classstmt.dyl
 Finished Processing: ast/classstmt.dyl (worker thread)
 Now Lexing: ast/nsstmt.dyl
@@ -660,43 +689,40 @@ Now Parsing: ast/nsstmt.dyl
 Finished Processing: ast/nsstmt.dyl (worker thread)
 Now Lexing: ast/includestmt.dyl
 Now Parsing: ast/includestmt.dyl
+Finished Processing: ast/methods.dyl (worker thread)
+Now Lexing: ast/newcalltoks.dyl
+Now Parsing: ast/newcalltoks.dyl
+Now Lexing: ast/chars.dyl
+Now Parsing: ast/chars.dyl
 Finished Processing: ast/includestmt.dyl (worker thread)
 Now Lexing: ast/verstmt.dyl
 Now Parsing: ast/verstmt.dyl
 Finished Processing: ast/verstmt.dyl (worker thread)
 Now Lexing: ast/asmstmt.dyl
 Now Parsing: ast/asmstmt.dyl
+Finished Processing: ast/methodnametok.dyl (worker thread)
+Now Lexing: ast/varexpr.dyl
+Finished Processing: ast/chars.dyl (worker thread)
+Now Lexing: ast/debugstmt.dyl
+Now Parsing: ast/varexpr.dyl
+Now Parsing: ast/debugstmt.dyl
 Finished Processing: ast/asmstmt.dyl (worker thread)
 Now Lexing: ast/importstmts.dyl
+Now Lexing: ast/scopestmt.dyl
 Now Parsing: ast/importstmts.dyl
-Finished Processing: ast/importstmts.dyl (worker thread)
-Now Lexing: ast/newresstmt.dyl
-Now Parsing: ast/newresstmt.dyl
-Finished Processing: ast/newresstmt.dyl (worker thread)
+Now Parsing: ast/scopestmt.dyl
+Finished Processing: ast/debugstmt.dyl (worker thread)
 Now Lexing: ast/refasmstmt.dyl
 Now Parsing: ast/refasmstmt.dyl
-Finished Processing: ast/refasmstmt.dyl (worker thread)
-Now Lexing: ast/scopestmt.dyl
-Now Lexing: ast/interfaces.dyl
-Now Parsing: ast/scopestmt.dyl
-Now Parsing: ast/interfaces.dyl
-Finished Processing: ast/scopestmt.dyl (worker thread)
-Now Lexing: ast/debugstmt.dyl
-Now Parsing: ast/debugstmt.dyl
-Finished Processing: ast/interfaces.dyl (worker thread)
-Now Lexing: ast/literals.dyl
-Now Parsing: ast/literals.dyl
-Finished Processing: ast/debugstmt.dyl (worker thread)
-Now Lexing: ast/varexpr.dyl
-Now Parsing: ast/varexpr.dyl
 Finished Processing: ast/varexpr.dyl (worker thread)
-Now Lexing: ast/chars.dyl
-Now Parsing: ast/chars.dyl
-Finished Processing: ast/chars.dyl (worker thread)
-Now Lexing: ast/newcalltoks.dyl
-Now Parsing: ast/newcalltoks.dyl
-Finished Processing: ast/typetoks.dyl (inline)
+Now Lexing: ast/newresstmt.dyl
+Now Parsing: ast/newresstmt.dyl
+Finished Processing: ast/scopestmt.dyl (worker thread)
+Finished Processing: ast/newresstmt.dyl (worker thread)
+Finished Processing: ast/refasmstmt.dyl (worker thread)
+Finished Processing: ast/typetoks.dyl (worker thread)
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok
+Finished Processing: ast/importstmts.dyl (worker thread)
 	Adding Field: IsArray
 	Adding Field: IsByRef
 	Adding Field: RefTyp
@@ -712,6 +738,7 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok
 	Adding Constructor: GenericTypeTok
 	Adding Constructor: GenericTypeTok
 	Adding Method: CloneTT
+Finished Processing: ast/newcalltoks.dyl (worker thread)
 	Adding Method: Clone
 	Adding Method: AddParam
 	Adding Method: ToString
@@ -843,20 +870,8 @@ Adding Class: dylan.NET.Tokenizer.AST.Interfaces.IIncDecable
 	Adding Property: DoDec
 	Adding Method: get_DoDec
 	Adding Method: set_DoDec
-Finished Processing: ast/newcalltoks.dyl (worker thread)
-Now Lexing: ast/methods.dyl
-Now Parsing: ast/methods.dyl
-Finished Processing: ast/methods.dyl (worker thread)
-Now Lexing: ast/methodnametok.dyl
-Now Parsing: ast/methodnametok.dyl
-Finished Processing: ast/methodnametok.dyl (worker thread)
-Now Lexing: ast/comment.dyl
-Now Parsing: ast/comment.dyl
-Finished Processing: ast/comment.dyl (worker thread)
-Now Lexing: ast/otherkeywords.dyl
-Now Parsing: ast/otherkeywords.dyl
+Finished Processing: ast/otherkeywords.dyl (worker thread)
 Finished Processing: ast/literals.dyl (worker thread)
-Now Lexing: ast/ident.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.Literal
 	Adding Field: LitTyp
 	Adding Field: _Conv
@@ -869,7 +884,6 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.Literal
 	Adding Method: set_OrdOp
 	Adding Property: Conv
 	Adding Method: get_Conv
-Now Parsing: ast/ident.dyl
 	Adding Method: set_Conv
 	Adding Property: TTok
 	Adding Method: get_TTok
@@ -954,12 +968,9 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral
 	Adding Method: get_Conv
 	Adding Method: set_Conv
 	Adding Property: TTok
-Finished Processing: ast/otherkeywords.dyl (worker thread)
 	Adding Method: get_TTok
 	Adding Method: set_TTok
-Now Lexing: ast/attrvalpair.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral
-Now Parsing: ast/attrvalpair.dyl
 	Adding Field: NumVal
 	Adding Field: _DoNeg
 	Adding Field: _DoNot
@@ -1027,8 +1038,6 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral
 	Adding Field: _DoNot
 	Adding Constructor: SByteLiteral
 	Adding Constructor: SByteLiteral
-Finished Processing: ast/attrvalpair.dyl (worker thread)
-Now Lexing: ast/conditionalops.dyl
 	Adding Constructor: SByteLiteral
 	Adding Method: ToString
 	Adding Property: OrdOp
@@ -1051,7 +1060,6 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.ShortLiteral
 	Adding Field: _DoNeg
 	Adding Field: _DoNot
 	Adding Constructor: ShortLiteral
-Now Parsing: ast/conditionalops.dyl
 	Adding Constructor: ShortLiteral
 	Adding Constructor: ShortLiteral
 	Adding Method: ToString
@@ -1073,15 +1081,12 @@ Now Parsing: ast/conditionalops.dyl
 	Adding Property: DoNot
 	Adding Method: get_DoNot
 	Adding Method: set_DoNot
-Finished Processing: ast/ident.dyl (worker thread)
-Now Lexing: ast/exprcalltok.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.LongLiteral
 	Adding Field: NumVal
 	Adding Field: _DoNeg
 	Adding Field: _DoNot
 	Adding Constructor: LongLiteral
 	Adding Constructor: LongLiteral
-Now Parsing: ast/exprcalltok.dyl
 	Adding Constructor: LongLiteral
 	Adding Method: ToString
 	Adding Property: OrdOp
@@ -1141,7 +1146,6 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral
 	Adding Property: DoNot
 	Adding Method: get_DoNot
 	Adding Method: set_DoNot
-Now Lexing: ast/attributes.dyl
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral
 	Adding Field: NumVal
 	Adding Field: _DoNot
@@ -1151,7 +1155,6 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral
 	Adding Method: ToString
 	Adding Property: OrdOp
 	Adding Method: get_OrdOp
-Now Parsing: ast/attributes.dyl
 	Adding Method: set_OrdOp
 	Adding Property: Conv
 	Adding Method: get_Conv
@@ -1234,7 +1237,6 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral
 	Adding Property: DoNot
 	Adding Method: get_DoNot
 	Adding Method: set_DoNot
-Finished Processing: ast/exprcalltok.dyl (worker thread)
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Ident
 	Adding Field: IsRef
 	Adding Field: IsValInRef
@@ -1307,8 +1309,6 @@ Adding Class: dylan.NET.Tokenizer.AST.Tokens.ExprCallTok
 	Adding Method: set_DoDec
 	Adding Constructor: ExprCallTok
 	Adding Constructor: ExprCallTok
-Finished Processing: ast/conditionalops.dyl (worker thread)
-Finished Processing: ast/attributes.dyl (worker thread)
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute
 Adding Class: dylan.NET.Tokenizer.AST.Tokens.Attributes.HideBySigAttr
 	Adding Method: ToString
@@ -2106,14 +2106,16 @@ Now Lexing: cflags.dyl
 Now Parsing: cflags.dyl
 Finished Processing: cflags.dyl (inline)
 Now Lexing: parser/assemblyinfo.dyl
-Now Parsing: parser/assemblyinfo.dyl
 Finished Processing: parser/parser.dyl (worker thread)
 Now Lexing: parser/stmtoptimizer.dyl
+Now Parsing: parser/assemblyinfo.dyl
 Finished Processing: parser/assemblyinfo.dyl (inline)
 Now Parsing: parser/stmtoptimizer.dyl
 Beginning Assembly: tokenizer.Parser
 Now Lexing: parser/parserflags.dyl
 Now Parsing: parser/parserflags.dyl
+Now Lexing: parser/tokenoptimizer.dyl
+Now Parsing: parser/tokenoptimizer.dyl
 Finished Processing: parser/parserflags.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.Parser.Flags
 	Adding Field: IfFlag
@@ -2140,7 +2142,9 @@ Adding Class: dylan.NET.Tokenizer.Parser.Flags
 	Adding Field: StringFlag
 	Adding Field: CurPath
 	Adding Constructor: Flags
+Now Lexing: parser/exproptimizer.dyl
 	Adding Method: SetUnaryFalse
+Now Parsing: parser/exproptimizer.dyl
 	Adding Method: UpdateToken
 	Adding Method: UpdateIdent
 	Adding Method: UpdateNullLit
@@ -2150,11 +2154,7 @@ Adding Class: dylan.NET.Tokenizer.Parser.Flags
 	Adding Method: UpdateBoolLit
 	Adding Method: UpdateNumLit
 	Adding Method: ResetMCISFlgs
-Now Lexing: parser/tokenoptimizer.dyl
-Now Parsing: parser/tokenoptimizer.dyl
-Now Lexing: parser/exproptimizer.dyl
-Now Parsing: parser/exproptimizer.dyl
-Finished Processing: parser/tokenoptimizer.dyl (inline)
+Finished Processing: parser/tokenoptimizer.dyl (worker thread)
 Adding Class: dylan.NET.Tokenizer.Parser.TokenOptimizer
 	Adding Field: GenLvl
 	Adding Field: CurlyLvl
@@ -2269,8 +2269,8 @@ Copyright (C) 2013 Dylan Borg
 Now Lexing: tokenizer.CodeGen.dyl...Done.
 Now Parsing: tokenizer.CodeGen.dyl...Done.
 Now Lexing: codegen/codegenerator.dyl
-Now Parsing: codegen/codegenerator.dyl
 Referencing Assembly: /usr/lib/mono/4.5/mscorlib.dll
+Now Parsing: codegen/codegenerator.dyl
 Referencing Assembly: /usr/lib/mono/4.5/System.dll
 Referencing Assembly: /usr/lib/mono/4.5/System.Core.dll
 Referencing Assembly: build/4.0/C5.Mono.dll
@@ -2317,8 +2317,16 @@ Finished Processing: codegen/assemblyinfo.dyl (inline)
 Beginning Assembly: tokenizer.CodeGen
 Now Lexing: codegen/varitem.dyl
 Now Parsing: codegen/varitem.dyl
+Now Lexing: codegen/fielditem.dyl
+Now Parsing: codegen/fielditem.dyl
+Finished Processing: codegen/fielditem.dyl (worker thread)
+Now Lexing: codegen/propertyitem.dyl
+Now Parsing: codegen/propertyitem.dyl
 Finished Processing: codegen/varitem.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.CodeGen.VarItem
+Finished Processing: codegen/propertyitem.dyl (worker thread)
+Now Lexing: codegen/eventitem.dyl
+Now Parsing: codegen/eventitem.dyl
 	Adding Field: Name
 	Adding Field: LocArg
 	Adding Field: Index
@@ -2328,15 +2336,12 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.VarItem
 	Adding Field: Line
 	Adding Field: StoreLines
 	Adding Constructor: VarItem
-Finished Processing: codegen/codegenerator.dyl (worker thread)
-Now Lexing: codegen/stmtreader.dyl
 	Adding Constructor: VarItem
 	Adding Constructor: VarItem
 	Adding Method: ToString
-Now Parsing: codegen/stmtreader.dyl
-Now Lexing: codegen/fielditem.dyl
-Now Parsing: codegen/fielditem.dyl
-Finished Processing: codegen/fielditem.dyl (inline)
+Finished Processing: codegen/eventitem.dyl (worker thread)
+Now Lexing: codegen/methoditem.dyl
+Now Parsing: codegen/methoditem.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.FieldItem
 	Adding Field: Name
 	Adding Field: FieldTyp
@@ -2344,10 +2349,11 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.FieldItem
 	Adding Field: LitVal
 	Adding Constructor: FieldItem
 	Adding Constructor: FieldItem
+Finished Processing: codegen/codegenerator.dyl (worker thread)
+Now Lexing: codegen/stmtreader.dyl
+Now Lexing: codegen/milambdas.dyl
 	Adding Method: ToString
-Now Lexing: codegen/propertyitem.dyl
-Now Parsing: codegen/propertyitem.dyl
-Finished Processing: codegen/propertyitem.dyl (inline)
+Now Parsing: codegen/milambdas.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.PropertyItem
 	Adding Field: Name
 	Adding Field: PropertyTyp
@@ -2357,9 +2363,6 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.PropertyItem
 	Adding Constructor: PropertyItem
 	Adding Constructor: PropertyItem
 	Adding Method: ToString
-Now Lexing: codegen/eventitem.dyl
-Now Parsing: codegen/eventitem.dyl
-Finished Processing: codegen/eventitem.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.CodeGen.EventItem
 	Adding Field: Name
 	Adding Field: EventTyp
@@ -2369,9 +2372,7 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.EventItem
 	Adding Constructor: EventItem
 	Adding Constructor: EventItem
 	Adding Method: ToString
-Now Lexing: codegen/methoditem.dyl
-Now Parsing: codegen/methoditem.dyl
-Finished Processing: codegen/methoditem.dyl (inline)
+Finished Processing: codegen/methoditem.dyl (worker thread)
 Adding Class: dylan.NET.Tokenizer.CodeGen.MethodItem
 	Adding Field: Name
 	Adding Field: MethodTyp
@@ -2380,10 +2381,23 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.MethodItem
 	Adding Field: NrGenParams
 	Adding Constructor: MethodItem
 	Adding Constructor: MethodItem
+Now Lexing: codegen/ctoritem.dyl
 	Adding Method: ToString
-Now Lexing: codegen/milambdas.dyl
-Now Parsing: codegen/milambdas.dyl
-Finished Processing: codegen/milambdas.dyl (inline)
+Now Parsing: codegen/stmtreader.dyl
+Now Parsing: codegen/ctoritem.dyl
+Finished Processing: codegen/ctoritem.dyl (worker thread)
+Now Lexing: codegen/cilambdas.dyl
+Now Parsing: codegen/cilambdas.dyl
+Now Lexing: codegen/typeitem.dyl
+Now Parsing: codegen/typeitem.dyl
+Finished Processing: codegen/cilambdas.dyl (worker thread)
+Now Lexing: codegen/tilambdas.dyl
+Now Parsing: codegen/tilambdas.dyl
+Finished Processing: codegen/tilambdas.dyl (worker thread)
+Now Lexing: codegen/collectionitem.dyl
+Now Parsing: codegen/collectionitem.dyl
+Finished Processing: codegen/milambdas.dyl (worker thread)
+Now Lexing: codegen/typelist.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.MILambdas2
 	Adding Field: Name
 	Adding Field: ParamLen
@@ -2393,31 +2407,32 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.MILambdas2
 	Adding Constructor: MILambdas2
 	Adding Constructor: MILambdas2
 	Adding Method: GenericMtdFilter
+Finished Processing: codegen/collectionitem.dyl (worker thread)
+Now Lexing: codegen/labelitem.dyl
 	Adding Method: InstGenMtd
 	Adding Method: CmpTyps
+Now Parsing: codegen/labelitem.dyl
+Now Parsing: codegen/typelist.dyl
 	Adding Method: CmpTyps2
 	Adding Method: DetermineIfCandidate
 	Adding Method: DetermineIfCandidate2
+Finished Processing: codegen/labelitem.dyl (worker thread)
+Now Lexing: codegen/loopitem.dyl
+Now Lexing: codegen/ifitem.dyl
+Now Parsing: codegen/ifitem.dyl
+Now Parsing: codegen/loopitem.dyl
 	Adding Method: DetermineIfProtoCandidate
 	Adding Method: CalcDeriveness
 	Adding Method: ExtractDeriveness
 	Adding Method: ExtractDeriveness2
 	Adding Method: ZipDeriveness
 	Adding Method: DerivenessMax
-Now Lexing: codegen/ctoritem.dyl
-Now Parsing: codegen/ctoritem.dyl
-Finished Processing: codegen/ctoritem.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.CodeGen.CtorItem
 	Adding Field: ParamTyps
 	Adding Field: CtorBldr
 	Adding Constructor: CtorItem
 	Adding Constructor: CtorItem
 	Adding Method: ToString
-Now Lexing: codegen/cilambdas.dyl
-Now Parsing: codegen/cilambdas.dyl
-Now Lexing: codegen/typeitem.dyl
-Now Parsing: codegen/typeitem.dyl
-Finished Processing: codegen/cilambdas.dyl (inline)
 Adding Class: dylan.NET.Tokenizer.CodeGen.CILambdas
 	Adding Field: Params
 	Adding Constructor: CILambdas
@@ -2428,15 +2443,39 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.CILambdas
 	Adding Method: ExtractDeriveness
 	Adding Method: ZipDeriveness
 	Adding Method: DerivenessMax
+Finished Processing: codegen/ifitem.dyl (worker thread)
+Now Lexing: codegen/lockitem.dyl
+Now Parsing: codegen/lockitem.dyl
+Finished Processing: codegen/lockitem.dyl (worker thread)
+Now Lexing: codegen/usingitem.dyl
+Now Parsing: codegen/usingitem.dyl
+Finished Processing: codegen/usingitem.dyl (worker thread)
+Now Lexing: codegen/typeparamitem.dyl
+Now Parsing: codegen/typeparamitem.dyl
+Finished Processing: codegen/loopitem.dyl (worker thread)
+Now Lexing: codegen/pinvokeinfo.dyl
+Now Parsing: codegen/pinvokeinfo.dyl
+Now Lexing: codegen/constinfo.dyl
+Now Parsing: codegen/constinfo.dyl
+Finished Processing: codegen/constinfo.dyl (worker thread)
+Now Lexing: codegen/symtable.dyl
+Finished Processing: codegen/pinvokeinfo.dyl (worker thread)
+Finished Processing: codegen/typeparamitem.dyl (worker thread)
+Now Lexing: codegen/opstack.dyl
+Now Lexing: codegen/helpers.dyl
+Now Parsing: codegen/opstack.dyl
+Now Parsing: codegen/symtable.dyl
+Finished Processing: codegen/opstack.dyl (worker thread)
+Now Lexing: codegen/eval.dyl
+Now Parsing: codegen/helpers.dyl
+Now Parsing: codegen/eval.dyl
 Finished Processing: codegen/typeitem.dyl (worker thread)
-Now Lexing: codegen/tilambdas.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.TypeItem
 	Adding Field: Name
 	Adding Field: IsStatic
 	Adding Field: InhTyp
 	Adding Field: BakedTyp
 	Adding Field: Interfaces
-Now Parsing: codegen/tilambdas.dyl
 	Adding Field: TypeBldr
 	Adding Field: EnumBldr
 	Adding Field: Methods
@@ -2453,15 +2492,10 @@ Now Parsing: codegen/tilambdas.dyl
 	Adding Method: AddInterface
 	Adding Method: NormalizeInterfaces
 	Adding Method: GetMethod
-Finished Processing: codegen/tilambdas.dyl (worker thread)
-Now Lexing: codegen/collectionitem.dyl
-Now Parsing: codegen/collectionitem.dyl
 	Adding Method: GetGenericMethod
 	Adding Method: GetProtoMethod
 	Adding Method: GetCtor
-Finished Processing: codegen/collectionitem.dyl (worker thread)
-Now Lexing: codegen/typelist.dyl
-Now Parsing: codegen/typelist.dyl
+Finished Processing: codegen/typelist.dyl (worker thread)
 	Adding Method: GetField
 	Adding Method: ToString
 Adding Class: dylan.NET.Tokenizer.CodeGen.TILambdas
@@ -2477,18 +2511,12 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.CollectionItem
 	Adding Field: Ctor
 	Adding Field: AddMtd
 	Adding Constructor: CollectionItem
-Finished Processing: codegen/typelist.dyl (worker thread)
-Now Lexing: codegen/labelitem.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.Helpers
-Now Parsing: codegen/labelitem.dyl
 	Adding Method: CommitEvalTTok
 Adding Class: dylan.NET.Tokenizer.CodeGen.TypeList
 	Adding Field: Types
 	Adding Constructor: TypeList
 	Adding Method: GetTypeItem
-Finished Processing: codegen/labelitem.dyl (worker thread)
-Now Lexing: codegen/loopitem.dyl
-Now Parsing: codegen/loopitem.dyl
 	Adding Method: GetTypeItem
 	Adding Method: GetType
 	Adding Method: GetCtor
@@ -2502,15 +2530,12 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.LabelItem
 	Adding Field: LblName
 	Adding Constructor: LabelItem
 	Adding Constructor: LabelItem
-Finished Processing: codegen/loopitem.dyl (worker thread)
-Now Lexing: codegen/ifitem.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.LoopItem
 	Adding Field: EndLabel
 	Adding Field: StartLabel
 	Adding Field: Line
 	Adding Constructor: LoopItem
 	Adding Constructor: LoopItem
-Now Parsing: codegen/ifitem.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.ForLoopItem
 	Adding Field: Iter
 	Adding Field: StepExp
@@ -2520,8 +2545,6 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.ForLoopItem
 	Adding Field: Typ
 	Adding Constructor: ForLoopItem
 	Adding Constructor: ForLoopItem
-Finished Processing: codegen/ifitem.dyl (worker thread)
-Now Lexing: codegen/lockitem.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.IfItem
 	Adding Field: EndLabel
 	Adding Field: NextBlkLabel
@@ -2529,38 +2552,22 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.IfItem
 	Adding Field: Line
 	Adding Constructor: IfItem
 	Adding Constructor: IfItem
-Now Parsing: codegen/lockitem.dyl
-Finished Processing: codegen/lockitem.dyl (worker thread)
-Now Lexing: codegen/usingitem.dyl
-Now Lexing: codegen/typeparamitem.dyl
-Now Parsing: codegen/usingitem.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.LockItem
 	Adding Field: LockeeLoc
 	Adding Field: Line
 	Adding Constructor: LockItem
 	Adding Constructor: LockItem
-Now Parsing: codegen/typeparamitem.dyl
-Finished Processing: codegen/usingitem.dyl (worker thread)
-Now Lexing: codegen/pinvokeinfo.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.UsingItem
-Now Parsing: codegen/pinvokeinfo.dyl
 	Adding Field: UseeLoc
 	Adding Field: Line
 	Adding Constructor: UsingItem
 	Adding Constructor: UsingItem
-Finished Processing: codegen/typeparamitem.dyl (worker thread)
-Now Lexing: codegen/constinfo.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.TypeParamItem
-Now Parsing: codegen/constinfo.dyl
 	Adding Field: Bldr
 	Adding Field: Name
 	Adding Field: BaseType
 	Adding Field: Interfaces
 	Adding Constructor: TypeParamItem
-Finished Processing: codegen/constinfo.dyl (worker thread)
-Finished Processing: codegen/pinvokeinfo.dyl (worker thread)
-Now Lexing: codegen/symtable.dyl
-Now Lexing: codegen/helpers.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.PInvokeInfo
 	Adding Field: LibName
 	Adding Field: CallConv
@@ -2569,12 +2576,8 @@ Adding Class: dylan.NET.Tokenizer.CodeGen.PInvokeInfo
 Adding Class: dylan.NET.Tokenizer.CodeGen.ConstInfo
 	Adding Field: Value
 	Adding Field: Typ
-Now Parsing: codegen/symtable.dyl
-Now Parsing: codegen/helpers.dyl
 Finished Processing: codegen/symtable.dyl (worker thread)
-Now Lexing: codegen/opstack.dyl
 Adding Class: dylan.NET.Tokenizer.CodeGen.SymTable
-Now Parsing: codegen/opstack.dyl
 	Adding Field: VarLst
 	Adding Field: MetGenParams
 	Adding Field: MethodCALst
@@ -2601,8 +2604,6 @@ Now Parsing: codegen/opstack.dyl
 	Adding Field: LblLst
 	Adding Field: StoreFlg
 	Adding Constructor: SymTable
-Finished Processing: codegen/opstack.dyl (worker thread)
-Now Lexing: codegen/eval.dyl
 	Adding Method: ResetIf
 	Adding Method: ResetLock
 	Adding Method: ResetUsing
@@ -2654,7 +2655,6 @@ Now Lexing: codegen/eval.dyl
 	Adding Method: AddLbl
 	Adding Method: FindVar
 	Adding Method: CheckUnusedVar
-Now Parsing: codegen/eval.dyl
 	Adding Method: CheckCtrlBlks
 	Adding Method: PushScope
 	Adding Method: PopScope
@@ -2666,8 +2666,8 @@ Now Parsing: codegen/eval.dyl
 	Adding Method: FindProtoMet
 	Adding Method: FindMetNoParams
 	Adding Method: FindCtor
-Finished Processing: codegen/stmtreader.dyl (worker thread)
 Finished Processing: codegen/eval.dyl (worker thread)
+Finished Processing: codegen/stmtreader.dyl (worker thread)
 Finished Processing: codegen/helpers.dyl (worker thread)
 Continuing Class: dylan.NET.Tokenizer.CodeGen.Helpers
 	Adding Field: StringFlg
