@@ -161,6 +161,8 @@ class public auto ansi CodeGenerator
 		end if
 
 		if ILEmitter::SrcFiles::get_Count() = 0 then
+			Helpers::ApplyAsmAttrs()
+		
 			StreamUtils::Write("Writing Assembly to Disk")
 			AsmFactory::AsmB::DefineVersionInfoResource()
 			AsmFactory::AsmB::Save(AsmFactory::AsmFile)
