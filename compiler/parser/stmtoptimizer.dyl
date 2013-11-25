@@ -858,7 +858,7 @@ class public auto ansi StmtOptimizer
 			var clss as ClassStmt = new ClassStmt() {Line = stm::Line, Tokens = stm::Tokens}		
 			if stm::Tokens::get_Item(0) is StructTok then
 				stflg = true
-				clss::InhClass = new TypeTok(ILEmitter::Univ::Import(gettype ValueType))
+				clss::InhClass = new TypeTok("System.ValueType")
 			end if
 			
 			var i as integer = 0

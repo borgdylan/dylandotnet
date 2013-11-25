@@ -22,7 +22,7 @@ class public auto ansi StmtReader
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Attribute Class '{0}' was not found.", stm::Ctor::Name::ToString()))
 		end if
 		
-		if typ::Equals(ILEmitter::Univ::Import(gettype DllImportAttribute)) then
+		if typ::Equals(Loader::LoadClass("System.Runtime.InteropServices.DllImportAttribute")) then
 			SymTable::PIInfo = new PInvokeInfo() {LibName = $string$Helpers::LiteralToConst($Literal$stm::Ctor::Params::get_Item(0)::Tokens::get_Item(0))}
 			return null
 		end if
@@ -93,7 +93,7 @@ class public auto ansi StmtReader
 		
 		if ti2 == null then
 			inhtyp = reft ?? #ternary {clss::InhClass::Value::get_Length() == 0 ? _
-					ILEmitter::Univ::Import(gettype object), Helpers::CommitEvalTTok(clss::InhClass)}
+					Loader::LoadClass("System.Object"), Helpers::CommitEvalTTok(clss::InhClass)}
 			if inhtyp = null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Base Class '{0}' is not defined or is not accessible.", clss::InhClass::Value))
 			end if
@@ -107,7 +107,7 @@ class public auto ansi StmtReader
 			inhtyp = ti2::InhTyp
 		end if
 		
-		ILEmitter::StructFlg = inhtyp::Equals(ILEmitter::Univ::Import(gettype ValueType))
+		ILEmitter::StructFlg = inhtyp::Equals(Loader::LoadClass("System.ValueType"))
 		var clssparams as TypeAttributes = TypeAttributes::Class
 		
 		if ti2 == null then
@@ -218,7 +218,7 @@ class public auto ansi StmtReader
 		end if
 
 		var dta as TypeAttributes = Helpers::ProcessClassAttrs(dels::Attrs) or TypeAttributes::AnsiClass or TypeAttributes::Sealed or TypeAttributes::AutoClass
-		var dinhtyp as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype MulticastDelegate)
+		var dinhtyp as IKVM.Reflection.Type = Loader::LoadClass("System.MulticastDelegate")
 		AsmFactory::CurnInhTyp = dinhtyp
 
 		if !AsmFactory::isNested then
@@ -246,7 +246,7 @@ class public auto ansi StmtReader
 
 		var dema as MethodAttributes = MethodAttributes::HideBySig or MethodAttributes::Public
 		var stdcc as CallingConventions = CallingConventions::Standard
-		var dtarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[] {ILEmitter::Univ::Import(gettype object), ILEmitter::Univ::Import(gettype IntPtr)}
+		var dtarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object"), Loader::LoadClass("System.IntPtr")}
 		AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(dema, stdcc, dtarr)
 		AsmFactory::InitDelConstr()
 
@@ -269,13 +269,13 @@ class public auto ansi StmtReader
 
 		var dtarr2 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[dtarr[l] + 2]
 		Array::Copy(dtarr,dtarr2,$long$dtarr[l])
-		dtarr2[dtarr2[l] - 2] = ILEmitter::Univ::Import(gettype AsyncCallback)
-		dtarr2[--dtarr2[l]] = ILEmitter::Univ::Import(gettype object)
+		dtarr2[dtarr2[l] - 2] = Loader::LoadClass("System.AsyncCallback")
+		dtarr2[--dtarr2[l]] = Loader::LoadClass("System.Object")
 
-		AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod("BeginInvoke", dema, ILEmitter::Univ::Import(gettype IAsyncResult), dtarr2)
+		AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod("BeginInvoke", dema, Loader::LoadClass("System.IAsyncResult"), dtarr2)
 		AsmFactory::InitDelMet()
 
-		SymTable::CurnTypItem::AddMethod(new MethodItem("BeginInvoke",ILEmitter::Univ::Import(gettype IAsyncResult),dtarr2,AsmFactory::CurnMetB))
+		SymTable::CurnTypItem::AddMethod(new MethodItem("BeginInvoke",Loader::LoadClass("System.IAsyncResult"),dtarr2,AsmFactory::CurnMetB))
 
 		var iter as integer = -1
 		var lis as IList<of IKVM.Reflection.Type> = new List<of IKVM.Reflection.Type>()
@@ -289,7 +289,7 @@ class public auto ansi StmtReader
 
 		var dtarr3 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[++dtarr[l]]
 		Array::Copy(dtarr,dtarr3,$long$dtarr[l])
-		dtarr3[--dtarr3[l]] = ILEmitter::Univ::Import(gettype IAsyncResult)
+		dtarr3[--dtarr3[l]] = Loader::LoadClass("System.IAsyncResult")
 
 		AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod("EndInvoke", dema, drettyp, dtarr3)
 		AsmFactory::InitDelMet()
@@ -393,7 +393,7 @@ class public auto ansi StmtReader
 
 					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefinePInvokeMethod(mtssnamstr, pinfo::LibName, ma, CallingConventions::Standard, rettyp, paramstyps, pinfo::CallConv, pinfo::CSet)
 				else
-					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, ma, ILEmitter::Univ::Import(gettype void), IKVM.Reflection.Type::EmptyTypes)
+					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, ma, Loader::LoadClass("System.Void"), IKVM.Reflection.Type::EmptyTypes)
 					
 					if mtss::MethodName is GenericMethodNameTok then
 						var paramdefs = #expr($GenericMethodNameTok$mtss::MethodName)::Params
@@ -629,9 +629,9 @@ class public auto ansi StmtReader
 
 		// --------------------------------------------------------------------------------------------------------
 		if AsmFactory::DebugFlg then
-			var dtyp as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype DebuggableAttribute)
+			var dtyp as IKVM.Reflection.Type = Loader::LoadClass("System.Diagnostics.DebuggableAttribute")
 			var debugattr as DebuggableAttribute\DebuggingModes = DebuggableAttribute\DebuggingModes::Default or DebuggableAttribute\DebuggingModes::DisableOptimizations
-			var dattyp as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype DebuggableAttribute\DebuggingModes)
+			var dattyp as IKVM.Reflection.Type = Loader::LoadClass("System.Diagnostics.DebuggableAttribute\DebuggingModes")
 			AsmFactory::AsmB::SetCustomAttribute(new CustomAttributeBuilder(dtyp::GetConstructor(new IKVM.Reflection.Type[] {dattyp}), new object[] {$object$debugattr}))
 		end if
 		// --------------------------------------------------------------------------------------------------------
@@ -1075,7 +1075,7 @@ class public auto ansi StmtReader
 			ILEmitter::LocInd++
 			
 			if curva::IsUsing then
-				if !ILEmitter::Univ::Import(gettype IDisposable)::IsAssignableFrom(vtyp) then
+				if !Loader::LoadClass("System.IDisposable")::IsAssignableFrom(vtyp) then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + vtyp::ToString() + "' is not an IDisposable.")
 				end if
 				SymTable::PushScope()
@@ -1096,7 +1096,7 @@ class public auto ansi StmtReader
 			ILEmitter::LocInd++
 			
 			if curva::IsUsing then
-				if !ILEmitter::Univ::Import(gettype IDisposable)::IsAssignableFrom(vtyp) then
+				if !Loader::LoadClass("System.IDisposable")::IsAssignableFrom(vtyp) then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + vtyp::ToString() + "' is not an IDisposable.")
 				end if
 				SymTable::PushScope()
@@ -1150,7 +1150,7 @@ class public auto ansi StmtReader
 			SymTable::AddIf()
 			SymTable::PushScope()
 			new Evaluator()::Evaluate(ifstm::Exp)
-			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
+			if !AsmFactory::Type02::Equals(Loader::LoadClass("System.Boolean")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for If Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
@@ -1174,7 +1174,7 @@ class public auto ansi StmtReader
 		elseif stm is UntilStmt then
 			var unstm as UntilStmt = $UntilStmt$stm
 			new Evaluator()::Evaluate(unstm::Exp)
-			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
+			if !AsmFactory::Type02::Equals(Loader::LoadClass("System.Boolean")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Until Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadLoopStartLbl())
@@ -1184,7 +1184,7 @@ class public auto ansi StmtReader
 		elseif stm is WhileStmt then
 			var whstm as WhileStmt = $WhileStmt$stm
 			new Evaluator()::Evaluate(whstm::Exp)
-			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
+			if !AsmFactory::Type02::Equals(Loader::LoadClass("System.Boolean")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for While Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrtrue(SymTable::ReadLoopStartLbl())
@@ -1197,7 +1197,7 @@ class public auto ansi StmtReader
 			SymTable::AddLoop()
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
 			new Evaluator()::Evaluate(dustm::Exp)
-			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
+			if !AsmFactory::Type02::Equals(Loader::LoadClass("System.Boolean")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Do Until Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
@@ -1207,7 +1207,7 @@ class public auto ansi StmtReader
 			SymTable::AddLoop()
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
 			new Evaluator()::Evaluate(dwstm::Exp)
-			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
+			if !AsmFactory::Type02::Equals(Loader::LoadClass("System.Boolean")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Do While Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
@@ -1221,7 +1221,7 @@ class public auto ansi StmtReader
 			SymTable::PopScope()
 			SymTable::PushScope()
 			new Evaluator()::Evaluate(elifstm::Exp)
-			if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
+			if !AsmFactory::Type02::Equals(Loader::LoadClass("System.Boolean")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for ElseIf Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
@@ -1251,7 +1251,7 @@ class public auto ansi StmtReader
 			var trostmt as ThrowStmt = $ThrowStmt$stm
 			if trostmt::RExp != null then
 				new Evaluator()::Evaluate(trostmt::RExp)
-				if !ILEmitter::Univ::Import(gettype Exception)::IsAssignableFrom(AsmFactory::Type02) then
+				if !Loader::LoadClass("System.Exception")::IsAssignableFrom(AsmFactory::Type02) then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + AsmFactory::Type02::ToString() + "' is not an Exception Type.")
 				end if
 				ILEmitter::EmitThrow()
@@ -1354,21 +1354,21 @@ class public auto ansi StmtReader
 			var lstm as LockStmt = $LockStmt$stm
 			SymTable::PushScope()
 			new Evaluator()::Evaluate(lstm::Lockee)
-			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type02) then
+			if Loader::LoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type02) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Locks should only be taken on Objects and not Valuetypes.")
 			end if
-			ILEmitter::DeclVar(String::Empty, ILEmitter::Univ::Import(gettype object))
+			ILEmitter::DeclVar(String::Empty, Loader::LoadClass("System.Object"))
 			ILEmitter::LocInd++
 			var lockee as integer = ILEmitter::LocInd
 			ILEmitter::EmitStloc(lockee)
 			SymTable::AddLock(lockee)
 			ILEmitter::EmitLdloc(lockee)
-			ILEmitter::EmitCall(ILEmitter::Univ::Import(gettype Monitor)::GetMethod("Enter",new IKVM.Reflection.Type[] {ILEmitter::Univ::Import(gettype object)}))
+			ILEmitter::EmitCall(Loader::LoadClass("System.Threading.Monitor")::GetMethod("Enter", new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object")}))
 			ILEmitter::EmitTry()
 		elseif stm is EndLockStmt then
 			ILEmitter::EmitFinally()
 			ILEmitter::EmitLdloc(SymTable::ReadLockeeLoc())
-			ILEmitter::EmitCall(ILEmitter::Univ::Import(gettype Monitor)::GetMethod("Exit",new IKVM.Reflection.Type[] {ILEmitter::Univ::Import(gettype object)}))
+			ILEmitter::EmitCall(Loader::LoadClass("System.Threading.Monitor")::GetMethod("Exit", new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object")}))
 			ILEmitter::EmitEndTry()
 			SymTable::PopLock()
 			SymTable::PopScope()

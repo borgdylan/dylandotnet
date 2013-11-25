@@ -30,8 +30,7 @@ class public auto ansi static Loader
 		MakeRef = false
 		PreProcTyp = null
 	end method
-
-	[method: ComVisible(false)]
+	
 	method public static IKVM.Reflection.Type LoadClass(var name as string) 
 
 		var typ as IKVM.Reflection.Type = null
@@ -173,7 +172,7 @@ class public auto ansi static Loader
 		var mtdinfo as IKVM.Reflection.MethodInfo = null
 
 		if typ::get_IsArray() then
-			typ = ILEmitter::Univ::Import(gettype Array)
+			typ = Loader::LoadClass("System.Array")
 		end if
 		
 		mtdinfo = typ::GetMethod(name,typs)

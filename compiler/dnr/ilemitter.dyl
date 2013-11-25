@@ -6,6 +6,13 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
+class public auto ansi partial static Loader
+
+	[method: ComVisible(false)]
+	method public static prototype IKVM.Reflection.Type LoadClass(var name as string) 
+
+end class
+
 class public auto ansi static ILEmitter
 
 	field public static IKVM.Reflection.Emit.MethodBuilder Met
@@ -227,23 +234,23 @@ class public auto ansi static ILEmitter
 	
 	[method: ComVisible(false)]
 	method public static void EmitStelem(var typ as IKVM.Reflection.Type)	
-		if Univ::Import(gettype intptr)::Equals(typ) then
+		if Loader::LoadClass("System.IntPtr")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I)
-		elseif Univ::Import(gettype sbyte)::Equals(typ) then
+		elseif Loader::LoadClass("System.SByte")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I1)
-		elseif Univ::Import(gettype short)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int16")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I2)
-		elseif Univ::Import(gettype integer)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int32")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I4)
-		elseif Univ::Import(gettype long)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int64")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_I8)
-		elseif Univ::Import(gettype single)::Equals(typ) then
+		elseif Loader::LoadClass("System.Single")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_R4)
-		elseif Univ::Import(gettype double)::Equals(typ) then
+		elseif Loader::LoadClass("System.Double")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_R8)
-		elseif Univ::Import(gettype ValueType)::IsAssignableFrom(typ) then
+		elseif Loader::LoadClass("System.ValueType")::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem, typ)
-		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
+		elseif Loader::LoadClass("System.Object")::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem_Ref)
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stelem, typ)
@@ -252,23 +259,23 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitStind(var typ as IKVM.Reflection.Type)	
-		if Univ::Import(gettype intptr)::Equals(typ) then
+		if Loader::LoadClass("System.IntPtr")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I)
-		elseif Univ::Import(gettype sbyte)::Equals(typ) then
+		elseif Loader::LoadClass("System.SByte")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I1)
-		elseif Univ::Import(gettype short)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int16")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I2)
-		elseif Univ::Import(gettype integer)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int32")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I4)
-		elseif Univ::Import(gettype long)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int64")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_I8)
-		elseif Univ::Import(gettype single)::Equals(typ) then
+		elseif Loader::LoadClass("System.Single")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_R4)
-		elseif Univ::Import(gettype double)::Equals(typ) then
+		elseif Loader::LoadClass("System.Double")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_R8)
-		elseif Univ::Import(gettype ValueType)::IsAssignableFrom(typ) then
+		elseif Loader::LoadClass("System.ValueType")::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stobj, typ)
-		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
+		elseif Loader::LoadClass("System.Object")::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stind_Ref)
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stobj, typ)
@@ -277,29 +284,29 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitLdelem(var typ as IKVM.Reflection.Type)
-		if Univ::Import(gettype intptr)::Equals(typ) then
+		if Loader::LoadClass("System.IntPtr")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I)
-		elseif Univ::Import(gettype sbyte)::Equals(typ) then
+		elseif Loader::LoadClass("System.SByte")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I1)
-		elseif Univ::Import(gettype short)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int16")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I2)
-		elseif Univ::Import(gettype integer)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int32")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I4)
-		elseif Univ::Import(gettype byte)::Equals(typ) then
+		elseif Loader::LoadClass("System.Byte")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_U1)
-		elseif Univ::Import(gettype ushort)::Equals(typ) then
+		elseif Loader::LoadClass("System.UInt16")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_U2)
-		elseif Univ::Import(gettype uinteger)::Equals(typ) then
+		elseif Loader::LoadClass("System.UInt32")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_U4)
-		elseif Univ::Import(gettype long)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int64")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_I8)
-		elseif Univ::Import(gettype single)::Equals(typ) then
+		elseif Loader::LoadClass("System.Single")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_R4)
-		elseif Univ::Import(gettype double)::Equals(typ) then
+		elseif Loader::LoadClass("System.Double")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_R8)
-		elseif Univ::Import(gettype ValueType)::IsAssignableFrom(typ) then
+		elseif Loader::LoadClass("System.ValueType")::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem, typ)
-		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
+		elseif Loader::LoadClass("System.Object")::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem_Ref)
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldelem, typ)
@@ -308,29 +315,29 @@ class public auto ansi static ILEmitter
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdind(var typ as IKVM.Reflection.Type)
-		if Univ::Import(gettype intptr)::Equals(typ) then
+		if Loader::LoadClass("System.IntPtr")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I)
-		elseif Univ::Import(gettype sbyte)::Equals(typ) then
+		elseif Loader::LoadClass("System.SByte")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I1)
-		elseif Univ::Import(gettype short)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int16")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I2)
-		elseif Univ::Import(gettype integer)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int32")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I4)
-		elseif Univ::Import(gettype byte)::Equals(typ) then
+		elseif Loader::LoadClass("System.Byte")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_U1)
-		elseif Univ::Import(gettype ushort)::Equals(typ) then
+		elseif Loader::LoadClass("System.UInt16")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_U2)
-		elseif Univ::Import(gettype uinteger)::Equals(typ) then
+		elseif Loader::LoadClass("System.UInt32")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_U4)
-		elseif Univ::Import(gettype long)::Equals(typ) then
+		elseif Loader::LoadClass("System.Int64")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_I8)
-		elseif Univ::Import(gettype single)::Equals(typ) then
+		elseif Loader::LoadClass("System.Single")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_R4)
-		elseif Univ::Import(gettype double)::Equals(typ) then
+		elseif Loader::LoadClass("System.Double")::Equals(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_R8)
-		elseif Univ::Import(gettype ValueType)::IsAssignableFrom(typ) then
+		elseif Loader::LoadClass("System.ValueType")::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldobj, typ)
-		elseif Univ::Import(gettype object)::IsAssignableFrom(typ) then
+		elseif Loader::LoadClass("System.Object")::IsAssignableFrom(typ) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldind_Ref)
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldobj, typ)
@@ -419,8 +426,8 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldstr, $string$n)
-			var convc as IKVM.Reflection.Type = Univ::Import(gettype Convert)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {Univ::Import(gettype string)}))
+			var convc as IKVM.Reflection.Type = Loader::LoadClass("System.Convert")
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {Loader::LoadClass("System.String")}))
 		end if
 	end method
 
@@ -541,24 +548,24 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcDec(var n as decimal)
-		var dec as IKVM.Reflection.Type = Univ::Import(gettype decimal)
+		var dec as IKVM.Reflection.Type = Loader::LoadClass("System.Decimal")
 		var temps as single
 		var tempd as double
 		if (Math::Ceiling(n) == n) and ($decimal$integer::MinValue <= n) and (n <= $decimal$integer::MaxValue) then
 			EmitLdcI4($integer$n)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype integer)}))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::LoadClass("System.Int32")}))
 		elseif (Math::Ceiling(n) == n) and ($decimal$long::MinValue <= n) and (n <= $decimal$long::MaxValue) then
 			EmitLdcI8($long$n)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype long)}))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::LoadClass("System.Int64")}))
 		elseif single::TryParse($string$n, ref temps) then
 			EmitLdcR4($single$n)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype single)}))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::LoadClass("System.Single")}))
 		elseif double::TryParse($string$n, ref tempd) then
 			EmitLdcR8($double$n)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Univ::Import(gettype double)}))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::LoadClass("System.Double")}))
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldstr,$string$n)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, dec::GetMethod("Parse",new IKVM.Reflection.Type[] {Univ::Import(gettype string)}))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, dec::GetMethod("Parse",new IKVM.Reflection.Type[] {Loader::LoadClass("System.String")}))
 		end if
 	end method
 
@@ -755,15 +762,15 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitLike()
-		var lotyp as IKVM.Reflection.Type = Univ::Import(gettype Regex)
-		var strtyp as IKVM.Reflection.Type = Univ::Import(gettype string)
+		var lotyp as IKVM.Reflection.Type = Loader::LoadClass("System.Text.RegularExpressions.Regex")
+		var strtyp as IKVM.Reflection.Type = Loader::LoadClass("System.String")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, lotyp::GetMethod("IsMatch",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitNLike()
-		var lotyp as IKVM.Reflection.Type = Univ::Import(gettype Regex)
-		var strtyp as IKVM.Reflection.Type = Univ::Import(gettype string)
+		var lotyp as IKVM.Reflection.Type = Loader::LoadClass("System.Text.RegularExpressions.Regex")
+		var strtyp as IKVM.Reflection.Type = Loader::LoadClass("System.String")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, lotyp::GetMethod("IsMatch",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
@@ -771,7 +778,7 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitStrCeq()
-		var strtyp as IKVM.Reflection.Type = Univ::Import(gettype string)
+		var strtyp as IKVM.Reflection.Type = Loader::LoadClass("System.String")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Compare",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
@@ -779,7 +786,7 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitStrCneq()
-		var strtyp as IKVM.Reflection.Type = Univ::Import(gettype string)
+		var strtyp as IKVM.Reflection.Type = Loader::LoadClass("System.String")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Compare",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
@@ -789,19 +796,19 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitStrAdd()
-		var strtyp as IKVM.Reflection.Type = Univ::Import(gettype string)
+		var strtyp as IKVM.Reflection.Type = Loader::LoadClass("System.String")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Concat",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitDelegateAdd()
-		var deltyp as IKVM.Reflection.Type = Univ::Import(gettype Delegate)
+		var deltyp as IKVM.Reflection.Type = Loader::LoadClass("System.Delegate")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, deltyp::GetMethod("Combine",new IKVM.Reflection.Type[] {deltyp, deltyp}))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitDelegateSub()
-		var deltyp as IKVM.Reflection.Type = Univ::Import(gettype Delegate)
+		var deltyp as IKVM.Reflection.Type = Loader::LoadClass("System.Delegate")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, deltyp::GetMethod("Remove",new IKVM.Reflection.Type[] {deltyp, deltyp}))
 	end method
 

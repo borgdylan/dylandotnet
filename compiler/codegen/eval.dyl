@@ -136,7 +136,7 @@ class public auto ansi beforefieldinit Evaluator
 	method private void ASTEmitValueFilter(var emt as boolean)
 		if emt then
 			if !#expr(AsmFactory::Type02 is GenericTypeParameterBuilder) then
-				if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type02) then
+				if Loader::LoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type02) then
 					ILEmitter::DeclVar(string::Empty, AsmFactory::Type02)
 					ILEmitter::LocInd++
 					ILEmitter::EmitStloc(ILEmitter::LocInd)
@@ -158,7 +158,7 @@ class public auto ansi beforefieldinit Evaluator
 					ILEmitter::EmitLdlen()
 					ILEmitter::EmitConvI4()
 				end if
-				AsmFactory::Type02 = ILEmitter::Univ::Import(gettype integer)
+				AsmFactory::Type02 = Loader::LoadClass("System.Int32")
 			else
 				typ = AsmFactory::Type02
 				ASTEmit(ConvToAST(ConvToRPN(idt::ArrLoc)), emt)
@@ -715,7 +715,7 @@ class public auto ansi beforefieldinit Evaluator
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + nctok::Name::ToString() + "' is not defined.")
 		end if
 
-		if nctyp::IsSubclassOf(ILEmitter::Univ::Import(gettype MulticastDelegate)) then
+		if nctyp::IsSubclassOf(Loader::LoadClass("System.MulticastDelegate")) then
 			delcreate = true
 			delparamarr = Loader::GetDelegateInvokeParams(nctyp)
 			delmtdnam = Helpers::StripDelMtdName(nctok::Params::get_Item(0)::Tokens::get_Item(0))
@@ -729,7 +729,7 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 
 		if delcreate then
-			typarr1 = new IKVM.Reflection.Type[] {ILEmitter::Univ::Import(gettype object), ILEmitter::Univ::Import(gettype IntPtr)}
+			typarr1 = new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object"), Loader::LoadClass("System.IntPtr")}
 
 			//delegate pointer loading section
 			mnstrarr = ParseUtils::StringParser(delmtdnam::Value, ":")
@@ -941,20 +941,20 @@ class public auto ansi beforefieldinit Evaluator
 				rctyp = AsmFactory::Type02
 
 				if emt then
-					Helpers::StringFlg = lctyp::Equals(ILEmitter::Univ::Import(gettype string)) and lctyp::Equals(rctyp)
-					Helpers::BoolFlg = lctyp::Equals(ILEmitter::Univ::Import(gettype boolean)) and lctyp::Equals(rctyp)
+					Helpers::StringFlg = lctyp::Equals(Loader::LoadClass("System.String")) and lctyp::Equals(rctyp)
+					Helpers::BoolFlg = lctyp::Equals(Loader::LoadClass("System.Boolean")) and lctyp::Equals(rctyp)
 					if lctyp::Equals(rctyp) then
-						Helpers::DelegateFlg = lctyp::IsSubclassOf(ILEmitter::Univ::Import(gettype Delegate))
+						Helpers::DelegateFlg = lctyp::IsSubclassOf(Loader::LoadClass("System.Delegate"))
 					end if
 				end if
 
 				Helpers::OpCodeSuppFlg = #ternary{lctyp::Equals(rctyp) ? lctyp::get_IsPrimitive(), false}
-				var typ2 = ILEmitter::Univ::Import(gettype ValueType)
+				var typ2 = Loader::LoadClass("System.ValueType")
 				Helpers::EqSuppFlg = !#expr(typ2::IsAssignableFrom(lctyp) or typ2::IsAssignableFrom(rctyp)) or Helpers::OpCodeSuppFlg
-				Helpers::EqSuppFlg = Helpers::EqSuppFlg or (lctyp::Equals(rctyp) and ILEmitter::Univ::Import(gettype Enum)::IsAssignableFrom(lctyp))
+				Helpers::EqSuppFlg = Helpers::EqSuppFlg or (lctyp::Equals(rctyp) and Loader::LoadClass("System.Enum")::IsAssignableFrom(lctyp))
 			end if
 
-			AsmFactory::Type02 = #ternary {optok is ConditionalOp ? ILEmitter::Univ::Import(gettype boolean), lctyp}
+			AsmFactory::Type02 = #ternary {optok is ConditionalOp ? Loader::LoadClass("System.Boolean"), lctyp}
 
 			if isflg then
 				if emt then
@@ -1047,9 +1047,9 @@ class public auto ansi beforefieldinit Evaluator
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + gtctok::Name::Value + "' is not defined.")
 					end if
 					ILEmitter::EmitLdtoken(typ2)
-					ILEmitter::EmitCall(ILEmitter::Univ::Import(gettype Type)::GetMethod("GetTypeFromHandle", new IKVM.Reflection.Type[] {ILEmitter::Univ::Import(gettype RuntimeTypeHandle)}))
+					ILEmitter::EmitCall(Loader::LoadClass("System.Type")::GetMethod("GetTypeFromHandle", new IKVM.Reflection.Type[] {Loader::LoadClass("System.RuntimeTypeHandle")}))
 				end if
-				AsmFactory::Type02 = ILEmitter::Univ::Import(gettype Type)
+				AsmFactory::Type02 = Loader::LoadClass("System.Type")
 			elseif tok is DefaultCallTok then
 				if emt then
 					//default section
@@ -1189,7 +1189,7 @@ class public auto ansi beforefieldinit Evaluator
 					SymTable::AddIf()
 				end if
 				ASTEmit(ConvToAST(ConvToRPN(tcc::Condition)), emt)
-				if !AsmFactory::Type02::Equals(ILEmitter::Univ::Import(gettype boolean)) then
+				if !AsmFactory::Type02::Equals(Loader::LoadClass("System.Boolean")) then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Ternary Expressions should evaluate to boolean.")
 				end if
 				if emt then
@@ -1236,7 +1236,7 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 					Helpers::EmitPtrLd(mcmetinf, mcisstatic)
 				end if
-				AsmFactory::Type02 = ILEmitter::Univ::Import(gettype IntPtr)
+				AsmFactory::Type02 = Loader::LoadClass("System.IntPtr")
 			end if
 
 		end if

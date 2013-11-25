@@ -33,7 +33,7 @@ class public auto ansi static Helpers
 	[method: ComVisible(false)]
 	method public static void CheckAssignability(var t1 as IKVM.Reflection.Type, var t2 as IKVM.Reflection.Type)
 		if !t1::IsAssignableFrom(t2) then
-			if !#expr(NullExprFlg and !t1::IsAssignableFrom(ILEmitter::Univ::Import(gettype ValueType))) then
+			if !#expr(NullExprFlg and !t1::IsAssignableFrom(Loader::LoadClass("System.ValueType"))) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Slots of type '" + t1::ToString() + "' cannot be assigned values of type '" + t2::ToString() + "'.")
 			end if
 		end if
@@ -347,15 +347,15 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static boolean CheckUnsigned(var t as IKVM.Reflection.Type)
-		if t::Equals(ILEmitter::Univ::Import(gettype uinteger)) then
+		if t::Equals(Loader::LoadClass("System.UInt32")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype ulong)) then
+		elseif t::Equals(Loader::LoadClass("System.UInt64")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype byte)) then
+		elseif t::Equals(Loader::LoadClass("System.Byte")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype ushort)) then
+		elseif t::Equals(Loader::LoadClass("System.UInt16")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype UIntPtr)) then
+		elseif t::Equals(Loader::LoadClass("System.UIntPtr")) then
 			return true
 		else
 			return false
@@ -364,15 +364,15 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static boolean CheckSigned(var t as IKVM.Reflection.Type)
-		if t::Equals(ILEmitter::Univ::Import(gettype sbyte)) then
+		if t::Equals(Loader::LoadClass("System.SByte")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype short)) then
+		elseif t::Equals(Loader::LoadClass("System.Int16")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype integer)) then
+		elseif t::Equals(Loader::LoadClass("System.Int32")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype long)) then
+		elseif t::Equals(Loader::LoadClass("System.Int64")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype intptr)) then
+		elseif t::Equals(Loader::LoadClass("System.IntPtr")) then
 			return true
 		else
 			return false
@@ -381,17 +381,17 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static boolean CheckSHLRLHS(var t as IKVM.Reflection.Type)
-		if t::Equals(ILEmitter::Univ::Import(gettype integer)) then
+		if t::Equals(Loader::LoadClass("System.Int32")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype uinteger)) then
+		elseif t::Equals(Loader::LoadClass("System.UInt32")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype long)) then
+		elseif t::Equals(Loader::LoadClass("System.Int64")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype ulong)) then
+		elseif t::Equals(Loader::LoadClass("System.UInt64")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype intptr)) then
+		elseif t::Equals(Loader::LoadClass("System.IntPtr")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype UIntPtr)) then
+		elseif t::Equals(Loader::LoadClass("System.UIntPtr")) then
 			return true
 		else
 			return false
@@ -400,11 +400,11 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static boolean CheckSHLRRHS(var t as IKVM.Reflection.Type, var accepti64 as boolean)
-		if t::Equals(ILEmitter::Univ::Import(gettype integer)) then
+		if t::Equals(Loader::LoadClass("System.Int32")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype long)) and accepti64 then
+		elseif t::Equals(Loader::LoadClass("System.Int64")) and accepti64 then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype intptr)) then
+		elseif t::Equals(Loader::LoadClass("System.IntPtr")) then
 			return true
 		else
 			return false
@@ -424,9 +424,9 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static boolean IsPrimitiveFPType(var t as IKVM.Reflection.Type)
-		if t::Equals(ILEmitter::Univ::Import(gettype double)) then
+		if t::Equals(Loader::LoadClass("System.Double")) then
 			return true
-		elseif t::Equals(ILEmitter::Univ::Import(gettype single)) then
+		elseif t::Equals(Loader::LoadClass("System.Single")) then
 			return true
 		else
 			return false
@@ -448,17 +448,17 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static integer GetPrimitiveNumericSize(var t as IKVM.Reflection.Type)
-		if t::Equals(ILEmitter::Univ::Import(gettype boolean)) then
+		if t::Equals(Loader::LoadClass("System.Boolean")) then
 			return 1
-		elseif t::Equals(ILEmitter::Univ::Import(gettype sbyte)) or t::Equals(ILEmitter::Univ::Import(gettype byte)) then
+		elseif t::Equals(Loader::LoadClass("System.SByte")) or t::Equals(Loader::LoadClass("System.Byte")) then
 			return 8
-		elseif t::Equals(ILEmitter::Univ::Import(gettype short)) or t::Equals(ILEmitter::Univ::Import(gettype ushort)) or t::Equals(ILEmitter::Univ::Import(gettype char)) then
+		elseif t::Equals(Loader::LoadClass("System.Int16")) or t::Equals(Loader::LoadClass("System.UInt16")) or t::Equals(Loader::LoadClass("System.Char")) then
 			return 16
-		elseif t::Equals(ILEmitter::Univ::Import(gettype integer)) or t::Equals(ILEmitter::Univ::Import(gettype uinteger)) or t::Equals(ILEmitter::Univ::Import(gettype single)) then
+		elseif t::Equals(Loader::LoadClass("System.Int32")) or t::Equals(Loader::LoadClass("System.UInt32")) or t::Equals(Loader::LoadClass("System.Single")) then
 			return 32
-		elseif t::Equals(ILEmitter::Univ::Import(gettype long)) or t::Equals(ILEmitter::Univ::Import(gettype ulong)) or t::Equals(ILEmitter::Univ::Import(gettype double)) then
+		elseif t::Equals(Loader::LoadClass("System.Int64")) or t::Equals(Loader::LoadClass("System.UInt64")) or t::Equals(Loader::LoadClass("System.Double")) then
 			return 64
-		elseif t::Equals(ILEmitter::Univ::Import(gettype intptr)) or t::Equals(ILEmitter::Univ::Import(gettype UIntPtr)) then
+		elseif t::Equals(Loader::LoadClass("System.IntPtr")) or t::Equals(Loader::LoadClass("System.UIntPtr")) then
 			return 64
 		else
 			return 0
@@ -726,33 +726,33 @@ class public auto ansi static Helpers
 	end method
 
 	method public static Literal ProcessConst(var lit as ConstLiteral)		
-		if ILEmitter::Univ::Import(gettype string)::Equals(lit::IntTyp) then
+		if Loader::LoadClass("System.String")::Equals(lit::IntTyp) then
 			return new StringLiteral($string$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype sbyte)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.SByte")::Equals(lit::IntTyp) then
 			return new SByteLiteral($sbyte$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype short)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.Int16")::Equals(lit::IntTyp) then
 			return new ShortLiteral($short$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype integer)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.Int32")::Equals(lit::IntTyp) then
 			return new IntLiteral($integer$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype long)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.Int64")::Equals(lit::IntTyp) then
 			return new LongLiteral($long$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype single)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.Single")::Equals(lit::IntTyp) then
 			return new FloatLiteral($single$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype double)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.Double")::Equals(lit::IntTyp) then
 			return new DoubleLiteral($double$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype boolean)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.Boolean")::Equals(lit::IntTyp) then
 			return new BooleanLiteral($boolean$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype char)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.Char")::Equals(lit::IntTyp) then
 			return new CharLiteral($char$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype object)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.Object")::Equals(lit::IntTyp) then
 			return new NullLiteral()
-		elseif ILEmitter::Univ::Import(gettype byte)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.Byte")::Equals(lit::IntTyp) then
 			return new ByteLiteral($byte$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype ushort)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.UInt16")::Equals(lit::IntTyp) then
 			return new UShortLiteral($ushort$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype uinteger)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.UInt32")::Equals(lit::IntTyp) then
 			return new UIntLiteral($uinteger$lit::ConstVal)
-		elseif ILEmitter::Univ::Import(gettype ulong)::Equals(lit::IntTyp) then
+		elseif Loader::LoadClass("System.UInt64")::Equals(lit::IntTyp) then
 			return new ULongLiteral($ulong$lit::ConstVal)
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Loading of constants of internal type '" + lit::IntTyp::ToString() + "' is not yet supported.")
@@ -1087,7 +1087,7 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void EmitLocLd(var ind as integer, var locarg as boolean)
-		if (AsmFactory::AddrFlg and ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom( _
+		if (AsmFactory::AddrFlg and Loader::LoadClass("System.ValueType")::IsAssignableFrom( _
 			#ternary{AsmFactory::Type04::get_IsByRef() ? AsmFactory::Type04::GetElementType(), AsmFactory::Type04})  and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
 			 or AsmFactory::ForcedAddrFlg then
 			if AsmFactory::Type04::get_IsByRef() then
@@ -1117,7 +1117,7 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void EmitElemLd(var t as IKVM.Reflection.Type)
-		if (AsmFactory::AddrFlg and ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type04)  and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
+		if (AsmFactory::AddrFlg and Loader::LoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type04)  and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
 		 or AsmFactory::ForcedAddrFlg then
 			ILEmitter::EmitLdelema(t)
 		else
@@ -1137,7 +1137,7 @@ class public auto ansi static Helpers
 	[method: ComVisible(false)]
 	method public static void EmitConv(var source as IKVM.Reflection.Type, var sink as IKVM.Reflection.Type)
 		var isgenparam = (source is GenericTypeParameterBuilder) or (sink  is GenericTypeParameterBuilder)
-		var convc as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype Convert)
+		var convc as IKVM.Reflection.Type = Loader::LoadClass("System.Convert")
 		var typ as IKVM.Reflection.Type
 		var m1 as MethodInfo
 		//var c1 as ConstructorInfo
@@ -1188,11 +1188,11 @@ class public auto ansi static Helpers
 			//end conv overload block
 		end if
 
-		if sink::Equals(ILEmitter::Univ::Import(gettype object)) then
-			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(source) then
+		if sink::Equals(Loader::LoadClass("System.Object")) then
+			if Loader::LoadClass("System.ValueType")::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
 				return
-			elseif (sink::get_BaseType() == null) and !sink::Equals(ILEmitter::Univ::Import(gettype object)) then
+			elseif (sink::get_BaseType() == null) and !sink::Equals(Loader::LoadClass("System.Object")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
 				return
 			else
@@ -1202,28 +1202,28 @@ class public auto ansi static Helpers
 		end if
 		
 		if sink::get_IsInterface() then
-			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(source) and sink::IsAssignableFrom(source) then
+			if Loader::LoadClass("System.ValueType")::IsAssignableFrom(source) and sink::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
 				return
-			elseif ILEmitter::Univ::Import(gettype object)::IsAssignableFrom(source) then
+			elseif Loader::LoadClass("System.Object")::IsAssignableFrom(source) then
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
 				return
 			end if
 		end if
 
-		if source::Equals(ILEmitter::Univ::Import(gettype object)) then
-			if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(sink) then
+		if source::Equals(Loader::LoadClass("System.Object")) then
+			if Loader::LoadClass("System.ValueType")::IsAssignableFrom(sink) then
 				ILEmitter::EmitUnboxAny(sink)
 				return
-			elseif ILEmitter::Univ::Import(gettype object)::IsAssignableFrom(sink) then
+			elseif Loader::LoadClass("System.Object")::IsAssignableFrom(sink) then
 			else
 				ILEmitter::EmitUnboxAny(sink)
 				return
 			end if
 		end if
 
-		typ = ILEmitter::Univ::Import(gettype ValueType)
+		typ = Loader::LoadClass("System.ValueType")
 		if !#expr(typ::IsAssignableFrom(sink) or typ::IsAssignableFrom(source)) then
 			if sink::IsAssignableFrom(source) then
 				if !sink::get_IsInterface() then
@@ -1244,19 +1244,19 @@ class public auto ansi static Helpers
 			return
 		end if
 		
-		if source::Equals(ILEmitter::Univ::Import(gettype IntPtr)) then
-			typ = ILEmitter::Univ::Import(gettype IntPtr)
+		if source::Equals(Loader::LoadClass("System.IntPtr")) then
+			typ = Loader::LoadClass("System.IntPtr")
 			m1 = typ::GetMethod("ToInt64", IKVM.Reflection.Type::EmptyTypes)
 			ILEmitter::EmitCallvirt(m1)
-			source = ILEmitter::Univ::Import(gettype long)
+			source = Loader::LoadClass("System.Int64")
 		end if
 		
-		if sink::Equals(ILEmitter::Univ::Import(gettype string)) then
+		if sink::Equals(Loader::LoadClass("System.String")) then
 			m1 = convc::GetMethod("ToString", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype char)) then
+		elseif sink::Equals(Loader::LoadClass("System.Char")) then
 			m1 = convc::GetMethod("ToChar", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				if (GetPrimitiveNumericSize(source) <= 16) and CheckUnsigned(source) then
@@ -1267,22 +1267,22 @@ class public auto ansi static Helpers
 			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype decimal)) then
+		elseif sink::Equals(Loader::LoadClass("System.Decimal")) then
 			m1 = convc::GetMethod("ToDecimal", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype double)) then
+		elseif sink::Equals(Loader::LoadClass("System.Double")) then
 			m1 = convc::GetMethod("ToDouble", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype single)) then
+		elseif sink::Equals(Loader::LoadClass("System.Single")) then
 			m1 = convc::GetMethod("ToSingle", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype long)) then
+		elseif sink::Equals(Loader::LoadClass("System.Int64")) then
 			m1 = convc::GetMethod("ToInt64", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				if GetPrimitiveNumericSize(source) <= 32 then
@@ -1293,12 +1293,12 @@ class public auto ansi static Helpers
 			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype ulong)) then
+		elseif sink::Equals(Loader::LoadClass("System.UInt64")) then
 			m1 = convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype integer)) then
+		elseif sink::Equals(Loader::LoadClass("System.Int32")) then
 			m1 = convc::GetMethod("ToInt32", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				if GetPrimitiveNumericSize(source) <= 16 then
@@ -1309,32 +1309,32 @@ class public auto ansi static Helpers
 			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype uinteger)) then
+		elseif sink::Equals(Loader::LoadClass("System.UInt32")) then
 			m1 = convc::GetMethod("ToUInt32", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype short)) then
+		elseif sink::Equals(Loader::LoadClass("System.Int16")) then
 			m1 = convc::GetMethod("ToInt16", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype ushort)) then
+		elseif sink::Equals(Loader::LoadClass("System.UInt16")) then
 			m1 = convc::GetMethod("ToUInt16", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype sbyte)) then
+		elseif sink::Equals(Loader::LoadClass("System.SByte")) then
 			m1 = convc::GetMethod("ToSByte", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype byte)) then
+		elseif sink::Equals(Loader::LoadClass("System.Byte")) then
 			m1 = convc::GetMethod("ToByte", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(ILEmitter::Univ::Import(gettype boolean)) then
+		elseif sink::Equals(Loader::LoadClass("System.Boolean")) then
 			m1 = convc::GetMethod("ToBoolean", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
@@ -1353,7 +1353,7 @@ class public auto ansi static Helpers
 				ILEmitter::EmitConstrained(AsmFactory::Type05)
 				ILEmitter::EmitCallvirt(met)
 			elseif met::get_IsVirtual() then
-				if ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type05) then
+				if Loader::LoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type05) then
 					ILEmitter::EmitCall(met)
 				else
 					ILEmitter::EmitCallvirt(met)
@@ -1363,7 +1363,7 @@ class public auto ansi static Helpers
 			end if
 		end if
 		if AsmFactory::PopFlg then
-			if !met::get_ReturnType()::Equals(ILEmitter::Univ::Import(gettype void)) then
+			if !met::get_ReturnType()::Equals(Loader::LoadClass("System.Void")) then
 				ILEmitter::EmitPop()
 			end if
 		end if
@@ -1380,7 +1380,7 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static void EmitFldLd(var fld as FieldInfo, var stat as boolean)
-		if (AsmFactory::AddrFlg and ILEmitter::Univ::Import(gettype ValueType)::IsAssignableFrom(AsmFactory::Type04) and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
+		if (AsmFactory::AddrFlg and Loader::LoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type04) and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
 			 or AsmFactory::ForcedAddrFlg then
 			if stat then
 				ILEmitter::EmitLdsflda(fld)
@@ -1707,8 +1707,8 @@ class public auto ansi static Helpers
 		end if
 		
 		var ci as CollectionItem = new CollectionItem()
-		var ie as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ICollection`1)
-		var ie2 as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype ICollection)
+		var ie as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.Generic.ICollection`1")
+		var ie2 as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.ICollection")
 		var ie3 as IKVM.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
 		
@@ -1727,7 +1727,7 @@ class public auto ansi static Helpers
 			ci::ElemType = ie3::GetGenericArguments()[0]
 		elseif flgs[1] then
 			ie3 = ie2
-			ci::ElemType = ILEmitter::Univ::Import(gettype object)
+			ci::ElemType = Loader::LoadClass("System.Object")
 		else
 			foreach interf in GetTypeInterfaces(t)
 				if interf::get_IsGenericType() then
@@ -1746,7 +1746,7 @@ class public auto ansi static Helpers
 				ci::ElemType = ie3::GetGenericArguments()[0]
 			elseif flgs[1] then
 				ie3 = ie2
-				ci::ElemType = ILEmitter::Univ::Import(gettype object)
+				ci::ElemType = Loader::LoadClass("System.Object")
 			else
 				return null
 			end if
@@ -1763,8 +1763,8 @@ class public auto ansi static Helpers
 	[method: ComVisible(false)]
 	method public static MethodInfo[] ProcessForeach(var t as IKVM.Reflection.Type)
 		var arr as MethodInfo[] = new MethodInfo[3]
-		var ie as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype IEnumerable`1)
-		var ie2 as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype IEnumerable)
+		var ie as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.Generic.IEnumerable`1")
+		var ie2 as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.IEnumerable")
 		var ie3 as IKVM.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
 		
@@ -1814,8 +1814,8 @@ class public auto ansi static Helpers
 	//for IEnumerator<of T>
 	[method: ComVisible(false)]
 	method public static MethodInfo[] ProcessForeach2(var t as IKVM.Reflection.Type)
-		var ie as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype IEnumerator`1)
-		var ie2 as IKVM.Reflection.Type = ILEmitter::Univ::Import(gettype IEnumerator)
+		var ie as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.Generic.IEnumerator`1")
+		var ie2 as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.IEnumerator")
 		var ie3 as IKVM.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
 		
@@ -1883,7 +1883,7 @@ class public auto ansi static Helpers
 				end if
 			end if
 		
-			var typ = ILEmitter::Univ::Import(gettype ValueType)
+			var typ = Loader::LoadClass("System.ValueType")
 			if typ::IsAssignableFrom(ta) or typ::IsAssignableFrom(tb) then
 				return null
 			end if
@@ -1910,7 +1910,7 @@ class public auto ansi static Helpers
 		if oo != null then
 			ILEmitter::EmitCall(oo)
 			AsmFactory::Type02 = oo::get_ReturnType()
-		elseif t::Equals(ILEmitter::Univ::Import(gettype boolean)) then
+		elseif t::Equals(Loader::LoadClass("System.Boolean")) then
 			ILEmitter::EmitNot()
 		elseif CheckSigned(t) then
 			ILEmitter::EmitNeg()
@@ -1940,37 +1940,37 @@ class public auto ansi static Helpers
 		if oo != null then
 			ILEmitter::EmitCall(oo)
 			AsmFactory::Type02 = oo::get_ReturnType()
-		elseif t::Equals(ILEmitter::Univ::Import(gettype char)) then
+		elseif t::Equals(Loader::LoadClass("System.Char")) then
 			ILEmitter::EmitLdcChar(c'\x01')
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype integer)) then
+		elseif t::Equals(Loader::LoadClass("System.Int32")) then
 			ILEmitter::EmitLdcI4(1)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype long)) then
+		elseif t::Equals(Loader::LoadClass("System.Int64")) then
 			ILEmitter::EmitLdcI8(1l)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype short)) then
+		elseif t::Equals(Loader::LoadClass("System.Int16")) then
 			ILEmitter::EmitLdcI2(1s)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype sbyte)) then
+		elseif t::Equals(Loader::LoadClass("System.SByte")) then
 			ILEmitter::EmitLdcI1(1b)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype single)) then
+		elseif t::Equals(Loader::LoadClass("System.Single")) then
 			ILEmitter::EmitLdcR4(1f)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype double)) then
+		elseif t::Equals(Loader::LoadClass("System.Double")) then
 			ILEmitter::EmitLdcR8(1d)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype uinteger)) then
+		elseif t::Equals(Loader::LoadClass("System.UInt32")) then
 			ILEmitter::EmitLdcU4(1ui)
 			ILEmitter::EmitAdd(false)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype ulong)) then
+		elseif t::Equals(Loader::LoadClass("System.UInt64")) then
 			ILEmitter::EmitLdcU8(1ul)
 			ILEmitter::EmitAdd(false)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype ushort)) then
+		elseif t::Equals(Loader::LoadClass("System.UInt16")) then
 			ILEmitter::EmitLdcU2(1us)
 			ILEmitter::EmitAdd(false)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype byte)) then
+		elseif t::Equals(Loader::LoadClass("System.Byte")) then
 			ILEmitter::EmitLdcU1(1ub)
 			ILEmitter::EmitAdd(false)
 		else
@@ -1984,37 +1984,37 @@ class public auto ansi static Helpers
 		if oo != null then
 			ILEmitter::EmitCall(oo)
 			AsmFactory::Type02 = oo::get_ReturnType()
-		elseif t::Equals(ILEmitter::Univ::Import(gettype char)) then
+		elseif t::Equals(Loader::LoadClass("System.Char")) then
 			ILEmitter::EmitLdcChar(c'\x01')
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype integer)) then
+		elseif t::Equals(Loader::LoadClass("System.Int32")) then
 			ILEmitter::EmitLdcI4(1)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype long)) then
+		elseif t::Equals(Loader::LoadClass("System.Int64")) then
 			ILEmitter::EmitLdcI8(1l)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype short)) then
+		elseif t::Equals(Loader::LoadClass("System.Int16")) then
 			ILEmitter::EmitLdcI2(1s)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype sbyte)) then
+		elseif t::Equals(Loader::LoadClass("System.SByte")) then
 			ILEmitter::EmitLdcI1(1b)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype single)) then
+		elseif t::Equals(Loader::LoadClass("System.Single")) then
 			ILEmitter::EmitLdcR4(1f)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype double)) then
+		elseif t::Equals(Loader::LoadClass("System.Double")) then
 			ILEmitter::EmitLdcR8(1d)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype uinteger)) then
+		elseif t::Equals(Loader::LoadClass("System.UInt32")) then
 			ILEmitter::EmitLdcU4(1ui)
 			ILEmitter::EmitSub(false)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype ulong)) then
+		elseif t::Equals(Loader::LoadClass("System.UInt64")) then
 			ILEmitter::EmitLdcU8(1ul)
 			ILEmitter::EmitSub(false)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype ushort)) then
+		elseif t::Equals(Loader::LoadClass("System.UInt16")) then
 			ILEmitter::EmitLdcU2(1us)
 			ILEmitter::EmitSub(false)
-		elseif t::Equals(ILEmitter::Univ::Import(gettype byte)) then
+		elseif t::Equals(Loader::LoadClass("System.Byte")) then
 			ILEmitter::EmitLdcU1(1ub)
 			ILEmitter::EmitSub(false)
 		else
@@ -2047,7 +2047,7 @@ class public auto ansi static Helpers
 			elseif exp::Tokens::get_Item(0) is GettypeCallTok then
 				var val = Helpers::CommitEvalTTok(#expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name)
 				if val != null then
-					return new ConstInfo() {Typ = ILEmitter::Univ::Import(gettype Type), Value = val}
+					return new ConstInfo() {Typ = Loader::LoadClass("System.Type"), Value = val}
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", #expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name))
 				end if

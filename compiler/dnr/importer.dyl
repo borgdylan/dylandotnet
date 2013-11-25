@@ -23,6 +23,7 @@ class public auto ansi static Importer
 		AsmBasePath = RuntimeEnvironment::GetRuntimeDirectory()
 		AliasMap = new C5.HashDictionary<of string,string>() { _
 			Add("object", "System.Object"), _
+			Add("void", "System.Void"), _
 			Add("string", "System.String"), _
 			Add("char", "System.Char"), _
 			Add("boolean", "System.Boolean"), _

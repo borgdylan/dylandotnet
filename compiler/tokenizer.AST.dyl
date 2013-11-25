@@ -11,6 +11,7 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 #refstdasm "mscorlib.dll"
+#refstdasm "System.dll"
 
 #if CLR_2 then
 #refasm "build/2.0/C5.Mono.dll"
