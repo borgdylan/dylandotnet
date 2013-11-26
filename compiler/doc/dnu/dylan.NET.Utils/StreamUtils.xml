@@ -80,6 +80,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ErrorWriteLine">
+      <MemberSignature Language="C#" Value="public static void ErrorWriteLine (string str);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ErrorWriteLine(string str) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="InitInOutSWithStd">
       <MemberSignature Language="C#" Value="public static void InitInOutSWithStd ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void InitInOutSWithStd() cil managed" />

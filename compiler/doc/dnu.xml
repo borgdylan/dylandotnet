@@ -209,6 +209,11 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Utils.StreamUtils.ErrorWriteLine(System.String)">
+            <param name="str">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Utils.StreamUtils.InitInOutSWithStd">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

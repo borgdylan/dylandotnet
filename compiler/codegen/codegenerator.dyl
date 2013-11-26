@@ -57,7 +57,7 @@ class public auto ansi CodeGenerator
 	end method
 
 	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
-		
+
 		ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
 		
 		var i as integer = -1
@@ -73,11 +73,13 @@ class public auto ansi CodeGenerator
 		ILEmitter::AddSrcFile(fpath)
 		Importer::ImpsStack::Push(new C5.LinkedList<of string>())
 
-		if ILEmitter::DocWriters::get_Count() > 0 then
-			fpath = Path::GetFullPath(fpath)
-			var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
-			ILEmitter::DocWriter = docw
-			ILEmitter::AddDocWriter(docw)
+		if ILEmitter::DocWriters::get_Count() >= 0 then
+			if AsmFactory::MdlB != null then
+				fpath = Path::GetFullPath(fpath)
+				var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
+				ILEmitter::DocWriter = docw
+				ILEmitter::AddDocWriter(docw)
+			end if
 		end if
 		
 		var eval as Evaluator = new Evaluator()
@@ -113,7 +115,7 @@ class public auto ansi CodeGenerator
 			elseif procflg then
 				if stmts::Stmts::get_Item(i) is IncludeStmt then
 					var inclustm as IncludeStmt = $IncludeStmt$stmts::Stmts::get_Item(i)
-					var pth as string
+					//var pth as string
 					var sset as StmtSet
 					
 					lock inclustm::Path
@@ -121,7 +123,7 @@ class public auto ansi CodeGenerator
 							inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
 						end if
 						inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
-						pth = inclustm::Path::Value
+						//pth = inclustm::Path::Value
 						
 						if inclustm::SSet == null then
 							if !File::Exists(inclustm::Path::Value) then
@@ -138,7 +140,7 @@ class public auto ansi CodeGenerator
 						end if
 					end lock
 						
-					EmitMSIL(sset, pth)
+					EmitMSIL(sset, inclustm::Path::Value)
 				else
 					if stmts::Stmts::get_Item(i) != null then
 						new StmtReader()::Read(stmts::Stmts::get_Item(i), fpath)
@@ -157,6 +159,15 @@ class public auto ansi CodeGenerator
 			ILEmitter::PopDocWriter()
 			if ILEmitter::DocWriters::get_Count() > 0 then
 				ILEmitter::DocWriter = ILEmitter::DocWriters::get_Last()
+			else
+				if ILEmitter::SrcFiles::get_Count() > 0 then
+					if AsmFactory::MdlB != null then
+						var fp = Path::GetFullPath(ILEmitter::SrcFiles::get_Last())
+						var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fp, Guid::Empty, Guid::Empty, Guid::Empty)
+						ILEmitter::DocWriter = docw
+						ILEmitter::AddDocWriter(docw)
+					end if
+				end if
 			end if
 		end if
 

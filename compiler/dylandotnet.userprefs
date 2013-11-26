@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ast/interfaces.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnu/streamu.dyl">
     <Files>
       <File FileName="codegen/typelist.dyl" Line="1" Column="1" />
       <File FileName="cflags.dyl.in" Line="1" Column="1" />
@@ -25,7 +25,7 @@
       <File FileName="tokenizer.CodeGen.dyl" Line="1" Column="1" />
       <File FileName="dnr/importer.dyl" Line="1" Column="1" />
       <File FileName="codegen/codegenerator.dyl" Line="1" Column="1" />
-      <File FileName="codegen/typeitem.dyl" Line="46" Column="2" />
+      <File FileName="codegen/typeitem.dyl" Line="1" Column="1" />
       <File FileName="codegen/fielditem.dyl" Line="1" Column="1" />
       <File FileName="codegen/filambdas.dyl" Line="1" Column="1" />
       <File FileName="ast/literals.dyl" Line="1" Column="1" />
@@ -51,6 +51,9 @@
       <File FileName="tokenizer.AST.dyl" Line="1" Column="1" />
       <File FileName="parser/exproptimizer.dyl" Line="1" Column="1" />
       <File FileName="parser/parser.dyl" Line="1" Column="1" />
+      <File FileName="dnc.dyl" Line="1" Column="1" />
+      <File FileName="dnc/assemblyinfo.dyl" Line="1" Column="1" />
+      <File FileName="dnu/streamu.dyl" Line="177" Column="8" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

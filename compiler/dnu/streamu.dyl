@@ -103,6 +103,18 @@ class public auto ansi static StreamUtils
 	end method
 
 	[method: ComVisible(false)]
+	method public static void ErrorWriteLine(var str as string)
+		if UseConsole then
+			Console::get_Error()::WriteLine(str)
+		else
+			if OutS != null then
+				OutS::WriteLine(str)
+				OutS::Flush()
+			end if
+		end if
+	end method
+
+	[method: ComVisible(false)]
 	method public static void Write(var str as string)
 		if UseConsole then
 			Console::Write(str)
@@ -138,7 +150,8 @@ class public auto ansi static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static void WriteWarn(var line as integer, var file as string, var msg as string)
-		WriteLine("WARNING: " + msg + " at line " + $string$line + " in file: " + file)
+		//arrtest.cs(58,8): warning CS0219: The variable `x' is assigned but its value is never used
+		ErrorWriteLine(file + "(" + $string$line + "): warning DY0000: " + msg)
 		if _WarnH != null then
 			_WarnH::Invoke(new CompilerMsg(line,file,msg))
 		end if
@@ -146,7 +159,7 @@ class public auto ansi static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static void WriteError(var line as integer, var file as string, var msg as string)
-		WriteLine("ERROR: " + msg + " at line " + $string$line + " in file: " + file)
+		ErrorWriteLine(file + "(" + $string$line + "): error DY0000: " + msg)
 		if _ErrorH != null then
 			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
 		end if
@@ -161,7 +174,7 @@ class public auto ansi static StreamUtils
 	
 	[method: ComVisible(false)]
 	method public static void WriteErrorLine(var line as integer, var file as string, var msg as string)
-		WriteLine(c"\nERROR: " + msg + " at line " + $string$line + " in file: " + file)
+		ErrorWriteLine(c"\nERROR: " + file + "(" + $string$line + "): error DY0000: " + msg)
 		if _ErrorH != null then
 			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
 		end if
