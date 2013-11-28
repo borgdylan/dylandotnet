@@ -35,6 +35,11 @@ class public auto ansi static StreamUtils
 	field private static Action<of CompilerMsg> _ErrorH
 	field private static Action<of CompilerMsg> _WarnH
 
+	method public static void Init()
+		_ErrorH = null
+		_WarnH = null
+	end method
+
 	method private static void StreamUtils()
 		Stdin = Console::OpenStandardInput()
 		Stderr = Console::OpenStandardError()
@@ -150,8 +155,7 @@ class public auto ansi static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static void WriteWarn(var line as integer, var file as string, var msg as string)
-		//arrtest.cs(58,8): warning CS0219: The variable `x' is assigned but its value is never used
-		ErrorWriteLine(file + "(" + $string$line + "): warning DY0000: " + msg)
+		ErrorWriteLine("WARNING: " + msg + " at line " + $string$line + " in file: " + file)
 		if _WarnH != null then
 			_WarnH::Invoke(new CompilerMsg(line,file,msg))
 		end if
@@ -159,7 +163,7 @@ class public auto ansi static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static void WriteError(var line as integer, var file as string, var msg as string)
-		ErrorWriteLine(file + "(" + $string$line + "): error DY0000: " + msg)
+		ErrorWriteLine("ERROR: " + msg + " at line " + $string$line + " in file: " + file)
 		if _ErrorH != null then
 			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
 		end if
@@ -174,7 +178,7 @@ class public auto ansi static StreamUtils
 	
 	[method: ComVisible(false)]
 	method public static void WriteErrorLine(var line as integer, var file as string, var msg as string)
-		ErrorWriteLine(c"\nERROR: " + file + "(" + $string$line + "): error DY0000: " + msg)
+		ErrorWriteLine(c"\nERROR: " + msg + " at line " + $string$line + " in file: " + file)
 		if _ErrorH != null then
 			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
 		end if

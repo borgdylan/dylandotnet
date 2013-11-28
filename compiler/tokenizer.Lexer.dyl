@@ -1,6 +1,6 @@
 //The Lexer for the dylan.NET tokenizer
 //A Component of the NEW dylan.NET Compiler
-//compile with dylan.NET v. 11.3.1.4 or later
+//compile with dylan.NET v. 11.3.1.5 or later
 
 //    tokenizer.Lexer.dll dylan.NET.Tokenizer.Lexer Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -40,7 +40,7 @@ end #if
 #include "lexer/assemblyinfo.dyl"
 
 assembly tokenizer.Lexer dll
-ver 11.3.1.5
+ver 11.3.2.1
 
 namespace dylan.NET.Tokenizer.Lexer
 	#include "lexer/line.dyl"

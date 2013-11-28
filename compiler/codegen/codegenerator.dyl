@@ -74,7 +74,7 @@ class public auto ansi CodeGenerator
 		Importer::ImpsStack::Push(new C5.LinkedList<of string>())
 
 		if ILEmitter::DocWriters::get_Count() >= 0 then
-			if AsmFactory::MdlB != null then
+			if AsmFactory::MdlB != null and AsmFactory::DebugFlg then
 				fpath = Path::GetFullPath(fpath)
 				var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
 				ILEmitter::DocWriter = docw
@@ -161,7 +161,7 @@ class public auto ansi CodeGenerator
 				ILEmitter::DocWriter = ILEmitter::DocWriters::get_Last()
 			else
 				if ILEmitter::SrcFiles::get_Count() > 0 then
-					if AsmFactory::MdlB != null then
+					if AsmFactory::MdlB != null and AsmFactory::DebugFlg then
 						var fp = Path::GetFullPath(ILEmitter::SrcFiles::get_Last())
 						var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fp, Guid::Empty, Guid::Empty, Guid::Empty)
 						ILEmitter::DocWriter = docw

@@ -1253,6 +1253,10 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.Init">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.MetGenParams">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

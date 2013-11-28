@@ -214,6 +214,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Utils.StreamUtils.Init">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Utils.StreamUtils.InitInOutSWithStd">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

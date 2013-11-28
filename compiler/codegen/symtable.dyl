@@ -39,7 +39,7 @@ class public auto ansi static SymTable
 	field private static LabelItem[] LblLst
 	field public static boolean StoreFlg
 	
-	method private static void SymTable()
+	method public static void Init()()
 		TypeLst = new TypeList()
 		VarLst = new C5.LinkedList<of C5.HashDictionary<of string, VarItem> >()
 		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>()
@@ -66,7 +66,11 @@ class public auto ansi static SymTable
 		CurnEvent = null
 		PIInfo = null
 	end method
-	
+
+	method private static void SymTable()
+		Init()
+	end method
+
 	[method: ComVisible(false)]
 	method public static void ResetIf()
 		IfLst::Clear()

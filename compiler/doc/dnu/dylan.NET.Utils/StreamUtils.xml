@@ -101,6 +101,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public static void Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="InitInOutSWithStd">
       <MemberSignature Language="C#" Value="public static void InitInOutSWithStd ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void InitInOutSWithStd() cil managed" />

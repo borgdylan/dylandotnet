@@ -875,6 +875,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public static void Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="MetGenParams">
       <MemberSignature Language="C#" Value="public static C5.HashDictionary&lt;string,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; MetGenParams;" />
       <MemberSignature Language="ILAsm" Value=".field public static class C5.HashDictionary`2&lt;string, class dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; MetGenParams" />
