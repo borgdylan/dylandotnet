@@ -249,6 +249,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Utils.StreamUtils.Terminate">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Utils.StreamUtils.TerminateOnError">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

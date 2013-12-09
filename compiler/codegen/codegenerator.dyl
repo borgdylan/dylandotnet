@@ -27,19 +27,30 @@ class public auto ansi CodeGenerator
 		if Monitor::TryEnter(inclustm::Path) then
 			try
 				if inclustm::SSet == null then
-					if inclustm::Path::Value like c"^\q(.)*\q$" then
-						inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
-					end if
+					try
+						if inclustm::Path::Value like c"^\q(.)*\q$" then
+							inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
+						end if
 
-					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
-					if !File::Exists(inclustm::Path::Value) then
-						StreamUtils::WriteError(inclustm::Line, tup::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
-					end if
-					StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
-					var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
-					StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
-					inclustm::SSet = new Parser()::Parse(pstmts)
-					StreamUtils::WriteLine(string::Format("Finished Processing: {0} (worker thread)", inclustm::Path::Value))
+						inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
+						if !File::Exists(inclustm::Path::Value) then
+							StreamUtils::WriteError(inclustm::Line, tup::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
+						end if
+						StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
+						var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
+						StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
+						inclustm::SSet = new Parser()::Parse(pstmts)
+						StreamUtils::WriteLine(string::Format("Finished Processing: {0} (worker thread)", inclustm::Path::Value))
+					catch errex as ErrorException
+						inclustm::HasError = true
+					catch ex as Exception
+						StreamUtils::WriteLine(string::Empty)
+						try
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+						catch errex2 as ErrorException
+							inclustm::HasError = true
+						end try
+					end try
 				end if
 			finally
 				Monitor::Exit(inclustm::Path)
@@ -119,6 +130,11 @@ class public auto ansi CodeGenerator
 					var sset as StmtSet
 					
 					lock inclustm::Path
+						
+						if inclustm::HasError then
+							StreamUtils::Terminate()
+						end if
+
 						if inclustm::Path::Value like c"^\q(.)*\q$" then
 							inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
 						end if

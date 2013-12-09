@@ -162,11 +162,7 @@ class public auto ansi static StreamUtils
 	end method
 
 	[method: ComVisible(false)]
-	method public static void WriteError(var line as integer, var file as string, var msg as string)
-		ErrorWriteLine("ERROR: " + msg + " at line " + $string$line + " in file: " + file)
-		if _ErrorH != null then
-			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
-		end if
+	method public static void Terminate()
 		if TerminateOnError then
 			CloseInS()
 			CloseOutS()
@@ -175,6 +171,16 @@ class public auto ansi static StreamUtils
 			throw new ErrorException()
 		end if
 	end method
+
+	[method: ComVisible(false)]
+	method public static void WriteError(var line as integer, var file as string, var msg as string)
+		ErrorWriteLine("ERROR: " + msg + " at line " + $string$line + " in file: " + file)
+		if _ErrorH != null then
+			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
+		end if
+
+		Terminate()
+	end method
 	
 	[method: ComVisible(false)]
 	method public static void WriteErrorLine(var line as integer, var file as string, var msg as string)
@@ -182,13 +188,8 @@ class public auto ansi static StreamUtils
 		if _ErrorH != null then
 			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
 		end if
-		if TerminateOnError then
-			CloseInS()
-			CloseOutS()
-			Environment::Exit(-1)
-		else
-			throw new ErrorException()
-		end if
+
+		Terminate()
 	end method
 	
 	#if RX and NET_4_5 then

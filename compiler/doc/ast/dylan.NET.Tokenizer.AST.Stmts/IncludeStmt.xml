@@ -23,6 +23,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="HasError">
+      <MemberSignature Language="C#" Value="public bool HasError;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool HasError" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Path">
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token Path;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Token Path" />
