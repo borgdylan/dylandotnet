@@ -463,6 +463,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AddTry">
+      <MemberSignature Language="C#" Value="public static void AddTry ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddTry() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddUsing">
       <MemberSignature Language="C#" Value="public static void AddUsing (string loc);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddUsing(string loc) cil managed" />
@@ -528,6 +546,24 @@
     <Member MemberName="CheckCtrlBlks">
       <MemberSignature Language="C#" Value="public static void CheckCtrlBlks ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void CheckCtrlBlks() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckReturnInTry">
+      <MemberSignature Language="C#" Value="public static void CheckReturnInTry ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void CheckReturnInTry() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1008,6 +1044,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="PopTry">
+      <MemberSignature Language="C#" Value="public static void PopTry ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopTry() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PopUsing">
       <MemberSignature Language="C#" Value="public static void PopUsing ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void PopUsing() cil managed" />
@@ -1337,6 +1391,24 @@
     <Member MemberName="ResetNestedMet">
       <MemberSignature Language="C#" Value="public static void ResetNestedMet ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetNestedMet() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetTry">
+      <MemberSignature Language="C#" Value="public static void ResetTry ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetTry() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>

@@ -50,7 +50,7 @@ import IKVM.Reflection.Emit
 #include "ast/assemblyinfo.dyl"
 
 assembly tokenizer.AST dll
-ver 11.3.2.1
+ver 11.3.2.2
 
 namespace dylan.NET.Tokenizer.AST
 

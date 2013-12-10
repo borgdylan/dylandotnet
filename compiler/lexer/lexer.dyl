@@ -63,7 +63,7 @@ class public auto ansi Lexer
 		return stmts
 	end method
 	
-	//NOTE: Close calls only Dispose so the calls are equivalent
+	//NOTE: Close calls only Dispose so the calls are semantically equivalent
 	
 	method public StmtSet Analyze(var path as string)
 		var res as StmtSet

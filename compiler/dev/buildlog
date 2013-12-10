@@ -5,15 +5,15 @@ Currently Targeting the 3.5 Profile!!
 Copyright (C) 2013 Dylan Borg
 
 dylan.NET Version Info:
-dnc, Version=11.3.2.1, Culture=neutral, PublicKeyToken=null
-dnr, Version=11.3.2.1, Culture=neutral, PublicKeyToken=null
-dnu, Version=11.3.2.1, Culture=neutral, PublicKeyToken=null
-tokenizer.CodeGen, Version=11.3.2.1, Culture=neutral, PublicKeyToken=null
-tokenizer.Parser, Version=11.3.2.1, Culture=neutral, PublicKeyToken=null
-tokenizer.Lexer, Version=11.3.2.1, Culture=neutral, PublicKeyToken=null
-tokenizer.AST, Version=11.3.2.1, Culture=neutral, PublicKeyToken=null
+dnc, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
+dnr, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
+dnu, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
+tokenizer.CodeGen, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
+tokenizer.Parser, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
+tokenizer.Lexer, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
+tokenizer.AST, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
 
 Runtime & OS Version Info:
 mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 Runtime Version: 2.0.50727.1433
-OS: Unix 3.12.0.6
+OS: Unix 3.13.0.3

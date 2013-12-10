@@ -40,7 +40,7 @@ end #if
 #include "lexer/assemblyinfo.dyl"
 
 assembly tokenizer.Lexer dll
-ver 11.3.2.1
+ver 11.3.2.2
 
 namespace dylan.NET.Tokenizer.Lexer
 	#include "lexer/line.dyl"

@@ -80,6 +80,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Params">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr[] Params;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Exprs.Expr[] Params" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParamTyps">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type[] ParamTyps;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type[] ParamTyps" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PropertyBldr">
       <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.PropertyBuilder PropertyBldr;" />
       <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Emit.PropertyBuilder PropertyBldr" />

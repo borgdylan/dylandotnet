@@ -39,12 +39,40 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AddParam">
+      <MemberSignature Language="C#" Value="public void AddParam (dylan.NET.Tokenizer.AST.Exprs.Expr paramtoadd);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void AddParam(class dylan.NET.Tokenizer.AST.Exprs.Expr paramtoadd) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="paramtoadd" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
+      </Parameters>
+      <Docs>
+        <param name="paramtoadd">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Attrs">
       <MemberSignature Language="C#" Value="public C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; Attrs;" />
       <MemberSignature Language="ILAsm" Value=".field public class C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; Attrs" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Params">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr[] Params;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Exprs.Expr[] Params" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

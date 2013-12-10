@@ -192,6 +192,7 @@ class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
 	
 end class
 
+[class: System.Reflection.DefaultMember("Item")]
 class public auto ansi ObjInit
 	
 	field public integer A
@@ -225,6 +226,15 @@ class public auto ansi ObjInit
 		end get
 		set
 			_Msg = value
+		end set
+	end property
+
+	property public integer Item(var index as integer)
+		get
+			return index
+		end get
+		set
+			Console::WriteLine("[{0}] = {1}", $object$index, $object$value)
 		end set
 	end property
 	
@@ -321,6 +331,7 @@ class public auto ansi static Program
 	field public static integer X
 	field public static IEnumerable<of string> Y
 	field private static integer _TestProperty
+	field private static Dictionary<of integer, string> _TestIndexer
 	field private static EventHandler _TestEvent
 	field public static literal integer Const = 11
 	field public static literal integer Const2 = 5
@@ -569,7 +580,16 @@ class public auto ansi static Program
 			_TestProperty = value
 		end set
 	end property
-	
+
+	property public static string TestIndexer(var idx as integer)
+		get
+			return _TestIndexer::get_Item(idx)
+		end get
+		set
+			_TestIndexer::set_Item(idx, value)
+		end set
+	end property
+
 	method public static void OnTestEvent()
 		if _TestEvent != null then
 			_TestEvent::Invoke(null,new EventArgs())

@@ -990,6 +990,89 @@ class public auto ansi StmtOptimizer
 			prss::PropertyTyp = $TypeTok$stm::Tokens::get_Item(i)
 			i++
 			prss::PropertyName = $Ident$stm::Tokens::get_Item(i)
+
+			//process parameters for indexers
+			len = --stm::Tokens::get_Count()
+			if i < len then
+				i++
+
+				var exp as Expr = null
+				var d as boolean = false
+				var bl as boolean = false
+				var lvl as integer = 0
+
+				if stm::Tokens::get_Item(i) is LParen then
+					exp = null
+					do until i = len
+				
+						//get parameters
+						i++
+					
+						if stm::Tokens::get_Item(i) is RParen then
+							if d then
+								exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
+								if bl then
+									prss::AddParam(exp)
+								end if
+							end if
+							d = false
+							break
+						end if
+					
+						if stm::Tokens::get_Item(i) is VarTok then
+							d = true
+							if exp = null then
+								exp = new Expr()
+							end if
+						end if
+					
+						if stm::Tokens::get_Item(i) is InTok then
+							d = true
+							if exp = null then
+								exp = new Expr()
+							end if
+						end if
+					
+						if stm::Tokens::get_Item(i) is InOutTok then
+							d = true
+							if exp = null then
+								exp = new Expr()
+							end if
+						end if
+					
+						if stm::Tokens::get_Item(i) is OutTok then
+							d = true
+							if exp = null then
+								exp = new Expr()
+							end if
+						end if
+					
+						if stm::Tokens::get_Item(i) is LAParen then
+							d = true
+							lvl++
+						end if
+						
+						if stm::Tokens::get_Item(i) is RAParen then
+							d = true
+							lvl--
+						end if
+				
+						if (stm::Tokens::get_Item(i) is Comma) and (lvl == 0) then
+							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
+							if bl then
+								prss::AddParam(exp)
+							end if
+							d = false
+							exp = null
+						end if
+						
+						if d then
+							exp::AddToken(stm::Tokens::get_Item(i))
+						end if
+					end do
+				end if
+			end if
+
 			return prss
 		end if
 		
@@ -1074,8 +1157,7 @@ class public auto ansi StmtOptimizer
 				
 					if stm::Tokens::get_Item(i) is RParen then
 						if d then
-							var eopt2 as ExprOptimizer = new ExprOptimizer(PFlags)
-							exp = eopt2::checkVarAs(exp,ref bl)
+							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 							if bl then
 								mtss::AddParam(exp)
 							end if
@@ -1123,8 +1205,7 @@ class public auto ansi StmtOptimizer
 					end if
 			
 					if (stm::Tokens::get_Item(i) is Comma) and (lvl == 0) then
-						var eopt1 as ExprOptimizer = new ExprOptimizer(PFlags)
-						exp = eopt1::checkVarAs(exp,ref bl)
+						exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 						if bl then
 							mtss::AddParam(exp)
 						end if

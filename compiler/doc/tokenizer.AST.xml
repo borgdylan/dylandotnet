@@ -1164,7 +1164,16 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Stmts.PropertyStmt.AddParam(dylan.NET.Tokenizer.AST.Exprs.Expr)">
+            <param name="paramtoadd">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.AST.Stmts.PropertyStmt.Attrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.PropertyStmt.Params">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

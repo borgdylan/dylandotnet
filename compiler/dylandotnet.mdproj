@@ -591,6 +591,7 @@
     <None Include="dev\resproc.dyl" />
     <None Include="codegen\typeparamitem.dyl" />
     <None Include="codegen\usingitem.dyl" />
+    <None Include="codegen\tryitem.dyl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ast\interfaces.dyl" />

@@ -241,6 +241,9 @@ class public auto ansi StmtReader
 
 		SymTable::ResetVar()
 		SymTable::ResetIf()
+		SymTable::ResetUsing()
+		SymTable::ResetLock()
+		SymTable::ResetTry()
 		SymTable::ResetLoop()
 		SymTable::ResetLbl()
 
@@ -315,9 +318,15 @@ class public auto ansi StmtReader
 		ILEmitter::AbstractFlg = false
 		ILEmitter::ProtoFlg = false
 		ILEmitter::PInvokeFlg = false
+
 		SymTable::ResetVar()
 		SymTable::ResetIf()
 		SymTable::ResetLbl()
+		SymTable::ResetUsing()
+		SymTable::ResetLock()
+		SymTable::ResetTry()
+		SymTable::ResetLoop()
+
 		SymTable::ResetMetGenParams()
 
 		var mtssnamstr as string = mtss::MethodName::Value
@@ -722,12 +731,13 @@ class public auto ansi StmtReader
 	end method
 	
 	method public void ReadPropertyGet(var prgs as PropertyGetStmt, var fpath as string)
+		var cprop = SymTable::CurnProp
 		if prgs::Getter != null then
-			if SymTable::CurnProp::ExplImplType::get_Length() > 0 then
-				prgs::Getter::Value = SymTable::CurnProp::ExplImplType + "." + prgs::Getter::Value
+			if cprop::ExplImplType::get_Length() > 0 then
+				prgs::Getter::Value = cprop::ExplImplType + "." + prgs::Getter::Value
 			end if
 			
-			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prgs::Getter::Value, IKVM.Reflection.Type::EmptyTypes)
+			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prgs::Getter::Value, cprop::ParamTyps)
 			if mb != null then
 				AsmFactory::CurnPropB::SetGetMethod(mb)
 			else
@@ -736,21 +746,22 @@ class public auto ansi StmtReader
 			StreamUtils::Write("		Setting Property Getter: ")
 			StreamUtils::WriteLine(prgs::Getter::Value)
 		else
-			var cprop = SymTable::CurnProp
 			var metname = #ternary{cprop::ExplImplType::get_Length() > 0 ? cprop::ExplImplType + ".get_", "get_"}  + cprop::Name
-			Read(new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new TypeTok(cprop::PropertyTyp), Line = prgs::Line, _
+			Read(new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new TypeTok(cprop::PropertyTyp), Line = prgs::Line, Params = cprop::Params, _
 				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}},fpath)
 			cprop::PropertyBldr::SetGetMethod(AsmFactory::CurnMetB)
 		end if
 	end method
 	
 	method public void ReadPropertySet(var prss as PropertySetStmt, var fpath as string)
+		var cprop = SymTable::CurnProp
 		if prss::Setter != null then
-			if SymTable::CurnProp::ExplImplType::get_Length() > 0 then
-				prss::Setter::Value = SymTable::CurnProp::ExplImplType + "." + prss::Setter::Value
+			if cprop::ExplImplType::get_Length() > 0 then
+				prss::Setter::Value = cprop::ExplImplType + "." + prss::Setter::Value
 			end if
 			
-			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, new IKVM.Reflection.Type[] {SymTable::CurnProp::PropertyTyp})
+			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, _
+				Enumerable::ToArray<of IKVM.Reflection.Type>(Enumerable::Concat<of IKVM.Reflection.Type>(cprop::ParamTyps, new IKVM.Reflection.Type[] {cprop::PropertyTyp})) )
 			if mb != null then
 				AsmFactory::CurnPropB::SetSetMethod(mb)
 			else
@@ -759,9 +770,8 @@ class public auto ansi StmtReader
 			StreamUtils::Write("		Setting Property Setter: ")
 			StreamUtils::WriteLine(prss::Setter::Value)
 		else
-			var cprop = SymTable::CurnProp
 			var metname = #ternary{cprop::ExplImplType::get_Length() > 0 ? cprop::ExplImplType + ".set_", "set_"}  + cprop::Name
-			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new VoidTok(), Line = prss::Line,  _
+			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new VoidTok(), Line = prss::Line, Params = cprop::Params,  _
 				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}}
 			mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cprop::PropertyTyp)})
 			Read(mets,fpath)
@@ -777,7 +787,9 @@ class public auto ansi StmtReader
 		if ptyp == null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + prss::PropertyTyp::Value + "' is not defined.")
 		end if
-		
+
+		var paramstyps as IKVM.Reflection.Type[] = #ternary {prss::Params[l] == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(prss::Params)}
+
 		var prssnamstr as string = prss::PropertyName::Value
 		var prssnamarr as C5.IList<of string> = ParseUtils::StringParserL(prssnamstr, ".")
 		var propoverldnam as string = string::Empty
@@ -790,8 +802,8 @@ class public auto ansi StmtReader
 			prssnamstr = typ::ToString() + "." + propoverldnam
 		end if
 		
-		AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prssnamstr, PropertyAttributes::None, ptyp, IKVM.Reflection.Type::EmptyTypes)
-		SymTable::CurnProp = new PropertyItem(propnam, ptyp, AsmFactory::CurnPropB, prss::Attrs, eit)
+		AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prssnamstr, PropertyAttributes::None, ptyp, paramstyps)
+		SymTable::CurnProp = new PropertyItem(propnam, ptyp, AsmFactory::CurnPropB, prss::Attrs, eit) {ParamTyps = paramstyps, Params = prss::Params}
 		
 		Helpers::ApplyPropAttrs()
 
@@ -822,11 +834,18 @@ class public auto ansi StmtReader
 		end for
 		
 		if isauto then
+			
+			//check that params[l] == 0
+			if paramstyps[l] > 0 then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Auto generation of Indexers is not supported!")
+			end if
+
 			prss::Attrs::RemoveAt(isautoind)
 			if isrdonly then
 				prss::Attrs::RemoveAt(isrdonlyind)
 			end if
-			
+
+			//it is not an error that these are not eval'd in all cases (METHODS HAVE SIMILAR VALIDATION)
 			if ILEmitter::InterfaceFlg and !isabstract then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Properties in Interfaces should all be Abstract!")
 			elseif ILEmitter::InterfaceFlg and isstatic then
@@ -1055,6 +1074,7 @@ class public auto ansi StmtReader
 				new Evaluator()::Evaluate(retstmt::RExp)
 				Helpers::CheckAssignability(AsmFactory::CurnMetB::get_ReturnType(), AsmFactory::Type02)
 			end if
+			SymTable::CheckReturnInTry()
 			ILEmitter::EmitRet()
 		elseif stm is VarStmt then
 			var curv as VarStmt = $VarStmt$stm
@@ -1261,9 +1281,11 @@ class public auto ansi StmtReader
 		elseif stm is TryStmt then
 			SymTable::PushScope()
 			ILEmitter::EmitTry()
+			SymTable::AddTry()
 		elseif stm is EndTryStmt then
 			ILEmitter::EmitEndTry()
 			SymTable::PopScope()
+			SymTable::PopTry()
 		elseif stm is FinallyStmt then
 			SymTable::PopScope()
 			SymTable::PushScope()

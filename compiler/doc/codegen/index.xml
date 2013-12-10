@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.CodeGen" Version="11.3.2.1">
+    <Assembly Name="tokenizer.CodeGen" Version="11.3.2.2">
       <Attributes>
         <Attribute>
           <AttributeName>System.CLSCompliant(true)</AttributeName>
@@ -49,6 +49,7 @@
       <Type Name="PropertyItem" Kind="Class" />
       <Type Name="StmtReader" Kind="Class" />
       <Type Name="SymTable" Kind="Class" />
+      <Type Name="TryItem" Kind="Class" />
       <Type Name="TypeItem" Kind="Class" />
       <Type Name="TypeList" Kind="Class" />
       <Type Name="TypeParamItem" Kind="Class" />

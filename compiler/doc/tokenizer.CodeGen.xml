@@ -898,6 +898,14 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PropertyItem.Params">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PropertyItem.ParamTyps">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.PropertyItem.PropertyBldr">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1134,6 +1142,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddTry">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddUsing(System.String)">
             <param name="loc">To be added.</param>
             <summary>To be added.</summary>
@@ -1153,6 +1165,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.CheckCtrlBlks">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.CheckReturnInTry">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1289,6 +1305,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopTry">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopUsing">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1373,6 +1393,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetTry">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetUsing">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1405,6 +1429,23 @@
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.UnDef(System.String)">
             <param name="sym">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.TryItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.TryItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.TryItem(System.Int32)">
+            <param name="ln">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TryItem.Line">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

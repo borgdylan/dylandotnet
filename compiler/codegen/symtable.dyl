@@ -33,7 +33,8 @@ class public auto ansi static SymTable
 	field private static C5.LinkedList<of LockItem> LockLst
 	field private static C5.LinkedList<of UsingItem> UsingLst
 	field private static C5.LinkedList<of LoopItem> LoopLst
-	
+	field private static C5.LinkedList<of TryItem> TryLst
+
 	field assembly static C5.TreeSet<of string> DefSyms
 	
 	field private static LabelItem[] LblLst
@@ -51,6 +52,7 @@ class public auto ansi static SymTable
 		LockLst = new C5.LinkedList<of LockItem>()
 		UsingLst = new C5.LinkedList<of UsingItem>()
 		LoopLst = new C5.LinkedList<of LoopItem>()
+		TryLst = new C5.LinkedList<of TryItem>()
 		LblLst = new LabelItem[0]
 		StoreFlg = false
 		MethodCALst = new C5.LinkedList<of CustomAttributeBuilder>()
@@ -80,7 +82,12 @@ class public auto ansi static SymTable
 	method public static void ResetLock()
 		LockLst::Clear()
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static void ResetTry()
+		TryLst::Clear()
+	end method
+
 	[method: ComVisible(false)]
 	method public static void ResetUsing()
 		UsingLst::Clear()
@@ -285,7 +292,12 @@ class public auto ansi static SymTable
 	method public static void AddLock(var loc as integer)
 		LockLst::Push(new LockItem(loc, ILEmitter::LineNr))
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static void AddTry()
+		TryLst::Push(new TryItem(ILEmitter::LineNr))
+	end method
+
 	[method: ComVisible(false)]
 	method public static void AddUsing(var loc as string)
 		UsingLst::Push(new UsingItem(loc, ILEmitter::LineNr))
@@ -310,7 +322,12 @@ class public auto ansi static SymTable
 	method public static void PopLock()
 		LockLst::Pop()
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static void PopTry()
+		TryLst::Pop()
+	end method
+
 	[method: ComVisible(false)]
 	method public static void PopUsing()
 		UsingLst::Pop()
@@ -442,21 +459,26 @@ class public auto ansi static SymTable
 	[method: ComVisible(false)]
 	method public static void CheckCtrlBlks()
 		if IfLst::get_Count() != 0 then
-			foreach ifite in IfLst
-				StreamUtils::WriteError(ifite::Line, ILEmitter::CurSrcFile, "This If statement is unterminated.")
-			end for
+			StreamUtils::WriteError(IfLst::get_First()::Line, ILEmitter::CurSrcFile, "This if statement is unterminated.")
 		elseif LoopLst::get_Count() != 0 then
-			foreach lpite in LoopLst
-				StreamUtils::WriteError(lpite::Line, ILEmitter::CurSrcFile, "This looping statement is unterminated.")
-			end for
+			StreamUtils::WriteError(LoopLst::get_First()::Line, ILEmitter::CurSrcFile, "This looping statement is unterminated.")
 		elseif LockLst::get_Count() != 0 then
-			foreach lckite in LockLst
-				StreamUtils::WriteError(lckite::Line, ILEmitter::CurSrcFile, "This lock statement is unterminated.")
-			end for
+			StreamUtils::WriteError(LockLst::get_First()::Line, ILEmitter::CurSrcFile, "This lock statement is unterminated.")
 		elseif UsingLst::get_Count() != 0 then
-			foreach usite in UsingLst
-				StreamUtils::WriteError(usite::Line, ILEmitter::CurSrcFile, "This using statement is unterminated.")
-			end for
+			StreamUtils::WriteError(UsingLst::get_First()::Line, ILEmitter::CurSrcFile, "This using statement is unterminated.")
+		elseif TryLst::get_Count() != 0 then
+			StreamUtils::WriteError(TryLst::get_First()::Line, ILEmitter::CurSrcFile, "This try statement is unterminated.")
+		end if
+	end method
+
+	[method: ComVisible(false)]
+	method public static void CheckReturnInTry()
+		if LockLst::get_Count() != 0 then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Return statements are not supported inside lock statements.")
+		elseif UsingLst::get_Count() != 0 then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Return statements are not supported inside using statements.")
+		elseif TryLst::get_Count() != 0 then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Return statements are not supported inside try/catch/finally statements.")
 		end if
 	end method
 	
