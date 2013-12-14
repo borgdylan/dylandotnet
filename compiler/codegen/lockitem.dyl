@@ -9,18 +9,30 @@
 class public auto ansi LockItem
 
 	field public integer LockeeLoc
+	field public Emit.Label Lbl
+	field public boolean IsTryLock
 	field public integer Line
 
 	method public void LockItem()
 		me::ctor()
 		LockeeLoc = 0
 		Line = 0
+		IsTryLock = false
 	end method
 
 	method public void LockItem(var loc as integer, var ln as integer)
 		me::ctor()
 		LockeeLoc = loc
 		Line = ln
+		IsTryLock = false
+	end method
+
+	method public void LockItem(var loc as integer, var lb as Emit.Label, var ln as integer)
+		me::ctor()
+		LockeeLoc = loc
+		Line = ln
+		IsTryLock = true
+		Lbl = lb
 	end method
 
 end class

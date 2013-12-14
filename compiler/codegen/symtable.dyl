@@ -9,6 +9,7 @@
 class public auto ansi static SymTable
 
 	field private static C5.LinkedList<of C5.HashDictionary<of string, VarItem> > VarLst
+	field public static C5.HashDictionary<of IKVM.Reflection.Type, integer> TempVTMap
 	field public static C5.HashDictionary<of string, TypeParamItem> MetGenParams
 	field public static C5.IList<of CustomAttributeBuilder> MethodCALst
 	field public static C5.IList<of CustomAttributeBuilder> FieldCALst
@@ -43,6 +44,7 @@ class public auto ansi static SymTable
 	method public static void Init()()
 		TypeLst = new TypeList()
 		VarLst = new C5.LinkedList<of C5.HashDictionary<of string, VarItem> >()
+		TempVTMap = new C5.HashDictionary<of IKVM.Reflection.Type, integer>()
 		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>()
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 		NestedFldLst = new FieldItem[0]
@@ -107,6 +109,7 @@ class public auto ansi static SymTable
 	method public static void ResetVar()
 		VarLst::Clear()
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
+		TempVTMap::Clear()
 	end method
 	
 	[method: ComVisible(false)]
@@ -294,6 +297,11 @@ class public auto ansi static SymTable
 	end method
 
 	[method: ComVisible(false)]
+	method public static void AddTryLock(var loc as integer)
+		LockLst::Push(new LockItem(loc, ILEmitter::DefineLbl(), ILEmitter::LineNr))
+	end method
+
+	[method: ComVisible(false)]
 	method public static void AddTry()
 		TryLst::Push(new TryItem(ILEmitter::LineNr))
 	end method
@@ -364,8 +372,8 @@ class public auto ansi static SymTable
 	end method
 	
 	[method: ComVisible(false)]
-	method public static integer ReadLockeeLoc()
-		return LockLst::get_Last()::LockeeLoc
+	method public static LockItem ReadLock()
+		return LockLst::get_Last()
 	end method
 	
 	[method: ComVisible(false)]

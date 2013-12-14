@@ -481,6 +481,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AddTryLock">
+      <MemberSignature Language="C#" Value="public static void AddTryLock (int loc);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddTryLock(int32 loc) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="loc" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="loc">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddUsing">
       <MemberSignature Language="C#" Value="public static void AddUsing (string loc);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddUsing(string loc) cil managed" />
@@ -1167,9 +1188,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ReadLockeeLoc">
-      <MemberSignature Language="C#" Value="public static int ReadLockeeLoc ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static int32 ReadLockeeLoc() cil managed" />
+    <Member MemberName="ReadLock">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.LockItem ReadLock ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.LockItem ReadLock() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1177,7 +1198,7 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.LockItem</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1525,6 +1546,18 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TempVTMap">
+      <MemberSignature Language="C#" Value="public static C5.HashDictionary&lt;IKVM.Reflection.Type,int&gt; TempVTMap;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.HashDictionary`2&lt;class IKVM.Reflection.Type, int32&gt; TempVTMap" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;IKVM.Reflection.Type,System.Int32&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

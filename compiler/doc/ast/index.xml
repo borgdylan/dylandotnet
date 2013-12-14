@@ -114,6 +114,7 @@
       <Type Name="Stmt" Kind="Class" />
       <Type Name="StmtSet" Kind="Class" />
       <Type Name="ThrowStmt" Kind="Class" />
+      <Type Name="TryLockStmt" Kind="Class" />
       <Type Name="TryStmt" Kind="Class" />
       <Type Name="UntilStmt" Kind="Class" />
       <Type Name="VarAsgnStmt" Kind="Class" />
@@ -218,6 +219,7 @@
       <Type Name="ThenTok" Kind="Class" />
       <Type Name="ThrowTok" Kind="Class" />
       <Type Name="Token" Kind="Class" />
+      <Type Name="TryLockTok" Kind="Class" />
       <Type Name="TryTok" Kind="Class" />
       <Type Name="UntilTok" Kind="Class" />
       <Type Name="UptoTok" Kind="Class" />

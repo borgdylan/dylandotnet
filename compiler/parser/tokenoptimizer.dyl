@@ -317,6 +317,8 @@ class public auto ansi TokenOptimizer
 			return new ReturnTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "lock" then
 			return new LockTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "trylock" then
+			return new TryLockTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "throw" then
 			return new ThrowTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "var" then

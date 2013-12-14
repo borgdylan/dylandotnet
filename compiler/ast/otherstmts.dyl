@@ -121,3 +121,13 @@ class public auto ansi LockStmt extends Stmt
 
 end class
 
+class public auto ansi TryLockStmt extends Stmt
+
+	field public Expr Lockee
+
+	method public void TryLockStmt()
+		me::ctor()
+		Lockee = new Expr()
+	end method
+
+end class

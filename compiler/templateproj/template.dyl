@@ -696,10 +696,6 @@ class public auto ansi static Program
 		Console::WriteLine(1 nor 2)
 		Console::WriteLine(1 xnor 3)
 		
-		lock new object()
-			Console::WriteLine("In A Lock")
-		end lock
-		
 		foreach o in new OTT()
 			Console::WriteLine(o)
 		end for
@@ -736,18 +732,33 @@ class public auto ansi static Program
 		Console::WriteLine(DateTime::get_Now()::ToString())
 		Console::WriteLine(new DateTime(1993, 5, 11, 14, 0, 0)::ToString())
 		Console::WriteLine(#expr(DateTime::get_Now() - new DateTime(1993, 5, 11, 14, 0, 0))::ToString())
+		Console::WriteLine(#expr(11l)::ToString())
+		Console::WriteLine(#expr(12l)::ToString())
+		Console::WriteLine(#expr(13l)::ToString())
 		var arr as IEnumerable<of integer> = Generics::addelem<of integer>(new integer[] {1,2}, 3)
 		Console::WriteLine(null ?? "null" ?? c"your CLR thinks \qnull\q is null!!")
 		Console::WriteLine("not null" ?? "null")
 		
 		using ms as MemoryStream = new MemoryStream()
-			var sw = new StreamWriter(ms)
-			sw::Write("Hello There")
-			sw::Flush()
-			ms::Seek(0l, SeekOrigin::Begin)
-			var sr = new StreamReader(ms)
-			Console::WriteLine(sr::ReadToEnd())
+			using sw = new StreamWriter(ms)
+				sw::Write("Hello There")
+				sw::Flush()
+				ms::Seek(0l, SeekOrigin::Begin)
+				using sr = new StreamReader(ms)
+					Console::WriteLine(sr::ReadToEnd())
+				end using
+			end using
 		end using
+
+		var clko = new object()
+
+		lock clko
+			Console::WriteLine("In A Lock")
+		end lock
+
+		trylock clko
+			Console::WriteLine("In A TryLock")
+		end lock
 		
 	end method
 	

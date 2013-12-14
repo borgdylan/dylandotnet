@@ -38,6 +38,47 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LockItem (int loc, IKVM.Reflection.Emit.Label lb, int ln);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(int32 loc, valuetype IKVM.Reflection.Emit.Label lb, int32 ln) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="loc" Type="System.Int32" />
+        <Parameter Name="lb" Type="IKVM.Reflection.Emit.Label" />
+        <Parameter Name="ln" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="loc">To be added.</param>
+        <param name="lb">To be added.</param>
+        <param name="ln">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsTryLock">
+      <MemberSignature Language="C#" Value="public bool IsTryLock;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool IsTryLock" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lbl">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.Label Lbl;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype IKVM.Reflection.Emit.Label Lbl" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Line">
       <MemberSignature Language="C#" Value="public int Line;" />
       <MemberSignature Language="ILAsm" Value=".field public int32 Line" />

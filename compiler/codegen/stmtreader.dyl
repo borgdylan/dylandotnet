@@ -1387,11 +1387,32 @@ class public auto ansi StmtReader
 			ILEmitter::EmitLdloc(lockee)
 			ILEmitter::EmitCall(Loader::LoadClass("System.Threading.Monitor")::GetMethod("Enter", new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object")}))
 			ILEmitter::EmitTry()
+		elseif stm is TryLockStmt then
+			var lstm as TryLockStmt = $TryLockStmt$stm
+			SymTable::PushScope()
+			new Evaluator()::Evaluate(lstm::Lockee)
+			if Loader::LoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type02) then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Locks should only be taken on Objects and not Valuetypes.")
+			end if
+			ILEmitter::DeclVar(String::Empty, Loader::LoadClass("System.Object"))
+			ILEmitter::LocInd++
+			var lockee as integer = ILEmitter::LocInd
+			ILEmitter::EmitStloc(lockee)
+			SymTable::AddTryLock(lockee)
+			var li = SymTable::ReadLock()
+			ILEmitter::EmitLdloc(lockee)
+			ILEmitter::EmitCall(Loader::LoadClass("System.Threading.Monitor")::GetMethod("TryEnter", new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object")}))
+			ILEmitter::EmitBrfalse(li::Lbl)
+			ILEmitter::EmitTry()
 		elseif stm is EndLockStmt then
 			ILEmitter::EmitFinally()
-			ILEmitter::EmitLdloc(SymTable::ReadLockeeLoc())
+			var li = SymTable::ReadLock()
+			ILEmitter::EmitLdloc(li::LockeeLoc)
 			ILEmitter::EmitCall(Loader::LoadClass("System.Threading.Monitor")::GetMethod("Exit", new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object")}))
 			ILEmitter::EmitEndTry()
+			if li::IsTryLock then
+				ILEmitter::MarkLbl(li::Lbl)
+			end if
 			SymTable::PopLock()
 			SymTable::PopScope()
 		elseif stm is IncStmt then

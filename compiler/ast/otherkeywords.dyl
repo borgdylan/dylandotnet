@@ -700,6 +700,14 @@ class public auto ansi LockTok extends Token
 
 end class
 
+class public auto ansi TryLockTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "trylock"
+	end method
+
+end class
+
 class public auto ansi ExprTok extends Token
 
 	method public hidebysig virtual string ToString()

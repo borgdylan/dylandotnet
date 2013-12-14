@@ -1315,6 +1315,18 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Stmts.TryLockStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.TryLockStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.TryLockStmt.Lockee">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.TryStmt">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -3054,6 +3066,19 @@
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.Token.Value">
             <summary>The textual value of the Token.</summary>
             <remarks>From this the Parser module can further optimize the Token into other subclasses.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.TryLockTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.TryLockTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.TryLockTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.TryTok">
             <summary>To be added.</summary>

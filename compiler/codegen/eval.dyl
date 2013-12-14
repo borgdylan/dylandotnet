@@ -137,10 +137,19 @@ class public auto ansi beforefieldinit Evaluator
 		if emt then
 			if !#expr(AsmFactory::Type02 is GenericTypeParameterBuilder) then
 				if Loader::LoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type02) then
-					ILEmitter::DeclVar(string::Empty, AsmFactory::Type02)
-					ILEmitter::LocInd++
-					ILEmitter::EmitStloc(ILEmitter::LocInd)
-					ILEmitter::EmitLdloca(ILEmitter::LocInd)
+					
+					var loc as integer
+					if SymTable::TempVTMap::Contains(AsmFactory::Type02) then
+						loc = SymTable::TempVTMap::get_Item(AsmFactory::Type02)
+					else
+						ILEmitter::DeclVar(string::Empty, AsmFactory::Type02)
+						ILEmitter::LocInd++
+						loc = ILEmitter::LocInd
+						SymTable::TempVTMap::Add(AsmFactory::Type02, loc)
+					end if
+
+					ILEmitter::EmitStloc(loc)
+					ILEmitter::EmitLdloca(loc)
 				end if
 			end if
 		end if

@@ -509,7 +509,24 @@ class public auto ansi StmtOptimizer
 		return null
 	end method
 		
-	
+	method private Stmt checkTryLock(var stm as Stmt, var b as boolean&)
+		b = (stm::Tokens::get_Item(0) is TryLockTok) and (stm::Tokens::get_Count() >= 2)
+		if b then
+
+			var i as integer = 0
+			var len as integer = --stm::Tokens::get_Count() 
+			var exp as Expr = new Expr()
+			
+			do until i = len
+				i++
+				exp::AddToken(stm::Tokens::get_Item(i))
+			end do
+			
+			return new TryLockStmt() {Line = stm::Line, Tokens = stm::Tokens, Lockee = new ExprOptimizer(PFlags)::Optimize(exp)}
+		end if
+		return null
+	end method
+
 	method private Stmt checkCmt(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is CommentTok
 		if b then
@@ -1793,7 +1810,13 @@ class public auto ansi StmtOptimizer
 			stm = tmpstm
 			return stm
 		end if
-		
+
+		tmpstm = checkTryLock(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+
 		tmpstm = checkThrow(stm, ref compb)
 		if compb then
 			stm = tmpstm

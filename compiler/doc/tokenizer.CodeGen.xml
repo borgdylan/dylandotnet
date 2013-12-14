@@ -746,6 +746,21 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.LockItem(System.Int32,IKVM.Reflection.Emit.Label,System.Int32)">
+            <param name="loc">To be added.</param>
+            <param name="lb">To be added.</param>
+            <param name="ln">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.LockItem.IsTryLock">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.LockItem.Lbl">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.LockItem.Line">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1146,6 +1161,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddTryLock(System.Int32)">
+            <param name="loc">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddUsing(System.String)">
             <param name="loc">To be added.</param>
             <summary>To be added.</summary>
@@ -1336,7 +1356,7 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadLockeeLoc">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadLock">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -1420,6 +1440,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.StoreFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.TempVTMap">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
