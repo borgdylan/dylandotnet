@@ -1,0 +1,2 @@
+The targets files go in your tools directory for MsBuild (where Microsoft.Common.targets live)
+The other files go in your MsBuild extensions directory.

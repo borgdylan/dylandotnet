@@ -2,16 +2,16 @@
 <package >
   <metadata>
     <id>dylan.NET</id>
-    <version>11.3.2.1</version>
+    <version>11.3.2.2</version>
     <authors>borgdylan</authors>
     <owners>borgdylan</owners>
     <licenseUrl>http://www.gnu.org/copyleft/lesser.html</licenseUrl>
     <projectUrl>http://launchpad.net/dylandotnet</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A compiler for dylan.NET, a new language targeting the CLR</description>
-    <releaseNotes>dylan.NET v.11.3.2.1</releaseNotes>
+    <releaseNotes>dylan.NET v.11.3.2.2 with MSBuild support files.</releaseNotes>
     <copyright>Copyright 2013</copyright>
-    <tags>.NET3.5 .NET4.0 .NET4.5 Mono PCL</tags>
+    <tags>.NET3.5 .NET4.0 .NET4.5 Mono PCL MSBuild</tags>
     <!--<dependencies>
       <dependency id="SampleDependency" version="1.0" />
     </dependencies>-->
@@ -23,6 +23,6 @@
   	<file src="lib/net45/*.exe" target="lib/net45/" />
   	<file src="lib/net40/*.exe" target="lib/net40/" />
   	<file src="lib/net35/*.exe" target="lib/net35/" />
-  	<!--<file src="tools/*.exe" target="tools/" />-->
+  	<file src="tools/*.*" target="tools/" />
   </files>
 </package>

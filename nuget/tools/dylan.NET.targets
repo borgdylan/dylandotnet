@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	
+	<PropertyGroup>
+		<DefaultLanguageSourceExtension>.dyl</DefaultLanguageSourceExtension>
+		<Language>dylan.NET</Language>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<TargetFrameworkVersion Condition=" '$(TargetFrameworkVersion)' == '' ">v4.0</TargetFrameworkVersion>
+		<OutputType Condition=" '$(OutputType)' == '' ">Exe</OutputType>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+		<OutputPath Condition=" '$(OutputPath)' == '' ">bin\$(Configuration)\</OutputPath>
+		<!--<IntermediateOutputPath>$(MSBuildProjectDirectory)</IntermediateOutputPath>-->
+		<ReleaseVersion Condition=" '$(ReleaseVersion)' == '' ">1.0.0.0</ReleaseVersion>
+		<AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+		<ImplicitlyExpandTargetFramework Condition="'$(ImplicitlyExpandTargetFramework)' == '' ">true</ImplicitlyExpandTargetFramework>	
+	</PropertyGroup>
+	
+	<Target Name="CreateManifestResourceNames" />
+	
+	<PropertyGroup>
+		<InputFile Condition=" '$(InputFile)' == '' ">$(AssemblyName).dyl</InputFile>
+		<DNCommand Condition=" '$(TargetFrameworkVersion)' == 'v2.0' or '$(TargetFrameworkVersion)' == 'v3.5' ">dylandotnet</DNCommand>
+		<DNCommand Condition=" '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' ">dylandotnet4</DNCommand>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v2.0' or '$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' " Include="NET_2_0" />
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' " Include="NET_3_5" />
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' " Include="NET_4_0" />
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.5' " Include="NET_4_5" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Compile Condition=" '@(Compile)' == '' " Include="$(InputFile)" />
+	</ItemGroup>
+	
+	<Target Name="CoreCompile" Inputs="$(MSBuildAllProjects);@(ReferencePath);@(Compile);$(KeyOriginatorFile)" Outputs="@(CompileOuts)" DependsOnTargets="$(CoreCompileDependsOn);ResolveAssemblyReferences">
+		<Message Text="Saving project settings into msbuild.dyl so you could use them as part of your code." />
+		<ItemGroup>
+			<DefineConsts Include="$(DefineConstants)" />
+			<InfoLines Include="#define %(NETDefines.FileName)" />
+			<InfoLines Condition=" '$(DefineConstants)' != '' " Include="#define %(DefineConsts.Identity)" />
+			<InfoLines Include="#refasm &quot;%(ReferencePath.FullPath)&quot;" />
+			<InfoLines Condition=" '$(Configuration)' == 'Debug' " Include="#debug on" />
+			<InfoLines Include="[assembly: System.Runtime.InteropServices.ComVisible(false)]" />
+			<InfoLines Include="[assembly: System.Reflection.AssemblyConfiguration(&quot;$(Configuration)&quot;)]" />
+			<InfoLines Include="[assembly: System.Reflection.AssemblyTitle(&quot;$(AssemblyName)&quot;)]" />
+			<InfoLines Include="[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]" />
+			<InfoLines Condition=" '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' " Include="[assembly: System.Runtime.Versioning.TargetFramework(&quot;$(TargetFrameworkMoniker)&quot;), FrameworkDisplayName = &quot;$(TargetFrameworkMonikerDisplayName)&quot;]" />
+			<InfoLines Condition=" '$(OutputType)' == 'Library' " Include="assembly $(AssemblyName) dll" />
+			<InfoLines Condition=" '$(OutputType)' != 'Library' " Include="assembly $(AssemblyName) exe" />
+			<InfoLines Include="ver $(ReleaseVersion)" />
+			<FileWrites Include="msbuild.dyl" />
+		</ItemGroup>
+		<WriteLinesToFile  File="msbuild.dyl" Lines="@(InfoLines)" Overwrite="True" />
+		
+		<Message Text="Compiling for Target: $(TargetFrameworkMonikerDisplayName)"/>
+		<DncTask InputFile="$(InputFile)" />
+		<Copy SourceFiles="$(AssemblyName)$(TargetExt)" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName)$(TargetExt)" />
+		<Copy Condition=" '$(Configuration)' == 'Debug' " SourceFiles="$(AssemblyName)$(DebugExt)" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName)$(DebugExt)" />
+		<Message Text="Compilation Ready"/>
+	</Target>
+	
+	<PropertyGroup>
+		<CoreBuildDependsOn>$(CoreBuildDependsOn);CleanFiles</CoreBuildDependsOn>
+	</PropertyGroup>
+	
+	<Target Name="CleanFiles" AfterTargets="DeployOutputFiles">
+		<Delete Files="$(AssemblyName)$(TargetExt)" />
+		<Delete Condition=" '$(Configuration)' == 'Debug' " Files="$(AssemblyName)$(DebugExt)" />
+	</Target>
+	
+	<Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+	<Import Project="$(MSBuildExtensionsPath)\Extra.tasks" />
+	
+	<PropertyGroup>
+		<ResolveReferencesDependsOn Condition="'$(TargetFrameworkIdentifier)' != '.NETFramework'">
+			$(ResolveReferencesDependsOn);
+			ImplicitlyExpandTargetFramework;
+		</ResolveReferencesDependsOn>
+		
+		<ImplicitlyExpandTargetFrameworkDependsOn Condition="'$(TargetFrameworkIdentifier)' != '.NETFramework'">
+			$(ImplicitlyExpandTargetFrameworkDependsOn);
+			GetReferenceAssemblyPaths
+		</ImplicitlyExpandTargetFrameworkDependsOn>
+	</PropertyGroup>
+	
+	<Target Name="ImplicitlyExpandTargetFramework"
+		DependsOnTargets="$(ImplicitlyExpandTargetFrameworkDependsOn)">
+
+		<ItemGroup>
+			<ReferenceAssemblyPaths Include="$(_TargetFrameworkDirectories)"/>
+			<ReferencePath Include="%(ReferenceAssemblyPaths.Identity)\*.dll">
+				<CopyLocal>false</CopyLocal>
+				<ResolvedFrom>ImplicitlyExpandTargetFramework</ResolvedFrom>
+				<IsSystemReference>True</IsSystemReference>
+			</ReferencePath>
+		</ItemGroup>
+	</Target>
+	
+	<PropertyGroup>
+		<DebugExt Condition=" '$(OS)' != 'Windows_NT' ">$(TargetExt).mdb</DebugExt>
+		<DebugExt Condition=" '$(OS)' == 'Windows_NT' ">.pdb</DebugExt>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<CompileOuts Include="$(IntermediateOutputPath)$(AssemblyName)$(TargetExt)" />
+		<CompileOuts Condition=" '$(Configuration)' == 'Debug' " Include="$(IntermediateOutputPath)$(AssemblyName)$(DebugExt)" />
+	</ItemGroup>
+	
+	<Target Name="AfterResolveReferences">
+	    Redefine referencepath to add dependencies
+	    <ItemGroup>
+	      <ReferencePath Include="@(ReferenceDependencyPaths)"></ReferencePath>
+	    </ItemGroup>
+	</Target>
+	
+	<!--<Target Name="InstallDNTargets">
+		<Copy SourceFiles="$(MSBuildThisFile)" DestinationFiles="$(MSBuildToolsPath)\$(MSBuildThisFileName)$(MSBuildThisFileExtension)" />
+	</Target>
+	
+	<Target Name="UninstallDNTargets">
+		<Delete Files="$(MSBuildToolsPath)\$(MSBuildThisFileName)$(MSBuildThisFileExtension)" />
+	</Target>-->
+	
+</Project>
