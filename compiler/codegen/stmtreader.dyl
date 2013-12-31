@@ -128,7 +128,7 @@ class public auto ansi StmtReader
 		end if
 		
 		AsmFactory::CurnInhTyp = inhtyp
-		
+			
 		if ti2 == null then
 			if !AsmFactory::isNested then
 				AsmFactory::CurnTypName = clss::ClassName::Value
@@ -136,23 +136,31 @@ class public auto ansi StmtReader
 				StreamUtils::WriteLine(string::Format("Adding Class: {0}.{1}" , AsmFactory::CurnNS, clss::ClassName::Value))
 			else
 				AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
-				StreamUtils::WriteLine(string::Format("Adding Nested Class: {0}", clss::ClassName::Value))
+				AsmFactory::CurnTypName2 = AsmFactory::CurnTypName
 				AsmFactory::CurnTypName = clss::ClassName::Value
+				SymTable::CurnTypItem2 = SymTable::CurnTypItem
+
+				StreamUtils::WriteLine(string::Format("Adding Nested Class: {0}", clss::ClassName::Value))
 				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value, clssparams, inhtyp)
 			end if
 		else
+			AsmFactory::CurnTypName = clss::ClassName::Value
 			SymTable::CurnTypItem = ti2
 			AsmFactory::CurnTypB = ti2::TypeBldr
-			AsmFactory::CurnTypName = clss::ClassName::Value
 			StreamUtils::WriteLine(string::Format("Continuing Class: {0}.{1}", AsmFactory::CurnNS, clss::ClassName::Value))
 		end if
 		
 		Helpers::ApplyClsAttrs()
 
 		if ti2 == null then
-			var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::ClassName::Value, AsmFactory::CurnTypB) {InhTyp = inhtyp, IsStatic = ILEmitter::StaticCFlg}
+			var ti as TypeItem = new TypeItem(#ternary{AsmFactory::isNested ? string::Empty, AsmFactory::CurnNS + "."} + clss::ClassName::Value, AsmFactory::CurnTypB) {InhTyp = inhtyp, IsStatic = ILEmitter::StaticCFlg}
 			SymTable::CurnTypItem = ti
-			SymTable::TypeLst::AddType(ti)
+
+			if !AsmFactory::isNested then
+				SymTable::TypeLst::AddType(ti)
+			else
+				SymTable::CurnTypItem2::AddType(ti)
+			end if
 
 			foreach interf in clss::ImplInterfaces
 				interftyp = Helpers::CommitEvalTTok(interf)
@@ -176,10 +184,8 @@ class public auto ansi StmtReader
 		//if AsmFactory::inClass then
 		//	AsmFactory::isNested = true
 		//end if
-		//if !AsmFactory::isNested then
-			AsmFactory::inEnum = true
-		//end if
-
+		AsmFactory::inEnum = true
+		
 		var enumtyp = Helpers::CommitEvalTTok(clss::EnumTyp)
 		if enumtyp == null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", clss::EnumTyp::Value))
@@ -354,11 +360,11 @@ class public auto ansi StmtReader
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type Initializers should NOT have any Parameters!")
 			end if
 			
-			if AsmFactory::isNested then
-				SymTable::AddNestedCtor(paramstyps, AsmFactory::CurnConB)
-			else
+//			if AsmFactory::isNested then
+//				SymTable::AddNestedCtor(paramstyps, AsmFactory::CurnConB)
+//			else
 				SymTable::AddCtor(paramstyps, AsmFactory::CurnConB)
-			end if
+//			end if
 			if mtss::Params[l] != 0 then
 				Helpers::PostProcessParamsConstr(mtss::Params)
 			end if
@@ -453,11 +459,11 @@ class public auto ansi StmtReader
 			end if
 			
 			if !fromproto then
-				if AsmFactory::isNested then
-					SymTable::AddNestedMet(mtssnamstr, rettyp, paramstyps, AsmFactory::CurnMetB)
-				else
+//				if AsmFactory::isNested then
+//					SymTable::AddNestedMet(mtssnamstr, rettyp, paramstyps, AsmFactory::CurnMetB)
+//				else
 					SymTable::AddMet(mtssnamstr, rettyp, paramstyps, AsmFactory::CurnMetB, nrgenparams)
-				end if
+//				end if
 			end if
 			
 			if !ILEmitter::ProtoFlg then
@@ -648,7 +654,7 @@ class public auto ansi StmtReader
 		Helpers::ApplyAsmAttrs()
 		
 		AsmFactory::AsmFile = AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode
-		Importer::AddAsm(AsmFactory::AsmB)
+//		Importer::AddAsm(AsmFactory::AsmB)
 	end method
 	
 	method public void ReadField(var flss as FieldStmt)
@@ -682,11 +688,11 @@ class public auto ansi StmtReader
 			end if
 		end if
 		
-		if AsmFactory::isNested then
-			SymTable::AddNestedFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB)
-		else
+//		if AsmFactory::isNested then
+//			SymTable::AddNestedFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB)
+//		else
 			SymTable::AddFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB, #ternary{ litval == null ? null, litval::Value})
-		end if
+//		end if
 
 		StreamUtils::Write(#ternary{AsmFactory::CurnFldB::get_IsLiteral() ?  "	Adding Constant: ", "	Adding Field: "})
 		StreamUtils::WriteLine(flss::FieldName::Value)
@@ -1027,11 +1033,15 @@ class public auto ansi StmtReader
 			if AsmFactory::isNested then
 				SymTable::TypeLst::EnsureDefaultCtor(AsmFactory::CurnTypB)
 				AsmFactory::CreateTyp()
+
 				AsmFactory::CurnTypB = AsmFactory::CurnTypB2
+				AsmFactory::CurnTypName = AsmFactory::CurnTypName2
+				SymTable::CurnTypItem = SymTable::CurnTypItem2
+
 				AsmFactory::isNested = false
-				SymTable::ResetNestedMet()
-				SymTable::ResetNestedCtor()
-				SymTable::ResetNestedFld()
+//				SymTable::ResetNestedMet()
+//				SymTable::ResetNestedCtor()
+//				SymTable::ResetNestedFld()
 			else
 				if !ILEmitter::PartialFlg then
 					SymTable::TypeLst::EnsureDefaultCtor(AsmFactory::CurnTypB)
@@ -1161,7 +1171,10 @@ class public auto ansi StmtReader
 		elseif stm is MethodCallStmt then
 			var mcstmt as MethodCallStmt = $MethodCallStmt$stm
 			if Helpers::SetPopFlg(mcstmt::MethodToken) != null then
-				new Evaluator()::Evaluate(new Expr() {AddToken(mcstmt::MethodToken)})
+				var eval2 = new Evaluator()
+				var asttok as Token = eval2::ConvToAST(eval2::ConvToRPN(new Expr() {AddToken(mcstmt::MethodToken)}))
+				eval2::ASTEmit(asttok, false)
+				eval2::ASTEmit(asttok, true)
 			else
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No variable/field loads are allowed without a destination being specified")
 			end if

@@ -156,17 +156,5 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="TypeMap">
-      <MemberSignature Language="C#" Value="public static C5.IDictionary&lt;string,IKVM.Reflection.Type&gt; TypeMap;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class C5.IDictionary`2&lt;string, class IKVM.Reflection.Type&gt; TypeMap" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>C5.IDictionary&lt;System.String,IKVM.Reflection.Type&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
   </Members>
 </Type>

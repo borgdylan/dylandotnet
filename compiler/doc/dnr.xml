@@ -106,6 +106,10 @@
             <summary>Holds the name of the class under construction.</summary>
             <remarks />
         </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnTypName2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.DebugFlg">
             <summary>If set indicates that debug information is required else its hould be unset.</summary>
             <remarks />
@@ -864,10 +868,6 @@
         <member name="M:dylan.NET.Reflection.Importer.RegisterAlias(System.String,System.String)">
             <param name="alias">To be added.</param>
             <param name="ns">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Reflection.Importer.TypeMap">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

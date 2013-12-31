@@ -86,7 +86,7 @@ namespace dylan.NET.Tokenizer.CodeGen
 	#include "codegen/ctoritem.dyl"
 	#include "codegen/cilambdas.dyl"
 	#include "codegen/typeitem.dyl"
-	#include "codegen/tilambdas.dyl"
+	//tilambdas included in typeitem file
 	#include "codegen/collectionitem.dyl"
 	#include "codegen/typelist.dyl"
 	#include "codegen/labelitem.dyl"
@@ -101,7 +101,6 @@ namespace dylan.NET.Tokenizer.CodeGen
 	//#include "codegen/typearr.dyl"
 	#include "codegen/symtable.dyl"
 	#include "codegen/helpers.dyl"
-	//#include "codegen/constldr.dyl"
 	#include "codegen/opstack.dyl"
 	#include "codegen/eval.dyl"
 	#include "codegen/stmtreader.dyl"

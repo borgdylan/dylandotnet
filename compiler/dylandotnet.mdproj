@@ -89,7 +89,6 @@
     <None Include="ast\xmldocstmt.dyl" />
     <None Include="codegen\arraycheck.txt" />
     <None Include="codegen\codegenerator.dyl" />
-    <None Include="codegen\constldr.dyl" />
     <None Include="codegen\ctoritem.dyl" />
     <None Include="codegen\eval.dyl" />
     <None Include="codegen\fielditem.dyl" />
@@ -592,6 +591,7 @@
     <None Include="codegen\typeparamitem.dyl" />
     <None Include="codegen\usingitem.dyl" />
     <None Include="codegen\tryitem.dyl" />
+    <None Include="codegen\constldr.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ast\interfaces.dyl" />

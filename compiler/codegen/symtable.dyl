@@ -22,6 +22,7 @@ class public auto ansi static SymTable
 
 	field public static TypeList TypeLst
 	field public static TypeItem CurnTypItem
+	field public static TypeItem CurnTypItem2
 	field public static PropertyItem CurnProp
 	field public static EventItem CurnEvent
 	field public static PInvokeInfo PIInfo

@@ -1219,6 +1219,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.CurnTypItem2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.EnumCALst">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1513,6 +1517,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.AddType(dylan.NET.Tokenizer.CodeGen.TypeItem)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.BakedTyp">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1563,6 +1572,24 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetType(System.String)">
+            <param name="nam">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetTypeItem(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetTypeItem(System.String)">
+            <param name="nam">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.InhTyp">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1597,6 +1624,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.TypeBldr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.Types">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi TypeItem
+class public auto ansi partial TypeItem
 
 	field public string Name
 	field public boolean IsStatic
@@ -17,6 +17,7 @@ class public auto ansi TypeItem
 	field public EnumBuilder EnumBldr
 	field public C5.IList<of MethodItem> Methods
 	field public C5.IList<of CtorItem> Ctors
+	field public C5.IList<of TypeItem> Types
 	field public C5.HashDictionary<of string, FieldItem> Fields
 	field public boolean IsEnum
 
@@ -29,6 +30,7 @@ class public auto ansi TypeItem
 		InhTyp = null
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
 		Methods = new C5.LinkedList<of MethodItem>()
+		Types = new C5.LinkedList<of TypeItem>()
 		Ctors = new C5.LinkedList<of CtorItem>()
 		Fields = new C5.HashDictionary<of string, FieldItem>()
 		BakedTyp = null
@@ -62,6 +64,10 @@ class public auto ansi TypeItem
 
 	method public void AddCtor(var c as CtorItem)
 		Ctors::Add(c)
+	end method
+
+	method public void AddType(var t as TypeItem)
+		Types::Add(t)
 	end method
 
 	method public void AddInterface(var i as IKVM.Reflection.Type)
@@ -177,6 +183,32 @@ class public auto ansi TypeItem
 
 	method public hidebysig virtual string ToString()
 		return Name
+	end method
+
+end class
+
+#include "codegen/tilambdas.dyl"
+
+class public auto ansi TypeItem
+
+	method public TypeItem GetTypeItem(var t as IKVM.Reflection.Type)
+		var til as TILambdas = new TILambdas(t)
+		return Enumerable::FirstOrDefault<of TypeItem>(Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidateType())))
+	end method
+
+	method public TypeItem GetTypeItem(var nam as string)
+		var til as TILambdas = new TILambdas(nam)
+		var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
+		return Enumerable::FirstOrDefault<of TypeItem>(lot2)
+	end method
+
+	method public IKVM.Reflection.Type GetType(var nam as string)
+		var ti as TypeItem = GetTypeItem(nam)
+		if $object$ti == null then
+			return null
+		else
+			return ti::BakedTyp ?? #ternary{ti::IsEnum ? ti::EnumBldr, ti::TypeBldr}
+		end if
 	end method
 
 end class

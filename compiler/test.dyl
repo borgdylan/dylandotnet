@@ -1,6 +1,6 @@
 #refstdasm "mscorlib.dll"
 #refstdasm "System.Xml.dll"
-#refasm "dnc.exe"
+#refasm "4.0/dnc.exe"
 //#refasm "dnr.dll"
 //#refasm "tests/protectedtests.exe"
 //#refasm "tokenizer.Lexer.dll"
@@ -15,6 +15,7 @@ import System.Reflection.Emit
 import System.Xml.Serialization
 import System.Reflection
 import System.Threading.Tasks
+import dylan.NET
 import dylan.NET.Reflection
 import dylan.NET.Compiler
 import dylan.NET.Tokenizer.Lexer
@@ -36,7 +37,7 @@ class public auto ansi Program
 	method public static void main()
 		Environment::set_CurrentDirectory("/var/www/Code/dylannet/dylandotnet/compiler/templateproj")
 		var arr as string[] = new string[] {"template.dyl"}
-		dylan.NET.Compiler.Program::Invoke(arr)
+		Compiler.Program::Invoke(arr)
 		//var t as Task = Program::InvokeAsync(arr)
 		//Console::ReadLine()
 		//Console::WriteLine($object$t::get_Status())

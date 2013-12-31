@@ -20,7 +20,14 @@ class public auto ansi TypeList
 	end method
 
 	method public TypeItem GetTypeItem(var nam as string)
-		
+		var nest as boolean = false
+
+		var na as string[] = ParseUtils::StringParser(nam,"\")
+		nam = na[0]
+		if na[l] > 1 then
+			nest = true
+		end if
+
 		foreach alias in Importer::AliasMap::get_Keys()
 			if nam == alias then
 				nam = Importer::AliasMap::get_Item(alias)
@@ -40,6 +47,10 @@ class public auto ansi TypeList
 			var match as TypeItem = Enumerable::FirstOrDefault<of TypeItem>(lot2)
 			
 			if match != null then
+				if nest then
+					match = match::GetTypeItem(na[1])
+				end if
+
 				return match
 			end if
 		end for
@@ -49,7 +60,18 @@ class public auto ansi TypeList
 
 	method public TypeItem GetTypeItem(var t as IKVM.Reflection.Type)
 		var til as TILambdas = new TILambdas(t)
-		return Enumerable::FirstOrDefault<of TypeItem>(Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidateType())))
+
+		if t::get_IsNested() then
+			foreach ti in Types
+				var res = ti::GetTypeItem(t)
+				if t != null then
+					return res
+				end if
+			end for	
+		else
+			return Enumerable::FirstOrDefault<of TypeItem>(Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidateType())))
+		end if
+		return null
 	end method
 	
 	method public IKVM.Reflection.Type GetType(var nam as string)

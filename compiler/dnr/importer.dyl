@@ -12,7 +12,7 @@ class public auto ansi static Importer
 	field public static C5.IList<of string> Imps
 	field public static C5.LinkedList<of C5.LinkedList<of string> > ImpsStack
 	field public static C5.IDictionary<of string,string> AliasMap
-	field public static C5.IDictionary<of string, IKVM.Reflection.Type> TypeMap
+	//field public static C5.IDictionary<of string, IKVM.Reflection.Type> TypeMap
 	field public static string AsmBasePath
 
 	[method: ComVisible(false)]
@@ -40,7 +40,7 @@ class public auto ansi static Importer
 			Add("intptr", "System.IntPtr"), _
 			Add("uintptr", "System.UIntPtr"), _
 			Add("decimal", "System.Decimal") }
-		TypeMap = new C5.HashDictionary<of string, IKVM.Reflection.Type>()
+		//TypeMap = new C5.HashDictionary<of string, IKVM.Reflection.Type>()
 	end method
 
 	method private static void Importer()

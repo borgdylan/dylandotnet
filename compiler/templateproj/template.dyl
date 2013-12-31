@@ -89,6 +89,42 @@ class public auto ansi HelloClass implements IHello, IHello2, IHello3
 
 end class
 
+class public auto ansi Container
+
+	class public auto ansi Sibling
+	end class
+
+	class public auto ansi Nested
+
+		field public integer X
+		field public static literal integer C = 11
+		property public autogen Container Parent
+
+		method public void Nested(var p as Container)
+			me::ctor()
+			_Parent = p
+			X = 0
+		end method
+
+		method public void Nested()
+			me::ctor()
+			X = 0
+		end method
+
+		method public string M()
+			return $string$ new Nested()::X
+		end method
+
+		method public object N()
+			return new Sibling()
+		end method
+
+	end class
+
+	field public Nested Child
+
+end class
+
 class public auto ansi BaseTest
 
 	field private BaseTest F1

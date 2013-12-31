@@ -32,6 +32,7 @@ class public auto ansi static AsmFactory
 	field public static string AsmMode
 	field public static string AsmFile
 	field public static string CurnTypName
+	field public static string CurnTypName2
 	field public static string CurnMetName
 	field public static IKVM.Reflection.Emit.MethodBuilder CurnMetB
 	field public static IKVM.Reflection.Emit.ConstructorBuilder CurnConB

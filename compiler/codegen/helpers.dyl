@@ -472,7 +472,7 @@ class public auto ansi static Helpers
 			return null
 		end if
 		
-		var typ as IKVM.Reflection.Type
+		var typ as IKVM.Reflection.Type = null
 		var temptyp as IKVM.Reflection.Type
 		var gtt as GenericTypeTok
 		var pttoks as TypeTok[] = new TypeTok[0]
@@ -487,13 +487,13 @@ class public auto ansi static Helpers
 			var tstr = gtt::Value + "`" + $string$pttoks[l]
 			if gtt::RefTyp != null then
 				typ = gtt::RefTyp
-			elseif Importer::TypeMap::Contains(tstr) then
-				gtt::RefTyp = Importer::TypeMap::get_Item(tstr)
-				typ = gtt::RefTyp
+//			elseif Importer::TypeMap::Contains(tstr) then
+//				gtt::RefTyp = Importer::TypeMap::get_Item(tstr)
+//				typ = gtt::RefTyp
 			else
 				typ = Loader::LoadClass(tstr)
 				gtt::RefTyp = Loader::PreProcTyp
-				Importer::TypeMap::set_Item(tstr, Loader::PreProcTyp)
+//				Importer::TypeMap::set_Item(tstr, Loader::PreProcTyp)
 			end if
 
 			if typ = null then
@@ -515,28 +515,38 @@ class public auto ansi static Helpers
 		else
 			
 			var isgenparam = SymTable::MetGenParams::Contains(tt::Value)
-			
+
 			if !isgenparam then
 				if tt::RefTyp != null then
 					Loader::MakeArr = tt::IsArray
 					Loader::MakeRef = tt::IsByRef
 					typ = Loader::ProcessType(tt::RefTyp)
-				elseif Importer::TypeMap::Contains(tt::Value) then
-					tt::RefTyp = Importer::TypeMap::get_Item(tt::Value)
-					Loader::MakeArr = tt::IsArray
-					Loader::MakeRef = tt::IsByRef
-					typ = Loader::ProcessType(tt::RefTyp)
+//				elseif Importer::TypeMap::Contains(tt::Value) then
+//					tt::RefTyp = Importer::TypeMap::get_Item(tt::Value)
+//					Loader::MakeArr = tt::IsArray
+//					Loader::MakeRef = tt::IsByRef
+//					typ = Loader::ProcessType(tt::RefTyp)
 				else
 					Loader::MakeArr = tt::IsArray
 					Loader::MakeRef = tt::IsByRef
-					typ = SymTable::TypeLst::GetType(tt::Value)
+
+					if ParseUtils::StringParser(tt::Value,c"\\")[l] > 0 and !tt::Value::Contains(".") then
+						if AsmFactory::inClass then
+							typ = #expr(#ternary { AsmFactory::isNested ? SymTable::CurnTypItem2 , SymTable::CurnTypItem})::GetType(tt::Value)
+						end if
+					end if  
+
+					if typ == null  then
+						typ = SymTable::TypeLst::GetType(tt::Value)
+					end if
+
 					if typ != null  then
 						tt::RefTyp = typ
-						Importer::TypeMap::set_Item(tt::Value, typ)
+//						Importer::TypeMap::set_Item(tt::Value, typ)
 						typ = Loader::ProcessType(typ)
 					else
 						typ = Loader::LoadClass(tt::Value)
-						Importer::TypeMap::set_Item(tt::Value, Loader::PreProcTyp)
+//						Importer::TypeMap::set_Item(tt::Value, Loader::PreProcTyp)
 						tt::RefTyp = Loader::PreProcTyp
 					end if 
 				end if
@@ -1004,7 +1014,10 @@ class public auto ansi static Helpers
 				end if
 			end if
 		elseif op is EqOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_Equality", LeftOp, RightOp)
+			if !LeftOp::Equals(AsmFactory::CurnTypB) then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_Equality", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -1020,7 +1033,10 @@ class public auto ansi static Helpers
 				end if
 			end if
 		elseif op is NeqOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_Inequality", LeftOp, RightOp)
+			if !LeftOp::Equals(AsmFactory::CurnTypB) then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_Inequality", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -1159,7 +1175,7 @@ class public auto ansi static Helpers
 		
 		if !isgenparam then
 			//begin conv overload block
-			if (source::get_IsPrimitive() and sink::get_IsPrimitive()) = false then
+			if !#expr(source::get_IsPrimitive() and sink::get_IsPrimitive()) then
 				if !sink::Equals(AsmFactory::CurnTypB) and !sink::get_IsInterface() then
 					m1 = Loader::LoadConvOp(sink, "op_Implicit", source, sink)
 					if m1 != null then

@@ -35,7 +35,7 @@ class public auto ansi static Loader
 
 		var typ as IKVM.Reflection.Type = null
 		var nest as boolean = false
-		var asmb as IKVM.Reflection.Emit.AssemblyBuilder
+		//var asmb as IKVM.Reflection.Emit.AssemblyBuilder
 
 		var na as string[] = ParseUtils::StringParser(name,"\")
 		name = na[0]
@@ -59,8 +59,9 @@ class public auto ansi static Loader
 		foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
 			foreach curasm in Importer::Asms
 				if curasm == AsmFactory::AsmB then
-					asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
-					typ = asmb::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name},false,false)
+					//asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
+					typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
+					//,false,false)
 					if typ != null then
 						if nest then
 							typ = typ::GetNestedType(na[1])

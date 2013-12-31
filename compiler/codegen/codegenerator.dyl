@@ -190,6 +190,10 @@ class public auto ansi CodeGenerator
 			AsmFactory::AsmB::DefineVersionInfoResource()
 			AsmFactory::AsmB::Save(AsmFactory::AsmFile)
 			StreamUtils::WriteLine("...Done.")
+
+//			foreach t in SymTable::TypeLst::Types
+//				StreamUtils::WriteLine(t::ToString())
+//			end for
 		end if
 
 	end method
