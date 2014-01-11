@@ -311,9 +311,9 @@ class public auto ansi StmtReader
 		if AsmFactory::isNested then
 			AsmFactory::CurnTypB = AsmFactory::CurnTypB2
 			AsmFactory::isNested = false
-			SymTable::ResetNestedMet()
-			SymTable::ResetNestedCtor()
-			SymTable::ResetNestedFld()
+//			SymTable::ResetNestedMet()
+//			SymTable::ResetNestedCtor()
+//			SymTable::ResetNestedFld()
 		else
 			AsmFactory::inClass = false
 		end if
@@ -634,7 +634,7 @@ class public auto ansi StmtReader
 		end if
 		AsmFactory::AsmB = ILEmitter::Univ::DefineDynamicAssembly(AsmFactory::AsmNameStr, AssemblyBuilderAccess::Save, Directory::GetCurrentDirectory())
 		AsmFactory::MdlB = AsmFactory::AsmB::DefineDynamicModule(AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode, AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode, AsmFactory::DebugFlg)
-			
+
 		if AsmFactory::DebugFlg then
 			fpath = Path::GetFullPath(fpath)
 			var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
@@ -977,6 +977,23 @@ class public auto ansi StmtReader
 			StreamUtils::Write("Referencing Assembly: ")
 			StreamUtils::WriteLine(rsastm::AsmPath::Value)
 			Importer::AddAsm(ILEmitter::Univ::LoadFile(rsastm::AsmPath::Value))
+		elseif stm is SignStmt then
+			var sstm as SignStmt = $SignStmt$stm
+			if sstm::KeyPath::Value like  c"^\q(.)*\q$" then
+				sstm::KeyPath::Value = sstm::KeyPath::Value::Trim(new char[] {c'\q'})
+			end if
+			sstm::KeyPath::Value = ParseUtils::ProcessMSYSPath(sstm::KeyPath::Value)
+			
+			if File::Exists(sstm::KeyPath::Value) then
+				StreamUtils::Write("Setting Signing Key: ")
+				StreamUtils::WriteLine(sstm::KeyPath::Value)
+				var fs = new FileStream(sstm::KeyPath::Value, FileMode::Open)
+				AsmFactory::StrongKey = new StrongNameKeyPair(fs)
+				fs::Close()
+			else
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Key File '" + sstm::KeyPath::Value + "' does not exist.")
+			end if
+
 		elseif stm is ImportStmt then
 			var istm as ImportStmt = $ImportStmt$stm
 			if istm::NS::Value like c"^\q(.)*\q$" then
@@ -1007,6 +1024,9 @@ class public auto ansi StmtReader
 		elseif stm is AssemblyStmt then
 			var asms as AssemblyStmt = $AssemblyStmt$stm
 			AsmFactory::AsmNameStr = new AssemblyName(asms::AsmName::Value)
+			if AsmFactory::StrongKey != null then
+				AsmFactory::AsmNameStr::set_KeyPair(AsmFactory::StrongKey)
+			end if
 			AsmFactory::AsmMode = asms::Mode::Value
 			AsmFactory::DfltNS = asms::AsmName::Value
 			AsmFactory::CurnNS = asms::AsmName::Value
@@ -1069,6 +1089,15 @@ class public auto ansi StmtReader
 			AsmFactory::InMethodFlg = false
 			AsmFactory::InCtorFlg = false
 			if !#expr(ILEmitter::AbstractFlg or ILEmitter::ProtoFlg or ILEmitter::PInvokeFlg) then
+				var li as LabelItem = SymTable::FindLbl("$leave_ret_label$")
+				if li != null then
+					ILEmitter::MarkLbl(li::Lbl)
+					if !AsmFactory::CurnMetB::get_ReturnType()::Equals(Loader::LoadClass("System.Void")) then
+						var vr = SymTable::FindVar("$leave_ret_var$")
+						vr::Used = true
+						ILEmitter::EmitLdloc(vr::Index)
+					end if
+				end if
 				ILEmitter::EmitRet()
 				SymTable::CheckUnusedVar()
 				SymTable::CheckCtrlBlks()
@@ -1084,8 +1113,17 @@ class public auto ansi StmtReader
 				new Evaluator()::Evaluate(retstmt::RExp)
 				Helpers::CheckAssignability(AsmFactory::CurnMetB::get_ReturnType(), AsmFactory::Type02)
 			end if
-			SymTable::CheckReturnInTry()
-			ILEmitter::EmitRet()
+
+			if SymTable::CheckReturnInTry() then
+				var lbl = SymTable::GetRetLbl()
+				if !AsmFactory::CurnMetB::get_ReturnType()::Equals(Loader::LoadClass("System.Void")) then
+					var vr = SymTable::FindVar("$leave_ret_var$")
+					ILEmitter::EmitStloc(vr::Index)
+				end if
+				ILEmitter::EmitLeave(lbl)
+			else
+				ILEmitter::EmitRet()
+			end if
 		elseif stm is VarStmt then
 			var curv as VarStmt = $VarStmt$stm
 			vtyp = Helpers::CommitEvalTTok(curv::VarTyp)

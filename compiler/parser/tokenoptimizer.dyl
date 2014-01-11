@@ -238,8 +238,10 @@ class public auto ansi TokenOptimizer
 			return new ErrorTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "#warning" then
 			return new WarningTok() {Line = tok::Line, Value = tok::Value}
-		elseif tok::Value == "#scope" then
-			return new ScopeTok() {Line = tok::Line, Value = tok::Value}
+		//elseif tok::Value == "#scope" then
+		//	return new ScopeTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "#sign" then
+			return new SignTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "#expr" then
 			return new ExprTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "import" then

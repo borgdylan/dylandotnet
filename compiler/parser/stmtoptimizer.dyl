@@ -26,7 +26,15 @@ class public auto ansi StmtOptimizer
 		end if
 		return null
 	end method
-	
+
+	method private Stmt checkSign(var stm as Stmt, var b as boolean&)
+		b = stm::Tokens::get_Item(0) is SignTok
+		if b then
+			return new SignStmt() {Line = stm::Line, Tokens = stm::Tokens, KeyPath = stm::Tokens::get_Item(1)}
+		end if
+		return null
+	end method
+
 	method private Stmt checkRefstdasm(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is RefstdasmTok
 		if b then
@@ -1859,11 +1867,11 @@ class public auto ansi StmtOptimizer
 			return stm
 		end if
 		
-		tmpstm = checkScope(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
+//		tmpstm = checkScope(stm, ref compb)
+//		if compb then
+//			stm = tmpstm
+//			return stm
+//		end if
 		
 		tmpstm = checkInclude(stm, ref compb)
 		if compb then
@@ -1894,7 +1902,13 @@ class public auto ansi StmtOptimizer
 			stm = tmpstm
 			return stm
 		end if
-		
+
+		tmpstm = checkSign(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+
 		tmpstm = checkLabel(stm, ref compb)
 		if compb then
 			stm = tmpstm

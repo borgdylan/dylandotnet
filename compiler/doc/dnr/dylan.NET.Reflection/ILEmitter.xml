@@ -1556,6 +1556,27 @@
         <remarks>An instance of a class must be loaded prior to this emission. If the pointer to a static method is required use EmitLdftn instead.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitLeave">
+      <MemberSignature Language="C#" Value="public static void EmitLeave (IKVM.Reflection.Emit.Label lbl);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitLeave(valuetype IKVM.Reflection.Emit.Label lbl) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lbl" Type="IKVM.Reflection.Emit.Label" />
+      </Parameters>
+      <Docs>
+        <param name="lbl">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitLike">
       <MemberSignature Language="C#" Value="public static void EmitLike ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLike() cil managed" />

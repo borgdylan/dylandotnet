@@ -214,6 +214,14 @@ class public auto ansi IncludeTok extends Token
 
 end class
 
+class public auto ansi SignTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#sign"
+	end method
+
+end class
+
 //class public auto ansi XmldocTok extends Token
 //end class
 

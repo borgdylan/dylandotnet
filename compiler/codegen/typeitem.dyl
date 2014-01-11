@@ -204,7 +204,7 @@ class public auto ansi TypeItem
 
 	method public IKVM.Reflection.Type GetType(var nam as string)
 		var ti as TypeItem = GetTypeItem(nam)
-		if $object$ti == null then
+		if ti == null then
 			return null
 		else
 			return ti::BakedTyp ?? #ternary{ti::IsEnum ? ti::EnumBldr, ti::TypeBldr}

@@ -17,6 +17,7 @@ class public auto ansi static AsmFactory
 	field public static boolean ForcedAddrFlg
 	field public static boolean AddrFlg
 	field public static IKVM.Reflection.AssemblyName AsmNameStr
+	field public static IKVM.Reflection.StrongNameKeyPair StrongKey
 	field public static IKVM.Reflection.Emit.AssemblyBuilder AsmB
 	field public static IKVM.Reflection.Type Type01
 	field public static IKVM.Reflection.Type Type02
@@ -73,6 +74,7 @@ class public auto ansi static AsmFactory
 		inEnum = false
 		NSStack = new C5.LinkedList<of string>()
 		PCLSet = false
+		StrongKey = null
 	end method
 
 	method private static void AsmFactory()

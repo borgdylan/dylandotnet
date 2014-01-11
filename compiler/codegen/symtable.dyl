@@ -27,9 +27,9 @@ class public auto ansi static SymTable
 	field public static EventItem CurnEvent
 	field public static PInvokeInfo PIInfo
 
-	field private static FieldItem[] NestedFldLst
-	field private static MethodItem[] NestedMetLst
-	field private static CtorItem[] NestedCtorLst
+	//field private static FieldItem[] NestedFldLst
+	//field private static MethodItem[] NestedMetLst
+	//field private static CtorItem[] NestedCtorLst
 	
 	field private static C5.LinkedList<of IfItem> IfLst
 	field private static C5.LinkedList<of LockItem> LockLst
@@ -39,7 +39,7 @@ class public auto ansi static SymTable
 
 	field assembly static C5.TreeSet<of string> DefSyms
 	
-	field private static LabelItem[] LblLst
+	field private static C5.LinkedList<of LabelItem> LblLst
 	field public static boolean StoreFlg
 	
 	method public static void Init()()
@@ -48,15 +48,15 @@ class public auto ansi static SymTable
 		TempVTMap = new C5.HashDictionary<of IKVM.Reflection.Type, integer>()
 		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>()
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
-		NestedFldLst = new FieldItem[0]
-		NestedMetLst = new MethodItem[0]
-		NestedCtorLst = new CtorItem[0]
+//		NestedFldLst = new FieldItem[0]
+//		NestedMetLst = new MethodItem[0]
+//		NestedCtorLst = new CtorItem[0]
 		IfLst = new C5.LinkedList<of IfItem>()
 		LockLst = new C5.LinkedList<of LockItem>()
 		UsingLst = new C5.LinkedList<of UsingItem>()
 		LoopLst = new C5.LinkedList<of LoopItem>()
 		TryLst = new C5.LinkedList<of TryItem>()
-		LblLst = new LabelItem[0]
+		LblLst = new C5.LinkedList<of LabelItem>()
 		StoreFlg = false
 		MethodCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		FieldCALst = new C5.LinkedList<of CustomAttributeBuilder>()
@@ -103,7 +103,7 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static void ResetLbl()
-		LblLst = new LabelItem[0]
+		LblLst::Clear()
 	end method
 	
 	[method: ComVisible(false)]
@@ -125,20 +125,20 @@ class public auto ansi static SymTable
 		end for
 	end method
 	
-	[method: ComVisible(false)]
-	method public static void ResetNestedFld()
-		NestedFldLst = new FieldItem[0]
-	end method
-	
-	[method: ComVisible(false)]
-	method public static void ResetNestedMet()
-		NestedMetLst = new MethodItem[0]
-	end method
-
-	[method: ComVisible(false)]
-	method public static void ResetNestedCtor()
-		NestedCtorLst = new CtorItem[0]
-	end method
+//	[method: ComVisible(false)]
+//	method public static void ResetNestedFld()
+//		NestedFldLst = new FieldItem[0]
+//	end method
+//	
+//	[method: ComVisible(false)]
+//	method public static void ResetNestedMet()
+//		NestedMetLst = new MethodItem[0]
+//	end method
+//
+//	[method: ComVisible(false)]
+//	method public static void ResetNestedCtor()
+//		NestedCtorLst = new CtorItem[0]
+//	end method
 
 	[method: ComVisible(false)]
 	method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type, var lin as integer)
@@ -227,65 +227,65 @@ class public auto ansi static SymTable
 		end if
 	end method
 	
-	[method: ComVisible(false)]
-	method public static void AddNestedFld(var nme as string, var typ as IKVM.Reflection.Type, var fld as FieldBuilder)
-
-		var i as integer = -1
-		var destarr as FieldItem[] = new FieldItem[++NestedFldLst[l]]
-
-		do until i = --NestedFldLst[l]
-			i++
-			destarr[i] = NestedFldLst[i]
-		end do
-
-		destarr[NestedFldLst[l]] = new FieldItem(nme, typ, fld, null)
-		NestedFldLst = destarr
-
-	end method
+//	[method: ComVisible(false)]
+//	method public static void AddNestedFld(var nme as string, var typ as IKVM.Reflection.Type, var fld as FieldBuilder)
+//
+//		var i as integer = -1
+//		var destarr as FieldItem[] = new FieldItem[++NestedFldLst[l]]
+//
+//		do until i = --NestedFldLst[l]
+//			i++
+//			destarr[i] = NestedFldLst[i]
+//		end do
+//
+//		destarr[NestedFldLst[l]] = new FieldItem(nme, typ, fld, null)
+//		NestedFldLst = destarr
+//
+//	end method
 
 	[method: ComVisible(false)]
 	method public static void AddMet(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var met as MethodBuilder, var nrgenparams as integer)
 		CurnTypItem::AddMethod(new MethodItem(nme, typ, ptyps, met) {NrGenParams = nrgenparams})
 	end method
 
-	[method: ComVisible(false)]
-	method public static void AddNestedMet(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var met as MethodBuilder)
-
-		var i as integer = -1
-		var destarr as MethodItem[] = new MethodItem[++NestedMetLst[l]]
-
-		do until i = --NestedMetLst[l]
-			i++
-			destarr[i] = NestedMetLst[i]
-		end do
-
-		destarr[NestedMetLst[l]] = new MethodItem(nme, typ, ptyps, met)
-		NestedMetLst = destarr
-
-	end method
+//	[method: ComVisible(false)]
+//	method public static void AddNestedMet(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var met as MethodBuilder)
+//
+//		var i as integer = -1
+//		var destarr as MethodItem[] = new MethodItem[++NestedMetLst[l]]
+//
+//		do until i = --NestedMetLst[l]
+//			i++
+//			destarr[i] = NestedMetLst[i]
+//		end do
+//
+//		destarr[NestedMetLst[l]] = new MethodItem(nme, typ, ptyps, met)
+//		NestedMetLst = destarr
+//
+//	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddCtor(var ptyps as IKVM.Reflection.Type[], var met as ConstructorBuilder)
 		CurnTypItem::AddCtor(new CtorItem(ptyps, met))
 	end method
 	
-	[method: ComVisible(false)]
-	method public static void AddNestedCtor(var ptyps as IKVM.Reflection.Type[], var met as ConstructorBuilder)
-		var vr as CtorItem = new CtorItem(ptyps, met)
-		var len as integer = NestedCtorLst[l]
-		var destl as integer = ++len
-		var stopel as integer = --len
-		var i as integer = -1
-		var destarr as CtorItem[] = new CtorItem[destl]
-
-		do until i = stopel
-			i++
-			destarr[i] = NestedCtorLst[i]
-		end do
-
-		destarr[len] = vr
-		NestedCtorLst = destarr
-	end method
+//	[method: ComVisible(false)]
+//	method public static void AddNestedCtor(var ptyps as IKVM.Reflection.Type[], var met as ConstructorBuilder)
+//		var vr as CtorItem = new CtorItem(ptyps, met)
+//		var len as integer = NestedCtorLst[l]
+//		var destl as integer = ++len
+//		var stopel as integer = --len
+//		var i as integer = -1
+//		var destarr as CtorItem[] = new CtorItem[destl]
+//
+//		do until i = stopel
+//			i++
+//			destarr[i] = NestedCtorLst[i]
+//		end do
+//
+//		destarr[len] = vr
+//		NestedCtorLst = destarr
+//	end method
 
 	[method: ComVisible(false)]
 	method public static void AddIf()
@@ -416,16 +416,7 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static void AddLbl(var nam as string)
-		var i as integer = -1
-		var destarr as LabelItem[] = new LabelItem[++LblLst[l]]
-
-		do until i = --LblLst[l]
-			i++
-			destarr[i] = LblLst[i]
-		end do
-
-		destarr[LblLst[l]] = new LabelItem(nam, ILEmitter::DefineLbl())
-		LblLst = destarr
+		LblLst::Add (new LabelItem(nam, ILEmitter::DefineLbl()))
 	end method
 
 	[method: ComVisible(false)]
@@ -481,14 +472,18 @@ class public auto ansi static SymTable
 	end method
 
 	[method: ComVisible(false)]
-	method public static void CheckReturnInTry()
+	method public static boolean CheckReturnInTry()
 		if LockLst::get_Count() != 0 then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Return statements are not supported inside lock statements.")
+			//StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Return statements are not supported inside lock statements.")
+			return true
 		elseif UsingLst::get_Count() != 0 then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Return statements are not supported inside using statements.")
+			//StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Return statements are not supported inside using statements.")
+			return true
 		elseif TryLst::get_Count() != 0 then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Return statements are not supported inside try/catch/finally statements.")
+			//StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Return statements are not supported inside try/catch/finally statements.")
+			return true
 		end if
+		return false
 	end method
 	
 	[method: ComVisible(false)]
@@ -506,16 +501,31 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static LabelItem FindLbl(var nam as string)
-
-		var i as integer = -1
-		do until i = --LblLst[l]
-			i++
-			if nam = LblLst[i]::LblName then
-				return LblLst[i]
+		foreach li in LblLst
+			if nam == li::LblName then
+				return li
 			end if
 		end do
 
 		return null
+	end method
+
+	[method: ComVisible(false)]
+	method public static Emit.Label GetRetLbl()
+		var li as LabelItem = FindLbl("$leave_ret_label$")
+		if li == null then
+			AddLbl("$leave_ret_label$")
+
+			var vtyp = AsmFactory::CurnMetB::get_ReturnType()
+			if !vtyp::Equals(Loader::LoadClass("System.Void")) then
+				ILEmitter::DeclVar("$leave_ret_var$", vtyp)
+				ILEmitter::LocInd++
+				SymTable::VarLst::get_Item(0)::Add("$leave_ret_var$", new VarItem("$leave_ret_var$", true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr) {Stored = true})
+			end if
+
+			return FindLbl("$leave_ret_label$")::Lbl
+		end if
+		return li::Lbl
 	end method
 
 	[method: ComVisible(false)]

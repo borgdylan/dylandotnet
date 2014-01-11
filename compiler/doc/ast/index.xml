@@ -111,6 +111,7 @@
       <Type Name="RefstdasmStmt" Kind="Class" />
       <Type Name="ReturnStmt" Kind="Class" />
       <Type Name="ScopeStmt" Kind="Class" />
+      <Type Name="SignStmt" Kind="Class" />
       <Type Name="Stmt" Kind="Class" />
       <Type Name="StmtSet" Kind="Class" />
       <Type Name="ThrowStmt" Kind="Class" />
@@ -211,6 +212,7 @@
       <Type Name="ReturnTok" Kind="Class" />
       <Type Name="ScopeTok" Kind="Class" />
       <Type Name="SetTok" Kind="Class" />
+      <Type Name="SignTok" Kind="Class" />
       <Type Name="StepTok" Kind="Class" />
       <Type Name="StructTok" Kind="Class" />
       <Type Name="SwitchTok" Kind="Class" />

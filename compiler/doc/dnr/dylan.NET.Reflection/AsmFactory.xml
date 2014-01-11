@@ -707,6 +707,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="StrongKey">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.StrongNameKeyPair StrongKey;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.StrongNameKeyPair StrongKey" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.StrongNameKeyPair</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Type01">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type Type01;" />
       <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type Type01" />

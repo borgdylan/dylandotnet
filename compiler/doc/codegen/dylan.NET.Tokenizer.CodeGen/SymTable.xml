@@ -344,81 +344,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddNestedCtor">
-      <MemberSignature Language="C#" Value="public static void AddNestedCtor (IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.ConstructorBuilder met);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddNestedCtor(class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.ConstructorBuilder met) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="ptyps" Type="IKVM.Reflection.Type[]" />
-        <Parameter Name="met" Type="IKVM.Reflection.Emit.ConstructorBuilder" />
-      </Parameters>
-      <Docs>
-        <param name="ptyps">To be added.</param>
-        <param name="met">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddNestedFld">
-      <MemberSignature Language="C#" Value="public static void AddNestedFld (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Emit.FieldBuilder fld);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddNestedFld(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Emit.FieldBuilder fld) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="nme" Type="System.String" />
-        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
-        <Parameter Name="fld" Type="IKVM.Reflection.Emit.FieldBuilder" />
-      </Parameters>
-      <Docs>
-        <param name="nme">To be added.</param>
-        <param name="typ">To be added.</param>
-        <param name="fld">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddNestedMet">
-      <MemberSignature Language="C#" Value="public static void AddNestedMet (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.MethodBuilder met);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddNestedMet(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.MethodBuilder met) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="nme" Type="System.String" />
-        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
-        <Parameter Name="ptyps" Type="IKVM.Reflection.Type[]" />
-        <Parameter Name="met" Type="IKVM.Reflection.Emit.MethodBuilder" />
-      </Parameters>
-      <Docs>
-        <param name="nme">To be added.</param>
-        <param name="typ">To be added.</param>
-        <param name="ptyps">To be added.</param>
-        <param name="met">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddParamCA">
       <MemberSignature Language="C#" Value="public static void AddParamCA (int ind, IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddParamCA(int32 ind, class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
@@ -583,8 +508,8 @@
       </Docs>
     </Member>
     <Member MemberName="CheckReturnInTry">
-      <MemberSignature Language="C#" Value="public static void CheckReturnInTry ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void CheckReturnInTry() cil managed" />
+      <MemberSignature Language="C#" Value="public static bool CheckReturnInTry ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool CheckReturnInTry() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -592,11 +517,12 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -939,6 +865,25 @@
       </Parameters>
       <Docs>
         <param name="nam">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRetLbl">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label GetRetLbl ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label GetRetLbl() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -1370,60 +1315,6 @@
     <Member MemberName="ResetMetGenParams">
       <MemberSignature Language="C#" Value="public static void ResetMetGenParams ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetMetGenParams() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetNestedCtor">
-      <MemberSignature Language="C#" Value="public static void ResetNestedCtor ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetNestedCtor() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetNestedFld">
-      <MemberSignature Language="C#" Value="public static void ResetNestedFld ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetNestedFld() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetNestedMet">
-      <MemberSignature Language="C#" Value="public static void ResetNestedMet ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetNestedMet() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>

@@ -66,19 +66,15 @@ class public auto ansi Lexer
 	//NOTE: Close calls only Dispose so the calls are semantically equivalent
 	
 	method public StmtSet Analyze(var path as string)
-		var res as StmtSet
 		using sr as StreamReader = new StreamReader(path,true)
-			res = AnalyzeCore(sr, path)
+			return AnalyzeCore(sr, path)
 		end using
-		return res
 	end method
 	
 	method public StmtSet AnalyzeString(var str as string)
-		var res as StmtSet
 		using sr as StringReader = new StringReader(str)
-			res = AnalyzeCore(sr, string::Empty)
+			 return AnalyzeCore(sr, string::Empty)
 		end using
-		return res
 	end method
 	
 	method public StmtSet AnalyzeStream(var sm as Stream)

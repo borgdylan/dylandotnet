@@ -207,6 +207,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.StrongKey">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.Type01">
             <summary>Usually holds the output of the EvalTTok method from the codegen module.</summary>
             <remarks>This field is usually reserved just for this usage.</remarks>
@@ -598,6 +602,11 @@
             <param name="met">The instance method whose pointer is needed.</param>
             <summary>Emits the 'ldvirtftn' opcode.</summary>
             <remarks>An instance of a class must be loaded prior to this emission. If the pointer to a static method is required use EmitLdftn instead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLeave(IKVM.Reflection.Emit.Label)">
+            <param name="lbl">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitLike">
             <summary>Emits a 'call' to Regex.IsMatch.</summary>

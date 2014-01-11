@@ -838,6 +838,11 @@ class public auto ansi static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
+	method public static void EmitLeave(var lbl as IKVM.Reflection.Emit.Label)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Leave, lbl)
+	end method
+
+	[method: ComVisible(false)]
 	method public static void EmitBrfalse(var lbl as IKVM.Reflection.Emit.Label)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lbl)
 	end method

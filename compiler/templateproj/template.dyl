@@ -28,7 +28,7 @@ import System.Runtime.CompilerServices
 import template
 
 #debug on
-
+#sign "mysn.snk"
 #warning "This is personal test code and is not a sample that should be followed."
 
 #if DEBUG then
@@ -797,5 +797,40 @@ class public auto ansi static Program
 		end lock
 		
 	end method
-	
+
+	method public static string LeaveMet(var x as integer)
+		if x > 0 then
+			return "pos"
+		else
+			try
+				return "neg"
+			finally
+			end try
+		end if
+	end method
+
+	method public static void LeaveMet2(var x as integer)
+		if x > 0 then
+			return
+		else
+			try
+				return
+				x = x
+			finally
+			end try
+		end if
+	end method
+
+	method public static string LeaveMet3()
+		lock new object()
+			return "hello"
+		end lock
+	end method
+
+	method public static string LeaveMet4()
+		using ms = new MemoryStream()
+			return "hello"
+		end using
+	end method
+
 end class

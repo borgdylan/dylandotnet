@@ -110,6 +110,25 @@ class public auto ansi WarningStmt extends Stmt
 
 end class
 
+class public auto ansi SignStmt extends Stmt
+
+	field public Token KeyPath
+
+	method public void SignStmt()
+		me::ctor()
+		KeyPath = new Token()
+	end method
+	
+	method public hidebysig virtual string ToString()
+		var temp as string = KeyPath::Value
+		if temp notlike c"^\q(.)*\q$" then
+			temp = c"\q" + temp + c"\q"
+		end if
+		return "#sign " + temp
+	end method
+
+end class
+
 class public auto ansi LockStmt extends Stmt
 
 	field public Expr Lockee
