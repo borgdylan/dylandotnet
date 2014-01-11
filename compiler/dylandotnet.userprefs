@@ -1,32 +1,32 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="cflags.dyl.in">
     <Files>
-      <File FileName="codegen/codegenerator.dyl" Line="189" Column="50" />
+      <File FileName="codegen/codegenerator.dyl" Line="1" Column="1" />
       <File FileName="codegen/eval.dyl" Line="1" Column="1" />
       <File FileName="codegen/helpers.dyl" Line="1" Column="1" />
-      <File FileName="codegen/stmtreader.dyl" Line="1024" Column="34" />
+      <File FileName="codegen/stmtreader.dyl" Line="1119" Column="40" />
       <File FileName="codegen/symtable.dyl" Line="1" Column="1" />
       <File FileName="codegen/typeitem.dyl" Line="1" Column="1" />
       <File FileName="codegen/typelist.dyl" Line="1" Column="1" />
       <File FileName="ast/newcalltoks.dyl" Line="1" Column="1" />
       <File FileName="ast/metstmt.dyl" Line="1" Column="1" />
       <File FileName="ast/methods.dyl" Line="1" Column="1" />
-      <File FileName="ast/otherstmts.dyl" Line="125" Column="31" />
+      <File FileName="ast/otherstmts.dyl" Line="1" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="1" Column="1" />
       <File FileName="lexer/lexer.dyl" Line="1" Column="1" />
-      <File FileName="cflags.dyl.in" Line="10" Column="2" />
-      <File FileName="templateproj/template.dyl" Line="44" Column="12" />
+      <File FileName="cflags.dyl.in" Line="10" Column="1" />
+      <File FileName="templateproj/template.dyl" Line="1" Column="1" />
       <File FileName="codegen/varitem.dyl" Line="1" Column="1" />
       <File FileName="ast/token.dyl" Line="1" Column="1" />
-      <File FileName="ast/otherkeywords.dyl" Line="220" Column="16" />
+      <File FileName="ast/otherkeywords.dyl" Line="1" Column="1" />
       <File FileName="ast/stmt.dyl" Line="1" Column="1" />
-      <File FileName="ast/includestmt.dyl" Line="9" Column="1" />
-      <File FileName="ast/refasmstmt.dyl" Line="26" Column="10" />
+      <File FileName="ast/includestmt.dyl" Line="1" Column="1" />
+      <File FileName="ast/refasmstmt.dyl" Line="1" Column="1" />
       <File FileName="parser/parser.dyl" Line="1" Column="1" />
-      <File FileName="parser/tokenoptimizer.dyl" Line="244" Column="19" />
-      <File FileName="parser/stmtoptimizer.dyl" Line="1906" Column="21" />
-      <File FileName="dnr/asmfactory.dyl" Line="77" Column="19" />
+      <File FileName="parser/tokenoptimizer.dyl" Line="1" Column="1" />
+      <File FileName="parser/stmtoptimizer.dyl" Line="1" Column="1" />
+      <File FileName="dnr/asmfactory.dyl" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

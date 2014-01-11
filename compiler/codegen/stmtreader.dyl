@@ -77,13 +77,6 @@ class public auto ansi StmtReader
 		ILEmitter::InterfaceFlg = false
 		ILEmitter::StaticCFlg = false
 		ILEmitter::AbstractCFlg = false
-		
-		if AsmFactory::inClass then
-			AsmFactory::isNested = true
-		end if
-		if !AsmFactory::isNested then
-			AsmFactory::inClass = true
-		end if
 
 		var inhtyp as IKVM.Reflection.Type = null
 		var interftyp as IKVM.Reflection.Type = null
@@ -106,7 +99,14 @@ class public auto ansi StmtReader
 		else
 			inhtyp = ti2::InhTyp
 		end if
-		
+
+		if AsmFactory::inClass then
+			AsmFactory::isNested = true
+		end if
+		if !AsmFactory::isNested then
+			AsmFactory::inClass = true
+		end if
+
 		ILEmitter::StructFlg = inhtyp::Equals(Loader::LoadClass("System.ValueType"))
 		var clssparams as TypeAttributes = TypeAttributes::Class
 		
@@ -1112,6 +1112,8 @@ class public auto ansi StmtReader
 			if retstmt::RExp != null then
 				new Evaluator()::Evaluate(retstmt::RExp)
 				Helpers::CheckAssignability(AsmFactory::CurnMetB::get_ReturnType(), AsmFactory::Type02)
+			elseif !AsmFactory::CurnMetB::get_ReturnType()::Equals(Loader::LoadClass("System.Void")) then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods with a return type of 'void' should not return anything!!.")
 			end if
 
 			if SymTable::CheckReturnInTry() then

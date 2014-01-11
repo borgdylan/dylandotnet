@@ -532,7 +532,10 @@ class public auto ansi static Helpers
 
 					if ParseUtils::StringParser(tt::Value,c"\\")[l] > 0 and !tt::Value::Contains(".") then
 						if AsmFactory::inClass then
-							typ = #expr(#ternary { AsmFactory::isNested ? SymTable::CurnTypItem2 , SymTable::CurnTypItem})::GetType(tt::Value)
+							var tti = #ternary { AsmFactory::isNested ? SymTable::CurnTypItem2 , SymTable::CurnTypItem}
+							if tti != null then
+								typ = tti::GetType(tt::Value)
+							end if
 						end if
 					end if  
 

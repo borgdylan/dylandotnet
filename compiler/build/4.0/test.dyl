@@ -34,8 +34,8 @@ ver 1.3.0.0
 class public auto ansi Program
 
 	method public static void main()
-		Environment::set_CurrentDirectory("/var/www/Code/dylannet/dylandotnet/compiler/templateproj")
-		var arr as string[] = new string[] {"template.dyl"}
+		Environment::set_CurrentDirectory("/var/www/Code/dylannet/Extra.Tasks/Extra.Tasks")
+		var arr as string[] = new string[] {"Extra.Tasks.dyl"}
 		dylan.NET.Compiler.Program::Invoke(arr)
 		//var t as Task = Program::InvokeAsync(arr)
 		//Console::ReadLine()
