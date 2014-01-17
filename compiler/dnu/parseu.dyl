@@ -246,33 +246,33 @@ class public auto ansi static ParseUtils
 		do until i >= len
 			i++
 			cc = escstr::get_Chars(i)
-			if cc = '\' then
+			if cc == c'\\' then
 				if i < len then
 					i++
 					cc = escstr::get_Chars(i)
-					if cc = 's' then
+					if cc == 's' then
 						sb::Append(c'\s')
-					elseif cc = 'q' then
+					elseif cc == 'q' then
 						sb::Append(c'\q')
-					elseif cc = '\' then
-						sb::Append('\')
-					elseif cc = '0' then
+					elseif cc == c'\\' then
+						sb::Append(c'\\')
+					elseif cc == '0' then
 						sb::Append(c'\0')
-					elseif cc = 'a' then
+					elseif cc == 'a' then
 						sb::Append(c'\a')
-					elseif cc = 'b' then
+					elseif cc == 'b' then
 						sb::Append(c'\b')
-					elseif cc = 'f' then
+					elseif cc == 'f' then
 						sb::Append(c'\f')
-					elseif cc = 'n' then
+					elseif cc == 'n' then
 						sb::Append(c'\n')
-					elseif cc = 'r' then
+					elseif cc == 'r' then
 						sb::Append(c'\r')
-					elseif cc = 't' then
+					elseif cc == 't' then
 						sb::Append(c'\t')
-					elseif cc = 'v' then
+					elseif cc == 'v' then
 						sb::Append(c'\v')
-					elseif cc = 'x' then
+					elseif cc == 'x' then
 						if i < (len - 3) then
 							i++
 							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) and IsHexDigit(escstr::get_Chars(i + 2)) and IsHexDigit(escstr::get_Chars(i + 3)) then

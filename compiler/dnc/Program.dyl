@@ -44,7 +44,7 @@ class public auto ansi static Program
 		#else
 			StreamUtils::WriteLine("Currently Targeting the 3.5 Profile!!")
 		end #if
-		StreamUtils::WriteLine("Copyright (C) 2013 Dylan Borg")
+		StreamUtils::WriteLine("Copyright (C) 2014 Dylan Borg")
 
 		if args = null then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")

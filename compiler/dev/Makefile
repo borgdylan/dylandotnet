@@ -381,11 +381,11 @@ uninstall-am:
 	pdf-am ps ps-am tags-am uninstall uninstall-am
 
 buildlog:
-	cp -u ../2.0/dnu.dll dnu.dll
-	'$(MONO)' ../2.0/dnc.exe -V > buildlog
+	cp -u ../4.0/dnu.dll dnu.dll
+	'$(MONO)' ../4.0/dnc.exe -V > buildlog
 
 %.exe : %.dyl
-	'$(MONO)' ../2.0/dnc.exe $< | tee -a buildlog
+	'$(MONO)' ../4.0/dnc.exe $< | tee -a buildlog
 
 pc2dn.exe: pc2dn.dyl ./../config.status ./../config.log
 

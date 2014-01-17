@@ -1,8 +1,8 @@
 dylan.NET Compiler v. 11.3.2.2 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 3.5 Profile!!
-Copyright (C) 2013 Dylan Borg
+Currently Targeting the 4.0/4.5 Profile!!
+Copyright (C) 2014 Dylan Borg
 
 dylan.NET Version Info:
 dnc, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
@@ -14,6 +14,6 @@ tokenizer.Lexer, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
 tokenizer.AST, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
 
 Runtime & OS Version Info:
-mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-Runtime Version: 2.0.50727.1433
+mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Runtime Version: 4.0.30319.17020
 OS: Unix 3.13.0.4
