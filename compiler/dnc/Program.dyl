@@ -46,6 +46,8 @@ class public auto ansi static Program
 		end #if
 		StreamUtils::WriteLine("Copyright (C) 2014 Dylan Borg")
 
+		var lastsdk as string = null
+
 		if args = null then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		elseif args[l] < 1 then
@@ -54,12 +56,12 @@ class public auto ansi static Program
 			try
 				for i = 0 upto --args[l]
 					StreamUtils::WriteLine("")
-					if args[i] = "-V" then
+					if args[i] == "-V" then
 						OutputVersion()
-					elseif args[i] = "-h" then
+					elseif args[i] == "-h" then
 						OutputHelp()
-					elseif args[i] = "-pcl" then
-						//AsmFactory::PCLSet = true
+					elseif args[i] == "-pcl" then
+						AsmFactory::PCLSet = true
 						//i++
 						//if i < args[l] then
 							//get pcl lookup durectory
@@ -72,11 +74,21 @@ class public auto ansi static Program
 						//else
 						//	StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "PCL Directory path expected.")
 						//end if
+					elseif args[i] == "-sdk" then
+						i++
+						if i < args[l] then
+							lastsdk = args[i]
+						end if
 					else
 						ILEmitter::Init()
 						AsmFactory::Init()
 						Importer::Init()
 						SymTable::Init()
+
+						if lastsdk != null then
+							Importer::AsmBasePath = Path::Combine(Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), ".."), lastsdk)
+						end if
+
 						if !File::Exists(args[i]) then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("File '{0}' does not exist.", args[i]))
 						end if

@@ -632,8 +632,11 @@ class public auto ansi StmtReader
 		if AsmFactory::PCLSet then
 			AsmFactory::AsmNameStr::set_Flags(AssemblyNameFlags::Retargetable)
 		end if
+
+		var mods as string = #ternary {AsmFactory::AsmMode == "exe" or AsmFactory::AsmMode == "winexe" ? "exe", "dll" }
+
 		AsmFactory::AsmB = ILEmitter::Univ::DefineDynamicAssembly(AsmFactory::AsmNameStr, AssemblyBuilderAccess::Save, Directory::GetCurrentDirectory())
-		AsmFactory::MdlB = AsmFactory::AsmB::DefineDynamicModule(AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode, AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode, AsmFactory::DebugFlg)
+		AsmFactory::MdlB = AsmFactory::AsmB::DefineDynamicModule(AsmFactory::AsmNameStr::get_Name() + "." + mods, AsmFactory::AsmNameStr::get_Name() + "." + mods, AsmFactory::DebugFlg)
 
 		if AsmFactory::DebugFlg then
 			fpath = Path::GetFullPath(fpath)
@@ -653,7 +656,7 @@ class public auto ansi StmtReader
 		
 		Helpers::ApplyAsmAttrs()
 		
-		AsmFactory::AsmFile = AsmFactory::AsmNameStr::get_Name() + "." + AsmFactory::AsmMode
+		AsmFactory::AsmFile = AsmFactory::AsmNameStr::get_Name() + "." + mods
 //		Importer::AddAsm(AsmFactory::AsmB)
 	end method
 	
@@ -993,7 +996,20 @@ class public auto ansi StmtReader
 			else
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Key File '" + sstm::KeyPath::Value + "' does not exist.")
 			end if
-
+		elseif stm is EmbedStmt then
+			var sstm as EmbedStmt = $EmbedStmt$stm
+			if sstm::Path::Value like  c"^\q(.)*\q$" then
+				sstm::Path::Value = sstm::Path::Value::Trim(new char[] {c'\q'})
+			end if
+			sstm::Path::Value = ParseUtils::ProcessMSYSPath(sstm::Path::Value)
+			
+			if File::Exists(sstm::Path::Value) then
+				StreamUtils::Write("Adding Resource: ")
+				StreamUtils::WriteLine(sstm::Path::Value)
+				SymTable::ResLst::Add(sstm::Path::Value)
+			else
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Resource File '" + sstm::Path::Value + "' does not exist.")
+			end if
 		elseif stm is ImportStmt then
 			var istm as ImportStmt = $ImportStmt$stm
 			if istm::NS::Value like c"^\q(.)*\q$" then
@@ -1102,8 +1118,10 @@ class public auto ansi StmtReader
 				SymTable::CheckUnusedVar()
 				SymTable::CheckCtrlBlks()
 				if AsmFactory::CurnMetName == "main" then
-					if AsmFactory::AsmMode == "exe" then
-						AsmFactory::AsmB::SetEntryPoint(ILEmitter::Met)
+					if AsmFactory::AsmMode == "exe" or AsmFactory::AsmMode == "winexe" then
+						var pef as PEFileKinds = #ternary {AsmFactory::AsmMode == "exe" ? PEFileKinds::ConsoleApplication, _
+							#ternary {AsmFactory::AsmMode == "winexe" ? PEFileKinds::WindowApplication, PEFileKinds::Dll} }
+						AsmFactory::AsmB::SetEntryPoint(ILEmitter::Met, pef)
 					end if
 				end if
 			end if

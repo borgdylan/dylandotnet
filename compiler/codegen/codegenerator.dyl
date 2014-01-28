@@ -58,7 +58,9 @@ class public auto ansi CodeGenerator
 		var sst as StmtSet = $StmtSet$sset
 		foreach stm in sst::Stmts
 			if stm is IncludeStmt then
-				ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),new LPFileTuple(sst::Path, $IncludeStmt$stm))
+				if #expr($IncludeStmt$stm)::SSet == null then
+					ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),new LPFileTuple(sst::Path, $IncludeStmt$stm))
+				end if
 			end if
 		end for
 	end method
@@ -184,8 +186,18 @@ class public auto ansi CodeGenerator
 		end if
 
 		if ILEmitter::SrcFiles::get_Count() = 0 then
+			StreamUtils::Write("Embedding Resources in Assembly (if any)")
+				
+			foreach r in SymTable::ResLst
+				var fs = new FileStream(r, FileMode::Open)
+				AsmFactory::MdlB::DefineManifestResource(Path::GetFileName(r), fs, ResourceAttributes::Public)
+				fs::Close()
+			end for
+
+			StreamUtils::WriteLine("...Done.")
+
 			Helpers::ApplyAsmAttrs()
-		
+			
 			StreamUtils::Write("Writing Assembly to Disk")
 			AsmFactory::AsmB::DefineVersionInfoResource()
 			AsmFactory::AsmB::Save(AsmFactory::AsmFile)

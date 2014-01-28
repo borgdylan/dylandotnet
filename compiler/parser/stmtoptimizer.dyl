@@ -35,6 +35,14 @@ class public auto ansi StmtOptimizer
 		return null
 	end method
 
+	method private Stmt checkEmbed(var stm as Stmt, var b as boolean&)
+		b = stm::Tokens::get_Item(0) is EmbedTok
+		if b then
+			return new EmbedStmt() {Line = stm::Line, Tokens = stm::Tokens, Path = stm::Tokens::get_Item(1)}
+		end if
+		return null
+	end method
+
 	method private Stmt checkRefstdasm(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is RefstdasmTok
 		if b then
@@ -1904,6 +1912,12 @@ class public auto ansi StmtOptimizer
 		end if
 
 		tmpstm = checkSign(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+
+		tmpstm = checkEmbed(stm, ref compb)
 		if compb then
 			stm = tmpstm
 			return stm

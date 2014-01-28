@@ -136,6 +136,14 @@ class public auto ansi RefasmTok extends Token
 
 end class
 
+class public auto ansi EmbedTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "#embed"
+	end method
+
+end class
+
 class public auto ansi RefstdasmTok extends Token
 
 	method public hidebysig virtual string ToString()
@@ -144,11 +152,11 @@ class public auto ansi RefstdasmTok extends Token
 
 end class
 
-class public auto ansi NewresTok extends Token
-end class
+//class public auto ansi NewresTok extends Token
+//end class
 
-class public auto ansi ImageTok extends Token
-end class
+//class public auto ansi ImageTok extends Token
+//end class
 
 class public auto ansi ImportTok extends Token
 
@@ -194,6 +202,14 @@ class public auto ansi DllTok extends Token
 
 	method public hidebysig virtual string ToString()
 		return "dll"
+	end method
+
+end class
+
+class public auto ansi WinexeTok extends Token
+
+	method public hidebysig virtual string ToString()
+		return "winexe"
 	end method
 
 end class

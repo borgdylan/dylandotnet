@@ -242,6 +242,8 @@ class public auto ansi TokenOptimizer
 		//	return new ScopeTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "#sign" then
 			return new SignTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "#embed" then
+			return new EmbedTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "#expr" then
 			return new ExprTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "import" then
@@ -265,6 +267,8 @@ class public auto ansi TokenOptimizer
 			return new ExeTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "dll" then
 			return new DllTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "winexe" then
+			return new WinexeTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "field:" then
 			return new FieldCTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "field" then

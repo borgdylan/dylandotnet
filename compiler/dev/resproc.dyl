@@ -36,14 +36,57 @@ assembly resproc exe
 ver 11.3.2.2
 
 namespace dylan.NET.ResProc
+	
+	class public auto ansi sealed Msg
 
-	class public auto ansi static Program
+		property public autogen integer Line
+		property public autogen string File	
+		property public autogen string Msg
+		
+		method public void Msg()
+			_Line = 0
+			_File = string::Empty
+			_Msg = string::Empty
+		end method
+
+		method public void Msg(var line as integer, var file as string, var msg as string)
+			_Line = line
+			_File = file
+			_Msg = msg
+		end method
+		
+	end class
+
+	class public auto ansi static ResProc
 
 		field private static boolean UseResx
+		field private static Action<of Msg> _WarnH
+		field private static List<of string> Outs
 
-		method private static void Program()
+		method public static void Init()
 			UseResx = true
+			Outs = new List<of string>()
 		end method
+
+		method private static void ResProc()
+			Init()
+			_WarnH = null
+		end method
+
+		method public static void WarnInit()
+			_WarnH = null
+		end method
+
+		event public static Action<of Msg> WarnH
+			add
+				_WarnH = #ternary {_WarnH == null ? value, _WarnH + value}
+			end add
+			remove
+				if _WarnH != null then
+					_WarnH = _WarnH - value
+				end if
+			end remove
+		end event
 
 		[method: ComVisible(false)]
 		method private static string[] StringParser(var StringToParse as string)
@@ -189,13 +232,23 @@ namespace dylan.NET.ResProc
 			return sb::ToString()
 		end method
 
+		[method: ComVisible(false)]
+		method public static void WriteWarn(var line as integer, var file as string, var msg as string)
+			Console::WriteLine("WARNING: " + msg + " at line " + $string$line + " in file: " + file)
+			if _WarnH != null then
+				_WarnH::Invoke(new Msg(line,file,msg))
+			end if
+		end method
+
 		method private static void EmitResource(var pth as string)
 			if File::Exists(pth) then
 				using rr = #ternary{UseResx ? $IResourceWriter$#expr(new ResXResourceWriter(Path::ChangeExtension(pth, ".resx"))), $IResourceWriter$#expr(new ResourceWriter(Path::ChangeExtension(pth, ".resources")))}
 					using sr = new StreamReader(pth)
 						var sentinel = false
+						var lin as integer = 0
 						do while !sr::get_EndOfStream()
 							var line as string[] = StringParser(sr::ReadLine())
+							lin++
 							if line[l] >= 3 then
 								if line[0] notlike "//(.)*" then
 									line[2] = #ternary {line[2]::StartsWith("c") ? ProcessString(line[2]::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'})), line[2]::Trim(new char[] {c'\q'})}
@@ -209,7 +262,7 @@ namespace dylan.NET.ResProc
 											rr::AddResource(line[0], File::ReadAllBytes(line[2]))
 											sentinel = true
 										else
-											Console::WriteLine("File '{0}' does not exist, ignored!!!", line[2])
+											WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
 										end if
 									elseif line[1] == "stream" then
 										if File::Exists(line[2]) then
@@ -220,17 +273,17 @@ namespace dylan.NET.ResProc
 											fs::Close()
 											sentinel = true
 										else
-											Console::WriteLine("File '{0}' does not exist, ignored!!!", line[2])
+											WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
 										end if
 									elseif line[1] == "image" then
 										if File::Exists(line[2]) then
 											rr::AddResource(line[0], new System.Drawing.Bitmap(line[2]))
 											sentinel = true
 										else
-											Console::WriteLine("File '{0}' does not exist, ignored!!!", line[2])
+											WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
 										end if
 									else
-										Console::WriteLine("Resource type '{0}' was not recognized, ignored!!!", line[1])
+										WriteWarn(lin, pth, string::Format("Resource type '{0}' was not recognized, ignored!!!", line[1]))
 									end if
 								end if
 							end if
@@ -239,14 +292,14 @@ namespace dylan.NET.ResProc
 							rr::AddResource("$empty$", string::Empty)
 						end if
 					end using
+					Outs::Add(#ternary{UseResx ? Path::ChangeExtension(pth, ".resx"), Path::ChangeExtension(pth, ".resources")})
 				end using
 			else
-				Console::WriteLine("File '{0}' does not exist, ignored!!!", pth)
+				WriteWarn(0, pth, string::Format("File '{0}' does not exist, ignored!!!", pth))
 			end if
 		end method
-		
-		[method: STAThread()]
-		method public static void main(var args as string[])
+
+		method public static IEnumerable<of string> Invoke(var args as string[])
 		
 			Console::WriteLine("dylan.NET Resource Processor v. 11.3.2.2 Beta")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
@@ -254,6 +307,7 @@ namespace dylan.NET.ResProc
 			if args[l] < 1 then
 				Console::WriteLine("Usage: resproc ([options] <input-file-name>+)*")
 			else
+				Init()
 				for i = 0 upto --args[l]
 					if args[i] == "-h" then
 						Console::WriteLine("")
@@ -271,7 +325,12 @@ namespace dylan.NET.ResProc
 					end if
 				end for
 			end if
-		
+			return Outs
+		end method
+
+		[method: STAThread()]
+		method private static void main(var args as string[])
+			Invoke(args)
 		end method
 	
 	end class

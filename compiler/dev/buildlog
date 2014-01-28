@@ -16,4 +16,58 @@ tokenizer.AST, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
 Runtime & OS Version Info:
 mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 Runtime Version: 4.0.30319.17020
-OS: Unix 3.13.0.4
+OS: Unix 3.13.0.0
+dylan.NET Compiler v. 11.3.2.2 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 4.0/4.5 Profile!!
+Copyright (C) 2014 Dylan Borg
+
+Now Lexing: resproc.dyl...Done.
+Now Parsing: resproc.dyl...Done.
+Referencing Assembly: /usr/lib/mono/4.5/mscorlib.dll
+Referencing Assembly: /usr/lib/mono/4.5/System.dll
+Referencing Assembly: /usr/lib/mono/4.5/System.Windows.Forms.dll
+Referencing Assembly: /usr/lib/mono/4.5/System.Drawing.dll
+Importing Namespace: System
+Importing Namespace: System.IO
+Importing Namespace: System.Runtime.InteropServices
+Importing Namespace: System.Collections.Generic
+Importing Namespace: System.Text
+Importing Namespace: System.Resources
+Importing Namespace: System.Globalization
+Beginning Assembly: resproc
+Adding Class: dylan.NET.ResProc.Msg
+	Adding Property: Line
+	Adding Field: _Line
+	Adding Method: get_Line
+	Adding Method: set_Line
+	Adding Property: File
+	Adding Field: _File
+	Adding Method: get_File
+	Adding Method: set_File
+	Adding Property: Msg
+	Adding Field: _Msg
+	Adding Method: get_Msg
+	Adding Method: set_Msg
+	Adding Constructor: Msg
+	Adding Constructor: Msg
+Adding Class: dylan.NET.ResProc.ResProc
+	Adding Field: UseResx
+	Adding Field: _WarnH
+	Adding Field: Outs
+	Adding Method: Init
+	Adding Constructor: ResProc
+	Adding Method: WarnInit
+	Adding Event: WarnH
+	Adding Method: add_WarnH
+	Adding Method: remove_WarnH
+	Adding Method: StringParser
+	Adding Method: IsHexDigit
+	Adding Method: ProcessString
+	Adding Method: WriteWarn
+	Adding Method: EmitResource
+	Adding Method: Invoke
+	Adding Method: main
+Embedding Resources in Assembly (if any)...Done.
+Writing Assembly to Disk...Done.

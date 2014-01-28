@@ -53,6 +53,7 @@
       <Type Name="DoWhileStmt" Kind="Class" />
       <Type Name="ElseIfStmt" Kind="Class" />
       <Type Name="ElseStmt" Kind="Class" />
+      <Type Name="EmbedStmt" Kind="Class" />
       <Type Name="EndAddStmt" Kind="Class" />
       <Type Name="EndClassStmt" Kind="Class" />
       <Type Name="EndDoStmt" Kind="Class" />
@@ -146,6 +147,7 @@
       <Type Name="DowntoTok" Kind="Class" />
       <Type Name="ElseIfTok" Kind="Class" />
       <Type Name="ElseTok" Kind="Class" />
+      <Type Name="EmbedTok" Kind="Class" />
       <Type Name="EndTok" Kind="Class" />
       <Type Name="EnumCTok" Kind="Class" />
       <Type Name="EnumTok" Kind="Class" />
@@ -173,7 +175,6 @@
       <Type Name="HUndefTok" Kind="Class" />
       <Type Name="Ident" Kind="Class" />
       <Type Name="IfTok" Kind="Class" />
-      <Type Name="ImageTok" Kind="Class" />
       <Type Name="ImplementsTok" Kind="Class" />
       <Type Name="ImportTok" Kind="Class" />
       <Type Name="IncludeTok" Kind="Class" />
@@ -192,7 +193,6 @@
       <Type Name="NewarrCallTok" Kind="Class" />
       <Type Name="NewarrTok" Kind="Class" />
       <Type Name="NewCallTok" Kind="Class" />
-      <Type Name="NewresTok" Kind="Class" />
       <Type Name="NewTok" Kind="Class" />
       <Type Name="ObjInitCallTok" Kind="Class" />
       <Type Name="OffTok" Kind="Class" />
@@ -232,6 +232,7 @@
       <Type Name="WarningTok" Kind="Class" />
       <Type Name="WhereTok" Kind="Class" />
       <Type Name="WhileTok" Kind="Class" />
+      <Type Name="WinexeTok" Kind="Class" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Tokens.Attributes">
       <Type Name="AbstractAttr" Kind="Class" />
