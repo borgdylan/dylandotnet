@@ -36,7 +36,7 @@ class public auto ansi static Program
 	[method: ComVisible(false)]
 	method private static void main(var args as string[])
 
-		StreamUtils::WriteLine("dylan.NET Compiler v. 11.3.2.2 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5")
+		StreamUtils::WriteLine("dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5")
 		StreamUtils::WriteLine("                           and Xamarin Mono v. 2.x.y/v. 3.x.y")
 		StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 		#if NET_4_0 or NET_4_5 then

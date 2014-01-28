@@ -4,7 +4,7 @@
 AC_PREREQ([2.67])
 AC_INIT([dylandotnet], [11.3.2.1], [borgdylan@hotmail.com])
 AC_CANONICAL_SYSTEM
-AM_INIT_AUTOMAKE([dylandotnet],[11.3.2.1])
+AM_INIT_AUTOMAKE([dylandotnet],[11.3.3.1])
 
 AC_PROG_INSTALL
 
@@ -50,12 +50,6 @@ dnl dylandotnet
 AC_PATH_PROG(DYLANDOTNET, dylandotnet, no)
 
 if test "x$DYLANDOTNET" = "xno"; then
-	AC_MSG_WARN([dylan.NET compiler for CLI 2.0 is not installed...This build system has one built-in.])
-fi
-
-dnl dylandotnet4
-AC_PATH_PROG(DYLANDOTNET4, dylandotnet4, no)
-if test "x$DYLANDOTNET4" = "xno"; then
 	AC_MSG_WARN([dylan.NET compiler for CLI 4.0 is not installed...This build system has one built-in.])
 fi
 
@@ -63,9 +57,7 @@ AC_OUTPUT([
 Makefile
 tests/Makefile
 doc/Makefile
-build/2.0/Makefile
 build/4.0/Makefile
-2.0/Makefile
 4.0/Makefile
 dev/Makefile
 templateproj/Makefile

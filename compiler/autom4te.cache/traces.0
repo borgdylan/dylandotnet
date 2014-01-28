@@ -827,7 +827,7 @@ m4trace:configure.ac:6: -1- m4_pattern_allow([^target$])
 m4trace:configure.ac:6: -1- m4_pattern_allow([^target_cpu$])
 m4trace:configure.ac:6: -1- m4_pattern_allow([^target_vendor$])
 m4trace:configure.ac:6: -1- m4_pattern_allow([^target_os$])
-m4trace:configure.ac:7: -1- AM_INIT_AUTOMAKE([dylandotnet], [11.3.2.1])
+m4trace:configure.ac:7: -1- AM_INIT_AUTOMAKE([dylandotnet], [11.3.3.1])
 m4trace:configure.ac:7: -1- m4_pattern_allow([^AM_[A-Z]+FLAGS$])
 m4trace:configure.ac:7: -1- AM_SET_CURRENT_AUTOMAKE_VERSION
 m4trace:configure.ac:7: -1- AM_AUTOMAKE_VERSION([1.13.3])
@@ -949,8 +949,7 @@ m4trace:configure.ac:47: -1- PKG_CHECK_EXISTS([nunit], [pkg_cv_[]NUNITPC_LIBS=`$
 		      test "x$?" != "x0" && pkg_failed=yes ], [pkg_failed=yes])
 m4trace:configure.ac:47: -1- _PKG_SHORT_ERRORS_SUPPORTED
 m4trace:configure.ac:50: -1- m4_pattern_allow([^DYLANDOTNET$])
-m4trace:configure.ac:57: -1- m4_pattern_allow([^DYLANDOTNET4$])
-m4trace:configure.ac:62: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
+m4trace:configure.ac:56: -1- _m4_warn([obsolete], [AC_OUTPUT should be used without arguments.
 You should run autoupdate.], [])
-m4trace:configure.ac:62: -1- m4_pattern_allow([^LIB@&t@OBJS$])
-m4trace:configure.ac:62: -1- m4_pattern_allow([^LTLIBOBJS$])
+m4trace:configure.ac:56: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:configure.ac:56: -1- m4_pattern_allow([^LTLIBOBJS$])

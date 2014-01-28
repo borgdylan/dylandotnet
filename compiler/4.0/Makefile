@@ -116,9 +116,8 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing autohe
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing automake-1.13
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.3.2.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.3.2.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.3.2.1\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.3.2.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.3.2.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.3.3.1\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
-DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
@@ -151,7 +150,7 @@ PKG_CONFIG_PATH =
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.3.2.1
+VERSION = 11.3.3.1
 abs_builddir = /var/www/Code/dylannet/dylandotnet/compiler/4.0
 abs_srcdir = /var/www/Code/dylannet/dylandotnet/compiler/4.0
 abs_top_builddir = /var/www/Code/dylannet/dylandotnet/compiler
@@ -384,48 +383,49 @@ uninstall-am:
 
 prodscript:
 	sed -e "s|\@libdir\@|$(libdir)|g" \
-	    -e "s|\@MONO\@|$(MONO)|g" dylandotnet4.in > dylandotnet4
+	    -e "s|\@MONO\@|$(MONO)|g" dylandotnet.in > dylandotnet
 	sed -e "s|\@prefix\@|$(prefix)|g" \
-	    -e "s|\@version\@|$(PACKAGE_VERSION)|g" dylandotnet4.pc.in > dylandotnet4.pc
+	    -e "s|\@version\@|$(PACKAGE_VERSION)|g" dylandotnet.pc.in > dylandotnet.pc
 
 install: prodscript 
-	$(install_sh_PROGRAM) dylandotnet4 $(DESTDIR)$(bindir)/dylandotnet4
-	chmod a+x $(DESTDIR)$(bindir)/dylandotnet4
-	$(install_sh_PROGRAM) dnu.dll $(DESTDIR)$(libdir)/dylandotnet4/dnu.dll
-	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/dnu.dll
-	$(install_sh_PROGRAM) dnr.dll $(DESTDIR)$(libdir)/dylandotnet4/dnr.dll
-	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/dnr.dll
-	$(install_sh_PROGRAM) tokenizer.AST.dll $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.AST.dll
-	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.AST.dll
-	$(install_sh_PROGRAM) tokenizer.Lexer.dll $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.Lexer.dll
-	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.Lexer.dll
-	$(install_sh_PROGRAM) tokenizer.Parser.dll $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.Parser.dll
-	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.Parser.dll
-	$(install_sh_PROGRAM) tokenizer.CodeGen.dll $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.CodeGen.dll
-	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/tokenizer.CodeGen.dll
-	$(install_sh_PROGRAM) IKVM.Reflection.dll $(DESTDIR)$(libdir)/dylandotnet4/IKVM.Reflection.dll
-	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/IKVM.Reflection.dll
-	$(install_sh_PROGRAM) C5.Mono.dll $(DESTDIR)$(libdir)/dylandotnet4/C5.Mono.dll
-	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/C5.Mono.dll
-	$(install_sh_PROGRAM) System.Interactive.dll $(DESTDIR)$(libdir)/dylandotnet4/System.Interactive.dll
-	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/System.Interactive.dll
-	$(install_sh_PROGRAM) dnc.exe $(DESTDIR)$(libdir)/dylandotnet4/dnc.exe
-	chmod -x $(DESTDIR)$(libdir)/dylandotnet4/dnc.exe
+	$(install_sh_PROGRAM) dylandotnet $(DESTDIR)$(bindir)/dylandotnet
+	chmod a+x $(DESTDIR)$(bindir)/dylandotnet
+	$(install_sh_PROGRAM) dnu.dll $(DESTDIR)$(libdir)/dylandotnet/dnu.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/dnu.dll
+	$(install_sh_PROGRAM) dnr.dll $(DESTDIR)$(libdir)/dylandotnet/dnr.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/dnr.dll
+	$(install_sh_PROGRAM) tokenizer.AST.dll $(DESTDIR)$(libdir)/dylandotnet/tokenizer.AST.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/tokenizer.AST.dll
+	$(install_sh_PROGRAM) tokenizer.Lexer.dll $(DESTDIR)$(libdir)/dylandotnet/tokenizer.Lexer.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/tokenizer.Lexer.dll
+	$(install_sh_PROGRAM) tokenizer.Parser.dll $(DESTDIR)$(libdir)/dylandotnet/tokenizer.Parser.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/tokenizer.Parser.dll
+	$(install_sh_PROGRAM) tokenizer.CodeGen.dll $(DESTDIR)$(libdir)/dylandotnet/tokenizer.CodeGen.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/tokenizer.CodeGen.dll
+	$(install_sh_PROGRAM) IKVM.Reflection.dll $(DESTDIR)$(libdir)/dylandotnet/IKVM.Reflection.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/IKVM.Reflection.dll
+	$(install_sh_PROGRAM) C5.Mono.dll $(DESTDIR)$(libdir)/dylandotnet/C5.Mono.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/C5.Mono.dll
+	$(install_sh_PROGRAM) System.Interactive.dll $(DESTDIR)$(libdir)/dylandotnet/System.Interactive.dll
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/System.Interactive.dll
+	$(install_sh_PROGRAM) dnc.exe $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
+	chmod -x $(DESTDIR)$(libdir)/dylandotnet/dnc.exe
 #	if [[ $(host) =~ i686-pc-linux-gnu ]] ; then \
-#		$(MONO) --aot $(DESTDIR)$(libdir)/dylandotnet4/*.exe $(DESTDIR)$(libdir)/dylandotnet4/*.dll; \
+#		$(MONO) --aot $(DESTDIR)$(libdir)/dylandotnet/*.exe $(DESTDIR)$(libdir)/dylandotnet/*.dll; \
 #	fi
+
 	if [[ $(host) =~ .*-apple-darwin.* ]] ; then \
-		$(install_sh_PROGRAM) dylandotnet4.pc /Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig/dylandotnet4.pc; \
-		chmod -x /Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig/dylandotnet4.pc; \
+		$(install_sh_PROGRAM) dylandotnet.pc /Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig/dylandotnet.pc; \
+		chmod -x /Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig/dylandotnet.pc; \
 	else \
-		$(install_sh_PROGRAM) dylandotnet4.pc $(DESTDIR)$(libdir)/pkgconfig/dylandotnet4.pc; \
-		chmod -x $(DESTDIR)$(libdir)/pkgconfig/dylandotnet4.pc; \
+		$(install_sh_PROGRAM) dylandotnet.pc $(DESTDIR)$(libdir)/pkgconfig/dylandotnet.pc; \
+		chmod -x $(DESTDIR)$(libdir)/pkgconfig/dylandotnet.pc; \
 	fi
 
 uninstall:
-	rm -f $(DESTDIR)$(bindir)/dylandotnet4
-	rm -r -f $(DESTDIR)$(libdir)/dylandotnet4
-	rm -f $(DESTDIR)$(libdir)/pkgconfig/dylandotnet4.pc
+	rm -f $(DESTDIR)$(bindir)/dylandotnet
+	rm -r -f $(DESTDIR)$(libdir)/dylandotnet
+	rm -f $(DESTDIR)$(libdir)/pkgconfig/dylandotnet.pc
 
 distclean:
 	rm -f Makefile	

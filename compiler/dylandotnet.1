@@ -1,25 +1,19 @@
-.TH DYLANDOTNET 1 "2013-06-26" "Linux" "dylan.NET for CLI 2.0"
+.TH DYLANDOTNET 1 "2014-01-28" "Linux" "dylan.NET for CLI 4.0"
 
 .SH NAME
-dylandotnet, dylandotnet4 \- A compiler for compiling dylan.NET source code into Mono compatible bytecode.
+dylandotnet \- A compiler for compiling dylan.NET source code into Mono compatible bytecode.
 
 .SH SYNOPSIS
-\fBdylandotnet\fR [-h|-V|\fIfile-names...\fP]
-.br
-\fBdylandotnet4\fR [-h|-V|\fIfile-names...\fP]
+\fBdylandotnet\fR [-h|-V|-pcl|-sdk \fIsdk-version\fR|\fIfile-names...\fP]
 .br
 
 .SH DESCRIPTION
 This manual page explains the \fBdylandotnet\fP program.
 .P
-The programs \fBdylandotnet\fP and \fBdylandotnet4\fP are for compiling dylan.NET code into CLI bytecode executable and/or loadable by the mono runtime. They compile code for CLI 2.0 and CLI 4.0 respectively.
+The program \fBdylandotnet\fP is for compiling dylan.NET code into CLI bytecode executable and/or loadable by the mono runtime. It compiles code for the selected profile (-sdk switch).
 
 .SH OPTIONS
-Arguments are handled in the order they are issued. -V and -h will not affect compilation and can be be issued with the file-name(s). In the explanations below
-.B dylandotnet
-can also be substituted by
-.B dylandotnet4
-if the dylandotnet4 package was installed or if the installation was done from source.
+Arguments are handled in the order they are issued. -V and -h will not affect compilation and can be be issued with the file-name(s).
 
 .TP
 \fBfile-names\fP
@@ -31,14 +25,16 @@ This option displays the version numbers of all the dylan.NET libraries installe
 .TP
 \fB-h\fP
 This option displays a short listing of the options available. If you have read all of this man page you will not need to consult the output of -h. The command is issued like this 'dylandotnet -h'.
+.TP
+\fB-sdk \fIsdk-version\fP
+This option allows the setting of the folder used for assemblies by the \fI#refstdasm\fR directive. Usual options are 2.0/4.0/4.5 . This option is mostly useful under mono and not under .NET
+.TP
+\fB-pcl\fP
+This option sets the retargable flag on the output assembly. It is only useful if one is making a PCL refernce assembly (not the case in the usual usage scenarios).
 
 .SH FILES
 .PP
-This is the list of the most important files installed by the dylan.NET Makefile or Package whichever one was used for the install. Before these paths one should add /usr/ or /usr/local/ whichever prefix was chosen in the Makefile. In package installation cases the prefix is /usr/ . In the paths below
-.B dylandotnet
-can also be substituted by
-.B dylandotnet4
-if the dylandotnet4 package was installed or if the installation was done from source.
+This is the list of the most important files installed by the dylan.NET Makefile or Package whichever one was used for the install. Before these paths one should add /usr/ or /usr/local/ whichever prefix was chosen in the Makefile. In package installation cases the prefix is /usr/ .
 
 .B
 .IP bin/dylandotnet
@@ -100,7 +96,7 @@ This is this very man page for dylan.NET.
 
 
 .SH VERSION
-11.3.1.4
+11.3.3.1
 
 .SH "SEE ALSO"
 See also http://launchpad.net/dylandotnet

@@ -1,3 +1,0 @@
-#! /bin/sh
-
-exec /usr/bin/mono-boehm /usr/local/lib/dylandotnet4/dnc.exe "$@"

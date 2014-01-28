@@ -139,9 +139,8 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing autohe
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing automake-1.13
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.3.2.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.3.2.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.3.2.1\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.3.2.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.3.2.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.3.3.1\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
-DYLANDOTNET4 = /usr/local/bin/dylandotnet4
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
@@ -174,7 +173,7 @@ PKG_CONFIG_PATH =
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.3.2.1
+VERSION = 11.3.3.1
 abs_builddir = /var/www/Code/dylannet/dylandotnet/compiler
 abs_srcdir = /var/www/Code/dylannet/dylandotnet/compiler
 abs_top_builddir = /var/www/Code/dylannet/dylandotnet/compiler
@@ -547,7 +546,6 @@ uninstall-am:
 installman:
 	$(install_sh_PROGRAM) dylandotnet.1 $(DESTDIR)$(mandir)/man1/dylandotnet.1
 	$(install_sh_PROGRAM) dylandotnet.7 $(DESTDIR)$(mandir)/man7/dylandotnet.7
-	$(install_sh_PROGRAM) dylandotnet4.1 $(DESTDIR)$(mandir)/man1/dylandotnet4.1
 	$(install_sh_PROGRAM) pc2dylandotnet.1 $(DESTDIR)$(mandir)/man1/pc2dylandotnet.1
 	$(install_sh_PROGRAM) nuget2dylandotnet.1 $(DESTDIR)$(mandir)/man1/nuget2dylandotnet.1
 	$(install_sh_PROGRAM) pc2curdir.1 $(DESTDIR)$(mandir)/man1/pc2curdir.1
@@ -555,14 +553,12 @@ installman:
 install: installman	
 	$(MAKE) -C tests install
 	$(MAKE) -C doc install
-	$(MAKE) -C 2.0 install
 	$(MAKE) -C 4.0 install
 	$(MAKE) -C dev install
 
 uninstallman:
 	rm $(DESTDIR)$(mandir)/man1/dylandotnet.1
 	rm $(DESTDIR)$(mandir)/man7/dylandotnet.7
-	rm $(DESTDIR)$(mandir)/man1/dylandotnet4.1
 	rm $(DESTDIR)$(mandir)/man1/pc2dylandotnet.1
 	rm $(DESTDIR)$(mandir)/man1/nuget2dylandotnet.1
 	rm $(DESTDIR)$(mandir)/man1/pc2curdir.1
@@ -570,7 +566,6 @@ uninstallman:
 uninstall: uninstallman
 
 	$(MAKE) -C doc uninstall
-	$(MAKE) -C 2.0 uninstall
 	$(MAKE) -C 4.0 uninstall
 	$(MAKE) -C dev uninstall
 
@@ -578,7 +573,6 @@ clean:
 	$(MAKE) -C tests clean
 	$(MAKE) -C dev clean
 	$(MAKE) -C unit clean
-	$(MAKE) -C build/2.0 clean
 	$(MAKE) -C build/4.0 clean
 	rm -f *.exe
 	rm -f *.dll
@@ -587,9 +581,7 @@ clean:
 distclean: clean
 	$(MAKE) -C tests distclean
 	$(MAKE) -C doc distclean
-	$(MAKE) -C build/2.0 distclean
 	$(MAKE) -C build/4.0 distclean
-	$(MAKE) -C 2.0 distclean
 	$(MAKE) -C 4.0 distclean
 	$(MAKE) -C dev distclean
 	$(MAKE) -C unit distclean
@@ -612,20 +604,13 @@ cflags.dyl: cflags.dyl.in config.log config.status
 
 compilestart: cflags.dyl
 	touch lock-file
-	cp -u ./lib/IKVM.Reflection.dll ./build/2.0/IKVM.Reflection.dll
 	cp -u ./lib/IKVM.Reflection.dll ./build/4.0/IKVM.Reflection.dll
-	cp -u ./lib/IKVM.Reflection.dll ./2.0/IKVM.Reflection.dll
 	cp -u ./lib/IKVM.Reflection.dll ./4.0/IKVM.Reflection.dll
 	cp -u ./lib/4.0/C5.Mono.dll ./build/4.0/C5.Mono.dll
-	cp -u ./lib/2.0/C5.Mono.dll ./build/2.0/C5.Mono.dll
 	cp -u ./lib/4.0/C5.Mono.dll ./4.0/C5.Mono.dll
-	cp -u ./lib/2.0/C5.Mono.dll ./2.0/C5.Mono.dll
 	cp -u ./lib/4.0/System.Interactive.dll ./build/4.0/System.Interactive.dll
-	cp -u ./lib/2.0/System.Interactive.dll ./build/2.0/System.Interactive.dll
 	cp -u ./lib/4.0/System.Interactive.dll ./4.0/System.Interactive.dll
-	cp -u ./lib/2.0/System.Interactive.dll ./2.0/System.Interactive.dll
 	'$(MONO)' 4.0/dnc.exe -V > buildlog4
-	'$(MONO)' 2.0/dnc.exe -V > buildlog
 
 build/4.0/dnu.dll: $(wildcard dnu/*.dyl) dnu.dyl cflags.dyl
 	'$(MONO)' 4.0/dnc.exe dnu.dyl | tee -a buildlog4
@@ -662,42 +647,7 @@ build/4.0/dnc.exe: $(wildcard dnc/*.dyl) dnc.dyl cflags.dyl
 	mv dnc.exe build/4.0/dnc.exe
 	mv dnc.exe.mdb build/4.0/dnc.exe.mdb
 
-build/2.0/dnu.dll: $(wildcard dnu/*.dyl) dnu.dyl cflags.dyl
-	'$(MONO)' 2.0/dnc.exe dnu.dyl | tee -a buildlog
-	mv dnu.dll build/2.0/dnu.dll
-	mv dnu.dll.mdb build/2.0/dnu.dll.mdb
-
-build/2.0/dnr.dll: $(wildcard dnr/*.dyl) dnr.dyl cflags.dyl
-	'$(MONO)' 2.0/dnc.exe dnr.dyl | tee -a buildlog
-	mv dnr.dll build/2.0/dnr.dll
-	mv dnr.dll.mdb build/2.0/dnr.dll.mdb
-
-build/2.0/tokenizer.AST.dll: $(wildcard ast/*.dyl) tokenizer.AST.dyl cflags.dyl
-	'$(MONO)' 2.0/dnc.exe tokenizer.AST.dyl | tee -a buildlog
-	mv tokenizer.AST.dll build/2.0/tokenizer.AST.dll
-	mv tokenizer.AST.dll.mdb build/2.0/tokenizer.AST.dll.mdb
-
-build/2.0/tokenizer.Lexer.dll: $(wildcard lexer/*.dyl) tokenizer.Lexer.dyl cflags.dyl
-	'$(MONO)' 2.0/dnc.exe tokenizer.Lexer.dyl | tee -a buildlog
-	mv tokenizer.Lexer.dll build/2.0/tokenizer.Lexer.dll
-	mv tokenizer.Lexer.dll.mdb build/2.0/tokenizer.Lexer.dll.mdb
-
-build/2.0/tokenizer.Parser.dll: $(wildcard parser/*.dyl) tokenizer.Parser.dyl cflags.dyl
-	'$(MONO)' 2.0/dnc.exe tokenizer.Parser.dyl | tee -a buildlog
-	mv tokenizer.Parser.dll build/2.0/tokenizer.Parser.dll
-	mv tokenizer.Parser.dll.mdb build/2.0/tokenizer.Parser.dll.mdb
-
-build/2.0/tokenizer.CodeGen.dll: $(wildcard codegen/*.dyl) tokenizer.CodeGen.dyl cflags.dyl
-	'$(MONO)' 2.0/dnc.exe tokenizer.CodeGen.dyl | tee -a buildlog
-	mv tokenizer.CodeGen.dll build/2.0/tokenizer.CodeGen.dll
-	mv tokenizer.CodeGen.dll.mdb build/2.0/tokenizer.CodeGen.dll.mdb
-
-build/2.0/dnc.exe: $(wildcard dnc/*.dyl) dnc.dyl cflags.dyl
-	'$(MONO)' 2.0/dnc.exe dnc.dyl | tee -a buildlog
-	mv dnc.exe build/2.0/dnc.exe
-	mv dnc.exe.mdb build/2.0/dnc.exe.mdb
-
-all: compilestart build/4.0/dnu.dll build/4.0/dnr.dll build/4.0/tokenizer.AST.dll build/4.0/tokenizer.Lexer.dll build/4.0/tokenizer.Parser.dll build/4.0/tokenizer.CodeGen.dll build/4.0/dnc.exe build/2.0/dnu.dll build/2.0/dnr.dll build/2.0/tokenizer.AST.dll build/2.0/tokenizer.Lexer.dll build/2.0/tokenizer.Parser.dll build/2.0/tokenizer.CodeGen.dll build/2.0/dnc.exe	
+all: compilestart build/4.0/dnu.dll build/4.0/dnr.dll build/4.0/tokenizer.AST.dll build/4.0/tokenizer.Lexer.dll build/4.0/tokenizer.Parser.dll build/4.0/tokenizer.CodeGen.dll build/4.0/dnc.exe	
 	cp -u ./lib/4.0/C5.Mono.dll ./4.0/C5.Mono.dll
 	cp -u build/4.0/dnu.dll 4.0/dnu.dll
 	cp -u build/4.0/dnr.dll 4.0/dnr.dll
@@ -706,15 +656,6 @@ all: compilestart build/4.0/dnu.dll build/4.0/dnr.dll build/4.0/tokenizer.AST.dl
 	cp -u build/4.0/tokenizer.Parser.dll 4.0/tokenizer.Parser.dll
 	cp -u build/4.0/tokenizer.CodeGen.dll 4.0/tokenizer.CodeGen.dll
 	cp -u build/4.0/dnc.exe 4.0/dnc.exe
-
-	cp -u ./lib/2.0/C5.Mono.dll ./2.0/C5.Mono.dll
-	cp -u build/2.0/dnu.dll 2.0/dnu.dll
-	cp -u build/2.0/dnr.dll 2.0/dnr.dll
-	cp -u build/2.0/tokenizer.AST.dll 2.0/tokenizer.AST.dll
-	cp -u build/2.0/tokenizer.Lexer.dll 2.0/tokenizer.Lexer.dll
-	cp -u build/2.0/tokenizer.Parser.dll 2.0/tokenizer.Parser.dll
-	cp -u build/2.0/tokenizer.CodeGen.dll 2.0/tokenizer.CodeGen.dll
-	cp -u build/2.0/dnc.exe 2.0/dnc.exe
 
 	cp -u ChangeLog doc/ChangeLog
 	$(MAKE) -C tests all
@@ -728,7 +669,6 @@ test:
 testc:
 	$(MAKE) -C tests testc
 	$(MAKE) -C doc testc
-	$(MAKE) -C 2.0 testc
 	$(MAKE) -C 4.0 testc
 	$(MAKE) -C dev testc
 

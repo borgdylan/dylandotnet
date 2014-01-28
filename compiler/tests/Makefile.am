@@ -1,13 +1,13 @@
 .PHONY: all install clean distclean testc compilestart
 
 %.exe: %.dyl
-	'$(MONO)' ../2.0/dnc.exe $< | tee -a buildlog
+	'$(MONO)' ../4.0/dnc.exe $< | tee -a buildlog
 
 %.dll: %.dyl
-	'$(MONO)' ../2.0/dnc.exe $< | tee -a buildlog
+	'$(MONO)' ../4.0/dnc.exe $< | tee -a buildlog
 
 compilestart:
-	'$(MONO)' ../2.0/dnc.exe -V > buildlog
+	'$(MONO)' ../4.0/dnc.exe -V > buildlog
 
 arit.exe: arit.dyl ./../config.status ./../config.log
 
