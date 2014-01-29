@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="dev/resproc.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnu/parseu.dyl">
     <Files>
       <File FileName="codegen/eval.dyl" Line="1" Column="1" />
       <File FileName="codegen/helpers.dyl" Line="1" Column="1" />
@@ -10,10 +10,11 @@
       <File FileName="parser/tokenoptimizer.dyl" Line="1" Column="1" />
       <File FileName="parser/stmtoptimizer.dyl" Line="1" Column="1" />
       <File FileName="dnr/asmfactory.dyl" Line="1" Column="1" />
-      <File FileName="dev/resproc.dyl" Line="64" Column="44" />
+      <File FileName="dev/resproc.dyl" Line="1" Column="1" />
       <File FileName="dnc/Program.dyl" Line="1" Column="1" />
       <File FileName="parser/exproptimizer.dyl" Line="1" Column="1" />
       <File FileName="codegen/codegenerator.dyl" Line="1" Column="1" />
+      <File FileName="dnu/parseu.dyl" Line="85" Column="51" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

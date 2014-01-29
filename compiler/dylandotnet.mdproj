@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ItemType>GenericProject</ItemType>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0B8E3EEF-00E3-4633-B2BD-3D55AFD8CC6F}</ProjectGuid>
     <ReleaseVersion>11.3.1.4</ReleaseVersion>
@@ -143,13 +143,11 @@
     <None Include="dnc.dyl" />
     <None Include="Makefile.am" />
     <None Include="dylandotnet.1" />
-    <None Include="dylandotnet4.1" />
     <None Include="pc2curdir.1" />
     <None Include="pc2dylandotnet.1" />
     <None Include="tokenizer.Lexer.dyl" />
     <None Include="lexer\lexer.dyl" />
     <None Include="lexer\line.dyl" />
-    <None Include="tokenizer.Parser.dyl" />
     <None Include="parser\exproptimizer.dyl" />
     <None Include="parser\oldmethodstmtcode.txt" />
     <None Include="parser\parser.dyl" />
@@ -592,6 +590,7 @@
     <None Include="codegen\usingitem.dyl" />
     <None Include="codegen\tryitem.dyl" />
     <None Include="codegen\constldr.txt" />
+    <None Include="tokenizer.Parser.dyl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ast\interfaces.dyl" />
