@@ -13,7 +13,7 @@ class public auto ansi Stmt
 
 	method public void Stmt()
 		me::ctor()
-		Tokens = new C5.ArrayList<of Token>()
+		Tokens = new C5.ArrayList<of Token>(5)
 		Line = 0
 	end method
 

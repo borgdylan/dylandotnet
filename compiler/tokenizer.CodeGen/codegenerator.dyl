@@ -208,6 +208,8 @@ class public auto ansi CodeGenerator
 //			end for
 		end if
 
+		stmts::Stmts::Clear()
+		stmts::Stmts = new C5.ArrayList<of Stmt>(0)
 	end method
 
 end class

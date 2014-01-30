@@ -14,7 +14,7 @@ class public auto ansi Expr
 
 	method public void Expr()
 		me::ctor()
-		Tokens = new C5.ArrayList<of Token>()
+		Tokens = new C5.ArrayList<of Token>(3)
 		Line = 0
 		ResultTyp = null
 	end method
