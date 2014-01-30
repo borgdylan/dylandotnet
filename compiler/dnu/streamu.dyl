@@ -192,7 +192,7 @@ class public auto ansi static StreamUtils
 		Terminate()
 	end method
 	
-	#if RX and NET_4_5 then
+	#if RX then
 	
 		[method: ComVisible(false)]
 		method public static IObservable<of CompilerMsg> Errors()

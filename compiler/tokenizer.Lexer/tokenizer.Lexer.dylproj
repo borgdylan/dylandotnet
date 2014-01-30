@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5021F03A-944A-4F91-8F29-E7A4BC959052}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>dylan.NET.Tokenizer.Lexer</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>tokenizer.Lexer</AssemblyName>
+    <UseMSBuildEngine>True</UseMSBuildEngine>
+    <ReleaseVersion>11.3.3.1</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tokenizer.Lexer.dyl" />
+    <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="lexer.dyl" />
+    <Compile Include="line.dyl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\tokenizer.AST\tokenizer.AST.dylproj">
+      <Project>{8D686B86-929F-4A1B-980A-DC2DEA04AAD9}</Project>
+      <Name>tokenizer.AST</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dnu\dnu.dylproj">
+      <Project>{D61ACAE6-7B4E-4234-B40E-0A185815133D}</Project>
+      <Name>dnu</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

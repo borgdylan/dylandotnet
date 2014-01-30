@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BD16CFAA-F03E-4D81-A8E7-7EF5E1C10E2C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>dylan.NET.Tokenizer.CodeGen</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>tokenizer.CodeGen</AssemblyName>
+    <ReleaseVersion>11.3.3.1</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Interactive">
+      <HintPath>..\packages\Ix-Main.1.2.2\lib\net40\System.Interactive.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Reflection">
+      <HintPath>..\lib\IKVM.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="C5.Mono">
+      <HintPath>..\lib\4.0\C5.Mono.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tokenizer.CodeGen.dyl" />
+    <Compile Include="Properties\AssemblyInfo.dyl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <ItemGroup>
+    <Compile Include="varitem.dyl" />
+    <Compile Include="usingitem.dyl" />
+    <Compile Include="typeparamitem.dyl" />
+    <Compile Include="typelist.dyl" />
+    <Compile Include="typeitem.dyl" />
+    <Compile Include="typearr.dyl" />
+    <Compile Include="typcodes.txt" />
+    <Compile Include="tryitem.dyl" />
+    <Compile Include="tilambdas.dyl" />
+    <Compile Include="symtable.dyl" />
+    <Compile Include="stmtreader.dyl" />
+    <Compile Include="propertyitem.dyl" />
+    <Compile Include="pinvokeinfo.dyl" />
+    <Compile Include="opstack.dyl" />
+    <Compile Include="milambdas.dyl" />
+    <Compile Include="methoditem.dyl" />
+    <Compile Include="loopitem.dyl" />
+    <Compile Include="lockitem.dyl" />
+    <Compile Include="labelitem.dyl" />
+    <Compile Include="ifitem.dyl" />
+    <Compile Include="helpers.dyl" />
+    <Compile Include="filambdas.dyl" />
+    <Compile Include="fielditem.dyl" />
+    <Compile Include="eventitem.dyl" />
+    <Compile Include="eval.dyl" />
+    <Compile Include="ctoritem.dyl" />
+    <Compile Include="constldr.txt" />
+    <Compile Include="constinfo.dyl" />
+    <Compile Include="collectionitem.dyl" />
+    <Compile Include="codegenerator.dyl" />
+    <Compile Include="cilambdas.dyl" />
+    <Compile Include="assemblyinfo.dyl" />
+    <Compile Include="arraycheck.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tokenizer.AST\tokenizer.AST.dylproj">
+      <Project>{8D686B86-929F-4A1B-980A-DC2DEA04AAD9}</Project>
+      <Name>tokenizer.AST</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tokenizer.Lexer\tokenizer.Lexer.dylproj">
+      <Project>{5021F03A-944A-4F91-8F29-E7A4BC959052}</Project>
+      <Name>tokenizer.Lexer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tokenizer.Parser\tokenizer.Parser.dylproj">
+      <Project>{04067AB5-DF32-47A1-A62B-56CF12B70E46}</Project>
+      <Name>tokenizer.Parser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dnu\dnu.dylproj">
+      <Project>{D61ACAE6-7B4E-4234-B40E-0A185815133D}</Project>
+      <Name>dnu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dnr\dnr.dylproj">
+      <Project>{2AE29F43-1588-407F-9F2E-EADE63A5D6C9}</Project>
+      <Name>dnr</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

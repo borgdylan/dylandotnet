@@ -4,10 +4,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ItemType>GenericProject</ItemType>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{0B8E3EEF-00E3-4633-B2BD-3D55AFD8CC6F}</ProjectGuid>
-    <ReleaseVersion>11.3.1.4</ReleaseVersion>
+    <ReleaseVersion>11.3.3.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
     <OutputPath>.</OutputPath>
@@ -21,7 +19,7 @@
             <MessageStyle LineAlign="0" />
           </ChangeLogPolicy>
         </Policies>
-        <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="True" RelativeMakefileName="Makefile" RelativeConfigureInPath=".">
+        <MonoDevelop.Autotools.MakefileInfo RelativeMakefileName="Makefile" RelativeConfigureInPath=".">
           <BuildFilesVar />
           <DeployFilesVar />
           <ResourcesVar />
@@ -35,88 +33,15 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
-    <Folder Include="ast\" />
-    <Folder Include="codegen\" />
     <Folder Include="dev\" />
-    <Folder Include="dnr\" />
-    <Folder Include="dnu\" />
     <Folder Include="tests\" />
-    <Folder Include="dnc\" />
-    <Folder Include="lexer\" />
-    <Folder Include="parser\" />
     <Folder Include="unit\" />
     <Folder Include="m4\" />
     <Folder Include="doc\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ast\aritops.dyl" />
-    <None Include="ast\asmstmt.dyl" />
-    <None Include="ast\attributes.dyl" />
-    <None Include="ast\chars.dyl" />
-    <None Include="ast\classstmt.dyl" />
-    <None Include="ast\comment.dyl" />
-    <None Include="ast\conditionalops.dyl" />
-    <None Include="ast\debugstmt.dyl" />
-    <None Include="ast\delegatestmt.dyl" />
-    <None Include="ast\enumstmt.dyl" />
-    <None Include="ast\exceptionstmts.dyl" />
-    <None Include="ast\expr.dyl" />
-    <None Include="ast\fieldstmt.dyl" />
-    <None Include="ast\ident.dyl" />
-    <None Include="ast\ifstmts.dyl" />
-    <None Include="ast\importstmts.dyl" />
-    <None Include="ast\includestmt.dyl" />
-    <None Include="ast\labelstmts.dyl" />
-    <None Include="ast\literals.dyl" />
-    <None Include="ast\logicalops.dyl" />
-    <None Include="ast\loopstmts.dyl" />
-    <None Include="ast\methods.dyl" />
-    <None Include="ast\metstmt.dyl" />
-    <None Include="ast\newresstmt.dyl" />
-    <None Include="ast\nsstmt.dyl" />
-    <None Include="ast\op.dyl" />
-    <None Include="ast\otherkeywords.dyl" />
-    <None Include="ast\otherstmts.dyl" />
-    <None Include="ast\propstmt.dyl" />
-    <None Include="ast\refasmstmt.dyl" />
-    <None Include="ast\scopestmt.dyl" />
-    <None Include="ast\stdasmstmt.dyl" />
-    <None Include="ast\stmt.dyl" />
-    <None Include="ast\token.dyl" />
-    <None Include="ast\typetoks.dyl" />
-    <None Include="ast\varstmts.dyl" />
-    <None Include="ast\verstmt.dyl" />
-    <None Include="ast\xmldocstmt.dyl" />
-    <None Include="codegen\arraycheck.txt" />
-    <None Include="codegen\codegenerator.dyl" />
-    <None Include="codegen\ctoritem.dyl" />
-    <None Include="codegen\eval.dyl" />
-    <None Include="codegen\fielditem.dyl" />
-    <None Include="codegen\helpers.dyl" />
-    <None Include="codegen\ifitem.dyl" />
-    <None Include="codegen\labelitem.dyl" />
-    <None Include="codegen\loopitem.dyl" />
-    <None Include="codegen\methoditem.dyl" />
-    <None Include="codegen\opstack.dyl" />
-    <None Include="codegen\stmtreader.dyl" />
-    <None Include="codegen\symtable.dyl" />
-    <None Include="codegen\typcodes.txt" />
-    <None Include="codegen\typearr.dyl" />
-    <None Include="codegen\varitem.dyl" />
     <None Include="dev\pc2cd.dyl" />
     <None Include="dev\pc2dn.dyl" />
-    <None Include="dnr\asmfactory.dyl" />
-    <None Include="dnr\consoleprinter.dyl" />
-    <None Include="dnr\ilemitter.dyl" />
-    <None Include="dnr\importer.dyl" />
-    <None Include="dnr\instructionhelper.dyl" />
-    <None Include="dnr\loader.dyl" />
-    <None Include="dnu\consts.dyl" />
-    <None Include="dnu\keyboard.dyl" />
-    <None Include="dnu\parseu.dyl" />
-    <None Include="dnu\streamu.dyl" />
-    <None Include="dnu\winapi.dyl" />
-    <None Include="dnu\xmlu.dyl" />
     <None Include="tests\Person.dyl" />
     <None Include="tests\PersonProg.dyl" />
     <None Include="tests\arit.dyl" />
@@ -136,60 +61,22 @@
     <None Include="tests\threads.dyl" />
     <None Include="tests\vector.dyl" />
     <None Include="tests\xmllib.dyl" />
-    <None Include="dnr.dyl" />
-    <None Include="dnu.dyl" />
-    <None Include="tokenizer.AST.dyl" />
-    <None Include="tokenizer.CodeGen.dyl" />
-    <None Include="dnc.dyl" />
     <None Include="Makefile.am" />
     <None Include="dylandotnet.1" />
     <None Include="pc2curdir.1" />
     <None Include="pc2dylandotnet.1" />
-    <None Include="tokenizer.Lexer.dyl" />
-    <None Include="lexer\lexer.dyl" />
-    <None Include="lexer\line.dyl" />
-    <None Include="parser\exproptimizer.dyl" />
-    <None Include="parser\oldmethodstmtcode.txt" />
-    <None Include="parser\parser.dyl" />
-    <None Include="parser\parserflags.dyl" />
-    <None Include="parser\stmtoptimizer.dyl" />
-    <None Include="parser\tokenoptimizer.dyl" />
-    <None Include="codegen\milambdas.dyl" />
-    <None Include="codegen\cilambdas.dyl" />
-    <None Include="dnr\milambdas.dyl" />
-    <None Include="codegen\typeitem.dyl" />
-    <None Include="codegen\filambdas.dyl" />
-    <None Include="codegen\typelist.dyl" />
-    <None Include="codegen\tilambdas.dyl" />
-    <None Include="ast\methodnametok.dyl" />
-    <None Include="ast\attrstmts.dyl" />
-    <None Include="ast\assemblyinfo.dyl" />
-    <None Include="codegen\assemblyinfo.dyl" />
-    <None Include="lexer\assemblyinfo.dyl" />
-    <None Include="parser\assemblyinfo.dyl" />
-    <None Include="dnu\assemblyinfo.dyl" />
-    <None Include="dnr\assemblyinfo.dyl" />
-    <None Include="dnc\assemblyinfo.dyl" />
-    <None Include="ast\attrvalpair.dyl" />
     <None Include="tests\transnames.dyl" />
     <None Include="unit\Makefile.am" />
     <None Include="unit\nunit.dyl" />
     <None Include="unit\unit.dyl" />
     <None Include="unit\parseutests.dyl" />
     <None Include="unit\streamutests.dyl" />
-    <None Include="codegen\lockitem.dyl" />
-    <None Include="ast\varexpr.dyl" />
-    <None Include="ast\newcalltoks.dyl" />
     <None Include="m4\Makefile.am" />
     <None Include="m4\dylandotnet-macros.7" />
     <None Include="m4\dylandotnet.m4" />
     <None Include="dev\Makefile.am" />
-    <None Include="codegen\collectionitem.dyl" />
     <None Include="cflags.dyl.in" />
     <None Include="dev\nuget2dn.dyl" />
-    <None Include="dnu\compilermsg.dyl" />
-    <None Include="ast\eventstmt.dyl" />
-    <None Include="ast\exprcalltok.dyl" />
     <None Include="doc\Makefile.am" />
     <None Include="doc\ast\index.xml" />
     <None Include="doc\ast\ns-dylan.NET.Tokenizer.AST.Exprs.xml" />
@@ -575,24 +462,9 @@
     <None Include="doc\parser\dylan.NET.Tokenizer.Parser\Parser.xml" />
     <None Include="doc\parser\dylan.NET.Tokenizer.Parser\StmtOptimizer.xml" />
     <None Include="doc\parser\dylan.NET.Tokenizer.Parser\TokenOptimizer.xml" />
-    <None Include="dnc\Program.dyl" />
     <None Include="nuget2dylandotnet.1" />
     <None Include="configure.ac" />
-    <None Include="codegen\propertyitem.dyl" />
-    <None Include="codegen\eventitem.dyl" />
-    <None Include="codegen\pinvokeinfo.dyl" />
-    <None Include="dnr\itypeprovider.dyl" />
-    <None Include="dnr\pcltypeprovider.dyl" />
-    <None Include="dnr\fxtypeprovider.txt" />
-    <None Include="codegen\constinfo.dyl" />
-    <None Include="dev\resproc.dyl" />
-    <None Include="codegen\typeparamitem.dyl" />
-    <None Include="codegen\usingitem.dyl" />
-    <None Include="codegen\tryitem.dyl" />
-    <None Include="codegen\constldr.txt" />
-    <None Include="tokenizer.Parser.dyl" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ast\interfaces.dyl" />
   </ItemGroup>
 </Project>

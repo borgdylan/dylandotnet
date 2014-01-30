@@ -30,6 +30,8 @@ class public auto ansi static Program
 		StreamUtils::WriteLine("Options:")
 		StreamUtils::WriteLine("   -V : View Version Nrs. for all dylan.NET assemblies")
 		StreamUtils::WriteLine("   -h : View this help message")
+		StreamUtils::WriteLine("   -sdk : Set sdk version (2.0/4.0/4.5)")
+		StreamUtils::WriteLine("   -pcl : Set retargatable bit")
 	end method
 	
 	[method: STAThread()]
@@ -39,11 +41,11 @@ class public auto ansi static Program
 		StreamUtils::WriteLine("dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5")
 		StreamUtils::WriteLine("                           and Xamarin Mono v. 2.x.y/v. 3.x.y")
 		StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-		#if NET_4_0 or NET_4_5 then
-			StreamUtils::WriteLine("Currently Targeting the 4.0/4.5 Profile!!")
-		#else
-			StreamUtils::WriteLine("Currently Targeting the 3.5 Profile!!")
-		end #if
+//		#if NET_4_0 or NET_4_5 then
+//			StreamUtils::WriteLine("Currently Targeting the 4.0/4.5 Profile!!")
+//		#else
+//			StreamUtils::WriteLine("Currently Targeting the 3.5 Profile!!")
+//		end #if
 		StreamUtils::WriteLine("Copyright (C) 2014 Dylan Borg")
 
 		var lastsdk as string = null
@@ -79,6 +81,9 @@ class public auto ansi static Program
 						if i < args[l] then
 							lastsdk = args[i]
 						end if
+					elseif args[i] == "-cd" then
+						i++
+						Environment::set_CurrentDirectory(args[i])
 					else
 						ILEmitter::Init()
 						AsmFactory::Init()

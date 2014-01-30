@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7847A604-AE14-4379-85BD-11FC218BF749}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Extra.Tasks</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>Extra.Tasks</AssemblyName>
+    <ReleaseVersion>11.3.3.1</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Extra.tasks" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extra.Tasks.dyl" />
+    <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="ErrorWarnTask.dyl" />
+    <Compile Include="DncTask.dyl" />
+    <Compile Include="ResProcTask.dyl" />
+    <Compile Include="FindResProcOuts.dyl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+   <Target Name="AfterBuild" AfterTargets="Build">
+    <ItemGroup>
+      <Stuff Include="$(OutputPath)\Extra.Tasks.dll" />
+      <Stuff Include="Extra.tasks" />
+    </ItemGroup>
+    <Copy SourceFiles="@(Stuff)" DestinationFolder="..\4.0" />
+  </Target>
+  <ItemGroup>
+    <ProjectReference Include="..\resproc\resproc.dylproj">
+      <Project>{CA24B74F-5AC3-4B3C-AF83-90645EDB7B82}</Project>
+      <Name>resproc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dnc\dnc.dylproj">
+      <Project>{170F5550-D546-4C43-90EA-598D803E338A}</Project>
+      <Name>dnc</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

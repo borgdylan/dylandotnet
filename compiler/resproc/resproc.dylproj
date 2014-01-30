@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CA24B74F-5AC3-4B3C-AF83-90645EDB7B82}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>dylan.NET.ResProc</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>resproc</AssemblyName>
+    <UseMSBuildEngine>True</UseMSBuildEngine>
+    <ReleaseVersion>11.3.3.1</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.dyl" />
+    <Compile Include="resproc.dyl" />
+    <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="Msg.dyl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+   <Target Name="AfterBuild" AfterTargets="Build">
+    <ItemGroup>
+      <Stuff Include="$(OutputPath)\*.exe" />
+      <Stuff Include="$(OutputPath)\*.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(Stuff)" DestinationFolder="..\4.0" />
+  </Target>
+</Project>
