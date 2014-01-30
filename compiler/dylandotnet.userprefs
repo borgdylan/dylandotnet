@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Extra.Tasks/Extra.Tasks.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="resproc/resproc.dyl">
     <Files>
-      <File FileName="resproc/resproc.dyl" Line="25" Column="23" />
-      <File FileName="resproc/Program.dyl" Line="1" Column="28" />
-      <File FileName="resproc/Msg.dyl" Line="24" Column="2" />
-      <File FileName="Extra.Tasks/Extra.Tasks.dyl" Line="21" Column="27" />
+      <File FileName="resproc/resproc.dyl" Line="22" Column="28" />
+      <File FileName="resproc/Program.dyl" Line="1" Column="1" />
+      <File FileName="resproc/Msg.dyl" Line="1" Column="1" />
+      <File FileName="Extra.Tasks/Extra.Tasks.dyl" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

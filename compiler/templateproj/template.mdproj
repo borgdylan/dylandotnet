@@ -17,7 +17,7 @@
         <Policies>
           <TextStylePolicy TabWidth="4" inheritsSet="Mono" inheritsScope="text/plain" scope="text/plain" />
         </Policies>
-        <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="True" RelativeMakefileName="Makefile" ExecuteTargetName="run" IsAutotoolsProject="True" RelativeConfigureInPath="..">
+        <MonoDevelop.Autotools.MakefileInfo RelativeMakefileName="Makefile" ExecuteTargetName="run" IsAutotoolsProject="True" RelativeConfigureInPath="..">
           <BuildFilesVar />
           <DeployFilesVar />
           <ResourcesVar />
