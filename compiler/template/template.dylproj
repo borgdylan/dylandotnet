@@ -3,18 +3,20 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2AE29F43-1588-407F-9F2E-EADE63A5D6C9}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>dylan.NET.Reflection</RootNamespace>
+    <ProjectGuid>{6E5394CE-034A-4EB8-B7FC-A708E88D2D30}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>template</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
-    <AssemblyName>dnr</AssemblyName>
+    <AssemblyName>template</AssemblyName>
+    <UseMSBuildEngine>True</UseMSBuildEngine>
     <ReleaseVersion>11.3.3.1</ReleaseVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>mysn.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug</OutputPath>
     <ErrorReport>prompt</ErrorReport>
-    <ConsolePause>false</ConsolePause>
     <DefineConstants>DEBUG</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -27,36 +29,17 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Numerics" />
     <Reference Include="C5.Mono">
-      <HintPath>..\lib\4.0\C5.Mono.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Interactive">
-      <HintPath>..\packages\Ix-Main.1.2.2\lib\net40\System.Interactive.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.Reflection">
-      <HintPath>..\lib\IKVM.Reflection.dll</HintPath>
+      <HintPath>C5.Mono.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dnr.dyl" />
+    <Compile Include="Program.dyl" />
     <Compile Include="Properties\AssemblyInfo.dyl" />
-    <Compile Include="asmfactory.dyl" />
-    <Compile Include="consoleprinter.dyl" />
-    <Compile Include="ilemitter.dyl" />
-    <Compile Include="importer.dyl" />
-    <Compile Include="instructionhelper.dyl" />
-    <Compile Include="itypeprovider.dyl" />
-    <Compile Include="loader.dyl" />
-    <Compile Include="milambdas.dyl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\dnu\dnu.dylproj">
-      <Project>{D61ACAE6-7B4E-4234-B40E-0A185815133D}</Project>
-      <Name>dnu</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="template.dyl" />
   </ItemGroup>
 </Project>

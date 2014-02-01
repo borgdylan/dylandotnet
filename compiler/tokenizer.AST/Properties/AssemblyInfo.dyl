@@ -4,7 +4,7 @@
 [assembly: System.Reflection.AssemblyDescription("")]
 [assembly: System.Reflection.AssemblyCompany("")]
 [assembly: System.Reflection.AssemblyProduct("")]
-[assembly: System.Reflection.AssemblyCopyright("dylan")]
+[assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2014 Dylan Borg")]
 [assembly: System.Reflection.AssemblyTrademark("")]
 [assembly: System.Reflection.AssemblyCulture("")]
 

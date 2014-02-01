@@ -1281,7 +1281,7 @@ class public auto ansi StmtOptimizer
 			
 			//get return type and name
 			i++
-			stm::Tokens = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line}, i)::Tokens
+			stm::Tokens = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 			dels::RetTyp = $TypeTok$stm::Tokens::get_Item(i)
 			len = --stm::Tokens::get_Count() 
 			i++
@@ -1372,9 +1372,9 @@ class public auto ansi StmtOptimizer
 				stm::RemToken(--stm::Tokens::get_Count())
 				var nv = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})::Tokens::get_Item(0)
 				if t is IncOp then
-					return new IncStmt() {Line = stm::Line, Tokens = stm::Tokens, NumVar = $Ident$nv}
+					return new IncStmt() {Line = stm::Line, NumVar = $Ident$nv}
 				else
-					return new DecStmt() {Line = stm::Line, Tokens = stm::Tokens, NumVar = $Ident$nv}
+					return new DecStmt() {Line = stm::Line, NumVar = $Ident$nv}
 				end if
 			end if
 		end if
@@ -1386,7 +1386,7 @@ class public auto ansi StmtOptimizer
 		if stm::Tokens::get_Count() > 2 then
 			b = (stm::Tokens::get_Item(0) is Ident) or (stm::Tokens::get_Item(0) is NewTok)
 			if b then
-				return new MethodCallStmt() {Line = stm::Line, Tokens = stm::Tokens, MethodToken = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})::Tokens::get_Item(0)}
+				return new MethodCallStmt() {Line = stm::Line, MethodToken = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})::Tokens::get_Item(0)}
 			end if
 		end if
 		return null
@@ -1409,7 +1409,7 @@ class public auto ansi StmtOptimizer
 		elseif stm::Tokens::get_Count() == 1 then
 			b = stm::Tokens::get_Item(0) is GetTok
 			if b then
-				return new PropertyGetStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				return new PropertyGetStmt() {Line = stm::Line}
 			end if
 		end if
 		return null
@@ -1432,7 +1432,7 @@ class public auto ansi StmtOptimizer
 		elseif stm::Tokens::get_Count() == 1 then
 			b = stm::Tokens::get_Item(0) is SetTok
 			if b then
-				return new PropertySetStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				return new PropertySetStmt() {Line = stm::Line}
 			end if
 		end if
 		return null
@@ -1455,7 +1455,7 @@ class public auto ansi StmtOptimizer
 		elseif stm::Tokens::get_Count() == 1 then
 			b = stm::Tokens::get_Item(0) is RemoveTok
 			if b then
-				return new EventRemoveStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				return new EventRemoveStmt() {Line = stm::Line}
 			end if
 		end if
 		return null
@@ -1478,7 +1478,7 @@ class public auto ansi StmtOptimizer
 		elseif stm::Tokens::get_Count() == 1 then
 			b = stm::Tokens::get_Item(0) is AddTok	
 			if b then
-				return new EventAddStmt() {Line = stm::Line, Tokens = stm::Tokens}
+				return new EventAddStmt() {Line = stm::Line}
 			end if
 		end if
 		return null
@@ -1488,7 +1488,7 @@ class public auto ansi StmtOptimizer
 		b = stm::Tokens::get_Item(0) is VarTok
 		if b then
 			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)
-			return new VarStmt() {Tokens = tempexp::Tokens, Line = stm::Line, VarName = $Ident$tempexp::Tokens::get_Item(1), VarTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
+			return new VarStmt() {Line = stm::Line, VarName = $Ident$tempexp::Tokens::get_Item(1), VarTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
 		end if
 		return null
 	end method
@@ -1497,7 +1497,7 @@ class public auto ansi StmtOptimizer
 		b = stm::Tokens::get_Item(0) is CatchTok
 		if b then
 			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)
-			return new CatchStmt() {Tokens = tempexp::Tokens, Line = stm::Line, ExName = $Ident$tempexp::Tokens::get_Item(1), ExTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
+			return new CatchStmt() {Line = stm::Line, ExName = $Ident$tempexp::Tokens::get_Item(1), ExTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
 		end if
 		return null
 	end method
@@ -1510,14 +1510,14 @@ class public auto ansi StmtOptimizer
 		if le::Tokens::get_Count() >= 4 then
 			if ((le::Tokens::get_Item(0) is VarTok) or (le::Tokens::get_Item(0) is UsingTok)) and (le::Tokens::get_Item(2) is AsTok) then
 				le::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = le::Tokens}, 3)::Tokens		
-				return new VarAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), Tokens = asss::Tokens, VarTyp = $TypeTok$le::Tokens::get_Item(3), _
+				return new VarAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), VarTyp = $TypeTok$le::Tokens::get_Item(3), _
 					RExpr = eop::Optimize(asss::RExp), IsUsing = le::Tokens::get_Item(0) is UsingTok}
 			else
 				return stm
 			end if
 		elseif le::Tokens::get_Count() >= 2 then
 			if (le::Tokens::get_Item(0) is VarTok) or (le::Tokens::get_Item(0) is UsingTok) then
-				return new InfVarAsgnStmt() {Line = asss::Line, Tokens = asss::Tokens, VarName = $Ident$le::Tokens::get_Item(1), _
+				return new InfVarAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), _
 					RExpr = eop::Optimize(asss::RExp), IsUsing = le::Tokens::get_Item(0) is UsingTok}
 			else
 				return stm
@@ -1560,7 +1560,7 @@ class public auto ansi StmtOptimizer
 			end do
 			
 			b = true
-			var asss as AssignStmt = new AssignStmt() {Line = stm::Line, Tokens = stm::Tokens, LExp = le, RExp = re}
+			var asss as AssignStmt = new AssignStmt() {Line = stm::Line, LExp = le, RExp = re}
 			var asss2 as Stmt = AssOpt(asss)
 			if (asss2 is VarAsgnStmt) or (asss2 is InfVarAsgnStmt) then
 				return asss2

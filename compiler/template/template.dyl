@@ -1,11 +1,7 @@
 //dylan.NET test code
 
-#refstdasm "mscorlib.dll"
-#refstdasm "System.dll"
-#refstdasm "System.Core.dll"
-#refstdasm "System.Numerics.dll"
-#refstdasm "System.Xml.Linq.dll"
-#refasm "C5.Mono.dll"
+#include "msbuild.dyl"
+#include "Properties/AssemblyInfo.dyl"
 
 import System
 import System.IO
@@ -27,23 +23,7 @@ import System.Runtime.InteropServices
 import System.Runtime.CompilerServices
 import template
 
-#debug on
-#sign "mysn.snk"
 #warning "This is personal test code and is not a sample that should be followed."
-
-#if DEBUG then
-[assembly: System.Reflection.AssemblyConfiguration("DEBUG")]
-#else
-[assembly: System.Reflection.AssemblyConfiguration("RELEASE")]
-end #if
-[assembly: System.Reflection.AssemblyTitle("template")]
-[assembly: System.Reflection.AssemblyCopyright("Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>")]
-[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]
-
-assembly template exe
-ver 1.1.0.0
-
-#include "empty.dyl"
 
 delegate public auto ansi void MyDelegate(var x as integer)
 
