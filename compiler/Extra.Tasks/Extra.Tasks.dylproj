@@ -42,7 +42,7 @@
     <Compile Include="ResProcTask.dyl" />
     <Compile Include="FindResProcOuts.dyl" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <Import Project="..\4.0\dylan.NET.targets" />
   <Target Name="AfterBuild" AfterTargets="Build">
     <ItemGroup>
       <Stuff Include="$(OutputPath)\Extra.Tasks.dll" />

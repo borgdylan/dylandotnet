@@ -85,7 +85,7 @@
     <Compile Include="attrstmts.dyl" />
     <Compile Include="assemblyinfo.dyl" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
     <ProjectReference Include="..\dnr\dnr.dylproj">
       <Project>{2AE29F43-1588-407F-9F2E-EADE63A5D6C9}</Project>

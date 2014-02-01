@@ -35,12 +35,10 @@
   <ItemGroup>
     <Compile Include="units.dyl" />
     <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="parseutests.dyl" />
+    <Compile Include="streamutests.dyl" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
-  <ItemGroup>
-    <None Include="parseutests.dyl" />
-    <None Include="streamutests.dyl" />
-  </ItemGroup>
+  <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
     <ProjectReference Include="..\dnu\dnu.dylproj">
       <Project>{D61ACAE6-7B4E-4234-B40E-0A185815133D}</Project>

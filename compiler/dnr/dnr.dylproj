@@ -49,7 +49,7 @@
     <Compile Include="loader.dyl" />
     <Compile Include="milambdas.dyl" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
     <ProjectReference Include="..\dnu\dnu.dylproj">
       <Project>{D61ACAE6-7B4E-4234-B40E-0A185815133D}</Project>

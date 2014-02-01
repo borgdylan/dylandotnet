@@ -392,9 +392,7 @@ pc2cd.exe: pc2cd.dyl ./../config.status ./../config.log
 
 nuget2dn.exe: nuget2dn.dyl ./../config.status ./../config.log
 
-resproc.exe: resproc.dyl ./../config.status ./../config.log
-
-all: buildlog pc2dn.exe pc2cd.exe nuget2dn.exe resproc.exe
+all: buildlog pc2dn.exe pc2cd.exe nuget2dn.exe
 
 prodscript:
 	sed -e "s|\@libdir\@|$(libdir)|g" \

@@ -72,6 +72,11 @@
 		</ResProcTask>
 	</Target>
 	
+	<ItemGroup>
+		<CompileOuts Include="$(IntermediateOutputPath)\$(AssemblyName)$(TargetExt)" />
+		<CompileOuts Condition=" '$(DebugSymbols)' == 'true' " Include="$(IntermediateOutputPath)\$(AssemblyName)$(DebugExt)" />
+	</ItemGroup>
+	
 	<Target Name="CoreCompile" Inputs="$(MSBuildAllProjects);@(ReferencePath);@(Compile);@(ManifestResourceWithNoCulture);@(ManifestNonResxWithNoCultureOnDisk);$(KeyOriginatorFile)" Outputs="@(CompileOuts)" DependsOnTargets="$(CoreCompileDependsOn);ResolveAssemblyReferences">
 		<Message Text="Saving project settings into msbuild.dyl so you could use them as part of your code." />
 		<ItemGroup>
@@ -145,10 +150,6 @@
 		<DebugExt Condition=" '$(OS)' == 'Windows_NT' ">.pdb</DebugExt>
 	</PropertyGroup>
 	
-	<ItemGroup>
-		<CompileOuts Include="$(IntermediateOutputPath)$(AssemblyName)$(TargetExt)" />
-		<CompileOuts Condition=" '$(DebugSymbols)' == 'true' " Include="$(IntermediateOutputPath)$(AssemblyName)$(DebugExt)" />
-	</ItemGroup>
 	
 	<Target Name="AfterResolveReferences">
 	    Redefine referencepath to add dependencies

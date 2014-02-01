@@ -190,24 +190,29 @@ class public auto ansi static ParseUtils
 	end method
 
 	[method: ComVisible(false)]
-	method public static string ProcessMSYSPath(var p as string)
+	method public static string ProcessMSYSPath(var p as string, var pid as PlatformID)
 		var arr as string[]
 		var str as string
 	
-		if Environment::get_OSVersion()::get_Platform() == PlatformID::Win32NT then
+		if pid == PlatformID::Win32NT then
 			if p::Contains("/") then
-				p = p::Replace('/','\')
+				p = p::Replace('/',c'\\')
 				if File::Exists(p) = false then
-					arr = StringParser(p, "\")
+					arr = StringParser(p, c"\\")
 					str = arr[0]
 					if str::get_Length() = 1 then
 						arr[0] = str + ":"
 					end if
-					p = string::Join("\",arr)
+					p = string::Join(c"\\",arr)
 				end if
 			end if
 		end if
 		return p
+	end method
+
+	[method: ComVisible(false)]
+	method public static string ProcessMSYSPath(var p as string)
+		return ProcessMSYSPath(p, Environment::get_OSVersion()::get_Platform())
 	end method
 	
 	[method: ComVisible(false)]

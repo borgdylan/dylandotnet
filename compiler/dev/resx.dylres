@@ -1,5 +1,0 @@
-res1 string "This is a resource."
-res2 string c"This is also\nanother one."
-resf file "resfile.txt"
-ress stream "resfile.txt"
-logo image "dylandotnet.png"

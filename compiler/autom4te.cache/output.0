@@ -2953,7 +2953,7 @@ if test "x$DYLANDOTNET" = "xno"; then
 $as_echo "$as_me: WARNING: dylan.NET compiler for CLI 4.0 is not installed...This build system has one built-in." >&2;}
 fi
 
-ac_config_files="$ac_config_files Makefile tests/Makefile doc/Makefile build/4.0/Makefile 4.0/Makefile dev/Makefile templateproj/Makefile unit/Makefile m4/Makefile"
+ac_config_files="$ac_config_files Makefile tests/Makefile doc/Makefile 4.0/Makefile dev/Makefile m4/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3691,11 +3691,8 @@ do
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
-    "build/4.0/Makefile") CONFIG_FILES="$CONFIG_FILES build/4.0/Makefile" ;;
     "4.0/Makefile") CONFIG_FILES="$CONFIG_FILES 4.0/Makefile" ;;
     "dev/Makefile") CONFIG_FILES="$CONFIG_FILES dev/Makefile" ;;
-    "templateproj/Makefile") CONFIG_FILES="$CONFIG_FILES templateproj/Makefile" ;;
-    "unit/Makefile") CONFIG_FILES="$CONFIG_FILES unit/Makefile" ;;
     "m4/Makefile") CONFIG_FILES="$CONFIG_FILES m4/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;

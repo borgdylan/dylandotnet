@@ -57,10 +57,7 @@ AC_OUTPUT([
 Makefile
 tests/Makefile
 doc/Makefile
-build/4.0/Makefile
 4.0/Makefile
 dev/Makefile
-templateproj/Makefile
-unit/Makefile
 m4/Makefile
 ])

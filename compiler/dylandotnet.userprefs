@@ -1,9 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="dnc/Properties/AssemblyInfo.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="tokenizer.CodeGen/codegenerator.dyl">
     <Files>
-      <File FileName="dnc/dnc.dyl" Line="1" Column="3" />
-      <File FileName="dnc/Properties/AssemblyInfo.dyl" Line="6" Column="50" />
+      <File FileName="dnc/dnc.dyl" Line="1" Column="1" />
+      <File FileName="dnc/Properties/AssemblyInfo.dyl" Line="1" Column="1" />
+      <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
+      <File FileName="units/parseutests.dyl" Line="1" Column="1" />
+      <File FileName="template/template.dyl" Line="1" Column="1" />
+      <File FileName="dnc/Program.dyl" Line="1" Column="1" />
+      <File FileName="resproc/Program.dyl" Line="1" Column="1" />
+      <File FileName="dnr/ilemitter.dyl" Line="46" Column="20" />
+      <File FileName="tokenizer.CodeGen/codegenerator.dyl" Line="70" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

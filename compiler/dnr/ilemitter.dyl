@@ -39,7 +39,7 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void Init()
-		Univ = new Universe(UniverseOptions::MetadataOnly)
+		Univ = new Universe(UniverseOptions::MetadataOnly or UniverseOptions::DisableFusion)
 		Met = null
 		Constr = null
 		ILGen = null

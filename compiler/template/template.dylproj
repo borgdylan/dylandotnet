@@ -38,7 +38,7 @@
     <Compile Include="Program.dyl" />
     <Compile Include="Properties\AssemblyInfo.dyl" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
     <None Include="template.dyl" />
   </ItemGroup>

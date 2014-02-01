@@ -1,17 +1,16 @@
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 dylan.NET Version Info:
-dnc, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
-dnr, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
-dnu, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
-tokenizer.CodeGen, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
-tokenizer.Parser, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
-tokenizer.Lexer, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
-tokenizer.AST, Version=11.3.2.2, Culture=neutral, PublicKeyToken=null
+dnc, Version=11.3.3.1, Culture=neutral, PublicKeyToken=null
+dnr, Version=11.3.3.1, Culture=neutral, PublicKeyToken=null
+dnu, Version=11.3.3.1, Culture=neutral, PublicKeyToken=null
+tokenizer.CodeGen, Version=11.3.3.1, Culture=neutral, PublicKeyToken=null
+tokenizer.Parser, Version=11.3.3.1, Culture=neutral, PublicKeyToken=null
+tokenizer.Lexer, Version=11.3.3.1, Culture=neutral, PublicKeyToken=null
+tokenizer.AST, Version=11.3.3.1, Culture=neutral, PublicKeyToken=null
 
 Runtime & OS Version Info:
 mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
@@ -20,7 +19,6 @@ OS: Unix 3.13.0.0
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: arit.dyl...Done.
@@ -39,7 +37,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: conv.dyl...Done.
@@ -60,7 +57,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: ctorfield.dyl...Done.
@@ -84,7 +80,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: helloworld.dyl...Done.
@@ -99,7 +94,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: logicop.dyl...Done.
@@ -114,7 +108,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: mathematics.dyl...Done.
@@ -136,7 +129,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: mathstest.dyl...Done.
@@ -153,7 +145,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: numloops.dyl...Done.
@@ -168,7 +159,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: Person.dyl...Done.
@@ -190,7 +180,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: PersonProg.dyl...Done.
@@ -207,7 +196,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: boxobj.dyl...Done.
@@ -222,7 +210,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: xmllib.dyl...Done.
@@ -244,7 +231,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: arraytest.dyl...Done.
@@ -272,7 +258,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: vector.dyl...Done.
@@ -318,7 +303,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: threads.dyl...Done.
@@ -341,7 +325,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: dylrecurse.dyl...Done.
@@ -357,7 +340,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: strrecurse.dyl...Done.
@@ -373,7 +355,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: protectedtests.dyl...Done.
@@ -413,7 +394,6 @@ Writing Assembly to Disk...Done.
 dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
-Currently Targeting the 4.0/4.5 Profile!!
 Copyright (C) 2014 Dylan Borg
 
 Now Lexing: transnames.dyl...Done.

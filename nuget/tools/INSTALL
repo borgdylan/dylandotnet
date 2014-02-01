@@ -1,2 +1,2 @@
-The targets files go in your tools directory for MsBuild (where Microsoft.Common.targets live)
-The other files go in your MsBuild extensions directory.
+All files should go in your MsBuild extensions directory.
+You may deploy them inside a solution folder and use them in a per solution fashion.

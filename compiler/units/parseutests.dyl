@@ -98,7 +98,7 @@ class public auto ansi TestParseUtils
 	
 	[method: Test()]
 	method public void TestProcessStringBSL()
-		Assert::AreEqual("\", ParseUtils::ProcessString("\\"), "'\\' should evaluate to a backslash.")
+		Assert::AreEqual(c"\\", ParseUtils::ProcessString(c"\\\\"), "'\\' should evaluate to a backslash.")
 	end method
 	
 	[method: Test()]
@@ -126,4 +126,9 @@ class public auto ansi TestParseUtils
 		Assert::AreEqual(5, ParseUtils::StringParser2ds(c"I,am,a great,\qTest,Case Example\q",","," ")[l], "The string should be 5 tokens long.")
 	end method
 
+	[method: Test()]
+	method public void TestProcessMSYSPathUnix()
+		Assert::AreEqual("/a/unix/path", ParseUtils::ProcessMSYSPath("/a/unix/path",PlatformID::Unix), "The strings should be equal.")
+	end method
+		
 end class

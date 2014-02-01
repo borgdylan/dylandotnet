@@ -44,7 +44,7 @@
     <Compile Include="stmtoptimizer.dyl" />
     <Compile Include="tokenoptimizer.dyl" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
     <None Include="oldmethodstmtcode.txt" />
   </ItemGroup>

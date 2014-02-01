@@ -154,6 +154,13 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Utils.ParseUtils.ProcessMSYSPath(System.String,System.PlatformID)">
+            <param name="p">To be added.</param>
+            <param name="pid">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Utils.ParseUtils.ProcessString(System.String)">
             <param name="escstr">To be added.</param>
             <summary>To be added.</summary>

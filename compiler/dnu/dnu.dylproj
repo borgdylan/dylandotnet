@@ -53,7 +53,7 @@
     <Compile Include="keyboard.dyl" />
     <Compile Include="consts.dyl" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
     <Compile Include="dnu.dyl" />
     <None Include="packages.config" />

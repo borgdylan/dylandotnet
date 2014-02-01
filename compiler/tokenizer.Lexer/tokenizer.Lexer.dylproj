@@ -35,7 +35,7 @@
     <Compile Include="lexer.dyl" />
     <Compile Include="line.dyl" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
     <ProjectReference Include="..\tokenizer.AST\tokenizer.AST.dylproj">
       <Project>{8D686B86-929F-4A1B-980A-DC2DEA04AAD9}</Project>

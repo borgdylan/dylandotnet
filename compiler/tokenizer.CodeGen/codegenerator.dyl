@@ -67,7 +67,7 @@ class public auto ansi CodeGenerator
 
 	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
 
-		ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
+		//ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
 		
 		var i as integer = -1
 		var helseflg as boolean = true
