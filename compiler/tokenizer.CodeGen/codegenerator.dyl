@@ -6,64 +6,64 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class private auto ansi LPFileTuple
-
-	field public string Path
-	field public IncludeStmt InclStmt
-	
-	method public void LPFileTuple(var p as string,var incs as IncludeStmt)
-		me::ctor()
-		Path = p
-		InclStmt = incs
-	end method
-
-end class
+//class private auto ansi LPFileTuple
+//
+//	field public string Path
+//	field public IncludeStmt InclStmt
+//	
+//	method public void LPFileTuple(var p as string,var incs as IncludeStmt)
+//		me::ctor()
+//		Path = p
+//		InclStmt = incs
+//	end method
+//
+//end class
 
 class public auto ansi CodeGenerator
 
-	method private static void LPFile(var incstm as object)
-		var tup as LPFileTuple = $LPFileTuple$incstm
-		var inclustm as IncludeStmt = tup::InclStmt
-		trylock inclustm::Path
-			if inclustm::SSet == null then
-				try
-					if inclustm::Path::Value like c"^\q(.)*\q$" then
-						inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
-					end if
-
-					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
-					if !File::Exists(inclustm::Path::Value) then
-						StreamUtils::WriteError(inclustm::Line, tup::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
-					end if
-					StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
-					var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
-					StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
-					inclustm::SSet = new Parser()::Parse(pstmts)
-					StreamUtils::WriteLine(string::Format("Finished Processing: {0} (worker thread)", inclustm::Path::Value))
-				catch errex as ErrorException
-					inclustm::HasError = true
-				catch ex as Exception
-					StreamUtils::WriteLine(string::Empty)
-					try
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
-					catch errex2 as ErrorException
-						inclustm::HasError = true
-					end try
-				end try
-			end if
-		end lock
-	end method
-	
-	method private static void LPThread(var sset as object)
-		var sst as StmtSet = $StmtSet$sset
-		foreach stm in sst::Stmts
-			if stm is IncludeStmt then
-				if #expr($IncludeStmt$stm)::SSet == null then
-					ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),new LPFileTuple(sst::Path, $IncludeStmt$stm))
-				end if
-			end if
-		end for
-	end method
+//	method private static void LPFile(var incstm as object)
+//		var tup as LPFileTuple = $LPFileTuple$incstm
+//		var inclustm as IncludeStmt = tup::InclStmt
+//		trylock inclustm::Path
+//			if inclustm::SSet == null then
+//				try
+//					if inclustm::Path::Value like c"^\q(.)*\q$" then
+//						inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
+//					end if
+//
+//					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
+//					if !File::Exists(inclustm::Path::Value) then
+//						StreamUtils::WriteError(inclustm::Line, tup::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
+//					end if
+//					StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
+//					var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
+//					StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
+//					inclustm::SSet = new Parser()::Parse(pstmts)
+//					StreamUtils::WriteLine(string::Format("Finished Processing: {0} (worker thread)", inclustm::Path::Value))
+//				catch errex as ErrorException
+//					inclustm::HasError = true
+//				catch ex as Exception
+//					StreamUtils::WriteLine(string::Empty)
+//					try
+//						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+//					catch errex2 as ErrorException
+//						inclustm::HasError = true
+//					end try
+//				end try
+//			end if
+//		end lock
+//	end method
+//	
+//	method private static void LPThread(var sset as object)
+//		var sst as StmtSet = $StmtSet$sset
+//		foreach stm in sst::Stmts
+//			if stm is IncludeStmt then
+//				if #expr($IncludeStmt$stm)::SSet == null then
+//					ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),new LPFileTuple(sst::Path, $IncludeStmt$stm))
+//				end if
+//			end if
+//		end for
+//	end method
 
 	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
 
@@ -141,7 +141,7 @@ class public auto ansi CodeGenerator
 						
 						if inclustm::SSet == null then
 							if !File::Exists(inclustm::Path::Value) then
-								StreamUtils::WriteError(inclustm::Line, stmts::Path, "File '" + inclustm::Path::Value + "' does not exist.")
+								StreamUtils::WriteError(inclustm::Line, stmts::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
 							end if
 							StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
 							var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)

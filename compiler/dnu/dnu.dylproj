@@ -22,6 +22,10 @@
     <OutputPath>bin\Release</OutputPath>
     <DefineConstants>RX</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Testing</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="mscorlib" />
@@ -57,5 +61,8 @@
   <ItemGroup>
     <Compile Include="dnu.dyl" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResScript Include="Messages.dylres" />
   </ItemGroup>
 </Project>

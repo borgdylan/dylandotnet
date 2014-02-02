@@ -35,7 +35,7 @@ class public auto ansi StmtSet
 	method public void StmtSet()
 		me::ctor()
 		Stmts = new C5.ArrayList<of Stmt>()
-		Path = ""
+		Path = string::Empty
 	end method
 	
 	method public void StmtSet(var p as string)

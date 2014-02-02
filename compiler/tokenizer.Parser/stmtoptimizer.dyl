@@ -220,10 +220,10 @@ class public auto ansi StmtOptimizer
 				typ = $TypeTok$stm::Tokens::get_Item(3)
 				i = 4
 				if !#expr(stm::Tokens::get_Item(i) is InTok) then
-					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an 'in' after 'as <type>' instead of '" + stm::Tokens::get_Item(i)::Value + "'!")
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an 'in' after 'as <type>' instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
 				end if
 			else 
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an 'as' or an 'in' instead of '" + stm::Tokens::get_Item(i)::Value + "'!")
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an 'as' or an 'in' instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
 			end if
 			
 			do until i = --stm::Tokens::get_Count() 
@@ -260,10 +260,10 @@ class public auto ansi StmtOptimizer
 				typ = $TypeTok$stm::Tokens::get_Item(3)
 				i = 4
 				if !#expr(stm::Tokens::get_Item(i) is AssignOp2) then
-					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an '=' after 'as <type>' instead of '" + stm::Tokens::get_Item(i)::Value + "'!")
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an '=' after 'as <type>' instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
 				end if
 			else 
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an 'as' or an '=' instead of '" + stm::Tokens::get_Item(i)::Value + "'!")
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an 'as' or an '=' instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
 			end if
 			
 			do until i = --stm::Tokens::get_Count() 
@@ -715,7 +715,7 @@ class public auto ansi StmtOptimizer
 					return new EndAddStmt() {Line = stm::Line}
 				end if
 				
-				StreamUtils::WriteError(stm::Line, PFlags::CurPath, c"\nUnexpected token '" + stm::Tokens::get_Item(1)::ToString() + "' after 'end'!.")
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Unexpected token '{0}' after 'end'!", stm::Tokens::get_Item(1)::ToString()))
 			end if
 		end if
 		return null
@@ -954,7 +954,7 @@ class public auto ansi StmtOptimizer
 			if i < --stm::Tokens::get_Count() then
 				i++
 				if !#expr(stm::Tokens::get_Item(i) is AssignOp2) then
-					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an '=' or nothing at all after the field name instead of '" + stm::Tokens::get_Item(i)::Value + "'!")
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an '=' or nothing at all after the field name instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
 				end if
 				
 				var cexp as Expr = new Expr()
@@ -1636,16 +1636,16 @@ class public auto ansi StmtOptimizer
 		end do
 		if pcnt != 0 then
 			StreamUtils::WriteLine(string::Empty)
-			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing parentheses do not match!.")
+			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing parentheses do not match!")
 		elseif acnt != 0 then
 			StreamUtils::WriteLine(string::Empty)
-			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing angle parentheses do not match!.")
+			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing angle parentheses do not match!")
 		elseif scnt != 0 then
 			StreamUtils::WriteLine(string::Empty)
-			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing square parentheses do not match!.")
+			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing square parentheses do not match!")
 		elseif ccnt != 0 then
 			StreamUtils::WriteLine(string::Empty)
-			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing curly parentheses do not match!.")
+			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing curly parentheses do not match!")
 		end if
 		
 		tmpstm = checkCmt(stm, ref compb)

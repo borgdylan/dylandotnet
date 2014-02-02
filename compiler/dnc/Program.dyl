@@ -18,8 +18,7 @@ class public auto ansi static Program
 		StreamUtils::WriteLine(Assembly::GetAssembly(gettype Lexer)::ToString())
 		StreamUtils::WriteLine(Assembly::GetAssembly(gettype StmtSet)::ToString())
 
-		StreamUtils::WriteLine("")
-		StreamUtils::WriteLine("Runtime & OS Version Info:")
+		StreamUtils::WriteLine(c"\nRuntime & OS Version Info:")
 		StreamUtils::WriteLine(Assembly::GetAssembly(gettype string)::ToString())
 		StreamUtils::WriteLine(string::Format("Runtime Version: {0}", Environment::get_Version()::ToString()))
 		StreamUtils::WriteLine(string::Format("OS: {0}", Environment::get_OSVersion()::ToString()))
@@ -41,11 +40,6 @@ class public auto ansi static Program
 		StreamUtils::WriteLine("dylan.NET Compiler v. 11.3.3.1 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5")
 		StreamUtils::WriteLine("                           and Xamarin Mono v. 2.x.y/v. 3.x.y")
 		StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-//		#if NET_4_0 or NET_4_5 then
-//			StreamUtils::WriteLine("Currently Targeting the 4.0/4.5 Profile!!")
-//		#else
-//			StreamUtils::WriteLine("Currently Targeting the 3.5 Profile!!")
-//		end #if
 		StreamUtils::WriteLine("Copyright (C) 2014 Dylan Borg")
 
 		var lastsdk as string = null
@@ -57,7 +51,7 @@ class public auto ansi static Program
 		else
 			try
 				for i = 0 upto --args[l]
-					StreamUtils::WriteLine("")
+					StreamUtils::WriteLine(string::Empty)
 					if args[i] == "-V" then
 						OutputVersion()
 					elseif args[i] == "-h" then

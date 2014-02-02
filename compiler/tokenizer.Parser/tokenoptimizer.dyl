@@ -484,7 +484,7 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value like "^(::)?((([a-zA-Z])+(.)*)|(_(.)+))$" then
 			return new Ident(tok::Value) {Line = tok::Line}
 		else
-			StreamUtils::WriteErrorLine(tok::Line, PFlags::CurPath, "'" + tok::Value + "' is an invalid token!")
+			StreamUtils::WriteErrorLine(tok::Line, PFlags::CurPath, string::Format("'{0}' is an invalid token!", tok::Value))
 		end if
 		
 		return tok

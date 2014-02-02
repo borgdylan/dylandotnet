@@ -33,7 +33,7 @@ class public auto ansi TestParseUtils
 	
 	[method: Test()]
 	method public void TestProcessStringX2()
-		Assert::AreEqual("", ParseUtils::ProcessString("\x"), "'\x' should evaluate to ''")
+		Assert::AreEqual(string::Empty, ParseUtils::ProcessString("\x"), "'\x' should evaluate to ''")
 	end method
 	
 	[method: Test()]
@@ -113,7 +113,7 @@ class public auto ansi TestParseUtils
 	
 	[method: Test()]
 	method public void TestStringParserEmpty()
-		Assert::AreEqual(0, ParseUtils::StringParser(""," ")[l], "The string should be 0 tokens long.")
+		Assert::AreEqual(0, ParseUtils::StringParser(string::Empty," ")[l], "The string should be 0 tokens long.")
 	end method
 	
 	[method: Test()]

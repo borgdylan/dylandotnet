@@ -253,7 +253,7 @@
 				Init()
 				for i = 0 upto --args[l]
 					if args[i] == "-h" then
-						Console::WriteLine("")
+						Console::WriteLine(string::Empty)
 						Console::WriteLine("Usage: resproc ([options] <input-file-name>+)*")	
 						Console::WriteLine("Options:")
 						Console::WriteLine("   -resx : Emit resources in .resx format")

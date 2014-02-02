@@ -17,7 +17,7 @@ class private auto ansi MILambdas
 
 	method assembly void MILambdas()
 		me::ctor()
-		Name = ""
+		Name = string::Empty
 		ParamLen = 0
 		GenParams = null
 		ConvTyp = null
@@ -47,7 +47,7 @@ class private auto ansi MILambdas
 
 	method assembly void MILambdas(var genparams as IKVM.Reflection.Type[])
 		me::ctor()
-		Name = ""
+		Name = string::Empty
 		ParamLen = 0
 		GenParams = genparams
 		ConvTyp = null

@@ -43,7 +43,7 @@ class public auto ansi Ident extends Token implements IUnaryOperatable, IConvabl
 		_DoNot = false
 		_DoInc = false
 		_DoDec = false
-		_OrdOp = ""
+		_OrdOp = string::Empty
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
 		ExplType = null

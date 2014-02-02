@@ -10,12 +10,12 @@ class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, 
 
 	method public void MethodNameTok()
 		me::ctor()
-		_OrdOp = ""
+		_OrdOp = string::Empty
 	end method
 	
 	method public void MethodNameTok(var value as string)
 		me::ctor(value)
-		_OrdOp = ""
+		_OrdOp = string::Empty
 	end method
 
 	method public void MethodNameTok(var idt as Ident)
