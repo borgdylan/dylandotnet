@@ -15,7 +15,14 @@
 		<!--<IntermediateOutputPath>$(MSBuildProjectDirectory)</IntermediateOutputPath>-->
 		<ReleaseVersion Condition=" '$(ReleaseVersion)' == '' ">1.0.0.0</ReleaseVersion>
 		<AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
-		<ImplicitlyExpandTargetFramework Condition="'$(ImplicitlyExpandTargetFramework)' == '' ">true</ImplicitlyExpandTargetFramework>	
+		<ImplicitlyExpandTargetFramework Condition="'$(ImplicitlyExpandTargetFramework)' == '' ">true</ImplicitlyExpandTargetFramework>
+		
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile5'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile6'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile7'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile49'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile78'">true</ComVisibleUsable>
 	</PropertyGroup>
 	
 	<Target Name="CreateManifestResourceNames">
@@ -85,7 +92,7 @@
 			<InfoLines Include="#refasm &quot;%(ReferencePath.FullPath)&quot;" />
 			<InfoLines Condition=" '$(DebugSymbols)' == 'true' " Include="#debug on" />
 			<InfoLines Condition=" '$(AssemblyOriginatorKeyFile)' != '' and $(SignAssembly) == 'true' " Include="#sign &quot;$(AssemblyOriginatorKeyFile)&quot;" />
-			<InfoLines Include="[assembly: System.Runtime.InteropServices.ComVisible(false)]" />
+			<InfoLines Condition=" '$(ComVisibleUsable)' == 'true' " Include="[assembly: System.Runtime.InteropServices.ComVisible(false)]" />
 			<InfoLines Include="[assembly: System.Reflection.AssemblyConfiguration(&quot;$(Configuration)&quot;)]" />
 			<InfoLines Include="[assembly: System.Reflection.AssemblyTitle(&quot;$(AssemblyName)&quot;)]" />
 			<InfoLines Include="[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]" />

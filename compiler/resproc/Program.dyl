@@ -185,7 +185,7 @@
 
 		method private static void EmitResource(var pth as string)
 			if File::Exists(pth) then
-				using rr = #ternary{UseResx ? $IResourceWriter$#expr(new ResXResourceWriter(Path::ChangeExtension(pth, ".resx"))), $IResourceWriter$#expr(new ResourceWriter(Path::ChangeExtension(pth, ".resources")))}
+				using rr = #ternary{UseResx ? $IResourceWriter$#expr(new ResXResourceWriter(Path::ChangeExtension(pth, ".resx"))), new ResourceWriter(Path::ChangeExtension(pth, ".resources"))}
 					using sr = new StreamReader(pth)
 						var sentinel = false
 						var lin as integer = 0
@@ -244,7 +244,7 @@
 
 		method public static IEnumerable<of string> Invoke(var args as string[])
 		
-			Console::WriteLine("dylan.NET Resource Processor v. 11.3.3.1 Beta")
+			Console::WriteLine("dylan.NET Resource Processor v. 11.3.3.2 Beta")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2014 Dylan Borg")
 			if args[l] < 1 then

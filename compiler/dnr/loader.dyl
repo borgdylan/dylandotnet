@@ -37,7 +37,7 @@ class public auto ansi static Loader
 		var nest as boolean = false
 		//var asmb as IKVM.Reflection.Emit.AssemblyBuilder
 
-		var na as string[] = ParseUtils::StringParser(name,"\")
+		var na as string[] = ParseUtils::StringParser(name, c"\\")
 		name = na[0]
 		if na[l] > 1 then
 			nest = true
@@ -56,33 +56,37 @@ class public auto ansi static Loader
 			end if
 		end for
 	
-		foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
-			foreach curasm in Importer::Asms
-				if curasm == AsmFactory::AsmB then
-					//asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
-					typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
-					//,false,false)
-					if typ != null then
-						if nest then
-							typ = typ::GetNestedType(na[1])
+		try
+			foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
+				foreach curasm in Importer::Asms
+					if curasm == AsmFactory::AsmB then
+						//asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
+						typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
+						//,false,false)
+						if typ != null then
+							if nest then
+								typ = typ::GetNestedType(na[1])
+							end if
+							break
 						end if
-						break
-					end if
-				else
-					typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
-					if typ != null then
-						if nest then
-							typ = typ::GetNestedType(na[1])
+					else
+						typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
+						if typ != null then
+							if nest then
+								typ = typ::GetNestedType(na[1])
+							end if
+							break
 						end if
-						break
 					end if
+				end for
+				
+				if typ != null then
+					break
 				end if
 			end for
-			
-			if typ != null then
-				break
-			end if
-		end for
+		catch ex as Exception
+			typ = null
+		end try
 		
 		PreProcTyp = typ
 

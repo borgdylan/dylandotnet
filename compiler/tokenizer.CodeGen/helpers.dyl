@@ -1905,6 +1905,10 @@ class public auto ansi static Helpers
 			var typ = Loader::LoadClass("System.ValueType")
 			if typ::IsAssignableFrom(ta) or typ::IsAssignableFrom(tb) then
 				return null
+			elseif ta::IsAssignableFrom(tb) then
+				return ta
+			elseif tb::IsAssignableFrom(ta) then
+				return tb
 			end if
 			
 			var la = GetInhHierarchy(ta)::GetEnumerator()

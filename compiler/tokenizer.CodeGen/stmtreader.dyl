@@ -21,10 +21,13 @@ class public auto ansi StmtReader
 		if typ == null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Attribute Class '{0}' was not found.", stm::Ctor::Name::ToString()))
 		end if
-		
-		if typ::Equals(Loader::LoadClass("System.Runtime.InteropServices.DllImportAttribute")) then
-			SymTable::PIInfo = new PInvokeInfo() {LibName = $string$Helpers::LiteralToConst($Literal$stm::Ctor::Params::get_Item(0)::Tokens::get_Item(0))}
-			return null
+
+		var dia = Loader::LoadClass("System.Runtime.InteropServices.DllImportAttribute")
+		if dia != null then
+			if typ::Equals(dia) then
+				SymTable::PIInfo = new PInvokeInfo() {LibName = $string$Helpers::LiteralToConst($Literal$stm::Ctor::Params::get_Item(0)::Tokens::get_Item(0))}
+				return null
+			end if
 		end if
 		
 		var tarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[stm::Ctor::Params::get_Count()]
