@@ -48,7 +48,7 @@ class public auto ansi ExprOptimizer
 			var lvl as integer = 1
 			var len as integer = --stm::Tokens::get_Count()
 
-			do until i = len
+			do until i == len
 				i++
 				if stm::Tokens::get_Item(i) is LAParen then
 					ep2::AddToken(stm::Tokens::get_Item(i))
@@ -74,7 +74,7 @@ class public auto ansi ExprOptimizer
 					end if
 					stm::RemToken(i)
 					len--
-					if lvl = 0 then
+					if lvl == 0 then
 						gtt::AddParam($TypeTok$procType(ep2, 0)::Tokens::get_Item(0))
 						break
 					end if
@@ -209,7 +209,15 @@ class public auto ansi ExprOptimizer
 	method assembly Expr checkVarAs(var stm as Expr,out var b as boolean&)
 		var bs as integer = 0
 		var bst as Token = null
-		
+
+		if stm == null then
+			b = false
+			return null
+		elseif stm::Tokens::get_Count() < 2 then
+			b = false
+			return null
+		end if
+
 		if stm::Tokens::get_Item(0) is VarTok then
 			b = true
 		elseif (stm::Tokens::get_Item(0) is InTok) and (stm::Tokens::get_Item(1) is VarTok) then
@@ -227,9 +235,24 @@ class public auto ansi ExprOptimizer
 		else
 			b = false
 		end if
-		
+
+		if stm::Tokens::get_Count() < (bs + 4) then
+			b = false
+			return null
+		end if
+
 		if b then
+			if !#expr(stm::Tokens::get_Item(++bs) is Ident) then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", stm::Tokens::get_Item(++bs)))
+			elseif !#expr(stm::Tokens::get_Item(bs + 2) is AsTok) then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an 'as' instead of '{0}'!", stm::Tokens::get_Item(bs + 2)::Value))
+			end if
 			stm = procType(stm,bs + 3)
+
+			if stm::Tokens::get_Count() > (bs + 4) then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected token at end of parameter declaration!")	
+			end if
+
 			return new VarExpr() {Tokens = stm::Tokens, Line = stm::Line, VarName = $Ident$stm::Tokens::get_Item(++bs), VarTyp = $TypeTok$stm::Tokens::get_Item(bs + 3), Attr = bst}
 		end if
 		
@@ -237,10 +260,11 @@ class public auto ansi ExprOptimizer
 	end method
 
 	method public Expr procMethodCall(var stm as Expr, var i as integer)
-		var ep2 as Expr = new Expr()
+		var ep2 as Expr = new Expr() {Line = stm::Line}
 		var lvl as integer = 1
 		var d as boolean = true
 		var j as integer = 0
+		var cc as integer = 0
 
 		i--
 		var mn as MethodNameTok = #ternary { stm::Tokens::get_Item(i) is MethodNameTok ? $MethodNameTok$stm::Tokens::get_Item(i), _
@@ -268,7 +292,7 @@ class public auto ansi ExprOptimizer
 				lvl--
 				if lvl = 0 then
 					d = false
-					if ep2::Tokens::get_Count() > 0 then
+					if (ep2::Tokens::get_Count() > 0) or (cc > 0) then
 						PFlags::ResetMCISFlgs()
 						mct::AddParam(Optimize(ep2))
 					end if
@@ -285,12 +309,13 @@ class public auto ansi ExprOptimizer
 				len = --stm::Tokens::get_Count()
 			elseif (stm::Tokens::get_Item(i) is Comma) then
 				if lvl = 1 then
+					cc++
 					d = false
-					if ep2::Tokens::get_Count() > 0 then
+					//if ep2::Tokens::get_Count() > 0 then
 						PFlags::ResetMCISFlgs()
 						mct::AddParam(Optimize(ep2))
-					end if
-					ep2 = new Expr()
+					//end if
+					ep2 = new Expr() {Line = stm::Line}
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
 					i--
@@ -342,7 +367,7 @@ class public auto ansi ExprOptimizer
 		var d as boolean = true
 		var j as integer = i
 		var lp as C5.ArrayList<of Token> = new C5.ArrayList<of Token>()
-		var ep as Expr = new Expr()
+		var ep as Expr = new Expr() {Line = stm::Line}
 		
 		i++
 		stm::RemToken(i)
@@ -371,7 +396,7 @@ class public auto ansi ExprOptimizer
 				if lvl = 1 then
 					d = false
 					lp::Add(ObjInitHelper(ep))
-					ep = new Expr()
+					ep = new Expr() {Line = stm::Line}
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
 					i--
@@ -518,7 +543,7 @@ class public auto ansi ExprOptimizer
 		var nact as NewarrCallTok = new NewarrCallTok()
 		var aict as ArrInitCallTok = new ArrInitCallTok()
 		var tt as TypeTok
-		var ep2 as Expr = new Expr()
+		var ep2 as Expr = new Expr() {Line = stm::Line}
 		var lvl as integer = 1
 		var d as boolean = true
 		var j as integer = 0
@@ -526,6 +551,8 @@ class public auto ansi ExprOptimizer
 		var nab as boolean = false
 		//flag for array creation using initializer
 		var nai as boolean = false
+
+		var cc as integer = 0
 		
 		//no need to call the next line as its done before this method is used
 		//stm = procType(stm, i)
@@ -565,7 +592,7 @@ class public auto ansi ExprOptimizer
 				lvl--
 				if lvl = 0 then
 					d = false
-					if ep2::Tokens::get_Count() > 0 then
+					if (ep2::Tokens::get_Count() > 0) or (cc > 0) then
 						if nab then
 							nact::ArrayLen = Optimize(ep2)
 						elseif nai then
@@ -590,15 +617,16 @@ class public auto ansi ExprOptimizer
 			elseif stm::Tokens::get_Item(i) is Comma then
 				if lvl = 1 then
 					d = false
-					if ep2::Tokens::get_Count() > 0 then
+					cc++
+					//if ep2::Tokens::get_Count() > 0 then
 						if nai then
 							aict::AddElem(Optimize(ep2))
-							ep2 = new Expr()
+							ep2 = new Expr() {Line = stm::Line}
 						elseif nab = false then
 							nct::AddParam(Optimize(ep2))
-							ep2 = new Expr()
+							ep2 = new Expr() {Line = stm::Line}
 						end if
-					end if
+					//end if
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
 					i--
@@ -633,7 +661,7 @@ class public auto ansi ExprOptimizer
 	end method
 
 	method public Expr procIdentArrayAccess(var stm as Expr, var i as integer)
-		var ep2 as Expr = new Expr()
+		var ep2 as Expr = new Expr() {Line = stm::Line}
 		var lvl as integer = 1
 		var d as boolean = true
 		var j as integer = 0
@@ -686,7 +714,7 @@ class public auto ansi ExprOptimizer
 	end method
 
 	method public Expr procMtdArrayAccess(var stm as Expr, var i as integer)
-		var ep2 as Expr = new Expr()
+		var ep2 as Expr = new Expr() {Line = stm::Line}
 		var lvl as integer = 1
 		var d as boolean = true
 		var j as integer = 0
@@ -749,6 +777,61 @@ class public auto ansi ExprOptimizer
 		return stm
 	end method
 
+	method public void Verify(var exp as Expr, var i as integer, var j as integer)
+		//true - expect valuetoken, false expect an operator
+		var state as boolean = true
+
+		for k = i upto j
+			// TODO : do implementation
+		 	//StreamUtils::WriteWarn(exp::Line, PFlags::CurPath, "Expressions should not be empty!")
+			var tok = exp::Tokens::get_Item(k)
+			if state then
+				if tok is ValueToken then
+				elseif tok is LParen then
+					var iprime = ++k
+					var jprime = iprime
+					var lvl = 1
+
+					do until jprime == j
+						if exp::Tokens::get_Item(jprime) is LParen then
+							lvl++
+						elseif exp::Tokens::get_Item(jprime) is RParen then
+							lvl--
+							if lvl == 0 then
+								break
+							end if
+						end if
+						jprime++
+					end do 
+
+					if (jprime - k) == 1 then
+						StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Subexpressions should not be empty!")
+					else
+						Verify(exp, iprime, --jprime)
+					end if
+
+					k = jprime
+				else
+					StreamUtils::WriteError(exp::Line, PFlags::CurPath, string::Format("Expected a value token or expression in parentheses instead of '{0}'!", tok::ToString()))
+				end if
+			else
+				if tok is Op then
+					if k == j then
+						StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Expressions should not end with an operator!")
+					end if
+				else
+					StreamUtils::WriteError(exp::Line, PFlags::CurPath, string::Format("Expected a binary operator instead of '{0}'!", tok::ToString()))
+				end if		
+			end if
+			state = !state
+		end for
+
+	end method
+
+	method public void Verify(var exp as Expr)
+		Verify(exp, 0, --exp::Tokens::get_Count())
+	end method
+
 	method public Expr Optimize(var exp as Expr)
 		var i as integer = -1
 		var j as integer = -1
@@ -766,6 +849,11 @@ class public auto ansi ExprOptimizer
 		if exp == null then
 			goto cont
 		end if
+
+		if exp::Tokens::get_Count() == 0 then
+			StreamUtils::WriteLine(string::Empty)
+			StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Expressions should not be empty!")
+		end if
 		
 		var len as integer = --exp::Tokens::get_Count() 
 		if len < 0 then
@@ -781,6 +869,10 @@ class public auto ansi ExprOptimizer
 			label fin
 
 			var tok as Token = exp::Tokens::get_Item(i)
+			if tok is NonExprToken then
+				StreamUtils::WriteLine(string::Empty)
+				StreamUtils::WriteError(exp::Line, PFlags::CurPath, string::Format("The token '{0}' is not allowed in expressions!", tok::Value))
+			end if
 
 			if tok is LRSParen then
 				exp::RemToken(i)
@@ -1073,7 +1165,7 @@ class public auto ansi ExprOptimizer
 					exp::RemToken(i)
 					len--
 					newavtok = exp::Tokens::get_Item(i)
-					exp::Tokens::set_Item(i, new NewarrCallTok() {ArrayType = #ternary {tok is TypeTok ? $TypeTok$tok , new TypeTok() {Line = tok::Line, Value = tok::Value}}, ArrayLen = new Expr() {AddToken(newavtok)}})
+					exp::Tokens::set_Item(i, new NewarrCallTok() {ArrayType = #ternary {tok is TypeTok ? $TypeTok$tok , new TypeTok() {Line = tok::Line, Value = tok::Value}}, ArrayLen = new Expr() {Line = exp::Line, AddToken(newavtok)}})
 					goto fin
 				end if
 
@@ -1275,6 +1367,8 @@ class public auto ansi ExprOptimizer
 			PFlags::MetChainFlag = false
 		end if
 		PFlags::ResetMCISFlgs()
+
+		Verify(exp)
 		return exp
 	end method
 

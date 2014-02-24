@@ -236,5 +236,41 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Verify">
+      <MemberSignature Language="C#" Value="public void Verify (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void Verify(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="exp" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
+      </Parameters>
+      <Docs>
+        <param name="exp">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Verify">
+      <MemberSignature Language="C#" Value="public void Verify (dylan.NET.Tokenizer.AST.Exprs.Expr exp, int i, int j);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void Verify(class dylan.NET.Tokenizer.AST.Exprs.Expr exp, int32 i, int32 j) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="exp" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
+        <Parameter Name="i" Type="System.Int32" />
+        <Parameter Name="j" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="exp">To be added.</param>
+        <param name="i">To be added.</param>
+        <param name="j">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>

@@ -1,11 +1,11 @@
 <Type Name="LiteralTok" FullName="dylan.NET.Tokenizer.AST.Tokens.LiteralTok">
-  <TypeSignature Language="C#" Value="public class LiteralTok : dylan.NET.Tokenizer.AST.Tokens.Token" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi LiteralTok extends dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <TypeSignature Language="C#" Value="public class LiteralTok : dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi LiteralTok extends dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.NonExprToken</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

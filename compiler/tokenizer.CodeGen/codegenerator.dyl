@@ -189,8 +189,8 @@ class public auto ansi CodeGenerator
 			StreamUtils::Write("Embedding Resources in Assembly (if any)")
 				
 			foreach r in SymTable::ResLst
-				var fs = new FileStream(r, FileMode::Open)
-				AsmFactory::MdlB::DefineManifestResource(Path::GetFileName(r), fs, ResourceAttributes::Public)
+				var fs = new FileStream(r::get_Item1(), FileMode::Open)
+				AsmFactory::MdlB::DefineManifestResource(#ternary {r::get_Item2() == string::Empty ? Path::GetFileName(r::get_Item1()), r::get_Item2() }, fs, ResourceAttributes::Public)
 				fs::Close()
 			end for
 

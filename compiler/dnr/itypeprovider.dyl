@@ -9,5 +9,5 @@ class public auto ansi abstract interface ITypeProvider
 	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetLong()
 	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetSingle()
 	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetDouble()
-	
+
 end class

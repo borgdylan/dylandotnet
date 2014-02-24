@@ -268,7 +268,8 @@ class public auto ansi static Generics
 	method public static T[] Func2<of T>(var ie as IEnumerable<of T>)
 		return Enumerable::ToArray<of T>(ie)
 	end method
-	
+
+	//[method: Obsolete("Fake Obsolete", true)]
 	method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T)
 		var destarr as T[] = new T[++srcarr[l]]
 

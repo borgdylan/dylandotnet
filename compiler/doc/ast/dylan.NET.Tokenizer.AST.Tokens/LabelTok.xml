@@ -1,11 +1,11 @@
 <Type Name="LabelTok" FullName="dylan.NET.Tokenizer.AST.Tokens.LabelTok">
-  <TypeSignature Language="C#" Value="public class LabelTok : dylan.NET.Tokenizer.AST.Tokens.Token" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi LabelTok extends dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <TypeSignature Language="C#" Value="public class LabelTok : dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi LabelTok extends dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.NonExprToken</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

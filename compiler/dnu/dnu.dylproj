@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Utils</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>dnu</AssemblyName>
-    <ReleaseVersion>11.3.3.2</ReleaseVersion>
+    <ReleaseVersion>11.3.4.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,14 +45,13 @@
     <Reference Include="System.Reactive.PlatformServices">
       <HintPath>..\packages\Rx-PlatformServices.2.2.3\lib\net40\System.Reactive.PlatformServices.dll</HintPath>
     </Reference>
-    <Reference Include="C5.Mono">
-      <HintPath>..\lib\4.0\C5.Mono.dll</HintPath>
+    <Reference Include="C5">
+      <HintPath>..\lib\4.0\C5.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.dyl" />
     <Compile Include="xmlu.dyl" />
-    <Compile Include="winapi.dyl" />
     <Compile Include="streamu.dyl" />
     <Compile Include="parseu.dyl" />
     <Compile Include="keyboard.dyl" />
@@ -62,6 +61,7 @@
   <ItemGroup>
     <Compile Include="dnu.dyl" />
     <None Include="packages.config" />
+    <None Include="winapi.dyl" />
   </ItemGroup>
   <ItemGroup>
     <ResScript Include="Messages.dylres" />

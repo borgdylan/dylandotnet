@@ -1,11 +1,11 @@
 <Type Name="MethodCTok" FullName="dylan.NET.Tokenizer.AST.Tokens.MethodCTok">
-  <TypeSignature Language="C#" Value="public class MethodCTok : dylan.NET.Tokenizer.AST.Tokens.Token" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi MethodCTok extends dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <TypeSignature Language="C#" Value="public class MethodCTok : dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi MethodCTok extends dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.NonExprToken</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

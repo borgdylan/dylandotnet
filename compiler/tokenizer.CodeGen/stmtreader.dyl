@@ -837,7 +837,7 @@ class public auto ansi StmtReader
 				isautoind = i
 			elseif a is InitOnlyAttr then
 				isrdonly = true
-				isrdonlyind = i
+				isrdonlyind = #ternary {isauto ? --i, i}
 			elseif a is StaticAttr then
 				isstatic = true
 			elseif a is AbstractAttr then
@@ -1004,12 +1004,15 @@ class public auto ansi StmtReader
 			if sstm::Path::Value like  c"^\q(.)*\q$" then
 				sstm::Path::Value = sstm::Path::Value::Trim(new char[] {c'\q'})
 			end if
+			if sstm::LogicalName::Value like  c"^\q(.)*\q$" then
+				sstm::LogicalName::Value = sstm::LogicalName::Value::Trim(new char[] {c'\q'})
+			end if
 			sstm::Path::Value = ParseUtils::ProcessMSYSPath(sstm::Path::Value)
 			
 			if File::Exists(sstm::Path::Value) then
 				StreamUtils::Write("Adding Resource: ")
 				StreamUtils::WriteLine(sstm::Path::Value)
-				SymTable::ResLst::Add(sstm::Path::Value)
+				SymTable::ResLst::Add(Tuple::Create<of string, string>(sstm::Path::Value, sstm::LogicalName::Value))
 			else
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Resource File '" + sstm::Path::Value + "' does not exist.")
 			end if

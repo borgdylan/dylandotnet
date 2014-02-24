@@ -89,6 +89,18 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.Verify(dylan.NET.Tokenizer.AST.Exprs.Expr)">
+            <param name="exp">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.Verify(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32,System.Int32)">
+            <param name="exp">To be added.</param>
+            <param name="i">To be added.</param>
+            <param name="j">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.Parser.Flags">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

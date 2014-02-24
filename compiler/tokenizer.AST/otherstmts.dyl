@@ -132,10 +132,12 @@ end class
 class public auto ansi EmbedStmt extends Stmt
 
 	field public Token Path
+	field public Token LogicalName
 
 	method public void EmbedStmt()
 		me::ctor()
 		Path = new Token()
+		LogicalName = new Token()
 	end method
 	
 	method public hidebysig virtual string ToString()
@@ -143,9 +145,14 @@ class public auto ansi EmbedStmt extends Stmt
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"
 		end if
-		return "#embed " + temp
+		var temp2 as string = LogicalName::Value
+		if temp2::get_Length() != 0 then
+			if temp2 notlike c"^\q(.)*\q$" then
+				temp2 = c"\q" + temp2 + c"\q"
+			end if
+		end if
+		return #ternary{temp2::get_Length() == 0 ? "#embed " + temp, "#embed " + temp2 + " = " + temp}
 	end method
-
 end class
 
 class public auto ansi LockStmt extends Stmt

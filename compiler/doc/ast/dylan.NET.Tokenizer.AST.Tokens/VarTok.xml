@@ -1,11 +1,11 @@
 <Type Name="VarTok" FullName="dylan.NET.Tokenizer.AST.Tokens.VarTok">
-  <TypeSignature Language="C#" Value="public class VarTok : dylan.NET.Tokenizer.AST.Tokens.Token" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi VarTok extends dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <TypeSignature Language="C#" Value="public class VarTok : dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi VarTok extends dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.NonExprToken</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

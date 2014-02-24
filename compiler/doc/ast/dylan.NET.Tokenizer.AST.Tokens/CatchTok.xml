@@ -1,11 +1,11 @@
 <Type Name="CatchTok" FullName="dylan.NET.Tokenizer.AST.Tokens.CatchTok">
-  <TypeSignature Language="C#" Value="public class CatchTok : dylan.NET.Tokenizer.AST.Tokens.Token" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi CatchTok extends dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <TypeSignature Language="C#" Value="public class CatchTok : dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi CatchTok extends dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.NonExprToken</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

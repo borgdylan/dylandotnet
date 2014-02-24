@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi NewCallTok extends Token
+class public auto ansi NewCallTok extends ValueToken
 
 	field public TypeTok Name
 	field public C5.ArrayList<of Expr> Params
@@ -41,7 +41,7 @@ class public auto ansi NewCallTok extends Token
 
 end class
 
-class public auto ansi NewarrCallTok extends Token
+class public auto ansi NewarrCallTok extends ValueToken
 
 	field public TypeTok ArrayType
 	field public Expr ArrayLen
@@ -60,7 +60,7 @@ class public auto ansi NewarrCallTok extends Token
 
 end class
 
-class public auto ansi ArrInitCallTok extends Token
+class public auto ansi ArrInitCallTok extends ValueToken
 
 	field public TypeTok ArrayType
 	field public C5.ArrayList<of Expr> Elements
@@ -89,7 +89,7 @@ class public auto ansi ArrInitCallTok extends Token
 
 end class
 
-class public auto ansi ObjInitCallTok extends Token
+class public auto ansi ObjInitCallTok extends ValueToken
 
 	field public NewCallTok Ctor
 	field public C5.ArrayList<of Token> Elements
@@ -124,7 +124,7 @@ class public auto ansi ObjInitCallTok extends Token
 
 end class
 
-class public auto ansi TernaryCallTok extends Token
+class public auto ansi TernaryCallTok extends ValueToken
 
 	field public Expr Condition
 	field public Expr TrueExpr

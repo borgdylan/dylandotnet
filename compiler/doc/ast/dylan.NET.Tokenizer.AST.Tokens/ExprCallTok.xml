@@ -1,11 +1,11 @@
 <Type Name="ExprCallTok" FullName="dylan.NET.Tokenizer.AST.Tokens.ExprCallTok">
-  <TypeSignature Language="C#" Value="public class ExprCallTok : dylan.NET.Tokenizer.AST.Tokens.Token, dylan.NET.Tokenizer.AST.Interfaces.IConvable, dylan.NET.Tokenizer.AST.Interfaces.IIncDecable, dylan.NET.Tokenizer.AST.Interfaces.INegatable, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi ExprCallTok extends dylan.NET.Tokenizer.AST.Tokens.Token implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.IIncDecable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.INotable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="C#" Value="public class ExprCallTok : dylan.NET.Tokenizer.AST.Tokens.ValueToken, dylan.NET.Tokenizer.AST.Interfaces.IConvable, dylan.NET.Tokenizer.AST.Interfaces.IIncDecable, dylan.NET.Tokenizer.AST.Interfaces.INegatable, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ExprCallTok extends dylan.NET.Tokenizer.AST.Tokens.ValueToken implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.IIncDecable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.INotable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.ValueToken</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>

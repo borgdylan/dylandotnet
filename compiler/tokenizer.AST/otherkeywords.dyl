@@ -41,7 +41,7 @@ class public auto ansi DefaultTok extends Token
 
 end class
 
-class public auto ansi WhereTok extends Token
+class public auto ansi WhereTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "where"
@@ -79,7 +79,7 @@ end class
 //class public auto ansi StdasmTok extends Token
 //end class
 
-class public auto ansi abstract SwitchTok extends Token
+class public auto ansi abstract SwitchTok extends NonExprToken
 end class
 
 class public auto ansi OnTok extends SwitchTok
@@ -109,7 +109,7 @@ end class
 //class public auto ansi SingTok extends Token
 //end class
 
-class public auto ansi ScopeTok extends Token
+class public auto ansi ScopeTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#scope"
@@ -117,7 +117,7 @@ class public auto ansi ScopeTok extends Token
 
 end class
 
-class public auto ansi DebugTok extends Token
+class public auto ansi DebugTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#debug"
@@ -128,7 +128,7 @@ end class
 //class public auto ansi MakeasmTok extends Token
 //end class
 
-class public auto ansi RefasmTok extends Token
+class public auto ansi RefasmTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#refasm"
@@ -136,7 +136,7 @@ class public auto ansi RefasmTok extends Token
 
 end class
 
-class public auto ansi EmbedTok extends Token
+class public auto ansi EmbedTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#embed"
@@ -144,7 +144,7 @@ class public auto ansi EmbedTok extends Token
 
 end class
 
-class public auto ansi RefstdasmTok extends Token
+class public auto ansi RefstdasmTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#refstdasm"
@@ -158,7 +158,7 @@ end class
 //class public auto ansi ImageTok extends Token
 //end class
 
-class public auto ansi ImportTok extends Token
+class public auto ansi ImportTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "import"
@@ -166,7 +166,7 @@ class public auto ansi ImportTok extends Token
 
 end class
 
-class public auto ansi LocimportTok extends Token
+class public auto ansi LocimportTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "locimport"
@@ -174,7 +174,7 @@ class public auto ansi LocimportTok extends Token
 
 end class
 
-class public auto ansi AssemblyTok extends Token
+class public auto ansi AssemblyTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "assembly"
@@ -182,7 +182,7 @@ class public auto ansi AssemblyTok extends Token
 
 end class
 
-class public auto ansi AssemblyCTok extends Token
+class public auto ansi AssemblyCTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "assembly:"
@@ -190,7 +190,7 @@ class public auto ansi AssemblyCTok extends Token
 
 end class
 
-class public auto ansi ExeTok extends Token
+class public auto ansi ExeTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "exe"
@@ -198,7 +198,7 @@ class public auto ansi ExeTok extends Token
 
 end class
 
-class public auto ansi DllTok extends Token
+class public auto ansi DllTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "dll"
@@ -206,7 +206,7 @@ class public auto ansi DllTok extends Token
 
 end class
 
-class public auto ansi WinexeTok extends Token
+class public auto ansi WinexeTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "winexe"
@@ -214,7 +214,7 @@ class public auto ansi WinexeTok extends Token
 
 end class
 
-class public auto ansi VerTok extends Token
+class public auto ansi VerTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "ver"
@@ -222,7 +222,7 @@ class public auto ansi VerTok extends Token
 
 end class
 
-class public auto ansi IncludeTok extends Token
+class public auto ansi IncludeTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#include"
@@ -230,7 +230,7 @@ class public auto ansi IncludeTok extends Token
 
 end class
 
-class public auto ansi SignTok extends Token
+class public auto ansi SignTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#sign"
@@ -241,7 +241,7 @@ end class
 //class public auto ansi XmldocTok extends Token
 //end class
 
-class public auto ansi NamespaceTok extends Token
+class public auto ansi NamespaceTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "namespace"
@@ -249,7 +249,7 @@ class public auto ansi NamespaceTok extends Token
 
 end class
 
-class public auto ansi ClassTok extends Token
+class public auto ansi ClassTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "class"
@@ -257,7 +257,7 @@ class public auto ansi ClassTok extends Token
 
 end class
 
-class public auto ansi ClassCTok extends Token
+class public auto ansi ClassCTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "class:"
@@ -265,7 +265,7 @@ class public auto ansi ClassCTok extends Token
 
 end class
 
-class public auto ansi StructTok extends Token
+class public auto ansi StructTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "struct"
@@ -273,15 +273,15 @@ class public auto ansi StructTok extends Token
 
 end class
 
-class public auto ansi ExtendsTok extends Token
+class public auto ansi ExtendsTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
-		return "estends"
+		return "extends"
 	end method
 
 end class
 
-class public auto ansi ImplementsTok extends Token
+class public auto ansi ImplementsTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "implements"
@@ -289,7 +289,7 @@ class public auto ansi ImplementsTok extends Token
 
 end class
 
-class public auto ansi EnumTok extends Token
+class public auto ansi EnumTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "enum"
@@ -297,7 +297,7 @@ class public auto ansi EnumTok extends Token
 
 end class
 
-class public auto ansi EnumCTok extends Token
+class public auto ansi EnumCTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "enum:"
@@ -305,7 +305,7 @@ class public auto ansi EnumCTok extends Token
 
 end class
 
-class public auto ansi FieldTok extends Token
+class public auto ansi FieldTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "field"
@@ -313,7 +313,7 @@ class public auto ansi FieldTok extends Token
 
 end class
 
-class public auto ansi FieldCTok extends Token
+class public auto ansi FieldCTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "field:"
@@ -321,7 +321,7 @@ class public auto ansi FieldCTok extends Token
 
 end class
 
-class public auto ansi DelegateTok extends Token
+class public auto ansi DelegateTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "delegate"
@@ -329,7 +329,7 @@ class public auto ansi DelegateTok extends Token
 
 end class
 
-class public auto ansi PropertyTok extends Token
+class public auto ansi PropertyTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "property"
@@ -337,7 +337,7 @@ class public auto ansi PropertyTok extends Token
 
 end class
 
-class public auto ansi PropertyCTok extends Token
+class public auto ansi PropertyCTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "property:"
@@ -345,7 +345,7 @@ class public auto ansi PropertyCTok extends Token
 
 end class
 
-class public auto ansi EventTok extends Token
+class public auto ansi EventTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "event"
@@ -353,7 +353,7 @@ class public auto ansi EventTok extends Token
 
 end class
 
-class public auto ansi EventCTok extends Token
+class public auto ansi EventCTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "event:"
@@ -362,7 +362,7 @@ class public auto ansi EventCTok extends Token
 end class
 
 
-class public auto ansi GetTok extends Token
+class public auto ansi GetTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "get"
@@ -370,7 +370,7 @@ class public auto ansi GetTok extends Token
 
 end class
 
-class public auto ansi SetTok extends Token
+class public auto ansi SetTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "set"
@@ -378,7 +378,7 @@ class public auto ansi SetTok extends Token
 
 end class
 
-class public auto ansi AddTok extends Token
+class public auto ansi AddTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "add"
@@ -386,7 +386,7 @@ class public auto ansi AddTok extends Token
 
 end class
 
-class public auto ansi RemoveTok extends Token
+class public auto ansi RemoveTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "remove"
@@ -395,7 +395,7 @@ class public auto ansi RemoveTok extends Token
 end class
 
 
-class public auto ansi MethodTok extends Token
+class public auto ansi MethodTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "method"
@@ -403,7 +403,7 @@ class public auto ansi MethodTok extends Token
 
 end class
 
-class public auto ansi MethodCTok extends Token
+class public auto ansi MethodCTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "method:"
@@ -411,7 +411,7 @@ class public auto ansi MethodCTok extends Token
 
 end class
 
-class public auto ansi TryTok extends Token
+class public auto ansi TryTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "try"
@@ -419,7 +419,7 @@ class public auto ansi TryTok extends Token
 
 end class
 
-class public auto ansi CatchTok extends Token
+class public auto ansi CatchTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "catch"
@@ -427,7 +427,7 @@ class public auto ansi CatchTok extends Token
 
 end class
 
-class public auto ansi AsTok extends Token
+class public auto ansi AsTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "as"
@@ -435,7 +435,7 @@ class public auto ansi AsTok extends Token
 
 end class
 
-class public auto ansi FinallyTok extends Token
+class public auto ansi FinallyTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "finally"
@@ -443,7 +443,7 @@ class public auto ansi FinallyTok extends Token
 
 end class
 
-class public auto ansi LabelTok extends Token
+class public auto ansi LabelTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "label"
@@ -451,7 +451,7 @@ class public auto ansi LabelTok extends Token
 
 end class
 
-class public auto ansi PlaceTok extends Token
+class public auto ansi PlaceTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "place"
@@ -459,7 +459,7 @@ class public auto ansi PlaceTok extends Token
 
 end class
 
-class public auto ansi GotoTok extends Token
+class public auto ansi GotoTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "goto"
@@ -467,7 +467,7 @@ class public auto ansi GotoTok extends Token
 
 end class
 
-class public auto ansi IfTok extends Token
+class public auto ansi IfTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "if"
@@ -475,7 +475,7 @@ class public auto ansi IfTok extends Token
 
 end class
 
-class public auto ansi HIfTok extends Token
+class public auto ansi HIfTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#if"
@@ -483,7 +483,7 @@ class public auto ansi HIfTok extends Token
 
 end class
 
-class public auto ansi ElseIfTok extends Token
+class public auto ansi ElseIfTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "elseif"
@@ -491,7 +491,7 @@ class public auto ansi ElseIfTok extends Token
 
 end class
 
-class public auto ansi HElseIfTok extends Token
+class public auto ansi HElseIfTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#elseif"
@@ -500,7 +500,7 @@ class public auto ansi HElseIfTok extends Token
 end class
 
 
-class public auto ansi ThenTok extends Token
+class public auto ansi ThenTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "then"
@@ -508,7 +508,7 @@ class public auto ansi ThenTok extends Token
 
 end class
 
-class public auto ansi DoTok extends Token
+class public auto ansi DoTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "do"
@@ -516,7 +516,7 @@ class public auto ansi DoTok extends Token
 
 end class
 
-class public auto ansi ForTok extends Token
+class public auto ansi ForTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "for"
@@ -524,7 +524,7 @@ class public auto ansi ForTok extends Token
 
 end class
 
-class public auto ansi UptoTok extends Token
+class public auto ansi UptoTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "upto"
@@ -532,7 +532,7 @@ class public auto ansi UptoTok extends Token
 
 end class
 
-class public auto ansi DowntoTok extends Token
+class public auto ansi DowntoTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "downto"
@@ -540,7 +540,7 @@ class public auto ansi DowntoTok extends Token
 
 end class
 
-class public auto ansi StepTok extends Token
+class public auto ansi StepTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "step"
@@ -548,7 +548,7 @@ class public auto ansi StepTok extends Token
 
 end class
 
-class public auto ansi ForeachTok extends Token
+class public auto ansi ForeachTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "foreach"
@@ -556,7 +556,7 @@ class public auto ansi ForeachTok extends Token
 
 end class
 
-class public auto ansi BreakTok extends Token
+class public auto ansi BreakTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "break"
@@ -564,7 +564,7 @@ class public auto ansi BreakTok extends Token
 
 end class
 
-class public auto ansi ContinueTok extends Token
+class public auto ansi ContinueTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "continue"
@@ -572,7 +572,7 @@ class public auto ansi ContinueTok extends Token
 
 end class
 
-class public auto ansi WhileTok extends Token
+class public auto ansi WhileTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "while"
@@ -580,7 +580,7 @@ class public auto ansi WhileTok extends Token
 
 end class
 
-class public auto ansi UntilTok extends Token
+class public auto ansi UntilTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "until"
@@ -588,7 +588,7 @@ class public auto ansi UntilTok extends Token
 
 end class
 
-class public auto ansi LiteralTok extends Token
+class public auto ansi LiteralTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "literal"
@@ -596,7 +596,7 @@ class public auto ansi LiteralTok extends Token
 
 end class
 
-class public auto ansi VarTok extends Token
+class public auto ansi VarTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "var"
@@ -604,7 +604,7 @@ class public auto ansi VarTok extends Token
 	
 end class
 
-class public auto ansi UsingTok extends Token
+class public auto ansi UsingTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "using"
@@ -612,7 +612,7 @@ class public auto ansi UsingTok extends Token
 	
 end class
 
-class public auto ansi ElseTok extends Token
+class public auto ansi ElseTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "else"
@@ -620,7 +620,7 @@ class public auto ansi ElseTok extends Token
 
 end class
 
-class public auto ansi HElseTok extends Token
+class public auto ansi HElseTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#else"
@@ -636,7 +636,7 @@ class public auto ansi TernaryTok extends Token
 
 end class
 
-class public auto ansi HDefineTok extends Token
+class public auto ansi HDefineTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#define"
@@ -644,7 +644,7 @@ class public auto ansi HDefineTok extends Token
 
 end class
 
-class public auto ansi HUndefTok extends Token
+class public auto ansi HUndefTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#undef"
@@ -652,7 +652,7 @@ class public auto ansi HUndefTok extends Token
 
 end class
 
-class public auto ansi ErrorTok extends Token
+class public auto ansi ErrorTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#error"
@@ -660,7 +660,7 @@ class public auto ansi ErrorTok extends Token
 
 end class
 
-class public auto ansi WarningTok extends Token
+class public auto ansi WarningTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "#warning"
@@ -668,7 +668,7 @@ class public auto ansi WarningTok extends Token
 
 end class
 
-class public auto ansi ReturnTok extends Token
+class public auto ansi ReturnTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "return"
@@ -676,7 +676,7 @@ class public auto ansi ReturnTok extends Token
 
 end class
 
-class public auto ansi ThrowTok extends Token
+class public auto ansi ThrowTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "throw"
@@ -684,7 +684,7 @@ class public auto ansi ThrowTok extends Token
 	
 end class
 
-class public auto ansi EndTok extends Token
+class public auto ansi EndTok extends NonExprToken
 	
 	method public hidebysig virtual string ToString()
 		return "end"
@@ -692,7 +692,7 @@ class public auto ansi EndTok extends Token
 
 end class
 
-class public auto ansi InTok extends Token
+class public auto ansi InTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "in"
@@ -700,7 +700,7 @@ class public auto ansi InTok extends Token
 
 end class
 
-class public auto ansi OutTok extends Token
+class public auto ansi OutTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "out"
@@ -708,7 +708,7 @@ class public auto ansi OutTok extends Token
 
 end class
 
-class public auto ansi InOutTok extends Token
+class public auto ansi InOutTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "inout"
@@ -716,7 +716,7 @@ class public auto ansi InOutTok extends Token
 
 end class
 
-class public auto ansi LockTok extends Token
+class public auto ansi LockTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "lock"
@@ -724,7 +724,7 @@ class public auto ansi LockTok extends Token
 
 end class
 
-class public auto ansi TryLockTok extends Token
+class public auto ansi TryLockTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return "trylock"
@@ -740,7 +740,7 @@ class public auto ansi ExprTok extends Token
 
 end class
 
-class public auto ansi MeTok extends Token implements IUnaryOperatable, IConvable
+class public auto ansi MeTok extends ValueToken implements IUnaryOperatable, IConvable
 
 	field public boolean _Conv
 	field public TypeTok _TTok
@@ -793,7 +793,7 @@ class public auto ansi MeTok extends Token implements IUnaryOperatable, IConvabl
 	
 end class
 
-class public auto ansi ParameterCTok extends Token
+class public auto ansi ParameterCTok extends NonExprToken
 
 	method public hidebysig virtual string ToString()
 		return Value

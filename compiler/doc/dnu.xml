@@ -308,6 +308,13 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Utils.StreamUtils.WriteWarnLine(System.Int32,System.String,System.String)">
+            <param name="line">To be added.</param>
+            <param name="file">To be added.</param>
+            <param name="msg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Utils.XmlUtils">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

@@ -26,3 +26,27 @@ class public auto ansi Token
 	end method
 
 end class
+
+class public auto ansi NonExprToken extends Token
+
+	method public void NonExprToken(var value as string)
+		me::ctor(value)
+	end method
+	
+	method public void NonExprToken()
+		ctor(string::Empty)
+	end method
+
+end class
+
+class public auto ansi ValueToken extends Token
+
+	method public void ValueToken(var value as string)
+		me::ctor(value)
+	end method
+	
+	method public void ValueToken()
+		ctor(string::Empty)
+	end method
+
+end class

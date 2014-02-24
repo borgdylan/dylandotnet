@@ -40,6 +40,27 @@ class public auto ansi static Helpers
 	end method
 
 	[method: ComVisible(false)]
+	method public static ObsoleteAttribute GetObsolete(var m as MemberInfo)
+		try
+			var lcad = m::__GetCustomAttributes(Loader::LoadClass("System.ObsoleteAttribute"), false)
+			if lcad::get_Count() == 0 then
+				return null
+			else
+				var params = lcad::get_Item(0)::get_ConstructorArguments()
+				if params::get_Count() == 0 then
+					return new ObsoleteAttribute()
+				elseif params::get_Count() == 1 then
+					return new ObsoleteAttribute($string$params::get_Item(0)::get_Value())
+				elseif params::get_Count() == 2 then
+					return new ObsoleteAttribute($string$params::get_Item(0)::get_Value(), $boolean$params::get_Item(1)::get_Value())
+				end if
+			end if
+		catch ex as Exception
+		end try
+		return null
+	end method
+
+	[method: ComVisible(false)]
 	method public static TypeAttributes ProcessClassAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
 		
 		var ta as TypeAttributes

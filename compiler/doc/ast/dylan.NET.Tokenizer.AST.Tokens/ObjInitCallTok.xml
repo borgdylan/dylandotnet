@@ -1,11 +1,11 @@
 <Type Name="ObjInitCallTok" FullName="dylan.NET.Tokenizer.AST.Tokens.ObjInitCallTok">
-  <TypeSignature Language="C#" Value="public class ObjInitCallTok : dylan.NET.Tokenizer.AST.Tokens.Token" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi ObjInitCallTok extends dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <TypeSignature Language="C#" Value="public class ObjInitCallTok : dylan.NET.Tokenizer.AST.Tokens.ValueToken" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ObjInitCallTok extends dylan.NET.Tokenizer.AST.Tokens.ValueToken" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.ValueToken</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

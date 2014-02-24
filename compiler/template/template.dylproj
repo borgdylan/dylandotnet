@@ -9,7 +9,7 @@
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>template</AssemblyName>
     <UseMSBuildEngine>True</UseMSBuildEngine>
-    <ReleaseVersion>11.3.3.2</ReleaseVersion>
+    <ReleaseVersion>11.3.4.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,11 +41,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.dyl" />
     <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="template.dyl" />
   </ItemGroup>
   <Import Project="..\4.0\dylan.NET.targets" />
-  <ItemGroup>
-    <None Include="template.dyl" />
-  </ItemGroup>
 </Project>

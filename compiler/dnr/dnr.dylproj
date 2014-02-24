@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Reflection</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>dnr</AssemblyName>
-    <ReleaseVersion>11.3.3.2</ReleaseVersion>
+    <ReleaseVersion>11.3.4.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,14 +31,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="C5.Mono">
-      <HintPath>..\lib\4.0\C5.Mono.dll</HintPath>
-    </Reference>
     <Reference Include="System.Interactive">
       <HintPath>..\packages\Ix-Main.1.2.2\lib\net40\System.Interactive.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.Reflection">
       <HintPath>..\lib\IKVM.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="C5">
+      <HintPath>..\lib\4.0\C5.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

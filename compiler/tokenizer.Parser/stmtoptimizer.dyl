@@ -22,6 +22,10 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkRefasm(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is RefasmTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
+
 			return new RefasmStmt() {Line = stm::Line, AsmPath = stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -30,6 +34,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkSign(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is SignTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new SignStmt() {Line = stm::Line, KeyPath = stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -38,14 +45,35 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkEmbed(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is EmbedTok
 		if b then
-			return new EmbedStmt() {Line = stm::Line, Path = stm::Tokens::get_Item(1)}
+			var imps as EmbedStmt = new EmbedStmt() {Line = stm::Line}
+			if stm::Tokens::get_Count() >= 4 then
+				if stm::Tokens::get_Item(2)::Value = "=" then
+					imps::LogicalName = stm::Tokens::get_Item(1)
+					imps::Path = stm::Tokens::get_Item(3)
+					if stm::Tokens::get_Count() > 4 then
+						StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+					end if
+				else
+					imps::Path = stm::Tokens::get_Item(1)
+					if stm::Tokens::get_Count() > 2 then
+						StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+					end if
+				end if
+			else
+				imps::Path = stm::Tokens::get_Item(1)
+			end if
+			return imps
 		end if
+
 		return null
 	end method
 
 	method private Stmt checkRefstdasm(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is RefstdasmTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new RefstdasmStmt() {Line = stm::Line, AsmPath = stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -54,6 +82,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkInclude(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is IncludeTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new IncludeStmt() {Line = stm::Line, Path = stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -62,6 +93,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkError(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is ErrorTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new ErrorStmt() {Line = stm::Line, Msg = stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -70,6 +104,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkWarning(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is WarningTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new WarningStmt() {Line = stm::Line, Msg = stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -79,7 +116,7 @@ class public auto ansi StmtOptimizer
 		b = stm::Tokens::get_Item(0) is IfTok
 		
 		if b then
-			var exp as Expr = new Expr()
+			var exp as Expr = new Expr() {Line = stm::Line}
 			var i as integer = 0
 			var len as integer = --stm::Tokens::get_Count()
 			
@@ -88,6 +125,11 @@ class public auto ansi StmtOptimizer
 				var tok as Token = stm::Tokens::get_Item(i)		
 				
 				if tok is ThenTok then
+					
+					if len > i then
+						StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of if statement!")	
+					end if
+
 					break
 				else
 					exp::AddToken(tok)
@@ -104,7 +146,7 @@ class public auto ansi StmtOptimizer
 		b = stm::Tokens::get_Item(0) is HIfTok
 		
 		if b then
-			var exp as Expr = new Expr()
+			var exp as Expr = new Expr() {Line = stm::Line}
 			var i as integer = 0
 			var len as integer = --stm::Tokens::get_Count()
 			
@@ -113,6 +155,11 @@ class public auto ansi StmtOptimizer
 				var tok as Token = stm::Tokens::get_Item(i)	
 				
 				if tok is ThenTok then
+					
+					if len > i then
+						StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of #if statement!")	
+					end if
+
 					break
 				else
 					exp::AddToken(tok)
@@ -129,7 +176,7 @@ class public auto ansi StmtOptimizer
 		b = stm::Tokens::get_Item(0) is WhileTok
 		
 		if b then
-			var exp as Expr = new Expr()
+			var exp as Expr = new Expr() {Line = stm::Line}
 			var i as integer = 0
 			
 			do until i = --stm::Tokens::get_Count() 
@@ -149,7 +196,7 @@ class public auto ansi StmtOptimizer
 			b = (stm::Tokens::get_Item(0) is DoTok) and (stm::Tokens::get_Item(1) is WhileTok)
 			
 			if b then
-				var exp as Expr = new Expr()
+				var exp as Expr = new Expr() {Line = stm::Line}
 				var i as integer = 1
 				
 				do until i = --stm::Tokens::get_Count() 
@@ -167,7 +214,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkUntil(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is UntilTok
 		if b then
-			var exp as Expr = new Expr()
+			var exp as Expr = new Expr() {Line = stm::Line}
 			var i as integer = 0
 			
 			do until i = --stm::Tokens::get_Count() 
@@ -187,7 +234,7 @@ class public auto ansi StmtOptimizer
 			b = (stm::Tokens::get_Item(0) is DoTok) and (stm::Tokens::get_Item(1) is UntilTok)
 			
 			if b then
-				var exp as Expr = new Expr()
+				var exp as Expr = new Expr() {Line = stm::Line}
 				var i as integer = 1
 
 				do until i = --stm::Tokens::get_Count() 
@@ -333,7 +380,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkElseIf(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is ElseIfTok
 		if b then
-			var exp as Expr = new Expr()
+			var exp as Expr = new Expr() {Line = stm::Line}
 			var i as integer = 0
 			var len as integer = --stm::Tokens::get_Count() 
 			
@@ -341,6 +388,11 @@ class public auto ansi StmtOptimizer
 				i++
 				var tok as Token = stm::Tokens::get_Item(i)
 				if tok is ThenTok then
+					
+					if len > i then
+						StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of elseif statement!")	
+					end if
+
 					break
 				else
 					exp::AddToken(tok)
@@ -356,7 +408,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkHElseIf(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is HElseIfTok
 		if b then
-			var exp as Expr = new Expr()
+			var exp as Expr = new Expr() {Line = stm::Line}
 			var i as integer = 0
 			var len as integer = --stm::Tokens::get_Count() 
 			
@@ -364,6 +416,11 @@ class public auto ansi StmtOptimizer
 				i++
 				var tok as Token = stm::Tokens::get_Item(i)
 				if tok is ThenTok then
+					
+					if len > i then
+						StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of #elseif statement!")	
+					end if
+
 					break
 				else
 					exp::AddToken(tok)
@@ -379,6 +436,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkLabel(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is LabelTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new LabelStmt() {Line = stm::Line, LabelName = $Ident$stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -387,6 +447,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkPlace(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is PlaceTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new PlaceStmt() {Line = stm::Line, LabelName = $Ident$stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -395,6 +458,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkGoto(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is GotoTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new GotoStmt() {Line = stm::Line, LabelName = $Ident$stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -403,6 +469,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkHDefine(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is HDefineTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new HDefineStmt() {Line = stm::Line, Symbol = $Ident$stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -411,6 +480,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkHUndef(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is HUndefTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new HUndefStmt() {Line = stm::Line, Symbol = $Ident$stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -418,7 +490,10 @@ class public auto ansi StmtOptimizer
 	
 	method private Stmt checkDebug(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is DebugTok
-		if b then	
+		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new DebugStmt() {Line = stm::Line, Opt = $SwitchTok$stm::Tokens::get_Item(1), setFlg()}
 		end if
 		return null
@@ -427,6 +502,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkScope(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is ScopeTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new ScopeStmt() {Line = stm::Line, Opt = $SwitchTok$stm::Tokens::get_Item(1), setFlg()}
 		end if
 		return null
@@ -440,8 +518,14 @@ class public auto ansi StmtOptimizer
 				if stm::Tokens::get_Item(2)::Value = "=" then
 					imps::Alias = stm::Tokens::get_Item(1)
 					imps::NS = stm::Tokens::get_Item(3)
+					if stm::Tokens::get_Count() > 4 then
+						StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+					end if
 				else
 					imps::NS = stm::Tokens::get_Item(1)
+					if stm::Tokens::get_Count() > 2 then
+						StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+					end if
 				end if
 			else
 				imps::NS = stm::Tokens::get_Item(1)
@@ -454,6 +538,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkNS(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is NamespaceTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new NSStmt() {Line = stm::Line, NS = stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -462,6 +549,9 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkLocimport(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is LocimportTok
 		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
 			return new LocimportStmt() {Line = stm::Line, NS = stm::Tokens::get_Item(1)}
 		end if
 		return null
@@ -477,7 +567,7 @@ class public auto ansi StmtOptimizer
 			if stm::Tokens::get_Count() = 1 then
 				rets::RExp = null
 			elseif stm::Tokens::get_Count() >= 2 then
-				var exp as Expr = new Expr()
+				var exp as Expr = new Expr() {Line = stm::Line}
 				do
 					i++
 					exp::AddToken(stm::Tokens::get_Item(i))
@@ -495,7 +585,7 @@ class public auto ansi StmtOptimizer
 		if b then
 			var i as integer = 0
 			var len as integer = --stm::Tokens::get_Count() 
-			var exp as Expr = new Expr()
+			var exp as Expr = new Expr() {Line = stm::Line}
 			
 			do until i = len
 				i++
@@ -513,7 +603,7 @@ class public auto ansi StmtOptimizer
 
 			var i as integer = 0
 			var len as integer = --stm::Tokens::get_Count() 
-			var exp as Expr = new Expr()
+			var exp as Expr = new Expr() {Line = stm::Line}
 			
 			do until i = len
 				i++
@@ -531,7 +621,7 @@ class public auto ansi StmtOptimizer
 
 			var i as integer = 0
 			var len as integer = --stm::Tokens::get_Count() 
-			var exp as Expr = new Expr()
+			var exp as Expr = new Expr() {Line = stm::Line}
 			
 			do until i = len
 				i++
@@ -546,7 +636,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkCmt(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is CommentTok
 		if b then
-			return new CommentStmt() {Line = stm::Line}
+			return new CommentStmt() {Line = stm::Line, Tokens = stm::Tokens}
 		end if
 		return null
 	end method
@@ -749,7 +839,7 @@ class public auto ansi StmtOptimizer
 					curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 					lp::Add(curvp)
 				end if
-				curvp = new AttrValuePair() {ValueExpr = new Expr()}
+				curvp = new AttrValuePair() {ValueExpr = new Expr() {Line = stm::Line}}
 				eqf = false
 			elseif mas::Tokens::get_Item(i) is AssignOp then
 				eqf = true
@@ -878,6 +968,11 @@ class public auto ansi StmtOptimizer
 			var vers as VerStmt = new VerStmt() {Line = stm::Line}
 			var ars as string[] = ParseUtils::StringParser(stm::Tokens::get_Item(1)::Value,".")
 			vers::VersionNos = new IntLiteral[] {new IntLiteral($integer$ars[0]),new IntLiteral($integer$ars[1]),new IntLiteral($integer$ars[2]),new IntLiteral($integer$ars[3])}
+
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
+
 			return vers
 		end if
 		return null
@@ -957,7 +1052,7 @@ class public auto ansi StmtOptimizer
 					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an '=' or nothing at all after the field name instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
 				end if
 				
-				var cexp as Expr = new Expr()
+				var cexp as Expr = new Expr() {Line = stm::Line}
 				do until i == --stm::Tokens::get_Count()
 					i++
 					cexp::AddToken(stm::Tokens::get_Item(i))
@@ -1037,16 +1132,19 @@ class public auto ansi StmtOptimizer
 
 				if stm::Tokens::get_Item(i) is LParen then
 					exp = null
+					var cc as integer = 0
 					do until i = len
 				
 						//get parameters
 						i++
 					
 						if stm::Tokens::get_Item(i) is RParen then
-							if d then
+							if d or (cc > 0) then
 								exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 								if bl then
 									prss::AddParam(exp)
+								else
+									StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected a parameter declaration!")
 								end if
 							end if
 							d = false
@@ -1056,28 +1154,28 @@ class public auto ansi StmtOptimizer
 						if stm::Tokens::get_Item(i) is VarTok then
 							d = true
 							if exp = null then
-								exp = new Expr()
+								exp = new Expr() {Line = stm::Line}
 							end if
 						end if
 					
 						if stm::Tokens::get_Item(i) is InTok then
 							d = true
 							if exp = null then
-								exp = new Expr()
+								exp = new Expr() {Line = stm::Line}
 							end if
 						end if
 					
 						if stm::Tokens::get_Item(i) is InOutTok then
 							d = true
 							if exp = null then
-								exp = new Expr()
+								exp = new Expr() {Line = stm::Line}
 							end if
 						end if
 					
 						if stm::Tokens::get_Item(i) is OutTok then
 							d = true
 							if exp = null then
-								exp = new Expr()
+								exp = new Expr() {Line = stm::Line}
 							end if
 						end if
 					
@@ -1092,9 +1190,12 @@ class public auto ansi StmtOptimizer
 						end if
 				
 						if (stm::Tokens::get_Item(i) is Comma) and (lvl == 0) then
+							cc++
 							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 							if bl then
 								prss::AddParam(exp)
+							else
+								StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected a parameter declaration!")
 							end if
 							d = false
 							exp = null
@@ -1177,23 +1278,26 @@ class public auto ansi StmtOptimizer
 			len = --stm::Tokens::get_Count() 
 			i++
 			
-			stm::Tokens = eop::procMtdName(new Expr() {Tokens = stm::Tokens}, i)::Tokens
+			stm::Tokens = eop::procMtdName(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 			mtss::MethodName = $MethodNameTok$stm::Tokens::get_Item(i)
 			
 			i++
 			
 			if stm::Tokens::get_Item(i) is LParen then
 				exp = null
+				var cc as integer = 0
 				do until i = len
 			
 					//get parameters
 					i++
 				
 					if stm::Tokens::get_Item(i) is RParen then
-						if d then
+						if d or (cc > 0) then
 							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 							if bl then
 								mtss::AddParam(exp)
+							else
+								StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected a parameter declaration!")
 							end if
 						end if
 						d = false
@@ -1203,28 +1307,28 @@ class public auto ansi StmtOptimizer
 					if stm::Tokens::get_Item(i) is VarTok then
 						d = true
 						if exp = null then
-							exp = new Expr()
+							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 				
 					if stm::Tokens::get_Item(i) is InTok then
 						d = true
 						if exp = null then
-							exp = new Expr()
+							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 				
 					if stm::Tokens::get_Item(i) is InOutTok then
 						d = true
 						if exp = null then
-							exp = new Expr()
+							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 				
 					if stm::Tokens::get_Item(i) is OutTok then
 						d = true
 						if exp = null then
-							exp = new Expr()
+							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 				
@@ -1239,9 +1343,12 @@ class public auto ansi StmtOptimizer
 					end if
 			
 					if (stm::Tokens::get_Item(i) is Comma) and (lvl == 0) then
+						cc++
 						exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 						if bl then
 							mtss::AddParam(exp)
+						else
+							StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected a parameter declaration!")
 						end if
 						d = false
 						exp = null
@@ -1294,16 +1401,19 @@ class public auto ansi StmtOptimizer
 			if stm::Tokens::get_Item(i) is LParen then
 				
 				exp = null
+				var cc as integer = 0
 				do until i = len
 			
 					//get parameters
 					i++
 				
 					if stm::Tokens::get_Item(i) is RParen then
-						if d then
+						if d or (cc > 0) then
 							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 							if bl then
 								dels::AddParam(exp)
+							else
+								StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected a parameter declaration!")
 							end if
 						end if
 						d = false
@@ -1312,25 +1422,25 @@ class public auto ansi StmtOptimizer
 					if stm::Tokens::get_Item(i) is VarTok then
 						d = true
 						if exp = null then
-							exp = new Expr()
+							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 					if stm::Tokens::get_Item(i) is InTok then
 						d = true
 						if exp = null then
-							exp = new Expr()
+							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 					if stm::Tokens::get_Item(i) is InOutTok then
 						d = true
 						if exp = null then
-							exp = new Expr()
+							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 					if stm::Tokens::get_Item(i) is OutTok then
 						d = true
 						if exp = null then
-							exp = new Expr()
+							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 				
@@ -1345,9 +1455,12 @@ class public auto ansi StmtOptimizer
 					end if
 					
 					if (stm::Tokens::get_Item(i) is Comma) and (lvl == 0) then
+						cc++
 						exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 						if bl then
 							dels::AddParam(exp)
+						else
+							StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected a parameter declaration!")
 						end if
 						d = false
 						exp = null
@@ -1397,12 +1510,12 @@ class public auto ansi StmtOptimizer
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is GetTok) and (stm::Tokens::get_Item(1) is Ident)
 			if b then
-				var prgs as PropertyGetStmt = new PropertyGetStmt() {Line = stm::Line, Tokens = stm::Tokens}
-				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
-				if exp::Tokens::get_Item(1) is MethodCallTok then
-					prgs::Getter = #expr($MethodCallTok$exp::Tokens::get_Item(1))::Name
-				elseif exp::Tokens::get_Item(1) is Ident then
-					prgs::Getter = $Ident$exp::Tokens::get_Item(1)
+				var prgs as PropertyGetStmt = new PropertyGetStmt() {Line = stm::Line}
+				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = new C5.ArrayList<of Token>() {AddAll(Enumerable::Skip<of Token>(stm::Tokens, 1))} })
+				if exp::Tokens::get_Item(0) is MethodCallTok then
+					prgs::Getter = #expr($MethodCallTok$exp::Tokens::get_Item(0))::Name
+				elseif exp::Tokens::get_Item(0) is Ident then
+					prgs::Getter = $Ident$exp::Tokens::get_Item(0)
 				end if
 				return prgs
 			end if
@@ -1420,12 +1533,12 @@ class public auto ansi StmtOptimizer
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is SetTok) and (stm::Tokens::get_Item(1) is Ident)
 			if b then
-				var prss as PropertySetStmt = new PropertySetStmt() {Line = stm::Line, Tokens = stm::Tokens}
-				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
-				if exp::Tokens::get_Item(1) is MethodCallTok then
-					prss::Setter = #expr($MethodCallTok$exp::Tokens::get_Item(1))::Name
-				elseif exp::Tokens::get_Item(1) is Ident then
-					prss::Setter = $Ident$exp::Tokens::get_Item(1)
+				var prss as PropertySetStmt = new PropertySetStmt() {Line = stm::Line}
+				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = new C5.ArrayList<of Token>() {AddAll(Enumerable::Skip<of Token>(stm::Tokens, 1))} })
+				if exp::Tokens::get_Item(0) is MethodCallTok then
+					prss::Setter = #expr($MethodCallTok$exp::Tokens::get_Item(0))::Name
+				elseif exp::Tokens::get_Item(0) is Ident then
+					prss::Setter = $Ident$exp::Tokens::get_Item(0)
 				end if
 				return prss
 			end if
@@ -1443,12 +1556,12 @@ class public auto ansi StmtOptimizer
 		if stm::Tokens::get_Count() >= 2 then
 			b = (stm::Tokens::get_Item(0) is RemoveTok) and (stm::Tokens::get_Item(1) is Ident)
 			if b then
-				var evrs as EventRemoveStmt = new EventRemoveStmt() {Line = stm::Line, Tokens = stm::Tokens}
-				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
-				if exp::Tokens::get_Item(1) is MethodCallTok then
-					evrs::Remover = #expr($MethodCallTok$exp::Tokens::get_Item(1))::Name
-				elseif exp::Tokens::get_Item(1) is Ident then
-					evrs::Remover = $Ident$exp::Tokens::get_Item(1)
+				var evrs as EventRemoveStmt = new EventRemoveStmt() {Line = stm::Line}
+				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = new C5.ArrayList<of Token>() {AddAll(Enumerable::Skip<of Token>(stm::Tokens, 1))} })
+				if exp::Tokens::get_Item(0) is MethodCallTok then
+					evrs::Remover = #expr($MethodCallTok$exp::Tokens::get_Item(0))::Name
+				elseif exp::Tokens::get_Item(0) is Ident then
+					evrs::Remover = $Ident$exp::Tokens::get_Item(0)
 				end if
 				return evrs
 			end if
@@ -1467,11 +1580,11 @@ class public auto ansi StmtOptimizer
 			b = (stm::Tokens::get_Item(0) is AddTok) and (stm::Tokens::get_Item(1) is Ident)	
 			if b then
 				var evas as EventAddStmt = new EventAddStmt() {Line = stm::Line, Tokens = stm::Tokens}
-				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})
-				if exp::Tokens::get_Item(1) is MethodCallTok then
-					evas::Adder = #expr($MethodCallTok$exp::Tokens::get_Item(1))::Name
-				elseif exp::Tokens::get_Item(1) is Ident then
-					evas::Adder = $Ident$exp::Tokens::get_Item(1)
+				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = new C5.ArrayList<of Token>() {AddAll(Enumerable::Skip<of Token>(stm::Tokens, 1))} })
+				if exp::Tokens::get_Item(0) is MethodCallTok then
+					evas::Adder = #expr($MethodCallTok$exp::Tokens::get_Item(0))::Name
+				elseif exp::Tokens::get_Item(0) is Ident then
+					evas::Adder = $Ident$exp::Tokens::get_Item(0)
 				end if
 				return evas
 			end if
@@ -1483,11 +1596,16 @@ class public auto ansi StmtOptimizer
 		end if
 		return null
 	end method
-	
+
 	method private Stmt checkVarAs(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is VarTok
 		if b then
 			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)
+
+			if !#expr(tempexp::Tokens::get_Item(1) is Ident) then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", tempexp::Tokens::get_Item(1)::Value))
+			end if
+
 			return new VarStmt() {Line = stm::Line, VarName = $Ident$tempexp::Tokens::get_Item(1), VarTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
 		end if
 		return null
@@ -1510,6 +1628,11 @@ class public auto ansi StmtOptimizer
 		if le::Tokens::get_Count() >= 4 then
 			if ((le::Tokens::get_Item(0) is VarTok) or (le::Tokens::get_Item(0) is UsingTok)) and (le::Tokens::get_Item(2) is AsTok) then
 				le::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = le::Tokens}, 3)::Tokens		
+
+				if !#expr(le::Tokens::get_Item(1) is Ident) then
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", le::Tokens::get_Item(1)::Value))
+				end if
+
 				return new VarAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), VarTyp = $TypeTok$le::Tokens::get_Item(3), _
 					RExpr = eop::Optimize(asss::RExp), IsUsing = le::Tokens::get_Item(0) is UsingTok}
 			else
@@ -1517,6 +1640,11 @@ class public auto ansi StmtOptimizer
 			end if
 		elseif le::Tokens::get_Count() >= 2 then
 			if (le::Tokens::get_Item(0) is VarTok) or (le::Tokens::get_Item(0) is UsingTok) then
+				
+				if !#expr(le::Tokens::get_Item(1) is Ident) then
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", le::Tokens::get_Item(1)::Value))
+				end if
+
 				return new InfVarAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), _
 					RExpr = eop::Optimize(asss::RExp), IsUsing = le::Tokens::get_Item(0) is UsingTok}
 			else
@@ -1528,8 +1656,8 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method private Stmt checkAssign(var stm as Stmt, var b as boolean&)
-		var re as Expr = new Expr()
-		var le as Expr = new Expr()
+		var re as Expr = new Expr() {Line = stm::Line}
+		var le as Expr = new Expr() {Line = stm::Line}
 		var i as integer = -1
 		var len as integer = --stm::Tokens::get_Count() 
 		var assind as integer = 0
@@ -1655,6 +1783,12 @@ class public auto ansi StmtOptimizer
 		end if
 		
 		tmpstm = checkImport(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+
+		tmpstm = checkEmbed(stm, ref compb)
 		if compb then
 			stm = tmpstm
 			return stm
@@ -1918,12 +2052,6 @@ class public auto ansi StmtOptimizer
 			return stm
 		end if
 
-		tmpstm = checkEmbed(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-
 		tmpstm = checkLabel(stm, ref compb)
 		if compb then
 			stm = tmpstm
@@ -2043,7 +2171,10 @@ class public auto ansi StmtOptimizer
 			stm = tmpstm
 			return stm
 		end if
-		
+
+		StreamUtils::WriteLine(string::Empty)
+		StreamUtils::WriteError(stm::Line, PFlags::CurPath, "This statement is not of a supported form!")
+
 		return stm
 	end method
 

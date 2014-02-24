@@ -21,20 +21,25 @@ namespace Extra.Tasks
 
 		method public hidebysig virtual boolean Execute()
 			haderrs = false
+			var w = new Action<of CompilerMsg>(WarnH)
+			var e = new Action<of CompilerMsg>(ErrorH)
 
 			try
 				_InputFile = _InputFile ?? new ITaskItem[0]
 				if _InputFile[l] > 0 then
 					
-					StreamUtils::Init()
-					StreamUtils::add_WarnH(new Action<of CompilerMsg>(WarnH()))
-					StreamUtils::add_ErrorH(new Action<of CompilerMsg>(ErrorH()))
+					//StreamUtils::Init()
+					StreamUtils::add_WarnH(w)
+					StreamUtils::add_ErrorH(e)
 		
 					Program::Invoke(new string[] {_InputFile[0]::get_ItemSpec()})
 
 				end if
 			catch ex as Exception
 				get_Log()::LogWarningFromException(ex)
+			finally
+				StreamUtils::remove_WarnH(w)
+				StreamUtils::remove_ErrorH(e)
 			end try
 			return !haderrs
 		end method

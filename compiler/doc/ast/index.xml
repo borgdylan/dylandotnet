@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.3.3.1">
+    <Assembly Name="tokenizer.AST" Version="11.3.4.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -31,9 +31,6 @@
         </Attribute>
         <Attribute>
           <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.0", FrameworkDisplayName=".NET Framework 4")</AttributeName>
@@ -215,6 +212,7 @@
       <Type Name="NewarrTok" Kind="Class" />
       <Type Name="NewCallTok" Kind="Class" />
       <Type Name="NewTok" Kind="Class" />
+      <Type Name="NonExprToken" Kind="Class" />
       <Type Name="ObjInitCallTok" Kind="Class" />
       <Type Name="OffTok" Kind="Class" />
       <Type Name="OfTok" Kind="Class" />
@@ -248,6 +246,7 @@
       <Type Name="UptoTok" Kind="Class" />
       <Type Name="UsingTok" Kind="Class" />
       <Type Name="ValInRefTok" Kind="Class" />
+      <Type Name="ValueToken" Kind="Class" />
       <Type Name="VarTok" Kind="Class" />
       <Type Name="VerTok" Kind="Class" />
       <Type Name="WarningTok" Kind="Class" />

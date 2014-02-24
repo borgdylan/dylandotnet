@@ -681,6 +681,15 @@ class public auto ansi beforefieldinit Evaluator
 				AsmFactory::PopFlg = mctok::PopFlg
 				Helpers::EmitMetCall(mcmetinf, mcisstatic)
 				AsmFactory::PopFlg = false
+
+				var oa as ObsoleteAttribute = Helpers::GetObsolete(mcmetinf)
+				if oa != null then
+					if oa::get_IsError() then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Method '{0}' in the class '{1}' is obsolete: {2}.", mcmetinf::get_Name(), mcmetinf::get_DeclaringType()::ToString(), oa::get_Message()))
+					else
+						StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Method '{0}' in the class '{1}' is obsolete: {2}.", mcmetinf::get_Name(), mcmetinf::get_DeclaringType()::ToString(), oa::get_Message()))
+					end if
+				end if
 			end if
 			Helpers::BaseFlg = false
 			if !mctok::PopFlg then

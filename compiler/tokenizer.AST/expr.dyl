@@ -20,10 +20,10 @@ class public auto ansi Expr
 	end method
 
 	method public void AddToken(var toktoadd as Token)
-		Tokens::Add(toktoadd)
-		if Tokens::get_Count() = 0 then
+		if Tokens::get_Count() == 0 then
 			Line = toktoadd::Line
 		end if
+		Tokens::Add(toktoadd)
 	end method
 
 	method public void RemToken(var ind as integer)

@@ -162,6 +162,14 @@ class public auto ansi static StreamUtils
 	end method
 
 	[method: ComVisible(false)]
+	method public static void WriteWarnLine(var line as integer, var file as string, var msg as string)
+		ErrorWriteLine(c"\nWARNING: " + msg + " at line " + $string$line + " in file: " + file)
+		if _WarnH != null then
+			_WarnH::Invoke(new CompilerMsg(line,file,msg))
+		end if
+	end method
+
+	[method: ComVisible(false)]
 	method public static void Terminate()
 		if TerminateOnError then
 			CloseInS()

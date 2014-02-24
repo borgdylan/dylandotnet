@@ -103,8 +103,12 @@
 			<InfoLines Include="ver $(ReleaseVersion)" />
 			<InfoLines Condition=" '$(DebugSymbols)' == 'true' " Include="#undef DEBUG" />
 			<InfoLines Condition=" '$(DefineConstants)' != '' " Include="#define %(DefineConsts.Identity)" />
-			<InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' " Include="#embed &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
-			<InfoLines  Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != '' " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
+			
+			<InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' and '%(ManifestResourceWithNoCulture.LogicalName)' != '%(ManifestResourceWithNoCulture.LogicalName)' " Include="#embed &quot;&quot; = &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
+			<InfoLines  Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != '' and '%(ManifestNonResxWithNoCultureOnDisk.LogicalName)' != '' " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.LogicalName)&quot; = &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
+			
+			<InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' and '%(ManifestResourceWithNoCulture.LogicalName)' == '' " Include="#embed &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
+			<InfoLines  Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != ''  and '%(ManifestNonResxWithNoCultureOnDisk.LogicalName)' == ''  " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
 			<FileWrites Include="msbuild.dyl" />
 		</ItemGroup>
 		<WriteLinesToFile  File="msbuild.dyl" Lines="@(InfoLines)" Overwrite="True" />
