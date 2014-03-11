@@ -1073,19 +1073,29 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 				AsmFactory::Type02 = Loader::LoadClass("System.Type")
 			elseif tok is DefaultCallTok then
+				var dftok as DefaultCallTok = $DefaultCallTok$tok
+				typ2 = Helpers::CommitEvalTTok(dftok::Name)
+				if typ2 == null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", dftok::Name::Value))
+				end if
+
 				if emt then
 					//default section
-					var dftok as DefaultCallTok = $DefaultCallTok$tok
-					typ2 = Helpers::CommitEvalTTok(dftok::Name)
-					if typ2 = null then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", dftok::Name::Value))
+					var loc as integer
+					if SymTable::TempVTMap::Contains(typ2) then
+						loc = SymTable::TempVTMap::get_Item(typ2)
+					else
+						ILEmitter::DeclVar(string::Empty, typ2)
+						ILEmitter::LocInd++
+						loc = ILEmitter::LocInd
+						SymTable::TempVTMap::Add(typ2, loc)
 					end if
-					ILEmitter::DeclVar(string::Empty, typ2)
-					ILEmitter::LocInd++
-					ILEmitter::EmitLdloca(ILEmitter::LocInd)
+						
+					ILEmitter::EmitLdloca(loc)
 					ILEmitter::EmitInitobj(typ2)
-					ILEmitter::EmitLdloc(ILEmitter::LocInd)	
+					ILEmitter::EmitLdloc(loc)	
 				end if
+
 				AsmFactory::Type02 = typ2
 			elseif tok is MeTok then
 				if emt then

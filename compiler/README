@@ -1,7 +1,6 @@
-LIBRARIES - LISTS AND LICENSES - FOR BOTH DYLAN.NET(SOURCE INCLUDED) AND MONO LIBRARIES(SOURCES FROM www.mono-project.com OR GIT/BZR repositories) PRESENT AS SOURCE AND/OR BINARY
+LIBRARIES - LISTS AND LICENSES - FOR BOTH DYLAN.NET(SOURCE INCLUDED) AND OTHER LIBRARIES PRESENT AS SOURCE AND/OR BINARY
 
-This software ie. the dylan.NET compiler and all the libraries whose dylan.NET sources are present here are all under the GNU LGPLv3 as written in the COPYING file. All .dll libraries that are not built by the dylan.NET compilation process are from the Mono Project and are  under the MIT/X11 license as explained in the mono sources and in the mono-class directory in these sources.
-If you are reading this from a tarball, you will not find the mono library sources. Go to launchpad.net/dylandotnet and check out the full code repository and look in the the mono-class directory for the sources.
+This software ie. the dylan.NET compiler and all the libraries whose dylan.NET sources are present here are all under the GNU LGPLv3 as written in the COPYING file.
 
 List of compiled libraries(GNU LGPL v3):
 dnr.dll
@@ -13,24 +12,16 @@ dnc.exe
 dnu.dll
 pc2cd.exe
 pc2dn.exe
-
-List of compiled libraries(GNU AGPL v3):
-web.dll
+resproc.exe
+Extra.Tasks.dll
 
 List of Mono libraries required to build dylan.NET(MIT/X11):
 mscorlib.dll
-System.Configuration.dll
 System.dll
 System.Core.dll
-System.Data.dll
-System.DataSetExtensions.dll
-System.Xml.dll
-System.Xml.Linq.dll
 
 The IKVM.Reflection.dll was written by Jeroen Frijters and is part of IKVM.NET
-The C5.Mono.dll was written by Sestoft,Kokholm and Nielsen of the IT Universoty of Copenhagen.
-
-Not all of the latter are actually required to build the system but all of them are included here in the sources to facilitate further additions that use them by someone other than me and to help programmers wanting to use dylan.NET with the core set of libraries. These were originally obtained from a  monocharge tarball and their license and sources is enclosed in the mono-class directory.
+The C5.dll was written by Sestoft,Kokholm and Nielsen of the IT University of Copenhagen.
 
 COMPILING DYLAN.NET
 

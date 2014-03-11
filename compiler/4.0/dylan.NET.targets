@@ -49,8 +49,6 @@
 	
 	<PropertyGroup>
 		<InputFile Condition=" '$(InputFile)' == '' ">$(AssemblyName).dyl</InputFile>
-		<DNCommand Condition=" '$(TargetFrameworkVersion)' == 'v2.0' or '$(TargetFrameworkVersion)' == 'v3.5' ">dylandotnet</DNCommand>
-		<DNCommand Condition=" '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' ">dylandotnet4</DNCommand>
 	</PropertyGroup>
 	
 	<ItemGroup>
@@ -58,6 +56,7 @@
 		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' " Include="NET_3_5" />
 		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' " Include="NET_4_0" />
 		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.5' " Include="NET_4_5" />
+		<NETDefines Condition=" '$(TargetFrameworkIdentifier)' == '.NETPortable' " Include="PORTABLE" />
 	</ItemGroup>
 	
 	<ItemGroup>

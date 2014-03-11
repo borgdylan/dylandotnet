@@ -782,7 +782,7 @@ class public auto ansi ExprOptimizer
 		var state as boolean = true
 
 		for k = i upto j
-			// TODO : do implementation
+			//REVIEW: do implementation
 		 	//StreamUtils::WriteWarn(exp::Line, PFlags::CurPath, "Expressions should not be empty!")
 			var tok = exp::Tokens::get_Item(k)
 			if state then
