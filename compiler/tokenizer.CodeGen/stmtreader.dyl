@@ -133,6 +133,10 @@ class public auto ansi StmtReader
 		AsmFactory::CurnInhTyp = inhtyp
 			
 		if ti2 == null then
+			if ILEmitter::InterfaceFlg and (clss::ClassName::Value notlike "^I(.)*$") then
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Interface class names should start with the letter 'I'!")
+			end if
+
 			if !AsmFactory::isNested then
 				AsmFactory::CurnTypName = clss::ClassName::Value
 				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value, clssparams, inhtyp)

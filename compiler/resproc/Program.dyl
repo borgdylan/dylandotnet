@@ -10,13 +10,15 @@ namespace dylan.NET.ResProc
 
 	class public auto ansi static ResProc
 
-		field private static boolean UseResx
+		field private static integer Mode
 		field private static Action<of Msg> _WarnH
 		field private static List<of string> Outs
+		field private static string NS
 
 		method public static void Init()
-			UseResx = true
+			Mode = 0
 			Outs = new List<of string>()
+			NS = string::Empty
 		end method
 
 		method private static void ResProc()
@@ -193,8 +195,8 @@ namespace dylan.NET.ResProc
 
 		method private static void EmitResource(var pth as string)
 			if File::Exists(pth) then
-				using rr = #ternary{UseResx ? $IResourceWriter$#expr(new ResXResourceWriter(Path::ChangeExtension(pth, ".resx"))), new ResourceWriter(Path::ChangeExtension(pth, ".resources"))}
-					using sr = new StreamReader(pth)
+				using rr = #ternary{Mode == 0 ? $IResourceWriter$#expr(new ResXResourceWriter(Path::ChangeExtension(pth, ".resx"))), new ResourceWriter(Path::ChangeExtension(pth, ".resources"))}
+					using sr = new StreamReader(pth,true)
 						var sentinel = false
 						var lin as integer = 0
 						do while !sr::get_EndOfStream()
@@ -243,7 +245,82 @@ namespace dylan.NET.ResProc
 							rr::AddResource("$empty$", string::Empty)
 						end if
 					end using
-					Outs::Add(#ternary{UseResx ? Path::ChangeExtension(pth, ".resx"), Path::ChangeExtension(pth, ".resources")})
+					Outs::Add(#ternary{Mode == 0 ? Path::ChangeExtension(pth, ".resx"), Path::ChangeExtension(pth, ".resources")})
+				end using
+			else
+				WriteWarn(0, pth, string::Format("File '{0}' does not exist, ignored!!!", pth))
+			end if
+		end method
+
+		method private static void EmitDesigner(var pth as string)
+			if File::Exists(pth) then
+				using sw = new StreamWriter(Path::ChangeExtension(pth, ".designer.dyl"))
+					using sr = new StreamReader(pth,true)
+						var lin as integer = 0
+						var cls = pth::Split(new char[] {'.'})[0]
+
+						sw::WriteLine("namespace " + #ternary {NS == string::Empty ? "Resources" , NS})
+						sw::WriteLine(c"\n	class public auto ansi static " + cls)
+
+						sw::WriteLine(c"\n		field private static System.Resources.ResourceManager resman")
+						sw::WriteLine(c"\n		method private static void " + cls + "()")
+						sw::WriteLine("			resman = new System.Resources.ResourceManager(gettype " + cls + ")")
+						sw::WriteLine(c"		end method\n")
+
+						do while !sr::get_EndOfStream()
+							var line as string[] = StringParser(sr::ReadLine())
+							lin++
+							if line[l] >= 3 then
+								if line[0] notlike "//(.)*" then
+									line[2] = #ternary {line[2]::StartsWith("c") ? ProcessString(line[2]::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'})), line[2]::Trim(new char[] {c'\q'})}
+
+									if line[1] == "string" then
+										sw::WriteLine(c"		property public static string " + line[0])
+										sw::WriteLine("			get")
+										sw::WriteLine(c"				return resman::GetString(\q" + line[0] + c"\q)")
+										sw::WriteLine("			end get")
+										sw::WriteLine(c"		end property\n")
+									elseif line[1] == "file" then
+										if File::Exists(line[2]) then
+											sw::WriteLine(c"		property public static byte[] " + line[0])
+											sw::WriteLine("			get")
+											sw::WriteLine(c"				return $byte[]$resman::GetObject(\q" + line[0] + c"\q)")
+											sw::WriteLine("			end get")
+											sw::WriteLine(c"		end property\n")
+										else
+											WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
+										end if
+									elseif line[1] == "stream" then
+										if File::Exists(line[2]) then
+											sw::WriteLine(c"		property public static System.IO.Stream " + line[0])
+											sw::WriteLine("			get")
+											sw::WriteLine(c"				return resman::GetStream(\q" + line[0] + c"\q)")
+											sw::WriteLine("			end get")
+											sw::WriteLine(c"		end property\n")
+										else
+											WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
+										end if
+									elseif line[1] == "image" then
+										if File::Exists(line[2]) then
+											sw::WriteLine(c"		property public static System.Drawing.Bitmap " + line[0])
+											sw::WriteLine("			get")
+											sw::WriteLine(c"				return $System.Drawing.Bitmap$resman::GetObject(\q" + line[0] + c"\q)")
+											sw::WriteLine("			end get")
+											sw::WriteLine(c"		end property\n")
+										else
+											WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
+										end if
+									else
+										WriteWarn(lin, pth, string::Format("Resource type '{0}' was not recognized, ignored!!!", line[1]))
+									end if
+								end if
+							end if
+						end do
+
+						sw::WriteLine("	end class")
+						sw::WriteLine(c"\nend namespace")
+					end using
+					Outs::Add(Path::ChangeExtension(pth, ".designer.dyl"))
 				end using
 			else
 				WriteWarn(0, pth, string::Format("File '{0}' does not exist, ignored!!!", pth))
@@ -265,14 +342,25 @@ namespace dylan.NET.ResProc
 						Console::WriteLine("Usage: resproc ([options] <input-file-name>+)*")	
 						Console::WriteLine("Options:")
 						Console::WriteLine("   -resx : Emit resources in .resx format")
+						Console::WriteLine("   -designer : Emit a dylan.NET class for resource access")
 						Console::WriteLine("   -resources : Emit resources in .resources format")
+						Console::WriteLine("   -ns : Set root namespace")
 						Console::WriteLine("   -h : View this help message")
 					elseif args[i] == "-resx" then
-						UseResx = true
+						Mode = 0
 					elseif args[i] == "-resources" then
-						UseResx = false
+						Mode = 1
+					elseif args[i] == "-designer" then
+						Mode = 2
+					elseif args[i] == "-ns" then
+						i++
+						NS = args[i]
 					else
-						EmitResource(args[i])
+						if Mode == 2 then
+							EmitDesigner(args[i])
+						else
+							EmitResource(args[i])
+						end if
 					end if
 				end for
 			end if
@@ -286,4 +374,4 @@ namespace dylan.NET.ResProc
 	
 	end class
 
-end namespace	
+end namespace

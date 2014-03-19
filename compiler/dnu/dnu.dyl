@@ -30,6 +30,8 @@ import System.Reactive.Linq
 import dylan.NET.Utils
 import dylan.NET
 
+#include "Messages.designer.dyl"
+
 namespace dylan.NET.Utils
 	#include "consts.dyl"
 	#include "xmlu.dyl"

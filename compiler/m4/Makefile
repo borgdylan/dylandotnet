@@ -116,7 +116,7 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing autohe
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing automake-1.13
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.3.2.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.3.2.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.3.3.1\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.3.4.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.3.4.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.3.3.1\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 ECHO_C = 
 ECHO_N = -n
@@ -139,10 +139,10 @@ NUNITPC_LIBS = -r:/usr/lib/cli/nunit.core-2.6/nunit.core.dll -r:/usr/lib/cli/nun
 PACKAGE = dylandotnet
 PACKAGE_BUGREPORT = borgdylan@hotmail.com
 PACKAGE_NAME = dylandotnet
-PACKAGE_STRING = dylandotnet 11.3.2.1
+PACKAGE_STRING = dylandotnet 11.3.4.1
 PACKAGE_TARNAME = dylandotnet
 PACKAGE_URL = 
-PACKAGE_VERSION = 11.3.2.1
+PACKAGE_VERSION = 11.3.4.1
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 

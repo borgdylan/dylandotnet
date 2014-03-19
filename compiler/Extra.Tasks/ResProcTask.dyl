@@ -12,6 +12,7 @@ namespace Extra.Tasks
 		
 		property public autogen ITaskItem[] ResxInputs
 		property public autogen ITaskItem[] ResourcesInputs
+		property public autogen string NS
 
 		[property: Output()]
 		property public autogen ITaskItem[] Outputs
@@ -28,6 +29,15 @@ namespace Extra.Tasks
 			return i::get_ItemSpec()
 		end method
 
+		method private boolean ExtractED(var i as ITaskItem)
+			var b as boolean = false
+			if boolean::TryParse(i::GetMetadata("EmitDesigner"), ref b) then
+				return b
+			else
+				return false
+			end if
+		end method
+
 		method private ITaskItem Pack(var i as string)
 			return new TaskItem(i)
 		end method
@@ -38,8 +48,9 @@ namespace Extra.Tasks
 				ResProc::add_WarnH(new Action<of Msg>(WarnH))
 				var b as IEnumerable<of string> = Enumerable::Concat<of string>(new string[] {"-resx"}, Enumerable::Select<of ITaskItem, string>(_ResxInputs ?? new ITaskItem[0], new Func<of ITaskItem, string>(Extract)))
 				var c as IEnumerable<of string> = Enumerable::Concat<of string>(new string[] {"-resources"}, Enumerable::Select<of ITaskItem, string>(_ResourcesInputs ?? new ITaskItem[0], new Func<of ITaskItem, string>(Extract)))
+				var d as IEnumerable<of string> = Enumerable::Concat<of string>(new string[] {"-designer"}, Enumerable::Select<of ITaskItem, string>(Enumerable::Where<of ITaskItem>(_ResxInputs ?? new ITaskItem[0], new Func<of ITaskItem, boolean>(ExtractED)), new Func<of ITaskItem, string>(Extract)))
 
-				var o as IEnumerable<of string> = ResProc::Invoke(Enumerable::ToArray<of string>(Enumerable::Concat<of string>(b, c)))
+				var o as IEnumerable<of string> = ResProc::Invoke(Enumerable::ToArray<of string>(Enumerable::Concat<of string>(new string[] {"-ns", _NS ?? "Resources"} ,Enumerable::Concat<of string>(b, Enumerable::Concat<of string>(c, d)))))
 				set_Outputs(Enumerable::ToArray<of ITaskItem>(Enumerable::Select<of string, ITaskItem>(o, new Func<of string, ITaskItem>(Pack))))
 
 			catch ex as Exception

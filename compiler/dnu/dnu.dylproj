@@ -56,6 +56,7 @@
     <Compile Include="parseu.dyl" />
     <Compile Include="keyboard.dyl" />
     <Compile Include="consts.dyl" />
+    <Compile Include="Messages.designer.dyl" />
   </ItemGroup>
   <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
@@ -64,7 +65,9 @@
     <None Include="winapi.dyl" />
   </ItemGroup>
   <ItemGroup>
-    <ResScript Include="Messages.dylres" />
+    <ResScript Include="Messages.dylres">
+      <EmitDesigner>True</EmitDesigner>
+    </ResScript>
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

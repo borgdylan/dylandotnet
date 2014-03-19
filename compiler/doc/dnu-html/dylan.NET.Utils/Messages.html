@@ -1,0 +1,2168 @@
+<html>
+  <head>
+    <title>dylan.NET.Utils.Messages</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">dnu</a> : <a href="index.html">dylan.NET.Utils Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Utils.Messages">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Utils.Messages:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Utils.Messages:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Utils.Messages:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:dylan.NET.Utils.Messages">Messages  Class</h1>
+    <p class="Summary" id="T:dylan.NET.Utils.Messages:Summary">
+      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+    </p>
+    <div>
+      <h2>Syntax</h2>
+      <div class="Signature" id="T:dylan.NET.Utils.Messages:Signature">public static class  <b>Messages</b></div>
+    </div>
+    <div class="Remarks" id="T:dylan.NET.Utils.Messages:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:dylan.NET.Utils.Messages:Docs:Remarks">
+        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:dylan.NET.Utils.Messages:Docs:Version Information">
+        <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h2 class="Section">Public Properties</h2>
+        <div class="SectionBox" id="Public Properties">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg1">Msg1</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg10">Msg10</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg11">Msg11</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg12">Msg12</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg13">Msg13</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg14">Msg14</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg15">Msg15</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg16">Msg16</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg17">Msg17</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg18">Msg18</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg19">Msg19</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg2">Msg2</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg20">Msg20</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg21">Msg21</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg22">Msg22</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg23">Msg23</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg24">Msg24</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg25">Msg25</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg26">Msg26</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg27">Msg27</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg28">Msg28</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg29">Msg29</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg3">Msg3</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg30">Msg30</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg31">Msg31</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg32">Msg32</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg33">Msg33</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg34">Msg34</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg35">Msg35</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg36">Msg36</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg37">Msg37</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg38">Msg38</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg39">Msg39</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg4">Msg4</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg40">Msg40</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg41">Msg41</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg42">Msg42</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg43">Msg43</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg44">Msg44</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg45">Msg45</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg46">Msg46</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg47">Msg47</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg48">Msg48</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg49">Msg49</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg5">Msg5</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg50">Msg50</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg51">Msg51</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg52">Msg52</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg53">Msg53</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg54">Msg54</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg55">Msg55</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg56">Msg56</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg57">Msg57</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg58">Msg58</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg59">Msg59</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg6">Msg6</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg60">Msg60</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg7">Msg7</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg8">Msg8</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:dylan.NET.Utils.Messages.Msg9">Msg9</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:dylan.NET.Utils.Messages:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="P:dylan.NET.Utils.Messages.Msg1">Msg1 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg1:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg1</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg1:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg1:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg1:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg10">Msg10 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg10:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg10</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg10:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg10:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg10:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg11">Msg11 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg11:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg11</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg11:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg11:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg11:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg12">Msg12 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg12:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg12</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg12:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg12:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg12:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg13">Msg13 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg13:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg13</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg13:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg13:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg13:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg14">Msg14 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg14:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg14</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg14:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg14:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg14:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg15">Msg15 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg15:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg15</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg15:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg15:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg15:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg16">Msg16 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg16:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg16</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg16:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg16:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg16:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg17">Msg17 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg17:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg17</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg17:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg17:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg17:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg18">Msg18 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg18:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg18</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg18:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg18:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg18:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg19">Msg19 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg19:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg19</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg19:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg19:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg19:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg2">Msg2 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg2:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg2</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg2:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg2:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg2:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg20">Msg20 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg20:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg20</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg20:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg20:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg20:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg21">Msg21 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg21:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg21</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg21:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg21:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg21:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg22">Msg22 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg22:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg22</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg22:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg22:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg22:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg23">Msg23 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg23:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg23</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg23:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg23:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg23:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg24">Msg24 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg24:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg24</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg24:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg24:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg24:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg25">Msg25 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg25:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg25</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg25:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg25:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg25:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg26">Msg26 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg26:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg26</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg26:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg26:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg26:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg27">Msg27 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg27:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg27</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg27:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg27:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg27:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg28">Msg28 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg28:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg28</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg28:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg28:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg28:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg29">Msg29 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg29:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg29</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg29:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg29:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg29:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg3">Msg3 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg3:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg3</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg3:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg3:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg3:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg30">Msg30 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg30:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg30</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg30:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg30:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg30:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg31">Msg31 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg31:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg31</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg31:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg31:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg31:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg32">Msg32 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg32:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg32</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg32:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg32:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg32:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg33">Msg33 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg33:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg33</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg33:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg33:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg33:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg34">Msg34 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg34:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg34</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg34:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg34:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg34:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg35">Msg35 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg35:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg35</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg35:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg35:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg35:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg36">Msg36 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg36:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg36</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg36:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg36:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg36:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg37">Msg37 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg37:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg37</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg37:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg37:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg37:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg38">Msg38 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg38:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg38</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg38:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg38:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg38:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg39">Msg39 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg39:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg39</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg39:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg39:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg39:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg4">Msg4 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg4:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg4</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg4:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg4:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg4:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg40">Msg40 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg40:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg40</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg40:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg40:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg40:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg41">Msg41 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg41:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg41</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg41:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg41:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg41:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg42">Msg42 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg42:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg42</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg42:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg42:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg42:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg43">Msg43 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg43:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg43</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg43:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg43:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg43:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg44">Msg44 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg44:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg44</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg44:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg44:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg44:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg45">Msg45 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg45:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg45</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg45:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg45:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg45:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg46">Msg46 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg46:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg46</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg46:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg46:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg46:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg47">Msg47 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg47:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg47</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg47:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg47:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg47:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg48">Msg48 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg48:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg48</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg48:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg48:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg48:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg49">Msg49 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg49:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg49</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg49:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg49:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg49:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg5">Msg5 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg5:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg5</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg5:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg5:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg5:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg50">Msg50 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg50:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg50</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg50:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg50:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg50:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg51">Msg51 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg51:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg51</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg51:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg51:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg51:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg52">Msg52 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg52:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg52</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg52:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg52:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg52:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg53">Msg53 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg53:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg53</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg53:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg53:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg53:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg54">Msg54 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg54:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg54</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg54:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg54:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg54:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg55">Msg55 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg55:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg55</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg55:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg55:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg55:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg56">Msg56 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg56:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg56</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg56:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg56:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg56:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg57">Msg57 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg57:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg57</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg57:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg57:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg57:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg58">Msg58 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg58:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg58</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg58:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg58:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg58:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg59">Msg59 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg59:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg59</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg59:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg59:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg59:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg6">Msg6 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg6:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg6</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg6:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg6:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg6:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg60">Msg60 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg60:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg60</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg60:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg60:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg60:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg7">Msg7 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg7:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg7</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg7:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg7:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg7:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg8">Msg8 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg8:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg8</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg8:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg8:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg8:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:dylan.NET.Utils.Messages.Msg9">Msg9 Property</h3>
+        <blockquote id="P:dylan.NET.Utils.Messages.Msg9:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>Msg9</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:dylan.NET.Utils.Messages.Msg9:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg9:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:dylan.NET.Utils.Messages.Msg9:Version Information">
+            <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

@@ -50,6 +50,10 @@ class public auto ansi abstract interface IHello3
 	method public hidebysig virtual abstract newslot void Hello()
 end class
 
+class public auto ansi abstract interface HelloInterf
+	method public hidebysig virtual abstract newslot void Hello()
+end class
+
 class public auto ansi HelloClass implements IHello, IHello2, IHello3
 	
 	property public hidebysig virtual final newslot autogen integer MyInt

@@ -72,7 +72,7 @@
 	
 	<Target Name="ProcessResScripts" Inputs="@(ResScript);@(ResInput)" Outputs="@(ProcScripts)">
 		<Message Text="Compiling all Resource Scripts (.dylres) into .resx format."/>
-		<ResProcTask ResxInputs="@(ResScript)">
+		<ResProcTask ResxInputs="@(ResScript)" NS="$(RootNamespace)">
 			<!--<Output TaskParameter="Outputs" ItemName="EmbeddedResource" />-->
 			<Output TaskParameter="Outputs" ItemName="FileWrites" />
 		</ResProcTask>
