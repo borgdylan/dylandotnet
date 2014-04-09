@@ -353,7 +353,7 @@ class public auto ansi StmtReader
 
 		if (mtssnamstr = AsmFactory::CurnTypName) or (mtssnamstr like "^ctor\d*$") then
 			StreamUtils::WriteLine("	Adding Constructor: " + mtssnamstr)
-			var paramstyps as IKVM.Reflection.Type[] = #ternary {mtss::Params[l] == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}			
+			var paramstyps as IKVM.Reflection.Type[] = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}			
 			AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(Helpers::ProcessMethodAttrs(mtss::Attrs), CallingConventions::Standard, paramstyps)
 			AsmFactory::InitConstr()
 			
@@ -372,7 +372,7 @@ class public auto ansi StmtReader
 //			else
 				SymTable::AddCtor(paramstyps, AsmFactory::CurnConB)
 //			end if
-			if mtss::Params[l] != 0 then
+			if mtss::Params::get_Count() != 0 then
 				Helpers::PostProcessParamsConstr(mtss::Params)
 			end if
 			AsmFactory::InCtorFlg = true
@@ -389,7 +389,7 @@ class public auto ansi StmtReader
 			var nrgenparams = 0
 			
 			if !#expr(mtss::MethodName is GenericMethodNameTok) then
-				paramstyps = #ternary {mtss::Params[l] == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
+				paramstyps = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 				mipt = SymTable::FindProtoMet(mtssnamstr, paramstyps)
 			end if
 			
@@ -407,7 +407,7 @@ class public auto ansi StmtReader
 				
 				if ILEmitter::PInvokeFlg then
 					
-					paramstyps = #ternary {mtss::Params[l] == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
+					paramstyps = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 					rettyp = Helpers::CommitEvalTTok(mtss::RetTyp)
 					if rettyp = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", mtss::RetTyp::Value))
@@ -419,15 +419,17 @@ class public auto ansi StmtReader
 					
 					if mtss::MethodName is GenericMethodNameTok then
 						var paramdefs = #expr($GenericMethodNameTok$mtss::MethodName)::Params
-						var genparams = new string[paramdefs[l]]
-						for i = 0 upto --paramdefs[l]
-							genparams[i] = paramdefs[i]::Value
+						var genparams = new string[paramdefs::get_Count()]
+						var i = -1
+						foreach pd in paramdefs
+							i++
+							genparams[i] = pd::Value
 						end for
 						SymTable::SetMetGenParams(genparams, AsmFactory::CurnMetB::DefineGenericParameters(genparams))
-						nrgenparams = paramdefs[l]
+						nrgenparams = paramdefs::get_Count()
 					end if
 					
-					paramstyps = #ternary {mtss::Params[l] == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
+					paramstyps = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 					rettyp = Helpers::CommitEvalTTok(mtss::RetTyp)
 					if rettyp = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", mtss::RetTyp::Value))
@@ -474,7 +476,7 @@ class public auto ansi StmtReader
 			end if
 			
 			if !ILEmitter::ProtoFlg then
-				if mtss::Params[l] != 0 then
+				if mtss::Params::get_Count() != 0 then
 					Helpers::PostProcessParams(mtss::Params)
 				end if
 			end if
@@ -804,7 +806,7 @@ class public auto ansi StmtReader
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + prss::PropertyTyp::Value + "' is not defined.")
 		end if
 
-		var paramstyps as IKVM.Reflection.Type[] = #ternary {prss::Params[l] == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(prss::Params)}
+		var paramstyps as IKVM.Reflection.Type[] = #ternary {prss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(prss::Params)}
 
 		var prssnamstr as string = prss::PropertyName::Value
 		var prssnamarr as C5.IList<of string> = ParseUtils::StringParserL(prssnamstr, ".")

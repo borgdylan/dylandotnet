@@ -260,7 +260,7 @@ namespace dylan.NET.ResProc
 						var cls = pth::Split(new char[] {'.'})[0]
 
 						sw::WriteLine("namespace " + #ternary {NS == string::Empty ? "Resources" , NS})
-						sw::WriteLine(c"\n	class public auto ansi static " + cls)
+						sw::WriteLine(c"\n	class private auto ansi static " + cls)
 
 						sw::WriteLine(c"\n		field private static System.Resources.ResourceManager resman")
 						sw::WriteLine(c"\n		method private static void " + cls + "()")
@@ -275,14 +275,14 @@ namespace dylan.NET.ResProc
 									line[2] = #ternary {line[2]::StartsWith("c") ? ProcessString(line[2]::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'})), line[2]::Trim(new char[] {c'\q'})}
 
 									if line[1] == "string" then
-										sw::WriteLine(c"		property public static string " + line[0])
+										sw::WriteLine(c"		property assembly static string " + line[0])
 										sw::WriteLine("			get")
 										sw::WriteLine(c"				return resman::GetString(\q" + line[0] + c"\q)")
 										sw::WriteLine("			end get")
 										sw::WriteLine(c"		end property\n")
 									elseif line[1] == "file" then
 										if File::Exists(line[2]) then
-											sw::WriteLine(c"		property public static byte[] " + line[0])
+											sw::WriteLine(c"		property assembly static byte[] " + line[0])
 											sw::WriteLine("			get")
 											sw::WriteLine(c"				return $byte[]$resman::GetObject(\q" + line[0] + c"\q)")
 											sw::WriteLine("			end get")
@@ -292,7 +292,7 @@ namespace dylan.NET.ResProc
 										end if
 									elseif line[1] == "stream" then
 										if File::Exists(line[2]) then
-											sw::WriteLine(c"		property public static System.IO.Stream " + line[0])
+											sw::WriteLine(c"		property assembly static System.IO.Stream " + line[0])
 											sw::WriteLine("			get")
 											sw::WriteLine(c"				return resman::GetStream(\q" + line[0] + c"\q)")
 											sw::WriteLine("			end get")
@@ -302,7 +302,7 @@ namespace dylan.NET.ResProc
 										end if
 									elseif line[1] == "image" then
 										if File::Exists(line[2]) then
-											sw::WriteLine(c"		property public static System.Drawing.Bitmap " + line[0])
+											sw::WriteLine(c"		property assembly static System.Drawing.Bitmap " + line[0])
 											sw::WriteLine("			get")
 											sw::WriteLine(c"				return $System.Drawing.Bitmap$resman::GetObject(\q" + line[0] + c"\q)")
 											sw::WriteLine("			end get")
@@ -329,7 +329,7 @@ namespace dylan.NET.ResProc
 
 		method public static IEnumerable<of string> Invoke(var args as string[])
 		
-			Console::WriteLine("dylan.NET Resource Processor v. 11.3.4.1 Beta")
+			Console::WriteLine("dylan.NET Resource Processor v. 11.3.5.1 Beta")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2014 Dylan Borg")
 			if args[l] < 1 then

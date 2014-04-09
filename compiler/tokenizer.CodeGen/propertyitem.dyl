@@ -14,7 +14,7 @@ class public auto ansi PropertyItem
 	field public string ExplImplType
 	field public IEnumerable<of Attributes.Attribute> Attrs
 	field public IKVM.Reflection.Type[] ParamTyps
-	field public Expr[] Params
+	field public C5.LinkedList<of Expr> Params
 
 	method public void PropertyItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as PropertyBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)
 		me::ctor()
@@ -25,7 +25,7 @@ class public auto ansi PropertyItem
 		Attrs = attr
 		ExplImplType = expl
 		ParamTyps = IKVM.Reflection.Type::EmptyTypes
-		Params = new Expr[0]
+		Params = new C5.LinkedList<of Expr>()
 	end method
 	
 	method public void PropertyItem()

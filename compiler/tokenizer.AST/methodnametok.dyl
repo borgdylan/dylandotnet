@@ -50,21 +50,21 @@ end class
 
 class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
 
-	field public TypeTok[] Params
+	field public C5.LinkedList<of TypeTok> Params
 
 	method public void GenericMethodNameTok()
 		me::ctor()
-		Params = new TypeTok[0]
+		Params = new C5.LinkedList<of TypeTok>()
 	end method
 
 	method public void GenericMethodNameTok(var value as string)
 		me::ctor(value)
-		Params = new TypeTok[0]
+		Params = new C5.LinkedList<of TypeTok>()
 	end method
 	
 	method public void GenericMethodNameTok(var idt as Ident)
 		me::ctor(idt::Value)
-		Params = new TypeTok[0]
+		Params = new C5.LinkedList<of TypeTok>()
 		_DoNeg = idt::get_DoNeg()
 		_DoNot = idt::get_DoNot()
 		_DoDec = idt::get_DoDec()
@@ -85,14 +85,7 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUn
 
 
 	method public void AddParam(var param as TypeTok)
-		var i as integer = -1
-		var destarr as TypeTok[] = new TypeTok[++Params[l]]
-		do until i = --Params[l]
-			i++
-			destarr[i] = Params[i]
-		end do
-		destarr[Params[l]] = param
-		Params = destarr
+		Params::Add(param)
 	end method
 	
 	property public hidebysig virtual final newslot autogen string OrdOp

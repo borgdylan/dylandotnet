@@ -11,14 +11,14 @@ class public auto ansi PropertyStmt extends Stmt
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident PropertyName
 	field public TypeTok PropertyTyp
-	field public Expr[] Params
+	field public C5.LinkedList<of Expr> Params
 
 	method public void PropertyStmt()
 		me::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		PropertyName = new Ident()
 		PropertyTyp = new TypeTok()
-		Params = new Expr[0]
+		Params = new C5.LinkedList<of Expr>()
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
@@ -26,18 +26,7 @@ class public auto ansi PropertyStmt extends Stmt
 	end method
 
 	method public void AddParam(var paramtoadd as Expr)
-
-		var i as integer = -1
-		var destarr as Expr[] = new Expr[++Params[l]]
-
-		do until i = --Params[l]
-			i++
-			destarr[i] = Params[i]
-		end do
-
-		destarr[Params[l]] = paramtoadd
-		Params = destarr
-
+		Params::Add(paramtoadd)
 	end method
 
 end class

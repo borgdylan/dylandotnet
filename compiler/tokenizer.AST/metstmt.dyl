@@ -11,13 +11,13 @@ class public auto ansi MethodStmt extends Stmt
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public MethodNameTok MethodName
 	field public TypeTok RetTyp
-	field public Expr[] Params
+	field public C5.LinkedList<of Expr> Params
 
 	method public void MethodStmt()
 		me::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		MethodName = new MethodNameTok()
-		Params = new Expr[0]
+		Params = new C5.LinkedList<of Expr>()
 		RetTyp = new TypeTok()
 	end method
 
@@ -26,18 +26,7 @@ class public auto ansi MethodStmt extends Stmt
 	end method
 
 	method public void AddParam(var paramtoadd as Expr)
-
-		var i as integer = -1
-		var destarr as Expr[] = new Expr[++Params[l]]
-
-		do until i = --Params[l]
-			i++
-			destarr[i] = Params[i]
-		end do
-
-		destarr[Params[l]] = paramtoadd
-		Params = destarr
-
+		Params::Add(paramtoadd)
 	end method
 
 end class

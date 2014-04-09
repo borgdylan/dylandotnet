@@ -38,7 +38,7 @@ class public auto ansi Line
 		//sca is false as set by Analyze i.e. set only if setting to true
 		//scla and sca are considered only if ob is true
 		var ob as boolean = false
-		if lc = null then
+		if lc == null then
 			lc = " "
 		end if
 
@@ -58,53 +58,53 @@ class public auto ansi Line
 				ob = true
 				scla = false
 				sca = true
-			elseif cc = "(" then
+			elseif cc == "(" then
 				sca = true
 				ob = true
-			elseif cc = ")" then
+			elseif cc == ")" then
 				sca = true
 				ob = true
-			elseif cc = "{" then
+			elseif cc == "{" then
 				sca = true
 				ob = true
-			elseif cc = "}" then
+			elseif cc == "}" then
 				sca = true
 				ob = true
-			elseif cc = "[" then
+			elseif cc == "[" then
 				sca = true
 				ob = true
-				if lc = "]" then
+				if lc == "]" then
 					scla = false
 				end if
-			elseif cc = "]" then
+			elseif cc == "]" then
 				sca = true
 				ob = PrevChar != "["
-			elseif cc = "," then
+			elseif cc == "," then
 				sca = true
 				ob = true
-			elseif cc = "&" then
+			elseif cc == "&" then
 				sca = true
 				ob = true
-			elseif cc = "*" then
+			elseif cc == "*" then
 				sca = true
 				ob = true
-			elseif cc = "/" then
-				if lc != "/" then
-					sca = true
-					ob = PrevChar != "/"
-				else
-					if PrevChar = "/" then
+			elseif cc == "/" then
+				if lc == "/" then
+					if PrevChar == "/" then
 						ob = false
 					else
 						sca = true
 						scla = false
 						ob = true
 					end if
+				else
+					sca = true
+					ob = PrevChar != "/"
 				end if
-			elseif cc = "|" then
+			elseif cc == "|" then
 				sca = true
 				ob = true
-			elseif cc = "?" then
+			elseif cc == "?" then
 				sca = true
 				if lc == "?" then
 					scla = false
@@ -112,52 +112,52 @@ class public auto ansi Line
 				else
 					ob = PrevChar != "?"
 				end if
-			elseif cc = "$" then
+			elseif cc == "$" then
 				sca = true
 				ob = true
-			elseif cc = "&" then
+			elseif cc == "&" then
 				sca = true
 				ob = true
-			elseif cc = "~" then
+			elseif cc == "~" then
 				sca = true
 				ob = true
-			elseif cc = "=" then
+			elseif cc == "=" then
 				sca = true
-				if lc != "=" then
-					if PrevChar = ">" then
+				if lc == "=" then
+					scla = false
+					ob = !#expr((PrevChar == "!") or (PrevChar == "="))
+				else
+					if PrevChar == ">" then
 						ob = false
-					elseif PrevChar = "<" then
+					elseif PrevChar == "<" then
 						ob = false
-					elseif PrevChar = "!" then
+					elseif PrevChar == "!" then
 						ob = false
-					elseif PrevChar = "=" then
+					elseif PrevChar == "=" then
 						ob = false
 					else
 						ob = true
 					end if
-				else
-					scla = false
-					ob = true
 				end if
-			elseif cc = "!" then
+			elseif cc == "!" then
 				sca = true
 				ob = true
 				if lc == "=" then
 					scla = false
 				end if
-			elseif cc = "<" then
-				if lc = "=" then
+			elseif cc == "<" then
+				if lc == "=" then
 					sca = true
 					scla = false
 					ob = true
 				else
-					if PrevChar = "<" then
+					if PrevChar == "<" then
 						ob = false
-					elseif lc = "<" then
+					elseif lc == "<" then
 						sca = true
 						scla = false
 						ob = true
-					elseif lc = ">" then
+					elseif lc == ">" then
 						sca = true
 						scla = false
 						ob = true
@@ -169,11 +169,11 @@ class public auto ansi Line
 			elseif cc = ">" then
 				sca = true
 				if lc != "=" then
-					if PrevChar = "<" then
+					if PrevChar == "<" then
 						ob = false
-					elseif PrevChar = ">" then
+					elseif PrevChar == ">" then
 						ob = false
-					elseif lc = ">" then
+					elseif lc == ">" then
 						sca = true
 						scla = false
 						ob = true
@@ -184,7 +184,7 @@ class public auto ansi Line
 					scla = false
 					ob = true
 				end if
-			elseif cc = "-" then
+			elseif cc == "-" then
 				sca = true
 				if lc == "-" then
 					scla = false
@@ -195,7 +195,7 @@ class public auto ansi Line
 						scla = false
 					end if
 				end if
-			elseif cc = "+" then
+			elseif cc == "+" then
 				sca = true
 				if lc == "+" then
 					scla = false
@@ -206,10 +206,10 @@ class public auto ansi Line
 						scla = false
 					end if
 				end if
-			elseif cc = c"\t" then
+			elseif cc == c"\t" then
 				sca = false
 				ob = true
-			elseif cc = " " then
+			elseif cc == " " then
 				sca = false
 				ob = true
 			else
@@ -232,7 +232,7 @@ class public auto ansi Line
 		var lachar as string = string::Empty
 		var len as integer = --str::get_Length()
 		
-		var buf as string = string::Empty
+		var buf as StringBuilder = new StringBuilder()
 		var sc as boolean = false
 		var scl as boolean = false
 		var i as integer = -1
@@ -249,9 +249,9 @@ class public auto ansi Line
 				
 				if sc then
 					if buf::get_Length() != 0 then
-						stm::AddToken(new Token() {Value = buf, Line = stm::Line})
+						stm::AddToken(new Token() {Value = buf::ToString(), Line = stm::Line})
 					end if
-					buf = string::Empty
+					buf::Clear()
 				end if
 				
 				sc = false
@@ -262,23 +262,23 @@ class public auto ansi Line
 				
 				if isSep(curchar, lachar, ref sc, ref scl) then
 					if buf::get_Length() != 0 then
-						stm::AddToken(new Token() {Value = buf, Line = stm::Line})
+						stm::AddToken(new Token() {Value = buf::ToString(), Line = stm::Line})
 					end if
-					buf = string::Empty
+					buf::Clear()
 					if sc then
-						buf = buf + curchar
+						buf::Append(curchar)
 					end if
 				else
-					buf = buf + curchar
+					buf::Append(curchar)
 				end if
 			
 			until i == len
 		end if
 		
 		if buf::get_Length() != 0 then
-			stm::AddToken(new Token() {Value = buf, Line = stm::Line})
+			stm::AddToken(new Token() {Value = buf::ToString(), Line = stm::Line})
 		end if
-		buf = string::Empty
+		buf::Clear()
 		
 		return stm
 	

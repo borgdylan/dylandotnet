@@ -182,11 +182,13 @@ class public auto ansi TypeList
 			var mtdinfo as MethodInfo
 			if mn is GenericMethodNameTok then
 				var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
-				var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
-				for i = 0 upto --genparams[l]
-					genparams[i] = Helpers::CommitEvalTTok(gmn::Params[i])
+				var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params::get_Count()]
+				var i = -1
+				foreach gp in gmn::Params
+					i++
+					genparams[i] = Helpers::CommitEvalTTok(gp)
 					if genparams[i] == null then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gmn::Params[i]::ToString(), nam))
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
 					end if
 				end for
 				mtdinfo = ti::GetGenericMethod(nam, genparams, paramst)
@@ -218,11 +220,13 @@ class public auto ansi TypeList
 				if mtdinfo = null then
 					if mn is GenericMethodNameTok then
 						var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
-						var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
-						for i = 0 upto --genparams[l]
-							genparams[i] = Helpers::CommitEvalTTok(gmn::Params[i])
+						var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params::get_Count()]
+						var i = -1
+						foreach gp in gmn::Params
+							i++
+							genparams[i] = Helpers::CommitEvalTTok(gp)
 							if genparams[i] == null then
-								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gmn::Params[i]::ToString(), nam))
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
 							end if
 						end for
 						mtdinfo = Loader::LoadGenericMethod(ti::InhTyp, nam, genparams, paramst)

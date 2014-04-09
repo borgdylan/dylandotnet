@@ -24,6 +24,20 @@ class public auto ansi EqOp extends ConditionalOp
 
 end class
 
+// ===
+class public auto ansi StrictEqOp extends ConditionalOp
+
+	method public void StrictEqOp()
+		me::ctor()
+		PrecNo = 8
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "==="
+	end method
+
+end class
+
 // is
 class public auto ansi IsOp extends ConditionalOp
 
@@ -64,6 +78,20 @@ class public auto ansi NeqOp extends ConditionalOp
 	
 	method public hidebysig virtual string ToString()
 		return "!="
+	end method
+
+end class
+
+// !=
+class public auto ansi StrictNeqOp extends ConditionalOp
+
+	method public void StrictNeqOp()
+		me::ctor()
+		PrecNo = 8
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "!=="
 	end method
 
 end class

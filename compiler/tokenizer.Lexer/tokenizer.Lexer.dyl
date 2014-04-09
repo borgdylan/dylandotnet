@@ -16,6 +16,7 @@
 import System
 import System.IO
 import System.Runtime.InteropServices
+import System.Text
 import dylan.NET
 import dylan.NET.Utils
 import dylan.NET.Tokenizer.AST.Tokens

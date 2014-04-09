@@ -13,7 +13,7 @@ class public auto ansi Lexer
 		var curstmt as Stmt = null
 		var crflag as boolean = false
 		var lfflag as boolean = false
-		var buf as string = string::Empty
+		var buf as StringBuilder = new StringBuilder()
 		var curline as integer = 0
 		var curstmtlen as integer = -1
 		var chr as char = 'a'
@@ -31,18 +31,18 @@ class public auto ansi Lexer
 			end if
 			
 			if !#expr(crflag or lfflag) then
-				buf = buf + $string$chr
+				buf::Append(chr)
 			else
 				if lfflag then
 					curline++
-					curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
+					curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf::ToString())
 					curstmtlen = curstmt::Tokens::get_Count()
 			
 					if curstmtlen != 0 then
 						stmts::AddStmt(curstmt)
 					end if
 			
-					buf = string::Empty
+					buf::Clear()
 					crflag = false
 					lfflag = false
 				end if
@@ -50,7 +50,7 @@ class public auto ansi Lexer
 			
 			if sr::Peek() == -1 then
 				curline++
-				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
+				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf::ToString())
 				curstmtlen = curstmt::Tokens::get_Count()
 			
 				if curstmtlen != 0 then

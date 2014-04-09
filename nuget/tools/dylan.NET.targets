@@ -15,7 +15,14 @@
 		<!--<IntermediateOutputPath>$(MSBuildProjectDirectory)</IntermediateOutputPath>-->
 		<ReleaseVersion Condition=" '$(ReleaseVersion)' == '' ">1.0.0.0</ReleaseVersion>
 		<AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
-		<ImplicitlyExpandTargetFramework Condition="'$(ImplicitlyExpandTargetFramework)' == '' ">true</ImplicitlyExpandTargetFramework>	
+		<ImplicitlyExpandTargetFramework Condition="'$(ImplicitlyExpandTargetFramework)' == '' ">true</ImplicitlyExpandTargetFramework>
+		
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile5'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile6'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile7'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile49'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile78'">true</ComVisibleUsable>
 	</PropertyGroup>
 	
 	<Target Name="CreateManifestResourceNames">
@@ -42,8 +49,6 @@
 	
 	<PropertyGroup>
 		<InputFile Condition=" '$(InputFile)' == '' ">$(AssemblyName).dyl</InputFile>
-		<DNCommand Condition=" '$(TargetFrameworkVersion)' == 'v2.0' or '$(TargetFrameworkVersion)' == 'v3.5' ">dylandotnet</DNCommand>
-		<DNCommand Condition=" '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' ">dylandotnet4</DNCommand>
 	</PropertyGroup>
 	
 	<ItemGroup>
@@ -51,6 +56,7 @@
 		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' " Include="NET_3_5" />
 		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' " Include="NET_4_0" />
 		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.5' " Include="NET_4_5" />
+		<NETDefines Condition=" '$(TargetFrameworkIdentifier)' == '.NETPortable' " Include="PORTABLE" />
 	</ItemGroup>
 	
 	<ItemGroup>
@@ -66,7 +72,7 @@
 	
 	<Target Name="ProcessResScripts" Inputs="@(ResScript);@(ResInput)" Outputs="@(ProcScripts)">
 		<Message Text="Compiling all Resource Scripts (.dylres) into .resx format."/>
-		<ResProcTask ResxInputs="@(ResScript)">
+		<ResProcTask ResxInputs="@(ResScript)" NS="$(RootNamespace)">
 			<!--<Output TaskParameter="Outputs" ItemName="EmbeddedResource" />-->
 			<Output TaskParameter="Outputs" ItemName="FileWrites" />
 		</ResProcTask>
@@ -85,7 +91,7 @@
 			<InfoLines Include="#refasm &quot;%(ReferencePath.FullPath)&quot;" />
 			<InfoLines Condition=" '$(DebugSymbols)' == 'true' " Include="#debug on" />
 			<InfoLines Condition=" '$(AssemblyOriginatorKeyFile)' != '' and $(SignAssembly) == 'true' " Include="#sign &quot;$(AssemblyOriginatorKeyFile)&quot;" />
-			<InfoLines Include="[assembly: System.Runtime.InteropServices.ComVisible(false)]" />
+			<InfoLines Condition=" '$(ComVisibleUsable)' == 'true' " Include="[assembly: System.Runtime.InteropServices.ComVisible(false)]" />
 			<InfoLines Include="[assembly: System.Reflection.AssemblyConfiguration(&quot;$(Configuration)&quot;)]" />
 			<InfoLines Include="[assembly: System.Reflection.AssemblyTitle(&quot;$(AssemblyName)&quot;)]" />
 			<InfoLines Include="[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]" />
@@ -96,8 +102,12 @@
 			<InfoLines Include="ver $(ReleaseVersion)" />
 			<InfoLines Condition=" '$(DebugSymbols)' == 'true' " Include="#undef DEBUG" />
 			<InfoLines Condition=" '$(DefineConstants)' != '' " Include="#define %(DefineConsts.Identity)" />
-			<InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' " Include="#embed &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
-			<InfoLines  Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != '' " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
+			
+			<InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' and '%(ManifestResourceWithNoCulture.LogicalName)' != '%(ManifestResourceWithNoCulture.LogicalName)' " Include="#embed &quot;&quot; = &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
+			<InfoLines  Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != '' and '%(ManifestNonResxWithNoCultureOnDisk.LogicalName)' != '' " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.LogicalName)&quot; = &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
+			
+			<InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' and '%(ManifestResourceWithNoCulture.LogicalName)' == '' " Include="#embed &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
+			<InfoLines  Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != ''  and '%(ManifestNonResxWithNoCultureOnDisk.LogicalName)' == ''  " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
 			<FileWrites Include="msbuild.dyl" />
 		</ItemGroup>
 		<WriteLinesToFile  File="msbuild.dyl" Lines="@(InfoLines)" Overwrite="True" />

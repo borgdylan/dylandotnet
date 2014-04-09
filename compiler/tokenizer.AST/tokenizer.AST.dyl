@@ -15,6 +15,9 @@
 
 import System
 import System.IO
+import System.Collections.Generic
+import System.Linq
+
 import dylan.NET.Utils
 import dylan.NET.Reflection
 import dylan.NET.Tokenizer.AST

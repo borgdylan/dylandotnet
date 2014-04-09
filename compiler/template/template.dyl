@@ -780,7 +780,15 @@ class public auto ansi static Program
 		trylock clko
 			Console::WriteLine("In A TryLock")
 		end lock
-		
+
+		Console::WriteLine("a" == "a")
+		Console::WriteLine("a" === "a")
+		Console::WriteLine("a" === $string$'a')
+
+		Console::WriteLine("ab" == "ab")
+		Console::WriteLine("ab" === ("a" + "b"))
+		Console::WriteLine($object$1 == $object$1)
+		Console::WriteLine($object$1 === $object$1)
 	end method
 
 	method public static string LeaveMet(var x as integer)

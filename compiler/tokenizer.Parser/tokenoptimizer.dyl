@@ -71,6 +71,8 @@ class public auto ansi TokenOptimizer
 			return new ModOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "==" then
 			return new EqOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "===" then
+			return new StrictEqOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "like" then
 			return new LikeOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "!" then
@@ -79,6 +81,8 @@ class public auto ansi TokenOptimizer
 			return new NotOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "!=" then
 			return new NeqOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "!==" then
+			return new StrictNeqOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "notlike" then
 			return new NLikeOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "<>" then

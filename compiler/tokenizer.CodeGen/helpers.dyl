@@ -496,7 +496,7 @@ class public auto ansi static Helpers
 		var typ as IKVM.Reflection.Type = null
 		var temptyp as IKVM.Reflection.Type
 		var gtt as GenericTypeTok
-		var pttoks as TypeTok[] = new TypeTok[0]
+		var pttoks as C5.LinkedList<of TypeTok> = new C5.LinkedList<of TypeTok>()
 
 		if tt is GenericTypeTok then
 
@@ -505,7 +505,7 @@ class public auto ansi static Helpers
 
 			var lop as C5.IList<of IKVM.Reflection.Type> = new C5.LinkedList<of IKVM.Reflection.Type>()
 			
-			var tstr = gtt::Value + "`" + $string$pttoks[l]
+			var tstr = gtt::Value + "`" + $string$pttoks::get_Count()
 			if gtt::RefTyp != null then
 				typ = gtt::RefTyp
 //			elseif Importer::TypeMap::Contains(tstr) then
@@ -521,13 +521,13 @@ class public auto ansi static Helpers
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Type " + tstr + " could not be found!!")
 			end if
 
-			for i = 0 upto --pttoks[l]
-				temptyp = CommitEvalTTok(pttoks[i])
+			foreach pt in pttoks
+				temptyp = CommitEvalTTok(pt)
 				if temptyp == null then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Argument " + pttoks[i]::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Argument " + pt::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
 				end if
 				lop::Add(temptyp)
-			end do
+			end for
 			
 			typ = typ::MakeGenericType(lop::ToArray())
 			Loader::MakeArr = gtt::IsArray
@@ -587,16 +587,14 @@ class public auto ansi static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type[] ProcessParams(var ps as Expr[])
-		var i as integer = -1
+	method public static IKVM.Reflection.Type[] ProcessParams(var ps as IEnumerable<of Expr>)
 		var curp as VarExpr = null
 		var typ as IKVM.Reflection.Type = null
 		
 		var lt = new C5.LinkedList<of IKVM.Reflection.Type>()
 		
-		do until i = --ps[l]
-			i++
-			curp = $VarExpr$ps[i]
+		foreach p in ps
+			curp = $VarExpr$p
 			typ = CommitEvalTTok(curp::VarTyp)
 			if typ = null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curp::VarTyp::Value + "' is not defined or is not accessible.")
@@ -606,19 +604,19 @@ class public auto ansi static Helpers
 				lt::Add(typ)
 			end if
 
-		end do
+		end for
 		return lt::ToArray()
 	end method
 
 	[method: ComVisible(false)]
-	method public static void PostProcessParams(var ps as Expr[])
+	method public static void PostProcessParams(var ps as IEnumerable<of Expr>)
 
 		var i as integer = -1
 		var curp as VarExpr = null
 		
-		do until i = --ps[l]
+		foreach p in ps
 			i++
-			curp = $VarExpr$ps[i]
+			curp = $VarExpr$p
 			var pa as ParameterAttributes = ParameterAttributes::None
 			
 			if curp::Attr != null then
@@ -643,21 +641,21 @@ class public auto ansi static Helpers
 			SymTable::StoreFlg = true
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 			SymTable::StoreFlg = false
-		end do
+		end for
 		
 		SymTable::ParameterCALst::Clear()
 	end method
 
 	[method: ComVisible(false)]
-	method public static void PostProcessParamsConstr(var ps as Expr[])
+	method public static void PostProcessParamsConstr(var ps as IEnumerable<of Expr>)
 
 		var i as integer = -1
 		var curp as VarExpr = null
 		
-		do until i = --ps[l]
+		foreach p in ps
 			i++
-			curp = $VarExpr$ps[i]
-			var pa as ParameterAttributes = ParameterAttributes::None
+			curp = $VarExpr$p
+var pa as ParameterAttributes = ParameterAttributes::None
 			
 			if curp::Attr != null then
 				if curp::Attr is InTok then
@@ -681,7 +679,7 @@ class public auto ansi static Helpers
 			SymTable::StoreFlg = true
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 			SymTable::StoreFlg = false
-		end do
+		end for
 		
 		SymTable::ParameterCALst::Clear()
 	end method
@@ -1056,6 +1054,14 @@ class public auto ansi static Helpers
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '==' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 				end if
 			end if
+		elseif op is StrictEqOp then
+			if emt then
+				if EqSuppFlg then
+					ILEmitter::EmitCeq()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '===' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
+			end if
 		elseif op is NeqOp then
 			if !LeftOp::Equals(AsmFactory::CurnTypB) then
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Inequality", LeftOp, RightOp)
@@ -1073,6 +1079,14 @@ class public auto ansi static Helpers
 					ILEmitter::EmitCneq()
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '!=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+				end if
+			end if
+		elseif op is StrictNeqOp then
+			if emt then
+				if EqSuppFlg then
+					ILEmitter::EmitCneq()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '!==' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 				end if
 			end if
 		elseif op is LikeOp then
@@ -1617,11 +1631,13 @@ class public auto ansi static Helpers
 		else		
 			if mn is GenericMethodNameTok then
 				var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
-				var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
-				for i = 0 upto --genparams[l]
-					genparams[i] = CommitEvalTTok(gmn::Params[i])
+				var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params::get_Count()]
+				var i = -1
+				foreach gp in gmn::Params
+					i++
+					genparams[i] = CommitEvalTTok(gp)
 					if genparams[i] == null then
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gmn::Params[i]::ToString(), name))
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), name))
 					end if
 				end for
 				return Loader::LoadGenericMethod(t, name, genparams, paramtyps)
@@ -1640,11 +1656,13 @@ class public auto ansi static Helpers
 
 		if mn is GenericMethodNameTok then
 			var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
-			var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params[l]]
-			for i = 0 upto --genparams[l]
-				genparams[i] = CommitEvalTTok(gmn::Params[i])
+			var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params::get_Count()]
+			var i = -1
+			foreach gp in gmn::Params
+				i++
+				genparams[i] = CommitEvalTTok(gp)
 				if genparams[i] == null then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gmn::Params[i]::ToString(), nam))
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
 				end if
 			end for
 			meti = SymTable::FindGenMet(nam, genparams, typs)

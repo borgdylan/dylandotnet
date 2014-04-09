@@ -9,7 +9,7 @@
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>template</AssemblyName>
     <UseMSBuildEngine>True</UseMSBuildEngine>
-    <ReleaseVersion>11.3.4.1</ReleaseVersion>
+    <ReleaseVersion>11.3.5.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,8 +36,8 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Numerics" />
-    <Reference Include="C5.Mono">
-      <HintPath>C5.Mono.dll</HintPath>
+    <Reference Include="C5">
+      <HintPath>..\lib\4.0\C5.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

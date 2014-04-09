@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Utils</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>dnu</AssemblyName>
-    <ReleaseVersion>11.3.4.1</ReleaseVersion>
+    <ReleaseVersion>11.3.5.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,7 +56,9 @@
     <Compile Include="parseu.dyl" />
     <Compile Include="keyboard.dyl" />
     <Compile Include="consts.dyl" />
-    <Compile Include="Messages.designer.dyl" />
+    <Compile Include="Messages.designer.dyl">
+      <DependentUpon>Messages.dylres</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
