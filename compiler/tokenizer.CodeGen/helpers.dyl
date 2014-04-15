@@ -372,6 +372,8 @@ class public auto ansi static Helpers
 			return true
 		elseif t::Equals(Loader::LoadClass("System.UInt64")) then
 			return true
+		elseif t::Equals(Loader::LoadClass("System.Char")) then
+			return true
 		elseif t::Equals(Loader::LoadClass("System.Byte")) then
 			return true
 		elseif t::Equals(Loader::LoadClass("System.UInt16")) then
@@ -1349,7 +1351,9 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			end if
 		elseif sink::Equals(Loader::LoadClass("System.UInt64")) then
 			m1 = convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if IsPrimitiveIntegralType(source) then
+				ILEmitter::EmitConvU8(CheckSigned(source))
+			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::LoadClass("System.Int32")) then
@@ -1365,27 +1369,41 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			end if
 		elseif sink::Equals(Loader::LoadClass("System.UInt32")) then
 			m1 = convc::GetMethod("ToUInt32", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if IsPrimitiveIntegralType(source) then
+				ILEmitter::EmitConvOvfU4(CheckSigned(source))
+			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::LoadClass("System.Int16")) then
 			m1 = convc::GetMethod("ToInt16", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if IsPrimitiveIntegralType(source) then
+				if GetPrimitiveNumericSize(source) <= 8 then
+					ILEmitter::EmitConvI2()
+				else
+					ILEmitter::EmitConvOvfI2(CheckSigned(source))
+				end if
+			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::LoadClass("System.UInt16")) then
 			m1 = convc::GetMethod("ToUInt16", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if IsPrimitiveIntegralType(source) then
+				ILEmitter::EmitConvOvfU2(CheckSigned(source))
+			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::LoadClass("System.SByte")) then
 			m1 = convc::GetMethod("ToSByte", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if IsPrimitiveIntegralType(source) then
+				ILEmitter::EmitConvOvfI1(CheckSigned(source))
+			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::LoadClass("System.Byte")) then
 			m1 = convc::GetMethod("ToByte", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if IsPrimitiveIntegralType(source) then
+				ILEmitter::EmitConvOvfU1(CheckSigned(source))
+			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::LoadClass("System.Boolean")) then

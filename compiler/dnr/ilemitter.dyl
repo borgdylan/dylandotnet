@@ -876,7 +876,12 @@ class public auto ansi static ILEmitter
 	method public static void EmitConvI4()
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I4)
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static void EmitConvI2()
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I2)
+	end method
+
 	[method: ComVisible(false)]
 	method public static void EmitConvOvfI4(var s as boolean)
 		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I4, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I4_Un})
@@ -886,7 +891,12 @@ class public auto ansi static ILEmitter
 	method public static void EmitConvI8(var s as boolean)
 		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_I8, IKVM.Reflection.Emit.OpCodes::Conv_U8})
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static void EmitConvU8(var s as boolean)
+		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U8, IKVM.Reflection.Emit.OpCodes::Conv_U8})
+	end method
+
 	[method: ComVisible(false)]
 	method public static void EmitConvOvfI8(var s as boolean)
 		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I8, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I8_Un})
@@ -900,6 +910,26 @@ class public auto ansi static ILEmitter
 	[method: ComVisible(false)]
 	method public static void EmitConvOvfU2(var s as boolean)
 		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U2, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U2_Un})
+	end method
+
+	[method: ComVisible(false)]
+	method public static void EmitConvOvfU4(var s as boolean)
+		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U4, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U4_Un})
+	end method
+
+	[method: ComVisible(false)]
+	method public static void EmitConvOvfI2(var s as boolean)
+		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I2, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I2_Un})
+	end method
+
+	[method: ComVisible(false)]
+	method public static void EmitConvOvfI1(var s as boolean)
+		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I1, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_I1_Un})
+	end method
+
+	[method: ComVisible(false)]
+	method public static void EmitConvOvfU1(var s as boolean)
+		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U1, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U1_Un})
 	end method
 
 	[method: ComVisible(false)]
