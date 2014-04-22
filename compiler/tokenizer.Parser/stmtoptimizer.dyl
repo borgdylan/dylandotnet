@@ -31,6 +31,18 @@ class public auto ansi StmtOptimizer
 		return null
 	end method
 
+	method private Stmt checkRegion(var stm as Stmt, var b as boolean&)
+		b = stm::Tokens::get_Item(0) is RegionTok
+		if b then
+			if stm::Tokens::get_Count() > 2 then
+				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+			end if
+
+			return new RegionStmt() {Line = stm::Line, Name = stm::Tokens::get_Item(1)}
+		end if
+		return null
+	end method
+
 	method private Stmt checkSign(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is SignTok
 		if b then
@@ -804,7 +816,12 @@ class public auto ansi StmtOptimizer
 				if b then
 					return new EndAddStmt() {Line = stm::Line}
 				end if
-				
+
+				b = stm::Tokens::get_Item(1) is RegionTok
+				if b then
+					return new EndRegionStmt() {Line = stm::Line}
+				end if
+
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Unexpected token '{0}' after 'end'!", stm::Tokens::get_Item(1)::ToString()))
 			end if
 		end if
@@ -2047,6 +2064,12 @@ class public auto ansi StmtOptimizer
 		end if
 
 		tmpstm = checkSign(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+
+		tmpstm = checkRegion(stm, ref compb)
 		if compb then
 			stm = tmpstm
 			return stm

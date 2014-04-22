@@ -7,6 +7,15 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi Character extends Token
+
+	method public void Character(var value as string)
+		me::ctor(value)
+	end method
+	
+	method public void Character()
+		ctor(string::Empty)
+	end method
+
 end class
 
 // ]

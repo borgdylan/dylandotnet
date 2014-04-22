@@ -261,74 +261,79 @@ class public auto ansi ObjInit
 end class
 
 class public auto ansi static Generics
-	method public static T Func<of T>(var o as T)
-		return o
-	end method
-	
-	method public static Tuple<of T, U> Func<of T, U>(var o as T, var o2 as U)
-		return Tuple::Create<of T, U>(o, o2)
-	end method
-	
-	method public static T[] Func2<of T>(var ie as IEnumerable<of T>)
-		return Enumerable::ToArray<of T>(ie)
-	end method
 
-	//[method: Obsolete("Fake Obsolete", true)]
-	method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T)
-		var destarr as T[] = new T[++srcarr[l]]
+	#region genericfuncs
 
-		for i = 0 upto --srcarr[l]
-			destarr[i] = srcarr[i]
-		end for
-
-		destarr[srcarr[l]] = eltoadd
-
-		return destarr
-	end method
-	
-	method public static T[] remelem<of T>(var srcarr as T[], var ind as integer)
-		var destarr as T[] = new T[--srcarr[l]]
-
-		for i = 0 upto --ind
-			destarr[i] = srcarr[i]
-		end for
-		for i = ++ind upto --srcarr[l]
-			destarr[--i] = srcarr[i]
-		end for
+		method public static T Func<of T>(var o as T)
+			return o
+		end method
 		
-		return destarr
-	end method
-	
-	method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T )
-		return addelem<of T>(addelem<of T>(srcarr, eltoadd), eltoadd2)
-	end method
-	
-	method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var ind as integer)
-		return remelem<of T>(addelem<of T>(srcarr, eltoadd), ind)
-	end method
-	
-	method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T, var ind as integer)
-		return remelem<of T>(addelem<of T>(srcarr, eltoadd, eltoadd2), ind)
-	end method
-	
-	method public static void exch<of T>(var p1 as T&, var p2 as T&)
-		var temp = p1
-		p1 = p2
-		p2 = temp
-	end method
-	
-	method public static T getdefault<of T>()
-		return default T
-	end method
-	
-	method public static string ToString<of T>(var t as T)
-		return Func<of T>(t)::ToString()
-	end method
-	
-	method public static Type GetType<of T>(var t as T)
-		return t::GetType()
-	end method
-	
+		method public static Tuple<of T, U> Func<of T, U>(var o as T, var o2 as U)
+			return Tuple::Create<of T, U>(o, o2)
+		end method
+		
+		method public static T[] Func2<of T>(var ie as IEnumerable<of T>)
+			return Enumerable::ToArray<of T>(ie)
+		end method
+
+		//[method: Obsolete("Fake Obsolete", true)]
+		method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T)
+			var destarr as T[] = new T[++srcarr[l]]
+
+			for i = 0 upto --srcarr[l]
+				destarr[i] = srcarr[i]
+			end for
+
+			destarr[srcarr[l]] = eltoadd
+
+			return destarr
+		end method
+		
+		method public static T[] remelem<of T>(var srcarr as T[], var ind as integer)
+			var destarr as T[] = new T[--srcarr[l]]
+
+			for i = 0 upto --ind
+				destarr[i] = srcarr[i]
+			end for
+			for i = ++ind upto --srcarr[l]
+				destarr[--i] = srcarr[i]
+			end for
+			
+			return destarr
+		end method
+		
+		method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T )
+			return addelem<of T>(addelem<of T>(srcarr, eltoadd), eltoadd2)
+		end method
+		
+		method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var ind as integer)
+			return remelem<of T>(addelem<of T>(srcarr, eltoadd), ind)
+		end method
+		
+		method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T, var ind as integer)
+			return remelem<of T>(addelem<of T>(srcarr, eltoadd, eltoadd2), ind)
+		end method
+		
+		method public static void exch<of T>(var p1 as T&, var p2 as T&)
+			var temp = p1
+			p1 = p2
+			p2 = temp
+		end method
+		
+		method public static T getdefault<of T>()
+			return default T
+		end method
+		
+		method public static string ToString<of T>(var t as T)
+			return Func<of T>(t)::ToString()
+		end method
+		
+		method public static Type GetType<of T>(var t as T)
+			return t::GetType()
+		end method
+
+	end #region
+
 end class
 
 class public auto ansi static partial Program
@@ -632,21 +637,23 @@ class public auto ansi static Program
 			end if
 		end remove
 	end event
-	
-	[method: DllImport("libm")]
-	method public pinvokeimpl static double sin(var x as double)
-	
-	[method: DllImport("libctest")]
-	method public pinvokeimpl static integer incr(var x as integer)
-	
-	[method: DllImport("libctest")]
-	method public pinvokeimpl static double cplxmod(var a as double, var b as double)
-	
-	[method: DllImport("libctest")]
-	method public pinvokeimpl static void printpt(var p as point)
-	
-	[method: DllImport("libctest")]
-	method public pinvokeimpl static void incrpt(var p as point&)
+
+	#region "P/Invokes"
+		[method: DllImport("libm")]
+		method public pinvokeimpl static double sin(var x as double)
+		
+		[method: DllImport("libctest")]
+		method public pinvokeimpl static integer incr(var x as integer)
+		
+		[method: DllImport("libctest")]
+		method public pinvokeimpl static double cplxmod(var a as double, var b as double)
+		
+		[method: DllImport("libctest")]
+		method public pinvokeimpl static void printpt(var p as point)
+		
+		[method: DllImport("libctest")]
+		method public pinvokeimpl static void incrpt(var p as point&)
+	end #region	
 
 	[method: STAThread()]
 	method public static void main()

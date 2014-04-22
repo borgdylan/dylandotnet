@@ -963,10 +963,7 @@ class public auto ansi StmtReader
 
 		if stm is RefasmStmt then
 			var rastm as RefasmStmt = $RefasmStmt$stm
-			if rastm::AsmPath::Value like  c"^\q(.)*\q$" then
-				rastm::AsmPath::Value = rastm::AsmPath::Value::Trim(new char[] {c'\q'})
-			end if
-			rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::Value)
+			rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::get_UnquotedValue())
 			
 			if !File::Exists(rastm::AsmPath::Value) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Assembly File '" + rastm::AsmPath::Value + "' does not exist.")
@@ -977,10 +974,7 @@ class public auto ansi StmtReader
 			Importer::AddAsm(ILEmitter::Univ::LoadFile(rastm::AsmPath::Value))
 		elseif stm is RefstdasmStmt then
 			var rsastm as RefstdasmStmt = $RefstdasmStmt$stm
-			if rsastm::AsmPath::Value like c"^\q(.)*\q$" then
-				rsastm::AsmPath::Value = rsastm::AsmPath::Value::Trim(new char[] {c'\q'})
-			end if
-			rsastm::AsmPath::Value = Path::Combine(Importer::AsmBasePath, ParseUtils::ProcessMSYSPath(rsastm::AsmPath::Value))
+			rsastm::AsmPath::Value = Path::Combine(Importer::AsmBasePath, ParseUtils::ProcessMSYSPath(rsastm::AsmPath::get_UnquotedValue()))
 			
 			if !File::Exists(rsastm::AsmPath::Value) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Assembly File '" + rsastm::AsmPath::Value + "' does not exist.")
@@ -991,10 +985,7 @@ class public auto ansi StmtReader
 			Importer::AddAsm(ILEmitter::Univ::LoadFile(rsastm::AsmPath::Value))
 		elseif stm is SignStmt then
 			var sstm as SignStmt = $SignStmt$stm
-			if sstm::KeyPath::Value like  c"^\q(.)*\q$" then
-				sstm::KeyPath::Value = sstm::KeyPath::Value::Trim(new char[] {c'\q'})
-			end if
-			sstm::KeyPath::Value = ParseUtils::ProcessMSYSPath(sstm::KeyPath::Value)
+			sstm::KeyPath::Value = ParseUtils::ProcessMSYSPath(sstm::KeyPath::get_UnquotedValue())
 			
 			if File::Exists(sstm::KeyPath::Value) then
 				StreamUtils::Write("Setting Signing Key: ")
@@ -1007,31 +998,20 @@ class public auto ansi StmtReader
 			end if
 		elseif stm is EmbedStmt then
 			var sstm as EmbedStmt = $EmbedStmt$stm
-			if sstm::Path::Value like  c"^\q(.)*\q$" then
-				sstm::Path::Value = sstm::Path::Value::Trim(new char[] {c'\q'})
-			end if
-			if sstm::LogicalName::Value like  c"^\q(.)*\q$" then
-				sstm::LogicalName::Value = sstm::LogicalName::Value::Trim(new char[] {c'\q'})
-			end if
-			sstm::Path::Value = ParseUtils::ProcessMSYSPath(sstm::Path::Value)
+			sstm::Path::Value = ParseUtils::ProcessMSYSPath(sstm::Path::get_UnquotedValue())
 			
 			if File::Exists(sstm::Path::Value) then
 				StreamUtils::Write("Adding Resource: ")
 				StreamUtils::WriteLine(sstm::Path::Value)
-				SymTable::ResLst::Add(Tuple::Create<of string, string>(sstm::Path::Value, sstm::LogicalName::Value))
+				SymTable::ResLst::Add(Tuple::Create<of string, string>(sstm::Path::Value, sstm::LogicalName::get_UnquotedValue()))
 			else
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Resource File '" + sstm::Path::Value + "' does not exist.")
 			end if
 		elseif stm is ImportStmt then
 			var istm as ImportStmt = $ImportStmt$stm
-			if istm::NS::Value like c"^\q(.)*\q$" then
-				istm::NS::Value = istm::NS::Value::Trim(new char[] {c'\q'})
-			end if
-			if istm::Alias::Value::get_Length() != 0 then
-				if istm::Alias::Value like c"^\q(.)*\q$" then
-					istm::Alias::Value = istm::Alias::Value::Trim(new char[] {c'\q'})
-				end if
-			end if
+			istm::NS::Value = istm::NS::get_UnquotedValue()
+			istm::Alias::Value = istm::Alias::get_UnquotedValue()
+			
 			if istm::Alias::Value::get_Length() == 0 then
 				StreamUtils::Write("Importing Namespace: ")
 				StreamUtils::WriteLine(istm::NS::Value)
@@ -1042,9 +1022,7 @@ class public auto ansi StmtReader
 			end if
 		elseif stm is LocimportStmt then
 			var listm as LocimportStmt = $LocimportStmt$stm
-			if listm::NS::Value like c"^\q(.)*\q$" then
-				listm::NS::Value = listm::NS::Value::Trim(new char[] {c'\q'})
-			end if
+			listm::NS::Value = listm::NS::get_UnquotedValue()
 			
 			StreamUtils::Write("Importing Namespace: ")
 			StreamUtils::WriteLine(listm::NS::Value)
@@ -1211,10 +1189,7 @@ class public auto ansi StmtReader
 			end if
 		elseif stm is NSStmt then
 			var nss as NSStmt = $NSStmt$stm
-			if nss::NS::Value like c"^\q(.)*\q$" then
-				nss::NS::Value = nss::NS::Value::Trim(new char[] {c'\q'})
-			end if
-			AsmFactory::PushNS(nss::NS::Value)
+			AsmFactory::PushNS(nss::NS::get_UnquotedValue())
 		elseif stm is EndNSStmt then
 			AsmFactory::PopNS()
 		elseif stm is AssignStmt then
@@ -1350,6 +1325,8 @@ class public auto ansi StmtReader
 		elseif stm is GotoStmt then
 			ILEmitter::EmitBr(Helpers::GetLbl(#expr($GotoStmt$stm)::LabelName::Value))
 		elseif stm is CommentStmt then
+		elseif stm is RegionStmt then
+		elseif stm is EndRegionStmt then
 		elseif stm is ThrowStmt then
 			var trostmt as ThrowStmt = $ThrowStmt$stm
 			if trostmt::RExp != null then
@@ -1412,16 +1389,10 @@ class public auto ansi StmtReader
 			SymTable::UnDef(#expr($HUndefStmt$stm)::Symbol::Value)
 		elseif stm is WarningStmt then
 			var wstm as WarningStmt = $WarningStmt$stm
-			if wstm::Msg::Value like c"^\q(.)*\q$" then
-				wstm::Msg::Value = wstm::Msg::Value::Trim(new char[] {c'\q'})
-			end if
-			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, wstm::Msg::Value)
+			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, wstm::Msg::get_UnquotedValue())
 		elseif stm is ErrorStmt then
 			var wstm as ErrorStmt = $ErrorStmt$stm
-			if wstm::Msg::Value like c"^\q(.)*\q$" then
-				wstm::Msg::Value = wstm::Msg::Value::Trim(new char[] {c'\q'})
-			end if
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, wstm::Msg::Value)
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, wstm::Msg::get_UnquotedValue())
 		elseif stm is ParameterAttrStmt then
 			var pas as ParameterAttrStmt = $ParameterAttrStmt$stm
 			SymTable::AddParamCA(pas::Index,AttrStmtToCAB(pas))

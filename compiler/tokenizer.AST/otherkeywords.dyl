@@ -740,6 +740,14 @@ class public auto ansi ExprTok extends Token
 
 end class
 
+class public auto ansi RegionTok extends NonExprToken
+
+	method public hidebysig virtual string ToString()
+		return "#region"
+	end method
+
+end class
+
 class public auto ansi MeTok extends ValueToken implements IUnaryOperatable, IConvable
 
 	field public boolean _Conv

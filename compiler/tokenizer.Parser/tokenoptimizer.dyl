@@ -250,6 +250,8 @@ class public auto ansi TokenOptimizer
 			return new EmbedTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "#expr" then
 			return new ExprTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "#region" then
+			return new RegionTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "import" then
 			PFlags::NoOptFlag = true
 			return new ImportTok() {Line = tok::Line, Value = tok::Value}

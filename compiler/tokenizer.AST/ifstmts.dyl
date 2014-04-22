@@ -34,58 +34,71 @@ end class
 class public auto ansi EndIfStmt extends Stmt
 end class
 
-//conditional compilation variants
+#region "conditional compilation variants"
+	class public auto ansi HCondCompStmt extends Stmt
+	end class
 
-class public auto ansi HCondCompStmt extends Stmt
-end class
+	class public auto ansi HIfStmt extends HCondCompStmt
 
-class public auto ansi HIfStmt extends HCondCompStmt
+		field public Expr Exp
 
-	field public Expr Exp
+		method public void HIfStmt()
+			me::ctor()
+			Exp = new Expr()
+		end method
 
-	method public void HIfStmt()
+	end class
+
+	class public auto ansi HElseIfStmt extends HCondCompStmt
+
+		field public Expr Exp
+
+		method public void HElseIfStmt()
+			me::ctor()
+			Exp = new Expr()
+		end method
+
+	end class
+
+	class public auto ansi HElseStmt extends HCondCompStmt
+	end class
+
+	class public auto ansi EndHIfStmt extends HCondCompStmt
+	end class
+
+	class public auto ansi HDefineStmt extends Stmt
+
+		field public Ident Symbol
+
+		method public void HDefineStmt()
+			me::ctor()
+			Symbol = new Ident()
+		end method
+
+	end class
+
+	class public auto ansi HUndefStmt extends Stmt
+
+		field public Ident Symbol
+
+		method public void HUndefStmt()
+			me::ctor()
+			Symbol = new Ident()
+		end method
+
+	end class
+end #region
+
+class public auto ansi RegionStmt extends Stmt
+
+	field public Token Name
+
+	method public void RegionStmt()
 		me::ctor()
-		Exp = new Expr()
+		Name = new Token()
 	end method
 
 end class
 
-class public auto ansi HElseIfStmt extends HCondCompStmt
-
-	field public Expr Exp
-
-	method public void HElseIfStmt()
-		me::ctor()
-		Exp = new Expr()
-	end method
-
+class public auto ansi EndRegionStmt extends Stmt
 end class
-
-class public auto ansi HElseStmt extends HCondCompStmt
-end class
-
-class public auto ansi EndHIfStmt extends HCondCompStmt
-end class
-
-class public auto ansi HDefineStmt extends Stmt
-
-	field public Ident Symbol
-
-	method public void HDefineStmt()
-		me::ctor()
-		Symbol = new Ident()
-	end method
-
-end class
-
-class public auto ansi HUndefStmt extends Stmt
-
-	field public Ident Symbol
-
-	method public void HUndefStmt()
-		me::ctor()
-		Symbol = new Ident()
-	end method
-
-end class
-

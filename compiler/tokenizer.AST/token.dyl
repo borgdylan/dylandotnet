@@ -6,10 +6,15 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Token
+class public auto ansi beforefieldinit Token
 
 	field public string Value
 	field public integer Line
+	field private static char[] q
+
+	method private static void Token()
+		q = new char[] {c'\q'}
+	end method
 
 	method public void Token(var value as string)
 		me::ctor()
@@ -22,8 +27,17 @@ class public auto ansi Token
 	end method
 	
 	method public hidebysig virtual string ToString()
-		return Value
+		return #ternary {Value === null ? string::Empty , Value}
 	end method
+
+	property public string UnquotedValue
+		get
+			if string::IsNullOrEmpty(Value) then
+				return string::Empty
+			end if
+			return #ternary { Value like c"^\q(.)*\q$" ? Value::Trim(q) , Value }
+		end get
+	end property
 
 end class
 
