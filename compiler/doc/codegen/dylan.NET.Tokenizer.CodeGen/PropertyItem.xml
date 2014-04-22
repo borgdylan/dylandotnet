@@ -81,11 +81,11 @@
       </Docs>
     </Member>
     <Member MemberName="Params">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr[] Params;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Exprs.Expr[] Params" />
+      <MemberSignature Language="C#" Value="public C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Exprs.Expr&gt; Params;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Exprs.Expr&gt; Params" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr[]</ReturnType>
+        <ReturnType>C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Exprs.Expr&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

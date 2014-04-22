@@ -161,11 +161,11 @@
       </Docs>
     </Member>
     <Member MemberName="Params">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[] Params;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[] Params" />
+      <MemberSignature Language="C#" Value="public C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt; Params;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt; Params" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[]</ReturnType>
+        <ReturnType>C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

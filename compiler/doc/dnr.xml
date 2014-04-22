@@ -383,11 +383,25 @@
             <summary>Emits the 'conv.i' opcode.</summary>
             <remarks>Useful in preparing indices to work with array opcodes.</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI4">
             <summary>Emits the 'conv.i4' opcode.</summary>
             <remarks>Useful to convert array lengths returned by 'ldlen' to more appropriate format.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI8(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfI1(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfI2(System.Boolean)">
             <param name="s">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -402,7 +416,17 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfU1(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfU2(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfU4(System.Boolean)">
             <param name="s">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -412,6 +436,11 @@
             <remarks>Useful in preparing indices to work with array opcodes.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvU2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvU8(System.Boolean)">
+            <param name="s">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

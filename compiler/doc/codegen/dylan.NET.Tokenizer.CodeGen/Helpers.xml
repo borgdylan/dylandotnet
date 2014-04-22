@@ -1081,8 +1081,8 @@
       </Docs>
     </Member>
     <Member MemberName="PostProcessParams">
-      <MemberSignature Language="C#" Value="public static void PostProcessParams (dylan.NET.Tokenizer.AST.Exprs.Expr[] ps);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void PostProcessParams(class dylan.NET.Tokenizer.AST.Exprs.Expr[] ps) cil managed" />
+      <MemberSignature Language="C#" Value="public static void PostProcessParams (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Exprs.Expr&gt; ps);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PostProcessParams(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Exprs.Expr&gt; ps) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1093,7 +1093,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ps" Type="dylan.NET.Tokenizer.AST.Exprs.Expr[]" />
+        <Parameter Name="ps" Type="System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Exprs.Expr&gt;" />
       </Parameters>
       <Docs>
         <param name="ps">To be added.</param>
@@ -1102,8 +1102,8 @@
       </Docs>
     </Member>
     <Member MemberName="PostProcessParamsConstr">
-      <MemberSignature Language="C#" Value="public static void PostProcessParamsConstr (dylan.NET.Tokenizer.AST.Exprs.Expr[] ps);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void PostProcessParamsConstr(class dylan.NET.Tokenizer.AST.Exprs.Expr[] ps) cil managed" />
+      <MemberSignature Language="C#" Value="public static void PostProcessParamsConstr (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Exprs.Expr&gt; ps);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PostProcessParamsConstr(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Exprs.Expr&gt; ps) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1114,7 +1114,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ps" Type="dylan.NET.Tokenizer.AST.Exprs.Expr[]" />
+        <Parameter Name="ps" Type="System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Exprs.Expr&gt;" />
       </Parameters>
       <Docs>
         <param name="ps">To be added.</param>
@@ -1340,8 +1340,8 @@
       </Docs>
     </Member>
     <Member MemberName="ProcessParams">
-      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type[] ProcessParams (dylan.NET.Tokenizer.AST.Exprs.Expr[] ps);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type[] ProcessParams(class dylan.NET.Tokenizer.AST.Exprs.Expr[] ps) cil managed" />
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type[] ProcessParams (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Exprs.Expr&gt; ps);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type[] ProcessParams(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Exprs.Expr&gt; ps) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1352,7 +1352,7 @@
         <ReturnType>IKVM.Reflection.Type[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ps" Type="dylan.NET.Tokenizer.AST.Exprs.Expr[]" />
+        <Parameter Name="ps" Type="System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Exprs.Expr&gt;" />
       </Parameters>
       <Docs>
         <param name="ps">To be added.</param>

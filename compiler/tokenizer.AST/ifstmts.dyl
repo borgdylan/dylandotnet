@@ -5,34 +5,35 @@
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
+#region "normal variants"
+	class public auto ansi IfStmt extends Stmt
 
-class public auto ansi IfStmt extends Stmt
+		field public Expr Exp
 
-	field public Expr Exp
+		method public void IfStmt()
+			me::ctor()
+			Exp = new Expr()
+		end method
 
-	method public void IfStmt()
-		me::ctor()
-		Exp = new Expr()
-	end method
+	end class
 
-end class
+	class public auto ansi ElseIfStmt extends Stmt
 
-class public auto ansi ElseIfStmt extends Stmt
+		field public Expr Exp
 
-	field public Expr Exp
+		method public void ElseIfStmt()
+			me::ctor()
+			Exp = new Expr()
+		end method
 
-	method public void ElseIfStmt()
-		me::ctor()
-		Exp = new Expr()
-	end method
+	end class
 
-end class
+	class public auto ansi ElseStmt extends Stmt
+	end class
 
-class public auto ansi ElseStmt extends Stmt
-end class
-
-class public auto ansi EndIfStmt extends Stmt
-end class
+	class public auto ansi EndIfStmt extends Stmt
+	end class
+end #region
 
 #region "conditional compilation variants"
 	class public auto ansi HCondCompStmt extends Stmt

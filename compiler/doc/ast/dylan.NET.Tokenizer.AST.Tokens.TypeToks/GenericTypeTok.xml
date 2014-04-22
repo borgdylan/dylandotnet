@@ -41,12 +41,12 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public GenericTypeTok (string value, dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[] params);" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string value, class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[] params) cil managed" />
+      <MemberSignature Language="C#" Value="public GenericTypeTok (string value, System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt; params);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string value, class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt; params) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
-        <Parameter Name="params" Type="dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[]" />
+        <Parameter Name="params" Type="System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt;" />
       </Parameters>
       <Docs>
         <param name="value">To be added.</param>
@@ -101,11 +101,11 @@
       </Docs>
     </Member>
     <Member MemberName="Params">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[] Params;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[] Params" />
+      <MemberSignature Language="C#" Value="public C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt; Params;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt; Params" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok[]</ReturnType>
+        <ReturnType>C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Holds the type tokens for the type parameters that have to be substituted into this type.</summary>

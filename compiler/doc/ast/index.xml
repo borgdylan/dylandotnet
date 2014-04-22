@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.3.4.2">
+    <Assembly Name="tokenizer.AST" Version="11.3.5.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -84,6 +84,7 @@
       <Type Name="EndMethodStmt" Kind="Class" />
       <Type Name="EndNSStmt" Kind="Class" />
       <Type Name="EndPropStmt" Kind="Class" />
+      <Type Name="EndRegionStmt" Kind="Class" />
       <Type Name="EndRemoveStmt" Kind="Class" />
       <Type Name="EndSetStmt" Kind="Class" />
       <Type Name="EndTryStmt" Kind="Class" />
@@ -128,6 +129,7 @@
       <Type Name="PropertyStmt" Kind="Class" />
       <Type Name="RefasmStmt" Kind="Class" />
       <Type Name="RefstdasmStmt" Kind="Class" />
+      <Type Name="RegionStmt" Kind="Class" />
       <Type Name="ReturnStmt" Kind="Class" />
       <Type Name="ScopeStmt" Kind="Class" />
       <Type Name="SignStmt" Kind="Class" />
@@ -227,6 +229,7 @@
       <Type Name="RefasmTok" Kind="Class" />
       <Type Name="RefstdasmTok" Kind="Class" />
       <Type Name="RefTok" Kind="Class" />
+      <Type Name="RegionTok" Kind="Class" />
       <Type Name="RemoveTok" Kind="Class" />
       <Type Name="ReturnTok" Kind="Class" />
       <Type Name="ScopeTok" Kind="Class" />
@@ -359,6 +362,8 @@
       <Type Name="OrOp" Kind="Class" />
       <Type Name="ShlOp" Kind="Class" />
       <Type Name="ShrOp" Kind="Class" />
+      <Type Name="StrictEqOp" Kind="Class" />
+      <Type Name="StrictNeqOp" Kind="Class" />
       <Type Name="SubOp" Kind="Class" />
       <Type Name="XnorOp" Kind="Class" />
       <Type Name="XorOp" Kind="Class" />

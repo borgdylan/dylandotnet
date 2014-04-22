@@ -582,12 +582,12 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.PostProcessParams(dylan.NET.Tokenizer.AST.Exprs.Expr[])">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.PostProcessParams(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Exprs.Expr})">
             <param name="ps">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.PostProcessParamsConstr(dylan.NET.Tokenizer.AST.Exprs.Expr[])">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.PostProcessParamsConstr(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Exprs.Expr})">
             <param name="ps">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -653,7 +653,7 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessParams(dylan.NET.Tokenizer.AST.Exprs.Expr[])">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessParams(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Exprs.Expr})">
             <param name="ps">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>

@@ -609,6 +609,24 @@
         <remarks>Useful in preparing indices to work with array opcodes.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitConvI2">
+      <MemberSignature Language="C#" Value="public static void EmitConvI2 ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvI2() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitConvI4">
       <MemberSignature Language="C#" Value="public static void EmitConvI4 ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitConvI4() cil managed" />
@@ -630,6 +648,48 @@
     <Member MemberName="EmitConvI8">
       <MemberSignature Language="C#" Value="public static void EmitConvI8 (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitConvI8(bool s) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvOvfI1">
+      <MemberSignature Language="C#" Value="public static void EmitConvOvfI1 (bool s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvOvfI1(bool s) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvOvfI2">
+      <MemberSignature Language="C#" Value="public static void EmitConvOvfI2 (bool s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvOvfI2(bool s) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -690,9 +750,51 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitConvOvfU1">
+      <MemberSignature Language="C#" Value="public static void EmitConvOvfU1 (bool s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvOvfU1(bool s) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitConvOvfU2">
       <MemberSignature Language="C#" Value="public static void EmitConvOvfU2 (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitConvOvfU2(bool s) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvOvfU4">
+      <MemberSignature Language="C#" Value="public static void EmitConvOvfU4 (bool s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvOvfU4(bool s) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -743,6 +845,27 @@
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvU8">
+      <MemberSignature Language="C#" Value="public static void EmitConvU8 (bool s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvU8(bool s) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
