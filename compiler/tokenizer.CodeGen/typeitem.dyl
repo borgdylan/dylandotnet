@@ -15,7 +15,7 @@ class public auto ansi partial TypeItem
 	field public C5.IList<of IKVM.Reflection.Type> Interfaces
 	field public TypeBuilder TypeBldr
 	field public EnumBuilder EnumBldr
-	field public C5.IList<of MethodItem> Methods
+	field public C5.HashDictionary<of string, C5.IList<of MethodItem> > Methods
 	field public C5.IList<of CtorItem> Ctors
 	field public C5.IList<of TypeItem> Types
 	field public C5.HashDictionary<of string, FieldItem> Fields
@@ -29,7 +29,7 @@ class public auto ansi partial TypeItem
 		EnumBldr = bld3
 		InhTyp = null
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
-		Methods = new C5.LinkedList<of MethodItem>()
+		Methods = new C5.HashDictionary<of string, C5.IList<of MethodItem> >()
 		Types = new C5.LinkedList<of TypeItem>()
 		Ctors = new C5.LinkedList<of CtorItem>()
 		Fields = new C5.HashDictionary<of string, FieldItem>()
@@ -59,7 +59,11 @@ class public auto ansi partial TypeItem
 	end method
 
 	method public void AddMethod(var m as MethodItem)
-		Methods::Add(m)
+		if !Methods::Contains(m::Name) then
+			Methods::Add(m::Name, new C5.LinkedList<of MethodItem>())
+		end if
+
+		Methods::get_Item(m::Name)::Add(m)
 	end method
 
 	method public void AddCtor(var c as CtorItem)
@@ -79,8 +83,12 @@ class public auto ansi partial TypeItem
 	end method
 
 	method public MethodBuilder GetMethod(var nam as string, var paramst as IKVM.Reflection.Type[])
+		if !Methods::Contains(nam) then
+			return null
+		end if
+
 		var mil as MILambdas2 = new MILambdas2(nam, paramst)
-		var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(Methods,new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
+		var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(Methods::get_Item(nam),new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
 		var matches as MethodItem[] = Enumerable::ToArray<of MethodItem>(lom2)
 		
 		if matches[l] == 0 then
@@ -96,10 +104,14 @@ class public auto ansi partial TypeItem
 	end method
 	
 	method public MethodInfo GetGenericMethod(var nam as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[])
+		if !Methods::Contains(nam) then
+			return null
+		end if
+
 		var mil as MILambdas2 = new MILambdas2(nam, genparams[l])
 		var mil2 as MILambdas2 = new MILambdas2(genparams)
 		var mil3 as MILambdas2 = new MILambdas2(nam, paramst)
-		var glom as IEnumerable<of MethodInfo> = Enumerable::Where<of MethodInfo>(Enumerable::Select<of MethodItem, MethodInfo>(Enumerable::Where<of MethodItem>(Methods , new Func<of MethodItem,boolean>(mil::GenericMtdFilter())), new Func<of MethodItem,MethodInfo>(mil2::InstGenMtd())), new Func<of MethodInfo, boolean>(mil3::DetermineIfCandidate2()))
+		var glom as IEnumerable<of MethodInfo> = Enumerable::Where<of MethodInfo>(Enumerable::Select<of MethodItem, MethodInfo>(Enumerable::Where<of MethodItem>(Methods::get_Item(nam) , new Func<of MethodItem,boolean>(mil::GenericMtdFilter())), new Func<of MethodItem,MethodInfo>(mil2::InstGenMtd())), new Func<of MethodInfo, boolean>(mil3::DetermineIfCandidate2()))
 		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(glom)
 		
 		if matches[l] == 0 then
@@ -115,8 +127,12 @@ class public auto ansi partial TypeItem
 	end method
 	
 	method public MethodItem GetProtoMethod(var nam as string, var paramst as IKVM.Reflection.Type[])
+		if !Methods::Contains(nam) then
+			return null
+		end if
+
 		var mil as MILambdas2 = new MILambdas2(nam, paramst)
-		var lom2 as MethodItem[] = Enumerable::ToArray<of MethodItem>(Enumerable::Where<of MethodItem>(Methods,new Func<of MethodItem,boolean>(mil::DetermineIfProtoCandidate())))
+		var lom2 as MethodItem[] = Enumerable::ToArray<of MethodItem>(Enumerable::Where<of MethodItem>(Methods::get_Item(nam),new Func<of MethodItem,boolean>(mil::DetermineIfProtoCandidate())))
 		if lom2[l] > 0 then
 			return lom2[0]
 		else

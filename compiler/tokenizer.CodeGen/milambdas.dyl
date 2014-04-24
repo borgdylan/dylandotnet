@@ -42,13 +42,14 @@ class private auto ansi MILambdas2
 	
 	method assembly boolean GenericMtdFilter(var mi as MethodItem)
 		if mi::NrGenParams > 0 then
-			if mi::Name = Name then
+			//no need to check since its implicit in store
+			//if mi::Name == Name then
 				if mi::NrGenParams != ParamLen then
 					return false
 				end if
-			else
-				return false
-			end if
+			//else
+			//	return false
+			//end if
 		else
 			return false
 		end if
@@ -116,7 +117,8 @@ class private auto ansi MILambdas2
 		if mi::NrGenParams > 0 then
 			return false
 		else
-			return (mi::Name == Name) and CmpTyps(mi::ParamTyps,Params)
+			//(mi::Name == Name) not needed since its implicit in store 
+			return CmpTyps(mi::ParamTyps,Params)
 		end if
 	end method
 	
@@ -130,7 +132,8 @@ class private auto ansi MILambdas2
 	end method
 	
 	method assembly boolean DetermineIfProtoCandidate(var mi as MethodItem)
-		return (mi::Name == Name) and CmpTyps2(mi::ParamTyps,Params)
+		//(mi::Name == Name) not needed since its implicit in store 
+		return CmpTyps2(mi::ParamTyps,Params)
 	end method
 
 	method assembly static integer CalcDeriveness(var t as IKVM.Reflection.Type)

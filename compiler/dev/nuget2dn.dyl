@@ -58,7 +58,7 @@ namespace dylan.NET.NuGet
 				var allow45 as boolean = true
 				foreach arg in args
 					if arg == "-h" then
-						Console::WriteLine("")
+						Console::WriteLine(string::Empty)
 						Console::WriteLine("Usage: nuget2dylandotnet [options] <file-name>")	
 						Console::WriteLine("Options:")
 						Console::WriteLine("   -h : View this help message")

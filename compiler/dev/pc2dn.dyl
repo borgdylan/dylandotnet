@@ -97,7 +97,7 @@ namespace dylan.NET.PkgConfig.PC2DN
 			else
 				for i = 0 upto --args[l]					
 					if args[i] == "-h" then
-						Console::WriteLine("")
+						Console::WriteLine(string::Empty)
 						Console::WriteLine("Usage: pc2dylandotnet [options] <file-name>")
 						Console::WriteLine("Options:")
 						Console::WriteLine("   -h : View this help message")

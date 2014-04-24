@@ -522,12 +522,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetLocMetNoParams(System.String)">
-            <param name="nam">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetObsolete(IKVM.Reflection.MemberInfo)">
             <param name="m">To be added.</param>
             <summary>To be added.</summary>
@@ -1256,12 +1250,6 @@
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindMet(System.String,IKVM.Reflection.Type[])">
             <param name="nam">To be added.</param>
             <param name="paramst">To be added.</param>
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindMetNoParams(System.String)">
-            <param name="nam">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

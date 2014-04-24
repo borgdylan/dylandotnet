@@ -868,28 +868,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetLocMetNoParams">
-      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo GetLocMetNoParams (string nam);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo GetLocMetNoParams(string nam) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="nam" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="nam">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GetObsolete">
       <MemberSignature Language="C#" Value="public static ObsoleteAttribute GetObsolete (IKVM.Reflection.MemberInfo m);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.ObsoleteAttribute GetObsolete(class IKVM.Reflection.MemberInfo m) cil managed" />

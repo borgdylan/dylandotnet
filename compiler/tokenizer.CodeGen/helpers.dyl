@@ -1508,17 +1508,17 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		return fldinf
 	end method
 
-	[method: ComVisible(false)]
-	method public static MethodInfo GetLocMetNoParams(var nam as string)
-		var metinf as MethodInfo = null
-		var meti as MethodItem = SymTable::FindMetNoParams(nam)
-
-		if meti != null then
-			metinf = meti::MethodBldr
-		end if
-
-		return metinf
-	end method
+//	[method: ComVisible(false)]
+//	method public static MethodInfo GetLocMetNoParams(var nam as string)
+//		var metinf as MethodInfo = null
+//		var meti as MethodItem = SymTable::FindMetNoParams(nam)
+//
+//		if meti != null then
+//			metinf = meti::MethodBldr
+//		end if
+//
+//		return metinf
+//	end method
 
 	[method: ComVisible(false)]
 	method public static Emit.Label GetLbl(var nam as string)

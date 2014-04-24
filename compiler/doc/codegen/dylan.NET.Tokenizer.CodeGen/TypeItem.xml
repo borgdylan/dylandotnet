@@ -374,11 +374,11 @@
       </Docs>
     </Member>
     <Member MemberName="Methods">
-      <MemberSignature Language="C#" Value="public C5.IList&lt;dylan.NET.Tokenizer.CodeGen.MethodItem&gt; Methods;" />
-      <MemberSignature Language="ILAsm" Value=".field public class C5.IList`1&lt;class dylan.NET.Tokenizer.CodeGen.MethodItem&gt; Methods" />
+      <MemberSignature Language="C#" Value="public C5.HashDictionary&lt;string,C5.IList&lt;dylan.NET.Tokenizer.CodeGen.MethodItem&gt;&gt; Methods;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.HashDictionary`2&lt;string, class C5.IList`1&lt;class dylan.NET.Tokenizer.CodeGen.MethodItem&gt;&gt; Methods" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>C5.IList&lt;dylan.NET.Tokenizer.CodeGen.MethodItem&gt;</ReturnType>
+        <ReturnType>C5.HashDictionary&lt;System.String,C5.IList&lt;dylan.NET.Tokenizer.CodeGen.MethodItem&gt;&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

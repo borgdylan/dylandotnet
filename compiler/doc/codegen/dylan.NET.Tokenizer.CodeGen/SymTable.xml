@@ -802,28 +802,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="FindMetNoParams">
-      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.MethodItem FindMetNoParams (string nam);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.MethodItem FindMetNoParams(string nam) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.CodeGen.MethodItem</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="nam" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="nam">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="FindProtoMet">
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.MethodItem FindProtoMet (string nam, IKVM.Reflection.Type[] paramst);" />
       <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.MethodItem FindProtoMet(string nam, class IKVM.Reflection.Type[] paramst) cil managed" />

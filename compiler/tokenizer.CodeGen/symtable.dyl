@@ -569,15 +569,15 @@ class public auto ansi static SymTable
 		return CurnTypItem::GetProtoMethod(nam,paramst)
 	end method
 
-	[method: ComVisible(false)]
-	method public static MethodItem FindMetNoParams(var nam as string)
-		foreach met in CurnTypItem::Methods
-			if nam = met::Name then
-				return met
-			end if
-		end for
-		return null
-	end method
+//	[method: ComVisible(false)]
+//	method public static MethodItem FindMetNoParams(var nam as string)
+//		foreach met in CurnTypItem::Methods
+//			if nam = met::Name then
+//				return met
+//			end if
+//		end for
+//		return null
+//	end method
 
 	[method: ComVisible(false)]
 	method public static ConstructorInfo FindCtor(var paramst as IKVM.Reflection.Type[])
