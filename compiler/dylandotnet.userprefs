@@ -1,9 +1,23 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="tokenizer.CodeGen/typeitem.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="template/template.dyl">
     <Files>
-      <File FileName="tokenizer.CodeGen/typeitem.dyl" Line="219" Column="12" />
-      <File FileName="tokenizer.CodeGen/milambdas.dyl" Line="125" Column="69" />
+      <File FileName="tokenizer.CodeGen/milambdas.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/helpers.dyl" Line="1" Column="1" />
+      <File FileName="dnc/Program.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/symtable.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/metstmt.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/methodnametok.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.Parser/exproptimizer.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.Parser/stmtoptimizer.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/typeparamitem.dyl" Line="1" Column="1" />
+      <File FileName="template/template.dyl" Line="276" Column="12" />
+      <File FileName="tokenizer.CodeGen/typeitem.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/varitem.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/eval.dyl" Line="928" Column="16" />
+      <File FileName="tokenizer.CodeGen/filambdas.dyl" Line="1" Column="1" />
+      <File FileName="dnr/loader.dyl" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -238,6 +238,7 @@ class public auto ansi Line
 		var i as integer = -1
 		var j as integer = 0
 		
+		
 		if len > -1 then
 			do			
 				i++
@@ -259,7 +260,6 @@ class public auto ansi Line
 				
 				curchar = $string$str::get_Chars(i)
 				lachar = #ternary{i < len ? $string$str::get_Chars(j), null}
-				
 				if isSep(curchar, lachar, ref sc, ref scl) then
 					if buf::get_Length() != 0 then
 						stm::AddToken(new Token() {Value = buf::ToString(), Line = stm::Line})

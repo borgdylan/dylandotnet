@@ -715,7 +715,7 @@ class public auto ansi beforefieldinit Evaluator
 		var delmtdnam as MethodNameTok
 		var nctyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(nctok::Name)
 		var delcreate as boolean = false
-		var typarr1 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[0]
+		var typarr1 as IKVM.Reflection.Type[] = IKVM.Reflection.Type::EmptyTypes
 		var ncctorinf as ConstructorInfo
 		var i as integer = -1
 		var mnstrarr as string[]
@@ -914,18 +914,33 @@ class public auto ansi beforefieldinit Evaluator
 			//delegate pointer loading section
 		end if
 
-		ncctorinf = Helpers::GetLocCtor(nctyp, typarr1)
+		if nctyp is GenericTypeParameterBuilder then
+			var tpi = SymTable::MetGenParams::get_Item(nctyp::get_Name())
+			if tpi::HasCtor and (typarr1[l] == 0) then
+				if emt then
+					mcmetinf = Loader::LoadGenericMethod(Loader::LoadClass("System.Activator"), "CreateInstance", new IKVM.Reflection.Type[] {tpi::Bldr}, typarr1)
+					Helpers::EmitMetCall(mcmetinf, true)
+					if nctok::PopFlg then
+						ILEmitter::EmitPop()
+					end if
+				end if
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Constructor with the given parameter types is not defined/accessible for the class '{0}'.", nctyp::ToString()))		
+			end if
+		else
+			ncctorinf = Helpers::GetLocCtor(nctyp, typarr1)
+			if ncctorinf = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Constructor with the given parameter types is not defined/accessible for the class '{0}'.", nctyp::ToString()))
+			end if
 
-		if ncctorinf = null then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Constructor with the given parameter types is not defined/accessible for the class '{0}'.", nctyp::ToString()))
-		end if
-
-		if emt then
-			ILEmitter::EmitNewobj(ncctorinf)
-			if nctok::PopFlg then
-				ILEmitter::EmitPop()
+			if emt then
+				ILEmitter::EmitNewobj(ncctorinf)
+				if nctok::PopFlg then
+					ILEmitter::EmitPop()
+				end if
 			end if
 		end if
+
 		AsmFactory::Type02 = nctyp
 		
 		if nctok::MemberAccessFlg and !nctok::PopFlg then

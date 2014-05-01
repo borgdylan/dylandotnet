@@ -6,31 +6,27 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi LockItem
+class public auto ansi LockItem extends TryItem
 
 	field public integer LockeeLoc
 	field public Emit.Label Lbl
 	field public boolean IsTryLock
-	field public integer Line
 
 	method public void LockItem()
-		me::ctor()
+		me::ctor(0)
 		LockeeLoc = 0
-		Line = 0
 		IsTryLock = false
 	end method
 
 	method public void LockItem(var loc as integer, var ln as integer)
-		me::ctor()
+		me::ctor(ln)
 		LockeeLoc = loc
-		Line = ln
 		IsTryLock = false
 	end method
 
 	method public void LockItem(var loc as integer, var lb as Emit.Label, var ln as integer)
-		me::ctor()
+		me::ctor(ln)
 		LockeeLoc = loc
-		Line = ln
 		IsTryLock = true
 		Lbl = lb
 	end method

@@ -10,6 +10,7 @@ class public auto ansi TypeParamItem
 
 	field public GenericTypeParameterBuilder Bldr
 	field public string Name
+	field public boolean HasCtor
 	field public IKVM.Reflection.Type BaseType
 	field public C5.LinkedList<of IKVM.Reflection.Type> Interfaces
 	
@@ -17,8 +18,9 @@ class public auto ansi TypeParamItem
 		me::ctor()
 		Bldr = bld
 		Name = name
-		BaseType = ILEmitter::Univ::Import(gettype object)
+		BaseType = Loader::LoadClass("System.Object")
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
+		HasCtor = false
 	end method
 	
 end class

@@ -1625,6 +1625,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 	
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.Type> GetTypeInterfaces(var t as IKVM.Reflection.Type)
+		if t is GenericTypeParameterBuilder then
+			return SymTable::MetGenParams::get_Item(t::get_Name())::Interfaces
+		end if
+
 		var ti as TypeItem = SymTable::TypeLst::GetTypeItem(t)
 		if ti != null then
 			return ti::Interfaces
@@ -1637,7 +1641,20 @@ var pa as ParameterAttributes = ParameterAttributes::None
 	method public static MethodInfo GetExtMet(var t as IKVM.Reflection.Type, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
 		
 		if t is GenericTypeParameterBuilder then
-			return GetExtMet(SymTable::MetGenParams::get_Item(t::get_Name())::BaseType, mn, paramtyps)
+			var tpi = SymTable::MetGenParams::get_Item(t::get_Name())
+			var res = GetExtMet(tpi::BaseType, mn, paramtyps)
+
+			if res != null then
+				return res
+			else
+				foreach interf in tpi::Interfaces
+					res = GetExtMet(interf, mn, paramtyps)
+					if res != null then
+						return res
+					end if
+				end for
+			end if
+			return null
 		end if
 		
 		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
@@ -1870,6 +1887,13 @@ var pa as ParameterAttributes = ParameterAttributes::None
 						flgs[1] = true
 					end if
 				end if
+
+				if !#expr(flgs[0] or flgs[1]) then
+					var res = ProcessForeach(interf)
+					if res != null then
+						return res
+					end if
+				end if
 			end for
 			
 			if flgs[0] then
@@ -1919,6 +1943,13 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				else
 					if ie2::Equals(interf) then
 						flgs[1] = true
+					end if
+				end if
+
+				if !#expr(flgs[0] or flgs[1]) then
+					var res = ProcessForeach2(interf)
+					if res != null then
+						return res
 					end if
 				end if
 			end for

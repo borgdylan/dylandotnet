@@ -51,15 +51,18 @@ end class
 class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
 
 	field public C5.LinkedList<of TypeTok> Params
+	field public C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
 
 	method public void GenericMethodNameTok()
 		me::ctor()
 		Params = new C5.LinkedList<of TypeTok>()
+		Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
 	end method
 
 	method public void GenericMethodNameTok(var value as string)
 		me::ctor(value)
 		Params = new C5.LinkedList<of TypeTok>()
+		Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
 	end method
 	
 	method public void GenericMethodNameTok(var idt as Ident)
@@ -77,17 +80,24 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUn
 		_TTok = idt::get_TTok()
 		_OrdOp = idt::get_OrdOp()
 		Line = idt::Line
+		Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
 	end method
 	
 	method public static specialname GenericMethodNameTok op_Implicit(var idt as Ident)
 		return #ternary {idt is GenericMethodNameTok ? $GenericMethodNameTok$idt, new GenericMethodNameTok(idt)}
 	end method
 
-
 	method public void AddParam(var param as TypeTok)
 		Params::Add(param)
 	end method
-	
+
+	method public void AddConstraint(var param as string, var ctr as Token)
+		if !Constraints::Contains(param) then
+			Constraints::Add(param, new C5.LinkedList<of Token>())
+		end if
+		Constraints::get_Item(param)::Add(ctr)
+	end method
+
 	property public hidebysig virtual final newslot autogen string OrdOp
 	property public hidebysig virtual final newslot autogen boolean Conv
 	property public hidebysig virtual final newslot autogen TypeTok TTok

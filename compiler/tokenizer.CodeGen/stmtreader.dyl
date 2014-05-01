@@ -254,8 +254,6 @@ class public auto ansi StmtReader
 
 		SymTable::ResetVar()
 		SymTable::ResetIf()
-		SymTable::ResetUsing()
-		SymTable::ResetLock()
 		SymTable::ResetTry()
 		SymTable::ResetLoop()
 		SymTable::ResetLbl()
@@ -335,8 +333,6 @@ class public auto ansi StmtReader
 		SymTable::ResetVar()
 		SymTable::ResetIf()
 		SymTable::ResetLbl()
-		SymTable::ResetUsing()
-		SymTable::ResetLock()
 		SymTable::ResetTry()
 		SymTable::ResetLoop()
 
@@ -418,7 +414,8 @@ class public auto ansi StmtReader
 					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, ma, Loader::LoadClass("System.Void"), IKVM.Reflection.Type::EmptyTypes)
 					
 					if mtss::MethodName is GenericMethodNameTok then
-						var paramdefs = #expr($GenericMethodNameTok$mtss::MethodName)::Params
+						var gmn = $GenericMethodNameTok$mtss::MethodName
+						var paramdefs = gmn::Params
 						var genparams = new string[paramdefs::get_Count()]
 						var i = -1
 						foreach pd in paramdefs
@@ -427,11 +424,52 @@ class public auto ansi StmtReader
 						end for
 						SymTable::SetMetGenParams(genparams, AsmFactory::CurnMetB::DefineGenericParameters(genparams))
 						nrgenparams = paramdefs::get_Count()
+
+						foreach k in gmn::Constraints::get_Keys()
+							if !SymTable::MetGenParams::Contains(k) then
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("This method does not have a generic type parameter named {0}.", k))
+								continue
+							end if
+
+							var tpi = SymTable::MetGenParams::get_Item(k)
+							var bld = tpi::Bldr
+							var gpa = GenericParameterAttributes::None
+
+							foreach c in gmn::Constraints::get_Item(k)
+								if c is StructTok then
+									gpa = gpa or GenericParameterAttributes::NotNullableValueTypeConstraint
+								elseif c is ClassTok then
+									gpa = gpa or GenericParameterAttributes::ReferenceTypeConstraint
+								elseif c is OutTok then
+									gpa = gpa or GenericParameterAttributes::Covariant
+								elseif c is InTok then
+									gpa = gpa or GenericParameterAttributes::Contravariant
+								elseif c is NewTok then
+									gpa = gpa or GenericParameterAttributes::DefaultConstructorConstraint
+									tpi::HasCtor = true
+								elseif c is TypeTok
+									var tout = Helpers::CommitEvalTTok($TypeTok$c)
+									if tout == null then
+										StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", c::ToString()))
+									end if
+									if tout::get_IsInterface() then
+										tpi::Interfaces::Add(tout)
+									else
+										bld::SetBaseTypeConstraint(tout)
+										tpi::BaseType = tout
+									end if
+								end if
+							end for
+
+							bld::SetGenericParameterAttributes(gpa)
+							bld::SetInterfaceConstraints(tpi::Interfaces::ToArray())
+						end for
+
 					end if
 					
 					paramstyps = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 					rettyp = Helpers::CommitEvalTTok(mtss::RetTyp)
-					if rettyp = null then
+					if rettyp == null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", mtss::RetTyp::Value))
 					end if
 					AsmFactory::CurnMetB::SetReturnType(rettyp)

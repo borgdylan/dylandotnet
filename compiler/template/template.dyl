@@ -264,10 +264,27 @@ class public auto ansi static Generics
 
 	#region genericfuncs
 
+		method public static U[] Func<of T, U>(var o as T) where T as {ICollection<of U>}, U as {out}
+			foreach u in o
+				Console::WriteLine(u::ToString())
+			end for
+
+			return Enumerable::ToArray<of U>(o)
+		end method
+
 		method public static T Func<of T>(var o as T)
 			return o
 		end method
-		
+
+		method public static T Clone<of T>(var o as T) where T as {ICloneable}
+			return $T$o::Clone()
+		end method
+
+		method public static T New<of T>() where T as {new}
+			//new T()
+			return new T()
+		end method
+
 		method public static Tuple<of T, U> Func<of T, U>(var o as T, var o2 as U)
 			return Tuple::Create<of T, U>(o, o2)
 		end method

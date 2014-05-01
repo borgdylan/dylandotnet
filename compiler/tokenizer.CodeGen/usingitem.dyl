@@ -6,15 +6,13 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi UsingItem
+class public auto ansi UsingItem extends TryItem 
 
 	field public string UseeLoc
-	field public integer Line
-	
+
 	method public void UsingItem(var loc as string, var ln as integer)
-		me::ctor()
+		me::ctor(ln)
 		UseeLoc = loc
-		Line = ln
 	end method
 	
 	method public void UsingItem()
