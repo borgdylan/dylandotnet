@@ -54,6 +54,7 @@ namespace dylan.NET.Tokenizer.CodeGen
 	#include "milambdas.dyl"
 	#include "ctoritem.dyl"
 	#include "cilambdas.dyl"
+	#include "typeparamitem.dyl"
 	#include "typeitem.dyl"
 	//tilambdas included in typeitem file
 	#include "collectionitem.dyl"
@@ -64,7 +65,6 @@ namespace dylan.NET.Tokenizer.CodeGen
 	#include "tryitem.dyl"
 	#include "lockitem.dyl"
 	#include "usingitem.dyl"
-	#include "typeparamitem.dyl"
 	#include "pinvokeinfo.dyl"
 	#include "constinfo.dyl"
 	#include "symtable.dyl"

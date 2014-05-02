@@ -1,11 +1,11 @@
 <Type Name="UsingItem" FullName="dylan.NET.Tokenizer.CodeGen.UsingItem">
-  <TypeSignature Language="C#" Value="public class UsingItem" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi UsingItem extends System.Object" />
+  <TypeSignature Language="C#" Value="public class UsingItem : dylan.NET.Tokenizer.CodeGen.TryItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi UsingItem extends dylan.NET.Tokenizer.CodeGen.TryItem" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.CodeGen.TryItem</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -34,18 +34,6 @@
       <Docs>
         <param name="loc">To be added.</param>
         <param name="ln">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Line">
-      <MemberSignature Language="C#" Value="public int Line;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 Line" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

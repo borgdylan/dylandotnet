@@ -81,27 +81,19 @@ class public auto ansi StmtReader
 		ILEmitter::StaticCFlg = false
 		ILEmitter::AbstractCFlg = false
 
+		SymTable::ResetTypGenParams()
+
 		var inhtyp as IKVM.Reflection.Type = null
 		var interftyp as IKVM.Reflection.Type = null
 		var reft as IKVM.Reflection.Type  = clss::InhClass::RefTyp
-		
-		var ti2 as TypeItem = SymTable::TypeLst::GetTypeItem(AsmFactory::CurnNS + "." + clss::ClassName::Value)
-		
-		if ti2 == null then
-			inhtyp = reft ?? #ternary {clss::InhClass::Value::get_Length() == 0 ? _
-					Loader::LoadClass("System.Object"), Helpers::CommitEvalTTok(clss::InhClass)}
-			if inhtyp = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Base Class '{0}' is not defined or is not accessible.", clss::InhClass::Value))
-			end if
-			if inhtyp != null then
-				if inhtyp::get_IsSealed() then
-					inhtyp = null
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not inheritable.", clss::InhClass::Value))
-				end if
-			end if
-		else
-			inhtyp = ti2::InhTyp
+		var nrgenparams = 0
+
+		if clss::ClassName is GenericTypeTok then
+			var gmn = $GenericTypeTok$clss::ClassName
+			nrgenparams = gmn::Params::get_Count()
 		end if
+
+		var ti2 as TypeItem = SymTable::TypeLst::GetTypeItem(AsmFactory::CurnNS + "." + clss::ClassName::Value, nrgenparams)
 
 		if AsmFactory::inClass then
 			AsmFactory::isNested = true
@@ -109,8 +101,7 @@ class public auto ansi StmtReader
 		if !AsmFactory::isNested then
 			AsmFactory::inClass = true
 		end if
-
-		ILEmitter::StructFlg = inhtyp::Equals(Loader::LoadClass("System.ValueType"))
+			
 		var clssparams as TypeAttributes = TypeAttributes::Class
 		
 		if ti2 == null then
@@ -129,8 +120,6 @@ class public auto ansi StmtReader
 				end if
 			end for
 		end if
-		
-		AsmFactory::CurnInhTyp = inhtyp
 			
 		if ti2 == null then
 			if ILEmitter::InterfaceFlg and (clss::ClassName::Value notlike "^I(.)*$") then
@@ -139,8 +128,22 @@ class public auto ansi StmtReader
 
 			if !AsmFactory::isNested then
 				AsmFactory::CurnTypName = clss::ClassName::Value
-				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value, clssparams, inhtyp)
+				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value, clssparams)
 				StreamUtils::WriteLine(string::Format("Adding Class: {0}.{1}" , AsmFactory::CurnNS, clss::ClassName::Value))
+
+				if clss::ClassName is GenericTypeTok then
+					var gmn = $GenericTypeTok$clss::ClassName
+					var paramdefs = gmn::Params
+					var genparams = new string[paramdefs::get_Count()]
+					var i = -1
+					foreach pd in paramdefs
+						i++
+						genparams[i] = pd::Value
+					end for
+					SymTable::SetTypGenParams(genparams, AsmFactory::CurnTypB::DefineGenericParameters(genparams))
+					nrgenparams = paramdefs::get_Count()
+				end if
+
 			else
 				AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
 				AsmFactory::CurnTypName2 = AsmFactory::CurnTypName
@@ -159,9 +162,73 @@ class public auto ansi StmtReader
 		
 		Helpers::ApplyClsAttrs()
 
+		var ti as TypeItem = null
+
 		if ti2 == null then
-			var ti as TypeItem = new TypeItem(#ternary{AsmFactory::isNested ? string::Empty, AsmFactory::CurnNS + "."} + clss::ClassName::Value, AsmFactory::CurnTypB) {InhTyp = inhtyp, IsStatic = ILEmitter::StaticCFlg}
+			ti = new TypeItem(#ternary{AsmFactory::isNested ? string::Empty, AsmFactory::CurnNS + "."} + clss::ClassName::Value, AsmFactory::CurnTypB) _
+				{IsStatic = ILEmitter::StaticCFlg, NrGenParams = nrgenparams, TypGenParams = SymTable::TypGenParams}
 			SymTable::CurnTypItem = ti
+		
+			inhtyp = reft ?? #ternary {clss::InhClass::Value::get_Length() == 0 ? _
+					Loader::LoadClass("System.Object"), Helpers::CommitEvalTTok(clss::InhClass)}
+			if inhtyp = null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Base Class '{0}' is not defined or is not accessible.", clss::InhClass::Value))
+			end if
+			if inhtyp != null then
+				if inhtyp::get_IsSealed() then
+					inhtyp = null
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not inheritable.", clss::InhClass::Value))
+				end if
+			end if
+			AsmFactory::CurnTypB::SetParent(inhtyp)
+			ti::InhTyp = inhtyp
+		else
+			inhtyp = ti2::InhTyp
+		end if
+
+		AsmFactory::CurnInhTyp = inhtyp
+		ILEmitter::StructFlg = inhtyp::Equals(Loader::LoadClass("System.ValueType"))
+
+		if ti2 == null
+			foreach k in clss::Constraints::get_Keys()
+				if !SymTable::TypGenParams::Contains(k) then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("This class does not have a generic type parameter named {0}.", k))
+					continue
+				end if
+
+				var tpi = SymTable::TypGenParams::get_Item(k)
+				var bld = tpi::Bldr
+				var gpa = GenericParameterAttributes::None
+
+				foreach c in clss::Constraints::get_Item(k)
+					if c is StructTok then
+						gpa = gpa or GenericParameterAttributes::NotNullableValueTypeConstraint
+					elseif c is ClassTok then
+						gpa = gpa or GenericParameterAttributes::ReferenceTypeConstraint
+					elseif c is OutTok then
+						gpa = gpa or GenericParameterAttributes::Covariant
+					elseif c is InTok then
+						gpa = gpa or GenericParameterAttributes::Contravariant
+					elseif c is NewTok then
+						gpa = gpa or GenericParameterAttributes::DefaultConstructorConstraint
+						tpi::HasCtor = true
+					elseif c is TypeTok
+						var tout = Helpers::CommitEvalTTok($TypeTok$c)
+						if tout == null then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", c::ToString()))
+						end if
+						if tout::get_IsInterface() then
+							tpi::Interfaces::Add(tout)
+						else
+							bld::SetBaseTypeConstraint(tout)
+							tpi::BaseType = tout
+						end if
+					end if
+				end for
+
+				bld::SetGenericParameterAttributes(gpa)
+				bld::SetInterfaceConstraints(tpi::Interfaces::ToArray())
+			end for
 
 			if !AsmFactory::isNested then
 				SymTable::TypeLst::AddType(ti)
@@ -171,7 +238,7 @@ class public auto ansi StmtReader
 
 			foreach interf in clss::ImplInterfaces
 				interftyp = Helpers::CommitEvalTTok(interf)
-				if interftyp = null then
+				if interftyp == null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", interf::Value))
 				elseif !interftyp::get_IsInterface() then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not an interface.", interftyp::ToString()))
@@ -222,7 +289,9 @@ class public auto ansi StmtReader
 		ILEmitter::StructFlg = false
 		ILEmitter::InterfaceFlg = false
 		ILEmitter::StaticCFlg = false
-		
+
+		SymTable::ResetTypGenParams()
+
 		if AsmFactory::inClass then
 			AsmFactory::isNested = true
 		end if

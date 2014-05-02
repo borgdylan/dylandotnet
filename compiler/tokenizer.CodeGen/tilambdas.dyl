@@ -9,6 +9,7 @@
 class private auto ansi TILambdas
 
 	field assembly string Name
+	field assembly integer NrGenParams
 	field assembly IKVM.Reflection.Type TB
 
 	method assembly void TILambdas()
@@ -17,9 +18,10 @@ class private auto ansi TILambdas
 		TB = null
 	end method
 
-	method assembly void TILambdas(var name as string)
+	method assembly void TILambdas(var name as string, var gp as integer)
 		me::ctor()
 		Name = name
+		NrGenParams = gp
 	end method
 
 	method assembly void TILambdas(var name as IKVM.Reflection.Type)
@@ -28,7 +30,7 @@ class private auto ansi TILambdas
 	end method
 
 	method assembly boolean DetermineIfCandidate(var ti as TypeItem)
-		return ti::Name == Name
+		return (ti::Name == Name) and (ti::NrGenParams == NrGenParams)
 	end method
 
 	method assembly boolean DetermineIfCandidateType(var ti as TypeItem)

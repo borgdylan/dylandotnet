@@ -49,7 +49,7 @@ class public auto ansi static Program
 		elseif args[l] < 1 then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		else
-			try
+			//try
 				for i = 0 upto --args[l]
 					StreamUtils::WriteLine(string::Empty)
 					if args[i] == "-V" then
@@ -100,15 +100,15 @@ class public auto ansi static Program
 					end if
 				end for
 				
-			catch errex as ErrorException
+			//catch errex as ErrorException
 			
-			catch ex as Exception
-				StreamUtils::WriteLine(string::Empty)
-				try
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
-				catch errex2 as ErrorException
-				end try
-			end try
+			//catch ex as Exception
+			//	StreamUtils::WriteLine(string::Empty)
+			//	try
+			//		StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+			//	catch errex2 as ErrorException
+			//	end try
+			//end try
 
 		end if
 

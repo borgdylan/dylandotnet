@@ -20,6 +20,8 @@ class public auto ansi partial TypeItem
 	field public C5.IList<of TypeItem> Types
 	field public C5.HashDictionary<of string, FieldItem> Fields
 	field public boolean IsEnum
+	field public integer NrGenParams
+	field public C5.HashDictionary<of string, TypeParamItem> TypGenParams
 
 	method private void TypeItem(var nme as string, var bld as TypeBuilder, var bld3 as EnumBuilder)
 		me::ctor()
@@ -34,6 +36,8 @@ class public auto ansi partial TypeItem
 		Ctors = new C5.LinkedList<of CtorItem>()
 		Fields = new C5.HashDictionary<of string, FieldItem>()
 		BakedTyp = null
+		NrGenParams = 0
+		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
 	end method
 	
 	method public void TypeItem(var nme as string, var bld as TypeBuilder)
@@ -213,7 +217,7 @@ class public auto ansi TypeItem
 	end method
 
 	method public TypeItem GetTypeItem(var nam as string)
-		var til as TILambdas = new TILambdas(nam)
+		var til as TILambdas = new TILambdas(nam, 0)
 		var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
 		return Enumerable::FirstOrDefault<of TypeItem>(lot2)
 	end method

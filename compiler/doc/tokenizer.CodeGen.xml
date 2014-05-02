@@ -761,10 +761,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.CodeGen.LockItem.Line">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.LockItem.LockeeLoc">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1372,10 +1368,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetLock">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetLoop">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1385,10 +1377,6 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetTry">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetUsing">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1678,6 +1666,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeParamItem.HasCtor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.TypeParamItem.Interfaces">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1697,10 +1689,6 @@
         <member name="C:dylan.NET.Tokenizer.CodeGen.UsingItem(System.String,System.Int32)">
             <param name="loc">To be added.</param>
             <param name="ln">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.CodeGen.UsingItem.Line">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

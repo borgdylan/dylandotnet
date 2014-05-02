@@ -19,7 +19,7 @@ class public auto ansi TypeList
 		Types = new C5.LinkedList<of TypeItem>()
 	end method
 
-	method public TypeItem GetTypeItem(var nam as string)
+	method public TypeItem GetTypeItem(var nam as string, var gp as integer)
 		var nest as boolean = false
 
 		var na as string[] = ParseUtils::StringParser(nam,"\")
@@ -42,7 +42,7 @@ class public auto ansi TypeList
 		end for
 		
 		foreach ns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
-			var til as TILambdas = new TILambdas(#ternary{ns::get_Length() == 0 ? nam , ns + "." + nam} )
+			var til as TILambdas = new TILambdas(#ternary{ns::get_Length() == 0 ? nam , ns + "." + nam}, gp)
 			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
 			var match as TypeItem = Enumerable::FirstOrDefault<of TypeItem>(lot2)
 			
@@ -74,8 +74,8 @@ class public auto ansi TypeList
 		return null
 	end method
 	
-	method public IKVM.Reflection.Type GetType(var nam as string)
-		var ti as TypeItem = GetTypeItem(nam)
+	method public IKVM.Reflection.Type GetType(var nam as string, var gp as integer)
+		var ti as TypeItem = GetTypeItem(nam, gp)
 		if ti == null then
 			return null
 		else

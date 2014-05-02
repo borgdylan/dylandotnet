@@ -260,6 +260,20 @@ class public auto ansi ObjInit
 	
 end class
 
+class public auto ansi GenType<of T>
+	field public T Fld
+
+	method public void GenType(var f as T)
+		me::ctor()
+		Fld = f
+	end method
+
+end class
+
+class public auto ansi GenType<of T, U> extends List<of T>
+
+end class
+
 class public auto ansi static Generics
 
 	#region genericfuncs
@@ -813,6 +827,9 @@ class public auto ansi static Program
 		Console::WriteLine("ab" === ("a" + "b"))
 		Console::WriteLine($object$1 == $object$1)
 		Console::WriteLine($object$1 === $object$1)
+
+		new GenType<of object>(null)
+		new GenType<of integer, string>()
 	end method
 
 	method public static string LeaveMet(var x as integer)

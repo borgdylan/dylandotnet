@@ -11,6 +11,7 @@ class public auto ansi static SymTable
 	field private static C5.LinkedList<of C5.HashDictionary<of string, VarItem> > VarLst
 	field public static C5.HashDictionary<of IKVM.Reflection.Type, integer> TempVTMap
 	field public static C5.HashDictionary<of string, TypeParamItem> MetGenParams
+	field public static C5.HashDictionary<of string, TypeParamItem> TypGenParams
 	field public static C5.IList<of CustomAttributeBuilder> MethodCALst
 	field public static C5.IList<of CustomAttributeBuilder> FieldCALst
 	field public static C5.IList<of CustomAttributeBuilder> ClassCALst
@@ -44,6 +45,7 @@ class public auto ansi static SymTable
 		VarLst = new C5.LinkedList<of C5.HashDictionary<of string, VarItem> >()
 		TempVTMap = new C5.HashDictionary<of IKVM.Reflection.Type, integer>()
 		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>()
+		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 		IfLst = new C5.LinkedList<of IfItem>()
 		//LockLst = new C5.LinkedList<of LockItem>()
@@ -102,11 +104,23 @@ class public auto ansi static SymTable
 	method public static void ResetMetGenParams()
 		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>()
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static void ResetTypGenParams()
+		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
+	end method
+
 	[method: ComVisible(false)]
 	method public static void SetMetGenParams(var names as string[], var actuals as GenericTypeParameterBuilder[])
 		for i = 0 upto --names[l]
 			MetGenParams::Add(names[i], new TypeParamItem(names[i], actuals[i]))
+		end for
+	end method
+
+	[method: ComVisible(false)]
+	method public static void SetTypGenParams(var names as string[], var actuals as GenericTypeParameterBuilder[])
+		for i = 0 upto --names[l]
+			TypGenParams::Add(names[i], new TypeParamItem(names[i], actuals[i]))
 		end for
 	end method
 

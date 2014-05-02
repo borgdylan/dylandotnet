@@ -2072,8 +2072,18 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.AddConstraint(System.String,dylan.NET.Tokenizer.AST.Tokens.Token)">
+            <param name="param">To be added.</param>
+            <param name="ctr">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.AddParam(dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)">
             <param name="param">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.Constraints">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

@@ -1254,24 +1254,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ResetLock">
-      <MemberSignature Language="C#" Value="public static void ResetLock ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetLock() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ResetLoop">
       <MemberSignature Language="C#" Value="public static void ResetLoop ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetLoop() cil managed" />
@@ -1311,24 +1293,6 @@
     <Member MemberName="ResetTry">
       <MemberSignature Language="C#" Value="public static void ResetTry ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetTry() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetUsing">
-      <MemberSignature Language="C#" Value="public static void ResetUsing ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetUsing() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>

@@ -514,9 +514,15 @@ class public auto ansi static Helpers
 //				gtt::RefTyp = Importer::TypeMap::get_Item(tstr)
 //				typ = gtt::RefTyp
 			else
-				typ = Loader::LoadClass(tstr)
-				gtt::RefTyp = Loader::PreProcTyp
-//				Importer::TypeMap::set_Item(tstr, Loader::PreProcTyp)
+				typ = SymTable::TypeLst::GetType(gtt::Value, pttoks::get_Count())
+				
+				if typ == null  then
+					typ = Loader::LoadClass(tstr)
+					gtt::RefTyp = Loader::PreProcTyp
+//					Importer::TypeMap::set_Item(tstr, Loader::PreProcTyp)
+				else
+					gtt::RefTyp = typ
+				end if
 			end if
 
 			if typ = null then
@@ -537,9 +543,13 @@ class public auto ansi static Helpers
 			typ = Loader::ProcessType(typ)
 		else
 			
-			var isgenparam = SymTable::MetGenParams::Contains(tt::Value)
+			var isgenparamm = SymTable::MetGenParams::Contains(tt::Value)
+			var isgenparamt = false
+			if SymTable::CurnTypItem != null then
+				isgenparamt = SymTable::CurnTypItem::TypGenParams::Contains(tt::Value)
+			end if
 
-			if !isgenparam then
+			if !#expr(isgenparamm or isgenparamt) then
 				if tt::RefTyp != null then
 					Loader::MakeArr = tt::IsArray
 					Loader::MakeRef = tt::IsByRef
@@ -563,7 +573,7 @@ class public auto ansi static Helpers
 					end if  
 
 					if typ == null  then
-						typ = SymTable::TypeLst::GetType(tt::Value)
+						typ = SymTable::TypeLst::GetType(tt::Value, 0)
 					end if
 
 					if typ != null  then
@@ -579,7 +589,13 @@ class public auto ansi static Helpers
 			else
 				Loader::MakeArr = tt::IsArray
 				Loader::MakeRef = tt::IsByRef
-				typ = SymTable::MetGenParams::get_Item(tt::Value)::Bldr
+
+				if isgenparamm then
+					typ = SymTable::MetGenParams::get_Item(tt::Value)::Bldr
+				elseif isgenparamt
+					typ = SymTable::CurnTypItem::TypGenParams::get_Item(tt::Value)::Bldr
+				end if
+
 				tt::RefTyp = typ
 				typ = Loader::ProcessType(typ)
 			end if
@@ -1622,11 +1638,23 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			return false
 		end if
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static TypeParamItem GetTPI(var name as string)
+		if SymTable::MetGenParams::Contains(name) then
+			return SymTable::MetGenParams::get_Item(name)
+		elseif SymTable::CurnTypItem != null then
+			if SymTable::CurnTypItem::TypGenParams::Contains(name) then
+				return SymTable::CurnTypItem::TypGenParams::get_Item(name)
+			end if
+		end if
+		return null
+	end method
+
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.Type> GetTypeInterfaces(var t as IKVM.Reflection.Type)
 		if t is GenericTypeParameterBuilder then
-			return SymTable::MetGenParams::get_Item(t::get_Name())::Interfaces
+			return GetTPI(t::get_Name())::Interfaces
 		end if
 
 		var ti as TypeItem = SymTable::TypeLst::GetTypeItem(t)
@@ -1641,7 +1669,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 	method public static MethodInfo GetExtMet(var t as IKVM.Reflection.Type, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
 		
 		if t is GenericTypeParameterBuilder then
-			var tpi = SymTable::MetGenParams::get_Item(t::get_Name())
+			var tpi = GetTPI(t::get_Name())
 			var res = GetExtMet(tpi::BaseType, mn, paramtyps)
 
 			if res != null then

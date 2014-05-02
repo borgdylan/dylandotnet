@@ -10,16 +10,18 @@
 class public auto ansi ClassStmt extends Stmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
-	field public Ident ClassName
+	field public TypeTok ClassName
 	field public TypeTok InhClass
 	field public C5.LinkedList<of TypeTok> ImplInterfaces
+	field public C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
 
 	method public void ClassStmt()
 		me::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
-		ClassName = new Ident()
+		ClassName = new TypeTok()
 		InhClass = new TypeTok()
 		ImplInterfaces = new C5.LinkedList<of TypeTok>()
+		Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
@@ -28,6 +30,13 @@ class public auto ansi ClassStmt extends Stmt
 
 	method public void AddInterface(var interftoadd as TypeTok)
 		ImplInterfaces::Add(interftoadd)
+	end method
+
+	method public void AddConstraint(var param as string, var ctr as Token)
+		if !Constraints::Contains(param) then
+			Constraints::Add(param, new C5.LinkedList<of Token>())
+		end if
+		Constraints::get_Item(param)::Add(ctr)
 	end method
 
 end class

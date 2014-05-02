@@ -915,7 +915,7 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 
 		if nctyp is GenericTypeParameterBuilder then
-			var tpi = SymTable::MetGenParams::get_Item(nctyp::get_Name())
+			var tpi = Helpers::GetTPI(nctyp::get_Name())
 			if tpi::HasCtor and (typarr1[l] == 0) then
 				if emt then
 					mcmetinf = Loader::LoadGenericMethod(Loader::LoadClass("System.Activator"), "CreateInstance", new IKVM.Reflection.Type[] {tpi::Bldr}, typarr1)

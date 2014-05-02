@@ -52,6 +52,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="HasCtor">
+      <MemberSignature Language="C#" Value="public bool HasCtor;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool HasCtor" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Interfaces">
       <MemberSignature Language="C#" Value="public C5.LinkedList&lt;IKVM.Reflection.Type&gt; Interfaces;" />
       <MemberSignature Language="ILAsm" Value=".field public class C5.LinkedList`1&lt;class IKVM.Reflection.Type&gt; Interfaces" />
