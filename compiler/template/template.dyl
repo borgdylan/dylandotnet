@@ -260,12 +260,27 @@ class public auto ansi ObjInit
 	
 end class
 
+#region genericfuncs
+
 class public auto ansi GenType<of T>
 	field public T Fld
 
 	method public void GenType(var f as T)
 		me::ctor()
 		Fld = f
+	end method
+
+	method public T Met(var t as T)
+		return t
+	end method
+
+	method public V Met<of V>(var v as V)
+		return v
+	end method
+
+	method public U Met<of U>(var u as U, var t as T)
+		var d = new Func<of U, U>(Met<of U>)
+		return d::Invoke(u)
 	end method
 
 end class
@@ -276,96 +291,94 @@ end class
 
 class public auto ansi static Generics
 
-	#region genericfuncs
+	method public static U[] Func<of T, U>(var o as T) where T as {ICollection<of U>}, U as {out}
+		foreach u in o
+			Console::WriteLine(u::ToString())
+		end for
 
-		method public static U[] Func<of T, U>(var o as T) where T as {ICollection<of U>}, U as {out}
-			foreach u in o
-				Console::WriteLine(u::ToString())
-			end for
+		return Enumerable::ToArray<of U>(o)
+	end method
 
-			return Enumerable::ToArray<of U>(o)
-		end method
+	method public static T Func<of T>(var o as T)
+		return o
+	end method
 
-		method public static T Func<of T>(var o as T)
-			return o
-		end method
+	method public static T Clone<of T>(var o as T) where T as {ICloneable}
+		return $T$o::Clone()
+	end method
 
-		method public static T Clone<of T>(var o as T) where T as {ICloneable}
-			return $T$o::Clone()
-		end method
+	method public static T New<of T>() where T as {new}
+		//new T()
+		return new T()
+	end method
 
-		method public static T New<of T>() where T as {new}
-			//new T()
-			return new T()
-		end method
+	method public static Tuple<of T, U> Func<of T, U>(var o as T, var o2 as U)
+		return Tuple::Create<of T, U>(o, o2)
+	end method
+	
+	method public static T[] Func2<of T>(var ie as IEnumerable<of T>)
+		return Enumerable::ToArray<of T>(ie)
+	end method
 
-		method public static Tuple<of T, U> Func<of T, U>(var o as T, var o2 as U)
-			return Tuple::Create<of T, U>(o, o2)
-		end method
+	//[method: Obsolete("Fake Obsolete", true)]
+	method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T)
+		var destarr as T[] = new T[++srcarr[l]]
+
+		for i = 0 upto --srcarr[l]
+			destarr[i] = srcarr[i]
+		end for
+
+		destarr[srcarr[l]] = eltoadd
+
+		return destarr
+	end method
+	
+	method public static T[] remelem<of T>(var srcarr as T[], var ind as integer)
+		var destarr as T[] = new T[--srcarr[l]]
+
+		for i = 0 upto --ind
+			destarr[i] = srcarr[i]
+		end for
+		for i = ++ind upto --srcarr[l]
+			destarr[--i] = srcarr[i]
+		end for
 		
-		method public static T[] Func2<of T>(var ie as IEnumerable<of T>)
-			return Enumerable::ToArray<of T>(ie)
-		end method
-
-		//[method: Obsolete("Fake Obsolete", true)]
-		method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T)
-			var destarr as T[] = new T[++srcarr[l]]
-
-			for i = 0 upto --srcarr[l]
-				destarr[i] = srcarr[i]
-			end for
-
-			destarr[srcarr[l]] = eltoadd
-
-			return destarr
-		end method
-		
-		method public static T[] remelem<of T>(var srcarr as T[], var ind as integer)
-			var destarr as T[] = new T[--srcarr[l]]
-
-			for i = 0 upto --ind
-				destarr[i] = srcarr[i]
-			end for
-			for i = ++ind upto --srcarr[l]
-				destarr[--i] = srcarr[i]
-			end for
-			
-			return destarr
-		end method
-		
-		method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T )
-			return addelem<of T>(addelem<of T>(srcarr, eltoadd), eltoadd2)
-		end method
-		
-		method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var ind as integer)
-			return remelem<of T>(addelem<of T>(srcarr, eltoadd), ind)
-		end method
-		
-		method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T, var ind as integer)
-			return remelem<of T>(addelem<of T>(srcarr, eltoadd, eltoadd2), ind)
-		end method
-		
-		method public static void exch<of T>(var p1 as T&, var p2 as T&)
-			var temp = p1
-			p1 = p2
-			p2 = temp
-		end method
-		
-		method public static T getdefault<of T>()
-			return default T
-		end method
-		
-		method public static string ToString<of T>(var t as T)
-			return Func<of T>(t)::ToString()
-		end method
-		
-		method public static Type GetType<of T>(var t as T)
-			return t::GetType()
-		end method
-
-	end #region
+		return destarr
+	end method
+	
+	method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T )
+		return addelem<of T>(addelem<of T>(srcarr, eltoadd), eltoadd2)
+	end method
+	
+	method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var ind as integer)
+		return remelem<of T>(addelem<of T>(srcarr, eltoadd), ind)
+	end method
+	
+	method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T, var ind as integer)
+		return remelem<of T>(addelem<of T>(srcarr, eltoadd, eltoadd2), ind)
+	end method
+	
+	method public static void exch<of T>(var p1 as T&, var p2 as T&)
+		var temp = p1
+		p1 = p2
+		p2 = temp
+	end method
+	
+	method public static T getdefault<of T>()
+		return default T
+	end method
+	
+	method public static string ToString<of T>(var t as T)
+		return Func<of T>(t)::ToString()
+	end method
+	
+	method public static Type GetType<of T>(var t as T)
+		return t::GetType()
+	end method
 
 end class
+
+end #region
 
 class public auto ansi static partial Program
 	field public static integer Z
