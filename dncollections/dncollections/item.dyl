@@ -6,65 +6,26 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi Item
+class public auto ansi Item extends Item<of object>
 
-	field public object Value
-	field public Item Next
-	field public Item Previous
-	field public integer Index
-	
 	method public void Item()
 		me::ctor()
-		Value = null
-		Next = null
-		Previous = null
-		Index = -1
 	end method
 	
 	method public void Item(var o as object)
-		me::ctor()
-		Value = o
-		Next = null
-		Previous = null
-		Index = -1
+		me::ctor(o)
 	end method
-	
-	method public boolean HasNext()
-		return Next != null
-	end method
-	
-	method public boolean HasPrevious()
-		return Previous != null
-	end method
-	
-	method public Item GoNext()
-		if HasNext() then
-			Next::Index = Index + 1
-		end if
-		return Next
-	end method
-	
-	method public Item GoPrevious()
-		if HasPrevious() then
-			Previous::Index = Index - 1
-		end if
-		return Previous
-	end method
-	
-	method public Item MakeCopy()
+
+	method public hidebysig virtual Item<of object> MakeCopy()
 		return new Item(Value)
+	end method
+	
+	method public Item<of object> MakeCopy2()
+		return Item<of object>::MakeCopy(me)
 	end method
 	
 	method public static Item MakeCopy(var ite as Item)
 		return new Item(ite::Value)
-	end method
-	
-	method public hidebysig virtual string ToString()
-		if Value = null then
-			return $string$Index + ":null"
-		else
-			return $string$Index + ":" + Value::ToString()
-		end if
 	end method
 	
 end class

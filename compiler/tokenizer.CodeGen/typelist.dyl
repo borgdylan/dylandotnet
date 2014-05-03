@@ -84,12 +84,12 @@ class public auto ansi TypeList
 	end method
 
 
-	method public ConstructorBuilder GetCtor(var t as IKVM.Reflection.Type,var paramst as IKVM.Reflection.Type[])
+	method public ConstructorInfo GetCtor(var t as IKVM.Reflection.Type,var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
 		if ti = null then
 			return null
 		else
-			var ctorinf as ConstructorBuilder = ti::GetCtor(paramst)
+			var ctorinf as ConstructorInfo = ti::GetCtor(paramst, auxt)
 			if ctorinf != null then
 				if !ctorinf::get_IsPublic() then
 					//filter out private members
@@ -114,7 +114,7 @@ class public auto ansi TypeList
 	
 	method assembly ConstructorInfo GetDefaultCtor(var t as IKVM.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
-		return #ternary {ti != null ? GetCtor(t, IKVM.Reflection.Type::EmptyTypes), Loader::LoadCtor(t, IKVM.Reflection.Type::EmptyTypes)}
+		return #ternary {ti != null ? GetCtor(t, IKVM.Reflection.Type::EmptyTypes, t), Loader::LoadCtor(t, IKVM.Reflection.Type::EmptyTypes)}
 	end method
 	
 	method public void EnsureDefaultCtor(var t as IKVM.Reflection.Type)
@@ -142,12 +142,12 @@ class public auto ansi TypeList
 		Types::Add(t)
 	end method
 
-	method public FieldInfo GetField(var t as IKVM.Reflection.Type,var nam as string)
+	method public FieldInfo GetField(var t as IKVM.Reflection.Type, var nam as string, var auxt as IKVM.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
 		if ti = null then
 			return null
 		else
-			var fldinfo as FieldInfo = ti::GetField(nam)
+			var fldinfo as FieldInfo = ti::GetField(nam, auxt)
 			if fldinfo != null then
 				if !fldinfo::get_IsPublic() then
 					//filter out private members
@@ -167,11 +167,11 @@ class public auto ansi TypeList
 				end if
 			end if
 			
-			return fldinfo ?? (GetField(ti::InhTyp, nam) ?? Loader::LoadField(ti::InhTyp, nam))
+			return fldinfo ?? (GetField(ti::InhTyp, nam, auxt::get_BaseType()) ?? Loader::LoadField(auxt::get_BaseType(), nam))
 		end if
 	end method
 
-	method public MethodInfo GetMethod(var t as IKVM.Reflection.Type,var mn as MethodNameTok,var paramst as IKVM.Reflection.Type[])
+	method public MethodInfo GetMethod(var t as IKVM.Reflection.Type,var mn as MethodNameTok,var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
 		if ti = null then
 			return null
@@ -191,9 +191,9 @@ class public auto ansi TypeList
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
 					end if
 				end for
-				mtdinfo = ti::GetGenericMethod(nam, genparams, paramst)
+				mtdinfo = ti::GetGenericMethod(nam, genparams, paramst, auxt)
 			else
-				mtdinfo = ti::GetMethod(nam,paramst)
+				mtdinfo = ti::GetMethod(nam,paramst, auxt)
 			end if
 			
 			if mtdinfo != null then
@@ -216,7 +216,7 @@ class public auto ansi TypeList
 			end if
 			
 			if mtdinfo = null then
-				mtdinfo = GetMethod(ti::InhTyp,mn,paramst)
+				mtdinfo = GetMethod(ti::InhTyp,mn,paramst, auxt::get_BaseType())
 				if mtdinfo = null then
 					if mn is GenericMethodNameTok then
 						var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
@@ -229,9 +229,9 @@ class public auto ansi TypeList
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
 							end if
 						end for
-						mtdinfo = Loader::LoadGenericMethod(ti::InhTyp, nam, genparams, paramst)
+						mtdinfo = Loader::LoadGenericMethod(auxt::get_BaseType(), nam, genparams, paramst)
 					else
-						mtdinfo = Loader::LoadMethod(ti::InhTyp, nam, paramst)
+						mtdinfo = Loader::LoadMethod(auxt::get_BaseType(), nam, paramst)
 					end if
 				end if
 			end if
@@ -239,7 +239,7 @@ class public auto ansi TypeList
 			if mtdinfo = null then
 				if ti::Interfaces != null then
 					foreach interf in ti::Interfaces
-						mtdinfo = GetMethod(interf,mn,paramst)
+						mtdinfo = GetMethod(interf,mn,paramst, interf)
 						if mtdinfo = null then
 							mtdinfo = Loader::LoadMethod(interf, nam, paramst)
 						end if

@@ -11,26 +11,30 @@ class private auto ansi MILambdas2
 	field assembly string Name
 	field assembly integer ParamLen
 	field assembly IKVM.Reflection.Type[] Params
+	field assembly IKVM.Reflection.Type Auxt
 	
 	method assembly void MILambdas2()
 		me::ctor()
 		Name = string::Empty
 		Params = null
 		ParamLen = 0
+		Auxt = null
 	end method
 
-	method assembly void MILambdas2(var name as string, var params as IKVM.Reflection.Type[])
+	method assembly void MILambdas2(var name as string, var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		me::ctor()
 		Name = name
 		Params = params
 		ParamLen = 0
+		Auxt = auxt
 	end method
 	
-	method assembly void MILambdas2(var params as IKVM.Reflection.Type[])
+	method assembly void MILambdas2(var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		me::ctor()
 		Name = string::Empty
 		Params = params
 		ParamLen = 0
+		Auxt = auxt
 	end method
 	
 	method assembly void MILambdas2(var name as string, var pl as integer)
@@ -39,7 +43,11 @@ class private auto ansi MILambdas2
 		Params = null
 		ParamLen = pl
 	end method
-	
+
+	method assembly MethodInfo Bind(var mi as MethodItem)
+		return $MethodInfo$mi::MethodBldr::BindTypeParameters(Auxt)
+	end method
+
 	method assembly boolean GenericMtdFilter(var mi as MethodItem)
 		if mi::NrGenParams > 0 then
 			//no need to check since its implicit in store
@@ -74,10 +82,10 @@ class private auto ansi MILambdas2
 	end method
 	
 	method assembly IKVM.Reflection.MethodInfo InstGenMtd(var mi as MethodItem)
-		return mi::MethodBldr::MakeGenericMethod(Params)
+		return #expr($MethodInfo$mi::MethodBldr::BindTypeParameters(Auxt))::MakeGenericMethod(Params)
 	end method
 
-	method assembly boolean CmpTyps(var arra as IKVM.Reflection.Type[], var arrb as IKVM.Reflection.Type[])
+	method assembly boolean CmpTyps(var arra as ParameterInfo[], var arrb as IKVM.Reflection.Type[])
 		if arra[l] = arrb[l] then
 			if arra[l] = 0 then
 				return true
@@ -85,7 +93,7 @@ class private auto ansi MILambdas2
 			var i as integer = -1
 			do until i = --arra[l]
 				i++
-				if !arra[i]::IsAssignableFrom(arrb[i]) then
+				if !arra[i]::get_ParameterType()::IsAssignableFrom(arrb[i]) then
 					return false
 				end if
 			end do
@@ -113,22 +121,16 @@ class private auto ansi MILambdas2
 		return true
 	end method
 
-	method assembly boolean DetermineIfCandidate(var mi as MethodItem)
-		if mi::NrGenParams > 0 then
+	method assembly boolean DetermineIfCandidate(var mi as MethodInfo)
+		if mi::get_IsGenericMethod() then
 			return false
 		else
-			//(mi::Name == Name) not needed since its implicit in store 
-			return CmpTyps(mi::ParamTyps,Params)
+			return CmpTyps(mi::GetParameters(),Params)
 		end if
 	end method
 	
 	method assembly boolean DetermineIfCandidate2(var mi as MethodInfo)
-		var params = mi::GetParameters()
-		var paramlist = new IKVM.Reflection.Type[params[l]]
-		for i = 0 upto --params[l]
-			paramlist[i] = params[i]::get_ParameterType()
-		end for
-		return CmpTyps(paramlist,Params)
+		return CmpTyps(mi::GetParameters(),Params)
 	end method
 	
 	method assembly boolean DetermineIfProtoCandidate(var mi as MethodItem)
@@ -145,12 +147,13 @@ class private auto ansi MILambdas2
 		return d
 	end method
 
-	method assembly static integer[] ExtractDeriveness(var mi as MethodItem)
-		var deriv as integer[] = new integer[mi::ParamTyps[l]]
+	method assembly static integer[] ExtractDeriveness(var mi as MethodInfo)
+		var pt = mi::GetParameters()
+		var deriv as integer[] = new integer[pt[l]]
 		var i as integer = -1
 		do until i = --deriv[l]
 			i++
-			deriv[i] = CalcDeriveness(mi::ParamTyps[i])
+			deriv[i] = CalcDeriveness(pt[i]::get_ParameterType())
 		end do
 		return deriv
 	end method

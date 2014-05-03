@@ -1,0 +1,73 @@
+﻿//    dncollections.dll dylan.NET.Collections Copyright (C) 2014 Dylan Borg <borgdylan@hotmail.com>
+//    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
+// Foundation; either version 3 of the License, or (at your option) any later version.
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
+//Place, Suite 330, Boston, MA 02111-1307 USA
+
+namespace dylan.NET.Collections
+
+	class public auto ansi Item<of T>
+		
+		field public T Value
+		field public Item<of T> Next
+		field public Item<of T> Previous
+		field public integer Index
+		
+		method public void Item()
+			me::ctor()
+			Next = null
+			Previous = null
+			Index = -1
+		end method
+		
+		method public void Item(var o as T)
+			me::ctor()
+			Value = o
+			Next = null
+			Previous = null
+			Index = -1
+		end method
+		
+		method public boolean HasNext()
+			return Next != null
+		end method
+		
+		method public boolean HasPrevious()
+			return Previous != null
+		end method
+		
+//		method public Item<of T> GoNext()
+//			if HasNext() then
+//				Next::Index = Index + 1
+//			end if
+//			return Next
+//		end method
+		
+//		method public Item<of T> GoPrevious()
+//			if HasPrevious() then
+//				Previous::Index = Index - 1
+//			end if
+//			return Previous
+//		end method
+		
+		method public hidebysig virtual Item<of T> MakeCopy()
+			return new Item<of T>(Value)
+		end method
+		
+		method public static Item<of T> MakeCopy(var ite as Item<of T>)
+			return new Item<of T>(ite::Value)
+		end method
+		
+		method public hidebysig virtual string ToString()
+			if $object$Value == null then
+				return $string$Index + ":null"
+			else
+				return $string$Index + ":" + Value::ToString()
+			end if
+		end method
+
+	end class
+	
+end namespace

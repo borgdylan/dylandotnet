@@ -26,7 +26,7 @@ class private auto ansi TILambdas
 
 	method assembly void TILambdas(var name as IKVM.Reflection.Type)
 		me::ctor()
-		TB = name
+		TB = #ternary {name::get_IsConstructedGenericType() ? name::GetGenericTypeDefinition(), name}
 	end method
 
 	method assembly boolean DetermineIfCandidate(var ti as TypeItem)

@@ -78,7 +78,7 @@ class public auto ansi static ParseUtils
 
 		end for
 		
-		return arr::ToArray()
+		return Enumerable::ToArray<of string>(arr)
 	end method
 	
 	[method: ComVisible(false)]

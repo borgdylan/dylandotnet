@@ -815,9 +815,12 @@ var pa as ParameterAttributes = ParameterAttributes::None
 
 		var mtd1 as MethodInfo = null
 		var mtd3 as MethodInfo = null
+		var isgenparam = (LeftOp is GenericTypeParameterBuilder) or (RightOp is GenericTypeParameterBuilder)
 
 		if op is AddOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_Addition", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_Addition", LeftOp, RightOp)
+			end if
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -835,7 +838,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is MulOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_Multiply", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_Multiply", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -849,7 +855,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is SubOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_Subtraction", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_Subtraction", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -865,7 +874,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is DivOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_Division", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_Division", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -879,7 +891,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is ModOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_Modulus", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_Modulus", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -893,7 +908,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is OrOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseOr", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseOr", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -907,7 +925,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is AndOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseAnd", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseAnd", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -921,7 +942,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is XorOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_ExclusiveOr", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_ExclusiveOr", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -935,7 +959,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is NandOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseAnd", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseAnd", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				mtd3 = Loader::LoadUnaOp(mtd1::get_ReturnType(), "op_OnesComplement", mtd1::get_ReturnType())
 			end if
@@ -956,7 +983,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is NorOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseOr", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseOr", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				mtd3 = Loader::LoadUnaOp(mtd1::get_ReturnType(), "op_OnesComplement", mtd1::get_ReturnType())
 			end if
@@ -977,7 +1007,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is XnorOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_ExclusiveOr", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_ExclusiveOr", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				mtd3 = Loader::LoadUnaOp(mtd1::get_ReturnType(), "op_OnesComplement", mtd1::get_ReturnType())
 			end if
@@ -998,7 +1031,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is GtOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_GreaterThan", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_GreaterThan", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -1012,7 +1048,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is LtOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_LessThan", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_LessThan", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -1026,7 +1065,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is GeOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_GreaterThanOrEqual", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_GreaterThanOrEqual", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -1040,7 +1082,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is LeOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_LessThanOrEqual", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_LessThanOrEqual", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -1054,7 +1099,9 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is EqOp then
-			if !LeftOp::Equals(AsmFactory::CurnTypB) then
+			var lo = #ternary {LeftOp::get_IsConstructedGenericType() ? LeftOp::GetGenericTypeDefinition(), LeftOp}
+
+			if !#expr(lo::Equals(AsmFactory::CurnTypB) or isgenparam) then
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Equality", LeftOp, RightOp)
 			end if
 
@@ -1081,7 +1128,9 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is NeqOp then
-			if !LeftOp::Equals(AsmFactory::CurnTypB) then
+			var lo = #ternary {LeftOp::get_IsConstructedGenericType() ? LeftOp::GetGenericTypeDefinition(), LeftOp}
+
+			if !#expr(lo::Equals(AsmFactory::CurnTypB) or isgenparam) then
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Inequality", LeftOp, RightOp)
 			end if
 
@@ -1124,7 +1173,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is ShlOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_LeftShift", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_LeftShift", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -1138,7 +1190,10 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		elseif op is ShrOp then
-			mtd1 = Loader::LoadBinOp(LeftOp, "op_RightShift", LeftOp, RightOp)
+			if !isgenparam then
+				mtd1 = Loader::LoadBinOp(LeftOp, "op_RightShift", LeftOp, RightOp)
+			end if
+
 			if mtd1 != null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -1266,6 +1321,9 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				return
 			elseif (sink::get_BaseType() == null) and !sink::Equals(Loader::LoadClass("System.Object")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
+				return
+			elseif source is GenericTypeParameterBuilder then
+				ILEmitter::EmitBox(source)
 				return
 			else
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
@@ -1498,7 +1556,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		if t::Equals(AsmFactory::CurnTypB) then
 			return SymTable::FindCtor(typs)
 		else
-			var ci as ConstructorInfo = SymTable::TypeLst::GetCtor(t,typs)
+			var ci as ConstructorInfo = SymTable::TypeLst::GetCtor(t, typs, t)
 			if ci != null then
 				return ci
 			else
@@ -1516,7 +1574,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			fldinf = fldi
 		else
 			Loader::ProtectedFlag = true
-			var f as FieldInfo = SymTable::TypeLst::GetField(AsmFactory::CurnInhTyp,nam)
+			var f as FieldInfo = SymTable::TypeLst::GetField(AsmFactory::CurnInhTyp,nam, AsmFactory::CurnInhTyp)
 			fldinf = f ?? Loader::LoadField(AsmFactory::CurnInhTyp, nam)
 			Loader::ProtectedFlag = false
 		end if
@@ -1688,7 +1746,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
 		var name as string = mnstrarr[--mnstrarr[l]]
 		
-		var m as MethodInfo = SymTable::TypeLst::GetMethod(t,mn,paramtyps)
+		var m as MethodInfo = SymTable::TypeLst::GetMethod(t,mn,paramtyps, t)
 		if m != null then
 			return m
 		else		
@@ -1746,8 +1804,9 @@ var pa as ParameterAttributes = ParameterAttributes::None
 	
 	[method: ComVisible(false)]
 	method public static FieldInfo GetExtFld(var t as IKVM.Reflection.Type, var fld as string)
-		var f as FieldInfo = SymTable::TypeLst::GetField(t,fld)
-		return #ternary{f != null ? f, Loader::LoadField(t,fld)}
+		var f as FieldInfo = SymTable::TypeLst::GetField(t, fld, t)
+
+		return #ternary{f != null ? f, Loader::LoadField(t, fld)}
 	end method
 	
 	[method: ComVisible(false)]

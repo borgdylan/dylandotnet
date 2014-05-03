@@ -1,4 +1,4 @@
-//dylan.NET Collections...please use dylandotnet4 >= 11.2.8.8 to compile
+﻿//dylan.NET Collections...please use dylandotnet >= 11.3.5.1 to compile
 //An addition to the NEW dylan.NET Compiler
 
 //    dncollections.dll dylan.NET.Collections Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
@@ -9,22 +9,27 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-#refstdasm "mscorlib.dll"
+#include "msbuild.dyl"
+#include "Properties/AssemblyInfo.dyl"
 
 import System
+import System.Collections
+import System.Collections.Generic
+import System.Linq
+import System.Xml
+import System.Xml.Linq
+import System.Linq.Expressions
 import System.Text
 import dylan.NET
 import dylan.NET.Collections
 
-#debug on
 
-assembly dncollections dll
-ver 11.2.8.9
+#include "itemT.dyl"
 
 namespace dylan.NET.Collections
-	#include "dncollections/searchdelegate.dyl"
-	#include "dncollections/item.dyl"
-	#include "dncollections/allist.dyl"
-	#include "dncollections/alstack.dyl"
-	#include "dncollections/alqueue.dyl"
+	#include "searchdelegate.dyl"
+	#include "item.dyl"
+	//#include "allist.dyl"
+	//#include "alstack.dyl"
+	//#include "alqueue.dyl"
 end namespace

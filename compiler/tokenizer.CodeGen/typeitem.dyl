@@ -86,35 +86,36 @@ class public auto ansi partial TypeItem
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>() {AddAll(Enumerable::Distinct<of IKVM.Reflection.Type>(Interfaces))}
 	end method
 
-	method public MethodBuilder GetMethod(var nam as string, var paramst as IKVM.Reflection.Type[])
+	method public MethodInfo GetMethod(var nam as string, var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		if !Methods::Contains(nam) then
 			return null
 		end if
 
-		var mil as MILambdas2 = new MILambdas2(nam, paramst)
-		var lom2 as IEnumerable<of MethodItem> = Enumerable::Where<of MethodItem>(Methods::get_Item(nam),new Func<of MethodItem,boolean>(mil::DetermineIfCandidate()))
-		var matches as MethodItem[] = Enumerable::ToArray<of MethodItem>(lom2)
+		var mil as MILambdas2 = new MILambdas2(nam, paramst, auxt)
+		var bd as IEnumerable<of MethodInfo> = Enumerable::Select<of MethodItem, MethodInfo>(Methods::get_Item(nam),new Func<of MethodItem, MethodInfo>(mil::Bind))
+		var lom2 as IEnumerable<of MethodInfo> = Enumerable::Where<of MethodInfo>(bd,new Func<of MethodInfo,boolean>(mil::DetermineIfCandidate()))
+		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(lom2)
 		
 		if matches[l] == 0 then
 			return null
 		elseif matches[l] == 1 then
-			Loader::MemberTyp = matches[0]::MethodBldr::get_ReturnType()
-			return matches[0]::MethodBldr
+			Loader::MemberTyp = matches[0]::get_ReturnType()
+			return matches[0]
 		else
-			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of MethodItem,integer[]>(lom2,new Func<of MethodItem,integer[]>(MILambdas2::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
-			Loader::MemberTyp = matches[chosen[--chosen[l]]]::MethodBldr::get_ReturnType()
-			return matches[chosen[--chosen[l]]]::MethodBldr
+			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of MethodInfo,integer[]>(lom2,new Func<of MethodInfo,integer[]>(MILambdas2::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
+			Loader::MemberTyp = matches[chosen[--chosen[l]]]::get_ReturnType()
+			return matches[chosen[--chosen[l]]]
 		end if
 	end method
 	
-	method public MethodInfo GetGenericMethod(var nam as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[])
+	method public MethodInfo GetGenericMethod(var nam as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		if !Methods::Contains(nam) then
 			return null
 		end if
 
 		var mil as MILambdas2 = new MILambdas2(nam, genparams[l])
-		var mil2 as MILambdas2 = new MILambdas2(genparams)
-		var mil3 as MILambdas2 = new MILambdas2(nam, paramst)
+		var mil2 as MILambdas2 = new MILambdas2(genparams, auxt)
+		var mil3 as MILambdas2 = new MILambdas2(nam, paramst, auxt)
 		var glom as IEnumerable<of MethodInfo> = Enumerable::Where<of MethodInfo>(Enumerable::Select<of MethodItem, MethodInfo>(Enumerable::Where<of MethodItem>(Methods::get_Item(nam) , new Func<of MethodItem,boolean>(mil::GenericMtdFilter())), new Func<of MethodItem,MethodInfo>(mil2::InstGenMtd())), new Func<of MethodInfo, boolean>(mil3::DetermineIfCandidate2()))
 		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(glom)
 		
@@ -135,7 +136,7 @@ class public auto ansi partial TypeItem
 			return null
 		end if
 
-		var mil as MILambdas2 = new MILambdas2(nam, paramst)
+		var mil as MILambdas2 = new MILambdas2(nam, paramst, TypeBldr)
 		var lom2 as MethodItem[] = Enumerable::ToArray<of MethodItem>(Enumerable::Where<of MethodItem>(Methods::get_Item(nam),new Func<of MethodItem,boolean>(mil::DetermineIfProtoCandidate())))
 		if lom2[l] > 0 then
 			return lom2[0]
@@ -144,10 +145,11 @@ class public auto ansi partial TypeItem
 		end if
 	end method
 
-	method public ConstructorBuilder GetCtor(var paramst as IKVM.Reflection.Type[])
-		var cil as CILambdas = new CILambdas(paramst)
-		var loc2 as IEnumerable<of CtorItem> = Enumerable::Where<of CtorItem>(Ctors,new Func<of CtorItem,boolean>(cil::DetermineIfCandidate()))
-		var matches as CtorItem[] = Enumerable::ToArray<of CtorItem>(loc2)
+	method public ConstructorInfo GetCtor(var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
+		var cil as CILambdas = new CILambdas(paramst, auxt)
+		var bd as IEnumerable<of ConstructorInfo> = Enumerable::Select<of CtorItem, ConstructorInfo>(Ctors,new Func<of CtorItem, ConstructorInfo>(cil::Bind))
+		var loc2 as IEnumerable<of ConstructorInfo> = Enumerable::Where<of ConstructorInfo>(bd,new Func<of ConstructorInfo,boolean>(cil::DetermineIfCandidate()))
+		var matches as ConstructorInfo[] = Enumerable::ToArray<of ConstructorInfo>(loc2)
 		
 		if matches[l] == 0 then
 			if (paramst[l] == 0) and (Ctors::get_Count() == 0) then
@@ -160,15 +162,15 @@ class public auto ansi partial TypeItem
 			end if
 		elseif matches[l] == 1 then
 			Loader::MemberTyp = TypeBldr
-			return matches[0]::CtorBldr
+			return matches[0]
 		else
-			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of CtorItem,integer[]>(loc2,new Func<of CtorItem,integer[]>(CILambdas::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(CILambdas::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(CILambdas::DerivenessMax()))
+			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of ConstructorInfo,integer[]>(loc2,new Func<of ConstructorInfo,integer[]>(CILambdas::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(CILambdas::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(CILambdas::DerivenessMax()))
 			Loader::MemberTyp = TypeBldr
-			return matches[chosen[--chosen[l]]]::CtorBldr
+			return matches[chosen[--chosen[l]]]
 		end if
 	end method
 
-	method public FieldBuilder GetField(var nam as string)
+	method public FieldInfo GetField(var nam as string, var auxt as IKVM.Reflection.Type)
 		Loader::FldLitFlag = false
 		Loader::EnumLitFlag = false
 	
@@ -176,7 +178,7 @@ class public auto ansi partial TypeItem
 		//var matches as FieldItem[] = Enumerable::ToArray<of FieldItem>(Enumerable::Where<of FieldItem>(Fields,new Func<of FieldItem,boolean>(fil::DetermineIfCandidate())))
 
 		var fld as FieldItem = #ternary { Fields::Contains(nam) ? Fields::get_Item(nam), $FieldItem$null }
-		var fldinfo as FieldBuilder = #ternary { fld == null ? $FieldBuilder$null, fld::FieldBldr }
+		var fldinfo as FieldInfo = #ternary { fld == null ? $FieldBuilder$null, fld::FieldBldr }
 
 		//if matches[l] == 0 then
 		//	fldinfo = null
@@ -196,6 +198,7 @@ class public auto ansi partial TypeItem
 			if IsEnum then
 				Loader::EnumLitTyp = InhTyp
 			end if
+			fldinfo = fldinfo::BindTypeParameters(auxt)
 		end if
 		
 		return fldinfo

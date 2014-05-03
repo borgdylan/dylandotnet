@@ -534,7 +534,11 @@ class public auto ansi beforefieldinit Evaluator
 									ILEmitter::EmitLdarg(0)
 								end if
 								AsmFactory::Type04 = mcfldinf::get_FieldType()
+								if (i == len) and (mcfldinf::get_FieldType() is GenericTypeParameterBuilder) then
+									AsmFactory::ForcedAddrFlg = true
+								end if
 								Helpers::EmitFldLd(mcfldinf, idtisstatic)
+								AsmFactory::ForcedAddrFlg = false
 							end if
 							
 							mcisstatic = false

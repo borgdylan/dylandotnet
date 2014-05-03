@@ -9,18 +9,21 @@
 class private auto ansi CILambdas
 
 	field assembly IKVM.Reflection.Type[] Params
+	field assembly IKVM.Reflection.Type Auxt
 
 	method assembly void CILambdas()
 		me::ctor()
 		Params = null
+		Auxt = null
 	end method
 
-	method assembly void CILambdas(var params as IKVM.Reflection.Type[])
+	method assembly void CILambdas(var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		me::ctor()
 		Params = params
+		Auxt = auxt
 	end method
 
-	method assembly boolean CmpTyps(var arra as IKVM.Reflection.Type[], var arrb as IKVM.Reflection.Type[])
+	method assembly boolean CmpTyps(var arra as ParameterInfo[], var arrb as IKVM.Reflection.Type[])
 		if arra[l] = arrb[l] then
 			if arra[l] = 0 then
 				return true
@@ -28,7 +31,7 @@ class private auto ansi CILambdas
 			var i as integer = -1
 			do until i = (arra[l] - 1)
 				i++
-				if !arra[i]::IsAssignableFrom(arrb[i]) then
+				if !arra[i]::get_ParameterType()::IsAssignableFrom(arrb[i]) then
 					return false
 				end if
 			end do
@@ -38,8 +41,12 @@ class private auto ansi CILambdas
 		return true
 	end method
 
-	method assembly boolean DetermineIfCandidate(var ci as CtorItem)
-		return CmpTyps(ci::ParamTyps,Params)
+	method assembly ConstructorInfo Bind(var ci as CtorItem)
+		return $ConstructorInfo$ci::CtorBldr::BindTypeParameters(Auxt)
+	end method
+
+	method assembly boolean DetermineIfCandidate(var ci as ConstructorInfo)
+		return CmpTyps(ci::GetParameters(),Params)
 	end method
 
 	method assembly static integer CalcDeriveness(var t as IKVM.Reflection.Type)
@@ -51,12 +58,13 @@ class private auto ansi CILambdas
 		return d
 	end method
 
-	method assembly static integer[] ExtractDeriveness(var ci as CtorItem)
-		var deriv as integer[] = new integer[ci::ParamTyps[l]]
+	method assembly static integer[] ExtractDeriveness(var ci as ConstructorInfo)
+		var pt = ci::GetParameters()
+		var deriv as integer[] = new integer[pt[l]]
 		var i as integer = -1
 		do until i = --deriv[l]
 			i++
-			deriv[i] = CalcDeriveness(ci::ParamTyps[i])
+			deriv[i] = CalcDeriveness(pt[i]::get_ParameterType())
 		end do
 		return deriv
 	end method

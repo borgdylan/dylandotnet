@@ -450,7 +450,7 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static FieldInfo FindFld(var nam as string)
-		return CurnTypItem::GetField(nam)
+		return CurnTypItem::GetField(nam, CurnTypItem::TypeBldr)
 	end method
 
 	[method: ComVisible(false)]
@@ -474,12 +474,12 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static MethodInfo FindMet(var nam as string, var paramst as IKVM.Reflection.Type[])
-		return CurnTypItem::GetMethod(nam, paramst)
+		return CurnTypItem::GetMethod(nam, paramst, CurnTypItem::TypeBldr)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static MethodInfo FindGenMet(var nam as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[])
-		return CurnTypItem::GetGenericMethod(nam, genparams, paramst)
+		return CurnTypItem::GetGenericMethod(nam, genparams, paramst, CurnTypItem::TypeBldr)
 	end method
 	
 	[method: ComVisible(false)]
@@ -499,7 +499,7 @@ class public auto ansi static SymTable
 
 	[method: ComVisible(false)]
 	method public static ConstructorInfo FindCtor(var paramst as IKVM.Reflection.Type[])
-		return CurnTypItem::GetCtor(paramst)
+		return CurnTypItem::GetCtor(paramst, CurnTypItem::TypeBldr)
 	end method
 
 end class
