@@ -24,12 +24,11 @@ import dylan.NET
 import dylan.NET.Collections
 
 
-#include "itemT.dyl"
+#include "item.dyl"
 
 namespace dylan.NET.Collections
-	#include "searchdelegate.dyl"
-	#include "item.dyl"
-	//#include "allist.dyl"
-	//#include "alstack.dyl"
-	//#include "alqueue.dyl"
+	//#include "searchdelegate.dyl"
+	#include "allist.dyl"
+	#include "alstack.dyl"
+	#include "alqueue.dyl"
 end namespace

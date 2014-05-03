@@ -6,11 +6,11 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi ALList
+class public auto ansi ALList<of U>
 	
-	field public Item Head
-	field public Item Tail
-	field public Item[] ItemArray
+	field public Item<of U> Head
+	field public Item<of U> Tail
+	field public Item<of U>[] ItemArray
 	field public integer Length
 	field public integer Capacity
 	
@@ -19,14 +19,14 @@ class public auto ansi ALList
 		 Head = null
 		 Tail = null
 		 Length = 0
-		 ItemArray = new Item[10]
+		 ItemArray = new Item<of U>[10]
 		 Capacity = ItemArray[l]
 	end method
 	
-	method public void Add(var ite as Item)
+	method public void Add(var ite as Item<of U>)
 		
 		if Length = Capacity then
-			var na as Item[] = new Item[ItemArray[l] + 10]
+			var na = new Item<of U>[ItemArray[l] + 10]
 			var i as integer = -1
 			do until i = (Length - 1)
 				i = i + 1		
@@ -36,7 +36,7 @@ class public auto ansi ALList
 			Capacity = ItemArray[l]
 		end if
 		
-		if Head = null then
+		if Head == null then
 			Head = ite
 			Tail = Head
 			Head::Previous = null
@@ -56,12 +56,12 @@ class public auto ansi ALList
 		
 	end method
 	
-	method public void Add(var o as object)
-		Add(new Item(o))
+	method public void Add(var o as U)
+		Add(new Item<of U>(o))
 	end method
 	
-	method public void AddAll(var al1 as ALList)
-		var ite as Item = null
+	method public void AddAll(var al1 as ALList<of U>)
+		var ite as Item<of U> = null
 		if al1::Length > 0 then
 			do
 				if ite = null then
@@ -75,19 +75,19 @@ class public auto ansi ALList
 		end if
 	end method
 	
-	method public static specialname ALList op_Addition(var lis as ALList, var ite as Item)
+	method public static specialname ALList<of U> op_Addition(var lis as ALList<of U>, var ite as Item<of U>)
 		lis::Add(ite)
 		return lis
 	end method
 	
-	method public static specialname ALList op_Addition(var lis as ALList, var o as object)
+	method public static specialname ALList<of U> op_Addition(var lis as ALList<of U>, var o as U)
 		lis::Add(o)
 		return lis
 	end method
 	
-	method public Item GetItem(var i as integer)
+	method public Item<of U> GetItem(var i as integer)
 		if (i <= (Length - 1)) and (i >= 0) then
-			var ite as Item =  ItemArray[i]
+			var ite =  ItemArray[i]
 			ite::Index = i
 			return ite
 		else
@@ -95,18 +95,18 @@ class public auto ansi ALList
 		end if
 	end method
 	
-	method public object GetItemValue(var i as integer)
+	method public U GetItemValue(var i as integer)
 		if (i <= (Length - 1)) and (i >= 0) then
 			return ItemArray[i]::Value
 		else
-			return null
+			return default U
 		end if
 	end method
 	
 	method public boolean Remove(var ind as integer)
 	
 		if (ind <= (Length - 1)) and (ind >= 0) then
-			var ite as Item = ItemArray[ind]
+			var ite = ItemArray[ind]
 			if ite::HasPrevious() then
 				ite::Previous::Next = ite::Next
 			else
@@ -141,9 +141,9 @@ class public auto ansi ALList
 	
 	method public boolean SwapValues(var i as integer, var j as integer)
 		if (i <= (Length - 1)) and (j <= (Length - 1))  and (i >= 0)  and (j >= 0) then
-			var temp as object = ItemArray[i]::Value
-			var itei as Item = ItemArray[i]
-			var itej as Item = ItemArray[j]
+			var temp = ItemArray[i]::Value
+			var itei = ItemArray[i]
+			var itej = ItemArray[j]
 			itei::Value = itej::Value
 			itej::Value = temp
 			return true
@@ -154,8 +154,8 @@ class public auto ansi ALList
 	
 	method public boolean CopyValue(var src as integer, var dest as integer)
 		if (src <= (Length - 1)) and (dest <= (Length - 1)) and (src >= 0)  and (dest >= 0) then
-			var temp as object = ItemArray[src]::Value
-			var ited as Item = ItemArray[dest]
+			var temp = ItemArray[src]::Value
+			var ited = ItemArray[dest]
 			ited::Value = temp
 			return true
 		else
@@ -163,7 +163,7 @@ class public auto ansi ALList
 		end if
 	end method
 	
-	method public Item FindItem(var sd as SearchDelegate)
+	method public Item<of U> FindItem(var sd as Func<of U, boolean>)
 		
 		if Length > 0 then
 			var i as integer = -1
@@ -200,18 +200,18 @@ class public auto ansi ALList
 		
 	end method
 	
-	method public static specialname ALList op_Subtraction(var lis as ALList, var ind as integer)
+	method public static specialname ALList<of U> op_Subtraction(var lis as ALList<of U>, var ind as integer)
 		lis::Remove(ind)
 		return lis
 	end method
 	
-	method public static specialname ALList op_Subtraction(var lis as ALList, var o as object)
+	method public static specialname ALList<of U> op_Subtraction(var lis as ALList<of U>, var o as object)
 		lis::Remove(o)
 		return lis
 	end method
 	
-	method public object FindItemValue(var sd as SearchDelegate)	
-		var ite as Item = FindItem(sd)
+	method public U FindItemValue(var sd as Func<of U, boolean>)	
+		var ite = FindItem(sd)
 		if ite = null then
 			return null
 		else
@@ -219,9 +219,9 @@ class public auto ansi ALList
 		end if
 	end method
 	
-	method public ALList FindItems(var sd as SearchDelegate)
+	method public ALList<of U> FindItems(var sd as Func<of U, boolean>)
 		
-		var al1 as ALList = new ALList()
+		var al1 as ALList<of U> = new ALList<of U>()
 		
 		if Length > 0 then
 			var i as integer = -1

@@ -188,6 +188,7 @@ class public auto ansi partial TypeItem
 		//end if
 		
 		if fldinfo != null then
+			fldinfo = fldinfo::BindTypeParameters(auxt)
 			Loader::MemberTyp = fldinfo::get_FieldType()
 			Loader::FldLitFlag = fldinfo::get_IsLiteral()
 			Loader::EnumLitFlag = IsEnum
@@ -198,7 +199,6 @@ class public auto ansi partial TypeItem
 			if IsEnum then
 				Loader::EnumLitTyp = InhTyp
 			end if
-			fldinfo = fldinfo::BindTypeParameters(auxt)
 		end if
 		
 		return fldinfo

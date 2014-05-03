@@ -6,13 +6,13 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi ALQueue extends ALList
+class public auto ansi ALQueue<of U> extends ALList<of U>
 
-	method public void Enqueue(var ite as Item)
+	method public void Enqueue(var ite as Item<of U>)
 		Add(ite)
 	end method
 	
-	method public Item Peek()
+	method public Item<of U> Peek()
 		if Length = 0 then
 			return null
 		else
@@ -20,33 +20,33 @@ class public auto ansi ALQueue extends ALList
 		end if
 	end method
 	
-	method public Item Dequeue()
+	method public Item<of U> Dequeue()
 		if Length = 0 then
 			return null
 		else
-			var ite as Item = Peek()
+			var ite as Item<of U> = Peek()
 			Remove(0)
 			return ite
 		end if
 	end method
 	
-	method public void EnqueueValue(var o as object)
-		Add(new Item(o))
+	method public void EnqueueValue(var o as U)
+		Add(new Item<of U>(o))
 	end method
 	
-	method public object PeekValue()
+	method public U PeekValue()
 		if Length = 0 then
-			return null
+			return default U
 		else
 			return ItemArray[0]::Value
 		end if
 	end method
 	
-	method public object DequeueValue()
+	method public U DequeueValue()
 		if Length = 0 then
-			return null
+			return default U
 		else
-			var ite as Item = Peek()
+			var ite as Item<of U> = Peek()
 			Remove(0)
 			return ite::Value
 		end if

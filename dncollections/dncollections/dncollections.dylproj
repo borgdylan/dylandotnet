@@ -35,10 +35,9 @@
     <Compile Include="allist.dyl" />
     <Compile Include="alqueue.dyl" />
     <Compile Include="alstack.dyl" />
-    <Compile Include="item.dyl" />
     <Compile Include="msbuild.dyl" />
     <Compile Include="searchdelegate.dyl" />
-    <Compile Include="itemT.dyl" />
+    <Compile Include="item.dyl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
   <ProjectExtensions>
