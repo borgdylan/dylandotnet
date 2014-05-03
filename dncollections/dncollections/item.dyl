@@ -40,14 +40,14 @@ namespace dylan.NET.Collections
 		
 		method public Item<of T> GoNext()
 			if HasNext() then
-				Next::Index = Index + 1
+				Next::Index = ++Index
 			end if
 			return Next
 		end method
 		
 		method public Item<of T> GoPrevious()
 			if HasPrevious() then
-				Previous::Index = Index - 1
+				Previous::Index = --Index
 			end if
 			return Previous
 		end method
@@ -61,11 +61,7 @@ namespace dylan.NET.Collections
 		end method
 		
 		method public hidebysig virtual string ToString()
-			if $object$Value == null then
-				return $string$Index + ":null"
-			else
-				return $string$Index + ":" + Value::ToString()
-			end if
+			return $string$Index + #ternary {$object$Value == null ? ":null", ":" + Value::ToString()}
 		end method
 
 	end class

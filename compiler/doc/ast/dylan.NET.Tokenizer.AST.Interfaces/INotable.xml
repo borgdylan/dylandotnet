@@ -1,9 +1,12 @@
 <Type Name="INotable" FullName="dylan.NET.Tokenizer.AST.Interfaces.INotable">
   <TypeSignature Language="C#" Value="public interface INotable : dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
-  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract INotable implements class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract INotable extends System.Object implements class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
   <Interfaces>
     <Interface>
       <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable</InterfaceName>

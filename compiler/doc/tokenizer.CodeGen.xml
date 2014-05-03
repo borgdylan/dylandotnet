@@ -534,6 +534,12 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetTPI(System.String)">
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetTypeInterfaces(IKVM.Reflection.Type)">
             <param name="t">To be added.</param>
             <summary>To be added.</summary>
@@ -1380,6 +1386,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetTypGenParams">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetVar">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1398,6 +1408,12 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetTypGenParams(System.String[],IKVM.Reflection.Emit.GenericTypeParameterBuilder[])">
+            <param name="names">To be added.</param>
+            <param name="actuals">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.StoreFlg">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1407,6 +1423,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.TypeLst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.TypGenParams">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1493,29 +1513,33 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetCtor(IKVM.Reflection.Type[])">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetCtor(IKVM.Reflection.Type[],IKVM.Reflection.Type)">
             <param name="paramst">To be added.</param>
+            <param name="auxt">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetField(System.String)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetField(System.String,IKVM.Reflection.Type)">
             <param name="nam">To be added.</param>
+            <param name="auxt">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetGenericMethod(System.String,IKVM.Reflection.Type[],IKVM.Reflection.Type[])">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetGenericMethod(System.String,IKVM.Reflection.Type[],IKVM.Reflection.Type[],IKVM.Reflection.Type)">
             <param name="nam">To be added.</param>
             <param name="genparams">To be added.</param>
             <param name="paramst">To be added.</param>
+            <param name="auxt">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetMethod(System.String,IKVM.Reflection.Type[])">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetMethod(System.String,IKVM.Reflection.Type[],IKVM.Reflection.Type)">
             <param name="nam">To be added.</param>
             <param name="paramst">To be added.</param>
+            <param name="auxt">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -1573,6 +1597,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.NrGenParams">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
@@ -1583,6 +1611,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.Types">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.TypGenParams">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1604,30 +1636,34 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetCtor(IKVM.Reflection.Type,IKVM.Reflection.Type[])">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetCtor(IKVM.Reflection.Type,IKVM.Reflection.Type[],IKVM.Reflection.Type)">
             <param name="t">To be added.</param>
             <param name="paramst">To be added.</param>
+            <param name="auxt">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetField(IKVM.Reflection.Type,System.String)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetField(IKVM.Reflection.Type,System.String,IKVM.Reflection.Type)">
             <param name="t">To be added.</param>
             <param name="nam">To be added.</param>
+            <param name="auxt">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetMethod(IKVM.Reflection.Type,dylan.NET.Tokenizer.AST.Tokens.MethodNameTok,IKVM.Reflection.Type[])">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetMethod(IKVM.Reflection.Type,dylan.NET.Tokenizer.AST.Tokens.MethodNameTok,IKVM.Reflection.Type[],IKVM.Reflection.Type)">
             <param name="t">To be added.</param>
             <param name="mn">To be added.</param>
             <param name="paramst">To be added.</param>
+            <param name="auxt">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetType(System.String)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetType(System.String,System.Int32)">
             <param name="nam">To be added.</param>
+            <param name="gp">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
@@ -1638,8 +1674,9 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetTypeItem(System.String)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetTypeItem(System.String,System.Int32)">
             <param name="nam">To be added.</param>
+            <param name="gp">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

@@ -39,6 +39,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AddConstraint">
+      <MemberSignature Language="C#" Value="public void AddConstraint (string param, dylan.NET.Tokenizer.AST.Tokens.Token ctr);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void AddConstraint(string param, class dylan.NET.Tokenizer.AST.Tokens.Token ctr) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="param" Type="System.String" />
+        <Parameter Name="ctr" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+      </Parameters>
+      <Docs>
+        <param name="param">To be added.</param>
+        <param name="ctr">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddInterface">
       <MemberSignature Language="C#" Value="public void AddInterface (dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok interftoadd);" />
       <MemberSignature Language="ILAsm" Value=".method public instance void AddInterface(class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok interftoadd) cil managed" />
@@ -68,11 +86,23 @@
       </Docs>
     </Member>
     <Member MemberName="ClassName">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Ident ClassName;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Ident ClassName" />
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ClassName;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ClassName" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Ident</ReturnType>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Constraints">
+      <MemberSignature Language="C#" Value="public C5.HashDictionary&lt;string,C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;&gt; Constraints;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.HashDictionary`2&lt;string, class C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Token&gt;&gt; Constraints" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;System.String,C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

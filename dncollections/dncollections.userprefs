@@ -2,11 +2,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="dncollections/item.dyl" Line="1" Column="1" />
-      <File FileName="dncollections/dncollections.dyl" Line="30" Column="4" />
-      <File FileName="dncollections/allist.dyl" Line="224" Column="45" />
-      <File FileName="dncollections/alstack.dyl" Line="47" Column="20" />
-      <File FileName="dncollections/alqueue.dyl" Line="25" Column="15" />
+      <File FileName="dncollections/item.dyl" Line="65" Column="1" />
+      <File FileName="dncollections/dncollections.dyl" Line="1" Column="1" />
+      <File FileName="dncollections/allist.dyl" Line="248" Column="9" />
+      <File FileName="dncollections/alstack.dyl" Line="38" Column="15" />
+      <File FileName="dncollections/alqueue.dyl" Line="38" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

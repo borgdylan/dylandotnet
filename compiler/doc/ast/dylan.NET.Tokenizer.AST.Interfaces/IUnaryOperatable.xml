@@ -1,9 +1,12 @@
 <Type Name="IUnaryOperatable" FullName="dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable">
   <TypeSignature Language="C#" Value="public interface IUnaryOperatable" />
-  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IUnaryOperatable" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IUnaryOperatable extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
   <Interfaces />
   <Docs>
     <summary>The main interface for those Tokens that support unary operations.</summary>

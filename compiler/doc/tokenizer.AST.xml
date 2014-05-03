@@ -219,6 +219,12 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Stmts.ClassStmt.AddConstraint(System.String,dylan.NET.Tokenizer.AST.Tokens.Token)">
+            <param name="param">To be added.</param>
+            <param name="ctr">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.ClassStmt.AddInterface(dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)">
             <param name="interftoadd">To be added.</param>
             <summary>To be added.</summary>
@@ -229,6 +235,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Stmts.ClassStmt.ClassName">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.ClassStmt.Constraints">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

@@ -85,5 +85,26 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="procWhere2">
+      <MemberSignature Language="C#" Value="public int procWhere2 (dylan.NET.Tokenizer.AST.Stmts.Stmt stm, dylan.NET.Tokenizer.AST.Stmts.ClassStmt gmn, int i);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance int32 procWhere2(class dylan.NET.Tokenizer.AST.Stmts.Stmt stm, class dylan.NET.Tokenizer.AST.Stmts.ClassStmt gmn, int32 i) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="gmn" Type="dylan.NET.Tokenizer.AST.Stmts.ClassStmt" />
+        <Parameter Name="i" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="gmn">To be added.</param>
+        <param name="i">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>

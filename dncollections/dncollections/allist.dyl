@@ -27,11 +27,9 @@ class public auto ansi ALList<of U>
 		
 		if Length = Capacity then
 			var na = new Item<of U>[ItemArray[l] + 10]
-			var i as integer = -1
-			do until i = (Length - 1)
-				i = i + 1		
+			for i = 0 upto --Length
 				na[i] = ItemArray[i]
-			end do
+			end for
 			ItemArray = na
 			Capacity = ItemArray[l]
 		end if
@@ -43,7 +41,6 @@ class public auto ansi ALList<of U>
 			Head::Next = null
 			ItemArray[Length] = ite
 			Head::Index = Length
-			Length = Length + 1
 		else
 			Tail::Next = ite
 			ite::Previous = Tail
@@ -51,9 +48,9 @@ class public auto ansi ALList<of U>
 			Tail = ite
 			ItemArray[Length] = ite
 			ite::Index = Length
-			Length = Length + 1
 		end if
-		
+		Length++
+
 	end method
 	
 	method public void Add(var o as U)
@@ -64,13 +61,8 @@ class public auto ansi ALList<of U>
 		var ite as Item<of U> = null
 		if al1::Length > 0 then
 			do
-				if ite = null then
-					ite = al1::Head
-					Add(ite::MakeCopy())
-				else
-					ite = ite::GoNext()
-					Add(ite::MakeCopy())
-				end if		
+				ite = #ternary {ite == null ? al1::Head, ite::GoNext()}
+				Add(ite::MakeCopy())
 			while ite::HasNext()
 		end if
 	end method
@@ -121,16 +113,16 @@ class public auto ansi ALList<of U>
 			var i as integer = ind - 1
 			
 			do
-				if ind = Length - 1 then
+				if ind == --Length then
 					break
 				end if
-				i = i + 1
-				ite = ItemArray[i + 1]
-				ite::Index = ite::Index - 1
+				i++
+				ite = ItemArray[++i]
+				ite::Index = --ite::Index
 				ItemArray[i] = ite
 			until i = (Length - 2)
 			
-			Length = Length - 1
+			Length--
 			ItemArray[Length] = null
 			return true
 		else
@@ -140,7 +132,7 @@ class public auto ansi ALList<of U>
 	end method
 	
 	method public boolean SwapValues(var i as integer, var j as integer)
-		if (i <= (Length - 1)) and (j <= (Length - 1))  and (i >= 0)  and (j >= 0) then
+		if (i <= --Length) and (j <= --Length)  and (i >= 0)  and (j >= 0) then
 			var temp = ItemArray[i]::Value
 			var itei = ItemArray[i]
 			var itej = ItemArray[j]
@@ -153,7 +145,7 @@ class public auto ansi ALList<of U>
 	end method
 	
 	method public boolean CopyValue(var src as integer, var dest as integer)
-		if (src <= (Length - 1)) and (dest <= (Length - 1)) and (src >= 0)  and (dest >= 0) then
+		if (src <= --Length) and (dest <= --Length) and (src >= 0)  and (dest >= 0) then
 			var temp = ItemArray[src]::Value
 			var ited = ItemArray[dest]
 			ited::Value = temp
@@ -167,8 +159,8 @@ class public auto ansi ALList<of U>
 		
 		if Length > 0 then
 			var i as integer = -1
-			do until i = (Length - 1)
-				i = i + 1
+			do until i == --Length
+				i++
 				if sd::Invoke(ItemArray[i]::Value) then
 					return ItemArray[i]
 				end if
@@ -185,8 +177,8 @@ class public auto ansi ALList<of U>
 		
 		if Length > 0 then
 			var i as integer = -1
-			do until i = (Length - 1)
-				i = i + 1		
+			do until i = --Length
+				i++
 				if ItemArray[i]::Value = o then
 					Remove(i)
 					return true
@@ -212,7 +204,7 @@ class public auto ansi ALList<of U>
 	
 	method public U FindItemValue(var sd as Func<of U, boolean>)	
 		var ite = FindItem(sd)
-		if ite = null then
+		if ite == null then
 			return null
 		else
 			return ite::Value
@@ -225,8 +217,8 @@ class public auto ansi ALList<of U>
 		
 		if Length > 0 then
 			var i as integer = -1
-			do until i = (Length - 1)
-				i = i + 1		
+			do until i == --Length
+				i++		
 				if sd::Invoke(ItemArray[i]::Value)
 					al1::Add(ItemArray[i]::Value)
 				end if
@@ -243,14 +235,14 @@ class public auto ansi ALList<of U>
 		var sb as StringBuilder = new StringBuilder()
 		sb::Append("{")
 		
-		do until i = (Length - 1)
-			i = i + 1
-			if GetItemValue(i) = null then
+		do until i = --Length
+			i++
+			if $object$GetItemValue(i) == null then
 				sb::Append("null")
 			else
 				sb::Append(GetItemValue(i)::ToString())
 			end if
-			if i != (Length - 1) then
+			if i != --Length then
 				sb::Append(",")
 			end if
 		end do

@@ -1,9 +1,12 @@
 <Type Name="INegatable" FullName="dylan.NET.Tokenizer.AST.Interfaces.INegatable">
   <TypeSignature Language="C#" Value="public interface INegatable : dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
-  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract INegatable implements class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract INegatable extends System.Object implements class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
   <Interfaces>
     <Interface>
       <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable</InterfaceName>

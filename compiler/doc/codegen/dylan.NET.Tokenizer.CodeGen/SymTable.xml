@@ -1308,6 +1308,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ResetTypGenParams">
+      <MemberSignature Language="C#" Value="public static void ResetTypGenParams ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetTypGenParams() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ResetVar">
       <MemberSignature Language="C#" Value="public static void ResetVar ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetVar() cil managed" />
@@ -1385,6 +1403,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="SetTypGenParams">
+      <MemberSignature Language="C#" Value="public static void SetTypGenParams (string[] names, IKVM.Reflection.Emit.GenericTypeParameterBuilder[] actuals);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void SetTypGenParams(string[] names, class IKVM.Reflection.Emit.GenericTypeParameterBuilder[] actuals) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="names" Type="System.String[]" />
+        <Parameter Name="actuals" Type="IKVM.Reflection.Emit.GenericTypeParameterBuilder[]" />
+      </Parameters>
+      <Docs>
+        <param name="names">To be added.</param>
+        <param name="actuals">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="StoreFlg">
       <MemberSignature Language="C#" Value="public static bool StoreFlg;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool StoreFlg" />
@@ -1415,6 +1456,18 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.CodeGen.TypeList</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypGenParams">
+      <MemberSignature Language="C#" Value="public static C5.HashDictionary&lt;string,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; TypGenParams;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.HashDictionary`2&lt;string, class dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; TypGenParams" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;System.String,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

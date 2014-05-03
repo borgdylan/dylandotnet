@@ -182,42 +182,46 @@
       </Docs>
     </Member>
     <Member MemberName="GetCtor">
-      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.ConstructorBuilder GetCtor (IKVM.Reflection.Type[] paramst);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.Emit.ConstructorBuilder GetCtor(class IKVM.Reflection.Type[] paramst) cil managed" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.ConstructorInfo GetCtor (IKVM.Reflection.Type[] paramst, IKVM.Reflection.Type auxt);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.ConstructorInfo GetCtor(class IKVM.Reflection.Type[] paramst, class IKVM.Reflection.Type auxt) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>IKVM.Reflection.Emit.ConstructorBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.ConstructorInfo</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="paramst" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="auxt" Type="IKVM.Reflection.Type" />
       </Parameters>
       <Docs>
         <param name="paramst">To be added.</param>
+        <param name="auxt">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetField">
-      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.FieldBuilder GetField (string nam);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.Emit.FieldBuilder GetField(string nam) cil managed" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.FieldInfo GetField (string nam, IKVM.Reflection.Type auxt);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.FieldInfo GetField(string nam, class IKVM.Reflection.Type auxt) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>IKVM.Reflection.Emit.FieldBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.FieldInfo</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="nam" Type="System.String" />
+        <Parameter Name="auxt" Type="IKVM.Reflection.Type" />
       </Parameters>
       <Docs>
         <param name="nam">To be added.</param>
+        <param name="auxt">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetGenericMethod">
-      <MemberSignature Language="C#" Value="public IKVM.Reflection.MethodInfo GetGenericMethod (string nam, IKVM.Reflection.Type[] genparams, IKVM.Reflection.Type[] paramst);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.MethodInfo GetGenericMethod(string nam, class IKVM.Reflection.Type[] genparams, class IKVM.Reflection.Type[] paramst) cil managed" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.MethodInfo GetGenericMethod (string nam, IKVM.Reflection.Type[] genparams, IKVM.Reflection.Type[] paramst, IKVM.Reflection.Type auxt);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.MethodInfo GetGenericMethod(string nam, class IKVM.Reflection.Type[] genparams, class IKVM.Reflection.Type[] paramst, class IKVM.Reflection.Type auxt) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
@@ -226,30 +230,34 @@
         <Parameter Name="nam" Type="System.String" />
         <Parameter Name="genparams" Type="IKVM.Reflection.Type[]" />
         <Parameter Name="paramst" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="auxt" Type="IKVM.Reflection.Type" />
       </Parameters>
       <Docs>
         <param name="nam">To be added.</param>
         <param name="genparams">To be added.</param>
         <param name="paramst">To be added.</param>
+        <param name="auxt">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetMethod">
-      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.MethodBuilder GetMethod (string nam, IKVM.Reflection.Type[] paramst);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.Emit.MethodBuilder GetMethod(string nam, class IKVM.Reflection.Type[] paramst) cil managed" />
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.MethodInfo GetMethod (string nam, IKVM.Reflection.Type[] paramst, IKVM.Reflection.Type auxt);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.MethodInfo GetMethod(string nam, class IKVM.Reflection.Type[] paramst, class IKVM.Reflection.Type auxt) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>IKVM.Reflection.Emit.MethodBuilder</ReturnType>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="nam" Type="System.String" />
         <Parameter Name="paramst" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="auxt" Type="IKVM.Reflection.Type" />
       </Parameters>
       <Docs>
         <param name="nam">To be added.</param>
         <param name="paramst">To be added.</param>
+        <param name="auxt">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -410,6 +418,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="NrGenParams">
+      <MemberSignature Language="C#" Value="public int NrGenParams;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 NrGenParams" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ToString">
       <MemberSignature Language="C#" Value="public override string ToString ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
@@ -442,6 +462,18 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>C5.IList&lt;dylan.NET.Tokenizer.CodeGen.TypeItem&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypGenParams">
+      <MemberSignature Language="C#" Value="public C5.HashDictionary&lt;string,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; TypGenParams;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.HashDictionary`2&lt;string, class dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; TypGenParams" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;System.String,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

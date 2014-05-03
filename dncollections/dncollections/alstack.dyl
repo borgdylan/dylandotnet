@@ -13,15 +13,11 @@ class public auto ansi ALStack<of U> extends ALList<of U>
 	end method
 	
 	method public Item<of U> Peek()
-		if Length = 0 then
-			return null
-		else
-			return ItemArray[Length - 1]
-		end if
+		return #ternary {Length == 0 ? $Item<of U>$ null, ItemArray[Length - 1]}
 	end method
 	
 	method public Item<of U> Pop()
-		if Length = 0 then
+		if Length == 0 then
 			return null
 		else
 			var ite as Item<of U> = Peek()
@@ -35,15 +31,11 @@ class public auto ansi ALStack<of U> extends ALList<of U>
 	end method
 	
 	method public U PeekValue()
-		if Length = 0 then
-			return null
-		else
-			return ItemArray[Length - 1]::Value
-		end if
+		return #ternary {Length == 0 ? default U, ItemArray[Length - 1]::Value}
 	end method
 	
 	method public U PopValue()
-		if Length = 0 then
+		if Length == 0 then
 			return default U
 		else
 			var ite as Item<of U> = Peek()
