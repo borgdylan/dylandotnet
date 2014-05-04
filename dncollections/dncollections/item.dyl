@@ -56,14 +56,18 @@ namespace dylan.NET.Collections
 			return new Item<of T>(Value)
 		end method
 		
-		method public static Item<of T> MakeCopy(var ite as Item<of T>)
-			return new Item<of T>(ite::Value)
-		end method
-		
 		method public hidebysig virtual string ToString()
 			return $string$Index + #ternary {$object$Value == null ? ":null", ":" + Value::ToString()}
 		end method
 
+	end class
+
+	class public auto ansi ItemUtil
+		
+		method public static Item<of T> MakeCopy<of T>(var ite as Item<of T>)
+			return ite::MakeCopy()
+		end method
+	
 	end class
 	
 end namespace

@@ -563,7 +563,7 @@ class public auto ansi static Helpers
 					Loader::MakeArr = tt::IsArray
 					Loader::MakeRef = tt::IsByRef
 
-					if ParseUtils::StringParser(tt::Value,c"\\")[l] > 0 and !tt::Value::Contains(".") then
+					if (ParseUtils::StringParser(tt::Value,c"\\")[l] > 0) and !tt::Value::Contains(".") then
 						if AsmFactory::inClass then
 							var tti = #ternary { AsmFactory::isNested ? SymTable::CurnTypItem2 , SymTable::CurnTypItem}
 							if tti != null then

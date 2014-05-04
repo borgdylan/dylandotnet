@@ -128,7 +128,8 @@ class public auto ansi StmtReader
 
 			if !AsmFactory::isNested then
 				AsmFactory::CurnTypName = clss::ClassName::Value
-				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value, clssparams)
+				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value +  _
+					#ternary {nrgenparams > 0 ? "`" + $string$nrgenparams, string::Empty}, clssparams)
 				StreamUtils::WriteLine(string::Format("Adding Class: {0}.{1}" , AsmFactory::CurnNS, clss::ClassName::Value))
 
 				if clss::ClassName is GenericTypeTok then

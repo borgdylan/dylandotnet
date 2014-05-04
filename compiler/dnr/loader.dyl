@@ -32,7 +32,6 @@ class public auto ansi static Loader
 	end method
 	
 	method public static IKVM.Reflection.Type LoadClass(var name as string) 
-
 		var typ as IKVM.Reflection.Type = null
 		var nest as boolean = false
 		//var asmb as IKVM.Reflection.Emit.AssemblyBuilder
@@ -55,38 +54,39 @@ class public auto ansi static Loader
 				break
 			end if
 		end for
-	
-		try
-			foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
-				foreach curasm in Importer::Asms
-					if curasm == AsmFactory::AsmB then
-						//asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
-						typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
-						//,false,false)
-						if typ != null then
-							if nest then
-								typ = typ::GetNestedType(na[1])
-							end if
-							break
-						end if
-					else
-						typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
-						if typ != null then
-							if nest then
-								typ = typ::GetNestedType(na[1])
-							end if
-							break
-						end if
-					end if
-				end for
 				
-				if typ != null then
-					break
-				end if
+		foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
+			curns = curns ?? string::Empty
+			foreach curasm in Importer::Asms
+				try
+//					if curasm == AsmFactory::AsmB then
+//						//asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
+//						typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
+//						//,false,false)
+//						if typ != null then
+//							if nest then
+//								typ = typ::GetNestedType(na[1])
+//							end if
+//							break
+//						end if
+//					else
+						typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
+						if typ != null then
+							if nest then
+								typ = typ::GetNestedType(na[1])
+							end if
+							break
+						end if
+//					end if
+				catch ex as Exception
+					typ = null
+				end try
 			end for
-		catch ex as Exception
-			typ = null
-		end try
+				
+			if typ != null then
+				break
+			end if
+		end for
 		
 		PreProcTyp = typ
 

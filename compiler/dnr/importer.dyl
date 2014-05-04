@@ -9,7 +9,7 @@
 class public auto ansi static Importer
 
 	field public static C5.IList<of IKVM.Reflection.Assembly> Asms
-	field public static C5.IList<of string> Imps
+	//field public static C5.IList<of string> Imps
 	field public static C5.LinkedList<of C5.LinkedList<of string> > ImpsStack
 	field public static C5.IDictionary<of string,string> AliasMap
 	//field public static C5.IDictionary<of string, IKVM.Reflection.Type> TypeMap

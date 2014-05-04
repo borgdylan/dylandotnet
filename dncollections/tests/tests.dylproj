@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0743954A-3AE9-4604-ABAB-08BFC1A205A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>tests</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>tests</AssemblyName>
+    <UseMSBuildEngine>True</UseMSBuildEngine>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="nunit.framework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TestClass.dyl" />
+    <Compile Include="tests.dyl" />
+    <Compile Include="Properties\AssemblyInfo.dyl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\dncollections\dncollections.dylproj">
+      <Project>{06B1E0F5-93E7-444D-B682-89D076CF8DF0}</Project>
+      <Name>dncollections</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
