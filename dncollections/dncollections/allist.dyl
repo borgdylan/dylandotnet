@@ -249,7 +249,25 @@ class public auto ansi ALList<of U>
 		
 		sb::Append("}")
 		return sb::ToString()
-	
+	end method
+
+	method private boolean Filter(var cur as Item<of U>)
+		return cur != null
+	end method
+
+	method private Item<of U> MoveNext(var cur as Item<of U>)
+		return cur:GoNext()
+	end method
+
+	method private U Extract(var cur as Item<of U>)
+		return cur::Value
+	end method
+
+	method public IEnumerable<of U> AsEnumerable()
+		return EnumerableEx::Generate<of Item<of U>, U>(Head, _
+			new Func<of Item<of U>, boolean>(Filter), _
+			new Func<of Item<of U>, Item<of U> >(MoveNext), _
+			new Func<of Item<of U>, U>(Extract))
 	end method
 
 end class
