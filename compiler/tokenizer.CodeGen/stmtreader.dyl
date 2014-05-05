@@ -207,9 +207,17 @@ class public auto ansi StmtReader
 					elseif c is ClassTok then
 						gpa = gpa or GenericParameterAttributes::ReferenceTypeConstraint
 					elseif c is OutTok then
-						gpa = gpa or GenericParameterAttributes::Covariant
+						if ILEmitter::InterfaceFlg then
+							gpa = gpa or GenericParameterAttributes::Covariant
+						else
+							StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Covariance should only be used in generic interfaces or delegates")
+						end if
 					elseif c is InTok then
-						gpa = gpa or GenericParameterAttributes::Contravariant
+						if ILEmitter::InterfaceFlg then
+							gpa = gpa or GenericParameterAttributes::Contravariant
+						else
+							StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Contravariance should only be used in generic interfaces or delegates")
+						end if
 					elseif c is NewTok then
 						gpa = gpa or GenericParameterAttributes::DefaultConstructorConstraint
 						tpi::HasCtor = true
@@ -424,13 +432,13 @@ class public auto ansi StmtReader
 			AsmFactory::InitConstr()
 			
 			if ILEmitter::InterfaceFlg then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Interfaces should not have Constructors!")
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Interfaces should not have Constructors!")
 			elseif AsmFactory::CurnConB::get_IsPublic() and ILEmitter::AbstractCFlg then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Abstract Classes should not have Publicly Visible Constructors!")
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Abstract Classes should not have Publicly Visible Constructors!")
 			elseif !ILEmitter::StaticFlg and ILEmitter::StaticCFlg then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Static Classes should not have Instance Constructors but only Type Initializers!")
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Static Classes should not have Instance Constructors but only Type Initializers!")
 			elseif ILEmitter::StaticFlg and (paramstyps[l] != 0) then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type Initializers should NOT have any Parameters!")
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type Initializers should NOT have any Parameters!")
 			end if
 			
 //			if AsmFactory::isNested then
@@ -511,9 +519,9 @@ class public auto ansi StmtReader
 								elseif c is ClassTok then
 									gpa = gpa or GenericParameterAttributes::ReferenceTypeConstraint
 								elseif c is OutTok then
-									gpa = gpa or GenericParameterAttributes::Covariant
+									StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Covariance should not be used in generic methods")
 								elseif c is InTok then
-									gpa = gpa or GenericParameterAttributes::Contravariant
+									StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Contravariance should not be used in generic methods")
 								elseif c is NewTok then
 									gpa = gpa or GenericParameterAttributes::DefaultConstructorConstraint
 									tpi::HasCtor = true
