@@ -1,15 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="tests/TestClass.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dncollections/allist.dyl">
     <Files>
-      <File FileName="dncollections/item.dyl" Line="1" Column="1" />
+      <File FileName="dncollections/item.dyl" Line="25" Column="3" />
       <File FileName="dncollections/dncollections.dyl" Line="1" Column="1" />
       <File FileName="dncollections/allist.dyl" Line="1" Column="1" />
       <File FileName="dncollections/alstack.dyl" Line="1" Column="1" />
       <File FileName="dncollections/alqueue.dyl" Line="1" Column="1" />
-      <File FileName="tests/tests.dyl" Line="1" Column="1" />
-      <File FileName="tests/TestClass.dyl" Line="9" Column="1" />
+      <File FileName="tests/tests.dyl" Line="15" Column="19" />
+      <File FileName="tests/TestItem.dyl" Line="22" Column="13" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="tests" expanded="True" selected="True">
+            <Node name="tests" expanded="True">
+              <Node name="TestClass" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

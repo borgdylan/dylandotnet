@@ -891,10 +891,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Reflection.Importer.Imps">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="F:dylan.NET.Reflection.Importer.ImpsStack">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

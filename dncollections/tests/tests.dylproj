@@ -33,9 +33,9 @@
     <Reference Include="nunit.framework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestClass.dyl" />
     <Compile Include="tests.dyl" />
     <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="TestItem.dyl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
   <ItemGroup>

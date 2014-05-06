@@ -12,4 +12,4 @@ import dylan.NET.Collections
 #include "msbuild.dyl"
 #include "Properties/AssemblyInfo.dyl"
 
-#include "TestClass.dyl"
+#include "TestItem.dyl"

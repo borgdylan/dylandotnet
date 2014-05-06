@@ -91,18 +91,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Imps">
-      <MemberSignature Language="C#" Value="public static C5.IList&lt;string&gt; Imps;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;string&gt; Imps" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>C5.IList&lt;System.String&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ImpsStack">
       <MemberSignature Language="C#" Value="public static C5.LinkedList&lt;C5.LinkedList&lt;string&gt;&gt; ImpsStack;" />
       <MemberSignature Language="ILAsm" Value=".field public static class C5.LinkedList`1&lt;class C5.LinkedList`1&lt;string&gt;&gt; ImpsStack" />

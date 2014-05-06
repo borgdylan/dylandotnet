@@ -20,6 +20,7 @@ namespace dylan.NET.Collections
 			Next = null
 			Previous = null
 			Index = -1
+			Value = default T
 		end method
 		
 		method public void Item(var o as T)
@@ -62,7 +63,7 @@ namespace dylan.NET.Collections
 
 	end class
 
-	class public auto ansi ItemUtil
+	class public auto ansi Item
 		
 		method public static Item<of T> MakeCopy<of T>(var ite as Item<of T>)
 			return ite::MakeCopy()
