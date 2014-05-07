@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<Template originator="Michael Hutchinson"
+          Language="dylan.NET"
+          created="2009/02/17"
+          lastModified="2009/02/17">
+	
+	<TemplateConfiguration>
+		<_Name>WebAPI Controller</_Name>
+		<Icon>md-file-source</Icon>
+		<ProjectType>AspNetMvc</ProjectType>
+		<_Category>ASP.NET MVC</_Category>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates a dylan.NET WebAPI controller.</_Description>
+		<DefaultFilename>APIController</DefaultFilename>
+	</TemplateConfiguration>
+
+	<Conditions>
+		<ParentProject PermittedCreationPaths="Controllers" RequireProject="True"/>
+	</Conditions>
+
+	<TemplateFiles>
+		<File DefaultExtension=".dyl" DefaultName="APIController" AddStandardHeader="True">
+		<![CDATA[namespace ${Namespace}.Controllers
+
+	class public auto ansi ${Name} extends System.Web.Http.ApiController
+		
+		method public string Get()
+			return "Hello from this API controller!"
+		end method
+		
+	end class
+	
+end namespace]]>
+		</File>
+	</TemplateFiles>
+	
+	<FileOptions/>
+	
+</Template>

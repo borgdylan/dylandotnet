@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Template originator   = "Mike Krueger"
+          created      = "02/01/2003"
+          lastModified = "02/01/2003">
+	
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>Library</_Name>
+		<_Category>dylan.NET</_Category>
+		<Icon>md-project-library</Icon>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates an empty dylan.NET class library</_Description>
+		<DefaultFilename>EmptyLibrary</DefaultFilename>
+	</TemplateConfiguration>
+	
+	<!-- Actions -->
+	<Actions>
+		<Open filename = "MyClass.dyl"/>
+	</Actions>
+	
+	<!-- Template Content -->
+	<Combine name = "${ProjectName}" directory = ".">
+		<Options>
+			<StartupProject>${ProjectName}</StartupProject>
+		</Options>
+		
+		<Project name = "${ProjectName}" directory = ".">
+			<Options Target = "Library" PauseConsoleOutput = "False" />
+			<References>
+				<Reference type="Package" refto="System" />
+				<Reference type="Package" refto="mscorlib" />
+				<Reference type="Package" refto="System.Core" />
+				<Reference type="Package" refto="System.Xml.Linq" />
+				<Reference type="Package" refto="System.Xml" />
+			</References>
+			<Files>
+				<File name="MyClass.dyl" AddStandardHeader="True"><![CDATA[namespace ${Namespace}
+
+	class public auto ansi MyClass
+		
+	end class
+	
+end namespace]]></File>
+				<File name="${ProjectName}.dyl" AddStandardHeader="True"><![CDATA[#include "msbuild.dyl"
+#include "Properties/AssemblyInfo.dyl"
+
+import System
+import System.Collections
+import System.Collections.Generic
+import System.Linq
+import System.Xml
+import System.Xml.Linq
+import System.Linq.Expressions
+
+#include "MyClass.dyl"]]></File>
+				<!--<FileTemplateReference TemplateID="EmptyClass" name="MyClass.cs" />-->
+				<FileTemplateReference TemplateID="dylanNetAssemblyInfo" name="AssemblyInfo.dyl" />
+			</Files>
+		</Project>
+	</Combine>
+</Template>

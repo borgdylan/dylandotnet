@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Template Originator="Mike Krueger" Language="dylan.NET" Created="3/09/2001" LastModified="3/09/2001">
+	
+	<TemplateConfiguration>
+		<_Name>Model</_Name>
+		<Icon>md-file-source</Icon>
+		<ProjectType>AspNetMvc</ProjectType>
+		<_Category>ASP.NET MVC</_Category>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates a dylan.NET model.</_Description>
+		<DefaultFilename>Model</DefaultFilename>
+	</TemplateConfiguration>
+
+	<Conditions>
+		<ParentProject PermittedCreationPaths="Models" RequireProject="True"/>
+	</Conditions>
+
+	<TemplateFiles>
+		<File DefaultExtension=".dyl" DefaultName="Model" AddStandardHeader="True">
+		<![CDATA[namespace ${Namespace}.Models
+
+	class public auto ansi ${Name}
+		
+	end class
+	
+end namespace]]>
+		</File>
+	</TemplateFiles>
+	
+	<FileOptions/>
+	
+</Template>

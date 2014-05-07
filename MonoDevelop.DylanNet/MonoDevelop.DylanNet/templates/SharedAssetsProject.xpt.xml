@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<Template originator   = "Mike Krueger"
+          created      = "02/01/2003"
+          lastModified = "02/01/2003">
+	
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>Shared Assets Project</_Name>
+		<_Category>dylan.NET</_Category>
+		<Icon>md-project-shared-assets</Icon>
+		<_Description>Creates an empty shared assets project</_Description>
+		<DefaultFilename>Shared</DefaultFilename>
+		<LanguageName>dylan.NET</LanguageName>
+	</TemplateConfiguration>
+	
+	<!-- Actions -->
+	<Actions>
+		<Open filename = "MyClass.dyl"/>
+	</Actions>
+	
+	<!-- Template Content -->
+	<Combine name = "${ProjectName}" directory = ".">
+		<Options>
+			<StartupProject>${ProjectName}</StartupProject>
+		</Options>
+		
+		<Project name = "${ProjectName}" directory = "." type = "SharedAssetsProject">
+			<Files>
+				<File name="MyClass.dyl" AddStandardHeader="True"><![CDATA[namespace ${Namespace}
+
+	class public auto ansi MyClass
+		
+	end class
+	
+end namespace]]></File>
+			</Files>
+		</Project>
+	</Combine>
+</Template>

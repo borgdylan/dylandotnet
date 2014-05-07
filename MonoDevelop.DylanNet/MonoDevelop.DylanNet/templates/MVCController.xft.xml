@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<Template originator="Michael Hutchinson"
+          Language="dylan.NET"
+          created="2009/02/17"
+          lastModified="2009/02/17">
+	
+	<TemplateConfiguration>
+		<_Name>MVC Controller</_Name>
+		<Icon>md-file-source</Icon>
+		<ProjectType>AspNetMvc</ProjectType>
+		<_Category>ASP.NET MVC</_Category>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates a dylan.NET MVC controller.</_Description>
+		<DefaultFilename>MVCController</DefaultFilename>
+	</TemplateConfiguration>
+
+	<Conditions>
+		<ParentProject PermittedCreationPaths="Controllers" RequireProject="True"/>
+	</Conditions>
+
+	<TemplateFiles>
+		<File DefaultExtension=".dyl" DefaultName="MVCController" AddStandardHeader="True">
+		<![CDATA[namespace ${Namespace}.Controllers
+
+	class public auto ansi ${Name} extends System.Web.Mvc.Controller
+		
+		method public string Index()
+			return "Hello from this controller!"
+		end method
+		
+	end class
+	
+end namespace]]>
+		</File>
+	</TemplateFiles>
+	
+	<FileOptions/>
+	
+</Template>

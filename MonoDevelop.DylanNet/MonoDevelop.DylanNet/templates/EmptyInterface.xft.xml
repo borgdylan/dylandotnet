@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Template Originator="Mike Krueger" Language="dylan.NET" Created="3/09/2001" LastModified="3/09/2001">
+	
+	<TemplateConfiguration>
+		<_Name>Empty Interface</_Name>
+		<Icon>md-interface-file</Icon>
+		<_Category>General</_Category>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates an empty dylan.NET interface.</_Description>
+		<DefaultFilename>EmptyInterface</DefaultFilename>
+	</TemplateConfiguration>
+	
+	<TemplateFiles>
+		<File DefaultExtension=".dyl" DefaultName="EmptyInterface" AddStandardHeader="True">
+		<![CDATA[namespace ${Namespace}
+
+	class public auto ansi abstract interface ${Name}
+		
+	end class
+	
+end namespace]]>
+		</File>
+	</TemplateFiles>
+	
+	<FileOptions/>
+	
+</Template>

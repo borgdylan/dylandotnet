@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<Template Originator="Mike Krueger" Language="dylan.NET" Created="3/09/2001" LastModified="3/09/2001">
+	
+	<TemplateConfiguration>
+		<_Name>Empty Resource Script</_Name>
+		<Icon>md-text-file-icon</Icon>
+		<_Category>General</_Category>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates an empty dylan.NET resource script.</_Description>
+		<DefaultFilename>EmptyResScript</DefaultFilename>
+	</TemplateConfiguration>
+	
+	<TemplateFiles>
+		<File DefaultExtension=".dylres" DefaultName="EmptyResScript" AddStandardHeader="True" BuildAction="ResScript"></File>
+	</TemplateFiles>
+	
+	<FileOptions/>
+	
+</Template>

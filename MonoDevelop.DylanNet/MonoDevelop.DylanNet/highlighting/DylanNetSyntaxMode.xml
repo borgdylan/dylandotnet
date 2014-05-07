@@ -1,0 +1,380 @@
+<!-- DylanNetSyntaxMode.xml
+
+ Author:
+   Mike Krüger <mkrueger@novell.com>
+   Dylan Borg <borgdylan@hotmail.com>
+
+ Copyright (c) 2008 Novell, Inc (http://www.novell.com)
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE. -->
+ 
+<SyntaxMode name = "dylan.NET" mimeTypes="text/x-dylandotnet">
+	<Property name="LineComment">//</Property>
+	<Property name="StringQuote">&quot;</Property>
+	<Property name="StringQuote">'</Property>
+
+	<Delimiters>&lt;&gt;~!%*()-+=|/{}[]:"' ,?$</Delimiters>  
+	
+	<EolSpan color = "Comment(Line)" rule="Comment">//</EolSpan>
+	
+	<!--<Span color = "Comment(Block)" rule="Comment">
+		<Begin>/*</Begin>
+		<End>*/</End>
+	</Span>-->
+	
+	<Span color = "String" rule="String" stopateol = "true" escape='\"'>
+		<Begin>"</Begin>
+		<End>"</End>
+	</Span>
+	
+	<Span color = "String" rule="String" stopateol = "true" escape='\'>
+		<Begin>'</Begin>
+		<End>'</End>
+	</Span>
+	
+	<Span color = "Keyword(Type)">
+		<Begin>$</Begin>
+		<End>$</End>
+	</Span>
+	
+	<Keywords color = "Keyword(Access)">
+		<Word>me</Word>
+		<Word>ctor</Word>
+		<Word>mybase</Word>
+		<!--<Word>MyClass</Word>-->
+	</Keywords>
+	
+	<Keywords color = "Keyword(Operator)">
+		<Word>and</Word>
+		<Word>nand</Word>	
+		<Word>is</Word>
+		<Word>notlike</Word>
+		<Word>like</Word>
+		<Word>new</Word>
+		<Word>or</Word>
+		<Word>xor</Word>
+		<Word>nor</Word>
+		<Word>xnor</Word>
+		<Word>as</Word>
+		<Word>ref</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Selection)">
+		<Word>if</Word>
+		<Word>then</Word>
+		<Word>else</Word>
+		<Word>elseif</Word>
+		<Word>end</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Iteration)">
+		<Word>for</Word>
+		<Word>upto</Word>
+		<Word>downto</Word>		
+		<Word>step</Word>
+		<Word>foreach</Word>
+		<Word>in</Word>
+		
+		<Word>lock</Word>
+		<Word>trylock</Word>
+		<Word>using</Word>
+		<Word>do</Word>
+		<Word>while</Word>
+		<Word>until</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Jump)">
+		<Word>goto</Word>
+		<Word>continue</Word>
+		<Word>break</Word>
+		<Word>return</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Context)">
+		<Word>var</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Exception)">
+		<Word>try</Word>
+		<Word>catch</Word>
+		<Word>finally</Word>
+
+		<Word>throw</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Constants)">
+		<Word>false</Word>
+		<Word>null</Word>
+		<Word>true</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Modifiers)">
+		<Word>assembly</Word>
+		<Word>private</Word>
+		<Word>family</Word>
+		<Word>public</Word>
+		<Word>famorassem</Word>
+		<Word>famandassem</Word>
+		
+		<Word>auto</Word>
+		<Word>sequential</Word>
+		<Word>autochar</Word>
+		<Word>ansi</Word>
+		<Word>literal</Word>
+		<Word>sealed</Word>
+		<Word>hidebysig</Word>
+		<Word>virtual</Word>
+		<Word>partial</Word>
+		<Word>initonly</Word>
+		<Word>static</Word>
+		<Word>abstract</Word>
+		<Word>newslot</Word>
+		<Word>final</Word>
+		<Word>autogen</Word>
+		<Word>beforefieldinit</Word>
+		<Word>partial</Word>
+		<Word>prototype</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Type)">
+		<Word>boolean</Word>
+		<Word>byte</Word>
+		<Word>char</Word>
+		<Word>decimal</Word>
+		<Word>double</Word>
+		<Word>integer</Word>
+		<Word>long</Word>
+		<Word>object</Word>
+		<Word>sbyte</Word>
+		<Word>short</Word>
+		<Word>single</Word>
+		<Word>string</Word>
+		<Word>uinteger</Word>
+		<Word>ulong</Word>
+		<Word>ushort</Word>
+		<Word>intptr</Word>
+		<Word>void</Word>
+	</Keywords>
+	
+	
+	<Keywords color = "Keyword(Namespace)">
+		<Word>namespace</Word>
+		<Word>import</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Property)">
+		<Word>method</Word>
+		<Word>field</Word>
+		<Word>get</Word>
+		<Word>set</Word>
+		<Word>add</Word>
+		<Word>remove</Word>
+		<Word>property</Word>
+		<Word>event</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Declaration)">
+		<Word>class</Word>
+		<Word>assembly</Word>
+		<Word>ver</Word>
+		<Word>implements</Word>
+		<Word>extends</Word>
+		<Word>interface</Word>
+		<Word>delegate</Word>
+		<Word>struct</Word>
+		<Word>enum</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Parameter)">
+		<Word>in</Word>
+		<Word>out</Word>
+		<Word>inout</Word>
+	</Keywords>
+	
+	<Keywords color = "Keyword(Other)">
+		<Word>as</Word>
+		<Word>of</Word>
+		<Word>on</Word>
+		<Word>off</Word>
+		<Word>exe</Word>
+		<Word>winexe</Word>
+		<Word>dll</Word>
+		<Word>new</Word>
+		<Word>end</Word>
+		<Word>where</Word>
+
+		<Word>gettype</Word>
+		<Word>default</Word>
+		<Word>place</Word>
+		<Word>label</Word>
+		<Word>#expr</Word>
+		<Word>#ternary</Word>
+	</Keywords>
+	<Keywords color = "Keyword(Type)">
+		<Word>boolean</Word>
+		<Word>byte</Word>
+		<Word>char</Word>
+		<Word>decimal</Word>
+		<Word>double</Word>
+		<Word>integer</Word>
+		<Word>long</Word>
+		<Word>object</Word>
+		<Word>sbyte</Word>
+		<Word>short</Word>
+		<Word>single</Word>
+		<Word>string</Word>
+		<Word>uinteger</Word>
+		<Word>ulong</Word>
+		<Word>ushort</Word>
+		<Word>intptr</Word>
+		<Word>void</Word>
+	</Keywords>
+
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor">#if</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor.empty">#else</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor">#elseif</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor.empty">#define</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor.empty">#undef</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor">#warning</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor">#error</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor">#expr</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor">#include</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor">#refasm</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor">#sign</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor">#refstdasm</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor">#debug</EolSpan>
+	<EolSpan tagColor = "Preprocessor" rule="text.preprocessor">#region</EolSpan>
+
+	<Rule name = "Comment">
+		<Keywords color="Comment Tag" ignorecase="True">
+			<Word>TODO</Word>
+			<Word>FIXME</Word>
+			<Word>HACK</Word>
+			<Word>UNDONE</Word>
+		</Keywords>	
+	</Rule>
+	
+	<Rule name = "String">
+		<Match color ="String(Escape)">\\(['qs\\abfnrtv]|x[0-9a-fA-F]{2,4}|0\d\d)</Match>
+	</Rule>
+
+	<Rule name = "text.preprocessor" ignorecase="False">
+		
+		<Keywords color = "Keyword(Constants)">
+			<Word>false</Word>
+			<Word>null</Word>
+			<Word>true</Word>
+		</Keywords>
+
+		<Keywords color = "Keyword(Other)">
+			<Word>as</Word>
+			<Word>of</Word>
+			<Word>new</Word>
+			<Word>on</Word>
+			<Word>off</Word>
+			<Word>gettype</Word>
+			<Word>default</Word>
+			<Word>#expr</Word>
+			<Word>#ternary</Word>
+		</Keywords>
+		
+		<Keywords color = "Punctuation">
+			<Word>==</Word>
+			<Word>!=</Word>
+			<Word>!</Word>
+		</Keywords>
+	
+		<Keywords color = "Punctuation(Brackets)">
+			<Word>(</Word>
+			<Word>)</Word>
+		</Keywords>
+
+		<Span color = "String" rule="String" stopateol = "true" escape='\'>
+			<Begin>&quot;</Begin>
+			<End>&quot;</End>
+		</Span>
+
+		<Span color = "String" rule="String" stopateol = "true" escape='\'>
+		<Begin>'</Begin>
+		<End>'</End>
+	</Span>
+	
+	<Span color = "Keyword(Type)">
+		<Begin>$</Begin>
+		<End>$</End>
+	</Span>
+	
+	<Keywords color = "Keyword(Access)">
+		<Word>me</Word>
+		<Word>ctor</Word>
+		<Word>mybase</Word>
+		<!--<Word>MyClass</Word>-->
+	</Keywords>
+	
+	<Keywords color = "Keyword(Operator)">
+		<Word>and</Word>
+		<Word>nand</Word>	
+		<Word>is</Word>
+		<Word>notlike</Word>
+		<Word>like</Word>
+		<Word>new</Word>
+		<Word>or</Word>
+		<Word>xor</Word>
+		<Word>nor</Word>
+		<Word>xnor</Word>
+		<Word>as</Word>
+		<Word>ref</Word>
+	</Keywords>
+		<EolSpan color = "Comment(Line)" rule="Comment" tagColor="Comment(Line)">//</EolSpan>
+	</Rule>
+
+	<Rule name = "text.preprocessor.empty" ignorecase="True">
+		<EolSpan color = "Comment(Line)" rule="Comment" tagColor="Comment(Line)">//</EolSpan>
+	</Rule>
+
+	<Match color = "Number">CSharpNumber</Match>
+	
+	<Keywords color = "Punctuation">
+		<Word>+</Word>
+		<Word>-</Word>
+		<Word>*</Word>
+		<Word>/</Word>
+		<Word>%</Word>
+		
+		<Word>?</Word>
+		<Word>:</Word>
+		
+		<Word>=</Word>
+		<Word>,</Word>
+		<Word>.</Word>
+	</Keywords>
+	
+	<Keywords color = "Punctuation(Brackets)">
+		<Word>(</Word>
+		<Word>)</Word>
+		<Word>&lt;</Word>
+		<Word>&gt;</Word>
+		<Word>{</Word>
+		<Word>}</Word>
+		<Word>[</Word>
+		<Word>]</Word>
+	</Keywords>
+
+
+</SyntaxMode>

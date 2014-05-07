@@ -1,0 +1,92 @@
+﻿<?xml version="1.0"?>
+<Template originator="Piotr Dowgiallo"
+          created="2012/05/16"
+          lastModified="2012/05/16">
+
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>Empty ASP.NET MVC 3 Project</_Name>
+		<_Category>dylan.NET/ASP.NET</_Category>
+		<Icon>md-project-web</Icon>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates an empty ASP.NET MVC 3 Web Project.</_Description>
+		<DefaultFilename>EmptyMvc3Project</DefaultFilename>
+	</TemplateConfiguration>
+
+	<!-- Actions -->
+	<Actions>
+	</Actions>
+
+	<!-- Template Content -->
+	<Combine name = "${ProjectName}" directory = ".">
+		<Options>
+			<StartupProject>${ProjectName}</StartupProject>
+		</Options>
+
+		<Project name = "${ProjectName}" directory = "." type = "AspNetMvc3">
+			<Options Target = "Library" TargetFrameworkVersion = "4.5" />
+			<References>
+				<Reference type="Package" refto="mscorlib" />
+				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+				<Reference type="Package" refto="System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Core" />
+				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+				<Reference type="Package" refto="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false"  />
+				<Reference type="Package" refto="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+				<Reference type="Package" refto="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false"  />
+				<Reference type="Package" refto="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+				<Reference type="Package" refto="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="True" />
+				<Reference type="Package" refto="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="True"  />
+				<Reference type="Package" refto="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="True" />
+				<Reference type="Package" refto="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"  SpecificVersion="True"  CopyLocal="True" />
+				<Reference type="Package" refto="System.Web.DynamicData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+				<Reference type="Package" refto="System.ComponentModel.DataAnnotations, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
+				<Reference type="Package" refto="System.Xml.Linq" />
+			</References>
+			
+			<Files>
+				<Directory name="Content" />
+				<Directory name="Controllers" />
+				<Directory name="Models" />
+				<Directory name="Scripts" />
+				<Directory name="Views">
+				</Directory>
+				<File name="${ProjectName}.dyl" AddStandardHeader="True"><![CDATA[#include "msbuild.dyl"
+#include "Properties/AssemblyInfo.dyl"
+
+import System
+import System.Collections
+import System.Collections.Generic
+import System.Linq
+import System.Xml
+import System.Xml.Linq
+import System.Collections.Concurrent
+import System.Linq.Expressions
+import System.Web
+import System.Net
+import System.Web.Helpers
+import System.Net.Http
+import System.Net.Http.Headers
+import System.Net.Http.Formatting
+import System.Web.Mvc
+import System.Web.Routing
+import System.Web.Security
+import System.Web.Http
+import System.ComponentModel.DataAnnotations
+import System.ComponentModel.DataAnnotations.Schema
+import ${ProjectName}.Models
+import ${ProjectName}.Filters
+import ${ProjectName}.Controllers
+import ${ProjectName}
+
+#include "Global.asax.dyl"
+]]></File>
+				<FileTemplateReference TemplateID="dylanNetAspMvc3GlobalAsax" name="Global.asax" SuppressAutoOpen="true"  />
+				<FileTemplateReference TemplateID="dylanNetAssemblyInfo" name="AssemblyInfo.dyl" SuppressAutoOpen="true" />
+				<FileTemplateReference TemplateID="dylanNetAspMvc3WebConfigApp" name="Web.config" SuppressAutoOpen="true" />
+			</Files>
+		</Project>
+	</Combine>
+</Template>

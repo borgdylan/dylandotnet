@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5E03559E-5026-4EF7-BB03-72AA2CE0AEF9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>MonoDevelop.DylanNet</AssemblyName>
+    <ReleaseVersion>2.6.2.0</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <RootNamespace>MonoDevelop.DylanNet</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Mono.TextEditor">
+      <HintPath>..\..\..\..\..\git\monodevelop\main\build\bin\Mono.TextEditor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <HintPath>..\..\..\..\..\git\monodevelop\main\build\bin\MonoDevelop.Ide.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>..\..\..\..\..\git\monodevelop\main\build\bin\MonoDevelop.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="tokenizer.Parser">
+      <HintPath>..\..\compiler\4.0\tokenizer.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="tokenizer.Lexer">
+      <HintPath>..\..\compiler\4.0\tokenizer.Lexer.dll</HintPath>
+    </Reference>
+    <Reference Include="tokenizer.AST">
+      <HintPath>..\..\compiler\4.0\tokenizer.AST.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory.CSharp">
+      <HintPath>..\..\..\..\..\git\monodevelop\main\build\bin\ICSharpCode.NRefactory.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MonoDevelop.DylanNet.dyl" />
+    <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="DateInserterCommands.dyl" />
+    <Compile Include="InsertDateHandler.dyl" />
+    <Compile Include="InsertNextHandler.dyl" />
+    <Compile Include="DNConfigurationParameters.dyl" />
+    <Compile Include="DNProjectParameters.dyl" />
+    <Compile Include="DNLanguageBinding.dyl" />
+    <Compile Include="CompilerOptionsPanel.dyl" />
+    <Compile Include="CodeGenerationPanel.dyl" />
+    <Compile Include="DocumentParser.dyl" />
+    <Compile Include="PathedDocumentExtension.dyl" />
+    <Compile Include="SurroundIfHandler.dyl" />
+    <Compile Include="Utils.dyl" />
+    <Compile Include="SurroundLockHandler.dyl" />
+    <Compile Include="SurroundTryCatchHandler.dyl" />
+    <Compile Include="SurroundTryFinallyHandler.dyl" />
+    <Compile Include="SurroundTryCatchFinallyHandler.dyl" />
+    <Compile Include="SurroundUsingHandler.dyl" />
+    <Compile Include="SurroundForHandler.dyl" />
+    <Compile Include="SurroundForeachHandler.dyl" />
+    <Compile Include="SurroundDoWhileHandler.dyl" />
+    <Compile Include="SurroundDoUntilHandler.dyl" />
+    <Compile Include="SurroundDo_UntilHandler.dyl" />
+    <Compile Include="SurroundDo_WhileHandler.dyl" />
+    <Compile Include="SurroundIfElseHandler.dyl" />
+    <Compile Include="SurroundHIfHandler.dyl" />
+    <Compile Include="SurroundHIfHElseHandler.dyl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <ItemGroup>
+    <Folder Include="templates\" />
+    <Folder Include="Properties\" />
+    <Folder Include="highlighting\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="highlighting\DylanNetSyntaxMode.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MonoDevelop.DylanNet.addin.xml">
+      <LogicalName>MonoDevelop.DylanNet.addin.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\ConsoleProject.xpt.xml">
+      <LogicalName>ConsoleProject.xpt.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\EmptyDNFile.xft.xml">
+      <LogicalName>EmptyDNFile.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\EmptyProject.xpt.xml">
+      <LogicalName>EmptyProject.xpt.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\Library.xpt.xml">
+      <LogicalName>Library.xpt.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\PortableLibrary.xpt.xml">
+      <LogicalName>PortableLibrary.xpt.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\AssemblyInfo.xft.xml">
+      <LogicalName>AssemblyInfo.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\EmptyClass.xft.xml">
+      <LogicalName>EmptyClass.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\EmptyStruct.xft.xml">
+      <LogicalName>EmptyStruct.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\EmptyEnum.xft.xml">
+      <LogicalName>EmptyEnum.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\EmptyInterface.xft.xml">
+      <LogicalName>EmptyInterface.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\EmptyProjectMvc3.xpt.xml">
+      <LogicalName>EmptyProjectMvc3.xpt.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\GlobalAsaxMvc3.xft.xml">
+      <LogicalName>GlobalAsaxMvc3.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\WebConfigAppMvc3.xft.xml">
+      <LogicalName>WebConfigAppMvc3.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\MVCController.xft.xml">
+      <LogicalName>MVCController.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\APIController.xft.xml">
+      <LogicalName>APIController.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\NUnitProject.xpt.xml">
+      <LogicalName>NUnitProject.xpt.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\NUnitTestClass.xft.xml">
+      <LogicalName>NUnitTestClass.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\Model.xft.xml">
+      <LogicalName>Model.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\EmptyRPFile.xft.xml">
+      <LogicalName>EmptyRPFile.xft.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\SharedAssetsProject.xpt.xml">
+      <LogicalName>SharedAssetsProject.xpt.xml</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <StandardHeader Text="//    MonoDevelop.DylanNet.dll MonoDevelop.DylanNet Copyright (C) 2014 Dylan Borg &lt;borgdylan@hotmail.com&gt;&#xA;//    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software&#xA;// Foundation; either version 3 of the License, or (at your option) any later version.&#xA;//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A &#xA;//PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.&#xA;//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple &#xA;//Place, Suite 330, Boston, MA 02111-1307 USA " IncludeInNewFiles="True" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

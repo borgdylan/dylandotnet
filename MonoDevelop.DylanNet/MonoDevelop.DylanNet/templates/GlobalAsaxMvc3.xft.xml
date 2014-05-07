@@ -1,0 +1,85 @@
+﻿<?xml version="1.0"?>
+<Template Originator="Piotr Dowgiallo"
+          Created="2012/05/16"
+          LastModified="2012/05/16">
+
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>ASP.NET MVC 3 Global.asax</_Name>
+		<_Category>ASP.NET MVC</_Category>
+		<Icon>md-html-file-icon</Icon>
+		<LanguageName>dylan.NET</LanguageName>
+		<ProjectType>AspNetMvc</ProjectType>
+		<DefaultFilename IsFixed="True">Global.asax</DefaultFilename>
+		<_Description>Creates an ASP.NET MVC 3 Global.asax file.</_Description>
+	</TemplateConfiguration>
+
+	<Conditions>
+		<ParentProject PermittedCreationPaths="" ExcludedFiles="/Global.asax" />
+	</Conditions>
+
+	<!-- Template Content -->
+	<TemplateFiles>
+		<AspNetFile name="Global.asax">
+			<FileText>
+<![CDATA[<%@ Application Inherits="${Namespace}.MvcApplication" %>]]>
+			</FileText>
+		</AspNetFile>
+		<File name="Global.asax.dyl" DependsOn="Global.asax" >
+<![CDATA[namespace ${Namespace}
+	
+	class public auto ansi sealed beforefieldinit DefaultsObject
+		
+		property public initonly autogen string controller
+		property public initonly autogen string action
+		property public initonly autogen object id
+
+		method public void DefaultsObject(var controller as string, var action as string, var id as object)
+			me::ctor()
+			_controller = controller
+			_action = action
+			_id = id
+		end method
+	
+	end class
+	
+	class public auto ansi sealed beforefieldinit DefaultsObject2
+
+		property public initonly autogen object id
+		
+		method public void DefaultsObject2(var id as object)
+			_id = id
+		end method
+
+	end class
+
+    class public auto ansi MvcApplication extends System.Web.HttpApplication	
+	
+		method public static void RegisterRoutes(var routes as RouteCollection)
+			RouteCollectionExtensions::IgnoreRoute(routes,"{resource}.axd/{*pathInfo}")
+			RouteCollectionExtensions::MapRoute(routes, "Default", "{controller}/{action}/{id}", new DefaultsObject("Home", "Index" , UrlParameter::Optional))
+		end method
+		
+		method public static void RegisterApiRoutes(var config as HttpConfiguration)
+			HttpRouteCollectionExtensions::MapHttpRoute(config::get_Routes(), "DefaultApi", "api/{controller}/{id}", new DefaultsObject2(RouteParameter::Optional))
+		end method
+		
+		method public static void RegisterGlobalFilters(var filters as GlobalFilterCollection)
+		end method
+	
+		method family void Application_Start()
+			AreaRegistration::RegisterAllAreas()
+			RegisterApiRoutes(GlobalConfiguration::get_Configuration())
+			RegisterRoutes(RouteTable::get_Routes())
+			RegisterGlobalFilters(GlobalFilters::get_Filters())
+		end method
+		
+		method family void Application_End()
+		end method
+			
+	end class
+
+end namespace]]>
+		</File>
+	</TemplateFiles>
+</Template>

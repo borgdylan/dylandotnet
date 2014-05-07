@@ -1,0 +1,60 @@
+﻿<Properties>
+  <AuthorInfo Name="Dylan Borg" Email="" Copyright="Copyright (C) 2013 Dylan Borg" Company="" Trademark="" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.DylanNet/MonoDevelop.DylanNet.dylproj">
+    <Files>
+      <File FileName="MonoDevelop.DylanNet/PathedDocumentExtension.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/DocumentParser.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/NUnitProject.xpt.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/Model.xft.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/MVCController.xft.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/EmptyProject.xpt.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/EmptyDNFile.xft.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/AssemblyInfo.xft.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/ConsoleProject.xpt.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/EmptyRPFile.xft.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/EmptyEnum.xft.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/EmptyInterface.xft.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/Library.xpt.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/PortableLibrary.xpt.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/SharedAssetsProject.xpt.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/MonoDevelop.DylanNet.addin.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/APIController.xft.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/WebConfigAppMvc3.xft.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/EmptyProjectMvc3.xpt.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/GlobalAsaxMvc3.xft.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/NUnitTestClass.xft.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/highlighting/DylanNetSyntaxMode.xml" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/CodeGenerationPanel.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/CompilerOptionsPanel.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/DateInserterCommands.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/DNConfigurationParameters.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/DNLanguageBinding.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/DNProjectParameters.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/InsertDateHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/InsertNextHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/MonoDevelop.DylanNet.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundDo_UntilHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundDo_WhileHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundDoUntilHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundDoWhileHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundForeachHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundForHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundHIfHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundHIfHElseHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundIfElseHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundIfHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundLockHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundTryCatchFinallyHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundTryCatchHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundTryFinallyHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundUsingHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/Utils.dyl" Line="22" Column="30" />
+      <File FileName="MonoDevelop.DylanNet/MonoDevelop.DylanNet.dylproj" Line="39" Column="26" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

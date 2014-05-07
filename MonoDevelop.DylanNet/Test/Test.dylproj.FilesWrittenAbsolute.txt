@@ -1,0 +1,5 @@
+/var/www/Code/dylannet/MonoDevelop.DylanNet/Test/msbuild.dyl
+/var/www/Code/dylannet/MonoDevelop.DylanNet/Test/bin/Debug/Test.exe.mdb
+/var/www/Code/dylannet/MonoDevelop.DylanNet/Test/bin/Debug/Test.exe
+/var/www/Code/dylannet/MonoDevelop.DylanNet/Test/.NETFramework,Version=v4.5.AssemblyAttribute.dyl
+/var/www/Code/dylannet/MonoDevelop.DylanNet/Test/bin/Release/Test.exe

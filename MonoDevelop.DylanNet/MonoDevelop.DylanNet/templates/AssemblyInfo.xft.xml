@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Template
+	Originator="Michael Hutchinson"
+	Created="2007/12/13"
+	LastModified="2007/12/13">
+
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>Assembly Information</_Name>
+		<_Category>Misc</_Category>
+		<Icon>md-file-source</Icon>
+		<LanguageName>dylan.NET</LanguageName>
+		<DefaultFilename IsFixed="True">AssemblyInfo.dyl</DefaultFilename>
+		<_Description>A file defining assembly information attributes.</_Description>
+	</TemplateConfiguration>
+	
+	<Conditions>
+		<ParentProject PermittedCreationPaths="" ExcludedFiles="AssemblyInfo.dyl" RequireProject="True"/>
+	</Conditions>
+
+	<!-- Template Content -->
+	<TemplateFiles>
+        <File name="Properties/AssemblyInfo.dyl" AddStandardHeader="True">
+			<![CDATA[// Information about this assembly is defined by the following attributes. 
+// Change them to the values specific to your project.
+
+[assembly: System.Reflection.AssemblyDescription("")]
+[assembly: System.Reflection.AssemblyCompany("${AuthorCompany}")]
+[assembly: System.Reflection.AssemblyProduct("")]
+[assembly: System.Reflection.AssemblyCopyright("${AuthorCopyright}")]
+[assembly: System.Reflection.AssemblyTrademark("${AuthorTrademark}")]
+[assembly: System.Reflection.AssemblyCulture("")]
+
+// The following attributes are used to specify the signing key for the assembly, 
+// if desired. See the Mono documentation for more information about signing.
+
+//[assembly: System.Reflection.AssemblyDelaySign(false)]
+//[assembly: System.Reflection.AssemblyKeyFile("")]
+]]></File>
+	</TemplateFiles>
+</Template>

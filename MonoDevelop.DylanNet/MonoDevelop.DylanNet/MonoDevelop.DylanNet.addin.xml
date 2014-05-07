@@ -1,0 +1,225 @@
+    <Addin namespace   = "MonoDevelop"  
+           id          = "DylanNet"  
+           name        = "dylan.NET"  
+           author      = "Dylan Borg"  
+           copyright   = "LGPL3"
+           url         = "http://launchpad.net/dylandotnet"  
+           description = "Provides support for dylan.NET."  
+           category    = "Language bindings"  
+           version     = "2.7.2.0"> 
+           
+           <Dependencies>  
+      			<Addin id="::MonoDevelop.Ide" version="5.0"/> 
+      			<Addin id="::MonoDevelop.Core" version="5.0"/>
+      		    <Addin id="::MonoDevelop.SourceEditor2" version="2.8.8.1"/>
+      			<Addin id="::MonoDevelop.Refactoring" version="5.0"/> 
+      			<Addin id="::MonoDevelop.AspNet.Mvc" version="5.0"/>
+      			<Addin id="::MonoDevelop.AspNet" version="5.0"/>
+      			<Addin id="::MonoDevelop.CSharpBinding" version="5.0"/>
+  			</Dependencies>
+  		
+  		<Extension path = "/MonoDevelop/Ide/Commands/Tools">  
+  			  <Command id = "MonoDevelop.DylanNet.DateInserterCommands.InsertDate"  
+             _label = "Insert Date"  
+             _description = "Insert the current date"
+             defaultHandler = "MonoDevelop.DylanNet.InsertDateHandler" />
+        </Extension>
+             
+        <Extension path = "/MonoDevelop/Ide/MainMenu/Tools">  
+             <CommandItem id="MonoDevelop.DylanNet.DateInserterCommands.InsertDate" />
+        </Extension>
+  		
+  		<Extension path = "/MonoDevelop/Ide/Commands/Tools">  
+  			  <Command id = "MonoDevelop.DylanNet.DateInserterCommands.InsertNext" 
+             _label = "Insert Next Integer"  
+             _description = "Insert the integer that occurs after the selected one"
+             defaultHandler = "MonoDevelop.DylanNet.InsertNextHandler" />
+        </Extension>
+             
+        <Extension path = "/MonoDevelop/Ide/MainMenu/Tools">
+             <CommandItem id="MonoDevelop.DylanNet.DateInserterCommands.InsertNext" />
+        </Extension>
+  		
+  		<ConditionType id="MSBuildTargetIsAvailable" type="MonoDevelop.Projects.Formats.MSBuild.TargetsAvailableCondition" />
+  		
+  		<Extension path = "/MonoDevelop/ProjectModel/MSBuildItemTypes">
+			<DotNetProject
+				language="dylan.NET"
+				extension="dylproj"
+				guid="{B3296CA8-08AE-42E6-8D7C-A1C9304440FD}"
+				type="MonoDevelop.Projects.DotNetProject"
+				import="$(MSBuildExtensionsPath)\dylan.NET.targets"
+				useXBuild="true">
+			</DotNetProject>
+			<DotNetProjectSubtype
+				guid="{b8f53a22-841f-42c4-9784-a1fd44586c5a}"
+				type="MonoDevelop.Projects.PortableDotNetProject"
+				useXBuild="true">
+				<AddImport language="dylan.NET" projects="$(MSBuildExtensionsPath)\dylan.NET.Portable.targets" />
+				<RemoveImport language="dylan.NET" projects="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+			</DotNetProjectSubtype>
+		</Extension>
+  		
+  		<Extension path = "/MonoDevelop/ProjectModel/LanguageBindings">  
+    		<LanguageBinding id="dylan.NET"  supportedextensions=".dyl"  class="MonoDevelop.DylanNet.DNLanguageBinding" />  
+		</Extension> 
+  		
+  		<Extension path = "/MonoDevelop/Core/MimeTypes">
+			<MimeType id="text/x-dylandotnet" _description="dylan.NET source code" icon="md-csharp-file" isText="true">
+				<File pattern="*.dyl" />
+			</MimeType>
+			<MimeType id="text/x-dylandotnet-resscript" _description="dylan.NET resource script" icon="md-file-source" isText="true">
+				<File pattern="*.dylres" />
+			</MimeType>
+			<MimeType id="application/dylproject+xml" _description="dylan.NET project file" baseType="application/x-msbuild">
+				<File pattern="*.dylproj" />
+			</MimeType>
+		</Extension>
+  		
+  		<Extension path = "/MonoDevelop/Ide/FileFilters">
+			<FileFilter id = "dylan.NET"
+		            insertbefore = "Assemblies"
+		            _label = "dylan.NET Files"
+		            extensions = "*.dyl"/>
+		    <FileFilter id = "dylan.NETRes"
+		            insertbefore = "Assemblies"
+		            _label = "dylan.NET Resource Scripts"
+		            extensions = "*.dylres"/>
+		</Extension>
+
+		<Extension path = "/MonoDevelop/ProjectModel/Gui/ItemOptionPanels/Build/General">
+			<Condition id="ActiveLanguage" value="dylan.NET">
+				<Panel id = "dylanNETCompilerOptionsPanel"
+			             _label = "dylan.NET"
+			             class = "MonoDevelop.DylanNet.CompilerOptionsPanel"/>
+			</Condition>
+		</Extension>
+
+		<Extension path = "/MonoDevelop/ProjectModel/Gui/ItemOptionPanels/Build/Compiler">
+		<Condition id="ActiveLanguage" value="dylan.NET">
+			<Panel id = "dylanNetCodeGenerationPanel"
+			             _label = "Compiler"
+			             class = "MonoDevelop.DylanNet.CodeGenerationPanel"/>
+		</Condition>
+	</Extension>
+  		
+		<Extension path = "/MonoDevelop/TypeSystem/Parser">
+			<Parser class = "MonoDevelop.DylanNet.DocumentParser" mimeType="text/x-dylandotnet" />
+		</Extension>
+
+		<Extension path = "/MonoDevelop/TypeSystem/FoldingParser">
+			<Parser class = "MonoDevelop.DylanNet.DocumentParser" mimeType="text/x-dylandotnet" />
+		</Extension>
+
+  		<Extension path = "/MonoDevelop/Ide/FileTemplates">
+			<FileTemplate id="dylanNetEmptyFile" resource="EmptyDNFile.xft.xml"/>
+			<FileTemplate id="resProcEmptyFile" resource="EmptyRPFile.xft.xml"/>
+			<FileTemplate id="dylanNetAssemblyInfo" resource="AssemblyInfo.xft.xml"/>
+			<FileTemplate id="dylanNetEmptyClass" resource="EmptyClass.xft.xml"/>
+			<FileTemplate id="dylanNetEmptyStruct" resource="EmptyStruct.xft.xml"/>
+			<FileTemplate id="dylanNetEmptyEnum" resource="EmptyEnum.xft.xml"/>
+			<FileTemplate id="dylanNetEmptyInterface" resource="EmptyInterface.xft.xml"/>
+			<FileTemplate id="dylanNetAspMvc3WebConfigApp" resource="WebConfigAppMvc3.xft.xml" />
+			<FileTemplate id="dylanNetAspMvc3GlobalAsax" resource="GlobalAsaxMvc3.xft.xml" />
+			<FileTemplate id="dylanNetMVCController" resource="MVCController.xft.xml" />
+			<FileTemplate id="dylanNetAPIController" resource="APIController.xft.xml" />
+			<FileTemplate id="dylanNetTestClass" resource="NUnitTestClass.xft.xml" />
+			<FileTemplate id="dylanNetModel" resource="Model.xft.xml" />
+		</Extension>
+		
+		<Extension path = "/MonoDevelop/Ide/ProjectTemplates">
+			<ProjectTemplate id = "dylanNetConsoleProject" resource = "ConsoleProject.xpt.xml"/>
+			<ProjectTemplate id="dylanNetEmptyProject" resource="EmptyProject.xpt.xml"/>
+			<ProjectTemplate id = "dylanNetLibraryProject" resource = "Library.xpt.xml"/>
+			<ProjectTemplate id = "dylanNetEmptyMvc3" resource = "EmptyProjectMvc3.xpt.xml"/>
+			<ProjectTemplate id="dylanNetNunitProject" resource="NUnitProject.xpt.xml" />			
+			<ProjectTemplate id="dylanNetPortableLibrary" resource="PortableLibrary.xpt.xml" />
+			<ProjectTemplate id="dylanNetSharedAssets" resource="SharedAssetsProject.xpt.xml" />
+		</Extension>
+
+		<Extension path = "/MonoDevelop/TypeSystem/Ambiences">
+			<Ambience mimeType="text/x-dylandotnet" class = "MonoDevelop.Ide.TypeSystem.NetAmbience" />
+		</Extension>
+
+		<Extension path = "/MonoDevelop/Ide/TextEditorExtensions">
+			<Class fileExtensions = ".dyl" class = "MonoDevelop.DylanNet.PathedDocumentExtension" />
+		</Extension>
+
+		<Extension path = "/MonoDevelop/ProjectModel/SerializableClasses">
+			<DataType class = "MonoDevelop.DylanNet.DNConfigurationParameters" />
+			<DataType class = "MonoDevelop.DylanNet.DNProjectParameters" />
+		</Extension>
+
+		<Extension path = "/MonoDevelop/Ide/Commands/TextEditor">
+			<Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundIf"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundIfHandler"
+		         _label = "Surround with if" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundIfElse"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundIfElseHandler"
+		         _label = "Surround with if...else" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundLock"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundLockHandler"
+		         _label = "Surround with lock" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundTryCatch"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundTryCatchHandler"
+		         _label = "Surround with try...catch" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundTryFinally"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundTryFinallyHandler"
+		         _label = "Surround with try...finally" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundTryCatchFinally"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundTryCatchFinallyHandler"
+		         _label = "Surround with try...catch...finally" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundUsing"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundUsingHandler"
+		         _label = "Surround with using" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundFor"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundForHandler"
+		         _label = "Surround with for" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundForeach"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundForeachHandler"
+		         _label = "Surround with foreach" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundDoWhile"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundDoWhileHandler"
+		         _label = "Surround with do while" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundDoUntil"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundDoUntilHandler"
+		         _label = "Surround with do until" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundDo_While"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundDo_WhileHandler"
+		         _label = "Surround with do...while" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundDo_Until"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundDo_UntilHandler"
+		         _label = "Surround with do...until" />
+			<Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundHIf"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundHIfHandler"
+		         _label = "Surround with #if" />
+		    <Command id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundHIfHElse"
+		         defaultHandler = "MonoDevelop.DylanNet.SurroundHIfHElseHandler"
+		         _label = "Surround with #if...#else" />
+		</Extension>
+
+		<Extension path = "/MonoDevelop/SourceEditor2/ContextMenu/Editor">
+			<SeparatorItem id = "Separator11" />
+
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundHIf" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundHIfHElse" disabledVisible="false" />
+			
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundIf" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundIfElse" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundLock" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundTryCatch" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundTryFinally" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundTryCatchFinally" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundUsing" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundFor" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundForeach" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundDoWhile" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundDoUntil" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundDo_While" disabledVisible="false" />
+			<CommandItem id = "MonoDevelop.DylanNet.DateInserterCommands.SurroundDo_Until" disabledVisible="false" />
+		</Extension>
+
+  		<Runtime>
+  			<Import assembly="MonoDevelop.DylanNet.dll"/>
+		</Runtime>
+    </Addin>  
