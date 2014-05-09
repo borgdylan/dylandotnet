@@ -20,9 +20,6 @@
 	
 	<!-- Template Content -->
 	<Combine name = "${ProjectName}" directory = ".">
-		<Options>
-			<StartupProject>${ProjectName}</StartupProject>
-		</Options>
 		
 		<Project name = "${ProjectName}" directory = "." type = "SharedAssetsProject">
 			<Files>
