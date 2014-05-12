@@ -843,6 +843,8 @@ class public auto ansi static Program
 
 		new GenType<of object>(null)
 		new GenType<of integer, string>()
+
+		Console::WriteLine("a" != null andalso "ab" == "ab" andalso ("a" != null orelse "ab" == "ab"))
 	end method
 
 	method public static string LeaveMet(var x as integer)

@@ -62,12 +62,14 @@
 	
 	<Keywords color = "Keyword(Operator)">
 		<Word>and</Word>
+		<Word>andalso</Word>
 		<Word>nand</Word>	
 		<Word>is</Word>
 		<Word>notlike</Word>
 		<Word>like</Word>
 		<Word>new</Word>
 		<Word>or</Word>
+		<Word>orelse</Word>
 		<Word>xor</Word>
 		<Word>nor</Word>
 		<Word>xnor</Word>

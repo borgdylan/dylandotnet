@@ -58,6 +58,14 @@ class public auto ansi TypeTok extends ValueToken implements ICloneable
 
 end class
 
+class public auto ansi SpecialTypeTok extends TypeTok
+
+	method public void SpecialTypeTok(var value as string)
+		me::ctor(value)
+	end method
+
+end class
+
 class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 
 	field public C5.LinkedList<of TypeTok> Params
@@ -121,7 +129,7 @@ class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 end class
 
 
-class public auto ansi beforefieldinit StringTok extends TypeTok
+class public auto ansi beforefieldinit StringTok extends SpecialTypeTok
 
 	method public void StringTok(var value as string)
 		me::ctor(value)
@@ -146,7 +154,7 @@ class public auto ansi beforefieldinit StringTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit IntegerTok extends TypeTok
+class public auto ansi beforefieldinit IntegerTok extends SpecialTypeTok
 
 	method public void IntegerTok(var value as string)
 		me::ctor(value)
@@ -170,7 +178,7 @@ class public auto ansi beforefieldinit IntegerTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit DoubleTok extends TypeTok
+class public auto ansi beforefieldinit DoubleTok extends SpecialTypeTok
 
 	method public void DoubleTok(var value as string)
 		me::ctor(value)
@@ -194,7 +202,7 @@ class public auto ansi beforefieldinit DoubleTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit BooleanTok extends TypeTok
+class public auto ansi beforefieldinit BooleanTok extends SpecialTypeTok
 	
 	method public void BooleanTok(var value as string)
 		me::ctor(value)
@@ -218,7 +226,7 @@ class public auto ansi beforefieldinit BooleanTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit CharTok extends TypeTok
+class public auto ansi beforefieldinit CharTok extends SpecialTypeTok
 	
 	method public void CharTok(var value as string)
 		me::ctor(value)
@@ -242,7 +250,7 @@ class public auto ansi beforefieldinit CharTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit DecimalTok extends TypeTok
+class public auto ansi beforefieldinit DecimalTok extends SpecialTypeTok
 	
 	method public void DecimalTok(var value as string)
 		me::ctor(value)
@@ -266,7 +274,7 @@ class public auto ansi beforefieldinit DecimalTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit LongTok extends TypeTok
+class public auto ansi beforefieldinit LongTok extends SpecialTypeTok
 
 	method public void LongTok(var value as string)
 		me::ctor(value)
@@ -290,7 +298,7 @@ class public auto ansi beforefieldinit LongTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit SByteTok extends TypeTok
+class public auto ansi beforefieldinit SByteTok extends SpecialTypeTok
 
 	method public void SByteTok(var value as string)
 		me::ctor(value)
@@ -315,7 +323,7 @@ class public auto ansi beforefieldinit SByteTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit ShortTok extends TypeTok
+class public auto ansi beforefieldinit ShortTok extends SpecialTypeTok
 	
 	method public void ShortTok(var value as string)
 		me::ctor(value)
@@ -339,7 +347,7 @@ class public auto ansi beforefieldinit ShortTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit SingleTok extends TypeTok
+class public auto ansi beforefieldinit SingleTok extends SpecialTypeTok
 	
 	method public void SingleTok()
 		me::ctor("single")
@@ -363,7 +371,7 @@ class public auto ansi beforefieldinit SingleTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit ObjectTok extends TypeTok
+class public auto ansi beforefieldinit ObjectTok extends SpecialTypeTok
 
 	method public void ObjectTok(var value as string)
 		me::ctor(value)
@@ -387,7 +395,7 @@ class public auto ansi beforefieldinit ObjectTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit VoidTok extends TypeTok
+class public auto ansi beforefieldinit VoidTok extends SpecialTypeTok
 
 	method public void VoidTok(var value as string)
 		me::ctor(value)
@@ -403,7 +411,7 @@ class public auto ansi beforefieldinit VoidTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit UIntegerTok extends TypeTok
+class public auto ansi beforefieldinit UIntegerTok extends SpecialTypeTok
 
 	method public void UIntegerTok(var value as string)
 		me::ctor(value)
@@ -427,7 +435,7 @@ class public auto ansi beforefieldinit UIntegerTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit ULongTok extends TypeTok
+class public auto ansi beforefieldinit ULongTok extends SpecialTypeTok
 
 	method public void ULongTok(var value as string)
 		me::ctor(value)
@@ -451,7 +459,7 @@ class public auto ansi beforefieldinit ULongTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit ByteTok extends TypeTok
+class public auto ansi beforefieldinit ByteTok extends SpecialTypeTok
 
 	method public void ByteTok(var value as string)
 		me::ctor(value)
@@ -475,7 +483,7 @@ class public auto ansi beforefieldinit ByteTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit UShortTok extends TypeTok
+class public auto ansi beforefieldinit UShortTok extends SpecialTypeTok
 	
 	method public void UShortTok(var value as string)
 		me::ctor(value)
@@ -499,7 +507,7 @@ class public auto ansi beforefieldinit UShortTok extends TypeTok
 
 end class
 
-class public auto ansi beforefieldinit IntPtrTok extends TypeTok
+class public auto ansi beforefieldinit IntPtrTok extends SpecialTypeTok
 	
 	method public void IntPtrTok(var value as string)
 		me::ctor(value)

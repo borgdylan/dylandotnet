@@ -1,11 +1,11 @@
 <Type Name="IntPtrTok" FullName="dylan.NET.Tokenizer.AST.Tokens.TypeToks.IntPtrTok">
-  <TypeSignature Language="C#" Value="public class IntPtrTok : dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit IntPtrTok extends dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok" />
+  <TypeSignature Language="C#" Value="public class IntPtrTok : dylan.NET.Tokenizer.AST.Tokens.TypeToks.SpecialTypeTok" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit IntPtrTok extends dylan.NET.Tokenizer.AST.Tokens.TypeToks.SpecialTypeTok" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.TypeToks.SpecialTypeTok</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

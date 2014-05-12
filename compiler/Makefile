@@ -227,8 +227,8 @@ top_builddir = .
 top_srcdir = .
 EXTRA_DIST = 
 CLEANFILES = 
-#CONFIG = /p:Configuration=Release
-CONFIG = /p:Configuration=Debug
+CONFIG = /p:Configuration=Release
+#CONFIG = /p:Configuration=Debug
 all: all-am
 
 .SUFFIXES:

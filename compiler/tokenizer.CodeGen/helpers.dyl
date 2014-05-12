@@ -33,7 +33,7 @@ class public auto ansi static Helpers
 	[method: ComVisible(false)]
 	method public static void CheckAssignability(var t1 as IKVM.Reflection.Type, var t2 as IKVM.Reflection.Type)
 		if !t1::IsAssignableFrom(t2) then
-			if !#expr(NullExprFlg and !t1::IsAssignableFrom(Loader::LoadClass("System.ValueType"))) then
+			if !#expr(NullExprFlg and !t1::IsAssignableFrom(Loader::CachedLoadClass("System.ValueType"))) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Slots of type '" + t1::ToString() + "' cannot be assigned values of type '" + t2::ToString() + "'.")
 			end if
 		end if
@@ -42,7 +42,7 @@ class public auto ansi static Helpers
 	[method: ComVisible(false)]
 	method public static ObsoleteAttribute GetObsolete(var m as MemberInfo)
 		try
-			var lcad = m::__GetCustomAttributes(Loader::LoadClass("System.ObsoleteAttribute"), false)
+			var lcad = m::__GetCustomAttributes(Loader::CachedLoadClass("System.ObsoleteAttribute"), false)
 			if lcad::get_Count() == 0 then
 				return null
 			else
@@ -368,17 +368,17 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static boolean CheckUnsigned(var t as IKVM.Reflection.Type)
-		if t::Equals(Loader::LoadClass("System.UInt32")) then
+		if t::Equals(Loader::CachedLoadClass("System.UInt32")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.UInt64")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UInt64")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.Char")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Char")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.Byte")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Byte")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.UInt16")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UInt16")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.UIntPtr")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UIntPtr")) then
 			return true
 		else
 			return false
@@ -387,15 +387,15 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static boolean CheckSigned(var t as IKVM.Reflection.Type)
-		if t::Equals(Loader::LoadClass("System.SByte")) then
+		if t::Equals(Loader::CachedLoadClass("System.SByte")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.Int16")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int16")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.Int32")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int32")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.Int64")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int64")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.IntPtr")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.IntPtr")) then
 			return true
 		else
 			return false
@@ -404,17 +404,17 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static boolean CheckSHLRLHS(var t as IKVM.Reflection.Type)
-		if t::Equals(Loader::LoadClass("System.Int32")) then
+		if t::Equals(Loader::CachedLoadClass("System.Int32")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.UInt32")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UInt32")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.Int64")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int64")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.UInt64")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UInt64")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.IntPtr")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.IntPtr")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.UIntPtr")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UIntPtr")) then
 			return true
 		else
 			return false
@@ -423,11 +423,11 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static boolean CheckSHLRRHS(var t as IKVM.Reflection.Type, var accepti64 as boolean)
-		if t::Equals(Loader::LoadClass("System.Int32")) then
+		if t::Equals(Loader::CachedLoadClass("System.Int32")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.Int64")) and accepti64 then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int64")) and accepti64 then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.IntPtr")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.IntPtr")) then
 			return true
 		else
 			return false
@@ -447,9 +447,9 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static boolean IsPrimitiveFPType(var t as IKVM.Reflection.Type)
-		if t::Equals(Loader::LoadClass("System.Double")) then
+		if t::Equals(Loader::CachedLoadClass("System.Double")) then
 			return true
-		elseif t::Equals(Loader::LoadClass("System.Single")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Single")) then
 			return true
 		else
 			return false
@@ -471,17 +471,17 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static integer GetPrimitiveNumericSize(var t as IKVM.Reflection.Type)
-		if t::Equals(Loader::LoadClass("System.Boolean")) then
+		if t::Equals(Loader::CachedLoadClass("System.Boolean")) then
 			return 1
-		elseif t::Equals(Loader::LoadClass("System.SByte")) or t::Equals(Loader::LoadClass("System.Byte")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.SByte")) or t::Equals(Loader::CachedLoadClass("System.Byte")) then
 			return 8
-		elseif t::Equals(Loader::LoadClass("System.Int16")) or t::Equals(Loader::LoadClass("System.UInt16")) or t::Equals(Loader::LoadClass("System.Char")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int16")) or t::Equals(Loader::CachedLoadClass("System.UInt16")) or t::Equals(Loader::CachedLoadClass("System.Char")) then
 			return 16
-		elseif t::Equals(Loader::LoadClass("System.Int32")) or t::Equals(Loader::LoadClass("System.UInt32")) or t::Equals(Loader::LoadClass("System.Single")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int32")) or t::Equals(Loader::CachedLoadClass("System.UInt32")) or t::Equals(Loader::CachedLoadClass("System.Single")) then
 			return 32
-		elseif t::Equals(Loader::LoadClass("System.Int64")) or t::Equals(Loader::LoadClass("System.UInt64")) or t::Equals(Loader::LoadClass("System.Double")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int64")) or t::Equals(Loader::CachedLoadClass("System.UInt64")) or t::Equals(Loader::CachedLoadClass("System.Double")) then
 			return 64
-		elseif t::Equals(Loader::LoadClass("System.IntPtr")) or t::Equals(Loader::LoadClass("System.UIntPtr")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.IntPtr")) or t::Equals(Loader::CachedLoadClass("System.UIntPtr")) then
 			return 64
 		else
 			return 0
@@ -559,6 +559,12 @@ class public auto ansi static Helpers
 //					Loader::MakeArr = tt::IsArray
 //					Loader::MakeRef = tt::IsByRef
 //					typ = Loader::ProcessType(tt::RefTyp)
+				elseif tt is SpecialTypeTok
+					Loader::MakeArr = tt::IsArray
+					Loader::MakeRef = tt::IsByRef
+
+					typ = Loader::CachedLoadClass(tt::Value)
+					tt::RefTyp = Loader::PreProcTyp
 				else
 					Loader::MakeArr = tt::IsArray
 					Loader::MakeRef = tt::IsByRef
@@ -776,33 +782,33 @@ var pa as ParameterAttributes = ParameterAttributes::None
 	end method
 
 	method public static Literal ProcessConst(var lit as ConstLiteral)		
-		if Loader::LoadClass("System.String")::Equals(lit::IntTyp) then
+		if Loader::CachedLoadClass("System.String")::Equals(lit::IntTyp) then
 			return new StringLiteral($string$lit::ConstVal)
-		elseif Loader::LoadClass("System.SByte")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.SByte")::Equals(lit::IntTyp) then
 			return new SByteLiteral($sbyte$lit::ConstVal)
-		elseif Loader::LoadClass("System.Int16")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.Int16")::Equals(lit::IntTyp) then
 			return new ShortLiteral($short$lit::ConstVal)
-		elseif Loader::LoadClass("System.Int32")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.Int32")::Equals(lit::IntTyp) then
 			return new IntLiteral($integer$lit::ConstVal)
-		elseif Loader::LoadClass("System.Int64")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.Int64")::Equals(lit::IntTyp) then
 			return new LongLiteral($long$lit::ConstVal)
-		elseif Loader::LoadClass("System.Single")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.Single")::Equals(lit::IntTyp) then
 			return new FloatLiteral($single$lit::ConstVal)
-		elseif Loader::LoadClass("System.Double")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.Double")::Equals(lit::IntTyp) then
 			return new DoubleLiteral($double$lit::ConstVal)
-		elseif Loader::LoadClass("System.Boolean")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.Boolean")::Equals(lit::IntTyp) then
 			return new BooleanLiteral($boolean$lit::ConstVal)
-		elseif Loader::LoadClass("System.Char")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.Char")::Equals(lit::IntTyp) then
 			return new CharLiteral($char$lit::ConstVal)
-		elseif Loader::LoadClass("System.Object")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.Object")::Equals(lit::IntTyp) then
 			return new NullLiteral()
-		elseif Loader::LoadClass("System.Byte")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.Byte")::Equals(lit::IntTyp) then
 			return new ByteLiteral($byte$lit::ConstVal)
-		elseif Loader::LoadClass("System.UInt16")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.UInt16")::Equals(lit::IntTyp) then
 			return new UShortLiteral($ushort$lit::ConstVal)
-		elseif Loader::LoadClass("System.UInt32")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.UInt32")::Equals(lit::IntTyp) then
 			return new UIntLiteral($uinteger$lit::ConstVal)
-		elseif Loader::LoadClass("System.UInt64")::Equals(lit::IntTyp) then
+		elseif Loader::CachedLoadClass("System.UInt64")::Equals(lit::IntTyp) then
 			return new ULongLiteral($ulong$lit::ConstVal)
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Loading of constants of internal type '" + lit::IntTyp::ToString() + "' is not yet supported.")
@@ -1214,7 +1220,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 
 	[method: ComVisible(false)]
 	method public static void EmitLocLd(var ind as integer, var locarg as boolean)
-		if (AsmFactory::AddrFlg and Loader::LoadClass("System.ValueType")::IsAssignableFrom( _
+		if (AsmFactory::AddrFlg and Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom( _
 			#ternary{AsmFactory::Type04::get_IsByRef() ? AsmFactory::Type04::GetElementType(), AsmFactory::Type04})  and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
 			 or AsmFactory::ForcedAddrFlg then
 			if AsmFactory::Type04::get_IsByRef() then
@@ -1244,7 +1250,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 
 	[method: ComVisible(false)]
 	method public static void EmitElemLd(var t as IKVM.Reflection.Type)
-		if (AsmFactory::AddrFlg and Loader::LoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type04)  and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
+		if (AsmFactory::AddrFlg and Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type04)  and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
 		 or AsmFactory::ForcedAddrFlg then
 			ILEmitter::EmitLdelema(t)
 		else
@@ -1315,11 +1321,11 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			//end conv overload block
 		end if
 
-		if sink::Equals(Loader::LoadClass("System.Object")) then
-			if Loader::LoadClass("System.ValueType")::IsAssignableFrom(source) then
+		if sink::Equals(Loader::CachedLoadClass("System.Object")) then
+			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
 				return
-			elseif (sink::get_BaseType() == null) and !sink::Equals(Loader::LoadClass("System.Object")) then
+			elseif (sink::get_BaseType() == null) and !sink::Equals(Loader::CachedLoadClass("System.Object")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
 				return
 			elseif source is GenericTypeParameterBuilder then
@@ -1332,28 +1338,28 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		end if
 		
 		if sink::get_IsInterface() then
-			if Loader::LoadClass("System.ValueType")::IsAssignableFrom(source) and sink::IsAssignableFrom(source) then
+			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) and sink::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
 				return
-			elseif Loader::LoadClass("System.Object")::IsAssignableFrom(source) then
+			elseif Loader::CachedLoadClass("System.Object")::IsAssignableFrom(source) then
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
 				return
 			end if
 		end if
 
-		if source::Equals(Loader::LoadClass("System.Object")) then
-			if Loader::LoadClass("System.ValueType")::IsAssignableFrom(sink) then
+		if source::Equals(Loader::CachedLoadClass("System.Object")) then
+			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(sink) then
 				ILEmitter::EmitUnboxAny(sink)
 				return
-			elseif Loader::LoadClass("System.Object")::IsAssignableFrom(sink) then
+			elseif Loader::CachedLoadClass("System.Object")::IsAssignableFrom(sink) then
 			else
 				ILEmitter::EmitUnboxAny(sink)
 				return
 			end if
 		end if
 
-		typ = Loader::LoadClass("System.ValueType")
+		typ = Loader::CachedLoadClass("System.ValueType")
 		if !#expr(typ::IsAssignableFrom(sink) or typ::IsAssignableFrom(source)) then
 			if sink::IsAssignableFrom(source) then
 				if !sink::get_IsInterface() then
@@ -1374,19 +1380,19 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			return
 		end if
 		
-		if source::Equals(Loader::LoadClass("System.IntPtr")) then
-			typ = Loader::LoadClass("System.IntPtr")
+		if source::Equals(Loader::CachedLoadClass("System.IntPtr")) then
+			typ = Loader::CachedLoadClass("System.IntPtr")
 			m1 = typ::GetMethod("ToInt64", IKVM.Reflection.Type::EmptyTypes)
 			ILEmitter::EmitCallvirt(m1)
-			source = Loader::LoadClass("System.Int64")
+			source = Loader::CachedLoadClass("System.Int64")
 		end if
 		
-		if sink::Equals(Loader::LoadClass("System.String")) then
+		if sink::Equals(Loader::CachedLoadClass("System.String")) then
 			m1 = convc::GetMethod("ToString", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.Char")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.Char")) then
 			m1 = convc::GetMethod("ToChar", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				if (GetPrimitiveNumericSize(source) <= 16) and CheckUnsigned(source) then
@@ -1397,22 +1403,22 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.Decimal")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.Decimal")) then
 			m1 = convc::GetMethod("ToDecimal", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.Double")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.Double")) then
 			m1 = convc::GetMethod("ToDouble", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.Single")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.Single")) then
 			m1 = convc::GetMethod("ToSingle", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.Int64")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.Int64")) then
 			m1 = convc::GetMethod("ToInt64", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				if GetPrimitiveNumericSize(source) <= 32 then
@@ -1423,14 +1429,14 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.UInt64")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.UInt64")) then
 			m1 = convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvU8(CheckSigned(source))
 			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.Int32")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.Int32")) then
 			m1 = convc::GetMethod("ToInt32", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				if GetPrimitiveNumericSize(source) <= 16 then
@@ -1448,7 +1454,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.Int16")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.Int16")) then
 			m1 = convc::GetMethod("ToInt16", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				if GetPrimitiveNumericSize(source) <= 8 then
@@ -1459,28 +1465,28 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.UInt16")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.UInt16")) then
 			m1 = convc::GetMethod("ToUInt16", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvOvfU2(CheckSigned(source))
 			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.SByte")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.SByte")) then
 			m1 = convc::GetMethod("ToSByte", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvOvfI1(CheckSigned(source))
 			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.Byte")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.Byte")) then
 			m1 = convc::GetMethod("ToByte", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvOvfU1(CheckSigned(source))
 			elseif m1 != null then
 				ILEmitter::EmitCall(m1)
 			end if
-		elseif sink::Equals(Loader::LoadClass("System.Boolean")) then
+		elseif sink::Equals(Loader::CachedLoadClass("System.Boolean")) then
 			m1 = convc::GetMethod("ToBoolean", new IKVM.Reflection.Type[] {source})
 			if m1 != null then
 				ILEmitter::EmitCall(m1)
@@ -1499,7 +1505,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				ILEmitter::EmitConstrained(AsmFactory::Type05)
 				ILEmitter::EmitCallvirt(met)
 			elseif met::get_IsVirtual() then
-				if Loader::LoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type05) then
+				if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type05) then
 					ILEmitter::EmitCall(met)
 				else
 					ILEmitter::EmitCallvirt(met)
@@ -1509,7 +1515,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			end if
 		end if
 		if AsmFactory::PopFlg then
-			if !met::get_ReturnType()::Equals(Loader::LoadClass("System.Void")) then
+			if !met::get_ReturnType()::Equals(Loader::CachedLoadClass("System.Void")) then
 				ILEmitter::EmitPop()
 			end if
 		end if
@@ -1526,7 +1532,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 
 	[method: ComVisible(false)]
 	method public static void EmitFldLd(var fld as FieldInfo, var stat as boolean)
-		if (AsmFactory::AddrFlg and Loader::LoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type04) and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
+		if (AsmFactory::AddrFlg and Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type04) and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
 			 or AsmFactory::ForcedAddrFlg then
 			if stat then
 				ILEmitter::EmitLdsflda(fld)
@@ -1887,8 +1893,8 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		end if
 		
 		var ci as CollectionItem = new CollectionItem()
-		var ie as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.Generic.ICollection`1")
-		var ie2 as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.ICollection")
+		var ie as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.Generic.ICollection`1")
+		var ie2 as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.ICollection")
 		var ie3 as IKVM.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
 		
@@ -1907,7 +1913,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			ci::ElemType = ie3::GetGenericArguments()[0]
 		elseif flgs[1] then
 			ie3 = ie2
-			ci::ElemType = Loader::LoadClass("System.Object")
+			ci::ElemType = Loader::CachedLoadClass("System.Object")
 		else
 			foreach interf in GetTypeInterfaces(t)
 				if interf::get_IsGenericType() then
@@ -1926,7 +1932,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				ci::ElemType = ie3::GetGenericArguments()[0]
 			elseif flgs[1] then
 				ie3 = ie2
-				ci::ElemType = Loader::LoadClass("System.Object")
+				ci::ElemType = Loader::CachedLoadClass("System.Object")
 			else
 				return null
 			end if
@@ -1943,8 +1949,8 @@ var pa as ParameterAttributes = ParameterAttributes::None
 	[method: ComVisible(false)]
 	method public static MethodInfo[] ProcessForeach(var t as IKVM.Reflection.Type)
 		var arr as MethodInfo[] = new MethodInfo[3]
-		var ie as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.Generic.IEnumerable`1")
-		var ie2 as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.IEnumerable")
+		var ie as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.Generic.IEnumerable`1")
+		var ie2 as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.IEnumerable")
 		var ie3 as IKVM.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
 		
@@ -2001,8 +2007,8 @@ var pa as ParameterAttributes = ParameterAttributes::None
 	//for IEnumerator<of T>
 	[method: ComVisible(false)]
 	method public static MethodInfo[] ProcessForeach2(var t as IKVM.Reflection.Type)
-		var ie as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.Generic.IEnumerator`1")
-		var ie2 as IKVM.Reflection.Type = Loader::LoadClass("System.Collections.IEnumerator")
+		var ie as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.Generic.IEnumerator`1")
+		var ie2 as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.IEnumerator")
 		var ie3 as IKVM.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
 		
@@ -2077,7 +2083,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				end if
 			end if
 		
-			var typ = Loader::LoadClass("System.ValueType")
+			var typ = Loader::CachedLoadClass("System.ValueType")
 			if typ::IsAssignableFrom(ta) or typ::IsAssignableFrom(tb) then
 				return null
 			elseif ta::IsAssignableFrom(tb) then
@@ -2108,7 +2114,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		if oo != null then
 			ILEmitter::EmitCall(oo)
 			AsmFactory::Type02 = oo::get_ReturnType()
-		elseif t::Equals(Loader::LoadClass("System.Boolean")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Boolean")) then
 			ILEmitter::EmitNot()
 		elseif CheckSigned(t) then
 			ILEmitter::EmitNeg()
@@ -2138,37 +2144,37 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		if oo != null then
 			ILEmitter::EmitCall(oo)
 			AsmFactory::Type02 = oo::get_ReturnType()
-		elseif t::Equals(Loader::LoadClass("System.Char")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Char")) then
 			ILEmitter::EmitLdcChar(c'\x01')
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(Loader::LoadClass("System.Int32")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int32")) then
 			ILEmitter::EmitLdcI4(1)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(Loader::LoadClass("System.Int64")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int64")) then
 			ILEmitter::EmitLdcI8(1l)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(Loader::LoadClass("System.Int16")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int16")) then
 			ILEmitter::EmitLdcI2(1s)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(Loader::LoadClass("System.SByte")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.SByte")) then
 			ILEmitter::EmitLdcI1(1b)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(Loader::LoadClass("System.Single")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Single")) then
 			ILEmitter::EmitLdcR4(1f)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(Loader::LoadClass("System.Double")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Double")) then
 			ILEmitter::EmitLdcR8(1d)
 			ILEmitter::EmitAdd(true)
-		elseif t::Equals(Loader::LoadClass("System.UInt32")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UInt32")) then
 			ILEmitter::EmitLdcU4(1ui)
 			ILEmitter::EmitAdd(false)
-		elseif t::Equals(Loader::LoadClass("System.UInt64")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UInt64")) then
 			ILEmitter::EmitLdcU8(1ul)
 			ILEmitter::EmitAdd(false)
-		elseif t::Equals(Loader::LoadClass("System.UInt16")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UInt16")) then
 			ILEmitter::EmitLdcU2(1us)
 			ILEmitter::EmitAdd(false)
-		elseif t::Equals(Loader::LoadClass("System.Byte")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Byte")) then
 			ILEmitter::EmitLdcU1(1ub)
 			ILEmitter::EmitAdd(false)
 		else
@@ -2182,37 +2188,37 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		if oo != null then
 			ILEmitter::EmitCall(oo)
 			AsmFactory::Type02 = oo::get_ReturnType()
-		elseif t::Equals(Loader::LoadClass("System.Char")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Char")) then
 			ILEmitter::EmitLdcChar(c'\x01')
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(Loader::LoadClass("System.Int32")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int32")) then
 			ILEmitter::EmitLdcI4(1)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(Loader::LoadClass("System.Int64")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int64")) then
 			ILEmitter::EmitLdcI8(1l)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(Loader::LoadClass("System.Int16")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int16")) then
 			ILEmitter::EmitLdcI2(1s)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(Loader::LoadClass("System.SByte")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.SByte")) then
 			ILEmitter::EmitLdcI1(1b)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(Loader::LoadClass("System.Single")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Single")) then
 			ILEmitter::EmitLdcR4(1f)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(Loader::LoadClass("System.Double")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Double")) then
 			ILEmitter::EmitLdcR8(1d)
 			ILEmitter::EmitSub(true)
-		elseif t::Equals(Loader::LoadClass("System.UInt32")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UInt32")) then
 			ILEmitter::EmitLdcU4(1ui)
 			ILEmitter::EmitSub(false)
-		elseif t::Equals(Loader::LoadClass("System.UInt64")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UInt64")) then
 			ILEmitter::EmitLdcU8(1ul)
 			ILEmitter::EmitSub(false)
-		elseif t::Equals(Loader::LoadClass("System.UInt16")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.UInt16")) then
 			ILEmitter::EmitLdcU2(1us)
 			ILEmitter::EmitSub(false)
-		elseif t::Equals(Loader::LoadClass("System.Byte")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Byte")) then
 			ILEmitter::EmitLdcU1(1ub)
 			ILEmitter::EmitSub(false)
 		else
@@ -2245,7 +2251,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			elseif exp::Tokens::get_Item(0) is GettypeCallTok then
 				var val = Helpers::CommitEvalTTok(#expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name)
 				if val != null then
-					return new ConstInfo() {Typ = Loader::LoadClass("System.Type"), Value = val}
+					return new ConstInfo() {Typ = Loader::CachedLoadClass("System.Type"), Value = val}
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", #expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name))
 				end if

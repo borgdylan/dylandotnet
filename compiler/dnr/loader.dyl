@@ -18,8 +18,9 @@ class public auto ansi static Loader
 	field public static IKVM.Reflection.Type PreProcTyp
 	field public static boolean MakeArr
 	field public static boolean MakeRef
+	field private static C5.HashDictionary<of string, IKVM.Reflection.Type> TypeCache
 
-	method private static void Loader()
+	method public static void Init()
 		ProtectedFlag = false
 		FldLitFlag = false
 		FldLitVal = null
@@ -29,6 +30,11 @@ class public auto ansi static Loader
 		MakeArr = false
 		MakeRef = false
 		PreProcTyp = null
+		TypeCache = new C5.HashDictionary<of string, IKVM.Reflection.Type>()
+	end method
+
+	method private static void Loader()
+		Init()
 	end method
 	
 	method public static IKVM.Reflection.Type LoadClass(var name as string) 
@@ -104,6 +110,33 @@ class public auto ansi static Loader
 
 		return typ
 
+	end method
+
+	method public static IKVM.Reflection.Type CachedLoadClass(var name as string) 
+		if TypeCache::Contains(name) then
+			var typ = TypeCache::get_Item(name)
+			PreProcTyp = typ
+
+			if typ != null then
+				if MakeArr then
+					typ = typ::MakeArrayType()
+				end if
+				if MakeRef then
+					typ = typ::MakeByRefType()
+				end if
+			end if
+
+			MakeArr = false
+			MakeRef = false
+
+			return typ
+		else
+			var t = LoadClass(name)
+			if t != null then
+				TypeCache::Add(name, PreProcTyp)
+			end if
+			return t
+		end if
 	end method
 
 	[method: ComVisible(false)]

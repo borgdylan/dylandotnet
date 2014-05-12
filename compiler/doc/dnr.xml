@@ -7,18 +7,8 @@
             <summary>Holds the resources used during assembly making.</summary>
             <remarks />
         </member>
-        <member name="M:dylan.NET.Reflection.AsmFactory.AddGenParamName(System.String)">
-            <param name="nam">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.AddrFlg">
             <summary>Set this to allow automatic valuetype pointer load during field chaining.</summary>
-            <remarks />
-        </member>
-        <member name="M:dylan.NET.Reflection.AsmFactory.AddTypB(IKVM.Reflection.Emit.TypeBuilder)">
-            <param name="typ">The TypeBuilder to add.</param>
-            <summary>Add a TypeBuilder to the list of type builders.</summary>
             <remarks />
         </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.AsmB">
@@ -98,10 +88,6 @@
             <summary>Holds a second TypeBuilder temporarily.</summary>
             <remarks />
         </member>
-        <member name="F:dylan.NET.Reflection.AsmFactory.CurnTypList">
-            <summary>Holds the list of TypeBuilders.</summary>
-            <remarks />
-        </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.CurnTypName">
             <summary>Holds the name of the class under construction.</summary>
             <remarks />
@@ -123,14 +109,6 @@
             <remarks />
         </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.ForcedAddrFlg">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Reflection.AsmFactory.GenParamNames">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Reflection.AsmFactory.GenParamTyps">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -909,6 +887,12 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.Loader.CachedLoadClass(System.String)">
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.Loader.CompareParamsToTyps(System.Reflection.ParameterInfo[],System.Type[])">
             <param name="t1">To be added.</param>
             <param name="t2">To be added.</param>
@@ -940,6 +924,10 @@
             <param name="typ">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.Init">
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.Loader.LoadBinOp(IKVM.Reflection.Type,System.String,IKVM.Reflection.Type,IKVM.Reflection.Type)">

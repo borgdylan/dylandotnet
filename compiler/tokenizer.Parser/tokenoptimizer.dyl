@@ -109,8 +109,12 @@ class public auto ansi TokenOptimizer
 			return new IsOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "and" then
 			return new AndOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "andalso" then
+			return new AndAlsoOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "or" then
 			return new OrOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "orelse" then
+			return new OrElseOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "nand" then
 			return new NandOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "nor" then

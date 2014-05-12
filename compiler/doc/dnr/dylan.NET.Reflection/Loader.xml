@@ -13,6 +13,23 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName="CachedLoadClass">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CachedLoadClass (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type CachedLoadClass(string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CompareParamsToTyps">
       <MemberSignature Language="C#" Value="public static bool CompareParamsToTyps (System.Reflection.ParameterInfo[] t1, Type[] t2);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool CompareParamsToTyps(class System.Reflection.ParameterInfo[] t1, class System.Type[] t2) cil managed" />
@@ -116,6 +133,19 @@
         <param name="typ">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public static void Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

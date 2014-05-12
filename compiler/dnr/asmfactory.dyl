@@ -44,13 +44,13 @@ class public auto ansi static AsmFactory
 	field public static IKVM.Reflection.Type CurnInhTyp
 	field public static IKVM.Reflection.Emit.TypeBuilder CurnTypB
 	field public static IKVM.Reflection.Emit.TypeBuilder CurnTypB2
-	field public static IKVM.Reflection.Emit.TypeBuilder[] CurnTypList
+	//field public static IKVM.Reflection.Emit.TypeBuilder[] CurnTypList
 	field public static IKVM.Reflection.Emit.EnumBuilder CurnEnumB
 	field public static boolean isNested
 	field public static boolean inClass
 	field public static boolean inEnum
-	field public static string[] GenParamNames
-	field public static IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
+	//field public static string[] GenParamNames
+	//field public static IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
 	field public static boolean PCLSet
 
 	[method: ComVisible(false)]
@@ -66,9 +66,9 @@ class public auto ansi static AsmFactory
 		CurnNS = string::Empty
 		DfltNS = string::Empty
 		AsmFile = string::Empty
-		CurnTypList = new IKVM.Reflection.Emit.TypeBuilder[0]
-		GenParamNames = new string[0]
-		GenParamTyps = new IKVM.Reflection.Emit.GenericTypeParameterBuilder[0]
+		//CurnTypList = new IKVM.Reflection.Emit.TypeBuilder[0]
+		//GenParamNames = new string[0]
+		//GenParamTyps = new IKVM.Reflection.Emit.GenericTypeParameterBuilder[0]
 		isNested = false
 		inClass = false
 		inEnum = false
@@ -126,38 +126,38 @@ class public auto ansi static AsmFactory
 		CurnMetB::SetImplementationFlags(CurnMetB::GetMethodImplementationFlags() or IKVM.Reflection.MethodImplAttributes::PreserveSig)
 	end method
 
-	[method: ComVisible(false)]
-	method public static void AddTypB(var typ as IKVM.Reflection.Emit.TypeBuilder)
-
-		var len as integer = CurnTypList[l]
-		var stopel as integer = --len
-		var destarr as IKVM.Reflection.Emit.TypeBuilder[] = new IKVM.Reflection.Emit.TypeBuilder[++len]
-
-		for i = 0 upto stopel
-			destarr[i] = CurnTypList[i]
-		end for
-
-		destarr[len] = typ
-		CurnTypList = destarr
-
-	end method
+//	[method: ComVisible(false)]
+//	method public static void AddTypB(var typ as IKVM.Reflection.Emit.TypeBuilder)
+//
+//		var len as integer = CurnTypList[l]
+//		var stopel as integer = --len
+//		var destarr as IKVM.Reflection.Emit.TypeBuilder[] = new IKVM.Reflection.Emit.TypeBuilder[++len]
+//
+//		for i = 0 upto stopel
+//			destarr[i] = CurnTypList[i]
+//		end for
+//
+//		destarr[len] = typ
+//		CurnTypList = destarr
+//
+//	end method
 	
-	[method: ComVisible(false)]
-	method public static void AddGenParamName(var nam as string)
-
-		var len as integer = GenParamNames[l]
-		var stopel as integer = --len
-		
-		var destarr as string[] = new string[++len]
-
-		for i = 0 upto stopel
-			destarr[i] = GenParamNames[i]
-		end for
-		
-		destarr[len] = nam
-		GenParamNames = destarr
-
-	end method
+//	[method: ComVisible(false)]
+//	method public static void AddGenParamName(var nam as string)
+//
+//		var len as integer = GenParamNames[l]
+//		var stopel as integer = --len
+//		
+//		var destarr as string[] = new string[++len]
+//
+//		for i = 0 upto stopel
+//			destarr[i] = GenParamNames[i]
+//		end for
+//		
+//		destarr[len] = nam
+//		GenParamNames = destarr
+//
+//	end method
 	
 	[method: ComVisible(false)]
 	method public static void PushNS(var ns as string)

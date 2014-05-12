@@ -18,7 +18,7 @@ class public auto ansi TypeParamItem
 		me::ctor()
 		Bldr = bld
 		Name = name
-		BaseType = Loader::LoadClass("System.Object")
+		BaseType = Loader::CachedLoadClass("System.Object")
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
 		HasCtor = false
 	end method

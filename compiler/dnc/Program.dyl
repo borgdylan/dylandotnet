@@ -82,6 +82,7 @@ class public auto ansi static Program
 						ILEmitter::Init()
 						AsmFactory::Init()
 						Importer::Init()
+						Loader::Init()
 						SymTable::Init()
 
 						if lastsdk != null then

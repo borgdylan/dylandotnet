@@ -437,7 +437,7 @@ class public auto ansi static SymTable
 			AddLbl("$leave_ret_label$")
 
 			var vtyp = AsmFactory::CurnMetB::get_ReturnType()
-			if !vtyp::Equals(Loader::LoadClass("System.Void")) then
+			if !vtyp::Equals(Loader::CachedLoadClass("System.Void")) then
 				ILEmitter::DeclVar("$leave_ret_var$", vtyp)
 				ILEmitter::LocInd++
 				SymTable::VarLst::get_Item(0)::Add("$leave_ret_var$", new VarItem("$leave_ret_var$", true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr) {Stored = true})

@@ -14,27 +14,6 @@
     </remarks>
   </Docs>
   <Members>
-    <Member MemberName="AddGenParamName">
-      <MemberSignature Language="C#" Value="public static void AddGenParamName (string nam);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddGenParamName(string nam) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="nam" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="nam">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddrFlg">
       <MemberSignature Language="C#" Value="public static bool AddrFlg;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool AddrFlg" />
@@ -44,28 +23,6 @@
       </ReturnValue>
       <Docs>
         <summary>Set this to allow automatic valuetype pointer load during field chaining.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddTypB">
-      <MemberSignature Language="C#" Value="public static void AddTypB (IKVM.Reflection.Emit.TypeBuilder typ);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddTypB(class IKVM.Reflection.Emit.TypeBuilder typ) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="typ" Type="IKVM.Reflection.Emit.TypeBuilder" />
-      </Parameters>
-      <Docs>
-        <param name="typ">The TypeBuilder to add.</param>
-        <summary>Add a TypeBuilder to the list of type builders.</summary>
         <remarks>
         </remarks>
       </Docs>
@@ -319,19 +276,6 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="CurnTypList">
-      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.TypeBuilder[] CurnTypList;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.TypeBuilder[] CurnTypList" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>IKVM.Reflection.Emit.TypeBuilder[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Holds the list of TypeBuilders.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CurnTypName">
       <MemberSignature Language="C#" Value="public static string CurnTypName;" />
       <MemberSignature Language="ILAsm" Value=".field public static string CurnTypName" />
@@ -402,30 +346,6 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GenParamNames">
-      <MemberSignature Language="C#" Value="public static string[] GenParamNames;" />
-      <MemberSignature Language="ILAsm" Value=".field public static string[] GenParamNames" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GenParamTyps">
-      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>IKVM.Reflection.Emit.GenericTypeParameterBuilder[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

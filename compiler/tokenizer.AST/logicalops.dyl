@@ -35,6 +35,32 @@ class public auto ansi OrOp extends LogicalOp
 
 end class
 
+class public auto ansi AndAlsoOp extends LogicalOp
+
+	method public void AndAlsoOp()
+		me::ctor()
+		PrecNo = 4
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "andalso"
+	end method
+
+end class
+
+class public auto ansi OrElseOp extends LogicalOp
+
+	method public void OrElseOp()
+		me::ctor()
+		PrecNo = 3
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "orelse"
+	end method
+
+end class
+
 class public auto ansi NandOp extends LogicalOp
 
 	method public void NandOp()
