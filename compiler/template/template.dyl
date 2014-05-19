@@ -26,6 +26,7 @@ import template
 #warning "This is personal test code and is not a sample that should be followed."
 
 delegate public auto ansi void MyDelegate(var x as integer)
+delegate public auto ansi U MyDelegate<of T, U>(var t as T)
 
 struct public sequential ansi point
 	field public integer x
@@ -280,6 +281,7 @@ end class
 
 		method public U Met<of U>(var u as U, var t as T)
 			var d = new Func<of U, U>(Met<of U>)
+			var e = new MyDelegate<of U, U>(Met<of U>)
 			return d::Invoke(u)
 		end method
 

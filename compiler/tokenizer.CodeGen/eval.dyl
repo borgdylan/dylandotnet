@@ -201,7 +201,7 @@ class public auto ansi beforefieldinit Evaluator
 	end method
 	
 	method public void ASTEmitUnary(var iuo as IUnaryOperatable, var emt as boolean)
-		foreach s in ParseUtils::StringParser(iuo::get_OrdOp(), " ")
+		foreach s in ParseUtils::StringParser(iuo::get_OrdOp(), ' ')
 			if (s == "conv") and (iuo is IConvable) then
 				var idt = $IConvable$iuo
 				if idt::get_Conv() then
@@ -255,7 +255,7 @@ class public auto ansi beforefieldinit Evaluator
 		var idtfldinf as FieldInfo
 		var idtisstatic as boolean = false
 		var typ as IKVM.Reflection.Type
-		var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ":")
+		var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ':')
 		var pushaddr as boolean = idt::IsRef and idt::MemberAccessFlg
 
 		if pushaddr then
@@ -449,7 +449,7 @@ class public auto ansi beforefieldinit Evaluator
 		var mcparenttyp as IKVM.Reflection.Type = AsmFactory::CurnTypB
 		var mectorflg as boolean = (mntok::Value == "me::ctor") or (mntok::Value == "mybase::ctor")
 		var ctorflg as boolean = mntok::Value == "ctor"
-		var mnstrarr as string[] = ParseUtils::StringParser(mntok::Value, ":")
+		var mnstrarr as string[] = ParseUtils::StringParser(mntok::Value, ':')
 		var len as integer = mnstrarr[l] - 2
 		var iterflg = false
 		
@@ -754,7 +754,7 @@ class public auto ansi beforefieldinit Evaluator
 			typarr1 = new IKVM.Reflection.Type[] {Loader::CachedLoadClass("System.Object"), Loader::CachedLoadClass("System.IntPtr")}
 
 			//delegate pointer loading section
-			mnstrarr = ParseUtils::StringParser(delmtdnam::Value, ":")
+			mnstrarr = ParseUtils::StringParser(delmtdnam::Value, ':')
 			var mcrestrord as integer = 2
 			i = -1
 			len = mnstrarr[l] - 2
@@ -1319,7 +1319,7 @@ class public auto ansi beforefieldinit Evaluator
 
 		var i as integer = -1
 		var idt as Ident = $Ident$tok
-		var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ":")
+		var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ':')
 		var len as integer = idtnamarr[l] - 2
 		var vr as VarItem = null
 		var idtb1 as boolean = false

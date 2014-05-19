@@ -50,36 +50,35 @@ namespace dylan.NET.ResProc
 			end if
 			
 			var ins as boolean = false
-			var ch as string = string::Empty
-			var acc as string = string::Empty
+			var ch as char
+			var acc as StringBuilder = new StringBuilder()
 			var len as integer = --StringToParse::get_Length()
 		
 			for i = 0 upto len
-				ch = $string$StringToParse::get_Chars(i)
+				ch = StringToParse::get_Chars(i)
 		
-				if ch = c"\q" then
+				if ch == c'\q' then
 					ins = !ins
 				end if
 		
-				if string::IsNullOrWhiteSpace(ch) then
-					if !ins then
-						if acc::get_Length() != 0 then
-							arr::Add(acc)
-						end if
-						acc = string::Empty
-					end if
+				if ch == ' ' then
 					if ins then
-						acc = acc + ch
+						acc::Append(ch)
+					else
+						if acc::get_Length() != 0 then
+							arr::Add(acc::ToString())
+						end if
+						acc::Clear()
 					end if
 				else
-					acc = acc + ch
+					acc::Append(ch)
 				end if
 		
-				if i = len then
+				if i == len then
 					if acc::get_Length() != 0 then
-						arr::Add(acc)
+						arr::Add(acc::ToString())
 					end if
-					acc = String::Empty
+					acc::Clear()
 				end if
 
 			end for
@@ -88,28 +87,13 @@ namespace dylan.NET.ResProc
 		end method
 
 		[method: ComVisible(false)]
-		method private static boolean IsHexDigit(var c as char)
+		method public static boolean IsHexDigit(var c as char)
 			if char::IsDigit(c) then
 				return true
 			else
 				c = char::ToLower(c)
-				if c == 'a' then
-					return true
-				elseif c == 'b' then
-					return true
-				elseif c == 'c' then
-					return true
-				elseif c == 'd' then
-					return true
-				elseif c == 'e' then
-					return true
-				elseif c == 'f' then
-					return true
-				else
-					return false
-				end if
+				return c == 'a' orelse c == 'b' orelse c == 'c' orelse c == 'd' orelse c == 'e' orelse c == 'f'
 			end if
-			
 		end method
 		
 		[method: ComVisible(false)]
@@ -152,11 +136,11 @@ namespace dylan.NET.ResProc
 						elseif cc = 'x' then
 							if i < (len - 3) then
 								i++
-								if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) and IsHexDigit(escstr::get_Chars(i + 2)) and IsHexDigit(escstr::get_Chars(i + 3)) then
+								if IsHexDigit(escstr::get_Chars(i)) andalso IsHexDigit(escstr::get_Chars(++i)) andalso IsHexDigit(escstr::get_Chars(i + 2)) andalso IsHexDigit(escstr::get_Chars(i + 3)) then
 									buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i) + $string$escstr::get_Chars(i + 2) + $string$escstr::get_Chars(i + 3)
 									sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
 									i = i + 3
-								elseif IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) then
+								elseif IsHexDigit(escstr::get_Chars(i)) andalso IsHexDigit(escstr::get_Chars(++i)) then
 									buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
 									sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
 									i++
@@ -165,7 +149,7 @@ namespace dylan.NET.ResProc
 								end if
 							elseif i < --len then
 								i++
-								if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) then
+								if IsHexDigit(escstr::get_Chars(i)) andalso IsHexDigit(escstr::get_Chars(++i)) then
 									buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
 									sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
 									i++
@@ -209,7 +193,6 @@ namespace dylan.NET.ResProc
 									if line[1] == "string" then
 										rr::AddResource(line[0], line[2])
 										sentinel = true
-							
 									elseif line[1] == "file" then
 										if File::Exists(line[2]) then
 											rr::AddResource(line[0], File::ReadAllBytes(line[2]))

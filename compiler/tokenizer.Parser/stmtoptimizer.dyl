@@ -205,7 +205,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkDoWhile(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then	
-			b = (stm::Tokens::get_Item(0) is DoTok) and (stm::Tokens::get_Item(1) is WhileTok)
+			b = (stm::Tokens::get_Item(0) is DoTok) andalso (stm::Tokens::get_Item(1) is WhileTok)
 			
 			if b then
 				var exp as Expr = new Expr() {Line = stm::Line}
@@ -243,7 +243,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkDoUntil(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is DoTok) and (stm::Tokens::get_Item(1) is UntilTok)
+			b = (stm::Tokens::get_Item(0) is DoTok) andalso (stm::Tokens::get_Item(1) is UntilTok)
 			
 			if b then
 				var exp as Expr = new Expr() {Line = stm::Line}
@@ -593,7 +593,7 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method private Stmt checkThrow(var stm as Stmt, var b as boolean&)
-		b = (stm::Tokens::get_Item(0) is ThrowTok) and (stm::Tokens::get_Count() >= 2)
+		b = (stm::Tokens::get_Item(0) is ThrowTok) andalso (stm::Tokens::get_Count() >= 2)
 		if b then
 			var i as integer = 0
 			var len as integer = --stm::Tokens::get_Count() 
@@ -610,7 +610,7 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method private Stmt checkLock(var stm as Stmt, var b as boolean&)
-		b = (stm::Tokens::get_Item(0) is LockTok) and (stm::Tokens::get_Count() >= 2)
+		b = (stm::Tokens::get_Item(0) is LockTok) andalso (stm::Tokens::get_Count() >= 2)
 		if b then
 
 			var i as integer = 0
@@ -628,7 +628,7 @@ class public auto ansi StmtOptimizer
 	end method
 		
 	method private Stmt checkTryLock(var stm as Stmt, var b as boolean&)
-		b = (stm::Tokens::get_Item(0) is TryLockTok) and (stm::Tokens::get_Count() >= 2)
+		b = (stm::Tokens::get_Item(0) is TryLockTok) andalso (stm::Tokens::get_Count() >= 2)
 		if b then
 
 			var i as integer = 0
@@ -747,7 +747,7 @@ class public auto ansi StmtOptimizer
 					return new EndHIfStmt() {Line = stm::Line}
 				end if
 				
-				b = (stm::Tokens::get_Item(1) is DoTok) or (stm::Tokens::get_Item(1) is ForTok)
+				b = (stm::Tokens::get_Item(1) is DoTok) orelse (stm::Tokens::get_Item(1) is ForTok)
 				if b then
 					return new EndDoStmt() {Line = stm::Line}
 				end if
@@ -772,7 +772,7 @@ class public auto ansi StmtOptimizer
 					return new EndNSStmt() {Line = stm::Line}
 				end if
 				
-				b = (stm::Tokens::get_Item(1) is ClassTok) or (stm::Tokens::get_Item(1) is StructTok)
+				b = (stm::Tokens::get_Item(1) is ClassTok) orelse (stm::Tokens::get_Item(1) is StructTok)
 				if b then
 					return new EndClassStmt() {Line = stm::Line}
 				end if
@@ -877,7 +877,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkMetAttr(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is MethodCTok)
+			b = (stm::Tokens::get_Item(0) is LSParen) andalso (stm::Tokens::get_Item(1) is MethodCTok)
 
 			if b then
 				return parseCustAttr(new MethodAttrStmt(), stm)
@@ -889,7 +889,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkEnumAttr(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is EnumCTok)
+			b = (stm::Tokens::get_Item(0) is LSParen) andalso (stm::Tokens::get_Item(1) is EnumCTok)
 
 			if b then
 				return parseCustAttr(new EnumAttrStmt(), stm)
@@ -901,7 +901,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkFldAttr(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is FieldCTok)
+			b = (stm::Tokens::get_Item(0) is LSParen) andalso (stm::Tokens::get_Item(1) is FieldCTok)
 
 			if b then
 				return parseCustAttr(new FieldAttrStmt(), stm)
@@ -913,7 +913,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkClsAttr(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is ClassCTok)
+			b = (stm::Tokens::get_Item(0) is LSParen) andalso (stm::Tokens::get_Item(1) is ClassCTok)
 
 			if b then
 				return parseCustAttr(new ClassAttrStmt(), stm)
@@ -925,7 +925,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkAsmAttr(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is AssemblyCTok)
+			b = (stm::Tokens::get_Item(0) is LSParen) andalso (stm::Tokens::get_Item(1) is AssemblyCTok)
 
 			if b then
 				return parseCustAttr(new AssemblyAttrStmt(), stm)
@@ -937,7 +937,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkEventAttr(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is EventCTok)
+			b = (stm::Tokens::get_Item(0) is LSParen) andalso (stm::Tokens::get_Item(1) is EventCTok)
 
 			if b then
 				return parseCustAttr(new EventAttrStmt(), stm)
@@ -949,7 +949,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkPropAttr(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is PropertyCTok)
+			b = (stm::Tokens::get_Item(0) is LSParen) andalso (stm::Tokens::get_Item(1) is PropertyCTok)
 
 			if b then
 				return parseCustAttr(new PropertyAttrStmt(), stm)
@@ -961,7 +961,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkParamAttr(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is LSParen) and (stm::Tokens::get_Item(1) is ParameterCTok)
+			b = (stm::Tokens::get_Item(0) is LSParen) andalso (stm::Tokens::get_Item(1) is ParameterCTok)
 
 			if b then
 				var pct as ParameterCTok = $ParameterCTok$stm::Tokens::get_Item(1)
@@ -983,7 +983,7 @@ class public auto ansi StmtOptimizer
 		b = stm::Tokens::get_Item(0) is VerTok
 		if b then
 			var vers as VerStmt = new VerStmt() {Line = stm::Line}
-			var ars as string[] = ParseUtils::StringParser(stm::Tokens::get_Item(1)::Value,".")
+			var ars as string[] = ParseUtils::StringParser(stm::Tokens::get_Item(1)::Value, '.')
 			vers::VersionNos = new IntLiteral[] {new IntLiteral($integer$ars[0]),new IntLiteral($integer$ars[1]),new IntLiteral($integer$ars[2]),new IntLiteral($integer$ars[3])}
 
 			if stm::Tokens::get_Count() > 2 then
@@ -1043,7 +1043,7 @@ class public auto ansi StmtOptimizer
 					gmn::AddConstraint(curp, t)
 				elseif t is ClassTok then
 					gmn::AddConstraint(curp, t)
-				elseif (t is Ident) or (t is TypeTok) then
+				elseif (t is Ident) orelse (t is TypeTok) then
 					stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 					gmn::AddConstraint(curp, stm::Tokens::get_Item(i))
 				elseif t is Comma then
@@ -1074,7 +1074,7 @@ class public auto ansi StmtOptimizer
 	end method
 
 	method private Stmt checkClass(var stm as Stmt, var b as boolean&)
-		b = (stm::Tokens::get_Item(0) is ClassTok) or (stm::Tokens::get_Item(0) is StructTok)
+		b = (stm::Tokens::get_Item(0) is ClassTok) orelse (stm::Tokens::get_Item(0) is StructTok)
 		var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
 		var stflg as boolean = false
 
@@ -1241,7 +1241,7 @@ class public auto ansi StmtOptimizer
 						i++
 					
 						if stm::Tokens::get_Item(i) is RParen then
-							if d or (cc > 0) then
+							if d orelse (cc > 0) then
 								exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 								if bl then
 									prss::AddParam(exp)
@@ -1291,7 +1291,7 @@ class public auto ansi StmtOptimizer
 							lvl--
 						end if
 				
-						if (stm::Tokens::get_Item(i) is Comma) and (lvl == 0) then
+						if (lvl == 0) andalso (stm::Tokens::get_Item(i) is Comma) then
 							cc++
 							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 							if bl then
@@ -1396,7 +1396,7 @@ class public auto ansi StmtOptimizer
 					gmn::AddConstraint(curp, t)
 				elseif t is ClassTok then
 					gmn::AddConstraint(curp, t)
-				elseif (t is Ident) or (t is TypeTok) then
+				elseif (t is Ident) orelse (t is TypeTok) then
 					stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 					gmn::AddConstraint(curp, stm::Tokens::get_Item(i))
 				elseif t is Comma then
@@ -1474,7 +1474,7 @@ class public auto ansi StmtOptimizer
 					i++
 				
 					if stm::Tokens::get_Item(i) is RParen then
-						if d or (cc > 0) then
+						if d orelse (cc > 0) then
 							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 							if bl then
 								mtss::AddParam(exp)
@@ -1488,28 +1488,28 @@ class public auto ansi StmtOptimizer
 				
 					if stm::Tokens::get_Item(i) is VarTok then
 						d = true
-						if exp = null then
+						if exp == null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 				
 					if stm::Tokens::get_Item(i) is InTok then
 						d = true
-						if exp = null then
+						if exp == null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 				
 					if stm::Tokens::get_Item(i) is InOutTok then
 						d = true
-						if exp = null then
+						if exp == null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 				
 					if stm::Tokens::get_Item(i) is OutTok then
 						d = true
-						if exp = null then
+						if exp == null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
@@ -1524,7 +1524,7 @@ class public auto ansi StmtOptimizer
 						lvl--
 					end if
 			
-					if (stm::Tokens::get_Item(i) is Comma) and (lvl == 0) then
+					if (lvl == 0) andalso (stm::Tokens::get_Item(i) is Comma) then
 						cc++
 						exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 						if bl then
@@ -1575,23 +1575,22 @@ class public auto ansi StmtOptimizer
 			dels::RetTyp = $TypeTok$stm::Tokens::get_Item(i)
 			len = --stm::Tokens::get_Count() 
 			i++
-			
-			if stm::Tokens::get_Item(i) is Ident then
-				dels::DelegateName = $Ident$stm::Tokens::get_Item(i)
-			end if
+
+			stm::Tokens = new ExprOptimizer(PFlags)::procMtdName(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
+			dels::DelegateName = $MethodNameTok$stm::Tokens::get_Item(i)
 			
 			i++
 			if stm::Tokens::get_Item(i) is LParen then
 				
 				exp = null
 				var cc as integer = 0
-				do until i = len
+				do until i == len
 			
 					//get parameters
 					i++
 				
 					if stm::Tokens::get_Item(i) is RParen then
-						if d or (cc > 0) then
+						if d orelse (cc > 0) then
 							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 							if bl then
 								dels::AddParam(exp)
@@ -1604,25 +1603,25 @@ class public auto ansi StmtOptimizer
 					end if
 					if stm::Tokens::get_Item(i) is VarTok then
 						d = true
-						if exp = null then
+						if exp == null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 					if stm::Tokens::get_Item(i) is InTok then
 						d = true
-						if exp = null then
+						if exp == null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 					if stm::Tokens::get_Item(i) is InOutTok then
 						d = true
-						if exp = null then
+						if exp == null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 					if stm::Tokens::get_Item(i) is OutTok then
 						d = true
-						if exp = null then
+						if exp == null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
@@ -1637,7 +1636,7 @@ class public auto ansi StmtOptimizer
 						lvl--
 					end if
 					
-					if (stm::Tokens::get_Item(i) is Comma) and (lvl == 0) then
+					if (lvl == 0) andalso (stm::Tokens::get_Item(i) is Comma) then
 						cc++
 						exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 						if bl then
@@ -1654,6 +1653,7 @@ class public auto ansi StmtOptimizer
 					end if
 				end do
 			end if
+			procWhere(stm, dels::DelegateName, ++i)
 			return dels
 		end if
 		return null
@@ -1663,7 +1663,7 @@ class public auto ansi StmtOptimizer
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
 			var t = stm::Tokens::get_Item(--stm::Tokens::get_Count())
-			b = (stm::Tokens::get_Item(0) is Ident) and ((t is IncOp) or (t is DecOp))
+			b = (stm::Tokens::get_Item(0) is Ident) andalso ((t is IncOp) orelse (t is DecOp))
 			if b then
 				stm::RemToken(--stm::Tokens::get_Count())
 				var nv = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})::Tokens::get_Item(0)
@@ -1680,7 +1680,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkMethodCall(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() > 2 then
-			b = (stm::Tokens::get_Item(0) is Ident) or (stm::Tokens::get_Item(0) is NewTok)
+			b = (stm::Tokens::get_Item(0) is Ident) orelse (stm::Tokens::get_Item(0) is NewTok)
 			if b then
 				return new MethodCallStmt() {Line = stm::Line, MethodToken = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = stm::Tokens})::Tokens::get_Item(0)}
 			end if
@@ -1691,7 +1691,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkGet(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is GetTok) and (stm::Tokens::get_Item(1) is Ident)
+			b = (stm::Tokens::get_Item(0) is GetTok) andalso (stm::Tokens::get_Item(1) is Ident)
 			if b then
 				var prgs as PropertyGetStmt = new PropertyGetStmt() {Line = stm::Line}
 				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = new C5.ArrayList<of Token>() {AddAll(Enumerable::Skip<of Token>(stm::Tokens, 1))} })
@@ -1714,7 +1714,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkSet(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is SetTok) and (stm::Tokens::get_Item(1) is Ident)
+			b = (stm::Tokens::get_Item(0) is SetTok) andalso (stm::Tokens::get_Item(1) is Ident)
 			if b then
 				var prss as PropertySetStmt = new PropertySetStmt() {Line = stm::Line}
 				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = new C5.ArrayList<of Token>() {AddAll(Enumerable::Skip<of Token>(stm::Tokens, 1))} })
@@ -1737,7 +1737,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkRemove(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is RemoveTok) and (stm::Tokens::get_Item(1) is Ident)
+			b = (stm::Tokens::get_Item(0) is RemoveTok) andalso (stm::Tokens::get_Item(1) is Ident)
 			if b then
 				var evrs as EventRemoveStmt = new EventRemoveStmt() {Line = stm::Line}
 				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = new C5.ArrayList<of Token>() {AddAll(Enumerable::Skip<of Token>(stm::Tokens, 1))} })
@@ -1760,7 +1760,7 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkAdd(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() >= 2 then
-			b = (stm::Tokens::get_Item(0) is AddTok) and (stm::Tokens::get_Item(1) is Ident)	
+			b = (stm::Tokens::get_Item(0) is AddTok) andalso (stm::Tokens::get_Item(1) is Ident)	
 			if b then
 				var evas as EventAddStmt = new EventAddStmt() {Line = stm::Line, Tokens = stm::Tokens}
 				var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {Line = stm::Line, Tokens = new C5.ArrayList<of Token>() {AddAll(Enumerable::Skip<of Token>(stm::Tokens, 1))} })
@@ -1809,7 +1809,7 @@ class public auto ansi StmtOptimizer
 		var eop as ExprOptimizer = new ExprOptimizer(PFlags)
 		
 		if le::Tokens::get_Count() >= 4 then
-			if ((le::Tokens::get_Item(0) is VarTok) or (le::Tokens::get_Item(0) is UsingTok)) and (le::Tokens::get_Item(2) is AsTok) then
+			if ((le::Tokens::get_Item(0) is VarTok) orelse (le::Tokens::get_Item(0) is UsingTok)) andalso (le::Tokens::get_Item(2) is AsTok) then
 				le::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = le::Tokens}, 3)::Tokens		
 
 				if !#expr(le::Tokens::get_Item(1) is Ident) then
@@ -1822,7 +1822,7 @@ class public auto ansi StmtOptimizer
 				return stm
 			end if
 		elseif le::Tokens::get_Count() >= 2 then
-			if (le::Tokens::get_Item(0) is VarTok) or (le::Tokens::get_Item(0) is UsingTok) then
+			if (le::Tokens::get_Item(0) is VarTok) orelse (le::Tokens::get_Item(0) is UsingTok) then
 				
 				if !#expr(le::Tokens::get_Item(1) is Ident) then
 					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", le::Tokens::get_Item(1)::Value))
@@ -1873,7 +1873,7 @@ class public auto ansi StmtOptimizer
 			b = true
 			var asss as AssignStmt = new AssignStmt() {Line = stm::Line, LExp = le, RExp = re}
 			var asss2 as Stmt = AssOpt(asss)
-			if (asss2 is VarAsgnStmt) or (asss2 is InfVarAsgnStmt) then
+			if (asss2 is VarAsgnStmt) orelse (asss2 is InfVarAsgnStmt) then
 				return asss2
 			else
 				var eop as ExprOptimizer = new ExprOptimizer(PFlags)

@@ -130,12 +130,12 @@ class public auto ansi static SymTable
 		var flg = false
 		foreach s in VarLst::Backwards()
 			if s::Contains(nme) then
-				if !flg then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable '" + nme + "' is already declared in the current scope!")
-					return
-				else
+				if flg then
 					StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable '" + nme + "' will hide a variable in an outer scope!")
 					break
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable '" + nme + "' is already declared in the current scope!")
+					return
 				end if
 			end if
 			flg = true

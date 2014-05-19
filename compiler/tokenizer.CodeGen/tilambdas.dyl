@@ -30,7 +30,7 @@ class private auto ansi TILambdas
 	end method
 
 	method assembly boolean DetermineIfCandidate(var ti as TypeItem)
-		return (ti::Name == Name) and (ti::NrGenParams == NrGenParams)
+		return (ti::Name == Name) andalso (ti::NrGenParams == NrGenParams)
 	end method
 
 	method assembly boolean DetermineIfCandidateType(var ti as TypeItem)

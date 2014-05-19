@@ -20,12 +20,7 @@ class public auto ansi Line
 	end method
 
 	method public boolean isDigit(var c as char)
-		if c >= '0' then
-			if c <= '9' then
-				return true
-			end if
-		end if
-		return false
+		return c >= '0' andalso c <= '9'
 	end method
 	
 	//cc - char to be evaluated
@@ -44,7 +39,7 @@ class public auto ansi Line
 
 		if cc == c"\q" then
 			InStr = !InStr
-			if InStr == false then
+			if !InStr then
 				InChar = false
 			end if
 		end if
@@ -53,8 +48,8 @@ class public auto ansi Line
 			InChar = !InChar
 		end if
 
-		if !#expr(InStr or InChar) then
-			if (cc == ":") and (PrevChar == c"\q") then
+		if !#expr(InStr orelse InChar) then
+			if (cc == ":") andalso (PrevChar == c"\q") then
 				ob = true
 				scla = false
 				sca = true
@@ -125,7 +120,7 @@ class public auto ansi Line
 				sca = true
 				if lc == "=" then
 					scla = false
-					ob = !#expr((PrevChar == "!") or (PrevChar == "="))
+					ob = !#expr((PrevChar == "!") orelse (PrevChar == "="))
 				else
 					if PrevChar == ">" then
 						ob = false

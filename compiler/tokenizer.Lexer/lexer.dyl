@@ -30,7 +30,7 @@ class public auto ansi Lexer
 				lfflag = true
 			end if
 			
-			if !#expr(crflag or lfflag) then
+			if !#expr(crflag orelse lfflag) then
 				buf::Append(chr)
 			else
 				if lfflag then

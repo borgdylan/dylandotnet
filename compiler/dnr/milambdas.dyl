@@ -67,7 +67,7 @@ class private auto ansi MILambdas
 
 	method assembly boolean GenericMtdFilter(var mi as IKVM.Reflection.MethodInfo)
 		if mi::get_IsGenericMethod() then
-			if mi::get_Name() = Name then
+			if mi::get_Name() == Name then
 				if mi::GetGenericArguments()[l] != ParamLen then
 					return false
 				end if
@@ -80,10 +80,10 @@ class private auto ansi MILambdas
 		
 		if !mi::get_IsPublic() then
 			if !mi::get_IsPrivate() then
-				if !#expr(mi::get_IsFamilyAndAssembly() and ProtectedFlag and HaveInternal) then
-					if !#expr(mi::get_IsFamilyOrAssembly() and (ProtectedFlag or HaveInternal)) then
-						if !#expr(mi::get_IsFamily() and ProtectedFlag) then
-							if !#expr(mi::get_IsAssembly() and HaveInternal) then
+				if !#expr(mi::get_IsFamilyAndAssembly() andalso ProtectedFlag andalso HaveInternal) then
+					if !#expr(mi::get_IsFamilyOrAssembly() andalso (ProtectedFlag orelse HaveInternal)) then
+						if !#expr(mi::get_IsFamily() andalso ProtectedFlag) then
+							if !#expr(mi::get_IsAssembly() andalso HaveInternal) then
 								return false
 							end if
 						end if
@@ -102,7 +102,7 @@ class private auto ansi MILambdas
 	end method
 
 	method assembly boolean IsSameNameAndReturn(var mi as IKVM.Reflection.MethodInfo)
-		return (mi::get_Name() == Name) and mi::get_ReturnType()::Equals(ConvTyp)
+		return (mi::get_Name() == Name) andalso mi::get_ReturnType()::Equals(ConvTyp)
 	end method
 
 	method assembly IKVM.Reflection.MethodInfo InstGenMtd(var mi as IKVM.Reflection.MethodInfo)

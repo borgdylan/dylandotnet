@@ -32,10 +32,8 @@ class public auto ansi static Helpers
 	//uses NullExprFlag as input
 	[method: ComVisible(false)]
 	method public static void CheckAssignability(var t1 as IKVM.Reflection.Type, var t2 as IKVM.Reflection.Type)
-		if !t1::IsAssignableFrom(t2) then
-			if !#expr(NullExprFlg and !t1::IsAssignableFrom(Loader::CachedLoadClass("System.ValueType"))) then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Slots of type '" + t1::ToString() + "' cannot be assigned values of type '" + t2::ToString() + "'.")
-			end if
+		if !t1::IsAssignableFrom(t2) andalso !#expr(NullExprFlg and !t1::IsAssignableFrom(Loader::CachedLoadClass("System.ValueType"))) then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Slots of type '" + t1::ToString() + "' cannot be assigned values of type '" + t2::ToString() + "'.")
 		end if
 	end method
 
@@ -404,69 +402,31 @@ class public auto ansi static Helpers
 	
 	[method: ComVisible(false)]
 	method public static boolean CheckSHLRLHS(var t as IKVM.Reflection.Type)
-		if t::Equals(Loader::CachedLoadClass("System.Int32")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.UInt32")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.Int64")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.UInt64")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.IntPtr")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.UIntPtr")) then
-			return true
-		else
-			return false
-		end if
+		return t::Equals(Loader::CachedLoadClass("System.Int32")) orelse t::Equals(Loader::CachedLoadClass("System.UInt32")) _
+			orelse t::Equals(Loader::CachedLoadClass("System.Int64")) orelse t::Equals(Loader::CachedLoadClass("System.UInt64")) _
+		 	orelse t::Equals(Loader::CachedLoadClass("System.IntPtr")) orelse t::Equals(Loader::CachedLoadClass("System.UIntPtr"))
 	end method
 	
 	[method: ComVisible(false)]
 	method public static boolean CheckSHLRRHS(var t as IKVM.Reflection.Type, var accepti64 as boolean)
-		if t::Equals(Loader::CachedLoadClass("System.Int32")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.Int64")) and accepti64 then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.IntPtr")) then
-			return true
-		else
-			return false
-		end if
+		return t::Equals(Loader::CachedLoadClass("System.Int32")) orelse _
+			(t::Equals(Loader::CachedLoadClass("System.Int64")) andalso accepti64) _
+			orelse t::Equals(Loader::CachedLoadClass("System.IntPtr"))
 	end method
 	
 	[method: ComVisible(false)]
 	method public static boolean IsPrimitiveIntegralType(var t as IKVM.Reflection.Type)
-		if CheckSigned(t) then
-			return true
-		elseif CheckUnsigned(t) then
-			return true
-		else
-			return false
-		end if
+		return CheckSigned(t) orelse CheckUnsigned(t)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static boolean IsPrimitiveFPType(var t as IKVM.Reflection.Type)
-		if t::Equals(Loader::CachedLoadClass("System.Double")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.Single")) then
-			return true
-		else
-			return false
-		end if
+		return t::Equals(Loader::CachedLoadClass("System.Double")) orelse t::Equals(Loader::CachedLoadClass("System.Single"))
 	end method
 	
 	[method: ComVisible(false)]
 	method public static boolean IsPrimitiveNumericType(var t as IKVM.Reflection.Type)
-		if CheckSigned(t) then
-			return true
-		elseif IsPrimitiveFPType(t) then
-			return true
-		elseif CheckUnsigned(t) then
-			return true
-		else
-			return false
-		end if
+		return CheckSigned(t) orelse IsPrimitiveFPType(t) orelse CheckUnsigned(t)
 	end method
 	
 	[method: ComVisible(false)]
@@ -569,7 +529,7 @@ class public auto ansi static Helpers
 					Loader::MakeArr = tt::IsArray
 					Loader::MakeRef = tt::IsByRef
 
-					if (ParseUtils::StringParser(tt::Value,c"\\")[l] > 0) and !tt::Value::Contains(".") then
+					if (ParseUtils::StringParser(tt::Value, c'\\')[l] > 0) and !tt::Value::Contains(".") then
 						if AsmFactory::inClass then
 							var tti = #ternary { AsmFactory::isNested ? SymTable::CurnTypItem2 , SymTable::CurnTypItem}
 							if tti != null then
@@ -1696,21 +1656,15 @@ var pa as ParameterAttributes = ParameterAttributes::None
 
 	[method: ComVisible(false)]
 	method public static boolean CheckIfArrLen(var ind as Expr)
-		if ind::Tokens::get_Count() == 1 then
-			return #ternary{ind::Tokens::get_Item(0) is Ident ? ind::Tokens::get_Item(0)::Value == "l", false}
-		else
-			return false
-		end if
+		return ind::Tokens::get_Count() == 1 andalso ind::Tokens::get_Item(0) is Ident andalso ind::Tokens::get_Item(0)::Value == "l"
 	end method
 
 	[method: ComVisible(false)]
 	method public static TypeParamItem GetTPI(var name as string)
 		if SymTable::MetGenParams::Contains(name) then
 			return SymTable::MetGenParams::get_Item(name)
-		elseif SymTable::CurnTypItem != null then
-			if SymTable::CurnTypItem::TypGenParams::Contains(name) then
+		elseif SymTable::CurnTypItem != null andalso SymTable::CurnTypItem::TypGenParams::Contains(name) then
 				return SymTable::CurnTypItem::TypGenParams::get_Item(name)
-			end if
 		end if
 		return null
 	end method
@@ -1749,7 +1703,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			return null
 		end if
 		
-		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
+		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ':')
 		var name as string = mnstrarr[--mnstrarr[l]]
 		
 		var m as MethodInfo = SymTable::TypeLst::GetMethod(t,mn,paramtyps, t)
@@ -1776,7 +1730,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 	
 	[method: ComVisible(false)]
 	method public static MethodInfo GetLocMet(var mn as MethodNameTok, var typs as IKVM.Reflection.Type[])
-		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
+		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ':')
 		var nam as string = mnstrarr[--mnstrarr[l]]
 		var metinf as MethodInfo = null
 		var meti as MethodInfo = null
@@ -2073,18 +2027,14 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		if ta::Equals(tb) then
 			return ta
 		else
-			if ta::get_IsEnum() then
-				if ta::GetEnumUnderlyingType()::Equals(tb) then
-					return tb
-				end if
-			elseif tb::get_IsEnum() then
-				if tb::GetEnumUnderlyingType()::Equals(ta) then
-					return ta
-				end if
+			if ta::get_IsEnum() andalso ta::GetEnumUnderlyingType()::Equals(tb) then
+				return tb
+			elseif tb::get_IsEnum() andalso tb::GetEnumUnderlyingType()::Equals(ta) then
+				return ta
 			end if
 		
 			var typ = Loader::CachedLoadClass("System.ValueType")
-			if typ::IsAssignableFrom(ta) or typ::IsAssignableFrom(tb) then
+			if typ::IsAssignableFrom(ta) orelse typ::IsAssignableFrom(tb) then
 				return null
 			elseif ta::IsAssignableFrom(tb) then
 				return ta
@@ -2233,7 +2183,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 				var lit as Literal = $Literal$exp::Tokens::get_Item(0)
 				return new ConstInfo() {Typ = CommitEvalTTok(lit::LitTyp), Value = LiteralToConst(lit)}
 			elseif exp::Tokens::get_Item(0) is Ident then
-				var idtnamarr as string[] = ParseUtils::StringParser(#expr($Ident$exp::Tokens::get_Item(0))::Value, ":")
+				var idtnamarr as string[] = ParseUtils::StringParser(#expr($Ident$exp::Tokens::get_Item(0))::Value, ':')
 				var typ as IKVM.Reflection.Type = CommitEvalTTok(new TypeTok(idtnamarr[0]))
 				if typ != null then
 					if  GetExtFld(typ, idtnamarr[1]) != null then

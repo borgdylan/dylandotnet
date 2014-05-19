@@ -22,7 +22,7 @@ class public auto ansi TypeList
 	method public TypeItem GetTypeItem(var nam as string, var gp as integer)
 		var nest as boolean = false
 
-		var na as string[] = ParseUtils::StringParser(nam,"\")
+		var na as string[] = ParseUtils::StringParser(nam, c'\\')
 		nam = na[0]
 		if na[l] > 1 then
 			nest = true
@@ -86,7 +86,7 @@ class public auto ansi TypeList
 
 	method public ConstructorInfo GetCtor(var t as IKVM.Reflection.Type,var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
-		if ti = null then
+		if ti == null then
 			return null
 		else
 			var ctorinf as ConstructorInfo = ti::GetCtor(paramst, auxt)
@@ -94,9 +94,9 @@ class public auto ansi TypeList
 				if !ctorinf::get_IsPublic() then
 					//filter out private members
 					if !ctorinf::get_IsPrivate() then
-						if !#expr(ctorinf::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) then
+						if !#expr(ctorinf::get_IsFamilyAndAssembly() andalso Loader::ProtectedFlag) then
 							if !ctorinf::get_IsFamilyOrAssembly() then
-								if !#expr(ctorinf::get_IsFamily() and Loader::ProtectedFlag) then
+								if !#expr(ctorinf::get_IsFamily() andalso Loader::ProtectedFlag) then
 									if !ctorinf::get_IsAssembly() then
 										ctorinf = null
 									end if
@@ -144,7 +144,7 @@ class public auto ansi TypeList
 
 	method public FieldInfo GetField(var t as IKVM.Reflection.Type, var nam as string, var auxt as IKVM.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
-		if ti = null then
+		if ti == null then
 			return null
 		else
 			var fldinfo as FieldInfo = ti::GetField(nam, auxt)
@@ -152,9 +152,9 @@ class public auto ansi TypeList
 				if !fldinfo::get_IsPublic() then
 					//filter out private members
 					if !fldinfo::get_IsPrivate() then
-						if !#expr(fldinfo::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) then
+						if !#expr(fldinfo::get_IsFamilyAndAssembly() andalso Loader::ProtectedFlag) then
 							if !fldinfo::get_IsFamilyOrAssembly() then
-								if !#expr(fldinfo::get_IsFamily() and Loader::ProtectedFlag) then
+								if !#expr(fldinfo::get_IsFamily() andalso Loader::ProtectedFlag) then
 									if !fldinfo::get_IsAssembly() then
 										fldinfo = null
 									end if
@@ -176,7 +176,7 @@ class public auto ansi TypeList
 		if ti = null then
 			return null
 		else
-			var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ":")
+			var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ':')
 			var nam as string = mnstrarr[--mnstrarr[l]]
 		
 			var mtdinfo as MethodInfo
@@ -200,9 +200,9 @@ class public auto ansi TypeList
 				if !mtdinfo::get_IsPublic() then
 					//filter out private members
 					if !mtdinfo::get_IsPrivate() then
-						if !#expr(mtdinfo::get_IsFamilyAndAssembly() and Loader::ProtectedFlag) then
+						if !#expr(mtdinfo::get_IsFamilyAndAssembly() andalso Loader::ProtectedFlag) then
 							if !mtdinfo::get_IsFamilyOrAssembly() then
-								if !#expr(mtdinfo::get_IsFamily() and Loader::ProtectedFlag) then
+								if !#expr(mtdinfo::get_IsFamily() andalso Loader::ProtectedFlag) then
 									if !mtdinfo::get_IsAssembly() then
 										mtdinfo = null
 									end if
@@ -215,7 +215,7 @@ class public auto ansi TypeList
 				end if
 			end if
 			
-			if mtdinfo = null then
+			if mtdinfo == null then
 				mtdinfo = GetMethod(ti::InhTyp,mn,paramst, auxt::get_BaseType())
 				if mtdinfo = null then
 					if mn is GenericMethodNameTok then
@@ -240,11 +240,10 @@ class public auto ansi TypeList
 				if ti::Interfaces != null then
 					foreach interf in ti::Interfaces
 						mtdinfo = GetMethod(interf,mn,paramst, interf)
-						if mtdinfo = null then
-							mtdinfo = Loader::LoadMethod(interf, nam, paramst)
-						end if
 
-						if mtdinfo != null then
+						if mtdinfo == null then
+							mtdinfo = Loader::LoadMethod(interf, nam, paramst)
+						else
 							break
 						end if
 					end for

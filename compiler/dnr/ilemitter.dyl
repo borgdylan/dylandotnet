@@ -11,6 +11,9 @@ class public auto ansi partial static Loader
 	[method: ComVisible(false)]
 	method public static prototype IKVM.Reflection.Type LoadClass(var name as string) 
 
+	[method: ComVisible(false)]
+	method public static prototype IKVM.Reflection.Type CachedLoadClass(var name as string)
+
 end class
 
 class public auto ansi static ILEmitter
@@ -154,18 +157,18 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_2)
 		elseif num == 3 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_3)
-		elseif (num >= 0) and (num <= 255) then
+		elseif num <= 255 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_S, $byte$num)
-		elseif num >= 0 then
+		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc, $short$num)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdloca(var num as integer)
-		if (num >= 0) and (num <= 255) then
+		if num <= 255 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloca_S, $byte$num)
-		elseif num >= 0 then
+		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloca, $short$num)
 		end if
 	end method
@@ -180,18 +183,18 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_2)
 		elseif num == 3 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_3)
-		elseif (num >= 0) and (num <= 255) then
+		elseif num <= 255 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_S, $byte$num)
-		elseif num >= 0 then
+		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg, $short$num)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitLdarga(var num as integer)
-		if (num >= 0) and (num <= 255) then
+		if num <= 255 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarga_S, $byte$num)
-		elseif num >= 0 then
+		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarga, $short$num)
 		end if
 	end method
@@ -206,18 +209,18 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_2)
 		elseif num == 3 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_3)
-		elseif (num >= 0) and (num <= 255) then
+		elseif num <= 255 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_S, $byte$num)
-		elseif num >= 0 then
+		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc, $short$num)
 		end if
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitStarg(var num as integer)
-		if (num >= 0) and (num <= 255) then
+		if num <= 255 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Starg_S, $byte$num)
-		elseif num >= 0 then
+		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Starg, $short$num)
 		end if
 	end method
@@ -381,7 +384,7 @@ class public auto ansi static ILEmitter
 		elseif n == 8l then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
-		elseif (n >= $long$integer::MinValue) and (n <= $long$integer::MaxValue) then
+		elseif (n >= $long$integer::MinValue) andalso (n <= $long$integer::MaxValue) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, $integer$n)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		else
@@ -426,8 +429,8 @@ class public auto ansi static ILEmitter
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldstr, $string$n)
-			var convc as IKVM.Reflection.Type = Loader::LoadClass("System.Convert")
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {Loader::LoadClass("System.String")}))
+			var convc as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Convert")
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {Loader::CachedLoadClass("System.String")}))
 		end if
 	end method
 
@@ -548,24 +551,24 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcDec(var n as decimal)
-		var dec as IKVM.Reflection.Type = Loader::LoadClass("System.Decimal")
+		var dec as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Decimal")
 		var temps as single
 		var tempd as double
-		if (Math::Ceiling(n) == n) and ($decimal$integer::MinValue <= n) and (n <= $decimal$integer::MaxValue) then
+		if (Math::Ceiling(n) == n) andalso ($decimal$integer::MinValue <= n) andalso (n <= $decimal$integer::MaxValue) then
 			EmitLdcI4($integer$n)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::LoadClass("System.Int32")}))
-		elseif (Math::Ceiling(n) == n) and ($decimal$long::MinValue <= n) and (n <= $decimal$long::MaxValue) then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::CachedLoadClass("System.Int32")}))
+		elseif (Math::Ceiling(n) == n) andalso ($decimal$long::MinValue <= n) andalso (n <= $decimal$long::MaxValue) then
 			EmitLdcI8($long$n)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::LoadClass("System.Int64")}))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::CachedLoadClass("System.Int64")}))
 		elseif single::TryParse($string$n, ref temps) then
 			EmitLdcR4($single$n)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::LoadClass("System.Single")}))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::CachedLoadClass("System.Single")}))
 		elseif double::TryParse($string$n, ref tempd) then
 			EmitLdcR8($double$n)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::LoadClass("System.Double")}))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Newobj, dec::GetConstructor(new IKVM.Reflection.Type[] {Loader::CachedLoadClass("System.Double")}))
 		else
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldstr,$string$n)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, dec::GetMethod("Parse",new IKVM.Reflection.Type[] {Loader::LoadClass("System.String")}))
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, dec::GetMethod("Parse",new IKVM.Reflection.Type[] {Loader::CachedLoadClass("System.String")}))
 		end if
 	end method
 
@@ -762,15 +765,15 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitLike()
-		var lotyp as IKVM.Reflection.Type = Loader::LoadClass("System.Text.RegularExpressions.Regex")
-		var strtyp as IKVM.Reflection.Type = Loader::LoadClass("System.String")
+		var lotyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Text.RegularExpressions.Regex")
+		var strtyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.String")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, lotyp::GetMethod("IsMatch",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitNLike()
-		var lotyp as IKVM.Reflection.Type = Loader::LoadClass("System.Text.RegularExpressions.Regex")
-		var strtyp as IKVM.Reflection.Type = Loader::LoadClass("System.String")
+		var lotyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Text.RegularExpressions.Regex")
+		var strtyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.String")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, lotyp::GetMethod("IsMatch",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
@@ -778,7 +781,7 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitStrCeq()
-		var strtyp as IKVM.Reflection.Type = Loader::LoadClass("System.String")
+		var strtyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.String")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Compare",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
@@ -786,7 +789,7 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitStrCneq()
-		var strtyp as IKVM.Reflection.Type = Loader::LoadClass("System.String")
+		var strtyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.String")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Compare",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
@@ -796,19 +799,19 @@ class public auto ansi static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitStrAdd()
-		var strtyp as IKVM.Reflection.Type = Loader::LoadClass("System.String")
+		var strtyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.String")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, strtyp::GetMethod("Concat",new IKVM.Reflection.Type[] {strtyp, strtyp}))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitDelegateAdd()
-		var deltyp as IKVM.Reflection.Type = Loader::LoadClass("System.Delegate")
+		var deltyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Delegate")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, deltyp::GetMethod("Combine",new IKVM.Reflection.Type[] {deltyp, deltyp}))
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitDelegateSub()
-		var deltyp as IKVM.Reflection.Type = Loader::LoadClass("System.Delegate")
+		var deltyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Delegate")
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Call, deltyp::GetMethod("Remove",new IKVM.Reflection.Type[] {deltyp, deltyp}))
 	end method
 

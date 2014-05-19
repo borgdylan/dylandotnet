@@ -8,118 +8,89 @@
 
 class public auto ansi static ParseUtils
 
-//	method private static string[] addelem(var srcarr as string[], var eltoadd as string)
-//
-//		var i as integer = -1
-//		var destarr as string[] = new string[++srcarr[l]]
-//
-//		do until i = --srcarr[l]
-//			i++
-//			destarr[i] = srcarr[i]
-//		end do
-//
-//		destarr[srcarr[l]] = eltoadd
-//
-//		return destarr
-//	end method
-//
-//	method private static string[] remelem(var srcarr as string[])
-//		var i as integer = -1
-//		var destarr as string[] = new string[--srcarr[l]]
-//
-//		do while (srcarr[l] - 2) >= i
-//			i++
-//			destarr[i] = srcarr[i]
-//		end do
-//	
-//		return destarr
-//	end method
-
 	[method: ComVisible(false)]
-	method public static string[] StringParser(var StringToParse as string, var DelimeterChar as string)
-		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
+	method public static string[] StringParser(var StringToParse as string, var DelimeterChar as char)
 		
-		if StringToParse == null then
-			return arr::ToArray()
+		if string::IsNullOrEmpty(StringToParse) then
+			return new string[0]
 		end if
-		
+
+		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
 		var ins as boolean = false
-		var ch as string = string::Empty
-		var acc as string = string::Empty
+		var ch as char
+		var acc as StringBuilder = new StringBuilder()
 		var len as integer = --StringToParse::get_Length()
 	
 		for i = 0 upto len
-			ch = $string$StringToParse::get_Chars(i)
+			ch = StringToParse::get_Chars(i)
 	
-			if ch = c"\q" then
+			if ch == c'\q' then
 				ins = !ins
 			end if
 	
-			if ch = DelimeterChar then
-				if !ins then
-					if acc::get_Length() != 0 then
-						arr::Add(acc)
-					end if
-					acc = string::Empty
-				end if
+			if ch == DelimeterChar then
 				if ins then
-					acc = acc + ch
+					acc::Append(ch)
+				else
+					if acc::get_Length() != 0 then
+						arr::Add(acc::ToString())
+					end if
+					acc::Clear()
 				end if
 			else
-				acc = acc + ch
+				acc::Append(ch)
 			end if
 	
-			if i = len then
+			if i == len then
 				if acc::get_Length() != 0 then
-					arr::Add(acc)
+					arr::Add(acc::ToString())
 				end if
-				acc = String::Empty
+				acc::Clear()
 			end if
 
 		end for
 		
-		return Enumerable::ToArray<of string>(arr)
+		return arr::ToArray()
 	end method
 	
 	[method: ComVisible(false)]
-	method public static C5.IList<of string> StringParserL(var StringToParse as string, var DelimeterChar as string)
+	method public static C5.IList<of string> StringParserL(var StringToParse as string, var DelimeterChar as char)
 		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
 		
-		if StringToParse == null then
+		if string::IsNullOrEmpty(StringToParse) then
 			return arr
 		end if
 		
 		var ins as boolean = false
-		var ch as string = string::Empty
-		var acc as string = string::Empty
+		var ch as char
+		var acc as StringBuilder = new StringBuilder()
 		var len as integer = --StringToParse::get_Length()
 	
 		for i = 0 upto len
-			ch = $string$StringToParse::get_Chars(i)
+			ch = StringToParse::get_Chars(i)
 	
-			if ch = c"\q" then
+			if ch == c'\q' then
 				ins = !ins
 			end if
 	
 			if ch = DelimeterChar then
-				if !ins then
-					if acc::get_Length() != 0 then
-						arr::Add(acc)
-					end if
-					acc = string::Empty
-				end if
 				if ins then
-					acc = acc + ch
+					acc::Append(ch)
+				else
+					if acc::get_Length() != 0 then
+						arr::Add(acc::ToString())
+					end if
+					acc::Clear()
 				end if
 			else
-				acc = acc + ch
+				acc::Append(ch)
 			end if
 	
-			if i = len then
+			if i == len then
 				if acc::get_Length() != 0 then
-					arr::Add(acc)
+					arr::Add(acc::ToString())
 				end if
-				acc = string::Empty
+				acc::Clear()
 			end if
 
 		end for
@@ -139,25 +110,24 @@ class public auto ansi static ParseUtils
 		for i = 0 upto len
 			ch = $string$StringToParse::get_Chars(i)
 
-			if ch = c"\q" then
+			if ch == c"\q" then
 				ins = !ins
 			end if
 
-			if (ch == DelimeterChar) or (ch == DelimeterChar2) then
-				if !ins then
+			if (ch == DelimeterChar) orelse (ch == DelimeterChar2) then
+				if ins then
+					acc = acc + ch
+				else
 					if acc::get_Length() != 0 then
 						arr::Add(acc)
 					end if
 					acc = string::Empty
 				end if
-				if ins then
-					acc = acc + ch
-				end if
 			else
 				acc = acc + ch
 			end if
 
-			if i = len then
+			if i == len then
 				if acc::get_Length() != 0 then
 					arr::Add(acc)
 				end if
@@ -176,13 +146,13 @@ class public auto ansi static ParseUtils
 
 	[method: ComVisible(false)]
 	method public static integer RetPrec(var chr as string)
-		if chr = "(" then
+		if chr == "(" then
 			return -1
-		elseif (chr = "*") or  (chr = "/") or (chr = "%") then
+		elseif (chr == "*") or  (chr == "/") or (chr == "%") then
 			return 8
-		elseif (chr = "+") or  (chr = "-") then
+		elseif (chr == "+") or  (chr == "-") then
 			return 6
-		elseif chr = ")" then
+		elseif chr == ")" then
 			return 0
 		else
 			return 0
@@ -198,7 +168,7 @@ class public auto ansi static ParseUtils
 			if p::Contains("/") then
 				p = p::Replace('/',c'\\')
 				if File::Exists(p) = false then
-					arr = StringParser(p, c"\\")
+					arr = StringParser(p, c'\\')
 					str = arr[0]
 					if str::get_Length() = 1 then
 						arr[0] = str + ":"
@@ -221,23 +191,8 @@ class public auto ansi static ParseUtils
 			return true
 		else
 			c = char::ToLower(c)
-			if c = 'a' then
-				return true
-			elseif c = 'b' then
-				return true
-			elseif c = 'c' then
-				return true
-			elseif c = 'd' then
-				return true
-			elseif c = 'e' then
-				return true
-			elseif c = 'f' then
-				return true
-			else
-				return false
-			end if
+			return c == 'a' orelse c == 'b' orelse c == 'c' orelse c == 'd' orelse c == 'e' orelse c == 'f'
 		end if
-		
 	end method
 	
 	[method: ComVisible(false)]
@@ -251,59 +206,57 @@ class public auto ansi static ParseUtils
 		do until i >= len
 			i++
 			cc = escstr::get_Chars(i)
-			if cc == c'\\' then
-				if i < len then
-					i++
-					cc = escstr::get_Chars(i)
-					if cc == 's' then
-						sb::Append(c'\s')
-					elseif cc == 'q' then
-						sb::Append(c'\q')
-					elseif cc == c'\\' then
-						sb::Append(c'\\')
-					elseif cc == '0' then
-						sb::Append(c'\0')
-					elseif cc == 'a' then
-						sb::Append(c'\a')
-					elseif cc == 'b' then
-						sb::Append(c'\b')
-					elseif cc == 'f' then
-						sb::Append(c'\f')
-					elseif cc == 'n' then
-						sb::Append(c'\n')
-					elseif cc == 'r' then
-						sb::Append(c'\r')
-					elseif cc == 't' then
-						sb::Append(c'\t')
-					elseif cc == 'v' then
-						sb::Append(c'\v')
-					elseif cc == 'x' then
-						if i < (len - 3) then
+			if cc == c'\\' andalso i < len then
+				i++
+				cc = escstr::get_Chars(i)
+				if cc == 's' then
+					sb::Append(c'\s')
+				elseif cc == 'q' then
+					sb::Append(c'\q')
+				elseif cc == c'\\' then
+					sb::Append(c'\\')
+				elseif cc == '0' then
+					sb::Append(c'\0')
+				elseif cc == 'a' then
+					sb::Append(c'\a')
+				elseif cc == 'b' then
+					sb::Append(c'\b')
+				elseif cc == 'f' then
+					sb::Append(c'\f')
+				elseif cc == 'n' then
+					sb::Append(c'\n')
+				elseif cc == 'r' then
+					sb::Append(c'\r')
+				elseif cc == 't' then
+					sb::Append(c'\t')
+				elseif cc == 'v' then
+					sb::Append(c'\v')
+				elseif cc == 'x' then
+					if i < (len - 3) then
+						i++
+						if IsHexDigit(escstr::get_Chars(i)) andalso IsHexDigit(escstr::get_Chars(++i)) andalso IsHexDigit(escstr::get_Chars(i + 2)) andalso IsHexDigit(escstr::get_Chars(i + 3)) then
+							buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i) + $string$escstr::get_Chars(i + 2) + $string$escstr::get_Chars(i + 3)
+							sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
+							i = i + 3
+						elseif IsHexDigit(escstr::get_Chars(i)) andalso IsHexDigit(escstr::get_Chars(++i)) then
+							buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
+							sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
 							i++
-							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) and IsHexDigit(escstr::get_Chars(i + 2)) and IsHexDigit(escstr::get_Chars(i + 3)) then
-								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i) + $string$escstr::get_Chars(i + 2) + $string$escstr::get_Chars(i + 3)
-								sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
-								i = i + 3
-							elseif IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) then
-								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
-								sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
-								i++
-							else
-								i--
-							end if
-						elseif i < --len then
-							i++
-							if IsHexDigit(escstr::get_Chars(i)) and IsHexDigit(escstr::get_Chars(++i)) then
-								buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
-								sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
-								i++
-							else
-								i--
-							end if
+						else
+							i--
 						end if
-					else
-						sb::Append(cc)
+					elseif i < --len then
+						i++
+						if IsHexDigit(escstr::get_Chars(i)) andalso IsHexDigit(escstr::get_Chars(++i)) then
+							buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
+							sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
+							i++
+						else
+							i--
+						end if
 					end if
+				else
+					sb::Append(cc)
 				end if
 			else
 				sb::Append(cc)

@@ -63,10 +63,6 @@
       <Project>{8D686B86-929F-4A1B-980A-DC2DEA04AAD9}</Project>
       <Name>tokenizer.AST</Name>
     </ProjectReference>
-    <ProjectReference Include="..\tokenizer.Lexer\tokenizer.Lexer.dylproj">
-      <Project>{5021F03A-944A-4F91-8F29-E7A4BC959052}</Project>
-      <Name>tokenizer.Lexer</Name>
-    </ProjectReference>
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

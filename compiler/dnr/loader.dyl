@@ -42,7 +42,7 @@ class public auto ansi static Loader
 		var nest as boolean = false
 		//var asmb as IKVM.Reflection.Emit.AssemblyBuilder
 
-		var na as string[] = ParseUtils::StringParser(name, c"\\")
+		var na as string[] = ParseUtils::StringParser(name, c'\\')
 		name = na[0]
 		if na[l] > 1 then
 			nest = true
@@ -160,7 +160,7 @@ class public auto ansi static Loader
 	method public static IKVM.Reflection.Type[] ParamsToTyps(var t as IKVM.Reflection.ParameterInfo[])
 		var arr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[t[l]]
 		
-		if t[l] = 0 then
+		if t[l] == 0 then
 			return IKVM.Reflection.Type::EmptyTypes
 		end if
 
@@ -177,7 +177,7 @@ class public auto ansi static Loader
 		var ints as IKVM.Reflection.Type[] = null
 		var mtdinfo as IKVM.Reflection.MethodInfo = typ::GetMethod(name)
 
-		if mtdinfo = null then
+		if mtdinfo == null then
 			ints = typ::GetInterfaces()
 			if ints != null then
 				for i = 0 upto --ints[l]
@@ -210,12 +210,12 @@ class public auto ansi static Loader
 		var mtdinfo as IKVM.Reflection.MethodInfo = null
 
 		if typ::get_IsArray() then
-			typ = Loader::LoadClass("System.Array")
+			typ = Loader::CachedLoadClass("System.Array")
 		end if
 		
 		mtdinfo = typ::GetMethod(name,typs)
 
-		if mtdinfo = null then
+		if mtdinfo == null then
 			ints = typ::GetInterfaces()
 
 			if ints != null then
@@ -234,7 +234,7 @@ class public auto ansi static Loader
 			MemberTyp = mtdinfo::get_ReturnType()
 		end if
 
-		if mtdinfo = null then
+		if mtdinfo == null then
 			mtdinfo = typ::GetMethod(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
 
 			if mtdinfo != null then
@@ -247,10 +247,10 @@ class public auto ansi static Loader
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
 					end if
 
-					if !#expr(mtdinfo::get_IsFamilyAndAssembly() and ProtectedFlag and havinternal) then
-						if !#expr(mtdinfo::get_IsFamilyOrAssembly() and (ProtectedFlag or havinternal)) then
-							if !#expr(mtdinfo::get_IsFamily() and ProtectedFlag) then
-								if !#expr(mtdinfo::get_IsAssembly() and havinternal) then
+					if !#expr(mtdinfo::get_IsFamilyAndAssembly() andalso ProtectedFlag andalso havinternal) then
+						if !#expr(mtdinfo::get_IsFamilyOrAssembly() andalso (ProtectedFlag orelse havinternal)) then
+							if !#expr(mtdinfo::get_IsFamily() andalso ProtectedFlag) then
+								if !#expr(mtdinfo::get_IsAssembly() andalso havinternal) then
 									mtdinfo = null
 								end if
 							end if
@@ -275,7 +275,7 @@ class public auto ansi static Loader
 	method public static IKVM.Reflection.ConstructorInfo LoadCtor(var typ as IKVM.Reflection.Type, var typs as IKVM.Reflection.Type[])
 
 		var ctorinf as IKVM.Reflection.ConstructorInfo = null
-		if ctorinf = null then
+		if ctorinf == null then
 			ctorinf = typ::GetConstructor(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic or IKVM.Reflection.BindingFlags::DeclaredOnly, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
 
 			if ctorinf != null then
@@ -290,10 +290,10 @@ class public auto ansi static Loader
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
 					end if
 				
-					if !#expr(ctorinf::get_IsFamilyAndAssembly() and ProtectedFlag and havinternal) then
-						if !#expr(ctorinf::get_IsFamilyOrAssembly() and (ProtectedFlag or havinternal)) then
-							if !#expr(ctorinf::get_IsFamily() and ProtectedFlag) then
-								if !#expr(ctorinf::get_IsAssembly() and havinternal) then
+					if !#expr(ctorinf::get_IsFamilyAndAssembly() andalso ProtectedFlag andalso havinternal) then
+						if !#expr(ctorinf::get_IsFamilyOrAssembly() andalso (ProtectedFlag orelse havinternal)) then
+							if !#expr(ctorinf::get_IsFamily() andalso ProtectedFlag) then
+								if !#expr(ctorinf::get_IsAssembly() andalso havinternal) then
 									ctorinf = null
 								end if
 							end if
@@ -333,8 +333,8 @@ class public auto ansi static Loader
 
 	[method: ComVisible(false)]
 	method public static boolean CompareParamsToTyps(var t1 as ParameterInfo[],var t2 as Type[])
-		if t1[l] = t2[l] then
-			if t1[l] = 0 then
+		if t1[l] == t2[l] then
+			if t1[l] == 0 then
 				return true
 			end if
 			for i = 0 upto --t1[l]
@@ -416,7 +416,7 @@ class public auto ansi static Loader
 	method public static IKVM.Reflection.FieldInfo LoadField(var typ as IKVM.Reflection.Type, var name as string)
 		var fldinfo as IKVM.Reflection.FieldInfo = typ::GetField(name)
 		
-		if fldinfo = null then
+		if fldinfo == null then
 			fldinfo = typ::GetField(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic)
 
 			if fldinfo != null then
@@ -427,13 +427,13 @@ class public auto ansi static Loader
 					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
 					var havinternal as boolean = false
 					if asmnc != null then
-						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
+						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) andalso (asmn::get_Name() == asmnc::get_Name())
 					end if
 					
-					if !#expr(fldinfo::get_IsFamilyAndAssembly() and ProtectedFlag and havinternal) then
-						if !#expr(fldinfo::get_IsFamilyOrAssembly() and (ProtectedFlag or havinternal)) then
-							if !#expr(fldinfo::get_IsFamily() and ProtectedFlag) then
-								if !#expr(fldinfo::get_IsAssembly() and havinternal) then
+					if !#expr(fldinfo::get_IsFamilyAndAssembly() andalso ProtectedFlag andalso havinternal) then
+						if !#expr(fldinfo::get_IsFamilyOrAssembly() andalso (ProtectedFlag orelse havinternal)) then
+							if !#expr(fldinfo::get_IsFamily() andalso ProtectedFlag) then
+								if !#expr(fldinfo::get_IsAssembly() andalso havinternal) then
 									fldinfo = null
 								end if
 							end if

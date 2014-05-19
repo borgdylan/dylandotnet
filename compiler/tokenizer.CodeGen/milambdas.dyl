@@ -86,8 +86,8 @@ class private auto ansi MILambdas2
 	end method
 
 	method assembly boolean CmpTyps(var arra as ParameterInfo[], var arrb as IKVM.Reflection.Type[])
-		if arra[l] = arrb[l] then
-			if arra[l] = 0 then
+		if arra[l] == arrb[l] then
+			if arra[l] == 0 then
 				return true
 			end if
 			var i as integer = -1
@@ -104,7 +104,7 @@ class private auto ansi MILambdas2
 	end method
 	
 	method assembly boolean CmpTyps2(var arra as IKVM.Reflection.Type[], var arrb as IKVM.Reflection.Type[])
-		if arra[l] = arrb[l] then
+		if arra[l] == arrb[l] then
 			if arra[l] = 0 then
 				return true
 			end if

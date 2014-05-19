@@ -137,7 +137,7 @@ class public auto ansi ExprOptimizer
 		var tt as MethodNameTok
 
 		if i < (stm::Tokens::get_Count() - 2) then
-			isgeneric = (stm::Tokens::get_Item(++i) is LAParen) and (stm::Tokens::get_Item(i + 2) is OfTok)
+			isgeneric = (stm::Tokens::get_Item(++i) is LAParen) andalso (stm::Tokens::get_Item(i + 2) is OfTok)
 		end if
 
 		if isgeneric then
@@ -220,15 +220,15 @@ class public auto ansi ExprOptimizer
 
 		if stm::Tokens::get_Item(0) is VarTok then
 			b = true
-		elseif (stm::Tokens::get_Item(0) is InTok) and (stm::Tokens::get_Item(1) is VarTok) then
+		elseif (stm::Tokens::get_Item(0) is InTok) andalso (stm::Tokens::get_Item(1) is VarTok) then
 			b = true
 			bs = 1
 			bst = stm::Tokens::get_Item(0)
-		elseif (stm::Tokens::get_Item(0) is OutTok) and (stm::Tokens::get_Item(1) is VarTok) then
+		elseif (stm::Tokens::get_Item(0) is OutTok) andalso (stm::Tokens::get_Item(1) is VarTok) then
 			b = true
 			bs = 1
 			bst = stm::Tokens::get_Item(0)
-		elseif (stm::Tokens::get_Item(0) is InOutTok) and (stm::Tokens::get_Item(1) is VarTok) then
+		elseif (stm::Tokens::get_Item(0) is InOutTok) andalso (stm::Tokens::get_Item(1) is VarTok) then
 			b = true
 			bs = 1
 			bst = stm::Tokens::get_Item(0)
@@ -288,11 +288,11 @@ class public auto ansi ExprOptimizer
 			//get parameters
 			i++
 	
-			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
+			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
 				if lvl = 0 then
 					d = false
-					if (ep2::Tokens::get_Count() > 0) or (cc > 0) then
+					if (ep2::Tokens::get_Count() > 0) orelse (cc > 0) then
 						PFlags::ResetMCISFlgs()
 						mct::AddParam(Optimize(ep2))
 					end if
@@ -303,7 +303,7 @@ class public auto ansi ExprOptimizer
 				else
 					d = true
 				end if
-			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
+			elseif (stm::Tokens::get_Item(i) is LParen) orelse (stm::Tokens::get_Item(i) is LAParen) orelse (stm::Tokens::get_Item(i) is LCParen) then
 				lvl++
 				d = true
 				len = --stm::Tokens::get_Count()
@@ -346,17 +346,13 @@ class public auto ansi ExprOptimizer
 	
 	method private Token ObjInitHelper(var e as Expr)
 		e = Optimize(e)
-		if e::Tokens::get_Count() > 2 then
-			if e::Tokens::get_Item(1) is AssignOp2 then
-				var e2 as Expr = new Expr() {Line = e::Line}
-				e2::Tokens::AddAll(e::Tokens::View(2,e::Tokens::get_Count() - 2))
-				return new AttrValuePair() {Name = $Ident$e::Tokens::get_Item(0), ValueExpr = e2}
-			end if
+		if e::Tokens::get_Count() > 2 andalso e::Tokens::get_Item(1) is AssignOp2 then
+			var e2 as Expr = new Expr() {Line = e::Line}
+			e2::Tokens::AddAll(e::Tokens::View(2,e::Tokens::get_Count() - 2))
+			return new AttrValuePair() {Name = $Ident$e::Tokens::get_Item(0), ValueExpr = e2}
 		end if
-		if e::Tokens::get_Count() > 0 then
-			if e::Tokens::get_Item(0) is MethodCallTok then
-				return e::Tokens::get_Item(0)
-			end if
+		if e::Tokens::get_Count() > 0 andalso e::Tokens::get_Item(0) is MethodCallTok then
+			return e::Tokens::get_Item(0)
 		end if
 		return null
 	end method
@@ -389,7 +385,7 @@ class public auto ansi ExprOptimizer
 				else
 					d = true
 				end if
-			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
+			elseif (stm::Tokens::get_Item(i) is LParen) orelse (stm::Tokens::get_Item(i) is LAParen) orelse (stm::Tokens::get_Item(i) is LCParen) then
 				lvl++
 				d = true
 			elseif stm::Tokens::get_Item(i) is Comma then
@@ -434,7 +430,7 @@ class public auto ansi ExprOptimizer
 		do until i = len
 			i++
 			
-			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
+			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
 				if lvl = 0 then
 					d = false
@@ -445,7 +441,7 @@ class public auto ansi ExprOptimizer
 				else
 					d = true
 				end if
-			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
+			elseif (stm::Tokens::get_Item(i) is LParen) orelse (stm::Tokens::get_Item(i) is LAParen) orelse (stm::Tokens::get_Item(i) is LCParen) then
 				lvl++
 				d = true
 			elseif stm::Tokens::get_Item(i) is Comma then
@@ -507,7 +503,7 @@ class public auto ansi ExprOptimizer
 		do until i = len
 			i++
 			
-			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
+			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
 				if lvl = 0 then
 					d = false
@@ -518,7 +514,7 @@ class public auto ansi ExprOptimizer
 				else
 					d = true
 				end if
-			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
+			elseif (stm::Tokens::get_Item(i) is LParen) orelse (stm::Tokens::get_Item(i) is LAParen) orelse (stm::Tokens::get_Item(i) is LCParen) then
 				lvl++
 				d = true
 			else
@@ -588,11 +584,11 @@ class public auto ansi ExprOptimizer
 			//get parameters/members/length
 			i++
 			
-			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RSParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
+			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RSParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
 				if lvl = 0 then
 					d = false
-					if (ep2::Tokens::get_Count() > 0) or (cc > 0) then
+					if (ep2::Tokens::get_Count() > 0) orelse (cc > 0) then
 						if nab then
 							nact::ArrayLen = Optimize(ep2)
 						elseif nai then
@@ -608,7 +604,7 @@ class public auto ansi ExprOptimizer
 				else
 					d = true
 				end if
-			elseif (stm::Tokens::get_Item(i) is LParen) or (stm::Tokens::get_Item(i) is LSParen) or (stm::Tokens::get_Item(i) is LAParen) or (stm::Tokens::get_Item(i) is LCParen) then
+			elseif (stm::Tokens::get_Item(i) is LParen) orelse (stm::Tokens::get_Item(i) is LSParen) orelse (stm::Tokens::get_Item(i) is LAParen) orelse (stm::Tokens::get_Item(i) is LCParen) then
 				lvl++
 				d = true
 				//stm::RemToken(i)
@@ -694,7 +690,7 @@ class public auto ansi ExprOptimizer
 			elseif stm::Tokens::get_Item(i) is LSParen then
 				lvl++
 				d = true
-			elseif (stm::Tokens::get_Item(i) is Comma) == false then
+			elseif !#expr(stm::Tokens::get_Item(i) is Comma) then
 				d = true
 			end if
 
@@ -751,7 +747,7 @@ class public auto ansi ExprOptimizer
 			elseif stm::Tokens::get_Item(i) is LSParen then
 				lvl++
 				d = true
-			elseif (stm::Tokens::get_Item(i) is Comma) == false then
+			elseif !#expr(stm::Tokens::get_Item(i) is Comma) then
 				d = true
 			end if
 

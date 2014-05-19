@@ -152,7 +152,8 @@ class public auto ansi StmtReader
 				SymTable::CurnTypItem2 = SymTable::CurnTypItem
 
 				StreamUtils::WriteLine(string::Format("Adding Nested Class: {0}", clss::ClassName::Value))
-				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value, clssparams, inhtyp)
+				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value +  _
+					#ternary {nrgenparams > 0 ? "`" + $string$nrgenparams, string::Empty}, clssparams, inhtyp)
 			end if
 		else
 			AsmFactory::CurnTypName = clss::ClassName::Value
@@ -308,13 +309,21 @@ class public auto ansi StmtReader
 			AsmFactory::inClass = true
 		end if
 
+		var nrgenparams = 0
+
+		if dels::DelegateName is GenericMethodNameTok then
+			var gmn = $GenericMethodNameTok$dels::DelegateName
+			nrgenparams = gmn::Params::get_Count()
+		end if
+
 		var dta as TypeAttributes = Helpers::ProcessClassAttrs(dels::Attrs) or TypeAttributes::AnsiClass or TypeAttributes::Sealed or TypeAttributes::AutoClass
 		var dinhtyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.MulticastDelegate")
 		AsmFactory::CurnInhTyp = dinhtyp
 
 		if !AsmFactory::isNested then
 			AsmFactory::CurnTypName = dels::DelegateName::Value
-			AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + dels::DelegateName::Value, dta, dinhtyp)
+			AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + dels::DelegateName::Value +  _
+					#ternary {nrgenparams > 0 ? "`" + $string$nrgenparams, string::Empty}, dta, dinhtyp)
 			StreamUtils::Write("Adding Delegate: ")
 			StreamUtils::WriteLine(AsmFactory::CurnNS + "." + dels::DelegateName::Value)
 		else
@@ -322,19 +331,74 @@ class public auto ansi StmtReader
 			StreamUtils::Write("Adding Nested Delegate: ")
 			StreamUtils::WriteLine(dels::DelegateName::Value)
 			AsmFactory::CurnTypName = dels::DelegateName::Value
-			AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(dels::DelegateName::Value, dta, dinhtyp)
+			AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(dels::DelegateName::Value +  _
+					#ternary {nrgenparams > 0 ? "`" + $string$nrgenparams, string::Empty}, dta, dinhtyp)
 		end if
 		
 		Helpers::ApplyClsAttrs()
-
-		var dti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + dels::DelegateName::Value,AsmFactory::CurnTypB) {InhTyp = dinhtyp}
-		SymTable::CurnTypItem = dti
 
 		SymTable::ResetVar()
 		SymTable::ResetIf()
 		SymTable::ResetTry()
 		SymTable::ResetLoop()
 		SymTable::ResetLbl()
+
+		if dels::DelegateName is GenericMethodNameTok then
+			var gmn = $GenericMethodNameTok$dels::DelegateName
+			var paramdefs = gmn::Params
+			var genparams = new string[paramdefs::get_Count()]
+			var i = -1
+			foreach pd in paramdefs
+				i++
+				genparams[i] = pd::Value
+			end for
+			SymTable::SetTypGenParams(genparams, AsmFactory::CurnTypB::DefineGenericParameters(genparams))
+			nrgenparams = paramdefs::get_Count()
+
+			foreach k in gmn::Constraints::get_Keys()
+				if !SymTable::TypGenParams::Contains(k) then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("This delegate does not have a generic type parameter named {0}.", k))
+					continue
+				end if
+
+				var tpi = SymTable::TypGenParams::get_Item(k)
+				var bld = tpi::Bldr
+				var gpa = GenericParameterAttributes::None
+
+				foreach c in gmn::Constraints::get_Item(k)
+					if c is StructTok then
+						gpa = gpa or GenericParameterAttributes::NotNullableValueTypeConstraint
+					elseif c is ClassTok then
+						gpa = gpa or GenericParameterAttributes::ReferenceTypeConstraint
+					elseif c is OutTok then
+						gpa = gpa or GenericParameterAttributes::Covariant
+					elseif c is InTok then
+						gpa = gpa or GenericParameterAttributes::Contravariant
+					elseif c is NewTok then
+						gpa = gpa or GenericParameterAttributes::DefaultConstructorConstraint
+						tpi::HasCtor = true
+					elseif c is TypeTok
+						var tout = Helpers::CommitEvalTTok($TypeTok$c)
+						if tout == null then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", c::ToString()))
+						end if
+						if tout::get_IsInterface() then
+							tpi::Interfaces::Add(tout)
+						else
+							bld::SetBaseTypeConstraint(tout)
+							tpi::BaseType = tout
+						end if
+					end if
+				end for
+
+				bld::SetGenericParameterAttributes(gpa)
+				bld::SetInterfaceConstraints(tpi::Interfaces::ToArray())
+			end for
+		end if
+
+		var dti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + dels::DelegateName::Value,AsmFactory::CurnTypB) _
+			{InhTyp = dinhtyp, NrGenParams = nrgenparams, TypGenParams = SymTable::TypGenParams}
+		SymTable::CurnTypItem = dti
 
 		var dtarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object"), Loader::LoadClass("System.IntPtr")}
 		AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(MethodAttributes::HideBySig or MethodAttributes::Public _
@@ -344,11 +408,11 @@ class public auto ansi StmtReader
 		SymTable::CurnTypItem::AddCtor(new CtorItem(dtarr,AsmFactory::CurnConB))
 
 		var dema as MethodAttributes = MethodAttributes::HideBySig or MethodAttributes::Public or MethodAttributes::NewSlot or MethodAttributes::Virtual
-		dtarr = #ternary {dels::Params[l] == 0 ? IKVM.Reflection.Type::EmptyTypes, Helpers::ProcessParams(dels::Params)}
+		dtarr = #ternary {dels::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes, Helpers::ProcessParams(dels::Params)}
 		
 		var drettyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(dels::RetTyp)
 		
-		if drettyp = null then
+		if drettyp == null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + dels::RetTyp::Value + "' is not defined or is not accessible.")
 		end if
 
@@ -450,7 +514,7 @@ class public auto ansi StmtReader
 			end if
 			AsmFactory::InCtorFlg = true
 		else
-			mtssnamarr = ParseUtils::StringParserL(mtssnamstr, ".")
+			mtssnamarr = ParseUtils::StringParserL(mtssnamstr, '.')
 			if mtssnamarr::get_Count() > 1 then
 				overldnam = mtssnamarr::get_Last()
 				typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", mtssnamarr::View(0,--mtssnamarr::get_Count())::ToArray())))
@@ -681,7 +745,7 @@ class public auto ansi StmtReader
 		end if
 		
 		var evssnamstr as string = evss::EventName::Value
-		var evssnamarr as C5.IList<of string> = ParseUtils::StringParserL(evssnamstr, ".")
+		var evssnamarr as C5.IList<of string> = ParseUtils::StringParserL(evssnamstr, '.')
 		var evoverldnam as string = string::Empty
 		var evnam = evssnamstr
 		if evssnamarr::get_Count() > 1 then
@@ -924,7 +988,7 @@ class public auto ansi StmtReader
 		var paramstyps as IKVM.Reflection.Type[] = #ternary {prss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(prss::Params)}
 
 		var prssnamstr as string = prss::PropertyName::Value
-		var prssnamarr as C5.IList<of string> = ParseUtils::StringParserL(prssnamstr, ".")
+		var prssnamarr as C5.IList<of string> = ParseUtils::StringParserL(prssnamstr, '.')
 		var propoverldnam as string = string::Empty
 		var propnam = prssnamstr
 		if prssnamarr::get_Count() > 1 then
