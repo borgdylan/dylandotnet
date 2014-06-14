@@ -150,8 +150,8 @@
       </Docs>
     </Member>
     <Member MemberName="StringParser">
-      <MemberSignature Language="C#" Value="public static string[] StringParser (string StringToParse, string DelimeterChar);" />
-      <MemberSignature Language="ILAsm" Value=".method public static string[] StringParser(string StringToParse, string DelimeterChar) cil managed" />
+      <MemberSignature Language="C#" Value="public static string[] StringParser (string StringToParse, char DelimeterChar);" />
+      <MemberSignature Language="ILAsm" Value=".method public static string[] StringParser(string StringToParse, char DelimeterChar) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -163,7 +163,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="StringToParse" Type="System.String" />
-        <Parameter Name="DelimeterChar" Type="System.String" />
+        <Parameter Name="DelimeterChar" Type="System.Char" />
       </Parameters>
       <Docs>
         <param name="StringToParse">To be added.</param>
@@ -200,8 +200,8 @@
       </Docs>
     </Member>
     <Member MemberName="StringParserL">
-      <MemberSignature Language="C#" Value="public static C5.IList&lt;string&gt; StringParserL (string StringToParse, string DelimeterChar);" />
-      <MemberSignature Language="ILAsm" Value=".method public static class C5.IList`1&lt;string&gt; StringParserL(string StringToParse, string DelimeterChar) cil managed" />
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;string&gt; StringParserL (string StringToParse, char DelimeterChar);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class C5.IList`1&lt;string&gt; StringParserL(string StringToParse, char DelimeterChar) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -213,7 +213,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="StringToParse" Type="System.String" />
-        <Parameter Name="DelimeterChar" Type="System.String" />
+        <Parameter Name="DelimeterChar" Type="System.Char" />
       </Parameters>
       <Docs>
         <param name="StringToParse">To be added.</param>

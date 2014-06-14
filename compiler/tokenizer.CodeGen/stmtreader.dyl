@@ -192,7 +192,7 @@ class public auto ansi StmtReader
 		ILEmitter::StructFlg = inhtyp::Equals(Loader::CachedLoadClass("System.ValueType"))
 
 		if ti2 == null
-			foreach k in clss::Constraints::get_Keys()
+			foreach k in clss::get_Constraints()::get_Keys()
 				if !SymTable::TypGenParams::Contains(k) then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("This class does not have a generic type parameter named {0}.", k))
 					continue
@@ -202,7 +202,7 @@ class public auto ansi StmtReader
 				var bld = tpi::Bldr
 				var gpa = GenericParameterAttributes::None
 
-				foreach c in clss::Constraints::get_Item(k)
+				foreach c in clss::get_Constraints()::get_Item(k)
 					if c is StructTok then
 						gpa = gpa or GenericParameterAttributes::NotNullableValueTypeConstraint
 					elseif c is ClassTok then
@@ -328,6 +328,9 @@ class public auto ansi StmtReader
 			StreamUtils::WriteLine(AsmFactory::CurnNS + "." + dels::DelegateName::Value)
 		else
 			AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
+			AsmFactory::CurnTypName2 = AsmFactory::CurnTypName
+			SymTable::CurnTypItem2 = SymTable::CurnTypItem
+
 			StreamUtils::Write("Adding Nested Delegate: ")
 			StreamUtils::WriteLine(dels::DelegateName::Value)
 			AsmFactory::CurnTypName = dels::DelegateName::Value
@@ -355,7 +358,7 @@ class public auto ansi StmtReader
 			SymTable::SetTypGenParams(genparams, AsmFactory::CurnTypB::DefineGenericParameters(genparams))
 			nrgenparams = paramdefs::get_Count()
 
-			foreach k in gmn::Constraints::get_Keys()
+			foreach k in gmn::get_Constraints()::get_Keys()
 				if !SymTable::TypGenParams::Contains(k) then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("This delegate does not have a generic type parameter named {0}.", k))
 					continue
@@ -365,7 +368,7 @@ class public auto ansi StmtReader
 				var bld = tpi::Bldr
 				var gpa = GenericParameterAttributes::None
 
-				foreach c in gmn::Constraints::get_Item(k)
+				foreach c in gmn::get_Constraints()::get_Item(k)
 					if c is StructTok then
 						gpa = gpa or GenericParameterAttributes::NotNullableValueTypeConstraint
 					elseif c is ClassTok then
@@ -456,10 +459,9 @@ class public auto ansi StmtReader
 		AsmFactory::CreateTyp()
 		if AsmFactory::isNested then
 			AsmFactory::CurnTypB = AsmFactory::CurnTypB2
+			AsmFactory::CurnTypName = AsmFactory::CurnTypName2
+			SymTable::CurnTypItem = SymTable::CurnTypItem2
 			AsmFactory::isNested = false
-//			SymTable::ResetNestedMet()
-//			SymTable::ResetNestedCtor()
-//			SymTable::ResetNestedFld()
 		else
 			AsmFactory::inClass = false
 		end if
@@ -566,7 +568,7 @@ class public auto ansi StmtReader
 						SymTable::SetMetGenParams(genparams, AsmFactory::CurnMetB::DefineGenericParameters(genparams))
 						nrgenparams = paramdefs::get_Count()
 
-						foreach k in gmn::Constraints::get_Keys()
+						foreach k in gmn::get_Constraints()::get_Keys()
 							if !SymTable::MetGenParams::Contains(k) then
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("This method does not have a generic type parameter named {0}.", k))
 								continue
@@ -576,7 +578,7 @@ class public auto ansi StmtReader
 							var bld = tpi::Bldr
 							var gpa = GenericParameterAttributes::None
 
-							foreach c in gmn::Constraints::get_Item(k)
+							foreach c in gmn::get_Constraints()::get_Item(k)
 								if c is StructTok then
 									gpa = gpa or GenericParameterAttributes::NotNullableValueTypeConstraint
 								elseif c is ClassTok then
@@ -1244,9 +1246,6 @@ class public auto ansi StmtReader
 				SymTable::CurnTypItem = SymTable::CurnTypItem2
 
 				AsmFactory::isNested = false
-//				SymTable::ResetNestedMet()
-//				SymTable::ResetNestedCtor()
-//				SymTable::ResetNestedFld()
 			else
 				if !ILEmitter::PartialFlg then
 					SymTable::TypeLst::EnsureDefaultCtor(AsmFactory::CurnTypB)
@@ -1286,8 +1285,8 @@ class public auto ansi StmtReader
 				ILEmitter::EmitRet()
 				SymTable::CheckUnusedVar()
 				SymTable::CheckCtrlBlks()
-				if AsmFactory::CurnMetName == "main" then
-					if AsmFactory::AsmMode == "exe" or AsmFactory::AsmMode == "winexe" then
+				if AsmFactory::CurnMetName == "main" orelse AsmFactory::CurnMetName == "Main" then
+					if AsmFactory::AsmMode == "exe" orelse AsmFactory::AsmMode == "winexe" then
 						var pef as PEFileKinds = #ternary {AsmFactory::AsmMode == "exe" ? PEFileKinds::ConsoleApplication, _
 							#ternary {AsmFactory::AsmMode == "winexe" ? PEFileKinds::WindowApplication, PEFileKinds::Dll} }
 						AsmFactory::AsmB::SetEntryPoint(ILEmitter::Met, pef)
@@ -1531,8 +1530,11 @@ class public auto ansi StmtReader
 			ILEmitter::EmitFinally()
 		elseif stm is EndUsingStmt then
 			ILEmitter::EmitFinally()
+			var uv = SymTable::ReadUseeLoc()
+			var idisp = Loader::CachedLoadClass("System.IDisposable")
 			new Evaluator()::Evaluate(new Expr() {Line = ILEmitter::LineNr, AddToken(new ExprCallTok() {Line = ILEmitter::LineNr, Exp = new Expr() { _
-				AddToken(new Ident(SymTable::ReadUseeLoc()) {Line = ILEmitter::LineNr, set_Conv(true), set_TTok(new TypeTok("System.IDisposable")), set_OrdOp("conv") })}, _
+				AddToken(new Ident(uv) {Line = ILEmitter::LineNr, set_Conv(!idisp::Equals(SymTable::FindVar(uv)::VarTyp)), _
+				set_TTok(new TypeTok("System.IDisposable") {RefTyp = idisp}), set_OrdOp("conv") })}, _
 				MemberAccessFlg = true, MemberToAccess = new MethodCallTok() {Line = ILEmitter::LineNr, Name = new MethodNameTok("Dispose") {Line = ILEmitter::LineNr} } })})
 			ILEmitter::EmitEndTry()
 			SymTable::PopScope()

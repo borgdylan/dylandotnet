@@ -433,15 +433,15 @@ class public auto ansi static Helpers
 	method public static integer GetPrimitiveNumericSize(var t as IKVM.Reflection.Type)
 		if t::Equals(Loader::CachedLoadClass("System.Boolean")) then
 			return 1
-		elseif t::Equals(Loader::CachedLoadClass("System.SByte")) or t::Equals(Loader::CachedLoadClass("System.Byte")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.SByte")) orelse t::Equals(Loader::CachedLoadClass("System.Byte")) then
 			return 8
-		elseif t::Equals(Loader::CachedLoadClass("System.Int16")) or t::Equals(Loader::CachedLoadClass("System.UInt16")) or t::Equals(Loader::CachedLoadClass("System.Char")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int16")) orelse t::Equals(Loader::CachedLoadClass("System.Char")) orelse t::Equals(Loader::CachedLoadClass("System.UInt16")) then
 			return 16
-		elseif t::Equals(Loader::CachedLoadClass("System.Int32")) or t::Equals(Loader::CachedLoadClass("System.UInt32")) or t::Equals(Loader::CachedLoadClass("System.Single")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int32")) orelse t::Equals(Loader::CachedLoadClass("System.UInt32")) orelse t::Equals(Loader::CachedLoadClass("System.Single")) then
 			return 32
-		elseif t::Equals(Loader::CachedLoadClass("System.Int64")) or t::Equals(Loader::CachedLoadClass("System.UInt64")) or t::Equals(Loader::CachedLoadClass("System.Double")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.Int64")) orelse t::Equals(Loader::CachedLoadClass("System.UInt64")) orelse t::Equals(Loader::CachedLoadClass("System.Double")) then
 			return 64
-		elseif t::Equals(Loader::CachedLoadClass("System.IntPtr")) or t::Equals(Loader::CachedLoadClass("System.UIntPtr")) then
+		elseif t::Equals(Loader::CachedLoadClass("System.IntPtr")) orelse t::Equals(Loader::CachedLoadClass("System.UIntPtr")) then
 			return 64
 		else
 			return 0
@@ -1727,7 +1727,19 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			end if
 		end if
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static MethodInfo GetExtMet(var ts as IEnumerable<of IKVM.Reflection.Type>, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
+		foreach t in ts
+			var res = GetExtMet(t, mn, paramtyps)
+			if res != null then
+				return res
+			end if
+		end for
+
+		return null
+	end method
+
 	[method: ComVisible(false)]
 	method public static MethodInfo GetLocMet(var mn as MethodNameTok, var typs as IKVM.Reflection.Type[])
 		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ':')

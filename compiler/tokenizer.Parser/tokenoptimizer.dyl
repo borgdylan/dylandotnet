@@ -107,6 +107,8 @@ class public auto ansi TokenOptimizer
 			end if
 		elseif tok::Value == "is" then
 			return new IsOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "isnot" then
+			return new IsNotOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "and" then
 			return new AndOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "andalso" then

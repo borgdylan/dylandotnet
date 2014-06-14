@@ -1115,7 +1115,7 @@ class public auto ansi ExprOptimizer
 					goto fin
 				end if
 
-				if (tok is IsOp) or (tok is AsOp) then
+				if (tok is IsOp) orelse (tok is IsNotOp) orelse (tok is AsOp) then
 					i++
 					exp = procType(exp,i)
 					len = --exp::Tokens::get_Count() 

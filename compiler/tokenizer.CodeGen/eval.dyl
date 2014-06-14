@@ -202,7 +202,7 @@ class public auto ansi beforefieldinit Evaluator
 	
 	method public void ASTEmitUnary(var iuo as IUnaryOperatable, var emt as boolean)
 		foreach s in ParseUtils::StringParser(iuo::get_OrdOp(), ' ')
-			if (s == "conv") and (iuo is IConvable) then
+			if (s == "conv") andalso (iuo is IConvable) then
 				var idt = $IConvable$iuo
 				if idt::get_Conv() then
 					var	src1 = AsmFactory::Type02
@@ -215,28 +215,28 @@ class public auto ansi beforefieldinit Evaluator
 					end if
 				end if
 			end if
-			if (s == "neg") and (iuo is INegatable) then
+			if (s == "neg") andalso (iuo is INegatable) then
 				if #expr($INegatable$iuo)::get_DoNeg() then
 					if emt then
 						Helpers::EmitNeg(AsmFactory::Type02)
 					end if
 				end if
 			end if
-			if (s == "not") and (iuo is INotable) then
+			if (s == "not") andalso (iuo is INotable) then
 				if #expr($INotable$iuo)::get_DoNot() then
 					if emt then
 						Helpers::EmitNot(AsmFactory::Type02)
 					end if
 				end if
 			end if
-			if (s == "inc") and (iuo is IIncDecable) then
+			if (s == "inc") andalso (iuo is IIncDecable) then
 				if #expr($IIncDecable$iuo)::get_DoInc() then
 					if emt then
 						Helpers::EmitInc(AsmFactory::Type02)
 					end if
 				end if
 			end if
-			if (s == "dec") and (iuo is IIncDecable) then
+			if (s == "dec") andalso (iuo is IIncDecable) then
 				if #expr($IIncDecable$iuo)::get_DoDec() then
 					if emt then
 						Helpers::EmitDec(AsmFactory::Type02)
@@ -349,7 +349,7 @@ class public auto ansi beforefieldinit Evaluator
 					continue
 				end if
 				//----------------------
-				
+
 				typ = Helpers::CommitEvalTTok(new TypeTok(idtnamarr[i]))
 				idtisstatic = true
 
@@ -452,11 +452,12 @@ class public auto ansi beforefieldinit Evaluator
 		var mnstrarr as string[] = ParseUtils::StringParser(mntok::Value, ':')
 		var len as integer = mnstrarr[l] - 2
 		var iterflg = false
+		var mtt as TypeTok = null
 		
 		if pushaddr then
 			mntok::IsRef = false
 		end if
-		if (mnstrarr[0] == "me") or (mnstrarr[0] == "mybase") then
+		if (mnstrarr[0] == "me") orelse (mnstrarr[0] == "mybase") then
 			i++
 			idtb1 = true
 			mcrestrord = 3
@@ -504,7 +505,7 @@ class public auto ansi beforefieldinit Evaluator
 							if mcvr != null then
 								if emt then
 									AsmFactory::Type04 = mcvr::VarTyp
-									if (i == len) and (mcvr::VarTyp is GenericTypeParameterBuilder) then
+									if (i == len) andalso (mcvr::VarTyp is GenericTypeParameterBuilder) then
 										AsmFactory::ForcedAddrFlg = true
 									end if
 									Helpers::EmitLocLd(mcvr::Index, mcvr::LocArg)
@@ -534,7 +535,7 @@ class public auto ansi beforefieldinit Evaluator
 									ILEmitter::EmitLdarg(0)
 								end if
 								AsmFactory::Type04 = mcfldinf::get_FieldType()
-								if (i == len) and (mcfldinf::get_FieldType() is GenericTypeParameterBuilder) then
+								if (i == len) andalso (mcfldinf::get_FieldType() is GenericTypeParameterBuilder) then
 									AsmFactory::ForcedAddrFlg = true
 								end if
 								Helpers::EmitFldLd(mcfldinf, idtisstatic)
@@ -548,8 +549,9 @@ class public auto ansi beforefieldinit Evaluator
 							continue
 						end if
 						//----------------------------------
-				
-						mcparenttyp = Helpers::CommitEvalTTok(new TypeTok(mnstrarr[i]))
+
+						mtt = new TypeTok(mnstrarr[i])
+						mcparenttyp = Helpers::CommitEvalTTok(mtt)
 						mcisstatic = true
 
 						if mcparenttyp == null then
@@ -652,7 +654,12 @@ class public auto ansi beforefieldinit Evaluator
 		else
 			if idtb2 and !mcparenttyp::Equals(AsmFactory::CurnTypB) then
 				mcmetinf = Helpers::GetExtMet(mcparenttyp, mntok, typarr1)
-				if mcmetinf = null then
+
+				if mcisstatic andalso (mcmetinf == null) then
+					mcmetinf = Helpers::GetExtMet(Loader::LoadClasses(mtt::Value), mntok, typarr1)
+				end if
+
+				if mcmetinf == null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i], mcparenttyp::ToString()))
 				end if
 				AsmFactory::Type02 = Loader::MemberTyp
@@ -969,22 +976,23 @@ class public auto ansi beforefieldinit Evaluator
 			var coalflg as boolean = optok is CoalesceOp
 			var sandflg as boolean = optok is AndAlsoOp
 			var sorflg as boolean = optok is OrElseOp
+			var isnflg as boolean = optok is IsNotOp
 
 			rc = optok::RChild
 			lc = optok::LChild
 
-			if !#expr(sandflg or sorflg) then
+			if !#expr(sandflg orelse sorflg) then
 				ASTEmit(lc, emt)
 				lctyp = AsmFactory::Type02
 			end if
 
-			if !#expr(isflg or asflg or coalflg or sandflg or sorflg) then
+			if !#expr(isflg orelse isnflg orelse asflg orelse sandflg orelse sorflg orelse coalflg) then
 				ASTEmit(rc, emt)
 				rctyp = AsmFactory::Type02
 
 				if emt then
-					Helpers::StringFlg = lctyp::Equals(Loader::CachedLoadClass("System.String")) and lctyp::Equals(rctyp)
-					Helpers::BoolFlg = lctyp::Equals(Loader::CachedLoadClass("System.Boolean")) and lctyp::Equals(rctyp)
+					Helpers::StringFlg = lctyp::Equals(rctyp) andalso lctyp::Equals(Loader::CachedLoadClass("System.String"))
+					Helpers::BoolFlg = lctyp::Equals(rctyp) andalso lctyp::Equals(Loader::CachedLoadClass("System.Boolean"))
 					if lctyp::Equals(rctyp) then
 						Helpers::DelegateFlg = lctyp::IsSubclassOf(Loader::CachedLoadClass("System.Delegate"))
 					end if
@@ -992,8 +1000,8 @@ class public auto ansi beforefieldinit Evaluator
 
 				Helpers::OpCodeSuppFlg = #ternary{lctyp::Equals(rctyp) ? lctyp::get_IsPrimitive(), false}
 				var typ2 = Loader::CachedLoadClass("System.ValueType")
-				Helpers::EqSuppFlg = !#expr(typ2::IsAssignableFrom(lctyp) or typ2::IsAssignableFrom(rctyp)) or Helpers::OpCodeSuppFlg
-				Helpers::EqSuppFlg = Helpers::EqSuppFlg or (lctyp::Equals(rctyp) and Loader::CachedLoadClass("System.Enum")::IsAssignableFrom(lctyp))
+				Helpers::EqSuppFlg = !#expr(typ2::IsAssignableFrom(lctyp) orelse typ2::IsAssignableFrom(rctyp)) orelse Helpers::OpCodeSuppFlg
+				Helpers::EqSuppFlg = Helpers::EqSuppFlg orelse (lctyp::Equals(rctyp) andalso Loader::CachedLoadClass("System.Enum")::IsAssignableFrom(lctyp))
 			end if
 
 			AsmFactory::Type02 = #ternary {optok is ConditionalOp ? Loader::CachedLoadClass("System.Boolean"), lctyp}
@@ -1005,6 +1013,15 @@ class public auto ansi beforefieldinit Evaluator
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is undefined.", rc::Value))
 					else
 						ILEmitter::EmitIs(istyp)
+					end if
+				end if
+			elseif isnflg then
+				if emt then
+					var istyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
+					if istyp == null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is undefined.", rc::Value))
+					else
+						ILEmitter::EmitIsNot(istyp)
 					end if
 				end if
 			elseif asflg then

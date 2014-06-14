@@ -65,6 +65,7 @@
 		<Word>andalso</Word>
 		<Word>nand</Word>	
 		<Word>is</Word>
+		<Word>isnot</Word>
 		<Word>notlike</Word>
 		<Word>like</Word>
 		<Word>new</Word>
@@ -334,6 +335,7 @@
 		<Word>andalso</Word>
 		<Word>nand</Word>	
 		<Word>is</Word>
+		<Word>isnot</Word>
 		<Word>notlike</Word>
 		<Word>like</Word>
 		<Word>new</Word>

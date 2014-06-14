@@ -79,6 +79,9 @@ class public auto ansi Container
 	class public auto ansi Sibling
 	end class
 
+	delegate public auto ansi void MyDelegate(var x as integer)
+	delegate public auto ansi U MyDelegate<of T, U>(var t as T)
+
 	class public auto ansi Nested
 
 		field public integer X
@@ -847,6 +850,9 @@ class public auto ansi static Program
 		new GenType<of integer, string>()
 
 		Console::WriteLine("a" != null andalso "ab" == "ab" andalso ("a" != null orelse "ab" == "ab"))
+
+		Console::WriteLine("a" is string)
+		Console::WriteLine("a" isnot string)
 	end method
 
 	method public static string LeaveMet(var x as integer)

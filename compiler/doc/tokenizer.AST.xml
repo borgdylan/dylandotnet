@@ -4860,6 +4860,19 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.Ops.AndAlsoOp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Ops.AndAlsoOp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.Ops.AndAlsoOp.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.Ops.AndOp">
             <summary>Represents a bitwise and 'and' operator.</summary>
             <remarks>Does a bitwise and of its operands.</remarks>
@@ -5202,6 +5215,19 @@
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.Ops.Op.RChild">
             <summary>In an AST made by the codegen module this holds the Right Child this Op operates on.</summary>
             <remarks>This field is set automatically by the ConvToAST method of codegen.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.Ops.OrElseOp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Ops.OrElseOp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.Ops.OrElseOp.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.Ops.OrOp">
             <summary>Represents a bitwise or 'or' operator.</summary>

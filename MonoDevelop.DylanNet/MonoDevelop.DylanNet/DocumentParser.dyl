@@ -35,8 +35,45 @@ namespace MonoDevelop.DylanNet
 
 	class public auto ansi beforefieldinit DocumentParser extends TypeSystemParser implements IFoldingParser
 		
+		field private static Action<of string> onstart
+
+		event public static Action<of string> OnStart
+			add
+				if onstart == null then
+					onstart = value
+				else
+					onstart = onstart + value
+				end if
+			end add
+			remove
+				if onstart != null then
+					onstart = onstart - value
+				end if
+			end remove
+		end event
+
+		field private static Action<of string> onend
+
+		event public static Action<of string> OnEnd
+			add
+				if onend == null then
+					onend = value
+				else
+					onend = onend + value
+				end if
+			end add
+			remove
+				if onend != null then
+					onend = onend - value
+				end if
+			end remove
+		end event
+
 		method public void DocumentParser()
 			me::ctor()
+		end method
+
+		method public static void DocumentParser()
 		end method
 			
 		method public ITypeReference ProcType(var tt as TypeTok)
@@ -190,9 +227,24 @@ namespace MonoDevelop.DylanNet
 			end for
 
 		end method
-			
+
+		method private void SetTypeAttrs(var aue as DefaultUnresolvedTypeDefinition, var attrs as IEnumerable<of Attributes.Attribute>, var clss as DelegateStmt)
+			foreach a in attrs
+				if a is AbstractAttr then
+					aue::set_IsAbstract(true)
+				end if
+			end for
+
+			aue::set_Kind(TypeKind::Delegate)
+			aue::get_BaseTypes()::Add(KnownTypeReference::MulticastDelegate)
+		end method
+
 		method public hidebysig virtual ParsedDocument Parse (var storeAst as boolean, var fileName as string, var content as TextReader, var project as Project)
 			
+			if onstart != null then
+				onstart::Invoke(fileName)
+			end if
+
 			StreamUtils::TerminateOnError = false
 			var doc = new ParsedDocumentDecorator(new CSharpUnresolvedFile() {set_FileName(fileName)})
 			var pl = new ParserLambdas(doc)
@@ -258,21 +310,24 @@ namespace MonoDevelop.DylanNet
 
 						elseif stmt is DelegateStmt then
 							var clss = $DelegateStmt$stmt
-//							if inClass then
-//								isNested = true
-//								curClass2 = curClass
-//								curClass = new DefaultUnresolvedTypeDefinition(curClass2, clss::ClassName::Value) {set_Region(new DomRegion(fileName, clss::Line, 0)), _
-//									set_Accessibility(ProcAccess(clss::Attrs)), set_DeclaringTypeDefinition(curClass2)}
-//								SetTypeAttrs(curClass, clss::Attrs, clss)
-//								curClass2::get_NestedTypes()::Add(curClass)
-//							else
-//								inClass = true
-								var del = new DefaultUnresolvedTypeDefinition(clss::DelegateName::Value) {set_Region(new DomRegion(fileName, clss::Line, 0)), _
+							var del = new DefaultUnresolvedTypeDefinition(clss::DelegateName::Value) {set_Region(new DomRegion(fileName, clss::Line, 0)), _
 									set_Accessibility(ProcAccess(clss::Attrs)), set_BodyRegion(new DomRegion(fileName, clss::Line, 0, clss::Line, integer::MaxValue))}
-								del::set_Kind(TypeKind::Delegate)
-								del::get_BaseTypes()::Add(KnownTypeReference::MulticastDelegate)
+							SetTypeAttrs(del, clss::Attrs, clss)
+
+							if clss::DelegateName is GenericMethodNameTok then
+								var i as integer = -1
+								foreach p in #expr($GenericMethodNameTok$clss::DelegateName)::Params
+									i++
+									del::get_TypeParameters()::Add(new DefaultUnresolvedTypeParameter(SymbolKind::TypeDefinition, i, p::Value))
+								end for
+							end if
+
+							if inClass then
+								del::set_DeclaringTypeDefinition(curClass)
+								curClass::get_NestedTypes()::Add(del)
+							else
 								classes::Add(del)
-							//end if
+							end if
 						elseif stmt is CommentStmt then
 							//TASK: not sure on this code
 							if stmt::Tokens::get_Count() > 0 then
@@ -583,6 +638,12 @@ namespace MonoDevelop.DylanNet
 						doc::set_LastWriteTimeUtc(DateTime::get_UtcNow())
 					end try
 					doc::set_IsInvalid(false)
+					if onend != null then
+						onend::Invoke(fileName)
+					end if
+				catch ex as ErrorException
+					doc::set_IsInvalid(true)
+//					Console::WriteLine(ex::get_Message())
 				catch ex as Exception
 					doc::set_IsInvalid(true)
 //					Console::WriteLine(ex::get_Message())

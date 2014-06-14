@@ -25,13 +25,13 @@ class public auto ansi abstract Literal extends ValueToken implements IUnaryOper
 		ctor(string::Empty)
 	end method
 	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
+	property public hidebysig virtual newslot autogen string OrdOp
+	property public hidebysig virtual newslot autogen boolean Conv
+	property public hidebysig virtual newslot autogen TypeTok TTok
 	
 end class
 
-class public auto ansi NullLiteral extends Literal implements IUnaryOperatable, IConvable
+class public auto ansi NullLiteral extends Literal
 
 	field public object NullVal
 
@@ -48,10 +48,6 @@ class public auto ansi NullLiteral extends Literal implements IUnaryOperatable, 
 	method public hidebysig virtual string ToString()
 		return "null"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
 	
 end class
 
@@ -75,7 +71,7 @@ class public auto ansi ConstLiteral extends Literal
 
 end class
 
-class public auto ansi StringLiteral extends Literal implements IUnaryOperatable, IConvable
+class public auto ansi StringLiteral extends Literal
 
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
@@ -94,14 +90,10 @@ class public auto ansi StringLiteral extends Literal implements IUnaryOperatable
 	method public hidebysig virtual string ToString()
 		return c"\q" + Value + c"\q"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
 
 end class
 
-class public auto ansi CharLiteral extends Literal implements IUnaryOperatable, IConvable
+class public auto ansi CharLiteral extends Literal
 
 	field public char CharVal
 
@@ -130,14 +122,10 @@ class public auto ansi CharLiteral extends Literal implements IUnaryOperatable, 
 	method public hidebysig virtual string ToString()
 		return "'" + $string$CharVal + "'"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
 
 end class
 
-class public auto ansi BooleanLiteral extends Literal implements IUnaryOperatable, IConvable, INegatable
+class public auto ansi BooleanLiteral extends Literal implements INegatable
 
 	field public boolean BoolVal
 	field private boolean _DoNeg
@@ -172,16 +160,13 @@ class public auto ansi BooleanLiteral extends Literal implements IUnaryOperatabl
 	method public hidebysig virtual string ToString()
 		return #ternary {BoolVal ? "true", "false"}
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
+
+	property public hidebysig virtual newslot autogen boolean DoNeg
 
 end class
 
 
-class public auto ansi asbtract NumberLiteral extends Literal implements IUnaryOperatable, IConvable
+class public auto ansi asbtract NumberLiteral extends Literal
 
 	method family void NumberLiteral()
 		me::ctor()
@@ -190,14 +175,10 @@ class public auto ansi asbtract NumberLiteral extends Literal implements IUnaryO
 	method family void NumberLiteral(var value as string)
 		me::ctor(value)
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
 
 end class
 
-class public auto ansi IntLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable, INotable
+class public auto ansi IntLiteral extends NumberLiteral implements INegatable, INotable
 
 	field public integer NumVal
 	field private boolean _DoNeg
@@ -238,16 +219,13 @@ class public auto ansi IntLiteral extends NumberLiteral implements IUnaryOperata
 	method public string ToStringNoI()
 		return $string$NumVal
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
-	property public hidebysig virtual final newslot autogen boolean DoNot
+
+	property public hidebysig virtual newslot autogen boolean DoNeg
+	property public hidebysig virtual newslot autogen boolean DoNot
 
 end class
 
-class public auto ansi DoubleLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable
+class public auto ansi DoubleLiteral extends NumberLiteral implements INegatable
 
 	field public double NumVal
 	field private boolean _DoNeg
@@ -280,15 +258,12 @@ class public auto ansi DoubleLiteral extends NumberLiteral implements IUnaryOper
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "d"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
+
+	property public hidebysig virtual newslot autogen boolean DoNeg
 
 end class
 
-class public auto ansi DecimalLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable
+class public auto ansi DecimalLiteral extends NumberLiteral implements INegatable
 
 	field public decimal NumVal
 	field private boolean _DoNeg
@@ -321,15 +296,12 @@ class public auto ansi DecimalLiteral extends NumberLiteral implements IUnaryOpe
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "m"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
+
+	property public hidebysig virtual newslot autogen boolean DoNeg
 
 end class
 
-class public auto ansi SByteLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable, INotable
+class public auto ansi SByteLiteral extends NumberLiteral implements INegatable, INotable
 
 	field public sbyte NumVal
 	field private boolean _DoNeg
@@ -366,17 +338,14 @@ class public auto ansi SByteLiteral extends NumberLiteral implements IUnaryOpera
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "b"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
-	property public hidebysig virtual final newslot autogen boolean DoNot
+
+	property public hidebysig virtual newslot autogen boolean DoNeg
+	property public hidebysig virtual newslot autogen boolean DoNot
 
 end class
 
 
-class public auto ansi ShortLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable, INotable
+class public auto ansi ShortLiteral extends NumberLiteral implements INegatable, INotable
 
 	field public short NumVal
 	field private boolean _DoNeg
@@ -422,16 +391,13 @@ class public auto ansi ShortLiteral extends NumberLiteral implements IUnaryOpera
 			_OrdOp = value
 		end set
 	end property
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
-	property public hidebysig virtual final newslot autogen boolean DoNot
+
+	property public hidebysig virtual newslot autogen boolean DoNeg
+	property public hidebysig virtual newslot autogen boolean DoNot
 
 end class
 
-class public auto ansi LongLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable, INotable
+class public auto ansi LongLiteral extends NumberLiteral implements INegatable, INotable
 
 	field public long NumVal
 	field private boolean _DoNeg
@@ -468,16 +434,13 @@ class public auto ansi LongLiteral extends NumberLiteral implements IUnaryOperat
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "l"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
-	property public hidebysig virtual final newslot autogen boolean DoNot
+
+	property public hidebysig virtual newslot autogen boolean DoNeg
+	property public hidebysig virtual newslot autogen boolean DoNot
 
 end class
 
-class public auto ansi FloatLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable
+class public auto ansi FloatLiteral extends NumberLiteral implements INegatable
 
 	field public single NumVal
 	field private boolean _DoNeg
@@ -510,15 +473,12 @@ class public auto ansi FloatLiteral extends NumberLiteral implements IUnaryOpera
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "f"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
+
+	property public hidebysig virtual newslot autogen boolean DoNeg
 
 end class
 
-class public auto ansi UIntLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INotable
+class public auto ansi UIntLiteral extends NumberLiteral implements INotable
 
 	field public uinteger NumVal
 	field private boolean _DoNot
@@ -551,16 +511,12 @@ class public auto ansi UIntLiteral extends NumberLiteral implements IUnaryOperat
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "ui"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
-	property public hidebysig virtual final newslot autogen boolean DoNot
+		
+	property public hidebysig virtual newslot autogen boolean DoNot
 
 end class
 
-class public auto ansi ByteLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INotable
+class public auto ansi ByteLiteral extends NumberLiteral implements INotable
 
 	field public byte NumVal
 	field private boolean _DoNot
@@ -593,16 +549,12 @@ class public auto ansi ByteLiteral extends NumberLiteral implements IUnaryOperat
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "ub"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
-	property public hidebysig virtual final newslot autogen boolean DoNot
+
+	property public hidebysig virtual newslot autogen boolean DoNot
 
 end class
 
-class public auto ansi UShortLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INotable
+class public auto ansi UShortLiteral extends NumberLiteral implements INotable
 
 	field public ushort NumVal
 	field private boolean _DoNot
@@ -635,16 +587,12 @@ class public auto ansi UShortLiteral extends NumberLiteral implements IUnaryOper
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "us"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
-	property public hidebysig virtual final newslot autogen boolean DoNot
+
+	property public hidebysig virtual newslot autogen boolean DoNot
 
 end class
 
-class public auto ansi ULongLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INotable
+class public auto ansi ULongLiteral extends NumberLiteral implements INotable
 
 	field public UInt64 NumVal
 	field private boolean _DoNot
@@ -677,16 +625,12 @@ class public auto ansi ULongLiteral extends NumberLiteral implements IUnaryOpera
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "ul"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
-	property public hidebysig virtual final newslot autogen boolean DoNot
+
+	property public hidebysig virtual newslot autogen boolean DoNot
 
 end class
 
-class public auto ansi IntPtrLiteral extends NumberLiteral implements IUnaryOperatable, IConvable, INegatable, INotable
+class public auto ansi IntPtrLiteral extends NumberLiteral implements INegatable, INotable
 
 	field public IntPtr NumVal
 	field private boolean _DoNot
@@ -711,11 +655,8 @@ class public auto ansi IntPtrLiteral extends NumberLiteral implements IUnaryOper
 	method public hidebysig virtual string ToString()
 		return $string$NumVal + "ip"
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
-	property public hidebysig virtual final newslot autogen boolean DoNot
+
+	property public hidebysig virtual newslot autogen boolean DoNeg
+	property public hidebysig virtual newslot autogen boolean DoNot
 
 end class

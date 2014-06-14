@@ -329,6 +329,7 @@
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Tokens.Ops">
       <Type Name="AddOp" Kind="Class" />
+      <Type Name="AndAlsoOp" Kind="Class" />
       <Type Name="AndOp" Kind="Class" />
       <Type Name="AritOp" Kind="Class" />
       <Type Name="AsOp" Kind="Class" />
@@ -356,6 +357,7 @@
       <Type Name="NorOp" Kind="Class" />
       <Type Name="NotOp" Kind="Class" />
       <Type Name="Op" Kind="Class" />
+      <Type Name="OrElseOp" Kind="Class" />
       <Type Name="OrOp" Kind="Class" />
       <Type Name="ShlOp" Kind="Class" />
       <Type Name="ShrOp" Kind="Class" />

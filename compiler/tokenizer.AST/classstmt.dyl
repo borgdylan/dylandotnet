@@ -7,13 +7,13 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 // class Attrs ClassName extends InhClass implements ImplInterafaces
-class public auto ansi ClassStmt extends Stmt
+class public auto ansi ClassStmt extends Stmt implements IHasConstraints, IConstrainable
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public TypeTok ClassName
 	field public TypeTok InhClass
 	field public C5.LinkedList<of TypeTok> ImplInterfaces
-	field public C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
+	field private C5.HashDictionary<of string, C5.LinkedList<of Token> > _Constraints
 
 	method public void ClassStmt()
 		me::ctor()
@@ -21,7 +21,7 @@ class public auto ansi ClassStmt extends Stmt
 		ClassName = new TypeTok()
 		InhClass = new TypeTok()
 		ImplInterfaces = new C5.LinkedList<of TypeTok>()
-		Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
+		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
@@ -32,13 +32,24 @@ class public auto ansi ClassStmt extends Stmt
 		ImplInterfaces::Add(interftoadd)
 	end method
 
-	method public void AddConstraint(var param as string, var ctr as Token)
-		if !Constraints::Contains(param) then
-			Constraints::Add(param, new C5.LinkedList<of Token>())
+	method public hidebysig virtual newslot void AddConstraint(var param as string, var ctr as Token)
+		if !_Constraints::Contains(param) then
+			_Constraints::Add(param, new C5.LinkedList<of Token>())
 		end if
-		Constraints::get_Item(param)::Add(ctr)
+		_Constraints::get_Item(param)::Add(ctr)
 	end method
 
+	property public hidebysig virtual newslot boolean HasConstraints
+		get
+			return ClassName is GenericTypeTok
+		end get
+	end property
+
+	property public hidebysig virtual newslot C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
+		get
+			return _Constraints
+		end get
+	end property
 end class
 
 class public auto ansi EndClassStmt extends Stmt

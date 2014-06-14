@@ -143,6 +143,13 @@ class public auto ansi static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
+	method public static void EmitIsNot(var t as IKVM.Reflection.Type)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Isinst, t)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	end method
+
+	[method: ComVisible(false)]
 	method public static void EmitConstrained(var t as IKVM.Reflection.Type)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Constrained, t)
 	end method

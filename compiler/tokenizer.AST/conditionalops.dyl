@@ -52,6 +52,20 @@ class public auto ansi IsOp extends ConditionalOp
 
 end class
 
+// isnot
+class public auto ansi IsNotOp extends ConditionalOp
+
+	method public void IsNotOp()
+		me::ctor()
+		PrecNo = 8
+	end method
+	
+	method public hidebysig virtual string ToString()
+		return "isnot"
+	end method
+
+end class
+
 // like
 class public auto ansi LikeOp extends ConditionalOp
 

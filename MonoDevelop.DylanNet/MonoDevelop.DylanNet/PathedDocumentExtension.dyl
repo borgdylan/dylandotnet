@@ -20,11 +20,11 @@ namespace MonoDevelop.DylanNet
 		end method
 
 		method assembly boolean RegionIsInside(var t as IUnresolvedTypeDefinition)
-			return t::get_BodyRegion()::IsInside(location)
+			return #ternary {t == null ? false, t::get_BodyRegion()::IsInside(location)}
 		end method
 
 		method assembly boolean RegionIsInside(var e as IUnresolvedMember)
-			return e::get_BodyRegion()::IsInside(location)
+			return #ternary {e == null ? false, e::get_BodyRegion()::IsInside(location)}
 		end method
 
 	end class
@@ -34,10 +34,11 @@ namespace MonoDevelop.DylanNet
 		field private EventHandler<of DocumentPathChangedEventArgs> _PathChanged
 		field private List<of PathEntry> _CurrentPath
 		field private Mono.TextEditor.Caret caret
+		field private EventHandler<of DocumentLocationEventArgs> pc
 
 		property public hidebysig virtual newslot PathEntry[] CurrentPath
 			get
-				return Enumerable::ToArray<of PathEntry>(_CurrentPath ?? new List<of PathEntry> {new PathEntry("No Selection")})
+				return Enumerable::ToArray<of PathEntry>(_CurrentPath ?? new List<of PathEntry>())
 			end get
 		end property
 
@@ -222,31 +223,42 @@ namespace MonoDevelop.DylanNet
 
 		method private void UpdatePath (var sender as object, var e as Mono.TextEditor.DocumentLocationEventArgs)
 			try
+				if _CurrentPath == null then
+					_CurrentPath = new List<of PathEntry> {new PathEntry("No Selection")}
+				end if
+
 				if _PathChanged != null then
 					_PathChanged::Invoke(me, new DocumentPathChangedEventArgs(get_CurrentPath()))
 				end if
 
 				var parsedDocument = $ParsedDocumentDecorator$get_Document()::get_ParsedDocument()
 				var textLoc as TextLocation = TypeSystem.HelperMethods::Convert(get_Document()::get_Editor()::get_Caret()::get_Location())
-				_CurrentPath::Clear()
 
-				var t = GetInnermostTypeDefinition(parsedDocument, textLoc)
-				if t != null
-
-					if t::get_DeclaringTypeDefinition() != null then
-						_CurrentPath::Add(new PathEntry(GetPixbuf(t::get_DeclaringTypeDefinition()), GetStringT(t::get_DeclaringTypeDefinition())))
-					end if
-
-					_CurrentPath::Add(new PathEntry(GetPixbuf(t), GetStringT(t)))
-					if t::get_Kind() != TypeKind::Delegate then
-						var m = GetMember(parsedDocument, textLoc)
-						if m != null then
-							_CurrentPath::Add(new PathEntry(GetPixbuf(m), GetStringM(m)))
-						else
-							_CurrentPath::Add(new PathEntry("No Selection"))
+				if parsedDocument != null then
+					
+					_CurrentPath::Clear()
+	
+					var t = GetInnermostTypeDefinition(parsedDocument, textLoc)
+					if t != null
+	
+						if t::get_DeclaringTypeDefinition() != null then
+							_CurrentPath::Add(new PathEntry(GetPixbuf(t::get_DeclaringTypeDefinition()), GetStringT(t::get_DeclaringTypeDefinition())))
 						end if
+	
+						_CurrentPath::Add(new PathEntry(GetPixbuf(t), GetStringT(t)))
+						if t::get_Kind() != TypeKind::Delegate then
+							var m = GetMember(parsedDocument, textLoc)
+							if m != null then
+								_CurrentPath::Add(new PathEntry(GetPixbuf(m), GetStringM(m)))
+							else
+								_CurrentPath::Add(new PathEntry("No Selection"))
+							end if
+						end if
+					else
+						_CurrentPath::Add(new PathEntry("No Selection"))
 					end if
 				else
+					_CurrentPath::Clear()
 					_CurrentPath::Add(new PathEntry("No Selection"))
 				end if
 
@@ -264,12 +276,28 @@ namespace MonoDevelop.DylanNet
 
 		end method
 
+		method public void OnStart(var fn as string)
+			if fn != null andalso new FilePath(fn) == get_Document()::get_FileName() then
+				//caret::remove_PositionChanged(pc)
+				_CurrentPath::Clear()
+			end if
+		end method
+
+		method public void OnEnd(var fn as string)
+			if fn != null andalso new FilePath(fn) == get_Document()::get_FileName() then
+				//caret::add_PositionChanged(pc)
+			end if
+		end method
+
 		method public hidebysig virtual void Initialize()
 			try
+				DocumentParser::add_OnStart(new Action<of string>(OnStart))
+				DocumentParser::add_OnEnd(new Action<of string>(OnEnd))
+				pc = new EventHandler<of DocumentLocationEventArgs>(UpdatePath)
 				caret = get_Document()::get_Editor()::get_Caret()
-				caret::add_PositionChanged(new EventHandler<of DocumentLocationEventArgs>(UpdatePath))
-				_CurrentPath = new List<of PathEntry> {new PathEntry("No Selection")}
-				UpdatePath(null, $Mono.TextEditor.DocumentLocationEventArgs$null)
+				_CurrentPath = new List<of PathEntry>()
+				_CurrentPath::Add(new PathEntry("No Selection"))
+				//UpdatePath(null, $Mono.TextEditor.DocumentLocationEventArgs$null)
 			catch ex as Exception
 			end try
 		end method

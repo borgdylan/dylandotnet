@@ -44,7 +44,7 @@ class public auto ansi static Program
 
 		var lastsdk as string = null
 
-		if args = null then
+		if args == null then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		elseif args[l] < 1 then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
@@ -99,8 +99,7 @@ class public auto ansi static Program
 						StreamUtils::WriteLine("...Done.")
 						new CodeGenerator()::EmitMSIL(ppstmts, args[i])
 					end if
-				end for
-				
+				end for	
 			catch errex as ErrorException
 			
 			catch ex as Exception

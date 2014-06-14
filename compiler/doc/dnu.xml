@@ -173,7 +173,7 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.ParseUtils.StringParser(System.String,System.String)">
+        <member name="M:dylan.NET.Utils.ParseUtils.StringParser(System.String,System.Char)">
             <param name="StringToParse">To be added.</param>
             <param name="DelimeterChar">To be added.</param>
             <summary>To be added.</summary>
@@ -188,7 +188,7 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.ParseUtils.StringParserL(System.String,System.String)">
+        <member name="M:dylan.NET.Utils.ParseUtils.StringParserL(System.String,System.Char)">
             <param name="StringToParse">To be added.</param>
             <param name="DelimeterChar">To be added.</param>
             <summary>To be added.</summary>

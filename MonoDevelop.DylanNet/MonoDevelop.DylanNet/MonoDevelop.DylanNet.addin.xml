@@ -142,7 +142,7 @@
 		</Extension>
 
 		<Extension path = "/MonoDevelop/Ide/TextEditorExtensions">
-			<Class fileExtensions = ".dyl" class = "MonoDevelop.DylanNet.PathedDocumentExtension" />
+			<!---<Class fileExtensions = ".dyl" class = "MonoDevelop.DylanNet.PathedDocumentExtension" />-->
 		</Extension>
 
 		<Extension path = "/MonoDevelop/ProjectModel/SerializableClasses">

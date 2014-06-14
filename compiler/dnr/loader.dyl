@@ -112,6 +112,70 @@ class public auto ansi static Loader
 
 	end method
 
+	method public static IEnumerable<of IKVM.Reflection.Type> LoadClasses(var name as string) 
+		var typ as IKVM.Reflection.Type = null
+		var typs as C5.LinkedList<of IKVM.Reflection.Type> = new C5.LinkedList<of IKVM.Reflection.Type>()
+		var nest as boolean = false
+
+		var na as string[] = ParseUtils::StringParser(name, c'\\')
+		name = na[0]
+		if na[l] > 1 then
+			nest = true
+		end if
+		
+		foreach alias in Importer::AliasMap::get_Keys()
+			if name == alias then
+				name = Importer::AliasMap::get_Item(alias)
+				break
+			elseif name like ("^" + alias + "`\d+$") then
+				name = Importer::AliasMap::get_Item(alias) + name::Substring(alias::get_Length())
+				break
+			elseif name::StartsWith(alias + ".") then
+				name = Importer::AliasMap::get_Item(alias) + name::Substring(alias::get_Length())
+				break
+			end if
+		end for
+				
+		foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
+			curns = curns ?? string::Empty
+			foreach curasm in Importer::Asms
+				try
+					typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
+					if typ != null then
+						if nest then
+							typ = typ::GetNestedType(na[1])
+						end if
+						if typ != null then
+							typs::Add(typ)
+						end if
+					end if
+				catch ex as Exception
+					typ = null
+				end try
+			end for
+				
+			if typ != null then
+				typs::Add(typ)
+			end if
+		end for
+		
+//		PreProcTyp = typ
+
+//		if typ != null then
+//			if MakeArr then
+//				typ = typ::MakeArrayType()
+//			end if
+//			if MakeRef then
+//				typ = typ::MakeByRefType()
+//			end if
+//		end if
+
+//		MakeArr = false
+//		MakeRef = false
+
+		return typs
+	end method
+
 	method public static IKVM.Reflection.Type CachedLoadClass(var name as string) 
 		if TypeCache::Contains(name) then
 			var typ = TypeCache::get_Item(name)

@@ -27,3 +27,17 @@ class public auto ansi abstract interface IIncDecable implements IUnaryOperatabl
 	property public hidebysig virtual abstract newslot autogen boolean DoInc
 	property public hidebysig virtual abstract newslot autogen boolean DoDec
 end class
+
+class public auto ansi abstract interface IHasConstraints
+	property public hidebysig virtual newslot abstract boolean HasConstraints
+		get
+	end property
+end class
+
+class public auto ansi abstract interface IConstrainable implements IHasConstraints
+	property public hidebysig virtual newslot abstract C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
+		get
+	end property
+
+	method public hidebysig virtual abstract newslot void AddConstraint(var param as string, var ctr as Token)
+end class

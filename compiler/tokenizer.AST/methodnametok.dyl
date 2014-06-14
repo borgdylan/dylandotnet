@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
+class public auto ansi MethodNameTok extends Ident implements IHasConstraints
 
 	method public void MethodNameTok()
 		me::ctor()
@@ -37,32 +37,30 @@ class public auto ansi MethodNameTok extends Ident implements IUnaryOperatable, 
 	method public static specialname MethodNameTok op_Implicit(var idt as Ident)
 		return #ternary{idt is MethodNameTok ? $MethodNameTok$idt, new MethodNameTok(idt)}
 	end method
-	
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
-	property public hidebysig virtual final newslot autogen boolean DoNot
-	property public hidebysig virtual final newslot autogen boolean DoInc
-	property public hidebysig virtual final newslot autogen boolean DoDec
+
+	property public hidebysig virtual newslot boolean HasConstraints
+		get
+			return false
+		end get
+	end property
 
 end class
 
-class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
+class public auto ansi GenericMethodNameTok extends MethodNameTok implements IHasConstraints, IConstrainable
 
 	field public C5.LinkedList<of TypeTok> Params
-	field public C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
+	field private C5.HashDictionary<of string, C5.LinkedList<of Token> > _Constraints
 
 	method public void GenericMethodNameTok()
 		me::ctor()
 		Params = new C5.LinkedList<of TypeTok>()
-		Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
+		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
 	end method
 
 	method public void GenericMethodNameTok(var value as string)
 		me::ctor(value)
 		Params = new C5.LinkedList<of TypeTok>()
-		Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
+		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
 	end method
 	
 	method public void GenericMethodNameTok(var idt as Ident)
@@ -80,7 +78,7 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUn
 		_TTok = idt::get_TTok()
 		_OrdOp = idt::get_OrdOp()
 		Line = idt::Line
-		Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
+		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
 	end method
 	
 	method public static specialname GenericMethodNameTok op_Implicit(var idt as Ident)
@@ -91,19 +89,23 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IUn
 		Params::Add(param)
 	end method
 
-	method public void AddConstraint(var param as string, var ctr as Token)
-		if !Constraints::Contains(param) then
-			Constraints::Add(param, new C5.LinkedList<of Token>())
+	method public hidebysig virtual newslot void AddConstraint(var param as string, var ctr as Token)
+		if !_Constraints::Contains(param) then
+			_Constraints::Add(param, new C5.LinkedList<of Token>())
 		end if
-		Constraints::get_Item(param)::Add(ctr)
+		_Constraints::get_Item(param)::Add(ctr)
 	end method
 
-	property public hidebysig virtual final newslot autogen string OrdOp
-	property public hidebysig virtual final newslot autogen boolean Conv
-	property public hidebysig virtual final newslot autogen TypeTok TTok
-	property public hidebysig virtual final newslot autogen boolean DoNeg
-	property public hidebysig virtual final newslot autogen boolean DoNot
-	property public hidebysig virtual final newslot autogen boolean DoInc
-	property public hidebysig virtual final newslot autogen boolean DoDec
+	property public hidebysig virtual newslot boolean HasConstraints
+		get
+			return true
+		end get
+	end property
+
+	property public hidebysig virtual newslot C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
+		get
+			return _Constraints
+		end get
+	end property
 
 end class
