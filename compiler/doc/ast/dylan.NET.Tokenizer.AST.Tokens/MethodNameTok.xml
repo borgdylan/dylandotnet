@@ -1,13 +1,17 @@
 <Type Name="MethodNameTok" FullName="dylan.NET.Tokenizer.AST.Tokens.MethodNameTok">
-  <TypeSignature Language="C#" Value="public class MethodNameTok : dylan.NET.Tokenizer.AST.Tokens.Ident" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi MethodNameTok extends dylan.NET.Tokenizer.AST.Tokens.Ident implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.IIncDecable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.INotable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="C#" Value="public class MethodNameTok : dylan.NET.Tokenizer.AST.Tokens.Ident, dylan.NET.Tokenizer.AST.Interfaces.IHasConstraints" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi MethodNameTok extends dylan.NET.Tokenizer.AST.Tokens.Ident implements class dylan.NET.Tokenizer.AST.Interfaces.IHasConstraints" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ident</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IHasConstraints</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>Represents a method name i.e. the full string of characters before the '('.</summary>
     <remarks>This class inherits Ident and hence allows nearly all identifier operations like chaining and conversions to be made in the same way.</remarks>
@@ -50,61 +54,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Conv">
-      <MemberSignature Language="C#" Value="public bool Conv { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool Conv" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DoDec">
-      <MemberSignature Language="C#" Value="public bool DoDec { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool DoDec" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DoInc">
-      <MemberSignature Language="C#" Value="public bool DoInc { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool DoInc" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DoNeg">
-      <MemberSignature Language="C#" Value="public bool DoNeg { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool DoNeg" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DoNot">
-      <MemberSignature Language="C#" Value="public bool DoNot { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool DoNot" />
+    <Member MemberName="HasConstraints">
+      <MemberSignature Language="C#" Value="public virtual bool HasConstraints { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool HasConstraints" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -129,32 +81,6 @@
         <param name="idt">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OrdOp">
-      <MemberSignature Language="C#" Value="public string OrdOp { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string OrdOp" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TTok">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

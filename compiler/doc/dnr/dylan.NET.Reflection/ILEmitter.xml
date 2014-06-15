@@ -1046,6 +1046,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitIsNot">
+      <MemberSignature Language="C#" Value="public static void EmitIsNot (IKVM.Reflection.Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitIsNot(class IKVM.Reflection.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitLdarg">
       <MemberSignature Language="C#" Value="public static void EmitLdarg (int num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdarg(int32 num) cil managed" />
@@ -1998,6 +2019,24 @@
       <Docs>
         <summary>Emits the 'ret' opcode.</summary>
         <remarks>Useful for returning the control to the method which called this one.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitRethrow">
+      <MemberSignature Language="C#" Value="public static void EmitRethrow ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitRethrow() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitShl">

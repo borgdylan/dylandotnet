@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>dylan.NET</id>
-    <version>11.3.4.1</version>
+    <version>11.3.5.1</version>
     <authors>borgdylan</authors>
     <owners>borgdylan</owners>
     <licenseUrl>http://www.gnu.org/copyleft/lesser.html</licenseUrl>
     <projectUrl>http://launchpad.net/dylandotnet</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A compiler for dylan.NET, a new language targeting the CLR</description>
-    <releaseNotes>dylan.NET v.11.3.3.1 with MSBuild support files and resource compilation support.</releaseNotes>
+    <releaseNotes>dylan.NET v.11.3.5.1 with MSBuild support files and resource compilation support.</releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>.NET3.5 .NET4.0 .NET4.5 Mono PCL MSBuild</tags>
     <!--<dependencies>

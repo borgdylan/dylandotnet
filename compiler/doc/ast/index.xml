@@ -43,7 +43,9 @@
       <Type Name="VarExpr" Kind="Class" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Interfaces">
+      <Type Name="IConstrainable" Kind="Interface" />
       <Type Name="IConvable" Kind="Interface" />
+      <Type Name="IHasConstraints" Kind="Interface" />
       <Type Name="IIncDecable" Kind="Interface" />
       <Type Name="INegatable" Kind="Interface" />
       <Type Name="INotable" Kind="Interface" />
@@ -343,6 +345,7 @@
       <Type Name="GeOp" Kind="Class" />
       <Type Name="GtOp" Kind="Class" />
       <Type Name="IncOp" Kind="Class" />
+      <Type Name="IsNotOp" Kind="Class" />
       <Type Name="IsOp" Kind="Class" />
       <Type Name="LeOp" Kind="Class" />
       <Type Name="LikeOp" Kind="Class" />

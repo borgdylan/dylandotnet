@@ -46,7 +46,7 @@ class public auto ansi beforefieldinit Evaluator
 			i++
 			tok = exp::Tokens::get_Item(i)
 
-			if !#expr((tok is Op) or (tok is LParen) or (tok is RParen)) then
+			if !#expr((tok is Op) orelse (tok is LParen) orelse (tok is RParen)) then
 				exp2::AddToken(tok)
 			elseif tok is Op then
 				if Stack::getLength() != 0 then
@@ -60,7 +60,7 @@ class public auto ansi beforefieldinit Evaluator
 				Stack::PushOp(tok)
 			elseif tok is RParen then
 				if Stack::getLength() != 0 then
-					if !#expr(Stack::TopOp() is LParen) then
+					if Stack::TopOp() isnot LParen then
 						exp2::AddToken(Stack::TopOp())
 						Stack::PopOp()
 						if Stack::getLength() != 0 then
@@ -82,7 +82,7 @@ class public auto ansi beforefieldinit Evaluator
 		end if
 
 		do
-			if !#expr(Stack::TopOp() is LParen) then
+			if Stack::TopOp() isnot LParen then
 				exp2::AddToken(Stack::TopOp())
 			end if
 			Stack::PopOp()
@@ -135,7 +135,7 @@ class public auto ansi beforefieldinit Evaluator
 	
 	method private void ASTEmitValueFilter(var emt as boolean)
 		if emt then
-			if !#expr(AsmFactory::Type02 is GenericTypeParameterBuilder) then
+			if AsmFactory::Type02 isnot GenericTypeParameterBuilder then
 				if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type02) then
 					
 					var loc as integer

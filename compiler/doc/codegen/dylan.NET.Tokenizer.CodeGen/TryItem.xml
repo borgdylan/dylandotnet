@@ -36,6 +36,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="InCatch">
+      <MemberSignature Language="C#" Value="public bool InCatch;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool InCatch" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Line">
       <MemberSignature Language="C#" Value="public int Line;" />
       <MemberSignature Language="ILAsm" Value=".field public int32 Line" />

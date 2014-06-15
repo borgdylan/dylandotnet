@@ -730,6 +730,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetExtMet">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo GetExtMet (System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt; ts, dylan.NET.Tokenizer.AST.Tokens.MethodNameTok mn, IKVM.Reflection.Type[] paramtyps);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo GetExtMet(class System.Collections.Generic.IEnumerable`1&lt;class IKVM.Reflection.Type&gt; ts, class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok mn, class IKVM.Reflection.Type[] paramtyps) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ts" Type="System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt;" />
+        <Parameter Name="mn" Type="dylan.NET.Tokenizer.AST.Tokens.MethodNameTok" />
+        <Parameter Name="paramtyps" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="ts">To be added.</param>
+        <param name="mn">To be added.</param>
+        <param name="paramtyps">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetExtProp">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.PropertyInfo GetExtProp (IKVM.Reflection.Type t, string prop);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.PropertyInfo GetExtProp(class IKVM.Reflection.Type t, string prop) cil managed" />

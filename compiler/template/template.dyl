@@ -535,11 +535,12 @@ class public auto ansi static Program
 			throw new ArithmeticException("This is a Test Exception")
 		catch aex as ArgumentException
 			Console::WriteLine("argex")
-		catch ex as Exception
+		catch
 			try
 				Console::WriteLine(ex::ToString())
 				throw ex
 			catch ex2 as Exception
+				throw
 			end try
 		finally
 			Console::WriteLine("finally")

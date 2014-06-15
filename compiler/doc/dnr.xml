@@ -462,6 +462,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitIsNot(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdarg(System.Int32)">
             <param name="num">The index of the argument to load.</param>
             <summary>Emits one of the variants of 'ldarg' accordingly.</summary>
@@ -682,6 +687,10 @@
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitRet">
             <summary>Emits the 'ret' opcode.</summary>
             <remarks>Useful for returning the control to the method which called this one.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitRethrow">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitShl">
             <summary>To be added.</summary>
@@ -940,6 +949,12 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.Loader.LoadClass(System.String)">
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadClasses(System.String)">
             <param name="name">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>

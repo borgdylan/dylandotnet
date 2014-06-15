@@ -527,6 +527,11 @@ class public auto ansi static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
+	method public static void EmitRethrow()
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Rethrow)
+	end method
+
+	[method: ComVisible(false)]
 	method public static void EmitTry()
 		ILGen::BeginExceptionBlock()
 	end method

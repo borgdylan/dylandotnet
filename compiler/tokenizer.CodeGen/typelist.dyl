@@ -118,7 +118,7 @@ class public auto ansi TypeList
 	end method
 	
 	method public void EnsureDefaultCtor(var t as IKVM.Reflection.Type)
-		if !#expr(ILEmitter::StructFlg or ILEmitter::InterfaceFlg or ILEmitter::StaticCFlg) then
+		if !#expr(ILEmitter::StructFlg orelse ILEmitter::InterfaceFlg orelse ILEmitter::StaticCFlg) then
 			var ti as TypeItem = GetTypeItem(t)
 			if ti != null then
 				if ti::Ctors::get_Count() == 0 then

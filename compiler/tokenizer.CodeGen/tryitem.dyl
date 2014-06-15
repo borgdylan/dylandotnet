@@ -9,15 +9,16 @@
 class public auto ansi TryItem
 
 	field public integer Line
-
-	method public void TryItem()
-		me::ctor()
-		Line = 0
-	end method
+	field public boolean InCatch
 
 	method public void TryItem(var ln as integer)
 		me::ctor()
 		Line = ln
+		InCatch = false
+	end method
+
+	method public void TryItem()
+		ctor(0)
 	end method
 
 end class

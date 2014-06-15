@@ -28,13 +28,13 @@ class public auto ansi ExprOptimizer
 		var tt as TypeTok
 
 		if i < (stm::Tokens::get_Count() - 2) then
-			isgeneric = (stm::Tokens::get_Item(++i) is LAParen) and (stm::Tokens::get_Item(i + 2) is OfTok)
+			isgeneric = (stm::Tokens::get_Item(++i) is LAParen) andalso (stm::Tokens::get_Item(i + 2) is OfTok)
 		end if
 
 		if isgeneric then
 			
 			var gttarg = stm::Tokens::get_Item(i)
-			if !#expr((gttarg is Ident) or (gttarg is TypeTok)) then
+			if !#expr((gttarg is Ident) orelse (gttarg is TypeTok)) then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", gttarg::Value))
 			end if
 			
@@ -373,7 +373,7 @@ class public auto ansi ExprOptimizer
 		do until i = len
 			i++
 	
-			if (stm::Tokens::get_Item(i) is RParen) or (stm::Tokens::get_Item(i) is RAParen) or (stm::Tokens::get_Item(i) is RCParen) then
+			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
 				if lvl = 0 then
 					d = false
@@ -999,7 +999,7 @@ class public auto ansi ExprOptimizer
 
 				if tok is Ident then
 					if !PFlags::DurConvFlag then
-						if PFlags::MetCallFlag or PFlags::IdentFlag or PFlags::StringFlag or PFlags::CtorFlag then
+						if PFlags::MetCallFlag orelse PFlags::IdentFlag orelse PFlags::StringFlag orelse PFlags::CtorFlag then
 							mcbool = true
 						end if
 						PFlags::IdentFlag = true
@@ -1011,7 +1011,7 @@ class public auto ansi ExprOptimizer
 
 						//genericmethodnametok detector
 						if i < (exp::Tokens::get_Count() - 2) then
-							if (exp::Tokens::get_Item(++i) is LAParen) and (exp::Tokens::get_Item(i + 2) is OfTok) then
+							if (exp::Tokens::get_Item(++i) is LAParen) andalso (exp::Tokens::get_Item(i + 2) is OfTok) then
 								exp = procMtdName(exp, i)
 								len = --exp::Tokens::get_Count() 
 							end if
@@ -1198,7 +1198,7 @@ class public auto ansi ExprOptimizer
 				if tok is LParen then
 					if PFlags::IdentFlag then
 						PFlags::IdentFlag = false
-						if PFlags::MetCallFlag or PFlags::StringFlag or PFlags::IdentFlag  or PFlags::CtorFlag then
+						if PFlags::MetCallFlag orelse PFlags::StringFlag orelse PFlags::IdentFlag  orelse PFlags::CtorFlag then
 							mcbool = true
 						end if
 						PFlags::MetCallFlag = true
@@ -1257,7 +1257,7 @@ class public auto ansi ExprOptimizer
 			
 			if mctok is GenericMethodNameTok then
 				var mct = $GenericMethodNameTok$mctok
-				if PFlags::MetCallFlag or PFlags::IdentFlag then
+				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false
 					var conseq as Token = exp::Tokens::get_Item(++i)
@@ -1272,7 +1272,7 @@ class public auto ansi ExprOptimizer
 				end if
 			elseif mctok is Ident then
 				mcident = $Ident$mctok
-				if PFlags::MetCallFlag or PFlags::IdentFlag then
+				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false
 					mcident::MemberAccessFlg = true
@@ -1285,7 +1285,7 @@ class public auto ansi ExprOptimizer
 				end if
 			elseif mctok is NewCallTok then
 				var mcnct = $NewCallTok$mctok
-				if PFlags::MetCallFlag or PFlags::IdentFlag then
+				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false
 					mcnct::MemberAccessFlg = true
@@ -1295,7 +1295,7 @@ class public auto ansi ExprOptimizer
 				end if
 			elseif mctok is ObjInitCallTok then
 				var mcnct = $ObjInitCallTok$mctok
-				if PFlags::MetCallFlag or PFlags::IdentFlag then
+				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false
 					mcnct::MemberAccessFlg = true
@@ -1305,7 +1305,7 @@ class public auto ansi ExprOptimizer
 				end if
 			elseif mctok is ExprCallTok then
 				var mcnct = $ExprCallTok$mctok
-				if PFlags::MetCallFlag or PFlags::IdentFlag then
+				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false
 					mcnct::MemberAccessFlg = true
@@ -1316,7 +1316,7 @@ class public auto ansi ExprOptimizer
 			elseif mctok is MethodCallTok then
 				mcmetcall = $MethodCallTok$mctok
 				mcmetname = mcmetcall::Name
-				if PFlags::MetCallFlag or PFlags::IdentFlag then
+				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false
 					mcmetname::MemberAccessFlg = true
@@ -1330,7 +1330,7 @@ class public auto ansi ExprOptimizer
 				end if
 			elseif mctok is StringLiteral then
 				mcstr = $StringLiteral$mctok
-				if PFlags::MetCallFlag or PFlags::IdentFlag then
+				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 					PFlags::MetCallFlag = false
 					PFlags::IdentFlag = false
 					mcstr::MemberAccessFlg = true

@@ -483,6 +483,14 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetExtMet(System.Collections.Generic.IEnumerable{IKVM.Reflection.Type},dylan.NET.Tokenizer.AST.Tokens.MethodNameTok,IKVM.Reflection.Type[])">
+            <param name="ts">To be added.</param>
+            <param name="mn">To be added.</param>
+            <param name="paramtyps">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetExtProp(IKVM.Reflection.Type,System.String)">
             <param name="t">To be added.</param>
             <param name="prop">To be added.</param>
@@ -1269,6 +1277,11 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.GetInCatch">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.GetRetLbl">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
@@ -1402,6 +1415,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetInCatch(System.Boolean)">
+            <param name="val">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetMetGenParams(System.String[],IKVM.Reflection.Emit.GenericTypeParameterBuilder[])">
             <param name="names">To be added.</param>
             <param name="actuals">To be added.</param>
@@ -1445,6 +1463,10 @@
         </member>
         <member name="C:dylan.NET.Tokenizer.CodeGen.TryItem(System.Int32)">
             <param name="ln">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TryItem.InCatch">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

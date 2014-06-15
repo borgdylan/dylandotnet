@@ -1,6 +1,6 @@
 <Type Name="NullLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral">
   <TypeSignature Language="C#" Value="public class NullLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi NullLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi NullLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
@@ -36,19 +36,6 @@
         <remarks>Also sets LitTyp to an ObjectTok instance.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Conv">
-      <MemberSignature Language="C#" Value="public bool Conv { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool Conv" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="NullVal">
       <MemberSignature Language="C#" Value="public object NullVal;" />
       <MemberSignature Language="ILAsm" Value=".field public object NullVal" />
@@ -59,19 +46,6 @@
       <Docs>
         <summary>Holds a null reference.</summary>
         <remarks>The code generator will not use this null reference. Instead it will load one using the 'ldnull' opcode.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OrdOp">
-      <MemberSignature Language="C#" Value="public string OrdOp { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string OrdOp" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -87,19 +61,6 @@
         <returns>The dylan.NET syntactic equivalent to this literal ie. "null".</returns>
         <remarks>
         </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TTok">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

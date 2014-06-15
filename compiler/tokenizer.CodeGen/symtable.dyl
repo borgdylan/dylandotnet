@@ -349,6 +349,17 @@ class public auto ansi static SymTable
 	end method
 
 	[method: ComVisible(false)]
+	method public static void SetInCatch(var val as boolean)
+		var tri as TryItem = TryLst::get_Last()
+		tri::InCatch = val
+	end method
+
+	[method: ComVisible(false)]
+	method public static boolean GetInCatch()
+		return #ternary {TryLst::get_Count() > 0 ? TryLst::get_Last()::InCatch, false}
+	end method
+
+	[method: ComVisible(false)]
 	method public static void AddLbl(var nam as string)
 		LblLst::Add (new LabelItem(nam, ILEmitter::DefineLbl()))
 	end method

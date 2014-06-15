@@ -215,7 +215,7 @@ namespace MonoDevelop.DylanNet
 			end for
 
 			if !isinterf then
-				if clss::InhClass::Value == "System.ValueType" or clss::InhClass::Value == "ValueType" then
+				if clss::InhClass::Value == "System.ValueType" orelse clss::InhClass::Value == "ValueType" then
 					aue::set_Kind(TypeKind::Struct)
 				end if
 
@@ -458,7 +458,7 @@ namespace MonoDevelop.DylanNet
 								end for
 							end if
 
-							if (mtss::MethodName::Value == curClass::get_Name()) or (mtss::MethodName::Value like "^ctor\d*$") then
+							if (mtss::MethodName::Value == curClass::get_Name()) orelse (mtss::MethodName::Value like "^ctor\d*$") then
 								met::set_SymbolKind(SymbolKind::Constructor)
 							end if
 
@@ -578,11 +578,11 @@ namespace MonoDevelop.DylanNet
 								doc::Add(new FoldingRegion(new DomRegion(fs::Pop(), integer::MaxValue, stmt::Line, integer::MaxValue), FoldType::ConditionalDefine))
 							end if
 						elseif stmt is PropertyGetStmt then
-							if (#expr($PropertyGetStmt$stmt)::Getter == null) and !curProp::get_IsAbstract() then
+							if (#expr($PropertyGetStmt$stmt)::Getter == null) andalso !curProp::get_IsAbstract() then
 								fs::Push(stmt::Line)
 							end if
 						elseif stmt is PropertySetStmt then
-							if (#expr($PropertySetStmt$stmt)::Setter == null) and !curProp::get_IsAbstract() then
+							if (#expr($PropertySetStmt$stmt)::Setter == null) andalso !curProp::get_IsAbstract() then
 								fs::Push(stmt::Line)
 							end if
 						elseif stmt is EndGetStmt then
@@ -613,7 +613,7 @@ namespace MonoDevelop.DylanNet
 						else
 							if cstart != -1 then
 								if cstart != cfin then
-									doc::Add(new FoldingRegion(cs, new DomRegion(cstart, 0, cfin, integer::MaxValue), #ternary { inClass or inEnum ? FoldType::CommentInsideMember, FoldType::Comment}))
+									doc::Add(new FoldingRegion(cs, new DomRegion(cstart, 0, cfin, integer::MaxValue), #ternary { inClass orelse inEnum ? FoldType::CommentInsideMember, FoldType::Comment}))
 								end if
 								cstart = -1
 								cfin = -1
@@ -624,7 +624,7 @@ namespace MonoDevelop.DylanNet
 
 					if cstart != -1 then
 						if cstart != cfin then
-							doc::Add(new FoldingRegion(new DomRegion(cs, cstart, 0, cfin, integer::MaxValue), #ternary { inClass or inEnum ? FoldType::CommentInsideMember, FoldType::Comment}))
+							doc::Add(new FoldingRegion(new DomRegion(cs, cstart, 0, cfin, integer::MaxValue), #ternary { inClass orelse inEnum ? FoldType::CommentInsideMember, FoldType::Comment}))
 						end if
 					end if
 

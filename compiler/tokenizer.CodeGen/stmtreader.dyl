@@ -527,7 +527,7 @@ class public auto ansi StmtReader
 			var rettyp as IKVM.Reflection.Type = null
 			var nrgenparams = 0
 			
-			if !#expr(mtss::MethodName is GenericMethodNameTok) then
+			if mtss::MethodName isnot GenericMethodNameTok then
 				paramstyps = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 				mipt = SymTable::FindProtoMet(mtssnamstr, paramstyps)
 			end if
@@ -665,7 +665,7 @@ class public auto ansi StmtReader
 		
 		Helpers::ApplyMetAttrs()
 		
-		if !#expr(ILEmitter::AbstractFlg or ILEmitter::ProtoFlg or ILEmitter::PInvokeFlg) then
+		if !#expr(ILEmitter::AbstractFlg orelse ILEmitter::ProtoFlg orelse ILEmitter::PInvokeFlg) then
 			AsmFactory::InMethodFlg = true
 		end if
 		AsmFactory::CurnMetName = mtssnamstr
@@ -1272,7 +1272,7 @@ class public auto ansi StmtReader
 		elseif stm is EndMethodStmt then
 			AsmFactory::InMethodFlg = false
 			AsmFactory::InCtorFlg = false
-			if !#expr(ILEmitter::AbstractFlg or ILEmitter::ProtoFlg or ILEmitter::PInvokeFlg) then
+			if !#expr(ILEmitter::AbstractFlg orelse ILEmitter::ProtoFlg orelse ILEmitter::PInvokeFlg) then
 				var li as LabelItem = SymTable::FindLbl("$leave_ret_label$")
 				if li != null then
 					ILEmitter::MarkLbl(li::Lbl)
@@ -1514,7 +1514,11 @@ class public auto ansi StmtReader
 				end if
 				ILEmitter::EmitThrow()
 			else
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No exception to throw specified")
+				if SymTable::GetInCatch() then
+					ILEmitter::EmitRethrow()
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No exception to throw specified")
+				end if
 			end if
 		elseif stm is TryStmt then
 			SymTable::PushScope()
@@ -1527,6 +1531,7 @@ class public auto ansi StmtReader
 		elseif stm is FinallyStmt then
 			SymTable::PopScope()
 			SymTable::PushScope()
+			SymTable::SetInCatch(false)
 			ILEmitter::EmitFinally()
 		elseif stm is EndUsingStmt then
 			ILEmitter::EmitFinally()
@@ -1547,6 +1552,7 @@ class public auto ansi StmtReader
 			if vtyp = null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + cats::ExTyp::Value + "' is not defined.")
 			end if
+			SymTable::SetInCatch(true)
 			ILEmitter::DeclVar(cats::ExName::Value, vtyp)
 			ILEmitter::LocInd++
 			SymTable::StoreFlg = true

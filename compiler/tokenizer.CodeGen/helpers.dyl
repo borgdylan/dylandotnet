@@ -32,7 +32,7 @@ class public auto ansi static Helpers
 	//uses NullExprFlag as input
 	[method: ComVisible(false)]
 	method public static void CheckAssignability(var t1 as IKVM.Reflection.Type, var t2 as IKVM.Reflection.Type)
-		if !t1::IsAssignableFrom(t2) andalso !#expr(NullExprFlg and !t1::IsAssignableFrom(Loader::CachedLoadClass("System.ValueType"))) then
+		if !t1::IsAssignableFrom(t2) andalso !#expr(NullExprFlg andalso !t1::IsAssignableFrom(Loader::CachedLoadClass("System.ValueType"))) then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Slots of type '" + t1::ToString() + "' cannot be assigned values of type '" + t2::ToString() + "'.")
 		end if
 	end method
@@ -185,7 +185,7 @@ class public auto ansi static Helpers
 				temp = MethodAttributes::Private
 			elseif attr is Attributes.FamilyAttr then
 				temp = MethodAttributes::Family
-				if assem or fam or foa or faa then
+				if assem orelse fam orelse foa orelse faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				fam = true
@@ -193,19 +193,19 @@ class public auto ansi static Helpers
 				temp = MethodAttributes::Final
 			elseif attr is Attributes.AssemblyAttr then
 				temp = MethodAttributes::Assembly
-				if assem or fam or foa or faa then
+				if assem orelse fam orelse foa orelse faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				assem = true
 			elseif attr is Attributes.FamORAssemAttr then
 				temp = MethodAttributes::FamORAssem
-				if assem or fam or foa or faa then
+				if assem orelse fam orelse foa orelse faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				foa = true
 			elseif attr is Attributes.FamANDAssemAttr then
 				temp = MethodAttributes::FamANDAssem
-				if assem or fam or foa or faa then
+				if assem orelse fam orelse foa orelse faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				faa = true
@@ -264,25 +264,25 @@ class public auto ansi static Helpers
 				temp = FieldAttributes::Literal or FieldAttributes::Static
 			elseif attr is Attributes.FamilyAttr then
 				temp = FieldAttributes::Family
-				if assem or fam or foa or faa then
+				if assem orelse fam orelse foa orelse faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				fam = true
 			elseif attr is Attributes.AssemblyAttr then
 				temp = FieldAttributes::Assembly
-				if assem or fam or foa or faa then
+				if assem orelse fam orelse foa orelse faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				assem = true
 			elseif attr is Attributes.FamORAssemAttr then
 				temp = FieldAttributes::FamORAssem
-				if assem or fam or foa or faa then
+				if assem orelse fam orelse foa orelse faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				foa = true
 			elseif attr is Attributes.FamANDAssemAttr then
 				temp = FieldAttributes::FamANDAssem
-				if assem or fam or foa or faa then
+				if assem orelse fam orelse foa orelse faa then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				faa = true
@@ -509,7 +509,7 @@ class public auto ansi static Helpers
 				isgenparamt = SymTable::CurnTypItem::TypGenParams::Contains(tt::Value)
 			end if
 
-			if !#expr(isgenparamm or isgenparamt) then
+			if !#expr(isgenparamm orelse isgenparamt) then
 				if tt::RefTyp != null then
 					Loader::MakeArr = tt::IsArray
 					Loader::MakeRef = tt::IsByRef
@@ -529,7 +529,7 @@ class public auto ansi static Helpers
 					Loader::MakeArr = tt::IsArray
 					Loader::MakeRef = tt::IsByRef
 
-					if (ParseUtils::StringParser(tt::Value, c'\\')[l] > 0) and !tt::Value::Contains(".") then
+					if (ParseUtils::StringParser(tt::Value, c'\\')[l] > 0) andalso !tt::Value::Contains(".") then
 						if AsmFactory::inClass then
 							var tti = #ternary { AsmFactory::isNested ? SymTable::CurnTypItem2 , SymTable::CurnTypItem}
 							if tti != null then
@@ -639,7 +639,7 @@ class public auto ansi static Helpers
 		foreach p in ps
 			i++
 			curp = $VarExpr$p
-var pa as ParameterAttributes = ParameterAttributes::None
+			var pa as ParameterAttributes = ParameterAttributes::None
 			
 			if curp::Attr != null then
 				if curp::Attr is InTok then
@@ -781,7 +781,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 
 		var mtd1 as MethodInfo = null
 		var mtd3 as MethodInfo = null
-		var isgenparam = (LeftOp is GenericTypeParameterBuilder) or (RightOp is GenericTypeParameterBuilder)
+		var isgenparam = (LeftOp is GenericTypeParameterBuilder) orelse (RightOp is GenericTypeParameterBuilder)
 
 		if op is AddOp then
 			if !isgenparam then
@@ -1067,7 +1067,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		elseif op is EqOp then
 			var lo = #ternary {LeftOp::get_IsConstructedGenericType() ? LeftOp::GetGenericTypeDefinition(), LeftOp}
 
-			if !#expr(lo::Equals(AsmFactory::CurnTypB) or isgenparam) then
+			if !#expr(lo::Equals(AsmFactory::CurnTypB) orelse isgenparam) then
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Equality", LeftOp, RightOp)
 			end if
 
@@ -1096,7 +1096,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		elseif op is NeqOp then
 			var lo = #ternary {LeftOp::get_IsConstructedGenericType() ? LeftOp::GetGenericTypeDefinition(), LeftOp}
 
-			if !#expr(lo::Equals(AsmFactory::CurnTypB) or isgenparam) then
+			if !#expr(lo::Equals(AsmFactory::CurnTypB) orelse isgenparam) then
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Inequality", LeftOp, RightOp)
 			end if
 
@@ -1181,8 +1181,8 @@ var pa as ParameterAttributes = ParameterAttributes::None
 	[method: ComVisible(false)]
 	method public static void EmitLocLd(var ind as integer, var locarg as boolean)
 		if (AsmFactory::AddrFlg and Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom( _
-			#ternary{AsmFactory::Type04::get_IsByRef() ? AsmFactory::Type04::GetElementType(), AsmFactory::Type04})  and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
-			 or AsmFactory::ForcedAddrFlg then
+			#ternary{AsmFactory::Type04::get_IsByRef() ? AsmFactory::Type04::GetElementType(), AsmFactory::Type04}) andalso (AsmFactory::Type04 isnot GenericTypeParameterBuilder) ) _
+			 orelse AsmFactory::ForcedAddrFlg then
 			if AsmFactory::Type04::get_IsByRef() then
 				if locarg then
 					ILEmitter::EmitLdloc(ind)
@@ -1210,8 +1210,8 @@ var pa as ParameterAttributes = ParameterAttributes::None
 
 	[method: ComVisible(false)]
 	method public static void EmitElemLd(var t as IKVM.Reflection.Type)
-		if (AsmFactory::AddrFlg and Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type04)  and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
-		 or AsmFactory::ForcedAddrFlg then
+		if (AsmFactory::AddrFlg andalso Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type04) andalso (AsmFactory::Type04 isnot GenericTypeParameterBuilder) ) _
+		 orelse AsmFactory::ForcedAddrFlg then
 			ILEmitter::EmitLdelema(t)
 		else
 			ILEmitter::EmitLdelem(t)
@@ -1229,7 +1229,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 
 	[method: ComVisible(false)]
 	method public static void EmitConv(var source as IKVM.Reflection.Type, var sink as IKVM.Reflection.Type)
-		var isgenparam = (source is GenericTypeParameterBuilder) or (sink  is GenericTypeParameterBuilder)
+		var isgenparam = (source is GenericTypeParameterBuilder) orelse (sink  is GenericTypeParameterBuilder)
 		var convc as IKVM.Reflection.Type = Loader::LoadClass("System.Convert")
 		var typ as IKVM.Reflection.Type
 		var m1 as MethodInfo
@@ -1252,8 +1252,8 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		
 		if !isgenparam then
 			//begin conv overload block
-			if !#expr(source::get_IsPrimitive() and sink::get_IsPrimitive()) then
-				if !sink::Equals(AsmFactory::CurnTypB) and !sink::get_IsInterface() then
+			if !#expr(source::get_IsPrimitive() andalso sink::get_IsPrimitive()) then
+				if !sink::Equals(AsmFactory::CurnTypB) andalso !sink::get_IsInterface() then
 					m1 = Loader::LoadConvOp(sink, "op_Implicit", source, sink)
 					if m1 != null then
 						ILEmitter::EmitCall(m1)
@@ -1265,7 +1265,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 						return
 					end if
 				end if
-				if !source::Equals(AsmFactory::CurnTypB) and !source::get_IsInterface() then
+				if !source::Equals(AsmFactory::CurnTypB) andalso !source::get_IsInterface() then
 					m1 = Loader::LoadConvOp(source, "op_Implicit", source, sink)
 					if m1 != null then
 						ILEmitter::EmitCall(m1)
@@ -1320,7 +1320,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 		end if
 
 		typ = Loader::CachedLoadClass("System.ValueType")
-		if !#expr(typ::IsAssignableFrom(sink) or typ::IsAssignableFrom(source)) then
+		if !#expr(typ::IsAssignableFrom(sink) orelse typ::IsAssignableFrom(source)) then
 			if sink::IsAssignableFrom(source) then
 				if !sink::get_IsInterface() then
 					StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
@@ -1329,7 +1329,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 			elseif source::IsAssignableFrom(sink) then
 				ILEmitter::EmitCastclass(sink)
 				return
-			elseif source::get_IsInterface() or sink::get_IsInterface() then
+			elseif source::get_IsInterface() orelse sink::get_IsInterface() then
 				ILEmitter::EmitCastclass(sink)
 				return
 			end if
@@ -1458,7 +1458,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 
 	[method: ComVisible(false)]
 	method public static void EmitMetCall(var met as MethodInfo, var stat as boolean)
-		if stat or BaseFlg then
+		if stat orelse BaseFlg then
 			ILEmitter::EmitCall(met)
 		else
 			if AsmFactory::Type05 is GenericTypeParameterBuilder then
@@ -1492,8 +1492,8 @@ var pa as ParameterAttributes = ParameterAttributes::None
 
 	[method: ComVisible(false)]
 	method public static void EmitFldLd(var fld as FieldInfo, var stat as boolean)
-		if (AsmFactory::AddrFlg and Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type04) and !#expr(AsmFactory::Type04 is GenericTypeParameterBuilder) ) _
-			 or AsmFactory::ForcedAddrFlg then
+		if (AsmFactory::AddrFlg andalso Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type04) andalso (AsmFactory::Type04 isnot GenericTypeParameterBuilder) ) _
+			 orelse AsmFactory::ForcedAddrFlg then
 			if stat then
 				ILEmitter::EmitLdsflda(fld)
 			else
@@ -1947,7 +1947,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 					end if
 				end if
 
-				if !#expr(flgs[0] or flgs[1]) then
+				if !#expr(flgs[0] orelse flgs[1]) then
 					var res = ProcessForeach(interf)
 					if res != null then
 						return res
@@ -2005,7 +2005,7 @@ var pa as ParameterAttributes = ParameterAttributes::None
 					end if
 				end if
 
-				if !#expr(flgs[0] or flgs[1]) then
+				if !#expr(flgs[0] orelse flgs[1]) then
 					var res = ProcessForeach2(interf)
 					if res != null then
 						return res

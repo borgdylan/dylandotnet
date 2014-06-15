@@ -116,7 +116,7 @@ AUTOHEADER = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing autohe
 AUTOMAKE = ${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing automake-1.14
 AWK = gawk
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.3.5.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.3.5.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.3.3.1\"
+DEFS = -DPACKAGE_NAME=\"dylandotnet\" -DPACKAGE_TARNAME=\"dylandotnet\" -DPACKAGE_VERSION=\"11.3.5.1\" -DPACKAGE_STRING=\"dylandotnet\ 11.3.5.1\" -DPACKAGE_BUGREPORT=\"borgdylan@hotmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"dylandotnet\" -DVERSION=\"11.3.5.1\"
 DYLANDOTNET = /usr/local/bin/dylandotnet
 ECHO_C = 
 ECHO_N = -n
@@ -150,7 +150,7 @@ PKG_CONFIG_PATH =
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
-VERSION = 11.3.3.1
+VERSION = 11.3.5.1
 abs_builddir = /var/www/Code/dylannet/dylandotnet/compiler/dev
 abs_srcdir = /var/www/Code/dylannet/dylandotnet/compiler/dev
 abs_top_builddir = /var/www/Code/dylannet/dylandotnet/compiler

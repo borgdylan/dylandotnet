@@ -1,13 +1,17 @@
 <Type Name="ClassStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.ClassStmt">
-  <TypeSignature Language="C#" Value="public class ClassStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi ClassStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="C#" Value="public class ClassStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt, dylan.NET.Tokenizer.AST.Interfaces.IConstrainable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ClassStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt implements class dylan.NET.Tokenizer.AST.Interfaces.IConstrainable, class dylan.NET.Tokenizer.AST.Interfaces.IHasConstraints" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IConstrainable</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
@@ -40,8 +44,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddConstraint">
-      <MemberSignature Language="C#" Value="public void AddConstraint (string param, dylan.NET.Tokenizer.AST.Tokens.Token ctr);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void AddConstraint(string param, class dylan.NET.Tokenizer.AST.Tokens.Token ctr) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void AddConstraint (string param, dylan.NET.Tokenizer.AST.Tokens.Token ctr);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddConstraint(string param, class dylan.NET.Tokenizer.AST.Tokens.Token ctr) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -98,14 +102,28 @@
       </Docs>
     </Member>
     <Member MemberName="Constraints">
-      <MemberSignature Language="C#" Value="public C5.HashDictionary&lt;string,C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;&gt; Constraints;" />
-      <MemberSignature Language="ILAsm" Value=".field public class C5.HashDictionary`2&lt;string, class C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Token&gt;&gt; Constraints" />
-      <MemberType>Field</MemberType>
+      <MemberSignature Language="C#" Value="public virtual C5.HashDictionary&lt;string,C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;&gt; Constraints { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class C5.HashDictionary`2&lt;string, class C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Token&gt;&gt; Constraints" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>C5.HashDictionary&lt;System.String,C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasConstraints">
+      <MemberSignature Language="C#" Value="public virtual bool HasConstraints { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool HasConstraints" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -204,6 +204,23 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="LoadClasses">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt; LoadClasses (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class IKVM.Reflection.Type&gt; LoadClasses(string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="LoadConvOp">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo LoadConvOp (IKVM.Reflection.Type typ, string name, IKVM.Reflection.Type src, IKVM.Reflection.Type snk);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo LoadConvOp(class IKVM.Reflection.Type typ, string name, class IKVM.Reflection.Type src, class IKVM.Reflection.Type snk) cil managed" />

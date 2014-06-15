@@ -278,7 +278,7 @@ class public auto ansi StmtOptimizer
 				stm::Tokens = new ExprOptimizer()::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)::Tokens
 				typ = $TypeTok$stm::Tokens::get_Item(3)
 				i = 4
-				if !#expr(stm::Tokens::get_Item(i) is InTok) then
+				if stm::Tokens::get_Item(i) isnot InTok then
 					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an 'in' after 'as <type>' instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
 				end if
 			else 
@@ -318,7 +318,7 @@ class public auto ansi StmtOptimizer
 				stm::Tokens = new ExprOptimizer()::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)::Tokens
 				typ = $TypeTok$stm::Tokens::get_Item(3)
 				i = 4
-				if !#expr(stm::Tokens::get_Item(i) is AssignOp2) then
+				if stm::Tokens::get_Item(i) isnot AssignOp2 then
 					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an '=' after 'as <type>' instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
 				end if
 			else 
@@ -576,7 +576,7 @@ class public auto ansi StmtOptimizer
 			var i as integer = 0
 			var len as integer = --stm::Tokens::get_Count() 
 			
-			if stm::Tokens::get_Count() = 1 then
+			if stm::Tokens::get_Count() == 1 then
 				rets::RExp = null
 			elseif stm::Tokens::get_Count() >= 2 then
 				var exp as Expr = new Expr() {Line = stm::Line}
@@ -593,18 +593,23 @@ class public auto ansi StmtOptimizer
 	end method
 	
 	method private Stmt checkThrow(var stm as Stmt, var b as boolean&)
-		b = (stm::Tokens::get_Item(0) is ThrowTok) andalso (stm::Tokens::get_Count() >= 2)
+		b = stm::Tokens::get_Item(0) is ThrowTok
 		if b then
+			var rets as ThrowStmt = new ThrowStmt() {Line = stm::Line}
 			var i as integer = 0
 			var len as integer = --stm::Tokens::get_Count() 
-			var exp as Expr = new Expr() {Line = stm::Line}
 			
-			do until i = len
-				i++
-				exp::AddToken(stm::Tokens::get_Item(i))
-			end do
-	
-			return new ThrowStmt() {Line = stm::Line, RExp = new ExprOptimizer(PFlags)::Optimize(exp)}
+			if stm::Tokens::get_Count() == 1 then
+				rets::RExp = null
+			elseif stm::Tokens::get_Count() >= 2 then
+				var exp as Expr = new Expr() {Line = stm::Line}
+				do
+					i++
+					exp::AddToken(stm::Tokens::get_Item(i))
+				until i = len
+				rets::RExp = new ExprOptimizer(PFlags)::Optimize(exp)
+			end if
+			return rets
 		end if
 		return null
 	end method
@@ -998,7 +1003,7 @@ class public auto ansi StmtOptimizer
 	method public integer procWhere2(var stm as Stmt, var gmn as ClassStmt, var i as integer)
 		
 		if i < --stm::Tokens::get_Count() then
-			if !#expr(stm::Tokens::get_Item(i) is WhereTok) then
+			if stm::Tokens::get_Item(i) isnot WhereTok then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'where' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
 				return i
 			end if
@@ -1022,14 +1027,14 @@ class public auto ansi StmtOptimizer
 			i++
 			if !#expr(i < stm::Tokens::get_Count()) then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected 'as' instead of nothing!")
-			elseif !#expr(stm::Tokens::get_Item(i) is AsTok) then
+			elseif stm::Tokens::get_Item(i) isnot AsTok then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'as' instead of {0}!", stm::Tokens::get_Item(i)::Value))
 			end if
 
 			i++
 			if !#expr(i < stm::Tokens::get_Count()) then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected '{' instead of nothing!")
-			elseif !#expr(stm::Tokens::get_Item(i) is LCParen) then
+			elseif stm::Tokens::get_Item(i) isnot LCParen then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected '{' instead of {0}!", stm::Tokens::get_Item(i)::Value))
 			end if
 
@@ -1064,7 +1069,7 @@ class public auto ansi StmtOptimizer
 			i++
 			if !#expr(i < stm::Tokens::get_Count()) then
 				break
-			elseif !#expr(stm::Tokens::get_Item(i) is Comma) then
+			elseif stm::Tokens::get_Item(i) isnot Comma then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a ',' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
 			end if
 
@@ -1104,7 +1109,7 @@ class public auto ansi StmtOptimizer
 							if stm::Tokens::get_Item(i) is WhereTok then
 								i--
 								break
-							elseif !#expr(stm::Tokens::get_Item(i) is Comma) then
+							elseif stm::Tokens::get_Item(i) isnot Comma then
 								stm::Tokens = eopt::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 								clss::AddInterface($TypeTok$stm::Tokens::get_Item(i))
 							end if
@@ -1150,7 +1155,7 @@ class public auto ansi StmtOptimizer
 			
 			if i < --stm::Tokens::get_Count() then
 				i++
-				if !#expr(stm::Tokens::get_Item(i) is AssignOp2) then
+				if stm::Tokens::get_Item(i) isnot AssignOp2 then
 					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an '=' or nothing at all after the field name instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
 				end if
 				
@@ -1347,10 +1352,10 @@ class public auto ansi StmtOptimizer
 
 	method public void procWhere(var stm as Stmt, var mn as MethodNameTok, var i as integer)
 		
-		if !#expr(mn is GenericMethodNameTok) then
+		if mn isnot GenericMethodNameTok then
 			return
 		elseif i < --stm::Tokens::get_Count() then
-			if !#expr(stm::Tokens::get_Item(i) is WhereTok) then
+			if stm::Tokens::get_Item(i) isnot WhereTok then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'where' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
 				return
 			end if
@@ -1375,14 +1380,14 @@ class public auto ansi StmtOptimizer
 			i++
 			if !#expr(i < stm::Tokens::get_Count()) then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected 'as' instead of nothing!")
-			elseif !#expr(stm::Tokens::get_Item(i) is AsTok) then
+			elseif stm::Tokens::get_Item(i) isnot AsTok then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'as' instead of {0}!", stm::Tokens::get_Item(i)::Value))
 			end if
 
 			i++
 			if !#expr(i < stm::Tokens::get_Count()) then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected '{' instead of nothing!")
-			elseif !#expr(stm::Tokens::get_Item(i) is LCParen) then
+			elseif stm::Tokens::get_Item(i) isnot LCParen then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected '{' instead of {0}!", stm::Tokens::get_Item(i)::Value))
 			end if
 
@@ -1417,7 +1422,7 @@ class public auto ansi StmtOptimizer
 			i++
 			if !#expr(i < stm::Tokens::get_Count()) then
 				break
-			elseif !#expr(stm::Tokens::get_Item(i) is Comma) then
+			elseif stm::Tokens::get_Item(i) isnot Comma then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a ',' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
 			end if
 
@@ -1783,11 +1788,23 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkVarAs(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is VarTok
 		if b then
-			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)
-
-			if !#expr(tempexp::Tokens::get_Item(1) is Ident) then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", tempexp::Tokens::get_Item(1)::Value))
+			if stm::Tokens::get_Count() < 2 then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an identifier instead of nothing!")
 			end if
+
+			if stm::Tokens::get_Item(1) isnot Ident then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", stm::Tokens::get_Item(1)::Value))
+			end if
+
+			if stm::Tokens::get_Count() < 3 then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected 'as' instead of nothing!")
+			end if
+
+			if stm::Tokens::get_Item(2) isnot AsTok then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'as' instead of '{0}'!", stm::Tokens::get_Item(2)::Value))
+			end if
+
+			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)
 
 			return new VarStmt() {Line = stm::Line, VarName = $Ident$tempexp::Tokens::get_Item(1), VarTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
 		end if
@@ -1797,8 +1814,24 @@ class public auto ansi StmtOptimizer
 	method private Stmt checkCatch(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is CatchTok
 		if b then
-			var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)
-			return new CatchStmt() {Line = stm::Line, ExName = $Ident$tempexp::Tokens::get_Item(1), ExTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
+			if stm::Tokens::get_Count() < 2 then
+				return new CatchStmt() {Line = stm::Line, ExName = new Ident("ex"), ExTyp = new TypeTok("System.Exception")}
+			else
+				if stm::Tokens::get_Item(1) isnot Ident then
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", stm::Tokens::get_Item(1)::Value))
+				end if
+
+				if stm::Tokens::get_Count() < 3 then
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected 'as' instead of nothing!")
+				end if
+
+				if stm::Tokens::get_Item(2) isnot AsTok then
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'as' instead of '{0}'!", stm::Tokens::get_Item(2)::Value))
+				end if
+
+				var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)
+				return new CatchStmt() {Line = stm::Line, ExName = $Ident$tempexp::Tokens::get_Item(1), ExTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
+			end if
 		end if
 		return null
 	end method
@@ -1812,7 +1845,7 @@ class public auto ansi StmtOptimizer
 			if ((le::Tokens::get_Item(0) is VarTok) orelse (le::Tokens::get_Item(0) is UsingTok)) andalso (le::Tokens::get_Item(2) is AsTok) then
 				le::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = le::Tokens}, 3)::Tokens		
 
-				if !#expr(le::Tokens::get_Item(1) is Ident) then
+				if le::Tokens::get_Item(1) isnot Ident then
 					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", le::Tokens::get_Item(1)::Value))
 				end if
 
@@ -1824,7 +1857,7 @@ class public auto ansi StmtOptimizer
 		elseif le::Tokens::get_Count() >= 2 then
 			if (le::Tokens::get_Item(0) is VarTok) orelse (le::Tokens::get_Item(0) is UsingTok) then
 				
-				if !#expr(le::Tokens::get_Item(1) is Ident) then
+				if le::Tokens::get_Item(1) isnot Ident then
 					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", le::Tokens::get_Item(1)::Value))
 				end if
 
