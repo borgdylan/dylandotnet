@@ -1,0 +1,40 @@
+﻿// //    dnu.dll dylan.NET.Utils Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
+// //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
+// // Foundation; either version 3 of the License, or (at your option) any later version.
+// //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+// //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+// //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
+// //Place, Suite 330, Boston, MA 02111-1307 USA 
+namespace dylan.NET.Utils
+
+	class public auto ansi static MemoryFS
+		
+		field private static C5.HashDictionary<of string, Stream> fs
+
+		method private static void MemoryFS()
+			fs = new C5.HashDictionary<of string, Stream>()
+		end method
+
+		method public static void Clear()
+			fs::Clear()
+		end method
+
+		method public static void AddFile(var path as string, var s as Stream)
+			fs::Add(path, s)
+		end method
+
+		method public static boolean HasFile(var path as string)
+			return fs::Contains(path)
+		end method
+
+		method public static Stream GetFile(var path as string)
+			if fs::Contains(path) then
+				return fs::get_Item(path)
+			else
+				return null
+			end if
+		end method
+
+	end class
+	
+end namespace

@@ -1,32 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="template/template.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnc/Program.dyl">
     <Files>
-      <File FileName="tokenizer.AST/methodnametok.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/interfaces.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.Parser/stmtoptimizer.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/classstmt.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/helpers.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/eval.dyl" Line="1" Column="1" />
-      <File FileName="dnr/loader.dyl" Line="1" Column="1" />
-      <File FileName="dnu/Messages.designer.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/symtable.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/varitem.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/op.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/conditionalops.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/logicalops.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1149" Column="46" />
       <File FileName="tokenizer.Parser/tokenoptimizer.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/typelist.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/typeitem.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/codegenerator.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.Parser/parser.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.Parser/exproptimizer.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/tryitem.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/otherstmts.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/exceptionstmts.dyl" Line="1" Column="1" />
-      <File FileName="dnr/ilemitter.dyl" Line="1" Column="1" />
-      <File FileName="template/template.dyl" Line="541" Column="13" />
+      <File FileName="dnc/Program.dyl" Line="82" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

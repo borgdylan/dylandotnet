@@ -59,6 +59,7 @@
     <Compile Include="Messages.designer.dyl">
       <DependentUpon>Messages.dylres</DependentUpon>
     </Compile>
+    <Compile Include="MemoryFS.dyl" />
   </ItemGroup>
   <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>

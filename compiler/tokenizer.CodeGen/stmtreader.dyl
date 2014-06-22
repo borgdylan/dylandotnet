@@ -1144,15 +1144,29 @@ class public auto ansi StmtReader
 
 		if stm is RefasmStmt then
 			var rastm as RefasmStmt = $RefasmStmt$stm
-			rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::get_UnquotedValue())
+			rastm::AsmPath::Value = rastm::AsmPath::get_UnquotedValue()
+
+			if rastm::AsmPath::Value like "^memory:(.)*$" then
+				var pth = rastm::AsmPath::Value::Substring(7)
+
+				if !MemoryFS::HasFile(pth) then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "In-Memory Assembly File '" + pth + "' does not exist.")
+				end if
 			
-			if !File::Exists(rastm::AsmPath::Value) then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Assembly File '" + rastm::AsmPath::Value + "' does not exist.")
+				StreamUtils::Write("Referencing In-Memory Assembly: ")
+				StreamUtils::WriteLine(pth)
+				Importer::AddAsm(ILEmitter::Univ::LoadAssembly(ILEmitter::Univ::OpenRawModule(MemoryFS::GetFile(pth), $string$null)))
+			else
+				rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::Value)
+			
+				if !File::Exists(rastm::AsmPath::Value) then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Assembly File '" + rastm::AsmPath::Value + "' does not exist.")
+				end if
+			
+				StreamUtils::Write("Referencing Assembly: ")
+				StreamUtils::WriteLine(rastm::AsmPath::Value)
+				Importer::AddAsm(ILEmitter::Univ::LoadFile(rastm::AsmPath::Value))
 			end if
-			
-			StreamUtils::Write("Referencing Assembly: ")
-			StreamUtils::WriteLine(rastm::AsmPath::Value)
-			Importer::AddAsm(ILEmitter::Univ::LoadFile(rastm::AsmPath::Value))
 		elseif stm is RefstdasmStmt then
 			var rsastm as RefstdasmStmt = $RefstdasmStmt$stm
 			rsastm::AsmPath::Value = Path::Combine(Importer::AsmBasePath, ParseUtils::ProcessMSYSPath(rsastm::AsmPath::get_UnquotedValue()))

@@ -41,3 +41,5 @@ namespace dylan.NET.Utils
 	#include "streamu.dyl"
 	//#include "dnu/winapi.txt"
 end namespace
+
+#include "MemoryFS.dyl"
