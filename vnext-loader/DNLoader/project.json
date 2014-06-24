@@ -1,0 +1,14 @@
+﻿{	
+	"version": "1.0.0",
+    "dependencies": {
+        "Microsoft.Framework.Runtime": "1.0.0-*",
+        "dylan.NET" : "11.3.5.7"
+    },
+
+    "configurations" : {
+        "net45" : { 
+            "dependencies": {
+            }
+        }
+    }
+}
