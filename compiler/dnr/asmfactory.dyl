@@ -12,6 +12,7 @@ class public auto ansi static AsmFactory
 	field public static boolean InMethodFlg
 	field public static boolean InCtorFlg
 	field public static boolean ChainFlg
+	field public static boolean AutoChainFlg
 	field public static boolean RefChainFlg
 	field public static boolean PopFlg
 	field public static boolean ForcedAddrFlg
@@ -52,11 +53,13 @@ class public auto ansi static AsmFactory
 	//field public static string[] GenParamNames
 	//field public static IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
 	field public static boolean PCLSet
+	field public static boolean InMemorySet
 
 	[method: ComVisible(false)]
 	method public static void Init()
 		DebugFlg = false
 		ChainFlg = false
+		AutoChainFlg = true
 		RefChainFlg = false
 		PopFlg = false
 		AddrFlg = false
@@ -74,6 +77,7 @@ class public auto ansi static AsmFactory
 		inEnum = false
 		NSStack = new C5.LinkedList<of string>()
 		PCLSet = false
+		InMemorySet = false
 		StrongKey = null
 	end method
 

@@ -197,11 +197,21 @@ class public auto ansi CodeGenerator
 			StreamUtils::WriteLine("...Done.")
 
 			Helpers::ApplyAsmAttrs()
-			
-			StreamUtils::Write("Writing Assembly to Disk")
-			AsmFactory::AsmB::DefineVersionInfoResource()
-			AsmFactory::AsmB::Save(AsmFactory::AsmFile)
-			StreamUtils::WriteLine("...Done.")
+
+			if AsmFactory::InMemorySet then
+				var ms = new MemoryStream()
+				StreamUtils::Write("Writing Assembly to Memory")
+				AsmFactory::AsmB::DefineVersionInfoResource()
+				AsmFactory::AsmB::Save(ms)
+				ms::Seek(0l, SeekOrigin::Begin)
+				MemoryFS::AddFile(AsmFactory::AsmFile, ms)
+				StreamUtils::WriteLine("...Done.")
+			else
+				StreamUtils::Write("Writing Assembly to Disk")
+				AsmFactory::AsmB::DefineVersionInfoResource()
+				AsmFactory::AsmB::Save(AsmFactory::AsmFile)
+				StreamUtils::WriteLine("...Done.")
+			end if
 
 //			foreach t in SymTable::TypeLst::Types
 //				StreamUtils::WriteLine(t::ToString())

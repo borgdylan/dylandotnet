@@ -429,9 +429,13 @@ class public auto ansi beforefieldinit Evaluator
 		if idt::MemberAccessFlg then
 			AsmFactory::ChainFlg = true
 			AsmFactory::RefChainFlg = pushaddr
-			ASTEmit(idt::MemberToAccess, emt)
+			if AsmFactory::AutoChainFlg then
+				ASTEmit(idt::MemberToAccess, emt)
+			end if
 		end if
-		ASTEmitUnary(idt, emt)
+		if AsmFactory::AutoChainFlg then
+			ASTEmitUnary(idt, emt)
+		end if
 	end method
 	
 	method public void ASTEmitMethod(var mctok as MethodCallTok, var emt as boolean)
@@ -713,11 +717,15 @@ class public auto ansi beforefieldinit Evaluator
 			if mntok::MemberAccessFlg then
 				AsmFactory::ChainFlg = true
 				AsmFactory::RefChainFlg = pushaddr
-				ASTEmit(mntok::MemberToAccess, emt)
+				if AsmFactory::AutoChainFlg then
+					ASTEmit(mntok::MemberToAccess, emt)
+				end if
 			end if
 		end if
 
-		ASTEmitUnary(mntok, emt)
+		if AsmFactory::AutoChainFlg then
+			ASTEmitUnary(mntok, emt)
+		end if
 	end method
 
 	method public void ASTEmitNew(var nctok as NewCallTok, var emt as boolean)
@@ -957,7 +965,9 @@ class public auto ansi beforefieldinit Evaluator
 		if nctok::MemberAccessFlg and !nctok::PopFlg then
 			ASTEmitValueFilter(emt)
 			AsmFactory::ChainFlg = true
-			ASTEmit(nctok::MemberToAccess, emt)
+			if AsmFactory::AutoChainFlg then
+				ASTEmit(nctok::MemberToAccess, emt)
+			end if
 		end if
 	end method
 	
@@ -1260,7 +1270,9 @@ class public auto ansi beforefieldinit Evaluator
 				end if
 				if oictok::MemberAccessFlg then
 					AsmFactory::ChainFlg = true
-					ASTEmit(oictok::MemberToAccess, emt)
+					if AsmFactory::AutoChainFlg then
+						ASTEmit(oictok::MemberToAccess, emt)
+					end if
 				end if
 			elseif tok is TernaryCallTok then
 				var tcc as TernaryCallTok = $TernaryCallTok$tok
@@ -1299,10 +1311,13 @@ class public auto ansi beforefieldinit Evaluator
 				if ecc::MemberAccessFlg then
 					ASTEmitValueFilter(emt)
 					AsmFactory::ChainFlg = true
-					ASTEmit(ecc::MemberToAccess, emt)
+					if AsmFactory::AutoChainFlg then
+						ASTEmit(ecc::MemberToAccess, emt)
+					end if
 				end if
-				
-				ASTEmitUnary(ecc, emt)
+				if AsmFactory::AutoChainFlg then
+					ASTEmitUnary(ecc, emt)
+				end if
 			elseif tok is PtrCallTok then
 				//ptr load section - obsolete
 				//if emt then
@@ -1361,7 +1376,7 @@ class public auto ansi beforefieldinit Evaluator
 		//end if
 
 		//determination of byref storage mode or not
-		if (idtnamarr[l] == 1) and !idt::IsArr then
+		if (idtnamarr[l] == 1) andalso !idt::IsArr then
 			SymTable::StoreFlg = true
 			vr = SymTable::FindVar(idtnamarr[0])
 			SymTable::StoreFlg = false
@@ -1371,7 +1386,7 @@ class public auto ansi beforefieldinit Evaluator
 			end if
 		end if
 
-		if idt::IsArr or isbyref then
+		if idt::IsArr orelse isbyref then
 			restrord--
 			len++
 		end if
@@ -1421,7 +1436,7 @@ class public auto ansi beforefieldinit Evaluator
 					idttyp = Helpers::CommitEvalTTok(new TypeTok(idtnamarr[i]))
 					idtisstatic = true
 
-					if idttyp = null then
+					if idttyp == null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Variable or Class '{0}' is not defined.", idtnamarr[i]))
 					end if
 
@@ -1537,7 +1552,7 @@ class public auto ansi beforefieldinit Evaluator
 				if vr = null then
 					fldinf = Helpers::GetLocFld(idtnamarr[i])
 					if fldinf != null then
-						if fldinf::get_IsInitOnly() and !AsmFactory::InCtorFlg then
+						if fldinf::get_IsInitOnly() andalso !AsmFactory::InCtorFlg then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' is declared as readonly and may only be set from constructors.", idtnamarr[i]))
 						end if
 						if fldinf::get_IsLiteral() then
@@ -1545,7 +1560,7 @@ class public auto ansi beforefieldinit Evaluator
 						end if
 						idtisstatic = fldinf::get_IsStatic()
 						
-						if !idtisstatic and ILEmitter::StaticFlg then
+						if !idtisstatic andalso ILEmitter::StaticFlg then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' is an instance field and cannot be used from a static method without an instance being provided.", idtnamarr[i]))
 						end if
 						
@@ -1558,12 +1573,12 @@ class public auto ansi beforefieldinit Evaluator
 			else
 				if !idttyp::Equals(AsmFactory::CurnTypB) then
 					fldinf = Helpers::GetExtFld(idttyp, idtnamarr[i])
-					if fldinf = null then
+					if fldinf == null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i], idttyp::ToString()))
 					end if
 				else
 					fldinf = Helpers::GetLocFld(idtnamarr[i])
-					if fldinf = null then
+					if fldinf == null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i], AsmFactory::CurnTypB::ToString()))
 					end if
 				end if
@@ -1587,9 +1602,13 @@ class public auto ansi beforefieldinit Evaluator
 			elseif o is NeqOp then
 				return EvaluateHIf(o::LChild) != EvaluateHIf(o::RChild)
 			elseif o is OrOp then
-				return EvaluateHIf(o::LChild) or EvaluateHIf(o::RChild)
+				return EvaluateHIf(o::LChild) orelse EvaluateHIf(o::RChild)
 			elseif o is AndOp then
-				return EvaluateHIf(o::LChild) and EvaluateHIf(o::RChild)
+				return EvaluateHIf(o::LChild) andalso EvaluateHIf(o::RChild)
+			elseif o is OrElseOp then
+				return EvaluateHIf(o::LChild) orelse EvaluateHIf(o::RChild)
+			elseif o is AndAlsoOp then
+				return EvaluateHIf(o::LChild) andalso EvaluateHIf(o::RChild)
 			else
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The operator '{0}' is not supported when using #if and #elseif.", o::ToString()))
 			end if

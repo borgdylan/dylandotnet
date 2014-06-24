@@ -36,7 +36,7 @@
       <HintPath>..\lib\IKVM.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="C5">
-      <HintPath>..\lib\4.0\C5.dll</HintPath>
+      <HintPath>..\packages\C5.2.3.0.1\lib\net40\C5.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +53,7 @@
   <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
     <None Include="oldmethodstmtcode.txt" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dnu\dnu.dylproj">

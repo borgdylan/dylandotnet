@@ -854,6 +854,9 @@ class public auto ansi static Program
 
 		Console::WriteLine("a" is string)
 		Console::WriteLine("a" isnot string)
+
+		var xa = new ObjInit[] {new ObjInit()}
+		//xa[0]::A = 1
 	end method
 
 	method public static string LeaveMet(var x as integer)

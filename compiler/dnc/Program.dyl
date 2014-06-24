@@ -43,6 +43,8 @@ class public auto ansi static Program
 		StreamUtils::WriteLine("Copyright (C) 2014 Dylan Borg")
 
 		var lastsdk as string = null
+		var inm = false
+		var pcl = false
 
 		if args == null then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
@@ -56,8 +58,10 @@ class public auto ansi static Program
 						OutputVersion()
 					elseif args[i] == "-h" then
 						OutputHelp()
+					elseif args[i] == "-inmemory" then
+						inm = true
 					elseif args[i] == "-pcl" then
-						AsmFactory::PCLSet = true
+						pcl = true
 						//i++
 						//if i < args[l] then
 							//get pcl lookup durectory
@@ -84,6 +88,9 @@ class public auto ansi static Program
 						Importer::Init()
 						Loader::Init()
 						SymTable::Init()
+
+						AsmFactory::InMemorySet = inm
+						AsmFactory::PCLSet = pcl
 
 						if lastsdk != null then
 							Importer::AsmBasePath = Path::Combine(Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), ".."), lastsdk)

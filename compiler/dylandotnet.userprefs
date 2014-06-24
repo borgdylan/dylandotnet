@@ -2,9 +2,13 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.Workbench ActiveDocument="dnc/Program.dyl">
     <Files>
-      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1149" Column="46" />
+      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.Parser/tokenoptimizer.dyl" Line="1" Column="1" />
-      <File FileName="dnc/Program.dyl" Line="82" Column="7" />
+      <File FileName="dnc/Program.dyl" Line="93" Column="31" />
+      <File FileName="dnu/MemoryFS.dyl" Line="1" Column="1" />
+      <File FileName="template/template.dyl" Line="7" Column="17" />
+      <File FileName="dnr/asmfactory.dyl" Line="80" Column="8" />
+      <File FileName="tokenizer.CodeGen/codegenerator.dyl" Line="202" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
