@@ -72,7 +72,7 @@ namespace DNLoader
             _loaderEngine = loaderEngine;
         }
 		
-		private Stream CompileInMemory(string assemblyName, Project project, FrameworkName effectiveTargetFramework, ILibraryExport export) {
+		private Tuple<Stream, Stream> CompileInMemory(string assemblyName, Project project, FrameworkName effectiveTargetFramework, ILibraryExport export) {
 
 			using (StreamWriter sw = new StreamWriter(Path.Combine(project.ProjectDirectory, "msbuild.dyl"))) {
         	    foreach (var reference in export.MetadataReferences)
@@ -119,6 +119,8 @@ namespace DNLoader
 	            }
 				
 				sw.WriteLine();
+				sw.WriteLine("#debug on");
+				sw.WriteLine();
 				
 				sw.WriteLine("[assembly: System.Reflection.AssemblyTitle(\"" + assemblyName + "\")]");
 				sw.WriteLine("[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]");
@@ -144,7 +146,8 @@ namespace DNLoader
 			Loader.Init();
 			SymTable.Init();
 			
-			return asm;
+			//change the .dll.mdb to .pdb if you are on windows/.NET
+			return Tuple.Create<Stream, Stream>(asm, new FileStream(Path.Combine(project.ProjectDirectory, assemblyName + ".dll.mdb"), FileMode.Open));
 		}
 		
         public Assembly Load(string assemblyName)
@@ -159,7 +162,8 @@ namespace DNLoader
             FrameworkName effectiveTargetFramework;
             var export = projectExportProvider.GetProjectExport(_exportProvider, assemblyName, _environment.TargetFramework, out effectiveTargetFramework);
 			
-			var asm = _loaderEngine.LoadStream(CompileInMemory(assemblyName, project, effectiveTargetFramework, export), null);
+			var res = CompileInMemory(assemblyName, project, effectiveTargetFramework, export);
+			var asm = _loaderEngine.LoadStream(res.Item1, res.Item2);
 			        
             return asm;
         }
@@ -180,7 +184,7 @@ namespace DNLoader
             var sourceReferences = new List<ISourceReference>();
 
             // Project reference
-            metadataReferences.Add(new DNProjectReference(assemblyName, project.ProjectFilePath, CompileInMemory(assemblyName, project, effectiveTargetFramework, export)));
+            metadataReferences.Add(new DNProjectReference(assemblyName, project.ProjectFilePath, CompileInMemory(assemblyName, project, effectiveTargetFramework, export).Item1));
 
             // Other references
             metadataReferences.AddRange(export.MetadataReferences);
