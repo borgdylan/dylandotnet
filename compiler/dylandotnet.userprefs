@@ -4,7 +4,7 @@
     <Files>
       <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.Parser/tokenoptimizer.dyl" Line="1" Column="1" />
-      <File FileName="dnc/Program.dyl" Line="84" Column="49" />
+      <File FileName="dnc/Program.dyl" Line="56" Column="5" />
       <File FileName="dnu/MemoryFS.dyl" Line="1" Column="1" />
       <File FileName="template/template.dyl" Line="1" Column="1" />
       <File FileName="dnr/asmfactory.dyl" Line="1" Column="1" />

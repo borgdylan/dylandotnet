@@ -52,8 +52,9 @@ class public auto ansi static Program
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		else
 			try
+				StreamUtils::WriteLine(string::Empty)
+
 				for i = 0 upto --args[l]
-					StreamUtils::WriteLine(string::Empty)
 					if args[i] == "-V" then
 						OutputVersion()
 					elseif args[i] == "-h" then
