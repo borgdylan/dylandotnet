@@ -388,6 +388,8 @@ class public auto ansi TokenOptimizer
 			return new FamANDAssemAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "virtual" then
 			return new VirtualAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "override" then
+			return new OverrideAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "abstract" then
 			return new AbstractAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "prototype" then

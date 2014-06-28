@@ -56,16 +56,16 @@ namespace MonoDevelop.DylanNet
 
 		field private CodeGenerationPanelWidget widget
 
-		method public hidebysig virtual Widget CreatePanelWidget()
+		method public override Widget CreatePanelWidget()
 			widget = new  CodeGenerationPanelWidget ()
 			return widget
 		end method
 		
-		method public hidebysig virtual void LoadConfigData ()
+		method public override void LoadConfigData ()
 			widget::Load ($DotNetProjectConfiguration$get_CurrentConfiguration())
 		end method
 		
-		method public hidebysig virtual void ApplyChanges ()
+		method public override void ApplyChanges ()
 			widget::Store ()
 		end method
 	end class

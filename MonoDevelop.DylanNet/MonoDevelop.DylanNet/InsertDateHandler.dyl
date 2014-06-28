@@ -10,13 +10,13 @@ namespace MonoDevelop.DylanNet
 
 	class public auto ansi InsertDateHandler extends CommandHandler  
 
-        method family hidebysig virtual void Run()
+        method family override void Run()
         	var doc as Document = IdeApp::get_Workbench()::get_ActiveDocument()
     		var textEditorData = doc::GetContent<of ITextEditorDataProvider>()::GetTextEditorData()  
 		    textEditorData::InsertAtCaret(DateTime::get_Now()::ToString())  
         end method
          
-        method family hidebysig virtual void Update (var info as CommandInfo)
+        method family override void Update (var info as CommandInfo)
         	var doc as Document = IdeApp::get_Workbench()::get_ActiveDocument()  
   			if doc != null then
 	  			info::set_Enabled(doc::GetContent<of ITextEditorDataProvider>() != null)

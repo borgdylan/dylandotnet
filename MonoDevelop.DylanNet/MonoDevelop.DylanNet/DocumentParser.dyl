@@ -239,7 +239,7 @@ namespace MonoDevelop.DylanNet
 			aue::get_BaseTypes()::Add(KnownTypeReference::MulticastDelegate)
 		end method
 
-		method public hidebysig virtual ParsedDocument Parse (var storeAst as boolean, var fileName as string, var content as TextReader, var project as Project)
+		method public override ParsedDocument Parse (var storeAst as boolean, var fileName as string, var content as TextReader, var project as Project)
 			
 			if onstart != null then
 				onstart::Invoke(fileName)
@@ -655,7 +655,7 @@ namespace MonoDevelop.DylanNet
 			return doc
 		end method
 
-		method public hidebysig virtual newslot ParsedDocument Parse (var fileName as string, var content as string)
+		method public override newslot ParsedDocument Parse (var fileName as string, var content as string)
 			return Parse(false, fileName, new StringReader(content), $Project$null)
 		end method
 

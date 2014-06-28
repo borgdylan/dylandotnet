@@ -37,38 +37,38 @@ class public auto ansi beforefieldinit sealed SC
 end class
 
 class public auto ansi abstract interface IHello
-	method public hidebysig virtual abstract newslot void Hello()
+	method public override abstract newslot void Hello()
 	
-	property public hidebysig virtual abstract newslot autogen integer MyInt
-	property public initonly hidebysig virtual abstract newslot autogen integer MyInt2
+	property public override abstract newslot autogen integer MyInt
+	property public initonly override abstract newslot autogen integer MyInt2
 end class
 
 class public auto ansi abstract interface IHello2
-	method public hidebysig virtual abstract newslot void Hello2()
+	method public override abstract newslot void Hello2()
 end class
 
 class public auto ansi abstract interface IHello3
-	method public hidebysig virtual abstract newslot void Hello()
+	method public override abstract newslot void Hello()
 end class
 
 class public auto ansi abstract interface HelloInterf
-	method public hidebysig virtual abstract newslot void Hello()
+	method public override abstract newslot void Hello()
 end class
 
 class public auto ansi HelloClass implements IHello, IHello2, IHello3
 	
-	property public hidebysig virtual final newslot autogen integer MyInt
-	property public initonly hidebysig virtual final newslot autogen integer MyInt2
+	property public override final newslot autogen integer MyInt
+	property public initonly override final newslot autogen integer MyInt2
 	
-	method public hidebysig virtual final newslot void IHello.Hello()
+	method public override final newslot void IHello.Hello()
 		Console::WriteLine("I Implement Hello")
 	end method
 
-	method public hidebysig virtual final newslot void IHello3.Hello()
+	method public override final newslot void IHello3.Hello()
 		Console::WriteLine("I Implement Hello3")
 	end method
 
-	method public hidebysig virtual final newslot void Hello2()
+	method public override final newslot void Hello2()
 		Console::WriteLine("I Implement Hello2")
 	end method
 
@@ -124,7 +124,7 @@ class public auto ansi BaseTest
 		Console::WriteLine(ToString())
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "Test " + mybase::ToString()
 	end method
 	
@@ -173,7 +173,7 @@ class public auto ansi OTTEnumerator implements IEnumerator<of integer>, IEnumer
 		_Current = 0
 	end method
 	
-	method public hidebysig virtual newslot final boolean MoveNext()
+	method public override newslot final boolean MoveNext()
 		if _Current < 10 then
 			_Current++
 			return true
@@ -182,20 +182,20 @@ class public auto ansi OTTEnumerator implements IEnumerator<of integer>, IEnumer
 		end if
 	end method
 	
-	method public hidebysig virtual newslot final void Reset()
+	method public override newslot final void Reset()
 		_Current = 0
 	end method
 	
-	method public hidebysig virtual newslot final void Dispose()
+	method public override newslot final void Dispose()
 	end method
 	
-	property public hidebysig virtual newslot final integer Current
+	property public override newslot final integer Current
 		get
 			return _Current
 		end get
 	end property
 	
-	property public hidebysig virtual newslot final object IEnumerator.Current
+	property public override newslot final object IEnumerator.Current
 		get
 			return $object$_Current
 		end get
@@ -206,11 +206,11 @@ end class
 //[class: Obsolete("This class is only fakely obsolete")]
 class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
 
-	method public hidebysig virtual newslot final IEnumerator<of integer> GetEnumerator()
+	method public override newslot final IEnumerator<of integer> GetEnumerator()
 		return new OTTEnumerator()
 	end method
 
-	method public hidebysig virtual newslot final IEnumerator IEnumerable.GetEnumerator()
+	method public override newslot final IEnumerator IEnumerable.GetEnumerator()
 		return new OTTEnumerator()
 	end method
 	

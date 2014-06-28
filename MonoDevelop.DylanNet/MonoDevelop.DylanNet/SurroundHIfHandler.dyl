@@ -10,7 +10,7 @@ namespace MonoDevelop.DylanNet
 
 	class public auto ansi SurroundHIfHandler extends CommandHandler
 
-		method family hidebysig virtual void Run()
+		method family override void Run()
 			var doc as Document = IdeApp::get_Workbench()::get_ActiveDocument()
     		var textEditorData = doc::GetContent<of ITextEditorDataProvider>()::GetTextEditorData()  
 		    var caret = textEditorData::get_Caret()
@@ -22,7 +22,7 @@ namespace MonoDevelop.DylanNet
 			end if
 		end method
 
-		method family hidebysig virtual void Update (var info as CommandInfo)
+		method family override void Update (var info as CommandInfo)
 	  		info::set_Enabled(DesktopService::GetMimeTypeForUri($string$IdeApp::get_Workbench()::get_ActiveDocument()::get_FileName()) == "text/x-dylandotnet")
 	  	end method
 

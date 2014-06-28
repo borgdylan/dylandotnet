@@ -40,7 +40,7 @@ namespace MonoDevelop.DylanNet
 			debugsyms = false
 		end method
 
-		method public hidebysig virtual boolean HasDefineSymbol(var symbol as string)
+		method public override boolean HasDefineSymbol(var symbol as string)
 			var symbols = definesymbols::Split (new char[] { ';' })
 			foreach sym in symbols
 				if sym == symbol then
@@ -51,13 +51,13 @@ namespace MonoDevelop.DylanNet
 			return false
 		end method
 
-		method public hidebysig virtual void RemoveDefineSymbol (var symbol as string)
+		method public override void RemoveDefineSymbol (var symbol as string)
 			var symbols = new List<of string> (definesymbols::Split (new char[] { ';' }, StringSplitOptions::RemoveEmptyEntries))
 			symbols::Remove (symbol)
 			definesymbols = #ternary { symbols::get_Count() > 0 ? string::Join (";", symbols), string::Empty}
 		end method
 		
-		method public hidebysig virtual void AddDefineSymbol (var symbol as string)
+		method public override void AddDefineSymbol (var symbol as string)
 			var symbols = new List<of string> (definesymbols::Split(new char[] { ';' }, StringSplitOptions::RemoveEmptyEntries))
 			symbols::Add (symbol)
 			definesymbols = string::Join (";", symbols)

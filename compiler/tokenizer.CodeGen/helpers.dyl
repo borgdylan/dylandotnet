@@ -177,6 +177,8 @@ class public auto ansi static Helpers
 				ILEmitter::StaticFlg = true
 			elseif attr is Attributes.SpecialNameAttr then
 				temp = MethodAttributes::SpecialName
+			elseif attr is Attributes.OverrideAttr then
+				temp = MethodAttributes::Virtual or MethodAttributes::HideBySig
 			elseif attr is Attributes.VirtualAttr then
 				temp = MethodAttributes::Virtual
 			elseif attr is Attributes.HideBySigAttr then

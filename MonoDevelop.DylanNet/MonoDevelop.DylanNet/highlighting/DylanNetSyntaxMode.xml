@@ -142,6 +142,7 @@
 		<Word>literal</Word>
 		<Word>sealed</Word>
 		<Word>hidebysig</Word>
+		<Word>override</Word>
 		<Word>virtual</Word>
 		<Word>partial</Word>
 		<Word>initonly</Word>

@@ -10,13 +10,13 @@ namespace MonoDevelop.DylanNet
 
 	class public auto ansi InsertNextHandler extends CommandHandler  
  
-        method family hidebysig virtual void Run()
+        method family override void Run()
         	var doc as Document = IdeApp::get_Workbench()::get_ActiveDocument()
     		var textEditorData = doc::GetContent<of ITextEditorDataProvider>()::GetTextEditorData()  
 		    textEditorData::InsertAtCaret($string$#expr(++$integer$textEditorData::get_SelectedText()))  
         end method
 
-        method family hidebysig virtual void Update (var info as CommandInfo)
+        method family override void Update (var info as CommandInfo)
         	var doc as Document = IdeApp::get_Workbench()::get_ActiveDocument()  
   			if doc != null then
   				var textEditor = doc::GetContent<of ITextEditorDataProvider>()

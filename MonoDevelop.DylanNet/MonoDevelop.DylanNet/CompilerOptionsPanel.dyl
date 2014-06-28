@@ -46,7 +46,7 @@ namespace MonoDevelop.DylanNet
 
 		end method
 		
-		method public hidebysig virtual void OnDestroyed ()
+		method public override void OnDestroyed ()
 			mybase::OnDestroyed ()
 		end method
 
@@ -65,16 +65,16 @@ namespace MonoDevelop.DylanNet
 
 		field public CompilerOptionsPanelWidget widget
 		
-		method public hidebysig virtual Widget CreatePanelWidget ()
+		method public override Widget CreatePanelWidget ()
 			widget = new CompilerOptionsPanelWidget ($DotNetProject$ get_ConfiguredProject())
 			return widget
 		end method
 		
-		method public hidebysig virtual boolean ValidateChanges ()
+		method public override boolean ValidateChanges ()
 			return widget::ValidateChanges ()
 		end method
 		
-		method public hidebysig virtual void ApplyChanges ()
+		method public override void ApplyChanges ()
 			var dlg as MultiConfigItemOptionsDialog = $MultiConfigItemOptionsDialog$get_ParentDialog()
 			widget::Store (dlg::get_Configurations())
 		end method

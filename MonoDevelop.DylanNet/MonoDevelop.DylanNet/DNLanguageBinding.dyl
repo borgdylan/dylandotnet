@@ -10,61 +10,61 @@ namespace MonoDevelop.DylanNet
 
 	class public auto ansi DNLanguageBinding implements ILanguageBinding, IDotNetLanguageBinding
 
-		property public hidebysig virtual newslot string BlockCommentEndTag
+		property public override newslot string BlockCommentEndTag
 			get
 				return null
 			end get
 		end property
 		
-		property public hidebysig virtual newslot string BlockCommentStartTag
+		property public override newslot string BlockCommentStartTag
 			get
 				return null
 			end get
 		end property
 	
-		property public hidebysig virtual newslot string Language
+		property public override newslot string Language
 			get
 				return "dylan.NET"
 			end get
 		end property
 		
-		property public hidebysig virtual newslot string SingleLineCommentTag
+		property public override newslot string SingleLineCommentTag
 			get
 				return "//"
 			end get
 		end property
 		
-		property public hidebysig virtual newslot string ProjectStockIcon
+		property public override newslot string ProjectStockIcon
 			get
 				return "md-csharp-project"
 			end get
 		end property
 		
-		method public hidebysig virtual newslot FilePath GetFileName(var fileNameWithoutExtension as FilePath)
+		method public override newslot FilePath GetFileName(var fileNameWithoutExtension as FilePath)
 			return $FilePath$#expr($string$fileNameWithoutExtension + ".dyl")
 		end method
 		
-		method public hidebysig virtual newslot boolean IsSourceCodeFile(var fileName as FilePath)
+		method public override newslot boolean IsSourceCodeFile(var fileName as FilePath)
 			return fileName::get_Extension() == ".dyl"
 		end method
 		
-		method public hidebysig virtual newslot BuildResult Compile(var items as ProjectItemCollection, var configuration as DotNetProjectConfiguration, var configSelector as ConfigurationSelector, var monitor as IProgressMonitor)
+		method public override newslot BuildResult Compile(var items as ProjectItemCollection, var configuration as DotNetProjectConfiguration, var configSelector as ConfigurationSelector, var monitor as IProgressMonitor)
 			return null
 		end method
 
-		method public hidebysig virtual newslot ConfigurationParameters CreateCompilationParameters(var projectOptions as XmlElement)
+		method public override newslot ConfigurationParameters CreateCompilationParameters(var projectOptions as XmlElement)
 			return new DNConfigurationParameters()
 		end method
 
-		method public hidebysig virtual newslot ProjectParameters CreateProjectParameters(var projectOptions as XmlElement)
+		method public override newslot ProjectParameters CreateProjectParameters(var projectOptions as XmlElement)
 			return new DNProjectParameters()
 		end method
 
-		method public hidebysig virtual newslot CodeDomProvider GetCodeDomProvider()
+		method public override newslot CodeDomProvider GetCodeDomProvider()
 			return null
 		end method
 
-		method public hidebysig virtual newslot ClrVersion[] GetSupportedClrVersions()
+		method public override newslot ClrVersion[] GetSupportedClrVersions()
 			return new ClrVersion[] {ClrVersion::Net_2_0, ClrVersion::Clr_2_1, ClrVersion::Net_4_0, ClrVersion::Net_4_5}
 		end method
 	end class

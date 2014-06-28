@@ -205,3 +205,10 @@ class public auto ansi AutoGenAttr extends Attributes.Attribute
 		return "autogen"
 	end method
 end class
+
+// override
+class public auto ansi OverrideAttr extends Attributes.Attribute
+	method public hidebysig virtual string ToString()
+		return "hidebysig"
+	end method
+end class
