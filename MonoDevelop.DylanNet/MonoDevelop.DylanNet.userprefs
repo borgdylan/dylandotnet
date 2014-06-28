@@ -1,28 +1,29 @@
 ﻿<Properties>
   <AuthorInfo Name="Dylan Borg" Email="" Copyright="Copyright (C) 2013 Dylan Borg" Company="" Trademark="" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.DylanNet/DateInserterCommands.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.DylanNet/DocumentParser.dyl">
     <Files>
       <File FileName="MonoDevelop.DylanNet/MonoDevelop.DylanNet.dyl" Line="1" Column="1" />
       <File FileName="MonoDevelop.DylanNet/MonoDevelop.DylanNet.addin.xml" Line="1" Column="1" />
       <File FileName="MonoDevelop.DylanNet/SurroundHIfHElseHandler.dyl" Line="1" Column="1" />
       <File FileName="MonoDevelop.DylanNet/SurroundForeachHandler.dyl" Line="1" Column="1" />
-      <File FileName="MonoDevelop.DylanNet/DateInserterCommands.dyl" Line="18" Column="31" />
-      <File FileName="MonoDevelop.DylanNet/InsertNextHandler.dyl" Line="18" Column="9" />
-      <File FileName="MonoDevelop.DylanNet/PathedDocumentExtension.dyl" Line="14" Column="2" />
-      <File FileName="MonoDevelop.DylanNet/SurroundDo_UntilHandler.dyl" Line="9" Column="31" />
-      <File FileName="MonoDevelop.DylanNet/SurroundDo_WhileHandler.dyl" Line="10" Column="1" />
-      <File FileName="MonoDevelop.DylanNet/SurroundDoUntilHandler.dyl" Line="14" Column="71" />
-      <File FileName="MonoDevelop.DylanNet/SurroundDoWhileHandler.dyl" Line="12" Column="2" />
-      <File FileName="MonoDevelop.DylanNet/SurroundForHandler.dyl" Line="12" Column="2" />
-      <File FileName="MonoDevelop.DylanNet/SurroundHIfHandler.dyl" Line="10" Column="1" />
-      <File FileName="MonoDevelop.DylanNet/SurroundIfElseHandler.dyl" Line="15" Column="94" />
-      <File FileName="MonoDevelop.DylanNet/SurroundIfHandler.dyl" Line="14" Column="71" />
-      <File FileName="MonoDevelop.DylanNet/SurroundLockHandler.dyl" Line="17" Column="73" />
-      <File FileName="MonoDevelop.DylanNet/SurroundTryCatchFinallyHandler.dyl" Line="11" Column="78" />
-      <File FileName="MonoDevelop.DylanNet/SurroundTryCatchHandler.dyl" Line="20" Column="114" />
-      <File FileName="MonoDevelop.DylanNet/SurroundTryFinallyHandler.dyl" Line="13" Column="36" />
+      <File FileName="MonoDevelop.DylanNet/DateInserterCommands.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/InsertNextHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/PathedDocumentExtension.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundDo_UntilHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundDo_WhileHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundDoUntilHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundDoWhileHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundForHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundHIfHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundIfElseHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundIfHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundLockHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundTryCatchFinallyHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundTryCatchHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundTryFinallyHandler.dyl" Line="1" Column="1" />
       <File FileName="MonoDevelop.DylanNet/SurroundUsingHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/DocumentParser.dyl" Line="194" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

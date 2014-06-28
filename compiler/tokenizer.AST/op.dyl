@@ -29,7 +29,7 @@ class public auto ansi AssignOp extends Op
 		PrecNo = 1
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "="
 	end method
 
@@ -43,7 +43,7 @@ class public auto ansi AssignOp2 extends Op
 		PrecNo = 1
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "="
 	end method
 
@@ -57,7 +57,7 @@ class public auto ansi AsOp extends Op
 		PrecNo = 8
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "as"
 	end method
 
@@ -71,7 +71,7 @@ class public auto ansi CoalesceOp extends Op
 		PrecNo = 8
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "??"
 	end method
 

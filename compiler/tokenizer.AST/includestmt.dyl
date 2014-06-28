@@ -19,7 +19,7 @@ class public auto ansi IncludeStmt extends Stmt
 		HasError = false
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		var temp as string = Path::Value
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"

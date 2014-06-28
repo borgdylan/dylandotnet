@@ -7,7 +7,7 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public auto ansi TryStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "try"
 	end method
 end class
@@ -23,14 +23,14 @@ class public auto ansi CatchStmt extends Stmt
 		ExTyp = new TypeTok()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "catch " + ExName::Value + " as " + ExTyp::ToString()
 	end method
 
 end class
 
 class public auto ansi FinallyStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "finally"
 	end method
 end class
@@ -47,7 +47,7 @@ class public auto ansi ThrowStmt extends Stmt
 end class
 
 class public auto ansi EndTryStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end try"
 	end method
 end class

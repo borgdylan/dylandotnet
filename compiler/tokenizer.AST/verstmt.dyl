@@ -15,7 +15,7 @@ class public auto ansi VerStmt extends Stmt
 		VersionNos = new IntLiteral[] {new IntLiteral(0), new IntLiteral(0), new IntLiteral(0), new IntLiteral(0)}
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		var sw as StringWriter = new StringWriter()
 		for i = 0 upto 3
 			sw::Write(VersionNos[i]::ToStringNoI())

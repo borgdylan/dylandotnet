@@ -54,19 +54,19 @@ class public auto ansi PropertyGetStmt extends Stmt
 end class
 
 class public auto ansi EndPropStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end property"
 	end method
 end class
 
 class public auto ansi EndSetStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end set"
 	end method
 end class
 
 class public auto ansi EndGetStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end get"
 	end method
 end class

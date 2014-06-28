@@ -91,8 +91,10 @@ class public auto ansi static Helpers
 				ILEmitter::AbstractCFlg = true
 				absf = true
 			elseif attr is Attributes.InterfaceAttr then
-				temp = TypeAttributes::Interface
+				temp = TypeAttributes::Interface or TypeAttributes::Abstract
 				ILEmitter::InterfaceFlg = true
+				ILEmitter::AbstractCFlg = true
+				absf = true
 			elseif attr is Attributes.StaticAttr then
 				temp = TypeAttributes::Abstract or TypeAttributes::BeforeFieldInit or TypeAttributes::Sealed
 				ILEmitter::StaticCFlg = true

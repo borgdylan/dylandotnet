@@ -100,7 +100,7 @@ namespace dylan.NET.Tokenizer.AST
 		#include "debugstmt.dyl"
 		#include "scopestmt.dyl"
 		#include "refasmstmt.dyl"
-		#include "newresstmt.dyl"
+		//#include "newresstmt.dyl"
 		#include "importstmts.dyl"
 		#include "asmstmt.dyl"
 		#include "verstmt.dyl"

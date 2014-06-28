@@ -221,7 +221,12 @@ namespace DNLoader
 				comp = compilations[assemblyName];
 			}
 			else {
-				comp = new DNCompilation(assemblyName, project, export.MetadataReferences, effectiveTargetFramework);
+				try {
+					comp = new DNCompilation(assemblyName, project, export.MetadataReferences, effectiveTargetFramework);
+				}
+				catch (ErrorException e) {
+					comp = null;
+				}
 				compilations.Add(assemblyName, comp);
 			}
 			
@@ -247,7 +252,12 @@ namespace DNLoader
 				comp = compilations[assemblyName];
 			}
 			else {
-				comp = new DNCompilation(assemblyName, project, export.MetadataReferences, effectiveTargetFramework);
+				try {
+					comp = new DNCompilation(assemblyName, project, export.MetadataReferences, effectiveTargetFramework);
+				}
+				catch (ErrorException e) {
+					comp = null;
+				}
 				compilations.Add(assemblyName, comp);
 			}
 

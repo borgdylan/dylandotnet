@@ -32,20 +32,20 @@ class public auto ansi ClassStmt extends Stmt implements IHasConstraints, IConst
 		ImplInterfaces::Add(interftoadd)
 	end method
 
-	method public hidebysig virtual newslot void AddConstraint(var param as string, var ctr as Token)
+	method public override newslot void AddConstraint(var param as string, var ctr as Token)
 		if !_Constraints::Contains(param) then
 			_Constraints::Add(param, new C5.LinkedList<of Token>())
 		end if
 		_Constraints::get_Item(param)::Add(ctr)
 	end method
 
-	property public hidebysig virtual newslot boolean HasConstraints
+	property public override newslot boolean HasConstraints
 		get
 			return ClassName is GenericTypeTok
 		end get
 	end property
 
-	property public hidebysig virtual newslot C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
+	property public override newslot C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
 		get
 			return _Constraints
 		end get
@@ -53,7 +53,7 @@ class public auto ansi ClassStmt extends Stmt implements IHasConstraints, IConst
 end class
 
 class public auto ansi EndClassStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end class"
 	end method
 end class

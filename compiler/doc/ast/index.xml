@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.3.5.1">
+    <Assembly Name="tokenizer.AST" Version="11.3.6.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyCompany("")</AttributeName>
@@ -118,7 +118,6 @@
       <Type Name="MethodAttrStmt" Kind="Class" />
       <Type Name="MethodCallStmt" Kind="Class" />
       <Type Name="MethodStmt" Kind="Class" />
-      <Type Name="NewresStmt" Kind="Class" />
       <Type Name="NSStmt" Kind="Class" />
       <Type Name="ParameterAttrStmt" Kind="Class" />
       <Type Name="PlaceStmt" Kind="Class" />
@@ -276,6 +275,7 @@
       <Type Name="LiteralAttr" Kind="Class" />
       <Type Name="NewSlotAttr" Kind="Class" />
       <Type Name="NoneAttr" Kind="Class" />
+      <Type Name="OverrideAttr" Kind="Class" />
       <Type Name="PartialAttr" Kind="Class" />
       <Type Name="PinvokeImplAttr" Kind="Class" />
       <Type Name="PrivateAttr" Kind="Class" />

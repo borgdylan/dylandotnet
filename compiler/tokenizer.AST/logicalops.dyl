@@ -16,7 +16,7 @@ class public auto ansi AndOp extends LogicalOp
 		PrecNo = 7
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "and"
 	end method
 
@@ -29,7 +29,7 @@ class public auto ansi OrOp extends LogicalOp
 		PrecNo = 5
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "or"
 	end method
 
@@ -42,7 +42,7 @@ class public auto ansi AndAlsoOp extends LogicalOp
 		PrecNo = 4
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "andalso"
 	end method
 
@@ -55,7 +55,7 @@ class public auto ansi OrElseOp extends LogicalOp
 		PrecNo = 3
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "orelse"
 	end method
 
@@ -68,7 +68,7 @@ class public auto ansi NandOp extends LogicalOp
 		PrecNo = 7
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "nand"
 	end method
 
@@ -81,7 +81,7 @@ class public auto ansi NorOp extends LogicalOp
 		PrecNo = 5
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "nor"
 	end method
 
@@ -94,7 +94,7 @@ class public auto ansi XorOp extends LogicalOp
 		PrecNo = 6
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "xor"
 	end method
 
@@ -107,7 +107,7 @@ class public auto ansi XnorOp extends LogicalOp
 		PrecNo = 6
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "xnor"
 	end method
 
@@ -120,7 +120,7 @@ class public auto ansi NotOp extends LogicalOp
 		PrecNo = 13
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "~"
 	end method
 
@@ -133,7 +133,7 @@ class public auto ansi NegOp extends LogicalOp
 		PrecNo = 13
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "!"
 	end method
 

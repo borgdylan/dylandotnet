@@ -15,7 +15,7 @@ class public auto ansi NSStmt extends Stmt
 		NS = new Token()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		var temp as string = NS::Value
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"
@@ -26,7 +26,7 @@ class public auto ansi NSStmt extends Stmt
 end class
 
 class public auto ansi EndNSStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end namespace"
 	end method
 end class

@@ -18,7 +18,7 @@ class public auto ansi EqOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "=="
 	end method
 
@@ -32,7 +32,7 @@ class public auto ansi StrictEqOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "==="
 	end method
 
@@ -46,7 +46,7 @@ class public auto ansi IsOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "is"
 	end method
 
@@ -60,7 +60,7 @@ class public auto ansi IsNotOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "isnot"
 	end method
 
@@ -74,7 +74,7 @@ class public auto ansi LikeOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "like"
 	end method
 
@@ -90,7 +90,7 @@ class public auto ansi NeqOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "!="
 	end method
 
@@ -104,7 +104,7 @@ class public auto ansi StrictNeqOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "!=="
 	end method
 
@@ -118,7 +118,7 @@ class public auto ansi NLikeOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "notlike"
 	end method
 
@@ -133,7 +133,7 @@ class public auto ansi GtOp extends ConditionalOp
 		PrecNo = 9
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return ">"
 	end method
 
@@ -147,7 +147,7 @@ class public auto ansi LtOp extends ConditionalOp
 		PrecNo = 9
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "<"
 	end method
 
@@ -161,7 +161,7 @@ class public auto ansi GeOp extends ConditionalOp
 		PrecNo = 9
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return ">="
 	end method
 
@@ -175,7 +175,7 @@ class public auto ansi LeOp extends ConditionalOp
 		PrecNo = 9
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "<="
 	end method
 

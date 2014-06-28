@@ -26,7 +26,7 @@ class public auto ansi EnumStmt extends Stmt
 end class
 
 class public auto ansi EndEnumStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end enum"
 	end method
 end class

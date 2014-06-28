@@ -19,7 +19,7 @@ class public auto ansi AssemblyStmt extends Stmt
 		AsmName = new Ident()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "assembly " + AsmName::Value + " " + Mode::ToString()
 	end method
 

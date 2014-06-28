@@ -6,38 +6,38 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi abstract interface IUnaryOperatable
-	property public hidebysig virtual abstract newslot autogen string OrdOp
+class public auto ansi interface IUnaryOperatable
+	property public autogen string OrdOp
 end class
 
-class public auto ansi abstract interface IConvable implements IUnaryOperatable
-	property public hidebysig virtual abstract newslot autogen boolean Conv
-	property public hidebysig virtual abstract newslot autogen TypeTok TTok
+class public auto ansi interface IConvable implements IUnaryOperatable
+	property public autogen boolean Conv
+	property public autogen TypeTok TTok
 end class
 
-class public auto ansi abstract interface INegatable implements IUnaryOperatable
-	property public hidebysig virtual abstract newslot autogen boolean DoNeg
+class public auto ansi interface INegatable implements IUnaryOperatable
+	property public autogen boolean DoNeg
 end class
 
-class public auto ansi abstract interface INotable implements IUnaryOperatable
-	property public hidebysig virtual abstract newslot autogen boolean DoNot
+class public auto ansi interface INotable implements IUnaryOperatable
+	property public autogen boolean DoNot
 end class
 
-class public auto ansi abstract interface IIncDecable implements IUnaryOperatable
-	property public hidebysig virtual abstract newslot autogen boolean DoInc
-	property public hidebysig virtual abstract newslot autogen boolean DoDec
+class public auto ansi interface IIncDecable implements IUnaryOperatable
+	property public autogen boolean DoInc
+	property public autogen boolean DoDec
 end class
 
-class public auto ansi abstract interface IHasConstraints
-	property public hidebysig virtual newslot abstract boolean HasConstraints
+class public auto ansi interface IHasConstraints
+	property public boolean HasConstraints
 		get
 	end property
 end class
 
-class public auto ansi abstract interface IConstrainable implements IHasConstraints
-	property public hidebysig virtual newslot abstract C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
+class public auto ansi interface IConstrainable implements IHasConstraints
+	property public C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
 		get
 	end property
 
-	method public hidebysig virtual abstract newslot void AddConstraint(var param as string, var ctr as Token)
+	method public void AddConstraint(var param as string, var ctr as Token)
 end class

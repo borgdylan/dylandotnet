@@ -189,6 +189,9 @@ namespace MonoDevelop.DylanNet
 					b2[0] = true
 				elseif a is HideBySigAttr then
 					b2[1] = true
+				elseif a is OverrideAttr then
+					b2[0] = true
+					b2[1] = true
 				elseif a is StaticAttr then
 					aue::set_IsStatic(true)
 				end if

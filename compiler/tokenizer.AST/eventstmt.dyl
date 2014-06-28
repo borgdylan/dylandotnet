@@ -48,19 +48,19 @@ class public auto ansi EventRemoveStmt extends Stmt
 end class
 
 class public auto ansi EndEventStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end event"
 	end method
 end class
 
 class public auto ansi EndAddStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end add"
 	end method
 end class
 
 class public auto ansi EndRemoveStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end remove"
 	end method
 end class

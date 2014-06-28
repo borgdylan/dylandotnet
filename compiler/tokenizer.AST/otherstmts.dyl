@@ -64,7 +64,7 @@ class public auto ansi MethodCallStmt extends Stmt
 end class
 
 class public auto ansi EndLockStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end lock"
 	end method
 end class
@@ -81,7 +81,7 @@ class public auto ansi ErrorStmt extends Stmt
 		Msg = new Token()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		var temp as string = Msg::Value
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"
@@ -100,7 +100,7 @@ class public auto ansi WarningStmt extends Stmt
 		Msg = new Token()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		var temp as string = Msg::Value
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"
@@ -119,7 +119,7 @@ class public auto ansi SignStmt extends Stmt
 		KeyPath = new Token()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		var temp as string = KeyPath::Value
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"
@@ -140,7 +140,7 @@ class public auto ansi EmbedStmt extends Stmt
 		LogicalName = new Token()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		var temp as string = Path::Value
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"

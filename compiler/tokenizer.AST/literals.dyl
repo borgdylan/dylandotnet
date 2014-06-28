@@ -25,9 +25,9 @@ class public auto ansi abstract Literal extends ValueToken implements IUnaryOper
 		ctor(string::Empty)
 	end method
 	
-	property public hidebysig virtual newslot autogen string OrdOp
-	property public hidebysig virtual newslot autogen boolean Conv
-	property public hidebysig virtual newslot autogen TypeTok TTok
+	property public override newslot autogen string OrdOp
+	property public override newslot autogen boolean Conv
+	property public override newslot autogen TypeTok TTok
 	
 end class
 
@@ -45,7 +45,7 @@ class public auto ansi NullLiteral extends Literal
 		ctor(string::Empty)
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "null"
 	end method
 	
@@ -87,7 +87,7 @@ class public auto ansi StringLiteral extends Literal
 		ctor(string::Empty)
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return c"\q" + Value + c"\q"
 	end method
 
@@ -119,7 +119,7 @@ class public auto ansi CharLiteral extends Literal
 		ctor($string$value, value)
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "'" + $string$CharVal + "'"
 	end method
 
@@ -157,11 +157,11 @@ class public auto ansi BooleanLiteral extends Literal implements INegatable
 		Value = #ternary {value ? "true", "false"}
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return #ternary {BoolVal ? "true", "false"}
 	end method
 
-	property public hidebysig virtual newslot autogen boolean DoNeg
+	property public override newslot autogen boolean DoNeg
 
 end class
 
@@ -212,7 +212,7 @@ class public auto ansi IntLiteral extends NumberLiteral implements INegatable, I
 		_DoNot = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "i"
 	end method
 	
@@ -220,8 +220,8 @@ class public auto ansi IntLiteral extends NumberLiteral implements INegatable, I
 		return $string$NumVal
 	end method
 
-	property public hidebysig virtual newslot autogen boolean DoNeg
-	property public hidebysig virtual newslot autogen boolean DoNot
+	property public override newslot autogen boolean DoNeg
+	property public override newslot autogen boolean DoNot
 
 end class
 
@@ -255,11 +255,11 @@ class public auto ansi DoubleLiteral extends NumberLiteral implements INegatable
 		_DoNeg = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "d"
 	end method
 
-	property public hidebysig virtual newslot autogen boolean DoNeg
+	property public override newslot autogen boolean DoNeg
 
 end class
 
@@ -293,11 +293,11 @@ class public auto ansi DecimalLiteral extends NumberLiteral implements INegatabl
 		_DoNeg = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "m"
 	end method
 
-	property public hidebysig virtual newslot autogen boolean DoNeg
+	property public override newslot autogen boolean DoNeg
 
 end class
 
@@ -335,12 +335,12 @@ class public auto ansi SByteLiteral extends NumberLiteral implements INegatable,
 		_DoNot = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "b"
 	end method
 
-	property public hidebysig virtual newslot autogen boolean DoNeg
-	property public hidebysig virtual newslot autogen boolean DoNot
+	property public override newslot autogen boolean DoNeg
+	property public override newslot autogen boolean DoNot
 
 end class
 
@@ -379,11 +379,11 @@ class public auto ansi ShortLiteral extends NumberLiteral implements INegatable,
 		_DoNot = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "s"
 	end method
 	
-	property public hidebysig virtual final newslot string OrdOp
+	property public override final newslot string OrdOp
 		get
 			return _OrdOp
 		end get
@@ -392,8 +392,8 @@ class public auto ansi ShortLiteral extends NumberLiteral implements INegatable,
 		end set
 	end property
 
-	property public hidebysig virtual newslot autogen boolean DoNeg
-	property public hidebysig virtual newslot autogen boolean DoNot
+	property public override newslot autogen boolean DoNeg
+	property public override newslot autogen boolean DoNot
 
 end class
 
@@ -431,12 +431,12 @@ class public auto ansi LongLiteral extends NumberLiteral implements INegatable, 
 		_DoNot = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "l"
 	end method
 
-	property public hidebysig virtual newslot autogen boolean DoNeg
-	property public hidebysig virtual newslot autogen boolean DoNot
+	property public override newslot autogen boolean DoNeg
+	property public override newslot autogen boolean DoNot
 
 end class
 
@@ -470,11 +470,11 @@ class public auto ansi FloatLiteral extends NumberLiteral implements INegatable
 		_DoNeg = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "f"
 	end method
 
-	property public hidebysig virtual newslot autogen boolean DoNeg
+	property public override newslot autogen boolean DoNeg
 
 end class
 
@@ -508,11 +508,11 @@ class public auto ansi UIntLiteral extends NumberLiteral implements INotable
 		_DoNot = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "ui"
 	end method
 		
-	property public hidebysig virtual newslot autogen boolean DoNot
+	property public override newslot autogen boolean DoNot
 
 end class
 
@@ -546,11 +546,11 @@ class public auto ansi ByteLiteral extends NumberLiteral implements INotable
 		_DoNot = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "ub"
 	end method
 
-	property public hidebysig virtual newslot autogen boolean DoNot
+	property public override newslot autogen boolean DoNot
 
 end class
 
@@ -584,11 +584,11 @@ class public auto ansi UShortLiteral extends NumberLiteral implements INotable
 		_DoNot = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "us"
 	end method
 
-	property public hidebysig virtual newslot autogen boolean DoNot
+	property public override newslot autogen boolean DoNot
 
 end class
 
@@ -622,11 +622,11 @@ class public auto ansi ULongLiteral extends NumberLiteral implements INotable
 		_DoNot = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "ul"
 	end method
 
-	property public hidebysig virtual newslot autogen boolean DoNot
+	property public override newslot autogen boolean DoNot
 
 end class
 
@@ -652,11 +652,11 @@ class public auto ansi IntPtrLiteral extends NumberLiteral implements INegatable
 		_DoNeg = false
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return $string$NumVal + "ip"
 	end method
 
-	property public hidebysig virtual newslot autogen boolean DoNeg
-	property public hidebysig virtual newslot autogen boolean DoNot
+	property public override newslot autogen boolean DoNeg
+	property public override newslot autogen boolean DoNot
 
 end class

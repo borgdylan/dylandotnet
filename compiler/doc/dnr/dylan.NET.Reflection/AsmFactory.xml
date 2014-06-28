@@ -79,6 +79,18 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="AutoChainFlg">
+      <MemberSignature Language="C#" Value="public static bool AutoChainFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool AutoChainFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ChainFlg">
       <MemberSignature Language="C#" Value="public static bool ChainFlg;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool ChainFlg" />
@@ -495,6 +507,18 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InMemorySet">
+      <MemberSignature Language="C#" Value="public static bool InMemorySet;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool InMemorySet" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>

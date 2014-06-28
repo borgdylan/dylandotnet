@@ -17,7 +17,7 @@ class public auto ansi ImportStmt extends Stmt
 		Alias = new Token()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		var temp as string = NS::Value
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"
@@ -42,7 +42,7 @@ class public auto ansi LocimportStmt extends Stmt
 		NS = new Token()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		var temp as string = NS::Value
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"

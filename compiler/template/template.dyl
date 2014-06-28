@@ -37,38 +37,38 @@ class public auto ansi beforefieldinit sealed SC
 end class
 
 class public auto ansi abstract interface IHello
-	method public override abstract newslot void Hello()
+	method public void Hello()
 	
-	property public override abstract newslot autogen integer MyInt
-	property public initonly override abstract newslot autogen integer MyInt2
+	property public autogen integer MyInt
+	property public initonly autogen integer MyInt2
 end class
 
 class public auto ansi abstract interface IHello2
-	method public override abstract newslot void Hello2()
+	method public void Hello2()
 end class
 
 class public auto ansi abstract interface IHello3
-	method public override abstract newslot void Hello()
+	method public void Hello()
 end class
 
 class public auto ansi abstract interface HelloInterf
-	method public override abstract newslot void Hello()
+	method public void Hello()
 end class
 
 class public auto ansi HelloClass implements IHello, IHello2, IHello3
 	
-	property public override final newslot autogen integer MyInt
-	property public initonly override final newslot autogen integer MyInt2
+	property public autogen integer MyInt
+	property public initonly autogen integer MyInt2
 	
-	method public override final newslot void IHello.Hello()
+	method public final void IHello.Hello()
 		Console::WriteLine("I Implement Hello")
 	end method
 
-	method public override final newslot void IHello3.Hello()
+	method public final void IHello3.Hello()
 		Console::WriteLine("I Implement Hello3")
 	end method
 
-	method public override final newslot void Hello2()
+	method public final void Hello2()
 		Console::WriteLine("I Implement Hello2")
 	end method
 

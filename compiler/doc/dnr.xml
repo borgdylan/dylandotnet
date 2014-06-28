@@ -27,6 +27,10 @@
             <summary>Holds the AssemblyName for the assembly under construction.</summary>
             <remarks />
         </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.AutoChainFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.ChainFlg">
             <summary>When set indicates that a method chain beyond field chaining boundaries is in progress.</summary>
             <remarks />
@@ -145,6 +149,10 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.AsmFactory.InitPInvokeMtd">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.InMemorySet">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

@@ -25,7 +25,7 @@ class public auto ansi FieldStmt extends Stmt
 		Attrs::Add(attrtoadd)
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		var sw as StringWriter = new StringWriter()
 		foreach attr in Attrs
 			sw::Write(attr::ToString() + " ")

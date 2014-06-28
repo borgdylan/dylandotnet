@@ -490,7 +490,7 @@ class public auto ansi StmtReader
 		var mipt as MethodItem = null
 		var fromproto as boolean = false
 
-		if (mtssnamstr = AsmFactory::CurnTypName) or (mtssnamstr like "^ctor\d*$") then
+		if (mtssnamstr == AsmFactory::CurnTypName) or (mtssnamstr like "^ctor\d*$") then
 			StreamUtils::WriteLine("	Adding Constructor: " + mtssnamstr)
 			var paramstyps as IKVM.Reflection.Type[] = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}			
 			AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(Helpers::ProcessMethodAttrs(mtss::Attrs), CallingConventions::Standard, paramstyps)
@@ -541,6 +541,13 @@ class public auto ansi StmtReader
 				ILEmitter::AbstractFlg = AsmFactory::CurnMetB::get_IsAbstract()
 			else
 				StreamUtils::WriteLine("	Adding Method: " + mtssnamstr)
+
+				if ILEmitter::InterfaceFlg then
+					mtss::AddAttr(new OverrideAttr())
+					mtss::AddAttr(new AbstractAttr())
+					mtss::AddAttr(new NewSlotAttr())
+				end if
+
 				var ma = Helpers::ProcessMethodAttrs(mtss::Attrs)
 				var pinfo = SymTable::PIInfo
 				
@@ -620,9 +627,9 @@ class public auto ansi StmtReader
 				end if
 			end if
 			
-			if ILEmitter::InterfaceFlg and !ILEmitter::AbstractFlg then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods in Interfaces should all be Abstract!")
-			elseif ILEmitter::InterfaceFlg and ILEmitter::StaticFlg then
+			//if ILEmitter::InterfaceFlg and !ILEmitter::AbstractFlg then
+			//	StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods in Interfaces should all be Abstract!")
+			if ILEmitter::InterfaceFlg and ILEmitter::StaticFlg then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods in Interfaces should not be Static!")
 			elseif !ILEmitter::StaticFlg and ILEmitter::StaticCFlg then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Static Classes should not have Instance Methods!")
@@ -1015,7 +1022,11 @@ class public auto ansi StmtReader
 		var isrdonlyind as integer = -1
 		var isstatic as boolean = false
 		var isabstract as boolean = false
-		
+
+		if ILEmitter::InterfaceFlg then
+			prss::AddAttr(new AbstractAttr())
+		end if
+
 		var i as integer = -1
 		foreach a in prss::Attrs
 			i++
@@ -1045,9 +1056,9 @@ class public auto ansi StmtReader
 			end if
 
 			//it is not an error that these are not eval'd in all cases (METHODS HAVE SIMILAR VALIDATION)
-			if ILEmitter::InterfaceFlg and !isabstract then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Properties in Interfaces should all be Abstract!")
-			elseif ILEmitter::InterfaceFlg and isstatic then
+			//if ILEmitter::InterfaceFlg and !isabstract then
+			//	StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Properties in Interfaces should all be Abstract!")
+			if ILEmitter::InterfaceFlg and isstatic then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Properties in Interfaces should not be Static!")
 			elseif !isstatic and ILEmitter::StaticCFlg then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Static Classes should not have Instance Properties!")

@@ -36,15 +36,15 @@ class public auto ansi TypeTok extends ValueToken implements ICloneable
 		RefTyp = value
 	end method
 	
-	method public hidebysig virtual TypeTok CloneTT()
+	method public override TypeTok CloneTT()
 		return new TypeTok(Value) {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp}
 	end method
 	
-	method public hidebysig virtual final newslot object Clone()
+	method public override final newslot object Clone()
 		return CloneTT()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return Value + "[]&"
 		elseif IsArray then
@@ -87,12 +87,12 @@ class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 		return tt::CloneTT()
 	end method
 
-	method public hidebysig virtual TypeTok CloneTT()
+	method public override TypeTok CloneTT()
 		return new GenericTypeTok(Value, Enumerable::Select<of TypeTok, TypeTok>(Params, new Func<of TypeTok, TypeTok>(CloneFilter))) _
 			 {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp}
 	end method
 	
-	method public hidebysig virtual final newslot object Clone()
+	method public override final newslot object Clone()
 		return CloneTT()
 	end method
 
@@ -100,7 +100,7 @@ class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 		Params::Add(param)
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		var sw as StringWriter = new StringWriter()
 		sw::Write(Value)
 		var c = Params::get_Count()
@@ -140,7 +140,7 @@ class public auto ansi beforefieldinit StringTok extends SpecialTypeTok
 	end method
 
 				
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "string[]&"
 		elseif IsArray then
@@ -164,7 +164,7 @@ class public auto ansi beforefieldinit IntegerTok extends SpecialTypeTok
 		ctor("integer")
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "integer[]&"
 		elseif IsArray then
@@ -188,7 +188,7 @@ class public auto ansi beforefieldinit DoubleTok extends SpecialTypeTok
 		ctor("double")
 	end method
 				
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "double[]&"
 		elseif IsArray then
@@ -212,7 +212,7 @@ class public auto ansi beforefieldinit BooleanTok extends SpecialTypeTok
 		ctor("boolean")
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "boolean[]&"
 		elseif IsArray then
@@ -236,7 +236,7 @@ class public auto ansi beforefieldinit CharTok extends SpecialTypeTok
 		ctor("char")
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "char[]&"
 		elseif IsArray then
@@ -260,7 +260,7 @@ class public auto ansi beforefieldinit DecimalTok extends SpecialTypeTok
 		ctor("decimal")
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "decimal[]&"
 		elseif IsArray then
@@ -284,7 +284,7 @@ class public auto ansi beforefieldinit LongTok extends SpecialTypeTok
 		ctor("long")
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "long[]&"
 		elseif IsArray then
@@ -309,7 +309,7 @@ class public auto ansi beforefieldinit SByteTok extends SpecialTypeTok
 	end method
 
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "sbyte[]&"
 		elseif IsArray then
@@ -333,7 +333,7 @@ class public auto ansi beforefieldinit ShortTok extends SpecialTypeTok
 		ctor("short")
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "short[]&"
 		elseif IsArray then
@@ -357,7 +357,7 @@ class public auto ansi beforefieldinit SingleTok extends SpecialTypeTok
 		me::ctor(value)
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "short[]&"
 		elseif IsArray then
@@ -381,7 +381,7 @@ class public auto ansi beforefieldinit ObjectTok extends SpecialTypeTok
 		ctor("object")
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "object[]&"
 		elseif IsArray then
@@ -405,7 +405,7 @@ class public auto ansi beforefieldinit VoidTok extends SpecialTypeTok
 		ctor("void")
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "void"
 	end method
 
@@ -421,7 +421,7 @@ class public auto ansi beforefieldinit UIntegerTok extends SpecialTypeTok
 		ctor("uinteger")
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "uinteger[]&"
 		elseif IsArray then
@@ -445,7 +445,7 @@ class public auto ansi beforefieldinit ULongTok extends SpecialTypeTok
 		ctor("ulong")
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "ulong[]&"
 		elseif IsArray then
@@ -469,7 +469,7 @@ class public auto ansi beforefieldinit ByteTok extends SpecialTypeTok
 		ctor("byte")
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "byte[]&"
 		elseif IsArray then
@@ -493,7 +493,7 @@ class public auto ansi beforefieldinit UShortTok extends SpecialTypeTok
 		ctor("ushort")
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "ushort[]&"
 		elseif IsArray then
@@ -517,7 +517,7 @@ class public auto ansi beforefieldinit IntPtrTok extends SpecialTypeTok
 		ctor("intptr")
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		if IsArray and IsByRef then
 			return "intptr[]&"
 		elseif IsArray then

@@ -52,7 +52,7 @@ class public auto ansi InfVarAsgnStmt extends Stmt
 end class
 
 class public auto ansi EndUsingStmt extends Stmt
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "end using"
 	end method
 end class

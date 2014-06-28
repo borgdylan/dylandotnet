@@ -17,7 +17,7 @@ class public auto ansi AddOp extends AritOp
 		PrecNo = 11
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "+"
 	end method
 
@@ -31,7 +31,7 @@ class public auto ansi MulOp extends AritOp
 		PrecNo = 12
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "*"
 	end method
 
@@ -45,7 +45,7 @@ class public auto ansi SubOp extends AritOp
 		PrecNo = 11
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "-"
 	end method
 
@@ -60,7 +60,7 @@ class public auto ansi DivOp extends AritOp
 		PrecNo = 12
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "/"
 	end method
 
@@ -74,7 +74,7 @@ class public auto ansi ModOp extends AritOp
 		PrecNo = 12
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "%"
 	end method
 
@@ -88,7 +88,7 @@ class public auto ansi IncOp extends AritOp
 		PrecNo = 13
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "++"
 	end method
 
@@ -102,7 +102,7 @@ class public auto ansi DecOp extends AritOp
 		PrecNo = 13
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "--"
 	end method
 
@@ -116,7 +116,7 @@ class public auto ansi ShlOp extends AritOp
 		PrecNo = 10
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "<<"
 	end method
 
@@ -130,7 +130,7 @@ class public auto ansi ShrOp extends AritOp
 		PrecNo = 10
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return ">>"
 	end method
 

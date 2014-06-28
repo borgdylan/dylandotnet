@@ -131,6 +131,32 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Utils.MemoryFS">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.MemoryFS.AddFile(System.String,System.IO.Stream)">
+            <param name="path">To be added.</param>
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.MemoryFS.Clear">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.MemoryFS.GetFile(System.String)">
+            <param name="path">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.MemoryFS.HasFile(System.String)">
+            <param name="path">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Utils.ParseUtils">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

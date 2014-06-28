@@ -15,7 +15,7 @@ class public auto ansi LabelStmt extends Stmt
 		LabelName = new Ident()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "label " + LabelName::Value
 	end method
 
@@ -30,7 +30,7 @@ class public auto ansi PlaceStmt extends Stmt
 		LabelName = new Ident()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "place " + LabelName::Value
 	end method
 
@@ -45,7 +45,7 @@ class public auto ansi GotoStmt extends Stmt
 		LabelName = new Ident()
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "goto " + LabelName::Value
 	end method
 

@@ -12,13 +12,13 @@ class public auto ansi ExprCallTok extends ValueToken implements IUnaryOperatabl
 	field public Token MemberToAccess
 	field public Expr Exp
 	
-	property public hidebysig virtual newslot autogen string OrdOp
-	property public hidebysig virtual newslot autogen boolean Conv
-	property public hidebysig virtual newslot autogen TypeTok TTok
-	property public hidebysig virtual newslot autogen boolean DoNeg
-	property public hidebysig virtual newslot autogen boolean DoNot
-	property public hidebysig virtual newslot autogen boolean DoInc
-	property public hidebysig virtual newslot autogen boolean DoDec
+	property public override newslot autogen string OrdOp
+	property public override newslot autogen boolean Conv
+	property public override newslot autogen TypeTok TTok
+	property public override newslot autogen boolean DoNeg
+	property public override newslot autogen boolean DoNot
+	property public override newslot autogen boolean DoInc
+	property public override newslot autogen boolean DoDec
 	
 	method public void ExprCallTok(var value as string)
 		me::ctor(value)
