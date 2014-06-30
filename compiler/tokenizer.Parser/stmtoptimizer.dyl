@@ -11,7 +11,7 @@ class public auto ansi StmtOptimizer
 	field public Flags PFlags
 	
 	method public void StmtOptimizer(var pf as Flags)
-		me::ctor()
+		mybase::ctor()
 		PFlags = pf
 	end method
 	
@@ -511,16 +511,16 @@ class public auto ansi StmtOptimizer
 		return null
 	end method
 	
-	method private Stmt checkScope(var stm as Stmt, var b as boolean&)
-		b = stm::Tokens::get_Item(0) is ScopeTok
-		if b then
-			if stm::Tokens::get_Count() > 2 then
-				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
-			end if
-			return new ScopeStmt() {Line = stm::Line, Opt = $SwitchTok$stm::Tokens::get_Item(1), setFlg()}
-		end if
-		return null
-	end method
+//	method private Stmt checkScope(var stm as Stmt, var b as boolean&)
+//		b = stm::Tokens::get_Item(0) is ScopeTok
+//		if b then
+//			if stm::Tokens::get_Count() > 2 then
+//				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+//			end if
+//			return new ScopeStmt() {Line = stm::Line, Opt = $SwitchTok$stm::Tokens::get_Item(1), setFlg()}
+//		end if
+//		return null
+//	end method
 	
 	method private Stmt checkImport(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is ImportTok
@@ -848,7 +848,8 @@ class public auto ansi StmtOptimizer
 		var lp as C5.ArrayList<of AttrValuePair> = new C5.ArrayList<of AttrValuePair>()
 		var curvp as AttrValuePair = null
 		var eqf as boolean = false
-		
+		var lvl as integer = 0
+
 		for i = 3 upto --mas::Tokens::get_Count()
 			if mas::Tokens::get_Item(i) is RSParen then
 				if curvp != null then
@@ -856,13 +857,29 @@ class public auto ansi StmtOptimizer
 					lp::Add(curvp)
 				end if
 				break
-			elseif mas::Tokens::get_Item(i) is Comma then
-				if curvp != null then
-					curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
-					lp::Add(curvp)
+			elseif mas::Tokens::get_Item(i) is RCParen then
+				lvl--
+				if eqf then
+					curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
 				end if
-				curvp = new AttrValuePair() {ValueExpr = new Expr() {Line = stm::Line}}
-				eqf = false
+			elseif mas::Tokens::get_Item(i) is LCParen then
+				lvl++
+				if eqf then
+					curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
+				end if
+			elseif mas::Tokens::get_Item(i) is Comma then
+				if lvl == 0 then
+					if curvp != null then
+						curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
+						lp::Add(curvp)
+					end if
+					curvp = new AttrValuePair() {ValueExpr = new Expr() {Line = stm::Line}}
+					eqf = false
+				else
+					if eqf then
+						curvp::ValueExpr::AddToken(mas::Tokens::get_Item(i))
+					end if
+				end if
 			elseif mas::Tokens::get_Item(i) is AssignOp then
 				eqf = true
 			else

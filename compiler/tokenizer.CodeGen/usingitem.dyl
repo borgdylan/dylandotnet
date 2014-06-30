@@ -11,7 +11,7 @@ class public auto ansi UsingItem extends TryItem
 	field public string UseeLoc
 
 	method public void UsingItem(var loc as string, var ln as integer)
-		me::ctor(ln)
+		mybase::ctor(ln)
 		UseeLoc = loc
 	end method
 	

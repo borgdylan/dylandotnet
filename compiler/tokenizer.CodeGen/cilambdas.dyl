@@ -12,13 +12,13 @@ class private auto ansi CILambdas
 	field assembly IKVM.Reflection.Type Auxt
 
 	method assembly void CILambdas()
-		me::ctor()
+		mybase::ctor()
 		Params = null
 		Auxt = null
 	end method
 
 	method assembly void CILambdas(var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
-		me::ctor()
+		mybase::ctor()
 		Params = params
 		Auxt = auxt
 	end method

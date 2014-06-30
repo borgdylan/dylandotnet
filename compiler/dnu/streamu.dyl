@@ -11,7 +11,7 @@
 class public auto ansi ErrorException extends Exception
 	
 	method public void ErrorException(var errtext as string)
-		me::ctor(errtext)
+		mybase::ctor(errtext)
 	end method
 	
 	method public void ErrorException()

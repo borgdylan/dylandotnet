@@ -14,7 +14,7 @@ class public auto ansi MethodCallTok extends ValueToken
 	field public IKVM.Reflection.Type[] TypArr
 
 	method public void MethodCallTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		Name = new MethodNameTok()
 		PopFlg = false
 		Params = new C5.ArrayList<of Expr>()
@@ -39,12 +39,12 @@ class public auto ansi GettypeCallTok extends ValueToken
 	field public TypeTok Name
 
 	method public void GettypeCallTok()
-		me::ctor()
+		mybase::ctor()
 		Name = new TypeTok()
 	end method
 
 	method public void GettypeCallTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		Name = new TypeTok()
 	end method
 
@@ -55,12 +55,12 @@ class public auto ansi DefaultCallTok extends ValueToken
 	field public TypeTok Name
 
 	method public void DefaultCallTok()
-		me::ctor()
+		mybase::ctor()
 		Name = new TypeTok()
 	end method
 
 	method public void DefaultCallTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		Name = new TypeTok()
 	end method
 
@@ -71,12 +71,12 @@ class public auto ansi PtrCallTok extends ValueToken
 	field public MethodNameTok MetToCall
 
 	method public void PtrCallTok()
-		me::ctor()
+		mybase::ctor()
 		MetToCall = new MethodNameTok()
 	end method
 
 	method public void PtrCallTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		MetToCall = new MethodNameTok()
 	end method
 

@@ -12,12 +12,12 @@ class public auto ansi LabelItem
 	field public string LblName
 
 	method public void LabelItem()
-		me::ctor()
+		mybase::ctor()
 		LblName = string::Empty
 	end method
 
 	method public void LabelItem(var ln as string, var l as Emit.Label)
-		me::ctor()
+		mybase::ctor()
 		LblName = ln
 		Lbl = l
 	end method

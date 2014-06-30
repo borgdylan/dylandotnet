@@ -14,7 +14,7 @@ class public auto ansi AssemblyStmt extends Stmt
 	field public Ident AsmName
 
 	method public void AssemblyStmt()
-		me::ctor()
+		mybase::ctor()
 		Mode = new Token()
 		AsmName = new Ident()
 	end method

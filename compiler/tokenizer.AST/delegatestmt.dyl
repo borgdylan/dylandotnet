@@ -14,7 +14,7 @@ class public auto ansi DelegateStmt extends Stmt
 	field public C5.LinkedList<of Expr> Params
 
 	method public void DelegateStmt()
-		me::ctor()
+		mybase::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		DelegateName = new MethodNameTok()
 		Params = new C5.LinkedList<of Expr>()

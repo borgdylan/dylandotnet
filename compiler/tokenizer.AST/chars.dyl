@@ -9,7 +9,7 @@
 class public auto ansi Character extends Token
 
 	method public void Character(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void Character()

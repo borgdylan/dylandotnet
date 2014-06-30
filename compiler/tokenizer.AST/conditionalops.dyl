@@ -14,7 +14,7 @@ end class
 class public auto ansi EqOp extends ConditionalOp
 
 	method public void EqOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 8
 	end method
 	
@@ -28,7 +28,7 @@ end class
 class public auto ansi StrictEqOp extends ConditionalOp
 
 	method public void StrictEqOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 8
 	end method
 	
@@ -42,7 +42,7 @@ end class
 class public auto ansi IsOp extends ConditionalOp
 
 	method public void IsOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 8
 	end method
 	
@@ -56,7 +56,7 @@ end class
 class public auto ansi IsNotOp extends ConditionalOp
 
 	method public void IsNotOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 8
 	end method
 	
@@ -70,7 +70,7 @@ end class
 class public auto ansi LikeOp extends ConditionalOp
 
 	method public void LikeOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 8
 	end method
 	
@@ -86,7 +86,7 @@ end class
 class public auto ansi NeqOp extends ConditionalOp
 
 	method public void NeqOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 8
 	end method
 	
@@ -100,7 +100,7 @@ end class
 class public auto ansi StrictNeqOp extends ConditionalOp
 
 	method public void StrictNeqOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 8
 	end method
 	
@@ -114,7 +114,7 @@ end class
 class public auto ansi NLikeOp extends ConditionalOp
 
 	method public void NLikeOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 8
 	end method
 	
@@ -129,7 +129,7 @@ end class
 class public auto ansi GtOp extends ConditionalOp
 
 	method public void GtOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 9
 	end method
 	
@@ -143,7 +143,7 @@ end class
 class public auto ansi LtOp extends ConditionalOp
 
 	method public void LtOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 9
 	end method
 	
@@ -157,7 +157,7 @@ end class
 class public auto ansi GeOp extends ConditionalOp
 
 	method public void GeOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 9
 	end method
 	
@@ -171,7 +171,7 @@ end class
 class public auto ansi LeOp extends ConditionalOp
 
 	method public void LeOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 9
 	end method
 	

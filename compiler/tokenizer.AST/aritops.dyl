@@ -13,7 +13,7 @@ end class
 class public auto ansi AddOp extends AritOp
 
 	method public void AddOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 11
 	end method
 	
@@ -27,7 +27,7 @@ end class
 class public auto ansi MulOp extends AritOp
 
 	method public void MulOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 12
 	end method
 
@@ -41,7 +41,7 @@ end class
 class public auto ansi SubOp extends AritOp
 
 	method public void SubOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 11
 	end method
 	
@@ -56,7 +56,7 @@ end class
 class public auto ansi DivOp extends AritOp
 
 	method public void DivOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 12
 	end method
 	
@@ -70,7 +70,7 @@ end class
 class public auto ansi ModOp extends AritOp
 
 	method public void ModOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 12
 	end method
 	
@@ -84,7 +84,7 @@ end class
 class public auto ansi IncOp extends AritOp
 
 	method public void IncOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 13
 	end method
 	
@@ -98,7 +98,7 @@ end class
 class public auto ansi DecOp extends AritOp
 
 	method public void DecOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 13
 	end method
 	
@@ -112,7 +112,7 @@ end class
 class public auto ansi ShlOp extends AritOp
 
 	method public void ShlOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 10
 	end method
 	
@@ -126,7 +126,7 @@ end class
 class public auto ansi ShrOp extends AritOp
 
 	method public void ShrOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 10
 	end method
 	

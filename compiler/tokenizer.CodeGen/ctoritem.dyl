@@ -12,7 +12,7 @@ class public auto ansi CtorItem
 	field public ConstructorBuilder CtorBldr
 
 	method public void CtorItem(var ptyps as IKVM.Reflection.Type[], var bld as ConstructorBuilder)
-		me::ctor()
+		mybase::ctor()
 		CtorBldr = bld
 		ParamTyps = ptyps
 	end method

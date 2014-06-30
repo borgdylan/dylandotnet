@@ -14,7 +14,7 @@ class public auto ansi DebugStmt extends Stmt
 	field public boolean Flg
 
 	method public void DebugStmt()
-		me::ctor()
+		mybase::ctor()
 		Opt = null
 		Flg = false
 	end method

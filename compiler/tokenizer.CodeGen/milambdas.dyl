@@ -14,7 +14,7 @@ class private auto ansi MILambdas2
 	field assembly IKVM.Reflection.Type Auxt
 	
 	method assembly void MILambdas2()
-		me::ctor()
+		mybase::ctor()
 		Name = string::Empty
 		Params = null
 		ParamLen = 0
@@ -22,7 +22,7 @@ class private auto ansi MILambdas2
 	end method
 
 	method assembly void MILambdas2(var name as string, var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
-		me::ctor()
+		mybase::ctor()
 		Name = name
 		Params = params
 		ParamLen = 0
@@ -30,7 +30,7 @@ class private auto ansi MILambdas2
 	end method
 	
 	method assembly void MILambdas2(var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
-		me::ctor()
+		mybase::ctor()
 		Name = string::Empty
 		Params = params
 		ParamLen = 0
@@ -38,7 +38,7 @@ class private auto ansi MILambdas2
 	end method
 	
 	method assembly void MILambdas2(var name as string, var pl as integer)
-		me::ctor()
+		mybase::ctor()
 		Name = name
 		Params = null
 		ParamLen = pl

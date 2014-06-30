@@ -11,7 +11,7 @@ class public auto ansi DoWhileStmt extends Stmt
 	field public Expr Exp
 
 	method public void DoWhileStmt()
-		me::ctor()
+		mybase::ctor()
 		Exp = new Expr()
 	end method
 
@@ -22,7 +22,7 @@ class public auto ansi DoUntilStmt extends Stmt
 	field public Expr Exp
 
 	method public void DoUntilStmt()
-		me::ctor()
+		mybase::ctor()
 		Exp = new Expr()
 	end method
 
@@ -35,7 +35,7 @@ class public auto ansi ForeachStmt extends Stmt
 	field public TypeTok Typ
 
 	method public void ForeachStmt()
-		me::ctor()
+		mybase::ctor()
 		Exp = new Expr()
 		Iter = new Ident()
 		Typ = null
@@ -53,7 +53,7 @@ class public auto ansi ForStmt extends Stmt
 	field public boolean Direction
 
 	method public void ForStmt()
-		me::ctor()
+		mybase::ctor()
 		StartExp = new Expr()
 		EndExp = new Expr()
 		Iter = null
@@ -69,7 +69,7 @@ class public auto ansi WhileStmt extends Stmt
 	field public Expr Exp
 
 	method public void WhileStmt()
-		me::ctor()
+		mybase::ctor()
 		Exp = new Expr()
 	end method
 
@@ -80,7 +80,7 @@ class public auto ansi UntilStmt extends Stmt
 	field public Expr Exp
 
 	method public void UntilStmt()
-		me::ctor()
+		mybase::ctor()
 		Exp = new Expr()
 	end method
 

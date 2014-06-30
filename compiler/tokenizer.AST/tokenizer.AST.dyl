@@ -98,7 +98,7 @@ namespace dylan.NET.Tokenizer.AST
 	namespace Stmts
 		//#include "stdasmstmt.dyl"
 		#include "debugstmt.dyl"
-		#include "scopestmt.dyl"
+		//#include "scopestmt.dyl"
 		#include "refasmstmt.dyl"
 		//#include "newresstmt.dyl"
 		#include "importstmts.dyl"

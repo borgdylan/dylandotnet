@@ -12,7 +12,7 @@ class public auto ansi TryItem
 	field public boolean InCatch
 
 	method public void TryItem(var ln as integer)
-		me::ctor()
+		mybase::ctor()
 		Line = ln
 		InCatch = false
 	end method

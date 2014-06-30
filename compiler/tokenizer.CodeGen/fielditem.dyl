@@ -14,7 +14,7 @@ class public auto ansi FieldItem
 	field public object LitVal
 
 	method public void FieldItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as FieldBuilder, var litval as object)
-		me::ctor()
+		mybase::ctor()
 		Name = nme
 		FieldTyp = typ
 		FieldBldr = bld

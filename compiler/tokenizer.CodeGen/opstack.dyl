@@ -9,7 +9,7 @@
 class public auto ansi OpStack extends C5.LinkedList<of Token>
 
 	method public void OpStack()
-		me::ctor()
+		mybase::ctor()
 	end method
 
 	method public void PushOp(var optok as Token)

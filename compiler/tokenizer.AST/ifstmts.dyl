@@ -11,7 +11,7 @@
 		field public Expr Exp
 
 		method public void IfStmt()
-			me::ctor()
+			mybase::ctor()
 			Exp = new Expr()
 		end method
 
@@ -22,7 +22,7 @@
 		field public Expr Exp
 
 		method public void ElseIfStmt()
-			me::ctor()
+			mybase::ctor()
 			Exp = new Expr()
 		end method
 
@@ -44,7 +44,7 @@ end #region
 		field public Expr Exp
 
 		method public void HIfStmt()
-			me::ctor()
+			mybase::ctor()
 			Exp = new Expr()
 		end method
 
@@ -55,7 +55,7 @@ end #region
 		field public Expr Exp
 
 		method public void HElseIfStmt()
-			me::ctor()
+			mybase::ctor()
 			Exp = new Expr()
 		end method
 
@@ -72,7 +72,7 @@ end #region
 		field public Ident Symbol
 
 		method public void HDefineStmt()
-			me::ctor()
+			mybase::ctor()
 			Symbol = new Ident()
 		end method
 
@@ -83,7 +83,7 @@ end #region
 		field public Ident Symbol
 
 		method public void HUndefStmt()
-			me::ctor()
+			mybase::ctor()
 			Symbol = new Ident()
 		end method
 
@@ -95,7 +95,7 @@ class public auto ansi RegionStmt extends Stmt
 	field public Token Name
 
 	method public void RegionStmt()
-		me::ctor()
+		mybase::ctor()
 		Name = new Token()
 	end method
 

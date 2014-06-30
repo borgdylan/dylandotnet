@@ -67,6 +67,7 @@ class public auto ansi static Helpers
 		var flg as boolean
 		var absf as boolean = false
 		var sldf as boolean = false
+		var isseq as boolean = false
 		
 		foreach attr in attrs
 			flg = true
@@ -81,6 +82,7 @@ class public auto ansi static Helpers
 				temp = TypeAttributes::AnsiClass
 			elseif attr is Attributes.SequentialLayoutAttr then
 				temp = TypeAttributes::SequentialLayout
+				isseq = true
 			elseif attr is Attributes.SealedAttr then
 				temp = TypeAttributes::Sealed
 				sldf = true
@@ -116,7 +118,12 @@ class public auto ansi static Helpers
 		if absf and sldf then
 			ILEmitter::StaticCFlg = true
 		end if
-		return ta
+
+		if !isseq then
+			ta = ta or TypeAttributes::AutoLayout
+		end if
+
+		return ta or TypeAttributes::AnsiClass
 	end method
 	
 	[method: ComVisible(false)]
@@ -153,7 +160,7 @@ class public auto ansi static Helpers
 				end if
 			end if
 		end for
-		return ta
+		return ta or TypeAttributes::AutoLayout or TypeAttributes::AnsiClass
 	end method
 
 	[method: ComVisible(false)]
@@ -2221,7 +2228,22 @@ class public auto ansi static Helpers
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", #expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name))
 				end if
-			end if
+			elseif exp::Tokens::get_Item(0) is ArrInitCallTok then
+				var aictok as ArrInitCallTok = $ArrInitCallTok$exp::Tokens::get_Item(0)
+				var typ2 = CommitEvalTTok(aictok::ArrayType)
+				if typ2 == null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.",aictok::ArrayType::ToString()))
+				end if
+
+				var val = Array::CreateInstance(gettype object, aictok::Elements::get_Count())
+				var i = -1
+				foreach elem in aictok::Elements
+					i++
+					val::SetValue(ProcessConstExpr(elem)::Value, i)
+				end for
+
+				return new ConstInfo() {Typ = typ2::MakeArrayType(), Value = val}
+			end if			
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Unexpected empty constant expression.")
 		end if

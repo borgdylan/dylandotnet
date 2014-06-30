@@ -1,17 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="resproc/Program.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="template/template.dyl">
     <Files>
-      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.Parser/tokenoptimizer.dyl" Line="1" Column="1" />
-      <File FileName="dnr/asmfactory.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/eval.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/helpers.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/interfaces.dyl" Line="42" Column="15" />
+      <File FileName="tokenizer.AST/classstmt.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/nsstmt.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/verstmt.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/attrvalpair.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/importstmts.dyl" Line="1" Column="1" />
+      <File FileName="Extra.Tasks/DncTask.dyl" Line="1" Column="1" />
+      <File FileName="Extra.Tasks/ResProcTask.dyl" Line="1" Column="1" />
+      <File FileName="Extra.Tasks/FindResProcOuts.dyl" Line="1" Column="1" />
       <File FileName="template/template.dyl" Line="26" Column="1" />
-      <File FileName="dnc/Program.dyl" Line="40" Column="55" />
-      <File FileName="resproc/resproc.dyl" Line="1" Column="1" />
-      <File FileName="resproc/Program.dyl" Line="140" Column="16" />
+      <File FileName="tokenizer.CodeGen/helpers.dyl" Line="173" Column="29" />
+      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="298" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

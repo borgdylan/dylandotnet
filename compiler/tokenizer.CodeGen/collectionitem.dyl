@@ -13,7 +13,7 @@ class public auto ansi CollectionItem
 	field public MethodInfo AddMtd
 	
 	method public void CollectionItem()
-		me::ctor()
+		mybase::ctor()
 		ElemType = null
 		Ctor = null
 		AddMtd = null

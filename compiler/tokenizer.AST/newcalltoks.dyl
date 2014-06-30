@@ -15,7 +15,7 @@ class public auto ansi NewCallTok extends ValueToken
 	field public boolean PopFlg
 
 	method public void NewCallTok()
-		me::ctor()
+		mybase::ctor()
 		Name = new TypeTok()
 		Params = new C5.ArrayList<of Expr>()
 		MemberAccessFlg = false
@@ -24,7 +24,7 @@ class public auto ansi NewCallTok extends ValueToken
 	end method
 
 	method public void NewCallTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		Name = new TypeTok()
 		Params = new C5.ArrayList<of Expr>()
 		MemberAccessFlg = false
@@ -47,13 +47,13 @@ class public auto ansi NewarrCallTok extends ValueToken
 	field public Expr ArrayLen
 
 	method public void NewarrCallTok()
-		me::ctor()
+		mybase::ctor()
 		ArrayType = new TypeTok()
 		ArrayLen = new Expr()
 	end method
 
 	method public void NewarrCallTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		ArrayType = new TypeTok()
 		ArrayLen = new Expr()
 	end method
@@ -67,14 +67,14 @@ class public auto ansi ArrInitCallTok extends ValueToken
 	field public boolean ForceArray
 
 	method public void ArrInitCallTok()
-		me::ctor()
+		mybase::ctor()
 		ArrayType = new TypeTok()
 		Elements = new C5.ArrayList<of Expr>()
 		ForceArray = false
 	end method
 
 	method public void ArrInitCallTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		ArrayType = new TypeTok()
 		Elements = new C5.ArrayList<of Expr>()
 		ForceArray = false
@@ -98,7 +98,7 @@ class public auto ansi ObjInitCallTok extends ValueToken
 	field public boolean PopFlg
 
 	method public void ObjInitCallTok()
-		me::ctor()
+		mybase::ctor()
 		Ctor = null
 		Elements = new C5.ArrayList<of Token>()
 		MemberAccessFlg = false
@@ -107,7 +107,7 @@ class public auto ansi ObjInitCallTok extends ValueToken
 	end method
 
 	method public void ObjInitCallTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		Ctor = null
 		Elements = new C5.ArrayList<of Token>()
 		MemberAccessFlg = false
@@ -131,14 +131,14 @@ class public auto ansi TernaryCallTok extends ValueToken
 	field public Expr FalseExpr
 
 	method public void TernaryCallTok()
-		me::ctor()
+		mybase::ctor()
 		Condition = new Expr()
 		TrueExpr = new Expr()
 		FalseExpr = new Expr()
 	end method
 
 	method public void TernaryCallTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		Condition = new Expr()
 		TrueExpr = new Expr()
 		FalseExpr = new Expr()

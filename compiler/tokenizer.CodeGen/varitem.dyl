@@ -19,7 +19,7 @@ class public auto ansi VarItem
 	field public C5.TreeSet<of integer> StoreLines
 
 	method public void VarItem()
-		me::ctor()
+		mybase::ctor()
 		Name = String::Empty
 		LocArg = false
 		Index = -1
@@ -31,7 +31,7 @@ class public auto ansi VarItem
 	end method
 
 	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type)
-		me::ctor()
+		mybase::ctor()
 		Name = nme
 		LocArg = la
 		Index = ind
@@ -43,7 +43,7 @@ class public auto ansi VarItem
 	end method
 
 	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type, var line as integer)
-		me::ctor()
+		mybase::ctor()
 		Name = nme
 		LocArg = la
 		Index = ind

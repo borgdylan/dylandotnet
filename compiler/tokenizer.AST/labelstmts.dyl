@@ -11,7 +11,7 @@ class public auto ansi LabelStmt extends Stmt
 	field public Ident LabelName
 
 	method public void LabelStmt()
-		me::ctor()
+		mybase::ctor()
 		LabelName = new Ident()
 	end method
 	
@@ -26,7 +26,7 @@ class public auto ansi PlaceStmt extends Stmt
 	field public Ident LabelName
 
 	method public void PlaceStmt()
-		me::ctor()
+		mybase::ctor()
 		LabelName = new Ident()
 	end method
 	
@@ -41,7 +41,7 @@ class public auto ansi GotoStmt extends Stmt
 	field public Ident LabelName
 
 	method public void GotoStmt()
-		me::ctor()
+		mybase::ctor()
 		LabelName = new Ident()
 	end method
 	

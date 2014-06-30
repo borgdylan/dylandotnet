@@ -15,7 +15,7 @@ namespace Extra.Tasks
 		field private boolean haderrs
 
 		method public void DncTask()
-			me::ctor()
+			mybase::ctor()
 		end method
 
 		method private void ErrorH(var cm as CompilerMsg)

@@ -16,7 +16,7 @@ namespace Extra.Tasks
 		property public autogen ITaskItem[] Outputs
 
 		method public void FindResProcOuts()
-			me::ctor()
+			mybase::ctor()
 		end method
 			
 		method private string Extract(var i as ITaskItem)

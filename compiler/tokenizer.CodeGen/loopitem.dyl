@@ -13,12 +13,12 @@ class public auto ansi LoopItem
 	field public integer Line
 
 	method public void LoopItem()
-		me::ctor()
+		mybase::ctor()
 		Line = 0
 	end method
 
 	method public void LoopItem(var startl as Emit.Label, var endl as Emit.Label, var ln as integer)
-		me::ctor()
+		mybase::ctor()
 		EndLabel = endl
 		StartLabel = startl
 		Line = ln
@@ -36,7 +36,7 @@ class public auto ansi ForLoopItem extends LoopItem
 	field public TypeTok Typ
 	
 	method public void ForLoopItem()
-		me::ctor()
+		mybase::ctor()
 		Iter = string::Empty
 		StepExp = null
 		Direction = true
@@ -45,7 +45,7 @@ class public auto ansi ForLoopItem extends LoopItem
 	end method
 
 	method public void ForLoopItem(var startl as Emit.Label, var endl as Emit.Label, var iter as string, var _step as Expr, var dir as boolean, var t as TypeTok, var ln as integer)
-		me::ctor(endl, startl, ln)
+		mybase::ctor(endl, startl, ln)
 		Iter = iter
 		StepExp = _step
 		Direction = dir

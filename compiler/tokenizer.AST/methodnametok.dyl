@@ -9,17 +9,17 @@
 class public auto ansi MethodNameTok extends Ident implements IHasConstraints
 
 	method public void MethodNameTok()
-		me::ctor()
+		mybase::ctor()
 		_OrdOp = string::Empty
 	end method
 	
 	method public void MethodNameTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		_OrdOp = string::Empty
 	end method
 
 	method public void MethodNameTok(var idt as Ident)
-		me::ctor(idt::Value)
+		mybase::ctor(idt::Value)
 		_DoNeg = idt::get_DoNeg()
 		_DoNot = idt::get_DoNot()
 		_DoDec = idt::get_DoDec()
@@ -52,19 +52,19 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IHa
 	field private C5.HashDictionary<of string, C5.LinkedList<of Token> > _Constraints
 
 	method public void GenericMethodNameTok()
-		me::ctor()
+		mybase::ctor()
 		Params = new C5.LinkedList<of TypeTok>()
 		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
 	end method
 
 	method public void GenericMethodNameTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		Params = new C5.LinkedList<of TypeTok>()
 		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
 	end method
 	
 	method public void GenericMethodNameTok(var idt as Ident)
-		me::ctor(idt::Value)
+		mybase::ctor(idt::Value)
 		Params = new C5.LinkedList<of TypeTok>()
 		_DoNeg = idt::get_DoNeg()
 		_DoNot = idt::get_DoNot()

@@ -18,7 +18,7 @@ class public auto ansi CatchStmt extends Stmt
 	field public TypeTok ExTyp
 
 	method public void CatchStmt()
-		me::ctor()
+		mybase::ctor()
 		ExName = new Ident()
 		ExTyp = new TypeTok()
 	end method
@@ -40,7 +40,7 @@ class public auto ansi ThrowStmt extends Stmt
 	field public Expr RExp
 
 	method public void ThrowStmt()
-		me::ctor()
+		mybase::ctor()
 		RExp = new Expr()
 	end method
 

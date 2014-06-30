@@ -11,7 +11,7 @@ class public auto ansi Parser
 	field public Flags PFlags
 	
 	method public void Parser(var pf as Flags)
-		me::ctor()
+		mybase::ctor()
 		PFlags = pf
 	end method
 

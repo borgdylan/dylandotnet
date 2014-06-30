@@ -25,37 +25,37 @@ import template
 
 #warning "This is personal test code and is not a sample that should be followed."
 
-delegate public auto ansi void MyDelegate(var x as integer)
-delegate public auto ansi U MyDelegate<of T, U>(var t as T)
+delegate public void MyDelegate(var x as integer)
+delegate public U MyDelegate<of T, U>(var t as T)
 
-struct public sequential ansi point
+struct public sequential point
 	field public integer x
 	field public integer y
 end struct
 
-class public auto ansi beforefieldinit sealed SC
+class public beforefieldinit sealed SC
 end class
 
-class public auto ansi abstract interface IHello
+class public interface IHello
 	method public void Hello()
 	
 	property public autogen integer MyInt
 	property public initonly autogen integer MyInt2
 end class
 
-class public auto ansi abstract interface IHello2
+class public interface IHello2
 	method public void Hello2()
 end class
 
-class public auto ansi abstract interface IHello3
+class public interface IHello3
 	method public void Hello()
 end class
 
-class public auto ansi abstract interface HelloInterf
+class public interface HelloInterf
 	method public void Hello()
 end class
 
-class public auto ansi HelloClass implements IHello, IHello2, IHello3
+class public HelloClass implements IHello, IHello2, IHello3
 	
 	property public autogen integer MyInt
 	property public initonly autogen integer MyInt2
@@ -74,28 +74,28 @@ class public auto ansi HelloClass implements IHello, IHello2, IHello3
 
 end class
 
-class public auto ansi Container
+class public Container
 
-	class public auto ansi Sibling
+	class public Sibling
 	end class
 
-	delegate public auto ansi void MyDelegate(var x as integer)
-	delegate public auto ansi U MyDelegate<of T, U>(var t as T)
+	delegate public void MyDelegate(var x as integer)
+	delegate public U MyDelegate<of T, U>(var t as T)
 
-	class public auto ansi Nested
+	class public Nested
 
 		field public integer X
 		field public static literal integer C = 11
 		property public autogen Container Parent
 
 		method public void Nested(var p as Container)
-			me::ctor()
+			mybase::ctor()
 			_Parent = p
 			X = 0
 		end method
 
 		method public void Nested()
-			me::ctor()
+			mybase::ctor()
 			X = 0
 		end method
 
@@ -113,7 +113,7 @@ class public auto ansi Container
 
 end class
 
-class public auto ansi BaseTest
+class public BaseTest
 
 	field private BaseTest F1
 	field private template.BaseTest F2
@@ -150,7 +150,7 @@ class public auto ansi BaseTest
 
 end class
 
-class public auto ansi beforefieldinit ROTest
+class public beforefieldinit ROTest
 
 	field public static initonly integer X
 	
@@ -165,7 +165,7 @@ class public auto ansi beforefieldinit ROTest
 
 end class
 
-class public auto ansi OTTEnumerator implements IEnumerator<of integer>, IEnumerator, IDisposable
+class public OTTEnumerator implements IEnumerator<of integer>, IEnumerator, IDisposable
 
 	field private integer _Current
 	
@@ -204,7 +204,7 @@ class public auto ansi OTTEnumerator implements IEnumerator<of integer>, IEnumer
 end class
 
 //[class: Obsolete("This class is only fakely obsolete")]
-class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
+class public OTT implements IEnumerable<of integer>, IEnumerable
 
 	method public override newslot final IEnumerator<of integer> GetEnumerator()
 		return new OTTEnumerator()
@@ -217,7 +217,7 @@ class public auto ansi OTT implements IEnumerable<of integer>, IEnumerable
 end class
 
 [class: System.Reflection.DefaultMember("Item")]
-class public auto ansi ObjInit
+class public ObjInit
 	
 	field public integer A
 	field public integer B
@@ -225,7 +225,7 @@ class public auto ansi ObjInit
 	field private string _Msg
 	
 	method public void ObjInit(var a as integer, var b as integer, var msg as string)
-		me::ctor()
+		mybase::ctor()
 		A = a
 		B = b
 		_Msg = msg
@@ -266,11 +266,11 @@ end class
 
 #region genericfuncs
 
-	class public auto ansi GenType<of T>
+	class public GenType<of T>
 		field public T Fld
 
 		method public void GenType(var f as T)
-			me::ctor()
+			mybase::ctor()
 			Fld = f
 		end method
 
@@ -290,11 +290,11 @@ end class
 
 	end class
 
-	class public auto ansi GenType<of T, U> extends List<of T>
+	class public GenType<of T, U> extends List<of T>
 
 	end class
 
-	class public auto ansi static Generics
+	class public static Generics
 
 		method public static U[] Func<of T, U>(var o as T) where T as {ICollection<of U>}, U as {out}
 			foreach u in o
@@ -385,20 +385,34 @@ end class
 
 end #region
 
-class public auto ansi static partial Program
+class public static partial Program
 	field public static integer Z
 	method public static prototype void ProtoMethod(var x as integer, var y as integer)
 end class
 
 [enum: Flags()]
-enum public auto ansi integer MyEnum
+enum public integer MyEnum
 	None = 0
 	A = 1
 	B = 2
 	C = 4
 end enum
 
-class public auto ansi static Program
+class public sealed MyAttribute extends Attribute
+
+	field public single[] Arr
+
+	method public void MyAttribute(var arr as string[])
+		mybase::ctor()
+	end method
+
+	method public void MyAttribute(var arr as integer[])
+		mybase::ctor()
+	end method
+
+end class
+
+class public static Program
 	
 	property public static autogen integer AutoTest
 	property public initonly static autogen integer AutoROTest
@@ -859,6 +873,7 @@ class public auto ansi static Program
 		//xa[0]::A = 1
 	end method
 
+	[method: My(new integer[] {1, 2})]
 	method public static string LeaveMet(var x as integer)
 		if x > 0 then
 			return "pos"
@@ -870,6 +885,7 @@ class public auto ansi static Program
 		end if
 	end method
 
+	[method: My(new string[] {"hello", "world"}), Arr = new single[] {1f, 2f, 3f, 4f}]
 	method public static void LeaveMet2(var x as integer)
 		if x > 0 then
 			return

@@ -17,7 +17,7 @@ class public auto ansi beforefieldinit Token
 	end method
 
 	method public void Token(var value as string)
-		me::ctor()
+		mybase::ctor()
 		Value = value
 		Line = 0
 	end method
@@ -44,7 +44,7 @@ end class
 class public auto ansi NonExprToken extends Token
 
 	method public void NonExprToken(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void NonExprToken()
@@ -56,7 +56,7 @@ end class
 class public auto ansi ValueToken extends Token
 
 	method public void ValueToken(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void ValueToken()

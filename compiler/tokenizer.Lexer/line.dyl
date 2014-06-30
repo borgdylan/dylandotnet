@@ -13,7 +13,7 @@ class public auto ansi Line
 	field private boolean InChar
 
 	method public void Line()
-		me::ctor()
+		mybase::ctor()
 		PrevChar = string::Empty
 		InStr = false
 		InChar = false

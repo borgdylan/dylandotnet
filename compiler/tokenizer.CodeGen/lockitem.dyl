@@ -13,19 +13,19 @@ class public auto ansi LockItem extends TryItem
 	field public boolean IsTryLock
 
 	method public void LockItem()
-		me::ctor(0)
+		mybase::ctor(0)
 		LockeeLoc = 0
 		IsTryLock = false
 	end method
 
 	method public void LockItem(var loc as integer, var ln as integer)
-		me::ctor(ln)
+		mybase::ctor(ln)
 		LockeeLoc = loc
 		IsTryLock = false
 	end method
 
 	method public void LockItem(var loc as integer, var lb as Emit.Label, var ln as integer)
-		me::ctor(ln)
+		mybase::ctor(ln)
 		LockeeLoc = loc
 		IsTryLock = true
 		Lbl = lb

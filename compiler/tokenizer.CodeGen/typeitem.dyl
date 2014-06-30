@@ -24,7 +24,7 @@ class public auto ansi partial TypeItem
 	field public C5.HashDictionary<of string, TypeParamItem> TypGenParams
 
 	method private void TypeItem(var nme as string, var bld as TypeBuilder, var bld3 as EnumBuilder)
-		me::ctor()
+		mybase::ctor()
 		IsStatic = false
 		Name = nme
 		TypeBldr = bld

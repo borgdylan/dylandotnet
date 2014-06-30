@@ -87,12 +87,14 @@
 		<keyword>ctor</keyword>
 		<keyword>mybase</keyword>
 		<keyword>and</keyword>
+		<keyword>andalso</keyword>
 		<keyword>nand</keyword>	
 		<keyword>is</keyword>
 		<keyword>notlike</keyword>
 		<keyword>like</keyword>
 		<keyword>new</keyword>
 		<keyword>or</keyword>
+		<keyword>orelse</keyword>
 		<keyword>xor</keyword>
 		<keyword>nor</keyword>
 		<keyword>xnor</keyword>
@@ -148,6 +150,7 @@
 		<keyword>beforefieldinit</keyword>
 		<keyword>partial</keyword>
 		<keyword>prototype</keyword>
+		<keyword>override</keyword>
 		<keyword>namespace</keyword>
 		<keyword>import</keyword>
 		<keyword>method</keyword>
@@ -211,7 +214,7 @@
 	</context>
 	
 	<context id="hash-keyw" style-ref="keyword"  class="string" class-disabled="no-spell-check">
-		<match>#(expr|ternary|if|else|elseif|define|undef|warning|error|expr|include|refasm|sign|refstdasm|debug|region)</match>
+		<match>#(expr|ternary|if|else|elseif|define|undef|warning|error|expr|include|refasm|sign|refstdasm|debug|region|embed)</match>
 	</context>
 	
     <context id="null-value" style-ref="null-value">

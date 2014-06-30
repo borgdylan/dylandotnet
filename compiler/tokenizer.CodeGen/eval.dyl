@@ -13,7 +13,7 @@ class public auto ansi beforefieldinit Evaluator
 	field public OpStack Stack
 
 	method public void Evaluator()
-		me::ctor()
+		mybase::ctor()
 		Stack = null
 	end method
 	
@@ -23,7 +23,7 @@ class public auto ansi beforefieldinit Evaluator
 		if tok is Op then
 			return #expr($Op$tok)::PrecNo
 		elseif tok is LParen then
-			return -1		
+			return -1
 		elseif tok is RParen then
 			return 0
 		else
@@ -448,10 +448,15 @@ class public auto ansi beforefieldinit Evaluator
 		var idtb1 as boolean = false
 		var idtb2 as boolean = false
 		var idtisstatic as boolean = false
-		var pushaddr as boolean = mntok::IsRef and mntok::MemberAccessFlg
+		var pushaddr as boolean = mntok::IsRef andalso mntok::MemberAccessFlg
 		var baseflg as boolean = false
 		var mcparenttyp as IKVM.Reflection.Type = AsmFactory::CurnTypB
-		var mectorflg as boolean = (mntok::Value == "me::ctor") or (mntok::Value == "mybase::ctor")
+		var mectorflg as boolean = (mntok::Value == "mybase::ctor") orelse (mntok::Value == "me::ctor")
+
+		if emt andalso (mntok::Value == "me::ctor") then
+			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Using mybase::ctor is preferred over the use of me::ctor!")
+		end if
+
 		var ctorflg as boolean = mntok::Value == "ctor"
 		var mnstrarr as string[] = ParseUtils::StringParser(mntok::Value, ':')
 		var len as integer = mnstrarr[l] - 2

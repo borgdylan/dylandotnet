@@ -14,7 +14,7 @@ class public auto ansi FieldStmt extends Stmt
 	field public Expr ConstExp
 	
 	method public void FieldStmt()
-		me::ctor()
+		mybase::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		FieldName = new Ident()
 		FieldTyp = new TypeTok()

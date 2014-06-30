@@ -14,7 +14,7 @@ class public auto ansi MethodStmt extends Stmt
 	field public C5.LinkedList<of Expr> Params
 
 	method public void MethodStmt()
-		me::ctor()
+		mybase::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		MethodName = new MethodNameTok()
 		Params = new C5.LinkedList<of Expr>()

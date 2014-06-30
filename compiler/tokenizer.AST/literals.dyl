@@ -14,7 +14,7 @@ class public auto ansi abstract Literal extends ValueToken implements IUnaryOper
 	field family string _OrdOp
 
 	method family void Literal(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		LitTyp = null
 		_Conv = false
 		_TTok = null
@@ -36,7 +36,7 @@ class public auto ansi NullLiteral extends Literal
 	field public object NullVal
 
 	method public void NullLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NullVal = null
 		LitTyp = new ObjectTok()
 	end method
@@ -58,7 +58,7 @@ class public auto ansi ConstLiteral extends Literal
 	field public IKVM.Reflection.Type IntTyp
 
 	method public void ConstLiteral(var value as object)
-		me::ctor()
+		mybase::ctor()
 		ConstVal = value
 		LitTyp = new ObjectTok()
 		ExtTyp = null
@@ -77,7 +77,7 @@ class public auto ansi StringLiteral extends Literal
 	field public Token MemberToAccess
 
 	method public void StringLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		LitTyp = new StringTok()
 		MemberAccessFlg = false
 		MemberToAccess = new Token()
@@ -98,7 +98,7 @@ class public auto ansi CharLiteral extends Literal
 	field public char CharVal
 
 	method private void CharLiteral(var values as string, var value as char)
-		me::ctor(values)
+		mybase::ctor(values)
 		CharVal = value
 		LitTyp = new CharTok()
 	end method
@@ -131,14 +131,14 @@ class public auto ansi BooleanLiteral extends Literal implements INegatable
 	field private boolean _DoNeg
 
 	method public void BooleanLiteral()
-		me::ctor()
+		mybase::ctor()
 		BoolVal = false
 		LitTyp = new BooleanTok()
 		_DoNeg = false
 	end method
 
 	method public void BooleanLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		BoolVal = false
 		LitTyp = new BooleanTok()
 		_DoNeg = false
@@ -150,7 +150,7 @@ class public auto ansi BooleanLiteral extends Literal implements INegatable
 	end method
 	
 	method public void BooleanLiteral(var value as boolean)
-		me::ctor()
+		mybase::ctor()
 		BoolVal = value
 		LitTyp = new BooleanTok()
 		_DoNeg = false
@@ -169,11 +169,11 @@ end class
 class public auto ansi asbtract NumberLiteral extends Literal
 
 	method family void NumberLiteral()
-		me::ctor()
+		mybase::ctor()
 	end method
 
 	method family void NumberLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 
 end class
@@ -185,7 +185,7 @@ class public auto ansi IntLiteral extends NumberLiteral implements INegatable, I
 	field private boolean _DoNot
 
 	method public void IntLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = 0i
 		LitTyp = new IntegerTok()
 		_DoNeg = false
@@ -193,7 +193,7 @@ class public auto ansi IntLiteral extends NumberLiteral implements INegatable, I
 	end method
 
 	method public void IntLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = 0i
 		LitTyp = new IntegerTok()
 		var n as integer = 0
@@ -205,7 +205,7 @@ class public auto ansi IntLiteral extends NumberLiteral implements INegatable, I
 	end method
 	
 	method public void IntLiteral(var value as integer)
-		me::ctor($string$value)
+		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new IntegerTok()
 		_DoNeg = false
@@ -231,14 +231,14 @@ class public auto ansi DoubleLiteral extends NumberLiteral implements INegatable
 	field private boolean _DoNeg
 
 	method public void DoubleLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = 0d
 		LitTyp = new DoubleTok()
 		_DoNeg = false
 	end method
 
 	method public void DoubleLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = 0d
 		LitTyp = new DoubleTok()
 		var n as double = 0d
@@ -249,7 +249,7 @@ class public auto ansi DoubleLiteral extends NumberLiteral implements INegatable
 	end method
 	
 	method public void DoubleLiteral(var value as double)
-		me::ctor($string$value)
+		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new DoubleTok()
 		_DoNeg = false
@@ -269,14 +269,14 @@ class public auto ansi DecimalLiteral extends NumberLiteral implements INegatabl
 	field private boolean _DoNeg
 
 	method public void DecimalLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = new Decimal(0)
 		LitTyp = new DecimalTok()
 		_DoNeg = false
 	end method
 
 	method public void DecimalLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = new Decimal(0)
 		LitTyp = new DecimalTok()
 		var n as decimal = 0m
@@ -287,7 +287,7 @@ class public auto ansi DecimalLiteral extends NumberLiteral implements INegatabl
 	end method
 	
 	method public void DecimalLiteral(var value as decimal)
-		me::ctor($string$value)
+		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new DecimalTok()
 		_DoNeg = false
@@ -308,7 +308,7 @@ class public auto ansi SByteLiteral extends NumberLiteral implements INegatable,
 	field private boolean _DoNot
 
 	method public void SByteLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = 0b
 		LitTyp = new SByteTok()
 		_DoNeg = false
@@ -316,7 +316,7 @@ class public auto ansi SByteLiteral extends NumberLiteral implements INegatable,
 	end method
 
 	method public void SByteLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = 0b
 		LitTyp = new SByteTok()
 		var n as sbyte = 0b
@@ -328,7 +328,7 @@ class public auto ansi SByteLiteral extends NumberLiteral implements INegatable,
 	end method
 	
 	method public void SByteLiteral(var value as sbyte)
-		me::ctor($string$value)
+		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new SByteTok()
 		_DoNeg = false
@@ -352,7 +352,7 @@ class public auto ansi ShortLiteral extends NumberLiteral implements INegatable,
 	field private boolean _DoNot
 
 	method public void ShortLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = 0s
 		LitTyp = new ShortTok()
 		_DoNeg = false
@@ -360,7 +360,7 @@ class public auto ansi ShortLiteral extends NumberLiteral implements INegatable,
 	end method
 
 	method public void ShortLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = 0s
 		LitTyp = new ShortTok()
 		var n as short = 0s
@@ -372,7 +372,7 @@ class public auto ansi ShortLiteral extends NumberLiteral implements INegatable,
 	end method
 	
 	method public void ShortLiteral(var value as short)
-		me::ctor($string$value)
+		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new ShortTok()
 		_DoNeg = false
@@ -404,7 +404,7 @@ class public auto ansi LongLiteral extends NumberLiteral implements INegatable, 
 	field private boolean _DoNot
 
 	method public void LongLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = 0l
 		LitTyp = new LongTok()
 		_DoNeg = false
@@ -412,7 +412,7 @@ class public auto ansi LongLiteral extends NumberLiteral implements INegatable, 
 	end method
 
 	method public void LongLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = 0l
 		LitTyp = new LongTok()
 		var n as long = 0l
@@ -424,7 +424,7 @@ class public auto ansi LongLiteral extends NumberLiteral implements INegatable, 
 	end method
 	
 	method public void LongLiteral(var value as long)
-		me::ctor($string$value)
+		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new LongTok()
 		_DoNeg = false
@@ -446,14 +446,14 @@ class public auto ansi FloatLiteral extends NumberLiteral implements INegatable
 	field private boolean _DoNeg
 
 	method public void FloatLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = 0f
 		LitTyp = new SingleTok()
 		_DoNeg = false
 	end method
 
 	method public void FloatLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = 0f
 		LitTyp = new SingleTok()
 		var n as single = 0f
@@ -464,7 +464,7 @@ class public auto ansi FloatLiteral extends NumberLiteral implements INegatable
 	end method
 	
 	method public void FloatLiteral(var value as single)
-		me::ctor($string$value)
+		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new SingleTok()
 		_DoNeg = false
@@ -484,14 +484,14 @@ class public auto ansi UIntLiteral extends NumberLiteral implements INotable
 	field private boolean _DoNot
 
 	method public void UIntLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = 0ui
 		LitTyp = new UIntegerTok()
 		_DoNot = false
 	end method
 
 	method public void UIntLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = 0ui
 		LitTyp = new UIntegerTok()
 		var n as uinteger = 0ui
@@ -502,7 +502,7 @@ class public auto ansi UIntLiteral extends NumberLiteral implements INotable
 	end method
 	
 	method public void UIntLiteral(var value as uinteger)
-		me::ctor($string$value)
+		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new UIntegerTok()
 		_DoNot = false
@@ -522,14 +522,14 @@ class public auto ansi ByteLiteral extends NumberLiteral implements INotable
 	field private boolean _DoNot
 
 	method public void ByteLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = 0ub
 		LitTyp = new ByteTok()
 		_DoNot = false
 	end method
 
 	method public void ByteLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = 0ub
 		LitTyp = new ByteTok()
 		var n as byte = 0ub
@@ -540,7 +540,7 @@ class public auto ansi ByteLiteral extends NumberLiteral implements INotable
 	end method
 	
 	method public void ByteLiteral(var value as byte)
-		me::ctor($string$value)
+		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new ByteTok()
 		_DoNot = false
@@ -560,14 +560,14 @@ class public auto ansi UShortLiteral extends NumberLiteral implements INotable
 	field private boolean _DoNot
 
 	method public void UShortLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = 0us
 		LitTyp = new UShortTok()
 		_DoNot = false
 	end method
 
 	method public void UShortLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = 0us
 		LitTyp = new UShortTok()
 		var n as ushort = 0us
@@ -578,7 +578,7 @@ class public auto ansi UShortLiteral extends NumberLiteral implements INotable
 	end method
 	
 	method public void UShortLiteral(var value as ushort)
-		me::ctor($string$value)
+		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new UShortTok()
 		_DoNot = false
@@ -598,14 +598,14 @@ class public auto ansi ULongLiteral extends NumberLiteral implements INotable
 	field private boolean _DoNot
 
 	method public void ULongLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = 0ul
 		LitTyp = new ULongTok()
 		_DoNot = false
 	end method
 
 	method public void ULongLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = 0ul
 		LitTyp = new ULongTok()
 		var n as ulong = 0ul
@@ -616,7 +616,7 @@ class public auto ansi ULongLiteral extends NumberLiteral implements INotable
 	end method
 	
 	method public void ULongLiteral(var value as ulong)
-		me::ctor($string$value)
+		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new ULongTok()
 		_DoNot = false
@@ -637,7 +637,7 @@ class public auto ansi IntPtrLiteral extends NumberLiteral implements INegatable
 	field private boolean _DoNeg
 	
 	method public void IntPtrLiteral()
-		me::ctor()
+		mybase::ctor()
 		NumVal = new IntPtr(0)
 		LitTyp = new IntPtrTok()
 		_DoNot = false
@@ -645,7 +645,7 @@ class public auto ansi IntPtrLiteral extends NumberLiteral implements INegatable
 	end method
 
 	method public void IntPtrLiteral(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		NumVal = new IntPtr(0)
 		LitTyp = new IntPtrTok()
 		_DoNot = false

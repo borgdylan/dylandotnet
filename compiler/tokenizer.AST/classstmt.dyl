@@ -16,7 +16,7 @@ class public auto ansi ClassStmt extends Stmt implements IHasConstraints, IConst
 	field private C5.HashDictionary<of string, C5.LinkedList<of Token> > _Constraints
 
 	method public void ClassStmt()
-		me::ctor()
+		mybase::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		ClassName = new TypeTok()
 		InhClass = new TypeTok()

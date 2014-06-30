@@ -13,7 +13,7 @@ class public auto ansi Expr
 	field public Type ResultTyp
 
 	method public void Expr()
-		me::ctor()
+		mybase::ctor()
 		Tokens = new C5.ArrayList<of Token>(3)
 		Line = 0
 		ResultTyp = null

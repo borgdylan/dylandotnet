@@ -12,7 +12,7 @@ class public auto ansi VarStmt extends Stmt
 	field public Ident VarName
 
 	method public void VarStmt()
-		me::ctor()
+		mybase::ctor()
 		VarTyp = new TypeTok()
 		VarName = new Ident()
 	end method
@@ -27,7 +27,7 @@ class public auto ansi VarAsgnStmt extends Stmt
 	field public boolean IsUsing
 	
 	method public void VarAsgnStmt()
-		me::ctor()
+		mybase::ctor()
 		VarTyp = new TypeTok()
 		VarName = new Ident()
 		RExpr = new Expr()
@@ -43,7 +43,7 @@ class public auto ansi InfVarAsgnStmt extends Stmt
 	field public boolean IsUsing
 
 	method public void InfVarAsgnStmt()
-		me::ctor()
+		mybase::ctor()
 		VarName = new Ident()
 		RExpr = new Expr()
 		IsUsing = false

@@ -13,7 +13,7 @@ class public auto ansi abstract Op extends Token
 	field public Token RChild
 
 	method family void Op()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 0
 		LChild = null
 		RChild = null
@@ -25,7 +25,7 @@ end class
 class public auto ansi AssignOp extends Op
 
 	method public void AssignOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 1
 	end method
 	
@@ -39,7 +39,7 @@ end class
 class public auto ansi AssignOp2 extends Op
 
 	method public void AssignOp2()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 1
 	end method
 	
@@ -53,7 +53,7 @@ end class
 class public auto ansi AsOp extends Op
 
 	method public void AsOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 8
 	end method
 	
@@ -67,7 +67,7 @@ end class
 class public auto ansi CoalesceOp extends Op
 
 	method public void CoalesceOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 8
 	end method
 	

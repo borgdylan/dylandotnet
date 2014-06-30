@@ -13,19 +13,19 @@ class private auto ansi TILambdas
 	field assembly IKVM.Reflection.Type TB
 
 	method assembly void TILambdas()
-		me::ctor()
+		mybase::ctor()
 		Name = string::Empty
 		TB = null
 	end method
 
 	method assembly void TILambdas(var name as string, var gp as integer)
-		me::ctor()
+		mybase::ctor()
 		Name = name
 		NrGenParams = gp
 	end method
 
 	method assembly void TILambdas(var name as IKVM.Reflection.Type)
-		me::ctor()
+		mybase::ctor()
 		TB = #ternary {name::get_IsConstructedGenericType() ? name::GetGenericTypeDefinition(), name}
 	end method
 

@@ -13,7 +13,7 @@ class public auto ansi VarExpr extends Expr
 	field public Token Attr
 
 	method public void VarExpr()
-		me::ctor()
+		mybase::ctor()
 		VarTyp = new TypeTok()
 		VarName = new Ident()
 		Attr = null

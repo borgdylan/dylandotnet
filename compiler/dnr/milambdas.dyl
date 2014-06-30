@@ -16,7 +16,7 @@ class private auto ansi MILambdas
 	field assembly boolean ProtectedFlag
 
 	method assembly void MILambdas()
-		me::ctor()
+		mybase::ctor()
 		Name = string::Empty
 		ParamLen = 0
 		GenParams = null
@@ -26,7 +26,7 @@ class private auto ansi MILambdas
 	end method
 
 	method assembly void MILambdas(var name as string)
-		me::ctor()
+		mybase::ctor()
 		Name = name
 		ParamLen = 0
 		GenParams = null
@@ -36,7 +36,7 @@ class private auto ansi MILambdas
 	end method
 
 	method assembly void MILambdas(var name as string, var snk as IKVM.Reflection.Type)
-		me::ctor()
+		mybase::ctor()
 		Name = name
 		ParamLen = 0
 		GenParams = null
@@ -46,7 +46,7 @@ class private auto ansi MILambdas
 	end method
 
 	method assembly void MILambdas(var genparams as IKVM.Reflection.Type[])
-		me::ctor()
+		mybase::ctor()
 		Name = string::Empty
 		ParamLen = 0
 		GenParams = genparams
@@ -56,7 +56,7 @@ class private auto ansi MILambdas
 	end method
 
 	method assembly void MILambdas(var name as string,var paramlen as integer, var hvint as boolean, var protf as boolean)
-		me::ctor()
+		mybase::ctor()
 		Name = name
 		ParamLen = paramlen
 		GenParams = null

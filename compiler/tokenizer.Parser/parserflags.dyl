@@ -34,7 +34,7 @@ class public auto ansi Flags
 	field public string CurPath
 
 	method public void Flags()
-		me::ctor()
+		mybase::ctor()
 		//true only for first parser
 		//AssemFlg = false
 		//--------------------------

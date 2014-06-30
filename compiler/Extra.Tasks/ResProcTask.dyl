@@ -18,7 +18,7 @@ namespace Extra.Tasks
 		property public autogen ITaskItem[] Outputs
 
 		method public void ResProcTask()
-			me::ctor()
+			mybase::ctor()
 		end method
 
 		method private void WarnH(var cm as Msg)

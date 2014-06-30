@@ -14,7 +14,7 @@ class public auto ansi PropertyStmt extends Stmt
 	field public C5.LinkedList<of Expr> Params
 
 	method public void PropertyStmt()
-		me::ctor()
+		mybase::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		PropertyName = new Ident()
 		PropertyTyp = new TypeTok()
@@ -36,7 +36,7 @@ class public auto ansi PropertySetStmt extends Stmt
 	field public Ident Setter
 
 	method public void PropertySetStmt()
-		me::ctor()
+		mybase::ctor()
 		Setter = null
 	end method
 
@@ -47,7 +47,7 @@ class public auto ansi PropertyGetStmt extends Stmt
 	field public Ident Getter
 
 	method public void PropertyGetStmt()
-		me::ctor()
+		mybase::ctor()
 		Getter = null
 	end method
 

@@ -13,18 +13,18 @@ class public auto ansi TypeTok extends ValueToken implements ICloneable
 	field public IKVM.Reflection.Type RefTyp
 
 	method public void TypeTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		IsArray = false
 		IsByRef = false
 		RefTyp = null
 	end method
 	
 	method public void TypeTok()
-		me::ctor(string::Empty)
+		mybase::ctor(string::Empty)
 	end method
 
 	method public void TypeTok(var value as IKVM.Reflection.Type)
-		me::ctor(value::ToString())
+		mybase::ctor(value::ToString())
 		IsByRef = value::get_IsByRef()
 		if IsByRef then
 			value = value::GetElementType()
@@ -61,7 +61,7 @@ end class
 class public auto ansi SpecialTypeTok extends TypeTok
 
 	method public void SpecialTypeTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 
 end class
@@ -71,7 +71,7 @@ class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 	field public C5.LinkedList<of TypeTok> Params
 	
 	method public void GenericTypeTok(var value as string, var params as IEnumerable<of TypeTok>)
-		me::ctor(value)
+		mybase::ctor(value)
 		Params = new C5.LinkedList<of TypeTok>() {AddAll(params)}
 	end method
 	
@@ -132,7 +132,7 @@ end class
 class public auto ansi beforefieldinit StringTok extends SpecialTypeTok
 
 	method public void StringTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void StringTok()
@@ -157,7 +157,7 @@ end class
 class public auto ansi beforefieldinit IntegerTok extends SpecialTypeTok
 
 	method public void IntegerTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void IntegerTok()
@@ -181,7 +181,7 @@ end class
 class public auto ansi beforefieldinit DoubleTok extends SpecialTypeTok
 
 	method public void DoubleTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void DoubleTok()
@@ -205,7 +205,7 @@ end class
 class public auto ansi beforefieldinit BooleanTok extends SpecialTypeTok
 	
 	method public void BooleanTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void BooleanTok()
@@ -229,7 +229,7 @@ end class
 class public auto ansi beforefieldinit CharTok extends SpecialTypeTok
 	
 	method public void CharTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void CharTok()
@@ -253,7 +253,7 @@ end class
 class public auto ansi beforefieldinit DecimalTok extends SpecialTypeTok
 	
 	method public void DecimalTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void DecimalTok()
@@ -277,7 +277,7 @@ end class
 class public auto ansi beforefieldinit LongTok extends SpecialTypeTok
 
 	method public void LongTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void LongTok()
@@ -301,7 +301,7 @@ end class
 class public auto ansi beforefieldinit SByteTok extends SpecialTypeTok
 
 	method public void SByteTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void SByteTok()
@@ -326,7 +326,7 @@ end class
 class public auto ansi beforefieldinit ShortTok extends SpecialTypeTok
 	
 	method public void ShortTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void ShortTok()
@@ -350,11 +350,11 @@ end class
 class public auto ansi beforefieldinit SingleTok extends SpecialTypeTok
 	
 	method public void SingleTok()
-		me::ctor("single")
+		mybase::ctor("single")
 	end method
 
 	method public void SingleTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public override string ToString()
@@ -374,7 +374,7 @@ end class
 class public auto ansi beforefieldinit ObjectTok extends SpecialTypeTok
 
 	method public void ObjectTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void ObjectTok()
@@ -398,7 +398,7 @@ end class
 class public auto ansi beforefieldinit VoidTok extends SpecialTypeTok
 
 	method public void VoidTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void VoidTok()
@@ -414,7 +414,7 @@ end class
 class public auto ansi beforefieldinit UIntegerTok extends SpecialTypeTok
 
 	method public void UIntegerTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void UIntegerTok()
@@ -438,7 +438,7 @@ end class
 class public auto ansi beforefieldinit ULongTok extends SpecialTypeTok
 
 	method public void ULongTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void ULongTok()
@@ -462,7 +462,7 @@ end class
 class public auto ansi beforefieldinit ByteTok extends SpecialTypeTok
 
 	method public void ByteTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void ByteTok()
@@ -486,7 +486,7 @@ end class
 class public auto ansi beforefieldinit UShortTok extends SpecialTypeTok
 	
 	method public void UShortTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void UShortTok()
@@ -510,7 +510,7 @@ end class
 class public auto ansi beforefieldinit IntPtrTok extends SpecialTypeTok
 	
 	method public void IntPtrTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 	end method
 	
 	method public void IntPtrTok()

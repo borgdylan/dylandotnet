@@ -15,7 +15,7 @@ class public auto ansi TypeParamItem
 	field public C5.LinkedList<of IKVM.Reflection.Type> Interfaces
 	
 	method public void TypeParamItem(var name as string, var bld as GenericTypeParameterBuilder)
-		me::ctor()
+		mybase::ctor()
 		Bldr = bld
 		Name = name
 		BaseType = Loader::CachedLoadClass("System.Object")

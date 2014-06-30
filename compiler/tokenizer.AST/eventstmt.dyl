@@ -13,7 +13,7 @@ class public auto ansi EventStmt extends Stmt
 	field public TypeTok EventTyp
 
 	method public void EventStmt()
-		me::ctor()
+		mybase::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		EventName = new Ident()
 		EventTyp = new TypeTok()
@@ -30,7 +30,7 @@ class public auto ansi EventAddStmt extends Stmt
 	field public Ident Adder
 
 	method public void EventAddStmt()
-		me::ctor()
+		mybase::ctor()
 		Adder = null
 	end method
 
@@ -41,7 +41,7 @@ class public auto ansi EventRemoveStmt extends Stmt
 	field public Ident Remover
 
 	method public void EventRemoveStmt()
-		me::ctor()
+		mybase::ctor()
 		Remover = null
 	end method
 

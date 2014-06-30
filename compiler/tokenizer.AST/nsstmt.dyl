@@ -11,7 +11,7 @@ class public auto ansi NSStmt extends Stmt
 	field public Token NS
 
 	method public void NSStmt()
-		me::ctor()
+		mybase::ctor()
 		NS = new Token()
 	end method
 	

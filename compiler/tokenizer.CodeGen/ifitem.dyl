@@ -14,7 +14,7 @@ class public auto ansi IfItem
 	field public integer Line
 
 	method public void IfItem()
-		me::ctor()
+		mybase::ctor()
 		ElsePass = false
 		Line = 0
 	end method

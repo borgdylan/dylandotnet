@@ -12,7 +12,7 @@ class public auto ansi Stmt
 	field public integer Line
 
 	method public void Stmt()
-		me::ctor()
+		mybase::ctor()
 		Tokens = new C5.ArrayList<of Token>(5)
 		Line = 0
 	end method
@@ -33,13 +33,13 @@ class public auto ansi StmtSet
 	field public string Path
 
 	method public void StmtSet()
-		me::ctor()
+		mybase::ctor()
 		Stmts = new C5.ArrayList<of Stmt>()
 		Path = string::Empty
 	end method
 	
 	method public void StmtSet(var p as string)
-		me::ctor()
+		mybase::ctor()
 		Stmts = new C5.ArrayList<of Stmt>()
 		Path = p
 	end method

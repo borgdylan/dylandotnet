@@ -11,7 +11,7 @@ class public auto ansi RefasmStmt extends Stmt
 	field public Token AsmPath
 
 	method public void RefasmStmt()
-		me::ctor()
+		mybase::ctor()
 		AsmPath = new Token()
 	end method
 	
@@ -30,7 +30,7 @@ class public auto ansi RefstdasmStmt extends Stmt
 	field public Token AsmPath
 
 	method public void RefstdasmStmt()
-		me::ctor()
+		mybase::ctor()
 		AsmPath = new Token()
 	end method
 	

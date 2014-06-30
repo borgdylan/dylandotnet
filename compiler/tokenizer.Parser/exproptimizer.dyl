@@ -11,7 +11,7 @@ class public auto ansi ExprOptimizer
 	field public Flags PFlags
 	
 	method public void ExprOptimizer(var pf as Flags)
-		me::ctor()
+		mybase::ctor()
 		PFlags = pf
 	end method
 	

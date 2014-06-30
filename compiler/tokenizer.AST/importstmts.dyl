@@ -12,7 +12,7 @@ class public auto ansi ImportStmt extends Stmt
 	field public Token Alias
 
 	method public void ImportStmt()
-		me::ctor()
+		mybase::ctor()
 		NS = new Token()
 		Alias = new Token()
 	end method
@@ -38,7 +38,7 @@ class public auto ansi LocimportStmt extends Stmt
 	field public Token NS
 
 	method public void LocimportStmt()
-		me::ctor()
+		mybase::ctor()
 		NS = new Token()
 	end method
 	

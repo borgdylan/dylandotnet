@@ -21,7 +21,7 @@ class public auto ansi ExprCallTok extends ValueToken implements IUnaryOperatabl
 	property public override newslot autogen boolean DoDec
 	
 	method public void ExprCallTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		_Conv = false
 		_TTok = new TypeTok()
 		_DoNeg = false

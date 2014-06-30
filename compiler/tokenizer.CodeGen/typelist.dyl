@@ -15,7 +15,7 @@ class public auto ansi TypeList
 	field public C5.IList<of TypeItem> Types
 
 	method public void TypeList()
-		me::ctor()
+		mybase::ctor()
 		Types = new C5.LinkedList<of TypeItem>()
 	end method
 

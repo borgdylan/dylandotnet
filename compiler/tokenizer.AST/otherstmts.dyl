@@ -12,7 +12,7 @@ class public auto ansi AssignStmt extends Stmt
 	field public Expr RExp
 
 	method public void AssignStmt()
-		me::ctor()
+		mybase::ctor()
 		LExp = new Expr()
 		RExp = new Expr()
 	end method
@@ -24,7 +24,7 @@ class public auto ansi IncStmt extends Stmt
 	field public Ident NumVar
 
 	method public void IncStmt()
-		me::ctor()
+		mybase::ctor()
 		NumVar = null
 	end method
 
@@ -35,7 +35,7 @@ class public auto ansi DecStmt extends Stmt
 	field public Ident NumVar
 
 	method public void DecStmt()
-		me::ctor()
+		mybase::ctor()
 		NumVar = null
 	end method
 
@@ -46,7 +46,7 @@ class public auto ansi ReturnStmt extends Stmt
 	field public Expr RExp
 
 	method public void ReturnStmt()
-		me::ctor()
+		mybase::ctor()
 		RExp = new Expr()
 	end method
 
@@ -57,7 +57,7 @@ class public auto ansi MethodCallStmt extends Stmt
 	field public Token MethodToken
 
 	method public void MethodCallStmt()
-		me::ctor()
+		mybase::ctor()
 		MethodToken = new Token()
 	end method
 
@@ -77,7 +77,7 @@ class public auto ansi ErrorStmt extends Stmt
 	field public Token Msg
 
 	method public void ErrorStmt()
-		me::ctor()
+		mybase::ctor()
 		Msg = new Token()
 	end method
 	
@@ -96,7 +96,7 @@ class public auto ansi WarningStmt extends Stmt
 	field public Token Msg
 
 	method public void WarningStmt()
-		me::ctor()
+		mybase::ctor()
 		Msg = new Token()
 	end method
 	
@@ -115,7 +115,7 @@ class public auto ansi SignStmt extends Stmt
 	field public Token KeyPath
 
 	method public void SignStmt()
-		me::ctor()
+		mybase::ctor()
 		KeyPath = new Token()
 	end method
 	
@@ -135,7 +135,7 @@ class public auto ansi EmbedStmt extends Stmt
 	field public Token LogicalName
 
 	method public void EmbedStmt()
-		me::ctor()
+		mybase::ctor()
 		Path = new Token()
 		LogicalName = new Token()
 	end method
@@ -160,7 +160,7 @@ class public auto ansi LockStmt extends Stmt
 	field public Expr Lockee
 
 	method public void LockStmt()
-		me::ctor()
+		mybase::ctor()
 		Lockee = new Expr()
 	end method
 
@@ -171,7 +171,7 @@ class public auto ansi TryLockStmt extends Stmt
 	field public Expr Lockee
 
 	method public void TryLockStmt()
-		me::ctor()
+		mybase::ctor()
 		Lockee = new Expr()
 	end method
 

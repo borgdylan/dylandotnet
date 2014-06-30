@@ -12,7 +12,7 @@ class public auto ansi abstract AttrStmt extends Stmt
 	field public C5.ArrayList<of AttrValuePair> Pairs
 
 	method family void AttrStmt()
-		me::ctor()
+		mybase::ctor()
 		Ctor = null
 		Pairs = new C5.ArrayList<of AttrValuePair>()
 	end method
@@ -45,7 +45,7 @@ class public auto ansi ParameterAttrStmt extends AttrStmt
 	field public integer Index
 	
 	method public void ParameterAttrStmt()
-		me::ctor()
+		mybase::ctor()
 		Index = 0
 	end method
 	

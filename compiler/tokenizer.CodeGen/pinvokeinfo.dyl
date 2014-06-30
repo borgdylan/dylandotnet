@@ -13,7 +13,7 @@ class public auto ansi sealed PInvokeInfo
 	field public CharSet CSet
 	
 	method public void PInvokeInfo()
-		me::ctor()
+		mybase::ctor()
 		LibName = "libc"
 		CallConv = CallingConvention::Cdecl
 		CSet = CharSet::Auto

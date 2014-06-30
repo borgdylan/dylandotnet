@@ -17,7 +17,7 @@ class public auto ansi PropertyItem
 	field public C5.LinkedList<of Expr> Params
 
 	method public void PropertyItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as PropertyBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)
-		me::ctor()
+		mybase::ctor()
 		Name = nme
 		PropertyTyp = typ
 		PropertyBldr = bld

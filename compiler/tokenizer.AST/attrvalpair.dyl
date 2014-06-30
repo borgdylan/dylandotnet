@@ -12,7 +12,7 @@ class public auto ansi AttrValuePair extends Token
 	field public Expr ValueExpr
 	
 	method public void AttrValuePair(var nme as Ident, var exp as Expr)
-		me::ctor()
+		mybase::ctor()
 		Name = nme
 		ValueExpr = exp
 	end method

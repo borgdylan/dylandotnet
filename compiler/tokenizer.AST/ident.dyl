@@ -32,7 +32,7 @@ class public auto ansi Ident extends ValueToken implements IUnaryOperatable, ICo
 	property public override newslot autogen boolean DoDec
 	
 	method public void Ident(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		IsRef = false
 		IsValInRef = false
 		_Conv = false

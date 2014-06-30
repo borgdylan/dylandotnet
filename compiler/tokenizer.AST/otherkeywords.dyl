@@ -755,14 +755,14 @@ class public auto ansi MeTok extends ValueToken implements IUnaryOperatable, ICo
 	field private string _OrdOp
 
 	method public void MeTok()
-		me::ctor()
+		mybase::ctor()
 		_Conv = false
 		_TTok = null
 		_OrdOp = string::Empty
 	end method
 
 	method public void MeTok(var value as string)
-		me::ctor(value)
+		mybase::ctor(value)
 		_Conv = false
 		_TTok = null
 		_OrdOp = string::Empty

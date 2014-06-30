@@ -11,7 +11,7 @@ class public auto ansi VerStmt extends Stmt
 	field public IntLiteral[] VersionNos
 
 	method public void VerStmt()
-		me::ctor()
+		mybase::ctor()
 		VersionNos = new IntLiteral[] {new IntLiteral(0), new IntLiteral(0), new IntLiteral(0), new IntLiteral(0)}
 	end method
 	

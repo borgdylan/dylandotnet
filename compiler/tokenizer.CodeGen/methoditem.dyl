@@ -15,7 +15,7 @@ class public auto ansi MethodItem
 	field public integer NrGenParams
 
 	method public void MethodItem(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var bld as MethodBuilder)
-		me::ctor()
+		mybase::ctor()
 		Name = nme
 		MethodTyp = typ
 		MethodBldr = bld

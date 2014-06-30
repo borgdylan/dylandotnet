@@ -15,7 +15,7 @@ class public auto ansi EventItem
 	field public IEnumerable<of Attributes.Attribute> Attrs
 
 	method public void EventItem()
-		me::ctor()
+		mybase::ctor()
 		Name = string::Empty
 		EventTyp = null
 		EventBldr = null
@@ -24,7 +24,7 @@ class public auto ansi EventItem
 	end method
 
 	method public void EventItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as EventBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)
-		me::ctor()
+		mybase::ctor()
 		Name = nme
 		EventTyp = typ
 		EventBldr = bld

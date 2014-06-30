@@ -16,7 +16,7 @@ class public auto ansi TokenOptimizer
 	field public boolean SpecialFlg
 	
 	method public void TokenOptimizer(var pf as Flags)
-		me::ctor()
+		mybase::ctor()
 		GenLvl = 0
 		CurlyLvl = 0
 		PFlags = pf

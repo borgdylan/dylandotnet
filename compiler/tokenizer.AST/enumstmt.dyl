@@ -13,7 +13,7 @@ class public auto ansi EnumStmt extends Stmt
 	field public TypeTok EnumTyp
 
 	method public void EnumStmt()
-		me::ctor()
+		mybase::ctor()
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		EnumName = new Ident()
 		EnumTyp = new TypeTok()

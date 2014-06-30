@@ -12,7 +12,7 @@ end class
 class public auto ansi AndOp extends LogicalOp
 
 	method public void AndOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 7
 	end method
 	
@@ -25,7 +25,7 @@ end class
 class public auto ansi OrOp extends LogicalOp
 
 	method public void OrOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 5
 	end method
 	
@@ -38,7 +38,7 @@ end class
 class public auto ansi AndAlsoOp extends LogicalOp
 
 	method public void AndAlsoOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 4
 	end method
 	
@@ -51,7 +51,7 @@ end class
 class public auto ansi OrElseOp extends LogicalOp
 
 	method public void OrElseOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 3
 	end method
 	
@@ -64,7 +64,7 @@ end class
 class public auto ansi NandOp extends LogicalOp
 
 	method public void NandOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 7
 	end method
 	
@@ -77,7 +77,7 @@ end class
 class public auto ansi NorOp extends LogicalOp
 
 	method public void NorOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 5
 	end method
 	
@@ -90,7 +90,7 @@ end class
 class public auto ansi XorOp extends LogicalOp
 
 	method public void XorOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 6
 	end method
 	
@@ -103,7 +103,7 @@ end class
 class public auto ansi XnorOp extends LogicalOp
 
 	method public void XnorOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 6
 	end method
 	
@@ -116,7 +116,7 @@ end class
 class public auto ansi NotOp extends LogicalOp
 
 	method public void NotOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 13
 	end method
 	
@@ -129,7 +129,7 @@ end class
 class public auto ansi NegOp extends LogicalOp
 
 	method public void NegOp()
-		me::ctor()
+		mybase::ctor()
 		PrecNo = 13
 	end method
 	

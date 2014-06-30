@@ -14,7 +14,7 @@ class public auto ansi ScopeStmt extends Stmt
 	field public boolean Flg
 
 	method public void ScopeStmt()
-		me::ctor()
+		mybase::ctor()
 		Opt = null
 		Flg = false
 	end method

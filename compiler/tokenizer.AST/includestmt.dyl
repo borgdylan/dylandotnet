@@ -13,7 +13,7 @@ class public auto ansi IncludeStmt extends Stmt
 	field public boolean HasError
 
 	method public void IncludeStmt()
-		me::ctor()
+		mybase::ctor()
 		Path = new Token()
 		SSet = null
 		HasError = false
