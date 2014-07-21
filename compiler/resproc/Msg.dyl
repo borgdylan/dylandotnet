@@ -15,7 +15,7 @@ namespace dylan.NET.ResProc
 		property public autogen string Msg
 		
 		method public void Msg()
-			_Line = 0
+			//_Line = 0
 			_File = string::Empty
 			_Msg = string::Empty
 		end method

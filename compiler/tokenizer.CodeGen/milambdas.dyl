@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class private auto ansi MILambdas2
+class private MILambdas2
 
 	field assembly string Name
 	field assembly integer ParamLen
@@ -16,16 +16,16 @@ class private auto ansi MILambdas2
 	method assembly void MILambdas2()
 		mybase::ctor()
 		Name = string::Empty
-		Params = null
-		ParamLen = 0
-		Auxt = null
+		//Params = null
+		//ParamLen = 0
+		//Auxt = null
 	end method
 
 	method assembly void MILambdas2(var name as string, var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		mybase::ctor()
 		Name = name
 		Params = params
-		ParamLen = 0
+		//ParamLen = 0
 		Auxt = auxt
 	end method
 	
@@ -33,14 +33,14 @@ class private auto ansi MILambdas2
 		mybase::ctor()
 		Name = string::Empty
 		Params = params
-		ParamLen = 0
+		//ParamLen = 0
 		Auxt = auxt
 	end method
 	
 	method assembly void MILambdas2(var name as string, var pl as integer)
 		mybase::ctor()
 		Name = name
-		Params = null
+		//Params = null
 		ParamLen = pl
 	end method
 
@@ -122,11 +122,7 @@ class private auto ansi MILambdas2
 	end method
 
 	method assembly boolean DetermineIfCandidate(var mi as MethodInfo)
-		if mi::get_IsGenericMethod() then
-			return false
-		else
-			return CmpTyps(mi::GetParameters(),Params)
-		end if
+		return #ternary {mi::get_IsGenericMethod() ? false, CmpTyps(mi::GetParameters(),Params)}
 	end method
 	
 	method assembly boolean DetermineIfCandidate2(var mi as MethodInfo)

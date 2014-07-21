@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi CollectionItem
+class public CollectionItem
 
 	field public IKVM.Reflection.Type ElemType
 	field public ConstructorInfo Ctor
@@ -14,9 +14,9 @@ class public auto ansi CollectionItem
 	
 	method public void CollectionItem()
 		mybase::ctor()
-		ElemType = null
-		Ctor = null
-		AddMtd = null
+		//ElemType = null
+		//Ctor = null
+		//AddMtd = null
 	end method
 
 end class

@@ -206,18 +206,14 @@
       </p>
     </div>
     <h1 class="PageTitle" id="T:dylan.NET.Utils.MemoryFS">MemoryFS  Class</h1>
-    <p class="Summary" id="T:dylan.NET.Utils.MemoryFS:Summary">
-      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-    </p>
+    <p class="Summary" id="T:dylan.NET.Utils.MemoryFS:Summary">Implements an in-memory file system.</p>
     <div>
       <h2>Syntax</h2>
       <div class="Signature" id="T:dylan.NET.Utils.MemoryFS:Signature">public static class  <b>MemoryFS</b></div>
     </div>
     <div class="Remarks" id="T:dylan.NET.Utils.MemoryFS:Docs">
       <h2 class="Section">Remarks</h2>
-      <div class="SectionBox" id="T:dylan.NET.Utils.MemoryFS:Docs:Remarks">
-        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-      </div>
+      <div class="SectionBox" id="T:dylan.NET.Utils.MemoryFS:Docs:Remarks">This class can be used for in-memory stream input and output from libraries/compilers.</div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:dylan.NET.Utils.MemoryFS:Docs:Version Information">
         <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
@@ -238,7 +234,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:dylan.NET.Utils.MemoryFS.AddFile(System.String,System.IO.Stream)">AddFile</a>
-                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IO.Stream">System.IO.Stream</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IO.Stream">System.IO.Stream</a>)<blockquote>Adds a new stream to the in-memory file system.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -247,7 +243,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:dylan.NET.Utils.MemoryFS.Clear()">Clear</a>
-                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>()<blockquote>Clears all streams from the file system restoring it to an empty state.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -256,7 +252,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:dylan.NET.Utils.MemoryFS.GetFile(System.String)">GetFile</a>
-                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IO.Stream">System.IO.Stream</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IO.Stream">System.IO.Stream</a></nobr><blockquote>Tries to retrieve the stream at the specified path.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -265,7 +261,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:dylan.NET.Utils.MemoryFS.HasFile(System.String)">HasFile</a>
-                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote>Checks for the existance of a stream inside the file system.</blockquote></td>
               </tr>
             </table>
           </div>
@@ -277,9 +273,7 @@
       <div class="SectionBox" id="_MemberDetails">
         <h3 id="M:dylan.NET.Utils.MemoryFS.AddFile(System.String,System.IO.Stream)">AddFile Method</h3>
         <blockquote id="M:dylan.NET.Utils.MemoryFS.AddFile(System.String,System.IO.Stream):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Adds a new stream to the in-memory file system.</p>
           <h2>Syntax</h2>
           <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddFile</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> path, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IO.Stream">System.IO.Stream</a> s)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -288,20 +282,15 @@
               <dt>
                 <i>path</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The path where the stream should be placed inside the file system.</dd>
               <dt>
                 <i>s</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The stream to add to the file system.</dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:dylan.NET.Utils.MemoryFS.AddFile(System.String,System.IO.Stream):Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:dylan.NET.Utils.MemoryFS.AddFile(System.String,System.IO.Stream):Version Information">
@@ -310,15 +299,11 @@
         </blockquote>
         <h3 id="M:dylan.NET.Utils.MemoryFS.Clear()">Clear Method</h3>
         <blockquote id="M:dylan.NET.Utils.MemoryFS.Clear():member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Clears all streams from the file system restoring it to an empty state.</p>
           <h2>Syntax</h2>
           <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Clear</b> ()</div>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Utils.MemoryFS.Clear():Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="M:dylan.NET.Utils.MemoryFS.Clear():Remarks">The clearing operation does not dispose any of the streams so that they still could be used by code that still references them.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:dylan.NET.Utils.MemoryFS.Clear():Version Information">
             <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
@@ -326,9 +311,7 @@
         </blockquote>
         <h3 id="M:dylan.NET.Utils.MemoryFS.GetFile(System.String)">GetFile Method</h3>
         <blockquote id="M:dylan.NET.Utils.MemoryFS.GetFile(System.String):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Tries to retrieve the stream at the specified path.</p>
           <h2>Syntax</h2>
           <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IO.Stream">System.IO.Stream</a> <b>GetFile</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> path)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -337,19 +320,13 @@
               <dt>
                 <i>path</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The path within the file system of the desired stream.</dd>
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:dylan.NET.Utils.MemoryFS.GetFile(System.String):Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Utils.MemoryFS.GetFile(System.String):Returns">The desired stream if found, else null.</blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Utils.MemoryFS.GetFile(System.String):Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="M:dylan.NET.Utils.MemoryFS.GetFile(System.String):Remarks">A return value of null means the stream required was not found. Handle this special return value accordingly.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:dylan.NET.Utils.MemoryFS.GetFile(System.String):Version Information">
             <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>
@@ -357,9 +334,7 @@
         </blockquote>
         <h3 id="M:dylan.NET.Utils.MemoryFS.HasFile(System.String)">HasFile Method</h3>
         <blockquote id="M:dylan.NET.Utils.MemoryFS.HasFile(System.String):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Checks for the existance of a stream inside the file system.</p>
           <h2>Syntax</h2>
           <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>HasFile</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> path)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -368,19 +343,13 @@
               <dt>
                 <i>path</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The path of the desired stream.</dd>
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:dylan.NET.Utils.MemoryFS.HasFile(System.String):Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Utils.MemoryFS.HasFile(System.String):Returns">True if the file system has an entry for the specified path, else false.</blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Utils.MemoryFS.HasFile(System.String):Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="M:dylan.NET.Utils.MemoryFS.HasFile(System.String):Remarks">If there is an entry for the specified path and the stream at that path is null, this method still returns true.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:dylan.NET.Utils.MemoryFS.HasFile(System.String):Version Information">
             <b>Namespace: </b>dylan.NET.Utils<br /><b>Assembly: </b>dnu (in dnu.dll)</div>

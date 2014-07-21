@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi MethodNameTok extends Ident implements IHasConstraints
+class public MethodNameTok extends Ident implements IMayHaveConstraints
 
 	method public void MethodNameTok()
 		mybase::ctor()
@@ -38,7 +38,7 @@ class public auto ansi MethodNameTok extends Ident implements IHasConstraints
 		return #ternary{idt is MethodNameTok ? $MethodNameTok$idt, new MethodNameTok(idt)}
 	end method
 
-	property public override newslot boolean HasConstraints
+	property public override newslot boolean MayHaveConstraints
 		get
 			return false
 		end get
@@ -46,7 +46,7 @@ class public auto ansi MethodNameTok extends Ident implements IHasConstraints
 
 end class
 
-class public auto ansi GenericMethodNameTok extends MethodNameTok implements IHasConstraints, IConstrainable
+class public GenericMethodNameTok extends MethodNameTok implements IMayHaveConstraints, IConstrainable
 
 	field public C5.LinkedList<of TypeTok> Params
 	field private C5.HashDictionary<of string, C5.LinkedList<of Token> > _Constraints
@@ -96,7 +96,7 @@ class public auto ansi GenericMethodNameTok extends MethodNameTok implements IHa
 		_Constraints::get_Item(param)::Add(ctr)
 	end method
 
-	property public override newslot boolean HasConstraints
+	property public override newslot boolean MayHaveConstraints
 		get
 			return true
 		end get

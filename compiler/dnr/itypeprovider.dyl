@@ -6,16 +6,16 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi abstract interface ITypeProvider
+class public abstract interface ITypeProvider
 
-	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetString()
-	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetChar()
-	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetInteger()
-	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetObject()
-	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetShort()
-	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetSByte()
-	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetLong()
-	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetSingle()
-	method public hidebysig virtual abstract newslot IKVM.Reflection.Type GetDouble()
+	method public IKVM.Reflection.Type GetString()
+	method public IKVM.Reflection.Type GetChar()
+	method public IKVM.Reflection.Type GetInteger()
+	method public IKVM.Reflection.Type GetObject()
+	method public IKVM.Reflection.Type GetShort()
+	method public IKVM.Reflection.Type GetSByte()
+	method public IKVM.Reflection.Type GetLong()
+	method public IKVM.Reflection.Type GetSingle()
+	method public IKVM.Reflection.Type GetDouble()
 
 end class

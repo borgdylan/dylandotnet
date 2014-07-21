@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi NewarrTok extends Token
+class public NewarrTok extends Token
 
 	method public override string ToString()
 		return "newarr"
@@ -14,7 +14,7 @@ class public auto ansi NewarrTok extends Token
 
 end class
 
-class public auto ansi NewTok extends Token
+class public NewTok extends Token
 
 	method public override string ToString()
 		return "new"
@@ -22,10 +22,10 @@ class public auto ansi NewTok extends Token
 
 end class
 
-//class public auto ansi CastclassTok extends Token
+//class public CastclassTok extends Token
 //end class
 
-class public auto ansi GettypeTok extends Token
+class public GettypeTok extends Token
 
 	method public override string ToString()
 		return "gettype"
@@ -33,7 +33,7 @@ class public auto ansi GettypeTok extends Token
 
 end class
 
-class public auto ansi DefaultTok extends Token
+class public DefaultTok extends Token
 
 	method public override string ToString()
 		return "default"
@@ -41,7 +41,7 @@ class public auto ansi DefaultTok extends Token
 
 end class
 
-class public auto ansi WhereTok extends NonExprToken
+class public WhereTok extends NonExprToken
 
 	method public override string ToString()
 		return "where"
@@ -49,7 +49,7 @@ class public auto ansi WhereTok extends NonExprToken
 
 end class
 
-class public auto ansi RefTok extends Token
+class public RefTok extends Token
 
 	method public override string ToString()
 		return "ref"
@@ -57,7 +57,7 @@ class public auto ansi RefTok extends Token
 
 end class
 
-class public auto ansi ValInRefTok extends Token
+class public ValInRefTok extends Token
 
 	method public override string ToString()
 		return "valinref"
@@ -65,7 +65,7 @@ class public auto ansi ValInRefTok extends Token
 
 end class
 
-class public auto ansi PtrTok extends Token
+class public PtrTok extends Token
 
 	method public override string ToString()
 		return "ptr"
@@ -73,16 +73,16 @@ class public auto ansi PtrTok extends Token
 
 end class
 
-//class public auto ansi DependTok extends Token
+//class public DependTok extends Token
 //end class
 //
-//class public auto ansi StdasmTok extends Token
+//class public StdasmTok extends Token
 //end class
 
-class public auto ansi abstract SwitchTok extends NonExprToken
+class public abstract SwitchTok extends NonExprToken
 end class
 
-class public auto ansi OnTok extends SwitchTok
+class public OnTok extends SwitchTok
 
 	method public override string ToString()
 		return "on"
@@ -90,7 +90,7 @@ class public auto ansi OnTok extends SwitchTok
 
 end class
 
-class public auto ansi OfTok extends Token
+class public OfTok extends Token
 
 	method public override string ToString()
 		return "of"
@@ -98,7 +98,7 @@ class public auto ansi OfTok extends Token
 
 end class
 
-class public auto ansi OffTok extends SwitchTok
+class public OffTok extends SwitchTok
 
 	method public override string ToString()
 		return "off"
@@ -106,10 +106,10 @@ class public auto ansi OffTok extends SwitchTok
 
 end class
 
-//class public auto ansi SingTok extends Token
+//class public SingTok extends Token
 //end class
 
-class public auto ansi ScopeTok extends NonExprToken
+class public ScopeTok extends NonExprToken
 
 	method public override string ToString()
 		return "#scope"
@@ -117,7 +117,7 @@ class public auto ansi ScopeTok extends NonExprToken
 
 end class
 
-class public auto ansi DebugTok extends NonExprToken
+class public DebugTok extends NonExprToken
 
 	method public override string ToString()
 		return "#debug"
@@ -125,10 +125,10 @@ class public auto ansi DebugTok extends NonExprToken
 
 end class
 
-//class public auto ansi MakeasmTok extends Token
+//class public MakeasmTok extends Token
 //end class
 
-class public auto ansi RefasmTok extends NonExprToken
+class public RefasmTok extends NonExprToken
 
 	method public override string ToString()
 		return "#refasm"
@@ -136,7 +136,7 @@ class public auto ansi RefasmTok extends NonExprToken
 
 end class
 
-class public auto ansi EmbedTok extends NonExprToken
+class public EmbedTok extends NonExprToken
 
 	method public override string ToString()
 		return "#embed"
@@ -144,7 +144,7 @@ class public auto ansi EmbedTok extends NonExprToken
 
 end class
 
-class public auto ansi RefstdasmTok extends NonExprToken
+class public RefstdasmTok extends NonExprToken
 
 	method public override string ToString()
 		return "#refstdasm"
@@ -152,13 +152,13 @@ class public auto ansi RefstdasmTok extends NonExprToken
 
 end class
 
-//class public auto ansi NewresTok extends Token
+//class public NewresTok extends Token
 //end class
 
-//class public auto ansi ImageTok extends Token
+//class public ImageTok extends Token
 //end class
 
-class public auto ansi ImportTok extends NonExprToken
+class public ImportTok extends NonExprToken
 
 	method public override string ToString()
 		return "import"
@@ -166,7 +166,7 @@ class public auto ansi ImportTok extends NonExprToken
 
 end class
 
-class public auto ansi LocimportTok extends NonExprToken
+class public LocimportTok extends NonExprToken
 
 	method public override string ToString()
 		return "locimport"
@@ -174,7 +174,7 @@ class public auto ansi LocimportTok extends NonExprToken
 
 end class
 
-class public auto ansi AssemblyTok extends NonExprToken
+class public AssemblyTok extends NonExprToken
 
 	method public override string ToString()
 		return "assembly"
@@ -182,7 +182,7 @@ class public auto ansi AssemblyTok extends NonExprToken
 
 end class
 
-class public auto ansi AssemblyCTok extends NonExprToken
+class public AssemblyCTok extends NonExprToken
 
 	method public override string ToString()
 		return "assembly:"
@@ -190,7 +190,7 @@ class public auto ansi AssemblyCTok extends NonExprToken
 
 end class
 
-class public auto ansi ExeTok extends NonExprToken
+class public ExeTok extends NonExprToken
 
 	method public override string ToString()
 		return "exe"
@@ -198,7 +198,7 @@ class public auto ansi ExeTok extends NonExprToken
 
 end class
 
-class public auto ansi DllTok extends NonExprToken
+class public DllTok extends NonExprToken
 
 	method public override string ToString()
 		return "dll"
@@ -206,7 +206,7 @@ class public auto ansi DllTok extends NonExprToken
 
 end class
 
-class public auto ansi WinexeTok extends NonExprToken
+class public WinexeTok extends NonExprToken
 
 	method public override string ToString()
 		return "winexe"
@@ -214,7 +214,7 @@ class public auto ansi WinexeTok extends NonExprToken
 
 end class
 
-class public auto ansi VerTok extends NonExprToken
+class public VerTok extends NonExprToken
 
 	method public override string ToString()
 		return "ver"
@@ -222,7 +222,7 @@ class public auto ansi VerTok extends NonExprToken
 
 end class
 
-class public auto ansi IncludeTok extends NonExprToken
+class public IncludeTok extends NonExprToken
 
 	method public override string ToString()
 		return "#include"
@@ -230,7 +230,7 @@ class public auto ansi IncludeTok extends NonExprToken
 
 end class
 
-class public auto ansi SignTok extends NonExprToken
+class public SignTok extends NonExprToken
 
 	method public override string ToString()
 		return "#sign"
@@ -238,10 +238,10 @@ class public auto ansi SignTok extends NonExprToken
 
 end class
 
-//class public auto ansi XmldocTok extends Token
+//class public XmldocTok extends Token
 //end class
 
-class public auto ansi NamespaceTok extends NonExprToken
+class public NamespaceTok extends NonExprToken
 
 	method public override string ToString()
 		return "namespace"
@@ -249,7 +249,7 @@ class public auto ansi NamespaceTok extends NonExprToken
 
 end class
 
-class public auto ansi ClassTok extends NonExprToken
+class public ClassTok extends NonExprToken
 
 	method public override string ToString()
 		return "class"
@@ -257,7 +257,7 @@ class public auto ansi ClassTok extends NonExprToken
 
 end class
 
-class public auto ansi ClassCTok extends NonExprToken
+class public ClassCTok extends NonExprToken
 
 	method public override string ToString()
 		return "class:"
@@ -265,7 +265,7 @@ class public auto ansi ClassCTok extends NonExprToken
 
 end class
 
-class public auto ansi StructTok extends NonExprToken
+class public StructTok extends NonExprToken
 
 	method public override string ToString()
 		return "struct"
@@ -273,7 +273,15 @@ class public auto ansi StructTok extends NonExprToken
 
 end class
 
-class public auto ansi ExtendsTok extends NonExprToken
+class public InterfaceTok extends NonExprToken
+
+	method public override string ToString()
+		return "interface"
+	end method
+
+end class
+
+class public ExtendsTok extends NonExprToken
 
 	method public override string ToString()
 		return "extends"
@@ -281,7 +289,7 @@ class public auto ansi ExtendsTok extends NonExprToken
 
 end class
 
-class public auto ansi ImplementsTok extends NonExprToken
+class public ImplementsTok extends NonExprToken
 
 	method public override string ToString()
 		return "implements"
@@ -289,7 +297,7 @@ class public auto ansi ImplementsTok extends NonExprToken
 
 end class
 
-class public auto ansi EnumTok extends NonExprToken
+class public EnumTok extends NonExprToken
 
 	method public override string ToString()
 		return "enum"
@@ -297,7 +305,7 @@ class public auto ansi EnumTok extends NonExprToken
 
 end class
 
-class public auto ansi EnumCTok extends NonExprToken
+class public EnumCTok extends NonExprToken
 
 	method public override string ToString()
 		return "enum:"
@@ -305,7 +313,7 @@ class public auto ansi EnumCTok extends NonExprToken
 
 end class
 
-class public auto ansi FieldTok extends NonExprToken
+class public FieldTok extends NonExprToken
 
 	method public override string ToString()
 		return "field"
@@ -313,7 +321,7 @@ class public auto ansi FieldTok extends NonExprToken
 
 end class
 
-class public auto ansi FieldCTok extends NonExprToken
+class public FieldCTok extends NonExprToken
 
 	method public override string ToString()
 		return "field:"
@@ -321,7 +329,7 @@ class public auto ansi FieldCTok extends NonExprToken
 
 end class
 
-class public auto ansi DelegateTok extends NonExprToken
+class public DelegateTok extends NonExprToken
 
 	method public override string ToString()
 		return "delegate"
@@ -329,7 +337,7 @@ class public auto ansi DelegateTok extends NonExprToken
 
 end class
 
-class public auto ansi PropertyTok extends NonExprToken
+class public PropertyTok extends NonExprToken
 
 	method public override string ToString()
 		return "property"
@@ -337,7 +345,7 @@ class public auto ansi PropertyTok extends NonExprToken
 
 end class
 
-class public auto ansi PropertyCTok extends NonExprToken
+class public PropertyCTok extends NonExprToken
 
 	method public override string ToString()
 		return "property:"
@@ -345,7 +353,7 @@ class public auto ansi PropertyCTok extends NonExprToken
 
 end class
 
-class public auto ansi EventTok extends NonExprToken
+class public EventTok extends NonExprToken
 
 	method public override string ToString()
 		return "event"
@@ -353,7 +361,7 @@ class public auto ansi EventTok extends NonExprToken
 
 end class
 
-class public auto ansi EventCTok extends NonExprToken
+class public EventCTok extends NonExprToken
 
 	method public override string ToString()
 		return "event:"
@@ -362,7 +370,7 @@ class public auto ansi EventCTok extends NonExprToken
 end class
 
 
-class public auto ansi GetTok extends NonExprToken
+class public GetTok extends NonExprToken
 
 	method public override string ToString()
 		return "get"
@@ -370,7 +378,7 @@ class public auto ansi GetTok extends NonExprToken
 
 end class
 
-class public auto ansi SetTok extends NonExprToken
+class public SetTok extends NonExprToken
 
 	method public override string ToString()
 		return "set"
@@ -378,7 +386,7 @@ class public auto ansi SetTok extends NonExprToken
 
 end class
 
-class public auto ansi AddTok extends NonExprToken
+class public AddTok extends NonExprToken
 
 	method public override string ToString()
 		return "add"
@@ -386,7 +394,7 @@ class public auto ansi AddTok extends NonExprToken
 
 end class
 
-class public auto ansi RemoveTok extends NonExprToken
+class public RemoveTok extends NonExprToken
 
 	method public override string ToString()
 		return "remove"
@@ -395,7 +403,7 @@ class public auto ansi RemoveTok extends NonExprToken
 end class
 
 
-class public auto ansi MethodTok extends NonExprToken
+class public MethodTok extends NonExprToken
 
 	method public override string ToString()
 		return "method"
@@ -403,7 +411,7 @@ class public auto ansi MethodTok extends NonExprToken
 
 end class
 
-class public auto ansi MethodCTok extends NonExprToken
+class public MethodCTok extends NonExprToken
 
 	method public override string ToString()
 		return "method:"
@@ -411,7 +419,7 @@ class public auto ansi MethodCTok extends NonExprToken
 
 end class
 
-class public auto ansi TryTok extends NonExprToken
+class public TryTok extends NonExprToken
 
 	method public override string ToString()
 		return "try"
@@ -419,7 +427,7 @@ class public auto ansi TryTok extends NonExprToken
 
 end class
 
-class public auto ansi CatchTok extends NonExprToken
+class public CatchTok extends NonExprToken
 
 	method public override string ToString()
 		return "catch"
@@ -427,7 +435,7 @@ class public auto ansi CatchTok extends NonExprToken
 
 end class
 
-class public auto ansi AsTok extends NonExprToken
+class public AsTok extends NonExprToken
 
 	method public override string ToString()
 		return "as"
@@ -435,7 +443,7 @@ class public auto ansi AsTok extends NonExprToken
 
 end class
 
-class public auto ansi FinallyTok extends NonExprToken
+class public FinallyTok extends NonExprToken
 
 	method public override string ToString()
 		return "finally"
@@ -443,7 +451,7 @@ class public auto ansi FinallyTok extends NonExprToken
 
 end class
 
-class public auto ansi LabelTok extends NonExprToken
+class public LabelTok extends NonExprToken
 
 	method public override string ToString()
 		return "label"
@@ -451,7 +459,7 @@ class public auto ansi LabelTok extends NonExprToken
 
 end class
 
-class public auto ansi PlaceTok extends NonExprToken
+class public PlaceTok extends NonExprToken
 
 	method public override string ToString()
 		return "place"
@@ -459,7 +467,7 @@ class public auto ansi PlaceTok extends NonExprToken
 
 end class
 
-class public auto ansi GotoTok extends NonExprToken
+class public GotoTok extends NonExprToken
 
 	method public override string ToString()
 		return "goto"
@@ -467,7 +475,7 @@ class public auto ansi GotoTok extends NonExprToken
 
 end class
 
-class public auto ansi IfTok extends NonExprToken
+class public IfTok extends NonExprToken
 
 	method public override string ToString()
 		return "if"
@@ -475,7 +483,7 @@ class public auto ansi IfTok extends NonExprToken
 
 end class
 
-class public auto ansi HIfTok extends NonExprToken
+class public HIfTok extends NonExprToken
 
 	method public override string ToString()
 		return "#if"
@@ -483,7 +491,7 @@ class public auto ansi HIfTok extends NonExprToken
 
 end class
 
-class public auto ansi ElseIfTok extends NonExprToken
+class public ElseIfTok extends NonExprToken
 
 	method public override string ToString()
 		return "elseif"
@@ -491,7 +499,7 @@ class public auto ansi ElseIfTok extends NonExprToken
 
 end class
 
-class public auto ansi HElseIfTok extends NonExprToken
+class public HElseIfTok extends NonExprToken
 
 	method public override string ToString()
 		return "#elseif"
@@ -500,7 +508,7 @@ class public auto ansi HElseIfTok extends NonExprToken
 end class
 
 
-class public auto ansi ThenTok extends NonExprToken
+class public ThenTok extends NonExprToken
 
 	method public override string ToString()
 		return "then"
@@ -508,7 +516,7 @@ class public auto ansi ThenTok extends NonExprToken
 
 end class
 
-class public auto ansi DoTok extends NonExprToken
+class public DoTok extends NonExprToken
 
 	method public override string ToString()
 		return "do"
@@ -516,7 +524,7 @@ class public auto ansi DoTok extends NonExprToken
 
 end class
 
-class public auto ansi ForTok extends NonExprToken
+class public ForTok extends NonExprToken
 
 	method public override string ToString()
 		return "for"
@@ -524,7 +532,7 @@ class public auto ansi ForTok extends NonExprToken
 
 end class
 
-class public auto ansi UptoTok extends NonExprToken
+class public UptoTok extends NonExprToken
 
 	method public override string ToString()
 		return "upto"
@@ -532,7 +540,7 @@ class public auto ansi UptoTok extends NonExprToken
 
 end class
 
-class public auto ansi DowntoTok extends NonExprToken
+class public DowntoTok extends NonExprToken
 
 	method public override string ToString()
 		return "downto"
@@ -540,7 +548,7 @@ class public auto ansi DowntoTok extends NonExprToken
 
 end class
 
-class public auto ansi StepTok extends NonExprToken
+class public StepTok extends NonExprToken
 
 	method public override string ToString()
 		return "step"
@@ -548,7 +556,7 @@ class public auto ansi StepTok extends NonExprToken
 
 end class
 
-class public auto ansi ForeachTok extends NonExprToken
+class public ForeachTok extends NonExprToken
 
 	method public override string ToString()
 		return "foreach"
@@ -556,7 +564,7 @@ class public auto ansi ForeachTok extends NonExprToken
 
 end class
 
-class public auto ansi BreakTok extends NonExprToken
+class public BreakTok extends NonExprToken
 
 	method public override string ToString()
 		return "break"
@@ -564,7 +572,7 @@ class public auto ansi BreakTok extends NonExprToken
 
 end class
 
-class public auto ansi ContinueTok extends NonExprToken
+class public ContinueTok extends NonExprToken
 
 	method public override string ToString()
 		return "continue"
@@ -572,7 +580,7 @@ class public auto ansi ContinueTok extends NonExprToken
 
 end class
 
-class public auto ansi WhileTok extends NonExprToken
+class public WhileTok extends NonExprToken
 
 	method public override string ToString()
 		return "while"
@@ -580,7 +588,7 @@ class public auto ansi WhileTok extends NonExprToken
 
 end class
 
-class public auto ansi UntilTok extends NonExprToken
+class public UntilTok extends NonExprToken
 
 	method public override string ToString()
 		return "until"
@@ -588,7 +596,7 @@ class public auto ansi UntilTok extends NonExprToken
 
 end class
 
-class public auto ansi LiteralTok extends NonExprToken
+class public LiteralTok extends NonExprToken
 
 	method public override string ToString()
 		return "literal"
@@ -596,7 +604,7 @@ class public auto ansi LiteralTok extends NonExprToken
 
 end class
 
-class public auto ansi VarTok extends NonExprToken
+class public VarTok extends NonExprToken
 
 	method public override string ToString()
 		return "var"
@@ -604,7 +612,7 @@ class public auto ansi VarTok extends NonExprToken
 	
 end class
 
-class public auto ansi UsingTok extends NonExprToken
+class public UsingTok extends NonExprToken
 
 	method public override string ToString()
 		return "using"
@@ -612,7 +620,7 @@ class public auto ansi UsingTok extends NonExprToken
 	
 end class
 
-class public auto ansi ElseTok extends NonExprToken
+class public ElseTok extends NonExprToken
 
 	method public override string ToString()
 		return "else"
@@ -620,7 +628,7 @@ class public auto ansi ElseTok extends NonExprToken
 
 end class
 
-class public auto ansi HElseTok extends NonExprToken
+class public HElseTok extends NonExprToken
 
 	method public override string ToString()
 		return "#else"
@@ -628,7 +636,7 @@ class public auto ansi HElseTok extends NonExprToken
 
 end class
 
-class public auto ansi TernaryTok extends Token
+class public TernaryTok extends Token
 
 	method public override string ToString()
 		return "#ternary"
@@ -636,7 +644,7 @@ class public auto ansi TernaryTok extends Token
 
 end class
 
-class public auto ansi HDefineTok extends NonExprToken
+class public HDefineTok extends NonExprToken
 
 	method public override string ToString()
 		return "#define"
@@ -644,7 +652,7 @@ class public auto ansi HDefineTok extends NonExprToken
 
 end class
 
-class public auto ansi HUndefTok extends NonExprToken
+class public HUndefTok extends NonExprToken
 
 	method public override string ToString()
 		return "#undef"
@@ -652,7 +660,7 @@ class public auto ansi HUndefTok extends NonExprToken
 
 end class
 
-class public auto ansi ErrorTok extends NonExprToken
+class public ErrorTok extends NonExprToken
 
 	method public override string ToString()
 		return "#error"
@@ -660,7 +668,7 @@ class public auto ansi ErrorTok extends NonExprToken
 
 end class
 
-class public auto ansi WarningTok extends NonExprToken
+class public WarningTok extends NonExprToken
 
 	method public override string ToString()
 		return "#warning"
@@ -668,7 +676,7 @@ class public auto ansi WarningTok extends NonExprToken
 
 end class
 
-class public auto ansi ReturnTok extends NonExprToken
+class public ReturnTok extends NonExprToken
 
 	method public override string ToString()
 		return "return"
@@ -676,7 +684,7 @@ class public auto ansi ReturnTok extends NonExprToken
 
 end class
 
-class public auto ansi ThrowTok extends NonExprToken
+class public ThrowTok extends NonExprToken
 
 	method public override string ToString()
 		return "throw"
@@ -684,7 +692,7 @@ class public auto ansi ThrowTok extends NonExprToken
 	
 end class
 
-class public auto ansi EndTok extends NonExprToken
+class public EndTok extends NonExprToken
 	
 	method public override string ToString()
 		return "end"
@@ -692,7 +700,7 @@ class public auto ansi EndTok extends NonExprToken
 
 end class
 
-class public auto ansi InTok extends NonExprToken
+class public InTok extends NonExprToken
 
 	method public override string ToString()
 		return "in"
@@ -700,7 +708,7 @@ class public auto ansi InTok extends NonExprToken
 
 end class
 
-class public auto ansi OutTok extends NonExprToken
+class public OutTok extends NonExprToken
 
 	method public override string ToString()
 		return "out"
@@ -708,7 +716,7 @@ class public auto ansi OutTok extends NonExprToken
 
 end class
 
-class public auto ansi InOutTok extends NonExprToken
+class public InOutTok extends NonExprToken
 
 	method public override string ToString()
 		return "inout"
@@ -716,7 +724,7 @@ class public auto ansi InOutTok extends NonExprToken
 
 end class
 
-class public auto ansi LockTok extends NonExprToken
+class public LockTok extends NonExprToken
 
 	method public override string ToString()
 		return "lock"
@@ -724,7 +732,7 @@ class public auto ansi LockTok extends NonExprToken
 
 end class
 
-class public auto ansi TryLockTok extends NonExprToken
+class public TryLockTok extends NonExprToken
 
 	method public override string ToString()
 		return "trylock"
@@ -732,7 +740,7 @@ class public auto ansi TryLockTok extends NonExprToken
 
 end class
 
-class public auto ansi ExprTok extends Token
+class public ExprTok extends Token
 
 	method public override string ToString()
 		return "#expr"
@@ -740,7 +748,7 @@ class public auto ansi ExprTok extends Token
 
 end class
 
-class public auto ansi RegionTok extends NonExprToken
+class public RegionTok extends NonExprToken
 
 	method public override string ToString()
 		return "#region"
@@ -748,7 +756,7 @@ class public auto ansi RegionTok extends NonExprToken
 
 end class
 
-class public auto ansi MeTok extends ValueToken implements IUnaryOperatable, IConvable
+class public MeTok extends ValueToken implements IUnaryOperatable, IConvable
 
 	field public boolean _Conv
 	field public TypeTok _TTok
@@ -801,7 +809,7 @@ class public auto ansi MeTok extends ValueToken implements IUnaryOperatable, ICo
 	
 end class
 
-class public auto ansi ParameterCTok extends NonExprToken
+class public ParameterCTok extends NonExprToken
 
 	method public override string ToString()
 		return Value

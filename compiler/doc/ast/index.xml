@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.3.6.1">
+    <Assembly Name="tokenizer.AST" Version="11.3.7.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyCompany("")</AttributeName>
@@ -45,8 +45,8 @@
     <Namespace Name="dylan.NET.Tokenizer.AST.Interfaces">
       <Type Name="IConstrainable" Kind="Interface" />
       <Type Name="IConvable" Kind="Interface" />
-      <Type Name="IHasConstraints" Kind="Interface" />
       <Type Name="IIncDecable" Kind="Interface" />
+      <Type Name="IMayHaveConstraints" Kind="Interface" />
       <Type Name="INegatable" Kind="Interface" />
       <Type Name="INotable" Kind="Interface" />
       <Type Name="IUnaryOperatable" Kind="Interface" />
@@ -108,6 +108,7 @@
       <Type Name="HIfStmt" Kind="Class" />
       <Type Name="HUndefStmt" Kind="Class" />
       <Type Name="IfStmt" Kind="Class" />
+      <Type Name="IgnorableStmt" Kind="Class" />
       <Type Name="ImportStmt" Kind="Class" />
       <Type Name="IncludeStmt" Kind="Class" />
       <Type Name="IncStmt" Kind="Class" />
@@ -129,7 +130,6 @@
       <Type Name="RefstdasmStmt" Kind="Class" />
       <Type Name="RegionStmt" Kind="Class" />
       <Type Name="ReturnStmt" Kind="Class" />
-      <Type Name="ScopeStmt" Kind="Class" />
       <Type Name="SignStmt" Kind="Class" />
       <Type Name="Stmt" Kind="Class" />
       <Type Name="StmtSet" Kind="Class" />
@@ -197,6 +197,7 @@
       <Type Name="ImportTok" Kind="Class" />
       <Type Name="IncludeTok" Kind="Class" />
       <Type Name="InOutTok" Kind="Class" />
+      <Type Name="InterfaceTok" Kind="Class" />
       <Type Name="InTok" Kind="Class" />
       <Type Name="LabelTok" Kind="Class" />
       <Type Name="LiteralTok" Kind="Class" />

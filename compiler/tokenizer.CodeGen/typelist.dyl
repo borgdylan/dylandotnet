@@ -6,11 +6,11 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi static partial Helpers
+class public static partial Helpers
 	method public static prototype IKVM.Reflection.Type CommitEvalTTok(var tt as TypeTok)
 end class
 
-class public auto ansi TypeList
+class public TypeList
 
 	field public C5.IList<of TypeItem> Types
 
@@ -114,7 +114,7 @@ class public auto ansi TypeList
 	
 	method assembly ConstructorInfo GetDefaultCtor(var t as IKVM.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
-		return #ternary {ti != null ? GetCtor(t, IKVM.Reflection.Type::EmptyTypes, t), Loader::LoadCtor(t, IKVM.Reflection.Type::EmptyTypes)}
+		return #ternary {ti == null ? Loader::LoadCtor(t, IKVM.Reflection.Type::EmptyTypes), GetCtor(t, IKVM.Reflection.Type::EmptyTypes, t)}
 	end method
 	
 	method public void EnsureDefaultCtor(var t as IKVM.Reflection.Type)

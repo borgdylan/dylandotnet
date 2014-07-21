@@ -9,7 +9,7 @@
       <File FileName="MonoDevelop.DylanNet/SurroundForeachHandler.dyl" Line="1" Column="1" />
       <File FileName="MonoDevelop.DylanNet/DateInserterCommands.dyl" Line="1" Column="1" />
       <File FileName="MonoDevelop.DylanNet/InsertNextHandler.dyl" Line="1" Column="1" />
-      <File FileName="MonoDevelop.DylanNet/PathedDocumentExtension.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/PathedDocumentExtension.dyl" Line="18" Column="10" />
       <File FileName="MonoDevelop.DylanNet/SurroundDo_UntilHandler.dyl" Line="1" Column="1" />
       <File FileName="MonoDevelop.DylanNet/SurroundDo_WhileHandler.dyl" Line="1" Column="1" />
       <File FileName="MonoDevelop.DylanNet/SurroundDoUntilHandler.dyl" Line="1" Column="1" />
@@ -23,7 +23,10 @@
       <File FileName="MonoDevelop.DylanNet/SurroundTryCatchHandler.dyl" Line="1" Column="1" />
       <File FileName="MonoDevelop.DylanNet/SurroundTryFinallyHandler.dyl" Line="1" Column="1" />
       <File FileName="MonoDevelop.DylanNet/SurroundUsingHandler.dyl" Line="1" Column="1" />
-      <File FileName="MonoDevelop.DylanNet/DocumentParser.dyl" Line="194" Column="18" />
+      <File FileName="MonoDevelop.DylanNet/DocumentParser.dyl" Line="74" Column="13" />
+      <File FileName="MonoDevelop.DylanNet/DNConfigurationParameters.dyl" Line="38" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/CompilerOptionsPanel.dyl" Line="20" Column="10" />
+      <File FileName="MonoDevelop.DylanNet/CodeGenerationPanel.dyl" Line="19" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

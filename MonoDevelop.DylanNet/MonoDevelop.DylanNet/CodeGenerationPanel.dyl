@@ -16,7 +16,7 @@ namespace MonoDevelop.DylanNet
 		field private ToggleButton debugCheck
 
 		method public void CodeGenerationPanelWidget ()
-			me::ctor()
+			mybase::ctor()
 			//buidl code here
 			symbolsEntry = new Entry()
 			var hbox as HBox = new HBox()

@@ -35,7 +35,7 @@ namespace MonoDevelop.DylanNet
 		end property
 
 		method public void DNConfigurationParameters()
-			me::ctor()
+			mybase::ctor()
 			definesymbols = string::Empty
 			debugsyms = false
 		end method

@@ -6,38 +6,36 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi interface IUnaryOperatable
+interface public IUnaryOperatable
 	property public autogen string OrdOp
-end class
+end interface
 
-class public auto ansi interface IConvable implements IUnaryOperatable
+interface public IConvable implements IUnaryOperatable
 	property public autogen boolean Conv
 	property public autogen TypeTok TTok
-end class
+end interface
 
-class public auto ansi interface INegatable implements IUnaryOperatable
+interface public INegatable implements IUnaryOperatable
 	property public autogen boolean DoNeg
-end class
+end interface
 
-class public auto ansi interface INotable implements IUnaryOperatable
+interface public INotable implements IUnaryOperatable
 	property public autogen boolean DoNot
-end class
+end interface
 
-class public auto ansi interface IIncDecable implements IUnaryOperatable
+interface public IIncDecable implements IUnaryOperatable
 	property public autogen boolean DoInc
 	property public autogen boolean DoDec
-end class
+end interface
 
-class public auto ansi interface IHasConstraints
-	property public boolean HasConstraints
+interface public IMayHaveConstraints
+	property public boolean MayHaveConstraints
 		get
 	end property
-end class
+end interface
 
-class public auto ansi interface IConstrainable implements IHasConstraints
-	property public C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
-		get
-	end property
+interface public IConstrainable implements IMayHaveConstraints
+	property public autogen initonly C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
 
 	method public void AddConstraint(var param as string, var ctr as Token)
-end class
+end interface

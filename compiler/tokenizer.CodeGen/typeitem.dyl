@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi partial TypeItem
+class public partial TypeItem
 
 	field public string Name
 	field public boolean IsStatic
@@ -25,24 +25,24 @@ class public auto ansi partial TypeItem
 
 	method private void TypeItem(var nme as string, var bld as TypeBuilder, var bld3 as EnumBuilder)
 		mybase::ctor()
-		IsStatic = false
+		//IsStatic = false
 		Name = nme
 		TypeBldr = bld
 		EnumBldr = bld3
-		InhTyp = null
+		//InhTyp = null
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
 		Methods = new C5.HashDictionary<of string, C5.IList<of MethodItem> >()
 		Types = new C5.LinkedList<of TypeItem>()
 		Ctors = new C5.LinkedList<of CtorItem>()
 		Fields = new C5.HashDictionary<of string, FieldItem>()
-		BakedTyp = null
-		NrGenParams = 0
+		//BakedTyp = null
+		//NrGenParams = 0
 		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
 	end method
 	
 	method public void TypeItem(var nme as string, var bld as TypeBuilder)
 		ctor(nme, bld, $EnumBuilder$null)
-		IsEnum = false
+		//IsEnum = false
 	end method
 	
 	method public void TypeItem(var nme as string, var bld3 as EnumBuilder)
@@ -212,7 +212,7 @@ end class
 
 #include "tilambdas.dyl"
 
-class public auto ansi TypeItem
+class public TypeItem
 
 	method public TypeItem GetTypeItem(var t as IKVM.Reflection.Type)
 		var til as TILambdas = new TILambdas(t)

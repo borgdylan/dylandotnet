@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi TokenOptimizer
+class public TokenOptimizer
 
 	field public integer GenLvl
 	field public integer CurlyLvl
@@ -17,12 +17,12 @@ class public auto ansi TokenOptimizer
 	
 	method public void TokenOptimizer(var pf as Flags)
 		mybase::ctor()
-		GenLvl = 0
-		CurlyLvl = 0
+		//GenLvl = 0
+		//CurlyLvl = 0
 		PFlags = pf
 		isFirstToken = true
 		isFirstRun = true
-		SpecialFlg = false
+		//SpecialFlg = false
 	end method
 	
 	method public void TokenOptimizer()
@@ -317,18 +317,18 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value == "enum:" then
 			return new EnumCTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "end" then
-			SpecialFlg = lkahead::Value like "^((((s)|(g))et)|(add)|(remove))$"
+			SpecialFlg = lkahead::Value like "^((((s)|(g))et)|(add)|(remove)|(interface))$"
 			return new EndTok() {Line = tok::Line, Value = tok::Value}
-		elseif (tok::Value == "set") and (isFirstToken or SpecialFlg) then
+		elseif (tok::Value == "set") andalso (isFirstToken orelse SpecialFlg) then
 			SpecialFlg = false
 			return new SetTok() {Line = tok::Line, Value = tok::Value}
-		elseif (tok::Value == "get") and (isFirstToken or SpecialFlg) then
+		elseif (tok::Value == "get") andalso (isFirstToken orelse SpecialFlg) then
 			SpecialFlg = false
 			return new GetTok() {Line = tok::Line, Value = tok::Value}
-		elseif (tok::Value == "add") and (isFirstToken or SpecialFlg) then
+		elseif (tok::Value == "add") andalso (isFirstToken orelse SpecialFlg) then
 			SpecialFlg = false
 			return new AddTok() {Line = tok::Line, Value = tok::Value}
-		elseif (tok::Value == "remove")  and (isFirstToken or SpecialFlg) then
+		elseif (tok::Value == "remove")  andalso (isFirstToken orelse SpecialFlg) then
 			SpecialFlg = false
 			return new RemoveTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "return" then
@@ -397,7 +397,11 @@ class public auto ansi TokenOptimizer
 		elseif tok::Value == "partial" then
 			return new PartialAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "interface" then
-			return new InterfaceAttr() {Line = tok::Line, Value = tok::Value}
+			if isFirstToken orelse SpecialFlg then
+				return new InterfaceTok() {Line = tok::Line, Value = tok::Value}
+			else
+				return new InterfaceAttr() {Line = tok::Line, Value = tok::Value}
+			end if
 		elseif tok::Value == "newslot" then
 			return new NewSlotAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "auto" then

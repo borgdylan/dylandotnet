@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class private auto ansi static InstructionHelper
+class private static InstructionHelper
 
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.Emit.OpCode getOPCode(var code as string)

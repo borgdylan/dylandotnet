@@ -6,15 +6,15 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class private auto ansi CILambdas
+class private CILambdas
 
 	field assembly IKVM.Reflection.Type[] Params
 	field assembly IKVM.Reflection.Type Auxt
 
 	method assembly void CILambdas()
 		mybase::ctor()
-		Params = null
-		Auxt = null
+		//Params = null
+		//Auxt = null
 	end method
 
 	method assembly void CILambdas(var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)

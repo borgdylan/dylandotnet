@@ -1,11 +1,11 @@
 <Type Name="RegionStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.RegionStmt">
-  <TypeSignature Language="C#" Value="public class RegionStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi RegionStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="C#" Value="public class RegionStmt : dylan.NET.Tokenizer.AST.Stmts.IgnorableStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi RegionStmt extends dylan.NET.Tokenizer.AST.Stmts.IgnorableStmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.IgnorableStmt</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

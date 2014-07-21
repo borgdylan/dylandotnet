@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi static ParseUtils
+class public static ParseUtils
 
 	[method: ComVisible(false)]
 	method public static string[] StringParser(var StringToParse as string, var DelimeterChar as char)
@@ -139,25 +139,25 @@ class public auto ansi static ParseUtils
 		return arr::ToArray()
 	end method
 
-	[method: ComVisible(false)]
-	method public static boolean LikeOP(var str as string, var pattern as string)
-		return str like pattern
-	end method
-
-	[method: ComVisible(false)]
-	method public static integer RetPrec(var chr as string)
-		if chr == "(" then
-			return -1
-		elseif (chr == "*") or  (chr == "/") or (chr == "%") then
-			return 8
-		elseif (chr == "+") or  (chr == "-") then
-			return 6
-		elseif chr == ")" then
-			return 0
-		else
-			return 0
-		end if
-	end method
+//	[method: ComVisible(false)]
+//	method public static boolean LikeOP(var str as string, var pattern as string)
+//		return str like pattern
+//	end method
+//
+//	[method: ComVisible(false)]
+//	method public static integer RetPrec(var chr as string)
+//		if chr == "(" then
+//			return -1
+//		elseif (chr == "*") or  (chr == "/") or (chr == "%") then
+//			return 8
+//		elseif (chr == "+") or  (chr == "-") then
+//			return 6
+//		elseif chr == ")" then
+//			return 0
+//		else
+//			return 0
+//		end if
+//	end method
 
 	[method: ComVisible(false)]
 	method public static string ProcessMSYSPath(var p as string, var pid as PlatformID)
@@ -191,7 +191,7 @@ class public auto ansi static ParseUtils
 			return true
 		else
 			c = char::ToLower(c)
-			return c == 'a' orelse c == 'b' orelse c == 'c' orelse c == 'd' orelse c == 'e' orelse c == 'f'
+			return c >= 'a' andalso c <= 'f'
 		end if
 	end method
 	

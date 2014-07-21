@@ -391,6 +391,13 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitConv(IKVM.Reflection.Type,IKVM.Reflection.Type,System.Boolean)">
+            <param name="source">To be added.</param>
+            <param name="sink">To be added.</param>
+            <param name="isNull">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitDec(IKVM.Reflection.Type)">
             <param name="t">To be added.</param>
             <summary>To be added.</summary>

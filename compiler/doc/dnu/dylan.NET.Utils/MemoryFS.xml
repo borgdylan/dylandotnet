@@ -9,8 +9,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Implements an in-memory file system.</summary>
+    <remarks>This class can be used for in-memory stream input and output from libraries/compilers.</remarks>
   </Docs>
   <Members>
     <Member MemberName="AddFile">
@@ -25,10 +25,11 @@
         <Parameter Name="s" Type="System.IO.Stream" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <param name="s">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="path">The path where the stream should be placed inside the file system.</param>
+        <param name="s">The stream to add to the file system.</param>
+        <summary>Adds a new stream to the in-memory file system.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Clear">
@@ -40,8 +41,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Clears all streams from the file system restoring it to an empty state.</summary>
+        <remarks>The clearing operation does not dispose any of the streams so that they still could be used by code that still references them.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetFile">
@@ -55,10 +56,10 @@
         <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="path">The path within the file system of the desired stream.</param>
+        <summary>Tries to retrieve the stream at the specified path.</summary>
+        <returns>The desired stream if found, else null.</returns>
+        <remarks>A return value of null means the stream required was not found. Handle this special return value accordingly.</remarks>
       </Docs>
     </Member>
     <Member MemberName="HasFile">
@@ -72,10 +73,10 @@
         <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="path">The path of the desired stream.</param>
+        <summary>Checks for the existance of a stream inside the file system.</summary>
+        <returns>True if the file system has an entry for the specified path, else false.</returns>
+        <remarks>If there is an entry for the specified path and the stream at that path is null, this method still returns true.</remarks>
       </Docs>
     </Member>
   </Members>

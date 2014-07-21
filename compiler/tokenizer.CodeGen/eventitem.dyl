@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi EventItem
+class public EventItem
 
 	field public string Name
 	field public IKVM.Reflection.Type EventTyp
@@ -17,10 +17,10 @@ class public auto ansi EventItem
 	method public void EventItem()
 		mybase::ctor()
 		Name = string::Empty
-		EventTyp = null
-		EventBldr = null
+		//EventTyp = null
+		//EventBldr = null
 		ExplImplType = string::Empty
-		Attrs = null
+		//Attrs = null
 	end method
 
 	method public void EventItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as EventBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)

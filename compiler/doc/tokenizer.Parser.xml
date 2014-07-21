@@ -302,16 +302,9 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.procWhere(dylan.NET.Tokenizer.AST.Stmts.Stmt,dylan.NET.Tokenizer.AST.Tokens.MethodNameTok,System.Int32)">
+        <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.procWhere(dylan.NET.Tokenizer.AST.Stmts.Stmt,dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints,System.Int32)">
             <param name="stm">To be added.</param>
             <param name="mn">To be added.</param>
-            <param name="i">To be added.</param>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.procWhere2(dylan.NET.Tokenizer.AST.Stmts.Stmt,dylan.NET.Tokenizer.AST.Stmts.ClassStmt,System.Int32)">
-            <param name="stm">To be added.</param>
-            <param name="gmn">To be added.</param>
             <param name="i">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>

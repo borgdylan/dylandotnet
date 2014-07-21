@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Tokenizer.CodeGen</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
-    <ReleaseVersion>11.3.6.1</ReleaseVersion>
+    <ReleaseVersion>11.3.7.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -73,13 +73,11 @@
     <Compile Include="eventitem.dyl" />
     <Compile Include="eval.dyl" />
     <Compile Include="ctoritem.dyl" />
-    <Compile Include="constldr.txt" />
     <Compile Include="constinfo.dyl" />
     <Compile Include="collectionitem.dyl" />
     <Compile Include="codegenerator.dyl" />
     <Compile Include="cilambdas.dyl" />
     <Compile Include="assemblyinfo.dyl" />
-    <Compile Include="arraycheck.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

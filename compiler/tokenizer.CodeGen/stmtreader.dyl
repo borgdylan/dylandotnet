@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi StmtReader
+class public StmtReader
 
 	method public prototype void Read(var stm as Stmt, var fpath as string)
 
@@ -85,7 +85,7 @@ class public auto ansi StmtReader
 
 		var inhtyp as IKVM.Reflection.Type = null
 		var interftyp as IKVM.Reflection.Type = null
-		var reft as IKVM.Reflection.Type  = clss::InhClass::RefTyp
+		var reft as IKVM.Reflection.Type = clss::InhClass::RefTyp
 		var nrgenparams = 0
 
 		if clss::ClassName is GenericTypeTok then
@@ -106,9 +106,6 @@ class public auto ansi StmtReader
 		
 		if ti2 == null then
 			clssparams = Helpers::ProcessClassAttrs(clss::Attrs)
-			if ILEmitter::InterfaceFlg then
-				inhtyp = null
-			end if
 		else
 			ILEmitter::InterfaceFlg = ti2::TypeBldr::get_IsInterface()
 			ILEmitter::AbstractCFlg = ti2::TypeBldr::get_IsAbstract()
@@ -173,7 +170,7 @@ class public auto ansi StmtReader
 		
 			inhtyp = reft ?? #ternary {clss::InhClass::Value::get_Length() == 0 ? _
 					Loader::CachedLoadClass("System.Object"), Helpers::CommitEvalTTok(clss::InhClass)}
-			if inhtyp = null then
+			if inhtyp == null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Base Class '{0}' is not defined or is not accessible.", clss::InhClass::Value))
 			end if
 			if inhtyp != null then
@@ -182,7 +179,11 @@ class public auto ansi StmtReader
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not inheritable.", clss::InhClass::Value))
 				end if
 			end if
-			AsmFactory::CurnTypB::SetParent(inhtyp)
+
+			if !ILEmitter::InterfaceFlg then
+				AsmFactory::CurnTypB::SetParent(inhtyp)
+			end if
+
 			ti::InhTyp = inhtyp
 		else
 			inhtyp = ti2::InhTyp
@@ -749,7 +750,7 @@ class public auto ansi StmtReader
 		var eit = string::Empty
 		var typ as IKVM.Reflection.Type = null
 		
-		if etyp = null then
+		if etyp == null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + evss::EventTyp::Value + "' is not defined.")
 		end if
 		
@@ -1527,9 +1528,6 @@ class public auto ansi StmtReader
 			ILEmitter::MarkLbl(Helpers::GetLbl(#expr($PlaceStmt$stm)::LabelName::Value))
 		elseif stm is GotoStmt then
 			ILEmitter::EmitBr(Helpers::GetLbl(#expr($GotoStmt$stm)::LabelName::Value))
-		elseif stm is CommentStmt then
-		elseif stm is RegionStmt then
-		elseif stm is EndRegionStmt then
 		elseif stm is ThrowStmt then
 			var trostmt as ThrowStmt = $ThrowStmt$stm
 			if trostmt::RExp != null then
@@ -1691,6 +1689,7 @@ class public auto ansi StmtReader
 			dc::NumVar::set_OrdOp("dec")
 			dc::NumVar::set_DoDec(true)
 			new Evaluator()::StoreEmit(dc::NumVar, new Expr() {AddToken(dc::NumVar)})
+		elseif stm is IgnorableStmt then
 		else
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
 		end if

@@ -8,7 +8,7 @@
 
 namespace Extra.Tasks
 
-	class public auto ansi beforefieldinit sealed FindResProcOuts extends Task
+	class public beforefieldinit sealed FindResProcOuts extends Task
 		
 		property public autogen ITaskItem[] Inputs
 
@@ -27,7 +27,7 @@ namespace Extra.Tasks
 			return new TaskItem(i)
 		end method
 
-		method public hidebysig virtual boolean Execute()
+		method public override boolean Execute()
 			try
 				var b as IEnumerable<of string> = Enumerable::Select<of ITaskItem, string>(_Inputs ?? new ITaskItem[0], new Func<of ITaskItem, string>(Extract))
 				set_Outputs(Enumerable::ToArray<of ITaskItem>(Enumerable::Select<of string, ITaskItem>(b, new Func<of string, ITaskItem>(Pack))))

@@ -1,11 +1,11 @@
 <Type Name="CommentStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.CommentStmt">
-  <TypeSignature Language="C#" Value="public class CommentStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi CommentStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="C#" Value="public class CommentStmt : dylan.NET.Tokenizer.AST.Stmts.IgnorableStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi CommentStmt extends dylan.NET.Tokenizer.AST.Stmts.IgnorableStmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.IgnorableStmt</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

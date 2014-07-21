@@ -26,7 +26,7 @@ import dylan.NET.Utils
 import dylan.NET.Compiler
 import dylan.NET.ResProc
 
-#include "ErrorWarnTask.dyl"
+//#include "ErrorWarnTask.dyl"
 #include "DncTask.dyl"
 #include "ResProcTask.dyl"
 #include "FindResProcOuts.dyl"

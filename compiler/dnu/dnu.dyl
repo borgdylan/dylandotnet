@@ -33,7 +33,7 @@ import dylan.NET
 #include "Messages.designer.dyl"
 
 namespace dylan.NET.Utils
-	#include "consts.dyl"
+	//#include "consts.dyl"
 	#include "xmlu.dyl"
 	#include "parseu.dyl"
 	#include "keyboard.dyl"

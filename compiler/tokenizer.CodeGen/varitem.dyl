@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi VarItem
+class public VarItem
 
 	field public string Name
 	// t for loc f for arg
@@ -21,12 +21,12 @@ class public auto ansi VarItem
 	method public void VarItem()
 		mybase::ctor()
 		Name = String::Empty
-		LocArg = false
+		//LocArg = false
 		Index = -1
-		VarTyp = null
-		Used = false
-		Stored = false
-		Line = 0
+		//VarTyp = null
+		//Used = false
+		//Stored = false
+		//Line = 0
 		StoreLines = new C5.TreeSet<of integer>()
 	end method
 
@@ -36,9 +36,9 @@ class public auto ansi VarItem
 		LocArg = la
 		Index = ind
 		VarTyp = typ
-		Used = false
-		Stored = false
-		Line = 0
+		//Used = false
+		//Stored = false
+		//Line = 0
 		StoreLines = new C5.TreeSet<of integer>()
 	end method
 
@@ -48,8 +48,8 @@ class public auto ansi VarItem
 		LocArg = la
 		Index = ind
 		VarTyp = typ
-		Used = false
-		Stored = false
+		//Used = false
+		//Stored = false
 		Line = line
 		StoreLines = new C5.TreeSet<of integer>()
 	end method

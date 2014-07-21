@@ -17,7 +17,7 @@ namespace MonoDevelop.DylanNet
 		end method
 
 		method public void CompilerOptionsPanelWidget (var project as DotNetProject)
-			me::ctor()
+			mybase::ctor()
 
 			//build code
 			compileTargetCombo = new ComboBox()

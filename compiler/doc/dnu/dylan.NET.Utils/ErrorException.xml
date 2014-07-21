@@ -9,8 +9,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>An exception symbolising an error within the dylan.NET compiler.</summary>
+    <remarks>This type of exception is thrown when using the compiler in library mode only.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -19,8 +19,9 @@
       <MemberType>Constructor</MemberType>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates a new ErrorException with a default message.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -31,9 +32,10 @@
         <Parameter Name="errtext" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="errtext">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="errtext">The error text for the exception.</param>
+        <summary>Creates a new ErrorException with teh specified message.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

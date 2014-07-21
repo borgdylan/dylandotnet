@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class private auto ansi TILambdas
+class private TILambdas
 
 	field assembly string Name
 	field assembly integer NrGenParams
@@ -15,7 +15,7 @@ class private auto ansi TILambdas
 	method assembly void TILambdas()
 		mybase::ctor()
 		Name = string::Empty
-		TB = null
+		//TB = null
 	end method
 
 	method assembly void TILambdas(var name as string, var gp as integer)
@@ -34,11 +34,8 @@ class private auto ansi TILambdas
 	end method
 
 	method assembly boolean DetermineIfCandidateType(var ti as TypeItem)
-		if ti::BakedTyp != null then
-			return ti::BakedTyp::Equals(TB)
-		else
-			return #ternary{ ti::IsEnum ? ti::EnumBldr::Equals(TB), ti::TypeBldr::Equals(TB) }
-		end if
+		return #ternary { ti::BakedTyp != null ? ti::BakedTyp::Equals(TB), _
+			 #ternary{ ti::IsEnum ? ti::EnumBldr::Equals(TB), ti::TypeBldr::Equals(TB) } }
 	end method
 
 end class

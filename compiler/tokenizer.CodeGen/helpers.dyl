@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi static Helpers
+class public static Helpers
 
 	field public static boolean StringFlg
 	field public static boolean BoolFlg
@@ -18,22 +18,22 @@ class public auto ansi static Helpers
 	field public static IKVM.Reflection.Type LeftOp
 	field public static IKVM.Reflection.Type RightOp
 	
-	method private static void Helpers()
-		StringFlg = false
-		DelegateFlg = false
-		OpCodeSuppFlg = false
-		EqSuppFlg = false
-		BaseFlg = false
-		NullExprFlg = false
-		LeftOp = null
-		RightOp = null
-	end method
+	//method private static void Helpers()
+		//StringFlg = false
+		//DelegateFlg = false
+		//OpCodeSuppFlg = false
+		//EqSuppFlg = false
+		//BaseFlg = false
+		//NullExprFlg = false
+		//LeftOp = null
+		//RightOp = null
+	//end method
 	
 	//uses NullExprFlag as input
 	[method: ComVisible(false)]
 	method public static void CheckAssignability(var t1 as IKVM.Reflection.Type, var t2 as IKVM.Reflection.Type)
-		if !t1::IsAssignableFrom(t2) andalso !#expr(NullExprFlg andalso !t1::IsAssignableFrom(Loader::CachedLoadClass("System.ValueType"))) then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Slots of type '" + t1::ToString() + "' cannot be assigned values of type '" + t2::ToString() + "'.")
+		if !t1::IsAssignableFrom(t2) andalso #expr(!NullExprFlg orelse Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(t1)) then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Slots of type '{0}' cannot be assigned values of type '{1}'.", t1::ToString(), t2::ToString()))
 		end if
 	end method
 
@@ -65,8 +65,11 @@ class public auto ansi static Helpers
 		var temp as TypeAttributes
 		var fir as boolean = true
 		var flg as boolean
+		//abstract flag
 		var absf as boolean = false
+		//sealed flag
 		var sldf as boolean = false
+		//sequential flag
 		var isseq as boolean = false
 		
 		foreach attr in attrs
@@ -108,14 +111,14 @@ class public auto ansi static Helpers
 			end if
 			if flg then
 				if fir then
-					fir = (fir == false)
+					fir = false
 					ta = temp
 				else
 					ta = temp or ta
 				end if
 			end if
 		end for
-		if absf and sldf then
+		if absf andalso sldf then
 			ILEmitter::StaticCFlg = true
 		end if
 
@@ -153,7 +156,7 @@ class public auto ansi static Helpers
 			end if
 			if flg then
 				if fir then
-					fir = (fir == false)
+					fir = false
 					ta = temp
 				else
 					ta = temp or ta
@@ -229,15 +232,13 @@ class public auto ansi static Helpers
 				ILEmitter::ProtoFlg = true
 			elseif attr is Attributes.PinvokeImplAttr then
 				ILEmitter::PInvokeFlg = true
-			//elseif attr is Attributes.NoneAttr then
-			//elseif attr is Attributes.AutoGenAttr then
 			else
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a method.")
 			end if
 			if flg then
 				if fir then
-					fir = (fir == false)
+					fir = false
 					ta = temp
 				else
 					ta = temp or ta
@@ -303,7 +304,7 @@ class public auto ansi static Helpers
 			end if
 			if flg then
 				if fir then
-					fir = (fir == false)
+					fir = false
 					ta = temp
 				else
 					ta = temp or ta
@@ -334,7 +335,7 @@ class public auto ansi static Helpers
 			end if
 			if flg then
 				if fir then
-					fir = (fir == false)
+					fir = false
 					ta = temp
 				else
 					ta = temp or ta
@@ -364,7 +365,7 @@ class public auto ansi static Helpers
 			end if
 			if flg then
 				if fir then
-					fir = (fir == false)
+					fir = false
 					ta = temp
 				else
 					ta = temp or ta
@@ -377,38 +378,21 @@ class public auto ansi static Helpers
 
 	[method: ComVisible(false)]
 	method public static boolean CheckUnsigned(var t as IKVM.Reflection.Type)
-		if t::Equals(Loader::CachedLoadClass("System.UInt32")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.UInt64")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.Char")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.Byte")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.UInt16")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.UIntPtr")) then
-			return true
-		else
-			return false
-		end if
+		return t::Equals(Loader::CachedLoadClass("System.UInt32")) orelse _
+			t::Equals(Loader::CachedLoadClass("System.UInt64")) orelse _
+			t::Equals(Loader::CachedLoadClass("System.Char")) orelse _
+			t::Equals(Loader::CachedLoadClass("System.Byte")) orelse _
+			t::Equals(Loader::CachedLoadClass("System.UInt16")) orelse _
+			t::Equals(Loader::CachedLoadClass("System.UIntPtr"))
 	end method
 	
 	[method: ComVisible(false)]
 	method public static boolean CheckSigned(var t as IKVM.Reflection.Type)
-		if t::Equals(Loader::CachedLoadClass("System.SByte")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.Int16")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.Int32")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.Int64")) then
-			return true
-		elseif t::Equals(Loader::CachedLoadClass("System.IntPtr")) then
-			return true
-		else
-			return false
-		end if
+		return t::Equals(Loader::CachedLoadClass("System.SByte")) orelse _
+			t::Equals(Loader::CachedLoadClass("System.Int16")) orelse _
+			t::Equals(Loader::CachedLoadClass("System.Int32")) orelse _
+			t::Equals(Loader::CachedLoadClass("System.Int64")) orelse _
+			t::Equals(Loader::CachedLoadClass("System.IntPtr"))
 	end method
 	
 	[method: ComVisible(false)]
@@ -479,21 +463,18 @@ class public auto ansi static Helpers
 			var lop as C5.IList<of IKVM.Reflection.Type> = new C5.LinkedList<of IKVM.Reflection.Type>()
 			
 			var tstr = gtt::Value + "`" + $string$pttoks::get_Count()
-			if gtt::RefTyp != null then
-				typ = gtt::RefTyp
-//			elseif Importer::TypeMap::Contains(tstr) then
-//				gtt::RefTyp = Importer::TypeMap::get_Item(tstr)
-//				typ = gtt::RefTyp
-			else
+
+			if gtt::RefTyp == null then
 				typ = SymTable::TypeLst::GetType(gtt::Value, pttoks::get_Count())
 				
-				if typ == null  then
+				if typ == null then
 					typ = Loader::LoadClass(tstr)
 					gtt::RefTyp = Loader::PreProcTyp
-//					Importer::TypeMap::set_Item(tstr, Loader::PreProcTyp)
 				else
 					gtt::RefTyp = typ
 				end if
+			else
+				typ = gtt::RefTyp
 			end if
 
 			if typ = null then
@@ -525,11 +506,6 @@ class public auto ansi static Helpers
 					Loader::MakeArr = tt::IsArray
 					Loader::MakeRef = tt::IsByRef
 					typ = Loader::ProcessType(tt::RefTyp)
-//				elseif Importer::TypeMap::Contains(tt::Value) then
-//					tt::RefTyp = Importer::TypeMap::get_Item(tt::Value)
-//					Loader::MakeArr = tt::IsArray
-//					Loader::MakeRef = tt::IsByRef
-//					typ = Loader::ProcessType(tt::RefTyp)
 				elseif tt is SpecialTypeTok
 					Loader::MakeArr = tt::IsArray
 					Loader::MakeRef = tt::IsByRef
@@ -553,14 +529,12 @@ class public auto ansi static Helpers
 						typ = SymTable::TypeLst::GetType(tt::Value, 0)
 					end if
 
-					if typ != null  then
-						tt::RefTyp = typ
-//						Importer::TypeMap::set_Item(tt::Value, typ)
-						typ = Loader::ProcessType(typ)
-					else
+					if typ == null  then
 						typ = Loader::LoadClass(tt::Value)
-//						Importer::TypeMap::set_Item(tt::Value, Loader::PreProcTyp)
 						tt::RefTyp = Loader::PreProcTyp
+					else
+						tt::RefTyp = typ
+						typ = Loader::ProcessType(typ)						
 					end if 
 				end if
 			else
@@ -591,11 +565,10 @@ class public auto ansi static Helpers
 		foreach p in ps
 			curp = $VarExpr$p
 			typ = CommitEvalTTok(curp::VarTyp)
-			if typ = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curp::VarTyp::Value + "' is not defined or is not accessible.")
-			end if
 
-			if typ != null then
+			if typ == null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curp::VarTyp::Value + "' is not defined or is not accessible.")
+			else
 				lt::Add(typ)
 			end if
 
@@ -1239,7 +1212,7 @@ class public auto ansi static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitConv(var source as IKVM.Reflection.Type, var sink as IKVM.Reflection.Type)
+	method public static void EmitConv(var source as IKVM.Reflection.Type, var sink as IKVM.Reflection.Type, var isNull as boolean)
 		var isgenparam = (source is GenericTypeParameterBuilder) orelse (sink  is GenericTypeParameterBuilder)
 		var convc as IKVM.Reflection.Type = Loader::LoadClass("System.Convert")
 		var typ as IKVM.Reflection.Type
@@ -1296,7 +1269,7 @@ class public auto ansi static Helpers
 			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
 				return
-			elseif (sink::get_BaseType() == null) and !sink::Equals(Loader::CachedLoadClass("System.Object")) then
+			elseif (sink::get_BaseType() == null) andalso !sink::Equals(Loader::CachedLoadClass("System.Object")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
 				return
 			elseif source is GenericTypeParameterBuilder then
@@ -1309,11 +1282,10 @@ class public auto ansi static Helpers
 		end if
 		
 		if sink::get_IsInterface() then
-			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) and sink::IsAssignableFrom(source) then
+			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) andalso sink::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
 				return
-			elseif Loader::CachedLoadClass("System.Object")::IsAssignableFrom(source) then
-			else
+			elseif !Loader::CachedLoadClass("System.Object")::IsAssignableFrom(source) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
 				return
 			end if
@@ -1323,8 +1295,7 @@ class public auto ansi static Helpers
 			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(sink) then
 				ILEmitter::EmitUnboxAny(sink)
 				return
-			elseif Loader::CachedLoadClass("System.Object")::IsAssignableFrom(sink) then
-			else
+			elseif !Loader::CachedLoadClass("System.Object")::IsAssignableFrom(sink) then
 				ILEmitter::EmitUnboxAny(sink)
 				return
 			end if
@@ -1338,7 +1309,9 @@ class public auto ansi static Helpers
 				end if
 				return
 			elseif source::IsAssignableFrom(sink) then
-				ILEmitter::EmitCastclass(sink)
+				if !isNull then
+					ILEmitter::EmitCastclass(sink)
+				end if
 				return
 			elseif source::get_IsInterface() orelse sink::get_IsInterface() then
 				ILEmitter::EmitCastclass(sink)
@@ -1468,6 +1441,11 @@ class public auto ansi static Helpers
 	end method
 
 	[method: ComVisible(false)]
+	method public static void EmitConv(var source as IKVM.Reflection.Type, var sink as IKVM.Reflection.Type)
+		EmitConv(source, sink, false)
+	end method
+
+	[method: ComVisible(false)]
 	method public static void EmitMetCall(var met as MethodInfo, var stat as boolean)
 		if stat orelse BaseFlg then
 			ILEmitter::EmitCall(met)
@@ -1558,18 +1536,6 @@ class public auto ansi static Helpers
 
 		return fldinf
 	end method
-
-//	[method: ComVisible(false)]
-//	method public static MethodInfo GetLocMetNoParams(var nam as string)
-//		var metinf as MethodInfo = null
-//		var meti as MethodItem = SymTable::FindMetNoParams(nam)
-//
-//		if meti != null then
-//			metinf = meti::MethodBldr
-//		end if
-//
-//		return metinf
-//	end method
 
 	[method: ComVisible(false)]
 	method public static Emit.Label GetLbl(var nam as string)
@@ -1774,7 +1740,7 @@ class public auto ansi static Helpers
 			meti = SymTable::FindMet(nam, typs)
 		end if
 		
-		if (meti != null) and !BaseFlg then
+		if !BaseFlg andalso (meti != null) then
 			metinf = meti
 		else
 			Loader::ProtectedFlag = true
@@ -1789,7 +1755,7 @@ class public auto ansi static Helpers
 	method public static FieldInfo GetExtFld(var t as IKVM.Reflection.Type, var fld as string)
 		var f as FieldInfo = SymTable::TypeLst::GetField(t, fld, t)
 
-		return #ternary{f != null ? f, Loader::LoadField(t, fld)}
+		return #ternary{f == null ? Loader::LoadField(t, fld), f}
 	end method
 	
 	[method: ComVisible(false)]
@@ -2239,7 +2205,12 @@ class public auto ansi static Helpers
 				var i = -1
 				foreach elem in aictok::Elements
 					i++
-					val::SetValue(ProcessConstExpr(elem)::Value, i)
+					var res = ProcessConstExpr(elem)
+
+					NullExprFlg = res::Value == null
+					CheckAssignability(typ2, res::Typ)
+
+					val::SetValue(res::Value, i)
 				end for
 
 				return new ConstInfo() {Typ = typ2::MakeArrayType(), Value = val}

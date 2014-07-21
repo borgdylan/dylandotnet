@@ -1,6 +1,6 @@
 <Type Name="GenericMethodNameTok" FullName="dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok">
   <TypeSignature Language="C#" Value="public class GenericMethodNameTok : dylan.NET.Tokenizer.AST.Tokens.MethodNameTok, dylan.NET.Tokenizer.AST.Interfaces.IConstrainable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi GenericMethodNameTok extends dylan.NET.Tokenizer.AST.Tokens.MethodNameTok implements class dylan.NET.Tokenizer.AST.Interfaces.IConstrainable, class dylan.NET.Tokenizer.AST.Interfaces.IHasConstraints" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi GenericMethodNameTok extends dylan.NET.Tokenizer.AST.Tokens.MethodNameTok implements class dylan.NET.Tokenizer.AST.Interfaces.IConstrainable, class dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
@@ -100,9 +100,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="HasConstraints">
-      <MemberSignature Language="C#" Value="public virtual bool HasConstraints { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool HasConstraints" />
+    <Member MemberName="MayHaveConstraints">
+      <MemberSignature Language="C#" Value="public virtual bool MayHaveConstraints { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool MayHaveConstraints" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

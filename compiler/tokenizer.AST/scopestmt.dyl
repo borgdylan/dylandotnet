@@ -8,15 +8,15 @@
 
 
 // #scope Opt
-class public auto ansi ScopeStmt extends Stmt
+class public ScopeStmt extends Stmt
 
 	field public SwitchTok Opt
 	field public boolean Flg
 
 	method public void ScopeStmt()
 		mybase::ctor()
-		Opt = null
-		Flg = false
+		//Opt = null
+		//Flg = false
 	end method
 
 	method public void setFlg()

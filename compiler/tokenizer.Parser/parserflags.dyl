@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Flags
+class public Flags
 
 	field public boolean IfFlag
 	//field public boolean AssemFlg
@@ -38,28 +38,29 @@ class public auto ansi Flags
 		//true only for first parser
 		//AssemFlg = false
 		//--------------------------
-		IfFlag = false
-		CmtFlag = false
-		NoOptFlag = false
-		AsFlag = false
-		ForFlag = false
-		NegFlag = false
-		NotFlag = false
-		IncFlag = false
-		DecFlag = false
-		ConvFlag = false
-		RefFlag = false
-		ValinrefFlag = false
-		ConvTyp = null
+
+		//IfFlag = false
+		//CmtFlag = false
+		//NoOptFlag = false
+		//AsFlag = false
+		//ForFlag = false
+		//NegFlag = false
+		//NotFlag = false
+		//IncFlag = false
+		//DecFlag = false
+		//ConvFlag = false
+		//RefFlag = false
+		//ValinrefFlag = false
+		//ConvTyp = null
 		OrdOp = string::Empty
-		isChanged = false
-		DurConvFlag = false
-		IdentFlag = false
-		CtorFlag = false
- 		MetCallFlag = false
-		MetChainFlag = false
-		ProcessTTokOnly = false
-		StringFlag = false
+		//isChanged = false
+		//DurConvFlag = false
+		//IdentFlag = false
+		//CtorFlag = false
+ 		//MetCallFlag = false
+		//MetChainFlag = false
+		//ProcessTTokOnly = false
+		//StringFlag = false
 		CurPath = string::Empty
 	end method
 

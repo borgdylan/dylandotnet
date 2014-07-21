@@ -8,7 +8,7 @@
 
 namespace dylan.NET.ResProc
 
-	class public auto ansi static ResProc
+	class public static ResProc
 
 		field private static integer Mode
 		field private static Action<of Msg> _WarnH
@@ -23,7 +23,7 @@ namespace dylan.NET.ResProc
 
 		method private static void ResProc()
 			Init()
-			_WarnH = null
+			//_WarnH = null
 		end method
 
 		method public static void WarnInit()
@@ -92,7 +92,7 @@ namespace dylan.NET.ResProc
 				return true
 			else
 				c = char::ToLower(c)
-				return c == 'a' orelse c == 'b' orelse c == 'c' orelse c == 'd' orelse c == 'e' orelse c == 'f'
+				return c >= 'a' andalso c <= 'f'
 			end if
 		end method
 		
@@ -312,7 +312,7 @@ namespace dylan.NET.ResProc
 
 		method public static IEnumerable<of string> Invoke(var args as string[])
 		
-			Console::WriteLine("dylan.NET Resource Processor v. 11.3.6.1 RC")
+			Console::WriteLine("dylan.NET Resource Processor v. 11.3.7.1 RC")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2014 Dylan Borg")
 			if args[l] < 1 then

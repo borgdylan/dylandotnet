@@ -8,7 +8,7 @@
 
 // assembly AsmName Mode
 
-class public auto ansi AssemblyStmt extends Stmt
+class public AssemblyStmt extends Stmt
 
 	field public Token Mode
 	field public Ident AsmName

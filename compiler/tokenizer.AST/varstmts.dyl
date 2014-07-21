@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi VarStmt extends Stmt
+class public VarStmt extends Stmt
 
 	field public TypeTok VarTyp
 	field public Ident VarName
@@ -19,7 +19,7 @@ class public auto ansi VarStmt extends Stmt
 
 end class
 
-class public auto ansi VarAsgnStmt extends Stmt
+class public VarAsgnStmt extends Stmt
 
 	field public TypeTok VarTyp
 	field public Ident VarName
@@ -31,12 +31,12 @@ class public auto ansi VarAsgnStmt extends Stmt
 		VarTyp = new TypeTok()
 		VarName = new Ident()
 		RExpr = new Expr()
-		IsUsing = false
+		//IsUsing = false
 	end method
 
 end class
 
-class public auto ansi InfVarAsgnStmt extends Stmt
+class public InfVarAsgnStmt extends Stmt
 
 	field public Ident VarName
 	field public Expr RExpr
@@ -46,12 +46,12 @@ class public auto ansi InfVarAsgnStmt extends Stmt
 		mybase::ctor()
 		VarName = new Ident()
 		RExpr = new Expr()
-		IsUsing = false
+		//IsUsing = false
 	end method
 
 end class
 
-class public auto ansi EndUsingStmt extends Stmt
+class public EndUsingStmt extends Stmt
 	method public override string ToString()
 		return "end using"
 	end method

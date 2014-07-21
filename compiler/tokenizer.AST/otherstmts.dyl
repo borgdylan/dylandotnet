@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi AssignStmt extends Stmt
+class public AssignStmt extends Stmt
 
 	field public Expr LExp
 	field public Expr RExp
@@ -19,29 +19,29 @@ class public auto ansi AssignStmt extends Stmt
 
 end class
 
-class public auto ansi IncStmt extends Stmt
+class public IncStmt extends Stmt
 
 	field public Ident NumVar
 
 	method public void IncStmt()
 		mybase::ctor()
-		NumVar = null
+		//NumVar = null
 	end method
 
 end class
 
-class public auto ansi DecStmt extends Stmt
+class public DecStmt extends Stmt
 
 	field public Ident NumVar
 
 	method public void DecStmt()
 		mybase::ctor()
-		NumVar = null
+		//NumVar = null
 	end method
 
 end class
 
-class public auto ansi ReturnStmt extends Stmt
+class public ReturnStmt extends Stmt
 
 	field public Expr RExp
 
@@ -52,7 +52,7 @@ class public auto ansi ReturnStmt extends Stmt
 
 end class
 
-class public auto ansi MethodCallStmt extends Stmt
+class public MethodCallStmt extends Stmt
 
 	field public Token MethodToken
 
@@ -63,16 +63,16 @@ class public auto ansi MethodCallStmt extends Stmt
 
 end class
 
-class public auto ansi EndLockStmt extends Stmt
+class public EndLockStmt extends Stmt
 	method public override string ToString()
 		return "end lock"
 	end method
 end class
 
-class public auto ansi CommentStmt extends Stmt
+class public CommentStmt extends IgnorableStmt
 end class
 
-class public auto ansi ErrorStmt extends Stmt
+class public ErrorStmt extends Stmt
 
 	field public Token Msg
 
@@ -91,7 +91,7 @@ class public auto ansi ErrorStmt extends Stmt
 
 end class
 
-class public auto ansi WarningStmt extends Stmt
+class public WarningStmt extends Stmt
 
 	field public Token Msg
 
@@ -110,7 +110,7 @@ class public auto ansi WarningStmt extends Stmt
 
 end class
 
-class public auto ansi SignStmt extends Stmt
+class public SignStmt extends Stmt
 
 	field public Token KeyPath
 
@@ -129,7 +129,7 @@ class public auto ansi SignStmt extends Stmt
 
 end class
 
-class public auto ansi EmbedStmt extends Stmt
+class public EmbedStmt extends Stmt
 
 	field public Token Path
 	field public Token LogicalName
@@ -155,7 +155,7 @@ class public auto ansi EmbedStmt extends Stmt
 	end method
 end class
 
-class public auto ansi LockStmt extends Stmt
+class public LockStmt extends Stmt
 
 	field public Expr Lockee
 
@@ -166,7 +166,7 @@ class public auto ansi LockStmt extends Stmt
 
 end class
 
-class public auto ansi TryLockStmt extends Stmt
+class public TryLockStmt extends Stmt
 
 	field public Expr Lockee
 

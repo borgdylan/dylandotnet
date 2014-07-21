@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi StmtOptimizer
+class public StmtOptimizer
 
 	field public Flags PFlags
 	
@@ -17,6 +17,88 @@ class public auto ansi StmtOptimizer
 	
 	method public void StmtOptimizer()
 		ctor(new Flags())
+	end method
+
+	method public integer procWhere(var stm as Stmt, var mn as IMayHaveConstraints, var i as integer)
+		
+		if !mn::get_MayHaveConstraints() then
+			return i
+		elseif i < --stm::Tokens::get_Count() then
+			if stm::Tokens::get_Item(i) isnot WhereTok then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'where' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
+				return i
+			end if
+		end if
+
+		var gmn = $IConstrainable$mn
+		var eop = new ExprOptimizer(PFlags)
+
+		//read constraints
+		do while i < --stm::Tokens::get_Count()
+			var curp as string = null
+
+			i++
+			if !#expr(i < stm::Tokens::get_Count()) then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an identifier instead of nothing!")
+			elseif stm::Tokens::get_Item(i) is Ident then
+				curp = stm::Tokens::get_Item(i)::Value 
+			else
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of {0}!", stm::Tokens::get_Item(i)::Value))
+			end if
+
+			i++
+			if !#expr(i < stm::Tokens::get_Count()) then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected 'as' instead of nothing!")
+			elseif stm::Tokens::get_Item(i) isnot AsTok then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'as' instead of {0}!", stm::Tokens::get_Item(i)::Value))
+			end if
+
+			i++
+			if !#expr(i < stm::Tokens::get_Count()) then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected '{' instead of nothing!")
+			elseif stm::Tokens::get_Item(i) isnot LCParen then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected '{' instead of {0}!", stm::Tokens::get_Item(i)::Value))
+			end if
+
+			do while i < --stm::Tokens::get_Count()
+				i++
+				var t = stm::Tokens::get_Item(i)
+
+				if t is NewTok then
+					gmn::AddConstraint(curp, t)
+				elseif t is StructTok then
+					gmn::AddConstraint(curp, t)
+				elseif t is ClassTok then
+					gmn::AddConstraint(curp, t)
+				elseif (t is Ident) orelse (t is TypeTok) then
+					stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
+					gmn::AddConstraint(curp, stm::Tokens::get_Item(i))
+				elseif t is Comma then
+				elseif t is InTok then
+					gmn::AddConstraint(curp, t)
+				elseif t is OutTok then
+					gmn::AddConstraint(curp, t)
+				elseif t is RCParen then
+					if stm::Tokens::get_Item(--i) is Comma then
+						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a valid constraint instead of {0}!", t::Value))
+					end if
+					break
+				else
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a valid constraint instead of {0}!", t::Value))
+				end if
+			end do
+
+			i++
+			if !#expr(i < stm::Tokens::get_Count()) then
+				break
+			elseif stm::Tokens::get_Item(i) isnot Comma then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a ',' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
+			end if
+
+		end do
+
+		return i
+
 	end method
 
 	method private Stmt checkRefasm(var stm as Stmt, var b as boolean&)
@@ -777,9 +859,9 @@ class public auto ansi StmtOptimizer
 					return new EndNSStmt() {Line = stm::Line}
 				end if
 				
-				b = (stm::Tokens::get_Item(1) is ClassTok) orelse (stm::Tokens::get_Item(1) is StructTok)
+				b = (stm::Tokens::get_Item(1) is ClassTok) orelse (stm::Tokens::get_Item(1) is StructTok) orelse (stm::Tokens::get_Item(1) is InterfaceTok)
 				if b then
-					return new EndClassStmt() {Line = stm::Line}
+					return new EndClassStmt(stm::Tokens::get_Item(1)) {Line = stm::Line}
 				end if
 				
 				b = stm::Tokens::get_Item(1) is EnumTok
@@ -1017,94 +1099,20 @@ class public auto ansi StmtOptimizer
 		return null
 	end method
 
-	method public integer procWhere2(var stm as Stmt, var gmn as ClassStmt, var i as integer)
-		
-		if i < --stm::Tokens::get_Count() then
-			if stm::Tokens::get_Item(i) isnot WhereTok then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'where' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
-				return i
-			end if
-		end if
-
-		var eop = new ExprOptimizer(PFlags)
-
-		//read constraints
-		do while i < --stm::Tokens::get_Count()
-			var curp as string = null
-
-			i++
-			if !#expr(i < stm::Tokens::get_Count()) then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an identifier instead of nothing!")
-			elseif stm::Tokens::get_Item(i) is Ident then
-				curp = stm::Tokens::get_Item(i)::Value 
-			else
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of {0}!", stm::Tokens::get_Item(i)::Value))
-			end if
-
-			i++
-			if !#expr(i < stm::Tokens::get_Count()) then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected 'as' instead of nothing!")
-			elseif stm::Tokens::get_Item(i) isnot AsTok then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'as' instead of {0}!", stm::Tokens::get_Item(i)::Value))
-			end if
-
-			i++
-			if !#expr(i < stm::Tokens::get_Count()) then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected '{' instead of nothing!")
-			elseif stm::Tokens::get_Item(i) isnot LCParen then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected '{' instead of {0}!", stm::Tokens::get_Item(i)::Value))
-			end if
-
-			do while i < --stm::Tokens::get_Count()
-				i++
-				var t = stm::Tokens::get_Item(i)
-
-				if t is NewTok then
-					gmn::AddConstraint(curp, t)
-				elseif t is StructTok then
-					gmn::AddConstraint(curp, t)
-				elseif t is ClassTok then
-					gmn::AddConstraint(curp, t)
-				elseif (t is Ident) orelse (t is TypeTok) then
-					stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
-					gmn::AddConstraint(curp, stm::Tokens::get_Item(i))
-				elseif t is Comma then
-				elseif t is InTok then
-					gmn::AddConstraint(curp, t)
-				elseif t is OutTok then
-					gmn::AddConstraint(curp, t)
-				elseif t is RCParen then
-					if stm::Tokens::get_Item(--i) is Comma then
-						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a valid constraint instead of {0}!", t::Value))
-					end if
-					break
-				else
-					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a valid constraint instead of {0}!", t::Value))
-				end if
-			end do
-
-			i++
-			if !#expr(i < stm::Tokens::get_Count()) then
-				break
-			elseif stm::Tokens::get_Item(i) isnot Comma then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a ',' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
-			end if
-
-		end do
-
-		return i
-	end method
-
 	method private Stmt checkClass(var stm as Stmt, var b as boolean&)
-		b = (stm::Tokens::get_Item(0) is ClassTok) orelse (stm::Tokens::get_Item(0) is StructTok)
+		b = (stm::Tokens::get_Item(0) is ClassTok) orelse (stm::Tokens::get_Item(0) is StructTok) orelse (stm::Tokens::get_Item(0) is InterfaceTok)
 		var eopt as ExprOptimizer = new ExprOptimizer(PFlags)
 		var stflg as boolean = false
 
 		if b then
 			var clss as ClassStmt = new ClassStmt() {Line = stm::Line}		
+
 			if stm::Tokens::get_Item(0) is StructTok then
 				stflg = true
 				clss::InhClass = new TypeTok("System.ValueType")
+			elseif stm::Tokens::get_Item(0) is InterfaceTok then
+				stflg = true
+				clss::AddAttr(new InterfaceAttr())
 			end if
 			
 			var i as integer = 0
@@ -1132,7 +1140,7 @@ class public auto ansi StmtOptimizer
 							end if
 						end do
 					elseif stm::Tokens::get_Item(i) is WhereTok then
-						i = procWhere2(stm, clss, i)
+						i = procWhere(stm, clss, i)
 					else
 						stm::Tokens = eopt::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 						clss::ClassName = $TypeTok$stm::Tokens::get_Item(i)
@@ -1365,86 +1373,6 @@ class public auto ansi StmtOptimizer
 		end if
 		
 		return null
-	end method
-
-	method public void procWhere(var stm as Stmt, var mn as MethodNameTok, var i as integer)
-		
-		if mn isnot GenericMethodNameTok then
-			return
-		elseif i < --stm::Tokens::get_Count() then
-			if stm::Tokens::get_Item(i) isnot WhereTok then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'where' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
-				return
-			end if
-		end if
-
-		var gmn = $GenericMethodNameTok$mn
-		var eop = new ExprOptimizer(PFlags)
-
-		//read constraints
-		do while i < --stm::Tokens::get_Count()
-			var curp as string = null
-
-			i++
-			if !#expr(i < stm::Tokens::get_Count()) then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an identifier instead of nothing!")
-			elseif stm::Tokens::get_Item(i) is Ident then
-				curp = stm::Tokens::get_Item(i)::Value 
-			else
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of {0}!", stm::Tokens::get_Item(i)::Value))
-			end if
-
-			i++
-			if !#expr(i < stm::Tokens::get_Count()) then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected 'as' instead of nothing!")
-			elseif stm::Tokens::get_Item(i) isnot AsTok then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'as' instead of {0}!", stm::Tokens::get_Item(i)::Value))
-			end if
-
-			i++
-			if !#expr(i < stm::Tokens::get_Count()) then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected '{' instead of nothing!")
-			elseif stm::Tokens::get_Item(i) isnot LCParen then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected '{' instead of {0}!", stm::Tokens::get_Item(i)::Value))
-			end if
-
-			do while i < --stm::Tokens::get_Count()
-				i++
-				var t = stm::Tokens::get_Item(i)
-
-				if t is NewTok then
-					gmn::AddConstraint(curp, t)
-				elseif t is StructTok then
-					gmn::AddConstraint(curp, t)
-				elseif t is ClassTok then
-					gmn::AddConstraint(curp, t)
-				elseif (t is Ident) orelse (t is TypeTok) then
-					stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
-					gmn::AddConstraint(curp, stm::Tokens::get_Item(i))
-				elseif t is Comma then
-				elseif t is InTok then
-					gmn::AddConstraint(curp, t)
-				elseif t is OutTok then
-					gmn::AddConstraint(curp, t)
-				elseif t is RCParen then
-					if stm::Tokens::get_Item(--i) is Comma then
-						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a valid constraint instead of {0}!", t::Value))
-					end if
-					break
-				else
-					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a valid constraint instead of {0}!", t::Value))
-				end if
-			end do
-
-			i++
-			if !#expr(i < stm::Tokens::get_Count()) then
-				break
-			elseif stm::Tokens::get_Item(i) isnot Comma then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a ',' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
-			end if
-
-		end do
-
 	end method
 
 	method private Stmt checkMethod(var stm as Stmt, var b as boolean&)

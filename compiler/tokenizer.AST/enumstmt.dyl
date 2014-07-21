@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi EnumStmt extends Stmt
+class public EnumStmt extends Stmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident EnumName
@@ -25,13 +25,13 @@ class public auto ansi EnumStmt extends Stmt
 	
 end class
 
-class public auto ansi EndEnumStmt extends Stmt
+class public EndEnumStmt extends Stmt
 	method public override string ToString()
 		return "end enum"
 	end method
 end class
 
-//class public auto ansi LiteralStmt extends Stmt
+//class public LiteralStmt extends Stmt
 //
 //	field public Expr RExp
 //	field public Ident LitName

@@ -871,6 +871,9 @@ class public static Program
 
 		var xa = new ObjInit[] {new ObjInit()}
 		//xa[0]::A = 1
+
+		var sobj as object ="hello"
+		Console::WriteLine($string$sobj)
 	end method
 
 	[method: My(new integer[] {1, 2})]
@@ -885,7 +888,7 @@ class public static Program
 		end if
 	end method
 
-	[method: My(new string[] {"hello", "world"}), Arr = new single[] {1f, 2f, 3f, 4f}]
+	[method: My(new string[] {"hello", "world", null}), Arr = new single[] {1f, 2f, 3f, 4f}]
 	method public static void LeaveMet2(var x as integer)
 		if x > 0 then
 			return

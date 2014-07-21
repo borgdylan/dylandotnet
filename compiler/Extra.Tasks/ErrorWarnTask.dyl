@@ -8,19 +8,19 @@
 
 namespace Extra.Tasks
 
-	class public auto ansi sealed ErrorWarnTask extends Task
+	class public sealed ErrorWarnTask extends Task
 		
 		property public autogen ITaskItem[] Lines
 		field public static literal string ErrorRegex = "(^\s*(?<file>.*)\((?<line>\d*){1}(,(?<column>\d*[\+]*))?\)(:|)\s+)*error\s*(?<number>.*):\s(?<message>.*)"
 		field public static literal string WarningRegex = "(^\s*(?<file>.*)\((?<line>\d*){1}(,(?<column>\d*[\+]*))?\)(:|)\s+)*warning\s*(?<number>.*):\s(?<message>.*)"
 
-//		property public hidebysig virtual string ToolName
+//		property public override string ToolName
 //			get
 //				return "ErrorWarn"
 //			end get
 //		end property
 
-		method public hidebysig virtual boolean Execute()
+		method public override boolean Execute()
 			var haderrs as boolean = false
 			var r1 = new Regex(ErrorRegex)
 			var r2 = new Regex(WarningRegex)
@@ -44,7 +44,7 @@ namespace Extra.Tasks
 			return !haderrs
 		end method
 
-//		method public hidebysig virtual string GenerateFullPathToTool()
+//		method public override string GenerateFullPathToTool()
 //			return string::Empty
 //		end method
 

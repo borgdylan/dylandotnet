@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi ImportStmt extends Stmt
+class public ImportStmt extends Stmt
 
 	field public Token NS
 	field public Token Alias
@@ -33,7 +33,7 @@ class public auto ansi ImportStmt extends Stmt
 
 end class
 
-class public auto ansi LocimportStmt extends Stmt
+class public LocimportStmt extends Stmt
 
 	field public Token NS
 

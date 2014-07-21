@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Expr
+class public Expr
 
 	field public C5.ArrayList<of Token> Tokens
 	field public integer Line
@@ -15,8 +15,8 @@ class public auto ansi Expr
 	method public void Expr()
 		mybase::ctor()
 		Tokens = new C5.ArrayList<of Token>(3)
-		Line = 0
-		ResultTyp = null
+		//Line = 0
+		//ResultTyp = null
 	end method
 
 	method public void AddToken(var toktoadd as Token)

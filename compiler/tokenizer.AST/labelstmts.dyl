@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi LabelStmt extends Stmt
+class public LabelStmt extends Stmt
 
 	field public Ident LabelName
 
@@ -21,7 +21,7 @@ class public auto ansi LabelStmt extends Stmt
 
 end class
 
-class public auto ansi PlaceStmt extends Stmt
+class public PlaceStmt extends Stmt
 
 	field public Ident LabelName
 
@@ -36,7 +36,7 @@ class public auto ansi PlaceStmt extends Stmt
 
 end class
 
-class public auto ansi GotoStmt extends Stmt
+class public GotoStmt extends Stmt
 
 	field public Ident LabelName
 

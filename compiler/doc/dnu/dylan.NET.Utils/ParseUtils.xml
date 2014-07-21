@@ -35,30 +35,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LikeOP">
-      <MemberSignature Language="C#" Value="public static bool LikeOP (string str, string pattern);" />
-      <MemberSignature Language="ILAsm" Value=".method public static bool LikeOP(string str, string pattern) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="str" Type="System.String" />
-        <Parameter Name="pattern" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="str">To be added.</param>
-        <param name="pattern">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ProcessMSYSPath">
       <MemberSignature Language="C#" Value="public static string ProcessMSYSPath (string p);" />
       <MemberSignature Language="ILAsm" Value=".method public static string ProcessMSYSPath(string p) cil managed" />
@@ -122,28 +98,6 @@
       </Parameters>
       <Docs>
         <param name="escstr">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RetPrec">
-      <MemberSignature Language="C#" Value="public static int RetPrec (string chr);" />
-      <MemberSignature Language="ILAsm" Value=".method public static int32 RetPrec(string chr) cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="chr" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="chr">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

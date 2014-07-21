@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi ExprCallTok extends ValueToken implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
+class public ExprCallTok extends ValueToken implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
 
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
@@ -22,16 +22,16 @@ class public auto ansi ExprCallTok extends ValueToken implements IUnaryOperatabl
 	
 	method public void ExprCallTok(var value as string)
 		mybase::ctor(value)
-		_Conv = false
+		//_Conv = false
 		_TTok = new TypeTok()
-		_DoNeg = false
-		_DoNot = false
-		_DoInc = false
-		_DoDec = false
+		//_DoNeg = false
+		//_DoNot = false
+		//_DoInc = false
+		//_DoDec = false
 		_OrdOp = string::Empty
-		MemberAccessFlg = false
+		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		Exp = null
+		//Exp = null
 	end method
 	
 	method public void ExprCallTok()

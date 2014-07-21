@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi IfItem
+class public IfItem
 
 	field public Emit.Label EndLabel
 	field public Emit.Label NextBlkLabel
@@ -15,8 +15,8 @@ class public auto ansi IfItem
 
 	method public void IfItem()
 		mybase::ctor()
-		ElsePass = false
-		Line = 0
+		//ElsePass = false
+		//Line = 0
 	end method
 
 	method public void IfItem(var endl as Emit.Label, var nbl as Emit.Label, var ln as integer)

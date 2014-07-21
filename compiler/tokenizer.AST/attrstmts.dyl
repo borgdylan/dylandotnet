@@ -6,41 +6,41 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi abstract AttrStmt extends Stmt
+class public abstract AttrStmt extends Stmt
 	
 	field public NewCallTok Ctor
 	field public C5.ArrayList<of AttrValuePair> Pairs
 
 	method family void AttrStmt()
 		mybase::ctor()
-		Ctor = null
+		//Ctor = null
 		Pairs = new C5.ArrayList<of AttrValuePair>()
 	end method
 
 end class
 
-class public auto ansi MethodAttrStmt extends AttrStmt
+class public MethodAttrStmt extends AttrStmt
 end class
 
-class public auto ansi FieldAttrStmt extends AttrStmt
+class public FieldAttrStmt extends AttrStmt
 end class
 
-class public auto ansi ClassAttrStmt extends AttrStmt
+class public ClassAttrStmt extends AttrStmt
 end class
 
-class public auto ansi AssemblyAttrStmt extends AttrStmt
+class public AssemblyAttrStmt extends AttrStmt
 end class
 
-class public auto ansi PropertyAttrStmt extends AttrStmt
+class public PropertyAttrStmt extends AttrStmt
 end class
 
-class public auto ansi EventAttrStmt extends AttrStmt
+class public EventAttrStmt extends AttrStmt
 end class
 
-class public auto ansi EnumAttrStmt extends AttrStmt
+class public EnumAttrStmt extends AttrStmt
 end class
 
-class public auto ansi ParameterAttrStmt extends AttrStmt
+class public ParameterAttrStmt extends AttrStmt
 
 	field public integer Index
 	

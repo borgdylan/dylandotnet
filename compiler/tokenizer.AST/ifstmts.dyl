@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 #region "normal variants"
-	class public auto ansi IfStmt extends Stmt
+	class public IfStmt extends Stmt
 
 		field public Expr Exp
 
@@ -17,7 +17,7 @@
 
 	end class
 
-	class public auto ansi ElseIfStmt extends Stmt
+	class public ElseIfStmt extends Stmt
 
 		field public Expr Exp
 
@@ -28,18 +28,18 @@
 
 	end class
 
-	class public auto ansi ElseStmt extends Stmt
+	class public ElseStmt extends Stmt
 	end class
 
-	class public auto ansi EndIfStmt extends Stmt
+	class public EndIfStmt extends Stmt
 	end class
 end #region
 
 #region "conditional compilation variants"
-	class public auto ansi HCondCompStmt extends Stmt
+	class public HCondCompStmt extends Stmt
 	end class
 
-	class public auto ansi HIfStmt extends HCondCompStmt
+	class public HIfStmt extends HCondCompStmt
 
 		field public Expr Exp
 
@@ -50,7 +50,7 @@ end #region
 
 	end class
 
-	class public auto ansi HElseIfStmt extends HCondCompStmt
+	class public HElseIfStmt extends HCondCompStmt
 
 		field public Expr Exp
 
@@ -61,13 +61,13 @@ end #region
 
 	end class
 
-	class public auto ansi HElseStmt extends HCondCompStmt
+	class public HElseStmt extends HCondCompStmt
 	end class
 
-	class public auto ansi EndHIfStmt extends HCondCompStmt
+	class public EndHIfStmt extends HCondCompStmt
 	end class
 
-	class public auto ansi HDefineStmt extends Stmt
+	class public HDefineStmt extends Stmt
 
 		field public Ident Symbol
 
@@ -78,7 +78,7 @@ end #region
 
 	end class
 
-	class public auto ansi HUndefStmt extends Stmt
+	class public HUndefStmt extends Stmt
 
 		field public Ident Symbol
 
@@ -90,7 +90,7 @@ end #region
 	end class
 end #region
 
-class public auto ansi RegionStmt extends Stmt
+class public RegionStmt extends IgnorableStmt
 
 	field public Token Name
 
@@ -101,5 +101,5 @@ class public auto ansi RegionStmt extends Stmt
 
 end class
 
-class public auto ansi EndRegionStmt extends Stmt
+class public EndRegionStmt extends IgnorableStmt
 end class

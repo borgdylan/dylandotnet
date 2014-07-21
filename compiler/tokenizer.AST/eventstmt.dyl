@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi EventStmt extends Stmt
+class public EventStmt extends Stmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident EventName
@@ -25,41 +25,41 @@ class public auto ansi EventStmt extends Stmt
 
 end class
 
-class public auto ansi EventAddStmt extends Stmt
+class public EventAddStmt extends Stmt
 
 	field public Ident Adder
 
 	method public void EventAddStmt()
 		mybase::ctor()
-		Adder = null
+		//Adder = null
 	end method
 
 end class
 
-class public auto ansi EventRemoveStmt extends Stmt
+class public EventRemoveStmt extends Stmt
 
 	field public Ident Remover
 
 	method public void EventRemoveStmt()
 		mybase::ctor()
-		Remover = null
+		//Remover = null
 	end method
 
 end class
 
-class public auto ansi EndEventStmt extends Stmt
+class public EndEventStmt extends Stmt
 	method public override string ToString()
 		return "end event"
 	end method
 end class
 
-class public auto ansi EndAddStmt extends Stmt
+class public EndAddStmt extends Stmt
 	method public override string ToString()
 		return "end add"
 	end method
 end class
 
-class public auto ansi EndRemoveStmt extends Stmt
+class public EndRemoveStmt extends Stmt
 	method public override string ToString()
 		return "end remove"
 	end method

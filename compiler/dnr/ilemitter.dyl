@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi partial static Loader
+class public partial static Loader
 
 	[method: ComVisible(false)]
 	method public static prototype IKVM.Reflection.Type LoadClass(var name as string) 
@@ -16,7 +16,7 @@ class public auto ansi partial static Loader
 
 end class
 
-class public auto ansi static ILEmitter
+class public static ILEmitter
 
 	field public static IKVM.Reflection.Emit.MethodBuilder Met
 	field public static IKVM.Reflection.Emit.ConstructorBuilder Constr

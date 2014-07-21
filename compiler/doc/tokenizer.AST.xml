@@ -82,15 +82,6 @@
             <value>The TypeTok encoding the Type to convert to.</value>
             <remarks>For this property to have effect set the 'Conv' property should be set to true.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Interfaces.IHasConstraints">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="P:dylan.NET.Tokenizer.AST.Interfaces.IHasConstraints.HasConstraints">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Interfaces.IIncDecable">
             <summary>The interface implemented by all Tokens supporting increment i.e. '++' and decrement i.e. '--'.</summary>
             <remarks>This interface depends on IUnaryOperatable.</remarks>
@@ -104,6 +95,15 @@
             <summary>The flag indicating whether an increment should be done.</summary>
             <value>The boolean value for the flag.</value>
             <remarks />
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints.MayHaveConstraints">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Interfaces.INegatable">
             <summary>The interface implemented by all Tokens supporting negation i.e. '!'.</summary>
@@ -267,17 +267,17 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="P:dylan.NET.Tokenizer.AST.Stmts.ClassStmt.HasConstraints">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="F:dylan.NET.Tokenizer.AST.Stmts.ClassStmt.ImplInterfaces">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Stmts.ClassStmt.InhClass">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Stmts.ClassStmt.MayHaveConstraints">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.CommentStmt">
@@ -458,6 +458,15 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="C:dylan.NET.Tokenizer.AST.Stmts.EndClassStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.EndClassStmt(dylan.NET.Tokenizer.AST.Tokens.Token)">
+            <param name="endtok">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.EndClassStmt.EndToken">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -948,6 +957,14 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Stmts.IgnorableStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.IgnorableStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.ImportStmt">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1293,26 +1310,6 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Stmts.ReturnStmt.RExp">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Stmts.ScopeStmt">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Stmts.ScopeStmt">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Stmts.ScopeStmt.Flg">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Stmts.ScopeStmt.Opt">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.AST.Stmts.ScopeStmt.setFlg">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -2112,7 +2109,7 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="P:dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.HasConstraints">
+        <member name="P:dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok.MayHaveConstraints">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
@@ -2417,6 +2414,19 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.InterfaceTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.InterfaceTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.InterfaceTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.InTok">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -2547,7 +2557,7 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="P:dylan.NET.Tokenizer.AST.Tokens.MethodNameTok.HasConstraints">
+        <member name="P:dylan.NET.Tokenizer.AST.Tokens.MethodNameTok.MayHaveConstraints">
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>

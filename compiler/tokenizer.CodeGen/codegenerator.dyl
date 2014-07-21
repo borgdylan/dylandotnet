@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-//class private auto ansi LPFileTuple
+//class private LPFileTuple
 //
 //	field public string Path
 //	field public IncludeStmt InclStmt
@@ -19,7 +19,7 @@
 //
 //end class
 
-class public auto ansi CodeGenerator
+class public CodeGenerator
 
 //	method private static void LPFile(var incstm as object)
 //		var tup as LPFileTuple = $LPFileTuple$incstm

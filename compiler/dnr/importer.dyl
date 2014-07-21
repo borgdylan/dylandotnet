@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi static Importer
+class public static Importer
 
 	field public static C5.IList<of IKVM.Reflection.Assembly> Asms
 	//field public static C5.IList<of string> Imps

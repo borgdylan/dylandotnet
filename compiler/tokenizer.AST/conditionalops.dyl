@@ -6,12 +6,12 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi abstract ConditionalOp extends Op
+class public abstract ConditionalOp extends Op
 end class
 
 // =
 // ==
-class public auto ansi EqOp extends ConditionalOp
+class public EqOp extends ConditionalOp
 
 	method public void EqOp()
 		mybase::ctor()
@@ -25,7 +25,7 @@ class public auto ansi EqOp extends ConditionalOp
 end class
 
 // ===
-class public auto ansi StrictEqOp extends ConditionalOp
+class public StrictEqOp extends ConditionalOp
 
 	method public void StrictEqOp()
 		mybase::ctor()
@@ -39,7 +39,7 @@ class public auto ansi StrictEqOp extends ConditionalOp
 end class
 
 // is
-class public auto ansi IsOp extends ConditionalOp
+class public IsOp extends ConditionalOp
 
 	method public void IsOp()
 		mybase::ctor()
@@ -53,7 +53,7 @@ class public auto ansi IsOp extends ConditionalOp
 end class
 
 // isnot
-class public auto ansi IsNotOp extends ConditionalOp
+class public IsNotOp extends ConditionalOp
 
 	method public void IsNotOp()
 		mybase::ctor()
@@ -67,7 +67,7 @@ class public auto ansi IsNotOp extends ConditionalOp
 end class
 
 // like
-class public auto ansi LikeOp extends ConditionalOp
+class public LikeOp extends ConditionalOp
 
 	method public void LikeOp()
 		mybase::ctor()
@@ -83,7 +83,7 @@ end class
 
 // <>
 // !=
-class public auto ansi NeqOp extends ConditionalOp
+class public NeqOp extends ConditionalOp
 
 	method public void NeqOp()
 		mybase::ctor()
@@ -97,7 +97,7 @@ class public auto ansi NeqOp extends ConditionalOp
 end class
 
 // !=
-class public auto ansi StrictNeqOp extends ConditionalOp
+class public StrictNeqOp extends ConditionalOp
 
 	method public void StrictNeqOp()
 		mybase::ctor()
@@ -111,7 +111,7 @@ class public auto ansi StrictNeqOp extends ConditionalOp
 end class
 
 // notlike
-class public auto ansi NLikeOp extends ConditionalOp
+class public NLikeOp extends ConditionalOp
 
 	method public void NLikeOp()
 		mybase::ctor()
@@ -126,7 +126,7 @@ end class
 
 
 // >
-class public auto ansi GtOp extends ConditionalOp
+class public GtOp extends ConditionalOp
 
 	method public void GtOp()
 		mybase::ctor()
@@ -140,7 +140,7 @@ class public auto ansi GtOp extends ConditionalOp
 end class
 
 // <
-class public auto ansi LtOp extends ConditionalOp
+class public LtOp extends ConditionalOp
 
 	method public void LtOp()
 		mybase::ctor()
@@ -154,7 +154,7 @@ class public auto ansi LtOp extends ConditionalOp
 end class
 
 // >=
-class public auto ansi GeOp extends ConditionalOp
+class public GeOp extends ConditionalOp
 
 	method public void GeOp()
 		mybase::ctor()
@@ -168,7 +168,7 @@ class public auto ansi GeOp extends ConditionalOp
 end class
 
 // <=
-class public auto ansi LeOp extends ConditionalOp
+class public LeOp extends ConditionalOp
 
 	method public void LeOp()
 		mybase::ctor()

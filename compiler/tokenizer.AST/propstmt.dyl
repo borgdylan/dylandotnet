@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi PropertyStmt extends Stmt
+class public PropertyStmt extends Stmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident PropertyName
@@ -31,41 +31,41 @@ class public auto ansi PropertyStmt extends Stmt
 
 end class
 
-class public auto ansi PropertySetStmt extends Stmt
+class public PropertySetStmt extends Stmt
 
 	field public Ident Setter
 
 	method public void PropertySetStmt()
 		mybase::ctor()
-		Setter = null
+		//Setter = null
 	end method
 
 end class
 
-class public auto ansi PropertyGetStmt extends Stmt
+class public PropertyGetStmt extends Stmt
 
 	field public Ident Getter
 
 	method public void PropertyGetStmt()
 		mybase::ctor()
-		Getter = null
+		//Getter = null
 	end method
 
 end class
 
-class public auto ansi EndPropStmt extends Stmt
+class public EndPropStmt extends Stmt
 	method public override string ToString()
 		return "end property"
 	end method
 end class
 
-class public auto ansi EndSetStmt extends Stmt
+class public EndSetStmt extends Stmt
 	method public override string ToString()
 		return "end set"
 	end method
 end class
 
-class public auto ansi EndGetStmt extends Stmt
+class public EndGetStmt extends Stmt
 	method public override string ToString()
 		return "end get"
 	end method

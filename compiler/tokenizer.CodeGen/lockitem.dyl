@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi LockItem extends TryItem
+class public LockItem extends TryItem
 
 	field public integer LockeeLoc
 	field public Emit.Label Lbl
@@ -14,14 +14,14 @@ class public auto ansi LockItem extends TryItem
 
 	method public void LockItem()
 		mybase::ctor(0)
-		LockeeLoc = 0
-		IsTryLock = false
+		//LockeeLoc = 0
+		//IsTryLock = false
 	end method
 
 	method public void LockItem(var loc as integer, var ln as integer)
 		mybase::ctor(ln)
 		LockeeLoc = loc
-		IsTryLock = false
+		//IsTryLock = false
 	end method
 
 	method public void LockItem(var loc as integer, var lb as Emit.Label, var ln as integer)

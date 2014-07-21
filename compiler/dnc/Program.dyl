@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi static Program
+class public static Program
 	
 	method private static void OutputVersion()
 		StreamUtils::WriteLine("dylan.NET Version Info:")
@@ -37,7 +37,7 @@ class public auto ansi static Program
 	[method: ComVisible(false)]
 	method private static void main(var args as string[])
 		
-		StreamUtils::WriteLine("dylan.NET Compiler v. 11.3.6.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5")
+		StreamUtils::WriteLine("dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5")
 		StreamUtils::WriteLine("                           and Xamarin Mono v. 2.x.y/v. 3.x.y")
 		StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 		StreamUtils::WriteLine("Copyright (C) 2014 Dylan Borg")

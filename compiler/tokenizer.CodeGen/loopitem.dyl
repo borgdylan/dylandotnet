@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi LoopItem
+class public LoopItem
 
 	field public Emit.Label EndLabel
 	field public Emit.Label StartLabel
@@ -14,7 +14,7 @@ class public auto ansi LoopItem
 
 	method public void LoopItem()
 		mybase::ctor()
-		Line = 0
+		//Line = 0
 	end method
 
 	method public void LoopItem(var startl as Emit.Label, var endl as Emit.Label, var ln as integer)
@@ -26,7 +26,7 @@ class public auto ansi LoopItem
 
 end class
 
-class public auto ansi ForLoopItem extends LoopItem
+class public ForLoopItem extends LoopItem
 
 	field public string Iter
 	field public Expr StepExp
@@ -38,10 +38,10 @@ class public auto ansi ForLoopItem extends LoopItem
 	method public void ForLoopItem()
 		mybase::ctor()
 		Iter = string::Empty
-		StepExp = null
+		//StepExp = null
 		Direction = true
-		ContinueFlg = false
-		Typ = null
+		//ContinueFlg = false
+		//Typ = null
 	end method
 
 	method public void ForLoopItem(var startl as Emit.Label, var endl as Emit.Label, var iter as string, var _step as Expr, var dir as boolean, var t as TypeTok, var ln as integer)
@@ -49,7 +49,7 @@ class public auto ansi ForLoopItem extends LoopItem
 		Iter = iter
 		StepExp = _step
 		Direction = dir
-		ContinueFlg = false
+		//ContinueFlg = false
 		Typ = t
 	end method
 

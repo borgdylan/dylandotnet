@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public auto ansi MethodCallTok extends ValueToken
+class public MethodCallTok extends ValueToken
 
 	field public MethodNameTok Name
 	field public C5.ArrayList<of Expr> Params
@@ -16,7 +16,7 @@ class public auto ansi MethodCallTok extends ValueToken
 	method public void MethodCallTok(var value as string)
 		mybase::ctor(value)
 		Name = new MethodNameTok()
-		PopFlg = false
+		//PopFlg = false
 		Params = new C5.ArrayList<of Expr>()
 		TypArr = IKVM.Reflection.Type::EmptyTypes
 	end method
@@ -34,7 +34,7 @@ class public auto ansi MethodCallTok extends ValueToken
 
 end class
 
-class public auto ansi GettypeCallTok extends ValueToken
+class public GettypeCallTok extends ValueToken
 
 	field public TypeTok Name
 
@@ -50,7 +50,7 @@ class public auto ansi GettypeCallTok extends ValueToken
 
 end class
 
-class public auto ansi DefaultCallTok extends ValueToken
+class public DefaultCallTok extends ValueToken
 
 	field public TypeTok Name
 
@@ -66,7 +66,7 @@ class public auto ansi DefaultCallTok extends ValueToken
 
 end class
 
-class public auto ansi PtrCallTok extends ValueToken
+class public PtrCallTok extends ValueToken
 
 	field public MethodNameTok MetToCall
 

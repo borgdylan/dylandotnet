@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi XmlDocStmt extends Stmt
+class public XmlDocStmt extends Stmt
 
 	field public Token NodeType
 	field public Token NodePath
@@ -19,5 +19,5 @@ class public auto ansi XmlDocStmt extends Stmt
 
 end class
 
-class public auto ansi EndXmlDocStmt extends Stmt
+class public EndXmlDocStmt extends Stmt
 end class

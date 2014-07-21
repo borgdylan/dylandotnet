@@ -6,11 +6,11 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi abstract AritOp extends Op
+class public abstract AritOp extends Op
 end class
 
 // +
-class public auto ansi AddOp extends AritOp
+class public AddOp extends AritOp
 
 	method public void AddOp()
 		mybase::ctor()
@@ -24,7 +24,7 @@ class public auto ansi AddOp extends AritOp
 end class
 
 // *
-class public auto ansi MulOp extends AritOp
+class public MulOp extends AritOp
 
 	method public void MulOp()
 		mybase::ctor()
@@ -38,7 +38,7 @@ class public auto ansi MulOp extends AritOp
 end class
 
 // -
-class public auto ansi SubOp extends AritOp
+class public SubOp extends AritOp
 
 	method public void SubOp()
 		mybase::ctor()
@@ -53,7 +53,7 @@ end class
 
 
 // /
-class public auto ansi DivOp extends AritOp
+class public DivOp extends AritOp
 
 	method public void DivOp()
 		mybase::ctor()
@@ -67,7 +67,7 @@ class public auto ansi DivOp extends AritOp
 end class
 
 // %
-class public auto ansi ModOp extends AritOp
+class public ModOp extends AritOp
 
 	method public void ModOp()
 		mybase::ctor()
@@ -81,7 +81,7 @@ class public auto ansi ModOp extends AritOp
 end class
 
 // ++
-class public auto ansi IncOp extends AritOp
+class public IncOp extends AritOp
 
 	method public void IncOp()
 		mybase::ctor()
@@ -95,7 +95,7 @@ class public auto ansi IncOp extends AritOp
 end class
 
 // --
-class public auto ansi DecOp extends AritOp
+class public DecOp extends AritOp
 
 	method public void DecOp()
 		mybase::ctor()
@@ -109,7 +109,7 @@ class public auto ansi DecOp extends AritOp
 end class
 
 // <<
-class public auto ansi ShlOp extends AritOp
+class public ShlOp extends AritOp
 
 	method public void ShlOp()
 		mybase::ctor()
@@ -123,7 +123,7 @@ class public auto ansi ShlOp extends AritOp
 end class
 
 // >>
-class public auto ansi ShrOp extends AritOp
+class public ShrOp extends AritOp
 
 	method public void ShrOp()
 		mybase::ctor()

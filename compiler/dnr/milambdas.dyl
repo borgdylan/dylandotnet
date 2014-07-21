@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class private auto ansi MILambdas
+class private MILambdas
 
 	field assembly string Name
 	field assembly integer ParamLen
@@ -18,49 +18,49 @@ class private auto ansi MILambdas
 	method assembly void MILambdas()
 		mybase::ctor()
 		Name = string::Empty
-		ParamLen = 0
-		GenParams = null
-		ConvTyp = null
-		HaveInternal = false
-		ProtectedFlag = false
+		//ParamLen = 0
+		//GenParams = null
+		//ConvTyp = null
+		//HaveInternal = false
+		//ProtectedFlag = false
 	end method
 
 	method assembly void MILambdas(var name as string)
 		mybase::ctor()
 		Name = name
-		ParamLen = 0
-		GenParams = null
-		ConvTyp = null
-		HaveInternal = false
-		ProtectedFlag = false
+		//ParamLen = 0
+		//GenParams = null
+		//ConvTyp = null
+		//HaveInternal = false
+		//ProtectedFlag = false
 	end method
 
 	method assembly void MILambdas(var name as string, var snk as IKVM.Reflection.Type)
 		mybase::ctor()
 		Name = name
-		ParamLen = 0
-		GenParams = null
+		//ParamLen = 0
+		//GenParams = null
 		ConvTyp = snk
-		HaveInternal = false
-		ProtectedFlag = false
+		//HaveInternal = false
+		//ProtectedFlag = false
 	end method
 
 	method assembly void MILambdas(var genparams as IKVM.Reflection.Type[])
 		mybase::ctor()
 		Name = string::Empty
-		ParamLen = 0
+		//ParamLen = 0
 		GenParams = genparams
-		ConvTyp = null
-		HaveInternal = false
-		ProtectedFlag = false
+		//ConvTyp = null
+		//HaveInternal = false
+		//ProtectedFlag = false
 	end method
 
 	method assembly void MILambdas(var name as string,var paramlen as integer, var hvint as boolean, var protf as boolean)
 		mybase::ctor()
 		Name = name
 		ParamLen = paramlen
-		GenParams = null
-		ConvTyp = null
+		//GenParams = null
+		//ConvTyp = null
 		HaveInternal = hvint
 		ProtectedFlag = protf
 	end method

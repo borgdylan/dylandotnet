@@ -7,7 +7,7 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 // class Attrs ClassName extends InhClass implements ImplInterafaces
-class public auto ansi ClassStmt extends Stmt implements IHasConstraints, IConstrainable
+class public ClassStmt extends Stmt implements IMayHaveConstraints, IConstrainable
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public TypeTok ClassName
@@ -39,7 +39,7 @@ class public auto ansi ClassStmt extends Stmt implements IHasConstraints, IConst
 		_Constraints::get_Item(param)::Add(ctr)
 	end method
 
-	property public override newslot boolean HasConstraints
+	property public override newslot boolean MayHaveConstraints
 		get
 			return ClassName is GenericTypeTok
 		end get
@@ -52,8 +52,20 @@ class public auto ansi ClassStmt extends Stmt implements IHasConstraints, IConst
 	end property
 end class
 
-class public auto ansi EndClassStmt extends Stmt
+class public EndClassStmt extends Stmt
+
+	field public Token EndToken 
+
+	method public void EndClassStmt(var endtok as Token)
+		mybase::ctor()
+		EndToken = endtok
+	end method
+
+	method public void EndClassStmt()
+		ctor(new ClassTok() {Line = me::Line})
+	end method
+
 	method public override string ToString()
-		return "end class"
+		return "end " + EndToken::ToString()
 	end method
 end class

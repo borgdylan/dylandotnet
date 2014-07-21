@@ -70,11 +70,11 @@ namespace MonoDevelop.DylanNet
 		end event
 
 		method public void DocumentParser()
-			me::ctor()
+			mybase::ctor()
 		end method
 
-		method public static void DocumentParser()
-		end method
+		//method public static void DocumentParser()
+		//end method
 			
 		method public ITypeReference ProcType(var tt as TypeTok)
 			
@@ -413,10 +413,10 @@ namespace MonoDevelop.DylanNet
 							SetAttrs(prop, prss::Attrs)
 							curProp = prop
 
-							if !IsOneLinerProperty(prss::Attrs) then
-								fs::Push(prss::Line)
-							else
+							if IsOneLinerProperty(prss::Attrs) then
 								prop::set_BodyRegion(new DomRegion(fileName, prss::Line, 0, prss::Line, integer::MaxValue))
+							else
+								fs::Push(prss::Line)
 							end if
 
 							foreach p as VarExpr in prss::Params
@@ -440,12 +440,12 @@ namespace MonoDevelop.DylanNet
 							SetAttrs(met, mtss::Attrs)
 							curMethod = met
 
-							if !IsOneLinerMethod(mtss::Attrs) then
-								fs::Push(mtss::Line)
-								met::set_HasBody(true)
-							else
+							if IsOneLinerMethod(mtss::Attrs) then
 								met::set_HasBody(false)
 								met::set_BodyRegion(new DomRegion(fileName, mtss::Line, 0, mtss::Line, integer::MaxValue))
+							else
+								fs::Push(mtss::Line)
+								met::set_HasBody(true)
 							end if
 
 							foreach p as VarExpr in mtss::Params

@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Character extends Token
+class public Character extends Token
 
 	method public void Character(var value as string)
 		mybase::ctor(value)
@@ -19,126 +19,126 @@ class public auto ansi Character extends Token
 end class
 
 // ]
-class public auto ansi RSParen extends Character
+class public RSParen extends Character
 	method public override string ToString()
 		return "]"
 	end method
 end class
 
 // [
-class public auto ansi LSParen extends Character
+class public LSParen extends Character
 	method public override string ToString()
 		return "["
 	end method
 end class
 
 // {
-class public auto ansi RCParen extends Character
+class public RCParen extends Character
 	method public override string ToString()
 		return "}"
 	end method
 end class
 
 // }
-class public auto ansi LCParen extends Character
+class public LCParen extends Character
 	method public override string ToString()
 		return "{"
 	end method
 end class
 
 // []
-class public auto ansi LRSParen extends Character
+class public LRSParen extends Character
 	method public override string ToString()
 		return "[]"
 	end method
 end class
 
 // >
-class public auto ansi RAParen extends Character
+class public RAParen extends Character
 	method public override string ToString()
 		return ">"
 	end method
 end class
 
 // <
-class public auto ansi LAParen extends Character
+class public LAParen extends Character
 	method public override string ToString()
 		return "<"
 	end method
 end class
 
 // )
-class public auto ansi RParen extends Character
+class public RParen extends Character
 	method public override string ToString()
 		return ")"
 	end method
 end class
 
 // (
-class public auto ansi LParen extends Character
+class public LParen extends Character
 	method public override string ToString()
 		return "("
 	end method
 end class
 
 // ,
-class public auto ansi Comma extends Character
+class public Comma extends Character
 	method public override string ToString()
 		return ","
 	end method
 end class
 
 // \r\n
-class public auto ansi CrLf extends Character
+class public CrLf extends Character
 	method public override string ToString()
 		return c"\r\n"
 	end method
 end class
 
 // \r
-class public auto ansi Cr extends Character
+class public Cr extends Character
 	method public override string ToString()
 		return c"\r"
 	end method
 end class
 
 // \n
-class public auto ansi Lf extends Character
+class public Lf extends Character
 	method public override string ToString()
 		return c"\n"
 	end method
 end class
 
 // |
-class public auto ansi Pipe extends Character
+class public Pipe extends Character
 	method public override string ToString()
 		return "|"
 	end method
 end class
 
 // &
-class public auto ansi Ampersand extends Character
+class public Ampersand extends Character
 	method public override string ToString()
 		return "&"
 	end method
 end class
 
 // $
-class public auto ansi DollarSign extends Character
+class public DollarSign extends Character
 	method public override string ToString()
 		return "$"
 	end method
 end class
 
 // ?
-class public auto ansi QuestionMark extends Character
+class public QuestionMark extends Character
 	method public override string ToString()
 		return "?"
 	end method
 end class
 
 // :
-class public auto ansi Colon extends Character
+class public Colon extends Character
 	method public override string ToString()
 		return ":"
 	end method

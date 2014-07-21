@@ -8,7 +8,7 @@
 
 namespace Extra.Tasks
 
-	class public auto ansi beforefieldinit sealed DncTask extends Task
+	class public beforefieldinit sealed DncTask extends Task
 		
 		property public autogen ITaskItem[] InputFile
 
@@ -27,7 +27,7 @@ namespace Extra.Tasks
 			get_Log()::LogWarning(string::Empty, string::Empty, string::Empty, cm::get_File(), cm::get_Line(), 0, cm::get_Line(), 0, cm::get_Msg(), new object[0])
 		end method
 
-		method public hidebysig virtual boolean Execute()
+		method public override boolean Execute()
 			haderrs = false
 			var w = new Action<of CompilerMsg>(WarnH)
 			var e = new Action<of CompilerMsg>(ErrorH)

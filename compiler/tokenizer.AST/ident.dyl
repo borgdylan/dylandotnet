@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Ident extends ValueToken implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
+class public Ident extends ValueToken implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
 
 	field public boolean IsRef
 	field public boolean IsValInRef
@@ -33,20 +33,20 @@ class public auto ansi Ident extends ValueToken implements IUnaryOperatable, ICo
 	
 	method public void Ident(var value as string)
 		mybase::ctor(value)
-		IsRef = false
-		IsValInRef = false
-		_Conv = false
+		//IsRef = false
+		//IsValInRef = false
+		//_Conv = false
 		_TTok = new TypeTok()
-		IsArr = false
+		//IsArr = false
 		ArrLoc = new Expr()
-		_DoNeg = false
-		_DoNot = false
-		_DoInc = false
-		_DoDec = false
+		//_DoNeg = false
+		//_DoNot = false
+		//_DoInc = false
+		//_DoDec = false
 		_OrdOp = string::Empty
-		MemberAccessFlg = false
+		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		ExplType = null
+		//ExplType = null
 	end method
 	
 	method public void Ident()

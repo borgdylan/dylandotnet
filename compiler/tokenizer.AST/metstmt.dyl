@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi MethodStmt extends Stmt
+class public MethodStmt extends Stmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public MethodNameTok MethodName
@@ -31,7 +31,7 @@ class public auto ansi MethodStmt extends Stmt
 
 end class
 
-class public auto ansi EndMethodStmt extends Stmt
+class public EndMethodStmt extends Stmt
 	method public override string ToString()
 		return "end method"
 	end method

@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi DoWhileStmt extends Stmt
+class public DoWhileStmt extends Stmt
 
 	field public Expr Exp
 
@@ -17,7 +17,7 @@ class public auto ansi DoWhileStmt extends Stmt
 
 end class
 
-class public auto ansi DoUntilStmt extends Stmt
+class public DoUntilStmt extends Stmt
 
 	field public Expr Exp
 
@@ -28,7 +28,7 @@ class public auto ansi DoUntilStmt extends Stmt
 
 end class
 
-class public auto ansi ForeachStmt extends Stmt
+class public ForeachStmt extends Stmt
 
 	field public Expr Exp
 	field public Ident Iter
@@ -38,12 +38,12 @@ class public auto ansi ForeachStmt extends Stmt
 		mybase::ctor()
 		Exp = new Expr()
 		Iter = new Ident()
-		Typ = null
+		//Typ = null
 	end method
 
 end class
 
-class public auto ansi ForStmt extends Stmt
+class public ForStmt extends Stmt
 
 	field public Expr StartExp
 	field public Expr EndExp
@@ -56,15 +56,15 @@ class public auto ansi ForStmt extends Stmt
 		mybase::ctor()
 		StartExp = new Expr()
 		EndExp = new Expr()
-		Iter = null
-		Typ = null
-		StepExp = null
+		//Iter = null
+		//Typ = null
+		//StepExp = null
 		Direction = true
 	end method
 
 end class
 
-class public auto ansi WhileStmt extends Stmt
+class public WhileStmt extends Stmt
 
 	field public Expr Exp
 
@@ -75,7 +75,7 @@ class public auto ansi WhileStmt extends Stmt
 
 end class
 
-class public auto ansi UntilStmt extends Stmt
+class public UntilStmt extends Stmt
 
 	field public Expr Exp
 
@@ -86,14 +86,14 @@ class public auto ansi UntilStmt extends Stmt
 
 end class
 
-class public auto ansi DoStmt extends Stmt
+class public DoStmt extends Stmt
 end class
 
-class public auto ansi BreakStmt extends Stmt
+class public BreakStmt extends Stmt
 end class
 
-class public auto ansi ContinueStmt extends Stmt
+class public ContinueStmt extends Stmt
 end class
 
-class public auto ansi EndDoStmt extends Stmt
+class public EndDoStmt extends Stmt
 end class

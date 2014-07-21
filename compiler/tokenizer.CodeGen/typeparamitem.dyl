@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi TypeParamItem
+class public TypeParamItem
 
 	field public GenericTypeParameterBuilder Bldr
 	field public string Name
@@ -20,7 +20,7 @@ class public auto ansi TypeParamItem
 		Name = name
 		BaseType = Loader::CachedLoadClass("System.Object")
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
-		HasCtor = false
+		//HasCtor = false
 	end method
 	
 end class

@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi AttrValuePair extends Token
+class public AttrValuePair extends Token
 
 	field public Ident Name
 	field public Expr ValueExpr
@@ -18,7 +18,8 @@ class public auto ansi AttrValuePair extends Token
 	end method
 	
 	method public void AttrValuePair()
-		ctor($Ident$null, $Expr$null)
+		mybase::ctor()
+		//ctor($Ident$null, $Expr$null)
 	end method
 
 end class

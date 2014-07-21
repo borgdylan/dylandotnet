@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Line
+class public Line
 
 	field private string PrevChar
 	field private boolean InStr
@@ -15,8 +15,8 @@ class public auto ansi Line
 	method public void Line()
 		mybase::ctor()
 		PrevChar = string::Empty
-		InStr = false
-		InChar = false
+		//InStr = false
+		//InChar = false
 	end method
 
 	method public boolean isDigit(var c as char)

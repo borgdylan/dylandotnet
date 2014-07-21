@@ -8,15 +8,15 @@
 
 
 // #debug Opt
-class public auto ansi DebugStmt extends Stmt
+class public DebugStmt extends Stmt
 
 	field public SwitchTok Opt
 	field public boolean Flg
 
 	method public void DebugStmt()
 		mybase::ctor()
-		Opt = null
-		Flg = false
+		//Opt = null
+		//Flg = false
 	end method
 
 	method public void setFlg()

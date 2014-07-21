@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi abstract Op extends Token
+class public abstract Op extends Token
 
 	field public integer PrecNo
 	field public Token LChild
@@ -14,15 +14,15 @@ class public auto ansi abstract Op extends Token
 
 	method family void Op()
 		mybase::ctor()
-		PrecNo = 0
-		LChild = null
-		RChild = null
+		//PrecNo = 0
+		//LChild = null
+		//RChild = null
 	end method
 
 end class
 
 //=
-class public auto ansi AssignOp extends Op
+class public AssignOp extends Op
 
 	method public void AssignOp()
 		mybase::ctor()
@@ -36,7 +36,7 @@ class public auto ansi AssignOp extends Op
 end class
 
 //=
-class public auto ansi AssignOp2 extends Op
+class public AssignOp2 extends Op
 
 	method public void AssignOp2()
 		mybase::ctor()
@@ -50,7 +50,7 @@ class public auto ansi AssignOp2 extends Op
 end class
 
 //as
-class public auto ansi AsOp extends Op
+class public AsOp extends Op
 
 	method public void AsOp()
 		mybase::ctor()
@@ -64,7 +64,7 @@ class public auto ansi AsOp extends Op
 end class
 
 //??
-class public auto ansi CoalesceOp extends Op
+class public CoalesceOp extends Op
 
 	method public void CoalesceOp()
 		mybase::ctor()

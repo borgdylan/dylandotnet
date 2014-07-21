@@ -6,13 +6,13 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi TryStmt extends Stmt
+class public TryStmt extends Stmt
 	method public override string ToString()
 		return "try"
 	end method
 end class
 
-class public auto ansi CatchStmt extends Stmt
+class public CatchStmt extends Stmt
 
 	field public Ident ExName
 	field public TypeTok ExTyp
@@ -29,13 +29,13 @@ class public auto ansi CatchStmt extends Stmt
 
 end class
 
-class public auto ansi FinallyStmt extends Stmt
+class public FinallyStmt extends Stmt
 	method public override string ToString()
 		return "finally"
 	end method
 end class
 
-class public auto ansi ThrowStmt extends Stmt
+class public ThrowStmt extends Stmt
 
 	field public Expr RExp
 
@@ -46,7 +46,7 @@ class public auto ansi ThrowStmt extends Stmt
 
 end class
 
-class public auto ansi EndTryStmt extends Stmt
+class public EndTryStmt extends Stmt
 	method public override string ToString()
 		return "end try"
 	end method

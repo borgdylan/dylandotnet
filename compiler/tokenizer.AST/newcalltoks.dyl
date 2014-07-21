@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi NewCallTok extends ValueToken
+class public NewCallTok extends ValueToken
 
 	field public TypeTok Name
 	field public C5.ArrayList<of Expr> Params
@@ -18,18 +18,18 @@ class public auto ansi NewCallTok extends ValueToken
 		mybase::ctor()
 		Name = new TypeTok()
 		Params = new C5.ArrayList<of Expr>()
-		MemberAccessFlg = false
+		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		PopFlg = false
+		//PopFlg = false
 	end method
 
 	method public void NewCallTok(var value as string)
 		mybase::ctor(value)
 		Name = new TypeTok()
 		Params = new C5.ArrayList<of Expr>()
-		MemberAccessFlg = false
+		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		PopFlg = false
+		//PopFlg = false
 	end method
 
 	method public void AddParam(var paramtoadd as Expr)
@@ -41,7 +41,7 @@ class public auto ansi NewCallTok extends ValueToken
 
 end class
 
-class public auto ansi NewarrCallTok extends ValueToken
+class public NewarrCallTok extends ValueToken
 
 	field public TypeTok ArrayType
 	field public Expr ArrayLen
@@ -60,7 +60,7 @@ class public auto ansi NewarrCallTok extends ValueToken
 
 end class
 
-class public auto ansi ArrInitCallTok extends ValueToken
+class public ArrInitCallTok extends ValueToken
 
 	field public TypeTok ArrayType
 	field public C5.ArrayList<of Expr> Elements
@@ -70,14 +70,14 @@ class public auto ansi ArrInitCallTok extends ValueToken
 		mybase::ctor()
 		ArrayType = new TypeTok()
 		Elements = new C5.ArrayList<of Expr>()
-		ForceArray = false
+		//ForceArray = false
 	end method
 
 	method public void ArrInitCallTok(var value as string)
 		mybase::ctor(value)
 		ArrayType = new TypeTok()
 		Elements = new C5.ArrayList<of Expr>()
-		ForceArray = false
+		//ForceArray = false
 	end method
 	
 	method public void AddElem(var eltoadd as Expr)
@@ -89,7 +89,7 @@ class public auto ansi ArrInitCallTok extends ValueToken
 
 end class
 
-class public auto ansi ObjInitCallTok extends ValueToken
+class public ObjInitCallTok extends ValueToken
 
 	field public NewCallTok Ctor
 	field public C5.ArrayList<of Token> Elements
@@ -99,20 +99,20 @@ class public auto ansi ObjInitCallTok extends ValueToken
 
 	method public void ObjInitCallTok()
 		mybase::ctor()
-		Ctor = null
+		//Ctor = null
 		Elements = new C5.ArrayList<of Token>()
-		MemberAccessFlg = false
+		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		PopFlg = false
+		//PopFlg = false
 	end method
 
 	method public void ObjInitCallTok(var value as string)
 		mybase::ctor(value)
-		Ctor = null
+		//Ctor = null
 		Elements = new C5.ArrayList<of Token>()
-		MemberAccessFlg = false
+		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		PopFlg = false
+		//PopFlg = false
 	end method
 	
 	method public void AddElem(var eltoadd as Token)
@@ -124,7 +124,7 @@ class public auto ansi ObjInitCallTok extends ValueToken
 
 end class
 
-class public auto ansi TernaryCallTok extends ValueToken
+class public TernaryCallTok extends ValueToken
 
 	field public Expr Condition
 	field public Expr TrueExpr

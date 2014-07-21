@@ -379,6 +379,31 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitConv">
+      <MemberSignature Language="C#" Value="public static void EmitConv (IKVM.Reflection.Type source, IKVM.Reflection.Type sink, bool isNull);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConv(class IKVM.Reflection.Type source, class IKVM.Reflection.Type sink, bool isNull) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source" Type="IKVM.Reflection.Type" />
+        <Parameter Name="sink" Type="IKVM.Reflection.Type" />
+        <Parameter Name="isNull" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="source">To be added.</param>
+        <param name="sink">To be added.</param>
+        <param name="isNull">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitDec">
       <MemberSignature Language="C#" Value="public static void EmitDec (IKVM.Reflection.Type t);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitDec(class IKVM.Reflection.Type t) cil managed" />

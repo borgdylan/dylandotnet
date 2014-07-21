@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi IncludeStmt extends Stmt
+class public IncludeStmt extends Stmt
 
 	field public Token Path
 	field public StmtSet SSet
@@ -15,8 +15,8 @@ class public auto ansi IncludeStmt extends Stmt
 	method public void IncludeStmt()
 		mybase::ctor()
 		Path = new Token()
-		SSet = null
-		HasError = false
+		//SSet = null
+		//HasError = false
 	end method
 	
 	method public override string ToString()

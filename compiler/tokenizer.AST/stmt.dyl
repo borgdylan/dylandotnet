@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi Stmt
+class public Stmt
 
 	field public C5.ArrayList<of Token> Tokens
 	field public integer Line
@@ -14,7 +14,7 @@ class public auto ansi Stmt
 	method public void Stmt()
 		mybase::ctor()
 		Tokens = new C5.ArrayList<of Token>(5)
-		Line = 0
+		//Line = 0
 	end method
 
 	method public void AddToken(var toktoadd as Token)
@@ -27,7 +27,10 @@ class public auto ansi Stmt
 
 end class
 
-class public auto ansi StmtSet
+class public abstract IgnorableStmt extends Stmt
+end class
+
+class public StmtSet
 
 	field public C5.ArrayList<of Stmt> Stmts
 	field public string Path

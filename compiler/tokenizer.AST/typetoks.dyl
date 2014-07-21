@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi TypeTok extends ValueToken implements ICloneable
+class public TypeTok extends ValueToken implements ICloneable
 
 	field public boolean IsArray
 	field public boolean IsByRef
@@ -14,9 +14,9 @@ class public auto ansi TypeTok extends ValueToken implements ICloneable
 
 	method public void TypeTok(var value as string)
 		mybase::ctor(value)
-		IsArray = false
-		IsByRef = false
-		RefTyp = null
+		//IsArray = false
+		//IsByRef = false
+		//RefTyp = null
 	end method
 	
 	method public void TypeTok()
@@ -58,7 +58,7 @@ class public auto ansi TypeTok extends ValueToken implements ICloneable
 
 end class
 
-class public auto ansi SpecialTypeTok extends TypeTok
+class public SpecialTypeTok extends TypeTok
 
 	method public void SpecialTypeTok(var value as string)
 		mybase::ctor(value)
@@ -66,7 +66,7 @@ class public auto ansi SpecialTypeTok extends TypeTok
 
 end class
 
-class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
+class public GenericTypeTok extends TypeTok implements ICloneable
 
 	field public C5.LinkedList<of TypeTok> Params
 	
@@ -129,7 +129,7 @@ class public auto ansi GenericTypeTok extends TypeTok implements ICloneable
 end class
 
 
-class public auto ansi beforefieldinit StringTok extends SpecialTypeTok
+class public beforefieldinit StringTok extends SpecialTypeTok
 
 	method public void StringTok(var value as string)
 		mybase::ctor(value)
@@ -154,7 +154,7 @@ class public auto ansi beforefieldinit StringTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit IntegerTok extends SpecialTypeTok
+class public beforefieldinit IntegerTok extends SpecialTypeTok
 
 	method public void IntegerTok(var value as string)
 		mybase::ctor(value)
@@ -178,7 +178,7 @@ class public auto ansi beforefieldinit IntegerTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit DoubleTok extends SpecialTypeTok
+class public beforefieldinit DoubleTok extends SpecialTypeTok
 
 	method public void DoubleTok(var value as string)
 		mybase::ctor(value)
@@ -202,7 +202,7 @@ class public auto ansi beforefieldinit DoubleTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit BooleanTok extends SpecialTypeTok
+class public beforefieldinit BooleanTok extends SpecialTypeTok
 	
 	method public void BooleanTok(var value as string)
 		mybase::ctor(value)
@@ -226,7 +226,7 @@ class public auto ansi beforefieldinit BooleanTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit CharTok extends SpecialTypeTok
+class public beforefieldinit CharTok extends SpecialTypeTok
 	
 	method public void CharTok(var value as string)
 		mybase::ctor(value)
@@ -250,7 +250,7 @@ class public auto ansi beforefieldinit CharTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit DecimalTok extends SpecialTypeTok
+class public beforefieldinit DecimalTok extends SpecialTypeTok
 	
 	method public void DecimalTok(var value as string)
 		mybase::ctor(value)
@@ -274,7 +274,7 @@ class public auto ansi beforefieldinit DecimalTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit LongTok extends SpecialTypeTok
+class public beforefieldinit LongTok extends SpecialTypeTok
 
 	method public void LongTok(var value as string)
 		mybase::ctor(value)
@@ -298,7 +298,7 @@ class public auto ansi beforefieldinit LongTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit SByteTok extends SpecialTypeTok
+class public beforefieldinit SByteTok extends SpecialTypeTok
 
 	method public void SByteTok(var value as string)
 		mybase::ctor(value)
@@ -323,7 +323,7 @@ class public auto ansi beforefieldinit SByteTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit ShortTok extends SpecialTypeTok
+class public beforefieldinit ShortTok extends SpecialTypeTok
 	
 	method public void ShortTok(var value as string)
 		mybase::ctor(value)
@@ -347,7 +347,7 @@ class public auto ansi beforefieldinit ShortTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit SingleTok extends SpecialTypeTok
+class public beforefieldinit SingleTok extends SpecialTypeTok
 	
 	method public void SingleTok()
 		mybase::ctor("single")
@@ -371,7 +371,7 @@ class public auto ansi beforefieldinit SingleTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit ObjectTok extends SpecialTypeTok
+class public beforefieldinit ObjectTok extends SpecialTypeTok
 
 	method public void ObjectTok(var value as string)
 		mybase::ctor(value)
@@ -395,7 +395,7 @@ class public auto ansi beforefieldinit ObjectTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit VoidTok extends SpecialTypeTok
+class public beforefieldinit VoidTok extends SpecialTypeTok
 
 	method public void VoidTok(var value as string)
 		mybase::ctor(value)
@@ -411,7 +411,7 @@ class public auto ansi beforefieldinit VoidTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit UIntegerTok extends SpecialTypeTok
+class public beforefieldinit UIntegerTok extends SpecialTypeTok
 
 	method public void UIntegerTok(var value as string)
 		mybase::ctor(value)
@@ -435,7 +435,7 @@ class public auto ansi beforefieldinit UIntegerTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit ULongTok extends SpecialTypeTok
+class public beforefieldinit ULongTok extends SpecialTypeTok
 
 	method public void ULongTok(var value as string)
 		mybase::ctor(value)
@@ -459,7 +459,7 @@ class public auto ansi beforefieldinit ULongTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit ByteTok extends SpecialTypeTok
+class public beforefieldinit ByteTok extends SpecialTypeTok
 
 	method public void ByteTok(var value as string)
 		mybase::ctor(value)
@@ -483,7 +483,7 @@ class public auto ansi beforefieldinit ByteTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit UShortTok extends SpecialTypeTok
+class public beforefieldinit UShortTok extends SpecialTypeTok
 	
 	method public void UShortTok(var value as string)
 		mybase::ctor(value)
@@ -507,7 +507,7 @@ class public auto ansi beforefieldinit UShortTok extends SpecialTypeTok
 
 end class
 
-class public auto ansi beforefieldinit IntPtrTok extends SpecialTypeTok
+class public beforefieldinit IntPtrTok extends SpecialTypeTok
 	
 	method public void IntPtrTok(var value as string)
 		mybase::ctor(value)

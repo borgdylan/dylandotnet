@@ -6,10 +6,10 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi abstract LogicalOp extends Op
+class public abstract LogicalOp extends Op
 end class
 
-class public auto ansi AndOp extends LogicalOp
+class public AndOp extends LogicalOp
 
 	method public void AndOp()
 		mybase::ctor()
@@ -22,7 +22,7 @@ class public auto ansi AndOp extends LogicalOp
 
 end class
 
-class public auto ansi OrOp extends LogicalOp
+class public OrOp extends LogicalOp
 
 	method public void OrOp()
 		mybase::ctor()
@@ -35,7 +35,7 @@ class public auto ansi OrOp extends LogicalOp
 
 end class
 
-class public auto ansi AndAlsoOp extends LogicalOp
+class public AndAlsoOp extends LogicalOp
 
 	method public void AndAlsoOp()
 		mybase::ctor()
@@ -48,7 +48,7 @@ class public auto ansi AndAlsoOp extends LogicalOp
 
 end class
 
-class public auto ansi OrElseOp extends LogicalOp
+class public OrElseOp extends LogicalOp
 
 	method public void OrElseOp()
 		mybase::ctor()
@@ -61,7 +61,7 @@ class public auto ansi OrElseOp extends LogicalOp
 
 end class
 
-class public auto ansi NandOp extends LogicalOp
+class public NandOp extends LogicalOp
 
 	method public void NandOp()
 		mybase::ctor()
@@ -74,7 +74,7 @@ class public auto ansi NandOp extends LogicalOp
 
 end class
 
-class public auto ansi NorOp extends LogicalOp
+class public NorOp extends LogicalOp
 
 	method public void NorOp()
 		mybase::ctor()
@@ -87,7 +87,7 @@ class public auto ansi NorOp extends LogicalOp
 
 end class
 
-class public auto ansi XorOp extends LogicalOp
+class public XorOp extends LogicalOp
 
 	method public void XorOp()
 		mybase::ctor()
@@ -100,7 +100,7 @@ class public auto ansi XorOp extends LogicalOp
 
 end class
 
-class public auto ansi XnorOp extends LogicalOp
+class public XnorOp extends LogicalOp
 
 	method public void XnorOp()
 		mybase::ctor()
@@ -113,7 +113,7 @@ class public auto ansi XnorOp extends LogicalOp
 
 end class
 
-class public auto ansi NotOp extends LogicalOp
+class public NotOp extends LogicalOp
 
 	method public void NotOp()
 		mybase::ctor()
@@ -126,7 +126,7 @@ class public auto ansi NotOp extends LogicalOp
 
 end class
 
-class public auto ansi NegOp extends LogicalOp
+class public NegOp extends LogicalOp
 
 	method public void NegOp()
 		mybase::ctor()

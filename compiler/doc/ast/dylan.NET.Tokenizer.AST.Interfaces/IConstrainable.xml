@@ -1,15 +1,12 @@
 <Type Name="IConstrainable" FullName="dylan.NET.Tokenizer.AST.Interfaces.IConstrainable">
-  <TypeSignature Language="C#" Value="public interface IConstrainable : dylan.NET.Tokenizer.AST.Interfaces.IHasConstraints" />
-  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IConstrainable extends System.Object implements class dylan.NET.Tokenizer.AST.Interfaces.IHasConstraints" />
+  <TypeSignature Language="C#" Value="public interface IConstrainable : dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IConstrainable implements class dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
-  <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
-  </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IHasConstraints</InterfaceName>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>

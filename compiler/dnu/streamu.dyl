@@ -8,7 +8,7 @@
 
 //delegate public void ErrorWarnHandler(var line as integer, var file as string, var msg as string)
 
-class public auto ansi ErrorException extends Exception
+class public ErrorException extends Exception
 	
 	method public void ErrorException(var errtext as string)
 		mybase::ctor(errtext)
@@ -20,7 +20,7 @@ class public auto ansi ErrorException extends Exception
 
 end class
 
-class public auto ansi static StreamUtils
+class public static StreamUtils
 
 	field public static initonly Stream Stdin
 	field public static initonly Stream Stdout
@@ -44,12 +44,12 @@ class public auto ansi static StreamUtils
 		Stdin = Console::OpenStandardInput()
 		Stderr = Console::OpenStandardError()
 		Stdout = Console::OpenStandardOutput()
-		InS = null
-		OutS = null
+		//InS = null
+		//OutS = null
 		UseConsole = true
 		TerminateOnError = true
-		_ErrorH = null
-		_WarnH = null
+		//_ErrorH = null
+		//_WarnH = null
 	end method
 	
 	[method: ComVisible(false)]
@@ -155,7 +155,7 @@ class public auto ansi static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static void WriteWarn(var line as integer, var file as string, var msg as string)
-		ErrorWriteLine("WARNING: " + msg + " at line " + $string$line + " in file: " + file)
+		ErrorWriteLine(string::Format("WARNING: {0} at line {1} in file: {2}", msg, $string$line, file))
 		if _WarnH != null then
 			_WarnH::Invoke(new CompilerMsg(line,file,msg))
 		end if
@@ -163,7 +163,7 @@ class public auto ansi static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static void WriteWarnLine(var line as integer, var file as string, var msg as string)
-		ErrorWriteLine(c"\nWARNING: " + msg + " at line " + $string$line + " in file: " + file)
+		ErrorWriteLine(string::Format(c"\nWARNING: {0} at line {1} in file: {2}", msg, $string$line, file))
 		if _WarnH != null then
 			_WarnH::Invoke(new CompilerMsg(line,file,msg))
 		end if
@@ -182,7 +182,7 @@ class public auto ansi static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static void WriteError(var line as integer, var file as string, var msg as string)
-		ErrorWriteLine("ERROR: " + msg + " at line " + $string$line + " in file: " + file)
+		ErrorWriteLine(string::Format("ERROR: {0} at line {1} in file: {2}", msg, $string$line, file))
 		if _ErrorH != null then
 			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
 		end if
@@ -192,7 +192,7 @@ class public auto ansi static StreamUtils
 	
 	[method: ComVisible(false)]
 	method public static void WriteErrorLine(var line as integer, var file as string, var msg as string)
-		ErrorWriteLine(c"\nERROR: " + msg + " at line " + $string$line + " in file: " + file)
+		ErrorWriteLine(string::Format(c"\nERROR: {0} at line {1} in file: {2}", msg, $string$line, file))
 		if _ErrorH != null then
 			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
 		end if

@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public auto ansi beforefieldinit Token
+class public beforefieldinit Token
 
 	field public string Value
 	field public integer Line
@@ -19,7 +19,7 @@ class public auto ansi beforefieldinit Token
 	method public void Token(var value as string)
 		mybase::ctor()
 		Value = value
-		Line = 0
+		//Line = 0
 	end method
 	
 	method public void Token()
@@ -41,7 +41,7 @@ class public auto ansi beforefieldinit Token
 
 end class
 
-class public auto ansi NonExprToken extends Token
+class public NonExprToken extends Token
 
 	method public void NonExprToken(var value as string)
 		mybase::ctor(value)
@@ -53,7 +53,7 @@ class public auto ansi NonExprToken extends Token
 
 end class
 
-class public auto ansi ValueToken extends Token
+class public ValueToken extends Token
 
 	method public void ValueToken(var value as string)
 		mybase::ctor(value)

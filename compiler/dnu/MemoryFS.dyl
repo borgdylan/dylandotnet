@@ -7,7 +7,7 @@
 // //Place, Suite 330, Boston, MA 02111-1307 USA 
 namespace dylan.NET.Utils
 
-	class public auto ansi static MemoryFS
+	class public static MemoryFS
 		
 		field private static C5.HashDictionary<of string, Stream> fs
 

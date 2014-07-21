@@ -8,7 +8,7 @@
 
 namespace Extra.Tasks
 
-	class public auto ansi beforefieldinit sealed ResProcTask extends Task
+	class public beforefieldinit sealed ResProcTask extends Task
 		
 		property public autogen ITaskItem[] ResxInputs
 		property public autogen ITaskItem[] ResourcesInputs
@@ -42,7 +42,7 @@ namespace Extra.Tasks
 			return new TaskItem(i)
 		end method
 
-		method public hidebysig virtual boolean Execute()
+		method public override boolean Execute()
 			try
 				ResProc::WarnInit()
 				ResProc::add_WarnH(new Action<of Msg>(WarnH))

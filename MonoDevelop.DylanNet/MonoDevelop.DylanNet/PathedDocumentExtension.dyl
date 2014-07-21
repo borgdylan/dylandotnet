@@ -15,7 +15,7 @@ namespace MonoDevelop.DylanNet
 		field private TextLocation location
 
 		method assembly void PathedLambdas(var loc as TextLocation)
-			me::ctor()
+			mybase::ctor()
 			location = loc
 		end method
 
