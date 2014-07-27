@@ -12,29 +12,26 @@ using dylan.NET.Compiler;
 using dylan.NET.Utils;
 using dylan.NET.Reflection;
 using dylan.NET.Tokenizer.CodeGen;
+using Microsoft.CodeAnalysis;
 
 namespace DNLoader
 {
 	
 	public class DNProjectReference : IMetadataProjectReference
     {
-    	private string _name;
     	private Stream _assembly;
+    	private Stream _symbols;
     	private string _path;
+    	private IDiagnosticResult _result;
+    	private string _name;
     	
-        public DNProjectReference(string name, string path, Stream asm)
+        public DNProjectReference(string name, IDiagnosticResult result, string path, Stream asm, Stream symbols)
         {
-            _name = name;
+        	_name = name;
             _assembly = asm;
+            _symbols = symbols;
             _path = path;
-        }
-
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
+            _result = result;
         }
 
         public string ProjectPath
@@ -44,36 +41,118 @@ namespace DNLoader
                 return _path;
             }
         }
-
-        public void WriteReferenceAssemblyStream(Stream stream)
+        
+        public string Name
         {
-            _assembly.CopyTo(stream);
-            _assembly.Seek(0, SeekOrigin.Begin);
-            stream.Seek(0, SeekOrigin.Begin);
+            get
+            {
+                return _name;
+            }
+        }
+		
+		public IDiagnosticResult GetDiagnostics() {
+			return _result;
+		}
+
+        public IList<ISourceReference> GetSources() {
+        	return new ISourceReference[0];
+        }
+		
+        public void EmitReferenceAssembly(Stream stream)
+        {	
+	        if (_assembly != null) {
+	            _assembly.CopyTo(stream);
+	            _assembly.Seek(0, SeekOrigin.Begin);
+	            stream.Seek(0, SeekOrigin.Begin);
+	         }
+        }
+        
+        public Assembly Load(IAssemblyLoaderEngine loader)
+        {	
+        
+        	Assembly asm = loader.LoadStream(_assembly, _symbols);
+        	
+            if (_assembly != null) {
+	            //_assembly.CopyTo(stream);
+    	        _assembly.Seek(0, SeekOrigin.Begin);
+    	        //stream.Seek(0, SeekOrigin.Begin);
+    		}
+    		if (_symbols != null) {
+	            //_symbols.CopyTo(symbols);
+    	        _symbols.Seek(0, SeekOrigin.Begin);
+    	        //symbols.Seek(0, SeekOrigin.Begin);
+    		}
+    		       
+            return asm;
+        }
+        
+        public IDiagnosticResult EmitAssembly(string path)
+        {	
+        	Directory.CreateDirectory(path);
+        
+         	if (_assembly != null) {
+         		using(Stream stream = new FileStream(Path.Combine(path, _name + ".dll"), FileMode.Create) ) {
+		            _assembly.Seek(0, SeekOrigin.Begin);
+		            _assembly.CopyTo(stream);
+    		        _assembly.Seek(0, SeekOrigin.Begin);
+    		        stream.Seek(0, SeekOrigin.Begin);
+    		    }
+    		}
+    		if (_symbols != null) {
+	            using(Stream symbols = new FileStream(Path.Combine(path, _name + ".dll.mdb"), FileMode.Create) ) {
+		            _symbols.Seek(0, SeekOrigin.Begin);
+		            _symbols.CopyTo(symbols);
+    		        _symbols.Seek(0, SeekOrigin.Begin);
+    		        symbols.Seek(0, SeekOrigin.Begin);
+    		   }
+    		}   
+            return _result;
         }
     }
-	
+
 	public class DNCompilation
     {
         private ILibraryExport _export;
         private string assemblyName;
         private FrameworkName effectiveTargetFramework;
         private Tuple<Stream, Stream> streams;
-
+        private IDiagnosticResult result;
+		private List<string> warnings;
+		private List<string> errors;
+		
         public DNCompilation(string name, Project project, IList<IMetadataReference> metadataReferences, FrameworkName targetFramework)
         {
             Project = project;
             MetadataReferences = metadataReferences;
             assemblyName = name;
             effectiveTargetFramework = targetFramework;
+            warnings = new List<string>();
+            errors = new List<string>();
         }
 
         public Project Project { get; private set; }
         public IList<IMetadataReference> MetadataReferences { get; private set; }
 		
-		public Tuple<Stream, Stream> CompileInMemory() {
+		private void ErrorH(CompilerMsg cm) {
+			Console.WriteLine("ERROR: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File);
+			errors.Add(string.Format("ERROR: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File));
+		}
 
+		private void WarnH(CompilerMsg cm) {
+			Console.WriteLine("WARNING: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File);
+			warnings.Add(string.Format("WARNING: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File));
+		}
+		
+		private Tuple<Stream, Stream> CompileInMemory() {
 			if (streams == null) {
+				string debugOpt = Project.GetCompilerOptions().DebugSymbols;
+				DebugInformationKind debugInformationKind;
+				if (!Enum.TryParse<DebugInformationKind>(debugOpt, ignoreCase: true, result: out debugInformationKind)) {
+ 					debugInformationKind = DebugInformationKind.Full;	
+ 				}
+				
+				bool success = true;
+				
 				using (StreamWriter sw = new StreamWriter(Path.Combine(Project.ProjectDirectory, "msbuild.dyl"))) {
 	        	    foreach (var reference in MetadataReferences)
 	        	    {
@@ -96,12 +175,14 @@ namespace DNLoader
 	        	       	 		var rosRef = reference as IMetadataProjectReference;
 	        	       	 		if (rosRef != null) {
 	        	       	 			var ms = new MemoryStream();
-	        	       	 			rosRef.WriteReferenceAssemblyStream(ms);
-				                    ms.Seek(0, SeekOrigin.Begin);
-	        	       	 			MemoryFS.AddFile(rosRef.Name + ".dll", ms);
-	        	        			sw.Write("#refasm \"memory:");
-	        	        			sw.Write(rosRef.Name);
-	        	        			sw.WriteLine(".dll\"");
+	        	       	 			rosRef.EmitReferenceAssembly(ms);
+	        	       	 			if (ms.Length > 0) {       	       	 			
+				                   	 	ms.Seek(0, SeekOrigin.Begin);
+	        	       	 				MemoryFS.AddFile(rosRef.Name + ".dll", ms);
+	        	        				sw.Write("#refasm \"memory:");
+	        	        				sw.Write(rosRef.Name);
+	        	        				sw.WriteLine(".dll\"");
+	        	        			}
 	        	       	 		}
 	        	       		}
 	        	       	}
@@ -123,9 +204,10 @@ namespace DNLoader
 	        	        sw.Write(r);
 	        	        sw.WriteLine("\"");    
 		            }
-					
+
 					sw.WriteLine();
-					sw.WriteLine("#debug on");
+					sw.Write("#debug ");
+					sw.WriteLine(debugInformationKind == DebugInformationKind.None ? "off" : "on");
 					sw.WriteLine();
 					
 					sw.WriteLine("[assembly: System.Reflection.AssemblyTitle(\"" + assemblyName + "\")]");
@@ -136,12 +218,29 @@ namespace DNLoader
 	        	    sw.Write("assembly ");
 	        	    sw.Write(assemblyName);
 	        	    sw.WriteLine(" dll");
-	        	    sw.WriteLine("ver 1.0.0.0");
+	        	    
+	        	    Version ver = Project.Version.Version;
+	        	    sw.WriteLine("ver {0}.{1}.{2}.{3}", new object[] {(object)ver.Major, (object)ver.Minor, (object)ver.Build, (object)ver.Revision});
 				}
 				
-				var cd = Environment.CurrentDirectory;
-				dylan.NET.Compiler.Program.Invoke(new string[] {"-inmemory", "-cd", Project.ProjectDirectory, assemblyName + ".dyl"});
-				Environment.CurrentDirectory = cd;
+				var w = new Action<CompilerMsg>(WarnH);
+				var e = new Action<CompilerMsg>(ErrorH);
+				
+				try {
+					StreamUtils.WarnH += w;
+					StreamUtils.ErrorH += e;
+				
+					var cd = Environment.CurrentDirectory;
+					dylan.NET.Compiler.Program.Invoke(new string[] {"-inmemory", "-cd", Project.ProjectDirectory, assemblyName + ".dyl"});
+					Environment.CurrentDirectory = cd;
+				}
+				catch (ErrorException fe) {
+					success = false;
+				}
+				finally {
+					StreamUtils.WarnH -= w;
+					StreamUtils.ErrorH -= e;
+				}
 				
 				var asm = MemoryFS.GetFile(assemblyName + ".dll");
 				
@@ -153,7 +252,14 @@ namespace DNLoader
 				SymTable.Init();
 				
 				//change the .dll.mdb to .pdb if you are on windows/.NET
-				streams = Tuple.Create<Stream, Stream>(asm, new FileStream(Path.Combine(Project.ProjectDirectory, assemblyName + ".dll.mdb"), FileMode.Open));
+				if (success) {
+					streams = Tuple.Create<Stream, Stream>(asm, debugInformationKind == DebugInformationKind.None ? null : new FileStream(Path.Combine(Project.ProjectDirectory, assemblyName + ".dll.mdb"), FileMode.Open));
+				}
+				else {
+					streams = Tuple.Create<Stream, Stream>(null, null);
+				}
+				
+				result = new DiagnosticResult(success, warnings, errors);
 			}
 			
 			return streams;
@@ -165,9 +271,11 @@ namespace DNLoader
             {
                 var metadataReferences = new List<IMetadataReference>();
                 var sourceReferences = new List<ISourceReference>();
-
+				
+				var cim = CompileInMemory();
+				
                 // Project reference
-                metadataReferences.Add(new DNProjectReference(assemblyName, Project.ProjectFilePath, CompileInMemory().Item1));
+                metadataReferences.Add(new DNProjectReference(assemblyName, result, Project.ProjectFilePath, cim.Item1, cim.Item2));
                 // Other references
                 metadataReferences.AddRange(MetadataReferences);
 
@@ -183,69 +291,20 @@ namespace DNLoader
             return _export;
         }
     }
-	
-    public class DNAssemblyLoader : IAssemblyLoader, ILibraryExportProvider
+    
+    public class DNAssemblyLoader : IProjectExportProvider
     {
-        private readonly IProjectResolver _projectResolver;
-        private readonly IApplicationEnvironment _environment;
-        private readonly ILibraryExportProvider _exportProvider;
-        private readonly IAssemblyLoaderEngine _loaderEngine;
         private Dictionary<string, DNCompilation> compilations;
 
-        public DNAssemblyLoader(IProjectResolver projectResolver,
-                                    IApplicationEnvironment environment,
-                                    ILibraryExportProvider exportProvider,
-                                    IAssemblyLoaderEngine loaderEngine)
+        public DNAssemblyLoader()
         {
-            _projectResolver = projectResolver;
-            _environment = environment;
-            _exportProvider = exportProvider;
-            _loaderEngine = loaderEngine;
             compilations = new Dictionary<string, DNCompilation>();
-        }
-		
-        public Assembly Load(string assemblyName)
-        {
-            Project project;
-            if (!_projectResolver.TryResolveProject(assemblyName, out project))
-            {
-                return null;
-            }
-
-            var projectExportProvider = new ProjectExportProvider(_projectResolver);
-            FrameworkName effectiveTargetFramework;
-            var export = projectExportProvider.GetProjectExport(_exportProvider, assemblyName, _environment.TargetFramework, out effectiveTargetFramework);
-			
-			DNCompilation comp;
-			if (compilations.ContainsKey(assemblyName)) {
-				comp = compilations[assemblyName];
-			}
-			else {
-				try {
-					comp = new DNCompilation(assemblyName, project, export.MetadataReferences, effectiveTargetFramework);
-				}
-				catch (ErrorException e) {
-					comp = null;
-				}
-				compilations.Add(assemblyName, comp);
-			}
-			
-			var res = comp.CompileInMemory();
-			        
-            return _loaderEngine.LoadStream(res.Item1, res.Item2);
+            StreamUtils.UseConsole = false;
         }
 
-        public ILibraryExport GetLibraryExport(string assemblyName, FrameworkName targetFramework)
+        public ILibraryExport GetProjectExport(Project project, FrameworkName targetFramework, string config, ILibraryExport export)
         {
-            Project project;
-            if (!_projectResolver.TryResolveProject(assemblyName, out project))
-            {
-                return null;
-            }
-            
-            var projectExportProvider = new ProjectExportProvider(_projectResolver);
-            FrameworkName effectiveTargetFramework;
-            var export = projectExportProvider.GetProjectExport(_exportProvider, assemblyName, targetFramework, out effectiveTargetFramework);
+        	string assemblyName = project.Name;
             
             DNCompilation comp;
 			if (compilations.ContainsKey(assemblyName)) {
@@ -253,7 +312,7 @@ namespace DNLoader
 			}
 			else {
 				try {
-					comp = new DNCompilation(assemblyName, project, export.MetadataReferences, effectiveTargetFramework);
+					comp = new DNCompilation(assemblyName, project, export.MetadataReferences, targetFramework);
 				}
 				catch (ErrorException e) {
 					comp = null;

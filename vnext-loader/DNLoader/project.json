@@ -1,13 +1,14 @@
 ﻿{	
 	"version": "1.0.0",
     "dependencies": {
-        "Microsoft.Framework.Runtime": "1.0.0-*",
-        "dylan.NET" : "11.3.6.1"
     },
 
-    "configurations" : {
+    "frameworks" : {
         "net45" : { 
             "dependencies": {
+            	"Microsoft.Framework.Runtime": "1.0.0-*",
+       			 "K.Roslyn": "1.0.0-*",
+       			 "dylan.NET" : "11.3.7.15"
             }
         }
     }

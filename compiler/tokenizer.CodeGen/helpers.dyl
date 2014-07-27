@@ -33,6 +33,7 @@ class public static Helpers
 	[method: ComVisible(false)]
 	method public static void CheckAssignability(var t1 as IKVM.Reflection.Type, var t2 as IKVM.Reflection.Type)
 		if !t1::IsAssignableFrom(t2) andalso #expr(!NullExprFlg orelse Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(t1)) then
+			//StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("'{0}','{1}'.", t1::get_AssemblyQualifiedName(), t2::get_AssemblyQualifiedName()))
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Slots of type '{0}' cannot be assigned values of type '{1}'.", t1::ToString(), t2::ToString()))
 		end if
 	end method
@@ -1555,9 +1556,8 @@ class public static Helpers
 			return $MethodNameTok$#expr($Ident$t)
 		elseif t is MethodCallTok then
 			return #expr($MethodCallTok$t)::Name
-		else
-			return null
 		end if
+		return null
 	end method
 
 	[method: ComVisible(false)]

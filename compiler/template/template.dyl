@@ -269,6 +269,9 @@ end class
 	class public GenType<of T>
 		field public T Fld
 
+		class public GenNest<of X, Y> extends List<of X>
+		end class
+
 		method public void GenType(var f as T)
 			mybase::ctor()
 			Fld = f
@@ -295,6 +298,9 @@ end class
 	end class
 
 	class public static Generics
+		
+		class public GenNest<of T, U> extends List<of T>
+		end class
 
 		method public static U[] Func<of T, U>(var o as T) where T as {ICollection<of U>}, U as {out}
 			foreach u in o

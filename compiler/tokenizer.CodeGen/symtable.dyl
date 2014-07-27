@@ -12,6 +12,7 @@ class public static SymTable
 	field public static C5.HashDictionary<of IKVM.Reflection.Type, integer> TempVTMap
 	field public static C5.HashDictionary<of string, TypeParamItem> MetGenParams
 	field public static C5.HashDictionary<of string, TypeParamItem> TypGenParams
+	field public static C5.HashDictionary<of string, TypeParamItem> TypGenParams2
 	field public static C5.IList<of CustomAttributeBuilder> MethodCALst
 	field public static C5.IList<of CustomAttributeBuilder> FieldCALst
 	field public static C5.IList<of CustomAttributeBuilder> ClassCALst
@@ -46,6 +47,7 @@ class public static SymTable
 		TempVTMap = new C5.HashDictionary<of IKVM.Reflection.Type, integer>()
 		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>()
 		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
+		TypGenParams2 = new C5.HashDictionary<of string, TypeParamItem>()
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 		IfLst = new C5.LinkedList<of IfItem>()
 		//LockLst = new C5.LinkedList<of LockItem>()
@@ -107,6 +109,9 @@ class public static SymTable
 
 	[method: ComVisible(false)]
 	method public static void ResetTypGenParams()
+		if AsmFactory::inClass then
+			SymTable::TypGenParams2 = SymTable::TypGenParams
+		end if
 		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
 	end method
 

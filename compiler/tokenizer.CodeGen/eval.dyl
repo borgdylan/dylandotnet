@@ -773,6 +773,7 @@ class public beforefieldinit Evaluator
 		if delcreate then
 			typarr1 = new IKVM.Reflection.Type[] {Loader::CachedLoadClass("System.Object"), Loader::CachedLoadClass("System.IntPtr")}
 
+			//-------------------------------------------------------------------------------------------
 			//delegate pointer loading section
 			mnstrarr = ParseUtils::StringParser(delmtdnam::Value, ':')
 			var mcrestrord as integer = 2
@@ -925,6 +926,7 @@ class public beforefieldinit Evaluator
 				end if
 				mcisstatic = mcmetinf::get_IsStatic()
 			end if
+			//-------------------------------------------------------------------------------------------
 
 			if emt then
 				if mcisstatic then
@@ -932,7 +934,7 @@ class public beforefieldinit Evaluator
 				else
 					ILEmitter::EmitDup()
 				end if
-				Helpers::EmitPtrLd(mcmetinf,mcisstatic)
+				Helpers::EmitPtrLd(mcmetinf, mcisstatic)
 			end if
 
 			//delegate pointer loading section

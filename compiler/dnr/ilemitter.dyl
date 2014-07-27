@@ -59,7 +59,7 @@ class public static ILEmitter
 		LocInd = 0
 		ArgInd = 0
 		LineNr = 0
-		CurSrcFile = String::Empty
+		CurSrcFile = string::Empty
 		SrcFiles = new C5.LinkedList<of string>()
 		DocWriters = new C5.LinkedList<of ISymbolDocumentWriter>()
 	end method

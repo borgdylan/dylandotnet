@@ -33,11 +33,6 @@ PATH: /usr/sbin
 PATH: /usr/bin
 PATH: /sbin
 PATH: /bin
-PATH: /usr/games
-PATH: /usr/local/games
-PATH: /home/dylan/Downloads/adt-bundle-linux-x86-20131030/sdk/tools
-PATH: /home/dylan/Downloads/adt-bundle-linux-x86-20131030/sdk/platform-tools
-PATH: /home/dylan/Downloads/adt-bundle-linux-x86-20131030/sdk/build-tools/android-4.4
 
 
 ## ----------- ##

@@ -150,13 +150,40 @@ class public StmtReader
 
 				StreamUtils::WriteLine(string::Format("Adding Nested Class: {0}", clss::ClassName::Value))
 				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value +  _
-					#ternary {nrgenparams > 0 ? "`" + $string$nrgenparams, string::Empty}, clssparams, inhtyp)
+					#ternary {nrgenparams > 0 ? "`" + $string$nrgenparams, string::Empty}, clssparams)
+
+				if clss::ClassName is GenericTypeTok then
+					var gmn = $GenericTypeTok$clss::ClassName
+					var paramdefs = gmn::Params
+					var genparams = new string[paramdefs::get_Count()]
+					var i = -1
+					foreach pd in paramdefs
+						i++
+						genparams[i] = pd::Value
+					end for
+					SymTable::SetTypGenParams(genparams, AsmFactory::CurnTypB::DefineGenericParameters(genparams))
+					nrgenparams = paramdefs::get_Count()
+				end if
+
 			end if
 		else
 			AsmFactory::CurnTypName = clss::ClassName::Value
 			SymTable::CurnTypItem = ti2
 			AsmFactory::CurnTypB = ti2::TypeBldr
 			StreamUtils::WriteLine(string::Format("Continuing Class: {0}.{1}", AsmFactory::CurnNS, clss::ClassName::Value))
+
+			if clss::ClassName is GenericTypeTok then
+				var gmn = $GenericTypeTok$clss::ClassName
+				var paramdefs = gmn::Params
+				var genparams = new string[paramdefs::get_Count()]
+				var i = -1
+				foreach pd in paramdefs
+					i++
+					genparams[i] = pd::Value
+				end for
+				SymTable::SetTypGenParams(genparams, AsmFactory::CurnTypB::DefineGenericParameters(genparams))
+				nrgenparams = paramdefs::get_Count()
+			end if
 		end if
 		
 		Helpers::ApplyClsAttrs()
@@ -1270,6 +1297,7 @@ class public StmtReader
 				AsmFactory::CurnTypB = AsmFactory::CurnTypB2
 				AsmFactory::CurnTypName = AsmFactory::CurnTypName2
 				SymTable::CurnTypItem = SymTable::CurnTypItem2
+				SymTable::TypGenParams = SymTable::TypGenParams2
 
 				AsmFactory::isNested = false
 			else
