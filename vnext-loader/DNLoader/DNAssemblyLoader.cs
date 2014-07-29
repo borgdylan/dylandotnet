@@ -17,7 +17,26 @@ using Microsoft.CodeAnalysis;
 namespace DNLoader
 {
 	
-	public class DNProjectReference : IMetadataProjectReference
+	 internal static class PlatformHelper
+    {
+        private static Lazy<bool> _isMono = new Lazy<bool>(() => Type.GetType("Mono.Runtime") != null);
+
+        public static bool IsMono
+        {
+            get
+            {
+                return _isMono.Value;
+            }
+        }
+        
+        public static string DebugExtension {
+        	get {
+        		return IsMono ? ".dll.mdb" : ".pdb";
+        	}
+        }
+    }
+	
+	public class DNProjectReference : IMetadataProjectReference, IDisposable
     {
     	private Stream _assembly;
     	private Stream _symbols;
@@ -33,7 +52,16 @@ namespace DNLoader
             _path = path;
             _result = result;
         }
-
+		
+		public void Dispose() {
+			if (_assembly != null) {
+	            _assembly.Close();
+    		}
+    		if (_symbols != null) {
+	            _symbols.Close();
+    		}
+		}
+		
         public string ProjectPath
         {
             get
@@ -73,15 +101,11 @@ namespace DNLoader
         	Assembly asm = loader.LoadStream(_assembly, _symbols);
         	
             if (_assembly != null) {
-	            //_assembly.CopyTo(stream);
-    	        _assembly.Seek(0, SeekOrigin.Begin);
-    	        //stream.Seek(0, SeekOrigin.Begin);
-    		}
+	            _assembly.Seek(0, SeekOrigin.Begin);
+    	  }
     		if (_symbols != null) {
-	            //_symbols.CopyTo(symbols);
-    	        _symbols.Seek(0, SeekOrigin.Begin);
-    	        //symbols.Seek(0, SeekOrigin.Begin);
-    		}
+	            _symbols.Seek(0, SeekOrigin.Begin);
+    	  }
     		       
             return asm;
         }
@@ -99,20 +123,23 @@ namespace DNLoader
     		    }
     		}
     		if (_symbols != null) {
-	            using(Stream symbols = new FileStream(Path.Combine(path, _name + ".dll.mdb"), FileMode.Create) ) {
+	            using(Stream symbols = new FileStream(Path.Combine(path, _name + PlatformHelper.DebugExtension), FileMode.Create) ) {
 		            _symbols.Seek(0, SeekOrigin.Begin);
 		            _symbols.CopyTo(symbols);
     		        _symbols.Seek(0, SeekOrigin.Begin);
     		        symbols.Seek(0, SeekOrigin.Begin);
     		   }
-    		}   
+    		}
+    		
+    		File.Copy("msbuild.dyl", Path.Combine(path, "msbuild.dyl"), true);
+    		
             return _result;
         }
     }
 
 	public class DNCompilation
     {
-        private ILibraryExport _export;
+        private IMetadataProjectReference _export;
         private string assemblyName;
         private FrameworkName effectiveTargetFramework;
         private Tuple<Stream, Stream> streams;
@@ -134,13 +161,13 @@ namespace DNLoader
         public IList<IMetadataReference> MetadataReferences { get; private set; }
 		
 		private void ErrorH(CompilerMsg cm) {
-			Console.WriteLine("ERROR: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File);
-			errors.Add(string.Format("ERROR: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File));
+			//Console.WriteLine("ERROR: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File);
+			errors.Add(string.Format("ERROR: {0} inside project {1}({2}) at line {3} in file: {4}", new object[] {cm.Msg, assemblyName, effectiveTargetFramework.FullName, cm.Line.ToString(), cm.File}));
 		}
 
 		private void WarnH(CompilerMsg cm) {
-			Console.WriteLine("WARNING: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File);
-			warnings.Add(string.Format("WARNING: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File));
+			//Console.WriteLine("WARNING: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File);
+			warnings.Add(string.Format("WARNING: {0} inside project {1}({2}) at line {3} in file: {4}", new object[] {cm.Msg, assemblyName, effectiveTargetFramework.FullName, cm.Line.ToString(), cm.File}));
 		}
 		
 		private Tuple<Stream, Stream> CompileInMemory() {
@@ -195,7 +222,20 @@ namespace DNLoader
 		            
 		            
 	        	    sw.Write("#define ");
-	        	    sw.Write(effectiveTargetFramework.Identifier == ".NETFramework" ? "NET" : effectiveTargetFramework.Identifier);
+	        	    
+	        	    if (effectiveTargetFramework.Identifier == ".NETFramework") {
+		        	    sw.Write("NET");
+		        	}
+		        	else if (effectiveTargetFramework.Identifier == ".NETPortable") {
+		        	    sw.Write("PORTABLE");
+		        	}
+		        	else if (effectiveTargetFramework.Identifier == ".NETCore") {
+		        	    sw.Write("NETCORE");
+		        	}
+		        	else {
+		        		sw.Write(effectiveTargetFramework.Identifier);
+		        	}
+	        	    
 	        	    sw.Write(effectiveTargetFramework.Version.Major);
 	        	    sw.WriteLine(effectiveTargetFramework.Version.Minor);
 	        	    
@@ -253,7 +293,17 @@ namespace DNLoader
 				
 				//change the .dll.mdb to .pdb if you are on windows/.NET
 				if (success) {
-					streams = Tuple.Create<Stream, Stream>(asm, debugInformationKind == DebugInformationKind.None ? null : new FileStream(Path.Combine(Project.ProjectDirectory, assemblyName + ".dll.mdb"), FileMode.Open));
+					Stream syms = null;
+					if (debugInformationKind != DebugInformationKind.None) {
+					 	var pdbPath = Path.Combine(Project.ProjectDirectory, assemblyName + PlatformHelper.DebugExtension);
+					 	using (FileStream fs = new FileStream(pdbPath, FileMode.Open)) {
+					 		syms = new MemoryStream();
+					 		fs.CopyTo(syms);
+  	  		        		syms.Seek(0, SeekOrigin.Begin);
+					 	}
+					 	File.Delete(pdbPath);
+					}
+					streams = Tuple.Create<Stream, Stream>(asm, syms);
 				}
 				else {
 					streams = Tuple.Create<Stream, Stream>(null, null);
@@ -265,34 +315,19 @@ namespace DNLoader
 			return streams;
 		}
 		
-        public ILibraryExport GetExport()
+        public IMetadataProjectReference GetProjectReference()
         {
             if (_export == null)
             {
-                var metadataReferences = new List<IMetadataReference>();
-                var sourceReferences = new List<ISourceReference>();
-				
-				var cim = CompileInMemory();
-				
-                // Project reference
-                metadataReferences.Add(new DNProjectReference(assemblyName, result, Project.ProjectFilePath, cim.Item1, cim.Item2));
-                // Other references
-                metadataReferences.AddRange(MetadataReferences);
-
-                // Shared sources
-                foreach (var sharedFile in Project.SharedFiles)
-                {
-                    sourceReferences.Add(new SourceFileReference(sharedFile));
-                }
-
-                _export = new LibraryExport(metadataReferences, sourceReferences);
+               var cim = CompileInMemory();
+               _export = new DNProjectReference(assemblyName, result, Project.ProjectFilePath, cim.Item1, cim.Item2);
             }
 
             return _export;
         }
     }
     
-    public class DNAssemblyLoader : IProjectExportProvider
+    public class DNAssemblyLoader : IProjectReferenceProvider
     {
         private Dictionary<string, DNCompilation> compilations;
 
@@ -302,7 +337,7 @@ namespace DNLoader
             StreamUtils.UseConsole = false;
         }
 
-        public ILibraryExport GetProjectExport(Project project, FrameworkName targetFramework, string config, ILibraryExport export)
+        public IMetadataProjectReference GetProjectReference(Project project, FrameworkName targetFramework, string config, ILibraryExport export)
         {
         	string assemblyName = project.Name;
             
@@ -320,7 +355,7 @@ namespace DNLoader
 				compilations.Add(assemblyName, comp);
 			}
 
-            return comp.GetExport();
+            return comp.GetProjectReference();
         }
     }
 }
