@@ -1,0 +1,39 @@
+﻿{
+  "version": "1.0.0.0",
+	"code" : "*.dyl;*/*.dyl",
+	"resources" : "*.resources",
+	"exclude": "msbuild.dyl",
+	"language": {
+        "name": "dylan.NET",
+        "assembly": "DNLoader",
+        "projectReferenceProviderType": "DNLoader.DNAssemblyLoader"
+    },
+  "dependencies": {
+    },
+  "compilationOptions": {
+     "define": [],
+     "debugSymbols": "PdbOnly"
+  },
+  "commands": {
+  },
+  "frameworks": {
+    "net45": {
+      "dependencies": {
+        "DNLoader" : ""
+      }
+    },
+     "net40": {
+      "dependencies": {
+      	"Microsoft.Bcl.Async" : "1.0.168"
+      }
+    },
+    "k10": {
+    	"dependencies": {
+    		"System.Runtime": "4.0.20.0",
+    		"System.Console": "4.0.0.0",
+    		"System.Text.RegularExpressions": "4.0.0.0",
+    		"System.Threading.Tasks": "4.0.0.0"
+    	}
+    }
+  }
+}

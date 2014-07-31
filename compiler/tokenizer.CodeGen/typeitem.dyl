@@ -93,7 +93,7 @@ class public partial TypeItem
 
 		var mil as MILambdas2 = new MILambdas2(nam, paramst, auxt)
 		var bd as IEnumerable<of MethodInfo> = Enumerable::Select<of MethodItem, MethodInfo>(Methods::get_Item(nam),new Func<of MethodItem, MethodInfo>(mil::Bind))
-		var lom2 as IEnumerable<of MethodInfo> = Enumerable::Where<of MethodInfo>(bd,new Func<of MethodInfo,boolean>(mil::DetermineIfCandidate()))
+		var lom2 as IEnumerable<of MethodInfo> = Enumerable::Where<of MethodInfo>(bd,new Func<of MethodInfo,boolean>(mil::DetermineIfCandidate))
 		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(lom2)
 		
 		if matches[l] == 0 then
@@ -102,7 +102,7 @@ class public partial TypeItem
 			Loader::MemberTyp = matches[0]::get_ReturnType()
 			return matches[0]
 		else
-			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of MethodInfo,integer[]>(lom2,new Func<of MethodInfo,integer[]>(MILambdas2::ExtractDeriveness())),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
+			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of MethodInfo,integer[]>(lom2,new Func<of MethodInfo,integer[]>(MILambdas2::ExtractDeriveness)),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness)),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax))
 			Loader::MemberTyp = matches[chosen[--chosen[l]]]::get_ReturnType()
 			return matches[chosen[--chosen[l]]]
 		end if
@@ -116,7 +116,7 @@ class public partial TypeItem
 		var mil as MILambdas2 = new MILambdas2(nam, genparams[l])
 		var mil2 as MILambdas2 = new MILambdas2(genparams, auxt)
 		var mil3 as MILambdas2 = new MILambdas2(nam, paramst, auxt)
-		var glom as IEnumerable<of MethodInfo> = Enumerable::Where<of MethodInfo>(Enumerable::Select<of MethodItem, MethodInfo>(Enumerable::Where<of MethodItem>(Methods::get_Item(nam) , new Func<of MethodItem,boolean>(mil::GenericMtdFilter())), new Func<of MethodItem,MethodInfo>(mil2::InstGenMtd())), new Func<of MethodInfo, boolean>(mil3::DetermineIfCandidate2()))
+		var glom as IEnumerable<of MethodInfo> = Enumerable::Where<of MethodInfo>(Enumerable::Select<of MethodItem, MethodInfo>(Enumerable::Where<of MethodItem>(Methods::get_Item(nam) , new Func<of MethodItem,boolean>(mil::GenericMtdFilter)), new Func<of MethodItem,MethodInfo>(mil2::InstGenMtd)), new Func<of MethodInfo, boolean>(mil3::DetermineIfCandidate2))
 		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(glom)
 		
 		if matches[l] == 0 then
@@ -125,7 +125,7 @@ class public partial TypeItem
 			Loader::MemberTyp = matches[0]::get_ReturnType()
 			return matches[0]
 		else
-			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of MethodInfo,integer[]>(glom,new Func<of MethodInfo,integer[]>(MILambdas2::ExtractDeriveness2())),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness())),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax()))
+			var chosen as integer[] = Enumerable::Aggregate<of integer[]>(Enumerable::Select<of integer[],integer[]>(Enumerable::Select<of MethodInfo,integer[]>(glom,new Func<of MethodInfo,integer[]>(MILambdas2::ExtractDeriveness2)),new Func<of integer[],integer,integer[]>(MILambdas2::ZipDeriveness)),new Func<of integer[],integer[],integer[]>(MILambdas2::DerivenessMax))
 			Loader::MemberTyp = matches[chosen[--chosen[l]]]::get_ReturnType()
 			return matches[chosen[--chosen[l]]]
 		end if
@@ -137,7 +137,7 @@ class public partial TypeItem
 		end if
 
 		var mil as MILambdas2 = new MILambdas2(nam, paramst, TypeBldr)
-		var lom2 as MethodItem[] = Enumerable::ToArray<of MethodItem>(Enumerable::Where<of MethodItem>(Methods::get_Item(nam),new Func<of MethodItem,boolean>(mil::DetermineIfProtoCandidate())))
+		var lom2 as MethodItem[] = Enumerable::ToArray<of MethodItem>(Enumerable::Where<of MethodItem>(Methods::get_Item(nam),new Func<of MethodItem,boolean>(mil::DetermineIfProtoCandidate)))
 		if lom2[l] > 0 then
 			return lom2[0]
 		else
@@ -148,7 +148,7 @@ class public partial TypeItem
 	method public ConstructorInfo GetCtor(var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		var cil as CILambdas = new CILambdas(paramst, auxt)
 		var bd as IEnumerable<of ConstructorInfo> = Enumerable::Select<of CtorItem, ConstructorInfo>(Ctors,new Func<of CtorItem, ConstructorInfo>(cil::Bind))
-		var loc2 as IEnumerable<of ConstructorInfo> = Enumerable::Where<of ConstructorInfo>(bd,new Func<of ConstructorInfo,boolean>(cil::DetermineIfCandidate()))
+		var loc2 as IEnumerable<of ConstructorInfo> = Enumerable::Where<of ConstructorInfo>(bd,new Func<of ConstructorInfo,boolean>(cil::DetermineIfCandidate))
 		var matches as ConstructorInfo[] = Enumerable::ToArray<of ConstructorInfo>(loc2)
 		
 		if matches[l] == 0 then
@@ -216,12 +216,12 @@ class public TypeItem
 
 	method public TypeItem GetTypeItem(var t as IKVM.Reflection.Type)
 		var til as TILambdas = new TILambdas(t)
-		return Enumerable::FirstOrDefault<of TypeItem>(Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidateType())))
+		return Enumerable::FirstOrDefault<of TypeItem>(Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidateType)))
 	end method
 
 	method public TypeItem GetTypeItem(var nam as string)
 		var til as TILambdas = new TILambdas(nam, 0)
-		var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
+		var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate))
 		return Enumerable::FirstOrDefault<of TypeItem>(lot2)
 	end method
 

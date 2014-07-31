@@ -1,0 +1,28 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="dylan.NET.Tasks" Version="1.0.0.0">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("dylan.NET.Tasks")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.5")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>Task Helpers for dylan.NET</Remarks>
+  <Copyright>Copyright (c) Dylan Borg 2014.</Copyright>
+  <Types>
+    <Namespace Name="System.Threading.Tasks">
+      <Type Name="TaskHelpers" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>dylan.NET.Tasks</Title>
+</Overview>

@@ -1,0 +1,6 @@
+<Namespace Name="System.Threading.Tasks">
+  <Docs>
+    <summary>The main Task namespace as used in .NET.</summary>
+    <remarks>Helpers for the Task class targeted for dylan.NET projects.</remarks>
+  </Docs>
+</Namespace>

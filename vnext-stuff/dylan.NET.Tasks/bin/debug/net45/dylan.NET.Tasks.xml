@@ -1,0 +1,315 @@
+<doc>
+    <assembly>
+        <name>dylan.NET.Tasks</name>
+    </assembly>
+    <members>
+        <member name="T:System.Threading.Tasks.TaskHelpers">
+            <summary>Helpers for awaiting Tasks.</summary>
+            <remarks>These helpers may also be useful for other langauges that do not support the await keyword.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action)">
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action)">
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception})">
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Threading.CancellationToken)">
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action,System.Threading.CancellationToken)">
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception},System.Action)">
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception},System.Threading.CancellationToken)">
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception},System.Action,System.Threading.CancellationToken)">
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0})">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception})">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Threading.CancellationToken)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action,System.Threading.CancellationToken)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception},System.Action)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception},System.Threading.CancellationToken)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception},System.Action,System.Threading.CancellationToken)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0})">
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Action)">
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0})">
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Threading.CancellationToken)">
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Action,System.Threading.CancellationToken)">
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0},System.Action)">
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0},System.Threading.CancellationToken)">
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0},System.Action,System.Threading.CancellationToken)">
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1})">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Action)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1})">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Threading.CancellationToken)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Action,System.Threading.CancellationToken)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1},System.Action)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1},System.Threading.CancellationToken)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1},System.Action,System.Threading.CancellationToken)">
+            <typeparam name="T">The type of result returned by the awaited task.</typeparam>
+            <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The code to execute once the task finishes successfully.</param>
+            <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+            <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
+            <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+            <summary>Await the given task using the given functions.</summary>
+            <returns>A new task representing the await.</returns>
+            <remarks />
+        </member>
+    </members>
+</doc>

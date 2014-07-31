@@ -43,7 +43,7 @@ class public TypeList
 		
 		foreach ns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
 			var til as TILambdas = new TILambdas(#ternary{ns::get_Length() == 0 ? nam , ns + "." + nam}, gp)
-			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate()))
+			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate))
 			var match as TypeItem = Enumerable::FirstOrDefault<of TypeItem>(lot2)
 			
 			if match != null then
@@ -69,7 +69,7 @@ class public TypeList
 				end if
 			end for	
 		else
-			return Enumerable::FirstOrDefault<of TypeItem>(Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidateType())))
+			return Enumerable::FirstOrDefault<of TypeItem>(Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidateType)))
 		end if
 		return null
 	end method
