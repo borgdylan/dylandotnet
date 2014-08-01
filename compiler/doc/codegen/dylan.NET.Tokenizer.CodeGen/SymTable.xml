@@ -1514,6 +1514,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TypGenParams2">
+      <MemberSignature Language="C#" Value="public static C5.HashDictionary&lt;string,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; TypGenParams2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.HashDictionary`2&lt;string, class dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; TypGenParams2" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;System.String,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="UnDef">
       <MemberSignature Language="C#" Value="public static void UnDef (string sym);" />
       <MemberSignature Language="ILAsm" Value=".method public static void UnDef(string sym) cil managed" />

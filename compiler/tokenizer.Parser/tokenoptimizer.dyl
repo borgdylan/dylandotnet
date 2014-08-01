@@ -237,6 +237,9 @@ class public TokenOptimizer
 		elseif tok::Value == "#refasm" then
 			PFlags::NoOptFlag = true
 			return new RefasmTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "#refembedasm" then
+			PFlags::NoOptFlag = true
+			return new RefembedasmTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "#refstdasm" then
 			PFlags::NoOptFlag = true
 			return new RefstdasmTok() {Line = tok::Line, Value = tok::Value}

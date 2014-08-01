@@ -63,7 +63,8 @@ class public static Loader
 				
 		foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
 			curns = curns ?? string::Empty
-			foreach curasm in Importer::Asms
+			foreach curasmrec in Importer::Asms::get_Values()
+				var curasm = curasmrec::Asm
 				try
 //					if curasm == AsmFactory::AsmB then
 //						//asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
@@ -78,6 +79,7 @@ class public static Loader
 //					else
 						typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
 						if typ != null then
+							curasmrec::Used = true
 							if nest then
 								typ = typ::GetNestedType(na[1])
 							end if
@@ -138,7 +140,8 @@ class public static Loader
 				
 		foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
 			curns = curns ?? string::Empty
-			foreach curasm in Importer::Asms
+			foreach curasmrec in Importer::Asms::get_Values()
+				var curasm = curasmrec::Asm
 				try
 					typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
 					if typ != null then

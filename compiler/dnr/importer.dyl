@@ -8,7 +8,7 @@
 
 class public static Importer
 
-	field public static C5.IList<of IKVM.Reflection.Assembly> Asms
+	field public static C5.HashDictionary<of string, AssemblyRecord> Asms
 	//field public static C5.IList<of string> Imps
 	field public static C5.LinkedList<of C5.LinkedList<of string> > ImpsStack
 	field public static C5.IDictionary<of string,string> AliasMap
@@ -17,7 +17,7 @@ class public static Importer
 
 	[method: ComVisible(false)]
 	method public static void Init()
-		Asms = new C5.LinkedList<of IKVM.Reflection.Assembly>()
+		Asms = new C5.HashDictionary<of string, AssemblyRecord>()
 		//Imps = new C5.LinkedList<of string>()
 		ImpsStack = new C5.LinkedList<of C5.LinkedList<of string> > {new C5.LinkedList<of string>()}
 		AsmBasePath = RuntimeEnvironment::GetRuntimeDirectory()
@@ -48,8 +48,10 @@ class public static Importer
 	end method
 
 	[method: ComVisible(false)]
-	method public static void AddAsm(var asmm as IKVM.Reflection.Assembly)
-		Asms::Add(asmm)
+	method public static void AddAsm(var path as string, var asmm as IKVM.Reflection.Assembly)
+		if !Asms::Contains(path) then
+			Asms::Add(path, new AssemblyRecord(asmm))
+		end if
 	end method
 
 	[method: ComVisible(false)]

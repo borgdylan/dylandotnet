@@ -64,6 +64,21 @@ class public CodeGenerator
 //			end if
 //		end for
 //	end method
+	
+	method private void MarkUsed(var lst as IEnumerable<of string>)
+		foreach a in lst
+			if Importer::Asms::Contains(a) then
+				var ar = Importer::Asms::get_Item(a)
+				ar::Used = true
+
+				var lst2 = new C5.LinkedList<of string>()
+				foreach dep in ar::Asm::GetReferencedAssemblies()
+					lst2::Add("memory:" + dep::get_Name() + ".dll")
+				end for
+				MarkUsed(lst2)
+			end if
+		end for
+	end method
 
 	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
 
@@ -185,13 +200,47 @@ class public CodeGenerator
 			end if
 		end if
 
-		if ILEmitter::SrcFiles::get_Count() = 0 then
+		if ILEmitter::SrcFiles::get_Count() == 0 then
 			StreamUtils::Write("Embedding Resources in Assembly (if any)")
-				
+
+			var lst = new C5.LinkedList<of string>()
 			foreach r in SymTable::ResLst
-				var fs = new FileStream(r::get_Item1(), FileMode::Open)
-				AsmFactory::MdlB::DefineManifestResource(#ternary {r::get_Item2() == string::Empty ? Path::GetFileName(r::get_Item1()), r::get_Item2() }, fs, ResourceAttributes::Public)
-				fs::Close()
+				if r::get_Item3() then
+					if Importer::Asms::Contains(r::get_Item1()) then
+						if Importer::Asms::get_Item(r::get_Item1())::Used then
+							lst::Add(r::get_Item1())
+						end if
+					end if
+				end if
+			end for
+			MarkUsed(lst)
+
+			foreach r in SymTable::ResLst
+				if r::get_Item3() then
+					if Importer::Asms::Contains(r::get_Item1()) then
+						if !Importer::Asms::get_Item(r::get_Item1())::Used then
+							continue
+						end if
+					end if
+				end if
+
+				if r::get_Item1() like "^memory:(.)*$" then
+					var pth = r::get_Item1()::Substring(7)
+
+					if !MemoryFS::HasFile(pth) then
+						StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "In-Memory File '" + pth + "' does not exist.")
+						continue
+					end if
+
+					var fs = MemoryFS::GetFile(pth)
+					fs::Seek(0l, SeekOrigin::Begin)
+					AsmFactory::MdlB::DefineManifestResource(#ternary {r::get_Item2() == string::Empty ? Path::GetFileName(pth), r::get_Item2() }, fs, ResourceAttributes::Public)
+					fs::Seek(0l, SeekOrigin::Begin)
+				else
+					var fs = new FileStream(r::get_Item1(), FileMode::Open)
+					AsmFactory::MdlB::DefineManifestResource(#ternary {r::get_Item2() == string::Empty ? Path::GetFileName(r::get_Item1()), r::get_Item2() }, fs, ResourceAttributes::Public)
+					fs::Close()
+				end if
 			end for
 
 			StreamUtils::WriteLine("...Done.")

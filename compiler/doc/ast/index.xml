@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.3.7.1">
+    <Assembly Name="tokenizer.AST" Version="11.3.8.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyCompany("")</AttributeName>
@@ -226,6 +226,7 @@
       <Type Name="PtrCallTok" Kind="Class" />
       <Type Name="PtrTok" Kind="Class" />
       <Type Name="RefasmTok" Kind="Class" />
+      <Type Name="RefembedasmTok" Kind="Class" />
       <Type Name="RefstdasmTok" Kind="Class" />
       <Type Name="RefTok" Kind="Class" />
       <Type Name="RegionTok" Kind="Class" />

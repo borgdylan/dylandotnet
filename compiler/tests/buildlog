@@ -1,22 +1,22 @@
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
 
 dylan.NET Version Info:
-dnc, Version=11.3.7.1, Culture=neutral, PublicKeyToken=null
-dnr, Version=11.3.7.1, Culture=neutral, PublicKeyToken=null
-dnu, Version=11.3.7.1, Culture=neutral, PublicKeyToken=null
-tokenizer.CodeGen, Version=11.3.7.1, Culture=neutral, PublicKeyToken=null
-tokenizer.Parser, Version=11.3.7.1, Culture=neutral, PublicKeyToken=null
-tokenizer.Lexer, Version=11.3.7.1, Culture=neutral, PublicKeyToken=null
-tokenizer.AST, Version=11.3.7.1, Culture=neutral, PublicKeyToken=null
+dnc, Version=11.3.8.1, Culture=neutral, PublicKeyToken=null
+dnr, Version=11.3.8.1, Culture=neutral, PublicKeyToken=null
+dnu, Version=11.3.8.1, Culture=neutral, PublicKeyToken=null
+tokenizer.CodeGen, Version=11.3.8.1, Culture=neutral, PublicKeyToken=null
+tokenizer.Parser, Version=11.3.8.1, Culture=neutral, PublicKeyToken=null
+tokenizer.Lexer, Version=11.3.8.1, Culture=neutral, PublicKeyToken=null
+tokenizer.AST, Version=11.3.8.1, Culture=neutral, PublicKeyToken=null
 
 Runtime & OS Version Info:
 mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
 Runtime Version: 4.0.30319.17020
-OS: Unix 3.16.0.5
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+OS: Unix 3.16.0.7
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -34,7 +34,7 @@ Adding Class: arit.Module1
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -54,7 +54,7 @@ Adding Class: conv.Module1
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -77,7 +77,7 @@ Adding Class: ctorfield.Module1
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -91,7 +91,7 @@ Adding Class: helloworld.Module1
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -105,7 +105,7 @@ Adding Class: logicop.Module1
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -126,7 +126,7 @@ Adding Class: mathematics.Arithmetic
 	Adding Method: Divide
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -142,7 +142,7 @@ Adding Class: mathstest.Module1
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -156,7 +156,7 @@ Adding Class: numloops.Module1
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -177,7 +177,7 @@ Adding Class: Person.Person
 	Adding Method: print
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -193,7 +193,7 @@ Adding Class: PersonProg.PersonInst
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -207,7 +207,7 @@ Adding Class: boxobj.Module1
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -228,7 +228,7 @@ Adding Class: xmllib.Mod1
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -255,7 +255,7 @@ Adding Class: arraytest.Module1
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -300,7 +300,7 @@ Adding Class: vector.Vector
 	Adding Method: op_Implicit
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -322,7 +322,7 @@ Adding Class: dylan.NET.Tests.Threading.Program
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -337,7 +337,7 @@ Adding Class: dylrecurse.Program
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -352,7 +352,7 @@ Adding Class: strrecurse.Program
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg
@@ -391,7 +391,7 @@ Adding Class: protectedtests.Program
 	Adding Method: main
 Embedding Resources in Assembly (if any)...Done.
 Writing Assembly to Disk...Done.
-dylan.NET Compiler v. 11.3.7.1 RC for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+dylan.NET Compiler v. 11.3.8.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5
                            and Xamarin Mono v. 2.x.y/v. 3.x.y
 This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
 Copyright (C) 2014 Dylan Borg

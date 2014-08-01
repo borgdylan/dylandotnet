@@ -10,6 +10,7 @@ class public partial TypeItem
 
 	field public string Name
 	field public boolean IsStatic
+	field public boolean IsANI
 	field public IKVM.Reflection.Type InhTyp
 	field public IKVM.Reflection.Type BakedTyp
 	field public C5.IList<of IKVM.Reflection.Type> Interfaces
@@ -22,6 +23,7 @@ class public partial TypeItem
 	field public boolean IsEnum
 	field public integer NrGenParams
 	field public C5.HashDictionary<of string, TypeParamItem> TypGenParams
+	field public AssemblyBuilder AsmB
 
 	method private void TypeItem(var nme as string, var bld as TypeBuilder, var bld3 as EnumBuilder)
 		mybase::ctor()

@@ -14,8 +14,8 @@
   </Docs>
   <Members>
     <Member MemberName="AddAsm">
-      <MemberSignature Language="C#" Value="public static void AddAsm (IKVM.Reflection.Assembly asmm);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddAsm(class IKVM.Reflection.Assembly asmm) cil managed" />
+      <MemberSignature Language="C#" Value="public static void AddAsm (string path, IKVM.Reflection.Assembly asmm);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddAsm(string path, class IKVM.Reflection.Assembly asmm) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -26,9 +26,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
+        <Parameter Name="path" Type="System.String" />
         <Parameter Name="asmm" Type="IKVM.Reflection.Assembly" />
       </Parameters>
       <Docs>
+        <param name="path">To be added.</param>
         <param name="asmm">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -80,11 +82,11 @@
       </Docs>
     </Member>
     <Member MemberName="Asms">
-      <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Assembly&gt; Asms;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Assembly&gt; Asms" />
+      <MemberSignature Language="C#" Value="public static C5.HashDictionary&lt;string,dylan.NET.Reflection.AssemblyRecord&gt; Asms;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.HashDictionary`2&lt;string, class dylan.NET.Reflection.AssemblyRecord&gt; Asms" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>C5.IList&lt;IKVM.Reflection.Assembly&gt;</ReturnType>
+        <ReturnType>C5.HashDictionary&lt;System.String,dylan.NET.Reflection.AssemblyRecord&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

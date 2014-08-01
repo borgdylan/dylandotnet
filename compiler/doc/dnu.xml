@@ -99,6 +99,11 @@
             <summary>Implements an in-memory file system.</summary>
             <remarks>This class can be used for in-memory stream input and output from libraries/compilers.</remarks>
         </member>
+        <member name="M:dylan.NET.Utils.MemoryFS.AddANI(System.String)">
+            <param name="path">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Utils.MemoryFS.AddFile(System.String,System.IO.Stream)">
             <param name="path">The path where the stream should be placed inside the file system.</param>
             <param name="s">The stream to add to the file system.</param>
@@ -108,6 +113,11 @@
         <member name="M:dylan.NET.Utils.MemoryFS.Clear">
             <summary>Clears all streams from the file system restoring it to an empty state.</summary>
             <remarks>The clearing operation does not dispose any of the streams so that they still could be used by code that still references them.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.MemoryFS.GetANIs">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Utils.MemoryFS.GetFile(System.String)">
             <param name="path">The path within the file system of the desired stream.</param>

@@ -136,6 +136,14 @@ class public RefasmTok extends NonExprToken
 
 end class
 
+class public RefembedasmTok extends NonExprToken
+
+	method public override string ToString()
+		return "#refembedasm"
+	end method
+
+end class
+
 class public EmbedTok extends NonExprToken
 
 	method public override string ToString()

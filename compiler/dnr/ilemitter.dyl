@@ -32,6 +32,7 @@ class public static ILEmitter
 	field public static boolean DebugFlg
 	field public static boolean ProtoFlg
 	field public static boolean PInvokeFlg
+	field public static boolean ANIFlg
 	field public static integer LocInd
 	field public static integer ArgInd
 	field public static integer LineNr
@@ -62,6 +63,7 @@ class public static ILEmitter
 		CurSrcFile = string::Empty
 		SrcFiles = new C5.LinkedList<of string>()
 		DocWriters = new C5.LinkedList<of ISymbolDocumentWriter>()
+		ANIFlg = false
 	end method
 
 	method private static void ILEmitter()

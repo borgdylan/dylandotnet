@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Reflection</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>dnr</AssemblyName>
-    <ReleaseVersion>11.3.7.1</ReleaseVersion>
+    <ReleaseVersion>11.3.8.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +52,7 @@
     <Compile Include="itypeprovider.dyl" />
     <Compile Include="loader.dyl" />
     <Compile Include="milambdas.dyl" />
+    <Compile Include="AssemblyRecord.dyl" />
   </ItemGroup>
   <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>

@@ -80,6 +80,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ANIFlg">
+      <MemberSignature Language="C#" Value="public static bool ANIFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool ANIFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ArgInd">
       <MemberSignature Language="C#" Value="public static int ArgInd;" />
       <MemberSignature Language="ILAsm" Value=".field public static int32 ArgInd" />

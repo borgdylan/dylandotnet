@@ -10,13 +10,16 @@ namespace dylan.NET.Utils
 	class public static MemoryFS
 		
 		field private static C5.HashDictionary<of string, Stream> fs
+		field private static C5.LinkedList<of string> anis
 
 		method private static void MemoryFS()
 			fs = new C5.HashDictionary<of string, Stream>()
+			anis = new C5.LinkedList<of string>()
 		end method
 
 		method public static void Clear()
 			fs::Clear()
+			anis::Clear()
 		end method
 
 		method public static void AddFile(var path as string, var s as Stream)
@@ -33,6 +36,14 @@ namespace dylan.NET.Utils
 			else
 				return null
 			end if
+		end method
+
+		method public static void AddANI(var path as string)
+			anis::Add(path)
+		end method
+
+		method public static IEnumerable<of string> GetANIs()
+			return anis
 		end method
 
 	end class

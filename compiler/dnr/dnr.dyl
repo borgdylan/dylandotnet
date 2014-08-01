@@ -30,6 +30,8 @@ import dylan.NET.Reflection
 import IKVM.Reflection
 import IKVM.Reflection.Emit
 
+#include "AssemblyRecord.dyl"
+
 namespace dylan.NET.Reflection
 	#include "milambdas.dyl"
 	//#include "instructionhelper.dyl"

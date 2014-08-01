@@ -133,6 +133,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AsmB">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.AssemblyBuilder AsmB;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Emit.AssemblyBuilder AsmB" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.AssemblyBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="BakedTyp">
       <MemberSignature Language="C#" Value="public IKVM.Reflection.Type BakedTyp;" />
       <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type BakedTyp" />
@@ -351,6 +363,18 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>C5.IList&lt;IKVM.Reflection.Type&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsANI">
+      <MemberSignature Language="C#" Value="public bool IsANI;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool IsANI" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -217,6 +217,23 @@
             <summary>Usually used to pass in the type that declares the instance method to be called that is needed for checks associated with virtual valuetype method detection.</summary>
             <remarks>This field is usually reserved just for this usage.</remarks>
         </member>
+        <member name="T:dylan.NET.Reflection.AssemblyRecord">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Reflection.AssemblyRecord(IKVM.Reflection.Assembly)">
+            <param name="asm">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AssemblyRecord.Asm">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AssemblyRecord.Used">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Reflection.ILEmitter">
             <summary>This class contains methods used for emitting opcodes to the current IL generator.</summary>
             <remarks />
@@ -236,6 +253,10 @@
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.AddSrcFile(System.String)">
             <param name="srcf">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.ANIFlg">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -864,7 +885,8 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.Importer.AddAsm(IKVM.Reflection.Assembly)">
+        <member name="M:dylan.NET.Reflection.Importer.AddAsm(System.String,IKVM.Reflection.Assembly)">
+            <param name="path">To be added.</param>
             <param name="asmm">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

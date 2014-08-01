@@ -29,6 +29,10 @@ class public StmtReader
 				return null
 			end if
 		end if
+
+		if typ::get_Name() == "AssemblyNeutralAttribute" then
+			ILEmitter::ANIFlg = true
+		end if
 		
 		var tarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[stm::Ctor::Params::get_Count()]
 		var oarr as object[] = new object[stm::Ctor::Params::get_Count()]
@@ -70,8 +74,13 @@ class public StmtReader
 				foarr::Add(ci::Value)
 			end if
 		end for
-		
-		return new CustomAttributeBuilder(Helpers::GetLocCtor(typ,tarr), oarr, piarr::ToArray(), poarr::ToArray(), fiarr::::ToArray(), foarr::ToArray())
+
+		var ctorinf = Helpers::GetLocCtor(typ,tarr)
+		if ctorinf == null then
+			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Constructor with the given parameter types is not defined/accessible for the class '{0}'.", typ::ToString()))
+		end if
+
+		return new CustomAttributeBuilder(ctorinf, oarr, piarr::ToArray(), poarr::ToArray(), fiarr::ToArray(), foarr::ToArray())
 	end method
 	
 	method public void ReadClass(var clss as ClassStmt)
@@ -110,6 +119,7 @@ class public StmtReader
 			ILEmitter::InterfaceFlg = ti2::TypeBldr::get_IsInterface()
 			ILEmitter::AbstractCFlg = ti2::TypeBldr::get_IsAbstract()
 			ILEmitter::StaticCFlg = ti2::IsStatic
+			ILEmitter::ANIFlg = ti2::IsANI
 			foreach attr in clss::Attrs
 				if attr is Attributes.PartialAttr then
 					ILEmitter::PartialFlg = true
@@ -117,7 +127,9 @@ class public StmtReader
 				end if
 			end for
 		end if
-			
+
+		var asmb as AssemblyBuilder = AsmFactory::AsmB
+
 		if ti2 == null then
 			if ILEmitter::InterfaceFlg and (clss::ClassName::Value notlike "^I(.)*$") then
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Interface class names should start with the letter 'I'!")
@@ -125,8 +137,17 @@ class public StmtReader
 
 			if !AsmFactory::isNested then
 				AsmFactory::CurnTypName = clss::ClassName::Value
-				AsmFactory::CurnTypB = AsmFactory::MdlB::DefineType(AsmFactory::CurnNS + "." + clss::ClassName::Value +  _
-					#ternary {nrgenparams > 0 ? "`" + $string$nrgenparams, string::Empty}, clssparams)
+				var typname = AsmFactory::CurnNS + "." + clss::ClassName::Value +  #ternary {nrgenparams > 0 ? "`" + $string$nrgenparams, string::Empty}
+
+				var mdlb = AsmFactory::MdlB
+
+				if ILEmitter::ANIFlg then
+					var asmn = new AssemblyName(typname) {set_Version(new Version(0,0,0,0))}
+					asmb = ILEmitter::Univ::DefineDynamicAssembly(asmn, AssemblyBuilderAccess::Save)
+					mdlb = asmb::DefineDynamicModule(typname + ".dll", typname + ".dll", false)
+				end if
+
+				AsmFactory::CurnTypB = mdlb::DefineType(typname, clssparams)
 				StreamUtils::WriteLine(string::Format("Adding Class: {0}.{1}" , AsmFactory::CurnNS, clss::ClassName::Value))
 
 				if clss::ClassName is GenericTypeTok then
@@ -192,7 +213,8 @@ class public StmtReader
 
 		if ti2 == null then
 			ti = new TypeItem(#ternary{AsmFactory::isNested ? string::Empty, AsmFactory::CurnNS + "."} + clss::ClassName::Value, AsmFactory::CurnTypB) _
-				{IsStatic = ILEmitter::StaticCFlg, NrGenParams = nrgenparams, TypGenParams = SymTable::TypGenParams}
+				{ IsStatic = ILEmitter::StaticCFlg, NrGenParams = nrgenparams, TypGenParams = SymTable::TypGenParams, _
+				IsANI = ILEmitter::ANIFlg, AsmB = asmb}
 			SymTable::CurnTypItem = ti
 		
 			inhtyp = reft ?? #ternary {clss::InhClass::Value::get_Length() == 0 ? _
@@ -290,6 +312,9 @@ class public StmtReader
 			end for
 			ti::NormalizeInterfaces()
 		end if
+
+		ILEmitter::ANIFlg = false
+
 	end method
 	
 	method public void ReadEnum(var clss as EnumStmt)
@@ -302,11 +327,21 @@ class public StmtReader
 		if enumtyp == null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", clss::EnumTyp::Value))
 		end if
-		
+
+		var asmb as AssemblyBuilder = AsmFactory::AsmB
 		var clssparams as TypeAttributes = Helpers::ProcessClassAttrsE(clss::Attrs) or TypeAttributes::Sealed		
+		var mdlb = AsmFactory::MdlB
+		var typname = AsmFactory::CurnNS + "." + clss::EnumName::Value
+
+		if ILEmitter::ANIFlg then
+			var asmn = new AssemblyName(typname) {set_Version(new Version(0,0,0,0))}
+			asmb = ILEmitter::Univ::DefineDynamicAssembly(asmn, AssemblyBuilderAccess::Save)
+			mdlb = asmb::DefineDynamicModule(typname + ".dll", typname + ".dll", false)
+		end if
+
 		//if !AsmFactory::isNested then
 			AsmFactory::CurnTypName = clss::EnumName::Value
-			AsmFactory::CurnEnumB = AsmFactory::MdlB::DefineEnum(AsmFactory::CurnNS + "." + clss::EnumName::Value, clssparams, enumtyp)
+			AsmFactory::CurnEnumB = mdlb::DefineEnum(typname, clssparams, enumtyp)
 			StreamUtils::WriteLine(string::Format("Adding Enum: {0}.{1}" , AsmFactory::CurnNS, clss::EnumName::Value))
 		//else
 		//	AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
@@ -317,7 +352,11 @@ class public StmtReader
 		
 		Helpers::ApplyEnumAttrs()
 
-		var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::EnumName::Value, AsmFactory::CurnEnumB) {InhTyp = enumtyp}
+		var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::EnumName::Value, AsmFactory::CurnEnumB) _
+			{InhTyp = enumtyp, IsANI = ILEmitter::ANIFlg, AsmB = asmb}
+		
+		ILEmitter::ANIFlg = false
+
 		SymTable::CurnTypItem = ti
 		SymTable::TypeLst::AddType(ti)
 
@@ -1194,7 +1233,12 @@ class public StmtReader
 			
 				StreamUtils::Write("Referencing In-Memory Assembly: ")
 				StreamUtils::WriteLine(pth)
-				Importer::AddAsm(ILEmitter::Univ::LoadAssembly(ILEmitter::Univ::OpenRawModule(MemoryFS::GetFile(pth), $string$null)))
+				Importer::AddAsm(rastm::AsmPath::Value, ILEmitter::Univ::LoadAssembly(ILEmitter::Univ::OpenRawModule(MemoryFS::GetFile(pth), $string$null)))
+
+				if rastm::EmbedIfUsed then
+					SymTable::ResLst::Add(Tuple::Create<of string, string, boolean>(rastm::AsmPath::Value, string::Empty, true))
+				end if
+
 			else
 				rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::Value)
 			
@@ -1204,7 +1248,11 @@ class public StmtReader
 			
 				StreamUtils::Write("Referencing Assembly: ")
 				StreamUtils::WriteLine(rastm::AsmPath::Value)
-				Importer::AddAsm(ILEmitter::Univ::LoadFile(rastm::AsmPath::Value))
+				Importer::AddAsm(rastm::AsmPath::Value, ILEmitter::Univ::LoadFile(rastm::AsmPath::Value))
+
+				if rastm::EmbedIfUsed then
+					SymTable::ResLst::Add(Tuple::Create<of string, string, boolean>(rastm::AsmPath::Value, string::Empty, true))
+				end if
 			end if
 		elseif stm is RefstdasmStmt then
 			var rsastm as RefstdasmStmt = $RefstdasmStmt$stm
@@ -1216,7 +1264,7 @@ class public StmtReader
 			
 			StreamUtils::Write("Referencing Assembly: ")
 			StreamUtils::WriteLine(rsastm::AsmPath::Value)
-			Importer::AddAsm(ILEmitter::Univ::LoadFile(rsastm::AsmPath::Value))
+			Importer::AddAsm(rsastm::AsmPath::Value, ILEmitter::Univ::LoadFile(rsastm::AsmPath::Value))
 		elseif stm is SignStmt then
 			var sstm as SignStmt = $SignStmt$stm
 			sstm::KeyPath::Value = ParseUtils::ProcessMSYSPath(sstm::KeyPath::get_UnquotedValue())
@@ -1237,7 +1285,7 @@ class public StmtReader
 			if File::Exists(sstm::Path::Value) then
 				StreamUtils::Write("Adding Resource: ")
 				StreamUtils::WriteLine(sstm::Path::Value)
-				SymTable::ResLst::Add(Tuple::Create<of string, string>(sstm::Path::Value, sstm::LogicalName::get_UnquotedValue()))
+				SymTable::ResLst::Add(Tuple::Create<of string, string, boolean>(sstm::Path::Value, sstm::LogicalName::get_UnquotedValue(), false))
 			else
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Resource File '" + sstm::Path::Value + "' does not exist.")
 			end if
@@ -1304,23 +1352,33 @@ class public StmtReader
 				if !ILEmitter::PartialFlg then
 					SymTable::TypeLst::EnsureDefaultCtor(AsmFactory::CurnTypB)
 					AsmFactory::CreateTyp()
+
+					var cti = SymTable::CurnTypItem
+					if cti::IsANI then
+						var ms = new MemoryStream()
+						cti::AsmB::Save(ms)
+						ms::Seek(0l, SeekOrigin::Begin)
+						MemoryFS::AddFile(cti::TypeBldr::get_FullName() + ".dll", ms)
+						MemoryFS::AddANI(cti::TypeBldr::get_FullName() + ".dll")
+						SymTable::ResLst::Add(Tuple::Create<of string, string, boolean>("memory:" + cti::TypeBldr::get_FullName() + ".dll", string::Empty, false))
+					end if
 				end if
 				AsmFactory::inClass = false
 			end if
 		elseif stm is EndEnumStmt then
-			//if AsmFactory::isNested then
-			//	AsmFactory::CreateTyp()
-			//	AsmFactory::CurnTypB = AsmFactory::CurnTypB2
-			//	AsmFactory::isNested = false
-			//	SymTable::ResetNestedMet()
-			//	SymTable::ResetNestedCtor()
-			//	SymTable::ResetNestedFld()
-			//else
-			//	if !ILEmitter::PartialFlg then
-					SymTable::CurnTypItem::BakedTyp = AsmFactory::CurnEnumB::CreateType()
-			//	end if
-				AsmFactory::inEnum = false
-			//end if
+			SymTable::CurnTypItem::BakedTyp = AsmFactory::CurnEnumB::CreateType()
+			AsmFactory::inEnum = false
+
+			var cti = SymTable::CurnTypItem
+			if cti::IsANI then
+				var ms = new MemoryStream()
+				cti::AsmB::Save(ms)
+				ms::Seek(0l, SeekOrigin::Begin)
+				MemoryFS::AddFile(cti::EnumBldr::get_FullName() + ".dll", ms)
+				MemoryFS::AddANI(cti::EnumBldr::get_FullName() + ".dll")
+				SymTable::ResLst::Add(Tuple::Create<of string, string, boolean>("memory:" + cti::EnumBldr::get_FullName() + ".dll", string::Empty, false))
+			end if
+
 		elseif stm is MethodStmt then
 			ReadMethod($MethodStmt$stm)
 		elseif stm is EndMethodStmt then

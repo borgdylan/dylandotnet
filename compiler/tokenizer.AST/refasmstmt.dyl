@@ -9,6 +9,7 @@
 class public RefasmStmt extends Stmt
 
 	field public Token AsmPath
+	field public boolean EmbedIfUsed
 
 	method public void RefasmStmt()
 		mybase::ctor()
@@ -20,7 +21,7 @@ class public RefasmStmt extends Stmt
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"
 		end if
-		return "#refasm " + temp
+		return #ternary {EmbedIfUsed ? "#refembedasm ", "#refasm "} + temp
 	end method
 
 end class
