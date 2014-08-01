@@ -14,7 +14,7 @@ using dylan.NET.Reflection;
 using dylan.NET.Tokenizer.CodeGen;
 using Microsoft.CodeAnalysis;
 
-namespace DNLoader
+namespace dylan.NET.K
 {
 	
 	 internal static class PlatformHelper
@@ -136,7 +136,37 @@ namespace DNLoader
             return _result;
         }
     }
-
+	
+	public class DNEmbeddedReference : IMetadataEmbeddedReference
+    {
+    	
+    	private string _name;
+    	private byte[] _contents;
+    
+    	public DNEmbeddedReference(string name, Stream content) {
+    		_name = name;
+    		MemoryStream ms = (MemoryStream)content;
+    		_contents = ms.ToArray();
+    	}
+    	
+    	public string Name
+        {
+            get
+            {
+                return _name;
+            }
+        }
+        
+        public byte[] Contents
+        {
+            get
+            {
+                return _contents;
+            }
+        }
+    
+    }
+	
 	public class DNCompilation
     {
         private IMetadataProjectReference _export;
@@ -146,8 +176,11 @@ namespace DNLoader
         private IDiagnosticResult result;
 		private List<string> warnings;
 		private List<string> errors;
+		private Project Project;
+        private IEnumerable<IMetadataReference> MetadataReferences;
+		private IList<IMetadataReference> OutgoingRefs;
 		
-        public DNCompilation(string name, Project project, IList<IMetadataReference> metadataReferences, FrameworkName targetFramework)
+        public DNCompilation(string name, Project project, IEnumerable<IMetadataReference> metadataReferences, IList<IMetadataReference> outgoingRefs, FrameworkName targetFramework)
         {
             Project = project;
             MetadataReferences = metadataReferences;
@@ -155,10 +188,8 @@ namespace DNLoader
             effectiveTargetFramework = targetFramework;
             warnings = new List<string>();
             errors = new List<string>();
+            OutgoingRefs = outgoingRefs;
         }
-
-        public Project Project { get; private set; }
-        public IList<IMetadataReference> MetadataReferences { get; private set; }
 		
 		private void ErrorH(CompilerMsg cm) {
 			//Console.WriteLine("ERROR: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File);
@@ -175,7 +206,7 @@ namespace DNLoader
 				string debugOpt = Project.GetCompilerOptions().DebugSymbols;
 				DebugInformationKind debugInformationKind;
 				if (!Enum.TryParse<DebugInformationKind>(debugOpt, ignoreCase: true, result: out debugInformationKind)) {
- 					debugInformationKind = DebugInformationKind.Full;	
+ 					debugInformationKind = DebugInformationKind.Full;
  				}
 				
 				bool success = true;
@@ -194,7 +225,7 @@ namespace DNLoader
 	        	      	  	var rawRef = reference as IMetadataEmbeddedReference;
 	        	     	  	if (rawRef != null) {
 	        	     	  		MemoryFS.AddFile(rawRef.Name + ".dll", new MemoryStream(rawRef.Contents));
-	        	        		sw.Write("#refasm \"memory:");
+	        	        		sw.Write("#refembedasm \"memory:");
 	        	        		sw.Write(rawRef.Name);
 	        	        		sw.WriteLine(".dll\"");
 	        	       		}
@@ -284,6 +315,10 @@ namespace DNLoader
 				
 				var asm = MemoryFS.GetFile(assemblyName + ".dll");
 				
+				foreach (string ani in MemoryFS.GetANIs()) {
+					OutgoingRefs.Add(new DNEmbeddedReference(Path.GetFileNameWithoutExtension(ani), MemoryFS.GetFile(ani)));
+				}
+				
 				MemoryFS.Clear();
 				ILEmitter.Init();
 				AsmFactory.Init();
@@ -294,8 +329,8 @@ namespace DNLoader
 				//change the .dll.mdb to .pdb if you are on windows/.NET
 				if (success) {
 					Stream syms = null;
-					if (debugInformationKind != DebugInformationKind.None) {
-					 	var pdbPath = Path.Combine(Project.ProjectDirectory, assemblyName + PlatformHelper.DebugExtension);
+					var pdbPath = Path.Combine(Project.ProjectDirectory, assemblyName + PlatformHelper.DebugExtension);
+					if (debugInformationKind != DebugInformationKind.None && File.Exists(pdbPath)) {
 					 	using (FileStream fs = new FileStream(pdbPath, FileMode.Open)) {
 					 		syms = new MemoryStream();
 					 		fs.CopyTo(syms);
@@ -327,17 +362,17 @@ namespace DNLoader
         }
     }
     
-    public class DNAssemblyLoader : IProjectReferenceProvider
+    public class DNProjectReferenceProvider : IProjectReferenceProvider
     {
         private Dictionary<string, DNCompilation> compilations;
 
-        public DNAssemblyLoader()
+        public DNProjectReferenceProvider()
         {
             compilations = new Dictionary<string, DNCompilation>();
             StreamUtils.UseConsole = false;
         }
-
-        public IMetadataProjectReference GetProjectReference(Project project, FrameworkName targetFramework, string config, ILibraryExport export)
+        
+        public IMetadataProjectReference GetProjectReference(Project project, FrameworkName targetFramework, string config, IEnumerable<IMetadataReference> incomingRefs, IEnumerable<ISourceReference> sources, IList<IMetadataReference> outgoingRefs)
         {
         	string assemblyName = project.Name;
             
@@ -347,7 +382,7 @@ namespace DNLoader
 			}
 			else {
 				try {
-					comp = new DNCompilation(assemblyName, project, export.MetadataReferences, targetFramework);
+					comp = new DNCompilation(assemblyName, project, incomingRefs, outgoingRefs, targetFramework);
 				}
 				catch (ErrorException e) {
 					comp = null;

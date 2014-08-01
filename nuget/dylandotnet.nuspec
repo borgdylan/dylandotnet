@@ -9,7 +9,7 @@
     <projectUrl>http://launchpad.net/dylandotnet</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A compiler for dylan.NET, a new language targeting the CLR</description>
-    <releaseNotes>dylan.NET v.11.3.7.1 with MSBuild support files, resource compilation support and in-memory assembly I/O.</releaseNotes>
+    <releaseNotes>dylan.NET v.11.3.8.1 with MSBuild support files, resource compilation support and in-memory assembly I/O.</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>.NET3.5 .NET4.0 .NET4.5 Mono PCL MSBuild</tags>
     <!--<dependencies>

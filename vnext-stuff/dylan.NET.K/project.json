@@ -1,0 +1,17 @@
+﻿{	
+	"version": "1.0.1",
+	"authors": ["borgdylan"],
+	"description": "dylan.NET support for ASP.NET vNext (Project K)",
+    "dependencies": {
+    },
+
+    "frameworks" : {
+        "net45" : { 
+            "dependencies": {
+            	"Microsoft.Framework.Runtime": "1.0.0-*",
+       			 "K.Roslyn": "1.0.0-*",
+       			 "dylan.NET" : "11.3.8.1"
+            }
+        }
+    }
+}
