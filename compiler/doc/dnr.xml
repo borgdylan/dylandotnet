@@ -922,6 +922,33 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Reflection.ImportRecord">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Reflection.ImportRecord(System.String)">
+            <param name="ns">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Reflection.ImportRecord(System.String,System.Int32)">
+            <param name="ns">To be added.</param>
+            <param name="l">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ImportRecord.Line">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ImportRecord.Namespace">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ImportRecord.Used">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Reflection.Loader">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1039,6 +1066,13 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.Loader.LoadMethodWithoutParams(IKVM.Reflection.Type,System.String)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadNormalMtdOverlds(IKVM.Reflection.Type,System.String)">
             <param name="typ">To be added.</param>
             <param name="name">To be added.</param>
             <summary>To be added.</summary>

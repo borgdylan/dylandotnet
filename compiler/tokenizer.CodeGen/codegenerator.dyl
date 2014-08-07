@@ -65,17 +65,21 @@ class public CodeGenerator
 //		end for
 //	end method
 	
-	method private void MarkUsed(var lst as IEnumerable<of string>)
+ 	//hash set is used to keep track of visited assemblies to avoid cycles in the dep graph
+	method private void MarkUsed(var lst as IEnumerable<of string>, var hset as C5.HashSet<of string>)
 		foreach a in lst
-			if Importer::Asms::Contains(a) then
-				var ar = Importer::Asms::get_Item(a)
-				ar::Used = true
+			if !hset::Contains(a)
+				if Importer::Asms::Contains(a) then
+					var ar = Importer::Asms::get_Item(a)
+					ar::Used = true
+					hset::Add(a)
 
-				var lst2 = new C5.LinkedList<of string>()
-				foreach dep in ar::Asm::GetReferencedAssemblies()
-					lst2::Add("memory:" + dep::get_Name() + ".dll")
-				end for
-				MarkUsed(lst2)
+					var lst2 = new C5.LinkedList<of string>()
+					foreach dep in ar::Asm::GetReferencedAssemblies()
+						lst2::Add("memory:" + dep::get_Name() + ".dll")
+					end for
+					MarkUsed(lst2, hset)
+				end if
 			end if
 		end for
 	end method
@@ -95,7 +99,7 @@ class public CodeGenerator
 		
 		ILEmitter::CurSrcFile = fpath
 		ILEmitter::AddSrcFile(fpath)
-		Importer::ImpsStack::Push(new C5.LinkedList<of string>())
+		Importer::ImpsStack::Push(new C5.LinkedList<of ImportRecord>())
 
 		if ILEmitter::DocWriters::get_Count() >= 0 then
 			if AsmFactory::MdlB != null and AsmFactory::DebugFlg then
@@ -179,6 +183,13 @@ class public CodeGenerator
 		end do
 		
 		ILEmitter::PopSrcFile()
+
+		foreach rec in Importer::ImpsStack::get_Last()
+			if !rec::Used then
+				StreamUtils::WriteWarn(rec::Line, ILEmitter::CurSrcFile, "Namespace  import for '" + rec::Namespace + "' was not used.")
+			end if
+		end for
+
 		Importer::ImpsStack::Pop()
 		if ILEmitter::SrcFiles::get_Count() > 0 then
 			ILEmitter::CurSrcFile = ILEmitter::SrcFiles::get_Last()
@@ -213,7 +224,7 @@ class public CodeGenerator
 					end if
 				end if
 			end for
-			MarkUsed(lst)
+			MarkUsed(lst, new C5.HashSet<of string>())
 
 			foreach r in SymTable::ResLst
 				if r::get_Item3() then

@@ -14,23 +14,24 @@
 #include "Properties/AssemblyInfo.dyl"
 
 import System
-import System.IO
+//import System.IO
 import System.Linq
-import System.Collections
+//import System.Collections
 import System.Collections.Generic
-import System.Diagnostics
+//import System.Diagnostics
 import System.Diagnostics.SymbolStore
 import System.Reflection
-import System.Reflection.Emit
-import System.Text.RegularExpressions
+//import System.Reflection.Emit
+//import System.Text.RegularExpressions
 import System.Runtime.InteropServices
-import dylan.NET
+//import dylan.NET
 import dylan.NET.Utils
-import dylan.NET.Reflection
+//import dylan.NET.Reflection
 import IKVM.Reflection
-import IKVM.Reflection.Emit
+//import IKVM.Reflection.Emit
 
 #include "AssemblyRecord.dyl"
+#include "ImportRecord.dyl"
 
 namespace dylan.NET.Reflection
 	#include "milambdas.dyl"

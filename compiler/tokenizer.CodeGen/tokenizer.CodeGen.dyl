@@ -16,19 +16,19 @@
 import System
 import System.IO
 import System.Linq
-import System.Threading
+//import System.Threading
 import System.Diagnostics
 import System.Diagnostics.SymbolStore
-import System.Collections
+//import System.Collections
 import System.Collections.Generic
 //import System.Reflection
 //import System.Reflection.Emit
 import System.Runtime.InteropServices
-import dylan.NET
+//import dylan.NET
 import dylan.NET.Utils
 import dylan.NET.Reflection
 import dylan.NET.Tokenizer.Lexer
-import dylan.NET.Tokenizer.AST
+//import dylan.NET.Tokenizer.AST
 import dylan.NET.Tokenizer.AST.Interfaces
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Exprs
@@ -42,7 +42,7 @@ import dylan.NET.Tokenizer.Parser
 import IKVM.Reflection
 import IKVM.Reflection.Emit
 
-import dylan.NET.Tokenizer.CodeGen
+//import dylan.NET.Tokenizer.CodeGen
 
 namespace dylan.NET.Tokenizer.CodeGen
 	#include "varitem.dyl"

@@ -15,14 +15,14 @@
 
 import System
 import System.Linq
-import System.Collections
-import System.Collections.Generic
-import System.Runtime.InteropServices
-import dylan.NET
+//import System.Collections
+//import System.Collections.Generic
+//import System.Runtime.InteropServices
+//import dylan.NET
 import dylan.NET.Utils
-import dylan.NET.Reflection
-import dylan.NET.Tokenizer.Lexer
-import dylan.NET.Tokenizer.AST
+//import dylan.NET.Reflection
+//import dylan.NET.Tokenizer.Lexer
+//import dylan.NET.Tokenizer.AST
 import dylan.NET.Tokenizer.AST.Interfaces
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Exprs
@@ -32,10 +32,10 @@ import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import dylan.NET.Tokenizer.AST.Tokens.Literals
 import dylan.NET.Tokenizer.AST.Tokens.Attributes
 import dylan.NET.Tokenizer.AST.Tokens.Chars
-import IKVM.Reflection
-import IKVM.Reflection.Emit
+//import IKVM.Reflection
+//import IKVM.Reflection.Emit
 
-import dylan.NET.Tokenizer.Parser
+//import dylan.NET.Tokenizer.Parser
 
 namespace dylan.NET.Tokenizer.Parser
 	#include "parserflags.dyl"

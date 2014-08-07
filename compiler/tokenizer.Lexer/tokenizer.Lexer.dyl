@@ -13,16 +13,16 @@
 #include "msbuild.dyl"
 #include "Properties/AssemblyInfo.dyl"
 
-import System
+//import System
 import System.IO
-import System.Runtime.InteropServices
+//import System.Runtime.InteropServices
 import System.Text
-import dylan.NET
-import dylan.NET.Utils
+//import dylan.NET
+//import dylan.NET.Utils
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Stmts
 
-import dylan.NET.Tokenizer.Lexer
+//import dylan.NET.Tokenizer.Lexer
 
 namespace dylan.NET.Tokenizer.Lexer
 	#include "line.dyl"

@@ -65,6 +65,34 @@ class private MILambdas
 		ProtectedFlag = protf
 	end method
 
+	method assembly boolean NormalMtdFilter(var mi as IKVM.Reflection.MethodInfo)
+		if !mi::get_IsGenericMethod() andalso !mi::get_IsGenericMethodDefinition() then
+			if mi::get_Name() != Name then
+				return false
+			end if
+		else
+			return false
+		end if
+		
+		if !mi::get_IsPublic() then
+			if !mi::get_IsPrivate() then
+				if !#expr(mi::get_IsFamilyAndAssembly() andalso ProtectedFlag andalso HaveInternal) then
+					if !#expr(mi::get_IsFamilyOrAssembly() andalso (ProtectedFlag orelse HaveInternal)) then
+						if !#expr(mi::get_IsFamily() andalso ProtectedFlag) then
+							if !#expr(mi::get_IsAssembly() andalso HaveInternal) then
+								return false
+							end if
+						end if
+					end if
+				end if
+			else
+				return false
+			end if
+		end if
+		
+		return true
+	end method
+
 	method assembly boolean GenericMtdFilter(var mi as IKVM.Reflection.MethodInfo)
 		if mi::get_IsGenericMethod() then
 			if mi::get_Name() == Name then

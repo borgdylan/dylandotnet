@@ -61,8 +61,11 @@ class public static Loader
 			end if
 		end for
 				
-		foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
-			curns = curns ?? string::Empty
+		foreach curnsrec in EnumerableEx::StartWith<of ImportRecord>(EnumerableEx::Concat<of ImportRecord>( _
+			Enumerable::ToArray<of C5.LinkedList<of ImportRecord> >(Importer::ImpsStack::Backwards())), _
+				new ImportRecord[] {new ImportRecord(string::Empty), new ImportRecord(AsmFactory::CurnNS)})
+			
+			var curns = curnsrec::Namespace ?? string::Empty
 			foreach curasmrec in Importer::Asms::get_Values()
 				var curasm = curasmrec::Asm
 				try
@@ -80,6 +83,7 @@ class public static Loader
 						typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
 						if typ != null then
 							curasmrec::Used = true
+							curnsrec::Used = true
 							if nest then
 								typ = typ::GetNestedType(na[1])
 							end if
@@ -138,8 +142,11 @@ class public static Loader
 			end if
 		end for
 				
-		foreach curns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
-			curns = curns ?? string::Empty
+		foreach curnsrec in EnumerableEx::StartWith<of ImportRecord>(EnumerableEx::Concat<of ImportRecord>( _
+			Enumerable::ToArray<of C5.LinkedList<of ImportRecord> >(Importer::ImpsStack::Backwards())), _
+				new ImportRecord[] {new ImportRecord(string::Empty), new ImportRecord(AsmFactory::CurnNS)})
+			
+			var curns = curnsrec::Namespace ?? string::Empty
 			foreach curasmrec in Importer::Asms::get_Values()
 				var curasm = curasmrec::Asm
 				try
@@ -149,6 +156,7 @@ class public static Loader
 							typ = typ::GetNestedType(na[1])
 						end if
 						if typ != null then
+							curnsrec::Used = true
 							typs::Add(typ)
 						end if
 					end if
@@ -271,6 +279,19 @@ class public static Loader
 	end method
 
 	[method: ComVisible(false)]
+	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadNormalMtdOverlds(var typ as IKVM.Reflection.Type, var name as string)
+		var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+		var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
+		var havinternal as boolean = false
+		if asmnc != null then
+			havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) andalso (asmn::get_Name() == asmnc::get_Name())
+		end if
+					
+		var mil as MILambdas = new MILambdas(name, 0, havinternal, ProtectedFlag)
+		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(typ::GetMethods(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::NormalMtdFilter))
+	end method
+
+	[method: ComVisible(false)]
 	method public static IKVM.Reflection.MethodInfo LoadMethod(var typ as IKVM.Reflection.Type, var name as string, var typs as IKVM.Reflection.Type[])
 
 		var ints as IKVM.Reflection.Type[] = null
@@ -279,15 +300,23 @@ class public static Loader
 		if typ::get_IsArray() then
 			typ = Loader::CachedLoadClass("System.Array")
 		end if
+
+		var matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(LoadNormalMtdOverlds(typ, name))
 		
-		mtdinfo = typ::GetMethod(name,typs)
+		if matches[l] = 0 then
+			mtdinfo = null
+		else
+			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
+			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic
+			mtdinfo =  $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs,new IKVM.Reflection.ParameterModifier[0])
+		end if
 
 		if mtdinfo == null then
 			ints = typ::GetInterfaces()
 
 			if ints != null then
 				foreach interf in ints
-					mtdinfo = interf::GetMethod(name,typs)
+					mtdinfo = LoadMethod(interf, name,typs)
 
 					if mtdinfo != null then
 						break
@@ -301,38 +330,38 @@ class public static Loader
 			MemberTyp = mtdinfo::get_ReturnType()
 		end if
 
-		if mtdinfo == null then
-			mtdinfo = typ::GetMethod(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
-
-			if mtdinfo != null then
-				//filter out private members
-				if !mtdinfo::get_IsPrivate() then
-					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
-					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
-					var havinternal as boolean = false
-					if asmnc != null then
-						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
-					end if
-
-					if !#expr(mtdinfo::get_IsFamilyAndAssembly() andalso ProtectedFlag andalso havinternal) then
-						if !#expr(mtdinfo::get_IsFamilyOrAssembly() andalso (ProtectedFlag orelse havinternal)) then
-							if !#expr(mtdinfo::get_IsFamily() andalso ProtectedFlag) then
-								if !#expr(mtdinfo::get_IsAssembly() andalso havinternal) then
-									mtdinfo = null
-								end if
-							end if
-						end if
-					end if
-				else
-					mtdinfo = null
-				end if
-			end if
-
-			if mtdinfo != null then
-				MemberTyp = mtdinfo::get_ReturnType()
-			end if
-
-		end if
+//		if mtdinfo == null then
+//			mtdinfo = typ::GetMethod(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
+//
+//			if mtdinfo != null then
+//				//filter out private members
+//				if !mtdinfo::get_IsPrivate() then
+//					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+//					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
+//					var havinternal as boolean = false
+//					if asmnc != null then
+//						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) andalso (asmn::get_Name() == asmnc::get_Name())
+//					end if
+//
+//					if !#expr(mtdinfo::get_IsFamilyAndAssembly() andalso ProtectedFlag andalso havinternal) then
+//						if !#expr(mtdinfo::get_IsFamilyOrAssembly() andalso (ProtectedFlag orelse havinternal)) then
+//							if !#expr(mtdinfo::get_IsFamily() andalso ProtectedFlag) then
+//								if !#expr(mtdinfo::get_IsAssembly() andalso havinternal) then
+//									mtdinfo = null
+//								end if
+//							end if
+//						end if
+//					end if
+//				else
+//					mtdinfo = null
+//				end if
+//			end if
+//
+//			if mtdinfo != null then
+//				MemberTyp = mtdinfo::get_ReturnType()
+//			end if
+//
+//		end if
 
 		return mtdinfo
 

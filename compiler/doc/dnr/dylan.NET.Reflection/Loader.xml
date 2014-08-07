@@ -401,6 +401,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="LoadNormalMtdOverlds">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.MethodInfo&gt; LoadNormalMtdOverlds (IKVM.Reflection.Type typ, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class IKVM.Reflection.MethodInfo&gt; LoadNormalMtdOverlds(class IKVM.Reflection.Type typ, string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.MethodInfo&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="LoadProperty">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.PropertyInfo LoadProperty (IKVM.Reflection.Type typ, string name);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.PropertyInfo LoadProperty(class IKVM.Reflection.Type typ, string name) cil managed" />

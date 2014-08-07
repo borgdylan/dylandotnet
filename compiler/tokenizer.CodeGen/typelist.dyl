@@ -41,7 +41,12 @@ class public TypeList
 			end if
 		end for
 		
-		foreach ns in EnumerableEx::StartWith<of string>(EnumerableEx::Concat<of string>(Enumerable::ToArray<of C5.LinkedList<of string> >(Importer::ImpsStack::Backwards())), new string[] {string::Empty, AsmFactory::CurnNS})
+		foreach curnsrec in EnumerableEx::StartWith<of ImportRecord>(EnumerableEx::Concat<of ImportRecord>( _
+			Enumerable::ToArray<of C5.LinkedList<of ImportRecord> >(Importer::ImpsStack::Backwards())), _
+				new ImportRecord[] {new ImportRecord(string::Empty), new ImportRecord(AsmFactory::CurnNS)})
+			
+			var ns = curnsrec::Namespace ?? string::Empty
+				
 			var til as TILambdas = new TILambdas(#ternary{ns::get_Length() == 0 ? nam , ns + "." + nam}, gp)
 			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate))
 			var match as TypeItem = Enumerable::FirstOrDefault<of TypeItem>(lot2)
@@ -50,7 +55,7 @@ class public TypeList
 				if nest then
 					match = match::GetTypeItem(na[1])
 				end if
-
+				curnsrec::Used = true
 				return match
 			end if
 		end for
@@ -118,18 +123,26 @@ class public TypeList
 	end method
 	
 	method public void EnsureDefaultCtor(var t as IKVM.Reflection.Type)
-		if !#expr(ILEmitter::StructFlg orelse ILEmitter::InterfaceFlg orelse ILEmitter::StaticCFlg) then
+		if !#expr(ILEmitter::InterfaceFlg orelse ILEmitter::StaticCFlg) then
 			var ti as TypeItem = GetTypeItem(t)
 			if ti != null then
 				if ti::Ctors::get_Count() == 0 then
 					Loader::ProtectedFlag = true
-					var ctorinf as ConstructorInfo = GetDefaultCtor(ti::InhTyp)
+					var ctorinf as ConstructorInfo
+					if !ILEmitter::StructFlg then
+						ctorinf = GetDefaultCtor(ti::InhTyp)
+					end if
 					Loader::ProtectedFlag = false
-					if ctorinf != null then
+
+					if (ctorinf != null) orelse ILEmitter::StructFlg then
 						var cb as ConstructorBuilder = ti::TypeBldr::DefineConstructor(#ternary {ILEmitter::AbstractCFlg ? MethodAttributes::Family, MethodAttributes::Public}, CallingConventions::Standard, IKVM.Reflection.Type::EmptyTypes)
 						var ilg = cb::GetILGenerator()
-						ilg::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_0)
-						ilg::Emit(IKVM.Reflection.Emit.OpCodes::Call, ctorinf)
+
+						if !ILEmitter::StructFlg then
+							ilg::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_0)
+							ilg::Emit(IKVM.Reflection.Emit.OpCodes::Call, ctorinf)
+						end if
+
 						ilg::Emit(IKVM.Reflection.Emit.OpCodes::Ret)
 						ti::Ctors::Add(new CtorItem(IKVM.Reflection.Type::EmptyTypes, cb))
 					end if

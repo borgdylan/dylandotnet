@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dnr" Version="11.3.8.1">
+    <Assembly Name="dnr" Version="11.3.8.6">
       <Attributes>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyCompany("")</AttributeName>
@@ -43,6 +43,7 @@
       <Type Name="AssemblyRecord" Kind="Class" />
       <Type Name="ILEmitter" Kind="Class" />
       <Type Name="Importer" Kind="Class" />
+      <Type Name="ImportRecord" Kind="Class" />
       <Type Name="Loader" Kind="Class" />
     </Namespace>
   </Types>

@@ -131,7 +131,11 @@ class private MILambdas2
 	
 	method assembly boolean DetermineIfProtoCandidate(var mi as MethodItem)
 		//(mi::Name == Name) not needed since its implicit in store 
-		return CmpTyps2(mi::ParamTyps,Params)
+		if mi::NrGenParams == 0 then
+			return CmpTyps2(mi::ParamTyps,Params)
+		else
+			return false
+		end if
 	end method
 
 	method assembly static integer CalcDeriveness(var t as IKVM.Reflection.Type)

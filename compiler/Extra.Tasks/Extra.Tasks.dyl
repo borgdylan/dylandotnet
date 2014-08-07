@@ -13,13 +13,13 @@
 
 import System
 import System.IO
-import System.Collections
+//import System.Collections
 import System.Collections.Generic
 import System.Linq
-import System.Xml
-import System.Xml.Linq
-import System.Text.RegularExpressions
-import Microsoft.Build.Tasks
+//import System.Xml
+//import System.Xml.Linq
+//import System.Text.RegularExpressions
+//import Microsoft.Build.Tasks
 import Microsoft.Build.Framework
 import Microsoft.Build.Utilities
 import dylan.NET.Utils

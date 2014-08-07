@@ -10,8 +10,8 @@ class public static Importer
 
 	field public static C5.HashDictionary<of string, AssemblyRecord> Asms
 	//field public static C5.IList<of string> Imps
-	field public static C5.LinkedList<of C5.LinkedList<of string> > ImpsStack
-	field public static C5.IDictionary<of string,string> AliasMap
+	field public static C5.LinkedList<of C5.LinkedList<of ImportRecord> > ImpsStack
+	field public static C5.IDictionary<of string, string> AliasMap
 	//field public static C5.IDictionary<of string, IKVM.Reflection.Type> TypeMap
 	field public static string AsmBasePath
 
@@ -19,7 +19,7 @@ class public static Importer
 	method public static void Init()
 		Asms = new C5.HashDictionary<of string, AssemblyRecord>()
 		//Imps = new C5.LinkedList<of string>()
-		ImpsStack = new C5.LinkedList<of C5.LinkedList<of string> > {new C5.LinkedList<of string>()}
+		ImpsStack = new C5.LinkedList<of C5.LinkedList<of ImportRecord> > {new C5.LinkedList<of ImportRecord>()}
 		AsmBasePath = RuntimeEnvironment::GetRuntimeDirectory()
 		AliasMap = new C5.HashDictionary<of string,string>() { _
 			Add("object", "System.Object"), _
@@ -56,8 +56,7 @@ class public static Importer
 
 	[method: ComVisible(false)]
 	method public static void AddImp(var imp as string)
-		//Imps::Add(imp)
-		ImpsStack::get_Last()::Add(imp)
+		ImpsStack::get_Last()::Add(new ImportRecord(imp, ILEmitter::LineNr))
 	end method
 	
 	[method: ComVisible(false)]

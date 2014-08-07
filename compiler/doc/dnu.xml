@@ -198,11 +198,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Utils.StreamUtils.Errors">
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Utils.StreamUtils.ErrorWriteLine(System.String)">
             <param name="str">To be added.</param>
             <summary>To be added.</summary>
@@ -257,11 +252,6 @@
         </member>
         <member name="E:dylan.NET.Utils.StreamUtils.WarnH">
             <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Utils.StreamUtils.Warnings">
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Utils.StreamUtils.Write(System.String)">
