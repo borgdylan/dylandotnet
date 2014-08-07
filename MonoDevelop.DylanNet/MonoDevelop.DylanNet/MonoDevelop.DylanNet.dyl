@@ -10,13 +10,13 @@
 #include "Properties/AssemblyInfo.dyl"
 
 import System
-import System.Collections
+//import System.Collections
 import System.Collections.Generic
 import System.Linq
 import System.Text
 import System.Xml
-import System.Xml.Linq
-import System.Threading
+//import System.Xml.Linq
+//import System.Threading
 import System.IO
 
 import MonoDevelop.Components.Commands
@@ -25,15 +25,15 @@ import MonoDevelop.Core
 import MonoDevelop.Core.Serialization
 import MonoDevelop.Projects
 import MonoDevelop.Components
-import MonoDevelop.Components
+//import MonoDevelop.Components
 import MonoDevelop.Ide.Gui
 import MonoDevelop.Ide.Tasks
 import MonoDevelop.Ide.Gui.Dialogs
 import MonoDevelop.Ide.Gui.Content 
 import Mono.TextEditor
 import System.CodeDom.Compiler
-import MonoDevelop.Projects.Dom
-import MonoDevelop.Projects.Dom.Parser
+//import MonoDevelop.Projects.Dom
+//import MonoDevelop.Projects.Dom.Parser
 import MonoDevelop.Ide.TypeSystem
 import ICSharpCode.NRefactory
 import ICSharpCode.NRefactory.TypeSystem.Implementation
@@ -41,7 +41,7 @@ import ICSharpCode.NRefactory.TypeSystem
 import ICSharpCode.NRefactory.CSharp.TypeSystem
 
 import dylan.NET.Utils
-import dylan.NET.Tokenizer.AST
+//import dylan.NET.Tokenizer.AST
 import dylan.NET.Tokenizer.AST.Stmts
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Tokens.Attributes
@@ -51,7 +51,7 @@ import dylan.NET.Tokenizer.Lexer
 import dylan.NET.Tokenizer.Parser
 
 import Gtk
-import Gdk
+//import Gdk
 
 #include "Utils.dyl"
 #include "DateInserterCommands.dyl"
