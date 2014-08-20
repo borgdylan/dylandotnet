@@ -7,7 +7,7 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 // class Attrs ClassName extends InhClass implements ImplInterafaces
-class public ClassStmt extends Stmt implements IMayHaveConstraints, IConstrainable
+class public ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstrainable
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public TypeTok ClassName

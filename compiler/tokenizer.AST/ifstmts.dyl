@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 #region "normal variants"
-	class public IfStmt extends Stmt
+	class public IfStmt extends BlockStmt
 
 		field public Expr Exp
 
@@ -17,7 +17,7 @@
 
 	end class
 
-	class public ElseIfStmt extends Stmt
+	class public ElseIfStmt extends BlockStmt
 
 		field public Expr Exp
 
@@ -28,7 +28,7 @@
 
 	end class
 
-	class public ElseStmt extends Stmt
+	class public ElseStmt extends BlockStmt
 	end class
 
 	class public EndIfStmt extends Stmt
@@ -36,10 +36,10 @@
 end #region
 
 #region "conditional compilation variants"
-	class public HCondCompStmt extends Stmt
-	end class
+	interface public IHCondCompStmt
+	end interface
 
-	class public HIfStmt extends HCondCompStmt
+	class public HIfStmt extends BlockStmt implements IHCondCompStmt
 
 		field public Expr Exp
 
@@ -50,7 +50,7 @@ end #region
 
 	end class
 
-	class public HElseIfStmt extends HCondCompStmt
+	class public HElseIfStmt extends BlockStmt implements IHCondCompStmt
 
 		field public Expr Exp
 
@@ -61,10 +61,10 @@ end #region
 
 	end class
 
-	class public HElseStmt extends HCondCompStmt
+	class public HElseStmt extends BlockStmt implements IHCondCompStmt
 	end class
 
-	class public EndHIfStmt extends HCondCompStmt
+	class public EndHIfStmt implements IHCondCompStmt
 	end class
 
 	class public HDefineStmt extends Stmt

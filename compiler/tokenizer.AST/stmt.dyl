@@ -30,6 +30,21 @@ end class
 class public abstract IgnorableStmt extends Stmt
 end class
 
+class public BlockStmt extends Stmt
+
+	field public C5.ArrayList<of Stmt> Stmts
+
+	method public void BlockStmt()
+		mybase::ctor()
+		Stmts = new C5.ArrayList<of Stmt>()
+	end method
+
+	method public void AddStmt(var stmttoadd as Stmt)
+		Stmts::Add(stmttoadd)
+	end method
+
+end class
+
 class public StmtSet
 
 	field public C5.ArrayList<of Stmt> Stmts

@@ -155,7 +155,7 @@ class public EmbedStmt extends Stmt
 	end method
 end class
 
-class public LockStmt extends Stmt
+class public LockStmt extends BlockStmt
 
 	field public Expr Lockee
 
@@ -166,7 +166,7 @@ class public LockStmt extends Stmt
 
 end class
 
-class public TryLockStmt extends Stmt
+class public TryLockStmt extends BlockStmt
 
 	field public Expr Lockee
 

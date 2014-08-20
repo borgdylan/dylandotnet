@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public EventStmt extends Stmt
+class public EventStmt extends BlockStmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident EventName
@@ -25,7 +25,7 @@ class public EventStmt extends Stmt
 
 end class
 
-class public EventAddStmt extends Stmt
+class public EventAddStmt extends BlockStmt
 
 	field public Ident Adder
 
@@ -36,7 +36,7 @@ class public EventAddStmt extends Stmt
 
 end class
 
-class public EventRemoveStmt extends Stmt
+class public EventRemoveStmt extends BlockStmt
 
 	field public Ident Remover
 

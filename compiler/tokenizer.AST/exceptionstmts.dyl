@@ -6,13 +6,13 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public TryStmt extends Stmt
+class public TryStmt extends BlockStmt
 	method public override string ToString()
 		return "try"
 	end method
 end class
 
-class public CatchStmt extends Stmt
+class public CatchStmt extends BlockStmt
 
 	field public Ident ExName
 	field public TypeTok ExTyp
@@ -29,7 +29,7 @@ class public CatchStmt extends Stmt
 
 end class
 
-class public FinallyStmt extends Stmt
+class public FinallyStmt extends BlockStmt
 	method public override string ToString()
 		return "finally"
 	end method
