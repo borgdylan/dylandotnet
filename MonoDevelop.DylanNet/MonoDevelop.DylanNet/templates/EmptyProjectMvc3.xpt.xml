@@ -23,7 +23,7 @@
 			<StartupProject>${ProjectName}</StartupProject>
 		</Options>
 
-		<Project name = "${ProjectName}" directory = "." type = "AspNetMvc3">
+		<Project name = "${ProjectName}" directory = "." type = "AspNetApp">
 			<Options Target = "Library" TargetFrameworkVersion = "4.5" />
 			<References>
 				<Reference type="Package" refto="mscorlib" />
@@ -83,9 +83,9 @@ import ${ProjectName}
 
 #include "Global.asax.dyl"
 ]]></File>
-				<FileTemplateReference TemplateID="dylanNetAspMvc3GlobalAsax" name="Global.asax" SuppressAutoOpen="true"  />
+				<!--<FileTemplateReference TemplateID="dylanNetAspMvc3GlobalAsax" name="Global.asax" SuppressAutoOpen="true"  />
 				<FileTemplateReference TemplateID="dylanNetAssemblyInfo" name="AssemblyInfo.dyl" SuppressAutoOpen="true" />
-				<FileTemplateReference TemplateID="dylanNetAspMvc3WebConfigApp" name="Web.config" SuppressAutoOpen="true" />
+				<FileTemplateReference TemplateID="dylanNetAspMvc3WebConfigApp" name="Web.config" SuppressAutoOpen="true" />-->
 			</Files>
 		</Project>
 	</Combine>

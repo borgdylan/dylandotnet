@@ -9,8 +9,8 @@
 		<_Name>ASP.NET MVC 3 Application Configuration</_Name>
 		<_Category>ASP.NET MVC</_Category>
 		<Icon>md-html-file-icon</Icon>
-		<ProjectType>AspNetMvc</ProjectType>
-		<LanguageName>C#</LanguageName>
+		<ProjectType>AspNetApp</ProjectType>
+		<LanguageName>dylan.NET</LanguageName>
 		<DefaultFilename IsFixed="True">Web.config</DefaultFilename>
 		<_Description>Creates an ASP.NET MVC 3 Web.config file for an application.</_Description>
 	</TemplateConfiguration>

@@ -9,7 +9,7 @@
 		<_Category>ASP.NET MVC</_Category>
 		<Icon>md-html-file-icon</Icon>
 		<LanguageName>dylan.NET</LanguageName>
-		<ProjectType>AspNetMvc</ProjectType>
+		<ProjectType>AspNetApp</ProjectType>
 		<DefaultFilename IsFixed="True">Global.asax</DefaultFilename>
 		<_Description>Creates an ASP.NET MVC 3 Global.asax file.</_Description>
 	</TemplateConfiguration>

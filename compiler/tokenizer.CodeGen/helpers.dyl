@@ -1512,12 +1512,7 @@ class public static Helpers
 		if t::Equals(AsmFactory::CurnTypB) then
 			return SymTable::FindCtor(typs)
 		else
-			var ci as ConstructorInfo = SymTable::TypeLst::GetCtor(t, typs, t)
-			if ci != null then
-				return ci
-			else
-				return Loader::LoadCtor(t, typs)
-			end if
+			return SymTable::TypeLst::GetCtor(t, typs, t) ?? Loader::LoadCtor(t, typs)
 		end if
 	end method
 
@@ -1530,8 +1525,7 @@ class public static Helpers
 			fldinf = fldi
 		else
 			Loader::ProtectedFlag = true
-			var f as FieldInfo = SymTable::TypeLst::GetField(AsmFactory::CurnInhTyp,nam, AsmFactory::CurnInhTyp)
-			fldinf = f ?? Loader::LoadField(AsmFactory::CurnInhTyp, nam)
+			fldinf = SymTable::TypeLst::GetField(AsmFactory::CurnInhTyp,nam, AsmFactory::CurnInhTyp) ?? Loader::LoadField(AsmFactory::CurnInhTyp, nam)
 			Loader::ProtectedFlag = false
 		end if
 
@@ -1753,9 +1747,7 @@ class public static Helpers
 	
 	[method: ComVisible(false)]
 	method public static FieldInfo GetExtFld(var t as IKVM.Reflection.Type, var fld as string)
-		var f as FieldInfo = SymTable::TypeLst::GetField(t, fld, t)
-
-		return #ternary{f == null ? Loader::LoadField(t, fld), f}
+		return SymTable::TypeLst::GetField(t, fld, t) ?? Loader::LoadField(t, fld)
 	end method
 	
 	[method: ComVisible(false)]
