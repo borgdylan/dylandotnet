@@ -37,13 +37,13 @@
     <Compile Include="Program.dyl" />
   </ItemGroup>
   <Import Project="..\4.0\dylan.NET.targets" />
-  <Target Name="AfterBuild" AfterTargets="Build">
+  <!--<Target Name="AfterBuild" AfterTargets="Build">
     <ItemGroup>
       <Stuff Include="$(OutputPath)\*.exe" />
       <Stuff Include="$(OutputPath)\*.dll" />
     </ItemGroup>
     <Copy SourceFiles="@(Stuff)" DestinationFolder="..\4.0" />
-  </Target>
+  </Target>-->
   <ItemGroup>
     <ProjectReference Include="..\dnr\dnr.dylproj">
       <Project>{2AE29F43-1588-407F-9F2E-EADE63A5D6C9}</Project>
