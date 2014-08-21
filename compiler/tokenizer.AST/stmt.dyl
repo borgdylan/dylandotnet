@@ -27,10 +27,16 @@ class public Stmt
 
 end class
 
+interface public IStmtContainer
+
+	method public void AddStmt(var stmttoadd as Stmt)
+
+end interface
+
 class public abstract IgnorableStmt extends Stmt
 end class
 
-class public BlockStmt extends Stmt
+class public BlockStmt extends Stmt implements IStmtContainer
 
 	field public C5.ArrayList<of Stmt> Stmts
 
@@ -39,13 +45,22 @@ class public BlockStmt extends Stmt
 		Stmts = new C5.ArrayList<of Stmt>()
 	end method
 
-	method public void AddStmt(var stmttoadd as Stmt)
+	method public override newslot void AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
 	end method
 
 end class
 
-class public StmtSet
+class public BranchStmt extends BlockStmt
+end class
+
+interface public IBranchContainer
+
+	method public void AddBranch(var stmttoadd as BranchStmt)
+
+end interface
+
+class public StmtSet implements IStmtContainer
 
 	field public C5.ArrayList<of Stmt> Stmts
 	field public string Path
@@ -62,7 +77,7 @@ class public StmtSet
 		Path = p
 	end method
 
-	method public void AddStmt(var stmttoadd as Stmt)
+	method public override newslot void AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
 	end method
 

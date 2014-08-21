@@ -6,13 +6,25 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public TryStmt extends BlockStmt
+class public TryStmt extends BlockStmt implements IBranchContainer
+	
+	field public C5.ArrayList<of BranchStmt> Branches
+
+	method public void TryStmt()
+		mybase::ctor()
+		Branches = new C5.ArrayList<of BranchStmt>()
+	end method
+
+	method public override newslot void AddBranch(var stmttoadd as BranchStmt)
+		Branches::Add(stmttoadd)
+	end method
+
 	method public override string ToString()
 		return "try"
 	end method
 end class
 
-class public CatchStmt extends BlockStmt
+class public CatchStmt extends BranchStmt
 
 	field public Ident ExName
 	field public TypeTok ExTyp
@@ -29,7 +41,7 @@ class public CatchStmt extends BlockStmt
 
 end class
 
-class public FinallyStmt extends BlockStmt
+class public FinallyStmt extends BranchStmt
 	method public override string ToString()
 		return "finally"
 	end method

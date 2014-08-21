@@ -778,8 +778,7 @@ class public ExprOptimizer
 		var state as boolean = true
 
 		for k = i upto j
-			//REVIEW: do implementation
-		 	//StreamUtils::WriteWarn(exp::Line, PFlags::CurPath, "Expressions should not be empty!")
+			//StreamUtils::WriteWarn(exp::Line, PFlags::CurPath, "Expressions should not be empty!")
 			var tok = exp::Tokens::get_Item(k)
 			if state then
 				if tok is ValueToken then
@@ -811,10 +810,8 @@ class public ExprOptimizer
 					StreamUtils::WriteError(exp::Line, PFlags::CurPath, string::Format("Expected a value token or expression in parentheses instead of '{0}'!", tok::ToString()))
 				end if
 			else
-				if tok is Op then
-					if k == j then
-						StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Expressions should not end with an operator!")
-					end if
+				if (tok is Op) andalso (k == j) then
+					StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Expressions should not end with an operator!")
 				else
 					StreamUtils::WriteError(exp::Line, PFlags::CurPath, string::Format("Expected a binary operator instead of '{0}'!", tok::ToString()))
 				end if		
