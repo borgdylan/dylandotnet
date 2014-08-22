@@ -49,7 +49,7 @@ class public MethodStmt extends BlockStmt
 
 end class
 
-class public EndMethodStmt extends Stmt
+class public EndMethodStmt extends EndStmt
 	method public override string ToString()
 		return "end method"
 	end method

@@ -76,19 +76,19 @@ class public PropertyGetStmt extends BlockStmt
 
 end class
 
-class public EndPropStmt extends Stmt
+class public EndPropStmt extends EndStmt
 	method public override string ToString()
 		return "end property"
 	end method
 end class
 
-class public EndSetStmt extends Stmt
+class public EndSetStmt extends EndStmt
 	method public override string ToString()
 		return "end set"
 	end method
 end class
 
-class public EndGetStmt extends Stmt
+class public EndGetStmt extends EndStmt
 	method public override string ToString()
 		return "end get"
 	end method

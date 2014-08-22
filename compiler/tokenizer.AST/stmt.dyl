@@ -89,11 +89,14 @@ end class
 class public BranchStmt extends BlockStmt
 end class
 
-interface public IBranchContainer
+interface public IBranchContainer implements IStmtContainer
 
 	method public void AddBranch(var stmttoadd as BranchStmt)
 
 end interface
+
+class public EndStmt extends Stmt
+end class
 
 class public StmtSet implements IStmtContainer
 

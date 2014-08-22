@@ -17,6 +17,7 @@ class public TryStmt extends BlockStmt implements IBranchContainer
 
 	method public override newslot void AddBranch(var stmttoadd as BranchStmt)
 		Branches::Add(stmttoadd)
+		stmttoadd::set_Parent(me)
 	end method
 
 	method public override string ToString()
@@ -58,7 +59,7 @@ class public ThrowStmt extends Stmt
 
 end class
 
-class public EndTryStmt extends Stmt
+class public EndTryStmt extends EndStmt
 	method public override string ToString()
 		return "end try"
 	end method

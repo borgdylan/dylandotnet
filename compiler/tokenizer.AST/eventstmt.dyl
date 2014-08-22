@@ -60,19 +60,19 @@ class public EventRemoveStmt extends BlockStmt
 
 end class
 
-class public EndEventStmt extends Stmt
+class public EndEventStmt extends EndStmt
 	method public override string ToString()
 		return "end event"
 	end method
 end class
 
-class public EndAddStmt extends Stmt
+class public EndAddStmt extends EndStmt
 	method public override string ToString()
 		return "end add"
 	end method
 end class
 
-class public EndRemoveStmt extends Stmt
+class public EndRemoveStmt extends EndStmt
 	method public override string ToString()
 		return "end remove"
 	end method

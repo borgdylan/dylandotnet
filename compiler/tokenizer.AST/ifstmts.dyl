@@ -20,6 +20,7 @@
 
 		method public override newslot void AddBranch(var stmttoadd as BranchStmt)
 			Branches::Add(stmttoadd)
+			stmttoadd::set_Parent(me)
 		end method
 
 	end class
@@ -38,7 +39,7 @@
 	class public ElseStmt extends BranchStmt
 	end class
 
-	class public EndIfStmt extends Stmt
+	class public EndIfStmt extends EndStmt
 	end class
 end #region
 
@@ -59,6 +60,7 @@ end #region
 
 		method public override newslot void AddBranch(var stmttoadd as BranchStmt)
 			Branches::Add(stmttoadd)
+			stmttoadd::set_Parent(me)
 		end method
 
 	end class
@@ -77,7 +79,7 @@ end #region
 	class public HElseStmt extends BranchStmt implements IHCondCompStmt
 	end class
 
-	class public EndHIfStmt implements IHCondCompStmt
+	class public EndHIfStmt extends EndStmt implements IHCondCompStmt
 	end class
 
 	class public HDefineStmt extends Stmt

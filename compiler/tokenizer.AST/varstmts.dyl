@@ -75,7 +75,7 @@ class public InfUsingAsgnStmt extends BlockStmt
 
 end class
 
-class public EndUsingStmt extends Stmt
+class public EndUsingStmt extends EndStmt
 	method public override string ToString()
 		return "end using"
 	end method

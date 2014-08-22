@@ -25,7 +25,7 @@ class public NSStmt extends BlockStmt
 
 end class
 
-class public EndNSStmt extends Stmt
+class public EndNSStmt extends EndStmt
 	method public override string ToString()
 		return "end namespace"
 	end method

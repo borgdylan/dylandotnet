@@ -63,7 +63,7 @@ class public MethodCallStmt extends Stmt
 
 end class
 
-class public EndLockStmt extends Stmt
+class public EndLockStmt extends EndStmt
 	method public override string ToString()
 		return "end lock"
 	end method

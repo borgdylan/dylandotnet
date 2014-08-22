@@ -64,7 +64,7 @@ class public ForStmt extends BlockStmt
 
 end class
 
-class public WhileStmt extends Stmt
+class public WhileStmt extends EndStmt
 
 	field public Expr Exp
 
@@ -75,7 +75,7 @@ class public WhileStmt extends Stmt
 
 end class
 
-class public UntilStmt extends Stmt
+class public UntilStmt extends EndStmt
 
 	field public Expr Exp
 
@@ -95,5 +95,5 @@ end class
 class public ContinueStmt extends Stmt
 end class
 
-class public EndDoStmt extends Stmt
+class public EndDoStmt extends EndStmt
 end class

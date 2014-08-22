@@ -25,7 +25,7 @@ class public EnumStmt extends BlockStmt
 	
 end class
 
-class public EndEnumStmt extends Stmt
+class public EndEnumStmt extends EndStmt
 	method public override string ToString()
 		return "end enum"
 	end method

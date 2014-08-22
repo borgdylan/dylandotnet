@@ -55,7 +55,7 @@ class public ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstr
 	end property
 end class
 
-class public EndClassStmt extends Stmt
+class public EndClassStmt extends EndStmt
 
 	field public Token EndToken 
 
