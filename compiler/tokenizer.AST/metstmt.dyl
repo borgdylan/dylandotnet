@@ -14,7 +14,7 @@ class public MethodStmt extends BlockStmt
 	field public C5.LinkedList<of Expr> Params
 
 	method public void MethodStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Method)
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		MethodName = new MethodNameTok()
 		Params = new C5.LinkedList<of Expr>()
@@ -27,6 +27,24 @@ class public MethodStmt extends BlockStmt
 
 	method public void AddParam(var paramtoadd as Expr)
 		Params::Add(paramtoadd)
+	end method
+
+	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
+		if ctx::get_Context() == ContextType::Interface then
+			return true
+		end if
+
+		foreach a in Attrs
+			if a is PinvokeImplAttr then
+				return true
+			elseif a is AbstractAttr then
+				return true
+			elseif a is PrototypeAttr then
+				return true
+			end if
+		end for
+
+		return false
 	end method
 
 end class

@@ -27,9 +27,25 @@ class public Stmt
 
 end class
 
+enum public integer ContextType
+	None = 0
+	Assembly = 1
+	Class = 2
+	Interface = 3
+	Enum = 4
+	Property = 5
+	Event = 6
+	Method = 7
+	AbstractProperty = 8
+	AbstractEvent = 9
+end enum
+
 interface public IStmtContainer
 
 	method public void AddStmt(var stmttoadd as Stmt)
+	property public autogen ContextType Context
+	property public autogen IStmtContainer Parent
+	method public boolean IsOneLiner(var ctx as IStmtContainer) 
 
 end interface
 
@@ -39,14 +55,33 @@ end class
 class public BlockStmt extends Stmt implements IStmtContainer
 
 	field public C5.ArrayList<of Stmt> Stmts
+	field family ContextType _Context
+	field family IStmtContainer _Parent
 
-	method public void BlockStmt()
+	method public void BlockStmt(var ctx as ContextType)
 		mybase::ctor()
 		Stmts = new C5.ArrayList<of Stmt>()
+		_Context = ctx
+	end method
+
+	method public void BlockStmt()
+		ctor(ContextType::None)
 	end method
 
 	method public override newslot void AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
+
+		var sc = stmttoadd as IStmtContainer 
+		if sc != null then
+			sc::set_Parent(me)
+		end if
+	end method
+
+	property public override newslot autogen IStmtContainer Parent
+	property public override newslot autogen ContextType Context
+
+	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
+		return false
 	end method
 
 end class
@@ -79,6 +114,31 @@ class public StmtSet implements IStmtContainer
 
 	method public override newslot void AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
+
+		var sc = stmttoadd as IStmtContainer 
+		if sc != null then
+			sc::set_Parent(me)
+		end if
+	end method
+
+	property public override newslot ContextType Context
+		get
+			return ContextType::Assembly
+		end get
+		set
+		end set
+	end property
+
+	property public override newslot IStmtContainer Parent
+		set
+		end set
+		get
+			return null
+		end get
+	end property
+
+	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
+		return false
 	end method
 
 end class

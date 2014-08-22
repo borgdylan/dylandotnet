@@ -16,7 +16,7 @@ class public ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstr
 	field private C5.HashDictionary<of string, C5.LinkedList<of Token> > _Constraints
 
 	method public void ClassStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Class)
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		ClassName = new TypeTok()
 		InhClass = new TypeTok()
@@ -26,6 +26,9 @@ class public ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstr
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
 		Attrs::Add(attrtoadd)
+		if attrtoadd is InterfaceAttr then
+			_Context = ContextType::Interface
+		end if
 	end method
 
 	method public void AddInterface(var interftoadd as TypeTok)

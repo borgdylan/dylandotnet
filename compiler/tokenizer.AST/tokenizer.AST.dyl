@@ -28,7 +28,7 @@ import dylan.NET.Tokenizer.AST.Exprs
 //import dylan.NET.Tokenizer.AST.Tokens.Ops
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import dylan.NET.Tokenizer.AST.Tokens.Literals
-//import dylan.NET.Tokenizer.AST.Tokens.Attributes
+import dylan.NET.Tokenizer.AST.Tokens.Attributes
 //import dylan.NET.Tokenizer.AST.Tokens.Chars
 //import IKVM.Reflection
 //import IKVM.Reflection.Emit

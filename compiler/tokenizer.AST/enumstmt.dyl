@@ -13,7 +13,7 @@ class public EnumStmt extends BlockStmt
 	field public TypeTok EnumTyp
 
 	method public void EnumStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Enum)
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		EnumName = new Ident()
 		EnumTyp = new TypeTok()
