@@ -3,31 +3,23 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6E5394CE-034A-4EB8-B7FC-A708E88D2D30}</ProjectGuid>
+    <ProjectGuid>{E87123CC-913B-4750-B3EC-A2DC5761AD38}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>template</RootNamespace>
+    <RootNamespace>test</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
-    <AssemblyName>template</AssemblyName>
-    <UseMSBuildEngine>True</UseMSBuildEngine>
+    <AssemblyName>test</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ReleaseVersion>11.4.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug</OutputPath>
     <ErrorReport>prompt</ErrorReport>
-    <DefineConstants>DEBUG</DefineConstants>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>mysn.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
     <OutputPath>bin\Release</OutputPath>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>mysn.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
-    <DebugSymbols>false</DebugSymbols>
-    <OutputPath>bin\Testing</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -35,17 +27,32 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="C5">
-      <HintPath>..\packages\C5.2.3.0.1\lib\net40\C5.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Program.dyl" />
+    <Compile Include="test.dyl" />
     <Compile Include="Properties\AssemblyInfo.dyl" />
-    <Compile Include="template.dyl" />
+    <ResInput Include="code.dyl" />
+    <Compile Include="Resources.designer.dyl" />
   </ItemGroup>
   <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\tokenizer.AST\tokenizer.AST.dylproj">
+      <Project>{8D686B86-929F-4A1B-980A-DC2DEA04AAD9}</Project>
+      <Name>tokenizer.AST</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tokenizer.Lexer\tokenizer.Lexer.dylproj">
+      <Project>{5021F03A-944A-4F91-8F29-E7A4BC959052}</Project>
+      <Name>tokenizer.Lexer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tokenizer.Parser\tokenizer.Parser.dylproj">
+      <Project>{04067AB5-DF32-47A1-A62B-56CF12B70E46}</Project>
+      <Name>tokenizer.Parser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResScript Include="Resources.dylres">
+      <EmitDesigner>True</EmitDesigner>
+    </ResScript>
   </ItemGroup>
 </Project>

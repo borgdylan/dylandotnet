@@ -32,7 +32,7 @@ class public PropertyStmt extends BlockStmt
 		Params::Add(paramtoadd)
 	end method
 
-	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
+	method public override boolean IsOneLiner(var ctx as IStmtContainer)
 		foreach a in Attrs
 			if a is AutoGenAttr then
 				return true
@@ -53,7 +53,7 @@ class public PropertySetStmt extends BlockStmt
 		//Setter = null
 	end method
 
-	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
+	method public override boolean IsOneLiner(var ctx as IStmtContainer)
 		return ctx::get_Context() == ContextType::AbstractProperty orelse _
 			ctx::get_Parent()::get_Context() == ContextType::Interface
 	end method
@@ -69,7 +69,7 @@ class public PropertyGetStmt extends BlockStmt
 		//Getter = null
 	end method
 
-	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
+	method public override boolean IsOneLiner(var ctx as IStmtContainer)
 		return ctx::get_Context() == ContextType::AbstractProperty orelse _
 			ctx::get_Parent()::get_Context() == ContextType::Interface
 	end method

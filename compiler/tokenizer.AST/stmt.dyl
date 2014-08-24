@@ -45,6 +45,7 @@ interface public IStmtContainer
 	method public void AddStmt(var stmttoadd as Stmt)
 	property public autogen ContextType Context
 	property public autogen IStmtContainer Parent
+	property public autogen initonly Stmt[] Children
 	method public boolean IsOneLiner(var ctx as IStmtContainer) 
 
 end interface
@@ -83,6 +84,12 @@ class public BlockStmt extends Stmt implements IStmtContainer
 	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
 		return false
 	end method
+	
+	property public override newslot Stmt[] Children
+		get
+			return Stmts::ToArray()
+		end get
+	end property
 
 end class
 
@@ -92,6 +99,8 @@ end class
 interface public IBranchContainer implements IStmtContainer
 
 	method public void AddBranch(var stmttoadd as BranchStmt)
+	property public autogen initonly IStmtContainer CurrentContainer
+	property public autogen initonly BranchStmt[] BranchChildren
 
 end interface
 
@@ -133,15 +142,21 @@ class public StmtSet implements IStmtContainer
 	end property
 
 	property public override newslot IStmtContainer Parent
-		set
-		end set
 		get
 			return null
 		end get
+		set
+		end set
 	end property
 
 	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
 		return false
 	end method
+
+	property public override newslot Stmt[] Children
+		get
+			return Stmts::ToArray()
+		end get
+	end property
 
 end class

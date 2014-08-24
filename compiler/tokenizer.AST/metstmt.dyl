@@ -29,7 +29,7 @@ class public MethodStmt extends BlockStmt
 		Params::Add(paramtoadd)
 	end method
 
-	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
+	method public override boolean IsOneLiner(var ctx as IStmtContainer)
 		if ctx::get_Context() == ContextType::Interface then
 			return true
 		end if

@@ -8,13 +8,14 @@
     <RootNamespace>dylan.NET.Compiler</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>dnc</AssemblyName>
-    <ReleaseVersion>11.3.8.6</ReleaseVersion>
+    <ReleaseVersion>11.4.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <DefineConstants>DEBUG</DefineConstants>
+    <!--<Commandlineparameters>-cd /var/www/Code/dylannet/dylandotnet/compiler/template/ template.dyl</Commandlineparameters>-->
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -37,13 +38,13 @@
     <Compile Include="Program.dyl" />
   </ItemGroup>
   <Import Project="..\4.0\dylan.NET.targets" />
-  <!--<Target Name="AfterBuild" AfterTargets="Build">
+  <Target Name="AfterBuild" AfterTargets="Build">
     <ItemGroup>
       <Stuff Include="$(OutputPath)\*.exe" />
       <Stuff Include="$(OutputPath)\*.dll" />
     </ItemGroup>
     <Copy SourceFiles="@(Stuff)" DestinationFolder="..\4.0" />
-  </Target>-->
+  </Target>
   <ItemGroup>
     <ProjectReference Include="..\dnr\dnr.dylproj">
       <Project>{2AE29F43-1588-407F-9F2E-EADE63A5D6C9}</Project>

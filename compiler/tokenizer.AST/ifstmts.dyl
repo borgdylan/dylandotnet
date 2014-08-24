@@ -23,6 +23,22 @@
 			stmttoadd::set_Parent(me)
 		end method
 
+		property public override newslot IStmtContainer CurrentContainer
+			get
+				if Branches::get_Count() == 0 then
+					return me
+				else
+					return Branches::get_Last()
+				end if
+			end get
+		end property
+
+		property public override newslot BranchStmt[] BranchChildren
+			get
+				return Branches::ToArray()
+			end get
+		end property
+
 	end class
 
 	class public ElseIfStmt extends BranchStmt
@@ -62,6 +78,22 @@ end #region
 			Branches::Add(stmttoadd)
 			stmttoadd::set_Parent(me)
 		end method
+
+		property public override newslot IStmtContainer CurrentContainer
+			get
+				if Branches::get_Count() == 0 then
+					return me
+				else
+					return Branches::get_Last()
+				end if
+			end get
+		end property
+
+		property public override newslot BranchStmt[] BranchChildren
+			get
+				return Branches::ToArray()
+			end get
+		end property
 
 	end class
 

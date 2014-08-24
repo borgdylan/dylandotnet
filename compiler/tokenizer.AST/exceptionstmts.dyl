@@ -20,6 +20,22 @@ class public TryStmt extends BlockStmt implements IBranchContainer
 		stmttoadd::set_Parent(me)
 	end method
 
+	property public override newslot IStmtContainer CurrentContainer
+		get
+			if Branches::get_Count() == 0 then
+				return me
+			else
+				return Branches::get_Last()
+			end if
+		end get
+	end property
+
+	property public override newslot BranchStmt[] BranchChildren
+		get
+			return Branches::ToArray()
+		end get
+	end property
+
 	method public override string ToString()
 		return "try"
 	end method
