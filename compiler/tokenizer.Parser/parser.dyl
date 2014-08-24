@@ -19,7 +19,7 @@ class public Parser
 		ctor(new Flags())
 	end method
 	
-	method public StmtSet Parse(var stms as StmtSet)
+	method public StmtSet Parse(var stms as StmtSet, var ignf as boolean)
 		var i as integer = -1
 		var so as StmtOptimizer = new StmtOptimizer(PFlags)
 		PFlags::CurPath = stms::Path
@@ -66,12 +66,19 @@ class public Parser
 					curc = cstack::get_Last()
 				end if
 			else
+				if ignf andalso nstm is IgnorableStmt then
+					continue
+				end if
 				curc::AddStmt(nstm)
 			end if
 
 		end do
 		
 		return nwss
+	end method
+
+	method public StmtSet Parse(var stms as StmtSet)
+		return Parse(stms, false)
 	end method
 
 end class

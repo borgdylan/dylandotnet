@@ -9,6 +9,44 @@
 //await with continuations
 class public static TaskHelpers
 	
+	#region "Code from TaskHelpers.Sources/ASP.NET"
+		//The code in this region was ported from code in ASP.NET WebStack which is under the Apache License
+		//Original code was: Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See COPYING.TaskHelpers.Sources
+		
+		field private static initonly Task _defaultCompleted	
+		field private static initonly Task<of object> _completedTaskReturningNull
+
+		
+		method private static void TaskHelpers()
+			#if NET40 then
+				_defaultCompleted = TaskEx::FromResult<of AsyncVoid>(default AsyncVoid)
+				_completedTaskReturningNull = TaskEx::FromResult<of object>(null)
+			#else
+				_defaultCompleted = Task::FromResult<of AsyncVoid>(default AsyncVoid)
+				_completedTaskReturningNull = Task::FromResult<of object>(null)
+			end #if
+		end method
+		
+        method public static Task<of TResult> FromError<of TResult>(var exception as Exception)
+            var tcs as TaskCompletionSource<of TResult> = new TaskCompletionSource<of TResult>()
+            tcs::SetException(exception)
+            return tcs::get_Task()
+        end method
+        
+        method public static Task FromError(var exception as Exception)
+            return FromError<of AsyncVoid>(exception)
+        end method
+        
+        method public static Task Completed()
+            return _defaultCompleted
+        end method
+        
+        method public static Task<of object> NullResult()
+            return _completedTaskReturningNull
+        end method
+        
+	end #region
+	
 	//try
 	//	await t
 	//	do f
@@ -22,11 +60,15 @@ class public static TaskHelpers
 	method public static Task<of U> Await<of T, U>(var t as Task<of T>, var f as Func<of T, U>, var cat as Func<of Exception, U>, var fin as Action, var token as CancellationToken)
 		var ac = new AwaitClosure<of T, U>(f, cat, fin)
 		if t::get_IsCompleted() then
-			#if NET40
-				return TaskEx::FromResult<of U>(ac::DoLogic(t))
-			#else	
-				return Task::FromResult<of U>(ac::DoLogic(t))
-			end #if
+			try
+				#if NET40
+					return TaskEx::FromResult<of U>(ac::DoLogic(t))
+				#else	
+					return Task::FromResult<of U>(ac::DoLogic(t))
+				end #if
+			catch
+				return FromError<of U>(ex)
+			end try
 		else
 			return t::ContinueWith<of U>(new Func<of Task<of T>, U>(ac::DoLogic), token)
 		end if
@@ -35,11 +77,15 @@ class public static TaskHelpers
 	method public static Task<of U> Await<of U>(var t as Task, var f as Func<of U>, var cat as Func<of Exception, U>, var fin as Action, var token as CancellationToken)
 		var ac = new AwaitClosure<of U>(f, cat, fin)
 		if t::get_IsCompleted() then
-			#if NET40
-				return TaskEx::FromResult<of U>(ac::DoLogic(t))
-			#else	
-				return Task::FromResult<of U>(ac::DoLogic(t))
-			end #if
+			try
+				#if NET40
+					return TaskEx::FromResult<of U>(ac::DoLogic(t))
+				#else	
+					return Task::FromResult<of U>(ac::DoLogic(t))
+				end #if
+			catch
+				return FromError<of U>(ex)
+			end try
 		else
 			return t::ContinueWith<of U>(new Func<of Task, U>(ac::DoLogic), token)
 		end if
@@ -48,12 +94,12 @@ class public static TaskHelpers
 	method public static Task Await<of T>(var t as Task<of T>, var f as Action<of T>, var cat as Action<of Exception>, var fin as Action, var token as CancellationToken)
 		var ac = new AwaitClosure2<of T>(f, cat, fin)
 		if t::get_IsCompleted() then
-			ac::DoLogic(t)
-			#if NET40
-				return TaskEx::FromResult<of object>(new object())
-			#else	
-				return Task::FromResult<of object>(new object())
-			end #if
+			try
+				ac::DoLogic(t)
+				return Completed()
+			catch
+				return FromError(ex)
+			end try
 		else
 			return t::ContinueWith(new Action<of Task<of T> >(ac::DoLogic), token)
 		end if
@@ -62,12 +108,12 @@ class public static TaskHelpers
 	method public static Task Await(var t as Task, var f as Action, var cat as Action<of Exception>, var fin as Action, var token as CancellationToken)
 		var ac = new AwaitClosure2(f, cat, fin)
 		if t::get_IsCompleted() then
-			ac::DoLogic(t)
-			#if NET40
-				return TaskEx::FromResult<of object>(new object())
-			#else	
-				return Task::FromResult<of object>(new object())
-			end #if
+			try
+				ac::DoLogic(t)
+				return Completed()
+			catch
+				return FromError(ex)
+			end try
 		else
 			return t::ContinueWith(new Action<of Task>(ac::DoLogic), token)
 		end if

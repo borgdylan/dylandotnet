@@ -12,7 +12,6 @@ using dylan.NET.Compiler;
 using dylan.NET.Utils;
 using dylan.NET.Reflection;
 using dylan.NET.Tokenizer.CodeGen;
-using Microsoft.CodeAnalysis;
 
 namespace dylan.NET.K
 {
@@ -98,9 +97,14 @@ namespace dylan.NET.K
         public Assembly Load(IAssemblyLoaderEngine loader)
         {	
         
-        	Assembly asm = loader.LoadStream(_assembly, _symbols);
+        	Assembly asm = null;
+        	
+        	if (!_result.Success) {
+				throw new CompilationException(_result.Errors.ToList());
+			}
         	
             if (_assembly != null) {
+            	asm = loader.LoadStream(_assembly, _symbols);
 	            _assembly.Seek(0, SeekOrigin.Begin);
     	  }
     		if (_symbols != null) {
@@ -179,6 +183,8 @@ namespace dylan.NET.K
 		private Project Project;
         private IEnumerable<IMetadataReference> MetadataReferences;
 		private IList<IMetadataReference> OutgoingRefs;
+		private bool success;
+		private bool warnErrors;
 		
         public DNCompilation(string name, Project project, IEnumerable<IMetadataReference> metadataReferences, IList<IMetadataReference> outgoingRefs, FrameworkName targetFramework)
         {
@@ -189,28 +195,37 @@ namespace dylan.NET.K
             warnings = new List<string>();
             errors = new List<string>();
             OutgoingRefs = outgoingRefs;
+            success = true;
+            
+            if (project.GetCompilerOptions().WarningsAsErrors.HasValue) {
+	            warnErrors = (bool)project.GetCompilerOptions().WarningsAsErrors;
+	        }
         }
 		
 		private void ErrorH(CompilerMsg cm) {
 			//Console.WriteLine("ERROR: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File);
 			errors.Add(string.Format("ERROR: {0} inside project {1}({2}) at line {3} in file: {4}", new object[] {cm.Msg, assemblyName, effectiveTargetFramework.FullName, cm.Line.ToString(), cm.File}));
+			success = false;
 		}
 
 		private void WarnH(CompilerMsg cm) {
 			//Console.WriteLine("WARNING: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File);
+			if (warnErrors) {
+				ErrorH(cm);
+				return;
+			}
+			
 			warnings.Add(string.Format("WARNING: {0} inside project {1}({2}) at line {3} in file: {4}", new object[] {cm.Msg, assemblyName, effectiveTargetFramework.FullName, cm.Line.ToString(), cm.File}));
 		}
 		
 		private Tuple<Stream, Stream> CompileInMemory() {
 			if (streams == null) {
-				string debugOpt = Project.GetCompilerOptions().DebugSymbols;
-				DebugInformationKind debugInformationKind;
-				if (!Enum.TryParse<DebugInformationKind>(debugOpt, ignoreCase: true, result: out debugInformationKind)) {
- 					debugInformationKind = DebugInformationKind.Full;
- 				}
 				
-				bool success = true;
-				
+				bool debugOpt = true;
+				if (Project.GetCompilerOptions().Optimize.HasValue) {
+					debugOpt = !((bool)Project.GetCompilerOptions().Optimize);
+				}
+						
 				using (StreamWriter sw = new StreamWriter(Path.Combine(Project.ProjectDirectory, "msbuild.dyl"))) {
 	        	    foreach (var reference in MetadataReferences)
 	        	    {
@@ -245,30 +260,46 @@ namespace dylan.NET.K
 	        	       		}
 	        	       	}
 	        	    }
-	        	   
-	        	   	 foreach (string r in Project.GetCompilerOptions().Defines) {
-		            	sw.Write("#define ");
-	        	    	sw.WriteLine(r);
-		            }
+					
+					if (Project.GetCompilerOptions() != null && Project.GetCompilerOptions().Defines != null) {        	   
+		        	   	 foreach (string r in Project.GetCompilerOptions().Defines) {
+			            	sw.Write("#define ");
+		        	    	sw.WriteLine(r);
+			            }
+					}		            
 		            
-		            
-	        	    sw.Write("#define ");
+	        	    var fxId = string.Empty;
+	        	    var fxVer = effectiveTargetFramework.Version;
 	        	    
 	        	    if (effectiveTargetFramework.Identifier == ".NETFramework") {
-		        	    sw.Write("NET");
+		        	    fxId = "NET";
 		        	}
 		        	else if (effectiveTargetFramework.Identifier == ".NETPortable") {
-		        	    sw.Write("PORTABLE");
+		        	    fxId = "PORTABLE";
 		        	}
 		        	else if (effectiveTargetFramework.Identifier == ".NETCore") {
-		        	    sw.Write("NETCORE");
+		        	    fxId = "NETCORE";
+		        	}
+		        	else if (effectiveTargetFramework.Identifier == "WindowsPhone") {
+		        	    fxId = "WP";
+		        	}
+		        	else if (effectiveTargetFramework.Identifier == "MonoTouch") {
+		        	    fxId = "IOS";
+		        	}
+		        	else if (effectiveTargetFramework.Identifier == "MonoAndroid") {
+		        	    fxId = "ANDROID";
+		        	}
+		        	else if (effectiveTargetFramework.Identifier == "Silverlight") {
+		        	    fxId = "SL";
 		        	}
 		        	else {
-		        		sw.Write(effectiveTargetFramework.Identifier);
+		        		fxId = effectiveTargetFramework.Identifier;
 		        	}
 	        	    
-	        	    sw.Write(effectiveTargetFramework.Version.Major);
-	        	    sw.WriteLine(effectiveTargetFramework.Version.Minor);
+	        	    sw.WriteLine("#define {0}{1}{2}", new object[] {fxId, fxVer.Major.ToString(), fxVer.Minor.ToString()});
+	        	    if (fxVer.Build > 0) {
+	        	    	sw.WriteLine("#define {0}{1}{2}{3}", new object[] {fxId, fxVer.Major.ToString(), fxVer.Minor.ToString(), fxVer.Build.ToString()});
+	        	    }
 	        	    
 	        	    foreach (string r in Project.ResourceFiles) {
 		            	sw.Write("#embed \"");
@@ -278,7 +309,7 @@ namespace dylan.NET.K
 
 					sw.WriteLine();
 					sw.Write("#debug ");
-					sw.WriteLine(debugInformationKind == DebugInformationKind.None ? "off" : "on");
+					sw.WriteLine(debugOpt ? "on" : "off");
 					sw.WriteLine();
 					
 					sw.WriteLine("[assembly: System.Reflection.AssemblyTitle(\"" + assemblyName + "\")]");
@@ -330,7 +361,7 @@ namespace dylan.NET.K
 				if (success) {
 					Stream syms = null;
 					var pdbPath = Path.Combine(Project.ProjectDirectory, assemblyName + PlatformHelper.DebugExtension);
-					if (debugInformationKind != DebugInformationKind.None && File.Exists(pdbPath)) {
+					if (debugOpt && File.Exists(pdbPath)) {
 					 	using (FileStream fs = new FileStream(pdbPath, FileMode.Open)) {
 					 		syms = new MemoryStream();
 					 		fs.CopyTo(syms);
@@ -372,9 +403,10 @@ namespace dylan.NET.K
             StreamUtils.UseConsole = false;
         }
         
-        public IMetadataProjectReference GetProjectReference(Project project, FrameworkName targetFramework, string config, IEnumerable<IMetadataReference> incomingRefs, IEnumerable<ISourceReference> sources, IList<IMetadataReference> outgoingRefs)
+        //IEnumerable<IMetadataReference> incomingRefs, IEnumerable<ISourceReference> sources
+        public IMetadataProjectReference GetProjectReference(Project project, ILibraryKey target, Func<ILibraryExport> getExport, IList<IMetadataReference> outgoingRefs)
         {
-        	string assemblyName = project.Name;
+        	string assemblyName = target.Name;
             
             DNCompilation comp;
 			if (compilations.ContainsKey(assemblyName)) {
@@ -382,7 +414,8 @@ namespace dylan.NET.K
 			}
 			else {
 				try {
-					comp = new DNCompilation(assemblyName, project, incomingRefs, outgoingRefs, targetFramework);
+					IEnumerable<IMetadataReference> incomingRefs = getExport.Invoke().MetadataReferences;
+					comp = new DNCompilation(assemblyName, project, incomingRefs, outgoingRefs, target.TargetFramework);
 				}
 				catch (ErrorException e) {
 					comp = null;

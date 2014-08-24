@@ -1,10 +1,7 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dylan.NET.Tasks" Version="1.0.0.0">
+    <Assembly Name="dylan.NET.Tasks" Version="1.0.1.0">
       <Attributes>
-        <Attribute>
-          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
-        </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyTitle("dylan.NET.Tasks")</AttributeName>
         </Attribute>

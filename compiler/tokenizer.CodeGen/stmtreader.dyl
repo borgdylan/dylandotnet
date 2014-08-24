@@ -1553,8 +1553,29 @@ class public StmtReader
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
 			cg::Process(ifstm, fpath)
+
 			foreach b in ifstm::Branches
-				Read(b, fpath)
+				if b is ElseIfStmt then
+					ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
+					ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
+					SymTable::SetIfNxtBlkLbl()
+					var elifstm as ElseIfStmt = $ElseIfStmt$b
+					SymTable::PopScope()
+					SymTable::PushScope()
+					new Evaluator()::Evaluate(elifstm::Exp)
+					if !AsmFactory::Type02::Equals(Loader::CachedLoadClass("System.Boolean")) then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for ElseIf Statements should evaluate to boolean.")
+					end if
+					ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
+					cg::Process(elifstm, fpath)
+				elseif b is ElseStmt then
+					ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
+					ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
+					SymTable::SetIfElsePass()
+					SymTable::PopScope()
+					SymTable::PushScope()
+					cg::Process($ElseStmt$b, fpath)
+				end if
 			end for
 		elseif stm is DoStmt then
 			SymTable::PushScope()
@@ -1618,26 +1639,6 @@ class public StmtReader
 			cg::Process(dwstm, fpath)
 		elseif stm is ForStmt then
 			ReadFor($ForStmt$stm, fpath)
-		elseif stm is ElseIfStmt then
-			ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
-			ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
-			SymTable::SetIfNxtBlkLbl()
-			var elifstm as ElseIfStmt = $ElseIfStmt$stm
-			SymTable::PopScope()
-			SymTable::PushScope()
-			new Evaluator()::Evaluate(elifstm::Exp)
-			if !AsmFactory::Type02::Equals(Loader::CachedLoadClass("System.Boolean")) then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for ElseIf Statements should evaluate to boolean.")
-			end if
-			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
-			cg::Process(elifstm, fpath)
-		elseif stm is ElseStmt then
-			ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
-			ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
-			SymTable::SetIfElsePass()
-			SymTable::PopScope()
-			SymTable::PushScope()
-			cg::Process($ElseStmt$stm, fpath)
 		elseif stm is EndIfStmt then
 			if !SymTable::ReadIfElsePass() then
 				ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
@@ -1673,19 +1674,37 @@ class public StmtReader
 			ILEmitter::EmitTry()
 			SymTable::AddTry()
 			cg::Process($TryStmt$stm, fpath)
+
 			foreach b in #expr($TryStmt$stm)::Branches
-				Read(b, fpath)
+				if b is FinallyStmt then
+					SymTable::PopScope()
+					SymTable::PushScope()
+					SymTable::SetInCatch(false)
+					ILEmitter::EmitFinally()
+					cg::Process($FinallyStmt$b, fpath)
+				elseif b is CatchStmt then
+					SymTable::PopScope()
+					SymTable::PushScope()
+					var cats as CatchStmt = $CatchStmt$b
+					vtyp = Helpers::CommitEvalTTok(cats::ExTyp)
+					if vtyp = null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + cats::ExTyp::Value + "' is not defined.")
+					end if
+					SymTable::SetInCatch(true)
+					ILEmitter::DeclVar(cats::ExName::Value, vtyp)
+					ILEmitter::LocInd++
+					SymTable::StoreFlg = true
+					SymTable::AddVar(cats::ExName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+					SymTable::StoreFlg = false
+					ILEmitter::EmitCatch(vtyp)
+					ILEmitter::EmitStloc(SymTable::FindVar(cats::ExName::Value)::Index)
+					cg::Process(cats, fpath)
+				end if
 			end for
 		elseif stm is EndTryStmt then
 			ILEmitter::EmitEndTry()
 			SymTable::PopScope()
 			SymTable::PopTry()
-		elseif stm is FinallyStmt then
-			SymTable::PopScope()
-			SymTable::PushScope()
-			SymTable::SetInCatch(false)
-			ILEmitter::EmitFinally()
-			cg::Process($FinallyStmt$stm, fpath)
 		elseif stm is EndUsingStmt then
 			ILEmitter::EmitFinally()
 			var uv = SymTable::ReadUseeLoc()
@@ -1697,23 +1716,6 @@ class public StmtReader
 			ILEmitter::EmitEndTry()
 			SymTable::PopScope()
 			SymTable::PopUsing()
-		elseif stm is CatchStmt then
-			SymTable::PopScope()
-			SymTable::PushScope()
-			var cats as CatchStmt = $CatchStmt$stm
-			vtyp = Helpers::CommitEvalTTok(cats::ExTyp)
-			if vtyp = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + cats::ExTyp::Value + "' is not defined.")
-			end if
-			SymTable::SetInCatch(true)
-			ILEmitter::DeclVar(cats::ExName::Value, vtyp)
-			ILEmitter::LocInd++
-			SymTable::StoreFlg = true
-			SymTable::AddVar(cats::ExName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
-			SymTable::StoreFlg = false
-			ILEmitter::EmitCatch(vtyp)
-			ILEmitter::EmitStloc(SymTable::FindVar(cats::ExName::Value)::Index)
-			cg::Process(cats, fpath)
 		elseif stm is MethodAttrStmt then
 			SymTable::AddMtdCA(AttrStmtToCAB($MethodAttrStmt$stm))
 		elseif stm is FieldAttrStmt then
@@ -1822,7 +1824,6 @@ class public StmtReader
 			dc::NumVar::set_OrdOp("dec")
 			dc::NumVar::set_DoDec(true)
 			new Evaluator()::StoreEmit(dc::NumVar, new Expr() {AddToken(dc::NumVar)})
-		elseif stm is IgnorableStmt then
 		else
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
 		end if

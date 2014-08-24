@@ -4,6 +4,7 @@
   <AssemblyInfo>
     <AssemblyName>dylan.NET.Tasks</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -20,6 +21,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -33,7 +35,8 @@
         <param name="f">The code to execute once the task finishes successfully.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await">
@@ -42,6 +45,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -57,7 +61,8 @@
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await">
@@ -66,6 +71,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -81,7 +87,8 @@
         <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await">
@@ -90,6 +97,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -105,7 +113,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await">
@@ -114,6 +123,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -131,7 +141,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await">
@@ -140,6 +151,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -157,7 +169,8 @@
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await">
@@ -166,6 +179,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -183,7 +197,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await">
@@ -192,6 +207,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -211,7 +227,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T&gt;">
@@ -220,6 +237,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -237,7 +255,8 @@
         <param name="f">The code to execute once the task finishes successfully.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T&gt;">
@@ -246,6 +265,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -265,7 +285,8 @@
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T&gt;">
@@ -274,6 +295,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -293,7 +315,8 @@
         <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T&gt;">
@@ -302,6 +325,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -321,7 +345,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T&gt;">
@@ -330,6 +355,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -351,7 +377,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T&gt;">
@@ -360,6 +387,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -381,7 +409,8 @@
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T&gt;">
@@ -390,6 +419,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -411,7 +441,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T&gt;">
@@ -420,6 +451,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -443,7 +475,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
@@ -452,6 +485,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -469,7 +503,8 @@
         <param name="f">The code to execute once the task finishes successfully.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
@@ -478,6 +513,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -497,7 +533,8 @@
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
@@ -506,6 +543,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -525,7 +563,8 @@
         <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
@@ -534,6 +573,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -553,7 +593,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
@@ -562,6 +603,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -583,7 +625,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
@@ -592,6 +635,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -613,7 +657,8 @@
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
@@ -622,6 +667,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -643,7 +689,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
@@ -652,6 +699,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -675,7 +723,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T,U&gt;">
@@ -684,6 +733,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -703,7 +753,8 @@
         <param name="f">The code to execute once the task finishes successfully.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T,U&gt;">
@@ -712,6 +763,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -733,7 +785,8 @@
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T,U&gt;">
@@ -742,6 +795,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -763,7 +817,8 @@
         <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T,U&gt;">
@@ -772,6 +827,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -793,7 +849,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T,U&gt;">
@@ -802,6 +859,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -825,7 +883,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T,U&gt;">
@@ -834,6 +893,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -857,7 +917,8 @@
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T,U&gt;">
@@ -866,6 +927,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -889,7 +951,8 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T,U&gt;">
@@ -898,6 +961,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -923,6 +987,85 @@
         <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Completed">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Completed ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Completed() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns a completed task that has no result. </summary>
+        <returns>An already compelete Task.</returns>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromError">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task FromError (Exception exception);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task FromError(class System.Exception exception) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="exception" Type="System.Exception" />
+      </Parameters>
+      <Docs>
+        <param name="exception">The exception to package into a Task.</param>
+        <summary>Returns an error task. The task is Completed, IsCanceled = False, IsFaulted = True.</summary>
+        <returns>A completed faulted Task with the specified error set.</returns>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromError&lt;TResult&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;TResult&gt; FromError&lt;TResult&gt; (Exception exception);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!TResult&gt; FromError&lt;TResult&gt;(class System.Exception exception) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;TResult&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TResult" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="exception" Type="System.Exception" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TResult">The exception to package into a Task.</typeparam>
+        <param name="exception">The exception to package into a Task&lt;TResult&gt;.</param>
+        <summary>Returns an error task of the given type. The task is Completed, IsCanceled = False, IsFaulted = True.</summary>
+        <returns>A completed faulted Task&lt;TResult&gt; with the specified error set.</returns>
+        <remarks></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NullResult">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;object&gt; NullResult ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;object&gt; NullResult() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.1.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;System.Object&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns a Task with a null result.</summary>
+        <returns>A Task&lt;object&gt; with null as the result.</returns>
         <remarks></remarks>
       </Docs>
     </Member>

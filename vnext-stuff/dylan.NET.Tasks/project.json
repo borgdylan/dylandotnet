@@ -1,28 +1,34 @@
 ﻿{
-  "version": "1.0.0.0",
+	"version": "1.0.2.0",
+	"authors": ["borgdylan"],
+	"description": "Task helper library for dylan.NET (await support)", 
 	"code" : "*.dyl;*/*.dyl",
 	"resources" : "*.resources",
 	"exclude": "msbuild.dyl",
 	"language": {
         "name": "dylan.NET",
-        "assembly": "DNLoader",
-        "projectReferenceProviderType": "DNLoader.DNAssemblyLoader"
+        "assembly": "dylan.NET.K",
+        "projectReferenceProviderType": "dylan.NET.K.DNProjectReferenceProvider"
     },
   "dependencies": {
     },
   "compilationOptions": {
      "define": [],
-     "debugSymbols": "PdbOnly"
+     "optimize": "true"
   },
   "commands": {
   },
   "frameworks": {
-    "net45": {
+    "net451": {
       "dependencies": {
-        "DNLoader" : ""
+        "dylan.NET.K" : ""
       }
     },
-     "net40": {
+    "net45": {
+      "dependencies": {
+     }
+    },
+    "net40": {
       "dependencies": {
       	"Microsoft.Bcl.Async" : "1.0.168"
       }

@@ -1,0 +1,28 @@
+﻿{
+  "version": "1.0.2.0",
+	"code" : "*.dyl;*/*.dyl",
+	"resources" : "*.resources",
+	"language": {
+        "name": "dylan.NET",
+        "assembly": "dylan.NET.K",
+        "projectReferenceProviderType": "dylan.NET.K.DNProjectReferenceProvider"
+    },
+  "dependencies": {
+  	"dylan.NET.K" : "",
+  	"Xunit.KRunner": "1.0.0-*",
+  	"dylan.NET.Tasks": ""
+    },
+  "compilationOptions": {
+     "define": [],
+     "optimize": "true"
+  },
+  "commands": {
+  		"test" : "Xunit.KRunner"
+    },
+  "frameworks": {
+    "net45": {
+      "dependencies": {
+      }
+    }
+  }
+}

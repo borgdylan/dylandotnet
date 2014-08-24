@@ -1,5 +1,5 @@
 //The dylan.NET task library
-//Compile with dylan.NET 11.3.7.1 or higher hosted by the ASP.NET vNext tooling
+//Compile with dylan.NET 11.3.8.6 or higher hosted by the ASP.NET vNext tooling
 
 //    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2014 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -13,9 +13,10 @@
 
 import System
 import System.Threading
-import System.Threading.Tasks
+//import System.Threading.Tasks
 
 namespace System.Threading.Tasks
+	#include "AsyncVoid.dyl"
 	#include "AwaitClosures.dyl"
 	#include "TaskHelpers.dyl"
 end namespace

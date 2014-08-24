@@ -122,41 +122,40 @@ class public CodeGenerator
 					end if
 				end for
 			elseif s is EndHIfStmt then
-			else
-				if s is IncludeStmt then
-					var inclustm as IncludeStmt = $IncludeStmt$s
-					//var pth as string
-					var sset as StmtSet
+			elseif s is IgnorableStmt then
+			elseif s is IncludeStmt then
+				var inclustm as IncludeStmt = $IncludeStmt$s
+				//var pth as string
+				var sset as StmtSet
 					
-					//lock inclustm::Path
+				//lock inclustm::Path
 						
-						//if inclustm::HasError then
-						//	StreamUtils::Terminate()
-						//end if
+					//if inclustm::HasError then
+					//	StreamUtils::Terminate()
+					//end if
 
-						inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::get_UnquotedValue())
-						//pth = inclustm::Path::Value
+					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::get_UnquotedValue())
+					//pth = inclustm::Path::Value
 						
-						if inclustm::SSet == null then
-							if !File::Exists(inclustm::Path::Value) then
-								StreamUtils::WriteError(inclustm::Line, spth, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
-							end if
-							StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
-							var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
-							StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
-							sset = new Parser()::Parse(pstmts)
-							inclustm::SSet = sset
-							StreamUtils::WriteLine(string::Format("Finished Processing: {0} (inline)", inclustm::Path::Value))
-						else
-							sset = inclustm::SSet
+					if inclustm::SSet == null then
+						if !File::Exists(inclustm::Path::Value) then
+							StreamUtils::WriteError(inclustm::Line, spth, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
 						end if
-					//end lock
-						
-					EmitMSIL(sset, inclustm::Path::Value)
-				else
-					if s != null then
-						sr::Read(s, spth)
+						StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
+						var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
+						StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
+						sset = new Parser()::Parse(pstmts, true)
+						inclustm::SSet = sset
+						StreamUtils::WriteLine(string::Format("Finished Processing: {0} (inline)", inclustm::Path::Value))
+					else
+						sset = inclustm::SSet
 					end if
+				//end lock
+						
+				EmitMSIL(sset, inclustm::Path::Value)
+			else
+				if s != null then
+					sr::Read(s, spth)
 				end if
 			end if
 		end for
