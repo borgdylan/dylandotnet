@@ -71,6 +71,5 @@ namespace dylan.NET.Tokenizer.CodeGen
 	#include "helpers.dyl"
 	#include "opstack.dyl"
 	#include "eval.dyl"
-	#include "stmtreader.dyl"
 	#include "codegenerator.dyl"
 end namespace

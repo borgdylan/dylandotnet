@@ -6,13 +6,42 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public TryStmt extends Stmt
+class public TryStmt extends BlockStmt implements IBranchContainer
+	
+	field public C5.ArrayList<of BranchStmt> Branches
+
+	method public void TryStmt()
+		mybase::ctor()
+		Branches = new C5.ArrayList<of BranchStmt>()
+	end method
+
+	method public override newslot void AddBranch(var stmttoadd as BranchStmt)
+		Branches::Add(stmttoadd)
+		stmttoadd::set_Parent(me)
+	end method
+
+	property public override newslot IStmtContainer CurrentContainer
+		get
+			if Branches::get_Count() == 0 then
+				return me
+			else
+				return Branches::get_Last()
+			end if
+		end get
+	end property
+
+	property public override newslot BranchStmt[] BranchChildren
+		get
+			return Branches::ToArray()
+		end get
+	end property
+
 	method public override string ToString()
 		return "try"
 	end method
 end class
 
-class public CatchStmt extends Stmt
+class public CatchStmt extends BranchStmt
 
 	field public Ident ExName
 	field public TypeTok ExTyp
@@ -29,7 +58,7 @@ class public CatchStmt extends Stmt
 
 end class
 
-class public FinallyStmt extends Stmt
+class public FinallyStmt extends BranchStmt
 	method public override string ToString()
 		return "finally"
 	end method
@@ -46,7 +75,7 @@ class public ThrowStmt extends Stmt
 
 end class
 
-class public EndTryStmt extends Stmt
+class public EndTryStmt extends EndStmt
 	method public override string ToString()
 		return "end try"
 	end method

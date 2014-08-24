@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public DoWhileStmt extends Stmt
+class public DoWhileStmt extends BlockStmt
 
 	field public Expr Exp
 
@@ -17,7 +17,7 @@ class public DoWhileStmt extends Stmt
 
 end class
 
-class public DoUntilStmt extends Stmt
+class public DoUntilStmt extends BlockStmt
 
 	field public Expr Exp
 
@@ -28,7 +28,7 @@ class public DoUntilStmt extends Stmt
 
 end class
 
-class public ForeachStmt extends Stmt
+class public ForeachStmt extends BlockStmt
 
 	field public Expr Exp
 	field public Ident Iter
@@ -43,7 +43,7 @@ class public ForeachStmt extends Stmt
 
 end class
 
-class public ForStmt extends Stmt
+class public ForStmt extends BlockStmt
 
 	field public Expr StartExp
 	field public Expr EndExp
@@ -64,7 +64,7 @@ class public ForStmt extends Stmt
 
 end class
 
-class public WhileStmt extends Stmt
+class public WhileStmt extends EndStmt
 
 	field public Expr Exp
 
@@ -75,7 +75,7 @@ class public WhileStmt extends Stmt
 
 end class
 
-class public UntilStmt extends Stmt
+class public UntilStmt extends EndStmt
 
 	field public Expr Exp
 
@@ -86,7 +86,7 @@ class public UntilStmt extends Stmt
 
 end class
 
-class public DoStmt extends Stmt
+class public DoStmt extends BlockStmt
 end class
 
 class public BreakStmt extends Stmt
@@ -95,5 +95,5 @@ end class
 class public ContinueStmt extends Stmt
 end class
 
-class public EndDoStmt extends Stmt
+class public EndDoStmt extends EndStmt
 end class

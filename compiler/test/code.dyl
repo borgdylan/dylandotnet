@@ -1,4 +1,4 @@
-//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
+﻿//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -7,13 +7,6 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public StmtReader
-	
-	field private CodeGenerator cg
-
-	method public void StmtReader(var cgen as CodeGenerator)
-		mybase::ctor()
-		cg = cgen
-	end method
 
 	method public prototype void Read(var stm as Stmt, var fpath as string)
 
@@ -90,7 +83,7 @@ class public StmtReader
 		return new CustomAttributeBuilder(ctorinf, oarr, piarr::ToArray(), poarr::ToArray(), fiarr::ToArray(), foarr::ToArray())
 	end method
 	
-	method public void ReadClass(var clss as ClassStmt, var fpath as string)
+	method public void ReadClass(var clss as ClassStmt)
 		ILEmitter::StructFlg = false
 		ILEmitter::PartialFlg = false
 		ILEmitter::InterfaceFlg = false
@@ -321,10 +314,10 @@ class public StmtReader
 		end if
 
 		ILEmitter::ANIFlg = false
-		cg::Process(clss, fpath)
+
 	end method
 	
-	method public void ReadEnum(var clss as EnumStmt, var fpath as string)
+	method public void ReadEnum(var clss as EnumStmt)
 		//if AsmFactory::inClass then
 		//	AsmFactory::isNested = true
 		//end if
@@ -366,7 +359,7 @@ class public StmtReader
 
 		SymTable::CurnTypItem = ti
 		SymTable::TypeLst::AddType(ti)
-		cg::Process(clss, fpath)
+
 	end method
 	
 	method public void ReadDelegate(var dels as DelegateStmt)
@@ -541,7 +534,7 @@ class public StmtReader
 		end if
 	end method
 	
-	method public void ReadMethod(var mtss as MethodStmt, var fpath as string)
+	method public void ReadMethod(var mtss as MethodStmt)
 		ILEmitter::StaticFlg = false
 		ILEmitter::AbstractFlg = false
 		ILEmitter::ProtoFlg = false
@@ -750,10 +743,9 @@ class public StmtReader
 			AsmFactory::InMethodFlg = true
 		end if
 		AsmFactory::CurnMetName = mtssnamstr
-		cg::Process(mtss, fpath)
 	end method
 	
-	method public void ReadForeach(var festm as ForeachStmt, var fpath as string)
+	method public void ReadForeach(var festm as ForeachStmt)
 		SymTable::PushScope()
 		new Evaluator()::Evaluate(festm::Exp)
 		var mtds as MethodInfo[] = Helpers::ProcessForeach(AsmFactory::Type02)
@@ -817,7 +809,6 @@ class public StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class {0} is not an IEnumerable/IEnumerator or IEnumerable<of T>/IEnumerator<of T>.", AsmFactory::Type02::ToString()))
 			end if
 		end if
-		cg::Process(festm, fpath)
 	end method
 	
 	method public void ReadEvent(var evss as EventStmt, var fpath as string)
@@ -848,7 +839,6 @@ class public StmtReader
 		Helpers::ApplyEventAttrs()
 		
 		StreamUtils::WriteLine("	Adding Event: " + evss::EventName::Value)
-		cg::Process(evss, fpath)
 	end method
 	
 	method public void ReadEventAdd(var evas as EventAddStmt, var fpath as string)
@@ -874,7 +864,6 @@ class public StmtReader
 			Read(mets,fpath)
 			cevent::EventBldr::SetAddOnMethod(AsmFactory::CurnMetB)
 		end if
-		cg::Process(evas, fpath)
 	end method
 	
 	method public void ReadEventRemove(var evas as EventRemoveStmt, var fpath as string)
@@ -900,7 +889,6 @@ class public StmtReader
 			Read(mets,fpath)
 			cevent::EventBldr::SetRemoveOnMethod(AsmFactory::CurnMetB)
 		end if
-		cg::Process(evas, fpath)
 	end method
 	
 	method public void ReadVer(var asmv as VerStmt, var fpath as string)
@@ -1013,7 +1001,6 @@ class public StmtReader
 			AddToken(et)})
 		
 		ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
-		cg::Process(fstm, fpath)
 	end method
 	
 	method public void ReadPropertyGet(var prgs as PropertyGetStmt, var fpath as string)
@@ -1037,7 +1024,6 @@ class public StmtReader
 				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}},fpath)
 			cprop::PropertyBldr::SetGetMethod(AsmFactory::CurnMetB)
 		end if
-		cg::Process(prgs, fpath)
 	end method
 	
 	method public void ReadPropertySet(var prss as PropertySetStmt, var fpath as string)
@@ -1064,7 +1050,6 @@ class public StmtReader
 			Read(mets,fpath)
 			cprop::PropertyBldr::SetSetMethod(AsmFactory::CurnMetB)
 		end if
-		cg::Process(prss, fpath)
 	end method
 	
 	method public void ReadProperty(var prss as PropertyStmt, var fpath as string)
@@ -1179,7 +1164,7 @@ class public StmtReader
 			//end
 			SymTable::CurnProp = null
 		end if
-		cg::Process(prss, fpath)
+		
 	end method
 	
 	method public void ReadEndDo(var fpath as string)
@@ -1345,9 +1330,9 @@ class public StmtReader
 				SymTable::AddDef("DEBUG")
 			end if
 		elseif stm is ClassStmt then
-			ReadClass($ClassStmt$stm, fpath)
+			ReadClass($ClassStmt$stm)
 		elseif stm is EnumStmt then
-			ReadEnum($EnumStmt$stm, fpath)
+			ReadEnum($EnumStmt$stm)
 		elseif stm is DelegateStmt then
 			ReadDelegate($DelegateStmt$stm)
 		elseif stm is FieldStmt then
@@ -1395,7 +1380,7 @@ class public StmtReader
 			end if
 
 		elseif stm is MethodStmt then
-			ReadMethod($MethodStmt$stm, fpath)
+			ReadMethod($MethodStmt$stm)
 		elseif stm is EndMethodStmt then
 			AsmFactory::InMethodFlg = false
 			AsmFactory::InCtorFlg = false
@@ -1457,8 +1442,20 @@ class public StmtReader
 			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
 			ILEmitter::LocInd++
 			
+			if curva::IsUsing then
+				if !Loader::CachedLoadClass("System.IDisposable")::IsAssignableFrom(vtyp) then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + vtyp::ToString() + "' is not an IDisposable.")
+				end if
+				SymTable::PushScope()
+			end if
+			
 			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 			new Evaluator()::StoreEmit(curva::VarName, curva::RExpr)
+			
+			if curva::IsUsing then
+				SymTable::AddUsing(curva::VarName::Value)
+				ILEmitter::EmitTry()
+			end if
 		elseif stm is InfVarAsgnStmt then
 			var curva as InfVarAsgnStmt = $InfVarAsgnStmt$stm
 			eval = new Evaluator()
@@ -1466,50 +1463,23 @@ class public StmtReader
 			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
 			ILEmitter::LocInd++
 			
-			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
-			eval::StoreEmit(curva::VarName, curva::RExpr)
-		elseif stm is UsingAsgnStmt then
-			var curva as UsingAsgnStmt = $UsingAsgnStmt$stm
-			vtyp = Helpers::CommitEvalTTok(curva::VarTyp)
-			if vtyp = null then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curva::VarTyp::ToString() + "' is not defined.")
+			if curva::IsUsing then
+				if !Loader::CachedLoadClass("System.IDisposable")::IsAssignableFrom(vtyp) then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + vtyp::ToString() + "' is not an IDisposable.")
+				end if
+				SymTable::PushScope()
 			end if
-			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
-			ILEmitter::LocInd++
 			
-			if !Loader::CachedLoadClass("System.IDisposable")::IsAssignableFrom(vtyp) then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + vtyp::ToString() + "' is not an IDisposable.")
-			end if
-			SymTable::PushScope()
-
-			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
-			new Evaluator()::StoreEmit(curva::VarName, curva::RExpr)
-			
-			SymTable::AddUsing(curva::VarName::Value)
-			ILEmitter::EmitTry()
-			cg::Process(curva, fpath)
-		elseif stm is InfUsingAsgnStmt then
-			var curva as InfUsingAsgnStmt = $InfUsingAsgnStmt$stm
-			eval = new Evaluator()
-			vtyp = eval::EvaluateType(curva::RExpr)
-			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
-			ILEmitter::LocInd++
-			
-			if !Loader::CachedLoadClass("System.IDisposable")::IsAssignableFrom(vtyp) then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + vtyp::ToString() + "' is not an IDisposable.")
-			end if
-			SymTable::PushScope()
-
 			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 			eval::StoreEmit(curva::VarName, curva::RExpr)
 			
-			SymTable::AddUsing(curva::VarName::Value)
-			ILEmitter::EmitTry()
-			cg::Process(curva, fpath)
+			if curva::IsUsing then
+				SymTable::AddUsing(curva::VarName::Value)
+				ILEmitter::EmitTry()
+			end if
 		elseif stm is NSStmt then
 			var nss as NSStmt = $NSStmt$stm
 			AsmFactory::PushNS(nss::NS::get_UnquotedValue())
-			cg::Process(nss, fpath)
 		elseif stm is EndNSStmt then
 			AsmFactory::PopNS()
 		elseif stm is AssignStmt then
@@ -1552,15 +1522,10 @@ class public StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for If Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
-			cg::Process(ifstm, fpath)
-			foreach b in ifstm::Branches
-				Read(b, fpath)
-			end for
 		elseif stm is DoStmt then
 			SymTable::PushScope()
 			SymTable::AddLoop()
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
-			cg::Process($DoStmt$stm, fpath)
 		elseif stm is BreakStmt then
 			ILEmitter::EmitBr(SymTable::ReadLoopEndLbl())
 		elseif stm is ContinueStmt then
@@ -1604,7 +1569,6 @@ class public StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Do Until Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
-			cg::Process(dustm, fpath)
 		elseif stm is DoWhileStmt then
 			var dwstm as DoWhileStmt = $DoWhileStmt$stm
 			SymTable::PushScope()
@@ -1615,7 +1579,6 @@ class public StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for Do While Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadLoopEndLbl())
-			cg::Process(dwstm, fpath)
 		elseif stm is ForStmt then
 			ReadFor($ForStmt$stm, fpath)
 		elseif stm is ElseIfStmt then
@@ -1630,14 +1593,12 @@ class public StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for ElseIf Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
-			cg::Process(elifstm, fpath)
 		elseif stm is ElseStmt then
 			ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
 			ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
 			SymTable::SetIfElsePass()
 			SymTable::PopScope()
 			SymTable::PushScope()
-			cg::Process($ElseStmt$stm, fpath)
 		elseif stm is EndIfStmt then
 			if !SymTable::ReadIfElsePass() then
 				ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
@@ -1672,10 +1633,6 @@ class public StmtReader
 			SymTable::PushScope()
 			ILEmitter::EmitTry()
 			SymTable::AddTry()
-			cg::Process($TryStmt$stm, fpath)
-			foreach b in #expr($TryStmt$stm)::Branches
-				Read(b, fpath)
-			end for
 		elseif stm is EndTryStmt then
 			ILEmitter::EmitEndTry()
 			SymTable::PopScope()
@@ -1685,7 +1642,6 @@ class public StmtReader
 			SymTable::PushScope()
 			SymTable::SetInCatch(false)
 			ILEmitter::EmitFinally()
-			cg::Process($FinallyStmt$stm, fpath)
 		elseif stm is EndUsingStmt then
 			ILEmitter::EmitFinally()
 			var uv = SymTable::ReadUseeLoc()
@@ -1713,7 +1669,6 @@ class public StmtReader
 			SymTable::StoreFlg = false
 			ILEmitter::EmitCatch(vtyp)
 			ILEmitter::EmitStloc(SymTable::FindVar(cats::ExName::Value)::Index)
-			cg::Process(cats, fpath)
 		elseif stm is MethodAttrStmt then
 			SymTable::AddMtdCA(AttrStmtToCAB($MethodAttrStmt$stm))
 		elseif stm is FieldAttrStmt then
@@ -1723,7 +1678,7 @@ class public StmtReader
 		elseif stm is AssemblyAttrStmt then
 			SymTable::AddAsmCA(AttrStmtToCAB($AssemblyAttrStmt$stm))
 		elseif stm is ForeachStmt then
-			ReadForeach($ForeachStmt$stm, fpath)
+			ReadForeach($ForeachStmt$stm)
 		elseif stm is HDefineStmt then
 			SymTable::AddDef(#expr($HDefineStmt$stm)::Symbol::Value)
 		elseif stm is HUndefStmt then
@@ -1782,7 +1737,6 @@ class public StmtReader
 			ILEmitter::EmitLdloc(lockee)
 			ILEmitter::EmitCall(Loader::CachedLoadClass("System.Threading.Monitor")::GetMethod("Enter", new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object")}))
 			ILEmitter::EmitTry()
-			cg::Process(lstm, fpath)
 		elseif stm is TryLockStmt then
 			var lstm as TryLockStmt = $TryLockStmt$stm
 			SymTable::PushScope()
@@ -1800,7 +1754,6 @@ class public StmtReader
 			ILEmitter::EmitCall(Loader::CachedLoadClass("System.Threading.Monitor")::GetMethod("TryEnter", new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object")}))
 			ILEmitter::EmitBrfalse(li::Lbl)
 			ILEmitter::EmitTry()
-			cg::Process(lstm, fpath)
 		elseif stm is EndLockStmt then
 			ILEmitter::EmitFinally()
 			var li = SymTable::ReadLock()

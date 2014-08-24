@@ -19,7 +19,23 @@
 //
 //end class
 
+class public partial CodeGenerator
+
+	method public prototype void EmitMSIL(var stmts as StmtSet, var fpath as string)
+	method assembly prototype void Process(var c as IStmtContainer, var spth as string)
+
+end class
+
+#include "stmtreader.dyl"
+
 class public CodeGenerator
+
+	field private StmtReader sr
+
+	method public void CodeGenerator()
+		mybase::ctor()
+		sr = new StmtReader(me)
+	end method
 
 //	method private static void LPFile(var incstm as object)
 //		var tup as LPFileTuple = $LPFileTuple$incstm
@@ -84,13 +100,73 @@ class public CodeGenerator
 		end for
 	end method
 
+	method assembly void Process(var c as IStmtContainer, var spth as string)
+		var eval as Evaluator = new Evaluator()
+
+		foreach s in c::get_Children()
+			if s is HIfStmt then
+				if eval::EvaluateHIf(#expr($HIfStmt$s)::Exp) then
+					Process($HIfStmt$s, spth)
+					continue
+				end if
+
+				foreach b in #expr($HIfStmt$s)::Branches
+					if b is HElseIfStmt then
+						if eval::EvaluateHIf(#expr($HElseIfStmt$b)::Exp) then
+							Process($HElseIfStmt$b, spth)
+							break
+						end if
+					elseif b is HElseStmt then
+						Process($HElseStmt$b, spth)
+						break
+					end if
+				end for
+			elseif s is EndHIfStmt then
+			else
+				if s is IncludeStmt then
+					var inclustm as IncludeStmt = $IncludeStmt$s
+					//var pth as string
+					var sset as StmtSet
+					
+					//lock inclustm::Path
+						
+						//if inclustm::HasError then
+						//	StreamUtils::Terminate()
+						//end if
+
+						inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::get_UnquotedValue())
+						//pth = inclustm::Path::Value
+						
+						if inclustm::SSet == null then
+							if !File::Exists(inclustm::Path::Value) then
+								StreamUtils::WriteError(inclustm::Line, spth, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
+							end if
+							StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
+							var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
+							StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
+							sset = new Parser()::Parse(pstmts)
+							inclustm::SSet = sset
+							StreamUtils::WriteLine(string::Format("Finished Processing: {0} (inline)", inclustm::Path::Value))
+						else
+							sset = inclustm::SSet
+						end if
+					//end lock
+						
+					EmitMSIL(sset, inclustm::Path::Value)
+				else
+					if s != null then
+						sr::Read(s, spth)
+					end if
+				end if
+			end if
+		end for
+	end method
+
 	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
 
 		//ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
 		
-		var i as integer = -1
-		var helseflg as boolean = true
-		var procflg as boolean = true
+		//var i as integer = -1
 		
 		if ILEmitter::SrcFiles::get_Count() == 0 then
 			SymTable::DefSyms::Clear()
@@ -110,77 +186,7 @@ class public CodeGenerator
 			end if
 		end if
 		
-		var eval as Evaluator = new Evaluator()
-		var hefs as C5.IStack<of boolean> = new C5.LinkedList<of boolean>()
-		var pfs as C5.IStack<of boolean> = new C5.LinkedList<of boolean>()
-		
-		do until i = (stmts::Stmts::get_Count() - 1)
-			i++
-			if stmts::Stmts::get_Item(i) is HCondCompStmt then
-				if stmts::Stmts::get_Item(i) is HIfStmt then
-					hefs::Push(helseflg)
-					pfs::Push(procflg)
-					helseflg = procflg
-					if eval::EvaluateHIf(#expr($HIfStmt$stmts::Stmts::get_Item(i))::Exp) and helseflg then
-						procflg = true
-						helseflg = false
-					else
-						procflg = false
-					end if
-				elseif stmts::Stmts::get_Item(i) is HElseIfStmt then
-					if eval::EvaluateHIf(#expr($HElseIfStmt$stmts::Stmts::get_Item(i))::Exp) and helseflg then
-						procflg = true
-						helseflg = false
-					else
-						procflg = false
-					end if
-				elseif stmts::Stmts::get_Item(i) is HElseStmt then
-					procflg = helseflg
-				elseif stmts::Stmts::get_Item(i) is EndHIfStmt then
-					helseflg = hefs::Pop()
-					procflg = pfs::Pop()
-				end if
-			elseif procflg then
-				if stmts::Stmts::get_Item(i) is IncludeStmt then
-					var inclustm as IncludeStmt = $IncludeStmt$stmts::Stmts::get_Item(i)
-					//var pth as string
-					var sset as StmtSet
-					
-					lock inclustm::Path
-						
-						if inclustm::HasError then
-							StreamUtils::Terminate()
-						end if
-
-						if inclustm::Path::Value like c"^\q(.)*\q$" then
-							inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
-						end if
-						inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
-						//pth = inclustm::Path::Value
-						
-						if inclustm::SSet == null then
-							if !File::Exists(inclustm::Path::Value) then
-								StreamUtils::WriteError(inclustm::Line, stmts::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
-							end if
-							StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
-							var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
-							StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
-							sset = new Parser()::Parse(pstmts)
-							inclustm::SSet = sset
-							StreamUtils::WriteLine(string::Format("Finished Processing: {0} (inline)", inclustm::Path::Value))
-						else
-							sset = inclustm::SSet
-						end if
-					end lock
-						
-					EmitMSIL(sset, inclustm::Path::Value)
-				else
-					if stmts::Stmts::get_Item(i) != null then
-						new StmtReader()::Read(stmts::Stmts::get_Item(i), fpath)
-					end if
-				end if
-			end if
-		end do
+		Process(stmts, fpath)
 		
 		ILEmitter::PopSrcFile()
 

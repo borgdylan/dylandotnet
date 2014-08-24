@@ -24,14 +24,12 @@ class public VarAsgnStmt extends Stmt
 	field public TypeTok VarTyp
 	field public Ident VarName
 	field public Expr RExpr
-	field public boolean IsUsing
-	
+
 	method public void VarAsgnStmt()
 		mybase::ctor()
 		VarTyp = new TypeTok()
 		VarName = new Ident()
 		RExpr = new Expr()
-		//IsUsing = false
 	end method
 
 end class
@@ -40,18 +38,44 @@ class public InfVarAsgnStmt extends Stmt
 
 	field public Ident VarName
 	field public Expr RExpr
-	field public boolean IsUsing
 
 	method public void InfVarAsgnStmt()
 		mybase::ctor()
 		VarName = new Ident()
 		RExpr = new Expr()
-		//IsUsing = false
 	end method
 
 end class
 
-class public EndUsingStmt extends Stmt
+class public UsingAsgnStmt extends BlockStmt
+
+	field public TypeTok VarTyp
+	field public Ident VarName
+	field public Expr RExpr
+
+	method public void UsingAsgnStmt()
+		mybase::ctor()
+		VarTyp = new TypeTok()
+		VarName = new Ident()
+		RExpr = new Expr()
+	end method
+
+end class
+
+class public InfUsingAsgnStmt extends BlockStmt
+
+	field public Ident VarName
+	field public Expr RExpr
+
+	method public void InfVarAsgnStmt()
+		mybase::ctor()
+		VarName = new Ident()
+		RExpr = new Expr()
+	end method
+
+end class
+
+class public EndUsingStmt extends EndStmt
 	method public override string ToString()
 		return "end using"
 	end method

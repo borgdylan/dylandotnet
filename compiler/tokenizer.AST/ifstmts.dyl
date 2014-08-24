@@ -6,18 +6,42 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 #region "normal variants"
-	class public IfStmt extends Stmt
+
+	class public IfStmt extends BlockStmt implements IBranchContainer
 
 		field public Expr Exp
+		field public C5.ArrayList<of BranchStmt> Branches
 
 		method public void IfStmt()
 			mybase::ctor()
 			Exp = new Expr()
+			Branches = new C5.ArrayList<of BranchStmt>()
 		end method
+
+		method public override newslot void AddBranch(var stmttoadd as BranchStmt)
+			Branches::Add(stmttoadd)
+			stmttoadd::set_Parent(me)
+		end method
+
+		property public override newslot IStmtContainer CurrentContainer
+			get
+				if Branches::get_Count() == 0 then
+					return me
+				else
+					return Branches::get_Last()
+				end if
+			end get
+		end property
+
+		property public override newslot BranchStmt[] BranchChildren
+			get
+				return Branches::ToArray()
+			end get
+		end property
 
 	end class
 
-	class public ElseIfStmt extends Stmt
+	class public ElseIfStmt extends BranchStmt
 
 		field public Expr Exp
 
@@ -28,29 +52,52 @@
 
 	end class
 
-	class public ElseStmt extends Stmt
+	class public ElseStmt extends BranchStmt
 	end class
 
-	class public EndIfStmt extends Stmt
+	class public EndIfStmt extends EndStmt
 	end class
 end #region
 
 #region "conditional compilation variants"
-	class public HCondCompStmt extends Stmt
-	end class
+	interface public IHCondCompStmt
+	end interface
 
-	class public HIfStmt extends HCondCompStmt
+	class public HIfStmt extends BlockStmt implements IHCondCompStmt, IBranchContainer
 
 		field public Expr Exp
+		field public C5.ArrayList<of BranchStmt> Branches
 
 		method public void HIfStmt()
 			mybase::ctor()
 			Exp = new Expr()
+			Branches = new C5.ArrayList<of BranchStmt>()
 		end method
+
+		method public override newslot void AddBranch(var stmttoadd as BranchStmt)
+			Branches::Add(stmttoadd)
+			stmttoadd::set_Parent(me)
+		end method
+
+		property public override newslot IStmtContainer CurrentContainer
+			get
+				if Branches::get_Count() == 0 then
+					return me
+				else
+					return Branches::get_Last()
+				end if
+			end get
+		end property
+
+		property public override newslot BranchStmt[] BranchChildren
+			get
+				return Branches::ToArray()
+			end get
+		end property
 
 	end class
 
-	class public HElseIfStmt extends HCondCompStmt
+	class public HElseIfStmt extends BranchStmt implements IHCondCompStmt
 
 		field public Expr Exp
 
@@ -61,10 +108,10 @@ end #region
 
 	end class
 
-	class public HElseStmt extends HCondCompStmt
+	class public HElseStmt extends BranchStmt implements IHCondCompStmt
 	end class
 
-	class public EndHIfStmt extends HCondCompStmt
+	class public EndHIfStmt extends EndStmt implements IHCondCompStmt
 	end class
 
 	class public HDefineStmt extends Stmt

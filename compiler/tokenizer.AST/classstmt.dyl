@@ -7,7 +7,7 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 // class Attrs ClassName extends InhClass implements ImplInterafaces
-class public ClassStmt extends Stmt implements IMayHaveConstraints, IConstrainable
+class public ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstrainable
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public TypeTok ClassName
@@ -16,7 +16,7 @@ class public ClassStmt extends Stmt implements IMayHaveConstraints, IConstrainab
 	field private C5.HashDictionary<of string, C5.LinkedList<of Token> > _Constraints
 
 	method public void ClassStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Class)
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		ClassName = new TypeTok()
 		InhClass = new TypeTok()
@@ -26,6 +26,9 @@ class public ClassStmt extends Stmt implements IMayHaveConstraints, IConstrainab
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
 		Attrs::Add(attrtoadd)
+		if attrtoadd is InterfaceAttr then
+			_Context = ContextType::Interface
+		end if
 	end method
 
 	method public void AddInterface(var interftoadd as TypeTok)
@@ -52,7 +55,7 @@ class public ClassStmt extends Stmt implements IMayHaveConstraints, IConstrainab
 	end property
 end class
 
-class public EndClassStmt extends Stmt
+class public EndClassStmt extends EndStmt
 
 	field public Token EndToken 
 

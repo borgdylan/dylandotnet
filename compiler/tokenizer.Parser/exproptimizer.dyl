@@ -778,8 +778,7 @@ class public ExprOptimizer
 		var state as boolean = true
 
 		for k = i upto j
-			//REVIEW: do implementation
-		 	//StreamUtils::WriteWarn(exp::Line, PFlags::CurPath, "Expressions should not be empty!")
+			//StreamUtils::WriteWarn(exp::Line, PFlags::CurPath, "Expressions should not be empty!")
 			var tok = exp::Tokens::get_Item(k)
 			if state then
 				if tok is ValueToken then

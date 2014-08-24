@@ -27,10 +27,87 @@ class public Stmt
 
 end class
 
+enum public integer ContextType
+	None = 0
+	Assembly = 1
+	Class = 2
+	Interface = 3
+	Enum = 4
+	Property = 5
+	Event = 6
+	Method = 7
+	AbstractProperty = 8
+	AbstractEvent = 9
+end enum
+
+interface public IStmtContainer
+
+	method public void AddStmt(var stmttoadd as Stmt)
+	property public autogen ContextType Context
+	property public autogen IStmtContainer Parent
+	property public autogen initonly Stmt[] Children
+	method public boolean IsOneLiner(var ctx as IStmtContainer) 
+
+end interface
+
 class public abstract IgnorableStmt extends Stmt
 end class
 
-class public StmtSet
+class public BlockStmt extends Stmt implements IStmtContainer
+
+	field public C5.ArrayList<of Stmt> Stmts
+	field family ContextType _Context
+	field family IStmtContainer _Parent
+
+	method public void BlockStmt(var ctx as ContextType)
+		mybase::ctor()
+		Stmts = new C5.ArrayList<of Stmt>()
+		_Context = ctx
+	end method
+
+	method public void BlockStmt()
+		ctor(ContextType::None)
+	end method
+
+	method public override newslot void AddStmt(var stmttoadd as Stmt)
+		Stmts::Add(stmttoadd)
+
+		var sc = stmttoadd as IStmtContainer 
+		if sc != null then
+			sc::set_Parent(me)
+		end if
+	end method
+
+	property public override newslot autogen IStmtContainer Parent
+	property public override newslot autogen ContextType Context
+
+	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
+		return false
+	end method
+	
+	property public override newslot Stmt[] Children
+		get
+			return Stmts::ToArray()
+		end get
+	end property
+
+end class
+
+class public BranchStmt extends BlockStmt
+end class
+
+interface public IBranchContainer implements IStmtContainer
+
+	method public void AddBranch(var stmttoadd as BranchStmt)
+	property public autogen initonly IStmtContainer CurrentContainer
+	property public autogen initonly BranchStmt[] BranchChildren
+
+end interface
+
+class public EndStmt extends Stmt
+end class
+
+class public StmtSet implements IStmtContainer
 
 	field public C5.ArrayList<of Stmt> Stmts
 	field public string Path
@@ -47,8 +124,39 @@ class public StmtSet
 		Path = p
 	end method
 
-	method public void AddStmt(var stmttoadd as Stmt)
+	method public override newslot void AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
+
+		var sc = stmttoadd as IStmtContainer 
+		if sc != null then
+			sc::set_Parent(me)
+		end if
 	end method
+
+	property public override newslot ContextType Context
+		get
+			return ContextType::Assembly
+		end get
+		set
+		end set
+	end property
+
+	property public override newslot IStmtContainer Parent
+		get
+			return null
+		end get
+		set
+		end set
+	end property
+
+	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
+		return false
+	end method
+
+	property public override newslot Stmt[] Children
+		get
+			return Stmts::ToArray()
+		end get
+	end property
 
 end class

@@ -35,7 +35,7 @@ class public beforefieldinit Token
 			if string::IsNullOrEmpty(Value) then
 				return string::Empty
 			end if
-			return #ternary { Value like c"^\q(.)*\q$" ? Value::Trim(q) , Value }
+			return #ternary { Value like c"^\q(.)*\q$" ? Value::Trim(q) , Value}
 		end get
 	end property
 

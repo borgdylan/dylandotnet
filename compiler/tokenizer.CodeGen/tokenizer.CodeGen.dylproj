@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Tokenizer.CodeGen</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
-    <ReleaseVersion>11.3.8.6</ReleaseVersion>
+    <ReleaseVersion>11.4.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

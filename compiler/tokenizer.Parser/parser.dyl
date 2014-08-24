@@ -1,4 +1,4 @@
-//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
+//    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2014 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -23,7 +23,11 @@ class public Parser
 		var i as integer = -1
 		var so as StmtOptimizer = new StmtOptimizer(PFlags)
 		PFlags::CurPath = stms::Path
-		
+
+		var nwss as StmtSet = new StmtSet() {Path = stms::Path}
+		var cstack as C5.LinkedList<of IStmtContainer> = new C5.LinkedList<of IStmtContainer>() {Push(nwss)}
+		var curc as IStmtContainer = nwss
+
 		do until i >= (--stms::Stmts::get_Count())
 			i++
 			var cs as Stmt = stms::Stmts::get_Item(i)
@@ -31,13 +35,43 @@ class public Parser
 			do while cs::Tokens::get_Item(--cs::Tokens::get_Count())::Value == "_"
 				cs::RemToken(--cs::Tokens::get_Count())
 				cs::Tokens::AddAll(stms::Stmts::get_Item(++i)::Tokens)
-				stms::Stmts::RemoveAt(++i)
+				i++
 			end do
 			
-			stms::Stmts::set_Item(i,so::Optimize(cs))
+			var nstm = so::Optimize(cs)
+			if nstm is BranchStmt then
+				var curb = cstack::get_Last() as IBranchContainer
+				if curb != null then
+					curb::AddBranch($BranchStmt$nstm)
+					curc = $IStmtContainer$nstm
+				else
+					//TODO: throw an error here (cant branch on a non branch container)
+					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, "You cannot branch on a non-branchable container!")
+				end if
+			elseif nstm is IStmtContainer then
+				curc::AddStmt(nstm)
+				var isc = $IStmtContainer$nstm
+				if !isc::IsOneLiner(curc) then
+					cstack::Push(isc)
+					curc = isc
+				end if
+			elseif nstm is EndStmt then
+				curc::AddStmt(nstm)
+				cstack::Pop()
+
+				var curb = cstack::get_Last() as IBranchContainer
+				if curb != null then
+					curc = curb::get_CurrentContainer()
+				else
+					curc = cstack::get_Last()
+				end if
+			else
+				curc::AddStmt(nstm)
+			end if
+
 		end do
 		
-		return stms
+		return nwss
 	end method
 
 end class

@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public MethodStmt extends Stmt
+class public MethodStmt extends BlockStmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public MethodNameTok MethodName
@@ -14,7 +14,7 @@ class public MethodStmt extends Stmt
 	field public C5.LinkedList<of Expr> Params
 
 	method public void MethodStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Method)
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		MethodName = new MethodNameTok()
 		Params = new C5.LinkedList<of Expr>()
@@ -29,9 +29,27 @@ class public MethodStmt extends Stmt
 		Params::Add(paramtoadd)
 	end method
 
+	method public override boolean IsOneLiner(var ctx as IStmtContainer)
+		if ctx::get_Context() == ContextType::Interface then
+			return true
+		end if
+
+		foreach a in Attrs
+			if a is PinvokeImplAttr then
+				return true
+			elseif a is AbstractAttr then
+				return true
+			elseif a is PrototypeAttr then
+				return true
+			end if
+		end for
+
+		return false
+	end method
+
 end class
 
-class public EndMethodStmt extends Stmt
+class public EndMethodStmt extends EndStmt
 	method public override string ToString()
 		return "end method"
 	end method

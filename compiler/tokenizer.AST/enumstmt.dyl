@@ -6,14 +6,14 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public EnumStmt extends Stmt
+class public EnumStmt extends BlockStmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident EnumName
 	field public TypeTok EnumTyp
 
 	method public void EnumStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Enum)
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		EnumName = new Ident()
 		EnumTyp = new TypeTok()
@@ -25,7 +25,7 @@ class public EnumStmt extends Stmt
 	
 end class
 
-class public EndEnumStmt extends Stmt
+class public EndEnumStmt extends EndStmt
 	method public override string ToString()
 		return "end enum"
 	end method

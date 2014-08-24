@@ -1794,8 +1794,14 @@ class public StmtOptimizer
 					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", le::Tokens::get_Item(1)::Value))
 				end if
 
-				return new VarAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), VarTyp = $TypeTok$le::Tokens::get_Item(3), _
-					RExpr = eop::Optimize(asss::RExp), IsUsing = le::Tokens::get_Item(0) is UsingTok}
+				if le::Tokens::get_Item(0) is UsingTok then
+					return new UsingAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), VarTyp = $TypeTok$le::Tokens::get_Item(3), _
+						RExpr = eop::Optimize(asss::RExp)}
+				else
+
+					return new VarAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), VarTyp = $TypeTok$le::Tokens::get_Item(3), _
+						RExpr = eop::Optimize(asss::RExp)}
+				end if
 			else
 				return stm
 			end if
@@ -1806,8 +1812,13 @@ class public StmtOptimizer
 					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", le::Tokens::get_Item(1)::Value))
 				end if
 
-				return new InfVarAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), _
-					RExpr = eop::Optimize(asss::RExp), IsUsing = le::Tokens::get_Item(0) is UsingTok}
+				if le::Tokens::get_Item(0) is UsingTok then
+					return new InfUsingAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), _
+						RExpr = eop::Optimize(asss::RExp)}
+				else
+					return new InfVarAsgnStmt() {Line = asss::Line, VarName = $Ident$le::Tokens::get_Item(1), _
+						RExpr = eop::Optimize(asss::RExp)}
+				end if
 			else
 				return stm
 			end if
@@ -1851,7 +1862,7 @@ class public StmtOptimizer
 			b = true
 			var asss as AssignStmt = new AssignStmt() {Line = stm::Line, LExp = le, RExp = re}
 			var asss2 as Stmt = AssOpt(asss)
-			if (asss2 is VarAsgnStmt) orelse (asss2 is InfVarAsgnStmt) then
+			if (asss2 is VarAsgnStmt) orelse (asss2 is InfVarAsgnStmt) orelse (asss2 is UsingAsgnStmt) orelse (asss2 is InfUsingAsgnStmt) then
 				return asss2
 			else
 				var eop as ExprOptimizer = new ExprOptimizer(PFlags)

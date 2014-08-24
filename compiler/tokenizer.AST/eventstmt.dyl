@@ -6,14 +6,14 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public EventStmt extends Stmt
+class public EventStmt extends BlockStmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident EventName
 	field public TypeTok EventTyp
 
 	method public void EventStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Event)
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		EventName = new Ident()
 		EventTyp = new TypeTok()
@@ -21,45 +21,58 @@ class public EventStmt extends Stmt
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)
 		Attrs::Add(attrtoadd)
+		if attrtoadd is AbstractAttr then
+			_Context = ContextType::AbstractEvent
+		end if
 	end method
 
 end class
 
-class public EventAddStmt extends Stmt
+class public EventAddStmt extends BlockStmt
 
 	field public Ident Adder
 
 	method public void EventAddStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Method)
 		//Adder = null
+	end method
+
+	method public override boolean IsOneLiner(var ctx as IStmtContainer)
+		return ctx::get_Context() == ContextType::AbstractEvent orelse _
+			ctx::get_Parent()::get_Context() == ContextType::Interface
 	end method
 
 end class
 
-class public EventRemoveStmt extends Stmt
+class public EventRemoveStmt extends BlockStmt
 
 	field public Ident Remover
 
 	method public void EventRemoveStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Method)
 		//Remover = null
+	end method
+
+	method public override boolean IsOneLiner(var ctx as IStmtContainer)
+		return ctx::get_Context() == ContextType::AbstractEvent orelse _
+			ctx::get_Parent()::get_Context() == ContextType::Interface
 	end method
 
 end class
 
-class public EndEventStmt extends Stmt
+class public EndEventStmt extends EndStmt
 	method public override string ToString()
 		return "end event"
 	end method
 end class
 
-class public EndAddStmt extends Stmt
+class public EndAddStmt extends EndStmt
 	method public override string ToString()
 		return "end add"
 	end method
 end class
 
-class public EndRemoveStmt extends Stmt
+class public EndRemoveStmt extends EndStmt
 	method public override string ToString()
 		return "end remove"
 	end method

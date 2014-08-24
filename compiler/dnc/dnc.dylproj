@@ -8,13 +8,14 @@
     <RootNamespace>dylan.NET.Compiler</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>dnc</AssemblyName>
-    <ReleaseVersion>11.3.8.6</ReleaseVersion>
+    <ReleaseVersion>11.4.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <DefineConstants>DEBUG</DefineConstants>
+    <!--<Commandlineparameters>-cd /var/www/Code/dylannet/dylandotnet/compiler/template/ template.dyl</Commandlineparameters>-->
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
