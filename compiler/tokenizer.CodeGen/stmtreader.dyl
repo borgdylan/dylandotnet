@@ -1089,11 +1089,6 @@ class public StmtReader
 			eit = typ::ToString()
 			prssnamstr = typ::ToString() + "." + propoverldnam
 		end if
-		
-		AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prssnamstr, PropertyAttributes::None, ptyp, paramstyps)
-		SymTable::CurnProp = new PropertyItem(propnam, ptyp, AsmFactory::CurnPropB, prss::Attrs, eit) {ParamTyps = paramstyps, Params = prss::Params}
-		
-		Helpers::ApplyPropAttrs()
 
 		StreamUtils::Write("	Adding Property: ")
 		StreamUtils::WriteLine(prss::PropertyName::Value)
@@ -1108,6 +1103,13 @@ class public StmtReader
 		if ILEmitter::InterfaceFlg then
 			prss::AddAttr(new AbstractAttr())
 		end if
+
+		var pattrs = new C5.ArrayList<of Attributes.Attribute>() {AddAll(prss::Attrs)}
+
+		AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prssnamstr, PropertyAttributes::None, ptyp, paramstyps)
+		SymTable::CurnProp = new PropertyItem(propnam, ptyp, AsmFactory::CurnPropB, pattrs, eit) {ParamTyps = paramstyps, Params = prss::Params}
+		
+		Helpers::ApplyPropAttrs()
 
 		var i as integer = -1
 		foreach a in prss::Attrs
@@ -1132,9 +1134,9 @@ class public StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Auto generation of Indexers is not supported!")
 			end if
 
-			prss::Attrs::RemoveAt(isautoind)
+			pattrs::RemoveAt(isautoind)
 			if isrdonly then
-				prss::Attrs::RemoveAt(isrdonlyind)
+				pattrs::RemoveAt(isrdonlyind)
 			end if
 
 			//it is not an error that these are not eval'd in all cases (METHODS HAVE SIMILAR VALIDATION)
