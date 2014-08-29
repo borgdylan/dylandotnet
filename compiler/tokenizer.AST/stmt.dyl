@@ -14,7 +14,6 @@ class public Stmt
 	method public void Stmt()
 		mybase::ctor()
 		Tokens = new C5.ArrayList<of Token>(5)
-		//Line = 0
 	end method
 
 	method public void AddToken(var toktoadd as Token)

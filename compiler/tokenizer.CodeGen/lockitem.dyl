@@ -14,14 +14,11 @@ class public LockItem extends TryItem
 
 	method public void LockItem()
 		mybase::ctor(0)
-		//LockeeLoc = 0
-		//IsTryLock = false
 	end method
 
 	method public void LockItem(var loc as integer, var ln as integer)
 		mybase::ctor(ln)
 		LockeeLoc = loc
-		//IsTryLock = false
 	end method
 
 	method public void LockItem(var loc as integer, var lb as Emit.Label, var ln as integer)

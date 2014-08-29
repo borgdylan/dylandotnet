@@ -15,7 +15,6 @@ class private TILambdas
 	method assembly void TILambdas()
 		mybase::ctor()
 		Name = string::Empty
-		//TB = null
 	end method
 
 	method assembly void TILambdas(var name as string, var gp as integer)

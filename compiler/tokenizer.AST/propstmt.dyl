@@ -50,7 +50,6 @@ class public PropertySetStmt extends BlockStmt
 
 	method public void PropertySetStmt()
 		mybase::ctor(ContextType::Method)
-		//Setter = null
 	end method
 
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)
@@ -66,7 +65,6 @@ class public PropertyGetStmt extends BlockStmt
 
 	method public void PropertyGetStmt()
 		mybase::ctor(ContextType::Method)
-		//Getter = null
 	end method
 
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)

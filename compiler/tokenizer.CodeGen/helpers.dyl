@@ -17,18 +17,7 @@ class public static Helpers
 	field public static boolean BaseFlg
 	field public static IKVM.Reflection.Type LeftOp
 	field public static IKVM.Reflection.Type RightOp
-	
-	//method private static void Helpers()
-		//StringFlg = false
-		//DelegateFlg = false
-		//OpCodeSuppFlg = false
-		//EqSuppFlg = false
-		//BaseFlg = false
-		//NullExprFlg = false
-		//LeftOp = null
-		//RightOp = null
-	//end method
-	
+
 	//uses NullExprFlag as input
 	[method: ComVisible(false)]
 	method public static void CheckAssignability(var t1 as IKVM.Reflection.Type, var t2 as IKVM.Reflection.Type)

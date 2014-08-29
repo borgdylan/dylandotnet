@@ -14,7 +14,6 @@ class public LoopItem
 
 	method public void LoopItem()
 		mybase::ctor()
-		//Line = 0
 	end method
 
 	method public void LoopItem(var startl as Emit.Label, var endl as Emit.Label, var ln as integer)
@@ -38,10 +37,7 @@ class public ForLoopItem extends LoopItem
 	method public void ForLoopItem()
 		mybase::ctor()
 		Iter = string::Empty
-		//StepExp = null
 		Direction = true
-		//ContinueFlg = false
-		//Typ = null
 	end method
 
 	method public void ForLoopItem(var startl as Emit.Label, var endl as Emit.Label, var iter as string, var _step as Expr, var dir as boolean, var t as TypeTok, var ln as integer)
@@ -49,7 +45,6 @@ class public ForLoopItem extends LoopItem
 		Iter = iter
 		StepExp = _step
 		Direction = dir
-		//ContinueFlg = false
 		Typ = t
 	end method
 

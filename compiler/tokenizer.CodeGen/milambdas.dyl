@@ -16,16 +16,12 @@ class private MILambdas2
 	method assembly void MILambdas2()
 		mybase::ctor()
 		Name = string::Empty
-		//Params = null
-		//ParamLen = 0
-		//Auxt = null
 	end method
 
 	method assembly void MILambdas2(var name as string, var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		mybase::ctor()
 		Name = name
 		Params = params
-		//ParamLen = 0
 		Auxt = auxt
 	end method
 	
@@ -33,14 +29,12 @@ class private MILambdas2
 		mybase::ctor()
 		Name = string::Empty
 		Params = params
-		//ParamLen = 0
 		Auxt = auxt
 	end method
 	
 	method assembly void MILambdas2(var name as string, var pl as integer)
 		mybase::ctor()
 		Name = name
-		//Params = null
 		ParamLen = pl
 	end method
 

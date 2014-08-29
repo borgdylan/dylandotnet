@@ -31,8 +31,6 @@ class public static SymTable
 	
 	field private static C5.LinkedList<of IfItem> IfLst
 	field assembly static C5.LinkedList<of Tuple<of string, string, boolean> > ResLst
-	//field private static C5.LinkedList<of LockItem> LockLst
-	//field private static C5.LinkedList<of UsingItem> UsingLst
 	field private static C5.LinkedList<of LoopItem> LoopLst
 	field private static C5.LinkedList<of TryItem> TryLst
 
@@ -50,8 +48,6 @@ class public static SymTable
 		TypGenParams2 = new C5.HashDictionary<of string, TypeParamItem>()
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 		IfLst = new C5.LinkedList<of IfItem>()
-		//LockLst = new C5.LinkedList<of LockItem>()
-		//UsingLst = new C5.LinkedList<of UsingItem>()
 		LoopLst = new C5.LinkedList<of LoopItem>()
 		TryLst = new C5.LinkedList<of TryItem>()
 		LblLst = new C5.LinkedList<of LabelItem>()
@@ -502,16 +498,6 @@ class public static SymTable
 	method public static MethodItem FindProtoMet(var nam as string, var paramst as IKVM.Reflection.Type[])
 		return CurnTypItem::GetProtoMethod(nam,paramst)
 	end method
-
-//	[method: ComVisible(false)]
-//	method public static MethodItem FindMetNoParams(var nam as string)
-//		foreach met in CurnTypItem::Methods
-//			if nam = met::Name then
-//				return met
-//			end if
-//		end for
-//		return null
-//	end method
 
 	[method: ComVisible(false)]
 	method public static ConstructorInfo FindCtor(var paramst as IKVM.Reflection.Type[])

@@ -25,7 +25,6 @@ class public IncStmt extends Stmt
 
 	method public void IncStmt()
 		mybase::ctor()
-		//NumVar = null
 	end method
 
 end class
@@ -36,7 +35,6 @@ class public DecStmt extends Stmt
 
 	method public void DecStmt()
 		mybase::ctor()
-		//NumVar = null
 	end method
 
 end class

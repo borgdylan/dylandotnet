@@ -19,7 +19,6 @@ class public AttrValuePair extends Token
 	
 	method public void AttrValuePair()
 		mybase::ctor()
-		//ctor($Ident$null, $Expr$null)
 	end method
 
 end class

@@ -22,16 +22,9 @@ class public ExprCallTok extends ValueToken implements IUnaryOperatable, IConvab
 	
 	method public void ExprCallTok(var value as string)
 		mybase::ctor(value)
-		//_Conv = false
 		_TTok = new TypeTok()
-		//_DoNeg = false
-		//_DoNot = false
-		//_DoInc = false
-		//_DoDec = false
 		_OrdOp = string::Empty
-		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		//Exp = null
 	end method
 	
 	method public void ExprCallTok()

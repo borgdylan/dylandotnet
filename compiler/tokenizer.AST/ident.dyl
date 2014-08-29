@@ -33,20 +33,10 @@ class public Ident extends ValueToken implements IUnaryOperatable, IConvable, IN
 	
 	method public void Ident(var value as string)
 		mybase::ctor(value)
-		//IsRef = false
-		//IsValInRef = false
-		//_Conv = false
 		_TTok = new TypeTok()
-		//IsArr = false
 		ArrLoc = new Expr()
-		//_DoNeg = false
-		//_DoNot = false
-		//_DoInc = false
-		//_DoDec = false
 		_OrdOp = string::Empty
-		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		//ExplType = null
 	end method
 	
 	method public void Ident()

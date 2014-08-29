@@ -34,7 +34,6 @@ class public EventAddStmt extends BlockStmt
 
 	method public void EventAddStmt()
 		mybase::ctor(ContextType::Method)
-		//Adder = null
 	end method
 
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)
@@ -50,7 +49,6 @@ class public EventRemoveStmt extends BlockStmt
 
 	method public void EventRemoveStmt()
 		mybase::ctor(ContextType::Method)
-		//Remover = null
 	end method
 
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)

@@ -15,8 +15,6 @@ class public IncludeStmt extends Stmt
 	method public void IncludeStmt()
 		mybase::ctor()
 		Path = new Token()
-		//SSet = null
-		//HasError = false
 	end method
 	
 	method public override string ToString()

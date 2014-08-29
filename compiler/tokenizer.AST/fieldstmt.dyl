@@ -18,7 +18,6 @@ class public FieldStmt extends Stmt
 		Attrs = new C5.LinkedList<of Attributes.Attribute>()
 		FieldName = new Ident()
 		FieldTyp = new TypeTok()
-		//ConstExp = null
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)

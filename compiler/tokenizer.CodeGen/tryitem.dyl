@@ -14,7 +14,6 @@ class public TryItem
 	method public void TryItem(var ln as integer)
 		mybase::ctor()
 		Line = ln
-		//InCatch = false
 	end method
 
 	method public void TryItem()

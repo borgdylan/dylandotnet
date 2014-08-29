@@ -21,12 +21,7 @@ class public VarItem
 	method public void VarItem()
 		mybase::ctor()
 		Name = String::Empty
-		//LocArg = false
 		Index = -1
-		//VarTyp = null
-		//Used = false
-		//Stored = false
-		//Line = 0
 		StoreLines = new C5.TreeSet<of integer>()
 	end method
 
@@ -36,9 +31,6 @@ class public VarItem
 		LocArg = la
 		Index = ind
 		VarTyp = typ
-		//Used = false
-		//Stored = false
-		//Line = 0
 		StoreLines = new C5.TreeSet<of integer>()
 	end method
 
@@ -48,8 +40,6 @@ class public VarItem
 		LocArg = la
 		Index = ind
 		VarTyp = typ
-		//Used = false
-		//Stored = false
 		Line = line
 		StoreLines = new C5.TreeSet<of integer>()
 	end method

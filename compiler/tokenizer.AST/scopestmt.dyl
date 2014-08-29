@@ -15,8 +15,6 @@ class public ScopeStmt extends Stmt
 
 	method public void ScopeStmt()
 		mybase::ctor()
-		//Opt = null
-		//Flg = false
 	end method
 
 	method public void setFlg()

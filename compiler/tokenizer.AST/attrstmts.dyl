@@ -13,7 +13,6 @@ class public abstract AttrStmt extends Stmt
 
 	method family void AttrStmt()
 		mybase::ctor()
-		//Ctor = null
 		Pairs = new C5.ArrayList<of AttrValuePair>()
 	end method
 

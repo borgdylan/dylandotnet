@@ -274,6 +274,12 @@ namespace dylan.NET.K
 	        	    if (effectiveTargetFramework.Identifier == ".NETFramework") {
 		        	    fxId = "NET";
 		        	}
+		        	else if (effectiveTargetFramework.Identifier == "Asp.Net") {
+		        	    fxId = "ASPNET";
+		        	}
+		        	else if (effectiveTargetFramework.Identifier == "Asp.NetCore") {
+		        	    fxId = "ASPNETCORE";
+		        	}
 		        	else if (effectiveTargetFramework.Identifier == ".NETPortable") {
 		        	    fxId = "PORTABLE";
 		        	}

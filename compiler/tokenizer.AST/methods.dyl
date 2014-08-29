@@ -16,7 +16,6 @@ class public MethodCallTok extends ValueToken
 	method public void MethodCallTok(var value as string)
 		mybase::ctor(value)
 		Name = new MethodNameTok()
-		//PopFlg = false
 		Params = new C5.ArrayList<of Expr>()
 		TypArr = IKVM.Reflection.Type::EmptyTypes
 	end method
@@ -65,19 +64,3 @@ class public DefaultCallTok extends ValueToken
 	end method
 
 end class
-
-//class public PtrCallTok extends ValueToken
-//
-//	field public MethodNameTok MetToCall
-//
-//	method public void PtrCallTok()
-//		mybase::ctor()
-//		MetToCall = new MethodNameTok()
-//	end method
-//
-//	method public void PtrCallTok(var value as string)
-//		mybase::ctor(value)
-//		MetToCall = new MethodNameTok()
-//	end method
-//
-//end class

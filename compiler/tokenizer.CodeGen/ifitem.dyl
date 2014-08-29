@@ -15,8 +15,6 @@ class public IfItem
 
 	method public void IfItem()
 		mybase::ctor()
-		//ElsePass = false
-		//Line = 0
 	end method
 
 	method public void IfItem(var endl as Emit.Label, var nbl as Emit.Label, var ln as integer)

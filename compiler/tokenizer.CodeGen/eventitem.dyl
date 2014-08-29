@@ -17,10 +17,7 @@ class public EventItem
 	method public void EventItem()
 		mybase::ctor()
 		Name = string::Empty
-		//EventTyp = null
-		//EventBldr = null
 		ExplImplType = string::Empty
-		//Attrs = null
 	end method
 
 	method public void EventItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as EventBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)

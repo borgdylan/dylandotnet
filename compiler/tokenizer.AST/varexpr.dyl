@@ -16,7 +16,6 @@ class public VarExpr extends Expr
 		mybase::ctor()
 		VarTyp = new TypeTok()
 		VarName = new Ident()
-		//Attr = null
 	end method
 
 end class

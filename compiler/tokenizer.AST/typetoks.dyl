@@ -14,9 +14,6 @@ class public TypeTok extends ValueToken implements ICloneable
 
 	method public void TypeTok(var value as string)
 		mybase::ctor(value)
-		//IsArray = false
-		//IsByRef = false
-		//RefTyp = null
 	end method
 	
 	method public void TypeTok()

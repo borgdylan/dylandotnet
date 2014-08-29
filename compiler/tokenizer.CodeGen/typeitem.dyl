@@ -27,24 +27,19 @@ class public partial TypeItem
 
 	method private void TypeItem(var nme as string, var bld as TypeBuilder, var bld3 as EnumBuilder)
 		mybase::ctor()
-		//IsStatic = false
 		Name = nme
 		TypeBldr = bld
 		EnumBldr = bld3
-		//InhTyp = null
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
 		Methods = new C5.HashDictionary<of string, C5.IList<of MethodItem> >()
 		Types = new C5.LinkedList<of TypeItem>()
 		Ctors = new C5.LinkedList<of CtorItem>()
 		Fields = new C5.HashDictionary<of string, FieldItem>()
-		//BakedTyp = null
-		//NrGenParams = 0
 		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
 	end method
 	
 	method public void TypeItem(var nme as string, var bld as TypeBuilder)
 		ctor(nme, bld, $EnumBuilder$null)
-		//IsEnum = false
 	end method
 	
 	method public void TypeItem(var nme as string, var bld3 as EnumBuilder)

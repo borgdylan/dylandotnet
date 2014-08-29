@@ -14,9 +14,6 @@ class public CollectionItem
 	
 	method public void CollectionItem()
 		mybase::ctor()
-		//ElemType = null
-		//Ctor = null
-		//AddMtd = null
 	end method
 
 end class

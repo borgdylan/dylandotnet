@@ -1,15 +1,19 @@
 ﻿{	
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"authors": ["borgdylan"],
 	"description": "dylan.NET support for ASP.NET vNext (Project K)",
     "dependencies": {
     },
-
+	"compilationOptions": {
+     "define": [],
+     "optimize": "true",
+     "warningsAsErrors": "false"
+  },
     "frameworks" : {
         "net45" : { 
             "dependencies": {
             	"Microsoft.Framework.Runtime": "1.0.0-*",
-       			 "dylan.NET" : "11.4.1.1"
+       			 "dylan.NET" : "11.4.2.1"
             }
         }
     }

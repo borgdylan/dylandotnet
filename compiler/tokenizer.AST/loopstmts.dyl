@@ -38,7 +38,6 @@ class public ForeachStmt extends BlockStmt
 		mybase::ctor()
 		Exp = new Expr()
 		Iter = new Ident()
-		//Typ = null
 	end method
 
 end class
@@ -56,9 +55,6 @@ class public ForStmt extends BlockStmt
 		mybase::ctor()
 		StartExp = new Expr()
 		EndExp = new Expr()
-		//Iter = null
-		//Typ = null
-		//StepExp = null
 		Direction = true
 	end method
 

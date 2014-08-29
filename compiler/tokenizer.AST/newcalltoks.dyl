@@ -18,18 +18,14 @@ class public NewCallTok extends ValueToken
 		mybase::ctor()
 		Name = new TypeTok()
 		Params = new C5.ArrayList<of Expr>()
-		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		//PopFlg = false
 	end method
 
 	method public void NewCallTok(var value as string)
 		mybase::ctor(value)
 		Name = new TypeTok()
 		Params = new C5.ArrayList<of Expr>()
-		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		//PopFlg = false
 	end method
 
 	method public void AddParam(var paramtoadd as Expr)
@@ -70,14 +66,12 @@ class public ArrInitCallTok extends ValueToken
 		mybase::ctor()
 		ArrayType = new TypeTok()
 		Elements = new C5.ArrayList<of Expr>()
-		//ForceArray = false
 	end method
 
 	method public void ArrInitCallTok(var value as string)
 		mybase::ctor(value)
 		ArrayType = new TypeTok()
 		Elements = new C5.ArrayList<of Expr>()
-		//ForceArray = false
 	end method
 	
 	method public void AddElem(var eltoadd as Expr)
@@ -99,20 +93,14 @@ class public ObjInitCallTok extends ValueToken
 
 	method public void ObjInitCallTok()
 		mybase::ctor()
-		//Ctor = null
 		Elements = new C5.ArrayList<of Token>()
-		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		//PopFlg = false
 	end method
 
 	method public void ObjInitCallTok(var value as string)
 		mybase::ctor(value)
-		//Ctor = null
 		Elements = new C5.ArrayList<of Token>()
-		//MemberAccessFlg = false
 		MemberToAccess = new Token()
-		//PopFlg = false
 	end method
 	
 	method public void AddElem(var eltoadd as Token)

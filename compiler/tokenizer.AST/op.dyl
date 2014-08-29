@@ -14,9 +14,6 @@ class public abstract Op extends Token
 
 	method family void Op()
 		mybase::ctor()
-		//PrecNo = 0
-		//LChild = null
-		//RChild = null
 	end method
 
 end class

@@ -13,8 +13,6 @@ class private CILambdas
 
 	method assembly void CILambdas()
 		mybase::ctor()
-		//Params = null
-		//Auxt = null
 	end method
 
 	method assembly void CILambdas(var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)

@@ -592,18 +592,7 @@ class public StmtOptimizer
 		end if
 		return null
 	end method
-	
-//	method private Stmt checkScope(var stm as Stmt, var b as boolean&)
-//		b = stm::Tokens::get_Item(0) is ScopeTok
-//		if b then
-//			if stm::Tokens::get_Count() > 2 then
-//				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
-//			end if
-//			return new ScopeStmt() {Line = stm::Line, Opt = $SwitchTok$stm::Tokens::get_Item(1), setFlg()}
-//		end if
-//		return null
-//	end method
-	
+
 	method private Stmt checkImport(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is ImportTok
 		if b then
@@ -2181,13 +2170,7 @@ class public StmtOptimizer
 			stm = tmpstm
 			return stm
 		end if
-		
-//		tmpstm = checkScope(stm, ref compb)
-//		if compb then
-//			stm = tmpstm
-//			return stm
-//		end if
-		
+
 		tmpstm = checkInclude(stm, ref compb)
 		if compb then
 			stm = tmpstm

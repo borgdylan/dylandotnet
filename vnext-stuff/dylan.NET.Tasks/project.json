@@ -1,5 +1,5 @@
 ﻿{
-	"version": "1.0.2.0",
+	"version": "1.0.2.2",
 	"authors": ["borgdylan"],
 	"description": "Task helper library for dylan.NET (await support)", 
 	"code" : "*.dyl;*/*.dyl",
@@ -28,12 +28,17 @@
       "dependencies": {
      }
     },
+    "aspnet50": {
+      "dependencies": {
+      	"dylan.NET.K" : ""
+     }
+    },
     "net40": {
       "dependencies": {
       	"Microsoft.Bcl.Async" : "1.0.168"
       }
     },
-    "k10": {
+    "aspnetcore50": {
     	"dependencies": {
     		"System.Runtime": "4.0.20.0",
     		"System.Console": "4.0.0.0",

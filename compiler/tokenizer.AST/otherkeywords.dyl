@@ -22,9 +22,6 @@ class public NewTok extends Token
 
 end class
 
-//class public CastclassTok extends Token
-//end class
-
 class public GettypeTok extends Token
 
 	method public override string ToString()
@@ -65,20 +62,6 @@ class public ValInRefTok extends Token
 
 end class
 
-//class public PtrTok extends Token
-//
-//	method public override string ToString()
-//		return "ptr"
-//	end method
-//
-//end class
-
-//class public DependTok extends Token
-//end class
-//
-//class public StdasmTok extends Token
-//end class
-
 class public abstract SwitchTok extends NonExprToken
 end class
 
@@ -106,9 +89,6 @@ class public OffTok extends SwitchTok
 
 end class
 
-//class public SingTok extends Token
-//end class
-
 class public ScopeTok extends NonExprToken
 
 	method public override string ToString()
@@ -124,9 +104,6 @@ class public DebugTok extends NonExprToken
 	end method
 
 end class
-
-//class public MakeasmTok extends Token
-//end class
 
 class public RefasmTok extends NonExprToken
 
@@ -159,12 +136,6 @@ class public RefstdasmTok extends NonExprToken
 	end method
 
 end class
-
-//class public NewresTok extends Token
-//end class
-
-//class public ImageTok extends Token
-//end class
 
 class public ImportTok extends NonExprToken
 
@@ -246,8 +217,6 @@ class public SignTok extends NonExprToken
 
 end class
 
-//class public XmldocTok extends Token
-//end class
 
 class public NamespaceTok extends NonExprToken
 

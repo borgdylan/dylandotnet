@@ -15,9 +15,6 @@ class public abstract Literal extends ValueToken implements IUnaryOperatable, IC
 
 	method family void Literal(var value as string)
 		mybase::ctor(value)
-		//LitTyp = null
-		//_Conv = false
-		//_TTok = null
 		_OrdOp = string::Empty
 	end method
 	
@@ -61,8 +58,6 @@ class public ConstLiteral extends Literal
 		mybase::ctor()
 		ConstVal = value
 		LitTyp = new ObjectTok()
-		//ExtTyp = null
-		//IntTyp = null
 	end method
 	
 	method public void ConstLiteral()
@@ -79,7 +74,6 @@ class public StringLiteral extends Literal
 	method public void StringLiteral(var value as string)
 		mybase::ctor(value)
 		LitTyp = new StringTok()
-		//MemberAccessFlg = false
 		MemberToAccess = new Token()
 	end method
 	
@@ -134,14 +128,12 @@ class public BooleanLiteral extends Literal implements INegatable
 		mybase::ctor()
 		BoolVal = false
 		LitTyp = new BooleanTok()
-		//_DoNeg = false
 	end method
 
 	method public void BooleanLiteral(var value as string)
 		mybase::ctor(value)
 		BoolVal = false
 		LitTyp = new BooleanTok()
-		//_DoNeg = false
 		if (value == "True") or (value == "true") then
 			BoolVal = true
 		elseif (value == "False") or (value == "false") then
@@ -153,7 +145,6 @@ class public BooleanLiteral extends Literal implements INegatable
 		mybase::ctor()
 		BoolVal = value
 		LitTyp = new BooleanTok()
-		//_DoNeg = false
 		Value = #ternary {value ? "true", "false"}
 	end method
 
@@ -188,8 +179,6 @@ class public IntLiteral extends NumberLiteral implements INegatable, INotable
 		mybase::ctor()
 		NumVal = 0i
 		LitTyp = new IntegerTok()
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 
 	method public void IntLiteral(var value as string)
@@ -200,16 +189,12 @@ class public IntLiteral extends NumberLiteral implements INegatable, INotable
 		if integer::TryParse(value,ref n) then
 			NumVal = n
 		end if
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 	
 	method public void IntLiteral(var value as integer)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new IntegerTok()
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 
 	method public override string ToString()
@@ -245,14 +230,12 @@ class public DoubleLiteral extends NumberLiteral implements INegatable
 		if double::TryParse(value,ref n) then
 			NumVal = n
 		end if
-		//_DoNeg = false
 	end method
 	
 	method public void DoubleLiteral(var value as double)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new DoubleTok()
-		//_DoNeg = false
 	end method
 
 	method public override string ToString()
@@ -272,7 +255,6 @@ class public DecimalLiteral extends NumberLiteral implements INegatable
 		mybase::ctor()
 		NumVal = new Decimal(0)
 		LitTyp = new DecimalTok()
-		//_DoNeg = false
 	end method
 
 	method public void DecimalLiteral(var value as string)
@@ -283,14 +265,12 @@ class public DecimalLiteral extends NumberLiteral implements INegatable
 		if decimal::TryParse(value,ref n) then
 			NumVal = n
 		end if
-		//_DoNeg = false
 	end method
 	
 	method public void DecimalLiteral(var value as decimal)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new DecimalTok()
-		//_DoNeg = false
 	end method
 
 	method public override string ToString()
@@ -311,8 +291,6 @@ class public SByteLiteral extends NumberLiteral implements INegatable, INotable
 		mybase::ctor()
 		NumVal = 0b
 		LitTyp = new SByteTok()
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 
 	method public void SByteLiteral(var value as string)
@@ -323,16 +301,12 @@ class public SByteLiteral extends NumberLiteral implements INegatable, INotable
 		if sbyte::TryParse(value,ref n) then
 			NumVal = n
 		end if
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 	
 	method public void SByteLiteral(var value as sbyte)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new SByteTok()
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 
 	method public override string ToString()
@@ -355,8 +329,6 @@ class public ShortLiteral extends NumberLiteral implements INegatable, INotable
 		mybase::ctor()
 		NumVal = 0s
 		LitTyp = new ShortTok()
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 
 	method public void ShortLiteral(var value as string)
@@ -367,16 +339,12 @@ class public ShortLiteral extends NumberLiteral implements INegatable, INotable
 		if short::TryParse(value,ref n) then
 			NumVal = n
 		end if
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 	
 	method public void ShortLiteral(var value as short)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new ShortTok()
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 
 	method public override string ToString()
@@ -407,8 +375,6 @@ class public LongLiteral extends NumberLiteral implements INegatable, INotable
 		mybase::ctor()
 		NumVal = 0l
 		LitTyp = new LongTok()
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 
 	method public void LongLiteral(var value as string)
@@ -419,16 +385,12 @@ class public LongLiteral extends NumberLiteral implements INegatable, INotable
 		if long::TryParse(value,ref n) then
 			NumVal = n
 		end if
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 	
 	method public void LongLiteral(var value as long)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new LongTok()
-		//_DoNeg = false
-		//_DoNot = false
 	end method
 
 	method public override string ToString()
@@ -449,7 +411,6 @@ class public FloatLiteral extends NumberLiteral implements INegatable
 		mybase::ctor()
 		NumVal = 0f
 		LitTyp = new SingleTok()
-		//_DoNeg = false
 	end method
 
 	method public void FloatLiteral(var value as string)
@@ -460,14 +421,12 @@ class public FloatLiteral extends NumberLiteral implements INegatable
 		if single::TryParse(value,ref n) then
 			NumVal = n
 		end if
-		//_DoNeg = false
 	end method
 	
 	method public void FloatLiteral(var value as single)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new SingleTok()
-		//_DoNeg = false
 	end method
 
 	method public override string ToString()
@@ -487,7 +446,6 @@ class public UIntLiteral extends NumberLiteral implements INotable
 		mybase::ctor()
 		NumVal = 0ui
 		LitTyp = new UIntegerTok()
-		//_DoNot = false
 	end method
 
 	method public void UIntLiteral(var value as string)
@@ -498,14 +456,12 @@ class public UIntLiteral extends NumberLiteral implements INotable
 		if uinteger::TryParse(value,ref n) then
 			NumVal = n
 		end if
-		//_DoNot = false
 	end method
 	
 	method public void UIntLiteral(var value as uinteger)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new UIntegerTok()
-		//_DoNot = false
 	end method
 
 	method public override string ToString()
@@ -525,7 +481,6 @@ class public ByteLiteral extends NumberLiteral implements INotable
 		mybase::ctor()
 		NumVal = 0ub
 		LitTyp = new ByteTok()
-		//_DoNot = false
 	end method
 
 	method public void ByteLiteral(var value as string)
@@ -536,14 +491,12 @@ class public ByteLiteral extends NumberLiteral implements INotable
 		if byte::TryParse(value,ref n) then
 			NumVal = n
 		end if
-		//_DoNot = false
 	end method
 	
 	method public void ByteLiteral(var value as byte)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new ByteTok()
-		//_DoNot = false
 	end method
 
 	method public override string ToString()
@@ -563,7 +516,6 @@ class public UShortLiteral extends NumberLiteral implements INotable
 		mybase::ctor()
 		NumVal = 0us
 		LitTyp = new UShortTok()
-		//_DoNot = false
 	end method
 
 	method public void UShortLiteral(var value as string)
@@ -574,14 +526,12 @@ class public UShortLiteral extends NumberLiteral implements INotable
 		if ushort::TryParse(value,ref n) then
 			NumVal = n
 		end if
-		//_DoNot = false
 	end method
 	
 	method public void UShortLiteral(var value as ushort)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new UShortTok()
-		//_DoNot = false
 	end method
 
 	method public override string ToString()
@@ -601,7 +551,6 @@ class public ULongLiteral extends NumberLiteral implements INotable
 		mybase::ctor()
 		NumVal = 0ul
 		LitTyp = new ULongTok()
-		//_DoNot = false
 	end method
 
 	method public void ULongLiteral(var value as string)
@@ -619,7 +568,6 @@ class public ULongLiteral extends NumberLiteral implements INotable
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new ULongTok()
-		//_DoNot = false
 	end method
 
 	method public override string ToString()
@@ -640,16 +588,12 @@ class public IntPtrLiteral extends NumberLiteral implements INegatable, INotable
 		mybase::ctor()
 		NumVal = new IntPtr(0)
 		LitTyp = new IntPtrTok()
-		//_DoNot = false
-		//_DoNeg = false
 	end method
 
 	method public void IntPtrLiteral(var value as string)
 		mybase::ctor(value)
 		NumVal = new IntPtr(0)
 		LitTyp = new IntPtrTok()
-		//_DoNot = false
-		//_DoNeg = false
 	end method
 
 	method public override string ToString()

@@ -848,9 +848,6 @@ class public ExprOptimizer
 		end if
 		
 		var len as integer = --exp::Tokens::get_Count() 
-		//if len < 0 then
-		//	goto cont
-		//end if
 
 		do
 			//non-method chain i.e. normal code
@@ -862,43 +859,10 @@ class public ExprOptimizer
 				StreamUtils::WriteError(exp::Line, PFlags::CurPath, string::Format("The token '{0}' is not allowed in expressions!", tok::Value))
 			end if
 
-//			if tok is LRSParen then
-//				exp::RemToken(i)
-//				i--
-//				len = --exp::Tokens::get_Count() 
-//				tok = exp::Tokens::get_Item(i)
-//				
-//				var ttk as TypeTok = null
-//				if tok isnot TypeTok then
-//					var tk as Token = exp::Tokens::get_Item(i)
-//					ttk = new TypeTok() {Line = tk::Line, Value = tk::Value, IsArray = true}
-//				else
-//					ttk = $TypeTok$exp::Tokens::get_Item(i)
-//					ttk::IsArray = true
-//				end if
-//				exp::Tokens::set_Item(i,ttk)
-//			elseif tok is Ampersand then
-//				exp::RemToken(i)
-//				i--
-//				len = --exp::Tokens::get_Count() 
-//				tok = exp::Tokens::get_Item(i)
-//				
-//				var ttk2 as TypeTok = null
-//				if tok isnot TypeTok then
-//					var tk2 as Token = exp::Tokens::get_Item(i)
-//					ttk2 = new TypeTok() {Line = tk2::Line, Value = tk2::Value, IsByRef = true}
-//				else
-//					ttk2 = $TypeTok$exp::Tokens::get_Item(i)
-//					ttk2::IsByRef = true
-//				end if
-//				exp::Tokens::set_Item(i,ttk2)
 			if tok is DollarSign then
-				//PFlags::DurConvFlag = !PFlags::DurConvFlag
 				PFlags::isChanged = true
-				//if PFlags::DurConvFlag then
 				PFlags::ConvFlag = true
 				PFlags::OrdOp = #expr("conv " + PFlags::OrdOp)::Trim()
-				//end if
 				exp::RemToken(i)
 				exp = procType(exp,i)
 				PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
@@ -957,41 +921,24 @@ class public ExprOptimizer
 				exp::RemToken(i)
 				i--
 				len = --exp::Tokens::get_Count() 
-//			elseif tok is TypeTok then
-//				if PFlags::DurConvFlag then
-//					exp = procType(exp,i)
-//					PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
-//					exp::RemToken(i)
-//					i--
-//					len = --exp::Tokens::get_Count() 
-//				end if
 			elseif tok is Ident then
-//				if !PFlags::DurConvFlag then
-					if PFlags::MetCallFlag orelse PFlags::IdentFlag orelse PFlags::StringFlag orelse PFlags::CtorFlag then
-						mcbool = true
-					end if
-					PFlags::IdentFlag = true
-					if PFlags::isChanged then
-						exp::Tokens::set_Item(i,PFlags::UpdateIdent($Ident$exp::Tokens::get_Item(i)))
-						PFlags::SetUnaryFalse()
-						j = i
-					end if
+				if PFlags::MetCallFlag orelse PFlags::IdentFlag orelse PFlags::StringFlag orelse PFlags::CtorFlag then
+					mcbool = true
+				end if
+				PFlags::IdentFlag = true
+				if PFlags::isChanged then
+					exp::Tokens::set_Item(i,PFlags::UpdateIdent($Ident$exp::Tokens::get_Item(i)))
+					PFlags::SetUnaryFalse()
+					j = i
+				end if
 
-					//genericmethodnametok detector
-					if i < (exp::Tokens::get_Count() - 2) then
-						if (exp::Tokens::get_Item(++i) is LAParen) andalso (exp::Tokens::get_Item(i + 2) is OfTok) then
-							exp = procMtdName(exp, i)
-							len = --exp::Tokens::get_Count() 
-						end if
+				//genericmethodnametok detector
+				if i < (exp::Tokens::get_Count() - 2) then
+					if (exp::Tokens::get_Item(++i) is LAParen) andalso (exp::Tokens::get_Item(i + 2) is OfTok) then
+						exp = procMtdName(exp, i)
+						len = --exp::Tokens::get_Count() 
 					end if
-					//-----------------------------
-//				else
-//					exp = procType(exp,i)
-//					PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
-//					exp::RemToken(i)
-//					i--
-//					len = --exp::Tokens::get_Count() 
-//				end if
+				end if
 			elseif tok is CharLiteral then
 				if PFlags::isChanged then
 					exp::Tokens::set_Item(i,PFlags::UpdateCharLit($CharLiteral$exp::Tokens::get_Item(i)))
@@ -1095,33 +1042,6 @@ class public ExprOptimizer
 				len--
 				newavtok = exp::Tokens::get_Item(i)
 				exp::Tokens::set_Item(i, new NewarrCallTok() {ArrayType = #ternary {tok is TypeTok ? $TypeTok$tok , new TypeTok() {Line = tok::Line, Value = tok::Value}}, ArrayLen = new Expr() {Line = exp::Line, AddToken(newavtok)}})
-//			elseif tok is PtrTok then
-//
-//				exp::RemToken(i)
-//				len--
-//				var ptrctoken as PtrCallTok = new PtrCallTok() {MetToCall = new MethodNameTok($Ident$exp::Tokens::get_Item(i))}
-//				exp::Tokens::set_Item(i,ptrctoken)
-//
-//				//outer check for (
-//				i++
-//				if i <= len then
-//					tok = exp::Tokens::get_Item(i)
-//					if tok is LParen then
-//						exp::RemToken(i)
-//						len--
-//						//inner check for )
-//						//-----------------
-//						if i <= len then
-//							tok = exp::Tokens::get_Item(i)
-//							if tok is RParen then
-//								exp::RemToken(i)
-//								len--
-//							end if
-//						end if
-//						//-----------------
-//					end if
-//				end if
-//
 			elseif tok is LParen then
 				if PFlags::IdentFlag then
 					PFlags::IdentFlag = false

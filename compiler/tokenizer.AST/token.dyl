@@ -19,7 +19,6 @@ class public beforefieldinit Token
 	method public void Token(var value as string)
 		mybase::ctor()
 		Value = value
-		//Line = 0
 	end method
 	
 	method public void Token()

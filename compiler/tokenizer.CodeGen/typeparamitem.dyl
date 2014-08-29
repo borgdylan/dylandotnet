@@ -20,7 +20,6 @@ class public TypeParamItem
 		Name = name
 		BaseType = Loader::CachedLoadClass("System.Object")
 		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
-		//HasCtor = false
 	end method
 	
 end class

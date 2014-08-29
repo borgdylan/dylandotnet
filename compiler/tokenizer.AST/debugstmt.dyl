@@ -15,8 +15,6 @@ class public DebugStmt extends Stmt
 
 	method public void DebugStmt()
 		mybase::ctor()
-		//Opt = null
-		//Flg = false
 	end method
 
 	method public void setFlg()

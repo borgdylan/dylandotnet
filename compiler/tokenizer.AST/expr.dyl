@@ -15,8 +15,6 @@ class public Expr
 	method public void Expr()
 		mybase::ctor()
 		Tokens = new C5.ArrayList<of Token>(3)
-		//Line = 0
-		//ResultTyp = null
 	end method
 
 	method public void AddToken(var toktoadd as Token)

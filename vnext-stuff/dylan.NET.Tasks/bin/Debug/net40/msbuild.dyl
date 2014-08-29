@@ -18,4 +18,4 @@
 [assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.0")]
 
 assembly dylan.NET.Tasks dll
-ver 1.0.2.0
+ver 1.0.2.2
