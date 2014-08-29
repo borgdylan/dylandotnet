@@ -53,6 +53,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Parse">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.StmtSet Parse (dylan.NET.Tokenizer.AST.Stmts.StmtSet stms, bool ignf);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Stmts.StmtSet Parse(class dylan.NET.Tokenizer.AST.Stmts.StmtSet stms, bool ignf) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.StmtSet</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stms" Type="dylan.NET.Tokenizer.AST.Stmts.StmtSet" />
+        <Parameter Name="ignf" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="stms">To be added.</param>
+        <param name="ignf">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PFlags">
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.Parser.Flags PFlags;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.Parser.Flags PFlags" />

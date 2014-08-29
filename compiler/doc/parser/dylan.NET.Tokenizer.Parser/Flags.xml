@@ -191,18 +191,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MetChainFlag">
-      <MemberSignature Language="C#" Value="public bool MetChainFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool MetChainFlag" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="NegFlag">
       <MemberSignature Language="C#" Value="public bool NegFlag;" />
       <MemberSignature Language="ILAsm" Value=".field public bool NegFlag" />
@@ -245,18 +233,6 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ProcessTTokOnly">
-      <MemberSignature Language="C#" Value="public bool ProcessTTokOnly;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool ProcessTTokOnly" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

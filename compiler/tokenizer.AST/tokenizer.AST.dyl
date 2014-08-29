@@ -115,7 +115,7 @@ namespace dylan.NET.Tokenizer.AST
 		#include "metstmt.dyl"
 		#include "fieldstmt.dyl"
 		#include "exceptionstmts.dyl"
-		#include "labelstmts.dyl"
+		//#include "labelstmts.dyl"
 		#include "loopstmts.dyl"
 		#include "ifstmts.dyl"
 		#include "varstmts.dyl"

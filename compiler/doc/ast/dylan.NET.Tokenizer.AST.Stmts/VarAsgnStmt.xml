@@ -23,18 +23,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="IsUsing">
-      <MemberSignature Language="C#" Value="public bool IsUsing;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool IsUsing" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="RExpr">
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr RExpr;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Exprs.Expr RExpr" />

@@ -165,10 +165,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.MetChainFlag">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="F:dylan.NET.Tokenizer.Parser.Flags.NegFlag">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -182,10 +178,6 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.Parser.Flags.OrdOp">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.Parser.Flags.ProcessTTokOnly">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -271,6 +263,13 @@
         </member>
         <member name="M:dylan.NET.Tokenizer.Parser.Parser.Parse(dylan.NET.Tokenizer.AST.Stmts.StmtSet)">
             <param name="stms">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.Parser.Parse(dylan.NET.Tokenizer.AST.Stmts.StmtSet,System.Boolean)">
+            <param name="stms">To be added.</param>
+            <param name="ignf">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>

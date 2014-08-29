@@ -1,13 +1,17 @@
 <Type Name="EndHIfStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.EndHIfStmt">
-  <TypeSignature Language="C#" Value="public class EndHIfStmt : dylan.NET.Tokenizer.AST.Stmts.HCondCompStmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi EndHIfStmt extends dylan.NET.Tokenizer.AST.Stmts.HCondCompStmt" />
+  <TypeSignature Language="C#" Value="public class EndHIfStmt : dylan.NET.Tokenizer.AST.Stmts.EndStmt, dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi EndHIfStmt extends dylan.NET.Tokenizer.AST.Stmts.EndStmt implements class dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.HCondCompStmt</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.EndStmt</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>

@@ -1,0 +1,13 @@
+<Type Name="IHCondCompStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt">
+  <TypeSignature Language="C#" Value="public interface IHCondCompStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IHCondCompStmt" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members />
+</Type>

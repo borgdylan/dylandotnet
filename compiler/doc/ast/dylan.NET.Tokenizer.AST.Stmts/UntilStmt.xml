@@ -1,11 +1,11 @@
 <Type Name="UntilStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.UntilStmt">
-  <TypeSignature Language="C#" Value="public class UntilStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi UntilStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="C#" Value="public class UntilStmt : dylan.NET.Tokenizer.AST.Stmts.EndStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi UntilStmt extends dylan.NET.Tokenizer.AST.Stmts.EndStmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.EndStmt</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

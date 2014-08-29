@@ -1,13 +1,17 @@
 <Type Name="HElseIfStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.HElseIfStmt">
-  <TypeSignature Language="C#" Value="public class HElseIfStmt : dylan.NET.Tokenizer.AST.Stmts.HCondCompStmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi HElseIfStmt extends dylan.NET.Tokenizer.AST.Stmts.HCondCompStmt" />
+  <TypeSignature Language="C#" Value="public class HElseIfStmt : dylan.NET.Tokenizer.AST.Stmts.BranchStmt, dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi HElseIfStmt extends dylan.NET.Tokenizer.AST.Stmts.BranchStmt implements class dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.HCondCompStmt</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.BranchStmt</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>

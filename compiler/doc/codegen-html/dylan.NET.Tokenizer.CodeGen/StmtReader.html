@@ -239,8 +239,8 @@
                 <td>
                   <div>
                     <b>
-                      <a href="#C:dylan.NET.Tokenizer.CodeGen.StmtReader()">StmtReader</a>
-                    </b>()</div>
+                      <a href="#C:dylan.NET.Tokenizer.CodeGen.StmtReader(dylan.NET.Tokenizer.CodeGen.CodeGenerator)">StmtReader</a>
+                    </b>(<a href="../dylan.NET.Tokenizer.CodeGen/CodeGenerator.html">CodeGenerator</a>)</div>
                 </td>
                 <td>
                   <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -280,8 +280,8 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt)">ReadClass</a>
-                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.ClassStmt</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt,System.String)">ReadClass</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.ClassStmt</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -310,8 +310,8 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt)">ReadEnum</a>
-                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.EnumStmt</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt,System.String)">ReadEnum</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.EnumStmt</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -370,8 +370,8 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt)">ReadForeach</a>
-                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.ForeachStmt</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt,System.String)">ReadForeach</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.ForeachStmt</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -380,8 +380,8 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt)">ReadMethod</a>
-                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.MethodStmt</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                    <a href="#M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt,System.String)">ReadMethod</a>
+                  </b>(<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.MethodStmt</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -431,27 +431,38 @@
     <div class="Members" id="T:dylan.NET.Tokenizer.CodeGen.StmtReader:Members">
       <h2 class="Section" id="MemberDetails">Member Details</h2>
       <div class="SectionBox" id="_MemberDetails">
-        <h3 id="C:dylan.NET.Tokenizer.CodeGen.StmtReader()">StmtReader Constructor</h3>
-        <blockquote id="C:dylan.NET.Tokenizer.CodeGen.StmtReader():member">
-          <p class="Summary">
+        <h3 id="C:dylan.NET.Tokenizer.CodeGen.StmtReader(dylan.NET.Tokenizer.CodeGen.CodeGenerator)">StmtReader Constructor</h3>
+        <blockquote id="C:dylan.NET.Tokenizer.CodeGen.StmtReader(dylan.NET.Tokenizer.CodeGen.CodeGenerator):member">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
-          <div class="Signature">public  <b>StmtReader</b> ()</div>
+          <div class="Signature">public  <b>StmtReader</b> (<a href="../dylan.NET.Tokenizer.CodeGen/CodeGenerator.html">CodeGenerator</a> cgen)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="C:dylan.NET.Tokenizer.CodeGen.StmtReader(dylan.NET.Tokenizer.CodeGen.CodeGenerator):Parameters">
+            <dl>
+              <dt>
+                <i>cgen</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="C:dylan.NET.Tokenizer.CodeGen.StmtReader():Remarks">
+          <div class="SectionBox" id="C:dylan.NET.Tokenizer.CodeGen.StmtReader(dylan.NET.Tokenizer.CodeGen.CodeGenerator):Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="C:dylan.NET.Tokenizer.CodeGen.StmtReader():Version Information">
+          <div class="SectionBox" id="C:dylan.NET.Tokenizer.CodeGen.StmtReader(dylan.NET.Tokenizer.CodeGen.CodeGenerator):Version Information">
             <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.AttrStmtToCAB(dylan.NET.Tokenizer.AST.Stmts.AttrStmt)">AttrStmtToCAB Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.AttrStmtToCAB(dylan.NET.Tokenizer.AST.Stmts.AttrStmt):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Emit.CustomAttributeBuilder</a> <b>AttrStmtToCAB</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.AttrStmt</a> stm)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -480,9 +491,9 @@
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.Read(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.String)">Read Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.Read(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.String):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Read</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.Stmt</a> stm, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -511,15 +522,15 @@
             <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt)">ReadClass Method</h3>
-        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt):member">
-          <p class="Summary">
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt,System.String)">ReadClass Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt,System.String):member">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadClass</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.ClassStmt</a> clss)</div>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadClass</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.ClassStmt</a> clss, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt):Parameters">
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt,System.String):Parameters">
             <dl>
               <dt>
                 <i>clss</i>
@@ -527,22 +538,28 @@
               <dd>
                 <span class="NotEntered">Documentation for this section has not yet been entered.</span>
               </dd>
+              <dt>
+                <i>fpath</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt):Remarks">
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt,System.String):Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt):Version Information">
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt,System.String):Version Information">
             <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadDelegate(dylan.NET.Tokenizer.AST.Stmts.DelegateStmt)">ReadDelegate Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadDelegate(dylan.NET.Tokenizer.AST.Stmts.DelegateStmt):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadDelegate</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.DelegateStmt</a> dels)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -567,9 +584,9 @@
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEndDo(System.String)">ReadEndDo Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEndDo(System.String):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadEndDo</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -592,15 +609,15 @@
             <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt)">ReadEnum Method</h3>
-        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt):member">
-          <p class="Summary">
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt,System.String)">ReadEnum Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt,System.String):member">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadEnum</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.EnumStmt</a> clss)</div>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadEnum</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.EnumStmt</a> clss, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt):Parameters">
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt,System.String):Parameters">
             <dl>
               <dt>
                 <i>clss</i>
@@ -608,22 +625,28 @@
               <dd>
                 <span class="NotEntered">Documentation for this section has not yet been entered.</span>
               </dd>
+              <dt>
+                <i>fpath</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt):Remarks">
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt,System.String):Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt):Version Information">
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt,System.String):Version Information">
             <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEvent(dylan.NET.Tokenizer.AST.Stmts.EventStmt,System.String)">ReadEvent Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEvent(dylan.NET.Tokenizer.AST.Stmts.EventStmt,System.String):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadEvent</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.EventStmt</a> evss, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -654,9 +677,9 @@
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEventAdd(dylan.NET.Tokenizer.AST.Stmts.EventAddStmt,System.String)">ReadEventAdd Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEventAdd(dylan.NET.Tokenizer.AST.Stmts.EventAddStmt,System.String):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadEventAdd</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.EventAddStmt</a> evas, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -687,9 +710,9 @@
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEventRemove(dylan.NET.Tokenizer.AST.Stmts.EventRemoveStmt,System.String)">ReadEventRemove Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEventRemove(dylan.NET.Tokenizer.AST.Stmts.EventRemoveStmt,System.String):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadEventRemove</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.EventRemoveStmt</a> evas, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -720,9 +743,9 @@
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadField(dylan.NET.Tokenizer.AST.Stmts.FieldStmt)">ReadField Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadField(dylan.NET.Tokenizer.AST.Stmts.FieldStmt):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadField</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.FieldStmt</a> flss)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -747,9 +770,9 @@
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadFor(dylan.NET.Tokenizer.AST.Stmts.ForStmt,System.String)">ReadFor Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadFor(dylan.NET.Tokenizer.AST.Stmts.ForStmt,System.String):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadFor</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.ForStmt</a> fstm, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -778,15 +801,15 @@
             <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt)">ReadForeach Method</h3>
-        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt):member">
-          <p class="Summary">
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt,System.String)">ReadForeach Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt,System.String):member">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadForeach</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.ForeachStmt</a> festm)</div>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadForeach</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.ForeachStmt</a> festm, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt):Parameters">
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt,System.String):Parameters">
             <dl>
               <dt>
                 <i>festm</i>
@@ -794,29 +817,8 @@
               <dd>
                 <span class="NotEntered">Documentation for this section has not yet been entered.</span>
               </dd>
-            </dl>
-          </blockquote>
-          <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt):Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
-          <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt):Version Information">
-            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)</div>
-          <hr size="1" />
-        </blockquote>
-        <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt)">ReadMethod Method</h3>
-        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
-          <h2>Syntax</h2>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadMethod</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.MethodStmt</a> mtss)</div>
-          <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt):Parameters">
-            <dl>
               <dt>
-                <i>mtss</i>
+                <i>fpath</i>
               </dt>
               <dd>
                 <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -824,19 +826,52 @@
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt):Remarks">
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt,System.String):Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt):Version Information">
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt,System.String):Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt,System.String)">ReadMethod Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt,System.String):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadMethod</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.MethodStmt</a> mtss, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt,System.String):Parameters">
+            <dl>
+              <dt>
+                <i>mtss</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>fpath</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt,System.String):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt,System.String):Version Information">
             <b>Namespace: </b>dylan.NET.Tokenizer.CodeGen<br /><b>Assembly: </b>tokenizer.CodeGen (in tokenizer.CodeGen.dll)</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadProperty(dylan.NET.Tokenizer.AST.Stmts.PropertyStmt,System.String)">ReadProperty Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadProperty(dylan.NET.Tokenizer.AST.Stmts.PropertyStmt,System.String):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadProperty</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.PropertyStmt</a> prss, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -867,9 +902,9 @@
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadPropertyGet(dylan.NET.Tokenizer.AST.Stmts.PropertyGetStmt,System.String)">ReadPropertyGet Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadPropertyGet(dylan.NET.Tokenizer.AST.Stmts.PropertyGetStmt,System.String):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadPropertyGet</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.PropertyGetStmt</a> prgs, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -900,9 +935,9 @@
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadPropertySet(dylan.NET.Tokenizer.AST.Stmts.PropertySetStmt,System.String)">ReadPropertySet Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadPropertySet(dylan.NET.Tokenizer.AST.Stmts.PropertySetStmt,System.String):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadPropertySet</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.PropertySetStmt</a> prss, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -933,9 +968,9 @@
         </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadVer(dylan.NET.Tokenizer.AST.Stmts.VerStmt,System.String)">ReadVer Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadVer(dylan.NET.Tokenizer.AST.Stmts.VerStmt,System.String):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReadVer</b> (<a href="javascript:alert(&quot;Documentation not found.&quot;)">dylan.NET.Tokenizer.AST.Stmts.VerStmt</a> asmv, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> fpath)</div>
           <h4 class="Subsection">Parameters</h4>

@@ -527,38 +527,38 @@ class public StmtOptimizer
 		return null
 	end method
 	
-	method private Stmt checkLabel(var stm as Stmt, var b as boolean&)
-		b = stm::Tokens::get_Item(0) is LabelTok
-		if b then
-			if stm::Tokens::get_Count() > 2 then
-				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
-			end if
-			return new LabelStmt() {Line = stm::Line, LabelName = $Ident$stm::Tokens::get_Item(1)}
-		end if
-		return null
-	end method
-	
-	method private Stmt checkPlace(var stm as Stmt, var b as boolean&)
-		b = stm::Tokens::get_Item(0) is PlaceTok
-		if b then
-			if stm::Tokens::get_Count() > 2 then
-				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
-			end if
-			return new PlaceStmt() {Line = stm::Line, LabelName = $Ident$stm::Tokens::get_Item(1)}
-		end if
-		return null
-	end method
-	
-	method private Stmt checkGoto(var stm as Stmt, var b as boolean&)
-		b = stm::Tokens::get_Item(0) is GotoTok
-		if b then
-			if stm::Tokens::get_Count() > 2 then
-				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
-			end if
-			return new GotoStmt() {Line = stm::Line, LabelName = $Ident$stm::Tokens::get_Item(1)}
-		end if
-		return null
-	end method
+//	method private Stmt checkLabel(var stm as Stmt, var b as boolean&)
+//		b = stm::Tokens::get_Item(0) is LabelTok
+//		if b then
+//			if stm::Tokens::get_Count() > 2 then
+//				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+//			end if
+//			return new LabelStmt() {Line = stm::Line, LabelName = $Ident$stm::Tokens::get_Item(1)}
+//		end if
+//		return null
+//	end method
+//	
+//	method private Stmt checkPlace(var stm as Stmt, var b as boolean&)
+//		b = stm::Tokens::get_Item(0) is PlaceTok
+//		if b then
+//			if stm::Tokens::get_Count() > 2 then
+//				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+//			end if
+//			return new PlaceStmt() {Line = stm::Line, LabelName = $Ident$stm::Tokens::get_Item(1)}
+//		end if
+//		return null
+//	end method
+//	
+//	method private Stmt checkGoto(var stm as Stmt, var b as boolean&)
+//		b = stm::Tokens::get_Item(0) is GotoTok
+//		if b then
+//			if stm::Tokens::get_Count() > 2 then
+//				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+//			end if
+//			return new GotoStmt() {Line = stm::Line, LabelName = $Ident$stm::Tokens::get_Item(1)}
+//		end if
+//		return null
+//	end method
 	
 	method private Stmt checkHDefine(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is HDefineTok
@@ -2230,23 +2230,23 @@ class public StmtOptimizer
 			return stm
 		end if
 
-		tmpstm = checkLabel(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkPlace(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
-		
-		tmpstm = checkGoto(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
+//		tmpstm = checkLabel(stm, ref compb)
+//		if compb then
+//			stm = tmpstm
+//			return stm
+//		end if
+//		
+//		tmpstm = checkPlace(stm, ref compb)
+//		if compb then
+//			stm = tmpstm
+//			return stm
+//		end if
+//		
+//		tmpstm = checkGoto(stm, ref compb)
+//		if compb then
+//			stm = tmpstm
+//			return stm
+//		end if
 		
 		tmpstm = checkIf(stm, ref compb)
 		if compb then

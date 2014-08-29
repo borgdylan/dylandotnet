@@ -14,11 +14,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public StmtReader ();" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="public StmtReader (dylan.NET.Tokenizer.CodeGen.CodeGenerator cgen);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class dylan.NET.Tokenizer.CodeGen.CodeGenerator cgen) cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="cgen" Type="dylan.NET.Tokenizer.CodeGen.CodeGenerator" />
+      </Parameters>
       <Docs>
+        <param name="cgen">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -59,17 +62,19 @@
       </Docs>
     </Member>
     <Member MemberName="ReadClass">
-      <MemberSignature Language="C#" Value="public void ReadClass (dylan.NET.Tokenizer.AST.Stmts.ClassStmt clss);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void ReadClass(class dylan.NET.Tokenizer.AST.Stmts.ClassStmt clss) cil managed" />
+      <MemberSignature Language="C#" Value="public void ReadClass (dylan.NET.Tokenizer.AST.Stmts.ClassStmt clss, string fpath);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void ReadClass(class dylan.NET.Tokenizer.AST.Stmts.ClassStmt clss, string fpath) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="clss" Type="dylan.NET.Tokenizer.AST.Stmts.ClassStmt" />
+        <Parameter Name="fpath" Type="System.String" />
       </Parameters>
       <Docs>
         <param name="clss">To be added.</param>
+        <param name="fpath">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -107,17 +112,19 @@
       </Docs>
     </Member>
     <Member MemberName="ReadEnum">
-      <MemberSignature Language="C#" Value="public void ReadEnum (dylan.NET.Tokenizer.AST.Stmts.EnumStmt clss);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void ReadEnum(class dylan.NET.Tokenizer.AST.Stmts.EnumStmt clss) cil managed" />
+      <MemberSignature Language="C#" Value="public void ReadEnum (dylan.NET.Tokenizer.AST.Stmts.EnumStmt clss, string fpath);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void ReadEnum(class dylan.NET.Tokenizer.AST.Stmts.EnumStmt clss, string fpath) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="clss" Type="dylan.NET.Tokenizer.AST.Stmts.EnumStmt" />
+        <Parameter Name="fpath" Type="System.String" />
       </Parameters>
       <Docs>
         <param name="clss">To be added.</param>
+        <param name="fpath">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -211,33 +218,37 @@
       </Docs>
     </Member>
     <Member MemberName="ReadForeach">
-      <MemberSignature Language="C#" Value="public void ReadForeach (dylan.NET.Tokenizer.AST.Stmts.ForeachStmt festm);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void ReadForeach(class dylan.NET.Tokenizer.AST.Stmts.ForeachStmt festm) cil managed" />
+      <MemberSignature Language="C#" Value="public void ReadForeach (dylan.NET.Tokenizer.AST.Stmts.ForeachStmt festm, string fpath);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void ReadForeach(class dylan.NET.Tokenizer.AST.Stmts.ForeachStmt festm, string fpath) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="festm" Type="dylan.NET.Tokenizer.AST.Stmts.ForeachStmt" />
+        <Parameter Name="fpath" Type="System.String" />
       </Parameters>
       <Docs>
         <param name="festm">To be added.</param>
+        <param name="fpath">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ReadMethod">
-      <MemberSignature Language="C#" Value="public void ReadMethod (dylan.NET.Tokenizer.AST.Stmts.MethodStmt mtss);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void ReadMethod(class dylan.NET.Tokenizer.AST.Stmts.MethodStmt mtss) cil managed" />
+      <MemberSignature Language="C#" Value="public void ReadMethod (dylan.NET.Tokenizer.AST.Stmts.MethodStmt mtss, string fpath);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void ReadMethod(class dylan.NET.Tokenizer.AST.Stmts.MethodStmt mtss, string fpath) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="mtss" Type="dylan.NET.Tokenizer.AST.Stmts.MethodStmt" />
+        <Parameter Name="fpath" Type="System.String" />
       </Parameters>
       <Docs>
         <param name="mtss">To be added.</param>
+        <param name="fpath">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

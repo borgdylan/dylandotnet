@@ -1,11 +1,11 @@
 <Type Name="ClassStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.ClassStmt">
-  <TypeSignature Language="C#" Value="public class ClassStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt, dylan.NET.Tokenizer.AST.Interfaces.IConstrainable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi ClassStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt implements class dylan.NET.Tokenizer.AST.Interfaces.IConstrainable, class dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints" />
+  <TypeSignature Language="C#" Value="public class ClassStmt : dylan.NET.Tokenizer.AST.Stmts.BlockStmt, dylan.NET.Tokenizer.AST.Interfaces.IConstrainable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ClassStmt extends dylan.NET.Tokenizer.AST.Stmts.BlockStmt implements class dylan.NET.Tokenizer.AST.Interfaces.IConstrainable, class dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.BlockStmt</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>

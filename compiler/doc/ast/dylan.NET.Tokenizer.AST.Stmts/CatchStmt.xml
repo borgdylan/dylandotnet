@@ -1,11 +1,11 @@
 <Type Name="CatchStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.CatchStmt">
-  <TypeSignature Language="C#" Value="public class CatchStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi CatchStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="C#" Value="public class CatchStmt : dylan.NET.Tokenizer.AST.Stmts.BranchStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi CatchStmt extends dylan.NET.Tokenizer.AST.Stmts.BranchStmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.BranchStmt</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

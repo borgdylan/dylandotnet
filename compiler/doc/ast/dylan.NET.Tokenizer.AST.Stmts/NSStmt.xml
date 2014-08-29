@@ -1,11 +1,11 @@
 <Type Name="NSStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.NSStmt">
-  <TypeSignature Language="C#" Value="public class NSStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi NSStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="C#" Value="public class NSStmt : dylan.NET.Tokenizer.AST.Stmts.BlockStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi NSStmt extends dylan.NET.Tokenizer.AST.Stmts.BlockStmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.BlockStmt</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

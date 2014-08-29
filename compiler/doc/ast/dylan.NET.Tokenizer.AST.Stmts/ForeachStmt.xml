@@ -1,11 +1,11 @@
 <Type Name="ForeachStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.ForeachStmt">
-  <TypeSignature Language="C#" Value="public class ForeachStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi ForeachStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="C#" Value="public class ForeachStmt : dylan.NET.Tokenizer.AST.Stmts.BlockStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ForeachStmt extends dylan.NET.Tokenizer.AST.Stmts.BlockStmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.BlockStmt</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

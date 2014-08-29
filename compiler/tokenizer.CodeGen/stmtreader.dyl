@@ -750,7 +750,10 @@ class public StmtReader
 			AsmFactory::InMethodFlg = true
 		end if
 		AsmFactory::CurnMetName = mtssnamstr
-		cg::Process(mtss, fpath)
+
+		if (mtss::get_Parent() != null) andalso !mtss::IsOneLiner(mtss::get_Parent()) then
+			cg::Process(mtss, fpath)
+		end if
 	end method
 	
 	method public void ReadForeach(var festm as ForeachStmt, var fpath as string)
@@ -1181,7 +1184,9 @@ class public StmtReader
 			//end
 			SymTable::CurnProp = null
 		end if
-		cg::Process(prss, fpath)
+		if !prss::IsOneLiner(prss::get_Parent()) then
+			cg::Process(prss, fpath)
+		end if
 	end method
 	
 	method public void ReadEndDo(var fpath as string)
@@ -1650,12 +1655,12 @@ class public StmtReader
 			SymTable::PopScope()
 		elseif stm is EndDoStmt then
 			ReadEndDo(fpath)
-		elseif stm is LabelStmt then
-			SymTable::AddLbl(#expr($LabelStmt$stm)::LabelName::Value)
-		elseif stm is PlaceStmt then
-			ILEmitter::MarkLbl(Helpers::GetLbl(#expr($PlaceStmt$stm)::LabelName::Value))
-		elseif stm is GotoStmt then
-			ILEmitter::EmitBr(Helpers::GetLbl(#expr($GotoStmt$stm)::LabelName::Value))
+//		elseif stm is LabelStmt then
+//			SymTable::AddLbl(#expr($LabelStmt$stm)::LabelName::Value)
+//		elseif stm is PlaceStmt then
+//			ILEmitter::MarkLbl(Helpers::GetLbl(#expr($PlaceStmt$stm)::LabelName::Value))
+//		elseif stm is GotoStmt then
+//			ILEmitter::EmitBr(Helpers::GetLbl(#expr($GotoStmt$stm)::LabelName::Value))
 		elseif stm is ThrowStmt then
 			var trostmt as ThrowStmt = $ThrowStmt$stm
 			if trostmt::RExp != null then

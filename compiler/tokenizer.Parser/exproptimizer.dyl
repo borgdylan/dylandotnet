@@ -837,12 +837,9 @@ class public ExprOptimizer
 		var mcmetcall as MethodCallTok = null
 		var mcmetname as MethodNameTok = null
 		var mcstr as StringLiteral = null
-
-		label loop
-		label cont
 		
 		if exp == null then
-			goto cont
+			return null
 		end if
 
 		if exp::Tokens::get_Count() == 0 then
@@ -851,17 +848,13 @@ class public ExprOptimizer
 		end if
 		
 		var len as integer = --exp::Tokens::get_Count() 
-		if len < 0 then
-			goto cont
-		end if
+		//if len < 0 then
+		//	goto cont
+		//end if
 
-		place loop
-		
-		if PFlags::MetChainFlag = false then
+		do
 			//non-method chain i.e. normal code
 			i++
-
-			label fin
 
 			var tok as Token = exp::Tokens::get_Item(i)
 			if tok is NonExprToken then
@@ -876,7 +869,7 @@ class public ExprOptimizer
 				tok = exp::Tokens::get_Item(i)
 				
 				var ttk as TypeTok = null
-				if (tok is TypeTok) = false then
+				if tok isnot TypeTok then
 					var tk as Token = exp::Tokens::get_Item(i)
 					ttk = new TypeTok() {Line = tk::Line, Value = tk::Value, IsArray = true}
 				else
@@ -884,17 +877,14 @@ class public ExprOptimizer
 					ttk::IsArray = true
 				end if
 				exp::Tokens::set_Item(i,ttk)
-				goto fin
-			end if
-
-			if tok is Ampersand then
+			elseif tok is Ampersand then
 				exp::RemToken(i)
 				i--
 				len = --exp::Tokens::get_Count() 
 				tok = exp::Tokens::get_Item(i)
 				
 				var ttk2 as TypeTok = null
-				if (tok is TypeTok) = false then
+				if tok isnot TypeTok then
 					var tk2 as Token = exp::Tokens::get_Item(i)
 					ttk2 = new TypeTok() {Line = tk2::Line, Value = tk2::Value, IsByRef = true}
 				else
@@ -902,465 +892,357 @@ class public ExprOptimizer
 					ttk2::IsByRef = true
 				end if
 				exp::Tokens::set_Item(i,ttk2)
-				goto fin
-			end if
-
-			if PFlags::ProcessTTokOnly = false then
-
-				if tok is DollarSign then
-					PFlags::DurConvFlag = PFlags::DurConvFlag == false
-					PFlags::isChanged = true
-					if PFlags::DurConvFlag then
-						PFlags::ConvFlag = true
-						PFlags::OrdOp = #expr("conv " + PFlags::OrdOp)::Trim()
+			elseif tok is DollarSign then
+				PFlags::DurConvFlag = !PFlags::DurConvFlag
+				PFlags::isChanged = true
+				if PFlags::DurConvFlag then
+					PFlags::ConvFlag = true
+					PFlags::OrdOp = #expr("conv " + PFlags::OrdOp)::Trim()
+				end if
+				exp::RemToken(i)
+				i--
+				len = --exp::Tokens::get_Count() 
+			elseif tok is NegOp then
+				PFlags::isChanged = true
+				PFlags::NegFlag = true
+				PFlags::OrdOp = #expr("neg " + PFlags::OrdOp)::Trim()
+				exp::RemToken(i)
+				i--
+				len = --exp::Tokens::get_Count() 
+			elseif tok is NotOp then
+				PFlags::isChanged = true
+				PFlags::NotFlag = true
+				PFlags::OrdOp = #expr("not " + PFlags::OrdOp)::Trim()
+				exp::RemToken(i)
+				i--
+				len = --exp::Tokens::get_Count() 
+			elseif tok is IncOp then
+				PFlags::isChanged = true
+				PFlags::IncFlag = true
+				PFlags::OrdOp = #expr("inc " + PFlags::OrdOp)::Trim()
+				exp::RemToken(i)
+				i--
+				len = --exp::Tokens::get_Count() 
+			elseif tok is DecOp then
+				PFlags::isChanged = true
+				PFlags::DecFlag = true
+				PFlags::OrdOp = #expr("dec " + PFlags::OrdOp)::Trim()
+				exp::RemToken(i)
+				i--
+				len = --exp::Tokens::get_Count() 
+			elseif tok is Pipe then
+				exp::RemToken(i)
+				i--
+				len = --exp::Tokens::get_Count() 
+			elseif tok is RefTok then
+				PFlags::isChanged = true
+				PFlags::RefFlag = true
+				exp::RemToken(i)
+				i--
+				len = --exp::Tokens::get_Count() 
+			elseif tok is ValInRefTok then
+				PFlags::isChanged = true
+				PFlags::ValinrefFlag = true
+				exp::RemToken(i)
+				i--
+				len = --exp::Tokens::get_Count() 
+			elseif tok is TypeTok then
+				if PFlags::DurConvFlag then
+					exp = procType(exp,i)
+					PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
+					exp::RemToken(i)
+					i--
+					len = --exp::Tokens::get_Count() 
+				end if
+			elseif tok is Ident then
+				if !PFlags::DurConvFlag then
+					if PFlags::MetCallFlag orelse PFlags::IdentFlag orelse PFlags::StringFlag orelse PFlags::CtorFlag then
+						mcbool = true
 					end if
-					exp::RemToken(i)
-					i--
-					len = --exp::Tokens::get_Count() 
-					goto fin
-				end if
-				
-				if tok is NegOp then
-					PFlags::isChanged = true
-					PFlags::NegFlag = true
-					PFlags::OrdOp = #expr("neg " + PFlags::OrdOp)::Trim()
-					exp::RemToken(i)
-					i--
-					len = --exp::Tokens::get_Count() 
-					goto fin
-				end if
-				
-				if tok is NotOp then
-					PFlags::isChanged = true
-					PFlags::NotFlag = true
-					PFlags::OrdOp = #expr("not " + PFlags::OrdOp)::Trim()
-					exp::RemToken(i)
-					i--
-					len = --exp::Tokens::get_Count() 
-					goto fin
-				end if
-				
-				if tok is IncOp then
-					PFlags::isChanged = true
-					PFlags::IncFlag = true
-					PFlags::OrdOp = #expr("inc " + PFlags::OrdOp)::Trim()
-					exp::RemToken(i)
-					i--
-					len = --exp::Tokens::get_Count() 
-					goto fin
-				end if
-				
-				if tok is DecOp then
-					PFlags::isChanged = true
-					PFlags::DecFlag = true
-					PFlags::OrdOp = #expr("dec " + PFlags::OrdOp)::Trim()
-					exp::RemToken(i)
-					i--
-					len = --exp::Tokens::get_Count() 
-					goto fin
-				end if
-
-				if tok is Pipe then
-					exp::RemToken(i)
-					i--
-					len = --exp::Tokens::get_Count() 
-					goto fin
-				end if
-
-				if tok is RefTok then
-					PFlags::isChanged = true
-					PFlags::RefFlag = true
-					exp::RemToken(i)
-					i--
-					len = --exp::Tokens::get_Count() 
-					goto fin
-				end if
-
-				if tok is ValInRefTok then
-					PFlags::isChanged = true
-					PFlags::ValinrefFlag = true
-					exp::RemToken(i)
-					i--
-					len = --exp::Tokens::get_Count() 
-					goto fin
-				end if
-
-				if tok is TypeTok then
-					if PFlags::DurConvFlag then
-						exp = procType(exp,i)
-						PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
-						exp::RemToken(i)
-						i--
-						len = --exp::Tokens::get_Count() 
+					PFlags::IdentFlag = true
+					if PFlags::isChanged then
+						exp::Tokens::set_Item(i,PFlags::UpdateIdent($Ident$exp::Tokens::get_Item(i)))
+						PFlags::SetUnaryFalse()
+						j = i
 					end if
-					goto fin
-				end if
 
-				if tok is Ident then
-					if !PFlags::DurConvFlag then
-						if PFlags::MetCallFlag orelse PFlags::IdentFlag orelse PFlags::StringFlag orelse PFlags::CtorFlag then
-							mcbool = true
+					//genericmethodnametok detector
+					if i < (exp::Tokens::get_Count() - 2) then
+						if (exp::Tokens::get_Item(++i) is LAParen) andalso (exp::Tokens::get_Item(i + 2) is OfTok) then
+							exp = procMtdName(exp, i)
+							len = --exp::Tokens::get_Count() 
 						end if
-						PFlags::IdentFlag = true
+					end if
+					//-----------------------------
+				else
+					exp = procType(exp,i)
+					PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
+					exp::RemToken(i)
+					i--
+					len = --exp::Tokens::get_Count() 
+				end if
+			elseif tok is CharLiteral then
+				if PFlags::isChanged then
+					exp::Tokens::set_Item(i,PFlags::UpdateCharLit($CharLiteral$exp::Tokens::get_Item(i)))
+					PFlags::SetUnaryFalse()
+					j = i
+				end if
+			elseif tok is NullLiteral then
+				if PFlags::isChanged then
+					exp::Tokens::set_Item(i,PFlags::UpdateNullLit($NullLiteral$exp::Tokens::get_Item(i)))
+					PFlags::SetUnaryFalse()
+					j = i
+				end if
+			elseif tok is MeTok then
+				if PFlags::isChanged then
+					exp::Tokens::set_Item(i,PFlags::UpdateMeTok($MeTok$exp::Tokens::get_Item(i)))
+					PFlags::SetUnaryFalse()
+					j = i
+				end if
+			elseif tok is StringLiteral then
+				PFlags::StringFlag = true
+				if PFlags::isChanged then
+					exp::Tokens::set_Item(i,PFlags::UpdateStringLit($StringLiteral$exp::Tokens::get_Item(i)))
+					PFlags::SetUnaryFalse()
+					j = i
+				end if
+			elseif tok is BooleanLiteral then
+				if PFlags::isChanged then
+					exp::Tokens::set_Item(i,PFlags::UpdateBoolLit($BooleanLiteral$exp::Tokens::get_Item(i)))
+					PFlags::SetUnaryFalse()
+					j = i
+				end if
+			elseif tok is NumberLiteral then
+				if PFlags::isChanged then
+					exp::Tokens::set_Item(i,PFlags::UpdateNumLit($NumberLiteral$exp::Tokens::get_Item(i)))
+					PFlags::SetUnaryFalse()
+					j = i
+				end if
+			elseif tok is NewTok then
+				exp::RemToken(i)
+				exp = procNewCall(procType(exp, i), i)
+				len = --exp::Tokens::get_Count() 
+				if exp::Tokens::get_Item(i) is NewCallTok then
+					//if output is newcall
+					if i < len then
+						if exp::Tokens::get_Item(++i) is LCParen then
+							exp = procObjInitCall(exp, i)
+							len = --exp::Tokens::get_Count() 
+						end if
+						PFlags::CtorFlag = true
+					end if
+				end if
+			elseif tok is GettypeTok then
+				exp::RemToken(i)
+				exp = procType(exp,i)
+				len = --exp::Tokens::get_Count() 
+				exp::Tokens::set_Item(i,new GettypeCallTok() {Name = $TypeTok$exp::Tokens::get_Item(i)})
+			elseif tok is DefaultTok then
+				exp::RemToken(i)
+				exp = procType(exp,i)
+				len = --exp::Tokens::get_Count() 
+				exp::Tokens::set_Item(i,new DefaultCallTok() {Name = $TypeTok$exp::Tokens::get_Item(i)})
+			elseif (tok is IsOp) orelse (tok is IsNotOp) orelse (tok is AsOp) then
+				i++
+				exp = procType(exp,i)
+				len = --exp::Tokens::get_Count() 
+			elseif tok is TernaryTok then
+				if i < len then
+					if exp::Tokens::get_Item(++i) is LCParen then
+						//call ternary processor
+						exp = procTernaryCall(exp, i)
+						len = --exp::Tokens::get_Count() 
+					else
+						StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '{' after a '#ternary'!")
+					end if
+				else
+					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '{' after a '#ternary'!")
+				end if
+			elseif tok is ExprTok then
+				if i < len then
+					if exp::Tokens::get_Item(++i) is LParen then
+						exp::Tokens::set_Item(i, new ExprCallTok() {Line = exp::Line})
 						if PFlags::isChanged then
-							exp::Tokens::set_Item(i,PFlags::UpdateIdent($Ident$exp::Tokens::get_Item(i)))
+							PFlags::UpdateToken($IUnaryOperatable$exp::Tokens::get_Item(i))
 							PFlags::SetUnaryFalse()
 							j = i
 						end if
-
-						//genericmethodnametok detector
-						if i < (exp::Tokens::get_Count() - 2) then
-							if (exp::Tokens::get_Item(++i) is LAParen) andalso (exp::Tokens::get_Item(i + 2) is OfTok) then
-								exp = procMtdName(exp, i)
-								len = --exp::Tokens::get_Count() 
-							end if
-						end if
-						//-----------------------------
+						exp = procExprCall(exp, i)
+						len = --exp::Tokens::get_Count()
+						PFlags::CtorFlag = true
 					else
-						exp = procType(exp,i)
-						PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
-						exp::RemToken(i)
-						i--
-						len = --exp::Tokens::get_Count() 
-					end if
-					goto fin
-				end if
-
-				if tok is CharLiteral then
-					if PFlags::isChanged then
-						exp::Tokens::set_Item(i,PFlags::UpdateCharLit($CharLiteral$exp::Tokens::get_Item(i)))
-						PFlags::SetUnaryFalse()
-						j = i
-					end if
-					goto fin
-				end if
-
-				if tok is NullLiteral then
-					if PFlags::isChanged then
-						exp::Tokens::set_Item(i,PFlags::UpdateNullLit($NullLiteral$exp::Tokens::get_Item(i)))
-						PFlags::SetUnaryFalse()
-						j = i
-					end if
-					goto fin
-				end if
-
-				if tok is MeTok then
-					if PFlags::isChanged then
-						exp::Tokens::set_Item(i,PFlags::UpdateMeTok($MeTok$exp::Tokens::get_Item(i)))
-						PFlags::SetUnaryFalse()
-						j = i
-					end if
-					goto fin
-				end if
-
-				if tok is StringLiteral then
-					PFlags::StringFlag = true
-					if PFlags::isChanged then
-						exp::Tokens::set_Item(i,PFlags::UpdateStringLit($StringLiteral$exp::Tokens::get_Item(i)))
-						PFlags::SetUnaryFalse()
-						j = i
-					end if
-					goto fin
-				end if
-
-				if tok is BooleanLiteral then
-					if PFlags::isChanged then
-						exp::Tokens::set_Item(i,PFlags::UpdateBoolLit($BooleanLiteral$exp::Tokens::get_Item(i)))
-						PFlags::SetUnaryFalse()
-						j = i
-					end if
-					goto fin
-				end if
-
-				if tok is NumberLiteral then
-					if PFlags::isChanged then
-						exp::Tokens::set_Item(i,PFlags::UpdateNumLit($NumberLiteral$exp::Tokens::get_Item(i)))
-						PFlags::SetUnaryFalse()
-						j = i
-					end if
-					goto fin
-				end if
-
-				if tok is NewTok then
-					exp::RemToken(i)
-					exp = procNewCall(procType(exp, i), i)
-					len = --exp::Tokens::get_Count() 
-					if exp::Tokens::get_Item(i) is NewCallTok then
-						//if output is newcall
-						if i < len then
-							if exp::Tokens::get_Item(++i) is LCParen then
-								exp = procObjInitCall(exp, i)
-								len = --exp::Tokens::get_Count() 
-							end if
-							PFlags::CtorFlag = true
-						end if
-					end if
-					goto fin
-				end if
-
-				if tok is GettypeTok then
-					exp::RemToken(i)
-					exp = procType(exp,i)
-					len = --exp::Tokens::get_Count() 
-					exp::Tokens::set_Item(i,new GettypeCallTok() {Name = $TypeTok$exp::Tokens::get_Item(i)})
-					goto fin
-				end if
-				
-				if tok is DefaultTok then
-					exp::RemToken(i)
-					exp = procType(exp,i)
-					len = --exp::Tokens::get_Count() 
-					exp::Tokens::set_Item(i,new DefaultCallTok() {Name = $TypeTok$exp::Tokens::get_Item(i)})
-					goto fin
-				end if
-
-				if (tok is IsOp) orelse (tok is IsNotOp) orelse (tok is AsOp) then
-					i++
-					exp = procType(exp,i)
-					len = --exp::Tokens::get_Count() 
-					goto fin
-				end if
-				
-				if tok is TernaryTok then
-					if i < len then
-						if exp::Tokens::get_Item(++i) is LCParen then
-							//call ternary processor
-							exp = procTernaryCall(exp, i)
-							len = --exp::Tokens::get_Count() 
-							goto fin
-						end if
-					end if
-					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '{' after a '#ternary'!")
-					goto fin
-				end if
-				
-				if tok is ExprTok then
-					if i < len then
-						if exp::Tokens::get_Item(++i) is LParen then
-							exp::Tokens::set_Item(i, new ExprCallTok() {Line = exp::Line})
-							if PFlags::isChanged then
-								PFlags::UpdateToken($IUnaryOperatable$exp::Tokens::get_Item(i))
-								PFlags::SetUnaryFalse()
-								j = i
-							end if
-							exp = procExprCall(exp, i)
-							len = --exp::Tokens::get_Count()
-							PFlags::CtorFlag = true
-							goto fin
-						end if 
-					end if
+						StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#expr'!")
+					end if 
+				else
 					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#expr'!")
-					goto fin
 				end if
-
-				if tok is NewarrTok then
-					exp::RemToken(i)
-					len--
-					tok = exp::Tokens::get_Item(i)
-					exp::RemToken(i)
-					len--
-					newavtok = exp::Tokens::get_Item(i)
-					exp::Tokens::set_Item(i, new NewarrCallTok() {ArrayType = #ternary {tok is TypeTok ? $TypeTok$tok , new TypeTok() {Line = tok::Line, Value = tok::Value}}, ArrayLen = new Expr() {Line = exp::Line, AddToken(newavtok)}})
-					goto fin
-				end if
-
-				if tok is PtrTok then
-
-					exp::RemToken(i)
-					len--
-					var ptrctoken as PtrCallTok = new PtrCallTok() {MetToCall = new MethodNameTok($Ident$exp::Tokens::get_Item(i))}
-					exp::Tokens::set_Item(i,ptrctoken)
-
-					//outer check for (
-					i++
-					if i <= len then
-						tok = exp::Tokens::get_Item(i)
-						if tok is LParen then
-							exp::RemToken(i)
-							len--
-							//inner check for )
-							//-----------------
-							if i <= len then
-								tok = exp::Tokens::get_Item(i)
-								if tok is RParen then
-									exp::RemToken(i)
-									len--
-								end if
-							end if
-							//-----------------
-						end if
+			elseif tok is NewarrTok then
+				exp::RemToken(i)
+				len--
+				tok = exp::Tokens::get_Item(i)
+				exp::RemToken(i)
+				len--
+				newavtok = exp::Tokens::get_Item(i)
+				exp::Tokens::set_Item(i, new NewarrCallTok() {ArrayType = #ternary {tok is TypeTok ? $TypeTok$tok , new TypeTok() {Line = tok::Line, Value = tok::Value}}, ArrayLen = new Expr() {Line = exp::Line, AddToken(newavtok)}})
+//			elseif tok is PtrTok then
+//
+//				exp::RemToken(i)
+//				len--
+//				var ptrctoken as PtrCallTok = new PtrCallTok() {MetToCall = new MethodNameTok($Ident$exp::Tokens::get_Item(i))}
+//				exp::Tokens::set_Item(i,ptrctoken)
+//
+//				//outer check for (
+//				i++
+//				if i <= len then
+//					tok = exp::Tokens::get_Item(i)
+//					if tok is LParen then
+//						exp::RemToken(i)
+//						len--
+//						//inner check for )
+//						//-----------------
+//						if i <= len then
+//							tok = exp::Tokens::get_Item(i)
+//							if tok is RParen then
+//								exp::RemToken(i)
+//								len--
+//							end if
+//						end if
+//						//-----------------
+//					end if
+//				end if
+//
+			elseif tok is LParen then
+				if PFlags::IdentFlag then
+					PFlags::IdentFlag = false
+					if PFlags::MetCallFlag orelse PFlags::StringFlag orelse PFlags::IdentFlag  orelse PFlags::CtorFlag then
+						mcbool = true
 					end if
-
-					goto fin
+					PFlags::MetCallFlag = true
+					exp = procMethodCall(exp, i)
+					i--
+					len = --exp::Tokens::get_Count() 
 				end if
-
-				if tok is LParen then
-					if PFlags::IdentFlag then
-						PFlags::IdentFlag = false
-						if PFlags::MetCallFlag orelse PFlags::StringFlag orelse PFlags::IdentFlag  orelse PFlags::CtorFlag then
-							mcbool = true
-						end if
-						PFlags::MetCallFlag = true
-						exp = procMethodCall(exp, i)
-						i--
-						len = --exp::Tokens::get_Count() 
-					end if
-
-					goto fin
+			elseif tok is LSParen then
+				if PFlags::IdentFlag then
+					PFlags::IdentFlag = false
+					exp = procIdentArrayAccess(exp, i)
+					i--
+					len = --exp::Tokens::get_Count() 
+					PFlags::IdentFlag = true
+					j = i
+				elseif PFlags::MetCallFlag then
+					PFlags::MetCallFlag = false
+					exp = procMtdArrayAccess(exp, i)
+					i--
+					len = --exp::Tokens::get_Count() 
+					PFlags::MetCallFlag = true
+					j = i
 				end if
-
-				//if i > j then
-				//PFlags::IdentFlag = false
-				//end if
-
-				//-------------------------------------------------------------------------------------
-
-				if tok is LSParen then
-					if PFlags::IdentFlag then
-						PFlags::IdentFlag = false
-						exp = procIdentArrayAccess(exp, i)
-						i--
-						len = --exp::Tokens::get_Count() 
-						PFlags::IdentFlag = true
-						j = i
-					elseif PFlags::MetCallFlag then
-						PFlags::MetCallFlag = false
-						exp = procMtdArrayAccess(exp, i)
-						i--
-						len = --exp::Tokens::get_Count() 
-						PFlags::MetCallFlag = true
-						j = i
-					end if
-					goto fin
-				end if
-
+			else
 				if i > j then
 					PFlags::ResetMCISFlgs()
 				end if
-				//-------------------------------------------------------------------------------------
 			end if
+		until i >= len
 
-			place fin
+		if mcbool then
+			len = exp::Tokens::get_Count()
+			i = len
+			mcbool = false
+			PFlags::ResetMCISFlgs()
 
-			if i >= len then
-				goto cont
-			else
-				goto loop
-			end if
-
-		else
-			//method chain code
-
-			i--
-			mctok = exp::Tokens::get_Item(i)
-			
-			if mctok is GenericMethodNameTok then
-				var mct = $GenericMethodNameTok$mctok
-				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
-					PFlags::MetCallFlag = false
-					PFlags::IdentFlag = false
-					var conseq as Token = exp::Tokens::get_Item(++i)
-					if conseq is Ident then
-						mcident = $Ident$conseq
-						mcident::ExplType = new GenericTypeTok(mct::Value, mct::Params)
-					elseif conseq is MethodCallTok then
-						mcident = #expr($MethodCallTok$conseq)::Name
-						mcident::ExplType = new GenericTypeTok(mct::Value, mct::Params)
-					end if	
-					exp::RemToken(i)
+			do
+				//method chain code
+				i--
+				mctok = exp::Tokens::get_Item(i)
+				
+				if mctok is GenericMethodNameTok then
+					var mct = $GenericMethodNameTok$mctok
+					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
+						PFlags::MetCallFlag = false
+						PFlags::IdentFlag = false
+						var conseq as Token = exp::Tokens::get_Item(++i)
+						if conseq is Ident then
+							mcident = $Ident$conseq
+							mcident::ExplType = new GenericTypeTok(mct::Value, mct::Params)
+						elseif conseq is MethodCallTok then
+							mcident = #expr($MethodCallTok$conseq)::Name
+							mcident::ExplType = new GenericTypeTok(mct::Value, mct::Params)
+						end if	
+						exp::RemToken(i)
+					end if
+				elseif mctok is Ident then
+					mcident = $Ident$mctok
+					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
+						PFlags::MetCallFlag = false
+						PFlags::IdentFlag = false
+						mcident::MemberAccessFlg = true
+						mcident::MemberToAccess = exp::Tokens::get_Item(++i)
+						exp::RemToken(++i)
+						exp::Tokens::set_Item(i,mcident)
+					end if
+					if mcident::Value like "^::(.)*$" then
+						PFlags::IdentFlag = true
+					end if
+				elseif mctok is NewCallTok then
+					var mcnct = $NewCallTok$mctok
+					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
+						PFlags::MetCallFlag = false
+						PFlags::IdentFlag = false
+						mcnct::MemberAccessFlg = true
+						mcnct::MemberToAccess = exp::Tokens::get_Item(++i)
+						exp::RemToken(++i)
+						exp::Tokens::set_Item(i,mcnct)
+					end if
+				elseif mctok is ObjInitCallTok then
+					var mcnct = $ObjInitCallTok$mctok
+					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
+						PFlags::MetCallFlag = false
+						PFlags::IdentFlag = false
+						mcnct::MemberAccessFlg = true
+						mcnct::MemberToAccess = exp::Tokens::get_Item(++i)
+						exp::RemToken(++i)
+						exp::Tokens::set_Item(i,mcnct)
+					end if
+				elseif mctok is ExprCallTok then
+					var mcnct = $ExprCallTok$mctok
+					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
+						PFlags::MetCallFlag = false
+						PFlags::IdentFlag = false
+						mcnct::MemberAccessFlg = true
+						mcnct::MemberToAccess = exp::Tokens::get_Item(++i)
+						exp::RemToken(++i)
+						exp::Tokens::set_Item(i,mcnct)
+					end if
+				elseif mctok is MethodCallTok then
+					mcmetcall = $MethodCallTok$mctok
+					mcmetname = mcmetcall::Name
+					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
+						PFlags::MetCallFlag = false
+						PFlags::IdentFlag = false
+						mcmetname::MemberAccessFlg = true
+						mcmetname::MemberToAccess = exp::Tokens::get_Item(++i)
+						exp::RemToken(++i)
+						mcmetcall::Name = mcmetname
+						exp::Tokens::set_Item(i,mcmetcall)
+					end if
+					if mcmetname::Value like "^::(.)*$" then
+						PFlags::MetCallFlag = true
+					end if
+				elseif mctok is StringLiteral then
+					mcstr = $StringLiteral$mctok
+					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
+						PFlags::MetCallFlag = false
+						PFlags::IdentFlag = false
+						mcstr::MemberAccessFlg = true
+						mcstr::MemberToAccess = exp::Tokens::get_Item(++i)
+						exp::RemToken(++i)
+						exp::Tokens::set_Item(i,mcstr)
+					end if
 				end if
-			elseif mctok is Ident then
-				mcident = $Ident$mctok
-				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
-					PFlags::MetCallFlag = false
-					PFlags::IdentFlag = false
-					mcident::MemberAccessFlg = true
-					mcident::MemberToAccess = exp::Tokens::get_Item(++i)
-					exp::RemToken(++i)
-					exp::Tokens::set_Item(i,mcident)
-				end if
-				if mcident::Value like "^::(.)*$" then
-					PFlags::IdentFlag = true
-				end if
-			elseif mctok is NewCallTok then
-				var mcnct = $NewCallTok$mctok
-				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
-					PFlags::MetCallFlag = false
-					PFlags::IdentFlag = false
-					mcnct::MemberAccessFlg = true
-					mcnct::MemberToAccess = exp::Tokens::get_Item(++i)
-					exp::RemToken(++i)
-					exp::Tokens::set_Item(i,mcnct)
-				end if
-			elseif mctok is ObjInitCallTok then
-				var mcnct = $ObjInitCallTok$mctok
-				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
-					PFlags::MetCallFlag = false
-					PFlags::IdentFlag = false
-					mcnct::MemberAccessFlg = true
-					mcnct::MemberToAccess = exp::Tokens::get_Item(++i)
-					exp::RemToken(++i)
-					exp::Tokens::set_Item(i,mcnct)
-				end if
-			elseif mctok is ExprCallTok then
-				var mcnct = $ExprCallTok$mctok
-				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
-					PFlags::MetCallFlag = false
-					PFlags::IdentFlag = false
-					mcnct::MemberAccessFlg = true
-					mcnct::MemberToAccess = exp::Tokens::get_Item(++i)
-					exp::RemToken(++i)
-					exp::Tokens::set_Item(i,mcnct)
-				end if
-			elseif mctok is MethodCallTok then
-				mcmetcall = $MethodCallTok$mctok
-				mcmetname = mcmetcall::Name
-				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
-					PFlags::MetCallFlag = false
-					PFlags::IdentFlag = false
-					mcmetname::MemberAccessFlg = true
-					mcmetname::MemberToAccess = exp::Tokens::get_Item(++i)
-					exp::RemToken(++i)
-					mcmetcall::Name = mcmetname
-					exp::Tokens::set_Item(i,mcmetcall)
-				end if
-				if mcmetname::Value like "^::(.)*$" then
-					PFlags::MetCallFlag = true
-				end if
-			elseif mctok is StringLiteral then
-				mcstr = $StringLiteral$mctok
-				if PFlags::MetCallFlag orelse PFlags::IdentFlag then
-					PFlags::MetCallFlag = false
-					PFlags::IdentFlag = false
-					mcstr::MemberAccessFlg = true
-					mcstr::MemberToAccess = exp::Tokens::get_Item(++i)
-					exp::RemToken(++i)
-					exp::Tokens::set_Item(i,mcstr)
-				end if
-			end if
-
-			if i <= 0 then
-				goto cont
-			else
-				goto loop
-			end if
-
+			until i <= 0
 		end if
 
-		place cont
-
-		if !PFlags::MetChainFlag then
-			if mcbool then
-				PFlags::MetChainFlag = true
-				len = exp::Tokens::get_Count()
-				i = len
-				mcbool = false
-				PFlags::ResetMCISFlgs()
-				goto loop
-			end if
-		else
-			PFlags::MetChainFlag = false
-		end if
 		PFlags::ResetMCISFlgs()
 
 		Verify(exp)

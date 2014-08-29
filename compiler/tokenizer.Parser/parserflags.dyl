@@ -24,12 +24,12 @@ class public Flags
 	field public TypeTok ConvTyp
 	field public string OrdOp
 	field public boolean isChanged
-	field public boolean ProcessTTokOnly
+	//field public boolean ProcessTTokOnly
 	field public boolean DurConvFlag
 	field public boolean IdentFlag
 	field public boolean MetCallFlag
 	field public boolean CtorFlag
-	field public boolean MetChainFlag
+	//field public boolean MetChainFlag
 	field public boolean StringFlag
 	field public string CurPath
 

@@ -6,47 +6,47 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-class public LabelStmt extends Stmt
-
-	field public Ident LabelName
-
-	method public void LabelStmt()
-		mybase::ctor()
-		LabelName = new Ident()
-	end method
-	
-	method public override string ToString()
-		return "label " + LabelName::Value
-	end method
-
-end class
-
-class public PlaceStmt extends Stmt
-
-	field public Ident LabelName
-
-	method public void PlaceStmt()
-		mybase::ctor()
-		LabelName = new Ident()
-	end method
-	
-	method public override string ToString()
-		return "place " + LabelName::Value
-	end method
-
-end class
-
-class public GotoStmt extends Stmt
-
-	field public Ident LabelName
-
-	method public void GotoStmt()
-		mybase::ctor()
-		LabelName = new Ident()
-	end method
-	
-	method public override string ToString()
-		return "goto " + LabelName::Value
-	end method
-
-end class
+//class public LabelStmt extends Stmt
+//
+//	field public Ident LabelName
+//
+//	method public void LabelStmt()
+//		mybase::ctor()
+//		LabelName = new Ident()
+//	end method
+//	
+//	method public override string ToString()
+//		return "label " + LabelName::Value
+//	end method
+//
+//end class
+//
+//class public PlaceStmt extends Stmt
+//
+//	field public Ident LabelName
+//
+//	method public void PlaceStmt()
+//		mybase::ctor()
+//		LabelName = new Ident()
+//	end method
+//	
+//	method public override string ToString()
+//		return "place " + LabelName::Value
+//	end method
+//
+//end class
+//
+//class public GotoStmt extends Stmt
+//
+//	field public Ident LabelName
+//
+//	method public void GotoStmt()
+//		mybase::ctor()
+//		LabelName = new Ident()
+//	end method
+//	
+//	method public override string ToString()
+//		return "goto " + LabelName::Value
+//	end method
+//
+//end class

@@ -1322,10 +1322,10 @@ class public beforefieldinit Evaluator
 				if AsmFactory::AutoChainFlg then
 					ASTEmitUnary(ecc, emt)
 				end if
-			elseif tok is PtrCallTok then
+			//elseif tok is PtrCallTok then
 				//ptr load section - obsolete
 				//if emt then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Using 'ptr' is considered an obsolete practice.")
+				//	StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Using 'ptr' is considered an obsolete practice.")
 				//	var ptrctok as PtrCallTok = $PtrCallTok$tok
 				//	mcmetinf = Helpers::GetLocMetNoParams(ptrctok::MetToCall::Value)
 				//	mcisstatic = mcmetinf::get_IsStatic()
@@ -1334,7 +1334,7 @@ class public beforefieldinit Evaluator
 				//	end if
 				//	Helpers::EmitPtrLd(mcmetinf, mcisstatic)
 				//end if
-				AsmFactory::Type02 = Loader::CachedLoadClass("System.IntPtr")
+				//AsmFactory::Type02 = Loader::CachedLoadClass("System.IntPtr")
 			end if
 
 		end if

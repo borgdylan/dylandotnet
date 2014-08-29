@@ -955,7 +955,8 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="C:dylan.NET.Tokenizer.CodeGen.StmtReader">
+        <member name="C:dylan.NET.Tokenizer.CodeGen.StmtReader(dylan.NET.Tokenizer.CodeGen.CodeGenerator)">
+            <param name="cgen">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -971,8 +972,9 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt,System.String)">
             <param name="clss">To be added.</param>
+            <param name="fpath">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -986,8 +988,9 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt,System.String)">
             <param name="clss">To be added.</param>
+            <param name="fpath">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1020,13 +1023,15 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt,System.String)">
             <param name="festm">To be added.</param>
+            <param name="fpath">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt,System.String)">
             <param name="mtss">To be added.</param>
+            <param name="fpath">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

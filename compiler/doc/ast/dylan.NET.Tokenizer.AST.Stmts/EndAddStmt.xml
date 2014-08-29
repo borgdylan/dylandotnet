@@ -1,11 +1,11 @@
 <Type Name="EndAddStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.EndAddStmt">
-  <TypeSignature Language="C#" Value="public class EndAddStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi EndAddStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="C#" Value="public class EndAddStmt : dylan.NET.Tokenizer.AST.Stmts.EndStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi EndAddStmt extends dylan.NET.Tokenizer.AST.Stmts.EndStmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.Stmt</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.EndStmt</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

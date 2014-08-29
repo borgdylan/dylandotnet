@@ -65,13 +65,13 @@ class public ValInRefTok extends Token
 
 end class
 
-class public PtrTok extends Token
-
-	method public override string ToString()
-		return "ptr"
-	end method
-
-end class
+//class public PtrTok extends Token
+//
+//	method public override string ToString()
+//		return "ptr"
+//	end method
+//
+//end class
 
 //class public DependTok extends Token
 //end class
@@ -459,29 +459,29 @@ class public FinallyTok extends NonExprToken
 
 end class
 
-class public LabelTok extends NonExprToken
-
-	method public override string ToString()
-		return "label"
-	end method
-
-end class
-
-class public PlaceTok extends NonExprToken
-
-	method public override string ToString()
-		return "place"
-	end method
-
-end class
-
-class public GotoTok extends NonExprToken
-
-	method public override string ToString()
-		return "goto"
-	end method
-
-end class
+//class public LabelTok extends NonExprToken
+//
+//	method public override string ToString()
+//		return "label"
+//	end method
+//
+//end class
+//
+//class public PlaceTok extends NonExprToken
+//
+//	method public override string ToString()
+//		return "place"
+//	end method
+//
+//end class
+//
+//class public GotoTok extends NonExprToken
+//
+//	method public override string ToString()
+//		return "goto"
+//	end method
+//
+//end class
 
 class public IfTok extends NonExprToken
 

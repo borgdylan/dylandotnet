@@ -1,13 +1,17 @@
 <Type Name="StmtSet" FullName="dylan.NET.Tokenizer.AST.Stmts.StmtSet">
-  <TypeSignature Language="C#" Value="public class StmtSet" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi StmtSet extends System.Object" />
+  <TypeSignature Language="C#" Value="public class StmtSet : dylan.NET.Tokenizer.AST.Stmts.IStmtContainer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi StmtSet extends System.Object implements class dylan.NET.Tokenizer.AST.Stmts.IStmtContainer" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Stmts.IStmtContainer</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
@@ -37,8 +41,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddStmt">
-      <MemberSignature Language="C#" Value="public void AddStmt (dylan.NET.Tokenizer.AST.Stmts.Stmt stmttoadd);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void AddStmt(class dylan.NET.Tokenizer.AST.Stmts.Stmt stmttoadd) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void AddStmt (dylan.NET.Tokenizer.AST.Stmts.Stmt stmttoadd);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddStmt(class dylan.NET.Tokenizer.AST.Stmts.Stmt stmttoadd) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -49,6 +53,62 @@
       <Docs>
         <param name="stmttoadd">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Children">
+      <MemberSignature Language="C#" Value="public virtual dylan.NET.Tokenizer.AST.Stmts.Stmt[] Children { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Stmts.Stmt[] Children" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Context">
+      <MemberSignature Language="C#" Value="public virtual dylan.NET.Tokenizer.AST.Stmts.ContextType Context { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType Context" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsOneLiner">
+      <MemberSignature Language="C#" Value="public virtual bool IsOneLiner (dylan.NET.Tokenizer.AST.Stmts.IStmtContainer ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsOneLiner(class dylan.NET.Tokenizer.AST.Stmts.IStmtContainer ctx) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="dylan.NET.Tokenizer.AST.Stmts.IStmtContainer" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Parent">
+      <MemberSignature Language="C#" Value="public virtual dylan.NET.Tokenizer.AST.Stmts.IStmtContainer Parent { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Stmts.IStmtContainer Parent" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.IStmtContainer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,13 +1,20 @@
 <Type Name="HIfStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.HIfStmt">
-  <TypeSignature Language="C#" Value="public class HIfStmt : dylan.NET.Tokenizer.AST.Stmts.HCondCompStmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi HIfStmt extends dylan.NET.Tokenizer.AST.Stmts.HCondCompStmt" />
+  <TypeSignature Language="C#" Value="public class HIfStmt : dylan.NET.Tokenizer.AST.Stmts.BlockStmt, dylan.NET.Tokenizer.AST.Stmts.IBranchContainer, dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi HIfStmt extends dylan.NET.Tokenizer.AST.Stmts.BlockStmt implements class dylan.NET.Tokenizer.AST.Stmts.IBranchContainer, class dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.HCondCompStmt</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.BlockStmt</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Stmts.IBranchContainer</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
@@ -20,6 +27,60 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddBranch">
+      <MemberSignature Language="C#" Value="public virtual void AddBranch (dylan.NET.Tokenizer.AST.Stmts.BranchStmt stmttoadd);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddBranch(class dylan.NET.Tokenizer.AST.Stmts.BranchStmt stmttoadd) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stmttoadd" Type="dylan.NET.Tokenizer.AST.Stmts.BranchStmt" />
+      </Parameters>
+      <Docs>
+        <param name="stmttoadd">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BranchChildren">
+      <MemberSignature Language="C#" Value="public virtual dylan.NET.Tokenizer.AST.Stmts.BranchStmt[] BranchChildren { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Stmts.BranchStmt[] BranchChildren" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.BranchStmt[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Branches">
+      <MemberSignature Language="C#" Value="public C5.ArrayList&lt;dylan.NET.Tokenizer.AST.Stmts.BranchStmt&gt; Branches;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.ArrayList`1&lt;class dylan.NET.Tokenizer.AST.Stmts.BranchStmt&gt; Branches" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.ArrayList&lt;dylan.NET.Tokenizer.AST.Stmts.BranchStmt&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentContainer">
+      <MemberSignature Language="C#" Value="public virtual dylan.NET.Tokenizer.AST.Stmts.IStmtContainer CurrentContainer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Stmts.IStmtContainer CurrentContainer" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.IStmtContainer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

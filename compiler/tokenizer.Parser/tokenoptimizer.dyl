@@ -153,12 +153,12 @@ class public TokenOptimizer
 			return new CoalesceOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "$" then
 			return new DollarSign() {Line = tok::Line, Value = tok::Value}
-		elseif tok::Value == "label" then
-			return new LabelTok() {Line = tok::Line, Value = tok::Value}
-		elseif tok::Value == "place" then
-			return new PlaceTok() {Line = tok::Line, Value = tok::Value}
-		elseif tok::Value == "goto" then
-			return new GotoTok() {Line = tok::Line, Value = tok::Value}
+//		elseif tok::Value == "label" then
+//			return new LabelTok() {Line = tok::Line, Value = tok::Value}
+//		elseif tok::Value == "place" then
+//			return new PlaceTok() {Line = tok::Line, Value = tok::Value}
+//		elseif tok::Value == "goto" then
+//			return new GotoTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "if" then
 			PFlags::IfFlag = true
 			return new IfTok() {Line = tok::Line, Value = tok::Value}
@@ -224,8 +224,8 @@ class public TokenOptimizer
 			return new MeTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "namespace" then
 			return new NamespaceTok() {Line = tok::Line, Value = tok::Value}
-		elseif tok::Value == "ptr" then
-			return new PtrTok() {Line = tok::Line, Value = tok::Value}
+//		elseif tok::Value == "ptr" then
+//			return new PtrTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "gettype" then
 			return new GettypeTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "default" then
