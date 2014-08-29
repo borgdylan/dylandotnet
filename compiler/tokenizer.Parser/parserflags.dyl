@@ -25,7 +25,7 @@ class public Flags
 	field public string OrdOp
 	field public boolean isChanged
 	//field public boolean ProcessTTokOnly
-	field public boolean DurConvFlag
+	//field public boolean DurConvFlag
 	field public boolean IdentFlag
 	field public boolean MetCallFlag
 	field public boolean CtorFlag
@@ -75,7 +75,7 @@ class public Flags
 		ConvTyp = null
 		OrdOp = string::Empty
 		isChanged = false
-		DurConvFlag = false
+		//DurConvFlag = false
 	end method
 	
 	method public void UpdateToken(var iuo as IUnaryOperatable)

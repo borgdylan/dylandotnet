@@ -469,11 +469,11 @@ class public ExprOptimizer
 			end if
 			
 			if d then
-				if stg = 0 then
+				if stg == 0 then
 					ct::Condition::AddToken(stm::Tokens::get_Item(i))
-				elseif stg = 1 then
+				elseif stg == 1 then
 					ct::TrueExpr::AddToken(stm::Tokens::get_Item(i))
-				elseif stg = 2 then
+				elseif stg == 2 then
 					ct::FalseExpr::AddToken(stm::Tokens::get_Item(i))
 				end if
 				stm::RemToken(i)
@@ -672,7 +672,7 @@ class public ExprOptimizer
 		len = --stm::Tokens::get_Count()
 		i--
 
-		do until i = len
+		do until i == len
 			//get parameters
 			i++
 
@@ -862,46 +862,57 @@ class public ExprOptimizer
 				StreamUtils::WriteError(exp::Line, PFlags::CurPath, string::Format("The token '{0}' is not allowed in expressions!", tok::Value))
 			end if
 
-			if tok is LRSParen then
-				exp::RemToken(i)
-				i--
-				len = --exp::Tokens::get_Count() 
-				tok = exp::Tokens::get_Item(i)
-				
-				var ttk as TypeTok = null
-				if tok isnot TypeTok then
-					var tk as Token = exp::Tokens::get_Item(i)
-					ttk = new TypeTok() {Line = tk::Line, Value = tk::Value, IsArray = true}
-				else
-					ttk = $TypeTok$exp::Tokens::get_Item(i)
-					ttk::IsArray = true
-				end if
-				exp::Tokens::set_Item(i,ttk)
-			elseif tok is Ampersand then
-				exp::RemToken(i)
-				i--
-				len = --exp::Tokens::get_Count() 
-				tok = exp::Tokens::get_Item(i)
-				
-				var ttk2 as TypeTok = null
-				if tok isnot TypeTok then
-					var tk2 as Token = exp::Tokens::get_Item(i)
-					ttk2 = new TypeTok() {Line = tk2::Line, Value = tk2::Value, IsByRef = true}
-				else
-					ttk2 = $TypeTok$exp::Tokens::get_Item(i)
-					ttk2::IsByRef = true
-				end if
-				exp::Tokens::set_Item(i,ttk2)
-			elseif tok is DollarSign then
-				PFlags::DurConvFlag = !PFlags::DurConvFlag
+//			if tok is LRSParen then
+//				exp::RemToken(i)
+//				i--
+//				len = --exp::Tokens::get_Count() 
+//				tok = exp::Tokens::get_Item(i)
+//				
+//				var ttk as TypeTok = null
+//				if tok isnot TypeTok then
+//					var tk as Token = exp::Tokens::get_Item(i)
+//					ttk = new TypeTok() {Line = tk::Line, Value = tk::Value, IsArray = true}
+//				else
+//					ttk = $TypeTok$exp::Tokens::get_Item(i)
+//					ttk::IsArray = true
+//				end if
+//				exp::Tokens::set_Item(i,ttk)
+//			elseif tok is Ampersand then
+//				exp::RemToken(i)
+//				i--
+//				len = --exp::Tokens::get_Count() 
+//				tok = exp::Tokens::get_Item(i)
+//				
+//				var ttk2 as TypeTok = null
+//				if tok isnot TypeTok then
+//					var tk2 as Token = exp::Tokens::get_Item(i)
+//					ttk2 = new TypeTok() {Line = tk2::Line, Value = tk2::Value, IsByRef = true}
+//				else
+//					ttk2 = $TypeTok$exp::Tokens::get_Item(i)
+//					ttk2::IsByRef = true
+//				end if
+//				exp::Tokens::set_Item(i,ttk2)
+			if tok is DollarSign then
+				//PFlags::DurConvFlag = !PFlags::DurConvFlag
 				PFlags::isChanged = true
-				if PFlags::DurConvFlag then
-					PFlags::ConvFlag = true
-					PFlags::OrdOp = #expr("conv " + PFlags::OrdOp)::Trim()
-				end if
+				//if PFlags::DurConvFlag then
+				PFlags::ConvFlag = true
+				PFlags::OrdOp = #expr("conv " + PFlags::OrdOp)::Trim()
+				//end if
 				exp::RemToken(i)
-				i--
-				len = --exp::Tokens::get_Count() 
+				exp = procType(exp,i)
+				PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
+				exp::RemToken(i)
+
+				if !#expr(i < exp::Tokens::get_Count()) then
+					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected '$' instead of nothing!")
+				elseif exp::Tokens::get_Item(i) isnot DollarSign then
+					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, string::Format("Expected '$' instead of {0}!", exp::Tokens::get_Item(i)::Value))
+				else
+					exp::RemToken(i)
+					i--
+					len = --exp::Tokens::get_Count()
+				end if 
 			elseif tok is NegOp then
 				PFlags::isChanged = true
 				PFlags::NegFlag = true
@@ -946,16 +957,16 @@ class public ExprOptimizer
 				exp::RemToken(i)
 				i--
 				len = --exp::Tokens::get_Count() 
-			elseif tok is TypeTok then
-				if PFlags::DurConvFlag then
-					exp = procType(exp,i)
-					PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
-					exp::RemToken(i)
-					i--
-					len = --exp::Tokens::get_Count() 
-				end if
+//			elseif tok is TypeTok then
+//				if PFlags::DurConvFlag then
+//					exp = procType(exp,i)
+//					PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
+//					exp::RemToken(i)
+//					i--
+//					len = --exp::Tokens::get_Count() 
+//				end if
 			elseif tok is Ident then
-				if !PFlags::DurConvFlag then
+//				if !PFlags::DurConvFlag then
 					if PFlags::MetCallFlag orelse PFlags::IdentFlag orelse PFlags::StringFlag orelse PFlags::CtorFlag then
 						mcbool = true
 					end if
@@ -974,13 +985,13 @@ class public ExprOptimizer
 						end if
 					end if
 					//-----------------------------
-				else
-					exp = procType(exp,i)
-					PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
-					exp::RemToken(i)
-					i--
-					len = --exp::Tokens::get_Count() 
-				end if
+//				else
+//					exp = procType(exp,i)
+//					PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
+//					exp::RemToken(i)
+//					i--
+//					len = --exp::Tokens::get_Count() 
+//				end if
 			elseif tok is CharLiteral then
 				if PFlags::isChanged then
 					exp::Tokens::set_Item(i,PFlags::UpdateCharLit($CharLiteral$exp::Tokens::get_Item(i)))
