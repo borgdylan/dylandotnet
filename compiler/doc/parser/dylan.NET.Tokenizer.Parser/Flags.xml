@@ -107,18 +107,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DurConvFlag">
-      <MemberSignature Language="C#" Value="public bool DurConvFlag;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool DurConvFlag" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ForFlag">
       <MemberSignature Language="C#" Value="public bool ForFlag;" />
       <MemberSignature Language="ILAsm" Value=".field public bool ForFlag" />

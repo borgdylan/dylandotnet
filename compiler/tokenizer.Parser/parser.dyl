@@ -42,10 +42,12 @@ class public Parser
 			if nstm is BranchStmt then
 				var curb = cstack::get_Last() as IBranchContainer
 				if curb != null then
-					curb::AddBranch($BranchStmt$nstm)
+					if !curb::AddBranch($BranchStmt$nstm) then
+						StreamUtils::WriteError(nstm::Line, PFlags::CurPath, string::Format("This branch on a {0} is invalid!", curb::GetType()::get_Name()))
+					end if
 					curc = $IStmtContainer$nstm
 				else
-					//TODO: throw an error here (cant branch on a non branch container)
+					//throw an error here (cant branch on a non branch container)
 					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, "You cannot branch on a non-branchable container!")
 				end if
 			elseif nstm is IStmtContainer then
@@ -56,24 +58,34 @@ class public Parser
 					curc = isc
 				end if
 			elseif nstm is EndStmt then
-				curc::AddStmt(nstm)
-				cstack::Pop()
-
-				var curb = cstack::get_Last() as IBranchContainer
-				if curb != null then
-					curc = curb::get_CurrentContainer()
+				if curc is StmtSet then
+					//throw an error here (cant end an stmt set)
+					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, "You cannot end the file using code!")
 				else
-					curc = cstack::get_Last()
+					curc::AddStmt(nstm)
+					cstack::Pop()
+
+					var curb = cstack::get_Last() as IBranchContainer
+					if curb != null then
+						curc = curb::get_CurrentContainer()
+					else
+						curc = cstack::get_Last()
+					end if
 				end if
 			else
-				if ignf andalso nstm is IgnorableStmt then
+				if ignf andalso nstm is CommentStmt then
 					continue
 				end if
 				curc::AddStmt(nstm)
 			end if
 
 		end do
-		
+
+		if curc isnot StmtSet then
+			//throw an error here (code blocks have not been ended right)
+			StreamUtils::WriteError(#expr($Stmt$curc)::Line, PFlags::CurPath, "This block has not been terminated!")
+		end if
+
 		return nwss
 	end method
 

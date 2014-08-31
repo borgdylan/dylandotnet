@@ -97,7 +97,7 @@ end class
 
 interface public IBranchContainer implements IStmtContainer
 
-	method public void AddBranch(var stmttoadd as BranchStmt)
+	method public boolean AddBranch(var stmttoadd as BranchStmt)
 	property public autogen initonly IStmtContainer CurrentContainer
 	property public autogen initonly BranchStmt[] BranchChildren
 

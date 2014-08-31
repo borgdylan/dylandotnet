@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.Parser" Version="11.4.1.1">
+    <Assembly Name="tokenizer.Parser" Version="11.4.2.2">
       <Attributes>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyCompany("")</AttributeName>

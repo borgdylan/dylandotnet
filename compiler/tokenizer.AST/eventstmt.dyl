@@ -37,7 +37,7 @@ class public EventAddStmt extends BlockStmt
 	end method
 
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)
-		return ctx::get_Context() == ContextType::AbstractEvent orelse _
+		return Adder != null orelse ctx::get_Context() == ContextType::AbstractEvent orelse _
 			ctx::get_Parent()::get_Context() == ContextType::Interface
 	end method
 
@@ -52,7 +52,7 @@ class public EventRemoveStmt extends BlockStmt
 	end method
 
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)
-		return ctx::get_Context() == ContextType::AbstractEvent orelse _
+		return Remover != null orelse ctx::get_Context() == ContextType::AbstractEvent orelse _
 			ctx::get_Parent()::get_Context() == ContextType::Interface
 	end method
 

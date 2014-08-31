@@ -1645,7 +1645,10 @@ class public static Helpers
 
 	[method: ComVisible(false)]
 	method public static MethodInfo GetExtMet(var t as IKVM.Reflection.Type, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
-		
+		if t == null then
+			return null
+		end if
+
 		if t is GenericTypeParameterBuilder then
 			var tpi = GetTPI(t::get_Name())
 			var res = GetExtMet(tpi::BaseType, mn, paramtyps)
@@ -1683,9 +1686,17 @@ class public static Helpers
 				end for
 				return Loader::LoadGenericMethod(t, name, genparams, paramtyps)
 			else
-				return Loader::LoadMethod(t, name, paramtyps)
+				m = Loader::LoadMethod(t, name, paramtyps)
+				if m != null then
+					return m
+				else
+					if t::get_IsInterface() then
+						return Loader::LoadMethod(Loader::CachedLoadClass("System.Object"), name, paramtyps)
+					end if
+				end if
 			end if
 		end if
+		return null
 	end method
 
 	[method: ComVisible(false)]
@@ -1736,11 +1747,19 @@ class public static Helpers
 	
 	[method: ComVisible(false)]
 	method public static FieldInfo GetExtFld(var t as IKVM.Reflection.Type, var fld as string)
+		if t == null then
+			return null
+		end if
+
 		return SymTable::TypeLst::GetField(t, fld, t) ?? Loader::LoadField(t, fld)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static PropertyInfo GetExtProp(var t as IKVM.Reflection.Type, var prop as string)
+		if t == null then
+			return null
+		end if
+
 		//var f as FieldInfo = SymTable::TypeLst::GetField(t,fld)
 		//if f != null then
 		//	return f

@@ -43,6 +43,24 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="PreRead">
+      <MemberSignature Language="C#" Value="public void PreRead (int line, string fpath);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void PreRead(int32 line, string fpath) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="line" Type="System.Int32" />
+        <Parameter Name="fpath" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="line">To be added.</param>
+        <param name="fpath">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Read">
       <MemberSignature Language="C#" Value="public void Read (dylan.NET.Tokenizer.AST.Stmts.Stmt stm, string fpath);" />
       <MemberSignature Language="ILAsm" Value=".method public instance void Read(class dylan.NET.Tokenizer.AST.Stmts.Stmt stm, string fpath) cil managed" />

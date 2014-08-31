@@ -122,7 +122,9 @@ class public CodeGenerator
 					end if
 				end for
 			elseif s is EndHIfStmt then
-			elseif s is IgnorableStmt then
+			elseif s is RegionStmt then
+				Process($RegionStmt$s, spth)
+			elseif s is EndRegionStmt then
 			elseif s is IncludeStmt then
 				var inclustm as IncludeStmt = $IncludeStmt$s
 				//var pth as string

@@ -6,42 +6,8 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 #region "normal variants"
-
-	class public IfStmt extends BlockStmt implements IBranchContainer
-
-		field public Expr Exp
-		field public C5.ArrayList<of BranchStmt> Branches
-
-		method public void IfStmt()
-			mybase::ctor()
-			Exp = new Expr()
-			Branches = new C5.ArrayList<of BranchStmt>()
-		end method
-
-		method public override newslot void AddBranch(var stmttoadd as BranchStmt)
-			Branches::Add(stmttoadd)
-			stmttoadd::set_Parent(me)
-		end method
-
-		property public override newslot IStmtContainer CurrentContainer
-			get
-				if Branches::get_Count() == 0 then
-					return me
-				else
-					return Branches::get_Last()
-				end if
-			end get
-		end property
-
-		property public override newslot BranchStmt[] BranchChildren
-			get
-				return Branches::ToArray()
-			end get
-		end property
-
-	end class
-
-	class public ElseIfStmt extends BranchStmt
+	
+class public ElseIfStmt extends BranchStmt
 
 		field public Expr Exp
 
@@ -55,28 +21,15 @@
 	class public ElseStmt extends BranchStmt
 	end class
 
-	class public EndIfStmt extends EndStmt
-	end class
-end #region
-
-#region "conditional compilation variants"
-	interface public IHCondCompStmt
-	end interface
-
-	class public HIfStmt extends BlockStmt implements IHCondCompStmt, IBranchContainer
+	class public IfStmt extends BlockStmt implements IBranchContainer
 
 		field public Expr Exp
 		field public C5.ArrayList<of BranchStmt> Branches
 
-		method public void HIfStmt()
+		method public void IfStmt()
 			mybase::ctor()
 			Exp = new Expr()
 			Branches = new C5.ArrayList<of BranchStmt>()
-		end method
-
-		method public override newslot void AddBranch(var stmttoadd as BranchStmt)
-			Branches::Add(stmttoadd)
-			stmttoadd::set_Parent(me)
 		end method
 
 		property public override newslot IStmtContainer CurrentContainer
@@ -89,6 +42,17 @@ end #region
 			end get
 		end property
 
+		method public override newslot boolean AddBranch(var stmttoadd as BranchStmt)
+			if stmttoadd is ElseIfStmt orelse stmttoadd is ElseStmt then
+				var res = get_CurrentContainer() isnot ElseStmt
+				Branches::Add(stmttoadd)
+				stmttoadd::set_Parent(me)
+				return res
+			else
+				return false
+			end if
+		end method
+
 		property public override newslot BranchStmt[] BranchChildren
 			get
 				return Branches::ToArray()
@@ -96,6 +60,14 @@ end #region
 		end property
 
 	end class
+
+	class public EndIfStmt extends EndStmt
+	end class
+end #region
+
+#region "conditional compilation variants"
+	interface public IHCondCompStmt
+	end interface
 
 	class public HElseIfStmt extends BranchStmt implements IHCondCompStmt
 
@@ -109,6 +81,46 @@ end #region
 	end class
 
 	class public HElseStmt extends BranchStmt implements IHCondCompStmt
+	end class
+
+	class public HIfStmt extends BlockStmt implements IHCondCompStmt, IBranchContainer
+
+		field public Expr Exp
+		field public C5.ArrayList<of BranchStmt> Branches
+
+		method public void HIfStmt()
+			mybase::ctor()
+			Exp = new Expr()
+			Branches = new C5.ArrayList<of BranchStmt>()
+		end method
+
+		property public override newslot IStmtContainer CurrentContainer
+			get
+				if Branches::get_Count() == 0 then
+					return me
+				else
+					return Branches::get_Last()
+				end if
+			end get
+		end property
+
+		method public override newslot boolean AddBranch(var stmttoadd as BranchStmt)
+			if stmttoadd is HElseIfStmt orelse stmttoadd is HElseStmt then
+				var res =  get_CurrentContainer() isnot HElseStmt
+				Branches::Add(stmttoadd)
+				stmttoadd::set_Parent(me)
+				return res
+			else
+				return false
+			end if
+		end method
+
+		property public override newslot BranchStmt[] BranchChildren
+			get
+				return Branches::ToArray()
+			end get
+		end property
+
 	end class
 
 	class public EndHIfStmt extends EndStmt implements IHCondCompStmt
@@ -137,7 +149,7 @@ end #region
 	end class
 end #region
 
-class public RegionStmt extends IgnorableStmt
+class public RegionStmt extends BlockStmt
 
 	field public Token Name
 
@@ -148,5 +160,5 @@ class public RegionStmt extends IgnorableStmt
 
 end class
 
-class public EndRegionStmt extends IgnorableStmt
+class public EndRegionStmt extends EndStmt
 end class

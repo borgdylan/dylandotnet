@@ -314,7 +314,7 @@ class public static Loader
 		if mtdinfo == null then
 			ints = typ::GetInterfaces()
 
-			if ints != null then
+			if ints != null andalso !typ::get_IsValueType() then
 				foreach interf in ints
 					mtdinfo = LoadMethod(interf, name,typs)
 

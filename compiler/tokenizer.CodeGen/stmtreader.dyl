@@ -1226,21 +1226,23 @@ class public StmtReader
 		SymTable::PopLoop()
 		SymTable::PopScope()
 	end method
-	
+
+	method public void PreRead(var line as integer, var fpath as string)
+		AsmFactory::ChainFlg = false
+		ILEmitter::LineNr = line
+		ILEmitter::CurSrcFile = fpath
+		SymTable::StoreFlg = false
+
+		if AsmFactory::DebugFlg andalso AsmFactory::InMethodFlg then
+			ILEmitter::MarkDbgPt(line)
+		end if
+	end method
+
 	method public void Read(var stm as Stmt, var fpath as string)
 		var vtyp as IKVM.Reflection.Type = null
 		var eval as Evaluator = null
 
-		AsmFactory::ChainFlg = false
-		ILEmitter::LineNr = stm::Line
-		ILEmitter::CurSrcFile = fpath
-		SymTable::StoreFlg = false
-
-		if AsmFactory::DebugFlg then
-			if AsmFactory::InMethodFlg then
-				ILEmitter::MarkDbgPt(stm::Line)
-			end if
-		end if
+		PreRead(stm::Line, fpath)
 
 		if stm is RefasmStmt then
 			var rastm as RefasmStmt = $RefasmStmt$stm
@@ -1563,6 +1565,7 @@ class public StmtReader
 
 			foreach b in ifstm::Branches
 				if b is ElseIfStmt then
+					PreRead(b::Line, fpath)
 					ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
 					ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
 					SymTable::SetIfNxtBlkLbl()
@@ -1576,6 +1579,7 @@ class public StmtReader
 					ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
 					cg::Process(elifstm, fpath)
 				elseif b is ElseStmt then
+					PreRead(b::Line, fpath)	
 					ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
 					ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
 					SymTable::SetIfElsePass()
@@ -1684,17 +1688,19 @@ class public StmtReader
 
 			foreach b in #expr($TryStmt$stm)::Branches
 				if b is FinallyStmt then
+					PreRead(b::Line, fpath)
 					SymTable::PopScope()
 					SymTable::PushScope()
 					SymTable::SetInCatch(false)
 					ILEmitter::EmitFinally()
 					cg::Process($FinallyStmt$b, fpath)
 				elseif b is CatchStmt then
+					PreRead(b::Line, fpath)
 					SymTable::PopScope()
 					SymTable::PushScope()
 					var cats as CatchStmt = $CatchStmt$b
 					vtyp = Helpers::CommitEvalTTok(cats::ExTyp)
-					if vtyp = null then
+					if vtyp == null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + cats::ExTyp::Value + "' is not defined.")
 					end if
 					SymTable::SetInCatch(true)

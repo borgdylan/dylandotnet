@@ -966,6 +966,12 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.PreRead(System.Int32,System.String)">
+            <param name="line">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.Read(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.String)">
             <param name="stm">To be added.</param>
             <param name="fpath">To be added.</param>

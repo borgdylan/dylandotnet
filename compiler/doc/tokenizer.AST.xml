@@ -1020,6 +1020,7 @@
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.HIfStmt.AddBranch(dylan.NET.Tokenizer.AST.Stmts.BranchStmt)">
             <param name="stmttoadd">To be added.</param>
             <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:dylan.NET.Tokenizer.AST.Stmts.HIfStmt.BranchChildren">
@@ -1059,6 +1060,7 @@
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.IBranchContainer.AddBranch(dylan.NET.Tokenizer.AST.Stmts.BranchStmt)">
             <param name="stmttoadd">To be added.</param>
             <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:dylan.NET.Tokenizer.AST.Stmts.IBranchContainer.BranchChildren">
@@ -1082,6 +1084,7 @@
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.IfStmt.AddBranch(dylan.NET.Tokenizer.AST.Stmts.BranchStmt)">
             <param name="stmttoadd">To be added.</param>
             <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:dylan.NET.Tokenizer.AST.Stmts.IfStmt.BranchChildren">
@@ -1627,6 +1630,7 @@
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.TryStmt.AddBranch(dylan.NET.Tokenizer.AST.Stmts.BranchStmt)">
             <param name="stmttoadd">To be added.</param>
             <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:dylan.NET.Tokenizer.AST.Stmts.TryStmt.BranchChildren">

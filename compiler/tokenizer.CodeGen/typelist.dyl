@@ -249,8 +249,8 @@ class public TypeList
 				end if
 			end if
 			
-			if mtdinfo = null then
-				if ti::Interfaces != null then
+			if mtdinfo == null then
+				if ti::Interfaces != null andalso !t::get_IsValueType() then
 					foreach interf in ti::Interfaces
 						mtdinfo = GetMethod(interf,mn,paramst, interf)
 

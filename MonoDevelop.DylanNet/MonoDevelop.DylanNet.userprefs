@@ -1,10 +1,9 @@
 ﻿<Properties>
   <AuthorInfo Name="Dylan Borg" Email="" Copyright="Copyright (C) 2013 Dylan Borg" Company="" Trademark="" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.DylanNet/templates/EmptyProjectMvc3.xpt.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.DylanNet/DocumentParser.dyl">
     <Files>
-      <File FileName="MonoDevelop.DylanNet/templates/WebConfigAppMvc3.xft.xml" Line="26" Column="26" />
-      <File FileName="MonoDevelop.DylanNet/templates/EmptyProjectMvc3.xpt.xml" Line="116" Column="116" />
+      <File FileName="MonoDevelop.DylanNet/DocumentParser.dyl" Line="38" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
