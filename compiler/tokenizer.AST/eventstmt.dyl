@@ -6,6 +6,24 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
+class public EndEventStmt extends EndStmt
+	method public override string ToString()
+		return "end event"
+	end method
+end class
+
+class public EndAddStmt extends EndStmt
+	method public override string ToString()
+		return "end add"
+	end method
+end class
+
+class public EndRemoveStmt extends EndStmt
+	method public override string ToString()
+		return "end remove"
+	end method
+end class
+
 class public EventStmt extends BlockStmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
@@ -26,6 +44,14 @@ class public EventStmt extends BlockStmt
 		end if
 	end method
 
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndEventStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Class orelse ctx == ContextType::Interface
+	end method
+
 end class
 
 class public EventAddStmt extends BlockStmt
@@ -39,6 +65,14 @@ class public EventAddStmt extends BlockStmt
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)
 		return Adder != null orelse ctx::get_Context() == ContextType::AbstractEvent orelse _
 			ctx::get_Parent()::get_Context() == ContextType::Interface
+	end method
+
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndAddStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Event orelse ctx == ContextType::AbstractEvent
 	end method
 
 end class
@@ -56,22 +90,12 @@ class public EventRemoveStmt extends BlockStmt
 			ctx::get_Parent()::get_Context() == ContextType::Interface
 	end method
 
-end class
-
-class public EndEventStmt extends EndStmt
-	method public override string ToString()
-		return "end event"
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndRemoveStmt
 	end method
-end class
 
-class public EndAddStmt extends EndStmt
-	method public override string ToString()
-		return "end add"
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Event orelse ctx == ContextType::AbstractEvent
 	end method
-end class
 
-class public EndRemoveStmt extends EndStmt
-	method public override string ToString()
-		return "end remove"
-	end method
 end class

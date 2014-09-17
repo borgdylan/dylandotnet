@@ -29,6 +29,12 @@ class public FinallyStmt extends BranchStmt
 	end method
 end class
 
+class public EndTryStmt extends EndStmt
+	method public override string ToString()
+		return "end try"
+	end method
+end class
+
 class public TryStmt extends BlockStmt implements IBranchContainer
 	
 	field public C5.ArrayList<of BranchStmt> Branches
@@ -68,6 +74,15 @@ class public TryStmt extends BlockStmt implements IBranchContainer
 	method public override string ToString()
 		return "try"
 	end method
+
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndTryStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
+	end method
+
 end class
 
 class public ThrowStmt extends Stmt
@@ -79,10 +94,8 @@ class public ThrowStmt extends Stmt
 		RExp = new Expr()
 	end method
 
-end class
-
-class public EndTryStmt extends EndStmt
-	method public override string ToString()
-		return "end try"
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
 	end method
+
 end class

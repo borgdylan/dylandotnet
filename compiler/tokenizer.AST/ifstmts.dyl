@@ -7,7 +7,7 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 #region "normal variants"
 	
-class public ElseIfStmt extends BranchStmt
+	class public ElseIfStmt extends BranchStmt
 
 		field public Expr Exp
 
@@ -19,6 +19,9 @@ class public ElseIfStmt extends BranchStmt
 	end class
 
 	class public ElseStmt extends BranchStmt
+	end class
+
+	class public EndIfStmt extends EndStmt
 	end class
 
 	class public IfStmt extends BlockStmt implements IBranchContainer
@@ -59,10 +62,16 @@ class public ElseIfStmt extends BranchStmt
 			end get
 		end property
 
+		method public override boolean ValidateEnding(var stm as Stmt)
+			return stm is EndIfStmt
+		end method
+
+		method public override boolean ValidateContext(var ctx as ContextType)
+			return ctx == ContextType::Method orelse ctx == ContextType::Loop
+		end method
+
 	end class
 
-	class public EndIfStmt extends EndStmt
-	end class
 end #region
 
 #region "conditional compilation variants"
@@ -81,6 +90,9 @@ end #region
 	end class
 
 	class public HElseStmt extends BranchStmt implements IHCondCompStmt
+	end class
+
+	class public EndHIfStmt extends EndStmt implements IHCondCompStmt
 	end class
 
 	class public HIfStmt extends BlockStmt implements IHCondCompStmt, IBranchContainer
@@ -121,9 +133,14 @@ end #region
 			end get
 		end property
 
-	end class
+		method public override boolean ValidateEnding(var stm as Stmt)
+			return stm is EndHIfStmt
+		end method
 
-	class public EndHIfStmt extends EndStmt implements IHCondCompStmt
+		method public override boolean ValidateContext(var ctx as ContextType)
+			return true
+		end method
+
 	end class
 
 	class public HDefineStmt extends Stmt
@@ -133,6 +150,10 @@ end #region
 		method public void HDefineStmt()
 			mybase::ctor()
 			Symbol = new Ident()
+		end method
+
+		method public override boolean ValidateContext(var ctx as ContextType)
+			return true
 		end method
 
 	end class
@@ -146,8 +167,15 @@ end #region
 			Symbol = new Ident()
 		end method
 
+		method public override boolean ValidateContext(var ctx as ContextType)
+			return true
+		end method
+
 	end class
 end #region
+
+class public EndRegionStmt extends EndStmt
+end class
 
 class public RegionStmt extends BlockStmt
 
@@ -158,7 +186,12 @@ class public RegionStmt extends BlockStmt
 		Name = new Token()
 	end method
 
-end class
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndRegionStmt
+	end method
 
-class public EndRegionStmt extends EndStmt
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return true
+	end method
+
 end class

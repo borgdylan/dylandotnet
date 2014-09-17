@@ -26,6 +26,7 @@ class public Parser
 
 		var nwss as StmtSet = new StmtSet() {Path = stms::Path}
 		var cstack as C5.LinkedList<of IStmtContainer> = new C5.LinkedList<of IStmtContainer>() {Push(nwss)}
+		var ctxstack as C5.LinkedList<of ContextType> = new C5.LinkedList<of ContextType>() {Push(nwss::get_Context())}
 		var curc as IStmtContainer = nwss
 
 		do until i >= (--stms::Stmts::get_Count())
@@ -43,7 +44,7 @@ class public Parser
 				var curb = cstack::get_Last() as IBranchContainer
 				if curb != null then
 					if !curb::AddBranch($BranchStmt$nstm) then
-						StreamUtils::WriteError(nstm::Line, PFlags::CurPath, string::Format("This branch on a {0} is invalid!", curb::GetType()::get_Name()))
+						StreamUtils::WriteError(nstm::Line, PFlags::CurPath, string::Format("This branch on a '{0}' is invalid!", curb::GetType()::get_Name()))
 					end if
 					curc = $IStmtContainer$nstm
 				else
@@ -51,17 +52,34 @@ class public Parser
 					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, "You cannot branch on a non-branchable container!")
 				end if
 			elseif nstm is IStmtContainer then
+				if !nstm::ValidateContext(ctxstack::get_Last()) then
+					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, _
+							string::Format("You cannot put a '{0}' into the '{1}' context type!", nstm::GetType()::get_Name(), $object$ctxstack::get_Last()))
+				end if
+
 				curc::AddStmt(nstm)
 				var isc = $IStmtContainer$nstm
 				if !isc::IsOneLiner(curc) then
 					cstack::Push(isc)
 					curc = isc
+					if isc::get_Context() != ContextType::None then
+						ctxstack::Push(isc::get_Context())
+					end if
 				end if
 			elseif nstm is EndStmt then
 				if curc is StmtSet then
 					//throw an error here (cant end an stmt set)
-					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, "You cannot end the file using code!")
+					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, "You cannot end the statement set programmatically!")
 				else
+					if !cstack::get_Last()::ValidateEnding(nstm) then
+						StreamUtils::WriteError(nstm::Line, PFlags::CurPath, _
+							string::Format("You cannot end a '{0}' with a '{1}'!", cstack::get_Last()::GetType()::get_Name(), nstm::GetType()::get_Name()))
+					end if
+
+					if cstack::get_Last()::get_Context() != ContextType::None then
+						ctxstack::Pop()
+					end if
+
 					curc::AddStmt(nstm)
 					cstack::Pop()
 
@@ -75,6 +93,10 @@ class public Parser
 			else
 				if ignf andalso nstm is CommentStmt then
 					continue
+				end if
+				if !nstm::ValidateContext(ctxstack::get_Last()) then
+					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, _
+							string::Format("You cannot put a '{0}' into the '{1}' context type!", nstm::GetType()::get_Name(), $object$ctxstack::get_Last()))
 				end if
 				curc::AddStmt(nstm)
 			end if

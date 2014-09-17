@@ -6,6 +6,20 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
+enum public integer ContextType
+	None = 0
+	Assembly = 1
+	Class = 2
+	Interface = 3
+	Enum = 4
+	Property = 5
+	Event = 6
+	Method = 7
+	AbstractProperty = 8
+	AbstractEvent = 9
+	Loop = 10
+end enum
+
 class public Stmt
 
 	field public C5.ArrayList<of Token> Tokens
@@ -24,20 +38,14 @@ class public Stmt
 		Tokens::RemoveAt(ind)
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return false
+	end method
+
 end class
 
-enum public integer ContextType
-	None = 0
-	Assembly = 1
-	Class = 2
-	Interface = 3
-	Enum = 4
-	Property = 5
-	Event = 6
-	Method = 7
-	AbstractProperty = 8
-	AbstractEvent = 9
-end enum
+class public abstract EndStmt extends Stmt
+end class
 
 interface public IStmtContainer
 
@@ -45,26 +53,27 @@ interface public IStmtContainer
 	property public autogen ContextType Context
 	property public autogen IStmtContainer Parent
 	property public autogen initonly Stmt[] Children
-	method public boolean IsOneLiner(var ctx as IStmtContainer) 
+	method public boolean IsOneLiner(var ctx as IStmtContainer)
+	method public boolean ValidateEnding(var stm as Stmt)
 
 end interface
 
-class public abstract IgnorableStmt extends Stmt
-end class
+//class public abstract IgnorableStmt extends Stmt
+//end class
 
-class public BlockStmt extends Stmt implements IStmtContainer
+class public abstract BlockStmt extends Stmt implements IStmtContainer
 
 	field public C5.ArrayList<of Stmt> Stmts
 	field family ContextType _Context
 	field family IStmtContainer _Parent
 
-	method public void BlockStmt(var ctx as ContextType)
+	method family void BlockStmt(var ctx as ContextType)
 		mybase::ctor()
 		Stmts = new C5.ArrayList<of Stmt>()
 		_Context = ctx
 	end method
 
-	method public void BlockStmt()
+	method family void BlockStmt()
 		ctor(ContextType::None)
 	end method
 
@@ -90,9 +99,13 @@ class public BlockStmt extends Stmt implements IStmtContainer
 		end get
 	end property
 
+	method public override newslot boolean ValidateEnding(var stm as Stmt)
+		return false
+	end method
+
 end class
 
-class public BranchStmt extends BlockStmt
+class public abstract BranchStmt extends BlockStmt
 end class
 
 interface public IBranchContainer implements IStmtContainer
@@ -102,9 +115,6 @@ interface public IBranchContainer implements IStmtContainer
 	property public autogen initonly BranchStmt[] BranchChildren
 
 end interface
-
-class public EndStmt extends Stmt
-end class
 
 class public StmtSet implements IStmtContainer
 
@@ -157,5 +167,9 @@ class public StmtSet implements IStmtContainer
 			return Stmts::ToArray()
 		end get
 	end property
+
+	method public override newslot boolean ValidateEnding(var stm as Stmt)
+		return false
+	end method
 
 end class

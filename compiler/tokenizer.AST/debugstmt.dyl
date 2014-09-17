@@ -29,4 +29,8 @@ class public DebugStmt extends Stmt
 		return "#debug " + Opt::ToString()
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly
+	end method
+
 end class

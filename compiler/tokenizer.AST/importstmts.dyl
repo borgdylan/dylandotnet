@@ -31,6 +31,10 @@ class public ImportStmt extends Stmt
 		return #ternary{temp2::get_Length() == 0 ? "import " + temp, "import " + temp2 + " = " + temp}
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly
+	end method
+
 end class
 
 class public LocimportStmt extends Stmt
@@ -48,6 +52,10 @@ class public LocimportStmt extends Stmt
 			temp = c"\q" + temp + c"\q"
 		end if
 		return "locimport " + temp
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly
 	end method
 
 end class

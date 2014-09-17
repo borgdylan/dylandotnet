@@ -6,6 +6,24 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
+class public EndPropStmt extends EndStmt
+	method public override string ToString()
+		return "end property"
+	end method
+end class
+
+class public EndSetStmt extends EndStmt
+	method public override string ToString()
+		return "end set"
+	end method
+end class
+
+class public EndGetStmt extends EndStmt
+	method public override string ToString()
+		return "end get"
+	end method
+end class
+
 class public PropertyStmt extends BlockStmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
@@ -42,6 +60,14 @@ class public PropertyStmt extends BlockStmt
 		return false
 	end method
 
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndPropStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Class orelse ctx == ContextType::Interface
+	end method
+
 end class
 
 class public PropertySetStmt extends BlockStmt
@@ -55,6 +81,14 @@ class public PropertySetStmt extends BlockStmt
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)
 		return Setter != null orelse ctx::get_Context() == ContextType::AbstractProperty orelse _
 			ctx::get_Parent()::get_Context() == ContextType::Interface
+	end method
+
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndSetStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Property orelse ctx == ContextType::AbstractProperty
 	end method
 
 end class
@@ -72,22 +106,12 @@ class public PropertyGetStmt extends BlockStmt
 			ctx::get_Parent()::get_Context() == ContextType::Interface
 	end method
 
-end class
-
-class public EndPropStmt extends EndStmt
-	method public override string ToString()
-		return "end property"
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndGetStmt
 	end method
-end class
 
-class public EndSetStmt extends EndStmt
-	method public override string ToString()
-		return "end set"
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Property orelse ctx == ContextType::AbstractProperty
 	end method
-end class
 
-class public EndGetStmt extends EndStmt
-	method public override string ToString()
-		return "end get"
-	end method
 end class

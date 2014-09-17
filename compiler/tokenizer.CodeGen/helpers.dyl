@@ -395,7 +395,7 @@ class public static Helpers
 	[method: ComVisible(false)]
 	method public static boolean CheckSHLRRHS(var t as IKVM.Reflection.Type, var accepti64 as boolean)
 		return t::Equals(Loader::CachedLoadClass("System.Int32")) orelse _
-			(t::Equals(Loader::CachedLoadClass("System.Int64")) andalso accepti64) _
+			(accepti64 andalso t::Equals(Loader::CachedLoadClass("System.Int64"))) _
 			orelse t::Equals(Loader::CachedLoadClass("System.IntPtr"))
 	end method
 	
@@ -2000,7 +2000,21 @@ class public static Helpers
 		
 		return new MethodInfo[] {Loader::LoadMethod(ie3, "MoveNext", IKVM.Reflection.Type::EmptyTypes), Loader::LoadMethod(ie3, "get_Current", IKVM.Reflection.Type::EmptyTypes)}
 	end method
-	
+
+	//for Nullable<of T>
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.Type ProcessNullable(var t as IKVM.Reflection.Type)
+		var nult as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Nullable`1")
+
+		if t::get_IsGenericType() then
+			if nult::Equals(t::GetGenericTypeDefinition()) then
+				return t::GetGenericArguments()[0]
+			end if
+		end if
+
+		return null
+	end method
+
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.Type> GetInhHierarchy(var t as IKVM.Reflection.Type)
 		var l = new C5.LinkedList<of IKVM.Reflection.Type> {t}

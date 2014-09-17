@@ -17,6 +17,10 @@ class public AssignStmt extends Stmt
 		RExp = new Expr()
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop orelse ctx == ContextType::Enum
+	end method
+
 end class
 
 class public IncStmt extends Stmt
@@ -27,6 +31,10 @@ class public IncStmt extends Stmt
 		mybase::ctor()
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
+	end method
+
 end class
 
 class public DecStmt extends Stmt
@@ -35,6 +43,10 @@ class public DecStmt extends Stmt
 
 	method public void DecStmt()
 		mybase::ctor()
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
 	end method
 
 end class
@@ -48,6 +60,10 @@ class public ReturnStmt extends Stmt
 		RExp = new Expr()
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
+	end method
+
 end class
 
 class public MethodCallStmt extends Stmt
@@ -59,6 +75,10 @@ class public MethodCallStmt extends Stmt
 		MethodToken = new Token()
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
+	end method
+
 end class
 
 class public EndLockStmt extends EndStmt
@@ -67,7 +87,12 @@ class public EndLockStmt extends EndStmt
 	end method
 end class
 
-class public CommentStmt extends IgnorableStmt
+class public CommentStmt extends Stmt
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return true
+	end method
+
 end class
 
 class public ErrorStmt extends Stmt
@@ -85,6 +110,10 @@ class public ErrorStmt extends Stmt
 			temp = c"\q" + temp + c"\q"
 		end if
 		return "#error " + temp
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return true
 	end method
 
 end class
@@ -106,6 +135,10 @@ class public WarningStmt extends Stmt
 		return "#warning " + temp
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return true
+	end method
+
 end class
 
 class public SignStmt extends Stmt
@@ -123,6 +156,10 @@ class public SignStmt extends Stmt
 			temp = c"\q" + temp + c"\q"
 		end if
 		return "#sign " + temp
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly
 	end method
 
 end class
@@ -151,6 +188,11 @@ class public EmbedStmt extends Stmt
 		end if
 		return #ternary{temp2::get_Length() == 0 ? "#embed " + temp, "#embed " + temp2 + " = " + temp}
 	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly
+	end method
+
 end class
 
 class public LockStmt extends BlockStmt
@@ -162,6 +204,14 @@ class public LockStmt extends BlockStmt
 		Lockee = new Expr()
 	end method
 
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndLockStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
+	end method
+
 end class
 
 class public TryLockStmt extends BlockStmt
@@ -171,6 +221,14 @@ class public TryLockStmt extends BlockStmt
 	method public void TryLockStmt()
 		mybase::ctor()
 		Lockee = new Expr()
+	end method
+
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndLockStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
 	end method
 
 end class

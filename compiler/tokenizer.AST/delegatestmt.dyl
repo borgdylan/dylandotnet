@@ -29,4 +29,8 @@ class public DelegateStmt extends Stmt
 		Params::Add(paramtoadd)
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly orelse ctx == ContextType::Class
+	end method
+
 end class

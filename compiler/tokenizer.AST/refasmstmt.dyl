@@ -24,6 +24,10 @@ class public RefasmStmt extends Stmt
 		return #ternary {EmbedIfUsed ? "#refembedasm ", "#refasm "} + temp
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly
+	end method
+
 end class
 
 class public RefstdasmStmt extends Stmt
@@ -41,6 +45,10 @@ class public RefstdasmStmt extends Stmt
 			temp = c"\q" + temp + c"\q"
 		end if
 		return "#refstdasm " + temp
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly
 	end method
 
 end class

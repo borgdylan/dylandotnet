@@ -6,6 +6,12 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
+class public EndMethodStmt extends EndStmt
+	method public override string ToString()
+		return "end method"
+	end method
+end class
+
 class public MethodStmt extends BlockStmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
@@ -47,10 +53,12 @@ class public MethodStmt extends BlockStmt
 		return false
 	end method
 
-end class
-
-class public EndMethodStmt extends EndStmt
-	method public override string ToString()
-		return "end method"
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndMethodStmt
 	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Class orelse ctx == ContextType::Interface
+	end method
+
 end class

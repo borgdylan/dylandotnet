@@ -6,13 +6,24 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
+class public EndDoStmt extends EndStmt
+end class
+
 class public DoWhileStmt extends BlockStmt
 
 	field public Expr Exp
 
 	method public void DoWhileStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Loop)
 		Exp = new Expr()
+	end method
+
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndDoStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
 	end method
 
 end class
@@ -22,8 +33,16 @@ class public DoUntilStmt extends BlockStmt
 	field public Expr Exp
 
 	method public void DoUntilStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Loop)
 		Exp = new Expr()
+	end method
+
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndDoStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
 	end method
 
 end class
@@ -35,9 +54,17 @@ class public ForeachStmt extends BlockStmt
 	field public TypeTok Typ
 
 	method public void ForeachStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Loop)
 		Exp = new Expr()
 		Iter = new Ident()
+	end method
+
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndDoStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
 	end method
 
 end class
@@ -52,10 +79,18 @@ class public ForStmt extends BlockStmt
 	field public boolean Direction
 
 	method public void ForStmt()
-		mybase::ctor()
+		mybase::ctor(ContextType::Loop)
 		StartExp = new Expr()
 		EndExp = new Expr()
 		Direction = true
+	end method
+
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndDoStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
 	end method
 
 end class
@@ -83,13 +118,33 @@ class public UntilStmt extends EndStmt
 end class
 
 class public DoStmt extends BlockStmt
+
+	method public void DoStmt()
+		mybase::ctor(ContextType::Loop)
+	end method
+
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is UntilStmt orelse stm is WhileStmt
+	end method
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Method orelse ctx == ContextType::Loop
+	end method
+
 end class
 
 class public BreakStmt extends Stmt
+
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Loop
+	end method
+
 end class
 
 class public ContinueStmt extends Stmt
-end class
 
-class public EndDoStmt extends EndStmt
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Loop
+	end method
+
 end class

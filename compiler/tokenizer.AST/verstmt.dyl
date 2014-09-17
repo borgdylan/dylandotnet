@@ -30,4 +30,8 @@ class public VerStmt extends Stmt
 		return new Version(VersionNos[0]::NumVal, VersionNos[1]::NumVal, VersionNos[2]::NumVal, VersionNos[3]::NumVal)
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly
+	end method
+
 end class

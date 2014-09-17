@@ -25,4 +25,8 @@ class public IncludeStmt extends Stmt
 		return "#include " + temp
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly
+	end method
+
 end class

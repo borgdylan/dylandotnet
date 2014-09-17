@@ -23,4 +23,8 @@ class public AssemblyStmt extends Stmt
 		return "assembly " + AsmName::Value + " " + Mode::ToString()
 	end method
 
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly
+	end method
+
 end class

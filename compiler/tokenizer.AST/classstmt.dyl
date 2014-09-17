@@ -6,6 +6,24 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
+class public EndClassStmt extends EndStmt
+
+	field public Token EndToken 
+
+	method public void EndClassStmt(var endtok as Token)
+		mybase::ctor()
+		EndToken = endtok
+	end method
+
+	method public void EndClassStmt()
+		ctor(new ClassTok() {Line = me::Line})
+	end method
+
+	method public override string ToString()
+		return "end " + EndToken::ToString()
+	end method
+end class
+
 // class Attrs ClassName extends InhClass implements ImplInterafaces
 class public ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstrainable
 
@@ -53,22 +71,13 @@ class public ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstr
 			return _Constraints
 		end get
 	end property
-end class
 
-class public EndClassStmt extends EndStmt
-
-	field public Token EndToken 
-
-	method public void EndClassStmt(var endtok as Token)
-		mybase::ctor()
-		EndToken = endtok
+	method public override boolean ValidateEnding(var stm as Stmt)
+		return stm is EndClassStmt
 	end method
 
-	method public void EndClassStmt()
-		ctor(new ClassTok() {Line = me::Line})
+	method public override boolean ValidateContext(var ctx as ContextType)
+		return ctx == ContextType::Assembly orelse ctx == ContextType::Class
 	end method
 
-	method public override string ToString()
-		return "end " + EndToken::ToString()
-	end method
 end class

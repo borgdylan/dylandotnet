@@ -9,6 +9,7 @@
 class public StmtReader
 	
 	field private CodeGenerator cg
+	field private boolean ReturnFlg
 
 	method public void StmtReader(var cgen as CodeGenerator)
 		mybase::ctor()
@@ -1418,7 +1419,11 @@ class public StmtReader
 						ILEmitter::EmitLdloc(vr::Index)
 					end if
 				end if
-				ILEmitter::EmitRet()
+
+				if li != null orelse !ReturnFlg then
+					ILEmitter::EmitRet()
+				end if				
+
 				SymTable::CheckUnusedVar()
 				SymTable::CheckCtrlBlks()
 				if AsmFactory::CurnMetName == "main" orelse AsmFactory::CurnMetName == "Main" then
@@ -1447,6 +1452,7 @@ class public StmtReader
 				ILEmitter::EmitLeave(lbl)
 			else
 				ILEmitter::EmitRet()
+				ReturnFlg = true
 			end if
 		elseif stm is VarStmt then
 			var curv as VarStmt = $VarStmt$stm
@@ -1839,6 +1845,10 @@ class public StmtReader
 			new Evaluator()::StoreEmit(dc::NumVar, new Expr() {AddToken(dc::NumVar)})
 		else
 			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
+		end if
+
+		if stm isnot ReturnStmt then
+			ReturnFlg = false
 		end if
 	end method
 

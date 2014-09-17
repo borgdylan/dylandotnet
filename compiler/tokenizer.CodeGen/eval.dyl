@@ -880,10 +880,10 @@ class public beforefieldinit Evaluator
 						end if
 					end if
 					idtb2 = true
-				end if
+				end do
 
 				AsmFactory::AddrFlg = false
-			end do
+			end if
 
 			i++
 			//instance load for local methods of current instance
@@ -1052,21 +1052,76 @@ class public beforefieldinit Evaluator
 				end if
 				AsmFactory::Type02 = astyp
 			elseif coalflg then
-				if emt then
-					SymTable::AddIf()
-					ILEmitter::EmitDup()
-					ILEmitter::EmitBrtrue(SymTable::ReadIfEndLbl())
-					ILEmitter::EmitPop()
+				var rt as IKVM.Reflection.Type = null
+				ASTEmit(rc, false)
+				rctyp = AsmFactory::Type02
+				var n1 = Helpers::ProcessNullable(lctyp)
+				var n2 = Helpers::ProcessNullable(rctyp)
+
+				//validate cases: either two compat ref types, T? and T? (yield T?), T? and T (yields T) where T is a struct
+				if !lctyp::get_IsValueType() andalso !rctyp::get_IsValueType() then
+					rt = Helpers::CheckCompat(lctyp, rctyp)
+					if rt == null then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to compatible types.")
+					end if
+				elseif n1 != null andalso n2 != null then
+					if !n1::Equals(n2) then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to compatible types.")
+					else
+						rt = lctyp
+					end if
+				elseif n1 != null then
+					if !n1::Equals(rctyp) then
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to compatible types.")
+					else
+						rt = rctyp
+					end if
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to a supported case.")
 				end if
-				ASTEmit(rc, emt)
-				AsmFactory::Type02 = Helpers::CheckCompat(lctyp, AsmFactory::Type02)
-				if AsmFactory::Type02 == null then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to compatible types.")
+
+				if n1 != null then
+					if emt then
+						SymTable::AddIf()
+						ILEmitter::EmitDup()
+						//convert T? to object
+						AsmFactory::Type02 = lctyp
+						ASTEmitValueFilter(true)
+						ILEmitter::EmitCall(Loader::LoadMethod(lctyp, "get_HasValue", IKVM.Reflection.Type::EmptyTypes))
+						ILEmitter::EmitBrfalse(SymTable::ReadIfEndLbl())
+						if n2 == null then
+							//unpack T from T?
+							AsmFactory::Type02 = lctyp
+							ASTEmitValueFilter(true)
+							ILEmitter::EmitCall(Loader::LoadMethod(lctyp, "get_Value", IKVM.Reflection.Type::EmptyTypes))
+						end if
+						ILEmitter::EmitBr(SymTable::ReadIfNxtBlkLbl())
+						ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
+						ILEmitter::EmitPop()
+					end if
+
+					ASTEmit(rc, emt)
+
+					if emt then
+						ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
+						SymTable::PopIf()
+					end if
+				else
+					if emt then
+						SymTable::AddIf()
+						ILEmitter::EmitDup()
+						ILEmitter::EmitBrtrue(SymTable::ReadIfEndLbl())
+						ILEmitter::EmitPop()
+					end if
+					ASTEmit(rc, emt)
+
+					if emt then
+						ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
+						SymTable::PopIf()
+					end if
 				end if
-				if emt then
-					ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
-					SymTable::PopIf()
-				end if
+
+				AsmFactory::Type02 = rt
 			elseif sandflg then
 				ASTEmit(new TernaryCallTok() {Condition = new Expr() {AddToken(lc)} _
 					, TrueExpr = new Expr() {AddToken(rc)}, FalseExpr = new Expr() {AddToken(new BooleanLiteral(false))} } ,emt)

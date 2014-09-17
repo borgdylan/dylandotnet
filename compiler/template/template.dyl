@@ -36,24 +36,24 @@ end struct
 class public beforefieldinit sealed SC
 end class
 
-class public interface IHello
+interface public IHello
 	method public void Hello()
 	
 	property public autogen integer MyInt
 	property public initonly autogen integer MyInt2
-end class
+end interface
 
-class public interface IHello2
+interface public IHello2
 	method public void Hello2()
-end class
+end interface
 
 class public interface IHello3
 	method public void Hello()
 end class
 
-class public interface HelloInterf
+interface public HelloInterf
 	method public void Hello()
-end class
+end interface
 
 class public HelloClass implements IHello, IHello2, IHello3
 	
@@ -834,9 +834,7 @@ class public static Program
 		Console::WriteLine(#expr(12l)::ToString())
 		Console::WriteLine(#expr(13l)::ToString())
 		var arr as IEnumerable<of integer> = Generics::addelem<of integer>(new integer[] {1,2}, 3)
-		Console::WriteLine(null ?? "null" ?? c"your CLR thinks \qnull\q is null!!")
-		Console::WriteLine("not null" ?? "null")
-		
+
 		using ms as MemoryStream = new MemoryStream()
 			using sw = new StreamWriter(ms)
 				sw::Write("Hello There")
@@ -878,8 +876,13 @@ class public static Program
 		var xa = new ObjInit[] {new ObjInit()}
 		//xa[0]::A = 1
 
-		var sobj as object ="hello"
+		var sobj as object = "hello"
 		Console::WriteLine($string$sobj)
+
+		Console::WriteLine(null ?? "null" ?? c"your CLR thinks \qnull\q is null!!")
+		Console::WriteLine("not null" ?? "null")
+		Console::WriteLine($integer?$null ?? 4)
+		Console::WriteLine($object$#expr(new integer?(2) ?? new integer?(4)))
 	end method
 
 	[method: My(new integer[] {1, 2})]
@@ -917,6 +920,31 @@ class public static Program
 		using ms = new MemoryStream()
 			return "hello"
 		end using
+	end method
+
+	method public static integer RetMet1()
+		return 0
+		Console::WriteLine(0)
+	end method
+
+	method public static integer RetMet2()
+		Console::WriteLine(0)
+		return 0
+	end method
+
+	method public static integer RetMet3()
+		try
+			return 0
+		finally
+		end try
+		return -1
+	end method
+
+	method public static integer RetMet4()
+		try
+			return 0
+		finally
+		end try
 	end method
 
 end class
