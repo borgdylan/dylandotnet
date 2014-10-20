@@ -22,7 +22,8 @@
 class public partial CodeGenerator
 
 	method public prototype void EmitMSIL(var stmts as StmtSet, var fpath as string)
-	method assembly prototype void Process(var c as IStmtContainer, var spth as string)
+	method assembly prototype Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string)
+	method assembly prototype Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string, var rtflag as boolean, var awflag as boolean)
 
 end class
 
@@ -100,30 +101,38 @@ class public CodeGenerator
 		end for
 	end method
 
-	method assembly void Process(var c as IStmtContainer, var spth as string)
+	method assembly Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string, var rtflag as boolean, var awflag as boolean)
 		var eval as Evaluator = new Evaluator()
 
 		foreach s in c::get_Children()
 			if s is HIfStmt then
 				if eval::EvaluateHIf(#expr($HIfStmt$s)::Exp) then
-					Process($HIfStmt$s, spth)
+					var res = Process($HIfStmt$s, spth)
+					rtflag = res::get_Item1()
+					awflag = res::get_Item2()
 					continue
 				end if
 
 				foreach b in #expr($HIfStmt$s)::Branches
 					if b is HElseIfStmt then
 						if eval::EvaluateHIf(#expr($HElseIfStmt$b)::Exp) then
-							Process($HElseIfStmt$b, spth)
+							var res = Process($HElseIfStmt$b, spth)
+							rtflag = res::get_Item1()
+							awflag = res::get_Item2()
 							break
 						end if
 					elseif b is HElseStmt then
-						Process($HElseStmt$b, spth)
+						var res = Process($HElseStmt$b, spth)
+						rtflag = res::get_Item1()
+						awflag = res::get_Item2()
 						break
 					end if
 				end for
 			elseif s is EndHIfStmt then
 			elseif s is RegionStmt then
-				Process($RegionStmt$s, spth)
+				var res = Process($RegionStmt$s, spth, rtflag, awflag)
+				rtflag = res::get_Item1()
+				awflag = res::get_Item2()
 			elseif s is EndRegionStmt then
 			elseif s is IncludeStmt then
 				var inclustm as IncludeStmt = $IncludeStmt$s
@@ -157,10 +166,25 @@ class public CodeGenerator
 				EmitMSIL(sset, inclustm::Path::Value)
 			else
 				if s != null then
-					sr::Read(s, spth)
+					
+					if rtflag andalso s isnot EndStmt andalso !awflag then
+						awflag = true
+						StreamUtils::WriteWarn(s::Line, spth, "Unreachable code detected!")
+					end if
+					
+					var res = sr::Read(s, spth)
+					if res then
+						rtflag = true
+					end if
 				end if
 			end if
 		end for
+
+		return Tuple::Create<of boolean, boolean>(rtflag, awflag)
+	end method
+
+	method assembly Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string)
+		return Process(c, spth, false, false)
 	end method
 
 	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)

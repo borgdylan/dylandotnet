@@ -16,7 +16,7 @@ class public StmtReader
 		cg = cgen
 	end method
 
-	method public prototype void Read(var stm as Stmt, var fpath as string)
+	method public prototype boolean Read(var stm as Stmt, var fpath as string)
 
 	method public CustomAttributeBuilder AttrStmtToCAB(var stm as AttrStmt)
 		var typ as IKVM.Reflection.Type = null
@@ -564,9 +564,11 @@ class public StmtReader
 		var overldmtd as MethodInfo = null
 		var mipt as MethodItem = null
 		var fromproto as boolean = false
+		var rettyp as IKVM.Reflection.Type = null
 
-		if (mtssnamstr == AsmFactory::CurnTypName) or (mtssnamstr like "^ctor\d*$") then
+		if (mtssnamstr == AsmFactory::CurnTypName) orelse (mtssnamstr like "^ctor\d*$") then
 			StreamUtils::WriteLine("	Adding Constructor: " + mtssnamstr)
+			rettyp = Loader::CachedLoadClass("System.Void")
 			var paramstyps as IKVM.Reflection.Type[] = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}			
 			AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(Helpers::ProcessMethodAttrs(mtss::Attrs), CallingConventions::Standard, paramstyps)
 			AsmFactory::InitConstr()
@@ -599,7 +601,6 @@ class public StmtReader
 			end if
 			
 			var paramstyps as IKVM.Reflection.Type[]
-			var rettyp as IKVM.Reflection.Type = null
 			var nrgenparams = 0
 			
 			if mtss::MethodName isnot GenericMethodNameTok then
@@ -614,6 +615,7 @@ class public StmtReader
 				AsmFactory::CurnMetB = mipt::MethodBldr
 				ILEmitter::StaticFlg = AsmFactory::CurnMetB::get_IsStatic()
 				ILEmitter::AbstractFlg = AsmFactory::CurnMetB::get_IsAbstract()
+				rettyp = AsmFactory::CurnMetB::get_ReturnType()
 			else
 				StreamUtils::WriteLine("	Adding Method: " + mtssnamstr)
 
@@ -636,7 +638,7 @@ class public StmtReader
 
 					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefinePInvokeMethod(mtssnamstr, pinfo::LibName, ma, CallingConventions::Standard, rettyp, paramstyps, pinfo::CallConv, pinfo::CSet)
 				else
-					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, ma, Loader::LoadClass("System.Void"), IKVM.Reflection.Type::EmptyTypes)
+					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, ma, Loader::CachedLoadClass("System.Void"), IKVM.Reflection.Type::EmptyTypes)
 					
 					if mtss::MethodName is GenericMethodNameTok then
 						var gmn = $GenericMethodNameTok$mtss::MethodName
@@ -753,7 +755,13 @@ class public StmtReader
 		AsmFactory::CurnMetName = mtssnamstr
 
 		if (mtss::get_Parent() != null) andalso !mtss::IsOneLiner(mtss::get_Parent()) then
-			cg::Process(mtss, fpath)
+			var res = cg::Process(mtss, fpath)
+
+			if !rettyp::Equals(Loader::CachedLoadClass("System.Void")) then
+				if !res::get_Item1() then
+					StreamUtils::WriteWarn(mtss::Line, fpath, "This method may not return/throw in all code paths!")
+				end if
+			end if
 		end if
 	end method
 	
@@ -1239,7 +1247,7 @@ class public StmtReader
 		end if
 	end method
 
-	method public void Read(var stm as Stmt, var fpath as string)
+	method public boolean Read(var stm as Stmt, var fpath as string)
 		var vtyp as IKVM.Reflection.Type = null
 		var eval as Evaluator = null
 
@@ -1454,6 +1462,7 @@ class public StmtReader
 				ILEmitter::EmitRet()
 				ReturnFlg = true
 			end if
+			return true
 		elseif stm is VarStmt then
 			var curv as VarStmt = $VarStmt$stm
 			vtyp = Helpers::CommitEvalTTok(curv::VarTyp)
@@ -1502,7 +1511,7 @@ class public StmtReader
 			
 			SymTable::AddUsing(curva::VarName::Value)
 			ILEmitter::EmitTry()
-			cg::Process(curva, fpath)
+			return cg::Process(curva, fpath)::get_Item1()
 		elseif stm is InfUsingAsgnStmt then
 			var curva as InfUsingAsgnStmt = $InfUsingAsgnStmt$stm
 			eval = new Evaluator()
@@ -1520,7 +1529,7 @@ class public StmtReader
 			
 			SymTable::AddUsing(curva::VarName::Value)
 			ILEmitter::EmitTry()
-			cg::Process(curva, fpath)
+			return cg::Process(curva, fpath)::get_Item1()
 		elseif stm is NSStmt then
 			var nss as NSStmt = $NSStmt$stm
 			AsmFactory::PushNS(nss::NS::get_UnquotedValue())
@@ -1567,7 +1576,8 @@ class public StmtReader
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for If Statements should evaluate to boolean.")
 			end if
 			ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
-			cg::Process(ifstm, fpath)
+			var rtf = cg::Process(ifstm, fpath)::get_Item1()
+			var he = false
 
 			foreach b in ifstm::Branches
 				if b is ElseIfStmt then
@@ -1583,17 +1593,20 @@ class public StmtReader
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for ElseIf Statements should evaluate to boolean.")
 					end if
 					ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
-					cg::Process(elifstm, fpath)
+					rtf = cg::Process(elifstm, fpath)::get_Item1() andalso rtf
 				elseif b is ElseStmt then
+					he = true
 					PreRead(b::Line, fpath)	
 					ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
 					ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
 					SymTable::SetIfElsePass()
 					SymTable::PopScope()
 					SymTable::PushScope()
-					cg::Process($ElseStmt$b, fpath)
+					rtf = cg::Process($ElseStmt$b, fpath)::get_Item1() andalso rtf
 				end if
 			end for
+
+			return rtf andalso he
 		elseif stm is DoStmt then
 			SymTable::PushScope()
 			SymTable::AddLoop()
@@ -1686,11 +1699,12 @@ class public StmtReader
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No exception to throw specified")
 				end if
 			end if
+			return true
 		elseif stm is TryStmt then
 			SymTable::PushScope()
 			ILEmitter::EmitTry()
 			SymTable::AddTry()
-			cg::Process($TryStmt$stm, fpath)
+			var rtf = cg::Process($TryStmt$stm, fpath)::get_Item1()
 
 			foreach b in #expr($TryStmt$stm)::Branches
 				if b is FinallyStmt then
@@ -1717,9 +1731,10 @@ class public StmtReader
 					SymTable::StoreFlg = false
 					ILEmitter::EmitCatch(vtyp)
 					ILEmitter::EmitStloc(SymTable::FindVar(cats::ExName::Value)::Index)
-					cg::Process(cats, fpath)
+					rtf = cg::Process(cats, fpath)::get_Item1() andalso rtf
 				end if
 			end for
+			return rtf
 		elseif stm is EndTryStmt then
 			ILEmitter::EmitEndTry()
 			SymTable::PopScope()
@@ -1803,7 +1818,7 @@ class public StmtReader
 			ILEmitter::EmitLdloc(lockee)
 			ILEmitter::EmitCall(Loader::CachedLoadClass("System.Threading.Monitor")::GetMethod("Enter", new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object")}))
 			ILEmitter::EmitTry()
-			cg::Process(lstm, fpath)
+			return cg::Process(lstm, fpath)::get_Item1()
 		elseif stm is TryLockStmt then
 			var lstm as TryLockStmt = $TryLockStmt$stm
 			SymTable::PushScope()
@@ -1850,6 +1865,8 @@ class public StmtReader
 		if stm isnot ReturnStmt then
 			ReturnFlg = false
 		end if
+
+		return false
 	end method
 
 end class

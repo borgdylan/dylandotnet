@@ -2058,7 +2058,7 @@ class public static Helpers
 			return curans
 			
 		end if
-		return null
+		//return null
 	end method
 	
 	[method: ComVisible(false)]
