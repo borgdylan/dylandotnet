@@ -89,6 +89,17 @@
         <summary>To be added.</summary>
       </Docs>
     </Member>
+    <Member MemberName="Loop">
+      <MemberSignature Language="C#" Value="Loop" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType Loop = int32(10)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
     <Member MemberName="Method">
       <MemberSignature Language="C#" Value="Method" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType Method = int32(7)" />

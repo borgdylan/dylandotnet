@@ -9,7 +9,7 @@ assembly Person dll
 ver 1.2.0.0
 
 //beginning the Person Class
-class public auto ansi Person
+class public Person
 
 	//the field declarations
 	field private string name
@@ -18,7 +18,7 @@ class public auto ansi Person
 	
 	//the constructor
 	method public void Person(var fullname as string, var fulladdress as string, var age as integer)
-		me::ctor()
+		mybase::ctor()
 		name = fullname
 		address = fulladdress
 		me::age = age

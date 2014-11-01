@@ -7,12 +7,12 @@ import System
 assembly dylrecurse exe
 ver 1.1.0.0
 
-class public auto ansi Program
+class public Program
 
 	method public static integer recurse(var n as integer, var lim as integer)
 		Console::WriteLine("n = " + $string$n)
 		if n < lim then
-			n = n + 1
+			n++
 			n = recurse(n, lim)
 		end if
 		return n

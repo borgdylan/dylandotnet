@@ -36,17 +36,17 @@ namespace MonoDevelop.DylanNet
 		field private Mono.TextEditor.Caret caret
 		field private EventHandler<of DocumentLocationEventArgs> pc
 
-		property public override newslot PathEntry[] CurrentPath
+		property public virtual PathEntry[] CurrentPath
 			get
 				return Enumerable::ToArray<of PathEntry>(_CurrentPath ?? new List<of PathEntry>())
 			end get
 		end property
 
-		method  public override newslot Widget CreatePathWidget (var index as integer)
+		method  public virtual Widget CreatePathWidget (var index as integer)
 			return new Label() {set_TooltipText(get_CurrentPath()[index]::get_Markup()), set_HasTooltip(true)}
 		end method
 
-		event public override newslot EventHandler<of DocumentPathChangedEventArgs> PathChanged
+		event public virtual EventHandler<of DocumentPathChangedEventArgs> PathChanged
 			add
 				if _PathChanged == null then
 					_PathChanged = value

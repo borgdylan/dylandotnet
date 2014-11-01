@@ -1,6 +1,6 @@
 <Type Name="BlockStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.BlockStmt">
-  <TypeSignature Language="C#" Value="public class BlockStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt, dylan.NET.Tokenizer.AST.Stmts.IStmtContainer" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi BlockStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt implements class dylan.NET.Tokenizer.AST.Stmts.IStmtContainer" />
+  <TypeSignature Language="C#" Value="public abstract class BlockStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt, dylan.NET.Tokenizer.AST.Stmts.IStmtContainer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract BlockStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt implements class dylan.NET.Tokenizer.AST.Stmts.IStmtContainer" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
@@ -18,8 +18,8 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public BlockStmt ();" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="protected BlockStmt ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyspecialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters />
       <Docs>
@@ -28,8 +28,8 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public BlockStmt (dylan.NET.Tokenizer.AST.Stmts.ContextType ctx);" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType ctx) cil managed" />
+      <MemberSignature Language="C#" Value="protected BlockStmt (dylan.NET.Tokenizer.AST.Stmts.ContextType ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method familyspecialname rtspecialname instance void .ctor(valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType ctx) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="ctx" Type="dylan.NET.Tokenizer.AST.Stmts.ContextType" />
@@ -145,6 +145,23 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValidateEnding">
+      <MemberSignature Language="C#" Value="public virtual bool ValidateEnding (dylan.NET.Tokenizer.AST.Stmts.Stmt stm);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ValidateEnding(class dylan.NET.Tokenizer.AST.Stmts.Stmt stm) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

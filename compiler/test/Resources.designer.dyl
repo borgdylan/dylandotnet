@@ -1,6 +1,6 @@
 namespace test
 
-	class private auto ansi static Resources
+	class private static Resources
 
 		field private static System.Resources.ResourceManager resman
 

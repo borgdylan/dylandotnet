@@ -21,7 +21,7 @@ class public CtorItem
 		ctor(new IKVM.Reflection.Type[0], $ConstructorBuilder$null)
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return "ctor : " + $string$ParamTyps[l]
 	end method
 

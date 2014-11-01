@@ -23,13 +23,13 @@ class public Ident extends ValueToken implements IUnaryOperatable, IConvable, IN
 	field public Token MemberToAccess
 	field public TypeTok ExplType
 	
-	property public override newslot autogen string OrdOp
-	property public override newslot autogen boolean Conv
-	property public override newslot autogen TypeTok TTok
-	property public override newslot autogen boolean DoNeg
-	property public override newslot autogen boolean DoNot
-	property public override newslot autogen boolean DoInc
-	property public override newslot autogen boolean DoDec
+	property public virtual autogen string OrdOp
+	property public virtual autogen boolean Conv
+	property public virtual autogen TypeTok TTok
+	property public virtual autogen boolean DoNeg
+	property public virtual autogen boolean DoNot
+	property public virtual autogen boolean DoInc
+	property public virtual autogen boolean DoDec
 	
 	method public void Ident(var value as string)
 		mybase::ctor(value)

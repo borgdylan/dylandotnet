@@ -25,7 +25,7 @@ class public beforefieldinit Token
 		ctor(string::Empty)
 	end method
 	
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return #ternary {Value === null ? string::Empty , Value}
 	end method
 

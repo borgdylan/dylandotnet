@@ -5,9 +5,9 @@ import System
 #debug on
 
 assembly boxobj exe
-ver 1.3.0.0
+ver 1.3.0.1
 
-class public auto ansi Module1
+class public Module1
 
 	method public static void main()
 
@@ -15,7 +15,7 @@ class public auto ansi Module1
 		var num as integer = $integer$obj1
 		Console::WriteLine($string$num)
 
-		var obj2 as object = $object$"12"
+		var obj2 as object = "12"
 		var obj2s as string = $string$obj2
 		var num3 as integer = $integer$obj2s
 		Console::WriteLine($string$num3)

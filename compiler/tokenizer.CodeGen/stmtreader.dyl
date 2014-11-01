@@ -620,9 +620,7 @@ class public StmtReader
 				StreamUtils::WriteLine("	Adding Method: " + mtssnamstr)
 
 				if ILEmitter::InterfaceFlg then
-					mtss::AddAttr(new OverrideAttr())
 					mtss::AddAttr(new AbstractAttr())
-					mtss::AddAttr(new NewSlotAttr())
 				end if
 
 				var ma = Helpers::ProcessMethodAttrs(mtss::Attrs)
@@ -881,7 +879,7 @@ class public StmtReader
 			var cevent = SymTable::CurnEvent
 			var metname = #ternary{cevent::ExplImplType::get_Length() > 0 ? cevent::ExplImplType + ".add_", "add_"}  + cevent::Name
 			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new VoidTok(), Line = evas::Line,  _
-				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cevent::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}}
+				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cevent::Attrs), Add(new SpecialNameAttr())}}
 			mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cevent::EventTyp)})
 			Read(mets,fpath)
 			cevent::EventBldr::SetAddOnMethod(AsmFactory::CurnMetB)
@@ -907,7 +905,7 @@ class public StmtReader
 			var cevent = SymTable::CurnEvent
 			var metname = #ternary{cevent::ExplImplType::get_Length() > 0 ? cevent::ExplImplType + ".remove_", "remove_"}  + cevent::Name
 			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new VoidTok(), Line = evas::Line,  _
-				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cevent::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}}
+				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cevent::Attrs), Add(new SpecialNameAttr())}}
 			mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cevent::EventTyp)})
 			Read(mets,fpath)
 			cevent::EventBldr::SetRemoveOnMethod(AsmFactory::CurnMetB)
@@ -1046,7 +1044,7 @@ class public StmtReader
 		else
 			var metname = #ternary{cprop::ExplImplType::get_Length() > 0 ? cprop::ExplImplType + ".get_", "get_"}  + cprop::Name
 			Read(new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new TypeTok(cprop::PropertyTyp), Line = prgs::Line, Params = cprop::Params, _
-				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}},fpath)
+				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new SpecialNameAttr())}},fpath)
 			cprop::PropertyBldr::SetGetMethod(AsmFactory::CurnMetB)
 		end if
 		cg::Process(prgs, fpath)
@@ -1071,7 +1069,7 @@ class public StmtReader
 		else
 			var metname = #ternary{cprop::ExplImplType::get_Length() > 0 ? cprop::ExplImplType + ".set_", "set_"}  + cprop::Name
 			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new VoidTok(), Line = prss::Line, Params = cprop::Params,  _
-				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new HideBySigAttr()), Add(new SpecialNameAttr())}}
+				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new SpecialNameAttr())}}
 			mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cprop::PropertyTyp)})
 			Read(mets,fpath)
 			cprop::PropertyBldr::SetSetMethod(AsmFactory::CurnMetB)

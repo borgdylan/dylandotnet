@@ -211,7 +211,7 @@
     </p>
     <div>
       <h2>Syntax</h2>
-      <div class="Signature" id="T:dylan.NET.Tokenizer.AST.Stmts.BranchStmt:Signature">public class  <b>BranchStmt</b> : <a href="../dylan.NET.Tokenizer.AST.Stmts/BlockStmt.html">BlockStmt</a></div>
+      <div class="Signature" id="T:dylan.NET.Tokenizer.AST.Stmts.BranchStmt:Signature">public abstract class  <b>BranchStmt</b> : <a href="../dylan.NET.Tokenizer.AST.Stmts/BlockStmt.html">BlockStmt</a></div>
     </div>
     <div class="Remarks" id="T:dylan.NET.Tokenizer.AST.Stmts.BranchStmt:Docs">
       <h2 class="Section">Remarks</h2>
@@ -227,8 +227,8 @@
 								See Also: Inherited members from
 								<a href="../dylan.NET.Tokenizer.AST.Stmts/BlockStmt.html">BlockStmt</a>.
 							</p>
-        <h2 class="Section">Public Constructors</h2>
-        <div class="SectionBox" id="Public Constructors">
+        <h2 class="Section">Protected Constructors</h2>
+        <div class="SectionBox" id="Protected Constructors">
           <div class="SubsectionBox">
             <table class="TypeMembers">
               <tr valign="top">
@@ -430,6 +430,26 @@
                     <a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html#M:dylan.NET.Tokenizer.AST.Stmts.Stmt.RemToken(System.Int32)">RemToken</a>
                   </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span> (<i>Inherited from <a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html">Stmt</a>.</i>)</blockquote></td>
               </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html#M:dylan.NET.Tokenizer.AST.Stmts.Stmt.ValidateContext(dylan.NET.Tokenizer.AST.Stmts.ContextType)">ValidateContext</a>
+                  </b>(<a href="../dylan.NET.Tokenizer.AST.Stmts/ContextType.html">ContextType</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span> (<i>Inherited from <a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html">Stmt</a>.</i>)</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../dylan.NET.Tokenizer.AST.Stmts/BlockStmt.html#M:dylan.NET.Tokenizer.AST.Stmts.BlockStmt.ValidateEnding(dylan.NET.Tokenizer.AST.Stmts.Stmt)">ValidateEnding</a>
+                  </b>(<a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html">Stmt</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span> (<i>Inherited from <a href="../dylan.NET.Tokenizer.AST.Stmts/BlockStmt.html">BlockStmt</a>.</i>)</blockquote></td>
+              </tr>
             </table>
           </div>
         </div>
@@ -444,7 +464,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2>Syntax</h2>
-          <div class="Signature">public  <b>BranchStmt</b> ()</div>
+          <div class="Signature">protected  <b>BranchStmt</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Stmts.BranchStmt():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>

@@ -53,20 +53,20 @@ class public ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstr
 		ImplInterfaces::Add(interftoadd)
 	end method
 
-	method public override newslot void AddConstraint(var param as string, var ctr as Token)
+	method public virtual void AddConstraint(var param as string, var ctr as Token)
 		if !_Constraints::Contains(param) then
 			_Constraints::Add(param, new C5.LinkedList<of Token>())
 		end if
 		_Constraints::get_Item(param)::Add(ctr)
 	end method
 
-	property public override newslot boolean MayHaveConstraints
+	property public virtual boolean MayHaveConstraints
 		get
 			return ClassName is GenericTypeTok
 		end get
 	end property
 
-	property public override newslot C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
+	property public virtual C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
 		get
 			return _Constraints
 		end get

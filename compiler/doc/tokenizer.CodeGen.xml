@@ -668,6 +668,12 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessNullable(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessParams(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Exprs.Expr})">
             <param name="ps">To be added.</param>
             <summary>To be added.</summary>
@@ -976,6 +982,7 @@
             <param name="stm">To be added.</param>
             <param name="fpath">To be added.</param>
             <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt,System.String)">

@@ -211,7 +211,7 @@
     </p>
     <div>
       <h2>Syntax</h2>
-      <div class="Signature" id="T:dylan.NET.Tokenizer.AST.Stmts.BlockStmt:Signature">public class  <b>BlockStmt</b> : <a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html">Stmt</a>,	<a href="../dylan.NET.Tokenizer.AST.Stmts/IStmtContainer.html">IStmtContainer</a></div>
+      <div class="Signature" id="T:dylan.NET.Tokenizer.AST.Stmts.BlockStmt:Signature">public abstract class  <b>BlockStmt</b> : <a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html">Stmt</a>,	<a href="../dylan.NET.Tokenizer.AST.Stmts/IStmtContainer.html">IStmtContainer</a></div>
     </div>
     <div class="Remarks" id="T:dylan.NET.Tokenizer.AST.Stmts.BlockStmt:Docs">
       <h2 class="Section">Remarks</h2>
@@ -227,8 +227,8 @@
 								See Also: Inherited members from
 								<a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html">Stmt</a>.
 							</p>
-        <h2 class="Section">Public Constructors</h2>
-        <div class="SectionBox" id="Public Constructors">
+        <h2 class="Section">Protected Constructors</h2>
+        <div class="SectionBox" id="Protected Constructors">
           <div class="SubsectionBox">
             <table class="TypeMembers">
               <tr valign="top">
@@ -445,6 +445,26 @@
                     <a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html#M:dylan.NET.Tokenizer.AST.Stmts.Stmt.RemToken(System.Int32)">RemToken</a>
                   </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span> (<i>Inherited from <a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html">Stmt</a>.</i>)</blockquote></td>
               </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html#M:dylan.NET.Tokenizer.AST.Stmts.Stmt.ValidateContext(dylan.NET.Tokenizer.AST.Stmts.ContextType)">ValidateContext</a>
+                  </b>(<a href="../dylan.NET.Tokenizer.AST.Stmts/ContextType.html">ContextType</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span> (<i>Inherited from <a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html">Stmt</a>.</i>)</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Tokenizer.AST.Stmts.BlockStmt.ValidateEnding(dylan.NET.Tokenizer.AST.Stmts.Stmt)">ValidateEnding</a>
+                  </b>(<a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html">Stmt</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
             </table>
           </div>
         </div>
@@ -459,7 +479,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2>Syntax</h2>
-          <div class="Signature">public  <b>BlockStmt</b> ()</div>
+          <div class="Signature">protected  <b>BlockStmt</b> ()</div>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="C:dylan.NET.Tokenizer.AST.Stmts.BlockStmt():Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -475,7 +495,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2>Syntax</h2>
-          <div class="Signature">public  <b>BlockStmt</b> (<a href="../dylan.NET.Tokenizer.AST.Stmts/ContextType.html">ContextType</a> ctx)</div>
+          <div class="Signature">protected  <b>BlockStmt</b> (<a href="../dylan.NET.Tokenizer.AST.Stmts/ContextType.html">ContextType</a> ctx)</div>
           <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="C:dylan.NET.Tokenizer.AST.Stmts.BlockStmt(dylan.NET.Tokenizer.AST.Stmts.ContextType):Parameters">
             <dl>
@@ -659,6 +679,37 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Stmts.BlockStmt.Stmts:Version Information">
+            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Stmts<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Tokenizer.AST.Stmts.BlockStmt.ValidateEnding(dylan.NET.Tokenizer.AST.Stmts.Stmt)">ValidateEnding Method</h3>
+        <blockquote id="M:dylan.NET.Tokenizer.AST.Stmts.BlockStmt.ValidateEnding(dylan.NET.Tokenizer.AST.Stmts.Stmt):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public virtual <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>ValidateEnding</b> (<a href="../dylan.NET.Tokenizer.AST.Stmts/Stmt.html">Stmt</a> stm)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.AST.Stmts.BlockStmt.ValidateEnding(dylan.NET.Tokenizer.AST.Stmts.Stmt):Parameters">
+            <dl>
+              <dt>
+                <i>stm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Tokenizer.AST.Stmts.BlockStmt.ValidateEnding(dylan.NET.Tokenizer.AST.Stmts.Stmt):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.AST.Stmts.BlockStmt.ValidateEnding(dylan.NET.Tokenizer.AST.Stmts.Stmt):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Tokenizer.AST.Stmts.BlockStmt.ValidateEnding(dylan.NET.Tokenizer.AST.Stmts.Stmt):Version Information">
             <b>Namespace: </b>dylan.NET.Tokenizer.AST.Stmts<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)</div>
           <hr size="1" />
         </blockquote>

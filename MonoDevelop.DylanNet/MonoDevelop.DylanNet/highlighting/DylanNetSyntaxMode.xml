@@ -141,14 +141,12 @@
 		<Word>ansi</Word>
 		<Word>literal</Word>
 		<Word>sealed</Word>
-		<Word>hidebysig</Word>
 		<Word>override</Word>
 		<Word>virtual</Word>
 		<Word>partial</Word>
 		<Word>initonly</Word>
 		<Word>static</Word>
 		<Word>abstract</Word>
-		<Word>newslot</Word>
 		<Word>final</Word>
 		<Word>autogen</Word>
 		<Word>beforefieldinit</Word>

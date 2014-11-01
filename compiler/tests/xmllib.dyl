@@ -12,7 +12,7 @@ import System.Xml.Linq
 assembly xmllib exe
 ver 1.2.0.0
 
-class public auto ansi Mod1
+class public Mod1
 
 	method public static XElement makenode(var name as string)
 		return new XElement($XName$name)

@@ -5,9 +5,9 @@ import System
 #debug on
 
 assembly logicop exe
-ver 1.2.0.0
+ver 1.2.0.1
 
-class public auto ansi Module1
+class public Module1
 
 	method public static void main()
 

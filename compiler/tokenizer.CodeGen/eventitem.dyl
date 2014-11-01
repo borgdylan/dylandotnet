@@ -30,7 +30,7 @@ class public EventItem
 		ExplImplType = expl
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return Name + " : " + EventTyp::ToString()
 	end method
 

@@ -62,11 +62,11 @@
       </Docs>
     </Member>
     <Member MemberName="Read">
-      <MemberSignature Language="C#" Value="public void Read (dylan.NET.Tokenizer.AST.Stmts.Stmt stm, string fpath);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void Read(class dylan.NET.Tokenizer.AST.Stmts.Stmt stm, string fpath) cil managed" />
+      <MemberSignature Language="C#" Value="public bool Read (dylan.NET.Tokenizer.AST.Stmts.Stmt stm, string fpath);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool Read(class dylan.NET.Tokenizer.AST.Stmts.Stmt stm, string fpath) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Stmts.Stmt" />
@@ -76,6 +76,7 @@
         <param name="stm">To be added.</param>
         <param name="fpath">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -98,7 +98,7 @@
       </Docs>
     </Member>
     <Member MemberName="OrdOp">
-      <MemberSignature Language="C#" Value="public string OrdOp { get; set; }" />
+      <MemberSignature Language="C#" Value="public virtual string OrdOp { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string OrdOp" />
       <MemberType>Property</MemberType>
       <ReturnValue>

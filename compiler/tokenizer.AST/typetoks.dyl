@@ -33,11 +33,11 @@ class public TypeTok extends ValueToken implements ICloneable
 		RefTyp = value
 	end method
 	
-	method public override TypeTok CloneTT()
+	method public virtual TypeTok CloneTT()
 		return new TypeTok(Value) {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp}
 	end method
 	
-	method public override final newslot object Clone()
+	method public virtual final object Clone()
 		return CloneTT()
 	end method
 	
@@ -89,7 +89,7 @@ class public GenericTypeTok extends TypeTok implements ICloneable
 			 {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp}
 	end method
 	
-	method public override final newslot object Clone()
+	method public virtual final object Clone()
 		return CloneTT()
 	end method
 

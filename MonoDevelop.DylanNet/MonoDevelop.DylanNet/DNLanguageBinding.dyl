@@ -10,61 +10,61 @@ namespace MonoDevelop.DylanNet
 
 	class public auto ansi DNLanguageBinding implements ILanguageBinding, IDotNetLanguageBinding
 
-		property public override newslot string BlockCommentEndTag
+		property public virtual string BlockCommentEndTag
 			get
 				return null
 			end get
 		end property
 		
-		property public override newslot string BlockCommentStartTag
+		property public virtual string BlockCommentStartTag
 			get
 				return null
 			end get
 		end property
 	
-		property public override newslot string Language
+		property public virtual string Language
 			get
 				return "dylan.NET"
 			end get
 		end property
 		
-		property public override newslot string SingleLineCommentTag
+		property public virtual string SingleLineCommentTag
 			get
 				return "//"
 			end get
 		end property
 		
-		property public override newslot string ProjectStockIcon
+		property public virtual string ProjectStockIcon
 			get
 				return "md-csharp-project"
 			end get
 		end property
 		
-		method public override newslot FilePath GetFileName(var fileNameWithoutExtension as FilePath)
+		method public virtual FilePath GetFileName(var fileNameWithoutExtension as FilePath)
 			return $FilePath$#expr($string$fileNameWithoutExtension + ".dyl")
 		end method
 		
-		method public override newslot boolean IsSourceCodeFile(var fileName as FilePath)
+		method public virtual boolean IsSourceCodeFile(var fileName as FilePath)
 			return fileName::get_Extension() == ".dyl"
 		end method
 		
-		method public override newslot BuildResult Compile(var items as ProjectItemCollection, var configuration as DotNetProjectConfiguration, var configSelector as ConfigurationSelector, var monitor as IProgressMonitor)
+		method public virtual BuildResult Compile(var items as ProjectItemCollection, var configuration as DotNetProjectConfiguration, var configSelector as ConfigurationSelector, var monitor as IProgressMonitor)
 			return null
 		end method
 
-		method public override newslot ConfigurationParameters CreateCompilationParameters(var projectOptions as XmlElement)
+		method public virtual ConfigurationParameters CreateCompilationParameters(var projectOptions as XmlElement)
 			return new DNConfigurationParameters()
 		end method
 
-		method public override newslot ProjectParameters CreateProjectParameters(var projectOptions as XmlElement)
+		method public virtual ProjectParameters CreateProjectParameters(var projectOptions as XmlElement)
 			return new DNProjectParameters()
 		end method
 
-		method public override newslot CodeDomProvider GetCodeDomProvider()
+		method public virtual CodeDomProvider GetCodeDomProvider()
 			return null
 		end method
 
-		method public override newslot ClrVersion[] GetSupportedClrVersions()
+		method public virtual ClrVersion[] GetSupportedClrVersions()
 			return new ClrVersion[] {ClrVersion::Net_2_0, ClrVersion::Clr_2_1, ClrVersion::Net_4_0, ClrVersion::Net_4_5}
 		end method
 	end class

@@ -44,7 +44,7 @@ class public TryStmt extends BlockStmt implements IBranchContainer
 		Branches = new C5.ArrayList<of BranchStmt>()
 	end method
 
-	property public override newslot IStmtContainer CurrentContainer
+	property public virtual IStmtContainer CurrentContainer
 		get
 			if Branches::get_Count() == 0 then
 				return me
@@ -54,7 +54,7 @@ class public TryStmt extends BlockStmt implements IBranchContainer
 		end get
 	end property
 
-	method public override newslot boolean AddBranch(var stmttoadd as BranchStmt)
+	method public virtual boolean AddBranch(var stmttoadd as BranchStmt)
 		if stmttoadd is CatchStmt orelse stmttoadd is FinallyStmt then
 			var res = get_CurrentContainer() isnot FinallyStmt
 			Branches::Add(stmttoadd)
@@ -65,7 +65,7 @@ class public TryStmt extends BlockStmt implements IBranchContainer
 		end if
 	end method
 
-	property public override newslot BranchStmt[] BranchChildren
+	property public virtual BranchStmt[] BranchChildren
 		get
 			return Branches::ToArray()
 		end get

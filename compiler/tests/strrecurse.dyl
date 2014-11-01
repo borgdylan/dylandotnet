@@ -7,7 +7,7 @@ import System
 assembly strrecurse exe
 ver 1.2.0.0
 
-class public auto ansi Program
+class public Program
 
 	method public static string palindrome(var s as string)
 		if s::get_Length() == 1 then

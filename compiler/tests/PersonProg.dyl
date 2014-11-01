@@ -10,7 +10,7 @@ import Person
 assembly PersonProg exe
 ver 1.3.0.0
 
-class public auto ansi PersonInst
+class public PersonInst
 
 	method public static void main()
 

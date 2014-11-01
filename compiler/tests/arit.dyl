@@ -7,7 +7,7 @@ import System
 assembly arit exe
 ver 1.3.0.0
 
-class public auto ansi Module1
+class public Module1
 
 	method public static double add(var n1 as double, var n2 as double)
 		return n1 + n2

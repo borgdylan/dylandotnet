@@ -8,7 +8,7 @@
     <RootNamespace>Extra.Tasks</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>Extra.Tasks</AssemblyName>
-    <ReleaseVersion>11.4.3.1</ReleaseVersion>
+    <ReleaseVersion>11.5.1.2</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

@@ -9,14 +9,14 @@ import mathematics
 assembly mathstest exe
 ver 1.2.0.0
 
-class public auto ansi Module1
+class public Module1
 
 	method public static void main()
 
 		var alg as Algebra = new Algebra()
 		var arit as Arithmetic = new Arithmetic()
 
-		var str as string = ""
+		var str as string = string::Empty
 
 		Console::WriteLine("enter Num1")
 		var Num1 as double = $double$Console::ReadLine()

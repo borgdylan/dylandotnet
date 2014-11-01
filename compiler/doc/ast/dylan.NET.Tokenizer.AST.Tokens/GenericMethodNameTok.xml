@@ -115,7 +115,7 @@
     </Member>
     <Member MemberName="op_Implicit">
       <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok op_Implicit (dylan.NET.Tokenizer.AST.Tokens.Ident idt);" />
-      <MemberSignature Language="ILAsm" Value=".method public static specialname class dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok op_Implicit(class dylan.NET.Tokenizer.AST.Tokens.Ident idt) cil managed" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok op_Implicit(class dylan.NET.Tokenizer.AST.Tokens.Ident idt) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok</ReturnType>

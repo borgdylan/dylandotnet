@@ -3,21 +3,18 @@
 
 #refstdasm "mscorlib.dll"
 
-import System
-import protectedtests
-
 #debug on
 
 assembly protectedtests exe
 ver 1.2.0.0
 
-class public auto ansi sealed SealedClass
+class public sealed SealedClass
 end class
 
-class private auto ansi InternalClass
+class private InternalClass
 end class
 
-class public auto ansi ProtectedTest
+class public ProtectedTest
 
 	field family integer ProtFld
 	field assembly integer AssemFld
@@ -26,16 +23,19 @@ class public auto ansi ProtectedTest
 	field private integer PrivFld
 	
 	method public void ProtectedTest()
+		mybase::ctor()
 		ProtFld = 0
 		PrivFld = 0
 	end method
 	
 	method family void ProtectedTest(var i as integer)
+		mybase::ctor()
 		ProtFld = i
 		PrivFld = i
 	end method
 	
 	method assembly void ProtectedTest(var i as long)
+		mybase::ctor()
 		ProtFld = $integer$i
 		PrivFld = $integer$i
 	end method
@@ -70,7 +70,7 @@ class public auto ansi ProtectedTest
 
 end class
 
-class public auto ansi NonInheritingClass
+class public NonInheritingClass
 
 	method public void Test()
 		var pt as ProtectedTest = new ProtectedTest()
@@ -85,10 +85,10 @@ class public auto ansi NonInheritingClass
 
 end class
 
-class public auto ansi InheritingClass extends ProtectedTest
+class public InheritingClass extends ProtectedTest
 	
 	method public void InheritingClass()
-		me::ctor(10)
+		mybase::ctor(10)
 	end method
 	
 	method public void Test()
@@ -107,7 +107,7 @@ class public auto ansi InheritingClass extends ProtectedTest
 
 end class
 
-class public auto ansi Program
+class public Program
 
 	method public static void main()
 

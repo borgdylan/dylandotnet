@@ -1,14 +1,14 @@
 namespace Test
 
-	class public auto ansi abstract interface ITestInterface
+	interface public ITestInterface
 		
-		property public hidebysig virtual abstract newslot string TestProp
+		property public string TestProp
 			get
 			set
 		end property
 
-		property public hidebysig virtual abstract newslot autogen string TestProp2
+		property public autogen string TestProp2
 
-	end class
+	end interface
 	
 end namespace

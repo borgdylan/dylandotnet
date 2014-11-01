@@ -1,6 +1,6 @@
 namespace dylan.NET.Utils
 
-	class private auto ansi static Messages
+	class private static Messages
 
 		field private static System.Resources.ResourceManager resman
 

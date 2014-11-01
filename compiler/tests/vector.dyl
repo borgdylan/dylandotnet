@@ -5,14 +5,13 @@
 
 import System
 import System.Collections.Generic
-import vector
 
 #debug on
 
 assembly vector dll
 ver 1.4.0.0
 
-struct public auto ansi Vector implements IEquatable<of Vector>, IComparable, IComparable<of Vector>, IComparer<of Vector>
+struct public Vector implements IEquatable<of Vector>, IComparable, IComparable<of Vector>, IComparer<of Vector>
 
 	field public integer I
 	field public integer J
@@ -59,15 +58,15 @@ struct public auto ansi Vector implements IEquatable<of Vector>, IComparable, IC
 		return Math::Sqrt(Math::Pow($double$I,2d) + Math::Pow($double$J,2d) + Math::Pow($double$K,2d))
 	end method
 	
-	method public virtual hidebysig string ToString()
+	method public override string ToString()
 		return $string$I + "i + " + $string$J + "j + " + $string$K + "k" 
 	end method
 	
-	method public hidebysig virtual final newslot boolean Equals(var v as Vector)
+	method public virtual boolean Equals(var v as Vector)
 		return (I == v::I) and (J == v::J) and (K == v::K) 
 	end method
 
-	method public hidebysig virtual final newslot integer CompareTo(var o as object)
+	method public virtual integer CompareTo(var o as object)
 		var vectyp as Type = gettype Vector
 		if o = null then
 			return 1
@@ -79,15 +78,15 @@ struct public auto ansi Vector implements IEquatable<of Vector>, IComparable, IC
 		end if
 	end method
 
-	method public hidebysig virtual final newslot integer CompareTo(var v as Vector)
+	method public virtual integer CompareTo(var v as Vector)
 		return Math::Sign(Magnitude() - v::Magnitude())
 	end method
 
-	method public hidebysig virtual final newslot integer Compare(var v1 as Vector,var v2 as Vector)
+	method public virtual integer Compare(var v1 as Vector,var v2 as Vector)
 		return Math::Sign(v1::Magnitude() - v2::Magnitude())
 	end method
 	
-	method public hidebysig virtual boolean Equals(var o as object)
+	method public override boolean Equals(var o as object)
 		var vectyp as Type = gettype Vector
 		if (o != null) and vectyp::Equals(o::GetType()) then
 			var v as Vector = $Vector$o

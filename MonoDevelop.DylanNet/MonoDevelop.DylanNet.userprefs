@@ -1,9 +1,14 @@
-﻿<Properties>
+﻿<Properties StartupItem="MonoDevelop.DylanNet/MonoDevelop.DylanNet.dylproj">
   <AuthorInfo Name="Dylan Borg" Email="" Copyright="Copyright (C) 2013 Dylan Borg" Company="" Trademark="" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.DylanNet/DocumentParser.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.DylanNet/SurroundForeachHandler.dyl">
     <Files>
-      <File FileName="MonoDevelop.DylanNet/DocumentParser.dyl" Line="3" Column="3" />
+      <File FileName="MonoDevelop.DylanNet/DocumentParser.dyl" Line="24" Column="24" />
+      <File FileName="Test/ITestInterface.dyl" Line="18" Column="18" />
+      <File FileName="MonoDevelop.DylanNet/DNLanguageBinding.dyl" Line="24" Column="24" />
+      <File FileName="MonoDevelop.DylanNet/PathedDocumentExtension.dyl" Line="23" Column="23" />
+      <File FileName="MonoDevelop.DylanNet/SurroundHIfHElseHandler.dyl" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/SurroundForeachHandler.dyl" Line="53" Column="53" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

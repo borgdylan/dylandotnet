@@ -138,13 +138,11 @@
 		<keyword>ansi</keyword>
 		<keyword>literal</keyword>
 		<keyword>sealed</keyword>
-		<keyword>hidebysig</keyword>
 		<keyword>virtual</keyword>
 		<keyword>partial</keyword>
 		<keyword>initonly</keyword>
 		<keyword>static</keyword>
 		<keyword>abstract</keyword>
-		<keyword>newslot</keyword>
 		<keyword>final</keyword>
 		<keyword>autogen</keyword>
 		<keyword>beforefieldinit</keyword>

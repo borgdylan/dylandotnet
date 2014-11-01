@@ -609,7 +609,7 @@ namespace MonoDevelop.DylanNet
 			return doc
 		end method
 
-		method public override newslot ParsedDocument Parse (var fileName as string, var content as string)
+		method public virtual ParsedDocument Parse (var fileName as string, var content as string)
 			return Parse(false, fileName, new StringReader(content), $Project$null)
 		end method
 

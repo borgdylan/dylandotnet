@@ -173,7 +173,7 @@ class public OTTEnumerator implements IEnumerator<of integer>, IEnumerator, IDis
 		_Current = 0
 	end method
 	
-	method public override newslot final boolean MoveNext()
+	method public virtual final boolean MoveNext()
 		if _Current < 10 then
 			_Current++
 			return true
@@ -182,20 +182,20 @@ class public OTTEnumerator implements IEnumerator<of integer>, IEnumerator, IDis
 		end if
 	end method
 	
-	method public override newslot final void Reset()
+	method public virtual final void Reset()
 		_Current = 0
 	end method
 	
-	method public override newslot final void Dispose()
+	method public virtual final void Dispose()
 	end method
 	
-	property public override newslot final integer Current
+	property public virtual final integer Current
 		get
 			return _Current
 		end get
 	end property
 	
-	property public override newslot final object IEnumerator.Current
+	property public virtual final object IEnumerator.Current
 		get
 			return $object$_Current
 		end get
@@ -206,11 +206,11 @@ end class
 //[class: Obsolete("This class is only fakely obsolete")]
 class public OTT implements IEnumerable<of integer>, IEnumerable
 
-	method public override newslot final IEnumerator<of integer> GetEnumerator()
+	method public virtual final IEnumerator<of integer> GetEnumerator()
 		return new OTTEnumerator()
 	end method
 
-	method public override newslot final IEnumerator IEnumerable.GetEnumerator()
+	method public virtual final IEnumerator IEnumerable.GetEnumerator()
 		return new OTTEnumerator()
 	end method
 	
@@ -945,6 +945,29 @@ class public static Program
 			return 0
 		finally
 		end try
+	end method
+
+end class
+
+class public abstract AbsClass
+
+	method public abstract void AMet()
+
+	method public virtual void VMet()
+		Console::WriteLine("V1")
+	end method
+
+end class
+
+class public ConcClass extends AbsClass
+
+	method public override void AMet()
+		Console::WriteLine("A")
+	end method
+
+	method public override void VMet()
+		Console::WriteLine("V2")
+		mybase::VMet()
 	end method
 
 end class

@@ -1,6 +1,6 @@
 <Type Name="EndStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.EndStmt">
-  <TypeSignature Language="C#" Value="public class EndStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi EndStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="C#" Value="public abstract class EndStmt : dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract EndStmt extends dylan.NET.Tokenizer.AST.Stmts.Stmt" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
@@ -14,8 +14,8 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public EndStmt ();" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="protected EndStmt ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyspecialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters />
       <Docs>

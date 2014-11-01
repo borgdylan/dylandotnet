@@ -68,8 +68,8 @@
       </Docs>
     </Member>
     <Member MemberName="CloneTT">
-      <MemberSignature Language="C#" Value="public override dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok CloneTT ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok CloneTT() cil managed" />
+      <MemberSignature Language="C#" Value="public virtual dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok CloneTT ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok CloneTT() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>

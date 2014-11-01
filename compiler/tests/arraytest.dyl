@@ -1,22 +1,21 @@
 #refstdasm "mscorlib.dll"
 
 import System
-import arraytest
 
 #debug on
 
 assembly arraytest exe
-ver 2.2.0.0
+ver 2.2.0.1
 
 //this is a test of array functionalty within dylan.NET by using arrays
 //adapted from the old arraytest code
 
-class public auto ansi instc
+class public instc
 
 	field public string[] arr
 
 	method public void instc()
-		me::ctor()
+		mybase::ctor()
 		arr = new string[2]
 		var latearr as string[] = new string[2]
 		latearr[0] = "I"
@@ -38,7 +37,7 @@ class public auto ansi instc
 
 end class
 
-class public auto ansi statc
+class public statc
 
 	field public static string[] arr
 	
@@ -60,11 +59,11 @@ class public auto ansi statc
 
 end class
 
-class public auto ansi beforefieldinit Module1
+class public static Module1
 
 	field public static string[] fldarr
 
-	method public static void Module1()
+	method private static void Module1()
 		fldarr = new string[2]
 	end method
 

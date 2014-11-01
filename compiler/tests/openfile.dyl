@@ -8,7 +8,7 @@ import System.IO
 assembly openfile exe
 ver 1.2.0.0
 
-class public auto ansi module1
+class public module1
 
 	method public static void main()
 	

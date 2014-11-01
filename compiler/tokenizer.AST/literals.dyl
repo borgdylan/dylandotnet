@@ -22,9 +22,9 @@ class public abstract Literal extends ValueToken implements IUnaryOperatable, IC
 		ctor(string::Empty)
 	end method
 	
-	property public override newslot autogen string OrdOp
-	property public override newslot autogen boolean Conv
-	property public override newslot autogen TypeTok TTok
+	property public virtual autogen string OrdOp
+	property public virtual autogen boolean Conv
+	property public virtual autogen TypeTok TTok
 	
 end class
 
@@ -152,7 +152,7 @@ class public BooleanLiteral extends Literal implements INegatable
 		return #ternary {BoolVal ? "true", "false"}
 	end method
 
-	property public override newslot autogen boolean DoNeg
+	property public virtual autogen boolean DoNeg
 
 end class
 
@@ -205,8 +205,8 @@ class public IntLiteral extends NumberLiteral implements INegatable, INotable
 		return $string$NumVal
 	end method
 
-	property public override newslot autogen boolean DoNeg
-	property public override newslot autogen boolean DoNot
+	property public virtual autogen boolean DoNeg
+	property public virtual autogen boolean DoNot
 
 end class
 
@@ -242,7 +242,7 @@ class public DoubleLiteral extends NumberLiteral implements INegatable
 		return $string$NumVal + "d"
 	end method
 
-	property public override newslot autogen boolean DoNeg
+	property public virtual autogen boolean DoNeg
 
 end class
 
@@ -277,7 +277,7 @@ class public DecimalLiteral extends NumberLiteral implements INegatable
 		return $string$NumVal + "m"
 	end method
 
-	property public override newslot autogen boolean DoNeg
+	property public virtual autogen boolean DoNeg
 
 end class
 
@@ -313,8 +313,8 @@ class public SByteLiteral extends NumberLiteral implements INegatable, INotable
 		return $string$NumVal + "b"
 	end method
 
-	property public override newslot autogen boolean DoNeg
-	property public override newslot autogen boolean DoNot
+	property public virtual autogen boolean DoNeg
+	property public virtual autogen boolean DoNot
 
 end class
 
@@ -351,7 +351,7 @@ class public ShortLiteral extends NumberLiteral implements INegatable, INotable
 		return $string$NumVal + "s"
 	end method
 	
-	property public override final newslot string OrdOp
+	property public virtual string OrdOp
 		get
 			return _OrdOp
 		end get
@@ -360,8 +360,8 @@ class public ShortLiteral extends NumberLiteral implements INegatable, INotable
 		end set
 	end property
 
-	property public override newslot autogen boolean DoNeg
-	property public override newslot autogen boolean DoNot
+	property public virtual autogen boolean DoNeg
+	property public virtual autogen boolean DoNot
 
 end class
 
@@ -397,8 +397,8 @@ class public LongLiteral extends NumberLiteral implements INegatable, INotable
 		return $string$NumVal + "l"
 	end method
 
-	property public override newslot autogen boolean DoNeg
-	property public override newslot autogen boolean DoNot
+	property public virtual autogen boolean DoNeg
+	property public virtual autogen boolean DoNot
 
 end class
 
@@ -433,7 +433,7 @@ class public FloatLiteral extends NumberLiteral implements INegatable
 		return $string$NumVal + "f"
 	end method
 
-	property public override newslot autogen boolean DoNeg
+	property public virtual autogen boolean DoNeg
 
 end class
 
@@ -468,7 +468,7 @@ class public UIntLiteral extends NumberLiteral implements INotable
 		return $string$NumVal + "ui"
 	end method
 		
-	property public override newslot autogen boolean DoNot
+	property public virtual autogen boolean DoNot
 
 end class
 
@@ -503,7 +503,7 @@ class public ByteLiteral extends NumberLiteral implements INotable
 		return $string$NumVal + "ub"
 	end method
 
-	property public override newslot autogen boolean DoNot
+	property public virtual autogen boolean DoNot
 
 end class
 
@@ -538,7 +538,7 @@ class public UShortLiteral extends NumberLiteral implements INotable
 		return $string$NumVal + "us"
 	end method
 
-	property public override newslot autogen boolean DoNot
+	property public virtual autogen boolean DoNot
 
 end class
 
@@ -574,7 +574,7 @@ class public ULongLiteral extends NumberLiteral implements INotable
 		return $string$NumVal + "ul"
 	end method
 
-	property public override newslot autogen boolean DoNot
+	property public virtual autogen boolean DoNot
 
 end class
 
@@ -600,7 +600,7 @@ class public IntPtrLiteral extends NumberLiteral implements INegatable, INotable
 		return $string$NumVal + "ip"
 	end method
 
-	property public override newslot autogen boolean DoNeg
-	property public override newslot autogen boolean DoNot
+	property public virtual autogen boolean DoNeg
+	property public virtual autogen boolean DoNot
 
 end class

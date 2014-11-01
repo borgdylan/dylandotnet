@@ -757,7 +757,7 @@ class public MeTok extends ValueToken implements IUnaryOperatable, IConvable
 		return #ternary{_Conv ? "$" + _TTok::ToString() + "$me", "me"}
 	end method
 	
-	property public override final newslot string OrdOp
+	property public virtual string OrdOp
 		get
 			return _OrdOp
 		end get
@@ -766,7 +766,7 @@ class public MeTok extends ValueToken implements IUnaryOperatable, IConvable
 		end set
 	end property
 	
-	property public override final newslot boolean Conv
+	property public virtual boolean Conv
 		get
 			return _Conv
 		end get
@@ -775,7 +775,7 @@ class public MeTok extends ValueToken implements IUnaryOperatable, IConvable
 		end set
 	end property
 	
-	property public override final newslot TypeTok TTok
+	property public virtual TypeTok TTok
 		get
 			return _TTok
 		end get

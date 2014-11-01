@@ -94,7 +94,6 @@ Global
 		{E87123CC-913B-4750-B3EC-A2DC5761AD38}.Testing|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = dnc\dnc.dylproj
 		Policies = $0
 		$0.StandardHeader = $1
 		$1.Text = 
@@ -276,7 +275,7 @@ Global
 		$0.DotNetNamingPolicy = $37
 		$37.DirectoryNamespaceAssociation = None
 		$37.ResourceNamePolicy = MSBuild
-		version = 11.4.3.1
+		version = 11.5.1.2
 		outputpath = 2.0
 	EndGlobalSection
 EndGlobal

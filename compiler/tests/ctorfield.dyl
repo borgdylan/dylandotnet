@@ -2,23 +2,22 @@
 
 //Field and Constructor test
 import System
-import ctorfield
 
 #debug on
 
 assembly ctorfield exe
-ver 1.2.0.0
+ver 1.2.0.1
 
-class public auto ansi Test
+class public Test
 
 	field public string teststr
 	field public integer testnum1
 	field public double testnum2
 
 	method public void Test(var prompt as string)
-		me::ctor()
+		mybase::ctor()
 		Console::WriteLine(prompt)
-		teststr = ""
+		teststr = string::Empty
 		testnum1 = 1
 		testnum2 = 1.0
 	end method
@@ -29,12 +28,12 @@ class public auto ansi Test
 	
 end class
 
-class public auto ansi beforefieldinit Module1
+class public static Module1
 
 	field public static string str
 
-	method public static void Module1()
-		str = ""
+	method private static void Module1()
+		str = string::Empty
 		Console::WriteLine("The constructor for Module1 has been executed")
 	end method
 

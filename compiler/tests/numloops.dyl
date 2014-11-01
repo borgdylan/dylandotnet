@@ -7,7 +7,7 @@ import System
 assembly numloops exe
 ver 1.1.0.0
 
-class public auto ansi Module1
+class public Module1
 
 	method public static void main()
 		var dnum1 as double = 23.4

@@ -11,7 +11,6 @@ import System
 import System.IO
 import System.Linq
 import System.Xml.Linq
-import System.Collections
 import System.Collections.Generic
 
 #debug on
@@ -19,7 +18,7 @@ import System.Collections.Generic
 assembly transnames exe
 ver 2.1.0.0
 
-class public auto ansi Program
+class public Program
 
 	method public static string[] LineToTuple(var l as string)
 		var lar as string[] = l::Split(new char[] {','})

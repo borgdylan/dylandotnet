@@ -38,7 +38,7 @@ class public MethodNameTok extends Ident implements IMayHaveConstraints
 		return #ternary{idt is MethodNameTok ? $MethodNameTok$idt, new MethodNameTok(idt)}
 	end method
 
-	property public override newslot boolean MayHaveConstraints
+	property public virtual boolean MayHaveConstraints
 		get
 			return false
 		end get
@@ -89,20 +89,20 @@ class public GenericMethodNameTok extends MethodNameTok implements IMayHaveConst
 		Params::Add(param)
 	end method
 
-	method public override newslot void AddConstraint(var param as string, var ctr as Token)
+	method public virtual void AddConstraint(var param as string, var ctr as Token)
 		if !_Constraints::Contains(param) then
 			_Constraints::Add(param, new C5.LinkedList<of Token>())
 		end if
 		_Constraints::get_Item(param)::Add(ctr)
 	end method
 
-	property public override newslot boolean MayHaveConstraints
+	property public virtual boolean MayHaveConstraints
 		get
 			return true
 		end get
 	end property
 
-	property public override newslot C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
+	property public virtual C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
 		get
 			return _Constraints
 		end get

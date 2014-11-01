@@ -38,7 +38,7 @@ class public Stmt
 		Tokens::RemoveAt(ind)
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
+	method public virtual boolean ValidateContext(var ctx as ContextType)
 		return false
 	end method
 
@@ -77,7 +77,7 @@ class public abstract BlockStmt extends Stmt implements IStmtContainer
 		ctor(ContextType::None)
 	end method
 
-	method public override newslot void AddStmt(var stmttoadd as Stmt)
+	method public virtual void AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
 
 		var sc = stmttoadd as IStmtContainer 
@@ -86,20 +86,20 @@ class public abstract BlockStmt extends Stmt implements IStmtContainer
 		end if
 	end method
 
-	property public override newslot autogen IStmtContainer Parent
-	property public override newslot autogen ContextType Context
+	property public virtual autogen IStmtContainer Parent
+	property public virtual autogen ContextType Context
 
-	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
+	method public virtual boolean IsOneLiner(var ctx as IStmtContainer)
 		return false
 	end method
 	
-	property public override newslot Stmt[] Children
+	property public virtual Stmt[] Children
 		get
 			return Stmts::ToArray()
 		end get
 	end property
 
-	method public override newslot boolean ValidateEnding(var stm as Stmt)
+	method public virtual boolean ValidateEnding(var stm as Stmt)
 		return false
 	end method
 
@@ -133,7 +133,7 @@ class public StmtSet implements IStmtContainer
 		Path = p
 	end method
 
-	method public override newslot void AddStmt(var stmttoadd as Stmt)
+	method public virtual void AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
 
 		var sc = stmttoadd as IStmtContainer 
@@ -142,7 +142,7 @@ class public StmtSet implements IStmtContainer
 		end if
 	end method
 
-	property public override newslot ContextType Context
+	property public virtual ContextType Context
 		get
 			return ContextType::Assembly
 		end get
@@ -150,7 +150,7 @@ class public StmtSet implements IStmtContainer
 		end set
 	end property
 
-	property public override newslot IStmtContainer Parent
+	property public virtual IStmtContainer Parent
 		get
 			return null
 		end get
@@ -158,17 +158,17 @@ class public StmtSet implements IStmtContainer
 		end set
 	end property
 
-	method public override newslot boolean IsOneLiner(var ctx as IStmtContainer)
+	method public virtual boolean IsOneLiner(var ctx as IStmtContainer)
 		return false
 	end method
 
-	property public override newslot Stmt[] Children
+	property public virtual Stmt[] Children
 		get
 			return Stmts::ToArray()
 		end get
 	end property
 
-	method public override newslot boolean ValidateEnding(var stm as Stmt)
+	method public virtual boolean ValidateEnding(var stm as Stmt)
 		return false
 	end method
 

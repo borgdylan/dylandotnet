@@ -243,7 +243,7 @@ namespace dylan.NET.ResProc
 						var cls = pth::Split(new char[] {'.'})[0]
 
 						sw::WriteLine("namespace " + #ternary {NS == string::Empty ? "Resources" , NS})
-						sw::WriteLine(c"\n	class private auto ansi static " + cls)
+						sw::WriteLine(c"\n	class private static " + cls)
 
 						sw::WriteLine(c"\n		field private static System.Resources.ResourceManager resman")
 						sw::WriteLine(c"\n		method private static void " + cls + "()")
@@ -312,7 +312,7 @@ namespace dylan.NET.ResProc
 
 		method public static IEnumerable<of string> Invoke(var args as string[])
 		
-			Console::WriteLine("dylan.NET Resource Processor v. 11.4.3.1 RC")
+			Console::WriteLine("dylan.NET Resource Processor v. 11.5.1.2 RC")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2014 Dylan Borg")
 			if args[l] < 1 then

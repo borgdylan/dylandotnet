@@ -178,13 +178,11 @@ class public static Helpers
 				temp = MethodAttributes::Static
 				ILEmitter::StaticFlg = true
 			elseif attr is Attributes.SpecialNameAttr then
-				temp = MethodAttributes::SpecialName
+				temp = MethodAttributes::SpecialName or MethodAttributes::HideBySig
 			elseif attr is Attributes.OverrideAttr then
 				temp = MethodAttributes::Virtual or MethodAttributes::HideBySig
 			elseif attr is Attributes.VirtualAttr then
-				temp = MethodAttributes::Virtual
-			elseif attr is Attributes.HideBySigAttr then
-				temp = MethodAttributes::HideBySig
+				temp = MethodAttributes::Virtual or MethodAttributes::HideBySig or MethodAttributes::NewSlot
 			elseif attr is Attributes.PrivateAttr then
 				temp = MethodAttributes::Private
 			elseif attr is Attributes.FamilyAttr then
@@ -214,10 +212,8 @@ class public static Helpers
 				end if
 				faa = true
 			elseif attr is Attributes.AbstractAttr then
-				temp = MethodAttributes::Abstract
+				temp = MethodAttributes::Abstract or MethodAttributes::Virtual or MethodAttributes::HideBySig or MethodAttributes::NewSlot
 				ILEmitter::AbstractFlg = true
-			elseif attr is Attributes.NewSlotAttr then
-				temp = MethodAttributes::NewSlot
 			elseif attr is Attributes.PrototypeAttr then
 				ILEmitter::ProtoFlg = true
 			elseif attr is Attributes.PinvokeImplAttr then

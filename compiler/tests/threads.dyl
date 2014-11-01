@@ -13,11 +13,11 @@ ver 1.4.0.0
 
 namespace dylan.NET.Tests.Threading
 	
-	class public auto ansi Program
+	class public Program
 	
 		field public static Timer TimerObj
 		
-		method public static void Program()
+		method private static void Program()
 			TimerObj = null
 		end method
 		
@@ -30,61 +30,31 @@ namespace dylan.NET.Tests.Threading
 		end method
 		
 		method public static void Loop1s()
-			var i as integer = 0
+			for i = 1 upto 30
+				Console::Write("1 ")
 			
-			label cont
-			label loop
+				if (i % 10) == 0 then
+					Thread::Sleep(20)
+				end if
 			
-			place loop
-			
-			i = i + 1
-			Console::Write("1 ")
-			
-			if (i % 10) = 0 then
-				Thread::Sleep(20)
-			end if
-			
-			if i = 30 then
-				TimerObj::Dispose()
-			end if
-			
-			if i = 30 then
-				goto cont
-			else
-				goto loop
-			end if
-			
-			place cont
-			
+				if i == 30 then
+					TimerObj::Dispose()
+				end if
+			end for
 		end method
 		
 		method public static void Loop2s()
-			var i as integer = 0
+			for i = 1 upto 30
+				Console::Write("2 ")
 			
-			label cont
-			label loop
+				if (i % 10) == 0 then
+					Thread::Sleep(20)
+				end if
 			
-			place loop
-			
-			i = i + 1
-			Console::Write("2 ")
-			
-			if (i % 10) = 0 then
-				Thread::Sleep(20)
-			end if
-			
-			if i = 30 then
-				TimerObj::Dispose()
-			end if
-			
-			if i = 30 then
-				goto cont
-			else
-				goto loop
-			end if
-			
-			place cont
-			
+				if i == 30 then
+					TimerObj::Dispose()
+				end if
+			end for
 		end method
 		
 		method public static void TimerMethod(var o as object)

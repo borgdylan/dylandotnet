@@ -7,11 +7,11 @@ import System
 assembly conv exe
 ver 1.2.0.0
 
-class public auto ansi static Module1
+class public static Module1
 
 	field public static integer numfld
 
-	method public static void Module1()
+	method private static void Module1()
 		numfld = 1
 	end method
 

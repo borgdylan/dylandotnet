@@ -1390,6 +1390,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ProcessNullable">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type ProcessNullable (IKVM.Reflection.Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type ProcessNullable(class IKVM.Reflection.Type t) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ProcessParams">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type[] ProcessParams (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Exprs.Expr&gt; ps);" />
       <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type[] ProcessParams(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Exprs.Expr&gt; ps) cil managed" />

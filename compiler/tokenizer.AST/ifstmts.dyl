@@ -35,7 +35,7 @@
 			Branches = new C5.ArrayList<of BranchStmt>()
 		end method
 
-		property public override newslot IStmtContainer CurrentContainer
+		property public virtual IStmtContainer CurrentContainer
 			get
 				if Branches::get_Count() == 0 then
 					return me
@@ -45,7 +45,7 @@
 			end get
 		end property
 
-		method public override newslot boolean AddBranch(var stmttoadd as BranchStmt)
+		method public virtual boolean AddBranch(var stmttoadd as BranchStmt)
 			if stmttoadd is ElseIfStmt orelse stmttoadd is ElseStmt then
 				var res = get_CurrentContainer() isnot ElseStmt
 				Branches::Add(stmttoadd)
@@ -56,7 +56,7 @@
 			end if
 		end method
 
-		property public override newslot BranchStmt[] BranchChildren
+		property public virtual BranchStmt[] BranchChildren
 			get
 				return Branches::ToArray()
 			end get
@@ -106,7 +106,7 @@ end #region
 			Branches = new C5.ArrayList<of BranchStmt>()
 		end method
 
-		property public override newslot IStmtContainer CurrentContainer
+		property public virtual IStmtContainer CurrentContainer
 			get
 				if Branches::get_Count() == 0 then
 					return me
@@ -116,7 +116,7 @@ end #region
 			end get
 		end property
 
-		method public override newslot boolean AddBranch(var stmttoadd as BranchStmt)
+		method public virtual boolean AddBranch(var stmttoadd as BranchStmt)
 			if stmttoadd is HElseIfStmt orelse stmttoadd is HElseStmt then
 				var res =  get_CurrentContainer() isnot HElseStmt
 				Branches::Add(stmttoadd)
@@ -127,7 +127,7 @@ end #region
 			end if
 		end method
 
-		property public override newslot BranchStmt[] BranchChildren
+		property public virtual BranchStmt[] BranchChildren
 			get
 				return Branches::ToArray()
 			end get

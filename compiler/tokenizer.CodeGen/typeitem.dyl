@@ -201,7 +201,7 @@ class public partial TypeItem
 		return fldinfo
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return Name
 	end method
 

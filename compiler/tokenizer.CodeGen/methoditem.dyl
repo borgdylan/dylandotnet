@@ -27,7 +27,7 @@ class public MethodItem
 		ctor(string::Empty, $IKVM.Reflection.Type$null, new IKVM.Reflection.Type[0], $MethodBuilder$null)
 	end method
 
-	method public hidebysig virtual string ToString()
+	method public override string ToString()
 		return Name + " : " + $string$ParamTyps[l] + " : " + MethodTyp::ToString()
 	end method
 
