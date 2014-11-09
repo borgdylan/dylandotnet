@@ -9,6 +9,14 @@
 //await with continuations
 class public static TaskHelpers
 	
+	#if NET40 or PORTABLESHIM then
+	method public static Task<of TResult> FromResult<of TResult>(var result as TResult)
+     	var tcs as TaskCompletionSource<of TResult> = new TaskCompletionSource<of TResult>()
+		tcs::SetResult(result)
+        return tcs::get_Task()
+	end method
+	end #if
+	
 	#region "Code from TaskHelpers.Sources/ASP.NET"
 		//The code in this region was ported from code in ASP.NET WebStack which is under the Apache License
 		//Original code was: Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See COPYING.TaskHelpers.Sources
@@ -18,9 +26,9 @@ class public static TaskHelpers
 
 		
 		method private static void TaskHelpers()
-			#if NET40 then
-				_defaultCompleted = TaskEx::FromResult<of AsyncVoid>(default AsyncVoid)
-				_completedTaskReturningNull = TaskEx::FromResult<of object>(null)
+			#if NET40 or PORTABLESHIM then
+				_defaultCompleted = FromResult<of AsyncVoid>(default AsyncVoid)
+				_completedTaskReturningNull = FromResult<of object>(null)
 			#else
 				_defaultCompleted = Task::FromResult<of AsyncVoid>(default AsyncVoid)
 				_completedTaskReturningNull = Task::FromResult<of object>(null)
@@ -61,8 +69,8 @@ class public static TaskHelpers
 		var ac = new AwaitClosure<of T, U>(f, cat, fin)
 		if t::get_IsCompleted() then
 			try
-				#if NET40
-					return TaskEx::FromResult<of U>(ac::DoLogic(t))
+				#if NET40 or PORTABLESHIM then
+					return FromResult<of U>(ac::DoLogic(t))
 				#else	
 					return Task::FromResult<of U>(ac::DoLogic(t))
 				end #if
@@ -78,8 +86,8 @@ class public static TaskHelpers
 		var ac = new AwaitClosure<of U>(f, cat, fin)
 		if t::get_IsCompleted() then
 			try
-				#if NET40
-					return TaskEx::FromResult<of U>(ac::DoLogic(t))
+				#if NET40 or PORTABLESHIM then
+					return FromResult<of U>(ac::DoLogic(t))
 				#else	
 					return Task::FromResult<of U>(ac::DoLogic(t))
 				end #if

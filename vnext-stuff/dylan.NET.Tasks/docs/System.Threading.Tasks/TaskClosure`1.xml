@@ -1,0 +1,153 @@
+<Type Name="TaskClosure&lt;T&gt;" FullName="System.Threading.Tasks.TaskClosure&lt;T&gt;">
+  <TypeSignature Language="C#" Value="public abstract class TaskClosure&lt;T&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract TaskClosure`1&lt;T&gt; extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.1.1.1</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="T" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <typeparam name="T">The return type for the asynchronous activity.</typeparam>
+    <summary>A base class for closures used to implement asynchronous methods.</summary>
+    <remarks>This class encapsulates a TaskCompletionSource instance and calls methods on it as you do awaits or return a value. It also handles exceptions thrown by awaited methods and sets them on the Task exposed by the TaskCompletionSource.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected TaskClosure ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyspecialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Creates a new TaskClosure.</summary>
+        <remarks>This constructor is protected i.e. you must inherit this class to use its features.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await (System.Threading.Tasks.Task t, Action f);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await(class System.Threading.Tasks.Task t, class System.Action f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="System.Threading.Tasks.Task" />
+        <Parameter Name="f" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <param name="t">The task to await.</param>
+        <param name="f">The function to execute if the task completed successfully.</param>
+        <summary>Runs the given function if the awaited task completes successfully else propagates the exception into the TaskCompletionSource.</summary>
+        <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
+        <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Threading.Tasks.Task&lt;U&gt; t, Action&lt;U&gt; f);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(class System.Threading.Tasks.Task`1&lt;!!U&gt; t, class System.Action`1&lt;!!U&gt; f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="t" Type="System.Threading.Tasks.Task&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;U&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">The return type of the awaited task.</typeparam>
+        <param name="t">The task to await.</param>
+        <param name="f">The function to execute if the task completed successfully.</param>
+        <summary>Runs the given function if the awaited task completes successfully else propagates the exception into the TaskCompletionSource.</summary>
+        <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
+        <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Catch">
+      <MemberSignature Language="C#" Value="protected virtual void Catch (Exception e);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Catch(class System.Exception e) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="e" Type="System.Exception" />
+      </Parameters>
+      <Docs>
+        <param name="e">The exception that happened while executing an awaited task.</param>
+        <summary>Handles exceptions in awaited tasks by propagating them into the encapsulated TaskCompletionSource.</summary>
+        <remarks>To add code to what is already executed, override this method and add the new code along with an invocation of the version in this base class.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Finally">
+      <MemberSignature Language="C#" Value="protected virtual void Finally ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Finally() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The method called by Return and Catch in order to clean any resources held by the closure.</summary>
+        <remarks>Override this method to dispose of an resources or to execute code after the asynchronous activity terminates successfully or due to an exception.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Return">
+      <MemberSignature Language="C#" Value="protected void Return (T result);" />
+      <MemberSignature Language="ILAsm" Value=".method familyinstance void Return(!T result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="result" Type="T" />
+      </Parameters>
+      <Docs>
+        <param name="result">The result that the encapsulated TaskCompletionSource should return by means of the Task it controls.</param>
+        <summary>Concludes the asynchronous activity successfully by returning the given result.</summary>
+        <remarks>This method also handles cleanup of resources.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Task">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Task { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Threading.Tasks.Task`1&lt;!T&gt; Task" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The Task exposed by the TaskCompletionSource encapsulated by this closure.</summary>
+        <value>The Task&lt;T&gt; associated to the encapsulated TaskCompletionSource&lt;T&gt;.</value>
+        <remarks>The Task instance is also returned by all overloads of the Await method available in this class.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

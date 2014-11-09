@@ -3,9 +3,140 @@
         <name>dylan.NET.Tasks</name>
     </assembly>
     <members>
+        <member name="T:System.Threading.Tasks.DisposerTaskClosure`1">
+            <typeparam name="TDisposable">The type of disposable resource that should be managed by the closure.</typeparam>
+            <summary>A base class for closures used to implement asynchronous methods that also disposes a resource when the asynchronous activity is done/fails.</summary>
+            <remarks>This class is based on TaskClosure and overrides its Final method to dispose the passed in resource.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.DisposerTaskClosure`1(TDisposable)">
+            <param name="res">The disposable resource to manage.</param>
+            <summary>Creates a new DisposerTaskClosure around the given resource.</summary>
+            <remarks>This constructor is protected i.e. you must inherit this class to use its features.</remarks>
+        </member>
+        <member name="F:System.Threading.Tasks.DisposerTaskClosure`1._Resource">
+            <summary>Holds the disposable resource managed by this closure.</summary>
+            <remarks>This field is protected. To access the resource from outside your closure, please use the Resource property.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.DisposerTaskClosure`1.Finally">
+            <summary>Overrides the Finally method in the base TaskClosure to dispose of the resource managed by this closure.</summary>
+            <remarks>You may further override this method to add extra behaviour.</remarks>
+        </member>
+        <member name="P:System.Threading.Tasks.DisposerTaskClosure`1.Resource">
+            <summary>Holds the disposable resource managed by this closure.</summary>
+            <value>The disposable resource managed by this closure.</value>
+            <remarks>For faster access to the resource within the closure itself you may use the _Resource field.</remarks>
+        </member>
+        <member name="T:System.Threading.Tasks.DisposerTaskClosure`2">
+            <typeparam name="T">The return type for the asynchronous activity.</typeparam>
+            <typeparam name="TDisposable">The type of disposable resource that should be managed by the closure.</typeparam>
+            <summary>A base class for closures used to implement asynchronous methods that also disposes a resource when the asynchronous activity is done/fails.</summary>
+            <remarks>This class is based on TaskClosure&lt;T&gt; and overrides its Final method to dispose the passed in resource.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.DisposerTaskClosure`2(`0TDisposable`0)">
+            <param name="res">The disposable resource to manage.</param>
+            <summary>Creates a new DisposerTaskClosure around the given resource.</summary>
+            <remarks>This constructor is protected i.e. you must inherit this class to use its features.</remarks>
+        </member>
+        <member name="F:System.Threading.Tasks.DisposerTaskClosure`2._Resource">
+            <summary>Holds the disposable resource managed by this closure.</summary>
+            <remarks>This field is protected. To access the resource from outside your closure, please use the Resource property.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.DisposerTaskClosure`2.Finally">
+            <summary>Overrides the Finally method in the base TaskClosure to dispose of the resource managed by this closure.</summary>
+            <remarks>You may further override this method to add extra behaviour.</remarks>
+        </member>
+        <member name="P:System.Threading.Tasks.DisposerTaskClosure`2.Resource">
+            <summary>Holds the disposable resource managed by this closure.</summary>
+            <value>The disposable resource managed by this closure.</value>
+            <remarks>For faster access to the resource within the closure itself you may use the _Resource field.</remarks>
+        </member>
+        <member name="T:System.Threading.Tasks.TaskClosure">
+            <summary>A base class for closures used to implement asynchronous methods.</summary>
+            <remarks>This class encapsulates a TaskCompletionSource instance and calls methods on it as you do awaits or return a value. It also handles exceptions thrown by awaited methods and sets them on the Task exposed by the TaskCompletionSource.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.TaskClosure">
+            <summary>Creates a new TaskClosure.</summary>
+            <remarks>This constructor is protected i.e. you must inherit this class to use its features.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure.Await(System.Threading.Tasks.Task,System.Action)">
+            <param name="t">The task to await.</param>
+            <param name="f">The function to execute if the task completed successfully.</param>
+            <summary>Runs the given function if the awaited task completes successfully else propagates the exception into the TaskCompletionSource.</summary>
+            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
+            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0})">
+            <typeparam name="U">The return type of the awaited task.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The function to execute if the task completed successfully.</param>
+            <summary>Runs the given function if the awaited task completes successfully else propagates the exception into the TaskCompletionSource.</summary>
+            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
+            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure.Catch(System.Exception)">
+            <param name="e">The exception that happened while executing an awaited task.</param>
+            <summary>Handles exceptions in awaited tasks by propagating them into the encapsulated TaskCompletionSource.</summary>
+            <remarks>To add code to what is already executed, override this method and add the new code along with an invocation of the version in this base class.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure.Finally">
+            <summary>The method called by Return and Catch in order to clean any resources held by the closure.</summary>
+            <remarks>Override this method to dispose of an resources or to execute code after the asynchronous activity terminates successfully or due to an exception.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure.Return">
+            <summary>Concludes the asynchronous activity successfully.</summary>
+            <remarks>This method also handles cleanup of resources.</remarks>
+        </member>
+        <member name="P:System.Threading.Tasks.TaskClosure.Task">
+            <summary>The Task exposed by the TaskCompletionSource encapsulated by this closure.</summary>
+            <value>The Task associated to the encapsulated TaskCompletionSource.</value>
+            <remarks>The Task instance is also returned by all overloads of the Await method available in this class.</remarks>
+        </member>
+        <member name="T:System.Threading.Tasks.TaskClosure`1">
+            <typeparam name="T">The return type for the asynchronous activity.</typeparam>
+            <summary>A base class for closures used to implement asynchronous methods.</summary>
+            <remarks>This class encapsulates a TaskCompletionSource instance and calls methods on it as you do awaits or return a value. It also handles exceptions thrown by awaited methods and sets them on the Task exposed by the TaskCompletionSource.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.TaskClosure`1">
+            <summary>Creates a new TaskClosure.</summary>
+            <remarks>This constructor is protected i.e. you must inherit this class to use its features.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await(`0System`0.`0Threading`0.`0Tasks`0.`0Task`0,`0System`0.`0Action`0)">
+            <param name="t">The task to await.</param>
+            <param name="f">The function to execute if the task completed successfully.</param>
+            <summary>Runs the given function if the awaited task completes successfully else propagates the exception into the TaskCompletionSource.</summary>
+            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
+            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Threading`0.`0Tasks`0.`0Task`0{`0U`0},`0System`0.`0Action`0{`0U`0})">
+            <typeparam name="U">The return type of the awaited task.</typeparam>
+            <param name="t">The task to await.</param>
+            <param name="f">The function to execute if the task completed successfully.</param>
+            <summary>Runs the given function if the awaited task completes successfully else propagates the exception into the TaskCompletionSource.</summary>
+            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
+            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Catch(`0System`0.`0Exception`0)">
+            <param name="e">The exception that happened while executing an awaited task.</param>
+            <summary>Handles exceptions in awaited tasks by propagating them into the encapsulated TaskCompletionSource.</summary>
+            <remarks>To add code to what is already executed, override this method and add the new code along with an invocation of the version in this base class.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Finally">
+            <summary>The method called by Return and Catch in order to clean any resources held by the closure.</summary>
+            <remarks>Override this method to dispose of an resources or to execute code after the asynchronous activity terminates successfully or due to an exception.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Return(`0T`0)">
+            <param name="result">The result that the encapsulated TaskCompletionSource should return by means of the Task it controls.</param>
+            <summary>Concludes the asynchronous activity successfully by returning the given result.</summary>
+            <remarks>This method also handles cleanup of resources.</remarks>
+        </member>
+        <member name="P:System.Threading.Tasks.TaskClosure`1.Task">
+            <summary>The Task exposed by the TaskCompletionSource encapsulated by this closure.</summary>
+            <value>The Task&lt;T&gt; associated to the encapsulated TaskCompletionSource&lt;T&gt;.</value>
+            <remarks>The Task instance is also returned by all overloads of the Await method available in this class.</remarks>
+        </member>
         <member name="T:System.Threading.Tasks.TaskHelpers">
             <summary>Helpers for awaiting Tasks.</summary>
-            <remarks>These helpers may also be useful for other langauges that do not support the await keyword.</remarks>
+            <remarks>These helpers may also be useful for other languages that do not support the await keyword. Do note that this API surface is also available on .NET 4 and some PCL profiles.</remarks>
         </member>
         <member name="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action)">
             <param name="t">The task to await.</param>
@@ -323,11 +454,18 @@
             <remarks />
         </member>
         <member name="M:System.Threading.Tasks.TaskHelpers.FromError``1(System.Exception)">
-            <typeparam name="TResult">The exception to package into a Task.</typeparam>
+            <typeparam name="TResult">The result type desired for the returned Task.</typeparam>
             <param name="exception">The exception to package into a Task&lt;TResult&gt;.</param>
             <summary>Returns an error task of the given type. The task is Completed, IsCanceled = False, IsFaulted = True.</summary>
             <returns>A completed faulted Task&lt;TResult&gt; with the specified error set.</returns>
             <remarks />
+        </member>
+        <member name="M:System.Threading.Tasks.TaskHelpers.FromResult``1(``0)">
+            <typeparam name="TResult">The result type desired for the returned Task.</typeparam>
+            <param name="result">The value to package into a Task&lt;TResult&gt;.</param>
+            <summary>Returns an completed task of the given type with the given result value.</summary>
+            <returns>A completed Task&lt;TResult&gt; with the specified result.</returns>
+            <remarks>Note that this method is only defined on .NET 4 and some of the supported PCL profiles. For .NET 4.5, ASP.NET vNext on Desktop/Core CLR and the other supported profiles use the FromResult&lt;TResult&gt; hanging off the Task class. This method is therefore a polyfill for profiles that do not provide it.</remarks>
         </member>
         <member name="M:System.Threading.Tasks.TaskHelpers.NullResult">
             <summary>Returns a Task with a null result.</summary>

@@ -213,10 +213,10 @@
     </div>
     <div class="Remarks" id="T:System.Threading.Tasks.TaskHelpers:Docs">
       <h2 class="Section">Remarks</h2>
-      <div class="SectionBox" id="T:System.Threading.Tasks.TaskHelpers:Docs:Remarks">These helpers may also be useful for other langauges that do not support the await keyword.</div>
+      <div class="SectionBox" id="T:System.Threading.Tasks.TaskHelpers:Docs:Remarks">These helpers may also be useful for other languages that do not support the await keyword. Do note that this API surface is also available on .NET 4 and some PCL profiles.</div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:System.Threading.Tasks.TaskHelpers:Docs:Version Information">
-        <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+        <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
       <h2 class="Section" id="Members">Members</h2>
       <div class="SectionBox" id="_Members">
         <p>
@@ -548,6 +548,15 @@
                 </td>
                 <td colspan="2">
                   <b>
+                    <a href="#M:System.Threading.Tasks.TaskHelpers.FromResult``1(``0)">FromResult&lt;TResult&gt;</a>
+                  </b>(<i title="The result type desired for the returned Task.">TResult</i>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;TResult&gt;</a></nobr><blockquote>Returns an completed task of the given type with the given result value.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
                     <a href="#M:System.Threading.Tasks.TaskHelpers.NullResult()">NullResult</a>
                   </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;object&gt;</a></nobr><blockquote>Returns a Task with a null result.</blockquote></td>
               </tr>
@@ -584,7 +593,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action)">Await Method</h3>
@@ -616,7 +625,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception})">Await Method</h3>
@@ -648,7 +657,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Threading.CancellationToken)">Await Method</h3>
@@ -680,7 +689,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action,System.Threading.CancellationToken)">Await Method</h3>
@@ -716,7 +725,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action,System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception},System.Action)">Await Method</h3>
@@ -752,7 +761,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception},System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception},System.Threading.CancellationToken)">Await Method</h3>
@@ -788,7 +797,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception},System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception},System.Action,System.Threading.CancellationToken)">Await Method</h3>
@@ -828,7 +837,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await(System.Threading.Tasks.Task,System.Action,System.Action{System.Exception},System.Action,System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0})">Await&lt;T&gt; Generic Method</h3>
@@ -865,7 +874,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action)">Await&lt;T&gt; Generic Method</h3>
@@ -906,7 +915,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception})">Await&lt;T&gt; Generic Method</h3>
@@ -947,7 +956,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Threading.CancellationToken)">Await&lt;T&gt; Generic Method</h3>
@@ -988,7 +997,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action,System.Threading.CancellationToken)">Await&lt;T&gt; Generic Method</h3>
@@ -1033,7 +1042,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action,System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception},System.Action)">Await&lt;T&gt; Generic Method</h3>
@@ -1078,7 +1087,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception},System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception},System.Threading.CancellationToken)">Await&lt;T&gt; Generic Method</h3>
@@ -1123,7 +1132,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception},System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception},System.Action,System.Threading.CancellationToken)">Await&lt;T&gt; Generic Method</h3>
@@ -1172,7 +1181,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{System.Exception},System.Action,System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0})">Await&lt;U&gt; Generic Method</h3>
@@ -1209,7 +1218,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
@@ -1250,7 +1259,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0})">Await&lt;U&gt; Generic Method</h3>
@@ -1291,7 +1300,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Threading.CancellationToken)">Await&lt;U&gt; Generic Method</h3>
@@ -1332,7 +1341,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Action,System.Threading.CancellationToken)">Await&lt;U&gt; Generic Method</h3>
@@ -1377,7 +1386,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Action,System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
@@ -1422,7 +1431,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0},System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0},System.Threading.CancellationToken)">Await&lt;U&gt; Generic Method</h3>
@@ -1467,7 +1476,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0},System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0},System.Action,System.Threading.CancellationToken)">Await&lt;U&gt; Generic Method</h3>
@@ -1516,7 +1525,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``1(System.Threading.Tasks.Task,System.Func{``0},System.Func{System.Exception,``0},System.Action,System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1})">Await&lt;T,U&gt; Generic Method</h3>
@@ -1557,7 +1566,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Action)">Await&lt;T,U&gt; Generic Method</h3>
@@ -1602,7 +1611,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1})">Await&lt;T,U&gt; Generic Method</h3>
@@ -1647,7 +1656,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Threading.CancellationToken)">Await&lt;T,U&gt; Generic Method</h3>
@@ -1692,7 +1701,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Action,System.Threading.CancellationToken)">Await&lt;T,U&gt; Generic Method</h3>
@@ -1741,7 +1750,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Action,System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1},System.Action)">Await&lt;T,U&gt; Generic Method</h3>
@@ -1790,7 +1799,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1},System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1},System.Threading.CancellationToken)">Await&lt;T,U&gt; Generic Method</h3>
@@ -1839,7 +1848,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1},System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1},System.Action,System.Threading.CancellationToken)">Await&lt;T,U&gt; Generic Method</h3>
@@ -1892,7 +1901,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Await``2(System.Threading.Tasks.Task{``0},System.Func{``0,``1},System.Func{System.Exception,``1},System.Action,System.Threading.CancellationToken):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.Completed()">Completed Method</h3>
@@ -1907,7 +1916,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.Completed():Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.FromError(System.Exception)">FromError Method</h3>
@@ -1931,7 +1940,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.FromError(System.Exception):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.FromError``1(System.Exception)">FromError&lt;TResult&gt; Generic Method</h3>
@@ -1945,7 +1954,7 @@
               <dt>
                 <i>TResult</i>
               </dt>
-              <dd>The exception to package into a Task.</dd>
+              <dd>The result type desired for the returned Task.</dd>
             </dl>
           </blockquote>
           <h4 class="Subsection">Parameters</h4>
@@ -1964,7 +1973,39 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.FromError``1(System.Exception):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.1.0, 1.1.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskHelpers.FromResult``1(``0)">FromResult&lt;TResult&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskHelpers.FromResult``1(``0):member">
+          <div class="msummary">Returns an completed task of the given type with the given result value.</div>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;TResult&gt;</a> <b>FromResult&lt;TResult&gt;</b> (<i title="The result type desired for the returned Task.">TResult</i> result)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskHelpers.FromResult``1(``0):Type Parameters">
+            <dl>
+              <dt>
+                <i>TResult</i>
+              </dt>
+              <dd>The result type desired for the returned Task.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskHelpers.FromResult``1(``0):Parameters">
+            <dl>
+              <dt>
+                <i>result</i>
+              </dt>
+              <dd>The value to package into a Task&lt;TResult&gt;.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskHelpers.FromResult``1(``0):Returns">A completed Task&lt;TResult&gt; with the specified result.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.FromResult``1(``0):Remarks">Note that this method is only defined on .NET 4 and some of the supported PCL profiles. For .NET 4.5, ASP.NET vNext on Desktop/Core CLR and the other supported profiles use the FromResult&lt;TResult&gt; hanging off the Task class. This method is therefore a polyfill for profiles that do not provide it.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.FromResult``1(``0):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskHelpers.NullResult()">NullResult Method</h3>
@@ -1979,7 +2020,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskHelpers.NullResult():Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.1.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.0.1.0, 1.1.1.1</div>
           <hr size="1" />
         </blockquote>
       </div>

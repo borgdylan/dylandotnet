@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dylan.NET.Tasks" Version="1.0.1.0">
+    <Assembly Name="dylan.NET.Tasks" Version="1.1.1.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyTitle("dylan.NET.Tasks")</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.5")</AttributeName>
+          <AttributeName>System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.0")</AttributeName>
         </Attribute>
       </Attributes>
     </Assembly>
@@ -18,6 +18,10 @@
   <Copyright>Copyright (c) Dylan Borg 2014.</Copyright>
   <Types>
     <Namespace Name="System.Threading.Tasks">
+      <Type Name="DisposerTaskClosure`1" DisplayName="DisposerTaskClosure&lt;TDisposable&gt;" Kind="Class" />
+      <Type Name="DisposerTaskClosure`2" DisplayName="DisposerTaskClosure&lt;T,TDisposable&gt;" Kind="Class" />
+      <Type Name="TaskClosure" Kind="Class" />
+      <Type Name="TaskClosure`1" DisplayName="TaskClosure&lt;T&gt;" Kind="Class" />
       <Type Name="TaskHelpers" Kind="Class" />
     </Namespace>
   </Types>

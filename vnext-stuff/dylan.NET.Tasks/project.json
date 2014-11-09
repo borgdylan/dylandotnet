@@ -1,7 +1,10 @@
 ﻿{
-	"version": "1.0.2.2",
+	"version": "1.1.1.1",
 	"authors": ["borgdylan"],
-	"description": "Task helper library for dylan.NET (await support)", 
+	"description": "Task helper library for dylan.NET (await support)",
+	"license": "http://www.gnu.org/copyleft/lesser.html",
+	"projectUrl": "http://launchpad.net/dylandotnet",
+	"tags": [".NET4.0" ,".NET4.5", "ASP.NET5.0", "ASP.NETCORE5.0", "Mono"], 
 	"code" : "*.dyl;*/*.dyl",
 	"resources" : "*.resources",
 	"exclude": "msbuild.dyl",
@@ -21,7 +24,7 @@
   "frameworks": {
     "net451": {
       "dependencies": {
-        "dylan.NET.K" : ""
+        "dylan.NET.K" : {"type": "build"}
       }
     },
     "net45": {
@@ -30,21 +33,46 @@
     },
     "aspnet50": {
       "dependencies": {
-      	"dylan.NET.K" : ""
+      	"dylan.NET.K" : {"type": "build"}
      }
     },
     "net40": {
       "dependencies": {
-      	"Microsoft.Bcl.Async" : "1.0.168"
       }
     },
     "aspnetcore50": {
     	"dependencies": {
     		"System.Runtime": "4.0.20.0",
-    		"System.Console": "4.0.0.0",
-    		"System.Text.RegularExpressions": "4.0.0.0",
-    		"System.Threading.Tasks": "4.0.0.0"
+    		"System.Text.RegularExpressions": "4.0.10-*",
+    		"System.Threading.Tasks": "4.0.10.0"
     	}
+    },
+    ".NETPortable,Version=v4.5,Profile=Profile78": {
+    	"bin": {
+			"assembly": "bin/PCL/Profile78/dylan.NET.Tasks.dll"
+		}
+    },
+    ".NETPortable,Version=v4.5,Profile=Profile259": {
+    	"bin": {
+			"assembly": "bin/PCL/Profile259/dylan.NET.Tasks.dll"
+		}
+    },
+    ".NETPortable,Version=v4.0,Profile=Profile344": {
+    	"bin": {
+			"assembly": "bin/PCL/Profile344/dylan.NET.Tasks.dll"
+		}
+    },
+    ".NETPortable,Version=v4.0,Profile=Profile328": {
+    	"bin": {
+			"assembly": "bin/PCL/Profile328/dylan.NET.Tasks.dll"
+		}
     }
+  },
+  "scripts": {
+  	"prebuild": ["xbuild /p:ReleaseVersion=%project:Version% dylan.NET.Tasks.Profile78.dylproj", "rm -r obj",
+  				"xbuild /p:ReleaseVersion=%project:Version% dylan.NET.Tasks.Profile344.dylproj", "rm -r obj",
+  				"xbuild /p:ReleaseVersion=%project:Version% dylan.NET.Tasks.Profile328.dylproj", "rm -r obj",
+  				"xbuild /p:ReleaseVersion=%project:Version% dylan.NET.Tasks.Profile259.dylproj", "rm -r obj"],
+  	"postbuild": "rm -r bin/PCL"
   }
 }
