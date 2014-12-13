@@ -181,6 +181,7 @@ class public static Helpers
 				temp = MethodAttributes::SpecialName or MethodAttributes::HideBySig
 			elseif attr is Attributes.OverrideAttr then
 				temp = MethodAttributes::Virtual or MethodAttributes::HideBySig
+				ILEmitter::OverrideFlg = true
 			elseif attr is Attributes.VirtualAttr then
 				temp = MethodAttributes::Virtual or MethodAttributes::HideBySig or MethodAttributes::NewSlot
 			elseif attr is Attributes.PrivateAttr then
@@ -463,7 +464,7 @@ class public static Helpers
 				typ = gtt::RefTyp
 			end if
 
-			if typ = null then
+			if typ == null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Type " + tstr + " could not be found!!")
 			end if
 
@@ -476,6 +477,30 @@ class public static Helpers
 			end for
 			
 			typ = typ::MakeGenericType(lop::ToArray())
+
+			//process any nested access
+			if gtt::NestedType != null then
+				typ = typ::GetNestedType(gtt::NestedType::Value)
+				if typ == null then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Nested Type " + gtt::NestedType::Value + " could not be found!")
+				else
+					if gtt::NestedType is GenericTypeTok then
+						var pttoks2 = #expr($GenericTypeTok$gtt::NestedType)::Params
+						var lop2 as C5.IList<of IKVM.Reflection.Type> = new C5.LinkedList<of IKVM.Reflection.Type>()
+
+						foreach pt in pttoks2
+							temptyp = CommitEvalTTok(pt)
+							if temptyp == null then
+								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Argument " + pt::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
+							end if
+							lop2::Add(temptyp)
+						end for
+			
+						typ = typ::MakeGenericType(lop2::ToArray())
+					end if
+				end if
+			end if
+
 			Loader::MakeArr = gtt::IsArray
 			Loader::MakeRef = gtt::IsByRef
 			typ = Loader::ProcessType(typ)
@@ -1206,7 +1231,7 @@ class public static Helpers
 		//var c1 as ConstructorInfo
 	
 		if source::Equals(sink) then
-			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
+			//StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
 			return
 		end if
 
@@ -1254,37 +1279,32 @@ class public static Helpers
 		if sink::Equals(Loader::CachedLoadClass("System.Object")) then
 			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
-				return
 			elseif (sink::get_BaseType() == null) andalso !sink::Equals(Loader::CachedLoadClass("System.Object")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
-				return
 			elseif source is GenericTypeParameterBuilder then
 				ILEmitter::EmitBox(source)
-				return
-			else
-				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
-				return
+			//else
+				//StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
 			end if
+			return
 		end if
 		
 		if sink::get_IsInterface() then
 			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) andalso sink::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
-				return
 			elseif !Loader::CachedLoadClass("System.Object")::IsAssignableFrom(source) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
-				return
 			end if
+			return
 		end if
 
 		if source::Equals(Loader::CachedLoadClass("System.Object")) then
 			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(sink) then
 				ILEmitter::EmitUnboxAny(sink)
-				return
 			elseif !Loader::CachedLoadClass("System.Object")::IsAssignableFrom(sink) then
 				ILEmitter::EmitUnboxAny(sink)
-				return
 			end if
+			return
 		end if
 
 		typ = Loader::CachedLoadClass("System.ValueType")
@@ -1293,16 +1313,14 @@ class public static Helpers
 				if !sink::get_IsInterface() then
 					StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
 				end if
-				return
 			elseif source::IsAssignableFrom(sink) then
 				if !isNull then
 					ILEmitter::EmitCastclass(sink)
 				end if
-				return
 			elseif source::get_IsInterface() orelse sink::get_IsInterface() then
 				ILEmitter::EmitCastclass(sink)
-				return
 			end if
+			return
 		end if
 		
 		if isgenparam then

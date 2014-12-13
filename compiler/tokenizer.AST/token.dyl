@@ -63,3 +63,25 @@ class public ValueToken extends Token
 	end method
 
 end class
+
+class public NestedAccessToken extends ValueToken
+
+	method public void NestedAccessToken(var value as string)
+		mybase::ctor(value)
+	end method
+	
+	method public void NestedAccessToken()
+		ctor(string::Empty)
+	end method
+
+	property public string ActualValue
+		get
+			if Value::get_Length() > 1 then
+				return Value::Substring(1)
+			else
+				return string::Empty
+			end if
+		end get
+	end property
+
+end class

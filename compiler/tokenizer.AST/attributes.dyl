@@ -9,6 +9,9 @@
 class public abstract Attribute extends NonExprToken
 end class
 
+class public abstract VisibilityAttr extends Attributes.Attribute
+end class
+
 // hidebysig
 class public HideBySigAttr extends Attributes.Attribute
 	method public override string ToString()
@@ -24,21 +27,21 @@ class public SpecialNameAttr extends Attributes.Attribute
 end class
 
 // private 
-class public PrivateAttr extends Attributes.Attribute
+class public PrivateAttr extends VisibilityAttr
 	method public override string ToString()
 		return "private"
 	end method
 end class
 
 // family
-class public FamilyAttr extends Attributes.Attribute
+class public FamilyAttr extends VisibilityAttr
 	method public override string ToString()
 		return "family"
 	end method
 end class
 
 // public
-class public PublicAttr extends Attributes.Attribute
+class public PublicAttr extends VisibilityAttr
 	method public override string ToString()
 		return "public"
 	end method
@@ -93,12 +96,12 @@ class public PinvokeImplAttr extends Attributes.Attribute
 	end method
 end class
 
-// hasdefault
-class public HasDefaultAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "hasdefault"
-	end method
-end class
+//// hasdefault
+//class public HasDefaultAttr extends Attributes.Attribute
+//	method public override string ToString()
+//		return "hasdefault"
+//	end method
+//end class
 
 // none
 class public NoneAttr extends Attributes.Attribute
@@ -165,21 +168,21 @@ end class
 
 
 // assembly
-class public AssemblyAttr extends Attributes.Attribute
+class public AssemblyAttr extends VisibilityAttr
 	method public override string ToString()
 		return "assembly"
 	end method
 end class
 
 // famandassem
-class public FamANDAssemAttr extends Attributes.Attribute
+class public FamANDAssemAttr extends VisibilityAttr
 	method public override string ToString()
 		return "famandassem"
 	end method
 end class
 
 // famorassem
-class public FamORAssemAttr extends Attributes.Attribute
+class public FamORAssemAttr extends VisibilityAttr
 	method public override string ToString()
 		return "famorassem"
 	end method
@@ -209,6 +212,6 @@ end class
 // override
 class public OverrideAttr extends Attributes.Attribute
 	method public override string ToString()
-		return "hidebysig"
+		return "override"
 	end method
 end class

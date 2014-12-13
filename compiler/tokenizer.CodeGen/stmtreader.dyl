@@ -547,6 +547,7 @@ class public StmtReader
 		ILEmitter::AbstractFlg = false
 		ILEmitter::ProtoFlg = false
 		ILEmitter::PInvokeFlg = false
+		ILEmitter::OverrideFlg = false
 
 		SymTable::ResetVar()
 		SymTable::ResetIf()
@@ -699,6 +700,10 @@ class public StmtReader
 					end if
 					AsmFactory::CurnMetB::SetReturnType(rettyp)
 					AsmFactory::CurnMetB::SetParameters(paramstyps)
+
+					//overridability check
+
+
 				end if
 			end if
 			
@@ -1025,7 +1030,11 @@ class public StmtReader
 		ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
 		cg::Process(fstm, fpath)
 	end method
-	
+
+	method private boolean StripVisibility(var a as Attributes.Attribute)
+		return a isnot VisibilityAttr
+	end method
+
 	method public void ReadPropertyGet(var prgs as PropertyGetStmt, var fpath as string)
 		var cprop = SymTable::CurnProp
 		if prgs::Getter != null then
@@ -1042,9 +1051,18 @@ class public StmtReader
 			StreamUtils::Write("		Setting Property Getter: ")
 			StreamUtils::WriteLine(prgs::Getter::Value)
 		else
+			var attrs as C5.LinkedList<of Attributes.Attribute>
+			if prgs::Visibility == null then
+				attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new SpecialNameAttr())}
+			else
+				attrs = new C5.LinkedList<of Attributes.Attribute>() { _
+					AddAll(Enumerable::Where<of Attributes.Attribute>(cprop::Attrs, new Func<of Attributes.Attribute, boolean>(StripVisibility))) _
+					, Add(prgs::Visibility), Add(new SpecialNameAttr())}
+			end if
+
 			var metname = #ternary{cprop::ExplImplType::get_Length() > 0 ? cprop::ExplImplType + ".get_", "get_"}  + cprop::Name
 			Read(new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new TypeTok(cprop::PropertyTyp), Line = prgs::Line, Params = cprop::Params, _
-				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new SpecialNameAttr())}},fpath)
+				 Attrs = attrs}, fpath)
 			cprop::PropertyBldr::SetGetMethod(AsmFactory::CurnMetB)
 		end if
 		cg::Process(prgs, fpath)
@@ -1067,9 +1085,18 @@ class public StmtReader
 			StreamUtils::Write("		Setting Property Setter: ")
 			StreamUtils::WriteLine(prss::Setter::Value)
 		else
+			var attrs as C5.LinkedList<of Attributes.Attribute>
+			if prss::Visibility == null then
+				attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new SpecialNameAttr())}
+			else
+				attrs = new C5.LinkedList<of Attributes.Attribute>() { _
+					AddAll(Enumerable::Where<of Attributes.Attribute>(cprop::Attrs, new Func<of Attributes.Attribute, boolean>(StripVisibility))) _
+					, Add(prss::Visibility), Add(new SpecialNameAttr())}
+			end if
+
 			var metname = #ternary{cprop::ExplImplType::get_Length() > 0 ? cprop::ExplImplType + ".set_", "set_"}  + cprop::Name
 			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new VoidTok(), Line = prss::Line, Params = cprop::Params,  _
-				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cprop::Attrs), Add(new SpecialNameAttr())}}
+				 Attrs = attrs}
 			mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cprop::PropertyTyp)})
 			Read(mets,fpath)
 			cprop::PropertyBldr::SetSetMethod(AsmFactory::CurnMetB)

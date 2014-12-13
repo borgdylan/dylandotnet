@@ -20,7 +20,7 @@ import SCG = System.Collections.Generic
 import System.Threading
 //import System.Threading.Tasks
 import System.Runtime.InteropServices
-//import System.Runtime.CompilerServices
+import System.Runtime.CompilerServices
 //import template
 
 #warning "This is personal test code and is not a sample that should be followed."
@@ -261,7 +261,16 @@ class public ObjInit
 			Console::WriteLine("[{0}] = {1}", $object$index, $object$value)
 		end set
 	end property
-	
+
+	property public integer PS
+		get
+			return 0
+		end get
+		set private
+			Console::WriteLine("You have private access")
+		end set
+	end property
+
 end class
 
 #region genericfuncs
@@ -883,6 +892,9 @@ class public static Program
 		Console::WriteLine("not null" ?? "null")
 		Console::WriteLine($integer?$null ?? 4)
 		Console::WriteLine($object$#expr(new integer?(2) ?? new integer?(4)))
+
+		//var aw as ConfiguredTaskAwaitable<of string>\ConfiguredTaskAwaiter<of string>
+		Console::WriteLine(i"this \qis\q an {{argument}}: {sobj} and this is another: {216:x}. BTW the time is {DateTime::get_Now():t}. Also 30 = {(1 + 2) * 10:x}")
 	end method
 
 	[method: My(new integer[] {1, 2})]

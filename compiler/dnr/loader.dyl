@@ -293,6 +293,10 @@ class public static Loader
 
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.MethodInfo LoadMethod(var typ as IKVM.Reflection.Type, var name as string, var typs as IKVM.Reflection.Type[])
+		
+		if typ == null then
+			return null
+		end if
 
 		var ints as IKVM.Reflection.Type[] = null
 		var mtdinfo as IKVM.Reflection.MethodInfo = null

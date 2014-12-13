@@ -1640,6 +1640,11 @@ class public StmtOptimizer
 					prgs::Getter = $Ident$exp::Tokens::get_Item(0)
 				end if
 				return prgs
+			else
+				b = (stm::Tokens::get_Item(0) is GetTok) andalso (stm::Tokens::get_Item(1) is VisibilityAttr)
+				if b then
+					return new PropertyGetStmt() {Line = stm::Line, Visibility = $VisibilityAttr$stm::Tokens::get_Item(1)}
+				end if
 			end if
 		elseif stm::Tokens::get_Count() == 1 then
 			b = stm::Tokens::get_Item(0) is GetTok
@@ -1663,6 +1668,11 @@ class public StmtOptimizer
 					prss::Setter = $Ident$exp::Tokens::get_Item(0)
 				end if
 				return prss
+			else
+				b = (stm::Tokens::get_Item(0) is SetTok) andalso (stm::Tokens::get_Item(1) is VisibilityAttr)
+				if b then
+					return new PropertySetStmt() {Line = stm::Line, Visibility = $VisibilityAttr$stm::Tokens::get_Item(1)}
+				end if
 			end if
 		elseif stm::Tokens::get_Count() == 1 then
 			b = stm::Tokens::get_Item(0) is SetTok
@@ -1881,6 +1891,12 @@ class public StmtOptimizer
 		if stm::Tokens::get_Count() = 0 then
 			return stm
 		end if
+
+		var tok as Token
+		var pcnt as integer = 0
+		var acnt as integer = 0
+		var scnt as integer = 0
+		var ccnt as integer = 0
 		
 		do until i = lenx
 			i++
@@ -1894,16 +1910,7 @@ class public StmtOptimizer
 			else
 				stm::Tokens::set_Item(i,to::Optimize(stm::Tokens::get_Item(i),$Token$null))
 			end if
-		end do
-		
-		i = -1
-		var tok as Token
-		var pcnt as integer = 0
-		var acnt as integer = 0
-		var scnt as integer = 0
-		var ccnt as integer = 0
-		do until i = --stm::Tokens::get_Count() 
-			i++
+
 			tok = stm::Tokens::get_Item(i)
 			if tok is LParen then
 				pcnt++
@@ -1923,6 +1930,7 @@ class public StmtOptimizer
 				ccnt--
 			end if
 		end do
+
 		if pcnt != 0 then
 			StreamUtils::WriteLine(string::Empty)
 			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "The amount of opening and closing parentheses do not match!")

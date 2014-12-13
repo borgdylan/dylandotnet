@@ -87,6 +87,23 @@ class public StringLiteral extends Literal
 
 end class
 
+class public InterpolateLiteral extends Literal
+
+	method public void InterpolateLiteral(var value as string)
+		mybase::ctor(value)
+		LitTyp = new StringTok()
+	end method
+	
+	method public void InterpolateLiteral()
+		ctor(string::Empty)
+	end method
+
+	method public override string ToString()
+		return c"\q" + Value + c"\q"
+	end method
+
+end class
+
 class public CharLiteral extends Literal
 
 	field public char CharVal

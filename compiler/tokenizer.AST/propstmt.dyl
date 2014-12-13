@@ -73,6 +73,7 @@ end class
 class public PropertySetStmt extends BlockStmt
 
 	field public Ident Setter
+	field public VisibilityAttr Visibility
 
 	method public void PropertySetStmt()
 		mybase::ctor(ContextType::Method)
@@ -96,6 +97,7 @@ end class
 class public PropertyGetStmt extends BlockStmt
 
 	field public Ident Getter
+	field public VisibilityAttr Visibility
 
 	method public void PropertyGetStmt()
 		mybase::ctor(ContextType::Method)

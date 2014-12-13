@@ -42,7 +42,7 @@ class public TypeTok extends ValueToken implements ICloneable
 	end method
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return Value + "[]&"
 		elseif IsArray then
 			return Value + "[]"
@@ -66,6 +66,7 @@ end class
 class public GenericTypeTok extends TypeTok implements ICloneable
 
 	field public C5.LinkedList<of TypeTok> Params
+	field public TypeTok NestedType
 	
 	method public void GenericTypeTok(var value as string, var params as IEnumerable<of TypeTok>)
 		mybase::ctor(value)
@@ -86,7 +87,7 @@ class public GenericTypeTok extends TypeTok implements ICloneable
 
 	method public override TypeTok CloneTT()
 		return new GenericTypeTok(Value, Enumerable::Select<of TypeTok, TypeTok>(Params, new Func<of TypeTok, TypeTok>(CloneFilter))) _
-			 {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp}
+			 {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp, NestedType = NestedType}
 	end method
 	
 	method public virtual final object Clone()
@@ -113,7 +114,7 @@ class public GenericTypeTok extends TypeTok implements ICloneable
 			end for
 			sw::Write("> ")
 		end if
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			sw::Write("[]&")
 		elseif IsArray then
 			sw::Write("[]")
@@ -138,7 +139,7 @@ class public beforefieldinit StringTok extends SpecialTypeTok
 
 				
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "string[]&"
 		elseif IsArray then
 			return "string[]"
@@ -162,7 +163,7 @@ class public beforefieldinit IntegerTok extends SpecialTypeTok
 	end method
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "integer[]&"
 		elseif IsArray then
 			return "integer[]"
@@ -186,7 +187,7 @@ class public beforefieldinit DoubleTok extends SpecialTypeTok
 	end method
 				
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "double[]&"
 		elseif IsArray then
 			return "double[]"
@@ -210,7 +211,7 @@ class public beforefieldinit BooleanTok extends SpecialTypeTok
 	end method
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "boolean[]&"
 		elseif IsArray then
 			return "boolean[]"
@@ -234,7 +235,7 @@ class public beforefieldinit CharTok extends SpecialTypeTok
 	end method
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "char[]&"
 		elseif IsArray then
 			return "char[]"
@@ -258,7 +259,7 @@ class public beforefieldinit DecimalTok extends SpecialTypeTok
 	end method
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "decimal[]&"
 		elseif IsArray then
 			return "decimal[]"
@@ -282,7 +283,7 @@ class public beforefieldinit LongTok extends SpecialTypeTok
 	end method
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "long[]&"
 		elseif IsArray then
 			return "long[]"
@@ -307,7 +308,7 @@ class public beforefieldinit SByteTok extends SpecialTypeTok
 
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "sbyte[]&"
 		elseif IsArray then
 			return "sbyte[]"
@@ -331,7 +332,7 @@ class public beforefieldinit ShortTok extends SpecialTypeTok
 	end method
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "short[]&"
 		elseif IsArray then
 			return "short[]"
@@ -355,7 +356,7 @@ class public beforefieldinit SingleTok extends SpecialTypeTok
 	end method
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "short[]&"
 		elseif IsArray then
 			return "short[]"
@@ -379,7 +380,7 @@ class public beforefieldinit ObjectTok extends SpecialTypeTok
 	end method
 
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "object[]&"
 		elseif IsArray then
 			return "object[]"
@@ -419,7 +420,7 @@ class public beforefieldinit UIntegerTok extends SpecialTypeTok
 	end method
 
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "uinteger[]&"
 		elseif IsArray then
 			return "uinteger[]"
@@ -443,7 +444,7 @@ class public beforefieldinit ULongTok extends SpecialTypeTok
 	end method
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "ulong[]&"
 		elseif IsArray then
 			return "ulong[]"
@@ -467,7 +468,7 @@ class public beforefieldinit ByteTok extends SpecialTypeTok
 	end method
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "byte[]&"
 		elseif IsArray then
 			return "byte[]"
@@ -491,7 +492,7 @@ class public beforefieldinit UShortTok extends SpecialTypeTok
 	end method
 
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "ushort[]&"
 		elseif IsArray then
 			return "ushort[]"
@@ -515,7 +516,7 @@ class public beforefieldinit IntPtrTok extends SpecialTypeTok
 	end method
 	
 	method public override string ToString()
-		if IsArray and IsByRef then
+		if IsArray andalso IsByRef then
 			return "intptr[]&"
 		elseif IsArray then
 			return "intptr[]"

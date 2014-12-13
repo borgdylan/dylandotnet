@@ -465,6 +465,8 @@ class public TokenOptimizer
 		elseif tok::Value like "^(c)?'(.)*'$" then
 			tok::Value = #ternary {tok::Value::StartsWith("c") ? ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\s'})), tok::Value::Trim(new char[] {c'\s'})}
 			return new CharLiteral($char$tok::Value) {Line = tok::Line}
+		elseif tok::Value like c"^(i)\q(.)*\q$" then
+			return new InterpolateLiteral(tok::Value::TrimStart(new char[] {'i'})::Trim(new char[] {c'\q'})) {Line = tok::Line}
 		elseif tok::Value like c"^(c)?\q(.)*\q$" then
 			return new StringLiteral(#ternary {tok::Value::StartsWith("c") ? ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'})), tok::Value::Trim(new char[] {c'\q'})}) {Line = tok::Line}
 		elseif tok::Value like "^(\+|-)?(\d)+\.(\d)+d$" then
@@ -502,6 +504,8 @@ class public TokenOptimizer
 			return new SByteLiteral($sbyte$tok::Value::TrimEnd(new char[] {'b'})) {Line = tok::Line}
 		elseif tok::Value like "^(\+|-)?(\d)+$" then
 			return new IntLiteral($integer$tok::Value) {Line = tok::Line}
+		elseif tok::Value like "^\\((([a-zA-Z])+(.)*)|(_(.)+))$" then
+			return new NestedAccessToken(tok::Value) {Line = tok::Line}
 		elseif tok::Value like "^(::)?((([a-zA-Z])+(.)*)|(_(.)+))$" then
 			return new Ident(tok::Value) {Line = tok::Line}
 		else

@@ -32,4 +32,12 @@
     <Compile Include="Properties\AssemblyInfo.dyl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\dylan.NET.Portable.targets" />
+  <ItemGroup>
+    <Reference Include="dylan.NET.Tasks">
+      <HintPath>..\packages\dylan.NET.Tasks.1.1.1.1\lib\portable-Profile78\dylan.NET.Tasks.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

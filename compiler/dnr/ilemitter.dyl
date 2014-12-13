@@ -32,6 +32,7 @@ class public static ILEmitter
 	field public static boolean DebugFlg
 	field public static boolean ProtoFlg
 	field public static boolean PInvokeFlg
+	field public static boolean OverrideFlg
 	field public static boolean ANIFlg
 	field public static integer LocInd
 	field public static integer ArgInd
@@ -57,6 +58,7 @@ class public static ILEmitter
 		ProtoFlg = false
 		PartialFlg = false
 		PInvokeFlg = false
+		OverrideFlg = false
 		LocInd = 0
 		ArgInd = 0
 		LineNr = 0

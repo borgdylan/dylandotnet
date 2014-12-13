@@ -20,11 +20,10 @@ class public ExprOptimizer
 	end method
 	
 	method public prototype Expr Optimize(var exp as Expr)
+	method public prototype Expr procType(var stm as Expr, var i as integer)
 
-	method public Expr procType(var stm as Expr, var i as integer)
-
+	method public TypeTok procTypeCore(var stm as Expr, var i as integer)
 		var isgeneric as boolean = false
-		var j as integer = i
 		var tt as TypeTok
 
 		if i < (stm::Tokens::get_Count() - 2) then
@@ -86,6 +85,15 @@ class public ExprOptimizer
 					len--
 				end if
 			end do
+
+			if i < stm::Tokens::get_Count() then
+				if stm::Tokens::get_Item(i) is NestedAccessToken then
+					stm::Tokens::set_Item(i, new Ident(#expr($NestedAccessToken$stm::Tokens::get_Item(i))::get_ActualValue()))
+					gtt::NestedType = procTypeCore(stm, i)
+					stm::RemToken(i)
+				end if
+			end if
+
 			tt = gtt
 		else
 			if i < stm::Tokens::get_Count() then
@@ -100,8 +108,14 @@ class public ExprOptimizer
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an identifier instead of ''!")
 			end if
 		end if
+	
+		return tt
+	end method
 
-		i = j
+	method public Expr procType(var stm as Expr, var i as integer)
+		var tt as TypeTok = procTypeCore(stm, i)
+		var j = i
+
 		var c as integer = 0
 		do until c = 3
 			c++
@@ -773,6 +787,102 @@ class public ExprOptimizer
 		return stm
 	end method
 
+	method public Expr procInterpolate(var stm as Expr, var i as integer)
+		var ir = ParseUtils::Interpolate(stm::Tokens::get_Item(i)::Value)
+
+		if ir::get_Expressions()[l] == 0 then
+			//TODO: error out
+			StreamUtils::WriteLine(string::Empty)
+			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "Interpolated strings should have at least one interpolation!")
+
+			return stm
+		end if
+
+		var exps as C5.ArrayList<of Expr> = new C5.ArrayList<of Expr>()
+		var pf as Flags = new Flags()
+		var to as TokenOptimizer = new TokenOptimizer(pf)
+		var eo as ExprOptimizer = new ExprOptimizer(pf)
+
+		var k = 0
+		foreach e in ir::get_Expressions()
+			k++
+			var ss = new Line()::Analyze(new Stmt() {Line = stm::Line}, e)
+			var lenx as integer = --ss::Tokens::get_Count()
+
+			var j = -1
+			var pcnt as integer = 0
+			var acnt as integer = 0
+			var scnt as integer = 0
+			var ccnt as integer = 0
+
+			do until j = lenx
+				j++
+			
+				if j != lenx then
+					ss::Tokens::set_Item(j,to::Optimize(ss::Tokens::get_Item(j),ss::Tokens::get_Item(++j)))
+				else
+					ss::Tokens::set_Item(j,to::Optimize(ss::Tokens::get_Item(j),$Token$null))
+				end if
+
+				var tok = ss::Tokens::get_Item(j)
+				if tok is LParen then
+					pcnt++
+				elseif tok is RParen then
+					pcnt--
+				elseif tok is LAParen then
+					acnt++
+				elseif tok is RAParen then
+					acnt--
+				elseif tok is LSParen then
+					scnt++
+				elseif tok is RSParen then
+					scnt--
+				elseif tok is LCParen then
+					ccnt++
+				elseif tok is RCParen then
+					ccnt--
+				end if
+			end do
+
+			//TODO: assert that bracket counts are ok
+			if pcnt != 0 then
+				StreamUtils::WriteLine(string::Empty)
+				StreamUtils::WriteError(stm::Line, PFlags::CurPath, string::Format("The amount of opening and closing parentheses do not match in sub-expression {0}!", $object$k))
+			elseif acnt != 0 then
+				StreamUtils::WriteLine(string::Empty)
+				StreamUtils::WriteError(stm::Line, PFlags::CurPath, string::Format("The amount of opening and closing angle parentheses do not match in sub-expression {0}!", $object$k))
+			elseif scnt != 0 then
+				StreamUtils::WriteLine(string::Empty)
+				StreamUtils::WriteError(stm::Line, PFlags::CurPath, string::Format("The amount of opening and closing square parentheses do not match in sub-expression {0}!", $object$k))
+			elseif ccnt != 0 then
+				StreamUtils::WriteLine(string::Empty)
+				StreamUtils::WriteError(stm::Line, PFlags::CurPath, string::Format("The amount of opening and closing curly parentheses do not match in sub-expression {0}!", $object$k))
+			end if
+
+			exps::Add(eo::Optimize(new Expr() {Line = stm::Line, Tokens = ss::Tokens}))
+		end for
+			
+		var res = new MethodCallTok() {Line = stm::Line, Name = new MethodNameTok("System.String::Format")}
+		res::AddParam(new Expr() {Line = stm::Line, AddToken(new StringLiteral(ir::get_Format()) {Line = stm::Line})})
+
+		if exps::get_Count() > 3 then
+			var aic = new ArrInitCallTok() {Line = stm::Line, ArrayType = new ObjectTok()}
+			res::AddParam(new Expr() {Line = stm::Line, AddToken(aic)})
+			foreach ex in exps
+				aic::AddElem(new Expr() {Line = stm::Line, AddToken(new ExprCallTok() {Line = stm::Line, _
+					Exp = ex, set_OrdOp("conv"), set_TTok(new ObjectTok()), set_Conv(true)})})
+			end for
+		else
+			foreach ex in exps
+				res::AddParam(new Expr() {Line = stm::Line, AddToken(new ExprCallTok() {Line = stm::Line, _
+					Exp = ex, set_OrdOp("conv"), set_TTok(new ObjectTok()), set_Conv(true)})})
+			end for
+		end if
+
+		stm::Tokens::set_Item(i, res)
+		return stm
+	end method
+
 	method public void Verify(var exp as Expr, var i as integer, var j as integer)
 		//true - expect valuetoken, false expect an operator
 		var state as boolean = true
@@ -961,6 +1071,14 @@ class public ExprOptimizer
 				PFlags::StringFlag = true
 				if PFlags::isChanged then
 					exp::Tokens::set_Item(i,PFlags::UpdateStringLit($StringLiteral$exp::Tokens::get_Item(i)))
+					PFlags::SetUnaryFalse()
+					j = i
+				end if
+			elseif tok is InterpolateLiteral then
+				PFlags::MetCallFlag = true
+				procInterpolate(exp, i)
+				if PFlags::isChanged then
+					PFlags::UpdateIdent(#expr($MethodCallTok$exp::Tokens::get_Item(i))::Name)
 					PFlags::SetUnaryFalse()
 					j = i
 				end if

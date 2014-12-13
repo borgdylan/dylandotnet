@@ -1,4 +1,4 @@
-//    dnu.dll dylan.NET.Utils Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
+//    dnu.dll dylan.NET.Utils Copyright (C) 2014 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
@@ -264,6 +264,92 @@ class public static ParseUtils
 		end do
 		
 		return sb::ToString()
+	end method
+
+	[method: ComVisible(false)]
+	method public static InterpolateResult Interpolate(var input as string)
+		var cc as char
+		var lc as char
+		var len as integer = --input::get_Length()
+		var buf as StringBuilder = new StringBuilder(input::get_Length())
+		var cbuf as StringBuilder = null
+		var j as integer = -1
+		var es = new C5.ArrayList<of string>()
+		//false means copy to format, true means copy to current expression
+		var mode as boolean = false
+		
+		for i = 0 upto len
+			cc = input::get_Chars(i)
+			lc = #ternary {i < len ? input::get_Chars(++i), ' '}
+			
+			if cc == '{' then
+				if lc == '{' then
+					i++
+					if mode then
+						cbuf::Append('{')
+					else
+						buf::Append("{{")
+					end if
+					continue
+				else
+					mode = true
+					j++
+					buf::Append('{')::Append(j)
+					cbuf = new StringBuilder(10)
+					continue
+				end if
+			elseif cc == '}' then
+				if lc == '}' then
+					i++
+					if mode then
+						cbuf::Append('}')
+					else
+						buf::Append("}}")
+					end if
+					continue
+				elseif mode then
+					mode = false
+					es::Add(cbuf::ToString())
+				end if
+			elseif cc == c'\\' andalso lc == 'q' then
+				i++
+				if mode then
+					cbuf::Append(c'\q')
+				else
+					buf::Append(c'\q')
+				end if
+				continue
+			elseif cc == c'\\' andalso lc == c'\\' then
+				i++
+				if mode then
+					cbuf::Append(c'\\')
+				else
+					buf::Append(c'\\')
+				end if
+				continue
+			elseif mode andalso cc == ':' then
+				if lc == ':' then
+					i++
+					if mode then
+						cbuf::Append("::")
+					else
+						buf::Append("::")
+					end if
+					continue
+				else
+					mode = false
+					es::Add(cbuf::ToString())
+				end if
+			end if
+			
+			if mode then
+				cbuf::Append(cc)
+			else
+				buf::Append(cc)
+			end if
+		end for
+		
+		return new InterpolateResult(buf::ToString(), es)
 	end method
 
 end class
