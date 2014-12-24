@@ -1,0 +1,58 @@
+<Type Name="YieldAwaitableWrapper" FullName="System.Threading.Tasks.YieldAwaitableWrapper">
+  <TypeSignature Language="C#" Value="public class YieldAwaitableWrapper : System.Threading.Tasks.IAwaitable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi YieldAwaitableWrapper extends System.Object implements class System.Threading.Tasks.IAwaitable" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Threading.Tasks.IAwaitable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>An IAwaitable implementation that wraps a YieldAwaitable.</summary>
+    <remarks>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public YieldAwaitableWrapper (System.Runtime.CompilerServices.YieldAwaitable awaitable);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(valuetype System.Runtime.CompilerServices.YieldAwaitable awaitable) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="awaitable" Type="System.Runtime.CompilerServices.YieldAwaitable" />
+      </Parameters>
+      <Docs>
+        <param name="awaitable">The YieldAwaitable to wrap.</param>
+        <summary>Constructs a new YieldAwaitable wrapper.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAwaiter">
+      <MemberSignature Language="C#" Value="public virtual System.Threading.Tasks.IAwaiter GetAwaiter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Threading.Tasks.IAwaiter GetAwaiter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.IAwaiter</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Gets the IAwaiter used to await this YieldAwaitable.</summary>
+        <returns>The IAwaiter used to await this YieldAwaitable.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

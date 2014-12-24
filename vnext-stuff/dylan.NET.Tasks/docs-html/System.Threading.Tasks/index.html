@@ -196,11 +196,35 @@
     </div>
     <div class="Remarks">
       <h2 class="Section"> Namespace</h2>
-      <p>Helpers for the Task class targeted for dylan.NET projects on .NET 4, .NET 4.5, ASP.NET vNext and PCLs.</p>
+      <p>Helpers for awaiting stuff and implementing asynchronous routines mostly targeted for dylan.NET projects on .NET 4, .NET 4.5, ASP.NET vNext and PCLs.</p>
       <table class="TypesListing" style="margin-top: 1em">
         <tr>
           <th>Type</th>
           <th>Description</th>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./ConfiguredTaskAwaitableWrapper.html">ConfiguredTaskAwaitableWrapper</a>
+          </td>
+          <td>An IAwaitable implementation that wraps a ConfiguredTaskAwaitable.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./ConfiguredTaskAwaitableWrapper`1.html">ConfiguredTaskAwaitableWrapper&lt;TResult&gt;</a>
+          </td>
+          <td>An IAwaitable&lt;TResult&gt; implementation that wraps a ConfiguredTaskAwaitable&lt;TResult&gt;.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./ConfiguredTaskAwaiterWrapper.html">ConfiguredTaskAwaiterWrapper</a>
+          </td>
+          <td>An IAwaiter implementation that wraps a ConfiguredTaskAwaiter.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./ConfiguredTaskAwaiterWrapper`1.html">ConfiguredTaskAwaiterWrapper&lt;TResult&gt;</a>
+          </td>
+          <td>An IAwaiter&lt;TResult&gt; implementation that wraps a ConfiguredTaskAwaiter&lt;TResult&gt;.</td>
         </tr>
         <tr valign="top">
           <td>
@@ -216,6 +240,42 @@
         </tr>
         <tr valign="top">
           <td>
+            <a href="./IAwaitable.html">IAwaitable</a>
+          </td>
+          <td>An interface that formalises what it means to be awaitable.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./IAwaitable`1.html">IAwaitable&lt;TResult&gt;</a>
+          </td>
+          <td>An interface that formalises what it means to be an awaitable that returns a value.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./IAwaiter.html">IAwaiter</a>
+          </td>
+          <td>An interface that formalises what it means to be awaiter.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./IAwaiter`1.html">IAwaiter&lt;TResult&gt;</a>
+          </td>
+          <td>An interface that formalises what it means to be an awaiter for something that returns a value.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./TaskAwaiterWrapper.html">TaskAwaiterWrapper</a>
+          </td>
+          <td>An IAwaiter implementation that wraps a TaskAwaiter.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./TaskAwaiterWrapper`1.html">TaskAwaiterWrapper&lt;TResult&gt;</a>
+          </td>
+          <td>An IAwaiter&lt;TResult&gt; implementation that wraps a TaskAwaiter&lt;TResult&gt;.</td>
+        </tr>
+        <tr valign="top">
+          <td>
             <a href="./TaskClosure.html">TaskClosure</a>
           </td>
           <td>A base class for closures used to implement asynchronous methods.</td>
@@ -224,13 +284,37 @@
           <td>
             <a href="./TaskClosure`1.html">TaskClosure&lt;T&gt;</a>
           </td>
-          <td>A base class for closures used to implement asynchronous methods.</td>
+          <td>A base class for closures used to implement asynchronous methods that return a value.</td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./TaskHelpers.html">TaskHelpers</a>
           </td>
-          <td>Helpers for awaiting Tasks.</td>
+          <td>Helpers for awaiting Tasks and other things that implement IAwaiter or IAwaiter&lt;T&gt;.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./TaskWrapper.html">TaskWrapper</a>
+          </td>
+          <td>An IAwaitable implementation that wraps a Task.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./TaskWrapper`1.html">TaskWrapper&lt;TResult&gt;</a>
+          </td>
+          <td>An IAwaitable&lt;TResult&gt; implementation that wraps a Task&lt;TResult&gt;.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./YieldAwaitableWrapper.html">YieldAwaitableWrapper</a>
+          </td>
+          <td>An IAwaitable implementation that wraps a YieldAwaitable.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./YieldAwaiterWrapper.html">YieldAwaiterWrapper</a>
+          </td>
+          <td>An IAwaiter implementation that wraps a YieldAwaiter.</td>
         </tr>
       </table>
     </div>

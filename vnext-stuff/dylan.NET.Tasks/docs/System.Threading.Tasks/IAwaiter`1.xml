@@ -1,0 +1,56 @@
+<Type Name="IAwaiter&lt;TResult&gt;" FullName="System.Threading.Tasks.IAwaiter&lt;TResult&gt;">
+  <TypeSignature Language="C#" Value="public interface IAwaiter&lt;TResult&gt; : System.Runtime.CompilerServices.INotifyCompletion" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IAwaiter`1&lt;TResult&gt; implements class System.Runtime.CompilerServices.INotifyCompletion" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TResult" />
+  </TypeParameters>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Runtime.CompilerServices.INotifyCompletion</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="TResult">The type of result returned by what is being awaited.</typeparam>
+    <summary>An interface that formalises what it means to be an awaiter for something that returns a value.</summary>
+    <remarks>Implement this interface to allow your objects to be awaited by this library. You must also implement INotifyCompletion.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetResult">
+      <MemberSignature Language="C#" Value="public TResult GetResult ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance !TResult GetResult() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TResult</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Concludes the await by returning the result given by the awaitable, throwing any exceptions thrown by the awaitable in the process.</summary>
+        <returns>The result returned by the awaitable.</returns>
+        <remarks>This library runs this method in its completion handlers. It runs a continuation given by the user if no exceptions are raised, else runs the user provided exception handler with the raised exception.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsCompleted">
+      <MemberSignature Language="C#" Value="public bool IsCompleted { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsCompleted" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets the completion state of the awaitable being awaited.</summary>
+        <value>True if the completion handler can be run immediately, else false.</value>
+        <remarks>This library runs the completion handler immediately if this is true else subscribes the handler using OnCompleted.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

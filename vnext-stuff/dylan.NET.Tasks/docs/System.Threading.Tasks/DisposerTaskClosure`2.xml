@@ -1,9 +1,10 @@
 <Type Name="DisposerTaskClosure&lt;T,TDisposable&gt;" FullName="System.Threading.Tasks.DisposerTaskClosure&lt;T,TDisposable&gt;">
-  <TypeSignature Language="C#" Value="public abstract class DisposerTaskClosure&lt;T,TDisposable&gt; : System.Threading.Tasks.TaskClosure&lt;T&gt; where TDisposable : class, IDisposable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract DisposerTaskClosure`2&lt;T, class (class System.IDisposable) TDisposable&gt; extends System.Threading.Tasks.TaskClosure`1&lt;!T&gt;" />
+  <TypeSignature Language="C#" Value="public class DisposerTaskClosure&lt;T,TDisposable&gt; : System.Threading.Tasks.TaskClosure&lt;T&gt; where TDisposable : class, IDisposable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi DisposerTaskClosure`2&lt;T, class (class System.IDisposable) TDisposable&gt; extends System.Threading.Tasks.TaskClosure`1&lt;!T&gt;" />
   <AssemblyInfo>
     <AssemblyName>dylan.NET.Tasks</AssemblyName>
     <AssemblyVersion>1.1.1.1</AssemblyVersion>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
   </AssemblyInfo>
   <TypeParameters>
     <TypeParameter Name="T" />
@@ -29,11 +30,12 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected DisposerTaskClosure (TDisposable res);" />
-      <MemberSignature Language="ILAsm" Value=".method familyspecialname rtspecialname instance void .ctor(!TDisposable res) cil managed" />
+      <MemberSignature Language="C#" Value="public DisposerTaskClosure (TDisposable res);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(!TDisposable res) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="res" Type="TDisposable" />
@@ -50,6 +52,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>TDisposable</ReturnType>
@@ -65,6 +68,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -81,6 +85,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>TDisposable</ReturnType>

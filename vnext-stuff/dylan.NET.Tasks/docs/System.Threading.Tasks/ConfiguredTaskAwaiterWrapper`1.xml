@@ -1,0 +1,96 @@
+<Type Name="ConfiguredTaskAwaiterWrapper&lt;TResult&gt;" FullName="System.Threading.Tasks.ConfiguredTaskAwaiterWrapper&lt;TResult&gt;">
+  <TypeSignature Language="C#" Value="public class ConfiguredTaskAwaiterWrapper&lt;TResult&gt; : System.Threading.Tasks.IAwaiter&lt;TResult&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ConfiguredTaskAwaiterWrapper`1&lt;TResult&gt; extends System.Object implements class System.Threading.Tasks.IAwaiter`1&lt;!TResult&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TResult" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Threading.Tasks.IAwaiter&lt;TResult&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="TResult">The type of result returned by the ConfiguredTaskAwaitable being awaited.</typeparam>
+    <summary>An IAwaiter&lt;TResult&gt; implementation that wraps a ConfiguredTaskAwaiter&lt;TResult&gt;.</summary>
+    <remarks>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ConfiguredTaskAwaiterWrapper (System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;TResult&gt;.ConfiguredTaskAwaiter awaiter);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(valuetype System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1/ConfiguredTaskAwaiter&lt;!TResult&gt; awaiter) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="awaiter" Type="System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;TResult&gt;+ConfiguredTaskAwaiter" />
+      </Parameters>
+      <Docs>
+        <param name="awaiter">The ConfiguredTaskAwaiter&lt;TResult&gt; to wrap.</param>
+        <summary>Constructs a new ConfiguredTaskAwaiter&lt;TResult&gt; wrapper.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetResult">
+      <MemberSignature Language="C#" Value="public virtual TResult GetResult ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance !TResult GetResult() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TResult</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Concludes the await, throwing any exceptions thrown by the configured task in the process.</summary>
+        <returns>The result returned by the configured task.</returns>
+        <remarks>Calls the underlying GetResult.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsCompleted">
+      <MemberSignature Language="C#" Value="public virtual bool IsCompleted { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsCompleted" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets the completion state of the configured task being awaited.</summary>
+        <value>True if the completion handler can be run immediately, else false.</value>
+        <remarks>Gets the underlying IsCompleted value.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnCompleted">
+      <MemberSignature Language="C#" Value="public virtual void OnCompleted (Action continuation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OnCompleted(class System.Action continuation) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="continuation" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <param name="continuation">The function to execute as the continuation.</param>
+        <summary>Registers the given function to run when the configured task resolves to a value/fails.</summary>
+        <remarks>Calls the underlying OnCompleted.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

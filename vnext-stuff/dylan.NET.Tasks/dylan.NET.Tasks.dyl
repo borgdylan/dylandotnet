@@ -1,5 +1,5 @@
-//The dylan.NET task library
-//Compile with dylan.NET 11.3.8.6 or higher hosted by the ASP.NET vNext tooling
+//The dylan.NET task and awaitables library
+//Compile with dylan.NET 11.5.2.1 or higher hosted by the ASP.NET vNext tooling
 
 //    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2014 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
@@ -15,10 +15,29 @@ import System
 import System.Threading
 //import System.Threading.Tasks
 
+#if NET40 then
+	import Microsoft.Runtime.CompilerServices
+end #if
+
+import System.Runtime.CompilerServices
+
 namespace System.Threading.Tasks
 	#include "AsyncVoid.dyl"
+	#include "IAwaitable1.dyl"
+	#include "IAwaitable.dyl"
+	
+	#if !PORTABLESHIM then
+		#include "YieldAwaitableWrapper.dyl"
+		#include "TaskWrapper.dyl"
+		#include "TaskWrapper1.dyl"
+		#include "ConfiguredTaskAwaitableWrapper.dyl"
+		#include "ConfiguredTaskAwaitableWrapper1.dyl"
+	end #if
+	
+	#include "SetHelper.dyl"
 	#include "AwaitClosures.dyl"
 	#include "TaskHelpers.dyl"
+	#include "CatchClosure.dyl"
 	#include "TaskClosure1.dyl"
 	#include "TaskClosure.dyl"
 	#include "DisposerTaskClosure1.dyl"

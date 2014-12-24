@@ -17,5 +17,5 @@
   </PropertyGroup>
   <ItemGroup>
   </ItemGroup>
-  <Import Project="\home\dylan\.kpm\packages\dylan.NET\11.5.1.2\tools\dylan.NET.Portable.targets" />
+  <Import Project="\home\dylan\.kpm\packages\dylan.NET\11.5.3.2\tools\dylan.NET.Portable.targets" />
 </Project>

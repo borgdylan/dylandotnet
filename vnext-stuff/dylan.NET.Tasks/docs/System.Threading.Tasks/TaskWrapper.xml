@@ -1,0 +1,58 @@
+<Type Name="TaskWrapper" FullName="System.Threading.Tasks.TaskWrapper">
+  <TypeSignature Language="C#" Value="public class TaskWrapper : System.Threading.Tasks.IAwaitable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi TaskWrapper extends System.Object implements class System.Threading.Tasks.IAwaitable" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Threading.Tasks.IAwaitable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>An IAwaitable implementation that wraps a Task.</summary>
+    <remarks>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TaskWrapper (System.Threading.Tasks.Task awaitable);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class System.Threading.Tasks.Task awaitable) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="awaitable" Type="System.Threading.Tasks.Task" />
+      </Parameters>
+      <Docs>
+        <param name="awaitable">The Task to wrap.</param>
+        <summary>Constructs a new Task wrapper.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAwaiter">
+      <MemberSignature Language="C#" Value="public virtual System.Threading.Tasks.IAwaiter GetAwaiter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Threading.Tasks.IAwaiter GetAwaiter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.IAwaiter</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Gets the IAwaiter used to await this Task.</summary>
+        <returns>The IAwaiter used to await this Task.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

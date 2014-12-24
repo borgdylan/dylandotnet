@@ -6,16 +6,40 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyVersion>1.0.1.0</AssemblyVersion>
     <AssemblyVersion>1.1.1.1</AssemblyVersion>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Helpers for awaiting Tasks.</summary>
+    <summary>Helpers for awaiting Tasks and other things that implement IAwaiter or IAwaiter&lt;T&gt;.</summary>
     <remarks>These helpers may also be useful for other languages that do not support the await keyword. Do note that this API surface is also available on .NET 4 and some PCL profiles.</remarks>
   </Docs>
   <Members>
+    <Member MemberName="Await">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await (System.Threading.Tasks.IAwaiter a, Action f);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await(class System.Threading.Tasks.IAwaiter a, class System.Action f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Await">
       <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await (System.Threading.Tasks.Task t, Action f);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await(class System.Threading.Tasks.Task t, class System.Action f) cil managed" />
@@ -24,6 +48,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -42,6 +67,81 @@
       </Docs>
     </Member>
     <Member MemberName="Await">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await (System.Threading.Tasks.IAwaiter a, Action f, Action fin);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await(class System.Threading.Tasks.IAwaiter a, class System.Action f, class System.Action fin) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="fin" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await (System.Threading.Tasks.IAwaiter a, Action f, Action&lt;Exception&gt; cat);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await(class System.Threading.Tasks.IAwaiter a, class System.Action f, class System.Action`1&lt;class System.Exception&gt; cat) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="cat" Type="System.Action&lt;System.Exception&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await (System.Threading.Tasks.IAwaiter a, Action f, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await(class System.Threading.Tasks.IAwaiter a, class System.Action f, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await">
       <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await (System.Threading.Tasks.Task t, Action f, Action fin);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await(class System.Threading.Tasks.Task t, class System.Action f, class System.Action fin) cil managed" />
       <MemberType>Method</MemberType>
@@ -49,6 +149,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -76,6 +177,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -88,7 +190,7 @@
       <Docs>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
@@ -103,6 +205,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -115,8 +218,89 @@
       <Docs>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await (System.Threading.Tasks.IAwaiter a, Action f, Action fin, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await(class System.Threading.Tasks.IAwaiter a, class System.Action f, class System.Action fin, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="fin" Type="System.Action" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await (System.Threading.Tasks.IAwaiter a, Action f, Action&lt;Exception&gt; cat, Action fin);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await(class System.Threading.Tasks.IAwaiter a, class System.Action f, class System.Action`1&lt;class System.Exception&gt; cat, class System.Action fin) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="cat" Type="System.Action&lt;System.Exception&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await (System.Threading.Tasks.IAwaiter a, Action f, Action&lt;Exception&gt; cat, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await(class System.Threading.Tasks.IAwaiter a, class System.Action f, class System.Action`1&lt;class System.Exception&gt; cat, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="cat" Type="System.Action&lt;System.Exception&gt;" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
         </remarks>
@@ -130,6 +314,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -144,7 +329,7 @@
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
@@ -159,6 +344,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -172,7 +358,7 @@
       <Docs>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
@@ -188,6 +374,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -201,9 +388,38 @@
       <Docs>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await (System.Threading.Tasks.IAwaiter a, Action f, Action&lt;Exception&gt; cat, Action fin, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await(class System.Threading.Tasks.IAwaiter a, class System.Action f, class System.Action`1&lt;class System.Exception&gt; cat, class System.Action fin, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="cat" Type="System.Action&lt;System.Exception&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
         </remarks>
@@ -217,6 +433,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -231,10 +448,37 @@
       <Docs>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await&lt;T&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Action&lt;T&gt; f);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await&lt;T&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Action`1&lt;!!T&gt; f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;T&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
         </remarks>
@@ -248,6 +492,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -270,6 +515,93 @@
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await&lt;T&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Action&lt;T&gt; f, Action fin);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await&lt;T&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Action`1&lt;!!T&gt; f, class System.Action fin) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;T&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await&lt;T&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Action&lt;T&gt; f, Action&lt;Exception&gt; cat);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await&lt;T&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Action`1&lt;!!T&gt; f, class System.Action`1&lt;class System.Exception&gt; cat) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;T&gt;" />
+        <Parameter Name="cat" Type="System.Action&lt;System.Exception&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await&lt;T&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Action&lt;T&gt; f, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await&lt;T&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Action`1&lt;!!T&gt; f, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;T&gt;" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T&gt;">
       <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await&lt;T&gt; (System.Threading.Tasks.Task&lt;T&gt; t, Action&lt;T&gt; f, Action fin);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await&lt;T&gt;(class System.Threading.Tasks.Task`1&lt;!!T&gt; t, class System.Action`1&lt;!!T&gt; f, class System.Action fin) cil managed" />
       <MemberType>Method</MemberType>
@@ -277,6 +609,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -308,6 +641,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -324,7 +658,7 @@
         <typeparam name="T">The type of result returned by the awaited task.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
@@ -339,6 +673,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -355,8 +690,101 @@
         <typeparam name="T">The type of result returned by the awaited task.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await&lt;T&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Action&lt;T&gt; f, Action fin, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await&lt;T&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Action`1&lt;!!T&gt; f, class System.Action fin, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;T&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await&lt;T&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Action&lt;T&gt; f, Action&lt;Exception&gt; cat, Action fin);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await&lt;T&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Action`1&lt;!!T&gt; f, class System.Action`1&lt;class System.Exception&gt; cat, class System.Action fin) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;T&gt;" />
+        <Parameter Name="cat" Type="System.Action&lt;System.Exception&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await&lt;T&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Action&lt;T&gt; f, Action&lt;Exception&gt; cat, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await&lt;T&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Action`1&lt;!!T&gt; f, class System.Action`1&lt;class System.Exception&gt; cat, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;T&gt;" />
+        <Parameter Name="cat" Type="System.Action&lt;System.Exception&gt;" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
         </remarks>
@@ -370,6 +798,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -388,7 +817,7 @@
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
@@ -403,6 +832,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -420,7 +850,7 @@
         <typeparam name="T">The type of result returned by the awaited task.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
@@ -436,6 +866,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -453,9 +884,42 @@
         <typeparam name="T">The type of result returned by the awaited task.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task Await&lt;T&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Action&lt;T&gt; f, Action&lt;Exception&gt; cat, Action fin, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task Await&lt;T&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Action`1&lt;!!T&gt; f, class System.Action`1&lt;class System.Exception&gt; cat, class System.Action fin, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;T&gt;" />
+        <Parameter Name="cat" Type="System.Action&lt;System.Exception&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
         </remarks>
@@ -469,6 +933,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -487,10 +952,37 @@
         <typeparam name="T">The type of result returned by the awaited task.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;U&gt; (System.Threading.Tasks.IAwaiter a, Func&lt;U&gt; f);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;U&gt;(class System.Threading.Tasks.IAwaiter a, class System.Func`1&lt;!!U&gt; f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Func&lt;U&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
         </remarks>
@@ -504,6 +996,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -526,6 +1019,93 @@
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;U&gt; (System.Threading.Tasks.IAwaiter a, Func&lt;U&gt; f, Action fin);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;U&gt;(class System.Threading.Tasks.IAwaiter a, class System.Func`1&lt;!!U&gt; f, class System.Action fin) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Func&lt;U&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;U&gt; (System.Threading.Tasks.IAwaiter a, Func&lt;U&gt; f, Func&lt;Exception,U&gt; cat);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;U&gt;(class System.Threading.Tasks.IAwaiter a, class System.Func`1&lt;!!U&gt; f, class System.Func`2&lt;class System.Exception, !!U&gt; cat) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Func&lt;U&gt;" />
+        <Parameter Name="cat" Type="System.Func&lt;System.Exception,U&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;U&gt; (System.Threading.Tasks.IAwaiter a, Func&lt;U&gt; f, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;U&gt;(class System.Threading.Tasks.IAwaiter a, class System.Func`1&lt;!!U&gt; f, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Func&lt;U&gt;" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
       <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;U&gt; (System.Threading.Tasks.Task t, Func&lt;U&gt; f, Action fin);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;U&gt;(class System.Threading.Tasks.Task t, class System.Func`1&lt;!!U&gt; f, class System.Action fin) cil managed" />
       <MemberType>Method</MemberType>
@@ -533,6 +1113,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -564,6 +1145,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -580,7 +1162,7 @@
         <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
@@ -595,6 +1177,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -611,8 +1194,101 @@
         <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;U&gt; (System.Threading.Tasks.IAwaiter a, Func&lt;U&gt; f, Action fin, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;U&gt;(class System.Threading.Tasks.IAwaiter a, class System.Func`1&lt;!!U&gt; f, class System.Action fin, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Func&lt;U&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;U&gt; (System.Threading.Tasks.IAwaiter a, Func&lt;U&gt; f, Func&lt;Exception,U&gt; cat, Action fin);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;U&gt;(class System.Threading.Tasks.IAwaiter a, class System.Func`1&lt;!!U&gt; f, class System.Func`2&lt;class System.Exception, !!U&gt; cat, class System.Action fin) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Func&lt;U&gt;" />
+        <Parameter Name="cat" Type="System.Func&lt;System.Exception,U&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;U&gt; (System.Threading.Tasks.IAwaiter a, Func&lt;U&gt; f, Func&lt;Exception,U&gt; cat, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;U&gt;(class System.Threading.Tasks.IAwaiter a, class System.Func`1&lt;!!U&gt; f, class System.Func`2&lt;class System.Exception, !!U&gt; cat, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Func&lt;U&gt;" />
+        <Parameter Name="cat" Type="System.Func&lt;System.Exception,U&gt;" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
         </remarks>
@@ -626,6 +1302,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -644,7 +1321,7 @@
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
@@ -659,6 +1336,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -676,7 +1354,7 @@
         <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
@@ -692,6 +1370,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -709,9 +1388,42 @@
         <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;U&gt; (System.Threading.Tasks.IAwaiter a, Func&lt;U&gt; f, Func&lt;Exception,U&gt; cat, Action fin, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;U&gt;(class System.Threading.Tasks.IAwaiter a, class System.Func`1&lt;!!U&gt; f, class System.Func`2&lt;class System.Exception, !!U&gt; cat, class System.Action fin, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter" />
+        <Parameter Name="f" Type="System.Func&lt;U&gt;" />
+        <Parameter Name="cat" Type="System.Func&lt;System.Exception,U&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
         </remarks>
@@ -725,6 +1437,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -743,10 +1456,39 @@
         <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T,U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;T,U&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Func&lt;T,U&gt; f);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;T, U&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Func`2&lt;!!T, !!U&gt; f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Func&lt;T,U&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
         </remarks>
@@ -760,6 +1502,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -784,6 +1527,99 @@
       </Docs>
     </Member>
     <Member MemberName="Await&lt;T,U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;T,U&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Func&lt;T,U&gt; f, Action fin);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;T, U&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Func`2&lt;!!T, !!U&gt; f, class System.Action fin) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Func&lt;T,U&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T,U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;T,U&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Func&lt;T,U&gt; f, Func&lt;Exception,U&gt; cat);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;T, U&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Func`2&lt;!!T, !!U&gt; f, class System.Func`2&lt;class System.Exception, !!U&gt; cat) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Func&lt;T,U&gt;" />
+        <Parameter Name="cat" Type="System.Func&lt;System.Exception,U&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T,U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;T,U&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Func&lt;T,U&gt; f, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;T, U&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Func`2&lt;!!T, !!U&gt; f, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Func&lt;T,U&gt;" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T,U&gt;">
       <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;T,U&gt; (System.Threading.Tasks.Task&lt;T&gt; t, Func&lt;T,U&gt; f, Action fin);" />
       <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;T, U&gt;(class System.Threading.Tasks.Task`1&lt;!!T&gt; t, class System.Func`2&lt;!!T, !!U&gt; f, class System.Action fin) cil managed" />
       <MemberType>Method</MemberType>
@@ -791,6 +1627,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -824,6 +1661,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -842,7 +1680,7 @@
         <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
@@ -857,6 +1695,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -875,8 +1714,107 @@
         <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T,U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;T,U&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Func&lt;T,U&gt; f, Action fin, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;T, U&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Func`2&lt;!!T, !!U&gt; f, class System.Action fin, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Func&lt;T,U&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T,U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;T,U&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Func&lt;T,U&gt; f, Func&lt;Exception,U&gt; cat, Action fin);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;T, U&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Func`2&lt;!!T, !!U&gt; f, class System.Func`2&lt;class System.Exception, !!U&gt; cat, class System.Action fin) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Func&lt;T,U&gt;" />
+        <Parameter Name="cat" Type="System.Func&lt;System.Exception,U&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T,U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;T,U&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Func&lt;T,U&gt; f, Func&lt;Exception,U&gt; cat, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;T, U&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Func`2&lt;!!T, !!U&gt; f, class System.Func`2&lt;class System.Exception, !!U&gt; cat, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Func&lt;T,U&gt;" />
+        <Parameter Name="cat" Type="System.Func&lt;System.Exception,U&gt;" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
         </remarks>
@@ -890,6 +1828,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -910,7 +1849,7 @@
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
@@ -925,6 +1864,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -944,7 +1884,7 @@
         <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
@@ -960,6 +1900,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -979,9 +1920,44 @@
         <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
+        <returns>A new task representing the await.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;T,U&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task&lt;U&gt; Await&lt;T,U&gt; (System.Threading.Tasks.IAwaiter&lt;T&gt; a, Func&lt;T,U&gt; f, Func&lt;Exception,U&gt; cat, Action fin, System.Threading.CancellationToken token);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task`1&lt;!!U&gt; Await&lt;T, U&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!T&gt; a, class System.Func`2&lt;!!T, !!U&gt; f, class System.Func`2&lt;class System.Exception, !!U&gt; cat, class System.Action fin, valuetype System.Threading.CancellationToken token) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T" />
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;T&gt;" />
+        <Parameter Name="f" Type="System.Func&lt;T,U&gt;" />
+        <Parameter Name="cat" Type="System.Func&lt;System.Exception,U&gt;" />
+        <Parameter Name="fin" Type="System.Action" />
+        <Parameter Name="token" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">The type of result returned by the awaitable being awaited.</typeparam>
+        <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
+        <param name="a">The awaiter to use.</param>
+        <param name="f">The code to execute once the await finishes successfully.</param>
+        <param name="cat">The code to execute if the await or the code that executes after it, terminates with exceptions.</param>
+        <param name="fin">The code to execute after the await is ready regardless of the await's success/failure.</param>
+        <param name="token">The cancellation token to use.</param>
+        <summary>Await the awaitable linked to the provided awaiter using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
         </remarks>
@@ -995,6 +1971,7 @@
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;U&gt;</ReturnType>
@@ -1015,9 +1992,9 @@
         <typeparam name="U">The type of result returned by the awaiting functions.</typeparam>
         <param name="t">The task to await.</param>
         <param name="f">The code to execute once the task finishes successfully.</param>
-        <param name="cat">The code to execute if the task or the code that executes after it terminate with exceptions.</param>
+        <param name="cat">The code to execute if the task or the code that executes after it terminates with exceptions.</param>
         <param name="fin">The code to execute after the await is ready regardless of the task's success/failure.</param>
-        <param name="token">The cancellation token to use if the awaiting happens asynchronously.</param>
+        <param name="token">The cancellation token to use.</param>
         <summary>Await the given task using the given functions.</summary>
         <returns>A new task representing the await.</returns>
         <remarks>
@@ -1031,6 +2008,7 @@
       <AssemblyInfo>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -1050,6 +2028,7 @@
       <AssemblyInfo>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task</ReturnType>
@@ -1072,6 +2051,7 @@
       <AssemblyInfo>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;TResult&gt;</ReturnType>
@@ -1122,6 +2102,7 @@
       <AssemblyInfo>
         <AssemblyVersion>1.0.1.0</AssemblyVersion>
         <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;System.Object&gt;</ReturnType>
