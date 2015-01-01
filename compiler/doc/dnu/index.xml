@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dnu" Version="11.5.1.2">
+    <Assembly Name="dnu" Version="11.5.3.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -44,6 +44,7 @@
     <Namespace Name="dylan.NET.Utils">
       <Type Name="CompilerMsg" Kind="Class" />
       <Type Name="ErrorException" Kind="Class" />
+      <Type Name="InterpolateResult" Kind="Class" />
       <Type Name="Keyboard" Kind="Class" />
       <Type Name="MemoryFS" Kind="Class" />
       <Type Name="ParseUtils" Kind="Class" />

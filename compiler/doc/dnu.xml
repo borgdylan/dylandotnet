@@ -46,6 +46,26 @@
             <summary>Creates a new ErrorException with teh specified message.</summary>
             <remarks />
         </member>
+        <member name="T:dylan.NET.Utils.InterpolateResult">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Utils.InterpolateResult(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <param name="format">To be added.</param>
+            <param name="exprs">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:dylan.NET.Utils.InterpolateResult.Expressions">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:dylan.NET.Utils.InterpolateResult.Format">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Utils.Keyboard">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -133,6 +153,12 @@
         </member>
         <member name="T:dylan.NET.Utils.ParseUtils">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Utils.ParseUtils.Interpolate(System.String)">
+            <param name="input">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Utils.ParseUtils.IsHexDigit(System.Char)">

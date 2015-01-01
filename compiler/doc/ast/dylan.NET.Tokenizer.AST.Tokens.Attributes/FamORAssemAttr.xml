@@ -1,11 +1,11 @@
 <Type Name="FamORAssemAttr" FullName="dylan.NET.Tokenizer.AST.Tokens.Attributes.FamORAssemAttr">
-  <TypeSignature Language="C#" Value="public class FamORAssemAttr : dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi FamORAssemAttr extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute" />
+  <TypeSignature Language="C#" Value="public class FamORAssemAttr : dylan.NET.Tokenizer.AST.Tokens.Attributes.VisibilityAttr" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi FamORAssemAttr extends dylan.NET.Tokenizer.AST.Tokens.Attributes.VisibilityAttr" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Attributes.VisibilityAttr</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

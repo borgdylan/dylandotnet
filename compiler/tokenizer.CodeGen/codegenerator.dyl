@@ -149,6 +149,7 @@ class public CodeGenerator
 					//pth = inclustm::Path::Value
 						
 					if inclustm::SSet == null then
+						inclustm::Path::Value = Path::Combine(Path::GetDirectoryName(spth), inclustm::Path::Value)
 						if !File::Exists(inclustm::Path::Value) then
 							StreamUtils::WriteError(inclustm::Line, spth, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
 						end if
@@ -197,14 +198,14 @@ class public CodeGenerator
 			SymTable::DefSyms::Clear()
 			SymTable::AddDef("CLR_" + $string$Environment::get_Version()::get_Major())
 		end if
-		
+
+		//fpath = Path::GetFullPath(fpath)
 		ILEmitter::CurSrcFile = fpath
 		ILEmitter::AddSrcFile(fpath)
 		Importer::ImpsStack::Push(new C5.LinkedList<of ImportRecord>())
 
 		if ILEmitter::DocWriters::get_Count() >= 0 then
 			if AsmFactory::MdlB != null and AsmFactory::DebugFlg then
-				fpath = Path::GetFullPath(fpath)
 				var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
 				ILEmitter::DocWriter = docw
 				ILEmitter::AddDocWriter(docw)

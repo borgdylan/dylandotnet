@@ -841,6 +841,10 @@
             <summary>Holds the current MethodBuilder.</summary>
             <remarks />
         </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.OverrideFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Reflection.ILEmitter.PartialFlg">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>

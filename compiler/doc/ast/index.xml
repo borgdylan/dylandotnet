@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.5.1.2">
+    <Assembly Name="tokenizer.AST" Version="11.5.3.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -214,6 +214,7 @@
       <Type Name="MethodTok" Kind="Class" />
       <Type Name="MeTok" Kind="Class" />
       <Type Name="NamespaceTok" Kind="Class" />
+      <Type Name="NestedAccessToken" Kind="Class" />
       <Type Name="NewarrCallTok" Kind="Class" />
       <Type Name="NewarrTok" Kind="Class" />
       <Type Name="NewCallTok" Kind="Class" />
@@ -272,7 +273,6 @@
       <Type Name="FamilyAttr" Kind="Class" />
       <Type Name="FamORAssemAttr" Kind="Class" />
       <Type Name="FinalAttr" Kind="Class" />
-      <Type Name="HasDefaultAttr" Kind="Class" />
       <Type Name="HideBySigAttr" Kind="Class" />
       <Type Name="InitOnlyAttr" Kind="Class" />
       <Type Name="InterfaceAttr" Kind="Class" />
@@ -290,6 +290,7 @@
       <Type Name="SpecialNameAttr" Kind="Class" />
       <Type Name="StaticAttr" Kind="Class" />
       <Type Name="VirtualAttr" Kind="Class" />
+      <Type Name="VisibilityAttr" Kind="Class" />
     </Namespace>
     <Namespace Name="dylan.NET.Tokenizer.AST.Tokens.Chars">
       <Type Name="Ampersand" Kind="Class" />
@@ -320,6 +321,7 @@
       <Type Name="DecimalLiteral" Kind="Class" />
       <Type Name="DoubleLiteral" Kind="Class" />
       <Type Name="FloatLiteral" Kind="Class" />
+      <Type Name="InterpolateLiteral" Kind="Class" />
       <Type Name="IntLiteral" Kind="Class" />
       <Type Name="IntPtrLiteral" Kind="Class" />
       <Type Name="Literal" Kind="Class" />

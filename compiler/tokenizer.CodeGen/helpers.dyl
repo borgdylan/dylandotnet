@@ -2087,6 +2087,8 @@ class public static Helpers
 			ILEmitter::EmitNeg()
 		elseif IsPrimitiveFPType(t) then
 			ILEmitter::EmitNeg()
+		elseif !t::get_IsValueType() then
+			ILEmitter::EmitNotRef()
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '!' operation is undefined for '" + t::ToString() + "'.")
 		end if

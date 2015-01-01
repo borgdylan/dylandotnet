@@ -693,7 +693,13 @@ class public static ILEmitter
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static void EmitNotRef()
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	end method
+
 	[method: ComVisible(false)]
 	method public static void EmitNotOther()
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Not)

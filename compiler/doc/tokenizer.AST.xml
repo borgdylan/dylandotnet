@@ -1758,6 +1758,10 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.PropertyGetStmt.Visibility">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.PropertySetStmt">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -1786,6 +1790,10 @@
             <param name="stm">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.PropertySetStmt.Visibility">
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.PropertyStmt">
@@ -3369,6 +3377,24 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.NestedAccessToken">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.NestedAccessToken">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.NestedAccessToken(System.String)">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Tokens.NestedAccessToken.ActualValue">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.NewarrCallTok">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -4175,19 +4201,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Tokens.Attributes.HasDefaultAttr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Attributes.HasDefaultAttr">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.AST.Tokens.Attributes.HasDefaultAttr.ToString">
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.Attributes.HideBySigAttr">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -4407,6 +4420,14 @@
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Attributes.VirtualAttr.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.Attributes.VisibilityAttr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Attributes.VisibilityAttr">
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.Chars.Ampersand">
@@ -4867,6 +4888,24 @@
             <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
             <returns>The dylan.NET syntactic equivalent to this literal ie. NumVal + "f".</returns>
             <remarks />
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.Literals.InterpolateLiteral">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Literals.InterpolateLiteral">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Literals.InterpolateLiteral(System.String)">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.InterpolateLiteral.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral">
             <summary>Represents an integer (int32) literal.</summary>
@@ -5880,6 +5919,10 @@
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok.CloneTT">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok.NestedType">
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.TypeToks.GenericTypeTok.Params">

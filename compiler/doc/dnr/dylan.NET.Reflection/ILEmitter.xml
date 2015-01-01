@@ -2553,6 +2553,18 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="OverrideFlg">
+      <MemberSignature Language="C#" Value="public static bool OverrideFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool OverrideFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PartialFlg">
       <MemberSignature Language="C#" Value="public static bool PartialFlg;" />
       <MemberSignature Language="ILAsm" Value=".field public static bool PartialFlg" />

@@ -166,7 +166,9 @@ class public static AsmFactory
 	[method: ComVisible(false)]
 	method public static void PushNS(var ns as string)
 		if NSStack::get_Count() != 0 then
-			ns = string::Format("{0}.{1}",CurnNS,ns)
+			ns = #ternary{ ns like "^global::(.)*$" ? ParseUtils::StringParser(ns, ':')[1], i"{CurnNS}.{ns}"}
+		else
+			ns = #ternary{ ns like "^global::(.)*$" ? ParseUtils::StringParser(ns, ':')[1], ns}
 		end if
 		NSStack::Push(ns)
 		CurnNS = ns

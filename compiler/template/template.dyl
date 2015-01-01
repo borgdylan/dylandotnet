@@ -20,7 +20,7 @@ import SCG = System.Collections.Generic
 import System.Threading
 //import System.Threading.Tasks
 import System.Runtime.InteropServices
-import System.Runtime.CompilerServices
+//import System.Runtime.CompilerServices
 //import template
 
 #warning "This is personal test code and is not a sample that should be followed."
@@ -887,6 +887,7 @@ class public static Program
 
 		var sobj as object = "hello"
 		Console::WriteLine($string$sobj)
+		Console::WriteLine(!sobj)
 
 		Console::WriteLine(null ?? "null" ?? c"your CLR thinks \qnull\q is null!!")
 		Console::WriteLine("not null" ?? "null")
@@ -983,3 +984,28 @@ class public ConcClass extends AbsClass
 	end method
 
 end class
+
+namespace A
+
+	namespace B
+		
+		class public D
+		end class
+
+	end namespace
+
+	namespace global::C
+		
+		class public E
+		end class
+
+	end namespace
+
+end namespace
+
+namespace global::A
+		
+	class public F
+	end class
+
+end namespace

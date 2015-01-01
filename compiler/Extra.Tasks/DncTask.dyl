@@ -16,6 +16,7 @@ namespace Extra.Tasks
 
 		method public void DncTask()
 			mybase::ctor()
+			StreamUtils::UseConsole = false
 		end method
 
 		method private void ErrorH(var cm as CompilerMsg)

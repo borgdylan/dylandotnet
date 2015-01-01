@@ -40,6 +40,13 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procInterpolate(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
+            <param name="stm">To be added.</param>
+            <param name="i">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procMethodCall(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
@@ -83,6 +90,13 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procType(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
+            <param name="stm">To be added.</param>
+            <param name="i">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procTypeCore(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
             <summary>To be added.</summary>

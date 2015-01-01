@@ -86,5 +86,17 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Visibility">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Attributes.VisibilityAttr Visibility;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Attributes.VisibilityAttr Visibility" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Attributes.VisibilityAttr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>

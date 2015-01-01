@@ -13,6 +13,28 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName="Interpolate">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Utils.InterpolateResult Interpolate (string input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Utils.InterpolateResult Interpolate(string input) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Utils.InterpolateResult</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsHexDigit">
       <MemberSignature Language="C#" Value="public static bool IsHexDigit (char c);" />
       <MemberSignature Language="ILAsm" Value=".method public static bool IsHexDigit(char c) cil managed" />
