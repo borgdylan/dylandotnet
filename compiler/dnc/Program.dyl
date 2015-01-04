@@ -37,7 +37,7 @@ class public static Program
 	[method: ComVisible(false)]
 	method private static void main(var args as string[])
 		
-		StreamUtils::WriteLine("dylan.NET Compiler v. 11.5.3.3 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5")
+		StreamUtils::WriteLine("dylan.NET Compiler v. 11.5.4.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5")
 		StreamUtils::WriteLine("                           and Xamarin Mono v. 2.x.y/v. 3.x.y")
 		StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 		StreamUtils::WriteLine("Copyright (C) 2014 Dylan Borg")
@@ -46,7 +46,7 @@ class public static Program
 		var inm = false
 		var pcl = false
 
-		if args == null then
+		if args is null then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		elseif args[l] < 1 then
 			StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
@@ -81,7 +81,7 @@ class public static Program
 						AsmFactory::InMemorySet = inm
 						AsmFactory::PCLSet = pcl
 
-						if lastsdk != null then
+						if lastsdk isnot null then
 							Importer::AsmBasePath = Path::Combine(Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), ".."), lastsdk)
 						end if
 

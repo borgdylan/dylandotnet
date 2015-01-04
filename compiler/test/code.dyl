@@ -15,10 +15,10 @@ class public StmtReader
 		if !stm::Ctor::Name::Value::EndsWith("Attribute") then
 			typ = Helpers::CommitEvalTTok(new TypeTok(stm::Ctor::Name::Value + "Attribute"))
 		end if
-		if typ == null then
+		if !typ then
 			typ = Helpers::CommitEvalTTok(stm::Ctor::Name)
 		end if
-		if typ == null then
+		if !typ then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Attribute Class '{0}' was not found.", stm::Ctor::Name::ToString()))
 		end if
 
@@ -76,7 +76,7 @@ class public StmtReader
 		end for
 
 		var ctorinf = Helpers::GetLocCtor(typ,tarr)
-		if ctorinf == null then
+		if !ctorinf then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Constructor with the given parameter types is not defined/accessible for the class '{0}'.", typ::ToString()))
 		end if
 
@@ -113,7 +113,7 @@ class public StmtReader
 			
 		var clssparams as TypeAttributes = TypeAttributes::Class
 		
-		if ti2 == null then
+		if !ti2 then
 			clssparams = Helpers::ProcessClassAttrs(clss::Attrs)
 		else
 			ILEmitter::InterfaceFlg = ti2::TypeBldr::get_IsInterface()
@@ -130,7 +130,7 @@ class public StmtReader
 
 		var asmb as AssemblyBuilder = AsmFactory::AsmB
 
-		if ti2 == null then
+		if !ti2 then
 			if ILEmitter::InterfaceFlg and (clss::ClassName::Value notlike "^I(.)*$") then
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Interface class names should start with the letter 'I'!")
 			end if
@@ -211,7 +211,7 @@ class public StmtReader
 
 		var ti as TypeItem = null
 
-		if ti2 == null then
+		if !ti2 then
 			ti = new TypeItem(#ternary{AsmFactory::isNested ? string::Empty, AsmFactory::CurnNS + "."} + clss::ClassName::Value, AsmFactory::CurnTypB) _
 				{ IsStatic = ILEmitter::StaticCFlg, NrGenParams = nrgenparams, TypGenParams = SymTable::TypGenParams, _
 				IsANI = ILEmitter::ANIFlg, AsmB = asmb}
@@ -219,7 +219,7 @@ class public StmtReader
 		
 			inhtyp = reft ?? #ternary {clss::InhClass::Value::get_Length() == 0 ? _
 					Loader::CachedLoadClass("System.Object"), Helpers::CommitEvalTTok(clss::InhClass)}
-			if inhtyp == null then
+			if !inhtyp then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Base Class '{0}' is not defined or is not accessible.", clss::InhClass::Value))
 			end if
 			if inhtyp != null then
@@ -241,7 +241,7 @@ class public StmtReader
 		AsmFactory::CurnInhTyp = inhtyp
 		ILEmitter::StructFlg = inhtyp::Equals(Loader::CachedLoadClass("System.ValueType"))
 
-		if ti2 == null
+		if !ti2 then
 			foreach k in clss::get_Constraints()::get_Keys()
 				if !SymTable::TypGenParams::Contains(k) then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("This class does not have a generic type parameter named {0}.", k))
@@ -274,7 +274,7 @@ class public StmtReader
 						tpi::HasCtor = true
 					elseif c is TypeTok
 						var tout = Helpers::CommitEvalTTok($TypeTok$c)
-						if tout == null then
+						if !tout then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", c::ToString()))
 						end if
 						if tout::get_IsInterface() then

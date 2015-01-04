@@ -33,7 +33,7 @@ class public Line
 		//sca is false as set by Analyze i.e. set only if setting to true
 		//scla and sca are considered only if ob is true
 		var ob as boolean = false
-		if lc == null then
+		if lc is null then
 			lc = " "
 		end if
 

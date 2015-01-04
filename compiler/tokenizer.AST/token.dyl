@@ -26,7 +26,7 @@ class public beforefieldinit Token
 	end method
 	
 	method public override string ToString()
-		return #ternary {Value === null ? string::Empty , Value}
+		return #ternary {Value is null ? string::Empty , Value}
 	end method
 
 	property public string UnquotedValue

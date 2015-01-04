@@ -155,56 +155,56 @@ class public static SymTable
 	
 	[method: ComVisible(false)]
 	method public static void AddMtdCA(var ca as CustomAttributeBuilder)
-		if ca != null then
+		if ca isnot null then
 			MethodCALst::Add(ca)
 		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddFldCA(var ca as CustomAttributeBuilder)
-		if ca != null then
+		if ca isnot null then
 			FieldCALst::Add(ca)
 		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddClsCA(var ca as CustomAttributeBuilder)
-		if ca != null then
+		if ca isnot null then
 			ClassCALst::Add(ca)
 		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddAsmCA(var ca as CustomAttributeBuilder)
-		if ca != null then
+		if ca isnot null then
 			AssemblyCALst::Add(ca)
 		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddEventCA(var ca as CustomAttributeBuilder)
-		if ca != null then
+		if ca isnot null then
 			EventCALst::Add(ca)
 		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddEnumCA(var ca as CustomAttributeBuilder)
-		if ca != null then
+		if ca isnot null then
 			EnumCALst::Add(ca)
 		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddPropCA(var ca as CustomAttributeBuilder)
-		if ca != null then
+		if ca isnot null then
 			PropertyCALst::Add(ca)
 		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void AddParamCA(var ind as integer,var ca as CustomAttributeBuilder)
-		if ca != null then
+		if ca isnot null then
 			if !Enumerable::Contains<of integer>(ParameterCALst::get_Keys(),ind) then
 				ParameterCALst::Add(ind, new C5.LinkedList<of CustomAttributeBuilder>())
 			end if
@@ -445,7 +445,7 @@ class public static SymTable
 	[method: ComVisible(false)]
 	method public static Emit.Label GetRetLbl()
 		var li as LabelItem = FindLbl("$leave_ret_label$")
-		if li == null then
+		if li is null then
 			AddLbl("$leave_ret_label$")
 
 			var vtyp = AsmFactory::CurnMetB::get_ReturnType()

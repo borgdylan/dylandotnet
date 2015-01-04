@@ -148,7 +148,7 @@ class public CodeGenerator
 					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::get_UnquotedValue())
 					//pth = inclustm::Path::Value
 						
-					if inclustm::SSet == null then
+					if inclustm::SSet is null then
 						inclustm::Path::Value = Path::Combine(Path::GetDirectoryName(spth), inclustm::Path::Value)
 						if !File::Exists(inclustm::Path::Value) then
 							StreamUtils::WriteError(inclustm::Line, spth, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
@@ -166,7 +166,7 @@ class public CodeGenerator
 						
 				EmitMSIL(sset, inclustm::Path::Value)
 			else
-				if s != null then
+				if s isnot null then
 					
 					if rtflag andalso s isnot EndStmt andalso !awflag then
 						awflag = true
@@ -205,7 +205,7 @@ class public CodeGenerator
 		Importer::ImpsStack::Push(new C5.LinkedList<of ImportRecord>())
 
 		if ILEmitter::DocWriters::get_Count() >= 0 then
-			if AsmFactory::MdlB != null and AsmFactory::DebugFlg then
+			if AsmFactory::MdlB isnot null and AsmFactory::DebugFlg then
 				var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
 				ILEmitter::DocWriter = docw
 				ILEmitter::AddDocWriter(docw)
@@ -233,7 +233,7 @@ class public CodeGenerator
 				ILEmitter::DocWriter = ILEmitter::DocWriters::get_Last()
 			else
 				if ILEmitter::SrcFiles::get_Count() > 0 then
-					if AsmFactory::MdlB != null and AsmFactory::DebugFlg then
+					if AsmFactory::MdlB isnot null and AsmFactory::DebugFlg then
 						var fp = Path::GetFullPath(ILEmitter::SrcFiles::get_Last())
 						var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fp, Guid::Empty, Guid::Empty, Guid::Empty)
 						ILEmitter::DocWriter = docw

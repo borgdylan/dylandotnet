@@ -234,6 +234,19 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Reflection.BranchOptimisation">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.BranchOptimisation.Inverted">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:dylan.NET.Reflection.BranchOptimisation.None">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:dylan.NET.Reflection.BranchOptimisation.Normal">
+            <summary>To be added.</summary>
+        </member>
         <member name="T:dylan.NET.Reflection.ILEmitter">
             <summary>This class contains methods used for emitting opcodes to the current IL generator.</summary>
             <remarks />
@@ -353,33 +366,45 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCeq">
-            <summary>Emits the 'ceq' opcode.</summary>
-            <remarks />
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCeq(dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCge(System.Boolean)">
-            <param name="s">If the operands are signed or not.</param>
-            <summary>Emits a sequence of 'clt(.un)' , 'ldc.i4.0' and 'ceq'.</summary>
-            <remarks />
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCge(System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="s">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCgt(System.Boolean)">
-            <param name="s">If the operands are signed or not.</param>
-            <summary>Emits the 'cgt(.un)' opcode.</summary>
-            <remarks />
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCgt(System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="s">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCle(System.Boolean)">
-            <param name="s">If the operands are signed or not.</param>
-            <summary>Emits a sequence of 'cgt(.un)' , 'ldc.i4.0' and 'ceq'.</summary>
-            <remarks />
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCle(System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="s">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitClt(System.Boolean)">
-            <param name="s">If the operands are signed or not.</param>
-            <summary>Emits the 'clt(.un)' opcode.</summary>
-            <remarks />
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitClt(System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="s">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCneq">
-            <summary>Emits a sequence of 'ceq', 'ldc.i4.0' and 'ceq'.</summary>
-            <remarks />
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCneq(dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitConstrained(IKVM.Reflection.Type)">
             <param name="t">To be added.</param>
@@ -481,8 +506,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitIs(IKVM.Reflection.Type)">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitIs(IKVM.Reflection.Type,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
             <param name="t">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -491,8 +518,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitIsNot(IKVM.Reflection.Type)">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitIsNot(IKVM.Reflection.Type,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
             <param name="t">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -697,6 +726,10 @@
             <remarks>For booleans consider using 'ldc.i4.0' followed by a 'ceq' instead i.e. use EmitLdcI4(0) and EmitCeq.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitNotOther">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNotRef">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>

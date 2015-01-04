@@ -30,7 +30,7 @@ class public TokenOptimizer
 	end method
 
 	method public Token Optimize(var tok as Token, var lkahead as Token)
-		if lkahead == null then
+		if lkahead is null then
 			lkahead = new Token()
 		end if
 		if !isFirstRun then

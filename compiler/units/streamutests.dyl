@@ -103,10 +103,10 @@ class public auto ansi TestStreamUtils
 	method public void TeardownTests()
 		StreamUtils::CloseInS()
 		StreamUtils::CloseOutS()
-		if sr != null then
+		if sr isnot null then
 			sr::Close()
 		end if
-		if sw != null then
+		if sw isnot null then
 			sw::Close()
 		end if
 		ms::Close()

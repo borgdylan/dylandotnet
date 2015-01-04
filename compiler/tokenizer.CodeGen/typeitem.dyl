@@ -175,7 +175,7 @@ class public partial TypeItem
 		//var matches as FieldItem[] = Enumerable::ToArray<of FieldItem>(Enumerable::Where<of FieldItem>(Fields,new Func<of FieldItem,boolean>(fil::DetermineIfCandidate())))
 
 		var fld as FieldItem = #ternary { Fields::Contains(nam) ? Fields::get_Item(nam), $FieldItem$null }
-		var fldinfo as FieldInfo = #ternary { fld == null ? $FieldBuilder$null, fld::FieldBldr }
+		var fldinfo as FieldInfo = #ternary { fld is null ? $FieldBuilder$null, fld::FieldBldr }
 
 		//if matches[l] == 0 then
 		//	fldinfo = null
@@ -184,7 +184,7 @@ class public partial TypeItem
 		//	fldinfo = fld::FieldBldr
 		//end if
 		
-		if fldinfo != null then
+		if fldinfo isnot null then
 			fldinfo = fldinfo::BindTypeParameters(auxt)
 			Loader::MemberTyp = fldinfo::get_FieldType()
 			Loader::FldLitFlag = fldinfo::get_IsLiteral()

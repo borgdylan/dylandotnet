@@ -42,7 +42,7 @@ class public Parser
 			var nstm = so::Optimize(cs)
 			if nstm is BranchStmt then
 				var curb = cstack::get_Last() as IBranchContainer
-				if curb != null then
+				if curb isnot null then
 					if !curb::AddBranch($BranchStmt$nstm) then
 						StreamUtils::WriteError(nstm::Line, PFlags::CurPath, string::Format("This branch on a '{0}' is invalid!", curb::GetType()::get_Name()))
 					end if
@@ -84,7 +84,7 @@ class public Parser
 					cstack::Pop()
 
 					var curb = cstack::get_Last() as IBranchContainer
-					if curb != null then
+					if curb isnot null then
 						curc = curb::get_CurrentContainer()
 					else
 						curc = cstack::get_Last()

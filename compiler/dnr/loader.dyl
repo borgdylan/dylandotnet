@@ -73,7 +73,7 @@ class public static Loader
 //						//asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
 //						typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
 //						//,false,false)
-//						if typ != null then
+//						if typ isnot null then
 //							if nest then
 //								typ = typ::GetNestedType(na[1])
 //							end if
@@ -81,7 +81,7 @@ class public static Loader
 //						end if
 //					else
 						typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
-						if typ != null then
+						if typ isnot null then
 							curasmrec::Used = true
 							curnsrec::Used = true
 							if nest then
@@ -95,14 +95,14 @@ class public static Loader
 				end try
 			end for
 				
-			if typ != null then
+			if typ isnot null then
 				break
 			end if
 		end for
 		
 		PreProcTyp = typ
 
-		if typ != null then
+		if typ isnot null then
 			if MakeArr then
 				typ = typ::MakeArrayType()
 			end if
@@ -151,11 +151,11 @@ class public static Loader
 				var curasm = curasmrec::Asm
 				try
 					typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
-					if typ != null then
+					if typ isnot null then
 						if nest then
 							typ = typ::GetNestedType(na[1])
 						end if
-						if typ != null then
+						if typ isnot null then
 							curnsrec::Used = true
 							typs::Add(typ)
 						end if
@@ -165,14 +165,14 @@ class public static Loader
 				end try
 			end for
 				
-			if typ != null then
+			if typ isnot null then
 				typs::Add(typ)
 			end if
 		end for
 		
 //		PreProcTyp = typ
 
-//		if typ != null then
+//		if typ isnot null then
 //			if MakeArr then
 //				typ = typ::MakeArrayType()
 //			end if
@@ -192,7 +192,7 @@ class public static Loader
 			var typ = TypeCache::get_Item(name)
 			PreProcTyp = typ
 
-			if typ != null then
+			if typ isnot null then
 				if MakeArr then
 					typ = typ::MakeArrayType()
 				end if
@@ -207,7 +207,7 @@ class public static Loader
 			return typ
 		else
 			var t = LoadClass(name)
-			if t != null then
+			if t isnot null then
 				TypeCache::Add(name, PreProcTyp)
 			end if
 			return t
@@ -216,7 +216,7 @@ class public static Loader
 
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.Type ProcessType(var typ as IKVM.Reflection.Type)
-		if typ != null then
+		if typ isnot null then
 			if MakeArr then
 				typ = typ::MakeArrayType()
 			end if
@@ -252,12 +252,12 @@ class public static Loader
 		var ints as IKVM.Reflection.Type[] = null
 		var mtdinfo as IKVM.Reflection.MethodInfo = typ::GetMethod(name)
 
-		if mtdinfo == null then
+		if mtdinfo is null then
 			ints = typ::GetInterfaces()
-			if ints != null then
+			if ints isnot null then
 				for i = 0 upto --ints[l]
 					mtdinfo = ints[i]::GetMethod(name)
-					if mtdinfo != null then
+					if mtdinfo isnot null then
 						break
 					end if
 				end for
@@ -265,7 +265,7 @@ class public static Loader
 			end if
 		end if
 
-		if mtdinfo != null then
+		if mtdinfo isnot null then
 			MemberTyp = mtdinfo::get_ReturnType()
 		end if
 		
@@ -283,7 +283,7 @@ class public static Loader
 		var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
 		var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
 		var havinternal as boolean = false
-		if asmnc != null then
+		if asmnc isnot null then
 			havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) andalso (asmn::get_Name() == asmnc::get_Name())
 		end if
 					
@@ -294,7 +294,7 @@ class public static Loader
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.MethodInfo LoadMethod(var typ as IKVM.Reflection.Type, var name as string, var typs as IKVM.Reflection.Type[])
 		
-		if typ == null then
+		if typ is null then
 			return null
 		end if
 
@@ -315,14 +315,14 @@ class public static Loader
 			mtdinfo =  $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs,new IKVM.Reflection.ParameterModifier[0])
 		end if
 
-		if mtdinfo == null then
+		if mtdinfo is null then
 			ints = typ::GetInterfaces()
 
-			if ints != null andalso !typ::get_IsValueType() then
+			if ints isnot null andalso !typ::get_IsValueType() then
 				foreach interf in ints
 					mtdinfo = LoadMethod(interf, name,typs)
 
-					if mtdinfo != null then
+					if mtdinfo isnot null then
 						break
 					end if
 				end for
@@ -330,20 +330,20 @@ class public static Loader
 
 		end if
 
-		if mtdinfo != null then
+		if mtdinfo isnot null then
 			MemberTyp = mtdinfo::get_ReturnType()
 		end if
 
 //		if mtdinfo == null then
 //			mtdinfo = typ::GetMethod(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
 //
-//			if mtdinfo != null then
+//			if mtdinfo isnot null then
 //				//filter out private members
 //				if !mtdinfo::get_IsPrivate() then
 //					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
 //					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
 //					var havinternal as boolean = false
-//					if asmnc != null then
+//					if asmnc isnot null then
 //						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) andalso (asmn::get_Name() == asmnc::get_Name())
 //					end if
 //
@@ -361,7 +361,7 @@ class public static Loader
 //				end if
 //			end if
 //
-//			if mtdinfo != null then
+//			if mtdinfo isnot null then
 //				MemberTyp = mtdinfo::get_ReturnType()
 //			end if
 //
@@ -375,10 +375,10 @@ class public static Loader
 	method public static IKVM.Reflection.ConstructorInfo LoadCtor(var typ as IKVM.Reflection.Type, var typs as IKVM.Reflection.Type[])
 
 		var ctorinf as IKVM.Reflection.ConstructorInfo = null
-		if ctorinf == null then
+		if ctorinf is null then
 			ctorinf = typ::GetConstructor(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic or IKVM.Reflection.BindingFlags::DeclaredOnly, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
 
-			if ctorinf != null then
+			if ctorinf isnot null then
 				//filter out private members
 				if ctorinf::get_IsPublic() then
 				elseif !ctorinf::get_IsPrivate() then
@@ -386,7 +386,7 @@ class public static Loader
 					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
 					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
 					var havinternal as boolean = false
-					if asmnc != null then
+					if asmnc isnot null then
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
 					end if
 				
@@ -404,7 +404,7 @@ class public static Loader
 				end if
 			end if
 
-			if ctorinf != null then
+			if ctorinf isnot null then
 				MemberTyp = typ
 			end if
 		end if
@@ -423,7 +423,7 @@ class public static Loader
 		var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
 		var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
 		var havinternal as boolean = false
-		if asmnc != null then
+		if asmnc isnot null then
 			havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
 		end if
 					
@@ -490,7 +490,7 @@ class public static Loader
 			mtdinfo =  $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,paramst,new IKVM.Reflection.ParameterModifier[0])
 		end if
 
-		if mtdinfo != null then
+		if mtdinfo isnot null then
 			MemberTyp = mtdinfo::get_ReturnType()
 		end if
 
@@ -516,17 +516,17 @@ class public static Loader
 	method public static IKVM.Reflection.FieldInfo LoadField(var typ as IKVM.Reflection.Type, var name as string)
 		var fldinfo as IKVM.Reflection.FieldInfo = typ::GetField(name)
 		
-		if fldinfo == null then
+		if fldinfo is null then
 			fldinfo = typ::GetField(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic)
 
-			if fldinfo != null then
+			if fldinfo isnot null then
 				//filter out private members
 				if !fldinfo::get_IsPrivate() then
 			
 					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
 					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
 					var havinternal as boolean = false
-					if asmnc != null then
+					if asmnc isnot null then
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) andalso (asmn::get_Name() == asmnc::get_Name())
 					end if
 					
@@ -545,7 +545,7 @@ class public static Loader
 			end if
 		end if
 
-		if fldinfo != null then
+		if fldinfo isnot null then
 			MemberTyp = fldinfo::get_FieldType()
 			FldLitFlag = fldinfo::get_IsLiteral()
 			EnumLitFlag = typ::get_IsEnum()
@@ -569,14 +569,14 @@ class public static Loader
 //		if propinfo = null then
 //			propinfo = typ::GetProperty(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic)
 //
-//			if propinfo != null then
+//			if propinfo isnot null then
 //				//filter out private members
 //				if propinfo::get_IsPrivate() = false then
 //			
 //					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
 //					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
 //					var havinternal as boolean = false
-//					if asmnc != null then
+//					if asmnc isnot null then
 //						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
 //					end if
 //					
@@ -595,7 +595,7 @@ class public static Loader
 //			end if
 //		end if
 
-		if propinfo != null then
+		if propinfo isnot null then
 			MemberTyp = propinfo::get_PropertyType()
 		end if
 		return propinfo

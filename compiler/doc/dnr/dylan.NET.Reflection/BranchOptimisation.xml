@@ -1,0 +1,49 @@
+<Type Name="BranchOptimisation" FullName="dylan.NET.Reflection.BranchOptimisation">
+  <TypeSignature Language="C#" Value="public enum BranchOptimisation" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed BranchOptimisation extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>dnr</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Inverted">
+      <MemberSignature Language="C#" Value="Inverted" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Reflection.BranchOptimisation Inverted = int32(2)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Reflection.BranchOptimisation</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="None">
+      <MemberSignature Language="C#" Value="None" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Reflection.BranchOptimisation None = int32(0)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Reflection.BranchOptimisation</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Normal">
+      <MemberSignature Language="C#" Value="Normal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Reflection.BranchOptimisation Normal = int32(1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Reflection.BranchOptimisation</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

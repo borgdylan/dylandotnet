@@ -16,6 +16,12 @@ class public partial static Loader
 
 end class
 
+enum public integer BranchOptimisation
+	None = 0
+	Normal = 1
+	Inverted = 2
+end enum
+
 class public static ILEmitter
 
 	field public static IKVM.Reflection.Emit.MethodBuilder Met
@@ -138,19 +144,31 @@ class public static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitIs(var t as IKVM.Reflection.Type)
+	method public static void EmitIs(var t as IKVM.Reflection.Type, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Isinst, t)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		if bo == BranchOptimisation::None then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		elseif bo == BranchOptimisation::Inverted then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lab)
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lab)
+		end if
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitIsNot(var t as IKVM.Reflection.Type)
+	method public static void EmitIsNot(var t as IKVM.Reflection.Type, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Isinst, t)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		if bo == BranchOptimisation::None then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		elseif bo == BranchOptimisation::Inverted then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lab)
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lab)
+		end if
 	end method
 
 	[method: ComVisible(false)]
@@ -689,15 +707,43 @@ class public static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitNot()
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	method public static void EmitNot(var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
+		if bo == BranchOptimisation::None then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		elseif bo == BranchOptimisation::Inverted then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lab)
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lab)
+		end if
 	end method
 
+	//true if null
 	[method: ComVisible(false)]
-	method public static void EmitNotRef()
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	method public static void EmitNotRef(var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
+		if bo == BranchOptimisation::None then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		elseif bo == BranchOptimisation::Inverted then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lab)
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lab)
+		end if
+	end method
+
+	//true if not null
+	[method: ComVisible(false)]
+	method public static void EmitIsNotRef(var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
+		if bo == BranchOptimisation::None then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		elseif bo == BranchOptimisation::Inverted then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lab)
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lab)
+		end if
 	end method
 
 	[method: ComVisible(false)]
@@ -750,39 +796,75 @@ class public static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitCeq()
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	method public static void EmitCeq(var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
+		if bo == BranchOptimisation::None then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		elseif bo == BranchOptimisation::Inverted then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Bne_Un, lab)
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Beq, lab)
+		end if
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitCneq()
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	method public static void EmitCneq(var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
+		if bo == BranchOptimisation::None then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		elseif bo == BranchOptimisation::Inverted then
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Beq, lab)
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Bne_Un, lab)
+		end if
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitCgt(var s as boolean)
-		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Cgt, IKVM.Reflection.Emit.OpCodes::Cgt_Un})
+	method public static void EmitCgt(var s as boolean, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
+		if bo == BranchOptimisation::None then
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Cgt, IKVM.Reflection.Emit.OpCodes::Cgt_Un})
+		elseif bo == BranchOptimisation::Inverted then
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Ble, IKVM.Reflection.Emit.OpCodes::Ble_Un}, lab)
+		else
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Bgt, IKVM.Reflection.Emit.OpCodes::Bgt_Un}, lab)
+		end if
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitClt(var s as boolean)
-		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Clt, IKVM.Reflection.Emit.OpCodes::Clt_Un})
+	method public static void EmitClt(var s as boolean, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
+		if bo == BranchOptimisation::None then
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Clt, IKVM.Reflection.Emit.OpCodes::Clt_Un})
+		elseif bo == BranchOptimisation::Inverted then
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Bge, IKVM.Reflection.Emit.OpCodes::Bge_Un}, lab)
+		else
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Blt, IKVM.Reflection.Emit.OpCodes::Blt_Un}, lab)
+		end if
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitCle(var s as boolean)
-		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Cgt, IKVM.Reflection.Emit.OpCodes::Cgt_Un})
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	method public static void EmitCle(var s as boolean, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
+		if bo == BranchOptimisation::None then
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Cgt, IKVM.Reflection.Emit.OpCodes::Cgt_Un})
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		elseif bo == BranchOptimisation::Inverted then
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Bgt, IKVM.Reflection.Emit.OpCodes::Bgt_Un}, lab)
+		else
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Ble, IKVM.Reflection.Emit.OpCodes::Ble_Un}, lab)
+		end if
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitCge(var s as boolean)
-		ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Clt, IKVM.Reflection.Emit.OpCodes::Clt_Un})
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
-		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+	method public static void EmitCge(var s as boolean, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
+		if bo == BranchOptimisation::None then
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Clt, IKVM.Reflection.Emit.OpCodes::Clt_Un})
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
+		elseif bo == BranchOptimisation::Inverted then
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Blt, IKVM.Reflection.Emit.OpCodes::Blt_Un}, lab)
+		else
+			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Bge, IKVM.Reflection.Emit.OpCodes::Bge_Un}, lab)
+		end if
 	end method
 
 	[method: ComVisible(false)]

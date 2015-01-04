@@ -33,7 +33,7 @@ class private TILambdas
 	end method
 
 	method assembly boolean DetermineIfCandidateType(var ti as TypeItem)
-		return #ternary { ti::BakedTyp != null ? ti::BakedTyp::Equals(TB), _
+		return #ternary { ti::BakedTyp isnot null ? ti::BakedTyp::Equals(TB), _
 			 #ternary{ ti::IsEnum ? ti::EnumBldr::Equals(TB), ti::TypeBldr::Equals(TB) } }
 	end method
 

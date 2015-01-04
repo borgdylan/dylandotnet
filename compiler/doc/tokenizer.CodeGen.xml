@@ -94,6 +94,15 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmit(dylan.NET.Tokenizer.AST.Tokens.Token,System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="tok">To be added.</param>
+            <param name="emt">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmitIdent(dylan.NET.Tokenizer.AST.Tokens.Ident,System.Boolean)">
             <param name="idt">To be added.</param>
             <param name="emt">To be added.</param>
@@ -133,6 +142,14 @@
         <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.Evaluate(dylan.NET.Tokenizer.AST.Exprs.Expr)">
             <param name="exp">To be added.</param>
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.Evaluate(dylan.NET.Tokenizer.AST.Exprs.Expr,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="exp">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.EvaluateHIf(dylan.NET.Tokenizer.AST.Exprs.Expr)">
@@ -458,11 +475,14 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitOp(dylan.NET.Tokenizer.AST.Tokens.Ops.Op,System.Boolean,System.Boolean)">
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitOp(dylan.NET.Tokenizer.AST.Tokens.Ops.Op,System.Boolean,System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
             <param name="op">To be added.</param>
             <param name="s">To be added.</param>
             <param name="emt">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
             <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitPtrLd(IKVM.Reflection.MethodInfo,System.Boolean)">

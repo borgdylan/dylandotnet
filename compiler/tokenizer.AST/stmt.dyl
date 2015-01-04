@@ -81,7 +81,7 @@ class public abstract BlockStmt extends Stmt implements IStmtContainer
 		Stmts::Add(stmttoadd)
 
 		var sc = stmttoadd as IStmtContainer 
-		if sc != null then
+		if sc isnot null then
 			sc::set_Parent(me)
 		end if
 	end method
@@ -137,7 +137,7 @@ class public StmtSet implements IStmtContainer
 		Stmts::Add(stmttoadd)
 
 		var sc = stmttoadd as IStmtContainer 
-		if sc != null then
+		if sc isnot null then
 			sc::set_Parent(me)
 		end if
 	end method

@@ -134,7 +134,7 @@ class private MILambdas2
 
 	method assembly static integer CalcDeriveness(var t as IKVM.Reflection.Type)
 		var d as integer = 1
-		do while t::get_BaseType() != null
+		do while t::get_BaseType() isnot null
 			d++
 			t = t::get_BaseType()
 		end do

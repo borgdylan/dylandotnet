@@ -347,7 +347,7 @@ class public StmtOptimizer
 		b = stm::Tokens::get_Item(0) is ForeachTok
 		if b then
 			var iter = stm::Tokens::get_Item(1) as Ident
-			if iter == null then
+			if iter is null then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an identifier after a 'foreach'!")
 			end if
 			
@@ -382,7 +382,7 @@ class public StmtOptimizer
 		b = stm::Tokens::get_Item(0) is ForTok
 		if b then
 			var iter = stm::Tokens::get_Item(1) as Ident
-			if iter == null then
+			if iter is null then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an identifier after a 'for'!")
 			end if
 			
@@ -465,7 +465,7 @@ class public StmtOptimizer
 			var eopt = new ExprOptimizer(PFlags)
 			return new ForStmt() {Line = stm::Line, Iter = iter, Typ = typ, _
 				StartExp = eopt::Optimize(startexp), EndExp = eopt::Optimize(endexp), Direction = direction, _
-				StepExp = #ternary {stepexp == null ? $Expr$null, eopt::Optimize(stepexp)} }
+				StepExp = #ternary {stepexp is null ? $Expr$null, eopt::Optimize(stepexp)} }
 		end if
 		
 		return null
@@ -923,7 +923,7 @@ class public StmtOptimizer
 
 		for i = 3 upto --mas::Tokens::get_Count()
 			if mas::Tokens::get_Item(i) is RSParen then
-				if curvp != null then
+				if curvp isnot null then
 					curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 					lp::Add(curvp)
 				end if
@@ -940,7 +940,7 @@ class public StmtOptimizer
 				end if
 			elseif mas::Tokens::get_Item(i) is Comma then
 				if lvl == 0 then
-					if curvp != null then
+					if curvp isnot null then
 						curvp::ValueExpr = eopt::Optimize(curvp::ValueExpr)
 						lp::Add(curvp)
 					end if
@@ -1427,28 +1427,28 @@ class public StmtOptimizer
 				
 					if stm::Tokens::get_Item(i) is VarTok then
 						d = true
-						if exp == null then
+						if exp is null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 				
 					if stm::Tokens::get_Item(i) is InTok then
 						d = true
-						if exp == null then
+						if exp is null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 				
 					if stm::Tokens::get_Item(i) is InOutTok then
 						d = true
-						if exp == null then
+						if exp is null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 				
 					if stm::Tokens::get_Item(i) is OutTok then
 						d = true
-						if exp == null then
+						if exp is null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
@@ -1542,25 +1542,25 @@ class public StmtOptimizer
 					end if
 					if stm::Tokens::get_Item(i) is VarTok then
 						d = true
-						if exp == null then
+						if exp is null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 					if stm::Tokens::get_Item(i) is InTok then
 						d = true
-						if exp == null then
+						if exp is null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 					if stm::Tokens::get_Item(i) is InOutTok then
 						d = true
-						if exp == null then
+						if exp is null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if
 					if stm::Tokens::get_Item(i) is OutTok then
 						d = true
-						if exp == null then
+						if exp is null then
 							exp = new Expr() {Line = stm::Line}
 						end if
 					end if

@@ -457,8 +457,8 @@
       </Docs>
     </Member>
     <Member MemberName="EmitCeq">
-      <MemberSignature Language="C#" Value="public static void EmitCeq ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitCeq() cil managed" />
+      <MemberSignature Language="C#" Value="public static void EmitCeq (dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitCeq(valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -468,16 +468,20 @@
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
+      </Parameters>
       <Docs>
-        <summary>Emits the 'ceq' opcode.</summary>
-        <remarks>
-        </remarks>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitCge">
-      <MemberSignature Language="C#" Value="public static void EmitCge (bool s);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitCge(bool s) cil managed" />
+      <MemberSignature Language="C#" Value="public static void EmitCge (bool s, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitCge(bool s, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -489,17 +493,20 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="s" Type="System.Boolean" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
       </Parameters>
       <Docs>
-        <param name="s">If the operands are signed or not.</param>
-        <summary>Emits a sequence of 'clt(.un)' , 'ldc.i4.0' and 'ceq'.</summary>
-        <remarks>
-        </remarks>
+        <param name="s">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitCgt">
-      <MemberSignature Language="C#" Value="public static void EmitCgt (bool s);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitCgt(bool s) cil managed" />
+      <MemberSignature Language="C#" Value="public static void EmitCgt (bool s, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitCgt(bool s, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -511,17 +518,20 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="s" Type="System.Boolean" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
       </Parameters>
       <Docs>
-        <param name="s">If the operands are signed or not.</param>
-        <summary>Emits the 'cgt(.un)' opcode.</summary>
-        <remarks>
-        </remarks>
+        <param name="s">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitCle">
-      <MemberSignature Language="C#" Value="public static void EmitCle (bool s);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitCle(bool s) cil managed" />
+      <MemberSignature Language="C#" Value="public static void EmitCle (bool s, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitCle(bool s, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -533,17 +543,20 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="s" Type="System.Boolean" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
       </Parameters>
       <Docs>
-        <param name="s">If the operands are signed or not.</param>
-        <summary>Emits a sequence of 'cgt(.un)' , 'ldc.i4.0' and 'ceq'.</summary>
-        <remarks>
-        </remarks>
+        <param name="s">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitClt">
-      <MemberSignature Language="C#" Value="public static void EmitClt (bool s);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitClt(bool s) cil managed" />
+      <MemberSignature Language="C#" Value="public static void EmitClt (bool s, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitClt(bool s, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -555,17 +568,20 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="s" Type="System.Boolean" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
       </Parameters>
       <Docs>
-        <param name="s">If the operands are signed or not.</param>
-        <summary>Emits the 'clt(.un)' opcode.</summary>
-        <remarks>
-        </remarks>
+        <param name="s">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitCneq">
-      <MemberSignature Language="C#" Value="public static void EmitCneq ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitCneq() cil managed" />
+      <MemberSignature Language="C#" Value="public static void EmitCneq (dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitCneq(valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -575,11 +591,15 @@
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
+      </Parameters>
       <Docs>
-        <summary>Emits a sequence of 'ceq', 'ldc.i4.0' and 'ceq'.</summary>
-        <remarks>
-        </remarks>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitConstrained">
@@ -1017,8 +1037,8 @@
       </Docs>
     </Member>
     <Member MemberName="EmitIs">
-      <MemberSignature Language="C#" Value="public static void EmitIs (IKVM.Reflection.Type t);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitIs(class IKVM.Reflection.Type t) cil managed" />
+      <MemberSignature Language="C#" Value="public static void EmitIs (IKVM.Reflection.Type t, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitIs(class IKVM.Reflection.Type t, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1030,9 +1050,13 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="t" Type="IKVM.Reflection.Type" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1059,8 +1083,8 @@
       </Docs>
     </Member>
     <Member MemberName="EmitIsNot">
-      <MemberSignature Language="C#" Value="public static void EmitIsNot (IKVM.Reflection.Type t);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitIsNot(class IKVM.Reflection.Type t) cil managed" />
+      <MemberSignature Language="C#" Value="public static void EmitIsNot (IKVM.Reflection.Type t, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitIsNot(class IKVM.Reflection.Type t, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1072,9 +1096,13 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="t" Type="IKVM.Reflection.Type" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1943,6 +1971,24 @@
     <Member MemberName="EmitNotOther">
       <MemberSignature Language="C#" Value="public static void EmitNotOther ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitNotOther() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitNotRef">
+      <MemberSignature Language="C#" Value="public static void EmitNotRef ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitNotRef() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>

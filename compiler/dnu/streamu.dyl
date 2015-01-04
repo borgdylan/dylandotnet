@@ -54,7 +54,7 @@ class public static StreamUtils
 	
 	[method: ComVisible(false)]
 	method public static void InitInS(var s as Stream)
-		if InS != null then
+		if InS isnot null then
 			InS::Close()
 		end if
 		InS = new StreamReader(s)
@@ -62,7 +62,7 @@ class public static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static void InitOutS(var s as Stream)
-		if OutS != null then
+		if OutS isnot null then
 			OutS::Close()
 		end if
 		OutS = new StreamWriter(s)
@@ -76,7 +76,7 @@ class public static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static void CloseInS()
-		if InS != null then
+		if InS isnot null then
 			InS::Close()
 			InS = null
 		end if
@@ -84,7 +84,7 @@ class public static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static void CloseOutS()
-		if OutS != null then
+		if OutS isnot null then
 			OutS::Close()
 			OutS = null
 		end if
@@ -92,7 +92,7 @@ class public static StreamUtils
 
 	[method: ComVisible(false)]
 	method public static string ReadLine()
-		return #ternary {UseConsole ? Console::ReadLine(), #ternary {InS != null ? InS::ReadLine(), string::Empty}}
+		return #ternary {UseConsole ? Console::ReadLine(), #ternary {InS isnot null ? InS::ReadLine(), string::Empty}}
 	end method
 
 	[method: ComVisible(false)]
@@ -100,7 +100,7 @@ class public static StreamUtils
 		if UseConsole then
 			Console::WriteLine(str)
 		else
-			if OutS != null then
+			if OutS isnot null then
 				OutS::WriteLine(str)
 				OutS::Flush()
 			end if
@@ -112,7 +112,7 @@ class public static StreamUtils
 		if UseConsole then
 			Console::get_Error()::WriteLine(str)
 		else
-			if OutS != null then
+			if OutS isnot null then
 				OutS::WriteLine(str)
 				OutS::Flush()
 			end if
@@ -124,7 +124,7 @@ class public static StreamUtils
 		if UseConsole then
 			Console::Write(str)
 		else
-			if OutS != null then
+			if OutS isnot null then
 				OutS::Write(str)
 				OutS::Flush()
 			end if
@@ -133,10 +133,10 @@ class public static StreamUtils
 
 	event public static Action<of CompilerMsg> ErrorH
 		add
-			_ErrorH = #ternary {_ErrorH == null ? value, _ErrorH + value}
+			_ErrorH = #ternary {_ErrorH is null? value, _ErrorH + value}
 		end add
 		remove
-			if _ErrorH != null then
+			if _ErrorH isnot null then
 				_ErrorH = _ErrorH - value
 			end if
 		end remove
@@ -144,10 +144,10 @@ class public static StreamUtils
 	
 	event public static Action<of CompilerMsg> WarnH
 		add
-			_WarnH = #ternary {_WarnH == null ? value, _WarnH + value}
+			_WarnH = #ternary {_WarnH is null? value, _WarnH + value}
 		end add
 		remove
-			if _WarnH != null then
+			if _WarnH isnot null then
 				_WarnH = _WarnH - value
 			end if
 		end remove
@@ -156,7 +156,7 @@ class public static StreamUtils
 	[method: ComVisible(false)]
 	method public static void WriteWarn(var line as integer, var file as string, var msg as string)
 		ErrorWriteLine(string::Format("WARNING: {0} at line {1} in file: {2}", msg, $string$line, file))
-		if _WarnH != null then
+		if _WarnH isnot null then
 			_WarnH::Invoke(new CompilerMsg(line,file,msg))
 		end if
 	end method
@@ -164,7 +164,7 @@ class public static StreamUtils
 	[method: ComVisible(false)]
 	method public static void WriteWarnLine(var line as integer, var file as string, var msg as string)
 		ErrorWriteLine(string::Format(c"\nWARNING: {0} at line {1} in file: {2}", msg, $string$line, file))
-		if _WarnH != null then
+		if _WarnH isnot null then
 			_WarnH::Invoke(new CompilerMsg(line,file,msg))
 		end if
 	end method
@@ -183,7 +183,7 @@ class public static StreamUtils
 	[method: ComVisible(false)]
 	method public static void WriteError(var line as integer, var file as string, var msg as string)
 		ErrorWriteLine(string::Format("ERROR: {0} at line {1} in file: {2}", msg, $string$line, file))
-		if _ErrorH != null then
+		if _ErrorH isnot null then
 			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
 		end if
 
@@ -193,7 +193,7 @@ class public static StreamUtils
 	[method: ComVisible(false)]
 	method public static void WriteErrorLine(var line as integer, var file as string, var msg as string)
 		ErrorWriteLine(string::Format(c"\nERROR: {0} at line {1} in file: {2}", msg, $string$line, file))
-		if _ErrorH != null then
+		if _ErrorH isnot null then
 			_ErrorH::Invoke(new CompilerMsg(line,file,msg))
 		end if
 

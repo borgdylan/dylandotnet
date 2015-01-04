@@ -646,8 +646,8 @@
       </Docs>
     </Member>
     <Member MemberName="EmitOp">
-      <MemberSignature Language="C#" Value="public static void EmitOp (dylan.NET.Tokenizer.AST.Tokens.Ops.Op op, bool s, bool emt);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitOp(class dylan.NET.Tokenizer.AST.Tokens.Ops.Op op, bool s, bool emt) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool EmitOp (dylan.NET.Tokenizer.AST.Tokens.Ops.Op op, bool s, bool emt, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool EmitOp(class dylan.NET.Tokenizer.AST.Tokens.Ops.Op op, bool s, bool emt, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -655,18 +655,23 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="op" Type="dylan.NET.Tokenizer.AST.Tokens.Ops.Op" />
         <Parameter Name="s" Type="System.Boolean" />
         <Parameter Name="emt" Type="System.Boolean" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
       </Parameters>
       <Docs>
         <param name="op">To be added.</param>
         <param name="s">To be added.</param>
         <param name="emt">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -886,8 +886,8 @@ class public static Program
 		//xa[0]::A = 1
 
 		var sobj as object = "hello"
+		var b = true
 		Console::WriteLine($string$sobj)
-		Console::WriteLine(!sobj)
 
 		Console::WriteLine(null ?? "null" ?? c"your CLR thinks \qnull\q is null!!")
 		Console::WriteLine("not null" ?? "null")
@@ -896,6 +896,15 @@ class public static Program
 
 		//var aw as ConfiguredTaskAwaitable<of string>\ConfiguredTaskAwaiter<of string>
 		Console::WriteLine(i"this \qis\q an {{argument}}: {sobj} and this is another: {216:x}. BTW the time is {DateTime::get_Now():t}. Also 30 = {(1 + 2) * 10:x}")
+
+		Console::WriteLine(!b)
+
+		if sobj is null then
+			Console::WriteLine(sobj is null)
+		elseif sobj isnot null then
+			Console::WriteLine(sobj isnot null)
+		end if
+
 	end method
 
 	[method: My(new integer[] {1, 2})]

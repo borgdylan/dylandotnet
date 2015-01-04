@@ -80,7 +80,7 @@ class public PropertySetStmt extends BlockStmt
 	end method
 
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)
-		return Setter != null orelse ctx::get_Context() == ContextType::AbstractProperty orelse _
+		return Setter isnot null orelse ctx::get_Context() == ContextType::AbstractProperty orelse _
 			ctx::get_Parent()::get_Context() == ContextType::Interface
 	end method
 
@@ -104,7 +104,7 @@ class public PropertyGetStmt extends BlockStmt
 	end method
 
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)
-		return Getter != null orelse ctx::get_Context() == ContextType::AbstractProperty orelse _
+		return Getter isnot null orelse ctx::get_Context() == ContextType::AbstractProperty orelse _
 			ctx::get_Parent()::get_Context() == ContextType::Interface
 	end method
 

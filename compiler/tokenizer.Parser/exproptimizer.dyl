@@ -224,7 +224,7 @@ class public ExprOptimizer
 		var bs as integer = 0
 		var bst as Token = null
 
-		if stm == null then
+		if stm is null then
 			b = false
 			return null
 		elseif stm::Tokens::get_Count() < 2 then
@@ -791,7 +791,7 @@ class public ExprOptimizer
 		var ir = ParseUtils::Interpolate(stm::Tokens::get_Item(i)::Value)
 
 		if ir::get_Expressions()[l] == 0 then
-			//TODO: error out
+			//error out
 			StreamUtils::WriteLine(string::Empty)
 			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "Interpolated strings should have at least one interpolation!")
 
@@ -844,7 +844,7 @@ class public ExprOptimizer
 				end if
 			end do
 
-			//TODO: assert that bracket counts are ok
+			//assert that bracket counts are ok
 			if pcnt != 0 then
 				StreamUtils::WriteLine(string::Empty)
 				StreamUtils::WriteError(stm::Line, PFlags::CurPath, string::Format("The amount of opening and closing parentheses do not match in sub-expression {0}!", $object$k))
@@ -948,7 +948,7 @@ class public ExprOptimizer
 		var mcmetname as MethodNameTok = null
 		var mcstr as StringLiteral = null
 		
-		if exp == null then
+		if exp is null then
 			return null
 		end if
 
@@ -1118,10 +1118,16 @@ class public ExprOptimizer
 				exp = procType(exp,i)
 				len = --exp::Tokens::get_Count() 
 				exp::Tokens::set_Item(i,new DefaultCallTok() {Name = $TypeTok$exp::Tokens::get_Item(i)})
-			elseif (tok is IsOp) orelse (tok is IsNotOp) orelse (tok is AsOp) then
+			elseif (tok is IsOp) orelse (tok is IsNotOp) then
+				i++
+				if exp::Tokens::get_Item(i) isnot NullLiteral then
+					exp = procType(exp,i)
+				end if
+				len = --exp::Tokens::get_Count()
+			elseif tok is AsOp then
 				i++
 				exp = procType(exp,i)
-				len = --exp::Tokens::get_Count() 
+				len = --exp::Tokens::get_Count()
 			elseif tok is TernaryTok then
 				if i < len then
 					if exp::Tokens::get_Item(++i) is LCParen then

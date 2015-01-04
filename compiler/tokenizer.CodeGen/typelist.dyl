@@ -51,7 +51,7 @@ class public TypeList
 			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate))
 			var match as TypeItem = Enumerable::FirstOrDefault<of TypeItem>(lot2)
 			
-			if match != null then
+			if match isnot null then
 				if nest then
 					match = match::GetTypeItem(na[1])
 				end if
@@ -69,7 +69,7 @@ class public TypeList
 		if t::get_IsNested() then
 			foreach ti in Types
 				var res = ti::GetTypeItem(t)
-				if t != null then
+				if t isnot null then
 					return res
 				end if
 			end for	
@@ -81,7 +81,7 @@ class public TypeList
 	
 	method public IKVM.Reflection.Type GetType(var nam as string, var gp as integer)
 		var ti as TypeItem = GetTypeItem(nam, gp)
-		if ti == null then
+		if ti is null then
 			return null
 		else
 			return ti::BakedTyp ?? #ternary{ti::IsEnum ? ti::EnumBldr, ti::TypeBldr}
@@ -91,11 +91,11 @@ class public TypeList
 
 	method public ConstructorInfo GetCtor(var t as IKVM.Reflection.Type,var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
-		if ti == null then
+		if ti is null then
 			return null
 		else
 			var ctorinf as ConstructorInfo = ti::GetCtor(paramst, auxt)
-			if ctorinf != null then
+			if ctorinf isnot null then
 				if !ctorinf::get_IsPublic() then
 					//filter out private members
 					if !ctorinf::get_IsPrivate() then
@@ -119,13 +119,13 @@ class public TypeList
 	
 	method assembly ConstructorInfo GetDefaultCtor(var t as IKVM.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
-		return #ternary {ti == null ? Loader::LoadCtor(t, IKVM.Reflection.Type::EmptyTypes), GetCtor(t, IKVM.Reflection.Type::EmptyTypes, t)}
+		return #ternary {ti is null ? Loader::LoadCtor(t, IKVM.Reflection.Type::EmptyTypes), GetCtor(t, IKVM.Reflection.Type::EmptyTypes, t)}
 	end method
 	
 	method public void EnsureDefaultCtor(var t as IKVM.Reflection.Type)
 		if !#expr(ILEmitter::InterfaceFlg orelse ILEmitter::StaticCFlg) then
 			var ti as TypeItem = GetTypeItem(t)
-			if ti != null then
+			if ti isnot null then
 				if ti::Ctors::get_Count() == 0 then
 					Loader::ProtectedFlag = true
 					var ctorinf as ConstructorInfo
@@ -134,7 +134,7 @@ class public TypeList
 					end if
 					Loader::ProtectedFlag = false
 
-					if (ctorinf != null) orelse ILEmitter::StructFlg then
+					if (ctorinf isnot null) orelse ILEmitter::StructFlg then
 						var cb as ConstructorBuilder = ti::TypeBldr::DefineConstructor(#ternary {ILEmitter::AbstractCFlg ? MethodAttributes::Family, MethodAttributes::Public}, CallingConventions::Standard, IKVM.Reflection.Type::EmptyTypes)
 						var ilg = cb::GetILGenerator()
 
@@ -157,11 +157,11 @@ class public TypeList
 
 	method public FieldInfo GetField(var t as IKVM.Reflection.Type, var nam as string, var auxt as IKVM.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
-		if ti == null then
+		if ti is null then
 			return null
 		else
 			var fldinfo as FieldInfo = ti::GetField(nam, auxt)
-			if fldinfo != null then
+			if fldinfo isnot null then
 				if !fldinfo::get_IsPublic() then
 					//filter out private members
 					if !fldinfo::get_IsPrivate() then
@@ -200,7 +200,7 @@ class public TypeList
 				foreach gp in gmn::Params
 					i++
 					genparams[i] = Helpers::CommitEvalTTok(gp)
-					if genparams[i] == null then
+					if genparams[i] is null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
 					end if
 				end for
@@ -209,7 +209,7 @@ class public TypeList
 				mtdinfo = ti::GetMethod(nam,paramst, auxt)
 			end if
 			
-			if mtdinfo != null then
+			if mtdinfo isnot null then
 				if !mtdinfo::get_IsPublic() then
 					//filter out private members
 					if !mtdinfo::get_IsPrivate() then
@@ -228,9 +228,9 @@ class public TypeList
 				end if
 			end if
 			
-			if mtdinfo == null then
+			if mtdinfo is null then
 				mtdinfo = GetMethod(ti::InhTyp,mn,paramst, auxt::get_BaseType())
-				if mtdinfo = null then
+				if mtdinfo is null then
 					if mn is GenericMethodNameTok then
 						var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
 						var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params::get_Count()]
@@ -238,7 +238,7 @@ class public TypeList
 						foreach gp in gmn::Params
 							i++
 							genparams[i] = Helpers::CommitEvalTTok(gp)
-							if genparams[i] == null then
+							if genparams[i] is null then
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
 							end if
 						end for
@@ -249,12 +249,12 @@ class public TypeList
 				end if
 			end if
 			
-			if mtdinfo == null then
-				if ti::Interfaces != null andalso !t::get_IsValueType() then
+			if mtdinfo is null then
+				if ti::Interfaces isnot null andalso !t::get_IsValueType() then
 					foreach interf in ti::Interfaces
 						mtdinfo = GetMethod(interf,mn,paramst, interf)
 
-						if mtdinfo == null then
+						if mtdinfo is null then
 							mtdinfo = Loader::LoadMethod(interf, nam, paramst)
 						else
 							break

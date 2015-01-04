@@ -433,7 +433,7 @@ class public static Helpers
 	[method: ComVisible(false)]
 	method public static IKVM.Reflection.Type CommitEvalTTok(var tt as TypeTok)
 		
-		if tt == null then
+		if tt is null then
 			return null
 		end if
 		
@@ -451,10 +451,10 @@ class public static Helpers
 			
 			var tstr = gtt::Value + "`" + $string$pttoks::get_Count()
 
-			if gtt::RefTyp == null then
+			if gtt::RefTyp is null then
 				typ = SymTable::TypeLst::GetType(gtt::Value, pttoks::get_Count())
 				
-				if typ == null then
+				if typ is null then
 					typ = Loader::LoadClass(tstr)
 					gtt::RefTyp = Loader::PreProcTyp
 				else
@@ -464,13 +464,13 @@ class public static Helpers
 				typ = gtt::RefTyp
 			end if
 
-			if typ == null then
+			if typ is null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Type " + tstr + " could not be found!!")
 			end if
 
 			foreach pt in pttoks
 				temptyp = CommitEvalTTok(pt)
-				if temptyp == null then
+				if temptyp is null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Argument " + pt::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
 				end if
 				lop::Add(temptyp)
@@ -479,9 +479,9 @@ class public static Helpers
 			typ = typ::MakeGenericType(lop::ToArray())
 
 			//process any nested access
-			if gtt::NestedType != null then
+			if gtt::NestedType isnot null then
 				typ = typ::GetNestedType(gtt::NestedType::Value)
-				if typ == null then
+				if typ is null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Nested Type " + gtt::NestedType::Value + " could not be found!")
 				else
 					if gtt::NestedType is GenericTypeTok then
@@ -490,7 +490,7 @@ class public static Helpers
 
 						foreach pt in pttoks2
 							temptyp = CommitEvalTTok(pt)
-							if temptyp == null then
+							if temptyp is null then
 								StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Generic Argument " + pt::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
 							end if
 							lop2::Add(temptyp)
@@ -508,12 +508,12 @@ class public static Helpers
 			
 			var isgenparamm = SymTable::MetGenParams::Contains(tt::Value)
 			var isgenparamt = false
-			if SymTable::CurnTypItem != null then
+			if SymTable::CurnTypItem isnot null then
 				isgenparamt = SymTable::CurnTypItem::TypGenParams::Contains(tt::Value)
 			end if
 
 			if !#expr(isgenparamm orelse isgenparamt) then
-				if tt::RefTyp != null then
+				if tt::RefTyp isnot null then
 					Loader::MakeArr = tt::IsArray
 					Loader::MakeRef = tt::IsByRef
 					typ = Loader::ProcessType(tt::RefTyp)
@@ -530,17 +530,17 @@ class public static Helpers
 					if (ParseUtils::StringParser(tt::Value, c'\\')[l] > 0) andalso !tt::Value::Contains(".") then
 						if AsmFactory::inClass then
 							var tti = #ternary { AsmFactory::isNested ? SymTable::CurnTypItem2 , SymTable::CurnTypItem}
-							if tti != null then
+							if tti isnot null then
 								typ = tti::GetType(tt::Value)
 							end if
 						end if
 					end if  
 
-					if typ == null  then
+					if typ is null then
 						typ = SymTable::TypeLst::GetType(tt::Value, 0)
 					end if
 
-					if typ == null  then
+					if typ is null then
 						typ = Loader::LoadClass(tt::Value)
 						tt::RefTyp = Loader::PreProcTyp
 					else
@@ -577,7 +577,7 @@ class public static Helpers
 			curp = $VarExpr$p
 			typ = CommitEvalTTok(curp::VarTyp)
 
-			if typ == null then
+			if typ is null then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + curp::VarTyp::Value + "' is not defined or is not accessible.")
 			else
 				lt::Add(typ)
@@ -598,7 +598,7 @@ class public static Helpers
 			curp = $VarExpr$p
 			var pa as ParameterAttributes = ParameterAttributes::None
 			
-			if curp::Attr != null then
+			if curp::Attr isnot null then
 				if curp::Attr is InTok then
 					pa = ParameterAttributes::In
 				elseif curp::Attr is OutTok then
@@ -636,7 +636,7 @@ class public static Helpers
 			curp = $VarExpr$p
 			var pa as ParameterAttributes = ParameterAttributes::None
 			
-			if curp::Attr != null then
+			if curp::Attr isnot null then
 				if curp::Attr is InTok then
 					pa = ParameterAttributes::In
 				elseif curp::Attr is OutTok then
@@ -772,7 +772,7 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitOp(var op as Op, var s as boolean, var emt as boolean)
+	method public static boolean EmitOp(var op as Op, var s as boolean, var emt as boolean, var bo as BranchOptimisation, var lab as Emit.Label)
 
 		var mtd1 as MethodInfo = null
 		var mtd3 as MethodInfo = null
@@ -782,7 +782,7 @@ class public static Helpers
 			if !isgenparam then
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Addition", LeftOp, RightOp)
 			end if
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -803,7 +803,7 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Multiply", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -820,7 +820,7 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Subtraction", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -839,7 +839,7 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Division", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -856,7 +856,7 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Modulus", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -873,7 +873,7 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseOr", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -890,7 +890,7 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseAnd", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -907,7 +907,7 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_ExclusiveOr", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -924,11 +924,11 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseAnd", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				mtd3 = Loader::LoadUnaOp(mtd1::get_ReturnType(), "op_OnesComplement", mtd1::get_ReturnType())
 			end if
 			
-			if mtd3 != null then
+			if mtd3 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 					ILEmitter::EmitCall(mtd3)
@@ -948,11 +948,11 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_BitwiseOr", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				mtd3 = Loader::LoadUnaOp(mtd1::get_ReturnType(), "op_OnesComplement", mtd1::get_ReturnType())
 			end if
 			
-			if mtd3 != null then
+			if mtd3 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 					ILEmitter::EmitCall(mtd3)
@@ -972,11 +972,11 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_ExclusiveOr", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				mtd3 = Loader::LoadUnaOp(mtd1::get_ReturnType(), "op_OnesComplement", mtd1::get_ReturnType())
 			end if
 			
-			if mtd3 != null then
+			if mtd3 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 					ILEmitter::EmitCall(mtd3)
@@ -996,14 +996,15 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_GreaterThan", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
 			elseif emt then
 				if OpCodeSuppFlg then
-					ILEmitter::EmitCgt(s)
+					ILEmitter::EmitCgt(s, bo, lab)
+					return bo != BranchOptimisation::None
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '>' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 				end if
@@ -1013,14 +1014,15 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_LessThan", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
 			elseif emt then
 				if OpCodeSuppFlg then
-					ILEmitter::EmitClt(s)
+					ILEmitter::EmitClt(s, bo, lab)
+					return bo != BranchOptimisation::None
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '<' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 				end if
@@ -1030,14 +1032,15 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_GreaterThanOrEqual", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
 			elseif emt then
 				if OpCodeSuppFlg then
-					ILEmitter::EmitCge(s)
+					ILEmitter::EmitCge(s, bo, lab)
+					return bo != BranchOptimisation::None
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '>=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 				end if
@@ -1047,14 +1050,15 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_LessThanOrEqual", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
 				AsmFactory::Type02 = mtd1::get_ReturnType()
 			elseif emt then
 				if OpCodeSuppFlg then
-					ILEmitter::EmitCle(s)
+					ILEmitter::EmitCle(s, bo, lab)
+					return bo != BranchOptimisation::None
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '<=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 				end if
@@ -1066,7 +1070,7 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Equality", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -1075,7 +1079,8 @@ class public static Helpers
 				if StringFlg then
 					ILEmitter::EmitStrCeq()
 				elseif EqSuppFlg then
-					ILEmitter::EmitCeq()
+					ILEmitter::EmitCeq(bo, lab)
+					return bo != BranchOptimisation::None
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '==' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 				end if
@@ -1083,7 +1088,8 @@ class public static Helpers
 		elseif op is StrictEqOp then
 			if emt then
 				if EqSuppFlg then
-					ILEmitter::EmitCeq()
+					ILEmitter::EmitCeq(bo, lab)
+					return bo != BranchOptimisation::None
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '===' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 				end if
@@ -1095,7 +1101,7 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_Inequality", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -1104,7 +1110,8 @@ class public static Helpers
 				if StringFlg then
 					ILEmitter::EmitStrCneq()
 				elseif EqSuppFlg then
-					ILEmitter::EmitCneq()
+					ILEmitter::EmitCneq(bo, lab)
+					return bo != BranchOptimisation::None
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '!=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 				end if
@@ -1112,7 +1119,8 @@ class public static Helpers
 		elseif op is StrictNeqOp then
 			if emt then
 				if EqSuppFlg then
-					ILEmitter::EmitCneq()
+					ILEmitter::EmitCneq(bo, lab)
+					return bo != BranchOptimisation::None
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '!==' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 				end if
@@ -1138,7 +1146,7 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_LeftShift", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -1155,7 +1163,7 @@ class public static Helpers
 				mtd1 = Loader::LoadBinOp(LeftOp, "op_RightShift", LeftOp, RightOp)
 			end if
 
-			if mtd1 != null then
+			if mtd1 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
 				end if
@@ -1170,7 +1178,7 @@ class public static Helpers
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '" + op::ToString() + "' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
 		end if
-
+		return false
 	end method
 
 	[method: ComVisible(false)]
@@ -1250,24 +1258,24 @@ class public static Helpers
 			if !#expr(source::get_IsPrimitive() andalso sink::get_IsPrimitive()) then
 				if !sink::Equals(AsmFactory::CurnTypB) andalso !sink::get_IsInterface() then
 					m1 = Loader::LoadConvOp(sink, "op_Implicit", source, sink)
-					if m1 != null then
+					if m1 isnot null then
 						ILEmitter::EmitCall(m1)
 						return
 					end if
 					m1 = Loader::LoadConvOp(sink, "op_Explicit", source, sink)
-					if m1 != null then
+					if m1 isnot null then
 						ILEmitter::EmitCall(m1)
 						return
 					end if
 				end if
 				if !source::Equals(AsmFactory::CurnTypB) andalso !source::get_IsInterface() then
 					m1 = Loader::LoadConvOp(source, "op_Implicit", source, sink)
-					if m1 != null then
+					if m1 isnot null then
 						ILEmitter::EmitCall(m1)
 						return
 					end if
 					m1 = Loader::LoadConvOp(source, "op_Explicit", source, sink)
-					if m1 != null then
+					if m1 isnot null then
 						ILEmitter::EmitCall(m1)
 						return
 					end if
@@ -1279,7 +1287,7 @@ class public static Helpers
 		if sink::Equals(Loader::CachedLoadClass("System.Object")) then
 			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
-			elseif (sink::get_BaseType() == null) andalso !sink::Equals(Loader::CachedLoadClass("System.Object")) then
+			elseif (sink::get_BaseType() is null) andalso !sink::Equals(Loader::CachedLoadClass("System.Object")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
 			elseif source is GenericTypeParameterBuilder then
 				ILEmitter::EmitBox(source)
@@ -1337,7 +1345,7 @@ class public static Helpers
 		
 		if sink::Equals(Loader::CachedLoadClass("System.String")) then
 			m1 = convc::GetMethod("ToString", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Char")) then
@@ -1348,22 +1356,22 @@ class public static Helpers
 				else
 					ILEmitter::EmitConvOvfU2(CheckSigned(source))
 				end if
-			elseif m1 != null then
+			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Decimal")) then
 			m1 = convc::GetMethod("ToDecimal", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Double")) then
 			m1 = convc::GetMethod("ToDouble", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Single")) then
 			m1 = convc::GetMethod("ToSingle", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Int64")) then
@@ -1374,14 +1382,14 @@ class public static Helpers
 				else
 					ILEmitter::EmitConvOvfI8(CheckSigned(source))
 				end if
-			elseif m1 != null then
+			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.UInt64")) then
 			m1 = convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvU8(CheckSigned(source))
-			elseif m1 != null then
+			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Int32")) then
@@ -1392,14 +1400,14 @@ class public static Helpers
 				else
 					ILEmitter::EmitConvOvfI4(CheckSigned(source))
 				end if
-			elseif m1 != null then
+			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::LoadClass("System.UInt32")) then
 			m1 = convc::GetMethod("ToUInt32", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvOvfU4(CheckSigned(source))
-			elseif m1 != null then
+			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Int16")) then
@@ -1410,33 +1418,33 @@ class public static Helpers
 				else
 					ILEmitter::EmitConvOvfI2(CheckSigned(source))
 				end if
-			elseif m1 != null then
+			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.UInt16")) then
 			m1 = convc::GetMethod("ToUInt16", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvOvfU2(CheckSigned(source))
-			elseif m1 != null then
+			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.SByte")) then
 			m1 = convc::GetMethod("ToSByte", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvOvfI1(CheckSigned(source))
-			elseif m1 != null then
+			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Byte")) then
 			m1 = convc::GetMethod("ToByte", new IKVM.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvOvfU1(CheckSigned(source))
-			elseif m1 != null then
+			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Boolean")) then
 			m1 = convc::GetMethod("ToBoolean", new IKVM.Reflection.Type[] {source})
-			if m1 != null then
+			if m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		else
@@ -1524,7 +1532,7 @@ class public static Helpers
 		var fldinf as FieldInfo = null
 		var fldi as FieldInfo = SymTable::FindFld(nam)
 
-		if fldi != null then
+		if fldi isnot null then
 			fldinf = fldi
 		else
 			Loader::ProtectedFlag = true
@@ -1540,7 +1548,7 @@ class public static Helpers
 		var lbl as Emit.Label
 		var lbli as LabelItem = SymTable::FindLbl(nam)
 
-		if lbli != null then
+		if lbli isnot null then
 			lbl = lbli::Lbl
 		end if
 
@@ -1601,21 +1609,21 @@ class public static Helpers
 			end if
 		end do
 
-		if t3 != null then
+		if t3 isnot null then
 			t3::PopFlg = true
 			if t3::Name::MemberAccessFlg then
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "MethodCall/NewCall/ObjInitCall statements should end their chain with a method call etc. and not a field load!!")
 			end if
 			t3::Name::MemberAccessFlg = false
 			return t
-		elseif t4 != null then
+		elseif t4 isnot null then
 			t4::PopFlg = true
 			if t4::MemberAccessFlg then
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "MethodCall/NewCall/ObjInitCall statements should end their chain with a method call etc. and not a field load!!")
 			end if
 			t4::MemberAccessFlg = false
 			return t
-		elseif t5 != null then
+		elseif t5 isnot null then
 			t5::PopFlg = true
 			if t5::MemberAccessFlg then
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "MethodCall/NewCall/ObjInitCall statements should end their chain with a method call etc. and not a field load!!")
@@ -1637,7 +1645,7 @@ class public static Helpers
 	method public static TypeParamItem GetTPI(var name as string)
 		if SymTable::MetGenParams::Contains(name) then
 			return SymTable::MetGenParams::get_Item(name)
-		elseif SymTable::CurnTypItem != null andalso SymTable::CurnTypItem::TypGenParams::Contains(name) then
+		elseif SymTable::CurnTypItem isnot null andalso SymTable::CurnTypItem::TypGenParams::Contains(name) then
 				return SymTable::CurnTypItem::TypGenParams::get_Item(name)
 		end if
 		return null
@@ -1650,7 +1658,7 @@ class public static Helpers
 		end if
 
 		var ti as TypeItem = SymTable::TypeLst::GetTypeItem(t)
-		if ti != null then
+		if ti isnot null then
 			return ti::Interfaces
 		else
 			return t::GetInterfaces()
@@ -1659,7 +1667,7 @@ class public static Helpers
 
 	[method: ComVisible(false)]
 	method public static MethodInfo GetExtMet(var t as IKVM.Reflection.Type, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
-		if t == null then
+		if t is null then
 			return null
 		end if
 
@@ -1667,12 +1675,12 @@ class public static Helpers
 			var tpi = GetTPI(t::get_Name())
 			var res = GetExtMet(tpi::BaseType, mn, paramtyps)
 
-			if res != null then
+			if res isnot null then
 				return res
 			else
 				foreach interf in tpi::Interfaces
 					res = GetExtMet(interf, mn, paramtyps)
-					if res != null then
+					if res isnot null then
 						return res
 					end if
 				end for
@@ -1684,7 +1692,7 @@ class public static Helpers
 		var name as string = mnstrarr[--mnstrarr[l]]
 		
 		var m as MethodInfo = SymTable::TypeLst::GetMethod(t,mn,paramtyps, t)
-		if m != null then
+		if m isnot null then
 			return m
 		else		
 			if mn is GenericMethodNameTok then
@@ -1694,14 +1702,14 @@ class public static Helpers
 				foreach gp in gmn::Params
 					i++
 					genparams[i] = CommitEvalTTok(gp)
-					if genparams[i] == null then
+					if genparams[i] is null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), name))
 					end if
 				end for
 				return Loader::LoadGenericMethod(t, name, genparams, paramtyps)
 			else
 				m = Loader::LoadMethod(t, name, paramtyps)
-				if m != null then
+				if m isnot null then
 					return m
 				else
 					if t::get_IsInterface() then
@@ -1717,7 +1725,7 @@ class public static Helpers
 	method public static MethodInfo GetExtMet(var ts as IEnumerable<of IKVM.Reflection.Type>, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
 		foreach t in ts
 			var res = GetExtMet(t, mn, paramtyps)
-			if res != null then
+			if res isnot null then
 				return res
 			end if
 		end for
@@ -1739,7 +1747,7 @@ class public static Helpers
 			foreach gp in gmn::Params
 				i++
 				genparams[i] = CommitEvalTTok(gp)
-				if genparams[i] == null then
+				if genparams[i] is null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
 				end if
 			end for
@@ -1748,7 +1756,7 @@ class public static Helpers
 			meti = SymTable::FindMet(nam, typs)
 		end if
 		
-		if !BaseFlg andalso (meti != null) then
+		if !BaseFlg andalso (meti isnot null) then
 			metinf = meti
 		else
 			Loader::ProtectedFlag = true
@@ -1761,7 +1769,7 @@ class public static Helpers
 	
 	[method: ComVisible(false)]
 	method public static FieldInfo GetExtFld(var t as IKVM.Reflection.Type, var fld as string)
-		if t == null then
+		if t is null then
 			return null
 		end if
 
@@ -1770,12 +1778,12 @@ class public static Helpers
 	
 	[method: ComVisible(false)]
 	method public static PropertyInfo GetExtProp(var t as IKVM.Reflection.Type, var prop as string)
-		if t == null then
+		if t is null then
 			return null
 		end if
 
 		//var f as FieldInfo = SymTable::TypeLst::GetField(t,fld)
-		//if f != null then
+		//if f isnot null then
 		//	return f
 		//else
 			return Loader::LoadProperty(t,prop)
@@ -1940,7 +1948,7 @@ class public static Helpers
 
 				if !#expr(flgs[0] orelse flgs[1]) then
 					var res = ProcessForeach(interf)
-					if res != null then
+					if res isnot null then
 						return res
 					end if
 				end if
@@ -1998,7 +2006,7 @@ class public static Helpers
 
 				if !#expr(flgs[0] orelse flgs[1]) then
 					var res = ProcessForeach2(interf)
-					if res != null then
+					if res isnot null then
 						return res
 					end if
 				end if
@@ -2032,7 +2040,7 @@ class public static Helpers
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.Type> GetInhHierarchy(var t as IKVM.Reflection.Type)
 		var l = new C5.LinkedList<of IKVM.Reflection.Type> {t}
-		do while t::get_BaseType() != null
+		do while t::get_BaseType() isnot null
 			t = t::get_BaseType()
 			l::Add(t)
 		end do
@@ -2076,28 +2084,36 @@ class public static Helpers
 	end method
 	
 	[method: ComVisible(false)]
-	method public static void EmitNeg(var t as IKVM.Reflection.Type)
+	method public static boolean EmitNeg(var t as IKVM.Reflection.Type, var emt as boolean, var bo as BranchOptimisation, var lab as Emit.Label)
 		var oo = Loader::LoadUnaOp(t, "op_UnaryNegation", t)
-		if oo != null then
-			ILEmitter::EmitCall(oo)
+		if oo isnot null then
+			if emt then
+				ILEmitter::EmitCall(oo)
+			end if
 			AsmFactory::Type02 = oo::get_ReturnType()
 		elseif t::Equals(Loader::CachedLoadClass("System.Boolean")) then
-			ILEmitter::EmitNot()
+			if emt then
+				ILEmitter::EmitNot(bo, lab)
+			end if
+			return bo != BranchOptimisation::None
 		elseif CheckSigned(t) then
-			ILEmitter::EmitNeg()
+			if emt then
+				ILEmitter::EmitNeg()
+			end if
 		elseif IsPrimitiveFPType(t) then
-			ILEmitter::EmitNeg()
-		elseif !t::get_IsValueType() then
-			ILEmitter::EmitNotRef()
+			if emt then
+				ILEmitter::EmitNeg()
+			end if
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '!' operation is undefined for '" + t::ToString() + "'.")
 		end if
+		return false
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitNot(var t as IKVM.Reflection.Type)
 		var oo = Loader::LoadUnaOp(t, "op_OnesComplement", t)
-		if oo != null then
+		if oo isnot null then
 			ILEmitter::EmitCall(oo)
 			AsmFactory::Type02 = oo::get_ReturnType()
 		elseif IsPrimitiveIntegralType(t) then
@@ -2110,7 +2126,7 @@ class public static Helpers
 	[method: ComVisible(false)]
 	method public static void EmitInc(var t as IKVM.Reflection.Type)
 		var oo = Loader::LoadUnaOp(t, "op_Increment", t)
-		if oo != null then
+		if oo isnot null then
 			ILEmitter::EmitCall(oo)
 			AsmFactory::Type02 = oo::get_ReturnType()
 		elseif t::Equals(Loader::CachedLoadClass("System.Char")) then
@@ -2154,7 +2170,7 @@ class public static Helpers
 	[method: ComVisible(false)]
 	method public static void EmitDec(var t as IKVM.Reflection.Type)
 		var oo = Loader::LoadUnaOp(t, "op_Decrement", t)
-		if oo != null then
+		if oo isnot null then
 			ILEmitter::EmitCall(oo)
 			AsmFactory::Type02 = oo::get_ReturnType()
 		elseif t::Equals(Loader::CachedLoadClass("System.Char")) then
@@ -2204,8 +2220,8 @@ class public static Helpers
 			elseif exp::Tokens::get_Item(0) is Ident then
 				var idtnamarr as string[] = ParseUtils::StringParser(#expr($Ident$exp::Tokens::get_Item(0))::Value, ':')
 				var typ as IKVM.Reflection.Type = CommitEvalTTok(new TypeTok(idtnamarr[0]))
-				if typ != null then
-					if  GetExtFld(typ, idtnamarr[1]) != null then
+				if typ isnot null then
+					if  GetExtFld(typ, idtnamarr[1]) isnot null then
 						if Loader::FldLitFlag then
 							return new ConstInfo() {Typ = Loader::FldLitTyp, Value = Loader::FldLitVal}
 						else	
@@ -2219,7 +2235,7 @@ class public static Helpers
 				end if
 			elseif exp::Tokens::get_Item(0) is GettypeCallTok then
 				var val = Helpers::CommitEvalTTok(#expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name)
-				if val != null then
+				if val isnot null then
 					return new ConstInfo() {Typ = Loader::CachedLoadClass("System.Type"), Value = val}
 				else
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", #expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name))
@@ -2227,7 +2243,7 @@ class public static Helpers
 			elseif exp::Tokens::get_Item(0) is ArrInitCallTok then
 				var aictok as ArrInitCallTok = $ArrInitCallTok$exp::Tokens::get_Item(0)
 				var typ2 = CommitEvalTTok(aictok::ArrayType)
-				if typ2 == null then
+				if typ2 is null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.",aictok::ArrayType::ToString()))
 				end if
 
@@ -2237,7 +2253,7 @@ class public static Helpers
 					i++
 					var res = ProcessConstExpr(elem)
 
-					NullExprFlg = res::Value == null
+					NullExprFlg = res::Value is null
 					CheckAssignability(typ2, res::Typ)
 
 					val::SetValue(res::Value, i)

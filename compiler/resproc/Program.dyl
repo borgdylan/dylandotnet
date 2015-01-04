@@ -32,10 +32,10 @@ namespace dylan.NET.ResProc
 
 		event public static Action<of Msg> WarnH
 			add
-				_WarnH = #ternary {_WarnH == null ? value, _WarnH + value}
+				_WarnH = #ternary {_WarnH is null ? value, _WarnH + value}
 			end add
 			remove
-				if _WarnH != null then
+				if _WarnH isnot null then
 					_WarnH = _WarnH - value
 				end if
 			end remove
@@ -45,7 +45,7 @@ namespace dylan.NET.ResProc
 		method private static string[] StringParser(var StringToParse as string)
 			var arr as List<of string> = new List<of string>()
 			
-			if StringToParse == null then
+			if StringToParse is null then
 				return arr::ToArray()
 			end if
 			
@@ -172,7 +172,7 @@ namespace dylan.NET.ResProc
 		[method: ComVisible(false)]
 		method public static void WriteWarn(var line as integer, var file as string, var msg as string)
 			Console::WriteLine("WARNING: " + msg + " at line " + $string$line + " in file: " + file)
-			if _WarnH != null then
+			if _WarnH isnot null then
 				_WarnH::Invoke(new Msg(line,file,msg))
 			end if
 		end method
@@ -312,7 +312,7 @@ namespace dylan.NET.ResProc
 
 		method public static IEnumerable<of string> Invoke(var args as string[])
 		
-			Console::WriteLine("dylan.NET Resource Processor v. 11.5.3.3 RC")
+			Console::WriteLine("dylan.NET Resource Processor v. 11.5.4.1 RC")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2014 Dylan Borg")
 			if args[l] < 1 then

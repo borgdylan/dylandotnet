@@ -41,6 +41,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ASTEmit">
+      <MemberSignature Language="C#" Value="public bool ASTEmit (dylan.NET.Tokenizer.AST.Tokens.Token tok, bool emt, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool ASTEmit(class dylan.NET.Tokenizer.AST.Tokens.Token tok, bool emt, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tok" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+        <Parameter Name="emt" Type="System.Boolean" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
+      </Parameters>
+      <Docs>
+        <param name="tok">To be added.</param>
+        <param name="emt">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ASTEmitIdent">
       <MemberSignature Language="C#" Value="public void ASTEmitIdent (dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt);" />
       <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitIdent(class dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt) cil managed" />
@@ -160,6 +183,27 @@
       <Docs>
         <param name="exp">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Evaluate">
+      <MemberSignature Language="C#" Value="public bool Evaluate (dylan.NET.Tokenizer.AST.Exprs.Expr exp, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool Evaluate(class dylan.NET.Tokenizer.AST.Exprs.Expr exp, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="exp" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
+      </Parameters>
+      <Docs>
+        <param name="exp">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
