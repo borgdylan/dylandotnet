@@ -1,0 +1,37 @@
+<Type Name="IAwaitable&lt;TResult&gt;" FullName="System.Threading.Tasks.IAwaitable&lt;TResult&gt;">
+  <TypeSignature Language="C#" Value="public interface IAwaitable&lt;TResult&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IAwaitable`1&lt;TResult&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TResult" />
+  </TypeParameters>
+  <Interfaces />
+  <Docs>
+    <typeparam name="TResult">The type of result returned by this awaitable.</typeparam>
+    <summary>An interface that formalises what it means to be an awaitable that returns a value.</summary>
+    <remarks>Implement this interface to allow your objects to be awaited by this library.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetAwaiter">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.IAwaiter&lt;TResult&gt; GetAwaiter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Threading.Tasks.IAwaiter`1&lt;!TResult&gt; GetAwaiter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.IAwaiter&lt;TResult&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Gets the IAwaiter&lt;TResult&gt; used to await this awaitable object.</summary>
+        <returns>The IAwaiter&lt;TResult&gt; used to await this object.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

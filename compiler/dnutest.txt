@@ -1,0 +1,55 @@
+#refasm mscorlib.dll
+#refasm System.dll
+#refasm System.Core.dll
+#refasm System.Data.dll
+#refasm System.Data.DataSetExtensions.dll
+#refasm System.Xml.dll
+#refasm System.Xml.Linq.dll
+#refasm System.Configuration.dll
+#refasm Microsoft.VisualBasic.dll
+#refasm System.Windows.Forms.dll
+#refasm E:\Code\dylannet\dnu\dnu.dll
+
+import Microsoft.VisualBasic
+import System
+import System.Collections
+import System.Collections.Generic
+import System.Data
+import System.Diagnostics
+import System.Linq
+import System.Xml
+import System.Xml.Linq
+import Microsoft.VisualBasic.CompilerServices
+import Microsoft.VisualBasic.FileIO
+import System.Xml.XPath
+import System.Windows.Forms
+import System.Runtime.InteropServices
+import dylan.NET.Utils
+
+assembly dnutest exe
+ver 1.1.0.0
+
+class public auto ansi Module1
+
+method public static void main()
+var i as integer = 0
+i = ParseUtils::RetPrec("(")
+Console::WriteLine(i)
+i = ParseUtils::RetPrec("*")
+Console::WriteLine(i)
+i = ParseUtils::RetPrec("/")
+Console::WriteLine(i)
+i = ParseUtils::RetPrec("%")
+Console::WriteLine(i)
+i = ParseUtils::RetPrec("+")
+Console::WriteLine(i)
+i = ParseUtils::RetPrec("-")
+Console::WriteLine(i)
+i = ParseUtils::RetPrec(")")
+Console::WriteLine(i)
+i = ParseUtils::RetPrec("a")
+Console::WriteLine(i)
+Console::ReadKey()
+end method
+
+end class

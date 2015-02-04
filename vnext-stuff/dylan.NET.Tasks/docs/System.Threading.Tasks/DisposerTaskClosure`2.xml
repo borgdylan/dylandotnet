@@ -1,0 +1,100 @@
+<Type Name="DisposerTaskClosure&lt;T,TDisposable&gt;" FullName="System.Threading.Tasks.DisposerTaskClosure&lt;T,TDisposable&gt;">
+  <TypeSignature Language="C#" Value="public class DisposerTaskClosure&lt;T,TDisposable&gt; : System.Threading.Tasks.TaskClosure&lt;T&gt; where TDisposable : class, IDisposable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi DisposerTaskClosure`2&lt;T, class (class System.IDisposable) TDisposable&gt; extends System.Threading.Tasks.TaskClosure`1&lt;!T&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.1.1.1</AssemblyVersion>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="T" />
+    <TypeParameter Name="TDisposable">
+      <Constraints>
+        <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+        <InterfaceName>System.IDisposable</InterfaceName>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Threading.Tasks.TaskClosure&lt;T&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="T">T</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <typeparam name="T">The return type for the asynchronous activity.</typeparam>
+    <typeparam name="TDisposable">The type of disposable resource that should be managed by the closure.</typeparam>
+    <summary>A base class for closures used to implement asynchronous methods that also disposes a resource when the asynchronous activity is done/fails.</summary>
+    <remarks>This class is based on TaskClosure&lt;T&gt; and overrides its Final method to dispose the passed in resource.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public DisposerTaskClosure (TDisposable res);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(!TDisposable res) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="res" Type="TDisposable" />
+      </Parameters>
+      <Docs>
+        <param name="res">The disposable resource to manage.</param>
+        <summary>Creates a new DisposerTaskClosure around the given resource.</summary>
+        <remarks>This constructor is protected i.e. you must inherit this class to use its features.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_Resource">
+      <MemberSignature Language="C#" Value="protected TDisposable _Resource;" />
+      <MemberSignature Language="ILAsm" Value=".field family !TDisposable _Resource" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TDisposable</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the disposable resource managed by this closure.</summary>
+        <remarks>This field is protected. To access the resource from outside your closure, please use the Resource property.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Finally">
+      <MemberSignature Language="C#" Value="protected override void Finally ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finally() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Overrides the Finally method in the base TaskClosure to dispose of the resource managed by this closure.</summary>
+        <remarks>You may further override this method to add extra behaviour.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Resource">
+      <MemberSignature Language="C#" Value="public TDisposable Resource { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance !TDisposable Resource" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.1.1.1</AssemblyVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TDisposable</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the disposable resource managed by this closure.</summary>
+        <value>The disposable resource managed by this closure.</value>
+        <remarks>For faster access to the resource within the closure itself you may use the _Resource field.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

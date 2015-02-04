@@ -1,0 +1,262 @@
+<Type Name="Item" FullName="dylan.NET.Collections.Item">
+  <TypeSignature Language="C#" Value="public class Item" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Item extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dncollections</AssemblyName>
+    <AssemblyVersion>11.2.8.4</AssemblyVersion>
+    <AssemblyVersion>11.2.8.5</AssemblyVersion>
+    <AssemblyVersion>11.2.8.9</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>An item that can be placed in an ALList, ALQueue or ALStack.</summary>
+    <remarks>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Item ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new Item with a null value.</summary>
+        <remarks>The value of the Item is set to null. Set the Value field or use the other constructor.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Item (object o);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(object o) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="o" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="o">The value of the Item.</param>
+        <summary>Constructs a new Item having the specified Value.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GoNext">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item GoNext ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Collections.Item GoNext() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the Item that occurs after this one in the collection.</summary>
+        <returns>Null if there is no next Item else returns the Item that is next.</returns>
+        <remarks>Use HasNext() to see if there is a next Item.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GoPrevious">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item GoPrevious ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Collections.Item GoPrevious() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the Item that occurs before this one in the collection.</summary>
+        <returns>Null if there is no previous Item else returns the Item that is before.</returns>
+        <remarks>Use HasPrevious() to see if there is a previous Item.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasNext">
+      <MemberSignature Language="C#" Value="public bool HasNext ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool HasNext() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns if there is a next Item or not.</summary>
+        <returns>True if there is a next Item else false.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasPrevious">
+      <MemberSignature Language="C#" Value="public bool HasPrevious ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool HasPrevious() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns if there is a previous Item or not.</summary>
+        <returns>True if there is a previous Item else false.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Index">
+      <MemberSignature Language="C#" Value="public int Index;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Index" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The index of the slot occupied by this Item inside the ItemArray of a collection.</summary>
+        <remarks>Is equal to -1 if the Item is not in a collection.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeCopy">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item MakeCopy ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Collections.Item MakeCopy() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Make a copy of this Item.</summary>
+        <returns>A new Item that has the same value as this one.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeCopy">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Collections.Item MakeCopy (dylan.NET.Collections.Item ite);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Collections.Item MakeCopy(class dylan.NET.Collections.Item ite) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ite" Type="dylan.NET.Collections.Item" />
+      </Parameters>
+      <Docs>
+        <param name="ite">The Item to copy.</param>
+        <summary>Make a copy of the given Item.</summary>
+        <returns>A new Item that has the same value as the given Item.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Next">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item Next;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Collections.Item Next" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The Next Item.</summary>
+        <remarks>Is null if this Item has no next Item or if it is not in a collection.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Previous">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item Previous;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Collections.Item Previous" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The Previous Item.</summary>
+        <remarks>Is null if this Item has no previous Item or if it is not in a collection.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Value">
+      <MemberSignature Language="C#" Value="public object Value;" />
+      <MemberSignature Language="ILAsm" Value=".field public object Value" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The object that occupies this Item.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

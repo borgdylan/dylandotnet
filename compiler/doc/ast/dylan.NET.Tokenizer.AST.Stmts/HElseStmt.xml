@@ -1,0 +1,31 @@
+<Type Name="HElseStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.HElseStmt">
+  <TypeSignature Language="C#" Value="public class HElseStmt : dylan.NET.Tokenizer.AST.Stmts.BranchStmt, dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi HElseStmt extends dylan.NET.Tokenizer.AST.Stmts.BranchStmt implements class dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.BranchStmt</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Stmts.IHCondCompStmt</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public HElseStmt ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

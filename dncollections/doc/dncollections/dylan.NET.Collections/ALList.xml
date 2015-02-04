@@ -1,0 +1,494 @@
+<Type Name="ALList" FullName="dylan.NET.Collections.ALList">
+  <TypeSignature Language="C#" Value="public class ALList" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ALList extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dncollections</AssemblyName>
+    <AssemblyVersion>11.2.8.4</AssemblyVersion>
+    <AssemblyVersion>11.2.8.5</AssemblyVersion>
+    <AssemblyVersion>11.2.8.9</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>A list of Items accesible via Indices like in ArrayLists and via Next/Previous like in a Doubly-Linked-List.</summary>
+    <remarks>Use ALStack or ALQueue if the functions of a Stack or Queue are needed in addition to the functions this class provides.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ALList ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new ALList with 0 Items.</summary>
+        <remarks>The initial capacity is 10 Items. It is inceased automatically when required.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public void Add (dylan.NET.Collections.Item ite);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void Add(class dylan.NET.Collections.Item ite) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ite" Type="dylan.NET.Collections.Item" />
+      </Parameters>
+      <Docs>
+        <param name="ite">The Item to add.</param>
+        <summary>Adds the supplied Item to the ALList.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public void Add (object o);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void Add(object o) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="o" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="o">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddAll">
+      <MemberSignature Language="C#" Value="public void AddAll (dylan.NET.Collections.ALList al1);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void AddAll(class dylan.NET.Collections.ALList al1) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="al1" Type="dylan.NET.Collections.ALList" />
+      </Parameters>
+      <Docs>
+        <param name="al1">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Capacity">
+      <MemberSignature Language="C#" Value="public int Capacity;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Capacity" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CopyValue">
+      <MemberSignature Language="C#" Value="public bool CopyValue (int src, int dest);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool CopyValue(int32 src, int32 dest) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="src" Type="System.Int32" />
+        <Parameter Name="dest" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="src">To be added.</param>
+        <param name="dest">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindItem">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item FindItem (dylan.NET.Collections.SearchDelegate sd);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Collections.Item FindItem(class dylan.NET.Collections.SearchDelegate sd) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sd" Type="dylan.NET.Collections.SearchDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="sd">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindItems">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.ALList FindItems (dylan.NET.Collections.SearchDelegate sd);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Collections.ALList FindItems(class dylan.NET.Collections.SearchDelegate sd) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.ALList</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sd" Type="dylan.NET.Collections.SearchDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="sd">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindItemValue">
+      <MemberSignature Language="C#" Value="public object FindItemValue (dylan.NET.Collections.SearchDelegate sd);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance object FindItemValue(class dylan.NET.Collections.SearchDelegate sd) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sd" Type="dylan.NET.Collections.SearchDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="sd">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetItem">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item GetItem (int i);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Collections.Item GetItem(int32 i) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="i" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="i">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetItemValue">
+      <MemberSignature Language="C#" Value="public object GetItemValue (int i);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance object GetItemValue(int32 i) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="i" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="i">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Head">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item Head;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Collections.Item Head" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemArray">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item[] ItemArray;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Collections.Item[] ItemArray" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Length">
+      <MemberSignature Language="C#" Value="public int Length;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Length" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Addition">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Collections.ALList op_Addition (dylan.NET.Collections.ALList lis, dylan.NET.Collections.Item ite);" />
+      <MemberSignature Language="ILAsm" Value=".method public static specialname class dylan.NET.Collections.ALList op_Addition(class dylan.NET.Collections.ALList lis, class dylan.NET.Collections.Item ite) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.ALList</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lis" Type="dylan.NET.Collections.ALList" />
+        <Parameter Name="ite" Type="dylan.NET.Collections.Item" />
+      </Parameters>
+      <Docs>
+        <param name="lis">To be added.</param>
+        <param name="ite">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Addition">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Collections.ALList op_Addition (dylan.NET.Collections.ALList lis, object o);" />
+      <MemberSignature Language="ILAsm" Value=".method public static specialname class dylan.NET.Collections.ALList op_Addition(class dylan.NET.Collections.ALList lis, object o) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.ALList</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lis" Type="dylan.NET.Collections.ALList" />
+        <Parameter Name="o" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="lis">To be added.</param>
+        <param name="o">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Subtraction">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Collections.ALList op_Subtraction (dylan.NET.Collections.ALList lis, int ind);" />
+      <MemberSignature Language="ILAsm" Value=".method public static specialname class dylan.NET.Collections.ALList op_Subtraction(class dylan.NET.Collections.ALList lis, int32 ind) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.ALList</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lis" Type="dylan.NET.Collections.ALList" />
+        <Parameter Name="ind" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="lis">To be added.</param>
+        <param name="ind">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Subtraction">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Collections.ALList op_Subtraction (dylan.NET.Collections.ALList lis, object o);" />
+      <MemberSignature Language="ILAsm" Value=".method public static specialname class dylan.NET.Collections.ALList op_Subtraction(class dylan.NET.Collections.ALList lis, object o) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.ALList</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lis" Type="dylan.NET.Collections.ALList" />
+        <Parameter Name="o" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="lis">To be added.</param>
+        <param name="o">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Remove">
+      <MemberSignature Language="C#" Value="public bool Remove (int ind);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool Remove(int32 ind) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ind" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="ind">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Remove">
+      <MemberSignature Language="C#" Value="public bool Remove (object o);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool Remove(object o) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="o" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="o">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SwapValues">
+      <MemberSignature Language="C#" Value="public bool SwapValues (int i, int j);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool SwapValues(int32 i, int32 j) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="i" Type="System.Int32" />
+        <Parameter Name="j" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="i">To be added.</param>
+        <param name="j">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Tail">
+      <MemberSignature Language="C#" Value="public dylan.NET.Collections.Item Tail;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Collections.Item Tail" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.4</AssemblyVersion>
+        <AssemblyVersion>11.2.8.5</AssemblyVersion>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Collections.Item</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>11.2.8.9</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

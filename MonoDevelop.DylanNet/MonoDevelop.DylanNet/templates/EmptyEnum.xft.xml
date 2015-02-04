@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Template Originator="Mike Krueger" Language="dylan.NET" Created="3/09/2001" LastModified="3/09/2001">
+	
+	<TemplateConfiguration>
+		<_Name>Empty Enum</_Name>
+		<Icon>md-enum-file</Icon>
+		<_Category>General</_Category>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates an empty dylan.NET enum.</_Description>
+		<DefaultFilename>EmptyEnum</DefaultFilename>
+	</TemplateConfiguration>
+	
+	<TemplateFiles>
+		<File DefaultExtension=".dyl" DefaultName="EmptyEnum" AddStandardHeader="True">
+		<![CDATA[namespace ${Namespace}
+
+	enum public auto ansi integer ${Name}
+		
+	end enum
+	
+end namespace]]>
+		</File>
+	</TemplateFiles>
+	
+	<FileOptions/>
+	
+</Template>

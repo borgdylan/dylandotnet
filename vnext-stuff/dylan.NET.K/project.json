@@ -1,0 +1,23 @@
+﻿{	
+	"version": "1.0.9",
+	"authors": ["borgdylan"],
+	"description": "dylan.NET support for ASP.NET vNext (Project K)",
+	"license": "http://www.gnu.org/copyleft/lesser.html",
+	"projectUrl": "http://launchpad.net/dylandotnet",
+	"tags": [".NET4.0" ,".NET4.5", "ASP.NET5.0", "ASP.NETCORE5.0", "Mono"], 
+    "dependencies": {
+    },
+	"compilationOptions": {
+     "define": [],
+     "optimize": "true",
+     "warningsAsErrors": "false"
+  },
+    "frameworks" : {
+        "aspnet50" : { 
+            "dependencies": {
+            	"Microsoft.Framework.Runtime": "1.0.0-*",
+       			 "dylan.NET" : "11.5.4.3"
+            }
+        }
+    }
+}

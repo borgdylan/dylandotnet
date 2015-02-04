@@ -1,0 +1,1878 @@
+<doc>
+    <assembly>
+        <name>tokenizer.CodeGen</name>
+    </assembly>
+    <members>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.CodeGenerator">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.CodeGenerator">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.CodeGenerator.EmitMSIL(dylan.NET.Tokenizer.AST.Stmts.StmtSet,System.String)">
+            <param name="stmts">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.CollectionItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.CollectionItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.CollectionItem.AddMtd">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.CollectionItem.Ctor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.CollectionItem.ElemType">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.ConstInfo">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.ConstInfo">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.ConstInfo.Typ">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.ConstInfo.Value">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.CtorItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.CtorItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.CtorItem(IKVM.Reflection.Type[],IKVM.Reflection.Emit.ConstructorBuilder)">
+            <param name="ptyps">To be added.</param>
+            <param name="bld">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.CtorItem.CtorBldr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.CtorItem.ParamTyps">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.CtorItem.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.Evaluator">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.Evaluator">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmit(dylan.NET.Tokenizer.AST.Tokens.Token,System.Boolean)">
+            <param name="tok">To be added.</param>
+            <param name="emt">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmit(dylan.NET.Tokenizer.AST.Tokens.Token,System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="tok">To be added.</param>
+            <param name="emt">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmitIdent(dylan.NET.Tokenizer.AST.Tokens.Ident,System.Boolean)">
+            <param name="idt">To be added.</param>
+            <param name="emt">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmitMethod(dylan.NET.Tokenizer.AST.Tokens.MethodCallTok,System.Boolean)">
+            <param name="mctok">To be added.</param>
+            <param name="emt">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmitNew(dylan.NET.Tokenizer.AST.Tokens.NewCallTok,System.Boolean)">
+            <param name="nctok">To be added.</param>
+            <param name="emt">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ASTEmitUnary(dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable,System.Boolean)">
+            <param name="iuo">To be added.</param>
+            <param name="emt">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ConvToAST(dylan.NET.Tokenizer.AST.Exprs.Expr)">
+            <param name="exp">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.ConvToRPN(dylan.NET.Tokenizer.AST.Exprs.Expr)">
+            <param name="exp">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.Evaluate(dylan.NET.Tokenizer.AST.Exprs.Expr)">
+            <param name="exp">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.Evaluate(dylan.NET.Tokenizer.AST.Exprs.Expr,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="exp">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.EvaluateHIf(dylan.NET.Tokenizer.AST.Exprs.Expr)">
+            <param name="exp">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.EvaluateHIf(dylan.NET.Tokenizer.AST.Tokens.Token)">
+            <param name="rt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.EvaluateType(dylan.NET.Tokenizer.AST.Exprs.Expr)">
+            <param name="exp">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.RetPrec(dylan.NET.Tokenizer.AST.Tokens.Token)">
+            <param name="tok">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.Evaluator.Stack">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Evaluator.StoreEmit(dylan.NET.Tokenizer.AST.Tokens.Token,dylan.NET.Tokenizer.AST.Exprs.Expr)">
+            <param name="tok">To be added.</param>
+            <param name="exp">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.EventItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.EventItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.EventItem(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.EventBuilder,System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute},System.String)">
+            <param name="nme">To be added.</param>
+            <param name="typ">To be added.</param>
+            <param name="bld">To be added.</param>
+            <param name="attr">To be added.</param>
+            <param name="expl">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.EventItem.Attrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.EventItem.EventBldr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.EventItem.EventTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.EventItem.ExplImplType">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.EventItem.Name">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.EventItem.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.FieldItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.FieldItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.FieldItem(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.FieldBuilder,System.Object)">
+            <param name="nme">To be added.</param>
+            <param name="typ">To be added.</param>
+            <param name="bld">To be added.</param>
+            <param name="litval">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.FieldItem.FieldBldr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.FieldItem.FieldTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.FieldItem.LitVal">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.FieldItem.Name">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.FieldItem.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.ForLoopItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.ForLoopItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.ForLoopItem(IKVM.Reflection.Emit.Label,IKVM.Reflection.Emit.Label,System.String,dylan.NET.Tokenizer.AST.Exprs.Expr,System.Boolean,dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok,System.Int32)">
+            <param name="startl">To be added.</param>
+            <param name="endl">To be added.</param>
+            <param name="iter">To be added.</param>
+            <param name="_step">To be added.</param>
+            <param name="dir">To be added.</param>
+            <param name="t">To be added.</param>
+            <param name="ln">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.ForLoopItem.ContinueFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.ForLoopItem.Direction">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.ForLoopItem.Iter">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.ForLoopItem.StepExp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.ForLoopItem.StepLabel">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.ForLoopItem.Typ">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.Helpers">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyAsmAttrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyClsAttrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyEnumAttrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyEventAttrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyFldAttrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyMetAttrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ApplyPropAttrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.Helpers.BaseFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.Helpers.BoolFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CheckAssignability(IKVM.Reflection.Type,IKVM.Reflection.Type)">
+            <param name="t1">To be added.</param>
+            <param name="t2">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CheckCompat(IKVM.Reflection.Type,IKVM.Reflection.Type)">
+            <param name="ta">To be added.</param>
+            <param name="tb">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CheckIfArrLen(dylan.NET.Tokenizer.AST.Exprs.Expr)">
+            <param name="ind">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CheckSHLRLHS(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CheckSHLRRHS(IKVM.Reflection.Type,System.Boolean)">
+            <param name="t">To be added.</param>
+            <param name="accepti64">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CheckSigned(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CheckUnsigned(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.CommitEvalTTok(dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)">
+            <param name="tt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.Helpers.DelegateFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitConv(IKVM.Reflection.Type,IKVM.Reflection.Type)">
+            <param name="source">To be added.</param>
+            <param name="sink">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitConv(IKVM.Reflection.Type,IKVM.Reflection.Type,System.Boolean)">
+            <param name="source">To be added.</param>
+            <param name="sink">To be added.</param>
+            <param name="isNull">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitDec(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitElemLd(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitFldLd(IKVM.Reflection.FieldInfo,System.Boolean)">
+            <param name="fld">To be added.</param>
+            <param name="stat">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitFldSt(IKVM.Reflection.FieldInfo,System.Boolean)">
+            <param name="fld">To be added.</param>
+            <param name="stat">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitInc(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitLiteral(dylan.NET.Tokenizer.AST.Tokens.Literals.Literal)">
+            <param name="lit">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitLocLd(System.Int32,System.Boolean)">
+            <param name="ind">To be added.</param>
+            <param name="locarg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitLocSt(System.Int32,System.Boolean)">
+            <param name="ind">To be added.</param>
+            <param name="locarg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitMetCall(IKVM.Reflection.MethodInfo,System.Boolean)">
+            <param name="met">To be added.</param>
+            <param name="stat">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitNeg(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitNot(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitOp(dylan.NET.Tokenizer.AST.Tokens.Ops.Op,System.Boolean,System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="op">To be added.</param>
+            <param name="s">To be added.</param>
+            <param name="emt">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.EmitPtrLd(IKVM.Reflection.MethodInfo,System.Boolean)">
+            <param name="met">To be added.</param>
+            <param name="stat">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.Helpers.EqSuppFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetExtFld(IKVM.Reflection.Type,System.String)">
+            <param name="t">To be added.</param>
+            <param name="fld">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetExtMet(IKVM.Reflection.Type,dylan.NET.Tokenizer.AST.Tokens.MethodNameTok,IKVM.Reflection.Type[])">
+            <param name="t">To be added.</param>
+            <param name="mn">To be added.</param>
+            <param name="paramtyps">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetExtMet(System.Collections.Generic.IEnumerable{IKVM.Reflection.Type},dylan.NET.Tokenizer.AST.Tokens.MethodNameTok,IKVM.Reflection.Type[])">
+            <param name="ts">To be added.</param>
+            <param name="mn">To be added.</param>
+            <param name="paramtyps">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetExtProp(IKVM.Reflection.Type,System.String)">
+            <param name="t">To be added.</param>
+            <param name="prop">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetInhHierarchy(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetLbl(System.String)">
+            <param name="nam">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetLocCtor(IKVM.Reflection.Type,IKVM.Reflection.Type[])">
+            <param name="t">To be added.</param>
+            <param name="typs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetLocFld(System.String)">
+            <param name="nam">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetLocMet(dylan.NET.Tokenizer.AST.Tokens.MethodNameTok,IKVM.Reflection.Type[])">
+            <param name="mn">To be added.</param>
+            <param name="typs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetObsolete(IKVM.Reflection.MemberInfo)">
+            <param name="m">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetPrimitiveNumericSize(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetTPI(System.String)">
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.GetTypeInterfaces(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.IsPrimitiveFPType(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.IsPrimitiveIntegralType(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.IsPrimitiveNumericType(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.Helpers.LeftOp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.LiteralToConst(dylan.NET.Tokenizer.AST.Tokens.Literals.Literal)">
+            <param name="lit">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.Helpers.NullExprFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.Helpers.OpCodeSuppFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.PostProcessParams(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Exprs.Expr})">
+            <param name="ps">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.PostProcessParamsConstr(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Exprs.Expr})">
+            <param name="ps">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessClassAttrs(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute})">
+            <param name="attrs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessClassAttrsE(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute})">
+            <param name="attrs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessCollection(IKVM.Reflection.Type,System.Boolean)">
+            <param name="t">To be added.</param>
+            <param name="forcearr">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessConst(dylan.NET.Tokenizer.AST.Tokens.Literals.ConstLiteral)">
+            <param name="lit">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessConstExpr(dylan.NET.Tokenizer.AST.Exprs.Expr)">
+            <param name="exp">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessEventAttrs(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute})">
+            <param name="attrs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessFieldAttrs(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute})">
+            <param name="attrs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessForeach(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessForeach2(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessMethodAttrs(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute})">
+            <param name="attrs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessNullable(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessParams(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Exprs.Expr})">
+            <param name="ps">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.ProcessPropAttrs(System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute})">
+            <param name="attrs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.Helpers.RightOp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.SetPopFlg(dylan.NET.Tokenizer.AST.Tokens.Token)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.Helpers.StringFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.Helpers.StripDelMtdName(dylan.NET.Tokenizer.AST.Tokens.Token)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.IfItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.IfItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.IfItem(IKVM.Reflection.Emit.Label,IKVM.Reflection.Emit.Label,System.Int32)">
+            <param name="endl">To be added.</param>
+            <param name="nbl">To be added.</param>
+            <param name="ln">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.IfItem.ElsePass">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.IfItem.EndLabel">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.IfItem.Line">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.IfItem.NextBlkLabel">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.LabelItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.LabelItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.LabelItem(System.String,IKVM.Reflection.Emit.Label)">
+            <param name="ln">To be added.</param>
+            <param name="l">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.LabelItem.Lbl">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.LabelItem.LblName">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.LockItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.LockItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.LockItem(System.Int32,System.Int32)">
+            <param name="loc">To be added.</param>
+            <param name="ln">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.LockItem(System.Int32,IKVM.Reflection.Emit.Label,System.Int32)">
+            <param name="loc">To be added.</param>
+            <param name="lb">To be added.</param>
+            <param name="ln">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.LockItem.IsTryLock">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.LockItem.Lbl">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.LockItem.LockeeLoc">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.LoopItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.LoopItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.LoopItem(IKVM.Reflection.Emit.Label,IKVM.Reflection.Emit.Label,System.Int32)">
+            <param name="startl">To be added.</param>
+            <param name="endl">To be added.</param>
+            <param name="ln">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.LoopItem.EndLabel">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.LoopItem.Line">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.LoopItem.StartLabel">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.MethodItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.MethodItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.MethodItem(System.String,IKVM.Reflection.Type,IKVM.Reflection.Type[],IKVM.Reflection.Emit.MethodBuilder)">
+            <param name="nme">To be added.</param>
+            <param name="typ">To be added.</param>
+            <param name="ptyps">To be added.</param>
+            <param name="bld">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.MethodItem.MethodBldr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.MethodItem.MethodTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.MethodItem.Name">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.MethodItem.NrGenParams">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.MethodItem.ParamTyps">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.MethodItem.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.OpStack">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.OpStack">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.OpStack.getLength">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.OpStack.PopOp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.OpStack.PushOp(dylan.NET.Tokenizer.AST.Tokens.Token)">
+            <param name="optok">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.OpStack.TopOp">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.PInvokeInfo">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.PInvokeInfo">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PInvokeInfo.CallConv">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PInvokeInfo.CSet">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PInvokeInfo.LibName">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.PropertyItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.PropertyItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.PropertyItem(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.PropertyBuilder,System.Collections.Generic.IEnumerable{dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute},System.String)">
+            <param name="nme">To be added.</param>
+            <param name="typ">To be added.</param>
+            <param name="bld">To be added.</param>
+            <param name="attr">To be added.</param>
+            <param name="expl">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PropertyItem.Attrs">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PropertyItem.ExplImplType">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PropertyItem.Name">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PropertyItem.Params">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PropertyItem.ParamTyps">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PropertyItem.PropertyBldr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.PropertyItem.PropertyTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.PropertyItem.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.StmtReader">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.StmtReader(dylan.NET.Tokenizer.CodeGen.CodeGenerator)">
+            <param name="cgen">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.AttrStmtToCAB(dylan.NET.Tokenizer.AST.Stmts.AttrStmt)">
+            <param name="stm">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.PreRead(System.Int32,System.String)">
+            <param name="line">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.Read(dylan.NET.Tokenizer.AST.Stmts.Stmt,System.String)">
+            <param name="stm">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadClass(dylan.NET.Tokenizer.AST.Stmts.ClassStmt,System.String)">
+            <param name="clss">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadDelegate(dylan.NET.Tokenizer.AST.Stmts.DelegateStmt)">
+            <param name="dels">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEndDo(System.String)">
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEnum(dylan.NET.Tokenizer.AST.Stmts.EnumStmt,System.String)">
+            <param name="clss">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEvent(dylan.NET.Tokenizer.AST.Stmts.EventStmt,System.String)">
+            <param name="evss">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEventAdd(dylan.NET.Tokenizer.AST.Stmts.EventAddStmt,System.String)">
+            <param name="evas">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadEventRemove(dylan.NET.Tokenizer.AST.Stmts.EventRemoveStmt,System.String)">
+            <param name="evas">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadField(dylan.NET.Tokenizer.AST.Stmts.FieldStmt)">
+            <param name="flss">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadFor(dylan.NET.Tokenizer.AST.Stmts.ForStmt,System.String)">
+            <param name="fstm">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadForeach(dylan.NET.Tokenizer.AST.Stmts.ForeachStmt,System.String)">
+            <param name="festm">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadMethod(dylan.NET.Tokenizer.AST.Stmts.MethodStmt,System.String)">
+            <param name="mtss">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadProperty(dylan.NET.Tokenizer.AST.Stmts.PropertyStmt,System.String)">
+            <param name="prss">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadPropertyGet(dylan.NET.Tokenizer.AST.Stmts.PropertyGetStmt,System.String)">
+            <param name="prgs">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadPropertySet(dylan.NET.Tokenizer.AST.Stmts.PropertySetStmt,System.String)">
+            <param name="prss">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.StmtReader.ReadVer(dylan.NET.Tokenizer.AST.Stmts.VerStmt,System.String)">
+            <param name="asmv">To be added.</param>
+            <param name="fpath">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.SymTable">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddAsmCA(IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ca">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddClsCA(IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ca">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddCtor(IKVM.Reflection.Type[],IKVM.Reflection.Emit.ConstructorBuilder)">
+            <param name="ptyps">To be added.</param>
+            <param name="met">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddDef(System.String)">
+            <param name="sym">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddEnumCA(IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ca">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddEventCA(IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ca">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFld(System.String,IKVM.Reflection.Type,IKVM.Reflection.Emit.FieldBuilder,System.Object)">
+            <param name="nme">To be added.</param>
+            <param name="typ">To be added.</param>
+            <param name="fld">To be added.</param>
+            <param name="litval">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddFldCA(IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ca">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddForLoop(System.String,dylan.NET.Tokenizer.AST.Exprs.Expr,System.Boolean,dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok)">
+            <param name="iter">To be added.</param>
+            <param name="_step">To be added.</param>
+            <param name="dir">To be added.</param>
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddIf">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddLbl(System.String)">
+            <param name="nam">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddLock(System.Int32)">
+            <param name="loc">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddLoop">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddMet(System.String,IKVM.Reflection.Type,IKVM.Reflection.Type[],IKVM.Reflection.Emit.MethodBuilder,System.Int32)">
+            <param name="nme">To be added.</param>
+            <param name="typ">To be added.</param>
+            <param name="ptyps">To be added.</param>
+            <param name="met">To be added.</param>
+            <param name="nrgenparams">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddMtdCA(IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ca">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddParamCA(System.Int32,IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ind">To be added.</param>
+            <param name="ca">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddPropCA(IKVM.Reflection.Emit.CustomAttributeBuilder)">
+            <param name="ca">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddTry">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddTryLock(System.Int32)">
+            <param name="loc">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddUsing(System.String)">
+            <param name="loc">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.AddVar(System.String,System.Boolean,System.Int32,IKVM.Reflection.Type,System.Int32)">
+            <param name="nme">To be added.</param>
+            <param name="la">To be added.</param>
+            <param name="ind">To be added.</param>
+            <param name="typ">To be added.</param>
+            <param name="lin">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.AssemblyCALst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.CheckCtrlBlks">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.CheckReturnInTry">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.CheckUnusedVar">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.ClassCALst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.CmpTyps(IKVM.Reflection.Type[],IKVM.Reflection.Type[])">
+            <param name="arra">To be added.</param>
+            <param name="arrb">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.CurnEvent">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.CurnProp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.CurnTypItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.CurnTypItem2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.EnumCALst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.EvalDef(System.String)">
+            <param name="sym">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.EventCALst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.FieldCALst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindCtor(IKVM.Reflection.Type[])">
+            <param name="paramst">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindFld(System.String)">
+            <param name="nam">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindGenMet(System.String,IKVM.Reflection.Type[],IKVM.Reflection.Type[])">
+            <param name="nam">To be added.</param>
+            <param name="genparams">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindLbl(System.String)">
+            <param name="nam">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindMet(System.String,IKVM.Reflection.Type[])">
+            <param name="nam">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindProtoMet(System.String,IKVM.Reflection.Type[])">
+            <param name="nam">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.FindVar(System.String)">
+            <param name="nam">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.GetInCatch">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.GetRetLbl">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.Init">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.MetGenParams">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.MethodCALst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.ParameterCALst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.PIInfo">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopIf">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopLock">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopLoop">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopScope">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopTry">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PopUsing">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.PropertyCALst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.PushScope">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfElsePass">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfEndLbl">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadIfNxtBlkLbl">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadLock">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadLoop">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadLoopEndLbl">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadLoopStartLbl">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ReadUseeLoc">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetIf">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetLbl">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetLoop">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetMetGenParams">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetTry">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetTypGenParams">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.ResetVar">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfElsePass">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetIfNxtBlkLbl">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetInCatch(System.Boolean)">
+            <param name="val">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetMetGenParams(System.String[],IKVM.Reflection.Emit.GenericTypeParameterBuilder[])">
+            <param name="names">To be added.</param>
+            <param name="actuals">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.SetTypGenParams(System.String[],IKVM.Reflection.Emit.GenericTypeParameterBuilder[])">
+            <param name="names">To be added.</param>
+            <param name="actuals">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.StoreFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.TempVTMap">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.TypeLst">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.TypGenParams">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.SymTable.TypGenParams2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.SymTable.UnDef(System.String)">
+            <param name="sym">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.TryItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.TryItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.TryItem(System.Int32)">
+            <param name="ln">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TryItem.InCatch">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TryItem.Line">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.TypeItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.TypeItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.TypeItem(System.String,IKVM.Reflection.Emit.EnumBuilder)">
+            <param name="nme">To be added.</param>
+            <param name="bld3">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.TypeItem(System.String,IKVM.Reflection.Emit.TypeBuilder)">
+            <param name="nme">To be added.</param>
+            <param name="bld">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.AddCtor(dylan.NET.Tokenizer.CodeGen.CtorItem)">
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.AddField(dylan.NET.Tokenizer.CodeGen.FieldItem)">
+            <param name="f">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.AddInterface(IKVM.Reflection.Type)">
+            <param name="i">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.AddMethod(dylan.NET.Tokenizer.CodeGen.MethodItem)">
+            <param name="m">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.AddType(dylan.NET.Tokenizer.CodeGen.TypeItem)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.AsmB">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.BakedTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.Ctors">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.EnumBldr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.Fields">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetCtor(IKVM.Reflection.Type[],IKVM.Reflection.Type)">
+            <param name="paramst">To be added.</param>
+            <param name="auxt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetField(System.String,IKVM.Reflection.Type)">
+            <param name="nam">To be added.</param>
+            <param name="auxt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetGenericMethod(System.String,IKVM.Reflection.Type[],IKVM.Reflection.Type[],IKVM.Reflection.Type)">
+            <param name="nam">To be added.</param>
+            <param name="genparams">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <param name="auxt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetMethod(System.String,IKVM.Reflection.Type[],IKVM.Reflection.Type)">
+            <param name="nam">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <param name="auxt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetProtoMethod(System.String,IKVM.Reflection.Type[])">
+            <param name="nam">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetType(System.String)">
+            <param name="nam">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetTypeItem(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.GetTypeItem(System.String)">
+            <param name="nam">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.InhTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.Interfaces">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.IsANI">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.IsEnum">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.IsStatic">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.Methods">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.Name">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.NormalizeInterfaces">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.NrGenParams">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeItem.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.TypeBldr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.Types">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeItem.TypGenParams">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.TypeList">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.TypeList">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.AddType(dylan.NET.Tokenizer.CodeGen.TypeItem)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.EnsureDefaultCtor(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetCtor(IKVM.Reflection.Type,IKVM.Reflection.Type[],IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <param name="auxt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetField(IKVM.Reflection.Type,System.String,IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <param name="nam">To be added.</param>
+            <param name="auxt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetMethod(IKVM.Reflection.Type,dylan.NET.Tokenizer.AST.Tokens.MethodNameTok,IKVM.Reflection.Type[],IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <param name="mn">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <param name="auxt">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetType(System.String,System.Int32)">
+            <param name="nam">To be added.</param>
+            <param name="gp">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetTypeItem(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.TypeList.GetTypeItem(System.String,System.Int32)">
+            <param name="nam">To be added.</param>
+            <param name="gp">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeList.Types">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.TypeParamItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.TypeParamItem(System.String,IKVM.Reflection.Emit.GenericTypeParameterBuilder)">
+            <param name="name">To be added.</param>
+            <param name="bld">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeParamItem.BaseType">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeParamItem.Bldr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeParamItem.HasCtor">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeParamItem.Interfaces">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.TypeParamItem.Name">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.UsingItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.UsingItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.UsingItem(System.String,System.Int32)">
+            <param name="loc">To be added.</param>
+            <param name="ln">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.UsingItem.UseeLoc">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.CodeGen.VarItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.VarItem">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.VarItem(System.String,System.Boolean,System.Int32,IKVM.Reflection.Type)">
+            <param name="nme">To be added.</param>
+            <param name="la">To be added.</param>
+            <param name="ind">To be added.</param>
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.CodeGen.VarItem(System.String,System.Boolean,System.Int32,IKVM.Reflection.Type,System.Int32)">
+            <param name="nme">To be added.</param>
+            <param name="la">To be added.</param>
+            <param name="ind">To be added.</param>
+            <param name="typ">To be added.</param>
+            <param name="line">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.VarItem.Index">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.VarItem.Line">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.VarItem.LocArg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.VarItem.Name">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.VarItem.Stored">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.VarItem.StoreLines">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.CodeGen.VarItem.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.VarItem.Used">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.CodeGen.VarItem.VarTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,42 @@
+Source: dylandotnet
+Section: cli-mono
+Priority: optional
+Maintainer: Dylan Borg <borgdylan@hotmail.com>
+Build-Depends: debhelper (>= 7.0.50~), cli-common-dev (>= 0.8~), devscripts, libmono-corlib2.0-cil, libmono-system2.0-cil, mono-devel, mono-runtime, gawk, autotools-dev, monodoc-base
+Standards-Version: 3.9.3
+Homepage: http://launchpad.net/dylandotnet
+Vcs-Git: git://gitorious.org/dylandotnet/dylandotnet.git
+Vcs-Bzr: lp:dylandotnet
+Vcs-Browser: http://bazaar.launchpad.net/~borgdylan/dylandotnet/dylandotnet/files
+
+Package: dylandotnet-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}
+Recommends: mono-utils
+Enhances: dylandotnet, dylandotnet4
+Description: This is the dylan.NET documentation.
+ This is the dylan.NET documentation amd some test programs in tar.gz format.
+
+Package: dylandotnet-dev
+Section: devel
+Architecture: all
+Depends: ${misc:Depends}, ${cli:Depends}, libmono-corlib2.0-cil, libmono-system2.0-cil, mono-devel, cli-common, mono-runtime
+Recommends: mono-utils, dylandotnet-doc, dylandotnet, dylandotnet4, pkg-config
+Enhances: dylandotnet, dylandotnet4
+Description: These are the dylan.NET development tools.
+ The tools in this package help with the conversion of pkg-config 'libs' variables to dylan.NET format. Supplies the pc2dylandotnet and pc2curdir programs.
+
+Package: dylandotnet
+Architecture: all
+Depends: ${misc:Depends}, ${cli:Depends}, libmono-corlib2.0-cil, libmono-system2.0-cil, mono-devel, cli-common, mono-runtime
+Recommends: mono-utils, monodoc-base,  dylandotnet-doc, dylandotnet-dev
+Description: This is the dylan.NET compiler for CLI 2.0.
+ This is another compiler for the Mono runtime (CLI2) targeting dylan.NET.
+ 
+Package: dylandotnet4
+Architecture: all
+Depends: ${misc:Depends}, ${cli:Depends}, libmono-corlib4.0-cil (>= 2.10.1), libmono-system4.0-cil (>= 2.10.1), libmono-system-core4.0-cil (>= 2.10.1), libmono-system-xml-linq4.0-cil (>= 2.10.1), mono-devel (>= 2.10.1) , cli-common, mono-runtime (>= 2.10.1)
+Recommends: mono-utils, monodoc-base, dylandotnet-doc, dylandotnet-dev
+Description: This is the dylan.NET compiler for CLI 4.0.
+ This is another compiler for the Mono runtime (CLI4) targeting dylan.NET.

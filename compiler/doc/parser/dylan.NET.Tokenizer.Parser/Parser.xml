@@ -1,0 +1,88 @@
+<Type Name="Parser" FullName="dylan.NET.Tokenizer.Parser.Parser">
+  <TypeSignature Language="C#" Value="public class Parser" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Parser extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.Parser</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Parser ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Parser (dylan.NET.Tokenizer.Parser.Flags pf);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class dylan.NET.Tokenizer.Parser.Flags pf) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="pf" Type="dylan.NET.Tokenizer.Parser.Flags" />
+      </Parameters>
+      <Docs>
+        <param name="pf">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Parse">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.StmtSet Parse (dylan.NET.Tokenizer.AST.Stmts.StmtSet stms);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Stmts.StmtSet Parse(class dylan.NET.Tokenizer.AST.Stmts.StmtSet stms) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.StmtSet</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stms" Type="dylan.NET.Tokenizer.AST.Stmts.StmtSet" />
+      </Parameters>
+      <Docs>
+        <param name="stms">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Parse">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.StmtSet Parse (dylan.NET.Tokenizer.AST.Stmts.StmtSet stms, bool ignf);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Stmts.StmtSet Parse(class dylan.NET.Tokenizer.AST.Stmts.StmtSet stms, bool ignf) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.StmtSet</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stms" Type="dylan.NET.Tokenizer.AST.Stmts.StmtSet" />
+        <Parameter Name="ignf" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="stms">To be added.</param>
+        <param name="ignf">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PFlags">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.Parser.Flags PFlags;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.Parser.Flags PFlags" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.Parser.Flags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

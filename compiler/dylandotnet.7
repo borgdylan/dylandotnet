@@ -1,0 +1,77 @@
+.TH "DYLANDOTNET" "7" "2014-11-01" "Linux" "dylan.NET Syntax Manual"
+
+.SH NAME
+dylandotnet \- The syntax specification for the \fBdylan.NET\fP programming language.
+
+.SH SYNOPSIS
+This manual page is for describing the syntax of the \fBdylan.NET\fP programming language in detail only. To see how the compiler is invoked please look at \fBdylandotnet\fP(1) and \fBdylandotnet4\fP(1). The language syntax is inspired from C,C#,VB.NET and MSIL/CIL and is described in the following sections.
+
+.SH DESCRIPTION
+
+A \fBdylan.NET\fP program can be made of one or more files which are linked together via \fB#include\fP statements. Only the main file is passed to the compiler, the others get pulled in as the compiler processes the \fB#include\fP directives. The main file should have also have the assembly definition inclusive of the assembly version declaration. The class definitions can be in the main file or in other files that are referenced by the main file or files referenced by the main file and so on. \fBPlease note that currently dylan.NET has a limitation: to use something it must have been defined beforehand, so include 'used' files before 'user' files. This also applies to classes, methods etc.\fP  The following is an example of the \fBHello World\fP program as written in \fbdylan.NET\fP.
+.P
+//dylan.NET version of Hello World.
+.br
+//use a recent version of dylan.NET to compile
+.br
+#refstdasm "mscorlib.dll"
+.P
+import System
+.P
+assembly helloworld exe
+.br
+ver 1.1.0.0
+.P
+class public auto ansi Program
+.P
+	method public static void main()
+.br
+		Console::WriteLine("Hello World!")
+.br
+	end method
+.P
+end class
+
+.SS "#refasm and #refstdasm"
+
+These two directives are used to reference .NET/Mono libraries in MSIL/CIL format. They function as follows:
+.IP "\fB#refasm\fP \fI/path/to/lib.dll\fP"
+Reference the library that is found at the \fI/path/to/lib.dll\fP location. The path may be relative in which case it must be relative to the current directory of the used shell.
+.IP "\fB#refstdasm\fP \fIlib.dll\fP"
+Reference the standard library \fIlib.dll\fP from the Mono \fBlib\fP directory. This directive is recommended to be used only on the \fBMono\fP runtime and not the \fB.NET\fP runtime. In the \fBMono\fP case, if the \fBdylandotnet\fP command was used, then the libraries at \fIlib/mono/2.0/\fP are used and  if the \fBdylandotnet4\fP command was used, then the libraries at \fIlib/mono/4.0/\fP or \fIlib/mono/4.5/\fP (if present) are used.
+.P
+In the previous two descriptions, \fIlib.dll\fP may be substituted by \fIlib.exe\fP if the executable program \fIlib.exe\fP has classes that can be consumed as libraries. An important case is that of programs that have a \fBpublic\fP main class and \fBmain\fP method. In the latter case, the program is invokable from code allowing also to pass the array of string arguments to the program if the main method accepts them.
+.P
+The \fI/path/to/lib.dll\fP path may be surrounded with double quotes if it includes tokens that may be interpreted by the compiler as something else such as '/' and ' '. On UNIX like systems, paths normally include '/' so the surrounding of the path with double quotes is mandatory.
+
+.SS "import \fInamespace\fP"
+
+This statement is used to import namespace \fInamespace\fP from the referenced libraries. Importing namespaces allows one to use a class without prepending the namespace beforehand. In the example, the namespace \fBSystem\fP was imported from the \fBmscorlib.dll\fP library which is the .NET core library. This allowed the call to the \fBWriteLine\fP method of the \fBSystem.Console\fP class to happen in a shorthand form i.e. \fBConsole::WriteLine\fP instead of \fBSystem.Console::WriteLine\fP.
+.P
+The \fInamespace\fP name may be surrounded with double quotes if it includes tokens that may be interpreted by the compiler as something else such as ' '.
+
+.SS "assembly \fIassembly.name\fP exe|dll"
+
+The \fBassembly\fP statement is used to define the name and type of the assembly that will be created. The type can be be either \fBexe\fP or \fBdll\fP where \fBexe\fP means the assembly will be executable and have a "\fB.exe\fP" suffix in the file name, and \fBdll\fP means the assembly will be a class library and have a ".\fBdll\fP" suffix in the file name. The latter suffix is appended to \fIassembly.name\fP to make the full file name of the assembly. This statement must precede the \fBver\fP statement and should occur after the \fB#debug\fP directive, any assembly reference directives and any \fBimport\fP statements.
+
+.SS "ver \fImajor\fP.\fIminor\fP.\fImajorrev\fP.\fIminorrev\fP"
+
+The \fBver\fP statement is used to give a version to the created library/executable assembly. It should \fBalways\fP occur immediately after the \fBassembly\fP statement. The version parts \fImajor\fP,\fIminor\fP,\fImajorrev\fP,\fIminorrev\fP should all be integers.
+
+.SS "#debug on|off"
+
+The \fb#debug\fP directive is used to enable/disable the production of debug symbols. By default it is \fBoff\fP. It is mandatory to use this directive before the \fBassembly\fP statement. It should be used just once in source code. The type of symbols made depends on the runtime that is used to run the compiler. If \fBMono\fP is used then \fB.mdb\fP files are made. On \fB.NET\fP, \fB.pdb\fP files are made instead.
+
+.SS "#include \fIfile.dyl\fP"
+
+The \fB#include\fP directive is used to include the contents of the \fIfile.dyl\fP file instead of the directive itself i.e. when the compiler encounters a \fB#incude\fP it compiles the contents of the pointed to file. The path may be relative to the current directory or else non-relative.
+.P
+The \fIfile.dyl\fP path may be surrounded with double quotes if it includes tokens that may be interpreted by the compiler as something else such as '/' and ' '. On UNIX like systems, paths normally include '/' so the surrounding of the path with double quotes is mandatory.
+
+.SS class \fIattributes\fP \fIname\fP [extends \fIbase_class\fP [implements \fIinterfaces\fP]]
+
+.SH VERSION
+11.5.1.2
+
+.SH "SEE ALSO"
+See also http://launchpad.net/dylandotnet, \fBdylandotnet\fP(1), \fBdylandotnet4\fP(1)

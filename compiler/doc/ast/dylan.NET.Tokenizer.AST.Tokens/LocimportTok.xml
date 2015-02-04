@@ -1,0 +1,42 @@
+<Type Name="LocimportTok" FullName="dylan.NET.Tokenizer.AST.Tokens.LocimportTok">
+  <TypeSignature Language="C#" Value="public class LocimportTok : dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi LocimportTok extends dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.NonExprToken</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents the soon to be deprecated 'locimport' keyword.</summary>
+    <remarks>This class is used by the parser the soon to be deprecated local namespace import.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LocimportTok ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new LocimportTok.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Template Originator="Lluis Sanchez" Created="21/6/2006" LastModified="21/6/2006">
+	
+	<TemplateConfiguration>
+		<_Name>Test Fixture</_Name>
+		<Icon>md-file-unit-test</Icon>
+		<_Category>NUnit</_Category>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates a Test Fixture.</_Description>
+		<DefaultFilename>NUnitTestClass</DefaultFilename>
+	</TemplateConfiguration>
+	
+	<TemplateFiles>
+		<File DefaultExtension=".dyl" DefaultName="TestClass" AddStandardHeader="True"><![CDATA[namespace ${Namespace}
+
+	[class: TestFixture()]
+	class public auto ansi ${Name}
+		
+		[method: Test()]
+		method public void Test()
+			Assert::IsTrue(false)
+		end method
+
+	end class
+	
+end namespace]]></File>
+	</TemplateFiles>
+	
+	<FileOptions/>
+	
+</Template>

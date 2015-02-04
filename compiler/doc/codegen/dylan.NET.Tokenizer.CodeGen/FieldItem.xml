@@ -1,0 +1,108 @@
+<Type Name="FieldItem" FullName="dylan.NET.Tokenizer.CodeGen.FieldItem">
+  <TypeSignature Language="C#" Value="public class FieldItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi FieldItem extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.CodeGen</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FieldItem ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FieldItem (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Emit.FieldBuilder bld, object litval);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Emit.FieldBuilder bld, object litval) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="nme" Type="System.String" />
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="bld" Type="IKVM.Reflection.Emit.FieldBuilder" />
+        <Parameter Name="litval" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="nme">To be added.</param>
+        <param name="typ">To be added.</param>
+        <param name="bld">To be added.</param>
+        <param name="litval">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FieldBldr">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.FieldBuilder FieldBldr;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Emit.FieldBuilder FieldBldr" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.FieldBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FieldTyp">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type FieldTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type FieldTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LitVal">
+      <MemberSignature Language="C#" Value="public object LitVal;" />
+      <MemberSignature Language="ILAsm" Value=".field public object LitVal" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Name" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

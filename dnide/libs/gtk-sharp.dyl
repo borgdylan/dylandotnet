@@ -1,0 +1,5 @@
+#refasm "/usr/lib/pkgconfig/../../lib/cli/pango-sharp-2.0/pango-sharp.dll"
+#refasm "/usr/lib/pkgconfig/../../lib/cli/atk-sharp-2.0/atk-sharp.dll"
+#refasm "/usr/lib/pkgconfig/../../lib/cli/gdk-sharp-2.0/gdk-sharp.dll"
+#refasm "/usr/lib/pkgconfig/../../lib/cli/gtk-sharp-2.0/gtk-sharp.dll"
+#refasm "/usr/lib/pkgconfig/../../lib/cli/glib-sharp-2.0/glib-sharp.dll"

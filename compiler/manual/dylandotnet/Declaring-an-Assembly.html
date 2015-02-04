@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+<title>Declaring an Assembly - Untitled</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Untitled">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Syntax.html#Syntax" title="Syntax">
+<link rel="prev" href="Debug-Mode.html#Debug-Mode" title="Debug Mode">
+<link rel="next" href="Specifying-the-Assembly-Version.html#Specifying-the-Assembly-Version" title="Specifying the Assembly Version">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This is the manual documenting the syntax of the dylan.NET programming language.
+Copyright (C) 2013 Dylan Borg-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Declaring-an-Assembly"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Specifying-the-Assembly-Version.html#Specifying-the-Assembly-Version">Specifying the Assembly Version</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Debug-Mode.html#Debug-Mode">Debug Mode</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Syntax.html#Syntax">Syntax</a>
+<hr>
+</div>
+
+<h3 class="section">2.5 Declaring an Assembly</h3>
+
+   <p class="indent">The <code>assembly</code> statement is used to declare an assembly given its name which has to be a single identifier token and mode which can be <code>exe</code><dfn>, executable program</dfn> or <code>dll</code><dfn>, dynamically linked library</dfn>. <strong>This statement should occur before the </strong><code>ver</code><strong> statement.</strong> See the examples below:
+<pre class="example">     <code>assembly testprog exe</code>
+     <code>assembly testlib dll</code>
+</pre>
+   </body></html>
+

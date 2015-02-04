@@ -1,0 +1,1173 @@
+<doc>
+    <assembly>
+        <name>dnr</name>
+    </assembly>
+    <members>
+        <member name="T:dylan.NET.Reflection.AsmFactory">
+            <summary>Holds the resources used during assembly making.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.AddrFlg">
+            <summary>Set this to allow automatic valuetype pointer load during field chaining.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.AsmB">
+            <summary>Holds the AssemblyBuilder for the assembly under construction.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.AsmFile">
+            <summary>Holds the name of the assembly under construction.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.AsmMode">
+            <summary>Holds the mode i.e. 'exe' or 'dll' of the assembly under construction.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.AsmNameStr">
+            <summary>Holds the AssemblyName for the assembly under construction.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.AutoChainFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.ChainFlg">
+            <summary>When set indicates that a method chain beyond field chaining boundaries is in progress.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.CreateTyp">
+            <summary>Calls CreateType on the current TypeBuilder.</summary>
+            <returns>The constructed Type.</returns>
+            <remarks>Usually done at the end of a class.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnConB">
+            <summary>Holds the current ConstructorBuilder.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnEnumB">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnEventB">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnEventType">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnFldB">
+            <summary>Holds the current FieldBuilder.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnILGen">
+            <summary>Hold the ILGenerator for the current method or constructor.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnInhTyp">
+            <summary>Holds a Type instance representing the base class for the class under construction.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnMetB">
+            <summary>Holds the current MethodBuilder.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnMetName">
+            <summary>Holds the name of the method under cosntruction.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnNS">
+            <summary>Holds the current namespace.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnPropB">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnTypB">
+            <summary>Holds the current TypeBuilder.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnTypB2">
+            <summary>Holds a second TypeBuilder temporarily.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnTypName">
+            <summary>Holds the name of the class under construction.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnTypName2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.DebugFlg">
+            <summary>If set indicates that debug information is required else its hould be unset.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.DfltNS">
+            <summary>Holds the default name space for an assembly usually its name.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.DocWriter">
+            <summary>Holds the current symbol writer.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.ForcedAddrFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.inClass">
+            <summary>If set indicates that a class is still being constructed.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.InCtorFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.inEnum">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.Init">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.InitConstr">
+            <summary>Initialises AsmFactory and ILEmitter to work with a new ConstructorBuilder.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.InitDelConstr">
+            <summary>Initialises AsmFactory to work with a new Delegate's ConstructorBuilder.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.InitDelMet">
+            <summary>Initialises AsmFactory to work with a new Delegate's MethodBuilder.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.InitMtd">
+            <summary>Initialises AsmFactory and ILEmitter to work with a new MethodBuilder.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.InitPInvokeMtd">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.InMemorySet">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.InMethodFlg">
+            <summary>If set indicates that a method is under construction.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.isNested">
+            <summary>Indicates that the current type under construction is a nested class if set.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.MdlB">
+            <summary>Holds the current ModuleBuilder.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.NSStack">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.PCLSet">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.PopFlg">
+            <summary>If set indicates that the next method call should be followed by a 'pop'</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.PopNS">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.AsmFactory.PushNS(System.String)">
+            <param name="ns">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.RefChainFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.StrongKey">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.Type01">
+            <summary>Usually holds the output of the EvalTTok method from the codegen module.</summary>
+            <remarks>This field is usually reserved just for this usage.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.Type02">
+            <summary>Usually holds the output of the ASTEmit method of the codegen module.</summary>
+            <remarks>This field is usually reserved just for this usage.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.Type03">
+            <summary>Usually used as temporary storage by the ASTEmit method of the codegen module.</summary>
+            <remarks>This field is usually reserved just for this usage.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.Type04">
+            <summary>Usually used to pass in the Type of the field that will be loaded for checks associated with the AddrFlg.</summary>
+            <remarks>This field is usually reserved just for this usage.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.Type05">
+            <summary>Usually used to pass in the type that declares the instance method to be called that is needed for checks associated with virtual valuetype method detection.</summary>
+            <remarks>This field is usually reserved just for this usage.</remarks>
+        </member>
+        <member name="T:dylan.NET.Reflection.AssemblyRecord">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Reflection.AssemblyRecord(IKVM.Reflection.Assembly)">
+            <param name="asm">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AssemblyRecord.Asm">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.AssemblyRecord.Used">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Reflection.BranchOptimisation">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.BranchOptimisation.Inverted">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:dylan.NET.Reflection.BranchOptimisation.None">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:dylan.NET.Reflection.BranchOptimisation.Normal">
+            <summary>To be added.</summary>
+        </member>
+        <member name="T:dylan.NET.Reflection.ILEmitter">
+            <summary>This class contains methods used for emitting opcodes to the current IL generator.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.AbstractCFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.AbstractFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.AddDocWriter(System.Diagnostics.SymbolStore.ISymbolDocumentWriter)">
+            <param name="srcf">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.AddSrcFile(System.String)">
+            <param name="srcf">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.ANIFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.ArgInd">
+            <summary>The index for the last declared argument.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.BeginScope">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.Constr">
+            <summary>Holds the current ConstructorBuilder.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.CurSrcFile">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.DebugFlg">
+            <summary>If debugging is enabled this flag is set else it is unset (false).</summary>
+            <remarks>Usually this reflects the value of the Debug Flag in AsmFactory.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.DeclVar(System.String,IKVM.Reflection.Type)">
+            <param name="name">To be added.</param>
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.DefineLbl">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.DocWriter">
+            <summary>Holds the current symbol writer.</summary>
+            <remarks>Used if debugging information is to be written.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.DocWriters">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitAdd(System.Boolean)">
+            <param name="s">If the operands are signed or not.</param>
+            <summary>Emits variants of the 'add' opcode accrodingly.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitAnd">
+            <summary>Emits the 'and' opcode.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitBox(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitBr(IKVM.Reflection.Emit.Label)">
+            <param name="lbl">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitBrfalse(IKVM.Reflection.Emit.Label)">
+            <param name="lbl">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitBrtrue(IKVM.Reflection.Emit.Label)">
+            <param name="lbl">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCall(IKVM.Reflection.MethodInfo)">
+            <param name="met">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCallCtor(IKVM.Reflection.ConstructorInfo)">
+            <param name="met">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCallvirt(IKVM.Reflection.MethodInfo)">
+            <param name="met">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCastclass(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCatch(IKVM.Reflection.Type)">
+            <param name="e">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCeq(dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCge(System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="s">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCgt(System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="s">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCle(System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="s">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitClt(System.Boolean,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="s">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitCneq(dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConstrained(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI">
+            <summary>Emits the 'conv.i' opcode.</summary>
+            <remarks>Useful in preparing indices to work with array opcodes.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI4">
+            <summary>Emits the 'conv.i4' opcode.</summary>
+            <remarks>Useful to convert array lengths returned by 'ldlen' to more appropriate format.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvI8(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfI1(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfI2(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfI4(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfI8(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfU1(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfU2(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvOvfU4(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvU">
+            <summary>Emits the 'conv.u' opcode.</summary>
+            <remarks>Useful in preparing indices to work with array opcodes.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvU2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvU8(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitDelegateAdd">
+            <summary>Emits a 'call' to Delegate.Combine.</summary>
+            <remarks>Useful for supporting '+' overload on delegates.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitDelegateSub">
+            <summary>Emits a 'call' to Delegate.Remove.</summary>
+            <remarks>Useful for supporting '-' overload on delegates.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitDiv(System.Boolean)">
+            <param name="s">If the operands are signed or not.</param>
+            <summary>Emits the variants of the 'div' opcode accordingly.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitDup">
+            <summary>Emits the 'dup' opcode.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitEndTry">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitFinally">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitInitobj(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitIs(IKVM.Reflection.Type,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="t">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitIsinst(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitIsNot(IKVM.Reflection.Type,dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="t">To be added.</param>
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdarg(System.Int32)">
+            <param name="num">The index of the argument to load.</param>
+            <summary>Emits one of the variants of 'ldarg' accordingly.</summary>
+            <remarks>To get the address of the argument instead use EmitLdarga.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdarga(System.Int32)">
+            <param name="num">The index of the argument whose address is required.</param>
+            <summary>Emits the 'ldarga' or 'ldarga.s' opcodes accordingly.</summary>
+            <remarks>If the actual argument locations's stored value is needed use EmitLdarg isntead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcBool(System.Boolean)">
+            <param name="b">The boolean value to emit a load for.</param>
+            <summary>Emits 'ldc.i4.1' or 'ldc.i4.0' for true or false respectively.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcChar(System.Char)">
+            <param name="c">The character to emit a load for.</param>
+            <summary>Emits one of the variants of 'ldc.i4' opcode using the numerical unicode value of the character as the integer loaded.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcDec(System.Decimal)">
+            <param name="n">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcI1(System.SByte)">
+            <param name="n">The int8 number to emit a load for.</param>
+            <summary>Emits one of the variants of 'ldc.i4' followed by a 'conv.i1'.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcI2(System.Int16)">
+            <param name="n">The int16 number to emit a load for.</param>
+            <summary>Emits one of the variants of 'ldc.i4' followed by a 'conv.i2'.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcI4(System.Int32)">
+            <param name="num">The int32 number to emit a load for.</param>
+            <summary>Emits one of the variants of the 'ldc.i4' opcode.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcI8(System.Int64)">
+            <param name="n">The int64 number to emit a load for.</param>
+            <summary>Emits one of the variants of 'ldc.i4' followed by a 'conv.i8' or an 'ldc.i8' accordingly.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcR4(System.Single)">
+            <param name="num">The float32 number to emit a load for.</param>
+            <summary>Emits the 'ldc.r4' opcode.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcR8(System.Double)">
+            <param name="num">The float64 number to emit a load for.</param>
+            <summary>Emits the 'ldc.r8' opcode.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcU1(System.Byte)">
+            <param name="n">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcU2(System.UInt16)">
+            <param name="n">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcU4(System.UInt32)">
+            <param name="n">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcU8(System.UInt64)">
+            <param name="n">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdelem(IKVM.Reflection.Type)">
+            <param name="typ">The type of the array element.</param>
+            <summary>Emits one of the 'ldelem' variants accordingly.</summary>
+            <remarks>If the address of the location is desired use EmitLdelema instead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdelema(IKVM.Reflection.Type)">
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdfld(IKVM.Reflection.FieldInfo)">
+            <param name="fld">The instance field to load.</param>
+            <summary>Emits the 'ldfld' opcode.</summary>
+            <remarks>An instance of a class must be loaded prior to this emission. If a static field is to be loaded use EmitLdsfld instead. If the address is required use EmitLdflda instead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdflda(IKVM.Reflection.FieldInfo)">
+            <param name="fld">The instance field whose address is required.</param>
+            <summary>Emits the 'ldflda' opcode.</summary>
+            <remarks>An instance of a class must be loaded prior to this emission.If the actual value is required use EmitLdfld instead. If the address of a static field is required use EmitLdsflda.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdftn(IKVM.Reflection.MethodInfo)">
+            <param name="met">The static method to which a pointer is needed.</param>
+            <summary>Emits the 'ldftn' opcode.</summary>
+            <remarks>If the pointer to an instance method is needed use EmitLdvirtftn instead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdind(IKVM.Reflection.Type)">
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdlen">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdloc(System.Int32)">
+            <param name="num">The index of the location to load.</param>
+            <summary>Emits one of the variants of the 'ldloc' opcode.</summary>
+            <remarks>If the address to the location is needed use EmitLdloca instead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdloca(System.Int32)">
+            <param name="num">The index of the location whose address is needed.</param>
+            <summary>Emits one of the variants of the 'ldloca' opcode.</summary>
+            <remarks>If the actual value is needed use EmitLdloc instead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdnull">
+            <summary>Emits the 'ldnull' opcode.</summary>
+            <remarks>Useful for obtaining null references.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdsfld(IKVM.Reflection.FieldInfo)">
+            <param name="fld">The static field to load.</param>
+            <summary>Emits the 'ldsfld' opcode.</summary>
+            <remarks>If the address is needed use EmitLdsflda instead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdsflda(IKVM.Reflection.FieldInfo)">
+            <param name="fld">The static field whose address is required.</param>
+            <summary>Emits the 'ldsflda' opcode.</summary>
+            <remarks>If the actual value of the field is needed use EmitLdsfld instead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdstr(System.String)">
+            <param name="str">The string constant to load.</param>
+            <summary>Emits the 'ldstr' opcode.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdtoken(IKVM.Reflection.Type)">
+            <param name="t">The type whose token is needed.</param>
+            <summary>Emits the 'ldtoken' opcode.</summary>
+            <remarks>Useful for gettype/typeof implementation and in calling castclass.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdvirtftn(IKVM.Reflection.MethodInfo)">
+            <param name="met">The instance method whose pointer is needed.</param>
+            <summary>Emits the 'ldvirtftn' opcode.</summary>
+            <remarks>An instance of a class must be loaded prior to this emission. If the pointer to a static method is required use EmitLdftn instead.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLeave(IKVM.Reflection.Emit.Label)">
+            <param name="lbl">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitLike">
+            <summary>Emits a 'call' to Regex.IsMatch.</summary>
+            <remarks>Useful to compare strings against a pattern. This adds an implicit reference to System.dll!!! </remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitMul(System.Boolean)">
+            <param name="s">If the operands are signed or not.</param>
+            <summary>Emits one of the variants of the 'mul' opcode.</summary>
+            <remarks>Multiplies its operands.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNand">
+            <summary>Emits a sequence of 'and', 'ldc.i4.0' and 'ceq'.</summary>
+            <remarks>Applies a 1's complemented 'and' to its operands (nand).</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNandOther">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNeg">
+            <summary>Emits the 'neg' opcode.</summary>
+            <remarks>Does a 2's complement negation on its operand.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNewarr(IKVM.Reflection.Type)">
+            <param name="t">The type of the array to make.</param>
+            <summary>Emits the 'newarr' opcode.</summary>
+            <remarks>Useful for making arrays. The length of the array of type IntPtr must be loaded prior to this emission.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNewobj(IKVM.Reflection.ConstructorInfo)">
+            <param name="c">The constructor to call.</param>
+            <summary>Emits the 'newobj' opcode.</summary>
+            <remarks>Useful for producing object instances.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNLike">
+            <summary>Emits a sequence of Regex.IsMatch, 'ldc.i4.0' and 'ceq' .</summary>
+            <remarks>Useul to check if a string does not conform to a pattern (notlike).</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNor">
+            <summary>Emits a sequence of 'or', 'ldc.i4.0' and 'ceq'.</summary>
+            <remarks>dpes a 1's complemented 'or' (nor) on its operands.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNorOther">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNot">
+            <summary>Emits the 'not' opcode.</summary>
+            <remarks>For booleans consider using 'ldc.i4.0' followed by a 'ceq' instead i.e. use EmitLdcI4(0) and EmitCeq.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNotOther">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNotRef">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitOr">
+            <summary>Emits the 'or' opcode.</summary>
+            <remarks>Does an inclusive 'or' on its opcode.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitPop">
+            <summary>Emits the 'pop' opcode.</summary>
+            <remarks>Usful when a value on the stack is not needed.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitRem(System.Boolean)">
+            <param name="s">If the operands are signed or not.</param>
+            <summary>Emits the 'rem' opcode.</summary>
+            <remarks>Does a modulo operantion on the operands (%).</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitRet">
+            <summary>Emits the 'ret' opcode.</summary>
+            <remarks>Useful for returning the control to the method which called this one.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitRethrow">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitShl">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitShr(System.Boolean)">
+            <param name="s">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStarg(System.Int32)">
+            <param name="num">The index of the argument to store to.</param>
+            <summary>Emits one of the variants of the 'starg' opcode.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStelem(IKVM.Reflection.Type)">
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStfld(IKVM.Reflection.FieldInfo)">
+            <param name="fld">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStind(IKVM.Reflection.Type)">
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStloc(System.Int32)">
+            <param name="num">The index of the loaction to store in.</param>
+            <summary>Emist one of the variants of the 'stloc' opcode.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStrAdd">
+            <summary>Emits a call to String.Concat.</summary>
+            <remarks>Useful for supporting string concatenation as addition of strings.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStrCeq">
+            <summary>Emits a combination of String.Compare, 'ldc.i4.0' and 'ceq'.</summary>
+            <remarks>Checks if two strings are equal. The use of the Equality overload in System.String is preferred over this.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStrCneq">
+            <summary>Emits a combination of String.Compare, 'ldc.i4.0','ceq','ldc.i4.0' and 'ceq'.</summary>
+            <remarks>Checks if two strings are not equal. The  use of the Inequality overload in System.String is preferred over this.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitStsfld(IKVM.Reflection.FieldInfo)">
+            <param name="fld">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitSub(System.Boolean)">
+            <param name="s">If the operands are signed or not.</param>
+            <summary>Emits one of the variants of the 'sub' opcode.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitThrow">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitTry">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitUnbox(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitUnboxAny(IKVM.Reflection.Type)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitXnor">
+            <summary>Emits a sequence of 'xor', 'ldc.i4.0' and 'ceq'.</summary>
+            <remarks>Does a 1's complemented 'xor' (xnor) on its operands.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitXnorOther">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitXor">
+            <summary>Emist the 'xor' opcode.</summary>
+            <remarks>Does an exclusive 'or' (xor) on its operands .</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EndScope">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.Init">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.InterfaceFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.LineNr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.LocInd">
+            <summary>The index for the last declared variable.</summary>
+            <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.MarkDbgPt(System.Int32)">
+            <param name="line">The current statement's line number.</param>
+            <summary>Marks a trace point in the debug symbols.</summary>
+            <remarks>Useful when supporting debug symbol making.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.MarkLbl(IKVM.Reflection.Emit.Label)">
+            <param name="lbl">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.Met">
+            <summary>Holds the current MethodBuilder.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.OverrideFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.PartialFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.PInvokeFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.PopDocWriter">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.PopSrcFile">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.ProtoFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.SrcFiles">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.StaticCFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.StaticFlg">
+            <summary>Set if the current method is static else unset.</summary>
+            <remarks />
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.StructFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ILEmitter.Univ">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Reflection.Importer">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Importer.AddAsm(System.String,IKVM.Reflection.Assembly)">
+            <param name="path">To be added.</param>
+            <param name="asmm">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Importer.AddImp(System.String)">
+            <param name="imp">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Importer.AliasMap">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Importer.AsmBasePath">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Importer.Asms">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Importer.ImpsStack">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Importer.Init">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Importer.RegisterAlias(System.String,System.String)">
+            <param name="alias">To be added.</param>
+            <param name="ns">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Reflection.ImportRecord">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Reflection.ImportRecord(System.String)">
+            <param name="ns">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Reflection.ImportRecord(System.String,System.Int32)">
+            <param name="ns">To be added.</param>
+            <param name="l">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ImportRecord.Line">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ImportRecord.Namespace">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.ImportRecord.Used">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Reflection.Loader">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.CachedLoadClass(System.String)">
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.CompareParamsToTyps(System.Reflection.ParameterInfo[],System.Type[])">
+            <param name="t1">To be added.</param>
+            <param name="t2">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Loader.EnumLitFlag">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Loader.EnumLitTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Loader.FldLitFlag">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Loader.FldLitTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Loader.FldLitVal">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.GetDelegateInvokeParams(IKVM.Reflection.Type)">
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.Init">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadBinOp(IKVM.Reflection.Type,System.String,IKVM.Reflection.Type,IKVM.Reflection.Type)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <param name="typa">To be added.</param>
+            <param name="typb">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadClass(System.String)">
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadClasses(System.String)">
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadConvOp(IKVM.Reflection.Type,System.String,IKVM.Reflection.Type,IKVM.Reflection.Type)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <param name="src">To be added.</param>
+            <param name="snk">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadCtor(IKVM.Reflection.Type,IKVM.Reflection.Type[])">
+            <param name="typ">To be added.</param>
+            <param name="typs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadField(IKVM.Reflection.Type,System.String)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadGenericMethod(IKVM.Reflection.Type,System.String,IKVM.Reflection.Type[],IKVM.Reflection.Type[])">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <param name="genparams">To be added.</param>
+            <param name="paramst">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadGenericMtdOverlds(IKVM.Reflection.Type,System.String,System.Int32)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <param name="paramlen">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadMethod(IKVM.Reflection.Type,System.String,IKVM.Reflection.Type[])">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <param name="typs">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadMethodWithoutParams(IKVM.Reflection.Type,System.String)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadNormalMtdOverlds(IKVM.Reflection.Type,System.String)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadProperty(IKVM.Reflection.Type,System.String)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadSpecMtds(IKVM.Reflection.Type)">
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.LoadUnaOp(IKVM.Reflection.Type,System.String,IKVM.Reflection.Type)">
+            <param name="typ">To be added.</param>
+            <param name="name">To be added.</param>
+            <param name="typa">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Loader.MakeArr">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Loader.MakeRef">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Loader.MemberTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.ParamsToTyps(IKVM.Reflection.ParameterInfo[])">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Loader.PreProcTyp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.Loader.ProcessType(IKVM.Reflection.Type)">
+            <param name="typ">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Reflection.Loader.ProtectedFlag">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+    </members>
+</doc>

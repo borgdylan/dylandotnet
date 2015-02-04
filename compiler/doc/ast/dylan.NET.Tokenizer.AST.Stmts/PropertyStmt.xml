@@ -1,0 +1,158 @@
+<Type Name="PropertyStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.PropertyStmt">
+  <TypeSignature Language="C#" Value="public class PropertyStmt : dylan.NET.Tokenizer.AST.Stmts.BlockStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi PropertyStmt extends dylan.NET.Tokenizer.AST.Stmts.BlockStmt" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.BlockStmt</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PropertyStmt ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddAttr">
+      <MemberSignature Language="C#" Value="public void AddAttr (dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void AddAttr(class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute attrtoadd) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="attrtoadd" Type="dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute" />
+      </Parameters>
+      <Docs>
+        <param name="attrtoadd">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddParam">
+      <MemberSignature Language="C#" Value="public void AddParam (dylan.NET.Tokenizer.AST.Exprs.Expr paramtoadd);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void AddParam(class dylan.NET.Tokenizer.AST.Exprs.Expr paramtoadd) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="paramtoadd" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
+      </Parameters>
+      <Docs>
+        <param name="paramtoadd">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Attrs">
+      <MemberSignature Language="C#" Value="public C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; Attrs;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; Attrs" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsOneLiner">
+      <MemberSignature Language="C#" Value="public override bool IsOneLiner (dylan.NET.Tokenizer.AST.Stmts.IStmtContainer ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool IsOneLiner(class dylan.NET.Tokenizer.AST.Stmts.IStmtContainer ctx) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="dylan.NET.Tokenizer.AST.Stmts.IStmtContainer" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Params">
+      <MemberSignature Language="C#" Value="public C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Exprs.Expr&gt; Params;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Exprs.Expr&gt; Params" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Exprs.Expr&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PropertyName">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Ident PropertyName;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Ident PropertyName" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Ident</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PropertyTyp">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok PropertyTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok PropertyTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValidateContext">
+      <MemberSignature Language="C#" Value="public override bool ValidateContext (dylan.NET.Tokenizer.AST.Stmts.ContextType ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool ValidateContext(valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType ctx) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="dylan.NET.Tokenizer.AST.Stmts.ContextType" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValidateEnding">
+      <MemberSignature Language="C#" Value="public override bool ValidateEnding (dylan.NET.Tokenizer.AST.Stmts.Stmt stm);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool ValidateEnding(class dylan.NET.Tokenizer.AST.Stmts.Stmt stm) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

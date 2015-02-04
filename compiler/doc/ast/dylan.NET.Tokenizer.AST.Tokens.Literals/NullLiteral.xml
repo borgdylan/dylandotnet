@@ -1,0 +1,67 @@
+<Type Name="NullLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.NullLiteral">
+  <TypeSignature Language="C#" Value="public class NullLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi NullLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.Literal</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents the 'null' keyword in the form of a literal of type object.</summary>
+    <remarks>This literal always evaluates to a null reference.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NullLiteral ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new NullLiteral.</summary>
+        <remarks>Also sets LitTyp to an ObjectTok instance.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NullLiteral (string value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">The value to give to the 'Value' field which in this case is not useful.</param>
+        <summary>Constructs a new NullLiteral.</summary>
+        <remarks>Also sets LitTyp to an ObjectTok instance.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NullVal">
+      <MemberSignature Language="C#" Value="public object NullVal;" />
+      <MemberSignature Language="ILAsm" Value=".field public object NullVal" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds a null reference.</summary>
+        <remarks>The code generator will not use this null reference. Instead it will load one using the 'ldnull' opcode.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
+        <returns>The dylan.NET syntactic equivalent to this literal ie. "null".</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

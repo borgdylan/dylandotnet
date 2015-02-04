@@ -1,0 +1,203 @@
+<Type Name="ParseUtils" FullName="dylan.NET.Utils.ParseUtils">
+  <TypeSignature Language="C#" Value="public static class ParseUtils" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit ParseUtils extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dnu</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Interpolate">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Utils.InterpolateResult Interpolate (string input);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Utils.InterpolateResult Interpolate(string input) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Utils.InterpolateResult</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsHexDigit">
+      <MemberSignature Language="C#" Value="public static bool IsHexDigit (char c);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool IsHexDigit(char c) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="c" Type="System.Char" />
+      </Parameters>
+      <Docs>
+        <param name="c">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProcessMSYSPath">
+      <MemberSignature Language="C#" Value="public static string ProcessMSYSPath (string p);" />
+      <MemberSignature Language="ILAsm" Value=".method public static string ProcessMSYSPath(string p) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProcessMSYSPath">
+      <MemberSignature Language="C#" Value="public static string ProcessMSYSPath (string p, PlatformID pid);" />
+      <MemberSignature Language="ILAsm" Value=".method public static string ProcessMSYSPath(string p, valuetype System.PlatformID pid) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="System.String" />
+        <Parameter Name="pid" Type="System.PlatformID" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <param name="pid">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProcessString">
+      <MemberSignature Language="C#" Value="public static string ProcessString (string escstr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static string ProcessString(string escstr) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="escstr" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="escstr">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StringParser">
+      <MemberSignature Language="C#" Value="public static string[] StringParser (string StringToParse, char DelimeterChar);" />
+      <MemberSignature Language="ILAsm" Value=".method public static string[] StringParser(string StringToParse, char DelimeterChar) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="StringToParse" Type="System.String" />
+        <Parameter Name="DelimeterChar" Type="System.Char" />
+      </Parameters>
+      <Docs>
+        <param name="StringToParse">To be added.</param>
+        <param name="DelimeterChar">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StringParser2ds">
+      <MemberSignature Language="C#" Value="public static string[] StringParser2ds (string StringToParse, string DelimeterChar, string DelimeterChar2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static string[] StringParser2ds(string StringToParse, string DelimeterChar, string DelimeterChar2) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="StringToParse" Type="System.String" />
+        <Parameter Name="DelimeterChar" Type="System.String" />
+        <Parameter Name="DelimeterChar2" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="StringToParse">To be added.</param>
+        <param name="DelimeterChar">To be added.</param>
+        <param name="DelimeterChar2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StringParserL">
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;string&gt; StringParserL (string StringToParse, char DelimeterChar);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class C5.IList`1&lt;string&gt; StringParserL(string StringToParse, char DelimeterChar) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>C5.IList&lt;System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="StringToParse" Type="System.String" />
+        <Parameter Name="DelimeterChar" Type="System.Char" />
+      </Parameters>
+      <Docs>
+        <param name="StringToParse">To be added.</param>
+        <param name="DelimeterChar">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

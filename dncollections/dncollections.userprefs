@@ -1,0 +1,18 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="dncollections/allist.dyl">
+    <Files>
+      <File FileName="dncollections/item.dyl" Line="1" Column="1" />
+      <File FileName="dncollections/dncollections.dyl" Line="1" Column="1" />
+      <File FileName="dncollections/allist.dyl" Line="1" Column="1" />
+      <File FileName="dncollections/alstack.dyl" Line="1" Column="1" />
+      <File FileName="dncollections/alqueue.dyl" Line="1" Column="1" />
+      <File FileName="tests/tests.dyl" Line="1" Column="1" />
+      <File FileName="tests/TestItem.dyl" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

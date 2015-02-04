@@ -1,0 +1,41 @@
+<Type Name="LtOp" FullName="dylan.NET.Tokenizer.AST.Tokens.Ops.LtOp">
+  <TypeSignature Language="C#" Value="public class LtOp : dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi LtOp extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a less than '&lt;' operator.</summary>
+    <remarks>Checks if LChild is less than RChild.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public LtOp ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Cosntructs a new LtOp.</summary>
+        <remarks>Also sets PrecNo accordingly.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

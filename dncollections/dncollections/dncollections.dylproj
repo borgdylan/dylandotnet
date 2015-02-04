@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{06B1E0F5-93E7-444D-B682-89D076CF8DF0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>dylan.NET.Collections</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>dncollections</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Interactive">
+      <HintPath>..\packages\Ix-Main.1.2.2\lib\net40\System.Interactive.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="dncollections.dyl" />
+    <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="allist.dyl" />
+    <Compile Include="alqueue.dyl" />
+    <Compile Include="alstack.dyl" />
+    <Compile Include="searchdelegate.dyl" />
+    <Compile Include="item.dyl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <StandardHeader Text="//    dncollections.dll dylan.NET.Collections Copyright (C) 2014 Dylan Borg &lt;borgdylan@hotmail.com&gt;&#xA;//    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software&#xA;// Foundation; either version 3 of the License, or (at your option) any later version.&#xA;//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A &#xA;//PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.&#xA;//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple &#xA;//Place, Suite 330, Boston, MA 02111-1307 USA&#xA;" IncludeInNewFiles="True" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

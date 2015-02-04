@@ -1,0 +1,27 @@
+<Type Name="EndRegionStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.EndRegionStmt">
+  <TypeSignature Language="C#" Value="public class EndRegionStmt : dylan.NET.Tokenizer.AST.Stmts.EndStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi EndRegionStmt extends dylan.NET.Tokenizer.AST.Stmts.EndStmt" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.EndStmt</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public EndRegionStmt ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

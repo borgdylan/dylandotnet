@@ -1,0 +1,77 @@
+<Type Name="ConstLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.ConstLiteral">
+  <TypeSignature Language="C#" Value="public class ConstLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ConstLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.Literal</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a Literal/Constant field's value.</summary>
+    <remarks>The values of the fields in instances of this class are found using reflection.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ConstLiteral ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new ConstLiteral.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ConstLiteral (object value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(object value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConstVal">
+      <MemberSignature Language="C#" Value="public object ConstVal;" />
+      <MemberSignature Language="ILAsm" Value=".field public object ConstVal" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The value of the Literal/Constant field as given by the reflection infrastructure.</summary>
+        <remarks>This value is post-processed via helper methods in the CodeGen library which ready it for loading.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ExtTyp">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type ExtTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type ExtTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The type of the constant as it should appear in method parameter lists etc.</summary>
+        <remarks>In the case of enum entries this is the enum's name. In cases of standalone constant fields this is the same as IntTyp.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IntTyp">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type IntTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type IntTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The actual type of the value which is used for the transformation of this class instance into a suitable literal loadable by the EmitLiteral method in the Helpers class of CodeGen.</summary>
+        <remarks>In the case of an enum member this is the enum's underlying type otherwise it is the reported field constant type.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

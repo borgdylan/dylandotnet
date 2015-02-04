@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{61A11800-DE21-4E43-92F9-90F9F35F871D}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{B8F53A22-841F-42C4-9784-A1FD44586C5A};{B3296CA8-08AE-42E6-8D7C-A1C9304440FD}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PCL</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>PCL</AssemblyName>
+    <ReleaseVersion>1.0.0.0</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="MyClass.dyl" />
+    <Compile Include="PCL.dyl" />
+    <Compile Include="Properties\AssemblyInfo.dyl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\dylan.NET.Portable.targets" />
+  <ItemGroup>
+    <Reference Include="dylan.NET.Tasks">
+      <HintPath>..\packages\dylan.NET.Tasks.1.1.1.1\lib\portable-Profile78\dylan.NET.Tasks.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

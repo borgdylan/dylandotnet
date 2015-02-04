@@ -1,0 +1,100 @@
+<Type Name="ByteLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral">
+  <TypeSignature Language="C#" Value="public class ByteLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ByteLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral implements class dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.INotable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>Represents a byte (uint8) literal.</summary>
+    <remarks>Such literals have a 'ub' suffix.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ByteLiteral ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a ByteLiteral.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ByteLiteral (byte value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(unsigned int8 value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="System.Byte" />
+      </Parameters>
+      <Docs>
+        <param name="value">The byte value to assign to the ByteLiteral.</param>
+        <summary>Constructs a new ByteLiteral with the given value.</summary>
+        <remarks>Sets the Value and LitTyp fields accodingly.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ByteLiteral (string value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">
+        </param>
+        <summary>Constructs a new ByteLiteral.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoNot">
+      <MemberSignature Language="C#" Value="public virtual bool DoNot { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoNot" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumVal">
+      <MemberSignature Language="C#" Value="public byte NumVal;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int8 NumVal" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The numeric value of the literal.</summary>
+        <remarks>It is loaded using the ldc.i4 set of opcodes followed by a conv.u1.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
+        <returns>The dylan.NET syntactic equivalent to this literal ie. NumVal + "ub".</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

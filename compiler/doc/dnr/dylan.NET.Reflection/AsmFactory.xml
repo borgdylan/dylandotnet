@@ -1,0 +1,727 @@
+<Type Name="AsmFactory" FullName="dylan.NET.Reflection.AsmFactory">
+  <TypeSignature Language="C#" Value="public static class AsmFactory" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit AsmFactory extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dnr</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Holds the resources used during assembly making.</summary>
+    <remarks>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AddrFlg">
+      <MemberSignature Language="C#" Value="public static bool AddrFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool AddrFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Set this to allow automatic valuetype pointer load during field chaining.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AsmB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.AssemblyBuilder AsmB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.AssemblyBuilder AsmB" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.AssemblyBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the AssemblyBuilder for the assembly under construction.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AsmFile">
+      <MemberSignature Language="C#" Value="public static string AsmFile;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string AsmFile" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the name of the assembly under construction.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AsmMode">
+      <MemberSignature Language="C#" Value="public static string AsmMode;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string AsmMode" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the mode i.e. 'exe' or 'dll' of the assembly under construction.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AsmNameStr">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.AssemblyName AsmNameStr;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.AssemblyName AsmNameStr" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.AssemblyName</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the AssemblyName for the assembly under construction.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AutoChainFlg">
+      <MemberSignature Language="C#" Value="public static bool AutoChainFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool AutoChainFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ChainFlg">
+      <MemberSignature Language="C#" Value="public static bool ChainFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool ChainFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>When set indicates that a method chain beyond field chaining boundaries is in progress.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateTyp">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CreateTyp ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type CreateTyp() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Calls CreateType on the current TypeBuilder.</summary>
+        <returns>The constructed Type.</returns>
+        <remarks>Usually done at the end of a class.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnConB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.ConstructorBuilder CurnConB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.ConstructorBuilder CurnConB" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.ConstructorBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the current ConstructorBuilder.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnEnumB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.EnumBuilder CurnEnumB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.EnumBuilder CurnEnumB" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.EnumBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnEventB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.EventBuilder CurnEventB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.EventBuilder CurnEventB" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.EventBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnEventType">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CurnEventType;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type CurnEventType" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnFldB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.FieldBuilder CurnFldB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.FieldBuilder CurnFldB" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.FieldBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the current FieldBuilder.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnILGen">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.ILGenerator CurnILGen;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.ILGenerator CurnILGen" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.ILGenerator</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Hold the ILGenerator for the current method or constructor.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnInhTyp">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CurnInhTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type CurnInhTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds a Type instance representing the base class for the class under construction.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnMetB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.MethodBuilder CurnMetB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.MethodBuilder CurnMetB" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.MethodBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the current MethodBuilder.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnMetName">
+      <MemberSignature Language="C#" Value="public static string CurnMetName;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string CurnMetName" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the name of the method under cosntruction.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnNS">
+      <MemberSignature Language="C#" Value="public static string CurnNS;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string CurnNS" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the current namespace.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnPropB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.PropertyBuilder CurnPropB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.PropertyBuilder CurnPropB" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.PropertyBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnTypB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.TypeBuilder CurnTypB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.TypeBuilder CurnTypB" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.TypeBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the current TypeBuilder.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnTypB2">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.TypeBuilder CurnTypB2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.TypeBuilder CurnTypB2" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.TypeBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds a second TypeBuilder temporarily.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnTypName">
+      <MemberSignature Language="C#" Value="public static string CurnTypName;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string CurnTypName" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the name of the class under construction.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnTypName2">
+      <MemberSignature Language="C#" Value="public static string CurnTypName2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string CurnTypName2" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DebugFlg">
+      <MemberSignature Language="C#" Value="public static bool DebugFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool DebugFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>If set indicates that debug information is required else its hould be unset.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DfltNS">
+      <MemberSignature Language="C#" Value="public static string DfltNS;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string DfltNS" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the default name space for an assembly usually its name.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DocWriter">
+      <MemberSignature Language="C#" Value="public static System.Diagnostics.SymbolStore.ISymbolDocumentWriter DocWriter;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class System.Diagnostics.SymbolStore.ISymbolDocumentWriter DocWriter" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Diagnostics.SymbolStore.ISymbolDocumentWriter</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the current symbol writer.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForcedAddrFlg">
+      <MemberSignature Language="C#" Value="public static bool ForcedAddrFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool ForcedAddrFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="inClass">
+      <MemberSignature Language="C#" Value="public static bool inClass;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool inClass" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>If set indicates that a class is still being constructed.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InCtorFlg">
+      <MemberSignature Language="C#" Value="public static bool InCtorFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool InCtorFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="inEnum">
+      <MemberSignature Language="C#" Value="public static bool inEnum;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool inEnum" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public static void Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitConstr">
+      <MemberSignature Language="C#" Value="public static void InitConstr ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void InitConstr() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Initialises AsmFactory and ILEmitter to work with a new ConstructorBuilder.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitDelConstr">
+      <MemberSignature Language="C#" Value="public static void InitDelConstr ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void InitDelConstr() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Initialises AsmFactory to work with a new Delegate's ConstructorBuilder.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitDelMet">
+      <MemberSignature Language="C#" Value="public static void InitDelMet ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void InitDelMet() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Initialises AsmFactory to work with a new Delegate's MethodBuilder.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitMtd">
+      <MemberSignature Language="C#" Value="public static void InitMtd ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void InitMtd() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Initialises AsmFactory and ILEmitter to work with a new MethodBuilder.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitPInvokeMtd">
+      <MemberSignature Language="C#" Value="public static void InitPInvokeMtd ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void InitPInvokeMtd() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InMemorySet">
+      <MemberSignature Language="C#" Value="public static bool InMemorySet;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool InMemorySet" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InMethodFlg">
+      <MemberSignature Language="C#" Value="public static bool InMethodFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool InMethodFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>If set indicates that a method is under construction.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="isNested">
+      <MemberSignature Language="C#" Value="public static bool isNested;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool isNested" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Indicates that the current type under construction is a nested class if set.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MdlB">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.ModuleBuilder MdlB;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.ModuleBuilder MdlB" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.ModuleBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds the current ModuleBuilder.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSStack">
+      <MemberSignature Language="C#" Value="public static C5.LinkedList&lt;string&gt; NSStack;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.LinkedList`1&lt;string&gt; NSStack" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.LinkedList&lt;System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PCLSet">
+      <MemberSignature Language="C#" Value="public static bool PCLSet;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool PCLSet" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopFlg">
+      <MemberSignature Language="C#" Value="public static bool PopFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool PopFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>If set indicates that the next method call should be followed by a 'pop'</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopNS">
+      <MemberSignature Language="C#" Value="public static void PopNS ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopNS() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PushNS">
+      <MemberSignature Language="C#" Value="public static void PushNS (string ns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PushNS(string ns) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ns" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="ns">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RefChainFlg">
+      <MemberSignature Language="C#" Value="public static bool RefChainFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool RefChainFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StrongKey">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.StrongNameKeyPair StrongKey;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.StrongNameKeyPair StrongKey" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.StrongNameKeyPair</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Type01">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type Type01;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type Type01" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Usually holds the output of the EvalTTok method from the codegen module.</summary>
+        <remarks>This field is usually reserved just for this usage.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Type02">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type Type02;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type Type02" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Usually holds the output of the ASTEmit method of the codegen module.</summary>
+        <remarks>This field is usually reserved just for this usage.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Type03">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type Type03;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type Type03" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Usually used as temporary storage by the ASTEmit method of the codegen module.</summary>
+        <remarks>This field is usually reserved just for this usage.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Type04">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type Type04;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type Type04" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Usually used to pass in the Type of the field that will be loaded for checks associated with the AddrFlg.</summary>
+        <remarks>This field is usually reserved just for this usage.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Type05">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type Type05;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type Type05" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Usually used to pass in the type that declares the instance method to be called that is needed for checks associated with virtual valuetype method detection.</summary>
+        <remarks>This field is usually reserved just for this usage.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2AE29F43-1588-407F-9F2E-EADE63A5D6C9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>dylan.NET.Reflection</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>dnr</AssemblyName>
+    <ReleaseVersion>11.5.4.3</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Testing</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Interactive">
+      <HintPath>..\packages\Ix-Main.1.2.2\lib\net40\System.Interactive.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Reflection">
+      <HintPath>..\lib\IKVM.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="C5">
+      <HintPath>..\packages\C5.2.3.0.1\lib\net40\C5.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="dnr.dyl" />
+    <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="asmfactory.dyl" />
+    <Compile Include="consoleprinter.dyl" />
+    <Compile Include="ilemitter.dyl" />
+    <Compile Include="importer.dyl" />
+    <Compile Include="instructionhelper.dyl" />
+    <Compile Include="itypeprovider.dyl" />
+    <Compile Include="loader.dyl" />
+    <Compile Include="milambdas.dyl" />
+    <Compile Include="AssemblyRecord.dyl" />
+    <Compile Include="ImportRecord.dyl" />
+  </ItemGroup>
+  <Import Project="..\4.0\dylan.NET.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\dnu\dnu.dylproj">
+      <Project>{D61ACAE6-7B4E-4234-B40E-0A185815133D}</Project>
+      <Name>dnu</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <StandardHeader Text="//    dnu.dll dylan.NET.Utils Copyright (C) 2014 Dylan Borg &lt;borgdylan@hotmail.com&gt;&#xA;//    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software&#xA;// Foundation; either version 3 of the License, or (at your option) any later version.&#xA;//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A &#xA;//PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.&#xA;//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple &#xA;//Place, Suite 330, Boston, MA 02111-1307 USA " IncludeInNewFiles="True" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

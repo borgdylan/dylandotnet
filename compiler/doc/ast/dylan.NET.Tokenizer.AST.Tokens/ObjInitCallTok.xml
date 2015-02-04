@@ -1,0 +1,116 @@
+<Type Name="ObjInitCallTok" FullName="dylan.NET.Tokenizer.AST.Tokens.ObjInitCallTok">
+  <TypeSignature Language="C#" Value="public class ObjInitCallTok : dylan.NET.Tokenizer.AST.Tokens.ValueToken" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ObjInitCallTok extends dylan.NET.Tokenizer.AST.Tokens.ValueToken" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.ValueToken</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ObjInitCallTok ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ObjInitCallTok (string value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddElem">
+      <MemberSignature Language="C#" Value="public void AddElem (dylan.NET.Tokenizer.AST.Tokens.Token eltoadd);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void AddElem(class dylan.NET.Tokenizer.AST.Tokens.Token eltoadd) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="eltoadd" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+      </Parameters>
+      <Docs>
+        <param name="eltoadd">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Ctor">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.NewCallTok Ctor;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.NewCallTok Ctor" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.NewCallTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Elements">
+      <MemberSignature Language="C#" Value="public C5.ArrayList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt; Elements;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.ArrayList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Token&gt; Elements" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.ArrayList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MemberAccessFlg">
+      <MemberSignature Language="C#" Value="public bool MemberAccessFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool MemberAccessFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MemberToAccess">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token MemberToAccess;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Token MemberToAccess" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopFlg">
+      <MemberSignature Language="C#" Value="public bool PopFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool PopFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

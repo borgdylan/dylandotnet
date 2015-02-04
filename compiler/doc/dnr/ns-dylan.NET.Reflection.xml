@@ -1,0 +1,6 @@
+<Namespace Name="dylan.NET.Reflection">
+  <Docs>
+    <summary>This namespace contains all the reflection(-emit) parts of dylan.NET.</summary>
+    <remarks>This namespace is used heavily by the tokenizer.CodeGen library.</remarks>
+  </Docs>
+</Namespace>

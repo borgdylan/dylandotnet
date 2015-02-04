@@ -1,0 +1,200 @@
+
+method public static integer getCodeFromType(var typ as System.Type)
+var cod as integer = 0
+var b as boolean = false
+var typ2 as System.Type
+
+label fin
+
+typ2 = gettype boolean
+b = typ::Equals(typ2)
+if b = true then
+cod = 101
+goto fin
+end if
+
+typ2 = gettype Byte
+b = typ::Equals(typ2)
+if b = true then
+cod = 8
+goto fin
+end if
+
+typ2 = gettype UInt16
+b = typ::Equals(typ2)
+if b = true then
+cod = 16
+goto fin
+end if
+
+typ2 = gettype UInt32
+b = typ::Equals(typ2)
+if b = true then
+cod = 32
+goto fin
+end if
+
+typ2 = gettype UIntPtr
+b = typ::Equals(typ2)
+if b = true then
+cod = 40
+goto fin
+end if
+
+typ2 = gettype UInt64
+b = typ::Equals(typ2)
+if b = true then
+cod = 64
+goto fin
+end if
+
+typ2 = gettype sbyte
+b = typ::Equals(typ2)
+if b = true then
+cod = 108
+goto fin
+end if
+
+typ2 = gettype short
+b = typ::Equals(typ2)
+if b = true then
+cod = 116
+goto fin
+end if
+
+typ2 = gettype integer
+b = typ::Equals(typ2)
+if b = true then
+cod = 132
+goto fin
+end if
+
+typ2 = gettype IntPtr
+b = typ::Equals(typ2)
+if b = true then
+cod = 140
+goto fin
+end if
+
+typ2 = gettype char
+b = typ::Equals(typ2)
+if b = true then
+cod = 150
+goto fin
+end if
+
+typ2 = gettype long
+b = typ::Equals(typ2)
+if b = true then
+cod = 164
+goto fin
+end if
+
+typ2 = gettype single
+b = typ::Equals(typ2)
+if b = true then
+cod = 232
+goto fin
+end if
+
+typ2 = gettype double
+b = typ::Equals(typ2)
+if b = true then
+cod = 264
+goto fin
+end if
+
+typ2 = gettype string
+b = typ::Equals(typ2)
+if b = true then
+cod = 270
+goto fin
+end if
+
+place fin
+return cod
+end method
+
+method public static System.Type getTypeFromCode(var cod as integer)
+var typ2 as System.Type = gettype object
+
+label fin
+
+if cod = 101 then
+typ2 = gettype boolean
+goto fin
+end if
+
+if cod = 8 then
+typ2 = gettype Byte
+goto fin
+end if
+
+if cod = 16 then
+typ2 = gettype UInt16
+goto fin
+end if
+
+if cod = 32 then
+typ2 = gettype UInt32
+goto fin
+end if
+
+if cod = 40 then
+typ2 = gettype UIntPtr
+goto fin
+end if
+
+if cod = 64 then
+typ2 = gettype UInt64
+goto fin
+end if
+
+if cod = 108 then
+typ2 = gettype sbyte
+goto fin
+end if
+
+if cod = 116 then
+typ2 = gettype short
+goto fin
+end if
+
+if cod = 132 then
+typ2 = gettype integer
+goto fin
+end if
+
+if cod = 140 then
+typ2 = gettype IntPtr
+goto fin
+end if
+
+if cod = 150 then
+typ2 = gettype char
+goto fin
+end if
+
+if cod = 164 then
+typ2 = gettype long
+goto fin
+end if
+
+if cod = 232 then
+typ2 = gettype single
+goto fin
+end if
+
+if cod = 264 then
+typ2 = gettype double
+goto fin
+end if
+
+if cod = 270 then
+typ2 = gettype string
+goto fin
+end if
+
+place fin
+return typ2
+end method

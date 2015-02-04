@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{170F5550-D546-4C43-90EA-598D803E338A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>dylan.NET.Compiler</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>dnc</AssemblyName>
+    <ReleaseVersion>11.5.4.3</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <DefineConstants>DEBUG</DefineConstants>
+    <!--<Commandlineparameters>-cd /var/www/Code/dylannet/dylandotnet/compiler/template/ template.dyl</Commandlineparameters>-->
+    <Commandlineparameters>-cd /var/www/Code/dylannet/vnext/dylan.NET.Tasks dylan.NET.Tasks.dyl</Commandlineparameters>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Testing</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="dnc.dyl" />
+    <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="Program.dyl" />
+  </ItemGroup>
+  <Import Project="..\4.0\dylan.NET.targets" />
+  <Target Name="AfterBuild" AfterTargets="Build">
+    <ItemGroup>
+      <Stuff Include="$(OutputPath)\*.exe" />
+      <Stuff Include="$(OutputPath)\*.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(Stuff)" DestinationFolder="..\4.0" />
+  </Target>
+  <ItemGroup>
+    <ProjectReference Include="..\dnr\dnr.dylproj">
+      <Project>{2AE29F43-1588-407F-9F2E-EADE63A5D6C9}</Project>
+      <Name>dnr</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dnu\dnu.dylproj">
+      <Project>{D61ACAE6-7B4E-4234-B40E-0A185815133D}</Project>
+      <Name>dnu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tokenizer.AST\tokenizer.AST.dylproj">
+      <Project>{8D686B86-929F-4A1B-980A-DC2DEA04AAD9}</Project>
+      <Name>tokenizer.AST</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tokenizer.CodeGen\tokenizer.CodeGen.dylproj">
+      <Project>{BD16CFAA-F03E-4D81-A8E7-7EF5E1C10E2C}</Project>
+      <Name>tokenizer.CodeGen</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tokenizer.Lexer\tokenizer.Lexer.dylproj">
+      <Project>{5021F03A-944A-4F91-8F29-E7A4BC959052}</Project>
+      <Name>tokenizer.Lexer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tokenizer.Parser\tokenizer.Parser.dylproj">
+      <Project>{04067AB5-DF32-47A1-A62B-56CF12B70E46}</Project>
+      <Name>tokenizer.Parser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <StandardHeader Text="//    dnc.exe dylan.NET.Compiler Copyright (C) 2014 Dylan Borg &lt;borgdylan@hotmail.com&gt;&#xA;//    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software&#xA;// Foundation; either version 3 of the License, or (at your option) any later version.&#xA;//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A &#xA;//PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.&#xA;//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple &#xA;//Place, Suite 330, Boston, MA 02111-1307 USA " IncludeInNewFiles="True" />
+        </Policies>
+        <Deployment.LinuxDeployData scriptName="dylandotnet" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

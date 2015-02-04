@@ -1,0 +1,90 @@
+<Type Name="StmtOptimizer" FullName="dylan.NET.Tokenizer.Parser.StmtOptimizer">
+  <TypeSignature Language="C#" Value="public class StmtOptimizer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi StmtOptimizer extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.Parser</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public StmtOptimizer ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public StmtOptimizer (dylan.NET.Tokenizer.Parser.Flags pf);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class dylan.NET.Tokenizer.Parser.Flags pf) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="pf" Type="dylan.NET.Tokenizer.Parser.Flags" />
+      </Parameters>
+      <Docs>
+        <param name="pf">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Optimize">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.Stmt Optimize (dylan.NET.Tokenizer.AST.Stmts.Stmt stm);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Stmts.Stmt Optimize(class dylan.NET.Tokenizer.AST.Stmts.Stmt stm) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.Stmt</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PFlags">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.Parser.Flags PFlags;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.Parser.Flags PFlags" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.Parser.Flags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="procWhere">
+      <MemberSignature Language="C#" Value="public int procWhere (dylan.NET.Tokenizer.AST.Stmts.Stmt stm, dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints mn, int i);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance int32 procWhere(class dylan.NET.Tokenizer.AST.Stmts.Stmt stm, class dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints mn, int32 i) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Stmts.Stmt" />
+        <Parameter Name="mn" Type="dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints" />
+        <Parameter Name="i" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="mn">To be added.</param>
+        <param name="i">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,29 @@
+<Type Name="CommentTok" FullName="dylan.NET.Tokenizer.AST.Tokens.CommentTok">
+  <TypeSignature Language="C#" Value="public class CommentTok : dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi CommentTok extends dylan.NET.Tokenizer.AST.Tokens.NonExprToken" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.NonExprToken</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents the initial token of a comment in the form //*.</summary>
+    <remarks>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CommentTok ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new CommentTok.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

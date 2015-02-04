@@ -1,0 +1,23 @@
+<Type Name="ASTEmitDelegate" FullName="dylan.NET.Tokenizer.CodeGen.ASTEmitDelegate">
+  <TypeSignature Language="C#" Value="public delegate void ASTEmitDelegate(Token t, bool emt);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto sealed ASTEmitDelegate extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.CodeGen</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="t" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+    <Parameter Name="emt" Type="System.Boolean" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="t">To be added.</param>
+    <param name="emt">To be added.</param>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

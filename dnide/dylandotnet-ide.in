@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec @MONO@ @libdir@/dylandotnet-ide/dnide.exe "$@"

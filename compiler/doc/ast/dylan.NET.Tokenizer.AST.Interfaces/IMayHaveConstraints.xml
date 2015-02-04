@@ -1,0 +1,27 @@
+<Type Name="IMayHaveConstraints" FullName="dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints">
+  <TypeSignature Language="C#" Value="public interface IMayHaveConstraints" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IMayHaveConstraints" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="MayHaveConstraints">
+      <MemberSignature Language="C#" Value="public bool MayHaveConstraints { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool MayHaveConstraints" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

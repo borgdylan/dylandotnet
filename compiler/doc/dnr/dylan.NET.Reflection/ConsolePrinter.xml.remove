@@ -1,0 +1,68 @@
+<Type Name="ConsolePrinter" FullName="dylan.NET.Reflection.ConsolePrinter">
+  <TypeSignature Language="C#" Value="public static class ConsolePrinter" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit ConsolePrinter extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dnr</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="PrintString">
+      <MemberSignature Language="C#" Value="public static void PrintString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PrintString() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SW">
+      <MemberSignature Language="C#" Value="public static System.IO.StringWriter SW;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class System.IO.StringWriter SW" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.IO.StringWriter</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteClass">
+      <MemberSignature Language="C#" Value="public static void WriteClass (Type typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void WriteClass(class System.Type typ) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

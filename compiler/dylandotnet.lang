@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ This file is part of GtkSourceView
+
+ Author: John Luke <jluke@cfl.rr.com>
+ Copyright (C) 2003 John Luke <jluke@cfl.rr.com>
+ Copyright (C) 2004 Jeroen Zwartepoorte <jeroen@xs4all.nl>
+ Copyright (C) 2004 Alessio Frusciante <algol@firenze.linux.it>
+ Copyright (C) 2005 Brion Vibber <brion@pobox.com>
+ Copyright (C) 2014 Dylan Borg <borgdylan@hotmail.com>
+ 
+ GtkSourceView is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+
+ GtkSourceView is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+<language id="dylandotnet" _name="dylan.NET" version="2.0" _section="Sources">
+  <metadata>
+    <property name="mimetypes">text/x-dylandotnet</property>
+    <property name="globs">*.dyl</property>
+    <property name="line-comment-start">//</property>
+  </metadata>
+
+  <styles>
+    <style id="comment" _name="Comment" map-to="def:comment"/>
+    <style id="error" _name="Error" map-to="def:error"/>
+    <style id="type" _name="Data Type" map-to="def:type"/>
+    <style id="string" _name="String" map-to="def:string"/>
+    <style id="char" _name="Character" map-to="def:character"/>
+    <style id="escaped-character" _name="Escaped Character" map-to="def:special-char"/>
+    <style id="format" _name="String Format" map-to="def:special-char"/>
+    <style id="keyword" _name="Keyword" map-to="def:keyword"/>
+    <style id="preprocessor" _name="Preprocessor" map-to="def:preprocessor"/>
+    <style id="null-value" _name="Null Value" map-to="def:special-constant"/>
+    <style id="boolean" _name="Boolean value" map-to="def:boolean"/>
+    <style id="decimal" _name="Decimal number" map-to="def:decimal"/>
+    <style id="hexadecimal" _name="Hexadecimal number" map-to="def:base-n-integer"/>
+    <style id="real" _name="Real number" map-to="def:floating-point"/>
+  </styles>
+
+  <definitions>
+	
+    <context id="line-comment" style-ref="comment" end-at-line-end="true" class="comment" class-disabled="no-spell-check">
+      <start>//</start>
+      <include>
+        <context ref="def:in-line-comment"/>
+      </include>
+    </context>
+
+    
+    <define-regex id="preproc-start">^\s*#</define-regex>
+
+    <context id="if-false-comment" style-ref="comment">
+      <start>\%{preproc-start}if\s*false\b</start>
+      <end>\%{preproc-start}(endif|else|elif)\b</end>
+      <include>
+        <context id="if-in-if-false">
+          <start>\%{preproc-start}if(n?def)?\b</start>
+          <end>\%{preproc-start}endif\b</end>
+          <include>
+            <context ref="if-in-if-false"/>
+            <context ref="def:in-comment"/>
+          </include>
+        </context>
+        <context ref="def:in-comment"/>
+      </include>
+    </context>
+
+    <context id="multiline-string" style-ref="string" class="string" class-disabled="no-spell-check">
+      <start>@"</start>
+      <end>"</end>
+    </context>
+
+    <context id="keywords" style-ref="keyword">
+      <keyword>me</keyword>
+		<keyword>ctor</keyword>
+		<keyword>mybase</keyword>
+		<keyword>and</keyword>
+		<keyword>andalso</keyword>
+		<keyword>nand</keyword>	
+		<keyword>is</keyword>
+		<keyword>notlike</keyword>
+		<keyword>like</keyword>
+		<keyword>new</keyword>
+		<keyword>or</keyword>
+		<keyword>orelse</keyword>
+		<keyword>xor</keyword>
+		<keyword>nor</keyword>
+		<keyword>xnor</keyword>
+		<keyword>as</keyword>
+		<keyword>ref</keyword>
+		<keyword>if</keyword>
+		<keyword>then</keyword>
+		<keyword>else</keyword>
+		<keyword>elseif</keyword>
+		<keyword>end</keyword>
+		<keyword>for</keyword>
+		<keyword>upto</keyword>
+		<keyword>downto</keyword>		
+		<keyword>step</keyword>
+		<keyword>foreach</keyword>
+		<keyword>in</keyword>
+		<keyword>lock</keyword>
+		<keyword>trylock</keyword>
+		<keyword>using</keyword>
+		<keyword>do</keyword>
+		<keyword>while</keyword>
+		<keyword>until</keyword>
+		<keyword>goto</keyword>
+		<keyword>continue</keyword>
+		<keyword>break</keyword>
+		<keyword>return</keyword>
+		<keyword>var</keyword>
+		<keyword>try</keyword>
+		<keyword>catch</keyword>
+		<keyword>finally</keyword>
+		<keyword>throw</keyword>
+		<keyword>assembly</keyword>
+		<keyword>private</keyword>
+		<keyword>family</keyword>
+		<keyword>public</keyword>
+		<keyword>famorassem</keyword>
+		<keyword>famandassem</keyword>
+		<keyword>auto</keyword>
+		<keyword>sequential</keyword>
+		<keyword>autochar</keyword>
+		<keyword>ansi</keyword>
+		<keyword>literal</keyword>
+		<keyword>sealed</keyword>
+		<keyword>virtual</keyword>
+		<keyword>partial</keyword>
+		<keyword>initonly</keyword>
+		<keyword>static</keyword>
+		<keyword>abstract</keyword>
+		<keyword>final</keyword>
+		<keyword>autogen</keyword>
+		<keyword>beforefieldinit</keyword>
+		<keyword>partial</keyword>
+		<keyword>prototype</keyword>
+		<keyword>override</keyword>
+		<keyword>namespace</keyword>
+		<keyword>import</keyword>
+		<keyword>method</keyword>
+		<keyword>field</keyword>
+		<keyword>get</keyword>
+		<keyword>set</keyword>
+		<keyword>add</keyword>
+		<keyword>remove</keyword>
+		<keyword>property</keyword>
+		<keyword>event</keyword>
+		<keyword>class</keyword>
+		<keyword>assembly</keyword>
+		<keyword>ver</keyword>
+		<keyword>implements</keyword>
+		<keyword>extends</keyword>
+		<keyword>interface</keyword>
+		<keyword>delegate</keyword>
+		<keyword>struct</keyword>
+		<keyword>enum</keyword>
+		<keyword>in</keyword>
+		<keyword>out</keyword>
+		<keyword>inout</keyword>
+		<keyword>as</keyword>
+		<keyword>of</keyword>
+		<keyword>on</keyword>
+		<keyword>off</keyword>
+		<keyword>exe</keyword>
+		<keyword>winexe</keyword>
+		<keyword>dll</keyword>
+		<keyword>new</keyword>
+		<keyword>end</keyword>
+		<keyword>gettype</keyword>
+		<keyword>default</keyword>
+		<keyword>label</keyword>
+		<keyword>place</keyword>
+		<keyword>where</keyword>
+    </context>
+
+    <context id="primitives" style-ref="type">
+    	<keyword>boolean</keyword>
+		<keyword>byte</keyword>
+		<keyword>char</keyword>
+		<keyword>decimal</keyword>
+		<keyword>double</keyword>
+		<keyword>integer</keyword>
+		<keyword>long</keyword>
+		<keyword>object</keyword>
+		<keyword>sbyte</keyword>
+		<keyword>short</keyword>
+		<keyword>single</keyword>
+		<keyword>string</keyword>
+		<keyword>uinteger</keyword>
+		<keyword>ulong</keyword>
+		<keyword>ushort</keyword>
+		<keyword>intptr</keyword>
+		<keyword>void</keyword>
+    </context>
+	
+	<context id="convert-to" style-ref="type"  class="string" class-disabled="no-spell-check">
+		<match>\$(.)*\$</match>
+	</context>
+	
+	<context id="hash-keyw" style-ref="keyword"  class="string" class-disabled="no-spell-check">
+		<match>#(expr|ternary|if|else|elseif|define|undef|warning|error|expr|include|refasm|sign|refstdasm|debug|region|embed)</match>
+	</context>
+	
+    <context id="null-value" style-ref="null-value">
+      <keyword>null</keyword>
+    </context>
+
+    <context id="boolean" style-ref="boolean">
+      <keyword>false</keyword>
+      <keyword>true</keyword>
+    </context>
+
+    <context id="decimal" style-ref="decimal">
+      <match extended="true">
+        (?&lt;![\w\.])
+        [0-9]+[uUlL]*
+        (?![\w\.])
+      </match>
+    </context>
+
+    <context id="hexadecimal" style-ref="hexadecimal">
+      <match extended="true">
+        (?&lt;![\w\.])
+        0[xX][a-fA-F0-9]+[uUlL]*
+        (?![\w\.])
+      </match>
+    </context>
+
+    <context id="real" style-ref="real">
+      <match extended="true">
+        (?&lt;![\w\.])
+        ((\.[0-9]+|[0-9]+\.[0-9]*)([Ee][+-]?[0-9]*)?[FfDdMm]?|
+         ([0-9]+[Ee][+-]?[0-9]*)[FfDdMm]? |
+         ([0-9]+)[FfDdMm])
+        (?![\w\.])
+      </match>
+    </context>
+
+    <define-regex id="escaped-character" extended="true">
+      \\(                   # leading backslash
+      [\\qsnrbtfav0\?] |   # escaped character
+      x([0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]|[0-9A-Fa-f][0-9A-Fa-f])         # 'x' followed by hex digits
+      )
+    </define-regex>
+
+    <context id="string" style-ref="string" end-at-line-end="true" class="string" class-disabled="no-spell-check">
+      <start>"</start>
+      <end>"</end>
+      <include>
+	<context id="csharp-format" style-ref="format">
+          <match>{[0-9][0-9:\#\%,./cdefgnrxtsuDTFGMY]*}</match>
+        </context>
+        <context ref="def:line-continue"/>
+      </include>
+    </context>
+	
+	<context id="escaped-string" style-ref="string" end-at-line-end="true" class="string" class-disabled="no-spell-check">
+      <start>c"</start>
+      <end>"</end>
+      <include>
+	<context id="csharp-format2" style-ref="format">
+          <match>{[0-9][0-9:\#\%,./cdefgnrxtsuDTFGMY]*}</match>
+	</context>
+        <context id="escaped-character" style-ref="escaped-character">
+          <match>\%{escaped-character}</match>
+        </context>
+        <context ref="def:line-continue"/>
+      </include>
+    </context>
+	
+	<context id="char" style-ref="char">
+      <match>'(\%{escaped-character}|.)'</match>
+    </context>
+	
+    <context id="escaped-char" style-ref="char">
+      <match>c'(\%{escaped-character}|.)'</match>
+    </context>
+
+    <context id="dylandotnet" class="no-spell-check">
+      <include>
+        <context ref="multiline-string"/>
+        <context ref="string"/>
+        <context ref="escaped-string"/>
+        <context ref="char"/>
+        <context ref="escaped-char"/>
+        <context ref="line-comment"/>
+        <context ref="if-false-comment"/>
+        <context ref="keywords"/>
+        <context ref="primitives"/>
+        <context ref="null-value"/>
+        <context ref="boolean"/>
+        <context ref="decimal"/>
+        <context ref="hexadecimal"/>
+        <context ref="real"/>
+        <context ref="convert-to"/>
+        <context ref="hash-keyw"/>
+      </include>
+    </context>
+  </definitions>
+</language>

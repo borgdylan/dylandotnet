@@ -1,0 +1,797 @@
+<Type Name="Messages" FullName="dylan.NET.Utils.Messages">
+  <TypeSignature Language="C#" Value="public static class Messages" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit Messages extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dnu</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Msg1">
+      <MemberSignature Language="C#" Value="public static string Msg1 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg1" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg10">
+      <MemberSignature Language="C#" Value="public static string Msg10 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg10" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg11">
+      <MemberSignature Language="C#" Value="public static string Msg11 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg11" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg12">
+      <MemberSignature Language="C#" Value="public static string Msg12 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg12" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg13">
+      <MemberSignature Language="C#" Value="public static string Msg13 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg13" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg14">
+      <MemberSignature Language="C#" Value="public static string Msg14 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg14" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg15">
+      <MemberSignature Language="C#" Value="public static string Msg15 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg15" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg16">
+      <MemberSignature Language="C#" Value="public static string Msg16 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg16" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg17">
+      <MemberSignature Language="C#" Value="public static string Msg17 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg17" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg18">
+      <MemberSignature Language="C#" Value="public static string Msg18 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg18" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg19">
+      <MemberSignature Language="C#" Value="public static string Msg19 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg19" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg2">
+      <MemberSignature Language="C#" Value="public static string Msg2 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg2" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg20">
+      <MemberSignature Language="C#" Value="public static string Msg20 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg20" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg21">
+      <MemberSignature Language="C#" Value="public static string Msg21 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg21" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg22">
+      <MemberSignature Language="C#" Value="public static string Msg22 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg22" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg23">
+      <MemberSignature Language="C#" Value="public static string Msg23 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg23" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg24">
+      <MemberSignature Language="C#" Value="public static string Msg24 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg24" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg25">
+      <MemberSignature Language="C#" Value="public static string Msg25 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg25" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg26">
+      <MemberSignature Language="C#" Value="public static string Msg26 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg26" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg27">
+      <MemberSignature Language="C#" Value="public static string Msg27 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg27" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg28">
+      <MemberSignature Language="C#" Value="public static string Msg28 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg28" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg29">
+      <MemberSignature Language="C#" Value="public static string Msg29 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg29" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg3">
+      <MemberSignature Language="C#" Value="public static string Msg3 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg3" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg30">
+      <MemberSignature Language="C#" Value="public static string Msg30 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg30" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg31">
+      <MemberSignature Language="C#" Value="public static string Msg31 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg31" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg32">
+      <MemberSignature Language="C#" Value="public static string Msg32 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg32" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg33">
+      <MemberSignature Language="C#" Value="public static string Msg33 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg33" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg34">
+      <MemberSignature Language="C#" Value="public static string Msg34 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg34" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg35">
+      <MemberSignature Language="C#" Value="public static string Msg35 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg35" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg36">
+      <MemberSignature Language="C#" Value="public static string Msg36 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg36" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg37">
+      <MemberSignature Language="C#" Value="public static string Msg37 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg37" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg38">
+      <MemberSignature Language="C#" Value="public static string Msg38 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg38" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg39">
+      <MemberSignature Language="C#" Value="public static string Msg39 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg39" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg4">
+      <MemberSignature Language="C#" Value="public static string Msg4 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg4" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg40">
+      <MemberSignature Language="C#" Value="public static string Msg40 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg40" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg41">
+      <MemberSignature Language="C#" Value="public static string Msg41 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg41" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg42">
+      <MemberSignature Language="C#" Value="public static string Msg42 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg42" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg43">
+      <MemberSignature Language="C#" Value="public static string Msg43 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg43" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg44">
+      <MemberSignature Language="C#" Value="public static string Msg44 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg44" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg45">
+      <MemberSignature Language="C#" Value="public static string Msg45 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg45" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg46">
+      <MemberSignature Language="C#" Value="public static string Msg46 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg46" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg47">
+      <MemberSignature Language="C#" Value="public static string Msg47 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg47" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg48">
+      <MemberSignature Language="C#" Value="public static string Msg48 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg48" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg49">
+      <MemberSignature Language="C#" Value="public static string Msg49 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg49" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg5">
+      <MemberSignature Language="C#" Value="public static string Msg5 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg5" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg50">
+      <MemberSignature Language="C#" Value="public static string Msg50 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg50" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg51">
+      <MemberSignature Language="C#" Value="public static string Msg51 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg51" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg52">
+      <MemberSignature Language="C#" Value="public static string Msg52 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg52" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg53">
+      <MemberSignature Language="C#" Value="public static string Msg53 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg53" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg54">
+      <MemberSignature Language="C#" Value="public static string Msg54 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg54" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg55">
+      <MemberSignature Language="C#" Value="public static string Msg55 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg55" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg56">
+      <MemberSignature Language="C#" Value="public static string Msg56 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg56" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg57">
+      <MemberSignature Language="C#" Value="public static string Msg57 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg57" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg58">
+      <MemberSignature Language="C#" Value="public static string Msg58 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg58" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg59">
+      <MemberSignature Language="C#" Value="public static string Msg59 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg59" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg6">
+      <MemberSignature Language="C#" Value="public static string Msg6 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg6" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg60">
+      <MemberSignature Language="C#" Value="public static string Msg60 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg60" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg7">
+      <MemberSignature Language="C#" Value="public static string Msg7 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg7" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg8">
+      <MemberSignature Language="C#" Value="public static string Msg8 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg8" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Msg9">
+      <MemberSignature Language="C#" Value="public static string Msg9 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property string Msg9" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

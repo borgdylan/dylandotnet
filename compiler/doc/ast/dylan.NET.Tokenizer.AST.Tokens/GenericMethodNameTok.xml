@@ -1,0 +1,146 @@
+<Type Name="GenericMethodNameTok" FullName="dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok">
+  <TypeSignature Language="C#" Value="public class GenericMethodNameTok : dylan.NET.Tokenizer.AST.Tokens.MethodNameTok, dylan.NET.Tokenizer.AST.Interfaces.IConstrainable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi GenericMethodNameTok extends dylan.NET.Tokenizer.AST.Tokens.MethodNameTok implements class dylan.NET.Tokenizer.AST.Interfaces.IConstrainable, class dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.MethodNameTok</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IConstrainable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public GenericMethodNameTok ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public GenericMethodNameTok (dylan.NET.Tokenizer.AST.Tokens.Ident idt);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class dylan.NET.Tokenizer.AST.Tokens.Ident idt) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="idt" Type="dylan.NET.Tokenizer.AST.Tokens.Ident" />
+      </Parameters>
+      <Docs>
+        <param name="idt">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public GenericMethodNameTok (string value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddConstraint">
+      <MemberSignature Language="C#" Value="public virtual void AddConstraint (string param, dylan.NET.Tokenizer.AST.Tokens.Token ctr);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddConstraint(string param, class dylan.NET.Tokenizer.AST.Tokens.Token ctr) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="param" Type="System.String" />
+        <Parameter Name="ctr" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+      </Parameters>
+      <Docs>
+        <param name="param">To be added.</param>
+        <param name="ctr">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddParam">
+      <MemberSignature Language="C#" Value="public void AddParam (dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok param);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void AddParam(class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok param) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="param" Type="dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok" />
+      </Parameters>
+      <Docs>
+        <param name="param">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Constraints">
+      <MemberSignature Language="C#" Value="public virtual C5.HashDictionary&lt;string,C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;&gt; Constraints { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class C5.HashDictionary`2&lt;string, class C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Token&gt;&gt; Constraints" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;System.String,C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MayHaveConstraints">
+      <MemberSignature Language="C#" Value="public virtual bool MayHaveConstraints { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool MayHaveConstraints" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok op_Implicit (dylan.NET.Tokenizer.AST.Tokens.Ident idt);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok op_Implicit(class dylan.NET.Tokenizer.AST.Tokens.Ident idt) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.GenericMethodNameTok</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="idt" Type="dylan.NET.Tokenizer.AST.Tokens.Ident" />
+      </Parameters>
+      <Docs>
+        <param name="idt">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Params">
+      <MemberSignature Language="C#" Value="public C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt; Params;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt; Params" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

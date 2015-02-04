@@ -1,0 +1,613 @@
+<html>
+  <head>
+    <title>dylan.NET.Collections.Item</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">dncollections</a> : <a href="index.html">dylan.NET.Collections Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Collections.Item">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Collections.Item:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Collections.Item:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Collections.Item:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:dylan.NET.Collections.Item">Item  Class</h1>
+    <p class="Summary" id="T:dylan.NET.Collections.Item:Summary">An item that can be placed in an ALList, ALQueue or ALStack.</p>
+    <div id="T:dylan.NET.Collections.Item:Signature">
+      <h2>Syntax</h2>
+      <div class="Signature">public class  <b>Item</b></div>
+    </div>
+    <div class="Remarks" id="T:dylan.NET.Collections.Item:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:dylan.NET.Collections.Item:Docs:Remarks">
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:dylan.NET.Collections.Item:Docs:Version Information">
+        <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h2 class="Section">Public Constructors</h2>
+        <div class="SectionBox" id="Public Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:dylan.NET.Collections.Item">Item</a>
+                    </b>()</div>
+                </td>
+                <td>Constructs a new Item with a null value.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:dylan.NET.Collections.Item(System.Object)">Item</a>
+                    </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>)</div>
+                </td>
+                <td>Constructs a new Item having the specified Value.</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Fields</h2>
+        <div class="SectionBox" id="Public Fields">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Collections.Item.Index">Index</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. The index of the slot occupied by this Item inside the ItemArray of a collection.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Collections.Item.Next">Next</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Collections/Item.html">Item</a>
+                  </i>. The Next Item.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Collections.Item.Previous">Previous</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Collections/Item.html">Item</a>
+                  </i>. The Previous Item.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Collections.Item.Value">Value</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>
+                  </i>. The object that occupies this Item.</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.Item.GoNext()">GoNext</a>
+                  </b>()<nobr> : <a href="../dylan.NET.Collections/Item.html">Item</a></nobr><blockquote>Returns the Item that occurs after this one in the collection.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.Item.GoPrevious()">GoPrevious</a>
+                  </b>()<nobr> : <a href="../dylan.NET.Collections/Item.html">Item</a></nobr><blockquote>Returns the Item that occurs before this one in the collection.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.Item.HasNext()">HasNext</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote>Returns if there is a next Item or not.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.Item.HasPrevious()">HasPrevious</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote>Returns if there is a previous Item or not.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.Item.MakeCopy()">MakeCopy</a>
+                  </b>()<nobr> : <a href="../dylan.NET.Collections/Item.html">Item</a></nobr><blockquote>Make a copy of this Item.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.Item.MakeCopy(dylan.NET.Collections.Item)">MakeCopy</a>
+                  </b>(<a href="../dylan.NET.Collections/Item.html">Item</a>)<nobr> : <a href="../dylan.NET.Collections/Item.html">Item</a></nobr><blockquote>Make a copy of the given Item.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>override </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.Item.ToString()">ToString</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:dylan.NET.Collections.Item:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="C:dylan.NET.Collections.Item">Item Constructor</h3>
+        <blockquote id="C:dylan.NET.Collections.Item:member">
+          <p class="Summary">Constructs a new Item with a null value.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>Item</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:dylan.NET.Collections.Item:Remarks">The value of the Item is set to null. Set the Value field or use the other constructor.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:dylan.NET.Collections.Item:Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="C:dylan.NET.Collections.Item(System.Object)">Item Constructor</h3>
+        <blockquote id="C:dylan.NET.Collections.Item(System.Object):member">
+          <p class="Summary">Constructs a new Item having the specified Value.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>Item</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> o)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="C:dylan.NET.Collections.Item(System.Object):Parameters">
+            <dl>
+              <dt>
+                <i>o</i>
+              </dt>
+              <dd>The value of the Item.</dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:dylan.NET.Collections.Item(System.Object):Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:dylan.NET.Collections.Item(System.Object):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.Item.GoNext()">GoNext Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.GoNext():member">
+          <p class="Summary">Returns the Item that occurs after this one in the collection.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>GoNext</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.GoNext():Returns">Null if there is no next Item else returns the Item that is next.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoNext():Remarks">Use HasNext() to see if there is a next Item.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoNext():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.Item.GoPrevious()">GoPrevious Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.GoPrevious():member">
+          <p class="Summary">Returns the Item that occurs before this one in the collection.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>GoPrevious</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.GoPrevious():Returns">Null if there is no previous Item else returns the Item that is before.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoPrevious():Remarks">Use HasPrevious() to see if there is a previous Item.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.GoPrevious():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.Item.HasNext()">HasNext Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.HasNext():member">
+          <p class="Summary">Returns if there is a next Item or not.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>HasNext</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.HasNext():Returns">True if there is a next Item else false.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasNext():Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasNext():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.Item.HasPrevious()">HasPrevious Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.HasPrevious():member">
+          <p class="Summary">Returns if there is a previous Item or not.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>HasPrevious</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.HasPrevious():Returns">True if there is a previous Item else false.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasPrevious():Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.HasPrevious():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Collections.Item.Index">Index Field</h3>
+        <blockquote id="F:dylan.NET.Collections.Item.Index:member">
+          <p class="Summary">The index of the slot occupied by this Item inside the ItemArray of a collection.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>Index</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.Item.Index:Remarks">Is equal to -1 if the Item is not in a collection.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.Item.Index:Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.Item.MakeCopy()">MakeCopy Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.MakeCopy():member">
+          <p class="Summary">Make a copy of this Item.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>MakeCopy</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.MakeCopy():Returns">A new Item that has the same value as this one.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.MakeCopy():Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.MakeCopy():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.Item.MakeCopy(dylan.NET.Collections.Item)">MakeCopy Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.MakeCopy(dylan.NET.Collections.Item):member">
+          <p class="Summary">Make a copy of the given Item.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Collections/Item.html">Item</a> <b>MakeCopy</b> (<a href="../dylan.NET.Collections/Item.html">Item</a> ite)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.MakeCopy(dylan.NET.Collections.Item):Parameters">
+            <dl>
+              <dt>
+                <i>ite</i>
+              </dt>
+              <dd>The Item to copy.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.MakeCopy(dylan.NET.Collections.Item):Returns">A new Item that has the same value as the given Item.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.MakeCopy(dylan.NET.Collections.Item):Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.MakeCopy(dylan.NET.Collections.Item):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Collections.Item.Next">Next Field</h3>
+        <blockquote id="F:dylan.NET.Collections.Item.Next:member">
+          <p class="Summary">The Next Item.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>Next</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.Item.Next:Remarks">Is null if this Item has no next Item or if it is not in a collection.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.Item.Next:Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Collections.Item.Previous">Previous Field</h3>
+        <blockquote id="F:dylan.NET.Collections.Item.Previous:member">
+          <p class="Summary">The Previous Item.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>Previous</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.Item.Previous:Remarks">Is null if this Item has no previous Item or if it is not in a collection.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.Item.Previous:Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.Item.ToString()">ToString Method</h3>
+        <blockquote id="M:dylan.NET.Collections.Item.ToString():member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public override <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ToString</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.Item.ToString():Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.ToString():Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.Item.ToString():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Collections.Item.Value">Value Field</h3>
+        <blockquote id="F:dylan.NET.Collections.Item.Value:member">
+          <p class="Summary">The object that occupies this Item.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> <b>Value</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.Item.Value:Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.Item.Value:Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

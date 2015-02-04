@@ -1,0 +1,40 @@
+﻿Public Class ParseList
+
+    Public array As XElement = _
+    <Array>
+        <Counter>
+            <Count>0</Count>
+        </Counter>
+    </Array>
+
+    Sub AddElement(ByVal str As String)
+        Dim count As String = <root>
+                                  <%= From el In Me.array.<Counter>.<Count> _
+                                      Select el.Value %>
+                              </root>
+        Dim len As Integer = CInt(count)
+
+        Dim id As String = CStr(len + 1)
+
+        Dim elem As XElement = <el id=<%= id %>><%= str %></el>
+
+        Me.array.Add(elem)
+
+        Me.array.<Counter>.<Count>.Value = id
+
+    End Sub
+
+    Function GetElem(ByVal id As String)
+
+        Dim val As XElement = <root>
+                                  <%= From el In array.<el> _
+                                      Where el.Attribute("id") = id _
+                                      Select el.Value %>
+                              </root>
+
+        GetElem = val
+
+        Return GetElem
+    End Function
+
+End Class

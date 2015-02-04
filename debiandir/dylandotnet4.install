@@ -1,0 +1,4 @@
+debian/tmp/usr/bin/dylandotnet4
+debian/tmp/usr/lib/dylandotnet4
+debian/tmp/usr/share/man/man1/dylandotnet4.1
+debian/tmp/usr/lib/pkgconfig/dylandotnet4.pc

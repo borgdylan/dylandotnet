@@ -1,0 +1,100 @@
+<Type Name="Stmt" FullName="dylan.NET.Tokenizer.AST.Stmts.Stmt">
+  <TypeSignature Language="C#" Value="public class Stmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Stmt extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Stmt ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddToken">
+      <MemberSignature Language="C#" Value="public void AddToken (dylan.NET.Tokenizer.AST.Tokens.Token toktoadd);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void AddToken(class dylan.NET.Tokenizer.AST.Tokens.Token toktoadd) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="toktoadd" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+      </Parameters>
+      <Docs>
+        <param name="toktoadd">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Line">
+      <MemberSignature Language="C#" Value="public int Line;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Line" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemToken">
+      <MemberSignature Language="C#" Value="public void RemToken (int ind);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void RemToken(int32 ind) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ind" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="ind">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Tokens">
+      <MemberSignature Language="C#" Value="public C5.ArrayList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt; Tokens;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.ArrayList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Token&gt; Tokens" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.ArrayList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValidateContext">
+      <MemberSignature Language="C#" Value="public virtual bool ValidateContext (dylan.NET.Tokenizer.AST.Stmts.ContextType ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ValidateContext(valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType ctx) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="dylan.NET.Tokenizer.AST.Stmts.ContextType" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

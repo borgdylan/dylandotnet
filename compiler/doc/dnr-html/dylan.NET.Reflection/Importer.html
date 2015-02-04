@@ -1,0 +1,520 @@
+<html>
+  <head>
+    <title>dylan.NET.Reflection.Importer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">dnr</a> : <a href="index.html">dylan.NET.Reflection Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Reflection.Importer">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.Importer:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.Importer:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Reflection.Importer:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:dylan.NET.Reflection.Importer">Importer  Class</h1>
+    <p class="Summary" id="T:dylan.NET.Reflection.Importer:Summary">
+      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+    </p>
+    <div>
+      <h2>Syntax</h2>
+      <div class="Signature" id="T:dylan.NET.Reflection.Importer:Signature">public static class  <b>Importer</b></div>
+    </div>
+    <div class="Remarks" id="T:dylan.NET.Reflection.Importer:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:dylan.NET.Reflection.Importer:Docs:Remarks">
+        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:dylan.NET.Reflection.Importer:Docs:Version Information">
+        <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h2 class="Section">Public Fields</h2>
+        <div class="SectionBox" id="Public Fields">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Importer.AliasMap">AliasMap</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="javascript:alert(&quot;Documentation not found.&quot;)">C5.IDictionary&lt;string, string&gt;</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Importer.AsmBasePath">AsmBasePath</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Importer.Asms">Asms</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="javascript:alert(&quot;Documentation not found.&quot;)">C5.HashDictionary&lt;string, AssemblyRecord&gt;</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Reflection.Importer.ImpsStack">ImpsStack</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="javascript:alert(&quot;Documentation not found.&quot;)">C5.LinkedList&lt;C5.LinkedList&lt;ImportRecord&gt;&gt;</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Importer.AddAsm(System.String,IKVM.Reflection.Assembly)">AddAsm</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Assembly</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Importer.AddImp(System.String)">AddImp</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Importer.Init()">Init</a>
+                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Reflection.Importer.RegisterAlias(System.String,System.String)">RegisterAlias</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:dylan.NET.Reflection.Importer:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="M:dylan.NET.Reflection.Importer.AddAsm(System.String,IKVM.Reflection.Assembly)">AddAsm Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Importer.AddAsm(System.String,IKVM.Reflection.Assembly):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddAsm</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> path, <a href="javascript:alert(&quot;Documentation not found.&quot;)">IKVM.Reflection.Assembly</a> asmm)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Importer.AddAsm(System.String,IKVM.Reflection.Assembly):Parameters">
+            <dl>
+              <dt>
+                <i>path</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>asmm</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Importer.AddAsm(System.String,IKVM.Reflection.Assembly):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Importer.AddAsm(System.String,IKVM.Reflection.Assembly):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Importer.AddImp(System.String)">AddImp Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Importer.AddImp(System.String):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddImp</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> imp)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Importer.AddImp(System.String):Parameters">
+            <dl>
+              <dt>
+                <i>imp</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Importer.AddImp(System.String):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Importer.AddImp(System.String):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Importer.AliasMap">AliasMap Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Importer.AliasMap:member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">C5.IDictionary&lt;string, string&gt;</a> <b>AliasMap</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Importer.AliasMap:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Importer.AliasMap:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Importer.AsmBasePath">AsmBasePath Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Importer.AsmBasePath:member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>AsmBasePath</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Importer.AsmBasePath:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Importer.AsmBasePath:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Importer.Asms">Asms Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Importer.Asms:member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">C5.HashDictionary&lt;string, AssemblyRecord&gt;</a> <b>Asms</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Importer.Asms:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Importer.Asms:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Reflection.Importer.ImpsStack">ImpsStack Field</h3>
+        <blockquote id="F:dylan.NET.Reflection.Importer.ImpsStack:member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="javascript:alert(&quot;Documentation not found.&quot;)">C5.LinkedList&lt;C5.LinkedList&lt;ImportRecord&gt;&gt;</a> <b>ImpsStack</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Importer.ImpsStack:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Reflection.Importer.ImpsStack:Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Importer.Init()">Init Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Importer.Init():member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Init</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Importer.Init():Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Importer.Init():Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Reflection.Importer.RegisterAlias(System.String,System.String)">RegisterAlias Method</h3>
+        <blockquote id="M:dylan.NET.Reflection.Importer.RegisterAlias(System.String,System.String):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">[System.Runtime.InteropServices.ComVisible(false)]<br />public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>RegisterAlias</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> alias, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> ns)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Reflection.Importer.RegisterAlias(System.String,System.String):Parameters">
+            <dl>
+              <dt>
+                <i>alias</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>ns</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Importer.RegisterAlias(System.String,System.String):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Reflection.Importer.RegisterAlias(System.String,System.String):Version Information">
+            <b>Namespace: </b>dylan.NET.Reflection<br /><b>Assembly: </b>dnr (in dnr.dll)</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

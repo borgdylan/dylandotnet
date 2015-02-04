@@ -1,0 +1,44 @@
+<Type Name="FieldAttrStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.FieldAttrStmt">
+  <TypeSignature Language="C#" Value="public class FieldAttrStmt : dylan.NET.Tokenizer.AST.Stmts.AttrStmt" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi FieldAttrStmt extends dylan.NET.Tokenizer.AST.Stmts.AttrStmt" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.AttrStmt</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FieldAttrStmt ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValidateContext">
+      <MemberSignature Language="C#" Value="public override bool ValidateContext (dylan.NET.Tokenizer.AST.Stmts.ContextType ctx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool ValidateContext(valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType ctx) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ctx" Type="dylan.NET.Tokenizer.AST.Stmts.ContextType" />
+      </Parameters>
+      <Docs>
+        <param name="ctx">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

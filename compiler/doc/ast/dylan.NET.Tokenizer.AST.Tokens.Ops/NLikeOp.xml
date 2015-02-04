@@ -1,0 +1,41 @@
+<Type Name="NLikeOp" FullName="dylan.NET.Tokenizer.AST.Tokens.Ops.NLikeOp">
+  <TypeSignature Language="C#" Value="public class NLikeOp : dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi NLikeOp extends dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ops.ConditionalOp</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a negated Regex Matching '!like' operator.</summary>
+    <remarks>Checks if the string LChild is non-conformant to the pattern string RChild. The ibrary System.dll is required for its Regex components. REgex has been used instead of the VB like operator since 11.2.7.6.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NLikeOp ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Cosntructs a new NLikeOp.</summary>
+        <remarks>Also sets PrecNo accordingly.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

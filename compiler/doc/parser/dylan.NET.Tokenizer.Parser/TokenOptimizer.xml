@@ -1,0 +1,131 @@
+<Type Name="TokenOptimizer" FullName="dylan.NET.Tokenizer.Parser.TokenOptimizer">
+  <TypeSignature Language="C#" Value="public class TokenOptimizer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi TokenOptimizer extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.Parser</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TokenOptimizer ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TokenOptimizer (dylan.NET.Tokenizer.Parser.Flags pf);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class dylan.NET.Tokenizer.Parser.Flags pf) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="pf" Type="dylan.NET.Tokenizer.Parser.Flags" />
+      </Parameters>
+      <Docs>
+        <param name="pf">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurlyLvl">
+      <MemberSignature Language="C#" Value="public int CurlyLvl;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 CurlyLvl" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GenLvl">
+      <MemberSignature Language="C#" Value="public int GenLvl;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 GenLvl" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="isFirstRun">
+      <MemberSignature Language="C#" Value="public bool isFirstRun;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool isFirstRun" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="isFirstToken">
+      <MemberSignature Language="C#" Value="public bool isFirstToken;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool isFirstToken" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Optimize">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token Optimize (dylan.NET.Tokenizer.AST.Tokens.Token tok, dylan.NET.Tokenizer.AST.Tokens.Token lkahead);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Token Optimize(class dylan.NET.Tokenizer.AST.Tokens.Token tok, class dylan.NET.Tokenizer.AST.Tokens.Token lkahead) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tok" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+        <Parameter Name="lkahead" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+      </Parameters>
+      <Docs>
+        <param name="tok">To be added.</param>
+        <param name="lkahead">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PFlags">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.Parser.Flags PFlags;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.Parser.Flags PFlags" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.Parser.Flags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SpecialFlg">
+      <MemberSignature Language="C#" Value="public bool SpecialFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool SpecialFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

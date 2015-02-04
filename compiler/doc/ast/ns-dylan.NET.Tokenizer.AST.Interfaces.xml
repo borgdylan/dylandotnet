@@ -1,0 +1,6 @@
+<Namespace Name="dylan.NET.Tokenizer.AST.Interfaces">
+  <Docs>
+    <summary>Groups together a set of interfaces implemented by Tokens that support unary operations.</summary>
+    <remarks>The interfaces allow discoverability of the operations supported by using the 'is' operator on implementers.</remarks>
+  </Docs>
+</Namespace>

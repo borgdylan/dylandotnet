@@ -1,0 +1,50 @@
+.TH PC2CURDIR 1 "2013-06-26" "Linux" "pkg-config Helpers for dylan.NET"
+
+.SH NAME
+pc2curdir \- A program for copying libraries referenced by Mono pkg-config files to the current directory.
+
+.SH SYNOPSIS
+.B pc2curdir
+.RI [-h|file-names...]
+.br
+
+.SH DESCRIPTION
+This manual page explains the
+.B pc2curdir
+program.
+.PP
+The program
+.B pc2curdir
+is for copying the files refernced by the "-r:*" style 'libs' variables in Mono pkg-config files to the current directory thereby allowing execution in the cases where the libraries refernced are not in the GAC.
+
+.SH OPTIONS
+-h will print the help info yet it can be used together with the file-name(s) for the input file(s) in the same command.
+
+.B
+.IP file-names
+The file name(s) of the file(s) having the "-r:*" style references obtained by issuing "pkg-config --libs packagename > packagename.libs"
+in the form : "pc2curdir file-name.libs" ;where file-name.libs is the file mentioned before. The extension can be anything you want but .libs will identify the file as being assembly references.
+.B
+.IP -h
+This option displays a short listing of the options available. If you have read all of this man page you will not need to consult the output of -h. The command is issued like this 'pc2curdir -h'.
+
+.SH FILES
+.PP
+This is the list of the most important files installed by the dylan.NET Makefile or Package whichever one was used for the install. Before these paths one should add /usr/ or /usr/local/ whichever prefix was chosen in the Makefile. In package installation cases the prefix is /usr/ .
+
+.B
+.IP bin/pc2curdir
+The executable script which when invoked in the terminal executes the program on the mono runtime.
+.B
+.IP lib/dylandonet-dev/pc2cd.exe
+The actual program that is executed by the script. This reads in the command line arguments and copies the libraries referenced in the .libs files to the current directory.
+.B
+.IP share/man/man1/pc2curdir.1
+This is this very man page for pc2curdir.
+
+
+.SH VERSION
+11.3.1.4
+
+.SH "SEE ALSO"
+See also http://launchpad.net/dylandotnet

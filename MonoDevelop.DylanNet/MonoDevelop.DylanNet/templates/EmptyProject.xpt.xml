@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Template originator   = "Mike Krueger"
+          created      = "01/10/2001"
+          lastModified = "02/01/2003">
+	
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>Empty Project</_Name>
+		<_Category>dylan.NET</_Category>
+		<Icon>md-project</Icon>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates an empty dylan.NET project.</_Description>
+		<DefaultFilename>EmptyProject</DefaultFilename>
+	</TemplateConfiguration>
+	
+	<Combine name="${ProjectName}" directory=".">
+		<Project name="${ProjectName}" directory=".">
+			<Files>
+				<!---<Directory name=".nuget">
+					<File name="NuGet.targets" src=".nuget/NuGet.targets" />
+					<File name="NuGet.Paths.targets" src=".nuget/NuGet.Paths.targets" />
+					<File name="NuGet.exe" src=".nuget/NuGet.exe" />
+				</Directory>
+				<File name="packages.config" src="packages.config" />-->
+			</Files>
+		</Project>
+	</Combine>
+</Template>

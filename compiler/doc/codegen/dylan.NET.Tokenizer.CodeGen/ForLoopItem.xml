@@ -1,0 +1,124 @@
+<Type Name="ForLoopItem" FullName="dylan.NET.Tokenizer.CodeGen.ForLoopItem">
+  <TypeSignature Language="C#" Value="public class ForLoopItem : dylan.NET.Tokenizer.CodeGen.LoopItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ForLoopItem extends dylan.NET.Tokenizer.CodeGen.LoopItem" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.CodeGen</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.CodeGen.LoopItem</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ForLoopItem ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ForLoopItem (IKVM.Reflection.Emit.Label startl, IKVM.Reflection.Emit.Label endl, string iter, dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir, dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok t, int ln);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(valuetype IKVM.Reflection.Emit.Label startl, valuetype IKVM.Reflection.Emit.Label endl, string iter, class dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir, class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok t, int32 ln) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="startl" Type="IKVM.Reflection.Emit.Label" />
+        <Parameter Name="endl" Type="IKVM.Reflection.Emit.Label" />
+        <Parameter Name="iter" Type="System.String" />
+        <Parameter Name="_step" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
+        <Parameter Name="dir" Type="System.Boolean" />
+        <Parameter Name="t" Type="dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok" />
+        <Parameter Name="ln" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="startl">To be added.</param>
+        <param name="endl">To be added.</param>
+        <param name="iter">To be added.</param>
+        <param name="_step">To be added.</param>
+        <param name="dir">To be added.</param>
+        <param name="t">To be added.</param>
+        <param name="ln">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContinueFlg">
+      <MemberSignature Language="C#" Value="public bool ContinueFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool ContinueFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Direction">
+      <MemberSignature Language="C#" Value="public bool Direction;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool Direction" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Iter">
+      <MemberSignature Language="C#" Value="public string Iter;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Iter" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StepExp">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr StepExp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Exprs.Expr StepExp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StepLabel">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.Label StepLabel;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype IKVM.Reflection.Emit.Label StepLabel" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Typ">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok Typ;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok Typ" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

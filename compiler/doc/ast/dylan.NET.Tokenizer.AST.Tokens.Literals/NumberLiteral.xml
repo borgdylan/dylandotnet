@@ -1,0 +1,42 @@
+<Type Name="NumberLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral">
+  <TypeSignature Language="C#" Value="public class NumberLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi NumberLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.Literal</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a dylan.NET number literal.</summary>
+    <remarks>All numeric iteral classes should inherit from this class.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected NumberLiteral ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyspecialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new NumberLiteral.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected NumberLiteral (string value);" />
+      <MemberSignature Language="ILAsm" Value=".method familyspecialname rtspecialname instance void .ctor(string value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">This parameter is of no use in this case.</param>
+        <summary>Constructs a new NumberLiteral.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8D686B86-929F-4A1B-980A-DC2DEA04AAD9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>dylan.NET.Tokenizer.AST</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+    <ReleaseVersion>11.5.4.3</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <ConsolePause>false</ConsolePause>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Testing</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="IKVM.Reflection">
+      <HintPath>..\lib\IKVM.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="C5">
+      <HintPath>..\packages\C5.2.3.0.1\lib\net40\C5.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="tokenizer.AST.dyl" />
+    <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="aritops.dyl" />
+    <Compile Include="asmstmt.dyl" />
+    <Compile Include="attributes.dyl" />
+    <Compile Include="chars.dyl" />
+    <Compile Include="classstmt.dyl" />
+    <Compile Include="comment.dyl" />
+    <Compile Include="conditionalops.dyl" />
+    <Compile Include="debugstmt.dyl" />
+    <Compile Include="delegatestmt.dyl" />
+    <Compile Include="enumstmt.dyl" />
+    <Compile Include="exceptionstmts.dyl" />
+    <Compile Include="expr.dyl" />
+    <Compile Include="fieldstmt.dyl" />
+    <Compile Include="ident.dyl" />
+    <Compile Include="ifstmts.dyl" />
+    <Compile Include="importstmts.dyl" />
+    <Compile Include="includestmt.dyl" />
+    <Compile Include="labelstmts.dyl" />
+    <Compile Include="literals.dyl" />
+    <Compile Include="logicalops.dyl" />
+    <Compile Include="loopstmts.dyl" />
+    <Compile Include="methods.dyl" />
+    <Compile Include="metstmt.dyl" />
+    <Compile Include="newresstmt.dyl" />
+    <Compile Include="nsstmt.dyl" />
+    <Compile Include="op.dyl" />
+    <Compile Include="otherkeywords.dyl" />
+    <Compile Include="otherstmts.dyl" />
+    <Compile Include="propstmt.dyl" />
+    <Compile Include="refasmstmt.dyl" />
+    <Compile Include="scopestmt.dyl" />
+    <Compile Include="stdasmstmt.dyl" />
+    <Compile Include="stmt.dyl" />
+    <Compile Include="token.dyl" />
+    <Compile Include="typetoks.dyl" />
+    <Compile Include="varstmts.dyl" />
+    <Compile Include="verstmt.dyl" />
+    <Compile Include="xmldocstmt.dyl" />
+    <Compile Include="interfaces.dyl" />
+    <Compile Include="eventstmt.dyl" />
+    <Compile Include="exprcalltok.dyl" />
+    <Compile Include="varexpr.dyl" />
+    <Compile Include="newcalltoks.dyl" />
+    <Compile Include="attrvalpair.dyl" />
+    <Compile Include="methodnametok.dyl" />
+    <Compile Include="attrstmts.dyl" />
+    <Compile Include="assemblyinfo.dyl" />
+  </ItemGroup>
+  <Import Project="..\4.0\dylan.NET.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\dnu\dnu.dylproj">
+      <Project>{D61ACAE6-7B4E-4234-B40E-0A185815133D}</Project>
+      <Name>dnu</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <StandardHeader Text="//    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2014 Dylan Borg &lt;borgdylan@hotmail.com&gt;&#xA;//    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software&#xA;// Foundation; either version 3 of the License, or (at your option) any later version.&#xA;//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A &#xA;//PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.&#xA;//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple &#xA;//Place, Suite 330, Boston, MA 02111-1307 USA " IncludeInNewFiles="True" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

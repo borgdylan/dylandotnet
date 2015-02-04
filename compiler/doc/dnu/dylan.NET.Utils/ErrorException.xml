@@ -1,0 +1,42 @@
+<Type Name="ErrorException" FullName="dylan.NET.Utils.ErrorException">
+  <TypeSignature Language="C#" Value="public class ErrorException : Exception" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ErrorException extends System.Exception" />
+  <AssemblyInfo>
+    <AssemblyName>dnu</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Exception</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>An exception symbolising an error within the dylan.NET compiler.</summary>
+    <remarks>This type of exception is thrown when using the compiler in library mode only.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ErrorException ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Creates a new ErrorException with a default message.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ErrorException (string errtext);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string errtext) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="errtext" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="errtext">The error text for the exception.</param>
+        <summary>Creates a new ErrorException with teh specified message.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

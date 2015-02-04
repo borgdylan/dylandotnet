@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	
+	<PropertyGroup>
+		<DefaultLanguageSourceExtension>.dyl</DefaultLanguageSourceExtension>
+		<Language>dylan.NET</Language>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<TargetFrameworkVersion Condition=" '$(TargetFrameworkVersion)' == '' ">v4.0</TargetFrameworkVersion>
+		<OutputType Condition=" '$(OutputType)' == '' ">Exe</OutputType>
+		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		<Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+		<OutputPath Condition=" '$(OutputPath)' == '' ">bin\$(Configuration)\</OutputPath>
+		<!--<IntermediateOutputPath>$(MSBuildProjectDirectory)</IntermediateOutputPath>-->
+		<ReleaseVersion Condition=" '$(ReleaseVersion)' == '' ">1.0.0.0</ReleaseVersion>
+		<AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+		<ImplicitlyExpandTargetFramework Condition="'$(ImplicitlyExpandTargetFramework)' == '' ">true</ImplicitlyExpandTargetFramework>
+		
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETFramework'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile5'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile6'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile7'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile49'">true</ComVisibleUsable>
+		<ComVisibleUsable Condition="'$(TargetFrameworkIdentifier)' == '.NETPortable' and '$(TargetFrameworkProfile)' == 'Profile78'">true</ComVisibleUsable>
+	</PropertyGroup>
+	
+	<Target Name="CreateManifestResourceNames">
+		<CreateCSharpManifestResourceName Condition="'@(ResxWithNoCulture)' != ''"
+			ResourceFiles="@(ResxWithNoCulture)" RootNamespace="$(RootNamespace)">
+			<Output TaskParameter = "ManifestResourceNames" ItemName = "ManifestResourceWithNoCultureName" />
+		</CreateCSharpManifestResourceName>
+
+		<CreateCSharpManifestResourceName Condition="'@(NonResxWithNoCulture)' != ''"
+			ResourceFiles="@(NonResxWithNoCulture)" RootNamespace="$(RootNamespace)">
+			<Output TaskParameter = "ManifestResourceNames" ItemName = "ManifestNonResxWithNoCulture" />
+		</CreateCSharpManifestResourceName>
+
+		<CreateCSharpManifestResourceName Condition="'@(ResxWithCulture)' != ''"
+			ResourceFiles="@(ResxWithCulture)" RootNamespace="$(RootNamespace)">
+			<Output TaskParameter = "ManifestResourceNames" ItemName = "ManifestResourceWithCultureName" />
+		</CreateCSharpManifestResourceName>
+
+		<CreateCSharpManifestResourceName Condition="'@(NonResxWithCulture)' != ''"
+			ResourceFiles="@(NonResxWithCulture)" RootNamespace="$(RootNamespace)">
+			<Output TaskParameter = "ManifestResourceNames" ItemName = "ManifestNonResxWithCulture" />
+		</CreateCSharpManifestResourceName>
+	</Target>
+	
+	<PropertyGroup>
+		<InputFile Condition=" '$(InputFile)' == '' ">$(AssemblyName).dyl</InputFile>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v2.0' or '$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' " Include="NET_2_0" />
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' " Include="NET_3_5" />
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' " Include="NET_4_0" />
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.0' and '$(TargetFrameworkIdentifier)' == '.NETFramework' " Include="NET40" />
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' " Include="NET_4_5" />
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' and '$(TargetFrameworkIdentifier)' == '.NETFramework' " Include="NET45" />
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.5.1' and '$(TargetFrameworkIdentifier)' == '.NETFramework' " Include="NET451" />
+		<NETDefines Condition=" '$(TargetFrameworkIdentifier)' == '.NETPortable' " Include="PORTABLE" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Compile Condition=" '@(Compile)' == '' " Include="$(InputFile)" />
+	</ItemGroup>
+	
+	<Target Name="CalcResScriptOuts">
+		<FindResProcOuts Inputs="@(ResScript)">
+			<Output TaskParameter="Outputs" ItemName="ProcScripts" />
+			<Output TaskParameter="Outputs" ItemName="EmbeddedResource" />
+		</FindResProcOuts>
+	</Target>
+	
+	<Target Name="ProcessResScripts" Inputs="@(ResScript);@(ResInput)" Outputs="@(ProcScripts)">
+		<Message Text="Compiling all Resource Scripts (.dylres) into .resx format."/>
+		<ResProcTask ResxInputs="@(ResScript)" NS="$(RootNamespace)">
+			<!--<Output TaskParameter="Outputs" ItemName="EmbeddedResource" />-->
+			<Output TaskParameter="Outputs" ItemName="FileWrites" />
+		</ResProcTask>
+	</Target>
+	
+	<ItemGroup>
+		<CompileOuts Include="$(IntermediateOutputPath)\$(AssemblyName)$(TargetExt)" />
+		<CompileOuts Condition=" '$(DebugSymbols)' == 'true' " Include="$(IntermediateOutputPath)\$(AssemblyName)$(DebugExt)" />
+	</ItemGroup>
+	
+	<Target Name="CoreCompile" Inputs="$(MSBuildAllProjects);@(ReferencePath);@(Compile);@(ManifestResourceWithNoCulture);@(ManifestNonResxWithNoCultureOnDisk);$(KeyOriginatorFile)" Outputs="@(CompileOuts)" DependsOnTargets="$(CoreCompileDependsOn);ResolveAssemblyReferences">
+		<Message Text="Saving project settings into msbuild.dyl so you could use them as part of your code." />
+		<ItemGroup>
+			<DefineConsts Include="$(DefineConstants)" />
+			<InfoLines Include="#define %(NETDefines.FileName)" />
+			<InfoLines Include="#refasm &quot;%(ReferencePath.FullPath)&quot;" />
+			<InfoLines Condition=" '$(DebugSymbols)' == 'true' " Include="#debug on" />
+			<InfoLines Condition=" '$(AssemblyOriginatorKeyFile)' != '' and $(SignAssembly) == 'true' " Include="#sign &quot;$(AssemblyOriginatorKeyFile)&quot;" />
+			<InfoLines Condition=" '$(ComVisibleUsable)' == 'true' " Include="[assembly: System.Runtime.InteropServices.ComVisible(false)]" />
+			<InfoLines Include="[assembly: System.Reflection.AssemblyConfiguration(&quot;$(Configuration)&quot;)]" />
+			<InfoLines Include="[assembly: System.Reflection.AssemblyTitle(&quot;$(AssemblyName)&quot;)]" />
+			<InfoLines Include="[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]" />
+			<InfoLines Condition="'$(TargetFrameworkMoniker)' != '' and '$(TargetingClr2Framework)' != 'true'" Include="[assembly: System.Runtime.Versioning.TargetFramework(&quot;$(TargetFrameworkMoniker)&quot;), FrameworkDisplayName = &quot;$(TargetFrameworkMonikerDisplayName)&quot;]" />
+			<InfoLines Condition=" '$(OutputType)' == 'Library' " Include="assembly $(AssemblyName) dll" />
+			<InfoLines Condition=" '$(OutputType)' == 'Exe' " Include="assembly $(AssemblyName) exe" />
+			<InfoLines Condition=" '$(OutputType)' == 'WinExe' " Include="assembly $(AssemblyName) winexe" />
+			<InfoLines Include="ver $(ReleaseVersion)" />
+			<InfoLines Condition=" '$(DebugSymbols)' == 'true' " Include="#undef DEBUG" />
+			<InfoLines Condition=" '$(DefineConstants)' != '' " Include="#define %(DefineConsts.Identity)" />
+			
+			<InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' and '%(ManifestResourceWithNoCulture.LogicalName)' != '%(ManifestResourceWithNoCulture.LogicalName)' " Include="#embed &quot;&quot; = &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
+			<InfoLines  Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != '' and '%(ManifestNonResxWithNoCultureOnDisk.LogicalName)' != '' " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.LogicalName)&quot; = &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
+			
+			<InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' and '%(ManifestResourceWithNoCulture.LogicalName)' == '' " Include="#embed &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
+			<InfoLines  Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != ''  and '%(ManifestNonResxWithNoCultureOnDisk.LogicalName)' == ''  " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
+			<FileWrites Include="msbuild.dyl" />
+		</ItemGroup>
+		<WriteLinesToFile  File="msbuild.dyl" Lines="@(InfoLines)" Overwrite="True" />
+		
+		<Message Text="Compiling for Target: $(TargetFrameworkMonikerDisplayName)"/>
+		<DncTask InputFile="$(InputFile)" />
+		<Copy SourceFiles="$(AssemblyName)$(TargetExt)" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName)$(TargetExt)" />
+		<Copy Condition=" '$(DebugSymbols)' == 'true' " SourceFiles="$(AssemblyName)$(DebugExt)" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName)$(DebugExt)" />
+		<Delete Files="$(AssemblyName)$(TargetExt)" />
+		<Delete Condition=" '$(DebugSymbols)' == 'true' " Files="$(AssemblyName)$(DebugExt)" />
+		<Message Text="Compilation Ready"/>
+	</Target>
+	
+	<!--<PropertyGroup>
+		<CoreBuildDependsOn>$(CoreBuildDependsOn)</CoreBuildDependsOn>
+	</PropertyGroup>-->
+	
+	<Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+	<Import Project="Extra.tasks" />
+	
+	<PropertyGroup>
+		<ResolveReferencesDependsOn Condition="'$(TargetFrameworkIdentifier)' != '.NETFramework'">
+			$(ResolveReferencesDependsOn);
+			ImplicitlyExpandTargetFramework;
+		</ResolveReferencesDependsOn>
+		
+		<ImplicitlyExpandTargetFrameworkDependsOn Condition="'$(TargetFrameworkIdentifier)' != '.NETFramework'">
+			$(ImplicitlyExpandTargetFrameworkDependsOn);
+			GetReferenceAssemblyPaths
+		</ImplicitlyExpandTargetFrameworkDependsOn>
+		
+		<PrepareResourcesDependsOn>CalcResScriptOuts;ProcessResScripts;$(PrepareResourcesDependsOn)</PrepareResourcesDependsOn>
+	</PropertyGroup>
+	
+	<Target Name="ImplicitlyExpandTargetFramework"
+		DependsOnTargets="$(ImplicitlyExpandTargetFrameworkDependsOn)">
+
+		<ItemGroup>
+			<ReferenceAssemblyPaths Include="$(_TargetFrameworkDirectories)"/>
+			<ReferencePath Include="%(ReferenceAssemblyPaths.Identity)\*.dll">
+				<CopyLocal>false</CopyLocal>
+				<ResolvedFrom>ImplicitlyExpandTargetFramework</ResolvedFrom>
+				<IsSystemReference>True</IsSystemReference>
+			</ReferencePath>
+		</ItemGroup>
+	</Target>
+	
+	<PropertyGroup>
+		<DebugExt Condition=" '$(OS)' != 'Windows_NT' ">$(TargetExt).mdb</DebugExt>
+		<DebugExt Condition=" '$(OS)' == 'Windows_NT' ">.pdb</DebugExt>
+	</PropertyGroup>
+	
+	
+	<Target Name="AfterResolveReferences">
+	    Redefine referencepath to add dependencies
+	    <ItemGroup>
+	      <ReferencePath Include="@(ReferenceDependencyPaths)"></ReferencePath>
+	    </ItemGroup>
+	</Target>
+	
+	<!--<Target Name="InstallDNTargets">
+		<Copy SourceFiles="$(MSBuildThisFile)" DestinationFiles="$(MSBuildToolsPath)\$(MSBuildThisFileName)$(MSBuildThisFileExtension)" />
+	</Target>
+	
+	<Target Name="UninstallDNTargets">
+		<Delete Files="$(MSBuildToolsPath)\$(MSBuildThisFileName)$(MSBuildThisFileExtension)" />
+	</Target>-->
+	
+</Project>

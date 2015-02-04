@@ -1,0 +1,7 @@
+#refasm "/usr/lib/dylandotnet4/dnr.dll"
+#refasm "/usr/lib/dylandotnet4/dnc.exe"
+#refasm "/usr/lib/dylandotnet4/dnu.dll"
+#refasm "/usr/lib/dylandotnet4/tokenizer.AST.dll"
+#refasm "/usr/lib/dylandotnet4/tokenizer.Lexer.dll"
+#refasm "/usr/lib/dylandotnet4/tokenizer.Parser.dll"
+#refasm "/usr/lib/dylandotnet4/tokenizer.CodeGen.dll"

@@ -1,0 +1,61 @@
+<Type Name="IBranchContainer" FullName="dylan.NET.Tokenizer.AST.Stmts.IBranchContainer">
+  <TypeSignature Language="C#" Value="public interface IBranchContainer : dylan.NET.Tokenizer.AST.Stmts.IStmtContainer" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IBranchContainer implements class dylan.NET.Tokenizer.AST.Stmts.IStmtContainer" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Stmts.IStmtContainer</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AddBranch">
+      <MemberSignature Language="C#" Value="public bool AddBranch (dylan.NET.Tokenizer.AST.Stmts.BranchStmt stmttoadd);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool AddBranch(class dylan.NET.Tokenizer.AST.Stmts.BranchStmt stmttoadd) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stmttoadd" Type="dylan.NET.Tokenizer.AST.Stmts.BranchStmt" />
+      </Parameters>
+      <Docs>
+        <param name="stmttoadd">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BranchChildren">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.BranchStmt[] BranchChildren { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Stmts.BranchStmt[] BranchChildren" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.BranchStmt[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentContainer">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Stmts.IStmtContainer CurrentContainer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Stmts.IStmtContainer CurrentContainer" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.IStmtContainer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

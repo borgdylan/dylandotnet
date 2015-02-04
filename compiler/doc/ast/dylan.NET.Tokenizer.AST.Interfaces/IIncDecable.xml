@@ -1,0 +1,46 @@
+<Type Name="IIncDecable" FullName="dylan.NET.Tokenizer.AST.Interfaces.IIncDecable">
+  <TypeSignature Language="C#" Value="public interface IIncDecable : dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IIncDecable implements class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>The interface implemented by all Tokens supporting increment i.e. '++' and decrement i.e. '--'.</summary>
+    <remarks>This interface depends on IUnaryOperatable.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="DoDec">
+      <MemberSignature Language="C#" Value="public bool DoDec { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoDec" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The flag indicating whether a decrement should be done.</summary>
+        <value>The boolean value for the flag.</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoInc">
+      <MemberSignature Language="C#" Value="public bool DoInc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoInc" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The flag indicating whether an increment should be done.</summary>
+        <value>The boolean value for the flag.</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

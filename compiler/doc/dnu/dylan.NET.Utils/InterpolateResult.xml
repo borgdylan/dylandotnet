@@ -1,0 +1,58 @@
+<Type Name="InterpolateResult" FullName="dylan.NET.Utils.InterpolateResult">
+  <TypeSignature Language="C#" Value="public class InterpolateResult" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi InterpolateResult extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dnu</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public InterpolateResult (string format, System.Collections.Generic.IEnumerable&lt;string&gt; exprs);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string format, class System.Collections.Generic.IEnumerable`1&lt;string&gt; exprs) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="format" Type="System.String" />
+        <Parameter Name="exprs" Type="System.Collections.Generic.IEnumerable&lt;System.String&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="format">To be added.</param>
+        <param name="exprs">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Expressions">
+      <MemberSignature Language="C#" Value="public string[] Expressions { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string[] Expressions" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Format">
+      <MemberSignature Language="C#" Value="public string Format { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Format" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

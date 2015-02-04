@@ -1,0 +1,55 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="dnr" Version="11.5.3.4">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCompany("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyConfiguration("Debug")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCopyright("Copyright (C) 2014 Dylan Borg")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCulture("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyProduct("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("dnr")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTrademark("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.0", FrameworkDisplayName=".NET Framework 4")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>This library contains the reflection and reflection-emit parts of dylan.NET. This library also has uses when seperate from the other compiler parts.</Remarks>
+  <Copyright>Copyright (C) Dylan Borg 2011. The dnr.dll library is licensed under the LGPLv3 license.</Copyright>
+  <Types>
+    <Namespace Name="dylan.NET.Reflection">
+      <Type Name="AsmFactory" Kind="Class" />
+      <Type Name="AssemblyRecord" Kind="Class" />
+      <Type Name="BranchOptimisation" Kind="Enumeration" />
+      <Type Name="ILEmitter" Kind="Class" />
+      <Type Name="Importer" Kind="Class" />
+      <Type Name="ImportRecord" Kind="Class" />
+      <Type Name="Loader" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>dnr</Title>
+</Overview>

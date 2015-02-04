@@ -1,0 +1,27 @@
+<doc>
+    <assembly>
+        <name>lzw</name>
+    </assembly>
+    <members>
+        <member name="dylan.NET.LZW.Compressor..ctor">
+            <summary>Make a new Compressor instance.</summary>
+            <remarks />
+        </member>
+        <member name="dylan.NET.LZW.Compressor.Compress">
+            <param name="srcpath">File to compress.</param>
+            <param name="destpath">File to write to.</param>
+            <summary>Compress file at 'srcpath' using LZW and write the output to 'destpath'.</summary>
+            <remarks>The file paths can be relative or rooted. Relative paths are relative to the current working directory.</remarks>
+        </member>
+        <member name="dylan.NET.LZW.Decompressor..ctor">
+            <summary>Make a new Decompressor instance.</summary>
+            <remarks />
+        </member>
+        <member name="dylan.NET.LZW.Decompressor.Decompress">
+            <param name="srcpath">File to decompress.</param>
+            <param name="destpath">File to write to.</param>
+            <summary>Decompress file at 'srcpath' using LZW and write the output to 'destpath'.</summary>
+            <remarks>The file paths can be relative or rooted. Relative paths are relative to the current working directory.</remarks>
+        </member>
+    </members>
+</doc>

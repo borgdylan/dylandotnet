@@ -1,0 +1,6 @@
+<Namespace Name="dylan.NET.Tokenizer.AST.Tokens.Literals">
+  <Docs>
+    <summary>Contains all dylan.NET literal classes.</summary>
+    <remarks>All classes representing a literal are to be placed in this namespace.</remarks>
+  </Docs>
+</Namespace>

@@ -1,0 +1,312 @@
+<Type Name="Ident" FullName="dylan.NET.Tokenizer.AST.Tokens.Ident">
+  <TypeSignature Language="C#" Value="public class Ident : dylan.NET.Tokenizer.AST.Tokens.ValueToken, dylan.NET.Tokenizer.AST.Interfaces.IConvable, dylan.NET.Tokenizer.AST.Interfaces.IIncDecable, dylan.NET.Tokenizer.AST.Interfaces.INegatable, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Ident extends dylan.NET.Tokenizer.AST.Tokens.ValueToken implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.IIncDecable, class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.INotable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.ValueToken</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IConvable</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IIncDecable</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.INegatable</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.INotable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>Represents an identifier.</summary>
+    <remarks>May be a variable,arguument, field, method name etc.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Ident ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new Ident.</summary>
+        <remarks>If you want a constructor that assigns Value at the same time use the other constructor.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Ident (string value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>Constructs a new Ident given the string 'value'.</summary>
+        <remarks>Assigns a value to the 'Value' field during initalisation. If this string is not available at construct time use the other constructor and set 'Value' manually.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_Conv">
+      <MemberSignature Language="C#" Value="protected bool _Conv;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool _Conv" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_DoDec">
+      <MemberSignature Language="C#" Value="protected bool _DoDec;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool _DoDec" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_DoInc">
+      <MemberSignature Language="C#" Value="protected bool _DoInc;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool _DoInc" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_DoNeg">
+      <MemberSignature Language="C#" Value="protected bool _DoNeg;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool _DoNeg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_DoNot">
+      <MemberSignature Language="C#" Value="protected bool _DoNot;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool _DoNot" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_OrdOp">
+      <MemberSignature Language="C#" Value="protected string _OrdOp;" />
+      <MemberSignature Language="ILAsm" Value=".field family string _OrdOp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_TTok">
+      <MemberSignature Language="C#" Value="protected dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok _TTok;" />
+      <MemberSignature Language="ILAsm" Value=".field family class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok _TTok" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ArrLoc">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr ArrLoc;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Exprs.Expr ArrLoc" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds an expression that evaluates to the array location to load or store into.</summary>
+        <remarks>This may be just the letter 'l' as an Ident so as to signal that the array length is required.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Conv">
+      <MemberSignature Language="C#" Value="public virtual bool Conv { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Conv" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoDec">
+      <MemberSignature Language="C#" Value="public virtual bool DoDec { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoDec" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoInc">
+      <MemberSignature Language="C#" Value="public virtual bool DoInc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoInc" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoNeg">
+      <MemberSignature Language="C#" Value="public virtual bool DoNeg { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoNeg" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoNot">
+      <MemberSignature Language="C#" Value="public virtual bool DoNot { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoNot" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ExplType">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ExplType;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ExplType" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsArr">
+      <MemberSignature Language="C#" Value="public bool IsArr;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool IsArr" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This flag must be set to perform an array access.</summary>
+        <remarks>The slot to be used is to be put in ArrLoc.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsRef">
+      <MemberSignature Language="C#" Value="public bool IsRef;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool IsRef" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Set this flag to return the address of the memory location holding this identifier.</summary>
+        <remarks>Works only with valutypes/struct types.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsValInRef">
+      <MemberSignature Language="C#" Value="public bool IsValInRef;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool IsValInRef" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>If this identifer leads to an address and you wish to access the location at that address set this flag.</summary>
+        <remarks>Such an identifier cannot be stored in fields.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MemberAccessFlg">
+      <MemberSignature Language="C#" Value="public bool MemberAccessFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool MemberAccessFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This flag when set indicates method chaining behaviour.</summary>
+        <remarks>If this is set, also set MemberToAccess to indicate the member of teh return type to chain into.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MemberToAccess">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token MemberToAccess;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Token MemberToAccess" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Indicates the member to access during method chaining.</summary>
+        <remarks>Chaining only happens if MemberAccessFlg is set to true.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OrdOp">
+      <MemberSignature Language="C#" Value="public virtual string OrdOp { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string OrdOp" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TTok">
+      <MemberSignature Language="C#" Value="public virtual dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

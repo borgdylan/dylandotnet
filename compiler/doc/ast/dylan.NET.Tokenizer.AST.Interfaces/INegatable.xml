@@ -1,0 +1,32 @@
+<Type Name="INegatable" FullName="dylan.NET.Tokenizer.AST.Interfaces.INegatable">
+  <TypeSignature Language="C#" Value="public interface INegatable : dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract INegatable implements class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>The interface implemented by all Tokens supporting negation i.e. '!'.</summary>
+    <remarks>This interface depends on IUnaryOperatable.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="DoNeg">
+      <MemberSignature Language="C#" Value="public bool DoNeg { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoNeg" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The flag indicating whether negation should be done.</summary>
+        <value>The boolean value for the flag.</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

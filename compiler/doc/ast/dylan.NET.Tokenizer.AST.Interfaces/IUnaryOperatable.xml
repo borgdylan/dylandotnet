@@ -1,0 +1,28 @@
+<Type Name="IUnaryOperatable" FullName="dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable">
+  <TypeSignature Language="C#" Value="public interface IUnaryOperatable" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IUnaryOperatable" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>The main interface for those Tokens that support unary operations.</summary>
+    <remarks>It is more usful if this interface is implemented along with one or more of the others.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="OrdOp">
+      <MemberSignature Language="C#" Value="public string OrdOp { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string OrdOp" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gives the order of unary operations.</summary>
+        <value>A string with space delimeted codes each indicating a unary operation.</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

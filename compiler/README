@@ -1,0 +1,32 @@
+LIBRARIES - LISTS AND LICENSES - FOR BOTH DYLAN.NET(SOURCE INCLUDED) AND OTHER LIBRARIES PRESENT AS SOURCE AND/OR BINARY
+
+This software ie. the dylan.NET compiler and all the libraries whose dylan.NET sources are present here are all under the GNU LGPLv3 as written in the COPYING file.
+
+List of compiled libraries(GNU LGPL v3):
+dnr.dll
+tokenizer.AST.dll
+tokenizer.Lexer.dll
+tokenizer.Parser.dll
+tokenizer.CodeGen.dll
+dnc.exe
+dnu.dll
+pc2cd.exe
+pc2dn.exe
+resproc.exe
+Extra.Tasks.dll
+
+List of Mono libraries required to build dylan.NET(MIT/X11):
+mscorlib.dll
+System.dll
+System.Core.dll
+
+The IKVM.Reflection.dll was written by Jeroen Frijters and is part of IKVM.NET
+The C5.dll was written by Sestoft,Kokholm and Nielsen of the IT University of Copenhagen.
+
+COMPILING DYLAN.NET
+
+The compiler and the tokenizer libraries are now all compilable under linux with DFSG compliant tools. A system that uses autotools by GNU is used to help everyone compile the system as well as package it for the wanted linux distro. A directory with pre-made debian packaging info is available on the GIT repo to help make the packages. One can also specify different dh_make files or use cdbs instead. A PPA for ubuntu named ppa:borgdylan/ppa contains stable builds of dylandotnet ready for testing. If anyone wants to make packages for other systems may contact me on borgdylan@hotmail.com to tell me(one can make packages and not tell me...it is in your freedoms but telling me brings me joy) and then make the packaging. I shall maintain the packaging for debian and ubuntu. Any help is welcome with packaging,compiling and testing dylan.NET.
+
+RE/DISTRIBUTING DYLAN.NET
+
+The sources are present on launchpad.net/dylandotnet and are there for all to get at no fee. All may modify and distribute them according to the license that covers the dylan.NET code written for the compiler i.e. according to the LGPL version 3. The Mono libraries however are under the MIT/X11. All the licenses contained in the repositories are to be redistributed with the code. If you make changes to the compiler, add yourself as one of the authors in the AUTHORS file and add any libraries included that you write in the lists above and also mention the license you chose for them. Include this license if it is not already present. This is required for legal purposes. This system is open source and free i.e. no money is needed to buy it and so all distributors are requested to keep it free for everyone to enjoy for the times to come.

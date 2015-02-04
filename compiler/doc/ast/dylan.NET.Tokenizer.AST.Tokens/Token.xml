@@ -1,0 +1,91 @@
+<Type Name="Token" FullName="dylan.NET.Tokenizer.AST.Tokens.Token">
+  <TypeSignature Language="C#" Value="public class Token" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Token extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>This is the Token class which is the basis for all of the dylan.NET AST.</summary>
+    <remarks>All Tokens must directly or indirectly inherit from this class.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Token ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a Token.</summary>
+        <remarks>To just initialise a new Token with a particular value use the other constructor.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Token (string value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">The textual value of the Token to initialise.</param>
+        <summary>Constructs a Token given its Value.</summary>
+        <remarks>If the Value is not known at construct time please use the above cosntructor and set the Value field manually.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Line">
+      <MemberSignature Language="C#" Value="public int Line;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Line" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The Line where this Token was found.</summary>
+        <remarks>This is important for debug info emission.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Outputs the Token in terms of dylan.NET syntax.</summary>
+        <returns>The dylan.NET syntax that represents this Token.</returns>
+        <remarks>This method is overridden in many subclasses as this implementation is too general.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnquotedValue">
+      <MemberSignature Language="C#" Value="public string UnquotedValue { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string UnquotedValue" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Value">
+      <MemberSignature Language="C#" Value="public string Value;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Value" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The textual value of the Token.</summary>
+        <remarks>From this the Parser module can further optimize the Token into other subclasses.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

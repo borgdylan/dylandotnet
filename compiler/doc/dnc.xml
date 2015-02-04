@@ -1,0 +1,22 @@
+<doc>
+    <assembly>
+        <name>dnc</name>
+    </assembly>
+    <members>
+        <member name="T:dylan.NET.Compiler.Program">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Compiler.Program.Invoke(System.String[])">
+            <param name="args">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Compiler.Program.InvokeAsync(System.String[])">
+            <param name="args">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+    </members>
+</doc>

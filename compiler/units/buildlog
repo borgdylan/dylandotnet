@@ -1,0 +1,70 @@
+
+dylan.NET Compiler v. 11.3.1.4 Beta for Microsoft (R) .NET Framework (R) v. 3.5 SP1 / 4.0 / 4.5
+                           and Xamarin Mono v. 2.x.y/v. 3.x.y
+This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.
+Currently Targeting the 4.0/4.5 Profile!!
+Copyright (C) 2013 Dylan Borg
+
+Now Lexing: unit.dyl...Done.
+Now Parsing: unit.dyl...Done.
+Now Lexing: streamutests.dyl
+Now Parsing: streamutests.dyl
+Referencing Assembly: /usr/lib/mono/4.5/mscorlib.dll
+Referencing Assembly: dnu.dll
+Now Lexing: nunit.dyl
+Now Parsing: nunit.dyl
+Finished Processing: nunit.dyl (inline)
+Referencing Assembly: /usr/lib/cli/nunit.core-2.6/nunit.core.dll
+Referencing Assembly: /usr/lib/cli/nunit.util-2.6/nunit.util.dll
+Referencing Assembly: /usr/lib/cli/nunit.framework-2.6/nunit.framework.dll
+Referencing Assembly: /usr/lib/cli/nunit.core.interfaces-2.6/nunit.core.interfaces.dll
+Importing Namespace: System
+Importing Namespace: System.IO
+Importing Namespace: NUnit.Framework
+Importing Namespace: dylan.NET.UnitTests
+Importing Namespace: dylan.NET.Utils
+Beginning Assembly: unit
+Now Lexing: parseutests.dyl
+Now Parsing: parseutests.dyl
+Finished Processing: streamutests.dyl (worker thread)
+Finished Processing: parseutests.dyl (inline)
+Adding Class: dylan.NET.UnitTests.TestParseUtils
+	Adding Method: TestProcessStringExtASCII
+	Adding Method: TestProcessStringUTF16
+	Adding Method: TestProcessStringX1
+	Adding Method: TestProcessStringX2
+	Adding Method: TestProcessStringX3
+	Adding Method: TestProcessStringX4
+	Adding Method: TestProcessStringNUL
+	Adding Method: TestProcessStringTAB
+	Adding Method: TestProcessStringCR
+	Adding Method: TestProcessStringLF
+	Adding Method: TestProcessStringVT
+	Adding Method: TestProcessStringA
+	Adding Method: TestProcessStringBS
+	Adding Method: TestProcessStringFF
+	Adding Method: TestProcessStringS
+	Adding Method: TestProcessStringQ
+	Adding Method: TestProcessStringBSL
+	Adding Method: TestStringParserQ
+	Adding Method: TestStringParserNoQ
+	Adding Method: TestStringParserEmpty
+	Adding Method: TestStringParserCQ
+	Adding Method: TestStringParser2dsCQ
+Adding Class: dylan.NET.UnitTests.TestStreamUtils
+	Adding Field: ms
+	Adding Field: sw
+	Adding Field: sr
+	Adding Method: SetupTests
+	Adding Method: TestWriteLine
+	Adding Method: TestWrite
+	Adding Method: TestReadLine
+	Adding Method: TestInitInS
+	Adding Method: TestInitOutS
+	Adding Method: TestCloseInS
+	Adding Method: TestCloseOutS
+	Adding Method: TestWriteErrorExcp
+	Adding Method: TestWriteErrorMsg
+	Adding Method: TestWriteWarnMsg
+	Adding Method: TeardownTests
+Writing Assembly to Disk...Done.

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<Template originator   = "Mike Krueger"
+          created      = "06/10/2001"
+          lastModified = "02/01/2003">
+	
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>Console Project</_Name>
+		<_Category>dylan.NET</_Category>
+		<Icon>md-project-console</Icon>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates a new dylan.NET console project.</_Description>
+		<DefaultFilename>ConsoleProject</DefaultFilename>
+	</TemplateConfiguration>
+	
+	<!-- Actions -->
+	<Actions>
+		<Open filename = "Program.dyl"/>
+	</Actions>
+	
+	<!-- Template Content -->
+	<Combine name = "${ProjectName}" directory = ".">
+		<Options>
+			<StartupProject>${ProjectName}</StartupProject>
+		</Options>
+		
+		<Project name = "${ProjectName}" directory = ".">
+			<Options Target = "Exe" PauseConsoleOutput = "True" />
+			<References>
+				<Reference type="Package" refto="System" />
+				<Reference type="Package" refto="mscorlib" />
+				<Reference type="Package" refto="System.Core" />
+				<Reference type="Package" refto="System.Xml.Linq" />
+				<Reference type="Package" refto="System.Xml" />
+			</References>
+			<Files>
+				<File name="Program.dyl" AddStandardHeader="True"><![CDATA[namespace ${Namespace}
+
+	class public auto ansi Program
+	
+		method public static void main(var args as string[])
+			Console::WriteLine("Hello World!")
+		end method
+		
+	end class
+	
+end namespace]]></File>
+				<File name="${ProjectName}.dyl" AddStandardHeader="True"><![CDATA[#include "msbuild.dyl"
+#include "Properties/AssemblyInfo.dyl"
+
+import System
+import System.Collections
+import System.Collections.Generic
+import System.Linq
+import System.Xml
+import System.Xml.Linq
+import System.Linq.Expressions
+
+#include "Program.dyl"]]></File>
+			<FileTemplateReference TemplateID="dylanNetAssemblyInfo" name="AssemblyInfo.dyl" />
+			</Files>
+		</Project>
+	</Combine>
+</Template>

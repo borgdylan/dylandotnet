@@ -1,0 +1,605 @@
+<Type Name="Loader" FullName="dylan.NET.Reflection.Loader">
+  <TypeSignature Language="C#" Value="public static class Loader" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit Loader extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dnr</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="CachedLoadClass">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CachedLoadClass (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type CachedLoadClass(string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CompareParamsToTyps">
+      <MemberSignature Language="C#" Value="public static bool CompareParamsToTyps (System.Reflection.ParameterInfo[] t1, Type[] t2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool CompareParamsToTyps(class System.Reflection.ParameterInfo[] t1, class System.Type[] t2) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t1" Type="System.Reflection.ParameterInfo[]" />
+        <Parameter Name="t2" Type="System.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="t1">To be added.</param>
+        <param name="t2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumLitFlag">
+      <MemberSignature Language="C#" Value="public static bool EnumLitFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool EnumLitFlag" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumLitTyp">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type EnumLitTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type EnumLitTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FldLitFlag">
+      <MemberSignature Language="C#" Value="public static bool FldLitFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool FldLitFlag" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FldLitTyp">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type FldLitTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type FldLitTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FldLitVal">
+      <MemberSignature Language="C#" Value="public static object FldLitVal;" />
+      <MemberSignature Language="ILAsm" Value=".field public static object FldLitVal" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDelegateInvokeParams">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type[] GetDelegateInvokeParams (IKVM.Reflection.Type typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type[] GetDelegateInvokeParams(class IKVM.Reflection.Type typ) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public static void Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadBinOp">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo LoadBinOp (IKVM.Reflection.Type typ, string name, IKVM.Reflection.Type typa, IKVM.Reflection.Type typb);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo LoadBinOp(class IKVM.Reflection.Type typ, string name, class IKVM.Reflection.Type typa, class IKVM.Reflection.Type typb) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="typa" Type="IKVM.Reflection.Type" />
+        <Parameter Name="typb" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="typa">To be added.</param>
+        <param name="typb">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadClass">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type LoadClass (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type LoadClass(string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadClasses">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt; LoadClasses (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class IKVM.Reflection.Type&gt; LoadClasses(string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.Type&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadConvOp">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo LoadConvOp (IKVM.Reflection.Type typ, string name, IKVM.Reflection.Type src, IKVM.Reflection.Type snk);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo LoadConvOp(class IKVM.Reflection.Type typ, string name, class IKVM.Reflection.Type src, class IKVM.Reflection.Type snk) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="src" Type="IKVM.Reflection.Type" />
+        <Parameter Name="snk" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="src">To be added.</param>
+        <param name="snk">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadCtor">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.ConstructorInfo LoadCtor (IKVM.Reflection.Type typ, IKVM.Reflection.Type[] typs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.ConstructorInfo LoadCtor(class IKVM.Reflection.Type typ, class IKVM.Reflection.Type[] typs) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.ConstructorInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="typs" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="typs">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadField">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.FieldInfo LoadField (IKVM.Reflection.Type typ, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.FieldInfo LoadField(class IKVM.Reflection.Type typ, string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.FieldInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadGenericMethod">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo LoadGenericMethod (IKVM.Reflection.Type typ, string name, IKVM.Reflection.Type[] genparams, IKVM.Reflection.Type[] paramst);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo LoadGenericMethod(class IKVM.Reflection.Type typ, string name, class IKVM.Reflection.Type[] genparams, class IKVM.Reflection.Type[] paramst) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="genparams" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="paramst" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="genparams">To be added.</param>
+        <param name="paramst">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadGenericMtdOverlds">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.MethodInfo&gt; LoadGenericMtdOverlds (IKVM.Reflection.Type typ, string name, int paramlen);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class IKVM.Reflection.MethodInfo&gt; LoadGenericMtdOverlds(class IKVM.Reflection.Type typ, string name, int32 paramlen) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.MethodInfo&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="paramlen" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="paramlen">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadMethod">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo LoadMethod (IKVM.Reflection.Type typ, string name, IKVM.Reflection.Type[] typs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo LoadMethod(class IKVM.Reflection.Type typ, string name, class IKVM.Reflection.Type[] typs) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="typs" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="typs">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadMethodWithoutParams">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo LoadMethodWithoutParams (IKVM.Reflection.Type typ, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo LoadMethodWithoutParams(class IKVM.Reflection.Type typ, string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadNormalMtdOverlds">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.MethodInfo&gt; LoadNormalMtdOverlds (IKVM.Reflection.Type typ, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class IKVM.Reflection.MethodInfo&gt; LoadNormalMtdOverlds(class IKVM.Reflection.Type typ, string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.MethodInfo&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadProperty">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.PropertyInfo LoadProperty (IKVM.Reflection.Type typ, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.PropertyInfo LoadProperty(class IKVM.Reflection.Type typ, string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.PropertyInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadSpecMtds">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.MethodInfo&gt; LoadSpecMtds (IKVM.Reflection.Type typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class IKVM.Reflection.MethodInfo&gt; LoadSpecMtds(class IKVM.Reflection.Type typ) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;IKVM.Reflection.MethodInfo&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LoadUnaOp">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo LoadUnaOp (IKVM.Reflection.Type typ, string name, IKVM.Reflection.Type typa);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo LoadUnaOp(class IKVM.Reflection.Type typ, string name, class IKVM.Reflection.Type typa) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="typa" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <param name="name">To be added.</param>
+        <param name="typa">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeArr">
+      <MemberSignature Language="C#" Value="public static bool MakeArr;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool MakeArr" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MakeRef">
+      <MemberSignature Language="C#" Value="public static bool MakeRef;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool MakeRef" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MemberTyp">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type MemberTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type MemberTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParamsToTyps">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type[] ParamsToTyps (IKVM.Reflection.ParameterInfo[] t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type[] ParamsToTyps(class IKVM.Reflection.ParameterInfo[] t) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="IKVM.Reflection.ParameterInfo[]" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreProcTyp">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type PreProcTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type PreProcTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProcessType">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type ProcessType (IKVM.Reflection.Type typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.Type ProcessType(class IKVM.Reflection.Type typ) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProtectedFlag">
+      <MemberSignature Language="C#" Value="public static bool ProtectedFlag;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool ProtectedFlag" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,137 @@
+<Type Name="ContextType" FullName="dylan.NET.Tokenizer.AST.Stmts.ContextType">
+  <TypeSignature Language="C#" Value="public enum ContextType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ContextType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AbstractEvent">
+      <MemberSignature Language="C#" Value="AbstractEvent" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType AbstractEvent = int32(9)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="AbstractProperty">
+      <MemberSignature Language="C#" Value="AbstractProperty" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType AbstractProperty = int32(8)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Assembly">
+      <MemberSignature Language="C#" Value="Assembly" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType Assembly = int32(1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Class">
+      <MemberSignature Language="C#" Value="Class" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType Class = int32(2)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Enum">
+      <MemberSignature Language="C#" Value="Enum" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType Enum = int32(4)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Event">
+      <MemberSignature Language="C#" Value="Event" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType Event = int32(6)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Interface">
+      <MemberSignature Language="C#" Value="Interface" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType Interface = int32(3)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Loop">
+      <MemberSignature Language="C#" Value="Loop" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType Loop = int32(10)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Method">
+      <MemberSignature Language="C#" Value="Method" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType Method = int32(7)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="None">
+      <MemberSignature Language="C#" Value="None" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType None = int32(0)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Property">
+      <MemberSignature Language="C#" Value="Property" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Tokenizer.AST.Stmts.ContextType Property = int32(5)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Stmts.ContextType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

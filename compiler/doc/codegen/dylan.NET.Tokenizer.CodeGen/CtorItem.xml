@@ -1,0 +1,80 @@
+<Type Name="CtorItem" FullName="dylan.NET.Tokenizer.CodeGen.CtorItem">
+  <TypeSignature Language="C#" Value="public class CtorItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi CtorItem extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.CodeGen</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CtorItem ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CtorItem (IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.ConstructorBuilder bld);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.ConstructorBuilder bld) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="ptyps" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="bld" Type="IKVM.Reflection.Emit.ConstructorBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ptyps">To be added.</param>
+        <param name="bld">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CtorBldr">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Emit.ConstructorBuilder CtorBldr;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Emit.ConstructorBuilder CtorBldr" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.ConstructorBuilder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParamTyps">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type[] ParamTyps;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type[] ParamTyps" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,331 @@
+dylandotnet (11.2.9.6-1) precise; urgency=low
+
+  * Updating man pages and makefiles.
+  * Allowing Loader.LoadMethod to treat array types as System.Array.
+  * Allowing chaining on arrays.
+  * ABI break in Loader with special method loader returning IEnumerable<of MethodInfo>
+  * Adding support in loader for finding generic methods.
+  * Adding support for interface creation and implementation.
+  * Adding support for explicit implementation of non-generic interfaces.
+  * Adding support for implicit implementation of generic/normal interfaces.
+  * Adding support for using generic types and methods in code.
+  * Supporting LINQ to XML, LINQ to Objects, (LINQ to DataSet), Generic Collections.
+  * ABI break in SymTable with StoreFlg being the only public field.
+  * Beginning SymTable transition from arrays to generic collections.
+  * Transitioning completely OpStack to use Stack<of Token>
+  * Adding internal classes in dnr and codegen to support internal LINQ queries.
+  * Transitioning operator overload binding to use the Default Binder.
+  * Implementing a binder for local method/constructor calls.
+  * Changing vector test sample to implement some generic interfaces.
+  * Adding GenericMethodNameTok in AST.
+  * Adding parsing methods for generic type names and method names.
+  * ABI break in TokenOptimizer.Optimize, now also needs a lookahead.
+  * Beginning 3 phased codegen implementation.
+  * Transitioning current class member searches to 3 phased format.
+  * Creating a TypeItem for every created class.
+  * Adding a TypeList API for querying the assembly being made.
+  * Refactoring TokenOptimizer in order to speed it up.
+  * Making ParserFlags an instance class to allow simulataneous parsing.
+  * Changing the way the assembly keyword is parsed (diff logic, same outcomes).
+  * Adding error detection for constructor invocations.
+  * Bumping up assembly versions to 11.2.9.5
+  * Beginning a new syntax manual in man-page format.
+  * Updating makefiles so as to install dylandotnet.7 file.
+  * Updating README.
+  * Adding constructors for MethodNameTok and GenericMethodNameTok.
+  * Adding mechanism to make the GenericMethodNameTok and MethodNameTok
+  *     from Ident instances (includes operator overloads).
+  * Adding Path field to StmtSet plus a constructor to set it.
+  * Continuing Evaluator transition to new APIs.
+  * Adding new me::ctor alias mybase::ctor .
+  * Adding helper methods in codegen for numeric type determination.
+  * Adapting many class functions to use the new string escaping syntax.
+  * Fixing a TypeList bug.
+  * Optimizing ProcessType.
+  * In dnu, adding IsHexDigit and ProcessString (escaping function)
+  * Bumping up versions to 11.2.9.6
+  * Adding stub dylan.NET.Web files (gnu affero).
+  * Adding ToString() for many AST classes.
+  * Separating MethodNameTok and GenericMethodNameTok in another file.
+  * Adding support for mybase:: prefix for method calls.
+  * Adding more error output cases for assignment cases.
+  * Adding dnr and Helpers modifications for mybase:: prefix support.
+  * Adding flag for determining if current context is a constructor.
+  * Removing some redundant conversions.
+  * Adding warning that signals redundant conversions.
+  * Making new codegen API additions better.
+  * Adding support for access control in TypeList.
+  * Forcing dylandotnet.7 install to dylandotnet-doc package.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 23 Jul 2012 22:34:26 +0100
+
+
+dylandotnet (11.2.9.2-1) experimental; urgency=low
+
+  * (Closes:626078)
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 21 Apr 2012 18:57:04 +0100
+
+dylandotnet (11.2.9.1-1) precise; urgency=low
+
+  * Adding support for byref features (ready)
+  * Adding support for exception throw/catch
+  * Adding support for decimal literals e.g 7.2m
+  * Making lexer and parser compile under linux/Mac
+  * Updating Makefiles and man pages
+  * Bumping assembly versions to 11.2.9.1
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 21 Apr 2012 16:00:33 +0100
+
+dylandotnet (11.2.8.9-1) precise; urgency=low
+
+  * Refactoring completely dnc,dnr,dnu,ast, and most of codegen.
+  * Adding support for unsigned nr. literals (load/operate upon).
+  * Adding support for parsing system.decimal literals(no load support yet).
+  * Adding support for parsing byref syntax(codegen not complete).
+  * Adding ToString() to some ast tokens.
+  * Adding dnr support for instruction selection for byref.
+  * Adding Microsoft XML Documentation output for docs.
+  * Adding support for buildlogs in makefiles.
+  * Updating makefiles and man pages.
+  * Bumping up versions to 11.2.8.9.
+  * Tested to work on Mono 2.11
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 01 Apr 2012 12:09:45 +0100
+
+dylandotnet (11.2.8.8-1) precise; urgency=low
+
+  * Fixing a parser bug for var statements
+  * Updating man pages and makefiles.
+  * Bumping up version to 11.2.8.8
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 20 Feb 2012 13:56:11 +0100
+
+dylandotnet (11.2.8.7-1) precise; urgency=low
+
+  * Adding support for pre/post conditioned loops.
+  * Adding support for break/continue statements.
+  * Updating man pages and makefiles.
+  * Bumping up version to 11.2.8.7
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 20 Feb 2012 13:56:11 +0100
+
+dylandotnet (11.2.8.6-1) precise; urgency=low
+
+  * Adding support for conversion syntax before 'me' and 'null'.
+  * Fixing internal read permissions detection bug
+  * Updating man pages.
+  * Adding 6 more test files to cover latest features.
+  * Bumping up version to 11.2.8.6
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 18 Feb 2012 13:56:11 +0100
+
+dylandotnet (11.2.8.5-1) precise; urgency=low
+
+  * Adding support for namespace names enclosed in quotes.
+  * Adding support for making not inheritable and internal classes.
+  * Adding support for making internal, protected fields/methods/constructors.
+  * Adding support for consuming the above.
+  * Adding support for making non-overridable methods.
+  * Updating man pages.
+  * Bumping up version to 11.2.8.5
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 17 Feb 2012 13:56:11 +0100
+
+dylandotnet (11.2.8.4-1) precise; urgency=low
+
+  * Fixing a chaining bug in the parser.
+  * Updating man pages.
+  * Bumping up version to 11.2.8.4
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 08 Feb 2012 13:56:11 +0100
+
+
+dylandotnet (11.2.8.3-1) precise; urgency=low
+
+  * Adding dylandotnet-dev package.
+  * Adding support for array length getting.
+  * Adding support for array store/load.
+  * Fixing some minor bugs.
+  * Updating Makefiles and man pages.
+  * Updating debian/control.
+  * Bumping up version to 11.2.8.3
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 07 Feb 2012 16:26:37 +0100
+
+
+dylandotnet (11.2.8.2-1) oneiric; urgency=low
+
+  * Adding some error detection for when specified classes/variables are inexistent.
+  * Adding support for the #include statement.
+  * Adding support for the #refstdasm statement.
+  * Adding support for downcasting/upcasting (extends boxing system).
+  * Adding support for MSYS generated URIs on Windows.
+  * Adding support for method chaining on method calls that are not after assignment.
+  * Fixing zero parameter delegation bug.
+  * Updating Makefiles and man pages.
+  * Updating debian/control.
+  * Bumping up version to 11.2.8.2
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Mon, 16 Jan 2012 12:15:37 +0100
+ 
+dylandotnet (11.2.8.1-1) oneiric; urgency=low
+
+  * Adding support for making delegates.
+  * Adding better syntax for delegation which supports more cases than ptr.
+  * Finished support for array making but not store/load.
+  * Updating makefiles and man pages.
+  * Adding more test programs.
+  * Bumping up version to 11.2.8.1
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Thu, 13 Dec 2011 22:57:34 +0100
+
+dylandotnet (11.2.7.9-2) oneiric; urgency=low
+
+  * Fixing me prefix bug.
+  * Adding support for this pointer passing via me keyword.
+  * Adding way for local method pointer load via ptr expression.
+  * Adding boxing and unboxing.
+  * Adding code for virtual method calls on valuetypes.
+  * Initial support for array making.
+  * Updating debian directory.
+  * Updating makefiles and man pages.
+  * Adding set of test programs.
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Thu, 01 Dec 2011 17:00:14 +0100
+
+dylandotnet (11.2.7.8-1) oneiric; urgency=low
+
+  * Fixing dnr starg bug.
+  * Adding StreamUtils and Keyboard classes to dnr.dll.
+  * Enforcing StreamUtils use in dnc and codegen.
+  * Bumping up assembly versions to 11.2.7.8
+  * Updating man pages.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 03 Nov 2011 18:15:14 +0100
+
+dylandotnet (11.2.7.7-1) oneiric; urgency=low
+
+  * Adding method chaining support(with field chains) on load end.
+  * Adding field chaining support on store end.
+  * Adding support for using variables,arguments,fields etc of the current type.
+  * Adding support for using methods and fields delared in the current type.
+  * Adding support for making instances of the current type.
+  * Adding support for calling the base class's constructor using me::ctor().
+  * Adding support for naming the constructor like the class.
+  * Adding return statement support.
+  * Adding initial class inheritance support.
+  * Fixing Regex strings for chaining detection.
+  * Adding support for using variables etc that hold valuetypes.
+  * Bumping up assembly versions to 11.2.7.7
+  * Updating man pages.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sat, 05 Nov 2011 18:42:14 +0100
+ 
+dylandotnet (11.2.7.6-3) oneiric; urgency=low
+
+  * Adding support for new and gettype expressions.
+  * Updating conversion subsystem.
+  * Adding operator overloading.
+  * Adding like, notlike, %, >, <, >_, <= operators.
+  * Updating man page.
+  * Adding -V and -h command line options..
+  * Changing pattern matching in parser to use Regex.
+  * Updating assembly versions to 11.2.7.6
+  * Adding ability for field loads including constants.
+  * Adding ability of instance method calls.
+  * Adding CLI 4.0 assemblies.
+  * Updating Makefile.
+  * Adding all documentation in monodoc format.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Tue, 04 Oct 2011 20:45:14 +0200
+
+dylandotnet (11.2.7.5-1) natty; urgency=low
+
+  * Adding support for if statements.
+  * Updating conversion subsystem.
+  * Updating AST docs.
+  * Updating man page.
+  * Updating assembly versions to 11.2.7.5.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Wed, 31 Aug 2011 15:42:52 +0200
+
+dylandotnet (11.2.7.4-5) unstable; urgency=low
+
+  * Changing debian directory for mentors upload
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Mon, 22 Aug 2011 13:32:01 +0200
+
+dylandotnet (11.2.7.4-1) natty; urgency=low
+
+  * The compiler now partially works
+  * Adding support for some operator and constant load emmision
+  * Adding support for method call emission(static only for now)
+  * Adding support for the 'null' keyword
+  * Bumping up version to 11.2.7.4
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Wed, 17 Aug 2011 20:41:45 +0200
+
+dylandotnet (11.2.7.3-0test1) natty; urgency=low
+
+  * Adding partial ast documentation.
+  * Fixing changelog errors pointed by lintian.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 31 Jul 2011 19:12:38 +0200
+
+dylandotnet (11.2.7.2-0test1) natty; urgency=low
+
+  * Fixing more errors pointed by lintian.
+  * Updating debian directory of pkg.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sat, 9 Jul 2011 13:51:02 +0200
+
+dylandotnet (11.2.7.1-0test4) natty; urgency=low
+
+  * Fixing some errors pointed by lintian.
+  * Updating debian directory of pkg.
+  * Adding man page.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Fri, 8 Jul 2011 16:26:39 +0200
+
+dylandotnet (11.2.7.1-0test2) natty; urgency=low
+
+  * dylan.NET 11.2.7 Alpha. The Code Generation 2 Blueprint as described in launchpad.net/dylandotnet has now been commenced. Functionality is similar to that of previous package. RPN making and usage is in an advanced stage of development. This is still not ready for fully compiling dylan.NET files.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Thu, 7 Jul 2011 7:04:08 +0200
+ 
+dylandotnet (11.2.7.1-3) unstable; urgency=low
+
+  * (Closes:626078)
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 15 May 2011 18:54:20 +0200
+
+dylandotnet (11.2.7.1-2) unstable; urgency=low
+
+  * Closes 626078
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sat, 14 May 2011 16:27:05 +0200
+
+dylandotnet (11.2.7.1-1) unstable; urgency=low
+
+  * dylan.NET 11.2.7 Alpha. The Code Generation 2 Blueprint as described in launchpad.net/dylandotnet has now been commenced. Functionality is similar to that of previous package. RPN componenting has been started.  Adding intptr and uinteger support. This is still not ready for fully compiling dylan.NET files.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sat, 14 May 2011 14:35:57 +0200
+
+dylandotnet (11.2.7-0test2) natty; urgency=low
+
+  * dylan.NET 11.2.7 Alpha. The Code Generation 2 Blueprint as described in launchpad.net/dylandotnet has now been commenced. Functionality is similar to that of previous package. RPN componenting has been started. This is still not ready for fully compiling dylan.NET files.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Sat, 30 Apr 2011 9:04:57 +0200
+ 
+dylandotnet (11.2.6-0ubuntu2) natty; urgency=low closes(LP: #771917)
+
+  * dylan.NET 11.2.5. The Code Generation 2 Blueprint as described in launchpad.net/dylandotnet has now been commenced. Functionality is similar to that of previous package. This is still not ready for fully compiling dylan.NET files.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Thu, 28 Apr 2011 12:59:37 +0200
+ 
+dylandotnet (11.2.6-2) unstable; urgency=low
+
+  * dylan.NET 11.2.5. The Code Generation 2 Blueprint as described in launchpad.net/dylandotnet has now been commenced. Functionality is similar to that of previous package. This is still not ready for fully compiling dylan.NET files.
+
+ -- Dylan Borg <borgdylan@hotmail.com>  Thu, 28 Apr 2011 12:59:37 +0200

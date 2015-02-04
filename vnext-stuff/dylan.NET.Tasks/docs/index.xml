@@ -1,0 +1,43 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="dylan.NET.Tasks" Version="1.2.0.0">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("dylan.NET.Tasks")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.Versioning.TargetFramework("Asp.Net,Version=v5.0")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>Task Helpers for dylan.NET</Remarks>
+  <Copyright>Copyright (c) Dylan Borg 2014.</Copyright>
+  <Types>
+    <Namespace Name="System.Threading.Tasks">
+      <Type Name="ConfiguredTaskAwaitableWrapper" Kind="Class" />
+      <Type Name="ConfiguredTaskAwaitableWrapper`1" DisplayName="ConfiguredTaskAwaitableWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="ConfiguredTaskAwaiterWrapper" Kind="Class" />
+      <Type Name="ConfiguredTaskAwaiterWrapper`1" DisplayName="ConfiguredTaskAwaiterWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="DisposerTaskClosure`1" DisplayName="DisposerTaskClosure&lt;TDisposable&gt;" Kind="Class" />
+      <Type Name="DisposerTaskClosure`2" DisplayName="DisposerTaskClosure&lt;T,TDisposable&gt;" Kind="Class" />
+      <Type Name="IAwaitable" Kind="Interface" />
+      <Type Name="IAwaitable`1" DisplayName="IAwaitable&lt;TResult&gt;" Kind="Interface" />
+      <Type Name="IAwaiter" Kind="Interface" />
+      <Type Name="IAwaiter`1" DisplayName="IAwaiter&lt;TResult&gt;" Kind="Interface" />
+      <Type Name="TaskAwaiterWrapper" Kind="Class" />
+      <Type Name="TaskAwaiterWrapper`1" DisplayName="TaskAwaiterWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="TaskClosure" Kind="Class" />
+      <Type Name="TaskClosure`1" DisplayName="TaskClosure&lt;T&gt;" Kind="Class" />
+      <Type Name="TaskHelpers" Kind="Class" />
+      <Type Name="TaskWrapper" Kind="Class" />
+      <Type Name="TaskWrapper`1" DisplayName="TaskWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="YieldAwaitableWrapper" Kind="Class" />
+      <Type Name="YieldAwaiterWrapper" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>dylan.NET.Tasks</Title>
+</Overview>

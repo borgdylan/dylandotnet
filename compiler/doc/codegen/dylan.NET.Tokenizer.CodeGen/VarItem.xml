@@ -1,0 +1,177 @@
+<Type Name="VarItem" FullName="dylan.NET.Tokenizer.CodeGen.VarItem">
+  <TypeSignature Language="C#" Value="public class VarItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi VarItem extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.CodeGen</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public VarItem ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public VarItem (string nme, bool la, int ind, IKVM.Reflection.Type typ);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string nme, bool la, int32 ind, class IKVM.Reflection.Type typ) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="nme" Type="System.String" />
+        <Parameter Name="la" Type="System.Boolean" />
+        <Parameter Name="ind" Type="System.Int32" />
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+      </Parameters>
+      <Docs>
+        <param name="nme">To be added.</param>
+        <param name="la">To be added.</param>
+        <param name="ind">To be added.</param>
+        <param name="typ">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public VarItem (string nme, bool la, int ind, IKVM.Reflection.Type typ, int line);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string nme, bool la, int32 ind, class IKVM.Reflection.Type typ, int32 line) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="nme" Type="System.String" />
+        <Parameter Name="la" Type="System.Boolean" />
+        <Parameter Name="ind" Type="System.Int32" />
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="line" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="nme">To be added.</param>
+        <param name="la">To be added.</param>
+        <param name="ind">To be added.</param>
+        <param name="typ">To be added.</param>
+        <param name="line">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Index">
+      <MemberSignature Language="C#" Value="public int Index;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Index" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Line">
+      <MemberSignature Language="C#" Value="public int Line;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Line" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocArg">
+      <MemberSignature Language="C#" Value="public bool LocArg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool LocArg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Name" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Stored">
+      <MemberSignature Language="C#" Value="public bool Stored;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool Stored" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StoreLines">
+      <MemberSignature Language="C#" Value="public C5.TreeSet&lt;int&gt; StoreLines;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.TreeSet`1&lt;int32&gt; StoreLines" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.TreeSet&lt;System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Used">
+      <MemberSignature Language="C#" Value="public bool Used;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool Used" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VarTyp">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type VarTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class IKVM.Reflection.Type VarTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

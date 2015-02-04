@@ -1,0 +1,150 @@
+<Type Name="Importer" FullName="dylan.NET.Reflection.Importer">
+  <TypeSignature Language="C#" Value="public static class Importer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit Importer extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dnr</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AddAsm">
+      <MemberSignature Language="C#" Value="public static void AddAsm (string path, IKVM.Reflection.Assembly asmm);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddAsm(string path, class IKVM.Reflection.Assembly asmm) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="path" Type="System.String" />
+        <Parameter Name="asmm" Type="IKVM.Reflection.Assembly" />
+      </Parameters>
+      <Docs>
+        <param name="path">To be added.</param>
+        <param name="asmm">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddImp">
+      <MemberSignature Language="C#" Value="public static void AddImp (string imp);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddImp(string imp) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="imp" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="imp">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AliasMap">
+      <MemberSignature Language="C#" Value="public static C5.IDictionary&lt;string,string&gt; AliasMap;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IDictionary`2&lt;string, string&gt; AliasMap" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.IDictionary&lt;System.String,System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AsmBasePath">
+      <MemberSignature Language="C#" Value="public static string AsmBasePath;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string AsmBasePath" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Asms">
+      <MemberSignature Language="C#" Value="public static C5.HashDictionary&lt;string,dylan.NET.Reflection.AssemblyRecord&gt; Asms;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.HashDictionary`2&lt;string, class dylan.NET.Reflection.AssemblyRecord&gt; Asms" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;System.String,dylan.NET.Reflection.AssemblyRecord&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImpsStack">
+      <MemberSignature Language="C#" Value="public static C5.LinkedList&lt;C5.LinkedList&lt;dylan.NET.Reflection.ImportRecord&gt;&gt; ImpsStack;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.LinkedList`1&lt;class C5.LinkedList`1&lt;class dylan.NET.Reflection.ImportRecord&gt;&gt; ImpsStack" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.LinkedList&lt;C5.LinkedList&lt;dylan.NET.Reflection.ImportRecord&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public static void Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegisterAlias">
+      <MemberSignature Language="C#" Value="public static void RegisterAlias (string alias, string ns);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void RegisterAlias(string alias, string ns) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="alias" Type="System.String" />
+        <Parameter Name="ns" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="alias">To be added.</param>
+        <param name="ns">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

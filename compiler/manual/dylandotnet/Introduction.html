@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+<title>Introduction - Untitled</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Untitled">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="index.html#Top" title="Top">
+<link rel="next" href="Syntax.html#Syntax" title="Syntax">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This is the manual documenting the syntax of the dylan.NET programming language.
+Copyright (C) 2013 Dylan Borg-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Introduction"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Syntax.html#Syntax">Syntax</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="index.html#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">1 Introduction</h2>
+
+   <p class="indent"><code>dylan.NET</code> is a new programming language for the <acronym title="Common Language Runtime">CLR</acronym> (Common Language Runtime) which produces bytecode in <acronym title="Microsoft Intermediate Language">MSIL</acronym> (Microsoft Intermediate Language) format that is suitable for input to the Xamarin Mono and/or Microsoft .NET Framework virtual machines. The compiler itself i.e. <samp><span class="command">dylandotnet</span></samp> runs on the latter virtual machines as well and is in fact <dfn>self-hosting, compiles itself</dfn>. The intent of this literature is not to explain the command-line invocation of the compiler but rather to explain the syntax of the language (as of v. 11.3.1.4) and to provide some examples that may be used in practice.
+   <pre class="sp">
+
+</pre>
+<strong>Note:</strong> <em>Some of the example code in this manual may be an extract from the sample programs accompanying the compiler source code or may be extracts from the compiler source code itself. In such case the source file for the particular extract will be quoted.</em>
+   <pre class="sp">
+
+</pre>
+To whet your appetite for the next chapter, below is the standard &lsquo;<samp><span class="samp">Hello, World!</span></samp>&rsquo; program written in <code>dylan.NET</code>:
+
+   <div class="float">
+<pre class="example"><pre class="verbatim">     #refstdasm "mscorlib.dll"
+     
+     import System
+     
+     #debug on
+     
+     assembly helloworld exe
+     ver 1.2.0.0
+     
+     class public auto ansi static Program
+     
+     	method public static void main()
+     		Console::WriteLine("Hello, World!")	
+     	end method
+     
+     end class
+</pre>
+</pre>
+   <p><strong class="float-caption"><cite>Adapted from the </cite><samp><span class="file">helloworld.dyl</span></samp><cite> sample program.</cite></strong></p></div>
+
+   </body></html>
+

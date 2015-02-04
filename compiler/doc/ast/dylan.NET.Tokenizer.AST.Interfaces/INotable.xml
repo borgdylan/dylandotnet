@@ -1,0 +1,32 @@
+<Type Name="INotable" FullName="dylan.NET.Tokenizer.AST.Interfaces.INotable">
+  <TypeSignature Language="C#" Value="public interface INotable : dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract INotable implements class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>The interface implemented by all Tokens supporting one's complement i.e. '~'.</summary>
+    <remarks>This interface depends on IUnaryOperatable.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="DoNot">
+      <MemberSignature Language="C#" Value="public bool DoNot { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DoNot" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The flag indicating whether one's complement should be done.</summary>
+        <value>The boolean value for the flag.</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

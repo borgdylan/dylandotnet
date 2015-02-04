@@ -1,0 +1,5 @@
+debian/tmp/usr/bin/pc2dylandotnet
+debian/tmp/usr/bin/pc2curdir
+debian/tmp/usr/lib/dylandotnet-dev
+debian/tmp/usr/share/man/man1/pc2dylandotnet.1
+debian/tmp/usr/share/man/man1/pc2curdir.1

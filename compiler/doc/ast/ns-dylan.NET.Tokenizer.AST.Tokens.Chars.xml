@@ -1,0 +1,6 @@
+<Namespace Name="dylan.NET.Tokenizer.AST.Tokens.Chars">
+  <Docs>
+    <summary>Contains classes that represent characters that are significant on their own in dylan.NET.</summary>
+    <remarks>Any characters have to placed in this namespace.</remarks>
+  </Docs>
+</Namespace>

@@ -1,0 +1,63 @@
+<Type Name="Op" FullName="dylan.NET.Tokenizer.AST.Tokens.Ops.Op">
+  <TypeSignature Language="C#" Value="public abstract class Op : dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract Op extends dylan.NET.Tokenizer.AST.Tokens.Token" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a dylan.NET operator.</summary>
+    <remarks>All operators must in some way inherit from this class.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Op ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyspecialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs an Op.</summary>
+        <remarks>Normally one would not want to construct an Op but one of its subclasses. This class is only useful for Op detection in general.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LChild">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token LChild;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Token LChild" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>In an AST made by the codegen module this holds the Left Child this Op operates on.</summary>
+        <remarks>This field is set automatically by the ConvToAST method of codegen.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrecNo">
+      <MemberSignature Language="C#" Value="public int PrecNo;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 PrecNo" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This is the order of precedence number used during RPN expression making.</summary>
+        <remarks>Each class sets this field as it gets initialised. Do not mess with this or else RPN components may work incorrectly. The numbers are assigned according to the C language order of precedence.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RChild">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token RChild;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.Token RChild" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>In an AST made by the codegen module this holds the Right Child this Op operates on.</summary>
+        <remarks>This field is set automatically by the ConvToAST method of codegen.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

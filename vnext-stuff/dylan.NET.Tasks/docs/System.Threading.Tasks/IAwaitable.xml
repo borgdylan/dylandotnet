@@ -1,0 +1,33 @@
+<Type Name="IAwaitable" FullName="System.Threading.Tasks.IAwaitable">
+  <TypeSignature Language="C#" Value="public interface IAwaitable" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IAwaitable" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>An interface that formalises what it means to be awaitable.</summary>
+    <remarks>Implement this interface to allow your objects to be awaited by this library.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetAwaiter">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.IAwaiter GetAwaiter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Threading.Tasks.IAwaiter GetAwaiter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.IAwaiter</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Gets the IAwaiter used to await this awaitable object.</summary>
+        <returns>The IAwaiter used to await this object.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

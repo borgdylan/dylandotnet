@@ -1,0 +1,87 @@
+<Type Name="OpStack" FullName="dylan.NET.Tokenizer.CodeGen.OpStack">
+  <TypeSignature Language="C#" Value="public class OpStack : C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi OpStack extends C5.LinkedList`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Token&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.CodeGen</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>C5.LinkedList&lt;dylan.NET.Tokenizer.AST.Tokens.Token&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="!0">dylan.NET.Tokenizer.AST.Tokens.Token</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public OpStack ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="getLength">
+      <MemberSignature Language="C#" Value="public int getLength ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance int32 getLength() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopOp">
+      <MemberSignature Language="C#" Value="public void PopOp ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void PopOp() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PushOp">
+      <MemberSignature Language="C#" Value="public void PushOp (dylan.NET.Tokenizer.AST.Tokens.Token optok);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance void PushOp(class dylan.NET.Tokenizer.AST.Tokens.Token optok) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="optok" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+      </Parameters>
+      <Docs>
+        <param name="optok">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TopOp">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token TopOp ();" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Token TopOp() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

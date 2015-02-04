@@ -1,0 +1,2 @@
+All files should go in your MsBuild extensions directory.
+You may deploy them inside a solution folder and use them in a per solution fashion.

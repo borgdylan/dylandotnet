@@ -1,0 +1,25 @@
+Console::WriteLine( ( -1d * y ) + Math::Sqrt((y*y) - (4d*x*z)) )
+w = 3 % 1
+x = 1 + 3
+x = ((-1*b)+System.Math::Sqrt((b*b)-(4*a*c)))/(2*a)
+if x == 2 then
+if x != 2 then
+!y
+~v
+if x <= -2 then
+if x >= +2 then
+if x < 2 then
+if x > 2 then
+if x <> 2 then
+if x = 2 then
+z = $integer$-12.5
+z = $single$y
+r = ref|x
+x++
+y--
+s = String::Concat("h","w")
+q = 4l
+e = 3.142f
+and or nand nor xor
+a[]
+< < > > <= >= != = == << >> <>

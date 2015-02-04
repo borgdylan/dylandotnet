@@ -1,0 +1,113 @@
+<Type Name="Constants" FullName="dylan.NET.Utils.Constants">
+  <TypeSignature Language="C#" Value="public static class Constants" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit Constants extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dnu</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="cr">
+      <MemberSignature Language="C#" Value="public static readonly string cr;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly string cr" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="crlf">
+      <MemberSignature Language="C#" Value="public static readonly string crlf;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly string crlf" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="e">
+      <MemberSignature Language="C#" Value="public static readonly double e;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly float64 e" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="f">
+      <MemberSignature Language="C#" Value="public static readonly bool f;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly bool f" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="lf">
+      <MemberSignature Language="C#" Value="public static readonly string lf;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly string lf" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="pi">
+      <MemberSignature Language="C#" Value="public static readonly double pi;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly float64 pi" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="quot">
+      <MemberSignature Language="C#" Value="public static readonly string quot;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly string quot" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="t">
+      <MemberSignature Language="C#" Value="public static readonly bool t;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly bool t" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

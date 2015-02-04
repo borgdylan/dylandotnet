@@ -1,0 +1,1551 @@
+<Type Name="SymTable" FullName="dylan.NET.Tokenizer.CodeGen.SymTable">
+  <TypeSignature Language="C#" Value="public static class SymTable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit SymTable extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.CodeGen</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AddAsmCA">
+      <MemberSignature Language="C#" Value="public static void AddAsmCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddAsmCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ca" Type="IKVM.Reflection.Emit.CustomAttributeBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ca">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddClsCA">
+      <MemberSignature Language="C#" Value="public static void AddClsCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddClsCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ca" Type="IKVM.Reflection.Emit.CustomAttributeBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ca">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddCtor">
+      <MemberSignature Language="C#" Value="public static void AddCtor (IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.ConstructorBuilder met);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddCtor(class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.ConstructorBuilder met) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ptyps" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="met" Type="IKVM.Reflection.Emit.ConstructorBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ptyps">To be added.</param>
+        <param name="met">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddDef">
+      <MemberSignature Language="C#" Value="public static void AddDef (string sym);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddDef(string sym) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sym" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="sym">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddEnumCA">
+      <MemberSignature Language="C#" Value="public static void AddEnumCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddEnumCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ca" Type="IKVM.Reflection.Emit.CustomAttributeBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ca">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddEventCA">
+      <MemberSignature Language="C#" Value="public static void AddEventCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddEventCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ca" Type="IKVM.Reflection.Emit.CustomAttributeBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ca">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddFld">
+      <MemberSignature Language="C#" Value="public static void AddFld (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Emit.FieldBuilder fld, object litval);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddFld(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Emit.FieldBuilder fld, object litval) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nme" Type="System.String" />
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="fld" Type="IKVM.Reflection.Emit.FieldBuilder" />
+        <Parameter Name="litval" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="nme">To be added.</param>
+        <param name="typ">To be added.</param>
+        <param name="fld">To be added.</param>
+        <param name="litval">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddFldCA">
+      <MemberSignature Language="C#" Value="public static void AddFldCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddFldCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ca" Type="IKVM.Reflection.Emit.CustomAttributeBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ca">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddForLoop">
+      <MemberSignature Language="C#" Value="public static void AddForLoop (string iter, dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir, dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddForLoop(string iter, class dylan.NET.Tokenizer.AST.Exprs.Expr _step, bool dir, class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok t) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iter" Type="System.String" />
+        <Parameter Name="_step" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
+        <Parameter Name="dir" Type="System.Boolean" />
+        <Parameter Name="t" Type="dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok" />
+      </Parameters>
+      <Docs>
+        <param name="iter">To be added.</param>
+        <param name="_step">To be added.</param>
+        <param name="dir">To be added.</param>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddIf">
+      <MemberSignature Language="C#" Value="public static void AddIf ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddIf() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddLbl">
+      <MemberSignature Language="C#" Value="public static void AddLbl (string nam);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddLbl(string nam) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nam" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="nam">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddLock">
+      <MemberSignature Language="C#" Value="public static void AddLock (int loc);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddLock(int32 loc) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="loc" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="loc">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddLoop">
+      <MemberSignature Language="C#" Value="public static void AddLoop ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddLoop() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddMet">
+      <MemberSignature Language="C#" Value="public static void AddMet (string nme, IKVM.Reflection.Type typ, IKVM.Reflection.Type[] ptyps, IKVM.Reflection.Emit.MethodBuilder met, int nrgenparams);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddMet(string nme, class IKVM.Reflection.Type typ, class IKVM.Reflection.Type[] ptyps, class IKVM.Reflection.Emit.MethodBuilder met, int32 nrgenparams) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nme" Type="System.String" />
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="ptyps" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="met" Type="IKVM.Reflection.Emit.MethodBuilder" />
+        <Parameter Name="nrgenparams" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="nme">To be added.</param>
+        <param name="typ">To be added.</param>
+        <param name="ptyps">To be added.</param>
+        <param name="met">To be added.</param>
+        <param name="nrgenparams">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddMtdCA">
+      <MemberSignature Language="C#" Value="public static void AddMtdCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddMtdCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ca" Type="IKVM.Reflection.Emit.CustomAttributeBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ca">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddParamCA">
+      <MemberSignature Language="C#" Value="public static void AddParamCA (int ind, IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddParamCA(int32 ind, class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ind" Type="System.Int32" />
+        <Parameter Name="ca" Type="IKVM.Reflection.Emit.CustomAttributeBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ind">To be added.</param>
+        <param name="ca">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddPropCA">
+      <MemberSignature Language="C#" Value="public static void AddPropCA (IKVM.Reflection.Emit.CustomAttributeBuilder ca);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddPropCA(class IKVM.Reflection.Emit.CustomAttributeBuilder ca) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ca" Type="IKVM.Reflection.Emit.CustomAttributeBuilder" />
+      </Parameters>
+      <Docs>
+        <param name="ca">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddTry">
+      <MemberSignature Language="C#" Value="public static void AddTry ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddTry() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddTryLock">
+      <MemberSignature Language="C#" Value="public static void AddTryLock (int loc);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddTryLock(int32 loc) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="loc" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="loc">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddUsing">
+      <MemberSignature Language="C#" Value="public static void AddUsing (string loc);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddUsing(string loc) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="loc" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="loc">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddVar">
+      <MemberSignature Language="C#" Value="public static void AddVar (string nme, bool la, int ind, IKVM.Reflection.Type typ, int lin);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddVar(string nme, bool la, int32 ind, class IKVM.Reflection.Type typ, int32 lin) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nme" Type="System.String" />
+        <Parameter Name="la" Type="System.Boolean" />
+        <Parameter Name="ind" Type="System.Int32" />
+        <Parameter Name="typ" Type="IKVM.Reflection.Type" />
+        <Parameter Name="lin" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="nme">To be added.</param>
+        <param name="la">To be added.</param>
+        <param name="ind">To be added.</param>
+        <param name="typ">To be added.</param>
+        <param name="lin">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AssemblyCALst">
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; AssemblyCALst;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; AssemblyCALst" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckCtrlBlks">
+      <MemberSignature Language="C#" Value="public static void CheckCtrlBlks ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void CheckCtrlBlks() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckReturnInTry">
+      <MemberSignature Language="C#" Value="public static bool CheckReturnInTry ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool CheckReturnInTry() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckUnusedVar">
+      <MemberSignature Language="C#" Value="public static void CheckUnusedVar ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void CheckUnusedVar() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClassCALst">
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; ClassCALst;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; ClassCALst" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CmpTyps">
+      <MemberSignature Language="C#" Value="public static bool CmpTyps (IKVM.Reflection.Type[] arra, IKVM.Reflection.Type[] arrb);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool CmpTyps(class IKVM.Reflection.Type[] arra, class IKVM.Reflection.Type[] arrb) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="arra" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="arrb" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="arra">To be added.</param>
+        <param name="arrb">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnEvent">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.EventItem CurnEvent;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.EventItem CurnEvent" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.EventItem</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnProp">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.PropertyItem CurnProp;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.PropertyItem CurnProp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.PropertyItem</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnTypItem">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.TypeItem CurnTypItem;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.TypeItem CurnTypItem" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.TypeItem</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurnTypItem2">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.TypeItem CurnTypItem2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.TypeItem CurnTypItem2" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.TypeItem</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumCALst">
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; EnumCALst;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; EnumCALst" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EvalDef">
+      <MemberSignature Language="C#" Value="public static bool EvalDef (string sym);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool EvalDef(string sym) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sym" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="sym">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EventCALst">
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; EventCALst;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; EventCALst" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FieldCALst">
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; FieldCALst;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; FieldCALst" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindCtor">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.ConstructorInfo FindCtor (IKVM.Reflection.Type[] paramst);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.ConstructorInfo FindCtor(class IKVM.Reflection.Type[] paramst) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.ConstructorInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="paramst" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="paramst">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindFld">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.FieldInfo FindFld (string nam);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.FieldInfo FindFld(string nam) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.FieldInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nam" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="nam">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindGenMet">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo FindGenMet (string nam, IKVM.Reflection.Type[] genparams, IKVM.Reflection.Type[] paramst);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo FindGenMet(string nam, class IKVM.Reflection.Type[] genparams, class IKVM.Reflection.Type[] paramst) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nam" Type="System.String" />
+        <Parameter Name="genparams" Type="IKVM.Reflection.Type[]" />
+        <Parameter Name="paramst" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="nam">To be added.</param>
+        <param name="genparams">To be added.</param>
+        <param name="paramst">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindLbl">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.LabelItem FindLbl (string nam);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.LabelItem FindLbl(string nam) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.LabelItem</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nam" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="nam">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindMet">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.MethodInfo FindMet (string nam, IKVM.Reflection.Type[] paramst);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class IKVM.Reflection.MethodInfo FindMet(string nam, class IKVM.Reflection.Type[] paramst) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.MethodInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nam" Type="System.String" />
+        <Parameter Name="paramst" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="nam">To be added.</param>
+        <param name="paramst">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindProtoMet">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.MethodItem FindProtoMet (string nam, IKVM.Reflection.Type[] paramst);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.MethodItem FindProtoMet(string nam, class IKVM.Reflection.Type[] paramst) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.MethodItem</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nam" Type="System.String" />
+        <Parameter Name="paramst" Type="IKVM.Reflection.Type[]" />
+      </Parameters>
+      <Docs>
+        <param name="nam">To be added.</param>
+        <param name="paramst">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindVar">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.VarItem FindVar (string nam);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.VarItem FindVar(string nam) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.VarItem</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nam" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="nam">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetInCatch">
+      <MemberSignature Language="C#" Value="public static bool GetInCatch ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool GetInCatch() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRetLbl">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label GetRetLbl ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label GetRetLbl() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public static void Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MetGenParams">
+      <MemberSignature Language="C#" Value="public static C5.HashDictionary&lt;string,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; MetGenParams;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.HashDictionary`2&lt;string, class dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; MetGenParams" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;System.String,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MethodCALst">
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; MethodCALst;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; MethodCALst" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParameterCALst">
+      <MemberSignature Language="C#" Value="public static C5.IDictionary&lt;int,C5.LinkedList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;&gt; ParameterCALst;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IDictionary`2&lt;int32, class C5.LinkedList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt;&gt; ParameterCALst" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.IDictionary&lt;System.Int32,C5.LinkedList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PIInfo">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.PInvokeInfo PIInfo;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.PInvokeInfo PIInfo" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.PInvokeInfo</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopIf">
+      <MemberSignature Language="C#" Value="public static void PopIf ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopIf() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopLock">
+      <MemberSignature Language="C#" Value="public static void PopLock ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopLock() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopLoop">
+      <MemberSignature Language="C#" Value="public static void PopLoop ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopLoop() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopScope">
+      <MemberSignature Language="C#" Value="public static void PopScope ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopScope() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopTry">
+      <MemberSignature Language="C#" Value="public static void PopTry ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopTry() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopUsing">
+      <MemberSignature Language="C#" Value="public static void PopUsing ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopUsing() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PropertyCALst">
+      <MemberSignature Language="C#" Value="public static C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt; PropertyCALst;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.IList`1&lt;class IKVM.Reflection.Emit.CustomAttributeBuilder&gt; PropertyCALst" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.IList&lt;IKVM.Reflection.Emit.CustomAttributeBuilder&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PushScope">
+      <MemberSignature Language="C#" Value="public static void PushScope ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PushScope() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadIfElsePass">
+      <MemberSignature Language="C#" Value="public static bool ReadIfElsePass ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool ReadIfElsePass() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadIfEndLbl">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadIfEndLbl ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadIfEndLbl() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadIfNxtBlkLbl">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadIfNxtBlkLbl ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadIfNxtBlkLbl() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadLock">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.LockItem ReadLock ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.LockItem ReadLock() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.LockItem</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadLoop">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.LoopItem ReadLoop ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.LoopItem ReadLoop() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.LoopItem</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadLoopEndLbl">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadLoopEndLbl ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadLoopEndLbl() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadLoopStartLbl">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadLoopStartLbl ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadLoopStartLbl() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadUseeLoc">
+      <MemberSignature Language="C#" Value="public static string ReadUseeLoc ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static string ReadUseeLoc() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetIf">
+      <MemberSignature Language="C#" Value="public static void ResetIf ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetIf() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetLbl">
+      <MemberSignature Language="C#" Value="public static void ResetLbl ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetLbl() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetLoop">
+      <MemberSignature Language="C#" Value="public static void ResetLoop ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetLoop() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetMetGenParams">
+      <MemberSignature Language="C#" Value="public static void ResetMetGenParams ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetMetGenParams() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetTry">
+      <MemberSignature Language="C#" Value="public static void ResetTry ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetTry() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetTypGenParams">
+      <MemberSignature Language="C#" Value="public static void ResetTypGenParams ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetTypGenParams() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetVar">
+      <MemberSignature Language="C#" Value="public static void ResetVar ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetVar() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetIfElsePass">
+      <MemberSignature Language="C#" Value="public static void SetIfElsePass ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void SetIfElsePass() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetIfNxtBlkLbl">
+      <MemberSignature Language="C#" Value="public static void SetIfNxtBlkLbl ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void SetIfNxtBlkLbl() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetInCatch">
+      <MemberSignature Language="C#" Value="public static void SetInCatch (bool val);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void SetInCatch(bool val) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="val" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="val">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetMetGenParams">
+      <MemberSignature Language="C#" Value="public static void SetMetGenParams (string[] names, IKVM.Reflection.Emit.GenericTypeParameterBuilder[] actuals);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void SetMetGenParams(string[] names, class IKVM.Reflection.Emit.GenericTypeParameterBuilder[] actuals) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="names" Type="System.String[]" />
+        <Parameter Name="actuals" Type="IKVM.Reflection.Emit.GenericTypeParameterBuilder[]" />
+      </Parameters>
+      <Docs>
+        <param name="names">To be added.</param>
+        <param name="actuals">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTypGenParams">
+      <MemberSignature Language="C#" Value="public static void SetTypGenParams (string[] names, IKVM.Reflection.Emit.GenericTypeParameterBuilder[] actuals);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void SetTypGenParams(string[] names, class IKVM.Reflection.Emit.GenericTypeParameterBuilder[] actuals) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="names" Type="System.String[]" />
+        <Parameter Name="actuals" Type="IKVM.Reflection.Emit.GenericTypeParameterBuilder[]" />
+      </Parameters>
+      <Docs>
+        <param name="names">To be added.</param>
+        <param name="actuals">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StoreFlg">
+      <MemberSignature Language="C#" Value="public static bool StoreFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public static bool StoreFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TempVTMap">
+      <MemberSignature Language="C#" Value="public static C5.HashDictionary&lt;IKVM.Reflection.Type,int&gt; TempVTMap;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.HashDictionary`2&lt;class IKVM.Reflection.Type, int32&gt; TempVTMap" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;IKVM.Reflection.Type,System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeLst">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.TypeList TypeLst;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class dylan.NET.Tokenizer.CodeGen.TypeList TypeLst" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.TypeList</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypGenParams">
+      <MemberSignature Language="C#" Value="public static C5.HashDictionary&lt;string,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; TypGenParams;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.HashDictionary`2&lt;string, class dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; TypGenParams" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;System.String,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypGenParams2">
+      <MemberSignature Language="C#" Value="public static C5.HashDictionary&lt;string,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; TypGenParams2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.HashDictionary`2&lt;string, class dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt; TypGenParams2" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.HashDictionary&lt;System.String,dylan.NET.Tokenizer.CodeGen.TypeParamItem&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnDef">
+      <MemberSignature Language="C#" Value="public static void UnDef (string sym);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void UnDef(string sym) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sym" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="sym">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

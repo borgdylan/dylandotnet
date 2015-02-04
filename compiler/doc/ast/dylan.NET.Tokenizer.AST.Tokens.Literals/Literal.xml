@@ -1,0 +1,133 @@
+<Type Name="Literal" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.Literal">
+  <TypeSignature Language="C#" Value="public abstract class Literal : dylan.NET.Tokenizer.AST.Tokens.ValueToken, dylan.NET.Tokenizer.AST.Interfaces.IConvable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract Literal extends dylan.NET.Tokenizer.AST.Tokens.ValueToken implements class dylan.NET.Tokenizer.AST.Interfaces.IConvable, class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.ValueToken</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IConvable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>Represents a dylan.NET literal.</summary>
+    <remarks>All literals are to inherit this class to make sure they are properly processed.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Literal ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyspecialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new Literal.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Literal (string value);" />
+      <MemberSignature Language="ILAsm" Value=".method familyspecialname rtspecialname instance void .ctor(string value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">The string to assign to the Value field.</param>
+        <summary>Constructs a new Literal.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_Conv">
+      <MemberSignature Language="C#" Value="protected bool _Conv;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool _Conv" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_OrdOp">
+      <MemberSignature Language="C#" Value="protected string _OrdOp;" />
+      <MemberSignature Language="ILAsm" Value=".field family string _OrdOp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_TTok">
+      <MemberSignature Language="C#" Value="protected dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok _TTok;" />
+      <MemberSignature Language="ILAsm" Value=".field family class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok _TTok" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Conv">
+      <MemberSignature Language="C#" Value="public virtual bool Conv { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Conv" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LitTyp">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok LitTyp;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok LitTyp" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Holds a TypeTok indicating the type of literal represented. The RefTyp field of the TypeTok is useful during code generation.</summary>
+        <remarks>This vaue is automatically assigned by the constructor of inheriting classes. Please do not change it.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OrdOp">
+      <MemberSignature Language="C#" Value="public virtual string OrdOp { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string OrdOp" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TTok">
+      <MemberSignature Language="C#" Value="public virtual dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok TTok" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

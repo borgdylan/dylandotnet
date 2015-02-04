@@ -1,0 +1,42 @@
+<Type Name="SpecialNameAttr" FullName="dylan.NET.Tokenizer.AST.Tokens.Attributes.SpecialNameAttr">
+  <TypeSignature Language="C#" Value="public class SpecialNameAttr : dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi SpecialNameAttr extends dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents the 'specialname' attribute.</summary>
+    <remarks>May ony be applied to methods. Makes the CLR interpret their name as special. Useful in defining property accessors/getters and operator overloads.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public SpecialNameAttr ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new SpecialNameAttr.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

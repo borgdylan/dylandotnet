@@ -1,0 +1,34 @@
+dylandotnet-collections (11.2.8.9-1) precise; urgency=low
+
+  * Adding ToString() for ALList and Item.
+  * Fixing ALList.AddAll(ALList).
+  * Refactoring loops in source code.
+  * Updating makefile.
+  * Bumping up version to 11.2.8.9
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Sun, 01 Apr 2012 14:07:54 +0100
+
+dylandotnet-collections (11.2.8.5-2) precise; urgency=low
+
+  * Fixing debian/control
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Sat, 11 Feb 2012 22:11:54 +0100
+
+
+dylandotnet-collections (11.2.8.5-1) precise; urgency=low
+
+  * Adding safety code in many methods.
+  * Adding functionality for adding a whole list to a list.
+  * Filling up some of the documentation.
+  * Adding support for removing objects from a list
+  * Adding support for returning a list in a search.
+  * Bumping up version to 11.2.8.5
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Sat, 11 Feb 2012 17:48:54 +0100
+
+dylandotnet-collections (11.2.8.4-1) precise; urgency=low
+
+  * Initial release of dylandotnet-collections.
+  
+ -- Dylan Borg <borgdylan@hotmail.com>  Thu, 09 Feb 2012 15:26:54 +0100
+

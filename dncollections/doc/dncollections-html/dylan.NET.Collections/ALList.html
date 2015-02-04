@@ -1,0 +1,1156 @@
+<html>
+  <head>
+    <title>dylan.NET.Collections.ALList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">dncollections</a> : <a href="index.html">dylan.NET.Collections Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:dylan.NET.Collections.ALList">Overview</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Collections.ALList:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Collections.ALList:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:dylan.NET.Collections.ALList:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:dylan.NET.Collections.ALList">ALList  Class</h1>
+    <p class="Summary" id="T:dylan.NET.Collections.ALList:Summary">A list of Items accesible via Indices like in ArrayLists and via Next/Previous like in a Doubly-Linked-List.</p>
+    <div id="T:dylan.NET.Collections.ALList:Signature">
+      <h2>Syntax</h2>
+      <div class="Signature">public class  <b>ALList</b></div>
+    </div>
+    <div class="Remarks" id="T:dylan.NET.Collections.ALList:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:dylan.NET.Collections.ALList:Docs:Remarks">Use ALStack or ALQueue if the functions of a Stack or Queue are needed in addition to the functions this class provides.</div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:dylan.NET.Collections.ALList:Docs:Version Information">
+        <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h2 class="Section">Public Constructors</h2>
+        <div class="SectionBox" id="Public Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:dylan.NET.Collections.ALList">ALList</a>
+                    </b>()</div>
+                </td>
+                <td>Constructs a new ALList with 0 Items.</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Fields</h2>
+        <div class="SectionBox" id="Public Fields">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Collections.ALList.Capacity">Capacity</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Collections.ALList.Head">Head</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Collections/Item.html">Item</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Collections.ALList.ItemArray">ItemArray</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Collections/Item.html">Item</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Collections.ALList.Length">Length</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:dylan.NET.Collections.ALList.Tail">Tail</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../dylan.NET.Collections/Item.html">Item</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.Add(dylan.NET.Collections.Item)">Add</a>
+                  </b>(<a href="../dylan.NET.Collections/Item.html">Item</a>)<blockquote>Adds the supplied Item to the ALList.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.Add(System.Object)">Add</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.AddAll(dylan.NET.Collections.ALList)">AddAll</a>
+                  </b>(<a href="../dylan.NET.Collections/ALList.html">ALList</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.CopyValue(System.Int32,System.Int32)">CopyValue</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.FindItem(dylan.NET.Collections.SearchDelegate)">FindItem</a>
+                  </b>(<a href="../dylan.NET.Collections/SearchDelegate.html">SearchDelegate</a>)<nobr> : <a href="../dylan.NET.Collections/Item.html">Item</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.FindItems(dylan.NET.Collections.SearchDelegate)">FindItems</a>
+                  </b>(<a href="../dylan.NET.Collections/SearchDelegate.html">SearchDelegate</a>)<nobr> : <a href="../dylan.NET.Collections/ALList.html">ALList</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.FindItemValue(dylan.NET.Collections.SearchDelegate)">FindItemValue</a>
+                  </b>(<a href="../dylan.NET.Collections/SearchDelegate.html">SearchDelegate</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.GetItem(System.Int32)">GetItem</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../dylan.NET.Collections/Item.html">Item</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.GetItemValue(System.Int32)">GetItemValue</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.Remove(System.Int32)">Remove</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.Remove(System.Object)">Remove</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.SwapValues(System.Int32,System.Int32)">SwapValues</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>override </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.ToString()">ToString</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Operators</h2>
+        <div class="SectionBox" id="Public Operators">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,dylan.NET.Collections.Item)">Addition</a>
+                  </b>(<a href="../dylan.NET.Collections/ALList.html">ALList</a>, <a href="../dylan.NET.Collections/Item.html">Item</a>)</td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,System.Object)">Addition</a>
+                  </b>(<a href="../dylan.NET.Collections/ALList.html">ALList</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>)</td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Int32)">Subtraction</a>
+                  </b>(<a href="../dylan.NET.Collections/ALList.html">ALList</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)</td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Object)">Subtraction</a>
+                  </b>(<a href="../dylan.NET.Collections/ALList.html">ALList</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>)</td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:dylan.NET.Collections.ALList:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="C:dylan.NET.Collections.ALList">ALList Constructor</h3>
+        <blockquote id="C:dylan.NET.Collections.ALList:member">
+          <p class="Summary">Constructs a new ALList with 0 Items.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>ALList</b> ()</div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:dylan.NET.Collections.ALList:Remarks">The initial capacity is 10 Items. It is inceased automatically when required.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:dylan.NET.Collections.ALList:Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.Add(dylan.NET.Collections.Item)">Add Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.Add(dylan.NET.Collections.Item):member">
+          <p class="Summary">Adds the supplied Item to the ALList.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Add</b> (<a href="../dylan.NET.Collections/Item.html">Item</a> ite)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.Add(dylan.NET.Collections.Item):Parameters">
+            <dl>
+              <dt>
+                <i>ite</i>
+              </dt>
+              <dd>The Item to add.</dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.Add(dylan.NET.Collections.Item):Remarks">
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.Add(dylan.NET.Collections.Item):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.Add(System.Object)">Add Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.Add(System.Object):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Add</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> o)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.Add(System.Object):Parameters">
+            <dl>
+              <dt>
+                <i>o</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.Add(System.Object):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.Add(System.Object):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.AddAll(dylan.NET.Collections.ALList)">AddAll Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.AddAll(dylan.NET.Collections.ALList):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddAll</b> (<a href="../dylan.NET.Collections/ALList.html">ALList</a> al1)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.AddAll(dylan.NET.Collections.ALList):Parameters">
+            <dl>
+              <dt>
+                <i>al1</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.AddAll(dylan.NET.Collections.ALList):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.AddAll(dylan.NET.Collections.ALList):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Collections.ALList.Capacity">Capacity Field</h3>
+        <blockquote id="F:dylan.NET.Collections.ALList.Capacity:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>Capacity</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.ALList.Capacity:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.ALList.Capacity:Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.CopyValue(System.Int32,System.Int32)">CopyValue Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.CopyValue(System.Int32,System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>CopyValue</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> src, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> dest)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.CopyValue(System.Int32,System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>src</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>dest</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.CopyValue(System.Int32,System.Int32):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.CopyValue(System.Int32,System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.CopyValue(System.Int32,System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.FindItem(dylan.NET.Collections.SearchDelegate)">FindItem Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.FindItem(dylan.NET.Collections.SearchDelegate):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>FindItem</b> (<a href="../dylan.NET.Collections/SearchDelegate.html">SearchDelegate</a> sd)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.FindItem(dylan.NET.Collections.SearchDelegate):Parameters">
+            <dl>
+              <dt>
+                <i>sd</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.FindItem(dylan.NET.Collections.SearchDelegate):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.FindItem(dylan.NET.Collections.SearchDelegate):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.FindItem(dylan.NET.Collections.SearchDelegate):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.FindItems(dylan.NET.Collections.SearchDelegate)">FindItems Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.FindItems(dylan.NET.Collections.SearchDelegate):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../dylan.NET.Collections/ALList.html">ALList</a> <b>FindItems</b> (<a href="../dylan.NET.Collections/SearchDelegate.html">SearchDelegate</a> sd)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.FindItems(dylan.NET.Collections.SearchDelegate):Parameters">
+            <dl>
+              <dt>
+                <i>sd</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.FindItems(dylan.NET.Collections.SearchDelegate):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.FindItems(dylan.NET.Collections.SearchDelegate):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.FindItems(dylan.NET.Collections.SearchDelegate):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.FindItemValue(dylan.NET.Collections.SearchDelegate)">FindItemValue Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.FindItemValue(dylan.NET.Collections.SearchDelegate):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> <b>FindItemValue</b> (<a href="../dylan.NET.Collections/SearchDelegate.html">SearchDelegate</a> sd)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.FindItemValue(dylan.NET.Collections.SearchDelegate):Parameters">
+            <dl>
+              <dt>
+                <i>sd</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.FindItemValue(dylan.NET.Collections.SearchDelegate):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.FindItemValue(dylan.NET.Collections.SearchDelegate):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.FindItemValue(dylan.NET.Collections.SearchDelegate):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.GetItem(System.Int32)">GetItem Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.GetItem(System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>GetItem</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> i)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.GetItem(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>i</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.GetItem(System.Int32):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.GetItem(System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.GetItem(System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.GetItemValue(System.Int32)">GetItemValue Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.GetItemValue(System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> <b>GetItemValue</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> i)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.GetItemValue(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>i</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.GetItemValue(System.Int32):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.GetItemValue(System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.GetItemValue(System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Collections.ALList.Head">Head Field</h3>
+        <blockquote id="F:dylan.NET.Collections.ALList.Head:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>Head</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.ALList.Head:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.ALList.Head:Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Collections.ALList.ItemArray">ItemArray Field</h3>
+        <blockquote id="F:dylan.NET.Collections.ALList.ItemArray:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a>[] <b>ItemArray</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.ALList.ItemArray:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.ALList.ItemArray:Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Collections.ALList.Length">Length Field</h3>
+        <blockquote id="F:dylan.NET.Collections.ALList.Length:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>Length</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.ALList.Length:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.ALList.Length:Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,dylan.NET.Collections.Item)">op_Addition Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,dylan.NET.Collections.Item):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Collections/ALList.html">ALList</a> operator+ (<a href="../dylan.NET.Collections/ALList.html">ALList</a> lis, <a href="../dylan.NET.Collections/Item.html">Item</a> ite)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,dylan.NET.Collections.Item):Parameters">
+            <dl>
+              <dt>
+                <i>lis</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>ite</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,dylan.NET.Collections.Item):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,dylan.NET.Collections.Item):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,dylan.NET.Collections.Item):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,System.Object)">op_Addition Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,System.Object):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Collections/ALList.html">ALList</a> operator+ (<a href="../dylan.NET.Collections/ALList.html">ALList</a> lis, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> o)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,System.Object):Parameters">
+            <dl>
+              <dt>
+                <i>lis</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>o</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,System.Object):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,System.Object):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.op_Addition(dylan.NET.Collections.ALList,System.Object):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Int32)">op_Subtraction Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Collections/ALList.html">ALList</a> operator- (<a href="../dylan.NET.Collections/ALList.html">ALList</a> lis, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> ind)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>lis</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>ind</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Int32):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Object)">op_Subtraction Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Object):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="../dylan.NET.Collections/ALList.html">ALList</a> operator- (<a href="../dylan.NET.Collections/ALList.html">ALList</a> lis, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> o)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Object):Parameters">
+            <dl>
+              <dt>
+                <i>lis</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>o</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Object):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Object):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.op_Subtraction(dylan.NET.Collections.ALList,System.Object):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.Remove(System.Int32)">Remove Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.Remove(System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>Remove</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> ind)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.Remove(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>ind</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.Remove(System.Int32):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.Remove(System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.Remove(System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.Remove(System.Object)">Remove Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.Remove(System.Object):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>Remove</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> o)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.Remove(System.Object):Parameters">
+            <dl>
+              <dt>
+                <i>o</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.Remove(System.Object):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.Remove(System.Object):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.Remove(System.Object):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.SwapValues(System.Int32,System.Int32)">SwapValues Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.SwapValues(System.Int32,System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>SwapValues</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> i, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> j)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.SwapValues(System.Int32,System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>i</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>j</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.SwapValues(System.Int32,System.Int32):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.SwapValues(System.Int32,System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.SwapValues(System.Int32,System.Int32):Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:dylan.NET.Collections.ALList.Tail">Tail Field</h3>
+        <blockquote id="F:dylan.NET.Collections.ALList.Tail:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../dylan.NET.Collections/Item.html">Item</a> <b>Tail</b> </div>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.ALList.Tail:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="F:dylan.NET.Collections.ALList.Tail:Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.4, 11.2.8.5, 11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:dylan.NET.Collections.ALList.ToString()">ToString Method</h3>
+        <blockquote id="M:dylan.NET.Collections.ALList.ToString():member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public override <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ToString</b> ()</div>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:dylan.NET.Collections.ALList.ToString():Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.ToString():Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:dylan.NET.Collections.ALList.ToString():Version Information">
+            <b>Namespace: </b>dylan.NET.Collections<br /><b>Assembly: </b>dncollections (in dncollections.dll)<br /><b>Assembly Versions: </b>11.2.8.9</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

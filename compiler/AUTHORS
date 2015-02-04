@@ -1,0 +1,25 @@
+I wish to thank the following for making the Mono class libraries:
+Patrik Torstensson <patrik.torstensson@labs2.com>
+Gaurav Vaish <gvaish_mono@lycos.com>
+Jeff Stedfast (fejj@ximian.com)
+Joe Shaw (joe@ximian.com)
+Miguel de Icaza (miguel@ximian.com)
+Sean MacIsaac (macisaac@ximian.com)
+Vladimir Vukicevic (vladimir@ximian.com)
+Garrett Rooney (rooneg@electricjellyfish.net)
+Bob Smith (bob@thestuff.net)
+John Barnette (jbarn@httcb.net)
+Daniel Morgan <danmorg@sc.rr.com>
+Sebastien Pouliot <spouliot@motus.com>
+Per Arneng <pt99par@student.bth.se>
+Ben Maurer <bmaurer@users.sourceforge.net>
+
+I also wish to think Jeroen Frijters for writing IKVM from which the IKVM.Reflection library is taken and is present withing these sources.
+
+I also want to thank the writers of the C5 generic collections library which are:
+Niels Kokholm
+Peter Sestoft
+Rasmus Nielsen
+
+dylan.NET is written by:
+Dylan Borg <borgdylan@hotmail.com>

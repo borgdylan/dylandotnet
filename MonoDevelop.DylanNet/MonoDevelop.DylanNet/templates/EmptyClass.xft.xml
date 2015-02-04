@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Template Originator="Dylan Borg" Language="dylan.NET" Created="24/11/2013" LastModified="24/11/2013">
+	
+	<TemplateConfiguration>
+		<_Name>Empty Class</_Name>
+		<Icon>md-class-file</Icon>
+		<_Category>General</_Category>
+		<LanguageName>dylan.NET</LanguageName>
+		<_Description>Creates an empty dylan.NET class.</_Description>
+		<DefaultFilename>EmptyClass</DefaultFilename>
+	</TemplateConfiguration>
+	
+	<TemplateFiles>
+		<File DefaultExtension=".dyl" DefaultName="EmptyClass" AddStandardHeader="True">
+		<![CDATA[namespace ${Namespace}
+
+	class public auto ansi ${Name}
+		
+	end class
+	
+end namespace]]>
+		</File>
+	</TemplateFiles>
+	
+	<FileOptions/>
+	
+</Template>

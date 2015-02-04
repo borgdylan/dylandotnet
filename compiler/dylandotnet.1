@@ -1,0 +1,102 @@
+.TH DYLANDOTNET 1 "2014-11-01" "Linux" "dylan.NET for CLI 4.0"
+
+.SH NAME
+dylandotnet \- A compiler for compiling dylan.NET source code into Mono compatible bytecode.
+
+.SH SYNOPSIS
+\fBdylandotnet\fR [-h|-V|-pcl|-sdk \fIsdk-version\fR|\fIfile-names...\fP]
+.br
+
+.SH DESCRIPTION
+This manual page explains the \fBdylandotnet\fP program.
+.P
+The program \fBdylandotnet\fP is for compiling dylan.NET code into CLI bytecode executable and/or loadable by the mono runtime. It compiles code for the selected profile (-sdk switch).
+
+.SH OPTIONS
+Arguments are handled in the order they are issued. -V and -h will not affect compilation and can be be issued with the file-name(s).
+
+.TP
+\fBfile-names\fP
+The file name(s) of the file(s) having the assembly definition and #include directives that include all the other source files.
+in the form : "dylandotnet file-name.dyl" ;where file-name.dyl is the file mentioned before. The extension can be anything you want but .dyl will identify the file as being dylan.NET source.
+.TP
+\fB-V\fB
+This option displays the version numbers of all the dylan.NET libraries installed that make up the compiler itself. The version of the CLR and the Operating System are also displayed. This output when diverted to a file by using 'dylandotnet -V > versioninfo.txt' may be used as part of bug reports or as part of buildlogs.
+.TP
+\fB-h\fP
+This option displays a short listing of the options available. If you have read all of this man page you will not need to consult the output of -h. The command is issued like this 'dylandotnet -h'.
+.TP
+\fB-sdk \fIsdk-version\fP
+This option allows the setting of the folder used for assemblies by the \fI#refstdasm\fR directive. Usual options are 2.0/4.0/4.5 . This option is mostly useful under mono and not under .NET
+.TP
+\fB-pcl\fP
+This option sets the retargable flag on the output assembly. It is only useful if one is making a PCL refernce assembly (not the case in the usual usage scenarios).
+
+.SH FILES
+.PP
+This is the list of the most important files installed by the dylan.NET Makefile or Package whichever one was used for the install. Before these paths one should add /usr/ or /usr/local/ whichever prefix was chosen in the Makefile. In package installation cases the prefix is /usr/ .
+
+.B
+.IP bin/dylandotnet
+The dylan.NET executable script which when invoked in the terminal executes the compiler on the mono runtime.
+.B
+.IP lib/dylandonet/dnc.exe
+The main dylan.NET program is what is executed by the script. This reads in the command line arguments and launches the compiler phases in sequence.
+.B
+.IP lib/dylandonet/dnu.dll
+The dylan.NET utilities library housing some common functions for dylan.NET based code.
+.B
+.IP lib/dylandonet/dnr.dll
+The dylan.NET reflection and reflection emit library used by the code generation phase of the compiler.
+.B
+.IP lib/dylandonet/tokenizer.AST.dll
+The dylan.NET AST components library which houses all the AST parts used by the lexer and parser in order to represent inputted source code in a structure.
+.B
+.IP lib/dylandonet/tokenizer.Lexer.dll
+The dylan.NET lexer library which has functions for reading a source code file and turning it in tokens and statements.
+.B
+.IP lib/dylandonet/tokenizer.Parser.dll
+The dylan.NET parser library which has optimizers that can further refine the data output by the lexer library. The output is what is needed for code generation.
+.B
+.IP lib/dylandonet/tokenizer.CodeGen.dll
+The dylan.NET code generation library which contains functions for processing the AST structure and from it make MSIL bytecode with the help of dnr.dll.
+.B
+.IP share/doc/dylandonet-doc/changelog.gz
+This gzip archive contains the GIT changelog for dylan.NET. The file that is inside is called ChangeLog.
+.B
+.IP share/doc/dylandonet-doc/ast.tar.gz
+This tarball has inside it the API documentation for the AST library.
+.B
+.IP share/doc/dylandonet-doc/codegen.tar.gz
+This tarball has inside it the API documentation for the CodeGen library.
+.B
+.IP share/doc/dylandonet-doc/dnc.tar.gz
+This tarball has inside it the API documentation for the compiler driver.
+.B
+.IP share/doc/dylandonet-doc/dnr.tar.gz
+This tarball has inside it the API documentation for the Reflection library.
+.B
+.IP share/doc/dylandonet-doc/dnu.tar.gz
+This tarball has inside it the API documentation for the Utility library.
+.B
+.IP share/doc/dylandonet-doc/lexer.tar.gz
+This tarball has inside it the API documentation for the Lexer library.
+.B
+.IP share/doc/dylandonet-doc/parser.tar.gz
+This tarball has inside it the API documentation for the Parser library.
+.B
+.IP share/doc/dylandonet-doc/tests.tar.gz
+This tarball has inside it some test programs which are pre-compiled.
+.B
+.IP lib/pkgconfig/dylandonet.pc
+This is the pkg-config package for dylan.NET.
+.B
+.IP share/man/man1/dylandonet.1
+This is this very man page for dylan.NET.
+
+
+.SH VERSION
+11.5.1.2
+
+.SH "SEE ALSO"
+See also http://launchpad.net/dylandotnet

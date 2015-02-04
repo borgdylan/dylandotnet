@@ -1,0 +1,6 @@
+<Namespace Name="System.Threading.Tasks">
+  <Docs>
+    <summary>The main Task namespace as used in .NET.</summary>
+    <remarks>Helpers for awaiting stuff and implementing asynchronous routines mostly targeted for dylan.NET projects on .NET 4, .NET 4.5, ASP.NET vNext and PCLs.</remarks>
+  </Docs>
+</Namespace>

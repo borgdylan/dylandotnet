@@ -1,0 +1,1 @@
+-r:/usr/lib/dylandotnet4/dnr.dll -r:/usr/lib/dylandotnet4/dnc.exe -r:/usr/lib/dylandotnet4/dnu.dll -r:/usr/lib/dylandotnet4/tokenizer.AST.dll -r:/usr/lib/dylandotnet4/tokenizer.Lexer.dll -r:/usr/lib/dylandotnet4/tokenizer.Parser.dll -r:/usr/lib/dylandotnet4/tokenizer.CodeGen.dll

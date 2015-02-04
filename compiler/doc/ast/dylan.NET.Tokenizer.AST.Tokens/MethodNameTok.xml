@@ -1,0 +1,88 @@
+<Type Name="MethodNameTok" FullName="dylan.NET.Tokenizer.AST.Tokens.MethodNameTok">
+  <TypeSignature Language="C#" Value="public class MethodNameTok : dylan.NET.Tokenizer.AST.Tokens.Ident, dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi MethodNameTok extends dylan.NET.Tokenizer.AST.Tokens.Ident implements class dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ident</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>Represents a method name i.e. the full string of characters before the '('.</summary>
+    <remarks>This class inherits Ident and hence allows nearly all identifier operations like chaining and conversions to be made in the same way.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MethodNameTok ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs a new MethodNameTok.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MethodNameTok (dylan.NET.Tokenizer.AST.Tokens.Ident idt);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(class dylan.NET.Tokenizer.AST.Tokens.Ident idt) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="idt" Type="dylan.NET.Tokenizer.AST.Tokens.Ident" />
+      </Parameters>
+      <Docs>
+        <param name="idt">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MethodNameTok (string value);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(string value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MayHaveConstraints">
+      <MemberSignature Language="C#" Value="public virtual bool MayHaveConstraints { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool MayHaveConstraints" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.MethodNameTok op_Implicit (dylan.NET.Tokenizer.AST.Tokens.Ident idt);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok op_Implicit(class dylan.NET.Tokenizer.AST.Tokens.Ident idt) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.MethodNameTok</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="idt" Type="dylan.NET.Tokenizer.AST.Tokens.Ident" />
+      </Parameters>
+      <Docs>
+        <param name="idt">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

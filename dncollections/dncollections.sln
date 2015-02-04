@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{B3296CA8-08AE-42E6-8D7C-A1C9304440FD}") = "dncollections", "dncollections\dncollections.dylproj", "{06B1E0F5-93E7-444D-B682-89D076CF8DF0}"
+EndProject
+Project("{B3296CA8-08AE-42E6-8D7C-A1C9304440FD}") = "tests", "tests\tests.dylproj", "{0743954A-3AE9-4604-ABAB-08BFC1A205A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06B1E0F5-93E7-444D-B682-89D076CF8DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B1E0F5-93E7-444D-B682-89D076CF8DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B1E0F5-93E7-444D-B682-89D076CF8DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B1E0F5-93E7-444D-B682-89D076CF8DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0743954A-3AE9-4604-ABAB-08BFC1A205A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0743954A-3AE9-4604-ABAB-08BFC1A205A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0743954A-3AE9-4604-ABAB-08BFC1A205A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0743954A-3AE9-4604-ABAB-08BFC1A205A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = dncollections\dncollections.dylproj
+	EndGlobalSection
+EndGlobal

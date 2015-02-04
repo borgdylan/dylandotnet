@@ -1,0 +1,4 @@
+#This package is not present in Debian.
+version=3
+
+http://bazaar.launchpad.net/~borgdylan/dylandotnet/dylandotnet/view/head:/tarballs/dylandotnet-(.*)\.tar\.gz

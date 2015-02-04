@@ -1,0 +1,140 @@
+<Type Name="ITypeProvider" FullName="dylan.NET.Reflection.ITypeProvider">
+  <TypeSignature Language="C#" Value="public interface ITypeProvider" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ITypeProvider" />
+  <AssemblyInfo>
+    <AssemblyName>dnr</AssemblyName>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GetChar">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type GetChar ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class IKVM.Reflection.Type GetChar() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDouble">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type GetDouble ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class IKVM.Reflection.Type GetDouble() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetInteger">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type GetInteger ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class IKVM.Reflection.Type GetInteger() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetLong">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type GetLong ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class IKVM.Reflection.Type GetLong() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetObject">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type GetObject ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class IKVM.Reflection.Type GetObject() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSByte">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type GetSByte ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class IKVM.Reflection.Type GetSByte() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetShort">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type GetShort ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class IKVM.Reflection.Type GetShort() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSingle">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type GetSingle ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class IKVM.Reflection.Type GetSingle() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetString">
+      <MemberSignature Language="C#" Value="public IKVM.Reflection.Type GetString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class IKVM.Reflection.Type GetString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

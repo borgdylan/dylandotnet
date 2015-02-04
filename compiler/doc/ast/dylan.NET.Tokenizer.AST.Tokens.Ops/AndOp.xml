@@ -1,0 +1,41 @@
+<Type Name="AndOp" FullName="dylan.NET.Tokenizer.AST.Tokens.Ops.AndOp">
+  <TypeSignature Language="C#" Value="public class AndOp : dylan.NET.Tokenizer.AST.Tokens.Ops.LogicalOp" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi AndOp extends dylan.NET.Tokenizer.AST.Tokens.Ops.LogicalOp" />
+  <AssemblyInfo>
+    <AssemblyName>tokenizer.AST</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Ops.LogicalOp</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a bitwise and 'and' operator.</summary>
+    <remarks>Does a bitwise and of its operands.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AndOp ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>Constructs an new AndOp.</summary>
+        <remarks>Also sets PrecNo accordingly.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

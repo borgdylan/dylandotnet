@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<Template originator   = "Lluis Sanchez">
+	
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>NUnit Project</_Name>
+		<_Category>dylan.NET/NUnit</_Category>
+		<Icon>md-project|res:project-nunit-overlay-light-32.png</Icon>
+		<_Description>Creates an NUnit library</_Description>
+		<LanguageName>dylan.NET</LanguageName>
+		<DefaultFilename>NUnitProject</DefaultFilename>
+	</TemplateConfiguration>
+	
+	<!-- Actions -->
+	<Actions>
+	</Actions>
+	
+	<!-- Template Content -->
+	<Combine name = "${ProjectName}" directory = "." type = "MonoDevelop.NUnit.NUnitAssemblyGroupProject">
+		<Options>
+			<StartupProject>${ProjectName}</StartupProject>
+		</Options>
+		
+		<Project name = "${ProjectName}" directory = ".">
+			<Options Target = "Library" />
+			
+			<References>
+				<Reference type="Package" refto="System" />
+				<Reference type="Package" refto="mscorlib" />
+				<Reference type="Package" refto="System.Core" />
+				<Reference type="Package" refto="System.Xml.Linq" />
+				<Reference type="Package" refto="System.Xml" />
+				<Reference type="Package" refto="nunit.framework" SpecificVersion = "false" LocalCopy = "false" />
+			</References>
+		
+			<Files>
+				<File name="TestClass.dyl" AddStandardHeader="True"><![CDATA[namespace ${Namespace}
+
+	[class: TestFixture()]
+	class public auto ansi TestClass
+		
+		[method: Test()]
+		method public void Test()
+			Assert::IsTrue(false)
+		end method
+
+	end class
+	
+end namespace]]></File>
+				<File name="${ProjectName}.dyl" AddStandardHeader="True"><![CDATA[#include "msbuild.dyl"
+#include "Properties/AssemblyInfo.dyl"
+
+import System
+import System.Collections
+import System.Collections.Generic
+import System.Linq
+import System.Xml
+import System.Xml.Linq
+import System.Linq.Expressions
+import NUnit.Framework
+
+#include "TestClass.dyl"]]></File>
+				<!--<FileTemplateReference TemplateID="EmptyClass" name="MyClass.cs" />-->
+				<FileTemplateReference TemplateID="dylanNetAssemblyInfo" name="AssemblyInfo.dyl" />
+			</Files>
+		</Project>
+	</Combine>
+</Template>

@@ -1,0 +1,3 @@
+E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Release\ResolveAssemblyReference.cache
+E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Release\dylan.NET_Compiler.Resources.resources
+E:\VS\dylan.NET Compiler\dylan.NET Compiler\obj\Release\dylan.NET Compiler.vbproj.GenerateResource.Cache

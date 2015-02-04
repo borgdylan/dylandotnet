@@ -1,0 +1,286 @@
+class public auto ansi ContactReader
+
+field public string Title
+field public string Name
+field public string Surname
+field public string Email1
+field public string Email2
+field public string Email3
+field public string Tel1
+field public string Tel2
+field public string Address
+field public string Notes
+field public long ID
+field public long Count
+field public string TableName
+
+method public void ctor0()
+me::ctor()
+Title = ""
+Name = ""
+Surname = ""
+Email1 = ""
+Email2 = ""
+Email3 = ""
+Tel1 = ""
+Tel2 = ""
+Address = ""
+Notes = ""
+TableName = ""
+ID = 0l
+Count = 0l
+end method
+
+method public void CreateAndOpenTable(var constr as string, var tblname as string)
+SQLConnection::InitCon(constr)
+SQLConnection::BeginTrans()
+var str as string = String::Concat("create table ", tblname, "(Title text,Name text, Surname text, Email1 text, Email2 text, Email3 text, Tel1 text, Tel2 text, Address text, Notes text);")
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+SQLConnection::CommitTrans()
+SQLConnection::EndTrans()
+str = String::Concat("select rowid,* from ", tblname, ";")
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecQuery()
+Count = $long$SQLConnection::RwCount
+TableName = tblname
+end method
+
+method public void OpenTable(var constr as string, var tblname as string)
+SQLConnection::InitCon(constr)
+var str as string = String::Concat("select rowid,* from ", tblname, ";")
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecQuery()
+Count = $long$SQLConnection::RwCount
+TableName = tblname
+end method
+
+method public void AddRecord()
+SQLConnection::BeginTrans()
+var str as string = String::Concat("insert into ", TableName, " values('','','','','','','','','','');")
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+SQLConnection::CommitTrans()
+SQLConnection::EndTrans()
+Count = Count + 1l
+end method
+
+method public void LoadData(var id as long)
+ID = id
+var str as string = String::Concat("select rowid,* from ", TableName, " where rowid = ", $string$ID)
+str = String::Concat(str, ";")
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecQuery()
+Title = SQLConnection::get_RowItemString(0,1)
+Name = SQLConnection::get_RowItemString(0,2)
+Surname = SQLConnection::get_RowItemString(0,3)
+Email1 = SQLConnection::get_RowItemString(0,4)
+Email2 = SQLConnection::get_RowItemString(0,5)
+Email3 = SQLConnection::get_RowItemString(0,6)
+Tel1 = SQLConnection::get_RowItemString(0,7)
+Tel2 = SQLConnection::get_RowItemString(0,8)
+Address = SQLConnection::get_RowItemString(0,9)
+Notes = SQLConnection::get_RowItemString(0,10)
+end method
+
+method public void WriteData(var id as long,var tit as string, var nm as string, var snm as string, var em1 as string, var em2 as string, var em3 as string, var tel1 as string, var tel2 as string, var addr as string, var nts as string)
+ID = id
+SQLConnection::BeginTrans()
+var str as string = String::Concat("update ", TableName, " set Title = '", tit)
+str = String::Concat(str, "' where rowid = ", $string$ID)
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+str = String::Concat("update ", TableName, " set Name = '", nm)
+str = String::Concat(str, "' where rowid = ", $string$ID)
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+str = String::Concat("update ", TableName, " set Surname = '", snm)
+str = String::Concat(str, "' where rowid = ", $string$ID)
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+str = String::Concat("update ", TableName, " set Email1 = '", em1)
+str = String::Concat(str, "' where rowid = ", $string$ID)
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+str = String::Concat("update ", TableName, " set Email2 = '", em2)
+str = String::Concat(str, "' where rowid = ", $string$ID)
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+str = String::Concat("update ", TableName, " set Email3 = '", em3)
+str = String::Concat(str, "' where rowid = ", $string$ID)
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+str = String::Concat("update ", TableName, " set Tel1 = '", tel1)
+str = String::Concat(str, "' where rowid = ", $string$ID)
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+str = String::Concat("update ", TableName, " set Tel2 = '", tel2)
+str = String::Concat(str, "' where rowid = ", $string$ID)
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+str = String::Concat("update ", TableName, " set Address = '", addr)
+str = String::Concat(str, "' where rowid = ", $string$ID)
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+str = String::Concat("update ", TableName, " set Notes = '", nts)
+str = String::Concat(str, "' where rowid = ", $string$ID)
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecNonQuery()
+SQLConnection::CommitTrans()
+SQLConnection::EndTrans()
+end method
+
+method public string GetMember(var mem as string)
+label fin
+var str as string = ""
+var comp as integer = 0
+
+comp = String::Compare("ID", mem)
+if comp = 0 then
+str = $string$ID
+goto fin
+end if
+
+comp = String::Compare("Title", mem)
+if comp = 0 then
+str = Title
+goto fin
+end if
+
+comp = String::Compare("Name", mem)
+if comp = 0 then
+str = Name
+goto fin
+end if
+
+comp = String::Compare("Surname", mem)
+if comp = 0 then
+str = Surname
+goto fin
+end if
+
+comp = String::Compare("Email1", mem)
+if comp = 0 then
+str = Email1
+goto fin
+end if
+
+comp = String::Compare("Email2", mem)
+if comp = 0 then
+str = Email2
+goto fin
+end if
+
+comp = String::Compare("Email3", mem)
+if comp = 0 then
+str = Email3
+goto fin
+end if
+
+comp = String::Compare("Tel1", mem)
+if comp = 0 then
+str = Tel1
+goto fin
+end if
+
+comp = String::Compare("Tel2", mem)
+if comp = 0 then
+str = Tel2
+goto fin
+end if
+
+comp = String::Compare("Address", mem)
+if comp = 0 then
+str = Address
+goto fin
+end if
+
+comp = String::Compare("Notes", mem)
+if comp = 0 then
+str = Notes
+goto fin
+end if
+
+comp = String::Compare("*", mem)
+if comp = 0 then
+str = String::Concat("ID: ", $string$ID, Utils.Constants::crlf)
+str = String::Concat(str, "Title: ", Title, Utils.Constants::crlf)
+str = String::Concat(str, "Name: ", Name, Utils.Constants::crlf)
+str = String::Concat(str, "Surname: ", Surname, Utils.Constants::crlf)
+str = String::Concat(str, "Email1: ", Email1, Utils.Constants::crlf)
+str = String::Concat(str, "Email2: ", Email2, Utils.Constants::crlf)
+str = String::Concat(str, "Email3: ", Email3, Utils.Constants::crlf)
+str = String::Concat(str, "Tel1: ", Tel1, Utils.Constants::crlf)
+str = String::Concat(str, "Tel2: ", Tel2, Utils.Constants::crlf)
+str = String::Concat(str, "Address: ", Address, Utils.Constants::crlf)
+str = String::Concat(str, "Notes: ", Notes, Utils.Constants::crlf)
+goto fin
+else
+goto fin
+end if
+
+place fin
+
+return str
+
+end method
+
+method public string GetRecordString()
+return GetMember("*")
+end method
+
+method public void DoQuery(var sel as string, var whr as string)
+
+var str as string = String::Concat("select ", sel, " from ", TableName)
+str = String::Concat(str, " where ", whr, ";")
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecQuery()
+
+end method
+
+method public string DoListQuery(var sel as string, var whr as string)
+
+var str as string = String::Concat("select rowid,* from ", TableName, " where ")
+str = String::Concat(str, whr, ";")
+SQLConnection::PrepCmd(str)
+SQLConnection::ExecQuery()
+
+var i as integer = -1
+var len as integer = SQLConnection::RwCount - 1
+var str2 as string = ""
+
+label loop
+label cont
+
+place loop
+
+i++
+
+ID = SQLConnection::get_RowItemInt64(i, 0)
+Title = SQLConnection::get_RowItemString(i,1)
+Name = SQLConnection::get_RowItemString(i,2)
+Surname = SQLConnection::get_RowItemString(i,3)
+Email1 = SQLConnection::get_RowItemString(i,4)
+Email2 = SQLConnection::get_RowItemString(i,5)
+Email3 = SQLConnection::get_RowItemString(i,6)
+Tel1 = SQLConnection::get_RowItemString(i,7)
+Tel2 = SQLConnection::get_RowItemString(i,8)
+Address = SQLConnection::get_RowItemString(i,9)
+Notes = SQLConnection::get_RowItemString(i,10)
+
+str = GetMember(sel)
+str2 = String::Concat(str2, str, Utils.Constants::crlf)
+
+if i = len then
+goto cont
+else
+goto loop
+end if
+
+place cont
+
+return str2
+
+end method
+
+end class
