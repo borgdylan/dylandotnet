@@ -277,7 +277,7 @@ class public static ParseUtils
 		var es = new C5.ArrayList<of string>()
 		//false means copy to format, true means copy to current expression
 		var mode as boolean = false
-		
+
 		for i = 0 upto len
 			cc = input::get_Chars(i)
 			lc = #ternary {i < len ? input::get_Chars(++i), ' '}

@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Tokenizer.CodeGen</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
-    <ReleaseVersion>11.5.4.1</ReleaseVersion>
+    <ReleaseVersion>11.5.4.3</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,14 +31,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Interactive">
-      <HintPath>..\packages\Ix-Main.1.2.2\lib\net40\System.Interactive.dll</HintPath>
-    </Reference>
     <Reference Include="IKVM.Reflection">
       <HintPath>..\lib\IKVM.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="C5">
       <HintPath>..\packages\C5.2.3.0.1\lib\net40\C5.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Interactive">
+      <HintPath>..\packages\Ix-Main.1.2.3\lib\net40\System.Interactive.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

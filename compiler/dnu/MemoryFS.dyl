@@ -22,8 +22,12 @@ namespace dylan.NET.Utils
 			anis::Clear()
 		end method
 
-		method public static void AddFile(var path as string, var s as Stream)
-			fs::Add(path, s)
+		method public static boolean AddFile(var path as string, var s as Stream)
+			if !fs::Contains(path) then
+				fs::Add(path, s)
+				return true
+			end if
+			return false
 		end method
 
 		method public static boolean HasFile(var path as string)
@@ -44,6 +48,10 @@ namespace dylan.NET.Utils
 
 		method public static IEnumerable<of string> GetANIs()
 			return anis
+		end method
+
+		method public static IEnumerable<of string> GetFiles()
+			return fs::get_Keys()
 		end method
 
 	end class

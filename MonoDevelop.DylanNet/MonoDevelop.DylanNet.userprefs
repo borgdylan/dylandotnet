@@ -1,7 +1,7 @@
 ﻿<Properties StartupItem="MonoDevelop.DylanNet/MonoDevelop.DylanNet.dylproj">
   <AuthorInfo Name="Dylan Borg" Email="" Copyright="Copyright (C) 2013 Dylan Borg" Company="" Trademark="" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.DylanNet/DocumentParser.dyl">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="MonoDevelop.DylanNet/DocumentParser.dyl" Line="1" Column="1" />
       <File FileName="Test/ITestInterface.dyl" Line="1" Column="1" />

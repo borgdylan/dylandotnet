@@ -1296,7 +1296,7 @@ class public StmtReader
 				Importer::AddAsm(rastm::AsmPath::Value, ILEmitter::Univ::LoadAssembly(ILEmitter::Univ::OpenRawModule(MemoryFS::GetFile(pth), $string$null)))
 
 				if rastm::EmbedIfUsed then
-					SymTable::ResLst::Add(Tuple::Create<of string, string, boolean>(rastm::AsmPath::Value, string::Empty, true))
+					SymTable::ResLst::Add(Tuple::Create<of string, string, boolean, boolean>(rastm::AsmPath::Value, string::Empty, true, true))
 				end if
 
 			else
@@ -1311,7 +1311,7 @@ class public StmtReader
 				Importer::AddAsm(rastm::AsmPath::Value, ILEmitter::Univ::LoadFile(rastm::AsmPath::Value))
 
 				if rastm::EmbedIfUsed then
-					SymTable::ResLst::Add(Tuple::Create<of string, string, boolean>(rastm::AsmPath::Value, string::Empty, true))
+					SymTable::ResLst::Add(Tuple::Create<of string, string, boolean, boolean>(rastm::AsmPath::Value, string::Empty, true, true))
 				end if
 			end if
 		elseif stm is RefstdasmStmt then
@@ -1345,7 +1345,7 @@ class public StmtReader
 			if File::Exists(sstm::Path::Value) then
 				StreamUtils::Write("Adding Resource: ")
 				StreamUtils::WriteLine(sstm::Path::Value)
-				SymTable::ResLst::Add(Tuple::Create<of string, string, boolean>(sstm::Path::Value, sstm::LogicalName::get_UnquotedValue(), false))
+				SymTable::ResLst::Add(Tuple::Create<of string, string, boolean, boolean>(sstm::Path::Value, sstm::LogicalName::get_UnquotedValue(), false, false))
 			else
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Resource File '" + sstm::Path::Value + "' does not exist.")
 			end if
@@ -1420,7 +1420,7 @@ class public StmtReader
 						ms::Seek(0l, SeekOrigin::Begin)
 						MemoryFS::AddFile(cti::TypeBldr::get_FullName() + ".dll", ms)
 						MemoryFS::AddANI(cti::TypeBldr::get_FullName() + ".dll")
-						SymTable::ResLst::Add(Tuple::Create<of string, string, boolean>("memory:" + cti::TypeBldr::get_FullName() + ".dll", string::Empty, false))
+						SymTable::ResLst::Add(Tuple::Create<of string, string, boolean, boolean>("memory:" + cti::TypeBldr::get_FullName() + ".dll", string::Empty, false, true))
 					end if
 				end if
 				AsmFactory::inClass = false
@@ -1436,7 +1436,7 @@ class public StmtReader
 				ms::Seek(0l, SeekOrigin::Begin)
 				MemoryFS::AddFile(cti::EnumBldr::get_FullName() + ".dll", ms)
 				MemoryFS::AddANI(cti::EnumBldr::get_FullName() + ".dll")
-				SymTable::ResLst::Add(Tuple::Create<of string, string, boolean>("memory:" + cti::EnumBldr::get_FullName() + ".dll", string::Empty, false))
+				SymTable::ResLst::Add(Tuple::Create<of string, string, boolean, boolean>("memory:" + cti::EnumBldr::get_FullName() + ".dll", string::Empty, false, true))
 			end if
 
 		elseif stm is MethodStmt then

@@ -30,7 +30,9 @@ class public static SymTable
 	field public static PInvokeInfo PIInfo
 	
 	field private static C5.LinkedList<of IfItem> IfLst
-	field assembly static C5.LinkedList<of Tuple<of string, string, boolean> > ResLst
+
+	//tuples have file, logical name, embed only if used (for assemblies), is ani (for assemblies)
+	field assembly static C5.LinkedList<of Tuple<of string, string, boolean, boolean> > ResLst
 	field private static C5.LinkedList<of LoopItem> LoopLst
 	field private static C5.LinkedList<of TryItem> TryLst
 
@@ -51,7 +53,7 @@ class public static SymTable
 		LoopLst = new C5.LinkedList<of LoopItem>()
 		TryLst = new C5.LinkedList<of TryItem>()
 		LblLst = new C5.LinkedList<of LabelItem>()
-		ResLst = new C5.LinkedList<of Tuple<of string, string, boolean> >()
+		ResLst = new C5.LinkedList<of Tuple<of string, string, boolean, boolean> >()
 		StoreFlg = false
 		MethodCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		FieldCALst = new C5.LinkedList<of CustomAttributeBuilder>()

@@ -2,32 +2,16 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.Workbench ActiveDocument="resproc/Program.dyl">
     <Files>
-      <File FileName="tokenizer.CodeGen/helpers.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/eval.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/codegenerator.dyl" Line="1" Column="1" />
+      <File FileName="template/template.dyl" Line="26" Column="1" />
+      <File FileName="dnu/InterpolateResult.dyl" Line="1" Column="1" />
+      <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
+      <File FileName="dnu/MemoryFS.dyl" Line="1" Column="1" />
+      <File FileName="dnr/importer.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/typeitem.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/typelist.dyl" Line="1" Column="1" />
-      <File FileName="dnr/loader.dyl" Line="1" Column="1" />
+      <File FileName="dnc/Program.dyl" Line="40" Column="57" />
+      <File FileName="tokenizer.CodeGen/codegenerator.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen/symtable.dyl" Line="1" Column="1" />
-      <File FileName="template/template.dyl" Line="1" Column="1" />
-      <File FileName="dnc/Program.dyl" Line="1" Column="1" />
-      <File FileName="resproc/Program.dyl" Line="26" Column="19" />
-      <File FileName="tokenizer.Parser/exproptimizer.dyl" Line="1" Column="1" />
-      <File FileName="dnr/ilemitter.dyl" Line="1" Column="1" />
-      <File FileName="dnu/streamu.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/token.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.Lexer/line.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.Parser/tokenoptimizer.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.Parser/stmtoptimizer.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/propstmt.dyl" Line="1" Column="1" />
-      <File FileName="units/streamutests.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/eventstmt.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.AST/stmt.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.Parser/parser.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/tilambdas.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/cilambdas.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/milambdas.dyl" Line="1" Column="1" />
+      <File FileName="resproc/Program.dyl" Line="327" Column="70" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

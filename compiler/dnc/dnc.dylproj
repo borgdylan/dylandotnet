@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Compiler</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>dnc</AssemblyName>
-    <ReleaseVersion>11.5.4.1</ReleaseVersion>
+    <ReleaseVersion>11.5.4.3</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

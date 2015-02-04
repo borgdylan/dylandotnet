@@ -276,12 +276,24 @@ class public CodeGenerator
 					end if
 
 					var fs = MemoryFS::GetFile(pth)
+					var path = #ternary {r::get_Item2() == string::Empty ? Path::GetFileName(pth), r::get_Item2() }
+
+					if r::get_Item4() then
+						path = "AssemblyNeutral/" + path
+					end if
+
 					fs::Seek(0l, SeekOrigin::Begin)
-					AsmFactory::MdlB::DefineManifestResource(#ternary {r::get_Item2() == string::Empty ? Path::GetFileName(pth), r::get_Item2() }, fs, ResourceAttributes::Public)
+					AsmFactory::MdlB::DefineManifestResource(path, fs, ResourceAttributes::Public)
 					fs::Seek(0l, SeekOrigin::Begin)
 				else
 					var fs = new FileStream(r::get_Item1(), FileMode::Open)
-					AsmFactory::MdlB::DefineManifestResource(#ternary {r::get_Item2() == string::Empty ? Path::GetFileName(r::get_Item1()), r::get_Item2() }, fs, ResourceAttributes::Public)
+					var path = #ternary { r::get_Item2() == string::Empty ? Path::GetFileName(r::get_Item1()), r::get_Item2() }
+
+					if r::get_Item4() then
+						path = "AssemblyNeutral/" + path
+					end if
+
+					AsmFactory::MdlB::DefineManifestResource(path, fs, ResourceAttributes::Public)
 					fs::Close()
 				end if
 			end for
